@@ -1,24 +1,24 @@
 ---
 title: Azure Site Recovery Deployment Planner VMware Azure-hoz| Microsoft Docs
-description: "Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója"
+description: Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: 77e76e5f9960f8a7c54ebcb82321784be5c1aa99
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d14d7af39af59bb0b4fbcd5857e8686176afb71
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner VMware – Azure-hoz
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -105,9 +105,9 @@ Az eszközt futtathatja Windows Server 2012 R2-ről, ha a kiszolgáló hálózat
 A mappa több fájlt és almappát tartalmaz. Az ASRDeploymentPlanner.exe futtatható fájl a szülőmappában található.
 
     Példa: másolja a zip-fájlt az E:\ meghajtóra, és csomagolja ki.
-    E:\ASR Deployment Planner_v2.1zip
+    E:\ASR Deployment Planner_v2.2.zip
 
-    E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Frissítés a Deployment Planner legújabb verziójára
 Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak egyikét:
@@ -123,7 +123,7 @@ Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak e
 
 
 ## <a name="version-history"></a>Verzióelőzmények
-A legutóbbi Site Recovery Deployment Planner eszköz verziószáma 2.1.
+A legutóbbi Site Recovery Deployment Planner eszköz verziószáma 2.2.
 Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lehet tájékozódni.
 
 ## <a name="next-steps"></a>További lépések

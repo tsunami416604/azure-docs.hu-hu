@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális gép testreszabása az Azure-ban | Microsoft Docs
-description: Megtudhatja, hogyan használható Azure-beli windowsos virtuális gépeken az egyéni szkriptek bővítményét az alkalmazástelepítések automatizálásához.
+title: Oktatóanyag – Alkalmazások telepítése Windows rendszerű virtuális gépre az Azure-ban | Microsoft Docs
+description: Ennek az oktatóanyagnak a követésével elsajátíthatja, hogyan használja az szkriptbővítményt szkriptek futtatására és alkalmazások Windows rendszerű virtuális gépekre való telepítésére az Azure-ban
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6afb5757e11108eec856d821d92afed9681a2668
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51a66d524e72968d95f3415b890567015165063a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Windowsos virtuális gép testreszabása az Azure-ban
+# <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Oktatóanyag – Alkalmazások telepítése Windows virtuális gépekre az Azure-ban az egyéni szkriptbővítménnyel
+
 A virtuális gépek gyors és következetes konfigurálásához általában valamilyen automatizálásra van szükség. A Windows rendszerű virtuális gépek testreszabásának általánosan használt megközelítése az [egyéni szkriptek Windows-bővítményének](extensions-customscript.md) használata. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -32,7 +33,7 @@ A virtuális gépek gyors és következetes konfigurálásához általában vala
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.3-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
 ## <a name="custom-script-extension-overview"></a>Az egyéni szkriptek bővítményének áttekintése

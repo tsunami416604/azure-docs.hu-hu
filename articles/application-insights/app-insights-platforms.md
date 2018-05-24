@@ -3,7 +3,7 @@ title: 'Application Insights: nyelvek, platformok és integrációk| Microsoft D
 description: Az Application Insightshoz elérhető nyelvek, platformok és integrációk
 services: application-insights
 documentationcenter: ''
-author: OlegAnaniev-MSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
-ms.author: mbullwin
-ms.openlocfilehash: fdc75c69008d2f448d8a077a42bfccd24db6579a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: mbullwin; olegan
+ms.openlocfilehash: 8aec8567fd15865887a5fe5ded8b45cad0290bf9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Fejlesztői elemzések: nyelvek, platformok és integrációk
 Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósításai, amelyekről hallottunk, beleértve néhány harmadik fél által létrehozottat.
@@ -29,6 +29,7 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [Node.JS](app-insights-nodejs.md)
 
 ## <a name="languages---community-supported"></a>Közösség által támogatott nyelvek
+* [F#](https://safe-stack.github.io/docs/template-azure-ai/)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -38,25 +39,25 @@ Ezen elemek az [Application Insights](app-insights-overview.md) azon megvalósí
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET – már élő alkalmazásokhoz](app-insights-monitor-performance-live-website-now.md)
 * [ASP.NET Core](app-insights-asp-net-core.md)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center, HockeyApp)
+* [Android](app-insights-mobile-center-quickstart.md) (App Center)
+* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)&#151;beleértve a webes és a feldolgozói szerepköröket
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
+* [iOS](app-insights-mobile-center-quickstart.md) (App Center)
 * [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
-* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center, HockeyApp)
+* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
 * [J2EE](app-insights-java-get-started.md)
 * [J2EE – már élő alkalmazásokhoz](app-insights-java-live.md)
-* [macOS-alkalmazás](https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/hockeyapp-for-mac-os-x) (HockeyApp)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
+* [SAFE Stack](https://safe-stack.github.io/docs/template-azure-ai/)
 * [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
-* [Univerzális Windows-alkalmazás](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/how-to-create-an-app-for-uwp) (App Center, HockeyApp)
+* [Univerzális Windows-alkalmazás](app-insights-mobile-center-quickstart.md) (App Center)
 * [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
-* [Windows Phone 8- és 8.1-alkalmazás](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-phone-silverlight-apps-80-and-81) (HockeyApp)
-* [Windows megjelenítési alaprendszer alkalmazás](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-wpf-apps) (HockeyApp)
 * [Asztali Windows-alkalmazások, szolgáltatások és feldolgozói szerepkörök](app-insights-windows-desktop.md)
 * [Bármi más](#projects)
 

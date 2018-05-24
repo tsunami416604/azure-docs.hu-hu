@@ -2,25 +2,19 @@
 title: Rövid útmutató új jelszó kérésére vonatkozó önkiszolgáló folyamathoz – Azure Active Directory
 description: Az Azure AD önkiszolgáló jelszó-visszaállításának gyors üzembe helyezése
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 6add6e71c9acf6d63858ea921ec85924b4e6c60f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Az Azure AD-beli önkiszolgáló jelszómódosítás gyors üzembe helyezése
 
@@ -33,11 +27,13 @@ Ez az útmutató feltételezi, hogy már rendelkezik egy Azure Active Directory-
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Az SSPR engedélyezése az Azure AD-bérlő számára
 
+> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+
 1. A meglévő Azure AD-bérlőjében, az **Azure Portalon** **Azure Active Directory** területén válassza az **Új jelszó kérése** lehetőséget.
 
 2. A **Tulajdonságok** képernyő **Önkiszolgáló jelszóátállítás engedélyezve** lehetőségnél válassza a következők egyikét:
    * **Senki**: Senki nem használhatja az SSPR funkciót.
-   * **Kiválasztva**: Csak az Ön által kiválasztott Azure AD-csoport tagjai használhatják az SSPR funkciót. Amikor megvalósíthatósági próbát végez a funkcióval, ezt a beállítást javasoljuk egy meghatározott felhasználói csoporttal.
+   * **Kiválasztva**: Csak az Ön által kiválasztott Azure AD-csoport tagjai használhatják az SSPR funkciót. Amikor megvalósíthatósági próbát végez a funkcióval, ezt a beállítást javasoljuk egy meghatározott felhasználói csoporttal. Ebben az esetben támogatott a biztonsági csoportok beágyazása.
    * **Összes**: Minden felhasználó használhatja az SSPR funkciót, aki rendelkezik fiókkal az Azure AD-bérlőjében. Ezt akkor ajánlott beállítani, amikor készen áll a funkció üzembe helyezésére a teljes bérlőn, a megvalósíthatósági próba elvégzése után.
 
    > [!IMPORTANT]

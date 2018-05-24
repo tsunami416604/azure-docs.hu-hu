@@ -1,27 +1,23 @@
 ---
 title: Címtár-integráció az Azure Multi-Factor Authentication és az Active Directory között
-description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan integrálható az Azure Multi-Factor Authentication-kiszolgáló az Active Directoryval a címtárak szinkronizálása érdekében.
+description: Az Azure Multi-Factor Authentication-kiszolgáló integrálása az Active Directoryval a címtárak szinkronizálása érdekében.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: def7a534-cfb2-492a-9124-87fb1148ab1f
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/16/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 595359c9d50bceada3674336d4ef3fc8d5d6f416
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3f6f1f351a4870e68f2a5d6562c5c4a8f0031bdd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
+
 Az Azure MFA-kiszolgáló Címtár-integráció szakaszának használatával integrálhatja a címtárat az Active Directoryval vagy egy másik LDAP-címtárral. Konfigurálhatja az attribútumokat, hogy megfeleljenek a címtársémának, illetve beállíthatja a felhasználók automatikus szinkronizálását.
 
 ## <a name="settings"></a>Beállítások

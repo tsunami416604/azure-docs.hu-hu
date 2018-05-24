@@ -1,5 +1,5 @@
 ---
-title: U-SQL-szkriptek fejlesztése a Data Lake Tools for Visual Studio használatával | Microsoft Docs
+title: Az Azure Data Lake Analytics használatának első lépései a Visual Studióval | Microsoft Docs
 description: Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, valamint hogyan fejleszthet és tesztelhet U-SQL-parancsfájlokat.
 services: data-lake-analytics
 documentationcenter: ''
@@ -12,19 +12,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/28/2017
+ms.date: 05/02/2018
 ms.author: saveenr, yanacai
-ms.openlocfilehash: b94c035083a00867139b6c58bc8b2ded08e970b0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d0974e3258e0def09fe12d348180dcedf216401c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data Lake Analytics-fiókok létrehozásához, feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-szolgáltatásokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
+
+>[!IMPORTANT]
+>
+>Az új általános adatvédelmi rendelet (GDPR) 2018. május 25-én lép életbe. Az erre való felkészülés jegyében arra kérjük az Azure Data Lake Tools for Visual Studio felhasználóit, hogy frissítsenek a 2.3.3000.4-es vagy újabb verzióra. Ez a verzió tartalmazza a legújabb adatvédelmi követelményeknek megfelelő módosításokat. Fontos: A korábbi verziók már nem tölthetők le, és elavultnak számítanak. 
+>
+>**Mi a teendőm?**
+>
+>1. Ellenőrizze, hogy az Azure Data Lake Tools for Visual Studio 2.3.3000.4-esnél korábbi verzióját használja-e. 
+>   
+>   ![Az eszköz verziószámának ellenőrzése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-about-data-lake.png)
+> 
+>2. Amennyiben egy, a 2.3.3000.4-esnél korábbi verziót használ, az Azure Data Lake Tools for Visual Studiót a letöltőközpont felkeresésével frissítheti: 
+>    - [Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Visual Studio 2013 és 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
 
 ## <a name="prerequisites"></a>Előfeltételek

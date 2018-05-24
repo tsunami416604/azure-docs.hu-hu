@@ -1,12 +1,12 @@
 ---
-title: Az Azure Security Center és Linux rendszerű virtuális gépek az Azure-ban | Microsoft Docs
-description: Az Azure-beli linuxos virtuális gépek számára az Azure Security Center által biztosított biztonsági szolgáltatások ismertetése.
+title: Oktatóanyag – Az Azure Security Center használata az Azure-beli Linux rendszerű virtuális gépekhez | Microsoft Docs
+description: Ebben az oktatóanyagban megismerkedhet az Azure Security Center szolgáltatásaival, amelyekkel megvédheti és biztonságossá teheti Linux rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/07/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 41fb802dd8f5dd7bec2c481f3719f304b0c8d0ac
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>A virtuális gép biztonságának monitorozása az Azure Security Centerrel
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
 
 Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biztonsági intézkedéseit. A Security Center integrált biztonsági monitorozást biztosít. Képes egyébként észrevétlenül maradó fenyegetések észlelésére. Ebben az oktatóanyagban megismeri az Azure Security Centert, és a következőket sajátíthatja el:
  
@@ -30,7 +30,7 @@ Az Azure Security Center segítségével áttekintheti az Azure-erőforrása biz
 > * Adatgyűjtés beállítása
 > * Biztonsági szabályzatok beállítása
 > * A konfiguráció állapotára vonatkozó problémák megtekintése és javítása
-> * Észlelt fenyegetések áttekintése  
+> * Észlelt fenyegetések áttekintése
 
 ## <a name="security-center-overview"></a>Security Center – Áttekintés
 

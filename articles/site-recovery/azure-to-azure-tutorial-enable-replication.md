@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 05/02/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása (előzetes verzió)
 
@@ -134,7 +134,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 
 - **Célhely**: A vészhelyreállításhoz használt célrégió. Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen.
 
-- **Cél erőforráscsoport**: A célrégió azon erőforráscsoportja, ahol a feladatátvételt követően az Azure-beli virtuális gépek találhatók. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban.
+- **Cél erőforráscsoport**: A célrégió azon erőforráscsoportja, ahol a feladatátvételt követően az Azure-beli virtuális gépek találhatók. Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új erőforráscsoportot a célrégióban. A cél erőforráscsoport helye bármelyik régió lehet, kivéve azt a régiót, amelyben a forrás virtuális gépeket üzemeltetik. 
 
 - **Cél virtuális hálózat**: Az a hálózat a célrégióban, ahol a virtuális gépek találhatók a feladatátvétel után.
   Alapértelmezés szerint a Site Recovery létrehoz egy „asr” utótaggal rendelkező új virtuális hálózatot (és alhálózatokat) a célrégióban.

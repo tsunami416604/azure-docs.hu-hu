@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: ''
-ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Az Azure IoT Edge bemutatása – előzetes verzió
 
 Az Azure IoT Edge szolgáltatás a felhőbeli elemzéseket és egyéni üzleti logikákat eszközökre helyezi át, hogy a szervezet az üzleti elemzésekre tudjon koncentrálni az adatkezelés helyett. Tegye lehetővé megoldása valódi méretezhetőségét az IoT-szoftver konfigurálásával, amelyet standard tárolók használatával helyezhet üzembe az eszközökön, és a felhőn keresztül monitorozhatja is.
 
 >[!NOTE]
->Az Azure IoT Edge csak az IoT Hub standard szintű csomagjában érhető el. Az alapszintű és standard csomagokról további információt [a megfelelő IoT Hub-csomag kiválasztását](../iot-hub/iot-hub-scaling.md) ismertető cikkben talál.
+>Az Azure IoT Edge az IoT Hub ingyenes és standard szintű csomagjaiban érhető el. Az ingyenes szintű csomag csak tesztelési és értékelési célokra használható. Az alapszintű és standard csomagokról további információt [a megfelelő IoT Hub-csomag kiválasztását](../iot-hub/iot-hub-scaling.md) ismertető cikkben talál.
 
 Az elemzések jelentős üzleti értékeket teremthetnek az IoT-megoldásokban, de nem szükséges minden elemzést a felhőben végezni. Ha azt szeretné, hogy az eszköze a lehető leggyorsabban reagálni tudjon a vészhelyzetekre, akkor magán az eszközön is végezhet rendellenesség-észlelést. Hasonlóképpen, ha csökkenteni szeretné a sávszélesség-költségeket, és el szeretné kerülni több terabájtnyi nyers adat átvitelét, akkor helyileg is elvégezheti az adatok törlését és összesítését. Ezután elküldheti az elemzéseket a felhőbe. 
 

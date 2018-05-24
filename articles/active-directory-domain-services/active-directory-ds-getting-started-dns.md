@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: az Azure virtuális hálózat DNS-beállításainak frissítése | Microsoft Docs"
-description: "Első lépések az Azure Active Directory tartományi szolgáltatások használatával"
+title: 'Azure Active Directory Domain Services: az Azure virtuális hálózat DNS-beállításainak frissítése | Microsoft Docs'
+description: Első lépések az Azure Active Directory tartományi szolgáltatások használatával
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2017
 ms.author: maheshu
-ms.openlocfilehash: c99d42eaf52a13afef6df76b6bb1a714e719fa64
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 972b995d3768e765b95c136b3cfbee91ab0a88ab
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enable-azure-active-directory-domain-services"></a>Az Active Directory Domain Services engedélyezése
 
@@ -47,4 +47,4 @@ A DNS-kiszolgáló azon virtuális hálózatra vonatkozó beállításainak fris
 >
 
 ## <a name="next-step"></a>Következő lépés
-[5. feladat: Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services-re](active-directory-ds-getting-started-password-sync.md)
+[5. feladat: Az Azure Active Directory Domain Servicesre történő jelszókivonat-szinkronizálás engedélyezése](active-directory-ds-getting-started-password-sync.md)

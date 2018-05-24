@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Flask alkalmazás létrehozása a MongoDB API-val
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
-Ez a rövid útmutató a következő [Flask példát](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) használja, és bemutatja, hogyan építhet egyszerű teendőlista Flask alkalmazást a MongoDB helyett az [Azure Cosmos DB Emulatorral](/local-emulator.md) és az Azure Cosmos DB [MongoDB API](mongodb-introduction.md)-val.
+Ez a rövid útmutató a következő [Flask példát](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) használja, és bemutatja, hogyan építhet egyszerű teendőlista Flask alkalmazást a MongoDB helyett az [Azure Cosmos DB Emulatorral](local-emulator.md) és az Azure Cosmos DB [MongoDB API](mongodb-introduction.md)-val.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az [Azure Cosmos DB Emulator](/local-emulator.md) letöltése. Az Emulator jelenleg csak a Windows rendszerben támogatott. A minta bemutatja, hogyan használhatja a mintát az Azure-tól kapott termékkulccsal, ami bármilyen platformon elvégezhető.
+- Az [Azure Cosmos DB Emulator](local-emulator.md) letöltése. Az Emulator jelenleg csak a Windows rendszerben támogatott. A minta bemutatja, hogyan használhatja a mintát az Azure-tól kapott termékkulccsal, ami bármilyen platformon elvégezhető.
 
 - Ha még nincs telepítve a Visual Studio Code, gyorsan telepítheti a [VS Code-ot](https://code.visualstudio.com/Download) a platformján (Windows, Mac, Linux).
 

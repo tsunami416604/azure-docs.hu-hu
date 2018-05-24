@@ -1,27 +1,29 @@
 ---
-title: Nyilvános terheléselosztó létrehozása – Azure CLI | Microsoft Docs
-description: Megismerheti, hogyan hozható létre nyilvános terheléselosztó az Azure CLI használatával.
+title: 'Rövid útmutató: Nyilvános Load Balancer létrehozása – Azure CLI | Microsoft Docs'
+description: Ez a rövid útmutató ismerteti, hogyan hozható létre nyilvános Load Balancer az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
-ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
+Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2017
+ms.date: 03/19/2018
 ms.author: kumud
-ms.openlocfilehash: f2ba819c2341b2e481c2cfa5d5231f4cd5b6295b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.custom: mvc
+ms.openlocfilehash: 263cb6e588c9714504a5bb5d9a064f5c4be73e9d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Load Balancert. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 

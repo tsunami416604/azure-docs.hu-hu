@@ -156,6 +156,8 @@
               href: azure-stack-backup-enable-backup-powershell.md
             - name: Készítsen biztonsági másolatot az Azure-verem
               href: azure-stack-backup-back-up-azure-stack.md
+            - name: Biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem
+              href: ..\backup\backup-mabs-files-applications-azure-stack.md?toc=%2fazure%2fazure-stack%2ftoc.json
             - name: Végzetes adatvesztés helyreállítása
               href: azure-stack-backup-recover-data.md
             - name: Ajánlott biztonsági eljárások
@@ -245,6 +247,8 @@
               href: azure-stack-app-service-configure-deployment-sources.md
             - name: App Service az Azure-verem update 1 kibocsátási megjegyzései
               href: azure-stack-app-service-release-notes-update-one.md
+            - name: App Service az Azure-verem update 2 kibocsátási megjegyzései
+              href: azure-stack-app-service-release-notes-update-two.md
         - name: A Marketplace feltöltése
           items:
             - name: Piactér áttekintése

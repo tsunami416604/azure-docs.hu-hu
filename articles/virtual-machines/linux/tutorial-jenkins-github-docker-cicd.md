@@ -1,6 +1,6 @@
 ---
-title: Fejlesztési folyamat létrehozása az Azure-ban a Jenkins használatával | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egy Jenkins virtuális gépet az Azure-ban, amely a GitHubról hívja le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához
+title: Oktatóanyag – Fejlesztési folyamat létrehozása az Azure-ban a Jenkins használatával | Microsoft Docs
+description: Oktatóanyag – Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre az Azure-ban egy Jenkins-alapú virtuális gépet, amely a GitHubról kéri le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0bb5db0d0569cbd8a2f5aa1651522dfd117868eb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
+
 Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automatizálásához használhat egy folyamatos integrációs és fejlesztési (CI/CD) folyamatot. Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
 
 > [!div class="checklist"]
@@ -33,10 +34,9 @@ Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automa
 > * Docker-rendszerkép létrehozása az alkalmazáshoz
 > * Annak ellenőrzése, hogy a GitHub-véglegesítések új Docker-rendszerképet hoznak létre és frissítik a futó alkalmazást
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.22-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-jenkins-instance"></a>Jenkins-példány létrehozása
 A [Linux virtuális gép testre szabása az első rendszerbetöltéskor](tutorial-automate-vm-deployment.md) című korábbi oktatóanyagból megtudhatta, hogyan automatizálható egy virtuális gép testreszabása a cloud-init használatával. Ez az oktatóanyag egy cloud-init-fájlt használ a Jenkins és a Docker egy virtuális gépre való telepítéséhez. A Jenkins egy népszerű, nyílt forráskódú automatizáló kiszolgáló, amely zökkenőmentesen integrálható az Azure-ral a folyamatos integráció (CI) és a folyamatos továbbítás (CD) érdekében. A Jenkins további oktatóanyagait itt találja: [Jenkins az Azure-központban](https://docs.microsoft.com/azure/jenkins/).

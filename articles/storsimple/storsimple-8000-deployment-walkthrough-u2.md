@@ -1,24 +1,24 @@
 ---
-title: "StorSimple 8000 sorozatú eszköz üzembe helyezése az Azure Portalon | Microsoft Docs"
-description: "Ez a cikk a 3-as vagy újabb frissítést futtató StorSimple 8000 sorozatú eszköz és a StorSimple-eszközkezelő szolgáltatás üzembe helyezésének lépéseit és ajánlott eljárásait ismerteti."
+title: StorSimple 8000 sorozatú eszköz üzembe helyezése az Azure Portalon | Microsoft Docs
+description: Ez a cikk a 3-as vagy újabb frissítést futtató StorSimple 8000 sorozatú eszköz és a StorSimple-eszközkezelő szolgáltatás üzembe helyezésének lépéseit és ajánlott eljárásait ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
 
@@ -33,7 +33,7 @@ Az oktatóanyagban szereplő információk arra a feltételezésre alapulnak, ho
 A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. Azt javasoljuk, hogy mielőtt hozzákezdene, tekintse át a konfigurációs ellenőrzőlistát. Az üzembehelyezési és konfigurációs folyamatok végrehajtása eltarthat egy ideig.
 
 > [!NOTE]
-> A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozat eszközeire érvényesek. A 7000-es sorozathoz tartozó eszközökről teljes körű információkat itt talál: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). A 7000-es sorozatra vonatkozó üzembehelyezési információkat a [StorSimple rendszer gyors üzembehelyezési útmutatójában](http://onlinehelp.storsimple.com/111_Appliance/) találja. 
+> A Microsoft Azure webhelyen közzétett StorSimple üzembehelyezési információk csak a StorSimple 8000 sorozat eszközeire érvényesek. A 7000-es sorozathoz tartozó eszközökről itt talál teljes körű információt: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). A 7000-es sorozatra vonatkozó üzembehelyezési információkat a [StorSimple rendszer gyors üzembehelyezési útmutatójában](http://onlinehelp.storsimple.com/111_Appliance/) találja. 
 
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
@@ -196,7 +196,20 @@ Ha szeretne egy azonnali manuális mentést létrehozni StorSimple-eszköze egyi
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="view-the-pinout-diagram-for-serial-cable-for-storsimple"></a>A StorSimple-höz tartozó soros kábel bekötési rajzának megtekintése
+Az alábbi bekötési rajz a StorSimple soros konzol kábeléhez használható.
+
+A képen a DB9 csatlakozóhüvely a P1, a 3,5 mm-es csatlakozó pedig a P2.
+
+![1. bekötési rajz a StorSimple soros konzol kábeléhez](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+
+A sztereó csatlakozó hegye PIN 3 RX-nek, a közepe PIN 2 TX-nek, az alapja pedig PIN 1 GND-nek minősül, ahogyan az a következő ábrán látható.
+
+![2. bekötési rajz a StorSimple soros konzol kábeléhez](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+
+
+
+## <a name="next-steps"></a>További lépések
 * [A StorSimple Cloud Appliance konfigurálása](storsimple-8000-cloud-appliance-u2.md).
 * [A StorSimple-eszközt a StorSimple-eszközkezelő szolgáltatás segítségével kezelheti.](storsimple-8000-manager-service-administration.md)
 

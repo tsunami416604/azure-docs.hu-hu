@@ -1,30 +1,30 @@
 ---
-title: "Ismerkedés az Azure Relay Hibrid-kapcsolatokkal a Node-ban | Microsoft Docs"
-description: "Node.js-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcsolatokhoz."
+title: Ismerkedés a hibrid Azure Relay-kapcsolatok websocketjeivel a Node-ban | Microsoft Docs
+description: Node.js-konzolalkalmazást hozhat létre a hibrid Azure Relay-kapcsolatok websocketjeihez.
 services: service-bus-relay
 documentationcenter: node
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Ismerkedés a hibrid Relay-kapcsolatokkal
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Ismerkedés a hibrid Relay-kapcsolatok websocketjeivel a Node-ban
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Ez az oktatóprogram bevezetést nyújt a [hibrid Azure Relay-kapcsolatok](relay-what-is-it.md#hybrid-connections) használatába, és bemutatja egy olyan ügyfélalkalmazás Node.js használatával való létrehozását, amely üzeneteket küld egy kapcsolódó figyelőalkalmazásnak. 
+Ez az oktatóanyag bevezetést nyújt a [hibrid Azure Relay-kapcsolatok](relay-what-is-it.md#hybrid-connections) Websockets funkciójának használatába, és bemutatja egy olyan ügyfélalkalmazás Node.js használatával való létrehozását, amely Websockets-üzeneteket küld egy kapcsolódó figyelőalkalmazásnak.
 
 ## <a name="what-will-be-accomplished"></a>Az oktatóanyag célja
 

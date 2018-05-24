@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatásidentitás (MSI) az Azure Active Directory felügyelete
-description: Az Azure-erőforrások Szolgáltatásidentitás felügyelt áttekintése.
+title: Mi az Azure-erőforrásokhoz készült felügyeltszolgáltatás-identitás (MSI)?
+description: Az Azure-erőforrásokhoz készült felügyeltszolgáltatás-identitás (MSI) áttekintése.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -8,107 +8,116 @@ manager: mtillman
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
+ms.component: msi
 ms.devlang: ''
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: identity
-ms.date: 12/19/2017
-ms.author: skwan
-ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.topic: overview
+ms.custom: mvc
+ms.date: 03/28/2018
+ms.author: daveba
+ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
-#  <a name="managed-service-identity-msi-for-azure-resources"></a>Szolgáltatás-identitás (MSI) felügyelt Azure-erőforrások
+#  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Mi az Azure-erőforrásokhoz készült felügyeltszolgáltatás-identitás (MSI)?
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Egy közös kérdés esetén felhőalapú alkalmazások kezelése a hitelesítő adatokat, amelyek kell lenniük a kódban való hitelesítéséhez. Fontos feladat biztosíthatja a rendszer ezen hitelesítő adatok védelmét. Ideális esetben azok soha nem jelennek meg a fejlesztői munkaállomásokon, vagy beolvasása beadja a verziókövetési rendszerrel. Az Azure Key Vault biztonságosan tárolni a hitelesítő adatokat és egyéb kulcsok és titkos lehetőséget biztosít, de a kódot kell hitelesítenie magát a Key Vault kérheti le azokat. Felügyelt szolgáltatás identitásának (MSI) teszi egyszerűbbé válik a probléma megoldásához adjon az Azure-szolgáltatások automatikusan felügyelt identitást az Azure Active Directory (Azure AD). Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, többek között a Key Vault, anélkül, hogy a hitelesítő adatok a kódban a szolgáltatással való hitelesítésre szolgáló használhatja.
+A felhőalapú alkalmazások készítésének általános kihívását jelenti azon hitelesítő adatok a kódban történő kezelése, amelyekkel az alkalmazás hitelesíti magát a felhőalapú szolgáltatásokban. A hitelesítő adatok biztonságának megőrzése fontos feladat. Ideális esetben ezek soha nem jelennek meg a fejlesztői munkaállomásokon, és a verziókövetési rendszerbe sem kerülnek be. Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
-Amikor felügyelt Szolgáltatásidentitás engedélyezi az Azure-szolgáltatások, Azure automatikusan létrehozza a szolgáltatáspéldány az identitás használják az Azure-előfizetéshez az Azure AD-bérlő.  A színfalak Azure látja el, a szolgáltatáspéldány az identitás hitelesítő adatait.  A kódot is végezze el a helyi kérelmek hozzáférési jogkivonatok lekérésére, szolgáltatások, amelyek támogatják az Azure AD-alapú hitelesítés.  Azure intézkedik működés közbeni szolgáltatáspéldány használt hitelesítő adatokat.  A szolgáltatáspéldány törlődik, ha Azure automatikusan törli azokat a hitelesítő adatok és az identitás Azure AD-ben.
+Két típusú felügyeltszolgáltatás-identitás létezik: **rendszerhez hozzárendelt** és **felhasználóhoz hozzárendelt**.
 
-Íme egy példa, felügyelt Szolgáltatásidentitás Azure virtuális gépek működését.
+- A **rendszerhez hozzárendelt identitás** közvetlenül egy Azure-beli szolgáltatáspéldányon van engedélyezve. Az engedélyezésekor az Azure létrehoz egy identitást a szolgáltatáspéldány számára a szolgáltatáspéldány előfizetése által megbízhatónak tekintett Azure AD-bérlőn. Az identitás létrehozása után a rendszer hozzárendeli a hitelesítő adatokat a szolgáltatáspéldányon. A rendszerhez hozzárendelt identitás életciklusa közvetlenül kötődik ahhoz az Azure-beli szolgáltatáspéldányhoz, amelyen engedélyezve van. A szolgáltatáspéldány törlésekor az Azure automatikusan törli a hitelesítő adatokat és az identitást az Azure AD-ben.
+- A **felhasználóhoz hozzárendelt identitás** (nyilvános előzetes verzió) különálló Azure-erőforrásként jön létre. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz. A felhasználóhoz hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányoktól, amelyekhez hozzá lettek rendelve.
 
-![Virtuális gép MSI – példa](../media/msi-vm-example.png)
+Ennek eredményeképpen a kód használhat egy rendszerhez vagy egy felhasználóhoz hozzárendelt identitást is az Azure AD-hitelesítést támogató szolgáltatások hozzáférési jogkivonatainak igényléséhez. Mindeközben az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok alkalmazásáról.
 
-1. Az Azure Resource Manager ahhoz, hogy a virtuális gép MSI üzenetet kap.
-2. Az Azure Resource Manager az Azure AD-határoz meg a virtuális gép identitásának hoz létre egy egyszerű szolgáltatást. A szolgáltatás egyszerű az előfizetés által megbízhatónak minősített Azure AD-bérlő jön létre.
-3. Az Azure Resource Manager szolgáltatás egyszerű részleteit azt állítja be az MSI-fájl a virtuális gép Virtuálisgép-bővítmény.  Ez a lépés ügyfél-azonosító és a hozzáférési jogkivonatok lekérni az Azure AD a bővítmény által használt tanúsítvány konfigurálását foglalja magában.
-4. Most, hogy a szolgáltatás egyszerű a virtuális gép ismerik fel, akkor engedélyezhetők Azure-erőforrások eléréséhez.  Például ha a kódot kell hívni az Azure Resource Manager, majd rendelne a virtuális gép szolgáltatás egyszerű szerepköralapú hozzáférés-vezérlést (RBAC) használata az Azure ad-ben a megfelelő szerepkörrel.  Ha a kódot kell hívni a Key Vault, majd meg volna hozzáférést a kódot az adott titkos kód vagy a kulcsot a Key Vault.
-5. A virtuális gépen a kód egy token kér a helyi végpont az MSI-Virtuálisgép-bővítmény által futtatott: http://localhost:50342/oauth2/token.  Az erőforrás-paraméter, amelyhez a tokent küldött a szolgáltatás. Például, ha azt szeretné, hogy a kód az Azure Resource Manager hitelesítéséhez, használhatja erőforrás =https://management.azure.com/.
-6. Az MSI Virtuálisgép-bővítmény olyan hozzáférési jogkivonatot kérhet az Azure AD a beállított ügyfél-azonosító és a tanúsítványt használja.  Az Azure AD egy JSON webes jogkivonat (JWT) hozzáférési jogkivonatot ad vissza.
-7. A kód elküldi a hozzáférési jogkivonat egy olyan szolgáltatás, amely támogatja az Azure AD authentication hívásakor.
+Az alábbiakban egy példát láthat a rendszerhez hozzárendelt identitások az Azure-beli virtuális gépeken történő használatáról:
 
-Minden Azure szolgáltatás, amely támogatja a felügyelt Szolgáltatásidentitás a saját metódusa egy hozzáférési jogkivonat beszerzése a kódot. Tekintse meg az egyes szolgáltatásokhoz, hogy megtudja, az adott metódus használatával kérje le a jogkivonatot az oktatóanyagok.
+![Virtuális gép MSI-példája](overview/msi-vm-vmextension-imds-example.png)
 
-## <a name="try-managed-service-identity"></a>Próbálja meg a felügyelt identitás
+1. Az Azure Resource Managerbe érkezik egy kérés a rendszerhez hozzárendelt identitás egy virtuális gépen történő engedélyezésére.
+2. Az Azure Resource Manager létrehoz egy szolgáltatásnevet az Azure AD-ben a virtuális gép identitásának jelölésére. A szolgáltatásnév az előfizetés által megbízhatónak tekintett Azure AD-bérlőn jön létre.
+3. Az Azure Resource Manager konfigurálja az identitást a virtuális gépen:
+    - Frissíti az Azure Instance Metadata szolgáltatás identitásvégpontját a szolgáltatásnév ügyfél-azonosítójával és tanúsítványával.
+    - Létrehozza az MSI VM-bővítményt, és hozzáadja a szolgáltatásnév ügyfél-azonosítóját és tanúsítványát. (hamarosan elavul)
+4. Most, hogy a virtuális gép rendelkezik identitással, a szolgáltatásnév-adatok használatával biztosítunk hozzáférést a virtuális gépnek az Azure-erőforrásokhoz. Például ha a kódnak meg kell hívnia az Azure Resource Managert, a virtuális gép szolgáltatásnevét hozzárendelnénk a megfelelő szerepkörhöz a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure AD-ben. Ha a kódnak meg kell hívnia a Key Vaultot, hozzáférést adnánk a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban.
+5. A virtuális gépen futó kód két végpontról kérhet le jogkivonatot, amelyek csak a virtuális gépen belülről érhetők el:
 
-Tekintse meg a felügyelt Szolgáltatásidentitás oktatóanyag megtudhatja végpontok-forgatókönyvek különböző Azure-erőforrások eléréséhez:
+    - Az Azure Instance Metadata szolgáltatás (IMDS) identitásvégpontjáról: http://169.254.169.254/metadata/identity/oauth2/token (ajánlott)
+        - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Például ha azt szeretné, hogy a kód az Azure Resource Managerben végezze el a hitelesítést, használja a resource=https://management.azure.com/ értéket.
+        - Az API version (API-verzió) paraméter adja meg az IMDS-verziót – használja az api-version=2018-02-01, vagy egy nagyobb értéket.
+    - Az MSI VM-bővítmény végpontjáról: http://localhost:50342/oauth2/token (hamarosan elavul)
+        - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Például ha azt szeretné, hogy a kód az Azure Resource Managerben végezze el a hitelesítést, használja a resource=https://management.azure.com/ értéket.
+
+6. A rendszer egy hívást intéz az Azure AD-re, és egy hozzáférési jogkivonatot igényel az 5. lépésben leírtak szerint, a 3. lépésben konfigurált ügyfél-azonosító és tanúsítvány használatával. Az Azure AD egy JSON Web Token (JWT) formátumú hozzáférési jogkivonatot ad vissza.
+7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
+
+Ugyanennek az ábrának az alapján az alábbiakban egy példát láthat a felhasználóhoz hozzárendelt MSI-identitások az Azure-beli virtuális gépeken történő használatáról.
+
+1. Az Azure Resource Managerbe érkezik egy kérés egy felhasználóhoz hozzárendelt identitás létrehozására.
+2. Az Azure Resource Manager létrehoz egy szolgáltatásnevet az Azure AD-ben a felhasználóhoz hozzárendelt identitás jelölésére. A szolgáltatásnév az előfizetés által megbízhatónak tekintett Azure AD-bérlőn jön létre.
+3. Az Azure Resource Managerbe érkezik egy kérés a felhasználóhoz hozzárendelt identitás egy virtuális gépen történő konfigurálására:
+    - Frissíti az Azure Instance Metadata szolgáltatás identitásvégpontját a felhasználóhoz hozzárendelt identitás szolgáltatásnevének ügyfél-azonosítójával és tanúsítványával.
+    - Létrehozza az MSI VM-bővítményt, és hozzáadja a felhasználóhoz hozzárendelt identitás szolgáltatásnevének ügyfél-azonosítóját és tanúsítványát (hamarosan elavul).
+4. Most, hogy a felhasználóhoz hozzárendelt identitás létrejött, a szolgáltatásnevének adataival biztosítunk hozzáférést számára az Azure-erőforrásokhoz. Például ha a kódnak meg kell hívnia az Azure Resource Managert, a felhasználóhoz hozzárendelt identitás szolgáltatásnevét hozzárendelnénk a megfelelő szerepkörhöz a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az Azure AD-ben. Ha a kódnak meg kell hívnia a Key Vaultot, hozzáférést adnánk a kódnak az adott titkos kódhoz vagy kulcshoz a Key Vaultban. Megjegyzés: Ez a lépés a 3. lépés előtt is végrehajtható.
+5. A virtuális gépen futó kód két végpontról kérhet le jogkivonatot, amelyek csak a virtuális gépen belülről érhetők el:
+
+    - Az Azure Instance Metadata szolgáltatás (IMDS) identitásvégpontjáról: http://169.254.169.254/metadata/identity/oauth2/token (ajánlott)
+        - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Például ha azt szeretné, hogy a kód az Azure Resource Managerben végezze el a hitelesítést, használja a resource=https://management.azure.com/ értéket.
+        - A Client ID (ügyfél-azonosító) paraméter határozza meg azt az identitást, amely számára a hozzáférési jogkivonat kérvényezve lett. Ez akkor szükséges, ha egyazon virtuális gépen több felhasználóhoz hozzárendelt identitás is létezik.
+        - Az API version (API-verzió) paraméter adja meg az IMDS-verziót – használja az api-version=2018-02-01, vagy egy nagyobb értéket.
+
+    - Az MSI VM-bővítmény végpontjáról: http://localhost:50342/oauth2/token (hamarosan elavul)
+        - A resource (erőforrás) paraméter határozza meg azt a szolgáltatást, amelynek a jogkivonatot meg kell küldeni. Például ha azt szeretné, hogy a kód az Azure Resource Managerben végezze el a hitelesítést, használja a resource=https://management.azure.com/ értéket.
+        - A Client ID (ügyfél-azonosító) paraméter határozza meg azt az identitást, amely számára a hozzáférési jogkivonat kérvényezve lett. Ez akkor szükséges, ha egyazon virtuális gépen több felhasználóhoz hozzárendelt identitás is létezik.
+6. A rendszer egy hívást intéz az Azure AD-re, és egy hozzáférési jogkivonatot igényel az 5. lépésben leírtak szerint, a 3. lépésben konfigurált ügyfél-azonosító és tanúsítvány használatával. Az Azure AD egy JSON Web Token (JWT) formátumú hozzáférési jogkivonatot ad vissza.
+7. A kód elküldi a hozzáférési jogkivonatot egy hívásban egy olyan szolgáltatásnak, amely támogatja az Azure AD-hitelesítést.
+     
+## <a name="try-managed-service-identity"></a>A felügyeltszolgáltatás-identitások kipróbálása
+
+A felügyeltszolgáltatás-identitásokkal (MSI) foglalkozó különféle oktatóanyagokból megismerheti a különféle Azure-erőforrások elérését tárgyaló, végpontok közötti forgatókönyveket:
 <br><br>
-| Az MSI-kompatibilis erőforrás | A webinárium témái: |
+| Az MSI-kompatibilis forrásanyagból | Az alábbiak végrehajtásának módját ismerheti meg |
 | ------- | -------- |
-| Azure virtuális gép (Windows) | [Access Azure Data Lake Store és egy Windows virtuális gép felügyelt identitás](tutorial-windows-vm-access-datalake.md) |
-|                    | [Hozzáférés az Azure erőforrás-kezelő és egy Windows virtuális gép felügyelt identitás](tutorial-windows-vm-access-arm.md) |
-|                    | [Hozzáférés az Azure SQL és egy Windows virtuális gép felügyelt identitás](tutorial-windows-vm-access-sql.md) |
-|                    | [Access Azure Storage keresztül a hozzáférési kulcsot a Windows virtuális gép által felügyelt-szolgáltatási identitás](tutorial-windows-vm-access-storage.md) |
-|                    | [Hozzáférés az Azure tárolási és egy Windows virtuális gép SAS keresztül felügyelt identitás](tutorial-windows-vm-access-storage-sas.md) |
-|                    | [A Windows virtuális gép felügyelt Szolgáltatásidentitás és az Azure Key Vault nem Azure AD erőforrás eléréséhez](tutorial-windows-vm-access-nonaad.md) |
-| Azure virtuális gép (Linux)   | [Az Azure Data Lake Store Linux virtuális gép felügyelt identitás](tutorial-linux-vm-access-datalake.md) |
-|                    | [Hozzáférés az Azure erőforrás-kezelő Linux virtuális gép felügyelt identitás](tutorial-linux-vm-access-arm.md) |
-|                    | [Access Azure Storage segítségével a hozzáférési kulcsot a Linux virtuális gép felügyelt Szolgáltatásidentitás](tutorial-linux-vm-access-storage.md) |
-|                    | [Hozzáférés az Azure tárolási Linux virtuális gép SAS keresztül felügyelt identitás](tutorial-linux-vm-access-storage-sas.md) |
-|                    | [A Linux virtuális gép felügyelt Szolgáltatásidentitás és az Azure Key Vault nem Azure AD erőforrás eléréséhez](tutorial-linux-vm-access-nonaad.md) |
-| Azure App Service  | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
-| Azure Functions    | [Az Azure App Service vagy az Azure Functions felügyelt identitás használatára](/azure/app-service/app-service-managed-service-identity) |
-| Azure Service Bus  | [Az Azure Service Bus felügyelt identitás használatára](../../service-bus-messaging/service-bus-managed-service-identity.md) |
-| Azure Event Hubs   | [Az Azure Event Hubs felügyelt identitás használatára](../../event-hubs/event-hubs-managed-service-identity.md) |
+| Azure-beli virtuális gép (Windows) | [Az Azure Data Lake Store elérése Windows VM-beli felügyeltszolgáltatás-identitással](tutorial-windows-vm-access-datalake.md) |
+|                    | [Az Azure Resource Manager elérése Windows VM-beli felügyeltszolgáltatás-identitással](tutorial-windows-vm-access-arm.md) |
+|                    | [Az Azure SQL elérése Windows VM-beli felügyeltszolgáltatás-identitással](tutorial-windows-vm-access-sql.md) |
+|                    | [Az Azure Storage elérése hozzáférési kulccsal Windows VM-beli felügyeltszolgáltatás-identitással](tutorial-windows-vm-access-storage.md) |
+|                    | [Az Azure Storage elérése SAS-azonosítással Windows VM-beli felügyeltszolgáltatás-identitással](tutorial-windows-vm-access-storage-sas.md) |
+|                    | [Nem Azure AD-erőforrások elérése Windows VM-beli felügyeltszolgáltatás-identitással és az Azure Key Vaulttal](tutorial-windows-vm-access-nonaad.md) |
+| Azure-beli virtuális gép (Linux)   | [Az Azure Data Lake Store elérése Linux VM-beli felügyeltszolgáltatás-identitással](tutorial-linux-vm-access-datalake.md) |
+|                    | [Az Azure Resource Manager elérése Linux VM-beli felügyeltszolgáltatás-identitással](tutorial-linux-vm-access-arm.md) |
+|                    | [Az Azure Storage elérése hozzáférési kulccsal Linux VM-beli felügyeltszolgáltatás-identitással](tutorial-linux-vm-access-storage.md) |
+|                    | [Az Azure Storage elérése SAS-azonosítással Linux VM-beli felügyeltszolgáltatás-identitással](tutorial-linux-vm-access-storage-sas.md) |
+|                    | [Nem Azure AD-erőforrások elérése Linux VM-beli felügyeltszolgáltatás-identitással és az Azure Key Vaulttal](tutorial-linux-vm-access-nonaad.md) |
+| Azure App Service  | [Felügyeltszolgáltatás-identitás használata az Azure App Service vagy az Azure Functions szolgáltatással](/azure/app-service/app-service-managed-service-identity) |
+| Azure Functions    | [Felügyeltszolgáltatás-identitás használata az Azure App Service vagy az Azure Functions szolgáltatással](/azure/app-service/app-service-managed-service-identity) |
+| Azure Service Bus  | [Felügyeltszolgáltatás-identitás használata az Azure Service Bus szolgáltatással](../../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure Event Hubs   | [Felügyeltszolgáltatás-identitás használata az Azure Event Hubs szolgáltatással](../../event-hubs/event-hubs-managed-service-identity.md) |
 
-## <a name="which-azure-services-support-managed-service-identity"></a>Mely Azure-szolgáltatások által felügyelt szolgáltatás identitás támogatásának?
+## <a name="which-azure-services-support-managed-service-identity"></a>Mely Azure-szolgáltatások támogatják a felügyeltszolgáltatás-identitások használatát?
 
-Azure-szolgáltatásokat, amely támogatja a felügyelt Szolgáltatásidentitás MSI használhatja az Azure AD-alapú hitelesítés támogató szolgáltatások felé történő hitelesítésre.  Végezzük MSI és az Azure AD hitelesítési integrálása az Azure között.  Ellenőrizze gyakran frissítéseit.
+A felügyelt identitások használatával hitelesítést végezhet az Azure AD-hitelesítést támogató szolgáltatásokban. A felügyeltszolgáltatás-identitásokat támogató szolgáltatások listájáért lásd a következő cikket:
+- [A Managed Service Identityt (MSI) támogató szolgáltatások](services-support-msi.md)
 
-### <a name="azure-services-that-support-managed-service-identity"></a>Azure-szolgáltatásokat, amely támogatja a felügyelt identitás
+## <a name="how-much-does-managed-service-identity-cost"></a>Mennyibe kerül a felügyeltszolgáltatás-identitás használata?
 
-Az Azure-szolgáltatásokat támogatja a felügyelt szolgáltatás identitást.
-
-| Szolgáltatás | status | Dátum | Konfigurálás | A jogkivonat beolvasása |
-| ------- | ------ | ---- | --------- | ----------- |
-| Azure-alapú virtuális gépek | Előzetes verzió | 2017. szeptember | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Az Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash/Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
-| Azure App Service | Előzetes verzió | 2017. szeptember | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-sablon](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Az Azure Functions<sup>1</sup> | Előzetes verzió | 2017. szeptember | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-sablon](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Data Factory V2 | Előzetes verzió | 2017. november | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-
-<sup>1</sup> azure Functions támogatása lehetővé teszi, hogy felhasználói identitás használatára, de eseményindítók és kötések előfordulhat, hogy továbbra is kapcsolati karakterláncokat.
-
-### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-szolgáltatások, a támogatás az Azure AD-hitelesítés
-
-A következő szolgáltatásokat támogatja az Azure AD-alapú hitelesítés, és felügyelt Szolgáltatásidentitás használó ügyfél szolgáltatással lettek tesztelve.
-
-| Szolgáltatás | Erőforrás-azonosító | status | Dátum | Hozzáférés hozzárendelése |
-| ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com | Elérhető | 2017. szeptember | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
-| Azure Key Vault | https://vault.azure.net | Elérhető | 2017. szeptember | |
-| Azure Data Lake | https://datalake.azure.net | Elérhető | 2017. szeptember | |
-| Azure SQL | https://database.windows.net | Elérhető | 2017. október | |
-| Azure Event Hubs | https://eventhubs.azure.net | Elérhető | 2017. december | |
-| Azure Service Bus | https://servicebus.azure.net | Elérhető | 2017. december | |
-
-## <a name="how-much-does-managed-service-identity-cost"></a>Milyen mértékű nem felügyelt Szolgáltatásidentitás költség?
-
-Felügyelt Szolgáltatásidentitás tartalmaz Azure Active Directory ingyenes, az Azure-előfizetések az alapértelmezett.  További költség nélkül felügyelt-identitás van.
+A felügyeltszolgáltatás-identitások az Azure Active Directoryval ingyenesen használhatók, ami alapértelmezés szerint az Azure-előfizetések részét képezi. A felügyeltszolgáltatás-identitások használata nem jár többletköltséggel.
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
 Szívesen meghallgatnánk a véleményét!
 
-* Kérdései vannak az útmutató a Stack Overflow a címkével ellátott [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi).
-* Kérelmek szolgáltatás, vagy visszajelzés a [a fejlesztők számára az Azure AD-visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences).
+* Tegye fel a használatra vonatkozó kérdéseit a Stack Overflow oldalon az [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi) címke használatával.
+* Az új funkciókra vonatkozó kéréseit vagy visszajelzéseit az [Azure AD fejlesztői visszajelzésekkel kapcsolatos fórumán](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences) küldheti be.
 
+## <a name="next-steps"></a>További lépések
 
+Ismerkedjen meg az Azure felügyeltszolgáltatás-identitásokkal a következő rövid útmutatók segítségével:
 
-
-
-
+* [A Resource Manager elérése Windows VM-beli felügyeltszolgáltatás-identitással (MSI) – Windows VM](tutorial-windows-vm-access-arm.md)
+* [Az Azure Resource Manager elérése Linux VM-beli felügyeltszolgáltatás-identitással (MSI) – Linux VM](tutorial-linux-vm-access-arm.md)

@@ -5,24 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 05/16/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fa9c27457b1da4d233aaea2a6621af9f5d01149d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 55ac7e055c972a9b18ef374ac8498b418c5d56af
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/17/2018
 ---
-|  | **Point-to-Site** | **Site-to-Site** | **ExpressRoute** |
+|  | **Pont–hely kapcsolat** | **Helyek közötti kapcsolat** | **ExpressRoute** |
 | --- | --- | --- | --- |
-| **Azure támogatott szolgáltatások** |Cloud Services és Virtual Machines |Cloud Services és Virtual Machines |[Szolgáltatáslista](../articles/expressroute/expressroute-faqs.md#supported-services) |
-| **Jellemző sávszélességek** |Jellemzően < 100 mbps (összesen) |Jellemzően < 1 GB/s összesítés |50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1 Gbps, 2 Gbps, 5 Gbps, 10 Gbps |
-| **Támogatott protokollok** |Secure Sockets Tunneling Protocol (SSTP) |IPsec |Közvetlen kapcsolat VLAN-okon, NSP-k VPN technológiáin keresztül (MPLS, VPLS,...) |
-| **Útválasztás** |RouteBased (dinamikus) |Támogatott PolicyBased (statikus útválasztás) és RouteBased (dinamikus útválasztási VPN) |BGP |
+| **Az Azure által támogatott szolgáltatások** |Cloud Services és Virtual Machines |Cloud Services és Virtual Machines |[Szolgáltatáslista](../articles/expressroute/expressroute-faqs.md#supported-services) |
+| **Jellemző sávszélességek** |Az átjáró termékváltozata alapján |Jellemzően < 1 Gb/s összesített |50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1 Gbps, 2 Gbps, 5 Gbps, 10 Gbps |
+| **Támogatott protokollok** |Secure Sockets Tunneling Protocol (SSTP) és IPsec |IPsec |Közvetlen kapcsolat VLAN-okon, NSP-k VPN technológiáin keresztül (MPLS, VPLS,...) |
+| **Útválasztás** |Útvonalalapú (dinamikus) |Támogatjuk a szabályzatalapú (statikus útválasztás) és az útvonalalapú (dinamikus útválasztási VPN) útválasztást |BGP |
 | **Kapcsolat rugalmassága** |aktív-passzív |aktív-passzív vagy aktív-aktív |aktív-aktív |
 | **Tipikus használati eset** |Prototípus-készítés, fejlesztői / tesztelői / laboratóriumi forgatókönyvek felhőszolgáltatásokhoz és virtuális gépekhez |Fejlesztői / tesztelői / laboratóriumi forgatókönyvek és kis léptékű termelési számítási feladatok felhőszolgáltatásokhoz és virtuális gépekhez |Hozzáférés az összes Azure-szolgáltatáshoz (ellenőrzött lista), nagyvállalati szintű és kritikus fontosságú számítási feladatokhoz, biztonsági mentésekhez, big data adatokhoz és az Azure-hoz DR-webhelyként |
 | **SLA** |[SLA](https://azure.microsoft.com/support/legal/sla/) |[SLA](https://azure.microsoft.com/support/legal/sla/) |[SLA](https://azure.microsoft.com/support/legal/sla/) |
 | **Díjszabás** |[Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[Díjszabás](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[Díjszabás](https://azure.microsoft.com/pricing/details/expressroute/) |
-| **Technikai dokumentáció** |[A VPN Gateway dokumentációja](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[A VPN Gateway dokumentációja](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[Az ExpressRoute dokumentációja](https://azure.microsoft.com/documentation/services/expressroute/) |
+| **Műszaki dokumentáció** |[A VPN Gateway dokumentációja](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[A VPN Gateway dokumentációja](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[Az ExpressRoute dokumentációja](https://azure.microsoft.com/documentation/services/expressroute/) |
 | **GYIK** |[VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN Gateway – gyakori kérdések](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute – Gyakori kérdések](../articles/expressroute/expressroute-faqs.md) |

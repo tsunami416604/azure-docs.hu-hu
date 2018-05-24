@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>1. forgatókönyv: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
 Az Azure-ba való migrálás lehetőségeinek feltérképezése során a Contoso vállalat műszaki és pénzügyi értékeléséket szeretne végezni annak felmérésére, hogy a helyszíni számítási feladataik alkalmasak-e a felhőbe való migrálásra. Különösképpen a gépek és adatbázisok kompatibilitását szeretnék felmérni, valamint felbecsülni erőforrásaik kapacitásait és költségeit az Azure-ban való futtatás esetén.
 
-Hogy közelről is megismerhessék és jobban megérthessék az érintett technológiákat, először egy kisebb helyszíni utazási alkalmazást értékelnek ki és migrálnak. Ez egy kétszintű alkalmazás, amely egy virtuális gépen futó webalkalmazásból és egy másik virtuális gépen futó SQL Server-adatbázisból áll. Az alkalmazás a VMware-ben üzemel, a környezetet pedig a vCenter Server kezeli. A Data Migration Assistant (DMA) és az Azure Migrate szolgáltatás használatával végzik az értékelést.
+Hogy közelről is megismerhessék és jobban megérthessék az érintett technológiákat, először egy kisebb helyszíni utazási alkalmazást értékelnek ki és migrálnak. Ez egy kétszintű alkalmazás, amely egy virtuális gépen futó webalkalmazásból és egy másik virtuális gépen futó SQL Server-adatbázisból áll. Az alkalmazás a VMware-ben üzemel, a környezetet pedig a vCenter Server kezeli. A Data Migration Assistant (DMA) és az Azure Migrate szolgáltatás használatával végzik az értékelést. Ha ki szeretné próbálni a forgatókönyvet a szemléltetésre használt utazási alkalmazással, letöltheti a [GitHubról](https://github.com/Microsoft/SmartHotel360).
 
 **Technológia** | **Leírás** | **Költségek**
 --- | --- | ---
@@ -33,11 +33,11 @@ Ebben a forgatókönyvben a DMA letöltésével és futtatásával értékeljük
 
 ## <a name="architecture"></a>Architektúra
 
-Ebben a forgatókönyvben a következőket állítjuk be: 
 
- ![Migrálásfelmérési architektúra](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
+![Migrálásfelmérési architektúra](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
 
 Ebben a forgatókönyvben:
+- A Contoso egy kitalált név, amely egy tipikus nagyvállalatot jelöl. A Contoso értékelni és migrálni kívánja a kétszintű helyszíni utazási alkalmazását.
 - A Contoso egy helyszíni tartományvezérlővel (**contosodc1**) ellátott helyszíni adatközponttal (**contoso-datacenter**) rendelkezik.
 - A belső utazási alkalmazás két szintre van osztva két virtuális gépre (**WEBVM** és **SQLVM**), és a **contosohost1.contoso.com** VMware ESXi-gazdagépen található.
 - A VMware-környezetet egy virtuális gépen futó vCenter Server (**vcenter.contoso.com**) felügyeli.
@@ -489,7 +489,7 @@ Ebben a forgatókönyvben:
 
 ## <a name="next-steps"></a>További lépések
 
-Folytassuk a következő forgatókönyvvel, amelyben a helyszíni virtuális gépeket migráljuk átemeléses módszerrel az Azure-ba.
+Folytassuk a következő forgatókönyvvel, amelyben a helyszíni virtuális gépeket és az adatbázist [migráljuk átemeléses módszerrel](migrate-scenarios-lift-and-shift.md) az Azure-ba.
 
 
 

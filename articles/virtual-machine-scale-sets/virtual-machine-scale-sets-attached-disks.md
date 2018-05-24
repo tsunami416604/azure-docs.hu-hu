@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: ec11a2d66530129fb61d97681e6882b887c8654c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-beli virtuálisgép-méretezési csoportok és csatlakoztatott adatlemezek
 A rendelkezésre álló tárterület kiterjesztése érdekében az Azure-beli [virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets/) támogatják a csatlakoztatott adatlemezekkel rendelkező virtuálisgép-példányokat. Adatlemezeket a méretezési csoport létrehozásakor, vagy egy már létező méretezési csoporthoz is hozzáadhat.
@@ -91,21 +91,12 @@ Ha Linux-fürtön szeretné automatikusan előkészíteni az adatlemez(eke)t, ad
 ```
 
 
-## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Adatokkal előre feltöltött adatlemezek hozzáadása már létező méretezési csoporthoz 
-> Amikor lemezeket ad hozzá egy már létező méretezésicsoport-modellhez, az elvárt működésnek megfelelően a lemezek minden esetben üresen jönnek létre. Ez a forgatókönyv a méretezési csoport által létrehozott új példányokra is vonatkozik. Ennek az oka, hogy a méretezési csoport definíciójában üres adatlemez van meghatározva. Ha adatokkal előre feltöltött adatlemezeket szeretne létrehozni egy meglévő méretezésicsoport-modellhez, az alábbi két lehetőség közül választhat:
-
-* Átmásolhatja a 0. virtuálisgép-példány adatait a többi virtuális gépre egy egyéni szkript futtatásával.
-* Létrehozhat egy felügyelt rendszerképet, amely az operációs rendszer adatai mellett az adatlemezt is tartalmazza (a szükséges adatokkal), és létrehozhat egy új méretezési csoportot ezzel a rendszerképpel. Így minden újonnan létrehozott virtuális gép rendelkezik egy adatlemezzel, amely a méretezési csoport definíciójában van megadva. Mivel a definíció egy olyan rendszerképre hivatkozik, amely tartalmaz egy testre szabott adatokkal rendelkező adatlemezt, a méretezési csoportban lévő összes virtuális gép tartalmazza ezeket a módosításokat.
-
-> Az egyéni rendszerkép létrehozásának lépéseit itt találja: [Create a managed image of a generalized VM in Azure](/azure/virtual-machines/windows/capture-image-resource/) (Általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban). 
-
-> A felhasználónak rögzítenie kell a szükséges adatokat tartalmazó 0. virtuálisgép-példányt, majd ezt a virtuális merevlemezt kell használnia a rendszerkép definíciójában.
+## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Adatokkal előre feltöltött adatlemezek hozzáadása már létező méretezési csoporthoz
+A méretezésicsoport-modellben megadott adatlemezek mindig üresek. Csatolhat azonban meglévő adatlemezt egy méretezési csoport meghatározott virtuális gépéhez. Ez a funkció jelenleg előzetes verziójú a [githubon](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk) elérhető példákkal. Ha szeretne adatokat propagálni a méretezési csoportban lévő összes virtuális gép között, akkor duplikálhatja az adatlemezt, és csatolhatja a méretezési csoport valamennyi virtuális gépéhez, létrehozhat egy egyéni rendszerképet, amely tartalmazza az adatokat, és terjesztheti a méretezési csoportot erről az egyéni rendszerképről, vagy használhatja az Azure Filest vagy más hasonló adattárat.
 
 
 ## <a name="additional-notes"></a>További megjegyzések
 Az Azure Managed Disks, valamint a csatlakoztatott adatlemezzel rendelkező méretezési csoportok támogatása elérhető a Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) és újabb verzióiban.
-
-A csatlakoztatott lemezek méretezési csoportok esetében való támogatásának kezdeti implementációjában nincs lehetőség adatlemezek csatlakoztatására, vagy azok eltávolítására a méretezési csoportokba tartozó különálló virtuális gépek esetében.
 
 Az Azure Portal kezdetben csak korlátozott támogatást biztosít a méretezési csoportok csatlakoztatott adatlemezei számára. A követelményektől függően Azure-sablonok, a parancssori felület, a PowerShell, SDK-k és a REST API használatával is kezelheti a csatlakoztatott lemezeket.
 

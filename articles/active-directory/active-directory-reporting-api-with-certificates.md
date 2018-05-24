@@ -1,46 +1,60 @@
 ---
-title: "Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával | Microsoft Docs"
-description: "Ismerteti, hogy hogyan kérhetők le adatok címtárakból felhasználói beavatkozás nélkül az Azure AD Reporting API és tanúsítványalapú hitelesítés használatával."
+title: Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával | Microsoft Docs
+description: Ismerteti, hogy hogyan kérhetők le adatok címtárakból felhasználói beavatkozás nélkül az Azure AD Reporting API és tanúsítványalapú hitelesítés használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ramical
 writer: v-lorisc
 manager: kannar
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/08/2017
+ms.date: 05/07/2018
 ms.author: ramical
-ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 54e661284c539b835089e858ba7b5e0016e89a83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Adatok lekérése az Azure AD Reporting API és tanúsítványok használatával
-Ez a cikk azt ismerteti, hogy hogyan kérhetők le adatok címtárakból felhasználói beavatkozás nélkül az Azure AD Reporting API és tanúsítványalapú hitelesítés használatával. 
+# <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával
 
-## <a name="use-the-azure-ad-reporting-api"></a>Az Azure AD Reporting API használata 
-Az Azure AD Reporting API megköveteli a következő lépések elvégzését:
- *  Az előfeltételek telepítése
- *  A tanúsítvány beállítása az appban
- *  Hozzáférési jogkivonat lekérése
- *  A Graph API meghívása a hozzáférési jogkivonattal
+Az [Azure Active Directory (Azure AD) Reporting API-k](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) REST-alapú API-kon keresztül biztosítják az adatok szoftveres elérését. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat.
+
+Az Azure AD Reporting API felhasználói beavatkozás nélküli lekéréséhez konfigurálja a tanúsítványhasználatot.
+
+A cikk tartalma:
+
+- Ismerteti, hogyan férhet hozzá az Azure AD Reporting API-hoz tanúsítványok használatával.
+- A cikk feltételezi, hogy [rendelkezik az Azure Active Directory Reporting API-hoz való hozzáférés előfeltételeivel](active-directory-reporting-api-prerequisites-azure-portal.md). 
+
+
+A Reporting API tanúsítványokkal történő eléréséhez a következőkre lesz szüksége:
+
+1. Az előfeltételek telepítése
+2. A tanúsítvány beállítása az appban 
+3. Engedélyek megadása
+4. Hozzáférési jogkivonat lekérése
+
+
+
 
 További információ a forráskódról: [A Report API modul használata](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils). 
 
-### <a name="install-prerequisites"></a>Az előfeltételek telepítése
+## <a name="install-prerequisites"></a>Az előfeltételek telepítése
+
 Előzőleg telepítenie kell az Azure AD PowerShell V2-t és az AzureADUtils modult.
 
 1. Az Azure AD PowerShell V2-t az [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md) webhelyen található utasításokat követve töltheti le és telepítheti.
+
 2. Az Azure AD Utils modult az [AzureAD/azure-activedirectory-powershell](https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1) webhelyről töltheti le. 
   Ez a modul számos segédprogramként használható parancsmagot biztosít, többek között:
-   * a Nugetet használó ADAL legújabb verzióját,
-   * a felhasználó, alkalmazáskulcsok és tanúsítványok jogkivonatainak elérését az ADAL használatával,
-   * a lapokra bontott eredményeket kezelő Graph API-t.
+    - a Nugetet használó ADAL legújabb verzióját,
+    - a felhasználó, alkalmazáskulcsok és tanúsítványok jogkivonatainak elérését az ADAL használatával,
+    - a lapokra bontott eredményeket kezelő Graph API-t.
 
 **Az Azure AD Utils modul telepítése:**
 
@@ -52,8 +66,11 @@ A munkamenetnek ehhez hasonlóan kell kinéznie:
 
   ![Windows PowerShell](./media/active-directory-report-api-with-certificates/windows-powershell.png)
 
-### <a name="set-the-certificate-in-your-app"></a>A tanúsítvány beállítása az appban
-1. Ha már van egy appja, kérje le az objektumazonosítóját az Azure Portalról. 
+## <a name="set-the-certificate-in-your-app"></a>A tanúsítvány beállítása az appban
+
+**A tanúsítvány beállítása az alkalmazásban:**
+
+1. [Szerezze be az alkalmazás objektumazonosítóját](active-directory-reporting-api-prerequisites-azure-portal.md#get-your-applications-client-id) az Azure Portalról. 
 
   ![Azure Portal](./media/active-directory-report-api-with-certificates/azure-portal.png)
 
@@ -70,9 +87,9 @@ A munkamenetnek ehhez hasonlóan kell kinéznie:
 
   ![Azure Portal](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
   
-### <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
+## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
-Hozzáférési jogkivonat lekéréséhez használja az AzureADUtils Get-AzureADGraphAPIAccessTokenFromCert parancsmagját. 
+Hozzáférési jogkivonat lekéréséhez használja az AzureADUtils **Get-AzureADGraphAPIAccessTokenFromCert** parancsmagját. 
 
 >[!NOTE]
 >Az előző szakaszban használt objektumazonosító helyett az alkalmazásazonosítót kell használnia.
@@ -80,16 +97,20 @@ Hozzáférési jogkivonat lekéréséhez használja az AzureADUtils Get-AzureADG
 
  ![Azure Portal](./media/active-directory-report-api-with-certificates/application-id.png)
 
-### <a name="use-the-access-token-to-call-the-graph-api"></a>A Graph API meghívása a hozzáférési jogkivonattal
+## <a name="use-the-access-token-to-call-the-graph-api"></a>A Graph API meghívása a hozzáférési jogkivonattal
 
-Most létrehozhatja a szkriptet. Az alábbi példában az AzureADUtils Invoke-AzureADGraphAPIQuery parancsmagját használjuk. Ez a parancsmag kezeli a többlapos eredményeket, majd elküldi őket a PowerShell-folyamatba. 
+Most létrehozhatja a szkriptet. Az alábbi példában az AzureADUtils **Invoke-AzureADGraphAPIQuery** parancsmagját használjuk. Ez a parancsmag kezeli a többlapos eredményeket, majd elküldi őket a PowerShell-folyamatba. 
 
  ![Azure Portal](./media/active-directory-report-api-with-certificates/script-completed.png)
 
 Most már exportálhatja az eredményeket egy CSV-fájlba, és mentheti egy SIEM-rendszerbe. A szkriptet be is csomagolhatja egy ütemezett feladatba az Azure AD-adatok bérlőtől való időszakos lekérésére úgy is, hogy nem kell a forráskódban tárolnia az alkalmazáskulcsokat. 
 
-## <a name="next-steps"></a>Következő lépések
-[Az Azure-identitáskezelés alapjai](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)<br>
+## <a name="next-steps"></a>További lépések
+
+- [Ismerkedés a Reporting API-k működésével](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [Saját megoldás létrehozása](active-directory-reporting-api-getting-started-azure-portal.md#customize)
+
 
 
 

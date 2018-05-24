@@ -1,6 +1,6 @@
 ---
-title: Azure-beli Linux rendszerű virtuális gépek biztonsági mentése | Microsoft Docs
-description: Linux rendszerű virtuális gépek védelme az Azure Backup használatával készített biztonsági mentésekkel.
+title: Oktatóanyag – Linux rendszerű virtuális gépek biztonsági mentése az Azure Portalon | Microsoft Docs
+description: Ebből az oktatóanyagból elsajátíthatja, hogyan védheti a Linux rendszerű virtuális gépeket az Azure Portal használatával az Azure Backup szolgáltatással.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4bd532a570a978715ba61880047f3a7e49b446ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="back-up-linux--virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek biztonsági mentése az Azure-ban
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
 Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolt helyreállítási pontokat hoz létre. Helyreállítási pontról történő visszaállításkor visszaállíthatja a teljes virtuális gépet, vagy csak bizonyos fájlokat. Ez a cikk azt ismerteti, hogyan állíthat vissza egy fájlt egy nginxet futtató Linux rendszerű virtuális gépre. Ha még nem rendelkezik virtuális géppel, a [linuxos rövid útmutatóval](quick-create-cli.md) létrehozhat egyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -30,8 +30,6 @@ Adatai védelme érdekében érdemes rendszeres időközönként biztonság ment
 > * Biztonsági másolat készítése egy virtuális gépről
 > * Napi biztonsági mentés ütemezése
 > * Fájl visszaállítása biztonsági másolatból
-
-
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
@@ -43,7 +41,7 @@ Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, é
 
 
 ## <a name="create-a-backup"></a>Biztonsági mentés létrehozása
-Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery Services-tárolóba. 
+Hozzon létre ütemezett napi biztonsági másolatot egy Recovery Services-tárolóba:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
@@ -54,7 +52,7 @@ Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery S
 7. A **Biztonsági mentés engedélyezése** panelen kattintson a **Biztonsági mentés engedélyezése** elemre. Ez létrehoz egy napi biztonsági mentést az alapértelmezett ütemezés alapján.
 10. Az első helyreállítási pont létrehozásához a **Biztonsági mentés** panelen kattintson a **Biztonsági mentés most** elemre.
 11. A **Biztonsági mentés most** panelen kattintson a naptár ikonra, használja a naptárvezérlőt annak kiválasztására, hogy meddig kívánja megőrizni a helyreállítási pontot, majd kattintson a **Biztonsági mentés** elemre.
-12. A virtuális géphez tartozó **Biztonsági mentés** panelen látni fogja a kész helyreállítási pontok számát.
+12. A virtuális géphez tartozó **Biztonsági másolat** panelen látni fogja a kész helyreállítási pontok számát.
 
     ![Helyreállítási pontok](./media/tutorial-backup-vms/backup-complete.png)
 

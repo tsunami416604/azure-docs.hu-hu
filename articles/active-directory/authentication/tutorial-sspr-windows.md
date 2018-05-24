@@ -2,35 +2,29 @@
 title: Azure AD SSPR a Windows 10 bejelentkezési képernyőjéről | Microsoft Docs
 description: A Windows 10 bejelentkezési képernyő Azure AD-jelszóvisszaállítási és „Elfelejtettem a PIN-kódom” funkcióinak konfigurálása
 services: active-directory
-keywords: ''
-documentationcenter: ''
+ms.service: active-directory
+ms.component: authentication
+ms.topic: get-started-article
+ms.date: 04/27/2018
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: ''
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/11/2018
-ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: a85cb6aea1027d657d38007a397321de10e16d07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-jelszó visszaállítása a bejelentkezési képernyőről
 
 Már üzembe helyezte az Azure AD önkiszolgáló jelszó-visszaállítás (SSPR) szolgáltatását, de a felhasználók még mindig az ügyfélszolgálathoz fordulnak, ha elfelejtették a jelszavukat. Azért tesznek így, mert nem tudnak hozzáférni a böngészőhöz az SSPR eléréséhez.
 
-Az új Windows 10 Fall Creators Update-ben az Azure AD-hoz csatlakoztatott eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Jelszó visszaállítása” hivatkozást láthatnak. Erre kattintva eljuthatnak a már ismert önkiszolgáló jelszó-visszaállítási (SSPR) felülethez.
+A Windows 10 2018. áprilisi frissítésében az **Azure AD-hez csatlakoztatott** vagy **hibrid Azure AD-hez csatlakoztatott** eszközökkel rendelkező felhasználók a bejelentkezési képernyőn egy „Jelszó visszaállítása” hivatkozást láthatnak és használhatnak. Erre kattintva eljuthatnak a már ismert önkiszolgáló jelszó-visszaállítási (SSPR) felülethez.
 
 Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Windows 10 bejelentkezési képernyőjéről, a következő követelményeknek kell teljesülniük:
 
-* A Windows 10 1709-es verziója vagy egy újabb ügyfél, amely [csatlakozik az Azure AD-hez](../device-management-azure-portal.md).
+* A Windows 10 2018. áprilisi verziója, vagy egy újabb, az [Azure AD-hez csatlakoztatott](../device-management-azure-portal.md) vagy a [hibrid Azure AD-hez csatlakoztatott](../device-management-hybrid-azuread-joined-devices-setup.md) ügyfél.
 * Engedélyezni kell az Azure AD önkiszolgáló jelszó-visszaállítását.
 * A Jelszó visszaállítása hivatkozás használatát engedélyező beállítást a következő módokon lehet konfigurálni és üzembe helyezni:
    * [Intune eszközkonfigurációs profil](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
@@ -66,7 +60,7 @@ Ahhoz, hogy a felhasználók visszaállíthassák az Azure AD-jelszavukat a Wind
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com) és kattintson az **Azure Active Directory** elemre.
 2. Lépjen a **Felhasználók és csoportok** > **Minden csoport** > **Új csoport** területre.
-3. Adja meg a csoport nevét, majd a **Tagság típusa** beállításnál válassza a **Hozzárendelt** lehetőséget. 
+3. Adja meg a csoport nevét, majd a **Tagság típusa** beállításnál válassza a **Hozzárendelt** lehetőséget.
    * A **Tagok** területen válassza ki azokat az Azure AD-hoz csatlakoztatott Windows 10-eszközöket, amelyekre alkalmazni szeretné a szabályzatot.
    * Kattintson a **Kiválasztás** gombra.
 4. Kattintson a **Create** (Létrehozás) gombra
@@ -117,6 +111,7 @@ A funkció a Távoli asztal használatával történő tesztelésekor a „Jelsz
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
 
 ## <a name="next-steps"></a>További lépések
+
 Az alábbi hivatkozásokat követve az Azure AD jelszóátállításáról olvashat további információkat.
 
 * [Az SSPR üzembe helyezése](howto-sspr-deployment.md)
