@@ -1,46 +1,46 @@
 ---
-title: A virtuálisgép-méretezési csoportok létrehozása a Windows Azure-ban |} Microsoft Docs
-description: A Windows-alapú virtuális gépek használata a virtuálisgép-méretezési csoport egy magas rendelkezésre állású alkalmazás létrehozását és telepítését
+title: Oktatóanyag – Virtuálisgép-méretezési csoport létrehozása Windows rendszerhez az Azure-ban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure PowerShellt magas rendelkezésre állású alkalmazások létrehozásához és üzembe helyezéséhez Windows rendszerű virtuális gépeken, virtuálisgép-méretezési csoport használatával
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: ''
-tags: ''
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: ''
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dd573a90e49197d59e6228359f57fcd4cc3f69e2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 49754fd4409b1fbc6b15577d37e216290582ef2b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>Hozzon létre egy virtuálisgép-méretezési csoportban, és a magas rendelkezésre állású alkalmazás a Windows központi telepítése
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Windows rendszeren, az Azure PowerShell használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát skálázhatja manuálisan, vagy megadhat automatikus skálázási szabályokat is az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Ebben az oktatóanyagban egy virtuálisgép-méretezési csoportot fog létrehozni az Azure-ban. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Az egyéni parancsprogramok futtatására szolgáló bővítmény használatával adja meg az IIS-webhelyek méretezése
-> * Hozzon létre egy terheléselosztót a méretezési csoport
+> * IIS-hely skálázásának megadása az egyéni szkriptbővítménnyel
+> * Terheléselosztó létrehozása a méretezési csoporthoz
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Példányok számának növelése vagy csökkentése méretezési csoportokban
 > * Automatikus skálázási szabályok létrehozása
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell telepítéséhez és használatához a helyi választja, az oktatóanyag az Azure PowerShell 5.6 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
 ## <a name="scale-set-overview"></a>Méretezési csoport – áttekintés
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoporton belüli virtuális gépek egy vagy több *elhelyezési csoportban* vannak elosztva a logikai meghibásodási és frissítési tartományok között. Ezek a csoportok a [rendelkezésre állási csoportokhoz](tutorial-availability-sets.md) hasonlóan azonos módon konfigurált virtuális gépekből állnak.
 
-A virtuális gépek a méretezési csoportban igény szerint jönnek létre. Az automatikus skálázási szabályok megadásával beállíthatja, hogyan és mikor szeretne a virtuális gépeket hozzáadni vagy eltávolítani a méretezési csoportban. Ezek a szabályok alapján metrikák például CPU-terhelést, a memória használata vagy a hálózati forgalmat is elindíthatja.
+A virtuális gépek a méretezési csoportban igény szerint jönnek létre. Az automatikus skálázási szabályok megadásával beállíthatja, hogyan és mikor szeretne a virtuális gépeket hozzáadni vagy eltávolítani a méretezési csoportban. Ezek a szabályok olyan metrikák alapján aktiválódhatnak, mint a CPU-terhelés, a memóriahasználat és a hálózati forgalom.
 
 A méretezési csoportok legfeljebb 1000 virtuális gépek támogatására képesek, ha Azure platformrendszerképet használnak. A jelentős telepítési követelményekkel rendelkező, illetve a virtuális gépek jelentős testreszabását igénylő számítási feladatok esetén [egyéni rendszerkép létrehozására lehet szükség a virtuális gépekhez](tutorial-custom-images.md). Egyéni rendszerkép használatakor egy méretezési csoportban legfeljebb 300 virtuális gépet hozhat létre.
 
@@ -97,7 +97,7 @@ Update-AzureRmVmss `
 
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-A skálázási művelet beállításához szerezze be a nyilvános IP-címét a terheléselosztót, hogy [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Az alábbi példa beolvassa az IP-címek *myPublicIP* hozza létre a méretezési részeként:
+Ha működés közben szeretné megtekinteni a méretezési csoportot, kérje le a terheléselosztó nyilvános IP-címét a [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) paranccsal. A következő példa a *myPublicIP* méretezési csoport részeként létrehozott IP-címét kéri le:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress `
@@ -105,7 +105,7 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIPAddress" | select IpAddress
 ```
 
-Írja be a nyilvános IP-címet egy webböngészőbe. A webes alkalmazás jelenik meg, beleértve az állomásnevet, a virtuális gép, amelyek a terheléselosztó felé irányuló forgalom:
+Írja be a nyilvános IP-címet egy webböngészőbe. Ekkor megjelenik a webalkalmazás, és tartalmazza annak a virtuális gépnek a nevét, amelyhez a terheléselosztó forgalmat irányított:
 
 ![Futó IIS-hely](./media/tutorial-create-vmss/running-iis-site.png)
 
@@ -113,7 +113,7 @@ Ha kíváncsi a méretezési csoport működésére, kényszerítse a webböngé
 
 
 ## <a name="management-tasks"></a>Felügyeleti feladatok
-A méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Az Azure PowerShell ezen feladatok gyors lehetőséget kínál. Lássunk néhány gyakori feladatot.
+A méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Az Azure PowerShell gyors módot kínál e feladatok elvégzéséhez. Lássunk néhány gyakori feladatot.
 
 ### <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
 A méretezési csoportban futó virtuálisgép-példányok listájának megjelenítéséhez használja a [Get-AzureRmVssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) parancsot az alábbi módon:
@@ -139,7 +139,7 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>Virtuális gépek példányszámának növelése vagy csökkentése
-Már van egy méretezési csoportban lévő példányok száma, használja a [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) és a lekérdezés *sku.capacity*:
+A méretezési csoportban jelenleg futó példányok számának megtekintéséhez használja a [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) parancsot, és állítsa be a *sku.capacity*lekérdezést:
 
 ```azurepowershell-interactive
 Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -147,7 +147,7 @@ Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
     Select -ExpandProperty Sku
 ```
 
-Ezután manuálisan növeléséhez vagy csökkentéséhez tegye a következőket a méretezési készletben rendelkező virtuális gépek [frissítés-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
+Ezután az [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) paranccsal manuálisan növelheti vagy csökkentheti a méretezési csoportban futó virtuális gépek számát. Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -162,11 +162,11 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
 
-Ha a megadott számú a skála-példány frissítése néhány percet vesz be.
+A méretezési csoportban található példányok megadott számának frissítése néhány percet vesz igénybe.
 
 
 ### <a name="configure-autoscale-rules"></a>Automatikus skálázási szabályok konfigurálása
-Helyett a példányok száma manuálisan a skálázási skálázás beállításához automatikus skálázási szabályok határozza meg. Ezek a szabályok figyelik a méretezési csoportban futó példányokat, és az Ön által megadott mérőszámok, illetve küszöbértékek alapján lépnek működésbe. Az alábbi példában a szabály eggyel növeli a példányok számát, amikor az átlagos processzorhasználat 5 percnél hosszabb ideig meghaladja a 60%-ot. Az átlagos CPU-terhelést, majd alá esik 30 % egy 5 perces időszakon át, ha a példány méretezése a egy példánya:
+A méretezési csoportban futó példányok számának manuális beállítása helyett automatikus skálázási szabályokat adhat meg. Ezek a szabályok figyelik a méretezési csoportban futó példányokat, és az Ön által megadott mérőszámok, illetve küszöbértékek alapján lépnek működésbe. Az alábbi példában a szabály eggyel növeli a példányok számát, amikor az átlagos processzorhasználat 5 percnél hosszabb ideig meghaladja a 60%-ot. Ha az átlagos processzorhasználat 5 percnél hosszabb ideig 30% alá csökken, a szabály eggyel csökkenti a példányok számát:
 
 ```azurepowershell-interactive
 # Define your scale set information
@@ -226,8 +226,8 @@ Az automatikus skálázás tervezésével kapcsolatban bővebben az [automatikus
 Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az egyéni parancsprogramok futtatására szolgáló bővítmény használatával adja meg az IIS-webhelyek méretezése
-> * Hozzon létre egy terheléselosztót a méretezési csoport
+> * IIS-hely skálázásának megadása az egyéni szkriptbővítménnyel
+> * Terheléselosztó létrehozása a méretezési csoporthoz
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Példányok számának növelése vagy csökkentése méretezési csoportokban
 > * Automatikus skálázási szabályok létrehozása

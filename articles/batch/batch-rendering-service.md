@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch Rendering szolgáltatás – felhőméretű renderelés | Microsoft Docs"
-description: "Renderelési feladatok végezhetők Azure-alapú virtuális gépeken, közvetlenül a Maya szoftverből és használatalapú fizetéssel."
+title: Azure Batch Rendering szolgáltatás – felhőméretű renderelés | Microsoft Docs
+description: Renderelési feladatok végezhetők Azure-alapú virtuális gépeken, közvetlenül a Maya szoftverből és használatalapú fizetéssel.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
-ms.date: 09/14/2017
+ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: df1b2da7628e6c3f9f4bcbb02a936c33aad49698
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Ismerkedés a Batch Rendering szolgáltatással
 
-Az Azure Batch Rendering szolgáltatás felhőméretű renderelési képességeket nyújt használatalapú fizetéssel. A Batch Rendering szolgáltatás elvégzi a feladatok ütemezését és sorba rendezését, a hibák és az újrapróbálkozások kezelését és a renderelési feladatokkal kapcsolatos automatikus skálázást. A Batch Rendering szolgáltatás támogatja az [Autodesk Maya](https://www.autodesk.com/products/maya/overview), a [3ds Max](https://www.autodesk.com/products/3ds-max/overview), az [Arnold](https://www.autodesk.com/products/arnold/overview) és a [V-Ray](https://www.chaosgroup.com/vray/maya) szoftver használatát. A Maya 2017-hez készült Batch beépülő modullal könnyedén elindíthat egy renderelési feladatot az Azure-on, rögtön a számítógépről.
+Az Azure Batch Rendering szolgáltatás felhőméretű renderelési képességeket nyújt használatalapú fizetéssel. A Batch Rendering szolgáltatás elvégzi a feladatok ütemezését és sorba rendezését, a hibák és az újrapróbálkozások kezelését és a renderelési feladatokkal kapcsolatos automatikus skálázást. A Batch Rendering szolgáltatás támogatja renderelési alkalmazások, például az [Autodesk Maya](https://www.autodesk.com/products/maya/overview), a [3ds Max](https://www.autodesk.com/products/3ds-max/overview), az [Arnold](https://www.autodesk.com/products/arnold/overview) és a [V-Ray](https://www.chaosgroup.com/vray/maya) használatát. A Maya 2017-hez készült Batch beépülő modullal könnyedén elindíthat egy renderelési feladatot az Azure-on, rögtön a számítógépről.
 
 A Maya és a 3ds Max szoftverekkel a [BatchLabs](https://github.com/Azure/BatchLabs) asztali alkalmazás vagy a [Batch Templates parancssori felület](batch-cli-templates.md) használatával futtathat feladatokat. Az Azure Batch parancssori felületén kódírás nélkül futtathat Batch-feladatokat. Helyette sablonfájlok használatával hozhat létre Batch-készleteket, -feladatokat és -tevékenységeket. További információkért tekintse át [az Azure Batch parancssori felületi sablonjainak és fájlátviteli funkciójának használatával](batch-cli-templates.md) foglalkozó témakört.
 
@@ -25,16 +25,35 @@ A Maya és a 3ds Max szoftverekkel a [BatchLabs](https://github.com/Azure/BatchL
 
 A Batch Rendering szolgáltatás jelenleg a következő alkalmazások használatát támogatja:
 
-•   Autodesk Maya I/O 2017 4. frissítés (17.4.5459-es verzió) •   Autodesk 3ds Max I/O 2018 1. frissítés (20.1.0.238-as verzió) •   Autodesk Arnold for Maya (5.0.1.1-es verzió) •   Autodesk Arnold for 3ds Max (1.0.836-os verzió) •   Chaos Group V-Ray for Maya (3.52.03-as verzió) •   Chaos Group V-Ray for 3ds Max (3.60.02-es verzió)
+CentOS 7 renderelési csomópontok esetében:
+- Autodesk Maya I/O 2017 5. frissítés (201708032230-s verzió)
+- Autodesk Maya I/O 2018 2. frissítés 201711281015-ös verzió
+- Autodesk Arnold for Maya 2017 (Arnold verzió: 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya 2018 (Arnold verzió: 5.0.1.4) MtoA-2.1.0.3-2018
+- Chaos Group V-Ray for Maya 2017 (3.60.04-es verzió) 
+- Chaos Group V-Ray for Maya 2018 (3.60.04-es verzió) 
+- Blender (2.68)
+
+Windows Server 2016 renderelési csomópontok esetén:
+- Autodesk Maya I/O 2017 5. frissítés (17.4.5459-es verzió) 
+- Autodesk Maya I/O 2018 2. frissítés (18.2.0.6476-os verzió) 
+- Autodesk 3ds Max I/O 2018 4. frissítés (20.4.0.4254-es verzió) 
+- Autodesk Arnold for Maya (Arnold verzió: 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya (Arnold verzió: 5.0.1.4) MtoA-2.0.2.3-2018
+- Autodesk Arnold for 3ds Max (Arnold verzió: 5.0.2.4) (1.2.926-os verzió) 
+- Chaos Group V-Ray for Maya (3.52.03-as verzió) 
+- Chaos Group V-Ray for 3ds Max (3.60.02-es verzió)
+- Blender (2.79)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A Batch szolgáltatás használatához a következőkre van szükség:
 
-- Egy [Azure-fiók](https://azure.microsoft.com/free/).
+- [Egy Azure-fiók](https://azure.microsoft.com/free/).
 - **Egy Azure Batch-fiók.** Egy Batch-fiók az Azure Portalon történő létrehozásával kapcsolatos útmutatásért lásd a [Batch-fiókok az Azure Portalon történő létrehozását](batch-account-create-portal.md) ismertető cikket.
-- **Egy Azure Storage-fiók.** A renderelési feladathoz használt adategységeket az Azure Storage tárolja. A Batch-fiók beállításakor automatikusan létrehozható egy tárfiók. Vagy használhat egy létező tárfiókot is. További információkat a Storage-tárfiókokról a [tárfiókok az Azure Portalon történő létrehozását, kezelését vagy törlését](https://docs.microsoft.com/azure/storage/storage-create-storage-account) ismertető cikkben talál.
+- **Egy Azure Storage-fiók.** A renderelési feladathoz használt adategységeket általában az Azure Storage tárolja. A Batch-fiók beállításakor automatikusan létrehozható egy tárfiók. Vagy használhat egy létező tárfiókot is. A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md#azure-storage-account) talál.
+- **Környezeti változók.** Ha a megoldása környezeti változókat módosít, győződjön meg arról, hogy az `AZ_BATCH_ACCOUNT_URL` és az `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` értékek nem változnak, és jelen vannak a fenti licencelt alkalmazások hívásakor. Ellenkező esetben valószínűleg szoftveraktivációs problémába fog ütközni.
 - **BatchLabs** (nem kötelező). A [BatchLabs](https://azure.github.io/BatchLabs) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz Azure Batch-alkalmazások létrehozásához, hibakereséséhez és monitorozásához. Bár a renderelési szolgáltatás használata nem kötelező, hasznos lehetőség a Batch-megoldások fejlesztéséhez és hibakereséséhez.
 
 A Maya alkalmazáshoz készült Batch beépülő modul használatához a következőkre van szükség:
@@ -72,18 +91,11 @@ Az Azure Portalon és a BatchLabsben a következők szerint telepítheti az elő
 
 ![Batch-fiók lemezképtípusának kiválasztása](./media/batch-rendering-service/add-pool.png)
 
-Görgessen le és kattintson a **Grafikus és megjelenítési szoftverek licencelése** gombra a **Licencek kiválasztása** panel megjelenítéséhez, és válasszon ki egyet vagy többet a szoftverlicencek közül:
+Görgessen le, és a **Grafikus és megjelenítési szoftverek licencelése** területen kattintson a **Szoftver és díjszabás kiválasztása** elemre. Válasszon ki legalább egy szoftverlicencet:
 
 ![Grafikus és megjelenítési szoftverek licencének kiválasztása a készlethez](./media/batch-rendering-service/graphics-licensing.png)
 
-Az egyes rendelkezésre álló licencverziók a következők:
-
-- Maya 2017
-- 3ds Max 2018
-- Arnold for Maya 5.0.1.1
-- Arnold for 3ds Max 1.0.836
-- V-Ray for Maya 3.52.03
-- V-Ray for 3ds Max 3.60.01
+A megadott licencverziók megegyeznek a fenti „Támogatott alkalmazások köre” szakaszban leírt verziószámokkal.
 
 ### <a name="custom-images"></a>Egyéni rendszerképek
 
@@ -175,12 +187,12 @@ Az **Env** (Környezet) lapon adhatja meg, hogy milyen típusú operációsrends
 
 |Operációs rendszer  |Kép  |
 |---------|---------|
-|Linux     |Batch CentOS Preview |
-|Windows     |Batch Windows Preview |
+|Linux     |Batch CentOS |
+|Windows     |Batch Windows |
 
 #### <a name="choose-a-vm-size"></a>Virtuális gép méretének kiválasztása
 
-A virtuális gép méretét az **Env** (Környezet) lapon adhatja meg. Az elérhető virtuálisgép-méretekkel kapcsolatos bővebb információkért olvassa el az [Azure-beli linuxos virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/linux/sizes), illetve az [Azure-beli windowsos virtuális gépek méreteit](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) ismertető cikket. 
+A virtuális gép méretét az **Env** (Környezet) lapon adhatja meg. Az elérhető virtuálisgép-méretekkel kapcsolatos bővebb információkért olvassa el az [Azure-beli linuxos virtuális gépek méreteit](../virtual-machines/linux/sizes.md), illetve az [Azure-beli windowsos virtuális gépek méreteit](../virtual-machines/windows/sizes.md) ismertető cikket. 
 
 ![A virtuális gép operációsrendszer-képének és méretének megadása az Env (Környezet) lapon](./media/batch-rendering-service/environment.png)
 

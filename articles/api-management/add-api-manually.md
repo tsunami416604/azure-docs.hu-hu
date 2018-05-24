@@ -1,11 +1,11 @@
 ---
-title: "Adja hozzá az API-k segítségével manuálisan az Azure portálon |} Microsoft Docs"
-description: "Az oktatóanyag bemutatja, hogyan API Management (APIM) segítségével manuálisan ad hozzá egy API-t."
+title: API manuális hozzáadása az Azure Portal használatával  | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan lehet API-kat az API Management (APIM) használatával manuálisan felvenni.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,101 +13,101 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 9426839f88daece1bb688a2079b7854ccaebdc57
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="add-an-api-manually"></a>Az API-k manuális hozzáadása 
+# <a name="add-an-api-manually"></a>API hozzáadása manuálisan 
 
-A cikkben leírt lépéseket az Azure portál segítségével az API-k manuálisan hozzá az API Management (APIM) példány szemléltetik. Egy gyakori forgatókönyv, amikor egy üres API-t létrehozni, és adja meg manuálisan szeretné akkor, ha az API-t mock szeretné. További információk az API-k mocking: [Mock API válaszok](mock-api-responses.md).
+A cikk bemutatja, hogy az Azure Portal használatával hogyan adhat hozzá egy API-t manuálisan az API Management- (APIM-) példányhoz. Az üres, manuálisan meghatározható API-t gyakran használják API-k szimulálására. További részletek az API-k szimulálásáról: [API-válaszok szimulálása](mock-api-responses.md).
 
-Ha egy meglévő API importálni kívánt, lásd: [kapcsolódó témakörök](#related-topics) szakasz.
+Ha egy meglévő API-t szeretne importálni, tekintse meg a [kapcsolódó témaköröket](#related-topics).
 
-Ez a cikk azt egy üres API-t létrehozni, és adja meg [httpbin.org](http://httpbin.org) (nyilvános tesztelési szolgáltatás), egy háttér-API-t.
+Ebben a cikkben létrehozunk egy üres API-t, és a [httpbin.org](http://httpbin.org) oldalt (egy nyilvános tesztelési szolgáltatást) háttérrendszeri API-ként határozzuk meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejezze be a következő gyorsindítási: [Azure API Management példányt létrehozni](get-started-create-service-instance.md)
+Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>API létrehozása
 
-1. Válassza ki **API-k** a alatt **API MANAGEMENT**.
-2. A bal oldali menüben válassza ki a **+ Hozzáadás API**.
-3. Válassza ki **üres API** a listából.
+1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
+3. Válassza az **Üres API** elemet a listából.
 
     ![Üres API](media/add-api-manually/blank-api.png)
-4. Adja meg az API-beállításokat.
+4. Adja meg az API beállításait.
 
     ![Beállítások](media/add-api-manually/settings.png)
 
     |**Name (Név)**|**Érték**|**Leírás**|
     |---|---|---|
-    |**Megjelenített név**|"*API üres*" |Ez a név a fejlesztői portálra.|
-    |**Webszolgáltatás URL-címe** (nem kötelező)| "*http://httpbin.org*"| Ha szeretné mock egy API-t, előfordulhat, hogy meg semmit. <br/>Ebben az esetben azt adja meg [http://httpbin.org](http://httpbin.org). Ez egy olyan nyilvános tesztelési szolgáltatás. <br/>Az API-k leképezett a háttérből automatikusan importálni kívánt, lásd a témaköröket a [kapcsolódó témakörök](#related-topics) szakasz.|
-    |**URL-séma**|"*HTTPS*"|Ebben az esetben annak ellenére, hogy a háttér nem biztonságos HTTP hozzáféréssel rendelkezik, azt adja meg egy biztonságos HTTPS APIM férhet hozzá a háttérben. <br/>A forgatókönyv (HTTPS – HTTP) az ilyen nevezik HTTPS-záráshoz. Akkor lehet hasznos, azt hogy létezik-e az API-t (ha tudja, hogy a hozzáférés biztonságos még akkor is, ha nem használja a HTTPS) a virtuális hálózaton belül. <br/>"HTTPS-lezárást" használni kívánt egyes CPU-ciklusok menti.|
-    |**URL-utótag**|"*hbin*"| A utótag, amely azonosítja az adott API-nak a APIM példány nevét. Rendelkezik a APIM példány belül egyedinek kell lennie.|
-    |**Termékek**|"*Korlátlan*" |Tegye közzé az API által az API-t társít egy termék. Ha azt szeretné, az API számára tehető közzé, és a fejlesztők számára érhető el, adja hozzá a termék. API létrehozása során teheti meg, vagy állítsa be úgy később.<br/><br/>A termékeket társítását, egy vagy több API-k. Számos olyan API-k, és a fejlesztői portálon keresztül a fejlesztők számára biztosíthat számukra. <br/>A fejlesztők a termék az API eléréséhez először elő kell fizetnie. Fizet elő, amikor azok beolvasása, amely a termék API-k ideális előfizetés kulcsa. A APIM példányt hozott létre, ha rendszergazdaként jelentkezett már, így minden egyes termék előfizetett alapértelmezés szerint.<br/><br/> Alapértelmezés szerint minden API Management példányt tartalmaz két minta termékek: **alapszintű** és **korlátlan**.| 
+    |**Megjelenített név**|„*Üres API*” |Ez a név a fejlesztői portálon jelenik meg.|
+    |**Webszolgáltatás URL-címe** (nem kötelező)| „*http://httpbin.org*”| Ha egy API-t szeretne szimulálni, akkor előfordulhat, hogy nem ad meg semmit ebben a mezőben. <br/>Ebben az esetben mi a következőt adjuk meg: [http://httpbin.org](http://httpbin.org). Ez egy nyilvános tesztelési szolgáltatás. <br/>Ha olyan API-t szeretne importálni, amely automatikusan le van képezve egy háttérrendszerre, tekintse meg a [kapcsolódó témakörök](#related-topics) egyik témakörét.|
+    |**URL-séma**|„*HTTPS*”|Ebben az esetben egy biztonságos HTTPS APIM-hozzáférést határozunk meg a háttérrendszerhez, bár magának a háttérrendszernek a hozzáférése nem biztonságos. <br/>Az ilyen forgatókönyveket (HTTPS–HTTP-kapcsolat) nevezzük HTTPS-zárásnak. Akkor lehet rá szükség, ha az API egy virtuális hálózatban található (és így tudja, hogy biztonságos a hozzáférés a HTTPS használata nélkül is). <br/>A „HTTPS-zárás” alkalmazásával számos processzorciklus megspórolható.|
+    |**URL-cím utótagja**|„*hbin*”| Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.|
+    |**Termékek**|„*Korlátlan*” |Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**.| 
 5. Kattintson a **Létrehozás** gombra.
 
-Ezen a ponton még nincs APIM leképezhetőek a a háttér-API műveletek. Ha meghívja a háttérben keresztül, de nem a APIM keresztül elérhetővé művelet, kap egy **404**. 
+Ezen a ponton nem lesz olyan művelet az APIM-ban, amely leképeződik a háttérrendszeri API-ra. Ha olyan műveletet hív meg, amely közzé lett téve a háttérrendszeren keresztül, de az APIM-on keresztül nem, a **404**-es hibaüzenetet kapja. 
 
 >[!NOTE] 
-> Alapértelmezés szerint amikor egy API-t, még akkor is, ha csatlakozik egy háttér-szolgáltatás APIM fog nem teszi közzé a műveleteket csak akkor engedélyezett őket. A háttér-szolgáltatás művelet engedélyezett hozzon létre egy APIM művelet, amely a háttér-művelet van leképezve.
+> Alapértelmezés szerint az API hozzáadásakor az APIM nem tesz közzé semmilyen műveletet, amíg fel nem veszi az engedélyezési listára (akkor sem, ha az API kapcsolódik valamilyen háttérszolgáltatáshoz). A háttérszolgáltatás engedélyezési listára való felvételéhez hozzon létre egy APIM-műveletet, amely leképezi a háttérműveletet.
 >
 
-## <a name="add-and-test-an-operation"></a>Hozzáadását és tesztelését egy műveletet
+## <a name="add-and-test-an-operation"></a>Művelet hozzáadása és tesztelése
 
-Ez a szakasz bemutatja, hogyan vehet fel a "/ get" művelet használhatja arra, hogy azt a háttérből "http://httpbin.org/get" művelethez.
+Ez a szakasz bemutatja, hogyan hozhat létre egy „/get” műveletet, amelyet leképezhet a „http://httpbin.org/get” háttérműveletre.
 
 ### <a name="add-the-operation"></a>A művelet hozzáadása
 
 1. Válassza ki az előző lépésben létrehozott API-t.
-2. Kattintson a **+ Hozzáadás művelet**.
-3. Az a **URL-cím**, jelölje be **beolvasása** , és adja meg "*/get*" az erőforrás.
-4. Adja meg "*FetchData*" a **megjelenített név**.
+2. Kattintson a **+ Művelet hozzáadása** elemre.
+3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/get*” karakterláncot az erőforrás mezőjébe.
+4. A **Megjelenített név** mezőbe írja be a következőt: „*FetchData*”.
 5. Kattintson a **Mentés** gombra.
 
 ### <a name="test-the-operation"></a>A művelet tesztelése
 
-A művelet tesztelése az Azure portálon. Azt is megteheti, tesztelheti, az a **fejlesztői portálján**.
+Tesztelje a műveletet az Azure Portalon. Másik megoldásként a **Fejlesztői portálon** is elvégezheti a tesztelést.
 
-1. Válassza ki a **teszt** fülre.
-2. Válassza ki **FetchData**.
-3. Nyomja le az **küldése**.
+1. Kattintson a **Teszt** fülre.
+2. Válassza a **FetchData** elemet.
+3. Kattintson a **Küldés** gombra.
 
-Megjelenik a választ, amely a "http://httpbin.org/get" műveletet hoz létre. Ha szeretné alakítani a műveleteket, lásd: [átalakító és az API védelme](transform-api.md).
+Megjelenik a „http://httpbin.org/get” műveletre kapott válasz. A műveletek átalakításáról [az API átalakítását és védelmét](transform-api.md) ismertető témakörben olvashat.
 
-## <a name="add-and-test-a-parameterized-operation"></a>Hozzáadását és tesztelését egy paraméteres művelet
+## <a name="add-and-test-a-parameterized-operation"></a>Paraméteres művelet hozzáadása és tesztelése
 
-Ez a szakasz bemutatja, hogyan vehet fel a művelet, amely egy paramétert fogad. Ebben az esetben azt képezze le a "http://httpbin.org/status/200" művelet.
+Ez a szakasz bemutatja, hogyan adhat hozzá egy paramétert használó műveletet. Ebben az esetben a következőre képezzük le a műveletet: „http://httpbin.org/status/200”.
 
 ### <a name="add-the-operation"></a>A művelet hozzáadása
 
 1. Válassza ki az előző lépésben létrehozott API-t.
-2. Kattintson a **+ Hozzáadás művelet**.
-3. Az a **URL-cím**, jelölje be **beolvasása** , és adja meg "*/status/ {code}*" az erőforrás. Igény szerint is adja meg egyes információk is társítva ezzel a paraméterrel. Adja meg például "*szám*" a **típus**, "*200*" (alapértelmezett), a **értékek**.
-4. Adja meg "GetStatus" **megjelenített név**.
+2. Kattintson a **+ Művelet hozzáadása** elemre.
+3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/status/{code}*” karakterláncot az erőforrás mezőjébe. Lehetősége van megadni a paraméterhez kapcsolódó információkat. A **TÍPUS** értéke például lehet „*Szám*”, az **ÉRTÉKEK** értéke pedig lehet „*200*” (az alapértelmezett érték).
+4. A **Megjelenített név** mezőbe írja be a következőt: „GetStatus”.
 5. Kattintson a **Mentés** gombra.
 
 ### <a name="test-the-operation"></a>A művelet tesztelése 
 
-A művelet tesztelése az Azure portálon.  Azt is megteheti, tesztelheti, az a **fejlesztői portálján**.
+Tesztelje a műveletet az Azure Portalon.  Másik megoldásként a **Fejlesztői portálon** is elvégezheti a tesztelést.
 
-1. Válassza ki a **teszt** fülre.
-2. Válassza ki **GetStatus**. Alapértelmezés szerint a kód értéke "*200*". Ez további értékek tesztelésére módosítható. Írja be például, "*418*".
-3. Nyomja le az **küldése**.
+1. Kattintson a **Teszt** fülre.
+2. Válassza a **GetStatus** elemet. A kód alapértelmezett értéke „*200*”. Ezt szabadon módosíthatja, ha más értékeket is tesztelne. Írja be például, hogy „*418*”.
+3. Kattintson a **Küldés** gombra.
 
-    Megjelenik a választ, amely a "http://httpbin.org/status/200" műveletet hoz létre. Ha szeretné alakítani a műveleteket, lásd: [átalakító és az API védelme](transform-api.md).
+    Megjelenik a „http://httpbin.org/status/200” műveletre kapott válasz. A műveletek átalakításáról [az API átalakítását és védelmét](transform-api.md) ismertető témakörben olvashat.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az átalakítási és egy közzétett API védelme](transform-api.md)
+> [Közzétett API átalakítása és védelme](transform-api.md)

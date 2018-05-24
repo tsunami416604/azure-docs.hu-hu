@@ -1,6 +1,6 @@
 ---
-title: Azure virtuális hálózatok és Linux virtuális gépek | Microsoft Docs
-description: Oktatóanyag – Azure virtuális hálózatok és Linux virtuális gépek kezelése az Azure CLI-vel
+title: Oktatóanyag – Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken | Microsoft Docs
+description: Ez az oktatóanyag bemutatja az Azure-alapú virtuális hálózatok Linux rendszerű virtuális gépeken való létrehozását és kezelését az Azure CLI 2.0-val
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4fc6779472a0c680c53d7f25e6fe412ab386fc32
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 306d33dd5b5910e990caf80dae4c37fee020f7a1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Azure virtuális hálózatok és Linux virtuális gépek kezelése az Azure CLI-vel
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli-20"></a>Oktatóanyag – Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI 2.0-val
 
 Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák feltételezik, hogy a virtuális gépek üzemeltetnek egy webalkalmazást egy adatbázis-alapú háttérrendszerrel, de az oktatóanyag során nem telepítünk ilyen alkalmazást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -33,7 +33,15 @@ Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső é
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-Az oktatóanyag végrehajtása során a következő erőforrások jönnek létre:
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+
+## <a name="vm-networking-overview"></a>Virtuális gépek hálózatkezelése – áttekintés
+
+Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL Database-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
+
+Az oktatóanyag végéig a következő virtuális hálózati erőforrások jönnek létre:
 
 ![Virtuális hálózat két alhálózattal](./media/tutorial-virtual-network/networktutorial.png)
 
@@ -46,15 +54,6 @@ Az oktatóanyag végrehajtása során a következő erőforrások jönnek létre
 - *myBackendSubnet* – *myBackendNSG* csoporthoz társított, és a háttérbeli erőforrások által használt alhálózat.
 - *myBackendNic* – A *myBackendVM* által *myFrontendVM* virtuális géppel való kommunikációra használt hálózati adapter.
 - *myBackendVM* – A *myFrontendVM* virtuális géppel a 22-es és 3306-os porton keresztül kommunikáló virtuális gép.
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
-
-## <a name="vm-networking-overview"></a>Virtuális gépek hálózatkezelése – áttekintés
-
-Az Azure virtuális hálózatok biztonságos hálózati kapcsolatokat tesznek lehetővé virtuális gépek, az internet és más Azure-szolgáltatások (pl. az Azure SQL Database-adatbázis) között. A virtuális hálózatok alhálózatnak nevezett logikai szegmensekre oszthatók. Az alhálózatok segítségével szabályozható a hálózati forgalom, valamint biztonsági határként is használhatók. Egy virtuális géphez a telepítéskor általában egy virtuális hálózati adapter tartozik, amely egy alhálózathoz csatlakozik.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 

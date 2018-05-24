@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: dcb46c7127590f1986fe1fd66c2f6ac4fd8b107d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24d739e45ddaa7669fe1836eea53f0b091383d1e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -64,7 +64,7 @@ Ha egyazon régióban lévő virtuális hálózatok között társhálózati vis
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/figure04.png)
 
-Az átjáróval történő adatátvitel nem támogatott abban az esetben, ha olyan virtuális hálózatok állnak egymással társviszonyban, amelyek különböző üzemi modellel vagy eltérő régiókban lettek létrehozva. Ahhoz, hogy az átjárón át történő átvitel működjön, a társviszonyban álló virtuális hálózatokat a Resource Manager-alapú üzemi modellel kell létrehozni, és mindkettőnek ugyanabban a régióban kell lennie.
+Az átjáróval történő adatátvitel nem támogatott, ha olyan virtuális hálózatok állnak egymással társviszonyban, amelyek eltérő régiókban lettek létrehozva. Ahhoz, hogy az átjáróval történő adatátvitel működjön, a társviszonyban álló virtuális hálózatoknak ugyanabban a régióban kell lenniük. Ha a virtuális hálózatok különböző üzembehelyezési modellel lettek létrehozva (Resource Manager és klasszikus), az átjáróval történő adatátvitel csak abban az esetben támogatott, ha az átjáró a virtuális hálózaton található (Resource Manager). További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Ha két, ugyanazon az Azure ExpressRoute-kapcsolaton osztozó virtuális hálózatot állítanak társviszonyba, akkor a társhálózaton (vagyis az Azure gerinchálózatán) keresztül áramlik közöttük a forgalom. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Közös átjárót is használhat, és átvitel konfigurálásával létesíthet kapcsolatot a helyszíni rendszerrel.
 

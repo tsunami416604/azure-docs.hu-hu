@@ -1,37 +1,37 @@
 ---
-title: "Az Azure házirend json-mintát - storage-fiókok és a virtuális gépek engedélyezett Termékváltozatait |} Microsoft Docs"
-description: "A json-mintát házirend verziójához jóváhagyott termékváltozatok storage-fiókok és a virtuális gépek használni."
+title: Azure Policy JSON-példa – Tárfiókok és virtuális gépek engedélyezett termékváltozatai | Microsoft Docs
+description: Ez a JSON-példaszabályzat megköveteli, hogy a tárfiókok és a virtuális gépek engedélyezett termékváltozatokat használjanak.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 9936af72dc7babfe8935dac1b49c25695e827042
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: 482408788b6d74c25350a9885e2bf4bd6ea306d7
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>A storage-fiókok és a virtuális gépek engedélyezett termékváltozatok
+# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>Tárfiókok és virtuális gépek engedélyezett termékváltozatai
 
-Ez a házirend-hez engedélyezett termékváltozatok storage-fiókok és a virtuális gépek használnia. Beépített házirendet használja, hogy jóvá SKU. Megadhatja, hogy engedélyezett virtuális gépek termékváltozatok tömbje és jóváhagyott tárfiók termékváltozatok tömbjét.
+Ez a szabályzat megköveteli, hogy a tárfiókok és a virtuális gépek engedélyezett termékváltozatokat használjanak. Beépített szabályzatok használatával biztosítja az engedélyezett termékváltozatok alkalmazását. Megadhatja az engedélyezett virtuálisgép-termékváltozatok és az engedélyezett tárfiók-termékváltozatok tömbjét.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
-[!code-json[main](../../../policy-templates/samples/PolicyInitiatives/skus-for-mutiple-types/azurepolicyset.json "Allowed SKUs for Storage Accounts and Virtual Machines")]
+[!code-json[main](../../../policy-templates/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.json "Allowed SKUs for Storage Accounts and Virtual Machines")]
 
-A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-portal) vagy [PowerShell](#deploy-with-powershell).
+A sablon az [Azure Portal](#deploy-with-the-portal) vagy a [PowerShell](#deploy-with-powershell) használatával helyezhető üzembe.
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
@@ -42,22 +42,42 @@ A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-port
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```powershell
-$policydefinitions = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-mutiple-types/azurepolicyset.definitions.json"
-$policysetparameters = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-mutiple-types/azurepolicyset.parameters.json"
+$policydefinitions = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.definitions.json"
+$policysetparameters = "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.parameters.json"
 
-$policyset= New-AzureRmPolicySetDefinition -Name "skus-for-mutiple-types" -DisplayName "Allowed SKUs for Storage Accounts and Virtual Machines" -Description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" -PolicyDefinition $policydefinitions -Parameter $policysetparameters
-
-New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentname> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs >  -Sku @{"Name"="A1";"Tier"="Standard"}
+$policyset= New-AzureRmPolicySetDefinition -Name "skus-for-multiple-types" -DisplayName "Allowed SKUs for Storage Accounts and Virtual Machines" -Description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" -PolicyDefinition $policydefinitions -Parameter $policysetparameters 
+ 
+New-AzureRmPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell központi telepítés tisztítása
+### <a name="clean-up-powershell-deployment"></a>PowerShell-üzembehelyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+A szabályzat-hozzárendelés és -definíció törléséhez futtassa az alábbi parancsot.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzureRmPolicyAssignment -Name <assignmentName>
+Remove-AzureRmPolicySetDefinitions -Name "skus-for-multiple-types"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI használatával
 
-- További Azure csoportházirend-sablon minták erővel [sablonok Azure házirend](../json-samples.md).
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+```azurecli-interactive
+az policy set-definition create --name "skus-for-multiple-types" --display-name "Allowed SKUs for Storage Accounts and Virtual Machines" --description "This policy allows you to speficy what skus are allowed for storage accounts and virtual machines" --definitions "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.definitions.json" --params "https://raw.githubusercontent.com/Azure/azure-policy/master/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.parameters.json"
+
+az policy assignment create --name <assignmentName> --scope <scope> --policy-set-definition "skus-for-multiple-types" --params "{ 'LISTOFALLOWEDSKUS_1': { 'value': <VM SKU Array> }, 'LISTOFALLOWEDSKUS_2': { 'value': <Storage Account SKU Array> } }"
+```
+
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+
+A szabályzat-hozzárendelés és -definíció törléséhez futtassa az alábbi parancsot.
+
+```azurecli-interactive
+az policy assignment delete --name <assignmentName>
+az policy set-definition delete --name "skus-for-multiple-types"
+```
+
+## <a name="next-steps"></a>További lépések
+
+- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.

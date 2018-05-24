@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 172780512dd179d91300459987ad0ba683727859
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
 Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
@@ -34,7 +34,7 @@ A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakít
 
 ## <a name="data-migration"></a>Adatok migrálása
 
-Először töltse be az adatokat az [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store)-ba vagy az Azure Blob Storage-ba. Ezután a PolyBase segítségével töltse be az adatokat az SQL Data Warehouse-ba egy előkészítési táblában. Használja a következő konfigurációt:
+Először töltse be az adatokat az [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)-ba vagy az Azure Blob Storage-ba. Ezután a PolyBase segítségével töltse be az adatokat az SQL Data Warehouse-ba egy előkészítési táblában. Használja a következő konfigurációt:
 
 | Tervezés | Ajánlás |
 |:--- |:--- |
@@ -43,7 +43,7 @@ Először töltse be az adatokat az [Azure Data Lake Store](https://docs.microso
 | Particionálás | None |
 | Erőforrásosztály | largerc vagy xlargerc |
 
-Itt további információkat tudhat meg az [adatok migrálásáról], az [adatok betöltéséről] és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
+Itt további információkat tudhat meg az [adatok migrálásáról], az [adatok betöltéséről] és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
 
 ## <a name="distributed-or-replicated-tables"></a>Elosztott vagy replikált táblák
 
@@ -78,7 +78,7 @@ Az indexelés a táblák gyors olvasásához hasznos. Egyedi technológiákat al
 **Tippek:**
 * A fürtözött indexek mellett érdemes lehet nem fürtözött indexet is hozzáadni a szűréshez gyakran használt oszlopokhoz. 
 * Ügyeljen arra, hogyan kezeli a memóriát a CCI-vel rendelkező táblákban. Adatok betöltésekor az a cél, hogy a felhasználó (vagy a lekérdezés) nagyméretű erőforrásosztályt használhasson. Kerülje a vágást és sok kis tömörített sorcsoport létrehozását.
-* CCI-vel rendelkező számítási szintekhez optimalizálva.
+* A Gen2-n a teljesítmény maximalizálása érdekében a CCI-táblák gyorsítótárazása a számítási csomópontokon helyben történik.
 * CCI esetén a sorcsoportok nem megfelelő tömörítése miatt gyenge lehet a teljesítmény. Ilyen esetben állítsa össze újra vagy rendezze át a CCI-t. Tömörített sorcsoportonként legalább 100 000 sorra van szükség. Az ideális a sorcsoportonként 1 millió sor.
 * A növekményes terhelési gyakoriság és méret alapján érdemes lehet automatizálni az indexek átrendezésekor vagy újraépítésekor. A tavaszi nagytakarítás mindig hasznos.
 * A sorcsoportokat stratégiai szempontok szerint vágja. Mekkorák a nyitott sorcsoportok? Mennyi adatot tervez betölteni a következő napokban?
@@ -111,7 +111,7 @@ Az SQL Data Warehouse erőforráscsoportokat használ arra, hogy memóriát fogl
 
 Ha úgy látja, hogy a lekérdezések túl sokáig tartanak, ellenőrizze, hogy a felhasználók nem nagyméretű erőforrásosztályokban futnak-e. A nagyméretű erőforrás osztályok számos egyidejű helyet foglalnak le, ezért más lekérdezések várólistára helyezését okozhatják.
 
-Végül a számításra optimalizált szint használata esetén mindegyik erőforrásosztály 2,5-szer több memóriát kap, mint a rugalmas optimalizált szint esetén.
+Végezetül az SQL Data Warehouse Gen2 verziójának használatával minden erőforrásosztály 2,5-szer több memóriát kap, mint a Gen1-el.
 
 További információk az [erőforrásosztályokról és a párhuzamos működésről].
 

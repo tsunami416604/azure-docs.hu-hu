@@ -1,6 +1,6 @@
 ---
-title: Linux rendszerű virtuális gépek terheléselosztása az Azure-ban | Microsoft Docs
-description: A cikk azt ismerteti, hogyan hozhat létre egy magas rendelkezésre állású és biztonságos alkalmazást három Linux rendszerű virtuális gépen az Azure Load Balancer használatával
+title: Oktatóanyag – Linux rendszerű virtuális gépek terheléselosztása az Azure-ban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre terheléselosztót az Azure CLI 2.0-val egy magas rendelkezésre állású és biztonságos alkalmazáshoz három Linux rendszerű virtuális gépen keresztül
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: baae0ee72056d2f7437a865b11f738ef0a2e6934
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Linux rendszerű virtuális gépek terheléselosztása az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
+# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli-20"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI 2.0 használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
+
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
@@ -34,10 +35,9 @@ A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a
 > * Terheléselosztó megtekintése működés közben
 > * Virtuális gépek hozzáadása a terheléselosztóhoz és eltávolításuk a terheléselosztóból
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Az Azure-terheléselosztók áttekintése
 Az Azure-terheléselosztók 4. rétegbeli (TCP, UDP) terheléselosztók, amelyek magas rendelkezésre állást biztosítanak azáltal, hogy a bejövő forgalmat elosztják az ép virtuális gépek között. A terheléselosztó állapotmintája ez egyes virtuális gépek adott portjait monitorozza, és csak a működő virtuális gépekre terjeszt forgalmat.

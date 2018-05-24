@@ -1,6 +1,6 @@
 ---
-title: Egyéni virtuálisgép-rendszerképek létrehozása az Azure CLI használatával | Microsoft Docs
-description: Oktatóanyag – Egyéni virtuálisgép-rendszerképek létrehozása az Azure CLI használatával.
+title: Oktatóanyag – Egyéni virtuálisgép-rendszerképek létrehozása az Azure CLI használatával | Microsoft Docs
+description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI 2.0-t egyéni virtuálisgép-rendszerképek az Azure-ban történő létrehozásához.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 911bb639402fb4577eb5bc3ff5b3096c66806378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 766e247775e61d7427b658b66948aa6699a7241a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>Egy Azure-beli virtuális gép egyéni rendszerképének létrehozása a CLI-vel
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli-20"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI 2.0 használatával
 
 Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni rendszerképek segítségével indíthatók olyan konfigurálások, mint az alkalmazások betöltése, alkalmazások konfigurálása és más operációsrendszer-konfigurálások. Ebben az oktatóanyagban létrehoz egy egyéni rendszerképet egy Azure-beli virtuális gépről. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -33,10 +33,9 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -52,7 +51,7 @@ Egy virtuális gépről készült rendszerkép létrehozásához először elő 
 
 A megszüntetés a gépspecifikus információk eltávolításával általánosítja a virtuális gépet. Ez az általánosítás teszi lehetővé, hogy több virtuális gépet helyezzen üzembe egyetlen rendszerképből. A megszüntetés során a gazdanév visszaáll a *localhost.localdomain* értékre. A rendszer törli az SSH-gazdakulcsokat, a névkiszolgáló-konfigurációkat, a rendszergazdai szintű jelszót és a gyorsítótárazott DHCP-bérleteket is.
 
-A virtuális gép megszüntetéséhez használja az azure-os virtuálisgép-ügynököt (waagent). Az azure-os virtuálisgép-ügynök telepítve van a virtuális gépen, és felügyeli a kiépítést, valamint az Azure Fabric Controllerrel való kommunikációt. További információk: [Azure Linux-ügynök – felhasználói útmutató](agent-user-guide.md).
+A virtuális gép megszüntetéséhez használja az azure-os virtuálisgép-ügynököt (waagent). Az azure-os virtuálisgép-ügynök telepítve van a virtuális gépen, és felügyeli a kiépítést, valamint az Azure Fabric Controllerrel való kommunikációt. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
 
 Csatlakozzon SSH-val a virtuális géphez, és futtassa az alábbi parancsot a virtuális gép megszüntetéséhez. A `+user` argumentummal a rendszer az utoljára kiépített felhasználói fiókot és az ahhoz társított adatokat is törli. Cserélje le a példában szereplő IP-címet a virtuális gépe nyilvános IP-címére.
 

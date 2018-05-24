@@ -1,13 +1,13 @@
 ---
-title: "Linux rendszerű virtuális gép testreszabása az első rendszerindításkor az Azure-ban | Microsoft Docs"
-description: "Ismerje meg, hogyan szabhatja testre a Linux rendszerű virtuális gépeket a cloud-init és a Key Vault segítségével az első Azure-ban való indításkor"
+title: Oktatóanyag – Linux rendszerű virtuális gép testreszabása a cloud-init használatával az Azure-ban | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan szabhatja testre az Azure-ban először induló linuxos virtuális gépeket a cloud-init és a Key Vault használatával
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 79d87b5d332597f2c0faf3c585eee49aba3e03bc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e3c1c0552b379ff99f27053d8f0ca8a76766a016
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Linux rendszerű virtuális gép testreszabása az első rendszerindításkor
+# <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Oktatóanyag – Cloud-init használata az Azure-ban először induló linuxos virtuális gépek testreszabásához
+
 Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuális gépekhez, és hogyan telepítheti manuálisan az NGINX-et. A virtuális gépek gyors és következetes létrehozásához általában valamilyen automatizálásra van szükség. A virtuális gépek első rendszerindításkor való testreszabásának általánosan használt megközelítése a [cloud-init](https://cloudinit.readthedocs.io) használata. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -32,12 +33,9 @@ Egy korábbi oktatóanyagból megtudhatta, hogyan csatlakozhat SSH-val a virtuá
 > * A Key Vault használata a tanúsítványok biztonságos tárolására
 > * Az NGINX biztonságos telepítéseinek automatizálása a cloud-init használatával
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).  
-
-
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="cloud-init-overview"></a>A cloud-init áttekintése
 A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a cloud-init a kezdeti rendszerindítás során fut, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.

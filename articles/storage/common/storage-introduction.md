@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -28,7 +28,7 @@ Az Azure Storage a Microsoft felhőalapú tárolási megoldása a modern adattá
 
 Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza: 
 
-- [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló a szöveges és bináris adatokhoz.
+- [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló szöveges és bináris adatokhoz.
 - [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányokhoz.
 - [Azure Queues](../queues/storage-queues-introduction.md): Az alkalmazások összetevői között megbízható üzenetkezelést biztosító üzenettároló. 
 - [Azure Tables](../../cosmos-db/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
@@ -179,7 +179,7 @@ Az Azure Storage-erőforrások bármely olyan nyelvvel hozzáférhetők, amelyek
 * [A Storage szolgáltatások REST API-ja](https://docs.microsoft.com/rest/api/storageservices/)
 * [A Storage ügyféloldali kódtára a .NET-hez](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [A Storage ügyféloldali kódtára a Javához/Androidhoz](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [A Storage ügyféloldali kódtára a Node.js-hez](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [A Storage ügyféloldali kódtára a Node.js-hez](https://docs.microsoft.com/javascript/api/azure-storage)
 * [A Storage ügyféloldali kódtára a Pythonhoz](https://github.com/Azure/azure-storage-python)
 * [A Storage ügyféloldali kódtára a PHP-hez](https://github.com/Azure/azure-storage-php)
 * [A Storage ügyféloldali kódtára a Rubyhoz](https://github.com/Azure/azure-storage-ruby)

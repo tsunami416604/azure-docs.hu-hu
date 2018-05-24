@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 05/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c86a98dd819b91608be04f1466dc1e6764ee4b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 173e31e3b1f855d488f7f8baf6659b1521ea7aa5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -107,7 +107,7 @@ Ha további hálózati adaptereket szeretne hozzáadni a konfigurációs kiszolg
 
 ### <a name="configure-settings-and-add-the-vmware-server"></a>Beállítások konfigurálása és a VMware-kiszolgáló hozzáadása
 
-1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza a **Setup connectivity** (Kapcsolat beállítása) gombot, majd válassza ki a hálózati adaptert, amely a replikációs forgalmat fogadja. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás a konfigurálás után nem módosítható.
+1. A konfigurációs kiszolgáló felügyeleti varázslójában válassza a **Setup connectivity** (Kapcsolat beállítása) gombot, majd válassza ki a folyamatkiszolgáló által a virtuális gépekről érkező replikációs forgalom fogadására használt hálózati adaptert. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás a konfigurálás után nem módosítható.
 2. A **Helyreállítási tár kiválasztása** területen válassza ki az Azure-előfizetést, valamint a megfelelő erőforráscsoportot és tárolót.
 3. A **Független gyártótól származó szoftver telepítése** területen fogadja el a licencszerződést. Kattintson a **Letöltés és telepítés** gombra a MySQL-kiszolgáló telepítéséhez.
 4. Válassza a **VMware PowerCLI telepítése** elemet. Mielőtt ezt megtenné, zárja be az összes böngészőablakot. Ezután válassza a **Folytatás** elemet.

@@ -1,6 +1,6 @@
 ---
-title: SQL Server-adatbázis migrálása az Azure SQL Database-be a DMS használatával | Microsoft Docs
-description: Ismerje meg, hogyan migrálhatja SQL Server-adatbázisát az Azure SQL Database-be a DMS használatával.
+title: SQL Server-adatbázis migrálása az Azure SQL Database-be a DMA használatával | Microsoft Docs
+description: Ismerje meg, hogyan migrálhatja SQL Server-adatbázisát az Azure SQL Database-be a DMA használatával.
 services: sql-database
 author: CarlRabeler
 manager: craigg
@@ -9,13 +9,13 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 36548e4d088b809f4fb16d89aaa3ef0a802d6d5c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e714667183704670807fd2f62767b75f62978a38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dms"></a>SQL Server-adatbázis migrálása az Azure SQL Database-be a DMS használatával
+# <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>SQL Server-adatbázis migrálása az Azure SQL Database-be a DMA használatával
 
 Az SQL Server-adatbázis önálló Azure SQL Database-adatbázisba való áthelyezéséhez csak létre kell hoznia egy üres SQL-adatbázist az Azure-ban, majd a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) segítségével importálnia kell az adatbázist az Azure-ba. További migrálási lehetőségekért lásd: [Adatbázis migrálása az Azure SQL Database-be](sql-database-cloud-migrate.md).
 
@@ -46,7 +46,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Üres SQL-adatbázis létrehozása
 
-Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) jön létre. 
+Az Azure SQL-adatbázis [számítási és tárolási erőforrások](sql-database-service-tiers-dtu.md) egy meghatározott készletével együtt jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL Database logikai kiszolgálón](sql-database-features.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához. 
 
@@ -87,9 +87,9 @@ Kövesse az alábbi lépéseket egy üres SQL-adatbázis létrehozásához.
 8. A **Kiegészítő tárterület** beállítás használatához el kell fogadnia az előzetes verziójú szolgáltatás feltételeit. 
 
    > [!IMPORTANT]
-   > \* A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és extra költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
+   > - A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és további költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
    >
-   >\* Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia, és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > - Az 1 TB tárhelyméretet meghaladó prémium szintű készletek jelenleg a következő régiókban érhetők el: Dél-Brazília, Közép-Kanada, Kelet-Kanada, USA középső régiója, Közép-Franciaország, Közép-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, az Egyesült Királyság déli régiója, az Egyesült Királyság nyugati régiója, USA keleti régiója 2, USA nyugati régiója, USA-beli államigazgatás – Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
 
 9. A kiszolgálószint, a DTU-szám és a tárterületméret kiválasztása után kattintson az **Alkalmaz** gombra.  

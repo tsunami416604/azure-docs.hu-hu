@@ -1,8 +1,8 @@
 ---
 title: Application Insights az Azure Cloud Servicesben | Microsoft Docs
-description: "Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal"
+description: Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 keywords: WAD2AI, Azure Diagnostics
 author: mrbullwinkle
 manager: carmonm
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -223,7 +223,7 @@ Annak érdekében, hogy átfogó képet kaphasson a rendszerről, a főbb figyel
 
 Ha a rendszer egyéb Azure-szolgáltatásokat (például Stream Analytics) is tartalmaz, ezeknek a figyelési diagramjait is beillesztheti. 
 
-Ha rendelkezik ügyfél-mobilalkalmazással, a megfelelő kód beszúrásával egyéni eseményeket küldhet a fő felhasználói műveletekre vonatkozóan, és létrehozhat egy [HockeyApp-hidat](app-insights-hockeyapp-bridge-app.md). [Analytics](app-insights-analytics.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
+Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](app-insights-mobile-center-quickstart.md). [Analytics](app-insights-analytics.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
 
 ## <a name="example"></a>Példa
 [Ez a példa](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.

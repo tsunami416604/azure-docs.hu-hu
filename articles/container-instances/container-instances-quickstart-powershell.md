@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 8670de00e3ab66ec4a5fa5c0c340e38182fd1ffd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4a1d338304dbd5e2845768b7bf0273eed23af0ec
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rövid útmutató: Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
@@ -21,7 +21,7 @@ Az Azure Container Instances segítségével egyszerűen hozhat létre és felü
 
 ![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][qs-powershell-01]
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
@@ -81,7 +81,7 @@ Miután a tároló **ProvisioningState** értéke `Succeeded` állapotba vált, 
 
 ![Az Azure Container Instances használatával üzembe helyezett IIS képe a böngészőben][qs-powershell-01]
 
-## <a name="delete-the-container"></a>A tároló törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Miután végzett a tárolóval, a [Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] parancsmag használatával távolíthatja el:
 
@@ -91,7 +91,7 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy előre elkészített Windows-tárolót indított az Azure Container Instances szolgáltatásban. Ha próbaképpen szeretne saját maga létrehozni és üzembe helyezni egy tárolót az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
+Ebben a rövid útmutatóban létrehozott egy Azure-beli tárolópéldányt egy, a nyilvános Docker Hub regisztrációs adatbázisban található rendszerképből. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet az Azure Container Instances szolgáltatásban egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)

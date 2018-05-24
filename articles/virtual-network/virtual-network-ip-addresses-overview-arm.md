@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: d50333888592d2d3e13c40c07a7e58f8676df075
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-cím-típusok és lefoglalási módszerek az Azure-ban
 
@@ -53,11 +53,15 @@ A nyilvános IP-címek IPv4- vagy IPv6-címekkel jönnek létre. A nyilvános IP
 
 A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek létre:
 
+>[!IMPORTANT]
+> A terheléselosztóhoz és a nyilvános IP-erőforrásokhoz megegyező SKU-kat kell használnia. Az alapszintű és a standard SKU-erőforrások nem kombinálhatók. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.  Új kialakítások esetén a standard SKU-erőforrások használata ajánlott.  Részletekért tekintse át a [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) című részt.
+
 #### <a name="basic"></a>Alapszintű
 
 A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím alapszintű termékváltozatú nyilvános IP-cím. A termékváltozatok bevezetésének köszönhetően mostantól megadhatja, hogy milyen termékváltozatú legyen a nyilvános IP-cím. Az alapszintű termékváltozatú címek jellemzői:
 
 - A statikus vagy a dinamikus kiosztási módszerrel oszthatók ki.
+- Alapértelmezés szerint nyitva vannak.  A hálózati biztonsági csoportok használata ajánlott, de nem kötelező a bejövő és kimenő forgalom korlátozásához.
 - Kioszthatók bármely Azure-erőforrás számára, amelynek kiosztható nyilvános IP-cím, például hálózati adapterek, VPN-átjárók, alkalmazásátjárók és internetkapcsolattal rendelkező terheléselosztók számára.
 - Hozzárendelhetők egy adott zónához.
 - Nem zónaredundánsak. A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -67,17 +71,18 @@ A termékváltozatok bevezetése előtt létrehozott minden nyilvános IP-cím a
 A standard termékváltozatú nyilvános IP-címek jellemzői:
 
 - Csak a statikus kiosztási módszerrel oszthatók ki.
-- Hálózati adapterek vagy standard, internetkapcsolattal rendelkező terheléselosztók számára oszthatók ki. Az Azure Load Balancer termékváltozataival kapcsolatos további információkért tekintse meg [az Azure Load Balancer standard termékváltozatáról](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket.
-- Alapértelmezés szerint zónaredundánsak. Létrehozhatóak zónásan, és garantálhatóak adott rendelkezésre állási zónákban. A rendelkezésre állási zónákkal kapcsolatos további információkért tekintse meg [a rendelkezésre állási zónák áttekintését](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Alapértelmezés szerint biztonságosak és zártak a bejövő forgalommal szemben. Az engedélyezett bejövő forgalmat kifejezetten engedélyeznie kell egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups).
+- Hálózati adapterekhez vagy nyilvános standard terheléselosztókhoz rendelhetők hozzá. További információ az Azure standard terheléselosztókról: [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Alapértelmezés szerint zónaredundánsak. Létrehozhatóak zónásan, és garantálhatóak adott rendelkezésre állási zónákban. További információ a rendelkezésre állási zónákról: [A rendelkezésre állási zónák áttekintése](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [A Standard Load Balancer és a rendelkezésre állási zónák](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Ha egy standard termékváltozatú nyilvános IP-címet hozzárendel egy virtuális gép hálózati adapteréhez, kifejezetten engedélyeznie kell a kívánt forgalmat egy [hálózati biztonsági csoporttal](security-overview.md#network-security-groups). Az erőforrással történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy hálózati biztonsági csoportot, és kifejezetten nem engedélyezi a kívánt forgalmat.
+> A standard SKU-erőforrásokkal történő kommunikáció meghiúsul, amíg nem hoz létre és rendel hozzá egy [hálózati biztonsági csoportot](security-overview.md#network-security-groups), és kifejezetten nem engedélyezi a kívánt bejövő forgalmat.
 
 ### <a name="allocation-method"></a>Lefoglalási módszer
 
-Az IP-címek két különféle módszerrel oszthatók ki egy nyilvános IP-cím erőforrás számára: *dinamikus* vagy *statikus* módon. Az alapértelmezett lefoglalási módszer a *dinamikus*, amelyben az IP-cím **nincs** lefoglalva a létrehozás idején. Ehelyett a nyilvános IP-címet akkor foglalja le a rendszer, amikor elindítja (vagy létrehozza) a hozzárendelt erőforrást (pl. virtuális gépet vagy terheléselosztót). Az IP-cím akkor szabadul fel, ha leállítja (vagy törli) az erőforrást. Az A erőforrásból való felszabadítását követően például az IP-cím kiosztható egy másik erőforrás számára. Ha az IP-címet hozzárendeli egy másik erőforráshoz, amikor az A erőforrás le van állítva, az A erőforrás újraindításakor egy eltérő IP-cím lesz kiosztva számára.
+Mind az alapszintű, mind a standard SKU nyilvános IP-címek támogatják a *statikus* kiosztási módszert.  A rendszer egy erőforrást rendel az IP-címhez a létrehozásakor, és az erőforrás törlésekor az IP-cím felszabadul.
 
-A lefoglalási módszert állíthatja *statikusra* is, hogy a kapcsolódó erőforráshoz tartozó IP-címek változatlanok maradjanak. A rendszer azonnal kioszt egy statikus IP-címet. A cím csak akkor szabadul fel, ha törli az erőforrást, vagy *dinamikusra* változtatja a kiosztási módszert.
+Az alapszintű SKU nyilvános IP-címek ezenkívül támogatják a *dinamikus* kiosztási módszert is, amelyet az alapértelmezett beállítás, ha nincs meghatározva a kiosztási módszer.  A *dinamikus* kiosztási módszer alapszintű nyilvános IP-cím erőforrásokkal való használata azt jelenti, hogy az IP-cím kiosztása **nem** az erőforrás létrejöttekor történik.  A nyilvános IP-cím akkor lesz kiosztva, ha hozzárendeli egy virtuális géphez, vagy amikor elhelyezi az első virtuálisgép-példányt egy alapszintű terheléselosztó háttérkészletében.   Az IP-cím akkor szabadul fel, ha leállítja (vagy törli) az erőforrást.  Az A erőforrásból való felszabadítását követően például az IP-cím kiosztható egy másik erőforrás számára. Ha az IP-címet hozzárendeli egy másik erőforráshoz, amikor az A erőforrás le van állítva, az A erőforrás újraindításakor egy eltérő IP-cím lesz kiosztva számára. Ha az alapszintű nyilvános IP-cím erőforrás kiosztási módszerét *statikusról* *dinamikusra* módosítja, akkor a cím felszabadul. A lefoglalási módszert állíthatja *statikusra* is, hogy a kapcsolódó erőforráshoz tartozó IP-címek változatlanok maradjanak. A rendszer azonnal kioszt egy statikus IP-címet.
 
 > [!NOTE]
 > Akkor sem adhatja meg a nyilvános IP-cím erőforráshoz rendelt konkrét IP-címet, ha a kiosztási módszert *statikusra* állítja. Ehelyett az Azure az elérhető IP-címek készletéből foglalja le az IP-címet azon az Azure-helyen, ahol az erőforrást létrehozták.
@@ -111,11 +116,11 @@ Bármely [termékváltozattal](#SKU) létrehozott nyilvános IP-címet társíth
 
 ### <a name="vpn-gateways"></a>VPN-átjárók
 
-Az [Azure VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy Azure virtuális hálózatot (VNet) kapcsol össze más Azure virtuális hálózatokkal vagy egy helyszíni hálózattal. A rendszer egy nyilvános IP-címet rendel a VPN-átjáróhoz, hogy az képes legyen kommunikálni a távoli hálózattal. Csak *dinamikus* nyilvános IP-címeket rendelhet a VPN-átjárókhoz.
+Az [Azure VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy Azure virtuális hálózatot (VNet) kapcsol össze más Azure virtuális hálózatokkal vagy egy helyszíni hálózattal. A rendszer egy nyilvános IP-címet rendel a VPN-átjáróhoz, hogy az képes legyen kommunikálni a távoli hálózattal. A VPN-átjárókhoz csak *dinamikus* alapszintű nyilvános IP-címeket rendelhet.
 
 ### <a name="application-gateways"></a>Alkalmazásátjárók
 
-A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként szolgál majd. Csak *dinamikus* nyilvános IP-címeket rendelhet az alkalmazásátjárók előtér-konfigurációjához.
+A nyilvános IP-címet társíthatja egy [Azure Application Gateway átjáróval](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), ha hozzárendeli az átjáró **előtér**-konfigurációjához. Ez a nyilvános IP-cím terheléselosztásos virtuális IP-címként szolgál majd. Az alkalmazásátjárók előtér-konfigurációjához csak *dinamikus* alapszintű nyilvános IP-címeket rendelhet.
 
 ### <a name="at-a-glance"></a>Egy pillantásra
 A következő táblázat bemutatja azokat a konkrét tulajdonságokat, amelyekkel a nyilvános IP-címek legfelsőbb szintű erőforráshoz társíthatók, továbbá a lehetséges használható kiosztási módszereket (dinamikus vagy statikus).

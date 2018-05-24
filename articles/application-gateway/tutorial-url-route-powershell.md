@@ -1,46 +1,49 @@
 ---
-title: Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással – Azure PowerShell
-description: Megtudhatja, hogyan hozhat létre alkalmazásátjárót URL-útvonal alapján átirányított forgalommal az Azure PowerShell használatával.
+title: Webes forgalom irányítása URL-cím alapján – Azure PowerShell
+description: Megtudhatja, hogyan irányíthatja a webes forgalmat az URL-cím alapján egy adott, skálázható kiszolgálókészletre az Azure PowerShell használatával.
 services: application-gateway
 author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 3/20/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2db93eaf5dc038570a2b872118c06df68bb4c068
+ms.openlocfilehash: 63533319d555e79c86d4fe3cdae0b168115e7ec5
 ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Alkalmazásátjáró létrehozása URL-útvonalon alapuló átirányítással az Azure PowerShell használatával
+# <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Webes forgalom irányítása URL-cím alapján az Azure PowerShell használatával
 
-Az Azure PowerShell használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat az [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben az oktatóanyagban háttérkészleteket hoz létre a [Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Ezután URL-útválasztási szabályokat hoz létre, amelyek biztosítják, hogy a webes forgalom a megfelelő háttérkészletre legyen átirányítva.
+Az Azure PowerShell használatával konfigurálhatja a webes forgalom adott, skálázható kiszolgálókészletre való irányítását az alkalmazás eléréséhez használt URL-cím alapján. Ebben az oktatóanyagban egy három háttérkészlettel rendelkező [Azure Application Gatewayt](application-gateway-introduction.md) hoz létre [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használatával. Mindegyik háttérkészlet egy adott célhoz használható, például: gyakori adatok, képek, videók.  A forgalom különböző készletekhez való irányítása lehetővé teszi, hogy az ügyfelei akkor és azt az információt kapják meg, amelyre szükségük van.
+
+A forgalom irányításának engedélyezéséhez figyelőkhöz hozzárendelt [útválasztási szabályokat](application-gateway-url-route-overview.md) fog létrehozni, amelyek adott portokat figyelnek annak érdekében, hogy a webes forgalom a készlet megfelelő kiszolgálójára érkezzen meg.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
+> * Figyelők, URL-útvonaltérképek és szabályok létrehozása
+> * Skálázható háttérkészletek létrehozása
 
-A következő példában a 8080-as és a 8081-es portról egyaránt érkezik webhelyforgalom, amely ugyanazokra a háttérkészletekre lesz átirányítva:
-
-![URL-útválasztási példa](./media/tutorial-url-redirect-powershell/scenario.png)
+![URL-útválasztási példa](./media/tutorial-url-route-powershell/scenario.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+
+Az erőforrások létrehozásához szükséges idő miatt az oktatóanyag elvégzése akár 90 percet is igénybe vehet.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal.  
+Olyan erőforráscsoportot kell létrehoznia, amely az alkalmazás összes erőforrását tartalmazza. 
+
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmaggal.  
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -48,7 +51,9 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 
-Hozza létre a *myBackendSubnet* és a *myAGSubnet* alhálózatkonfigurációt a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmaggal. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) parancsmag és az alhálózatkonfigurációk használatával. Végül hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) parancsmaggal. Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
+Akár meglévő virtuális hálózatot használ, akár újat hoz létre, csak azt az alhálózatot tartalmazhatja, amelyet kizárólag az alkalmazásátjárókhoz használ. Ebben az oktatóanyagban létre fog hozni egy alhálózatot az alkalmazásátjáróhoz, egyet pedig a méretezési csoportokhoz. Hozzon létre egy nyilvános IP-címet, amely engedélyezi a hozzáférést az alkalmazásátjáróban található erőforrásokhoz.
+
+Hozza létre a *myAGSubnet* és a *myBackendSubnet* alhálózatkonfigurációkat a [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) parancsmaggal. Hozza létre a *myVNet* nevű virtuális hálózatot a [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) parancsmag és az alhálózatkonfigurációk használatával. Végül hozza létre a *myAGPublicIPAddress* nevű nyilvános IP-címet a [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) parancsmaggal. Ezek az erőforrások biztosítják az alkalmazásátjáró és a hozzá kapcsolódó erőforrások hálózati kapcsolatát.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -59,14 +64,13 @@ $agSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
   -Name myAGSubnet `
   -AddressPrefix 10.0.2.0/24
 
-New-AzureRmVirtualNetwork `
+$vnet = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myVNet `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $backendSubnetConfig, $agSubnetConfig
-
-New-AzureRmPublicIpAddress `
+$pip = New-AzureRmPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
@@ -83,7 +87,7 @@ Ebben a szakaszban az alkalmazásátjárót támogató erőforrásokat, majd az 
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
-A korábban létrehozott *myAGSubnet* alhálózatot társítsa az alkalmazásátjáróhoz a [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) parancsmaggal. Rendelje hozzá a *myAGPublicIPAddress* IP-címet az alkalmazásátjáróhoz a [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) parancsmaggal. Ezután létrehozhatja a HTTP-portot a [New-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendport) parancsmaggal.
+A korábban létrehozott *myAGSubnet* alhálózatot társítsa az alkalmazásátjáróhoz a [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration) parancsmaggal. Rendelje hozzá a *myAGPublicIPAddress* IP-címet az alkalmazásátjáróhoz a [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig) parancsmaggal.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -127,13 +131,15 @@ $poolSettings = New-AzureRmApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Az alapértelmezett figyelő és szabály létrehozása
 
-A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat egy háttérkészletre. Ebben az oktatóanyagban több figyelőt hoz létre. Az első alapszintű figyelő a gyökér URL-címnél várja a forgalmat. A többi figyelő adott URL-címeknél várja a forgalmat, például: *http://52.168.55.24:8080/images/* vagy *http://52.168.55.24:8081/video/*.
+A figyelő ahhoz szükséges, hogy az alkalmazásátjáró megfelelően irányíthassa a forgalmat a háttérkészlethez. Ebben az oktatóanyagban két figyelőt hoz létre. Az első létrehozandó alapszintű figyelő a gyökér URL-cím forgalmát figyeli. A második létrehozandó alapszintű figyelő adott URL-címek forgalmát figyeli.
 
-Hozzon létre egy *defaultListener* nevű figyelőt a [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) parancsmaggal a korábban létrehozott előtér-konfigurációval és előtérbeli porttal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *rule1* nevű alapszintű szabályt a [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) parancsmaggal.
+Hozza létre a *myDefaultListener* nevű alapértelmezett figyelőt a [New-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/new-azurermapplicationgatewayhttplistener) parancsmaggal és a korábban létrehozott előtér-konfigurációval és előtérbeli porttal. 
+
+A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *rule1* nevű alapszintű szabályt a [New-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/new-azurermapplicationgatewayrequestroutingrule) parancsmaggal.
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzureRmApplicationGatewayHttpListener `
-  -Name defaultListener `
+  -Name myDefaultListener `
   -Protocol Http `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $frontendport
@@ -156,7 +162,7 @@ $sku = New-AzureRmApplicationGatewaySku `
   -Tier Standard `
   -Capacity 2
 
-New-AzureRmApplicationGateway `
+$appgw = New-AzureRmApplicationGateway `
   -Name myAppGateway `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
@@ -170,9 +176,11 @@ New-AzureRmApplicationGateway `
   -Sku $sku
 ```
 
-### <a name="add-backend-pools-and-ports"></a>Háttérkészletek és portok hozzáadása
+Az alkalmazásátjáró létrehozása akár 30 percig is tarthat. Várja meg az üzembe helyezés sikeres befejezését, mielőtt továbblépne a következő szakaszra. Az oktatóanyag ezen pontján egy olyan alkalmazásátjáróval rendelkezik, amely a 80-as porton figyeli a forgalmat és az alapértelmezett kiszolgálókészletre irányítja a forgalmat.
 
-Az alkalmazásátjáróhoz az [Add-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/add-azurermapplicationgatewaybackendaddresspool) parancsmaggal adhat hozzá háttérkészleteket. Ebben a példában az *imagesBackendPool* és a *videoBackendPool* jön létre. Adja hozzá az előtérportot a készletekhez az [Add-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/add-azurermapplicationgatewayfrontendport) parancsmaggal. Ezután küldje el a módosításokat az alkalmazásátjárónak a [Set-AzureRmApplicationGateway](/powershell/module/azurerm.network/set-azurermapplicationgateway) parancsmaggal.
+### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek, illetve port hozzáadása
+
+Adja hozzá az alkalmazásátjáróhoz az *imagesBackendPool* és a *videoBackendPool* nevű háttérkészleteket az [Add-AzureRmApplicationGatewayBackendAddressPool](/powershell/module/azurerm.network/add-azurermapplicationgatewaybackendaddresspool) parancsmaggal. Adja hozzá az előtérportot a készletekhez az [Add-AzureRmApplicationGatewayFrontendPort](/powershell/module/azurerm.network/add-azurermapplicationgatewayfrontendport) parancsmaggal. Küldje el a módosításokat az alkalmazásátjárónak a [Set-AzureRmApplicationGateway](/powershell/module/azurerm.network/set-azurermapplicationgateway) parancsmaggal.
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -192,19 +200,14 @@ Add-AzureRmApplicationGatewayFrontendPort `
   -Name bport `
   -Port 8080
 
-Add-AzureRmApplicationGatewayFrontendPort `
-  -ApplicationGateway $appgw `
-  -Name rport `
-  -Port 8081
-
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-## <a name="add-listeners-and-rules"></a>Figyelők és szabályok hozzáadása
+Az alkalmazásátjáró frissítése akár 20 percet is igénybe vehet.
 
-### <a name="add-listeners"></a>Figyelők hozzáadása
+### <a name="add-backend-listener"></a>Háttérfigyelő hozzáadása
 
-Adja hozzá a forgalom irányításához szükséges *backendListener* és *redirectedListener* nevű figyelőket az [Add-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener) parancsmaggal.
+Adja hozzá a forgalom irányításához szükséges *backendListener* nevű háttérfigyelőt az [Add-AzureRmApplicationGatewayHttpListener](/powershell/module/azurerm.network/add-azurermapplicationgatewayhttplistener) parancsmaggal.
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -214,10 +217,6 @@ $appgw = Get-AzureRmApplicationGateway `
 $backendPort = Get-AzureRmApplicationGatewayFrontendPort `
   -ApplicationGateway $appgw `
   -Name bport
-
-$redirectPort = Get-AzureRmApplicationGatewayFrontendPort `
-  -ApplicationGateway $appgw `
-  -Name rport
 
 $fipconfig = Get-AzureRmApplicationGatewayFrontendIPConfig `
   -ApplicationGateway $appgw
@@ -229,19 +228,12 @@ Add-AzureRmApplicationGatewayHttpListener `
   -FrontendIPConfiguration $fipconfig `
   -FrontendPort $backendPort
 
-Add-AzureRmApplicationGatewayHttpListener `
-  -ApplicationGateway $appgw `
-  -Name redirectedListener `
-  -Protocol Http `
-  -FrontendIPConfiguration $fipconfig `
-  -FrontendPort $redirectPort
-
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="add-the-default-url-path-map"></a>Alapértelmezett URL-útvonaltérkép hozzáadása
+### <a name="add-url-path-map"></a>URL-útvonaltérkép hozzáadása
 
-Az URL-útvonaltérképek biztosítják, hogy adott URL-címek adott háttérkészletekre legyenek irányítva. Hozza létre az *imagePathRule* és a *videoPathRule* nevű URL-útvonaltérképeket a [New-AzureRmApplicationGatewayPathRuleConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig) és az [Add-AzureRmApplicationGatewayUrlPathMapConfig](/powershell/module/azurerm.network/add-azurermapplicationgatewayurlpathmapconfig) parancsmaggal.
+Az URL-útvonaltérképek biztosítják, hogy az alkalmazáshoz küldött URL-címek adott háttérkészletekhez lesznek irányítva. Hozza létre az *imagePathRule* és a *videoPathRule* nevű URL-útvonaltérképeket a [New-AzureRmApplicationGatewayPathRuleConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewaypathruleconfig) és az [Add-AzureRmApplicationGatewayUrlPathMapConfig](/powershell/module/azurerm.network/add-azurermapplicationgatewayurlpathmapconfig) parancsmaggal.
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -272,9 +264,9 @@ $imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig `
 
 $videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig `
   -Name videoPathRule `
-  -Paths "/video/*" `
-  -BackendAddressPool $videoPool `
-  -BackendHttpSettings $poolSettings
+    -Paths "/video/*" `
+    -BackendAddressPool $videoPool `
+    -BackendHttpSettings $poolSettings
 
 Add-AzureRmApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
@@ -286,68 +278,9 @@ Add-AzureRmApplicationGatewayUrlPathMapConfig `
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
-### <a name="add-redirection-configuration"></a>Átirányítási konfiguráció hozzáadása
+### <a name="add-routing-rule"></a>Útválasztási szabály hozzáadása
 
-A figyelő átirányítását az [Add-AzureRmApplicationGatewayRedirectConfiguration](/powershell/module/azurerm.network/add-azurermapplicationgatewayredirectconfiguration) parancsmaggal konfigurálhatja.
-
-```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
-  -ResourceGroupName myResourceGroupAG `
-  -Name myAppGateway
-
-$backendListener = Get-AzureRmApplicationGatewayHttpListener `
-  -ApplicationGateway $appgw `
-  -Name backendListener
-
-$redirectConfig = Add-AzureRmApplicationGatewayRedirectConfiguration `
-  -ApplicationGateway $appgw `
-  -Name redirectConfig `
-  -RedirectType Found `
-  -TargetListener $backendListener `
-  -IncludePath $true `
-  -IncludeQueryString $true
-
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
-```
-
-### <a name="add-the-redirection-url-path-map"></a>Átirányítási URL-útvonaltérkép hozzáadása
-
-```azurepowershell-interactive
-$appgw = Get-AzureRmApplicationGateway `
-  -ResourceGroupName myResourceGroupAG `
-  -Name myAppGateway
-
-$poolSettings = Get-AzureRmApplicationGatewayBackendHttpSettings `
-  -ApplicationGateway $appgw `
-  -Name myPoolSettings
-
-$defaultPool = Get-AzureRmApplicationGatewayBackendAddressPool `
-  -ApplicationGateway $appgw `
-  -Name appGatewayBackendPool
-
-$redirectConfig = Get-AzureRmApplicationGatewayRedirectConfiguration `
-  -ApplicationGateway $appgw `
-  -Name redirectConfig
-
-$redirectPathRule = New-AzureRmApplicationGatewayPathRuleConfig `
-  -Name redirectPathRule `
-  -Paths "/images/*" `
-  -RedirectConfiguration $redirectConfig
-
-Add-AzureRmApplicationGatewayUrlPathMapConfig `
-  -ApplicationGateway $appgw `
-  -Name redirectpathmap `
-  -PathRules $redirectPathRule `
-  -DefaultBackendAddressPool $defaultPool `
-  -DefaultBackendHttpSettings $poolSettings
-
-Set-AzureRmApplicationGateway -ApplicationGateway $appgw
-```
-
-### <a name="add-routing-rules"></a>Útválasztási szabályok hozzáadása
-
-Az útválasztási szabályok a létrehozott figyelőkkel társítják az URL-térképeket. A *defaultRule* és a *redirectedRule* nevű szabályokat az [Add-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/add-azurermapplicationgatewayrequestroutingrule) parancsmaggal adhatja hozzá.
-
+Az útválasztási szabály az URL-térképet társítja a létrehozott figyelőhöz. Adja hozzá a *rule2* nevű szabályt az [Add-AzureRmApplicationGatewayRequestRoutingRule](/powershell/module/azurerm.network/add-azurermapplicationgatewayrequestroutingrule) parancsmaggal.
 
 ```azurepowershell-interactive
 $appgw = Get-AzureRmApplicationGateway `
@@ -358,38 +291,23 @@ $backendlistener = Get-AzureRmApplicationGatewayHttpListener `
   -ApplicationGateway $appgw `
   -Name backendListener
 
-$redirectlistener = Get-AzureRmApplicationGatewayHttpListener `
-  -ApplicationGateway $appgw `
-  -Name redirectedListener
-
 $urlPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig `
   -ApplicationGateway $appgw `
   -Name urlpathmap
 
-$redirectPathMap = Get-AzureRmApplicationGatewayUrlPathMapConfig `
-  -ApplicationGateway $appgw `
-  -Name redirectpathmap
-
 Add-AzureRmApplicationGatewayRequestRoutingRule `
   -ApplicationGateway $appgw `
-  -Name defaultRule `
+  -Name rule2 `
   -RuleType PathBasedRouting `
   -HttpListener $backendlistener `
   -UrlPathMap $urlPathMap
-
-Add-AzureRmApplicationGatewayRequestRoutingRule `
-  -ApplicationGateway $appgw `
-  -Name redirectedRule `
-  -RuleType PathBasedRouting `
-  -HttpListener $redirectlistener `
-  -UrlPathMap $redirectPathMap
 
 Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 ```
 
 ## <a name="create-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok létrehozása
 
-Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A létrehozott méretezési csoportok neve *myvmss1*, *myvmss2* és *myvmss3*. Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
+Ebben a példában három virtuálisgép-méretezési csoportot hoz létre, amelyek támogatják a három létrehozott háttérkészletet. A létrehozott méretezési csoportok neve *myvmss1*, *myvmss2* és *myvmss3*. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -464,6 +382,8 @@ for ($i=1; $i -le 3; $i++)
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
+Minden méretezési csoport két virtuálisgép-példányt tartalmaz, amelyekre az IIS-t telepítheti. Az IIS egy mintaoldal futtatásával teszteli, hogy működik-e az alkalmazásátjáró.
+
 ```azurepowershell-interactive
 $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
@@ -471,7 +391,6 @@ $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/sa
 for ($i=1; $i -le 3; $i++)
 {
   $vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss$i
-
   Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
     -Name "customScript" `
     -Publisher "Microsoft.Compute" `
@@ -488,23 +407,21 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-A [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsmaggal kérheti le az alkalmazásátjáró nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: *http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm*, *http://52.168.55.24:8080/video/test.htm* vagy *http://52.168.55.24:8081/images/test.htm*.
+A [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) parancsmaggal kérje le az alkalmazásátjáró nyilvános IP-címét. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: *http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm* vagy *http://52.168.55.24:8080/video/test.htm*.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
 ```
 
-![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-redirect-powershell/application-gateway-iistest.png)
+![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest.png)
+
+Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/images/test.htm értékre, és cserélje az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a következő példához hasonló eredmény látható:
+
+![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-images.png)
 
 Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/video/test.htm értékre, és cserélje az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a következő példához hasonló eredmény látható:
 
-![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-redirect-powershell/application-gateway-iistest-images.png)
-
-Módosítsa az URL-címet http://&lt;ip-address&gt;:8080/video/test.htm értékre, és cserélje az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a következő példához hasonló eredmény látható:
-
-![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-redirect-powershell/application-gateway-iistest-video.png)
-
-Módosítsa az URL-címet http://&lt;ip-address&gt;:8081/images/test.htm értékre, és cserélje le az &lt;ip-address&gt; részt a saját IP-címére. Ekkor a képek háttérkészletére visszairányított forgalom látható a http://&lt;ip-address&gt;:8080/images címen.
+![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -513,15 +430,15 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroupAG
 ```
+
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Application Gateway létrehozása
-> * Figyelők és útválasztási szabályok hozzáadása
-> * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekhez
+> * Figyelők, URL-útvonaltérképek és szabályok létrehozása
+> * Skálázható háttérkészletek létrehozása
 
 > [!div class="nextstepaction"]
-> [Ismerje meg részletesebben az alkalmazásátjárók lehetőségeit](application-gateway-introduction.md)
+> [Forgalom átirányítása URL-cím alapján](./tutorial-url-redirect-powershell.md)

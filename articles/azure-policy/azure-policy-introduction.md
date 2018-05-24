@@ -1,27 +1,30 @@
 ---
-title: Az Azure Policy áttekintése | Microsoft Docs
+title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.reviewer: nini
-ms.date: 04/18/2018
+ms.date: 05/07/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 886026f8548cf3d7416b5034995399368de8c419
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e3ef8d0d9695218cbdb6e295d9a939b4c0c6618d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
 Az informatikai szabályozással rendet teremthet az üzleti célok és az informatikai projektek között. A hatékony informatikai szabályozás stratégiai szinten kezeli a kezdeményezések tervezését és a prioritások meghatározását. A cégben jelentős mennyiségű, láthatóan megoldhatatlan informatikai probléma jelentkezik? Szabályzatok bevezetésével hatékonyabban kezelheti és előzheti meg ezeket. Az Azure Policy pedig kifejezetten a szabályzatok bevezetésére szolgál.
 
-Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet. A szabályzatdefiníciók különböző szabályokat és műveleteket kényszerítenek ki az erőforrásokon, így azok megfelelnek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az Azure Policy kiértékeli az erőforrásokat, és megkeresi azokat, amelyek nem felelnek meg az érvényben lévő szabályzatdefinícióknak. Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos típusú virtuális gépeket engedélyez. Egy másik előírhatja, hogy az összes erőforrásnak rendelkeznie kell egy adott címkével. A rendszer aztán az erőforrások létrehozása és frissítése során kiértékeli a szabályzatokat.
+Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet. A szabályzatdefiníciók különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az Azure Policy kiértékeli az erőforrásokat, és megkeresi azokat, amelyek nem felelnek meg az érvényben lévő szabályzatdefinícióknak. Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos típusú virtuális gépeket engedélyez. Egy másik előírhatja, hogy az összes erőforrásnak rendelkeznie kell egy adott címkével. A rendszer aztán az erőforrások létrehozása és frissítése során kiértékeli a szabályzatokat.
+
+> [!IMPORTANT]
+> Az Azure Policy megfelelőségértékelése mostantól tarifacsomagtól függetlenül minden hozzárendeléshez elérhető. Ha a hozzárendeléseknél nem láthatók a megfelelőségi adatok, győződjön meg róla, hogy az előfizetés regisztrálva van a Microsoft.PolicyInsights erőforrás-szolgáltatón.
 
 ## <a name="how-is-it-different-from-rbac"></a>Mennyiben különbözik ez az RBAC-től?
 
@@ -34,19 +37,17 @@ A szabályzatok használatához az RBAC-n keresztül hitelesítenie kell magát.
 - `Microsoft.Authorization/policySetDefinitions/write` engedély a kezdeményezések definiálásához.
 - `Microsoft.Authorization/policyassignments/write` engedély a kezdeményezések hozzárendeléséhez.
 
-
 Ezeket az engedélyeket a **Közreműködő** szerepkör nem tartalmazza.
-
 
 ## <a name="policy-definition"></a>Szabályzatdefiníció
 
-Mindegyik szabályzatdefiníció feltételekkel rendelkezik, amelyek teljesülése esetén életbe lép. Továbbá rendelkezik egy kiegészítő művelettel, amely akkor lesz végrehajtva, ha a feltételek teljesülnek.
+Mindegyik szabályzatdefiníció feltételekkel rendelkezik, amelyek teljesülése esetén életbe lép. Továbbá rendelkezik egy kiegészítő hatással, amely akkor lép fel, ha a feltételek teljesülnek.
 
 Az Azure Policy tartalmaz néhány beépített szabályzatot, amelyek alapértelmezés szerint a rendelkezésére állnak. Például:
 
-- **Az SQL Server 12.0-s verzió megkövetelése:** Az ehhez a szabályzathoz tartozó feltételek/szabályok biztosítják, hogy mindegyik SQL-kiszolgáló a 12.0-s verziót használja. A szabályzathoz tartozó művelet letiltja a feltételeknek meg nem felelő kiszolgálókat.
-- **Engedélyezett tárfiók-termékváltozatok:** Ennek a szabályzatdefiníciónak a feltételei/szabályai megállapítják, hogy egy adott létesítendő tárfiók a termékváltozat-méretek meghatározott halmazába esik-e. A szabályzathoz tartozó művelet letiltja a megadott termékváltozat-mérethalmaznak meg nem felelő kiszolgálókat.
-- **Engedélyezett erőforrástípus:** Ennek a szabályzatdefiníciónak a feltételei/szabályai határozzák meg a cég által üzembe helyezhető erőforrástípusokat. Megtagad minden olyan erőforrást, amely nem szerepel ebben az előre meghatározott listában.
+- **Az SQL Server 12.0-s verzió megkövetelése:** Az ehhez a szabályzathoz tartozó feltételek/szabályok biztosítják, hogy mindegyik SQL-kiszolgáló a 12.0-s verziót használja. Letiltja a feltételeknek meg nem felelő kiszolgálókat.
+- **Engedélyezett tárfiók-termékváltozatok:** Ennek a szabályzatdefiníciónak a feltételei/szabályai megállapítják, hogy egy adott létesítendő tárfiók a termékváltozat-méretek meghatározott halmazába esik-e. Letiltja a megadott termékváltozat-mérethalmaznak meg nem felelő kiszolgálókat.
+- **Engedélyezett erőforrástípus:** Ennek a szabályzatdefiníciónak a feltételei/szabályai határozzák meg a cég által üzembe helyezhető erőforrástípusokat. Letilt minden olyan erőforrást, amely nem szerepel ebben az előre meghatározott listában.
 - **Engedélyezett helyek**: Ezzel a szabályzattal korlátozható azon helyek köre, amelyeket a cég vagy szervezet megadhat az erőforrások üzembe helyezésekor. Biztosítja a földrajzi megfelelőségi követelmények betartását.
 - **Engedélyezett virtuálisgép-termékváltozatok**: Ezzel a szabályzattal megadhatók a virtuális gépek azon termékváltozatai, amelyeket a cég vagy szervezet üzembe helyezhet.
 - **Címke és a címke alapértelmezett értékének alkalmazása**: Ez a szabályzat érvényesít egy kötelezően megadandó címkét és a hozzá tartozó alapértelmezett értéket, ha a felhasználó nem adott meg címkét.
@@ -73,30 +74,26 @@ A szabályzatparaméterek leegyszerűsítik a szabályzatok kezelését, mert cs
 
 A paramétereket a szabályzatdefiníciók létrehozásakor kell megadni/létrehozni. A paraméterek a létrehozásukkor kapnak egy nevet és esetleg egy értéket is. Például megadhat egy paramétert egy *hely* nevű szabályzathoz. Ezután a szabályzat hozzárendelésekor különböző értékeket adhat meg a paraméterhez, például *EastUS* vagy *WestUS*.
 
-<!--
-Next link should point to new Concept page for Parameters
--->
 További tudnivalókat a szabályzatparaméterekről az [erőforrás-szabályzatok áttekintésének paraméterekkel](policy-definition.md#parameters) foglalkozó részében talál.
 
 ## <a name="initiative-definition"></a>Kezdeményezési definíció
+
 A kezdeményezési definíciók olyan szabályzatdefiníció-gyűjtemények, amelyek egy átfogó cél teljesülését szolgálják. A kezdeményezési definíciók egyszerűbbé teszik a szabályzatdefiníciók kezelését és hozzárendelését. Ehhez azzal járulnak hozzá, hogy több szabályzatot egyetlen elembe csoportosítanak. Létrehozhat például egy kezdeményezést **Monitorozás engedélyezése az Azure Security Centerben** néven, amelynek az a célja, hogy monitorozza az Azure Security Centerben elérhető összes biztonsági javaslatot.
 
 Egy ilyen kezdeményezés a következő szabályzatdefiníciókat tartalmazhatja:
 
-1. **Titkosítatlan SQL Database-adatbázisok monitorozása a Security Centerben** – A titkosítatlan SQL Database-adatbázisok és -kiszolgálók monitorozásához.
-2. **Operációs rendszer biztonsági réseinek monitorozása a Security Centerben** – Az olyan kiszolgálók monitorozásához, amelyek nem felelnek meg a konfigurált alapértékeknek.
-3. **Végpontok hiányzó védelmének monitorozása a Security Centerben** – Az olyan kiszolgálók monitorozásához, amelyek nem rendelkeznek telepített végpontvédelmi ügynökkel.
-
-<!--
-For more information about initiative definitions, see Initiative Definitions.+ (instead of linking to this, link out to Concept page on Initiative Definitions)
--->
+- **Titkosítatlan SQL Database-adatbázisok monitorozása a Security Centerben** – A titkosítatlan SQL Database-adatbázisok és -kiszolgálók monitorozásához.
+- **Operációs rendszer biztonsági réseinek monitorozása a Security Centerben** – Az olyan kiszolgálók monitorozásához, amelyek nem felelnek meg a konfigurált alapértékeknek.
+- **Végpontok hiányzó védelmének monitorozása a Security Centerben** – Az olyan kiszolgálók monitorozásához, amelyek nem rendelkeznek telepített végpontvédelmi ügynökkel.
 
 ## <a name="initiative-assignment"></a>Kezdeményezési hozzárendelés
+
 A szabályzat-hozzárendelésekhez hasonlóan a kezdeményezési hozzárendelések olyan kezdeményezési definíciók, amelyek egy adott hatókörhöz vannak hozzárendelve. A kezdeményezési hozzárendeléseknek köszönhetően nem kell olyan sok kezdeményezési definíciót létrehozni az egyes hatókörökhöz. Ez a hatókör szintén bármi lehet egy felügyeleti csoporttól egy erőforráscsoportig.
 
 Az előző példában szereplő **Monitorozás engedélyezése az Azure Security Centerben** kezdeményezést több hatókörhöz is hozzá lehet rendelni. Egyszer például hozzárendelhető az **A előfizetéshez**, illetve külön a **B előfizetéshez**.
 
 ## <a name="initiative-parameters"></a>Kezdeményezési paraméterek
+
 A szabályzatparaméterekhez hasonlóan a kezdeményezési paraméterek is a redundancia csökkentésével egyszerűsítik a kezdeményezések kezelését. A kezdeményezési paraméterek gyakorlatilag azon paraméterek listái, amelyeket a szabályzatdefiníciók a kezdeményezésen belül használnak.
 
 Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióhoz (**C kezdeményezés**) két szabályzatdefiníció tartozik. Mindkét szabályzatdefinícióban egy paraméter van megadva:
@@ -108,10 +105,9 @@ Vegyünk példának egy olyan helyzetet, ahol egy kezdeményezési definícióho
 
 Ebben a forgatókönyvben három lehetőség van a **C kezdeményezés** kezdeményezési paramétereinek megadására:
 
-1. A kezdeményezésen belüli szabályzatdefiníciók paramétereinek használata. Ebben az esetben az *allowedLocations* és az *allowedSingleLocation* lesz a **C kezdeményezés** kezdeményezési paramétere.
-2. Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben az esetben megadhat egy helylistát az **A szabályzat paramétere – allowedLocations** és a **B szabályzat paramétere – allowedSingleLocation** számára.
-Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
-3. Adjon meg egy listát mindazon lehetséges *értékekről*, amelyeket használhat a kezdeményezés hozzárendelésekor. A kezdeményezés hozzárendelésekor a kezdeményezésen belüli szabályzatdefiníciók örökölt paraméterei csak olyan értékekkel rendelkezhetnek, amelyek ebben a listában szerepelnek.
+- A kezdeményezésen belüli szabályzatdefiníciók paramétereinek használata. Ebben az esetben az *allowedLocations* és az *allowedSingleLocation* lesz a **C kezdeményezés** kezdeményezési paramétere.
+- Értékek megadása a kezdeményezési definíción belüli szabályzatdefiníciók paramétereihez. Ebben az esetben megadhat egy helylistát az **A szabályzat paramétere – allowedLocations** és a **B szabályzat paramétere – allowedSingleLocation** számára. Az értékeket az adott kezdeményezés hozzárendelésekor is megadhatja.
+- Adjon meg egy listát mindazon lehetséges *értékekről*, amelyeket használhat a kezdeményezés hozzárendelésekor. A kezdeményezés hozzárendelésekor a kezdeményezésen belüli szabályzatdefiníciók örökölt paraméterei csak olyan értékekkel rendelkezhetnek, amelyek ebben a listában szerepelnek.
 
 Például létrehozhat egy listát, amely a következő lehetséges értékeket tartalmazza egy kezdeményezési definícióhoz: *EastUS*, *WestUS*, *CentralUS*, *WestEurope*. Ha így járt el, akkor a kezdeményezés hozzárendelésekor ezeken kívül nem adhat meg más értékeket, például a *Southeast Asia* értéket, mivel az nem szerepel a listában.
 
@@ -121,15 +117,16 @@ A szabályzatdefiníciók és -hozzárendelések létrehozásakor és kezelések
 
 - Ha a saját környezetében hoz létre szabályzatdefiníciókat, javasoljuk, hogy kezdjen egy naplózási művelettel a megtagadási művelet helyett, hogy nyomon tudja követni a szabályzatdefiníció hatását a környezet erőforrásaira. Ha vannak olyan futó szkriptjei, amelyek automatikusan vertikálisan felskálázzák az alkalmazásokat, a megtagadás művelet akadályozhatja a működésüket.
 - Fontos a szervezeti hierarchiák figyelembe vétele a definíciók és hozzárendelések létrehozásakor. Javasoljuk, hogy a definíciókat magasabb szinteken hozza létre, például felügyeleti csoportok vagy előfizetések szintjén, majd a hozzárendeléseket végezze el a következő alárendelt szinten. Például ha létrehoz egy szabályzatdefiníciót a felügyeleti csoport szintjén, annak a definíciónak a szabályzat-hozzárendelését leszűkítheti a csoporton belül egy előfizetés szintjére.
-- Javasoljuk a standard tarifacsomag használatát, hogy könnyebben átláthassa a környezet megfelelőségi állapotát. További információk az árképzési modelljeinkről és azok tartalmáról: [Díjszabás](https://azure.microsoft.com/pricing/details/azure-policy).
 - Javasoljuk, hogy mindig kezdeményezési definíciókat használjon a szabályzatdefiníciók helyett, még akkor is, ha csak egyetlen szabályzatot tervez használni. Ha van például egy szabályzatdefiníciója (*A szabályzatdef.*), amelyet egy kezdeményezési definíción belül hozott létre (*C kezdeményezési def.*), és később úgy dönt, hogy létrehoz egy másik szabályzatdefiníciót *B szabályzatdef.* néven és az *A szabályzatdef.* definícióéhoz hasonló célokkal, akkor az új definíciót hozzáadhatja az *C kezdeményezési def.* definícióhoz a jobb követhetőség érdekében.
 
    Vegye figyelembe, hogy miután létrehozott egy kezdeményezési hozzárendelést egy kezdeményezési definícióhoz, a kezdeményezési definícióhoz hozzáadott minden új szabályzatdefiníció automatikusan bekerül az adott kezdeményezési definícióhoz tartozó kezdeményezési hozzárendelésekbe is. Azonban ha egy új paramétert ad meg az új szabályzatdefinícióban, akkor frissítenie kell a kezdeményezési definíciókat és hozzárendeléseket is.
+
+   Vegye figyelembe, hogy kezdeményezési hozzárendelések aktiválásakor a kezdeményezésben lévő összes szabályzat szintén aktiválódik. Azonban ha külön kell végrehajtania valamely szabályzatot, célszerűbb azt nem bevonni a kezdeményezés alá.
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette az Azure Policy tudnivalóit és néhány fontosabb új fogalmat, folytatásként a következő témaköröket javasoljuk:
 
-- [Szabályzatdefiníció hozzárendelése](./assign-policy-definition.md)
-- [Szabályzatdefiníció hozzárendelése az Azure CLI-vel](./assign-policy-definition-cli.md)
-- [Szabályzatdefiníció hozzárendelése a PowerShell-lel](./assign-policy-definition-ps.md)
+- [Szabályzatdefiníció hozzárendelése](assign-policy-definition.md)
+- [Szabályzatdefiníció hozzárendelése az Azure CLI-vel](assign-policy-definition-cli.md)
+- [Szabályzatdefiníció hozzárendelése a PowerShell-lel](assign-policy-definition-ps.md)

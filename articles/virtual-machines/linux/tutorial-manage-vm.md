@@ -1,6 +1,6 @@
 ---
-title: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel | Microsoft Docs
-description: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
+title: Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel | Microsoft Docs
+description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI 2.0-t Linux rendszerű Azure-beli virtuális gépek létrehozásához és kezeléséhez
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a3826db21d2e4ed447e1ef8d4016ff1dbbf75b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4e8be3af81ce74b033b2a15ceaf857540c1d9a6e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI 2.0 használatával
 
 Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és rugalmas számítási környezetet nyújtanak. Az oktatóanyag az Azure-beli virtuális gépek üzembe helyezésének alapvető elemeit ismerteti, például a virtuális gépek méretének és rendszerképeinek kiválasztását és a virtuális gépek telepítését. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -33,10 +33,9 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 > * Virtuális gép átméretezése
 > * Virtuális gép állapotának áttekintése és értelmezése
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -85,7 +84,7 @@ A virtuális gép létrehozása eltarthat néhány percig. A virtuális gép lé
 Most már SSH-n keresztül kapcsolódhat a virtuális géphez az Azure Cloud Shellben vagy a helyi számítógépről. Cserélje le a példában lévő IP-címet az előző lépésben feljegyzett `publicIpAddress` címre.
 
 ```bash
-ssh 52.174.34.95
+ssh azureuser@52.174.34.95
 ```
 
 Miután bejelentkezett a virtuális gépre, telepíthet és konfigurálhat alkalmazásokat. Miután végzett, a szokásos módon zárhatja be az SSH-munkamenetet:

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/02/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ebad9304c38333173cec66c6b5574a9b45b17cd1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -67,14 +67,21 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50058|Nem található információ a felhasználó identitásáról a megadott hitelesítő adatokban vagy a felhasználó nem található a bérlőben vagy csendes bejelentkezési kérést küldtek, de nem jelentkezett be felhasználó vagy a szolgáltatás nem tudta hitelesíteni a felhasználót.|
 |50072|A felhasználónak kéttényezős hitelesítést kell igényelnie (interaktív)|
 |50074|A felhasználó nem adott jó választ az MFA-kérdésre.|
+|50076|A felhasználó nem adott jó választ az MFA-kérdésre (nem interaktív)|
 |50079|A felhasználónak kéttényezős hitelesítést kell igényelnie.|
 |50089|A folyamattoken érvényesítése sikertelen volt, mert a folyamattoken lejárt.|
 |50097|Az eszköz nincs hitelesítve.|
 |50105|A bejelentkezett felhasználó nincs az alkalmazás szerepköréhez rendelve.|
+|50125|A bejelentkezés új jelszó kérése vagy jelszó-regisztráció bevitele miatt megszakadt|
 |50126|Érvénytelen felhasználónév vagy jelszó, vagy érvénytelen helyszíni felhasználónév vagy jelszó.|
+|50127|A felhasználónak közvetítőalkalmazást kell telepítenie, hogy hozzáférjen ehhez a tartalomhoz.|
+|50129|Az eszköz nincs munkahelyhez csatlakoztatva – Munkahelyi csatlakoztatás szükséges az eszköz regisztrálásához.|
 |50131|Különböző feltételes hozzáférési hibákban használatos. Például rossz Windows-eszközállapot, a kérés gyanús tevékenység miatt blokkolva, a hozzáférési szabályzattal és a biztonsági szabályzattal kapcsolatos döntések.|
 |50133|A jelszó lejárta vagy nemrégi módosítása miatt a munkamenet érvénytelen.|
+|50140|A rendszer a felhasználói jóváhagyását kérte ahhoz, hogy bejelentkezve hagyja az eszközön|
 |50144|A felhasználó Active Directory jelszava lejárt.|
+|53000|A feltételes hozzáférési szabályzathoz megfelelő eszköz szükséges, és az eszköz nem megfelelő.|
+|53003|A hozzáférés blokkolva a feltételes hozzáférési szabályzatok miatt.|
 |65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy engedélyezési kérést a bérlő rendszergazdájának, hogy az Y alkalmazás nevében végezzen tevékenységet a Z erőforráson.|
 |65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található.|
 |70001|Az X nevű alkalmazás nem található az Y nevű bérlőben. Ez akkor történhet, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy nem fogadta el egy felhasználó sem a bérlőben. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
@@ -98,8 +105,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |81013|Nem található a felhasználói objektum a felhasználó Kerberos-jegyének információi alapján.|
 |90014|Különböző esetekben használatos, amikor egy várt mező nincs jelen a hitelesítő adatokban.|
 |90093|A kéréshez a rendszer tiltott hibakódú gráfot adott vissza.|
-
-
+|90094|Rendszergazdai jóváhagyás szükséges.|
 ## <a name="next-steps"></a>További lépések
 
 További részletekért lásd: [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon](active-directory-reporting-activity-sign-ins.md).

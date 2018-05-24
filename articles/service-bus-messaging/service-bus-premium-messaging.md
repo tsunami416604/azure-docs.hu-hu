@@ -1,30 +1,30 @@
 ---
-title: "Az Azure Service Bus prémium és standard szintű üzenetkezelés tarifacsomagjainak áttekintése | Microsoft Docs"
-description: "A Service Bus prémium és standard üzenetkezelési szintjei"
+title: Az Azure Service Bus prémium és standard szintű üzenetkezelés tarifacsomagjainak áttekintése | Microsoft Docs
+description: A Service Bus prémium és standard üzenetkezelési szintjei
 services: service-bus-messaging
 documentationcenter: .net
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e211774d-821c-4d79-8563-57472d746c58
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/10/2017
+ms.date: 04/30/2018
 ms.author: sethm
-ms.openlocfilehash: 613bb074063e436cdbd54fe5aee9c49109a2d8f2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1b2c9b3a0b7565e7de40d4dc0e623a62313b79db
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
 
 A Service Bus-üzenetkezelés, amely a várólistákhoz és témakörökhöz hasonló entitásokat is tartalmaz, a vállalati üzenetkezelési képességeket ötvözi a gazdag közzétételi/előfizetési szemantikákkal a felhőbeli skálázással. A Service Bus-üzenetkezelés számos kifinomult felhőalapú megoldás kommunikációs vázaként szolgál.
 
-A Service Bus-üzenetkezelés *prémium* szintje a méretezéssel, teljesítménnyel és a legfontosabb alkalmazásokkal kapcsolatos általános ügyfélkérelmeket kezeli. Noha a szolgáltatáskészletek csaknem azonosak, a Service Bus-üzenetkezelés két szintje különböző felhasználói esetekhez lett tervezve.
+A Service Bus-üzenetkezelés *prémium* szintje a méretezéssel, teljesítménnyel és a legfontosabb alkalmazásokkal kapcsolatos általános ügyfélkérelmeket kezeli. A prémium szintű csomag éles forgatókönyvekhez ajánlott. Noha a szolgáltatáskészletek csaknem azonosak, a Service Bus-üzenetkezelés két szintje különböző felhasználói esetekhez lett tervezve.
 
 A következő táblázat néhány fontos eltérést emel ki.
 
@@ -46,11 +46,7 @@ Az alábbi szakaszokban a prémium és a standard szintű üzenetkezelési szint
 
 ### <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
-A prémium szintű üzenetkezelés támogatja a particionált üzenetsorokat és témaköröket. Ezek az entitások tulajdonképpen mindig particionáltak (és nem tilthatók le). A prémium szintű particionált üzenetsorok és témakörök viszont nem ugyanúgy működnek, mint a standard Service Bus-üzenetkezelés. A prémium szintű üzenetkezelés nem használ SQL-t az adattároláshoz, és már nem jelentkezik a megosztott platformokhoz társuló erőforrásverseny. Ennek köszönhetően a particionálás nem kötelező a teljesítmény növeléséhez. Ezen felül a partíciók száma a standard szint 16 partíciójáról a prémium szinten 2 partícióra változott. A két partíció biztosítja a rendelkezésre állást, és megfelelőbb szám a prémium szintű futtatókörnyezethez. 
-
-Amikor prémium szintű üzenetkezelésnél a [MaxSizeInMegabytes](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxsizeinmegabytes#Microsoft_ServiceBus_Messaging_QueueDescription_MaxSizeInMegabytes) használatával adja meg egy entitás méretét, ezt a méretet a rendszer egyenlően elosztja a 2 partíció között, nem úgy, mint a [Szabványos partícionált entitások esetében](service-bus-partitioning.md#standard), ahol a teljes méret a megadott méret 16-szorosa. 
-
-A particionálásra vonatkozó további információkat a [Partitioned queues and topics](service-bus-partitioning.md) (Particionált üzenetsorok és témakörök) című rész tartalmazza.
+A prémium szintű üzenetkezelés nem támogatja a particionált üzenetsorokat és témaköröket. A particionálásra vonatkozó további információkat a [Partitioned queues and topics](service-bus-partitioning.md) (Particionált üzenetsorok és témakörök) című rész tartalmazza.
 
 ### <a name="express-entities"></a>Expressz entitások
 
@@ -64,9 +60,9 @@ A prémium szintű üzenetkezelés használatba vétele egyszerű, a folyamat pe
 
 ![create-premium-namespace][create-premium-namespace]
 
-[Az Azure Resource Manager-sablonok használatával is létrehozhat prémium szintű névtereket](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/).
+[Az Azure Resource Manager-sablonok használatával is létrehozhat prémium szintű névtereket](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Service Bus-üzenetkezelésről az alábbi témakörökben találhat további információkat.
 

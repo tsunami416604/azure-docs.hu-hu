@@ -1,12 +1,12 @@
 ---
-title: "Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs"
-description: "Ez a cikk az Azure Site Recovery Deployment Planner VMware – Azure forgatókönyvére vonatkozó jelentést ismerteti."
+title: Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs
+description: Ez a cikk az Azure Site Recovery Deployment Planner VMware – Azure forgatókönyvére vonatkozó jelentést ismerteti.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: dce374d85ef32fe1fbfc88502780fa2ad7a5eae4
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2d44d8410734193ba8b7fdda3134727d9064340c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner-jelentés
 Az elkészített Microsoft Excel-jelentés a következő táblázatokat tartalmazza:
@@ -198,9 +198,9 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 
 **Storage Account** (Tárfiók): A javasolt tárfiókelőtagot használó név.
 
-**R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (alapértelmezés szerint a 95. százalékos érték), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
+**Peak R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS-csúcsérték (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (az alapértelmezett érték a 95. percentilis), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
-**Data Churn in Mbps (with Growth Factor)** (Adatváltozás (Mbps) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (alapértelmezés szerint a 95. százalékérték), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
+**Peak Data Churn in Mbps (with Growth Factor)** (Adatváltozás csúcsértéke (Mbps) (növekedési tényezővel)): A lemez adatváltozásának csúcsértéke (az alapértelmezett érték a 95. percentilis), beleértve a későbbi növekedési faktort is (alapértelmezés szerint: 30 százalék). Vegye figyelembe, hogy a virtuális gép teljes adatváltozása nem mindig egyezik meg az egyes lemezek adatváltozásának összegével. Ez azért van, mert a virtuális gép adatváltozásának csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért adatváltozás-értékek legmagasabb összege.
 
 **Azure VM Size** (Azure-beli virtuális gép mérete): Az Azure Cloud Services-beli hozzárendelt virtuális gép ideális mérete az adott helyszíni virtuális gép esetén. A hozzárendelés a helyszíni virtuális gép memóriáján, a lemezek/magok/hálózati adapterek számán és az olvasási/írási IOPS-értéken alapul. Mindig a legalacsonyabb, a helyszíni virtuális gép összes jellemzőjének megfelelő Azure-beli virtuálisgép-méretet ajánlott használni.
 
