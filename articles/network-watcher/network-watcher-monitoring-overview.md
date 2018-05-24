@@ -1,145 +1,101 @@
 ---
-title: Bevezetés az Azure hálózati figyelőt |} Microsoft Docs
-description: Ezen a lapon a hálózati figyelőt szolgáltatás Figyelés áttekintése és hálózati megjelenítése kapcsolódó erőforrások az Azure-ban
+title: Azure Network Watcher | Microsoft Docs
+description: Megismerheti az Azure Network Watcher virtuális hálózatokban található erőforrásokra vonatkozó monitorozási, diagnosztikai, metrikai és naplózási funkcióit.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 04/24/2018
 ms.author: jdial
-ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="azure-network-monitoring-overview"></a>Azure-hálózat – áttekintés
+# <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
-Az ügyfelek egy Azure-végpontok közötti hálózati koordinálása, és különböző egyes hálózati erőforrások, például virtuális hálózaton, ExpressRoute, Alkalmazásátjáró, terheléselosztók, és több összeállítása hozhat létre. Figyelési érhető el minden olyan a hálózati erőforrásokhoz. Tekintse meg a "figyelés" erőforrás-szintű figyelése.
+Az Azure Network Watcher eszközeivel monitorozhatja és diagnosztizálhatja az erőforrásokat egy Azure virtuális hálózaton belül, illetve megtekintheti azok metrikáit, és engedélyezheti vagy letiltja azok naplóit.
 
-A végpontok közötti hálózati összetett konfigurációk és erőforrások létrehozása összetett forgatókönyvek esetében, forgatókönyv-alapú hálózati figyelőt figyeléshez igénylő közötti interakció rendelkezhet.
+## <a name="monitoring"></a>Figyelés
 
-Ez a cikk ismerteti a forgatókönyv és erőforrás-szintű figyelése. Hálózatfigyelés az Azure-ban átfogó, és ismerteti a két kategóriába sorolhatók:
+### <a name = "connection-monitor"></a>Virtuális gépek és végpontok közötti kommunikáció monitorozása
 
-* [**Hálózati figyelő** ](#network-watcher) -forgatókönyv-alapú figyelési által biztosított szolgáltatások a hálózati figyelőt. A szolgáltatás része a csomagrögzítéssel, a következő ugrás, az IP-adatfolyam győződjön meg arról, biztonsági csoport megtekintése, NSG folyamata naplókat. Forgatókönyv szintű figyelési jeleníti meg egy végpontok közötti hálózati erőforrások ellentétben egyes hálózati erőforrás-figyelése.
-* [**Erőforrás-figyelés** ](#network-resource-level-monitoring) -erőforrás-szintű figyelés négy szolgáltatások diagnosztikai naplók, metrikák, hibaelhárítási és erőforrás állapota áll. Ezek a szolgáltatások a hálózati erőforrás szintjén épülnek.
+A végpontok lehetnek másik virtuális gépek (VM), teljes tartománynevek (FQDN), URI-k vagy IPv4-címek. A *kapcsolatmonitor* funkció rendszeres időközönként monitorozza a kommunikációt, és értesíti Önt az elérhetőségről, a késésről, valamint a virtuális gép és a végpont közötti hálózati topológiai változásokról. Rendelkezhet például olyan webkiszolgáló virtuális géppel, amely egy adatbázis-kiszolgáló virtuális géppel kommunikál. Valaki a cégén belül az Ön tudta nélkül alkalmazhat egy egyéni útvonalat vagy hálózati biztonsági szabályt a webkiszolgáló vagy adatbázis-kiszolgáló virtuális gépre vagy alhálózatra.
 
-## <a name="network-watcher"></a>Network Watcher
+Ha egy végpont elérhetetlenné válik, a kapcsolat-hibaelhárítási funkció értesíti Önt ennek okáról. Ennek lehetséges okai többek között: DNS-névfeloldási probléma, a virtuális gép processzora, memóriája vagy az operációs rendszeren belüli tűzfal, egy egyéni útvonal ugrástípusa, a virtuális gép vagy a kimenő kapcsolat alhálózatának biztonsági szabálya. További információ az Azure [biztonsági szabályaival](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) és [útvonalugrási típusaival](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kapcsolatban.
 
-Hálózati figyelőt olyan regionális szolgáltatás, amely lehetővé teszi, hogy figyelése és diagnosztizálása szintjén feltételek egy hálózati forgatókönyv, hogy, és az Azure-ból. Hálózati diagnosztika és a képi megjelenítés eszközök is elérhetők a hálózati figyelőt segítenek megérteni, diagnosztizálása és információt kaphat a hálózathoz, az Azure-ban.
+A kapcsolatmonitor továbbá az adott idő alatt megfigyelt minimális, átlag- és maximális késést is megmutatja. Egy kapcsolat késésének ismeretében előfordulhat, hogy csökkentheti a késést, ha az Azure-erőforrásokat más Azure-régiókba helyezi át. További információ az [Azure-régiók és az internetszolgáltatók közötti relatív késés](#determine-relative-latencies-between-azure- regions-and-internet-service-providers) meghatározásával, illetve azzal kapcsolatban, hogyan monitorozható a virtuális gépek és végpontok közötti kommunikáció a [kapcsolatmonitor](connection-monitor.md) használatával. Ha a kapcsolat adott időn keresztül történő monitorozása helyett (ahogyan ezt a kapcsolatmonitorral tenné), inkább egy adott időpontban szeretné tesztelni a kapcsolatot, használja a [kapcsolat-hibaelhárítási](#connection-troubleshoot) funkciót.
 
-Hálózati figyelőt jelenleg a következő képességekkel rendelkezik:
+### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Egy virtuális hálózaton belüli erőforrások és azok kapcsolatainak megtekintése
 
-* **[Topológia](network-watcher-topology-overview.md)**  -a különböző csatlakozás és egy erőforráscsoportban található hálózati erőforrások egymáshoz rendelését hálózati szintű nézetét jeleníti meg.
-* **[Változó csomagrögzítéssel](network-watcher-packet-capture-overview.md)**  -csomagadatok mindkét virtuális gép rögzíti. Speciális szűrési beállítások, például fel idő beállítása és korlátozások méretezés finomhangolható vezérlők meg a indít. A csomagadatok a blob-tárolóban, vagy a helyi lemezen .cap formátumban tárolható.
-* **[IP-adatfolyam ellenőrizze](network-watcher-ip-flow-verify-overview.md)**  -ellenőrzést, ha egy csomag engedélyezett vagy megtagadott folyamata adatokat 5 rekordos csomag paraméterek (cél IP-címe, forrás IP-címe, Célport, Forrásport és protokoll) alapján. Ha a csomag megtagadta a biztonsági csoport, a szabály és a csoportot, amely a csomag megtagadva ad vissza.
-* **[Következő Ugrás](network-watcher-next-hop-overview.md)**  -határozza meg a következő ugrás a csomagok továbbítása az Azure hálózati háló, így lehetővé teszi bármely diagnosztizálása nincs megfelelően konfigurálva a felhasználó által definiált útvonalak.
-* **[Biztonsági csoport megtekintése](network-watcher-security-group-view-overview.md)**  -a hatékony és alkalmazott biztonsági szabályokat, amelyek érvényesek a virtuális gép lekérdezi.
-* **[NSG Flow naplózási](network-watcher-nsg-flow-logging-overview.md)**  -folyamat naplókat a hálózati biztonsági csoportok lehetővé teszik a engedélyezett vagy megtagadott a csoport biztonsági szabályai forgalmi naplók rögzítése. A folyamat egy 5 rekordos információkat – a forrás IP-cím, a cél IP-cím, a forrásport, a célport és a protokoll határozzák meg.
-* **[Virtuális hálózati átjáró és a kapcsolat hibaelhárítási](network-watcher-troubleshoot-manage-rest.md)**  -lehetővé teszi a virtuális hálózati átjárók és kapcsolatok hibáinak elhárítása.
-* **[Előfizetési korlátozásait a hálózati](#network-subscription-limits)**  -lehetővé teszi a hálózati erőforrás-használati korlátozások megtekintéséhez.
-* **[Diagnosztikai naplófájl konfigurálása](#diagnostic-logs)**  – engedélyezheti vagy tilthatja le a diagnosztikai naplókat a hálózati erőforrások az erőforráscsoportban egytáblás biztosít.
-* **[Kapcsolat elhárítása](network-watcher-connectivity-overview.md)**  -egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont Azure környezetben növelést létrehozásának lehetősége ellenőrzi.
-* **[Figyelő kapcsolat](connection-monitor.md)**  -figyelése Azure virtuális gép és egy IP-címe, a forrás és cél IP-cím és port használata között késleltetés és a konfigurációs problémákat.
+Ahogy erőforrásokat ad hozzá egy virtuális hálózathoz, egyre nehezebb lehet átlátni, milyen erőforrások vannak egy virtuális hálózatban, és hogy ezek hogyan kapcsolódnak egymáshoz. A *topológia* funkció lehetővé teszi egy vizuális diagram létrehozását az egy virtuális hálózatba tartozó erőforrásokról, illetve az ezek közötti kapcsolatokról. Az alábbi ábrán egy példa topológiai diagram látható egy olyan virtuális hálózatról, amely három alhálózattal, két virtuális géppel, hálózati adapterrel, nyilvános IP-címmel, hálózati biztonsági csoporttal és útválasztási táblázattal rendelkezik, illetve az erőforrások közötti kapcsolatok is jól láthatók:
 
-### <a name="role-based-access-control-rbac-in-network-watcher"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) hálózati figyelőt
+![Topológiai nézet](./media/network-watcher-monitoring-overview/topology.png)
 
-Hálózati figyelő használja a [átruházásához hozzáférés-vezérlés (RBAC) modell](../role-based-access-control/overview.md). A következő engedélyek szükségesek a hálózati figyelőt. Fontos, győződjön meg arról, hogy a használt hálózati figyelő API-k kezdeményezése vagy hálózati figyelőt használ a portálról szerepkör rendelkezik-e megfelelő hozzáféréssel.
+A kép szerkeszthető változata letölthető svg formátumban. További információ a [topológiai nézetről](view-network-topology.md).
 
-|Erőforrás| Engedély|
-|---|---| 
-|Microsoft.Storage/ |Olvasás|
-|Microsoft.Authorization/| Olvasás| 
-|Microsoft.Resources/subscriptions/resourceGroups/| Olvasás|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | Műveletek|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |Műveletek|
-|Microsoft.Storage/storageAccounts/listKeys/ | Műveletek|
-|Microsoft.Compute/virtualMachines/ |Olvasás|
-|Microsoft.Compute/virtualMachines/ |Írás|
-|Microsoft.Compute/virtualMachineScaleSets/ |Olvasás|
-|Microsoft.Compute/virtualMachineScaleSets/ |Írás|
-|Microsoft.Network/networkWatchers/packetCaptures/ |Olvasás|
-|Microsoft.Network/networkWatchers/packetCaptures/| Írás|
-|Microsoft.Network/networkWatchers/packetCaptures/| Törlés|
-|Microsoft.Network/networkWatchers/ |Írás |
-|Microsoft.Network/networkWatchers/| Olvasás |
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/ | *|
+## <a name="diagnostics"></a>Diagnosztika
 
-### <a name="network-subscription-limits"></a>Hálózati előfizetési korlátozásait
+### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Virtuális gépek be- és kimenő hálózatiforgalom-szűrési problémáinak diagnosztizálása
 
-Hálózati előfizetési korlátozásait a hálózati erőforráshoz, a rendelkezésre álló erőforrások maximális számának elleni régióban előfizetés használatának részleteit biztosít.
+Egy virtuális gép üzembe helyezésekor az Azure számos alapértelmezett biztonsági szabályt alkalmaz a virtuális gépen, amelyek engedélyezik vagy letiltják a virtuális gép be- és kimenő forgalmát. Lehetősége van az Azure alapértelmezett szabályainak felülírására, vagy további szabályok létrehozására. Előfordulhat, hogy egy virtuális gép egy biztonsági szabály miatt képtelenné válik a más erőforrásokkal való kommunikációra. Az *IP-forgalom ellenőrzése* funkció lehetővé teszi egy forrás és cél IPv4-cím, port, protokoll (TCP vagy UDP), illetve a forgalom irányának (bejövő vagy kimenő) megadását. Az IP-forgalom ellenőrzése funkció ezután teszteli a kommunikációt, és értesíti Önt, hogy a kapcsolat sikeres vagy sikertelen volt-e. Ha a kapcsolat sikertelen, a probléma megoldásának elősegítése érdekében az IP-forgalom ellenőrzése funkció megmutatja, melyik biztonsági szabály engedélyezte vagy tiltotta le a kommunikációt. További információ az [IP-forgalom ellenőrzése](network-watcher-ip-flow-verify-overview.md) funkcióról.
 
-![hálózati előfizetési korlátját][nsl]
+### <a name="diagnose-network-routing-problems-from-a-vm"></a>Hálózati útválasztási problémák diagnosztizálása egy virtuális gépről
 
-## <a name="network-resource-level-monitoring"></a>Hálózati erőforrás szolgáltatásiszint-figyelés
+Virtuális hálózat létrehozása esetén az Azure számos alapértelmezett kimenő útvonalat hoz létre a hálózati forgalom számára. Az összes erőforrásból (pl. a virtuális hálózatokon üzembe helyezett virtuális gépekről) származó kimenő forgalom átirányítása az Azure alapértelmezett útvonalai alapján történik. Lehetősége van az Azure alapértelmezett útvonalainak felülírására, vagy további útvonalak létrehozására. Előfordulhat, hogy egy bizonyos útvonal miatt egy virtuális gép képtelenné válik a más erőforrásokkal való kommunikációra. A *következő ugrás* funkció lehetővé teszi egy forrás és cél IPv4-cím megadását. A következő ugrás funkció ezután teszteli a kommunikációt, és értesíti Önt, hogy milyen típusú következő ugrást használt a rendszer a forgalom átirányításához. Ezt követően Ön megoldhatja az útválasztási problémát egy útvonal eltávolításával, módosításával vagy hozzáadásával. További információ a [következő ugrás](network-watcher-next-hop-overview.md?) funkcióról.
 
-A következő funkciók érhetők el erőforrás-szintű figyelése:
+### <a name="connection-troubleshoot"></a>Virtuális gépekről származó kimenő kapcsolati problémák diagnosztizálása
 
-### <a name="audit-log"></a>Napló
+A *kapcsolat-hibaelhárítási* funkció lehetővé teszi egy virtuális gép és egy másik virtuális gép, egy teljes tartománynév, egy URI vagy egy IPv4-cím közötti kapcsolat tesztelését. A teszt a [kapcsolatmonitor](#connection-monitor) funkcióhoz hasonló információt ad vissza, de egy adott időpontban teszteli a kapcsolatot, és nem adott időszakon keresztül monitorozza azt, ahogy azt a kapcsolatmonitor teszi. További információ a kapcsolatok hibaelhárításáról a [kapcsolat-hibaelhárítási](network-watcher-connectivity-overview.md) funkció használatával.
 
-A hálózatok konfiguráció részeként műveleteket a rendszer naplózza. Ezek a naplók megtekinthetők az Azure portálon, vagy visszavonni a Microsoft eszközök, például a Power BI és a külső eszközök használatával. Naplókat a portálon, a PowerShell, a CLI és a Rest API-n keresztül érhetők el. A naplókat további információkért lásd: [naplózási műveletek a Resource Manager](../resource-group-audit.md)
+### <a name="capture-packets-to-and-from-a-vm"></a>Virtuális gépek felé és azok felől érkező csomagok rögzítése
 
-Naplók az összes hálózati erőforrás végzett műveletek érhetők el.
+A fejlett szűrési lehetőségek és finomhangolt vezérlők, mint például az idő- és méretkorlátok megadásának képessége, sokoldalúságot biztosít. A rögzítés tárolható Azure Storage-tárterületen, a virtuális gép lemezén vagy akár mindkettőn. Ezután számos standard hálózatirögzítés-elemző eszközzel elemezheti a rögzítésfájlt. További információ a [csomagok rögzítésével](network-watcher-packet-capture-overview.md) kapcsolatban.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Az Azure virtuális hálózati átjárók és a kapcsolatok problémáinak diagnosztizálása
 
-Adatok gyűjtése le TELJESÍTMÉNYMÉRÉSEK és egy meghatározott időtartamra vonatkozóan gyűjtött adatait. Adatok gyűjtése le jelenleg elérhető az Alkalmazásátjáró. Mérőszámok segítségével aktiváltak riasztásokat küszöbérték alapján. Lásd: [átjáró Alkalmazásdiagnosztika](../application-gateway/application-gateway-diagnostics.md) megtekintéséhez, hogyan metrikák értesítések létrehozására használható.
+A virtuális hálózati átjárók biztosítják a helyszíni erőforrások és az Azure virtuális hálózatok közötti kapcsolatot. Az átjárók és azok kapcsolatainak monitorozása kritikus fontosságú a kommunikáció megfelelő működésének biztosításában. A *VPN-diagnosztika* funkció segítségével diagnosztizálhatja az átjárókat és a kapcsolatokat. A VPN-diagnosztika diagnosztizálja az átjáró vagy az átjárókapcsolat állapotát, és értesíti Önt, hogy az átjáró vagy az átjárókapcsolat elérhető-e. Ha az átjáró vagy a kapcsolat nem érhető el, a VPN-diagnosztika megmutatja, miért, így Ön megoldhatja a problémát. További információ a [VPN-diagnosztikával](network-watcher-troubleshoot-overview.md) kapcsolatban.
 
-![metrikák megtekintése][metrics]
+### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Az Azure-régiók és az internetszolgáltatók közötti relatív késés meghatározása
 
-### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+A Network Watcher szolgáltatásból lekérheti az Azure-régiók közötti és az internetszolgáltatóknál tapasztalt késéssel kapcsolatos információkat. Az Azure-régiók közötti és az internetszolgáltatóknál tapasztalt késések ismeretében a hálózati válaszidő optimalizálására alkalmas módon helyezhet üzembe Azure-erőforrásokat. További információ a [relatív késéssel](view-relative-latencies.md) kapcsolatban.
 
-Rendszeres és önkéntes események hálózati erőforrások által létrehozott, és a storage-fiókok, egy Eseményközpontba vagy Naplóelemzési küldött bejelentkezve. Ezek a naplók erőforrás állapotának betekintést. Ezek a naplók eszközöket, például a Power BI és a Naplóelemzési tekintheti meg. Diagnosztikai naplók megtekintése megismeréséhez látogasson el [Naplóelemzési](../log-analytics/log-analytics-azure-networking-analytics.md).
+### <a name="view-security-rules-for-a-network-interface"></a>Egy hálózati adapter biztonsági szabályainak megtekintése
 
-Diagnosztikai naplók érhetők el [terheléselosztó](../load-balancer/load-balancer-monitor-log.md), [hálózati biztonsági csoportok](../virtual-network/virtual-network-nsg-manage-log.md), útvonalakat, és [Alkalmazásátjáró](../application-gateway/application-gateway-diagnostics.md).
+Egy hálózati adapter érvényben lévő biztonsági szabályai a hálózati adapteren, valamint az azon az alhálózaton alkalmazott összes biztonsági szabályból állnak, amelyen az adapter található.  A *biztonsági csoport nézet* képesség megmutatja a hálózati adapteren és az azon az alhálózaton alkalmazott összes biztonsági szabályt, amelyen az adapter található, majd összesíti ezeket. Miután megértette, hogy melyik szabályok vannak alkalmazva a hálózati adapteren, hozzáadhat, eltávolíthat és módosíthat szabályokat, ha azok nem a kívánt módon engedélyezik vagy tiltják le a forgalmat. További információ a [biztonsági csoport nézettel](network-watcher-security-group-view-overview.md) kapcsolatban.
 
-Hálózati figyelőt biztosít a diagnosztikai naplók megtekintése. Ez a nézet az összes hálózati erőforrások, amelyek támogatják a diagnosztikai naplózás tartalmazza. Ebben a nézetben engedélyezése, és tiltsa le a hálózati erőforrások egyszerűen és gyorsan.
+## <a name="metrics"></a>Mérőszámok
 
-![naplók][logs]
+Az egy Azure-előfizetésen és -régión belül létrehozható hálózati erőforrások száma [korlátozott](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits). Ha eléri a korlátot, nem fog tudni további erőforrásokat létrehozni az előfizetésen vagy régión belül. A *hálózati előfizetés korlátja* funkció összegzést biztosít az egy előfizetésben és régióban üzembe helyezett hálózati erőforrások számáról, illetve az erőforrás korlátairól. Az alábbi képen az USA keleti régiójában üzembe helyezett hálózati erőforrások részleges kimenete látható egy példa-előfizetés esetében:
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+![Előfizetés korlátai](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
-A hibaelhárítási panelen, a portál élményt biztosítja a hálózati erőforrásokat ma egyedi erőforrás társított gyakori problémák diagnosztizálásához. A forgatókönyvben a következő hálózati erőforrások - ExpressRoute, VPN-átjáró, Alkalmazásátjáró, hálózati biztonsági naplókat, útvonalakat, DNS, Load Balancer és Traffic Manager érhető el. Erőforrás szintű hibaelhárítással kapcsolatos további tudnivalókért látogasson el a [Azure hibaelhárítási diagnosztizálása és megoldása problémái](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)
+Ez az információ hasznosnak bizonyulhat a későbbi erőforrások üzembe helyezésének tervezése során.
 
-![hibaelhárítási információ][TS]
+## <a name="logs"></a>Logs
 
-### <a name="resource-health"></a>Erőforrás állapota
+### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Egy hálózati biztonsági csoport be- és kimenő forgalmának elemzése
 
-A hálózati erőforrás állapotának rendszeres időközönként valósul meg. Ilyen erőforrások többek között a VPN-átjáró és a VPN-alagúton. Erőforrás állapota a következő helyen érhető el az Azure portálon. Erőforrás állapota kapcsolatos további információkért látogasson el a [erőforrás állapotának áttekintése](../resource-health/resource-health-overview.md)
+A hálózati biztonsági csoportok (NSG-k) engedélyezik vagy elutasítják a virtuális gépek hálózati adaptereinek bejövő vagy kimenő forgalmát. Az *NSG-forgalom naplója* funkció lehetővé teszi a forrás és cél IP-cím, port, protokoll, valamint annak naplózását, hogy egy hálózati biztonsági csoport engedélyezte vagy elutasította-e a forgalmat. A naplók számos eszközzel elemezhetők (pl. PowerBI és a *Traffic Analytics* funkció). A Traffic Analytics gazdag vizualizációs lehetőségeket biztosít az NSG-forgalom naplóiba írt adatok számára. Az alábbi képen a Traffic Analytics által az NSG-forgalom naplóinak adataiból létrehozott információk és vizualizációk egy része látható:
+
+![Traffic Analytics](./media/network-watcher-monitoring-overview/traffic-analytics.png)
+
+További információ az [NSG-forgalom naplóival](network-watcher-nsg-flow-logging-overview.md) és a [Traffic Analytics](traffic-analytics.md) funkcióval kapcsolatban.
+
+### <a name="view-diagnostic-logs-for-network-resources"></a>Hálózati erőforrások diagnosztikai naplóinak megtekintése
+
+Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplók például a Microsoft Power BI és az Azure Log Analytics eszközzel tekinthetők meg. Az Azure hálózati diagnosztikai naplóinak elemzésével kapcsolatos további információért tekintse meg a [Log Analyticsben elérhető Azure hálózati megoldásokat](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
-Hálózati figyelőt megismerését követően megtanulhatja:
-
-Látogasson el a virtuális gépen a csomagrögzítéssel tegye [változó csomagrögzítéssel az Azure-portálon](network-watcher-packet-capture-manage-portal.md)
-
-Hajtsa végre a proaktív figyeléshez és diagnosztika használatával [figyelmeztetés csomagrögzítéssel](network-watcher-alert-triggered-packet-capture.md).
-
-A biztonsági rések észlelése [elemzése a Wireshark csomagrögzítéssel](network-watcher-deep-packet-inspection.md), nyílt forráskódú eszközökkel.
-
-Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.
-
-<!--Image references-->
-[TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png
-[logs]: ./media/network-watcher-monitoring-overview/logs.png
-[metrics]: ./media/network-watcher-monitoring-overview/metrics.png
-[nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
-
-
-
-
-
-
-
-
-
-
+A cikk az Azure Network Watcherről nyújtott áttekintést. A Network Watcher használatának első lépéseként diagnosztizálja egy virtuális gép bejövő és kimenő kommunikációjának egy gyakori problémáját az IP-forgalom ellenőrzése funkcióval. Ennek ismertetését a [virtuális gépek hálózatiforgalom-szűrési problémájának diagnosztizálását](diagnose-vm-network-traffic-filtering-problem.md) ismertető rövid útmutatóban találja.

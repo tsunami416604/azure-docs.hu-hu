@@ -1,11 +1,11 @@
 ---
-title: "CI/CD Jenkins az Azure virtuális gépek Team Services |} Microsoft Docs"
-description: "Jenkins használva szolgáltatásban a Visual Studio Team Services vagy a Microsoft Team Foundation Server Azure virtuális gépek folyamatos integrációt (CI) és a folyamatos üzembe helyezés (CD) a Node.js-alkalmazás beállítása"
+title: Oktatóanyag – CI/CD a Jenkinsből az Azure virtuális gépekre a Team Services szolgáltatással | Microsoft Docs
+description: Ebből az oktatóanyagból elsajátíthatja, hogyan állíthatja be a Node.js-alkalmazás folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) a Azure virtuális gépekre a Jenkins használatával a Visual Studio Team Services kiadáskezeléséből vagy a Microsoft Team Foundation Serveren
 author: ahomer
 manager: douge
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -14,174 +14,172 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>Az alkalmazás telepítése Linux virtuális gépek Jenkins és Team Services használatával
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése Linux rendszerű virtuális gépeken az Azure-ban a Jenkins és a Visual Studio Team Services használatával
 
-Folyamatos integrációt (CI) és a folyamatos üzembe helyezés (CD) alkotnak egy folyamatot, amely létre, a kiadási és a kód telepítésére. A Visual Studio Team Services számos teljes, teljes funkcionalitású CI/CD automatizálási eszközeivel központi telepítés az Azure-bA. Jenkins egy olyan népszerű külső CI/CD server-alapú eszköz, amely CI/CD automation is biztosít. Segítségével Team Services és a Jenkins együtt a felhőalapú alkalmazás vagy szolgáltatás biztosításához hogyan testreszabása.
+Folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) egy folyamatból, amellyel építheti, kiadhatja és üzembe helyezheti a kódot. A Visual Studio Team Services teljes funkcionalitású CI/CD-automatizálási eszközöket biztosít az Azure-ban történő üzembe helyezéshez. A Jenkins egy olyan népszerű, harmadik féltől származó CI/CD szolgáltatást nyújtó, kiszolgálóalapú eszköz, amely CI/CD-automatizálást is biztosít. A Team Services és a Jenkins együttes használatával testre szabhatja, hogyan kézbesíti felhőalapú alkalmazását vagy szolgáltatását.
 
-Ebben az oktatóanyagban a Jenkins egy Node.js-webalkalmazás létrehozásához használhat. Majd segítségével Team Services vagy a Team Foundation Server telepítheti azt egy [üzembe helyezési csoport](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) , amely tartalmazza a Linux virtuális gépek (VM).
-
-Az alábbiakat fogja elvégezni:
+Ebben az oktatóanyagban a Jenkinst fogja használni Node.js-alapú webalkalmazás építésére. Majd a Team Services vagy a Team Foundation Server használatával telepítheti azt egy Linux virtuális gépeket tartalmazó [üzembe helyezési csoportban](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/). Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * A mintaalkalmazás beolvasása.
-> * Jenkins bővítmények konfigurálása.
-> * A Node.js Jenkins Freestyle projekt konfigurálása
-> * Team Services integrációs Jenkins konfigurálása.
-> * Hozzon létre egy Jenkins végpontot.
-> * Hozzon létre egy központi telepítés az Azure virtuális gépekhez.
-> * A Team Services kiadás definíció létrehozása.
-> * Kézi és CI indított központi telepítések hajtható végre.
+> * Mintaalkalmazás letöltése.
+> * A Jenkins bővítményeinek konfigurálása.
+> * Jenkins Freestyle projekt konfigurálása a Node.js-hez.
+> * A Jenkins konfigurálása a Team Services-el való integrációhoz.
+> * Jenkins szolgáltatási végpont létrehozása.
+> * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
+> * Team Services kiadási definíció létrehozása.
+> * Manuális és CI által kiváltott üzembe helyezések végrehajtása.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Jenkins kiszolgálóra történő hozzáférés szükséges. Ha még nem hozott létre egy Jenkins server, lásd: [hozzon létre egy Jenkins fő Azure virtuális géphez](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
+* Egy Jenkins-kiszolgálóhoz történő hozzáférés szükséges. Ha még nem hozott létre Jenkins-kiszolgálót, lásd: [Jenkins-főkiszolgáló létrehozása Azure virtuális gépen](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
-* Jelentkezzen be a Team Services-fiókhoz (**https://{youraccount}.visualstudio.com**). 
-  Beszerezheti a [ingyenes Team Services-fiókot](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
+* Jelentkezzen be a Team Services-fiókjába (**https://{youraccount}.visualstudio.com**). 
+  Beszerezhet egy [ingyenes Team Services-fiókot](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > További információkért lásd: [Team Services kapcsolódás](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+  > További információ: [Connect to Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services) (Csatlakozás a Team Services-hez).
 
-*  Linux virtuális gépek központi telepítés célja van szükség.  További információkért lásd: [létrehozása és kezelése a Linux virtuális gépek az Azure parancssori felület](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
+*  Telepítési célként egy Linux rendszerű virtuális gépre van szükség.  További információért lásd: [Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
-*  Nyissa meg a virtuális gép a 80-as a bejövő portot. További információkért lásd: [létrehozása az Azure portál használatával a hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+*  Nyissa meg a virtuális géphez a 80-as a bejövő portot. További információ: [Hozzon létre egy hálózati biztonsági csoportot az Azure Portal használatával](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
 
-## <a name="get-the-sample-app"></a>A minta-alkalmazás letöltése
+## <a name="get-the-sample-app"></a>Mintaalkalmazás letöltése
 
-Az alkalmazások központi telepítéséhez szüksége van egy Git-tárház tárolja.
-A jelen oktatóanyag esetében azt javasoljuk, hogy használjon [a mintaalkalmazás elérhető a Githubon](https://github.com/azooinmyluggage/fabrikam-node). Ez az oktatóanyag egy parancsfájlt a Node.js és egy alkalmazás telepítésére használt tartalmazza. Ha szeretne dolgozni a saját tárház, konfigurálnia kell egy hasonló mintát.
+A telepítéshez szükséges egy Git-adattárban lévő alkalmazás.
+A jelen oktatóanyag esetében azt javasoljuk, hogy [ezt a mintaalkalmazást használja, amely a Githubon érhető el](https://github.com/azooinmyluggage/fabrikam-node). Ez az oktatóanyag tartalmaz egy szkriptet, amelyet a Node.js és egy alkalmazás telepítésére fog használni. Ha szeretne a saját adattárával dolgozni, konfigurálnia kell egy hasonló mintát.
 
-Hozzon létre egy elágazás az alkalmazáshoz, és tekintse meg a helye (URL) számára ez az oktatóanyag későbbi lépéseiben. További információkért lásd: [oszthatja ketté a tárházban](https://help.github.com/articles/fork-a-repo/).    
+Hozzon létre egy adattármásolatot az alkalmazáshoz, és jegyezze le a helyet (URL-címet) az oktatóanyag későbbi lépéseiben való felhasználáshoz. További információkat a [Fork a repo](https://help.github.com/articles/fork-a-repo/) (Adattármásolat készítése) témakörben talál.    
 
 > [!NOTE]
-> Az alkalmazás használatával lett létrehozva [Yeoman](http://yeoman.io/learning/index.html). Express bower és grunt használ. És egyes npm csomagok szerint függőségeinek.
-> A minta is tartalmaz egy parancsfájlt, amely beállítja a Nginx telepíti az alkalmazást. Ez a virtuális gépek végrehajtása. Pontosabban a parancsfájl:
-> 1. Csomópont Nginx és PM2 telepíti.
-> 2. Nginx és PM2 konfigurálja.
-> 3. A csomópont alkalmazás elindul.
+> Az alkalmazás a [Yeoman](http://yeoman.io/learning/index.html) használatával lett létrehozva. Express-t bowert és gruntot használ. És rendelkezik néhány npm-csomaggal függőségként.
+> A minta egy szkriptet is tartalmaz, amely beállítja az Nginx kiszolgálót, és üzembe helyezi az alkalmazást. A végrehajtása a virtuális gépeken történik. Pontosabban a szkript az alábbi műveleteket végzi:
+> 1. Telepíti a Node-ot, az Nginx kiszolgálót és a PM2-t.
+> 2. Konfigurálja az Nginx kiszolgálót és a PM2-t.
+> 3. Elindítja a Node alkalmazást.
 
-## <a name="configure-jenkins-plug-ins"></a>Jenkins bővítmények konfigurálása
+## <a name="configure-jenkins-plug-ins"></a>A Jenkins beépülő moduljainak konfigurálása
 
-Először konfigurálnia kell két Jenkins beépülő modulok: **NodeJS** és **Visual STUDIO Team Services folyamatos üzembe helyezés**.
+Először két Jenkins beépülő modult kell konfigurálnia: **NodeJS** és **VS Team Services Continuous Deployment**.
 
-1. Nyissa meg a Jenkins fiókját, és válassza ki **kezelése Jenkins**.
-2. Az a **kezelése Jenkins** lapon jelölje be **kezelése beépülő modulok**.
-3. Keresse meg a listát szűrheti a **NodeJS** beépülő modult, majd válassza a **újraindítása nélküli** lehetőséget.
-    ![A NodeJS beépülő modul hozzáadása Jenkins](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
-4. Szűrheti a listát a **Visual STUDIO Team Services folyamatos üzembe helyezés** beépülő modult, és válassza a **újraindítása nélküli** lehetőséget.
-5. Lépjen vissza az Jenkins irányítópultról, és válassza ki a **kezelése Jenkins**.
-6. Válassza ki **globális eszköz konfigurációs**. Található **NodeJS** válassza **NodeJS telepítések**.
-7. Válassza ki a **telepítése automatikusan** lehetőséget, és írja be a **neve** érték.
+1. Nyissa meg a Jenkins-fiókját, és válassza a **Manage Jenkins** (Jenkins kezelése) lehetőséget.
+2. A **Manage Jenkins** (Jenkins kezelése) oldalon válassza a **Manage Plugins** (Beépülő modulok kezelése) lehetőséget.
+3. A lista szűrésével keresse meg a **NodeJS** beépülő modult, majd válassza az **Install without restart** (Telepítés újraindítás nélkül) lehetőséget.
+    ![A NodeJS beépülő modul hozzáadása a Jenkinshez](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
+4. A lista szűrésével keresse meg a **VS Team Services Continuous Deployment** beépülő modult, és válassza az **Install without restart** (Telepítés újraindítás nélkül) lehetőséget.
+5. Lépjen vissza a Jenkins irányítópultjára, és válassza a **Manage Jenkins** (Jenkins kezelése) lehetőséget.
+6. Válassza a **Global Tool Configuration** (Globális eszköz konfigurációja) lehetőséget. Keresse meg a **NodeJS** elemet, és válassza a **NodeJS installations** (NodeJS-telepítések) lehetőséget.
+7. Válassza az **Install automatically** (Automatikus telepítés) lehetőséget, majd adja meg a **Name** (Név) értékét.
 8. Kattintson a **Mentés** gombra.
 
-## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>A Node.js Jenkins Freestyle projekt konfigurálása
+## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Jenkins Freestyle projekt konfigurálása a Node.js-hez
 
-1. Válassza ki **új elem**. Adja meg az elemek neve.
-2. Válassza ki **Freestyle projekt**. Kattintson az **OK** gombra.
-3. Az a **forrás kód felügyeleti** lapon jelölje be **Git** , és adja meg a tárház és a fiókiroda, amelyek tartalmazzák az alkalmazás kódját részleteit.    
-    ![A tárház hozzáadása a build](media/tutorial-build-deploy-jenkins/jenkins-git.png)
-4. Az a **Build eseményindítók** lapon jelölje be **lekérdezési SCM** , és írja be az ütemezés `H/03 * * * *` , és kérdezze le a Git-tárház változásainak három percenként. 
-5. A a **telepítési környezet** lapon jelölje be **meg csomópont &amp; npm bin / mappa elérési ÚTJA** válassza ki a **NodeJS telepítési** érték. Hagyja **npmrc fájl** beállítása **használja a rendszer alapértelmezett**.
-6. A a **Build** lapon jelölje be **hajtható végre a rendszerhéj** , és írja be a parancs `npm install` annak érdekében, hogy az összes függősége frissülnek.
+1. Válassza a **New Item** (Új elem) lehetőséget. Adja meg az elem nevét.
+2. Válassza a **Freestyle project** lehetőséget. Kattintson az **OK** gombra.
+3. A **Source Code Management** (Forráskód kezelése) lapon válassza a **Git** lehetőséget, és adja meg annak az adattárnak és elágazásnak az adatait, amely az alkalmazás forráskódját tartalmazza.    
+    ![Az adattár hozzáadása a buildhez](media/tutorial-build-deploy-jenkins/jenkins-git.png)
+4. Válassza a **Build Triggers** (Build-aktiválók) lapon a **Poll SCM** lehetőséget, és adja meg a `H/03 * * * *` ütemtervet a Git-adattár változásainak három percenként történő ciklikus lekérdezéshez. 
+5. Válassza a **Build Environment** (Build-környezet) lapon a **Provide Node &amp; npm bin/ folder PATH** (Node és npm bin/ mappa elérési útjának megadása) lehetőséget, és válassza a **NodeJS Installation** (NodeJS-telepítés) értéket. Hagyja meg az **npmrc-fájl** beállításaként a **use system default** (rendszer alapértelmezett beállításainak használata) értéket.
+6. A **Build** lapon válassza az **Execute shell** (Végrehajtási felület) lehetőséget, és adja meg az `npm install` parancsot, hogy minden függőség frissítése megtörténjen.
 
 
-## <a name="configure-jenkins-for-team-services-integration"></a>Jenkins Team Services-integráció konfigurálása
+## <a name="configure-jenkins-for-team-services-integration"></a>A Jenkins konfigurálása a Team Services-el való integrációhoz
 
 > [!NOTE]
-> Győződjön meg arról, hogy tartalmaz-e a személyes hozzáférési jogkivonat (PAT) használja a következő lépéseket a *kiadás* (olvasási, írási, végrehajtás és kezelése) Team Services engedélyt.
+> Győződjön meg arról, hogy a következő lépésben használt személyes hozzáférési jogkivonat (PAT) tartalmazza-e a *Kiadási* (olvasási, írási, végrehajtási és kezelései) engedélyeket a Team Services-ben.
  
-1.  Hozzon létre egy PAT Team Services-fiókját, ha még nem rendelkezik. Jenkins a Team Services-fiók eléréséhez szükséges. Győződjön meg arról, ebben a szakaszban a következő lépéseket a jogkivonat adatai tárolásához.
+1.  Hozzon létre egy PAT-et a Team Services-fiókjában, ha még nem rendelkezik ilyennel. A Jenkinsnek szüksége van erre az információra a Team Services-fiók eléréséhez. Ne feledje tárolni a jogkivonatadatokat a szakaszban következő lépésekhez.
   
-    A token létrehozásához olvassa el [hogyan hozható létre személyes hozzáférési jogkivonat VSTS és a TFS?](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate).
-2. Az a **utáni műveletek** lapon jelölje be **utáni műveletének hozzáadása**. Válassza ki **archiválja az összetevők**.
-3. A **archiválására fájlok**, adja meg `**/*` összes fájlokról.
-4. Egy másik művelet létrehozásához válassza **utáni műveletének hozzáadása**.
-5. Válassza ki **indul el, a TFS/Team Services kiadás**. Adja meg az URI a Team Services-fiókot, például **https://{your-account-name}.visualstudio.com**.
-6. Adja meg a **Csapatprojekt** nevét.
-7. Adjon nevet a kiadási definíciójának. (Ez a kiadás definíció későbbi szakaszában létrehozott Team Services.)
-8. Válassza ki a hitelesítő adatokat a Team Services vagy a Team Foundation Server környezetben való csatlakozáshoz:
-   - Hagyja **felhasználónév** Team Services rendszer használata esetén üres. 
-   - Ha Team Foundation Server egy helyszíni verzióját használja, adja meg a felhasználónevet és jelszót.    
-   ![Jenkins utáni műveletek konfigurálása](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
-5. Mentse a Jenkins projektet.
+    A jogkivonat létrehozásához olvassa el a [How do I create a personal access token for VSTS and TFS?](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate) (Hogyan hozhatok létre személyes hozzáférési jogkivonatot a VSTS-hez és a TFS-hez?) oldalt.
+2. A **Post-build Actions** (Felépítés utáni műveletek) lapon válasza az **Add post-build action** (Felépítés utáni művelet hozzáadása) lehetőséget. Válassza az **Archive the artifacts** (Összetevők archiválása) lehetőséget.
+3. A **Files to archive** (Archiválandó fájlok) beállításához adja meg a `**/*` értéket az összes fájl belefoglalásához.
+4. Egy másik művelet létrehozásához válassza az **Add post-build action** (Felépítés utáni művelet hozzáadása) lehetőséget.
+5. Válassza a **Trigger release in TFS/Team Services** (Kiadás aktiválása a TFS/Team Services-ben) lehetőséget. Adja meg a Team Services-fiókja URL-címét, például a **https://{your-account-name}.visualstudio.com** címet.
+6. Adja meg a **Team Project** (Csapatprojekt) nevét.
+7. Adjon nevet a kiadási definíciónak. (Ezt a kiadási definíciót később fogja létrehozni a Team Services-ben.)
+8. Válassza ki a hitelesítő adatokat a Team Services vagy a Team Foundation Server környezethez való csatlakozáshoz:
+   - Hagyja a **Username** (Felhasználónév) mezőt üresen, ha a Team Services-t használja. 
+   - Ha a Team Foundation Server egy helyszíni verzióját használja, adja meg a felhasználónevet és jelszót.    
+   ![A Jenkins felépítés utáni műveleteinek konfigurálása](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
+5. Mentse a Jenkins-projektet.
 
 
-## <a name="create-a-jenkins-service-endpoint"></a>Hozzon létre egy Jenkins szolgáltatási végpont
+## <a name="create-a-jenkins-service-endpoint"></a>Jenkins szolgáltatási végpont létrehozása
 
-A szolgáltatási végpont lehetővé teszi, hogy a Team Services Jenkins való kapcsolódáshoz.
+A szolgáltatási végpont lehetővé teszi, hogy a Team Services csatlakozzon a Jenkinshez.
 
-1. Nyissa meg a **szolgáltatások** Team Services, nyissa meg a lap a **új szolgáltatási végpont** listában, és válassza ki **Jenkins**.
-   ![Vegyen fel egy Jenkins végpontot](media/tutorial-build-deploy-jenkins/add-jenkins-endpoint.png)
-2. Adjon meg egy nevet a kapcsolathoz.
-3. Adja meg a Jenkins kiszolgáló URL-CÍMÉT, majd válassza ki a **nem megbízható az SSL-tanúsítványokat elfogadó** lehetőséget. URL-címe például **http://{YourJenkinsURL}.westcentralus.cloudapp.azure.com**.
-4. Adja meg a Jenkins fiók felhasználónevét és jelszavát.
-5. Válassza ki **kapcsolat ellenőrzéséhez** futtatásával ellenőrizze, hogy az információ helyes.
-6. Válassza ki **OK** a végpont létrehozásához.
+1. Nyissa meg a **Szolgáltatások** lapot a Team Services-ben, nyissa meg az **Új szolgáltatási végpont** listát, és válassza a **Jenkins** lehetőséget.
+   ![Jenkins-végpont felvétele](media/tutorial-build-deploy-jenkins/add-jenkins-endpoint.png)
+2. Adjon egy nevet a kapcsolatnak.
+3. Adja meg a Jenkins-kiszolgáló URL-címét, majd válassza ki a **Nem megbízható SSL-tanúsítványok elfogadása** lehetőséget. Példa URL-címre: **http://{YourJenkinsURL}.westcentralus.cloudapp.azure.com**.
+4. Adja meg a Jenkins-fiók felhasználónevét és jelszavát.
+5. Válassza a **Kapcsolat ellenőrzése** lehetőséget az adatok helyességének ellenőrzéséhez.
+6. Kattintson az **OK** gombra a szolgáltatásvégpont létrehozásához.
 
-## <a name="create-a-deployment-group-for-azure-virtual-machines"></a>Az Azure virtuális gépek telepítési csoport létrehozása
+## <a name="create-a-deployment-group-for-azure-virtual-machines"></a>Üzembe helyezési csoport létrehozása Azure virtuális gépekhez
 
-Kell egy [üzembe helyezési csoport](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) az Team Services Agent ügynök regisztrálása, a kiadás definition telepíthető a virtuális géphez. Központi telepítés csoportok megkönnyítik megadhatók a központi telepítés célszámítógépekre logikai csoportját, és a szükséges ügynök telepítése minden egyes számítógépen.
+Szüksége van egy [üzembe helyezési csoportra](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) a Team Services ügynök regisztrálásához, hogy a kiadási definíciót lehessen telepíteni a virtuális géphez. Az üzembe helyezési csoportok megkönnyítik a célgépek logikai csoportjainak megadását az üzembe helyezéshez és a kívánt ügynök egyes gépeken történő telepítéséhez.
 
    > [!NOTE]
-   > A következő eljárásban is telepítenie kell az Előfeltételek és *sudo jogosultságokkal ne futtassa a parancsfájlt.*
+   > A következő eljárásban nem mulassza el az előfeltételek telepítését, és *ne futtassa a szkriptet sudo engedélyekkel.*
 
-1. Nyissa meg a **kiadásokban** lapján a **Build &amp; kiadás** központi, nyissa meg **telepítési csoportban**, és válassza ki **+ új**.
-2. Adjon meg egy nevet a központi telepítési csoportot, és opcionális leírását. Ezután kattintson a **Létrehozás** elemre.
-3. Válassza ki a központi telepítési cél virtuális gép operációs rendszerét. Válassza például **Ubuntu 16.04 +**.
-4. Válassza ki **személyes hozzáférési jogkivonat a parancsfájl a hitelesítéshez használandó**.
-5. Válassza ki a **rendszerkövetelmények** hivatkozásra. Az operációs rendszer előfeltételeinek telepítése.
-6. Válassza ki **parancsfájl másolása a vágólapra** másolja a parancsfájlt.
-7. Jelentkezzen be a központi telepítési cél virtuális gépre, és futtassa a parancsfájlt. Ne futtassa a parancsfájlt a sudo jogosultságokkal.
-8. A telepítés után kéri a központi telepítési csoport címkék. Fogadja el az alapértelmezett beállításokat.
-9. A Team Services, ellenőrizze az újonnan regisztrált virtuális gépen a **célok** alatt **telepítési csoportban**.
+1. Nyissa meg a **Build &amp; Release** (Build és kiadás) központ **Releases** (Kiadások) lapját, nyissa meg a **Deployment groups** (Üzembe helyezési csoportok) elemet, és válassza a **+ New** (+ Új) lehetőséget.
+2. Adjon meg egy nevet a központi telepítési csoporthoz, és egy opcionális leírást. Ezután kattintson a **Létrehozás** elemre.
+3. Válassza ki az üzembe helyezési cél virtuális gépének operációs rendszerét. Válassza például az **Ubuntu 16.04+** lehetőséget.
+4. Válassza ki a **Use a personal access token in the script for authentication** (Személyes hozzáférési jogkivonat használata a szkriptben a hitelesítéséhez) elemet.
+5. Válassza a **System prerequisites** (Rendszer előfeltételei) hivatkozást. Telepítse az előfeltételeket az operációs rendszeréhez.
+6. Válassza a **Copy script to clipboard** (Szkript másolása a vágólapra) elemet a szkript másolásához.
+7. Jelentkezzen be az üzembe helyezési cél virtuális gépére, és futtassa a szkriptet. Ne futtassa a szkriptet a sudo engedélyekkel.
+8. A telepítés után a rendszer kéri az üzembe helyezési csoport címkéit. Fogadja el az alapértelmezett beállításokat.
+9. A Team Services-ben ellenőrizze az újonnan regisztrált virtuális gépet a **Targets** (Célok) szakaszban a **Deployment Groups** (Üzembe helyezési csoportok) alatt.
 
-## <a name="create-a-team-services-release-definition"></a>A Team Services kiadás definíció létrehozása
+## <a name="create-a-team-services-release-definition"></a>Team Services kiadási definíció létrehozása
 
-Egy kiadási definition határozza meg a folyamat által az alkalmazás telepítéséhez használt Team Services. Ebben a példában egy héjparancsfájlt hajtható végre.
+A kiadási definíció azt a folyamatot határozza meg, amelyet a Team Services az alkalmazás üzembe helyezésére használ. Ebben a példában egy felületszkriptet fog végrehajtani.
 
-A kiadási definíció létrehozása Team Services:
+Kiadási definíció létrehozása a Team Services használatával:
 
-1. Nyissa meg a **kiadásokban** lapján a **Build &amp; kiadási** hub, és válassza ki **létrehozás kiadás definition**. 
-2. Válassza ki a **üres** sablon kiválasztásával kezdődnie egy **üres folyamat**.
-3. Az a **összetevők** szakaszban jelölje be **+ Hozzáadás összetevő** válassza **Jenkins** a **adatforrástípust**. Válassza ki a Jenkins szolgáltatási végpont kapcsolatot. Ezután jelölje ki a Jenkins forrás feladatot, és válassza **Hozzáadás**.
-4. Jelölje be a három pont a **környezet 1**. Válassza ki **hozzáadása csoporthoz fázis**.
-5. Válassza ki a központi telepítés csoportjában.
-5. Válassza ki  **+**  feladat hozzáadása **csoport fázis**.
-6. Válassza ki a **Héjparancsfájlt** feladatot, és válassza ki **Hozzáadás**. A **Héjparancsfájlt** feladat biztosítja az egyes kiszolgálókon ahhoz, hogy telepítse a Node.js, és indítsa el az alkalmazást futtatni kívánt parancsfájl konfigurációját.
-8. A **parancsfájl elérési útján**, adja meg **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
-9. Válassza ki **speciális**, majd engedélyezze **munkakönyvtár megadása**.
-10. A **munkakönyvtár**, adja meg **$(System.DefaultWorkingDirectory) / Fabrikam-csomópont**.
-11. A kiadási-definíciót az Ön által megadott nevét a nevének módosítása a **utáni műveletek** Jenkins buildverziót lapján. Jenkins ezt a nevet fogja tudni indul el egy új kiadásban, ha a forrás-összetevők frissítése szükséges.
-12. Válassza ki **mentése** válassza **OK** menteni a kiadási definícióját.
+1. Nyissa meg a **Build &amp; Release** (Build és kiadás) központ **Releases** (Kiadások) lapját, és válassza a **Create release definition** (Kiadási definíció létrehozása) elemet. 
+2. Válassza ki az **Empty** (Üres) sablont, hogy egy **Empty process** (Üres folyamat) legyen a kezdési folyamat.
+3. Az **Artifacts** (Összetevők) szakaszban jelölje ki a **+ Add Artifact** (+ Összetevő hozzáadása) lehetőséget, és válassza a **Jenkins** elemet, mint **Source type** (Erőforrástípus). Válassza ki a Jenkins szolgáltatási végpont kapcsolatát. Ezután jelölje ki a Jenkins-forrásfeladatot, és válassza az **Add** (Hozzáadás) lehetőséget.
+4. Válassza a három pontot az **Environment 1** (1. környezet) mellett. Válassza az **Add deployment group phase** (Üzembe helyezési csoport fázisának hozzáadása) lehetőséget.
+5. Válassza ki az üzembe helyezési csoportot.
+5. Válassza a **+** lehetőséget egy feladat **Üzembe helyezési csoport fázishoz** adásához.
+6. Válassza a **Shell Script** (Felületszkript) feladatot, majd az **Add** (Hozzáadás) elemet. A **Shell Script** (Felületszkript) feladat biztosítja az egyes kiszolgálókon való futtatáshoz a szkript konfigurációját a Node.js telepítéséhez és az alkalmazás elindításához.
+8. A **Script Path** (Szkript elérési útja) mezőben adja meg a **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** útvonalat.
+9. Válassza az **Advanced** (Speciális) elemet, majd engedélyezze a **Specify Working Directory** (Munkakönyvtár megadása) lehetőséget.
+10. A **Working Directory** (Munkakönyvtár) mezőben adja meg a **$(System.DefaultWorkingDirectory)/Fabrikam-Node** útvonalat.
+11. A kiadási definíció neveként adja meg a buildhez a Jenkinsben a **Post-build Actions** (Felépítés utáni műveletek) lapon meghatározott nevet. A Jenkinsnek erre a névre lesz szüksége új kiadás aktiválásához a forrásösszetevők frissítésekor.
+12. Válassza a **Save** (Mentés), majd az **OK** gombot a kiadási definíció mentéséhez.
 
-## <a name="execute-manual-and-ci-triggered-deployments"></a>Hajtsa végre a manuális és CI indított központi telepítések
+## <a name="execute-manual-and-ci-triggered-deployments"></a>Manuális és CI által kiváltott üzembe helyezések végrehajtása
 
-1. Válassza ki **+ kiadási** válassza **létrehozása kiadás**.
-2. A build, amelyek a kijelölt legördülő listában válassza ki és **várólista**.
-3. Válassza az előugró üzenet a kiadási hivatkozásra. Például: "kiadás **Release-1** létrejött."
-4. Nyissa meg a **naplók** a kiadás a konzol kimeneti bemutató fülre.
-5. A böngészőben nyissa meg az URL-CÍMÉT a központi telepítés csoporthoz hozzáadott kiszolgálók egyikét. Adja meg például **http://{your-server-ip-address}**.
-6. Nyissa meg a forrás Git-tárházban, és a tartalmának módosítása a **h1** fejléce a a fájl app/views/index.jade néhány módosított szóra.
-7. A módosítás véglegesítése.
-8. Néhány perc elteltével jelenik meg a létrehozott új verziót a **kiadásokban** Team Services vagy a Team Foundation Server oldalán. Nyissa meg a verzió: a központi telepítése folyamatban. Gratulálunk!
+1. Válassza a **+ Release** (+ Kiadás) elemet, majd a **Create Release** (Kiadás létrehozása) lehetőséget.
+2. A kiemelt legördülő listában válassza ki a befejezett buildet, majd válassza a **Queue** (Várólista) lehetőséget.
+3. Kattintson az előugró üzenetben a kiadási hivatkozásra. Például erre: „Release **Release-1** has been created.”
+4. Nyissa meg a **Logs** (Naplók) lapot a kiadási konzol kimenetének megtekintéséhez.
+5. A böngészőben nyissa meg az üzembe helyezési csoporthoz hozzáadott egyik kiszolgáló URL-címét. Adja meg például a **http://{your-server-ip-address}** címet.
+6. Lépjen a Git-adattárba, és módosítsa a **h1** fejléc tartalmát az app/views/index.jade fájlban egy módosított szövegre.
+7. Véglegesítse a módosításokat.
+8. Néhány perc elteltével megjelenik a létrehozott új kiadás a Team Services vagy a Team Foundation Server **Releases** (Kiadások) lapján. Nyissa meg a kiadást az üzembe helyezési folyamat megtekintéséhez. Gratulálunk!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure alkalmazás központi telepítésének Jenkins használatával build és a Team Services kiadás automatikus. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban automatizálta az alkalmazás Azure-ban történő üzembe helyezését a Jenkinst használva a buildhez, a Team Services-t pedig a kiadáshoz. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A Jenkins az alkalmazás elkészítésére.
-> * Team Services integrációs Jenkins konfigurálása.
-> * Hozzon létre egy központi telepítés az Azure virtuális gépekhez.
-> * Hozzon létre olyan kiadási-definícióval, konfigurálja a virtuális gépeket, és telepíti az alkalmazást.
+> * Alkalmazás létrehozása a Jenkinsben.
+> * A Jenkins konfigurálása a Team Services-el való integrációhoz.
+> * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
+> * Olyan kiadási definíció létrehozása, amely konfigurálja a virtuális gépeket, és telepíti az alkalmazást.
 
-Megtudhatja, hogyan telepíthet egy LÁMPA (Linux, Apache, MySQL és a PHP) a verem, hogy értékről a következő oktatóanyag.
+Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
 > [LAMP stack telepítése](tutorial-lamp-stack.md)

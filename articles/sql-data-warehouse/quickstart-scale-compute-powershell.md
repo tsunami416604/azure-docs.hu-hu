@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 40fa33aad8bf5ac042f9d80493b97a914fe770bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0718365153390f525b22ef07559a822c777c2ff4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Gyors útmutató: Azure SQL Data Warehouse-beli számítási feladatok skálázása a PowerShellben
 
@@ -55,19 +55,19 @@ Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó a
 Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
-3. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház.
+2. Az Azure Portal bal oldali panelén kattintson az **SQL Data Warehouse-adattárházak** elemre.
+3. Az **SQL adattárház** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház.
 
     ![Kiszolgálónév és erőforráscsoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
 4. Írja fel az adattárház nevét. Ezt fogja használni az adatbázis neveként. Ne feledje, hogy az adattárház az adatbázisok egy típusa. Írja fel a kiszolgáló nevét és az erőforráscsoportot is. Ezeket a felfüggesztő és folytató parancsokban fogja használni.
-5. Ha a kiszolgáló valami.database.windows.net, csak az első részt használja kiszolgálónévként a PowerShell-parancsmagokban. A fenti ábrán a teljes kiszolgálónév newserver-20171113.database.windows.net. A PowerShell-parancsmagban a **newserver-20171113** részt használjuk a kiszolgáló neveként.
+5. Ha a kiszolgáló valami.database.windows.net, csak az első részt használja kiszolgálónévként a PowerShell-parancsmagokban. A fenti ábrán a teljes kiszolgálónév newserver-20171113.database.windows.net. A PowerShell-parancsmagban a **newserver-20180430** részt használjuk a kiszolgáló neveként.
 
 ## <a name="scale-compute"></a>Számítások méretezése
 
 Az SQL Data Warehouse-ban növelheti vagy csökkentheti a számítási erőforrásokat az adattárházegységek számának módosításával. A [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) gyorsútmutató létrehozta a **mySampleDataWarehouse** adattárházat, és inicializálta azt 400 adattárházegységgel. Az alábbi lépésekkel módosíthatja a **mySampleDataWarehouse** adattárházban az adattárházegységek számát.
 
-Az adattárházegységek számának módosítására használja a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell-parancsmagot. Az alábbi példa DW300-ra állítja be az adattárházegységek számát a **myResourceGroup** erőforráscsoportban a **mynewserver-20171113** kiszolgálón üzemeltetett **mySampleDataWarehouse** adatbázishoz.
+Az adattárházegységek számának módosítására használja a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell-parancsmagot. Az alábbi példa DW300-ra állítja be az adattárházegységek számát a **myResourceGroup** erőforráscsoportban a **mynewserver-20180430** kiszolgálón üzemeltetett **mySampleDataWarehouse** adatbázishoz.
 
 ```Powershell
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
@@ -75,7 +75,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySam
 
 ## <a name="check-data-warehouse-state"></a>Az adattárház állapotának ellenőrzése
 
-Az adattárház aktuális állapotát megtekintheti a [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell-parancsmag használatával. Ez a **myResourceGroup** erőforráscsoportban a **mynewserver-20171113.database.windows.net** kiszolgálón üzemeltetett **mySampleDataWarehouse** adatbázis állapotát adja vissza.
+Az adattárház aktuális állapotát megtekintheti a [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell-parancsmag használatával. Ez a **myResourceGroup** erőforráscsoportban a **mynewserver-20180430.database.windows.net** kiszolgálón üzemeltetett **mySampleDataWarehouse** adatbázis állapotát adja vissza.
 
 ```powershell
 $database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse

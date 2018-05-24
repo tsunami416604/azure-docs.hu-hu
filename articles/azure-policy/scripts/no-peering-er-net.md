@@ -1,37 +1,37 @@
 ---
-title: "Az Azure házirend json-mintát - nincs hálózati társviszony-létesítést úgy ER hálózati |} Microsoft Docs"
-description: "Json minta meggátolja, hogy egy hálózati társviszony-létesítés a társítás a megadott erőforráscsoport-hálózathoz."
+title: Azure Policy JSON-minta – Hálózati társviszony tiltása egy erőforráscsoportban lévő hálózatban | Microsoft Docs
+description: Ez a JSON-mintaszabályzat megtiltja hálózati társviszony társítását egy hálózat számára egy megadott erőforráscsoportban.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: b796edf52d07a36028d18d04d0873b474432bf96
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: 57a4864208e92ac1ea2d92b6c81bfea512bca7be
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="no-network-peering-to-er-network"></a>Egyetlen hálózathoz sem társviszony-létesítést úgy ER hálózati
+# <a name="no-network-peering-to-er-network"></a>Hálózati társviszony tiltása egy erőforráscsoportban lévő hálózatban
 
-Ez a házirend tiltja, hogy egy hálózati társviszony-létesítés a társítás a megadott erőforráscsoport-hálózathoz. Amellyel meggátolhatja, központi felügyelt hálózati infrastruktúra-kapcsolatot. Megadhatja a társítás megelőzése érdekében az erőforráscsoport nevét.
+Ez a szabályzat megtiltja hálózati társviszony társítását egy hálózat számára egy megadott erőforráscsoportban. Segít meggátolni a központi felügyelt hálózati infrastruktúrához való kapcsolódást. Meg kell adnia annak az erőforráscsoportnak a nevét, amelyben meg kívánja gátolni a társítást.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
 [!code-json[main](../../../policy-templates/samples/Network/no-network-peerings-to-er-network/azurepolicy.json "No network peering to ER network")]
 
-A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy a [Azure CLI](#deploy-with-azure-cli).
+A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy az [Azure CLI](#deploy-with-azure-cli) használatával helyezhető üzembe.
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
@@ -48,15 +48,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell központi telepítés tisztítása
+### <a name="clean-up-powershell-deployment"></a>PowerShell-üzembehelyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,14 +66,14 @@ az policy definition create --name 'no-network-peerings-to-er-network' --display
 az policy assignment create --name <assignmentname> --scope <scope> --policy "no-network-peerings-to-er-network"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure parancssori felület központi telepítés tisztítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További Azure csoportházirend-sablon minták erővel [sablonok Azure házirend](../json-samples.md).
+- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.

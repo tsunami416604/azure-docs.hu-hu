@@ -1,37 +1,37 @@
 ---
-title: "Az Azure házirend json minta - címke-egyeztetési minta kényszerítése |} Microsoft Docs"
-description: "A json minta házirend feltétele, hogy erőforrások megfelelnek-e az egyeztetési minta címke értéke."
+title: Azure Policy json-minta – címkék mintaegyezésének kényszerítése | Microsoft Docs
+description: Ez a json-mintaszabályzat a címke értékéhez tartozó mintával való megegyezést követeli meg az erőforrásoktól.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 11/13/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: b8382df6d0f90264b2526392d4559c9ced9c6c70
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: feb50d80f8bd68ea3b578f307b20ee45dd26e21f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="enforce-tag-match-pattern-for-tag-values"></a>Címke-egyeztetési minta címke értékek kényszerítése
+# <a name="enforce-tag-match-pattern-for-tag-values"></a>Címkék mintaegyezésének kényszerítése címkeértékekhez
 
-Szükséges, hogy a címke értéke megfelel-e egy egyeztetési minta. Adja meg a megengedett minta házirendszabály.
+A mintával való megegyezést követeli meg a címkék értékétől. Az engedélyezett mintát a szabályzatban adhatja meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
 [!code-json[main](../../../policy-templates/samples/TextPatterns/enforce-tag-match-pattern/azurepolicy.json "enforce match pattern")]
 
-A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy a [Azure CLI](#deploy-with-azure-cli).
+A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy az [Azure CLI](#deploy-with-azure-cli) használatával helyezhető üzembe.
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
@@ -48,15 +48,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell központi telepítés tisztítása
+### <a name="clean-up-powershell-deployment"></a>PowerShell-üzembehelyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,14 +66,14 @@ az policy definition create --name 'enforce-tag-match-pattern' --display-name 'E
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-tag-match-pattern"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure parancssori felület központi telepítés tisztítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További Azure csoportházirend-sablon minták erővel [sablonok Azure házirend](../json-samples.md).
+- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.

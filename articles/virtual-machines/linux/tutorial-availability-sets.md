@@ -1,6 +1,6 @@
 ---
-title: Rendelkezésre állási csoportokra vonatkozó oktatóanyag Azure-beli Linux rendszerű virtuális gépekhez | Microsoft Docs
-description: Ismerje meg az Azure-beli Linux rendszerű virtuális gépek rendelkezésre állási csoportjait.
+title: Oktatóanyag – Magas rendelkezésre állás az Azure-beli Linux rendszerű virtuális gépeken | Microsoft Docs
+description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure CLI 2.0-t magas rendelkezésre állású virtuális gépek üzembe helyezésére a rendelkezésre állási csoportokban
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
@@ -16,14 +16,13 @@ ms.topic: tutorial
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d317ec8136ad7a36381239593c3a53c40f897845
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dc6fba89571515d0d2d7ed3ecc35c3065405056b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-use-availability-sets"></a>A rendelkezésre állási csoportok használata
-
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli-20"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure CLI 2.0-val
 
 Ebben az oktatóanyagban megtanulhatja, hogyan növelheti Azure-beli virtuálisgép-megoldásai rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok elnevezésű képesség használatával. A rendelkezésre állási csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek több elkülönített hardverfürt között legyenek elosztva. Ezáltal biztosítható, hogy ha hardveres vagy Azure-beli szoftveres hiba fordul elő, az a virtuális gépeknek csak egy részhalmazát érintse, és a teljes megoldás továbbra is elérhető és működőképes maradjon.
 
@@ -34,10 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális gép létrehozása rendelkezésre állási csoportban
 > * Elérhető virtuálisgép-méretek ellenőrzése
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="availability-set-overview"></a>Rendelkezésre állási csoport – áttekintés
 
@@ -50,16 +48,13 @@ Használjon rendelkezésre állási csoportokat, ha megbízható, virtuálisgép
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
-Rendelkezésre állási csoportot az [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) paranccsal hozhat létre. Ebben a példában a frissítési és a tartalék tartományok számát egyaránt *2*-re állítjuk a *myResourceGroupAvailability* erőforráscsoport *myAvailabilitySet* nevű rendelkezésre állási csoportja esetében.
+Rendelkezésre állási csoportot az [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) paranccsal hozhat létre. Ebben a példában a frissítési és a tartalék tartományok számát egyaránt *2*-re állítjuk a *myResourceGroupAvailability* erőforráscsoport *myAvailabilitySet* nevű rendelkezésre állási csoportjánál.
 
-Hozzon létre egy erőforráscsoportot.
+Először is hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) parancsmaggal, majd hozza létre a rendelkezésre állási csoportot:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
-```
 
-
-```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupAvailability \
     --name myAvailabilitySet \
@@ -67,44 +62,44 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-A rendelkezésre állási csoportok segítségével elkülönítheti az erőforrásokat a tartalék tartományok és a frissítési tartományok között. A **tartalék tartomány** kiszolgáló-, hálózati és tárolási erőforrások egy elkülönített gyűjteményét képviseli. Az előző példában jeleztük, hogy a rendelkezésre állási csoportot legalább két tartalék tartományon szeretnénk elosztani a virtuális gépek üzembe helyezésekor. Azt is jelezzük, hogy a rendelkezésre állási csoportot két **frissítési tartomány** között szeretnénk elosztani.  A két frissítési tartomány biztosítja, hogy amikor az Azure frissíti a szoftvereket, a virtuális gépeink erőforrásai el legyenek különítve. Ezzel megakadályozhatjuk, hogy minden, a virtuális gépen futó szoftver egyszerre frissüljön.
+A rendelkezésre állási csoportok segítségével elkülönítheti az erőforrásokat a tartalék tartományok és a frissítési tartományok között. A **tartalék tartomány** kiszolgáló-, hálózati és tárolási erőforrások egy elkülönített gyűjteményét képviseli. Az előző példában a rendelkezésre állási csoportot legalább két tartalék tartományon van elosztva a virtuális gépek üzembe helyezésekor. A rendelkezésre állási csoport két **frissítés tartományon** is el van osztva. A két frissítési tartomány biztosítja, hogy amikor az Azure frissíti a szoftvereket, a virtuális gépeink erőforrásai el legyenek különítve. Ezzel megakadályozhatjuk, hogy minden, a virtuális gépen futó szoftver egyszerre frissüljön.
 
 
 ## <a name="create-vms-inside-an-availability-set"></a>Virtuális gépek létrehozása rendelkezésre állási csoportban
 
-A virtuális gépeket a rendelkezésre állási csoportban kell létrehozni, hogy azok biztosan megfelelően legyenek elosztva a hardveren. Meglévő virtuális gépet nem adhat hozzá rendelkezésre állási csoporthoz annak létrejötte után. 
+A virtuális gépeket a rendelkezésre állási csoportban kell létrehozni, hogy azok biztosan megfelelően legyenek elosztva a hardveren. Meglévő virtuális gépet nem adhat hozzá rendelkezésre állási csoporthoz annak létrejötte után.
 
 Ha az [az vm create](/cli/azure/vm#az_vm_create) paranccsal hoz létre virtuális gépet, az `--availability-set` paraméterrel adhatja meg a rendelkezésre állási csoport nevét.
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in `seq 1 2`; do
    az vm create \
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
      --size Standard_DS1_v2  \
-     --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+     --image UbuntuLTS \
      --admin-username azureuser \
      --generate-ssh-keys \
      --no-wait
-done 
+done
 ```
 
-Most már van két virtuális gépünk az újonnan létrehozott rendelkezésre állási csoportunkban. Minthogy ugyanabban a rendelkezésre állási csoportban vannak, az Azure biztosítja, hogy a virtuális gépek és az erőforrásaik (az adatlemezeket is beleértve) el legyenek osztva az elkülönített fizikai hardverek között. Ez az elosztás magasabb rendelkezésre állást biztosít az egész virtuálisgép-megoldásunkban.
+Most már két virtuális gép van a rendelkezésre állási csoportban. Minthogy ugyanabban a rendelkezésre állási csoportban vannak, az Azure biztosítja, hogy a virtuális gépek és az erőforrásaik (az adatlemezeket is beleértve) el legyenek osztva az elkülönített fizikai hardverek között. Ez az eloszlás magasabb rendelkezésre állást biztosít a teljes virtuálisgép-megoldás számára.
 
-Ha megtekinti a rendelkezésre állási csoportot a portálon az Erőforráscsoportok > myResourceGroupAvailability > myAvailabilitySet pont alatt, láthatja, hogy a virtuális gépek hogyan oszlanak el a két tartalék és frissítési tartományban.
+A rendelkezésre állási csoport eloszlását megtekintheti a Portalon az Erőforráscsoportok > myResourceGroupAvailability > myAvailabilitySet területen. A virtuális gépek a két tartalék és frissítési tartomány között oszlanak el az alábbi példában látható módon:
 
 ![Rendelkezésre állási csoport a portálon](./media/tutorial-availability-sets/fd-ud.png)
 
-## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése 
+## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése
 
-A rendelkezésre állási csoportot később további virtuális gépekkel bővítheti, azonban tudnia kell, milyen virtuálisgép-méretek érhetők el a hardveren.  Az [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) paranccsal listázhatja a rendelkezésre állási csoport hardverfürtjén elérhető összes méretet.
+Később további virtuális gépeket is hozzá lehet adni a rendelkezésre állási csoporthoz, ahol a virtuális gépek mérete rendelkezésre áll a hardveren. Az [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) parancsmaggal listázhatja a rendelkezésre állási csoport hardverfürtjén elérhető összes méretet:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm availability-set list-sizes \
      --resource-group myResourceGroupAvailability \
      --name myAvailabilitySet \
-     --output table  
+     --output table
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -120,4 +115,3 @@ Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési cso
 
 > [!div class="nextstepaction"]
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)
-

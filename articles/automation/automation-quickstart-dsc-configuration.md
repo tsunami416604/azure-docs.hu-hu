@@ -1,19 +1,21 @@
 ---
-title: "Azure rövid útmutató – Virtuális gép konfigurálása DSC-vel | Microsoft Docs"
-description: "LAMP-verem konfigurálása Linux rendszerű virtuális gépen a Desired State Configurationnel"
+title: Azure rövid útmutató – Virtuális gép konfigurálása DSC-vel | Microsoft Docs
+description: LAMP-verem konfigurálása Linux rendszerű virtuális gépen a Desired State Configurationnel
 services: automation
-keywords: "dsc, konfigurálás, automatizálás"
+ms.service: automation
+ms.component: dsc
+keywords: dsc, konfigurálás, automatizálás
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurálás Linux rendszerű virtuális gépen a Desired State Configurationnel
 

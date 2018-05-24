@@ -1,6 +1,6 @@
 ---
-title: Az IIS védelme SSL-tanúsítványokkal az Azure-ban | Microsoft Docs
-description: Megtudhatja, hogyan védheti meg az IIS-webkiszolgálót SSL-tanúsítványokkal egy Windows rendszerű virtuális gépen az Azure-ban
+title: Oktatóanyag – Windows webkiszolgáló védelme SSL-tanúsítványokkal az Azure-ban | Microsoft Docs
+description: Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja az Azure PowerShellt olyan Windows rendszerű virtuális gép védelmére, amely az IIS webkiszolgálót az Azure Key Vaultban tárolt SSL-tanúsítványokkal futtatja.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c86f7ae9ef3eeaa68708df509020af0f6ecc2d1f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 76d1170f4696c4221233d2b3c1d358375adfe5c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="secure-iis-web-server-with-ssl-certificates-on-a-windows-virtual-machine-in-azure"></a>IIS-webkiszolgáló védelme SSL-tanúsítványokkal Windows rendszerű virtuális gépen az Azure-ban
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló védelme a Key Vaultban tárolt SSL-tanúsítványokkal Windows rendszerű virtuális gépen az Azure-ban
+
 A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánnyal titkosítható a webes adatforgalom. Ezek az SSL-tanúsítványok az Azure Key Vaultban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését a Windows rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -33,7 +34,7 @@ A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánny
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.3-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. 
+Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 
 ## <a name="overview"></a>Áttekintés

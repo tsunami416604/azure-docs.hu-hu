@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 8bf1381ad089b9db41a3ef9f6fd3b9521a16da7e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -183,10 +183,11 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | Kelet-Japán | 12076:51012 |
 | Nyugat-Japán | 12076:51013 |
 | **Ausztrália** | |
-| Ausztrália középső régiója | 12076:51032 |
-| Ausztrália 2. középső régiója | 12076:51033 |
 | Kelet-Ausztrália | 12076:51015 |
 | Délkelet-Ausztrália | 12076:51016 |
+| **Ausztrália kormányzati** | |
+| Ausztrália középső régiója | 12076:51032 |
+| Ausztrália 2. középső régiója | 12076:51033 |
 | **India** | |
 | Dél-India | 12076:51019 |
 | Nyugat-India | 12076:51018 |

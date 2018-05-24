@@ -1,37 +1,37 @@
 ---
-title: "Az Azure házirend json-mintát - engedélyezett SQL DB termékváltozatok |} Microsoft Docs"
-description: "A json-minta házirend feltétele egy jóváhagyott SKU használandó SQL-adatbázisok."
+title: Azure Policy JSON-minta – Engedélyezett termékváltozatok SQL-adatbázisokhoz | Microsoft Docs
+description: Ez a JSON-mintaszabályzat megköveteli egy jóváhagyott termékváltozat használatát az SQL-adatbázisokon.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 3799c61993fd1e7713e2823e3f933525dc65b18d
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: 6e72816204d5d811715d8ef24e9d473e22a7c31c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allowed-sql-db-skus"></a>SQL DB termékváltozatok engedélyezett
+# <a name="allowed-sql-db-skus"></a>Engedélyezett termékváltozatok SQL-adatbázisokhoz
 
-A házirend feltétele egy jóváhagyott SKU használandó SQL-adatbázisok. Megadja az engedélyezett SKU-azonosítók tömbje vagy engedélyezett SKU nevének tömbjét.
+Ez a szabályzat megköveteli egy jóváhagyott termékváltozat használatát az SQL-adatbázisokon. Meg kell adnia egy engedélyezett termékváltozat-azonosítókat tartalmazó tömböt vagy egy engedélyezett termékváltozat-neveket tartalmazó tömböt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
 [!code-json[main](../../../policy-templates/samples/SQL/sql-db-skus/azurepolicy.json "Allowed SQL DB SKUs")]
 
-A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy a [Azure CLI](#deploy-with-azure-cli).
+A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy az [Azure CLI](#deploy-with-azure-cli) használatával helyezhető üzembe.
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
@@ -49,15 +49,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell központi telepítés tisztítása
+### <a name="clean-up-powershell-deployment"></a>PowerShell-üzembehelyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -67,14 +67,14 @@ az policy definition create --name 'sql-db-skus' --display-name 'Allowed SQL DB 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "sql-db-skus"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure parancssori felület központi telepítés tisztítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További Azure csoportházirend-sablon minták erővel [sablonok Azure házirend](../json-samples.md).
+- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.

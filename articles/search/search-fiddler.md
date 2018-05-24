@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 6108e0061c4a8de3000de7f7a07cca313803e80d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Az Azure Search REST API-k vizsgálata a Fiddlerrel vagy a Postmannel
 
@@ -48,14 +48,14 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 Mindegyik eszköz megőrzi a munkamenet fejlécadatait, ami azt jelenti, hogy az URL-végpontot, az API-verziót, az API-kulcsot és a tartalomtípust csak egyszer kell megadni.
 
-A teljes URL-címnek az alábbi példához kell hasonlítania, azzal az eltéréssel, hogy a **`my-app`** helyőrző helyére egy érvényes nevet kell írni: `https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01`
+A teljes URL-címnek az alábbi példához kell hasonlítania, azzal az eltéréssel, hogy a **`my-app`** helyőrző helyére egy érvényes nevet kell írni: `https://my-app.search.windows.net/indexes/hotels?api-version=2017-11-11`
 
 A szolgáltatás URL-címének szerkezete az alábbi elemeket tartalmazza:
 
 + HTTPS-előtag.
 + A szolgáltatás URL-címe, amely a portálról kérhető le.
 + Egy erőforrás, azaz egy művelet, amely egy objektumot hoz létre a szolgáltatáson. A jelen lépés esetében ez egy „hotels” nevű index.
-+ Az api-version, amely egy kötelező kisbetűs a karakterlánc a „?api-version=2016-09-01” formátumban az aktuális verzió esetében. Az [API-verziókat](search-api-versions.md) a rendszer rendszeresen frissíti. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
++ Az api-version, amely egy kötelező kisbetűs a karakterlánc a „?api-version=2017-11-11” formátumban az aktuális verzió esetében. Az [API-verziókat](search-api-versions.md) a rendszer rendszeresen frissíti. Az API-verziót minden kérelemnél adja meg, hogy teljes mértékben szabályozhassa, a rendszer mikor melyik verziót használja.  
 
 A kérelemfejléc szerkezete két elemből tevődik össze, a tartalomtípusból és az előző szakaszban leírt API-kulcsból:
 
@@ -124,7 +124,7 @@ Másolja az indexdefiníciót a kérelemtörzsbe az alábbi képernyőfelvételh
 Az index létrehozása és adatokkal való feltöltése két különböző lépés. Az Azure Searchben az index tartalmazza az összes kereshető adatot, amelyeket JSON-dokumentumok formájában adhat be. Az ehhez a tevékenységhez tartozó API áttekintéséhez lásd: [Dokumentumok hozzáadása, frissítése vagy törlése (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 + Ebben a lépésben a parancsot cserélje a **POST** parancsra.
-+ Módosítsa a végpontot, hogy tartalmazza a `/docs/index` útvonalat. A teljes URL-címnek a következőképp kell kinéznie: `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01`
++ Módosítsa a végpontot, hogy tartalmazza a `/docs/index` útvonalat. A teljes URL-címnek a következőképp kell kinéznie: `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
 + A kérelemfejléceket ne módosítsa. 
 
 A kérelem törzse négy, a szállodák indexéhez hozzáadandó dokumentumot tartalmaz.
@@ -213,7 +213,7 @@ Cserélje a parancsot a **POST** parancsra. Módosítsa az URL-címet, hogy tart
 Most, hogy az index és a dokumentumok is betöltődtek, lekérdezheti őket. További információ erről az API-ról: [Dokumentumok keresése (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents)  
 
 + Ebben a lépésben a parancsot cserélje a **GET** parancsra.
-+ Módosítsa a végpontot, hogy tartalmazza a lekérdezési paramétereket, köztük a keresett karakterláncokat is. A lekérdezési URL például a következőképp nézhet ki: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2016-09-01`
++ Módosítsa a végpontot, hogy tartalmazza a lekérdezési paramétereket, köztük a keresett karakterláncokat is. A lekérdezési URL például a következőképp nézhet ki: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + A kérelemfejléceket ne módosítsa
 
 Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szereplő dokumentumok számát adja vissza. A **Send** (Küldés) gombra kattintva a Postman-kérelem és -válasz az alábbi képernyőképhez hasonló lesz. Az állapotkódnak 200-nak kell lennie.
@@ -222,18 +222,18 @@ Ez a lekérdezés a „motel” kifejezést keresi, és a találatokban szerepl�
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Tippek a mintalekérdezések Fiddlerben való futtatásához
 
-A következő példalekérdezés az [A keresési index működése (Azure Search API)](http://msdn.microsoft.com/library/dn798927.aspx) cikkből származik. A cikkben szereplő számos példalekérdezés szóközt is tartalmaz, amely a Fiddler esetében nem engedélyezett. Minden szóközt cseréljen le + karakterre, mielőtt beillesztené a lekérdezési karakterláncot a lekérdezés Fiddler használatával történő megkísérléséhez.
+A következő példalekérdezés az [A keresési index működése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) cikkből származik. A cikkben szereplő számos példalekérdezés szóközt is tartalmaz, amely a Fiddler esetében nem engedélyezett. Minden szóközt cseréljen le + karakterre, mielőtt beillesztené a lekérdezési karakterláncot a lekérdezés Fiddler használatával történő megkísérléséhez.
 
 **A szóközök cseréje előtt (a „lastRenovationDate desc” részben):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
 **A szóközök + jelre cserélése után (a „lastRenovationDate+desc” részben):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
 ## <a name="query-index-properties"></a>Indextulajdonságok lekérdezése
-A rendszer-információk lekérdezésével a dokumentumok számát és a tárhelyhasználatot is lekérheti: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01`
+A rendszer-információk lekérdezésével a dokumentumok számát és a tárhelyhasználatot is lekérheti: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
 

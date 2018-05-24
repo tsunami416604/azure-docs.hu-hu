@@ -1,27 +1,27 @@
 ---
-title: A szinonimák előzetes verziójának oktatóanyaga az Azure Search szolgáltatásban | Microsoft Docs
-description: A szinonimák előzetes verziójú szolgáltatás hozzáadása az Azure Search szolgáltatás egyik indexéhez.
+title: A szinonimák oktatóanyaga az Azure Search szolgáltatásban | Microsoft Docs
+description: A szinonimák szolgáltatás hozzáadása az Azure Search szolgáltatás egyik indexéhez.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/31/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0f082397f832883b272a2ca38850a340b618adde
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a>Szinonima (előzetes verzió) C# oktatóanyag az Azure Search szolgáltatáshoz
+# <a name="synonym-c-tutorial-for-azure-search"></a>Szinonima C# oktatóanyag az Azure Search szolgáltatáshoz
 
 A szinonimák bővítik a lekérdezéseket azáltal, hogy találatként kezelik a bemeneti kifejezéssel szemantikailag egyenértékűnek tekintett kifejezéseket. Előfordulhat például, hogy azt szeretné, hogy a „kocsi” kifejezésre olyan dokumentumokat kapjon eredményül, amelyek az „autó” vagy a „jármű” kifejezéseket is tartalmazzák.
 
 Az Azure Search szolgáltatásban a szinonimák meghatározása egy *szinonimatérképpel* történik, az egyenértékű kifejezéseket társító *leképezési szabályok* segítségével. Több szinonimatérképet is létrehozhat, közzéteheti őket bármely index számára elérhető szolgáltatásszintű erőforrásként, majd hivatkozhat arra, amelyiket a mezőszinten használni kívánja. Az indexben való keresés mellett az Azure Search szolgáltatás lekérdezéskor a szinonimatérképben is keres, ha meg van határozva egy a lekérdezésben használt mezőkhöz.
 
 > [!NOTE]
-> A szinonimák szolgáltatás jelenleg előzetes verzióban van, és csak a legújabb előzetes verziójú API- és SDK-verziók támogatják (api-version=2016-09-01-Preview, SDK version 4.x-preview). Jelenleg nincs Azure Portal-támogatás. Mivel az előzetes verziójú API-kra nem vonatkozik SLA, és az előzetes verziójú szolgáltatások változhatnak, nem javasolt éles környezetben használni őket.
+> A szinonimák szolgáltatás a legújabb API- és SDK-verzióban támogatott (API-verzió: 2017-11-11, SDK-verzió: 5.0.0). Jelenleg nincs Azure Portal-támogatás. Ha az Azure Portalon a szinonimák támogatása hasznos lenne az Ön számára, küldjön visszajelzést a [UserVoice](https://feedback.azure.com/forums/263029-azure-search) (Felhasználói vélemények) fórumon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +29,7 @@ Az oktatóanyag az alábbi követelményekkel rendelkezik:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Search szolgáltatás](search-create-service-portal.md)
-* [A Microsoft.Azure.Search .NET-kódtár előzetes verziója](https://aka.ms/search-sdk-preview)
+* [Microsoft.Azure.Search .NET-könyvtár](https://aka.ms/search-sdk)
 * [Az Azure Search szolgáltatás használata .NET-alkalmazásból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Áttekintés

@@ -1,28 +1,28 @@
 ---
-title: "Webkiszolgáló védelme SSL-tanúsítványokkal az Azure-ban | Microsoft Docs"
-description: "Megtudhatja, hogyan védheti meg az NGINX-webkiszolgálót SSL-tanúsítványokkal Linux rendszerű virtuális gépen az Azure-ban"
+title: Oktatóanyag – Linux rendszerű webkiszolgáló védelme SSL-tanúsítványokkal az Azure-ban | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan védheti meg az NGINX-webkiszolgálót futtató Linux rendszerű virtuális gépet az Azure Key Vaultban tárolt SSL-tanúsítványok és az Azure CLI 2.0 használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2017
+ms.date: 04/30/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 02118533c4ab552f81157f644bb794e68fbc4ce3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f86cc891b67cddf3a4046260d2977371af3d0596
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Webkiszolgáló védelme SSL-tanúsítványokkal Linux rendszerű virtuális gépen az Azure-ban
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Oktatóanyag: Webkiszolgáló védelme Linux rendszerű virtuális gépen az Azure-ban, a Key Vaultban tárolt SSL-tanúsítványok segítségével
 A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánnyal titkosítható a webes adatforgalom. Ezek az SSL-tanúsítványok az Azure Key Vaultban tárolhatók, és lehetővé teszik a tanúsítványok biztonságos üzembe helyezését a Linux rendszerű virtuális gépeken az Azure-ban. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ A webkiszolgálók védelméhez egy Secure Sockets Layer- (SSL-) tanúsítvánny
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.22-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).  
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
 
 
 ## <a name="overview"></a>Áttekintés
@@ -70,14 +70,14 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Tanúsítvány előkészítése virtuális géppel való használatra
-Ha a virtuális gép létrehozása alatt szeretné használni a tanúsítványt, szerezze be a tanúsítvány azonosítóját az [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) paranccsal. Alakítsa át a tanúsítványt az [az vm format-secret](/cli/azure/vm#az_vm_format_secret) paranccsal. A következő példa ezen parancsok kimenetét ezekhez változókhoz rendeli, hogy könnyen használhatók legyenek a következő lépésekben:
+Ha a virtuális gép létrehozása alatt szeretné használni a tanúsítványt, szerezze be a tanúsítvány azonosítóját az [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) paranccsal. Alakítsa át a tanúsítványt az [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format) paranccsal. A következő példa ezen parancsok kimenetét ezekhez változókhoz rendeli, hogy könnyen használhatók legyenek a következő lépésekben:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm format-secret --secret "$secret")
+vm_secret=$(az vm secret format --secrets "$secret")
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Cloud-init konfiguráció létrehozása az NGINX védelméhez
@@ -159,4 +159,3 @@ Kövesse ezt a hivatkozást az előre felépített virtuálisgép-szkriptek mint
 
 > [!div class="nextstepaction"]
 > [Linux rendszerű virtuális gép szkriptjeinek mintái](./cli-samples.md)
-

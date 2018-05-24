@@ -7,13 +7,13 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 12/04/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: f24777fe5bb482eb74aba4acbd7313665f22c38b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9ee88b254131b40fdf1e01b771afa92127734e18
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Azure Search-index létrehozása, lekérdezése és szűrése a portálon
 
@@ -110,7 +110,7 @@ Most már rendelkezik egy keresési indexszel, amely készen áll a lekérdezés
 
    ![Index és API-parancsok][6]
 
-3. Kattintson a parancssáv **API-verzió beállítása** elemére az elérhető REST API-k megtekintéséhez. Az előzetes verziójú API-k új, általánosan még ki nem adott szolgáltatásokhoz biztosítanak hozzáférést. Az alábbi lekérdezésekhez további utasításig használja az általánosan elérhető verziót (2016-09-01). 
+3. Kattintson a parancssáv **API-verzió beállítása** elemére az elérhető REST API-k megtekintéséhez. Az előzetes verziójú API-k új, általánosan még ki nem adott szolgáltatásokhoz biztosítanak hozzáférést. Az alábbi lekérdezésekhez további utasításig használja az általánosan elérhető verziót (2017-11-11). 
 
     > [!NOTE]
     > Az [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) és a [.NET-kódtár](search-howto-dotnet-sdk.md#core-scenarios) teljesen egyenértékűek, de a **Keresési ablak** csak REST-hívások kezelésre alkalmas. Elfogadja az [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) és a [teljes Lucene lekérdezéselemző](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) szintaxisát is, továbbá a [Dokumentum keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) műveletekben elérhető összes keresési paramétert.

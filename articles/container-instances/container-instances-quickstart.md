@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 57961cf1cb64f90cec7d2be90f3fbfe33344467d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b68468cd8174d658d04d8e67433a8f18884493bd
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rövid útmutató: Az első tároló létrehozása az Azure Container Instances szolgáltatásban
 
@@ -64,19 +64,21 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Miután a tároló átvált a **Sikeres** állapotba, elérhetővé válik a böngészőben a teljes tartománynév megkeresésével:
+Miután a tároló átvált a **Sikeres** állapotba, navigáljon annak teljes tartománynevére a böngészőben:
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>A tároló naplóinak lekérése
 
-A létrehozott tároló naplóit az [az container logs][az-container-logs] paranccsal kérheti le:
+A tárolópéldányok naplóinak megtekintése hasznos lehet a tárolóval vagy az azon futtatott alkalmazással kapcsolatos hibák elhárítása során.
+
+A tároló naplóit az [az container logs][az-container-logs] paranccsal hívhatja le:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-A következőhöz hasonló kimenetnek kell megjelennie:
+A kimenet megjeleníti a tároló naplóit, és a HTTP GET kéréseknek is meg kell jelenniük, amelyek akkor jöttek létre, amikor az alkalmazást a böngészőjében megtekintette.
 
 ```console
 $ az container logs --resource-group myResourceGroup -n mycontainer
@@ -113,7 +115,7 @@ listening on port 80
 ::ffff:10.240.255.107 - - [15/Mar/2018:21:18:47 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
-## <a name="delete-the-container"></a>A tároló törlése
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Miután végzett a tárolóval, az [az container delete][az-container-delete] parancs használatával távolíthatja el:
 
@@ -131,19 +133,19 @@ A **mycontainer** tárolónak nem szabad megjelennie a parancs kimenetében. Ha 
 
 ## <a name="next-steps"></a>További lépések
 
-A jelen rövid útmutatóban alkalmazott tároló kódja a Docker-fájljával egyetemben elérhető [a GitHubon][app-github-repo]. Ha próbaképpen szeretné maga létrehozni és üzembe helyezni az Azure Container Instances szolgáltatásban az Azure Container Registry használatával, folytassa az Azure Container Instances oktatóanyagával.
+Ebben a rövid útmutatóban létrehozott egy Azure-beli tárolópéldányt egy, a nyilvános Docker Hub regisztrációs adatbázisban található rendszerképből. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet az Azure Container Instances szolgáltatásban egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
-> [Az Azure Container Instances oktatóanyagai](./container-instances-tutorial-prepare-app.md)
+> [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)
 
-Ha ki szeretné próbálni a tárolók futtatásának különböző lehetőségeit egy Azure-beli előkészítési rendszerben, tekintse meg a [Service Fabric][service-fabric] vagy az [Azure Container Service (AKS)][container-service] rövid útmutatóit.
+Ha ki szeretné próbálni a tárolók futtatásának különböző lehetőségeit egy Azure-beli előkészítési rendszerben, tekintse meg a [Service Fabric][service-fabric] vagy az [Azure Kubernetes Service (AKS)][container-service] rövid útmutatóit.
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git
-[azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
+[azure-account]: https://azure.microsoft.com/free/
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->

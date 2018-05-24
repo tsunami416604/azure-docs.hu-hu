@@ -17,13 +17,11 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
-    - name: A szerepkör-definíciók ismertetése
-      href: role-definitions.md
     - name: Beépített szerepkörök
       href: built-in-roles.md
     - name: Egyéni szerepkörök
       href: custom-roles.md
-    - name: Külső felhasználók szerepkör-hozzárendeléseinek kezelése
+    - name: Egyéni szerepkörök hozzárendelése belső és külső felhasználókhoz
       href: role-assignments-external-users.md
     - name: Tevékenységnaplók
       href: change-history-report.md

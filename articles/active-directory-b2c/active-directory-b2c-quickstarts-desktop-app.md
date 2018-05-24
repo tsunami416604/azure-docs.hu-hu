@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: a312169217ac5476a503d5ad5a9126674f999eac
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d0e50d0a81a3230558da42ab6678c3c354ce0e01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Gyors útmutató: Asztali alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel 
 
@@ -90,7 +90,7 @@ Az Azure Active Directory B2C-funkcióival a felhasználók frissíthetik a prof
 
 ## <a name="access-a-protected-web-api-resource"></a>Védett webes API-erőforrás elérése
 
-Kattintson az **API meghívása** elemre, amellyel kérést küldhet az Azure AD B2C által védett https://fabrikamb2chello.azurewebsites.net/hello erőforrásnak. 
+Kattintson az **API meghívása** elemre, amellyel kérést küldhet az Azure AD B2C által védett erőforrásnak. 
 
 ![API meghívása](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 

@@ -1,79 +1,84 @@
 ---
-title: "Az Azure házirend json-mintát - diagnosztikai naplózása |} Microsoft Docs"
-description: "A json-mintát házirend eseményeket, ha a diagnosztikai beállítások nincs engedélyezve a megadott erőforrástípus."
+title: Azure Policy json-példa – Diagnosztikai beállítás naplózása | Microsoft Docs
+description: A json-mintaszabályzat naplózza, ha a diagnosztikai beállítások nincsenek engedélyezve egyes erőforrástípusokhoz.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
-ms.date: 10/30/2017
-ms.author: banders
+ms.tgt_pltfrm: ''
+ms.workload: ''
+ms.date: 04/27/2018
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 0e97470491f548cafd5023851e2c2f6bd76cbe9f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: 1f87d411e244d10437e3b6f9befbdee13dde14e9
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="audit-diagnostic-setting"></a>Diagnosztikai naplózás beállítása
+# <a name="audit-diagnostic-setting"></a>Diagnosztikai beállítás naplózása
 
-Naplózás, ha a diagnosztikai beállítások nincs engedélyezve a megadott típusú erőforrások. Megadja annak ellenőrzése, hogy engedélyezve vannak-e a diagnosztikai beállítások tömbjét.
+Ez a beépített szabályzat naplózza, ha a diagnosztikai beállítások nincsenek engedélyezve egyes erőforrástípusokhoz. Adjon meg egy erőforrástípus-tömböt, amelyhez ellenőrizni szeretné, hogy engedélyezve vannak-e a diagnosztikai beállítások.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Minta sablon
+## <a name="sample-template"></a>Példasablon
 
 [!code-json[main](../../../policy-templates/samples/Monitoring/audit-diagnostic-setting/azurepolicy.json "Audit diagnostic setting")]
 
-A sablon használatával telepíthető a [Azure-portálon](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy a [Azure CLI](#deploy-with-azure-cli).
+A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy az [Azure CLI](#deploy-with-azure-cli) használatával helyezhető üzembe. A beépített szabályzat lekéréséhez használja a következő azonosítót: `7f89b1eb-583c-429a-8828-af049802c1d9`.
+
+## <a name="parameters"></a>Paraméterek
+
+A paraméter átadásához használja az alábbi formátumot:
+
+```json
+{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}
+```
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Üzembe helyezés az Azure-ban](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FMonitoring%2Faudit-diagnostic-setting%2Fazurepolicy.json)
+Szabályzat hozzárendelésekor válassza a **Diagnosztikai beállítás naplózása** lehetőséget az elérhető beépített definíciók közül.
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name "audit-diagnostic-setting" -DisplayName "Audit diagnostic setting" -description "Audit diagnostic setting for selected resource types" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Monitoring/audit-diagnostic-setting/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Monitoring/audit-diagnostic-setting/azurepolicy.parameters.json' -Mode All
-$definition
-$assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -listOfResourceTypes <Resource Types> -PolicyDefinition $definition
-$assignment
+$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/7f89b1eb-583c-429a-8828-af049802c1d9
+
+New-AzureRmPolicyAssignment -name "Audit diagnostics" -PolicyDefinition $definition -PolicyParameter '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}' -Scope <scope>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell központi telepítés tisztítása
+### <a name="clean-up-powershell-deployment"></a>PowerShell-üzembehelyezés eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzureRmPolicyAssignment -Name "Audit diagnostics" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 ```azurecli-interactive
-az policy definition create --name 'audit-diagnostic-setting' --display-name 'Audit diagnostic setting' --description 'Audit diagnostic setting for selected resource types' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Monitoring/audit-diagnostic-setting/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Monitoring/audit-diagnostic-setting/azurepolicy.parameters.json' --mode All
-
-az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-diagnostic-setting"
+az policy assignment create --scope <scope> --name "Audit diagnostics" --policy 7f89b1eb-583c-429a-8828-af049802c1d9 --params '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}'
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure parancssori felület központi telepítés tisztítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup --yes
+az policy assignment delete --name "Audit diagnostics" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További Azure csoportházirend-sablon minták erővel [sablonok Azure házirend](../json-samples.md).
+- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.

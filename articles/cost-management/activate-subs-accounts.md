@@ -1,109 +1,109 @@
 ---
-title: Azure-előfizetések és a fiókok aktiválásához |} Microsoft Docs
-description: Engedélyezze a hozzáférést az Azure Resource Manager API-k használatával új és meglévő fiókok és közös fiók problémák megoldásához.
+title: Azure-előfizetések és -fiókok aktiválása | Microsoft Docs
+description: Engedélyezheti az Azure Resource Manager API-kkal való hozzáférését új és meglévő fiókok számára, és gyakori fiókproblémákat oldhat meg.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/01/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: quickstart
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure-előfizetések és a fiókok az Azure költség Management aktiválása
+# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure-előfizetések és -fiókok aktiválása az Azure Cost Managementtel
 
-Létrehozásától vagy frissítésétől egészen a hitelesítő adatait Azure Resource Manager lehetővé teszi az Azure költség kezelését az összes a fiókok és -előfizetések az Azure-bérlő belül. Ha az Azure Diagnostics bővítmény engedélyezve van a virtuális gépeken is van, majd Azure költség felügyeleti is gyűjtéséhez kiterjesztett például CPU és memória. Ez a cikk ismerteti az Azure Resource Manager API-k használatával új és meglévő fiókok hozzáférés engedélyezése. Azt is ismerteti, hogyan közös fiók problémák megoldásához.
+Az Azure Resource Manager hitelesítő adatainak hozzáadásával vagy frissítésével az Azure Cost Management az Ön Azure-bérlőjén található összes fiókot és előfizetést megtekintheti. Ha engedélyezte az Azure Diagnostics bővítményt a virtuális gépein, az Azure Cost Management kiterjesztett metrikákat, például CPU- és memóriaadatokat gyűjthet. Ez a cikk azt ismerteti, hogy hogyan engedélyezheti az Azure Resource Manager API-kkal való hozzáférést az új és meglévő fiókok számára. Emellett a gyakori fiókproblémák megoldásához is útmutatást nyújt.
 
-Azure költség felügyeleti nem tud hozzáférni az Azure-előfizetés adatok többségét, ha az előfizetés _aktivált_. Szerkesztenie kell _aktivált_ fiókok, hogy az Azure költség felügyeleti érhetik el azokat.
+Az Azure Cost Management nem fér hozzá a legtöbb Azure-előfizetési adathoz, ha az előfizetés _inaktiválva van_. Ha azt szeretné, hogy az Azure Cost Management hozzáférjen a fiókokhoz, szerkesztenie kell az _inaktivált_ fiókokat.
 
-## <a name="required-azure-permissions"></a>Az Azure szükséges engedélyek
+## <a name="required-azure-permissions"></a>Szükséges Azure-engedélyek
 
-Hajtsa végre a cikkben ismertetett adott engedélyekre van szükség. Ön vagy a bérlői rendszergazda egyaránt a következő engedélyekkel kell rendelkeznie:
+A cikkben található műveletekhez konkrét engedélyekre van szükség. Önnek vagy a bérlői rendszergazdának mindkét alábbi engedéllyel rendelkeznie kell:
 
-- A CloudynCollector alkalmazás regisztrálása az Azure AD-bérlő engedély.
-- Az alkalmazást az Azure-előfizetések a szerepkör lehetővé teszi.
+- Engedély a CloudynCollector alkalmazás az Azure AD-bérlővel történő regisztrációjához.
+- Az alkalmazás egy Azure-előfizetésbeli szerepkörhöz való hozzárendelésének jogosultsága.
 
-Az Azure-előfizetését, rendelkeznie kell a fiókok `Microsoft.Authorization/*/Write` rendelje hozzá a CloudynCollector alkalmazás eléréséhez. Ez a művelet biztosítja a [tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkör vagy [felhasználói hozzáférés adminisztrátora](../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör.
+Az Azure-előfizetéseihez tartozó fiókjainak `Microsoft.Authorization/*/Write` hozzáféréssel kell rendelkezniük a CloudynCollector alkalmazás hozzárendeléséhez. Ezt a műveletet a [Tulajdonos](../role-based-access-control/built-in-roles.md#owner) szerepkör vagy a [Felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör végezheti el.
 
-Ha a fiók hozzá van rendelve a **közreműködő** szerepkör, Önnek nincs megfelelő engedélye arra, hogy az alkalmazást. Arra vonatkozó hibaüzenetet kap, az Azure-előfizetése CloudynCollector alkalmazás hozzárendelésekor.
+Ha az Ön fiókja **Közreműködő** szerepkörrel rendelkezik, nem rendelheti hozzá az alkalmazást. Ilyen esetekben a CloudynCollector alkalmazás az Azure-előfizetéshez való hozzárendelésekor egy hibaüzenet jelenik meg.
 
 ### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory-engedélyek ellenőrzése
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
-2. Válassza ki az Azure-portálon **Azure Active Directory**.
-3. Válassza ki az Azure Active Directoryban, **felhasználói beállítások**.
-4. Ellenőrizze a **App regisztrációk** lehetőséget.
-    - Ha az érték **Igen**, akkor a nem rendszergazda felhasználók regisztrálhatják AD alkalmazásaiban. Ez a beállítás azt jelenti, hogy egyetlen felhasználóhoz sem az Azure AD-bérlő regisztrálhatja az alkalmazást. Szükséges Azure-előfizetése engedélyei lépne.  
-    ![Alkalmazás-regisztráció](./media/activate-subs-accounts/app-register.png)
-    - Ha a **App regisztrációk** beállítás **nem**, akkor csak a bérlői rendszergazda felhasználók regisztrálhatja az Azure Active Directory-alkalmazásokat. A bérlői rendszergazda regisztrálnia kell az CloudynCollector alkalmazást.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
+3. Az Azure Active Directory területen válassza a **Felhasználói beállítások** lehetőséget.
+4. Ellenőrizze az **Alkalmazásregisztrációk** beállítást.
+    - Ha **Igen** értékre van állítva, akkor nem rendszergazdai felhasználók is regisztrálhatnak AD-alkalmazásokat. Ez a beállítás azt jelenti, hogy az Azure AD-bérlő bármely felhasználója regisztrálhat alkalmazásokat. Lépjen tovább a Szükséges Azure-előfizetés-engedélyekhez.  
+    ![Alkalmazásregisztrációk](./media/activate-subs-accounts/app-register.png)
+    - Ha az **Alkalmazásregisztrációk** beállítás értéke **Nem**, akkor csak a bérlői rendszergazdák regisztrálhatnak Azure Active Directory-alkalmazásokat. A bérlői rendszergazdának kell regisztrálnia a CloudynCollector alkalmazást.
 
 
-## <a name="add-an-account-or-update-a-subscription"></a>Vegyen fel egy fiókot, vagy egy előfizetés frissítése
+## <a name="add-an-account-or-update-a-subscription"></a>Fiók hozzáadása vagy előfizetés frissítése
 
-Fiók frissítés előfizetés hozzáadásakor Azure költség felügyeleti hozzáférés engedélyezése az Azure adatait.
+Fiókok hozzáadásakor vagy előfizetések frissítésekor hozzáférést nyújt az Azure Cost Managementnek az Ön Azure-adataihoz.
 
-### <a name="add-a-new-account-subscription"></a>Adja hozzá egy új fiókot (előfizetés)
+### <a name="add-a-new-account-subscription"></a>Új fiók hozzáadása (előfizetés)
 
-1. Az Azure költség felügyeleti portálon, kattintson a jobb felső fogaskerék szimbólum, és válassza ki **felhő fiókok**.
-2. Kattintson a **új fiókot felveszi** és a **új fiókot felveszi** mezőben jelenik meg. Adja meg a szükséges adatokat.  
-    ![Adja hozzá az új fiók használata](./media/activate-subs-accounts//add-new-account.png)
+1. Az Azure Cost Management portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Felhőbeli fiókok** lehetőséget.
+2. Kattintson az **Új fiók hozzáadása** lehetőségre. Ekkor megjelenik az **Új fiók hozzáadása** mező. Adja meg a szükséges adatokat.  
+    ![Új fiók hozzáadása mező](./media/activate-subs-accounts//add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Előfizetés frissítése
 
-1. Ha frissíteni szeretne egy _aktivált_ -előfizetéssel, amely már létezik Azure költség felügyeleti a fiókok kezelése, kattintson a Szerkesztés ceruza szimbólumra jobb oldalán a szülő _GUID bérlői_. Előfizetések a szülő bérlői szerint vannak csoportosítva, ezért kerülje az előfizetések aktiválásával külön-külön.
+1. Ha frissíteni szeretne egy _inaktivált_ előfizetést, amely már létezik az Azure Cost Management Fiókkezelés területén, kattintson a szerkesztés ikonra a szülői _bérlő GUID azonosítója_ jobb oldalán. Az előfizetések egy szülői bérlő alatt vannak csoportosítva, ezért célszerű elkerülni az előfizetések külön-külön történő aktiválását.
     ![Az előfizetések újbóli felderítése](./media/activate-subs-accounts/existing-sub.png)
-2. Ha szükséges, adja meg a bérlő azonosítóját. Ha nem ismeri a bérlő azonosítója, az alábbi lépések segítségével találja meg:
-    1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
-    2. Válassza ki az Azure-portálon **Azure Active Directory**.
+2. Ha szükséges, adja meg a bérlő azonosítóját. Ha nem ismeri a bérlő azonosítóját, az alábbi lépésekkel kiderítheti:
+    1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+    2. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget.
     3. A bérlőazonosító lekéréséhez válassza ki az Azure AD-bérlőjéhez tartozó **Tulajdonságok** elemet.
-    4. Másolja a Directory azonosító GUID. Ez az érték a bérlőazonosítója.
-    További információkért lásd: [-bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-3. Ha szükséges, válassza ki a sebesség azonosítóját. Ha nem ismeri a sebesség Azonosítóját, a következő lépések segítségével találja meg.
-    1. A jobb felső az Azure portál, kattintson a felhasználói adatokat, és kattintson a **megtekintése a számlázási**.
-    2. A **számlázási**, kattintson a **előfizetések**.
-    3. A **a saját előfizetések**, válassza ki az előfizetést.
-    4. Az azonosító alatt látható arány **kínálnak azonosító**. Másolja az ajánlat Azonosítót az előfizetéshez.
-4. Az új fiók hozzáadása (vagy előfizetés szerkesztése) párbeszédpanelen kattintson **mentése** (vagy **következő**). A program átirányítja az Azure-portálon.
-5. Jelentkezzen be a portálra. Kattintson a **elfogadás** engedélyezése Azure költség felügyeleti adatgyűjtő elérni az Azure-fiókjával.
+    4. Másolja ki a Címtár GUID azonosítóját. Ez az érték a bérlőazonosítója.
+    További információ: [A bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+3. Ha szükséges, válassza ki a díj azonosítóját. Ha nem ismeri a díj azonosítóját, az alábbi lépésekkel kiderítheti.
+    1. Az Azure Portal jobb felső sarkában kattintson a felhasználói adataira, majd a **Számla megtekintése** lehetőségre.
+    2. A **Számlázási fiók** területen kattintson az **Előfizetések** lehetőségre.
+    3. A **Saját előfizetések** területen válassza ki az előfizetését.
+    4. A díj azonosítója az **Ajánlat azonosítója** alatt található. Másolja ki az előfizetéshez tartozó ajánlat azonosítóját.
+4. Az Új fiók hozzáadása (vagy az Előfizetés szerkesztése) mezőben kattintson a **Mentés** (vagy a **Tovább**) lehetőségre. A program átirányítja az Azure Portalra.
+5. Jelentkezzen be az Portalra. Kattintson az **Elfogadás** lehetőségre, így engedélyezi az Azure Cost Management Collector számára, hogy hozzáférjen az Ön Azure-fiókjához.
 
-    Program átirányítja az Azure költség felügyeleti fiókok kezelése lap, és az előfizetésben **aktív** Fiókállapot. Az erőforrás-kezelő oszlopban egy zöld pipa szimbólumot jeleníti.
+    Program ekkor átirányítja az Azure Cost Management fiókkezelő oldalára, az előfizetését pedig **aktív** fiókállapotra frissíti. Ekkor egy zöld pipának kell megjelennie a Resource Manager oszlop alatt.
 
-    Ha egy vagy több előfizetés nem egy zöld pipa szimbólumot lát, azt jelenti, hogy Önnek nincs engedélye az előfizetés (CloudynCollector) reader alkalmazás létrehozásához. Az előfizetés magasabb szintű engedélyekkel rendelkező felhasználó kell ismételje meg a folyamatot.
+    Ha nem lát zöld pipát egy vagy több előfizetés esetében, akkor nincs engedélye létrehozni az olvasó alkalmazást (a CloudynCollectort) az előfizetésben. Ehhez egy magasabb jogosultsággal rendelkező felhasználónak kell megismételni a folyamat lépéseit.
 
-Tekintse meg a [csatlakozás az Azure Resource Manager Azure költség felügyeleti](https://youtu.be/oCIwvfBB6kk) videót, amely végigvezeti a folyamatot.
+Tekintse meg [Az Azure Resource Manager összekapcsolása az Azure Cost Managementtel](https://youtu.be/oCIwvfBB6kk) című videót, amely ismerteti a folyamat lépéseit.
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
-## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Közvetett vállalati telepítés kapcsolatos gyakori problémák megoldásához
+## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Gyakori közvetlen vállalati beállítási problémák megoldása
 
-Ha először az Azure költség felügyeleti portál, láthatja az alábbi üzenetek, egy nagyvállalati szerződés vagy a Cloud Solution Provider (CSP) felhasználók:
+Amikor először használja az Azure Cost Management portálját, a következő üzenetek jelenhetnek meg, ha Ön Nagyvállalati szerződést kötött, vagy egy felhőszolgáltató felhasználója:
 
-- *A megadott API-kulcs az nem a legfelső szintű regisztrációs kulcs* jelenik meg a **beállítva fel Azure költség felügyeleti** varázsló.
-- *Közvetlen regisztráció – nem* jelenik meg a nagyvállalati szerződés portálon.
-- *Az elmúlt 30 napban nem használati adatok található. Lépjen kapcsolatba a terjesztőt, hogy ellenőrizze, hogy engedélyezték a jelölés során az Azure-fiókjával* az Azure költség felügyeleti portál megjeleníti.
+- *A megadott API-kulcs nem felső szintű regisztrációs kulcs* üzenet jelenik meg az **Azure Cost Management** beállítási varázslójában.
+- *Közvetlen regisztráció – Nem* üzenet jelenik meg a Nagyvállalati szerződés portálján.
+- *Nem találhatók az elmúlt 30 napra vonatkozó használati adatok. Lépjen kapcsolatba a terjesztőjével, és ellenőrizze, hogy engedélyezve van-e a korrektúra az Ön Azure-fiókjában*, amely az Azure Cost Management portálján jelenik meg.
 
-Az előző üzenetekből kiderül, hogy őnála Azure nagyvállalati szerződéssel vagy CSP vásárolt. Engedélyeznie kell a viszonteladóhoz vagy a CSP _markup_ az az Azure fiók, hogy az adatok Azure költség felügyeleti megtekintheti.
+Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. A viszonteladónak vagy a felhőszolgáltatónak kell engedélyeznie a _korrektúrát_ az Ön Azure-fiókjában, mielőtt Ön megtekinthetné az adatait az Azure Cost Management szolgáltatásban.
 
-A problémák megoldásával kapcsolatban itt található:
+A problémák megoldása:
 
-1. Engedélyeznie kell a viszonteladó tud _markup_ a fiókjához. Útmutatásért lásd: a [közvetett ügyfél bevezetési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Létrehozhat az Azure nagyvállalati szerződéssel kulcs Azure költség felügyeleti való használatra. Útmutatásért lásd: [regisztrálni egy Azure nagyvállalati szerződéssel és adatok megtekintése](https://docs.microsoft.com/en-us/azure/cost-management/quick-register-ea).
+1. A viszonteladónak engedélyeznie kell a _korrektúrát_ a fiókjában. Útmutatás: [Közvetett ügyfeleknek szóló előkészítési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+2. Létre kell hoznia egy kulcsot Azure Nagyvállalati Szerződésben, amelyet az Azure Cost Managementtel használhat. Útmutatás: [Azure Nagyvállalati Szerződés regisztrálása és a költségadatok megtekintése](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Csak egy Azure szolgáltatás-rendszergazda engedélyezheti költség felügyeletet. Közös rendszergazdai engedélyek nem elegendők.
+A Cost Management szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő.
 
-Mielőtt Azure költség kezelő Azure nagyvállalati szerződés API-kulcsot is létrehozhat, engedélyeznie kell az Azure számlázási API által megadott utasítások:
+Az Azure Nagyvállalati Szerződés API-kulcsának létrehozása előtt engedélyeznie kell az Azure számlázási API-t. Ehhez itt találhat útmutatást:
 
-- [A vállalati ügyfelek a Reporting API-k – áttekintés](../billing/billing-enterprise-api.md)
-- [A Microsoft Azure enterprise portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI) alatt **adataihoz a API-val való hozzáférés engedélyezése**
+- [Jelentéskészítő API-k Enterprise-ügyfeleknek – áttekintés](../billing/billing-enterprise-api.md)
+- [Microsoft Azure Enterprise Portal jelentéskészítő API](https://ea.azure.com/helpdocs/reportingAPI) **Az adatok az API-hoz való hozzáférésének engedélyezése** területen
 
-Is szükség lehet ahhoz, hogy megkapja a részleg, a fiókhoz tulajdonosainak és a vállalati rendszergazdák engedélyeket _díjak megtekintése_ számlázási API-val.
+Előfordulhat, hogy a részlegek rendszergazdáinak, a fióktulajdonosoknak és a nagyvállalati rendszergazdáknak is engedélyt kell adnia a _díjak megtekintéséhez_ a számlázási API segítségével.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem fejezte első oktatóanyaga, amely költség-kezelésre, olvassa el a [tekintse át a használati és költségek](tutorial-review-usage.md).
+- Ha még nem végezte el a Cost Management első oktatóanyagát, itt megtekintheti: [Használat és költségek áttekintése](tutorial-review-usage.md).
