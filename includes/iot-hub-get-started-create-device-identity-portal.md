@@ -5,34 +5,34 @@ services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: b08bfcd4cb9e85f9e682efe0f599b6dd88897962
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1df3e188b71b8fa2d5223bad8bc5914513e26286
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 ## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 
 Ebben a szakaszban használhatja a [Azure-portálon] [ lnk-azure-portal] egy eszközidentitás az IoT hub a identitás rendszerleíró adatbázis létrehozásához. Egy eszköz csak akkor tud csatlakozni az IoT Hubhoz, ha be van jegyezve az identitásjegyzékbe. További információkért lásd az [IoT Hub fejlesztői útmutatójának][lnk-devguide-identity] „Identitásjegyzék” című szakaszát. Használja a **az IoT-eszközök** a portál egy eszköz egyedi azonosítót vagy kulcsot a következőhöz azonosítja magát az IoT-központ az eszköz panel. Az eszközazonosítók megkülönböztetik a kis- és nagybetűket.
 
-1. Győződjön meg arról, hogy be vannak jelentkezve a [Azure-portálon][lnk-azure-portal].
+1. Jelentkezzen be az [Azure Portalra][lnk-azure-portal].
 
-1. Az ugrósávon kattintson **összes erőforrás** és az IoT hub erőforrás található.
+1. Válassza ki **összes erőforrás** és az IoT hub erőforrás található.
 
-    ![Keresse meg az Iot hub][img-find-iothub]
+1. Az IoT hub erőforrás már meg van nyitva, kattintson a **az IoT-eszközök** eszközzel, és kattintson a **Hozzáadás** tetején. 
 
-1. Az IoT hub erőforrás már meg van nyitva, kattintson a **az IoT-eszközök** eszközzel, és kattintson a **Hozzáadás** tetején. Adjon meg a nevet az új eszköz, például: **myDeviceId**, és kattintson a **mentése**.
+    ![Az eszközazonosító létrehozása a portálon][img-add-device]
 
-    ![Az eszközazonosító létrehozása a portálon][img-create-device]
-
-   Ez a művelet létrehoz egy új, az IoT hub eszközidentitás.
+1. Adjon meg egy nevet az új eszköz, például: **myDeviceId**, és kattintson a **mentése**. Ez a művelet létrehoz egy új, az IoT hub eszközidentitás.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-1. Az a **az IoT-eszközök**tartozó eszközök listája, kattintson az újonnan létrehozott eszközre, és jegyezze fel az a **kapcsolati karakterlánc---elsődleges kulcs**.
+   ![Új eszköz felvétele][img-create-device]
+
+1. Az eszközt, kattintson az újonnan létrehozott eszközt, és másolja a **kapcsolati karakterlánc---elsődleges kulcs** későbbi használat céljából.
 
     ![Eszköz kapcsolati karakterlánc][img-connection-string]
 
@@ -41,9 +41,9 @@ Ebben a szakaszban használhatja a [Azure-portálon] [ lnk-azure-portal] egy esz
 
 <!-- Images. -->
 [img-find-iothub]: ./media/iot-hub-get-started-create-device-identity-portal/find-iothub.png
-[img-create-device]: ./media/iot-hub-get-started-create-device-identity-portal/create-identity-portal.png
+[img-add-device]: ./media/iot-hub-get-started-create-device-identity-portal/create-identity-portal.png
 [img-connection-string]: ./media/iot-hub-get-started-create-device-identity-portal/device-connection-string.png
-
+[img-create-device]:./media/iot-hub-get-started-create-device-identity-portal/add-device.png
 
 <!-- Links -->
 [lnk-azure-portal]: https://portal.azure.com
