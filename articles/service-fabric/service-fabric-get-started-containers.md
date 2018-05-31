@@ -12,13 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/18/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366528"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -198,6 +199,8 @@ A tárolóalapú szolgáltatáshoz szükség van egy kommunikációs végpontra.
 ```
 
 Egy végpont megadásával a Service Fabric közzéteszi a végpontot az elnevezési szolgáltatásban. A fürtben futó más szolgáltatások feloldhatják ezt a tárolót. Tárolók közötti kommunikációt is folytathat a [fordított proxyval](service-fabric-reverseproxy.md). A kommunikációhoz környezeti változókként adja meg a fordított proxy HTTP-figyelő portját és azon szolgáltatások nevét, amelyekkel kommunikálni kíván.
+
+A szolgáltatás egy adott portot figyel (ebben a példában a 8081-est). Az alkalmazások Azure-beli fürtön való üzembe helyezésekor a fürt és az alkalmazás is Azure-terheléselosztó mögött fut. Az alkalmazásportnak nyitva kell lennie Azure Load Balancerben, hogy a bejövő forgalom elérhesse a szolgáltatást.  Ezt a portot egy [PowerShell-szkripttel](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) vagy az [Azure Portalon](https://portal.azure.com) nyithatja meg az Azure Load Balancerben.
 
 ## <a name="configure-and-set-environment-variables"></a>Környezeti változók konfigurálása és beállítása
 A szolgáltatásjegyzékben minden kódcsomaghoz megadhatók környezeti változók. Ez a funkció az összes szolgáltatáshoz elérhető attól függetlenül, hogy tárolókként, folyamatokként vagy vendég futtatható fájlokként vannak-e üzembe helyezve. A környezeti változó értékeit felülbírálhatja az alkalmazásjegyzékben, vagy az üzembe helyezés alatt megadhatja őket alkalmazásparaméterekként.
