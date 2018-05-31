@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c1be4d649bf4b69a9f749003b5c66142006b78e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301607"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Oktatóanyag: Hozzáférések hozzárendelése költségkezelési adatokhoz
 
@@ -27,7 +28,8 @@ Az Azure-szerződés vagy -fiók regisztrálásakor a rendszer létrehozott egy 
 > [!div class="checklist"]
 > * Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
 > * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
-> * Entitások létrehozása
+> * Entitások létrehozása és felügyelete
+
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -56,11 +58,11 @@ A költségvetési adatokhoz irányítópult- és jelentésszintű hozzáférés
 
 A felhasználók hozzáadásáról szóló oktatóvideó: [Felhasználók felvétele az Azure Cost Management rendszerébe](https://youtu.be/Nzn7GLahx30).
 
-## <a name="create-entities"></a>Entitások létrehozása
+## <a name="create-and-manage-entities"></a>Entitások létrehozása és felügyelete
 
-A költségentitás-hierarchia meghatározásakor az az ajánlott eljárás, ha felméri a cég felépítését.
+A költségentitás-hierarchia meghatározásakor az az ajánlott eljárás, ha felméri a cég felépítését. Az entitásokkal külön fiókonként vagy előfizetésenként szegmentálhatja a költségeket. Költségentitások létrehozásával logikai csoportokat alkothat a költségek kezelésére és nyomon követésére. A fa létrehozásakor mérlegelje, miként szeretné követni vagy miként kell követnie a költségeket üzleti egységenként, költséghelyenként, környezetenként és értékesítési részlegenként elkülönítve. A Cloudyn entitásfája az entitásöröklésnek köszönhetően rugalmas.
 
-A fa létrehozásakor mérlegelje, miként szeretné követni vagy miként kell követnie a költségeket üzleti egységenként, költséghelyenként, környezetenként és értékesítési részlegenként elkülönítve. A Cloudyn entitásfája az entitásöröklésnek köszönhetően rugalmas. A felhőfiókok egyéni előfizetései adott entitásokhoz vannak csatolva. Az entitások tehát több-bérlősek. Az egyes felhasználókat az entitások használatával hozzárendelheti csak a vállalat őket érintő szegmenseihez. Így az adatok elkülönítve maradnak, akár kisebb, akár nagyobb egységekről, például a leányvállalatokról van szó. Az adatok elkülönítése segít abban, hogy kézben tarthassa az irányítást.  
+A felhőfiókok egyéni előfizetései adott entitásokhoz vannak csatolva. Hozzárendelhet egy entitást a felhőszolgáltatói fiókjához vagy előfizetéséhez. Az entitások tehát több-bérlősek. Az egyes felhasználókat az entitások használatával hozzárendelheti csak a vállalat őket érintő szegmenseihez. Így az adatok elkülönítve maradnak, akár kisebb, akár nagyobb egységekről, például a leányvállalatokról van szó. Az adatok elkülönítése segít abban, hogy kézben tarthassa az irányítást.  
 
 Az Azure-szerződés vagy -fiók a Cloudynben való regisztrálásakor az előfizetett Azure-erőforrások adatait, többek között a használatra, a teljesítményre, a számlázásra és a címkékre vonatkozó adatokat a rendszer átmásolta a Cloudyn-fiókjába. Az entitásfát azonban manuálisan kell létrehoznia. Ha kihagyta az Azure Resource Manager-regisztrációt, csak a számlázási adatok és néhány adategység-jelentés érhetők el a Cloudyn portálján.
 
@@ -74,6 +76,23 @@ Az **Entities** (Entitások) elem mellett kattintson az **Add Entity** (Entitás
 
 Amikor elkészült, **mentse** az entitást.
 
+### <a name="entity-access-levels"></a>Entitás hozzáférési szintjei
+
+Az entitások hozzáférési szintjeivel és a felhasználói hozzáférésekkel együtt definiálható, hogy milyen típusú műveletek legyenek elérhetők a Cloudyn portálon.
+
+- **Vállalati** – Lehetővé teszi a gyermek költségentitások létrehozását és felügyeletét.
+- **Vállalati + költséglefoglalási** – Lehetővé teszi a gyermek költségentitások létrehozását és felügyeletét, beleértve az összevont fiókok költséglefoglalását.
+- **Vállalati, költségek a szülő költséglefoglalása alapján** – Lehetővé teszi a gyermek költségentitások létrehozását és felügyeletét. A fiók költségei a szülő költséglefoglalási modelljén alapulnak.
+- **Csak egyéni irányítópultok** – Csak az előre definiált egyéni irányítópultok megtekintését engedi a felhasználónak.
+- **Csak irányítópultok** – Csak az irányítópultok megtekintését engedi a felhasználónak.
+
+### <a name="create-a-cost-entity-hierarchy"></a>Költségentitás-hierarchia létrehozása
+
+Költségentitás-hierarchia létrehozásához vállalati vagy vállalati + költséglefoglalási hozzáférésű fiókkal kell rendelkeznie.
+
+A Cloudyn portálon kattintson a fogaskerék ikonra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget. A bal oldali panelen megjelenik az **Entitások** fa. Szükség esetén bontsa ki az entitásfát, ha nem látja a fiókkal társítani kívánt entitást.  A felhőszolgáltatói fiókok füleken láthatók a jobb oldali ablaktáblán. Válassza ki valamelyik fület, majd húzzon egy fiókot vagy előfizetést az entitásra, és ott engedje el. Az **Áthelyezés** mező tájékoztatja, ha a fiók sikeresen át lett helyezve. Kattintson az **OK** gombra.
+
+Több fiókot is társíthat egy adott entitáshoz. Válassza ki a fiókokat, majd kattintson az **Áthelyezés** elemre. A Fiókok áthelyezése mezőben válassza ki az entitást, ahová a fiókot át szeretné helyezni, majd kattintson a **Mentés** elemre. A Fiókok áthelyezése mező megerősítést kér, hogy valóban át szeretné-e helyezni a fiókokat. Kattintson az **Igen**, majd az **OK** gombra.
 
 A költségentitás-hierarchiák létrehozásáról szóló oktatóvideó: [Költségentitás-hierarchia létrehozása az Azure Cost Managementben](https://youtu.be/dAd9G7u0FmU).
 
@@ -86,7 +105,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Rendszergazdai hozzáféréssel rendelkező felhasználó létrehozása
 > * Felhasználói hozzáféréssel rendelkező felhasználó létrehozása
-> * Entitások létrehozása
+> * Entitások létrehozása és felügyelete
+
 
 Ha még nem engedélyezte az Azure Resource Manager API-hozzáférést a fiókokhoz, folytassa a következő cikkel.
 

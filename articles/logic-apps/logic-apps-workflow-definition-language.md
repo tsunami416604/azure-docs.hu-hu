@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886805"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Logic Apps munkafolyamat-definícióhoz, a munkafolyamat-definíció nyelvi séma
 
@@ -153,8 +154,8 @@ Ezek a példák azt szemléltetik, hogyan kifejezések kiértékelése:
 |------------|--------| 
 | "Sophia Owen" | Térjen vissza a következő karaktereket: "Sophia Owen" |
 | "[1] array" | Térjen vissza a következő karaktereket: "[1] array" |
-| "@@" | Ezek a karakterek vissza egy karakterből álló karakterlánc: "@" |   
-| " @" | Ezek a karakterek két karakter karakterláncként vissza: ' @' |
+| "\@\@" | Ezek a karakterek vissza egy karakterből álló karakterlánc: "\@" |   
+| " \@" | Ezek a karakterek két karakter karakterláncként vissza: ' \@' |
 |||
 
 Az ezekben a példákban tegyük fel, hogy a "myBirthMonth" egyenlő "Január" és "myAge" akkora 42 megadása:  
