@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942513"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizálható a mobilitási szolgáltatás telepítése a System Center Configuration Managerrel
 
@@ -233,7 +234,7 @@ A Configuration Manager konzol használatával figyelheti a központi telepíté
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. A következő fájlokat másolja át a **MobSvcLinux** a hálózati megosztáson mappába:
-   * Microsoft-ASR\_EE\*bites RHEL6-64*release.tar.gz
+   * Microsoft-ASR\_EE\*bites RHEL6-64\*release.tar.gz
    * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz
