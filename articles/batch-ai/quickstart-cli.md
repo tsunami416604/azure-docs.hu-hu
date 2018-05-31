@@ -15,136 +15,85 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 10/06/2017
 ms.author: Alexander.Yukhanov
-ms.openlocfilehash: 82e3885021a2f2309dfed456d472e7027b8d6cf2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3601ea412790c991892a0c05210d2551810287b8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869019"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-cli"></a>CNTK-betanítási feladatok futtatása az Azure CLI-vel
 
-Ez a rövid útmutató részletesen bemutatja, hogyan futtatható egy Microsoft Cognitive Toolkit (CNTK) betanítási feladat a Batch AI szolgáltatással az Azure parancssori felületről (CLI). Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható.
+Az Azure CLI 2.0 lehetővé teszi a Batch AI-erőforrások létrehozását és kezelését – Batch AI-fájlkiszolgálók és -fürtök létrehozását és törlését, valamint betanítási feladatok elküldését, leállítását, törlését és monitorozását.
 
-Ebben a példában a kézírásos rendszerképek MNIST-adatbázisát használja a konvolúciós neurális hálózat (CNN) betanításéhez egy egycsomópontos, Batch AI által felügyelt GPU-fürtön. 
+Ez a rövid útmutató ismerteti, hogyan hozható létre egy GPU-fürt és hogyan futtatható egy betanítási feladat a Microsoft Cognitive Toolkit használatával.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+A [ConvNet_MNIST.py](https://github.com/Azure/BatchAI/blob/master/recipes/CNTK/CNTK-GPU-Python/CNTK-GPU-Python.ipynb) betanítási szkript a Batch AI GitHub-oldalon érhető el. A szkript megtanítja a konvolúciós neurális hálózatnak a kézzel írt számjegyek MNIST-adatbázisát.
 
-A rövid útmutatóhoz az Azure CLI legújabb verziójára lesz szükség. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+A hivatalos CNTK-példa úgy lett módosítva, hogy elfogadja a betanítási adatkészlet helyét és a kimeneti könyvtár helyét parancssori argumentumként.
 
-Emellett a Batch AI erőforrás-szolgáltatókat egyszer regisztrálni kell az előfizetésben az Azure Cloud Shell vagy az Azure CLI használatával. A szolgáltató regisztrációja akár 15 percet is igénybe vehet.
+## <a name="quickstart-overview"></a>Rövid útmutató – áttekintés
+
+* Hozzon létre egy egy csomópontos GPU-fürtöt (`Standard_NC6` virtuálisgép-mérettel) `nc6` néven;
+* Hozzon létre egy új tárfiókot a feladatok bemenetének és kimenetének tárolásához;
+* Hozzon létre egy Azure-fájlmegosztást két mappával (`logs` és `scripts` néven), amelyek a feladatok kimenetét és a betanítási szkripteket fogják tartalmazni;
+* Hozzon létre egy `data` nevű Azure-blobtárolót a betanítási adatok tárolásához;
+* Helyezze üzembe a betanítási szkriptet és a betanítási adatokat a létrehozott fájlmegosztásban és tárolóban;
+* Konfigurálja a feladatot úgy, hogy csatlakoztassa az Azure-fájlmegosztást és az Azure-blobtárolót a fürtcsomóponton, és hagyományos fájlrendszerként elérhetővé tegye őket a következő helyeken: `$AZ_BATCHAI_JOB_MOUNT_ROOT/logs`, `$AZ_BATCHAI_JOB_MOUNT_ROOT/scripts` és `$AZ_BATCHAI_JOB_MOUNT_ROOT/data`.
+Az `AZ_BATCHAI_JOB_MOUNT_ROOT` egy környezeti változó, amelyet a Batch AI állít be a feladathoz.
+* A feladat monitorozásához streamelje a feladat standard kimenetét;
+* A feladat befejezése után ellenőrizze a kimenetét és a létrehozott modelleket;
+* Végül töröljön minden lefoglalt erőforrást.
+
+# <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés – Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Hozzáférés az Azure CLI 2.0-hoz (a 2.0.31-es vagy újabb verzióval). Használhatja a [Cloud Shellben](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) elérhető Azure CLI 2.0-t, vagy telepítheti helyileg [ezen utasítások](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) alapján.
+
+# <a name="cloud-shell-only"></a>Csak Cloud Shell
+
+A Cloud Shell használata esetén módosítsa a munkakönyvtárat az `/usr/$USER/clouddrive` könyvtárra, mert a kezdőkönyvtárban nincs szabad hely:
 
 ```azurecli
-az provider register -n Microsoft.BatchAI
-az provider register -n Microsoft.Batch
+cd /usr/$USER/clouddrive
 ```
 
+# <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-
-A Batch AI-fürtök és feladatok Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni.
-
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal.
-
-A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen. Ezután az [az configure](/cli/azure/reference-index#az_configure) paranccsal beállítjuk az erőforráscsoportot és helyet alapértelmezettként.
+Az Azure-erőforráscsoport egy logikai tároló az Azure-erőforrások üzembe helyezéséhez és felügyeletéhez. Az alábbi parancs létrehoz egy ```batchai.quickstart``` nevű új erőforráscsoportot az USA keleti régiójában:
 
 ```azurecli
-az group create --name myResourceGroup --location eastus
-
-az configure --defaults group=myResourceGroup
-
-az configure --defaults location=eastus
+az group create -n batchai.quickstart -l eastus
 ```
 
->[!NOTE]
->Az `az` parancs alapértelmezett értékeinek beállítása egy választható lépés. Az alapértelmezett értékeket nem muszáj beállítani. Ha az alapértelmezések beállítása mellett dönt, az oktatóanyag befejezése után távolítsa el az alapértelmezett beállításokat. Az alapértelmezett beállításokat a következő parancsokkal távolíthatja el:
->
->```azurecli
->az configure --defaults group=''
->
->az configure --defaults location=''
->```
->
+# <a name="create-gpu-cluster"></a>GPU-fürt létrehozása
 
-## <a name="create-a-storage-account"></a>Create a storage account
-
-Ez a rövid útmutató egy Azure-tárfiókot használ a betanítási feladat adatainak és szkriptjeinek tárolására. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy tárfiókot.
+A következő parancs egy egy csomópontos GPU-fürtöt hoz létre (a virtuális gép mérete Standard_NC6) egy Ubuntu DSVM operációsrendszer-kép használatával:
 
 ```azurecli
-az storage account create --name mystorageaccount --sku Standard_LRS
+az batchai cluster create -n nc6 -g batchai.quickstart -s Standard_NC6 -i UbuntuDSVM -t 1 --generate-ssh-keys
 ```
 
->[!NOTE]
->Minden tárfióknak egyedi névvel kell rendelkeznie. Az előző `az` parancs és az oktatóanyagban szereplő más hasonló parancsok esetében cserélje ki a `mystorageaccount` beállítás értékét a saját tárfiókja nevére.
+Az Ubuntu DSVM lehetővé teszi bármilyen betanítási feladat Docker-tárolókban való futtatását, valamint a legnépszerűbb mély tanulási keretrendszerek futtatását közvetlenül a virtuális gépeken.
 
-## <a name="prepare-azure-file-share"></a>Azure-fájlmegosztás előkészítése
+A `--generate-ssh-keys` kapcsoló a privát és nyilvános SSH-kulcsok létrehozására utasítja az Azure CLI-t, ha még nem léteznek. A fürtcsomópontokhoz az aktuális felhasználónév és a létrehozott SSH-kulcs használatával férhet hozzá.
 
-Illusztrációs célok esetében ez a rövid útmutató az Azure-fájlmegosztást használja a betanítási feladatok betanítási adatainak és szkriptjeinek tárolására.
+Megjegyzés: Ha a Cloud Shellt használja, készítsen biztonsági másolatot az ~/.ssh mappáról egy állandó tárolóra.
 
-1. Hozzon létre egy *batchaiquickstart* nevű fájlmegosztást az [az storage share create](/cli/azure/storage/share#az_storage_share_create) paranccsal.
-
-  ```azurecli
-  az storage share create --account-name mystorageaccount --name batchaiquickstart
-  ```
-2. Hozzon létre egy *mnistcntksample* könyvtárat a megosztásban az [az storage directory create](/cli/azure/storage/directory#az_storage_directory_create) paranccsal.
-
-  ```azurecli
-  az storage directory create --share-name batchaiquickstart  --name mnistcntksample
-  ```
-
-3. Töltse le a [mintacsomagot](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D), és bontsa ki. Töltse fel a tartalmát a könyvtárba az [az storage file upload](/cli/azure/storage/file#az_storage_file_upload) paranccsal:
-
-  ```azurecli
-  az storage file upload --share-name batchaiquickstart --source Train-28x28_cntk_text.txt --path mnistcntksample
-
-  az storage file upload --share-name batchaiquickstart --source Test-28x28_cntk_text.txt --path mnistcntksample
-
-  az storage file upload --share-name batchaiquickstart --source ConvNet_MNIST.py --path mnistcntksample
-  ```
-
-
-## <a name="create-gpu-cluster"></a>GPU-fürt létrehozása
-Az [az batchai cluster create](/cli/azure/batchai/cluster#az_batchai_cluster_create) paranccsal hozzon létre egy Batch AI-fürtöt, amely egyetlen GPU VM csomópontból áll. Ebben a példában a VM az alapértelmezett Ubuntu LTS rendszerképet futtatja. Adja meg ehelyett az `image UbuntuDSVM` használatát a Microsoft Deep Learning virtuális gép futtatásához, amely támogatja a további betanítási keretrendszereket. A NC6 méret egy NVIDIA K80 GPU-t tartalmaz. Csatlakoztassa a fájlmegosztást egy *azurefileshare* nevű mappához. A mappa teljes elérési útja a GPU számítási csomóponton: $AZ_BATCHAI_MOUNT_ROOT/azurefileshare.
-
-
-```azurecli
-az batchai cluster create --name mycluster --vm-size STANDARD_NC6 --image UbuntuLTS --min 1 --max 1 --storage-account-name mystorageaccount --afs-name batchaiquickstart --afs-mount-path azurefileshare --user-name <admin_username> --password <admin_password>
-```
-
-
-A fürt létrejötte után a kimenet a következőhöz hasonló:
-
-```azurecli
+Példa a kimenetre:
+```json
 {
-  "allocationState": "resizing",
-  "allocationStateTransitionTime": "2017-10-05T02:09:03.194000+00:00",
-  "creationTime": "2017-10-05T02:09:01.998000+00:00",
+  "allocationState": "steady",
+  "allocationStateTransitionTime": "2018-04-11T21:17:26.345000+00:00",
+  "creationTime": "2018-04-11T20:12:10.758000+00:00",
   "currentNodeCount": 0,
   "errors": null,
-  "id": "/subscriptions/10d0b7c6-9243-4713-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.BatchAI/clusters/mycluster",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/batchai.quickstart/providers/Microsoft.BatchAI/clusters/nc6",
   "location": "eastus",
-  "name": "mycluster",
-  "nodeSetup": {
-    "mountVolumes": {
-      "azureBlobFileSystems": null,
-      "azureFileShares": [
-        {
-          "accountName": "batchaisamples",
-          "azureFileUrl": "https://batchaisamples.file.core.windows.net/batchaiquickstart",
-          "credentialsInfo": {
-            "accountKey": null,
-            "accountKeySecretUrl": null
-          },
-          "directoryMode": "0777",
-          "fileMode": "0777",
-          "relativeMountPath": "azurefileshare"
-        }
-      ],
-      "fileServers": null,
-      "unmanagedFileSystems": null
-    },
-    "setupTask": null
-  },
+  "name": "nc6",
+  "nodeSetup": null,
   "nodeStateCounts": {
+    "additionalProperties": {},
     "idleNodeCount": 0,
     "leavingNodeCount": 0,
     "preparingNodeCount": 0,
@@ -152,273 +101,350 @@ A fürt létrejötte után a kimenet a következőhöz hasonló:
     "unusableNodeCount": 0
   },
   "provisioningState": "succeeded",
-  "provisioningStateTransitionTime": "2017-10-05T02:09:02.857000+00:00",
-  "resourceGroup": "myresourcegroup",
+  "provisioningStateTransitionTime": "2018-04-11T20:12:11.445000+00:00",
+  "resourceGroup": "batchai.quickstart",
   "scaleSettings": {
+    "additionalProperties": {},
     "autoScale": null,
     "manual": {
       "nodeDeallocationOption": "requeue",
       "targetNodeCount": 1
     }
   },
-  "subnet": {
-    "id": null
-  },
+  "subnet": null,
   "tags": null,
   "type": "Microsoft.BatchAI/Clusters",
   "userAccountSettings": {
-    "adminUserName": "demoUser",
+    "additionalProperties": {},
+    "adminUserName": "alex",
     "adminUserPassword": null,
-    "adminUserSshPublicKey": null
+    "adminUserSshPublicKey": "<YOUR SSH PUBLIC KEY HERE>"
   },
   "virtualMachineConfiguration": {
+    "additionalProperties": {},
     "imageReference": {
-      "offer": "UbuntuServer",
-      "publisher": "Canonical",
-      "sku": "16.04-LTS",
-      "version": "latest"
+      "additionalProperties": {},
+      "offer": "linux-data-science-vm-ubuntu",
+      "publisher": "microsoft-ads",
+      "sku": "linuxdsvmubuntu",
+      "version": "latest",
+      "virtualMachineImageId": null
     }
   },
   "vmPriority": "dedicated",
   "vmSize": "STANDARD_NC6"
+}
 ```
-## <a name="get-cluster-status"></a>A fürt állapotának lekérése
 
-A fürt állapotának áttekintése az [az batchai cluster list](/cli/azure/batchai/cluster#az_batchai_cluster_list) paranccsal kérhető le:
+# <a name="create-a-storage-account"></a>Storage-fiók létrehozása
+
+A következő parancs létrehoz egy új tárfiókot ugyanabban a régióban, ahol a batchai.repices erőforráscsoport található. Frissítse a parancsot egy egyedi tárfióknévvel.
 
 ```azurecli
-az batchai cluster list -o table
+az storage account create -n <storage account name> --sku Standard_LRS -g batchai.quickstart
 ```
 
-A kimenet a következőkhöz hasonló:
+Ha a kívánt tárfióknév nem érhető el, a fenti parancs jelenti a megfelelő hibát. Ebben az esetben válasszon egy másik nevet, és próbálkozzon újra.
+
+# <a name="data-deployment"></a>Adatok üzembe helyezése
+
+## <a name="download-the-training-script-and-training-data"></a>A betanítási szkript és a betanítási adatok letöltése
+
+* Töltse le és bontsa ki az előfeldolgozott MNIST-adatbázist [erről a helyről](https://batchaisamples.blob.core.windows.net/samples/mnist_dataset.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=PmhL%2BYnYAyNTZr1DM2JySvrI12e%2F4wZNIwCtf7TRI%2BM%3D) az aktuális mappába.
+
+GNU/Linux vagy Cloud Shell esetén:
 
 ```azurecli
-Name        Resource Group    VM Size        State     Idle    Running    Preparing    Unusable    Leaving
----------   ----------------  -------------  -------   ------  ---------  -----------  ----------  --------
-mycluster   myresourcegroup   STANDARD_NC6   steady    1       0          0            0            0
+wget "https://batchaisamples.blob.core.windows.net/samples/mnist_dataset.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=PmhL%2BYnYAyNTZr1DM2JySvrI12e%2F4wZNIwCtf7TRI%2BM%3D" -O mnist_dataset.zip
+unzip mnist_dataset.zip
 ```
 
-További részletekért futtassa az [az batchai cluster show](/cli/azure/batchai/cluster#az_batchai_cluster_show) parancsot. Ez visszaadja a fürt létrehozása után látható összes fürttulajdonságot.
+Lehetséges, hogy telepítenie kell az `unzip` parancsot, ha a GNU/Linux-disztribúciója nem tartalmazza.
 
-A fürt akkor áll készen, amikor a csomópontok le lettek foglalva és befejeződött az előkészítés (lásd a `nodeStateCounts` attribútumot). Ha hiba történt, akkor az `errors` attribútum tartalmazza a hiba leírását.
+* Töltse le a [ConvNet_MNIST.py](https://raw.githubusercontent.com/Azure/BatchAI/master/recipes/CNTK/CNTK-GPU-Python/ConvNet_MNIST.py) példaszkriptet az aktuális mappába:
 
-## <a name="create-training-job"></a>Betanítási feladat létrehozása
+GNU/Linux vagy Cloud Shell esetén:
 
-Miután a fürt elkészült, konfigurálja és küldje el a képzési feladatot.
+```azurecli
+wget https://raw.githubusercontent.com/Azure/BatchAI/master/recipes/CNTK/CNTK-GPU-Python/ConvNet_MNIST.py
+```
 
-1. Hozzon létre egy JSON-sablonfájlt job.json néven a feladat létrehozásához:
+## <a name="create-azure-file-share-and-deploy-the-training-script"></a>Azure-fájlmegosztás létrehozása és a betanítási szkript üzembe helyezése
 
-  ```JSON
-  {
+A következő parancsok létrehozzák a `scripts` és a `logs` nevű Azure fájlmegosztást, majd bemásolják a betanítási szkriptet a `scripts` megosztásban található `cntk` mappába:
+
+```azurecli
+az storage share create -n scripts --account-name <storage account name>
+az storage share create -n logs --account-name <storage account name>
+az storage directory create -n cntk -s scripts --account-name <storage account name>
+az storage file upload -s scripts --source ConvNet_MNIST.py --path cntk --account-name <storage account name> 
+```
+
+## <a name="create-a-blob-container-and-deploy-training-data"></a>Blobtároló létrehozása és betanítási adatok üzembe helyezése
+
+A következő parancsok létrehoznak egy `data` nevű Azure-blobtárolót, és bemásolják a betanítási adatokat az `mnist_cntk` nevű mappába:
+```azurecli
+az storage container create -n data --account-name <storage account name>
+az storage blob upload-batch -s . --pattern '*28x28_cntk*' --destination data --destination-path mnist_cntk --account-name <storage account name>
+```
+
+# <a name="submit-training-job"></a>Betanítási feladat elküldése
+
+## <a name="prepare-job-configuration-file"></a>Feladatkonfigurációs fájl előkészítése
+
+Hozzon létre egy `job.json` nevű betanításifeladat-konfigurációs fájlt az alábbi tartalommal:
+```json
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/BatchAI/master/schemas/2018-03-01/cntk.json",
     "properties": {
-        "stdOutErrPathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
-       "inputDirectories": [{
-            "id": "SAMPLE",
-            "path": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/mnistcntksample"
-        }],
-        "outputDirectories": [{
-            "id": "MODEL",
-            "pathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
-            "pathSuffix": "model",
-            "type": "custom"
-        }],
-        "containerSettings": {
-            "imageSourceRegistry": {
-                "image": "microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0"
-            }
-        },
         "nodeCount": 1,
         "cntkSettings": {
-            "pythonScriptFilePath": "$AZ_BATCHAI_INPUT_SAMPLE/ConvNet_MNIST.py",
-            "commandLineArgs": "$AZ_BATCHAI_INPUT_SAMPLE $AZ_BATCHAI_OUTPUT_MODEL"
+            "pythonScriptFilePath": "$AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/cntk/ConvNet_MNIST.py",
+            "commandLineArgs": "$AZ_BATCHAI_JOB_MOUNT_ROOT/data/mnist_cntk $AZ_BATCHAI_OUTPUT_MODEL"
+        },
+        "stdOutErrPathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
+        "outputDirectories": [{
+            "id": "MODEL",
+            "pathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs"
+        }],
+        "mountVolumes": {
+            "azureFileShares": [
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/logs",
+                    "relativeMountPath": "logs"
+                },
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/scripts",
+                    "relativeMountPath": "scripts"
+                }
+            ],
+            "azureBlobFileSystems": [
+                {
+                    "accountName": "<AZURE_BATCHAI_STORAGE_ACCOUNT>",
+                    "containerName": "data",
+                    "relativeMountPath": "data"
+                }
+            ]
         }
     }
-  }
-  ```
-2. Az [az batch job create](/cli/azure/batchai/job#az_batchai_job_create) paranccsal hozzon létre egy *myjob* nevű feladatot a fürtön való futtatáshoz.
+}
+```
 
-  ```azurecli
-  az batchai job create --name myjob --cluster-name mycluster --config job.json
-  ```
+Ez a konfigurációs fájl a következőket adja meg:
 
-A kimenet a következőkhöz hasonló:
+* `nodeCount` – a feladathoz szükséges csomópontok száma (ebben a rövid útmutatóban 1);
+* `cntkSettings` – a betanítási szkript és a parancssori argumentumok elérési útja. A parancssori argumentumok közé tartozik a betanítási adatok elérési útja és a létrehozott modellek tárolási helyének elérési útja. Az `AZ_BATCHAI_OUTPUT_MODEL` egy környezeti változó, amelyet a Batch AI a kimeneti könyvtár konfigurációja alapján állít be (lásd alább);
+* `stdOutErrPathPrefix` – az az elérési út, ahol a Batch AI létrehozza a feladat kimeneteit és naplóit tartalmazó könyvtárakat;
+* `outputDirectories` – a Batch AI által létrehozandó kimeneti könyvtárak gyűjteménye. A Batch AI minden könyvtárhoz létrehoz egy `AZ_BATCHAI_OUTPUT_<id>` nevű környezeti változót, ahol az `<id>` a könyvtár azonosítója;
+* `mountVolumes` – a feladat végrehajtása során csatlakoztatandó fájlrendszerek listája. A fájlrendszerek csatlakoztatási útvonala: `AZ_BATCHAI_JOB_MOUNT_ROOT/<relativeMountPath>`. Az `AZ_BATCHAI_JOB_MOUNT_ROOT` egy környezeti változó, amelyet a Batch AI állít be;
+* Az `<AZURE_BATCHAI_STORAGE_ACCOUNT>` azt jelenti, hogy a tárfiók neve a feladat küldésekor lesz megadva a --storage-account-name paraméterrel vagy az `AZURE_BATCHAI_STORAGE_ACCOUNT` környezeti változóval a számítógépen.
+
+## <a name="submit-the-job"></a>Feladat küldése
+
+A fürtön lévő feladatot a következő paranccsal küldheti el:
 
 ```azurecli
+az batchai job create -n cntk_python_1 -r nc6 -g batchai.quickstart -c job.json --storage-account-name <storage account name>
+```
+
+Példa a kimenetre:
+```
 {
+  "additionalProperties": {},
   "caffeSettings": null,
   "chainerSettings": null,
   "cluster": {
-    "id": "/subscriptions/10d0b7c6-9243-4713-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.BatchAI/clusters/mycluster",
-    "resourceGroup": "myresourcegroup"
+    "additionalProperties": {},
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/batchai.quickstart/providers/Microsoft.BatchAI/clusters/nc6",
+    "resourceGroup": "batchai.quickstart"
   },
   "cntkSettings": {
-    "commandLineArgs": "$AZ_BATCHAI_INPUT_SAMPLE $AZ_BATCHAI_OUTPUT_MODEL",
+    "additionalProperties": {},
+    "commandLineArgs": "$AZ_BATCHAI_JOB_MOUNT_ROOT/data/mnist_cntk $AZ_BATCHAI_OUTPUT_MODEL",
     "configFilePath": null,
     "languageType": "Python",
     "processCount": 1,
     "pythonInterpreterPath": null,
-    "pythonScriptFilePath": "$AZ_BATCHAI_INPUT_SAMPLE/ConvNet_MNIST.py"
+    "pythonScriptFilePath": "$AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/cntk/ConvNet_MNIST.py"
   },
   "constraints": {
-    "maxTaskRetryCount": null,
+    "additionalProperties": {},
     "maxWallClockTime": "7 days, 0:00:00"
   },
-  "containerSettings": {
-    "imageSourceRegistry": {
-      "credentials": null,
-      "image": "microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0",
-      "serverUrl": null
-    }
-  },
-  "creationTime": "2017-10-05T06:41:42.163000+00:00",
+  "containerSettings": null,
+  "creationTime": "2018-04-11T21:48:10.303000+00:00",
   "customToolkitSettings": null,
   "environmentVariables": null,
-  "executionInfo": {
-    "endTime": null,
-    "errors": null,
-    "exitCode": null,
-    "lastRetryTime": null,
-    "retryCount": null,
-    "startTime": "2017-10-05T06:41:44.392000+00:00"
-  },
-  "executionState": "running",
-  "executionStateTransitionTime": "2017-10-05T06:41:44.953000+00:00",
+  "executionInfo": null,
+  "executionState": "queued",
+  "executionStateTransitionTime": "2018-04-11T21:48:10.303000+00:00",
   "experimentName": null,
-  "id": "/subscriptions/10d0b7c6-9243-4713-xxxx-xxxxxxxxxxxx/resourceGroups/demo/providers/Microsoft.BatchAI/jobs/myjob",
-  "inputDirectories": [
-    {
-      "id": "SAMPLE",
-      "path": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/mnistcntksample"
-    }
-  ],
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/batchai.quickstart/providers/Microsoft.BatchAI/jobs/cntk_python_1",
+  "inputDirectories": null,
+  "jobOutputDirectoryPathSegment": "00000000-0000-0000-0000-000000000000/batchai.quickstart/jobs/cntk_python_1/b9576bae-e878-4fb2-9390-2e962356b5b1",
   "jobPreparation": null,
   "location": null,
-  "name": "cntk_job",
+  "mountVolumes": {
+    "additionalProperties": {},
+    "azureBlobFileSystems": [
+      {
+        "accountName": "<YOU STORAGE ACCOUNT NAME>",
+        "additionalProperties": {},
+        "containerName": "data",
+        "credentials": {
+          "accountKey": null,
+          "accountKeySecretReference": null,
+          "additionalProperties": {}
+        },
+        "mountOptions": null,
+        "relativeMountPath": "data"
+      }
+    ],
+    "azureFileShares": [
+      {
+        "accountName": "<YOU STORAGE ACCOUNT NAME>,
+        "additionalProperties": {},
+        "azureFileUrl": "https://<YOU STORAGE ACCOUNT NAME>.file.core.windows.net/logs",
+        "credentials": {
+          "accountKey": null,
+          "accountKeySecretReference": null,
+          "additionalProperties": {}
+        },
+        "directoryMode": "0777",
+        "fileMode": "0777",
+        "relativeMountPath": "logs"
+      },
+      {
+        "accountName": "<YOU STORAGE ACCOUNT NAME>",
+        "additionalProperties": {},
+        "azureFileUrl": "https://<YOU STORAGE ACCOUNT NAME>.file.core.windows.net/scripts",
+        "credentials": {
+          "accountKey": null,
+          "accountKeySecretReference": null,
+          "additionalProperties": {}
+        },
+        "directoryMode": "0777",
+        "fileMode": "0777",
+        "relativeMountPath": "scripts"
+      }
+    ],
+    "fileServers": null,
+    "unmanagedFileSystems": null
+  },
+  "name": "cntk_python_1",
   "nodeCount": 1,
   "outputDirectories": [
     {
+      "additionalProperties": {},
       "createNew": true,
       "id": "MODEL",
-      "pathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
-      "pathSuffix": "model",
-      "type": "Custom"
+      "pathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
+      "pathSuffix": null,
+      "type": "custom"
     }
   ],
   "priority": 0,
   "provisioningState": "succeeded",
-  "provisioningStateTransitionTime": "2017-10-05T06:41:44.238000+00:00",
-  "resourceGroup": "demo",
-  "stdOutErrPathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
+  "provisioningStateTransitionTime": "2018-04-11T21:48:11.577000+00:00",
+  "pyTorchSettings": null,
+  "resourceGroup": "batchai.quickstart",
+  "secrets": null,
+  "stdOutErrPathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
   "tags": null,
   "tensorFlowSettings": null,
-  "toolType": "CNTK",
+  "toolType": "cntk",
   "type": "Microsoft.BatchAI/Jobs"
 }
 ```
 
-## <a name="monitor-job"></a>Feladat monitorozása
+# <a name="monitor-job-execution"></a>A feladat végrehajtásának monitorozása
 
-A feladat állapotának áttekintése az [az batchai job list](/cli/azure/batchai/job#az_batchai_job_list) paranccsal kérhető le:
+A betanítási szkript az `stderr.txt` fájlban jelenti a betanítás előrehaladását. Ez a fájl a szabványos kimeneti könyvtárban található. Az előrehaladás a következő paranccsal monitorozható:
 
 ```azurecli
-az batchai job list -o table
+az batchai job file stream -n cntk_python_1 -g batchai.quickstart -f stderr.txt
 ```
 
-A kimenet a következőkhöz hasonló:
+Példa a kimenetre:
+```
+File found with URL "https://<YOU STORAGE ACCOUNT>.file.core.windows.net/logs/00000000-0000-0000-0000-000000000000/batchai.quickstart/jobs/cntk_python_1/<JOB's UUID>/stdouterr/stderr.txt?sv=2016-05-31&sr=f&sig=n86JK9YowV%2BPQ%2BkBzmqr0eud%2FlpRB%2FVu%2FFlcKZx192k%3D&se=2018-04-11T23%3A05%3A54Z&sp=rl". Start streaming
+Selected GPU[0] Tesla K80 as the process wide default device.
+-------------------------------------------------------------------
+Build info:
 
-```azurecli
-Name        Resource Group    Cluster    Cluster RG      Nodes  State    Exit code
-----------  ----------------  ---------  --------------- -----  -------  -----------
-myjob       myresourcegroup   mycluster  myresourcegroup 1      running
+        Built time: Jan 31 2018 15:03:41
+        Last modified date: Tue Jan 30 03:26:13 2018
+        Build type: release
+        Build target: GPU
+        With 1bit-SGD: no
+        With ASGD: yes
+        Math lib: mkl
+        CUDA version: 9.0.0
+        CUDNN version: 7.0.4
+        Build Branch: HEAD
+        Build SHA1: a70455c7abe76596853f8e6a77a4d6de1e3ba76e
+        MPI distribution: Open MPI
+        MPI version: 1.10.7
+-------------------------------------------------------------------
+Training 98778 parameters in 10 parameter tensors.
 
+Learning rate per 1 samples: 0.001
+Momentum per 1 samples: 0.0
+Finished Epoch[1 of 40]: [Training] loss = 0.405960 * 60000, metric = 13.01% * 60000 21.741s (2759.8 samples/s);
+Finished Epoch[2 of 40]: [Training] loss = 0.106030 * 60000, metric = 3.09% * 60000 3.638s (16492.6 samples/s);
+Finished Epoch[3 of 40]: [Training] loss = 0.078542 * 60000, metric = 2.32% * 60000 3.477s (17256.3 samples/s);
+...
+Final Results: Minibatch[1-11]: errs = 0.54% * 10000
 ```
 
-További részletekért futtassa az [az batchai job show](/cli/azure/batchai/job#az_batchai_job_show) parancsot.
+A streamelés leáll, amikor a feladat (sikeresen vagy sikertelenül) befejeződött.
 
-Az `executionState` tartalmazza a feladat jelenlegi végrehajtási állapotát:
+# <a name="inspect-generated-model-files"></a>Létrehozott modellfájlok vizsgálata
 
-* `queued`: a feladat arra vár, hogy fürtcsomópontok elérhetők legyenek
-* `running`: a feladat fut
-*   `succeeded` (vagy `failed`) : a feladat befejeződött és az `executionInfo` részleteket tartalmaz az eredményről
-
-
-## <a name="list-stdout-and-stderr-output"></a>Az stdout és az stderr kimenetek listázása
-Használja az [az batchai job list-files](/cli/azure/batchai/job#az_batchai_job_list_files) parancsot az stdout és az stderr naplófájlokhoz tartozó hivatkozások listázásához:
+A feladat a kimeneti könyvtárban tárolja a létrehozott modellfájlokat, és az `id` attribútum értéke `MODEL` lesz. A következő paranccsal listázhatja a modellfájlokat és lekérheti a letöltési URL-címeket:
 
 ```azurecli
-az batchai job list-files --name myjob --output-directory-id stdouterr
+az batchai job file list -n cntk_python_1 -g batchai.quickstart -d MODEL
 ```
 
-A kimenet a következőkhöz hasonló:
-
-```azurecli
+Példa a kimenetre:
+```
 [
   {
-    "contentLength": 733,
-    "downloadUrl": "https://batchaisamples.file.core.windows.net/batchaiquickstart/10d0b7c6-9243-4713-91a9-2730375d3a1b/demo/jobs/cntk_job/stderr.txt?sv=2016-05-31&sr=f&sig=Rh%2BuTg9C1yQxm7NfA9YWiKb%2B5FRKqWmEXiGNRDeFMd8%3D&se=2017-10-05T07%3A44%3A38Z&sp=rl",
-    "lastModified": "2017-10-05T06:44:38+00:00",
-    "name": "stderr.txt"
+    "additionalProperties": {},
+    "contentLength": 409456,
+    "downloadUrl": "https://<YOUR STORAGE ACCOUNT>.file.core.windows.net/...",
+    "isDirectory": false,
+    "lastModified": "2018-04-11T22:05:51+00:00",
+    "name": "ConvNet_MNIST_0.dnn"
   },
   {
-    "contentLength": 300,
-    "downloadUrl": "https://batchaisamples.file.core.windows.net/batchaiquickstart/10d0b7c6-9243-4713-91a9-2730375d3a1b/demo/jobs/cntk_job/stdout.txt?sv=2016-05-31&sr=f&sig=jMhJfQOGry9jr4Hh3YyUFpW5Uaxnp38bhVWNrTTWMtk%3D&se=2017-10-05T07%3A44%3A38Z&sp=rl",
-    "lastModified": "2017-10-05T06:44:29+00:00",
-    "name": "stdout.txt"
-  }
-]
+    "additionalProperties": {},
+    "contentLength": 409456,
+    "downloadUrl": "https://<YOUR STORAGE ACCOUNT>.file.core.windows.net/...",
+    "isDirectory": false,
+    "lastModified": "2018-04-11T22:05:55+00:00",
+    "name": "ConvNet_MNIST_1.dnn"
+  },
+...
+
 ```
 
-
-## <a name="observe-output"></a>Kimenet megfigyelése
-
-A feladat végrehajtása közben streamelheti a feladat kimeneti fájljait, illetve megjelenítheti a végüket. Az alábbi példa az [az batchai job stream-file](/cli/azure/batchai/job#az_batchai_job_stream_file) parancsot használja a stderr.txt napló streameléséhez:
+A létrehozott fájlok vizsgálatához a portál vagy az Azure Storage Explorer is használható. A különböző feladatok kimeneteinek megkülönböztetése érdekében a Batch AI mindegyikhez egy egyedi mappaszerkezet hoz létre. A kimenetet tartalmazó mappa elérési útját az elküldött feladat `jobOutputDirectoryPathSegment` attribútuma jelzi:
 
 ```azurecli
-az batchai job stream-file --job-name myjob --output-directory-id stdouterr --name stderr.txt
+az batchai job show -n cntk_python_1 -g batchai.quickstart --query jobOutputDirectoryPathSegment
 ```
 
-A kimenet a következőkhöz hasonló. A kimenet a [Ctrl]-[C] billentyűkombináció lenyomásával megszakítható.
+Példa a kimenetre:
+```
+"00000000-0000-0000-0000-000000000000/batchai.quickstart/jobs/cntk_python_1/<JOB's UUID>"
+```
+
+# <a name="delete-resources"></a>Erőforrások törlése
+
+Az erőforráscsoportot és az összes lefoglalt erőforrást a következő paranccsal törölheti:
 
 ```azurecli
-…
-Finished Epoch[2 of 40]: [Training] loss = 0.104846 * 60000, metric = 3.00% * 60000 3.849s (15588.5 samples/s);
-Finished Epoch[3 of 40]: [Training] loss = 0.077043 * 60000, metric = 2.23% * 60000 3.902s (15376.7 samples/s);
-Finished Epoch[4 of 40]: [Training] loss = 0.063050 * 60000, metric = 1.82% * 60000 3.811s (15743.9 samples/s);
-…
-
+az batchai group delete -n batchai.quickstart -y
 ```
-
-## <a name="delete-resources"></a>Erőforrások törlése
-
-Használja az [az batchai job delete](/cli/azure/batchai/job#az_batchai_job_delete) parancsot a feladat törléséhez:
-
-```azurecli
-az batchai job delete --name myjob
-```
-Használja az [az batchai cluster delete](/cli/azure/batchai/cluster#az_batchai_cluster_delete) parancsot a fürt törléséhez:
-
-```azurecli
-az batchai cluster delete --name mycluster
-```
-
-Használja az `az group delete` parancsot az ehhez a rövid útmutatóhoz létrehozott erőforráscsoport törléséhez:
-
-```azurecli
-az group delete --name myResourceGroup
-```
-
-## <a name="restore-azure-cli-20-default-settings"></a>Azure CLI 2.0 alapértelmezett beállításainak visszaállítása
-
-Távolítsa el a hely és az erőforráscsoport előzőleg konfigurált alapértelmezett beállításait:
-
-```azurecli
-az configure --defaults group=''
-
-az configure --defaults location=''
-```
-
-## <a name="next-steps"></a>További lépések
-
-Ebben a rövid útmutatóban megismerhette, hogyan futtathat egy CNTK-betanítási feladatot egy Batch AI-fürtön az Azure CLI használatával. Ha többet szeretne tudni a Batch AI különböző eszközkészletekkel történő használatáról, tekintse meg a [betanítási módszereket](https://github.com/Azure/BatchAI).
-
-Ha többet szeretne tudni a Batch AI kezeléséről az Azure CLI 2.0 használatával, tekintse meg a [github dokumentációját](https://github.com/Azure/BatchAI/blob/master/documentation/using-azure-cli-20.md).
