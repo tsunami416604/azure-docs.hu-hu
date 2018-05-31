@@ -1,14 +1,14 @@
 ---
-title: "Service Fabric-tárolóalkalmazás csomagolása és üzembe helyezése | Microsoft Docs"
-description: "Az oktatóanyag azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást."
+title: Service Fabric-tárolóalkalmazás csomagolása és üzembe helyezése | Microsoft Docs
+description: Az oktatóanyag azt ismerteti, hogyan hozhat létre egy Azure Service Fabric-alkalmazásdefiníciót a Yeoman használatával, és hogyan csomagolhatja be az alkalmazást.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365382"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Oktatóanyag: tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként
 
@@ -45,7 +46,8 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyekkel a
 1. Telepítse a node.js és az NPM eszközt a gépre. Vegye figyelembe, hogy a Mac OSX-felhasználóknak a Homebrew csomagkezelőt kell használniuk.
 
     ```bash
-    sudo apt-get install npm && sudo apt install nodejs-legacy
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
+    sudo apt-get install -y nodejs 
     ```
 2. Telepítse a Yeoman sablongenerátort a gépre az NPM-ből. 
 
@@ -247,11 +249,11 @@ Használja a **TestContainer** könyvtárban megadott telepítési szkriptet, ho
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és keresse fel a Service Fabric Explorert a http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
+Nyisson meg egy böngészőt, majd navigáljon a Service Fabric Explorerre a http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer helyen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-Ha a futó alkalmazáshoz szeretne csatlakozni, nyisson meg egy webböngészőt, és lépjen a fürt URL-címére – például a http://lin0823ryf2he.cloudapp.azure.com:80 címre. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
+Ha a futó alkalmazáshoz szeretne csatlakozni, nyisson meg egy webböngészőt, és lépjen a fürt URL-címére, például: http://lin0823ryf2he.cloudapp.azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
 ![szavazóalkalmazás][votingapp]
 

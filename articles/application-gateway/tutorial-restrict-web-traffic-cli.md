@@ -1,5 +1,5 @@
 ---
-title: Webes forgalom korlátozása webalkalmazási tűzfallal – Azure CLI
+title: Webalkalmazási tűzfal engedélyezése – Azure CLI
 description: Megismerheti, hogyan korlátozható a webes forgalom webalkalmazási tűzfallal egy alkalmazásátjárón az Azure CLI használatával.
 services: application-gateway
 author: vhorne
@@ -10,21 +10,22 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 64de501c2e7912cb4cbbae4b194d6c686a1efe67
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ca00dd3b359d9aff1b987a3bef5b27732678b0a3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356222"
 ---
-# <a name="tutorial-restrict-web-traffic-with-a-web-application-firewall-using-the-azure-cli"></a>Oktatóanyag – Webes forgalom korlátozása webalkalmazási tűzfallal az Azure CLI használatával
+# <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>Oktatóanyag – Webalkalmazási tűzfal engedélyezése az Azure CLI használatával
 
-Az [alkalmazásátjáró](overview.md) forgalmát korlátozhatja [webalkalmazási tűzfallal](waf-overview.md). A webalkalmazási tűzfal [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokat használ az alkalmazás védelméhez. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások; és a munkamenet-eltérítések. 
+Az [alkalmazásátjáró](overview.md) forgalmát korlátozhatja [webalkalmazási tűzfallal](waf-overview.md) (WAF). A WAF [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-szabályokkal védi az alkalmazást. Ezek a szabályok olyan támadások ellen nyújtanak védelmet, mint az SQL-injektálás, a Cross-Site Scripting támadások és a munkamenet-eltérítések. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása engedélyezett webalkalmazási tűzfallal
+> * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Tárfiók létrehozása és diagnosztika konfigurálása
 
@@ -134,7 +135,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>Tárfiók létrehozása és diagnosztika konfigurálása
@@ -196,7 +197,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Alkalmazásátjáró létrehozása engedélyezett webalkalmazási tűzfallal
+> * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Tárfiók létrehozása és diagnosztika konfigurálása
 

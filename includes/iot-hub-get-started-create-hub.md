@@ -1,41 +1,63 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: d586ca18953b12045fbbaa4a656d78a7192eb88e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371235"
+---
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 Hozzon létre egy IoT Hubot, amelyhez csatlakozhat a szimulált eszközalkalmazás. Az alábbi lépések bemutatják, hogyan hajthatja végre ezt a feladatot az Azure Portal segítségével.
 
 1. Jelentkezzen be az [Azure Portalra][lnk-portal].
 
-1. Válassza az **Új** > **Eszközök internetes hálózata** > **IoT Hub** elemet.
+1. Válassza az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **IoT Hub** elemet.
    
     ![Azure Portal – ugrósáv][1]
 
 1. Az **IoT Hub** panelen adja meg a következő adatokat az IoT Hub számára:
 
-   * **Név**: Adja meg az IoT Hub nevét. Ha a megadott név érvényes, egy zöld pipa jelenik meg.
+   * **Előfizetés**: Válassza ki az IoT Hub létrehozásához használni kívánt előfizetést.
+
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub üzemeltetéséhez, vagy használjon egy meglévőt. További információt az [Azure-erőforrások erőforráscsoportokkal való kezeléséről][lnk-resource-groups] szóló cikkben olvashat.
+
+   * **Régió**: Válassza ki az Önhöz legközelebbi helyet.
+
+   * **Név**: Adja meg az IoT Hub nevét. Ha a megadott név elérhető, egy zöld pipa jelenik meg.
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   * **Tarifacsomag és méret**: Az oktatóanyaghoz válassza ki az **F1 – Ingyenes** szintet. További információkat a [díjszabással][lnk-pricing] kapcsolatos lapon olvashat.
+   ![Alapvető IoT Hub-beállítások ablak][2]
 
-   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub üzemeltetéséhez, vagy használjon egy meglévőt. További információkat az [Azure-erőforrások erőforráscsoportokkal való kezeléséről][lnk-resource-groups] szóló cikkben olvashat
+2. Válassza a **Tovább: Méret és skálázás** elemet az IoT hub létrehozásának folytatásához. 
 
-   * **Hely**: Válassza ki azt az Önhöz legközelebbi helyet.
+3. Válasszon **tarifacsomag és méretet**. Erre a cikkre vonatkozóan válassza az **F1 – Ingyenes** szintet, ha elérhető az előfizetésében. További információkat a [díjszabással][lnk-pricing] kapcsolatos lapon olvashat.
 
-   * **Rögzítés az irányítópulton**: Ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT Hubhoz az irányítópultról.
+   ![Az IoT Hub Méret és skálázás ablaka][3]
 
-    ![IoT Hub ablak][2]
+4. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-1. Kattintson a **Create** (Létrehozás) gombra. Az IoT Hub létrehozása eltarthat néhány percig. A létrehozás folyamatát az **Értesítések** panelen követheti nyomon.
+1. Tekintse át az IoT Hub adatait, majd kattintson a **Létrehozás** gombra. Az IoT Hub létrehozása eltarthat néhány percig. A létrehozás folyamatát az **Értesítések** panelen követheti nyomon.
 
-1. Amikor készen áll az új IoT hub, kattintson a csempe az Azure portálon a Tulajdonságok ablak megnyitásához. Most, hogy létrehozta az IoT-központ, keresse meg az eszközök és alkalmazások számára az IoT hub kapcsolódni a fontos információkról. Jegyezze fel az **állomásnevet**, majd kattintson a **Megosztott elérési házirendek** elemre.
+1. Miután létrejött az új IoT Hub, kattintson a csempéjére az Azure Portalon a hozzá tartozó Tulajdonságok ablak megnyitásához. Most, hogy létrehozta az IoT Hubot, keresse meg az eszközök és alkalmazások az IoT Hubhoz való csatlakoztatásához használt fontos adatokat. Kattintson a **Megosztott elérési szabályzatok** elemre.
    
-    ![Új IoT Hub ablak][4]
-
-1. A **megosztott elérési házirendek**, kattintson a **iothubowner** házirendet, majd jegyezze fel az IoT-központ kapcsolati karakterlánc és a **iothubowner** ablak. További információkért tekintse meg az IoT Hub fejlesztői útmutató [hozzáférés-vezérléssel][lnk-access-control] foglalkozó részét.
+1. A **Megosztott elérési szabályzatok** alatt válassza ki az **iothubowner** elemet. Másolja le az IoT Hub **Kapcsolati sztring – elsődleges kulcs** elemét, mert később szüksége lesz rá. További információkért tekintse meg az IoT Hub fejlesztői útmutató [hozzáférés-vezérléssel][lnk-access-control] foglalkozó részét.
    
     ![Megosztott elérési házirendek][5]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-get-started-create-hub/create-iot-hub1.png
 [2]: ./media/iot-hub-get-started-create-hub/create-iot-hub2.png
+[3]: ./media/iot-hub-get-started-create-hub/create-iot-hub3.png
 [4]: ./media/iot-hub-get-started-create-hub/create-iot-hub4.png
 [5]: ./media/iot-hub-get-started-create-hub/create-iot-hub5.png
 
