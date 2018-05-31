@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771973"
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Egyéni tartomány DNS-rekordok webalkalmazás létrehozása
 
@@ -53,7 +54,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>2. lépés
 
-Az IPv4-alapú értékkel adja hozzá a korábban létrehozott rekordkészlet "@" a hozzárendelt $rs változó segítségével. Hozzárendelt IPv4 érték lesz a webalkalmazáshoz tartozó IP-címét.
+Az IPv4-alapú értékkel adja hozzá a korábban létrehozott rekordkészlet "\@\" a hozzárendelt $rs változó segítségével. Hozzárendelt IPv4 érték lesz a webalkalmazáshoz tartozó IP-címét.
 
 Az IP-cím keresése a webes alkalmazás, kövesse a lépéseket a [egyéni tartománynév beállítása az Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
