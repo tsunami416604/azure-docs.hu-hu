@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/30/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3b2fd59444f50f4ac5da6bf569cb0247f3a36943
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361182"
 ---
-# <a name="compare-managed-and-custom-labs-in-azure-lab-services"></a>Az Azure Lab Services felügyelt és egyéni tesztkörnyezeteinek összehasonlítása
+# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>Az Azure Lab Services felügyelt és Dev/Test Lab tesztkörnyezeteinek összehasonlítása
 Kétféle tesztkörnyezetet hozhat létre, **felügyelt tesztkörnyezetet** az Azure Lab Services szolgáltatással, és **egyéni tesztkörnyezetet** az Azure DevTest Labs szolgáltatással. Ha csak azt szeretné megadni, hogy mire van szüksége a tesztkörnyezetben, és a szolgáltatás fogja beállítani és felügyelni a tesztkörnyezethez szükséges infrastruktúrát, válassza a **felügyelt tesztkörnyezetek** egyikét. Jelenleg az **osztályterem-tesztkörnyezet** a felügyelt tesztkörnyezetek egyetlen olyan típusa, amelyet az Azure Lab Services szolgáltatással létrehozhat. Ha saját infrastruktúrát szeretne felügyelni, hozzon létre egy **egyéni tesztkörnyezetet** az Azure DevTest Labs szolgáltatással.
 
 Az alábbi szakaszokban részletesen is tárgyaljuk ezeket a tesztkörnyezeteket. 
@@ -37,10 +38,10 @@ A **felügyelt tesztkörnyezetek néhány alkalmazási helyzete**:
 - Virtuális gépekből álló tesztkörnyezet gyors kiépítése Hackathon-verseny megtartásához. A tesztkörnyezet törlése egyetlen kattintással, miután végzett. 
 
 
-## <a name="custom-labs"></a>Egyéni tesztkörnyezetek
+## <a name="devtest-labs"></a>DevTest Labs
 Felmerülhetnek olyan forgatókönyvek, amikor a saját előfizetésén belül szeretne felügyelni minden infrastruktúrát és konfigurációt. Ehhez létrehozhat egy egyéni tesztkörnyezetet az Azure DevTest Labs használatával az Azure Portalon. Ezekhez a tesztkörnyezetekhez nem kell tesztkörnyezetfiókot létrehoznia. Ezek a tesztkörnyezetek nem jelennek meg a tesztkörnyezetfiókban (amelyet a felügyelt tesztkörnyezetekhez kell létrehozni).  
 
-Az **egyéni tesztkörnyezetek néhány alkalmazási helyzete**: 
+A **Dev/Test Lab tesztkörnyezetek néhány alkalmazási helyzete**: 
 
 - Virtuális gépekből álló tesztkörnyezet gyors kiépítése Hackathon-verseny megtartásához, vagy egy konferencia gyakorlati foglalkozásához. A tesztkörnyezet törlése egyetlen kattintással, miután végzett. 
 - Az alkalmazással konfigurált virtuális gépek készletének létrehozása, és annak lehetővé tétele, hogy a csapat könnyedén használhasson virtuális gépeket programhiba-vizsgálathoz.  
@@ -50,10 +51,10 @@ Az **egyéni tesztkörnyezetek néhány alkalmazási helyzete**:
 - Képzési foglalkozások biztosítása az ügyfeleknek a termék legújabb verziójával konfigurált tesztkörnyezettel. Korlátozott mennyiségű idő biztosítása minden ügyfél számára a tesztkörnyezet használatához. 
 
 
-## <a name="managed-labs-vs-custom-labs"></a>Felügyelt tesztkörnyezetek és egyéni tesztkörnyezetek
+## <a name="managed-labs-vs-devtest-labs"></a>Felügyelt tesztkörnyezetek és DevTest Labs
 Az alábbi táblázat az Azure Lab Services által támogatott tesztkörnyezetek két típusát hasonlítja össze: 
 
-| Szolgáltatások | Felügyelt tesztkörnyezetek | Egyéni tesztkörnyezetek |
+| Szolgáltatások | Felügyelt tesztkörnyezetek | DevTest Labs |
 | -------- | ----------------  | ---------- |
 | Az Azure-infrastruktúra felügyelete a tesztkörnyezetben. |  A szolgáltatás automatikusan felügyeli. | A felhasználó saját maga felügyeli.  |
 | Beépített rugalmasság az infrastruktúrával kapcsolatos problémákkal szemben | A szolgáltatás automatikusan kezeli. | A felhasználó saját maga felügyeli.  |
