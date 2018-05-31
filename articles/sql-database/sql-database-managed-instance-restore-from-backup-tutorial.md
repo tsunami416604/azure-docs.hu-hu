@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425974"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Adatbázis biztonsági másolatának visszaállítása egy felügyelt Azure SQL Database-példányon
 
@@ -56,7 +57,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/#create/Microsoft.
    |**Fióktípus**|Blob Storage||
    |**Teljesítmény**|Standard vagy Prémium|Mágneses meghajtók vagy SSD-k|
    |**Replikáció**|Helyileg redundáns tárolás||
-   |**Hozzáférési szint (alapértelmezett)|Ritka vagy Gyakori||
+   |\*\*Hozzáférési szint (alapértelmezett)|Ritka vagy Gyakori||
    |**Biztonságos átvitelre van szükség**|Letiltva||
    |**Előfizetés**|Az Ön előfizetése|Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket.|
    |**Erőforráscsoport**|A korábban létrehozott erőforráscsoport|| 

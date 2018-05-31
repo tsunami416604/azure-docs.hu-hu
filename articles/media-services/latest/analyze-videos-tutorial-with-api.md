@@ -12,11 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 54c49645722b6545d8ae872151b9b82674d44523
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362294"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Oktatóanyag: Videók elemzése az Azure Media Serviceszel 
 
@@ -66,7 +67,7 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Kimeneti objektum létrehozása feladat eredményeinek tárolásához 
 
-A kimeneti objektum tárolja a feladat eredményeit. A projekt határozza meg a **DownloadResults** függvényt, amely letölti az eredményt ebből a kimeneti objektumból az „output” mappába, hogy megtekinthesse.
+A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a feladat eredményeit. A projekt határozza meg a **DownloadResults** függvényt, amely letölti az eredményt ebből a kimeneti objektumból az „output” mappába, hogy megtekinthesse.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
@@ -76,7 +77,7 @@ A tartalmak Media Servicesben történő kódolása és feldolgozása során gya
 
 #### <a name="transform"></a>Átalakítás
 
-Egy új **átalakításpéldány** létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az a fenti kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a **VideoAnalyzerPreset** előzetes beállítást használjuk, és a nyelvet ("en-US") átadjuk a konstruktorának. Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón. 
+Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az a fenti kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a **VideoAnalyzerPreset** előzetes beállítást használjuk, és a nyelvet ("en-US") átadjuk a konstruktorának. Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón. 
 
 **Átalakítások** létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható.  A Media Services 3-as verziója esetében a **Get** metódusok **null** értéket adnak vissza, ha az entitás nem létezik (a kis- és nagybetűket meg nem különböztető névellenőrzés történik).
 
@@ -84,7 +85,7 @@ Egy új **átalakításpéldány** létrehozásakor meg kell adnia, milyen kimen
 
 #### <a name="job"></a>Feladat
 
-Ahogy korábban említettük, az **átalakítási** objektum a recept, a **feladat** pedig maga a kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét. A videó helyét a következők használatával adhatja meg: HTTPS URL-címek, SAS URL-címek, vagy a Media Service-fiókban található objektumok. 
+Ahogy korábban említettük, az [átalakítási](https://docs.microsoft.com/rest/api/media/transforms) objektum a recept, a [feladat](https://docs.microsoft.com/en-us/rest/api/media/jobs) pedig maga a kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét. A videó helyét a következők használatával adhatja meg: HTTPS URL-címek, SAS URL-címek, vagy a Media Service-fiókban található objektumok. 
 
 A jelen példában a feladat bemeneti objektuma egy helyi videó.  
 
@@ -92,7 +93,7 @@ A jelen példában a feladat bemeneti objektuma egy helyi videó.
 
 ### <a name="wait-for-the-job-to-complete"></a>Várakozás a feladat befejeződésére
 
-A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Több módon is kérhet értesítést a feladat végrehajtásáról. Ezek közül a legegyszerűbb az itt bemutatott lekérdezés. 
+A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. Több módon is kérhet értesítést a [feladat](https://docs.microsoft.com/en-us/rest/api/media/jobs) végrehajtásáról. Ezek közül a legegyszerűbb az itt bemutatott lekérdezés. 
 
 Éles alkalmazások esetében nem javasolt a lekérdezés használata a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt.
 
@@ -104,7 +105,7 @@ A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Váróli
 
 ### <a name="download-the-result-of-the-job"></a>A feladat eredményének letöltése
 
-A következő függvény letölti az eredményeket a kimeneti objektumból az „output” mappába, hogy megvizsgálhassa a feladat eredményeit. 
+A következő függvény letölti az eredményeket a kimeneti [objektumból](https://docs.microsoft.com/rest/api/media/assets) az output nevű mappába, hogy megvizsgálhassa a feladat eredményeit. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 

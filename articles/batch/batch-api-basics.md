@@ -15,11 +15,12 @@ ms.workload: big-compute
 ms.date: 04/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3423103de774faaf9e7884626a9a1a102e351b68
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: add8e184db102d48275bd8d3faa42def63918c19
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360489"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -82,7 +83,7 @@ A Batch az alábbi [Azure Storage-fiókokat](../storage/common/storage-account-o
 
 * Általános célú v2- (GPv2-) fiók 
 * Általános célú v1- (GPv1-) fiók
-* Blob Storage-fiókok
+* Blob Storage-fiókok (jelenleg a virtuálisgép-konfigurációban lévő készletek esetén támogatott)
 
 A Batch-fiókhoz a Batch-fiók létrehozásakor vagy később is társíthat tárfiókot. Tárfiók kiválasztásakor vegye figyelembe a költségekre és teljesítményre vonatkozó követelményeket. A GPv2 és a Blob-tárfiók például magasabb [kapacitási és méretezhetőségi korlátokat](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) támogat a GPv1-hez képest. (Ha növelni szeretné a tárolási kapacitást, lépjen kapcsolatba az Azure ügyfélszolgálatával.) Ezek a fiókok növelhetik azon Batch-megoldások teljesítményét, amelyek a tárfiókba író vagy abból olvasó, nagy mennyiségű párhuzamos feladatot tartalmaznak.
 

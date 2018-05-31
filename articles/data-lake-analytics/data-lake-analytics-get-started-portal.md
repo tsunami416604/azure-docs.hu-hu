@@ -1,24 +1,21 @@
 ---
-title: Az Azure Data Lake Analytics használatának első lépései az Azure Portallal | Microsoft Docs
-description: 'Ebből a cikkből megtudhatja, hogyan használhatja az Azure Portalt egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez. '
+title: Az Azure Data Lake Analytics használatának első lépései az Azure Portal használatával
+description: Ebből a cikkből megtudhatja, hogyan használhatja az Azure Portalt egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozásához U-SQL használatával, valamint a feladat elküldéséhez.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
+ms.author: saveenr
 manager: kfile
-editor: cgronlun
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
-ms.author: saveenr
-ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358285"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portallal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -64,11 +61,11 @@ OUTPUT @a
 
 ## <a name="submit-a-u-sql-job"></a>U-SQL-feladat elküldése
 
-1. A Data Lake Analytics-fiókban kattintson az **Új feladat** lehetőségre.
-2. Illessze be a fent bemutatott U-SQL-szkript szövegét. 
-3. Kattintson a **Feladat elküldése** elemre.   
-4. Várjon, amíg a feladat állapota **Sikeres** nem lesz.
-5. Kattintson a **Kimenet** fülre, majd a `data.csv` elemre. 
+1. A Data Lake Analytics-fiókban válassza az **Új feladat** lehetőséget.
+2. Illessze be a fenti U-SQL-szkript szövegét. Nevezze el a feladatot. 
+3. A feladat indításához kattintson az **Elküldés** gombra.   
+4. Figyelje a feladat **Állapot** értékét, és várjon, amíg a feladat állapota **Sikeres** nem lesz.
+5. Válassza az **Adatok**, majd a **Kimenetek** lapot. Válassza ki a `data.csv` nevű kimeneti fájlt, és tekintse meg a kimeneti adatokat.
 
 ## <a name="see-also"></a>Lásd még
 
