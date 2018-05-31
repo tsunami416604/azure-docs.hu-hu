@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/24/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0460d595bc70ec09d492221485749ece32ec07df
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209708"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Azure-beli virtuális gépek migrálása másik régióba
 
@@ -102,7 +103,7 @@ Az új tároló megjelenik az **Irányítópult** **Minden erőforrás** részé
 ## <a name="select-the-source"></a>Forrás kiválasztása
 
 1. A Recovery Services-tárolókban kattintson a **ConsotoVMVault** > **+Replikálás** elemre.
-2. A **Forrás** esetében válassza az **Azure – ELŐZETES VERZIÓ** lehetőséget.
+2. A **Forrás** beállításnál válassza az **Azure** értéket.
 3. A **Forrás helye** értékeként válassza ki azt az Azure-régiót, ahol az adott virtuális gépek éppen futnak.
 4. Válassza ki a Resource Manager-alapú üzemi modellt. Válassza ki a **forrásként szolgáló erőforráscsoportot**.
 5. Kattintson az **OK** gombra a beállítások mentéséhez.
@@ -115,7 +116,7 @@ A Site Recovery lekéri az előfizetéshez és az erőforráscsoporthoz társít
 
 1. Az Azure Portalon kattintson a **Virtuális gépek** elemre.
 2. Válassza ki a migrálni kívánt virtuális gépet. Ezután kattintson az **OK** gombra.
-3. A **Beállítások** területen kattintson a **Vészhelyreállítás (előzetes verzió)** lehetőségre.
+3. A **Beállítások** területen kattintson a **Vészhelyreállítás** elemre.
 4. A **Vészhelyreállítás konfigurálása** > **Célrégió** részben válassza ki a célrégiót, amelybe a replikálást végezni kívánja.
 5. A jelen oktatóanyag esetében fogadja el a többi alapértelmezett értéket.
 6. Kattintson a **Replikáció engedélyezése** lehetőségre. Ekkor elindul a virtuális gép replikálásának engedélyezési feladata.
