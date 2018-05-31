@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/22/2018
+ms.date: 05/16/2018
 ms.author: shlo
-ms.openlocfilehash: e8dc12d41d3369bd95c2953607b8efce94f39d46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 564ed357a838e5e0c3e6db869eefafb7925e155b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261500"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -99,7 +100,7 @@ Egy folyamat JSON-formátumban való meghatározása a következő módon tört�
 
 Címke | Leírás | Típus | Kötelező
 --- | ----------- | ---- | --------
-név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>•   A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\”</li></ul> | Karakterlánc | Igen
+név | A folyamat neve. Adjon meg egy, a folyamat által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 140</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>•   A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „*”, „%”, „&”, „:”, „\”</li></ul> | Karakterlánc | Igen
 leírás | Adjon meg egy, az adott folyamat alkalmazását leíró szöveget. | Karakterlánc | Nem
 tevékenységek | A **tevékenységek** szakaszon belül egy vagy több tevékenység is meghatározható. A tevékenységek JSON-elemeiről részletes információkat a [Tevékenység JSON-fájlja](#activity-json) szakaszban talál. | Tömb | Igen
 paraméterek | Az adott folyamat **paraméterek** szakaszában egy vagy több paraméter adható meg, így a folyamat rugalmasan újrafelhasználható. | Lista | Nem
@@ -132,7 +133,7 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 
 Címke | Leírás | Kötelező
 --- | ----------- | ---------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li></ul>
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 linkedServiceName | A tevékenység által használt társított szolgáltatás neve.<br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. | HDInsight-tevékenységek, Azure Machine Learning kötegelt pontozási tevékenységek, tárolt eljárási tevékenységek esetében: igen. <br/><br/>Minden egyéb esetében: nem
@@ -194,7 +195,7 @@ A vezérlési tevékenységek az alábbi felső szintű struktúrával rendelkez
 
 Címke | Leírás | Kötelező
 --- | ----------- | --------
-név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul> 
+név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet.<br/><ul><li>A karakterek maximális száma: 55</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>A következő karakterek nem engedélyezettek: „.”, „+”, „?”, „/”, „<”, „>”, „ * ”, „%”, „&”, „:”, „\” | Igen</li><ul> 
 leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg | Igen
 type | A tevékenység típusa. A különböző tevékenységtípusokkal kapcsolatban lásd az [adattovábbítási tevékenységeket](#data-movement-activities), az [adat-átalakítási tevékenységeket](#data-transformation-activities) és a [vezérlési tevékenységeket](#control-activities). | Igen
 typeProperties | A typeProperties szakasz tulajdonságai az egyes tevékenységtípusoktól függenek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem

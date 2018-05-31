@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212789"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek replikálásához
 
@@ -47,7 +48,7 @@ A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális
 A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során.
 
 1. Az [Azure Portal](https://portal.azure.com) menüjében válassza az **Új** > **Tárolás** > **Tárfiók** lehetőséget.
-2. A **Tárfiók létrehozása** területen írja be a fiók nevét. Ezekben az oktatóanyagokban használja a **contosovmsacct1910171607** nevet. A névnek egyedinek kell lennie az Azure-ban, 3–24 karakter közé kell esnie, továbbá csak számokat és kisbetűket tartalmazhat.
+2. A **Tárfiók létrehozása** területen írja be a fiók nevét. Ezekben az oktatóanyagokban a **contosovmsacct1910171607** nevet használjuk. A kiválasztott névnek egyedinek kell lennie az Azure-ban, 3–24 karakter közé kell esnie, továbbá csak számokat és kisbetűket tartalmazhat.
 3. Az **Üzemi modell** mezőben válassza a **Resource Manager** lehetőséget.
 4. A **Fiók típusa** mezőben válassza az **Általános célú** lehetőséget. A **Teljesítmény** mezőben válassza a **Standard** lehetőséget. Ne válasszon blob-tárolót.
 5. A **Replikáció** mezőben válassza az alapértelmezett **Írásvédett georedundáns tárolás** értéket a tárhely-redundanciához.
@@ -62,7 +63,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Monitoring és felügyelet** > **Backup és Site Recovery** lehetőséget.
-2. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet. Ehhez az oktatóanyaghoz használja a **ContosoVMVault** nevet.
+2. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet. Ehhez az oktatóanyag-sorozathoz a **ContosoVMVault** nevet használjuk.
 3. Az **Erőforráscsoport** mezőben válassza ki a **contosoRG** nevű meglévő erőforráscsoportot.
 4. A **Hely** mezőben adja meg a **Nyugat-Európa** nevű Azure-régiót, amelyet ezekben az oktatóanyagokban használunk.
 5. Ha szeretne gyorsan hozzáférni az új tárolóhoz az irányítópultról, válassza a **Rögzítés az irányítópulton** > **Létrehozás** elemet.

@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 91bb23b2790ed23c831bb1680f6f2bb2cdecc38f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198707"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
 Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán keresztül engedélyezi az Azure Content Delivery Network (CDN) aktiválását. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek felé.
@@ -87,6 +88,6 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure CDN hozzáadása webalkalmazáshoz](app-service-web-tutorial-content-delivery-network.md)
+> [Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
 
 
