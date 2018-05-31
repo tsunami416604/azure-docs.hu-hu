@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33835797"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 Az alábbi szakaszok az új ASP.NET WebAPI hátterrendszer létrehozását ismertetik. E folyamat három fő célja:
@@ -377,7 +378,7 @@ A következőkben üzembe fogja helyezni ezt az alkalmazást egy Azure-webhelyen
 
 1. Kattintson a jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-2. Közzétételi célként válassza a **Microsoft Azure App Service** lehetőséget, majd kattintson a **Publish (**Közzététel) gombra. Ekkor megnyílik a Create App Service (App Service létrehozása) ablak. Itt létrehozhatja az összes, az ASP.NET-webalkalmazás Azure-ban való futtatásához szükséges Azure-erőforrást.
+2. Közzétételi célként válassza a **Microsoft Azure App Service** lehetőséget, majd kattintson a \*\*Publish (Közzététel) gombra. Ekkor megnyílik a Create App Service (App Service létrehozása) ablak. Itt létrehozhatja az összes, az ASP.NET-webalkalmazás Azure-ban való futtatásához szükséges Azure-erőforrást.
 
     ![A Microsoft Azure App Service (Microsoft Azure App Service) csempe][B15]
 
