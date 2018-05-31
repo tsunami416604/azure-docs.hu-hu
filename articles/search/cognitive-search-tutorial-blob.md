@@ -9,11 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 023e55724124afb9c97d01540c6319a775681c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366749"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg a kognitív keresési API-k (előzetes verzió) meghívásának módját
 
@@ -23,7 +24,7 @@ Az oktatóanyagban REST API-hívásokat fog indítani az alábbi feladatok végr
 
 > [!div class="checklist"]
 > * Olyan indexelőfolyamat létrehozása, amely kibővíti a forrásadatokat egy indexhez vezető útvonalon
-> * Beépített entitásfelismerési, nyelvfelismerési, szövegmanipulációs és kulcskifejezés-kinyerési képességek használata egy mintaadatkészleten
+> * Beépített képességek használata a mintaadatokon: entitásfelismerés, nyelvfelismerés, szövegmanipuláció és kulcskifejezés-kinyerés
 > * Megtudhatja, hogyan kapcsolhat össze képességeket egy képességcsoporton belül a bemenetek kimenetekhez való társításával
 > * Kérések végrehajtása és az eredmények áttekintése
 > * Az index és az indexelők alaphelyzetbe állítása további fejlesztés céljából
@@ -84,7 +85,7 @@ A bővítési folyamat az Azure-adatforrásokból hívja le az adatokat. A forr�
   A kapcsolati karakterláncnak a következő példához hasonló URL-címnek kell lennie:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=y1NIlE9wFVBIabcd562GzZl+JO9TEGdqOerqfbT78C8zrn28Te8DsWlxvKKnjh67P/HM5k80zt4shOt9vqlbg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
       ```
 
 A kapcsolati karakterlánc megadásának egyéb módjai is vannak, például egy közös hozzáférésű jogosultságkód biztosítása. Az adatforrások hitelesítő adataival kapcsolatos további információért lásd: [Indexelés az Azure Blob Storage-ban](search-howto-indexing-azure-blob-storage.md#Credentials).
