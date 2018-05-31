@@ -10,9 +10,10 @@ ms.date: 03/21/2018
 ms.author: mihauss
 ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
 ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057859"
 ---
 # <a name="soft-delete-for-azure-storage-blobs-preview"></a>Helyreállítható törlésre az Azure Storage blobs (előzetes verzió)
 
@@ -63,13 +64,13 @@ Ha **Blob törlése** nevezik pillanatkép, az adott pillanatkép van megjelölv
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Ha **pillanatkép Blob** nevű B0 pillanatkép válik, és B1 BLOB aktív állapotú. A B0 pillanatkép törlését, ha meg van jelölve, enyhe törölték.*
+*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Ha **pillanatkép Blob** nevű B0 pillanatkép válik, és B1 BLOB aktív állapotú. A B0 pillanatkép törlését, ha meg van jelölve, enyhe törölték.\*
 
 Ha **Blob törlése** (a blob-, amely nem maga pillanatkép) Alap blob, metódust, hogy a blob van megjelölve, enyhe törölték. A korábbi viselkedése konzisztens hívása **Blob törlése** hibát ad vissza a blob, amely aktív pillanatképekkel rendelkezik. Hívása **Blob törlése** enyhe törölt pillanatképekkel blob a hibát nem adott vissza. Helyreállítható törlésre bekapcsolásakor blob és egyetlen műveletben a pillanatképek is törölheti. A kiinduló blob így jelöli meg, és véglegesen, a pillanatképeket törölni.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt egy **Blob törlése** kezdeményezték K2 és minden társított pillanatképet törölni. Az aktív blob, K2 és minden társított pillanatképet megjelölve a helyreállítható törlése.*
+*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt egy **Blob törlése** kezdeményezték K2 és minden társított pillanatképet törölni. Az aktív blob, K2 és minden társított pillanatképet megjelölve a helyreállítható törlése.\*
 
 > [!NOTE]
 > Letölthető törölt blob felülírja a rendszer, amikor a rendszer automatikusan előállítja a blob állapota az írási művelet előtt törölt enyhe pillanatképe. Az új blob örökli a réteg a felülírt BLOB.
@@ -102,7 +103,7 @@ Egy blob hívása adott enyhe törölt pillanatkép visszaállítása **törlés
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt **törlés visszavonása Blob** blob B, ezáltal visszaállítása az alap blob B1 és minden társított pillanatképet, itt csupán B0 aktívnak metódust. A második lépésben B0 felülírt az alap blob. A másolási művelet B1 törölt enyhe pillanatképe állít elő.*
+*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt **törlés visszavonása Blob** blob B, ezáltal visszaállítása az alap blob B1 és minden társított pillanatképet, itt csupán B0 aktívnak metódust. A második lépésben B0 felülírt az alap blob. A másolási művelet B1 törölt enyhe pillanatképe állít elő.\*
 
 Letölthető törölt blobok megtekintéséhez, és a blob-pillanatképeket, ha szeretné, a törölt adatokat **lista Blobok**. Kiválaszthatja, hogy csak enyhe törölt alap blobok megjelenítéséhez, vagy letölthető törölt blob pillanatképek is tartalmazza. Az összes szoftveres törölt adat megtekintheti az idő, amikor törölve lett az adatokat továbbá a hány nap elteltével az adatok véglegesen lejár.
 
