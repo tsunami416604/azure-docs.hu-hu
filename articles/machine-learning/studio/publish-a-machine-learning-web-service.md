@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30185203"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning webszolgáltatás üzembe helyezése
 Az Azure Machine Learning segítségével létrehozása, tesztelése és telepítése a prediktív elemzési megoldásokat.
@@ -27,7 +28,7 @@ A pont-az-áttekintése látható ez történik, a három lépést:
 
 * **[Hozzon létre egy tanítási kísérletet]**  -Azure Machine Learning Studio olyan együttműködési Látványelem-fejlesztési környezet, amelyekkel betanítása és tesztelése egy prediktív elemzési modell betanítási adatok, hozzá kell adni.
 * **[Alakítsa át egy prediktív kísérletté]**  – Miután a modell még betanítva meglévő adatokkal, és készen áll az új adatok pontozása céljából, előkészítése, és az előrejelzés kísérletbe egyszerűsítésére.
-* **[A webszolgáltatás üzembe]**  -, a prediktív kísérletté telepítése egy [új] vagy [klasszikus] Azure webszolgáltatás. Felhasználók adatokat küldeni a modell és a modell előrejelzéseket fogadására.
+* **[Üzembe egy webszolgáltatás-bővítmény]**  -, a prediktív kísérletté telepítése egy [új] vagy [klasszikus] Azure webszolgáltatás. Felhasználók adatokat küldeni a modell és a modell előrejelzéseket fogadására.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -184,7 +185,7 @@ A webszolgáltatás frissítéséhez egy lehetőség egy a modell programozott m
 <!-- internal links -->
 [Hozzon létre egy tanítási kísérletet]: #create-a-training-experiment
 [Alakítsa át egy prediktív kísérletté]: #convert-the-training-experiment-to-a-predictive-experiment
-[A webszolgáltatás üzembe]: #deploy-it-as-a-web-service
+[Üzembe egy webszolgáltatás-bővítmény]: #deploy-it-as-a-web-service
 [új]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [klasszikus]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [Access]: #access-the-Web-service
