@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886782"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Eseményindítók és az Azure Logic Apps a munkafolyamat-definícióhoz műveletei
 
@@ -1394,7 +1395,7 @@ Példa:
 | `"expression": "@greater(actions('action1').output.value, parameters('threshold'))"` | Összehasonlítás funkciókat támogatja. Az ebben a példában a művelet csak akkor, ha action1 eredménye nagyobb, mint a küszöbérték futtatja. | 
 | `"expression": "@or(greater(actions('action1').output.value, parameters('threshold')), less(actions('action1').output.value, 100))"` | Támogatja a logikai funkciók beágyazott logikai kifejezésen létrehozásához. Ebben a példában a művelet fut, amikor action1 eredménye több, mint a küszöbérték, illetve 100. | 
 | `"expression": "@equals(length(actions('action1').outputs.errors), 0))"` | Ellenőrizze, hogy egy tömb van-e azokat a cikkeket, tömb funkciókat is használhat. Ebben a példában a művelet fut. Ha a hibák tömb üres. | 
-| `"expression": "parameters('hasSpecialAction')"` | Ebben a kifejezésben hibát okoz, és nem egy érvényes feltételt. Feltételeket kell használni a "@" szimbólummal. | 
+| `"expression": "parameters('hasSpecialAction')"` | Ebben a kifejezésben hibát okoz, és nem egy érvényes feltételt. Feltételeket kell használni a "\@" szimbólummal. | 
 ||| 
 
 ## <a name="switch-action"></a>Kapcsoló művelet
