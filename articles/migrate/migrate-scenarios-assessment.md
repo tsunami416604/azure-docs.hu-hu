@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2018
+ms.date: 05/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d8ef36e001aaf417b84efaf99a992fd64f01b6f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366341"
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>1. forgatókönyv: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -22,9 +23,9 @@ Hogy közelről is megismerhessék és jobban megérthessék az érintett techno
 
 **Technológia** | **Leírás** | **Költségek**
 --- | --- | ---
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | A DMA értékeli és észleli a kompatibilitási problémákat, amelyek befolyásolhatják az adatbázisokkal kapcsolatos funkciókat az Azure-ban. Emellett kiértékeli a szolgáltatásparitást a forrás és a cél SQL Server között, és teljesítmény- és megbízhatóságbeli fejlesztéseket javasol a célkörnyezethez. | Ez egy ingyenesen letölthető eszköz. 
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | A DMA értékeli és észleli a kompatibilitási problémákat, amelyek befolyásolhatják az adatbázisokkal kapcsolatos funkciókat az Azure-ban. Emellett kiértékeli a szolgáltatásparitást a forrás és a cél SQL Server között, és teljesítmény- és megbízhatóságbeli fejlesztéseket javasol a célkörnyezethez. | Ez egy ingyenesen letölthető eszköz.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | A szolgáltatás segít kiértékelni a helyszíni gépeket az Azure-ba való migrálás előtt. Felméri a gépek migrálásra való alkalmasságát, és méretezési, illetve költségbecsléseket ad az Azure-ban való futtatásra vonatkozóan. Az Azure Migrate szolgáltatás jelenleg helyszíni VMware virtuális gépeket tud értékelni az Azure-ba való migrálás előtt. | A szolgáltatás jelenleg (2018. április) díjmentesen használható.
-[Szolgáltatástérkép](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Az Azure Migrate a Service Map használatával jeleníti meg a függőségeket a migrálni kívánt gépek között. |  A Service Map az Azure Log Analytics részét képezi. Jelenleg 180 napig díjmentesen használható. 
+[Szolgáltatástérkép](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Az Azure Migrate a Service Map használatával jeleníti meg a függőségeket a migrálni kívánt gépek között. |  A Service Map az Azure Log Analytics részét képezi. Jelenleg 180 napig díjmentesen használható.
 
 Ebben a forgatókönyvben a DMA letöltésével és futtatásával értékeljük az utazási alkalmazás helyszíni SQL Server-adatbázisát. Az Azure Migrate és függőségi leképezés használatával értékeljük az alkalmazás virtuális gépeit, mielőtt migrálnánk őket az Azure-ba.
 
@@ -50,7 +51,7 @@ Ebben a forgatókönyvben:
 A forgatókönyv megvalósításához a következők szükségesek:
 
 - Egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú helyszíni vCenter-kiszolgáló.
-- Egy csak olvasható fiók a vCenter-kiszolgálón, vagy a szükséges jogosultság egy ilyen fiók létrehozásához. 
+- Egy csak olvasható fiók a vCenter-kiszolgálón, vagy a szükséges jogosultság egy ilyen fiók létrehozásához.
 - Jogosultság egy virtuális gép létrehozására a vCenter-kiszolgálón egy .OVA-sablon használatával.
 - Legalább egy 5.0-s vagy újabb verziójú ESXi-gazdagép.
 - Legalább két helyszíni VMware virtuális gép, amelyek közül az egyik egy SQL Server-adatbázist futtat.
@@ -106,15 +107,15 @@ Futtassa a forrás SQL Server-példány adott célra vonatkozó értékelését.
       A DMA jelenleg nem támogatja a felügyelt SQL-példányokra való migrálások értékelését. Kerülő megoldásként az értékeléshez egy Azure-beli virtuális gépen futó SQL Servert használunk feltételezett célként.
 
 1.  A **Cél verziójának kiválasztása** mezőben adja meg az Azure-ban futtatni kívánt SQL Server célverzióját, és hogy mit szeretne felderíteni az értékelésben:
-    - A **Kompatibilitási problémák** az olyan változásokat mutatja meg, amelyek miatt meghiúsulhat a migrálás, illetve amelyek miatt kisebb módosítások szükségesek a migrálás előtt. Emellett bemutatja, ha valamelyik aktuálisan használt szolgáltatás már elavult. A problémák kompatibilitási szint szerint vannak rendezve. 
-    - Az **Új szolgáltatásokra vonatkozó javaslat** az SQL Server célplatformon elérhető új szolgáltatásokról nyújt tájékoztatást, amelyeket a migrálás után használhat az adatbázissal. Ezek teljesítmény, biztonság és tárterület alapján vannak rendszerezve. 
+    - A **Kompatibilitási problémák** az olyan változásokat mutatja meg, amelyek miatt meghiúsulhat a migrálás, illetve amelyek miatt kisebb módosítások szükségesek a migrálás előtt. Emellett bemutatja, ha valamelyik aktuálisan használt szolgáltatás már elavult. A problémák kompatibilitási szint szerint vannak rendezve.
+    - Az **Új szolgáltatásokra vonatkozó javaslat** az SQL Server célplatformon elérhető új szolgáltatásokról nyújt tájékoztatást, amelyeket a migrálás után használhat az adatbázissal. Ezek teljesítmény, biztonság és tárterület alapján vannak rendszerezve.
 
     ![Cél kiválasztása](./media/migrate-scenarios-assessment/dma-assessment-2.png)
 
 2. A **Kapcsolódás kiszolgálóhoz** panelen adja meg az SQL Server-példányt futtató gép nevét, a hitelesítés típusát és a kapcsolat részleteit. Ezután kattintson a **Csatlakozás** gombra.
 
     ![Cél kiválasztása](./media/migrate-scenarios-assessment/dma-assessment-3.png)
-    
+
 3. A **Forrás hozzáadása** panelen válassza ki az értékelni kívánt adatbázist, majd kattintson a **Hozzáadás** gombra.
 4. A rendszer létrehoz egy értékelést a megadott néven.
 
@@ -126,7 +127,7 @@ Futtassa a forrás SQL Server-példány adott célra vonatkozó értékelését.
 
 ### <a name="analyze-the-database-assessment"></a>Az adatbázis-értékelés elemzése
 
-Az eredmények azonnal megjelennek az asszisztens felületén, amint elérhetők. 
+Az eredmények azonnal megjelennek az asszisztens felületén, amint elérhetők.
 
 1. A **Kompatibilitási problémák** jelentésben ellenőrizheti, hogy az adatbázisnak vannak-e problémái az egyes kompatibilitási szinteken, és ha igen, hogyan javíthatók. A kompatibilitási szintek a következőképpen feleltethetők meg az SQL Server-verzióknak:
     - 100: SQL Server 2008/Azure SQL Database
@@ -141,7 +142,7 @@ Az eredmények azonnal megjelennek az asszisztens felületén, amint elérhetők
 
     ![Szolgáltatási javaslatok](./media/migrate-scenarios-assessment/dma-assessment-6.png)
 
-3. Ha elhárított egyes problémákat, kattintson az **Értékelés újrakezdése** elemre az értékelés ismételt futtatásához. 
+3. Ha elhárított egyes problémákat, kattintson az **Értékelés újrakezdése** elemre az értékelés ismételt futtatásához.
 4. Kattintson a **Jelentés exportálása** elemre az értékelési jelentés JSON vagy CSV formátumban való lekéréséhez.
 
 Ha nagyobb léptékű értékelést végez:
@@ -182,8 +183,8 @@ Az üzembe helyezés megkezdése előtt a vCenter Server statisztikai beállít�
     - A tárolás tekintetében az Azure Migrate egy standard lemez létrehozását javasolja az Azure-ban, amelynek a mérete megegyezik a helyszíni lemezével.
     - A hálózatkezelés tekintetében a rendszer azt javasolja, hogy minden helyszíni hálózati adapterhez hozzon létre egy Azure-beli hálózati adaptert.
     - A számítási kapacitás tekintetében az Azure Migrate áttekinti a VM-magokat és a memória méretét, és egy azonos konfigurációjú Azure-beli virtuális gép létrehozását javasolja. Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja.
-   
-    
+
+
 [További információ](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing) a 3. szintű méretezésről.
 
 A szintet a következők szerint állítsa be:
@@ -215,7 +216,7 @@ Hozzon létre egy Azure Migrate-projektet, majd töltse le és telepítse a gyű
     ![Azure Migrate](./media/migrate-scenarios-assessment/project-1.png)
 
 
-    
+
 
 ### <a name="download-the-collector-appliance"></a>A gyűjtőberendezés letöltése
 
@@ -225,7 +226,7 @@ Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtu�
 2. A **Gépek felderítése** területen kattintson a **Letöltés** gombra az .OVA-fájl letöltéséhez.
 3. A **Projekt hitelesítő adatainak másolása** területen másolja ki a projekt azonosítóját és kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 
-    ![Az .ova-fájl letöltése](./media/migrate-scenarios-assessment/download-ova.png) 
+    ![Az .ova-fájl letöltése](./media/migrate-scenarios-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>A gyűjtőberendezés ellenőrzése
 
@@ -235,14 +236,14 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
 2. Futtassa a következő parancsot az OVA kivonatának létrehozásához:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal (1.0.9.7-es verzió)
-    
+3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal (1.0.9.8-as verzió)
+
     **Algoritmus** | **Kivonat értéke**
     --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
 
 ### <a name="create-the-collector-appliance"></a>A gyűjtőberendezés létrehozása
 
@@ -250,14 +251,14 @@ Importálja a letöltött fájlt a vCenter Serverre.
 
 1. A vSphere Client-konzolon kattintson a **Fájl** > **OVF-sablon telepítése** elemre.
 
-    ![Az OVF telepítése](./media/migrate-scenarios-assessment/vcenter-wizard.png) 
+    ![Az OVF telepítése](./media/migrate-scenarios-assessment/vcenter-wizard.png)
 
 2. Az OVF-sablon telepítése varázsló **Source** (Forrás) lapján adja meg az .ova fájl helyét, majd kattintson a **Next** (Tovább) gombra.
 3. Az **OVF Template Details** (OVF-sablon részletei) területen kattintson a **Next** (Tovább) gombra. Az **End User License Agreement** (Végfelhasználói licencszerződés) területen kattintson az **Accept** (Elfogadás) gombra a szerződés elfogadásához, majd kattintson a **Next** (Tovább) gombra.
 4. A **Name and Location** (Név és hely) területen adjon meg egy rövid nevet a gyűjtő virtuális gépnek, valamint egy leltárhelyet, ahol a virtuális gép futni fog, majd kattintson a **Next** (Tovább) gombra. Adja meg a gazdagépet vagy fürtöt, amelyen a gyűjtő berendezés futni fog.
 5. A **Storage** (Tárterület) mezőben adja meg, hogy hol szeretné tárolni a berendezés fájljait, majd kattintson a **Next** (Tovább) gombra.
 6. A **Disk Format** (Lemezformátum) mezőben adja meg, hogyan kívánja kiosztani a tárhelyet.
-7. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózatnak internetkapcsolattal kell rendelkeznie a metaadatok az Azure-ba küldéséhez. 
+7. A **Network Mapping** (Hálózatleképezés) mezőben adja meg a hálózatot, amelyhez a gyűjtő virtuális gép kapcsolódni fog. A hálózatnak internetkapcsolattal kell rendelkeznie a metaadatok az Azure-ba küldéséhez.
 8. A **Ready to Complete** (Befejezésre kész) területen tekintse át a beállításokat, jelölje be a **Power on after deployment** (Bekapcsolás az üzembe helyezés után) beállítást, majd kattintson a **Finish** (Befejezés) gombra.
 
 A berendezés létrehozása után megjelenik egy üzenet, amely visszaigazolja a sikeres létrehozást.
@@ -270,22 +271,22 @@ Mielőtt hozzálátna, vegye figyelembe, hogy az adatgyűjtő jelenleg csak az �
 2. Adja meg a berendezés nyelv-, időzóna- és jelszóbeállításait.
 3. Az asztalon kattintson a **Gyűjtő futtatása** parancsikonra.
 
-    ![Gyűjtő parancsikonja](./media/migrate-scenarios-assessment/collector-shortcut.png) 
-    
+    ![Gyűjtő parancsikonja](./media/migrate-scenarios-assessment/collector-shortcut.png)
+
 4. Az Azure Migrate Collectorban nyissa meg a **Set up prerequisites** (Előfeltételek megadása) felületet.
     - Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
-    - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel, hogy az idő szinkronizálva van-e, valamint hogy fut-e a gyűjtőszolgáltatás (ez alapértelmezés szerint telepítve van a virtuális gépen). Továbbá a VMware PowerCLI-t is telepíti. 
-    
+    - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel, hogy az idő szinkronizálva van-e, valamint hogy fut-e a gyűjtőszolgáltatás (ez alapértelmezés szerint telepítve van a virtuális gépen). Továbbá a VMware PowerCLI-t is telepíti.
+
     > [!NOTE]
     > Feltételezzük, hogy a virtuális gép közvetlen, proxy nélkül internet-hozzáféréssel rendelkezik.
 
     ![Előfeltételek ellenőrzése](./media/migrate-scenarios-assessment/collector-verify-prereqs.png)
-    
+
 
 5. A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a vCenter-kiszolgáló nevét (FQDN, teljes tartománynév) vagy IP-címét.
     - A **Username** (Felhasználónév) és a **Password** (Jelszó) mezőben adja meg a csak olvasási jogokkal rendelkező fiók hitelesítő adatait, amelyet a gyűjtő a virtuális gépek felderítéséhez használ majd a vCenter-kiszolgálón.
-    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. 
+    - A **Select scope** (Hatókör kiválasztása) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet.
 
     ![Csatlakozás a vCenterhez](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 
@@ -296,7 +297,7 @@ Mielőtt hozzálátna, vegye figyelembe, hogy az adatgyűjtő jelenleg csak az �
 7. A **View collection progress** (Gyűjtési folyamat megtekintése) területen monitorozhatja a felderítési folyamatot, és győződhet meg róla, hogy a virtuális gépekről gyűjtött metaadatok a hatókörbe tartoznak-e. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát.
 
     ![Gyűjtés folyamatban](./media/migrate-scenarios-assessment/collector-collection-process.png)
-   
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
@@ -309,7 +310,7 @@ A gyűjtés befejezése után ellenőrizze, hogy a virtuális gépek megjelennek
     ![Felderített gépek](./media/migrate-scenarios-assessment/discovery-complete.png)
 
 3. Vegye figyelembe, hogy az Azure Migrate-ügynök jelenleg nincs telepítve a gépeken. Ezért telepítenünk kell, ha meg szeretnénk tekinteni a függőségeket.
-    
+
     ![Felderített gépek](./media/migrate-scenarios-assessment/machines-no-agent.png)
 
 
@@ -322,7 +323,7 @@ Az értékelni kívánt virtuális gépek közötti függőségek megtekintésé
 
 Ha a módosítás előtt szeretne másolatot készíteni a virtuális gépről, készítsen egy pillanatképet az ügynökök telepítése előtt.
 
-![Gép pillanatképe](./media/migrate-scenarios-assessment/snapshot-vm.png) 
+![Gép pillanatképe](./media/migrate-scenarios-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>A virtuálisgép-ügynökök letöltése és telepítése
@@ -331,7 +332,7 @@ Ha a módosítás előtt szeretne másolatot készíteni a virtuális gépről, 
 2.  A **Gépek felderítése** lapon mindegyik virtuális gépre töltse le és telepítse a Microsoft Monitoring Agentet (MMA), valamint a függőségi ügynököt.
 3.  Másolja ki a munkaterület-azonosítót és -kulcsot. Ezekre az MMA telepítése során lesz szüksége.
 
-    ![Ügynök letöltése](./media/migrate-scenarios-assessment/download-agents.png) 
+    ![Ügynök letöltése](./media/migrate-scenarios-assessment/download-agents.png)
 
 
 
@@ -339,12 +340,12 @@ Ha a módosítás előtt szeretne másolatot készíteni a virtuális gépről, 
 
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
-3. A **Célmappa** mezőben tartsa meg az alapértelmezett telepítési mappát, és kattintson a **Tovább** gombra. 
-4. **Az ügynök telepítésének beállításai** területen válassza **Az ügynök csatlakoztatása az Azure Log Analyticshez** > **Tovább** lehetőséget. 
+3. A **Célmappa** mezőben tartsa meg az alapértelmezett telepítési mappát, és kattintson a **Tovább** gombra.
+4. **Az ügynök telepítésének beállításai** területen válassza **Az ügynök csatlakoztatása az Azure Log Analyticshez** > **Tovább** lehetőséget.
 
-    ![Az MMA telepítése](./media/migrate-scenarios-assessment/mma-install.png) 
+    ![Az MMA telepítése](./media/migrate-scenarios-assessment/mma-install.png)
 5. Az **Azure Log Analyticsben** illessze be a munkaterület a portálról kimásolt azonosítóját és kulcsát. Kattintson a **Tovább** gombra.
-    ![Az MMA telepítése](./media/migrate-scenarios-assessment/mma-install2.png) 
+    ![Az MMA telepítése](./media/migrate-scenarios-assessment/mma-install2.png)
 
 6. A **Telepítésre kész** területen telepítse az MMA ügynököt.
 
@@ -356,10 +357,10 @@ Ha a módosítás előtt szeretne másolatot készíteni a virtuális gépről, 
 2.  A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3.  A **Telepítés** oldalon várja meg, amíg a telepítés befejeződik. Ezután kattintson a **Next** (Tovább) gombra.
 
-    ![Függőségi ügynök](./media/migrate-scenarios-assessment/dependency-agent.png) 
+    ![Függőségi ügynök](./media/migrate-scenarios-assessment/dependency-agent.png)
 
 
-       
+
 ## <a name="step-7-run-and-analyze-the-vm-assessment"></a>7. lépés: A virtuálisgép-kiértékelés futtatása és elemzése
 
 Ellenőrizze a gépek függőségeit, és hozzon létre egy csoportot. Ezután futtassa az értékelést.
@@ -368,7 +369,7 @@ Ellenőrizze a gépek függőségeit, és hozzon létre egy csoportot. Ezután f
 
 1.  A **Gépek** oldalon az elemezni kívánt virtuális gépeknél kattintson a **Függőségek megtekintése** elemre.
 
-    ![Gépek függőségeinek megtekintése](./media/migrate-scenarios-assessment/view-machine-dependencies.png) 
+    ![Gépek függőségeinek megtekintése](./media/migrate-scenarios-assessment/view-machine-dependencies.png)
 
 2. Az SQLVM esetében a függőségi térkép a következő részleteket tartalmazza:
 
@@ -376,8 +377,8 @@ Ellenőrizze a gépek függőségeit, és hozzon létre egy csoportot. Ezután f
     - Az összes függő gép bejövő (ügyfél) és kimenő (kiszolgálói) TCP-kapcsolatai.
     - A telepített Azure Migrate-ügynökkel rendelkező függő gépek külön mezőkben jelennek meg
     - A telepített ügynökkel nem rendelkező gépek esetében a port- és IP-címadatok jelennek meg.
-    
- 3. A telepített ügynökkel (WEBVM) rendelkező gépek esetében kattintson a gép mezőjére a további információk megtekintéséhez, beleértve a teljes tartománynevet, az operációs rendszert és a MAC-címet. 
+
+ 3. A telepített ügynökkel (WEBVM) rendelkező gépek esetében kattintson a gép mezőjére a további információk megtekintéséhez, beleértve a teljes tartománynevet, az operációs rendszert és a MAC-címet.
 
     ![Csoportos függőségek megtekintése](./media/migrate-scenarios-assessment/sqlvm-dependencies.png)
 
@@ -385,7 +386,7 @@ Ellenőrizze a gépek függőségeit, és hozzon létre egy csoportot. Ezután f
 5. Kattintson a **Csoport létrehozása** elemre, és adja meg a nevet (smarthotelapp).
 
 > [!NOTE]
-    > A függőségek részletesebb megtekintéséhez terjessze ki az időtartományt. Megadhat egy adott időtartamot vagy kezdő és befejező dátumokat is. 
+    > A függőségek részletesebb megtekintéséhez terjessze ki az időtartományt. Megadhat egy adott időtartamot vagy kezdő és befejező dátumokat is.
 
 
 ### <a name="run-an-assessment"></a>Értékelés futtatása
@@ -409,7 +410,7 @@ Ebben az oktatóanyagban az alapértelmezett értékelési beállításokat hasz
     **Beállítás** | **Részletek** | **Alapértelmezett**
     --- | --- | ---
     **Célhely** | Az Azure-beli hely, ahová migrálni kíván | Nincs alapértelmezett értéke.
-    **Tárhely-redundancia** | A tárhely-redundancia azon típusa, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. | Az alapértelmezett érték a [Helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md). Az Azure Migrate csak a felügyelt lemezeken alapuló értékeléseket támogatja, és a felügyelt lemezek csak az LRS-t támogatják, ezért az LRS a beállítás értéke. 
+    **Tárhely-redundancia** | A tárhely-redundancia azon típusa, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. | Az alapértelmezett érték a [Helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md). Az Azure Migrate csak a felügyelt lemezeken alapuló értékeléseket támogatja, és a felügyelt lemezek csak az LRS-t támogatják, ezért az LRS a beállítás értéke.
     **Méretezési feltétel** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. Végezhet *teljesítményalapú* méretezést, vagy méretezheti a virtuális gépeket *helyszíniként* is, a teljesítményelőzmények figyelembe vétele nélkül. | Az alapértelmezett beállítás a teljesítményalapú méretezés.
     **Teljesítményelőzmények** | A virtuális gépek teljesítményének értékelésekor figyelembe veendő időtartam. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel a *teljesítményalapú méretezés*. | Az alapértelmezett érték egy nap.
     **Százalékos kihasználtság** | A teljesítményminta-halmaz megfelelő méretezéshez figyelembe veendő százalékos értéke. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel a *teljesítményalapú méretezés*.  | Az alapértelmezett érték a 95. percentilis.
@@ -425,7 +426,7 @@ Ebben az oktatóanyagban az alapértelmezett értékelési beállításokat hasz
 
 ### <a name="analyze-the-vm-assessment"></a>A virtuálisgép-kiértékelés elemzése
 
-Az Azure Migrate-értékelések információt nyújtanak a helyszíni virtuális gépek Azure-kompatibilitásáról, az Azure-beli virtuális gépek javasolt méretezéséről, valamint a becsült havi Azure-költségekről. 
+Az Azure Migrate-értékelések információt nyújtanak a helyszíni virtuális gépek Azure-kompatibilitásáról, az Azure-beli virtuális gépek javasolt méretezéséről, valamint a becsült havi Azure-költségekről.
 
 ![Értékelési jelentés](./media/migrate-scenarios-assessment/assessment-overview.png)
 
@@ -470,12 +471,12 @@ Az értékelési jelentés egy táblában összefoglalva jeleníti meg az inform
 
 #### <a name="review-monthly-cost-estimates"></a>Havi költségbecslések áttekintése
 
-Ez a nézet a virtuális gépeknek az Azure-ban való futtatásával kapcsolatos összes számítási és tárolási költséget mutatja az egyes gépek adataival együtt. 
+Ez a nézet a virtuális gépeknek az Azure-ban való futtatásával kapcsolatos összes számítási és tárolási költséget mutatja az egyes gépek adataival együtt.
 
-![Készenléti állapot értékelése](./media/migrate-scenarios-assessment/azure-costs.png) 
+![Készenléti állapot értékelése](./media/migrate-scenarios-assessment/azure-costs.png)
 
 - A költségbecslések az egyes gépekre vonatkozó méretjavaslatokon alapulnak.
-- A becsült havi számítási és tárolási költségek a csoportban lévő virtuális gépekre összesítve szerepelnek. 
+- A becsült havi számítási és tárolási költségek a csoportban lévő virtuális gépekre összesítve szerepelnek.
 
 
 ## <a name="conclusion"></a>Összegzés
@@ -490,6 +491,3 @@ Ebben a forgatókönyvben:
 ## <a name="next-steps"></a>További lépések
 
 Folytassuk a következő forgatókönyvvel, amelyben a helyszíni virtuális gépeket és az adatbázist [migráljuk átemeléses módszerrel](migrate-scenarios-lift-and-shift.md) az Azure-ba.
-
-
-
