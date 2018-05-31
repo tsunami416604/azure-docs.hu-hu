@@ -1,21 +1,22 @@
 ---
-title: "Másodlagos Azure-régióba replikált Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele az Azure Site Recoveryvel (előzetes verzió)"
-description: "Megtudhatja, hogyan végezhet feladatátvételt és feladat-visszavételt az Azure-beli virtuális gépeken másodlagos Azure-régióra az Azure Site Recoveryvel"
+title: Másodlagos Azure-régióba replikált Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele az Azure Site Recoveryvel
+description: Megtudhatja, hogyan végezhet feladatátvételt és feladat-visszavételt az Azure-beli virtuális gépeken másodlagos Azure-régióra az Azure Site Recoveryvel
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a27142f9110fd26daa8ea0ebd151a67769e6568
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209273"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele Azure-régiók között (előzetes verzió)
+# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele Azure-régiók között
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
@@ -26,6 +27,8 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egyetlen Azure-be
 > * A másodlagos Azure-beli virtuális gép ismételt védelme, hogy az elsődleges régióba replikálódjon
 > * A másodlagos virtuális gép feladat-visszavétele
 > * Az elsődleges virtuális gép ismételt védelme a másodlagos régióban
+
+Az Azure-ból Azure-ba történő replikáció jelenleg előzetes verzióban érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

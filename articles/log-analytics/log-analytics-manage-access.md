@@ -1,6 +1,6 @@
 ---
-title: Munkaterületek kezelése az Azure Log Analyticsben | Microsoft Docs
-description: Az Azure Log Analytics munkaterületeinek kezeléséhez különféle adminisztratív feladatokat futtathat a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon.
+title: Munkaterületek kezelése az Azure Log Analyticsben és az OMS-portálon | Microsoft Docs
+description: Az Azure Log Analytics és az OMS-portál munkaterületeinek kezeléséhez különféle adminisztratív feladatokat végezhet el a felhasználókon, fiókokon, munkaterületeken és Azure-fiókokon.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2017
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271670"
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -34,7 +35,7 @@ Munkaterület létrehozásához az alábbiak szükségesek:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>A szükséges munkaterületek számának meghatározása
 A munkaterület egy Azure-erőforrás, továbbá egy tároló is, amelyben az adatok összegyűjtése, összesítése, elemzése és az Azure Portalon való megjelenítése történik.
 
-Azure-előfizetésenként több munkaterülettel rendelkezhet, és több munkaterülethez is hozzáférhet. Korábban csak az aktuális munkaterületen belüli adatokat lehetett elemezni, ami korlátozta az előfizetésben megadott többi munkaterület lekérdezését. Most már [több munkaterületről hajthat végre lekérdezést](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search), így a teljes rendszerre kiterjedően megtekintheti az adatait. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
+Azure-előfizetésenként több munkaterülettel rendelkezhet, több munkaterülethez is hozzáférhet, és ezek között egyszerűen hajthat végre lekérdezéseket. Ez a szakasz azt ismerteti, hogy mikor lehet hasznos egynél több munkaterület létrehozása.
 
 A munkaterületek jelenleg a következőket biztosítják:
 
@@ -48,24 +49,24 @@ A fenti jellemzők alapján a következő esetekben lehet érdemes több munkate
 * Globális vállalatként az adatokat elkülönítési vagy megfelelőségi okok miatt külön régiókban kell tárolnia.
 * Az Azure-t használja, és a kimenő adatátviteli díjak elkerülése érdekében ugyanabban a régióban szeretne létesíteni egy munkaterületet, amelyikben az általa kezelt Azure-erőforrás is található.
 * Használat alapján szeretné meghatározni a különböző részlegekre vagy üzleti csoportokra eső költségeket. Ha külön munkaterületet hoz létre az egyes részlegek vagy üzleti csoportok számára, az Azure-számlán és a használati kimutatásban külön jelennek meg az egyes munkaterületekre vonatkozó költségek.
-* Felügyelt szolgáltatást kínál, és az egyes felügyelt ügyfelek Log Analytics-adatait külön kell tárolnia a többi ügyfél adataitól.
+* Felügyelt szolgáltatást kínál, és az egyes felügyelt ügyfelek naplóelemzési adatait külön kell tárolnia a többi ügyfél adataitól.
 * Több ügyfelet is kezel, és azt szeretné, hogy az egyes ügyfelek, részlegek és üzleti csoportok lássák ugyan a saját adataikat, de a másokét ne.
 
-Ha az adatgyűjtéshez ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-windows-agent.md).
+Ha az adatgyűjtéshez Windows-ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-windows-agents.md).
 
-A System Center Operations Manager használata esetén az Operations Manager egyes felügyeleti csoportjai csak egy munkaterülethez csatlakoztathatók. Azonban a számítógépre telepített Microsoft Monitoring Agentet úgy is beállíthatja, hogy az Operations Managernek és egy másik Log Analytics-munkaterületnek is küldjön jelentést.  
+A System Center Operations Manager használata esetén az Operations Manager egyes felügyeleti csoportjai csak egy munkaterülethez csatlakoztathatók. Telepítheti a Microsoft Monitoring Agentet az Operations Manager által felügyelt számítógépekre, és beállíthatja az ügynököt úgy, hogy az Operations Managernek és egy másik Log Analytics-munkaterületnek is küldjön jelentést.
 
 ### <a name="workspace-information"></a>Munkaterület-információk
 
-A munkaterületek adatait az Azure Portalon tekintheti meg. 
+A munkaterületek adatait az Azure Portalon tekintheti meg. Az információk az OMS-portálon is elérhetők.
 
 #### <a name="view-workspace-information-in-the-azure-portal"></a>Munkaterületek adatainak megtekintése az Azure Portalon
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **Minden szolgáltatás** lehetőségre.  Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
-    ![Képernyőkép az Azure bal oldali menüjéről](./media/log-analytics-manage-access/hub.png)  
-3. Válasszon egy munkaterületet a Log Analytics-előfizetések lapon.
-4. A munkaterület oldalán a munkaterület adatai és a további információkra mutató hivatkozások szerepelnek.  
+1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com) Azure-előfizetésével.
+2. A **központi** menüben kattintson a **További szolgáltatások** elemre, majd az erőforrások listájába írja be a következőt: **Log Analytics**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Log Analytics** elemre.  
+    ![Azure-központ](./media/log-analytics-manage-access/hub.png)  
+3. Válasszon egy munkaterületet a Log Analytics-előfizetések panelen.
+4. A munkaterület paneljén a munkaterület adatai és a további információkra mutató hivatkozások szerepelnek.  
     ![munkaterület részletei](./media/log-analytics-manage-access/workspace-details.png)  
 
 
@@ -77,7 +78,7 @@ Az alapértelmezett beállítások szerint a munkaterületet létrehozó Microso
 A Log Analytics-munkaterületekhez történő hozzáférés két engedélyezési modellel szabályozható:
 
 1. Örökölt Log Analytics felhasználói szerepkörök
-2. [Azure szerepkör-alapú hozzáférés](../role-based-access-control/role-assignments-portal.md)
+2. [Azure szerepkör-alapú hozzáférés](../active-directory/role-based-access-control-configure.md)
 
 Az alábbi táblázat az egyes engedélyezési modellekkel beállítható hozzáféréseket foglalja össze:
 
@@ -104,7 +105,7 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
-Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md) című rész lépéseit.
+Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../active-directory/role-based-access-control-configure.md) című rész lépéseit.
 
 Az Azure két beépített felhasználói szerepkört biztosít a Log Analyticshez:
 - Log Analytics olvasó
@@ -156,13 +157,13 @@ Ezen szerepkörökkel különféle hatókörökben biztosíthat hozzáférést a
 - Erőforráscsoport – Hozzáférés az erőforráscsoportban lévő összes munkaterülethez
 - Erőforrás – Hozzáférés kizárólag az adott erőforráshoz
 
-Az [egyéni szerepkörök](../role-based-access-control/custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
+Az [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Az Azure felhasználói szerepkörei és a Log Analytics-portál felhasználói szerepkörei
-Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg az OMS-portált a Log Analytics-munkaterület megtekintésekor.
+Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg a Log Analytics-portált a Log Analytics-munkaterület megtekintésekor.
 
-Az OMS-portál megnyitásával átvált a korábbi Log Analytics-felhasználói szerepkörök használatára. Ha nem rendelkezik szerepkör-hozzárendeléssel a Log Analytics-portálon, a szolgáltatás [ellenőrzi a munkaterületre érvényes Azure-engedélyeit](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
-Az OMS-portálon érvényes szerepkör-hozzárendelés meghatározása a következők használatával történik:
+A Log Analytics-portál megnyitásával átvált a korábbi Log Analytics felhasználói szerepkörök használatára. Ha nem rendelkezik szerepkör-hozzárendeléssel a Log Analytics-portálon, a szolgáltatás [ellenőrzi a munkaterületre érvényes Azure-engedélyeit](https://docs.microsoft.com/rest/api/authorization/permissions#Permissions_ListForResource).
+A Log Analytics-portálon érvényes szerepkör-hozzárendelés meghatározása a következők használatával történik:
 
 | Feltételek                                                   | Hozzárendelt Log Analytics-beli felhasználói szerepkör | Megjegyzések |
 |--------------------------------------------------------------|----------------------------------|-------|
@@ -174,11 +175,11 @@ Az OMS-portálon érvényes szerepkör-hozzárendelés meghatározása a követk
 | Felhőszolgáltató (CSP) által kezelt előfizetések esetén <br> A bejelentkezéshez használt fiók a munkaterülettel társított Azure Active Directoryban található | Rendszergazda | Jellemzően egy felhőszolgáltató ügyfele |
 | Felhőszolgáltató (CSP) által kezelt előfizetések esetén <br> A bejelentkezéshez használt fiók a munkaterülettel társított Azure Active Directoryban található | Közreműködő | Jellemzően a felhőszolgáltató |
 
-<sup>1</sup>A szerepkör-meghatározásokról az [Azure-engedélyeket](../role-based-access-control/custom-roles.md) ismertető cikk nyújt részletesebb tájékoztatást. A szerepkörök kiértékelésekor a `*` és a `Microsoft.OperationalInsights/workspaces/*` műveletek nem egyenértékűek.
+<sup>1</sup>A szerepkör-meghatározásokról az [Azure-engedélyeket](../active-directory/role-based-access-control-custom-roles.md) ismertető cikk nyújt részletesebb tájékoztatást. A szerepkörök kiértékelésekor a `*` és a `Microsoft.OperationalInsights/workspaces/*` műveletek nem egyenértékűek.
 
 Néhány dolog, amit érdemes észben tartani az Azure Portal kapcsán:
 
-* Ha a http://mms.microsoft.com webhelyről jelentkezik be az OMS-portálra, akkor a **Munkaterület kiválasztása** lista jelenik meg. Ez a lista csak azokat a munkaterületeket tartalmazza, ahol Log Analytics felhasználói szerepkörrel rendelkezik. Az Azure-előfizetéssel elérhető munkaterületek csak akkor lesznek láthatók, ha az URL-cím részeként megad egy bérlőt. Például: `mms.microsoft.com/?tenant=contoso.com`. A bérlőazonosító gyakran a bejelentkezéshez használt e-mail-cím utolsó része.
+* Ha a http://mms.microsoft.com webhelyről jelentkezik be az OMS-portálra, akkor a **Munkaterület kiválasztása** lista jelenik meg. Ez a lista csak azokat a munkaterületeket tartalmazza, ahol Log Analytics felhasználói szerepkörrel rendelkezik. Az Azure-előfizetéssel elérhető munkaterületek csak akkor lesznek láthatók, ha az URL-cím részeként megad egy bérlőt. Például: `mms.microsoft.com/?tenant=contoso.com`. A bérlőazonosító gyakran a bejelentkezéshez használt e-mail cím utolsó része.
 * Amennyiben közvetlenül kíván elérni egy portált, amelyhez Azure-engedélyekkel rendelkezik, akkor meg kell adni az erőforrást az URL-cím részeként. Ezt az URL-címet a PowerShell használatával is elő lehet állítani.
 
   Például: `(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`.
@@ -246,7 +247,7 @@ A következő lépésekkel távolíthat el egy felhasználót egy munkaterületr
 4. Jelölje ki a csoportot a kapott listán, majd kattintson a **Hozzáadás** gombra.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Meglévő munkaterület csatolása Azure-előfizetéshez
-Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az ezen dátum előtt létrehozott munkaterületeket a bejelentkezéskor kell társítani egy előfizetéshez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
+Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az ezen dátum előtt létrehozott munkaterületeket a bejelentkezéskor kell társítani egy munkaterülethez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-oms-portal"></a>Munkaterület társítása egy Azure-előfizetéshez az OMS-portálon
 
@@ -280,6 +281,76 @@ Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor
 >
 >
 
+## <a name="upgrade-a-workspace-to-a-paid-plan"></a>Munkaterület frissítése fizetős díjcsomagra
+Az OMS három munkaterület díjcsomagtípust ismer: **Ingyenes**, **Önálló** és **OMS**.  Amennyiben *Ingyenes* díjcsomagot használ, naponta legfeljebb 500 MB adatot küldhet a Log Analytics szolgáltatásnak.  Ha túllépi ezt a mennyiséget, munkaterületét fizetős díjcsomagra kell módosítania, hogy ennél több adatot gyűjthessen be. A díjcsomag típusa bármikor módosítható.  Az OMS díjszabásról a [díjszabás](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing) leírásában tájékozódhat.
+
+### <a name="using-entitlements-from-an-oms-subscription"></a>Az OMS-előfizetésből származó jogosultságok használata
+Ha szeretné használni az OMS E1, OMS E2 OMS vagy a System Center OMS-bővítményének megvásárlásából származó jogosultságokat, válassza az OMS Log Analytics *OMS* csomagját.
+
+OMS-előfizetés megvásárlásakor a jogosultságok bekerülnek a Nagyvállalati szerződésbe. A megállapodás hatálya alatt létrehozott Azure-előfizetések mind rendelkeznek ezekkel a jogosultságokkal. Ezen előfizetés összes munkaterülete OMS-jogosultságokat használ.
+
+Ha biztosítani kívánja, hogy a munkaterületén érvényesek legyenek az OMS-előfizetésből származó jogosultságok, a következőket kell tennie:
+
+1. Olyan Azure-előfizetésben hozza létre a munkaterületet, amely az OMS-előfizetést tartalmazó Nagyvállalati szerződés része
+2. *OMS* adatforgalmi díjcsomag kiválasztása a munkaterület számára
+
+> [!NOTE]
+> Amennyiben munkaterületét 2016. szeptember 26. előtt hozta létre, és *Prémium* szintű Log Analytics tarifacsomagot használ, akkor ez a munkaterület a System Center OMS-bővítményéből származó jogosultságokat fogja használni. Jogosultságait az *OMS* tarifacsomagra való váltással is használhatja.
+>
+>
+
+Az OMS-előfizetés jogosultságai nem jelennek meg az Azure- vagy OMS-portálon. A jogosultságokat és használatot az Enterprise Portalon tekintheti meg.  
+
+Ha módosítania kell az Azure-előfizetést, amelyhez a munkaterületet társította, használja az Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) parancsmagját.
+
+### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>Azure kötelezettségvállalás használata egy Nagyvállalati szerződésből
+Amennyiben Ön nem rendelkezik OMS-előfizetéssel, az OMS egyes összetevőiért külön-külön kell fizetnie, és a használat megjelenik az Azure-számláján.
+
+Ha rendelkezik Azure pénzügyi kerettel a nagyvállalati beléptetés részeként, amelyhez az Azure-előfizetést társította, akkor a Log Analytics automatikusan felhasználja az esetleg rendelkezésre álló pénzügyi keretet.
+
+Ha módosítania kell az Azure-előfizetést, amelyhez a munkaterületet társította, használja az Azure PowerShell [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) parancsmagját.  
+
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Munkaterület módosítása fizetős tarifacsomagra az Azure Portalon
+1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+2. Keresse meg a **Log Analytics** elemet, majd jelölje ki.
+3. Ekkor megjelenik a meglévő munkaterületek listája. Jelöljön ki egy munkaterületet.  
+4. A munkaterület panel **Általános** területén kattintson a **Tarifacsomag** elemre.  
+5. A **Tarifacsomag** lapon kattintással jelölje ki a tarifacsomagot, majd kattintson a **Kiválasztás** gombra.  
+    ![díjcsomag kiválasztása](./media/log-analytics-manage-access/manage-access-change-plan03.png)
+6. Amikor frissíti az Azure Portal nézetét, láthatja, hogy a **Tarifacsomag** a választott csomagra módosult.  
+    ![frissített csomag](./media/log-analytics-manage-access/manage-access-change-plan04.png)
+
+> [!NOTE]
+> Ha a munkaterület Automation-fiókhoz van társítva, az *Önálló (GB-alapú)* tarifacsomag kiválasztása előtt törölnie kell az összes **Automation and Control** megoldást, és meg kell szüntetnie az Automation-fiók társítását. A megoldások megtekintéséhez és törléséhez kattintson a munkaterület panel **Általános** területén a **Megoldások** elemre. Az Automation-fiók társításának megszüntetéséhez kattintson az Automation-fiók nevére a **Tarifacsomag** panelen.
+>
+>
+
+### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>Munkaterület módosítása fizetős tarifacsomagra az OMS-portálon
+
+A tarifacsomagnak az OMS-portál használatával történő módosításához rendelkeznie kell Azure-előfizetéssel.
+
+1. Az OMS-portálon kattintson a **Beállítások** csempére.
+2. Kattintson a **Fiókok** fülre, majd az **Azure-előfizetés és adatforgalmi díjcsomag** fülre.
+3. Kattintson a használni kívánt tarifacsomagra.
+4. Kattintson a **Save** (Mentés) gombra.  
+   ![előfizetés és adatforgalmi díjcsomagok](./media/log-analytics-manage-access/subscription-tab.png)
+
+Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhely felső részén.
+
+![OMS menüszalag](./media/log-analytics-manage-access/data-plan-changed.png)
+
+
+## <a name="change-how-long-log-analytics-stores-data"></a>A Log Analytics adattárolási idejének módosítása
+
+Az ingyenes tarifacsomagban a Log Analytics az utolsó hét nap adatait teszi elérhetővé.
+A standard tarifacsomagban a Log Analytics az utolsó 30 nap adatait teszi elérhetővé.
+A prémium tarifacsomagban a Log Analytics az utolsó 365 nap adatait teszi elérhetővé.
+Az önálló és OMS tarifacsomagban a Log Analytics alapértelmezés szerint az utolsó 31 nap adatait teszi elérhetővé.
+
+Az önálló és az OMS tarifacsomag használata esetén akár 2 évig (730 napig) is megőrizheti az adatokat. Az alapértelmezett 31 napnál tovább tárolt adatokért adatmegőrzési díjat számolunk fel. Az árakkal kapcsolatos további információkért lásd a [többletköltségek](https://azure.microsoft.com/pricing/details/log-analytics/) című szakaszt.
+
+Az adatmegőrzés hosszának módosításáról lásd: [A költségek kezelése az adatmennyiség és megőrzés vezérlésével a Log Analyticsben](log-analytics-manage-cost-storage.md).
+
 ## <a name="change-an-azure-active-directory-organization-for-a-workspace"></a>Munkaterülethez tartozó Azure Active Directory-szervezet módosítása
 
 Igény szerint módosíthatja a munkaterülethez tartozó Azure Active Directory-szervezetet. Az Azure Active Directory-szervezet módosításával felhasználókat és csoportokat adhat hozzá a munkaterülethez az adott címtárból.
@@ -292,6 +363,14 @@ Igény szerint módosíthatja a munkaterülethez tartozó Azure Active Directory
 3. Adja meg Azure Active Directory-tartománya rendszergazdájának identitását. Ezután megjelenik a visszaigazolás, hogy munkaterülete társítva lett Azure Active Directory-tartományához.  
     ![társított munkaterületek visszaigazolása](./media/log-analytics-manage-access/manage-access-add-adorg02.png)
 
+
+## <a name="delete-a-log-analytics-workspace"></a>Log Analytics-munkaterület törlése
+Ha töröl egy Log Analytics-munkaterületet, 30 napon belül a munkaterülethez kapcsolódó összes adat törlődik a Log Analytics szolgáltatásból.
+
+Ha Ön rendszergazda, és több felhasználó van társítva a munkaterülethez, a felhasználók és a munkaterület közötti társítás megszűnik. Ha a felhasználók más munkaterületekkel is társítva vannak, továbbra is használhatják a Log Analyticset azokkal a munkaterületekkel. Ha azonban nincsenek más munkaterületekkel társítva, a szolgáltatás használatához létre kell hozniuk egy munkaterületet. A munkaterületek törléséről lásd: [Azure Log Analytics-munkaterület törlése](log-analytics-manage-del-workspace.md)
+
 ## <a name="next-steps"></a>További lépések
-* [Az adathasználat értelmezését](log-analytics-usage.md) ismertető cikkből megtudhatja, hogyan elemezze a számítógépekről küldött és a megoldások által összegyűjtött adatköteteket.
-* A [Log Analytics-felügyeleti megoldások az Azure Piactérről történő hozzáadását](log-analytics-add-solutions.md) ismertető cikk alapján új funkciókat adhat hozzá és adatokat gyűjthet.
+* Az adatközpontban vagy más felhőalapú környezetben lévő számítógépekről való adatgyűjtésről lásd: [Adatok gyűjtése a környezetben lévő számítógépekről a Log Analytics használatával](log-analytics-concept-hybrid.md).
+* Az adatgyűjtés Azure-beli virtuális gépekről való konfigurálásáról lásd: [Adatgyűjtés Azure-beli virtuális gépekről](log-analytics-quick-collect-azurevm.md).  
+* A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
+

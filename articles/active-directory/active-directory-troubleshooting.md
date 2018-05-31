@@ -3,7 +3,8 @@ title: 'Hibaelhárítás: "Active Directory" elem nem található vagy nem érhe
 description: Mi a teendő, ha az Active Directory menüpont nem jelenik meg az Azure felügyeleti portálján.
 services: active-directory
 documentationcenter: na
-author: bryanla
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: mtillman
 editor: ''
 ms.assetid: 3383020d-6397-43ea-b7aa-c6a9d6a1e3df
@@ -13,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: bryanla
-ms.openlocfilehash: c6e8557ec66db51df0bb463a9511b0cdc94811d4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8996eaf1d780f957445c63eac96cf9a343b9ef90
+ms.sourcegitcommit: c306be629977f6bc22bb7aefd0522a30ed591ff3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34181537"
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>Hibaelhárítás: "Active Directory" elem nem található vagy nem érhető el
 Az Azure Active Directory-szolgáltatások és szolgáltatások használatára vonatkozó utasításokat számos kezdődhet "nyissa meg az Azure felügyeleti portálra, és kattintson a **Active Directory**." Mi a teendő, ha az Active Directory kiterjesztés vagy a menü elem nem jelenik meg, vagy ha meg van jelölve, de **nem érhető el**? Ez a témakör célja. Azt ismerteti, hogy a feltételeket, amelyek alapján **Active Directory** nem jelenik meg vagy nem érhető el, és elmagyarázza, hogyan folytatható.
