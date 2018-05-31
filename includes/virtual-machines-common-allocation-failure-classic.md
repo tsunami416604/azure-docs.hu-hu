@@ -13,6 +13,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31531055"
 ---
 Az alábbiakban gyakori foglalási forgatókönyvek, amelyek egy foglalási kérelem rögzítve. Igazolnia kell alaposabban egyes forgatókönyvek a cikk későbbi részében.
 
@@ -79,7 +80,7 @@ Ha az elfogadható használja másik virtuális IP-címhez, törli az eredeti le
 ## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Átmeneti vagy üzemi környezetek (csak szolgáltatásként platform)
 **Hiba történt**
 
-New_General * vagy New_VMSizeNotSupported *
+New_General * vagy New_VMSizeNotSupported\*
 
 **A fürt rögzítési OK**
 
@@ -92,7 +93,7 @@ Törli a első és az eredeti felhőalapú szolgáltatás, és telepítse újra 
 ## <a name="affinity-group-vmservice-proximity"></a>Az affinitáscsoport (virtuális gép vagy szolgáltatás beléptetőkártyával)
 **Hiba történt**
 
-New_General * vagy New_VMSizeNotSupported *
+New_General * vagy New_VMSizeNotSupported\*
 
 **A fürt rögzítési OK**
 
@@ -105,7 +106,7 @@ Az affinitáscsoportokban nincs szükség, ha nem használható affinitáscsopor
 ## <a name="affinity-group-based-virtual-network"></a>Kapcsolat-csoport-alapú virtuális hálózat
 **Hiba történt**
 
-New_General * vagy New_VMSizeNotSupported *
+New_General * vagy New_VMSizeNotSupported\*
 
 **A fürt rögzítési OK**
 
