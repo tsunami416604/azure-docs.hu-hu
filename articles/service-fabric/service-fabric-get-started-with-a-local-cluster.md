@@ -1,11 +1,11 @@
 ---
-title: "Azure mikroszolgáltatások helyi telepítése és frissítése | Microsoft Docs"
-description: "Megtudhatja, hogyan állítson be egy helyi Service Fabric-fürtöt, helyezzen üzembe rajta egy meglévő alkalmazást, majd frissítse az adott alkalmazást."
+title: Azure mikroszolgáltatások helyi telepítése és frissítése | Microsoft Docs
+description: Megtudhatja, hogyan állítson be egy helyi Service Fabric-fürtöt, helyezzen üzembe rajta egy meglévő alkalmazást, majd frissítse az adott alkalmazást.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
-ms.author: ryanwi;mikhegn
-ms.openlocfilehash: 9d547039491f6b0c0d308c64d11e9c54b4b4e3d5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.author: ryanwi
+ms.openlocfilehash: ca19b70e3651f72d6fe87fcb3cd2ace2eecf3402
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205246"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>A helyi fürtön lévő alkalmazások üzembe helyezésének és frissítésének elsajátítása
 Az Azure Service Fabric SDK teljes helyi fejlesztőkörnyezetet tartalmaz, amely segítségével gyorsan megismerkedhet a helyi fürtön lévő alkalmazások üzembe helyezésével és kezelésével. Ebben a cikkben létrehoz egy helyi fürtöt, üzembe helyez rajta egy meglévő alkalmazást, majd új verzióra frissíti, és mindezt a Windows PowerShellből fogja elvégezni.
@@ -85,7 +86,7 @@ Ebben az oktatóanyag egy meglévő mintaalkalmazást (a neve WordCount) haszná
     Ha minden megfelelően működik, a következő kimenetnek kell megjelennie:
    
     ![Alkalmazás üzembe helyezése a helyi fürtön][deploy-app-to-local-cluster]
-7. Ha szeretné az alkalmazást működés közben megtekinteni, indítsa el a böngészőt, és navigáljon a következő webhelyre: [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). A következőnek kell megjelennie:
+7. Ha szeretné az alkalmazást működés közben megtekinteni, indítsa el a böngészőt, és keresse fel a következő címet: [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html). A következőnek kell megjelennie:
    
     ![Az üzembe helyezett alkalmazás felhasználói felülete][deployed-app-ui]
    
@@ -124,7 +125,7 @@ Miután üzembe helyeztük az alkalmazást, nézzük meg a PowerShellben az alka
    
     Az Ön által használt parancsok készlete, például a Service Fabric PowerShell-parancsok, bármilyen (helyi vagy távoli) fürt számára elérhetők, amelyekhez kapcsolódni tud.
    
-    Ha vizuálisabban szeretne kommunikálni a fürttel, használhatja a webalapú Service Fabric Explorer eszközt is, ha a böngészőben megnyitja a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) weblapot.
+    Ha vizuális módon szeretne kommunikálni a fürttel, használhatja a webalapú Service Fabric Explorer eszközt is, ha a böngészőben megnyitja a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) címet.
    
     ![Az alkalmazás részleteinek megtekintése a Service Fabric Explorerben][sfx-service-overview]
    
@@ -148,7 +149,7 @@ Az alkalmazás új verziója kizárólag a magánhangzóval kezdődő szavakat s
     A frissítés indításakor a következő kimenetnek kell megjelennie a PowerShellben.
    
     ![Folyamatban lévő frissítés a PowerShellben][ps-appupgradeprogress]
-3. A frissítés folyamán lehet, hogy egyszerűbb az állapot figyelése a Service Fabric Explorerből. Nyisson meg egy böngészőablakot, és navigáljon a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) weboldalra. A bal oldali fában bontsa ki az **Alkalmazások** elemet, majd válassza ki a **WordCount**, végül a **fabric:/WordCount** elemet. Az alapvető erőforrások lapján láthatja a frissítés állapotát a fürt frissítési tartományaiban.
+3. A frissítés folyamán lehet, hogy egyszerűbb az állapot figyelése a Service Fabric Explorerből. Nyisson meg egy böngészőablakot, és navigáljon a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) címre. A bal oldali fában bontsa ki az **Alkalmazások** elemet, majd válassza ki a **WordCount**, végül a **fabric:/WordCount** elemet. Az alapvető erőforrások lapján láthatja a frissítés állapotát a fürt frissítési tartományaiban.
    
     ![A frissítés folyamata a Service Fabric Explorerben][sfx-upgradeprogress]
    
@@ -216,7 +217,7 @@ Vagy módosítsa a fürt üzemmódját a PowerShell-lel:
    
     ![A fürtbeállítás kimenete][cluster-setup-success-1-node]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Most, hogy már üzembe helyezett és frissített néhány előre létrehozott alkalmazást, [megpróbálhatja felépíteni a saját alkalmazását a Visual Studióban](service-fabric-create-your-first-application-in-visual-studio.md).
 * A jelen cikkben a helyi fürttel elvégzett összes művelet elvégezhető egy [Azure-fürttel](service-fabric-cluster-creation-via-portal.md) is.
 * A jelen cikkben végrehajtott frissítés alapszintű volt. A Service Fabric frissítéskezelésének hatékonyságát és rugalmasságát a [frissítési dokumentációból](service-fabric-application-upgrade.md) ismerheti meg.
