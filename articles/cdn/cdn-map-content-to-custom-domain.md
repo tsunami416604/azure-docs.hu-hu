@@ -4,21 +4,22 @@ description: Ebben az oktatóanyagban egy Azure CDN-végpont tartalmát fogja le
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/06/2018
+ms.date: 05/15/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f57cfe19fd2eee0952a20fabcaa0d73ca96894ef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d20dca9a1248cfb2915ebbc456fba80aadcf81f5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196504"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Útmutató: Egyéni tartomány hozzáadása az Azure CDN-végponthoz
 Ez az útmutató megmutatja, hogyan adható hozzá egyéni tartomány egy Azure Content Delivery Network- (CDN-) végponthoz. Amikor CDN-végpontot használ a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a CDN URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is. 
@@ -112,19 +113,28 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpont
     
 2. A **CDN-profil** oldalon válassza ki a CDN-végpontot, amelyet társítani kíván az egyéni tartománnyal.
 
-    Megnyílik a **Végpont** lap.
+   Megnyílik a **Végpont** lap.
     
 3. Válassza az **Egyéni tartomány** lehetőséget. 
 
    ![CDN – egyéni tartomány gomb](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
 
-4. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt. Például www.contoso.com vagy cdn.contoso.com. A cdnverify altartománynevet ne használja.
+   Megnyílik az **Egyéni tartomány hozzáadása** oldal.
+
+4. A **Végpont gazdaneve** mezőben a CNAME rekord céltartományaként használandó végpont gazdaneve előre ki van töltve, és a CDN-végponti URL-címből van származtatva: *&lt;végpont gazdagépneve&gt;*.azureedge.net. A név nem módosítható.
+
+5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például www.contoso.com vagy cdn.contoso.com. A cdnverify altartománynevet ne használja.
 
    ![CDN – egyéni tartomány párbeszédpanel](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-5. Válassza a **Hozzáadás** lehetőséget.
+6. Válassza a **Hozzáadás** lehetőséget.
 
-   Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz. Időbe telhet, amíg megtörténik a CNAME rekord névkiszolgálókon való propagálása. Ha ellenőrizte, hogy a CNAME rekord helyes, ám a tartomány érvényesítése mégsem történik meg azonnal, várjon néhány percet, majd próbálkozzon újra. A **Verizon Azure CDN**-végpontok esetében akár 90 percet is igénybe vehet, amíg az összes CDN-határcsomópontra megtörténik az egyéni tartománybeállítások propagálása.  
+   Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz. 
+
+   Időbe telhet, amíg az új egyéni tartománybeállítások propagálása az összes CDN-határcsomópontra megtörténik: 
+    - A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+    - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+    - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 90 percen belül fejeződik be.   
 
 
 ## <a name="verify-the-custom-domain"></a>Az egyéni tartomány ellenőrzése
@@ -133,7 +143,7 @@ Az egyéni tartomány regisztrálása után ellenőrizze, hogy az egyéni tartom
  
 1. Győződjön meg arról, hogy rendelkezik olyan nyilvános tartalommal, amely a végponton van gyorsítótárazva. Ha például a CDN-végpont egy tárfiókkal van társítva, az Azure CDN egy nyilvános tárolóban fogja gyorsítótárazni a tartalmat. Az egyéni tartomány teszteléséhez győződjön meg arról, hogy a tároló nyilvános hozzáférésre van beállítva, és tartalmaz legalább egy fájlt.
 
-2. A böngészőjében navigáljon a fájl címére az egyéni tartomány használatával. Ha például az egyéni tartománya a cdn.contoso.com, a gyorsítótárazott fájl URL-címe a következő URL-címre fog hasonlítani: http:\//cdn.contoso.com/my-public-container/my-file.jpg.
+2. A böngészőjében navigáljon a fájl címére az egyéni tartomány használatával. Ha például az egyéni tartománya a cdn.contoso.com, a gyorsítótárazott fájl URL-címe a következő URL-címre fog hasonlítani: http:\//cdn.contoso.com/my-public-container/my-file.jpg. Ellenőrizze, hogy az eredmény ugyanaz legyen, mint amikor a CDN-végpontot közvetlenül éri el a *&lt;végpont gazdagépneve&gt;*.azureedge.net címen.
 
 
 ## <a name="map-the-permanent-custom-domain"></a>Az állandó egyéni tartomány leképezése
