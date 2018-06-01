@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 52d0aeabab173caf4460827ca0d5984070688f0e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304725"
 ---
 # <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Rendelkezésre állási zónán belüli virtuális gépek terheléselosztása standard terheléselosztóval az Azure Portal használatával
 
@@ -36,7 +37,7 @@ Ez az oktatóanyag végigvezeti a nyilvános [standard terheléselosztó](https:
 > * Alapszintű IIS-webhely létrehozása
 > * Terheléselosztó megtekintése működés közben
 
-A rendelkezésre állási zónák standard rendelkezésre állási zónákkal való használatáról bővebben a [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md) című cikkben tájékozódhat.
+A rendelkezésre állási zónák a Standard Load Balancerrel való használatáról bővebben a [Standard Load Balancer és rendelkezésre állási zónák](load-balancer-standard-availability-zones.md) című cikkben tájékozódhat.
 
 Igény szerint az oktatóanyag az [Azure CLI](load-balancer-standard-public-zonal-cli.md) használatával is elvégezhető.
 
@@ -65,7 +66,7 @@ A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a
 Eben a szakaszban egy virtuális hálózatot fog létrehozni, valamint két virtuális gépet ugyanabban a zónában (vagyis az 1. zónában) a terheléselosztó háttérkészletéhez hozzáadandó régió számára, majd telepíteni fogja az IIS-t a virtuális gépeken a zónaredundáns terheléselosztó tesztelése érdekében. Ezért, ha az egyik virtuális gép meghibásodik, az ugyanabba a zónába tartozó virtuális gép állapotmintája sikertelen lesz, és a forgalmat továbbra is szolgáltatni fogja az azonos zónába tartozó másik virtuális gép.
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Virtuális hálózat** elemre, és adja meg az alábbi értékeket:
+1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózat** > **Virtuális hálózat** elemre, és adja meg az alábbi értékeket:
     - A virtuális hálózat neve: *myVnet*.
     - A létező erőforráscsoport neve: *myResourceGroupZLB*
     - Az alhálózat neve: *myBackendSubnet*.
@@ -76,7 +77,7 @@ Eben a szakaszban egy virtuális hálózatot fog létrehozni, valamint két virt
 ## <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
 1. A képernyő bal felső oldalán kattintson az **Erőforrás létrehozása** elemre, írja be a keresőmezőbe, hogy *Hálózati biztonsági csoport*, majd kattintson a hálózati biztonsági csoport lapján a **Létrehozás** elemre.
-2. A Hálózati biztonsági csoport létrehozás lapon adja meg ezeket az értékeket:
+2. A Hálózati biztonsági csoport létrehozása lapon adja meg a következő értékeket:
     - A hálózati biztonsági csoport neve: *myNetworkSecurityGroup*.
     - A létező erőforráscsoport neve: *myResourceGroupBAZ*.
    
@@ -115,7 +116,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni az Azure Portalon a HTTP-t �
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Számítás** > **Windows Server 2016 Datacenter** elemre, és adja meg az alábbi értékeket a virtuális gép számára:
+1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Számítás** > **Windows Server 2016 Datacenter** elemre, és adja meg a következő értékeket a virtuális gép számára:
     - A virtuális gép neve: *myVM1*.        
     - A rendszergazda felhasználóneve: *azureuser*.    
     - *myResourceGroupZLB*: Az **Erőforráscsoport** esetében válassza a **Meglévő használata** lehetőséget, majd válassza ki a *myResourceGroupZLB* erőforráscsoportot.
@@ -139,7 +140,7 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni az Azure Portalon a HTTP-t �
 2. Az **Áttekintés** oldalon a **Csatlakozás** gombra kattintva hozzon létre RDP-kapcsolatot a virtuális géppel.
 3. Jelentkezzen be a virtuális gépen a virtuális gép létrehozásakor létrehozott felhasználónévvel és jelszóval (előfordulhat, hogy a virtuális gép létrehozásakor beírt hitelesítő adatok megadásához ki kell választania a **További lehetőségek**, majd a **Másik fiók használata** elemet), majd válassza az **OK** gombot. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Válassza az **Igen** lehetőséget a csatlakozás folytatásához.
 4. A kiszolgáló asztalán lépjen a **Windows felügyeleti eszközök**>**Windows PowerShell** elemre.
-6. A PowerShell-ablakban futtassa a következő parancsokat az IIS-kiszolgáló telepítéséhez, távolítsa el a default.htm fájlt vegyen fel egy új default.htm fájt, amely megjeleníti a virtuális gép nevét:
+6. A PowerShell-ablakban futtassa az alábbi parancsokat az IIS-kiszolgáló telepítéséhez, távolítsa el az alapértelmezett iisstart.htm fájlt, majd adjon hozzá egy új iisstart.htm fájt, amely megjeleníti a virtuális gép nevét:
 
    ```azurepowershell-interactive
     # install IIS server role
@@ -147,10 +148,10 @@ Ebben a szakaszban NSG-szabályokat fog létrehozni az Azure Portalon a HTTP-t �
     # remove default htm file
      remove-item  C:\inetpub\wwwroot\iisstart.htm
     # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
    ```
-8. Zárja be a *myVM1* géphez létrehozott RDP-munkamenetet
-9. Ismételje meg az 1–8. lépéseket az IIS *myVM2* gépen való telepítéséhez.
+7. Zárja be a *myVM1* géphez létrehozott RDP-munkamenetet
+8. Ismételje meg az 1–7. lépést az IIS telepítéséhez a *myVM2* gépen.
 
 ## <a name="create-load-balancer-resources"></a>Terheléselosztó erőforrásainak létrehozása
 
