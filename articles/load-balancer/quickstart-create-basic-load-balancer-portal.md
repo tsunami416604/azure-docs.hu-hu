@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 610aa8d5652b89f36aeb2a6ae517d378c5bfa666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304878"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Első lépések: Alapszintű nyilvános terheléselosztó létrehozása az Azure Portallal
 
@@ -165,7 +166,7 @@ Ahhoz, hogy az alapszintű terheléselosztó monitorozhassa az alkalmazás álla
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. 
+A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. Meg kell határoznia az előtérbeli IP-konfigurációt a bejövő forgalomhoz, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. 
 
 Hozzon létre egy **myLoadBalancerRuleWeb** nevű terheléselosztási szabályt a 80-as port a **LoadBalancerFrontEnd** előtérben való figyeléséhez. A szabály az elosztott terhelésű hálózati forgalom a **myBackEndPool** nevű háttércímkészlethez küldésére is vonatkozik, szintén a 80-as port használatával. 
 
@@ -194,4 +195,7 @@ Ha már nincs rászükség, törölje az erőforráscsoportot, a terheléseloszt
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy erőforráscsoportot, hálózati erőforrásokat és háttérkiszolgálókat hozott létre. Ezután az erőforrások használatával létrehozott egy terheléselosztót. Ha további információra van szüksége a terheléselosztókra és a kapcsolódó erőforrásokra vonatkozóan, lépjen tovább az oktatóanyag cikkeire.
+Ebben a rövid útmutatóban egy erőforráscsoportot, hálózati erőforrásokat és háttérkiszolgálókat hozott létre. Ezután az erőforrások használatával létrehozott egy alapszintű terheléselosztót. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer-oktatóanyagok](tutorial-load-balancer-basic-internal-portal.md)
