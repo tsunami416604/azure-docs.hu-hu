@@ -1,45 +1,46 @@
 ---
-title: Azure Event rács és az Event Hubs-integráció
-description: Ismerteti, hogyan lehet Azure esemény rács és az Event Hubs használatával telepítse át az adatokat egy SQL Data Warehouse
+title: Az Azure Event Grid és az Event Hubs integrációja
+description: A cikk azt ismerteti, hogyan lehet az Azure Event Grid és az Event Hubs használatával adatokat migrálni az Azure SQL Data Warehouse-ba.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 60857327685fca9a5f97588ab51909ce2537d68f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302939"
 ---
-# <a name="stream-big-data-into-a-data-warehouse"></a>Az adatfolyam big Data típusú adatok az data warehouse-bA
+# <a name="stream-big-data-into-a-data-warehouse"></a>Big Data típusú adatok streamelése adattárházba
 
-Azure [esemény rács](overview.md) intelligens esemény útválasztási szolgáltatás, amely lehetővé teszi az alkalmazások és szolgáltatások értesítések reagálni azokra. A [Event Hubs rögzítése és az esemény rács minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) használata Azure Event Hubs rögzítése Azure esemény rács zökkenőmentesen át adatokat az event hubs egy SQL Data Warehouse jeleníti meg.
+Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amellyel reagálhat az alkalmazásokból és szolgáltatásokból érkező értesítésekre. Az [Event Hubs Capture- és Event Grid-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogy az Azure Event Hubs és az Azure Event Grid használatával hogyan lehet zökkenőmentesen migrálni egy eseményközpont adatait egy SQL Data Warehouse-adattárházba.
 
-![Alkalmazás – áttekintés](media/event-grid-event-hubs-integration/overview.png)
+![Az alkalmazás áttekintése](media/event-grid-event-hubs-integration/overview.png)
 
-Az event hubs adatokat küld, rögzítési kéri le az adatokat az adatfolyamból és az Avro formátum hoz létre az adatok tárolási BLOB. Rögzítés a blob állít elő, amikor egy eseményt váltja ki. Esemény rács elosztása az előfizetők az eseményről találhat adatokat. Az eseményadatok ebben az esetben az Azure Functions végpont küldi. Az eseményadat tartalmazza a létrehozott blob elérési útját. A függvény kérje le a fájlt, és küldje el az adatraktár URL-címet használja.
+A Capture lehívja az adatokat az eseményközpontba érkező adatstreamből, és Avro adatformátumot használó tárolóblobokat hoz létre belőlük. Amikor a Capture létrehozza a blobot, ezzel kivált egy eseményt. Az Event Grid elküldi az előfizetőknek az eseménnyel kapcsolatos adatokat. Esetünkben az eseményadatok az Azure Functions-végpontra lesznek küldve. Az eseményadatok tartalmazzák a létrehozott blob elérési útját. A függvény lekéri a fájlt ezzel az URL-címmel, majd elküldi az adattárházba.
 
-Ebben a cikkben meg:
+Ebben a cikkben:
 
-* A következő infrastruktúra központi telepítéséhez:
-  * Az Event hubs a rögzítés engedélyezve
-  * A fájlok rögzítése a Storage-fiók
-  * A függvény alkalmazás tárolására szolgáló az Azure app service-csomag
-  * Az esemény feldolgozása függvény-alkalmazás
-  * Az adatraktárt futtató SQL Server
-  * Az SQL Data Warehouse az áttelepített adatok tárolásához
-* Táblázat létrehozása az adatraktárban
-* Adja hozzá a kódot a függvény alkalmazásba
-* Az esemény előfizetés
-* Futtassa az alkalmazást, amely adatokat küld az event hubs
-* Adatraktár áttelepített adatok megtekintése
+* Üzembe helyezzük a következő infrastruktúrát:
+  * Eseményközpont aktív Capture szolgáltatással
+  * Tárfiók a Capture által küldött fájlokhoz
+  * Azure App Service-csomag a függvényalkalmazás futtatásához
+  * Függvényalkalmazás az esemény feldolgozásához
+  * SQL Server az adattárház üzemeltetéséhez
+  * SQL Data Warehouse a migrált adatok tárolásához
+* Tábla létrehozása az adattárházban
+* Kód hozzáadása a függvényalkalmazáshoz
+* Feliratkozás az eseményre
+* Az adatokat az eseményközpontra küldő alkalmazás futtatása
+* A migrált adatok megtekintése az adattárházban
 
-## <a name="about-the-event-data"></a>Az adatok körül forog esemény
+## <a name="about-the-event-data"></a>Tudnivalók az eseményadatokról
 
-Esemény rács elosztása az eseményadatok az előfizetőknek. A következő példa bemutatja eseményadatok a rögzítés fájl létrehozása. Figyelje meg, a `fileUrl` tulajdonságot a `data` objektum. A függvény app megkapja ezt az értéket, és kérje le a rögzítést fájlt használja.
+Az Event Grid elküldi az eseményadatokat az előfizetőknek. Az alábbi példában eseményadatok láthatók egy Capture-fájl létrehozásához. Figyelje meg különösen a `fileUrl` tulajdonságot a `data` objektumban. A függvényalkalmazás megkapja ezt az értéket, és a használatával lekéri a Capture-fájlt.
 
 ```json
 [
@@ -69,12 +70,12 @@ Esemény rács elosztása az eseményadatok az előfizetőknek. A következő p�
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-* [A Visual studio 15.3.2 2017 verzió vagy újabb](https://www.visualstudio.com/vs/) a munkaterhelések: .NET asztali fejlesztési, Azure fejlesztési, az ASP.NET és a webes fejlesztési, Node.js fejlesztői és Python fejlesztői.
-* A [EventHubsCaptureEventGridDemo mintaprojektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógép letölti.
+* [Visual Studio 2017 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a következőkhöz készült számítási feladatokkal: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés.
+* Kattintson a számítógépre letöltött [EventHubsCaptureEventGridDemo mintaprojektre](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
-## <a name="deploy-the-infrastructure"></a>Az infrastruktúra központi telepítéséhez
+## <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
 
-Ez a cikk leegyszerűsítése telepít egy Resource Manager sablonhoz szükséges infrastruktúrát. Tekintse meg a telepített erőforrások esetén, tekintse meg a [sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Valamelyikével a [támogató régiók](overview.md) az erőforráscsoport helye számára.
+Ebben a cikkben az egyszerűség kedvéért egy Resource Manager-sablonnal helyezzük üzembe a szükséges infrastruktúrát. Az üzembe helyezett erőforrások megtekintéséhez lásd a [sablont](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Használja az erőforráscsoport helye szerint [támogatott régiók](overview.md) egyikét.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -95,13 +96,13 @@ New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
-Adjon meg egy jelszót értéket, amikor a rendszer kéri.
+Amikor a rendszer kéri, adjon meg egy jelszót.
 
-## <a name="create-a-table-in-sql-data-warehouse"></a>Létrehoz egy táblát az SQL Data Warehouse
+## <a name="create-a-table-in-sql-data-warehouse"></a>Tábla létrehozása az SQL Data Warehouse-ban
 
-Az adatraktár futtatásával táblázat felvétele a [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) parancsfájl. A parancsfájl futtatásához használja a Visual Studio vagy a lekérdezés-szerkesztő a portálon.
+Az adattárházhoz a [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) szkript futtatásával adhat hozzá egy új táblát. A szkriptet a Visual Studio vagy a portálon a Lekérdezésszerkesztő használatával futtathatja.
 
-A parancsfájl futtatásához a következő:
+A futtatandó szkript:
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -114,75 +115,75 @@ CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
 WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ```
 
-## <a name="publish-the-azure-functions-app"></a>Az Azure Functions alkalmazás közzététele
+## <a name="publish-the-azure-functions-app"></a>Az Azure Functions-alkalmazás közzététele
 
-1. Nyissa meg a [EventHubsCaptureEventGridDemo mintaprojektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a Visual Studio 2017 (15.3.2 vagy újabb).
+1. Nyissa meg az [EventHubsCaptureEventGridDemo mintaprojektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a Visual Studio 2017-ben (15.3.2-es vagy újabb verzió).
 
-1. A Megoldáskezelőben kattintson a jobb gombbal **FunctionEGDWDumper**, és válassza ki **közzététel**.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **FunctionEGDWDumper** elemre, majd válassza a **Közzététel** lehetőséget.
 
-   ![Függvény alkalmazás közzététele](media/event-grid-event-hubs-integration/publish-function-app.png)
+   ![Függvényalkalmazás közzététele](media/event-grid-event-hubs-integration/publish-function-app.png)
 
-1. Válassza ki **Azure függvény App** és **válasszon meglévő**. Válassza ki **közzététele**.
+1. Válassza az **Azure-függvényalkalmazás**, majd a **Meglévő kiválasztása** lehetőséget. Kattintson a **Publish** (Közzététel) elemre.
 
-   ![Cél függvény alkalmazás](media/event-grid-event-hubs-integration/pick-target.png)
+   ![Cél függvényalkalmazás](media/event-grid-event-hubs-integration/pick-target.png)
 
-1. Válassza ki a funkció a sablon segítségével telepített alkalmazást. Kattintson az **OK** gombra.
+1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Kattintson az **OK** gombra.
 
-   ![Függvény alkalmazás kiválasztása](media/event-grid-event-hubs-integration/select-function-app.png)
+   ![Függvényalkalmazás kiválasztása](media/event-grid-event-hubs-integration/select-function-app.png)
 
-1. Visual Studio a profil konfigurálásakor válassza ki a **közzététel**.
+1. Miután a Visual Studio konfigurálta a profilt, kattintson a **Közzététel** elemre.
 
-   ![Válassza ki közzététele](media/event-grid-event-hubs-integration/select-publish.png)
+   ![A Közzététel gomb kiválasztása](media/event-grid-event-hubs-integration/select-publish.png)
 
-Miután közzétette a függvény, készen áll az esemény előfizetni.
+A függvény közzététele után feliratkozhat az eseményre.
 
-## <a name="subscribe-to-the-event"></a>Az esemény előfizetés
+## <a name="subscribe-to-the-event"></a>Feliratkozás az eseményre
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/). Válassza ki az erőforrás-csoport és függvény alkalmazást.
+1. Nyissa meg az [Azure Portal](https://portal.azure.com/). Válassza ki az erőforráscsoportot és a függvényalkalmazást.
 
-   ![Függvény alkalmazás megtekintése](media/event-grid-event-hubs-integration/view-function-app.png)
+   ![Függvényalkalmazás megtekintése](media/event-grid-event-hubs-integration/view-function-app.png)
 
 1. Válassza ki a függvényt.
 
    ![Függvény kiválasztása](media/event-grid-event-hubs-integration/select-function.png)
 
-1. Válassza ki **hozzáadása esemény rács előfizetés**.
+1. Válassza az **Event Grid-előfizetés hozzáadása** lehetőséget.
 
    ![Előfizetés hozzáadása](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-9. Adjon meg egy nevet a rács Eseményelőfizetés. Használjon **Event Hubs névterek** az esemény típusa. Jelölje be az Event Hubs névtér példányát adja meg. Az előfizető végpont hagyja meg a megadott érték. Kattintson a **Létrehozás** gombra.
+9. Adja meg az Event Grid-előfizetés nevét. Eseménytípusként használja az **Event Hubs-névterek** típust. Adja meg az értékeket az Event Hubs-névtér példányának kiválasztásához. A feliratkozó végpontjánál hagyja meg a megadott értéket. Kattintson a **Létrehozás** gombra.
 
    ![Előfizetés létrehozása](media/event-grid-event-hubs-integration/set-subscription-values.png)
 
-## <a name="run-the-app-to-generate-data"></a>Futtassa az alkalmazást létrehozni
+## <a name="run-the-app-to-generate-data"></a>Az alkalmazás futtatása az adatok létrehozásához
 
-Az event hubs, az SQL data warehouse, Azure függvény app és Eseményelőfizetés beállításának befejezése után. A megoldás készen áll a át adatokat az event hubs az adatraktárba. Mielőtt futtatná az olyan alkalmazás, amely az eseményközpont adatokat állít elő, kell néhány értékeket állíthat be.
+Végeztünk az eseményközpont, az SQL-adattárház, az Azure-függvényalkalmazás és az esemény-előfizetés beállításával. A megoldás készen áll az eseményközpontból az adattárházba való adatmigrálásra. Mielőtt futtatna egy alkalmazást, amely adatokat állít elő az eseményközpont számára, konfigurálnia kell néhány értéket.
 
-1. A portálon válassza ki az event hub névtér. Válassza ki **kapcsolati karakterláncok**.
+1. A portálon válassza ki az eseményközpont névterét. Válassza a **Kapcsolati sztringek** lehetőséget.
 
-   ![Válassza ki a kapcsolati karakterláncok](media/event-grid-event-hubs-integration/event-hub-connection.png)
+   ![A Kapcsolati sztringek lehetőség kiválasztása](media/event-grid-event-hubs-integration/event-hub-connection.png)
 
-2. Select **RootManageSharedAccessKey**
+2. Válassza a **RootManageSharedAccessKey** elemet.
 
-   ![Válassza ki a kulcs](media/event-grid-event-hubs-integration/show-root-key.png)
+   ![Kulcs kiválasztása](media/event-grid-event-hubs-integration/show-root-key.png)
 
-3. Másolás **kapcsolati karakterlánc - elsődleges kulcs**
+3. Másolja a **kapcsolati sztring elsődleges kulcsát**
 
    ![Kulcs másolása](media/event-grid-event-hubs-integration/copy-key.png)
 
-4. Lépjen vissza, ha a Visual Studio-projektet. A WindTurbineDataGenerator projektben nyissa meg a **program.cs**.
+4. Térjen vissza a Visual Studio-projekthez. A WindTurbineDataGenerator projektben nyissa meg a **program.cs** fájlt.
 
-5. Cserélje le a két konstans érték. A másolt értéket **EventHubConnectionString**. Használjon **hubdatamigration** az eseményközpont neveként.
+5. Cserélje le a két állandó értékét. Az **EventHubConnectionString** állandónál használja a másolt értéket. Az eseményközpont neveként használja a **hubdatamigration** értéket.
 
    ```cs
    private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Hozza létre a megoldást. Futtassa a WindTurbineGenerator.exe alkalmazást. Után néhány perc alatt a táblának az adatraktár az áttelepített adatok lekérdezése.
+6. Hozza létre a megoldást. Futtassa a WindTurbineGenerator.exe alkalmazást. Néhány perc elteltével kérdezze le a migrált adatokat az adattárház táblájából.
 
 ## <a name="next-steps"></a>További lépések
 
-* Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).
-* Megismerkedhet az Event Hubs rögzítéséhez, lásd: [engedélyezése Event Hubs rögzítése az Azure portál használatával](../event-hubs/event-hubs-capture-enable-through-portal.md).
-* Beállíthatja és futtathatja a minta kapcsolatos további információkért lásd: [Event Hubs rögzítése és az esemény rács minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
+* Az Event Hubs Capture megismeréséhez tekintse meg [az Event Hubs Capture Azure Portallal való engedélyezését](../event-hubs/event-hubs-capture-enable-through-portal.md) bemutató cikket.
+* A minta beállításával és futtatásával kapcsolatos további információért lásd az [Event Hubs Capture- és Event Grid-mintát](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
