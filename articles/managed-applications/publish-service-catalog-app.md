@@ -1,42 +1,43 @@
 ---
-title: Hozzon létre, és az Azure szolgáltatás katalógus által felügyelt alkalmazások közzététele |} Microsoft Docs
+title: Az Azure-szolgáltatáskatalógusban elérhető felügyelt alkalmazás létrehozása és közzététele | Microsoft Docs
 description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 05/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57821e9c7ed1ca04aa7442f089268c5e89a017c3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305310"
 ---
-# <a name="publish-a-managed-application-for-internal-consumption"></a>A belső felhasználásához kezelt alkalmazás közzététele
+# <a name="publish-a-managed-application-for-internal-consumption"></a>Felügyelt alkalmazás közzététele belső használatra
 
-Létrehozhat és közzététele az Azure [kezelt alkalmazások](overview.md) szolgálnak, hogy a szervezet tagjaira. Például hogy az informatikai részleg, amelyek biztosítják a vállalati szabványoknak való megfelelés felügyelt alkalmazások közzététele. A kezelt alkalmazások a szolgáltatáskatalógus, nem az Azure piactéren keresztül érhetők el.
+Létrehozhat és közzétehet a vállalat tagjainak szánt Azure-beli [felügyelt alkalmazásokat](overview.md). Az informatikai részleg közzétehet például olyan felügyelt alkalmazásokat, amelyek biztosítják a vállalati szabványoknak való megfelelést. Ezeket a felügyelt alkalmazásokat a szolgáltatáskatalóguson keresztül lehet elérni az Azure Marketplace helyett.
 
-A szolgáltatáskatalógus a kezelt alkalmazás közzététele a következőket kell tennie:
+A felügyelt alkalmazás szolgáltatáskatalógusban való közzétételéhez a következőket kell tennie:
 
-* Hozzon létre egy sablont, amely meghatározza a kezelt alkalmazással üzembe helyezendő erőforrásokat.
-* Adja meg a felhasználói felület elemei a portálhoz, a kezelt alkalmazás telepítésekor.
-* A szükséges sablont fájlokat tartalmazó .zip-csomag létrehozása.
-* Döntse el, mely felhasználó, csoport vagy alkalmazás hozzá kell férnie az erőforráscsoport, a felhasználó az előfizetéshez.
-* Hozzon létre a kezelt alkalmazás-definíciót, amely a .zip-csomagja mutat, és az identitás hozzáférést kér.
+* Létre kell hoznia egy sablont, amely meghatározza a felügyelt alkalmazással üzembe helyezendő erőforrásokat.
+* Meg kell határoznia a felhasználói felület elemeit a portál számára, amikor üzembe helyezi a felügyelt alkalmazást.
+* Létre kell hoznia egy .zip csomagot, amely a szükséges sablonfájlokat tartalmazza.
+* El kell döntenie, hogy melyik felhasználónak, csoportnak vagy alkalmazásnak kell hozzáférést biztosítani a felhasználó előfizetésében található erőforráscsoporthoz.
+* Létre kell hoznia a felügyelt alkalmazás definícióját, amely a .zip csomagra mutat, és hozzáférést kér az identitás számára.
 
-Ebben a cikkben a felügyelt alkalmazás tartalmazza a storage-fiók. Célja, hogy a kezelt alkalmazás közzétételének lépéseket mutatja be. Teljes példákért lásd [a kezelt alkalmazások az Azure-hoz](sample-projects.md).
+A jelen cikk esetén a felügyelt alkalmazás csak egy tárfiókot tartalmaz. Az a célja, hogy bemutassa a felügyelt alkalmazások közzétételéhez szükséges lépéseket. Átfogó példákat az [Azure-beli felügyelt alkalmazások mintaprojektjeit](sample-projects.md) ismertető témakörben talál.
 
-## <a name="create-the-resource-template"></a>Az erőforrás-sablon létrehozása
+## <a name="create-the-resource-template"></a>Az erőforrássablon létrehozása
 
-Minden felügyelt definíciót tartalmaz egy nevű fájlt **mainTemplate.json**. Az oktatóanyagban az Azure-erőforrások kiépítését meghatározása. A sablon pont olyan, mint egy átlagos Resource Manager-sablon.
+Minden felügyelt alkalmazás definíciója tartalmaz egy **mainTemplate.json** nevű fájlt. Ebben lehet meghatározni a kiépítendő Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon.
 
-Hozzon létre egy fájlt **mainTemplate.json**. A név nem kis-és nagybetűket.
+Hozzon létre egy **mainTemplate.json** nevű fájlt. A név megkülönbözteti a kis- és nagybetűket.
 
-Adja hozzá a fájlhoz a következő JSON. A storage-fiók létrehozásához a paramétereket, és határozza meg a tárfiók tulajdonságait.
+Adja hozzá az alábbi JSON-kódot a fájlhoz. Ez a kód határozza meg a tárfiókok létrehozásához szükséges paramétereket, és megadja a tárfiók tulajdonságait.
 
 ```json
 {
@@ -81,13 +82,13 @@ Adja hozzá a fájlhoz a következő JSON. A storage-fiók létrehozásához a p
 
 Mentse a mainTemplate.json fájlt.
 
-## <a name="create-the-user-interface-definition"></a>A felhasználói felület definíció létrehozása
+## <a name="create-the-user-interface-definition"></a>A felhasználói felület definíciójának létrehozása
 
-Az Azure-portálon használja a **createUiDefinition.json** fájlt létrehozni a felhasználói felület, a felhasználók számára a kezelt alkalmazás létrehozása. Azt határozza meg, hogyan felhasználói adatbevitelt mindegyik paraméterhez. Beállítások is használhat, például a legördülő listából válassza ki, szövegmezőben, jelszó mezőbe, és más beviteli eszközök. Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.
+Az Azure Portal a **createUiDefinition.json** fájl segítségével hozza létre a felhasználói felületet a felügyelt alkalmazást létrehozó felhasználók számára. Ön határozhatja meg, hogy a felhasználók hogyan adhatnak meg értéket az egyes paraméterek számára. Használhat például legördülő listát, szövegmezőt, jelszómezőt vagy más beviteli eszközöket. Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.
 
-Hozzon létre egy fájlt **createUiDefinition.json**. A név nem kis-és nagybetűket.
+Hozzon létre egy **createUiDefinition.json** nevű fájlt. A név megkülönbözteti a kis- és nagybetűket.
 
-Adja hozzá a fájlhoz a következő JSON.
+Adja hozzá az alábbi JSON-kódot a fájlhoz.
 
 ```json
 {
@@ -140,11 +141,11 @@ Adja hozzá a fájlhoz a következő JSON.
 
 Mentse a createUiDefinition.json fájlt.
 
-## <a name="package-the-files"></a>A csomagfájlok
+## <a name="package-the-files"></a>A fájlok becsomagolása
 
-A két fájlokat adjon hozzá egy .zip fájlt app.zip. A két fájlt kell a gyökérszinten .zip fájl. Ha azokat egy mappába helyezett, hibaüzenet arról, hogy a szükséges fájlok hiányoznak a kezelt alkalmazás definíciójának létrehozásakor. 
+Adja hozzá a két fájlt az app.zip nevű .zip fájlhoz. A két fájlnak a .zip fájl gyökérszintjén kell lennie. Ha egy mappába helyezi őket, hibaüzenetet fog kapni a felügyelt alkalmazás definíciójának létrehozásakor, amely szerint nem találhatók a szükséges fájlok. 
 
-Töltse fel a csomag elérhető helyen a ahol képes használni. 
+Töltse fel a csomagot egy elérhető helyre, ahonnan mások használhatják. 
 
 ```powershell
 New-AzureRmResourceGroup -Name storageGroup -Location eastus
@@ -166,19 +167,19 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 
 ## <a name="create-the-managed-application-definition"></a>A felügyelt alkalmazás definíciójának létrehozása
 
-### <a name="create-an-azure-active-directory-user-group-or-application"></a>Egy Azure Active Directory felhasználói csoport vagy az alkalmazás létrehozása
+### <a name="create-an-azure-active-directory-user-group-or-application"></a>Azure Active Directory felhasználói csoport vagy -alkalmazás létrehozása
 
-A következő lépés, hogy egy felhasználói csoport vagy az erőforrások kezelése az ügyfél nevében az alkalmazás kiválasztása. A felhasználói csoport vagy az alkalmazás engedélyekkel rendelkezzen a felügyelt erőforráscsoporthoz rendelt szerepkör alapján. A szerepkör lehet minden olyan beépített szerepköralapú hozzáférés-vezérlést (RBAC) szerepkört, például a tulajdonos vagy közreműködő szerepkörrel. Is egy adott felhasználó engedélyt adhat a erőforrások kezeléséhez, de általában ez az engedély hozzárendelése egy felhasználói csoportot. Hozzon létre egy új Active Directory-felhasználócsoportot, lásd: [hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](../active-directory/active-directory-groups-create-azure-portal.md).
+A következő lépés egy felhasználói csoport vagy alkalmazás kiválasztása, amely az ügyfél nevében felügyeli az erőforrásokat. Ez a felhasználói csoport vagy alkalmazás engedélyeket kap a felügyelt erőforráscsoporthoz a kijelölt szerepkörnek megfelelően. A szerepkör bármely beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkör lehet, például Tulajdonos vagy Közreműködő. Az erőforrások felügyeletére egyéni felhasználói engedélyt is lehet adni, de ezt az engedélyt általában egy felhasználói csoporthoz rendelik hozzá. Új Azure Active Directory felhasználói csoport létrehozásához tekintse meg [az Azure Active Directoryban csoportok létrehozását és tagok hozzáadását ismertető](../active-directory/active-directory-groups-create-azure-portal.md) cikket.
 
-Az Objektumazonosító, a felhasználói csoport számára az erőforrások kezelése van szüksége. 
+Az erőforrások felügyeletéhez szüksége lesz a felhasználói csoport objektumazonosítójára. 
 
 ```powershell
 $groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
 ```
 
-### <a name="get-the-role-definition-id"></a>A szerepkör-definíció azonosítója beolvasása
+### <a name="get-the-role-definition-id"></a>A szerepkördefiníció-azonosító lekérése
 
-A következő lépésben azt szeretné, hogy hozzáférést biztosítson a felhasználó, a felhasználói csoport vagy az alkalmazás RBAC beépített szerepkör szerepkör-definíció azonosítója. Általában akkor használják a tulajdonos vagy közreműködő vagy olvasó szerepkört. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
+Ezután annak a beépített RBAC-szerepkörnek a szerepkördefiníció-azonosítójára van szükség, amelyhez hozzáférést szeretne biztosítani a felhasználó, a felhasználói csoport vagy az alkalmazás számára. Általában a Tulajdonos, a Közreműködő vagy az Olvasó szerepkört használják. Az alábbi parancs bemutatja, hogyan kérheti le a tulajdonos szerepkör szerepkördefiníció-azonosítóját:
 
 ```powershell
 $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
@@ -186,7 +187,7 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 
 ### <a name="create-the-managed-application-definition"></a>A felügyelt alkalmazás definíciójának létrehozása
 
-Ha még nem rendelkezik egy erőforráscsoportot a kezelt alkalmazás definícióját tárolásához, hozzon létre egyet:
+Ha még nem rendelkezik erőforráscsoporttal a felügyelt alkalmazás definíciójának tárolásához, hozzon létre egyet:
 
 ```powershell
 New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
@@ -208,13 +209,13 @@ New-AzureRmManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="create-the-managed-application"></a>A kezelt alkalmazás létrehozása
+## <a name="create-the-managed-application"></a>A felügyelt alkalmazás létrehozása
 
-A kezelt alkalmazás, a portál, a PowerShell vagy az Azure parancssori felület telepítése.
+A felügyelt alkalmazást a portálon, a PowerShellen vagy az Azure CLI-n keresztül helyezheti üzembe.
 
 ### <a name="powershell"></a>PowerShell
 
-Először hozzuk a PowerShell használatával történő telepítése a kezelt alkalmazás.
+Először a PowerShell segítségével helyezzük üzembe a felügyelt alkalmazást.
 
 ```powershell
 # Create resource group
@@ -234,44 +235,44 @@ New-AzureRmManagedApplication `
   -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
 ```
 
-A kezelt alkalmazás és a felügyelt infrastruktúra most már szerepel az előfizetés.
+A felügyelt alkalmazás és a felügyelt infrastruktúra most már léteznek az előfizetésben.
 
 ### <a name="portal"></a>Portál
 
-Most tegyük a kezelt alkalmazás központi telepítése a portál használatával. A felhasználói felület, a csomag létrehozott láthatja.
+Most pedig helyezzük üzembe a felügyelt alkalmazást a portál segítségével. Megjelenik a csomagban létrehozott felhasználói felület.
 
-1. Ugrás az Azure-portálon. Válassza ki **+ hozzon létre egy erőforrást** keresse meg a **szolgáltatáskatalógus**.
+1. Nyissa meg az Azure Portalt. Válassza a **+ Erőforrás létrehozása** lehetőséget, és keressen rá a **szolgáltatáskatalógus** kifejezésre.
 
-   ![Keresési szolgáltatáskatalógus](./media/publish-service-catalog-app/create-new.png)
+   ![A szolgáltatáskatalógus keresése](./media/publish-service-catalog-app/create-new.png)
 
-1. Válassza ki **szolgáltatáskatalógus felügyelt alkalmazás**.
+1. Válassza a **Service Catalog Managed Application** (Szolgáltatáskatalógusbeli felügyelt alkalmazás) lehetőséget.
 
-   ![Válassza ki a szolgáltatáskatalógus](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
+   ![Szolgáltatáskatalógus kiválasztása](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
 1. Kattintson a **Létrehozás** gombra.
 
-   ![Válassza ki létrehozása](./media/publish-service-catalog-app/select-create.png)
+   ![Kattintás a Létrehozás gombra](./media/publish-service-catalog-app/select-create.png)
 
-1. A kezelt alkalmazás, a rendelkezésre álló megoldások listájából létrehozásához keresse meg és válassza ki azt. Kattintson a **Létrehozás** gombra.
+1. Keresse meg a létrehozni kívánt felügyelt alkalmazást az elérhető megoldások listájában, és válassza ki. Kattintson a **Létrehozás** gombra.
 
-   ![Kezelt alkalmazás megkeresése](./media/publish-service-catalog-app/find-application.png)
+   ![A felügyelt alkalmazás megkeresése](./media/publish-service-catalog-app/find-application.png)
 
-1. Adja meg a kezelt alkalmazás szükséges alapvető információkat. Adja meg az előfizetés és a kezelt alkalmazás tartalmaz egy új erőforráscsoportot. Válassza ki **nyugati középső Régiójában** helyéhez. Ha elkészült, kattintson az **OK** gombra.
+1. Adja meg a felügyelt alkalmazáshoz szükséges alapvető adatokat. Adja meg azt az előfizetést és új erőforráscsoportot, amely a felügyelt alkalmazást fogja tartalmazni. A hely mezőnél válassza az **USA nyugati középső régiója** lehetőséget. Ha elkészült, kattintson az **OK** gombra.
 
-   ![Adja meg a felügyelt alkalmazási paraméterek](./media/publish-service-catalog-app/add-basics.png)
+   ![Felügyelt alkalmazás paramétereinek megadása](./media/publish-service-catalog-app/add-basics.png)
 
-1. Adja meg az erőforrásokat a felügyelt jellemző. Ha elkészült, kattintson az **OK** gombra.
+1. Adja meg a felügyelt alkalmazás erőforrásaira vonatkozó értékeket. Ha elkészült, kattintson az **OK** gombra.
 
-   ![Adja meg az erőforrás-paraméterek](./media/publish-service-catalog-app/add-storage-settings.png)
+   ![Erőforrás-paraméterek megadása](./media/publish-service-catalog-app/add-storage-settings.png)
 
-1. A sablon ellenőrzi a megadott értékeket. Ha az érvényesítés sikeres, válassza ki a **OK** a telepítés elindításához.
+1. A sablon érvényesíti a megadott értékeket. Ha az érvényesítés sikeres, kattintson az **OK** gombra az üzembe helyezés megkezdéséhez.
 
-   ![A felügyelt alkalmazási ellenőrzése](./media/publish-service-catalog-app/view-summary.png)
+   ![A felügyelt alkalmazás érvényesítése](./media/publish-service-catalog-app/view-summary.png)
 
-A telepítés befejezése után a kezelt alkalmazás szerepel alkalmazáscsoport nevű erőforráscsoport. A tárfiók egy erőforráscsoportot alkalmazáscsoport és kivonatolt karakterlánc-érték szerepel.
+Az üzembe helyezés befejezése után a felügyelt alkalmazás egy applicationGroup nevű erőforráscsoportban található. A tárfiók egy olyan erőforráscsoportban található, amelynek a neve az applicationGroup kifejezésből és egy kivonatolt sztringértékből áll.
 
 ## <a name="next-steps"></a>További lépések
 
 * A felügyelt alkalmazások bemutatásáért tekintse meg a [felügyelt alkalmazások áttekintését](overview.md).
-* Például a projekteket, lásd: [a kezelt alkalmazások az Azure-hoz](sample-projects.md).
+* Példaprojekteket az [Azure-beli felügyelt alkalmazások mintaprojektjeit](sample-projects.md) ismertető témakörben talál.
 * Felhasználóifelület-definíciós fájl felügyelt alkalmazáshoz való létrehozásával kapcsolatban tekintse meg a [CreateUiDefinition első lépéseit bemutató](create-uidefinition-overview.md) témakört.
