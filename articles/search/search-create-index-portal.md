@@ -3,27 +3,24 @@ title: Index létrehozása (Portal – Azure Search) | Microsoft Docs
 description: Index létrehozása az Azure Portal használatával.
 manager: cgronlun
 author: heidisteen
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: quickstart
 ms.date: 06/20/2017
 ms.author: heidist
-ms.openlocfilehash: ab0352b8c830e875afc9b1d1b006ba4d2a512d7a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 722f1eb989fb8c160def4024b1aa967a47b87697
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203869"
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>Azure Search-index létrehozása az Azure Portal használatával
-> [!div class="op_single_selector"]
-> * [Áttekintés](search-what-is-an-index.md)
-> * [Portál](search-create-index-portal.md)
-> * [.NET](search-create-index-dotnet.md)
-> * [REST](search-create-index-rest-api.md)
-> 
-> 
 
 Az Azure Portal beépített indextervezőjével az Azure Search szolgáltatáson futtatható [keresési index](search-what-is-an-index.md) tervezhető vagy hozható létre. 
+
+Emellett létrehozhat keresési indexet a [.NET](search-create-index-dotnet.md) vagy [REST](search-create-index-rest-api.md) API-kkal is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
