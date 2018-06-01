@@ -1,88 +1,82 @@
 ---
-title: Csoportházirend-sablon minták
-description: Azure-házirend JSON-minták
+title: Szabályzatsablonok példái
+description: JSON-minták az Azure Policy-hez
 services: azure-policy
-documentationcenter: ''
 author: DCtheGeek
 manager: carmonm
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: na
-ms.topic: samples
-ms.tgt_pltfrm: ''
-ms.workload: ''
+ms.topic: sample
 ms.date: 01/17/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 458ce4fb77f501d5feba4cf732fe3ce9a49f9c21
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 4b9096c1fb0d9ee74849e259a6e0af2486c5d29b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195124"
 ---
-# <a name="templates-for-azure-policy"></a>Sablonok az Azure-házirend
+# <a name="templates-for-azure-policy"></a>Az Azure Policy sablonjai
 
-A következő táblázat az Azure-házirend json sablonok hivatkozásait tartalmazza. Ezeket a mintákat találhatók a [Azure házirend minták tárház](https://github.com/Azure/azure-policy).
+A következő táblázat az Azure Policy json sablonjaira mutató hivatkozásokat tartalmaz. Ezek a minták az [Azure Policy mintaadattárában](https://github.com/Azure/azure-policy) találhatók.
 
 | | |
 |---|---|
 |**Számítás**||
-| [Virtuális gép által jóváhagyott lemezképeket](scripts/allowed-custom-images.md) | Telepítésére van szükség, hogy csak a jóváhagyott egyéni képek a környezetben. Megadja a jóváhagyott kép azonosítók tömbjét. |
-| [Naplózási, amikor virtuális gép nem használja a kezelt lemez](scripts/create-vm-managed-disk.md) | Ha egy virtuális gépet hoz létre, amely nem használja a felügyelt lemezek eseményeket.|
-| [Naplózási, ha a kiterjesztés nem létezik.](scripts/audit-ext-not-exist.md) | Ha egy bővítmény nincs telepítve a virtuális gépekkel eseményeket. Megadhatja, hogy a kiterjesztés közzétevő és típusát, ellenőrizze, hogy telepítették. |
-| [Az erőforráscsoport egyéni Virtuálisgép-lemezkép engedélyezése](scripts/allow-custom-vm-image.md) |  Megköveteli, hogy az egyéni lemezképek származnia egy jóváhagyott erőforráscsoportot. Megadhatja a jóváhagyott erőforráscsoport nevét. |
-| [Hibrid használata juttatás megtagadása](scripts/deny-hybrid-use.md) | Ez a beállítás letiltja az Azure hibrid használja juttatás (AHUB) használja. Akkor használja, ha nem szeretné, hogy a helyszíni licencek használatához. |
-| [Nem engedélyezett a Virtuálisgép-bővítmények](scripts/not-allowed-vm-ext.md) | Ez a beállítás letiltja a megadott bővítmények használatát. Megadja a tiltott típusokat tartalmazó tömb. |
-| [Csak az egyes virtuális gép platformlemezkép engedélyezése](scripts/allow-certain-vm-image.md) | Megköveteli, hogy a virtuális gépek UbuntuServer meghatározott verzióját használja. |
-| [Felügyelt lemezes virtuális gép létrehozása](scripts/use-managed-disk-vm.md) | Szükséges, hogy a virtuális gépek felügyelt lemezt használja.|
-|**Figyelés**||
-| [Diagnosztikai naplózás beállítása](scripts/audit-diag-setting.md) | Ha a diagnosztikai beállítások nincs engedélyezve a megadott típusú erőforrások eseményeket. Megadja annak ellenőrzése, hogy engedélyezve vannak-e a diagnosztikai beállítások tömbjét. |
-|**Név és a szöveges konvenciók**||
-| [Több mintában engedélyezése](scripts/allow-multiple-name-patterns.md) | Sok mintában használt erőforrások engedélyezése |
-| [A like megkövetelése](scripts/enforce-like-pattern.md) | Győződjön meg arról, erőforrásnevek felelnek meg hasonló mintát. |
-| [Igényelnek-egyeztetési minta](scripts/enforce-match-pattern.md) | Győződjön meg arról, erőforrás megfelel-e az elnevezési minta. |
-| [Címke-egyeztetési minta megkövetelése](scripts/enforce-tag-match-pattern.md) | Győződjön meg arról, hogy a címke értéke megegyezik-e egy szöveges mintával. |
+| [Jóváhagyott VM-lemezképek](scripts/allowed-custom-images.md) | Ehhez csak jóváhagyott egyéni rendszerképek helyezhetők üzembe a környezetben. Meg kell adnia egy jóváhagyott lemezazonosítókat tartalmazó tömböt. |
+| [Felügyelt lemezeket nem használó virtuális gépek naplózása](scripts/create-vm-managed-disk.md) | Naplózza, ha felügyelt lemezt nem használó virtuális gép jön létre.|
+| [Naplózás hiányzó bővítmény esetén](scripts/audit-ext-not-exist.md) | Naplózza, ha egy bővítmény nincs telepítve egy virtuális gépen. Meg kell adnia a bővítmény kiadóját és típusát a bővítmény telepítési állapotának ellenőrzéséhez. |
+| [Egyéni VM-lemezképek engedélyezése egy adott erőforráscsoportból](scripts/allow-custom-vm-image.md) |  Ehhez az egyéni rendszerképeknek jóváhagyott erőforráscsoportból kell származniuk. Meg kell adnia a jóváhagyott erőforráscsoport nevét. |
+| [A hibrid használati előny megtagadása](scripts/deny-hybrid-use.md) | Megtiltja az Azure Hybrid Use Benefit (AHUB) használatát. Akkor használja, amikor nem szeretné engedélyezni a helyszíni licencek használatát. |
+| [Nem engedélyezett virtuálisgép-bővítmények](scripts/not-allowed-vm-ext.md) | Megtiltja a megadott bővítmények használatát. Meg kell adnia egy tiltott bővítménytípusokat tartalmazó tömböt. |
+| [Csak bizonyos platformú VM-lemezkép használatának engedélyezése](scripts/allow-certain-vm-image.md) | Megköveteli az UbuntuServer egy bizonyos verziójának használatát a virtuális gépektől. |
+| [Virtuális gép létrehozása felügyelt lemez használatával](scripts/use-managed-disk-vm.md) | Kezelt lemezek használatát követeli meg a virtuális gépektől.|
+|**Monitorozás**||
+| [Diagnosztikai beállítás naplózása](scripts/audit-diag-setting.md) | Naplózza, ha a diagnosztikai beállítások nincsenek engedélyezve a megadott erőforrástípusokhoz. Adjon meg egy erőforrástípus-tömböt, amelyhez ellenőrizni szeretné, hogy engedélyezve vannak-e a diagnosztikai beállítások. |
+|**Elnevezési és szövegkonvenciók**||
+| [Több névminta engedélyezése](scripts/allow-multiple-name-patterns.md) | Számos névminta egyike használatának engedélyezése az erőforrásokhoz. |
+| [Hasonló minta szükséges](scripts/enforce-like-pattern.md) | Az erőforrások neveinek meg kell felelnie egy minta hasonló feltételének. |
+| [Egyező minta szükséges](scripts/enforce-match-pattern.md) | Az erőforrások neveinek meg kell egyezniük az elnevezési mintával. |
+| [A címke és a minta egyezése szükséges](scripts/enforce-tag-match-pattern.md) | A címkék értékének igazodniuk kell valamely szövegmintához. |
 |**Hálózat**||
-| [Engedélyezett alkalmazás Gateway SKU-n](scripts/allowed-app-gate-sku.md) | Szükséges, hogy alkalmazásátjárót használja-e egy jóváhagyott Termékváltozat. Megadhatja a jóváhagyott termékváltozatok tömbjét. |
-| [Ha régió nem engedélyezett a hálózati figyelőt naplózása](scripts/net-watch-not-enabled.md) | Naplózási feladatok végrehajtását, ha a megadott régió nem engedélyezett a hálózati figyelőt. Megadhatja, hogy ellenőrizze, hogy engedélyezve van-e hálózati figyelőt a régió nevét. |
-| [Minden hálózati adapter által NSG X](scripts/nsg-on-nic.md) | Megköveteli, hogy egy adott hálózati biztonsági csoportot használt minden virtuális hálózati adapteren. Megadhatja a hálózati biztonsági csoport azonosítója. |
-| [NSG X minden alhálózaton](scripts/nsg-on-subnet.md) | Megköveteli, hogy egy adott hálózati biztonsági csoportot minden virtuális alhálózatban használt. Megadhatja a hálózati biztonsági csoport azonosítója. |
-| [Engedélyezett Express Route sávszélesség](scripts/allowed-er-band.md) | Megköveteli, hogy a kifejezett útvonalakat sávszélesség megadott készletének használata. Megadja az Express Route megadható termékváltozatok tömbjét. |
-| [Engedélyezett az Express Route társviszony-létesítési helye](scripts/allowed-peering-er.md) | Megköveteli, hogy az Express útvonalak használata megadva társviszony-létesítési helyek. Megadja az engedélyezett társviszony-létesítési helyek tömbjét. |
-| [Engedélyezett Expressroute termékváltozatok](scripts/allowed-er-skus.md) | Verziójához egy jóváhagyott Termékváltozata Express útvonalakat használni. Megadja az engedélyezett termékváltozatok tömbjét. |
-| [Engedélyezett a Load Balancer termékváltozatok](scripts/allowed-lb-skus.md) | Szükséges, hogy a terheléselosztó egy jóváhagyott SKU használja. Megadja az engedélyezett termékváltozatok tömbjét. |
-| [Egyetlen hálózathoz sem társviszony-létesítést úgy ER hálózati](scripts/no-peering-er-net.md) | Ez a beállítás letiltja a társítás hálózathoz megadott erőforráscsoport-társviszony létesítése – hálózati. Amellyel meggátolhatja, központi felügyelt hálózati infrastruktúra-kapcsolatot. Megadhatja a társítás megelőzése érdekében az erőforráscsoport nevét. |
-| [Nincs felhasználó által megadott útvonal tábla](scripts/no-user-def-route-table.md)  |Megakadályozza, hogy a virtuális hálózatok üzembe helyezéséhez egy felhasználó által definiált útválasztási táblázathoz. |
-| [Engedélyezett a virtuális hálózati átjáró-termékváltozat](scripts/allowed-vn-gate-sku.md) | Megköveteli, hogy a virtuális hálózati átjárók egy jóváhagyott SKU és átjáró típusú használja. Megadhatja a jóváhagyott termékváltozatok tömbje és jóváhagyott átjáró típusok egy tömbjét. |
-| [Virtuális gép hálózati adapterek használatát a jóváhagyott IP-alhálózatot](scripts/use-approved-subnet-vm-nics.md) | Szükséges, hogy a hálózati adapterek egy jóváhagyott alhálózat használja. Megadja a jóváhagyott alhálózati Azonosítóját. |
-| [Jóváhagyott vNet használja a virtuális gép hálózati illesztő](scripts/use-approved-vnet-vm-nics.md) | Megköveteli, hogy a hálózati adapterek jóváhagyott virtuális hálózat használata. Megadja a jóváhagyott virtuális hálózat Azonosítójává. |
+| [Engedélyezett Application Gateway termékváltozatok](scripts/allowed-app-gate-sku.md) | Ehhez az alkalmazásátjáróknak jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy jóváhagyott termékváltozatokat tartalmazó tömböt. |
+| [Naplózás, ha a Network Watcher nincs engedélyezve egy régióban](scripts/net-watch-not-enabled.md) | Naplót készít, ha a Network Watcher nincs engedélyezve egy adott régióban. Megadhatja a régió nevét annak ellenőrzéséhez, hogy a Network Watcher engedélyezve van-e. |
+| [NSG X minden hálózati adapteren](scripts/nsg-on-nic.md) | Előírja, hogy minden virtuális hálózati adapterhez egy adott hálózati biztonsági csoportot kell használni. A használandó hálózati biztonsági csoport azonosítóját Ön határozza meg. |
+| [NSG X minden alhálózaton](scripts/nsg-on-subnet.md) | Előírja, hogy minden virtuális alhálózathoz egy adott hálózati biztonsági csoportot kell használni. A használandó hálózati biztonsági csoport azonosítóját Ön határozza meg. |
+| [Engedélyezett Express Route-sávszélesség](scripts/allowed-er-band.md) | Ehhez az Express Route-útvonalaknak adott sávszélességet kell használniuk. Meg kell adnia egy tömböt, mely tartalmazza az Express Route-útvonalakhoz használható termékváltozatokat. |
+| [Engedélyezett társviszony-létesítési helyek Express Route-útvonalakhoz](scripts/allowed-peering-er.md) | Ehhez az Express Route-útvonalaknak a megadott társviszony-létesítési helyeket kell használnia. Meg kell adnia egy engedélyezett társviszony-létesítési helyeket tartalmazó tömböt. |
+| [Engedélyezett termékváltozatok Express Route-útvonalakhoz](scripts/allowed-er-skus.md) | Ehhez az Express Route-útvonalaknak egy jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy engedélyezett termékváltozatokat tartalmazó tömböt. |
+| [Engedélyezett termékváltozatok terheléselosztókhoz](scripts/allowed-lb-skus.md) | Ehhez a terheléselosztóknak egy jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy engedélyezett termékváltozatokat tartalmazó tömböt. |
+| [Hálózati társviszony tiltása egy erőforráscsoportban lévő hálózatban](scripts/no-peering-er-net.md) | Megtiltja hálózati társviszony társítását egy megadott erőforráscsoportban lévő hálózattal. Segít meggátolni a központi felügyelt hálózati infrastruktúrához való kapcsolódást. Meg kell adnia annak az erőforráscsoportnak a nevét, amelyben meg kívánja gátolni a társítást. |
+| [Felhasználó által megadott útválasztási táblázatok tiltása](scripts/no-user-def-route-table.md)  |Megtiltja a virtuális hálózatok felhasználó által megadott útválasztási táblázattal való üzembe helyezését. |
+| [Engedélyezett termékváltozatok virtuális hálózati átjárókhoz](scripts/allowed-vn-gate-sku.md) | Ehhez a virtuális hálózati átjáróknak egy jóváhagyott termékváltozatot és átjárótípust kell használniuk. Meg kell adnia a jóváhagyott termékváltozatok tömbjét és a jóváhagyott átjárótípusok tömbjét. |
+| [Jóváhagyott alhálózat használata a virtuális gépek hálózati adaptereihez](scripts/use-approved-subnet-vm-nics.md) | Előírja, hogy a hálózati adaptereknek egy jóváhagyott alhálózatot kell használniuk. A jóváhagyott alhálózat azonosítóját Ön határozza meg. |
+| [Jóváhagyott virtuális hálózat használata a virtuális gépek hálózati adaptereihez](scripts/use-approved-vnet-vm-nics.md) | Előírja, hogy a hálózati adaptereknek egy jóváhagyott virtuális hálózatot kell használniuk. A jóváhagyott virtuális hálózat azonosítóját Ön határozza meg. |
 |**Címkék**||
-| [Számlázási címkék házirend kezdeményezés](scripts/billing-tags-policy-init.md) | Költség center és a termék nevét megadott kód paraméterértékek szükségesek. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.  |
-| [Címke és az értékét az erőforráscsoportokkal](scripts/enforce-tag-rg.md) | Címke és erőforráscsoport érték szükséges. Megadhatja a szükséges címke nevét és értékét.  |
+| [Számlázási címkék szabályzatának kezdeményezése](scripts/billing-tags-policy-init.md) | A költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.  |
+| [Címke és a hozzá tartozó érték kényszerítése erőforráscsoportok esetében](scripts/enforce-tag-rg.md) | Címke és érték szükséges az erőforráscsoportokhoz. Ön adja meg a kötelező címkenevet és -értéket.  |
 |**SQL**||
-| [SQL-adatbázis szintjét naplózási naplózása](scripts/audit-sql-db-audit-setting.md) | SQL-adatbázis naplózási beállításainak eseményeket, ha ezek a beállítások nem egyezik a megadott értéket. Adjon meg egy értéket, amely jelzi, hogy naplózási beállításai engedélyezve legyen-e vagy le van tiltva.  |
-| [Naplózási átlátható titkosítási állapot](scripts/audit-trans-data-enc-status.md) | SQL adatbázis átlátható adattitkosítás eseményeket, ha engedélyezve van.  |
-| [Naplózási DB szintű fenyegetések észlelése beállítás](scripts/audit-db-threat-det-setting.md) | SQL-adatbázis biztonsági riasztási házirendek eseményeket, ha ezek a házirendek nem meghatározott állapotú. Adjon meg egy értéket, amely jelzi, hogy fenyegetésészlelés engedélyezve vagy letiltva.  |
-| [SQL Server szint naplózási naplózása](scripts/audit-sql-ser-leve-audit-setting.md) | SQL server naplózási beállításai eseményeket, ha ezek a beállítások nem egyezik a megadott értéket. Adjon meg egy értéket, amely jelzi, hogy naplózási beállításai engedélyezve legyen-e vagy le van tiltva. |
-| [Naplózási szint fenyegetések észlelése beállítást](scripts/audit-sql-ser-threat-det-setting.md) | SQL-adatbázis biztonsági riasztási házirendek eseményeket, ha ezek a házirendek nem meghatározott állapotú. Adjon meg egy értéket, amely jelzi, hogy fenyegetésészlelés engedélyezve vagy letiltva.  |
-| [Azure Active Directory-rendszergazda nélkül naplózása](scripts/audit-no-aad-admin.md) | Ha az SQL-kiszolgáló nem Azure Active Directory rendszergazdája naplózási. |
-| [SQL DB termékváltozatok engedélyezett](scripts/allowed-sql-db-skus.md) | Szükséges SQL-adatbázisok használata egy jóváhagyott Termékváltozat. Megadja az engedélyezett SKU-azonosítók tömbje vagy engedélyezett SKU nevének tömbjét. |
+| [SQL-adatbázisszintű naplózási beállítás naplózása](scripts/audit-sql-db-audit-setting.md) | Naplózza az SQL-adatbázis naplózási beállításait, ha a beállítások eltérnek a megadott beállítástól. Meg kell adnia egy értéket annak meghatározásához, hogy a naplózási beállításnak engedélyezett vagy letiltott állapotúnak kell-e lennie.  |
+| [Transzparens adattitkosítás állapotának naplózása](scripts/audit-trans-data-enc-status.md) | Naplózza, ha az SQL-adatbázis transzparens adattitkosítása nincs engedélyezve.  |
+| [Adatbázisszintű fenyegetésészlelési beállítás naplózása](scripts/audit-db-threat-det-setting.md) | Naplózza az SQL-adatbázis biztonsági riasztási szabályzatait, ha a szabályzatok nem a megadott állapotra vannak beállítva. Meg kell adnia egy értéket annak meghatározásához, hogy a fenyegetésészlelésnek engedélyezett vagy letiltott állapotúnak kell-e lennie.  |
+| [SQL-kiszolgálói szintű naplózási beállítások naplózása](scripts/audit-sql-ser-leve-audit-setting.md) | Naplózza az SQL-kiszolgáló naplózási beállításait, ha a beállítások eltérnek a megadott beállítástól. Meg kell adnia egy értéket annak meghatározásához, hogy a naplózási beállításnak engedélyezett vagy letiltott állapotúnak kell-e lennie. |
+| [Kiszolgálószintű fenyegetésészlelési beállítás naplózása](scripts/audit-sql-ser-threat-det-setting.md) | Naplózza az SQL-adatbázis biztonsági riasztási szabályzatait, ha a szabályzatok nem a megadott állapotra vannak beállítva. Meg kell adnia egy értéket annak meghatározásához, hogy a fenyegetésészlelésnek engedélyezett vagy letiltott állapotúnak kell-e lennie.  |
+| [Azure Active Directory-rendszergazda hiányának naplózása](scripts/audit-no-aad-admin.md) | Naplózza, ha nincs Azure Active Directory-rendszergazda hozzárendelve az SQL-kiszolgálóhoz. |
+| [Engedélyezett termékváltozatok SQL-adatbázisokhoz](scripts/allowed-sql-db-skus.md) | Ehhez az SQL-adatbázisoknak egy jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy engedélyezett termékváltozat-azonosítókat tartalmazó tömböt vagy egy engedélyezett termékváltozat-neveket tartalmazó tömböt. |
 |**Storage**||
-| [A Storage-fiókok és a virtuális gépek engedélyezett termékváltozatok](scripts/allowed-skus-storage.md) | Verziójához jóváhagyott termékváltozatok storage-fiókok és a virtuális gépek használni. Beépített házirendet használja, hogy jóvá SKU. Megadhatja, hogy engedélyezett virtuális gépek termékváltozatok tömbje és jóváhagyott tárfiók termékváltozatok tömbjét. |
-| [Ellenőrizze a tárfiók csak a https-forgalom](scripts/ensure-https-stor-acct.md) | Storage-fiókok használatához a HTTPS-forgalmat igényel.  |
-| [Storage-fiókok rétegezéséhez ritkán használt adatok elérésének megtagadása](scripts/deny-cool-access-tiering.md) | Ez a beállítás letiltja a ritkán használt adatok hozzáférési tárolótömbökhöz blob storage-fiókok használatát.  |
-| [Ellenőrizze a tárolási fájlok titkosítását](scripts/ensure-store-file-enc.md) | Megköveteli, hogy a fájl titkosítás engedélyezve van a storage-fiókok.  |
-|**Beépített házirend**||
-| [Engedélyezett helyek](scripts/allowed-locs.md) | Megköveteli, hogy az összes erőforrás telepítve vannak-e a jóváhagyott helyekre. Megadja az engedélyezett helyek tömb.  |
-| [Engedélyezett erőforrástípusok](scripts/allowed-res-types.md) | Biztosítja, hogy csak a jóváhagyott erőforrástípusok vannak telepítve. Megadja az engedélyezett típusok egy tömbjét.  |
-| [A tárfiók termékváltozatok engedélyezett](scripts/allowed-stor-acct-skus.md) | Megköveteli, hogy a storage-fiókok egy jóváhagyott SKU használja. Megadhatja a jóváhagyott termékváltozatok tömbjét. |
-| [Alkalmazza a címke és az alapértelmezett értékre](scripts/apply-tag-def-val.md) | Hozzáfűz egy megadott tag nevét és értékét, ha a címke nem áll rendelkezésre. Megadhatja a címke nevét és az érték érvényes.  |
-| [SQL adatbázis-titkosítás naplózása](scripts/sql-database-encryption-audit.md) | Ha az SQL-adatbázis nem rendelkezik engedélyezett átlátható adattitkosítás eseményeket. |
-| [Naplózási SQL Server naplózási beállítások](scripts/sql-server-audit.md) | Naplózás SQL server e engedélyezve vannak-e a naplózási beállítások alapján. |
-| [Data Lake Store titkosításának kényszerítése](scripts/enforce-datalakestore-encryption.md) | Minden Data Lake Store-fiókok, amelyek nem rendelkeznek engedélyezhető a titkosítás megtagadja. |
-| [Címke és annak értéke](scripts/enforce-tag-val.md) | Egy megadott tag neve és értéke szükséges. Megadhatja a címke nevét és értékét érvényesítését.  |
-| [Nem engedélyezett típusú erőforrások](scripts/not-allowed-res-type.md) | Ez a beállítás letiltja a megadott erőforrás típusú központi telepítés. Megadhat letilthatja az erőforrástípusok tömbjét.  |
-| [SQL Server verziója 12.0 megkövetelése](scripts/req-sql-12.md) | Szükséges SQL-kiszolgálók 12.0 verzióját használja.  |
-| [Tárolási fiók titkosításának kötelezővé tétele](scripts/req-store-acct-enc.md) | A tárolási fiók használata blob-titkosítást igényel.  |
+| [Tárfiókok és virtuális gépek engedélyezett termékváltozatai](scripts/allowed-skus-storage.md) | Ehhez a tárfiókoknak és a virtuális gépeknek engedélyezett termékváltozatokat kell használniuk. Beépített szabályzatok használatával biztosítja az engedélyezett termékváltozatok alkalmazását. Megadhatja az engedélyezett virtuálisgép-termékváltozatok és az engedélyezett tárfiók-termékváltozatok tömbjét. |
+| [HTTPS-adatforgalom kényszerítése a tárfiókok számára](scripts/ensure-https-stor-acct.md) | Ehhez a tárfiókoknak HTTPS-forgalmat kell használniuk.  |
+| [A ritkán használt adatok hozzáférési szintje használatának tiltása a tárfiókok számára](scripts/deny-cool-access-tiering.md) | Megtiltja a ritkán használt adatok hozzáférési szintjének használatát a Blob Storage-fiókokban.  |
+| [Fájltitkosítás megkövetelése a tárfiókokban](scripts/ensure-store-file-enc.md) | Megköveteli a fájltitkosítás engedélyezését a tárfiókokban.  |
+|**Beépített szabályzat**||
+| [Engedélyezett helyek](scripts/allowed-locs.md) | Előírja, hogy az erőforrások kizárólag az engedélyezett helyeken helyezhetők üzembe. Az engedélyezett helyek tömbjét Ön határozza meg.  |
+| [Engedélyezett erőforrástípusok](scripts/allowed-res-types.md) | Biztosítja, hogy kizárólag a jóváhagyott erőforrástípusok legyenek üzembe helyezve. Az engedélyezett erőforrástípusok tömbjét Ön határozza meg.  |
+| [Engedélyezett tárfiók-termékváltozatok](scripts/allowed-stor-acct-skus.md) | Ehhez a tárfiókoknak jóváhagyott termékváltozatot kell használniuk. Meg kell adnia egy jóváhagyott termékváltozatokat tartalmazó tömböt. |
+| [Címke és a címke alapértelmezett értékének alkalmazása](scripts/apply-tag-def-val.md) | Hozzáadja a megadott címkenevet és -értéket, ha a címke nincs megadva. Az alkalmazandó címkenevet és -értéket Ön határozza meg.  |
+| [SQL Database-adatbázis titkosításának naplózása](scripts/sql-database-encryption-audit.md) | Naplózza, ha az SQL Database-adatbázisban nincs engedélyezve a transzparens adattitkosítás. |
+| [SQL-kiszolgáló naplózási beállításainak naplózása](scripts/sql-server-audit.md) | Az alapján naplózza az SQL-kiszolgálót, hogy engedélyezve vannak-e rajta a naplózási beállítások. |
+| [Data Lake Store-titkosítás megkövetelése](scripts/enforce-datalakestore-encryption.md) | Elutasít minden olyan Data Lake Store-fiókot, ahol nincs engedélyezve a titkosítás. |
+| [Címke és a hozzá tartozó érték kényszerítése](scripts/enforce-tag-val.md) | Kötelező megadni hozzá a címkenevet és -értéket. Ön adja meg a kikényszerítendő címkenevet és -értéket.  |
+| [Nem engedélyezett erőforrástípusok](scripts/not-allowed-res-type.md) | Megakadályozza a megadott erőforrástípusok üzembe helyezését. A letiltandó erőforrástípusok tömbjét Ön határozza meg.  |
+| [Az SQL Server 12.0-s verziójának megkövetelése](scripts/req-sql-12.md) | Megköveteli, hogy az SQL-kiszolgálók a 12.0-s verziót használják.  |
+| [Tárfiók-titkosítás megkövetelése](scripts/req-store-acct-enc.md) | Megköveteli, hogy a tárfiók blobtitkosítást használjon.  |
