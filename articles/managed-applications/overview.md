@@ -1,75 +1,76 @@
 ---
-title: A kezelt alkalmazások Azure áttekintése |} Microsoft Docs
-description: A fogalmakat ismerteti az Azure által felügyelt alkalmazások
+title: Az Azure Managed Applications áttekintése | Microsoft Docs
+description: Az Azure Managed Applications fogalmainak ismertetése
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304997"
 ---
-# <a name="azure-managed-applications-overview"></a>Az Azure által felügyelt alkalmazások áttekintése
+# <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
-Azure kezelt alkalmazások lehetővé teszik a fogyasztók üzembe helyezéséhez és üzemeltetéséhez könnyen felhő-megoldásokat nyújtsanak. Az infrastruktúra implementálása, és adja meg a folyamatban lévő támogatási. Felszabadításához kezelt alkalmazás az összes ügyfél számára tegye közzé az Azure piactéren. Tegye elérhetővé a szervezeti felhasználók, tegye közzé azt egy belső katalógust. 
+Az Azure Managed Applications segítségével az ügyfelek által könnyedén üzembe helyezhető és üzemeltethető felhőalapú megoldások tehetők elérhetővé. Az Ön feladata az infrastruktúra implementálása és a folyamatos támogatás biztosítása. Ha egy felügyelt alkalmazást minden ügyfél számára elérhetővé kíván tenni, tegye közzé az Azure Marketplace-en. Ha csak a saját vállalatán belüli felhasználók számára kívánja elérhetővé tenni, tegye közzé egy belső katalógusban. 
 
-Kezelt alkalmazás hasonlít a piactéren, és egy fő különbség a megoldássablon. A kezelt alkalmazás az erőforrások létrehozni, hogy az alkalmazás kiadójának által kezelt erőforráscsoport. Az erőforráscsoport a fogyasztó előfizetésben, de a közzétevő-bérlőben identitás hozzáfér az erőforráscsoportot. A közzétevő megadja a megoldás folyamatban lévő támogatási költsége.
+A felügyelt alkalmazások sokban hasonlítanak a Marketplace megoldássablonjaihoz, egy fontos különbséget leszámítva. A felügyelt alkalmazások esetében az erőforrások létrehozása egy erőforráscsoportban történik, amelyet az alkalmazás közzétevője felügyel. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. A megoldás folyamatos támogatásának költségeit a közzétevő határozza meg.
 
-## <a name="advantages-of-managed-applications"></a>Felügyelt alkalmazások előnyei
+## <a name="advantages-of-managed-applications"></a>A felügyelt alkalmazások előnyei
 
-Felügyelt alkalmazások korlátok csökkentheti a fogyasztók számára a megoldások segítségével. Nincs szükségük a megoldást kíván használni a felhőalapú infrastruktúrában szakértői. A fogyasztók a fontos erőforrásokhoz való hozzáférés korlátozott. Ezeket nem kell foglalkoznia így hiba, ha azt kezelése. 
+A felügyelt alkalmazások csökkentik a megoldások ügyfeleire vonatkozó korlátozásokat. A megoldásoknak nem alapfeltétele a felhőinfrastruktúrák használatában való jártasság. Az ügyfelek korlátozott hozzáféréssel rendelkeznek a kritikus erőforrásokhoz. Nem kell aggódniuk a felügyelet során vétett esetleges hibák miatt. 
 
-Kezelt alkalmazások lehetővé teszik a felhasználók létrehozni a folyamatos kapcsolatot jelent. Megadhatja az alkalmazás kezelése feltételei, és díjak megfizetése Azure számlázás keresztül történik.
+A felügyelt alkalmazásokkal folyamatos kapcsolatot tarthat fenn az ügyfelekkel. Ön határozhatja meg az alkalmazás felügyeletének feltételeit, a díjak kifizetése pedig az Azure számlázási rendszerén keresztül történik.
 
-Bár az ügyfelek ezeket az előfizetéseket a kezelt alkalmazások telepítéséhez, karbantartásához, frissítéséhez vagy szolgáltatás őket nincs. Biztosíthatja, hogy minden használják az ügyfelek a jóváhagyott verziók. Az ügyfelek nem rendelkezik a fejlesztéséhez és alkalmazásspecifikus tartomány Tudásbázis ezeket az alkalmazásokat kezeléséhez. Az ügyfelek automatikusan megszerezze alkalmazást nem kell foglalkoznia a hibaelhárítás és az alkalmazásokkal kapcsolatos problémák diagnosztizálásához. 
+Habár az ügyfelek saját maguk telepítik az előfizetésükhöz tartozó felügyelt alkalmazásokat, de a karbantartással, frissítéssel és javítással nem kell foglalkozniuk. Garantálható, hogy mindig minden ügyfél a jóváhagyott verziót használja. Az ügyfeleknek nem kell alkalmazásspecifikus tartományi ismeretekkel rendelkezniük az alkalmazások felügyeletéhez. Az ügyfelek automatikusan megkapják az alkalmazások frissítéseit, és nem kell foglalkozniuk az esetleges hibák keresésével vagy diagnosztizálásával. 
 
-Az informatikai csapata hozza létre a kezelt alkalmazások lehetővé teszik előre jóváhagyott-megoldásokat nyújtsanak a szervezetben lévő felhasználók részére. Biztosíthatja, hogy ezek a megoldások amelyek megfelelnek a vállalati szabványoknak.
+A felügyelt alkalmazások lehetővé teszik, hogy az informatikai részleg előre jóváhagyott megoldásokat nyújtson a vállalat felhasználói számára. Ezáltal biztosítható, hogy a megoldások megfeleljenek a vállalati szabványoknak.
 
-## <a name="types-of-managed-applications"></a>Felügyelt alkalmazások
+## <a name="types-of-managed-applications"></a>A felügyelt alkalmazások típusai
 
-A felügyelt alkalmazást is közzétehet, külső vagy belső.
+A felügyelt alkalmazások közzétehetők külsőleg vagy belsőleg.
 
-![Belső vagy külső közzététele](./media/overview/manage_app_options.png)
+![Külső vagy belső közzététel](./media/overview/manage_app_options.png)
 
-### <a name="service-catalog"></a>szolgáltatáskatalógus
+### <a name="service-catalog"></a>Szolgáltatáskatalógus
 
-A szolgáltatáskatalógus olyan egy belső katalógust a szervezet felhasználói jóváhagyott megoldások. A katalógus segítségével biztosítsa az egyes szervezeti szabványok során ezek a megoldások biztosít a szervezetek számára. Az alkalmazottak a katalógus segítségével könnyen felfedezheti az alkalmazásokat, amelyek az informatikai részleg által jóváhagyott és ajánlott széles skáláját. Akkor jelenik meg a kezelt alkalmazások, amelyek a szervezet más munkatársainak velük.
+A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, amelyeket egy vállalat jóváhagy a felhasználói számára. A katalógus segítségével biztosítható, hogy a vállalat számára elérhető megoldások megfeleljenek bizonyos vállalati szabványoknak. Az alkalmazottak a katalógussal könnyen felfedezhetik az informatikai részleg által jóváhagyott és ajánlott alkalmazások széles kínálatát. Láthatják, hogy a vállalat más dolgozói milyen felügyelt alkalmazásokat osztottak meg velük.
 
-További információ a szolgáltatáskatalógus kezelt alkalmazás közzététele: [katalógus szolgáltatásalkalmazás létrehozása](publish-service-catalog-app.md).
+A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban lásd a [szolgáltatáskatalógusban elérhető alkalmazások létrehozását](publish-service-catalog-app.md) ismertető témakört.
 
 ### <a name="marketplace"></a>Piactér
 
-A szolgáltatások számlázási kívánó szállítók elérhetővé teheti a kezelt alkalmazás az Azure piactéren keresztül. Miután a szállító közzétesz egy alkalmazást, érhető el a szervezeten kívüli felhasználók számára. A megközelítést, a felügyelt szolgáltató (MSPs), a független szoftvergyártók (ISV-k) és a rendszer kiegészítők (SIs) is a megoldásokat nyújtsanak az összes Azure-ügyfél számára.
+A szolgáltatásaikat értékesíteni kívánó szállítók a felügyelt alkalmazásokat elérhetővé tehetik az Azure Marketplace-en. Miután a szállító közzétesz egy alkalmazást, az elérhetővé válik a vállalaton kívüli felhasználók számára. Ezzel a módszerrel a felügyelt szolgáltatások szolgáltatói (MSP-k), a független szoftverszállítók (ISV-k) és a rendszerintegrátorok (SI-k) minden Azure-ügyfél számára felkínálhatják a megoldásaikat.
 
-További információ a piactéren kezelt alkalmazás közzététele: [piactér-alkalmazás létrehozása](publish-marketplace-app.md).
+A felügyelt alkalmazások Azure Marketplace-en való közzétételével kapcsolatban lásd a [Marketplace-alkalmazás létrehozását](publish-marketplace-app.md) ismertető témakört.
 
-## <a name="resource-groups-for-managed-applications"></a>Erőforráscsoportok kezelt alkalmazások
+## <a name="resource-groups-for-managed-applications"></a>Felügyelt alkalmazások erőforráscsoportjai
 
-A kezelt alkalmazás erőforrásait általában két erőforráscsoport találhatók. A fogyasztó egy erőforráscsoport, valamint kezelésére a közzétevő a másik erőforráscsoportban. A kezelt alkalmazás meghatározásakor a közzétevő a hozzáférési szintet határozza meg. A következő kép bemutatja egy olyan forgatókönyvet, ahol a közzétevő kéri a tulajdonosi szerepkört, a felügyelt erőforráscsoport. A közzétevő Ez az erőforráscsoport a fogyasztó számára olvasási zárolást helyezni. A közzétevő-azonosságok, amelyek hozzáférést kapnak a felügyelt erőforráscsoporthoz nem érvényes a zárolás.
+A felügyelt alkalmazások erőforrásai általában két erőforráscsoportban találhatók. Ezek közül egyet az ügyfél kezel, a másikat pedig a közzétevő felügyeli. A felügyelt alkalmazás meghatározásakor a közzétevő határozza meg a hozzáférési szinteket. Az alábbi képen egy olyan forgatókönyv látható, ahol a közzétevő a felügyelt erőforráscsoport tulajdonosi szerepkörét kéri. A közzétevő az ügyfél számára csak olvashatóvá tette az erőforráscsoportot. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
 
-![Erőforrás csoport hozzáférése](./media/overview/access.png)
+![Hozzáférés az erőforráscsoporthoz](./media/overview/access.png)
 
-### <a name="application-resource-group"></a>Alkalmazás erőforráscsoport
+### <a name="application-resource-group"></a>Alkalmazás erőforráscsoportja
 
-Ez az erőforráscsoport tárolja a kezelt alkalmazás-példány. Ez az erőforráscsoport neve csak tartalmazhat egy erőforrást. Az erőforrás típusa a kezelt alkalmazás **Microsoft.Solutions/applications**.
+Ez az erőforrás tartalmazza a felügyelt alkalmazás példányát. Ez az erőforrás csak egy erőforrást tartalmazhat. A felügyelt alkalmazás erőforrástípusa: **Microsoft.Solutions/applications**.
 
-A fogyasztó az erőforráscsoport teljes hozzáféréssel rendelkezik, és használja a kezelt alkalmazás életciklusának kezelését.
+Az ügyfél teljes hozzáféréssel rendelkezik az erőforráscsoporthoz, így kezelni tudja a felügyelt alkalmazás életciklusát.
 
-### <a name="managed-resource-group"></a>Felügyelt erőforráscsoport
+### <a name="managed-resource-group"></a>Felügyelt erőforráscsoportok
 
-Ez az erőforráscsoport tárolja a kezelt alkalmazás által igényelt összes erőforrást. Például az erőforráscsoport a virtuális gépeket, a storage-fiókok és a virtuális hálózatok a megoldáshoz. A fogyasztó csak korlátozott hozzáféréssel rendelkezik az erőforráscsoporthoz, mert az ügyfél nem tudja kezelni az egyéni erőforrásokat a felügyelt alkalmazás. Ez az erőforráscsoport a közzétevő eléréséhez a kezelt alkalmazás-definícióban meghatározott szerepkör felel meg. Például a közzétevő kérhetnek a tulajdonos vagy közreműködő szerepkört az erőforráscsoport.
+Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz.
 
-Ha a fogyasztó töröl a kezelt alkalmazás, a felügyelt erőforráscsoportot is törlődik.
+Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
 
 ## <a name="next-steps"></a>További lépések
 
-* Bevezető meghatározása, és a kezelt alkalmazás telepítése, lásd: [létrehozása és telepítése az Azure által felügyelt alkalmazás Azure parancssori felülettel](managed-apps-quickstart-cli.md)
-* További információ a belső alkalmazás közzététele: [katalógus szolgáltatásalkalmazás létrehozása](publish-service-catalog-app.md).
-* Felügyelt alkalmazások közzétételéhez a piactéren kapcsolatos információkért lásd: [piactér-alkalmazás létrehozása](publish-marketplace-app.md).
+* A felügyelt alkalmazások meghatározásával és üzembe helyezésével kapcsolatban lásd az [Azure-beli felügyelt alkalmazások az Azure CLI-vel történő létrehozását és üzembe helyezését](managed-apps-quickstart-cli.md) ismertető témakört.
+* A belső alkalmazások közzétételével kapcsolatban lásd a [szolgáltatáskatalógusban elérhető alkalmazások létrehozását](publish-service-catalog-app.md) ismertető témakört.
+* A felügyelt alkalmazások Marketplace-en való közzétételével kapcsolatos tudnivalókért tekintse meg a [Marketplace-alkalmazás létrehozásával kapcsolatos](publish-marketplace-app.md) témakört.

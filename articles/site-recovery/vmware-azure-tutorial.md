@@ -6,14 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 173e31e3b1f855d488f7f8baf6659b1521ea7aa5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2a96655c26e2df2534f420239b56ef0c3959319a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212874"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -35,7 +36,7 @@ Mielőtt nekikezdene, érdemes [áttekintenie, hogy léteznek-e az architektúr�
 
 ## <a name="select-a-replication-goal"></a>Replikációs cél kiválasztása
 
-1. A **Recovery Services-tárolók** listából válassza ki a **ContosoVMVault** nevű tárat.
+1. A **Helyreállítási tárak** listából válassza ki a tár nevét. Ehhez a forgatókönyvhöz a **ContosoVMVault** nevet használjuk.
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
 3. A **Védelmi cél** > **Hol találhatók a gépek?** területen válassza a **Helyszíni** lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
@@ -139,7 +140,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és válassza a **Minden erőforrás** elemet.
 2. Válassza ki a **ContosoVMVault** nevű helyreállítási tárat.
 3. A replikációs szabályzat létrehozásához válassza a **Site Recovery-infrastruktúra** > **Replikációs szabályzatok** > **+Replikációs szabályzat** elemet.
-4. A **Replikációs szabályzat létrehozása** területen adja meg a szabályzat nevét: **VMwareRepPolicy**.
+4. A **Replikációs szabályzat létrehozása** területen adja meg a szabályzat nevét. Ehhez a forgatókönyvhöz a **VMwareRepPolicy** nevet használjuk.
 5. A **Helyreállítási időkorlát küszöbértéke** beállításnál használja az alapértelmezett 60 percet. Ez az érték határozza meg, hogy milyen gyakran jönnek létre helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
 6. A **Helyreállítási pont megőrzése** beállításnál használja az alapértelmezett 24 óra értéket, ami azt mutatja, hogy a rendszer milyen hosszan őrzi meg az egyes helyreállítási pontokat. A jelen oktatóanyag elvégzéséhez érdemes 72 órát megadnia. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók.
 7. Az **Alkalmazáskonzisztens pillanatkép gyakorisága** beállításnál használja az alapértelmezett 60 perc értéket, az alkalmazáskonzisztens pillanatképek létrehozásának gyakoriságára. A szabályzat létrehozásához válassza az **OK** gombot.

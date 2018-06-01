@@ -1,21 +1,22 @@
 ---
-title: Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása az Azure Site Recovery használatával (előzetes verzió)
+title: Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása az Azure Site Recovery használatával
 description: Megismerheti, hogyan állíthatja be az Azure-beli virtuális gépek egy másik Azure-régióba történő vészhelyreállítását az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211667"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása (előzetes verzió)
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
@@ -27,6 +28,7 @@ Az oktatóanyag bemutatja, hogyan állíthat be vészhelyreállítást egy máso
 > * Virtuális gépek kimenő hozzáférésének beállítása.
 > * Virtuális gép replikálásának engedélyezése
 
+Az Azure-ból Azure-ba történő replikáció jelenleg előzetes verzióban érhető el.
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
@@ -109,7 +111,7 @@ További információ az [Azure beépített RBAC-szerepköreivel](../role-based-
 ### <a name="select-the-source"></a>Forrás kiválasztása
 
 1. A Recovery Services-tárolók között kattintson a tároló nevére, majd a **+Replikálás** elemre.
-2. A **Forrás** esetében válassza az **Azure – ELŐZETES VERZIÓ** lehetőséget.
+2. A **Forrás** beállításnál válassza az **Azure** értéket.
 3. A **Forrás helye** értékeként válassza ki azt az Azure-régiót, ahol az adott virtuális gépek éppen futnak.
 4. Válassza ki **az Azure-beli virtuális gép üzembe helyezési modelljét** a virtuális gépek számára: **Resource Manager-alapú** vagy **Klasszikus**.
 5. A Resource Managert használó virtuális gépek esetében válassza ki **a forrásként szolgáló erőforráscsoportot**, a klasszikus virtuális gépek esetében pedig a **felhőszolgáltatást**.
