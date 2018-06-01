@@ -12,14 +12,15 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e84580c4023be87ebfc1988c631af0b76e213987
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193951"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Az Azure Maps bemutatása
-Az Azure Maps olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. Az Azure OneAPI kompatibilis szolgáltatásainak portfóliója lehetővé teszi, hogy ismerős eszközökkel gyorsan fejlesszen és skálázzon olyan megoldásokat, amelyek helyadatokat tesznek elérhetővé az Azure-megoldásokban. Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik az egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
+Az Azure Maps olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. A szolgáltatásportfólió lehetővé teszi, hogy ismerős eszközökkel gyorsan fejlesszen és skálázzon olyan megoldásokat, amelyek helyadatokat biztosítanak az Azure-megoldásokban. Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik az egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
 
 A következő videó bemutatja az Azure Mapset:
 
@@ -87,7 +88,7 @@ A Microsoft célja ezzel az, hogy választási lehetőséget biztosítson a fejl
 | Forgatókönyv | Az Azure Maps használata ajánlott | A Bing Térképek használata ajánlott |
 | ------------- | ------------- | ------------- |
 | Fejlesztési környezet | Más Azure-szolgáltatásokban történő létrehozás vagy azok koordinálása | Külső felhő vagy más fejlesztői környezet használata |
-| Fejlesztési fázis  | Az Azure Maps jelenleg nyilvános előzetes verzióban érhető el, ezért a korai fázisú teszteléshez és megvalósíthatósági vizsgálatokhoz van optimalizálva. | Éles környezetben vállalati szintű SLA-ra van szükség |
+| Fejlesztési fázis  | Az Azure Maps a korai fázisú teszteléshez és megvalósíthatósági vizsgálatokhoz van optimalizálva. | Éles környezetben vállalati szintű SLA-ra van szükség |
 | Árképzési lehetőségek | Az előzetes fejlesztői árképzési lehetőségek elegendők | Testre szabott vállalati szintű árképzés szükséges |
 | Használati környezet | Járművön belüli használat szükséges | Nem szükséges járművön belüli használat |
 | Földrajzi lefedettség | India, Kína, Japán és Dél-Korea nem szükséges. | India, Kína, Japán és Dél-Korea térképes lefedettsége szükséges. |
