@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: a442b6c3c8e2b8a781ee54f41a2e0db5b44b7395
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1843e37d9baf1ab264db96109eb5ffd0704e35b7
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271289"
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Graph API-val .NET-keretrendszerben
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
@@ -168,13 +169,13 @@ foreach (KeyValuePair<string, string> gremlinQuery in gremlinQueries)
 
 ## <a name="add-vertices-and-edges"></a>Csúcsok és élek hozzáadása
 
-Most lássuk részletesebben az előző szakaszban bemutatott Gremlin-utasításokat. Először létrehozunk néhány csúcspontot a Gremlin `addV` metódusával. Az alábbi kódrészlet például létrehoz egy „Személy” típusú „Thomas Andersen” csúcspontot utónév, vezetéknév és életkor tulajdonságokkal.
+Most lássuk részletesebben az előző szakaszban bemutatott Gremlin-utasításokat. Először hozzáadunk néhány csúcspontot a Gremlin `addV` metódusával. Az alábbi kódrészlet például létrehoz egy „Személy” típusú „Thomas Andersen” csúcspontot utónév és életkor tulajdonságokkal.
 
 ```cs
 // Create a vertex
 IDocumentQuery<Vertex> createVertexQuery = client.CreateGremlinQuery<Vertex>(
     graphCollection, 
-    "g.addV('person').property('firstName', 'Thomas')");
+    "g.addV('person').property('firstName', 'Thomas').property('age', 44)");
 
 while (createVertexQuery.HasMoreResults)
 {
