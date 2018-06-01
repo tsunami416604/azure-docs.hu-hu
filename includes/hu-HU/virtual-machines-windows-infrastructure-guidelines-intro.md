@@ -1,2 +1,0 @@
-Ez a cikk biztosítja, hogy a kialakítási szempontokat és útmutatókkal együtt, hogy az alkalmazás-infrastruktúra az Azure-ban, egy szélesebb körű sorozat része. Is [tekintse meg a kiegészítő témakörök az adatsorozat](#next-steps). Gyorsan létrehozhat egy az Azure-ban fejlesztési/tesztelési környezetben, bár vannak további szempontok egy éles használatra kész, magas rendelkezésre állású, és a biztonságos környezetben végrehajtása során.
-

@@ -1,2 +1,0 @@
-Miután egy vagy több hálózati biztonsági csoportokkal (NSG-k) létrehozása, kell tudni lekérni az NSG-k, hozzáadása és eltávolítja a szabályok, szerkesztheti a meglévő szabályokat, társítása vagy leválasztani az NSG-k, és törölje az NSG-k. Ebből a cikkből megtudhatja hogyan hajthat végre ezen feladatok végrehajtását. Az NSG-k kezeléséhez, fontos tudni, hogy [NSG-ket működése](../articles/virtual-network/virtual-networks-nsg.md). 
-
