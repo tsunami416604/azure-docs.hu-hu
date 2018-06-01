@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192955"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal.  Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat.
@@ -56,7 +57,7 @@ A használati feltételek véglegesítése után a hozzáadáshoz kövesse a kö
 4. Adja meg a **megjelenítendő nevet**.  A felhasználók a fejlécet látják bejelentkezéskor.
 5. A **Tallózás** lehetőséggel keresse meg a véglegesített használati feltételeket tartalmazó pdf fájlt, és válassza ki.  Ajánlott betűméret: 24.
 6. **Válassza ki** a használati feltételek nyelvét.  A nyelvi beállítás lehetővé teszi, hogy több használati feltételt töltsön fel, különböző nyelveken.  A használati feltételek végfelhasználó által látott verziója a böngésző beállításaitól függ.
-7. Kapcsolja be vagy ki az **A felhasználóknak legyen kötelező a használati feltételek megtekintése** beállítást.  Ha bekapcsolja, a végfelhasználóknak meg kell tekinteniük a használati feltételeket, mielőtt elfogadhatnák őket.
+7. Kapcsolja be vagy ki az **A felhasználóknak legyen kötelező a használati feltételek megtekintése** beállítást.  Ha bekapcsolja ezt a beállítást, a végfelhasználóknak meg kell tekinteniük a használati feltételeket, mielőtt elfogadhatnák őket.
 8. A feltöltött használati feltételeket a legördülő menüből választott sablon vagy egy egyéni feltételes hozzáférési szabályzat segítségével **Kényszerítheti ki** a **Feltételes hozzáférés** szakaszban.  Az egyéni feltételes hozzáférési szabályzat részletes használati feltételek alkalmazását teszi lehetővé, amelyeket akár egy adott felhőalkalmazásra vagy felhasználói csoportra is leszűkíthet.  További információkért lásd a [feltételes hozzáférés konfigurálását bemutató részt](active-directory-conditional-access-best-practices.md)
 9. Kattintson a **Create** (Létrehozás) gombra.
 10. Ha egyéni feltételes hozzáférési sablont választott, akkor egy új képernyő jelenik meg, amelyen testre szabható a feltételes hozzáférési szabályzat.
@@ -119,6 +120,13 @@ A felhasználók áttekinthetik és láthatják az általuk elfogadott használa
 ![Esemény naplózása](media/active-directory-tou/tou13a.png)
 
 4.  Itt áttekintheti az elfogadott használati feltételeket. 
+
+## <a name="removing-users-from-an-active-terms-of-use"></a>Felhasználók eltávolítása aktív használati feltételekből
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
+
+Alapértelmezés szerint a törölt felhasználók 30 napig töröltek maradnak az Azure AD-ban, amely idő alatt szükség esetén egy rendszergazda visszaállíthatja őket.  A felhasználók 30 nap után véglegesen törlődnek.  Ezenkívül egy globális rendszergazda az Azure Active Directory portálon explicit módon [véglegesen törölhet egy közelmúltban törölt felhasználót](active-directory-users-restore.md) az időszak lejárta előtt.  Egy felhasználó végleges törlése után a felhasználó későbbi adatai el lesznek távolítva az aktív használati feltételekből.  A törölt felhasználókkal kapcsolatos naplózási információk az auditnaplóban maradnak.
+
 
 
 ## <a name="additional-information"></a>További információ
