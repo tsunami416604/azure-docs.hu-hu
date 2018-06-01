@@ -1,29 +1,30 @@
 ---
-title: Az Azure Event rács áttekintése
-description: Azure Event rács és a fogalmakat ismerteti.
+title: Azure Event Grid – áttekintés
+description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: overview
 ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303977"
 ---
-# <a name="an-introduction-to-azure-event-grid"></a>Azure Event rács bemutatása
+# <a name="an-introduction-to-azure-event-grid"></a>Az Azure Event Grid bemutatása
 
-Az Azure Event rács lehetővé teszi az architektúrák esemény-alapú alkalmazások. Az Azure-erőforrás szeretne előfizetni, és adja meg a eseménykezelő vagy az esemény küldése a WebHook végpont választja. Esemény rács rendelkezik beépített támogatása az Azure-szolgáltatások, például a tárolási BLOB és -erőforráscsoportok származó események. Esemény rács is rendelkeznek, alkalmazás és a külső események egyéni támogatása egyéni témakörök és egyéni webhookokkal használatával. 
+Az Azure Event Griddel könnyen létrehozhat eseményalapú architektúrával rendelkező alkalmazásokat. Kiválaszthatja azt az Azure-erőforrást, amelyre elő kíván fizetni, és megadhatja azt az eseménykezelőt vagy webhookvégpontot, amelyre el kívánja küldeni az eseményt. Az Event Grid beépített támogatást nyújt az Azure-szolgáltatásokból, például a tárolóblobokból és erőforráscsoportokból érkező eseményekhez. Ezenkívül az Event Grid egyéni témakörök és webhookok használatával egyéni támogatást nyújt az alkalmazásokhoz és külső eseményekhez. 
 
-Szűrők segítségével meghatározott események különböző végpontokhoz, több végpontot, csoportos küldéssel történő továbbításához, és győződjön meg arról, hogy az események megbízhatóan érkeznek. Esemény rács is rendelkezik beépített egyéni és külső események támogatása.
+Szűrők segítségével adott eseményeket irányíthat át különböző végpontokra, csoportos küldést végezhet több végpontra, és meggyőződhet róla, hogy az események megbízhatóan célba érnek. Az Event Grid beépített támogatást nyújt az egyéni és külső eseményekhez.
 
-Esemény rács jelenleg a következő régióban:
+Az Event Grid jelenleg az alábbi régiókat támogatja:
 
-* Ázsia óceáni térség délkeleti régiója
-* Ázsiai keleti régiója
+* Délkelet-Ázsia
+* Kelet-Ázsia
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
 * USA középső régiója
@@ -37,29 +38,29 @@ Esemény rács jelenleg a következő régióban:
 *   USA nyugati régiója
 *   USA nyugati régiója, 2.
 
-Ez a cikk áttekintést Azure esemény rács. Ha azt szeretné, esemény rács használatába, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md). A következő kép bemutatja, hogyan csatlakozzon az esemény rács a források és kezelők, de nem biztosít a támogatott beállítások átfogó listáját.
+Ez a cikk az Azure Event Gridről nyújt áttekintést. Az Event Grid használatának első lépései: [Egyéni események létrehozása és átirányítása az Azure Event Griddel](custom-event-quickstart.md). Az alábbi kép bemutatja, hogyan csatlakoztatja az Event Grid a forrásokat és a kezelőket, de a támogatott lehetőségek átfogó listáját nem tartalmazza.
 
-![Esemény rács működési modell](./media/overview/functional-model.png)
+![Az Event Grid funkcionális modellje](./media/overview/functional-model.png)
 
 ## <a name="event-sources"></a>Eseményforrások
 
-Jelenleg az Azure-szolgáltatásokat esemény rácshoz küldő események támogatják:
+Jelenleg az alábbi Azure-szolgáltatások támogatják az események Event Gridbe való küldését:
 
-* Azure-előfizetések (műveletek)
-* Egyéni kapcsolatos témakörök
+* Azure-előfizetések (kezelési műveletek)
+* Egyéni témakörök
 * Event Hubs
 * IoT Hub
 * Media Services
-* Erőforráscsoportok (műveletek)
+* Erőforráscsoportok (kezelési műveletek)
 * Service Bus
 * Storage Blob
-* Tárolási célú v2 (GPv2)
+* Általános célú v2- (GPv2-) tároló
 
-Hivatkozásokat minden eseményforrás használatát mutatják be, lásd: [eseményforrások Azure esemény rácsban](event-sources.md).
+Az egyes eseményforrások használatát bemutató cikkekre mutató hivatkozásokat itt találja: [Eseményforrások az Azure Event Gridben](event-sources.md).
 
-## <a name="event-handlers"></a>Az eseménykezelők
+## <a name="event-handlers"></a>Eseménykezelők
 
-Jelenleg az Azure-szolgáltatásokat kezelési események esemény rácsban támogatják: 
+Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből származó események kezelését: 
 
 * Azure Automation
 * Azure Functions
@@ -70,72 +71,72 @@ Jelenleg az Azure-szolgáltatásokat kezelési események esemény rácsban tám
 * Queue Storage
 * Webhookok
 
-Az Azure Functions kezelőként használjon az esemény rács eseményindító általános HTTP-eseményindítók helyett. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
+Ha az Azure Functionst használja kezelőként, használja az Event Grid-triggereket az általános HTTP-triggerek helyett. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
 
-Hivatkozásokat minden eseménykezelő használatát mutatják be, lásd: [eseménykezelők Azure esemény rácsban](event-handlers.md).
+Az egyes eseménykezelők használatát bemutató cikkekre mutató hivatkozásokat itt találja: [Eseménykezelők az Azure Event Gridben](event-handlers.md).
 
 ## <a name="concepts"></a>Alapelvek
 
-Nincsenek Azure esemény rács, amelyek lehetővé teszik az induláshoz öt fogalmak:
+Az Azure Event Grid öt fontos alapfogalma:
 
 * **Események** – Mi történt.
-* **Esemény források-közzétevők** – Ha az esemény történt.
-* **Témakörök** -a végpont, ahol közzétevők küldi az eseményeket.
-* **Esemény-előfizetések** -útvonal események, egyes esetekben több kezelők végpont vagy beépített mechanizmusa. Előfizetések is használják kezelők ezután a bejövő események szűréséhez.
-* **Az eseménykezelők** – az alkalmazás vagy szolgáltatás reagálnak az esemény.
+* **Eseményforrások / közzétevők** – Ahol az esemény történt.
+* **Témakörök** – A végpont, amelyre a közzétevők az eseményeket küldik.
+* **Esemény-előfizetések** – Végpont vagy beépített mechanizmus az események – néha több kezelőre történő – átirányításához. Az előfizetéseket a kezelők is használják a bejövő események intelligens szűrésére.
+* **Eseménykezelők** – Az eseményre reagáló alkalmazás vagy szolgáltatás.
 
-Ezek a fogalmak kapcsolatos további információkért lásd: [Azure esemény rácsban fogalmak](concepts.md).
+További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
 ## <a name="capabilities"></a>Funkciók
 
-Az alábbiakban néhány fő funkciója Azure esemény rács:
+Az Azure Event Grid néhány főbb jellemzője:
 
-* **Egyszerűség** -ponton, majd kattintson az e eseménykezelő vagy a végpont az Azure-erőforrás származó események célja.
-* **Speciális szűrési** -szűrőt a esemény típusa vagy esemény közzététele elérési út annak biztosítása érdekében az eseménykezelők csak megkapják a kapcsolódó eseményeket.
-* **Szétterítési** -előfizetés az összes olyan helyre, szükség esetén az esemény példánya küldendő ugyanarra az eseményre több végpontot.
-* **Megbízhatóság** -24 órás újra exponenciális leállítási biztosításához kézbesíti az eseményeket egy használják.
-* **Fizetési / esemény** - kell fizetnie, amennyit csak az összeg esemény rács használja.
-* **Magas teljesítmény** -esemény rács nagy munkaterhelések létrehozásához, támogatja a több millió esemény / másodperc.
-* **Beépített események** - létrehozásához, és gyorsan futtató beépített események erőforrás által definiált.
-* **Egyéni események** -esemény rács útvonal, szűrő és megbízhatóan kézbesítése egyéni események használja az alkalmazásban.
+* **Egyszerűség** – Egy kattintással irányíthatja az eseményeket az Azure-erőforrásából bármely eseménykezelőre vagy végpontra.
+* **Speciális szűrés** – Az eseménytípusra vagy az esemény közzétételi útvonalára is szűrhet, hogy az eseménykezelők csak a releváns eseményeket kapják meg.
+* **Elosztás** – Több végpontot is előfizethet ugyanarra az eseményre, hogy az esemény másolatait annyi helyre küldje el, amennyire szükséges.
+* **Megbízhatóság** – 24 órás újrapróbálkozást használhat exponenciális leállítással, hogy az események kézbesítése biztosan megtörténjen.
+* **Eseményenkénti fizetés** – Csak az Event Grid használatának mennyisége alapján kell fizetnie.
+* **Nagy teljesítmény** – Nagy kapacitású számítási feladatokat hozhat létre az Event Griden, amelyek események millióit támogatják másodpercenként.
+* **Beépített események** – Az erőforrások által meghatározott, beépített eseményekkel gyorsan munkához láthat.
+* **Egyéni események** – Az Event Griddel egyéni eseményeket irányíthat át, szűrhet és kézbesíthet megbízhatóan az alkalmazásában.
 
-Egy esemény rács, az Event Hubs és a Service Bus, lásd: [válasszon az Azure-szolgáltatásokat, hogy a üzenetek](compare-messaging-services.md).
+Az Event Grid, az Event Hubs és a Service Bus összehasonlítása: [Az üzenetkézbesítő Azure-szolgáltatás kiválasztása](compare-messaging-services.md).
 
-## <a name="what-can-i-do-with-event-grid"></a>Mi a teendő esemény rácshoz?
+## <a name="what-can-i-do-with-event-grid"></a>Mire használhatom az Event Gridet?
 
-Azure Event rács több képességeket kínál, amelyek jelentősen javítja a kiszolgáló nélküli, ops automatizálási és integrációs munkahelyi biztosít: 
+Az Azure Event Grid számos olyan funkciót kínál, amely nagymértékben javítja a kiszolgáló nélküli működést, a műveletek automatizálását és az integrációt: 
 
-### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazás-architektúrák
+### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazásarchitektúrák
 
-![Kiszolgáló nélküli alkalmazást](./media/overview/serverless_web_app.png)
+![Kiszolgáló nélküli alkalmazás](./media/overview/serverless_web_app.png)
 
-Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Az Event Grid használatával például azonnal aktiválható egy képelemzést futtató, kiszolgáló nélküli funkció, valahányszor új kép kerül egy Blob Storage-tárolóba. 
+Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Az Event Grid használatával például azonnal aktiválható egy képelemzést futtató, kiszolgáló nélküli függvény, amikor egy új fénykép kerül egy Blob Storage-tárolóba. 
 
-### <a name="ops-automation"></a>OPS automatizálás
+### <a name="ops-automation"></a>Műveletek automatizálása
 
 ![Műveletek automatizálása](./media/overview/Ops_automation.png)
 
-Az Event Grid lehetővé teszi az automatizálás felgyorsítását és a szabályzatok érvényesítésének egyszerűsítését. Az Event Grid értesítheti például az Azure Automation szolgáltatást, amikor egy virtuális gép létrejön vagy egy SQL Database működésbe lép. Ezek az események felhasználhatók a szolgáltatáskonfigurációk megfelelőségének automatikus ellenőrzésére, metaadatok műveleti eszközöknek való átadására, és virtuális gépek vagy munkatétel-fájlok címkézésére.
+Az Event Griddel felgyorsíthatja az automatizálást és egyszerűsítheti a szabályzatok kikényszerítését. Az Event Grid például értesíteni tudja az Azure Automationt, ha létrejön egy virtuális gép vagy egy SQL Database-adatbázis. Ezek az események felhasználhatók a szolgáltatáskonfigurációk megfelelőségének automatikus ellenőrzésére, a metaadatok műveleti eszközöknek való átadására, virtuális gépek címkézésére vagy a munkaelemek regisztrációjára.
 
-### <a name="application-integration"></a>Alkalmazásintegrálás
+### <a name="application-integration"></a>Alkalmazásintegráció
 
-![Alkalmazásintegrálás](./media/overview/app_integration.png)
+![Alkalmazásintegráció](./media/overview/app_integration.png)
 
-Az Event Grids más szolgáltatásokkal kapcsolja össze alkalmazását. Például hozzon létre egy egyéni témakör az alkalmazás esemény adatokat küldeni a rács esemény, és kihasználhatják a megbízható szállítási, speciális útválasztási, és közvetlen integráció az Azure-ral. Úgy is dönthet, hogy az Event Gridet a Logic Apps-szel együtt használ adatfeldolgozásra tetszőleges helyen, kód írása nélkül. 
+Az Event Grid más szolgáltatásokkal kapcsolja össze alkalmazását. Létrehozhat például egy egyéni témakört, hogy az alkalmazása eseményadatait az Event Gridbe küldje, és kihasználja az általa kínált megbízható kézbesítést, fejlett átirányítást és a közvetlen Azure-integrációt. Vagy az Event Gridet a Logic Appsszel együtt használhatja tetszőleges helyen, kód írása nélkül végzett adatfeldolgozásra. 
 
-## <a name="how-much-does-event-grid-cost"></a>Milyen mértékű nem költség esemény rács?
+## <a name="how-much-does-event-grid-cost"></a>Mennyibe kerül az Event Grid?
 
-Azure esemény rács fizetési / esemény árképzési modellt használ, így csak a valóban használt funkciókért fizet. Havonta az első 100 000 műveletek szabadon. Esemény érkező egyeznek, a kézbesítési kísérletek és a felügyeleti hívások speciális műveleteket is meg van adva. További információkért lásd: a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/event-grid/).
+Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fizetés a használat alapján történik. A havi első 100 000 művelet ingyenes. A műveletek a következőképpen vannak meghatározva: események bejövő forgalma, összetett párosítás, kézbesítési kísérlet, kezelési hívások. A részleteket lásd az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Útvonal tárolási Blob események](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
-  A blob storage-események válaszolni esemény rács használatával.
-* [Hozzon létre, és feliratkozhat a egyéni események](custom-event-quickstart.md)  
-  A jobb és a saját egyéni események küldése az Azure Event rács gyors üzembe helyezés bármely végpont start ugorhat.
-* [A Logic Apps használatával eseménykezelő](monitor-virtual-machine-changes-event-grid-logic-app.md)  
-  Logic Apps segítségével esemény rács által leküldött események reagálni az alkalmazás elkészítése az oktatóanyag.
+* [Storage Blob-események útválasztása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+  Az Event Grid használatával válaszolhat a Storage Blob-eseményekre.
+* [Egyéni események: létrehozás és előfizetés](custom-event-quickstart.md)  
+  Lásson azonnal munkához, és küldje el saját egyéni eseményeit egy végpontra az Azure Event Grid rövid útmutatója alapján.
+* [A Logic Apps használata eseménykezelőként](monitor-virtual-machine-changes-event-grid-logic-app.md)  
+  Ez az oktatóanyag bemutatja egy olyan alkalmazás létrehozását a Logic Appsszel, amely az Event Grid által leküldött eseményekre reagál.
 * [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md)  
-  Ez az oktatóanyag az Azure Functions segítségével adatfolyam adatokat az Event Hubs az SQL Data Warehouse.
-* [Esemény rács REST API-referencia](/rest/api/eventgrid)  
-  Esemény-előfizetések kezelése az Azure Event rács, valamint egy hivatkozást kapcsolatos további műszaki információkat biztosít az Útválasztás és a szűrés.
+  Ez az oktatóanyag az Azure Functions használatával streameli az adatokat az Event Hubsból az SQL Data Warehouse-ba.
+* [Event Grid REST API-referencia](/rest/api/eventgrid)  
+  Részletesebb műszaki információkat tartalmaz az Azure Event Griddel kapcsolatban, valamint referenciát az esemény-előfizetések kezeléséhez, átirányításához és szűréséhez.

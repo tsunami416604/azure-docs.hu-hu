@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207206"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rövid útmutató: .NET Service Fabric-alkalmazás létrehozása az Azure-ban
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál. 
@@ -109,6 +110,7 @@ Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a követk
     - Végül küldje vissza a választ a háttérszolgáltatásból az ügyfélhez **(3)**.
 
 4. A folytatáshoz nyomja le az **F5** billentyűt.
+    - Ha a böngésző kéri adjon olvasási és végrehajtási engedélyeket a ServiceFabricAllowedUsers csoportnak a hibakeresési módban.
     - Ezzel elérte a háttérszolgáltatás töréspontját.
     
     ![Szavazási háttérszolgáltatás hozzáadása](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
@@ -175,13 +177,15 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Alkalmazások és szolgáltatások méretezése a fürtökben
 A Service Fabric-szolgáltatások egy adott fürtben könnyedén méretezhetők, hogy igazodjanak a szolgáltatások terhelésének változásaihoz. A szolgáltatások méretezése a fürtben futó példányok számának módosításával történik. A szolgáltatások méretezésének többféle módja is van: használhat szkripteket, vagy a PowerShell, illetve a Service Fabric parancssori felület (sfctl) parancsait. Ebben a példában a Service Fabric Explorert használjuk.
 
-A Service Fabric Explorer az összes Service Fabric-fürtben fut. Eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+A Service Fabric Explorer az összes Service Fabric-fürtben fut. Eléréséhez egy böngészőben navigáljon az adott fürt HTTP-kezelési portjára (19080), például: `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 
-Előfordulhat, hogy a böngésző nem megbízhatóként jelzi a helyet. Ennek oka az, hogy a tanúsítvány önaláírt. Ezt akár figyelmen kívül is hagyhatja, és tovább léphet. Amikor a böngésző arra kéri, válassza ki a telepített tanúsítványt a csatlakozáshoz. 
+Előfordulhat, hogy a böngésző nem megbízhatóként jelzi a helyet. Ennek oka az, hogy a tanúsítvány önaláírt. Ezt akár figyelmen kívül is hagyhatja, és tovább léphet.
+1. Amikor a böngésző arra kéri, válassza ki a telepített tanúsítványt a csatlakozáshoz. A listából az elérni kívánt nyilvános fürthöz tartozó tanúsítványt kell kiválasztani. Például: win243uja6w62r.westus.cloudapp.azure.com.
+2. Ha a böngésző kéri, adjon hozzáférést a CryptoAPI titkos kulcsának erre a munkamenetre.
 
 A webes előtér-szolgáltatás méretezéséhez hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+1. Nyissa meg a Service Fabric Explorert a fürtben – például: `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 2. A fanézetben bontsa ki az **Applications**->**VotingType**->**fabric:/Voting** elemet. Kattintson a három pontra a fanézetben a **fabric:/Voting/VotingWeb** csomópont mellett, és válassza a **Scale Service** (Szolgáltatás méretezése) lehetőséget.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
