@@ -23,13 +23,12 @@
 ### [A Site Recovery áttekintése](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Biztonságos
-### [Erőforrások figyelése](oms-security-monitoring-resources.md)
-### [Válasz a biztonsági riasztásokra](oms-security-responding-alerts.md)
-### [Alapterv felmérése](oms-security-baseline.md)
-### [Kártevőfelmérés](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Rendszerfrissítési felmérés](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Biztonsági termékek csatlakoztatása](oms-security-connect-products.md)
-### [Webes alapkonfiguráció-felmérés](oms-security-web-baseline-assessment.md)
+### [Erőforrások figyelése](../security-center/security-center-monitoring.md)
+### [Válasz a biztonsági riasztásokra](../security-center/security-center-managing-and-responding-alerts.md)
+### [Alapterv felmérése](../security-center/security-center-customize-os-security-config.md)
+### [Kártevőfelmérés](../security-center/security-center-install-endpoint-protection.md)
+### [Biztonsági termékek csatlakoztatása](../security-center/quick-security-solutions.md)
+### [Webes alapkonfiguráció-felmérés](../security-center/security-center-customize-os-security-config.md)
 
 ## Megoldások használata
 ### [Felügyeleti megoldások](../monitoring/monitoring-solutions.md)

@@ -63,8 +63,6 @@
           href: dsc-template.md
     - name: IaaS kártevőirtó Windowshoz
       href: iaas-antimalware-windows.md
-    - name: Key Vault
-      href: key-vault-windows.md
     - name: Virtuális gép pillanatképe
       items:
         - name: Linux
