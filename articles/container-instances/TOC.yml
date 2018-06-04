@@ -45,8 +45,6 @@
           href: container-instances-using-azure-container-registry.md
         - name: Környezeti változók beállítása (env)
           href: container-instances-environment-variables.md
-        - name: Üzemelő példányok hibaelhárítása
-          href: container-instances-troubleshooting.md
     - name: Kezelés
       items:
         - name: Parancs végrehajtása (exec)
@@ -69,6 +67,12 @@
           href: container-instances-volume-gitrepo.md
         - name: titkos kód
           href: container-instances-volume-secret.md
+    - name: Hibaelhárítás
+      items:
+        - name: Tároló naplóinak és eseményeinek lekérése
+          href: container-instances-get-logs.md
+        - name: Gyakori problémák megoldása
+          href: container-instances-troubleshooting.md
 - name: Referencia
   items:
     - name: Azure CLI
@@ -78,7 +82,7 @@
     - name: PowerShell
       href: '/powershell/module/azurerm.containerinstance#container_instances'
     - name: .NET
-      href: /dotnet/api/overview/azure/containerinstances
+      href: /dotnet/api/overview/azure/containerinstance
     - name: Python
       href: /python/api/overview/azure/containerinstance
     - name: Java

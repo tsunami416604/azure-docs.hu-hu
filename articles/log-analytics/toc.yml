@@ -137,24 +137,20 @@
           href: log-analytics-powerbi.md
     - name: Riasztások létrehozása
       items:
-        - name: A riasztások ismertetése
-          href: log-analytics-alerts.md
-        - name: Riasztási műveletek
-          href: log-analytics-alerts-actions.md
-        - name: Riasztási szabályok létrehozása
-          items:
-            - name: OMS-portál
-              href: log-analytics-alerts-creating.md
-            - name: REST API
-              href: log-analytics-api-alerts.md
-            - name: Resource Manager-sablon
-              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
-        - name: Példa webhook-műveletre
-          href: log-analytics-alerts-webhooks.md
-        - name: Riasztáskezelési megoldás
-          href: log-analytics-solution-alert-management.md
+        - name: A naplóriasztások ismertetése
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+        - name: Naplóriasztás létrehozása
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+        - name: Naplóriasztásokra vonatkozó webhook-műveletek
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+        - name: Naplóriasztás létrehozása Resource Manager-sablonnal
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+        - name: Riasztások másolása a Log Analyticsből az Azure-riasztásokba
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
     - name: Kezelés
       items:
+        - name: Személyes adatok kezelése
+          href: log-analytics-personal-data-mgmt.md
         - name: Ügynökkezelés
           href: log-analytics-agent-manage.md
         - name: Munkaterületek kezelésének költségei
@@ -218,8 +214,6 @@
               href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
             - name: Logic Apps B2B egyéni követési séma
               href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Kártevőfelmérés
-          href: log-analytics-malware.md
         - name: Hálózatelemzés
           href: log-analytics-azure-networking-analytics.md
         - name: Hálózati teljesítményfigyelő
@@ -239,7 +233,7 @@
         - name: SCOM állapotának ellenőrzése
           href: log-analytics-scom-assessment.md
         - name: Biztonsági naplózás
-          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../security-center/security-center-intro.md
         - name: Service Fabric és Azure PowerShell
           href: log-analytics-service-fabric.md
           items:

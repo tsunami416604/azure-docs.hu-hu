@@ -30,7 +30,7 @@
       href: vpn-gateway-highlyavailable.md
     - name: Tudnivalók a pont–hely kapcsolatokról
       href: point-to-site-about.md
-    - name: Tudnivalók a pont–hely útválasztásról
+    - name: Tudnivalók a pont–hely VPN-útválasztásról
       href: vpn-gateway-about-point-to-site-routing.md
 - name: Útmutatók
   items:

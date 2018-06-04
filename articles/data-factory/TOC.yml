@@ -1,5 +1,7 @@
 - name: A Data Factory V2 dokumentációja
   href: index.yml
+- name: Váltás az 1. verzió dokumentációjára
+  href: v1/data-factory-introduction.md
 - name: Áttekintés
   items:
     - name: A Data Factory bemutatása
@@ -374,6 +376,8 @@
       items:
         - name: Az Azure SSIS integrációs modul csatlakoztatása virtuális hálózathoz
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS integrációs modulhoz
+          href: enable-aad-authentication-azure-ssis-ir.md
         - name: Az Azure SSIS integrációs modul konfigurálása nagy teljesítményre
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Az Azure SSIS integrációs modul Enterprise Edition kiadásának üzembe helyezése
@@ -382,7 +386,7 @@
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Az Azure SSIS integrációs modul licencelt összetevőinek üzembe helyezése
           href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: SSIS-csomagok futtatása SSIS-tevékenységgel
+        - name: SSIS-csomagok futtatása az SSIS-csomagok végrehajtása tevékenységgel
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: SSIS-csomagok futtatása tárolt eljárási tevékenységgel
           href: how-to-invoke-ssis-package-stored-procedure-activity.md

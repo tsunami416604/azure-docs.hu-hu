@@ -6,6 +6,10 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: Hasznos tanácsok
       href: cheat-sheet.md
+- name: Kibocsátási megjegyzések
+  items:
+    - name: 2018. május
+      href: release-notes-may-2018.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -151,7 +155,7 @@
       items:
         - name: Áttekintés
           href: sql-data-warehouse-connect-overview.md
-        - name: Kapcsolati karakterláncok
+        - name: Kapcsolati sztringek
           href: sql-data-warehouse-connection-strings.md
         - name: sqlcmd
           href: sql-data-warehouse-get-started-connect-sqlcmd.md

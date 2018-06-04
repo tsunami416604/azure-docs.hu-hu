@@ -22,7 +22,9 @@
 #### [Python](data-lake-analytics-manage-use-python-sdk.md)
 #### [Java](data-lake-analytics-manage-use-java-sdk.md)
 #### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [Felhasználók hozzáadása](data-lake-analytics-add-users.md)
 ### [Házirendek](data-lake-analytics-policies.md)
+### [Biztonságos feladatmappák](data-lake-analytics-secure.md)
 ### [Diagnosztikai naplók elérése](data-lake-analytics-diagnostic-logs.md)
 ### [A kvótakorlátok beállítása](data-lake-analytics-quota-limits.md)
 
@@ -38,6 +40,10 @@
 #### [Cognitive-bővítmények](data-lake-analytics-u-sql-cognitive.md)
 #### [Programozhatósági útmutató](data-lake-analytics-u-sql-programmability-guide.md)
 
+### U-SQL SDK
+#### [Helyi futtatás és hibakeresés](data-lake-analytics-data-lake-tools-local-run.md)
+#### [Futtatás és tesztelés](data-lake-analytics-u-sql-sdk.md) 
+
 ### Visual Studio
 #### [Telepítés](data-lake-analytics-data-lake-tools-install.md)
 #### [Feladatok tallózása és megtekintése](data-lake-analytics-data-lake-tools-view-jobs.md)
@@ -46,6 +52,7 @@
 #### [Vertex-végrehajtás részletei](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 #### [U-SQL adatbázis exportálása](data-lake-analytics-data-lake-tools-export-database.md)
 #### [Webhelynaplók elemzése](data-lake-analytics-analyze-weblogs.md)
+#### [Adateltérés feloldása](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 #### [Feladatok figyelése és hibaelhárítása](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ### Visual Studio Code
@@ -64,7 +71,7 @@
 # További források
 ## [Azure Data Lake blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [Visszajelzés küldése a UserVoice-ról](https://feedback.azure.com/forums/327234-data-lake)
+## [Módosítási kérelmek](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
