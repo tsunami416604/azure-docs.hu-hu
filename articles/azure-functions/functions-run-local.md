@@ -14,15 +14,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 523ef25fe0d3227d526acbdee2c7cf2660fc4f25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1dd5d0f11a063d013142948c7c87a98aefe02749
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725224"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód és az Azure Functions helyi tesztelése
 
-Amíg a [Azure-portálon] teljes készlete eszközök fejlesztési és tesztelési Azure Functions számos fejlesztők inkább egy helyi fejlesztési felület biztosít. Az Azure Functions megkönnyíti, hogy a kedvenc kód szerkesztése és a helyi fejlesztői eszközök segítségével történő fejlesztéséhez és teszteléséhez a funkciók a helyi számítógépen. A funkciók is elindíthatja az eseményeket az Azure-ban, és a C# és JavaScript-funkcióként is debug a helyi számítógépen. 
+Amíg a [Azure Portal] teljes készlete eszközök fejlesztési és tesztelési Azure Functions számos fejlesztők inkább egy helyi fejlesztési felület biztosít. Az Azure Functions megkönnyíti, hogy a kedvenc kód szerkesztése és a helyi fejlesztői eszközök segítségével történő fejlesztéséhez és teszteléséhez a funkciók a helyi számítógépen. A funkciók is elindíthatja az eseményeket az Azure-ban, és a C# és JavaScript-funkcióként is debug a helyi számítógépen. 
 
 A Visual Studio C# fejlesztő, az Azure Functions is [integrálható a Visual Studio 2017](functions-develop-vs.md).
 
@@ -95,14 +96,14 @@ Az alábbi lépéseket használata [APT](https://wiki.debian.org/Apt) az Ubuntu/
   sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   ```
 
-2.  Készítse elő a hírcsatorna csomagot cseréje `<version>` az az alábbi parancsot a megfelelő verzió nevét a táblázatból:
+2.  Ellenőrizze az Ubuntu server fut-e a megfelelő verziók egyike az alábbi táblázatban. A apt forrás hozzáadásához futtassa:
 
   ```bash
-  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
   sudo apt-get update
   ```
 
-  | A Linux-disztribúció | `<version>` |
+  | A Linux-disztribúció | Verzió |
   | --------------- | ----------- |
   | Ubuntu 17.10    | `artful`    |
   | Ubuntu 17.04    | `zesty`     |
@@ -151,7 +152,7 @@ A projekt nélkül egy helyi Git-tárház létrehozásához használja a `--no-s
 
 ## <a name="register-extensions"></a>Bővítmények regisztrálása
 
-Verziójában 2.x, az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) , amelyekkel az függvény alkalmazásban. 
+A verzió, az Azure Functions futtatókörnyezettel 2.x, explicit módon regisztrálnia kell az függvény alkalmazásban használt kötés extensions (kötéstípust).
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
@@ -275,7 +276,7 @@ Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
-### <a name="debug-in-vs-code-or-visual-studio"></a>A Visual STUDIO Code vagy a Visual Studio hibakeresési
+### <a name="vs-debug"></a>A Visual STUDIO Code vagy a Visual Studio hibakeresési
 
 A hibakereső csatolásához át a `--debug` argumentum. JavaScript-funkcióként hibakeresési, használja a Visual Studio Code. C# funkciók a Visual Studio használata.
 
@@ -388,7 +389,7 @@ A következő beállításokat is használhatja:
 
 Ez a parancs tesz közzé egy meglévő függvény alkalmazáshoz az Azure-ban. Hiba akkor fordul elő, amikor a `<FunctionAppName>` az előfizetéshez nem létezik. A függvény alkalmazás létrehozásának a parancssort vagy terminálablakot az Azure parancssori felület használatával, lásd: [hozzon létre egy kiszolgáló nélküli végrehajtási függvény alkalmazást](./scripts/functions-cli-create-serverless.md).
 
-A `publish` parancs feltölti a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli azokat az Azure-ból. Használatával törölheti a fájlokat az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure-portálon].  
+A `publish` parancs feltölti a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli azokat az Azure-ból. Használatával törölheti a fájlokat az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure Portal].  
 
 >[!IMPORTANT]  
 > Ha az Azure-ban létrehoz egy függvény alkalmazást, akkor verzióját használja 1.x függvény futásidejű alapértelmezés szerint. A függvény az alkalmazás használatát verziója annak 2.x futtatókörnyezet, az Alkalmazásbeállítás hozzáadása `FUNCTIONS_EXTENSION_VERSION=beta`.  
@@ -407,5 +408,5 @@ A következő fájl egy hiba vagy a szolgáltatás kérelem [nyissa meg a GitHub
 <!-- LINKS -->
 
 [Az Azure Functions Core eszközök]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portálon]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

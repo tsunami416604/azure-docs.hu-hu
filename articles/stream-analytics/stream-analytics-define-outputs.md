@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2f616c5908d8583764425b62acd1650283d0695
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701717"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics kimeneteinek ismertetése
 Ez a cikk ismerteti a különböző típusú kimenetek egy Azure Stream Analytics-feladat érhető el. Kimenetek lehetővé teszik, hogy tárolja, és mentse a Stream Analytics-feladat eredményét. A kimeneti adatok használatával, elvégezhető a további üzleti elemzések és az adatraktározás terén, az adatok. 
@@ -27,6 +28,8 @@ Néhány kimenetek típusok támogatási [particionálás](#partitioning), és [
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 A Stream Analytics támogatja [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Az Azure Data Lake Store egy vállalati szintű, nagy kapacitású adattár a big data koncepción alapuló adatelemzési célokra. Data Lake Store lehetővé teszi, hogy a műveleti és felderítési jellegű bármilyen méretű, típusú és feldolgozási sebességű adatok. A Stream Analytics a Data Lake Store jogosultsággal rendelkezik.
+
+Azure Data Lake Store kimenetét a Stream Analytics jelenleg nem érhető el az Azure kínai (21Vianet) és a Németországi Azure (T-rendszerek nemzetközi) régióban.
 
 ### <a name="authorize-an-azure-data-lake-store-account"></a>Egy Azure Data Lake Store-fiók engedélyezése
 
@@ -44,7 +47,7 @@ A Stream Analytics támogatja [Azure Data Lake Store](https://azure.microsoft.co
 | --- | --- |
 | Kimeneti alias | Egy rövid nevet a lekérdezés kimenete a Data Lake Store a lekérdezésekben használt. | 
 | Fióknév | A Data Lake-tárfiókra ahol küldendő a kimeneti neve. A legördülő listából válassza ki a Data Lake Store-fiókok az előfizetésben elérhető jelenik meg. |
-| Elérési út előtagmintája | A megadott Data Lake Store-fiók található a fájl írásához használt elérési. A {date} egy vagy több példányát adhatja meg, és {time} változók.</br><ul><li>1. példa: mappa1/logs / {date} / {time}</li><li>2. példa: mappa1/logs / {date}</li></ul>Ha a fájl elérési út mintája nem tartalmaz egy záró "/", a rendszer a legutóbbi minta elérési útjának fájlnév előtag. </br></br>Új fájlok jönnek létre ilyen körülmények között:<ul><li>A kimeneti sémával módosítása</li><li>Külső vagy belső indítsa újra a feladatok.</li></ul> |
+| Elérési út előtagmintája | A megadott Data Lake Store-fiók található a fájl írásához használt elérési. A {date} egy vagy több példányát adhatja meg, és {time} változók.</br><ul><li>1. példa: mappa1/logs / {date} / {time}</li><li>2. példa: mappa1/logs / {date}</li></ul><br>A következő nem helyi idő és a létrehozott mappaszerkezetet időbélyegzője.</br><br>Ha a fájl elérési út mintája nem tartalmaz egy záró "/", a rendszer a legutóbbi minta elérési útjának fájlnév előtag. </br></br>Új fájlok jönnek létre ilyen körülmények között:<ul><li>A kimeneti sémával módosítása</li><li>Külső vagy belső indítsa újra a feladatok.</li></ul> |
 | Dátumformátum | Választható. Ha a dátum jogkivonat a előtag elérési útját, válassza a dátumformátum, amelyben a fájlok vannak rendezve. . Példa: Éééé/hh/nn |
 |Időformátum | Választható. Ha a idő jogkivonat előtag elérési, adja meg az időformátum, amelyben a fájlok vannak rendezve. Jelenleg az egyetlen támogatott érték HH. |
 | Eseményszerializációs formátum | A kimeneti adatok szerializálási formátum. JSON, CSV és az avro-hoz támogatott.| 
@@ -67,7 +70,7 @@ Hitelesítés megújítása **leállítása** a feladat > lépjen a Data Lake St
 | Kimeneti alias |Egy rövid nevet a lekérdezés kimenete az adatbázist a lekérdezésekben használt. |
 | Adatbázis | Az adatbázis, ahol küldendő a kimeneti neve. |
 | Kiszolgálónév | Az SQL Database kiszolgáló neve. |
-| Felhasználónév | A felhasználónév, amely hozzáfér a databas írni. |
+| Felhasználónév | A felhasználónév, amely hozzáfér az adatbázisba írni. |
 | Jelszó | A jelszót a databas.e |
 | Tábla | A tábla neve, ahol a kimeneti írása. A táblanév nem kis-és nagybetűket, és ezt a táblázatot a séma mezőket és a rendszer a feladat kimenetére által létrehozott típusok száma annak pontosan meg kell egyeznie. |
 
@@ -86,7 +89,7 @@ Az alábbi táblázat felsorolja a tulajdonságnevek és azok leírását a blob
 | Tárfiók | A tárfiók, ahol küldendő a kimeneti neve. |
 | Tárfiók kulcsa | A storage-fiókjához tartozó titkos kulcsot. |
 | A tároló | Tárolók adja meg a Microsoft Azure Blob szolgáltatásban tárolt blobok logikai csoportosítását. Amikor egy blob feltöltése a Blob szolgáltatás, meg kell adnia, hogy a blob tárolója. |
-| Elérésiút-minta | Választható. A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. </br></br> Az elérési út mintája dönthet a dátum-idő változó egy vagy több példányát használja a blobok írt gyakorisága: </br> a {date}, {time} </br> </br>Ha be van jelentkezve a a [előzetes](https://aka.ms/ASAPreview), előfordulhat, hogy is meg partíció blobokban alapján, az esemény adatokból egy egyéni {mező} nevét ahol a mező neve alfanumerikus, és tartalmazhat szóközöket, kötőjeleket és aláhúzásjeleket tartalmazhatnak. Egyéni mezők korlátozásai a következők: <ul><li>(Másik oszlop "ID" és "id" oszlop között nem) iránti érzéketlensége eset</li><li>Beágyazott mezői nem engedélyezettek (helyette használja alias a feladat lekérdezésben szereplő "egybesimítására" mező)</li><li>A mezőnév nem használhatók kifejezések</li></ul>Példák: <ul><li>1. példa: cluster1/logs / {date} / {time}</li><li>2. példa: cluster1/logs / {date}</li><li>3 (előzetes verzió). példa: cluster1 / {client_id} / {date} / {time}</li><li>4 (előzetes verzió). példa: cluster1 / {myField} ahol a lekérdezés az: SELECT data.myField, myField a bemeneti;</li></ul><BR> A következő egyezmény fájlelnevezésnél követi: </br> {Elérési előtag Pattern}/schemaHashcode_Guid_Number.extension </br></br> Példa kimeneti fájlok: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| Elérésiút-minta | Választható. A fájl elérési út mintája a megadott tárolóban található blobok írásához használt. </br></br> Az elérési út mintája dönthet a dátum-idő változó egy vagy több példányát használja a blobok írt gyakorisága: </br> a {date}, {time} </br> </br>Ha be van jelentkezve a a [előzetes](https://aka.ms/ASAPreview), előfordulhat, hogy is meg partíció blobokban alapján, az esemény adatokból egy egyéni {mező} nevét ahol a mező neve alfanumerikus, és tartalmazhat szóközöket, kötőjeleket és aláhúzásjeleket tartalmazhatnak. Egyéni mezők korlátozásai a következők: <ul><li>(Nem különbözteti meg oszlop "ID" és "id" oszlop) iránti érzéketlensége eset</li><li>Beágyazott mezői nem engedélyezettek (helyette használja alias a feladat lekérdezésben szereplő "egybesimítására" mező)</li><li>A mezőnév nem használhatók kifejezések</li></ul>Példák: <ul><li>1. példa: cluster1/logs / {date} / {time}</li><li>2. példa: cluster1/logs / {date}</li><li>3 (előzetes verzió). példa: cluster1 / {client_id} / {date} / {time}</li><li>4 (előzetes verzió). példa: cluster1 / {myField} ahol a lekérdezés az: SELECT data.myField, myField a bemeneti;</li></ul><br>A következő nem helyi idő és a létrehozott mappaszerkezetet időbélyegzője.</br><BR> A következő egyezmény fájlelnevezésnél követi: </br> {Elérési előtag Pattern}/schemaHashcode_Guid_Number.extension </br></br> Példa kimeneti fájlok: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Dátumformátum | Választható. Ha a dátum jogkivonat a előtag elérési útját, válassza a dátumformátum, amelyben a fájlok vannak rendezve. . Példa: Éééé/hh/nn |
 | Időformátum | Választható. Ha a idő jogkivonat előtag elérési, adja meg az időformátum, amelyben a fájlok vannak rendezve. Jelenleg az egyetlen támogatott érték HH. |
 | Eseményszerializációs formátum | A kimeneti adatok szerializálási formátum.  JSON, CSV és az avro-hoz támogatott.
@@ -103,7 +106,7 @@ A blob storage használata kimenetként, egy új fájl jön létre a BLOB a köv
 * Ha a felhasználó egy fájl vagy egy tárolót a tárfiók törlése.  
 * A kimenet az idő az elérési út előtag mintát használ, ha egy új blob használatos, ha a lekérdezés helyezi át a következő órában.
 * Ha a kimeneti particionálva van egy egyéni mező, egy új blob partíciós kulcs / létrejön, ha nem létezik.
-*   A kimenet egy egyéni mező, ahol a partíciós kulcs számossága meghaladja 8000 particionálva van, ha egy új blob / partíciókulcs lehet létrehozni.
+* A kimenet egy egyéni mező, ahol a partíciós kulcs számossága meghaladja 8000 particionálva van, ha egy új blob / partíciókulcs lehet létrehozni.
 
 ## <a name="event-hub"></a>Eseményközpont
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása jól skálázható közzétételi-feliratkozási eseménybetöltőnek. Gyűjthet, hogy a több millió esemény / másodperc. Egy Eseményközpont kimenetként használata a Stream Analytics-feladat eredményének válásakor a bemeneti adatfolyam egy másik feladat.
@@ -113,7 +116,7 @@ Nincsenek, amelyek szükségesek ahhoz, hogy konfigurálta az Event Hubs adatfol
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | Egy rövid nevet a lekérdezés kimenete az Event Hubs a lekérdezésekben használt. |
-| Eseményközpont-névtér |Egy Eseményközpont-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Eseményközpont-névtér is létrejött. |
+| Eseményközpont-névtér |Az Event Hubs-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Eseményközpont-névtér is létrejött. |
 | Eseményközpont neve | Az Event Hubs kimeneti neve. |
 | Eseményközpont szabályzatának neve | A megosztott elérési házirendet, amely az Event Hub konfigurálása lapon is létrehozható. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. |
 | Eseményközpont házirendjének kulcsa | A megosztott hozzáférési kulcs való hitelesítéshez szükséges hozzáférés az Event Hubs-névtérhez. |
@@ -125,6 +128,8 @@ Nincsenek, amelyek szükségesek ahhoz, hogy konfigurálta az Event Hubs adatfol
 
 ## <a name="power-bi"></a>Power BI
 [A Power BI](https://powerbi.microsoft.com/) elemzés eredményeinek gazdag képi megjelenítés élmény biztosításához a Stream Analytics-feladat kimenetként használható. Ez a funkció működési irányítópultok jelentéskészítésre és jelentéskészítési folyamat metrika használható.
+
+A Stream Analytics Power BI-kimenet jelenleg nem érhető el az Azure kínai (21Vianet) és a Németországi Azure (T-rendszerek nemzetközi) régióban.
 
 ### <a name="authorize-a-power-bi-account"></a>Engedélyezze a Power BI-fiókja
 1. A Power BI kiválasztásakor az Azure portálon kimenetként kéri egy meglévő Power BI felhasználó hitelesítése, vagy hozzon létre egy új Power BI-fiókot.  
@@ -247,6 +252,8 @@ A partíciók száma [a Service Bus SKU és mérete alapján](../service-bus-mes
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Az Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) van egy globálisan elosztott, több modellre adatbázis szolgáltatást, hogy a földgolyó méretét, a gazdag lekérdezési és az automatikus indexeléshez keresztül séma-független adatmodellekben, rugalmasan méretezhető korlátlan ajánlatok garantált alacsony késéssel és iparágvezető átfogó SLA-k. A Stream Analytics Cosmos DB adatgyűjtési beállítások kapcsolatos információkért tekintse meg a [Cosmos DB kimenetként a Stream Analytics](stream-analytics-documentdb-output.md) cikk.
 
+Az Azure Stream Analytics Cosmos DB kimenet jelenleg nem érhető el az Azure kínai (21Vianet) és a Németországi Azure (T-rendszerek nemzetközi) régióban.
+
 > [!Note]
 > Ilyenkor Azure Stream Analytics csak kapcsolatot támogat CosmosDB használatával **SQL API**.
 > Egyéb Azure Cosmos DB API-k még nem támogatott. Ha pont Azure Stream Analytics az Azure Cosmos DB fiókok létrehozása, más API-khoz, az adatok nem megfelelően tárolódhat. 
@@ -266,6 +273,8 @@ A következő táblázat létrehozása az Azure Cosmos DB kimeneti tulajdonsága
 
 ## <a name="azure-functions"></a>Azure Functions
 Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint, külön infrastruktúra üzembe helyezése és kezelése nélkül futtathat kódokat. Lehetővé teszi, amely az Azure vagy harmadik féltől származó szolgáltatással téve események által kiváltott kód megvalósítását.  Ez a lehetőség az Azure Functions eseményindítók válaszolni teszi természetes kimeneti számára egy Azure Stream Analytics. A konzolkimeneti adapter lehetővé teszi a felhasználóknak a Stream Analytics csatlakozni az Azure Functions, futtassa a parancsfájlt vagy kódrészletek, számos esemény adott válaszként.
+
+Az Azure Functions kimeneti Stream Analytics jelenleg nem érhető el az Azure kínai (21Vianet) és a Németországi Azure (T-rendszerek nemzetközi) régióban.
 
 Az Azure Stream Analytics az Azure Functions via HTTP-eseményindító hív meg. Az új Azure-függvény konzolkimeneti adapter áll rendelkezésre a következő konfigurálható tulajdonságokkal:
 

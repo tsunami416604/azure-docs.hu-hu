@@ -1,12 +1,12 @@
 ---
-title: "Folyamatos üzembe helyezés az Azure Functions |} Microsoft Docs"
-description: "Folyamatos üzembe helyezés létesítményekben az Azure App Service segítségével az Azure Functions közzététele."
+title: Folyamatos üzembe helyezés az Azure Functions |} Microsoft Docs
+description: Folyamatos üzembe helyezés létesítményekben az Azure App Service segítségével az Azure Functions közzététele.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 35a0b0faa61cf4b42ba1d8696c85f5724ff73f23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735703"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions – folyamatos üzembe helyezés
 Az Azure Functions megkönnyíti az App Service folyamatos integrációt használó függvény alkalmazás telepítése. Funkciók integrálható a Bitbucketből, a dropbox-ba, a GitHub és a Visual Studio Team Services (VSTS). Ez lehetővé teszi egy munkafolyamatot, ha frissíti a funkciókódot ezek integrált szolgáltatások eseményindító telepítése az Azure használatával végrehajtott. Ha most ismerkedik az Azure Functions, kezdje [Azure Functions áttekintése](functions-overview.md).
@@ -30,7 +31,7 @@ A folyamatos üzembe helyezés jó megoldás lehet olyan projektek esetén, amel
 * [Dropbox-bA](https://www.dropbox.com/)
 * Külső tárház (Git vagy Mercurial)
 * [Helyi Git-tárház](../app-service/app-service-deploy-local-git.md)
-* [GitHub](https://github.com)
+* [GitHubon](https://github.com)
 * [Onedrive vállalati verzió](https://onedrive.live.com/)
 * [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
 
@@ -41,6 +42,8 @@ Központi telepítések függvény alkalmazás szinten vannak konfigurálva. Fol
 A központi telepítés forrásának beállítása a folyamatos üzembe helyezés előtt a konfigurálva telepítési forrás és a funkciók kódot kell rendelkeznie. Egy adott funkció alkalmazások központi telepítésének egyes függvény él, egy elnevezett alkönyvtárra, ahol a könyvtárnév pedig a függvény nevét.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
+
+Nem fogja tudni telepíteni a VSTS, először csatolja a VSTS-fiók Azure-előfizetéséhez. További információkért lásd: [állítsa be a VSTS fiók számlázási](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Folyamatos üzembe helyezés beállítása
 Ezzel az eljárással konfigurálhatja folyamatos üzembe egy meglévő függvény alkalmazást. Ezeket a lépéseket egy GitHub-tárházban az integráció bemutatásához, de hasonló lépésekkel a Visual Studio Team Services vagy egyéb telepítési érvényesek.
@@ -75,7 +78,7 @@ A folyamat konfigurálását és használatát az átmeneti telepítést által�
 
 1. Az előfizetés, az éles kódot és egy az átmeneti két függvény-alkalmazásai létrehozására. 
 
-2. Hozzon létre olyan telepítési forrás, ha még nem rendelkezik. Ez a példa [GitHub].
+2. Hozzon létre olyan telepítési forrás, ha még nem rendelkezik. Ez a példa [GitHubon].
 
 3. Az éles függvény alkalmazás teljes a fenti lépéseket **folyamatos üzembe helyezés beállítása** , és a központi telepítés ágat a GitHub-tárház főágába.
    
@@ -146,9 +149,9 @@ A függvény alkalmazás FTP-vagy helyi Git-tárház letöltheti a fájlokat, ko
    
     Ha szükséges, adja meg a [üzembe helyezési hitelesítő adatok konfigurált](#credentials).  
 
-[GitHub]: https://github.com/
+[GitHubon]: https://github.com/
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – ajánlott eljárások](functions-best-practices.md)

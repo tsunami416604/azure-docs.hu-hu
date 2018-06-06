@@ -6,21 +6,16 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: rajanaki
-ms.openlocfilehash: ccec4262297314bad261a852bb5db25c428ce0a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6a57226f81e626e620033750c58d5998d8e7e894
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716584"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Védelem-újrabeállítási átadja Azure virtuális gépeket az elsődleges régióban
-
-
->[!NOTE]
->
-> Az Azure-beli virtuális gépek Site Recovery-replikációja jelenleg előzetes verzióban érhető el.
-
 
 
 Ha Ön [feladatátvételt](site-recovery-failover.md) Azure virtuális gépek egy régióban egy másik használatával [Azure Site Recovery](site-recovery-overview.md), a virtuális gépek rendszerindítás másodlagos régióban, nem védett állapotban. Ha sikertelen a virtuális gépek biztonsági az elsődleges régióban, meg kell tegye a következőket:
