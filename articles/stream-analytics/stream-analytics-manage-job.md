@@ -11,10 +11,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
 ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "32778189"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára
 
@@ -64,25 +65,25 @@ Mielőtt a Stream Analytics elemezni tudná a csaló hívások adatstreamjét, e
 
    ![Eseményközpont létrehozása](media/stream-analytics-manage-job/create-eh.png)
 
-### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati karakterlánc beszerzése
+### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati sztring beszerzése
 
-Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményközpontnak szüksége van egy szabályzatra megfelelő hozzáférést biztosít. A hozzáférési szabályzat egy kapcsolati karakterláncot hoz létre, amelyben megtalálhatók az engedélyezési információk.
+Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményközpontnak szüksége van egy szabályzatra megfelelő hozzáférést biztosít. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
 1. Lépjen az előző lépésben létrehozott **Event Hubs**-elemre, amelynek a MyEventHub nevet adta > válassza a **Megosztott elérési házirendek** elemet az eseményközpont ablaktábláján > válassza a **+Hozzáadás** lehetőséget.  
 2. Állítsa a szabályzat nevét **Mypolicy** értékre > válassza a **Kezelés** elemet > válassza a **Létrehozás** lehetőséget.  
 
    ![Eseményközpont megosztott elérési házirendjének létrehozása](media/stream-analytics-manage-job/create-ehpolicy.png)
 
-3. A szabályzat üzembe helyezése után válassza ki a megnyitásához, keresse meg a **Kapcsolati karakterlánc – elsődleges kulcs** elemet, és válassza a kapcsolati karakterlánc mellett található **Másolás** elemet.  
-4. Illessze be a kapcsolati karakterláncot egy szövegszerkesztőbe. A következő szakaszban szükség lesz erre a kapcsolati karakterláncra.  
+3. A szabályzat üzembe helyezése után válassza ki a megnyitásához, keresse meg a **Kapcsolati sztring – elsődleges kulcs** elemet, és válassza a kapcsolati sztring mellett található **Másolás** elemet.  
+4. Illessze be a kapcsolati sztringet egy szövegszerkesztőbe. A következő szakaszban szükség lesz erre a kapcsolati sztringre.  
 
-   A kapcsolati karakterlánc a következőképpen néz ki:
+   A kapcsolati sztring a következőképpen néz ki:
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>` 
 
-   Figyelje meg, hogy a kapcsolati karakterlánc több, pontosvesszővel elválasztott kulcs–érték párt tartalmaz: Endpoint, SharedAccessKeyName, SharedAccessKey és EntityPath.  
+   Figyelje meg, hogy a kapcsolati sztring több, pontosvesszővel elválasztott kulcs–érték párt tartalmaz: Endpoint, SharedAccessKeyName, SharedAccessKey és EntityPath.  
 
-5. Távolítsa el az EntityPath párt a kapcsolati karakterláncból (ne felejtse el törölni az előtte lévő pontosvesszőt is).
+5. Távolítsa el az EntityPath párt a kapcsolati sztringből (ne felejtse el törölni az előtte lévő pontosvesszőt is).
 
 ## <a name="start-the-event-generator-application"></a>Az eseménylétrehozó alkalmazás elindítása
 
@@ -93,8 +94,8 @@ A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy
 
 3. Frissítse a konfigurációs fájl <appSettings> elemét az alábbi részletekkel:
 
-   * Állítsa az EventHubName kulcsot a kapcsolati karakterláncban található EntityPath értékére.  
-   * A Microsoft.ServiceBus.ConnectionString kulcs értékét állítsa a kapcsolati karakterlánc értékére az EntityPath értéke nélkül, amely az előző szakasz 5. lépésében kapott érték.
+   * Állítsa az EventHubName kulcsot a kapcsolati sztringben található EntityPath értékére.  
+   * A Microsoft.ServiceBus.ConnectionString kulcs értékét állítsa a kapcsolati sztring értékére az EntityPath értéke nélkül, amely az előző szakasz 5. lépésében kapott érték.
 
 4. Mentse a fájlt.  
 5. Ezután nyisson egy parancsablakot, váltson arra a mappára, ahová kicsomagolta a TelcoGenerator alkalmazást, és írja be a következő parancsot:
@@ -113,7 +114,7 @@ A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy
    |**Rekord**  |**Definíció**  |
    |---------|---------|
    |CallrecTime    |  A hívási kezdési idejét jelölő időbélyegző.       |
-   |SwitchNum     |  A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan karakterláncok, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália).       |
+   |SwitchNum     |  A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan sztringek, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália).       |
    |CallingNum     |  A hívó telefonszáma.       |
    |CallingIMSI     |  Az International Mobile Subscriber Identity (IMSI). Ez a hívó egyedi azonosítója.       |
    |CalledNum     |   A hívott fél telefonszáma.      |

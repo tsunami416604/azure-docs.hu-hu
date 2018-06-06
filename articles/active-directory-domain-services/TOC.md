@@ -1,4 +1,4 @@
-# [Az Azure AD Domain Services dokumentációja](index.md)
+# [Az Azure AD Domain Services dokumentációja](index.yml)
 
 # Áttekintés
 ## [Az Azure AD tartományi szolgáltatások ismertetése](active-directory-ds-overview.md)

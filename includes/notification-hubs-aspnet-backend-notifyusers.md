@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 634bb14cfef3df2cf944eeafbfa8d671afa4ac98
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33835797"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
@@ -83,7 +83,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
    
    * A kérés tartalmaz *engedélyezési* fejlécet. 
    * A kérés *alapszintű* hitelesítést használ. 
-   * A felhasználónév és a jelszó karakterlánc azonos.
+   * A felhasználónév és a jelszó sztring azonos.
      
   Ellenkező esetben a kérést a rendszer elutasítja. Ez nem egy valós hitelesítési és engedélyezési megközelítés, csak egy egyszerű példa ehhez az oktatóanyaghoz.
      
@@ -147,7 +147,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
 6. Mentse a módosításokat.
 
 ## <a name="register-for-notifications-by-using-the-webapi-backend"></a>Regisztráció értesítésekre a WebAPI háttérrendszer használatával
-Ebben a szakaszban egy új vezérlőt fog hozzáadni a WebAPI háttérrendszerhez a felhasználók és az eszközök értesítés-regisztrációs kéréseinek kezeléséhez az értesítési központ ügyfélkönyvtárával. A vezérlő hozzáad egy felhasználói címkét a hitelesített és az `AuthenticationTestHandler` által a HttpContext elemhez kapcsolt felhasználóhoz. A címke `"username:<actual username>"` karakterlánc-formátumú lesz.
+Ebben a szakaszban egy új vezérlőt fog hozzáadni a WebAPI háttérrendszerhez a felhasználók és az eszközök értesítés-regisztrációs kéréseinek kezeléséhez az értesítési központ ügyfélkönyvtárával. A vezérlő hozzáad egy felhasználói címkét a hitelesített és az `AuthenticationTestHandler` által a HttpContext elemhez kapcsolt felhasználóhoz. A címke `"username:<actual username>"` sztringformátumú lesz.
 
 1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal az **AppBackend** projektre, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
 

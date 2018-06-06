@@ -9,10 +9,11 @@ ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33835833"
 ---
 Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként fogja elküldeni egy .NET-konzolalkalmazásból. 
 
@@ -20,7 +21,7 @@ Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként 
    
       ![A Console Application (konzolalkalmazás) hivatkozás][13]
 
-2. A Visual Studio főmenüjében válassza a **Tools** (Eszközök) > **Library Package Manager** (Kódtárcsomag-kezelő) > **Package Manager Console** (Csomagkezelői konzol) elemeket, majd a konzolablakban adja meg a következő karakterláncot:
+2. A Visual Studio főmenüjében válassza a **Tools** (Eszközök) > **Library Package Manager** (Kódtárcsomag-kezelő) > **Package Manager Console** (Csomagkezelői konzol) elemeket, majd a konzolablakban adja meg a következő sztringet:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
@@ -58,9 +59,9 @@ Ebben a szakaszban a legfrissebb híreket címkézett sablonértesítésekként 
     }
     ```   
    
-    Ez a kód sablonértesítéseket küld a karakterlánctömb mind a hat címkéje számára. A címkék használatával biztosítható, hogy az eszközök csak a regisztrált kategóriákhoz tartozó értesítéseket fogadják.
+    Ez a kód sablonértesítéseket küld a sztringtömb mind a hat címkéjének. A címkék használatával biztosítható, hogy az eszközök csak a regisztrált kategóriákhoz tartozó értesítéseket fogadják.
 
-5. A `<hub name>` és a `<connection string with full access>` helyőrzőket cserélje le a fenti kódban az értesítési központ nevére és a *DefaultFullSharedAccessSignature* az értesítési központ irányítópultjáról származó kapcsolati karakterláncára.
+5. A `<hub name>` és a `<connection string with full access>` helyőrzőket cserélje le a fenti kódban az értesítési központ nevére és a *DefaultFullSharedAccessSignature* az értesítési központ irányítópultjáról származó kapcsolati sztringjére.
 
 6. A **Main** metódusban adja hozzá a következő sorokat:
    
