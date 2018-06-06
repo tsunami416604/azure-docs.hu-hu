@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 között.
+title: 'Oktatóanyag: Azure Active Directory-integráció JIRA SAML-alapú egyszeri által Microsoft (V5.2) |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és JIRA SAML SSO által Microsoft (V5.2) között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 785a75d3d9a748e3ddf01099fc844b5c1099d0b9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 35a0f2e3619f39ec5ea3c8ba82a1f2607aad8572
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724187"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-microsoft-azure-active-directory-single-sign-on-for-jira-52"></a>Oktatóanyag: Azure Active Directory-integráció a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2
+# <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Oktatóanyag: Azure Active Directory-integráció JIRA SAML-alapú egyszeri által Microsoft (V5.2)
 
-Ebben az oktatóanyagban elsajátíthatja a Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 az Azure Active Directory (Azure AD) integrálása.
+Ebben az oktatóanyagban elsajátíthatja JIRA SAML SSO által Microsoft (V5.2) integrálása az Azure Active Directory (Azure AD).
 
-A Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+JIRA SAML SSO által Microsoft (V5.2) integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Szabályozhatja, aki hozzáfér a Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 az Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a Microsoft Azure Active Directory egyszeri bejelentkezéshez az JIRA 5.2 (egyszeri bejelentkezés) a saját Azure AD-fiókok.
+- Szabályozhatja, aki hozzáfér JIRA SAML SSO által Microsoft (V5.2) Azure AD-ben.
+- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a JIRA SAML SSO által Microsoft (V5.2) (egyszeri bejelentkezés).
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
@@ -38,7 +39,7 @@ A Microsoft Azure Active Directory-fiókot használ Atlassian JIRA server egysze
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2, a következőkre van szükség:
+Az Azure AD-integráció konfigurálása JIRA SAML-alapú egyszeri által Microsoft (V5.2), a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
 - JIRA Core és a szoftver 5.2 kell telepítve és konfigurálva a Windows 64 bites verziója
@@ -60,19 +61,19 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 **Támogatott verziók:**
 
 *   JIRA Core és a szoftver: 5.2.
-*   JIRA a 6.0-s és 7.2.0 is támogatja. További információért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA](./active-directory-saas-jiramicrosoft-tutorial.md)
+*   JIRA a 6.0-s és 7,8 is támogatja. További információért kattintson [JIRA SAML SSO Microsoft](./active-directory-saas-jiramicrosoft-tutorial.md)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben.
 Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. A Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 a gyűjteményből hozzáadása
+1. A gyűjteményből JIRA SAML SSO által Microsoft (V5.2) hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-microsoft-azure-active-directory-single-sign-on-for-jira-52-from-the-gallery"></a>A Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 a gyűjteményből hozzáadása
-Az Azure AD integrálása a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 konfigurálásához kell hozzáadnia a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-jira-saml-sso-by-microsoft-v52-from-the-gallery"></a>A gyűjteményből JIRA SAML SSO által Microsoft (V5.2) hozzáadása
+Az Azure AD integrálása a JIRA SAML SSO által Microsoft (V5.2) konfigurálásához kell hozzáadnia JIRA SAML SSO által Microsoft (V5.2) a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**A gyűjteményből JIRA SAML SSO által Microsoft (V5.2) hozzáadásához hajtsa végre az alábbi lépéseket:**
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
@@ -81,36 +82,36 @@ Az Azure AD integrálása a Microsoft Azure Active Directory egyszeri bejelentke
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![A vállalati alkalmazások panel][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2**, jelölje be **Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2** eredmény panelen kattintson a  **Adja hozzá** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **JIRA SAML SSO által Microsoft (V5.2)**, jelölje be **JIRA SAML SSO által Microsoft (V5.2)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![A Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 az eredmények listájában](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_addfromgallery.png)
+    ![JIRA SAML SSO által Microsoft (V5.2) az eredménylistában](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD az egyszeri bejelentkezés a Microsoft Azure Active Directory egyszeri bejelentkezéshez az JIRA 5.2 "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD az egyszeri bejelentkezés JIRA SAML-alapú egyszeri által Microsoft (V5.2) "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 a partner felhasználó a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó JIRA SAML SSO által Microsoft (V5.2) a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a JIRA SAML SSO által Microsoft (V5.2) közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az Azure AD az egyszeri bejelentkezés a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD az egyszeri bejelentkezés JIRA SAML-alapú egyszeri által Microsoft (V5.2) tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
 2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Hozzon létre egy Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 teszt felhasználó](#create-a-singlesign-onforjira5.2-test-user)**  - Britta Simon egy partner, a Microsoft Azure Active Directory egyszeri bejelentkezést a felhasználó az Azure AD ábrázolását kapcsolódó JIRA 5.2 hozzá .
+3. **[Hozzon létre egy JIRA SAML SSO Microsoft (V5.2) teszt felhasználó](#create-a-jira-saml-sso-by-microsoft-v52-test-user)**  - való egy megfelelője a Britta Simon JIRA SAML SSO által Microsoft (V5.2), amely csatolva van a felhasználó az Azure AD-ábrázolását.
 4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 alkalmazáshoz az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az egyszeri bejelentkezés konfigurálása a JIRA SAML SSO a Microsoft (V5.2) alkalmazás.
 
-**Az Azure AD az egyszeri bejelentkezés a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 megadásához hajtsa végre az alábbi lépéseket:**
+**Konfigurálja az Azure AD az egyszeri bejelentkezés JIRA SAML-alapú egyszeri által Microsoft (V5.2), hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **JIRA SAML SSO által Microsoft (V5.2)** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
@@ -118,9 +119,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés párbeszédpanel](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_samlbase.png)
 
-3. Az a **Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **JIRA SAML SSO Microsoft Domain és URL-címek** területen tegye a következőket:
 
-    ![A Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 tartomány- és URL-címek egyetlen bejelentkezési adatok](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_url.png)
+    ![JIRA SAML SSO Microsoft Domain és URL-címek egyetlen bejelentkezési adatai szerint](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_url.png)
 
     a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://<domain:port>/plugins/servlet/saml/auth`
 
@@ -132,9 +133,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója, válasz URL-CÍMEN és bejelentkezési URL-cím. Port megadása nem kötelező, abban az esetben, ha egy elnevezett URL-címet. Ezek az értékek fogadásának Jira beépülő modul, az oktatóanyag későbbi részében ismertetett konfigurálása során.
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson a Másolás gombra másolása **alkalmazás összevonási metaadatainak URL-címe** és illessze be a Jegyzettömbbe.
-    
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-msaadssojira5.2-tutorial/tutorial_metadataurl.png)
-     
+
 5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_general_400.png)
@@ -142,7 +143,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 6. Egy másik webes böngészőablakban jelentkezzen be a JIRA példányát rendszergazdaként.
 
 7. Vigye a mutatót a ikonjára, majd kattintson a **bővítmények**.
-    
+
     ![Egyszeri bejelentkezés konfigurálása](.\media\active-directory-saas-msaadssojira5.2-tutorial\addon1.png)
 
 8. A bővítmények lap szakaszban kattintson **bővítmények kezelése**.
@@ -166,19 +167,19 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     a. A **metaadatainak URL-CÍMÉT** szövegmező, Beillesztés **alkalmazás összevonási metaadatainak URL-címét** érték, amely a Azure-portálon, majd kattintson a másolt a **megoldásához** gomb. Beolvassa a kiállító terjesztési hely metaadatainak URL-CÍMÉT, és feltölti a mezők adatai.
 
-    b. Másolás a **azonosító, a válasz URL-CÍMEN és a bejelentkezési URL-címen** értéket, majd illessze be őket a **azonosító, a válasz URL-CÍMEN és a bejelentkezési URL-címen** szövegmezőből, illetve a **Microsoft Azure Active Directoryval az egyszeri bejelentkezés JIRA 5.2 tartomány és az URL-címek** Azure-portál szakaszban.
+    b. Másolás a **azonosító, a válasz URL-CÍMEN és a bejelentkezési URL-címen** értéket, majd illessze be őket a **azonosító, a válasz URL-CÍMEN és a bejelentkezési URL-címen** szövegmezőből, illetve a **JIRA SAML SSO Microsoft (V5.2) tartományhoz és URL-címek**  Azure-portál szakaszban.
 
     c. A **bejelentkezési gomb neve** írja be a szervezet által a felhasználók a bejelentkezési képernyőn látható gombra.
 
     d. A **SAML felhasználói azonosító helyek** válassza **felhasználói Azonosítóját a tulajdonos utasítás NameIdentifier elemében van** vagy **felhasználói azonosító attribútum elem van**.  Ez az azonosító nem lehet a JIRA felhasználói azonosítóját. Ha a felhasználói azonosító nem egyezik, majd rendszer nem segítségével a felhasználók a bejelentkezéshez.
 
     > [!Note]
-    > Alapértelmezett SAML Felhasználóazonosító helye azonosítója. Állítson be egy attribútum lehetőséget, és adja meg a megfelelő attribútum nevét. 
-    
+    > Alapértelmezett SAML Felhasználóazonosító helye azonosítója. Állítson be egy attribútum lehetőséget, és adja meg a megfelelő attribútum nevét.
+
     e. Ha **felhasználói azonosító attribútum elem van** beállítás, ezt a **attribútum neve** szövegmezőbe írja be a felhasználói azonosítót várt attribútum neve. 
 
     f. Ha az Azure ad-val (például az AD FS stb.) az összevont tartományt használ, majd kattintson a a **engedélyezése Hitelesítőtartományának feltárási** lehetőséget, majd konfigurálja a **tartománynév**.
-    
+
     g. A **tartománynév** írja be a tartomány nevét az AD FS-alapú bejelentkezés esetén.
 
     h. Ellenőrizze **engedélyezése egyszeri bejelentkezéshez kimenő** kívánja-e az Azure AD, ha a JIRA kijelentkezik a felhasználói jelentkezzen ki. 
@@ -219,10 +220,10 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-microsoft-azure-active-directory-single-sign-on-for-jira-52-test-user"></a>Hozzon létre egy Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 teszt felhasználó
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgáló JIRA, akkor ki kell építenie a Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2. A Microsoft Azure Active Directory egyszeri bejelentkezéshez az JIRA 5.2 egy kézi tevékenység.
+### <a name="create-a-jira-saml-sso-by-microsoft-v52-test-user"></a>Hozzon létre egy JIRA SAML SSO Microsoft (V5.2) teszt felhasználó
+
+Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgáló JIRA, akkor ki kell építenie az JIRA a helyi kiszolgálóra.
 
 **Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
 
@@ -230,11 +231,11 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgáló JIRA
 
 2. Vigye a mutatót a ikonjára, majd kattintson a **felhasználókezelés**.
 
-    ![Alkalmazott hozzáadása](.\media\active-directory-saas-msaadssojira5.2-tutorial\user1.png) 
+    ![Alkalmazott hozzáadása](.\media\active-directory-saas-msaadssojira5.2-tutorial\user1.png)
 
 3. Ekkor megnyílik a rendszergazdai hozzáférés lapon megadja a **jelszó** kattintson **megerősítése** gombra.
 
-    ![Alkalmazott hozzáadása](.\media\active-directory-saas-msaadssojira5.2-tutorial\user2.png) 
+    ![Alkalmazott hozzáadása](.\media\active-directory-saas-msaadssojira5.2-tutorial\user2.png)
 
 4. A **felhasználókezelés** szakasz lapra, majd **létrehozza a felhasználó**.
 
@@ -242,7 +243,7 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgáló JIRA
 
 5. Az a **"Új felhasználó létrehozása"** párbeszédpanel lapon, a következő lépésekkel:
 
-    ![Alkalmazott hozzáadása](.\media\active-directory-saas-msaadssojira5.2-tutorial\user4.png) 
+    ![Alkalmazott hozzáadása](.\media\active-directory-saas-msaadssojira5.2-tutorial\user4.png)
 
     a. Az a **E-mail cím** szövegmező, a felhasználó e-mail címe típusát, például Brittasimon@contoso.com.
 
@@ -256,19 +257,19 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a helyi kiszolgáló JIRA
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez használandó Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 való hozzáférés biztosítása.
+Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés által biztosított hozzáférés JIRA SAML SSO által Microsoft (V5.2) használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
-**A Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2 Britta Simon hozzárendeléséhez a következő lépésekkel:**
+**Britta Simon hozzárendelése JIRA SAML SSO által Microsoft (V5.2), hajtsa végre a következő lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2**.
+2. Az alkalmazások listában válassza ki a **JIRA SAML SSO által Microsoft (V5.2)**.
 
-    ![A Microsoft Azure Active Directory egyszeri bejelentkezéshez az alkalmazások listáját JIRA 5.2 hivatkozás](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_app.png)  
+    ![A JIRA SAML SSO az alkalmazások listáját a Microsoft (V5.2) kapcsolat](.\media\active-directory-saas-msaadssojira5.2-tutorial\tutorial_singlesign-onforjira5.2_app.png)
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
@@ -283,12 +284,12 @@ Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezéshez h
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Amikor a Microsoft Azure Active Directory egyszeri bejelentkezés JIRA 5.2 csempe a hozzáférési panelen kattint, meg kell beolvasása automatikusan aláírt a a Microsoft Azure Active Directoryval az egyszeri bejelentkezés JIRA 5.2 alkalmazás.
+Gombra a JIRA SAML SSO által Microsoft (V5.2) csempe a hozzáférési panelen meg kell beolvasása automatikusan bejelentkezett a JIRA SAML SSO a Microsoft (V5.2) alkalmazás.
 A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források

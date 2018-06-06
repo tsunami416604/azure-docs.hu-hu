@@ -13,18 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: 0b78ed6cdb1209d70cf0d561f74cfcddc09b2391
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 72fb594265e69eb1dc16cb29ad4df6acb3a87720
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34663627"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Alkalmazás regisztrálása az AD-bérlőben
 Először regisztrálnia kell az alkalmazás és az Azure Active Directory (Azure AD) bérlő. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.
 
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 * Az oldal jobb felső részén kattintson a fiókra, és válassza ki az Azure AD-bérlőt.
-* A bal oldali navigációs ablaktáblájában kattintson a **Azure Active Directory**.
+* A bal oldali navigációs ablakban kattintson az **Azure Active Directory** elemre.
 * Kattintson a **App regisztrációk** , majd kattintson a **új alkalmazás regisztrációja**.
 * Kövesse az utasításokat az új alkalmazás létrehozásához. Ebben az oktatóanyagban nincs jelentősége, hogy ez egy webalkalmazás vagy egy natív alkalmazás-e, de ha konkrét példákat szeretne látni a webalkalmazásokra vagy a natív alkalmazásokra, tekintse meg a [gyorsindítókat](../articles/active-directory/develop/active-directory-developers-guide.md).
   * A webes alkalmazásokhoz, adja meg a **bejelentkezési URL-cím**, az alap URL-CÍMÉT az alkalmazásához. Ez az adott felhasználó tud egyszerre bejelentkezni például `http://localhost:12345`.

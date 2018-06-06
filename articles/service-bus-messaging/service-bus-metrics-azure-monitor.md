@@ -3,22 +3,18 @@ title: Az Azure Service Bus metrikát a Azure Monitor (előzetes verzió) |} Mic
 description: Azure-figyelés használatával figyelheti a Service Bus-entitások
 services: service-bus-messaging
 documentationcenter: .NET
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/05/2018
+ms.date: 05/31/2018
 ms.author: sethm
-ms.openlocfilehash: 3660f0a6794a2fd784ec8846177da7effe7fe681
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bb0c9fcc33d6f5b54a8c2c8ad3e356a485d6ccbb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701294"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus metrikát a Azure Monitor (előzetes verzió)
 
@@ -64,8 +60,16 @@ Megjeleníti az adatok és felügyeleti műveletek kérelmek számát.
 | A bejövő kérések (előzetes verzió) | A megadott időszakban a Service Bus szolgáltatás felé intézett kérések száma. <br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
 |Sikeres kérések (előzetes verzió)|A sikeres kérelmek száma a Service Bus szolgáltatáshoz adott időszakon belül.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
 |Kiszolgálóhibákat (előzetes verzió)|Hiba történt a Service Bus szolgáltatásban egy adott időszakban nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
-|Felhasználó hibákat (előzetes verzió)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+|Felhasználó hibákat (előzetes verzió – tekintse meg a következő szakasz)|A megadott időszakban felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
 |Szabályozottan halmozott kérelmek (előzetes verzió)|A használati túllépése miatt volt halmozódni kérelmek száma.<br/><br/> Egység: száma <br/> Összesítési típusát: teljes <br/> Dimenzió: EntityName|
+
+### <a name="user-errors"></a>Felhasználói hibák
+
+A következő két típusú hibák besorolt felhasználói hibák:
+
+1. Ügyfél oldali hibák (a HTTP 400 hibák lesznek).
+2. Például üzenetek feldolgozása során előforduló hibákat [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
+
 
 ## <a name="message-metrics"></a>Üzenet metrikák
 

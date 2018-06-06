@@ -1,13 +1,14 @@
 ---
-title: "Az Azure Active Directory feltételes hozzáférési eszközházirendek Office 365-szolgáltatásokhoz |} Microsoft Docs"
-description: "További tudnivalók kiépítése a feltételes hozzáférési eszközházirendek segít a vállalati erőforrásokhoz, több biztonságos, felhasználói megfelelőség fenntartása mellett, a érhetnek el szolgáltatásokat."
+title: Az Azure Active Directory feltételes hozzáférési eszközházirendek Office 365-szolgáltatásokhoz |} Microsoft Docs
+description: További tudnivalók kiépítése a feltételes hozzáférési eszközházirendek segít a vállalati erőforrásokhoz, több biztonságos, felhasználói megfelelőség fenntartása mellett, a érhetnek el szolgáltatásokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8664c0bb-bba1-4012-b321-e9c8363080a0
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2b586aee9559b62d4cc8b21ab88ab193e61e7c14
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cc385edb6bf0b850eb97f0f6a233dd5081acbb3e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723958"
 ---
 # <a name="active-directory-conditional-access-device-policies-for-office-365-services"></a>Active Directory feltételes hozzáférési eszközházirendek Office 365-szolgáltatásokhoz
 
@@ -43,6 +45,6 @@ Eszközök regisztrálása az Azure AD eszközregisztrációs szolgáltatást ke
 
 Ha a helyszíni felhasználók készül kell hitelesíteni, Active Directory összevonási szolgáltatások (AD FS) (1.0-s verziója és újabb verziók) szükséges. A multi-factor authentication a munkahelyi csatlakoztatás esetén az identitásszolgáltató nem képes a multi-factor Authentication hitelesítés sikertelen lesz. Például többtényezős hitelesítés nem használható az AD FS 2.0-s. Győződjön meg arról, hogy a helyszíni AD FS működik a multi-factor Authentication hitelesítéshez, és egy érvényes multi-factor authentication módszer van beállítva, az Azure AD eszközregisztrációs szolgáltatást a többtényezős hitelesítést bekapcsolása előtt. Például a Windows Server 2012 R2 AD FS többtényezős hitelesítés képességekkel rendelkezik. Is be kell egy további érvényes hitelesítés (többtényezős hitelesítés) módszer az AD FS-kiszolgálón többtényezős hitelesítés az Azure AD eszközregisztrációs szolgáltatás bekapcsolása előtt. Az AD FS-ben támogatott többtényezős hitelesítési módszerekkel kapcsolatos további információkért lásd: [további hitelesítési módszerek konfigurálása az AD FS](/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 *   Gyakori kérdésekre adott válaszok, lásd: [Azure Active Directory feltételes hozzáférés – gyakori kérdések](active-directory-conditional-faqs.md).

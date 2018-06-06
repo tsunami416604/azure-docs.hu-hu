@@ -8,43 +8,35 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 7d05d3aa94fffb13a96fc9074d55d8fa67cadb04
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763119"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL az Azure-adatbázis korlátozásai
 A következő szakaszok ismertetik a kapacitás, tárolási motor támogatja, jogosultság, adatok adatkezelési utasítás támogatásának, és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
 
-## <a name="service-tier-maximums"></a>Szolgáltatási szint méretkorlát
-Azure MySQL-adatbázis egy kiszolgáló létrehozásakor választhat több szolgáltatásszinttel rendelkezik. További információkért lásd: [tarifacsomagok MySQL az Azure-adatbázis](concepts-pricing-tiers.md).  
+## <a name="maximum-connections"></a>A kapcsolatok maximális száma
+Tarifacsomag és vCores-kapcsolatok maximális száma a következők: 
 
-Van a kapcsolatok, a számítási egység és a tárolás, az egyes szolgáltatásszintek tartalmának maximális száma az alábbiak szerint: 
+|**Tarifacsomag**|**vCore(s)**| **Kapcsolatok maximális száma**|
+|---|---|---|
+|Alapszintű| 1| 50|
+|Alapszintű| 2| 100|
+|Általános rendeltetés| 2| 300|
+|Általános rendeltetés| 4| 625|
+|Általános rendeltetés| 8| 1250|
+|Általános rendeltetés| 16| 2500|
+|Általános rendeltetés| 32| 5000|
+|Memóriára optimalizált| 2| 600|
+|Memóriára optimalizált| 4| 1250|
+|Memóriára optimalizált| 8| 2500|
+|Memóriára optimalizált| 16| 5000|
 
-|**Tarifacsomag**| **Számítási létrehozása**|**vCore(s)**| **Kapcsolatok maximális száma**|
-|---|---|---|---|
-|Alapszintű| Gen 4| 1| 50|
-|Alapszintű| Gen 4| 2| 100|
-|Alapszintű| Gen 5| 1| 50|
-|Alapszintű| Gen 5| 2| 100|
-|Általános rendeltetés| Gen 4| 2| 300|
-|Általános rendeltetés| Gen 4| 4| 625|
-|Általános rendeltetés| Gen 4| 8| 1250|
-|Általános rendeltetés| Gen 4| 16| 2500|
-|Általános rendeltetés| Gen 4| 32| 5000|
-|Általános rendeltetés| Gen 5| 2| 300|
-|Általános rendeltetés| Gen 5| 4| 625|
-|Általános rendeltetés| Gen 5| 8| 1250|
-|Általános rendeltetés| Gen 5| 16| 2500|
-|Általános rendeltetés| Gen 5| 32| 5000|
-|Memóriára optimalizált| Gen 5| 2| 600|
-|Memóriára optimalizált| Gen 5| 4| 1250|
-|Memóriára optimalizált| Gen 5| 8| 2500|
-|Memóriára optimalizált| Gen 5| 16| 5000|
-
-Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
+Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet meg:
 > 1040 (08004). hiba: Túl sok a kapcsolat
 
 ## <a name="storage-engine-support"></a>Storage engine támogatása
@@ -86,9 +78,7 @@ Túl sok a kapcsolat elérésekor a következő hibaüzenet jelenhet meg:
 - Különböző szolgáltatási rétegben és/vagy számítási egység és a tárhely mérete visszaállítása nem engedélyezett.
 - A Törölt kiszolgáló visszaállítása nem támogatott.
 
-## <a name="functional-limitations"></a>Működési korlátai
-
-### <a name="subscription-management"></a>Előfizetés kezelése
+### <a name="subscription-management"></a>Előfizetés-kezelés
 - Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
 
 ## <a name="current-known-issues"></a>Jelenlegi ismert problémái

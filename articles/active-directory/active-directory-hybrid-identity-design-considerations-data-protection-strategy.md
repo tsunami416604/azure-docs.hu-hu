@@ -1,11 +1,11 @@
 ---
-title: "Hibrid identitás Tervező - data protection stratégia Azure |} Microsoft Docs"
-description: "A hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, hogy a megadott adatok védelmi stratégia meghatározása"
-documentationcenter: 
+title: Hibrid identitás Tervező - data protection stratégia Azure |} Microsoft Docs
+description: A hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, hogy a megadott adatok védelmi stratégia meghatározása
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d43be976f9b3fae7f3cbec1a0033f1a401ede896
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 71a49b3d1ce22906a534a71f745685981b93f594
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801898"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az adatok védelme stratégia meghatározása
 Ebben a feladatban fogja definiálni, a data protection stratégiája a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, amelyet a megadott:
@@ -44,7 +46,7 @@ Attól függően, hogy hogyan válaszolt kérdéseit [adatvédelmi követelmény
 | --- | --- | --- | --- |
 | BitLocker meghajtótitkosítás |X |X | |
 | SQL Server adatbázisok titkosítása |X |X | |
-| VM-to-VM Encryption | | |X |
+| VM-VM-titkosítás | | |X |
 | SSL/TLS | | |X |
 | VPN | | |X |
 

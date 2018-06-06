@@ -1,11 +1,11 @@
 ---
-title: "Használati és a Felhőbeli szolgáltató Azure verem számlázási kezelése |} Microsoft Docs"
-description: "Egy a lépésein végighaladva felhőszolgáltatóként Azure verem regisztrálása és az ügyfelek hozzáadása."
+title: Használati és a Felhőbeli szolgáltató Azure verem számlázási kezelése |} Microsoft Docs
+description: Egy a lépésein végighaladva felhőszolgáltatóként Azure verem regisztrálása és az ügyfelek hozzáadása.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 23e3a675e6a464c92d26df220c8126c970f590a0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 21a52af4943004789b0a9bdbe4695ab1a603c046
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796699"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használati és a Felhőbeli szolgáltató Azure verem számlázási kezelése 
 
@@ -40,7 +41,7 @@ Az alábbi ábrán látható a lépéseket, válassza ki a megosztott szolgálta
 
 Akkor válassza ki a megosztott szolgáltatások fiókkal, mellyel be Azure verem. Az előfizetések regisztrációja egy több-bérlős Azure verem használható a típusok a következők:
 
- - Cloud Service Provider 
+ - Felhőszolgáltató 
  - Partner megosztott szolgáltatások előfizetés 
 
 #### <a name="csp-shared-services"></a>Kriptográfiai Szolgáltató megosztott szolgáltatások
@@ -84,4 +85,4 @@ Mivel a bérlői előfizetések CSP előfizetések, a számlázási a rendszer e
 ## <a name="next-steps"></a>További lépések
 
  - A kriptográfiai Szolgáltató program kapcsolatos további információkért lásd: [Cloud Solution Provider programot](https://partnercenter.microsoft.com/en-us/partner/programs).
- - Hogyan lehet lekérni az erőforrás-használati adatait az Azure oszlopból kapcsolatos további információkért lásd: [használati és számlázási Azure verem](/azure-stack-billing-and-chargeback.md).
+ - Hogyan lehet lekérni az erőforrás-használati adatait az Azure oszlopból kapcsolatos további információkért lásd: [használati és számlázási Azure verem](azure-stack-billing-and-chargeback.md).

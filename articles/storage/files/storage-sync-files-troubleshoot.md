@@ -4,21 +4,21 @@ description: Az Azure fájlszinkronizálás kapcsolatos gyakori hibák elhárít
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea05c29bb40b595ad32304df55a79a9cf82acc18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738438"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Hibaelhárítás az Azure fájlszinkronizálás (előzetes verzió)
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -29,6 +29,9 @@ Ez a cikk célja, és esetleg előforduló Azure fájlszinkronizálás telepít�
 2. [Az Azure Storage fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Azure-fájlokat UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. A Microsoft ügyfélszolgálata. Az Azure portálon, egy új támogatási kérelem létrehozásához a **súgó** lapon jelölje be a **súgó + támogatás** gombra, és válassza **új támogatja a kérelem**.
+
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Problémáim Azure fájlszinkronizálás problémát (szinkronizálása, felhőalapú rétegezési, stb.) a kiszolgálón. I távolítsa el, majd hozza létre újra a saját kiszolgáló végpont?
+[!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="storage-sync-service-object-management"></a>Szinkronizálási szolgáltatás objektum Tároláskezelés
 Ha törli egy erőforrás-Áthelyezés egy előfizetés másik előfizetést, fájladatforrások sync (tároló szinkronizálási szolgáltatás) le lesz tiltva áthelyezését. 
@@ -154,7 +157,7 @@ Ha a szinkronizálás nem sikerül, a kiszolgálón:
     2. Győződjön meg arról, hogy az Azure fájl szinkronizálási szolgáltatás fut-e a kiszolgálón. Ehhez nyissa meg a szolgáltatások beépülő MMC-modulban, és ellenőrizze, hogy fut-e a tárolási szinkronizálási ügynök szolgáltatás (FileSyncSvc).
 
 <a id="replica-not-ready"></a>**Szinkronizálás sikertelen, hiba: "0x80c8300f - a replika nem áll készen a szükséges művelet"**  
-A probléma várható, ha egy felhő-végpont létrehozása és az Azure fájlmegosztások használja, amely adatokat tartalmaz. A módosítás észlelése a változásokat a Azure fájlmegosztás vizsgálatok esetén 24 óránként van ütemezve.  Az idő befejezéséhez az a névtér a Azure fájlmegosztás méretétől függ.  Ez a hiba kell eltűnik befejezése után.
+A probléma várható, ha egy felhő-végpont létrehozása és az Azure fájlmegosztások használja, amely adatokat tartalmaz. A módosítás észlelése a változásokat az Azure fájlmegosztások vizsgálatok esetén 24 óránként van ütemezve.  Az idő befejezéséhez az a névtér Azure fájlmegosztás méretétől függ.  Ez a hiba kell eltűnik befejezése után.
 
 
     > [!NOTE]

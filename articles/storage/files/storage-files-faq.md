@@ -5,22 +5,23 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737809"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések (GYIK)
-[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (más néven Common Internet File System vagy CIFS). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
+[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
 
 Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat, beleértve az Azure fájlszinkronizálás Azure fájlokkal kapcsolatos gyakori kérdésekre. Ha nem látja a választ a kérdésére, lépjen kapcsolatba velünk (a növekvő sorrendben) a következő csatornákon keresztül:
 
@@ -188,6 +189,14 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 * <a id="afs-os-support"></a>
 **Használható a Windows Server 2008 R2, a Linux vagy a hálózati csatolású (NAS) tárolóeszköz Azure fájlszinkronizálás?**  
     Azure fájlszinkronizálás jelenleg csak a Windows Server 2016 és a Windows Server 2012 R2. Jelenleg nem tudunk bármely más terveket is osztjuk meg, de meg van nyitva támogató ügyfelek igény szerint további platformok még. Ossza meg velünk [Azure fájlok UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) milyen platformok szeretné támogatásához.
+
+* <a id="afs-tiered-files-out-of-endpoint"></a>
+**Miért léteznek a rétegzett fájlok kívül a kiszolgáló végpont névtér?**  
+    Azure fájlszinkronizálás ügynök-es vagy korábbi 3 Azure fájlszinkronizálás rétegzett fájlok, a kiszolgáló végpont kívül, de a kiszolgáló végpont ugyanazon a köteten az áthelyezés letiltva. Másolási művelet, a fájlok nem rétegzett áthelyezi, és a helyezi át a rétegzett más kötetek sérült volt. Ez a jelenség oka volt a implicit feltételezve, hogy a Fájlkezelőben és a többi Windows API-k, amelyek ugyanazon a köteten műveletek áthelyezése instanenous átnevezése műveletek (majdnem). Ez azt jelenti, hogy a kurzor megkönnyítő fájlkezelő vagy egyéb move metódussal (például a parancssor vagy PowerShell) válaszol, amíg Azure fájlszinkronizálás visszaírja az adatokat a felhőből. Kezdve [Azure fájlszinkronizálás ügynökverzió 3.0.12.0](storage-files-release-notes.md#agent-version-30120), Azure fájlszinkronizálás lehetővé teszi a kiszolgáló végpont kívül rétegzett fájl áthelyezése. A korábban említett engedélyezi a rétegzett fájl létezik-e a kiszolgáló végpont kívül egy rétegzett fájlt, és ezután tárolóról a fájlt a háttérben negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi ugyanazon kötet instaneous, és végezzük előhívja a lemezre a fájlt, az áthelyezés után a munkát. 
+
+* <a id="afs-do-not-delete-server-endpoint"></a>
+**Problémáim Azure fájlszinkronizálás problémát (szinkronizálása, felhőalapú rétegezési, stb.) a kiszolgálón. I távolítsa el, majd hozza létre újra a saját kiszolgáló végpont?**  
+    [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="security-authentication-and-access-control"></a>Biztonsági, hitelesítési és hozzáférés-vezérlés
 * <a id="ad-support"></a>

@@ -1,29 +1,25 @@
 ---
-title: "Váltás utasítások - Futtatás lépéseket a konkrét értékek - Azure Logic Apps alapján |} Microsoft Docs"
-description: "Objektumok, kifejezés vagy tokeneket a logic apps értékei alapján különböző lépések futtatásával"
+title: Adja hozzá a kapcsoló utasításokat a munkafolyamatokat – Azure Logic Apps |} Microsoft Docs
+description: Az Azure Logic Apps megadott értékek alapján munkafolyamat-műveleteket szabályzó kapcsoló utasítás létrehozása
 services: logic-apps
-keywords: "Switch utasítás"
-author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: e1f515189be8a5659af0f6c29b3fac0550abc9f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 2ffac49d14e05ff252d6cd0e90fc23d77ac0caff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726074"
 ---
-# <a name="switch-statements-run-different-steps-based-on-specific-values-in-logic-apps"></a>Váltás utasításokat: különböző lépéseket a logic apps a megadott értékek alapján
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Rendszert futtató munkafolyamat-műveleteket az Azure Logic Apps megadott értékek alapján kapcsoló utasítás létrehozása
 
-Objektum, a kifejezés vagy a token értékei alapján különböző lépések végrehajtásához használja a *kapcsoló* utasítást. Ez a struktúra kiértékeli az objektum, kifejezés vagy token, úgy dönt, az eset, amely megfelel az eredmény, és csak az adott esethez lépéseket futtatja. Amikor a switch utasítás fut, csak egyetlen esetet meg kell felelnie az eredményt.
+Objektumok, kifejezés vagy jogkivonatok értékek alapján a konkrét műveletek futtatására, vegye fel a *kapcsoló* utasítást. Ez a struktúra kiértékeli az objektum, kifejezés vagy token, kiválasztja azt az esetet, amely megfelel az eredmény, és adott esetben csak a konkrét műveletek futtatása. Amikor a switch utasítás fut, csak egyetlen esetet meg kell felelnie az eredményt.
 
 Tegyük fel például azt szeretné, hogy a logikai alkalmazás, amely végrehajtja az e-mailben kiválasztott lehetőségnek alapján különböző műveleteket. Ebben a példában a logikai alkalmazás ellenőrzi a webhely RSS-hírcsatorna új tartalom. Az RSS-hírcsatorna megjelenik egy új elemet, a logikai alkalmazás jóváhagyó e-mailt küld. Hogy a jóváhagyó választja-e a "Jóváhagyás" vagy "Elutasítás" alapján, a logikai alkalmazás eltérő módon történik.
 

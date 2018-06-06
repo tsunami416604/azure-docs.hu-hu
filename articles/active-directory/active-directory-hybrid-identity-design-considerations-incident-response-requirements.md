@@ -1,11 +1,11 @@
 ---
-title: "Hibrid identitás Tervező - incidensválasz-követelmények Azure |} Microsoft Docs"
-description: "Határozza meg a figyelési és jelentéskészítési szolgáltatásait a hibrid identitáskezelési megoldás, amely szerint is javítható az informatikai részleg feltételkészleteket azonosításában és kiküszöbölésében potenciális fenyegetések"
-documentationcenter: 
+title: Hibrid identitás Tervező - incidensválasz-követelmények Azure |} Microsoft Docs
+description: Határozza meg a figyelési és jelentéskészítési szolgáltatásait a hibrid identitáskezelési megoldás, amely szerint is javítható az informatikai részleg feltételkészleteket azonosításában és kiküszöbölésében potenciális fenyegetések
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 1521c3c7353d206df8a95b2cce1f3358c22fc438
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 09dfa0bd01a7de95ba6ce3093ddf589595116aa6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801058"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás incidensválasz-követelmények meghatározása
 Közepes vagy nagy szervezetek valószínűleg fog rendelkezni a [biztonsági incidensekre adott reakciók](https://technet.microsoft.com/library/cc700825.aspx) lehetőségét informatikai műveletek ennek megfelelően az incidens szintjére. Az identity management rendszer fontos összetevője a incidensválasz folyamat oka használható végző felhasználók listáját egy bizonyos művelet a célon azonosítása érdekében. A hibrid identitáskezelési megoldás lehet kell biztosítania a figyelési és jelentéskészítési képességekkel, amelyek szerint kihasználható informatikai azonosításához, és a potenciális fenyegetések mérséklésére műveletekre. Egy tipikus incidensválasz tervben a következő fázisok lesz a terv részeként:

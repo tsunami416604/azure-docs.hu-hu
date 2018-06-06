@@ -1,25 +1,19 @@
 ---
 title: Azure IoT Hub közvetlen módszerek megértése |} Microsoft Docs
 description: Fejlesztői útmutató - használjon közvetlen módszerek meghívni a kódot az eszközök egy szolgáltatás alkalmazásból.
-services: iot-hub
-documentationcenter: .net
 author: nberdy
-manager: timlt
-editor: ''
-ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
+manager: briz
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/29/2018
+services: iot-hub
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: nberdy
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a35c88ac053b43d4a95b5bef92f3ebfb03567e2b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: da9672c7a924411136928d8d04e54c2c62a014b9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736677"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Ismertetés és az IoT-központ közvetlen metódusok
 Az IoT-központ lehetővé teszi az eszközök a felhőből közvetlen módszerek meghívására. Közvetlen módszerek határoz meg egy kérelem-válasz interakció egy HTTP-hívás hasonló eszközökkel abban, hogy sikeres legyen, vagy közvetlenül (felhasználó által meghatározott időtúllépési) után sikertelen. Ez a megközelítés forgatókönyvekben, ahol azonnali lépéseket, attól függően, hogy képesek válaszolni volt-e az eszköz különböző érdemes használni.
@@ -85,6 +79,11 @@ A háttér-alkalmazást, amely magában választ kap:
     ```
 
     Mindkét `status` és `body` az eszköz által biztosított és a használt szeretne válaszolni az eszköz saját állapotkód és/vagy a leírását.
+
+### <a name="method-invocation-for-iot-edge-modules"></a>A metódushívás IoT peremhálózati modulok
+A C# tulajdonságazonosító támogatott modullal hívása közvetlen módszerek előzetes SDK (rendelkezésre álló [Itt](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
+
+Erre a célra használja a `ServiceClient.InvokeDeviceMethodAsync()` metódus, és adjon át a `deviceId` és `moduleId` paraméterekként.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Kezeli az eszközön a közvetlen módszer
 ### <a name="mqtt"></a>MQTT

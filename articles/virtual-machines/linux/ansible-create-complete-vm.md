@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d3514b57b5dc3541dd0a3c0f584fd689749ada7c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716458"
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Hozzon létre egy teljes Linux virtuális gép környezetet az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy teljes körű Linux környezetet és az azt támogató Ansible erőforrásokhoz. Azt is megtudhatja hogyan [hozzon létre egy egyszerű virtuális gép Ansible](ansible-create-vm.md).
@@ -37,6 +38,8 @@ Ansible az Azure-erőforrások kezeléséhez, a következőkre lesz szüksége:
 
 
 ## <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
+Most, minden szakasza egy Ansible alkalmazástervezési keresse meg, és hozza létre az egyes Azure-erőforrások. Tekintse meg a teljes alkalmazástervezési [ebben a szakaszban a cikk](#complete-ansible-playbook).
+
 Egy Ansible forgatókönyv a következő szakasz létrehoz egy virtuális hálózatot nevű *myVnet* a a *10.0.0.0/16* címtér:
 
 ```yaml
@@ -115,14 +118,14 @@ Az utolsó lépés a virtuális gép létrehozása és használata a létrehozot
     vm_size: Standard_DS1_v2
     admin_username: azureuser
     ssh_password_enabled: false
-    ssh_public_keys: 
+    ssh_public_keys:
       - path: /home/azureuser/.ssh/authorized_keys
         key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
     network_interfaces: myNIC
     image:
       offer: CentOS
       publisher: OpenLogic
-      sku: '7.3'
+      sku: '7.5'
       version: latest
 ```
 
@@ -176,18 +179,18 @@ Ezek a szakaszok egyesítik, hozzon létre egy Ansible alkalmazástervezési nev
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       ssh_password_enabled: false
-      ssh_public_keys: 
+      ssh_public_keys:
         - path: /home/azureuser/.ssh/authorized_keys
           key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
       network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 
-Ansible kell azokat az erőforrások telepítése egy erőforráscsoportot. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/vm#az_vm_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Ansible kell azokat az erőforrások telepítése egy erőforráscsoportot. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

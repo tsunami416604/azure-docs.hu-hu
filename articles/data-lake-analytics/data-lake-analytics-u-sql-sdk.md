@@ -1,28 +1,24 @@
 ---
-title: Skála U-SQL helyi futtatása és a teszt Azure Data Lake U-SQL-SDK-val |} Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure Data Lake U-SQL SDK méretezési U-SQL feladatok helyi futtatása és a vizsgálat a parancssor és a helyi munkaállomáson alkalmazásprogramozási felületek.
+title: Futtathatja és tesztelheti a U-SQL feladatok helyileg az Azure Data Lake U-SQL SDK használatával
+description: Megtudhatja, hogyan futtathatja és tesztelheti a U-SQL feladatok helyben a parancssorból, és fejlesztői felületek a helyi munkaállomáson.
 services: data-lake-analytics
-documentationcenter: ''
-author: ''
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/01/2017
+author: yanacai
 ms.author: yanacai
-ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737071"
 ---
-# <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Skála U-SQL helyi futtatása és a teszt Azure Data Lake U-SQL-SDK-val
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Futtathatja és tesztelheti a U-SQL Azure Data Lake U-SQL-SDK-val
 
-U-SQL parancsfájl fejlesztésekor közös futtatásához és tesztelhet U-SQL parancsfájl helyi előtt küldje el a felhőben. Azure Data Lake biztosít az Azure Data Lake U-SQL SDK hívása ebben a forgatókönyvben a Nuget-csomagot, keresztül, amely könnyedén méretezhető U-SQL helyi futtatásával és a vizsgálat. Akkor is a U-SQL teszt integrálása CI (folyamatos integrációt) rendszer automatizálhatja a fordítási és teszteléséhez.
+U-SQL parancsfájl fejlesztésekor közös futtatásához és tesztelhet U-SQL parancsfájl helyi előtt küldje el a felhőben. Azure Data Lake biztosít az Azure Data Lake U-SQL SDK hívása ebben a forgatókönyvben a Nuget-csomagot, keresztül, amely könnyedén méretezhető U-SQL futtatása és a vizsgálat. Akkor is a U-SQL teszt integrálása CI (folyamatos integrációt) rendszer automatizálhatja a fordítási és teszteléséhez.
 
 Ha az Ön számára legfontosabb hogyan manuálisan a helyi Futtatás és hibakeresési grafikus felhasználói Felülettel tooling U-SQL parancsfájlt, majd használható Azure Data Lake Tools for Visual Studio, amely. Többet is megtudhat [Itt](data-lake-analytics-data-lake-tools-local-run.md).
 
@@ -68,7 +64,7 @@ U-SQL-parancsfájlok használhatja relatív elérési út és a helyi abszolút 
 
 A U-SQL parancsfájl helyben fut, amikor egy működő könyvtárba aktuális futtatási könyvtárának a fordítás során jön létre. A fordítás kimenetek mellett a szükséges futásidejű fájlok helyi végrehajtásra lesz a munkakönyvtárba árnyékmásolat. Working directory gyökérmappájába "ScopeWorkDir" nevezik, és a munkakönyvtárat a fájlok a következők:
 
-|Directory/file|Directory/file|Directory/file|Meghatározás|Leírás|
+|Könyvtár vagy fájl|Könyvtár vagy fájl|Könyvtár vagy fájl|Meghatározás|Leírás|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Kivonat karakterláncot futtatókörnyezet-verzió|A helyi végrehajtásához szükséges futásidejű fájlok árnyékmásolatát|
 | |Script_66AE4909AA0ED06C| |Parancsfájl neve + kivonat karakterláncot a parancsprogram elérési útja|Fordítási kimenetek és végrehajtási lépés a naplózás|
@@ -77,7 +73,7 @@ A U-SQL parancsfájl helyben fut, amikor egy működő könyvtárba aktuális fu
 | | |\_ScopeCodeGenEngine\_. *|A fordítóprogram kimenetének|Létrehozott natív kód|
 | | |hivatkozott szerelvények|Szerelvényre mutató hivatkozás|Hivatkozott szerelvény fájlok|
 | | |deployed_resources|Erőforrások telepítése|Erőforrás-telepítési fájlok|
-| | |xxxxxxxx.xxx[1..n]\_\*.*|Végrehajtási napló|A végrehajtási lépések napló|
+| | |xxxxxxxx.xxx[1..n]\_\*. *|Végrehajtási napló|A végrehajtási lépések napló|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Az SDK-val a parancssorból
@@ -153,7 +149,7 @@ A következők: nem kötelező argumentumainak **futtatása**:
 |-UdoRedirect|False (Hamis)|Udo szerelvény átirányítási config készítése|
 |-UseDatabase|master|Az ideiglenes szerelvények regisztrálásakor háttérkódot használandó adatbázis|
 |-Verbose|False (Hamis)|A futásidejű részletes kimenetének megjelenítése|
-|-WorkDir|Jelenlegi Active Directory|A fordító használati és a kimeneti könyvtár|
+|-WorkDir|Aktuális könyvtárhoz|A fordító használati és a kimeneti könyvtár|
 |-RunScopeCEP|0|ScopeCEP módot használja|
 |-ScopeCEPTempPath|TEMP|Ideiglenes útvonalat a streamelési adatok|
 |-OptFlags| |Optimalizáló jelzők vesszővel elválasztott listája|
@@ -212,12 +208,12 @@ A **hajtható végre** parancs hajthatók végre a lefordított eredmények.
 
 A következők: nem kötelező argumentumainak **hajtható végre**:
 
-|Argumentum|Leírás|
-|--------|-----------|
-|-DataRoot [alapértelmezett érték "]|A metaadatok végrehajtás adatgyökerében. Alapértelmezés szerint az a **LOCALRUN_DATAROOT** környezeti változó.|
-|-MessageOut [alapértelmezett érték "]|A konzol egy fájlba az üzenetek dump.|
-|-Párhuzamos [alapértelmezett értéke "1"]|A létrehozott helyi futtatási lépéseket futtatni a megadott párhuzamossági szintű mutató.|
-|-Verbose [alapértelmezett érték "Hamis"]|A futásidejű részletes kimenetének megjelenítése mutató.|
+|Argumentum|Alapértelmezett érték|Leírás|
+|--------|-------------|-----------|
+|-DataRoot | '' |A metaadatok végrehajtás adatgyökerében. Alapértelmezés szerint az a **LOCALRUN_DATAROOT** környezeti változó.|
+|-MessageOut | '' |A konzol egy fájlba az üzenetek dump.|
+|-Párhuzamos | "1" |A létrehozott helyi futtatási lépéseket futtatni a megadott párhuzamossági szintű mutató.|
+|-Verbose | "False" |A futásidejű részletes kimenetének megjelenítése mutató.|
 
 Íme egy példa:
 
@@ -237,7 +233,7 @@ Az alkalmazásprogramozási felületek a LocalRunHelper.exe a találhatók. A U-
 
 - U-SQL SDK **csak** támogatási x64 környezet, ügyeljen arra, hogy x64 build platform célként beállítva. Beállíthatja, hogy a projekt tulajdonságon keresztül > Build > Platform cél.
 
-    ![Azure Data Lake U-SQL SDK Configure x64 Project](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
+    ![Azure Data Lake U-SQL SDK konfigurálása x64 projekt](./media/data-lake-analytics-u-sql-sdk/data-lake-analytics-u-sql-sdk-configure-x64.png)
 
 - Ügyeljen arra, hogy a tesztkörnyezet beállítása x64. A Visual Studio állíthatja keresztül Test > vizsgálati beállítások > alapértelmezett processzorarchitektúra > x64.
 
@@ -369,7 +365,7 @@ nyilvános LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 **Módszer**
 
-|Módszer|Leírás|Visszatérési érték|Paraméter|
+|Módszer|Leírás|térjen vissza|Paraméter|
 |------|-----------|------|---------|
 |nyilvános bool DoCompile()|A U-SQL parancsfájl összeállítása|Sikeres művelet igaz| |
 |nyilvános bool DoExec()|A lefordított eredmény végrehajtása|Sikeres művelet igaz| |

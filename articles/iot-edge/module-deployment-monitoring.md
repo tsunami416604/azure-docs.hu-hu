@@ -1,19 +1,19 @@
 ---
 title: Modulok telepítése Azure IoT peremhálózati |} Microsoft Docs
 description: 'További tudnivalók: hogyan modulok telepítve, a peremhálózati eszköz'
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 880a17b6029dafec9ed41e3a32802dc42b872e77
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725326"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű megismerése – előzetes
 
@@ -25,7 +25,7 @@ Hajtsa végre az Azure IoT peremeszközök egy [eszközéletciklus] [ lnk-lifecy
 
 Az Azure IoT peremhálózati IoT peremhálózati eszközökön való futtatásához a modulok konfigurálása két lehetőséget biztosít: egyet a fejlesztési és gyors ismétlési egy eszközön (az Azure IoT peremhálózati oktatóanyagok a használt), és egy IoT peremeszközök nagy flottái kezeléséhez. Ezen módszerek esetén érhető el az Azure portálon és szoftveresen.
 
-Ez a cikk a konfigurációs összpontosít, és figyelési eszközök flották szakaszból együttesen a IoT peremhálózati központi telepítések. A teljes üzembe helyezés lépései a következők:   
+Ez a cikk a konfigurációs összpontosít, és figyelési eszközök flották szakaszból együttesen a IoT peremhálózati automatikus telepítések. A teljes üzembe helyezés lépései a következők:   
 
 1. Operátor határozza meg a központi telepítések, modulok, valamint a Céleszközök együttesét írja le. Minden központi telepítés rendelkezik egy üzembe helyezési jegyzék, amely tükrözi ezt az információt. 
 1. Az IoT-központ szolgáltatás az összes megcélzott eszköz konfigurálhatja azokat a kívánt modulok kommunikál. 
@@ -34,9 +34,9 @@ Ez a cikk a konfigurációs összpontosít, és figyelési eszközök flották s
  
 Ez a cikk végigvezeti a minden érintett konfigurálása, és a központi telepítés figyelésének összetevőt. Létrehozása és frissítése a központi telepítés részletes útmutatás, lásd: [központi telepítése és figyelése IoT peremhálózati modulok léptékű][lnk-howto].
 
-## <a name="deployment"></a>Üzemelő példány
+## <a name="deployment"></a>Környezet
 
-A központi telepítés IoT peremhálózati modul lemezképek IoT peremeszközök a célzott megfelelő példányokat futtató rendeli hozzá. Működését tekintve a konfigurálása egy IoT peremhálózati üzembe helyezési jegyzék tartalmazza a megfelelő paraméterekkel inicializálási modulokat. A központi telepítés rendelhetők hozzá egyetlen eszközt (általában eszközazonosító alapján), vagy egy eszközcsoportra (címkék alapján). IoT peremhálózati eszköz egy üzembe helyezési jegyzék kap, ha azt letölti a modul tároló képek telepíti a megfelelő tárolót tárházak találhatók, és ennek megfelelően konfigurálja azokat. A központi telepítés létrehozása után operátor figyelheti a központi telepítési állapotának megtekintéséhez, hogy a megcélzott eszköz helyesen van-e konfigurálva.   
+Az IoT-Edge automatikus központi telepítési IoT peremhálózati modul lemezképek IoT peremeszközök a célzott megfelelő példányokat futtató rendeli hozzá. Működését tekintve a konfigurálása egy IoT peremhálózati üzembe helyezési jegyzék tartalmazza a megfelelő paraméterekkel inicializálási modulokat. A központi telepítés rendelhetők hozzá egyetlen eszközt (általában eszközazonosító alapján), vagy egy eszközcsoportra (címkék alapján). IoT peremhálózati eszköz egy üzembe helyezési jegyzék kap, ha azt letölti a modul tároló képek telepíti a megfelelő tárolót tárházak találhatók, és ennek megfelelően konfigurálja azokat. A központi telepítés létrehozása után operátor figyelheti a központi telepítési állapotának megtekintéséhez, hogy a megcélzott eszköz helyesen van-e konfigurálva.   
 
 Eszközök kell üzembe helyezhető IoT peremeszközök állítani azokat a központi telepítés. A következő előfeltételek, és nem szerepelnek a központi telepítés:
 * Az alap operációs rendszer

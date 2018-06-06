@@ -8,18 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 6384f63139eb64522409c5922e187afd878ebb09
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714136"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Kezelés az Azure Active Directoryban bemutatása
 
@@ -30,9 +32,9 @@ Mobileszköz-first, a felhő-első világában Azure Active Directory (Azure AD)
 
 Eszközön a felhasználók kihozhatják hozzáférés a vállalati eszközöket. A vállalati eszközök védelme informatikai rendszergazdaként, szeretné befolyásolni ezeket az eszközöket. Ez lehetővé teszi, hogy győződjön meg arról, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. 
 
-Eszközkezelés egyben a alapját [eszközalapú feltételes hozzáférési](active-directory-conditional-access-policy-connected-applications.md). Eszközalapú feltételes hozzáféréssel biztosíthatja, hogy az erőforrásoknak a környezetben való hozzáférés csak megbízható eszközökkel való lehetőség.   
+Eszközkezelés egyben a alapját [eszközalapú feltételes hozzáférési](active-directory-conditional-access-policy-connected-applications.md). Az eszközalapú feltételes hozzáférés biztosítható, hogy az erőforrásoknak a környezetben való hozzáférés csak felügyelt eszközökkel való lehetőség.   
 
-Ez a témakör ismerteti, hogyan működik a kezelés az Azure Active Directoryban.
+Ez a cikk ismerteti, hogyan működik a kezelés az Azure Active Directoryban.
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Az Azure AD felügyelete alatt eszközök
 
@@ -122,7 +124,7 @@ Az Azure AD hibrid csatlakoztatott eszközöket kell használnia, ha:
 
 - Rendelkezik Win32-alkalmazások telepítését ezekre az eszközökre, amelyek NTLM / Kerberos.
 
-- Szüksége van a csoportházirend vagy SCCM / DCM eszközök kezelésére.
+- Eszközkezelés a csoportházirend van szüksége.
 
 - Biztosan folytatja a lemezkép-készítési megoldások segítségével konfigurálhatja az eszközöket az alkalmazottak számára.
 

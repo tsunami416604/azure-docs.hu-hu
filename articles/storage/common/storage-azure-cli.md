@@ -14,11 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737368"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Az Azure parancssori felület 2.0 használatával az Azure Storage
 
@@ -320,7 +321,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 Az Azure Files a Server Message Block (SMB) protokollt használó alkalmazások számára közös tárterületet biztosít. A Microsoft Azure virtuális gépek és felhőszolgáltatások, valamint a helyszíni alkalmazások megosztott csatlakoztatott megosztásokon keresztül. A fájlmegosztások és a fájladatok az Azure parancssori felület használatával kezelheti. Azure fájlokon további információkért lásd: [Bevezetés az Azure Fileshoz](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
-Egy Azure fájlmegosztás egy SMB-fájlmegosztás, az Azure-ban. Minden könyvtárak és fájlok fájlmegosztást kell létrehozni. Egy fiók korlátlan számú megosztást tartalmazhat, és a megosztás tud tárolni a fájlokat, a tárfiók a kapacitás határértékekig korlátlan számú. Az alábbi példa létrehoz egy nevű fájlmegosztás **megosztás**.
+Az Azure fájlmegosztások SMB-fájlmegosztás az Azure-ban. Minden könyvtárak és fájlok fájlmegosztást kell létrehozni. Egy fiók korlátlan számú megosztást tartalmazhat, és a megosztás tud tárolni a fájlokat, a tárfiók a kapacitás határértékekig korlátlan számú. Az alábbi példa létrehoz egy nevű fájlmegosztás **megosztás**.
 
 ```azurecli
 az storage share create --name myshare
@@ -394,7 +395,7 @@ Minta kimenet
 }
 ```
 
-### <a name="list-share-snapshots"></a>Lista megosztás pillanatképek
+### <a name="list-share-snapshots"></a>Megosztási pillanatképek felsorolása
 
 Előfordulhat, hogy felsorolja megosztás pillanatképek egy adott használatával `az storage share list --include-snapshots`
 
@@ -438,7 +439,7 @@ az storage share list --include-snapshots
 ]
 ```
 
-### <a name="browse-share-snapshots"></a>Keresse meg a megosztás pillanatképek
+### <a name="browse-share-snapshots"></a>Böngészés a megosztási pillanatképekben
 Előfordulhat, hogy is Tallózás a pillanatkép-megtekintéséhez a tartalom használatával egy adott megosztás `az storage file list`. Egy megosztás nevének megadására van `--share-name <snare name>` és az időbélyeg `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive

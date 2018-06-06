@@ -8,25 +8,25 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 8dbb546954f8eee0bf997b3d2f4f92d67c0b7869
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e743bdd5fd7e302e4c7c5d229bb14753776df079
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723530"
 ---
 # <a name="restore-a-deleted-user-in-azure-active-directory"></a>Az Azure Active Directory törölt felhasználó visszaállítása
 
 Ez a cikk állítsa vissza vagy véglegesen törli a korábban törölt felhasználói utasításokat tartalmaz. Ha töröl egy felhasználót az Azure Active Directory (Azure AD), a törölt felhasználói megőrzi a törlés 30 napig. Ebben az időszakban a felhasználó és a tulajdonságok állíthatók vissza. 
 
-> [!wARNING]
+> [!WARNING]
 > Véglegesen törlődik, miután a felhasználó nem állítható vissza.
-
 
 ## <a name="how-to-restore-a-recently-deleted-user"></a>Közelmúltban törölt felhasználó visszaállítása
 Amikor a felhasználó nemrég törölték, az összes címtár-információ megőrződik. Ha a felhasználó helyreáll, ezt az információt, valamint helyreáll.
@@ -44,7 +44,7 @@ Amikor a felhasználó nemrég törölték, az összes címtár-információ meg
 ## <a name="required-permissions"></a>Szükséges engedélyek
 Az alábbi engedélyek megfelelőek a felhasználók visszaállítása.
 
-Szerepkör  | Engedélyek 
+Szerepkör | Engedélyek 
 --------- | ---------
 Céges rendszergazda<p>1. szintű partnertámogatás<p>2. szintű partnertámogatás<p>Felhasználóifiók-adminisztrátor | Visszaállíthatja a törölt felhasználók 
 Céges rendszergazda<p>1. szintű partnertámogatás<p>2. szintű partnertámogatás<p>Felhasználóifiók-adminisztrátor | Véglegesen törölheti a felhasználók

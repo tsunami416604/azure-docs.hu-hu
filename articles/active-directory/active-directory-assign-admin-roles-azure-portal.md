@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 06/04/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6e663fe275fc195cb611e1032adc147bf4e99b1d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 94062c69a1de32d061b97bbaae0d7028b0424feb
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757672"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -41,7 +42,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
   > [!NOTE]
   > Az Azure-ban az Exchange ActiveSync feltételes hozzáférési házirend telepítése, a felhasználó is globális rendszergazdának kell lennie.
   
-* **Dynamics 365 szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek-e Microsoft CRM Online-hoz, ha jelen a szolgáltatás globális engedéllyel, valamint a támogatási jegyek kezelése és figyelése a szolgáltatás állapotát. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **Dynamics 365 rendszergazdai**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek-e a Microsoft Dynamics 365, ha a szolgáltatás jelenlegi globális engedéllyel, valamint a támogatási jegyek kezelése és figyelése a szolgáltatás állapotát. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Eszközrendszergazdák**: Ezzel a szerepkörrel rendelkező felhasználók válnak a helyi számítógép rendszergazdák az összes Azure Active Directory tartományhoz csatlakoztatott Windows 10-eszközökön. Nem rendelkeznek képes kezelni az eszközöket objektumok Azure Active Directoryban.
 
@@ -67,6 +68,8 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 * **Intune szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók engedélye globális belül a Microsoft Intune Online, ha a szolgáltatás jelen. Ez a szerepkör emellett képes kezelni a felhasználók és eszközök számára ahhoz, hogy társítja a házirendet, valamint a csoportok létrehozásához és kezeléséhez tartalmazza.
 
 * **Postaláda-rendszergazda**: ezt a szerepkört csak használja az Exchange Online e-mailes támogatást részeként RIM Blackberry eszközöket. Ha a szervezete nem használja az Exchange Online e-mailek RIM Blackberry eszközön, ne használja ezt a szerepkört.
+
+* **Üzenet Center olvasó**: a szerepet betöltő felhasználók figyelheti az értesítések és tanácsadó állapotfigyelő frissítések [Office 365 üzenetközpont](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) konfigurált szolgáltatások, például az Exchange, az Intune-ban és a Microsoft a szervezet számára Csoportok. Üzenetközpont olvasók heti e-mail emésztett közleményeket, a frissítések kap, és oszthatnak meg az üzenet center bejegyzéseket az Office 365-ben. Az Azure ad-ben ehhez a szerepkörhöz rendelt felhasználók csak lesz csak olvasási hozzáféréssel a Azure AD szolgáltatásokba például felhasználókat és csoportokat. 
 
 * **1 támogatási réteg partneri**: ne használja. Ez a szerepkör elavult, és eltávolítja az Azure AD a jövőben. Ez a szerepkör van néhány továbbértékesítése Microsoft-partnerek számára készült, és nem általános használatra szánt.
 
@@ -104,13 +107,13 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 ## <a name="administrator-permissions"></a>Rendszergazdai engedélyek
 
-### <a name="billing-administrator"></a>Számlázási rendszergazda
+### <a name="billing-administrator"></a>Számlázási adminisztrátor
 
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
 |<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p>|
 
-### <a name="conditional-access-administrator"></a>Feltételes hozzáférés-rendszergazda
+### <a name="conditional-access-administrator"></a>Feltételes hozzáférésű rendszergazda
 
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
@@ -119,7 +122,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 ### <a name="global-administrator"></a>Globális rendszergazda
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Felhasználói jelszavak átállítása</p><p>Állítsa vissza a többi rendszergazda jelszavát</p> <p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |– |
+|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Felhasználói jelszavak átállítása</p><p>Más rendszergazdák jelszavak alaphelyzetbe állítása</p> <p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |– |
 
 ### <a name="password-administrator--helpdesk-administrator"></a>Jelszókezelő / segélyszolgálat rendszergazda
 | Teheti meg | Nem hajtható végre |
@@ -155,14 +158,14 @@ Az Azure AD bejelentkezési jelentések és a naplók megtekintése<br>Vállalat
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p> |<p>Felhasználói jelszavak átállítása</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p> |
 
-### <a name="user-account-administrator"></a>Felhasználói fiók rendszergazdája
+### <a name="user-account-administrator"></a>Felhasználóifiók-adminisztrátor
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Felhasználók, rendszergazdák segélyszolgálati és egyéb felhasználói fiók rendszergazdák csak jelszavak módosítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, és a felhasználók és csoportok törlésére és korlátozásokkal a felhasználói licencek kezelése. Őt nem törölhet globális rendszergazdát, és hozhat létre más rendszergazdákat.</p> |<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |
 
-### <a name="to-add-a-colleague-as-a-global-administrator"></a>A globális rendszergazdai munkatárs hozzáadása
+### <a name="to-add-a-user-as-a-global-administrator"></a>A globális rendszergazdai felhasználó hozzáadása
 
-1. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő címtár globális rendszergazdája.
+1. Jelentkezzen be a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com) a bérlő címtár globális rendszergazdai fiókkal.
 
    ![Az azure AD felügyeleti központ megnyitása](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 

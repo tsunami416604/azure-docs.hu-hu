@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: HT
+ms.openlocfilehash: 06bbcadeda2187a521daecde2b386c936e8217f0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763595"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja Log Analytics-munkaterületével.  Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -77,7 +78,9 @@ Az alábbi lépések végrehajtásával konfigurálhatja Operations Manager fel�
 Ha az Operations Manager felügyeleti csoport most első alkalommal regisztrál Log Analytics-munkaterületre, és a felügyeleti kiszolgálóknak proxyn vagy OMS-átjárókiszolgálón keresztül kell kommunikálnia a szolgáltatással, az Operatív konzolon nem érhető el a felügyeleti csoport proxykonfigurációját megadó beállítás.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Az integráció és a felügyeleti csoportba tartozó minden felügyeleti kiszolgáló konfigurálásához Netsh használatával frissítenie kell a rendszerproxy-konfigurációt a rendszeren, amelyiken az Operatív konzolt futtatja.  
 
 1. Nyisson meg egy emelt szintű parancssort.
-1. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
+   a. Ugrás a **Start** és típus **cmd**.
+   b. Kattintson a jobb gombbal **parancssor** , és jelölje ki futtató rendszergazda **.
+2. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
@@ -197,9 +200,9 @@ Azokat az Ön által engedélyezett megoldásokhoz tartozó felügyeleti csomago
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-1. Az Azure Portalon nyissa meg a Log Analytics-munkaterülethez kapcsolódó **Speciális beállítások** menüt.
-1. Válassza a **Csatlakoztatott források**, majd a **System Center** elemet.
-1. Ekkor meg kell jelennie a munkaterületről törölni kívánt felügyeleti csoport nevének.  A **Legutóbbi adatok** oszlop alatt kattintson az **Eltávolítás** elemre.  
+7. Az OMS-portálon kattintson a **Beállítások** csempére.
+8. Válassza ki **csatlakoztatott adatforrások**.
+9. A tábla a System Center Operations Manager szakaszban meg kell jelennie a felügyeleti csoport el szeretné távolítani a munkaterület neve.  A **Legutóbbi adatok** oszlop alatt kattintson az **Eltávolítás** elemre.  
    
     > [!NOTE]
     > Az **Eltávolítás** hivatkozás csak 14 nap múlva válik elérhetővé, ha nem észlelhető aktivitás a csatlakoztatott felügyeleti csoportban.  
@@ -210,7 +213,7 @@ Azokat az Ön által engedélyezett megoldásokhoz tartozó felügyeleti csomago
 Ha törölni szeretné a két összekötőt (a Microsoft.SystemCenter.Advisor.DataConnectort és az Advisor-összekötőt), mentse számítógépére az alábbi PowerShell-szkriptet, és hajtsa végre az alábbi példák segítségével:
 
 ```
-    .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
     .\OM2012_DeleteConnectors.ps1 “Microsoft.SytemCenter.Advisor.DataConnector” <ManagementServerName>
 ```
 

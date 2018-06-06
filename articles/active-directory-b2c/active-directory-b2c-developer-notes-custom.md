@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Megjegyzések egyéni házirendek segítségével a fejlesztők számára |} Microsoft Docs'
-description: Megjegyzések fejlesztők konfigurálása és karbantartása az Azure AD B2C egyéni házirendekkel
+title: Az egyéni házirendeket az Azure Active Directory B2C használatával megjegyzések fejlesztők számára |} Microsoft Docs
+description: Megjegyzések fejlesztők konfigurálásának és fenntartásának az Azure AD B2C egyéni házirendek számára.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: davidmu
-ms.openlocfilehash: cf76f158d7e87a2f2f902551fdc751b295b6915b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ce323972dcdbf673311b407f427bc452fbe6dc3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709726"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Az Azure Active Directory B2C egyéni házirend nyilvános előzetes kibocsátási megjegyzései
 Az egyéni házirend szolgáltatáskészlet már elérhető az összes Azure Active Directory B2C előzetes verzióját nyilvános értékelésre (az Azure AD B2C) ügyfelek. E szolgáltatáskészlet speciális identitás fejlesztők a legösszetettebb identitáskezelési megoldások kialakításának irányul.  
@@ -134,7 +134,7 @@ Külső összetevőket és alkalmazások rendelkező csatolók
 ### <a name="developer-interface"></a>Fejlesztői felület
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |---------------------------------------------|-------------|---------|----|-------|
-| Azure Portal-IEF UX |  | x |  |  |
+| Az Azure portál – IEF UX |  | x |  |  |
 | Application Insights UserJourney naplók  |  | x |  |  |
 | Application Insights-eseménynaplók |x|  |  |  |
 

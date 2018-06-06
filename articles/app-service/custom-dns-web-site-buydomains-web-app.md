@@ -1,11 +1,11 @@
 ---
-title: "Egy egyéni tartománynevet, az Azure Web Apps megvásárlása"
-description: "Ismerje meg, hogyan vásárolható meg egy egyéni tartománynevet és egy webalkalmazást az Azure App Service-ben."
+title: Azure Web Apps.ben használni kívánt egyéni tartománynév megvásárlása
+description: Ismerje meg, hogyan vásárolható meg egy egyéni tartománynevet és egy webalkalmazást az Azure App Service-ben.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714884"
 ---
-# <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Egy egyéni tartománynevet, az Azure Web Apps megvásárlása
+# <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps.ben használni kívánt egyéni tartománynév megvásárlása
 
 App Service (előzetes verzió) tartományai közvetlenül az Azure-ban kezelt a legfelső szintű tartományoknak. Ezek megkönnyítik az egyéni tartományok kezelése [Azure Web Apps](app-service-web-overview.md). Ez az oktatóanyag bemutatja, hogyan kellene vásárolnia egy App Service-tartományhoz, és a DNS-nevek hozzárendelése az Azure Web Apps.
 
@@ -57,17 +58,17 @@ Az alkalmazás lapjának bal oldali navigációs sávján görgessen a **Beáll�
 
 ![Vertikális felskálázás menü](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem az **Ingyenes** szinten van. Az egyéni DNS nem támogatott az **Ingyenes** szinten. 
+Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem szerepel a **F1** réteg. Nem támogatja az egyéni DNS a **F1** réteg. 
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Ha az App Service-csomag **szabad**, zárja be a **válasszon tarifacsomagot** lapon, és folytassa a [a tartomány vásárlása](#buy-the-domain).
+Ha nincs az App Service-csomag a **F1** réteg, zárja be a **vertikális felskálázás** lapon, és folytassa a [a tartomány vásárlása](#buy-the-domain).
 
 ### <a name="scale-up-the-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 
-Válasszon ki egy nem ingyenes szintet (**Közös**, **Alapszintű**, **Standard** vagy **Prémium**). 
+Válassza ki valamelyik nem szabad rétegek (**D1**, **B1**, **K2**, **B3**, vagy bármely, a réteg a **éles** kategória). További beállításokat, kattintson a **további lehetőségek**.
 
-Kattintson a **Kiválasztás** gombra.
+Kattintson az **Alkalmaz** gombra.
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -121,7 +122,7 @@ Ezután válassza ki a kívánt beállításokat a tartomány. Lásd az alábbi 
 Kattintson a **jogi feltételeket** tekintse meg a feltételeket és a költségek, és kattintson a **megvásárlása**.
 
 > [!NOTE]
-> App Service Domains use Azure DNS to host the domains. A tartomány Regisztr mellett Azure DNS-használati díjak vonatkoznak. További információ: [Azure DNS árképzési](https://azure.microsoft.com/pricing/details/dns/).
+> App Service-tartományok Azure DNS használatával a tartományok üzemeltetésére. A tartomány Regisztr mellett Azure DNS-használati díjak vonatkoznak. További információ: [Azure DNS árképzési](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
@@ -214,7 +215,7 @@ Manuálisan megújítani a tartományhoz, válassza ki a **megújítási tartom�
 
 <a name="custom"></a>
 
-## <a name="manage-custom-dns-records"></a>Manage custom DNS records
+## <a name="manage-custom-dns-records"></a>Egyéni DNS-rekordok kezelése
 
 Az Azure DNS-rekordok egy App Service-tartomány segítségével felügyelhetők [Azure DNS](https://azure.microsoft.com/services/dns/). Hozzáadhat, távolítsa el, és DNS-rekordok frissítése, akárcsak a beszerzett kívülről tartományban.
 
@@ -226,7 +227,7 @@ Az Azure portálon a bal oldali menüben válassza ki a **minden szolgáltatás*
 
 Válassza ki a tartományt kezeléséhez. 
 
-### <a name="access-dns-zone"></a>Access DNS zone
+### <a name="access-dns-zone"></a>Hozzáférés DNS-zóna
 
 A tartomány bal oldali menüben válasszon ki **DNS-zóna**.
 

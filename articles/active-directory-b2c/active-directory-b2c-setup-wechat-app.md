@@ -1,26 +1,26 @@
 ---
-title: 'Az Azure Active Directory B2C: WeChat konfigurációs |} Microsoft Docs'
+title: Az Azure Active Directory B2C WeChat konfigurációs |} Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások WeChat fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 3/26/2017
 ms.author: davidmu
-ms.openlocfilehash: ca12c84042f92dafff67dc10ce6b56b77c0456eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: bbdeccbdd0d6786fdf32fc2f547344b379bd0d7c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712487"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-wechat-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés adhat WeChat fiókkal rendelkező felhasználók
 
 > [!NOTE]
-> A funkció jelenleg előzetes verzió.
+> Ez a funkció előzetes verzióban érhető el.
 > 
 
 ## <a name="create-a-wechat-application"></a>WeChat-alkalmazás létrehozása
@@ -29,7 +29,7 @@ Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként WeChat ha
 
 ### <a name="register-a-wechat-application"></a>Egy WeChat alkalmazás regisztrálása
 
-1. Ugrás a [ https://open.weixin.qq.com/ ](https://open.weixin.qq.com/) , és jelentkezzen be.
+1. Lépjen a [https://open.weixin.qq.com/](https://open.weixin.qq.com/) webhelyre, és jelentkezzen be.
 2. Kattintson a**管理中心**(felügyeleti központ).
 3. Hajtsa végre a szükséges lépéseket egy új alkalmazás regisztrálásához.
 4. A**授权回调域**(visszahívási URL-cím), adja meg `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp`. Például ha a `tenant_name` van contoso.onmicrosoft.com, állítsa be az URL-címet kell `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.

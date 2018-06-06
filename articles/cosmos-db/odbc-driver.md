@@ -5,20 +5,17 @@ keywords: ODBC, odbc-illesztőprogram
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: rest-api
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 360161ec0485259029be0bbd5194911e484a57e5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725091"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás Azure Cosmos DB BI elemzőeszközök segítségével az ODBC-illesztőprogram
 
@@ -123,7 +120,7 @@ Az alábbi lépéseket a sémát hozzon létre egy vagy több gyűjteményt hasz
 A csatolt kiszolgáló kapcsolatán beállításával lekérdezheti a Azure Cosmos adatbázis az SQL Server Management Studio (SSMS).
 
 1. A rendszer adatforrás létrehozása [2. lépés](#connect), például elnevezett `SDS Name`.
-2. [Telepítse az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+2. [Telepítse az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és kapcsolódni a kiszolgálóhoz. 
 3. A lekérdezés SSMS editor hoz létre csatolt `DEMOCOSMOS` az alábbi parancsokkal az adatforrásra vonatkozóan. Cserélje le `DEMOCOSMOS` a csatolt kiszolgálóhoz tartozó nevű és `SDS Name` a rendszer az adatforrás nevét.
 
     ```sql
@@ -181,7 +178,7 @@ Létrehozhat egy számos nézet kedve szerint elrendezheti. Ha elkészült a né
 
 Az új DSN segítségével csatlakozzon DocumentADB bármely ODBC-kompatibilis eszközök – Ez a lépés egyszerűen bemutatja, hogyan kell csatlakozni a Power BI Desktop és a Power BI képi megjelenítés létrehozása.
 
-1. Nyissa meg a Power BI Desktop.
+1. Nyissa meg a Power BI Desktop alkalmazást.
 2. Kattintson a **adatok**.
 3. Az a **adatok beolvasása** ablak, kattintson a **más** | **ODBC** | **Connect**.
 4. Az a **az ODBC** ablakban, majd jelölje ki az adatforrás nevét, a létrehozott, majd kattintson a **OK**. Ha elhagyja a **speciális beállítások** bejegyzés üres.

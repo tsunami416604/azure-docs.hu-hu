@@ -1,21 +1,21 @@
 ---
-title: Bővítmények alkalmazás – az Azure AD B2C |} Microsoft Docs
-description: A b2c-bővítmények-alkalmazás visszaállítása
+title: Az Azure Active Directory B2C bővítmények app |} Microsoft Docs
+description: A b2c-bővítmények-alkalmazás visszaállítása.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: davidmu
-ms.openlocfilehash: c07aba797118af2cc8283509944eda8b41d499b3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ad908e7408c2d14a843af49bc091fea725bfba1d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712283"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Az Azure AD B2C: Bővítmények alkalmazás
 

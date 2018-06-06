@@ -3,22 +3,19 @@ title: Azure-házirendek indexelő Cosmos adatbázis |} Microsoft Docs
 description: Indexelő működésének megismerése az Azure Cosmos-Adatbázisba. Ismerje meg, hogyan lehet konfigurálni, és módosítsa az automatikus indexeléshez és jobb teljesítményt nyújt az indexelési házirendet.
 keywords: Indexelő működése, az automatikus indexeléshez, adatbázis indexelő
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 277ddd5777ff8edf5195e79885929e3a8c758d7c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3abae65ccc430c791e289a4767d057cf010b974b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700332"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan működik az Azure Cosmos DB index adatokat?
 
@@ -79,9 +76,9 @@ Azure Cosmos-adatbázis támogatja az indexelési házirendet egy Azure Cosmos D
 
 Egységes indexelő használ egy lehetséges csökkentése érdekében következetes lekérdezéseket támogat, az írási teljesítmény. A csökkentési, a függvény az egyedi elérési utak indexelése igénylő és a "konzisztenciaszint." Egységes indexelő módban készült "write gyorsan, azonnal lekérdezés" munkaterhelések.
 
-**Lusta**: az index frissítése aszinkron módon ha egy Azure Cosmos DB gyűjteményt videokártyának, ez azt jelenti, hogy ha a gyűjtemény átviteli sebesség nem teljes kihasználását felhasználói kérelem kiszolgálására. A lusta indexelési mód "betöltési, később lekérdezés" dokumentum adatfeldolgozást igénylő munkaterhelések megfelelőek lehetnek. Vegye figyelembe, hogy inkonzisztens eredményeket kaphat, mert az adatok okozhatnak és indexelt lassan. Ez azt jelenti, hogy a COUNT lekérdezés vagy a meghatározott lekérdezési eredmények nem feltétlenül konzisztens vagy repeatable egy adott időpontban. 
+**Lusta**: az index frissítése aszinkron módon ha egy Azure Cosmos DB gyűjteményt videokártyának, ez azt jelenti, hogy ha a gyűjtemény átviteli sebesség nem teljes kihasználását felhasználói kérelem kiszolgálására.  Vegye figyelembe, hogy inkonzisztens eredményeket kaphat, mert az adatok okozhatnak és indexelt lassan. Ez azt jelenti, hogy a COUNT lekérdezés vagy meghatározott lekérdezési eredmények lehet, hogy nem konzisztens vagy repeatable, megadott idő. 
 
-Az index általában feldolgozott adatokkal utólagos módban van. Az indexelő Lazy idő Élettartam (TTL) változik éppen eltávolítja, majd újból létrehozza az indexet eredményez. Így az a szám és a lekérdezési eredmények inkonzisztens egy ideig. Emiatt a legtöbb Azure Cosmos DB fiók a konzisztens indexelési módot kell használniuk.
+Az index általában feldolgozott adatokkal utólagos módban van. Az indexelő Lazy idő Élettartam (TTL) változik éppen eltávolítja, majd újból létrehozza az indexet eredményez. Így az a szám és a lekérdezési eredmények inkonzisztens egy ideig. A legtöbb Azure Cosmos DB fiókok a konzisztens indexelési módot kell használniuk.
 
 **Nincs**: olyan gyűjtemény, amelyikhez nincs index mód nincs társítva index tartozik. Ez általában akkor használható, ha Azure Cosmos DB egy kulcs-érték tárolóként szolgál, és dokumentumok csak az ID tulajdonság által elért. 
 

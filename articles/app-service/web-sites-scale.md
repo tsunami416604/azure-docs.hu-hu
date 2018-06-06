@@ -1,8 +1,8 @@
 ---
-title: "Vertikális felskálázás egy alkalmazást az Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan vertikális felskálázás az Azure App Service kapacitás és szolgáltatások hozzáadása egy alkalmazáshoz."
+title: Vertikális felskálázás egy alkalmazást az Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan vertikális felskálázás az Azure App Service kapacitás és szolgáltatások hozzáadása egy alkalmazáshoz.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c07105a34f6778fcd62f6f1bc1d3930f6a8bf173
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714935"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Vertikális felskálázás egy alkalmazást az Azure-ban
 
@@ -50,7 +51,7 @@ A díjszabás és az App Service-csomagokról szolgáltatásokkal kapcsolatos to
 2. Az App Service alkalmazás oldalon kattintson **összes beállítás**, és kattintson a **vertikális Felskálázás**.
    
     ![Navigáljon az Azure alkalmazás növelheti.][ChooseWHP]
-3. Válassza ki a réteg, és kattintson a **válasszon**.
+3. Válassza ki a réteg, és kattintson a **alkalmaz**.
    
     A **értesítések** lapon villogjon, egy zöld **sikeres** a művelet befejeződése után.
 

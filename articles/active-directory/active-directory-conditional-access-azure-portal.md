@@ -9,18 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2018
+ms.date: 05/26/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: ddfa3d70e2ce901a59476c5c0784d35999731ed6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724360"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Feltételes hozzáférés az Azure Active Directoryban
 
@@ -81,32 +83,8 @@ Az Azure AD feltételes hozzáférést, szabályozhatja, hogyan jogosult felhasz
 
 Egy olyan csoportházirend-alapú módszer használatával a felhőalapú alkalmazásokhoz való hozzáférés előnye, hogy elkezdheti a házirend követelményeinek, a környezetnek a struktúra, anélkül, hogy a technikai kivitelezés a cikkben ismertetett használata elkészítése. 
 
-## <a name="what-you-need-to-know"></a>Mit kell tudnia
 
-### <a name="general-requirements-for-using-conditional-access"></a>A feltételes hozzáférés használatának vonatkozó általános követelmények
-
-Az Azure AD feltételes hozzáférés segítségével felhőalapú alkalmazások védelme, ha a hitelesítési kísérletet származik:
-
-- Webböngésző
-
-- A modern hitelesítést használó ügyfélalkalmazás
-
-- Exchange ActiveSync
-
-További információkért lásd: [ügyfélalkalmazások](active-directory-conditional-access-conditions.md#client-apps).
-
-Néhány [felhőalapú alkalmazásokba](active-directory-conditional-access-conditions.md#cloud-apps) is támogatja az örökölt hitelesítési protokollok megvalósítását végzi. Ez vonatkozik, például a SharePoint Online és Exchange online-hoz. Amikor egy ügyfél-alkalmazás egy régebbi hitelesítési protokoll használatával is hozzáférhetnek a felhőalapú alkalmazások, az Azure AD a hozzáférési kísérlet a feltételes hozzáférési házirend nem érvényesíthetők. Egy ügyfélalkalmazás házirendek érvénybe léptetése megkerülése érdekében ellenőrizni kell, hogy lehetőség csak a az érintett felhőalkalmazások a modern hitelesítés engedélyezése.
-
-Az ügyfél alkalmazások feltételes hozzáférés nem vonatkozik például a következők:
-
-- Office 2010-es és korábbi verziók
-
-- Office 2013, ha nincs engedélyezve a modern hitelesítés
-
-További információkért lásd: [beállítása az Azure Active Directory feltételes hozzáférés SharePoint Online és az Exchange Online](active-directory-conditional-access-no-modern-authentication.md).
-
-
-### <a name="license-requirements-for-using-conditional-access"></a>Feltételes hozzáférés használatának követelményei licenc
+## <a name="license-requirements-for-using-conditional-access"></a>Feltételes hozzáférés használatának követelményei licenc
 
 A feltételes hozzáférés használatának Azure AD Premium licenc szükséges. A követelmények teljesítéséhez a megfelelő licenc megkereséséhez lásd: [összehasonlítása az ingyenes, a Basic és a Premium verziók általánosan elérhető szolgáltatások](https://azure.microsoft.com/pricing/details/active-directory/).
 

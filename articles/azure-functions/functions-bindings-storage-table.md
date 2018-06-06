@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1c8cee149e99786b58e4584e5e7b508b1040389d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 51b9f7bfd25da7dfd4ae9038f8dab70e9232b944
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724581"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage kötései Azure Functions
 
@@ -27,13 +28,17 @@ Ez a cikk ismerteti az Azure Functions kötések Azure Table storage használata
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Csomagok
+## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
 
-A Table storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) GitHub-tárházban.
+A Table storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+
+A Table storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 3.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -104,6 +109,9 @@ public class TableStorage
     }
 }
 ```
+
+  > [!NOTE]
+  > `IQueryable` nem állítható be a [funkciók v2 futásidejű](functions-versions.md). Alternatív [CloudTable paramName metódusparaméter használja](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) olvasni a táblát az Azure Storage szolgáltatás SDK használatával. Ha mégis megpróbálja köthető `CloudTable` és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
 ### <a name="input---c-script-example-1"></a>Bemenet – C# parancsfájl 1. példa
 
@@ -382,8 +390,8 @@ A Table storage bemeneti kötése a következő szituációkat ismerteti:
 
   A tábla adatai hozzáférhet a metódusparaméter `IQueryable<T> <paramName>`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` lehet, amely típus `ITableEntity` vagy abból származó `TableEntity`. Használhat `IQueryable` módszereket a szűrés szükséges. A `partitionKey`, `rowKey`, `filter`, és `take` tulajdonságok nem szerepel ebben a forgatókönyvben.  
 
-> [!NOTE]
-> `IQueryable` nem állítható be a [funkciók v2 futásidejű](functions-versions.md). Alternatív [CloudTable paramName metódusparaméter használja](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) olvasni a táblát az Azure Storage szolgáltatás SDK használatával.
+  > [!NOTE]
+  > `IQueryable` nem állítható be a [funkciók v2 futásidejű](functions-versions.md). Alternatív [CloudTable paramName metódusparaméter használja](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) olvasni a táblát az Azure Storage szolgáltatás SDK használatával. Ha mégis megpróbálja köthető `CloudTable` és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
 * **A JavaScript egy vagy több sor olvasása**
 
@@ -640,7 +648,7 @@ A Table storage kimeneti kötése támogatja a következő esetekben:
 
   A C# és C# a parancsfájlt, hozzáférhet a kimeneti táblaentitássá a metódusparaméter `ICollector<T> paramName` vagy `IAsyncCollector<T> paramName`. A C# parancsfájl `paramName` érték szerepel a `name` tulajdonsága *function.json*. `T` Adja meg a hozzáadni kívánt entitásokat sémája. Általában `T` származik `TableEntity` vagy megvalósítja `ITableEntity`, de nem kell. A partíciós kulcs és a sor kulcsértékek a *function.json* vagy a `Table` attribútum konstruktora nem szerepel ebben a forgatókönyvben.
 
-  Helyett használja a `CloudTable paramName` metódus paraméterének írni, hogy a tábla az Azure Storage szolgáltatás SDK használatával.
+  Helyett használja a `CloudTable paramName` metódus paraméterének írni, hogy a tábla az Azure Storage szolgáltatás SDK használatával. Ha mégis megpróbálja köthető `CloudTable` és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
 * **Egy vagy több sor írását a JavaScript**
 

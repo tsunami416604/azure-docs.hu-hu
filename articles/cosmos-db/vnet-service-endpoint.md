@@ -5,15 +5,16 @@ services: cosmos-db
 author: kanshiG
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: b07a159e69a11656555a8550b807cce0b2c9ef6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aab2446a21739beb029b103241431fb9998e1861
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735458"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Biztonságos hozzáférés a Azure Cosmos DB fiókkal az Azure Virtual Network szolgáltatás végpontjának használatával
 
@@ -48,7 +49,7 @@ Egy Azure Cosmos DB fiók konfigurációja egy virtuális hálózati végpontot,
    ![Válassza ki a virtuális hálózat és alhálózat](./media/vnet-service-endpoint/choose-subnet-and-vnet.png)
 
    > [!NOTE]
-   > Ha az Azure Cosmos DB szolgáltatásvégpont korábban nincs beállítva a kijelölt Azure virtuális hálózatok és alhálózatok, ez a művelet részeként beállítható. Hozzáférés engedélyezése akár 15 percet igénybe vehet. 
+   > Ha az Azure Cosmos DB szolgáltatásvégpont korábban nincs beállítva a kijelölt Azure virtuális hálózatok és alhálózatok, ez a művelet részeként beállítható. Hozzáférés engedélyezése akár 15 percet igénybe vehet. Nagyon fontos az IP-tűzfal letiltása után megjegyezni renabling tűzfalán hozzáférés-vezérlési lista tartalmát le azokat később. 
 
    ![virtuális hálózati és alhálózati konfigurálása sikeresen megtörtént](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -57,6 +58,9 @@ Azure Cosmos DB fiókja most csak akkor engedélyezi a kiválasztott alhálózat
 ### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Egy új Azure virtuális hálózat és alhálózat szolgáltatásvégpont konfigurálása
 
 1. A **összes erőforrás** panelen található az Azure Cosmos DB fiók, akkor szeretné védeni.  
+
+> [!NOTE]
+> Ha egy meglévő IP-tűzfal, a Azure Cosmos DB fiókjához beállított, vegye figyelembe a tűzfal konfigurációját, távolítsa el az IP-tűzfal, és engedélyeznie kell a szolgáltatási végpont. Ha engedélyezi a szolgáltatási végpont nélkül disbling a tűzfal, a forgalom adott IP-címtartomány a virtuális IP-identitás elvész, és azt egy IP-szűrő hibaüzenettel megszakad. Ez a hiba megelőzése érdekében mindig tiltsa le a tűzfalszabályok, másolja a fájlokat, az alhálózati, és végül a Cosmos-Adatbázisból az alhálózat ACL szolgáltatásvégpont engedélyezése. Szolgáltatásvégpont konfigurálása és a hozzáférés-vezérlési lista hozzáadása után újra engedélyezheti az IP-tűzfal újra szükség esetén.
 
 2. Ahhoz, hogy a virtuális hálózati szolgáltatási végpont, másolja a későbbi használat Azure Cosmos DB-fiókjához társított IP-tűzfal adatait. IP-tűzfal szolgáltatási végpont beállítása után újra engedélyezheti.  
 
@@ -95,6 +99,10 @@ Ellenőrizze, hogy access Azure Cosmos DB csatlakozva a portálról, engedélyez
 A következő lépésekkel konfigurálhatja a szolgáltatási végpont Azure Cosmos DB fiókhoz Azure PowerShell használatával:  
 
 1. Telepítse a legújabb [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) és [bejelentkezési](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Győződjön meg arról, vegye figyelembe az IP-tűzfal beállításait, és törli az IP-tűzfal teljesen ahhoz, hogy a szolgáltatási végpont a fiókhoz.
+
+
+> [!NOTE]
+> Ha egy meglévő IP-tűzfal, a Azure Cosmos DB fiókjához beállított, vegye figyelembe a tűzfal konfigurációját, távolítsa el az IP-tűzfal, és engedélyeznie kell a szolgáltatási végpont. Ha engedélyezi a szolgáltatási végpont nélkül disbling a tűzfal, a forgalom adott IP-címtartomány a virtuális IP-identitás elvész, és azt egy IP-szűrő hibaüzenettel megszakad. Ez a hiba megelőzése érdekében mindig tiltsa le a tűzfalszabályok, másolja a fájlokat, az alhálózati, és végül a Cosmos-Adatbázisból az alhálózat ACL szolgáltatásvégpont engedélyezése. Szolgáltatásvégpont konfigurálása és a hozzáférés-vezérlési lista hozzáadása után újra engedélyezheti az IP-tűzfal újra szükség esetén.
 
 2. Ahhoz, hogy a virtuális hálózati szolgáltatási végpont, másolja a későbbi használat Azure Cosmos DB-fiókjához társított IP-tűzfal adatait. Újra IP tűzfal szolgáltatás végpontjának beállítását követően engedélyezi.  
 
@@ -219,9 +227,13 @@ Erre azért szükség, ha azt szeretné, hogy az Azure Cosmos DB fiókját, az e
 
 64 virtuális hálózati szolgáltatási végpont Azure Cosmos DB fiók használata engedélyezett.
 
-### <a name="what-is-the-relationship-of-service-endpoint-with-respect-to-network-security-group-nsg-rules"></a>Milyen hálózati biztonsági csoport (NSG) szabályok tekintetében, a szolgáltatási végpont kapcsolat áll fenn?  
+### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>Mi az, hogy a kapcsolat végpontját, és a hálózati biztonsági csoport (NSG) szabályok között?  
 
-NSG tartozó Azure Cosmos DB szabály lehetővé teszi, hogy csak az Azure Cosmos DB IP-címtartomány restric eléréséhez.
+Az Azure Cosmos Adatbázisba az NSG-szabályok lehetővé teszik a hozzáférés korlátozása adott Azure Cosmos DB IP-címtartomány. Ha azt szeretné, hogy megtalálható-e egy adott Azure Cosmos DB példány férhessen [régió](https://azure.microsoft.com/global-infrastructure/regions/), megadhatja a terület a következő formátumban: 
+
+    AzureCosmosDB.<region name>
+
+További NSG bővebben lásd: címkéket [virtuális hálózati szolgáltatás címkék](../virtual-network/security-overview.md#service-tags) cikk. 
   
 ### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>Mi az az IP-tűzfal és a virtuális hálózati szolgáltatási végpont képességet közötti kapcsolat?  
 

@@ -12,16 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2018
+ms.date: 6/1/2018
 ms.author: raiye
-ms.openlocfilehash: ea7c01075d9f65ed262681c216f5770d19466507
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aaf91f8394ac4fd4fa6372c6c0f17ff92178589e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737537"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC) frissítések alkalmazása az Azure vendég operációs rendszeren. Ez a cikk határozza meg, ha az adott frissítés használ, a vendég operációs rendszer összes keresése. Frissítések mindig áthozott az adott [termékcsalád] [ family-explain] bevezetett azokat.
+
+## <a name="may-guest-os"></a>Előfordulhat, hogy a vendég operációs rendszer
+| Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-05-rel | [4103721], [4103727], [4103723] |Windows 10-biztonsági |5.19 |2018. május 8. |
+| 18-05-rel | [4103712] |Csak a Windows biztonsági |2.74 |2018. május 8. |
+| 18-05-rel | [4103726] |Csak a Windows biztonsági |3.61 |2018. május 8. |
+| 18-05-rel | [4103715] |Csak a Windows biztonsági |4.54 |2018. május 8. |
+| 18-05-rel | [4095514], [4095519] |A .NET 3.5, 4.x biztonsági |2.74 |2018. május 8. |
+| 18-05-rel | [4095512], [4095518], [4096235] |A .NET 3.5, 4.x, 4.5-ös x biztonsági |3.61 |2018. május 8. |
+| 18-05-rel | [4095515], [4095517], [4096236] |A .NET 3.5, 4.x, 4.5-ös x biztonsági |4.74|2018. május 8. |
+| 18-05-rel | [4054856] |.NET 4.7 x biztonsági |5.19 |2018. május 8. |
+| 18-05-rel | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |2018. május 8. |
+| 18-05-rel | [4103729] |Flash |3.61, 4.74, 5.19 |2018. május 8. |
+| – | [4093118] |Április nem a biztonság összegzése |2,73 |2018. április 10. |
+| – | [4093123] |Április nem a biztonság összegzése |3.61 |2018. április 10. |
+| – | [4093114] |Április nem a biztonság összegzése |4.74 |2018. április 10. |
+| – | [4093137] |Április SSU |5.19 |2018. április 10. |
+| – | [4093753] |Időzóna frissítése |2.74, 3.61, 4.74 |2018. április 10. |
+
 
 ## <a name="april-guest-os"></a>Április vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | A biztonsági rés leírása | Vendég operációs rendszer | Először a dátum |
@@ -162,7 +183,7 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | 17-06 rel | [4019472] |WS 2016-OS minőségének javítása |5.8 |2017. május 9. |
 | 17-06 rel | [4022722] |Csak a Windows biztonsági |2.63 |2017. június 13. |
 | 17-06 rel | [4022717] |Csak a Windows biztonsági |4.43 |2017. június 13. |
-| 17-06 rel | [4022718] |Csak a Windows biztonsági |3.50 |2017. június 13. |
+| 17-06 rel | [4022718] |Csak a Windows biztonsági |3,50 |2017. június 13. |
 | 17-06 rel | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |2017. június 13. |
 | 17-06 rel | [4022719], [4022724], [4022726] |Havi Windows-frissítések |2.63, 3.50, 4.43 |2017. június 13. |
 | 17-06 rel | [4022730] |Frissítés az Adobe Flash Player |3.50, 4.43, 5.8 |2017. június 13. |
@@ -173,11 +194,11 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | – | [4014508] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
 | – | [4014511] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
 | – | [4014514] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |2.63 |2017. május 9. |
-| – | [4019216] |Előfordulhat, hogy nem a biztonság összegzése |3.50 |2017. május 9. |
-| – | [4014503] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| – | [4014506] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| – | [4014509] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
-| – | [4014513] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3.50 |2017. május 9. |
+| – | [4019216] |Előfordulhat, hogy nem a biztonság összegzése |3,50 |2017. május 9. |
+| – | [4014503] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3,50 |2017. május 9. |
+| – | [4014506] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3,50 |2017. május 9. |
+| – | [4014509] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3,50 |2017. május 9. |
+| – | [4014513] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |3,50 |2017. május 9. |
 | – | [4019215] |Előfordulhat, hogy nem a biztonság összegzése |4.43 |2017. május 9. |
 | – | [4014505] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
 | – | [4014507] |Előfordulhat, hogy a .NET-nem a biztonság összegzése |4.43 |2017. május 9. |
@@ -628,6 +649,28 @@ Az alábbi táblázatok bemutatják a Microsoft biztonsági válasz Center (MSRC
 | – |[2999802] |Pontozott vonal helyett folytonos vonal lista tartalmazza a Windows rendszerben |4.15, 3.22, 2.34 |Január 13 2015 |
 | – |[2896881] |A felhasználók nyomtatók hozzárendelését a Windows bejelentkezési folyamat során a AddPrinterConnection VBScript parancs használatakor hosszú bejelentkezési idő |4.15, 3.22, 2.34 |Január 13 2015 |
 
+[4103721]: http://support.microsoft.com/kb/4103721
+[4103727]: http://support.microsoft.com/kb/4103727 
+[4103723]: http://support.microsoft.com/kb/4103723
+[4103712]: http://support.microsoft.com/kb/4103712
+[4103726]: http://support.microsoft.com/kb/4103726
+[4103715]: http://support.microsoft.com/kb/4103715
+[4095514]: http://support.microsoft.com/kb/4095514
+[4095519]: http://support.microsoft.com/kb/4095519
+[4095512]: http://support.microsoft.com/kb/4095512
+[4095518]: http://support.microsoft.com/kb/4095518
+[4096235]: http://support.microsoft.com/kb/4096235
+[4095515]: http://support.microsoft.com/kb/4095515
+[4095517]: http://support.microsoft.com/kb/4095517
+[4096236]: http://support.microsoft.com/kb/4096236
+[4054856]: http://support.microsoft.com/kb/4054856
+[4103768]: http://support.microsoft.com/kb/4103768
+[4103729]: http://support.microsoft.com/kb/4103729
+[4093118]: http://support.microsoft.com/kb/4093118
+[4093123]: http://support.microsoft.com/kb/4093123
+[4093114]: http://support.microsoft.com/kb/4093114
+[4093137]: http://support.microsoft.com/kb/4093137
+[4093753]: http://support.microsoft.com/kb/4093753
 
 [4093119]: http://support.microsoft.com/kb/4093119
 [4093108]: http://support.microsoft.com/kb/4093108 

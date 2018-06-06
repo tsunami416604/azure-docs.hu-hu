@@ -1,28 +1,24 @@
 ---
-title: "Az Azure Backup: Fájlok és mappák helyreállítása Azure virtuális gép biztonsági másolaton |} Microsoft Docs"
-description: "Egy Azure virtuális gép helyreállítási pontból állítsa helyre a fájlok"
+title: 'Az Azure Backup: Fájlok és mappák helyreállítása egy Azure virtuális gép biztonsági mentése'
+description: Egy Azure virtuális gép helyreállítási pontból állítsa helyre a fájlok
 services: backup
-documentationcenter: dev-center-name
 author: pvrk
 manager: shivamg
-keywords: "elemszintű helyreállítás; a fájlok helyreállítása Azure virtuális gép biztonsági másolatból; Azure virtuális gép fájlok visszaállítása"
-ms.assetid: f1c067a2-4826-4da4-b97a-c5fd6c189a77
+keywords: elemszintű helyreállítás; a fájlok helyreállítása Azure virtuális gép biztonsági másolatból; Azure virtuális gép fájlok visszaállítása
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: pullabhk;markgal
-ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: pullabhk
+ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737018"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gép biztonsági mentése
 
-Azure biztonsági mentés lehetővé teszi a visszaállítás [Azure virtuális gépek (VM) és a lemezek](./backup-azure-arm-restore-vms.md) Azure virtuális gép biztonsági másolatból, más néven visszaállítási pontok. Ez a cikk azt ismerteti, fájlok és mappák helyreállítása Azure virtuális gép biztonsági másolaton. Fájlok és mappák visszaállítása csak a Azure virtuális gépeken telepített, a Resource Manager modellt használja, és a Recovery services-tároló védelme alatt álló érhető el.
+Azure biztonsági mentés lehetővé teszi a visszaállítás [Azure virtuális gépek (VM) és a lemezek](./backup-azure-arm-restore-vms.md) a Azure virtuális gép biztonsági mentésekből, más néven a helyreállítási pontok. Ez a cikk azt ismerteti, fájlok és mappák helyreállítása Azure virtuális gép biztonsági másolaton. Fájlok és mappák visszaállítása csak a Azure virtuális gépeken telepített, a Resource Manager modellt használja, és a Recovery services-tároló védelme alatt álló érhető el.
 
 > [!Note]
 > Ez a szolgáltatás Azure virtuális gépeken telepített, a Resource Manager modellt használja, és a Recovery Services-tároló protected érhető el.
@@ -31,7 +27,7 @@ Azure biztonsági mentés lehetővé teszi a visszaállítás [Azure virtuális 
 
 ## <a name="mount-the-volume-and-copy-files"></a>Csatlakoztassa a kötet, és másolja a fájlokat
 
-Fájlok és mappák visszaállítása a visszaállítási pontról, nyissa meg a virtuális géphez, és válassza a visszaállítási pontot. 
+A helyreállítási pontból állítsa vissza a fájlokat vagy mappákat, nyissa meg a virtuális géphez, és válassza ki a kívánt helyreállítási pontot. 
 
 1. Jelentkezzen be a [Azure-portálon](http://portal.Azure.com) és a bal oldali menüben kattintson a **virtuális gépek**. A virtuális gépek listájának megtekintéséhez válassza ki a virtuális gépet, hogy a virtuális gép irányítópult megnyitásához. 
 

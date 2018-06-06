@@ -10,16 +10,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 06/01/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 2ebafc4249f8455bdbe45a07a5bf88aa8984d67a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7ca29ee359349f69c3d5ff21bd9db3f93358206a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724312"
 ---
-# <a name="using-the-azure-stack-portal"></a>A verem Azure portál használatával
+# <a name="use-the-azure-stack-portal"></a>Az Azure Stack-portál használata
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
@@ -36,15 +37,15 @@ Az Azure-verem operátor (a szolgáltató vagy a rendszergazda a szervezet), ér
 
 ## <a name="customize-the-dashboard"></a>Testre szabhatja az irányítópultot
 
-Az irányítópult tartalmaz egy alapértelmezett csempék. Kattinthat **Szerkesztés irányítópult** segítségével módosíthatja az alapértelmezett irányítópultot, vagy kattintson **új irányítópult** egyéni irányítópult létrehozása. Könnyen teste szabhatja irányítópult hozzáadásával vagy eltávolításával a csempéket. Például egy számítási csempe hozzáadásához kattintson **új**. Kattintson a jobb gombbal **számítási**, és kattintson a **rögzítés az irányítópulton**.
+Az irányítópult tartalmaz egy alapértelmezett csempék. Kiválaszthatja **Szerkesztés irányítópult** módosíthatja az alapértelmezett irányítópultot, vagy válasszon **új irányítópult** egyéni irányítópult létrehozása. Könnyen teste szabhatja irányítópult hozzáadásával vagy eltávolításával a csempéket. Például egy számítási csempe hozzáadásához válassza **új**. Kattintson a jobb gombbal **számítási**, majd válassza ki **rögzítés az irányítópulton**.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Előfizetés létrehozása, és keresse meg a rendelkezésre álló erőforrások
- 
+
 Még nem rendelkezik előfizetéssel, elsőként kell tennie, akkor egy ajánlatot előfizetni. Ezután keresse meg a rendelkezésre álló erőforrások. Keresse meg, és az erőforrások létrehozásához használja a következő módszerek valamelyikét:
 
-- Kattintson a **piactér** csempére az irányítópulton.
-- Az a **összes erőforrás** csempére, kattintson a **erőforrások létrehozása**.
-- A bal oldali navigációs ablaktábláján kattintson **új**.
+- Válassza ki a **piactér** csempére az irányítópulton.
+- Az a **összes erőforrás** csempe, jelölje be **erőforrások létrehozása**.
+- A bal oldali navigációs panelen válassza ki a **új**.
 
 ## <a name="learn-how-to-use-available-services"></a>Választható szolgáltatások használata
 
@@ -52,15 +53,15 @@ Ha módosítania kell az elérhető szolgáltatások használatára vonatkozó �
 
 - A szervezet vagy a szolgáltató által biztosított saját dokumentációját, amely általában a helyzet akkor, ha testre szabott szolgáltatások vagy alkalmazások kínálnak.
 - Külső alkalmazások is rendelkeznek a saját dokumentációjukban.
-- Az Azure-konzisztens szolgáltatások Határozottan javasoljuk, hogy Ön először tekintse meg az Azure verem dokumentációt. Az Azure-verem felhasználói dokumentáció eléréséhez kattintson a Súgó ikonra, és kattintson **súgó + támogatás**.
- 
-    ![Képernyőfelvétel a Súgó és támogatás beállítás a felhasználói felületen](media/azure-stack-use-portal/HelpAndSupport.png)
+- Az Azure-konzisztens szolgáltatások Határozottan javasoljuk, hogy Ön először tekintse meg az Azure verem dokumentációt. Az Azure-verem felhasználói dokumentáció eléréséhez a Súgó ikonra, majd válassza ki és **súgó + támogatás**.
+
+    ![A Súgó és támogatás a beállítás a felhasználói felületen](media/azure-stack-use-portal/HelpAndSupport.png)
 
     Különösen javasoljuk, hogy tekintse át a kezdéshez a következő cikkeket:
 
     - [Kulcs szempontok: szolgáltatásokkal vagy az alkalmazások Azure verem](azure-stack-considerations.md)
     - Az a **szolgáltatásokkal** szakasz dokumentáció, nincs szempontokat egy cikk a minden egyes szolgáltatás. A szempontok lapra a szolgáltatás, az Azure-ban, és ugyanazt a szolgáltatást Azure-készletben kínált közötti különbségeket ismerteti. Egy vonatkozó példáért lásd: [VM szempontok](azure-stack-vm-considerations.md). Egyéb információk lehetnek a **szolgáltatásokkal** Azure verem egyedi szakasz.
-     
+
       Használhatja az Azure dokumentációja általános hivatkozásként egy szolgáltatáshoz, de ezek a különbségek tisztában kell lennie. Megérteni, hogy a dokumentáció a hivatkozásokat tartalmaz a **gyors üzembe helyezési oktatóanyag** csempe az Azure dokumentációja mutasson.
 
 ## <a name="get-support"></a>Támogatás kérése

@@ -1,29 +1,31 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - áttekintése |} Microsoft Docs"
-description: "Áttekintés és a hibrid Identitáskezelés – kialakítási szempontokat útmutató tartalmak térképét"
-documentationcenter: 
+title: Az Azure Active Directory hibrid identitáskezelési elrendezésével kapcsolatos szempontok - áttekintése |} Microsoft Docs
+description: Áttekintés és a hibrid Identitáskezelés – kialakítási szempontokat útmutató tartalmak térképét
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 94e67c5ea0028419e9bf74420e2bb46709b3df01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e81908e3fd77b8fde706b27c3bed305ad0436677
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801636"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory hibrid identitáskezelés – kialakítási szempontok
 Ügyfél-alapú eszközök a vállalati globális vannak proliferating, és felhő alapú szoftver-,--szolgáltatás (SaaS) alkalmazások könnyen fogad el. Ennek eredményeképpen az adatközpontok és felhőszolgáltatások platformon, belső alkalmazás hozzáférést irányítás megőrzéséhez kihívást.  
 
-A Microsoft identity megoldások span a helyszíni és felhőalapú képességek, a hitelesítés és engedélyezés az összes erőforráshoz, függetlenül a hely egyetlen felhasználói azonosítót létrehozása. A hibrid identitás nevezzük. Különböző kialakítási és konfigurációs beállítások a Microsoft-megoldás használata hibrid identitás, és néhány esetben előfordulhat, hogy nehéz lenne meghatározni, melyik kombináció a legjobb a szervezet igényeinek. 
+A Microsoft identity megoldások span a helyszíni és felhőalapú képességek, a hitelesítés és engedélyezés az összes erőforráshoz, függetlenül a hely egyetlen felhasználói azonosítót létrehozása. Ez a hibrid identitás nevezik. Különböző kialakítási és konfigurációs beállítások a Microsoft-megoldás használata hibrid identitás, és néhány esetben előfordulhat, hogy nehéz lenne meghatározni, melyik kombináció a legjobb a szervezet igényeinek. 
 
 A hibrid Identitáskezelés – kialakítási szempontokat útmutató segítségével megismerheti, hogyan hibrid identitáskezelési megoldás tervezéséhez, amely legjobban megfelel az üzleti és technológiai igényeinek a szervezet számára.  Ez az útmutató részletesen ismerteti azokat a lépéseket és teendőket, amelyeket követve alakítsa ki a szervezet egyedi igényeinek megfelelő hibrid identitáskezelési megoldás. A lépéseket és feladatok ismertetése során az útmutató jelentenek a releváns technológiákat és funkcionális és szolgáltatásminőségi (például a rendelkezésre állási, a méretezhetőséget, a teljesítmény, a kezelhetőségi és a biztonsági) szervezetek számára rendelkezésre álló beállítások funkció szint követelmények. 
 
@@ -34,7 +36,7 @@ Pontosabban a hibrid identitás tervezési szempontok útmutatója céljai a kö
 * Milyen hibrid identitás technológiai és konfigurációs lehetőségek állnak rendelkezésre a követelmények teljesítéséhez? Mik azok a kereskedelmi-előnyökkel és hátrányokkal járnak ezek a lehetőségek, hogy kiválaszthassam a legjobb lehetőség a vállalati?
 
 ## <a name="who-is-this-guide-intended-for"></a>Kinek szól a Ez az útmutató?
- CIO, CITO, fő identitás fejlesztők, vállalati fejlesztők és informatikai fejlesztők felelősek közepes vagy nagy szervezetek hibrid identitáskezelési megoldás.
+ CIO, CITO, fő identitás fejlesztők, vállalati fejlesztők és informatikai fejlesztők közepes vagy nagy szervezetek hibrid identitáskezelési megoldás felelősek.
 
 ## <a name="how-can-this-guide-help-you"></a>Hogyan Ez az útmutató segítségével?
 Ez az útmutató segítségével megtudhatja, hogyan tervezhet egy hibrid identitáskezelési megoldás, amely képes a felhőalapú identitás rendszer integrálható a jelenlegi helyszíni identitás-megoldás. 
@@ -43,11 +45,11 @@ A következő ábrán látható egy példa egy hibrid identitáskezelési megold
 
 ![](./media/hybrid-id-design-considerations/hybridID-example.png)
 
-A fenti ábrán látható egy példa hibrid identitáskezelési megoldás, amely és szolgáltatásokkal való integráció a helyszíni ahhoz, hogy a felhasználó hitelesítési folyamat egyetlen élményt és lehetővé teszi a felhőalapú szolgáltatások kihasználása révén azokat kezelése informatikai erőforrások. Ez lehet egy nagyon gyakori forgatókönyv, de minden szervezet hibrid identitás tervezési várhatóan eltérő követelmények miatt. ábrán az 1. ábrán láthatótól. 
+A fenti ábrán látható egy példa hibrid identitáskezelési megoldás, amely és szolgáltatásokkal való integráció a helyszíni ahhoz, hogy a végfelhasználói hitelesítési folyamat egyetlen élményt és lehetővé teszi a felhőalapú szolgáltatások kihasználása révén azokat kezelése informatikai erőforrások. Bár ez a példa lehet egy gyakori forgatókönyv, minden egyes szervezet hibrid identitás Tervező várhatóan eltérő követelmények miatt. ábrán az 1. ábrán láthatótól. 
 
 Ez az útmutató azokat a lépéseket és feladatokat, amelyek követésével megtervezheti a szervezet egyedi igényeinek megfelelő hibrid identitáskezelési megoldás. A következő lépések és feladatok ismertetése során az útmutató mutatja be a releváns technológiákat és szolgáltatási lehetőségeket, hogy megfeleljen a működési és a szolgáltatás szolgáltatásminőségi szintre vonatkozó követelményeinek a szervezet.
 
-**Előfeltételek**: rendelkezik némi tapasztalattal a Windows Server, az Active Directory tartományi szolgáltatások és az Azure Active Directory. Ebben a dokumentumban feltételezzük, hogy olyan eszközökre vonatkozóan, hogy a ezek a megoldások hogyan felelnek meg az üzleti igényeinek önállóan vagy egy integrált megoldás részeként.
+**Előfeltételek**: rendelkezik némi tapasztalattal a Windows Server, az Active Directory tartományi szolgáltatások és az Azure Active Directory. Ebben a dokumentumban feltételezzük keres, hogy a ezek a megoldások hogyan felelnek meg az üzleti igényeinek önállóan vagy egy integrált megoldás részeként.
 
 ## <a name="design-considerations-overview"></a>Kialakítási szempontok áttekintése
 Ez a dokumentum a lépéseket és feladatokat, amelyek követésével megtervezheti a vonatkozó követelményeknek legjobban megfelelő hibrid identitáskezelési megoldás biztosít. A lépéseket egy rendezett sorozata jelenjenek meg. Kialakítási szempontok a későbbi lépésekben megismert igényelheti módosítása során meghozott döntések a korábbi lépések, azonban későbbi tervezési döntések ütköznek azokkal. Emiatt mindent megtettünk riasztást küld a dokumentum lehetséges tervezési ütközésekre. 

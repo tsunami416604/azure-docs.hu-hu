@@ -1,31 +1,73 @@
-1. Az egyes erőforrások vagy erőforráscsoportok címkéinek megtekintéséhez válassza a **Címkék** ikont. 
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: azure-resource-manager
+author: tfitzmac
+ms.service: azure-resource-manager
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: tomfitz
+ms.custom: include file
+ms.openlocfilehash: daa97c8ec0c2fd728e4d1eddf090afa17e87c31f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34675336"
+---
+1. A címkék erőforrás vagy egy erőforráscsoport megtekintéséhez az áttekintésben meglévő címkék keresi. Ha eddig még nem vett fel címkéket, a lista üres.
    
-     ![Címkék kiválasztása az erőforrások vagy erőforráscsoportok paneljein](./media/resource-manager-tag-resources/select-tag-icon.png)
-2. Itt láthatja az erőforrás meglévő címkéit. Ha eddig még nem vett fel címkéket, a lista üres. 
+     ![Az erőforrás vagy erőforráscsoport címkék megtekintése](./media/resource-manager-tag-resources/view-tags.png)
+1. Egy tag hozzáadásához válassza **címkék hozzáadásához kattintson ide**.
 
-     ![Meglévő címkék megjelenítése az erőforrások vagy erőforráscsoportok paneljein](./media/resource-manager-tag-resources/existing-tags.png)
-3. Címke hozzáadásához adjon meg egy nevet és egy értéket, vagy válasszon ki egy meglévőt a legördülő listából. Kattintson a **Mentés** gombra.
+1. Adjon nevet és értéket. Válassza ki **+** a címke hozzáadása.
+   
+     ![Címke hozzáadása](./media/resource-manager-tag-resources/add-tag.png)
+1. Továbbra is a címkék hozzáadása, igény szerint. Ha elkészült, kattintson a **Mentés** elemre.
+   
+     ![Címkék mentése](./media/resource-manager-tag-resources/save-tags.png)
+1. A címkék jelennek meg a áttekintésében.
+   
+     ![Címkék megjelenítése](./media/resource-manager-tag-resources/view-new-tags.png)
+1. Hozzá, vagy törölhet egy címkét, válassza ki a **módosítása**.
+   
+1. A címke törléséhez válassza ki a Kuka ikonra. Ezt követően válassza a **Mentés** lehetőséget.
 
-     ![Új címke hozzáadása](./media/resource-manager-tag-resources/tag-resources.png)
-3. A címkeértékkel rendelkező összes erőforrás megtekintéséhez válassza a **>** (**További szolgáltatások**) lehetőséget, és íja be a **Tags** (Címkék) szót a szűrőmezőbe. Válassza a **Címkék** lehetőséget az elérhető lehetőségek közül.
-   
-     ![Címkék keresése a Tallózás hubon keresztül](./media/resource-manager-tag-resources/browse-tags.png)
-4. Itt láthatja az előfizetései alá tartozó címkék összegzését.
-   
-     ![Az összes címke megjelenítése](./media/resource-manager-tag-resources/tag-taxonomy.png)
-5. Az egyes címkékre kattintva megjelenítheti az adott címkével rendelkező erőforrásokat és erőforráscsoportokat.
-   
-     ![Címkézett erőforrások megjelenítése](./media/resource-manager-tag-resources/show-tagged-resources.png)
-6. A gyors elérés érdekében válassza a **Panel rögzítése az irányítópulton** lehetőséget.
-   
-     ![Címkék rögzítése az irányítópulton](./media/resource-manager-tag-resources/pin-tag.png)
-7. Ha az irányítópulton a rögzített címkére kattint, megjelennek a címkével társított erőforrások.
-
-     ![Címkék rögzítése az irányítópulton](./media/resource-manager-tag-resources/show-pinned-tag.png)
+     ![Címke törlése](./media/resource-manager-tag-resources/delete-tag.png)
 
 
 Tömeges hozzárendelése címkék csak egy erőforráshoz:
-1. Az erőforrások (pl. minden erőforrásokat, erőforráscsoport oveview); listából
-2. Jelölje be a jelölőnégyzetet az erőforrások ki szeretné osztani a címke;
-3. Válassza ki a hozzárendelése címkék beállítás;
-4. Adja hozzá a neve és az értékeket, és válassza ki a hozzárendelése.
+
+1. Az erőforrások listájához jelölje ki a címke hozzárendelni kívánt erőforrások jelölőnégyzetét.
+
+     ![Több erőforrások kiválasztása](./media/resource-manager-tag-resources/select-multiple-resources.png)
+
+1. Válassza ki **címkék hozzárendelése**
+
+     ![Címkék hozzárendelése](./media/resource-manager-tag-resources/assign-tags.png)
+
+1. Után minden nevét és értékét, válassza ki a **+**. Ha elkészült, válassza ki a **hozzárendelése**.
+
+     ![Válassza ki a hozzárendelése](./media/resource-manager-tag-resources/select-assign.png)
+
+Címkével ellátott összes erőforrások megtekintése:
+
+1. Válassza ki **minden szolgáltatás** és **címkék**.
+
+     ![Címke keresése](./media/resource-manager-tag-resources/find-tags.png)
+
+1. Jelölje be a kódot az erőforrások megtekintése.
+
+     ![Válassza ki a címke](./media/resource-manager-tag-resources/select-tag.png)
+
+1. A címkét tartalmazó összes erőforrás jelennek meg.
+
+     ![Erőforrások megtekintése címke szerint](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+
+1. A gyors hozzáférés érdekében a PIN-kód a nézet az irányítópulton.
+
+     ![Rögzítés az irányítópulton](./media/resource-manager-tag-resources/pin-to-dashboard.png)
+
+1. A nézet nem érhető el az irányítópultról.
+
+     ![Irányítópult](./media/resource-manager-tag-resources/dashboard.png)

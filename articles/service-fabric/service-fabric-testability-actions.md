@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 087a0f12f765b55c2e2976abd93d791409ff6d44
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 27c6671c170f4c03c63270772651051830d8e4ec
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757621"
 ---
 # <a name="testability-actions"></a>Tesztelhetőségi műveletek
 Ahhoz, hogy egy nem megbízható infrastruktúra szimulálása, Azure Service Fabric biztosít, a fejlesztői, azzal, hogy különböző valós hibák és állapotváltozási adat áramlik szimulálásához. Ezek tesztelhetőségi műveletként érhetők el. A műveletek végezhetők, amelyek egy adott van, állapotváltás vagy érvényesítési alacsony szintű API-k. Ezek a műveletek kombinálásával átfogó Tesztelési forgatókönyvek írhat a szolgáltatások.
@@ -41,8 +42,8 @@ Jobb minőségű ellenőrzéséhez futtassa le a szolgáltatást és az üzleti 
 | CleanTestState |Eltávolítja az összes teszt állapota a fürt esetén a teszt illesztőprogram rossz leállítására. |CleanTestStateAsync |Remove-ServiceFabricTestState |Nem alkalmazható |
 | InvokeDataLoss |Adatvesztés kapott egy szolgáltatás partícióra. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Biztonságos |
 | InvokeQuorumLoss |Egy adott állapot-nyilvántartó szolgáltatása partíció elhelyezi a kvórum elvesztése. |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |Biztonságos |
-| Elsődleges áthelyezése |A megadott elsődleges replika az állapotalapú szolgáltatás áthelyezése a megadott fürtcsomópont. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Biztonságos |
-| Másodlagos áthelyezése |A jelenlegi másodlagos másodpéldány egy állapotalapú szolgáltatás áthelyezése egy másik fürtcsomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Biztonságos |
+| A MovePrimary |A megadott elsődleges replika az állapotalapú szolgáltatás áthelyezése a megadott fürtcsomópont. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Biztonságos |
+| MoveSecondary |A jelenlegi másodlagos másodpéldány egy állapotalapú szolgáltatás áthelyezése egy másik fürtcsomópontra. |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |Biztonságos |
 | RemoveReplica |Replika hiba szimulálja által replika eltávolítása egy fürtből. Ez a replika bezárul, és állapotba kerül, hogy szerepkör "None", a fürt összes állapotában eltávolítása. |RemoveReplicaAsync |Remove-ServiceFabricReplica |Biztonságos |
 | RestartDeployedCodePackage |A kód csomag folyamat hibájának szimulálja egy egy fürt egy csomópontján telepített kódcsomag újraindításával. Ez a minden felhasználó szolgáltatás replika üzemeltetett újraindul, hogy a folyamat kód csomag folyamat megszakítása. |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |Ungraceful |
 | A RestartNode |A Service Fabric-fürt Csomóponthiba szimulálja egy csomópont újraindításával. |RestartNodeAsync |Restart-ServiceFabricNode |Ungraceful |

@@ -1,30 +1,32 @@
 ---
-title: "Hibrid identitás Tervező - kezelési feladatainak Azure |} Microsoft Docs"
-description: "Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett."
-documentationcenter: 
+title: Hibrid identitás Tervező - kezelési feladatainak Azure |} Microsoft Docs
+description: Feltételes hozzáférés-vezérlést az Azure Active Directory ellenőrzi a megadott feltételek, ha a felhasználó hitelesítése és az alkalmazáshoz való hozzáférés előtt válasszon. Ha ezek a feltételek teljesülnek, a felhasználó hitelesítése és hozzáférni az alkalmazáshoz engedélyezett.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 65f80aea-0426-4072-83e1-faf5b76df034
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ed683f1b96172b71cc3dfae2511607e50071739f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5fcb229690827c7bd508aa0d27dd68b169b4e25e
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801326"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Hibrid identitás életciklusának tervezése
-Identitás az egyik a vállalati mobilitás és alkalmazás-hozzáférési stratégia alapjainak. A mobileszköz vagy SaaS-alkalmazás meg bejelentkezni, hogy a személyazonosságát jelenti a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységesíti és az identitás tárházak találhatók, ide tartozik az automatizálását és erőforrások kiépítési folyamat központosítása közötti szinkronizálása. A megoldást egy központosított identitás a helyszíni és a felhő között legyen, és segítségével is identitás-összevonási valamilyen központosított hitelesítés karbantartása biztonságosan megosztani, és a külső felhasználók és a vállalatok közötti együttműködés. Erőforrások operációs rendszereket és alkalmazásokat olyan személyek között, vagy (DEP) részt, a szervezetek. Szervezeti felépítés is lehet módosítva, hogy megfeleljen a kiépítési szabályzatokat és eljárásokat.
+Identitás az egyik a vállalati mobilitás és alkalmazás-hozzáférési stratégia alapjainak. A mobileszköz vagy SaaS-alkalmazás meg bejelentkezni, hogy a személyazonosságát jelenti a kulcsot minden hozzáférjenek. A legmagasabb szintjén az identitáskezelési megoldás magában foglalja a egységesíti és az identitás-adattárak közötti szinkronizálása viszony – például automatizálása és központosítása erőforrások kiépítése során. A megoldást egy központosított identitás a helyszíni és a felhő között legyen, és segítségével is identitás-összevonási valamilyen központosított hitelesítés karbantartása biztonságosan megosztani, és a külső felhasználók és a vállalatok közötti együttműködés. Erőforrások operációs rendszereket és alkalmazásokat olyan személyek között, vagy (DEP) részt, a szervezetek. Szervezeti felépítés is lehet módosítva, hogy megfeleljen a kiépítési szabályzatokat és eljárásokat.
 
-Fontos továbbá van igazítva lehetővé teszik a felhasználók önkiszolgáló lép hatékony leegyszerűsítheti a megadásával identitáskezelési megoldás. Az identitás-megoldás robusztusabb, ha egyszeri bejelentkezéshez a felhasználók számára lehetővé teszi egyes rendszergazdák minden eléréséhez szükséges összes erőforrások szintek felhasználói hitelesítő adatok kezelésére szolgáló szabványosított eljárásokat használhatja. Bizonyos szintű felügyeleti csökkenthetők vagy szüntetni, attól függően, hogy a létesítési-kezelési megoldás a hardverekről. Továbbá biztonságos terjesztheti felügyeleti képességek, manuálisan vagy automatikusan, különböző szervezetek között. A tartományi rendszergazda lehetnek például csak a személyek és az erőforrások az adott tartományban. Ez a felhasználó rendszergazdai és üzembe helyezési feladatokat is végrehajthat, de nem jogosult a konfigurációs feladatok, munkafolyamatok létrehozása.
+Fontos továbbá van igazítva lehetővé teszik a felhasználók önkiszolgáló lép hatékony leegyszerűsítheti a megadásával identitáskezelési megoldás. Az identitás-megoldás robusztusabb, ha egyszeri bejelentkezéshez a felhasználók számára lehetővé teszi az erőforrások között hozzáférésre van szükségük. Minden szinten rendszergazdák szabványosított eljárásokkal felhasználói hitelesítő adatok kezeléséhez. Bizonyos szintű felügyeleti csökkenthetők vagy szüntetni, attól függően, hogy a létesítési-kezelési megoldás a hardverekről. Továbbá biztonságos terjesztheti felügyeleti képességek, manuálisan vagy automatikusan, különböző szervezetek között. A tartományi rendszergazda lehetnek például csak a személyek és az erőforrások az adott tartományban. Ez a felhasználó rendszergazdai és üzembe helyezési feladatokat is végrehajthat, de nem jogosult a konfigurációs feladatok, munkafolyamatok létrehozása.
 
 ## <a name="determine-hybrid-identity-management-tasks"></a>Hibrid identitás felügyeleti feladatok meghatározása
 A szervezet felügyeleti feladatok javítja a pontosság és a felügyelet hatékonysága és növeli a munkaterhelés a szervezet egyenleg. Az alábbiakban a pivots, amelyek meghatározzák egy robusztus identitás rendszert.
@@ -56,9 +58,9 @@ Ezek a követelmények meghatározásánál tart, közben ügyeljen arra, hogy l
 * Ha igen, hogyan és azokat, és milyen lehetőségek érhetők el?
 
 ## <a name="synchronization-management"></a>Szinkronizálás kezelése
-Egyik a célja az identity manager, az identitás-szolgáltatóktól és láthatóan tartja őket tenni szinkronizálva. A szinkronizált adatok mindig a fő identitásszolgáltató mérvadó alapján. Hibrid identitáskezelési forgatókönyvben a szinkronizált felügyeleti modellt identitáskezelést minden felhasználó és eszköz egy helyszíni kiszolgálón, és a fiókok és opcionálisan a felhőbe a jelszavak szinkronizálása. A felhasználó megadja a azonos jelszót a helyszíni, akkor vagy megteszi a felhőben, és bejelentkezéskor, a jelszó ellenőrizte-e a megoldást. Ez a modell a címtár-Szinkronizáló eszköz használja.
+Egyik a célja az identity manager, az identitás-szolgáltatóktól és láthatóan tartja őket tenni szinkronizálva. A szinkronizált adatok mindig a fő identitásszolgáltató mérvadó alapján. Hibrid identitáskezelési forgatókönyvben a szinkronizált felügyeleti modellt identitáskezelést minden felhasználó és eszköz egy helyszíni kiszolgálón, és a fiókok és opcionálisan a felhőbe a jelszavak szinkronizálása. A felhasználó beírja a azonos jelszót a helyi tehetik a felhőben, és a bejelentkezéshez, a jelszó ellenőrzése az identitás-megoldásnak. Ez a modell a címtár-Szinkronizáló eszköz használja.
 
-![](./media/hybrid-id-design-considerations/Directory_synchronization.png)Megfelelő kialakítás a szinkronizálás a hibrid identitáskezelési megoldás győződjön meg arról, hogy az alábbi kérdések és válaszok: • Mik a szinkronizálási megoldások érhető el a hibrid identitáskezelési megoldás?
+![](./media/hybrid-id-design-considerations/Directory_synchronization.png) Megfelelő kialakítás a szinkronizálás a hibrid identitáskezelési megoldás győződjön meg arról, hogy az alábbi kérdések és válaszok: • Mik a szinkronizálási megoldások érhető el a hibrid identitáskezelési megoldás?
 • Az elérhető lehetőségeket egyszeri bejelentkezés Mik?
 • Mik azok a beállítások az identitás-összevonási B2B és B2C között?
 

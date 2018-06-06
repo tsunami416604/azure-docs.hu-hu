@@ -1,27 +1,27 @@
 ---
-title: 'Az Azure Active Directory B2C: Az alapszintű csomag egyéni házirendjeinek ismertetése |} Microsoft Docs'
-description: 'Témakör: Azure Active Directory B2C egyéni házirendek'
+title: Egyéni házirendek, az alapszintű Azure Active Directory B2C csomagot ismertetése |} Microsoft Docs
+description: A témakör az Azure Active Directory B2C egyéni házirendekkel.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: eb78e4c2f2e27d59d7925ac9eaffd1cef0924463
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711579"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Az Azure AD B2C egyéni házirend alapszintű csomag egyéni házirendjeinek ismertetése
 
 Ez a rész felsorolja a B2C_1A_base szabályzat részeként elérhető összes core elem a **alapszintű csomag** és, hogy megfelelő saját házirendeket a örökléssel tartalomkészítéshez elkészítéséhez használja a *B2C_1A_base_extensions házirend* .
 
-Mint ilyen akkor különösen mutatja be a már definiált jogcímtípusok, a jogcímek átalakítása, tartalom definíciók, az a műszaki profil és a központi felhasználói utak jogcímszolgáltatóktól.
+Mint ilyen, különösen a cikk foglalkozik a már definiált jogcímtípusok, a jogcímek átalakítása, tartalom definíciókat, a műszaki profil és a központi felhasználói utak jogcímszolgáltatóktól.
 
 > [!IMPORTANT]
 > A Microsoft nem vállal sem kifejezett szavatosságot, a továbbiakban megadott adatai. GA idő, illetve után a módosítások vihetők bármikor GA időpont előtt.
@@ -49,9 +49,9 @@ A következő jogcímek felhasználói utak helyes működéséhez szükségesek
 
 | Jogcím típusa | Leírás |
 |-------------|-------------|
-| *UserId* | Felhasználónév |
+| *Felhasználói azonosítóját* | Felhasználónév |
 | *signInName* | Jelentkezzen be neve |
-| *tenantId* | A user objektum az Azure AD B2C-bérlő azonosítója (ID) |
+| *A TenantId* | A user objektum az Azure AD B2C-bérlő azonosítója (ID) |
 | *objectId* | A user objektum az Azure AD B2C objektumazonosítót (ID) |
 | *Jelszó* | Jelszó |
 | *newPassword* | |
@@ -82,13 +82,13 @@ A következő jogcímeket más jogcímszolgáltatóktól kell továbbítani a Sp
 |-------------|-------------|
 | *nux* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *nca* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *prompt* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
+| *parancssor* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *mkt* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *lc* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *grant_type* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *scope* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
+| *Hatókör* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
 | *client_id* | Speciális paramétert a helyi fiók hitelesítési login.microsoftonline.com |
-| *objectIdFromSession* | Az alapértelmezett munkamenet felügyeleti szolgáltató annak jelzésére, hogy az egyszeri bejelentkezési munkamenet objektumazonosító beolvasása a megadott paraméter |
+| *objectIdFromSession* | Az alapértelmezett munkamenet felügyeleti szolgáltató annak jelzésére, hogy az egyszeri bejelentkezési munkamenet Objektumazonosító beolvasása a megadott paraméter |
 | *isActiveMFASession* | A többtényezős hitelesítés annak jelzésére, hogy a felhasználó rendelkezik-e többtényezős hitelesítés aktív munkamenet munkamenet-kezelés által biztosított paraméter |
 
 ### <a name="additional-optional-claims-that-can-be-collected"></a>További (nem kötelező) jogcímeket is
@@ -98,14 +98,14 @@ A következő jogcímek további gyűjtött felhasználói, a címtárban tárol
 | Jogcím típusa | Leírás |
 |-------------|-------------|
 | *givenName* | A megadott felhasználónév (más néven Keresztnév) |
-| *surname* | Felhasználó vezetékneve (más néven Családnév vagy vezetéknevet) |
+| *Vezetéknév* | Felhasználó vezetékneve (más néven Családnév vagy vezetéknevet) |
 | *Extension_picture* | Felhasználó társadalombiztosítási kép |
 
 ## <a name="claim-transformations"></a>A jogcímek átalakításához
 
 A rendelkezésre álló a jogcímek átalakításához alább láthatók.
 
-| Claim transformation | Leírás |
+| Jogcím-átalakítást | Leírás |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -164,7 +164,7 @@ Ez a szakasz mutatja be a műszaki profilok száma a jogcímszolgáltató már d
 | *AAD-UserReadUsingAlternativeSecurityId* | A közösségi bejelentkezések során műszaki profil |
 | *AAD-UserReadUsingAlternativeSecurityId-NoError* | A közösségi bejelentkezések során műszaki profil |
 | *Az AAD-UserWritePasswordUsingLogonEmail* | A helyi fiókok műszaki profil |
-| *AAD-UserReadUsingEmailAddress* | A helyi fiókok műszaki profil |
+| *Az AAD-UserReadUsingEmailAddress* | A helyi fiókok műszaki profil |
 | *AAD-UserWriteProfileUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
 | *AAD-UserWritePhoneNumberUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
 | *AAD-UserWritePasswordUsingObjectId* | Műszaki profil használatával objectId felhasználói rekord frissítéséhez |
@@ -193,7 +193,7 @@ Ez a szakasz mutatja be a műszaki profilok száma a jogcímszolgáltató már d
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
 
-### <a name="technical-profiles-for-trustframework-policy-engine-technicalprofiles"></a>Trustframework házirend motor TechnicalProfiles műszaki profilok
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>A megbízhatósági keretrendszer házirendmotor műszaki profilok
 
 Jelenleg nincsenek technikai profilok meghatározása a **Trustframework házirend motor TechnicalProfiles** jogcím-szolgáltató.
 
@@ -209,7 +209,7 @@ Ez a szakasz mutatja be a felhasználó utak már deklarálva a *B2C_1A_base* h�
 
 | Felhasználói út | Leírás |
 |--------------|-------------|
-| *SignUp* | |
+| *Regisztráció* | |
 | *SignIn* | |
 | *SignUpOrSignIn* | |
 | *EditProfile* | |

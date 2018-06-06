@@ -1,29 +1,25 @@
 ---
-title: "Futtatási lépések alapján csoportosítva művelet állapota - Azure Logic Apps |} Microsoft Docs"
-description: "A hatókörök műveletek csoportban, és futtassa a csoport állapota alapján"
+title: A csoport állapot - Azure Logic Apps alapján műveletek futtatása hatókörök hozzáadása |} Microsoft Docs
+description: Rendszert futtató munkafolyamat-műveleteket az Azure Logic Apps csoport állapota alapján hatókörök létrehozása
 services: logic-apps
-keywords: "az ágakkal rendelkező, párhuzamos feldolgozása"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 052af45962f442e96ca28f05ffaa1b9814b2588b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: c6f6b54e17d12ff21d50748810699e78e3a14757
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726380"
 ---
-# <a name="scopes-run-steps-based-on-group-status-in-logic-apps"></a>Hatókörök: Futtassa a logic apps csoport állapota alapján
+# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Hozzon létre hatóköröket rendszert futtató munkafolyamat-műveleteket az Azure Logic Apps csoport állapota alapján
 
-Futtatásához lépéseket csak azt követően egy másik csoport műveletek lesz sikeres vagy sikertelen, amelyre az adott csoport a egy *hatókör*. Ez a struktúra akkor hasznos, ha a kívánt logikai csoport műveletek rendezéséhez, a csoport állapotának kiértékelésére és a hatókör állapotát alapuló műveleteket hajthatja végre. A hatókör összes művelet után a hatóköre is lekéri a saját állapotát. Például a hatókörökkel helyzet megvalósítása [kivétel és hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes). 
+Csak azután egy másik csoport műveletek lesz sikeres vagy sikertelen műveletek futtatására, ezeket a műveleteket belül csoport egy *hatókör*. Ez a struktúra akkor hasznos, ha a kívánt logikai csoport műveletek rendezéséhez, a csoport állapotának kiértékelésére és a hatókör állapotát alapuló műveleteket hajthatja végre. A hatókör összes művelet után a hatóköre is lekéri a saját állapotát. Például a hatókörökkel helyzet megvalósítása [kivétel és hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
 A hatókör állapotának ellenőrzéséhez használja a ugyanazok a feltételek, amelyek segítségével állapítja meg, a logikai alkalmazások futtatása állapotára, például "Succeeded", "Sikertelen", "Megszakítva" és így tovább. Alapértelmezés szerint a hatókör összes művelet sikeres, a hatókör állapotát megjelölve "Sikeres". De ha a hatókörében bármely művelet sikertelen, vagy megszakítja, a hatókör állapotát jelölésű "Sikertelen". Hatókörök használati korlátait, lásd: [korlátozásai és konfigurációs](../logic-apps/logic-apps-limits-and-config.md). 
 
@@ -83,14 +79,14 @@ Mentse a Logic Apps alkalmazást tetszőleges időpontban, ezért gyakran mentse
 
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
-      | **1. útvonalpont** | <*start*> | Adja meg a útvonal forrása. | 
-      | **2. útvonalpont** | <*end*> | Adja meg a útvonal cél. | 
-      | **Elkerülés** | Nincs | Adja meg az elemek elkerülése érdekében a útvonalon, például autópályákat, autópályadíjak, és így tovább. A lehetséges értékeket lásd: [útvonal kiszámításához](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **1. útvonalpont** | <*Indítsa el*> | Adja meg a útvonal forrása. | 
+      | **2. útvonalpont** | <*Vége*> | Adja meg a útvonal cél. | 
+      | **Elkerülés** | None | Adja meg az elemek elkerülése érdekében a útvonalon, például autópályákat, autópályadíjak, és így tovább. A lehetséges értékeket lásd: [útvonal kiszámításához](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizálás** | timeWithTraffic | Jelölje ki a paramétert, az útvonal, például a távolság, aktuális forgalmi információk, vagy más idő optimalizálása érdekében. Ez a példa ezt az értéket: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*igény-szerint*> | Adja meg a egység távolság a útvonal kiszámításához. Ez a példa ezt az értéket: "Mérföldes" | 
       | **Közlekedési mód** | Vezetés | Adja meg a útvonal utazás módját. A példában ez az érték "Vezetői" | 
-      | **Tranzit dátuma és időpontja** | Nincs | Csak az átvitel közben üzemmódban vonatkozik. | 
-      | **Átvitel dátuma-típusának** | Nincs | Csak az átvitel közben üzemmódban vonatkozik. | 
+      | **Tranzit dátuma és időpontja** | None | Csak az átvitel közben üzemmódban vonatkozik. | 
+      | **Átvitel dátuma-típusának** | None | Csak az átvitel közben üzemmódban vonatkozik. | 
       ||||  
 
 4. Feltétel hozzáadása ellenőrzése, hogy forgalommal aktuális utazás idő elér egy megadott időpontot. Ehhez a példához kövesse a a lemezkép:

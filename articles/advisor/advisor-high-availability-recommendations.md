@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Advisor magas rendelkezésre állású javaslatok |} Microsoft Docs"
-description: "Azure Advisor használata az Azure-környezetekhez magas rendelkezésre állásának javítása érdekében."
+title: Az Azure Advisor magas rendelkezésre állású javaslatok |} Microsoft Docs
+description: Azure Advisor használata az Azure-környezetekhez magas rendelkezésre állásának javítása érdekében.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: e1cd7948e1969cd4ddb926e428c09b559190a805
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736551"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Magas rendelkezésre állású javaslatokat biztosít
 
@@ -49,13 +50,16 @@ A lemezek nem igényelnek magas iops értéket, ha szabványos Storage fenntart�
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>A virtuális gép adatainak véletlen törlés elleni védelme
 Virtuális gép biztonsági mentése beállításával biztosítja az üzleti szempontból kritikus fontosságú adatok rendelkezésre állását, és véletlen törlés vagy -sérülés elleni védelmet nyújt.  Az Advisor azonosítja a virtuális gépek, ahol a biztonsági mentés nem engedélyezett, és azt a biztonsági mentés engedélyezését javasolja. 
 
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ellenőrizze, hogy Azure-felhőbe szakértők eléréséhez szükség esetén
+Olyan üzleti szempontból kritikus fontosságú alkalmazások és szolgáltatások futtatásakor fontos hozzáférjenek a technikai támogatási szolgálathoz, amikor szükséges. Az Advisor azonosítja a potenciális üzleti szempontból kritikus fontosságú előfizetések, amelyek nem rendelkeznek a támogatási csomag szerepel a technikai támogatási szolgálathoz, és javasolja, hogy telepítse olyan beállítás, amely magában foglalja a technikai támogatási szolgálathoz.
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Magas rendelkezésre állású javaslatok az Advisor elérése
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), majd nyissa meg [Advisor](https://aka.ms/azureadvisordashboard).
 
 2.  Az Advisor irányítópultján kattintson a **magas rendelkezésre állású** fülre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Advisor-javaslatokra kapcsolatos további információkért lásd:
 * [Bevezetés az Azure Advisor](advisor-overview.md)

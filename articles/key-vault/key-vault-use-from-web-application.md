@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: adhurwit
-ms.openlocfilehash: de8276b22377db37075c6793d0710bb18625446c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3a191c3ee7eea641aab81008a6da801b609fb4c5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802102"
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Használja az Azure Key Vault-webalkalmazások
 
@@ -44,7 +45,7 @@ Az oktatóanyag teljesítéséhez szüksége lesz:
 
 A webes alkalmazás, amely a Key Vault hozzáférhetnek az Azure Active Directoryban regisztrálva van, és megkapta-e hozzáféréssel a Key Vault a. Ha nem ez a helyzet, vissza regisztrálása a az alkalmazás az első lépéseket bemutató oktatóanyaghoz, és ismételje meg a ismertetett lépéseket.
 
-Ez az oktatóanyag célja alapjainak webalkalmazások létrehozása az Azure webalkalmazás-fejlesztőknek. Azure Web Apps kapcsolatos további információkért lásd: [webalkalmazások áttekintése](../app-service/app-service-web-overview.md).
+Ez az oktatóanyag célja alapjainak webalkalmazások létrehozása az Azure webalkalmazás-fejlesztőknek. Az Azure Web Apps szolgáltatással kapcsolatban [a Web Apps áttekintésével](../app-service/app-service-web-overview.md) foglalkozó témakörben tekinthet meg további információt.
 
 ## <a id="packages"></a>Adja hozzá a NuGet-csomagok
 
@@ -260,7 +261,7 @@ Ahelyett, hogy a tanúsítványt közvetlenül a Web App service feltölteni, t�
 
 ## <a id="next"></a>Következő lépések
 
-Programozási hivatkozások: [Azure Key Vault C# ügyfél API-referencia](https://msdn.microsoft.com/library/azure/dn903628.aspx).
+Programozási hivatkozások: [Azure Key Vault C# ügyfél API-referencia](https://msdn.microsoft.com/en-us/library/azure/mt430941.aspx).
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png

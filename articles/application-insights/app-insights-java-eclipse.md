@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795560"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Ismerkedés az Application Insights Java az eclipse-ben
 Az Application Insights SDK, hogy elemezheti a használati és teljesítményadatokat küld a Java-webalkalmazások telemetriai adatokat. Az eclipse-ben az Application Insights beépülő modult úgy, hogy be kívül mezőben telemetriai adatok, valamint az API-k, amelyek segítségével egyéni telemetriai adatokat írni automatikusan telepíti az SDK-t a projektben.   
@@ -32,6 +33,8 @@ A következők szükségesek:
 * Egy [Microsoft Azure](https://azure.microsoft.com/)-előfizetés.
 * [Java EE-fejlesztőknek IDE Holdas](http://www.eclipse.org/downloads/), Indigo vagy újabb.
 * Windows 7 vagy újabb, vagy a Windows Server 2008 vagy újabb
+
+Ha a rugó keretrendszer próbálja inkább a [használatára az Application Insights az útmutató egy rugó rendszerindító inicializáló alkalmazás konfigurálása](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>Telepítse az SDK Eclipse (egyszer)
 Csak kell elvégezni a számítógép egy alkalommal. Ez a lépés telepíti egy eszközkészlet, amelyet ezután felvehet az SDK minden dinamikus webes projekt.
@@ -183,7 +186,7 @@ Mindegyik [Windows-teljesítményszámláló](https://msdn.microsoft.com/library
 * displayName – Az Application Insights portálon megjelenő név.
 * categoryName – A teljesítményszámláló kategóriája (teljesítményobjektum), amelyhez ez a teljesítményszámláló társítva van.
 * counterName – A teljesítményszámláló neve.
-* instanceName – A teljesítményszámláló-kategória példányneve, vagy üres karakterlánc („”), ha a kategória egyetlen példányt tartalmaz. Ha a categoryName Folyamat, és a gyűjteni kívánt teljesítményszámláló az aktuális JVM folyamatról származik, amelyen az alkalmazása fut, adja meg a következőt: `"__SELF__"`.
+* instanceName – A teljesítményszámláló-kategória példányneve, vagy üres sztring („”), ha a kategória egyetlen példányt tartalmaz. Ha a categoryName Folyamat, és a gyűjteni kívánt teljesítményszámláló az aktuális JVM folyamatról származik, amelyen az alkalmazása fut, adja meg a következőt: `"__SELF__"`.
 
 A teljesítményszámlálói egyéni mérőszámokként láthatók a [Metrikaböngészőben][metrics].
 

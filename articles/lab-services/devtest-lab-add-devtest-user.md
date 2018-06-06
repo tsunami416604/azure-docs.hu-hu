@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0303f16de143247ac30a7dd4773b4da11f29c9d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736187"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Adja hozzá a tulajdonosok és a felhasználók a Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -60,25 +61,27 @@ A következő táblázat bemutatja, ezek a szerepkörök a felhasználók által
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>A tesztkörnyezet szinten egy tulajdonos vagy a felhasználó hozzáadása
-Tulajdonosa és a felhasználók az Azure-portálon a labor szintjén adhatók meg. Ez magában foglalja a külső felhasználók érvényes [Microsoft-fiók (msa-t)](devtest-lab-faq.md#what-is-a-microsoft-account).
+Tulajdonosa és a felhasználók az Azure-portálon a labor szintjén adhatók meg. Lehet, hogy egy felhasználó egy külső felhasználó érvényes [Microsoft-fiók (msa-t)](devtest-lab-faq.md#what-is-a-microsoft-account).
 A következő lépések végigvezetik egy tulajdonos vagy a felhasználó hozzáadása egy laborhoz a Azure DevTest Labs szolgáltatásban:
 
 1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Válassza ki a kívánt labor labs listájának megtekintéséhez.
-4. A labor paneljén válassza **konfigurációs**. 
-5. Az a **konfigurációs** panelen válassza **felhasználók**.
-6. Az a **felhasználók** panelen válassza **+ Hozzáadás**.
-   
+4. A labor paneljén válassza **konfigurációs és házirendek**. 
+5. Az a **konfigurációs és házirendek** lapon jelölje be **hozzáférés-vezérlés (IAM)** a bal oldali menüből. 
+6. Válassza ki **Hozzáadás** egy felhasználót a szerepkörbe való felvételre az eszköztáron.
+
     ![Felhasználó hozzáadása](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-7. Az a **Szerepkörválasztás** panelen válassza ki a kívánt szerepkört. A szakasz [szerepkörönként végrehajtott műveletekből](#actions-that-can-be-performed-in-each-role) felsorolja azokat a különböző, a tulajdonosa, a DevTest felhasználói és a közreműködői szerepkör a felhasználók által végrehajtható műveleteket.
-8. Az a **felhasználók hozzáadása az** panelen adja meg az e-mail cím vagy a felhasználó a szerepkörben megadott hozzáadni kívánt nevét. Ha a felhasználó nem található, egy hibaüzenet ismerteti a problémát. Ha a felhasználó megtalálható, hogy a felhasználó a felsorolt és kiválasztott. 
-9. Válassza ki **válasszon**.
-10. Válassza ki **OK** bezárásához a **hozzáférés hozzáadása** panelen.
+1. Az a **engedélyek hozzáadása** ablakban, a következő műveleteket hajthatja végre: 
+    1. Válassza ki a szerepkör (például: DevTest Labs felhasználó). A szakasz [szerepkörönként végrehajtott műveletekből](#actions-that-can-be-performed-in-each-role) felsorolja azokat a különböző, a tulajdonosa, a DevTest felhasználói és a közreműködői szerepkör a felhasználók által végrehajtható műveleteket.
+    2. Válassza ki a felhasználót, fel kell venni a szerepkör. 
+    3. Kattintson a **Mentés** gombra. 
+
+        ![Adja hozzá felhasználót a szerepkörhöz](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Amikor visszatér a **felhasználók** panelen, a felhasználó hozzá lett adva.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Külső felhasználó hozzáadása egy laborhoz PowerShell használatával
-Mellett felhasználók hozzáadása az Azure portálon, a külső felhasználó adhat hozzá a labor egy PowerShell-parancsfájl használatával. A következő példában a paraméterértékeket a módosításához egyszerűen a **értékek módosítása** megjegyzés.
+Mellett felhasználók hozzáadása az Azure portálon, a külső felhasználó adhat hozzá a labor egy PowerShell-parancsfájl használatával. A paraméterértékek módosítsa a következő példában a **értékek módosítása** megjegyzés.
 Kérheti le a `subscriptionId`, `labResourceGroup`, és `labName` értékeit a labor panel az Azure portálon.
 
 > [!NOTE]

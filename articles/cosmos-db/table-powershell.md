@@ -2,28 +2,26 @@
 title: Azure Cosmos DB tábla API-műveleteket a PowerShell-lel |} Microsoft Docs
 description: A PowerShell-lel Azure Cosmos DB tábla API műveletek végrehajtása
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
+author: SnehaGunda
+manager: kfile
 editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: sngun
+ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798644"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Az Azure PowerShell Azure Cosmos DB tábla API műveletek végrehajtása 
 
 >[!NOTE]
->Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storage például kulcsrakész globális terjesztési kis késleltetésű olvasások és írások, másodlagos indexelő vagy dedikált átviteli sebesség. A legtöbb esetben ez a cikk a munkahelyi Azure Cosmos DB tábla API, mind az Azure Table storage, de ez a cikk a PowerShell-parancsok csak az Azure Cosmos DB tábla API. Ha az Azure Table storage használ, tekintse meg [hajtsa végre az Azure Table storage műveletek az Azure PowerShell](table-storage-how-to-use-powershell.md).
+>Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storage például kulcsrakész globális terjesztési kis késleltetésű olvasások és írások, másodlagos indexelő vagy dedikált átviteli sebesség. A legtöbb esetben ez a cikk a munkahelyi Azure Cosmos DB tábla API, mind az Azure Table storage, de ez a cikk a PowerShell-parancsok csak az Azure Cosmos DB tábla API. Ha az Azure Table storage használ, tekintse meg [hajtsa végre az Azure Table storage műveletek az Azure PowerShell](../storage/tables/table-storage-how-to-use-powershell.md).
 >
 
 Az Azure Cosmos DB tábla API lehetővé teszi tárolja, és hatalmas strukturált, nem relációs adatokat lekérdezni. A szolgáltatás fő összetevőit táblák, entitásokat és tulajdonságok. A tábla az entitások gyűjteményét. Egy entitás tulajdonságait. Minden entitás legfeljebb 252 tulajdonságot, amely minden név-érték pár is rendelkezik. Ez a cikk feltételezi, hogy Ön már ismeri az Azure Cosmos DB tábla API fogalmakat. Részletes információkért lásd: [Bevezetés az Azure Cosmos DB tábla API](table-introduction.md) és [tábla API használatával a .NET-alkalmazás létrehozása](create-table-dotnet.md).

@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: LinkedIn konfigurációs |} Microsoft Docs'
-description: Regisztráció és bejelentkezés adhat az Azure Active Directory B2C által védett alkalmazások LinkedIn fiókkal rendelkező felhasználók
+title: Az Azure Active Directory B2C LinkedIn konfigurációs |} Microsoft Docs
+description: Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások LinkedIn fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 6db3832031a1bb960ee40c0e4fb8c3d0591a976c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711698"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés adhat LinkedIn-fiókkal rendelkező felhasználók
 ## <a name="create-a-linkedin-application"></a>LinkedIn-alkalmazás létrehozása
@@ -35,7 +35,7 @@ Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként LinkedIn 
    > **Titkos Ügyfélkulcsot** van egy fontos biztonsági hitelesítő adatok.
    > 
    > 
-6. Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a a **átirányítási URL-t engedélyezett** mező (alatt **OAuth 2.0**). Cserélje le **{tenant}** a bérlő nevű (például contoso.onmicrosoft.com). Kattintson a **Hozzáadás**, és kattintson a **frissítés**. A **{tenant}** érték kis-és nagybetűket.
+6. Adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` a a **átirányítási URL-t engedélyezett** mező (alatt **OAuth 2.0**). Cserélje le **{tenant}** a bérlő nevű (például contoso.onmicrosoft.com). Kattintson a **Hozzáadás**, és kattintson a **frissítés**. A **{tenant}** érték kisbetűnek kell lennie.
    
     ![LinkedIn - telepítő alkalmazás](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 

@@ -1,13 +1,14 @@
 ---
-title: "Az Azure Active Directory azonosító adatok védelmét a Microsoft Graph |} Microsoft Docs"
-description: "Tudnivalók a Microsoft Graph lekérdezni a kockázati eseményekről és a kapcsolódó adatokat az Azure Active Directory listáját."
+title: Az Azure Active Directory azonosító adatok védelmét a Microsoft Graph |} Microsoft Docs
+description: Tudnivalók a Microsoft Graph lekérdezni a kockázati eseményekről és a kapcsolódó adatokat az Azure Active Directory listáját.
 services: active-directory
-keywords: "az Azure active directory azonosító adatok védelmét, a kockázat esemény, a biztonsági rés, a biztonsági házirendet, a Microsoft Graph"
-documentationcenter: 
+keywords: az Azure active directory azonosító adatok védelmét, a kockázat esemény, a biztonsági rés, a biztonsági házirendet, a Microsoft Graph
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.date: 12/08/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: df0d89fc93f1b9c19d669c29306398a8b25ee425
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c6c59285fbb2c81e5e20d28171abfe806bd51122
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713201"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Ismerkedés az Azure Active Directory azonosító adatok védelmét és a Microsoft Graph
 A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](active-directory-identityprotection.md) API-k. Az első API **identityRiskEvents**, lehetővé teszi a Microsoft Graph listájának lekérdezési [kockázati események](active-directory-identityprotection-risk-events-types.md) és a kapcsolódó adatokat. Ez a cikk lekérdezi az API lekérdezése lépésekhez. Egy részletes bemutatása, teljes dokumentációját, és a Graph Explorer elérésére, tekintse meg a [Microsoft Graph hely](https://graph.microsoft.io/).
@@ -171,7 +173,7 @@ Hívja az API-t, hogy hozzon létre egy fejléc a következő paraméter:
 
 Hitelesítésekor található a jogkivonat típusa és a hozzáférési jogkivonat a visszaküldött jogkivonat.
 
-Ezt a fejlécet a kérés küldése a következő API URL-címe:`https://graph.microsoft.com/beta/identityRiskEvents`
+Ezt a fejlécet a kérés küldése a következő API URL-címe: `https://graph.microsoft.com/beta/identityRiskEvents`
 
 A válasz, ha sikeres, gyűjteménye identitás kockázati eseményekről és kapcsolódó adatait, amely elemzése és kezelése, ahogyan szeretné OData JSON formátumban.
 

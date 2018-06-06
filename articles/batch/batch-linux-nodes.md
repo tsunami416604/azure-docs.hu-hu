@@ -12,14 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
-ms.date: 05/22/2017
+ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9aa896bfc4c860c87757f9379fc44cc5ee8d18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: abb822483253fc5fce0e76afc2628806fe4485d8
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801762"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux számítási csomópontok kötegelt készletek kiépítése
 
@@ -38,7 +39,7 @@ A **Cloud Services-konfiguráció** *kizárólag* windowsos számítási csomóp
 **Virtuálisgép-konfiguráció** biztosít a Linux és a Windows lemezképek számítási csomópontjain. Elérhető számítási csomópont méretek szereplő [az Azure virtuális gépek méretei](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) és [az Azure virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Amikor virtuálisgép-konfiguráció csomópontot tartalmazó készletet hoz létre, meg kell adnia a csomópontokat, a virtuális gép Képhivatkozás és a kötegelt csomópont ügynök SKU csomópontjain telepítendő méretét.
 
 ### <a name="virtual-machine-image-reference"></a>Virtuális gép Képhivatkozás
-A Batch szolgáltatás által használt [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) biztosításához Linux számítási csomópontjain. Megadhatja, hogy a kép a [Azure piactér][vm_marketplace], vagy adjon meg egy előkészített egyéni lemezképet. További részletek az egyéni rendszerképekről: [Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével](batch-api-basics.md#pool).
+A Batch szolgáltatás által használt [virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) arra, hogy a virtuális gép konfigurációját a számítási csomópontok. Megadhatja, hogy a kép a [Azure piactér][vm_marketplace], vagy adjon meg egy előkészített egyéni lemezképet. Egyéni lemezképek kapcsolatos további tudnivalókért lásd: [készlet létrehozása az egyéni lemezkép](batch-custom-images.md).
 
 A virtuális gép Képhivatkozás konfigurálásakor adja meg a virtuálisgép-lemezkép tulajdonságait. A következő tulajdonságok szükség, amikor egy virtuális gép Képhivatkozás létrehoz:
 
@@ -58,7 +59,7 @@ A virtuális gép Képhivatkozás konfigurálásakor adja meg a virtuálisgép-l
 A kötegelt csomópont ügynök egy olyan program, a készlet minden egyes csomópontján fut, és a parancs-és-ellenőrzés felületet, a csomópont és a Batch szolgáltatás között. Nincsenek a csomópont ügynök SKU, úgynevezett különböző operációs rendszerek különböző implementációja. Alapvetően egy virtuálisgép-konfiguráció létrehozásakor először adja meg a virtuális gép képhivatkozás, és adja a csomópont ügynök, a lemezkép telepítéséhez. Minden csomópont ügynök SKU általában több virtuálisgép-lemezkép kompatibilis. Íme néhány példa a csomópont ügynök SKU:
 
 * 14.04 Batch.node.ubuntu
-* batch.node.centos 7
+* Batch.node.centos 7
 * batch.node.windows amd64
 
 > [!IMPORTANT]
@@ -145,7 +146,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Linux-készlet létrehozása: Batch .NET
-A következő kódrészletet szemlélteti, hogyan használható a [Batch .NET] [ nuget_batch_net] ügyféloldali kódtár Ubuntu Server készlet létrehozása a számítási csomópontok. Megtalálhatja az [Batch .NET referenciadokumentációt] [ api_net] az MSDN Webhelyén.
+A következő kódrészletet szemlélteti, hogyan használható a [Batch .NET] [ nuget_batch_net] ügyféloldali kódtár Ubuntu Server készlet létrehozása a számítási csomópontok. Megtalálhatja az [Batch .NET referenciadokumentációt] [ api_net] docs.microsoft.com.
 
 A következő kódban részlet a [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] mód közül jelenleg támogatott Piactéri lemezkép-csomópont ügynök SKU kombinációkat. Ez a módszer nem kívánatos, mert a lista támogatott kombinációk időnként változhat. A leggyakrabban a támogatott kombinációk kerülnek.
 
@@ -206,7 +207,7 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>Virtuálisgép-rendszerképek listája
-A következő táblázat a piactér virtuálisgép-lemezképeket, amelyek kompatibilisek a rendelkezésre álló kötegben csomópontjainak ügynökeit, ez a cikk legutóbbi frissítésekor. Fontos megjegyezni, hogy a lista létrehozási nem végleges mert képek és csomópontjainak ügynökeit előfordulhat, hogy hozzáadására vagy eltávolítására bármikor. Javasoljuk, hogy a Batch-alkalmazások és szolgáltatások mindig [list_node_agent_skus] [ py_list_skus] (Python) és [ListNodeAgentSkus] [ net_list_skus] (Batch .NET) használatával állapítsa meg és válassza ki a jelenleg elérhető termékváltozatok.
+A következő táblázat a piactér virtuálisgép-lemezképeket, amelyek kompatibilisek a rendelkezésre álló kötegben csomópontjainak ügynökeit, ez a cikk legutóbbi frissítésekor. Fontos megjegyezni, hogy a lista létrehozási nem végleges mert képek és csomópontjainak ügynökeit előfordulhat, hogy hozzáadására vagy eltávolítására bármikor. Javasoljuk, hogy a Batch-alkalmazások és szolgáltatások mindig [list_node_agent_skus] [ py_list_skus] (Python) vagy [ListNodeAgentSkus] [ net_list_skus] () Batch .NET) használatával állapítsa meg és válassza ki a jelenleg elérhető termékváltozatok.
 
 > [!WARNING]
 > Az alábbi lista bármikor módosíthatja. Mindig a **lista csomópont ügynök SKU** metódusok kompatibilis virtuális gép és csomópont ügynök SKU listáját, amikor a kötegelt feladatok futtatása a kötegelt API-k érhető el.
@@ -215,26 +216,33 @@ A következő táblázat a piactér virtuálisgép-lemezképeket, amelyek kompat
 
 | **Közzétevő** | **Ajánlat** | **Kép Termékváltozat** | **Verzió** | **Csomópont ügynök SKU-azonosítója** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
+| kötegelt | Megjelenítés-centos73 | Megjelenítés | legújabb | Batch.node.centos 7 |
+| kötegelt | Megjelenítés-windows2016 | Megjelenítés | legújabb | batch.node.windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | legújabb | Batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | legújabb | 14.04 Batch.node.ubuntu |
-| Canonical | UbuntuServer | 16.04.0-LTS | legújabb | Batch.node.ubuntu 16.04 |
+| Credativ | Debian | 9 | legújabb | Batch.node.debian 9 |
 | Credativ | Debian | 8 | legújabb | 8 Batch.node.debian |
-| OpenLogic | CentOS | 7.0 | legújabb | batch.node.centos 7 |
-| OpenLogic | CentOS | 7.1 | legújabb | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | legújabb | batch.node.centos 7 |
-| OpenLogic | CentOS | 7.2 | legújabb | batch.node.centos 7 |
-| Oracle | Oracle Linux | 7.0 | legújabb | batch.node.centos 7 |
-| Oracle | Oracle Linux | 7.2 | legújabb | batch.node.centos 7 |
-| SUSE | openSUSE | 13.2 | legújabb | Batch.node.opensuse 13.2 |
-| SUSE | openSUSE-Leap | 42.1 | legújabb | batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | legújabb | batch.node.opensuse 42.1 |
-| SUSE | SLES-HPC | 12-SP1 | legújabb | batch.node.opensuse 42.1 |
-| microsoft-ads | Linux-adatok-tudományos-vm | linuxdsvm | legújabb | batch.node.centos 7 |
+| microsoft-ads | Linux-adatok-tudományos-vm | linuxdsvm | legújabb | Batch.node.centos 7 |
 | microsoft-ads | Standard-adatok-tudományos-vm | Standard-adatok-tudományos-vm | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legújabb | batch.node.windows amd64 |
+| Microsoft-azure-köteg | centos-tároló | 7-4 | legújabb | Batch.node.centos 7 |
+| Microsoft-azure-köteg | centos-tároló-rdma | 7-4 | legújabb | Batch.node.centos 7 |
+| Microsoft-azure-köteg | ubuntu-kiszolgáló-tároló | 16-04-es lts verzió | legújabb | Batch.node.ubuntu 16.04 |
+| Microsoft-azure-köteg | ubuntu-kiszolgáló-tároló-rdma | 16-04-es lts verzió | legújabb | Batch.node.ubuntu 16.04 |
 | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-adatközpont-smalldisk | legújabb | batch.node.windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016-adatközpont-az-tárolók | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012 – Datacenter-smalldisk | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | legújabb | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | legújabb | batch.node.windows amd64 |
+| OpenLogic | CentOS | 7.4 | legújabb | Batch.node.centos 7 |
+| OpenLogic | A HPC-centOS | 7.4 | legújabb | Batch.node.centos 7 |
+| OpenLogic | A HPC-centOS | 7.3 | legújabb | Batch.node.centos 7 |
+| OpenLogic | A HPC-centOS | 7.1 | legújabb | Batch.node.centos 7 |
+| Oracle | Oracle Linux | 7.4 | legújabb | Batch.node.centos 7 |
+| SUSE | SLES-HPC | 12-SP2 | legújabb | Batch.node.opensuse 42.1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Csatlakozzon SSH használt Linux-csomópontok
 A fejlesztés során, vagy a hibaelhárítás során szükség lehet arra a készlet csomópontjain bejelentkezéshez szükséges. Windows számítási csomópontokat, eltérően Remote Desktop Protocol (RDP) nem használható Linux csomópontok való kapcsolódáshoz. Ehelyett a Batch szolgáltatás lehetővé teszi, hogy a távoli kapcsolat minden egyes csomóponton SSH-elérést.

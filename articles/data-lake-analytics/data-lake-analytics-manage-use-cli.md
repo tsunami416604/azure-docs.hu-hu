@@ -1,25 +1,22 @@
 ---
-title: Azure parancssori felület használatával Azure Data Lake Analytics kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti a Data Lake Analytics-fiókok, adatforrások, feladatok és a felhasználók Azure parancssori felület használatával
+title: Azure parancssori felület használatával Azure Data Lake Analytics kezelése
+description: A cikkből megtudhatja, hogyan használható az Azure parancssori felület Data Lake Analytics-feladatok, a adatforrások és a felhasználók kezeléséhez.
 services: data-lake-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: Kfile
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: sngun
-ms.openlocfilehash: 9504e1fcbb0128f538cb6e959cf7586f24827836
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86fa41db2d21beac08015d067b79ce1375cd3ddf
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736089"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>Azure parancssori felület (CLI) használatával Azure Data Lake Analytics kezelése
+# <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Azure Data Lake Analytics az Azure parancssori felület (CLI) használatával kezelése
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
@@ -214,24 +211,6 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
-
-
-## <a name="use-azure-resource-manager-groups"></a>Azure Resource Manager-csoportok használata
-Az alkalmazások általában számos összetevőből állnak, például webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból, tárolóból és külső szolgáltatásokból. Az Azure Resource Manager lehetővé teszi, hogy az alkalmazásában lévő erőforrásokat csoportként, Azure-erőforráscsoport néven az alkalmazásban. Központi telepítése, frissítése, figyelheti vagy törlése összes erőforrását egyetlen, koordinált műveletben az alkalmazáshoz. A telepítéshez egy sablon használatos, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. Tisztázhatja a szervezete számlázását a teljes csoport összegzett költségeinek megtekintésével. További információk: [Azure Resource Manager overview](../azure-resource-manager/resource-group-overview.md) (Az Azure Resource Manager áttekintése). 
-
-A Data Lake Analytics szolgáltatás a következő összetevők lehetnek:
-
-* Azure Data Lake Analytics-fiók
-* Szükséges alapértelmezett Azure Data Lake-tárfiókra
-* További Azure Data Lake-tárfiókokat
-* További Azure Storage-fiókok
-
-A könnyebb kezelése érdekében egy erőforrás-kezelő csoportba tartozó mindezen összetevők hozhat létre.
-
-![Azure Data Lake Analytics-fiók és tárolás](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
-
-Data Lake Analytics-fiók és a függő storage-fiókok Azure adatközpontba kell helyezni.
-Azonban az erőforrás-kezelő csoport elhelyezhető egy másik adatközpont.  
 
 ## <a name="see-also"></a>Lásd még
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

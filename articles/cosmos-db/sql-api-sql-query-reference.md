@@ -4,20 +4,18 @@ description: Az Azure Cosmos DB SQL lekérdező nyelve dokumentációját.
 services: cosmos-db
 author: LalithaMV
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798831"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos adatbázis SQL-szintaxis referencia
 
@@ -246,7 +244,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     {1, 2} számára `input_alias1 = A,`  
   
-    a {3} `input_alias1 = B,`  
+    {3} A `input_alias1 = B,`  
   
     {4, 5} számára `input_alias1 = C,`  
   
@@ -264,7 +262,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     {1, 2} számára `input_alias1 = A,`  
   
-    a {3} `input_alias1 = B,`  
+    {3} A `input_alias1 = B,`  
   
     {4, 5} számára `input_alias1 = C,`  
   
@@ -272,7 +270,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     {100, 200} számára `input_alias2 = 1,`  
   
-    a {300} `input_alias2 = 3,`  
+    {300} A `input_alias2 = 3,`  
   
 - A FROM záradék `<from_source1> JOIN <from_source2> JOIN <from_source3>` a következő rekordokat eredményezi:  
   
@@ -293,7 +291,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     {1, 2} számára `input_alias1 = A,`  
   
-    a {3} `input_alias1 = B,`  
+    {3} A `input_alias1 = B,`  
   
     {4, 5} számára `input_alias1 = C,`  
   
@@ -301,7 +299,7 @@ Vizsgáljuk meg FROM záradék a következő: `<from_source1> JOIN <from_source2
   
     {100, 200} számára `input_alias2 = A,`  
   
-    a {300} `input_alias2 = C,`  
+    {300} A `input_alias2 = C,`  
   
 - A FROM záradék `<from_source1> JOIN <from_source2> JOIN <from_source3>` a következő rekordokat eredményezi:  
   
@@ -686,7 +684,8 @@ ORDER BY <sort_specification>
 |--------------|-----------------|  
 |[Matematikai funkciók](#bk_mathematical_functions)|A matematikai funkciók hajtsa végre a számítás, rendszerint bemeneti értékeket, mint szerepkör argumentumokban szolgálnak, és a visszaadandó numerikus érték alapján.|  
 |[Írja be az ellenőrzési funkciók](#bk_type_checking_functions)|A típus ellenőrzési funkciók lehetővé teszik az SQL-lekérdezések lévő kifejezés típusa.|  
-|[Karakterlánc-függvények](#bk_string_functions)|A karakterlánc funkciók végrehajtania egy műveletet a bemeneti karakterlánc-értékkel, és egy karakterlánc, a numerikus és logikai értéket adja vissza.|  
+|
+  [Sztringfüggvények](#bk_string_functions)|A karakterlánc funkciók végrehajtania egy műveletet a bemeneti karakterlánc-értékkel, és egy karakterlánc, a numerikus és logikai értéket adja vissza.|  
 |[A tömb funkciók](#bk_array_functions)|A tömb funkciók egy logikai érték vagy tömb érték, egy tömb bemeneti érték és a numerikus visszatérési művelet végrehajtása.|  
 |[Térbeli funkciók](#bk_spatial_functions)|A térbeli funkciók végrehajtania egy műveletet a olyan térbeli objektum beviteli értéket, és numerikus vagy logikai érték visszaadása.|  
   

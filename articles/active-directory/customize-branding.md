@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
-ms.date: 01/19/2018
+ms.date: 05/23/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5573399b33da64df8b9bbf78a9583572cf148d7b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713847"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Gyors üzembe helyezés: Adja hozzá a vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben
 A félreértések elkerülése végett számos vállalat igyekszik egységes megjelenést adni az általa kezelt összes webhelynek és szolgáltatásnak. Azure Active Directory (Azure AD) azáltal, hogy a vállalat emblémájának elhelyezésével és egyéni színsémák alkalmazásával a bejelentkezési oldal testreszabása biztosítja ezt a lehetőséget. A bejelentkezési oldal akkor jelenik meg, amikor bejelentkezik a web-alapú például Office 365-öt használó alkalmazások az Azure AD az identitás-szolgáltatóként. Ön a szolgáltatóosztályokkal ezen a lapon adja meg a hitelesítő adatokat.
@@ -83,24 +84,24 @@ Az Azure AD-bejelentkezés biztosít a felhasználók, a beállítást, továbbr
 ## <a name="add-company-branding-to-your-directory"></a>Vállalati arculat megjelenítése a címtárhoz
 
 1. Jelentkezzen be [az Azure AD felügyeleti központot](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
-2. Válassza ki **felhasználók és csoportok** > **vállalati arculat** > **szerkesztése**.
+2. Válassza ki **Azure Active Directory** > **vállalati arculat** > **szerkesztése**.
   
   ![Egyéni branding megnyitása](./media/customize-branding/navigation-to-branding.png)
 3. Módosítsa az elemeket, amelyeket testre szeretne szabni. Ezen elemek egyike sem kötelező.
   
   ![Egyéni branding szerkesztése](./media/customize-branding/edit-branding.png)
-5. Amikor elkészült, válassza ki a **mentése**.
+4. Amikor elkészült, válassza ki a **mentése**.
 
 A bejelentkezési oldal megjelenik márkajelzési végrehajtott módosítások egy órát is igénybe vehet.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Nyelvspecifikus vállalati arculat megjelenítése a címtárban
 
 1. Jelentkezzen be az [Azure AD felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
-2. Válassza ki **felhasználók és csoportok** > **vállalati arculat** > **új nyelvi**.
+2. Válassza ki **Azure Active Directory** > **vállalati arculat** > **új nyelvi**.
   
   ![Nyelvspecifikus márkajelzési elemek hozzáadása](./media/customize-branding/add-language.png)
-5. Módosítsa az elemeket, amelyeket testre szeretne szabni. Ezen elemek egyike sem kötelező.
-6. Amikor elkészült, válassza ki a **mentése**.
+3. Módosítsa az elemeket, amelyeket testre szeretne szabni. Ezen elemek egyike sem kötelező.
+4. Amikor elkészült, válassza ki a **mentése**.
 
 A bejelentkezési oldal megjelenik márkajelzési végrehajtott módosítások egy órát is igénybe vehet.
 

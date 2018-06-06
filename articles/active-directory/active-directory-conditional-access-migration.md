@@ -1,14 +1,15 @@
 ---
-title: "Telepítse át a klasszikus szabályzatokkal az Azure portálon |} Microsoft Docs"
-description: "Ismerje meg, hogy szüksége lehet áttelepíteni a klasszikus szabályzatokkal az Azure portálon."
+title: Telepítse át a klasszikus szabályzatokkal az Azure portálon |} Microsoft Docs
+description: Ismerje meg, hogy szüksége lehet áttelepíteni a klasszikus szabályzatokkal az Azure portálon.
 services: active-directory
-keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
-documentationcenter: 
+keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+documentationcenter: ''
 author: MarkusVi
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 16628bd4fa41d2e7697e1c2501f2ccd31dbd0496
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: b6285381833526cdbdd7c1392894458a47c1cf34
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723728"
 ---
 # <a name="migrate-classic-policies-in-the-azure-portal"></a>Telepítse át a klasszikus szabályzatokkal az Azure portálon 
 
@@ -152,7 +154,7 @@ Ebben az esetben a klasszikus házirendek is konszolidálhatják egy új házire
 
 
 
-### <a name="device-platforms"></a>Eszközök
+### <a name="device-platforms"></a>Eszközplatformok
 
 Klasszikus szabályzatok [alkalmazás-alapú vezérlők](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) előre konfigurált, az iOS és Android, amelyek a [eszköz platform feltétel](active-directory-conditional-access-technical-reference.md#device-platform-condition). 
 
@@ -166,7 +168,7 @@ Az új kell kiválasztania a [eszközplatformok](active-directory-conditional-ac
  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
 

@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c1444901fa46a62761d6b94ccb8e7ea3ff3d057f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701887"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Egy Azure virtuális géphez a távoli asztali kapcsolatok hibáinak elhárítása
 A távoli asztal protokoll (RDP) kapcsolatot a Windows-alapú Azure virtuális gép (VM) különböző okokból, így nem érhető el a virtuális gép sikertelen lehet. A probléma lehet a távoli asztali szolgáltatás a virtuális Gépet, a hálózati kapcsolat vagy a távoli asztali ügyfél a gazdaszámítógépen. Ez a cikk végigvezeti Önt egy RDP-kapcsolati problémák megoldása a leggyakrabban használt módszerek. 
@@ -65,7 +66,7 @@ Minden hibaelhárítási lépés után ismét kapcsolódni a virtuális Gépre p
     Válassza ki a virtuális Gépet az Azure portálon. Görgessen lefelé a beállítások panelen a **támogatási + hibaelhárítás** szakasz közelében tétellista aljához. Kattintson a **jelszó-átállítási** gombra. Állítsa be a **mód** való **alaphelyzetbe állítása konfigurációs csak** , majd a **frissítés** gombra:
    
     ![Visszaállítja az RDP-konfigurációt az Azure-portálon](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Ellenőrizze hálózati biztonsági csoportszabályok**. Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. Hatékony biztonsági csoport szabályokat, hogy biztosítsa a bejövő "Engedélyezés" NSG-t is felhasználhatja a szabály létezik-e, és a rendszer előrébb RDP-porthoz (3389-es alapértelmezett). További információkért lásd: [használatával hatékony biztonsági szabályokat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+2. **Ellenőrizze hálózati biztonsági csoportszabályok**. Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. Hatékony biztonsági csoport szabályokat, hogy biztosítsa a bejövő "Engedélyezés" NSG-t is felhasználhatja a szabály létezik-e, és a rendszer előrébb RDP-porthoz (3389-es alapértelmezett). További információkért lásd: [használatával hatékony biztonsági szabályokat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 3. **Tekintse át a virtuális gép rendszerindítási diagnosztika**. Ez a hibaelhárítási lépés ellenőrzi, hogy a virtuális gép konzolnaplófájlokban meghatározni, ha a virtuális gép hibát jelez. Nem minden virtuális gép rendelkezik engedélyezve van, a rendszerindítási diagnosztika, ezért lehet, hogy ez a hibaelhárítási lépés nem kötelező.
    
@@ -95,7 +96,7 @@ Minden hibaelhárítási lépés után ismét kapcsolódni a virtuális Gépre p
    
     Ez a művelet befejezése után rövid élettartamú lemez adatok nem vesztek el, és dinamikus IP-címek a virtuális Géphez társított frissülnek.
 
-9. **Ellenőrizze az útválasztást**. Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+9. **Ellenőrizze az útválasztást**. Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/diagnose-network-routing-problem.md).
 
 10. Győződjön meg arról, hogy azokat a helyi tűzfal, illetve a számítógép tűzfala lehetővé teszi az Azure kimenő 3389-es TCP-forgalom.
 
@@ -184,7 +185,7 @@ Minden hibaelhárítási lépés után ismét kapcsolódni a virtuális Gépre p
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **Ellenőrizze az útválasztást**. Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+6. **Ellenőrizze az útválasztást**. Használja a hálózati figyelőt [a következő Ugrás](../../network-watcher/network-watcher-check-next-hop-portal.md) képességet, hogy ellenőrizze, hogy egy útvonal nem akadályozza meg, hogy forgalom való átirányítását, vagy egy virtuális gépről. Egy adott hálózati csatoló összes hatékony útvonalak hatékony útvonalakat is felhasználhatja. További információkért lásd: [hatékony használata az útvonalakat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/diagnose-network-routing-problem.md).
 
 7. Győződjön meg arról, hogy azokat a helyi tűzfal, illetve a számítógép tűzfala lehetővé teszi az Azure kimenő 3389-es TCP-forgalom.
 

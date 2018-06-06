@@ -1,24 +1,25 @@
 ---
-title: "Azure-fájlok telepítése |} Microsoft Docs"
-description: "Útmutató: Azure fájlok szolgáltatásra történő telepítését."
+title: Azure-fájlok telepítése |} Microsoft Docs
+description: 'Útmutató: Azure fájlok szolgáltatásra történő telepítését.'
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 193a403a64cea31a2e4cea21a5838be71af8dd53
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737350"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők az iparági szabványos SMB protokollon keresztül. Ez a cikk bemutatja, hogyan gyakorlatilag központi telepítése az Azure-fájlokat a szervezeten belül.
@@ -29,23 +30,23 @@ Erősen ajánlott olvasási [Azure fájlok központi telepítésének tervezés�
 Ez a cikk feltételezi, hogy már végrehajtotta a következőket:
 
 - Egy Azure Storage-fiók hozza létre a kívánt rugalmassági és titkosítási beállításokat, felügyelni a régióban. Lásd: [hozzon létre egy Tárfiókot](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) vonatkozó részletes utasításokat a Storage-fiók létrehozásához.
-- Egy Azure fájlmegosztás létrehozása a Tárfiókban lévő a kívánt kvótát. Lásd: [fájlmegosztás létrehozása](storage-how-to-create-file-share.md) vonatkozó részletes utasításokat a fájlmegosztás létrehozásához.
+- Az Azure fájlmegosztások létrehozása a Tárfiókban lévő a kívánt kvótát. Lásd: [fájlmegosztás létrehozása](storage-how-to-create-file-share.md) vonatkozó részletes utasításokat a fájlmegosztás létrehozásához.
 
 ## <a name="transfer-data-into-azure-files"></a>Adatok átviteléhez az Azure-fájlok
-Kezdésként érdemes lehet áttelepíteni meglévő fájlmegosztások esetén ezek a helyszínen tárolt, például az új Azure fájlmegosztás. Ez a szakasz bemutatja, hogyan kívánja áthelyezni az adatokat egy Azure-fájl megosztása keresztül számos népszerű módszer a részletes a [tervezési útmutató](storage-files-planning.md#data-transfer-method)
+Kezdésként érdemes lehet áttelepíteni meglévő fájlmegosztások esetén ezek a helyszínen tárolt, például az új Azure fájlmegosztás. Ez a szakasz bemutatja, hogyan áthelyezni az adatokat az Azure fájlmegosztások be a részletes számos népszerű módszer használatával a [tervezési útmutató](storage-files-planning.md#data-transfer-method)
 
 ### <a name="azure-file-sync-preview"></a>Az Azure File Sync (előzetes verzió)
-Azure fájl szinkronizálása (előzetes verzió) lehetővé teszi a fájlmegosztások a szervezet Azure-fájlokban szereplő központosítása próbálkozik a rugalmasság, a teljesítmény és a kompatibilitási fájlt a helyi kiszolgáló nélkül. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
+Azure fájl szinkronizálása (előzetes verzió) lehetővé teszi a fájlmegosztások a szervezet Azure-fájlokban szereplő központosítása próbálkozik a rugalmasság, a teljesítmény és a kompatibilitási fájlt a helyi kiszolgáló nélkül. Ennek érdekében a Windows-kiszolgálók átalakítása a Azure fájlmegosztás gyors gyorsítótárába. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
-Azure fájlszinkronizálás is használható adatokat áttelepíteni egy Azure-fájlmegosztás, még akkor is, ha a szinkronizálási mechanizmus nem kívánt hosszú távú használatra. Adatok átviteléhez az Azure fájlmegosztás Azure fájlszinkronizálás használatáról további információk találhatók [Azure fájlszinkronizálás központi telepítésének tervezésében](storage-sync-files-planning.md) és [központi telepítése az Azure fájlszinkronizálás](storage-sync-files-deployment-guide.md).
+Azure fájlszinkronizálás is használható adatokat áttelepíteni az Azure fájlmegosztások, még akkor is, ha a szinkronizálási mechanizmus nem kívánt hosszú távú használatra. Azure fájlszinkronizálás adatok átviteléhez az Azure-fájlmegosztáshoz való használatáról további információk találhatók [Azure fájlszinkronizálás központi telepítésének tervezésében](storage-sync-files-planning.md) és [központi telepítése az Azure fájlszinkronizálás](storage-sync-files-deployment-guide.md).
 
 ### <a name="azure-importexport"></a>Az Azure Import/Export
-Az Azure Import/Export szolgáltatás lehetővé teszi, hogy biztonságosan át nagy mennyiségű adat egy Azure fájlmegosztás által szállítási merevlemez-meghajtók számára egy Azure-adatközpontban. Lásd: [a Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez az Azure storage](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a szolgáltatás részletes ismertetése.
+Az Azure Import/Export szolgáltatás lehetővé teszi, hogy biztonságosan át nagy mennyiségű adatot az Azure fájlmegosztások által szállítási merevlemez-meghajtók számára egy Azure-adatközpontban. Lásd: [a Microsoft Azure Import/Export szolgáltatás használata az adatok átviteléhez az Azure storage](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a szolgáltatás részletes ismertetése.
 
 > [!Note]  
-> Az Azure Import/Export szolgáltatás nem támogatja az Exportálás egy Azure fájlmegosztás-fájlok most.
+> Az Azure Import/Export szolgáltatás nem támogatja az Exportálás ekkor az Azure fájlmegosztások-fájlok.
 
-Az alábbi lépéseket a helyszíni helyről adatok az Azure fájlmegosztás importálása.
+Az alábbi lépéseket a helyszíni helyről adatokat az Azure fájlmegosztások importál.
 
 1. Be kell szereznie a mail merevlemezek szükséges számát, az Azure. Merevlemezek lehet, hogy a lemez méretének, de lehet vagy egy 2,5" vagy 3.5-ös" SSD és HDD a SATA II vagy SATA III szabványt támogató. 
 
@@ -62,7 +63,7 @@ Az alábbi lépéseket a helyszíni helyről adatok az Azure fájlmegosztás imp
 
         ![A képernyőfelvétel az új egyszerű kötet varázslóban, a lemez felügyeleti MMC-ben](media/storage-files-deployment-guide/transferdata-importexport-2.png)
 
-4. A dataset CSV-fájl létrehozása. A dataset CSV-fájl elérési útját az adatokat a helyszíni és a kívánt Azure fájlmegosztás másolja az adatokat közötti leképezést. Például a következő adatkészlet CSV-fájlt egy Azure fájlmegosztás ("MyAzureFileShare") van leképezve egy helyszíni fájlmegosztás ("F:\shares\scratch"):
+4. A dataset CSV-fájl létrehozása. A dataset CSV-fájl elérési útját az adatokat a helyszíni közötti leképezést, és másolja a kívánt Azure fájlmegosztás az adatok. Például a következő adatkészlet CSV-fájlt az Azure fájlmegosztások ("MyAzureFileShare") van leképezve egy helyszíni fájlmegosztás ("F:\shares\scratch"):
     
     ```
     BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -91,18 +92,18 @@ Az alábbi lépéseket a helyszíni helyről adatok az Azure fájlmegosztás imp
     > [!Warning]  
     > Ne módosítsa a merevlemez-meghajtók vagy a napló fájlban lévő adatok lemezét befejezése után.
 
-7. [Hozzon létre egy importálási feladat](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-an-export-job).
+7. [Hozzon létre egy importálási feladat](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>A Robocopy
 A Robocopy egy jól ismert másolási eszköz részét képező Windows és Windows Server. A Robocopy adatok átviteléhez az Azure-fájlok helyileg a fájlmegosztás csatlakoztatása és a csatlakoztatott hely majd segítségével a Robocopy parancsot a célként használható. A Robocopy használata rendkívül egyszerű:
 
-1. [Az Azure fájlmegosztás csatlakoztatása](storage-how-to-use-files-windows.md). Az optimális teljesítmény érdekében javasoljuk az Azure fájlmegosztás helyi csatlakoztatása a kiszolgálón, amely tartalmazza az adatokat. Egyes esetekben, például egy NAS-eszköz esetén a fájlkiszolgálón, amely adatokat szolgáltat ez nem lehet. Ebben az esetben is tökéletesen elfogadható Azure fájlmegosztás csatlakoztatása egy számítógépen. Ebben a példában `net use` a fájlmegosztás csatlakoztatásához használatos a parancssorból:
+1. [Az Azure fájlmegosztások csatlakoztatása](storage-how-to-use-files-windows.md). Az optimális teljesítmény érdekében javasoljuk, helyileg a Azure fájlmegosztás csatlakoztatása a kiszolgálón, amely tartalmazza az adatokat. Egyes esetekben, például egy NAS-eszköz esetén a fájlkiszolgálón, amely adatokat szolgáltat ez nem lehet. Ebben az esetben is tökéletesen elfogadható Azure fájlmegosztás csatlakoztatása egy számítógépen. Ebben a példában `net use` a fájlmegosztás csatlakoztatásához használatos a parancssorból:
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. Használjon `robocopy` adatok áthelyezése az Azure fájlmegosztás a parancssorból:
+2. Használjon `robocopy` adatok áthelyezése az Azure fájlmegosztások a parancssorból:
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -114,7 +115,7 @@ A Robocopy egy jól ismert másolási eszköz részét képező Windows és Wind
 AzCopy egy parancssori segédprogram, és az Azure-fájlok, valamint az Azure Blob Storage tárolóban, az adatok másolása az optimális teljesítménnyel egyszerű parancsok használatával. AzCopy használata egyszerű:
 
 1. Töltse le a [Windows AzCopy legújabb verzióját](http://aka.ms/downloadazcopy) vagy [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
-2. Használjon `azcopy` adatok áthelyezése az Azure fájlmegosztás a parancssorból. A Windows szintaxisa a következő: 
+2. Használjon `azcopy` adatok áthelyezése az Azure fájlmegosztások a parancssorból. A Windows szintaxisa a következő: 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S
@@ -132,7 +133,7 @@ AzCopy egy parancssori segédprogram, és az Azure-fájlok, valamint az Azure Bl
 Egy helyszíni fájlmegosztást használ, akkor az azt használni kívánt számítógépeken a megosztások előre csatlakoztatni. Ezt megteheti automatikusan a számítógépek listája.
 
 > [!Note]  
-> Egy Azure fájlmegosztás csatlakoztatása van szüksége, használja a tárfiók kulcsa a jelszót, ezért csak ajánlott megbízható környezetben csatlakoztatni. 
+> Az Azure fájlmegosztások csatlakoztatása van szüksége, használja a tárfiók kulcsa a jelszót, ezért csak ajánlott megbízható környezetben csatlakoztatni. 
 
 ### <a name="windows"></a>Windows
 PowerShell is használható a csatlakoztatási parancs futtatása több számítógépeken. A következő példában `$computers` kézzel fel van töltve, de létrehozhat automatikusan csatlakoztatni a számítógépek listáját. Például ezt a változót, az Active Directoryból eredményekkel feltöltheti azt.

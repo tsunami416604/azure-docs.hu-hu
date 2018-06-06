@@ -5,20 +5,17 @@ keywords: adatbázis teljesítményének javításával
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fa68711158bea203d4fe1605966363dd2786a038
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715020"
 ---
 > [!div class="op_single_selector"]
 > * [Aszinkron Java](performance-tips-async-java.md)
@@ -40,27 +37,28 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     Hogyan ügyfél csatlakozik-e Azure Cosmos DB rendelkezik fontos gyakorolt hatása a teljesítményre, különös tekintettel az megfigyelt ügyféloldali késés. Nincsenek elérhető az ügyfél kapcsolatkezelési házirendet – a kapcsolat konfigurálása két fő konfigurációs beállítások *mód* és a [kapcsolat *protokoll*](#connection-protocol).  A két rendelkezésre álló módok a következők:
 
-   1. Átjáró mód (alapértelmezés)
+   * Átjáró mód (alapértelmezés)
       
-      Átjáró mód minden SDK-platformon támogatott, és a beállított alapértelmezett. Ha az alkalmazás fut a vállalati hálózatról szigorú tűzfal korlátozások, az átjáró mód azért, mert a szabványos HTTPS-port és egy végpontot használ a legjobb választás. A teljesítmény kompromisszumot azonban, hogy az átjáró mód érint egy további hálózati ugrások minden alkalommal, amikor adatait olvasni vagy írni az Azure Cosmos DB. Emiatt a közvetlen üzemmódban miatt kevesebb hálózati ugrásokat jobb teljesítményt nyújt.
+     Átjáró mód minden SDK-platformon támogatott, és a beállított alapértelmezett. Ha az alkalmazás fut a vállalati hálózatról szigorú tűzfal korlátozások, az átjáró mód azért, mert a szabványos HTTPS-port és egy végpontot használ a legjobb választás. A teljesítmény kompromisszumot azonban, hogy az átjáró mód érint egy további hálózati ugrások minden alkalommal, amikor adatait olvasni vagy írni az Azure Cosmos DB. Emiatt a közvetlen üzemmódban miatt kevesebb hálózati ugrásokat jobb teljesítményt nyújt.
 
-   2. Közvetlen mód
+   * Közvetlen mód
 
-     Közvetlen mód TCP- és a HTTPS protokollokon keresztül kapcsolatot támogat. Jelenleg közvetlen használata támogatott a .NET-szabvány 2.0 csak a Windows platform.
-      
-<a id="use-tcp"></a>
-2. **Kapcsolat házirend: a TCP protokoll**
+     Közvetlen mód TCP- és a HTTPS protokollokon keresztül kapcsolatot támogat. Jelenleg közvetlen használata támogatott a .NET-szabvány 2.0 csak a Windows platform. Ha közvetlen módot, két módon protokoll érhető el:
 
-    Ha közvetlen módot, két módon protokoll érhető el:
+    * TCP
+    * HTTPS
 
-   * TCP
-   * HTTPS
+    Átjáró mód használata esetén a Azure Cosmos DB 443-as portot használja, és a MongoDB API 10250, 10255 és 10256 portot használ. A georeplikáció és a Mongodb-példány georeplikáció funkciójú 10255/10256 portok hozzárendelés nélkül egy alapértelmezett Mongodb-példány 10250 port leképezések. Ha TCP közvetlen módban átjáró portokon kívül, gondoskodnia kell arról a port 10000 és 20000 között nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitva, és próbálja meg használni a TCP, hibaüzenet 503-as szolgáltatás nem érhető el. Az alábbi táblázat csatlakozási mód különböző API-k és a szolgáltatás portok felhasználó minden API-hoz:
 
-     Azure Cosmos-adatbázis egy egyszerű és nyitott RESTful programozási modellt biztosít, HTTPS-KAPCSOLATON keresztül. Emellett kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációs modellben és a .NET SDK ügyfélen keresztül érhető el. Közvetlen TCP és a HTTPS egyaránt SSL használata a kezdeti hitelesítési és titkosítási forgalom. A legjobb teljesítmény érdekében használjon a TCP protokollt, ha lehetséges.
+    |Csatlakozási mód  |Támogatott protokollok  |Támogatott SDK-k  |API-/ szolgáltatásport  |
+    |---------|---------|---------|---------|
+    |Átjáró  |   HTTPS    |  Minden SDK-k    |   SQL(443), Mongo (10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |Közvetlen    |    HTTPS     |  .NET- és Java SDK    |    SQL(443)   |
+    |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
 
-     Ha TCP az átjáró módban, TCP 443-as porton az Azure Cosmos DB portot, és 10255 a MongoDB API port. Ha TCP közvetlen módban átjáró portokon kívül, gondoskodnia kell arról a port 10000 és 20000 között nyitva, mert az Azure Cosmos DB dinamikus TCP-portot használja. Ha ezeket a portokat nem nyitva, és próbálja meg használni a TCP, hibaüzenet 503-as szolgáltatás nem érhető el.
+    Azure Cosmos-adatbázis egy egyszerű és nyitott RESTful programozási modellt biztosít, HTTPS-KAPCSOLATON keresztül. Emellett kínál egy hatékony TCP protokoll, amely egyben a RESTful a kommunikációs modellben és a .NET SDK ügyfélen keresztül érhető el. Közvetlen TCP és a HTTPS egyaránt SSL használata a kezdeti hitelesítési és titkosítási forgalom. A legjobb teljesítmény érdekében használjon a TCP protokollt, ha lehetséges.
 
-     A csatlakozási mód úgy van beállítva, a ConnectionPolicy paraméterrel DocumentClient példányának létrehozása során. Közvetlen mód használata esetén a protokoll is megadható a ConnectionPolicy paraméter belül.
+    A csatlakozási mód úgy van beállítva, a ConnectionPolicy paraméterrel DocumentClient példányának létrehozása során. Közvetlen mód használata esetén a protokoll is megadható a ConnectionPolicy paraméter belül.
 
     ```csharp
     var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -77,19 +75,19 @@ Ezért ha még kérése "Hogyan javítható az adatbázis teljesítménye?" Vegy
 
     ![Az Azure Cosmos DB kapcsolatkezelési házirendet ábrája](./media/performance-tips/connection-policy.png)
 
-3. **Az első kérelem indítási késleltetés elkerülése érdekében OpenAsync hívása**
+2. **Az első kérelem indítási késleltetés elkerülése érdekében OpenAsync hívása**
 
     Alapértelmezés szerint az első kérelem egy nagyobb késleltetéssel járhat van, mert a cím útvonaltábla beolvasása. Ez az első kérésre indítási késleltetés elkerülése érdekében célszerű hívni OpenAsync() egyszer az inicializálás során az alábbiak szerint.
 
         await client.OpenAsync();
    <a id="same-region"></a>
-4. **A teljesítmény azonos Azure régióban ügyfelek elhelyezésének engedélyezése**
+3. **A teljesítmény azonos Azure régióban ügyfelek elhelyezésének engedélyezése**
 
     Ha lehetséges, helyezze el az alkalmazásokat, Azure Cosmos DB hívja az Azure Cosmos DB adatbázis ugyanabban a régióban. Hozzávetőleges összehasonlításhoz hívások Azure Cosmos DB belül ugyanabban a régióban 1-2 ms belül befejeződik, de nyugati és az Egyesült Államok, keleti part közötti késés > 50 ms. Ez a késés valószínűleg eltérőek lehetnek kérelem kérelem attól függően, hogy az útvonal kérés hajtja végre, mivel az ügyfél az Azure-adatközpontban határ adja át. A lehető legkisebb késleltetést érhető el, biztosítva, hogy a hívó alkalmazás helyen belüli és a kiépített Azure Cosmos DB végpont Azure ugyanabban a régióban. Elérhető régiók listáját lásd: [Azure-régiókat](https://azure.microsoft.com/regions/#services).
 
     ![Az Azure Cosmos DB kapcsolatkezelési házirendet ábrája](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
-5. **Növeli a szálak/feladatok száma**
+4. **Növeli a szálak/feladatok száma**
 
     Az Azure Cosmos Adatbázishoz hívások a hálózaton keresztül, mert szükség lehet a kérelmek párhuzamosságát fokának eltérőek, hogy az ügyfélalkalmazás fordít várakozó kérelmek között nagyon rövid ideig. Ha például használata. NET tartozó [feladat párhuzamos könyvtár](https://msdn.microsoft.com//library/dd460717.aspx), sorrendben 100-as egység olvasása vagy írása Azure Cosmos DB feladatok létrehozása.
 

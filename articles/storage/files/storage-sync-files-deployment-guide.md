@@ -1,11 +1,11 @@
 ---
-title: "Azure fájlszinkronizálás (előzetes verzió) telepítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítése Azure fájlszinkronizálás, így tovább."
+title: Azure fájlszinkronizálás (előzetes verzió) telepítése |} Microsoft Docs
+description: Megtudhatja, hogyan telepítése Azure fájlszinkronizálás, így tovább.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: d5864b8df85a5b3cec086d4cb2edc6d288f1639a
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: a450d3c00627a9b20ff2fe31c4dba49b33352ec1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738381"
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Azure fájlszinkronizálás (előzetes verzió) telepítése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -56,13 +57,16 @@ Minden Azure fájl szinkronizálással, beleértve a csomópontok egy feladatát
     4. Az a **Internet Explorer fokozott biztonsági beállításai** párbeszédpanelen jelölje ki **ki** a **rendszergazdák** és **felhasználók**:  
         ![Az Internet Explorer fokozott biztonsági beállításai pop-ablak "Ki" a kijelölt](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-2. Győződjön meg arról, hogy futtatja legalább PowerShell 5.1.\* (PowerShell 5.1 az alapértelmezett érték a Windows Server 2016-os). Ellenőrizheti, hogy futnak-e PowerShell 5.1. \* értékének megnézzük a **PSVersion** tulajdonsága a **$PSVersionTable** objektum:
+2. Windows Server 2012 R2 használatakor győződjön meg arról, hogy futtatja legalább PowerShell 5.1. \*. Biztonságosan kihagyhatja ezt az ellenőrzést, a Windows Server 2016, mert a PowerShell 5.1 az alapértelmezett verzió out-of-box. A Windows Server 2012 R2 ellenőrizheti, hogy futnak-e PowerShell 5.1. \* értékének megnézzük a **PSVersion** tulajdonsága a **$PSVersionTable** objektum:
 
     ```PowerShell
     $PSVersionTable.PSVersion
     ```
 
     Ha a PSVersion érték kisebb, mint 5.1. \*, mint lesz a Windows Server 2012 R2 legtöbb telepítés esetében, ha letölti és telepíti könnyedén frissíthet [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616). A megfelelő csomag letöltése és telepítése a Windows Server 2012 R2 **Win8.1AndW2K12R2 KB-os\*\*\*\*\*\*\*-x64.msu**.
+
+    > [!Note]  
+    > Az Azure fájlszinkronizálás egyelőre nem támogatják a PowerShell 6 Windows Server 2012 R2 vagy Windows Server 2016.
 
 3. [Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Azt javasoljuk, hogy az Azure PowerShell-modulok legújabb verzióját használja.
 
@@ -92,6 +96,9 @@ Miután bejelentkezik, a következő információkat kéri:
 
 Miután kiválasztotta a megfelelő adatokat, válassza ki a **regisztrálása** befejezéséhez a kiszolgáló regisztrálása. A regisztrációs folyamat részeként kéri egy további bejelentkezés.
 
+> [!Note]  
+> A kiszolgáló csak regisztrálható egy tárolási szinkronizálási szolgáltatás egyszerre.
+
 ## <a name="create-a-sync-group"></a>Szinkronizálási csoport létrehozása
 A szinkronizálás csoport adja meg a sync-topológiát a fájlokat. A szinkronizálási csoporton belüli végpontok tartják szinkronban vannak egymással. A szinkronizálás csoport tartalmaznia kell legalább egy felhő végpontot, amely jelöli az Azure fájlmegosztások, és egy kiszolgáló végpont, amely a Windows Server egy elérési utat képvisel. A szinkronizálás csoport létrehozásakor a [Azure-portálon](https://portal.azure.com/)nyissa meg a tároló szinkronizálási szolgáltatással, és válassza ki **+ szinkronizálású csoport**:
 
@@ -102,7 +109,7 @@ A megnyíló párbeszédpanelen írja be a felhő végponttal szinkronizálási 
 - **Szinkronizálási csoportnév**: létrehozni a szinkronizálási csoport nevét. Ez a név a tároló szinkronizálási szolgáltatás belül egyedieknek kell lenniük, de bármilyen nevet, amely logikai meg.
 - **Előfizetés**: az előfizetést, amelybe telepítette a tároló szinkronizálási szolgáltatás a [a tároló szinkronizálási szolgáltatás telepítése](#deploy-the-storage-sync-service).
 - **A tárfiók**: Ha **válasszon tárfiókot**, egy másik ablak jelenik meg, ahol kiválaszthatja a tárfiókot, amely rendelkezik a szinkronizálni kívánt Azure fájlmegosztás.
-- **Az Azure fájlmegosztás**:, amellyel szinkronizálni kívánt Azure fájlmegosztás nevét.
+- **Azure-fájlmegosztáshoz**:, amellyel szinkronizálni kívánt Azure fájlmegosztás nevét.
 
 Vegyen fel egy kiszolgáló végpontot, nyissa meg az újonnan létrehozott szinkronizálási csoporthoz, és válassza ki **server végpont hozzáadása**.
 

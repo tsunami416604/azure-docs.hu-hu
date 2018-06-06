@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 065ac8b2e9cb48408c7922a1937e541521ccd8cf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 93ecd0264413e0eb719c9d33f0a0b756bcee6552
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726448"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy törlése egy útválasztási táblázatot
 
@@ -31,7 +32,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
 - A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.7.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.31 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` az Azure VPN-kapcsolat létrehozásához.
 
 Hozzá kell rendelni a fiókot, jelentkezzen be, vagy csatlakozzon az Azure-ba, a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
@@ -93,6 +94,8 @@ Egy alhálózat állhat nulla vagy egy útválasztási táblázatot társítva. 
 3. Válassza ki **alhálózatok** alatt **beállítások**.
 4. Jelölje ki az alhálózatot, hozzárendeli az útvonaltábla.
 5. Válassza ki **útvonaltábla**, jelölje be az útvonaltábla társítása alhálózathoz, majd válassza a kívánt **mentése**.
+
+Ha a virtuális hálózat az Azure VPN-átjáró csatlakozik, ne társítson egy útválasztási táblázatot, hogy a [átjáróalhálózatot](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza egy útvonalat a 0.0.0.0/0 célját. Így előfordulhat, hogy az átjáró helyes működését. Egy útvonalat a 0.0.0.0/0 használatával kapcsolatos további információkért lásd: [virtuális hálózati forgalmának irányítását a](virtual-networks-udr-overview.md#default-route).
 
 **Parancsok**
 
@@ -159,7 +162,7 @@ Egy útválasztási táblázatot nulla vagy egynél több útvonalak tartalmazza
 - Az Azure CLI: [az útvonaltábla útvonal lista](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
-## <a name="view-details-of-a-route"></a>Egy útvonal részleteinek megtekintése
+## <a name="view-details-of-a-route"></a>Útvonal részleteinek megtekintése
 
 1. Adja meg a keresési mezőbe, a portál felső, *útvonaltáblát* be a keresőmezőbe. Ha **útvonaltáblát** jelennek meg a keresési eredmények között, válassza ki azt.
 2. Válassza ki az útválasztási táblázatot egy útvonal a részletek megtekintéséhez.
@@ -216,7 +219,7 @@ A hatékony útvonalak mindegyik hálózati interfész egy virtuális géphez cs
 
 A következő ugrás típusa, a virtuális gépek és az IP-cím, egy másik Azure-erőforrás, egy helyszíni erőforrás vagy internetes erőforrás között azt is meghatározhatja. Meghatározó Azure útválasztási akkor hasznos, ha útválasztási problémák elhárítása. A feladat végrehajtásához rendelkeznie kell egy meglévő hálózati figyelőt. Ha még nem rendelkezik egy meglévő hálózati figyelőt, hozzon létre egyet a lépések végrehajtásával [hozzon létre egy hálózati figyelőt példányt](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-1. Adja meg a keresési mezőbe, a portál felső, *hálózati figyelőt* be a keresőmezőbe. Ha **hálózati figyelőt** megjelenik a keresési eredmények között, jelölje be.
+1. Adja meg a keresési mezőbe, a portál felső, *hálózati figyelőt* be a keresőmezőbe. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 2. Válassza ki **a következő Ugrás** alatt **diagnosztikai eszközök**.
 3. Válassza ki a **előfizetés** és a **erőforráscsoport** a forrás virtuális gép szeretné érvényesíteni az útválasztást.
 4. Válassza ki a **virtuális gép**, **hálózati illesztő** csatolva a virtuális géphez, és **forrás IP-címe** rendelt az érvényesíteni kívánt hálózati adapter az útválasztást.

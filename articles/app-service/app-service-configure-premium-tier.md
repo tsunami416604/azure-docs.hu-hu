@@ -1,12 +1,12 @@
 ---
-title: "PremiumV2 réteg konfigurálása az Azure App Service szolgáltatásban |} Microsoft Docs"
-description: "Útmutató a jobb teljesítmény, a webes, mobil és API-alkalmazás az Azure App Service-ben a használatát, mivel az új PremiumV2 árképzési szint."
-keywords: "app service, azure app service, méret, méretezhető, app service-csomag, app service ára"
+title: PremiumV2 réteg konfigurálása az Azure App Service szolgáltatásban |} Microsoft Docs
+description: Útmutató a jobb teljesítmény, a webes, mobil és API-alkalmazás az Azure App Service-ben a használatát, mivel az új PremiumV2 árképzési szint.
+keywords: app service, azure app service, méret, méretezhető, app service-csomag, app service ára
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714561"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Az Azure App Service-PremiumV2 szint konfigurálása
 
@@ -51,9 +52,9 @@ Egy App Service-alkalmazás az árképzési szint van megadva a [App Service-cso
 
 Az App Service-csomag konfigurálása esetén a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>, jelölje be **tarifacsomag**. 
 
-Válasszon egyet a a **PremiumV2** , és kattintson **válasszon**.
+Válassza ki **éles**, majd jelölje be **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson a **alkalmaz**.
 
-![](media/app-service-configure-premium-tier/pick-premium-tier.png)
+![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Ha nem lát **P1V2**, **P2V2**, és **P3V2** regisztrációja, mivel a beállításokat, vagy **PremiumV2** nem érhető el az adott régióban választott, vagy Ön a Linux App Service-csomag, amely nem támogatja a konfigurálása **PremiumV2**.
@@ -70,7 +71,7 @@ Válassza ki az App Service alkalmazás oldal bal oldali navigációs **vertiká
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Válasszon egyet a a **PremiumV2** méretét, majd kattintson a **válasszon**.
+Válassza ki **éles**, majd jelölje be **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson a **alkalmaz**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 

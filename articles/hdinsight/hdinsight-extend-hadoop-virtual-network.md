@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 3df32c39152c8dda24fd5d0796f8074af8ce8a1a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9ad7a35864f8e8a1aa95f0b54174a792f069ba18
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700706"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure virtuális hálózat használatával Azure HDInsight kiterjesztése
 
@@ -90,7 +91,7 @@ Ebben a szakaszban a lépések segítségével egy új HDInsight hozzáadása eg
         az network nsg list --resource-group $RESOURCEGROUP
         ```
 
-        További információkért lásd: a [hibaelhárítása a hálózati biztonsági csoportok](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) dokumentum.
+        További információkért lásd: a [hibaelhárítása a hálózati biztonsági csoportok](../virtual-network/diagnose-network-traffic-filter-problem.md) dokumentum.
 
         > [!IMPORTANT]
         > Hálózati biztonsági csoportszabályok szabály prioritási sorrendben alkalmazza. Az első szabály, amely a forgalom bizonyos mintázatnak megfelelő vonatkozik, és nincs más erre a forgalomra alkalmazza. Szabályok a leghatékonyabb a legkevésbé megengedő. További információkért lásd: a [hálózati forgalmat hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
@@ -107,7 +108,7 @@ Ebben a szakaszban a lépések segítségével egy új HDInsight hozzáadása eg
         az network route-table list --resource-group $RESOURCEGROUP
         ```
 
-        További információkért lásd: a [útvonalak hibaelhárítása](../virtual-network/virtual-network-routes-troubleshoot-portal.md) dokumentum.
+        További információkért lásd: a [útvonalak hibaelhárítása](../virtual-network/diagnose-network-routing-problem.md) dokumentum.
 
 4. HDInsight-fürtök létrehozása és konfigurálása során az Azure virtuális hálózatot választ. A következő dokumentumok a lépésekkel Fürtlétrehozási folyamatának ismertetése:
 

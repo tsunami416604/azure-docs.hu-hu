@@ -8,25 +8,27 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714000"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Az Azure portál használatával eszközök kezelése
 
 
 Az eszköz kezelése az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. 
 
-Ez a témakör:
+A cikk tartalma:
 
 - Feltételezi, hogy Ön ismeri a [eszköz kezelése az Azure Active Directoryban bemutatása](device-management-introduction.md)
 
@@ -40,11 +42,11 @@ Az Azure-portálon az eszközök kezeléséhez központi helyet biztosít. Ennek
 
 2. Kattintson a bal oldali navigációs sávja **Active Directory**.
 
-    ![Eszközök beállításainak konfigurálása](./media/device-management-azure-portal/01.png)
+    ![Eszközbeállítások megadása](./media/device-management-azure-portal/01.png)
 
 3. Az a **kezelése** kattintson **eszközök**.
 
-    ![Eszközök beállításainak konfigurálása](./media/device-management-azure-portal/11.png)
+    ![Eszközbeállítások megadása](./media/device-management-azure-portal/11.png)
  
 A **eszközök** oldalon:
 
@@ -57,11 +59,11 @@ A **eszközök** oldalon:
 - Tekintse át az eszköz-kezeléssel kapcsolatos naplók  
   
 
-## <a name="configure-device-settings"></a>Eszközök beállításainak konfigurálása
+## <a name="configure-device-settings"></a>Eszközbeállítások megadása
 
 Az Azure portál használatával eszközeinek kezelésére, az eszközök kell lennie vagy [regisztrálva, vagy csatlakoztatott](device-management-introduction.md#getting-devices-under-the-control-of-azure-ad) az Azure ad Szolgáltatásba. A rendszergazdák úgy finomhangolhatja, regisztrálása, illetve az eszközök csatlakoztatása az eszköz beállítások konfigurálásával folyamatán. 
 
-![Eszközök beállításainak konfigurálása](./media/device-management-azure-portal/22.png)
+![Eszközbeállítások megadása](./media/device-management-azure-portal/22.png)
 
 Az eszköz beállításai oldal konfigurálását teszi lehetővé:
 
@@ -185,10 +187,17 @@ Egy eszköz azonosítója segítségével ellenőrizze az eszköz azonosító ad
 
 ### <a name="view-or-copy-bitlocker-keys"></a>BitLocker-kulcsok megtekintése és másolása
 
-Ha Ön rendszergazda, megtekintheti, és másolja a BitLocker-kulcsok számára, hogy a titkosított meghajtó helyreállítani segítségével. Ezek a kulcsok csak titkosított Windows-eszközökhöz elérhető, és a kulcsaikat az Azure ad-ben tárolt. Ezek a kulcsok másolhatja az eszköz részleteit való hozzáféréskor.
+Megtekintheti, és másolja a BitLocker-kulcsok számára, hogy a titkosított meghajtó helyreállítani segítségével. Ezek a kulcsok csak titkosított Windows-eszközökhöz elérhető, és a kulcsaikat az Azure ad-ben tárolt. Ezek a kulcsok másolhatja az eszköz részleteit való hozzáféréskor.
  
 ![A BitLocker-kulcsok megtekintése](./media/device-management-azure-portal/36.png)
 
+megtekintéséhez, vagy másolja a BitLocker-kulcsok, kell lennie, vagy az eszköz tulajdonosa, vagy egy felhasználót, hogy a következő szerepkörök rendelve legalább egyike:
+
+- Globális rendszergazdák
+- Segélyszolgálat-rendszergazdák
+- Biztonsági rendszergazdák
+- Biztonsági olvasók
+- Intune szolgáltatás-rendszergazdák
 
 
 ## <a name="audit-logs"></a>Naplók

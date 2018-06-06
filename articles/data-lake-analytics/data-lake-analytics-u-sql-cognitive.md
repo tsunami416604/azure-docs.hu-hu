@@ -1,86 +1,36 @@
 ---
-title: Az Azure Data Lake Analytics U-SQL kognitív képességek segítségével |} Microsoft Docs
+title: Az Azure Data Lake Analytics U-SQL kognitív képességek segítségével
 description: Az eszközintelligencia kognitív képességek használata U-SQL-ben
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
-manager: jhubbard
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
-ms.author: saveenr
-ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.topic: conceptual
+ms.date: 06/05/2018
+ms.openlocfilehash: ab40d466d7b60dd09b8953012c80d0e84f4ac471
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802068"
 ---
-# <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Oktatóanyag: Ismerkedés a U-SQL kognitív lehetőségeinek
+# <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Ismerkedés a U-SQL kognitív képességei
 
 ## <a name="overview"></a>Áttekintés
 A fejlesztők kognitív képességet biztosít a U-SQL helyezze az eszközintelligencia a big Data típusú adatok programok telepítése és használata. 
 
 A következő kognitív lehetőségek érhetők el:
-* Képkezelő: Lapok észlelése
-* Képkezelő: Érzelemfelismerési észlelése
-* Képkezelő: (Címkézés) objektumok észlelése
-* Képkezelő: OCR optikai karakter használata)
-* Szöveg: Kulcs kifejezés kivonása
-* Szöveg: Véleményeket elemzés
+* Képkezelő: Észlelése lapok [minta](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Képkezelő: Észlelése érzelemfelismerési [minta](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* Képkezelő: Észlelése (címkézés) objektumok [minta](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* Képkezelő: OCR (optikai karakter felismerés) [minta](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Szöveg: Kulcs kifejezés kibontási & véleményeket elemzés [minta](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
-## <a name="how-to-use-cognitive-in-your-u-sql-script"></a>A U-SQL parancsfájl Cognitive használata
-
-A teljes folyamat felettébb egyszerű:
-
-* Használja a `REFERENCE ASSEMBLY` utasítás kognitív funkciók lehetővé tétele a U-SQL parancsfájl
-* Használja a `PROCESS` egy bemeneti sorkészlet egy kimenete egy kognitív UDO segítségével a sorhalmaz
-
-### <a name="detecting-objects-in-images"></a>A képek objektumok észlelése
-
-A következő példa bemutatja, hogyan objektumok azonosíthatók a képek a kognitív képességek használatára.
-
-```
-REFERENCE ASSEMBLY ImageCommon;
-REFERENCE ASSEMBLY FaceSdk;
-REFERENCE ASSEMBLY ImageEmotion;
-REFERENCE ASSEMBLY ImageTagging;
-REFERENCE ASSEMBLY ImageOcr;
-
-// Get the image data
-
-@imgs =
-    EXTRACT 
-        FileName string, 
-        ImgData byte[]
-    FROM @"/usqlext/samples/cognition/{FileName}.jpg"
-    USING new Cognition.Vision.ImageExtractor();
-
-//  Extract the number of objects on each image and tag them 
-
-@tags =
-    PROCESS @imgs 
-    PRODUCE FileName,
-            NumObjects int,
-            Tags SQL.MAP<string, float?>
-    READONLY FileName
-    USING new Cognition.Vision.ImageTagger();
-
-@tags_serialized =
-    SELECT FileName,
-           NumObjects,
-           String.Join(";", Tags.Select(x => String.Format("{0}:{1}", x.Key, x.Value))) AS TagsString
-    FROM @tags;
-
-OUTPUT @tags_serialized
-    TO "/tags.csv"
-    USING Outputters.Csv();
-```
-További példákért tekintse meg a **U-SQL/Cognitive minták** a a **további lépések** szakasz.
+## <a name="registering-cognitive-extensions-in-u-sql"></a>A U-SQL kognitív bővítmények regisztrálása
+Mielőtt elkezdené, kövesse a cikkben leírt lépéseket kognitív bővítmények regisztrálja a U-SQL: [kognitív bővítmények regisztrálása a U-SQL](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/cognitive-capabilities-in-u-sql#registeringExtensions).
 
 ## <a name="next-steps"></a>További lépések
 * [U-SQL/kognitív minták](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)

@@ -3,23 +3,21 @@ title: Azure Cosmos adatbázis SQL-lekérdezések |} Microsoft Docs
 description: A Azure Cosmos DB SQL-szintaxis, adatbázis fogalmait és az SQL-lekérdezések megismerése. SQL Azure Cosmos adatbázis a JSON lekérdezésnyelvet is használja.
 keywords: SQL-szintaxis, sql-lekérdezést, az sql-lekérdezések, json lekérdezési nyelv, adatbázis fogalmait és az sql-lekérdezések, összesítő függvények
 services: cosmos-db
-documentationcenter: ''
 author: LalithaMV
 manager: kfile
 editor: monicar
-ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798321"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Azure Cosmos adatbázis SQL-lekérdezések
 
@@ -305,7 +303,7 @@ A következő bináris operátor jelenleg támogatott, és a következő példá
 <td>ÉS, VAGY SEM</td>
 </tr>
 <tr>
-<td>Összehasonlítása</td>    
+<td>Összehasonlítás</td>    
 <td>=, !=, &lt;, &gt;, &lt;=, &gt;=, <></td>
 </tr>
 <tr>
@@ -932,7 +930,7 @@ A következő táblázat az SQL API-ban támogatott összesítő függvények li
 
 | Használat | Leírás |
 |-------|-------------|
-| SZÁMA | A kifejezés a számú elemet ad vissza. |
+| MENNYISÉG | A kifejezés a számú elemet ad vissza. |
 | SUM   | A kifejezés értékek összegét adja vissza. |
 | MIN.   | A kifejezés minimumértékét adja vissza. |
 | MAX.   | A kifejezés maximumértékét adja vissza. |
@@ -1398,7 +1396,7 @@ Cosmos DB számos beépített funkciót is támogatja a közös műveleteket, p�
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Matematikai funkciók  | ABS, felső határ, EXP, EMELET, napló, LOG10, ENERGIAGAZDÁLKODÁSI, CIKLIKUS, bejelentkezési, SQRT, SZÖGLETES, csonk, ARCCOS, ARCSIN, ATAN, ATN2, COS, tűz, fok, PI, radiánban megadott szög, EG és TAN |
 | Írja be az ellenőrzési funkciók | IS_ARRAY, IS_BOOL, IS_NULL, IS_NUMBER, IS_OBJECT, IS_STRING, IS_DEFINED és IS_PRIMITIVE                                                           |
-| Karakterlánc        | CONCAT, tartalmazza, megadott módon VÉGZŐDŐ, INDEX_OF, balra, hossza, alsó, LTRIM, csere, REPLIKÁLJA, NÉVKERESÉSI, jobbra, RTRIM, megadott módon KEZDŐDŐ, SUBSTRING és felső       |
+| Karakterlánc-függvények        | CONCAT, tartalmazza, megadott módon VÉGZŐDŐ, INDEX_OF, balra, hossza, alsó, LTRIM, csere, REPLIKÁLJA, NÉVKERESÉSI, jobbra, RTRIM, megadott módon KEZDŐDŐ, SUBSTRING és felső       |
 | A tömb funkciók         | ARRAY_CONCAT, ARRAY_CONTAINS, ARRAY_LENGTH és ARRAY_SLICE                                                                                         |
 | Térbeli funkciók       | ST_DISTANCE, ST_WITHIN, ST_INTERSECTS, ST_ISVALID és ST_ISVALIDDETAILED                                                                           | 
 
@@ -1499,7 +1497,7 @@ Ezeket a funkciókat használ, most lekérdezéseket is futtathat a következőh
 
     [true]
 
-### <a name="string-functions"></a>Karakterlánc
+### <a name="string-functions"></a>Karakterlánc-függvények
 A következő skaláris függvények végrehajtania egy műveletet a bemeneti karakterlánc-értékkel, és a karakterlánc, a numerikus és logikai értéket adja vissza. Itt a következő táblázat a beépített karakterlánc:
 
 | Használat | Leírás |

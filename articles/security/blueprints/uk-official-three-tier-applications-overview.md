@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abacea02ee40cf899b58ab1fe4ac454784ff7d18
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757195"
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure biztonsági és megfelelőségi tervezetének - UK hivatalos háromrétegű webes alkalmazások automatizálás
 
@@ -114,7 +115,7 @@ Load Balancer
 - (1) biz réteg terheléselosztó
 - (1) adatokat a réteg terheléselosztó
 
-Tárolás
+Storage
 - (14) teljes Storage-fiókok
   - Az Active Directory tartományi vezérlő rendelkezésre állási csoport
     - (2) elsődleges helyileg redundáns tárolás (LRS) fiókok – az egyes virtuális gépek 1  
@@ -148,7 +149,7 @@ Tárolás
 
 **Internetes átjáró és a nyilvános IP-cím**: az internetes átjáró elérhetővé teszi a felhasználók számára az interneten keresztül alkalmazáskiszolgálókhoz. Ezek a szolgáltatások eléréséhez forgalom használatával lett biztonságossá téve egy [Alkalmazásátjáró](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) réteg 7 Útválasztás és a webes alkalmazás tűzfalat (WAF) védelmi funkciókat kínál.
 
-**Felügyeleti VNet**: Ez [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) olyan erőforrásokat tartalmaz, kezelési és figyelési képességeket az üzemi virtuális hálózaton futó feladatok végrehajtására.
+**Felügyeleti VNet**: Ez [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) olyan erőforrásokat tartalmaz, kezelési és figyelési képességeket az üzemi virtuális hálózaton futó feladatok végrehajtására.
 
 **Jumpbox**: más néven a [megerősített állomás](https://en.wikipedia.org/wiki/Bastion_host), vagyis a hálózaton, amely a rendszergazdák az üzemi virtuális hálózatot a virtuális gépeken való csatlakozáskor használandó biztonságos virtuális gép. A jumpbox olyan NSG-vel rendelkezik, amely csak a biztonságos elemek listáján szereplő nyilvános IP-címekről érkező távoli forgalmat engedélyezi. Távoli asztal (RDP)-forgalmát engedélyezi, hogy a forgalom forrásának kell definiálni az NSG. A termelési erőforrások kezelésére van használatával egy biztonságos Jumpbox virtuális gép RDP-kapcsolaton keresztül.
 

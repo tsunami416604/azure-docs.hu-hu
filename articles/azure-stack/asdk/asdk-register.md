@@ -11,66 +11,76 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 06/04/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: eb1f939f76c3528f05a9002b6365359fb6599aa2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757467"
 ---
 # <a name="azure-stack-registration"></a>Az Azure verem regisztrációs
 Az Azure-ral Piactéri elemek letölteni az Azure-ból, és megkezdheti a Microsoft commerce adatok beállítása az Azure verem Development Kit (ASDK) telepítése is regisztrálhat. Regisztrációs teljes Azure verem funkciókat, beleértve a Piactéri szindikálási támogatásához szükséges. Regisztrációs használata ajánlott, mivel lehetővé teszi a fontos Azure verem funkciók, például a piactér szindikálási és használatai jelentések tesztelése. Miután regisztrálta Azure verem, használati Azure kereskedelmi bejelentések. Megtekintheti az előfizetésben a regisztrációhoz használt. ASDK felhasználók azonban nem felszámított bármely használati jelentést.
 
 Ha nem regisztrálja a ASDK, megjelenhet egy **szükséges aktiválási** figyelmeztető riasztás, amely azt ajánlja, hogy regisztrálja az Azure verem szoftverfejlesztői készlet. Ez az elvárt viselkedés.
 
-## <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral 
+## <a name="prerequisites"></a>Előfeltételek
+Ezeket az utasításokat a ASDK regisztrálni Azure használatához győződjön meg arról, hogy a verem Azure PowerShell telepítése és az Azure-verem eszközök letöltött leírtak szerint a [telepítés utáni konfigurációjának](asdk-post-deploy.md) cikk.
+
+Emellett a PowerShell nyelvi mód értékre kell állítani **FullLanguageMode** való regisztrálásához a ASDK Azure használt számítógépen. Győződjön meg arról, hogy a jelenlegi nyelvi mód állítsa teljes nyisson meg egy rendszergazda jogú PowerShell-ablakot, és futtassa a következő PowerShell-parancsokat:
+
+```powershell
+$ExecutionContext.SessionState.LanguageMode
+```
+
+Győződjön meg arról, a kimenetet visszaadja **FullLanguageMode**. Ha más nyelv módot ad vissza, regisztrációs kell egy másik számítógépen kell futtatnia, vagy a nyelvi módot kell beállítani **FullLanguageMode** folytatása előtt.
+
+## <a name="register-azure-stack-with-azure"></a>Azure verem regisztrálni Azure-ral
 Kövesse az alábbi lépéseket a ASDK regisztrálni Azure-ral.
 
 > [!NOTE]
-> Ezeket a lépéseket egy számítógépről, amely hozzáfér a kiemelt végpontot kell futtatni. A ASDK esetén, amelyek a development kit gazdaszámítógépen. 
-
-Az alábbi lépések végrehajtásával a ASDK regisztrálni Azure-ral, előtt győződjön meg arról, hogy a verem Azure PowerShell telepítése és az Azure-verem eszközök letöltött leírtak szerint a [telepítés utáni konfigurációjának](asdk-post-deploy.md) cikk. 
+> Ezeket a lépéseket egy számítógépről, amely hozzáfér a kiemelt végpontot kell futtatni. A ASDK esetén, amelyek a development kit gazdaszámítógépen.
 
 1. Nyissa meg rendszergazdaként a PowerShell-konzolban.  
 
-2. A következő PowerShell parancsok futtatásával regisztrálja a ASDK telepített Azure (kell-e jelentkezni az Azure-előfizetéssel, mind a helyi ASDK telepítési):
+2. Futtassa a következő PowerShell-parancsok futtatásával regisztrálja a ASDK telepített Azure. Jelentkezzen be az Azure-előfizetéssel, mind a helyi ASDK telepítési kell. Ha nem rendelkezik Azure-előfizetéssel, még akkor is [ingyenes Azure-fiók létrehozása itt](https://azure.microsoft.com/free/?b=17.06). Azure verem regisztrálása költséget nem áll, az Azure-előfizetése.
 
-    ```PowerShell
-    # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
-    Add-AzureRmAccount -EnvironmentName "AzureCloud"
+  ```powershell
+  # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
+  Add-AzureRmAccount -EnvironmentName "AzureCloud"
 
-    # Register the Azure Stack resource provider in your Azure subscription
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+  # Register the Azure Stack resource provider in your Azure subscription
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 
-    #Import the registration module that was downloaded with the GitHub tools
-    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
+  #Import the registration module that was downloaded with the GitHub tools
+  Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
-    #Register Azure Stack
-    $AzureContext = Get-AzureRmContext
-    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-    Set-AzsRegistration `
-        -PrivilegedEndpointCredential $CloudAdminCred `
-        -PrivilegedEndpoint AzS-ERCS01 `
-        -BillingModel Development
+  #Register Azure Stack
+  $AzureContext = Get-AzureRmContext
+  $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+  Set-AzsRegistration `
+      -PrivilegedEndpointCredential $CloudAdminCred `
+      -PrivilegedEndpoint AzS-ERCS01 `
+      -BillingModel Development
+  ```
+3. A parancsfájl befejezése után ez az üzenet jelenik meg: **a környezet most már regisztrálva van-e, és a megadott paraméterek aktiválva.**
 
-3. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
+    ![](media/asdk-register/1.PNG)
 
-    ![](media/asdk-register/1.PNG) 
+## <a name="verify-the-registration-was-successful"></a>Ellenőrizze, hogy a regisztráció sikeres volt
+A lépések végrehajtásával ellenőrizze, hogy sikeres volt-e a ASDK regisztráció az Azure-ral.
 
-## Verify the registration was successful
-Follow these steps to verify that the ASDK registration with Azure was successful.
+1. Jelentkezzen be a [verem Azure felügyeleti portálján](https://adminportal.local.azurestack.external).
 
-1. Sign in to the [Azure Stack administration portal](https://adminportal.local.azurestack.external).
+2. Kattintson a **piactér felügyeleti** > **adja hozzá az Azure-ból**.
 
-2. Click **Marketplace Management** > **Add from Azure**.
+    ![](media/asdk-register/2.PNG)
 
-    ![](media/asdk-register/2.PNG) 
+3. Ha az Azure-ból rendelkezésre álló elemek listája látható, az aktiválás sikeres volt.
 
-3. If you see a list of items available from Azure, your activation was successful.
+    ![](media/asdk-register/3.PNG)
 
-    ![](media/asdk-register/3.PNG) 
-
-## Next steps
-[Add an Azure Stack marketplace item](asdk-marketplace-item.md)
+## <a name="next-steps"></a>További lépések
+[Vegyen fel egy Azure verem Piactéri elemet](asdk-marketplace-item.md)

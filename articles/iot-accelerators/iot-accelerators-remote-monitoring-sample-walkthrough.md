@@ -1,31 +1,25 @@
 ---
 title: Távoli felügyeleti megoldás - Azure architektúra |} Microsoft Docs
 description: A távoli felügyeleti megoldásgyorsító architektúrájának részletes útmutatás.
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3effde81dfa48e9544d89153d40c160ff972d047
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757433"
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>Távoli figyelés megoldás gyorsító architektúrája
 
 A távoli megfigyelési [megoldásgyorsító](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) egy végpont figyelési megoldást igényelnek több valósítja meg a távoli helyeken. A megoldás fontos Azure-szolgáltatások kombinációját kínálja az üzleti forgatókönyv általános megvalósítása érdekében. Használhatja a megoldás kiindulási pontként a saját végrehajtásához és [testreszabása](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) úgy, hogy a saját üzleti követelményeinek megfelelően.
 
-Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemét, hogy jobban megismerhesse a szolgáltatás működését. Ezeknek az ismereteknek a birtokában:
+Ez a cikk végigvezeti azokon a fő elemei a távoli figyelésére szolgáló megoldás ahhoz, hogy ismerje meg, hogyan működik a némelyike. Ezeknek az ismereteknek a birtokában:
 
 * Elháríthatja a megoldásban felmerülő hibákat.
 * Megtervezheti, hogy miképpen érdemes testre szabni a megoldást úgy, hogy az megfeleljen egyedi igényeinek.
@@ -33,7 +27,7 @@ Ebben a cikkben bemutatjuk a távoli figyelési megoldás néhány fontos elemé
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
-A következő ábra bemutatja a távoli felügyeleti megoldásgyorsító az átfedett logikai összetevőinek a [IoT-architektúra](../iot-accelerators/iot-accelerators-what-is-azure-iot.md):
+A következő ábra bemutatja a távoli megfigyelési megoldásgyorsító az átfedett logikai összetevőinek a [IoT-architektúra](../iot-accelerators/iot-accelerators-what-is-azure-iot.md):
 
 ![Logikai architektúra](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -97,13 +91,13 @@ A megoldás két mikroszolgáltatások telemetriát kezelésére tartalmaz.
 
 A [telemetria-ügynök](https://github.com/Azure/telemetry-agent-dotnet) mikroszolgáltatási:
 
-* A Cosmos DB telemetriai adatokat tárolja.
+* Azure Cosmos DB telemetriai adatokat tárolja.
 * Elemzi a telemetriai adatok adatfolyam eszközökről.
 * Meghatározott szabályok szerint riasztást generál.
 
-A riasztások Cosmos DB vannak tárolva.
+A riasztások Azure Cosmos DB vannak tárolva.
 
-A `telemetry-agent` mikroszolgáltatási lehetővé teszi, hogy a megoldás portal eszközről küldött telemetriai adatok olvasásához. A megoldás portal is használja a szolgáltatást:
+A [telemetria-ügynök](https://github.com/Azure/telemetry-agent-dotnet) mikroszolgáltatási lehetővé teszi, hogy a megoldás portal eszközről küldött telemetriai adatok olvasásához. A megoldás portal is használja a szolgáltatást:
 
 * Például a küszöbértékeket, riasztást kiváltó figyelési szabályok definiálása
 * Elmúlt riasztások listájának beolvasása.
@@ -114,9 +108,9 @@ A RESTful végpont a mikroszolgáltatási által biztosított segítségével te
 
 A [tárolóadapter](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroszolgáltatási egy adapter elé a megoldásgyorsító használt fő tároló szolgáltatás. Egyszerű gyűjtemény és a kulcs-érték tároló biztosít.
 
-A normál a megoldásgyorsító központi Cosmos DB használja, mint a fő tároló szolgáltatás.
+A normál a megoldásgyorsító központi Azure Cosmos DB használja, mint a fő tároló szolgáltatás.
 
-A Cosmos DB adatbázisban tárol adatokat a megoldásgyorsító. A **tárolóadapter** mikroszolgáltatási úgy működik, mint az adaptert a megoldásban való hozzáférés tárolási szolgáltatások más mikroszolgáltatások létrehozására.
+Az Azure Cosmos DB adatbázisban tárol adatokat a megoldásgyorsító. A **tárolóadapter** mikroszolgáltatási úgy működik, mint az adaptert a megoldásban való hozzáférés tárolási szolgáltatások más mikroszolgáltatások létrehozására.
 
 ## <a name="presentation"></a>Bemutató
 
@@ -141,6 +135,8 @@ Ha szeretné használni a kódot és fejlesztői dokumentációját, indítsa el
 
 * [A távoli figyelése az Azure IoT (.NET) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
 * [A távoli megfigyelés az Azure IoT (Java) megoldásgyorsító](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
-* [Megoldásgyorsító távoli figyelési architektúra)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
-További elméleti kapcsolatos további információkért a távoli felügyeleti megoldásgyorsító: [testre szabhatja a megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
+Részletes megoldás architektúrája diagramok:
+* [Megoldásgyorsító távoli megfigyelési architektúra](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
+
+További elméleti kapcsolatos további információkért a távoli megfigyelési megoldásgyorsító: [testre szabhatja a megoldásgyorsító](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).

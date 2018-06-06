@@ -1,14 +1,15 @@
 ---
-title: "Az Azure Active Directory, mi történik, ha eszköz feltételes hozzáférés – előzetes verzió |} Microsoft Docs"
-description: "Ismerje meg, hogyan tesztelheti az Azure Active Directory feltételes hozzáférési házirendek konfigurációját."
+title: Az Azure Active Directory, mi történik, ha eszköz feltételes hozzáférés – előzetes verzió |} Microsoft Docs
+description: Ismerje meg, hogyan tesztelheti az Azure Active Directory feltételes hozzáférési házirendek konfigurációját.
 services: active-directory
-keywords: "alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés"
-documentationcenter: 
+keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2c4ca3685d15ddd2446590e1ef297362f9aa52ee
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723830"
 ---
 # <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Az Azure Active Directory, mi történik, ha eszköz feltételes hozzáférés – előzetes
 
@@ -52,7 +54,7 @@ Amikor befejezte a kiértékelése, az eszköz jelentését állítja elő a ér
 
 ## <a name="running-the-tool"></a>Az eszköz futtatása
 
-Megtalálhatja az **mi történik, ha** eszköz a  **[feltételes hozzáférés - házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)**  oldal az Azure portálon.
+Megtalálhatja az **mi történik, ha** eszköz a **[feltételes hozzáférés - házirendek](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** oldal az Azure portálon.
 
 Indítsa el az eszközt, az eszköztár fölött a házirendek listájában, kattintson a **mi történik, ha**.
 

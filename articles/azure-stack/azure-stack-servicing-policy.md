@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796423"
 ---
 # <a name="azure-stack-servicing-policy"></a>Az Azure verem karbantartása házirend
 Ez a cikk ismerteti a karbantartási házirend integrált Azure verem rendszerekhez, és hogy a rendszer egy támogatott állapotban kell tennie. 
@@ -37,10 +38,9 @@ A frissítési csomagok integrált rendszerekhez két típusa van:
 Microsoft havi ütemben történik a szoftverfrissítési csomagokat a kibocsátási vár. Azonban akkor lehetséges, hogy több, vagy nincs frissítés kiadásokban hónap. OEM hardverszállítók a frissítéseket igény szerint alapon. 
 
 Tervezze meg és kezelheti a frissítéseket, és hogyan állapítható meg a jelenlegi verziót a dokumentációval [kezelése frissítések – áttekintés](azure-stack-updates.md). Egy adott frissítés, hogyan lehet letölteni, beleértve információt talál a kibocsátási megjegyzéseket, amelyek frissítése: 
+- [Az Azure verem 1805 frissítés](azure-stack-update-1805.md)
+- [Az Azure verem 1804 frissítés](azure-stack-update-1804.md)
 - [Az Azure verem 1803 frissítés](azure-stack-update-1803.md)
-- [Az Azure verem 1802 frissítés](azure-stack-update-1802.md)
-- [Az Azure verem 1712 frissítés](azure-stack-update-1712.md)
-
 
 
 ## <a name="hotfixes"></a>Gyorsjavítások

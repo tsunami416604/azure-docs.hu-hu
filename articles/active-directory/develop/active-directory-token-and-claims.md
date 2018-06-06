@@ -17,11 +17,12 @@ ms.date: 05/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801864"
 ---
 # <a name="azure-ad-token-reference"></a>Az Azure AD-jogkivonatok referenciájából
 Azure Active Directory (Azure AD) bocsát ki biztonsági jogkivonatainak feldolgozása minden hitelesítési folyamat során számos különböző. Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát. 
@@ -52,10 +53,10 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 #### <a name="claims-in-idtokens"></a>A id_tokens jogcímek
 > [!div class="mx-codeBreakAll"]
-| JWT jogcím | Név | Leírás |
+| JWT jogcím | Name (Név) | Leírás |
 | --- | --- | --- |
 | `aud` |Célközönség |A jogkivonat az illetékes címzett. Az alkalmazást, amely megkapja a jogkivonatot kell győződjön meg arról, hogy a célközönség értéke megfelelő-e, és utasítsa el a szükséges jogkivonatokhoz, egy másik célközönség számára készült. <br><br> **Példa SAML érték**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Példaérték JWT**: <br> `"aud":"https://contoso.com"` |
-| `appidacr` |Alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban |Azt jelzi, hogy az ügyfelek hitelesítésének módját. Egy nyilvános ügyfél értéke 0. Ügyfél-azonosító és a titkos ügyfélkódot használata esetén a értéke 1. <br><br> **Példaérték JWT**: <br> `"appidacr": "0"` |
+| `appidacr` |Alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban |Azt jelzi, hogy az ügyfelek hitelesítésének módját. Egy nyilvános ügyfél értéke 0. Ügyfél-azonosító és a titkos ügyfélkódot használata esetén a értéke 1. Ha az ügyféltanúsítványt a hitelesítéshez használt, a 2 érték. <br><br> **Példaérték JWT**: <br> `"appidacr": "0"` |
 | `acr` |Hitelesítési környezeti osztályait ismertető dokumentációban |Azt jelzi, hogyan a tulajdonos hitelesített, az ügyfél számára az alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban jogcím szemben. A "0" érték azt jelzi, hogy a végfelhasználói hitelesítési nem felelt meg az ISO/IEC 29115 követelményeinek. <br><br> **Példaérték JWT**: <br> `"acr": "0"` |
 | Azonnali hitelesítés |A dátum és idő, amikor hitelesítést történt rögzíti. <br><br> **Példa SAML érték**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |Hitelesítési módszer |A token tárgya hitelesítésének módját azonosítása <br><br> **Példa SAML érték**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Példaérték JWT**: `“amr”: ["pwd"]` |
@@ -67,12 +68,12 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `iat` |IssuedAt |Az idő, amelynél a jogkivonat ki tárolja. Gyakran használt token frissesség mérését. <br><br> **Példa SAML érték**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **Példaérték JWT**: <br> `"iat": 1390234181` |
 | `iss` |Kiállító |Azonosítja a biztonságijogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot ad vissza. A jogkivonatok az Azure AD eredményül a kibocsátó sts.windows.net. A globálisan egyedi Azonosítót a kibocsátó jogcím értékét a rendszer a bérlő azonosítója az Azure AD-címtár. A bérlő azonosítója nem módosítható és megbízható azonosítója, amelyet a könyvtárban. <br><br> **Példa SAML érték**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **Példaérték JWT**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `family_name` |Vezetéknév |Az utolsó nevét, Vezetéknév vagy családnév felhasználó biztosít az Azure AD-felhasználói objektum. <br><br> **Példa SAML érték**: <br> `<Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>`<br>`<AttributeValue>Miller<AttributeValue>` <br><br> **Példaérték JWT**: <br> `"family_name": "Miller"` |
-| `unique_name` |Név |Emberi olvasható érték, amely azonosítja a token tárgya biztosít. Ez az érték nem garantált a bérlő belül egyedinek kell lennie, és célja, hogy csak a megjelenítésre használható. <br><br> **Példa SAML érték**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **Példaérték JWT**: <br> `"unique_name": "frankm@contoso.com"` |
+| `unique_name` |Name (Név) |Emberi olvasható érték, amely azonosítja a token tárgya biztosít. Ez az érték nem garantált a bérlő belül egyedinek kell lennie, és célja, hogy csak a megjelenítésre használható. <br><br> **Példa SAML érték**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **Példaérték JWT**: <br> `"unique_name": "frankm@contoso.com"` |
 | `oid` |Objektumazonosító |Egy objektum egyedi azonosítóját tartalmazza az Azure ad-ben. Ez az érték nem módosítható és nem lehet újbóli hozzárendelése és nem használja fel újra. Az Objektumazonosító segítségével azonosíthatja a lekérdezésekben az Azure AD-objektum. <br><br> **Példa SAML érték**: <br> `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` <br><br> **Példaérték JWT**: <br> `"oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"` |
 | `roles` |Szerepkörök |Minden alkalmazás szerepkör, amely a tárgy rendelkezik közvetlen és közvetett csoporttagság, és a szerepköralapú hozzáférés-vezérlést használható jelöli. Alkalmazási szerepköröknek meghatározott alkalmazásonkénti bontásban keresztül a `appRoles` tulajdonsága az alkalmazás jegyzékében. A `value` minden egyes alkalmazás-szerepkör tulajdonsága, amely akkor jelenik meg, a szerepkör jogcím értékét. <br><br> **Példa SAML érték**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`<br>`<AttributeValue>Admin</AttributeValue>` <br><br> **Példaérték JWT**: <br> `“roles”: ["Admin", … ]` |
 | `scp` |Hatókör |Azt jelzi, hogy az ügyfélalkalmazás számára megadott megszemélyesítési engedélyeket. Az alapértelmezett engedély `user_impersonation`. A védett erőforrás tulajdonosa további értékeket regisztrálhatja az Azure AD-ben. <br><br> **Példaérték JWT**: <br> `"scp": "user_impersonation"` |
 | `sub` |Tárgy |Azonosítja a rendszerbiztonsági tag, amelyekről a token állításokat információkat, például egy alkalmazás felhasználója. Ez az érték nem módosítható és nem társítható újra, vagy használja fel újra, így használható biztonságosan hitelesítési ellenőrzések elvégzéséhez. A tulajdonos mindig megtalálható-e a jogkivonatok az Azure AD-problémák, mert azt javasoljuk, használja ezt az értéket egy általános célú engedélyezési rendszerben. <br> `SubjectConfirmation` Nincs olyan jogcímet. Leírja, hogyan ellenőrzése a jogkivonat tárgyát. `Bearer` azt jelzi, hogy a tulajdonos megerősíti a token birtokában. <br><br> **Példa SAML érték**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **Példaérték JWT**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
-| `tid` |Bérlő azonosítója |Nem módosítható, egyszer használatos azonosító, amely azonosítja a directory-bérlő a jogkivonatot kibocsátó. Egy több-bérlős alkalmazás bérlői-specifikus könyvtár erőforrásainak eléréséhez használhatja ezt az értéket. Például ez az érték segítségével azonosíthatja a bérlő által a Graph API hívása. <br><br> **Példa SAML érték**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **Példaérték JWT**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
+| `tid` |Bérlőazonosító |Nem módosítható, egyszer használatos azonosító, amely azonosítja a directory-bérlő a jogkivonatot kibocsátó. Egy több-bérlős alkalmazás bérlői-specifikus könyvtár erőforrásainak eléréséhez használhatja ezt az értéket. Például ez az érték segítségével azonosíthatja a bérlő által a Graph API hívása. <br><br> **Példa SAML érték**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **Példaérték JWT**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
 | `nbf`, `exp` |A jogkivonatok élettartama |Meghatározza a időtartam alatt, amelyen belül a lexikális elem érvénytelen. A szolgáltatás, amely érvényesíti a jogkivonatot győződjön meg arról, hogy az aktuális dátumot a jogkivonat élettartamát, más azt kell utasítania a token belül van-e. A szolgáltatás előfordulhat, hogy hagyjon akár öt percet a jogkivonatok élettartama tartományon kívül az eltérések idő ("idő döntés") a fiókot az Azure AD között és a szolgáltatás. <br><br> **Példa SAML érték**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **Példaérték JWT**: <br> `"nbf":1363289634, "exp":1363293234` |
 | `upn` |Egyszerű felhasználónév |Tárolja a felhasználó egyszerű felhasználónevét.<br><br> **Példaérték JWT**: <br> `"upn": frankm@contoso.com` |
 | `ver` |Verzió |A token a verziószámát tárolja. <br><br> **Példaérték JWT**: <br> `"ver": "1.0"` |
@@ -152,21 +153,31 @@ Az alkalmazás végre kell hajtania, azonosító-jogkivonatokat a jogcím érvé
 ## <a name="token-revocation"></a>Jogkivonat visszavonása
 
 Frissítési jogkivonatok érvénytelenítve, vagy bármikor, számos okból visszavonva. Ezek két fő kategóriába sorolhatók: időtúllépések és hibával találkoznak. 
-* Token időtúllépések
-  * MaxInactiveTime: Ha a frissítési jogkivonat még egyszer sem használták a MaxInactiveTime meghatározni időn belül, a frissítési Token már nem érvényes lesz. 
-  * MaxSessionAge: Ha nem az alapértelmezett (amíg visszavont) MaxAgeSessionMultiFactor vagy MaxAgeSessionSingleFactor állított be, majd ismételt hitelesítés lesz szükség a beállított a MaxAgeSession * idő elteltével. 
-  * Példák:
-    * A bérlő rendelkezik egy 5 napos MaxInactiveTime szabadságon egy hétig merült fel a felhasználó, és így aad-ben nem tapasztalt felhasználói új kérés 7 nap múlva. A következő alkalommal a felhasználó kéri egy új jogkivonatot, azok megkeresi a frissítési Token visszavonták, és újra azokat kell adnia a hitelesítő adataikat. 
-    * A bizalmas alkalmazásokhoz rendelkezik egy MaxAgeSessionSingleFactor 1 nap. Ha egy felhasználó bejelentkezése hétfőjén és keddjén (miután 25 óra telt el), akkor le kell újra hitelesíteni. 
-* Visszavonási
-  * Önkéntes jelszómódosítás: Ha a felhasználó megváltoztatja a jelszavát, előfordulhat, hogy rendelkeznek az alkalmazásaikat, attól függően, hogy a jogkivonat volt elérni módja némelyike különböző újra hitelesíteni. Tekintse meg a kivételek az alábbi megjegyzésekben. 
-  * Akaratlan jelszómódosítás: Ha a rendszergazda kényszeríti a felhasználót, hogy módosítania kell a jelszavát, vagy visszaállítja azt, majd a felhasználói jogkivonatokhoz érvénytelenné válnak ha volt elérni a használatával a jelszavát. Tekintse meg a kivételek az alábbi megjegyzésekben. 
-  * Biztonság megsértése: (Pl. a jelszavak a helyi tárolójába megszegése) biztonsági problémák esetén a rendszergazdának vissza tudja vonni a frissítési jogkivonatokat jelenleg kiadott összes. Ezzel kikényszeríti a minden felhasználó számára újra hitelesíteni. 
+
+**Token időtúllépések**
+
+* MaxInactiveTime: Ha a frissítési jogkivonat még egyszer sem használták a MaxInactiveTime meghatározni időn belül, a frissítési Token már nem érvényes lesz. 
+* MaxSessionAge: Ha nem az alapértelmezett (amíg visszavont) MaxAgeSessionMultiFactor vagy MaxAgeSessionSingleFactor állított be, majd ismételt hitelesítés lesz szükség a beállított a MaxAgeSession * idő elteltével. 
+* Példák:
+  * A bérlő rendelkezik egy 5 napos MaxInactiveTime szabadságon egy hétig merült fel a felhasználó, és így aad-ben nem tapasztalt felhasználói új kérés 7 nap múlva. A következő alkalommal a felhasználó kéri egy új jogkivonatot, azok megkeresi a frissítési Token visszavonták, és újra azokat kell adnia a hitelesítő adataikat. 
+  * A bizalmas alkalmazásokhoz rendelkezik egy MaxAgeSessionSingleFactor 1 nap. Ha egy felhasználó bejelentkezése hétfőjén és keddjén (miután 25 óra telt el), akkor le kell újra hitelesíteni. 
+
+**Visszavonási**
+
+|   | Jelszóalapú cookie-k | Jelszóalapú jogkivonat | Nem-jelszó alapú cookie-k | Nem-jelszó alapú jogkivonat | Bizalmas ügyfél jogkivonatának| 
+|---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
+|Jelszó lejárata| Aktív marad|Aktív marad|Aktív marad|Aktív marad|Aktív marad|
+|Felhasználó módosítja a jelszót| Visszavonva | Visszavonva | Aktív marad|Aktív marad|Aktív marad|
+|SSPR rendelkezik fiókkal|Visszavonva | Visszavonva | Aktív marad|Aktív marad|Aktív marad|
+|Rendszergazdai jelszavának alaphelyzetbe állítása|Visszavonva | Visszavonva | Aktív marad|Aktív marad|Aktív marad|
+|Felhasználói visszavonja a frissítési jogkivonatokat [PowerShell használatával](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Visszavonva | Visszavonva |Visszavonva | Visszavonva |Visszavonva | Visszavonva |
+|Felügyeleti összes frissítési jogkivonatokat visszavonja a bérlő [PowerShell használatával](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Visszavonva | Visszavonva |Visszavonva | Visszavonva |Visszavonva | Visszavonva |
+|[Single-Sign Out](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code#single-sign-out) a weben | Visszavonva | Aktív marad |Visszavonva | Aktív marad |Aktív marad |Aktív marad |
 
 > [!NOTE]
->Ha a hitelesítési módszer nem jelszó nem használható (a Windows Hello-, a hitelesítő alkalmazása, például egy oldallal vagy az ujjlenyomat biometria) a token eléréséhez, a jelszó módosítása nem kényszeríti a felhasználónak újra hitelesíteni (de ez arra kényszeríti a hitelesítő alkalmazás újra hitelesíteni). Ez azért, mert a kiválasztott hitelesítési bemeneti (a arc, pl.) nem változott, és ezért használható újra újra hitelesíteni.
+> A "nem-jelszó alapú" bejelentkezést az egyik ahol a felhasználó nem írja be, a jelszó is.  Például a a felület a Windows Hello, FIDO kulcs, vagy a PIN-kód használatával. 
 >
-> Jelszó módosítása által okozott hibával találkozzanak, bizalmas ügyfelek nem érinti. A jelszó módosítása továbbra is, hogy frissítési jogkivonat használatával további jogkivonatokhoz abl kiadott frissítési jogkivonatok bizalmas ügyfél. 
+> Egy ismert probléma merült fel a Windows elsődleges frissítési jogkivonat.  Ha a PRT egységekre keresztül jelszót, majd a felhasználó bejelentkezik a Hello keresztül, ez nem módosítja a PRT az eredeti, és azt a rendszer visszavonja, ha a felhasználó megváltoztatja a jelszavát. 
 
 ## <a name="sample-tokens"></a>A minta jogkivonatok
 

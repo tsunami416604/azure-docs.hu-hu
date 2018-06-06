@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e36bdbf84b275fb8a6a4e42496b3080bebf1b193
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716635"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Alapszintű virtuális gép létrehozása az Azure-ban Ansible
 Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben. Ansible segítségével kezelheti a virtuális gépek (VM), ugyanaz, mint bármely egyéb erőforrásokat az Azure-ban. Ez a cikk bemutatja, hogyan hozzon létre egy egyszerű virtuális gép Ansible. Azt is megtudhatja hogyan [hozzon létre egy teljes körű Virtuálisgép-környezetet Ansible](ansible-create-complete-vm.md).
@@ -33,17 +34,17 @@ Ansible az Azure-erőforrások kezeléséhez, a következőkre lesz szüksége:
 - Az Azure hitelesítő adatait, és Ansible konfigurált is használhatja őket.
     - [Az Azure hitelesítő adatok létrehozása és Ansible konfigurálása](ansible-install-configure.md#create-azure-credentials)
 - Az Azure CLI 2.0.4 verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. 
-    - Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). Is [felhő rendszerhéj](/azure/cloud-shell/quickstart) a böngészőből.
+    - Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). Használhatja a [Azure Cloud rendszerhéj](/azure/cloud-shell/quickstart) webböngészőből.
 
 
 ## <a name="create-supporting-azure-resources"></a>Hozzon létre az Azure-erőforrások támogatása
-Ebben a példában hoz létre, amely egy virtuális Gépet telepít egy meglévő infrastruktúra a runbookot. Először hozza létre az erőforráscsoport [az csoport létrehozása](/cli/azure/vm#az_vm_create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Ebben a példában hoz létre, amely egy virtuális Gépet telepít egy meglévő infrastruktúra a runbookot. Először hozza létre az erőforráscsoport [az csoport létrehozása](/cli/azure/group#az-group-create). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Hozzon létre egy virtuális hálózatot a virtuális gép a [az hálózati vnet létrehozása](/cli/azure/network/vnet#az_network_vnet_create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* és nevű alhálózat *mySubnet*:
+Hozzon létre egy virtuális hálózatot a virtuális gép a [az hálózati vnet létrehozása](/cli/azure/network/vnet#az-network-vnet-create). Az alábbi példa létrehoz egy virtuális hálózatot nevű *myVnet* és nevű alhálózat *mySubnet*:
 
 ```azurecli
 az network vnet create \
@@ -76,7 +77,7 @@ Hozzon létre egy Ansible alkalmazástervezési nevű *azure_create_vm.yml* , ma
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.3'
+        sku: '7.5'
         version: latest
 ```
 

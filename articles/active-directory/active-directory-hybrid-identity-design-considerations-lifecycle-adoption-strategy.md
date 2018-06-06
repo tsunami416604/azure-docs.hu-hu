@@ -1,25 +1,27 @@
 ---
-title: "Hibrid identitás Tervező - életciklus bevezetési stratégia Azure |} Microsoft Docs"
-description: "Segíti a hibrid identitáskezelési felügyeleti feladatok érhető el az egyes életciklus fázisokban beállításoknak megfelelően adja meg."
-documentationcenter: 
+title: Hibrid identitás Tervező - életciklus bevezetési stratégia Azure |} Microsoft Docs
+description: Segíti a hibrid identitáskezelési felügyeleti feladatok érhető el az egyes életciklus fázisokban beállításoknak megfelelően adja meg.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801830"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás életciklus bevezetési stratégia meghatározása
 Ebben a feladatban fogja definiálni, a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési felügyeleti feladatok](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -35,11 +37,11 @@ Fiókok a kifinomult informatikai nagyvállalatok akár több százszor is a hit
 
 | Életciklus-kezelési fázis | A helyszíni | Felhő | Hibrid |
 | --- | --- | --- | --- |
-| Fiókok kezelése és üzembe helyezését |Az Active Directory® tartományi szolgáltatások (AD DS) kiszolgálói szerepkör segítségével létrehozhat egy méretezhető, biztonságos és kezelhető infrastruktúrát a felhasználó- és erőforrás-kezelést, és támogatást nyújthat olyan címtárhasználatra képes alkalmazásokhoz, például a Microsoft® Exchange Server. <br><br> [Active Directory tartományi szolgáltatásokban, az Identity manager keresztül létesíthet](https://technet.microsoft.com/library/ff686261.aspx) <br>[Az Active Directory Tartományi felhasználók oszthat](https://technet.microsoft.com/library/ff686263.aspx) <br><br> A rendszergazdák hozzáférés-vezérlés segítségével felügyelheti a felhasználók hozzáférését a megosztott erőforrások biztonsági okokból. Az Active Directoryban, hozzáférés-vezérlés kezelése objektumszinten által beállítás különböző szintű hozzáféréssel és engedéllyel, objektumok, például a teljes hozzáférés, írási, olvasható vagy nem férhető hozzá. Hozzáférés-vezérlés az Active Directory határozza meg a különböző felhasználók hogyan használhatják az Active Directory-objektumokat. Alapértelmezés szerint az Active Directory-objektumokra vonatkozó engedélyek beállítás van megadva a legbiztonságosabb beállítás. |Akkor hozzon létre egy Microsoft felhőszolgáltatásra hozzáférő minden felhasználói fiókot. Felhasználói fiókok módosítsa vagy törölje azokat, ha azok már nincs szükség is. Alapértelmezés szerint a felhasználók rendszergazdai jogosultságokkal nem rendelkező, de is rendelhet őket. További információkért lásd: [felhasználók kezelése az Azure AD](active-directory-create-users.md). <br><br> Az Azure Active Directoryban a fő szolgáltatásainak egyik képes kezelni az erőforrásokhoz való hozzáférést. Ezeket az erőforrásokat a könyvtár objektumok keresztüli szerepkörök a könyvtár, vagy az, hogy a címtárban, például az SaaS-alkalmazásokhoz, Azure-szolgáltatásokat, és a SharePoint-webhelyek vagy a helyszíni erőforrások a külső erőforrások kezeléséhez szükséges jogokat gazdabuszadaptereken része lehet. <br><br> A központ az Azure Active Directory-hozzáférés a felügyeleti megoldás, a biztonsági csoport. Az erőforrás tulajdonosa (vagy a rendszergazda a címtár) rendelhet egy csoportot adjon meg egy bizonyos hozzáférési jogosultsággal a saját erőforrásokat. A csoportnak a tagjai a rendszer a hozzáférést, és az erőforrás tulajdonosa delegálhatja a jogot, hogy valaki másnak – például a részleg vezetője vagy a segélyszolgálat rendszergazdák csoport tagjai listájának kezelése<br> <br> A témakör az Azure AD kezelése csoportok csoportok-en keresztüli hozzáférés kezeléséhez nyújt részletesebb információt. |Az Active Directory identitások kiterjeszti a felhőben, szinkronizálással és az összevonási |
+| Fiókok kezelése és üzembe helyezését |Az Active Directory® tartományi szolgáltatások (AD DS) kiszolgálói szerepkör segítségével létrehozhat egy méretezhető, biztonságos és kezelhető infrastruktúrát a felhasználó- és erőforrás-kezelést, és támogatást nyújthat olyan címtárhasználatra képes alkalmazásokhoz, például a Microsoft® Exchange Server. <br><br> [Active Directory tartományi szolgáltatásokban, az Identity manager keresztül létesíthet](https://technet.microsoft.com/library/ff686261.aspx) <br>[ Az Active Directory Tartományi felhasználók oszthat](https://technet.microsoft.com/library/ff686263.aspx) <br><br> A rendszergazdák hozzáférés-vezérlés segítségével felügyelheti a felhasználók hozzáférését a megosztott erőforrások biztonsági okokból. Az Active Directoryban, hozzáférés-vezérlés kezelése objektumszinten által beállítás különböző szintű hozzáféréssel és engedéllyel, objektumok, például a teljes hozzáférés, írási, olvasható vagy nem férhető hozzá. Hozzáférés-vezérlés az Active Directory határozza meg a különböző felhasználók hogyan használhatják az Active Directory-objektumokat. Alapértelmezés szerint az Active Directory-objektumokra vonatkozó engedélyek beállítás van megadva a legbiztonságosabb beállítás. |Akkor hozzon létre egy Microsoft felhőszolgáltatásra hozzáférő minden felhasználói fiókot. Felhasználói fiókok módosítsa vagy törölje azokat, ha azok már nincs szükség is. Alapértelmezés szerint a felhasználók rendszergazdai jogosultságokkal nem rendelkező, de is rendelhet őket. További információkért lásd: [felhasználók kezelése az Azure AD](active-directory-create-users.md). <br><br> Az Azure Active Directoryban a fő szolgáltatásainak egyik képes kezelni az erőforrásokhoz való hozzáférést. Ezeket az erőforrásokat a könyvtár objektumok keresztüli szerepkörök a könyvtár, vagy az, hogy a címtárban, például az SaaS-alkalmazásokhoz, Azure-szolgáltatásokat, és a SharePoint-webhelyek vagy a helyszíni erőforrások a külső erőforrások kezeléséhez szükséges jogokat gazdabuszadaptereken része lehet. <br><br> A központ az Azure Active Directory-hozzáférés a felügyeleti megoldás, a biztonsági csoport. Az erőforrás tulajdonosa (vagy a rendszergazda a címtár) rendelhet egy csoportot adjon meg egy bizonyos hozzáférési jogosultsággal a saját erőforrásokat. A csoportnak a tagjai a rendszer a hozzáférést, és az erőforrás tulajdonosa delegálhatja a jogot, hogy valaki másnak – például a részleg vezetője vagy a segélyszolgálat rendszergazdák csoport tagjai listájának kezelése<br> <br> A szakaszban az Azure AD kezelése csoportok csoportok-en keresztüli hozzáférés kezeléséhez nyújt részletesebb információt. |Az Active Directory identitások kiterjeszti a felhőben, szinkronizálással és az összevonási |
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 Szerepköralapú hozzáférés-vezérlő (RBAC) által használt szerepkörök és teszteléséhez szabályzatok tesztelése, és az üzleti folyamatokat és hozzáférés biztosítása a felhasználók számára vonatkozó szabályok. Kulcs rendszergazdák szabályzatok létrehozása és a felhasználók hozzárendelése szerepkörökhöz, és a jogosultságok beállítása definiáló erőforrásokra vonatkozó ezeket a szerepköröket. Szerepalapú bővíti a identitáskezelési megoldás szoftveres folyamatok és csökkentse a kiépítési folyamat felhasználói kézi beavatkozást.
-Az Azure AD RBAC lehetővé teszi, hogy a vállalat korlátozza, műveletek, amelyeket egy adott elvégezhetnek, amennyiben az Azure felügyeleti portálra hozzáférése van. RBAC történő hozzáférés szabályozása érdekében a portál használatával IT-rendszergazdák hitelesítésszolgáltató delegált hozzáférés a következő hozzáférés-felügyeleti módszerek használatával:
+Az Azure AD RBAC lehetővé teszi, hogy a vállalat korlátozza egy adott teheti, miután az Azure-portálon való hozzáférés rendelkezik műveletek száma. RBAC történő hozzáférés szabályozása érdekében a portál használatával IT-rendszergazdák hitelesítésszolgáltató delegált hozzáférés a következő hozzáférés-felügyeleti módszerek használatával:
 
 * **Csoportalapú szerepkör-hozzárendelés**: is hozzáférést biztosít, amely képes-e szinkronizálva az Azure AD-csoportok a helyi Active Directoryból. Ez lehetővé teszi, hogy kihasználja a meglévő beruházások értékét, amely a szervezet által végrehajtott tooling és-folyamatok csoportok kezelése. Használhatja az Azure AD Premium a delegált csoport felügyeleti szolgáltatása.
 * **Használja ki a beépített szerepkörök az Azure-ban**: használhatja három szerepkörök – tulajdonos, közreműködő, és ahhoz való olvasóra, biztosítja, hogy felhasználók és csoportok csak a feladatok elvégzésének a munkája elvégzéséhez szükséges engedéllyel.
@@ -67,17 +69,18 @@ A szervezet összes belső szervezet erőforrások biztosításához indításak
 > 
 > 
 
-Az Azure AD (jogosultság alapján) licenc-alapú munkahelyi szolgáltatásainak a címtárszolgáltatás vagy Azure AD-bérlő előfizetés aktiválása. Amint az előfizetése aktív a szolgáltatási lehetőségeket címtárszolgáltatás vagy a rendszergazdák által kezelhető és licenccel rendelkező felhasználók által használt. További információkért lásd: hogyan működik a licencelés munka az Azure AD?
-Integráció más 3. fél szolgáltatók
+Az Azure AD (jogosultság alapján) licenc-alapú munkahelyi szolgáltatásainak a címtárszolgáltatás vagy Azure AD-bérlő előfizetés aktiválása. Amint az előfizetése aktív a szolgáltatási lehetőségeket címtárszolgáltatás vagy a rendszergazdák által kezelhető és licenccel rendelkező felhasználók által használt. 
 
-Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített SaaS-alkalmazásokhoz és a helyszíni webalkalmazások több ezer alkalmazás hozzáférés-biztonságot. Támogatott SaaS-alkalmazásokhoz az Azure Active Directory alkalmazáskatalógusában részletes listájáért lásd: az Azure Active Directory összevonási kompatibilitási lista: harmadik fél Identitásszolgáltatók, amelyek segítségével az egyszeri bejelentkezés megvalósítása
+## <a name="integration-with-other-3rd-party-providers"></a>Integráció más 3. fél szolgáltatók
+
+Az Azure Active Directory egyszeri bejelentkezést biztosít, és a bővített SaaS-alkalmazásokhoz és a helyszíni webalkalmazások több ezer alkalmazás hozzáférés-biztonságot. További információkért lásd: [alkalmazások integrálása az Azure Active Directoryban](../active-directory/develop/active-directory-integrating-applications.md)
 
 ## <a name="define-synchronization-management"></a>Adja meg a szinkronizálási felügyeleti
 A helyszíni címtárak és az Azure AD integrálása révén a felhasználók munkája hatékonyabbá válik, mivel a felhőalapú és a helyszíni erőforrások hozzáféréséhez közös identitás áll a rendelkezésükre. Ez az integráció felhasználók és a szervezetek kihasználhatják az alábbiak:
 
 * A szervezetek biztosíthatnak a felhasználóknak hibrid közös identitással a helyszíni vagy felhőalapú szolgáltatásokat kihasználva a Windows Server Active Directory, majd csatlakozzon az Azure Active Directory között.
 * A rendszergazdák alkalmazás erőforrás, a eszköz és a felhasználói identitást, a hálózati hely és a többtényezős hitelesítés alapján feltételes hozzáférést nyújthatnak.
-* Felhasználók kihasználhatják a közös identitás fiókokon keresztül Office 365, Intune, SaaS-alkalmazások és a harmadik féltől származó alkalmazások az Azure AD-ben.
+* Felhasználók kihasználhatják a közös identitás fiókokon keresztül az Azure ad-ben az Office 365, az Intune-ban, a Szolgáltatottszoftver-alkalmazásoknál, és a harmadik felektől származó alkalmazásokat.
 * A fejlesztők is használó alkalmazások létrehozását a közös identitás modell alkalmazások integrálása a helyszíni Active Directory vagy az Azure felhőalapú alkalmazásokhoz
 
 Az alábbi ábra is rendelkezik identitás szinkronizálási folyamat áttekintése látható.
@@ -90,7 +93,7 @@ Tekintse át az alábbi táblázat segítségével összehasonlíthatja a szinkr
 
 | Szinkronizálás lehetőséget | Előnyei | Hátrányok |
 | --- | --- | --- |
-| (A DirSync vagy az AADConnect) szinkronizálásra épülő |Felhasználók és csoportok szinkronizálja a helyszíni és felhő <br>  **A házirend-szabályozás**: fiók házirendeken keresztül állíthatók be, Active Directory, amely lehetővé teszi a rendszergazda a jelszóházirendek, a munkaállomás, a korlátozások, a zárolás kibővített vezérlők kezeléséhez, és több, anélkül, hogy a felhőben további feladatok elvégzéséhez.  <br>  **Hozzáférés-vezérlés**: korlátozhatja a felhőszolgáltatást, hogy a szolgáltatások is elérhetőek a vállalati környezetben, az online kiszolgálók vagy mindkettőt. <br>  A támogatási hívások csökkenteni: Ha a felhasználók kevesebb jelszót jegyezzen rendelkeznek, valószínűleg kevesebb elfelejtené. <br>  Biztonsági: Felhasználói identitások és információk védve vannak, mivel az összes a kiszolgálók és az egyszeri bejelentkezés, a használt szolgáltatások értékűre, és a helyszínen felügyelt. <br>  Erős hitelesítés támogatása: a felhőalapú szolgáltatás erős hitelesítést (más néven kéttényezős hitelesítést) használható. Azonban ha erős hitelesítés használatához kell használnia egyszeri bejelentkezést. | |
+| (A DirSync vagy az AADConnect) szinkronizálásra épülő |Felhasználók és csoportok szinkronizálja a helyszíni és felhő <br>  **A házirend-szabályozás**: fiók házirendeken keresztül állíthatók be, Active Directory, amely lehetővé teszi a rendszergazda a jelszóházirendek, a munkaállomás, a korlátozások, a zárolás kibővített vezérlők kezeléséhez, és több, anélkül, hogy a további feladatok elvégzéséhez a felhőben.  <br>  **Hozzáférés-vezérlés**: korlátozhatja a felhőszolgáltatást, hogy a szolgáltatások is elérhetőek a vállalati környezetben, az online kiszolgálók vagy mindkettőt. <br>  A támogatási hívások csökkenteni: Ha a felhasználók kevesebb jelszót jegyezzen rendelkeznek, valószínűleg kevesebb elfelejtené. <br>  Biztonsági: Felhasználói identitások és információk védve vannak, mivel az összes a kiszolgálók és az egyszeri bejelentkezés, a használt szolgáltatások értékűre, és a helyszínen felügyelt. <br>  Erős hitelesítés támogatása: a felhőalapú szolgáltatás erős hitelesítést (más néven kéttényezős hitelesítést) használható. Azonban ha erős hitelesítés használatához kell használnia egyszeri bejelentkezést. | |
 | Összevonáson alapuló (Active Directory összevonási Szolgáltatásokban) |Biztonságijogkivonat-szolgáltatás (STS) által engedélyezett. Az STS szolgáltatással történő egyszeri bejelentkezéses hozzáférést biztosít a Microsoft felhőszolgáltatással való konfigurálásakor létrehozni összevont megbízhatósági kapcsolat a helyszíni STS és az összevont tartományt az Azure AD-bérlő megadott között. <br> Lehetővé teszi, hogy a végfelhasználók számára, hogy ugyanazokat a hitelesítő adatok használatával férhet hozzá több erőforrást <br>a végfelhasználók nem kell több hitelesítőadat-készletek kezelése. Még, a felhasználók kell megadnia a hitelesítő adatokat Ha a programban részt vevő erőforrások, mindegyiknél B2B és B2C-forgatókönyvek esetében támogatott. |Speciális személyzet igényel dedikált helyszíni telepítésének és az AD FS-kiszolgáló. Ha az AD FS használatához a STS, nincsenek erős hitelesítés használatára vonatkozó korlátozások. További információkért lásd: [speciális beállítások konfigurálása az AD FS 2.0](http://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]

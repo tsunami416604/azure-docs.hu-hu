@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 97c5e2dde3faeaad13317597bef4f70455d22102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 42fabb9a2ad05dbd6a449f3f9e6a729917750165
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700008"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurálja a VMSS felügyelt szolgáltatás identitás (MSI) PowerShell használatával
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/10/2018
 
 Felügyelt Szolgáltatásidentitást az Azure Active Directoryban automatikusan felügyelt identitással Azure szolgáltatásokat biztosít. Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatokat a kódban a szolgáltatással való hitelesítésre szolgáló használhatja. 
 
-Ebből a cikkből megismerheti, hogyan hajthat végre a következő felügyelt Szolgáltatásidentitás műveletek a egy Azure virtuális gép méretezési beállítása (VMSS), PowerShell használatával:
+Ebből a cikkből megtanulhatja a felügyelt Szolgáltatásidentitás műveleteket a egy virtuális gép méretezési beállítása (VMSS), PowerShell használatával:
 - Engedélyezheti vagy letilthatja a rendszer egy Azure VMSS identitásának hozzárendelve
 - Hozzáadhat és eltávolíthat egy felhasználó lehet hozzárendelve egy Azure VMSS identitása
 
@@ -121,8 +122,7 @@ Egy a felhasználói identitás egy meglévő Azure VMSS hozzárendelése:
 
 2. Először kérjen le a virtuális gép tulajdonságok a `Get-AzureRmVM` parancsmag. Egy felhasználó lehet hozzárendelve identitás hozzárendelése az Azure VMSS, kövesse a `-IdentityType` és `-IdentityID` váltani a [frissítés-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) parancsmag. Cserélje le `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` saját értékekkel.
 
-   > [!IMPORTANT]
-   > A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információkért lásd: [– gyakori kérdések és ismert problémák](known-issues.md)
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
    ```powershell

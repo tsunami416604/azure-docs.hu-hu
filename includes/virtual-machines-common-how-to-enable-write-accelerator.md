@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c6fdd51bd522b08b33e6cac852ef313475682550
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723143"
 ---
 # <a name="write-accelerator"></a>Gyorsító írása
 Az írási gyorsító egy lemez képesség az M sorozatú virtuális gépek (VM) a prémium szintű Storage Azure felügyelt lemezzel kizárólag. Állapota a neve, mint a funkció célja a prémium szintű Azure Storage elleni írások késleltetéséről javítása érdekében. Az írási gyorsító akkor ajánlott, ahol napló fájl frissítések magas performant módon modern adatbázisok lemezre megőrzéséhez szükséges.
@@ -20,7 +21,7 @@ Az írási gyorsító egy lemez képesség az M sorozatú virtuális gépek (VM)
 Az írási gyorsító általánosan elérhető az M sorozatú virtuális gépek a nyilvános felhőben.
 
 ## <a name="planning-for-using-write-accelerator"></a>Írási gyorsító használatának megtervezése
-Az írási gyorsító használja a rendszer a kötetek, a tranzakciós napló tartalmaz, vagy visszaállítása egy adatbázis-kezelő rögzít. Nem ajánlott használandó gyorsító írni egy adatbázis-kezelő adatok mennyiségének, a szolgáltatás használható szemben napló lemezek lett optimalizálva.
+Az írási gyorsító használja a rendszer a kötetek, a tranzakciós napló tartalmaznak, vagy végezze el újra a DBMS rögzít. Nem ajánlott használandó gyorsító írni egy adatbázis-kezelő adatok mennyiségének, a szolgáltatás használható szemben napló lemezek lett optimalizálva.
 
 Írás a gyorsító csak működik együtt [Azure által kezelt lemezeken](https://azure.microsoft.com/services/managed-disks/). 
 
@@ -35,14 +36,14 @@ Az írási gyorsító használja a rendszer a kötetek, a tranzakciós napló ta
 > [!IMPORTANT]
 > Írási gyorsító az az operációsrendszer-lemez a virtuális gép engedélyezése a virtuális gép újraindul. 
 
-Engedélyezze az operációs rendszer lemezek nem kell az SAP írási gyorsító kapcsolatos Virtuálisgép-konfigurációk
+Az operációs rendszer lemezek írási gyorsító engedélyezése nem kell az SAP-kapcsolódó Virtuálisgép-konfiguráció
 
 ### <a name="restrictions-when-using-write-accelerator"></a>Írási gyorsító használatakor korlátozások
 Ha írási gyorsító egy Azure lemez/VHD-t használ, ezek a korlátozások érvényesek:
 
-- A prémium szintű lemez gyorsítótárazás kell állítani a "None" vagy "Csak Olvasás". Minden más gyorsítótárazási mód nem támogatott.
+- A prémium szintű lemez gyorsítótárazás értékre kell állítani "None" vagy "Csak Olvasás". Minden más gyorsítótárazási mód nem támogatott.
 - Az engedélyezett írási gyorsító lemezen pillanatkép még nem támogatott. Ez a korlátozás tiltása, hajtsa végre a virtuális gép összes lemeze konzisztens alkalmazás pillanatképe egy Azure biztonsági mentés szolgáltatás képes-e.
-- Csak kisebb i/o-méretű (< = 32KiB) végzése a gyorsított elérési útja. Az alkalmazások és szolgáltatások olyan helyzetekben, ahol adatokat kezd tömeges betöltve, vagy ha a tranzakciós napló pufferek, a másik adatbázis-kezelő van kitöltve nagyobb mértékben előtt első maradnak meg a tárolási, valószínűleg, amely a írt i/o lemez nem tart a gyorsított elérési útja.
+- Csak kisebb i/o-méretű (< = 32 KiB) végzése a gyorsított elérési útja. Az alkalmazások és szolgáltatások olyan helyzetekben, ahol adatokat kezd tömeges betöltve, vagy ha a tranzakciós napló pufferek, a másik adatbázis-kezelő van kitöltve nagyobb mértékben előtt első maradnak meg a tárolási, valószínűleg, amely a írt i/o lemez nem tart a gyorsított elérési útja.
 
 Nincsenek Azure prémium szintű Storage a VHD-k egy virtuális Gépet, amely támogatja-e írási gyorsító korlátozások. A jelenlegi korlátozások a következők:
 
@@ -52,6 +53,12 @@ Nincsenek Azure prémium szintű Storage a VHD-k egy virtuális Gépet, amely t�
 | M128s | 16 | 8000 |
 | M64ms | 8 | 4000 |
 | M64s | 8 | 4000 | 
+| M32ms | 4 | 2000 | 
+| M32s | 4 | 2000 | 
+| M16ms | 2 | 1000 | 
+| M16s | 2 | 1000 | 
+| M8ms | 1 | 500 | 
+| M8s | 1 | 500 | 
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Adott lemezre írás gyorsító engedélyezése
 A következő néhány szakasz ismerteti, hogyan engedélyezhető írási gyorsító Azure Premium Storage virtuális merevlemezeket.
@@ -63,29 +70,29 @@ A következő előfeltételek ezen a ponton a időben történő alkalmazása az
 - Azure írási gyorsító elleni alkalmazni kívánt lemezeket kell lenniük [Azure által kezelt lemezeken](https://azure.microsoft.com/services/managed-disks/) a prémium szintű Storage.
 - Használjon egy M sorozatú virtuális Gépre
 
-### <a name="enabling-through-power-shell"></a>A Power Shell engedélyezése
+## <a name="enabling-azure-write-accelerator-using-azure-powershell"></a>Az Azure PowerShell Azure írási gyorsító engedélyezése
 Az Azure PowerShell modul 5.5.0 verziójáról a változásokat a vonatkozó parancsmagjainak engedélyezhető vagy tiltható le meghatározott prémium szintű Azure Storage-lemezek írási gyorsító.
 Ahhoz, hogy engedélyezi vagy lemezek írási gyorsító által támogatott központi telepítése, a következő PowerShell-parancsok megváltozott, és terjeszteni a írási gyorsító fogad el paramétert.
 
 Egy új kapcsolóparaméter "WriteAccelerator" készült fel a következő parancsmagokat: 
 
-- Set-AzureRmVMOsDisk
-- Add-AzureRmVMDataDisk
-- Set-AzureRmVMDataDisk
-- Add-AzureRmVmssDataDisk
+- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 A paraméter nincs megadva a tulajdonság beállítása FALSE, és telepíti a lemezek, amelyek írási gyorsító által nem támogatott.
 
 Egy új kapcsolóparaméter "OsDiskWriteAccelerator" hozzá lett adva a következő parancsmagokat: 
 
-- Set-AzureRmVmssStorageProfile
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
-Nincs megadva a paramenter tulajdonságát hamis értékre állítja be, és lemezek használó nem írható gyorsító fog továbbítani.
+A paraméter nincs megadva a tulajdonság beállítása FALSE, és lemezeket használó nem írható gyorsító fog továbbítani.
 
 Egy új választható logikai (nem nullázható) paraméter, "OsDiskWriteAccelerator" készült fel a következő parancsmagokat: 
 
-- Update-AzureRmVM
-- Update-AzureRmVmss
+- [Frissítés-AzureRmVM](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 Adja meg a $true vagy $false vezérlésére az Azure írási gyorsító támogatásához a lemezeket.
 
@@ -158,26 +165,27 @@ Szüksége való igazításának lehetősége a virtuális gép, a lemez és az 
 > [!Note]
 > A fenti parancsprogram végrehajtása a megadott lemez leválasztása, engedélyezi gyorsító írni a lemezen, és majd csatlakoztassa újra a lemezt
 
-### <a name="enabling-through-azure-portal"></a>Az Azure portálon keresztül engedélyezése
+### <a name="enabling-azure-write-accelerator-using-the-azure-portal"></a>Az Azure portál használata Azure írási gyorsító engedélyezése
 
 A portálon, amelyben meg kell határoznia a gyorsítótárazási beállítások lemez írási gyorsító engedélyezéséhez: 
 
 ![Az Azure portálon gyorsító írása](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
-### <a name="enabling-through-azure-cli"></a>Az Azure parancssori felületen keresztül engedélyezése
+## <a name="enabling-through-azure-cli"></a>Az Azure parancssori felületen keresztül engedélyezése
 Használhatja a [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) írási gyorsító engedélyezéséhez. 
 
-Meglévő lemez írási gyorsító engedélyezéséhez használja a parancsot, és a diskName VMName és ResourceGroup saját: 
+Meglévő lemez gyorsító írás engedélyezéséhez az [az vm frissítése](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), ha a diskName VMName és ResourceGroup helyettesítse a saját használhatja az alábbi példák:
+ 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 1=true
+az vm update -g group1 -n vm1 -write-accelerator 1=true
 ```
-Egy lemezt csatolni a írási gyorsító engedélyezve adja használja az alábbi parancsot a értékekkel:
+Egy lemezt csatolni a írási gyorsító engedélyezve adja használata [az méretű lemez csatolása](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), előfordulhat, hogy használja a következő példát, ha akkor helyettesítse a saját értékeket:
 ```
-az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator
 ```
-Írási gyorsító letiltásához állítsa be a tulajdonságot false értékre: 
+Írási gyorsító letiltásához használja [az vm frissítése](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), a Tulajdonságok FALSE értékre állítását: 
 ```
-az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false
 ```
 
 ### <a name="enabling-through-rest-apis"></a>A Rest API-k engedélyezése

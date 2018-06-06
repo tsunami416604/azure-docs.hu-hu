@@ -1,21 +1,21 @@
 ---
-title: Bejelentkezés az OpenID Connect - Azure AD B2C webes |} Microsoft Docs
-description: Webalkalmazások készítéséhez az Azure Active Directory végrehajtása az OpenID Connect hitelesítési protokoll használatával
+title: Bejelentkezés az OpenID Connect, az Azure Active Directory B2C webes |} Microsoft Docs
+description: Az Azure Active Directory végrehajtása az OpenID Connect hitelesítési protokoll használatával webalkalmazások készítéséhez.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e787ea36ab5099705f151504385dd5dc97029e37
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ad4de055e4f951beb441af90c37ada11ad0abfb0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711290"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Az Azure Active Directory B2C: Webes bejelentkezés az OpenID Connect
 OpenID Connect egy olyan hitelesítési protokoll, OAuth 2.0, a biztonságos bejelentkezéshez felhasználók webalkalmazásokhoz használható platformra épül. Az Azure Active Directory B2C segítségével OpenID Connect (Azure AD B2C-vel) végrehajtásával, is erőforrás kihelyezése a regisztráció, bejelentkezés és más Identitáskezelés észlel a webalkalmazások Azure Active Directory (Azure AD). Ez az útmutató bemutatja, hogyan nyelvtől független módon. Bemutatja, hogyan lehet üzeneteket küldjön és fogadjon HTTP a nyílt forráskódú kódtárai bármelyikét használata nélkül.
@@ -78,7 +78,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [Azure-portálon](https://portal.azure.com/) az alkalmazáshoz hozzárendelni. |
 | response_type |Szükséges |A válasz-típus, az OpenID Connect tartalmaznia kell egy azonosító jogkivonatot. Ha a webalkalmazásnak is kell jogkivonatok hívásakor webes API-k, `code+id_token`, ahogy azt itt régebben már kötöttek. |
 | redirect_uri |Ajánlott |A `redirect_uri` paraméter az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat. Ez pontosan egyeznie kell a `redirect_uri` paramétereket, és regisztrálta a portálon, azzal a különbséggel, hogy az URL-kódolású kell lennie. |
-| Hatókör |Szükséges |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték az Azure AD mindkét kérnek engedélyeket. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat (több, a cikk későbbi részében ezen lesz) formájában adatait, és jelentkezzen be a felhasználó engedélyt. A `offline_access` hatókör megadása nem kötelező web Apps. Azt jelzi, hogy az alkalmazás kell egy *frissítési jogkivonat* hosszú élettartamú erőforrások elérése érdekében. |
+| scope |Szükséges |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték az Azure AD mindkét kérnek engedélyeket. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat (több, a cikk későbbi részében ezen lesz) formájában adatait, és jelentkezzen be a felhasználó engedélyt. A `offline_access` hatókör megadása nem kötelező web Apps. Azt jelzi, hogy az alkalmazás kell egy *frissítési jogkivonat* hosszú élettartamú erőforrások elérése érdekében. |
 | response_mode |Ajánlott |A módszer, amelynek használatával az eredményül kapott engedélyezési kód küldi vissza az alkalmazást. Ez lehet akár `query`, `form_post`, vagy `fragment`.  A `form_post` válasz mód használata ajánlott legjobb biztonsági. |
 | state |Ajánlott |A kérelem is a biztonságijogkivonat-válaszban visszaadott szerepel érték. Bármely, a kívánt tartalmat karakterlánc lehet. Egy véletlenszerűen generált egyedi érték webhelyközi kérések hamisításának megakadályozása támadások megelőzése általában szolgál. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például a lap, amilyenek korábban voltak a is használatos. |
 | Nonce |Szükséges |A kérelem (az alkalmazás által generált), amely szerepelni fog az eredményül kapott azonosító jogkivonat jogcímként szerepel érték. Az alkalmazás ezután ellenőrizheti a hitelesítési karakterláncok ismétlésének támadások mérséklése ezt az értéket. Az érték egy véletlenszerű egyedi karakterlánc, amely segítségével azonosíthatja a kérelem forrása általában. |
@@ -172,7 +172,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | p |Szükséges |A házirendet, amely szerepel az engedélyezési kód megszerzésére. A kérelem nem használhatja másik szabályt. Vegye figyelembe, hogy hozzá ezt a paramétert a lekérdezési karakterlánc nem arra a `POST` törzsében. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [Azure-portálon](https://portal.azure.com/) az alkalmazáshoz hozzárendelni. |
 | grant_type |Szükséges |Az engedély megadása, amelynek támogatnia kell a típusú `authorization_code` a a hitelesítésikód-folyamata. |
-| Hatókör |Ajánlott |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték az Azure AD mindkét kérnek engedélyeket. A `openid` hatókör id_token paraméterek formájában a felhasználó adatait, és jelentkezzen be a felhasználó engedélyt jelzi. Az alkalmazás saját webes API, amely alkalmazás azonosítója megegyezik az ügyfél által képviselt-jogkivonat eléréséhez használható. A `offline_access` hatókör azt jelzi, hogy az alkalmazás egy frissítési jogkivonat kell hosszú élettartamú erőforrások elérése érdekében. |
+| scope |Ajánlott |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték az Azure AD mindkét kérnek engedélyeket. A `openid` hatókör id_token paraméterek formájában a felhasználó adatait, és jelentkezzen be a felhasználó engedélyt jelzi. Az alkalmazás saját webes API, amely alkalmazás azonosítója megegyezik az ügyfél által képviselt-jogkivonat eléréséhez használható. A `offline_access` hatókör azt jelzi, hogy az alkalmazás egy frissítési jogkivonat kell hosszú élettartamú erőforrások elérése érdekében. |
 | Kód |Szükséges |A folyamat első szakasza beszerzett engedélyezési kódot. |
 | redirect_uri |Szükséges |A `redirect_uri` paraméter az alkalmazás, ahol kapott engedélyezési kódot. |
 | client_secret |Szükséges |A létrehozott alkalmazás titkos kulcs a [Azure-portálon](https://portal.azure.com/). Ez az alkalmazástitkok fontos biztonsági összetevő. Meg kell tárolja biztonságos helyen a kiszolgálón. Az ügyfélkulcs rendszeres időközönként elforgatása is kell. |
@@ -194,7 +194,7 @@ A sikeres token válasz néz ki:
 | not_before |Az az idő, amelynél a jogkivonat érvényes, időbeli kortartományon. |
 | token_type |A jogkivonat típusa érték. Az egyetlen típus, amely az Azure AD által támogatott `Bearer`. |
 | access_token |Az aláírt JWT jogkivonat az Ön által kért. |
-| Hatókör |A hatókörök, amelynél a jogkivonat érvényes érték. Ezek használhatók a gyorsítótárazáshoz jogkivonatok későbbi használatra. |
+| scope |A hatókörök, amelynél a jogkivonat érvényes érték. Ezek használhatók a gyorsítótárazáshoz jogkivonatok későbbi használatra. |
 | expires_in |Mennyi ideig, amely a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | refresh_token |Az OAuth 2.0-s frissítési jogkivonat. Az alkalmazás a jogkivonat segítségével szerezzen be további jogkivonatok a jelenlegi jogkivonat lejárata után is. Frissítési jogkivonatok hosszú élettartamú, és erőforrásokhoz való hozzáférés megőrzése huzamosabb ideig használható. További részletekért tekintse meg a [B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md). Megjegyzés: kell használt a hatókör `offline_access` az engedélyezési és egy frissítési jogkivonat fogadásához a jogkivonat-kérelmeket. |
 
@@ -237,7 +237,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | p |Szükséges |A házirendet, amely az eredeti frissítési jogkivonat használatával. A kérelem nem használhatja másik szabályt. Vegye figyelembe, hogy ez a paraméter hozzáadása, a lekérdezési karakterláncot, nem a FELADÁS egy vagy több szervezet. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [Azure-portálon](https://portal.azure.com/) az alkalmazáshoz hozzárendelni. |
 | grant_type |Szükséges |Az engedély megadása, amelynek kell lennie a hitelesítésikód-folyamata ezen szakasza a frissítési jogkivonat típusa. |
-| Hatókör |Ajánlott |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték az Azure AD mindkét kérnek engedélyeket. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat formájában adatait, és jelentkezzen be a felhasználó engedélyt. Az alkalmazás saját webes API, amely alkalmazás azonosítója megegyezik az ügyfél által képviselt-jogkivonat eléréséhez használható. A `offline_access` hatókör azt jelzi, hogy az alkalmazás egy frissítési jogkivonat kell hosszú élettartamú erőforrások elérése érdekében. |
+| scope |Ajánlott |Hatókörök szóközökkel elválasztott listája. Egy hatókör érték az Azure AD mindkét kérnek engedélyeket. A `openid` hatókör azt jelzi, a felhasználói azonosító-jogkivonatokat formájában adatait, és jelentkezzen be a felhasználó engedélyt. Az alkalmazás saját webes API, amely alkalmazás azonosítója megegyezik az ügyfél által képviselt-jogkivonat eléréséhez használható. A `offline_access` hatókör azt jelzi, hogy az alkalmazás egy frissítési jogkivonat kell hosszú élettartamú erőforrások elérése érdekében. |
 | redirect_uri |Ajánlott |A `redirect_uri` paraméter az alkalmazás, ahol kapott engedélyezési kódot. |
 | refresh_token |Szükséges |Az eredeti frissítési jogkivonat a folyamat második szakasza beszerzett. Megjegyzés: kell használt a hatókör `offline_access` az engedélyezési és egy frissítési jogkivonat fogadásához a jogkivonat-kérelmeket. |
 | client_secret |Szükséges |A létrehozott alkalmazás titkos kulcs a [Azure-portálon](https://portal.azure.com/). Ez az alkalmazástitkok fontos biztonsági összetevő. Meg kell tárolja biztonságos helyen a kiszolgálón. Az ügyfélkulcs rendszeres időközönként elforgatása is kell. |
@@ -259,7 +259,7 @@ A sikeres token válasz néz ki:
 | not_before |Az az idő, amelynél a jogkivonat érvényes, időbeli kortartományon. |
 | token_type |A jogkivonat típusa érték. Az egyetlen típus, amely az Azure AD által támogatott `Bearer`. |
 | access_token |Az aláírt JWT jogkivonat az Ön által kért. |
-| Hatókör |A hatókör, amely a jogkivonat érvényes, a későbbi használatra jogkivonatok gyorsítótárazás használható. |
+| scope |A hatókör, amely a jogkivonat érvényes, a későbbi használatra jogkivonatok gyorsítótárazás használható. |
 | expires_in |Mennyi ideig, amely a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | refresh_token |Az OAuth 2.0-s frissítési jogkivonat. Az alkalmazás a jogkivonat segítségével szerezzen be további jogkivonatok a jelenlegi jogkivonat lejárata után is.  Frissítési jogkivonatok hosszú élettartamú, és erőforrásokhoz való hozzáférés megőrzése huzamosabb ideig használható. További részletekért tekintse meg a [B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md). |
 

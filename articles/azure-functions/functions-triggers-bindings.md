@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/07/2018
+ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 56b0f8e24dfc38b542f4bbfc7975f1704d70f22c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725343"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -45,38 +46,39 @@ Információ arról, hogy mely kötések még csak előzetes verziójúak vagy �
 
 ## <a name="register-binding-extensions"></a>Regisztrálja a kötési bővítmény
 
-Verziójában 2.x, az Azure Functions futtatókörnyezettel, explicit módon regisztrálnia kell a [bővítmények kötés](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) , amelyekkel az függvény alkalmazásban. 
+A verzió, az Azure Functions futtatókörnyezettel 2.x, explicit módon regisztrálnia kell az függvény alkalmazásban használt kötés extensions (kötéstípust). 
 
-Bővítmények érkeznek NuGet csomag, amelyben a csomag általában kezdetű névvel rendelkező [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Telepítése és regisztrálása kötés bővítmények módja attól függ, hogyan fejleszthet-e a funkciók: 
+Verzió funkciók futásidejű 2.x jelenleg előzetes verzió. Verzióját használja egy függvény alkalmazás telepítésével kapcsolatos információkat a Functions futtatókörnyezete 2.x lásd: [bemutatásához az Azure Functions futásidejű verziók](set-runtime-version.md).
+
+Egy sor kötések verzióban van 2.x automatikusan regisztrált, így nem kell explicit módon regisztrálja őket: HTTP időzítő és Azure Storage (BLOB, üzenetsorok és táblák). 
+
+Bővítmények érkeznek NuGet csomag, amelyben a csomag általában kezdetű névvel rendelkező [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  A kötés bővítmények regisztrálnia módja attól függ, hogyan fejleszthet-e a funkciók: 
 
 + [Helyileg a C# segítségével a Visual Studio vagy Visual STUDIO Code](#local-c-development-using-visual-studio-or-vs-code)
 + [Helyileg használata az Azure Functions Core eszközök](#local-development-azure-functions-core-tools)
 + [Az Azure-portálon](#azure-portal-development) 
 
-Van egy sor verziójában kötések nem biztosított kiterjesztéseket 2.x. Nem kell regisztrálni a következő eseményindítók és kötések kiterjesztéseinek: HTTP időzítő és Azure Storage. 
+Ebben a szakaszban szereplő alkalmazáscsomag-verziók csak példaként szolgálnak. Ellenőrizze a [NuGet.org hely](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) annak meghatározásához, hogy egy adott bővítmény melyik verziója szükséges a függvény alkalmazásban más függőségek.    
 
-Verzióját használja egy függvény alkalmazás telepítésével kapcsolatos információkat a Functions futtatókörnyezete 2.x lásd: [bemutatásához az Azure Functions futásidejű verziók](set-runtime-version.md). Verzió funkciók futásidejű 2.x jelenleg előzetes verzió. 
+### <a name="local-csharp"></a>A Visual Studio vagy Visual STUDIO Code helyi C# fejlesztési
 
-Ebben a szakaszban szereplő alkalmazáscsomag-verziók csak példaként szolgálnak. Ellenőrizze a [NuGet.org hely](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) meghatározni egy adott bővítmény melyik verziója által a más függőségek, a függvény alkalmazásban szükségesek.    
-
-###  <a name="local-c-development-using-visual-studio-or-vs-code"></a>A Visual Studio vagy Visual STUDIO Code helyi C# fejlesztési 
-
-Visual Studio vagy Visual Studio Code használatánál helyileg fejlesztésére C# funkciók, egyszerűen kell hozzáadnia a NuGet-csomagot a bővítmény. 
+Használatakor a Visual Studio vagy Visual Studio Code helyileg fejlesztéséhez funkciók C# nyelven íródtak, telepítse a NuGet-csomagot, a bővítmény. 
 
 + **A Visual Studio**: a NuGet Package Manager eszközök használatára. A következő [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancs telepíti az Azure Cosmos adatbázis bővítmény a Csomagkezelő konzolról:
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
     ```
+
 + **A Visual Studio Code**: csomagokat telepítheti a parancssor használatával a [dotnet csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET CLI-t, a következő parancsot:
 
-    ```
+    ```terminal
     dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
     ```
 
 ### <a name="local-development-azure-functions-core-tools"></a>Helyi fejlesztési Azure Functions Core eszközök
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 ### <a name="azure-portal-development"></a>Azure portál fejlesztési
 

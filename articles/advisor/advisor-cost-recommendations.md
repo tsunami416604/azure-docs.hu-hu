@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ade6ef996c00c0c06d5b8e44815520e6e4ab7e9f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735867"
 ---
 # <a name="advisor-cost-recommendations"></a>Költség javaslatokat biztosít
 
@@ -33,6 +34,11 @@ Ha szigorúbb túl virtuális gépek azonosításához, lehet, módosíthatja a 
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Csökkentheti a költségeket kiépített ExpressRoute-Kapcsolatcsoportok kiküszöbölése révén
 Az Advisor azonosítja a szolgáltató állapota már ExpressRoute-Kapcsolatcsoportok *nincs kiépítve* több mint egy hónap, és javasolja a kapcsolatcsoport törlése, ha nem tervezi a kapcsolatcsoport adja meg a kapcsolatot szolgáltató.
+
+## <a name="buy-virtual-machine-reserved-instances-to-save-money-over-pay-as-you-go-costs"></a>Fenntartott virtuálisgép-példányok vásárlásával megtakarítást érhet el a használatalapú fizetéses költségekhez képest
+Az Advisor a virtuális gépek használatának áttekinti az elmúlt 30 napban, és határozza meg, ha Ön sikerült költségtakarékosabb munkavégzésben fenntartott példányok megvásárlásával. Az Advisor bemutatja, régiók és méretét, ha esetleg a legtöbb megtakarítások és bemutatja, mindez a becsült megtakarítás érhető el a beszerzési fenntartott példányok. 
+
+Fenntartott osztályt, előre vásárolhat az alap költségek a virtuális gépek számára. Új vagy meglévő virtuális gépek, amelyek ugyanolyan méretű és régió a fenntartott példányként automatikusan érvényesek kedvezményeket jelentenek. [További tudnivalók az Azure fenntartott Virtuálisgép-példányok.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Költség javaslatok az Azure Advisor elérése
 

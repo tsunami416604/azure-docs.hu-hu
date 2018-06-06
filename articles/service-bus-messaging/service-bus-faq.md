@@ -1,26 +1,22 @@
 ---
-title: "Az Azure Service Bus gyakori kérdések (GYIK) |} Microsoft Docs"
-description: "Azure Service Bus kapcsolatban gyakran feltett kérdésekre adott válaszok."
+title: Az Azure Service Bus gyakori kérdések (GYIK) |} Microsoft Docs
+description: Azure Service Bus kapcsolatban gyakran feltett kérdésekre adott válaszok.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: cc75786d-3448-4f79-9fec-eef56c0027ba
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: ba34938883ee342936b5c7a4568dae5e02684bb2
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802265"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
+
 A cikkből néhány gyakori kérdés a Microsoft Azure Service Bus kapcsolatban. Is letöltheti a [Azure támogatja – gyakori kérdések](http://go.microsoft.com/fwlink/?LinkID=185083) általános Azure tarifa- és támogatási információkat.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus kapcsolatos általános kérdésekre
@@ -37,9 +33,11 @@ A [Service Bus-üzenetsorba](service-bus-queues-topics-subscriptions.md) az üze
 A témakör is ábrázolt, várólista és használ több előfizetéssel, lesz egy gazdagabb üzenetkezelési modellt; lényegében egy-a-többhöz kommunikációs eszközt. Ez a közzétételi/előfizetési modell (vagy *pub/sub*) lehetővé teszi az alkalmazás, amely egy üzenetet küld egy témakör több előfizetéssel kell rendelkeznie, hogy több alkalmazás által fogadott üzenet.
 
 ### <a name="what-is-a-partitioned-entity"></a>Mi az a particionált entitás?
-Hagyományos üzenetsor vagy témakör egyetlen üzenet ügynök által kezelt és egy üzenetküldési tárolóban tárolja. A [particionált üzenetsor vagy témakör](service-bus-partitioning.md) több üzenetet brókerek kezeli és több üzenetküldési tároló tárolja. Ez azt jelenti, hogy a teljes átviteli képessége – a particionált üzenetsor vagy témakör már nem korlátozzák a egyetlen üzenet broker vagy az üzenetküldési tárolóban teljesítményét. Ezenkívül átmenetileg nem működik az üzenetküldési tárolóban nem képezhető le egy particionált üzenetsor vagy témakör nem érhető el.
+Hagyományos üzenetsor vagy témakör egyetlen üzenet ügynök által kezelt és egy üzenetküldési tárolóban tárolja. Csak a Basic és Standard üzenetkezelési szintek, a támogatott egy [particionált üzenetsor vagy témakör](service-bus-partitioning.md) több üzenetet brókerek kezeli és több üzenetküldési tároló tárolja. Ez a szolgáltatás azt jelenti, hogy a teljes átviteli képessége – a particionált üzenetsor vagy témakör már nem korlátozzák a egyetlen üzenet broker vagy az üzenetküldési tárolóban teljesítményét. Ezenkívül átmenetileg nem működik az üzenetküldési tárolóban nem képezhető le egy particionált üzenetsor vagy témakör nem érhető el.
 
-Vegye figyelembe, hogy a rendezés nem biztosított, ha particionált entitások. Abban az esetben, ha a partíció nem érhető el, továbbra is küldhet és a többi partíció érkező üzenetek fogadására.
+Rendezés nem biztosított, ha használatával particionált entitások. Abban az esetben, ha a partíció nem érhető el, továbbra is küldhet és a többi partíció érkező üzenetek fogadására.
+
+ Particionált entitások nem támogatottak a [Premium Termékváltozat](service-bus-premium-messaging.md). 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Mik az Azure Service Bus tanácsokat?
@@ -74,9 +72,9 @@ Nem, a Service Bus nem terheli a tároláshoz. Van azonban egy kvótát a váró
 A Service Bus-korlátozások és a kvóták listájáért lásd: a [Service Bus kvóták áttekintése][Quotas overview].
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Rendelkezik a Service Bus bármely használati kvóták?
-Alapértelmezés szerint minden felhő szolgáltatás Microsoft állítja be az összes olyan ügyfél-előfizetések számított egy összesített havi memóriahasználati kvóta. Tudjuk, hogy szükség lehet több, mint a működés felső korlátjának, mert kérhet ügyfélszolgálat bármikor, hogy azt igényeinek megismeréséhez és annak megfelelően módosítsa a működés felső korlátjának. Service Bus a összesített memóriahasználati kvóta havonta 5 milliárd üzenetek esetén.
+Alapértelmezés szerint minden felhő szolgáltatás Microsoft állítja be az összes olyan ügyfél-előfizetések számított egy összesített havi memóriahasználati kvóta. Ha több, mint a működés felső korlátjának van szüksége, ügyfélszolgálat igényeinek megismeréséhez, és annak megfelelően módosítsa a működés felső korlátjának bármikor kérhet. Service Bus a összesített memóriahasználati kvóta havonta 5 milliárd üzenetek esetén.
 
-Azt fenntartja a jogot, hogy egy felhasználói fiókot, amely a használati kvóták túllépte az adott hónapban letiltása, amíg azt adja meg az e-mail értesítéseket, és többször megkísérelje el az ügyfél bármely megtétele előtt. Ezek mely százalékértékénél kéri meghaladó ügyfelek továbbra is felelőssége, amelyek mérete meghaladja a kvóták díjakat.
+A Microsoft fenntartja a jogot arra, hogy egy felhasználói fiókot, amely a használati kvóták túllépte az adott hónapban letiltása, amíg e-mail értesítések küldése általában olyan, és több kísérletet tesz el az ügyfél bármely megtétele előtt. Ezek mely százalékértékénél kéri meghaladó ügyfelek továbbra is felelőssége, amelyek mérete meghaladja a kvóták díjakat.
 
 Más Azure-szolgáltatások, a Service Bus kikényszeríti egy adott kvóták győződjön meg arról, hogy van-e az erőforrások igazságos használati készletét. Ezek mely százalékértékénél kéri, a további információkat is talál a [Service Bus kvóták áttekintése][Quotas overview].
 

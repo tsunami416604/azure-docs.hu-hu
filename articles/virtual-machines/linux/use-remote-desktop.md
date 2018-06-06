@@ -12,13 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: c47822bebdc8b3cc8896fe56b8f9a4ce317495c3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716618"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja a távoli asztal egy Linux virtuális Gépet az Azure-ban való kapcsolódáshoz
 A parancssorból, a secure shell (SSH-) kapcsolaton keresztül általában felügyelt Linux virtuális gépek (VM) az Azure-ban. Új Linux vagy gyors hibaelhárítási helyzetekben, amikor a távoli asztal használata könnyebben lehet. Ez a cikk részletesen telepítése és konfigurálása az asztali környezetet ([xfce](https://www.xfce.org)) és a távoli asztal ([xrdp](http://www.xrdp.org)) a Linux virtuális gép használata a Resource Manager üzembe helyezési modellben.
@@ -36,7 +37,7 @@ A legtöbb Linux virtuális gépet az Azure-ban nem rendelkeznek egy asztali kö
 
 A következő példa telepíti az egyszerűsített [xfce4](https://www.xfce.org/) asztali környezetben egy Ubuntu 16.04 LTS virtuális gépen. Parancsok a némileg eltérő más terjesztési (használata `yum` Red Hat Enterprise Linux telepítését és konfigurálását a megfelelő `selinux` szabályokat, vagy használja `zypper` SUSE, például telepítése).
 
-Első, az SSH-kapcsolatot a virtuális Gépet. Az alábbi példa nevű virtuális gép csatlakozik *myvm.westus.cloudapp.azure.com* a felhasználónevet használva a *azureuser*:
+Első, az SSH-kapcsolatot a virtuális Gépet. Az alábbi példa nevű virtuális gép csatlakozik *myvm.westus.cloudapp.azure.com* a felhasználónevet használva a *azureuser*. A saját értékeket használja:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -85,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>A távoli asztal forgalmat hálózati biztonsági csoport szabály létrehozása
 A távoli asztal forgalom való elérni a Linux virtuális Gépet, a hálózati biztonsági csoport szabályt kell létrehozni, amely lehetővé teszi a TCP-port 3389-es elérni a virtuális Gépet. További információ a hálózati biztonsági csoportszabályok: [Mi az a hálózati biztonsági csoport?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Emellett [egy hálózati biztonsági szabály létrehozása az Azure portál segítségével](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az alábbi példa létrehoz egy hálózati biztonsági csoport szabály [az vm-port megnyitása](/cli/azure/vm#az_vm_open_port) porton *3389-es*.
+Az alábbi példa létrehoz egy hálózati biztonsági csoport szabály [az vm-port megnyitása](/cli/azure/vm#az-vm-open-port) porton *3389-es*. Az Azure CLI 2.0 nem az SSH-munkamenetet a virtuális géphez, nyissa meg a következő hálózati biztonsági csoport szabály:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

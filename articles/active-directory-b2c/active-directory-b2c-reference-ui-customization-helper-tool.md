@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Lap felhasználói felületének testreszabása segédeszköze |} Microsoft Docs'
-description: A lap felhasználói felületi testreszabási szolgáltatás az Azure Active Directory B2C bemutatásához használt segítő eszköz
+title: Lap felhasználói felületének testreszabása az Azure Active Directory B2C segédeszköze |} Microsoft Docs
+description: A lap felhasználói felületi testreszabási szolgáltatás az Azure Active Directory B2C bemutatására segédeszköze.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: d57b8d43b2302a18b9df89eacc8ffd20d1742075
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711994"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Az Azure Active Directory B2C: Segítő használt eszköz a lap felhasználói felület (UI) testreszabási szolgáltatás bemutatása
 Ez a cikk egy kiegészítő, hogy a [fő felhasználói felület testreszabása cikk](active-directory-b2c-reference-ui-customization.md) az Azure Active Directory (Azure AD) B2C. A következő lépések azt ismertetik, hogyan gyakorlására a lap felhasználói felületi testreszabási szolgáltatás minta HTML- és CSS tartalom mellékelt használatával.

@@ -3,7 +3,7 @@ title: Biztonsági riasztások konfigurálása |} Microsoft Docs
 description: 'Útmutató: Azure Privileged Identity Management bővítmény biztonsági riasztások konfigurálása.'
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: curtand
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f77567d35d3916ab1660134959d2d26916e08a0a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8dd546b0c3a60a50989b59fa295ceeb49e6b1e9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698009"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Az Azure AD Privileged Identity Management biztonsági riasztások konfigurálása
 ## <a name="security-alerts"></a>Biztonsági riasztások
@@ -25,7 +26,7 @@ Azure Privileged Identity Management (PIM) riasztásokat állít elő, ha nem bi
 
 ![A PIM irányítópult biztonsági riasztások – képernyőkép][1]
 
-| Riasztás | Súlyosság | Eseményindító | Ajánlás |
+| Riasztás | Severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
 | **Szerepkörök hozzárendeli PIM-en kívül** |Magas |A felhasználó véglegesen kapott egy kiemelt szerepkörhöz a PIM felületen kívülre. |Tekintse át a felhasználókat a listában és megszüntetése azokat privilegizált szerepkörrel PIM-en kívül. |
 | **Szerepkörök aktiválása túl gyakran van folyamatban** |Közepes |A beállításokban megadott időn belül az azonos szerepkör túl sok újraaktiválás volt. |Lépjen kapcsolatba a felhasználóval, hogy miért ezek aktiválta a szerepkör annyi alkalommal. Lehet, hogy az időkorlát értéke túl rövid a feladataikat befejeződnek, vagy lehet, hogy ezek segítségével parancsfájlok automatikusan aktiválja a szerepkört. Ellenőrizze, hogy az aktiválási időtartamot, a szerepkörük elegendő ideig ahhoz, hogy a feladataikat van beállítva. |
@@ -33,7 +34,7 @@ Azure Privileged Identity Management (PIM) riasztásokat állít elő, ha nem bi
 | **Felhasználók nem használják a kiemelt szerepköröket** |Alacsony |Nincsenek jogosult rendszergazdák, amely még nem aktiválta a közelmúltban szerepük. |A felhasználók többé nem kell hozzáférést, hogy egy hozzáférés-ellenőrzés indítása. |
 | **Nincsenek a túl sok globális rendszergazda** |Alacsony |Nincsenek további globális rendszergazdák mint ajánlott. |Ha nagyszámú globális rendszergazdák, valószínű, hogy a felhasználók kihozhatják több engedélyt van szükségük. Felhasználók áthelyezése kevesebb kiemelt szerepköröket, vagy ellenőrizze némelyikük abban az esetben jogosult a szerepkör ahelyett, hogy tartósan hozzárendelt. |
 
-### <a name="severity"></a>Súlyosság
+### <a name="severity"></a>Severity
 * **Magas**: azonnali beavatkozást igényel a szabályzat megsértése miatt. 
 * **Közepes**: nem igényelnek azonnali beavatkozást, de egy lehetséges szabályzat megsértése jelzi.
 * **Alacsony**: nem igényelnek azonnali beavatkozást, de a preferrable házirend módosítását javasol.

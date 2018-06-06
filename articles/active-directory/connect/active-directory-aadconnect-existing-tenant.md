@@ -1,24 +1,26 @@
 ---
-title: "Az Azure AD Connect: Ha már rendelkezik az Azure AD |} Microsoft Docs"
-description: "Ez a témakör ismerteti a csatlakozás, ha egy meglévő Azure AD-bérlő használ."
+title: 'Az Azure AD Connect: Ha már rendelkezik az Azure AD |} Microsoft Docs'
+description: Ez a témakör ismerteti a csatlakozás, ha egy meglévő Azure AD-bérlő használ.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa264487c68ea5403300d9b5b9978934a639a2a4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 726d8998d24a630808186eea417f236fdbfb565e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725207"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Az Azure AD Connect: Ha rendelkezik egy létező bérlő
 Az Azure AD Connect használatával a témaköröket a legtöbb azt feltételezi, hogy a kiindulási pont egy új Azure AD-bérlő és, hogy nincsenek-e egy felhasználó sem, vagy nincs más objektumokat. Azonban ha az Azure AD-bérlő indította megadva, akkor a felhasználók és más objektumok, és most szeretné csatlakozás, akkor ebben a témakörben, hogy a felhasználó.
@@ -56,7 +58,7 @@ Levelezési csoportok és a partnerek akkor is helyreállítható-egyezés a pro
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Hozzon létre egy új helyszíni Active Directory adatokból az Azure ad-ben
 Egyes ügyfelek egy kizárólag felhőalapú megoldást az Azure ad-val kezdődő, és nem rendelkeznek helyszíni AD. Később kívánt helyi erőforrást, és szeretne egy helyszíni AD az Azure AD-adatok alapján. Az Azure AD Connect nem tud segítséget ehhez a forgatókönyvhöz. Nem hoz létre helyszíni felhasználók, és nincs bármely beállítani a jelszót a helyi ugyanaz, mint az Azure AD lehetőséget.
 
-Ha a csak ok miért hozzáadását tervezi a helyszíni AD támogatására szolgál LOB (az üzletági alkalmazások), akkor talán érdemes használni [az Azure AD tartományi szolgáltatások](../../active-directory-domain-services/index.md) helyette.
+Ha a csak ok miért hozzáadását tervezi a helyszíni AD támogatására szolgál LOB (az üzletági alkalmazások), akkor talán érdemes használni [az Azure AD tartományi szolgáltatások](../../active-directory-domain-services/index.yml) helyette.
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

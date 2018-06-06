@@ -1,21 +1,21 @@
 ---
-title: Tiltsa le a felhasználói regisztrációs - Azure Active Directory B2C során e-mail ellenőrzése
-description: A témakör bemutatja, hogyan lehet e-mail ellenőrzése során az Azure Active Directory B2C-előfizetési fogyasztói letiltása
+title: Tiltsa le az e-mailek ellenőrzése során az Azure Active Directory B2C-előfizetési fogyasztói |} Microsoft Docs
+description: A témakör bemutatja, hogyan lehet letiltani az e-mail ellenőrzése során az Azure Active Directory B2C-előfizetési fogyasztói.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 2/06/2017
 ms.author: davidmu
-ms.openlocfilehash: 4f48df553d35386fb2b0448972dc01f9c6427ebd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 24242054ea4af3797fbeca1ed48bb698e4f4296b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712011"
 ---
 # <a name="azure-active-directory-b2c-disable-email-verification-during-consumer-sign-up"></a>Az Azure Active Directory B2C: Letiltása e-mail ellenőrzése felhasználói regisztráció során
 Ha engedélyezve van, Azure Active Directory (Azure AD) B2C segítségével ügyféllel az előfizetés az alkalmazások megadása az e-mail címet és egy helyi fiók létrehozása. Az Azure AD B2C azzal, hogy a fogyasztók ellenőrzése őket a regisztráció során érvényes e-mail címet biztosítja. Is megakadályozza, hogy egy rosszindulatú automatikus folyamat alkalmazások hamis fiókok létrehozása.

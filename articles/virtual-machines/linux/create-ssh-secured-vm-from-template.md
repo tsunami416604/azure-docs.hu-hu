@@ -1,11 +1,11 @@
 ---
-title: "Linux virtuális gép létrehozása az Azure-ban sablonból |} Microsoft Docs"
-description: "Linux virtuális gép létrehozása egy Resource Manager sablon használata az Azure CLI 2.0"
+title: Linux virtuális gép létrehozása az Azure-ban sablonból |} Microsoft Docs
+description: Linux virtuális gép létrehozása egy Resource Manager sablon használata az Azure CLI 2.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 721b8378-9e47-411e-842c-ec3276d3256a
 ms.service: virtual-machines-linux
@@ -13,14 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 05/30/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2750bed40707872bb120a7cb7130d8be01aabf7d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0e241d56eba8c8cb23b1a78227b4ca7ff725162d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716407"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>A Linux virtuális gép létrehozása Azure Resource Manager-sablonok
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépek (VM) az Azure Resource Manager-sablonok és az Azure CLI 2.0. Az [Azure CLI 1.0-s](create-ssh-secured-vm-from-template-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
@@ -31,7 +32,7 @@ Az Azure Resource Manager-sablonok JSON-fájlokat, amelyek meghatározzák az in
 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Egy erőforráscsoportot a virtuális gépek előtt létre kell hozni. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupVM* a a *eastus* régió:
+Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. Az alábbi példa létrehoz egy erőforráscsoportot *myResourceGroupVM* a a *eastus* régió:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -41,7 +42,8 @@ az group create --name myResourceGroup --location eastus
 Az alábbi példakód létrehozza a virtuális gép [Azure Resource Manager sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) rendelkező [az csoport központi telepítésének létrehozása](/cli/azure/group/deployment#az_group_deployment_create). Csak SSH hitelesítés engedélyezett. Amikor a rendszer kéri, adja meg a saját nyilvános SSH-kulcs, például a tartalmát értékének *~/.ssh/id_rsa.pub*. Ha egy SSH-kulcspárral létrehozásához szüksége, tekintse meg [létrehozása, és egy SSH-kulcspárral használata a Linux virtuális gépek Azure-ban](mac-create-ssh-keys.md).
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az group deployment create \
+    --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
@@ -49,7 +51,7 @@ Az előző példában a Githubon tárolt sablon adott meg. Is letöltheti vagy -
 
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
-SSH-kapcsolatot a virtuális Gépet, szerezze be a nyilvános IP-cím [az vm megjelenítése](/cli/azure/vm#az_vm_show):
+SSH-kapcsolatot a virtuális Gépet, szerezze be a nyilvános IP-cím [az vm megjelenítése](/cli/azure/vm#az-vm-show):
 
 ```azurecli
 az vm show \

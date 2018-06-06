@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b7e794cb08647dde6fe59b6d4b06a9cbfab06e1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726533"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Az Amazon Web Services (AWS) a Windows virtuális gépek áthelyezése az Azure PowerShell használatával
 
 Ha éppen kipróbálja az Azure virtuális gépek a munkaterhelések, meglévő Amazon Web Services (AWS) EC2 Windows Virtuálisgép-példány exportálása, majd a virtuális merevlemez (VHD) feltöltése az Azure-bA. A VHD-t a feltöltést követően létrehozhat egy új virtuális gép az Azure virtuális merevlemezről. 
 
-Ez a témakör ismerteti, hogy egyetlen virtuális gép áthelyezése AWS az Azure-bA. Ha az áthelyezni kívánt virtuális gépeket az AWS Azure léptékű, lásd: [Amazon Web Services (AWS) virtuális gépek áttelepítése az Azure-bA az Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Ez a cikk ismerteti, egyetlen virtuális gép áthelyezése AWS az Azure-bA. Ha az áthelyezni kívánt virtuális gépeket az AWS Azure léptékű, lásd: [Amazon Web Services (AWS) virtuális gépek áttelepítése az Azure-bA az Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
 ## <a name="prepare-the-vm"></a>A virtuális gép előkészítése 
  
@@ -45,7 +46,7 @@ Ez a témakör ismerteti, hogy egyetlen virtuális gép áthelyezése AWS az Azu
 
 ## <a name="export-and-download-the-vhd"></a>Exportálni, és töltse le a virtuális merevlemez 
 
-Exportálja a EC2 példány az Amazon S3 gyűjtő a virtuális merevlemez. Az Amazon dokumentáció a témakörben ismertetett lépéseket követve [exportálása egy példányát, a virtuális gép használatával virtuális gép importálási/exportálási](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) , és futtassa a [-példány-export-feladat létrehozása](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) parancs a EC2 példány exportálja egy virtuális merevlemez fájl. 
+Exportálja a EC2 példány az Amazon S3 gyűjtő a virtuális merevlemez. Kövesse az Amazon dokumentációcikkhez [exportálása egy példányát, a virtuális gép használatával virtuális gép importálási/exportálási](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) , és futtassa a [-példány-export-feladat létrehozása](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) parancs a EC2 példány exportálni egy VHD-fájlt. 
 
 Az Amazon S3 gyűjtő megadja az exportált VHD-fájl kerül. Alapvető szintaxisa a VHD exportálása nem éri el, az imént cserélje le a helyőrző szöveget <brackets> a adatokkal.
 

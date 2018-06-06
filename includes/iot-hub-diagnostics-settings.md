@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 1c7f006c066a4f1505a642af04a1ef027fde0a44
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34666942"
+---
 ### <a name="enable-logging-with-diagnostics-settings"></a>A diagnosztikai beállításokat a naplózás engedélyezése
 
 1. Jelentkezzen be a [Azure-portálon] [ lnk-portal] , és keresse meg az IoT Hub.

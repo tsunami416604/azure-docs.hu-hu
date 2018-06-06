@@ -14,16 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: danis;cynthn
 ms.openlocfilehash: da5b0db997ba1aa0e998f6fe2645e955b490951d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "33942682"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure-házirend segítségével korlátozhatja a bővítmények telepítése a Windows virtuális gépeken
 
 Ha meg szeretné akadályozni, hogy használatát vagy a Windows-alapú virtuális gépek bizonyos bővítmények telepítése, létrehozhat egy Azure szabályzatot bővítmények korlátozása a virtuális gépek erőforráscsoporton belül a PowerShell használatával. 
 
-Ebben az oktatóanyagban szereplő Azure PowerShell belül a felhő felület, amely folyamatosan frissül a legújabb verzióra. PowerShell telepítéséhez és használatához helyileg választja, az oktatóanyag az Azure PowerShell 3,6 vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
+Ebben az oktatóanyagban szereplő Azure PowerShell belül a felhő felület, amely folyamatosan frissül a legújabb verzióra. Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 3.6-os vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. 
 
 ## <a name="create-a-rules-file"></a>Szabályok fájl létrehozása
 

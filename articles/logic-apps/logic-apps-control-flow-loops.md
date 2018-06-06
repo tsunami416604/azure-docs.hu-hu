@@ -1,29 +1,25 @@
 ---
-title: Hurok - folyamat-tömb, vagy ismétlődő műveletek - Azure Logic Apps |} Microsoft Docs
-description: Az "az összes" tömbök feldolgozni hurkokat vagy ismétlődő műveletek mindaddig, amíg a logic apps a meghatározott feltételek
+title: Adja hozzá a hurkokra, ismételje meg a műveleteket, illetve feldolgozni tömbök - Azure Logic Apps |} Microsoft Docs
+description: Ismételje meg a munkafolyamat-műveleteket, vagy az Azure Logic Apps tömbök feldolgozni hurkok létrehozása
 services: logic-apps
-keywords: az egyes hurkok
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 26db63ed7706bdff9eb5c037a906fbc252b83a9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725955"
 ---
-# <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Hurok: Tömbök feldolgozni, vagy egy feltétel teljesüléséig ismételje meg a műveletek
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Ismételje meg a munkafolyamat-műveleteket, vagy az Azure Logic Apps tömbök feldolgozni hurkok létrehozása
 
-Az ismétlés a Logic Apps alkalmazást tömbjei, használhatja a ["Foreach" hurok](#foreach-loop) vagy egy [szekvenciális "Foreach" hurok](#sequential-foreach-loop). Miközben az egymást követő "Foreach" ismétlődő ciklust egyenként, párhuzamos futtatása szabványos "Foreach" ismétlődő ciklust. A maximális elemszáma tömb, amely "Foreach" hurkok képes futtatni egy logikai alkalmazásban, lásd: [korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md). 
+A Logic Apps alkalmazást tömbjei iterációt, használhatja a ["Foreach" hurok](#foreach-loop) vagy egy [szekvenciális "Foreach" loop](#sequential-foreach-loop). A szekvenciális "Foreach" hurok ismétlésének egyenként futása közben, párhuzamos futtatása egy szabványos "Foreach" hurok ismétlésének. A maximális elemszáma tömb, amely "Foreach" hurkok képes futtatni egy logikai alkalmazásban, lásd: [korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP] 
 > Ha rendelkezik egy eseményindító fogadó egy tömb, és szeretné futtatni a munkafolyamat minden tömb elemhez, *debatch* , hogy a tömb a [ **SplitOn** tulajdonság indítás](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
@@ -202,7 +198,7 @@ Például 8:00 órakor naponta, a logikai alkalmazás növeli a változó mindad
 
    ![1 "Korlátot" növekmény](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-9. Alatt, de a hurok kívül az e-mailt küld művelet hozzáadása. Ha a rendszer kéri, jelentkezzen be az e-mail fiókjába.
+9. Alatt, de a hurok kívül az e-mailt küld művelet hozzáadása. Ha a rendszer kéri, jelentkezzen be az e-mail-fiókjába.
 
    ![Műveletet, amely e-mailt küld](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 

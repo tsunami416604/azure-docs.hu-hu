@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4b1fefafb34dcbfdced5c978aa235e56cb7fa513
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801796"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia meghatározása
 Ebben a feladatban a hibrid identitás bevezetési stratégia a hibrid identitáskezelési megoldás a tárgyalt üzleti követelményeinek megfelelően határozza meg:
@@ -32,7 +34,7 @@ Ebben a feladatban a hibrid identitás bevezetési stratégia a hibrid identitá
 Az első feladat címeket, a szervezet üzleti meghatározása szükséges.  Ez nagyon széles körű lehet, és a hatókör kötés akkor fordulhat elő, ha nincs gondos.  Az elején legyen egyszerű, de ne felejtsen tervezze meg a Tervező alkalmazásához, és módosítsa a jövőben megkönnyítése.  Függetlenül attól, hogy egy egyszerű tervezett, akár a rendkívül összetett egyikét, az Azure Active Directory a Microsoft Identity platform, amely támogatja az Office 365, a Microsoft Online Services és a felhőalapú alkalmazások.
 
 ## <a name="define-an-integration-strategy"></a>Az integráció stratégia meghatározása
-A Microsoftnál három fő integrációs feladatokhoz, amelyek felhőbeli identitások, a szinkronizált identitások és az összevont identitások kialakítása.  Meg kell terveznie a integrációs stratégiák egyikét alkalmazásakor.  Stratégia eltérőek lehetnek, ugyanakkor a szempontjait ezúttal valamelyik is lehetnek, milyen típusú felhasználói élményt szeretne biztosítani, van néhány, a meglévő infrastruktúra már helyben, és mi az a leginkább költséghatékony.  
+A Microsoftnál három fő integrációs feladatokhoz, amelyek felhőbeli identitások, a szinkronizált identitások és az összevont identitások kialakítása.  Meg kell terveznie a integrációs stratégiák egyikét alkalmazásakor.  Stratégia eltérőek lehetnek, és a választott szempontjait tartalmazhatják, milyen típusú felhasználói élményt szeretne biztosítani, rendelkezik egy meglévő infrastruktúra, és mi az a leginkább költséghatékony.  
 
 ![](./media/hybrid-id-design-considerations/integration-scenarios.png)
 
@@ -51,7 +53,7 @@ Az alábbi táblázat segít meghatározni, hogy a előnyeit és hátrányait fo
 
 | Stratégia | Előnyei | Hátrányok |
 | --- | --- | --- |
-| **Felhőbeli identitások** |Könnyebben kezelhető kis szervezet számára. <br> Semmit nem kell telepítenie a helyi nincs szükség további hardverre<br>Könnyen használható, ha a felhasználó elhagyja a vállalatot |Felhasználók kell jelentkeznie számítási feladatok felhőben való hozzáféréskor <br> Előfordulhat, hogy jelszavakat, és nem lehet azonos a felhőalapú és helyszíni identitások |
+| **Felhőbeli identitások** |Könnyebben kezelhető kis szervezet számára. <br> Semmit nem kell telepítenie a helyszínen. Nincs szükség további hardverre<br>Könnyen használható, ha a felhasználó elhagyja a vállalatot |Felhasználók kell jelentkeznie számítási feladatok felhőben való hozzáféréskor <br> Előfordulhat, hogy jelszavakat, és nem lehet azonos a felhőalapú és helyszíni identitások |
 | **Szinkronizálva** |A helyszíni jelszóval hitelesíti, mind a helyszíni, mind a felhőbeli könyvtárak <br>Könnyebben kezelhető a kis, közepes vagy nagy szervezetek <br>Az egyes erőforrások felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br> A szinkronizálás Microsoft előnyben részesített módszer <br> Könnyebben kezelhető |Egyes felhasználók is vonakodhatnak annak a címtárak szinkronizálása a felhővel adott vállalat rendőrségi miatt |
 | **Összevont** |Felhasználók rendelkezhetnek egyszeri bejelentkezés (SSO) <br>Ha a felhasználó le van állítva, vagy hagyja, a fiók azonnal letiltható, és hozzáférés visszavonása esetén<br> Támogatja a speciális forgatókönyveket, amelyek nem végezhető el szinkronizálva |További lépések beállítása és konfigurálása <br> Magasabb karbantartás <br> További hardverre lehet szükség az STS-infrastruktúra <br> Az összevonási kiszolgáló telepítése további hardverre lehet szükség. További szoftverek szükség, ha az AD FS szolgál <br> Széles körű beállítása szükséges az egyszeri bejelentkezés <br> Kritikus pont hiba, ha az összevonási kiszolgáló nem működik, felhasználók nem tudják hitelesíteni |
 
@@ -119,7 +121,7 @@ A szinkronizálás stratégia meghatározásakor a használt topológia kell meg
 
 Többerdős forgatókönyv
 
-Ha ez a helyzet, akkor a több-forest-egyetlen Azure AD-topológia kell tekinteni a következő elemek teljesülése esetén:
+Ha ez a helyzet, akkor az Többerdős egy Azure AD-topológia kell figyelembe venni, a következő elemek teljesülése esetén:
 
 * Felhasználók erdők csak 1 identitással rendelkezik – az egyedi azonosító az alábbi felhasználók a szakasz ismerteti, ez részletesebben.
 * A felhasználó hitelesíti magát az identitásukat a erdőt
@@ -155,7 +157,7 @@ Ehhez a következőket kell teljesülniük:
 * Egy DNS-tartomány csak egy regisztrálható az Azure AD-címtár úgy az UPN-EK a felhasználók a helyszíni AD különálló névterek kell használnia
 * Azure AD egy példányát a felhasználók csak tudnak tekintse meg a felhasználók a példányból.  Nem fogják látni a más esetekben a felhasználók
 * Csak az Azure AD-címtártól egyik engedélyezheti a helyszíni Exchange hibrid AD
-* Kölcsönös kizárólagosság késleltetve visszaírt is vonatkozik.  Így néhány késleltetve visszaírt funkció nem támogatott a topológia, mivel ezek feltételezik, hogy egyetlen helyszíni konfigurációt.  Ehhez a következőket:
+* Kölcsönös kizárólagosság késleltetve visszaírt is vonatkozik.  Így néhány késleltetve visszaírt funkció nem támogatott a topológia, mivel ezek feltételezik, hogy egyetlen helyszíni konfigurációt.  Az érintett műveletek közé tartoznak az alábbiak:
   * Késleltetve visszaírt csoport alapértelmezett konfigurációja
   * Eszköz késleltetve visszaírt
 

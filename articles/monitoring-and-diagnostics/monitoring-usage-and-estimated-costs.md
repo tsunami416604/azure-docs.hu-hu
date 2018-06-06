@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/31/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: 6cc35697573ae2997f289f67c7867d9c522149be
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4e6b3a2e8769c6e7e93071aed27b81c87ae336ca
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715557"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Használati és becsült költségei figyelése
 
@@ -106,3 +107,146 @@ A **díjszabási modell kiválasztása** oldal jelenik meg. Ez minden olyan elő
 ![Árképzési modellt kijelölés képernyőképe](./media/monitoring-usage-and-estimated-costs/007.png)
 
 Előfizetés áthelyezése az új árképzési modellt, egyszerűen jelölje be a jelölőnégyzetet, és válassza ki **mentése**. Áthelyezheti vissza a régebbi árképzési modellt azonos módon. Ne feledje, hogy az előfizetés tulajdonosa, vagy közreműködői engedélyekkel kell módosítani a árképzési modellt.
+
+## <a name="automate-moving-to-the-new-pricing-model"></a>Az új árképzési modellt áthelyezése automatizálásához
+
+Az alábbi parancsfájlok megkövetelése az Azure PowerShell modul. Ellenőrizze, hogy van-e a legújabb verzióra, tekintse meg a [telepítése Azure PowerShell modul](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+
+Miután az Azure PowerShell legújabb verzióját, akkor először futtatásához szükséges ``Connect-AzureRmAccount``.
+
+``` PowerShell
+# To check if your subscription is eligible to adjust pricing models.
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+```
+
+Alatt isGrandFatherableSubscription igaz eredménye azt jelzi, hogy áthelyezhető-e az előfizetés árképzési modellt közötti árképzési modellekkel. Egy értéket a optedInDate hiánya azt jelenti, hogy ez az előfizetés jelenleg a régi árképzési modellt van beállítva.
+
+```
+isGrandFatherableSubscription optedInDate
+----------------------------- -----------
+                         True            
+```
+
+Ez az előfizetés áttelepítéséhez az új árképzési modellt futtatása:
+
+```PowerShell
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action migratetonewpricingmodel `
+ -Force
+```
+
+Annak ellenőrzéséhez, hogy a módosítás volt sikeres futtassa újra a műveletet:
+
+```PowerShell
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+```
+
+Ha az áttelepítés sikeres, az eredmény kell kinézni:
+
+```
+isGrandFatherableSubscription optedInDate                      
+----------------------------- -----------                      
+                         True 2018-05-31T13:52:43.3592081+00:00
+```
+
+A optInDate most tartalmaznak-e, ha ez az előfizetés léptetett be az új árképzési modelljével időbélyeget.
+
+Ha a régi árképzési modellt visszaválthat van szüksége, kell futtatni:
+
+```PowerShell
+ $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action rollbacktolegacypricingmodel `
+ -Force
+```
+
+Ha az előző parancsfájl, amely rendelkezik majd Újrafuttatja ``-Action listmigrationdate``, ekkor megjelenik egy üres optedInDate érték, amely jelzi, az előfizetés fizetési modell korábbi való hibát adott vissza.
+
+Ha több előfizetéssel rendelkezik, áttelepíteni kívánt, amely ugyanannak a bérlőnek a üzemeltetett létrehozhatja a saját variant kódrészletek, az alábbi parancsfájlok használata:
+
+```PowerShell
+#Query tenant and create an array comprised of all of your tenants subscription ids
+$TenantId = <Your-tenant-id>
+$Tenant =Get-AzureRMSubscription -TenantId $TenantId
+$Subscriptions = $Tenant.Id
+```
+
+Ellenőrizze, hogy ha a bérlő előfizetéseket jogosultak az új árképzési modellt, hogy futtathatja:
+
+```PowerShell
+Foreach ($id in $Subscriptions)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+}
+```
+
+Lehet, hogy a parancsfájl kifinomultabb további hozzon létre olyan parancsfájlt, amely három tömbök állít elő. Egy tömb áll, amely az összes előfizetés-azonosítók, amelyek ```isGrandFatherableSubscription``` igaz értékre kell beállítani, és optedInDate jelenleg nincs értéke. Egyetlen előfizetés jelenleg a új árképzési modellt a második tömbje. És egy harmadik tömb töltődik csak a bérlő előfizetés-azonosítók, amelyek nem abban az esetben jogosult a új árképzési modellt:
+
+```PowerShell
+[System.Collections.ArrayList]$Eligible= @{}
+[System.Collections.ArrayList]$NewPricingEnabled = @{}
+[System.Collections.ArrayList]$NotEligible = @{}
+
+Foreach ($id in $Subscriptions)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+$Result= Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+
+     if ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $False)
+     {
+     $Eligible.Add($id)
+     }
+
+     elseif ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $True)
+     {
+     $NewPricingEnabled.Add($id)
+     }
+
+     elseif ($Result.isGrandFatherableSubscription -eq $False)
+     {
+     $NotEligible.add($id)
+     }
+}
+```
+
+> [!NOTE]
+> Az előfizetések számától függően a fenti szkript időt is igénybe vehet néhány futtatásához. A .add() metódus használata miatt a PowerShell-ablakban fog echo növekvő értékek elemek minden tömb hozzáadása.
+
+Most, hogy az előfizetések a három tömbök osztható gondosan tekintse át az eredményeket. Érdemes lehet biztonsági másolatot készíteni a tömbök tartalmát ellenőrizze, hogy könnyen visszaállíthatja a módosításokat kell szeretné a jövőben. Ha úgy dönt, alakítsa át a jogosult előfizetések, amelyek jelenleg az új régi árképzési modelljével fizetési modell Ez a feladat most elvégezhetők a szeretne:
+
+```PowerShell
+Foreach ($id in $Eligible)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action migratetonewpricingmodel `
+ -Force
+}
+
+```

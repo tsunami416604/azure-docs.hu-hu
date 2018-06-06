@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Active Directory hibrid identitáskezelési tervezési szempontok - lépések |} Microsoft Docs"
-description: "Egy összegzést és mindenképpen olvassa el a hibrid Identitáskezelés – kialakítási szempontokat útmutató követő lépések"
-documentationcenter: 
+title: Az Azure Active Directory hibrid identitáskezelési tervezési szempontok - lépések |} Microsoft Docs
+description: Egy összegzést és mindenképpen olvassa el a hibrid Identitáskezelés – kialakítási szempontokat útmutató követő lépések
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 02d48768-ea9e-4bfe-ae54-b54c4bd0a789
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29c045af81134847321d9ef69943f0154e9ee5a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e63df0832431ddc1502ab7b07c60c8d4abf59ac4
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801490"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Az Azure Active Directory hibrid identitáskezelési kialakítási szempontok-következő lépések
 Most, hogy befejezte a követelmények meghatározását és megvizsgálta az összes lehetséges mobileszköz-kezelési megoldást, készen áll a következő lépésekre jogot az Ön és szervezete támogató infrastruktúra üzembe helyezéséhez.
@@ -46,6 +48,6 @@ A következő források követésével gyakran a legújabb híreket biztosít, �
 * [Microsoft System Center Configuration Manager blog](http://blogs.technet.com/b/configurationmgr/)
 * [Microsoft System Center Configuration Manager munkacsoportjának blogja](http://blogs.technet.com/b/configmgrteam/)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 [Kialakítási szempontok áttekintése](active-directory-hybrid-identity-design-considerations-overview.md)
 

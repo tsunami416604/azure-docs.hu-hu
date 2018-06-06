@@ -1,8 +1,8 @@
 ---
-title: "Másolja, vagy helyezze át az adatok Azure Storage az AzCopy Windows |} Microsoft Docs"
-description: "Windows-segédprogram az AzCopy segítségével áthelyezi vagy másolja az adatokat, vagy a blob, table és a fájl. Adatok másolása az Azure Storage a helyi fájlokból, vagy másolja az adatokat belül vagy tárfiókok között. Adatok áttelepítése egyszerű Azure Storage."
+title: Másolja, vagy helyezze át az adatok Azure Storage az AzCopy Windows |} Microsoft Docs
+description: Windows-segédprogram az AzCopy segítségével áthelyezi vagy másolja az adatokat, vagy a blob, table és a fájl. Adatok másolása az Azure Storage a helyi fájlokból, vagy másolja az adatokat belül vagy tárfiókok között. Adatok áttelepítése egyszerű Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
@@ -12,22 +12,34 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/17/2018
 ms.author: seguler
-ms.openlocfilehash: 13e09a3081c9dfa2d88625489a82c687d6722f20
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 430979cf197138a9e239eba74e50e9f97d96cbf6
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757604"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Adatátvitel az AzCopy a Windows rendszeren
-AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, a fájl és a tábla tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Másolhat adatokat a fájlrendszer és a storage-fiók, vagy tárfiókok között.  
+AzCopy egy parancssori segédprogram, és a Microsoft Azure Blob, a fájl és a tábla tárolási, adat másolása az optimális teljesítményének készült egyszerű parancsok használatával. Az adatokat egy fájlrendszer és egy tárfiók, illetve több tárfiók között is másolhatja.  
 
-AzCopy, letöltheti a két verziója van. AzCopy a Windows a .NET-keretrendszer épül, és ez biztosítja a Windows stílus parancssori kapcsolókat. [AzCopy Linux](storage-use-azcopy-linux.md) épül, a .NET Core keretprogram, amelyik ajánlat POSIX-stílusú parancssori kapcsolók Linux platformon célozza. Ez a cikk a Windows AzCopy ismerteti.
+AzCopy, letöltheti a két verziója van. Windows AzCopy parancssori lehetőséget kínál a Windows stílusát. [AzCopy Linux](storage-use-azcopy-linux.md) ajánlat POSIX-stílusú parancssori kapcsolók Linux platformon célozza. Ez a cikk a Windows AzCopy ismerteti.
 
 ## <a name="download-and-install-azcopy-on-windows"></a>Töltse le és telepítse az AzCopy Windows rendszeren
 
-Töltse le a [Windows AzCopy legújabb verzióját](http://aka.ms/downloadazcopy).
+### <a name="latest-preview-version-v800"></a>Legújabb előzetes verziójával (v8.0.0)
+Töltse le a [az AzCopy Windows a legújabb előzetes verziójával](http://aka.ms/downloadazcopypr). Jelen előzetes verziójában teljesítményének jelentős növelése és a csomagok .NET Core telepítésében kínál.
+
+#### <a name="azcopy-on-windows-80-preview-release-notes"></a>AzCopy a Windows 8.0-s Preview kibocsátási megjegyzései
+- A legújabb verzió a TABLE szolgáltatás már nem támogatott. Tábla exportálása szolgáltatását használja, ha a stabil verzió letöltéséhez.
+- .NET Core 2.1-val készült, és minden .NET Core függőség most már a telepítés vannak csomagolva.
+- Teljesítményének jelentős növelése egyaránt le- és feltöltése forgatókönyvek
+
+### <a name="latest-stable-version-v710"></a>Legújabb stabil verzióját (v7.1.0)
+Töltse le a [Windows AzCopy legújabb stabil verziójának](http://aka.ms/downloadazcopy).
+
+### <a name="post-installation-step"></a>Telepítés utáni lépés
 
 Miután telepítette a AzCopy a Windows, a telepítő használatával, nyisson meg egy parancsablakot, és keresse meg az AzCopy telepítési könyvtárára a számítógép - ha a `AzCopy.exe` végrehajtható található. Ha szükséges, az AzCopy telepítési hely a fájlrendszerbeli elérési is hozzáadhat. Alapértelmezés szerint AzCopy telepítés `%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy` vagy `%ProgramFiles%\Microsoft SDKs\Azure\AzCopy`.
 
@@ -136,7 +148,7 @@ Töltse fel a blobok AzCopy használatával számos módon vizsgáljuk meg.
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:key /Pattern:"abc.txt"
 ```
 
-Ha a megadott célhely tároló nem létezik, az AzCopy létrehozása, és a fájlt tölt be.
+Ha a célként megadott tároló nem létezik, az AzCopy létrehozza, majd feltölti a fájlt a tárolóba.
 
 ### <a name="upload-a-single-blob-to-a-virtual-directory"></a>Egy virtuális könyvtárat egy blob feltöltése
 
@@ -288,7 +300,7 @@ Töltse le a fájlokat a AzCopy számos módon vizsgáljuk meg.
 AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/myfolder1/ /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
 ```
 
-Ha a megadott forrás egy Azure-fájlmegosztás, akkor meg kell adnia a fájl pontos nevét (*pl.* `abc.txt`) egyetlen fájl letöltéséhez vagy beállítást adja meg `/S` a megosztás rekurzív módon található összes fájl letöltéséhez. Adjon meg egy fájl mintát és a beállítás próbál `/S` hiba együtt eredményez.
+Ha a megadott forrás az Azure fájlmegosztások, akkor meg kell adnia a fájl pontos nevét (*pl.* `abc.txt`) egyetlen fájl letöltéséhez vagy beállítást adja meg `/S` a megosztás rekurzív módon található összes fájl letöltéséhez. Adjon meg egy fájl mintát és a beállítás próbál `/S` hiba együtt eredményez.
 
 ### <a name="download-all-files-in-a-directory"></a>A könyvtárban található összes fájl letöltése
 
@@ -298,7 +310,7 @@ AzCopy /Source:https://myaccount.file.core.windows.net/myfileshare/ /Dest:C:\myf
 
 Vegye figyelembe, hogy a rendszer nem tölti le üres mappák.
 
-## <a name="upload-files-to-an-azure-file-share"></a>Fájlok feltöltése az Azure-fájlmegosztásra
+## <a name="upload-files-to-an-azure-file-share"></a>Fájlok feltöltése az Azure fájlmegosztások
 
 Töltse fel az AzCopy használatával számos módon vizsgáljuk meg.
 
@@ -324,7 +336,7 @@ AzCopy /Source:C:\myfolder /Dest:https://myaccount.file.core.windows.net/myfiles
 
 ## <a name="copy-files-in-file-storage"></a>A File storage a fájlok másolása
 
-Fájlok másolása egy Azure fájlmegosztás AzCopy használatával számos módon vizsgáljuk meg.
+Fájlok másolása az Azure fájlmegosztások AzCopy használatával számos módon vizsgáljuk meg.
 
 ### <a name="copy-from-one-file-share-to-another"></a>Egy fájlmegosztás másolása a másikba
 
@@ -333,14 +345,14 @@ AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:http
 ```
 Amikor fájlmegosztások között másolhat egy fájlt egy [kiszolgálóoldali másolatot](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) művelet.
 
-### <a name="copy-from-an-azure-file-share-to-blob-storage"></a>A Blob storage egy Azure fájlmegosztás másolása
+### <a name="copy-from-an-azure-file-share-to-blob-storage"></a>Az Azure fájlmegosztások átmásolhatja Blob-tároló
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
 ```
 Amikor másolhat egy fájlt a blobra, fájlmegosztásról egy [kiszolgálóoldali másolatot](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) művelet.
 
-### <a name="copy-a-blob-from-blob-storage-to-an-azure-file-share"></a>A blob másolása a Blob storage egy Azure fájlmegosztás
+### <a name="copy-a-blob-from-blob-storage-to-an-azure-file-share"></a>A Blob storage blob másolása az Azure fájlmegosztások
 
 ```azcopy
 AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
@@ -610,6 +622,20 @@ Akkor is futtatható táblák:
 AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /SourceKey:key /SourceType:Table
 ```
 
+### <a name="automatically-determine-content-type-of-a-blob"></a>Automatikusan meghatározni a BLOB tartalom típusa
+
+AzCopy tartalomtípusa egy blobot, amely tárolja a bővítmény fájlhozzárendelést tartalomtípus JSON-fájl alapján határozza meg. A JSON-fájl neve AzCopyConfig.json, és az AzCopy könyvtárban található. Ha még nem szerepel a listában fájltípust fűzheti a leképezés a JSON-fájlba:
+
+```
+{
+  "MIMETypeMapping": {
+    ".myext": "text/mycustomtype",
+    .
+    .
+  }
+}
+```     
+
 ## <a name="azcopy-parameters"></a>AzCopy paraméterek
 
 AzCopy paramétereinek az alábbiakban található. Is beírhatja a Súgó a parancssorból a következő parancsok egyikét az AzCopy segítségével:
@@ -624,7 +650,7 @@ Megadja a forrás adatait, amelynek be kell másolni. A forrás lehet egy fájl 
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="destdestination"></a>/Dest:"destination"
+### <a name="destdestination"></a>/ Cél: "cél"
 
 Megadja azt a helyet, másolja. A cél lehet fájl rendszer könyvtár, egy blob-tároló, egy blob virtuális könyvtár, egy tárolói fájlmegosztást, egy tárolási könyvtárának vagy egy Azure-tábla.
 
@@ -690,7 +716,7 @@ Megadja, hogy a cél blob egy blokkblob, oldalakra vonatkozó blob vagy hozzáf�
 
 **Alkalmazandó:** Blobok
 
-### <a name="checkmd5"></a>/CheckMD5
+### <a name="checkmd5"></a>/ CheckMD5
 
 Kiszámítja az MD5 kivonatoló letöltött adatok, és ellenőrzi, hogy a blob tárolja az MD5 kivonatoló vagy a fájl Content-MD5 tulajdonsága egyezést mutat a kiszámított kivonatát. Az MD5-ellenőrzése ki van kapcsolva, alapértelmezés szerint, meg kell adnia ezt a beállítást, végezze el az MD5 ellenőrzését, amikor az adatok letöltése.
 
@@ -736,7 +762,7 @@ Vegye figyelembe, hogy a Folytatás, az AzCopy egy korábbi verziójával létre
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="parameter-file"></a>/@:"parameter-file"
+### <a name="parameter-file"></a>/@:"Parameter-File"
 
 Megadja a paramétereket tartalmazó fájlt. AzCopy dolgozza fel a paramétereket a fájlt a, mintha csak a parancssorban megadott lett.
 
@@ -754,7 +780,7 @@ Letiltja az összes AzCopy megerősítést kér. Ezt a lehetőséget is lehetőv
 
 **Alkalmazandó:** blobokat, fájlok, táblák
 
-### <a name="l"></a>/L
+### <a name="l"></a>/ L
 
 Megadja a listázási művelet csak; adatot nem másolódik.
 
@@ -789,7 +815,7 @@ Csak a Archiválandó fájlok feltöltését.
 
 **Alkalmazandó:** Blobok, fájlok
 
-### <a name="iarashcnetoi"></a>/IA:[RASHCNETOI]
+### <a name="iarashcnetoi"></a>/ IA: [RASHCNETOI]
 
 Csak a megadott attribútumok közül bármelyik rendelkező fájlok feltöltését.
 
@@ -853,13 +879,13 @@ Megadja, hogy a `source` erőforrás elérhető a helyi fejlesztési környezetb
 
 **Alkalmazandó:** Blobok, táblák
 
-### <a name="desttypeblob--table"></a>/DestType:"Blob" | "Table"
+### <a name="desttypeblob--table"></a>/ DestType: "Blob" |} "Table"
 
 Megadja, hogy a `destination` erőforrás elérhető a helyi fejlesztési környezetben, a storage emulator-beli blob.
 
 **Alkalmazandó:** Blobok, táblák
 
-### <a name="pkrskey1key2key3"></a>/ PKRS: "key&#1;key&#2;key&#3;..."
+### <a name="pkrskey1key2key3"></a>/ PKRS: "key1 #key2 #key3 #..."
 
 Felosztja a tábla adatexportálási párhuzamosan, ami növeli az exportálási művelet sebességének engedélyezése kulcs partíciótartomány.
 
@@ -875,7 +901,7 @@ Egyes műveletek exportálja egy három partíció kulcstartományokkal, alább 
 
 **Alkalmazandó:** táblák
 
-### <a name="splitsizefile-size"></a>/SplitSize:"file-size"
+### <a name="splitsizefile-size"></a>/ SplitSize: "fájl mérete"
 
 Itt adhatja meg az exportált fájlt, osztott mérete MB-ban, a minimális megengedett érték 32.
 
@@ -943,10 +969,6 @@ AzCopy rendelkező fájlokat vagy a BLOB másolása esetén vegye figyelembe, ho
 
 A blobok vagy a fájlok írása közben másolja őket, hogy más alkalmazások nem megakadályozása, majd vegye figyelembe, hogy az idő, a feladat befejeződik, a másolt erőforrások már nincs a forrás-erőforrások teljes paritás.
 
-### <a name="run-one-azcopy-instance-on-one-machine"></a>Futtassa az AzCopy egy példány egy számítógépen.
-
-AzCopy célja, hogy felgyorsítsa az adatok átvitele a gép erőforrás-felhasználás, azt javasoljuk, hogy csak egy AzCopy példány egy számítógépen futtatja, és adja meg a beállítást `/NC` Ha több egyidejű műveletek van szüksége. További tudnivalókért írja be a `AzCopy /?:NC` a parancssorból.
-
 ### <a name="enable-fips-compliant-md5-algorithms-for-azcopy-when-you-use-fips-compliant-algorithms-for-encryption-hashing-and-signing"></a>Az MD5 FIPS előírásainak megfelelő algoritmusok engedélyezése az AzCopy amikor Ön "FIPS előírásainak megfelelő algoritmusok használata titkosításhoz, kivonatoláshoz és aláíráshoz."
 
 AzCopy alapértelmezés szerint a .NET-MD5 végrehajtása használatával kiszámítja az MD5, objektumok másolásakor, de olyan biztonsági követelményekkel, amelyeket AzCopy FIPS előírásainak megfelelő MD5 beállításnak az engedélyezéséhez szükség van.
@@ -969,15 +991,15 @@ Alapértelmezés szerint a Windows a FIPS előírásainak megfelelő algoritmuso
 
 ## <a name="next-steps"></a>További lépések
 
-Azure Storage és AzCopy kapcsolatos további információkért lásd a következőket:
+További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatokat a következő erőforrások nyújtanak:
 
 ### <a name="azure-storage-documentation"></a>Az Azure Storage-dokumentáció:
-* [Az Azure Storage bemutatása](../storage-introduction.md)
+* [A Microsoft Azure Storage bemutatása](../storage-introduction.md)
 * [A .NET-Blob-tároló használata](../blobs/storage-dotnet-how-to-use-blobs.md)
 * [File storage .NET használata](../storage-dotnet-how-to-use-files.md)
 * [A Table storage a .NET használatával](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [Tárfiókok létrehozása, kezelése vagy tárfiók törlése](../storage-create-storage-account.md)
-* [Adatátvitel az AzCopy Linux rendszeren](storage-use-azcopy-linux.md)
+* [Adatok áthelyezése az AzCopyval Linux rendszeren](storage-use-azcopy-linux.md)
 
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage blogbejegyzések:
 * [Introducing Azure Storage adatátviteli könyvtár megtekintés](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)

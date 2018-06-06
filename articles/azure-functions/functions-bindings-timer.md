@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: a8844ea44bf604944c5980b0d41ab5d01a30b876
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4da1ed4e9424950c39f3eb255ead2b39094597fd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725445"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő indítófeltételt 
 
@@ -29,13 +30,17 @@ Ez a cikk ismerteti, hogyan használható az Azure Functions időzítő esemény
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Csomagok
+## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
 
-Az időzítő indítófeltételt megtalálható a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub-tárházban.
+Az időzítő indítófeltételt megtalálható a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag verziója 2.x. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+
+Az időzítő indítófeltételt megtalálható a [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet-csomag verziója 3.x. A csomag forráskódja van a [azure-webjobs-sdk-bővítmények](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Példa
 
@@ -214,6 +219,8 @@ Minden mező a következő típusú értékek egyike lehet:
 |Az értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 x *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén minden perce minden órában (3-szor perc)|
 |Az intervallum értéke (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00, hh:10:00, hh:15:00, és így tovább keresztül hh:55:00, ahol az ÓÓ az óránként (12-szer egy óra)|
 
+Adja meg a hónap és nap segítségével hárombetűs rövidítések numerikus érték helyett. Például használjanak Jan január vagy Sun vasárnap.
+
 ### <a name="cron-examples"></a>CRON példák
 
 Az alábbiakban néhány olyan CRON kifejezéseket is használhat az Azure Functions időzítő eseményindítót.
@@ -272,7 +279,7 @@ Ha több függvény alkalmazások között megosztott tárfiókot, győződjön 
 
 ## <a name="retry-behavior"></a>Újrapróbálási viselkedés
 
-Várólista eseményindító eltérően az időzítő indítófeltételt nem után próbálja megismételni a parancs nem működik. Ha nem sikerül egy olyan függvényt, azt is't nevű újra, amíg az ütemezés.
+Várólista eseményindító eltérően az időzítő indítófeltételt nem után próbálja megismételni a parancs nem működik. Amikor egy függvény sikertelen, nincs meghívta addig, amíg újra az ütemezés.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,9 +1,9 @@
 ---
-title: Privileged Identity Management az Azure-erőforrások - kiterjesztése, és szerepkörök megújítása |} Microsoft Docs
+title: Kiterjesztése, és tekintse át a szerepkörök az Azure-erőforrások Privileged Identity Management használatával |} Microsoft Docs
 description: Ez a dokumentum ismerteti, hogyan bővítheti és újítsa meg az Azure erőforrás-szerepkörök PIM erőforrások.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 editor: mwahl
 ms.service: active-directory
@@ -12,120 +12,121 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2547b3793688eb51a4114f30bfcf61a9402f2cd2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f152b2dd690976b31a34046954440dc848e5952c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699529"
 ---
-# <a name="privileged-identity-management---resource-roles---extend-or-renew"></a>Privileged Identity Management - szerepkör erőforrás - kiterjesztése vagy megújítása
+# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Kiterjesztése, és tekintse át a szerepkörök az Azure-erőforrások Privileged Identity Management használatával
 
-Az Azure-erőforrások PIM vezet be az új szabályozza a hozzáférést és a hozzárendelés életciklusa Azure-erőforrások kezeléséhez. A rendszergazdák rendelhet tagság kezdő és záró dátum idejű tulajdonságainak használata. Amikor megközelíti a hozzárendelés célból, PIM e-mail értesítéseket küld az érintett tagok (Ez lehet egy felhasználó vagy csoport), és a rendszergazdák számára, az erőforrás biztosítják-megfelelő hozzáféréssel. Abban az esetben, ha hozzáférést tétlenség miatt nincs kibővítve, a hozzárendelések megújíthatja és is látható maradjon, lejárt állapotban akár 30 napig.
+Privileged Identity Management (PIM) az Azure-erőforrások vezet be az új szabályozza a hozzáférést és a hozzárendelés életciklusa Azure-erőforrások kezeléséhez. A rendszergazdák rendelhet tagság kezdő és záró dátum idejű tulajdonságainak használata. Amikor megközelíti a hozzárendelés célból, PIM e-mail értesítéseket küld az érintett felhasználók vagy csoportok. A rendszergazdák az erőforrás kell biztosítják, hogy megfelelő hozzáférési e-mail értesítést is küld. Hozzárendelések előfordulhat, hogy meg kell újítani, és látható akár 30 napig lejárt állapotban maradnak, még akkor is, ha nincs kibővítve a hozzáférés.
 
 ## <a name="who-can-extend-and-renew"></a>Kik kiterjesztése és megújításához?
 
-Az erőforrás csak rendszergazdák kiterjeszthetik vagy szerepkör-hozzárendelések megújításához. Az érintett tag kérheti kiterjesztése szerepkörök lejár, és szerepkörök kérelem megújítási már lejárt.
+Az erőforrás csak rendszergazdák kiterjeszthetik vagy szerepkör-hozzárendelések megújításához. Az érintett tag kiterjesztése, amely lejár, és a szerepköröket, amelyek már lejárt kérnie szerepkörök kérhet.
 
 ## <a name="when-are-notifications-sent"></a>Amikor értesítések a küldenek?
 
-PIM értesítő e-mailek küld a rendszergazdák és az érintett tagokat a szerepkörök lejárta előtt egy nappal 14 napon belül lejár. Egy további e-mailt küld, amikor hozzárendelés hivatalosan lejárt. 
+PIM értesítő e-mailek küld a rendszergazdák és az érintett tagok szerepkörök lejárta előtt egy nappal 14 napon belül lejár. Hozzárendelés hivatalosan lejártakor további e-mailt küld. 
 
-Rendszergazdák értesítést kapjon, amikor egy lejáró vagy lejárt szerepkör tagjának vagy megújítása igényel. Egy adott rendszergazda megoldja a kérelmet, ha az összes rendszergazda értesítést kap a feloldási döntési (jóváhagyása és elutasítása), és taggal értesítést kap a döntést. 
+Rendszergazdák értesítést kapjon, amikor egy lejáró vagy lejárt szerepkör tagjának vagy megújítása igényel. Egy adott rendszergazda megoldja a kérelmet, ha más rendszergazdák számára a feloldási döntési (elfogadhat vagy elutasíthat) értesítést kap. Majd a kérést küldő tagot értesítést kap a döntést. 
 
 ## <a name="extend-role-assignments"></a>Szerepkör-hozzárendelések kiterjesztése
 
-Az alábbi lépéseket helyzeteit vázolják fel, a lépések és a felhasználói felület kért, megoldása vagy egy kiterjesztés vagy a szerepkör-hozzárendelés megújítása felügyelete részt. 
+Az alábbi lépéseket vázoltuk kér, megoldása vagy egy bővítmény vagy szerepkör-hozzárendelés megújítása felügyel. 
 
-### <a name="member-extend"></a>Tag kiterjesztése
+### <a name="member-extend"></a>Tagbővítés
 
-Szerepkör-hozzárendelés tagjai kérhet terjessze ki a szerepkör-hozzárendelések lejáró közvetlenül a "Jogosult" vagy "Aktív" fülre, a "Saját szerepkörök" lapon erőforrás és a legfelső szintű a szerepkörök a PIM portál. Tagok kérhetnek kiterjesztése jogosult és az aktív (hozzárendelt) szerepkörök, a következő 14 nap múlva lejár.
+Szerepkör-hozzárendelés tagjai kiterjesztheti lejáró szerepkör-hozzárendelések közvetlenül a **jogosult** vagy **Active** lapján a **a szerepkörök** erőforrás és a legfelső szintű lap **a szerepkörök** a PIM portál lapján. Tagok kérhetnek kiterjesztése jogosult és az aktív (hozzárendelt) szerepkörök, a következő 14 nap múlva lejár.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_ui.png)
+![Szerepkörök kiterjesztése](media/azure-pim-resource-rbac/aadpim_rbac_extend_ui.png)
 
-Amikor a hozzárendelés záró dátum-idő 14 napon belül, a "Bővítése" gombra lesz aktív hivatkozások a felhasználói felületen. Az alábbi példában fel, hogy az aktuális dátum: március 27.
+A hozzárendelés záró dátum-idő esetén 14 napon belül, a gombra kattintva **bővítése** válik a felhasználói felületen az aktív kapcsolat. A következő példában fel, hogy az aktuális dátum: március 27.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![A "Bővítése" gombra](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
-Igényelni ehhez a szerepkörhöz kiterjesztése hozzárendelés kattintson a "Bővítése" az űrlap megnyitásához.
+Egy bővítmény a szerepkör-hozzárendelés kérte, jelölje be **bővítése** az űrlap megnyitásához.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_role_assignment_request.png)
+![Nyissa meg az űrlap](media/azure-pim-resource-rbac/aadpim_rbac_extend_role_assignment_request.png)
 
-Bontsa ki a "hozzárendelés részletei" az eredeti hozzárendelés adatainak megtekintésére. Adja meg a bővítmény kérés okát, majd kattintson a "Bővítése".
+Az eredeti hozzárendelés adatainak megtekintésére, bontsa ki a **hozzárendelés részletei**. Adja meg a bővítmény kérés okát, majd válassza ki **bővítése**.
 
 >[!Note]
->Azt javasoljuk, hogy a részletes, miért szükség a bővítményt, és mennyi ideig a bővítmény kell (amennyiben ismert).
+>Azt javasoljuk, hogy a részletes, miért szükség a bővítményt, és mennyi ideig a teljesíteni kell (ha ezek az információk).
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_form_complete.png)
+![Szerepkör-hozzárendelés kiterjesztése](media/azure-pim-resource-rbac/aadpim_rbac_extend_form_complete.png)
 
-Pár perc múlva, az erőforrás-rendszergazdák azok tekintse át a bővítmény kérelem kérő e-mailben értesítést fog kapni. Már elküldte a kérelmet, ha egy bejelentési értesítést az Azure portál, amely ismerteti, hogy a hiba a lap tetején fog megjelenni.
+Pár perc múlva erőforrás-rendszergazdák kap egy e-mail értesítést kér, akkor tekintse át a bővítmény kérelem. Ha már elküldte a kérelmet, egy bejelentési értesítést az Azure portál, amely ismerteti, hogy a hiba tetején jelenik meg.
 
 ![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
-Látogasson el a "függőben lévő kérelmek" fülre a bal oldali navigációs menü állapotának megtekintéséhez, vagy megszakítja a kérést.
+Lépjen a **függőben lévő kérelmek** lapon a bal oldali ablaktáblán, a kérelem állapotának megtekintéséhez, vagy megszakítja a műveletet.
 
 ![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>Rendszergazda jóváhagyása
 
-Tag kérést küld egy szerepkör-hozzárendelés kiterjesztése, amikor a erőforrás-rendszergazdák az eredeti hozzárendelésének és az OK, a kérelmező adja részleteit tartalmazó e-mailben értesítést kapni. Az értesítés a kérelmet jóváhagyja vagy elutasítja a rendszergazda egy közvetlen hivatkozást tartalmaz. 
+Tag kérést küld egy szerepkör-hozzárendelés kiterjesztése, amikor a erőforrás-rendszergazdák az eredeti hozzárendelést és a kérés okát részleteit tartalmazó e-mailben értesítést kapni. Az értesítés a kérelmet jóváhagyja vagy elutasítja a rendszergazda egy közvetlen hivatkozást tartalmaz. 
 
-A rendszergazdák mellett a következő hivatkozásra az e-mailben, jóváhagyhatja vagy megtagadja a hozzáférést a PIM felügyeleti portál megnyitásával, majd válassza a "Jóváhagyás kérelmek" a bal oldali navigációs menü kérelmek.
+Mellett az e-mailben a hivatkozást követve, a rendszergazdák jóváhagyása vagy megtagadja a hozzáférést a PIM felügyeleti portál és a választ a kérelmek **kérelmek jóváhagyása** a bal oldali ablaktáblán.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
+![Képernyőkép a hiba](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
-Amikor a rendszergazda jóváhagyása és a letiltott alkalmazások itt az a kérelmek részleteit számára jelennek meg mező mellett adja meg a felügyeleti naplók indokát.
+Ha a rendszergazda itt **jóváhagyás** vagy **Megtagadás**, a kérelem részletes adatait látható, adja meg a felügyeleti naplók indokát mező mellett.
 
 ![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
-Ha a szerepkör-hozzárendelés kiterjeszteni kérelem jóváhagyását, erőforrás rendszergazdák kiválaszthatják, új kezdő és záró dátum-idő és a hozzárendelés-típus. Hozzárendelés típusa lehet szükség, ha a rendszergazda korlátozott hozzáférést biztosít egy adott feladat (például egy nap) végezze el. Ebben a példában a rendszergazda módosíthatja a hozzárendelés jogosult az aktív, a kérelmező hozzáférést biztosító anélkül, hogy azok aktiválásához.
+Ha a szerepkör-hozzárendelés kiterjeszteni kérelem jóváhagyását, erőforrás-rendszergazdák kiválaszthatják, egy új kezdési dátuma, a befejezési dátum és a hozzárendelés-típus. Hozzárendelés-típus módosítása lehet szükséges, ha a rendszergazda szeretne végrehajtani egy adott feladatot (egy nap, a példában), korlátozott hozzáférést biztosítanak. Ebben a példában a rendszergazda módosíthatja a hozzárendelés **jogosult** való **aktív**. Ez azt jelenti, hogy azok hozzáférést biztosíthat a kérelmező anélkül, hogy azok aktiválásához.
 
-### <a name="admin-extend"></a>Felügyeleti kiterjesztése
+### <a name="admin-extend"></a>Rendszergazdai kiterjesztés
 
-Abban az esetben egy szerepkör tagjának elfelejti, vagy nem tudja befejezni a szerepkör tagsági bővítmény rendszergazda meghosszabbíthatja nevében tag értékadás. Szerepköri tagság a felügyeleti bővítményei nem jóváhagyás megkövetelése, de a rendszer értesítéseket küld, amely a szerepkör létrehozása után más rendszergazdákat.
+Ha elfelejti szerepkör tagja, vagy nem tudja befejezni a szerepkör tagsági bővítmény, a rendszergazda kiterjesztheti a tag nevében értékadás. Szerepköri tagság a felügyeleti bővítményei nem jóváhagyás megkövetelése, de a rendszer értesítéseket küld más rendszergazdák után a szerepkör megtörtént-e.
 
-Egy szerepkör kiterjeszteni tagsági PIM a erőforrás szerepkör vagy a tag nézet megnyitása. Található a kiterjesztés igénylő, majd kattintson a "Bővítése" művelet oszlopában.
+A szerepköri tagság kiterjesztéséhez tallózással keresse meg az erőforrás-szerepkör vagy a tag a PIM nézetben. A bővítmény igénylő tag található. Válassza ki **bővítése** művelet oszlopában.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_extend.png)
+![A szerepköri tagság kiterjesztése](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_extend.png)
 
 ## <a name="renew-role-assignments"></a>Újítsa meg a szerepkör-hozzárendelések
 
-Fogalmilag hasonló, amíg a folyamat egy lejárt szerepkör-hozzárendelés megújításához eltér bővítmény igénylő tagok és a rendszergazdák számára. Az alábbi tagokat és a rendszergazdák lépéseket követve megújíthatják a hozzáférés a lejárt szerepkörökhöz szükség esetén.
+A folyamatot a kért bővítmény fogalmilag hasonló, amíg a folyamat egy lejárt szerepkör-hozzárendelés megújítása nem azonos. Az alábbi lépéseket követve, tagok és a rendszergazdák megújíthatják lejárt szerepkörökhöz szükség esetén a hozzáférést.
 
 ### <a name="member-renew"></a>Tag megújítása
 
-Már nem tud hozzáférni az erőforrásokhoz tagjai férhetnek hozzá akár 30 napig lejárt hozzárendelési előzményei saját szerepkörök navigáljon a bal oldali navigációs a PIM, majd válassza a "Szerepkörök lejárt" fülre az Azure-erőforrás szerepkörök szakaszban.
+Akár 30 napig lejárt hozzárendelési előzményei már nem tud hozzáférni az erőforrásokhoz tagjai férhetnek hozzá. Ehhez az szükséges, hogy tallózással **saját szerepkörök** a bal oldali ablaktáblán, majd válassza ki a **szerepkörök lejárt** lap az Azure-erőforrás szerepkörök szakaszában.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
+![A "Szerepkörök lejárt" lap](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
 
-Az alapértelmezett érték a jogosult hozzárendelések látható szerepkörök listája. A legördülő jogosult közötti váltáshoz használja, és aktív szerepkört.
+Az alapértelmezett érték látható szerepkörök listája **jogosult szerepkörök**. A legördülő menü segítségével jogosult és a felelős szerepkörök között.
 
-A listában válassza ki a "Megújítási" műveletet a szerepkör-hozzárendelések bármelyikéhez kéri, és adja meg a kérés okát. Akkor célszerű mellett minden további környezetre, amely segítségére lesz az erőforrás rendszergazda úgy dönt, hogy jóváhagyásához vagy elutasításához időtartamot.
+A szerepkör-hozzárendelések a listában szereplő bármely kéri, válassza ki a **megújítási** művelet. Adja meg a kérés okát. Akkor célszerű mellett minden további környezetre, amely segít a erőforrás rendszergazda úgy dönt, hogy jóváhagyásához vagy elutasításához időtartamot.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_renew_request_form.png)
+![Újítsa meg a szerepkör-hozzárendelés](media/azure-pim-resource-rbac/aadpim_rbac_renew_request_form.png)
 
-A kérelem elküldése után erőforrás-Rendszergazdák szerepkör-hozzárendelés megújításához függőben lévő kérelem értesítést kap.
+Miután elküldte a kérést, erőforrás-Rendszergazdák szerepkör-hozzárendelés megújításához függőben lévő kérelem értesítést kap.
 
 ### <a name="admin-approves"></a>Rendszergazda jóváhagyása
 
-Erőforrás-rendszergazdák érhetik el a tanúsítványmegújítási kérelmet a hivatkozásra az e-mail értesítés vagy PIM elérése a Auzre portálról, majd válassza a "Jóváhagyás kérelmek" bal oldali navigációs menüjében.
+Erőforrás-rendszergazdák érhetik el a tanúsítványmegújítási kérelmet a hivatkozás vagy PIM elérése az Azure-portálon, majd válassza az e-mail értesítés **kérelmek jóváhagyása** a bal oldali ablaktáblán.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
+![Kérések jóváhagyása](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
-Amikor a rendszergazda jóváhagyása és a letiltott alkalmazások itt az a kérelmek részleteit számára jelennek meg mező mellett adja meg a felügyeleti naplók indokát.
+Ha a rendszergazda itt **jóváhagyás** vagy **Megtagadás**, a kérelem részletes adatait arra, hogy a felügyeleti naplók indokát mező mellett látható.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
+![Hagyja jóvá a szerepkör-hozzárendelés](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
-Szerepkör-hozzárendelés megújításának kéréséhez jóváhagyásakor erőforrás rendszergazdák adjon meg egy új kezdő és záró dátum-idő és a hozzárendelés típusa. 
+Szerepkör-hozzárendelés megújításának kéréséhez jóváhagyásakor erőforrás rendszergazdák adjon meg egy új kezdési dátuma, a befejezési dátum és a hozzárendelés-típus. 
 
-### <a name="admin-renew"></a>Újítsa meg a rendszergazda
+### <a name="admin-renew"></a>Rendszergazdai megújítás
 
-Erőforrás-rendszergazdák megújíthatják a tagok lapon, a bal oldali navigációs menü erőforrás, vagy lejárt szerepkör-hozzárendelések erőforrás szerepkör lejárt szerepkörök fülre.
+Erőforrás-rendszergazdák megújíthatják a lejárt szerepkör-hozzárendelések a **tagok** a bal oldali navigációs menü erőforrás fülre. Azokat a lejárt szerepkör-hozzárendelések belül is megújíthatják a **lejárt** szerepkörök lapon olyan erőforrás-szerepkörhöz.
 
-A tagok képernyő lejárt szerepkörök összes lejárt szerepkör-hozzárendelések listájának megtekintéséhez jelölje ki.
+Megtekintheti az összes szerepkör-hozzárendelések, lejárt ezen a **tagok** képernyőn válassza ki **szerepkörök lejárt**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_member_blade.png)
+![Lejárt szerepkörök](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_member_blade.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713184"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -36,7 +38,7 @@ Az Azure Active Directory azonosító adatok védelmét lehetővé teszi az Azur
 
 A Microsoft felhőalapú Identitások biztonságossá teszi a több mint egy évtizedben. Az Azure Active Directory azonosító adatok védelmét a környezetben, használhatja a Microsoft használja a biztonságos identitások azonos védelmi rendszerek.
 
-A biztonsági problémák többsége kerül sor, amikor a támadók hozzáférést egy olyan környezetben a felhasználók személyazonossága ellopása. Az évek során a támadók egyre hatékony, a harmadik féltől származó megszegése követését és kifinomult adathalász támadások használatával lettek. Amint a támadó hozzáfér még az alacsony szintű jogosultságokkal rendelkező felhasználói fiókok, is viszonylag egyszerűen azokat a fontos vállalati erőforrásokra oldalirányú mozgás keresztül.
+A biztonsági problémák többsége kerül sor, amikor a támadók hozzáférést egy olyan környezetben a felhasználók személyazonossága ellopása. Az évek során a támadók egyre hatékony külső megszegése követését és kifinomult adathalász támadások használatával lettek. Amint a támadó hozzáfér még az alacsony szintű jogosultságokkal rendelkező felhasználói fiókok, is viszonylag egyszerűen azokat a fontos vállalati erőforrásokra oldalirányú mozgás keresztül.
 
 Ennek következtében kell:
 
@@ -206,7 +208,7 @@ A kapcsolódó felhasználói szolgáltatások áttekintését lásd:
 
 - A a **Azure AD Identity Protection** panelen, a a **konfigurálása** kattintson **bejelentkezési kockázat házirendnek**.
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1014.png "felhasználói ridk házirend")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1014.png "felhasználói kockázat házirendnek")
 
 
 
@@ -306,25 +308,25 @@ A kapcsolódó párbeszédpanel a jelszó alaphelyzetbe állítása két külön
 ### <a name="user-risk-security-policy"></a>Felhasználói kockázat biztonsági házirend
 A felhasználó kockázati biztonsági házirend egy feltételes hozzáférési szabályzatot, amely kiértékeli a kockázati szintjét egy adott felhasználónak és előre meghatározott feltételt és a szabályok alapján a szervizelés és a megoldás műveleteket hajt végre.
 
-![Felhasználói ridk házirend](./media/active-directory-identityprotection/1009.png "felhasználói ridk házirend")
+![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1009.png "felhasználói kockázat házirendnek")
 
 Az Azure AD Identity Protection segítségével felügyelheti a megoldás és a szervizelés azáltal, hogy kockázat megjelölt felhasználók:
 
 * Állítsa be a felhasználókat és csoportokat a házirend vonatkozik:
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1010.png "felhasználói ridk házirend")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1010.png "felhasználói kockázat házirendnek")
 * Állítsa be a felhasználó kockázati szint küszöbértéke (alacsony, közepes vagy magas), amely elindítja a házirend:
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1011.png "felhasználói ridk házirend")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1011.png "felhasználói kockázat házirendnek")
 * A vezérlők kényszeríthető, amikor elindítja a házirend beállítása:
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1012.png "felhasználói ridk házirend")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1012.png "felhasználói kockázat házirendnek")
 * Váltás a házirend állapotát:
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/403.png "MFA-regisztráció")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/403.png "MFA-regisztráció")
 * Tekintse át, és milyen hatással bír a változtatás előtt aktiválás kiértékelése:
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1013.png "felhasználói ridk házirend")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1013.png "felhasználói kockázat házirendnek")
 
 Válassza a **magas** küszöbérték csökkenti a szám, ahányszor egy házirendet elindul, és minimalizálja a felhasználók számára.
 Azonban nem tartalmazza **alacsony** és **Közepes** veszélyt a szabályzatot, amely előfordulhat, hogy nem biztonságos identitások vagy eszközöket, amelyek a megjelölt felhasználók korábban gyanús vagy megsértik ismert.
@@ -347,7 +349,7 @@ A kapcsolódó felhasználói szolgáltatások áttekintését lásd:
 
 - A a **Azure AD Identity Protection** panelen, a a **konfigurálása** kattintson **felhasználói kockázat házirendnek**.
 
-    ![Felhasználói ridk házirend](./media/active-directory-identityprotection/1009.png "felhasználói ridk házirend")
+    ![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1009.png "felhasználói kockázat házirendnek")
 
 ### <a name="mitigating-user-risk-events"></a>Felhasználói kockázati események orvoslása
 Rendszergazdák állíthat be egy felhasználó kockázat biztonsági házirend felhasználók blokkolása után bejelentkezhet attól függően, hogy a kockázati szintjét.
@@ -366,7 +368,7 @@ Azt javasoljuk, hogy az Azure többtényezős hitelesítés a felhasználói bej
 * Erős hitelesítés, könnyen ellenőrzési lehetőségek széles kézbesíti
 * A szervezet védelme és helyreállítása fiók biztonság sérüléseinek kulcsfontosságú szerepet játszik
 
-![Felhasználói ridk házirend](./media/active-directory-identityprotection/1019.png "felhasználói ridk házirend")
+![Felhasználói kockázat házirendnek](./media/active-directory-identityprotection/1019.png "felhasználói kockázat házirendnek")
 
 További részletekért lásd: [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md)
 

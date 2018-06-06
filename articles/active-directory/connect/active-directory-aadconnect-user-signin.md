@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 968636848b9cba9c0976aa366952e56838623cc4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698815"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Az Azure AD Connect felhasználói bejelentkezés lehetőségei
 Az Azure Active Directory (Azure AD) Connect lehetővé teszi, hogy a felhasználókat, hogy jelentkezzen be a felhő- és a helyszíni erőforrásokhoz ugyanazt a jelszót. Ez a cikk ismerteti az alapvető fogalmakat minden identitás modell segítségével válassza ki az Azure AD bejelentkezés használni kívánt identitását.
@@ -47,6 +49,8 @@ Győződjön meg arról, hogy a jelszavak nélkül a felhőben vannak tárolva.|
 A helyi multi-factor Authentication hitelesítés megoldások engedélyezése.|||x|
 
 * Segítségével egy lightweight ügynök.
+
+A hitelesítési módszer részletes információkért lásd: [válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás](../../security/azure-ad-choose-authn.md)
 
 ### <a name="password-hash-synchronization"></a>Jelszókivonat szinkronizálása
 Jelszókivonat-szinkronizálást, a kivonatokat a felhasználói jelszavak rendszer szinkronizálja a helyszíni Active Directoryból az Azure AD. Jelszavak módosulnak, és az újraindítás a helyszíni, az új jelszó kivonatok szinkronizálva az Azure AD azonnal, hogy a felhasználók mindig használhatja ugyanazt a jelszót a felhőben található erőforrásokat és a helyszíni erőforrások. A jelszavak soha nem küld az Azure AD vagy az Azure AD-szövegként tárolt. Jelszókivonat-szinkronizálást együtt jelszóvisszaírás segítségével engedélyezheti az önkiszolgáló jelszó-változtatási Azure AD-ben.

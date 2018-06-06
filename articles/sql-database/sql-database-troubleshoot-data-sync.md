@@ -3,17 +3,18 @@ title: Az Azure SQL adatszinkronizálás (előzetes verzió) hibaelhárítása |
 description: További tudnivalók az Azure SQL adatszinkronizálás (előzetes verzió) kapcsolatos gyakori hibák elhárítása.
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757536"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Problémák az SQL adatszinkronizálás (előzetes verzió)
 
@@ -224,7 +225,7 @@ Frissítse az ügynök jelszó a jelenlegi kiszolgáló jelszavát:
 4. A **SQL adatszinkronizálás (előzetes verzió) Preview tulajdonságai**, jelölje be a **jelentkezzen be** fülre.
 5. Az a **jelszó** mezőbe írja be a jelszót.
 6. Az a **jelszó megerősítése** mezőbe írja be újból a jelszót.
-7. Válassza ki **alkalmaz**, majd válassza ki **OK**.
+7. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
 8. Az a **szolgáltatások** ablak, kattintson a jobb gombbal a **SQL adatszinkronizálás (előzetes verzió) ügynök Preview** szolgáltatásra, és kattintson a **Start**.
 9. Zárja be a **szolgáltatások** ablak.
 
@@ -240,9 +241,8 @@ Mielőtt folytatná, ellenőrizze az alábbi feltételek:
 
 -   Az SQL adatszinkronizálás (előzetes verzió) Windows-szolgáltatás fut.  
 -   A szolgáltatási fiók SQL adatszinkronizálás (előzetes verzió) Preview Windows-szolgáltatás hálózati hozzáfér.    
--   Az ügyfélügynök is képes kapcsolódni a lokátor szolgáltatást. Ellenőrizze, hogy a következő beállításkulcs értéke https://locator.sync.azure.com/LocatorServiceApi.svc:  
-    -   Egy x86 a számítógép: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   Egy x64 a számítógép: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   A kimenő 1433-as port meg nyitva, a helyi tűzfalszabályban.
+-   A helyi ip-kiszolgálóhoz vagy a szinkronizálási metaadatokat tároló adatbázis az adatbázishoz tartozó tűzfalszabály kerül.
 
 #### <a name="cause"></a>Ok
 
@@ -384,7 +384,7 @@ Megadja a naplófájl---a-szolgáltatásként hitelesítő adatok a felhasznál�
 1. Ugrás a **Start** > **vezérlőpultot** > **felügyeleti eszközök** > **helyi biztonsági házirend**  >  **Helyi házirend** > **felhasználó tartalomvédelem**.
 2. Válassza ki **jelentkezzen be a szolgáltatás**.
 3. Az a **tulajdonságok** párbeszédpanel mezőben adja meg a felhasználói fiók.
-4. Válassza ki **alkalmaz**, majd válassza ki **OK**.
+4. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
 5. Zárjon be minden ablakot.
 
 ### <a name="a-database-has-an-out-of-date-status"></a>Egy adatbázis állapota "Elavult"
@@ -444,7 +444,7 @@ SQL adatszinkronizálás (előzetes verzió) kapcsolatos további információk�
 -   [Ajánlott eljárások az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-best-practices-data-sync.md)  
 -   [A figyelő az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési](sql-database-sync-monitor-oms.md)  
 -   Teljes PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás (előzetes verzió):  
-    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)  
+    -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Az SQL adatszinkronizálás (előzetes verzió) REST API-dokumentáció letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 

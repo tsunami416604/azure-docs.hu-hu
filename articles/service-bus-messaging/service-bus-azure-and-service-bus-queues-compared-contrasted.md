@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/08/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0b9a79919a63056bbc17e44ef0da3697001d227f
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802356"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási sorok és a Service Bus-üzenetsorok - képest és ellentétben
 Ez a cikk elemzi a különbségek és a Microsoft Azure által kínált ma várólisták kétféle Hasonlóságok: tárolási sorok és a Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -47,7 +48,6 @@ Megoldás felelős mérnök vagy fejlesztők **érdemes használni a Service Bus
 
 * A megoldás fogadhat üzeneteket, és kérdezze le a várólista nélkül kell lennie. A Service busszal, ez elérhető révén a hosszú lekérdezési fogadási művelethez, az TCP-alapú protokoll, amely támogatja a Service Bus használatával.
 * A megoldáshoz szükségesek a várólistában, adja meg a garantált első-a-first-(FIFO) rendelt kézbesítését.
-* Azt szeretné, hogy egy szimmetrikus tapasztalattal az Azure-ban és a Windows Server (magánfelhő). További információkért lásd: [Service Bus Windows Server](https://msdn.microsoft.com/library/dn282144.aspx).
 * A megoldás ismétlődő automatikus felderítésének támogatásához képesnek kell lennie.
 * Az alkalmazás folyamat üzenetek párhuzamos hosszan futó adatfolyamokként (üzenetek társítva egy adatfolyam használata a [munkamenet-azonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) az üzenetben tulajdonság). Ebben a modellben minden csomópontja a fogyasztó alkalmazás sávszélességen adatfolyamok üzenetek szemben. Amikor egy felhasználó csomópont rendelkezésére áll az adatfolyam, a csomópont ellenőrizheti az alkalmazás adatfolyam állapotot tranzakciók állapotának.
 * A megoldás szükséges tranzakciós viselkedését és atomicity küldésekor vagy fogadásakor több üzenetet az üzenetsorból.
@@ -65,7 +65,7 @@ Az alábbi szakaszokban található táblázatokat adja meg a várólista szolg�
 ## <a name="foundational-capabilities"></a>Eligazodást képességek
 Ez a szakasz néhány olyan tárolási sorok és a Service Bus-üzenetsorok által biztosított alapvető üzenetsor-kezelési funkciója hasonlítja össze.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus által kezelt üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
 | --- | --- | --- |
 | Rendezés növekvő |**Nem** <br/><br>További információkért lásd: első Megjegyzés a "További információk" című részét.</br> |**Igen – első-First Out (FIFO)**<br/><br>(révén üzenetkezelési munkamenetek) |
 | Garantált kézbesítés |**A legalább egyszeri** |**A legalább egyszeri**<br/><br/>**A legtöbb-visszaküldést** |
@@ -97,7 +97,7 @@ Ez a szakasz néhány olyan tárolási sorok és a Service Bus-üzenetsorok ált
 ## <a name="advanced-capabilities"></a>Speciális képességek
 Ez a szakasz a tárolási sorok és a Service Bus-üzenetsorok által biztosított speciális képességek hasonlítja össze.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus által kezelt üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
 | --- | --- | --- |
 | Ütemezett kézbesítését |**Igen** |**Igen** |
 | Automatikus halott levelek kezelése |**Nem** |**Igen** |
@@ -128,17 +128,17 @@ Ez a szakasz a tárolási sorok és a Service Bus-üzenetsorok által biztosíto
 ## <a name="capacity-and-quotas"></a>Kapacitás és a kvóták
 Ez a szakasz összehasonlítja tárolási sorok és a Service Bus-üzenetsorok szempontjából [kapacitás és a kvóták](service-bus-quotas.md) , amely előfordulhat, hogy érvényes.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus által kezelt üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
 | --- | --- | --- |
 | A várólista maximális hossza |**500 TB**<br/><br/>(csak egy [tárfiókok kapacitásával egyetlen](../storage/common/storage-introduction.md#queue-storage)) |**1 GB-os 80 GB**<br/><br/>(a várólista létrehozása után definiált és [particionálás engedélyezése](service-bus-partitioning.md) – a "További információk" című rész) |
-| Maximális méret |**64 KB**<br/><br/>(48 KB használatakor **Base64** kódolás)<br/><br/>Azure nagy üzeneteket is támogatja üzenetsorokat és blobokat – ekkor is sorba helyezni a kombinálásával legfeljebb 200 GB-ot csak egy elemet. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve a fejléc és a szövegtörzset, maximális fejléc mérete: 64 KB).<br/><br/>Függ a [szolgáltatásréteg](service-bus-premium-messaging.md). |
+| Maximális üzenetméret |**64 KB**<br/><br/>(48 KB használatakor **Base64** kódolás)<br/><br/>Azure nagy üzeneteket is támogatja üzenetsorokat és blobokat – ekkor is sorba helyezni a kombinálásával legfeljebb 200 GB-ot csak egy elemet. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve a fejléc és a szövegtörzset, maximális fejléc mérete: 64 KB).<br/><br/>Függ a [szolgáltatásréteg](service-bus-premium-messaging.md). |
 | Maximális üzenet TTL tulajdonsága |**Végtelen** (az api-version 2017-07-27) |**TimeSpan.Max** |
 | Sorok maximális száma |**Korlátlan** |**10,000**<br/><br/>(egyes szolgáltatásnévtér) |
 | Egyidejű ügyfelek maximális száma |**Korlátlan** |**Korlátlan**<br/><br/>(100 egyidejű kapcsolat korlátai csak vonatkozik a TCP protokoll-alapú kommunikációt) |
 
 ### <a name="additional-information"></a>További információ
 * A Service Bus várólista méretkorlátait érvénybe lépteti. A várólista maximális hossza a várólista létrehozásakor van megadva, és értéke 1 és 80 GB közötti lehet. A várólista létrehozása a várólista mérete értéke elérésekor, további bejövő üzenetek vissza kell utasítani, és a kivételt a hívó kód fogadja. A Service Bus kvóták kapcsolatos további információkért lásd: [Service Bus kvóták](service-bus-quotas.md).
-* Az a [Standard csomagra](service-bus-premium-messaging.md), 1, 2, 3, 4 vagy 5 GB méretű (az alapértelmezett érték 1 GB-os) a Service Bus-üzenetsorok is létrehozhat. A prémium szinten lévő várólistákat is létrehozhat és 80 GB-nál. A Standard szint, a particionálás engedélyezve (utóbbi az alapértelmezett érték), a Service Bus 16 partíciók hoz létre minden egyes megadott GB. Így, ha létrehoz egy sort, amely 5 GB-nál, 16 partíciókat a várólista maximális hossza válik (5 * 16) = 80 GB. Megjelenik a particionált üzenetsor vagy témakör maximális mérete alapján a bejegyzés a [Azure-portálon][Azure portal]. A prémium csomagban csak 2 partíció / várólista jönnek létre.
+* Particionálás nem támogatja a [prémium csomagban](service-bus-premium-messaging.md). A normál rétegben a Service Bus-üzenetsorok (az alapértelmezett érték 1 GB-os), 1, 2, 3, 4 vagy 5 GB méretű is létrehozhat. A Standard szint, a particionálás engedélyezve (utóbbi az alapértelmezett érték), a Service Bus 16 partíciók hoz létre minden egyes megadott GB. Így, ha létrehoz egy sort, amely 5 GB-nál, 16 partíciókat a várólista maximális hossza válik (5 * 16) = 80 GB. Megjelenik a particionált üzenetsor vagy témakör maximális mérete alapján a bejegyzés a [Azure-portálon][Azure portal].
 * Tárolási sorok, ha az üzenet tartalma nem XML-biztonságos, majd azt kell **Base64** kódolású. Ha Ön **Base64**-kódolni az üzenetet, a felhasználó hasznos lehet akár 48 KB 64 KB-os helyett.
 * A Service Bus-üzenetsorok, az egyes üzeneteket tárolja a sorhoz két részből áll: egy fejléc és a szervezet. Az üzenet teljes mérete nem haladhatja meg a szolgáltatási réteg által támogatott maximális méretét.
 * Ha az ügyfelek a TCP protokollon keresztül kommunikálnak a Service Bus-üzenetsorok, egy Service Bus-üzenetsorral létesített egyidejű kapcsolatok maximális számának korlátozódik 100. Ez a szám megosztott küldők és a fogadók között. Ez a kvóta elérésekor, további kapcsolatokat későbbi kérelmek vissza kell utasítani, és egy kivételt a hívó kód fogadja. Ezt a határt nem írják elő a REST-alapú API-jával várólistákhoz csatlakozó ügyfelek.
@@ -171,7 +171,7 @@ Ez a szakasz a tárolási sorok és a Service Bus-üzenetsorok által nyújtott 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 Ez a szakasz ismerteti tárolási sorok és a Service Bus-üzenetsorok által támogatott hitelesítési és engedélyezési szolgáltatásokat.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus által kezelt üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
 | --- | --- | --- |
 | Hitelesítés |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
 | Biztonsági modell |Delegált hozzáférést SAS-tokenje keresztül. |SAS |

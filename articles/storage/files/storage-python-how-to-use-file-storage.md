@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Files Python kialakított |} Microsoft Docs"
-description: "Ismerje meg, hogyan fejleszthet Python-alkalmazások és adatok tárolásához Azure-fájlokat használó szolgáltatásokat."
+title: Az Azure Files Python kialakított |} Microsoft Docs
+description: Ismerje meg, hogyan fejleszthet Python-alkalmazások és adatok tárolásához Azure-fájlokat használó szolgáltatásokat.
 services: storage
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738261"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Az Azure Files Python kialakított
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -27,9 +28,9 @@ ms.lasthandoff: 12/08/2017
 
 Ez az oktatóanyag a Python segítségével alkalmazásokat és szolgáltatásokat fájl adatok tárolásához Azure-fájlokat használó alapjait mutatni. Ebben az oktatóanyagban a rendszer egyszerű Konzolalkalmazás létrehozása és bemutatják, hogyan Azure fájlokat és Python alapszintű műveletek végrehajtása:
 
-* Az Azure fájlmegosztások létrehozása
+* Az Azure fájlmegosztások létrehozását
 * Könyvtárak létrehozása
-* Fájlok és könyvtárak egy Azure fájlmegosztás számbavétele
+* Fájlok és könyvtárak az Azure fájlmegosztások számbavétele
 * Töltse fel, töltse le és törölje a fájlt
 
 > [!Note]  
@@ -83,8 +84,8 @@ Tárolási tegyen alkönyvtárat így ahelyett hogy ezek a gyökérkönyvtárban
 file_service.create_directory('myshare', 'sampledir')
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak egy Azure fájlmegosztás számbavétele
-Kilistázhatja a fájlok és könyvtárak olyan megosztáson található, a **lista\_könyvtárak\_és\_fájlok** metódust. Ez a módszer egy generátor adja vissza. A következő kimenetek kódot a **neve** minden fájl és a könyvtár egy megosztáson található, a konzolhoz.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak az Azure fájlmegosztások számbavétele
+Kilistázhatja a fájlok és könyvtárak olyan megosztáson található, a **lista\_könyvtárak\_és\_fájlok** metódust. A metódus egy generátort ad vissza. A következő kimenetek kódot a **neve** minden fájl és a könyvtár egy megosztáson található, a konzolhoz.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -93,11 +94,11 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>Fájl feltöltése 
-A megosztás tartalmaz legalább az Azure File, egy gyökérkönyvtár fájlokat tároló is. Ebben a szakaszban megtudhatja, hogyan feltölteni a fájlt a helyi tároló megosztás gyökérkönyvtárában alakzatot.
+Azure-fájlmegosztáshoz tartalmaz legalább, egy gyökérkönyvtár fájlokat tároló is. Ebben a szakaszban megtudhatja, hogyan feltölteni a fájlt a helyi tároló megosztás gyökérkönyvtárában alakzatot.
 
 Hozzon létre egy fájlt, és feltölteni az adatokat, használja a `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` vagy `create_file_from_text` módszerek. Hajtsa végre a szükséges adattömbösítő, ha az adatok mérete meghaladja a 64 MB magas szintű módszerek.
 
-`create_file_from_path`feltölt egy fájlt a megadott elérési és `create_file_from_stream` feltölt egy már megnyitott fájl vagy adatfolyam tartalmát. `create_file_from_bytes`Bájttömb, feltölti és `create_file_from_text` feltölti az adott szöveges értéket a megadott kódolás (alapértelmezett értéke UTF-8) használatával.
+`create_file_from_path` feltölt egy fájlt a megadott elérési és `create_file_from_stream` feltölt egy már megnyitott fájl vagy adatfolyam tartalmát. `create_file_from_bytes` Bájttömb, feltölti és `create_file_from_text` feltölti az adott szöveges értéket a megadott kódolás (alapértelmezett értéke UTF-8) használatával.
 
 Az alábbi példa feltölti a tartalmát a **sunset.png** fájlt a **saját_fájl** fájlt.
 
@@ -178,7 +179,7 @@ Nem lehet törölni a pillanatképeket tartalmazó megosztásra, kivéve, ha a p
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte how Azure Python konfigurál, ezeket hivatkozásokat követve tudhat meg többet.
 
 * [Python fejlesztői központ](/develop/python/)

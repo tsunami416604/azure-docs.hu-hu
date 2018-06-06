@@ -1,20 +1,21 @@
 ---
-title: Gyakori kérdések – Azure Active Directory B2C-vel
-description: Azure Active Directory B2C-vel kapcsolatos gyakori kérdések (GYIK)
+title: Gyakori kérdések az Azure Active Directory B2C |} Microsoft Docs
+description: Gyakori kérdések (GYIK) kapcsolatos Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: B2C
+ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710732"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -118,7 +119,7 @@ Kövesse az alábbi lépéseket az Azure AD B2C-bérlő törlése:
 4. Jelölje ki minden egyes felhasználó bekapcsolása (zárja ki a előfizetési rendszergazda felhasználó, akkor jelenleg felhasználóként van bejelentkezve). Kattintson a **törlése** a lapon, majd kattintson az alsó **Igen** megjelenésekor.
 5. Kattintson a **App regisztrációk**.
 6. Válassza ki a nevű alkalmazás **b2c-bővítmények-alkalmazás**. Kattintson a **törlése** kattintson **Igen** megjelenésekor.
-7. Válassza ki **áttekintése**.
+7. Válassza az **Áttekintés** lehetőséget.
 8. Kattintson a **Delete directory**. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Az Azure AD B2C nagyvállalati mobilitási csomag részeként szerezhető?

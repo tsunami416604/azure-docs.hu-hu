@@ -4,28 +4,29 @@ description: Az Azure (nagy példányok) SAP HANA használandó kapcsolat szüks
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4741cf306aed1c86be1bc4b54fb961383e2f70bd
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763765"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>SAP HANA (nagy példányok) infrastruktúra és az Azure-kapcsolat 
 
 Néhány definíciók előzetes megfizetése esetén ez az útmutató olvasása előtt. A [SAP HANA (nagy példányok) – áttekintés és Azure architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) HANA nagy példány egység, amelyek két különböző osztályú bevezetett azt:
 
-- S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" lesz az SKU.
-- S384, S384m, S384xm, S576m, S768m és S960m, amely a "típusú class" SKU lesz az.
+- S72, S72m, S144, S144m, S192, S192m és S192xm, amely a "Type i. osztály" lesz az SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm és S960m, amely a "típusú class" SKU lesz az.
 
 Az osztály kulcsszavak használatával a HANA nagy példány dokumentációban végül tekintse meg a különböző képességeket és a követelmények alapján HANA nagy példány termékváltozatok fog.
 
@@ -213,7 +214,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 Ebben a példában a HighPerformance gateway SKU lett megadva. Az alábbi lehetőségek állnak HighPerformance vagy UltraPerformance csak átjáróként termékváltozatok SAP Hana Azure (nagy példányok) támogatott.
 
 > [!IMPORTANT]
-> Az SKU nagy példányai HANA meg kell adnia S384, S384m, S384xm, S576m, S768m és S960m (típusú osztály termékváltozatok), az átjáró-Termékváltozat UltraPerformance használatát megadása kötelező.
+> A típus II classs SKU előfordulását nagy HANA az átjáró-Termékváltozat UltraPerformance használatát megadása kötelező.
 
 ### <a name="linking-vnets"></a>Hivatkozási Vnetek
 

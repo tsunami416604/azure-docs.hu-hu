@@ -1,24 +1,25 @@
 ---
-title: "Nagy sűrűségű üzemeltetésének Azure App Service szolgáltatásban |} Microsoft Docs"
-description: "Nagy sűrűségű üzemeltetésének Azure App Service"
+title: Nagy sűrűségű üzemeltetésének Azure App Service szolgáltatásban |} Microsoft Docs
+description: Nagy sűrűségű üzemeltetésének Azure App Service
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 22/01/2018
+ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: 2ffffd3cc9f5c59f74f71d6d7d31c5ea615d11f4
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 8bdf62ce70929c583b59b91e5f1e7c520376120b
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735812"
 ---
 # <a name="high-density-hosting-on-azure-app-service"></a>Nagy sűrűségű üzemeltetésének Azure App Service
 App Service használata esetén a rendszer leválasztja az alkalmazást a két fogalom által lefoglalt kapacitás:
@@ -54,9 +55,9 @@ New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePla
 
 Ha azt szeretné, a szolgáltatás használatához egy meglévő App Service-csomag frissítése: 
 
-- a cél terv beolvasása```Get-AzureRmAppServicePlan```
-- helyileg a tulajdonság módosítása```$newASP.PerSiteScaling = $true```
-- a módosításokat vissza az Azure-bA küldése```Set-AzureRmAppServicePlan``` 
+- a cél terv beolvasása ```Get-AzureRmAppServicePlan```
+- helyileg a tulajdonság módosítása ```$newASP.PerSiteScaling = $true```
+- a módosításokat vissza az Azure-bA küldése ```Set-AzureRmAppServicePlan``` 
 
 ```
 # Get the new App Service Plan and modify the "PerSiteScaling" property.

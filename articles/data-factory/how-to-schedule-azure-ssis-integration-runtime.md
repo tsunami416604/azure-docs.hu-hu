@@ -10,17 +10,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 05/18/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: douglasl
-ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8eeed91da3942d00bbab17a2dffc4b4e888a6f70
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725108"
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
-Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)). Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Ebben a cikkben leírt magas szintű lépései a következők:
+Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)).
+
+Például hozzon létre egy Azure Automation PowerShell runbook webhookok webes tevékenységek, és a közöttük hajtható végre SSIS-csomag tevékenység láncolt. A webes tevékenységek elindíthatók és leállíthatók az Azure-SSIS-IR JIT előtt, és a csomag futtatása után. SSIS-csomag hajtható végre tevékenységével kapcsolatos további információk: [futtassa egy SSIS-csomagot a SSIS-tevékenység használata az Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md).
+
+## <a name="overview-of-the-steps"></a>Lépéseinek áttekintése
+
+Ebben a cikkben leírt magas szintű lépései a következők:
 
 1. **Hozzon létre, és egy Azure Automation-runbook tesztelése.** Ebben a lépésben a parancsfájl, amely elindítja vagy leállítja egy Azure SSIS infravörös létrehozhat egy PowerShell-forgatókönyv Ezt követően tesztelje a forgatókönyvet a KEZDŐ- és a LEÁLLÍTÁSI forgatókönyvek, és győződjön meg arról, hogy IR elindul vagy leáll. 
 2. **Hozzon létre két ütemezések a runbookhoz.** Az első ütemezés konfigurálnia a runbook indítása a művelet. A második ütemezés beállítása a runbook le a műveletet. Mindkét ütemezéseket akkor adja meg a ütemben történik, amelyen a runbook futtatása. Érdemes lehet például az első sablon kiválasztásával 8 órakor futtatása naponta, és a második futtatását, hogy a mindennapi 23 óra ütemezni. Amikor az első runbook fut, az Azure SSIS infravörös megkezdése A második runbook futtatása, leállítja az Azure SSIS infravörös 
@@ -73,11 +80,11 @@ Ha egy Azure Automation-fiók nem rendelkezik, hozzon létre ebben a lépésben 
 
     ![A szükséges modulokat ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  A PowerShell-galériában navigáljon a [AzureRM.DataFactoryV2 0.5.2 modul](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2), jelölje be **központi telepítése az Azure Automation**, az Automation-fiók, majd válassza ki és **OK**. Megtekintéséhez lépjen vissza **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és várjon, amíg megjelenik a **állapot** , a **AzureRM.DataFactoryV2 0.5.2**  modul módosítás **elérhető**.
+2.  A PowerShell-galériában navigáljon a [AzureRM.DataFactoryV2 modul](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/), jelölje be **központi telepítése az Azure Automation**, az Automation-fiók, majd válassza ki és **OK**. Megtekintéséhez lépjen vissza **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és várjon, amíg megjelenik a **állapot** , a **AzureRM.DataFactoryV2** modul módosítás **elérhető**.
 
     ![A Data Factory modul ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  A PowerShell-galériában navigáljon a [AzureRM.Profile 4.5.0 modul](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0), kattintson a **központi telepítése az Azure Automation**, az Automation-fiók, majd válassza ki és **OK**. Megtekintéséhez lépjen vissza **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és várjon, amíg megjelenik a **állapot** , a **AzureRM.Profile 4.5.0** modul módosítás **elérhető**.
+3.  A PowerShell-galériában navigáljon a [AzureRM.Profile modul](https://www.powershellgallery.com/packages/AzureRM.profile/), kattintson a **központi telepítése az Azure Automation**, az Automation-fiók, majd válassza ki és **OK**. Megtekintéséhez lépjen vissza **modulok** a a **megosztott erőforrások** a bal oldali menü szakaszt, és várjon, amíg megjelenik a **állapot** , a **AzureRM.Profile**modul módosítás **elérhető**.
 
     ![A profil modul ellenőrzése](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
@@ -239,7 +246,7 @@ Létrehozott, és tesztelje a folyamatot, egy ütemezést létrehozni, és rende
  
    Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+       `Data factory name �MyAzureSsisDataFactory� is not available`
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
      
@@ -381,6 +388,9 @@ Most, hogy az adatcsatorna működik, ha Ön várt, létrehozhat egy eseményind
     ![Eseményindító-futtatások](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
 
 ## <a name="next-steps"></a>További lépések
+Tekintse meg a következő blogbejegyzésben található:
+-   [Korszerűsítésére és kiterjesztése a ETL/ELT munkafolyamatok SSIS-tevékenységek számára az ADF-folyamatok](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+
 Lásd az SSIS dokumentációjának alábbi cikkeit: 
 
 - [SSIS-csomag üzembe helyezése, futtatása és monitorozása az Azure-on](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   

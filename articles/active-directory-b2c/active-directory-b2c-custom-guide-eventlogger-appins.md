@@ -1,20 +1,21 @@
 ---
-title: Felhasználó viselkedésének nyomon eseményeket az Application Insights az Azure AD B2C használatával |} Microsoft Docs
+title: Felhasználó viselkedésének nyomon eseményeket az Application Insights az Azure Active Directory B2C használatával |} Microsoft Docs
 description: Részletes útmutató az Azure AD B2C felhasználói utak az Application Insightsban eseménynaplók engedélyezése egyéni házirendek (előzetes verzió) használatával
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
-ms.openlocfilehash: db9ba62cb6ef0d2627dbeb07cb8165a4ac7ae490
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709964"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Az Azure AD B2C útvonal be a felhasználó viselkedésének nyomon az Application Insights használatával
 
@@ -26,7 +27,7 @@ Az Azure Active Directory B2C Azure Application Insights jól működik (Azure A
 * Az Application Insights értesítések létrehozása
 
 > [!NOTE]
-> A funkció jelenleg előzetes verzió.
+> Ez a funkció előzetes verzióban érhető el.
 
 ## <a name="how-it-works"></a>Működés
 

@@ -7,14 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801653"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Az Azure verem diagnosztikai eszközök
 
@@ -140,7 +141,7 @@ if($s)
 
 - Ha a **FromDate** és **ToDate** paraméter nincs megadva, a naplók alapértelmezés szerint az elmúlt négy óra összegyűjtését.
 - Használhatja a **TimeOutInMinutes** paraméter segítségével állítsa be a lekérdezés időkorlátját. Alapértelmezés szerint a 150 (2,5 óra) érték.
-
+- 1805 és újabb verziójában memóriakép fájl naplógyűjtést alapértelmezés szerint le van tiltva. Az engedélyezéséhez használja a **IncludeDumpFile** paraméter váltani. 
 - Jelenleg, használhatja a **FilterByRole** paraméter szűrő napló gyűjteményhez a következő szerepkörök:
 
    |   |   |   |
@@ -150,7 +151,7 @@ if($s)
    | ACSFabric              | Tartomány                           | NonPrivilegedAppGateway    |
    | ACSFrontEnd            | ECE                              | NRP                        |
    | ACSMetrics             | ExternalDNS                      | OEM                        |
-   | ACSMigrationService    | Háló                           | PXE                        |
+   | ACSMigrationService    | Fabric                           | PXE                        |
    | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
    | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
    | ACSTableMaster         | FRP                              | SLB                        |   
@@ -184,7 +185,7 @@ További információt a ERCS_AzureStackLogs.ps1 PowerShell-parancsfájlt, figye
 * A parancs bizonyos idő alapján futtassa mely szerepkör(ök) gyűjti a naplókat. Tényezőkről is naplógyűjtést, és az Azure-verem környezete számait megadott időtartamot.
 * A log gyűjtemény fut, ellenőrizze az új mappa létrehozása a **OutputSharePath** a parancsban megadott paraméter.
 * Minden szerepkörhöz naplók belül egyedi zip fájlt. A gyűjtött naplók méretétől függően a szerepkör lehet osztani, több zip-fájl a naplók. Egy szerepkör egyetlen mappába a unzipped naplófájlok szeretne használni, ha egy is csomagolja ki egyszerre több (például 7zip) eszközt használja. Válassza ki a szerepkör összes zip fájlt, és válassza ki **kibontása Itt**. Ez unzips, egyetlen egyesített mappa szerepkörre a rendszernapló fájljaiban.
-* Fájl neve **Get-AzureStackLog_Output.log** zip naplófájlokat tartalmazó mappa is létrejön. A fájl a parancs kimenete, amely hibaelhárítás során naplógyűjtést esetén használható a naplófájlt.
+* Fájl neve **Get-AzureStackLog_Output.log** zip naplófájlokat tartalmazó mappa is létrejön. A fájl a parancs kimenete, amely hibaelhárítás során naplógyűjtést esetén használható a naplófájlt. Egyes esetekben a naplófájl tartalmazza `PS>TerminatingError` bejegyzéseket tartalmaz, amelyek biztonságosan figyelmen kívül hagyható, kivéve, ha hiányoznak a várt naplófájlok után jelentkezzen gyűjtemény futtatása.
 * Vizsgálja meg a hiba, naplók egynél több összetevő lehet szükség.
     -   Rendszer- és infrastruktúra virtuális gépeinek eseménynaplóiban keresse meg a rendszer gyűjti a *: VirtualMachines* szerepkör.
     -   Rendszer és minden állomás eseménynaplóiban keresse meg a rendszer gyűjti a *BareMetal* szerepkör.

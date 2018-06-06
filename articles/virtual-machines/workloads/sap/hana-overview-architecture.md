@@ -4,21 +4,22 @@ description: Architektúra áttekintése, amelyekkel telepítheti az SAP HANA Az
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/02/2018
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763782"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
@@ -67,8 +68,8 @@ Több, közös definíciók széles körben használt a architektúra és a műs
    Tartományi felhasználók a helyi tartomány fér hozzá a kiszolgálóhoz, és szolgáltatásokat futtatnak a virtuális gépek (például adatbázis-kezelő szolgáltatás). Virtuális gépek közötti kommunikációt és a névfeloldás telepítve a helyi és virtuális gépek Azure-telepített lehet. Ebben a forgatókönyvben jellemző, amelyben a legtöbb SAP eszközök vannak telepítve módja. További információkért lásd: [megtervezése és kialakítása az Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [webhelyek kapcsolattal rendelkező virtuális hálózat létrehozása az Azure portál használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Bérlői**: HANA nagy példány stamp telepített ügyfél lekérdezi elkülönített be egy *bérlő.* A bérlő elkülönül a hálózati, tárolási és számítási rétegét a többi bérlőtől. A különböző bérlők rendelt tárolási és számítási egység nem tekintse meg egymással, vagy a HANA nagy példány stamp szinten kommunikálnak egymással. Az ügyfél beállíthatja úgy a különböző bérlők történő központi telepítések. Nincs még akkor is ezt követően a HANA nagy stamp példányszintű a bérlők közötti kommunikáció.
 - **Termékváltozat-kategória**: A HANA nagy példány, a következő két kategóriájához SKU érhető el:
-    - **I. osztály típus**: S72, S72m, S144, S144m, S192 és S192m
-    - **Írja be a II osztály**: S384, S384m, S384xm, S576m, S768m és S960m
+    - **I. osztály típus**: S72, S72m, S144, S144m, S192, S192m és S192xm
+    - **Írja be a II osztály**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm és S960m
 
 
 A különböző további erőforrások állnak központi telepítése egy SAP munkaterhelés, a felhőben. Ha azt tervezi, egy SAP HANA központi telepítés végrehajtása az Azure-ban, kell lennie a jártasak és az Azure infrastruktúra-szolgáltatási és a központi telepítés SAP-munkaterhelések az Azure infrastruktúra-szolgáltatási tudomást. A folytatás előtt tekintse meg a [használata SAP megoldások Azure virtuális gépeken futó](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további információt. 
@@ -147,7 +148,10 @@ Től július 2017 SAP HANA Azure (nagy példányok) érhető el az Azure-régió
 |---| Az Azure S576m SAP HANA<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  12.0 TB |  28 TB | Elérhető |
 |---| Az Azure S768m SAP HANA<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  16,0 TB |  36 TB | Elérhető |
 |---| Az Azure S960m SAP HANA<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 Processzormagok és 960 CPU szálak |  20.0 TB |  46 TB | Elérhető |
-
+| Az OLTP optimalizált **TDIv5**: SAP Business csomag<br /> SAP HANA vagy az S/4HANA (OLTP)<br /> általános OLTP | Az Azure S192xm SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak |  6.0 TB |  16 TB | Elérhető |
+|---| Az Azure S384xxm SAP HANA<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  12.0 TB |  28 TB | Elérhető |
+|---| Az Azure S576xm SAP HANA<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  18.0 TB |  41 TB | Elérhető |
+|---| Az Azure S768xm SAP HANA<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  24,0 TB |  56 TB | Elérhető |
 - A Processzormagok = Processzormagok nem-többszálú a processzorok, a kiszolgáló egység összegére összege.
 - CPU szálak CPU-magokat többszálú a processzorok, a kiszolgáló egység összegére által biztosított számítási szálak számának összege, azaz =. Minden egység alapértelmezés szerint a Hyper-Threading technológia használatára vannak konfigurálva.
 
@@ -156,8 +160,8 @@ A kiválasztott konfigurációkkal munkaterhelés, a Processzor-erőforrások é
 
 A rendszer a az ajánlatok alapszintű hardver SAP HANA TDI hitelesített. Hardver két különböző osztályú osztani az SKU:
 
-- S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" nevezik SKU.
-- S384, S384m, S384xm, S576m, S768m és S960m, amely nevezzük az "Típus II osztály" SKU.
+- S72, S72m, S144, S144m, S192, S192m és S192xm, amely a "Type i. osztály" nevezik SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm és S960m, amely nevezzük az "Típus II osztály" SKU.
 
 Egy teljes HANA nagy példány stamp kizárólag az egyetlen ügyfél nem lefoglalt&#39;s használja. Ezt a tényt a számítási és tárolási erőforrásokat egy Azure szolgáltatásba telepített, valamint hálózati háló összekapcsolt rackszekrények vonatkozik. HANA nagy példány infrastruktúra, például Azure, telepíti a különböző ügyfél &quot;bérlők&quot; , amelyek elkülönülnek egymástól a következő három szintje:
 
@@ -337,17 +341,21 @@ A HANA nagy példány i. osztály típusú tárolási kötetként négyszer a me
 
 Lásd az alábbi táblázatban a Foglalás tekintetében. A táblázat a különböző kötetek, a másik HANA nagy példány egységek megadott nyers kapacitását.
 
-| HANA nagy példány Termékváltozat | Hana/adatok | Hana/napló | Hana/megosztott | Hana/naplómásolat |
+| HANA nagy példány Termékváltozat | Hana/adatok | Hana/napló | Hana/megosztott | Hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | MAXIMUM 1280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |MAXIMUM 1280 GB | 768 GB |
 | S192 | 4,608 GB | 1024 GB | 1 536 GB | 1024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
+| S192xm |  12 000 GB |  2050 GB |  2050 GB |  2.040 GB |
 | S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2050 GB | 2050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2050 GB | 2050 GB | 2,040 GB |
+| S384xxm |  20 000 GB | 3,100 GB | 2050 GB | 3,100 GB |
 | S576m | 20 000 GB | 3,100 GB | 2050 GB | 3,100 GB |
+| S576xm | 31,744 GB | 4096 GB | 2048 GB | 4096 GB |
 | S768m | 28 000 GB | 3,100 GB | 2050 GB | 3,100 GB |
+| S768xm | 40 960 GB | 6 144 GB | 4096 GB | 6 144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2050 GB | 4,100 GB |
 
 

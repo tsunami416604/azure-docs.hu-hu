@@ -4,7 +4,7 @@ description: Azure fájl szinkronizálása a helyszíni hálózati konfiguráci�
 services: storage
 documentationcenter: ''
 author: fauhse
-manager: klaasl
+manager: aungoo
 editor: tamram
 ms.assetid: ''
 ms.service: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 979897e3cb703b36a46e96848a9176d6d4c6cc6a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738530"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Azure fájl szinkronizálása a helyszíni kiszolgálók csatlakozik Azure fájlok többhelyes szinkronizálás és a felhőalapú szolgáltatások rétegezéséhez engedélyezése. Egy helyszíni kiszolgálón, kapcsolódnia kell az internethez. Rendszergazda döntse el, hogy a legjobb útvonalat az Azure felhőszolgáltatások elérni kívánt kiszolgáló van szüksége.
@@ -64,7 +65,7 @@ A következő táblázat ismerteti a szükséges kommunikációs tartományokban
 | **Azure Resource Manager** | https://management.azure.com | Bármely felhasználó hívás (például a PowerShell) végighalad a/az URL-cím, beleértve a kezdeti kiszolgáló regisztrációs hívás. |
 | **Azure Active Directory** | https://login.windows.net | Az Azure Resource Manager hívások hitelesített felhasználónak kell kezdeményeznie. Sikeres, a felhasználók hitelesítéséhez az URL-cím szolgál ki. |
 | **Azure Active Directory** | https://graph.windows.net/ | Azure fájlszinkronizálás történő telepítésének részeként az előfizetés Azure Active Directoryban egy egyszerű jön létre. Az URL-cím, amely használható. Az egyszerű delegálása jogosultsága ahhoz, hogy a fájl szinkronizálási Azure szolgáltatás minimális számú szolgál. A felhasználó Azure fájlszinkronizálás a kezdeti telepítés végrehajtása egy hitelesített előfizetés tulajdonosának jogosultságokkal rendelkező felhasználónak kell lennie. |
-| **Azure Storage** | &ast;.core.windows.net | Amikor a rendszer letölti a fájlt, a kiszolgáló hajtja végre, hogy további adatmozgás hatékonyan amikor közvetlenül a tárfiókban Azure fájlmegosztáshoz van szó. A kiszolgáló rendelkezik egy SAS-kulcsot, amely csak a megcélzott fájl megosztás eléréséhez. |
+| **Azure Storage** | &ast;.core.windows.net | Amikor a rendszer letölti a fájlt, majd a kiszolgáló hajtja adott adatmozgás hatékonyabban közvetlenül az Azure-tárfiókban fájlmegosztáshoz való. A kiszolgáló rendelkezik egy SAS-kulcsot, amely csak a megcélzott fájl megosztás eléréséhez. |
 | **Azure File Sync** | &ast;.one.microsoft.com | Kezdeti kiszolgáló regisztrálása után a kiszolgáló egy Azure fájlszinkronizálás szolgáltatáspéldány regionális URL-címet kap az adott régióban. A kiszolgáló az URL-cím használatával közvetlenül és hatékonyan tudja kommunikálni a példány, a szinkronizálási kezelése. |
 
 > [!Important]

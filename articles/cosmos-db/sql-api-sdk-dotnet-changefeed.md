@@ -2,22 +2,20 @@
 title: 'Az Azure Cosmos DB: .NET módosítás hírcsatorna processzor API, SDK & erőforrások |} Microsoft Docs'
 description: Tudnivalók a módosítás hírcsatorna processzor API és SDK, beleértve a kiadási dátum, használatból való kivonást dátumok és minden verziója a .NET módosítás hírcsatorna processzor SDK végzett módosítások.
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
 manager: kfile
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: reference
+ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a2770b9349dac8caa8e0611d77522ab56ca1bf07
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798886"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítás adatcsatorna processzor SDK: Töltse le és a kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -44,6 +42,10 @@ ms.lasthandoff: 05/08/2018
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="stable-builds"></a>Stabil buildek
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* További naplózás hozzá.
+* Rögzített DocumentClient-memóriavesztés többször a függőben lévő munkahelyi becslés hívásakor.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * A függőben lévő munkahelyi becslése a javításokat.
@@ -107,6 +109,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [1.3.3](#1.3.3) |2018. Előfordulhat, hogy 08. |--- |
 | [1.3.2](#1.3.2) |2018. április 18. |--- |
 | [1.3.1](#1.3.1) |2018. március 13. |--- |
 | [1.2.0](#1.2.0) |2017. október 31. |--- |

@@ -1,24 +1,19 @@
 ---
-title: "Azure Service Bus-alkalmazások a kimaradások és vészhelyzetek szigetelő |} Microsoft Docs"
-description: "Technikák alkalmazások egy Service Bus esetleges leállás elleni védelmét."
+title: Azure Service Bus-alkalmazások a kimaradások és vészhelyzetek szigetelő |} Microsoft Docs
+description: Technikák alkalmazások egy Service Bus esetleges leállás elleni védelmét.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802306"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>A Service Bus kimaradások és vészhelyzetek alkalmazások szigetelő ajánlott eljárásai
 
@@ -34,7 +29,9 @@ A Service Bus üzenetsorok és témakörök küldött üzenetek tárolására ha
 Az összes Service Bus üzenetküldési entitásokat (üzenetsorok, témakörök, továbbítók) egy névtér, amely tagja-e a datacenter találhatók. A Service Bus most támogatja [ *földrajzi-vész-helyreállítási* és *georeplikáció* ](service-bus-geo-dr.md) a névterek szintjén.
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Üzenetsorok és témakörök üzenetküldési tároló hibák elleni védelme
-Nem particionált üzenetsor vagy témakör egyetlen üzenetküldési tárolóra van hozzárendelve. Az üzenetküldési tárolóban nem érhető el, ha az adott üzenetsor vagy témakör összes művelet sikertelen lesz. A particionált várólista, másrészt több töredék áll. Minden egyes töredék egy másik üzenetküldési tárolóban van tárolva. Amikor egy üzenetet küld egy particionált üzenetsor vagy témakör, a Service Bus rendel az üzenet a töredék egyikéhez. A megfelelő üzenetküldési tárolóban nem érhető el, ha a Service Bus ír az üzenet egy másik kódrészletet, ha lehetséges. Particionált entitások kapcsolatos további információkért lásd: [particionált üzenetküldési entitások][Partitioned messaging entities].
+Nem particionált üzenetsor vagy témakör egyetlen üzenetküldési tárolóra van hozzárendelve. Az üzenetküldési tárolóban nem érhető el, ha az adott üzenetsor vagy témakör összes művelet sikertelen lesz. A particionált várólista, másrészt több töredék áll. Minden egyes töredék egy másik üzenetküldési tárolóban van tárolva. Amikor egy üzenetet küld egy particionált üzenetsor vagy témakör, a Service Bus rendel az üzenet a töredék egyikéhez. A megfelelő üzenetküldési tárolóban nem érhető el, ha a Service Bus ír az üzenet egy másik kódrészletet, ha lehetséges. Particionált entitások nem támogatottak a [Premium Termékváltozat](service-bus-premium-messaging.md). 
+
+Particionált entitások kapcsolatos további információkért lásd: [particionált üzenetküldési entitások][Partitioned messaging entities].
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>Védelem datacenter kimaradások vagy vészhelyzetek ellen
 Engedélyezi a feladatátvételre két adatközpont között, hozzon létre egy Service Bus-szolgáltatásnévtér minden adatközpontban. Például a Service Bus-szolgáltatásnévtér **contosoPrimary.servicebus.windows.net** lehet, hogy az Amerikai Egyesült Államok északi/központi régióban található, és **contosoSecondary.servicebus.windows.net** lehet, hogy a US Dél/központi régióban található. Ha egy Service Bus üzenetküldési entitás egy datacenter leállás mellett hozzáférhetőnek kell maradnia, mindkét névtérre is létrehozhat, hogy az entitás.
@@ -86,7 +83,7 @@ Vész-helyreállítási kapcsolatos további tudnivalókért tekintse meg az al�
 
 * [Az Azure Service Bus földrajzi-vész-helyreállítási](service-bus-geo-dr.md)
 * [Az Azure SQL Database üzletmenet folytonossága][Azure SQL Database Business Continuity]
-* [Az Azure-rugalmas alkalmazások tervezése][Azure resiliency technical guidance]
+* [Rugalmas alkalmazások tervezése az Azure-hoz][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

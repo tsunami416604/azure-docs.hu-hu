@@ -1,28 +1,29 @@
 ---
-title: "Tesztelése és hibakeresése a U-SQL feladatok helyi futtatáskor és az Azure Data Lake U-SQL SDK segítségével |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure Data Lake Tools for Visual Studio és az Azure Data Lake U-SQL SDK tesztelése és hibakeresése a U-SQL feladatok a helyi munkaállomáson."
+title: U-SQL-parancsfájlok futtatása helyileg segítségével az Azure Data Lake U-SQL-SDK
+description: A cikkből megtudhatja, hogyan használható az Azure Data Lake Tools for Visual Studio tesztelése és hibakeresése a U-SQL feladatok a helyi munkaállomáson.
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/15/2016
+author: mumian
 ms.author: yanacai
-ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
+ms.topic: conceptual
+ms.date: 11/15/2016
+ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736003"
 ---
-# <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>Tesztelése és hibakeresése a U-SQL feladatok használatával helyi futtatásához és az Azure Data Lake U-SQL-SDK
+# <a name="runing-u-sql-scripts-locally"></a>Összetevőre U-SQL-parancsfájlok helyi
 
-Használhatja az Azure Data Lake Tools for Visual Studio és az Azure Data Lake U-SQL SDK szolgáltatásokat a U-SQL-feladatok munkaállomáson való futtatására, pontosan úgy, ahogyan azt az Azure Data Lake szolgáltatásban is megteheti. Ez a két, helyi futtatású szolgáltatás időt takarít meg a U-SQL feladatok tesztelése és hibakeresése során.
+U-SQL Azure-ban futó, nem futtathatja saját mezőben U-SQL. Ennek elnevezése "helyi futtatáskor" vagy "helyi végrehajtási". 
+
+U-SQL helyi futtatása véve az ezekkel az eszközökkel:
+* Az Azure Data Lake Tools for Visual Studio
+* Azure Data Lake U-SQL-SDK
 
 ## <a name="understand-the-data-root-folder-and-the-file-path"></a>Az adatok gyökérmappa és a fájl elérési útja
 
@@ -35,11 +36,11 @@ Az adatok gyökérmappa a következőkre használható:
 
 U-SQL-parancsfájlok használhatja relatív elérési út és a helyi abszolút elérési utat. A relatív elérési út a megadott adatok-gyökérmappa elérési útja viszonyítva. Azt javasoljuk, hogy használjon "/" az elérési út elválasztó annak a parancsfájlokat a kiszolgálóoldali kompatibilis. Az alábbiakban néhány olyan relatív elérési útja és az egyenértékű abszolút elérési utakat. Ezekben a példákban C:\LocalRunDataRoot az adatok-gyökérmappájába.
 
-|Relatív elérési útja|Abszolút elérési útja|
+|Relatív elérési út|Abszolút elérési útja|
 |-------------|-------------|
-|/ABC/DEF/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|ABC/DEF/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/ABC/DEF/input.csv |D:\abc\def\input.csv|
+|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
+|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
+|D:/abc/def/input.csv |D:\abc\def\input.csv|
 
 ## <a name="use-local-run-from-visual-studio"></a>Futtassa a Visual Studio helyi használata
 
@@ -104,7 +105,7 @@ U-SQL-parancsfájlok futtatása helyben a Visual Studio használatával, valamin
 További információ [Azure Data Lake U-SQL SDK](data-lake-analytics-u-sql-sdk.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Azure Data Lake Analytics használatával webhelyek naplóinak elemzése](data-lake-analytics-analyze-weblogs.md).
 * Feladat részleteinek megtekintése: [használata feladat böngésző és az Azure Data Lake Analytics-feladatok feladat megtekintése](data-lake-analytics-data-lake-tools-view-jobs.md).

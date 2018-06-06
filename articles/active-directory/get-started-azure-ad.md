@@ -10,14 +10,15 @@ ms.date: 11/14/2017
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: fc6cc88cabab1bc56b0a04ce8778823647c5b2bf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bf7647d8489a102175c4e9de799793e6550495e7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714408"
 ---
 # <a name="get-started-with-azure-ad"></a>Ismerkedés az Azure AD szolgáltatással
 Az Identitáskezelés a modern szükséges méretezhető, egységes reliablity annak biztosítása érdekében az alkalmazások és szolgáltatások csak a hitelesített felhasználók elérhetőségét. A felhasználók, az informatikai részlegnek identity management igényeinek megfelelően támogatásához oly módon, mint egy szolgáltatott szoftverként (SaaS) alkalmazások jóváhagyott, nyilvános szoftver elérésére, a gazdagép belső üzletági alkalmazások, és a még akkor is, módjairól a helyszíni alkalmazások fejlesztéséhez és használati. Az összes követelménynek mutasson a felhőalapú identitás-kezelési megoldás a szükséges.      

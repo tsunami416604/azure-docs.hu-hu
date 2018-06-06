@@ -12,19 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ec5947bc68ba95a7b1e1588c444f4b28a7435f1c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801541"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK telepítés utáni konfigurációs feladatok
-Miután [telepítése a ASDK](asdk-install.md), van néhány ajánlott telepítés utáni konfigurációs módosításokat végezni. 
 
-## <a name="install-azure-stack-powershell"></a>Az Azure Stack PowerShell telepítése 
+Miután [telepítése az Azure verem Development Kit (ASDK)](asdk-install.md), szüksége lesz egy néhány ajánlott telepítés utáni konfigurációs módosításokat.
+
+## <a name="install-azure-stack-powershell"></a>Az Azure Stack PowerShell telepítése
+
 Azure verem kompatibilis Azure PowerShell-modulok az Azure veremnek megfelelő működéséhez szükségesek.
 
 Azure verem PowerShell-parancsokat a PowerShell-galériában keresztül telepített. Regisztrálja a PSGallery tárház, nyisson meg egy rendszergazda jogú PowerShell-munkamenetet, és futtassa a következő parancsot:
@@ -35,9 +38,9 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
- Azure verem kompatibilis AzureRM-modulok API-verzió profilok keresztül telepített. Azure verem a 2017-03-09-profil API verziója profilt, amely érhető el a AzureRM.Bootstrapper-modul telepítése szükséges. 
- 
- A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszámítógéphez internetkapcsolat nélkül:
+API-verzió profilok segítségével adja meg Azure verem kompatibilis AzureRM modulok.  API-verzió profilok teszik lehetővé az Azure és az Azure-verem közötti kezelése. Az API-verzió profilok olyan AzureRM PowerShell modult az adott API-verziók. A **AzureRM.Bootstrapper** modult, amelyben a PowerShell-galériában keresztül elérhető API-verzió profilokkal működéséhez szükséges PowerShell-parancsmagokat kínál.
+
+A legújabb Azure verem PowerShell-modul is telepíthet, vagy a ASDK gazdaszámítógéphez internetkapcsolat nélkül:
 
 > [!IMPORTANT]
 > A szükséges verzió telepítése előtt győződjön meg arról, hogy [távolítsa el a meglévő Azure PowerShell modul](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
@@ -45,7 +48,7 @@ Set-PSRepository `
 - **Internetkapcsolat** az ASDK állomásról. Ezek a modulok telepítését az development kit telepítése a következő PowerShell-parancsfájl futtatása:
 
   ``` PowerShell
-  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
+  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
   Install-Module `
     -Name AzureRm.BootStrapper
 
@@ -53,10 +56,11 @@ Set-PSRepository `
   Use-AzureRmProfile `
     -Profile 2017-03-09-profile -Force
 
-  Install-Module `
-    -Name AzureStack `
-    -RequiredVersion 1.2.11
+  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.
+  Install-Module -Name AzureStack -RequiredVersion 1.3.0 
+
   ```
+
   Ha a telepítés sikeres, a kimenet a AzureRM és AzureStack modulok jelennek meg.
 
 - **Internetkapcsolat nélkül** az ASDK állomásról. Kapcsolat nélküli forgatókönyv esetében először le kell töltenie a PowerShell-modul a következő PowerShell-parancsokkal internetkapcsolattal rendelkező géphez:
@@ -78,11 +82,13 @@ Set-PSRepository `
     -Name AzureStack `
     -Path $Path `
     -Force `
-    -RequiredVersion 1.2.11
+  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.  
+    -RequiredVersion 1.3.0
   ```
+
   Ezután a letöltött csomagok másolása a ASDK számítógép és a hely alapértelmezett tárházaként rögzítéséhez, és a AzureRM és AzureStack modulok telepítése ebben a tárházban lévő:
 
-    ```PowerShell
+    ```PowerShell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
     $RepoName = "MyNuGetSource"
 
@@ -99,6 +105,7 @@ Set-PSRepository `
     ```
 
 ## <a name="download-the-azure-stack-tools"></a>Töltse le az Azure-verem eszközök
+
 [AzureStack-eszközök](https://github.com/Azure/AzureStack-Tools) van egy GitHub-tárházban, amelyen a PowerShell-modulok kezelése és Azure verem erőforrásokat üzembe helyezi. Ezek az eszközök klónozza a GitHub-tárházban, vagy töltse le a AzureStack-eszközök mappa a következő parancsfájl futtatásával:
 
   ```PowerShell
@@ -123,7 +130,7 @@ Set-PSRepository `
 ## <a name="validate-the-asdk-installation"></a>A ASDK a telepítés ellenőrzése
 Győződjön meg arról, hogy a ASDK telepítése sikeres volt-e, használhatja a Test-AzureStack parancsmag az alábbiak szerint:
 
-1. Jelentkezzen be az ASDK állomáson AzureStack\CloudAdmin.
+1. Jelentkezzen be az ASDK állomáson AzureStack\AzureStackAdmin.
 2. Nyissa meg a Powershellt rendszergazdaként (nem a PowerShell ISE).
 3. Futtatás: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
 4. Futtatás: `Test-AzureStack`

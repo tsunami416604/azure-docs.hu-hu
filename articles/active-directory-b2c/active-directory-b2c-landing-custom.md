@@ -1,23 +1,24 @@
 ---
-title: 'Azure Active Directory B2C: Egyéni szabályzatok kezdőlapja | Microsoft Docs'
-description: Fogyasztói alkalmazások fejlesztése az Azure Active Directory B2C-vel egyéni szabályzatok használatával
+title: Az Azure Active Directory B2C egyéni házirendek |} Microsoft Docs
+description: Felhasználók felé néző alkalmazások az Azure Active Directory B2C egyéni házirendekkel fejlesztéséhez.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 5/06/2017
 ms.author: davidmu
-ms.openlocfilehash: f3db8c80d6faef3af0909efb7306dd7aa0336ab0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 0a22731f5e047a29e1b9287c6e89b1dc37291f3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712351"
 ---
-# <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C: Felhasználók regisztrálása és bejelentkezése az alkalmazásokba egyéni szabályzatok használatával
+# <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Regisztráció és bejelentkezhetnek az alkalmazásokban az Azure Active Directory B2C egyéni házirendekkel
+
 Az egyéni szabályzatok olyan konfigurációs fájlok, amelyekkel meghatározható az Azure AD B2C-bérlő viselkedése. Az identitásfejlesztők teljes körűen szerkeszthetik ezeket a fájlokat, amivel gyakorlatilag korlátlan számú feladatot elvégezhetnek.
 
 ## <a name="how-to-articles"></a>Útmutatók

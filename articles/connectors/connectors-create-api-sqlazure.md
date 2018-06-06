@@ -1,31 +1,28 @@
 ---
 title: Csatlakozás az SQL Server vagy az Azure SQL adatbázis - Azure Logic Apps |} Microsoft Docs
-description: Kapcsolatok létrehozása a helyszíni SQL Server és a felhőben az Azure SQL Database az Azure Logic Apps
-services: logic-apps
-documentationcenter: ''
+description: Eléréséről és a helyszíni vagy felhőalapú SQL-adatbázisok kezelése az Azure Logic Apps munkafolyamatok automatizálásával
 author: ecfan
 manager: cfowler
-editor: ''
-tags: connectors
-ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 05/15/2018
 ms.author: estfan
-ms.openlocfilehash: 4917f784c07919155e006711026899ce7712fecb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.date: 05/15/2018
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 73dadb85f3608f863a7fa0227d8e051fc77bb918
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756950"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Csatlakozás SQL Server vagy az Azure SQL Database a Azure Logic Apps alkalmazásokból
 
-Ez a cikk bemutatja, hogyan lehet elérni az adatokat az SQL Server-összekötő használatával logikai alkalmazás belül az SQL-adatbázisban. Ily módon a logic apps, feladatok és az adatok kezelésére szolgáló munkafolyamatok automatizáló is létrehozhat. A connector működik, ha mindkét [a helyszíni SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) és [Azure SQL Database felhőbeli](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
+Ez a cikk bemutatja, hogyan lehet elérni az adatokat az SQL Server-összekötő használatával logikai alkalmazás belül az SQL-adatbázisban. Ily módon automatizálhatja feladatok, folyamatok és munkafolyamatok, amelyek az SQL adatainak és erőforrásainak által készített logic Apps alkalmazásokat kezeléséhez. A connector működik, ha mindkét [a helyszíni SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) és [Azure SQL Database felhőbeli](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
 
-A logic apps, amikor az SQL-adatbázis vagy más rendszerekre, például a Dynamics CRM Online események által kiváltott futtató hozhat létre. A logic Apps alkalmazásokat is, helyezze, vagy törli az adatokat, és is az SQL-lekérdezések, illetve tárolt eljárások végrehajtása. Például hozhat létre egy logikai alkalmazás automatikusan ellenőrzi az új bejegyzések a Dynamics CRM Online, elemek hozzáadása új bejegyzésekhez az SQL-adatbázis, amely ezután elküldi az e-mailes riasztásokhoz.
+A logic apps, amikor az SQL-adatbázis vagy más rendszerekre, például a Dynamics CRM Online események által kiváltott futtató hozhat létre. A logic Apps alkalmazásokat is beolvasása, helyezze be, és törli az adatokat az SQL-lekérdezések és tárolt eljárások végrehajtása mellett. Például hozhat létre egy logikai alkalmazás automatikusan ellenőrzi az új bejegyzések a Dynamics CRM Online, elemek hozzáadása új bejegyzésekhez az SQL-adatbázis, amely ezután elküldi az e-mailes riasztásokhoz.
 
 Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. Ha most ismerkedik a logic apps, tekintse át a [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [gyors üzembe helyezés: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Összekötő-specifikus műszaki információkért lásd: a <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server-összekötő hivatkozás</a>.
 

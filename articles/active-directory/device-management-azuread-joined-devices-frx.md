@@ -1,13 +1,14 @@
 ---
-title: "Új Windows 10-eszköz az első futtatás során az Azure AD JOIN |} Microsoft Docs"
-description: "Ez a témakör azt ismerteti, hogyan felhasználók állíthat be az Azure AD Join a first run Experience összetevő során."
+title: Új Windows 10-eszköz az első futtatás során az Azure AD JOIN |} Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan felhasználók állíthat be az Azure AD Join a first run Experience összetevő során.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0e71df2333dee9c4eb9935d3397d343be246be65
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0341c5b65816cf1c54fe3f2f7781dde46bf084ad
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757392"
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Új Windows 10-eszköz az első futtatás során az Azure AD JOIN
 
@@ -37,6 +39,8 @@ A Windows *out-of-box élmény*, egy a helyszíni Active Directory (AD) tartomá
 ## <a name="before-you-begin"></a>Előkészületek
 
 Egy Windows 10 rendszerű eszköz csatlakozni az eszközregisztrációs szolgáltatást kell állítani ahhoz, hogy regisztrálják eszközeiket. Mellett eszközök csatlakoztatása az Azure AD-bérlőben engedéllyel, a beállított maximális regisztrált kevesebb eszközök kell rendelkeznie. További részletekért lásd: [eszközbeállítások konfigurálása](device-management-azure-portal.md#configure-device-settings).
+
+Ha a bérlő össze van vonva, továbbá az identitásszolgáltató támogatnia kell WS-Fed és a WS-Trust felhasználónév/jelszó végpont. Ez lehet 1.3 vagy 2005 verzióra. A protokoll támogatására szükség az eszköz csatlakoztatása az Azure AD és az eszköz jelszóval bejelentkezni.
 
 ## <a name="joining-a-device"></a>Eszköz csatlakoztatása
 

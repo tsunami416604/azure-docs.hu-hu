@@ -3,9 +3,9 @@ title: Azure-fájlok kapcsolatos problémák elhárítása a Linux |} Microsoft 
 description: Linux Azure fájlok problémák hibaelhárítása
 services: storage
 documentationcenter: ''
-author: genlin
-manager: willchen
-editor: na
+author: wmgries
+manager: aungoo
+editor: tamram
 tags: storage
 ms.service: storage
 ms.workload: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: wgries
+ms.openlocfilehash: 4a80b868529b18875100d8205fd8c3a664b6b9e2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738364"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Azure-fájlok kapcsolatos problémák elhárítása a Linux
 
@@ -86,7 +87,7 @@ Egyes Linux terjesztésekről még nem támogatják a titkosítási szolgáltat�
 
 ### <a name="solution"></a>Megoldás
 
-Az SMB 3.0 Linux titkosítási szolgáltatás 4.11 kernel jelent meg. Ez a funkció lehetővé teszi, hogy az Azure fájlmegosztás regisztrációját a helyi vagy egy másik Azure-régiót csatlakoztatását. A közzététel időpontjában ez a funkció le lett Ubuntu 17.04 és Ubuntu 16.10 backported. Ha a Linux SMB-ügyfél nem támogatja a titkosítást, a csatlakoztatási Azure fájlok SMB 2.1 egy Azure Linux virtuális gép, amely ugyanabban az adatközpontban, a fájl tárolási fiók használatával.
+Az SMB 3.0 Linux titkosítási szolgáltatás 4.11 kernel jelent meg. Ez a szolgáltatás lehetővé teszi, hogy az Azure fájlmegosztás regisztrációját a helyi vagy egy másik Azure-régiót csatlakoztatását. A közzététel időpontjában ez a funkció le lett Ubuntu 17.04 és Ubuntu 16.10 backported. Ha a Linux SMB-ügyfél nem támogatja a titkosítást, a csatlakoztatási Azure fájlok SMB 2.1 egy Azure Linux virtuális gép, amely ugyanabban az adatközpontban, a fájl tárolási fiók használatával.
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>A Linux virtuális gép csatlakoztatott lassú teljesítmény az Azure fájlmegosztások
@@ -129,7 +130,7 @@ A tárolási fiók felhasználójának használ a fájlok másolása:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Nem képes csatlakozni vagy egy Azure fájlmegosztás csatlakoztatása
+## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Nem képes csatlakozni vagy az Azure fájlmegosztások csatlakoztatása
 
 ### <a name="cause"></a>Ok
 

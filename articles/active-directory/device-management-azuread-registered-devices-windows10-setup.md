@@ -1,13 +1,14 @@
 ---
-title: "Azure Active Directory regisztrált eszközöket beállíthatja |} Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be Azure Active Directory regisztrált eszközök."
+title: Azure Active Directory regisztrált eszközöket beállíthatja |} Microsoft Docs
+description: Ismerje meg, hogyan állíthat be Azure Active Directory regisztrált eszközök.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,22 +16,23 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2560e51d61506389e84288bf983b0ebcb5776ff2
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 541f37bb11c604567b356716db282d0e4e2f629b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713524"
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Azure Active Directory beállítása regisztrált Windows 10-eszközök
 
-Az eszköz kezelése az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. További részletekért lásd: [bemutatása az Azure Active Directoryban kezelés](device-management-introduction.md).
+Az eszköz kezelése az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. További információkért lásd: [bemutatása az Azure Active Directoryban kezelés](device-management-introduction.md).
 
-Ha engedélyezni szeretné a **kapcsolja a saját eszközök használata (BYOD)** esetben ez elvégezhető az Azure AD regisztrált eszközök konfigurálásával. Az Azure AD-eszközök regisztrálása az Azure AD konfigurálása a Windows 10, iOS, Android és macOS. Ez a témakör a kapcsolódó lépések Windows 10 rendszerű eszközökhöz. 
+Ha engedélyezni szeretné a **kapcsolja a saját eszközök használata (BYOD)** esetben ez elvégezhető az Azure AD regisztrált eszközök konfigurálásával. Az Azure ad-ben a regisztrált az Azure AD-eszközök a Windows 10, iOS, Android és macOS állíthatja be. Ez a cikk biztosít a kapcsolódó lépések Windows 10 rendszerű eszközökhöz. 
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Windows 10-eszköz regisztrálása, az eszközregisztrációs szolgáltatást kell állítani ahhoz, hogy regisztrálják eszközeiket. Eszközök regisztrálása az Azure AD-bérlő jogosultsága mellett, kevesebb a beállított maximális regisztrált eszközök kell rendelkeznie. További részletekért lásd: [eszközbeállítások konfigurálása](device-management-azure-portal.md#configure-device-settings).
+Windows 10-eszköz regisztrálása, az eszközregisztrációs szolgáltatást kell állítani ahhoz, hogy regisztrálják eszközeiket. Emellett rendelkeznie kell a beállított maximális regisztrált kevesebb eszközök. További információkért lásd: [eszközbeállítások konfigurálása](device-management-azure-portal.md#configure-device-settings).
 
 ## <a name="what-you-should-know"></a>Tudnivalók
 
@@ -49,7 +51,7 @@ Eszközök regisztrálásakor figyelembe kell venni a következő:
 
 ## <a name="registering-a-device"></a>Eszközök regisztrálása
 
-A szakasz ismerteti a lépéseket az Azure ad a Windows 10-eszköz regisztrálása. Sikeresen regisztrálta az eszközt az Azure AD, ha a **hozzáférés munkahelyi vagy iskolai** párbeszédpanel jelzi ezt egy **munkahelyi vagy iskolai fiókkal** bejegyzés.
+A szakasz ismerteti a lépéseket az Azure ad a Windows 10-eszköz regisztrálása. Sikeresen regisztrált egy eszközt a megjelenik egy **munkahelyi vagy iskolai fiók** bejegyzés.
 
 ![Regisztráljon](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
@@ -74,7 +76,7 @@ A szakasz ismerteti a lépéseket az Azure ad a Windows 10-eszköz regisztrálá
     ![Kapcsolódás](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
 
 
-5. Az a **munkahelyi vagy iskolai fiók beállítása** párbeszédpanelen adja meg a fiók nevét (pl.: someone@example.com), és kattintson a **következő**.
+5. Az a **munkahelyi vagy iskolai fiók beállítása** párbeszédpanelen adja meg a fiók nevét (például someone@example.com), és kattintson a **következő**.
 
     ![Kapcsolódás](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
 
@@ -94,7 +96,7 @@ Győződjön meg arról, hogy egy eszköz csatlakozik-e az Azure AD, tekintse á
 
 ![Regisztráljon](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
-Másik lehetőségként is felhasználhatja a eszközbeállítások az Azure AD portálon.
+Azt is megteheti áttekintheti az Azure AD portálon Eszközbeállítások.
 
 ![Regisztráljon](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
 
@@ -104,9 +106,9 @@ Másik lehetőségként is felhasználhatja a eszközbeállítások az Azure AD 
 
 ## <a name="next-steps"></a>További lépések
 
-- További részletekért lásd: a [eszköz kezelése az Azure Active Directoryban bemutatása](device-management-introduction.md)
+- További információkért lásd: a [eszköz kezelése az Azure Active Directoryban bemutatása](device-management-introduction.md)
 
-- Az Azure AD portálon eszközök felügyeletével kapcsolatos további részletekért lásd: a [kezelése az Azure portál használatával eszközök ](device-management-azure-portal.md).
+- Az Azure AD portálon eszközök felügyeletével kapcsolatos további információkért lásd: a [kezelése az Azure portál használatával eszközök ](device-management-azure-portal.md).
 
 
 

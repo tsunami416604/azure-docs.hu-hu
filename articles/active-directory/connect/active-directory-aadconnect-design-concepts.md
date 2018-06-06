@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/13/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801932"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Az Azure AD Connect: Tervezési alapelvek
-Ez a témakör célja, hogy az Azure AD Connect megvalósítási tervezése során kell re területek leírásához. Ez a témakör egy részletes bemutatója a bizonyos területeken, és ezekről a fogalmakról rövid leírását, valamint további témakörökre mutatnak.
+Ez a dokumentum célja, hogy az Azure AD Connect megvalósítási tervezése során kell re területek leírásához. Ez a dokumentum egy részletes bemutatója a bizonyos területeken, és ezekről a fogalmakról rövid leírását, valamint egyéb dokumentumokat.
 
 ## <a name="sourceanchor"></a>sourceAnchor
 A sourceAnchor attribútum *objektum élettartama alatt megváltoztathatatlan attribútum*. Egyedileg azonosítja, hogy az ugyanazon objektum a helyszíni és az Azure AD-objektum. Az attribútum néven is ismert **immutableId** és a két nevet cserélhető használja, a rendszer.
 
-A word, amely nem módosítható, a "nem módosítható", fontos, hogy ez a témakör. Mivel ez az attribútum értéke nem lehet módosítani, beállítása után, fontos válasszon, amely támogatja a forgatókönyvéhez.
+A word, amely nem módosítható, a "nem módosítható", fontos, hogy ez a dokumentum. Mivel ez az attribútum értéke nem lehet módosítani, beállítása után, fontos válasszon, amely támogatja a forgatókönyvéhez.
 
 Az attribútum a következő esetekben szolgál:
 
@@ -40,12 +42,12 @@ Ez a témakör csak beszél sourceAnchor, felhasználók vonatkozik. Ugyanazok a
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>Egy jó sourceAnchor attribútum kiválasztása
 Az attribútum értékét meg kell felelnie a következő:
 
-* Kisebb, mint 60 karakter hosszú lehet
+* Kevesebb, mint 60 karakter hosszúságú
   * Nem, a – z, A-Z karaktereket vagy 0-9 kódolású és számít 3 karakternél
 * Egy speciális karaktert tartalmaz: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * Egyedinek kell lenniük
 * Karakterlánc, egész, vagy bináris kell lennie
-* Felhasználó nevét, a módosítás nem alapján
+* Nem kell alapulnia felhasználónév ezek is módosíthatók.
 * Nem kell a kis-és nagybetűket és értékek, amelyek esetének eltérhetnek elkerülése érdekében
 * Hozzá kell rendelni a objektum létrehozásakor
 
@@ -193,7 +195,7 @@ Egyes szervezeteknél nem átirányítható tartományok, mint a contoso.local v
 
 Olvasási [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további információt a hozzáadása és tartományok ellenőrzése.
 
-Az Azure AD Connect azt észleli, ha nem átirányítható tartományi környezetben futtatja, és akkor megfelelően figyelmezteti a folytassa a gyorsbeállítások. Ha nem átirányítható tartományban, akkor valószínű, hogy a felhasználók egyszerű túl van-e nem átirányítható utótagok. Például contoso.local le, ha az Azure AD Connect azt javasolja, hogy használja a gyorsbeállítások használata helyett egyéni beállításokat. Egyéni beállítások használatával is, amely kell használható egyszerű felhasználónév jelentkezzen be Azure után a felhasználók attribútumok szinkronizálva lesznek az Azure AD meg.
+Az Azure AD Connect azt észleli, ha nem átirányítható tartományi környezetben futtatja, és akkor megfelelően figyelmezteti a folytassa a gyorsbeállítások. Ha nem átirányítható tartományban, akkor valószínű, hogy az egyszerű Felhasználónevet, a felhasználók túl van-e nem átirányítható utótagok. Például contoso.local le, ha az Azure AD Connect azt javasolja, hogy használja a gyorsbeállítások használata helyett egyéni beállításokat. Egyéni beállítások használatával is, amely kell használható egyszerű felhasználónév jelentkezzen be Azure után a felhasználók attribútumok szinkronizálva lesznek az Azure AD meg.
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

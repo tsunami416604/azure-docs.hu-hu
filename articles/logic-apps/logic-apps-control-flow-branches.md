@@ -1,29 +1,25 @@
 ---
-title: "Az ágakkal rendelkező - Azure Logic Apps párhuzamos |} Microsoft Docs"
-description: "Hozzon létre vagy párhuzamos ágak csatlakozott a logic apps"
+title: Létrehozása vagy csatlakoztatása a párhuzamos ágak - Azure Logic Apps |} Microsoft Docs
+description: Tárfiókok létrehozása, vagy a munkafolyamatok párhuzamos ágak csatlakozzon az Azure Logic Apps
 services: logic-apps
-keywords: "az ágakkal rendelkező, párhuzamos feldolgozása"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 9a836b707a576b9a938f43397ef35c00aeb476bf
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 40af32b1618ee495cff82ed0a588ad620b759e96
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725547"
 ---
-# <a name="create-or-join-parallel-branches-in-your-logic-app"></a>Hozzon létre vagy párhuzamos ágak csatlakozott a Logic Apps alkalmazást
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Hozzon létre vagy a munkafolyamat-műveleteket párhuzamos ágak csatlakozzon az Azure Logic Apps
 
-Alapértelmezés szerint a logikai alkalmazás műveletek egymás után futnak. A műveletek független egyszerre hozhat létre [ágak párhuzamos](#parallel-branches), majd [ágakat csatlakozás](#join-branches) a folyamat későbbi. 
+Alapértelmezés szerint a műveletek a logic app munkafolyamatokban egymás után futnak. A műveletek független egyszerre hozhat létre [ágak párhuzamos](#parallel-branches), majd [ágakat csatlakozás](#join-branches) a folyamat későbbi. 
 
 > [!TIP] 
 > Ha rendelkezik egy eseményindító fogadó egy tömb, és szeretné futtatni a munkafolyamat minden tömb elemhez, *debatch* , hogy a tömb a [ **SplitOn** tulajdonság indítás](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
@@ -36,7 +32,7 @@ Alapértelmezés szerint a logikai alkalmazás műveletek egymás után futnak. 
 
 <a name="parallel-branches"></a>
 
-## <a name="add-a-parallel-branch"></a>Egy párhuzamos ág hozzáadása
+## <a name="add-a-parallel-branch"></a>Párhuzamos ág hozzáadása
 
 Független lépések futtatásával egyszerre, egy meglévő lépés melletti párhuzamos ágak is hozzáadhat. 
 

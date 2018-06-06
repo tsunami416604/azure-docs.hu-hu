@@ -8,41 +8,33 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757416"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Az Azure-adatbázis PostgreSQL korlátozásai
 A következő szakaszok ismertetik a kapacitás és az adatbázis szolgáltatásban működik korlátok.
 
-## <a name="pricing-tier-maximums"></a>Árképzési szint méretkorlát
-Azure PostgreSQL-adatbázishoz a kiszolgáló létrehozása választhat több tarifacsomagok rendelkezik. További információkért lásd: [Tarifacsomagjainak Azure-adatbázis a PostgreSQL](concepts-pricing-tiers.md).  
+## <a name="maximum-connections"></a>A kapcsolatok maximális száma
+Tarifacsomag és vCores-kapcsolatok maximális száma a következők: 
 
-Van a kapcsolatok, a számítási egység és a tár az egyes tarifacsomagok maximális száma az alábbiak szerint: 
-
-|Tarifacsomag| Számítási létrehozása| vCore(s)| Kapcsolatok maximális száma |
-|---|---|---|---|
-|Alapszintű| Gen 4| 1| 50 |
-|Alapszintű| Gen 4| 2| 100 |
-|Alapszintű| Gen 5| 1| 50 |
-|Alapszintű| Gen 5| 2| 100 |
-|Általános rendeltetés| Gen 4| 2| 150|
-|Általános rendeltetés| Gen 4| 4| 250|
-|Általános rendeltetés| Gen 4| 8| 480|
-|Általános rendeltetés| Gen 4| 16| 950|
-|Általános rendeltetés| Gen 4| 32| 1500|
-|Általános rendeltetés| Gen 5| 2| 150|
-|Általános rendeltetés| Gen 5| 4| 250|
-|Általános rendeltetés| Gen 5| 8| 480|
-|Általános rendeltetés| Gen 5| 16| 950|
-|Általános rendeltetés| Gen 5| 32| 1500|
-|Memóriára optimalizált| Gen 5| 2| 150|
-|Memóriára optimalizált| Gen 5| 4| 250|
-|Memóriára optimalizált| Gen 5| 8| 480|
-|Memóriára optimalizált| Gen 5| 16| 950|
+|**Tarifacsomag**| **vCore(s)**| **Kapcsolatok maximális száma** |
+|---|---|---|
+|Alapszintű| 1| 50 |
+|Alapszintű| 2| 100 |
+|Általános rendeltetés| 2| 150|
+|Általános rendeltetés| 4| 250|
+|Általános rendeltetés| 8| 480|
+|Általános rendeltetés| 16| 950|
+|Általános rendeltetés| 32| 1500|
+|Memóriára optimalizált| 2| 150|
+|Memóriára optimalizált| 4| 250|
+|Memóriára optimalizált| 8| 480|
+|Memóriára optimalizált| 16| 950|
 
 Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet meg:
 > Súlyos hiba: sajnos már túl sok ügyfél
@@ -57,10 +49,10 @@ Az Azure rendszer figyelése az Azure-adatbázishoz PostgreSQL-kiszolgáló öt 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
 - Fő adatbázis motor verziók közötti automatikus áttelepítési jelenleg nem támogatott.
 
-### <a name="subscription-management"></a>Előfizetés kezelése
+### <a name="subscription-management"></a>Előfizetés-kezelés
 - Dinamikusan előfizetésekhez és erőforráscsoportokhoz között a kiszolgálók áthelyezése jelenleg nem támogatott.
 
-### <a name="point-in-time-restore-pitr"></a>Point-in-time-restore (PITR)
+### <a name="point-in-time-restore-pitr"></a>Pont-a--visszaállítás egy korábbi időpontra (PITR)
 1.  A PITR funkció használata esetén az új kiszolgáló ugyanazokat a konfigurációkat, mint a kiszolgáló alapul hozza létre.
 2.  A Törölt kiszolgáló visszaállítása nem támogatott.
 

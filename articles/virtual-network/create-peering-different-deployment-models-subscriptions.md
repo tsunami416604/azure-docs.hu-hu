@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcc733308f4c0441545dc0d03cca2ca1112812ac
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 045b433fdea2cfb97f3002fbe692ea8e4988fbb4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726414"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellek és előfizetések
 
@@ -106,7 +107,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Ha min
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. A további lépéseket kell elvégezni az Azure parancssori felülettel 2.0.4 héjastól vagy későbbi a bash használatával [telepített](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), vagy az Azure-felhő rendszerhéj használatával. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Kattintson a **kipróbálás** a parancsfájlok olvashat, amely egy, az Azure-fiókjával jelentkezik a felhő rendszerhéj megnyitása gombra. Fut a beállítások bash parancssori felület parancsfájlok egy Windows-ügyfélen, a következő témakörben: [futtatása az Azure parancssori felület a Windows](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+5. A további lépéseket kell elvégezni az Azure parancssori felülettel 2.0.4 héjastól vagy későbbi a bash használatával [telepített](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), vagy az Azure-felhő rendszerhéj használatával. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Kattintson a **kipróbálás** a parancsfájlok olvashat, amely egy, az Azure-fiókjával jelentkezik a felhő rendszerhéj megnyitása gombra. Fut a beállítások bash parancssori felület parancsfájlok egy Windows-ügyfélen, a következő témakörben: [az Azure parancssori felület telepítése Windows](/cli/azure/install-azure-cli-windows). 
 6. Másolja a következő parancsfájl egy szövegszerkesztőben, a számítógépen. Cserélje le `<SubscriptionB-Id>` az előfizetés-azonosítóval. Ha az előfizetés-azonosítója nem ismeri, adja meg a `az account show` parancsot. A következő **azonosító** kimenet az előfizetés azonosítóját. Másolja a módosított, illessze be a parancssori felület 2.0-munkamenethez, és nyomja le az `Enter`. 
 
     ```azurecli-interactive

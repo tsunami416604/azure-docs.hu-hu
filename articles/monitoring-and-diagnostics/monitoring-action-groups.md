@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fd6817e63eea622294bbf766b66beb8bc49bc30c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726057"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure portálon művelet csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
-Ez a cikk bemutatja, hogyan az Azure portálon művelet csoportok létrehozásához és kezeléséhez.
+Egy művelet csoport, a felhasználó által megadott értesítési beállítások gyűjteménye. Egy bizonyos művelet csoport használatára, a riasztás aktiválása Azure figyelő és a szolgáltatás állapotát riasztások vannak konfigurálva. Különféle riasztások is megjelenhetnek a azonos művelet csoport(ok) különböző művelet attól függően, hogy a felhasználói követelmények használhat.
 
-A művelet csoportok konfigurálható azon műveletek listáját. Minden riasztás definiál, biztosítva, hogy ugyanazokat a műveleteket a rendszer minden alkalommal, amikor a figyelmeztetést majd használhatják ezeket a csoportokat.
+Ez a cikk bemutatja, hogyan az Azure portálon művelet csoportok létrehozásához és kezeléséhez.
 
 Egyes műveletek során a következő tulajdonságok tevődik össze:
 
@@ -44,7 +45,7 @@ Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatáv
 3. Válassza ki **művelet csoport hozzáadása**, és töltse ki a mezőket.
 
     ![A "Művelet csoport hozzáadása" parancs](./media/monitoring-action-groups/add-action-group.png)
-4. Adjon meg egy nevet a a **művelet csoportnév** mezőbe, majd írjon be egy nevet a **rövid név** mezőbe. A rövid nevét használja a teljes műveletet csoport neve helyett amikor ez a csoport értesítések küldése.
+4. Adjon meg egy nevet a a **művelet csoportnév** mezőbe, majd írjon be egy nevet a **rövid név** mezőbe. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
 
       ![A művelet csoport hozzáadása"párbeszédpanel](./media/monitoring-action-groups/action-group-define.png)
 
@@ -69,7 +70,14 @@ Művelet csoportok konfigurálása Azure Resource Manager-sablonok használatáv
 <dd>Ekkor az Azure app csak által támogatott műveletet ServiceHealth riasztásokat. Más riasztási bármikor a rendszer figyelmen kívül hagyja. Lásd: [riasztások konfigurálása, ha az állapotfigyelő szolgáltatáshoz értesítést visszaküldi](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
 
 <dt>E-mailek</dt>
-<dd>Előfordulhat, hogy legfeljebb 50 e-mail műveletek művelet-csoportban</dd>
+<dd>A következő e-mail címek a kapnak e-mailt. Győződjön meg arról, hogy az e-mailek szűrése megfelelően konfigurálta
+
+    - azure-noreply@microsoft.com
+    - azureemail-noreply@microsoft.com
+    - alerts-noreply@mail.windowsazure.com
+    
+</dd>
+<dd>Előfordulhat, hogy legfeljebb 1000 e-mail műveletek művelet-csoportban</dd>
 <dd>Tekintse meg a [információk sebességével](./monitoring-alerts-rate-limiting.md) cikk</dd>
 
 <dt>ITSM</dt>

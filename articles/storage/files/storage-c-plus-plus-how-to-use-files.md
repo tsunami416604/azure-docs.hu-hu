@@ -1,11 +1,11 @@
 ---
-title: "A C++ az Azure Files kialakított |} Microsoft Docs"
-description: "Ismerje meg, hogyan fejleszthet C++ alkalmazások és adatok tárolásához Azure-fájlokat használó szolgáltatásokat."
+title: A C++ az Azure Files kialakított |} Microsoft Docs
+description: Ismerje meg, hogyan fejleszthet C++ alkalmazások és adatok tárolásához Azure-fájlokat használó szolgáltatásokat.
 services: storage
 documentationcenter: .net
 author: renashahmsft
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737571"
 ---
 # <a name="develop-for-azure-files-with-c"></a>A C++-Azure fájlok fejlesztése
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,15 +27,13 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-
 Ebben az oktatóanyagban, megtudhatja, hogyan Azure fájlokon alapvető műveletek végrehajtása. Írt C++ minták segítségével megtudhatja, hogyan megosztások létrehozása és könyvtárak, feltöltése, listázása és fájlok törlése. Ha most ismerkedik az Azure Fileshoz, a minták hasznos információkat a következő szakaszok a jellemzői áthaladás lesz.
-
 
 * Hozzon létre vagy töröljön az Azure fájlmegosztások
 * Hozzon létre vagy töröljön a könyvtárak
-* Fájlok és könyvtárak egy Azure fájlmegosztás számbavétele
+* Fájlok és könyvtárak az Azure fájlmegosztások számbavétele
 * Töltse fel, töltse le és törölje a fájlt
-* Egy Azure fájlmegosztás kvótájának (maximális méretének) beállítása
+* Egy Azure fájlmegosztás kvótájának (maximális méret) beállítása
 * Közös hozzáférésű jogosultságkód (SAS-kulcs) létrehozása egy, a megosztásban meghatározott megosztott elérési házirendet használó fájlhoz.
 
 > [!Note]  
@@ -79,7 +78,7 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-A fájlok és könyvtárak egy Azure fájlmegosztásban találhatók nevű tároló egy **megosztása**. A tárfiók lehet a kapacitásával lehetővé teszi tetszőleges számú megosztások. A megosztást és tartalmát hozzáférést szerezni kell használnia egy Azure fájlok ügyfél.
+A fájlok és könyvtárak az Azure fájlmegosztások a találhatók nevű tároló egy **megosztása**. A tárfiók lehet a kapacitásával lehetővé teszi tetszőleges számú megosztások. A megosztást és tartalmát hozzáférést szerezni kell használnia egy Azure fájlok ügyfél.
 
 ```cpp
 // Create the Azure Files client.
@@ -105,7 +104,7 @@ if (share.create_if_not_exists()) {
 
 Ezen a ponton **megosztása** nevű megosztáshoz egy hivatkozást tartalmaz **a minta-megosztás**.
 
-## <a name="delete-an-azure-file-share"></a>Egy Azure fájlmegosztás törlése
+## <a name="delete-an-azure-file-share"></a>Az Azure fájlmegosztások törlése
 Egy megosztás törlése meghívásával történik a **delete_if_exists** cloud_file_share objektum metódus. Itt látható mintakód, amelyet, amely.
 
 ```cpp
@@ -155,7 +154,7 @@ sub_directory.delete_directory_if_exists();
 directory.delete_directory_if_exists();
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak egy Azure fájlmegosztás számbavétele
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak az Azure fájlmegosztások számbavétele
 Fájlok és könyvtárak egy megosztáson belüli listájának beszerzésével könnyen történik meghívásával **list_files_and_directories** a egy **cloud_file_directory** hivatkozás. Számos tulajdonságai és metódusai visszaadásakor eléréséhez **list_file_and_directory_item**, meg kell hívnia a **list_file_and_directory_item.as_file** metódus használatával kérje le a **cloud_file**  objektum, vagy a **list_file_and_directory_item.as_directory** metódus használatával kérje le a **cloud_file_directory** objektum.
 
 A következő kód bemutatja, hogyan kérhető le és küldhető a megosztás a gyökérmappában lévő egyes elemek URI.
@@ -182,7 +181,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="upload-a-file"></a>Fájl feltöltése
-Legalább egy Azure fájlmegosztás gyökérkönyvtár fájlokat tároló is tartalmazza. Ebben a szakaszban megtudhatja, hogyan feltölteni a fájlt a helyi tároló megosztás gyökérkönyvtárában alakzatot.
+Legalább az Azure fájlmegosztások egy gyökérkönyvtár fájlokat tároló is tartalmazza. Ebben a szakaszban megtudhatja, hogyan feltölteni a fájlt a helyi tároló megosztás gyökérkönyvtárában alakzatot.
 
 Az első lépés egy feltöltés az beszerzése hivatkozni kell a könyvtárban, ahol kell tárolni. Ehhez hívja a **get_root_directory_reference** a megosztás metódusa.
 
@@ -255,7 +254,7 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Egy Azure fájlmegosztás kvótájának (maximális méretének) beállítása
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Egy Azure fájlmegosztás kvótájának (maximális méret) beállítása
 Beállíthatja a kvótát (vagy maximális méretet) egy fájlmegosztáshoz GB-ban. Azt is ellenőrizheti, hogy aktuálisan mennyi adatot tárol a fájlmegosztás.
 
 Ha beállít egy kvótát egy megosztáshoz, korlátozhatja a megosztáson tárolt fájlok összesített méretét. Ha a megosztásban található fájlok teljes mérete meghaladja a megosztáshoz beállított kvótát, az ügyfelek nem növelhetik tovább a meglévő fájlok méretét, és csak olyan új fájlokat hozhatnak létre, amelyek üresek.
@@ -353,7 +352,7 @@ if (share.exists())
 
 }
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi forrásokból többet is megtudhat az Azure Storage-ról:
 
 * [A Storage ügyféloldali kódtára a C++ programnyelvhez](https://github.com/Azure/azure-storage-cpp)

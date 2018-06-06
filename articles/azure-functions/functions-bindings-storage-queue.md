@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 67dff6acff33b548518053ca1f569186d6b5b3ae
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 71adccabc0778e2765c574f3714aab0ed0179deb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724469"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure várólista tárolási kötések
 
@@ -28,11 +29,19 @@ Ez a cikk ismerteti az Azure Functions kötések Azure Queue storage használata
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Csomagok
+## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
 
-A várólista tárolási kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub-tárházban.
+A várólista tárolási kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+
+A várólista tárolási kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 3.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
@@ -237,11 +246,13 @@ C# és C# a parancsfájlt, nyissa meg az üzenet adataihoz, mint egy metódus pa
 * `byte[]`
 * [CloudQueueMessage]
 
+Ha mégis megpróbálja köthető `CloudQueueMessage` és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+
 A JavaScript, használjon `context.bindings.<name>` a várólista elem tartalom eléréséhez. Ha a tartalom JSON-NÁ, akkor az objektum van deszerializálni.
 
 ## <a name="trigger---message-metadata"></a>Eseményindító - üzenet metaadatok
 
-A várólista eseményindító biztosít több [metaadat-tulajdonságainak](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Az értékek rendelkezik a azonos szemantikákkal, [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
+A várólista eseményindító biztosít több [metaadat-tulajdonságainak](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Ezeket a tulajdonságokat meg más kötésekben kötési kifejezés részeként vagy a kód paramétereiben használható. Ezek a tulajdonságait a [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) osztály.
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
@@ -252,8 +263,6 @@ A várólista eseményindító biztosít több [metaadat-tulajdonságainak](func
 |`InsertionTime`|`DateTimeOffset`|Az üzenet a várólistához lett adva időpontja.|
 |`NextVisibleTime`|`DateTimeOffset`|Az üzenet mellett látható lesz ideje.|
 |`PopReceipt`|`string`|A pop visszaigazolás.|
-
-Lásd: [kódpéldák](#trigger---example) ezeket a tulajdonságokat, amelyek használják az ebben a cikkben.
 
 ## <a name="trigger---poison-messages"></a>Eseményindító - elhalt üzenetek
 
@@ -472,6 +481,8 @@ A C# és C# a parancsfájlt, írja be egyetlen üzenetsor metódusparaméter has
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
+
+Ha mégis megpróbálja köthető `CloudQueueMessage` és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
 A C# és C# a parancsfájlt írja be több üzenetsor-üzeneteket a következő típusok egyikének használatával: 
 

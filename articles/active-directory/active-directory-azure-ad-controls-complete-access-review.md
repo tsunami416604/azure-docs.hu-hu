@@ -12,22 +12,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
-ms.author: billmath
-ms.openlocfilehash: 7998d69a079c4858c54bea22dbd24e4e84c8c793
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 7e3fbb0f355ff0ffab404af9b7de1a27de02f1fc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34697914"
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Fejezze be a tagok egy csoport vagy egy alkalmazás az Azure ad-ben való hozzáférést egy áttekintése
 
-Rendszergazdák segítségével Azure Active Directory (Azure AD) [hozzon létre egy áttekintése](active-directory-azure-ad-controls-create-access-review.md) csoport tagjainak vagy egy alkalmazás rendelt felhasználók. Az Azure AD nekik hozzáférést kérő e-mailt automatikusan elküldi a felülvizsgálók. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [tekintse át a hozzáférés](active-directory-azure-ad-controls-perform-access-review.md). (Vegye figyelembe, hogy ki, a felülvizsgálók hozzá vannak rendelve, de a meghívott felhasználó nem fogadta el a vendégek addig nem kap egy e-mailt hozzáférés értékelést, mint egy meghívása előtt tekintse át először el kell fogadniuk.) A áttekintése után időszak keresztül, vagy ha egy rendszergazda leállítja a áttekintése, kövesse a cikk megtekintéséhez és alkalmazásához az eredményeket.
+A rendszergazdák az Azure Active Directory (Azure AD) használatával [hozzáférési felülvizsgálatokat](active-directory-azure-ad-controls-create-access-review.md) hozhatnak létre a csoporttagok vagy alkalmazáshoz rendelt felhasználók számára. Az Azure AD nekik hozzáférést kérő e-mailt automatikusan elküldi a felülvizsgálók. Ha a felhasználó nem kap egy e-mailt, küldhet nekik az utasításokat [tekintse át a hozzáférés](active-directory-azure-ad-controls-perform-access-review.md). (Vegye figyelembe, hogy ki, a felülvizsgálók hozzá vannak rendelve, de a meghívott felhasználó nem fogadta el a vendégek addig nem kap egy e-mailt hozzáférés értékelést, mint egy meghívása előtt tekintse át először el kell fogadniuk.) A áttekintése után időszak keresztül, vagy ha egy rendszergazda leállítja a áttekintése, kövesse a cikk megtekintéséhez és alkalmazásához az eredményeket.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Tekintse meg az Azure portál egy áttekintése
 
 1. Lépjen a [hozzáférés ellenőrzi, hogy lap](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), jelölje be **programok**, és válassza ki a programot, amely tartalmazza a felülvizsgálati hozzáférés-vezérlés.
 
-2. Válassza ki **kezelése**, és jelölje ki a hozzáférési áttekintése. Ha a program sok, egy adott típusú és egy rendezési vezérlők szerint szűrheti az állapotukat. Is kereshet a felülvizsgálati hozzáférés-vezérlés nevét vagy a tulajdonos, aki létrehozta a megjelenített név. 
+2. Válassza ki **kezelése**, és jelölje ki a hozzáférési áttekintése. Ha a programban sok vezérlő van, szűrhet adott típusú vagy állapotú vezérlőkre. A hozzáférési felülvizsgálati vezérlő neve vagy az azt létrehozó tulajdonos megjelenített neve alapján is kereshet. 
 
 ## <a name="stop-a-review-that-hasnt-finished"></a>Állítsa le, amely még nem fejeződött be áttekintése
 

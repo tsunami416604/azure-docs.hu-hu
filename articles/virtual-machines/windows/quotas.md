@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 50f28fcb2d7945949134d89f6bcc4238cf625bd1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dffc76151e0739bf56091d987bf21d02b5bfb1e2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716543"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gép vCPU kvóták
 
-A virtuális gépek és virtuálisgép-méretezési csoportok vCPU kvótái két helyezkednek el az egyes előfizetésekhez minden régióban. Az első szint a teljes regionális Vcpu, a második rétegű pedig különböző virtuális gép mérete termékcsalád mag például a Standard D termékcsalád Vcpu. Az újonnan telepített virtuális gép nem haladhatja meg az adott virtuális gép mérete termékcsalád vCPU kvótát vagy a teljes regionális vCPU kvóta bármikor egy új virtuális gép van telepítve a Vcpu. Ha ezek a kvóták vagy számát, majd a virtuális gép üzembe helyezéséhez nem engedélyezett. A kvóta a régióban található virtuális gépek összesített számának is van. Egyes ezek mely százalékértékénél kéri részletei láthatók a **használati + kvóták** szakasza a **előfizetés** lapját a [Azure-portálon](https://portal.azure.com), vagy az értékek használatával kérdezheti PowerShell.
+A virtuális gépek és virtuálisgép-méretezési csoportok vCPU kvótái két helyezkednek el az egyes előfizetésekhez minden régióban. Az első szint a teljes regionális Vcpu, a második rétegű pedig különböző virtuális gép mérete termékcsalád mag például a D sorozat Vcpu. A virtuális gép nem haladhatja meg a virtuális gép mérete termékcsalád vCPU kvótát vagy a teljes regionális vCPU kvóta bármikor egy új virtuális gép van telepítve a Vcpu. Ha ezek a kvóták vagy számát, a virtuális gép üzembe helyezéséhez nem engedélyezett. A kvóta a régióban található virtuális gépek összesített számának is van. Egyes ezek mely százalékértékénél kéri részletei láthatók a **használati + kvóták** szakasza a **előfizetés** lapját a [Azure-portálon](https://portal.azure.com), vagy az értékek használatával kérdezheti PowerShell.
 
  
 ## <a name="check-usage"></a>Ellenőrizze használatát
@@ -74,7 +75,6 @@ Standard NCv3 Family vCPUs                   0     0 Count
 Standard LSv2 Family vCPUs                   0     0 Count
 Standard Storage Managed Disks               2 10000 Count
 Premium Storage Managed Disks                1 10000 Count
-
 ```
 
 

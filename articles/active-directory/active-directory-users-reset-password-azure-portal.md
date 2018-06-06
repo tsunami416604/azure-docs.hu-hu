@@ -1,13 +1,14 @@
 ---
-title: "Jelszó alaphelyzetbe állítása, az Azure Active Directoryban |} Microsoft Docs"
-description: "Rendszergazdai jelszó alaphelyzetbe állítása, az Azure Active Directoryban egy felhasználó által kezdeményezett"
+title: Jelszó alaphelyzetbe állítása, az Azure Active Directoryban |} Microsoft Docs
+description: Rendszergazdai jelszó alaphelyzetbe állítása, az Azure Active Directoryban egy felhasználó által kezdeményezett
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
+ms.component: fundamentals
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.date: 11/01/2017
 ms.author: joflore
 ms.reviewer: sahenry
 ms.custom: it-pro
-ms.openlocfilehash: 6d01dff567e49b602e98f717dace4dc75abecb4c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: faeb66c9d0638b13c4716062b768a9c6742edcd1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714153"
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Az Azure Active Directoryban a felhasználó jelszavának visszaállítása
 
@@ -41,7 +43,7 @@ Rendszergazdák a felhasználói jelszó azokban az esetekben, ahol elfelejtette
    > [!NOTE]
    > Ezt az ideiglenes jelszót nem rendelkezik lejárati idő, amíg jelentkeznek be érvényes lesz, és a rendszer majd kényszerítve vannak-e a módosításáról. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Felhasználó hozzáadása](active-directory-users-create-azure-portal.md)
 * [Rendszergazdai szerepkörök hozzárendelése egy felhasználóhoz](active-directory-users-assign-role-azure-portal.md)
 * [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)

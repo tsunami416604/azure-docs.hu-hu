@@ -1,24 +1,25 @@
 ---
-title: "A ZIP-leküldéses telepítése az Azure Functions |} Microsoft Docs"
-description: "A .zip fájl központi telepítési eszközökkel a Kudu telepítési szolgáltatás segítségével az Azure Functions közzététele."
+title: A ZIP-leküldéses telepítése az Azure Functions |} Microsoft Docs
+description: A .zip fájl központi telepítési eszközökkel a Kudu telepítési szolgáltatás segítségével az Azure Functions közzététele.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 05/29/2018
 ms.author: glenga
-ms.openlocfilehash: faddb73522200f60f18294dc43e8d235943f8bbb
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 91c16ad5a6bf8babffc0b83d801626932688631e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699954"
 ---
 # <a name="zip-push-deployment-for-azure-functions"></a>Az Azure Functions zip leküldéses telepítés 
 Ez a cikk ismerteti a függvény app projektfájlok telepítse az Azure (tömörített) .zip fájlból. További információt a ügyfélleküldéses telepítést, mind az Azure parancssori felület használatával, és a REST API-k használatával. 
@@ -40,23 +41,33 @@ A zip-fájlt a leküldéses telepítési használt összes az függvény alkalma
 >[!IMPORTANT]
 > .Zip ügyfélleküldéses telepítés használatakor a azokat a fájlokat, egy meglévő központi telepítéséből a .zip-fájlban nem található, a függvény alkalmazás törlődnek.  
 
-### <a name="function-app-folder-structure"></a>Függvény app mappaszerkezet
-
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-### <a name="download-your-function-app-project"></a>A függvény alkalmazás projekt letöltése
+Egy függvény alkalmazást tartalmazza az összes, a fájlok és mappák a `wwwroot` könyvtár. Egy .zip fájl központi telepítés tartalmát magában foglalja a `wwwroot` könyvtár, de nem maga a könyvtárban.  
+
+## <a name="download-your-function-app-files"></a>A függvény app fájlok letöltése
 
 A helyi számítógép fejleszt, esetén könnyen egy zip-fájl, a függvény app projektet mappa létrehozását a fejlesztési számítógépen. 
 
-Azonban előfordulhat, hogy létrehozta a funkciók az Azure-portálon a szerkesztő használatával. A függvény alkalmazásprojektet letöltése a portálról: 
+Azonban előfordulhat, hogy létrehozta a funkciók az Azure-portálon a szerkesztő használatával. Az alábbi módszerek egyikével meglévő függvény alkalmazás projekt tölthető le: 
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), és keresse meg a függvény alkalmazást.
++ **Az Azure-portálon:** 
 
-2. Az a **áttekintése** lapon jelölje be **töltse le az alkalmazástartalom**. A letöltési lehetőségeit, majd válassza ki és **letöltése**.     
+    1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com), és keresse meg a függvény alkalmazást.
 
-    ![A függvény alkalmazásprojektet letöltése](./media/deployment-zip-push/download-project.png)
+    2. Az a **áttekintése** lapon jelölje be **töltse le az alkalmazástartalom**. A letöltési lehetőségeit, majd válassza ki és **letöltése**.     
 
-A letöltött zip-fájlt a .zip leküldéses központi telepítéssel függvény alkalmazása újból közzé a megfelelő formátumban van.
+        ![A függvény alkalmazásprojektet letöltése](./media/deployment-zip-push/download-project.png)
+
+    A letöltött zip-fájlt a .zip leküldéses központi telepítéssel függvény alkalmazása újból közzé a megfelelő formátumban van. A portál letöltés nyissa meg a függvény alkalmazást közvetlenül a Visual Studio szükséges fájlok is hozzáadhat.
+
++ **REST API-k használatával:** 
+
+    A következő központi telepítést beszerzése API használatával töltse le a fájlokat a `<function_app>` projekt: 
+
+        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+
+    Beleértve `/site/wwwroot/` biztosítja, hogy a zip-fájl csak az függvény alkalmazás projekt fájljai és nem a teljes webhelyet tartalmaz. Ha nincs már bejelentkezve Azure-ba, a rendszer kéri, hogy ehhez. Vegye figyelembe, hogy a FELADÁS egy vagy több küldése elküldeni a kérelmet a `api/zip/` API discoraged helyett a jelen témakörben leírt zip módszer. 
 
 Egy .zip fájl is letölthető a GitHub-tárházban. Ne feledje, hogy a GitHub-tárházban .zip-fájlként letöltésekor GitHub biztosít extra mappa a fiókiroda számára. Ez további mappa szint azt jelenti, hogy a zip-fájlt közvetlenül, ha Ön nem telepíthet központilag le a Githubról. A függvény app fenntartásához használata a GitHub-tárházban, használjon [folyamatos integrációt](functions-continuous-deployment.md) segítségével telepítse az alkalmazást.  
 

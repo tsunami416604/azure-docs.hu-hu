@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Saját attribútumokat adhat hozzá egyéni házirendeket, és használja a profil szerkesztése |} Microsoft Docs'
-description: A forgatókönyv bővítmény tulajdonságok, egyéni attribútumok használatát, és többek között azokat a felhasználói felületen
+title: A saját attribútumokat adhat hozzá egyéni házirendeket az Azure Active Directory B2C |} Microsoft Docs
+description: A forgatókönyv bővítmény tulajdonságok, egyéni attribútumok használatát, és többek között azokat a felhasználói felületen.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: e0595a67b90e1be7bb992ef7bda4343e692d8957
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: e4dfb92257dca4069905f17e1c3ccd43d87cd45c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710158"
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Az Azure Active Directory B2C: Létrehozása és az egyéni attribútumok használata egy egyéni profilt a házirend szerkesztése
 

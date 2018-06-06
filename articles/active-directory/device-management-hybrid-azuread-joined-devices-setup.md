@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,17 +16,18 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 728eb81d360af0d62d22cd6168b9e16edceefd56
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714391"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
 Az eszköz kezelése az Azure Active Directory (Azure AD) biztosíthatja, hogy a felhasználók a biztonsági és megfelelőségi szabványoknak megfelelő eszközökről érnek el az erőforrásokat. További részletekért lásd: [bemutatása az Azure Active Directoryban kezelés](device-management-introduction.md).
 
-Ha szeretné a tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD egy a helyszíni Active Directory-környezettel rendelkezik, ez elvégezhető hibrid az Azure AD csatlakoztatott eszközök konfigurálásával. A témakör az kapcsolódó lépést. 
+Ha szeretné a tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD egy a helyszíni Active Directory-környezettel rendelkezik, ez elvégezhető hibrid az Azure AD csatlakoztatott eszközök konfigurálásával. Ez a cikk biztosít a kapcsolódó lépések. 
 
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -36,7 +38,7 @@ Ha a a [rendszer-előkészítő eszköz (Sysprep)](https://docs.microsoft.com/pr
 
 Az összes futó Windows 10 évforduló Update és Windows Server 2016 automatikusan az eszköz újraindítása vagy a felhasználó Azure AD-val regisztrálja a tartományhoz csatlakoztatott eszközök jelentkezzen be az alábbiakban leírt konfigurációs lépéseket befejezése után. **Ha ezt a viselkedést automatikus regisztrálása használata nem ajánlott, vagy amennyiben ellenőrzött bevezetés szükséges**, hajtsa végre a "Lépés 4: vezérlő központi telepítés és a Bevezetés" először szelektív letiltása és engedélyezése automatikus bevezetése előtt az alábbi részben található útmutatást a további konfigurációs lépések után.  
 
-A leírások olvashatóságának, ez a témakör a következő kifejezést használja: 
+Ez a cikk olvashatóságának leírásait, használja a következő kifejezés: 
 
 - **Aktuális Windows-eszközök** -a Windows 10 vagy Windows Server 2016 rendszert futtató, tartományhoz csatlakoztatott eszközökre vonatkozik.
 - **Régebbi Windows-eszközök** -e az összes kifejezés **támogatott** tartományhoz csatlakoztatott Windows-eszközök végrehajtott futó Windows 10 és Windows Server 2016.  

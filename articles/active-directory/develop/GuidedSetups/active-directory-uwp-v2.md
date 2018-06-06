@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure AD-v2 UWP |} Microsoft Docs
-description: Hogyan univerzális Windows Platform (XAML) alkalmazások Azure Active Directory-v2 végpontja hozzáférési jogkivonatok igénylő API meghívása
+title: Ismerkedés az Azure AD v2 UWP |} Microsoft Docs
+description: Hogyan univerzális Windows Platform alkalmazások (UWP) meghívhatja az API-k, amelyhez hozzáférési jogkivonatok az Azure Active Directory-v2 végpontja
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -15,25 +15,27 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 390559922b3b8fb293d1c8b38f36dfd0a1df9ebd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c2d5681e30651aac7a09a8ead923015e9a892d42
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796614"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>A Microsoft Graph API meghívása egy univerzális Windows Platform (UWP) alkalmazásból
+# <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API hívása (XAML) univerzális Windows Platform-alkalmazásból
 
-Ez az útmutató ismerteti, hogyan egy natív univerzális Windows Platform (XAML) alkalmazás szereznie egy hozzáférési jogkivonatot és a hozzáférési jogkivonat használatával hívható meg Microsoft Graph API vagy egyéb Azure Active Directory v2 végpont a hozzáférési jogkivonatok igénylő API-k.
+Ez az útmutató ismerteti, hogyan egy natív univerzális Windows Platform (UWP-) alkalmazás olyan hozzáférési jogkivonatot kérelmezhet és hívhatja meg Microsoft Graph API-val. Az útmutató többi API-k, az Azure Active Directory v2 végpont a hozzáférési jogkivonatok igénylő is vonatkozik.
 
-Ez az útmutató végén az alkalmazás fogja tudni hívható meg egy védett API használatával személyes fiókok (például outlook.com, live.com és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely Azure Active Directory.  
+Ez az útmutató végén az alkalmazás személyes fiókok használatával meghívja a védett API. Többek között Outlook.com-os, live.com és mások számára. Az alkalmazás is meghívja a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely Azure Active Directoryban.
 
-> Ez az útmutató az univerzális Windows Platform fejlesztési telepítve van szükség a Visual Studio 2017. Ennek ellenőrzéséhez [cikk](https://docs.microsoft.com/windows/uwp/get-started/get-set-up "UWP Visual Studio beállítása") útmutatást töltenie és konfigurálnia a Visual Studio univerzális Windows Platform alkalmazások fejlesztéséhez.
+>[!NOTE]
+> Ez az útmutató az univerzális Windows Platform fejlesztési telepítve van szükség a Visual Studio 2017. Lásd: [beolvasása beállítása](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) , hogy töltse le és univerzális Windows Platform-alkalmazások fejlesztéséhez a Visual Studio konfigurálása.
 
 ### <a name="how-this-guide-works"></a>Ez az útmutató működése
 
-![Ez az útmutató működése](media/active-directory-mobileanddesktopapp-windowsuniversalplatform-introduction/uwp-intro.png)
+![Ez az útmutató graph működése](media/active-directory-mobileanddesktopapp-windowsuniversalplatform-introduction/uwp-intro.png)
 
-Ez az útmutató által létrehozott mintaalkalmazás lehetővé teszi, hogy egy UWP-alkalmazást Microsoft Graph API vagy egy webes API, amely az Azure Active Directory v2 végpont származó jogkivonatokat fogad el. Ebben az esetben jogkivonat adni a hitelesítési fejlécéhez via HTTP-kérelmekre. Token kérése és megújításokat kezelése a Microsoft hitelesítési könyvtár (MSAL).
+Ez az útmutató UWP mintaalkalmazás, amely lekérdezi a Microsoft Graph API vagy egy webes API, amely támogatja az Azure Active Directory v2 végpont származó jogkivonatokat hoz létre. Ebben az esetben jogkivonat adni a hitelesítési fejlécéhez via HTTP-kérelmekre. Microsoft hitelesítési könyvtár (MSAL) kezeli a token kérése és megújítását.
 
 ### <a name="nuget-packages"></a>NuGet-csomagok
 
@@ -41,40 +43,43 @@ Ez az útmutató a következő NuGet-csomagok használja:
 
 |Részletes ismertetés|Leírás|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft hitelesítési könyvtár (MSAL)|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft hitelesítési kódtár|
 
 
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a témakör részletes útmutatást ad a Windows asztali .NET-alkalmazás (XAML) integrálása a *jelentkezzen be Microsoft* azt lekérdezhesse a webes API-k jogkivonatot, például a Microsoft Graph API szükséges.
+Ez a szakasz részletesen bemutatja a Windows asztali .NET-alkalmazás (XAML) történő integrálását a *jelentkezzen be Microsoft*. Majd lekérheti a webes API-k jogkivonatot, például a Microsoft Graph API szükséges.
 
-Ez az útmutató által létrehozott alkalmazás lekérdezése a Graph API-val, a Kijelentkezés gombra, és a hívások eredményének megjelenítése szövegmezők szolgáló gomb jeleníti meg.
+Ez az útmutató alkalmazást hoz létre, amely egy gomb megjeleníti, hogy lekérdezések Graph API-val, a Kijelentkezés gombra és a szövegmezőbe, amely a hívások eredményének megjelenítése.
 
-> Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip) és ugorjon a [regisztrációja](#register-your-application "alkalmazás regisztrációs lépésében") lépéssel konfigurálhatja a kódminta végrehajtása előtt.
+>[!NOTE]
+> Szeretné ezt a mintát Visual Studio-projekt letöltése helyett? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip) és ugorjon a [regisztrációja](#register-your-application "alkalmazás regisztrációs lépésében") lépéssel konfigurálhatja a kódminta futtatása előtt.
 
 
 ### <a name="create-your-application"></a>Az alkalmazás létrehozása
-1. A Visual Studio: **fájl** > **új** > **projekt**<br/>
-2. A *sablonok*, jelölje be **Visual C#**
-3. Válassza ki **üres alkalmazás (univerzális Windows)**
-4. Adjon neki egy nevet, és kattintson az "Ok" gombra.
-5. Ha a rendszer kéri, válassza ki az összes verziót szabad csökkent *cél* és *minimális* verziót, és kattintson az "Ok" gombra:<br/><br/>![Minimális és a cél-verziók](media/active-directory-uwp-v2.md/vs-minimum-target.png)
+1. A Visual Studio válassza **fájl** > **új** > **projekt**.
+2. A **sablonok**, jelölje be **Visual C#**.
+3. Válassza a **Blank App (Universal Windows)** (Üres alkalmazás (Univerzális Windows-platform)) elemet.
+4. Az alkalmazás neve, és válassza ki **OK**.
+5. Ha a rendszer kéri, válassza ki a bármely verziójáról a **cél** és **minimális** verzióit, és válassza ki **OK**.
 
-## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>A Microsoft hitelesítési könyvtár (MSAL) hozzáadása a projekthez
-1. A Visual Studio: **eszközök** > **NuGet-Csomagkezelő** > **Csomagkezelő konzol**
-2. Másolja és illessze be a Package Manager Console ablakban a következő parancsot:
+    >![Minimális és a cél-verziók](media/active-directory-uwp-v2.md/vs-minimum-target.png)
+
+## <a name="add-microsoft-authentication-library-to-your-project"></a>Microsoft-hitelesítési tár hozzáadása a projekthez
+1. A Visual Studio válassza **eszközök** > **NuGet-Csomagkezelő** > **Csomagkezelő konzol**.
+2. Másolja és illessze be a következő parancsot a **Csomagkezelő konzol** ablakban:
 
     ```powershell
     Install-Package Microsoft.Identity.Client -Pre
     ```
 
 > [!NOTE]
-> A csomag újabb telepíti a [Microsoft hitelesítési könyvtár (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). MSAL kezeli az beszerzése, gyorsítótárazás és védi az Azure Active Directory v2 API-k elérésére használt felhasználói jogkivonatokhoz frissítése.
+> Ez a parancs elvégzi [Microsoft hitelesítési tár](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). MSAL szerez be, gyorsítótárazza, és frissíti a felhasználói jogkivonatokhoz, amelyek védi az Azure Active Directory v2 API-k eléréséhez.
 
 ## <a name="initialize-msal"></a>MSAL inicializálása
-Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelésének MSAL könyvtárban való együttműködéshez kezeléséhez nyújt segítséget.
+Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelése MSAL, interakcióba kezeléséhez nyújt segítséget.
 
-1. Nyissa meg a **App.xaml.cs** fájlt, és a hivatkozás MSAL szalagtár osztályra:
+1. Nyissa meg a **App.xaml.cs** fájlt, és a hivatkozás a MSAL osztályra:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -92,9 +97,9 @@ Ebben a lépésben hozzon létre egy osztályt, például jogkivonatokat kezelé
 
 ## <a name="create-your-applications-ui"></a>Az alkalmazás felhasználói Felületüket létrehozni
 
-A **MainPage.xaml** fájl automatikusan létrejöjjön a projekt sablon részeként. Nyissa meg ezt a fájlt, és kövesse az utasításokat:
+A **MainPage.xaml** fájl automatikusan létrejön a projekt sablon részeként. Nyissa meg ezt a fájlt, és kövesse az utasításokat:
 
-1.  Cserélje le az alkalmazás **<Grid>** csomópont:
+* Cserélje le az alkalmazás **rács** csomópont a következő kóddal:
 
     ```xml
     <Grid>
@@ -111,16 +116,16 @@ A **MainPage.xaml** fájl automatikusan létrejöjjön a projekt sablon részek�
     </Grid>
     ```
     
-## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft hitelesítési könyvtár (MSAL) segítségével szolgáltatáshitelesítést egy token a Microsoft Graph API-hoz.
+## <a name="use-msal-to-get-a-token-for-microsoft-graph-api"></a>MSAL segítségével szolgáltatáshitelesítést egy token Microsoft Graph API-hoz.
 
-Ez a szakasz bemutatja, hogyan MSAL segítségével a Microsoft Graph API a szolgáltatáshitelesítést egy token.
+Ez a szakasz bemutatja, hogyan MSAL használandó Microsoft Graph API a szolgáltatáshitelesítést egy token.
 
-1.  A **MainPage.xaml.cs**, MSAL könyvtár mutató hivatkozás hozzáadása az osztályhoz:
+1.  A **MainPage.xaml.cs**, a hivatkozás hozzáadása a osztály MSAL:
 
     ```csharp
     using Microsoft.Identity.Client;
     ```
-2. Cserélje le a kódját a <code>MainPage</code> az osztályban:
+2. Cserélje le a kódját a <code>MainPage</code> osztály az alábbi kódra:
 
     ```csharp
     public sealed partial class MainPage : Page
@@ -181,22 +186,22 @@ Ez a szakasz bemutatja, hogyan MSAL segítségével a Microsoft Graph API a szol
 
 ### <a name="more-information"></a>További információ
 #### <a name="get-a-user-token-interactively"></a>A felhasználó interaktív token beszerzése
-Hívja a `AcquireTokenAsync` módszer eredményezi egy ablak, amely felszólítja a felhasználók jelentkezhetnek be. Alkalmazások általában a felhasználóknak az első alkalommal védett erőforrás eléréséhez szükséges interaktív bejelentkezéshez. Előfordulhat, hogy is szükségük jelentkezzen be, amikor egy csendes jogkivonat megszerzése sikertelen (például, ha a jelszó lejárt).
+Hívása a `AcquireTokenAsync` módszer eredményezi egy ablak, amely felszólítja a felhasználók jelentkezhetnek be. Alkalmazások általában a felhasználóknak az első alkalommal védett erőforrás eléréséhez szükséges interaktív bejelentkezéshez. Előfordulhat, hogy is szükségük jelentkezzen be, amikor egy csendes jogkivonat megszerzése sikertelen. Például akkor, ha a jelszó lejárt.
 
 #### <a name="get-a-user-token-silently"></a>A felhasználói beavatkozás nélkül token beszerzése
-A `AcquireTokenSilentAsync` metódus kezeli a token kérése és megújításokat felhasználói beavatkozás nélkül. Miután `AcquireTokenAsync` végrehajtása az első alkalommal `AcquireTokenSilentAsync` lekérdezni a jogkivonatokat, amelyek további hívások, a védett erőforrások eléréséhez, vagy megújítása jogkivonatok hívások csendes válnak, mert a szokásos módszer.
+A `AcquireTokenSilentAsync` metódus kezeli a token kérése és megújításokat felhasználói beavatkozás nélkül. Után `AcquireTokenAsync` először végrehajtása és a felhasználótól a hitelesítő adatokat, a `AcquireTokenSilentAsync` metódus jogkivonatokat ezt a kérelmet, mert csendes szerezni az jogkivonatok használatával. MSAL jogkivonat gyorsítótára és -megújítás fogja kezelni.
 
-Végül a `AcquireTokenSilentAsync` metódus sikertelen lesz. A hiba oka lehet, hogy a felhasználó rendelkezik-e vagy kijelentkezteti, vagy módosítani a jelszavát egy másik eszközön. Amikor MSAL azt észleli, hogy a probléma megoldásához érdemes egy interaktív műveletet igénylő, akkor következik be egy `MsalUiRequiredException` kivétel. Az alkalmazás kezeli ezt a kivételt, két módon:
+Végül a `AcquireTokenSilentAsync` metódus sikertelen. A hiba okait, hogy felhasználók rendelkeznek-e vagy kijelentkezteti a, vagy módosítani a jelszavát egy másik eszközön lehet. Amikor MSAL azt észleli, hogy a probléma megoldásához érdemes egy interaktív műveletet igénylő, akkor következik be egy `MsalUiRequiredException` kivétel. Az alkalmazás kezeli ezt a kivételt, két módon:
 
-* Az elleni hívás kezdeményezése `AcquireTokenAsync` azonnal. A hívás eredménye jelentkezzen be a felhasználótól. Ebben a mintában általában az online alkalmazások használják, amennyiben a felhasználó nem érhető el kapcsolat nélküli tartalmat. A minta az interaktív telepítő által létrehozott követi, ebben a mintában a művelet az első alkalommal a minta végrehajtása meg. 
-    * Mivel a felhasználó nem használta az alkalmazás `PublicClientApp.Users.FirstOrDefault()` null értéket tartalmaz, és egy `MsalUiRequiredException` kivétel történt. 
-    * A kód a minta majd kezeli a kivételt meghívásával `AcquireTokenAsync`, ennek eredményeképpen a felhasználótól a bejelentkezéshez.
+* Az elleni hívás kezdeményezése `AcquireTokenAsync` azonnal. A hívás eredménye jelentkezzen be a felhasználótól. Ebben a mintában az online alkalmazások használják általában, ahol a felhasználó nincs elérhető kapcsolat nélküli tartalom van. A minta az interaktív telepítő által létrehozott mintát követi. A művelet az első futtatásakor a minta témakörben talál. 
+    * Mivel a felhasználó nem használta az alkalmazás `PublicClientApp.Users.FirstOrDefault()` null értéket tartalmaz, és egy `MsalUiRequiredException` kivétel történt.
+    * A kód a minta majd kezeli a kivételt meghívásával `AcquireTokenAsync`. A hívás eredménye jelentkezzen be a felhasználótól.
 
-* Azt is inkább jelenthet vizuális jelzést felhasználók számára, amelyek egy interaktív bejelentkezés szükség, hogy a megfelelő időben való bejelentkezéshez választhatja. Vagy az alkalmazás újra `AcquireTokenSilentAsync` később. Ezt a mintát gyakran használt, amikor a felhasználók használhatják más alkalmazás működésének szüneteltetése--nélkül például, ha helyben tárolt tartalom érhető el az alkalmazást. Ebben az esetben felhasználók dönthet arról szeretne bejelentkezni a védett erőforrások eléréséhez, vagy az elavult adatok frissítése. Másik lehetőségként az alkalmazás dönt, hogy újra `AcquireTokenSilentAsync` amikor állítják vissza. a hálózati elvégzése után átmenetileg nem érhető el.
+* Vagy ehelyett megadja egy visual arra utal, hogy a felhasználók számára, hogy az interaktív bejelentkezési szükség. Majd jelentkezzen be a megfelelő időben is választhatnak. Vagy az alkalmazás újra `AcquireTokenSilentAsync` később. Ebben a mintában használt gyakran, amikor a felhasználók használhatnak más alkalmazás működésének szüneteltetése nélkül. Például akkor, ha a kapcsolat nélküli tartalom érhető el az alkalmazást. Ebben az esetben felhasználók dönthet arról szeretne bejelentkezni a védett erőforrások eléréséhez, vagy az elavult adatok frissítése. Ellenkező esetben az alkalmazás dönt, hogy próbálja meg újra, vagy `AcquireTokenSilentAsync` amikor állítják vissza a hálózaton, után, átmenetileg nem érhető el.
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>A Microsoft Graph API használatával csak megszerzett jogkivonattal hívható
+## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Microsoft Graph API hívása csak megszerzett jogkivonattal használatával
 
-1. Adja hozzá a következő új metódust a **MainPage.xaml.cs**. A metódus végrehajtásához használatos a `GET` Graph API-val egy engedélyezés fejlécet kérelmet:
+* Adja hozzá a következő új metódust **MainPage.xaml.cs**. Ez a módszer biztosítja a `GET` Graph API kérelmet egy [engedélyezés] fejléc használatával:
 
     ```csharp
     /// <summary>
@@ -227,12 +232,12 @@ Végül a `AcquireTokenSilentAsync` metódus sikertelen lesz. A hiba oka lehet, 
 
 ### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>További információ a ellen védett API REST hívás
 
-Ebben a minta az alkalmazásban a `GetHttpContentWithToken` módszer használható HTTP `GET` kérelem ellen védett erőforrás jogkivonat szükséges, és térjen vissza a tartalom a hívó. Ez a módszer hozzáadja a megszerzett lexikális elem szerepel a *HTTP Authorization fejlécet*. Ez a minta az erőforrás a Microsoft Graph API *me* végpont – amely a felhasználói profil adatait jeleníti meg.
+Ebben a minta az alkalmazásban a `GetHttpContentWithToken` módszer használható HTTP `GET` jogkivonat szükséges, amely védett erőforrás kérelmet. Majd a módszer a hívónak a tartalmat adja vissza. Ez a módszer hozzáadja a megszerzett lexikális elem szerepel a **HTTP engedélyezési** fejléc. Ez a minta az erőforrás a Microsoft Graph API **me** végpont, amely a felhasználói profil adatait jeleníti meg.
 <!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-the-user"></a>A felhasználó kijelentkezik egy olyan metódus hozzáadása
 
-1. A felhasználó kijelentkezik, adja hozzá a következő metódust **MainPage.xaml.cs**:
+* A felhasználó kijelentkezik, adja hozzá a következő metódust **MainPage.xaml.cs**:
 
     ```csharp
     /// <summary>
@@ -257,14 +262,14 @@ Ebben a minta az alkalmazásban a `GetHttpContentWithToken` módszer használhat
     }
     ```
 
-### <a name="more-info-on-sign-out"></a>További információ a kijelentkezési
+### <a name="more-information-on-sign-out"></a>További információ a kijelentkezési
 
-A metódus `SignOutButton_Click` eltávolítja a felhasználót a felhasználói gyorsítótárat MSAL – ez gyakorlatilag megmondja MSAL az aktuális felhasználó törlésére, így a későbbi kérelmek egy jogkivonat csak is sikeres, ha kell interaktív teszi.
-Bár ez a példa az alkalmazás támogatja az egy-egy felhasználóhoz, MSAL szituációkat Ha egyszerre több fiók lehet bejelentkezve – Ha a felhasználó rendelkezik-e a több fiók például e-mail alkalmazást.
+A `SignOutButton_Click` metódus eltávolítja a felhasználót a MSAL felhasználói gyorsítótárból. Ez a módszer gyakorlatilag megmondja MSAL az aktuális felhasználó törlésére. Ezután egy jövőbeli jogkivonatot szerezni sikeres csak akkor, ha kell interaktív történik.
+Ez a példa az alkalmazás támogatja az egy-egy felhasználóhoz. Azonban a MSAL forgatókönyvek, ahol több fiókjával is bejelentkezhet a egyszerre. Példa: Ha a felhasználó rendelkezik-e a különböző fiókok e-mail alkalmazást.
 
 ## <a name="display-basic-token-information"></a>Alapvető lexikális elem adatainak megjelenítése
 
-1. Adja hozzá a következő metódust a **MainPage.xaml.cs** a token kapcsolatos alapvető információk megjelenítése:
+* Adja hozzá a következő metódust **MainPage.xaml.cs** a token kapcsolatos alapvető információk megjelenítése:
 
     ```csharp
     /// <summary>
@@ -285,16 +290,16 @@ Bár ez a példa az alkalmazás támogatja az egy-egy felhasználóhoz, MSAL szi
 
 ### <a name="more-information"></a>További információ
 
-Azonosító-jogkivonatokat keresztül szerzett *OpenID Connect* egy szűk köre a felhasználók számára vonatkozó információkat is tartalmazhat. `DisplayBasicTokenInfo` a token alapvető információkat jeleníti meg: például a felhasználó megjelenített neve és azonosítója, valamint a jogkivonat lejárati dátum és a karakterlánc, amely a hozzáférési token magát. Ez az információ, ezért nehezen olvasható jelenik meg. Is elérte a **Microsoft Graph API hívása** többször gombra, és tekintse meg, hogy ugyanezt a tokent további kérelmeknél lett-e használni. Megtekintheti a lejárati dátum, amikor MSAL úgy dönt, hogy kiterjesztendő az idő a token megújításához.
+Azonosító-jogkivonatokat keresztül szerzett **OpenID Connect** egy szűk köre a felhasználók számára vonatkozó információkat is tartalmazhat. `DisplayBasicTokenInfo` a token alapvető információkat jeleníti meg. Többek között a felhasználó megjelenített neve és azonosítója, a jogkivonatot, és a hozzáférési jogkivonat maga jelölő karakterlánc lejárati dátuma. Ha bejelöli a **Microsoft Graph API hívása** többször gombra kattint, láthatja, hogy ugyanezt a tokent további kérelmeknél lett-e használni. A lejárati dátum, amikor MSAL úgy dönt, hogy a token megújításához ideje kiterjesztett is megtekinthető.
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs portálra*:
-1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app) alkalmazás regisztrálása
-2. Adja meg az alkalmazás nevét 
-3. Győződjön meg arról, hogy az interaktív telepítés beállítás nincs bejelölve
-4. Kattintson a **hozzáadása platformok**, majd jelölje be **natív alkalmazás** , majd kattintson a Mentés
-5. Másolja át a GUID azonosítója, lépjen vissza a Visual Studio, nyissa meg **App.xaml.cs** , és cserélje le `your_client_id_here` az imént regisztrált alkalmazás azonosítójával:
+Most regisztrálnia kell az alkalmazást a Microsoft alkalmazás regisztrációs portálon:
+1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app) alkalmazás regisztrálása.
+2. Adjon meg egy nevet az alkalmazásnak.
+3. Győződjön meg arról, hogy a kívánt beállítást **interaktív telepítés** van *nincs kiválasztva*.
+4. Válassza ki **hozzáadása platformok**, jelölje be **natív alkalmazás**, majd válassza ki **mentése**.
+5. A GUID-azonosítóját **Alkalmazásazonosító**, lépjen vissza a Visual Studio, nyissa meg a **App.xaml.cs**, és cserélje le `your_client_id_here` az imént regisztrált alkalmazás azonosítójával:
 
     ```csharp
     private static string ClientId = "your_application_id_here";
@@ -302,81 +307,80 @@ Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs
 
 ## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Engedélyezze az integrált hitelesítést összevont tartományt (nem kötelező)
 
-Ahhoz, hogy a Windows-hitelesítés egy összevont Azure Active Directory-tartomány használata esetén, az alkalmazás jegyzékében engedélyeznie kell a további lehetőségeket:
+Integrált Windows-hitelesítés egy összevont Azure Active Directory-tartomány használata esetén az alkalmazás jegyzékében kell engedélyezéséhez további funkciókat:
 
-1. Kattintson duplán a **Package.appxmanifest**
-2. Válassza ki **képességek** lapra, és győződjön meg arról, hogy engedélyezve vannak-e a következő beállításokat:
+1. Kattintson duplán a **Package.appxmanifest**.
+2. Válassza ki a **képességek** lapra, és győződjön meg arról, hogy engedélyezve vannak-e a következő beállításokat:
 
     - Vállalati hitelesítés
     - Magánhálózatok (ügyfél és kiszolgáló)
-    - Megosztott felhasználói tanúsítványok 
+    - Megosztott felhasználói tanúsítványok
 
-3. Ezután nyissa meg **App.xaml.cs**, és adja hozzá a következő sort az alkalmazás konstruktorban:
+3. Nyissa meg **App.xaml.cs** , és adja hozzá a következő sort az alkalmazás konstruktorban:
 
     ```csharp
     App.PublicClientApp.UseCorporateNetwork = true;
     ```
 
 > [!IMPORTANT]
-> Integrált Windows-hitelesítés nem értéke alapértelmezés szerint ez a minta, mert a kért alkalmazások a *vállalati hitelesítési* vagy *megosztott felhasználói tanúsítványok* lehetőségekhez szükség egy a Windows áruház és nem minden fejlesztők magasabb szintű végrehajtandó a magasabb szintű ellenőrzést. Engedélyezze ezt a beállítást csak akkor, ha egy összevont Azure Active Directory-tartomány a Windows-hitelesítés szükséges.
+> Integrált Windows-hitelesítés alapértelmezés szerint ez a minta nincs konfigurálva. Igénylő alkalmazások *vállalati hitelesítési* vagy *megosztott felhasználói tanúsítványok* képességek a Windows áruház általi ellenőrzés magasabb szintű igényelnek. Nem minden fejlesztők továbbá kíván végrehajtani a magasabb szintű ellenőrzést. Engedélyezi ezt a beállítást csak akkor, ha egy összevont Azure Active Directory-tartomány a Windows-hitelesítés szükséges.
 
 
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
-Az alkalmazás teszteléséhez nyomja le az `F5` a projektet a Visual Studio futtatásához. A fő ablak kell megjelennie:
+Az alkalmazás teszteléséhez, válassza ki az F5 billentyűt a projekt a Visual Studióban. A fő ablak jelenik meg:
 
 ![Alkalmazás felhasználói felületén](media/active-directory-uwp-v2.md/testapp-ui.png)
 
-Amikor készen áll a tesztelése, kattintson *Microsoft Graph API hívása* és a Microsoft Azure Active Directory (szervezeti fiók) vagy egy Microsoft Account (live.com, outlook.com) fiók használatával jelentkezzen be. Ha most először, a felhasználó bejelentkezhet kérő ablak jelenik meg:
+Ha elkészült, teszteléséhez, válassza ki a **Microsoft Graph API hívása**. Ezután használja a Microsoft Azure Active Directory szervezeti fiókot vagy a Microsoft-fiókkal, például live.com vagy Outlook.com-os, jelentkezzen be. Ha most először, a felhasználó bejelentkezhet kérő ablak jelenik meg:
 
 ![Bejelentkezési oldal](media/active-directory-uwp-v2.md/sign-in-page.png)
 
 ### <a name="consent"></a>Hozzájárulás
-Az első alkalommal bejelentkezik az alkalmazásról, lehetősége lesz az alábbihoz hasonló hozzájárulási képernyő kell explicit módon fogadja el:
+Jelentkezzen be az alkalmazást, először találkozik az alábbihoz hasonló hozzájárulási képernyő. Válassza ki **Igen** explicit módon beleegyezését eléréséhez:
 
-![Hozzájárulás képernyő](media/active-directory-uwp-v2.md/consentscreen.png)
+![Hozzáférés hozzájárulási képernyője](media/active-directory-uwp-v2.md/consentscreen.png)
 ### <a name="expected-results"></a>Kívánt eredmény elérése érdekében
-Felhasználói profil adatait a API-hívási eredmények képernyőn a Microsoft Graph API-hívás által visszaadott kell megjelennie:
+Felhasználói profil adatait a Microsoft Graph API-hívás által visszaadott látja a **API-hívási eredmények** képernyőjén:
 
-![Eredmények képernyő](media/active-directory-uwp-v2.md/uwp-results-screen.PNG)
+![API-hívási eredmények képernyő](media/active-directory-uwp-v2.md/uwp-results-screen.PNG)
 
-Emellett meg kell jelennie a token keresztül szerzett alapvető információkat `AcquireTokenAsync` vagy `AcquireTokenSilentAsync` a Token adatait mezőbe:
+A token keresztül szerzett alapvető információkat is látni `AcquireTokenAsync` vagy `AcquireTokenSilentAsync` a a **Token adatait** mezőbe:
 
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|
-|**Name (Név)** |Felhasználó teljes neve |A felhasználó nagyapja vezeték- és keresztneve.|
-|**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely a felhasználó azonosítására szolgál.|
-|**Jogkivonat lejár** |DateTime |Az az idő, amelynél a jogkivonat lejár. MSAL szükség szerint a token megújításával terjeszti ki a lejárati dátum.|
+|**Name (Név)** |Felhasználó teljes neve|A felhasználó nagyapja vezeték- és keresztneve.|
+|**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely azonosítja a felhasználót.|
+|**Jogkivonat lejár** |DateTime |A jogkivonat lejárati idejének. MSAL szükség szerint a token megújításával terjeszti ki a lejárati dátum.|
 |**Hozzáférési jogkivonat** |Karakterlánc |A lexikális elem karakterlánca küldött HTTP-kérelmek igénylő egy *Authorization fejlécet*.|
 
-#### <a name="see-what-is-in-the-access-token-optional"></a>Megtudhatja, mi az a hozzáférési jogkivonat (nem kötelező)
-Szükség esetén az "Access Token" értéket másolja és illessze be https://jwt.ms dekódolni a, és tekintse meg a jogcímek listája.
+#### <a name="see-whats-in-the-access-token-optional"></a>Megtudhatja, mi az a hozzáférési jogkivonat (nem kötelező)
+Szükség esetén másolja az értéket **Access Token** és illessze be https://jwt.ms dekódolni a, és tekintse meg a jogcímek listája.
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált jogosultságokkal sikeresen telepítették
 
-A Microsoft Graph API megköveteli a *user.read* hatókörrel, hogy a felhasználói profil olvasása. Minden egyes, amely regisztrálva van az alkalmazásregisztrációs portálra az alkalmazás alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Más Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a *Calendars.Read* hatókörrel, hogy a felhasználók naptáraiban lévő listából.
+Microsoft Graph API megköveteli a *user.read* hatókörrel, hogy a felhasználói profil olvasása. Ebben a hatókörben minden egyes, amely regisztrálva van az alkalmazásregisztrációs portálra az alkalmazás alapértelmezés szerint automatikusan kerül. Más Microsoft Graph API-kat, és egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. Microsoft Graph API megköveteli a *Calendars.Read* hatókörrel, hogy a felhasználók naptáraiban lévő listából.
 
-A felhasználók naptáraiban a környezetben, az alkalmazások eléréséhez vegye fel a *Calendars.Read* jogosultságot a az alkalmazás regisztrációs adatait. Adja hozzá a *Calendars.Read* a hatókör a `acquireTokenSilent` hívható meg. 
+A felhasználók naptáraiban a környezetben, az alkalmazások eléréséhez vegye fel a *Calendars.Read* jogosultságot a az alkalmazás regisztrációs adatait. Majd adja hozzá a *Calendars.Read* a hatókör a `acquireTokenSilent` hívható meg. 
 
 > [!NOTE]
-> Felhasználó kérheti további hozzájárulásokat azoktól a hatókörök számának növelésével.
+> Felhasználók további hozzájárulásokat azoktól a hatókörök számának növelésével kérheti.
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="issue-1"></a>1. hiba:
-Az alkalmazást egy összevont Azure Active Directory-tartomány az a következő hibák, amikor bejelentkezési egyike jelenhet meg:
+### <a name="issue-1"></a>1 probléma
+Megjelenhet az alábbi hibaüzenetek valamelyike jelentkezik be az alkalmazást egy összevont Azure Active Directory-tartomány:
  - Nem található a kérelemben érvényes ügyféltanúsítványt.
  - Nem a felhasználó tanúsítványtárolójában található érvényes tanúsítvány.
  - Válasszon egy másik hitelesítési módszert.
 
-**OK:** vállalati és a tanúsítványok képességek nem engedélyezettek.
+**OK:** nincsenek engedélyezve a vállalati és a tanúsítvány képességeket.
 
-**Megoldás:** kövesse a [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional)
+**Megoldás:** kövesse a [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional).
 
-### <a name="issue-2"></a>2. hiba:
-Miután engedélyezte a [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional) és használhatják a Windows Hello a a Windows 10 rendszerű számítógépeket a jelentkezzen be egy olyan környezetben több-factor-hitelesítéssel konfigurált próbálja, tanúsítványok listája jelenik meg, azonban ha a PIN-kód használatát választja, a PIN-kód ablak számára nem jelenik meg.
+### <a name="issue-2"></a>A probléma 2
+Engedélyezi a [összevont tartományt integrált hitelesítés](#enable-integrated-authentication-on-federated-domains-optional) próbálja használni a Windows Hello a Windows 10 rendszerű számítógépeket a bejelentkezni egy környezetében többtényezős hitelesítés konfigurálva. Akkor jelenik meg a tanúsítványok listáját. Azonban ha a PIN-kód használatát választja, a PIN-kód ablak számára nem jelenik meg.
 
-**OK:** ismert futó Windows 10 asztali verzió (működik a Windows 10 Mobile finom) UWP-alkalmazás a webeshitelesítés-Szervezővel kapcsolatos korlátozás
+**OK:** probléma a webeshitelesítés-szervező, amely a Windows 10 asztali környezetben futnak UWP-alkalmazások ismert korlátozása. A Windows 10 Mobile jól működik.
 
-**Megkerülő megoldás:** úgy, hogy jelentkezzen be az egyéb beállításokat, és válassza a felhasználóknak kell *jelentkezzen be egy felhasználónevet és jelszót* Ehelyett válassza meg a jelszavát, és ezután nyissa meg a telefon hitelesítésen keresztül.
-
+**Megkerülő megoldás:** válasszon **jelentkezzen be más beállítások**. Válassza ki **jelentkezzen be egy felhasználónevet és jelszót**. Válassza ki **adja meg a jelszó**. A telefonos hitelesítési folyamatot, majd folytassa.

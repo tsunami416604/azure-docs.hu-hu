@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3adf725f76f744fd1d321668fe892b9703de25de
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 18b47014e6fe3e489f783f675a3498c58981b99f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725530"
 ---
 # <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>Az esemény-vezérelt háttérben történő feldolgozás a WebJobs SDK használatával
 
@@ -322,7 +323,7 @@ További információkért lásd: [futásidőben kötés](../azure-functions/fun
 
 Minden kötési típus információk az Azure Functions dokumentációjában találhatók. Storage üzenetsorába használ példaként, látni fogja a következő információkat az egyes kötés áttekintésével foglalkozó cikkben:
 
-* [Csomagok](../azure-functions/functions-bindings-storage-queue.md#packages) -mi csomag telepítenie ahhoz, hogy a WebJobs SDK projekt a kötés támogatja.
+* [Csomagok](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x) -mi csomag telepítenie ahhoz, hogy a WebJobs SDK projekt a kötés támogatja.
 * [Példák](../azure-functions/functions-bindings-storage-queue.md#trigger---example) -a WebJobs SDK a C# class library Példa érvényes; csak hagyja el a `FunctionName` attribútum.
 * [Attribútumok](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes) – a kötési típus használandó attribútumait.
 * [Konfigurációs](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration) -attribútum tulajdonságainak és konstruktorparaméterek magyarázatot.
@@ -390,6 +391,26 @@ Néhány eseményindítók van építve a feldolgozási felügyelet támogatása
 * **FileTrigger** - beállított `FileProcessor.MaxDegreeOfParallelism` 1.
 
 Ezek a beállítások segítségével győződjön meg arról, hogy a függvény fut egypéldányos egyetlen példányán. Annak érdekében, a függvény csak egyetlen példányát futása közben a webes alkalmazás alkalmazkodnak ki több példánya, a függvény egy figyelő szintű egypéldányos zárolási alkalmazni (`[Singleton(Mode = SingletonMode.Listener)]`). Figyelő zárolásokat a JobHost az indításkor beszerzett. Ha minden három kiterjesztett példányok egyszerre indul el, csak egy példányt a zárolás, és csak egy figyelő kezdődik.
+
+### <a name="scope-values"></a>Hatókörök értékeinek
+
+Megadhat egy **kifejezés-érték hatókör** a Singleton, amely biztosítja, hogy az adott hatókörben függvény összes végrehajtások szerializálni lehessen a. Ily módon részletesebb zárolás végrehajtási lehetővé teszik bizonyos szintű párhuzamosság a függvény által előírtak szerint a követelmények más indítások szerializálásakor. Például az alábbi példában a hatókör kifejezés köti a `Region` értéket a bejövő üzenet. Ha a várólista régiók "Kelet", "Kelet" és "Nyugat" osztályban, majd az üzeneteket, amelyek "Keleti" végrehajtja Feladattervek közben az üzenet "Nyugati" végrehajtja azokat párhuzamosan régió régió 3 üzenet tartalmazza.
+
+```csharp
+[Singleton("{Region}")]
+public static async Task ProcessWorkItem([QueueTrigger("workitems")] WorkItem workItem)
+{
+     // Process the work item
+}
+
+public class WorkItem
+{
+     public int ID { get; set; }
+     public string Region { get; set; }
+     public int Category { get; set; }
+     public string Description { get; set; }
+}
+```
 
 ### <a name="singletonscopehost"></a>SingletonScope.Host
 

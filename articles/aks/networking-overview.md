@@ -6,13 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/04/2018
 ms.author: marsma
-ms.openlocfilehash: 818bae2e05f6a3256ccbf0cbcc901dd337b9a260
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: d6f42a5f3ce907fdb759bef29ca25bdc7fe365d9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757008"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Hálózati konfiguráció Azure Kubernetes szolgáltatás (AKS)
 
@@ -38,7 +39,7 @@ Speciális hálózati használatra konfigurált AKS fürtben lévő csomópontok
 Speciális hálózatkezelés az alábbi előnyöket biztosítja:
 
 * Az egy meglévő virtuális hálózatot a AKS fürt központi telepítése, vagy hozzon létre egy új virtuális hálózat és a fürt IP-alhálózatot.
-* A fürt minden tok-hozzá van rendelve a virtuális IP-címet, és közvetlenül kommunikálhatnak a fürt más három munkaállomás-csoporttal és a többi virtuális gép a vnetben.
+* A fürt minden tok-hozzá van rendelve a virtuális IP-címet, és közvetlenül kommunikálhatnak a fürt más három munkaállomás-csoporttal és más csomópontok a Vneten belül.
 * Egy pod peered Vneten található más szolgáltatásokkal, és a helyszíni hálózatokhoz protokollon keresztül is kapcsolódhatnak ExpressRoute és webhelyek (közötti S2S) VPN-kapcsolatokat. A helyszíni három munkaállomás-csoporttal is érhetők el.
 * Egy Kubernetes szolgáltatás indításához külső vagy belső az Azure Load Balancer keresztül. Is szolgáltatása alapszintű hálózatkezelési.
 * Három munkaállomás-csoporttal az alhálózat, amelyeken engedélyezve Szolgáltatásvégpontok biztonságosan csatlakozhat az Azure-szolgáltatások, például az Azure Storage és az SQL-adatbázis.
@@ -46,7 +47,33 @@ Speciális hálózatkezelés az alábbi előnyöket biztosítja:
 * Három munkaállomás-csoporttal férhetnek hozzá a nyilvános interneten megtalálható erőforrásokhoz. Is szolgáltatása alapszintű hálózatkezelési.
 
 > [!IMPORTANT]
-> Egy speciális hálózati tárolhatja, legfeljebb konfigurált AKS fürt minden csomópontja **30 három munkaállomás-csoporttal**. Minden egyes virtuális hálózat üzembe helyezve az Azure CNI beépülő modul használatára pedig csak **4096 IP-címek** (/ 20).
+> Egy speciális hálózati tárolhatja, legfeljebb konfigurált AKS fürt minden csomópontja **30 három munkaállomás-csoporttal**. Minden egyes virtuális hálózat üzembe helyezve az Azure CNI beépülő modul használatára pedig csak **4096 kiválasztott IP-címek**.
+
+## <a name="advanced-networking-prerequisites"></a>Speciális hálózati Előfeltételek
+
+* A VNet a AKS fürt engedélyeznie kell a kimenő internetkapcsolat.
+* Ne hozzon létre több AKS fürt ugyanazon az alhálózaton.
+* A AKS speciális hálózati nem támogatja a Vnetek használó Azure saját DNS-zónák.
+* AKS fürt nem használhatja `169.254.0.0/16`, `172.30.0.0/16`, vagy `172.31.0.0/16` a Kubernetes szolgáltatás a címtartományt.
+* Rendelkeznie kell a szolgáltatás egyszerű a AKS fürt `Contributor` engedélyeket a meglévő VNet tartalmazó erőforráscsoportot.
+
+## <a name="plan-ip-addressing-for-your-cluster"></a>A fürt IP-címzés tervezése
+
+Speciális hálózati konfigurált fürtök megkövetelik, hogy további tervezésre. A virtuális hálózat és az alhálózat méretét kell elhelyezni az is három munkaállomás-csoporttal szeretné futtatni a számát, valamint a fürt a csomópontok számát.
+
+A Vneten belül a megadott alhálózat IP-címet a három munkaállomás-csoporttal és a fürtcsomópontok rendeli. Minden csomópont van konfigurálva egy elsődleges IP-cím, amelyen a csomópont és 30 további IP-címek Azure CNI által előre konfigurálva van a csomópont ütemezett három munkaállomás-csoporttal társított IP. Ha a fürt a horizontális, minden csomópont hasonlóan az alhálózatból származó IP-címekkel rendelkező van beállítva.
+
+Egy AKS fürt IP-cím tervezése áll egy Vnetet, a csomópont és három munkaállomás-csoporttal, legalább egy alhálózatot és egy Kubernetes szolgáltatás-címtartományt.
+
+| Címtartomány / az Azure erőforrás | Korlátozásai és méretezése |
+| --------- | ------------- |
+| Virtuális hálózat | Lehet, hogy Azure VNet akkora, mint /8, de előfordulhat, hogy csak 4096 konfigurált IP-címeket. |
+| Alhálózat | A csomópont és három munkaállomás-csoporttal elég nagynak kell lennie. A minimális alhálózati méretének kiszámításához: (csomópontok száma) + (csomópontok száma * három munkaállomás-csoporttal csomópontonként). Egy 50 csomópontot tartalmazó fürtben: (50) + (50 * 30) = 1,550, az alhálózaton kell lennie a /21 vagy nagyobb. |
+| Kubernetes szolgáltatás címtartománya | Ez a tartomány nem kell minden hálózati elem által használt vagy ez a virtuális hálózat csatlakozik. Szolgáltatás címe CIDR /12 kisebbnek kell lennie. |
+| Kubernetes DNS szolgáltatás IP-címe | IP-címnek a Kubernetes szolgáltatás-címtartományt, amely a fürtszolgáltatás felderítése (kube-dns) által használható. |
+| Docker híd cím | IP-címet (a CIDR jelölésrendszer) használja a Docker hidat IP-cím csomópontján. Alapértelmezett 172.17.0.1/16. |
+
+Mivel minden egyes virtuális hálózat üzembe helyezve az Azure CNI beépülő modul használatára pedig csak a korábban említett **4096 kiválasztott IP-címek**. Speciális hálózati tárolhatja, legfeljebb konfigurálva a fürt minden csomópontja **30 három munkaállomás-csoporttal**.
 
 ## <a name="configure-advanced-networking"></a>Speciális hálózatkezelés konfigurálása
 
@@ -66,14 +93,6 @@ Az alábbi képernyőfelvételen az Azure portálról AKS fürt létrehozása so
 
 ![Speciális hálózati konfiguráció az Azure-portálon][portal-01-networking-advanced]
 
-## <a name="plan-ip-addressing-for-your-cluster"></a>A fürt IP-címzés tervezése
-
-Speciális hálózati konfigurált fürtök megkövetelik, hogy további tervezésre. A virtuális hálózat és az alhálózat méretét szeretné futtatni egyidejűleg a fürt, valamint a méretezési követelmények három munkaállomás-csoporttal száma kell elhelyezni.
-
-A Vneten belül a megadott alhálózat IP-címet a három munkaállomás-csoporttal és a fürtcsomópontok rendeli. Egy elsődleges IP-cím, amely az IP-címe a csomópont önmaga és 30 további IP-címek Azure CNI által előre konfigurálva van a csomópont ütemezett három munkaállomás-csoporttal társított minden egyes csomópont van konfigurálva. Ha a fürt a horizontális, minden csomópont hasonlóan az alhálózatból származó IP-címekkel rendelkező van beállítva.
-
-Mivel minden egyes virtuális hálózat üzembe helyezve az Azure CNI beépülő modul használatára pedig csak a korábban említett **4096 IP-címek** (/ 20). Speciális hálózati tárolhatja, legfeljebb konfigurálva a fürt minden csomópontja **30 három munkaállomás-csoporttal**.
-
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 Az alábbi kérdések és válaszok érvényesek a **speciális** olyan hálózati beállításokat.
@@ -92,7 +111,7 @@ Az alábbi kérdések és válaszok érvényesek a **speciális** olyan hálóza
 
 * *Legfeljebb három munkaállomás-csoporttal telepíthető konfigurálható csomópont van?*
 
-  Alapértelmezés szerint minden egyes csomópontokra legfeljebb 30 három munkaállomás-csoporttal. A maximális értéket csak módosításával jelenleg módosíthatja a `maxPods` tulajdonság a fürtben egy erőforrás-kezelő sablon telepítése során.
+  Alapértelmezés szerint minden egyes csomópontokra legfeljebb 30 három munkaállomás-csoporttal. A maximális érték csak módosításával módosítható a `maxPods` tulajdonság a fürtben egy erőforrás-kezelő sablon telepítése során.
 
 * *Hogyan konfigurálhatók a további tulajdonságokat a(z) alhálózatra, AKS fürt létrehozása során létrehozott? Például Szolgáltatásvégpontok.*
 

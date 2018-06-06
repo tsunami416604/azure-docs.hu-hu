@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: faf526082a9a38d5d98443ff2b74eac4eef1ca08
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a0e05543734ae0604149d18564ae1bc1eff1892b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714629"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurálja a virtuálisgép-méretezési készlet által felügyelt szolgáltatás Identity (MSI) Azure parancssori felület használatával
 
@@ -119,8 +120,7 @@ Ez a szakasz végigvezeti egy VMSS létrehozása és hozzárendelése egy felhas
 
 2. Hozzon létre egy felhasználó lehet hozzárendelve identitás használatával [az identitás létrehozása](/cli/azure/identity#az-identity-create).  A `-g` paraméter határozza meg az erőforráscsoportot, ahol a felhasználó identitása jön létre, és a `-n` paraméter határozza meg a nevét. Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterértékeket a saját értékekkel:
 
-    > [!IMPORTANT]
-    > A felhasználói identitások létrehozása csak alfanumerikus és kötőjel (0 – 9 vagy a-z vagy A-Z vagy -) karaktereket. Emellett nevét kell korlátozni a virtuális gép/VMSS helyes működéséhez hozzárendelés 24 karakter hosszúságot. Biztonsági frissítések ellenőrzése. További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
     ```azurecli-interactive
@@ -176,10 +176,10 @@ A válasz tartalmazza a létrehozott, az alábbihoz hasonló a felhasználói id
    }
    ```
 
-2. Rendelje hozzá a felhasználó identitását a VMSS használatával [az vmss identitás hozzárendelése](/cli/azure/vmss/identity#az_vm_assign_identity). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<VM NAME>` paraméterértékeket a saját értékekkel. A `<USER ASSIGNED IDENTITY ID>` lesz a felhasználó identitása erőforrás `id` tulajdonság, mert az előző lépésben létrehozott:
+2. Rendelje hozzá a felhasználó identitását a VMSS használatával [az vmss identitás hozzárendelése](/cli/azure/vmss/identity#az_vm_assign_identity). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterértékeket a saját értékekkel. A `<USER ASSIGNED IDENTITY ID>` lesz a felhasználó identitása erőforrás `id` tulajdonság, mert az előző lépésben létrehozott:
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Egy Azure VMSS identitás hozzárendelt felhasználó eltávolítása
@@ -187,15 +187,15 @@ A válasz tartalmazza a létrehozott, az alábbihoz hasonló a felhasználói id
 > [!NOTE]
 >  Az összes hozzárendelt felhasználói azonosítók eltávolítása egy virtuálisgép-méretezési csoportban jelenleg nem támogatott, kivéve, ha az identitás hozzárendelt rendszer. 
 
-Ha a VMSS több hozzárendelt felhasználói identitást, is távolítja el az utolsó használatával [az vmss identitás eltávolítása](/cli/azure/vmss/identity#az-vmss-identity-remove). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<VM NAME>` paraméterértékeket a saját értékekkel. A `<MSI NAME>` a virtuális gép használatával az identitási szakaszban találhatók a felhasználó identitása name tulajdonság `az vm show`:
+Ha a VMSS több hozzárendelt felhasználói identitást, is távolítja el az utolsó használatával [az vmss identitás eltávolítása](/cli/azure/vmss/identity#az-vmss-identity-remove). Ügyeljen arra, hogy cserélje le a `<RESOURCE GROUP>` és `<VMSS NAME>` paraméterértékeket a saját értékekkel. A `<MSI NAME>` a virtuális gép használatával az identitási szakaszban találhatók a felhasználó identitása name tulajdonság `az vm show`:
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
+az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
 ```
 Ha a VMSS a hozzárendelt rendszer és a felhasználói identitások is rendelkezik, eltávolíthatja az összes felhasználó hozzárendelt identitások váltásával hozzárendelt csak a rendszer. Használja az alábbi parancsot: 
 
 ```azurecli-interactive
-az vmss update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null
+az vmss update -n <VMSS NAME> -g <RESOURCE GROUP> --set identity.type='SystemAssigned' identity.identityIds=null
 ```
 
 ## <a name="next-steps"></a>További lépések

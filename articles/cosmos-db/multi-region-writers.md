@@ -5,19 +5,20 @@ services: cosmos-db
 author: rimman
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cc66b2f506d81a7ba10b26c3b24287472e890682
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724907"
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális léptékű több főkiszolgálós 
  
-Fejlesztés globálisan elosztott alkalmazásokat, amelyek válaszolni helyi késések pedig konzisztens-adatok nézeteinek világszerte karbantartása kihívást probléma. Az ügyfelek globálisan elosztott adatbázisok használható, mert a szükséges adatok elérési késést biztosít javítása, magas rendelkezésre állásának eléréséhez, és győződjön meg arról, garantált vész-helyreállítási és, (4) az üzleti követelményeinek megfelelően. Az Azure Cosmos Adatbázisba több főkiszolgálós biztosít magas szintű rendelkezésre állási (99.999 %), egyjegyű ezredmásodperces késési adatok és a méretezhetőség, beépített átfogó és rugalmas ütközés felbontás támogatása írni. Ezek a funkciók jelentősen leegyszerűsíti globálisan elosztott alkalmazások fejlesztésének. Globálisan elosztott alkalmazásokhoz, több főkiszolgálós támogatás elengedhetetlen. 
+Fejlesztés globálisan elosztott alkalmazásokat, amelyek válaszolni helyi késések pedig konzisztens-adatok nézeteinek világszerte karbantartása kihívást probléma. Az ügyfelek globálisan elosztott adatbázisok használható, mert a szükséges adatok elérési késést biztosít javítása, magas rendelkezésre állás biztosítása, garantált katasztrófa-helyreállítás, és az üzleti követelményeinek megfelelően. Az Azure Cosmos Adatbázisba több főkiszolgálós biztosít magas szintű rendelkezésre állási (99.999 %), egyjegyű ezredmásodperces késési adatok és a méretezhetőség, beépített átfogó és rugalmas ütközés felbontás támogatása írni. Ezek a funkciók jelentősen megkönnyíti a globálisan elosztott alkalmazások fejlesztéséhez. Globálisan elosztott alkalmazásokhoz, több főkiszolgálós támogatás elengedhetetlen. 
 
 ![Több főkiszolgálós architektúrája](./media/multi-region-writers/multi-master-architecture.png)
 

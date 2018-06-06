@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: d25709fb4abb1b8a35596c3dc246f7419a99419b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702176"
 ---
-# <a name="about-point-to-site-vpn-routing"></a>Pont – hely típusú VPN-útválasztási információ
+# <a name="about-point-to-site-vpn-routing"></a>Tudnivalók a pont–hely VPN-útválasztásról
 
 Ez a cikk segít megérteni, hogyan viselkedik Azure pont – hely típusú VPN-útválasztást. P2S VPN útválasztási működése függ, az ügyfél operációs rendszer, a VPN-kapcsolatot, és hogyan a virtuális hálózatokon (Vnetek) csatlakoznak egymáshoz használt protokollt.
 
@@ -228,7 +229,7 @@ Minden ügyfele csak VNet1 fér hozzá.
 
 ## <a name="multivnets2sbranchbgp"></a>Több Vnetek csatlakoztatott S2S és egy fiókiroda (BGP)
 
-Ebben a példában a pont – hely típusú VPN gateway-kapcsolatot VNet1 szolgál. VNet1 VNet2 csatlakozik egy telephelyek közötti VPN-kapcsolat használatával. VNet2 VNet3 csatlakozik egy telephelyek közötti VPN-kapcsolat használatával. Nincs közvetlen társviszony-létesítés vagy telephelyek közötti VPN-alagút a VNet1 és VNet3 hálózatok között. VNet3 egy fiókiroda (hely1) telephelyek közötti VPN-kapcsolaton keresztül kapcsolódik. Az összes VPN-kapcsolatok nem futtatja a BGP. Az összes VPN-kapcsolat futtatja a BGP.
+Ebben a példában a pont – hely típusú VPN gateway-kapcsolatot VNet1 szolgál. VNet1 VNet2 csatlakozik egy telephelyek közötti VPN-kapcsolat használatával. VNet2 VNet3 csatlakozik egy telephelyek közötti VPN-kapcsolat használatával. Nincs közvetlen társviszony-létesítés vagy telephelyek közötti VPN-alagút a VNet1 és VNet3 hálózatok között. VNet3 egy fiókiroda (hely1) telephelyek közötti VPN-kapcsolaton keresztül kapcsolódik. Az összes VPN-kapcsolat futtatja a BGP.
 
 A Windows ügyfelek hozzáférhetnek a Vneteket, és a telephelyek közötti VPN-kapcsolat, de VNet2, VNet3 és hely1 útvonalak használatával csatlakoztatott helyek manuálisan hozzá kell adni az ügyfélnek. Nem Windows-ügyfelek hozzáférhetnek a virtuális hálózatokat és a kézi beavatkozás nélküli webhelyek VPN-kapcsolattal csatlakoztatott helyek. A hozzáférés tranzitív, és az ügyfelek az összes kapcsolódó Vnetek és helyeken (helyszíni) erőforrásait is elérik.
 

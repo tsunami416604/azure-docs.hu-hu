@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: b8ddd43fb19b3800840180c458268301b5ec26f6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: edefb6637dae2ff00144f0b7c07ad974430d096b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794547"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Az Application Insights Java webes alkalmazásokhoz, amelyek még élő
-
 
 Ha már a J2EE kiszolgálón futó webalkalmazás, figyelés megkezdése a [Application Insights](app-insights-overview.md) kód módosításokat, vagy a projekt újrafordítása szükségessége nélkül. Ezzel a kapcsolóval akkor a kiszolgáló, a nem kezelt kivételek és a teljesítményszámlálók elküldött HTTP-kérelmek adatainak beolvasása.
 
@@ -136,4 +136,4 @@ Részletesebb mérőszámokért kattintson bármelyik diagramra.
 * [Webalkalmazás-tesztek beállítása](app-insights-monitor-web-app-availability.md) győződjön meg arról, az alkalmazás marad élő és rugalmas.
 * [Naplózási nyomkövetés rögzítése](app-insights-java-trace-logs.md)
 * [Keresést az események és a naplók](app-insights-diagnostic-search.md) problémák diagnosztizálásához.
-
+* [A rugó rendszerindító inicializáló alkalmazás konfigurálása](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)

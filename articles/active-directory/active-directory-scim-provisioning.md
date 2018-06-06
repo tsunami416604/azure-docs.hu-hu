@@ -16,13 +16,14 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 19a1ae7ae7acc6fe09a529dd174363735343027e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 756509648638693689c8fc539a660809728cd5d3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698747"
 ---
-# <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A tartományok közötti Identity Management rendszert használ automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
+# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
 ## <a name="overview"></a>Áttekintés
 Azure Active Directory (Azure AD) automatikusan is konfigurálta a felhasználókat és csoportokat, a felülettel webszolgáltatás által az fronted alkalmazás vagy identitás tároló definiálva a [a tartományok közötti Identity Management (SCIM) 2.0-s protokoll specifikációja rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19). Az Azure Active Directory küldhet kérelmek létrehozása, módosítása, illetve törlési rendelt felhasználók és csoportok a webszolgáltatás. A webszolgáltatás majd így felszabadulhatnak ezeket a kérelmeket, olyan műveleteket végez a célként megadott identitás tárolására. 
@@ -30,12 +31,13 @@ Azure Active Directory (Azure AD) automatikusan is konfigurálta a felhasználó
 ![][0]
 *1. ábra: A webszolgáltatáson keresztül identitás tárolóhoz az Azure Active Directory kiépítés.*
 
-Ez a funkció használható együtt a "állapotba hozása a saját alkalmazás" képességgel rendelkező Azure AD-ben engedélyezése az egyszeri bejelentkezést és automatikus kiépítést alkalmazásokat, amelyek adja meg, vagy amelyek fronted SCIM webszolgáltatás által a felhasználói.
+Ez a funkció használható együtt a "állapotba hozása a saját alkalmazás" képességgel rendelkező Azure AD-ben. Ez a funkció lehetővé teszi, hogy egyszeri bejelentkezést és automatikus kiépítést alkalmazásokat, amelyek a rendszer fronted SCIM webszolgáltatás által a felhasználó.
 
 Számos két alkalmazási helyzetei SCIM használata az Azure Active Directoryban.
 
-* **Felhasználók és csoportok SCIM támogató alkalmazások kiépítés** alkalmazásokat, amelyek támogatják az SCIM 2.0 és OAuth tulajdonosi jogkivonatok használnak, a hitelesítés az Azure AD konfigurálása nélkül működik.
-* **Az alkalmazások saját kiépítési megoldás létrehozása, amely támogatja a más API-alapú üzembe helyezés** nem SCIM alkalmazások, létrehozhat egy SCIM végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogatja-e az API-k között a felhasználók átadása. Segítséget a SCIM végpont, nincsenek közös nyelvi infrastruktúra (CLI) tárak, amelyek bemutatják a adjon meg egy SCIM végpont és SCIM üzenetek fordítása mintakódok együtt.  
+* **Felhasználók és csoportok SCIM támogató alkalmazások kiépítés** -alkalmazásokat, amelyek támogatják az SCIM 2.0 és OAuth tulajdonosi jogkivonatok használnak, a hitelesítés az Azure AD konfigurálása nélkül működik.
+  
+* **Az alkalmazások saját kiépítési megoldás létrehozása, amely támogatja a más API-alapú üzembe helyezés** -nem SCIM alkalmazások, létrehozhat egy SCIM végpont lefordítani az Azure AD SCIM végpont és az alkalmazás támogatja-e az API-k között a felhasználók átadása. Segítséget a SCIM végpont, nincsenek közös nyelvi infrastruktúra (CLI) tárak, amelyek bemutatják a adjon meg egy SCIM végpont és SCIM üzenetek fordítása mintakódok együtt.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Felhasználók és csoportok SCIM támogató alkalmazások kiépítése
 Az Azure AD beállítható úgy, hogy automatikusan a hozzárendelt rendelkezés felhasználókat és csoportokat, amelyek megvalósítják az alkalmazások egy [tartományok közötti identitáskezeléshez 2 (SCIM) rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19) webes szolgáltatás, és fogadja el az OAuth tulajdonosi jogkivonatokat a hitelesítéshez. Belül a SCIM 2.0-s specifikációnak alkalmazások követelménynek kell megfelelnie:
@@ -51,7 +53,7 @@ Az Azure AD beállítható úgy, hogy automatikusan a hozzárendelt rendelkezés
 Kérje meg az alkalmazás-szolgáltatót, és ezeket a követelményeket is kompatibilisek állapotkimutatások az alkalmazás szolgáltató dokumentációját.
 
 ### <a name="getting-started"></a>Első lépések
-Ez a cikk a leírt SCIM profil támogató alkalmazások Azure Active Directory, az Azure AD application gallery a "nem galéria alkalmazás" funkciójával lehet csatlakoztatni. A csatlakozás után a Azure AD át 20 percenként, ahol azt az alkalmazás SCIM végpont hozzárendelt felhasználók és csoportok, lekérdezi és hoz létre vagy módosítja őket a hozzárendelés részletek alapján fut a szinkronizálási folyamat.
+Ez a cikk a leírt SCIM profil támogató alkalmazások Azure Active Directory, az Azure AD application gallery a "nem galéria alkalmazás" funkciójával lehet csatlakoztatni. A csatlakozás után az Azure AD fut a szinkronizálási folyamat akár 40 perces, ahol azt az alkalmazás SCIM végpont hozzárendelt felhasználók és csoportok, lekérdezi és hoz létre vagy módosítja őket a hozzárendelés részletek alapján.
 
 **Alkalmazást, amely támogatja a SCIM:**
 
@@ -85,7 +87,7 @@ Ez a cikk a leírt SCIM profil támogató alkalmazások Azure Active Directory, 
 Ha a kezdeti szinkronizálás elindult, a **naplók** lapon figyelemmel a folyamat állapotát, amely tartalmazza az alkalmazás a létesítési szolgáltatás által végzett összes műveletet. Olvassa el az Azure AD-naplók kiépítés módjáról további információkért lásd: [automatikus felhasználói fiók kiépítése jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 >[!NOTE]
->A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 20 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. 
+>A kezdeti szinkronizálás végrehajtásához ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amíg a szolgáltatás fut-nál több időt vesz igénybe. 
 
 
 ## <a name="building-your-own-provisioning-solution-for-any-application"></a>Bármely alkalmazás a saját kiépítési megoldás létrehozása
@@ -96,10 +98,10 @@ Itt látható, hogyan működik:
 1. Az Azure AD biztosít a közös nyelvi infrastruktúra szalagtár nevű [Microsoft.SystemForCrossDomainIdentityManagement](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/). Rendszerintegrátorok és a fejlesztők használhatja ezt a szalagtárat hozhat létre és telepíthet egy SCIM-alapú webszolgáltatás végpontja csatlakozni tudnak az Azure AD bármely alkalmazás identitás tárolására.
 2. A webszolgáltatás a szabványos felhasználói séma hozzárendelése a felhasználó séma- és az alkalmazás által igényelt protokoll hozzárendelések valósíthatók meg.
 3. A végponti URL-cím regisztrálva van az Azure AD-egyéni alkalmazás az alkalmazás-katalógus részeként.
-4. Ez az alkalmazás az Azure AD-felhasználók és csoportok vannak hozzárendelve. Hozzárendelés, akkor a célalkalmazásnak történő szinkronizálásának engedélyezése egy várólistára kerülnek. A szinkronizálási folyamat a várólista kezelése 20 percenként fut.
+4. Ez az alkalmazás az Azure AD-felhasználók és csoportok vannak hozzárendelve. Hozzárendelés, akkor a célalkalmazásnak történő szinkronizálásának engedélyezése egy várólistára kerülnek. A szinkronizálási folyamat a várólista kezelése 40 percenként fut.
 
 ### <a name="code-samples"></a>Kódminták
-Ez a folyamat egyszerűbb, amelynek annak [Kódminták](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) feltéve, hogy hozzon létre egy SCIM webszolgáltatási végpontot, és mutassa be, az Automatikus kiépítés. Egy minta megtartja sorait a CSV-felhasználók és csoportok közti szolgáltatóra van.  A másik pedig a szolgáltató, amely az Amazon Web Services identitás és hozzáférés-kezelés szolgáltatás.  
+A folyamat megkönnyítése, [Kódminták](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) feltéve, hogy hozzon létre egy SCIM webszolgáltatási végpontot, és mutassa be, az Automatikus kiépítés. Egy minta megtartja sorait a CSV-felhasználók és csoportok közti szolgáltatóra van.  A másik pedig a szolgáltató, amely az Amazon Web Services identitás és hozzáférés-kezelés szolgáltatás.  
 
 **Előfeltételek**
 
@@ -107,7 +109,6 @@ Ez a folyamat egyszerűbb, amelynek annak [Kódminták](https://github.com/Azure
 * [Azure SDK for .NET](https://azure.microsoft.com/downloads/)
 * Windows számítógép, amely támogatja az ASP.NET keretrendszer 4.5-ös, a SCIM végpont használható. Ezen a számítógépen a felhőből elérhetőnek kell lennie.
 * [Prémium szintű Azure AD egy próba- vagy licencelt verziójával egy Azure-előfizetés](https://azure.microsoft.com/services/active-directory/)
-* Az Amazon AWS minta van szükség a szalagtárak a [AWS eszközkészlet a Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html). További információkért lásd: a minta az információs fájl.
 
 ### <a name="getting-started"></a>Első lépések
 Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Azure AD végrehajtásához legkönnyebben létrehozásához és telepítéséhez a kódminta, amely a kiépített felhasználók számára egy vesszővel tagolt (CSV) fájl.
@@ -116,19 +117,16 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
 
 1. A kód a minta csomag: [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. Bontsa ki a csomagot, és helyezze el a Windows-számítógép C:\AzureAD-BYOA-Provisioning-Samples\ például egy helyen.
-3. Ebben a mappában nyissa meg a Visual Studio FileProvisioningAgent megoldás.
-4. Válassza ki **eszközök > Kódtárcsomag-kezelő > Csomagkezelő konzol**, és a következő parancsok a FileProvisioningAgent projekt oldani a megoldás hivatkozásokat:
+3. Ebben a mappában indítsa el a Visual Studio FileProvisioning\Host\FileProvisioningService.csproj.
+4. Válassza ki **eszközök > NuGet-Csomagkezelő > Csomagkezelő konzol**, és a következő parancsok a FileProvisioningService projekt oldani a megoldás hivatkozásokat:
   ```` 
-   Install-Package Microsoft.SystemForCrossDomainIdentityManagement
-   Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-   Install-Package Microsoft.Owin.Diagnostics
-   Install-Package Microsoft.Owin.Host.SystemWeb
+   Update-Package -Reinstall
   ````
-5. A FileProvisioningAgent projekt felépítéséhez.
-6. Indítsa el a (rendszergazdaként) a Windows parancssori alkalmazás, és használja a **cd** paranccsal lépjen be a **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** mappa.
+5. A FileProvisioningService projekt felépítéséhez.
+6. Indítsa el a (rendszergazdaként) a Windows parancssori alkalmazás, és használja a **cd** paranccsal lépjen be a **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**mappa.
 7. A következő parancsot, a Windows-számítógép IP-cím vagy tartománynév kiszolgálónevét < ip-cím > cseréje:
   ````   
-   FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
+   FileSvc.exe http://<ip-address>:9000 TargetFile.csv
   ````
 8. A Windows **Windows-beállítások > hálózat és Internet beállítások**, jelölje be a **Windows tűzfal > Speciális beállítások**, és hozzon létre egy **bejövő forgalomra vonatkozó szabály** , amely lehetővé teszi, hogy a befelé irányuló port 9000.
 9. Ha a Windows-számítógép útválasztó mögött, az útválasztó kell megadni a portot, amely kommunikál az internettel 9000, és a port 9000 a Windows-számítógép közötti hálózati hozzáférési fordítási végrehajtásához. Ebben a konfigurációban kell az Azure AD-be lesz hozzáférése ehhez a végponthoz, a felhőben.
@@ -359,11 +357,11 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 | Telefax-TelephoneNumber |.value phoneNumbers [típus eq "fax"] |
 | givenName |name.givenName |
 | Beosztás |cím |
-| mail |e-mailek [típus eq "munkahelyi"] .value |
+| levelezés |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |externalId |
-| Manager |Manager |
+| kezelő |kezelő |
 | Mobileszköz |.value phoneNumbers [típus eq "mobileszköz"] |
-| objectId |id |
+| objectId |ID (Azonosító) |
 | Irányítószám |[típus eq "munkahelyi"] címek .postalCode |
 | proxy-Addresses |[Írja be az "egyéb" eq] e-maileket. Érték |
 | fizikai-kézbesítés-OfficeName |[Írja be az "egyéb" eq] címek. Formázott |
@@ -376,10 +374,10 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 | Azure Active Directory-csoport | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
-| mail |e-mailek [típus eq "munkahelyi"] .value |
+| levelezés |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |displayName |
 | tag |tag |
-| objectId |id |
+| objectId |ID (Azonosító) |
 | proxyAddresses |[Írja be az "egyéb" eq] e-maileket. Érték |
 
 ## <a name="user-provisioning-and-de-provisioning"></a>Felhasználói üzembe helyezést és megszüntetést
@@ -534,18 +532,18 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
   ````
-  Az érték a attribútumok lekérdezési paraméter "id" azt jelzi, hogy, hogy ha egy felhasználói objektum, amely eleget tesz a kifejezést a szűrő lekérdezési paraméter értéke, akkor a szolgáltatás várhatóan válaszolni egy "urn: ietf:params:scim:schemas:core:2.0: Felhasználó"vagy"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"erőforrás, például csak az adott erőforrás"id"attribútum értéke.  Értékét a **azonosító** a kérelmező ismert attribútum. A szűrő lekérdezési paraméter; érték szerepel. az azt kérő célja ténylegesen kérelmet a minimális erőforrás megjelenítése felel meg a szűrési kifejezés arra utal, hogy az összes ilyen objektum létezik-e.   
+  Az attribútumok lekérdezési paraméter, a "ID", amely jelzi, ha egy felhasználói objektum, amely eleget tesz a kifejezést a szűrő lekérdezési paraméter értéke, akkor a szolgáltatás várhatóan válaszolni egy "urn: ietf:params:scim:schemas:core:2.0: Felhasználó"vagy"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"erőforrás, például csak az adott erőforrás"ID"attribútum értéke.  Értékét a **azonosító** a kérelmező ismert attribútum. A szűrő lekérdezési paraméter; érték szerepel. az azt kérő célja ténylegesen kérelmet a minimális erőforrás megjelenítése felel meg a szűrési kifejezés arra utal, hogy az összes ilyen objektum létezik-e.   
 
   Ha a szolgáltatás a Microsoft által előírt végrehajtási SCIM szolgáltatások közös nyelvi infrastruktúra könyvtárak segítségével lett létrehozva, majd a kérést lefordítását a szolgáltató lekérdezési metódus hívásakor. A paraméterek argumentumnak az értékeként megadott objektum tulajdonságainak értékének a következők: 
   
   * a paraméterek. AlternateFilters.Count: 2. régiója
-  * a paraméterek. AlternateFilters.ElementAt(x). AttributePath: "id"
+  * a paraméterek. AlternateFilters.ElementAt(x). AttributePath: "ID"
   * a paraméterek. AlternateFilters.ElementAt(x). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
   * a paraméterek. AlternateFilter.ElementAt(x). ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * a paraméterek. AlternateFilters.ElementAt(y). AttributePath: "manager"
   * a paraméterek. AlternateFilters.ElementAt(y). ÖsszehasonlítóOperátor: ComparisonOperator.Equals
   * a paraméterek. AlternateFilter.ElementAt(y). ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-  * a paraméterek. RequestedAttributePaths.ElementAt(0): "id"
+  * a paraméterek. RequestedAttributePaths.ElementAt(0): "ID"
   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
   Itt lehet, hogy az index x értékének 0 és lehet, hogy az index y értéke 1, vagy lehet, hogy az x értéknek 1 és y értékének lehet 0, attól függően, hogy a szűrő lekérdezési paraméter kifejezések sorrendjét.   

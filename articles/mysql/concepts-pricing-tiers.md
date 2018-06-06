@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: e12010f225b5f8db247d1b751615cbedd413dfb3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 05/18/2018
+ms.openlocfilehash: 0778492e6ff63bc80e9fc9d2c252f19d4ff78529
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757485"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -23,7 +24,7 @@ Létrehozhat egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis az egyik három
 |:---|:----------|:--------------------|:---------------------|
 | Számítási létrehozása | 4, 5. generációból generációs | 4, 5. generációból generációs | Gen 5 |
 | Virtuális magok | 1, 2 | 2, 4, 8, 16 és 32 |2, 4, 8, 16 |
-| Memória mennyisége vCore | Alapterv | 2 x Basic | Általános célú x 2 |
+| Memória mennyisége vCore | 2 GB | 5 GB | 10 GB |
 | Tároló mérete | 5 GB és 1 TB | 5 GB és 2 TB | 5 GB és 2 TB |
 | Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági mentés megőrzési időtartam | 7-35 nap | 7-35 nap | 7-35 nap |
@@ -38,7 +39,7 @@ Válasszon egy tarifacsomagot, használja a következő táblázat kiindulási p
 
 Miután létrehozott egy kiszolgálót, vCores száma módosítható felfelé vagy lefelé (belül az azonos árképzési szint) másodpercen belül. Is egymástól függetlenül beállíthatja másolatot tároló és a biztonsági mentés megőrzési időszak felfelé vagy lefelé alkalmazás állásidő nélkül. Az árképzési szint vagy a biztonsági másolatok tárolási típus nem módosítható, miután a kiszolgáló akkor jön létre. További információkért lásd: a [válik erőforrások](#scale-resources) szakasz.
 
-## <a name="compute-generations-vcores-and-memory"></a>Számítási generációja, vCores és memória
+## <a name="compute-generations-and-vcores"></a>Számítási generációt és vCores
 
 A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az alapul szolgáló hardverben, a logikai Processzor. Jelenleg két számítási generációja, generációs 4. és 5. generációból közül választhat. 4 logikai processzorok Intel E5-2673 v3 alapulnak. generációból (Haswell) 2.4-GHz-es processzor. 5 logikai processzorok Intel E5-2673 v4 alapulnak. generációból (Broadwell) 2.3-GHz-es processzor. 4. generációból és generációs 5 (az "X" jelöli elérhető), a következő régiókban érhetők el. 
 
@@ -62,14 +63,12 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 | Délkelet-Ázsia | X | X |
 | Kelet-Ausztrália |  | X |
 | Délkelet-Ausztrália |  | X |
-| Közép-India | X |  |
-| Nyugat-India | X |  |
+| Közép-India | X | X |
+| Nyugat-India | X | X |
 | Dél-India |  | X |
 | Kelet-Japán | X | X |
 | Nyugat-Japán | X | X |
 | Korea déli régiója |  | X |
-
-Attól függően, hogy ez a tarifacsomag minden vCore ki van építve a meghatározott RAM mennyiséggel. Növeléséhez vagy csökkentéséhez tegye a következőket vCores a kiszolgáló, a memória növeli vagy csökkenti arányosan. Az általános célú réteg biztosít kettős az alapszintű rétegben képest vCore memória mennyisége. A Memóriaoptimalizált réteget biztosít duplán az általános célú réteghez képest memória mennyisége.
 
 ## <a name="storage"></a>Storage
 

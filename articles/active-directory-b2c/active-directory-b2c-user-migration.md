@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Felhasználói áttelepítési módszer'
+title: Az Azure Active Directory B2C megközelíti felhasználóáttelepítés |} Microsoft Docs
 description: Vitassa meg alapvető és speciális fogalmak a Graph API-val, és külön kérésre mintázatot használ az Azure AD B2C egyéni házirendek felhasználói áttelepítése.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 47f813839a5495591356e5ecd461902fa8745c65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 7c78cb13f9028b2be527794751d5f8ced9bff171
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711341"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Az Azure Active Directory B2C: Felhasználói áttelepítése
 Ha végez Identitásszolgáltatóként az Azure Active Directory B2C (az Azure AD B2C), szükség lehet áttelepíteni a felhasználói fiók. Ez a cikk azt ismerteti, hogyan telepíthetők át a meglévő felhasználói fiókokat bármely identitásszolgáltató az Azure AD B2C. A cikk nem célja, hogy lehet előírásoknak megfelelő, de ehelyett néhány olyan forgatókönyvet ismerteti. A fejlesztői felelős az egyes frissítési megfelelőségét.
@@ -145,7 +145,7 @@ A JSON-fájl szerkesztéséhez nyissa meg a `AADB2C.UserMigration.sln` Visual St
 ![Felhasználói adatok fájl](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Ahogy látja, akkor a fájl felhasználói entitások listáját tartalmazza. Minden felhasználó entitás tulajdonságai a következők:
-* e-mail
+* e-mailben
 * displayName
 * Utónév
 * Vezetéknév

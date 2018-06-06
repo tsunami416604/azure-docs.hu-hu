@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d93f79874ff65a1b6bb7ddd75932111c5caa6072
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 83204132a7494dc766420520eeaf2362c98d878f
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801813"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -59,7 +60,7 @@ A következő táblázat a támogatott operációs rendszerek listáját jelení
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
+|Ubuntu 14.04 LTS, 16.04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
 
 ### <a name="unsupported-client-types"></a>Ügyfél nem támogatott típusú
 
@@ -284,7 +285,7 @@ Frissítési besorolás frissítések telepítése a openSUSE Linux miatt a kül
 
 Ebben a szakaszban arról talál információkat, hogyan háríthatja el a frissítéskezelési megoldásban felmerülő hibákat.
 
-Ha problémák merülnek fel a megoldás vagy virtuális gépek bevezetése során, ellenőrizze az **Application and Services Logs\Operations Manager** (Alkalmazási és szolgáltatási naplók\Operations Manager) eseménynaplóban a 4502-es eseményazonosítóval ellátott eseményeket, valamint a következőt tartalmazó eseményüzeneteket: **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. Az alábbi táblázat konkrét hibaüzeneteket, illetve egy-egy lehetséges megoldásukat ismerteti.
+Ellenőrizze, hogy a felmerülő problémák közben előkészítéséről a megoldás vagy egy virtuális gépet a **alkalmazások és szolgáltatások Logs\Operations kezelője** Eseménynapló Azonosítójú 4502 és esemény eseményüzenet eseményeit a helyi számítógépen tartalmazó **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. Az alábbi táblázat konkrét hibaüzeneteket, illetve egy-egy lehetséges megoldásukat ismerteti.
 
 | Üzenet | Ok | Megoldás |
 |----------|----------|----------|

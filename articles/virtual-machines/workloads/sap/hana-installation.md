@@ -4,28 +4,29 @@ description: Hogyan SAP HANA telepíthet egy SAP HANA Azure (nagy példány).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763449"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan kell telepíteni, és az SAP HANA (nagy példányok) konfigurálása az Azure-on
 
 Az alábbiakban néhány fontos definíciókat az útmutató olvasása előtt. A [SAP HANA (nagy példányok) – áttekintés és Azure architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) HANA nagy példány egység, amelyek két különböző osztályú bevezetett azt:
 
-- S72, S72m, S144, S144m, S192 és S192m, amely a "Type i. osztály" lesz az SKU.
-- S384, S384m, S384xm, S576m, S768m és S960m, amely a "típusú class" SKU lesz az.
+- S72, S72m, S144, S144m, S192, S192m és S192xm, amely a "Type i. osztály" lesz az SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm és S960m, amely a "típusú class" SKU lesz az.
 
 A osztály megadása lesz használható a HANA nagy példány dokumentációban végül különböző képességeket és HANA nagy példány termékváltozatok követelmények vonatkoznak.
 

@@ -8,16 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: a9bf9748de5f390f95b8b672e0cf77afa5c49581
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 41f69a1dd4cbd4c0f6be0764efdbf0fb61ac3cb7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724428"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Alapértelmezett felhasználói engedélyek az Azure Active Directoryban
 
@@ -35,11 +36,11 @@ Alapértelmezett engedélyek a vendégek is korlátozó alapértelmezés szerint
 **Terület** | **Tag felhasználói engedélyek** | **A Vendég felhasználói jogok**
 ------------ | --------- | ----------
 Felhasználók és névjegyek | Az összes nyilvános tulajdonság a felhasználók és névjegyek olvasása<br>A vendégek meghívása<br>Saját jelszó módosítása<br>Saját mobiltelefonszám kezelése<br>Saját fénykép kezelése<br>Saját frissítési jogkivonatokat érvénytelenné válnak | Saját tulajdonság olvasása<br>Megjelenített név, e-mail, bejelentkezési név, fénykép, egyszerű felhasználónevet és felhasználói típus tulajdonságainak más felhasználók és névjegyek olvasása<br>Saját jelszó módosítása
-Csoportok   | Biztonsági csoportok létrehozása<br>Office 365-csoportok létrehozása<br>A csoportok az összes tulajdonság olvasása<br>Olvassa el a nem rejtett csoporttagságok<br>Rejtett csatlakoztatott csoport Office 365-csoporttagságot olvasása<br>Tulajdonságait, a tulajdonosi és a saját tulajdonú csoportok tagságának kezelése<br>A vendégek tulajdonában lévő csoportok hozzáadása<br>Dinamikus csoporttagság beállításainak kezelése<br>Saját tulajdonú csoportok törlése<br>Állítsa vissza a tulajdonában lévő Office 365-csoportokat | A csoportok az összes tulajdonság olvasása<br>Olvassa el a nem rejtett csoporttagságok<br>A csatlakoztatott csoportok rejtett Office 365-csoporttagságot olvasása<br>Saját tulajdonú csoportok kezelése<br>Vegye fel saját tulajdonú csoportok vendégek (Ha engedélyezett)<br>Saját tulajdonú csoportok törlése<br>Állítsa vissza a tulajdonában lévő Office 365-csoportokat           
+Csoportok | Biztonsági csoportok létrehozása<br>Office 365-csoportok létrehozása<br>A csoportok az összes tulajdonság olvasása<br>Olvassa el a nem rejtett csoporttagságok<br>Rejtett csatlakoztatott csoport Office 365-csoporttagságot olvasása<br>Tulajdonságait, a tulajdonosi és a saját tulajdonú csoportok tagságának kezelése<br>A vendégek tulajdonában lévő csoportok hozzáadása<br>Dinamikus csoporttagság beállításainak kezelése<br>Saját tulajdonú csoportok törlése<br>Állítsa vissza a tulajdonában lévő Office 365-csoportokat | A csoportok az összes tulajdonság olvasása<br>Olvassa el a nem rejtett csoporttagságok<br>A csatlakoztatott csoportok rejtett Office 365-csoporttagságot olvasása<br>Saját tulajdonú csoportok kezelése<br>Vegye fel saját tulajdonú csoportok vendégek (Ha engedélyezett)<br>Saját tulajdonú csoportok törlése<br>Állítsa vissza a tulajdonában lévő Office 365-csoportokat 
 Alkalmazások | Regisztrálni (létrehozása) az új alkalmazás<br>Olvasási tulajdonságainak regisztrált és a vállalati alkalmazások<br>Alkalmazás tulajdonságai, a hozzárendelések és a hitelesítő adatokat a tulajdonában lévő alkalmazások kezelése<br>Hozzon létre vagy felhasználó jelszava alkalmazás törlése<br>Tulajdonában lévő alkalmazások törlése<br>Állítsa vissza a tulajdonában lévő alkalmazások | Olvasási tulajdonságainak regisztrált és a vállalati alkalmazások<br>Alkalmazás tulajdonságai, a hozzárendelések és a hitelesítő adatokat a tulajdonában lévő alkalmazások kezelése<br>Tulajdonában lévő alkalmazások törlése<br>Állítsa vissza a tulajdonában lévő alkalmazások
 Eszközök | Az eszközök az összes tulajdonság olvasása<br>Összes tulajdonságának értéke tulajdonában lévő eszközök kezelése<br> | Nincs engedély<br>Saját tulajdonú eszközök törlése<br>
 Címtár | Olvassa el az összes vállalati információk<br>Olvassa el az összes tartomány<br>Olvassa el a partner minden szerződés | Olvassa el a megjelenített név, és ellenőrzött tartományok
-Szerepkörök és hatókörök | Rendszergazdai szerepkörök és a csoporttagságokat olvasása<br>Olvassa el az összes tulajdonságát és adminisztratív egységei tagsága | Nincs engedély              
+Szerepkörök és hatókörök | Rendszergazdai szerepkörök és a csoporttagságokat olvasása<br>Olvassa el az összes tulajdonságát és adminisztratív egységei tagsága | Nincs engedély 
 Előfizetések | Olvassa el az összes előfizetés<br>Szolgáltatás terv-tag engedélyezése | Nincs engedély
 Házirendek | A házirendek az összes tulajdonság olvasása<br>Saját tulajdonú házirend minden tulajdonságainak kezelése | Nincs engedély
 

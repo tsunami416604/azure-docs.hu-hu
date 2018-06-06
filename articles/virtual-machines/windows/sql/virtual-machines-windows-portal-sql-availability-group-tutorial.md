@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716720"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálás mindig a rendelkezésre állási csoport az Azure virtuális gép manuálisan
 
@@ -40,7 +41,7 @@ A következő táblázat felsorolja az előfeltételeket, amelyeket végre kell 
 
 |  |Követelmény |Leírás |
 |----- |----- |----- |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Two SQL Servers | -Az Azure rendelkezésre állási csoportok <br/> -Egyetlen tartományban <br/> -A Feladatátvételi fürtszolgáltatás telepítése |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Két SQL-kiszolgáló | -Az Azure rendelkezésre állási csoportok <br/> -Egyetlen tartományban <br/> -A Feladatátvételi fürtszolgáltatás telepítése |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | A fürt tanúsító fájlmegosztás |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-szolgáltatásfiók | Tartományi fiók |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server Agent szolgáltatásfiók használatával | Tartományi fiók |  
@@ -57,7 +58,7 @@ Az oktatóanyag elkezdéséhez kell [végezze el az Azure virtuális gépek lét
 <a name="CreateCluster"></a>
 ## A fürt létrehozása
 
-Az Előfeltételek elvégzése után az első lépés a Windows Server feladatátvevő fürt, amely tartalmazza a két SQL-kiszolgálója és egy tanúsító kiszolgáló létrehozásához.  
+Az Előfeltételek elvégzése után az első lépés a Windows Server feladatátvevő fürt, amely tartalmazza a két SQL-kiszolgálója és egy tanúsító kiszolgáló létrehozásához.
 
 1. Az első SQL Server egy tartományi fiókkal, amely az SQL Server-kiszolgálók és a tanúsító kiszolgálói rendszergazda RDP.
 
@@ -72,7 +73,7 @@ Az Előfeltételek elvégzése után az első lépés a Windows Server feladatá
    | Oldal | Beállítások |
    | --- | --- |
    | Előkészületek |Alapértelmezések használata |
-   | Select Servers |Írja be az első SQL-kiszolgáló neve a **kiszolgáló nevének megadása** kattintson **Hozzáadás**. |
+   | Kiszolgálók kiválasztása |Írja be az első SQL-kiszolgáló neve a **kiszolgáló nevének megadása** kattintson **Hozzáadás**. |
    | Érvényesítési figyelmeztetés |Válassza ki **szám I nem igényel Microsoft-támogatást ehhez a fürthöz, és ezért nem szeretné, hogy az érvényesítési tesztek futtatásához. A Tovább gombra kattintva, továbbra is a fürt létrehozása**. |
    | Hozzáférési pont a fürt felügyeletéhez |Írja be a fürt nevét, például **SQLAGCluster1** a **fürtnév**.|
    | Megerősítés |Használhatja az alapértelmezett értékeket, kivéve, ha a tárolóhelyek használata. Lásd a táblázat utáni megjegyzést. |
@@ -85,7 +86,8 @@ Az Előfeltételek elvégzése után az első lépés a Windows Server feladatá
 
    ![Fürt tulajdonságai](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Válassza ki **statikus IP-cím** , és adja meg az alhálózatból az SQL Server esetén a cím szövegmezőben egy címet. Kattintson a **OK**.
+3. Válassza ki **statikus IP-cím** , és adja meg egy címet automatikus privát IP-címzési (APIPA) címtartományából: 169.254.0.1 – 169.254.255.254 a cím szövegmezőben. Ez a példa bármely cím használhatja a tartományba. Például: `169.254.0.1`. Kattintson a **OK**.
+
 4. Az a **fürt alapvető erőforrásai** szakaszt, kattintson a jobb gombbal a fürt nevét, és kattintson **online állapotba hozás**. Ezután Várjon, amíg az mindkét erőforrás online. A fürt hálózatnév-erőforrás online állapotba kerül, amikor új AD-számítógépfiók frissíti a tartományvezérlő kiszolgálóhoz. Az AD-fiókot használja a rendelkezésre állási csoport fürtözött szolgáltatás később futtatásához.
 
 ### <a name="addNode"></a>Az SQL Server hozzáadása fürthöz
@@ -413,13 +415,13 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
    | **Protocol (Protokoll)** | Válassza ki a TCP |TCP |
    | **Port** | A port az SQL Server-példány használata | 1433 |
    | **Háttér-Port** | Ha a fix IP-Címek értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 1433 |
-   | **Probe** |A mintavétel a megadott név | SQLAlwaysOnEndPointProbe |
+   | **Hálózatfigyelő** |A mintavétel a megadott név | SQLAlwaysOnEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Egyik sem** |
    | **Üresjárati időtúllépés** | Tartsa nyitva, a TCP-kapcsolat perc | 4 |
    | **Lebegőpontos IP (közvetlen kiszolgálói válasz)** | |Engedélyezve |
 
    > [!WARNING]
-   > A közvetlen kiszolgálói válasz érték létrehozása során. Nem módosítható.
+   > A közvetlen kiszolgálói válasz érték létrehozása során. A név nem módosítható.
 
 1. Kattintson a **OK** a terheléselosztási szabályok beállítása.
 

@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: b51f7dc43f390152b2b0be223541e381bbddd3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1552fbe66f7bad219d8aea8a3f208b0fe69cdf2b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716057"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Esemény elemzése és Naplóelemzési a képi megjelenítés
 
@@ -36,17 +37,15 @@ Naplóelemzési fogadja a adatokat, miután a Azure rendelkezik, több *megoldá
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Hozzáférés a Service Fabric elemzési megoldások
 
-1. Nyissa meg az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki az erőforrás **ServiceFabric\<nameOfOMSWorkspace\>**  és Ugrás a – áttekintés oldalra.
+1. Az Azure-portálon lépjen az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások.
 
-2. A áttekintése lapon kattintson a hivatkozásra az OMS-portálon végezhető felső részén
+2. Válassza ki az erőforrás **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-    ![Hivatkozás OMS-portálon](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
+2. Összefoglalva az egyes a megoldásairól engedélyezve van, egy a Service Fabric jelenik meg egy grafikonon formájában csempék. Kattintson a **Service Fabric** diagramot (az alábbi első kép) továbbra is a Service Fabric elemzési megoldások (az alábbi második kép).
 
-3. Ön most az OMS-portálon, és láthatja a megoldások úgy állította be. A Service Fabric című grafikonon kattintson (az alábbi első kép) a Service Fabric-megoldás beszerzése fordítani (az alábbi második kép)
+    ![OMS ú megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS ú megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
-
-    ![OMS ú megoldás](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
+    ![OMS ú megoldás](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 A fenti kép a Service Fabric elemzési megoldások kezdőlapján. Ez az egy pillanatkép nézet arról, mi történik a fürtön. Ha engedélyezte a diagnosztika a fürt létrehozása után, az események láthatja 
 
@@ -57,9 +56,9 @@ A fenti kép a Service Fabric elemzési megoldások kezdőlapján. Ez az egy pil
 >[!NOTE]
 >A műveleti csatornát mellett részletes rendszeresemények által gyűjtött [a diagnosztika bővítmény konfiguráció frissítése](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
 
-### <a name="view-operational-events-including-actions-on-nodes"></a>Többek között a műveleteket az egyes csomópontok működési eseményeinek megtekintése
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric események megtekintése többek között a műveleteket az egyes csomópontok
 
-1. A Service Fabric Analytics oldalon az OMS-portálon kattintson a grafikonon működési csatorna
+1. A Service Fabric Analytics lapján kattintson a grafikonon **Service Fabric események**.
 
     ![Ú megoldás működési csatornát OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
 
@@ -78,7 +77,7 @@ A megadott csomópontok (számítógép) a rendszer szolgáltatás (feladatnév)
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Nézet Service Fabric megbízható szolgáltatás és szereplő események
 
-1. A Service Fabric Analytics oldalon az OMS-portálon kattintson a Reliable Services a diagramhoz
+1. A Service Fabric Analytics lapon kattintson a ábrázoló **Reliable Services**.
 
     ![OMS ú megoldás megbízható szolgáltatások](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
 

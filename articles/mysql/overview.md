@@ -8,20 +8,21 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 06/02/2018
 ms.custom: mvc
-ms.openlocfilehash: 3b7ae08446e672c218e7278cff4f77739286fead
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0ae9c0168d8f4ff7dbea4c21c91fc70a3d355a5f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736473"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure-adatbázis a MySQL?
 Azure MySQL-adatbázis a Microsoft felhőalapú relációs adatbázis-szolgáltatás a [MySQL Community Edition](https://www.mysql.com/products/community/) adatbázismotor. Azure MySQL-adatbázis biztosítja:
 
 - Beépített magas rendelkezésre állás további költség nélkül.
 - Kiszámítható teljesítmény, használatalapú díjszabással.
-- Skálázás menet közben, másodperceken belül.
+- Skála másodpercen belül igény szerint.
 - A helyi és mozgó bizalmas adatok védelme.
 - Automatikus biztonsági mentések és időponthoz kötött visszaállítás akár 35 napig.
 - Vállalati szintű biztonság és megfelelőség.
@@ -44,14 +45,22 @@ Az Azure-adatbázishoz a MySQL-szolgáltatás többféle szolgáltatáscsomagban
 Hogyan lehet megállapítani, hogy mikor van szükség fel- és leskálázásra? A beépített teljesítmény figyelési és riasztási szolgáltatásokat, a teljesítmény értékelések alapján vCores együtt használja. Ezen eszközök segítségével gyorsan felmérheti a méretezési vCores hatását felfelé vagy lefelé a jelenlegi vagy tervezett teljesítmény igények alapján. A részleteket a [riasztások](howto-alert-on-metric.md) leírása tartalmazza.
 
 ## <a name="keep-your-app-and-business-running"></a>Biztosítsa alkalmazása és vállalkozása folyamatos működését
-Azure iparágvezető 99,99 % rendelkezésre állási szolgáltatásiszint-szerződés (SLA), a Microsoft által kezelt adatbázisok globális hálózata technológiával segít a 24 és Windows 7 rendszerben futó alkalmazást. Minden Azure adatbázissal MySQL-kiszolgáló használatakor élvezheti a beépített biztonsági hibatűrést és az adatvédelem, amelyeket egyébként külön megvásárlása vagy kialakításával, létrehozása és kezelése. MySQL az Azure-adatbázissal pont időponthoz kötött visszaállítás segítségével kötött 35 nappal korábbi állapotba való kiszolgáló helyreállítása.
+Az Azure szolgáltatói szerződésében (SLA) az ágazatban élenjáró módon 99,99 százalékos rendelkezésre állást biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Minden Azure adatbázissal MySQL-kiszolgáló használatakor élvezheti a beépített biztonsági hibatűrést és az adatvédelem, amelyeket egyébként külön megvásárlása vagy kialakításával, létrehozása és kezelése. MySQL az Azure-adatbázissal pont időponthoz kötött visszaállítás segítségével kötött 35 nappal korábbi állapotba való kiszolgáló helyreállítása.
 
 ## <a name="secure-your-data"></a>Az adatok védelme
 Azure-adatbázis szolgáltatások, amelyek a MySQL az Azure-adatbázis garantálják adatbiztonság hagyományokkal rendelkezik, a szolgáltatásokkal, amelyek korlátozzák a hozzáférést, adatokat nyugalmi és a mozgási védheti meg és segítséget figyelése. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/en-us/trustcenter/security) talál információkat.
 
 Az Azure-adatbázishoz a MySQL-szolgáltatás adatokat nyugalmi tárolási titkosítást használ. Adatok biztonsági mentése, beleértve a lemezen (kivéve a lekérdezések futtatása során a motor által létrehozott ideiglenes fájlok) vannak titkosítva. A szolgáltatás AES 256 bites titkosítást használ, amely az Azure tárolási titkosításban szerepel, és a kulcsokat a rendszer felügyeli. A tárolási titkosítás mindig be van kapcsolva és nem tiltható le.
 
-Alapértelmezés szerint az Azure-adatbázishoz a MySQL-szolgáltatás úgy van beállítva [SSL-kapcsolat biztonsági](./concepts-ssl-connection-security.md) az adatokat a-mozgásérzékelési a hálózaton keresztül. Az adatbázis-kiszolgáló és az ügyfél alkalmazások közötti SSL-kapcsolatok érvényesítése segít annak az adatfolyamot a kiszolgáló és az alkalmazás közötti titkosításával "man a középső" lánctámadások elleni védelem érdekében.  Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
+Alapértelmezés szerint az Azure-adatbázishoz a MySQL-szolgáltatás úgy van beállítva [SSL-kapcsolat biztonsági](./concepts-ssl-connection-security.md) az adatokat a-mozgásérzékelési a hálózaton keresztül. Az adatbázis-kiszolgáló és az ügyfél alkalmazások közötti SSL-kapcsolatok érvényesítése segít annak az adatfolyamot a kiszolgáló és az alkalmazás közötti titkosításával "man a középső" lánctámadások elleni védelem érdekében. Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
+
+## <a name="contacts"></a>Kapcsolatok
+Az esetleges kérdéseivel és lehetséges, hogy MySQL, az Azure-adatbázis kezelésével kapcsolatos javaslatok e-mail küldése az Azure-adatbázishoz MySQL-csoport ([ @Ask MySQL az Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)). Vegye figyelembe, hogy ez nem a technikai támogatási szolgálathoz alias.
+
+Emellett vegye figyelembe a következő pontokat szükség szerint:
+- Az Azure ügyfélszolgálatához [Azure-portálról igénylést](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- A fiókjához megoldani a problémát, hogy a fájl egy [támogatási kérelem](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure portálon.
+- Visszajelzést, vagy kérjen új funkciókat, hozzon létre egy bejegyzést keresztül [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>További lépések
 Most, olvassa el az Azure-adatbázis bemutatása a MySQL, és "Mi van Azure adatbázis a MySQL?" választ, akkor készen áll:

@@ -1,27 +1,27 @@
 ---
-title: Egyszeri bejelentkezés és egyéni házirendekkel token testreszabási kezelése |} Microsoft Docs
+title: Egyszeri bejelentkezés és egyéni házirendek az Azure Active Directory B2C token testreszabási kezelése |} Microsoft Docs
 description: Ismerje meg az egyszeri bejelentkezés és token testreszabási egyéni házirendek kezelése.
 services: active-directory-b2c
-documentationcenter: ''
-author: davidmu
+author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: davidmu
-ms.openlocfilehash: c9eb7f7711a8987945b8aeaee8d6798b7a6b8284
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 43e392979c50d340a10575898edb25b119e1410b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712232"
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Az Azure Active Directory B2C: Egyszeri Bejelentkezéssel és token testreszabási egyéni házirendek kezelése
-Egyéni házirendek használatával teszi lehetővé a jogkivonatot, munkamenet és egyszeri bejelentkezés (SSO) konfigurációk ugyanarra a vezérlőre beépített házirendek segítségével.  Ha szeretné megtudni, hogy egyes beállítások funkciója, a dokumentáció [Itt](#active-directory-b2c-token-session-sso).
+Egyéni házirendek használatával teszi lehetővé a jogkivonatot, munkamenet és egyszeri bejelentkezés (SSO) konfigurációk ugyanarra a vezérlőre beépített házirendek segítségével.  Ismerje meg, mi minden beállítás, olvassa el a dokumentációt [Itt](#active-directory-b2c-token-session-sso).
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Jogkivonat élettartamát és a jogcímek konfiguráció
-A jogkivonat élettartamát a beállítások módosításához meg kell adni egy `<ClaimsProviders>` befolyásolja a kívánt házirendet, a függő entitás fájlban.  A `<ClaimsProviders>` elem gyermeke a `<TrustFrameworkPolicy>`.  Belül, amely befolyásolja a jogkivonat élettartamát helyezni lesz szüksége.  Az XML-fájl így néz ki:
+A jogkivonat élettartamát a beállítások módosításához meg kell adni egy `<ClaimsProviders>` befolyásolja a kívánt házirendet, a függő entitás fájlban.  A `<ClaimsProviders>` elem gyermeke a `<TrustFrameworkPolicy>`.  Belül akkor kell helyezni, amely befolyásolja a jogkivonat élettartamát.  Az XML-fájl ebben a példában néz ki:
 
 ```XML
 <ClaimsProviders>
@@ -43,20 +43,20 @@ A jogkivonat élettartamát a beállítások módosításához meg kell adni egy
 </ClaimsProviders>
 ```
 
-**Hozzáférési jogkivonat élettartamát** értéket módosításával módosíthatja a hozzáférési jogkivonat élettartamát a `<Item>` kulccsal = "token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 3600 másodperc (60 perc).
+**Hozzáférési jogkivonat élettartamát** -értéket módosításával módosíthatja a hozzáférési jogkivonat élettartamát a `<Item>` kulccsal = "token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 3600 másodperc (60 perc).
 
-**A jogkivonatok élettartama azonosító** jogkivonat élettartamát az azonosító értéket módosításával módosítható a `<Item>` kulccsal = "id_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 3600 másodperc (60 perc).
+**A jogkivonatok élettartama azonosító** -jogkivonat élettartamát az azonosító értéket módosításával módosítható a `<Item>` kulccsal = "id_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 3600 másodperc (60 perc).
 
-**Frissítse a jogkivonatok élettartama** értéket módosításával módosíthatja a frissítési jogkivonat élettartamát a `<Item>` kulccsal = "refresh_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 1209600 másodperc (14 nap).
+**Frissítse a jogkivonatok élettartama** -értéket módosításával módosíthatja a frissítési jogkivonat élettartamát a `<Item>` kulccsal = "refresh_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 1209600 másodperc (14 nap).
 
-**Frissítési jogkivonat mozgó ablak élettartamát** Ha azt szeretné beállítani a mozgó ablak élettartama a frissítési jogkivonat, módosítsa az értéket `<Item>` kulccsal = "rolling_refresh_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 7776000 (90 nap).  Ha nem szeretné enfore egy késleltetett ablak élettartamát, cserélje le a sort:
+**Frissítési jogkivonat mozgó ablak élettartamát** – Ha meg szeretné a frissítési jogkivonat mozgó ablak élettartamának beállítása, módosítsa az értéket `<Item>` kulccsal = "rolling_refresh_token_lifetime_secs" másodpercben.  A beépített alapértelmezett érték 7776000 (90 nap).  Ha nem szeretné kényszeríteni a mozgó ablak élettartama, cserélje le a sort:
 ```XML
 <Item Key="allow_infinite_rolling_refresh_token">True</Item>
 ```
 
-**A jogcím kiállítójának (iss)** Ha a kibocsátó (iss) jogcím módosítani kívánja, módosítsa az értéket a `<Item>` kulccsal = "IssuanceClaimPattern".  A megfelelő értékek `AuthorityAndTenantGuid` és `AuthorityWithTfp`.
+**A jogcím kiállítójának (iss)** – Ha azt szeretné, hogy a kibocsátó (iss) jogcím módosításához módosítsa az értéket a `<Item>` kulccsal = "IssuanceClaimPattern".  A megfelelő értékek `AuthorityAndTenantGuid` és `AuthorityWithTfp`.
 
-**Beállítás jogcím házirend-azonosító képviselő** érték a beállítások a következők TFP (megbízhatósági keretrendszer házirend) és ACR (hitelesítési környezeti hivatkozás).  
+**Beállítás jogcím házirend-azonosító képviselő** -az érték közül TFP (megbízhatósági keretrendszer házirend) és ACR (hitelesítési környezeti hivatkozás).  
 Javasoljuk, hogy ezt a TFP beállítást, ehhez ellenőrizze a `<Item>` és a kulcs = "AuthenticationContextReferenceClaimPattern" létezik, és az érték `None`.
 Az a `<OutputClaims>` cikkhez, ez az elem hozzáadása:
 ```XML
@@ -64,7 +64,7 @@ Az a `<OutputClaims>` cikkhez, ez az elem hozzáadása:
 ```
 ACR, távolítsa el a `<Item>` kulccsal = "AuthenticationContextReferenceClaimPattern".
 
-**Tulajdonos (rész-) jogcím** ObjectID, hogy alapértelmezett ezt a beállítást, ha azt szeretné, a kapcsolóhoz `Not Supported`, tegye a következőket:
+**Tulajdonos (rész-) jogcím** – Ez a beállítás alapértelmezett értékre ObjectID, történik, ha azt szeretné, a kapcsolóhoz `Not Supported`, tegye a következőket:
 
 Cserélje le ezt a sort 
 ```XML
@@ -76,6 +76,7 @@ Ehhez a sorhoz:
 ```
 
 ## <a name="session-behavior-and-sso"></a>Munkamenet viselkedést és az egyszeri bejelentkezés
+
 A munkamenet viselkedést és egyszeri Bejelentkezéssel konfigurációk módosítása, meg kell adni egy `<UserJourneyBehaviors>` elemben található a `<RelyingParty>` elemet.  A `<UserJourneyBehaviors>` elem közvetlenül követnie kell a `<DefaultUserJourney>`.  Belső a `<UserJourneyBehavors>` elem kell kinéznie:
 
 ```XML
@@ -85,8 +86,8 @@ A munkamenet viselkedést és egyszeri Bejelentkezéssel konfigurációk módos�
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
-**Egyszeri bejelentkezés (SSO) konfigurációs** való egyszeri bejelentkezés beállításainak módosítása esetén módosítania kell a értékének `<SingleSignOn>`.  A megfelelő értékek `Tenant`, `Application`, `Policy` és `Disabled`. 
+**Az egyszeri bejelentkezés (SSO) beállítása** – az egyszeri bejelentkezés beállításainak módosításához, módosítania kell a értékének `<SingleSignOn>`.  A megfelelő értékek `Tenant`, `Application`, `Policy` és `Disabled`. 
 
-**Webalkalmazás munkamenet élettartama (perc)** módosítása a webalkalmazás munkamenetek élettartamát, módosítania kell értékének a `<SessionExpiryInSeconds>` elemet.  Az alapértelmezett beépített házirendek értéke 86400 másodperc (1440 perc).
+**Webalkalmazás munkamenet élettartama (perc)** - módosíthatja a webalkalmazás munkamenetek élettartamát, értékét módosítani kell a `<SessionExpiryInSeconds>` elemet.  Az alapértelmezett beépített házirendek értéke 86400 másodperc (1440 perc).
 
-**Webes alkalmazás munkamenet időkorlátja** Ha módosítani szeretné a webes alkalmazás munkamenet időkorlátja, módosítania kell a értékének `<SessionExpiryType>`.  A megfelelő értékek `Absolute` és `Rolling`.
+**Webes alkalmazás munkamenet időtúllépésének** - módosítása a webes alkalmazás munkamenet időkorlátja módosítania kell a értékének `<SessionExpiryType>`.  A megfelelő értékek `Absolute` és `Rolling`.

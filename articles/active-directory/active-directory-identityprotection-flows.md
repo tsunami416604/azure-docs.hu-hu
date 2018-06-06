@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 424ea1eca637653c5e7cfed9dc4b970d5afd91ad
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713408"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Az Azure AD Identity Protection bejelentkezési élmény
 Az Azure Active Directory azonosító adatok védelmét a következőket teheti:
@@ -27,9 +29,9 @@ Az Azure Active Directory azonosító adatok védelmét a következőket teheti:
 * a felhasználóknak a multi-factor authentication regisztrálása
 * kockázatos bejelentkezéseket és a sérült biztonságú felhasználók kezelése
 
-A válasz a rendszer ezeket a problémákat a felhasználói bejelentkezés során tapasztal élmény hatással van, mert csak közvetlenül aláírás-a felhasználónév megadásával, és a jelszó nem lehet többé. További lépések szükségesek a felhasználók biztonságosan beolvasandó business programba.
+A válasz a rendszer ezeket a problémákat a felhasználói bejelentkezés során tapasztal élmény hatással van, mert közvetlenül aláírás-a felhasználónév megadásával, és a jelszó nem lehet többé. További lépések szükségesek a felhasználók biztonságosan beolvasandó business programba.
 
-Ez a témakör áttekintést nyújt a felhasználói bejelentkezési felhasználói felület minden olyan esetben, amik akkor léphetnek fel.
+Ez a cikk áttekintést nyújt a felhasználói bejelentkezési felhasználói felület minden olyan esetben, amik akkor léphetnek fel.
 
 **Többtényezős hitelesítés**
 
@@ -64,14 +66,14 @@ A rendszergazdák, amely megköveteli a felhasználóktól további biztonsági 
     ![Szervizelés](./media/active-directory-identityprotection-flows/142.png "szervizelés")
 
 ## <a name="risky-sign-in-recovery"></a>Kockázatos bejelentkezési helyreállítási
-Amikor egy rendszergazda úgy konfigurálta a kockázatok bejelentkezési házirend, az érintett felhasználó értesítést kap próbálnak bejelentkezni. 
+Egy rendszergazda úgy konfigurálta a kockázatok bejelentkezési házirend, az érintett felhasználó értesítést kap bejelentkezés megkísérlésekor. 
 
 **A kockázatos bejelentkezési folyamata van két lépésből áll:** 
 
 1. A felhasználó tájékoztatják, hogy valami szokatlan rendszer észlelte a bejelentkezéssel kapcsolatban, például egy új helyről, eszközről vagy alkalmazásból jelentkezik be. 
    
     ![Szervizelés](./media/active-directory-identityprotection-flows/120.png "szervizelés")
-2. A felhasználó kell igazolnia az identitását egy biztonsági kérdéssel megoldása által. Ha a felhasználó a multi-factor authentication regisztrálva van szükségük round-trip telefonszámukat biztonsági kódot. Mivel ez csak egy kockázatos bejelentkezési és nem sérült biztonságú fiók, a felhasználónak kell-e a nem a folyamatot a jelszó módosítására. 
+2. A felhasználó kell igazolnia az identitását egy biztonsági kérdéssel megoldása által. Ha a felhasználó a multi-factor authentication regisztrálva van szükségük round trip egy biztonsági kódot a telefonszámát. Mivel ez csak egy kockázatos bejelentkezési és a nem biztonságos fiókok, a felhasználó nem kell módosítani a jelszót a folyamatot. 
    
     ![Szervizelés](./media/active-directory-identityprotection-flows/121.png "szervizelés")
 
@@ -81,14 +83,14 @@ A rendszergazdák is beállíthatja a kockázat bejelentkezési házirend beáll
 ![Szervizelés](./media/active-directory-identityprotection-flows/200.png "szervizelés")
 
 ## <a name="compromised-account-recovery"></a>Sérült biztonságú fiók helyreállítási
-Ha egy felhasználó kockázat biztonsági házirendet konfiguráltak, felhasználók, akik megfelelnek a felhasználó kockáztatja a házirendben megadott szint (és ezért feltételezik sérült) haladjon végig a felhasználó biztonsági sérülés helyreállítási folyamata, mielőtt azok is bejelentkezhet. 
+Ha egy felhasználó kockázat biztonsági házirendet konfiguráltak, felhasználók, akik megfelelnek a felhasználó kockáztatja a házirendben megadott szint (és ezért feltételezik sérült) haladjon végig a felhasználó biztonsági sérülés helyreállítási folyamata, mielőtt bejelentkeznének. 
 
 **A felhasználó biztonsági sérülés helyreállítási folyamat három lépést rendelkezik:**
 
 1. A felhasználót, hogy a fiók biztonsági kockázatnak miatt gyanús tevékenységet vagy hitelesítő adatok szivárgását tájékoztatást kapjon.
    
     ![Szervizelés](./media/active-directory-identityprotection-flows/101.png "szervizelés")
-2. A felhasználó kell igazolnia az identitását egy biztonsági kérdéssel megoldása által. Ha a felhasználó a multi-factor authentication regisztrálva azok önállóan helyreállítani feltörésének. Akkor kell round-trip telefonszámukat biztonsági kódot. 
+2. A felhasználó kell igazolnia az identitását egy biztonsági kérdéssel megoldása által. Ha a felhasználó a multi-factor authentication regisztrálva azok önállóan helyreállítani feltörésének. Akkor kell round trip egy biztonsági kódot a telefonszámát. 
    
    ![Szervizelés](./media/active-directory-identityprotection-flows/110.png "szervizelés")
 3. Végezetül a felhasználónak meg kell a jelszó módosítására, mivel valaki más is hozzáférhetett a fiókjához. 
@@ -101,7 +103,7 @@ Ahhoz, hogy a felhasználó által feloldva felhasználói kockázat biztonsági
 
 ![Szervizelés](./media/active-directory-identityprotection-flows/104.png "szervizelés")
 
-## <a name="reset-password"></a>Jelszó visszaállítása
+## <a name="reset-password"></a>Új jelszó létrehozása
 Sérült biztonságú felhasználók nincs hozzáférése a bejelentkezés, ha a rendszergazda egy ideiglenes jelszót hozhat létre a számukra. A felhasználók módosíthatják a jelszavukat a következő bejelentkezés során lesz.
 
 ![Szervizelés](./media/active-directory-identityprotection-flows/160.png "szervizelés")

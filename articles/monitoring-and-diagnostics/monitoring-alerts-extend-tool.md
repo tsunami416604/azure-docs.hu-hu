@@ -1,6 +1,6 @@
 ---
-title: (Másolás) kiterjesztése riasztások az OMS-portálon az Azure |} Microsoft Docs
-description: Eszközök, amely kiterjeszti az OMS Szolgáltatáshoz riasztások Azure riasztások végezhető el az ügyfelek önkéntesen API.
+title: Hogyan terjessze ki a riasztások a napló Analytcs Azure |} Microsoft Docs
+description: Ez a cikk ismerteti az eszközök és API, amellyel kiterjesztheti riasztások a Log Analyticshez Azure riasztásokat.
 author: msvijayn
 manager: kmadnani1
 editor: ''
@@ -11,65 +11,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 06/04/2018
 ms.author: vinagara
-ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 0dce6e6772b4efea90df2e095ac0041641d99061
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763527"
 ---
-# <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Az OMS Szolgáltatáshoz, az Azure bővítése (Másolás) riasztások
-Verziótól **2018. május 14.**, a konfigurált riasztások minden felhasználója [a Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), az Azure kiterjesztése. Riasztásokat, amelyek az Azure-bA bővítve lettek OMS a megszokott módon működik. Megfigyelési lehetőségek változatlanok maradnak. Az Azure-bA OMS létrehozott riasztások kiterjesztése számos előnyt kínál. Az előnyei és a folyamat, amely a riasztásokat az OMS Szolgáltatáshoz Azure kapcsolatos további információkért lásd: [terjessze ki a riasztások az OMS Szolgáltatáshoz Azure](monitoring-alerts-extend.md).
+# <a name="how-to-extend-alerts-from-log-analytics-into-azure-alerts"></a>Hogyan Naplóelemzési riasztások kiterjeszti Azure riasztások
+Naplóelemzési riasztások lecserélni Azure riasztásaival, és ez a változás részeként, a szolgáltatáshoz konfigurált riasztások fogja az Azure.  Ha nem szeretné Várjon, amíg az Azure automatikusan áthelyezni, is kezdeményezhető a folyamat a következő beállítások egyikét:
+
+1. Manuálisan a az OMS-portálon 
+2. Programozott módon, a AlertsVersion API  
 
 > [!NOTE]
-> Május 14 2018 - megkezdése a Microsoft megkezdődik a folyamat automatikusan kiterjeszti a riasztások az Azure-bA. Nem minden munkaterületekkel és riasztások kibővíti a mai napon; helyette a Microsoft megkezdik terjesztheti ki az értesítések automatikusan részletben jövőbeli hét. Ezért a riasztásokat az OMS-portálon fog automatikus-terjed ki az Azure azonnal a 2018. május 14., és felhasználó továbbra is futtathatja manuálisan kiterjesztheti a riasztásokról beállítások részleteit az alábbiakban olvashatja.
+> A Microsoft automatikusan kiterjed Azure riasztás indítása a Naplóelemzési létrehozott riasztások **2018. május 14.** szakaszos megközelítéssel befejeződéséig. Az ebben az nap ütemezése, a riasztások áttelepítése az Azure-bA Microsoft megkezdődik, és során ez a változás az OMS-portálon és az Azure-portálon kezelhetők a riasztásokat. Ez a folyamat visszafordítható és nem interruptive.  
 
-Az ügyfelek szeretne áthelyezi a riasztásokat az OMS Szolgáltatáshoz Azure azonnal, ehhez a megadott lehetőségek egyikének használatával.
+## <a name="option-1---initiate-from-the-oms-portal"></a>1 - beállítást az OMS-portálon kezdeményezése
+A következő lépések írják le a munkaterület riasztások bővítése az OMS-portálon.  
 
-## <a name="option-1---using-oms-portal"></a>1 - beállítás használatával OMS-portálon
-A kiterjedő riasztások OMS-portálon az Azure önkéntesen elindításához kövesse az alábbi lépéseket.
+1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+2. A Naplóelemzési előfizetések ablaktáblán válassza ki a munkaterület, és válassza ki a **OMS-portálon** csempére.<br><br> ![Naplóbeli keresés gomb](./media/monitor-alerts-extend/azure-portal-01.png)<br><br> 
+3. Után a rendszer átirányítja az OMS-portálon, kattintson a lap jobb felső oldalán beállítások csempére.<br><br> ![Beállítás OMS-portálon](./media/monitor-alerts-extend/oms-portal-settings-option.png)<br><br> 
+4. Az a **beállítások** lapon jelölje be **riasztások**.  
+5. Kattintson a gombra **bővítése az Azure**.<br><br> ![A riasztási beállítások portállapon OMS bővítése beállítással](./media/monitor-alerts-extend/ExtendInto.png)
+6. A varázsló a panelen számára jelenik meg az első és áttekintést nyújt azokról a folyamat három lépésből áll.  Kattintson a **tovább** a folytatáshoz.<br><br> ![Terjessze ki a riasztások a Log Analyticshez Azure - 1. lépés](./media/monitor-alerts-extend/ExtendStep1.png)  
+7. A második lépésben javasolt változások összefoglalása számára jelenik meg a megfelelő listázása [művelet csoportok](monitoring-action-groups.md) a riasztásokhoz. Ha hasonló műveletek közötti egynél több riasztást, a szolgáltatás javasolni fogja hozzárendelni az összes csoport egyetlen műveleti.  A javasolt művelet csoport hajtsa végre az elnevezési: *WorkspaceName_AG_ #Number*. A folytatáshoz kattintson **következő**.<br><br> ![terjessze ki a riasztások a Log Analyticshez Azure - 2. lépés](./media/monitor-alerts-extend/ExtendStep2.png)  
+8. A varázsló utolsó lépésként kattintson **Befejezés** , majd erősítse meg, amikor a rendszer kéri a megkezdéséhez.  Opcionálisan megadhatja egy e-mail címet, hogy értesítést kap a folyamat befejeződik, és az összes riasztás sikeresen helyezte Azure riasztásokat.<br><br> ![Terjessze ki a riasztások a Log Analyticshez Azure - 3. lépés](./media/monitor-alerts-extend/ExtendStep3.png)
 
-1. Az OMS portál – áttekintés oldalra keresse meg beállításokat, majd az értesítések szakasz. Kattintson a "Kiterjesztése az Azure", címkézve az alábbi ábrán a kijelölt gombra.
-
-    ![A riasztási beállítások portállapon OMS bővítése beállítással](./media/monitor-alerts-extend/ExtendInto.png)
-
-2. A gombra történő kattintás után a 3. lépés varázsló jelenik meg, feltárja a folyamat első lépését. Kattintson a Tovább gombra, a folytatáshoz.
-
-    ![Terjessze ki a riasztások a OMS-portálon az Azure - 1. lépés](./media/monitor-alerts-extend/ExtendStep1.png)
-
-3. A második lépésben, a rendszer szerint jelennek meg az ajánlott változás összegzését megfelelő listaelem [művelet csoportok](monitoring-action-groups.md), a riasztások az OMS-portálon. Ha hasonló műveletek közötti egynél több riasztás – a rendszer társítja az összes csoport egyetlen műveleti javasol.  A javasolt művelet csoport hajtsa végre az elnevezési: *WorkspaceName_AG_ #Number*. A folytatáshoz, kattintson a Tovább gombra.
-Az alábbi minta képernyő.
-
-    ![Terjessze ki a riasztások a OMS-portálon az Azure - 2. lépés](./media/monitor-alerts-extend/ExtendStep2.png)
+A varázsló befejezése után nézze meg a **riasztási beállítások** oldal, amely kiterjesztése lehetőséget az Azure-bA riasztást küld a rendszer eltávolítja.  A háttérben a riasztások Azure kerülnek, és ez eltarthat egy ideig.  A művelet során csak akkor tud majd módosításokat végezni a riasztásokat az OMS-portálon.  A jelenlegi állapot jelenik meg a portál felső fejléc, és ha egy e-mail címet a korábban megadott kap egy e-mailt, ha a folyamat sikeresen befejeződött.  
 
 
-4. A varázsló utolsó lépése kérje meg az OMS-portálon ütemezése, a riasztások kiterjeszti az Azure - művelet új csoportok létrehozása és társítása őket riasztásokat, a korábbi képernyőn látható módon. A folytatáshoz válasszon kattintson a Befejezés gombra, majd erősítse meg a folyamat kezdeményezéséhez a parancssorba. Szükség esetén az ügyfelek e-mail címet, amelyre szeretné elküldeni a jelentés a feldolgozás befejezése a OMS-portálon is megadhatja.
-
-    ![Terjessze ki a riasztások a OMS-portálon az Azure - 3. lépés](./media/monitor-alerts-extend/ExtendStep3.png)
-
-5. A varázsló befejezése után vezérlő visszatér a riasztási beállítások lapra, és "Kiterjesztése az Azure" beállítás törlődni fog. A háttérben OMS-portálon riasztásokat Naplóelemzési ki kell terjeszteni az Azure; a művelet ütemezi Ez eltarthat egy ideig, és egy rövid időszak riasztások az OMS-portálon a művelet kezdetekor csak akkor módosítható. Aktuális állapot jelenik meg szalagcím keresztül, és ha e-mail-címet where megadott során 4. lépés, majd fogja küldjenek, amikor háttérfolyamatként sikeresen kibővíti az összes riasztás az Azure. 
-
-6. Riasztások listázásának az OMS-portálon, ezek beolvasása sikeresen kiterjeszthetőek az Azure után is folytatódik.
-
-    ![Riasztások az OMS-portálon az Azure-bA kiterjesztése után](./media/monitor-alerts-extend/PostExtendList.png)
+Riasztások továbbra is az Azure sikeresen áthelyezett után is az OMS-portálon jelenik.<br><br> ![Helyezze át a riasztások a Naplóelemzési az Azure-bA](./media/monitor-alerts-extend/PostExtendList.png)
 
 
-## <a name="option-2---using-api"></a>A beállítás 2 - API használatával
-Az ügyfelek számára, akik programozott módon vagy automatizálhatja, a folyamat, amely a riasztásokat az OMS-portálon az Azure; A Microsoft közzétett új AlertsVersion API Naplóelemzési alatt.
+## <a name="option-2---using-the-alertsversion-api"></a>2 – a AlertsVersion API használatával lehetőséget
+A napló Analytics AlertsVersion API segítségével terjessze ki a riasztások a Naplóelemzési be Azure riasztások minden ügyfélről, amely a REST API meghívása. A PowerShell használatával végezheti el [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. A ARMClient és a PowerShell használata közül sok az API eléréséhez.  Az API-val lesz az eredményeket a JSON-ban.  
 
-A napló Analytics AlertsVersion API RESTful, és az Azure Resource Manager REST API-n keresztül érhető el. Ebben a dokumentumban található példák az elérését az API-t a PowerShell parancssori használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. A ARMClient és a PowerShell használata közül sok az API eléréséhez. Az API-t kimeneti fog eredmények JSON formátumban, lehetővé téve az eredmények használati programozott módon számos különböző módja.
-
-GET API használatával egy úgy szerezheti be az eredmény az ajánlott változás összefoglalása megfelelő listájaként [művelet csoportok](monitoring-action-groups.md) a riasztások az OMS-portálon, a JSON formátumban. Ha hasonló műveletek közötti egynél több riasztás láthatók - létrehozásához javasolni fogja a rendszer társítja az összes egyetlen művelettel csoport.  A javasolt művelet csoport hajtsa végre az elnevezési: *WorkspaceName_AG_ #Number*.
+Az API használatához először létrehozhat egy GET kérelmet, amely értékelje ki és összegzést biztosít azokról a változtatási ténylegesen kiterjeszti az Azure-ban egy POST kérést megkísérlése előtt. Az eredmények listát a riasztások és a javasolt listája [művelet csoportok](monitoring-action-groups.md) JSON formátumban.  Ha hasonló műveletek közötti egynél több riasztást, a szolgáltatás javasolni fogja az összes társít egy egyetlen művelettel csoport.  Javasolt művelet csoportok kövesse az elnevezési: *WorkspaceName_AG_ #Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-> [!NOTE]
-> ELSŐ hívás az API nem eredményez az első Azure kiterjeszthetőek OMS-portálon riasztásokat. Csak biztosítja a válaszként az összegzés javasolt módosításait. Erősítse meg, ezek a változások riasztások kiterjeszti Azure végezhető, POST hívja meg a kell annak érdekében, az API-t.
-
-Ha API-hívás GET sikeres, 200 OK válasz együtt, a riasztás javasolt művelet csoportok együtt JSON listáját biztosítaná. Az alábbi mintaválasz:
+Ha a GET kérés sikeres, 200-as HTTP-állapotkódot együtt a riasztások és a JSON-adatokat a javasolt művelet csoportok listáját adja vissza. A következő egy példa egy válasz:
 
 ```json
 {
@@ -126,7 +113,7 @@ Ha API-hívás GET sikeres, 200 OK válasz együtt, a riasztás javasolt művele
 }
 
 ```
-Abban az esetben, a megadott munkaterület egyetlen riasztás sem szerepelnek, a GET művelethez 200 OK válasz együtt a JSON a következő lesz:
+Ha a megadott munkaterület nem rendelkezik a riasztási szabály lett meghatározva, HTTP 200 OK állapotával együtt a GET művelethez a JSON-adatok kódot adja vissza:
 
 ```json
 {
@@ -135,14 +122,15 @@ Abban az esetben, a megadott munkaterület egyetlen riasztás sem szerepelnek, a
 }
 ```
 
-Ha a megadott munkaterület minden riasztás már fut az Azure - GET hívást válasz a következő lesz:
+Ha a megadott munkaterület minden riasztási szabályok már fut az Azure - GET kérelemre adott válasz a következő:
+
 ```json
 {
     "version": 2
 }
 ```
 
-Kezdeményezheti az ütemezést, amely a riasztásokat az OMS-portálon az Azure-ba, az API-t mutató POST kezdeményeznek. Ennek a hívás/parancs megerősíti, hogy a felhasználó leképezés, valamint elfogadási figyelmeztetések az OMS-portálon az Azure-bA kiterjesztett, majd hajtsa végre a módosításokat, a válasz GET hívás az API-hoz. Szükség esetén a felhasználó mely OMS portal fog mail egy jelentés ütemezett háttérfolyamatként, amely a riasztásokat az OMS-portálon az Azure-bA sikeres befejezése után e-mail címek listájának biztosíthat.
+Kezdeményezheti a riasztások áttelepítése az Azure-ba, indítsa el a POST válasz. A POST válasz megerősíti, hogy a leképezés, valamint elfogadási Naplóelemzési terjeszteni Auzre riasztások riasztások rendelkeznie.  A tevékenység van ütemezve, és a riasztások dolgoznak fel az eredmények alapján jelöli, a GET-válasz korábbi végrehajtása közben.  Igény szerint is adja meg e-mail címét, amelyhez Naplóelemzési lesz az e-mail jelentés ütemezett folyamata az áttelepítéshez a riasztások sikeres befejezéséről.  Ez a következő kérés példa segítségével hajtható végre:
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -150,17 +138,17 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> OMS kiterjesztése eredményét átadott által GET - bármilyen változás történik, a rendszer a fiókja a portálon az Azure, riasztást küld változhat. Ütemezett, az OMS-portálon riasztásokat állnak átmenetileg nem érhető el, szerkesztése vagy módosítása – az során hozható létre új riasztásokat. 
+> Eredményt az Azure-riasztások áttelepítése riasztások GET válaszban által átadott függően eltérhetnek.  Ütemezett, Log Analyticshez riasztások állnak átmenetileg nem érhető el, a Szerkesztés vagy módosítása az OMS-portálon.  Azonban új riasztások hozhatók létre. 
 
-Ha a FELADÁS egy vagy több sikeres, valamint 200 OK választ térhet vissza:
+Ha a POST kérelem sikeres, együtt a következő választ egy HTTP 200 OK állapotot adja vissza:
+
 ```json
 {
     "version": 2
 }
 ```
-Jelzi, hogy a riasztások fut az Azure, 2-es verzióját jelöli. Ezen verziója csak a ellenőrizni, hogy a riasztásokat az Azure fut, és nincs hatással a felhasználást a [napló Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások kiterjeszthetőek az Azure sikeresen, miután az összes e-mail során megadott címek GET küld egy jelentés ezzel a végrehajtott változtatások részleteit.
 
-És végül, ha a megadott munkaterület minden riasztás már ütemezve kiterjeszthetőek az Azure - POST válasz 403 Tiltott. Hibaüzenetek megtekintéséhez, vagy hogy kiterjesztése folyamat Beragadt, a felhasználói műveleteket végezhetnek GET hívást és hiba üzenetet, ha bármelyik visszaadott összegzés együtt.
+Ez a válasz azt jelzi, hogy a riasztásokat az Azure-riasztások sikeresen bővültek. A version tulajdonságát a rendszer csak ellenőrizni, hogy a riasztások kiterjesztettük, az Azure-ba, és nincsenek kapcsolatban a [napló Analytics Search API](../log-analytics/log-analytics-api-alerts.md). A riasztások bővítve lettek az Azure-bA sikeresen, miután minden e-mail-címet megadott a POST kérelem vannak a rendszer küld egy jelentés ezzel a változtatások végrehajtani részleteit.  A riasztásokat a megadott munkaterület mindegyikét már ütemezve kell terjeszteni, a POST-kérelmet válasz esetén a 403-as állapot kód jelentés visszautasította a kísérletet. Hibaüzenetek megtekintéséhez vagy megérteni, ha a folyamat Beragadt, elküldheti a GET kérés és egy hibaüzenet, ha bármely, az eredmény az összefoglaló információk mellett.
 
 ```json
 {
@@ -223,18 +211,252 @@ Jelzi, hogy a riasztások fut az Azure, 2-es verzióját jelöli. Ezen verziója
 
 ```
 
+
+## <a name="option-3---using-custom-powershell-script"></a>A beállítás 3 - egyéni PowerShell-parancsfájl használatával
+ Miután május 14, 2018 - Ha a Microsoft nem sikeresen kibővítve a riasztásokat az OMS-portálon az Azure-bA; majd amíg **2018 július 5** -felhasználó is képes manuálisan ugyanerre keresztül [1. lehetőség – keresztül grafikus](#option-1---initiate-from-the-oms-portal) vagy [2. lehetőség – keresztül API](#option-2---using-the-alertsversion-api).
+
+Után **2018 július 5** -minden riasztás az OMS-portálon az Azure lesz terjesztve. Felhasználók, akik nem igénybe vehet a [javasolt szükséges javítási lépéseket](#troubleshooting), a riasztások kiváltó műveletek vagy hiánya miatt értesítések nélkül futó lesz társítva [művelet csoportok](monitoring-action-groups.md). 
+
+Kézi létrehozása [művelet csoportok](monitoring-action-groups.md) a Naplóelemzési riasztásokhoz, a felhasználók használhatják az alábbi.
+```PowerShell
+########## Input Parameters Begin ###########
+
+
+$subscriptionId = ""
+$resourceGroup = ""
+$workspaceName = "" 
+
+
+########## Input Parameters End ###########
+
+armclient login
+
+try
+{
+    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
+    $workspaceId = $workspace.properties.customerId
+    $resourceLocation = $workspace.location
+}
+catch
+{
+    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
+    exit
+}
+
+# Get Extend Summary of the Alerts
+"`nGetting Extend Summary of Alerts for the workspace...`n"
+try
+{
+
+    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
+
+    "Extend preview summary"
+    "=========================`n"
+
+    $value
+
+    $result = $value | ConvertFrom-Json
+}
+catch
+{
+
+    $ErrorMessage = $_.Exception.Message
+    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
+    exit 
+}
+
+if ($result.version -eq 2)
+{
+    "`nThe alerts in this workspace have already been extended to Azure."
+    exit
+}
+
+$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
+
+if ($in.ToLower() -ne "y")
+{
+    exit
+} 
+
+
+# Check for resource provider registration
+try
+{
+    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
+    if ($val.registrationState -eq "NotRegistered")
+    {
+        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
+    }
+}
+catch
+{
+    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
+    exit
+}
+
+$actionGroupsMap = @{}
+try
+{
+    "`nCreating new action groups for alerts extension...`n"
+    foreach ($actionGroup in $result.migrationSummary.actionGroups)
+    {
+        $actionGroupName = $actionGroup.actionGroupName
+        $actions = $actionGroup.actions
+        if ($actionGroupsMap.ContainsKey($actionGroupName))
+        {
+            continue
+        } 
+        
+        # Create action group payload
+        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
+        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
+        $emailReceivers = New-Object Object[] $actions.emailIds.Count
+        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
+        
+        $count = 0
+        foreach ($email in $actions.emailIds)
+        {
+            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
+            $count++
+        }
+
+        $count = 0
+        foreach ($webhook in $actions.webhookActions)
+        {
+            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
+            $count++
+        }
+
+        $itsmAction = $actions.itsmAction
+        if ($itsmAction.connectionId -ne $null)
+        {
+            $val = @{
+            "name" = "ITSM"
+            "workspaceId" = "$subscriptionId|$workspaceId"
+            "connectionId" = "$($itsmAction.connectionId)"
+            "ticketConfiguration" = $itsmAction.templateInfo
+            "region" = "$resourceLocation"
+            }
+            $properties["itsmReceivers"] = @($val)  
+        }
+
+        $properties["emailReceivers"] = @($emailReceivers)
+        $properties["webhookReceivers"] = @($webhookReceivers)
+        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
+
+    
+        # ARM call to create action group
+        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
+
+        "Created Action Group with name $actionGroupName" 
+        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
+        $index++
+    }
+
+    "`nSuccessfully created all action groups!!"
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message
+
+    #Delete all action groups in case of failure
+    "`nDeleting newly created action groups if any as some error happened..."
+    
+    foreach ($actionGroup in $actionGroupsMap.Keys)
+    {
+        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+    }
+
+    "`nError: $ErrorMessage"
+    "`nExiting..."
+    exit
+}
+
+# Update all alerts configuration to the new version
+"`nExtending OMS alerts to Azure...`n"
+
+try
+{
+    $index = 1
+    foreach ($alert in $result.migrationSummary.alerts)
+    {
+        $uri = $alert.alertId + "?api-version=2015-03-20"
+        $config = armclient get $uri | ConvertFrom-Json
+        $aznsNotification = @{
+            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
+        }
+        if ($alert.customWebhookPayload)
+        {
+            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
+        }
+        if ($alert.customEmailSubject)
+        {
+            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
+        }      
+
+        # Update alert version
+        $config.properties.Version = 2
+
+        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
+        $payload = $config | ConvertTo-Json -Depth 4
+        $response = $payload | armclient put $uri
+    
+        "Extended alert with name $($alert.alertName)"
+        $index++
+    }
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message   
+    if ($index -eq 1)
+    {
+        "`nDeleting all newly created action groups as no alerts got extended..."
+        foreach ($actionGroup in $actionGroupsMap.Keys)
+        {
+            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+        }
+        "`nDeleted all action groups."  
+    }
+    
+    "`nError: $ErrorMessage"
+    "`nPlease resolve the issue and try extending again!!"
+    "`nExiting..."
+    exit
+}
+
+"`nSuccessfully extended all OMS alerts to Azure!!" 
+
+# Update version of workspace to indicate extension
+"`nUpdating alert version information in OMS workspace..." 
+
+$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
+
+"`nExtension complete!!"
+```
+
+
+**Az egyéni PowerShell-parancsfájl használatával** 
+- Előfeltétel telepítése [ARMclient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása
+- Az említett parancsfájlt futtató felhasználó közreműködő vagy a tulajdonos szerepkörrel kell rendelkeznie az Azure-előfizetés
+- A parancsfájl meg kell adni a paraméterek a következők:
+    - $subscriptionId: az Azure-előfizetési Azonosítót társított az OMS/LA munkaterület
+    - $resourceGroup: az Azure erőforráscsoport hol helyezkedik el a OMS/LA munkaterület
+    - $workspaceName: az OMS/LA munkaterület nevét
+
+**Az egyéni PowerShell-parancsfájl** a parancsfájl részletes és fog kimeneti a lépéseket, akkor hajt végre. 
+- Megjeleníti azt a összegzésbe, amelyet a meglévő OMS/LA riasztásokat a munkaterületet, és a hozzájuk társított műveletekhez létrehozandó Azure művelet csoportok adatait tartalmazza. 
+- A bővítmény használatától és a kilépési az összegzés megtekintése után felhasználó kéri.
+- Ha a felhasználó kéri annak használatától kiterjesztésű, új Azure művelet csoportok jön létre, és fel őket hozzárendelni a meglévő riasztást. 
+- A végén, a parancsfájl kilép, az üzenet megjelenítésével "végezze el a kiterjesztés!." Összes köztes hiba esetén további hibákat jelenik meg.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás 
 A során, amely a riasztásokat az OMS Szolgáltatáshoz az Azure lehet alkalmi hibát, amely megakadályozza, hogy a rendszer létrehozásához szükséges [művelet csoportok](monitoring-action-groups.md). Ilyen esetekben egy hibaüzenet jelenik meg az OMS-portálon keresztül szalagcím figyelmeztetési és a GET hívást API történik.
 
-Az alábbiakban a javítási lépéseket minden egyes hibához:
-1. **Hiba: Az előfizetés nincs regisztrálva a következő névtérben: "microsoft.insights" használandó**: ![OMS portál riasztási beállítások lapján regisztrációs hibaüzenet](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+> [!WARNING]
+> Ha a felhasználó nem veszi a precribed javítási lépéseket alább, mielőtt **2018 július 5** - majd riasztásokat fog futni az Azure-ban, de kiváltó bármely művelet, vagy az értesítés nélkül. Ahhoz, hogy a riasztások értesítései, felhasználók manuálisan módosítsa, majd adja hozzá [művelet csoportok](monitoring-action-groups.md) , vagy használja a [egyéni PowerShell-parancsfájl](#option-3---using-custom-powershell-script) fenti.
 
-    a. Az OMS-munkaterület - társított előfizetés nincs regisztrálva Azure Monitor (microsoft.insights) funkciójával; miatt mely OMS kiterjeszti, riasztások Azure figyelő & értesítések nem.
-    
-    b. Regisztrálja microsoft.insights (Azure figyelő & riasztások) használata az előfizetésében Powershell, az Azure parancssori felület vagy Azure-portál használatával. További tudnivalókért tekintse meg a cikk a [erőforrás-szolgáltató regisztrálása a hibák megoldása](../azure-resource-manager/resource-manager-register-provider-errors.md)
-    
-    c. Miután feloldotta a cikkben ismertetett lépések szerint, OMS kiterjed a riasztásokat az Azure belül a következő napra ütemezett futtatását; nincs szükség semmilyen művelet vagy kezdeményezés.
-2. **Hiba: Hatókör zárolási szerepel előfizetés-erőforráscsoport szintjén az írási műveletek**: ![OMS portál riasztási beállítások lapján ScopeLock hibaüzenet](./media/monitor-alerts-extend/ErrorScopeLock.png)
+Az alábbiakban a javítási lépéseket minden egyes hibához:
+1. **Hiba: Hatókör zárolási szerepel előfizetés-erőforráscsoport szintjén az írási műveletek**: ![OMS portál riasztási beállítások lapján ScopeLock hibaüzenet](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
     a. Ha hatókör zárolása engedélyezett, előfizetéshez vagy erőforráscsoporthoz Naplóelemzés (OMS) munkaterületet; tartalmazó új változást korlátozása a rendszer nem tud (Másolás) riasztások kiterjeszti az Azure és a szükséges intézkedéseket csoportok létrehozása.
     
@@ -242,7 +464,7 @@ Az alábbiakban a javítási lépéseket minden egyes hibához:
     
     c. Miután feloldotta a cikkben ismertetett lépések szerint, OMS kiterjed a riasztásokat az Azure belül a következő napra ütemezett futtatását; nincs szükség semmilyen művelet vagy kezdeményezés.
 
-3. **Hiba: A előfizetés-erőforráscsoport szintjén szerepel házirend**: ![OMS portál riasztási beállítások lapján házirend hibaüzenet](./media/monitor-alerts-extend/ErrorPolicy.png)
+2. **Hiba: A előfizetés-erőforráscsoport szintjén szerepel házirend**: ![OMS portál riasztási beállítások lapján házirend hibaüzenet](./media/monitor-alerts-extend/ErrorPolicy.png)
 
     a. Ha [Azure házirend](../azure-policy/azure-policy-introduction.md) van érvényben, bármely új erőforrás előfizetéshez vagy erőforráscsoporthoz Naplóelemzés (OMS) munkaterületet; tartalmazó korlátozása a rendszer nem tudja (Másolás) riasztások kiterjeszti az Azure és a szükséges intézkedéseket csoportok létrehozása.
     

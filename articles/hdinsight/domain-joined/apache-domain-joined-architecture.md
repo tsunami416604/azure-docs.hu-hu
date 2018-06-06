@@ -12,32 +12,33 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: 20d6dbad6fa1914c8b12f47bb48f6efba3895887
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f4380f5d6ec379d5807f697294623a672bd270ae
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715241"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Azure-tartományhoz csatlakoztatott Hadoop-fürtök tervezése a HDInsightban
 
-A szabványos HDInsight-fürt egyfelhasználós fürttagként. Ez megfelel a legtöbb olyan cégnek, amelyekben kisebb alkalmazásfejlesztő csapatok dolgoznak a nagy adatszámítási feladatok kiépítésén. Hadoop szerzett időben népszerűvé vált, mivel számos vállalat lépések áthelyezése egy modelltől, amelyben fürtök informatikai csapatoknak kezeli, és több alkalmazás megosztás fürtök csoportok felé. Így a többfelhasználós fürtöket használó funkció az egyik legtöbbet kért funkció a HDInsightban.
+A szabványos HDInsight-fürt egyfelhasználós fürttagként. Ez megfelel a legtöbb olyan cégnek, amelyekben kisebb alkalmazásfejlesztő csapatok dolgoznak a nagy adatszámítási feladatok kiépítésén. Minden felhasználó egy másik fürthöz dedikált rá az igény szerinti rendelkezik, és nincs többé szükség esetén semmisítse meg. Azonban számos vállalat lépések áthelyezése egy modelltől, amelyben fürtök informatikai csapatoknak kezeli, és több alkalmazás megosztás fürtök csoportok felé. Ebből kifolyólag többfelhasználós hozzáférés a fürthöz szükséges az Azure HDInsight a nagyobb vállalatok számára.
 
-Helyett a saját többfelhasználós hitelesítési és engedélyezési készítéséhez, a HDInsight legnépszerűbb identitásszolgáltató – Active Directory (AD) alapul. A hatékony biztonsági funkció, az Active Directory segítségével hdinsight többfelhasználós hitelesítés kezelésére szolgál. Az ad-val a HDInsight integrálásával kommunikálhat a fürtök AD hitelesítő adataival. A virtuális gépek hdinsight tartományhoz az ad, és ez hogyan HDInsight van leképezve egy AD-felhasználó a helyi Hadoop-felhasználó, így a szolgáltatás HDInsight (Ambari, kiszolgáló, idejére Spark thrift Hive server és a mások) munkahelyi zökkenőmentesen a hitelesített felhasználó számára. A rendszergazdák Apache Pletyka használatát a szerepköralapú hozzáférés-vezérlés a Hdinsightban erőforrások erős engedélyezési házirendeket is létrehozhat.
+A HDInsight legnépszerűbb identitásszolgáltató – aktív a Directory (AD) a felügyelt módon támaszkodik. A HDInsight integrálásával [Azure Active Directory tartományi szolgáltatások (AAD-DS)](../../active-directory-domain-services/active-directory-ds-overview.md), a fürtök a tartományi hitelesítő adataival való hozzáféréshez. A virtuális gépek hdinsight olyan tartományhoz a megadott tartományhoz, így a szolgáltatások futnak, a HDInsight (Ambari, kiszolgáló, idejére Spark thrift Hive server és a mások) munkahelyi zökkenőmentesen a hitelesített felhasználó számára. A rendszergazdák Apache Pletyka használatát a szerepköralapú hozzáférés-vezérlés a fürterőforrások erős engedélyezési házirendeket is létrehozhat.
 
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>A HDInsight és az Active Directory integrálása
 
-HDInsight integrációja az Active Directoryval, a HDInsight-fürtcsomóponton, a tartományhoz egy AD-tartományhoz. A Hadoop-összetevők a fürt a Kerberos biztonsági van konfigurálva. Az egyes a Hadoop-összetevők egy egyszerű szolgáltatásnév az Active Directory jön létre. Egy egyszerű megfelelő gépek is létrejön, minden gép, amely csatlakozik a tartományhoz. Ezek szolgáltatásnevekről és a gép rendszerbiztonsági tagoknak is megzavarhatják az Active Directory szolgáltatásba. Ennek eredményeképpen szükség van rá adjon meg egy szervezeti egység (OU) az Active Directoryban, ha ezen rendszerbiztonsági tagok vannak elhelyezve. 
+A Kerberos hitelesítés és a biztonsági nyílt forráskódú Hadoop támaszkodik. Emiatt a HDInsight-fürtcsomóponton lehet tartományi tartományhoz csatlakozik az AAD-DS kezeli. A Hadoop-összetevők a fürt a Kerberos biztonsági van konfigurálva. Az egyes a Hadoop-összetevők egy egyszerű szolgáltatásnév automatikusan létrejön. Egy egyszerű megfelelő gépek is létrejön, minden gép, amely csatlakozik a tartományhoz. A szolgáltatás és a gépi rendszerbiztonsági tagok tárolásához, szükség van rá adjon meg egy szervezeti egység (OU) belül a tartományvezérlő (AAD-DS), ha ezen rendszerbiztonsági tagok vannak elhelyezve. 
 
-Összefoglalva, a környezet kell beállításával:
+Összefoglalva, akkor be kell állítania tartalmazó környezetben:
 
-- Az Active Directory tartományvezérlő LDAPS konfigurálva.
-- Az Active Directory tartományvezérlőjéhez HDInsight tartozó virtuális hálózati kapcsolat.
-- Az Active Directory létrehozott szervezeti egység.
+- Az Active Directory-tartomány (AAD-Directory tartományi szolgáltatások által kezelt)
+- Biztonságos LDAP (LDAPS) engedélyezve van az AAD-DS-ben.
+- Megfelelő hálózati kapcsolat a HDInsight által az AAD-DS VNET VNET abban az esetben, ha úgy dönt, külön Vnetek számukra. A virtuális gépek a HDI virtuális hálózaton belül rendelkeznie kell egy sor a láthatáron AAD-DS használatával a VNETBEN társviszony-létesítés. Ha ugyanazon virtuális HDI, mind az AAD-DS van telepítve, a kapcsolat automatikusan biztosítja, és nincs további teendő.
+- Egy szervezeti egység (OU) [AAD-DS létre](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md)
 - A szolgáltatás fiók, amely jogosult:
-
     - A szervezeti egység létrehozása szolgáltatásnevekről.
     - Számítógépek csatlakoztatása a tartományhoz, és hozzon létre számítógép rendszerbiztonsági tagok a szervezeti Egységhez.
 
@@ -45,12 +46,13 @@ Az alábbi képernyőfelvételen látható egy szervezeti Egységet létrehozni 
 
 ![Tartományhoz csatlakoztatott HDInsight-fürtök szervezeti egység](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
-### <a name="the-way-of-bringing-your-own-active-directory-domain-controllers"></a>A úgy, hogy a saját Active Directory-tartományvezérlők
+### <a name="different-domain-controllers-setup"></a>Különböző tartományi vezérlők beállítása:
+A HDInsight jelenleg csak támogatja az AAD-DS a fő tartományvezérlőnek, hogy a fürt kommunikál a Kerberise a fürt. Azonban más összetett AD beállításokat is is előfordulhatnak, mindaddig, amíg az AAD-DS HDI-hozzáférés engedélyezéséhez vezet.
 
-- **Az Azure Active Directory tartományi szolgáltatások**: Ez a szolgáltatás egy felügyelt Active Directory-tartományhoz, amely teljes mértékben kompatibilis a Windows Server Active Directory biztosítja. A Microsoft gondoskodik kezelését, javítását és az AD-tartomány ellenőrzése. A fürtök telepítése anélkül, hogy a tartományvezérlők karbantartásához. Felhasználók, csoportok, és jelszavak szinkronizálódnak az Azure Active Directoryból, így a felhasználók jelentkezzen be a fürtre, a vállalati hitelesítő adatok használatával. További információkért lásd: [Azure Active Directory tartományi szolgáltatások konfigurálása tartományhoz csatlakoztatott HDInsight-fürtök](./apache-domain-joined-configure-using-azure-adds.md).
-
+- **[Az Azure Active Directory tartományi szolgáltatások (AAD-DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**: Ez a szolgáltatás egy felügyelt tartomány, amely teljes mértékben kompatibilis a Windows Server Active Directory biztosítja. A Microsoft gondoskodik, javítását és a figyelés a tartomány egy magas Available(HA) beállítása. A fürtök telepítése anélkül, hogy a tartományvezérlők karbantartásához. Felhasználók, csoportok és jelszavak szinkronizálódnak a a Azure Active Directory(AAD) [egyirányú szinkronizálás aad AAD-DS], amely lehetővé teszi felhasználók és jelentkezzen be a fürt vállalati hitelesítő adatokkal. További információkért lásd: [hogyan konfigurálhatja a tartományhoz csatlakoztatott HDInsight-fürtök AAD-DS használatával](./apache-domain-joined-configure-using-azure-adds.md).
+- **A helyszíni AD vagy ad szolgáltatásokba, az infrastruktúra-szolgáltatási virtuális gépeken futó**: Ha telepítette a helyszíni AD vagy más összetett AD beállításokat a tartomány, szinkronizálhatja az aad-be használatával AD Connect majd engedélyezése az AAD-DS-t, hogy AD-bérlői megszakítása. Mivel Kerberos jelszókivonatait támaszkodik, szüksége lesz a [az AAD-DS Jelszókivonat-szinkronizálás engedélyezése](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Ha összevonási használja az AD összevonási szolgáltatások (ADFS), opcionálisan beállíthatja Jelszókivonat-szinkronizálás biztonsági abban az esetben, ha az AD FS infrastruktúra sikertelen lesz. További információk: [Jelszókivonat-szinkronizálás és az AAD Connect-szinkronizálás engedélyezése](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Helyszíni AD vagy AD az infrastruktúra-szolgáltatási virtuális gépeken futó önmagában, aad-ben és az AAD-DS nélkül használata nem támogatott konfiguráció HDI fürt tartományhoz való csatlakozásra.
 
 ## <a name="next-steps"></a>További lépések
-* A tartományhoz csatlakoztatott HDInsight-fürtök kezeléséhez lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](apache-domain-joined-manage.md).
-* A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](apache-domain-joined-run-hive.md).
-* Hive-lekérdezések futtatása HDInsight-fürtök tartományhoz az ssh protokoll használatával, lásd: [az SSH a Hdinsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* [Konfigurálja a HDInsight-fürtök tartományhoz](apache-domain-joined-configure-using-azure-adds.md).
+* [A HDInsight-fürtök tartományhoz Hive-szabályzatok konfigurálása](apache-domain-joined-run-hive.md).
+* [Tartományhoz csatlakozó HDInsight-fürtök kezelése](apache-domain-joined-manage.md). 

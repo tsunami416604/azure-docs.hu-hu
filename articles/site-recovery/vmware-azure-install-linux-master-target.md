@@ -9,11 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4d28a9a840b25ea415021da149ab145836cbed28
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802510"
 ---
 # <a name="install-a-linux-master-target-server"></a>A Linux fő célkiszolgáló telepítése
 Miután a rendszer átadja a virtuális gépek Azure-ba, akkor is feladat-visszavételt a virtuális gépeket a helyszíni hely. A feladat-visszavételt, állítsa a virtuális gépet az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége van egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -242,7 +243,7 @@ Adatmegőrzési lemez létrehozásához tegye a következőket:
 
 2. Használja a **többutas -inden** parancs az adatmegőrzési lemez többutas azonosítója további: **többutas -inden**
 
-    ![A többutas azonosítója](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![A többutas azonosítója](./media/vmware-azure-install-linux-master-target/image27.png)
 
 3. Formázza a meghajtót, és hozza létre a fájlrendszer az új meghajtón: **mkfs.ext4 /dev/leképező/< adatmegőrzési lemez többutas azonosítója >**.
     

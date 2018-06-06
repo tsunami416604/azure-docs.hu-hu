@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/02/2018
+ms.openlocfilehash: 9d9b9b5eda110ad7fa66bb99501936dda5d45e52
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737045"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>A MySQL-adatbázis áttelepítése az Azure Database a MySQL használata a biztonsági másolat és helyreállítás
 Ez a cikk ismerteti a biztonsági mentése és adatbázisokat az Azure-adatbázis visszaállítása a MySQL két gyakori módjai
@@ -51,6 +52,7 @@ A teljesítmény optimalizálása érdekében elvégzendő nagy adatbázisok von
 -   Használja a particionált táblákat, amikor szükséges.
 -   Az adatok párhuzamos betöltése. Ne használjon túl sok párhuzamos okozza, hogy egy erőforrás korlátot elérte volna, és megfigyelje az erőforrásokat az Azure portálon elérhető metrikák használatával. 
 -   Használja a `defer-table-indexes` mysqlpump való kiírása adatbázisok, úgy, hogy az index létrehozása táblák adatok betöltése után történik, ha a beállítást.
+-   Egy Azure blob tárolóba másolja a biztonságimásolat-fájlt, és a visszaállításhoz onnan, amelyek sokkal gyorsabb, mint a visszaállítási folyamat végrehajtása az interneten keresztül kell lennie.
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>A biztonsági másolat létrehozása a parancssorból mysqldump használatával
 Meglévő MySQL-adatbázis mentésére, a helyi helyszíni kiszolgálón vagy egy virtuális gépen, a következő parancsot: 
@@ -74,7 +76,6 @@ Jelölje be a megadott táblák az adatbázis biztonsági mentése, a táblaneve
 ```bash
 $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 ```
-
 Adatbázis biztonsági mentése több egyszerre, használja a--adatbázis váltson, és az adatbázis nevének szóközökkel elválasztott listában. 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
@@ -108,21 +109,22 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 
 ## <a name="export-using-phpmyadmin"></a>Exportálás PHPMyAdmin használatával
 Exportálja, előfordulhat, hogy a már telepített helyileg a környezetben közös eszköz phpMyAdmin is használhat. A MySQL-adatbázis használatával PHPMyAdmin exportálása:
-- Nyissa meg a phpMyAdmin.
-- Válassza ki az adatbázist. Kattintson a bal oldali listában az adatbázis nevére. 
-- Kattintson a **exportálása** hivatkozásra. Egy új lap jelenik meg az adatbázis-memóriakép megtekintéséhez.
-- Az Exportálás területen kattintson a **kijelölése az összes** adja meg a táblák az adatbázisban mutató hivatkozást. 
-- Az SQL-beállítások területen kattintson a megfelelő beállításokat. 
-- Kattintson a **mentése fájlként** beállítás és a megfelelő tömörítés lehetőséget, majd kattintson a **nyissa meg** gombra. Egy párbeszédpanel jelenik meg, és mentse helyileg a fájlt felszólítja.
+1. Nyissa meg a phpMyAdmin.
+2. Válassza ki az adatbázist. Kattintson a bal oldali listában az adatbázis nevére. 
+3. Kattintson a **exportálása** hivatkozásra. Egy új lap jelenik meg az adatbázis-memóriakép megtekintéséhez.
+4. Az Exportálás területen kattintson a **kijelölése az összes** adja meg a táblák az adatbázisban mutató hivatkozást. 
+5. Az SQL-beállítások területen kattintson a megfelelő beállításokat. 
+6. Kattintson a **mentése fájlként** beállítás és a megfelelő tömörítés lehetőséget, majd kattintson a **nyissa meg** gombra. Egy párbeszédpanel jelenik meg, és mentse helyileg a fájlt felszólítja.
 
 ## <a name="import-using-phpmyadmin"></a>Importálás PHPMyAdmin
 Az adatbázis importálása hasonlít exportálása. A következő műveleteket hajthatja végre:
-- Nyissa meg a phpMyAdmin. 
-- A phpMyAdmin beállítása lapon kattintson a **Hozzáadás** hozzáadása a MySQL-kiszolgálóhoz tartozó Azure-adatbázis. Adja meg a kapcsolati adatokat és a bejelentkezési adatok.
-- Hozzon létre egy megfelelő nevű, és válassza ki azt a képernyő bal oldalon található. Írja át a létező adatbázist, kattintson az adatbázis nevét, jelölje be a tábla neve melletti jelölőnégyzetet, és válassza **Drop** törli a meglévő táblákat. 
-- Kattintson a **SQL** hivatkozásra kattintva megjelenítheti a lap, ahol az SQL-parancsokat írhat, vagy az SQL-fájl feltöltése. 
-- Használja a **Tallózás** található az adatbázis gombra. 
-- Kattintson a **Ugrás** gombra a biztonsági mentés exportálása, az SQL-parancsok, és hozza létre újból az adatbázist.
+1. Nyissa meg a phpMyAdmin. 
+2. A phpMyAdmin beállítása lapon kattintson a **Hozzáadás** hozzáadása a MySQL-kiszolgálóhoz tartozó Azure-adatbázis. Adja meg a kapcsolati adatokat és a bejelentkezési adatok.
+3. Hozzon létre egy megfelelő nevű, és válassza ki azt a képernyő bal oldalon található. Írja át a létező adatbázist, kattintson az adatbázis nevét, jelölje be a tábla neve melletti jelölőnégyzetet, és válassza **Drop** törli a meglévő táblákat. 
+4. Kattintson a **SQL** hivatkozásra kattintva megjelenítheti a lap, ahol az SQL-parancsokat írhat, vagy az SQL-fájl feltöltése. 
+5. Használja a **Tallózás** található az adatbázis gombra. 
+6. Kattintson a **Ugrás** gombra a biztonsági mentés exportálása, az SQL-parancsok, és hozza létre újból az adatbázist.
 
 ## <a name="next-steps"></a>További lépések
-[Csatlakozás a MySQL az Azure Database-alkalmazások](./howto-connection-string.md)
+- [Csatlakozás a MySQL az Azure Database-alkalmazások](./howto-connection-string.md).
+- Áttelepítéssel kapcsolatos további információkért adatbázisokat az Azure Database-MySQL, tekintse meg a [adatbázis áttelepítési útmutató](http://aka.ms/datamigration).

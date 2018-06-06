@@ -1,6 +1,6 @@
 ---
-title: "Azure Naplóelemzés integrációs – gyakori kérdések |} Microsoft Docs"
-description: "Ez a cikk az Azure napló integrációs kapcsolatos kérdésekre ad választ."
+title: Azure Naplóelemzés integrációs – gyakori kérdések |} Microsoft Docs
+description: Ez a cikk az Azure napló integrációs kapcsolatos kérdésekre ad választ.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,25 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 02/16/2018
-ms.author: TomSh
+ms.date: 05/25/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9f270daec40d4b395588c491a7ff88ef6ca45649
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802442"
 ---
 # <a name="azure-log-integration-faq"></a>Azure Naplóelemzés integrációs – gyakori kérdések
 
 Ebben a cikkben megválaszolunk kapcsolatos gyakori kérdések (GYIK) Azure napló integráció.
 
->[!IMPORTANT]
->Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
-
 Azure napló-integráció egy olyan Windows operációs rendszer szolgáltatás, az Azure-erőforrások származó nyers naplók integrálja a helyszíni biztonsági információkat és az esemény (SIEM) felügyeleti rendszerek használható. Ez az integráció kínál az új, egységesített irányítópult minden Ez az eszköz, a helyszínen vagy a felhőben. Ezután összesíteni, összefüggéseket, elemzése, és az alkalmazások társított biztonsági események riasztást.
 
+Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
+
 ## <a name="is-the-azure-log-integration-software-free"></a>Az ingyenes Azure napló integrációs szoftver?
+
 Igen. Nincs az Azure napló integrációs szoftver díjmentes.
 
 ## <a name="where-is-azure-log-integration-available"></a>Amennyiben Azure napló integrációs rendelkezésre áll?
@@ -38,6 +39,7 @@ Igen. Nincs az Azure napló integrációs szoftver díjmentes.
 Jelenleg az Azure kereskedelmi és Azure Government érhető el, és nem áll rendelkezésre a kínai vagy Németország.
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Honnan látom, amelyből Azure napló integrációs Azure virtuális gép naplók van húzza a storage-fiókok?
+
 Futtassa a parancsot **AzLog forráslista**.
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Hogyan állapítható meg az Azure napló integrációs naplók tartoznak, amelyhez az előfizetési?
@@ -51,6 +53,7 @@ Az Azure Active Directory-naplók a bérlő azonosítója a név részeként tar
 Az eseményközpontban lévő olvasható diagnosztikai naplói nem tartalmazzák az előfizetés-azonosító, a név részeként. Ehelyett a rövid nevét a hub eseményforrás létrehozása részeként megadott tartalmaznak. 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>Hogyan frissíthetők a proxykonfigurációt?
+
 Ha a megadott proxybeállítást nem teszi lehetővé az Azure storage access közvetlenül, nyissa meg a **AZLOG. EXE-FÁJL. CONFIG** fájlt **c:\Program Files\Microsoft Azure napló integrációs**. Frissítse a fájl elejéhez a **defaultProxy** a szervezet proxycímmel szakasza. A frissítés után állítsa le és indítsa el a szolgáltatást a parancsokkal **net stop AzLog** és **net start AzLog**.
 
     <?xml version="1.0" encoding="utf-8"?>
@@ -61,7 +64,7 @@ Ha a megadott proxybeállítást nem teszi lehetővé az Azure storage access k�
         </connectionManagement>
         <defaultProxy>
           <proxy usesystemdefault="true"
-          proxyaddress=http://127.0.0.1:8888
+          proxyaddress="http://127.0.0.1:8888"
           bypassonlocal="true" />
         </defaultProxy>
       </system.net>
@@ -70,6 +73,7 @@ Ha a megadott proxybeállítást nem teszi lehetővé az Azure storage access k�
       </system.diagnostics>   
 
 ## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Honnan látom az előfizetési adatok a Windows-eseményeket?
+
 Az előfizetés-azonosító hozzáfűzése a rövid nevet a forrás hozzáadása közben:
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
@@ -79,6 +83,7 @@ Az XML az esemény a következő metaadatokat, beleértve az előfizetés-azonos
 
 ## <a name="error-messages"></a>Hibaüzenetek
 ### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>A parancs futtatásakor ```AzLog createazureid```, miért jelenik meg a következő hiba?
+
 Hiba:
 
   *Nem sikerült létrehozni az alkalmazás AAD - 72f988bf-86f1-41af-91ab-2d7cd011db37-OK bérlői = "Tiltott" - Message = "Megfelelő jogosultsággal a művelet végrehajtása."*
@@ -86,6 +91,7 @@ Hiba:
 A **azlog createazureid** parancs megpróbálja hozzon létre egy egyszerű szolgáltatást olyan előfizetést, amely az Azure bejelentkezési hozzáféréssel rendelkezik az Azure AD-bérlő. Ha az Azure bejelentkezési csak a Vendég felhasználó az Azure AD bérlőre, a parancs az "Megfelelő jogosultsággal a művelet végrehajtása." Kérje meg a fiók hozzáadása a bérlői felhasználói a bérlői rendszergazda.
 
 ### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>A parancs futtatásakor **azlog engedélyezik**, miért jelenik meg a következő hiba?
+
 Hiba:
 
   *Szerepkör-hozzárendelés - AuthorizationFailed létrehozása figyelmeztetés: az ügyfél janedo@microsoft.com"objektum"fe9e03e4-4dad-4328-910f-fd24a9660bd2"azonosítója nem jogosult elvégezni művelet"Microsoft.Authorization/roleAssignments/write"hatókörben" / 97 – b971-0d8ff0000000 előfizetések / 70d 95299-d689-4c ".*
@@ -93,15 +99,18 @@ Hiba:
 A **azlog engedélyezik** parancs olvasó szerepkört rendel hozzá az Azure AD szolgáltatás egyszerű (létre **azlog createazureid**) a megadott előfizetésekhez. Ha az Azure bejelentkezési nincs társadminisztrátorának vagy az előfizetés tulajdonosa, az nem "Engedélyezési sikertelen" hibaüzenet. Ez a művelet befejezéséhez szükséges Azure szerepköralapú hozzáférés-vezérlés (RBAC) társadminisztrátoraként vagy a tulajdonos.
 
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Hol találok tulajdonságainak meghatározása a biztonsági naplóban?
+
 Lásd:
 
 * [Naplózási műveletek az Azure Resource Manager eszközzel](../azure-resource-manager/resource-group-audit.md)
 * [A felügyeleti események a Azure REST API előfizetés felsorolása](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Hol található az Azure Security Center riasztásait részleteit?
+
 Lásd: [kezelése és az Azure Security Centerben a biztonsági riasztásokra való reagálásról](../security-center/security-center-managing-and-responding-alerts.md).
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Hogyan módosítható meg, hogy a Virtuálisgép-diagnosztika gyűjtött adatok?
+
 Részletes információt lekérni, módosítására és az Azure diagnosztikai konfiguráció beállítása a következő témakörben: [Windows rendszerű virtuális gépként Azure Diagnostics engedélyezéséhez használja a Powershellt](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Az alábbi példa lekérdezi az Azure diagnosztikai konfiguráció:

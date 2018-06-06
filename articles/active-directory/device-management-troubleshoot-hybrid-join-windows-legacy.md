@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,11 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714112"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi eszközök 
 
@@ -49,11 +51,11 @@ Ez a cikk nyújt hibaelhárítási útmutatót a lehetséges problémák megold�
 
 **Tudnivalók:** 
 
-- A maximális száma felhasználónként: eszközközpontú. Például ha *jdoe* és *jharnett* bejelentkezés az eszközön, a különböző regisztrációs (DeviceID) hoz létre minden egyes azokat a **felhasználói** információ lapon.  
+- A maximális száma felhasználónként: eszközközpontú. Például ha *jdoe* és *jharnett* jelentkezzen be egy eszközt, a különböző regisztrációs (DeviceID) hoz létre minden egyes azokat a **felhasználói** információ lapon.  
 
 - A kezdeti regisztráció / eszközök illesztés van konfigurálva, hajtsa végre a bejelentkezéskor vagy a zárolás kísérlet / zárolásának feloldásához. A Feladatütemező által indított 5 perces késleltetés lehet. 
 
-- Az operációs rendszer vagy a kézi ismételt-regisztrációk újratelepítése előfordulhat, hogy hozzon létre egy új regisztrációs Azure ad-val, amely a felhasználó adatai lap az Azure portálon több bejegyzést eredményez. 
+- Operációs rendszer vagy manuális Újraregisztrálás újratelepítését előfordulhat, hogy hozzon létre egy új regisztrációs az Azure AD, amely a felhasználó adatai lap az Azure portálon több bejegyzést eredményez. 
 
 ## <a name="step-1-retrieve-the-registration-status"></a>1. lépés: A regisztráció állapotának lekérése 
 
@@ -88,7 +90,7 @@ Ha a hybrid Azure AD join nem volt sikeres, a párbeszédpanel biztosít inform�
     
     - A bejelentkezett felhasználó nevében nem tartományi felhasználó (például egy helyi felhasználót). Hibrid az Azure AD-kezelés régebbi eszközök csatlakoztatása csak tartományi felhasználók esetén támogatott.
     
-    - Autoworkplace.exe nem tudja az Azure AD vagy AD FS csendes hitelesíteni. Ezt okozhatja egy kimenő kötött hálózati problémák az Azure AD URL-címek (az Előfeltételek ellenőrzése). Azt is lehet, hogy többtényezős hitelesítés (MFA) a felhasználó számára engedélyezett/konfigurálva és WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón (ellenőrzés konfigurációs lépések). Egy másik lehetőség, a hitelesítőtartomány felderítése (HRD) lap arra vár, hogy felhasználói beavatkozást, amely megakadályozza a **autoworkplace.exe** jogkivonat csendes beszerezni.
+    - Autoworkplace.exe nem tudja az Azure AD vagy AD FS csendes hitelesíteni. Ezt okozhatja az Azure AD URL-címek egy kimenő kötött hálózati kapcsolódási problémák. Azt is lehet, hogy többtényezős hitelesítés (MFA) a felhasználó számára engedélyezett/konfigurálva és WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón. Egy másik lehetőség, a hitelesítőtartomány felderítése (HRD) lap arra vár, hogy felhasználói beavatkozást, amely megakadályozza a **autoworkplace.exe** jogkivonat csendes beszerezni.
     
     - A szervezet használja az Azure AD zökkenőmentes egyszeri bejelentkezést, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók meg az eszköz Internet Explorer intranetes beállításai, és **beállítható a frissítések állapotsor keresztül parancsfájl** nincs engedélyezve az Intranet zóna.
 
@@ -104,7 +106,7 @@ Az állapot információt az eseménynaplóban a is talál: **alkalmazások és 
   
 **Sikertelen a hibrid az Azure AD-csatlakozás leggyakoribb okai a következők:** 
 
-- A számítógép nem csatlakozik a szervezet belső hálózat, sem pedig a kapcsolat a helyszíni VPN AD-tartományvezérlő.
+- A számítógép nincs csatlakoztatva a szervezet belső hálózaton vagy a helyszíni kapcsolattal rendelkező VPN AD-tartományvezérlő.
 
 - A számítógép helyi fiókkal jelentkezett be. 
 

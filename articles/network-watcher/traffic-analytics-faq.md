@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f7e456c76dcf67a40777e32b100b900b859e210e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736796"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
@@ -29,7 +30,14 @@ ms.lasthandoff: 04/18/2018
     - NSG folyamata naplók a figyelni kívánt NSG-k engedélyezve
     - Egy Azure Storage-fiók tárolására nyers flog naplók
     - Az olvasási és írási hozzáférés egy Naplóelemzés (OMS) munkaterületen
-    - Ön fiókjához társítva kell lennie a Microsoft.Network szolgáltató a következő műveleteket:
+    - A fiókjához társítva kell lenni az előfizetés szintjén az alábbi engedélyek egyikét:
+    
+            All permissions *
+            All Read permissions */read
+            All network permissions Microsoft.Network/*
+            All network read permissions Microsoft.Network/*/read
+
+    Vagy az Ön fiókjához társítva kell lennie az előfizetés szintjén minden művelet a következő: 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read

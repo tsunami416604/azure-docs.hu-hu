@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: f4fe93078246bc25eb41a7f8e685d75f8dcb6b7c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bec02b3f3bde9f9cfab615d75cc6f05976ce981a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726220"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Hozzon létre egy virtuális hálózati társviszony - különböző üzembe helyezési modellel, ugyanahhoz az előfizetéshez
 
@@ -89,7 +90,7 @@ Használhatja a [Azure-portálon](#portal), az Azure [parancssori felület](#cli
     azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
 
-5. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot (Resource Manager). Használhatja a parancssori felület 1.0 vagy 2.0-s ([telepítése](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)). Ebben az oktatóanyagban a CLI 2.0 létrehozni a virtuális hálózat (erőforrás-kezelő), mert 2.0 kell használni a társviszony-létesítést létrehozásához használt. Hajtsa végre a következő bash parancssori felület a helyi gép a CLI 2.0.4 parancsfájl vagy újabb verziója. Fut a beállítások a Windows-ügyfelén CLI parancsfájlok bash, lásd: [futtatása az Azure parancssori felület a Windows](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A parancsfájl az Azure-felhő rendszerhéj segítségével is futtathatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Kattintson a **kipróbálás** gombra a parancsfájl, amely a következő, a felhő rendszerhéjat, amelyre bejelentkezik, amellyel bejelentkezhet az Azure-fiókjába. A parancsfájl végrehajtására, kattintson a **másolási** gombra és a beillesztési műveleteket, a tartalmát a felhő rendszerhéjat, majd nyomja le az `Enter`.
+5. Hozzon létre egy erőforráscsoportot és egy virtuális hálózatot (Resource Manager). Használhatja a parancssori felület 1.0 vagy 2.0-s ([telepítése](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)). Ebben az oktatóanyagban a CLI 2.0 létrehozni a virtuális hálózat (erőforrás-kezelő), mert 2.0 kell használni a társviszony-létesítést létrehozásához használt. Hajtsa végre a következő bash parancssori felület a helyi gép a CLI 2.0.4 parancsfájl vagy újabb verziója. Fut a beállítások a Windows-ügyfelén CLI parancsfájlok bash, lásd: [az Azure parancssori felület telepítése Windows](/cli/azure/install-azure-cli-windows). A parancsfájl az Azure-felhő rendszerhéj segítségével is futtathatja. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Kattintson a **kipróbálás** gombra a parancsfájl, amely a következő, a felhő rendszerhéjat, amelyre bejelentkezik, amellyel bejelentkezhet az Azure-fiókjába. A parancsfájl végrehajtására, kattintson a **másolási** gombra és a beillesztési műveleteket, a tartalmát a felhő rendszerhéjat, majd nyomja le az `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash

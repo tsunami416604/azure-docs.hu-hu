@@ -1,6 +1,6 @@
 ---
-title: Azure biztonsági és megfelelőségi tervezetének - FedRAMP-webalkalmazás
-description: Azure biztonsági és megfelelőségi tervezetének - FedRAMP-webalkalmazás
+title: Azure biztonsági és megfelelőségi tervezetének - webalkalmazás infrastruktúra a FedRAMP
+description: Azure biztonsági és megfelelőségi tervezetének - webalkalmazás infrastruktúra a FedRAMP
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: b7a81db6a1caf11ac4a85a5202c5ed943225e849
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 27346d8e2133ea61056817fb48050a4e5c8c3c97
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726482"
 ---
-# <a name="azure-security-and-compliance-blueprint-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi tervezetének: a FedRAMP-webalkalmazás
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi tervezetének: IaaS-webalkalmazás FedRAMP
 
 ## <a name="overview"></a>Áttekintés
 
@@ -149,8 +150,8 @@ Az alábbi technológiákat biztosítja az identitás Eszközkezelési funkciók
 
 OMS rendszer és felhasználói tevékenységek, valamint a rendszerállapot kiterjedt naplózás biztosít. Az OMS [Naplóelemzési](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) megoldás gyűjti és elemzi az adatokat az Azure-erőforrások által létrehozott és a helyszíni környezetben.
 
-- **Tevékenységi naplóit:**[tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) előfizetés erőforrásainak végrehajtott műveletek betekintést nyújtanak.   Tevékenységi naplóit is meghatározásához, hogy egy művelet kezdeményező az előfordulási és állapot ideje.
-- **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt.   Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, az Azure storage naplókat, Key Vault-naplók és Alkalmazásátjáró hozzáférés és a tűzfalon naplókat.
+- **Tevékenységi naplóit:**[tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) előfizetés erőforrásainak végrehajtott műveletek betekintést nyújtanak. Tevékenységi naplóit is meghatározásához, hogy egy művelet kezdeményező az előfordulási és állapot ideje.
+- **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, az Azure storage naplókat, Key Vault-naplók és Alkalmazásátjáró hozzáférés és a tűzfalon naplókat.
 - **Napló archiválás:** összes diagnosztikai naplók írni egy központosított és titkosított Azure storage-fiókjához archiválási. A megőrzési felhasználó által konfigurálható, mentése 730 nap szervezet-specifikus megőrzési követelményeinek megfelelően. Ezek a naplók feldolgozása, tárolására és irányítópult reporting Azure Naplóelemzés csatlakozni.
 
 Emellett a következő OMS-megoldások ebbe az architektúrába részeként telepített. Ne feledje, hogy az ügyfelek felelőssége, hogy ezek a megoldások való megfelelés érdekében FedRAMP biztonsági vezérlők konfigurálása:

@@ -11,13 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: ppacent
+ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801415"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek Azure verem
 
@@ -41,11 +43,11 @@ A skálázási egység állapotának megjelenítése:
  
 Itt tekintheti meg a következő információkat:
 
-- régió neve
+- A régió neve. A régió nevét a hivatkozott **-hely** a PowerShell modul.
 - rendszer típusa
 - teljes logikai magok
 - memória összesen
-- a listában az egyes csomópontok és állapotuk; Futó vagy leállt.
+- a listában az egyes csomópontok és állapotuk; vagy **futtató** vagy **leállt**.
 
 ![Skálázási egység csempe futó állapot az egyes csomópontok megjelenítése](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
@@ -87,7 +89,7 @@ Ez a művelet jellemzően akkor van a csomópont lefagyott állapotban van, és 
 A kikapcsolási művelet Powershellen keresztül futtatása:
 
 ````PowerShell
-  Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```` 
 
 Az valószínű esetében, amelyek a kikapcsolási művelet nem működik használja helyette a BMC webes felületet.
@@ -102,7 +104,7 @@ A **Bekapcsolással** művelet bekapcsolja a csomópont. Ugyanaz, mintha a főka
 A power futtatásához a műveletei Powershellen keresztül:
 
 ````PowerShell
-  Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ````
 
 A valószínűtlen eset, amely a bekapcsolási művelet nem működik használja helyette a BMC webes felületet.
@@ -113,13 +115,13 @@ A **kiürítésére** művelet az összes aktív munkaterhelések evacuates adot
 
 Ez a művelet általában a kijelzők, például egy teljes csomópont váltja fel a mező helyettesítő során használatos.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Győződjön meg arról, hogy csak tervezett karbantartási időszak alatt, ahol felhasználók értesítést üríthetik a csomópontokat. Bizonyos körülmények között az aktív munkaterhelések fedezheti megszakítás mellett folytathatja.
 
 A PowerShell segítségével a kiürítési művelet futtatása:
 
   ````PowerShell
-  Disable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="resume"></a>Folytatás
@@ -129,7 +131,7 @@ A **folytatása** művelet folytatja lecsepegtetett csomópontot, és a munkater
 A művelet folytatása a Powershellen keresztül futtatása:
 
   ````PowerShell
-  Enable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="repair"></a>Javítás
@@ -139,7 +141,7 @@ A **javítási** művelet kijavítja a csomópont. Használatát csak a követke
 - Teljes csomópont csere (vagy anélkül új adatlemezek)
 - Után hardverhiba összetevő és a cseredimenzió (Ha a mező cserélhető Cisco egységet (FRU) dokumentációjában).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > A dokumentációban a OEM hardver gyártója által biztosított FRU pontos lépések során ki kell cserélni a kívánt csomópontra vagy különálló. FRU dokumentációjában adja meg, hogy szükséges-e a javítási művelet egy hardverösszetevő cseréje után.  
 
 A javítási művelet futtatásakor meg kell adnia a BMC IP-címet. 
@@ -147,7 +149,9 @@ A javítási művelet futtatásakor meg kell adnia a BMC IP-címet.
 A PowerShell segítségével a javítási művelet futtatása:
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Region <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
   ````
 
+## <a name="next-steps"></a>További lépések
 
+Az Azure verem háló rendszergazdája modul kapcsolatos további információkért lásd: [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0).

@@ -1,21 +1,21 @@
 ---
-title: Az Azure AD B2C Twitter konfigurációja |} Microsoft Docs
+title: Az Azure Active Directory B2C Twitter konfigurációs |} Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés az Azure Active Directory B2C által védett alkalmazások Twitter fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 4/17/2018
 ms.author: davidmu
-ms.openlocfilehash: 40e4c5549414765dabc6f37c5ffb5aea519ae673
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 68b9e9edbacda08bc98b6b7af5d944d3df9edca1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709580"
 ---
 # <a name="provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts-using-azure-ad-b2c"></a>Twitter-fiókok Azure AD B2C segítségével fogyasztók regisztráció és bejelentkezés biztosítása
 
@@ -27,8 +27,10 @@ Az Azure Active Directory (Azure AD) B2C identitás-szolgáltatóként Twitter h
 3. Ebben a formátumban adja meg az értéket a **neve**, **leírás**, és **webhely**.
 4. Az a **visszahívási URL-cím**, adja meg `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`. Győződjön meg arról, hogy **{tenant}** a bérlő nevű (például contosob2c.onmicrosoft.com).
 5. A jelölőnégyzet bejelölésével vállalja, hogy a **fejlesztői megállapodás** kattintson **az Twitter-alkalmazás létrehozása**.
-6. Az alkalmazás létrehozása után kattintson **kulcsok és a hozzáférési jogkivonatok**.
-7. Másolja a értékének **kulcsa** és **felhasználói titok**. Mindkettő konfigurálásához Twitter-bérlőben identitás-szolgáltatóként kell.
+6. Az alkalmazás létrehozása után válassza ki a listából, majd válassza ki a **beállítások** fülre.
+7. Törölje a jelet a **visszahívási zárolási engedélyezése** gombra, majd **beállításainak frissítése**.
+8. Válassza ki a **kulcsok és a hozzáférési jogkivonatok** fülre.
+9. Másolja a értékének **kulcsa** és **felhasználói titok**. Mindkettő konfigurálásához Twitter-bérlőben identitás-szolgáltatóként kell.
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>Twitter-bérlőben identitás-szolgáltatóként konfigurálása
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként. 

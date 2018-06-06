@@ -6,13 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 05/23/2018
 ms.author: bikang
-ms.openlocfilehash: 7b62631bd386a2feaa675b0ebd234768bec2f5e1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763357"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -24,7 +25,7 @@ Az Azure Service Fabric parancssori felület (CLI) egy parancssori eszköz a Ser
 
 A telepítés előtt győződjön meg arról, hogy a környezetben a Python és a pip is telepítve van. További információkért olvassa el a [pip rövid útmutató dokumentációját](https://pip.pypa.io/en/latest/quickstart/) és a hivatalos [Python-telepítési dokumentációt](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-A parancssori felület a Python 2.7-es, 3.5-ös és 3.6-os verzióit támogatja. A Python 3.6-os az ajánlott verzió, mivel a Python 2.7 támogatottsága hamarosan véget ér.
+A parancssori felülete támogatja a Python 2.7, 3.5-ös és 3.6. A Python 3.6-os az ajánlott verzió, mivel a Python 2.7 támogatottsága hamarosan véget ér.
 
 ### <a name="service-fabric-target-runtime"></a>A Service Fabric cél futtatókörnyezete
 
@@ -32,7 +33,8 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 
 | Parancssori felület verziója   | támogatott futtatókörnyezet-verzió |
 |---------------|---------------------------|
-| Legfrissebb (~=4)  | Legfrissebb (~=6.1)            |
+| Legutóbbi (~ = 5)  | Legutóbbi (~ = 6.2)            |
+| 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
@@ -69,7 +71,7 @@ python --version
 pip --version
 ```
 
-Ezután futtassa a következő parancsot a Service Fabric parancssori felületének telepítéséhez:
+Ezután futtassa az Azure Service Fabric parancssori felület (sfctl) telepítése, és a parancssori súgó a lapnak a megtekintésére a következő parancsot:
 
 ```bat
 pip install sfctl
@@ -120,7 +122,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-A teszteléshez és a telepítéshez tekintse meg az **Ubuntu és a Linux Windows alrendszere** szakaszban szereplő lépéseket.
+A telepítés teszteléséhez, olvassa el a említett lépéseket **Ubuntu és a Windows, Linux alrendszer** szakasz
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -231,13 +233,13 @@ További információt az [OpenSSL-dokumentációban](https://www.openssl.org/do
 
 Egyes műveletek az alábbi üzenetet hozhatják létre:
 
-`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+`Failed to establish a new connection`
 
 Ellenőrizze, hogy a megadott fürtvégpont elérhető-e és figyel-e. Továbbá ellenőrizze, hogy a Service Fabric Explorer felhasználói felülete elérhető-e a gazdagépen és a porton. A végpont frissítéséhez használja az `sfctl cluster select` parancsot.
 
 ### <a name="detailed-logs"></a>Részletes naplók
 
-A részletes naplók gyakran hasznosak a hibák javításához vagy a problémák jelentéséhez. Egy globális `--debug` jelző növeli a naplófájlok részletességét.
+A részletes naplók gyakran hasznosak a hibák javításához vagy a problémák jelentéséhez. A `--debug` jelző növeli a kimeneti részletességi.
 
 ### <a name="command-help-and-syntax"></a>Parancsok súgója és szintaxisa
 

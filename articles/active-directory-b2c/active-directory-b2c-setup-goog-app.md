@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Google + konfigurációs |} Microsoft Docs'
+title: Az Azure Active Directory B2C konfigurációs Google + |} Microsoft Docs
 description: Adja meg a regisztráció és bejelentkezés Google + az Azure Active Directory B2C által védett alkalmazások fiókkal rendelkező felhasználók számára.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: db3044754e0c1316b49eda0600d41e3009c1ba16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 5377e4b56bca09a1785d14bfe4c32de01e6db7d3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711365"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Az Azure Active Directory B2C: Regisztráció és bejelentkezés biztosítása Google + fiókkal rendelkező felhasználók
 ## <a name="create-a-google-application"></a>Google +-alkalmazás létrehozása

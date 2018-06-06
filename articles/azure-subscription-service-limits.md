@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 8a8482fa93ca902746e4fc8ef6d67b274a926bdc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700192"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -73,6 +74,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [IoT Hub eszközregisztrációs szolgáltatás](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
+* [Felügyelt identitás](#managed-identity-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobilmarketing](#mobile-engagement-limits)
 * [Mobilszolgáltatások](#mobile-services-limits)
@@ -82,6 +84,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Hálózati figyelőt](#network-watcher-limits)
 * [Értesítési központ szolgáltatás](#notification-hub-service-limits)
 * [Erőforráscsoport](#resource-group-limits)
+* [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
@@ -96,8 +99,8 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 * [Virtuális gépek](#virtual-machines-limits)
 * [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
 
-### <a name="subscription-limits"></a>Előfizetési korlátozásait
-#### <a name="subscription-limits"></a>Előfizetési korlátozásait
+### <a name="subscription-limits"></a>Előfizetés korlátai
+#### <a name="subscription-limits"></a>Előfizetés korlátai
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Előfizetési korlátozásait - Azure Resource Manager
@@ -314,6 +317,12 @@ További kapcsolatos részletesebb felügyeletét, például a dokumentum méret
 
 ### <a name="automation-limits"></a>Automatizálási korlátok
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
+
+### <a name="managed-identity-limits"></a>Felügyelt identitás korlátok
+[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
+
+### <a name="role-based-access-control-limits"></a>Szerepköralapú hozzáférés-vezérlési korlátozások
+[!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL-adatbázis korlátok
 SQL adatbázis-korlátok, lásd: [SQL adatbázis erőforrás korlátok](sql-database/sql-database-resource-limits.md).

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85cdce312e141bee9da3b633c45dc770e503abfe
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724798"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Functions az Azure Blob storage kötések
 
@@ -34,13 +35,17 @@ Ez a cikk ismerteti az Azure Functions kötések Azure Blob storage használata.
 > [!NOTE]
 > Az esemény rács eseményindító használata helyett a Blob storage eseményindító csak a blob storage-fiókok, nagy méretű, vagy a cold indításának késleltetése elkerülése érdekében. További információkért lásd: a [eseményindító](#trigger) szakasz. 
 
-## <a name="packages"></a>Csomagok
+## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
 
-A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagot. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) GitHub-tárházban.
+A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 2.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-tárházban.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+
+A Blob storage kötések szerepelnek a [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomag verziója 3.x. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) GitHub-tárházban.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -262,6 +267,8 @@ A C# és C# a parancsfájlt a következő paraméter típusok használhatók a e
 * `CloudAppendBlob`<sup>1</sup>
 
 <sup>1</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
+
+Ha megpróbál a Storage szolgáltatás SDK típusú kötni, és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
 A kötés `string`, `Byte[]`, vagy POCO csak akkor ajánlott, ha a blob mérete kisebb, mint a teljes blob tartalmát betölti a memóriába. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) című cikkben.
 
@@ -563,6 +570,8 @@ A C# és C# a parancsfájlt használhatja a blob bemeneti kötése a következő
 
 <sup>1</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
 
+Ha megpróbál a Storage szolgáltatás SDK típusú kötni, és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
+
 A kötés `string` vagy `Byte[]` csak akkor javasolt, ha blob mérete kisebb, mint a teljes blob tartalmát a memóriába betöltött. Általában célszerű használni egy `Stream` vagy `CloudBlockBlob` típusa. További információkért lásd: [egyidejűség-és memóriahasználatát](#trigger---concurrency-and-memory-usage) korábbi ebben a cikkben.
 
 JavaScript, nyissa meg a blob adatainak használatával `context.bindings.<name from function.json>`.
@@ -776,6 +785,8 @@ A C# és C# a parancsfájlt köthető a következő típusok blobok írni:
 <sup>1</sup> "a" kötésben szükséges `direction` a *function.json* vagy `FileAccess.Read` C# osztály könyvtárban. Az objektum, amely a futtatókörnyezetet biztosít írási műveletek, például a blobok feltölteni a tárolóba is használhatja.
 
 <sup>2</sup> "inout" kötést igényel `direction` a *function.json* vagy `FileAccess.ReadWrite` C# osztály könyvtárban.
+
+Ha megpróbál a Storage szolgáltatás SDK típusú kötni, és egy hibaüzenet jelenik meg, győződjön meg arról, hogy rendelkezik-e mutató hivatkozás [a megfelelő tárolási SDK-verzió](#azure-storage-sdk-version-in-functions-1x).
 
 Aszinkron funkciók, használja a visszatérési értéket vagy `IAsyncCollector` ahelyett, hogy egy `out` paraméter.
 

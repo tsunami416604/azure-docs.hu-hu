@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725142"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factory Visual készítése
 Az Azure Data Factory felhasználói felület élmény (UX) lehetővé teszi vizuálisan hozhatnak létre és telepítését erőforrások az a data factory kód írása nélkül. Húzzon tevékenységeket a feldolgozási sor vásznon, hajtsa végre a teszt futtatása, debug ismételt, és telepítheti és figyelheti a folyamat futtatása. Kétféleképpen használatához a UX visual szerzői műveletek végrehajtásához:
@@ -46,8 +47,8 @@ Visual szerkesztése VSTS Git integráció a támogatja a verziókövetési rend
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>A VSTS Git-tárház konfigurálása az Azure Data Factoryvel
 A data Factory két módszerrel konfigurálhatja egy VSTS GIT-tárházat.
 
-<a name="method1"></a>
-#### <a name="configuration-method-1-lets-get-started-page"></a>Konfiguráció 1. módszer: folytassuk lépéseket ismertető oldal felkereséséhez
+#### <a name="method1"></a> Konfiguráció 1. módszer: folytassuk lépéseket ismertető oldal felkereséséhez
+
 Azure Data Factory, keresse meg a **lássunk** lap. Válassza ki **kód tárház konfigurálása**:
 
 ![A VSTS kód tárház konfigurálása](media/author-visually/configure-repo.png)
@@ -75,6 +76,14 @@ Az az Azure Data Factory UX **vászonra szerzői**, keresse meg a data factory. 
 Egy konfigurációs ablaktáblán jelenik meg. További konfigurációs beállításokkal kapcsolatos információkért lásd: a leírásokat <a href="#method1">konfigurációs módszer 1</a>.
 
 ![A kód tárház UX szerzői beállításainak konfigurálása](media/author-visually/configure-repo-2.png)
+
+#### <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-tárház
+
+Váltson át egy másik Git-tárház, keresse meg a ikonra a Data Factory – Áttekintés lap jobb felső sarkában a következő képernyőfelvételen látható módon. Ha nem látja a ikonra, kapcsolja ki a helyi gyorsítótárban. Válassza ki az ikonra kattintva törölje a társítást az aktuális adattárban.
+
+Ha eltávolítja a jelenlegi tárház társítását, akkor egy másik tárház használandó Git beállításainak konfigurálásához. Majd importálhatja az új tárház adat-előállító meglévő erőforrásokat.
+
+![Törölje a társítást az aktuális Git-tárház.](media/author-visually/remove-repo.png)
 
 ### <a name="use-version-control"></a>Verziókövetés alkalmazása
 Verzió rendszerek (más néven _verziókövető_) segítségével a fejlesztők közösen dolgozzon a kódot, és nyomon követése végzett módosításokat a kód alap. A verziókövetési rendszerrel több fejlesztői projektek alapvető eszközét.
