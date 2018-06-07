@@ -89,6 +89,8 @@
               href: n-series-driver-setup.md
         - name: Nagy teljesítményű számítás
           href: sizes-hpc.md
+        - name: Előző generációk
+          href: sizes-previous-gen.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: acu.md
         - name: Teljesítményteszt pontszámai
@@ -140,6 +142,8 @@
           href: create-cli-complete.md
         - name: Sablon használata
           href: create-ssh-secured-vm-from-template.md
+        - name: A REST API használata
+          href: create-vm-rest-api.md
         - name: Virtuális gép másolása vagy klónozása
           href: copy-vm.md
     - name: Virtuális gépek védelme
@@ -188,7 +192,12 @@
         - name: Virtuális gép címkézése
           href: tag.md
         - name: Szkriptek futtatása virtuális gépeken
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Egyéni szkriptbővítmény
+              href: ../extensions/custom-script-linux.md
+            - name: Parancs futtatása
+              href: run-command.md
         - name: A Távoli asztal használata
           href: use-remote-desktop.md
         - name: Virtuális gép csatlakoztatása az Azure Active Directoryhoz
@@ -416,21 +425,7 @@
             - name: Belső DNS használata
               href: static-dns-name-resolution-for-linux-on-azure.md
     - name: Virtuálisgép-bővítmények használata
-      items:
-        - name: Áttekintés a virtuálisgép-bővítményekről
-          href: extensions-features.md
-        - name: Egyéni szkriptbővítmény
-          href: extensions-customscript.md
-        - name: OMS-ügynök bővítmény
-          href: extensions-oms.md
-        - name: Linux diagnosztikai bővítmény
-          href: diagnostic-extension.md
-        - name: Network Watcher-ügynök
-          href: extensions-nwa.md
-        - name: VMAccess bővítmény
-          href: using-vmaccess-extension.md
-        - name: Bővítménytelepítés korlátozása
-          href: ../extensions/extensions-rmpolicy-howto-cli.md
+      href: ../extensions/overview.md
     - name: Virtuális gépek áttelepítése
       items:
         - name: AWS és helyszíni virtuális gépek migrálása

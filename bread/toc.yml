@@ -113,7 +113,7 @@
     - name: Batch AI
       tocHref: /azure/batch-ai/
       topicHref: /azure/batch-ai/
-    - name: Számlázás
+    - name: Számlázás és költségkezelés
       tocHref: /azure/billing/
       topicHref: /azure/billing/
     - name: Biztalk Services

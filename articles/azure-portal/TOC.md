@@ -15,6 +15,7 @@
 ### [Azure-irányítópultok szoftveres létrehozása](azure-portal-dashboards-create-programmatically.md)
 ## Kezelés
 ### [Kontrasztos megjelenítés bekapcsolása és téma módosítása](azure-portal-change-theme-high-contrast.md)
+### [Felhasználói beállítások exportálása vagy törlése](azure-portal-export-delete-settings.md)
 ### [Erőforrások kezelése a portálon](../azure-resource-manager/resource-group-portal.md)
 ### [Hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../role-based-access-control/role-assignments-portal.md)
 ### [Irányítópultok megosztása szerepköralapú hozzáférés-vezérléssel](azure-portal-dashboard-share-access.md)

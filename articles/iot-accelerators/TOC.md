@@ -3,13 +3,13 @@
 
 # Áttekintés
 ## [Az IoT-architektúra alapelvei](iot-accelerators-what-is-azure-iot.md)
-## [Az Azure IoT lehetőségeinek összehasonlítása](../iot-suite/iot-suite-options.md)
+## [Az Azure IoT lehetőségeinek összehasonlítása](iot-accelerators-options.md)
 ## [A megoldásgyorsítók áttekintése](iot-accelerators-what-are-solution-accelerators.md)
 
 # Bevezetés
 ## Távoli monitorozás
 ### [A megoldásgyorsító üzembe helyezése](iot-accelerators-remote-monitoring-deploy.md)
-### [A megoldásgyorsító üzemeltetése](../iot-suite/iot-suite-remote-monitoring-explore.md)
+### [A megoldásgyorsító üzemeltetése](iot-accelerators-remote-monitoring-explore.md)
 
 ## Távoli monitorozás (előző verzió)
 ### [Mik azok a megoldásgyorsítók?](../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md)
@@ -35,16 +35,16 @@
 ##### [C Windowson](../iot-suite/iot-suite-v1-connecting-devices.md)
 ##### [C Linuxon](../iot-suite/iot-suite-v1-connecting-devices-linux.md)
 ##### [Node.js](../iot-suite/iot-suite-v1-connecting-devices-node.md)
-#### [Logikai alkalmazás csatlakoztatása a távoli figyelési megoldáshoz](../iot-suite/iot-suite-v1-logic-apps-tutorial.md)
+#### [Logikai alkalmazás csatlakoztatása a távoli monitorozási megoldáshoz](../iot-suite/iot-suite-v1-logic-apps-tutorial.md)
 #### [Megoldásgyorsítók testreszabása](../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
-#### [Dinamikus telemetria használata a távoli figyelési megoldással](../iot-suite/iot-suite-v1-dynamic-telemetry.md)
-#### [Egyéni szabály létrehozása a távoli figyelési megoldásban](../iot-suite/iot-suite-v1-custom-rule.md)
-#### [Eszközinformációk a távoli figyelési megoldásban](../iot-suite/iot-suite-v1-remote-monitoring-device-info.md)
+#### [Dinamikus telemetria használata a távoli monitorozási megoldással](../iot-suite/iot-suite-v1-dynamic-telemetry.md)
+#### [Egyéni szabály létrehozása a távoli monitorozási megoldásban](../iot-suite/iot-suite-v1-custom-rule.md)
+#### [Eszközinformációk a távoli monitorozási megoldásban](../iot-suite/iot-suite-v1-remote-monitoring-device-info.md)
 
 
 ## Prediktív karbantartás
-### [A prediktív karbantartási megoldásgyorsító áttekintése](../iot-suite/iot-suite-predictive-overview.md)
-### [A prediktív karbantartási megoldásgyorsító bemutatója](../iot-suite/iot-suite-predictive-walkthrough.md)
+### [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
+### [A prediktív karbantartási megoldásgyorsító bemutatója](iot-accelerators-predictive-walkthrough.md)
 
 ## Csatlakoztatott gyár
 ### [Mi az a csatlakoztatott gyár?](iot-accelerators-connected-factory-features.md)
@@ -70,7 +70,7 @@
 ### [Mikroszolgáltatás testreszabása és ismételt üzembe helyezése](iot-accelerators-microservices-example.md)
 ### [Üzembe helyezés parancssori felületről](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [Helyi üzembe helyezés](iot-accelerators-remote-monitoring-deploy-local.md)
-### [Adatok vizualizálása a Time Series Insightsszal](../iot-suite/iot-suite-time-series-insights.md)
+### [Adatok vizualizálása a Time Series Insightsszal](iot-accelerators-time-series-insights.md)
 ### [Integrálás a Data Lake-kel](iot-accelerators-integrate-data-lake.md)
 ### Fizikai eszköz csatlakoztatása
 #### [C Windowson](iot-accelerators-connecting-devices.md)
@@ -78,7 +78,7 @@
 #### [Node.js (általános)](iot-accelerators-connecting-devices-node.md)
 #### [Node.js Raspberry Pi-on](iot-accelerators-connecting-pi-node.md)
 #### [C Raspberry Pi-on](iot-accelerators-connecting-pi-c.md)
-#### [MX Chip AZ3166 fejlesztői készlet](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+#### [MX Chip AZ3166 fejlesztői készlet](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### Alapelvek
 #### [Távoli monitorozás megvalósítási részletei](iot-accelerators-remote-monitoring-sample-walkthrough.md)
@@ -89,19 +89,19 @@
 ### [Csatlakoztatott gyár testreszabása](iot-accelerators-connected-factory-customize.md)
 ### [Az OPC-közzétevő használata a csatlakoztatott gyárhoz](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [Csatlakoztatott gyár konfigurálása](iot-accelerators-connected-factory-configure.md)
-## [Engedélyek az azureiotsuite.com webhelyen](../iot-suite/iot-suite-permissions.md)
+## [Engedélyek az azureiotsuite.com webhelyen](iot-accelerators-permissions.md)
 
 # Referencia
 ## [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [Biztonsági architektúra](../iot-suite/iot-security-architecture.md)
-## [Ajánlott biztonsági eljárások](../iot-suite/iot-security-best-practices.md)
-## [Az IoT-környezet biztonságossá tétele](../iot-suite/iot-suite-security-deployment.md)
-## [Biztonság az alapoktól](../iot-suite/securing-iot-ground-up.md)
+## [Biztonsági architektúra](iot-security-architecture.md)
+## [Ajánlott biztonsági eljárások](iot-security-best-practices.md)
+## [Az IoT-környezet biztonságossá tétele](iot-accelerators-security-deployment.md)
+## [Biztonság az alapoktól](securing-iot-ground-up.md)
 
 # Kapcsolódó témakörök
 ## Megoldások 
-### [IoT Suite előre konfigurált megoldások](/azure/iot-suite) 
+### [IoT-megoldásgyorsítók](/azure/iot-suite) 
 ### [IoT-központ](https://docs.microsoft.com/microsoft-iot-central/) 
 ## Platformszolgáltatások 
 ### [IoT Hub](/azure/iot-hub) 

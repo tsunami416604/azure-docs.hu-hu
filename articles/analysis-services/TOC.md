@@ -1,50 +1,52 @@
 # [Az Analysis Services dokumentációja](index.md)
 
 # Áttekintés
-## [Mi az Azure Analysis Services?](analysis-services-overview.md)
 
+## [Mi az Analysis Services?](analysis-services-overview.md)
 
-# Bevezetés
-## [Kiszolgáló létrehozása az Azure Portalon](analysis-services-create-server.md)
-## [Kiszolgáló létrehozása az Azure PowerShell-lel](analysis-services-create-powershell.md)
-## [Modell üzembe helyezése a Visual Studióból](analysis-services-deploy.md)
-## [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
+# Gyors útmutatók
+
+## [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)
+## [Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)
+## [Kiszolgáló tűzfalának konfigurálása – Portal](analysis-services-qs-firewall.md)
+
+# Oktatóanyagok
+
+## [1 – Mintamodell hozzáadása a portálról](analysis-services-create-sample-model.md) 
+## [2 – A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása](tutorials/analysis-services-tutorial-roles.md)
+## [3 – Kapcsolódás Power BI Desktoppal](tutorials/analysis-services-tutorial-pbid.md)
 
 # Alapelvek
+
+## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
 ## [Automatizálás szolgáltatásnevekkel](analysis-services-service-principal.md)
-## [Támogatott adatforrások](analysis-services-datasource.md)
+## [Ügyfélkódtárak](analysis-services-data-providers.md)
+## [Kompatibilitási szint](analysis-services-compat-level.md)
 ## [Csatlakozás helyszíni adatforrásokhoz](analysis-services-gateway.md)
 ## [Kapcsolódás kiszolgálókhoz](analysis-services-connect.md)
-## [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)
-## [Kompatibilitási szint](analysis-services-compat-level.md)
 ## [Magas rendelkezésre állás](analysis-services-bcdr.md)
+## [Támogatott adatforrások](analysis-services-datasource.md)
 
 # Használati útmutató 
-## [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
-## [Power BI Desktop-fájlok importálása](analysis-services-import-pbix.md)
-## [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
-## [Frissítés a REST API-val](analysis-services-async-refresh.md)
-## [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
-## Adminisztratív feladatok automatizálása
-### [Szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-### [Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
-## Kiszolgálófelügyelet
+
+## Kiszolgáló
+### [Biztonsági mentés és visszaállítás](analysis-services-backup.md)
 ### [Kiszolgálónév aliasának konfigurálása](analysis-services-server-alias.md)
+### [Horizontális felskálázás konfigurálása](analysis-services-scale-out.md)
+### [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)
 ### [Kiszolgáló kezelése](analysis-services-manage.md)
-### [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
-### [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
 ### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ### [Diagnosztikai naplózás beállítása](analysis-services-logging.md)
-### [Átjáró használata az adatforrásokhoz a virtuális hálózaton](analysis-services-vnet-gateway.md)
-## Kapcsolódás
-### [Ügyfélkódtárak beszerzése](analysis-services-data-providers.md)
-### [Kapcsolódás Excellel](analysis-services-connect-excel.md)
-### [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
-### [.odc fájl létrehozása](analysis-services-odc.md)
-## Oktatóanyagok
-### [1 – mintamodell hozzáadása](analysis-services-create-sample-model.md)
-### [Adatmodellezés – Az Adventure Works oktatóanyaga](tutorials/aas-adventure-works-tutorial.md)
+### [Egyszerű szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [Egyszerű szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Egyszerű szolgáltatásnév hozzáadása kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
+
+## Modell
+### [Power BI Desktop-fájlok importálása](analysis-services-import-pbix.md)
+### [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
+### [Üzembe helyezés a Visual Studióból (SSDT)](analysis-services-deploy.md)
+### [Frissítés a REST API-val](analysis-services-async-refresh.md)
+### [Adatmodellezés a Visual Studióban – útmutató az Adventure Workshöz (1400)](tutorials/aas-adventure-works-tutorial.md)
 #### [1 – Táblázatos modellprojekt létrehozása](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 #### [2 – Az adatok beszerzése](tutorials/aas-lesson-2-get-data.md)
 #### [3 – Megjelölés dátumtáblaként](tutorials/aas-lesson-3-mark-as-date-table.md) 
@@ -62,14 +64,25 @@
 #### [Kiegészítő lecke – Dinamikus biztonság](tutorials/aas-supplemental-lesson-dynamic-security.md)
 #### [Kiegészítő lecke – Hézagos hierarchiák](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
+## Biztonság
+### [Adatbázis-felhasználók kezelése](analysis-services-database-users.md)
+### [A kiszolgálók rendszergazdáinak kezelése](analysis-services-server-admins.md)
+
+## Kapcsolódás
+### [Kapcsolódás Excellel](analysis-services-connect-excel.md)
+### [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)
+### [.odc fájl létrehozása](analysis-services-odc.md)
+
 # Referencia
-## [Azure PowerShell](analysis-services-powershell.md)
+
+## [PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Táblázatos modell parancsnyelve (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
 # További források
+
 ## [Minták](analysis-services-samples.md)
 ## [Analysis Services csapatblog](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
@@ -80,4 +93,13 @@
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
+
+
+
+
+
+
+
+
+
 

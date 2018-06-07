@@ -51,6 +51,8 @@
           href: container-instances-exec.md
         - name: Processzor- és memóriahasználat monitorozása
           href: container-instances-monitor.md
+        - name: Naplózás az Azure Log Analytics használatával
+          href: container-instances-log-analytics.md
     - name: Számítási feladatok futtatása
       items:
         - name: Tárolóalapú feladatok futtatása

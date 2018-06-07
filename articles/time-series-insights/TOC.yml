@@ -14,6 +14,8 @@
   items:
     - name: Ismerkedés a TSI JavaScript ügyfélkönyvtárával
       href: tutorial-explore-js-client-lib.md
+    - name: TSI-környezet létrehozása
+      href: tutorial-create-populate-tsi-environment.md
 - name: Alapelvek
   items:
     - name: A környezet megtervezése
@@ -56,6 +58,8 @@
       href: time-series-insights-how-to-scale-your-environment.md
     - name: Erőforrások kezelése sablonokkal
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
+    - name: A JSON testreszabása lekérdezésekhez
+      href: how-to-shape-query-json.md
 - name: Referencia
   items:
     - name: Lekérdezési API

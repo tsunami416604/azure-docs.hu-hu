@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620340"
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure-figyelővel képernyő adat-előállítók  
 Sok áthelyezése alkotórészek összetettek a felhőalapú alkalmazásokhoz. Győződjön meg arról, hogy az alkalmazás marad be adatokat, és megfelelő állapotban fut figyelés nyújt. Emellett segít, hogy ki a lehetséges problémák stave és a múltbeli kiépítettektől eltérő hibakeresést. Figyelési adatok segítségével emellett az alkalmazással kapcsolatos átfogó megismerésében. Ennek az információnak a segítséget nyújtanak az alkalmazások teljesítményének vagy karbantartási követelmények, vagy a, amelyek egyébként kézi beavatkozás műveletek automatizálására.
@@ -106,7 +107,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
 | storageAccountId |Karakterlánc | Az erőforrás-azonosítója, amelyet szeretne elküldeni a diagnosztikai naplókat a tárfiók |
-| serviceBusRuleId |Karakterlánc | A service bus szabály azonosítója a service bus-névtér, amelyben a folyamatos átviteli diagnosztikai naplók létrehozott Event Hubs rendelkezik szeretné. A szabály azonosítója formátumban van: "{service bus erőforrás-azonosító} /authorizationrules/ {kulcsnév}".|
+| serviceBusRuleId |Karakterlánc | A service bus szabály azonosítója a service bus-névtér, amelyben a folyamatos átviteli diagnosztikai naplók létrehozott Event Hubs rendelkezik szeretné. A szabályt azonosító a formátum: {service bus erőforrás-azonosító} /authorizationrules/ {kulcsnév}.|
 | workspaceId | Összetett típus | A tömb metrika idő szemek és az adatmegőrzési házirendek. Ezt a tulajdonságot jelenleg üres. |
 |metrics| A meghívott csővezeték átadandó futtassa paraméterértékeket a feldolgozási folyamat| A JSON-objektum argumentum értékek leképezése a paraméterek nevei | 
 | naplók| Összetett típus| A diagnosztikai naplófájl kategória neve erőforrástípus. Szerezze be az erőforrás diagnosztikai naplófájl kategóriák listáját, először hajtson végre egy GET diagnosztikai beállítások műveletet. |
@@ -412,7 +413,7 @@ Is jelentkezzen be az Azure-portálon, és kattintson a **figyelője –&gt; ria
 
 ![A portál menüjében riasztások](media/monitor-using-azure-monitor/alerts_image3.png)
 
-### <a name="create-alerts"></a>Riasztás létrehozása
+### <a name="create-alerts"></a>Riasztások létrehozása
 
 1.  Kattintson a **+ Új riasztási szabály** létrehozni egy új riasztás.
 

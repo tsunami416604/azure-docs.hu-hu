@@ -4,7 +4,7 @@ description: Docker és az Azure virtuálisgép-bővítmények és létrehozása
 services: virtual-machines-linux
 documentationcenter: ''
 author: squillace
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 19cf64e8-f92c-43ad-a120-8976cd9102ac
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.openlocfilehash: 674bc870bbbf4e076fbd1d88fcc3bf299eccde84
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 76497f58678e5ecfbab7d263b3adb4c475763cd8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653586"
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-portal"></a>A Docker Virtuálisgép-bővítmény használata az Azure-portálon
 > [!IMPORTANT] 
@@ -46,7 +47,7 @@ Az első lépés egy Azure virtuális Gépen, amely támogatja a Docker Virtuál
 ## <a name="create-docker-certificates"></a>Docker tanúsítványok létrehozása
 A virtuális gép létrehozása után győződjön meg arról, hogy Docker telepítve van-e az ügyfélszámítógépen. (További információkért lásd: [Docker telepítési utasításokat](https://docs.docker.com/installation/#installation).)
 
-A következők szerint Docker kommunikációs tanúsítványt és kulcsot-fájlok létrehozása [Docker fut, a https] és helyezze el őket a a **`~/.docker`** könyvtárhoz, az ügyfélszámítógépen.
+A következők szerint Docker kommunikációs tanúsítványt és kulcsot-fájlok létrehozása [Https és a Docker fut] és helyezze el őket a a **`~/.docker`** könyvtárhoz, az ügyfélszámítógépen.
 
 > [!NOTE]
 > A Docker Virtuálisgép-bővítmény a portál jelenleg szükséges hitelesítő adatokat, amelyek base64-kódolású.
@@ -130,7 +131,7 @@ Ha befejezte a fenti lépéseket, most már rendelkezik teljes körű működés
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
-Készen áll a [Docker felhasználói útmutató] és a Docker virtuális gép használja. Ha automatizálni szeretné a parancssori felületen keresztül létrehozása Docker-gazdagépekből Azure virtuális gépeken, lásd: [a Docker Virtuálisgép-bővítmény az Azure parancssori felület (CLI) használatával]
+Készen áll a [Docker felhasználói útmutatója] és a Docker virtuális gép használja. Ha automatizálni szeretné a parancssori felületen keresztül létrehozása Docker-gazdagépekből Azure virtuális gépeken, lásd: [a Docker Virtuálisgép-bővítmény az Azure parancssori felület (CLI) használatával]
 
 <!--Anchors-->
 [Create a new VM from the Image Gallery]:#createvm
@@ -153,9 +154,9 @@ Készen áll a [Docker felhasználói útmutató] és a Docker virtuális gép h
 
 
 <!--Link references-->
-[a Docker Virtuálisgép-bővítmény az Azure parancssori felület (CLI) használatával]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
+[A Docker Virtuálisgép-bővítmény az Azure parancssori felület (CLI) használatával]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
 [Azure Linux ügynök]:../../extensions/agent-linux.md
 [Link 3 to another azure.microsoft.com documentation topic]:../storage-whatis-account.md
 
-[Docker fut, a https]:http://docs.docker.com/articles/https/
-[Docker felhasználói útmutató]:https://docs.docker.com/userguide/
+[Https és a Docker fut]:http://docs.docker.com/articles/https/
+[Docker felhasználói útmutatója]:https://docs.docker.com/userguide/

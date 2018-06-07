@@ -1,95 +1,41 @@
 ---
-title: "Az Azure Billing dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg az Azure számlázását, valamint a használat és költségek kezelését és felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció."
-services: billing
-author: czeumault
-manager: carolz
 layout: LandingPage
-ms.assetid: 
+title: Az Azure-számlázás és -költségkezelés dokumentációja | Microsoft Docs
+description: Ismerje meg az Azure számlázását, a használat és költségek kezelését és monitorozását, valamint a fiókja és előfizetései kezelését.
+services: billing
+author: cwatson-cat
+manager: dougeby
+ms.assetid: ''
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 70aac3b0544e652ca92219fba9e6bfb405c2eadc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 05/24/2018
+ms.author: cwatson
+ms.openlocfilehash: 313d6cfd69fbf63066add46c7a467c5090604067
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807254"
 ---
-# <a name="azure-billing-documentation"></a>Azure Billing – dokumentáció
+# <a name="azure-billing-and-cost-management-documentation"></a>Az Azure-számlázás és -költségkezelés dokumentációja
 
-Ismerje meg az Azure számlázását, valamint a használat és költségek felügyeletét. Oktatóanyagok, gyakori kérdések, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan kezelheti fiókját.
+Ismerje meg az Azure számlázását, a használat és költségek monitorozását, valamint a fiókja és előfizetései kezelését.
 
-<ul class="panelContent cardsFTitle">
-    <li>
-        <a href="/azure/billing/billing-getting-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/billing.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>További tudnivalók az Azure Billing szolgáltatásáról</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="https://azure.microsoft.com/free">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Ingyenes fiók létrehozása</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/billing-download-azure-invoice-daily-usage-date">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Számla és használat letöltése</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-</ul>
-
----
-
-<h2>Referencia</h2>
-<ul class="panelContent cardsW">
+<ul class="panelContent cardsF">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Parancssor</h3>
-                        <p><a href="/powershell/module/azurerm.billing/?view=azurermps-3.8.0">Számlaletöltés PowerShell használatával</a></p>
+                        <h3>Az Azure számlázásának ismertetése</h3>
+                        <p>
+                        <a href="/azure/billing/billing-understand-your-bill">Számlázással kapcsolatos tudnivalók</a><br/>
+                        <a href="/azure/billing/billing-download-azure-invoice-daily-usage-date">Számla- és használati adatok beszerzése</a><br/>
+                        <a href="/azure/billing/billing-understand-your-azure-marketplace-charges">Külső szolgáltatási díjak</a><br/>
+                        <a href="/azure/billing/billing-understand-your-usage">A használattal kapcsolatos kifejezések értelmezése</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -100,8 +46,13 @@ Ismerje meg az Azure számlázását, valamint a használat és költségek fel�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Nyelvek</h3>
-                        <p><a href="/dotnet/api/microsoft.azure.management.billing">.NET-referencia számlaletöltéshez</a></p>
+                        <h3>Költségek kezelése</h3>
+                        <p>
+                        <a href="/azure/billing/billing-getting-started">Váratlan költségek megelőzése</a><br/>
+                        <a href="/azure/billing/billing-set-up-alerts">Elszámolási értesítések beállítása</a><br/>
+                        <a href="https://azure.microsoft.com/pricing/calculator/">Díjszabás kiszámítása</a><br/>
+                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Erőforráscímkék használata</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -112,9 +63,13 @@ Ismerje meg az Azure számlázását, valamint a használat és költségek fel�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c">Használat és RateCard API</a></p>
-                        <p><a href="/rest/api/billing/">Számlaletöltési API</a></p>
+                        <h3>Fiókok és előfizetések kezelése</h3>
+                        <p>
+                        <a href="/azure/billing/billing-subscription-become-disable">Előfizetés újraaktiválása</a><br/>
+                        <a href="/azure/billing/billing-subscription-transfer">Tulajdonjogok átadása</a><br/>
+                        <a href="/azure/billing/billing-how-to-cancel-azure-subscription">Előfizetés lemondása</a><br/>
+                        <a href="/azure/billing/billing-how-to-change-credit-card">Hitelkártya módosítása</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -125,13 +80,102 @@ Ismerje meg az Azure számlázását, valamint a használat és költségek fel�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Útmutató az API-k használatához</h3>
-                        <p><a href="/azure/billing-usage-rate-card-overview">API – Áttekintés</a></p>
-                        <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Partneri megoldás: Cloud Cruiser</a></p>
-                        <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudyn">Partneri megoldás: Cloudyn</a></p>
+                        <h3>Ingyenes fiók</h3>
+                        <p>
+                        <a href="/azure/billing/billing-create-free-services-included-free-account">Ingyenes szolgáltatások létrehozása</a><br/>
+                        <a href="/azure/billing/billing-avoid-charges-free-account">Díjak elkerülése</a><br/>
+                        <a href="/azure/billing/billing-check-free-service-usage">Használat ellenőrzése</a><br/>
+                        <a href="/azure/billing/billing-upgrade-azure-subscription">Váltás magasabb szintű előfizetésre</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Számlázási rendszergazda</h3>
+                        <p>
+                        <a href="/azure/billing/billing-manage-access">Hozzáférés biztosítása a számlázáshoz</a><br/>
+                        <a href="/azure/billing/billing-how-to-pay-by-invoice">Számlás fizetés</a><br/>
+                        <a href="/azure/billing/billing-manage-reserved-vm-instance">Fenntartott példányok felügyelete</a><br/>
+                        <a href="/azure/billing/billing-understand-reserved-instance-usage-ea">Fenntartott példányok használata</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Fejlesztő + független szoftverszállító</h3>
+                        <p>
+                        <a href="/azure/billing/billing-usage-rate-card-overview">Azure számlázási API-k</a><br/>
+                        <a href="/rest/api/consumption/">Azure használati API-k</a><br/>
+                        <a href="/azure/billing/billing-enterprise-api">Vállalati jelentéskészítő API-k</a><br/>
+                        <a href="/azure/azure-resource-manager/programmatically-create-subscription?toc=/azure/billing/TOC.json">Vállalati előfizetések létrehozása programozott módon</a>                       
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Takarékoskodás a fenntartott VM-példányok használatával</h3>
+                        <p>
+                        <a href="/azure/billing/billing-save-compute-costs-reservations">Mik a fenntartott példányok?</a><br/>
+                        <a href="/azure/virtual-machines/windows/prepay-reserved-vm-instances?toc=/azure/billing/TOC.json">Fenntartott példány vásárlása</a><br/>
+                        <a href="/azure/billing/billing-understand-vm-reservation-charges">A kedvezmény alkalmazásának módja</a><br/>
+                        <a href="/azure/billing/billing-reserved-instance-windows-software-costs">A szoftverköltségeket nem tartalmazza</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Azure-erőforrások rendszerezése</h3>
+                        <p>
+                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Erőforráscímkék használata</a><br/>
+                        <a href="/azure/azure-resource-manager/management-groups-overview?toc=/azure/billing/TOC.json">Felügyeleti csoportok létrehozása</a><br/>
+                        <a href="/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/billing/TOC.json">Azure-erőforrások áthelyezése</a><br/>
+                        <a href="/azure/azure-resource-manager/resource-manager-cross-resource-group-deployment?toc=/azure/billing/TOC.json">Azure-erőforrások üzembe helyezése</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Hibaelhárítás</h3>
+                        <p>
+                        <a href="/azure/billing/billing-no-subscriptions-found">„Nem található előfizetés”</a><br/>
+                        <a href="https://support.microsoft.com/help/4042960/troubleshoot-why-your-debit-card-or-credit-card-is-declined-at-azure-s">Elutasított bankkártya</a><br/>
+                        <a href="https://support.microsoft.com/help/4042959/troubleshoot-why-you-can-t-sign-up-for-azure">Regisztrációs problémák</a><br/>
+                        <a href="https://support.microsoft.com/help/4042961/troubleshoot-why-you-can-t-sign-in-to-manage-your-azure-subscription">Bejelentkezési problémák</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    
 </ul>

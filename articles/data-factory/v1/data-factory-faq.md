@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 387b5e944b0fd198e37a35d7bf1c54f7795c9f21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12422a1123673feac1977fa5f52f49b2cdfda777
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621346"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory - gyakran ismételt kérdések
 > [!NOTE]
@@ -40,7 +41,7 @@ Lásd: [Data Factory díjszabás lap] [ adf-pricing-details] az az Azure Data Fa
 * Az egy útmutatót a **másolására/áthelyezésére adatok** használata a másolási tevékenység, lásd: [adatok másolása az Azure Blob Storage az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Az egy útmutatót a **adatok** HDInsight Hive tevékenységgel. Lásd: [feldolgozni az adatokat a Hadoop-fürt Hive parancsfájl futtatásával](data-factory-build-your-first-pipeline.md)
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Mi az az adat-Előállítóban régiónkénti elérhetőség?
+### <a name="what-is-the-data-factorys-region-availability"></a>Mi az a Data Factory s régiónkénti elérhetőség?
 Adat-előállító érhető el **Velünk nyugati** és **Észak-Európa**. Az adat-előállítók által használt számítási és tárolási szolgáltatások más régiókban lehet. Lásd: [támogató régiók](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Az adatok előállítók/folyamatok/tevékenységek/adatkészletek számú korlátai
@@ -72,8 +73,8 @@ A következő táblázat felsorolja a Data Factory és az ezeken futó tevékeny
 | [Igény szerinti HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) vagy [saját HDInsight-fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streamelési](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](data-factory-azure-ml-batch-execution-activity.md) |
-| [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
+| [Az Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
+| [Az Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Hogyan hasonlítsa össze a Azure Data Factory az SQL Server Integration Services (SSIS)? 
 Tekintse meg a [Azure Data Factory vs. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutató az MVP (legtöbb értékelni szakemberek) egyikéből: Reza Rad. A Data Factory végrehajtott legutóbbi módosításoknak némelyike nem jelennek meg a diák pakli. Azt az Azure Data Factory folyamatosan ad hozzá további képességeket. Azt az Azure Data Factory folyamatosan ad hozzá további képességeket. Azt fogja beépítse ezeket a frissítéseket a Microsoft integrációs technológiái összehasonlítása valamikor az év.   

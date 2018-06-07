@@ -1,24 +1,20 @@
 ---
 title: Az Azure IoT Hub (Java) felhő eszközre üzenetek |} Microsoft Docs
 description: Hogyan küldhetők felhő-eszközre küldött üzenetek egy eszközre egy Azure IoT hub Java SDK az Azure IoT-k használatával. A szimulált eszköz alkalmazásnak, hogy a felhő-eszközre küldött üzenetek fogadására és módosíthat egy háttér-alkalmazást a felhőből eszközre küldéséhez módosítása.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 7f785ea8-e7c2-40c5-87ef-96525e9b9e1e
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 4c748f01a83c7f569953f7c7f2fc5631ca0efd17
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 410a156d60aa9b17da9c36e043082c291eea4849
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808111"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Az IoT-központ (Java) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -45,7 +41,7 @@ Ez az oktatóanyag végén két Java konzol alkalmazások futtatása:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* A teljes működő verziójához a [Ismerkedés az IoT-központ](iot-hub-java-java-getstarted.md) vagy [folyamat IoT Hub eszköz-a-felhőbe küldött üzeneteket](iot-hub-java-java-process-d2c.md) oktatóanyag.
+* A teljes működő verziójához a [Ismerkedés az IoT-központ](iot-hub-java-java-getstarted.md) vagy [folyamat IoT Hub eszköz-a-felhőbe küldött üzeneteket](tutorial-routing.md) oktatóanyag.
 * A legújabb [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
@@ -89,7 +85,7 @@ Ebben a szakaszban módosítsa a szimulált eszköz alkalmazás létrehozott [Is
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhő eszközre üzenet küldése
 
-Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amelyek a felhőből eszközre üzeneteket küld a szimulált eszköz alkalmazás. A hozzáadott eszköz az Eszközazonosítót van szüksége a [Ismerkedés az IoT-központ] oktatóanyag. Az IoT-központ kapcsolati karakterlánc, amely megtalálható a központ is kell a [Azure-portálon].
+Ebben a szakaszban hozzon létre egy Java-Konzolalkalmazás, amelyek a felhőből eszközre üzeneteket küld a szimulált eszköz alkalmazás. A hozzáadott eszköz az Eszközazonosítót van szüksége a [Ismerkedés az IoT-központ] oktatóanyag. Az IoT-központ kapcsolati karakterlánc, amely megtalálható a központ is kell a [Azure Portal].
 
 1. Nevű Maven-projekt létrehozása **c2d-üzenetküldés** parancsot a parancssorba az alábbi parancs segítségével. Megjegyzés: Ez a parancs egy egyetlen, hosszú parancsot:
 
@@ -198,7 +194,7 @@ Most már készen áll az alkalmazások futtatására.
 
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Az Azure IoT távoli megfigyelési megoldásgyorsító].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 
@@ -213,7 +209,7 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
-[átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure-portálon]: https://portal.azure.com
-[megoldásgyorsító Azure IoT távoli megfigyelési]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure Portal]: https://portal.azure.com
+[Az Azure IoT távoli megfigyelési megoldásgyorsító]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22

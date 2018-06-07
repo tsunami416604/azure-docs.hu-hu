@@ -19,7 +19,8 @@
 #### [Azure Key Vault-integráció konfigurálása](virtual-machines-windows-ps-sql-keyvault.md)
 ## Biztonsági mentés és visszaállítás
 ### [Biztonsági mentés és visszaállítás](virtual-machines-windows-sql-backup-recovery.md)
-### [Automatikus biztonsági mentés](virtual-machines-windows-sql-automated-backup.md)
+### [Automatikus biztonsági mentés az SQL Server 2014-hez](virtual-machines-windows-sql-automated-backup.md)
+### [Automatikus biztonsági mentés az SQL Server 2016 vagy újabb verzióhoz](virtual-machines-windows-sql-automated-backup-v2.md)
 ### [Az Azure Storage használata biztonsági mentéshez és helyreállításhoz](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # Útmutatók
@@ -47,8 +48,8 @@
 ## [SQL Server-illesztőprogramok](https://docs.microsoft.com/sql/connect/sql-connection-libraries)
 ## [REST](/rest/api/)
 
-# Erőforrások
-## [Gyakori kérdések](virtual-machines-windows-sql-server-iaas-faq.md)
+# További források
+## [GYIK](virtual-machines-windows-sql-server-iaas-faq.md)
 ## [Díjszabás](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [PaaS vagy IaaS?](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json)
 ## [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)

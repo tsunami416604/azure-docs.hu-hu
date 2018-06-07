@@ -73,6 +73,8 @@
           href: batch-custom-images.md
         - name: Készlet létrehozása egy virtuális hálózaton belül
           href: batch-virtual-network.md
+        - name: Azure-fájlmegosztás csatlakoztatása
+          href: pool-file-shares.md
         - name: Nagy számítási igényű virtuális gépek használata
           href: batch-pool-compute-intensive-sizes.md
         - name: Linuxos számítási csomópontok használata

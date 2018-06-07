@@ -1,24 +1,20 @@
 ---
 title: Az Azure IoT Hub (csomópont) felhő eszközre üzenetek |} Microsoft Docs
 description: Hogyan küldhetők felhő-eszközre küldött üzenetek eszközökre az Azure IoT-központ az Azure IoT SDK for Node.js használatával. A szimulált eszköz alkalmazásnak, hogy a felhő-eszközre küldött üzenetek fogadására és módosíthat egy háttér-alkalmazást a felhőből eszközre küldéséhez módosítása.
-services: iot-hub
-documentationcenter: nodejs
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 3ca8a78f-ade2-46e8-8a49-d5d599cdf1f1
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: javascript
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 01150db589b2210e38ed6fd4e45429c1500d9588
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 640a7740e3451a8bd07fdea6a82af2f5cae4c25f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637463"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Az IoT-központ (csomópont) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -87,7 +83,7 @@ Ebben a szakaszban módosítsa a szimulált eszköz alkalmazás létrehozott [Is
    > 
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhő eszközre üzenet küldése
-Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely felhő eszközre üzeneteket küld a szimulált eszköz alkalmazást hoz létre. A hozzáadott eszköz az Eszközazonosítót van szüksége a [Ismerkedés az IoT-központ] oktatóanyag. Az IoT-központ kapcsolati karakterlánc, amely megtalálható a központ is kell a [Azure-portálon].
+Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely felhő eszközre üzeneteket küld a szimulált eszköz alkalmazást hoz létre. A hozzáadott eszköz az Eszközazonosítót van szüksége a [Ismerkedés az IoT-központ] oktatóanyag. Az IoT-központ kapcsolati karakterlánc, amely megtalálható a központ is kell a [Azure Portal].
 
 1. Hozzon létre egy üres nevű **sendcloudtodevicemessage**. Az a **sendcloudtodevicemessage** mappa, hozzon létre egy package.json fájlt parancsot a parancssorba az alábbi parancs segítségével. Fogadja el az összes alapértelmezett beállítást:
    
@@ -181,7 +177,7 @@ Most már készen áll az alkalmazások futtatására.
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Az Azure IoT távoli megfigyelési megoldásgyorsító].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 
@@ -197,6 +193,6 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[Azure-portálon]: https://portal.azure.com
-[megoldásgyorsító Azure IoT távoli megfigyelési]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Átmeneti hiba kezelése]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Azure Portal]: https://portal.azure.com
+[Az Azure IoT távoli megfigyelési megoldásgyorsító]: https://azure.microsoft.com/documentation/suites/iot-suite/

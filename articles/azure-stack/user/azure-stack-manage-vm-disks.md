@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 8e91b4d83aa90a7e744fb8e73cda788dbf8c58ec
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6364c0bec8437ba0dfa195c6532b26ec506a2e90
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807431"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Virtuális gép lemezes tárolás Azure verem kiépítése
 
@@ -61,7 +62,7 @@ Miután létrehozott egy virtuális Gépet, a portál is használhatja:
 Minden nem felügyelt lemezt ad hozzá külön kell rendezni.
 
 >[!NOTE]
->Hozza létre és felügyeli az Azure lemezek nevezzük [által kezelt lemezeken](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview).
+>Hozza létre és felügyeli az Azure lemezek nevezzük [által kezelt lemezeken](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>A portál használatával hozzon létre, és új adatlemezzel
 

@@ -43,11 +43,9 @@
 ### [Dedikált privát kapcsolat létrehozása (ExpressRoute)](../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Kezelés
+### [A hálózatmonitorozás áttekintése](network-monitoring-overview.md)
+### [Erőforrás-használat összehasonlítása az Azure-korlátokkal](check-usage-against-limits.md)
 ### [Hálózati topológia megtekintése](../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Csomagrögzítés kezelése](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Útválasztás következő ugrásának meghatározása](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Virtuális gép IP-forgalmának ellenőrzése](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [A hálózatmonitorozás áttekintése](network-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Mintaszkriptek
 ### [Azure CLI](cli-samples.md)
