@@ -11,23 +11,24 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 05/18/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 91f721f5508191c7530e57b6dd96cad3301542a7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 365959a588dc48e7991efea239ba823c3ca65e7a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640540"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök
-[Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és szolgáltatásnevekről számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések, amelyek az Ön Azure-ban erőforrásokhoz való hozzáférés szabályozása. A beépített szerepkörök nem módosíthatja, de létrehozhat saját [egyéni szerepkörök](custom-roles.md) a szervezet igényeinek megfelelően.
+# <a name="built-in-roles-for-azure-role-based-access-control"></a>Beépített szerepkörök az Azure szerepköralapú hozzáférés-vezérléshez
+[Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és szolgáltatásnevekről számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések, amelyek az Ön Azure-ban erőforrásokhoz való hozzáférés szabályozása. Ha a beépített szerepkörök nem felelnek meg a szervezet igényeinek, létrehozhat saját [egyéni szerepkörök](custom-roles.md).
 
 A beépített szerepkörök mindig fejlesztik vannak. A legújabb szerepkör-definíciók használatához [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) vagy [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list).
 
 ## <a name="built-in-role-descriptions"></a>Beépített szerepkör leírása
-A következő táblázat a beépített szerepkörök rövid leírása. Kattintson a szerepkör nevét, a lista `actions` és `notActions` az egyes szerepkörökhöz.
+A következő táblázat a beépített szerepkörök rövid leírása. Kattintson a szerepkör nevét, a lista `actions`, `notActions`, `dataActions`, és `notDataActions` az egyes szerepkörökhöz.
 
 
 | Beépített szerepkör | Leírás |
@@ -83,6 +84,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 | [Új New Relic APM fiók közreműködői](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
 | [Olvasó és az adatok elérése](#reader-and-data-access) | Lehetővé teszi, hogy mindent megtekinthetnek, de nem engedélyezi törlése, vagy hozzon létre egy tárfiókhoz vagy a benne lévő erőforrás. Olvasási és írási hozzáférést tárfiókkulcsok keresztül tárfiókokban tárolt adatokat is engedélyezi. |
 | [Redis gyorsítótár közreműködő](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
+| [Erőforrás házirend közreműködői (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
 | [A Feladatütemező feladat gyűjtemények közreműködő](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
 | [Keresési szolgáltatás közreműködő](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
 | [Biztonsági rendszergazda](#security-admin) | A csak a Security Center: is megtekintheti a biztonsági házirendek, biztonsági állapotok megtekintéséhez, szerkesztheti a biztonsági házirendek, a riasztások megtekintése és a javaslatok, hagyja figyelmen kívül a riasztások és javaslatok |
@@ -94,13 +96,17 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 | [SQL DB Contributor](#sql-db-contributor) | Lehetővé teszi SQL-adatbázisok, de nem való hozzáférés kezelését. Emellett a biztonsági házirendjét vagy a szülő SQL Server nem tudja kezelni. |
 | [SQL Security Manager](#sql-security-manager) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok biztonsági házirendjeinek felügyeletére az azokhoz való hozzáférés nélkül. |
 | [SQL Server közreműködő](#sql-server-contributor) | Lehetőséget nyújt az SQL-kiszolgálók és adatbázisok felügyeletére az azokhoz való hozzáférés nélkül. Az adatbázisok biztonsági házirendjeinek felügyeletét nem teszi lehetővé. |
-| [Tárolási fiók közreműködői](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
+| [Tárfiók-közreműködő](#storage-account-contributor) | Lehetővé teszi tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Tárolási fiók kulcs operátor szolgáltatás szerepkör](#storage-account-key-operator-service-role) | A tárfiók kulcsának operátorai jogosultak a tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
+| [Tárolási Blob adatok közreműködői (előzetes verzió)](#storage-blob-data-contributor-preview) | Azure Storage-blobtárolók és -adatok olvasási, írási és törlési hozzáférésének engedélyezése |
+| [Tárolási Blob Adatolvasó (előzetes verzió)](#storage-blob-data-reader-preview) | Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
+| [Tároló várólista adatok közreműködői (előzetes verzió)](#storage-queue-data-contributor-preview) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási, írási és törlési hozzáférésének engedélyezése |
+| [Tároló várólista Adatolvasó (előzetes verzió)](#storage-queue-data-reader-preview) | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási hozzáférésének engedélyezése |
 | [Támogatási kérelem közreműködő](#support-request-contributor) | Támogatási kérések létrehozását és kezelését teszi lehetővé |
 | [A TRAFFIC Manager közreműködő](#traffic-manager-contributor) | Lehetővé teszi Traffic Manager-profilok kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [Felhasználói hozzáférés adminisztrátora](#user-access-administrator) | Lehetővé teszi a Azure-erőforrásokhoz való felhasználói hozzáférés kezelését. |
 | [Virtuális gép rendszergazdai bejelentkezés](#virtual-machine-administrator-login) | – Az ezzel a szerepkörrel rendelkező felhasználók képesek bejelentkezni egy virtuális gépre a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival. |
-| [Virtuális gép közreműködő](#virtual-machine-contributor) | Lehetővé teszi virtuális gépek, de nem érhető el, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
+| [Virtuális gépek közreműködője](#virtual-machine-contributor) | Lehetővé teszi virtuális gépek, de nem érhető el, és nem a virtuális hálózat vagy kapcsolódó tárfiók kezelését. |
 | [Virtuális gép felhasználói bejelentkezés](#virtual-machine-user-login) | Az ezzel a szerepkörrel rendelkező felhasználók képesek bejelentkezni egy virtuális gépre normál felhasználóként. |
 | [Webes terv közreműködő](#web-plan-contributor) | Lehetővé teszi a webes tarifacsomagok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Webhely közreműködő](#website-contributor) | Lehetővé teszi a webhelyek kezelését (a webes tarifacsomagokét azonban nem), az azokhoz való hozzáférés nélkül. |
@@ -1035,6 +1041,20 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre és támogatási jegyek kezelése |
 
+## <a name="resource-policy-contributor-preview"></a>Erőforrás-szabályzati közreműködő (előnézet)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
+> | **Azonosító** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | **Műveletek** |  |
+> | * / olvasása | Olvassa el az erőforrásokat bármilyen típusú, kivéve a titkos kulcsok. |
+> | Microsoft.Authorization/policyassignments/* | Hozzon létre és kezelheti a házirend-hozzárendelések |
+> | Microsoft.Authorization/policydefinitions/* | Létrehozásához és kezeléséhez a házirend-definíciók száma |
+> | Microsoft.Authorization/policysetdefinitions/* | Létrehozásához és kezeléséhez házirend beállítása |
+> | Microsoft.PolicyInsights/* |  |
+> | Microsoft.Support/* | Hozzon létre és támogatási jegyek kezelése |
+
 ## <a name="scheduler-job-collections-contributor"></a>Scheduler szolgáltatás feladatgyűjteményeinek közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1388,6 +1408,58 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.Storage/storageAccounts/listkeys/action | A megadott tárfiók hozzáférési kulcsainak lekérése. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | A megadott tárfiók hozzáférési kulcsainak újragenerálása. |
 
+## <a name="storage-blob-data-contributor-preview"></a>Storage-blobadatok közreműködője (minta)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Storage-blobtárolók és -adatok olvasási, írási és törlési hozzáférésének engedélyezése |
+> | **Azonosító** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **Műveletek** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | A tároló törlésének eredményét adja vissza |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Egy tárolót vagy tárolók listáját adja vissza |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | A put vagy lease blobtároló-művelet eredményének visszaadása |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Egy blob törlésének eredményét adja vissza |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Blobot vagy blobok listáját adja vissza |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Blob írásának eredményét adja vissza |
+
+## <a name="storage-blob-data-reader-preview"></a>Storage-blobadatok olvasója (minta)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Storage-blobtárolók és -adatok olvasási hozzáférésének engedélyezése |
+> | **Azonosító** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | **Műveletek** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Egy tárolót vagy tárolók listáját adja vissza |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Blobot vagy blobok listáját adja vissza |
+
+## <a name="storage-queue-data-contributor-preview"></a>Storage-üzenetsorbeli adatok közreműködője (minta)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási, írási és törlési hozzáférésének engedélyezése |
+> | **Azonosító** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | **Műveletek** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Sor törlésének eredményét adja vissza |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | A sort vagy a sorok listáját adja vissza. |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/write | A sor írásának eredményét adja vissza |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Üzenet törlésének eredményét adja vissza |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Egy üzenetet ad vissza |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Üzenet írásának eredményét adja vissza |
+
+## <a name="storage-queue-data-reader-preview"></a>Storage-üzenetsorbeli adatok olvasója (minta)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Azure Storage-üzenetsorok és üzenetsorbeli üzenetek olvasási hozzáférésének engedélyezése |
+> | **Azonosító** | 19e7f393-937e-4f77-808e-94535e297925 |
+> | **Műveletek** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/read | A sort vagy a sorok listáját adja vissza. |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Egy üzenetet ad vissza |
+
 ## <a name="support-request-contributor"></a>Támogatáskérési közreműködő
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1437,6 +1509,9 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.Network/loadBalancers/read | Terheléselosztó definíciójának beolvasása |
 > | Microsoft.Network/networkInterfaces/read | Hálózati illesztő definíciójának beolvasása.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | Bejelentkezés egy virtuális gépre normál felhasználóként |
+> | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Bejelentkezés egy virtuális gépre a Windows rendszergazdai vagy a Linux gyökérszintű felhasználójának jogosultságaival |
 
 ## <a name="virtual-machine-contributor"></a>Virtuális gépek közreműködője
 > [!div class="mx-tableFixed"]
@@ -1495,6 +1570,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.Network/loadBalancers/read | Terheléselosztó definíciójának beolvasása |
 > | Microsoft.Network/networkInterfaces/read | Hálózati illesztő definíciójának beolvasása.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **DataActions** |  |
+> | Microsoft.Compute/virtualMachines/login/action | Bejelentkezés egy virtuális gépre normál felhasználóként |
 
 ## <a name="web-plan-contributor"></a>Webes tarifacsomagok közreműködője
 > [!div class="mx-tableFixed"]

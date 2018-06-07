@@ -1,18 +1,19 @@
 ---
 title: Képek feltöltése az Azure IoT központi alkalmazás |} Microsoft Docs
 description: Szerkesztő, mert megtudhatja, hogyan készítse elő, és a képek feltöltése az Azure IoT központi alkalmazáshoz.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a43f2dd780604235ada1d8e3ae8a20563042fbaa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 7fd9c8ed5559b00bc755e3f04c768dceeb487562
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628021"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő, és a képek feltöltése az Azure IoT központi alkalmazáshoz
 
@@ -93,7 +94,7 @@ Töltse fel a képet, hogy egy eszköz-sablont használja, navigáljon a **eszk�
 
 Kattintson a feltöltés lemezképet, és válassza az a helyi gép feltölteni a fájlt.
 
-### <a name="device-dashboard"></a>Eszköz irányítópult
+### <a name="device-dashboard"></a>Az eszköz irányítópultja
 
 Töltse fel az eszköz irányítópulton használandó kép, navigáljon a **eszköz Explorer**, válassza ki az eszköz sablont, és egy eszköz. Válassza ki a **irányítópult** oldal és a kapcsoló a Tervező módban. Ez a feladat elvégzéséhez Szerkesztő kell lennie:
 

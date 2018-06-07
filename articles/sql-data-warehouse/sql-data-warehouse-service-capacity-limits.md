@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a2a6c78444cb385a2e74b108000555ff056fe9f0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 233cba790aff60121bd1fdf43667ac48a5ef668d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644936"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Az SQL Data Warehouse kapacitáskorlátait
 Azure SQL Data Warehouse különböző összetevői engedélyezett maximális értékeket.
@@ -32,7 +33,7 @@ Azure SQL Data Warehouse különböző összetevői engedélyezett maximális é
 ## <a name="database-objects"></a>Adatbázis-objektumok
 | Kategória | Leírás | Maximum |
 |:--- |:--- |:--- |
-| Adatbázis |Maximális méret |A lemezen tömörített 240 TB<br/><br/>Ez a terület független a tempdb vagy a napló, és ezért van kijelölve az ezen a helyen állandó táblákat.  Fürtözött oszlopcentrikus tömörítési becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázis méretét a körülbelül 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). |
+| Adatbázis |Maximális méret | Gen1: 240 TB tömöríti a lemezen. Ez a terület független a tempdb vagy a napló, és ezért van kijelölve az ezen a helyen állandó táblákat.  Fürtözött oszlopcentrikus tömörítési becsült 5 X.  Ez a fajta tömörítés lehetővé teszi, hogy az adatbázis méretét a körülbelül 1 PB, ha minden tábla fürtözött oszlopcentrikus (az alapértelmezett táblatípus). <br/><br/> Gen2: 240TB sortárindex és oszloptárindexű táblákat a korlátlan tárterület |
 | Tábla |Maximális méret |A lemezen tömörített 60 TB |
 | Tábla |Adatbázisonként táblák |10,000 |
 | Tábla |Táblánként oszlopok |1024 oszlopot |

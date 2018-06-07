@@ -7,15 +7,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d19087743740799ec9972bed7a602073afea9f26
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebe6d2b4d3210ad7c02ec2d26a311645660aeab8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647068"
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database használata magas rendelkezésre állású szolgáltatások tervezése
 
@@ -148,7 +149,7 @@ Van azonban néhány, de **mellékhatásokkal**:
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Üzleti folytonosság tervezési: Válasszon egy alkalmazás tervét felhő katasztrófa utáni helyreállítás
 Egyes adott felhőalapú vész-helyreállítási stratégiát kombinálhatja, vagy az alkalmazás igényeinek leginkább megfelelő ezek a kialakítási minták kiterjesztése.  A korábban említett stratégia az SLA-t szeretne ajánlani az ügyfelek és az alkalmazás üzembe helyezési topológia alapul. A következő részekben talál a döntést, hogy az alábbi táblázat összehasonlítja a választási lehetőségek a helyreállítási időkorlát (RPO) és a becsült helyreállítási idő (Beszúrása) alapján.
 
-| Mintázat | A HELYREÁLLÍTÁSI IDŐKORLÁT | ERT |
+| Mintázat | A HELYREÁLLÍTÁSI IDŐKORLÁT | BESZÚRÁSA |
 |:--- |:--- |:--- |
 | Aktív-passzív telepítési közös elhelyezésű adatbázis-hozzáférést katasztrófa utáni helyreállítás |Olvasási és írási hozzáférése < 5 másodperc |Hiba észlelése időpontja + a DNS-élettartam |
 | Aktív-aktív központi telepítés alkalmazás terheléselosztás |Olvasási és írási hozzáférése < 5 másodperc |Hiba észlelése időpontja + a DNS-élettartam |

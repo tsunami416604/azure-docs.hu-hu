@@ -14,49 +14,51 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
-ms.openlocfilehash: 3c7b3626db0e38d28513d4665a83dd7155663034
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 28424f9a7a0f77882ee3360c5599549303075c18
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642573"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás a virtuálisgép-méretezési készlet példányt vagy egy fürt csomópontja
-A Service Fabric fürt minden egyes csomópont fürttípus Ön által meghatározott, az Azure-ban futó [állít be egy külön virtuálisgép-méretezési](service-fabric-cluster-nodetypes.md).  Ön távoli kapcsolódhatnak adott méretezési készlet példányok (vagy fürtcsomópontok).  Egypéldányos virtuális gépeket, eltérően méretezési készlet példányok nem rendelkezik a saját virtuális IP-címek. Ez komoly kihívást jelenthet, amikor egy IP-címet és portot, amelynek távoli csatlakozás az egy adott példányt keres.
+A Service Fabric fürt minden egyes csomópont fürttípus Ön által meghatározott, az Azure-ban futó [állít be egy külön virtuálisgép-méretezési](service-fabric-cluster-nodetypes.md).  Ön távoli kapcsolódhatnak adott méretezési készlet példányok (fürtcsomópontok).  Egypéldányos virtuális gépeket, eltérően méretezési készlet példányok nem rendelkezik a saját virtuális IP-címek. Ez komoly kihívást jelenthet, amikor egy IP-címet és portot, amelynek távoli csatlakozás az egy adott példányt keres.
 
 Egy IP-címet és portot, amelynek távoli csatlakozás az egy adott példányt megkereséséhez kövesse az alábbi lépéseket.
 
-1. A virtuális IP-címének a csomóponttípus olvasson be a bejövő NAT-szabályok a távoli asztal protokoll (RDP).
+1. A bejövő NAT-szabályok a távoli asztal protokoll (RDP) beolvasása.
 
-    Először lekérni az erőforrás-definíciójának részeként meghatározott bejövő NAT szabályok értékek `Microsoft.Network/loadBalancers`.
+    Általában az egyes csomóponttípusok, a fürt definiálva van a saját virtuális IP-címet és egy dedikált terheléselosztó. Alapértelmezés szerint a load balancer egy csomóponttípus neve a következő formátumban: *LB-{fürtnév}-{csomóponttípus-}*, például *LB-mycluster-előtérbeli*. 
     
-    Az Azure portálon, a betöltés terheléselosztó lapon válassza ki a **beállítások** > **bejövő forgalmat kezelő NAT-szabályok**. Ez lehetővé teszi az IP-címet, és a portot, amelynek az első méretezési távolról csatlakozni állítsa be a példány. 
-    
-    ![Terheléselosztó][LBBlade]
-    
-    Az alábbi ábrán az IP-cím és port nem **104.42.106.156** és **3389-es**.
-    
-    ![NAT-szabályok][NATRules]
+    A terheléselosztóhoz, Azure-portálon lapon válassza az **beállítások** > **bejövő forgalmat kezelő NAT-szabályok**: 
 
-2. A port, amelyet segítségével távolról kapcsolódni a megadott méretezési készlet példányt, vagy a csomópont található.
+    ![Terheléselosztó bejövő forgalmat kezelő NAT-szabályok betöltése](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
-    A méretezési példányok térkép csomópontokra. A méretezési készlet információ használatával határozhatja meg a pontos port használatára.
-    
-    Portok foglal le, amely megfelel a méretezési készlet példány növekvő sorrendben. A korábbi előtér csomóponttípus például az alábbi táblázat az egyes öt csomópont példányok portokat sorolja fel. A méretezési készlet példányát azonosak maradjanak érvényesek.
-    
-    | **Virtuálisgép-méretezési készlet példány** | **Port** |
-    | --- | --- |
-    | FrontEnd_0 |3389 |
-    | FrontEnd_1 |3390 |
-    | FrontEnd_2 |3391 |
-    | FrontEnd_3 |3392 |
-    | FrontEnd_4 |3393 |
-    | FrontEnd_5 |3394 |
+    Az alábbi képernyőfelvételen látható a bejövő NAT-szabályokat előtér nevű csomóponttípus: 
 
-3. Távoli kapcsolódás a megadott méretezési készlet példányhoz.
+    ![Terheléselosztó bejövő forgalmat kezelő NAT-szabályok betöltése](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    A következő ábra bemutatja a távoli asztali kapcsolaton keresztül csatlakozni a FrontEnd_1 méretezési készlet példányhoz:
+    Az egyes csomópontok az IP-cím szerepel a **cél** oszlop, a **cél** oszlop tartalmazza a méretezési készlet példány, és a **szolgáltatás** oszlop nyújt a portszámot. Távoli kapcsolat portok kiosztott növekvő sorrendben kezdődő 3389-es port minden csomóponton.
+
+    Is megkeresheti a bejövő forgalmat kezelő NAT-szabályok a a `Microsoft.Network/loadBalancers` a Resource Manager-sablon a fürt része.
     
-    ![Távoli asztali kapcsolat][RDP]
+2. Megerősítéséhez, hogy a csomópont target porthozzárendelés a bejövő portot, kattintson a szabályt, és tekintse meg a **céloz port** érték. Az alábbi képernyőfelvételen látható a bejövő NAT-szabály a **előtér (példány 1)** csomópont az előző lépésben. Figyelje meg, hogy bár a (bejövő) portszám 3390, a cél port 3389-es, a portot a célszámítógépen az RDP-szolgáltatás porthoz van hozzárendelve.  
+
+    ![Cél porthozzárendelés](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/port-mapping.png)
+
+    Alapértelmezés szerint a Windows-fürtök esetén a cél port az 3389-es, amely a célcsomóponton RDP-szolgáltatás. Linux-fürtök esetén a cél port port 22, amely a Secure Shell (SSH) szolgáltatás.
+
+3. Távolról kapcsolódni a megadott csomópont (méretezési példány). A felhasználói nevet és jelszót, amely a fürt vagy bármely más hitelesítő adatok konfigurálása létrehozásakor beállított is használhatja. 
+
+    Az alábbi képernyőfelvételen látható, távoli asztali kapcsolaton keresztül csatlakozni a **előtér (példány 1)** egy Windows-fürt csomópontja:
+    
+    ![Távoli asztali kapcsolat](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/rdp-connect.png)
+
+    Linux-csomópont (az alábbi példában a rendszer újból felhasználja az IP-cím és port kivonatosan mutatja) SSH kapcsolatba léphet:
+
+    ``` bash
+    ssh SomeUser@40.117.156.199 -p 3390
+    ```
 
 
 A következő lépésekkel olvassa el a következő cikkeket:
@@ -65,7 +67,3 @@ A következő lépésekkel olvassa el a következő cikkeket:
 * [Frissítse a RDP-portok tartományát értékei](./scripts/service-fabric-powershell-change-rdp-port-range.md) fürtön, virtuális gépek telepítése után
 * [A rendszergazda felhasználónév és jelszó módosítása](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) fürt virtuális gépek
 
-<!--Image references-->
-[LBBlade]: ./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/LBBlade.png
-[NATRules]: ./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/NATRules.png
-[RDP]: ./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/RDP.png

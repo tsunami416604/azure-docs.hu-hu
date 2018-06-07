@@ -1,6 +1,6 @@
 ---
-title: "Az Azure-bA feladatátvétel ellenőrzése az Azure Site Recovery |} Microsoft Docs"
-description: "További tudnivalók a helyszíni feladatátvételi tesztet futtatja az Azure-bA az Azure Site Recovery szolgáltatásban."
+title: Az Azure-bA feladatátvétel ellenőrzése az Azure Site Recovery |} Microsoft Docs
+description: További tudnivalók a helyszíni feladatátvételi tesztet futtatja az Azure-bA az Azure Site Recovery szolgáltatásban.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: raynew
-ms.openlocfilehash: bfc9df3c1190d9b94f5e8d726665acb7f999311f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bdbeee0e0caaa0e6db7249c2f4aeaa19d5d2ed0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643651"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Az Azure Site Recovery a feladatátvételi teszt
 
@@ -25,7 +26,7 @@ A feladatátvételi teszt végrehajtásához ellenőrizheti a replikáció és a
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 Ez az eljárás ismerteti a helyreállítási terv feladatátvételi teszt futtatása. 
 
-![Feladatátvétel tesztelése](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Feladatátvételi teszt](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. A Site Recovery szolgáltatásban az Azure portálon, kattintson a **helyreállítási tervek** > *recoveryplan_name* > **feladatátvételi teszt**.
@@ -40,7 +41,7 @@ Ez az eljárás ismerteti a helyreállítási terv feladatátvételi teszt futta
 
     - Hely helyreállítási kísérletek létrehozása az azonos nevű és ugyanazon IP-címre, amely a megadott alhálózat tesztelése a virtuális gépek a **számítás és hálózat** a virtuális gép beállításait.
     - Ha ilyen nevű alhálózat nem használható a feladatátvételi teszthez használni az Azure virtuális hálózatban, majd a teszt virtuális gép jön létre az első alhálózat ábécésorrendben vannak.
-    - Ha IP-cím nem érhető el az alhálózatot, majd a virtuális gépek számára egy másik elérhető IP-cím az alhálózat. [További információk](#creating-a-network-for-test-failover).
+    - Ha IP-cím nem érhető el az alhálózatot, majd a virtuális gépek számára egy másik elérhető IP-cím az alhálózat. [További információk](#create-a-network-for-test-failover).
 4. Ha visszavétele keresztül az Azure-ba, és az adattitkosítás engedélyezve van, a **titkosítási kulcs**, válassza ki a titkosítási szolgáltató telepítése során engedélyezésekor korábban kiadott tanúsítványt. Ezt a lépést kihagyhatja titkosítás nincs engedélyezve.
 5. A feladatátvételi folyamat előrehaladásának nyomon a **feladatok** fülre. Meg kell tudni az Azure portálon replika tesztgép.
 6. Az Azure virtuális gép RDP-kapcsolatot kezdeményezzen, kell [egy nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) , a feladatait átadó virtuális gép virtuális hálózati adapterén. 
@@ -48,7 +49,7 @@ Ez az eljárás ismerteti a helyreállítási terv feladatátvételi teszt futta
 8. A **Jegyzetek** területen jegyezheti fel és mentheti a feladatátvételi teszttel kapcsolatos megfigyeléseket. 
 
 
-![Feladatátvétel tesztelése](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Feladatátvételi teszt](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Feladatátvételi teszt aktiválása esetén a következő történik:
 

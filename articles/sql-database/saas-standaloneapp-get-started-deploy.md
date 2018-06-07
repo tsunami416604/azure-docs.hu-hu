@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 86a5bc31639cbbcdac1468f3bc2e35a547068882
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 32cfa2e9bd48dd4e27da5c4010391c032d67d96b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644722"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg az Azure SQL Database egy önálló single-bérlő alkalmazás
 
@@ -73,16 +74,16 @@ Az alkalmazás események üzemeltető helyszínek bővíthető.  A helyszínek 
 
 1. Nyissa meg az események lapról az egyes külön-külön böngészőlapokon a három bérlők:
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+    - http://events.contosoconcerthall.&lt; felhasználói&gt;. trafficmanager.net
+    - http://events.dogwooddojo.&lt; felhasználói&gt;. trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt; felhasználói&gt;. trafficmanager.net
 
     (Egyes URL-Címekhez, cserélje le &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)
 
    ![Események](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 A bejövő kérelem, az alkalmazás által használt eloszlás [ *Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Bérlői-specifikus alkalmazás feltünteti a tartománynév részeként a bérlő nevét az URL-címet tartalmazza. A bérlő URL-címek közé tartozik az adott **felhasználói** érték. Az URL-címeket a következő formátumot követi:
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt; venuename&gt;.&lt; felhasználói&gt;. trafficmanager.net
 
 Mindegyik bérlő adatbázis **hely** a megfelelő telepített alkalmazás app beállításait tartalmazza.
 

@@ -1,24 +1,19 @@
 ---
-title: "Az Azure IoT Hub magas rendelkezésre állási és vészhelyreállítási recovery |} Microsoft Docs"
-description: "Az Azure és az IoT-központ szolgáltatásait ismerteti, hozhat létre magas rendelkezésre állású Azure IoT-megoldások a vész helyreállítási képességek segítségével."
-services: iot-hub
-documentationcenter: 
+title: Az Azure IoT Hub magas rendelkezésre állási és vészhelyreállítási recovery |} Microsoft Docs
+description: Az Azure és az IoT-központ szolgáltatásait ismerteti, hozhat létre magas rendelkezésre állású Azure IoT-megoldások a vész helyreállítási képességek segítségével.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: ae320e58-aa20-45b9-abdc-fa4faae8e6dd
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: ecc5da8daf0f5c93dffc93798f40507f8eac48be
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 428209defa554599c01789e6f2a8b62f155b0f2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633706"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT-központ magas rendelkezésre állás és katasztrófa-helyreállítás
 Az Azure-szolgáltatások, mint az IoT-központ biztosítja a magas rendelkezésre ÁLLÁS létszámcsökkentések használata az Azure-régiót szinten bármit tennie kellene a megoldás által igényelt nélkül. A Microsoft Azure platform olyan vész-helyreállítási képességek vagy kereszt-régiónkénti elérhetőség megoldások létrehozásához szolgáltatásokat is tartalmaz. Ha lehetővé szeretné tenni globális, kereszt-régió eszközöket vagy felhasználókat, a magas rendelkezésre állású Azure vész-Helyreállítási felhasználásokhoz előnyeit. A cikk [Azure üzleti folytonossági műszaki útmutatót](../resiliency/resiliency-technical-guidance.md) az Azure-ban az üzletmenet folytonosságát és vész-Helyreállítási beépített funkcióit mutatja be. A [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások] [ Disaster recovery and high availability for Azure applications] papír architektúra-útmutatót biztosít az Azure-alkalmazások elérése a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási stratégiát.

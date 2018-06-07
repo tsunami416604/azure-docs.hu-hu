@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT peremhálózati modul-összeállítást |} Microsoft Docs
 description: Ismerje meg, mi az Azure IoT peremhálózati modulok kerül, és hogyan felhasználhatók
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/23/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: c886d1d9dea120a243693c12ae861a58126daadc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631683"
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Megérteni, hogyan használható a IoT peremhálózati modulok, konfigurálva, és használja fel újra – előzetes
 
@@ -131,7 +131,7 @@ A forrás adja meg, ahol az üzenetek származik. Ez a következő értékek egy
 | `/messages/modules/{moduleId}/outputs/*` | Bármely eszközről a felhőbe által küldött üzenet {moduleId} néhány kimenet |
 | `/messages/modules/{moduleId}/outputs/{output}` | Bármely eszközről a felhőbe üzenet {moduleId} a {kimeneti} |
 
-### <a name="condition"></a>Feltétel
+### <a name="condition"></a>Állapot
 A feltétel nem kötelező megadni egy útvonal deklarációjában. Ha azt szeretné, a gyűjtő összes üzenetek átadása a forrás, hagyja a **ahol** záradék teljesen. Vagy használhatja a [IoT-központ lekérdezési nyelv] [ lnk-iothub-query] szűrése az egyes üzenetek vagy üzenettípusok, amelyek megfelelnek a következő feltételt.
 
 Az üzeneteket, amelyek megfelelnek az IoT-Edge modulok között formázott ugyanaz, mint az üzeneteket, amelyek az eszközök és az Azure IoT-központ között. Az összes üzenet JSON-ként formázott, és rendelkezik **systemProperties**, **appProperties**, és **törzs** paraméterek. 

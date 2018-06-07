@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 66d3ee76308573bb5672ffa8eeedcc4aca4c0cc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638347"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>A Naplóelemzési tároló figyelés megoldás
 
@@ -52,7 +53,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Szolgáltatás<br>Háló | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Szolgáltatás<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat megnyitása<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(önálló) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux-kiszolgáló<br>(önálló) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -90,7 +91,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 - Docker 17.03.0 és újabb verziók
 
 ## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
-Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
+A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
 1. A tároló figyelésére szolgáló megoldás hozzáadni a Naplóelemzési munkaterület [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
 
@@ -528,7 +529,7 @@ Ellenőrizheti, hogy a tároló figyelésére szolgáló megoldás helyesen van 
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
-Ha Windows-ügynökök használ, akkor a következő felügyeleti csomag telepítve van minden számítógépen, amelyen ügynök ebben a megoldásban hozzáadásakor. Nincs konfigurációs és karbantartási szükség a felügyeleti csomag.
+Az OMS-portálon lépjen a *megoldások gyűjtemény* , és adja hozzá a **tároló figyelésére szolgáló megoldás**. Ha Windows-ügynökök használ, akkor a következő felügyeleti csomag telepítve van minden számítógépen, amelyen ügynök ebben a megoldásban hozzáadásakor. Nincs konfigurációs és karbantartási szükség a felügyeleti csomag.
 
 - *ContainerManagement.xxx* telepítve a C:\Program Files\Microsoft figyelési Agent\Agent\Health State\Management szervizcsomagok
 
@@ -563,6 +564,7 @@ Címkék fűzött *PodLabel* adattípusok a következők saját címkét. A hozz
 
 ## <a name="monitor-containers"></a>Tárolók figyelése
 Miután a Log Analytics-portálon, a megoldás a **tárolók** csempe a tároló gazdagépek és a tárolók az állomáson fut összegző információit jeleníti meg.
+
 
 ![Tárolók csempe](./media/log-analytics-containers/containers-title.png)
 

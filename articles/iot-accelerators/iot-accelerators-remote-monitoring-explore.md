@@ -1,28 +1,25 @@
 ---
 title: A távoli felügyeleti megoldás - Azure beolvasása használatába |} Microsoft Docs
 description: Ez az oktatóanyag szimulált forgatókönyvek való telepítéséhez a távoli felügyeleti megoldásgyorsító használja. Ezek a forgatókönyvek jönnek létre, először a távoli felügyeleti megoldásgyorsító központi telepítésekor.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c8a055dd0dc8e2d9a9a64b492fb134caaacda489
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e354e110df8d168e153c50de6f7aad08dd416464
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627807"
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>A távoli felügyeleti megoldásgyorsító lehetőségeinek felfedezése
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>A távoli megfigyelési megoldásgyorsító lehetőségeinek felfedezése
 
-Ez az oktatóanyag bemutatja, hogy a távoli figyelési megoldást a főbb képességei. Ezek a képességek szemléltetésére az oktatóanyag ügyfél szolgáltatást használó általános forgatókönyvhöz IoT alkalmazás szimulált Contoso nevű vállalat bővíthető.
+Ez az oktatóanyag bemutatja, hogy a távoli figyelésére szolgáló megoldás főbb képességei. Ezek a képességek szemléltetésére az oktatóanyag ügyfél szolgáltatást használó általános forgatókönyvhöz IoT alkalmazás szimulált Contoso nevű vállalat bővíthető.
 
-Az oktatóanyag, valamit megismerheti a tipikus IoT-forgatókönyvek esetén a távoli felügyeleti megoldás out-of-az-box biztosít.
+Az oktatóanyag, valamit megismerheti a tipikus IoT-forgatókönyvek esetén a távoli figyelésére szolgáló megoldás out-of-az-box biztosít.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -33,24 +30,24 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az eszközök rendszerezéséhez
 > * Állítsa le és indítsa el a szimulált eszköz
 
-A következő videó bemutatja a távoli felügyeleti megoldás részletes útmutatás:
+A következő videó bemutatja a távoli figyelésére szolgáló megoldás részletes útmutatás:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez kell a távoli felügyeleti megoldás telepített példányát az Azure-előfizetéshez.
+Az oktatóanyag elvégzéséhez kell a távoli figyelésére szolgáló megoldás telepített példányát az Azure-előfizetéshez.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
+Ha a távoli figyelésére szolgáló megoldás még nem telepítette még, el kell végeznie a [telepíteni a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>A Contoso IoT üzembe helyezési minta
 
-Használhatja a Contoso IoT üzembe helyezési minta az alapvető forgatókönyv megérteni a távoli felügyeleti megoldás biztosítja, a-kész. Ezek a forgatókönyvek a valós IoT központi telepítések alapulnak. Nagy valószínűséggel lesznek szeretné testre szabhatja a távoli felügyeleti megoldás az adott igényeknek, de a Contoso minta segít az alapvető.
+A Contoso IoT üzembe helyezési minta használatával megérthetik, hogy az alapvető forgatókönyv, a távoli figyelési megoldást biztosít, a-kész. Ezek a forgatókönyvek a valós IoT központi telepítések alapulnak. Nagy valószínűséggel lesznek szeretné testre szabhatja a távoli figyelésére szolgáló megoldás az adott igényeknek, de a Contoso minta segít az alapvető.
 
 > [!NOTE]
 > Ha a parancssori felület a fájlt a megoldásgyorsító központi telepítéséhez használt `deployment-{your deployment name}-output.json` központi telepítést végez a telepített minta eléréséhez URL-CÍMÉT például információkat tartalmaz.
 
-A Contoso minta látja a szimulált eszköz és a szabályok meg őket. Miután megismerte az alapvető forgatókönyv, felfedezése több megoldás szolgáltatásainak folytathatja [végezze el a speciális eszközfigyelés a távoli felügyeleti megoldást használni](iot-accelerators-remote-monitoring-monitor.md).
+A Contoso minta látja a szimulált eszköz és a szabályok meg őket. Miután megismerte az alapvető forgatókönyv, felfedezése több megoldás szolgáltatásainak folytathatja [végezze el a speciális eszköz figyeléséhez használja a távoli figyelésére szolgáló megoldás](iot-accelerators-remote-monitoring-monitor.md).
 
 Contoso kezelő eszközök különböző környezetekben számos vállalat esetében. Contoso tervek hatványra emelésének felhőalapú IoT-alkalmazásokhoz használandó távoli figyelését, és több eszköz kezelését egy központi alkalmazáshoz. Az alábbi szakaszokban a kezdeti konfiguráció a Contoso minta összefoglalása:
 
@@ -136,7 +133,7 @@ Végül ellenőrizze, hogy a hűtő telemetriai értékeinek vissza a normál é
 
 ## <a name="update-device-firmware"></a>Eszköz belső vezérlőprogram frissítése
 
-A Contoso egy új típusú eszköz teszteli a mezőben. A tesztelési ciklus részeként győződjön meg arról, hogy az eszköz belső vezérlőprogram frissítése munkahelyi megfelelően kell. A következő lépések bemutatják a több eszközre a belső vezérlőprogram frissítésére a távoli felügyeleti megoldást használni.
+A Contoso egy új típusú eszköz teszteli a mezőben. A tesztelési ciklus részeként győződjön meg arról, hogy az eszköz belső vezérlőprogram frissítése munkahelyi megfelelően kell. A következő lépések bemutatják a több eszközre a belső vezérlőprogram frissítése a távoli figyelésére szolgáló megoldás segítségével.
 
 A szükséges feladatok végrehajtásához használja a **eszközök** lap. Indítsa el az összes prototípusának eszköz szűrése:
 
@@ -253,7 +250,7 @@ Ebben az oktatóprogramban megismerte a:
 > * Az eszközök rendszerezéséhez
 > * Állítsa le és indítsa el a szimulált eszköz
 
-Most, hogy rendelkezik megismerte a távoli felügyeleti megoldás, a javasolt lépéseket a távoli felügyeleti megoldás a szolgáltatásokkal kapcsolatos további:
+Most, hogy megismerte a távoli figyelésére szolgáló megoldás, a javasolt lépéseket a távoli figyelésére szolgáló megoldás a speciális funkciók megismeréséhez:
 
 * [Az eszközök figyeléséhez](./iot-accelerators-remote-monitoring-monitor.md).
 * [Az eszközök kezeléséhez](./iot-accelerators-remote-monitoring-manage.md).

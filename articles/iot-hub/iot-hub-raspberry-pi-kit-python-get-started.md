@@ -1,24 +1,21 @@
 ---
 title: A felhő (Python) - málna Pi csatlakozzon az Azure IoT Hub Raspberry Pi |} Microsoft Docs
 description: Megtudhatja, hogyan kell beállítania, és Azure IoT-központ málna Pi adatokat küldeni az Azure felhőalapú platform ebben az oktatóanyagban málna Pi csatlakozni.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: az Azure iot raspberry pi, raspberry pi iot-központ, raspberry pi adatokat küldött a felhőben, raspberry pi felhőbe
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: python
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+ms.topic: conceptual
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 7069748c10f7c98f80fadc008f43a3aa02f7ac0e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 15b917d811dff2d70b638ab82c808bdc7fa1012b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635151"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Raspberry Pi csatlakozni az Azure IoT Hub (Python)
 

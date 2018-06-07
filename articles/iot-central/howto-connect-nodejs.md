@@ -1,18 +1,19 @@
 ---
-title: Általános Node.js ügyfélalkalmazást Azure IoT központi összekötése |} Microsoft Docs
+title: Általános Node.js ügyfélalkalmazást Azure IoT központi csatlakozás |} Microsoft Docs
 description: Egy eszköz fejlesztőjeként általános Node.js eszköz csatlakoztatása az Azure IoT központi alkalmazás.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 8666a2db051cbd4a93c3e587aeaef3e1722b1b83
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 42ede975f2cfde2d9c0a61d15ba1af412a88c556
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628538"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Csatlakozás az Azure IoT központi alkalmazáshoz (Node.js) általános ügyfélalkalmazás
 
@@ -23,7 +24,7 @@ Ez a cikk ismerteti, hogyan eszköz fejlesztőként jelző egy olyan fizikai esz
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 1. Azure IoT központi alkalmazás. További információkért lásd: [létrehozása az Azure IoT központi alkalmazás](howto-create-application.md).
-1. Fejlesztési virtuális gép [Node.js](https://nodejs.org/) 4.0.0 verzió vagy újabb verziója. Futtathat `node --version` a parancssorban a verziójának. NODE.js számos különböző operációs rendszerek érhető el.
+1. Fejlesztési virtuális gép [Node.js](https://nodejs.org/) 4.0.0 verzió vagy újabb verziója. Futtathat `node --version` a parancssorban a verziójának. A Node.js az operációs rendszerek széles körében elérhető.
 
 Az Azure IoT központi-alkalmazás van szüksége a következő mérések és eszköztulajdonságok definiált rendelkező eszköz sablont:
 
@@ -31,9 +32,9 @@ Az Azure IoT központi-alkalmazás van szüksége a következő mérések és es
 
 Adja hozzá az alábbi telemetriai a **mérések** lap:
 
-| Megjelenített név | Mező neve  | egység | Minimum | Maximum | Tizedeshelyen |
+| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedeshelyen |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Hőmérséklet  | Hőmérséklet | F     | 60  | 110 | 0              |
+| Hőmérséklet  | hőmérséklet | F     | 60  | 110 | 0              |
 | Páratartalom     | nedvességtartalma    | %     | 0   | 100 | 0              |
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
@@ -46,7 +47,7 @@ Adja hozzá az alábbi telemetriai a **mérések** lap:
 
 Adja hozzá a következő állapotot a **mérések** lap:
 
-| Megjelenített név | Mező neve  | 1. érték | Megjelenített név | 2. érték | Megjelenített név |
+| Megjelenítendő név | Mezőnév  | 1. érték | Megjelenítendő név | 2. érték | Megjelenítendő név |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
 | Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
 
@@ -59,7 +60,7 @@ Adja hozzá a következő állapotot a **mérések** lap:
 
 A következő esemény hozzáadása a **mérések** lap:
 
-| Megjelenített név | Mező neve  | Súlyosság |
+| Megjelenítendő név | Mezőnév  | Severity |
 | ------------ | ----------- | -------- |
 | Túlmelegedése  | melegedjen túl    | Hiba    |
 
@@ -70,9 +71,9 @@ A következő esemény hozzáadása a **mérések** lap:
 
 A következő eszköz Tulajdonságok hozzáadása a **tulajdonságlapján**:
 
-| Megjelenített név        | Mező neve        | Adattípus |
+| Megjelenítendő név        | Mezőnév        | Adattípus |
 | ------------------- | ----------------- | --------- |
-| Sorozatszám       | Sorozatszám      | szöveg      |
+| Sorozatszám       | serialNumber      | szöveg      |
 | Eszköz gyártója | gyártó      | szöveg      |
 
 Adja meg a mezőnevek pontosan megegyezik az eszköz sablonba a táblázatban látható. Ha a mezőnevek nem egyezik, az alkalmazás a tulajdonság értéke nem tudja megjeleníteni.
@@ -81,10 +82,10 @@ Adja meg a mezőnevek pontosan megegyezik az eszköz sablonba a táblázatban l�
 
 Adja hozzá a következő **szám** beállításait a **beállítások lapon**:
 
-| Megjelenített név    | Mező neve     | egység | Tizedesjegyre | Minimum | Maximum  | Kezdeti |
+| Megjelenítendő név    | Mezőnév     | Egység | Tizedesjegyre | Min | Max  | Kezdeti |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Ventilátor sebessége       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
-| Megadott hőmérsékletet | setTemperature | F     | 0        | 20  | 200  | 80      |
+| Megadott hőmérséklet | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 Mező neve pontosan a eszköz sablonba a táblázatban látható módon. Ha a mezőnevek nem egyezik, az eszköz a beállításérték nem kapnak.
 
@@ -96,7 +97,7 @@ Az Azure IoT központi-alkalmazás létrehozása, és jegyezze fel az eszköz ka
 
 A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazást, amely a valós eszközt, az alkalmazásba felvett.
 
-1. Hozzon létre egy nevű `connected-air-conditioner-adv` a számítógépen. Keresse meg a parancssori környezetben mappában.
+1. Hozzon létre egy `connected-air-conditioner-adv` nevű mappát a gépén. Keresse meg a parancssori környezetben mappában.
 
 1. A Node.js-projektet inicializálni a következő parancsokat:
 
@@ -118,7 +119,7 @@ A következő lépések bemutatják, hogyan hozzon létre egy ügyfélalkalmazá
     var ConnectionString = require('azure-iot-device').ConnectionString;
     ```
 
-1. Adja hozzá a fájlhoz a következő tartományváltozók deklarációjában:
+1. Adja a következő változódeklarációkat a fájlhoz:
 
     ```javascript
     var connectionString = '{your device connection string}';
@@ -273,5 +274,5 @@ Az Azure IoT központi alkalmazásban kezelőként a valódi eszköz a következ
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte rendelkezik egy általános Node.js ügyfél csatlakoztatása az Azure IoT központi alkalmazás, az alábbiakban a javasolt lépéseket:
-* [Készítse elő, és csatlakozzon a málna Pi](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

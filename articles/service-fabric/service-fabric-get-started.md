@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/14/2018
+ms.date: 05/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd70636a40ac08fb4b47c6ea53ae3c702d271ea8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: f128947cf3ac0a2afab23d41f101c1b0d7624397
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204899"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641951"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -64,8 +64,8 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
 
 Az aktuális verziók a következők:
-* Service Fabric SDK és eszközök – 3.1.274
-* Service Fabric-futtatókörnyezet – 6.2.274
+* A Service Fabric SDK és az eszközök 3.1.283
+* Service Fabric-futtatókörnyezet 6.2.283
 * Service Fabric Tools for Visual Studio 2015 – 2.1.20180510.2
 * A Visual Studio 2017 15.7-es verziója tartalmazza a Service Fabric Tools for Visual Studio 2.1.20180423.1-es verzióját 
 

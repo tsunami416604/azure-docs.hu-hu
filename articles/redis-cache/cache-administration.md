@@ -1,6 +1,6 @@
 ---
-title: "Azure Redis Cache felügyelete |} Microsoft Docs"
-description: "Útmutató az Azure Redis Cache felügyeleti feladatokhoz, mint az újraindítás és ütemezés frissítések végrehajtásához"
+title: Azure Redis Cache felügyelete |} Microsoft Docs
+description: Útmutató az Azure Redis Cache felügyeleti feladatokhoz, mint az újraindítás és ütemezés frissítések végrehajtásához
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 37e7395a26ead737009ad9e285e9f88372b25d26
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3b62b41fb7b9d7ff6f40191c48d00c1f0a941e48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639452"
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Azure Redis Cache felügyelete
 Ez a témakör ismerteti, hogyan hajthat végre, mint a felügyeleti feladatokat [újraindítás](#reboot) és [frissítések ütemezése](#schedule-updates) az Azure Redis Cache-példányok.
@@ -91,10 +92,8 @@ A **frissítések ütemezése** panel lehetővé teszi, hogy a karbantartási id
 
 Adja meg a karbantartási időszak, ellenőrizze a kívánt napok, és adja meg a karbantartási időszak kezdő időpontja minden nap, és kattintson **OK**. Vegye figyelembe, hogy a karbantartási ablak időpontja UTC szerint. 
 
-> [!NOTE]
-> Az alapértelmezett karbantartási idejében frissítések öt órát. Ez az érték nem konfigurálható az Azure-portálon, de a PowerShell használatával konfigurálhatja a `MaintenanceWindow` paramétere a [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) parancsmag. További információkért lásd: [kezelhetők a PowerShell, a parancssori felületen vagy a más felügyeleti eszközökhöz ütemezett frissítés?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
-> 
-> 
+Az alapértelmezett, és minimális, karbantartási időszak frissítések öt órát. Ez az érték nem konfigurálható az Azure-portálon, de a PowerShell használatával konfigurálhatja a `MaintenanceWindow` paramétere a [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) parancsmag. További információkért lásd: [kezelhetők a PowerShell, a parancssori felületen vagy a más felügyeleti eszközökhöz ütemezett frissítés?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+
 
 ## <a name="schedule-updates-faq"></a>A frissítések ütemezése – Gyakori kérdések
 * [Ha tegye frissítések fordulhat elő, ha az ütemezés frissítések szolgáltatás nem használom?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

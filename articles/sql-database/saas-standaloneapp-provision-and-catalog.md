@@ -1,20 +1,21 @@
 ---
-title: "Több-bérlős Szolgáltatottszoftver-oktatóanyag – az Azure SQL Database |} Microsoft Docs"
-description: "A különálló alkalmazás minta használatával biztosítása és a katalógus új bérlők"
-keywords: "sql database-oktatóanyag"
+title: Több-bérlős Szolgáltatottszoftver-oktatóanyag – az Azure SQL Database |} Microsoft Docs
+description: A különálló alkalmazás minta használatával biztosítása és a katalógus új bérlők
+keywords: sql database-oktatóanyag
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: SaaS
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: 148a50d07d4cea7adda493b283766d22d26b81e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0f2495ddc5d5053582d67bd44cdf80d018f79e42
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646153"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>A Szolgáltatottszoftver-mintát bérlőnként alkalmazással biztosítása és a katalógus új bérlők
 
@@ -70,7 +71,7 @@ Ebben a feladatban megismerheti, hogyan regisztrálhatók a bérlő adatbázisok
 * **A katalógus adatbázis létesítéséhez** az Azure erőforrás-kezelés sablonnal. Az adatbázis bacpac fájl importálásával inicializálva van.  
 * **Regisztrálja a bérlőt mintaalkalmazások** korábban telepített.  Mindegyik bérlő regisztrálva van, a bérlő neve kivonatát értékekből összeállított kulcs segítségével.  A bérlő nevét egy bővítmény tábla a katalógus is tárolódik.
 
-1. Nyissa meg a PowerShell ISE *...\Learning Modules\UserConfig.psm* , és frissítse a  **\<felhasználói\>**  értéket a három minta alkalmazások központi telepítésekor használt érték.  **Mentse a fájlt**.  
+1. Nyissa meg a PowerShell ISE *...\Learning Modules\UserConfig.psm* , és frissítse a **\<felhasználói\>** értéket a három minta alkalmazások központi telepítésekor használt érték.  **Mentse a fájlt**.  
 1. Nyissa meg a PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* és **$Scenario = 1**. A bérlői katalógus telepíti, és regisztrálja az előre definiált bérlők.
 
 1. A kurzor bárhol tegyen a sor, amely szerint, vegye fel a töréspont `& $PSScriptRoot\New-Catalog.ps1`, majd nyomja le az **F9**.
@@ -87,7 +88,7 @@ A parancsfájl befejeztét követően a katalógus van jelen, és a minta-bérl�
 Most tekintse meg a létrehozott erőforrások.
 
 1. Nyissa meg a [Azure-portálon](https://portal.azure.com/) , és keresse meg az erőforráscsoportokat.  Nyissa meg a **wingtip-sa-katalógus -\<felhasználói\>**  erőforrás csoportnak, és jegyezze fel a globáliskatalógus-kiszolgálónak és az adatbázis.
-1. Nyissa meg az adatbázis a portálon, és válasszon *adatkezelő* a bal oldali menüből.  A bejelentkezési parancsra, és írja be a jelszót =  **P@ssword1** .
+1. Nyissa meg az adatbázis a portálon, és válasszon *adatkezelő* a bal oldali menüből.  A bejelentkezési parancsra, és írja be a jelszót = **P@ssword1**.
 
 
 1. Sémája megismerkedhet a *tenantcatalog* adatbázis.  

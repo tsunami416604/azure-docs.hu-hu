@@ -1,24 +1,19 @@
 ---
-title: Windows Server mentésére az Azure PowerShell használatával |} Microsoft Docs
+title: Windows Server mentésére az Azure PowerShell használatával
 description: Megtudhatja, hogyan telepíthetnek és kezelhetnek az Azure Backup szolgáltatáshoz a PowerShell használatával
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: 65218095-2996-44d9-917b-8c84fc9ac415
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/28/2016
-ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: 61bb58b2cf0d76f662144cb1911a6521394e92b6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 5/24/2018
+ms.author: saurse
+ms.openlocfilehash: f69975fc30dfdfbcdd801bcdb552e8b4be948607
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606273"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 Ez a cikk bemutatja, hogyan használja a Powershellt beállítása az Azure Backup szolgáltatás a Windows Server vagy egy Windows ügyfél és a biztonsági mentés és helyreállítás felügyelete.
@@ -57,7 +52,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
 4. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testVault GeoRedundant értékre van állítva.
 
    > [!TIP]
-   > Sok Azure biztonsági mentést készítő parancsmagok bemeneti adatokként a Recovery Services-tároló objektum szükséges. Emiatt célszerű a Recovery Services biztonsági másolat tároló objektum tárolható egy változóban.
+   > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
    >
    >
 
@@ -121,14 +116,14 @@ Az elérhető lehetőségek a következők:
 | Beállítás | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
-| / p: "hely" |Az Azure Backup szolgáltatás ügynökének a telepítési mappa elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| / p: "hely" |Az Azure Backup szolgáltatás ügynökének a telepítési mappa elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent ügynök |
 | / s: "hely" |Az Azure Backup szolgáltatás ügynökének a gyorsítótár mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Részvétel a Microsoft Update |- |
 | /nu |Ne keressen frissítéseket telepítésének befejezése után |- |
-| /d |Eltávolítja a Microsoft Azure Recovery Services Agent ügynök |- |
+| /nap |Eltávolítja a Microsoft Azure Recovery Services Agent ügynök |- |
 | /pH |Állomás proxycím |- |
 | /po |Proxy Host Port száma |- |
-| /pu |Proxy Host UserName |- |
+| /Pu |Proxy-állomás felhasználónév |- |
 | /pW |Proxy jelszava |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Windows Server vagy a Windows ügyfél gép Recovery Services-tároló regisztrálása
@@ -145,7 +140,7 @@ Ezzel és más parancsmagok a biztonsági, amelyek a MSONLINE modulból, amely a
 Az ügynök telepítőprogramját nem frissíti a $Env: PSModulePath változó. Ez azt jelenti, hogy a modul automatikus-betöltése sikertelen. A probléma megoldásához a következőket teheti:
 
 ```
-PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules
+PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'
 ```
 
 Másik lehetőségként manuálisan betöltése a modul a parancsfájlban az alábbiak szerint:
@@ -159,8 +154,8 @@ Az Online biztonsági mentést készítő parancsmagok tölthető be, ha regiszt
 
 
 ```
-PS C:\> $cred = $credspath + $credsfilename
-PS C:\> Start-OBRegistration-VaultCredentials $cred -Confirm:$false
+
+PS C:\> Start-OBRegistration -VaultCredentials $credsfilename.FilePath -Confirm:$false
 CertThumbprint      :7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
 ServiceResourceName: testvault

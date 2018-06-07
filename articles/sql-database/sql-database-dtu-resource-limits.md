@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 04/04/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: carlrab
-ms.openlocfilehash: fb5c2e16e696ba9eecf4346a0c4e7bc05aacf39f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a6d347b707f9b58c5667c5d03d6374288e74267
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645123"
 ---
 # <a name="azure-sql-database-dtu-based-resource-model-limits"></a>Az Azure SQL Database DTU-alapú erőforrás modell korlátok
 
@@ -70,11 +71,10 @@ Az önálló adatbázisok az alábbi táblázatokban minden szolgáltatás és t
 
 
 > [!IMPORTANT]
-> - Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
+> - A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és további költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
 >
-> - Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-> 
-
+> - Több mint 1 TB-nyi tárhelyre a Premium szinten lévő érhető el minden régióban, kivéve a következőt: Egyesült Királyság északi régiója, nyugati középső Régiójában, UK South2, Kína keleti, USDoDCentral, Németország központi, USDoDEast, USA – (kormányzati) délnyugati, Velünk – (kormányzati) Dél központi, Németország szerepel, Kína Észak, Velünk – (kormányzati) Keleti. A jövőben a lefedettség bővülni fog. Más régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+>
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázist: tároló méretének módosítása
 
@@ -203,9 +203,9 @@ SQL rugalmas adatbáziskészletek az alábbi táblázatok bemutatják a minden e
 ||||||||
 
 > [!IMPORTANT]
-> -  Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/). Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
+> - A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és további költségek vonatkoznak rájuk. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/). A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és további költségek vonatkoznak rájuk. További információkért lásd: a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> -  Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> - Több mint 1 TB-nyi tárhelyre a Premium szinten lévő érhető el minden régióban, kivéve a következőt: Egyesült Királyság északi régiója, nyugati középső Régiójában, UK South2, Kína keleti, USDoDCentral, Németország központi, USDoDEast, USA – (kormányzati) délnyugati, Velünk – (kormányzati) Dél központi, Németország szerepel, Kína Észak, Velünk – (kormányzati) Keleti. A jövőben a lefedettség bővülni fog. Más régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 >
 
 Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.
@@ -260,7 +260,7 @@ Magas számítási kihasználtsági észlelt, amikor megoldás lehetőségek a k
 - Az adatbázis vagy az adatbázis további Dtu és edtu-k így rugalmas készlet teljesítményszintjének növelését. Lásd: [önálló adatbázist: módosítsa a dtu-k](#single-database-change-dtus) és [rugalmas készlet: edtu-k módosítása](#elastic-pool-change-edtus).
 - Minden egyes lekérdezés az erőforrás-használat csökkentésére lekérdezések optimalizálása. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 
 Felhasznált lemezterület adatbázis mérete eléri a maximális méretkorlátot, adatbázis beszúrása és frissítések, amelyek az adatok méretének növelése sikertelen és elküld az ügyfélgépeknek egy [hibaüzenet](sql-database-develop-error-messages.md). Adatbázis-választja ki, és törli továbbra is sikeres.
 

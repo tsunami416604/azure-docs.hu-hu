@@ -3,16 +3,17 @@ title: Ajánlott eljárások az Azure SQL Data-szinkronizálás (előzetes verzi
 description: További információk a gyakorlati tanácsok a konfigurálása és futtatása az Azure SQL adatszinkronizálás (előzetes verzió).
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 683cf1426f01b3ab495b2380612dbf37342fc27a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646007"
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>Ajánlott eljárások az SQL adatszinkronizálás (előzetes verzió) 
 
@@ -215,7 +216,7 @@ SQL adatszinkronizálás (előzetes verzió) kapcsolatos további információk�
 -   [A figyelő az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési](sql-database-sync-monitor-oms.md)
 -   [Problémák az Azure SQL adatszinkronizálás (előzetes verzió)](sql-database-troubleshoot-data-sync.md)  
 -   Teljes PowerShell-példák bemutatják, hogyan konfigurálja az SQL adatszinkronizálás (előzetes verzió):  
-    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)  
+    -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Az SQL adatszinkronizálás (előzetes verzió) REST API-dokumentáció letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 

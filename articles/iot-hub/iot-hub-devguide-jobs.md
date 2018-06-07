@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub feladatok ismertetése |} Microsoft Docs
 description: Az IoT hub fejlesztői útmutató - feladatütemezés több eszközökön való futtatására csatlakoztatva. Feladatok címkék és a kívánt tulajdonságok frissítése, és több eszközön közvetlen metódusok.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 367eb703465b2fbc6f1e06a383bc9df709cabe78
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633944"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
@@ -108,10 +103,10 @@ Az alábbi lista a tulajdonságait és a használható lekérdezésekor feladat 
 | **jobId** |Alkalmazás azonosítója megadva a feladathoz. |
 | **startTime** |Alkalmazás által biztosított a feladat kezdési időpontja (ISO 8601). |
 | **endTime** |Az IoT-központ dátuma (ISO 8601) Ha a feladat befejeződött-e megadva. Csak azt követően a feladat eléri a "kész" állapot érvényes. |
-| **Típusa** |Feladatok típusai: |
+| **type** |Feladatok típusai: |
 | | **scheduledUpdateTwin**: egy kívánt tulajdonságokkal vagy címkék frissítésére szolgáló feladatot. |
 | | **scheduledDeviceMethod**: egy eszköz twins a megfelelő eszköz metódus hívásához használt feladat. |
-| **status** |A feladat jelenlegi állapota. Az állapotot a lehetséges értékek: |
+| **Állapot** |A feladat jelenlegi állapota. Az állapotot a lehetséges értékek: |
 | | **függőben lévő**: ütemezett és váró észlelnie kell a feladat szolgáltatás. |
 | | **ütemezett**: jövőbeli időpontra ütemezve. |
 | | **futó**: jelenleg aktív feladat. |

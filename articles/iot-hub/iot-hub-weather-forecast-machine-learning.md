@@ -1,25 +1,21 @@
 ---
 title: Időjárás előrejelzési adatokat az IoT-központ Azure Machine Learning használatával |} Microsoft Docs
 description: Használata Azure Machine Learning eső esélyét előre jelezni az IoT hub gyűjti össze az érzékelő hőmérséklet és a páratartalom adatok alapján.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: 'időjárás: gépi tanulás'
-ms.assetid: 8ba7d9e7-699c-4448-b353-0f3e1429d198
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 453b4de8a93e897b4455403855438d7705945514
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637667"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Az érzékelő adatokat az IoT hub használata az Azure Machine Learning előrejelzési időjárási
 
@@ -80,10 +76,10 @@ Időjárás előrejelzés (eső esélyét) az Azure Machine Learning segítség�
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **az eszközök internetes hálózatát** > **Stream Analytics-feladat**.
-1. Adja meg a feladat a következő információkat.
+1. Az [Azure Portalon](https://portal.azure.com/) kattintson az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **Stream Analytics-feladat** elemre.
+1. Adja meg a feladat alábbi adatait.
 
-   **Feladat neve**: a feladat nevét. A névnek globálisan egyedinek kell lennie.
+   **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie.
 
    **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot, amely az IoT hub használja.
 
@@ -95,10 +91,10 @@ Időjárás előrejelzés (eső esélyét) az Azure Machine Learning segítség�
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a>A Stream Analytics-feladat bemenete hozzáadása
+### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
 1. Nyissa meg a Stream Analytics-feladat.
-1. A **feladat topológia**, kattintson a **bemenetek**.
+1. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
 1. Az a **bemenetek** ablaktáblában kattintson **Hozzáadás**, és írja be a következő információkat:
 
    **A bemeneti alias**: a bemeneti egyedi alias.
@@ -111,12 +107,12 @@ Időjárás előrejelzés (eső esélyét) az Azure Machine Learning segítség�
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>Adja hozzá egy kimeneti a Stream Analytics-feladat
+### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
-1. A **feladat topológia**, kattintson a **kimenetek**.
+1. A **Feladattopológia** területen kattintson a **Kimenetek** elemre.
 1. Az a **kimenetek** ablaktáblán kattintson a **Hozzáadás**, és írja be a következő információkat:
 
-   **A kimeneti alias**: az egyedi alias a kimeneti oldal számára.
+   **Kimeneti áljel**: A kimenet egyedi áljele.
 
    **Gyűjtése**: válasszon **Blob-tároló**.
 
@@ -149,9 +145,9 @@ Időjárás előrejelzés (eső esélyét) az Azure Machine Learning segítség�
 
 1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a>A lekérdezést a Stream Analytics-feladat konfigurálása
+### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
-1. A **feladat topológia**, kattintson a **lekérdezés**.
+1. A **Feladattopológia** területen kattintson a **Lekérdezés** elemre.
 1. Cserélje le a meglévő kódot az alábbira:
 
    ```sql
@@ -163,17 +159,17 @@ Időjárás előrejelzés (eső esélyét) az Azure Machine Learning segítség�
    From machinelearning
    ```
 
-   Cserélje le `[YourInputAlias]` a bemeneti áljel a feladat.
+   A `[YourInputAlias]` elemet cserélje le a feladat bemeneti áljelére.
 
-   Cserélje le `[YourOutputAlias]` a kimeneti aliasnév a feladat.
+   A `[YourOutputAlias]` elemet cserélje le a feladat kimeneti áljelére.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="run-the-stream-analytics-job"></a>A Stream Analytics-feladat futtatása
+### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
-Kattintson a Stream Analytics-feladat **Start** > **most** > **Start**. Ha a feladat sikeresen elindul, a feladat állapota a **leállítva** való **futtató**.
+A Stream Analytics-feladat területen kattintson az **Indítás** > **Most** > **Indítás** elemre. Ha a feladat sikeresen elindult, a feladat állapota **Leállítva** értékről **Fut** értékre változik.
 
-![A Stream Analytics-feladat futtatása](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Stream Analytics-feladat futtatása](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
 ## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>A Microsoft Azure Tártallózó segítségével megtekintheti a időjárás:
 

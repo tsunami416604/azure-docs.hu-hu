@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01a785eab1b31b2943184267a3c6496fefaf44cf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639078"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
 Sok csapatok kell szigorúan szabályozzák, figyelési adatok és beállítások. Például ha vannak olyan dolgozó kizárólag figyelése (a támogatási szakértők, devops mérnökök) csoport tagjai, vagy ha egy felügyelt szolgáltató használja, érdemes lehet hozzáférést azokat csak figyelési adatok korlátozásával létrehozása, módosítása, vagy törli az erőforrást. Ez a cikk bemutatja, hogyan gyorsan figyelési beépített RBAC szerepkör alkalmazni a felhasználók az Azure-ban vagy a saját egyéni szerepkör a felhasználókat, akiknek korlátozott felügyeleti engedélyekkel. A cikk ismerteti az Azure-figyelő kapcsolódó erőforrások és hogyan korlátozhatja az adatok tartalmazzák a hozzáférést a biztonsági szempontok majd.
@@ -125,7 +126,7 @@ Ezek az adattípusok három storage-fiókban tárolt, vagy Eseményközpont, ame
 
 * A figyelési adatok dedikált tárolási fiók használata. Figyelési adatok több tárfiókot külön kell, ha ne ossza meg a storage-fiókok között figyelés használatát, és előfordulhat, hogy nem figyelési adatok, ez véletlenül adjon azok, akik csak a figyelési adatok (például egy harmadik fél SIEM) hozzáféréssel kell rendelkezniük hozzáférést nem figyelési adatokat.
 * Használja a dedikált Service Bus vagy az Event Hubs-névtér összes diagnosztikai beállítások ugyanebből az okból a fenti.
-* Korlátozhatja az kapcsolatos megfigyelési tárfiók vagy az event hubs egy külön erőforráscsoportot tartva és [hatókört használja](../role-based-access-control/overview.md#basics-of-access-management-in-azure) a figyelési szerepkörökhöz való hozzáférés csak ennek az erőforráscsoportnak korlátozására.
+* Korlátozhatja az kapcsolatos megfigyelési tárfiók vagy az event hubs egy külön erőforráscsoportot tartva és [hatókört használja](../role-based-access-control/overview.md#scope) a figyelési szerepkörökhöz való hozzáférés csak ennek az erőforráscsoportnak korlátozására.
 * Soha nem engedélyt ListKeys storage-fiókok vagy az event hubs előfizetési hatókört, ha a felhasználó csak nem figyelési adatok eléréséhez. Ehelyett biztosítják azokat az engedélyeket a felhasználó egy erőforrás vagy az erőforráscsoportot, (ha van egy dedikált figyelési erőforráscsoport) hatókör.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Figyelési kapcsolatos tárfiókok való hozzáférés korlátozása

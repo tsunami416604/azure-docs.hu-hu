@@ -4,20 +4,17 @@ description: További tudnivalók ismertetése, adja meg, és az Azure Cosmos Ad
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: MT
+ms.openlocfilehash: b8084008089225c11c8052c60be3afc152881040
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34614832"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB egység kérése
 
@@ -25,7 +22,7 @@ ms.lasthandoff: 05/10/2018
 
 Azure Cosmos DB pénzneme az **kérelem egység (RU)**. A RUs nem kell olvasási/írási kapacitások vagy rendelkezés Processzor, memória és iops-érték. Azure Cosmos DB alkalmazásprogramozási támogatja a különböző műveletekkel, egyszerű olvasási műveletek közötti, és összetett graph lekérdezések írja. Mivel nem minden kérelemre egyenlő, hozzárendeli egy normalizált mennyisége **egységek kérelem** a kérelem kiszolgálásához szükséges számítási mennyisége alapján. A száma kérelem művelet nem determinisztikus, és nyomon követheti a válasz fejléce Azure Cosmos DB bármely művelet által felhasznált kérelem egységek száma. 
 
-Kiszámítható teljesítmény elérése érdekében kell lefoglalni átviteli egységekben 100 RU/másodperc. Is [az átviteli sebesség meg kell becsülni](request-units.md#estimating-throughput-needs) az Azure Cosmos DB használatával [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
+A kiszámítható teljesítmény biztosításához az átviteli sebességet 100 kérelemegység/másodpercnyi egységekben kell lefoglalni. Is [az átviteli sebesség meg kell becsülni](request-units.md#estimating-throughput-needs) az Azure Cosmos DB használatával [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
 
 ![Átviteli sebesség Számológép][5]
 

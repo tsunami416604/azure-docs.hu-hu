@@ -10,23 +10,24 @@ ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea5d658b8f465b3a527033ef5e9d2126732c7029
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3f1bc925b772265a9f72c34f5ac661088123bb1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626137"
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Data Lake Store-ból adatokat regisztrálni kell az Azure Data Catalog
-Ebben a cikkben, megtudhatja, hogyan integrálható az Azure Data Lake Store az Azure Data Catalog, hogy az adatok felderíthető egy szervezeten belül a Data Catalog integrálásával. Az adatok katalogizálása további információkért lásd: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Forgatókönyvek, amelyben használhatja a Data Catalog ismertetése: [Azure Data Catalog gyakori forgatókönyvei](../data-catalog/data-catalog-common-scenarios.md).
+Ebből a cikkből megtudhatja hogyan integrálható az Azure Data Lake Store az Azure Data Catalog, hogy az adatok felderíthető egy szervezeten belül a Data Catalog integrálásával. Az adatok katalogizálása további információkért lásd: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Forgatókönyvek, amelyben használhatja a Data Catalog ismertetése: [Azure Data Catalog gyakori forgatókönyvei](../data-catalog/data-catalog-common-scenarios.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Az Azure-előfizetés engedélyezése** a Data Lake Store nyilvános előzetes verziójához. Lásd az [utasításokat](data-lake-store-get-started-portal.md).
-* **Azure Data Lake Store-fiók**. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait. Ebben az oktatóanyagban ossza meg velünk hozzon létre egy Data Lake Store-fiókot nevű **datacatalogstore**.
+* **Azure Data Lake Store-fiók**. Kövesse [Az Azure Data Lake Store használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md) című témakör utasításait. Ebben az oktatóanyagban nevű Data Lake Store-fiók létrehozása **datacatalogstore**.
 
     Egyszer létrehozta a fiókot, a minta adatkészletet feltölteni. Ebben az oktatóanyagban található összes .csv fájl feltöltéséhez írja meg nekünk a **AmbulanceData** mappájában a [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Használhatja például a különböző ügyfelek [Azure Tártallózó](http://storageexplorer.com/), feltölteni az adatokat egy blob-tárolóba.
 * **Az Azure Data Catalog**. A szervezet már rendelkeznie kell egy Azure Data Catalog létrehozni a szervezet számára. Egy szervezet csak egy katalógus esetén engedélyezett.
@@ -55,12 +56,12 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     b. A **rendelkezésre álló objektumok** mezőben sorolja fel a fájlokat és mappákat a **AmbulanceData** mappa.
 
-    c. **Objektumok regisztrált mezőben** a fájlokat és mappákat, amelyet szeretne regisztrálni kell az Azure Data Catalog sorolja fel.
+    c. **Regisztrálandó objektumok** mezőben a fájlok és mappák, amelyet szeretne regisztrálni kell az Azure Data Catalog sorolja fel.
 
     ![Adatszerkezet megtekintése](./media/data-lake-store-with-data-catalog/view-data-structure.png "adatszerkezet megtekintése")
 8. Ebben az oktatóanyagban regisztrálnia kell az összes fájl a könyvtárban. Ehhez kattintson a (![-objektumainak áthelyezése](./media/data-lake-store-with-data-catalog/move-objects.png "-objektumainak áthelyezése")) gombra kattintva helyezze át az összes fájlt **regisztrálandó objektumok** mezőbe.
 
-    Mivel az adatok egy szervezeti adatkatalógus lesz regisztrálva, bizonyos metaadatait, amelyet később felhasználhat kereshetők meg gyorsan az adatok hozzáadása egy ajánlott maszkolandó módszert is. Például az adatok tulajdonosa (például egy tölti fel az adatokat, akik) hozzáadása egy e-mail címet, vagy az adatok azonosítására címke hozzáadása. Az alábbi képernyőfelvétel-készítés jeleníti meg egy címkét, hogy azt adja hozzá az adatokhoz.
+    Mivel az adatok egy szervezeti adatkatalógus lesz regisztrálva, bizonyos metaadatait, amelyek később segítségével gyorsan keresse meg az adatok hozzáadása egy ajánlott módszer is. Például az adatok tulajdonosa (például egy tölti fel az adatokat, akik) hozzáadása egy e-mail címet, vagy az adatok azonosítására címke hozzáadása. Az alábbi képernyőfelvétel-készítés jeleníti meg egy címkét, adja hozzá az adatokhoz.
 
     ![Adatszerkezet megtekintése](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "adatszerkezet megtekintése")
 

@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 2e838e9c94d5b19565bea3d02890fe6164bb37d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640906"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Hogyan hivatkozható széljegyzetet egy kognitív keresési skillset
 
@@ -124,5 +125,5 @@ Vegye figyelembe, hogy a számossága `"/document/people/*/lastname"` ennél nag
 ## <a name="see-also"></a>Lásd még
 + [Hogyan integrálhatók a egyéni szakértelem egy dúsító folyamat](cognitive-search-custom-skill-interface.md)
 + [Egy skillset definiálása](cognitive-search-defining-skillset.md)
-+ [Hozzon létre Skillset (REST)](ref-create-skillset.md)
++ [Hozzon létre Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Hogyan képezheti bővített mezők index](cognitive-search-output-field-mapping.md)

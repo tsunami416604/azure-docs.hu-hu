@@ -1,24 +1,19 @@
 ---
 title: Az Azure IoT Hub felhő eszköz beállítások |} Microsoft Docs
 description: Fejlesztői útmutató - közvetlen módszerek, eszköz iker kívánt tulajdonságokkal vagy felhő-eszközre küldött üzenetek használata a felhőből eszközre kommunikációhoz útmutatást.
-services: iot-hub
-documentationcenter: ''
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 144bd8e0a954e54cf17fb88105759d0e000454fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff81be4bbf6d297c623c5d98b5dc22a540112fcc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634437"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>Útmutatás felhő eszközre kommunikáció
 IoT Hub eszköz alkalmazások teszi közzé a funkciót látja el egy háttér-alkalmazás három lehetőséget kínál:
@@ -37,7 +32,7 @@ Ez a felhő-és eszköz közötti kommunikációt különböző lehetőségek r�
 | Adatfolyam | Kétirányú. Az eszköz alkalmazás azonnal válaszolhat a metódust. A megoldás háttérrendszeréhez kimenetel összefüggéseikben való a kérelmet kap. | Egyirányú. Az eszköz alkalmazásának a tulajdonság módosítását értesítést kap. | Egyirányú. Az eszköz alkalmazás fogadja az üzenetet
 | Tartósság | Kapcsolat nélküli eszközök nem próbál kapcsolódni. A megoldás háttérrendszeréhez értesítést kap, hogy az eszköz nincs csatlakoztatva. | Tulajdonságok értékeit az eszköz iker a megmaradnak. Eszköz a következő újrakapcsolódási olvasni. A tulajdonságértékek rendelkező lekérhető a [IoT-központ lekérdezési nyelv][lnk-query]. | Üzenetek akár 48 órát az IoT-központ is megőrzi. |
 | Célok | Egyetlen eszköz használatával **deviceId**, vagy több eszköz [feladatok][lnk-jobs]. | Egyetlen eszköz használatával **deviceId**, vagy több eszköz [feladatok][lnk-jobs]. | Egyetlen eszköz által **deviceId**. |
-| Méret | Legfeljebb 8 KB-kérelmek és 8 KB-os válaszokat. | A keresett maximális tulajdonságok mérete 8 KB-os. | Legfeljebb 64 KB-os üzeneteket. |
+| Méret | Maximális közvetlen módszer hasznos mérete 128 KB. | A keresett maximális tulajdonságok mérete 8 KB-os. | Legfeljebb 64 KB-os üzeneteket. |
 | Gyakoriság | Magas. További információkért lásd: [korlátozza az IoT-központ][lnk-quotas]. | Közepes. További információkért lásd: [korlátozza az IoT-központ][lnk-quotas]. | Alacsony. További információkért lásd: [korlátozza az IoT-központ][lnk-quotas]. |
 | Protokoll | MQTT vagy AMQP akkor érhető el. | MQTT vagy AMQP akkor érhető el. | Minden protokoll érhető el. Eszköz le kell kérdeznie, amikor HTTPS-kapcsolaton keresztül. |
 

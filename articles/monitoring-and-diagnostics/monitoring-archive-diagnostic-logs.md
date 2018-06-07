@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: bf776ba8aaeca361250f39fb2c62233ee1dfbd5b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 32360a1af25b92fe232e3e504cb6587dcb364f48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638765"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók archiválása
 
@@ -30,12 +31,12 @@ Kezdés előtt kell [hozzon létre egy tárfiókot](../storage/storage-create-st
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 
-Az alábbi módszereket a diagnosztikai naplók archiválása, állítsa be a **diagnosztikai beállításának** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplókat, valamint a metrika adatokat küldeni a célhelyre (storage-fiók, az Event Hubs névtér vagy Naplóelemzési). Az események minden egyes napló kategória és a storage-fiókban tárolt metrika értékét az adatmegőrzési (a megőrizni kívánt napok száma) is meghatároz. Ha egy megőrzési házirend nullára van beállítva, események naplózási kategóriát tárolja határozatlan ideig (azaz, végtelen). Adatmegőrzési ellenkező esetben lehet bármely 1 és 2147483647 között eltelt napok számát. [További diagnosztikai beállítások itt kapcsolatos](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődni fog. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap lennének törölhetők
+Az alábbi módszereket a diagnosztikai naplók archiválása, állítsa be a **diagnosztikai beállításának** egy adott erőforráshoz. Egy erőforrás diagnosztikai beállításának meghatározza a naplókat, valamint a metrika adatokat küldeni a célhelyre (storage-fiók, az Event Hubs névtér vagy Naplóelemzési). Az események minden egyes napló kategória és a storage-fiókban tárolt metrika értékét az adatmegőrzési (a megőrizni kívánt napok száma) is meghatároz. Ha egy megőrzési házirend nullára van beállítva, események naplózási kategóriát tárolja határozatlan ideig (azaz, végtelen). Adatmegőrzési ellenkező esetben lehet bármely 1 és 2147483647 között eltelt napok számát. [További diagnosztikai beállítások itt kapcsolatos](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings). Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődni fog. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat. 
 
 > [!NOTE]
-> Diagnosztikai beállítások keresztül többdimenziós metrikák küldése jelenleg nem támogatott. Metrikák többdimenziósak, egybesimított egyetlen dimenzionális metrika, dimenzióértékek gyűjtődnek exportálja.
+> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: A "Bejövő üzenetek" metrika eseményközpontban felfedezte, és a forrásadatok egy várólista szintenként. Azonban a metrika fog megjelenni minden bejövő üzenet összes diagnosztikai beállítások keresztül exportálásakor várólisták a központ.
+> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 
@@ -76,7 +77,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Kategóriák |Nem |Ahhoz, hogy a napló kategóriák vesszővel tagolt listája. |
 | Engedélyezve |Igen |Logikai érték, amely jelzi, hogy diagnosztika engedélyezett vagy letiltott ezen az erőforráson. |
 | RetentionEnabled |Nem |Logikai érték, amely azt jelzi, hogy engedélyezve vannak-e adatmegőrzési ezen az erőforráson. |
-| RetentionInDays |Nem |Amely események kell megtartani 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplókat. |
+| retentionInDays |Nem |Amely események kell megtartani 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplókat. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archív diagnosztikai naplók az Azure CLI 2.0 keresztül
 
@@ -118,7 +119,7 @@ A blob neve lehet, például:
 
 > insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 
-Minden egyes PT1H.json blob tartalmaz a blob URL-címben megadott órán belül előforduló eseményeket a JSON blob (például h = 12). A jelenlegi órán belül események lesz hozzáfűzve a PT1H.json fájl azok bekövetkezésekor. A perc értéket (m = 00) mindig 00, mivel diagnosztikai alkalmazásnapló-események az egyes blobok óránként van felosztva.
+Mindegyik PT1H.json blob tartalmazza a blob URL-jében meghatározott órában (például h=12) bekövetkezett események JSON-blobját. Az aktuális órában az események az előfordulásukkor lesznek a PT1H.json fájlhoz fűzve. A perc értéket (m = 00) mindig 00, mivel diagnosztikai alkalmazásnapló-események az egyes blobok óránként van felosztva.
 
 PT1H.json fájlon belül mindegyik esemény tárolja a "rekordok" tömb, a következő formátumban:
 

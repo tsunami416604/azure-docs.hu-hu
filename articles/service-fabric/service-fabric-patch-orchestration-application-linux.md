@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea999945ace53099eb9dec15397310c9b5d1b904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643124"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>A Linux operációs rendszert a Service Fabric-fürt javítás
 
@@ -61,9 +62,9 @@ A javítás vezénylési alkalmazást a következő alösszetevők áll:
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Győződjön meg arról, hogy az Azure virtuális gépeken futnak Ubuntu 16.04
 Ebben a dokumentumban Ubuntu 16.04 írása idején (`Xenial Xerus`) az egyetlen támogatott verzió.
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>Győződjön meg arról, hogy a service fabric linux-fürt verzió 6.1.x vagy újabb verzió
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Győződjön meg arról, hogy a service fabric linux-fürt verzió 6.2.x vagy újabb verzió
 
-Javítás vezénylési app linux használja a futásidejű bizonyos funkcióinak, amely csak a service fabric futásidejű verzióját 6.1.x vagy újabb verzió.
+Javítás vezénylési app linux használja a futásidejű bizonyos funkcióinak, amely csak a service fabric futásidejű verzióját 6.2.x vagy újabb verzió.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>A kezelő szolgáltatás engedélyezése (Ha nem már fut)
 
@@ -118,7 +119,9 @@ Az Ubuntu [felügyelet nélküli frissítések](https://help.ubuntu.com/communit
 
 ## <a name="download-the-app-package"></a>A csomag letöltése
 
-Töltse le az alkalmazást a [letöltése hivatkozásra](https://go.microsoft.com/fwlink/?linkid=867984).
+Telepítési parancsfájlok mellett alkalmazást is letölthető [archív hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984).
+
+Alkalmazás sfpkg formátumban letölthető a [sfpkg hivatkozás](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). Ez hasznos előre [Azure Resource Manager-alapú alkalmazás központi telepítésének](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Az alkalmazás konfigurálása
 
@@ -319,6 +322,10 @@ Q. **Frissítés utáni vezénylési app tegye a nem használt csomagok karbanta
 
 A. Igen, a tisztítás telepítés utáni lépéseket részeként történik. 
 
+Q. **Javítás Vezénylési alkalmazás segítségével a saját fejlesztői fürt (egy csomópontos fürtre) javítás?**
+
+A. Nem, javítás vezénylési alkalmazás nem használható javítás egy csomópontos fürtre. Ez a korlátozás van, úgy lett kialakítva, mint [háló rendszerszolgáltatások szolgáltatás](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) vagy alkalmazások vevői fognak adódni az állásidőt, és ezért a javítási feladat javítás céljából volna soha nem beolvasása jóvá manager javítást.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>A csomópont nem érkezik vissza állapot mentése
@@ -360,5 +367,8 @@ A javítás vezénylési app telemetriai nyomon követéséhez a használati és
 ### <a name="version-010"></a>0.1.0 verzió
 - Privát előzetes kiadás
 
-### <a name="version-200-latest"></a>2.0.0 verzió (legújabb)
+### <a name="version-200"></a>2.0.0-s verzió
 - Nyilvános kiadás
+
+### <a name="version-201-latest"></a>2.0.1-es verziója (legújabb)
+- Újrafordítani az alkalmazás legújabb Service Fabric SDK használatával

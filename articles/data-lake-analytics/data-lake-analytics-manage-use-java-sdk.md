@@ -1,28 +1,26 @@
 ---
-title: "Azure Data Lake Analytics Azure Java SDK használatával kezelése |} Microsoft Docs"
-description: "Az Azure Data Lake Analytics Java SDK használata alkalmazások fejlesztéséhez"
+title: Azure Data Lake Analytics Azure Java SDK használatával kezelése
+description: Ez a cikk ismerteti az Azure Java SDK használata Data Lake Analytics-feladatok, a adatforrások és a felhasználók felügyelt alkalmazások írásához.
 services: data-lake-analytics
-documentationcenter: 
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
+ms.topic: conceptual
+ms.date: 06/18/2017
+ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624233"
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Azure Data Lake Analytics Java SDK használatával kezelése
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics segítségével a Java-alkalmazások kezelése
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ebben az oktatóanyagban fejlesztése egy Java-konzolalkalmazást, amely az Azure Data Lake-közös műveletet hajtanak végre.
+Ez a cikk ismerteti az Azure Data Lake Analytics fiókok, adatforrások, felhasználók és az Azure Java SDK használatával írt alkalmazások használó feladatok kezelése. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Java fejlesztői készlet (JDK) 8** (a Java 1.8-as verzióját).
@@ -377,7 +375,7 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével). és [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348) (U-SQL nyelvi referencia).
 * Felügyeleti feladatok: [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md) (Az Azure Data Lake Analytics kezelése az Azure Portallal).

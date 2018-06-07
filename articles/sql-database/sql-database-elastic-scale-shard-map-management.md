@@ -1,19 +1,20 @@
 ---
-title: "Azure SQL-adatbázis kibővítési |} Microsoft Docs"
-description: "A ShardMapManager elastic database ügyféloldali kódtár használata"
+title: Azure SQL-adatbázis kibővítési |} Microsoft Docs
+description: A ShardMapManager elastic database ügyféloldali kódtár használata
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e156142a68b30471646ea3a9181ce7d0097e626
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646993"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>A szilánkok térkép manager adatbázisokkal kiterjesztése
 Könnyen horizontális felskálázás az SQL Azure adatbázisokat, használja a shard térkép kezelőjét. A szilánkok térkép manager shard csoportban lévő összes szilánkok (adatbázisok) globális hozzárendelés információt egy különleges adatbázis. A metaadatok lehetővé teszi, hogy egy alkalmazás értéke alapján a megfelelő adatbázishoz való kapcsolódáshoz a **horizontális kulcs**. Emellett minden shard készletében tartalmazza, amelyek nyomon követik a helyi részekre bonthatók az adatok (úgynevezett **shardlets**). 
@@ -47,12 +48,12 @@ Rugalmasan méretezhető horizontális kulcsok a következő típusok támogatj�
 
 | .NET | Java |
 | --- | --- |
-| integer |integer |
-| hosszú |hosszú |
+| egész szám |egész szám |
+| hossz |hossz |
 | GUID |UUID |
 | Byte]  |Byte] |
 | dátum/idő | időbélyeg |
-| A TimeSpan | Időtartam|
+| A TimeSpan | időtartam|
 | datetimeoffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Lista és a tartomány shard leképezések

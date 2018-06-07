@@ -4,13 +4,14 @@ description: Értékelési számítások az Azure áttelepítése szolgáltatás
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 05/28/2018
 ms.author: raynew
-ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e815ff3340a9ef6c56e43d3276a28619d2f008a9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639146"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -68,12 +69,12 @@ Az operációs rendszer megadott *más* a vCenter-kiszolgáló | Az Azure áttel
 
 ## <a name="sizing"></a>Méretezés
 
-Miután a számítógép készen áll az Azure-van megjelölve, Azure áttelepítése méretezi a a virtuális gép és a lemezek, az Azure. Ha a méretezési feltételt értékelés tulajdonságai között megadott ehhez méretezési teljesítmény-alapú, Azure áttelepítése tekinti a előzményeinek a gép azonosításához az Azure-ban egy Virtuálisgép-méretet. Ez a módszer akkor hasznos, forgatókönyvekben, ahol túlzott foglalt le a helyszíni virtuális gép, de a használat alacsony, és szeretné megfelelő méretének Azure költség menti a virtuális gépek.
+Miután a számítógép készen áll az Azure-van megjelölve, Azure áttelepítése méretezi a a virtuális gép és a lemezek, az Azure. Ha a méretezési feltételt értékelés tulajdonságai között megadott ehhez méretezési teljesítmény-alapú, Azure áttelepítése tekinti a előzményeinek a gép azonosítja a virtuális gép mérete és az Azure-ban. Ez a módszer akkor hasznos, forgatókönyvekben, ahol túlzott foglalt le a helyszíni virtuális gép, de a használat alacsony, és szeretné megfelelő méretének Azure költség menti a virtuális gépek.
 
 > [!NOTE]
 > Azure áttelepítése a helyszíni virtuális gépek előzményeinek gyűjti a vCenter Server alkalmazásból. Ahhoz, hogy pontos megfelelő méretének kiválasztását, győződjön meg arról, hogy a vCenter-kiszolgáló statisztikák beállítás értéke 3. szint, és várjon, amíg legalább egy napot megelőző kicking ki a helyszíni virtuális gépek felderítése. A statisztika beállítás a vCenter Server 3. szint alatt van, lemez és hálózat teljesítményadatait nem történik gyűjtés.
 
-Ha nem szeretné, hogy figyelembe venni a előzményeinek a Virtuálisgép-méretezési, és szeretné átvenni a virtuális Gépet állítsanak-van az Azure-ba, adja meg, a méretezési kritériumot *, a helyszíni* és Azure áttelepítése majd átméreteződik-e a virtuális gépeket, a helyszíni alapján konfigurációs figyelembe véve a kihasználtsági adatok nélkül. Lemez átméretezése, ebben az esetben továbbra is alapjául a teljesítményadatokat.
+Ha nem szeretné, hogy figyelembe venni a előzményeinek a Virtuálisgép-méretezési, és szeretné átvenni a virtuális Gépet állítsanak-van az Azure-ba, adja meg, a méretezési kritériumot *, a helyszíni* és Azure áttelepítése majd átméreteződik-e a virtuális gépeket, a helyszíni alapján konfigurációs figyelembe véve a kihasználtsági adatok nélkül. Lemez átméretezése, ebben az esetben akkor történik, a tárolási típusa a assessment tulajdonságaiban (a lemez Standard vagy prémium) alapján
 
 ### <a name="performance-based-sizing"></a>Teljesítmény-alapú méretezése
 
@@ -102,25 +103,13 @@ A teljesítmény-alapú méretezési Azure áttelepítése kezdődik, a virtuál
     - Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja.
 
 ### <a name="as-on-premises-sizing"></a>Mint a helyszíni méretezése
-Ha a méretezési kritériumot *regisztrációja, mivel a helyszíni méretezési*, Azure át nem veszi figyelembe a virtuális gépek előzményeinek és a helyszíni lefoglalt méretétől függ VMs foglal le. Azonban az lemez méretezés, azt a lemezek a Standard vagy prémium szintű lemezek javasolt teljesítményelőzményei megfontolandó.  
-- **Tárolási**: Azure át rendeli minden a gép az Azure-ban a lemez csatlakoztatott lemez.
-
-    > [!NOTE]
-    > Azure áttelepítése támogatja csak felügyelt assessment lemezeket.
-
-    - Ahhoz, hogy a hatékony lemez i/o / másodperc (IOPS) és az átviteli sebesség (MB/s), Azure áttelepítése szorozza meg a lemez IOPS, az átviteli sebesség a megerősítő tényezővel. A hatékony IOPS és átviteli értékek alapján, ha a lemez kell rendelni egy standard vagy prémium lemezt az Azure-ban Azure áttelepítése azonosítja.
-    - Ha Azure áttelepítése nem található a szükséges IOPS & átviteli lemezzel, az Azure-jelöli céljaira nem használható gépként. [További](../azure-subscription-service-limits.md#storage-limits) kapcsolatos Azure korlátozza a lemez és virtuális gép.
-    - Ha úgy találja, hogy a megfelelő lemezek egy készlete, Azure áttelepítése kiválasztja a meglévők közül, amelyek támogatják a tárolási redundancia módját, valamint a assessment beállításokban megadott helyre.
-    - Ha több jogosult lemezek vannak, a másikat a legalacsonyabb költséget választja ki.
-    - Ha a lemezek teljesítményadatokat nem érhető el, a lemezek vannak leképezve az Azure-ban a standard lemezek.
-- **Hálózati**: egyes hálózati adaptereken, az Azure-ban a hálózati adapter használata javasolt.
-- **Számítási**: Azure áttelepítése magok száma és memória mérete, a helyszíni virtuális gép és egy Azure virtuális Gépen azonos konfigurációjú javasolja. Ha több lehetséges Azure-beli virtuálisgép-méret létezik, a rendszer a legalacsonyabb költségűt ajánlja. A CPU és memória kihasználtsági adatok akkor nem tekinthető a helyszíni méretezése.
+Ha a méretezési kritériumot *regisztrációja, mivel a helyszíni méretezési*, Azure át nem veszi figyelembe a előzményeinek a virtuális gépek és a lemezek és foglal le a virtuális gép SKU helyszíni lefoglalt mérete alapján Azure-ban. Ehhez hasonlóan az lemez méretezési azt ellenőrzi, hogy az assessment tulajdonságok (Standard vagy prémium) megadott tárolási típus, és ennek megfelelően azt javasolja, hogy a lemez típusát. Alapértelmezett tárolási típus Premium lemezek.
 
 ### <a name="confidence-rating"></a>Megbízhatósági minősítés
 
 Az Azure Migrate minden értékelése olyan megbízhatósági minősítéssel van társítva, amely 1 csillagtól az 5 csillagig terjed (az 1 csillag a legalacsonyabb, az 5 csillag pedig a legmagasabb). A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve. Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát.
 
-A virtuális gép teljesítményalapú méretezéséhez az Azure Migrate-nek szüksége van a processzor és a memória kihasználtsági adataira. Emellett az egyes lemezek, a virtuális Géphez csatlakozik, a méretezés, kell az olvasási/írási iops-érték és a teljesítményt. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapter esetén szüksége van a hálózati bejövő és kimenő forgalom mértékére a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Attól függően, hogy a rendelkezésre álló adatpontok százaléka a megbízhatóság besorolása értékelési formájában érhető el az alábbi:
+Az értékelés abban, hogy-értékelést értékelések méretezési kritériumot, az hasznos lehet "méretezési teljesítmény-alapú. A teljesítmény-alapú méretezési Azure át kell a kihasználtsági adatok processzor, memória, a virtuális gép. Emellett minden, a virtuális géphez csatlakoztatott lemez, azt kell az IOPS lemez- és átviteli sebességet. Hasonló módon az összes hálózati adapterhez, egy virtuális géphez csatolt, Azure át kell a hálózati vagy kikapcsolása méretezési teljesítmény-alapú. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
 
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
@@ -131,7 +120,7 @@ A virtuális gép teljesítményalapú méretezéséhez az Azure Migrate-nek sz�
    81%–100% | 5 csillag
 
 Az értékelésekben a következő okok miatt nem lehet elérhető az összes adatpont:
-- A statisztika beállítás a vCenter Server értéke 3. szint. Ha a vCenter Server statisztikai beállítása a 3. szintnél alacsonyabb, akkor a lemez és a hálózat teljesítményadatai nem lesznek begyűjtve a vCenter Serverről. Ebben az esetben az Azure Migrate által a lemezhez és a hálózathoz nyújtott javaslat nem a kihasználtságon alapul. Annak eldöntéséhez, hogy az IOPS/átviteli sebessége a lemezen, nélkül Azure áttelepítése nem lehet megállapítani, hogy a lemez kell az Azure-ban egy prémium szintű lemez, ezért, ebben az esetben Azure telepítse át azt javasolja, hogy minden lemezek a Standard lemezek.
+- A vCenter Server statisztikai beállítása nem a 3. szintre van állítva. Ha a vCenter Server statisztikai beállítása a 3. szintnél alacsonyabb, akkor a lemez és a hálózat teljesítményadatai nem lesznek begyűjtve a vCenter Serverről. Ebben az esetben az Azure Migrate által a lemezhez és a hálózathoz nyújtott javaslat nem a kihasználtságon alapul. A lemez IOPS-értékének/adatátviteli teljesítményének figyelembe vétele nélkül az Azure Migrate nem tudja meghatározni, hogy a lemez prémium szintű lemezt igényel-e az Azure-ban, ezért minden esetben standard lemezeket javasol az összes lemezhez.
 - A vCenter Server statisztikai beállítása rövidebb időre a 3. szintre lett állítva a felderítés megkezdése előtt. Vegyünk például egy olyan forgatókönyvet, ahol ma 3. szintre módosítja a statisztikai beállítást, és holnap elindítja a felderítést a gyűjtőberendezéssel (24 óra eltelte után). Ha egy nap értékelését hozza létre, az összes adatponttal rendelkezik, az értékelés megbízhatósági minősítése pedig 5 csillagos lesz. Ha azonban egy hónapra változtatja az értékelésben a teljesítmény időtartamát, a megbízhatósági minősítés csökken, mert nem lennének elérhetők az utolsó egy hónap lemezzel és hálózati teljesítménnyel kapcsolatos adatai. Ha az utolsó egy hónap teljesítményadatait szeretné figyelembe venni, a felderítés megkezdése előtt egy hónapig ajánlott a 3. szinten tartani a vCenter Server statisztikai beállítását.
 - Néhány virtuális gép le lett állítva abban az időszakban, amelyhez az értékelést számította. Ha valamely virtuális gép egy ideig ki lett kapcsolva, a vCenter Server nem rendelkezik az adott időszak teljesítményadataival.
 - Néhány virtuális gép létrejött abban az időszakban, amelyhez az értékelést számította. Ha például az utolsó egy hónap teljesítményelőzményeinek értékelését hozza létre, de néhány virtuális gép csak egy hete jött létre a környezetben. Ilyen esetekben az új virtuális gépeknek nincsenek teljesítményelőzményei a teljes időtartamhoz.

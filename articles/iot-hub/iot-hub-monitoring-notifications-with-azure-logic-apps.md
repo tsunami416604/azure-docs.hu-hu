@@ -1,25 +1,21 @@
 ---
 title: Az IoT távoli megfigyelési és az Azure Logic Apps értesítések |} Microsoft Docs
 description: IoT az IoT hub figyelését hőmérséklet Azure Logic Apps használni, és automatikusan az e-mail értesítéseket küldhet a bármely észlelhető rendellenességeket postaládájához.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: figyelés, az iot-értesítések, IOT iot hőmérséklet figyelése
-ms.assetid: 43043067-2e1f-42c9-953d-e2dce8fd86df
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e54c36d0cfbaedb93db86ad6ce5f99b288b63c9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e59577e99114f1b2061a2f9075976da3f0b1811f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634454"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Az IoT távoli figyelés és az értesítések az Azure Logic Apps csatlakoztatása az IoT-központ és postaláda
 
@@ -51,7 +47,7 @@ Megismerheti az IoT hub és a postaláda hőmérséklet figyelési és értesít
 ### <a name="create-a-service-bus-namespace"></a>Service bus-névtér létrehozása
 
 1. Az a [Azure-portálon](https://portal.azure.com/), kattintson a **hozzon létre egy erőforrást** > **vállalati integrációs** > **Service Bus**.
-1. Adja meg a következő információkat:
+1. Adja meg az alábbi információkat:
 
    **Név**: a service bus nevét.
 

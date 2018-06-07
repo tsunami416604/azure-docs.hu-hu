@@ -1,29 +1,23 @@
 ---
 title: Az Azure IoT-megoldás gyorsítók – gyakori kérdések |} Microsoft Docs
 description: Az IoT-megoldás gyorsítók gyakori kérdések
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 6c8c87dc4f7bb91ce227bbfbaf1cabf0c44d2e0b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: decae2fee0d040d0857950bec507df173e2820b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627159"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Az IoT-megoldás gyorsítók gyakori kérdések
 
-Lásd még a [csatlakoztatott gyári vonatkozó gyakran ismételt kérdések](iot-accelerators-faq-cf.md) és a [távoli ellenőrzésére vonatkozó gyakran ismételt kérdések](iot-accelerators-faq-rm-v2.md) .
+Lásd még a [gyári vonatkozó gyakran ismételt kérdések csatlakoztatott](iot-accelerators-faq-cf.md) és a [távoli ellenőrzésére vonatkozó gyakran ismételt kérdések](iot-accelerators-faq-rm-v2.md) .
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Hol található a megoldás gyorsítók a kódot?
 
@@ -42,7 +36,7 @@ Ha a DevKit eszközt használ, erőforrások és a minták található a [IoT De
 
 ### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Érhető el az új mikroszolgáltatások architektúra a három megoldás-gyorsítókat?
 
-Jelenleg csak a távoli figyelési megoldást használja a mikroszolgáltatások architektúra a legszélesebb forgatókönyv bemutatja.
+Jelenleg csak a távoli figyelésére szolgáló megoldás használja a mikroszolgáltatások architektúra a legszélesebb forgatókönyv bemutatja.
 
 ### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Milyen előnyökkel biztosítja az új nyílt forrása mikroszolgáltatások-alapú architektúra az új frissítés?
 
@@ -54,7 +48,7 @@ Igen, az új távoli figyelés nem áll rendelkezésre a azonos földrajzi régi
 
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Mi az a különbség törlése egy erőforráscsoportot az Azure portálon, és kattintson egy megoldásgyorsító azureiotsuite.com a delete?
 
-* Ha törli a megoldásgyorsító a [azureiotsuite.com](https://www.azureiotsuite.com/), amikor létrehozta a megoldásgyorsító kiépített összes erőforrást törli. Ha további erőforrások az erőforráscsoportot, ezeket az erőforrásokat is törlődnek.
+* Ha törli a megoldásgyorsító a [azureiotsuite.com](https://www.azureiotsolutions.com/), amikor létrehozta a megoldásgyorsító kiépített összes erőforrást törli. Ha további erőforrások az erőforráscsoportot, ezeket az erőforrásokat is törlődnek.
 * Ha törli az erőforráscsoportja a [Azure-portálon](https://portal.azure.com), csak törli az erőforrásokat, az erőforráscsoport. Is kell törölnie a megoldásgyorsító tartozó Azure Active Directory-alkalmazást.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Használhatom továbbra is kihasználhatják a meglévő Azure IoT-megoldás gyorsítók?
@@ -71,7 +65,7 @@ Alapértelmezés szerint oszthat [10 IoT-központok előfizetésenként](../azur
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Hány ingyenes Bing Térképek API-t adhatok meg egy előfizetésben?
 
-Kettőt. Az Azure-előfizetéssel csak két belső tranzakciók szintjét 1 a Bing Maps vállalati terveket hozhat létre. A távoli figyelési megoldást igényelnek a belső tranzakció szintjét 1 csomaggal alapértelmezett lett kiépítve. Ezért csak legfeljebb két távoli figyelő megoldást adhat meg a nem módosított előfizetésekben.
+Kettőt. Az Azure-előfizetéssel csak két belső tranzakciók szintjét 1 a Bing Maps vállalati terveket hozhat létre. A távoli figyelésére szolgáló megoldás a belső tranzakció szintjét 1 csomaggal alapértelmezés szerint ki van építve. Ennek eredményeképpen csak oszthat legfeljebb két távoli figyelési megoldásoknak előfizetés módosítás nélkül.
 
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Létrehozhatók a megoldásgyorsító, ha a Microsoft Azure a DreamSpark?
 
@@ -92,7 +86,7 @@ Eric Golpe blogbejegyzésből [bemutató az Azure AD-bérlő törlésével](http
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távoli felügyeleti megoldásgyorsító lehetőségeinek felfedezése](iot-accelerators-remote-monitoring-explore.md)
-* [A prediktív karbantartási megoldásgyorsító áttekintése](../iot-suite/iot-suite-predictive-overview.md)
+* [A távoli megfigyelési megoldásgyorsító lehetőségeinek felfedezése](iot-accelerators-remote-monitoring-explore.md)
+* [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
 * [Csatlakoztatott gyári megoldás gyorsító – áttekintés](iot-accelerators-connected-factory-overview.md)
-* [Az IoT biztonsági másolatot az alapoktól](../iot-suite/securing-iot-ground-up.md)
+* [Az IoT biztonsági másolatot az alapoktól](securing-iot-ground-up.md)

@@ -1,28 +1,28 @@
 ---
-title: "API-ban Azure idő adatsorozat információkat helyszerepkörre, és hogyan"
-description: "Ez a cikk ismerteti a hitelesítési és engedélyezési egy egyéni a Azure idő adatsorozat Insights API-alkalmazások konfigurálása."
-services: time-series-insights
+title: API-ban Azure idő adatsorozat információkat helyszerepkörre, és hogyan
+description: Ez a cikk ismerteti a hitelesítési és engedélyezési egy egyéni a Azure idő adatsorozat Insights API-alkalmazások konfigurálása.
 ms.service: time-series-insights
+services: time-series-insights
 author: dmdenmsft
 ms.author: dmden
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: dd78e1e726029aaceef5aff0e0eed84acac646cf
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: a18caf03dbc5377f0adc540c8550129ef3bdb9e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652433"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítési és engedélyezési Azure idő adatsorozat Insights API-hoz.
 
 Ez a cikk ismerteti, hogyan konfigurálhatja a hitelesítési és engedélyezési szerepel, amely a Azure idő adatsorozat Insights API-egyéni alkalmazás.
 
-## <a name="service-principal"></a>Egyszerű szolgáltatásnév
+## <a name="service-principal"></a>Szolgáltatásnév
 
 Ez a szakasz ismerteti a idő adatsorozat Hirdetéselemző API-t nevében az alkalmazás eléréséhez alkalmazások konfigurálása. Az alkalmazás ezután kérdezhet le adatokat, vagy hivatkozási adatok közzététele a idő adatsorozat Insights környezetben, a felhasználói hitelesítő adatok helyett az alkalmazás hitelesítő adatait.
 
@@ -101,7 +101,7 @@ Részletes lépései a következők:
 
 Használja az Azure idő adatsorozat Insight való hitelesítéshez szükséges az alkalmazás Azonosítóját és kulcsát az alkalmazásban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az idő adatsorozat Hirdetéselemző API-t behívó kód a minta, lásd: [adatait használó C#](time-series-insights-query-data-csharp.md).
 - API-referencia információkért lásd: [lekérdezés API-referencia](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
 

@@ -1,24 +1,19 @@
 ---
-title: "Ismerkedés az Azure IoT Hub kezelés (.NET/csomópont) |} Microsoft Docs"
-description: "Hogyan használható az Azure IoT Hub kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT-eszközök SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazást, amely közvetlen módszer és a Azure IoT szolgáltatást a service-alkalmazást, amely hívja meg a közvetlen módszer végrehajtásához .NET SDK tartalmazza."
-services: iot-hub
-documentationcenter: .net
+title: Ismerkedés az Azure IoT Hub kezelés (.NET/csomópont) |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT-eszközök SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazást, amely közvetlen módszer és a Azure IoT szolgáltatást a service-alkalmazást, amely hívja meg a közvetlen módszer végrehajtásához .NET SDK tartalmazza.
 author: juanjperez
-manager: timlt
-editor: 
-ms.assetid: e044006d-ffd6-469b-bc63-c182ad066e31
+manager: cberlin
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/05/2017
 ms.author: juanpere
-ms.openlocfilehash: 5d0b7b1ab5893e55a6e2aa16451b6a9fc1481966
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: df41d8b88cf630183afc314dafdc1e898f4e02d9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632237"
 ---
 # <a name="get-started-with-device-management-netnode"></a>Ismerkedés az Eszközfelügyelet (.NET/csomópont)
 
@@ -70,7 +65,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen me
         static JobClient jobClient;
         static string targetDevice = "myDeviceId";
         
-6. Adja hozzá a következő metódust a **Program** osztály.  Ezt a kódot az eszköz iker lekérdezi az újraindítás eszköz, és kiírja a jelentésben szereplő tulajdonságok.
+6. Adja hozzá a **Program** osztályhoz a következő metódust.  Ezt a kódot az eszköz iker lekérdezi az újraindítás eszköz, és kiírja a jelentésben szereplő tulajdonságok.
    
         public static async Task QueryTwinRebootReported()
         {
@@ -78,7 +73,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen me
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-7. Adja hozzá a következő metódust a **Program** osztály.  Ez a kód indít el az újraindítást követően az eszközön, a közvetlen módszer használatával.
+7. Adja hozzá a **Program** osztályhoz a következő metódust.  Ez a kód indít el az újraindítást követően az eszközön, a közvetlen módszer használatával.
 
         public static async Task StartReboot()
         {
@@ -99,7 +94,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) közvetlen me
         Console.WriteLine("Press ENTER to exit.");
         Console.ReadLine();
         
-8. A megoldás felépítéséhez.
+8. Hozza létre a megoldást.
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 Ez a szakasz tartalma

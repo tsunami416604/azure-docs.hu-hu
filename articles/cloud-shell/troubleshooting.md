@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: 3c01a31eae2b90ecb54cbfba7f565fd140db3773
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608950"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Hibaelhárítás & korlátozások az Azure felhőalapú rendszerhéj
 
@@ -43,11 +44,6 @@ A hibaelhárításhoz Azure Cloud rendszerhéj ismert megoldások a következők
  - **Megoldási**: Ellenőrizze, hogy konfigurálta a hálózati beállításokat küldő https és a websocket-kérelmeket, tartományokra való engedélyezéséhez *. console.azure.com.
 
 ## <a name="bash-troubleshooting"></a>Hibaelhárítási bash
-
-### <a name="cannot-run-az-login"></a>Nem futtatható az bejelentkezés
-
-- **Részletek**: futó `az login` nem fog működni, mint Ön már hitelesítve felhő rendszerhéj vagy Azure portal-ba való bejelentkezéshez használt fiókkal.
-- **Megoldási**: a bejelentkezéshez vagy jelentkezzen ki, és a kívánt Azure fiókjához újból hitelesítésre használt fiók használata.
 
 ### <a name="cannot-run-the-docker-daemon"></a>A docker démon nem futtatható.
 

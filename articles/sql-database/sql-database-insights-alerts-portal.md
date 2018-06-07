@@ -6,14 +6,15 @@ manager: craigg
 services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: aamalvea
-ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 349f1bbb0bfcc737d70e32947dd217c2cd51e194
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648023"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Az Azure portál használatával riasztások létrehozása az Azure SQL adatbázishoz és Adatraktárhoz
 
@@ -55,8 +56,8 @@ Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvas�
     ![Riasztás beállítása](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítési e-mailt is mutatja.
 5. Válassza ki a **metrika** szeretne figyelni, majd kattintson egy **feltétel** és **küszöbérték** a mérték értékét. Is választhatja, a **időszak** idő a metrika szabály a riasztási eseményindítók előtt kell biztosítani. Így például, ha az időszakban "PT5M" használja, és 80 % fölötti CPU keresi a riasztás, a riasztás akkor váltja ki mikor a **átlagos** CPU 5 percig 80 % felett volt. Akkor következik be, az első eseményindító, amennyiben azt újra váltja ki, ha a átlagos CPU nem éri el 80 %-kal több mint 5 perc. A CPU-mérési 1 percenként történik. Tekintse át az alábbi táblázatban a windows támogatott indításakor, és az összesítés írja be, hogy minden egyes riasztás használ – nem minden riasztás átlagos érték legyen használva.   
-6. Ellenőrizze **E-mail-tulajdonosok... ** Ha azt szeretné, hogy a rendszergazdák és a társadminisztrátorok e-mailben a riasztás aktiválódásakor.
-7. Ha azt szeretné, hogy további az e-maileket kap értesítést, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Több e-mailek külön és pontosvesszővel kell elválasztani - * email@contoso.com;email2@contoso.com*
+6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy a rendszergazdák és a társadminisztrátorok e-mailben a riasztás aktiválódásakor.
+7. Ha azt szeretné, hogy további az e-maileket kap értesítést, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Több e-mailek külön és pontosvesszővel kell elválasztani -  *email@contoso.com;email2@contoso.com*
 8. Be egy érvényes URI-azonosító található a **Webhook** mezőben, ha azt szeretné, hogy a riasztás aktiválódásakor meghívta.
 9. Válassza ki **OK** végzett a riasztás létrehozása.   
 
@@ -80,9 +81,9 @@ Miután létrehozott egy riasztást, kijelölheti azt és:
 | SQL-adatbázis | dtu_consumption_percent | DTU-kihasználtság (%) | Átlag | 5 perc |
 | SQL-adatbázis | tárterület | Adatbázis teljes mérete | Maximum | 30 perc |
 | SQL-adatbázis | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
-| SQL-adatbázis | connection_failed | Nem sikerült kapcsolatok | Összes | 10 perc |
+| SQL-adatbázis | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
 | SQL-adatbázis | blocked_by_firewall | Tiltsa le tűzfal | Összes | 10 perc |
-| SQL-adatbázis | Holtpont | Holtpont | Összes | 10 perc |
+| SQL-adatbázis | Holtpont | Holtpontok | Összes | 10 perc |
 | SQL-adatbázis | storage_percent | Adatbázis méretének kihasználtsága | Maximum | 30 perc |
 | SQL-adatbázis | xtp_storage_percent | A memórián belüli online Tranzakciófeldolgozási tárolási percent(Preview) | Átlag | 5 perc |
 | SQL-adatbázis | workers_percent | Feldolgozók százalékos aránya | Átlag | 5 perc |
@@ -105,7 +106,7 @@ Miután létrehozott egy riasztást, kijelölheti azt és:
 | SQL data warehouse | physical_data_read_percent | Adat IO kihasználtsága (%) | Átlag | 10 perc |
 | SQL data warehouse | tárterület | Adatbázis teljes mérete | Maximum | 10 perc |
 | SQL data warehouse | connection_successful | Sikeres kapcsolatok | Összes | 10 perc |
-| SQL data warehouse | connection_failed | Nem sikerült kapcsolatok | Összes | 10 perc |
+| SQL data warehouse | connection_failed | Sikertelen kapcsolatok | Összes | 10 perc |
 | SQL data warehouse | blocked_by_firewall | Tiltsa le tűzfal | Összes | 10 perc |
 | SQL data warehouse | service_level_objective | Szolgáltatási szint célkitűzésének az adatbázis | Összes | 10 perc |
 | SQL data warehouse | dwu_limit | dwu korlátot | Maximum | 10 perc |

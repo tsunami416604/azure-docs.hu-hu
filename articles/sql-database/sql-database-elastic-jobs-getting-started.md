@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 2d8760476fd7b8a5a11d01a434a383ec1ba27ef1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649152"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
 A rugalmas adatbázis feladataihoz (előzetes verzió) Azure SQL Database megbízhatóan hajtható végre T-SQL-parancsfájlok, amelyek több adatbázis több során automatikusan újrapróbálkozás és a végleges befejezési garanciák teszi lehetővé. A rugalmas adatbázis feladat szolgáltatással kapcsolatos további információkért lásd: [rugalmas feladatok](sql-database-elastic-jobs-overview.md).
@@ -33,7 +34,7 @@ Itt létre shard térképre manager több szegmensben osztják, az adatok beszú
 2. A parancsablakban írja be a "1", és nyomja le az ENTER **Enter**. Létrehozza a shard térkép manager, és két szilánkok hozzáadása a kiszolgálóhoz. Ezután írja be a "3", és nyomja le az ENTER **Enter**; Ez a művelet megismétlése négy alkalommal. Ez a szilánkok minta adatsorok szúrja be.
 3. A [Azure-portálon](https://portal.azure.com) három új adatbázist kell megjelenítenie:
 
-   ![Visual Studio confirmation](./media/sql-database-elastic-query-getting-started/portal.png)
+   ![A Visual Studio-jóváhagyás](./media/sql-database-elastic-query-getting-started/portal.png)
 
    Ezen a ponton azt hozzon létre egy egyéni adatbázis-gyűjteményt, amely tükrözi a shard térkép összes adatbázisát. Ez lehetővé teszi, hogy létrehozni és végrehajtani egy feladatot, amely egy új tábla szilánkok között.
 

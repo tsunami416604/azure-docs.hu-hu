@@ -8,11 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641111"
 ---
 # <a name="what-is-cognitive-search"></a>Mi az a kognitív keresési?
 
@@ -61,7 +62,7 @@ Ha feldolgozása befejeződött, lehetősége van egy keresési corpus bővítet
 
 Az index kívül esik, mint bármilyen más létrehozhat az Azure Search: kiegészíti az egyéni lekérdezések, aktiválják az intelligens egyeztetésű keresési lekérdezések, adja hozzá a szűrt keresési, vagy a keresési eredmények átalakításához profilok pontozási kísérletezhet.
 
-Indexek akkor jönnek létre az index sémájából, amely meghatározza a mezők és attribútumok, és más szerkezetek adott index, például pontozási profilok csatolva, és szinonimát képezi le. Amennyiben az index meghatározása és feltöltve, indexelheti Növekményesen új és frissített adatforrás dokumentumok átvételéhez. Egyes módosítások teljes újjáépítése szükséges. A kis adatkészletet addig, amíg a séma-tervező nem stabil használja. További információkért lásd: [az index újraépítése hogyan](search-howto-reindex.md).
+Indexek akkor jönnek létre az index sémájából, amely meghatározza a mezők és attribútumok, és más szerkezetek adott index, például pontozási profilok csatolva, és szinonimát képezi le. Amennyiben az index meghatározása és feltöltve, indexelheti Növekményesen új és frissített adatforrás dokumentumok átvételéhez. Egyes módosítások teljes újjáépítése szükséges. A kis adatkészletet addig, amíg a séma-tervező nem stabil használja. A további tudnivalókért lásd az [indexek újraépítését](search-howto-reindex.md) ismertető cikket.
 
 <a name="feature-concepts"></a>
 
@@ -102,9 +103,9 @@ Jelenleg csak REST API-k vannak megadva. Használjon `api-version=2017-11-11-Pre
 | REST API | Leírás |
 |-----|-------------|
 | [Adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Bővített dokumentumok létrehozásához használt forrás-adatokat szolgáltató külső adatforrás azonosító erőforrás.  |
-| [Hozzon létre Skillset (api-version = 2017-11-11 – előzetes verzió)](ref-create-skillset.md)  | Használatát koordinációs erőforrás [képességek az előre megadott](cognitive-search-predefined-skills.md) és [egyéni kognitív képességek](cognitive-search-custom-skill-interface.md) dúsító-feldolgozási folyamat során indexelő használt. |
+| [Hozzon létre Skillset (api-version = 2017-11-11 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Használatát koordinációs erőforrás [képességek az előre megadott](cognitive-search-predefined-skills.md) és [egyéni kognitív képességek](cognitive-search-custom-skill-interface.md) dúsító-feldolgozási folyamat során indexelő használt. |
 | [Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Az Azure Search-index kifejező séma. Az index mezőinek képezze le a forrásadatok mezők vagy mezők (például a szervezet nevekkel felismerés személy által létrehozott mező) dúsító fázis során előállított. |
-| [Hozzon létre indexelőt (api-version = 2017-11-11 – előzetes verzió)](ref-create-skillset.md)  | Egy erőforrás indexelés során használt összetevők meghatározása: egy adatforrást, egy skillset, mező társítást a forrás- és köztes adatstruktúrák cél index és az index magát. Az eseményindító adatfeldolgozást és dúsító fut az indexelő. A keresési corpus a a sémát indexeli, feltöltve forrásadatok keresztül skillsets dúsított alapján eredménye.  |
+| [Hozzon létre indexelőt (api-version = 2017-11-11 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Egy erőforrás indexelés során használt összetevők meghatározása: egy adatforrást, egy skillset, mező társítást a forrás- és köztes adatstruktúrák cél index és az index magát. Az eseményindító adatfeldolgozást és dúsító fut az indexelő. A keresési corpus a a sémát indexeli, feltöltve forrásadatok keresztül skillsets dúsított alapján eredménye.  |
 
 **Ellenőrzőlista: Egy tipikus munkafolyamat**
 
@@ -112,11 +113,11 @@ Jelenleg csak REST API-k vannak megadva. Használjon `api-version=2017-11-11-Pre
 
 1. Hozzon létre egy [adatforrás-objektum](https://docs.microsoft.com/rest/api/searchservice/create-data-source) az Azure Search számára adjon meg egy kapcsolati karakterláncot az adatok beolvasása.
 
-1. Hozzon létre egy [skillset](ref-create-skillset.md) dúsító leírásával.
+1. Hozzon létre egy [skillset](https://docs.microsoft.com/rest/api/searchservice/create-skillset) dúsító leírásával.
 
 1. Adja meg a [a sémát indexeli](https://docs.microsoft.com/rest/api/searchservice/create-index). A *mezők* forrásadatok mezőit a gyűjteménybe. Meg is helyettes ki további mezőket generált értékek dúsító során létrehozott tartalom tárolásához.
 
-1. Adja meg a [indexelő](ref-create-skillset.md) az adatforrás, skillset és index hivatkozik.
+1. Adja meg a [indexelő](https://docs.microsoft.com/rest/api/searchservice/create-skillset) az adatforrás, skillset és index hivatkozik.
 
 1. Az indexelő belül adja hozzá a *outputFieldMappings*. Ez a szakasz a sémát indexeli (a 4. lépés) a bemeneti adatok mezőket (a 3. lépésben) skillset kimenetének képezi le.
 

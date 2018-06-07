@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsprogram: egy külső felhasználó hozzáadása az Azure labor szolgáltatások egyéni labor |} Microsoft Docs'
-description: A PowerShell-parancsfájl hozzáadása egy egyéni, amikor az Azure labor szolgáltatásokban külső felhasználó.
+title: 'PowerShell-parancsprogram: egy külső felhasználó hozzáadása egy tesztkörnyezetet a Azure DevTest Labs szolgáltatásban |} Microsoft Docs'
+description: A PowerShell-parancsfájl hozzáadása egy tesztkörnyezetet a Azure DevTest Labs szolgáltatásban egy külső felhasználó.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b089067a889f0ffd3b317fcc3f0784d176473b91
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bd86e44c21ca3c0b9c061f9a5c24bd19c4b207f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636443"
 ---
-# <a name="use-powershell-to-add-an-external-user-to-a-custom-lab"></a>A külső felhasználó hozzáadása egy egyéni, amikor a PowerShell használatával
+# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>Külső felhasználók hozzáadása az Azure DevTest Labs labor a PowerShell használatával
 
-A PowerShell-parancsfájlpélda a külső felhasználó hozzáadása egy egyéni, amikor az Azure labor szolgáltatásokban. 
+A PowerShell-parancsfájlpélda a külső felhasználó hozzáadása egy tesztkörnyezetet a Azure DevTest Labs szolgáltatásban. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Egyéni labor**. A parancsfájl szükséges hozzá egy meglévő egyéni labor. 
+* **Labor**. A parancsfájl szükséges hozzá egy meglévő labor. 
 
 ## <a name="sample-script"></a>Példaszkript
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-external-user-to-lab/add-external-user-to-custom-lab.ps1 "Add external user to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-external-user-to-lab/add-external-user-to-custom-lab.ps1 "Add external user to a lab")]
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 

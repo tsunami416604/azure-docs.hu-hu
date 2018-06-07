@@ -1,32 +1,29 @@
 ---
 title: A távoli felügyeleti megoldás - Azure eszköz séma |} Microsoft Docs
 description: Ez a cikk ismerteti a JSON-séma, amely meghatározza a szimulált eszköz a távoli felügyeleti megoldás.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 186eaee952435573a861d144195c3165e4940cc1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 1ba73d24aaa113a9124e17ea91946c205b21fba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627433"
 ---
 # <a name="understand-the-device-model-schema"></a>Az eszköz modellsémát ismertetése
 
-A távoli felügyeleti megoldás szimulált eszköz segítségével ellenőrizze a viselkedését. Amikor telepíti a távoli felügyeleti megoldás, szimulált eszközök automatikusan lett kiépítve. A meglévő szimulált eszközök testreszabása, vagy hozza létre a sajátját.
+A távoli figyelésére szolgáló megoldás szimulált eszköz segítségével ellenőrizze a viselkedését. A távoli figyelésére szolgáló megoldás telepítésekor szimulált eszközök automatikusan lett kiépítve. A meglévő szimulált eszközök testreszabása, vagy hozza létre a sajátját.
 
 Ez a cikk ismerteti, amely meghatározza a szolgáltatásait és a szimulált eszköz működését eszköz modellsémát. Az eszköz típusa egy JSON-fájl tárolja.
 
 A jelen cikkben kapcsolódó a következő cikkeket:
 
-* [Az eszköz modell viselkedés](../iot-suite/iot-suite-remote-monitoring-device-behavior.md) használhatja a szimulált eszköz viselkedés JavaScript fájlokat ismerteti.
+* [Az eszköz modell viselkedés](iot-accelerators-remote-monitoring-device-behavior.md) használhatja a szimulált eszköz viselkedés JavaScript fájlokat ismerteti.
 * [Hozzon létre egy új szimulált eszköz](iot-accelerators-remote-monitoring-test.md) együtt helyezi, és bemutatja, hogyan telepíthet egy új szimulált eszköz típusa a megoldás.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
@@ -39,7 +36,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="the-parts-of-the-device-model-schema"></a>Az eszköz modellsémát részei
 
-Minden eszköz típusa, például hűtő vagy teherautó, a szimulált eszköz csatlakozni a távoli figyelési megoldást igényelnek olyan típusú határozza meg. Minden eszköz modell egy JSON-fájl a következő legfelső szintű sémával tárolja:
+Minden eszköz típusa, például hűtő vagy teherautó, a szimulált eszköz kapcsolódni a távoli figyelésére szolgáló megoldás típusának meghatározása. Minden eszköz modell egy JSON-fájl a következő legfelső szintű sémával tárolja:
 
 ```json
 {
@@ -203,12 +200,12 @@ Telemetriai adatok küldéséhez más időközönként, adja hozzá a telemetria
 
 ## <a name="cloudtodevicemethods"></a>CloudToDeviceMethods
 
-A szimulált eszköz tud válaszolni a távoli felügyeleti megoldásban való nevű felhő eszközre módszerek. A `CloudToDeviceMethods` az eszköz modell séma fájl:
+A szimulált eszköz tud válaszolni a távoli figyelésére szolgáló megoldás hívása felhő eszközre módszerek. A `CloudToDeviceMethods` az eszköz modell séma fájl:
 
 * A szimulált eszköz válaszolhassanak módszerek meghatározása.
 * Azonosítja a JavaScript-fájlt, amely tartalmazza a programot végrehajtani.
 
-A szimulált eszköz támogatja metódusok küld a távoli figyelési megoldást igényelnek.
+A szimulált eszköz támogatja metódusok küld a távoli figyelésére szolgáló megoldás.
 
 A JavaScript-fájlt az eszköz viselkedését meghatározó kapcsolatos további információkért lásd: [eszköz modell viselkedésének megértése](iot-accelerators-remote-monitoring-device-behavior.md).
 
@@ -246,7 +243,7 @@ Ez a cikk ismerteti a saját egyéni szimulált eszköz modell létrehozása. Ez
 
 Most a JSON-séma megismerte a javasolt következő lépésre megtudhatja, hogyan [a szimulált eszköz viselkedés](iot-accelerators-remote-monitoring-device-behavior.md).
 
-Fejlesztői kapcsolatos további információkért a távoli felügyeleti megoldás az alábbi témakörben talál:
+A távoli figyelésére szolgáló megoldás fejlesztői ismertetését lásd:
 
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

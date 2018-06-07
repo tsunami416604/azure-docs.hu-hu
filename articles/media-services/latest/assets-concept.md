@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 76ed74f2df62d478b83e109a492977ec2d580198
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 791871fc3da98b380da9dbe32333a55f670c22e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638279"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -49,7 +50,7 @@ A következő táblázat az eszköz tulajdonságok láthatók, és lehetőséget
 
 A teljes meghatározása: [eszközök](https://docs.microsoft.com/rest/api/media/assets).
 
-## <a name="filtering-ordering-and-paging-support"></a>Szűrési, rendezési és lapozás támogatása
+## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, lapozás
 
 A Media Services a következő OData-lekérdezés beállításai eszközöket támogatja: 
 

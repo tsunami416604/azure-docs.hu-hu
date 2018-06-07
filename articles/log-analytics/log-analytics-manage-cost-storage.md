@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 0e4c4c9e950610526a29e02d70827a1279d9686a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 43f7f1160fa36745bcfd697d91d1b46615b99edc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637514"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Költség kezelése adatmennyiség és a Naplóelemzési megőrzési vezérlése
 A Naplóelemzési úgy tervezték, hogy a skála és támogatási összegyűjtésének, indexelő és nagy mennyiségű adatot naponta forrásból tárolása a vállalati vagy Azure szolgáltatásba telepített.  Amikor ez lehet, hogy a szervezete elsődleges illesztőprogram, költséghatékonyságának végső soron az alapul szolgáló illesztőprogram. Ebből a célból, fontos ismerni, hogy a napló Analytisc munkaterület költségét nem csupán mennyisége alapján adatgyűjtés, azt is a kiválasztott csomag függ, és mennyi ideig úgy döntött, hogy a csatlakoztatott forrásból adatainak tárolásához.  
@@ -36,7 +37,7 @@ Lehet, hogy adatokat költségét jelentős attól függően, hogy a következő
 > [!NOTE]
 > Tekintse meg az egyes megoldások dokumentációjában mennyi adatot összegyűjti az becsült biztosít.   
 
-Ha a *szabad* terv, adatok korlátozódik 7 napos adatmegőrzési. Az a *önálló* vagy *fizetve* réteg, gyűjtött adatok érhető el az elmúlt 31 napban. A *szabad* terv rendelkezik 500 MB-os napi adatfeldolgozást korlátot, és ha talál meg, hogy következetesen túllépi az engedélyezett mennyiségi összegek, a munkaterület módosíthatja egy fizetős csomagra meghaladja ezt a határt adatok gyűjtéséért felelős ügyfélfeladatot. 
+2018. július 1. előtti aláírt nagyvállalati szerződéssel rendelkező ügyfelek, vagy ki már hozta létre a Naplóelemzési munkaterület egy előfizetésben, továbbra is rendelkezik hozzáféréssel a *szabad* terv. Ha az előfizetés nem kapcsolódna a meglévő EA beléptetési a *szabad* szint nem érhető el, egy munkaterület után 2018. április 2. az új előfizetés létrehozásakor.  Adatok korlátozódik 7 napos adatmegőrzési a *szabad* réteg.  Az a *önálló* vagy *fizetve* réteg, gyűjtött adatok érhető el az elmúlt 31 napban. A *szabad* réteg rendelkezik 500 MB-os napi adatfeldolgozást korlátot, és ha talál meg, hogy következetesen túllépi az engedélyezett mennyiségi összegek, a munkaterület módosíthatja egy fizetős csomagra meghaladja ezt a határt adatok gyűjtéséért felelős ügyfélfeladatot. 
 
 > [!NOTE]
 > Díjak vonatkoznak, ha úgy dönt, hogy válassza ki a fizetős réteg hosszabb megőrzési időtartamot. A terv típusának módosítása, tetszőleges időpontban, és az árakkal kapcsolatos további információt, lásd: [díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/). 
@@ -54,7 +55,7 @@ Itt a hónap megtekintheti a adatmennyiség. Ez magában foglalja a fogadott és
  
 Napló Analytics költségek az Azure számlázásának hozzáadódnak. Az Azure számlázás elszámolási szakaszban az Azure portál vagy a részleteit láthatja a [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
 
-## <a name="daily-cap"></a>Napi maximális
+## <a name="daily-cap"></a>Napi korlát
 Ha a Naplóelemzési munkaterület létrehozása az Azure-portálon, és válassza ki a *szabad* terv, értékűre van állítva egy nap-korlát 500 MB. A más árképzési tervek korlátozva van. Napi cap konfigurálása és a napi adatfeldolgozást korlátozza a munkaterület, de körültekintően járjon el, a cél nem lehet érni a napi korlátot.  Ellenkező esetben a nap, ami kedvezőtlen hatással lehet az egyéb Azure-szolgáltatások és a megoldások, amelyek funkció lehetséges, hogy a munkaterület alatt elérhető legfrissebb adatokat függ a fennmaradó adatok elvesznek.  Ennek eredményeképpen a képességére, figyelje meg, és fogadni figyelmezteti, ha a IT szolgáltatásokat támogató erőforrásokban egészségügyi feltételek érintett.  A napi kap olyan adatmennyiség váratlan növekedését kezelése a felügyelt erőforrások és a határidőn belül, vagy ha egyszerűen a nem tervezett díjak munkaterület korlátozni kívánja marad is használható.  
 
 A napi korlát elérésekor a gyűjtemény számlázható adattípusok a nap további leáll. A kijelölt Naplóelemzési munkaterület a lap tetején megjelenik egy figyelmeztetés Szalagcím és művelet esemény érkezik a *művelet* a tábla **LogManagement** kategóriát. Adatgyűjtés folytatása után a visszaállítás ideje alatt *napi korlátot állít a*. Azt javasoljuk, hogy egy konfigurált értesítése, ha az napi korlátot elérte az ezen művelet események alapján riasztási szabályt. 

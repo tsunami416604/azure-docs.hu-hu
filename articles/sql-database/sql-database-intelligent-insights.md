@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
-ms.openlocfilehash: f3ace9d178fdfa90130e4436722e1e36cedc7e50
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a911ed9777e1a63e1fc1776fb6a8c1ab98bc6820
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647503"
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
@@ -54,7 +55,7 @@ Meghatározott SQL-adatbázis teljesítményének degradations tárolja, amely a
 | Ütközési értéket | A metrika méri. |
 | Érintett lekérdezések és hibakódok | A lekérdezés kivonatoló vagy hibakód. Ezek használhatók az érintett lekérdezésekre könnyen összefüggéseket. Metrikák lekérdezés időtartam növelése, várakozási idő, időtúllépés számát, vagy hibakódok áll rendelkezésre állnak. |
 | Észlelések | Az adatbázis azonosítsák az időre, amíg az esemény észlelése. Nincsenek 15 észlelési kombinációját. További információkért lásd: [intelligens, amelyen adatbázis teljesítménnyel kapcsolatos problémák elhárítása](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Kiváltó okának elemzése | Alapvető oka elemzése az emberek számára olvasható formátumban felismert probléma. Néhány insights tartalmazhat a teljesítmény fokozása javaslat, ahol csak lehetséges. |
+| Alapvető okok elemzése | Alapvető oka elemzése az emberek számára olvasható formátumban felismert probléma. Néhány insights tartalmazhat a teljesítmény fokozása javaslat, ahol csak lehetséges. |
 |||
 
 A diagnosztika naplóban rögzített teljesítményproblémák vannak megjelölve, egy probléma életciklus Háromállapotú egyike: "Active", "Ellenőrzése", és a "Teljes". A teljesítmény után problémát észlelt, és ítélt hosszú azt rendelkezik annyi téglára SQL Database beépített funkciói által, a probléma megjelölt "Aktív". Ha a probléma akkor tekinthető problémák elhárításáról, igazolható, és a probléma állapota "Ellenőrzése". SQL Database beépített funkciói úgy véli, hogy a probléma elhárítva, miután a probléma állapota "Complete" van megjelölt.

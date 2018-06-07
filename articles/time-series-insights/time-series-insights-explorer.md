@@ -1,24 +1,24 @@
 ---
-title: "Az Azure idő adatsorozat Insights Explorerrel adatokba |} Microsoft Docs"
-description: "Ez a cikk ismerteti a böngészőben a Azure idő adatsorozat Insights Intéző segítségével gyorsan megtekintheti a big Data típusú adatok globális nézetét, és ellenőrizze az IoT-környezetben."
-services: time-series-insights
+title: Az Azure idő adatsorozat Insights Explorerrel adatokba |} Microsoft Docs
+description: Ez a cikk ismerteti a böngészőben a Azure idő adatsorozat Insights Intéző segítségével gyorsan megtekintheti a big Data típusú adatok globális nézetét, és ellenőrizze az IoT-környezetben.
 ms.service: time-series-insights
+services: time-series-insights
 author: MarkMcGeeAtAquent
 ms.author: kfile
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: de676efdd7dd2a4035bbeca4bddd8b1d7ee7e989
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651777"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights explorer
+# <a name="azure-time-series-insights-explorer"></a>Az Azure idő adatsorozat Insights explorer
 Ez a cikk ismerteti a különböző szolgáltatások és az idő adatsorozat Insights explorer web App lehetőségeket. Képi megjelenítéseket készíthet az adatok idő adatsorozat Insights explorer használja a böngészőben.
  
 Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló és megjelenítő szolgáltatás, amely megkönnyíti IoT-események milliárdjainak párhuzamos felderítését és elemzését. Ez lehetővé teszi az adatokat, ami lehetővé teszi, hogy az IoT-megoldásból gyorsan érvényesítése és elkerülheti a kritikus fontosságú eszközökre költséges állásidőt globális nézetét. Rejtett trendeket, helyszíni rendellenességek észlelését, felderítését és a kiváltó okának közel valós idejű elemzést. Az idő adatsorozat Insights explorer jelenleg nyilvános előzetes verziójához.
@@ -60,7 +60,7 @@ Az az idő adatsorozat Insights-környezethez való csatlakozását az eseményf
          |<, >, <=, >=     |  Kettős, DateTime, TimeSpan       |         |
          |=, !=, <>     | String, Bool, Double, DateTime, TimeSpan, NULL értékű        |         |
          |IN     | String, Bool, Double, DateTime, TimeSpan, NULL értékű        |  Minden operandusok kell azonos típusú és NULL állandó.        |
-         |HAS     | Karakterlánc        |  Csak állandó karakterlánc-literálnak jobb oldalán használhatók. Üres karakterlánc, és a NULL nem engedélyezettek.       |
+         |RENDELKEZIK     | Karakterlánc        |  Csak állandó karakterlánc-literálnak jobb oldalán használhatók. Üres karakterlánc, és a NULL nem engedélyezettek.       |
 
       - **Lekérdezések példák**
       

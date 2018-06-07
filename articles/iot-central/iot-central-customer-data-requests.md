@@ -1,15 +1,19 @@
 ---
-title: Felhasználói adatok kérése Azure IoT központi szolgáltatásai
+title: Felhasználói adatok kérése Azure IoT központi szolgáltatásai |} Microsoft Docs
+description: Felhasználói adatok kérése Azure IoT központi szolgáltatásai
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/17/2018
 ms.topic: conceptual
 ms.service: iot-central
-ms.openlocfilehash: 0e348ca9ca85da7d4734a57afac4e5bb27217eae
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+services: iot-central
+manager: timlt
+ms.openlocfilehash: bb5e263b0332f957b4e7f4a928ccd53f639bcd9c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629405"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Felhasználói adatok kérelem szolgáltatásainak összefoglalása
 

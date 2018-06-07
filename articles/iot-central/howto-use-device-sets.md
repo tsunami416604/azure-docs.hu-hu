@@ -1,18 +1,19 @@
 ---
 title: Eszköz használata az Azure IoT központi alkalmazás beállítása |} Microsoft Docs
 description: Kezelőként eszköz használata az Azure IoT központi alkalmazás beállítása.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932c8315b5af22c3adf18de50cf03deaf6b2a53e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpfr
+ms.openlocfilehash: d27e687acf62e4a1e96f1bb49607618dff45512b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628504"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
@@ -76,7 +77,7 @@ Miután létrehozta az eszköz-csoportosítóra, konfigurálhatja a **irányít�
 
     1. A rács adjon egy **cím**.
     1. Válassza ki a beállítások gombra megjelenítendő oszlopok kiválasztása Ugrik fel a panelen válassza ki a megjelenítendő, és kattintson a jobbra mutató nyílra kattintva válassza ki azt az oszlop.
-    1. Válasszon **OK**.
+    1. Kattintson az **OK** gombra.
     1. Válassza a **Mentés** elemet.
 
         ![Mentse a rács](media/howto-use-device-sets/image9.png)
@@ -106,7 +107,7 @@ Miután létrehozta az eszköz-csoportosítóra, konfigurálhatja a **lista**. A
 
     ![Oszlop kiválasztása](media/howto-use-device-sets/image12.png)
 
-1. Válasszon **OK**.
+1. Kattintson az **OK** gombra.
 
 ## <a name="analytics"></a>Elemzés
 

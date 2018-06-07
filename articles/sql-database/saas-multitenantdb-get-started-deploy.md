@@ -8,14 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646456"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Központi telepítése, és vizsgálja meg a szilánkos több-bérlős alkalmazás által használt Azure SQL adatbázis
 
@@ -123,7 +124,7 @@ Egyes helyszínekkel lekérdezi egy személyre szabott webalkalmazást a listáb
 Egy központi **események Hub** weblap mutató hivatkozásokat biztosít a bérlők számára az adott környezetben. Az alábbi lépések segítségével tapasztalhat a **események Hub** weblap és egy adott webalkalmazás:
 
 1. Nyissa meg a **események Hub** a böngészőben:
-    - http://events.wingtip-mt. &lt;felhasználói&gt;. trafficmanager.net &nbsp; *(csere &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)*
+    - http://events.wingtip-mt.&lt; felhasználói&gt;. trafficmanager.net &nbsp; *(csere &lt;felhasználói&gt; a központi telepítés felhasználói értékkel.)*
 
     ![eseményközpont](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,14 +136,14 @@ Egy központi **események Hub** weblap mutató hivatkozásokat biztosít a bér
 
 A bejövő kérelmek terjesztési szabályozására, a Wingtip alkalmazás használ [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapról, az egyes bérlők számára a bérlő neve szerepel az URL-CÍMÉT. Minden egyes URL-címet is az adott felhasználó érték. Minden egyes URL-cím obeys látható formátuma a következő lépések segítségével:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; felhasználói&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Az események alkalmazás elemzi a bérlő nevét az URL-címről. A bérlő neve *fabrikamjazzclub* az előző példa URL-címben.
 2. Az alkalmazás ezután csak a bérlő nevét, a katalógus használatával eléréséhez kulcs létrehozásához [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md).
 3. Az alkalmazás a katalógust a kulcs talál, és beszerzi a bérlő adatbázis megfelelő helyét.
 4. Az alkalmazás az adatok található, és a bérlőhöz tartozó összes adatot tartalmazó egy adatbázist használ.
 
-#### <a name="events-hub"></a>Events Hub
+#### <a name="events-hub"></a>Események Hub
 
 1. A **események Hub** a bérlők a katalógusban, és azok helyszínek regisztrált sorolja fel.
 2. A **események Hub** kiterjesztett metaadatokat használ a katalógus összeállítani az URL-címeket és minden kapcsolódó a bérlő nevének beolvasására.

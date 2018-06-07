@@ -6,14 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.openlocfilehash: 7707a40a39e429333ff1c20fb7884a1fb7ee2162
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646643"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL-adatbázis automatikus hangolása
 
@@ -61,13 +62,15 @@ Megtudhatja, hogyan automatikus hangolási működik, és a jellemző használat
 ## <a name="automatic-tuning-options"></a>Automatikus hangolási lehetőségeket
 
 Elérhető az Azure SQL-adatbázis automatikus hangolási lehetőségek a következők:
- 1. **A CREATE INDEX** -indexek javíthatja a teljesítményt a munkaterhelés, hoz létre indexeket, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult azonosítja. Alapértelmezett Azure beállítás, az ezt a beállítást engedélyezve van.
- 2. **DROP INDEX** -redundancia és ismétlődő indexek és indexek, amelyet nem használtak egy nagyon hosszú ideig azonosítja. Vegye figyelembe, hogy most a beállítás nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások. Alapértelmezett Azure beállítás, az a lehetőség le van tiltva.
- 3. **UTOLSÓ JÓ terv KÉNYSZERÍTETT** -végrehajtási terv lassabb, mint az előző jó terv, amely lekérdezi az utolsó ismert helyes terv helyett a regressed terv használata az SQL-lekérdezések azonosítja. Alapértelmezett Azure beállítás, az ezt a beállítást engedélyezve van.
+ 1. **A CREATE INDEX** -indexek javíthatja a teljesítményt a munkaterhelés, hoz létre indexeket, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult azonosítja.
+ 2. **DROP INDEX** -redundancia és ismétlődő indexek és indexek, amelyet nem használtak egy nagyon hosszú ideig azonosítja. Ne feledje, hogy ezt a beállítást a nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások.
+ 3. **UTOLSÓ JÓ terv KÉNYSZERÍTETT** -végrehajtási terv lassabb, mint az előző jó terv, amely lekérdezi az utolsó ismert helyes terv helyett a regressed terv használata az SQL-lekérdezések azonosítja.
 
-Az Azure SQL Database azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** is optimalizálhatja az adatbázist, és az Azure portálon megjelenő javaslatokat. A módosítani kívánt indexek azonosítása további információt talál [indexjavaslatok az Azure portálon található](sql-database-advisor-portal.md). Manuálisan alkalmazhatja javaslatok a portál használatával, vagy lehetővé teszik az Azure SQL Database automatikusan javaslatok alkalmazásához számítási feladat figyeléséhez a módosítás után, és győződjön meg arról, hogy a javaslat javult a számítási feladatok teljesítményére.
+Az Azure SQL Database azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** is optimalizálhatja az adatbázist, és az Azure portálon megjelenő javaslatokat. A módosítani kívánt indexek azonosítása további információt talál [indexjavaslatok az Azure portálon található](sql-database-advisor-portal.md). Manuálisan alkalmazhatja javaslatok a portál használatával, vagy lehetővé teszik az Azure SQL Database automatikusan javaslatok alkalmazásához számítási feladat figyeléséhez a módosítás után, és győződjön meg arról, hogy a javaslat javult a számítási feladatok teljesítményére. 
 
-Automatikus hangolása beállítások egymástól függetlenül kapcsolható be- és kikapcsolása adatbázisonként, vagy logikai kiszolgálón konfigurált és az összes adatbázisra, amelyet a örököl beállításokat a kiszolgálón alkalmazott. Logikai kiszolgáló képes az automatikus hangolási beállításainak Azure alapértelmezett beállításait öröklik. Automatikus hangolása beállítások a kiszolgálón és a beállítások a kiszolgálón az adatbázisok öröklődés konfigurálása konfigurálása automatikus hangolása, mert a nagy számú adatbázis automatikus hangolási lehetőségeket kezelését megkönnyíti a módszer használata ajánlott.
+Automatikus hangolási lehetőségeket is egymástól függetlenül engedélyezhetők és letilthatók adatbázisonként, vagy logikai kiszolgálón konfigurálva és alkalmazza az összes adatbázisra, amelyet a örököl beállításokat a kiszolgálón. Logikai kiszolgáló képes az automatikus hangolási beállításainak Azure alapértelmezett beállításait öröklik. Ekkor az Azure alapértelmezés szerint engedélyezve van a FORCE_LAST_GOOD_PLAN, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
+
+Automatikus hangolása beállítások a kiszolgálón és öröklődés adatbázisok a fölérendelt kiszolgáló tartozó beállítások konfigurálása a konfigurálásához az automatikus hangolása nagy számú adatbázis automatikus hangolási beállítások kezelését megkönnyíti, ajánlott módszer.
 
 ## <a name="next-steps"></a>További lépések
 

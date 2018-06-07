@@ -4,22 +4,23 @@ description: Több-bérlős elemzési lekérdezések kibontani a több Azure SQL
 keywords: sql database-oktatóanyag
 services: sql-database
 documentationcenter: ''
-author: stevestein
-manager: jhubbard
+author: anumjs
+manager: craigg
 editor: MightyPen
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: Inactive
 ms.tgt_pltfrm: ''
 ms.devlang: ''
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/08/2017
-ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 487dcd75113b92c1e50caca2ae9df34b4fb2548f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.author: anjangsh
+ms.openlocfilehash: c7580e5481288695d3b5dea8fd0547f5f2c4c2b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644001"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Fedezze fel az Azure SQL Database, az SQL Data Warehouse, adat-előállító és a Power BI Szolgáltatottszoftver-elemzés
 

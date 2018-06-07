@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: ec330570604494503de2fa3f5484a1e41ddf4603
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 96cc7aeb5fd1c64dc3793a801a4a5b759e7558b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652872"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -74,7 +75,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-A virtuális gép és a kapcsolódó erőforrások létrehozásához néhány percet vesz igénybe.
+A virtuális gép és a kapcsolódó erőforrások létrehozása csak néhány percet vesz igénybe.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Az Azure AD bejelentkezési Virtuálisgép-bővítmény telepítése
 
@@ -111,6 +112,9 @@ az role assignment create \
     --assignee $username \
     --scope $vm
 ```
+
+> [!NOTE]
+> Ha az AAD-tartományban, és a bejelentkezési felhasználónév tartomány nem egyezik, meg kell adnia a felhasználói fiók az Objektumazonosító a *--hozzárendelt személy-objektum-azonosítója*, nem csak a felhasználónév *--megbízottja*. Ezt úgy szerezheti be az Objektumazonosító felhasználó fiókját, [az ad felhasználó-lista](/cli/azure/ad/user#az-ad-user-list).
 
 Az RBAC használata az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a további információkért lásd: használatával a [Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md), [Azure-portálon](../../role-based-access-control/role-assignments-portal.md), vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 

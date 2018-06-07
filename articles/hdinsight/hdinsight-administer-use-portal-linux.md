@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b672b777e9a60f2f3d978947c06290db48e6766c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627023"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával
 
@@ -61,7 +62,7 @@ HDInsight-fürtök létrehozásakor meg kell adnia egy Azure-előfizetés. A fü
     1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     2. Kattintson a **előfizetés** a bal oldali menüből. Rendelkezik a sárga kulcs ikon. Az előfizetések listája megjelenik.
     3. Kattintson az előfizetést, a fürtök létrehozására használhatja. 
-    4. Kattintson a **saját engedélyek**.  Azt illusztrálja a [szerepkör](../role-based-access-control/overview.md#built-in-roles) az előfizetésben. Legalább kell közreműködői access HDInsight-fürt létrehozásához.
+    4. Kattintson a **saját engedélyek**.  Azt illusztrálja a [szerepkör](../role-based-access-control/built-in-roles.md) az előfizetésben. Legalább kell közreműködői access HDInsight-fürt létrehozásához.
 
 - Meglévő erőforráscsoport használata:
 

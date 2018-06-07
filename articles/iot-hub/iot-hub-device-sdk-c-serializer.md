@@ -1,24 +1,20 @@
 ---
 title: Az Azure IoT-eszközök SDK c - szerializáló |} Microsoft Docs
 description: Hogyan használható az Azure IoT-eszközök C-hez készült SDK a szerializáló szalagtár kommunikáló eszközön futó alkalmazások létrehozásához az IoT-központ számára.
-services: iot-hub
-documentationcenter: ''
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
+manager: arjmands
 ms.service: iot-hub
-ms.devlang: cpp
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: c
+ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 04b5ebf6d8c568fbfd9b291bef95af973ec5d6d7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a724fa5acc930475bdbe4ffcc74141470a92326c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634144"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Az Azure IoT-eszközök SDK c – további információk a szerializáló
 A [először a következő cikket:](iot-hub-device-sdk-c-intro.md) a sorozat bevezette a **C-hez készült SDK Azure IoT-eszközök**. A következő cikk megadott részletes leírása a [ **IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). Ez a cikk az SDK körét befejeződik, adja meg a részletes leírását, a többi összetevő: a **szerializáló** könyvtár.
@@ -68,19 +64,19 @@ A következő típusok támogatottak a létrehozott modelleket a **szerializál�
 
 | Típus | Leírás |
 | --- | --- |
-| Dupla |dupla pontosságú lebegőpontos szám |
+| double |dupla pontosságú lebegőpontos szám |
 | int |32 bites egész szám |
-| Lebegőpontos |az egyszeres pontosságú lebegőpontos szám |
-| hosszú |hosszú egész szám |
+| lebegőpontos |az egyszeres pontosságú lebegőpontos szám |
+| hossz |hosszú egész szám |
 | int8\_t |8 bites egész szám |
 | Int16\_t |16 bites egész szám |
-| int32\_t |32 bites egész szám |
-| int64\_t |64 bites egész szám |
+| Int32\_t |32 bites egész szám |
+| Int64\_t |64 bites egész szám |
 | logikai érték |logikai |
 | ascii\_char\_ptr |ASCII-karakterlánc |
 | EDM\_DÁTUM\_IDŐ\_ELTOLÁSA |dátum idő eltolása |
 | EDM\_GUID |GUID |
-| EDM\_BINARY |Bináris |
+| EDM\_BINÁRIS |Bináris |
 | DEKLARÁLJA\_STRUKTÚRA |Összetett adattípusú |
 
 Kezdjük az utolsó típusát. A **DECLARE\_STRUCT** összetett adattípusú, amelyek csoportosításait. emellett az egyéb egyszerű típusú adható meg. Ezek a Csoportosítások lehetővé teszik a számunkra, amely a következőképpen néz ki a modellek meghatározásához:
@@ -618,7 +614,7 @@ Lásd: a [előző cikkben](iot-hub-device-sdk-c-iothubclient.md), nincs funkció
 * IoTHubClient\_CreateFromConnectionString
 * IoTHubClient\_SendEventAsync
 * IoTHubClient\_SetMessageCallback
-* IoTHubClient\_Destroy
+* IoTHubClient\_megszüntetése
 
 Az ezen API-k egy **simplesample\_amqp**.
 
@@ -627,7 +623,7 @@ Szerepel továbbá egy hasonló alacsonyabb szintű API-készlet.
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
-* IoTHubClient\_LL\_Destroy
+* IoTHubClient\_inden\_megszüntetése
 
 Vegye figyelembe, hogy az alacsonyabb szintű API-k pontosan ugyanúgy működnek, a fenti cikkekben leírt módon. Az első API-készlet is használhatja, ha azt szeretné, hogy a háttérszálon eseményeket küldő és fogadó üzenetek kezelésére. Ha azt szeretné, hogy explicit szabályozhatják, amikor Ön adatokat küldeni és fogadni az IoT-központ használhatja a második API-készlet. Vagy API-k munkahelyi készlete egyaránt valamint a **szerializáló** könyvtár.
 

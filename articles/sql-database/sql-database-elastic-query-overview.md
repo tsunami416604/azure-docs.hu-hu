@@ -6,14 +6,15 @@ manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: 6367418fb07b2ab5b425609540c653678a207ebc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 43a25d30fbec9327e24230165abd73260397ff14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646473"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Az Azure SQL Database rugalmas lekérdezési áttekintése (előzetes verzió)
 A rugalmas lekérdezés (az előzetes verzió) funkciójával is több adatbázis az Azure SQL Database Transact-SQL-lekérdezés futtatható. Lehetővé teszi a távoli táblákat elérő és a csatlakozás a Microsoft és harmadik féltől származó eszközök (az Excel, Power BI, Tableau, stb.) az adatok rétegek több adatbázisból átfogó lekérdezése közötti adatbázis-lekérdezések végrehajtásához. Ezzel a szolgáltatással horizontális felskálázás lekérdezések nagy adat szintet az SQL-adatbázis és az üzleti intelligenciával jelentések eredményeinek képi megjelenítése.

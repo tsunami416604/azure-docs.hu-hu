@@ -1,26 +1,23 @@
 ---
-title: Eszközökkel kapcsolatos problémákat észleli a távoli felügyeleti megoldás - Azure |} Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan szabályok és a műveletek segítségével automatikusan észleli a küszöbérték-alapú eszközökkel kapcsolatos problémákat a távoli felügyeleti megoldás.
-services: iot-suite
-suite: iot-suite
+title: Eszközökkel kapcsolatos problémákat észleli a távoli figyelésére szolgáló megoldás - Azure |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan szabályok és a műveletek segítségével történő automatikus észlelése a távoli figyelésére szolgáló megoldás a küszöbérték-alapú eszközökkel kapcsolatos problémákat.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-suite
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: f3583b27b2fb9959e65a9c66a75c1174ebf3e238
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: df1ba7909c64e8ccc24bcf3584bd28b2629f49ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627313"
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>Küszöbérték-alapú szabályok használatával kapcsolatos problémák észlelése
 
-Ez az oktatóanyag bemutatja a szabálymotor képességeit a távoli felügyeleti megoldás. Ezek a képességek szemléltetésére az oktatóprogram egy olyan forgatókönyvet a Contoso IoT-alkalmazásban.
+Ez az oktatóanyag a távoli figyelésére szolgáló megoldás a szabálymotor képességeit mutatja. Ezek a képességek szemléltetésére az oktatóprogram egy olyan forgatókönyvet a Contoso IoT-alkalmazásban.
 
 A Contoso egy szabályt, amely kritikus riasztást hoz létre, ha a terhelés által jelentett tartalmaz egy **hűtő** eszköz meghaladja 250 PSI. Kezelőként azonosítani szeretné **hűtő** eszközök, amelyek problematikus érzékelők megkeresésével kezdeti nyomás teljesítményt. Ezek az eszközök azonosításához, hozzon létre egy szabályt, amely egy figyelmeztetés generálása, ha a terhelés meghaladja 150 PSI.
 
@@ -37,9 +34,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag van szükség a távoli felügyeleti megoldás telepített példányát az Azure-előfizetésben.
+Ez az oktatóanyag van szükség a távoli figyelésére szolgáló megoldás telepített példányát az Azure-előfizetésben.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
+Ha a távoli figyelésére szolgáló megoldás még nem telepítette még, el kell végeznie a [telepíteni a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="view-the-rules-in-your-solution"></a>A megoldásban a szabályok megtekintése
 
@@ -110,7 +107,7 @@ Az új feltétel a következő értékeket használja:
 
 | Beállítás          | Érték                                 |
 | ---------------- | ------------------------------------- |
-| Feltétel 2 mező| Hőmérséklet                           |
+| Feltétel 2 mező| hőmérséklet                           |
 | Feltétel 2 operátor | Nagyobb mint                      |
 | Feltétel 2 érték    | 75                                |
 

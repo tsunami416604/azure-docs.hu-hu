@@ -1,24 +1,20 @@
 ---
 title: Ismerkedés az Azure IoT Hub kezelés (.NET/.NET) |} Microsoft Docs
 description: Hogyan használható az Azure IoT Hub kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT-eszközök a .NET SDK használatával valósítja meg a szimulált eszköz alkalmazást, amely közvetlen módszer és a Azure IoT szolgáltatást a service-alkalmazást, amely hívja meg a közvetlen módszer végrehajtásához .NET SDK tartalmazza.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 09/15/2017
-ms.author: v-jamebr;dobett
-ms.openlocfilehash: 44160eeb90f0f65c974b7188dd7c70cce382bf21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: dobett
+ms.openlocfilehash: c1cee32e3ee60ce229308055cca7f0e9832ddc49
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633825"
 ---
 # <a name="get-started-with-device-management-netnet"></a>Eszközkezelés (.NET/.NET) az első lépései
 
@@ -30,7 +26,7 @@ Ez az oktatóanyag a következőket mutatja be:
 * Létrehoz egy szimulált eszköz alkalmazást, amely tartalmazza a közvetlen módszer, amely az eszköz újraindul. Közvetlen módszerek a felhőből hívják.
 * A .NET-Konzolalkalmazás, amely behívja az újraindítás közvetlen módszer a szimulált eszköz alkalmazás keresztül az IoT hub létrehozása.
 
-Ez az oktatóanyag végén két .NET konzol alkalmazások közül választhat:
+Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 * **SimulateManagedDevice**, amely kapcsolódik az IoT hub korábban létrehozott eszköz identitású kap egy újraindítás közvetlen módszer, szimulálja a fizikai számítógép újraindítása, és jelentést az idő az utolsó újraindítás.
 * **TriggerReboot**, amely közvetlen metódus meghívja a szimulált eszköz alkalmazás jeleníti meg a választ, és jeleníti meg a frissített jelentett tulajdonságok.
@@ -181,7 +177,7 @@ Ez a szakasz tartalma
             Console.WriteLine("Error in sample: {0}", ex.Message);
         }
         
-8. A Visual Studio Solution Explorerben kattintson a jobb gombbal a megoldás, és kattintson **indítási projektek beállítása...** . Válassza ki **egyetlen kezdőprojekt**, majd válassza ki a **SimulateManagedDevice** projekt legördülő menüből. Hozza létre a megoldást.       
+8. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza ki **egyetlen kezdőprojekt**, majd válassza ki a **SimulateManagedDevice** projekt legördülő menüből. Hozza létre a megoldást.       
 
 > [!NOTE]
 > Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.

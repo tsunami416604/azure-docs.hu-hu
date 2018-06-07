@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 51a5f70cc56b2a4196ee7b151be0af3a9e16fc4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646932"
 ---
 # <a name="deploy-a-split-merge-service"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése
 A felosztott egyesítéses eszköz lehetővé teszi az adatok áthelyezése a szilánkos adatbázisok között. Lásd: [adatok kiterjesztett felhő adatbázisok közötti áthelyezése](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -33,8 +34,8 @@ A fájlok kerülnek nevű **Microsoft.Azure.SqlDatabase.ElasticScale.Service.Spl
 2. Győződjön meg arról, hogy az Azure SQL Database-kiszolgáló lehetővé teszi, hogy a csatlakozáshoz Azure-szolgáltatások. A portálon a a **tűzfalbeállítások**, győződjön meg arról a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítása **a**. Kattintson a "Mentés" ikonra.
    
    ![Engedélyezett szolgáltatások][1]
-3. Azure-tárfiók létrehozása, amely jelzi a diagnosztikai kimenetet. Ugrás az Azure-portálon. A bal oldali sávon kattintson **hozzon létre egy erőforrást**, kattintson a **adatok + tárolás**, majd **tárolási**.
-4. Hozzon létre egy Azure felhőalapú szolgáltatás, amely a vegyes egyesítéses szolgáltatás fogja tartalmazni.  Ugrás az Azure-portálon. A bal oldali sávon kattintson **hozzon létre egy erőforrást**, majd **számítási**, **Felhőszolgáltatás**, és **létrehozása**. 
+3. Azure-tárfiók létrehozása, amely jelzi a diagnosztikai kimenetet. Nyissa meg az Azure Portalt. A bal oldali sávon kattintson **hozzon létre egy erőforrást**, kattintson a **adatok + tárolás**, majd **tárolási**.
+4. Hozzon létre egy Azure felhőalapú szolgáltatás, amely a vegyes egyesítéses szolgáltatás fogja tartalmazni.  Nyissa meg az Azure Portalt. A bal oldali sávon kattintson **hozzon létre egy erőforrást**, majd **számítási**, **Felhőszolgáltatás**, és **létrehozása**. 
 
 ## <a name="configure-your-split-merge-service"></a>A felosztott egyesítéses szolgáltatás konfigurálása
 ### <a name="split-merge-service-configuration"></a>Vegyes egyesítéses szolgáltatás konfigurációja

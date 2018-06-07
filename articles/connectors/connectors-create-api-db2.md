@@ -1,25 +1,22 @@
 ---
-title: "Adja hozzá a DB2-összekötő a Logic Apps |} Microsoft Docs"
-description: "A REST API paraméterekkel DB2-összekötő áttekintése"
-services: 
-documentationcenter: 
+title: DB2 - Azure Logic Apps csatlakozni |} Microsoft Docs
+description: DB2 REST API-k és az Azure Logic Apps-erőforrások kezelése
 author: gplarsen
-manager: erikre
-editor: 
-tags: connectors
-ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, estfan
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 9e86273a8b614098aa77608386ab050c20926d23
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609749"
 ---
 # <a name="get-started-with-the-db2-connector"></a>Ismerkedjen meg a DB2-összekötő
 Microsoft DB2-összekötő Logic Apps csatlakozik egy IBM DB2-adatbázisban tárolt erőforrások. Ez az összekötő tartalmazza a Microsoft TCP/IP-hálózaton keresztül DB2-kiszolgáló távoli számítógépekkel folytatott kommunikációhoz. Ez magában foglalja a felhőalapú adatbázisok, például az IBM Bluemix dashDB vagy a Windows Azure virtualizálási futó IBM DB2 és a helyszíni adatbázisokat az helyszíni átjáró használatával. Tekintse meg a [lista támogatott](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2-platformok és-verziói (Ez a témakör).
@@ -42,18 +39,18 @@ A DB2-összekötő a következő logic app műveleteket támogatja:
 
 * GetTables
 * GetRow
-* GetRows
+* GetRows hívás
 * InsertRow
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Listáját táblákat
+## <a name="list-tables"></a>Táblák listázása
 Bármely művelet logikai alkalmazás létrehozása a Microsoft Azure portálon keresztül sok lépéseken áll.
 
 A logikai alkalmazásban is hozzáadhat egy művelet listáját táblákat DB2-adatbázisban. A művelet feldolgozására DB2-schema utasításban, például az összekötő utasítja `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be  **+**  (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
+1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
 2. Adja meg a **neve**, például a `Db2getTables`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
 
 ### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
@@ -90,7 +87,7 @@ Ez az összekötő-példányokhoz-adatbázisok védelmét a helyszíni és a fel
 | hitelesítés |Választható. Fogadja el a cikk listaértéket, alapszintű vagy a Windows (kerberos). |
 | felhasználónév |Kötelező. Egy karakterláncértéket fogad el. Z/os DB2 egy 8 bájtos karakterlánc fogad el. DB2 az i fogad el egy 10 – többbájtos karakterlánc. A Linux vagy UNIX DB2 egy 8 bájtos karakterlánc fogad el. DB2 Windows 30 bájtos karakterlánc fogad el. |
 | jelszó |Kötelező. Egy karakterláncértéket fogad el. |
-| Átjáró |Kötelező. Elem listaértéket, az a helyszíni átjáró meghatározott a Logic Apps a tárolócsoport képviselő fogad el. |
+| átjáró |Kötelező. Elem listaértéket, az a helyszíni átjáró meghatározott a Logic Apps a tárolócsoport képviselő fogad el. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>A helyszíni átjáró kapcsolat létrehozása
 Ez az összekötő egy helyszíni DB2-adatbázishoz, a helyszíni átjáró hozzáférhet. Átjáró témakörök további információt. 
@@ -123,7 +120,7 @@ Az összekötő hozzáférhessen egy felhő DB2-adatbázishoz.
 Megadhat egy logic app művelet egy DB2-tábla összes sorának beolvasása. Ez az összekötő egy DB2 SELECT utasítás feldolgozására például arra utasítja `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be  **+**  (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
+1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
 2. Adja meg a **neve**, például a `Db2getRows`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
 
 ### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
@@ -160,7 +157,7 @@ Megadhat egy logic app művelet egy DB2-tábla összes sorának beolvasása. Ez 
 A logic app művelet egy sort ad hozzá egy DB2-tábla adhat meg. Ez a művelet arra utasítja az összekötő egy DB2 INSERT utasítás feldolgozására például `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be  **+**  (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
+1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
 2. Adja meg a **neve**, például a `Db2insertRow`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
 
 ### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
@@ -187,7 +184,7 @@ A logic app művelet egy sort ad hozzá egy DB2-tábla adhat meg. Ez a művelet 
 A logic app művelet egy DB2-táblázat egy sort lehívni adhat meg. Ez a művelet feldolgozására egy DB2 ahol válasszon utasítás, például az összekötő utasítja `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be  **+**  (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
+1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
 2. Adja meg a **neve** (pl. "**Db2getRow**"), **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
 
 ### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
@@ -215,7 +212,7 @@ A logic app művelet egy DB2-táblázat egy sort lehívni adhat meg. Ez a művel
 A logic app művelet soronként egy DB2-tábla módosítása adhat meg. Ez a művelet feldolgozására DB2 utasítást, például az összekötő utasítja `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be  **+**  (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
+1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
 2. Adja meg a **neve**, például a `Db2updateRow`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
 
 ### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet
@@ -242,7 +239,7 @@ A logic app művelet soronként egy DB2-tábla módosítása adhat meg. Ez a mű
 Megadhatja a logikai alkalmazás művelet egy sor eltávolítása egy DB2-tábla. Ez a művelet arra utasítja az összekötő egy DB2 DELETE utasítás feldolgozására például `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
-1. Az a **Azure start Bizottsága**, jelölje be  **+**  (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
+1. Az a **Azure start Bizottsága**, jelölje be **+** (plusz jelre), **Web + mobil**, majd **logikai alkalmazás**.
 2. Adja meg a **neve**, például a `Db2deleteRow`, **előfizetés**, **erőforráscsoport**, **hely**, és **App Service-csomag**. Válassza ki **rögzítés az irányítópulton**, majd válassza ki **létrehozása**.
 
 ### <a name="add-a-trigger-and-action"></a>Adja hozzá egy eseményindító és művelet

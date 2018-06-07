@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 36d4e897952e7ecb0297cc8c0ba159f728fd1213
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 68ba76ee18b3acc1c2825a217641c21a799132c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638588"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder prémium szintű munkafolyamat-formátumok és kodekek
 > [!NOTE]
@@ -53,6 +54,7 @@ A következő szakasz a kodekeket és fájlformátumot, amely a media processzor
 * 8 bit/10-bites, legfeljebb 4 AVC: 2:2, beleértve a AVCIntra
 * (A MXF) Avid DNxHD
 * DVCPro/DVCProHD (a MXF)
+* HEVC/H.265, az elsődleges és a fő 10 profil
 * JPEG2000
 * MPEG-2 (legfeljebb 422 profil és a magas szintű; például XDCAM, XDCAM HD, XDCAM IMX, CableLabs® és D10 Variant típusú adatok is beleértve)
 * MPEG-1

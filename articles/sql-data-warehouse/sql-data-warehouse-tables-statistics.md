@@ -10,17 +10,18 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643430"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Frissíti a statisztikákat a táblák az Azure SQL Data Warehouse létrehozása
 Javaslatok és példák létrehozásához, és frissíti a táblákon, az Azure SQL Data Warehouse-optimalizálás statisztikákat.
 
 ## <a name="why-use-statistics"></a>Statisztika miért érdemes használni?
-Minél több ismeri az Azure SQL Data Warehouse az adatokat, minél gyorsabban hajtható végre rajta lekérdezések. Statisztika gyűjtése az adatokról, és majd betöltése az SQL Data Warehouse az egyik legfontosabb, amit a lekérdezések optimalizálását is van. Ez azért, mert az SQL Data Warehouse lekérdezésoptimalizáló költség-alapú optimalizáló. Összehasonlítja a különböző lekérdezésterveket költségét, és majd úgy dönt, hogy a költséghatékonyság, amely a legtöbb esetben a tervet, amely végrehajtja a leggyorsabb a tervet. Például ha a optimalizáló becslése, hogy a dátum jelenleg korlátozza a lekérdezés egy sort ad vissza, azt eldönthetik, másik csomagot, mint ha azt a választott dátum becslése, visszatér 1 millió sort foglalnak.
+Minél több ismeri az Azure SQL Data Warehouse az adatokat, minél gyorsabban hajtható végre rajta lekérdezések. Statisztika gyűjtése az adatokról, és majd betöltése az SQL Data Warehouse az egyik legfontosabb, amit a lekérdezések optimalizálását is van. Ez azért, mert az SQL Data Warehouse lekérdezésoptimalizáló költség-alapú optimalizáló. Összehasonlítja különböző lekérdezéstervek költségeit, majd kiválasztja a legalacsonyabb költségű tervet, amely általában a leggyorsabban végrehajtható is egyben. Például ha a optimalizáló becslése, hogy a dátum jelenleg korlátozza a lekérdezés egy sort ad vissza, azt eldönthetik, másik csomagot, mint ha azt a választott dátum becslése, visszatér 1 millió sort foglalnak.
 
 ## <a name="automatic-creation-of-statistics"></a>A statisztikák automatikus létrehozását
 Az automatikus létrehozásakor statisztika beállítás a AUTO_CREATE_STATISTICS, az SQL Data Warehouse elemzi a bejövő, ahol oszlopokat, amelyek statisztika hiányzik egyoszlopos statisztikát hoz létre felhasználói lekérdezések. A lekérdezésoptimalizáló statisztika egyedi számossága becslések a lekérdezés terv javítására lekérdezés predikátum vagy illesztési feltétel oszlopok hoz létre. A statisztikák automatikus létrehozását jelenleg úgy van kapcsolva, alapértelmezés szerint.
@@ -49,11 +50,14 @@ A statisztikák automatikus létrehozását szinkron módon jön létre, így Ö
 > A statisztikák létrehozását is vannak, naplózva lesznek [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) különböző felhasználói környezetben.
 > 
 
-Statisztika automatikus létrehozásakor, akkor a következőkben: _WA_Sys_< 8 számjegyű oszlopazonosító hexadecimális > _ < hexadecimális számjegy 8 tábla azonosítója >. Statisztika, amely létre lett hozva a következő parancs futtatásával tekintheti meg:
+Statisztika automatikus létrehozásakor, akkor a következőkben: _WA_Sys_< 8 számjegyű oszlopazonosító hexadecimális > _ < hexadecimális számjegy 8 tábla azonosítója >. Stats már létrehozott futtatásával megtekintheti a [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) parancs:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
+Az első argumentum a statisztika megjelenítése tartalmazó tábla. Ez nem lehet külső táblát. A második argumentum a cél index, statisztika vagy statisztikai adatok megjelenítéséhez használt oszlop neve.
+
+
 
 ## <a name="updating-statistics"></a>Frissítse a statisztikai adatokat
 

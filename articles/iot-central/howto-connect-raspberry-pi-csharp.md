@@ -1,18 +1,19 @@
 ---
 title: Kapcsolat egy málna Pi az Azure IoT központi alkalmazáshoz (C#) |} Microsoft Docs
 description: Egy eszköz fejlesztőjeként egy málna Pi csatlakoztatása az Azure IoT központi alkalmazás használatával C#.
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/22/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: d09d3de04f8c846eadc7367ca4d4559eb55f995b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628589"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Egy málna Pi csatlakozni az Azure IoT központi alkalmazás (C#)
 
@@ -32,7 +33,7 @@ A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz eg
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mező neve     | egység  | Minimális | Maximum | Tizedeshelyen |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | nedvességtartalma       | %      | 0       | 100     | 0              |
 | TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
@@ -51,7 +52,7 @@ A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz eg
 
 Numerikus beállításai
 
-| Megjelenített név | Mező neve | egység | Tizedeshelyen | Minimális | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |

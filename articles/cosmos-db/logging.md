@@ -2,23 +2,20 @@
 title: Az Azure Cosmos DB diagnosztikai naplózás |} Microsoft Docs
 description: Ez az oktatóanyag használatával alakítsa ki Ismerkedés az Azure Cosmos DB-naplózás.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612214"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -47,9 +44,9 @@ Az Azure tevékenységnapló egy előfizetési napló, amely történt az Azure-
 
 A műveletnapló eltér a diagnosztikai naplókat. A műveletnapló kívülről erőforráson műveleteire vonatkozó adatokat biztosít (az _vezérlő vezérlősík_). Azure Cosmos DB környezetben műveletek közé tartozik vezérlő vezérlősík gyűjtemény, listában kulcsok, törlési kulcsok, lista adatbázis, és létrehozása stb. Diagnosztikai naplók az erőforrás által kibocsátott, és adja meg az erőforrás működésével kapcsolatos adatokat (a _adatok vezérlősík_). Néhány példa a diagnosztikai naplófájl az adatok vezérlősík műveletek a következők: törlés, Insert és ReadFeed.
 
-Tevékenységi naplóit (vezérlő vezérlősík műveletek) gazdagabb jellegűek lehetnek, és a teljes e-mail címét, valamint a hívó, hívó IP-cím, erőforrás neve, a művelet neve, a TenantId, több is tartalmazhat. A műveletnapló több tartalmaz [kategóriák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) adatok. Az ezekben a kategóriákban sémákra teljes részletekért lásd: [Azure tevékenységnapló esemény séma](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Azonban diagnosztikai naplók nem korlátozó ideiglenesek, ezek a naplók a gyakran tisztító a személyazonosításra alkalmas adatokat. Előfordulhat, hogy a hívó IP-címét, de a rendszer eltávolítja az utolsó octant.
+Tevékenységi naplóit (vezérlő vezérlősík műveletek) gazdagabb jellegűek lehetnek, és a teljes e-mail címét, valamint a hívó, hívó IP-cím, erőforrás neve, a művelet neve, a TenantId, több is tartalmazhat. A műveletnapló több tartalmaz [kategóriák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) adatok. Az ezekben a kategóriákban sémákra teljes részletekért lásd: [Azure tevékenységnapló esemény séma](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Azonban diagnosztikai naplók nem ideiglenesek korlátozó szerint ezek a naplók a gyakran tisztító a személyes adatok. Előfordulhat, hogy a hívó IP-címét, de a rendszer eltávolítja az utolsó octant.
 
-### <a name="azure-metrics"></a>Az Azure metrikák
+### <a name="azure-metrics"></a>Azure-metrikák
 
 [Az Azure metrikák](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) Azure telemetriai adatok legfontosabb típusa (más néven _teljesítményszámlálók_) az Azure erőforrások által kibocsátott. Metrikák lehetővé teszik, hogy az átviteli sebesség, tárolási, konzisztencia, rendelkezésre állás és a késés az Azure Cosmos DB erőforrások vonatkozó információk megtekintése. További információkért lásd: [figyelés és az Azure Cosmos DB a metrikák hibakeresés](use-metrics.md).
 

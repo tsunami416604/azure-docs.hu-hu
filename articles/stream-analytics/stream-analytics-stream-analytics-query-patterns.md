@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f63ccd62136fe8d556a4cfb591e3294f3751dfb3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652246"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Példa a gyakori Stream Analytics használati minták lekérdezése
 
@@ -117,7 +118,7 @@ Például adja meg, hány autók azonos ellenőrizze karakterlánc leírását �
         Make,
         TumblingWindow(second, 10)
 
-**MAGYARÁZAT**: A **eset** záradék kiválaszthatjuk, hogy adjon meg egy másik számítási, bizonyos feltételeknek megfelelő (ebben az esetben a összesített ablakban autók száma).
+**MAGYARÁZAT**: A **eset** kifejezés összehasonlítja egy kifejezést, hogy egy egyszerű kifejezések az eredmény meghatározására. Ebben a példában a vehicle teszi vehicle így a számával, 1-től eltérő adott vissza egy másik karakterláncot leírás 1 számaival együtt. 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Példa: adatokat küldeni a több kimenet
 **Leírás**: adatokat küldeni a kimeneti több cél egyetlen feladat.
@@ -173,7 +174,7 @@ Például egy küszöbérték-alapú riasztás adatok elemzése, és archiválja
         [Count] >= 3
 
 **MAGYARÁZAT**: A **INTO** záradék közli a Stream Analytics mely a kimenetek ezen utasítás az adatokat írni.
-Az első lekérdezés az adatok egy kimeneti, hogy mi érkezett csatlakoztatott **ArchiveOutput**.
+Az első lekérdezés egy kimeneti nevű fogadott adatok csatlakoztatott **ArchiveOutput**.
 A második lekérdezés nem néhány egyszerű összesítési és szűrés, és azt egy alsóbb rétegbeli riasztási rendszer történő küldése.
 
 Vegye figyelembe, hogy a közös táblakifejezésekben (Táblakifejezés) eredményei is felhasználhatja (például **WITH** utasítások) több kimeneti utasításokban. Ez a beállítás a hozzáadott előnye, hogy a bemeneti forrás kevesebb olvasók megnyitása rendelkezik.
@@ -418,7 +419,7 @@ Például 2 egymást követő autók azonos ellenőrizze a megadott téren köz�
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Példa: egy feltétel időtartama észlelése
 **Leírás**: található out mennyi ideig egy állapot fordult elő.
-Tegyük fel például, hogy programhiba eredményezett (fent 20 000 font) egy helytelen súlyozással rendelkező összes autók. A hiba időtartama számítási szeretnénk.
+Tegyük fel például, hogy programhiba összes autók rendelkezik egy megfelelő súly (fent 20 000 font) eredményezett, és hibával időtartama ki kell számítani.
 
 **Bemeneti**:
 
@@ -506,8 +507,8 @@ Például generál egy eseményt 5 másodpercentként, az utoljára látott adat
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Példa: két eseménytípust belül az azonos adatfolyam összefüggéseket
-**Leírás**: néha igazolnia kell a riasztásokat a következő fordult elő egy adott időtartományt több eseménytípus alapján.
-Például otthoni sütők IoT esetben szeretnénk hoz létre riasztást, ha ventilátor hőmérséklet kisebb, mint a 40, és az utolsó 3 perc alatt teljesítményhez lett kisebb, mint 10.
+**Leírás**: néha riasztások kell generálása történt egy adott időtartományt a több eseménytípus alapján.
+Például az otthoni sütők IoT esetnél kell riasztást, amikor a ventilátor hőmérséklet kisebb, mint a 40, és az utolsó 3 perc alatt a legnagyobb teljesítmény kisebb, mint 10.
 
 **Bemeneti**:
 
@@ -577,6 +578,46 @@ WHERE
 ````
 
 **MAGYARÁZAT**: az első lekérdezés `max_power_during_last_3_mins`, használja a [csúszó ablak](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) az elmúlt 3 perc alatt a maximális érték az energiagazdálkodási érzékelő minden eszköz kereséséhez. A második lekérdezés az első lekérdezés az energiagazdálkodási értéket keresi a legújabb ablakban vonatkozó az aktuális esemény csatlakozik. És ezt követően megadott feltételek teljesülnek, riasztást küld az eszköz.
+
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Példa: feldolgozni az eseményeket, függetlenül az eszköz órája döntés (részadatfolyamok)
+**Leírás**: események is késve érkeznek, vagy sorrendje miatt óra dönt esemény gyártók között, nem az óra közötti partíciók, vagy a hálózati késés döntése. A következő példában az eszköz órája TollID 2 TollID 1 mögött 10 másodpercet, és TollID 3 az eszköz órája öt másodpercenként TollID 1 mögött. 
+
+
+**Bemeneti**:
+| LicensePlate | Ellenőrizze | Time | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+
+**Kimeneti**:
+| TollID | Darabszám |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Megoldás**:
+
+````
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+
+````
+
+**MAGYARÁZAT**: A [TIMESTAMP BY OVER](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) záradék ellenőrzi, hogy az egyes eszközök ütemtervet külön-külön részadatfolyamok. A kimeneti eseményekben a minden egyes TollID akkor jönnek létre, mivel azok arra az esetre vonatkoznak, ami azt jelenti, hogy az események sorrendje minden TollID helyett, mintha az összes eszköz az azonos óra alatt átrendezésekor tekintetében.
 
 
 ## <a name="get-help"></a>Segítségkérés

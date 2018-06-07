@@ -1,30 +1,27 @@
 ---
 title: A távoli felügyeleti megoldás - Azure kezelés |} Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan csatlakozik a távoli felügyeleti megoldás eszközök kezelésére.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3ad6de2a0ebcd257ca90ea3c5c69988d4c1afd7a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 0f177c3a8746f801e52cdac6cb2189e9cc28e1e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627279"
 ---
 # <a name="manage-and-configure-your-devices"></a>Kezelése és az eszközök konfigurálása
 
-Ez az oktatóanyag bemutatja az eszköz felügyeleti funkcióit biztosítja a távoli figyelési megoldást igényelnek. Ezek a képességek szemléltetésére az oktatóprogram egy olyan forgatókönyvet a Contoso IoT-alkalmazásban.
+Ez az oktatóanyag bemutatja az eszköz a távoli figyelésére szolgáló megoldás felügyeleti funkcióit. Ezek a képességek szemléltetésére az oktatóprogram egy olyan forgatókönyvet a Contoso IoT-alkalmazásban.
 
-Contoso bontsa ki a kimeneti növeléséhez létesítményekben egyik új gépek van rendezve. Várja meg az új gépek kézbesíti, amíg a megoldás működésének ellenőrzéséhez a szimuláció futtatni kívánt. Kezelőként kívánt kezelése és konfigurálása az eszközök távoli felügyeleti megoldásba.
+Contoso bontsa ki a kimeneti növeléséhez létesítményekben egyik új gépek van rendezve. Várja meg az új gépek kézbesíti, amíg a megoldás működésének ellenőrzéséhez a szimuláció futtatni kívánt. Kezelőként szeretné kezelni, és az eszközök konfigurálása a távoli figyelésére szolgáló megoldás.
 
-Eszközök konfigurálása és kezelése bővíthető megoldás biztosításához, a távoli felügyeleti megoldás az IoT-központ funkciókat használ, mint [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és [módszerek közvetlen](../iot-hub/iot-hub-devguide-direct-methods.md). Egy eszköz fejlesztői hogyan módszerek megvalósítja a fizikai eszköz kapcsolatban lásd: [testre szabhatja a távoli felügyeleti megoldásgyorsító](iot-accelerators-remote-monitoring-customize.md).
+Eszközök konfigurálása és kezelése bővíthető megoldás biztosításához, a távoli figyelésére szolgáló megoldás az IoT-központ funkciókat használ, mint [feladatok](../iot-hub/iot-hub-devguide-jobs.md) és [módszerek közvetlen](../iot-hub/iot-hub-devguide-direct-methods.md). Egy eszköz fejlesztői hogyan módszerek megvalósítja a fizikai eszköz kapcsolatban lásd: [testre szabhatja a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-customize.md).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -36,9 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag van szükség a távoli felügyeleti megoldás telepített példányát az Azure-előfizetésben.
+Ez az oktatóanyag van szükség a távoli figyelésére szolgáló megoldás telepített példányát az Azure-előfizetésben.
 
-Ha még nem telepítette a távoli figyelési megoldást igényelnek, még el kell végeznie a [telepíteni a távoli felügyeleti megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
+Ha a távoli figyelésére szolgáló megoldás még nem telepítette még, el kell végeznie a [telepíteni a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md) oktatóanyag.
 
 ## <a name="add-a-simulated-device"></a>A szimulált eszköz hozzáadása
 
@@ -50,7 +47,7 @@ Az eszközök számát hagyja beállítása rendelkezésre **1**. Válassza ki a
 
 ![A szimulált motor eszköz kiépítése](./media/iot-accelerators-remote-monitoring-manage/devicesprovisionengine.png)
 
-Megtudhatja, hogyan lehet kiépíteni egy *fizikai* eszköz, lásd: [csatlakoztassa az eszközt a távoli felügyeleti megoldásgyorsító](iot-accelerators-connecting-devices-node.md).
+Megtudhatja, hogyan lehet kiépíteni egy *fizikai* eszköz, lásd: [csatlakoztassa az eszközt a távoli megfigyelési megoldásgyorsító](iot-accelerators-connecting-devices-node.md).
 
 ## <a name="test-the-simulated-device"></a>A szimulált eszköz tesztelése
 
@@ -113,6 +110,6 @@ Most, hogy rendelkezik megismerte az eszközök kezeléséhez, a javasolt lépé
 
 * [Hibaelhárítás és szervizelheti azokat a eszközökkel kapcsolatos problémákat](iot-accelerators-remote-monitoring-maintain.md).
 * [A megoldás tesztelése szimulált eszközökkel](iot-accelerators-remote-monitoring-test.md).
-* [Csatlakoztassa az eszközt a távoli felügyeleti megoldásgyorsító](iot-accelerators-connecting-devices-node.md).
+* [Csatlakoztassa az eszközt a távoli megfigyelési megoldásgyorsító](iot-accelerators-connecting-devices-node.md).
 
 <!-- Next tutorials in the sequence -->

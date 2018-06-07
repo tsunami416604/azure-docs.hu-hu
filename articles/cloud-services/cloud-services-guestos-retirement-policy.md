@@ -1,11 +1,11 @@
 ---
-title: "Támogatási lehetőségek és a használatból való kivonást házirend útmutató az Azure vendég operációs rendszer |} Microsoft Docs"
-description: "Mi a Microsoft támogatást tekintetében az Azure vendég operációs rendszeren felhőalapú szolgáltatás által használt információkat tartalmaz."
+title: Támogatási lehetőségek és a használatból való kivonást házirend útmutató az Azure vendég operációs rendszer |} Microsoft Docs
+description: Mi a Microsoft támogatást tekintetében az Azure vendég operációs rendszeren felhőalapú szolgáltatás által használt információkat tartalmaz.
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 919dd781-4dc6-4e50-bda8-9632966c5458
 ms.service: cloud-services
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608562"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Az Azure vendég operációs rendszer támogatásának és a használatból való kivonást házirend
 Ezen a lapon található információkat az Azure vendég operációs rendszerre vonatkozik ([vendég operációs rendszer](cloud-services-guestos-update-matrix.md)) Felhőszolgáltatások munkavégző és a webes szerepkörök (PaaS). Virtuális gépek (IaaS) nem vonatkozik.
@@ -33,9 +34,7 @@ A házirend
 
 Esetenként, több mint két családok vagy kiadásokban lehet, hogy támogatja. Hivatalos vendég operációs rendszer támogatási információk jelennek meg a [Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md).
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>Ha a Vendég operációsrendszer-család vagy a verziójával kivonták a rendszerből
-Egy új vendég operációs rendszer **termékcsalád** megjelent a Windows Server operációs rendszer hivatalos új verzióinak megjelenése után egy kis ideig. Megjelent egy új Vendég operációsrendszer-család, amikor a Microsoft fogja vonni a legrégebbi Vendég operációsrendszer-család.
-
+## <a name="when-a-guest-os-version-is-retired"></a>Ha a vendég operációs rendszer verziója elavult
 Új vendég operációs rendszer **verziók** kapcsolatos átfogó MSRC legújabb frissítéseit minden hónapban bevezetett. A rendszeres havi frissítéseket, mert a vendég operációs rendszer verziója általában le van tiltva a kiadása után körülbelül 60 nap. Ez a tevékenység tartja az egyes használható legalább két Vendég operációsrendszer-verziók.
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>A folyamat során a vendég operációs rendszer termékcsalád kivonása
@@ -77,5 +76,5 @@ Azt javasoljuk, hogy használja-e legújabb Vendég operációsrendszer-család 
 
 Ha a webes alkalmazás felépítésére attól függ, hogy az operációs rendszer alapjául szolgáló funkciók, használjon támogatott platform képességei például [indítási feladatok](cloud-services-startup-tasks.md) vagy más bővítési mechanizmusokat. Másik megoldásként használhatja [Azure virtuális gépek](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – infrastruktúra-szolgáltatás), ha az alapul szolgáló operációs rendszer felelős áll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a legutóbbi [feloldja a vendég operációs rendszer](cloud-services-guestos-update-matrix.md).

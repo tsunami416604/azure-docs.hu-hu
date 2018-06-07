@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c0e1ff3cf018e185ae2dfb329e2aa56766cc247c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649781"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL-adatbázis teljesítményének javítása érdekében a kötegelés használata
 Az Azure SQL Database-műveletek kötegelése jelentősen javítja a teljesítményét és méretezhetőségét, az alkalmazások. Előnyeinek megismerése, hogy ez a cikk első része ismertet néhány minta vizsgálati eredmények, hasonlítsa össze az SQL-adatbázis szekvenciális és kötegelt kérelmek. A cikk fennmaradó a technikák, a forgatókönyvek és a szempontokat tartalmaz, amelyek segítséget nyújtanak az Azure-alkalmazásokban sikeresen kötegelés használandó jeleníti meg.

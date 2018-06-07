@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/30/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: 00b990181e5bb96f122ff1ae530dd027a772b210
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d1ab75146c9899bf2699309cd5dd4ed523096ef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638806"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása az Azure-erőforrások naplóadatait
 
@@ -54,7 +55,7 @@ Erőforrás diagnosztikai naplókat a további nem-számítási erőforrások er
 * Mennyi ideig napló kategóriákhoz rendszer meddig őrizze meg a storage-fiók
     - Egy nulla napos megőrzési azt jelenti, hogy a naplók végtelen tartanak. Ellenkező esetben a értéke lehet bármely 1 és 2147483647 között eltelt napok számát.
     - Ha a megőrzési házirend-beállításokat, de naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs vagy Naplóelemzési beállítások vannak jelölve), az adatmegőrzési hatástalan.
-    - Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg.
+    - Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat.
 
 Ezek a beállítások könnyen vannak konfigurálva, az Azure portálon erőforrás diagnosztikai beállításait, Azure PowerShell és a parancssori felület parancsait, vagy keresztül a [Azure figyelő REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 

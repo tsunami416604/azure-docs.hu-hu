@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4944c1c017dbb59b7880a73bce7d0a9b0d972b3f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e8a07f1a1d172a96646a5c71a6267239e159c267
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646568"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 Azure SQL Database-adatbázisok könnyen lehet horizontálisan a **Elastic Database** eszközök. Az eszközök és a szolgáltatások lehetővé teszik, hogy az adatbázis-erőforrások használata **Azure SQL Database** megoldások tranzakciós munkaterhelések, és különösen a szoftver egy szolgáltatott szoftverként (SaaS) alkalmazásokként létrehozásához. A rugalmas adatbázis-szolgáltatások álló a:

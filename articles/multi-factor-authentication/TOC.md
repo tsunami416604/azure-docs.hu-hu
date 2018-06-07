@@ -54,6 +54,7 @@
 ### [Beépítés egyéni alkalmazásokba (SDK)](../active-directory/authentication/howto-mfa-sdk.md)
 
 ## [Jelentéskészítés](../active-directory/authentication/howto-mfa-reporting.md)
+### [Adatgyűjtés](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
 ## [MFA – felhasználói útmutató](./end-user/multi-factor-authentication-end-user.md)
 

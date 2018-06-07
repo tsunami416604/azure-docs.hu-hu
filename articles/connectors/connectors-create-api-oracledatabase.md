@@ -1,25 +1,22 @@
 ---
-title: "Adja hozzá az Oracle-adatbázishoz összekötő az Azure Logic Apps |} Microsoft Docs"
-description: "A logikai alkalmazás az Oracle-adatbázishoz összekötő használatára"
-services: 
-documentationcenter: 
+title: Kapcsolódás Oracle-adatbázishoz - Azure Logic Apps |} Microsoft Docs
+description: Helyezze be és Oracle adatbázis REST API-k és az Azure Logic Apps rekordok kezelése
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: cfowler
+ms.author: estfan
 ms.date: 03/29/2017
-ms.author: estfan; ladocs
-ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: be099cb8c2a36fa8bc09a5a30fca1785dd3933db
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609556"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Az Oracle-adatbázishoz összekötő az első lépései
 

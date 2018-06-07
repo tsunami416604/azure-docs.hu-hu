@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub üzenetformátum megértése |} Microsoft Docs
 description: Fejlesztői útmutató - descibes a formátum és az IoT-központ üzenetek várt tartalom.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633927"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Hozzon létre, és az IoT-központ üzenet olvasása
 
@@ -49,7 +44,7 @@ A következő táblázat az IoT Hub-kezelő üzeneteinek tulajdonságainak list�
 | ExpiryTimeUtc |Dátum és az üzenet lejárati idejét. |
 | EnqueuedTime |Dátum és idő a [felhő eszközre] [ lnk-c2d] üzenet érkezett az IoT-központot. |
 | CorrelationId |A kérelem a kérelem-válasz minták MessageId általában tartalmazó válaszüzenetet a karakterlánc típusú tulajdonság. |
-| UserId |Adja meg az üzenetek eredeti használt azonosító. Az IoT-központ által előállított üzeneteket, ha van-e beállítva `{iot hub name}`. |
+| Felhasználói azonosító |Adja meg az üzenetek eredeti használt azonosító. Az IoT-központ által előállított üzeneteket, ha van-e beállítva `{iot hub name}`. |
 | Nyugtázási |A visszajelzési üzenet generátor. Ezt a tulajdonságot használják a felhő-eszközre küldött üzenetek igényelni az IoT-központ létrehozhat visszajelzés üzeneteket a felhasználás az üzenet miatt az eszköz. A lehetséges értékek: **nincs** (alapértelmezett): Nincs visszajelzés üzenet jön létre, **pozitív**: visszajelzés üzenetet kap, ha az üzenet befejeződött, **negatív**: visszajelzés üzenetet kap, ha nélkül végzi az eszközt, az üzenet lejárt (vagy elérte a maximális száma) vagy **teljes**: pozitív és negatív. További információkért lásd: [visszajelzés üzenet][lnk-feedback]. |
 | ConnectionDeviceId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **deviceId** az eszközt, az üzenetet küldő. |
 | ConnectionDeviceGenerationId |Az eszköz a felhőbe küldött üzeneteket az IoT-központ által beállított azonosító. Tartalmazza a **generationId** (megfelelően [identitás eszköztulajdonságok][lnk-device-properties]) az eszköz az üzenetet küldő. |

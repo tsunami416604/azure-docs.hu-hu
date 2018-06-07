@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: d9ba650549d313a4ecc9ceae5eb05e1cde727892
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 672bdd3ddb5b32b82d83322eadce2a594b13ce5b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643532"
 ---
 # <a name="service-remoting-with-reliable-services"></a>A távelérés szolgáltatás megbízható szolgáltatásokkal
 Azon szolgáltatások vannak társítva, egy adott kommunikációs protokollt vagy a veremben, mint például a WebAPI, a Windows Communication Foundation (WCF) vagy más, nem a Reliable Services keretrendszer lehetővé teszi a távoli eljáráshívás szolgáltatásokhoz a távoli eljáráshívás beállítása gyorsan és egyszerűen.
@@ -52,7 +53,7 @@ class MyService : StatelessService, IMyService
     {
     }
 
-    public Task HelloWorldAsync()
+    public Task<string> HelloWorldAsync()
     {
         return Task.FromResult("Hello!");
     }
@@ -391,3 +392,4 @@ Példa a távoli eljáráshívás V2 Json-szerializálás használja.
 * [Webes API-t a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md)
 * [WCF-kommunikáció a Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [A Reliable Services kommunikáció biztonságához](service-fabric-reliable-services-secure-communication.md)
+

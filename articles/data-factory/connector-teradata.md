@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 287fc502a0a538660da86e028a81fba04bcac903
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4360ff12a435afc4347fa97bba4506ccd81618aa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618980"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával teradata rendszerhez
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -171,33 +172,33 @@ Az adatok másolása Teradata, amikor az Azure Data Factory ideiglenes adattípu
 | Bájt |Byte] |
 | ByteInt |Int16 |
 | Karakter |Karakterlánc |
-| Clob |Karakterlánc |
+| CLOB |Karakterlánc |
 | Dátum |DateTime |
 | Decimális |Decimális |
 | Dupla |Dupla |
 | Kép |Karakterlánc |
 | Egész szám |Int32 |
-| Időköz nap |TimeSpan |
-| Időköz nap, óra |TimeSpan |
-| Naponta időköz percben |TimeSpan |
-| Második intervallum naponta |TimeSpan |
-| Időköz óra |TimeSpan |
-| Időköz óra, perc alatt |TimeSpan |
-| Második intervallum óra |TimeSpan |
-| Időköz percben |TimeSpan |
-| Másik időköz percben |TimeSpan |
+| Időköz nap |A TimeSpan |
+| Időköz nap, óra |A TimeSpan |
+| Naponta időköz percben |A TimeSpan |
+| Második intervallum naponta |A TimeSpan |
+| Időköz óra |A TimeSpan |
+| Időköz óra, perc alatt |A TimeSpan |
+| Második intervallum óra |A TimeSpan |
+| Időköz percben |A TimeSpan |
+| Másik időköz percben |A TimeSpan |
 | Időköz hónap |Karakterlánc |
-| Időköz második |TimeSpan |
+| Időköz második |A TimeSpan |
 | Időköz év |Karakterlánc |
 | Időköz hónap év |Karakterlánc |
 | Szám |Dupla |
-| Period(Date) |Karakterlánc |
+| Period(date) |Karakterlánc |
 | Period(Time) |Karakterlánc |
 | Időtartam (idő időzóna) |Karakterlánc |
 | Period(Timestamp) |Karakterlánc |
 | Időtartam (időbélyegzője az időzóna) |Karakterlánc |
 | SmallInt |Int16 |
-| Time |TimeSpan |
+| Time |A TimeSpan |
 | Időzóna idő |Karakterlánc |
 | Időbélyeg |DateTime |
 | Az időzóna időbélyeg |DateTimeOffset |

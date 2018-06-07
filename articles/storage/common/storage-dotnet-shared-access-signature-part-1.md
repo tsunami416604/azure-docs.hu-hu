@@ -2,23 +2,18 @@
 title: Megosztott hozzáférésű jogosultságkódokat (SAS) az Azure Storage használata |} Microsoft Docs
 description: Ismerkedjen meg az Azure Storage-erőforrások, például a BLOB, üzenetsorok, táblák és fájlok hozzáférést biztosíthat a közös hozzáférésű jogosultságkód (SAS) segítségével.
 services: storage
-documentationcenter: ''
 author: craigshoemaker
 manager: jeconnoc
-editor: tysonn
-ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4f20e79ea6cb2d9d403f4451f595516d5c2e9373
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650740"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkód (SAS) használatával
 
@@ -62,7 +57,7 @@ Ezen felül kell hitelesítenie a forrásobjektumot, a másolási műveletek biz
 ## <a name="types-of-shared-access-signatures"></a>Közös hozzáférésű jogosultságkód típusai
 Közös hozzáférésű jogosultságkód két típusa hozható létre:
 
-* **Service SAS.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, egy szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [szolgáltatás SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) részletes információ a SAS-jogkivonat létrehozásával.
+* **SAS-szolgáltatás.** A szolgáltatásalapú SAS csak egy társzolgáltatás (a Blob, a Queue, a Table vagy a File szolgáltatás) egy erőforrásához biztosít hozzáférést. Lásd: [hozhat létre, egy szolgáltatás SAS](https://msdn.microsoft.com/library/dn140255.aspx) és [szolgáltatás SAS példák](https://msdn.microsoft.com/library/dn140256.aspx) részletes információ a SAS-jogkivonat létrehozásával.
 * **SAS-fiók.** A fiók SAS delegáltak erőforrások elérését egy vagy több, a tárolási szolgáltatások. A biztonsági Társítások szolgáltatáson keresztül elérhető műveleteket is elérhetők SAS fiók használatával. Emellett SAS fiókkal is adhat hozzáférést egy adott szolgáltatáshoz, például a vonatkozó műveletek **Get vagy Set szolgáltatástulajdonságok** és **első szolgáltatás-statisztikák**. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. Lásd: [hozhat létre egy fiókot SAS](https://msdn.microsoft.com/library/mt584140.aspx) hozhat létre, a fiók SAS-jogkivonat részletesebb információt.
 
 ## <a name="how-a-shared-access-signature-works"></a>A közös hozzáférésű jogosultságkód működése
@@ -115,7 +110,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 
 | Name (Név) | SAS részére | Leírás |
 | --- | --- | --- |
-| Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob címe. Vegye figyelembe, hogy a HTTPS-kapcsolaton keresztül erősen ajánlott. |
+| A BLOB URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |A blob címe. Vegye figyelembe, hogy a HTTPS-kapcsolaton keresztül erősen ajánlott. |
 | Storage services, verziószám: |`sv=2015-04-05` |A tárolási szolgáltatások 2012-02-12-es és újabb, ez a paraméter azt jelzi, melyik verziót kell használni. |
 | Kezdés időpontja |`st=2015-04-29T22%3A18%3A26Z` |UTC idő szerint megadva. Ha azt szeretné, hogy a biztonsági Társítások azonnal érvényes legyen, hagyja ki a kezdési időpontot. |
 | Lejárat időpontja |`se=2015-04-30T02%3A23%3A26Z` |UTC idő szerint megadva. |

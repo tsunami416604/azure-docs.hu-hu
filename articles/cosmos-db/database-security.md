@@ -5,20 +5,17 @@ keywords: nosql-adatbázis biztonsági, információ-biztonság, adatok biztons�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: a02a6a82-3baf-405c-9355-7a00aaa1a816
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: aa04ae8d5bdccb52e3f63fb2dfb3c75df83b7a54
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611619"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB adatbázis biztonsági
 
@@ -73,10 +70,10 @@ Most dig részletesen mindegyiknél be.
 |A helyi replikációt|Még belül egyetlen adatközpontba, Azure Cosmos DB automatikusan replikálja az adatokat a magas rendelkezésre állású, felkínálva a választott [konzisztenciaszintek](consistency-levels.md). Ez biztosítja, hogy egy 99,99 % [SLA-elérhetőséget](https://azure.microsoft.com/support/legal/sla/cosmos-db) összes egyetlen régión és az összes több területi fiókok enyhíteni konzisztencia, és 99.999 %, olvassa el az összes fiókot a több területi adatbázis rendelkezésre állását.|
 |Online biztonsági mentések automatikus|Az Azure Cosmos DB adatbázisok rendszeresen végeznek biztonsági mentést és egy georedundant tárolja. <br><br>További információ: [automatikus online biztonsági mentés és helyreállítás Azure Cosmos DB](online-backup-and-restore.md).|
 |Törölt adatok helyreállításához|Az automatikus online biztonsági mentések helyreállítani az adatokat, lehetséges, hogy véletlenül törölt az esemény után legfeljebb kb. 30 napig használható. <br><br>További információ: [automatikus online biztonsági mentés és helyreállítás Azure Cosmos DB](online-backup-and-restore.md)|
-|Védeni, és a bizalmas adatok elkülönítése|A felsorolt régiókban lévő összes adatot [Újdonságok?](#whats-new) most titkosítása.<br><br>PII-k és más bizalmas adatokat el lehet különíteni az adott gyűjteményekre és írható-olvasható, vagy csak olvasási hozzáféréssel az egyes felhasználók korlátozható.|
+|Védeni, és a bizalmas adatok elkülönítése|A felsorolt régiókban lévő összes adatot [Újdonságok?](#whats-new) most titkosítása.<br><br>Személyes adatok és más bizalmas adatokat el lehet különíteni az adott gyűjteményekre és írható-olvasható, vagy csak olvasási hozzáféréssel az egyes felhasználók korlátozható.|
 |A figyelő támadások|A [naplózás és a tevékenység a naplók](logging.md), figyelheti a normál és rendellenes tevékenységet-fiókjához. Tekintse meg az erőforrások, a művelet, ha a művelet történt, a művelet, és sokkal több, mint a táblázat utáni képernyőfelvételen látható állapotának elindító a végrehajtott műveleteket.|
 |Válaszoljon a támadások által.|A potenciális támadási jelentést az Azure támogatási csatlakoztak, ha a program egy 5. lépés az incidensekre adott reakciók folyamat kezdődött el. Az 5. lépés folyamat célja normál szolgáltatás biztonsága és műveletei minél gyorsabban visszaállítása után a rendszer problémát észlelt, és a vizsgálat elindult.<br><br>További információ: [Microsoft Azure biztonsági válasz a felhőben](https://aka.ms/securityresponsepaper).|
-|Geokerítések|Azure Cosmos DB biztosítja az adatok irányítási és a megfelelőségi szuverén régiókhoz (például Németország, Kína Velünk – (kormányzati)).|
+|Geokerítések|Azure Cosmos DB biztosítja az adatszabályozás szuverén régiókhoz (például Németország, Kína Velünk – (kormányzati)).|
 |Védett létesítményekben|Az Azure Cosmos Adatbázisba tárolja az Azure által védett adatközpontokban SSD-k.<br><br>További információ: [Microsoft globális adatközpont](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |HTTPS/SSL/TLS encryption|Minden ügyfél – szolgáltatás Azure Cosmos DB kapcsolati SSL/TLS 1.2-es képes. Minden helyen belüli datacenter és határokon datacenter replikációs is SSL/TLS 1.2 kényszerített.|
 |Titkosítás inaktív állapotban|Az Azure Cosmos DB tárolt összes adat titkosítása. További információ: [Azure Cosmos DB titkosítását](.\database-encryption-at-rest.md)|

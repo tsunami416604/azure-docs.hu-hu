@@ -1,23 +1,19 @@
 ---
-title: "Azure Storage szolgáltatások REST API-műveleteket, köztük a hitelesítési hívás |} Microsoft Docs"
-description: "Azure Storage szolgáltatások REST API-műveleteket, köztük a hitelesítési hívás"
+title: Azure Storage szolgáltatások REST API-műveleteket, köztük a hitelesítési hívás |} Microsoft Docs
+description: Azure Storage szolgáltatások REST API-műveleteket, köztük a hitelesítési hívás
 services: storage
-documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
+author: tamram
+manager: twooley
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 11/27/2017
-ms.author: robinsh
-ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.date: 05/22/2018
+ms.author: tamram
+ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650451"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Az Azure Storage REST API használata
 
@@ -48,19 +44,17 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 Ez a parancs a helyi git mappába klónozza az adattárat. Nyissa meg a Visual Studio-megoldást, keresse meg a storage-dotnet-rest-api-with-auth mappát, nyissa meg azt, és kattintson duplán arra a StorageRestApiAuth.sln. 
 
-## <a name="why-do-i-need-to-know-rest"></a>Miért kell tudnia a többi?
-
-Hasznos szakértelem ismerete, hogyan használhatja a többi. Az Azure termékért felelős csoport a új szolgáltatások gyakran kiadását. Számos esetben a új szolgáltatások érhetők el a REST-felületen keresztül, de rendelkezik nem még nincs illesztett keresztül **összes** a storage ügyfélkódtáraival vagy a felhasználói felület (például az Azure portálon). Ha mindig szeretne használni a legújabb és legjobb, REST tanulási feltétele. Ha szeretne írni az Azure Storage kommunikál a saját könyvtár, vagy az Azure Storage programozási nyelv, amely nem rendelkezik az SDK vagy a storage ügyféloldali kódtár elérni kívánt, használhatja a REST API-t.
-
 ## <a name="what-is-rest"></a>Mi az a többi?
 
 REST azt jelenti, hogy *representational állapot átviteli*. Egy adott definíciót, tekintse meg [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
 
 Alapvetően, a többi pedig használhatja, amikor az architektúrák hívja az API-k vagy a API-k elérhető meghívni. Független mindkét oldalon mi történik, és milyen egyéb szoftvert használja küldésekor vagy fogadásakor, a többi hívja. Az alkalmazás, amely a Mac, Windows, Linux, egy Android-telefonon vagy tábla, iPhone, iPod vagy webhely fut, és az azonos REST API-t használja az összes adott platformokhoz. Adatok átadhatók a kimenő és/vagy a REST API-t kell meghívni. A REST API-t nem fontos a fontos nevezik – platformtól a-adatok lettek átadva a kérelem és a válaszban szereplő megadott adatok nem.
 
-## <a name="heres-the-plan"></a>Ez a terv
+Hasznos szakértelem ismerete, hogyan használhatja a többi. Az Azure termékért felelős csoport a új szolgáltatások gyakran kiadását. Számos esetben a új szolgáltatások érhetők el a REST-felületen keresztül, de rendelkezik nem még nincs illesztett keresztül **összes** a storage ügyfélkódtáraival vagy a felhasználói felület (például az Azure portálon). Ha mindig szeretne használni a legújabb és legjobb, REST tanulási feltétele. Ha szeretne írni az Azure Storage kommunikál a saját könyvtár, vagy az Azure Storage programozási nyelv, amely nem rendelkezik az SDK vagy a storage ügyféloldali kódtár elérni kívánt, használhatja a REST API-t.
 
-A példa projekt tartalmazza a tárolók a tárfiókokban. Hogyan felel meg a REST API dokumentációjában található információk a tényleges kód elsajátítása után más REST-hívások könnyebben kideríthesse, mi is. 
+## <a name="about-the-sample-application"></a>A mintaalkalmazás kapcsolatos
+
+A mintaalkalmazás a tárolók a tárfiókokban sorolja fel. Hogyan felel meg a REST API dokumentációjában található információk a tényleges kód elsajátítása után más REST-hívások könnyebben kideríthesse, mi is. 
 
 Ha megnézi a [Blob szolgáltatás REST API](/rest/api/storageservices/fileservices/Blob-Service-REST-API), tekintse meg a blob-tároló hajthat végre műveleteket. A storage ügyfélkódtáraival a REST API-k körül burkolók – Ezek megkönnyítik az Ön tároló elérése érdekében anélkül, hogy közvetlenül a REST API-k használatával. De a fentieknek megfelelően néha szeretné használni a REST API-t a storage ügyféloldali kódtár helyett.
 
@@ -70,7 +64,7 @@ Vizsgáljuk meg a lap a REST API-referencia a [ListContainers](/rest/api/storage
 
 **Kérési módszer**: beolvasása. Ehhez a művelethez a HTTP-metódus adja meg, ha a kérelem objektum tulajdonságként. Ehhez a művelethez más érték HEAD, PUT és DELETE, attól függően, hogy az API-hívás.
 
-**A kérelmi URI**: Ez a blob storage-fiók végpontját készült https://myaccount.blob.core.windows.net/?comp=list `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
+**A kérelmi URI**: https://myaccount.blob.core.windows.net/?comp=list Ez a blob storage-fiók végpontját készült `http://myaccount.blob.core.windows.net` és az erőforrás-karakterlánc `/?comp=list`.
 
 [URI-paraméterek](/rest/api/storageservices/fileservices/List-Containers2#uri-parameters): nincsenek ListContainers hívásakor használható további lekérdezési paramétereket. E paraméterek közül néhány vannak *időtúllépés* a híváshoz (másodpercben) és *előtag*, amellyel szűréséhez.
 
@@ -141,7 +135,7 @@ Vegye fel a kérelem fejlécében x-ms-date és az x-ms-version. Ez a hely, a k�
     // Add the request headers for x-ms-date and x-ms-version.
     DateTime now = DateTime.UtcNow;
     httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-04-17");
+    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
     // If you need any additional headers, add them here before creating
     //   the authorization header. 
 ```
@@ -205,7 +199,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 3e889876-001e-0039-6a3a-5f4396000000
-x-ms-version: 04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
@@ -271,6 +265,9 @@ Most, hogy megismerte a kérelem létrehozása, meghívja a szolgáltatást, és
 
 ## <a name="creating-the-authorization-header"></a>Az engedélyezési fejléc létrehozása
 
+> [!TIP]
+> Az Azure Storage mostantól támogatja a Blob és a Queue szolgáltatások (előzetes verzió) Azure Active Directory (Azure AD) integrálása. Az Azure AD, amelyek engedélyezik az Azure Storage kérelmet egy sokkal egyszerűbb módszert kínál. REST műveleteinek engedélyezése az Azure AD használatával kapcsolatos további információkért lásd: [hitelesítés az Azure Active Directoryban (előzetes verzió)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Az Azure AD integrálása az Azure Storage áttekintését lásd: [hitelesíti a hozzáférést az Azure Active Directoryval (előzetes verzió) Azure Storage](storage-auth-aad.md).
+
 Nincs a cikk azt ismerteti, fogalmilag (nincs kód) hogyan hajthat végre [az Azure Storage szolgáltatásainak hitelesítése](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services).
 Most átalakítást pontosan le a cikkben van szükség, és a kód megjelenítése.
 
@@ -312,7 +309,7 @@ Kezdjük két szabványosított mezőket, mert azokat az engedélyezési fejléc
 Ezt az értéket, a fejlécek, "x - ms-" kezdődő, és rendezést beolvasni, majd formázni őket a karakterlánc `[key:value\n]` példányok összefűzendő egyetlen karakterlánccá egyesít. Az ebben a példában a szabványosított fejlécek néznek ki: 
 
 ```
-x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 A kimenet létrehozásához használt kód itt látható:
@@ -417,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 Ez a kód futtatásakor az eredményül kapott MessageSignature néz ki:
 
 ```
-GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-04-17\n/contosorest/\ncomp:list
+GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
 Itt értéke a végső AuthorizationHeader:
@@ -463,7 +460,7 @@ Ez a minta futtatásakor eredményt el a következőhöz hasonló:
 **Szabványosított fejlécek:**
 
 ```
-x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 **Szabványosított erőforrás:**
@@ -476,7 +473,7 @@ x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
-  \nx-ms-version:2017-04-17\n/contosorest/container-1\ncomp:list\nrestype:container
+  \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
 **AuthorizationHeader:**
@@ -497,7 +494,7 @@ GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=
 
 ```
 x-ms-date: Fri, 17 Nov 2017 05:16:48 GMT
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Authorization: SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
@@ -510,7 +507,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 7e9316da-001e-0037-4063-5faf9d000000
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
@@ -568,6 +565,6 @@ Ebben a cikkben megtudta, hogyan indítson egy lekérdezést a blob storage tár
 
 ## <a name="next-steps"></a>További lépések
 
-* [BLOB szolgáltatás REST API-n](/rest/api/storageservices/blob-service-rest-api)
+* [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)
 * [File szolgáltatás REST API-n](/rest/api/storageservices/file-service-rest-api)
 * [Várólista szolgáltatás REST API](/rest/api/storageservices/queue-service-rest-api)

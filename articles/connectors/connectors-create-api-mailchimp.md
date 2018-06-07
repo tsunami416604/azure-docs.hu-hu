@@ -1,25 +1,22 @@
 ---
-title: "Az Azure Logic Apps MailChimp összekötő |} Microsoft Docs"
-description: "Az Azure App service Logic Apps alkalmazások létrehozása A MailChimp egy SaaS-szolgáltatás, amely lehetővé teszi a cégek számára az e-mailben folytatott marketingtevékenységek (például marketing célú e-mailek küldése, automatizált üzenetek és célzott kampányok) kezelését és automatizálását."
-services: logic-apps
-documentationcenter: .net,nodejs,java
+title: Csatlakozás MailChimp - Azure Logic Apps |} Microsoft Docs
+description: Hozzon létre és marketing e-mailek MailChimp REST API-k és az Azure Logic Apps alkalmazásokat kezeléséhez
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 36559de2-94f0-4355-b492-2926dfc56486
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 041212771db5b5971ccd220e68d71d59d8220531
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: a11dbee8a0aab70abad60b8b783b2caa4f03c9c9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609328"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>A MailChimp-összekötő az első lépései
 MailChimp, amely lehetővé teszi a vállalatok számára, kezelésére és automatizálására e-mail marketing tevékenységek, például küldés marketing e-mailek, az automatizált üzenetek és a célzott kampányok Szolgáltatottszoftver-szolgáltatásban.

@@ -3,25 +3,22 @@ title: Azure Cosmos DB kezelése az Azure Storage Explorerben
 description: Megismerheti, hogyan kezelhető az Azure Cosmos DB az Azure Storage Explorerben.
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
-documentationcenter: ''
 author: Jejiang
 manager: omafnan
 editor: ''
 tags: Azure Cosmos DB
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB active
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 3b870ed638656ee3b1b0e46fe9bac44e4436f154
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612843"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB kezelése az Azure Storage Explorerben
 
@@ -60,15 +57,15 @@ Az Azure Storage Explorer legújabb elemei innen telepíthetők: [Azure Storage 
 
     Sikeresen csatlakoztatta a **Cosmos DB-fiókot** az Azure-előfizetéshez.
 
-## <a name="connect-to-azure-cosmos-db-by-using-a-connection-string"></a>Csatlakozás az Azure Cosmos DB-hez kapcsolati karakterlánc használatával
+## <a name="connect-to-azure-cosmos-db-by-using-a-connection-string"></a>Csatlakozás az Azure Cosmos DB-hez kapcsolati sztring használatával
 
-Az Azure Cosmos DB-hez történő csatlakozás másik módja a kapcsolati karakterlánc használata. Az alábbi lépéseket követve csatlakozhat kapcsolati karakterlánccal.
+Az Azure Cosmos DB-hez történő csatlakozás másik módja a kapcsolati sztring használata. Az alábbi lépéseket követve csatlakozhat kapcsolati sztringgel.
 
 1. Keresse meg a **Helyi és csatolt** elemet a bal oldali fában, kattintson a jobb gombbal a **Cosmos DB-fiókok** elemre, majd válassza a **Csatlakozás a Cosmos DB-hez…** lehetőséget.
 
-    ![Csatlakozás a Cosmos DB-hez kapcsolati karakterlánccal](./media/storage-explorer/connect-to-db-by-connection-string.png)
+    ![Csatlakozás a Cosmos DB-hez kapcsolati sztringgel](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. Egyelőre csak az SQL és a Table API-t támogatja. Válassza ki az API-t, illessze be a **kapcsolati karakterláncot**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. A kapcsolati karakterlánc lekérésével kapcsolatos információk: [A kapcsolati karakterlánc lekérése](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Egyelőre csak az SQL és a Table API-t támogatja. Válassza ki az API-t, illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. A kapcsolati sztring lekérésével kapcsolatos információk: [A kapcsolati sztring lekérése](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![Kapcsolati karakterlánc](./media/storage-explorer/connection-string.png)
 
@@ -82,7 +79,7 @@ A következő lépésekkel csatlakozhat az Azure Cosmos DB-hez az Emulator haszn
 
     ![Csatlakozás a Cosmos DB-hez az Emulatorral](./media/storage-explorer/emulator-entry.png)
 
-3. Egyelőre csak az SQL API-t támogatja. Illessze be a **kapcsolati karakterláncot**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. A kapcsolati karakterlánc lekérésével kapcsolatos információk: [A kapcsolati karakterlánc lekérése](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+3. Egyelőre csak az SQL API-t támogatja. Illessze be a **kapcsolati sztringet**, adja meg a **fiókcímkét**, az összesítés megtekintéséhez kattintson a **Tovább** gombra, majd az Azure Cosmos DB-fiók csatlakoztatásához kattintson a **Csatlakozás** parancsra. A kapcsolati sztring lekérésével kapcsolatos információk: [A kapcsolati sztring lekérése](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
 
     ![Csatlakozás a Cosmos DB-hez az Emulatorral párbeszédpanel](./media/storage-explorer/emulator-dialog.png)
 
@@ -222,7 +219,7 @@ Mielőtt továbblépne, indítsa újra az alkalmazást, és ellenőrizze, hogy m
 
 Ennek a hibának többféle oka is lehet, a leggyakoribbak a következők:
 
-+ Ön egy „transzparens proxy” mögött van, ami azt jelenti, hogy valaki (például az informatikai részleg) elfogja a HTTPS-forgalmat, visszafejti azt, majd újra titkosítja egy önaláírt tanúsítvány használatával.
++ Ön mögött egy *transzparens proxy*, ami azt jelenti, hogy valaki (például az informatikai részleg) elfogja a HTTPS-forgalmat, visszafejtési azt, és majd titkosítás önaláírt tanúsítványt használ.
 
 + Ön olyan szoftvereket futtat, például egy víruskereső szoftvert, amely a fogadott HTTPS-üzenetekbe önaláírt SSL-tanúsítványokat szúr be.
 
@@ -292,7 +289,7 @@ A rendszer nem reagál arra, ha a bal oldali fában a „Helyi és csatolt” cs
 
 ### <a name="attaching-azure-cosmos-db-account-in-local-and-attached-node-error"></a>Nem sikerül csatolni az Azure Cosmos DB-fiókot a „Helyi és csatolt” csomópont alatt
 
-Ha az alábbi hibát látja, amikor csatolni próbál egy Azure Cosmos DB-fiókot a „Helyi és csatolt” csomópont alatt, akkor ellenőrizze, hogy a használt kapcsolati karakterlánc megfelelő-e.
+Ha az alábbi hibát látja, amikor csatolni próbál egy Azure Cosmos DB-fiókot a „Helyi és csatolt” csomópont alatt, akkor ellenőrizze, hogy a használt kapcsolati sztring megfelelő-e.
 
 ![Azure Cosmos DB csatolása a „Helyi és csatolt” csomópont alatt sikertelen](./media/storage-explorer/attached-error.png)
 

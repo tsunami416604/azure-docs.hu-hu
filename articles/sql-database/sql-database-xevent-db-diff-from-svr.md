@@ -7,14 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.workload: On Demand
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4a1a8a332628e79972e7c03dbc2ac839f244a002
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 446c1f3af3f00fb70a230dfec5f5c533b45a285f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650043"
 ---
 # <a name="extended-events-in-sql-database"></a>Az SQL-adatbázis kiterjesztett események
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -43,7 +44,7 @@ Ez a témakör feltételezi, hogy már rendelkezik bizonyos:
 
 A következő elemek előzetes kitéve akkor hasznos, ha az esemény fájl kiválasztása a [cél](#AzureXEventsTargets):
 
-- [Azure Storage service](https://azure.microsoft.com/services/storage/)
+- [Az Azure Storage szolgáltatás](https://azure.microsoft.com/services/storage/)
 
 
 - PowerShell
@@ -193,7 +194,7 @@ A **Eseményfájlt** cél tapasztalhat, hálózati késés vagy hibák során az
 - [Azure PowerShell használata az Azure Storage](../storage/common/storage-powershell-guide-full.md) -PowerShell és az Azure Storage szolgáltatás átfogó információkat nyújt.
 - [A .NET-Blob-tároló használata](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [ESEMÉNY-munkamenet (Transact-SQL) létrehozása](http://msdn.microsoft.com/library/bb677289.aspx)
 - [A Microsoft SQL Server kiterjesztett eseményekről visszaküldés Jonathan Kehayias blog](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 

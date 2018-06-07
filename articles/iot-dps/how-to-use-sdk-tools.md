@@ -1,22 +1,19 @@
 ---
 title: Az Azure IoT Hub eszköz kiépítése szolgáltatáshoz SDK-k a biztosított eszközök segítségével egyszerűbbé teheti a fejlesztési
 description: Ez a dokumentum áttekinti a fejlesztési Azure IoT Hub eszköz kiépítése szolgáltatáshoz SDK-k a megadott eszközök
-services: iot-dps
-keywords: ''
 author: yzhong94
 ms.author: yizhon
 ms.date: 04/09/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: a7e1a55bcfc8c7a8f76416fb12edf712340fadd2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: arjmands
+ms.openlocfilehash: afc7059f3b066ac5f3c9b49d543bc2b3e52ad6af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631122"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-ban biztosított eszközökkel használatával egyszerűbbé teheti a fejlesztési történő üzembe helyezéséhez
 Az IoT Hub eszköz kiépítése szolgáltatás egyszerűbbé teszi az üzembe helyezési folyamat nulla-Touch, közvetlenül az időponthoz kötött [automatikus kiépítés](concepts-auto-provisioning.md) biztonságos és skálázható módon.  Meg kell adni a biztonsági tanúsítvány X.509-tanúsítvány vagy a platformmegbízhatósági modul (TPM) formájában.  Microsoft is van együttműködve [más biztonsági hardverszállító partnerétől](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) IoT telepítés biztonságossá tétele az vetett bizalmat javítása érdekében. A hardveres biztonsági követelmény ismertetése meglehetősen kihívást a fejlesztők számára lehet. Azure IoT kiépítése szolgáltatáshoz SDK-k olyan készlete, hogy a fejlesztők kényelme réteg a kommunikálhatnak a létesítési szolgáltatás ügyfelek írás találhatók. Az SDK-k is biztosítják minták gyakori helyzetek, valamint az eszközöket, egyszerűbbé teheti a fejlesztési biztonsági tanúsítvány.

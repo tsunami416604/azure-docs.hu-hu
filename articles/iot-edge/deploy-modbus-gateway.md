@@ -1,25 +1,19 @@
 ---
-title: "A Modbus üzembe helyezése az Azure IoT Edge-ben | Microsoft Docs"
-description: "Modbus TCP-t használó eszközök Azure IoT Hubbal való kommunikációjának engedélyezése egy IoT Edge-átjáróeszköz létrehozásával"
-services: iot-Edge
-documentationcenter: 
+title: A Modbus üzembe helyezése az Azure IoT Edge-ben | Microsoft Docs
+description: Modbus TCP-t használó eszközök Azure IoT Hubbal való kommunikációjának engedélyezése egy IoT Edge-átjáróeszköz létrehozásával
 author: kgremban
 manager: timlt
-editor: chrisgmsft
-ms.assetid: 
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: e239bde48c3da0d899e3c78bdd39f520c4128b95
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
-ms.translationtype: HT
+ms.openlocfilehash: d6e831cdd7cd18305beb617693ee1026bb6429e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631467"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway---preview"></a>Modbus TCP-eszközök csatlakoztatása IoT Edge-eszközátjárón keresztül – előzetes verzió
 
@@ -33,7 +27,7 @@ A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További informác
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure IoT Edge-eszköz. Az eszköz beállítását bemutató cikkek: [Azure IoT Edge üzembe helyezése szimulált eszközön Windows](tutorial-simulate-device-windows.md) vagy [Linux rendszeren](tutorial-simulate-device-linux.md). 
-* Az IoT Edge-eszköz elsődleges kulcsának kapcsolati karakterlánca.
+* Az IoT Edge-eszköz elsődleges kulcsának kapcsolati sztringje.
 * A Modbus TCP-t támogató fizikai vagy szimulált Modbus-eszköz.
 
 ## <a name="prepare-a-modbus-container"></a>Modbus-tároló előkészítése

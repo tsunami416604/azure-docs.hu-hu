@@ -1,24 +1,20 @@
 ---
-title: 'A felhőben az IoT-DevKit: IoT MXChip DevKit csatlakozzon az Azure IoT Hub |} Microsoft Docs'
+title: IoT DevKit felhőbe--IoT MXChip DevKit csatlakozni az Azure IoT Hub |} Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan IoT DevKit AZ3166 a küldendő érzékelők állapotát az Azure IoT távoli megfigyelési megoldásgyorsító.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d3de8241b42aff63faaf04477a58c5564407ac8b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6c5c12ffeacad9a3dd56ac561d9b4fe1a6e67eea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631496"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Csatlakozás Azure IoT távoli megfigyelési megoldásgyorsító MXChip IoT DevKit
 
@@ -40,7 +36,7 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer 
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Hozzon létre egy Azure IoT távoli megfigyelési megoldásgyorsító
 
-1. Nyissa meg a [Azure IoT-megoldás acclerators hely](https://www.azureiotsuite.com/) kattintson **hozzon létre egy új megoldás**.
+1. Nyissa meg a [Azure IoT-megoldás gyorsítók hely](https://www.azureiotsolutions.com/) kattintson **hozzon létre egy új megoldás**.
   ![Azure IoT-megoldás gyorsító típusának kiválasztása](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
   > Alapértelmezés szerint ez a minta után létrehoz egy IoT távoli megfigyelési megoldásgyorsító létrehoz egy S2 IoT-központot. Ha ez az IoT-központ nem használatos az eszközök nagy száma, erősen ajánlott a S2 megállapításában, S1, és az IoT távoli megfigyelési megoldásgyorsító törlése, a kapcsolódó IoT-központ is törölheti, ha már nincs szüksége. 

@@ -1,11 +1,11 @@
 ---
-title: "Service Bus-üzenetsorok használata a node.js |} Microsoft Docs"
-description: "Útmutató a Service Bus-üzenetsorok használata Node.js-alkalmazás az Azure-ban."
+title: Service Bus-üzenetsorok használata a node.js |} Microsoft Docs
+description: Útmutató a Service Bus-üzenetsorok használata Node.js-alkalmazás az Azure-ban.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 5b309534f7aef602610cfdb6aa784d180551e1ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bc291c3a453b4dec5e6c47ab4a7f2e2ac2b9967
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641441"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Service Bus-üzenetsorok használata Node.js
 
@@ -64,8 +65,6 @@ var azure = require('azure');
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Az Azure Service Bus-kapcsolat beállítása
 Az Azure modul olvassa be a következő környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` beszerzése a Service Bus való kapcsolódáshoz szükséges adatokat. Ha e környezeti változó nincs beállítva, meg kell adnia a fiókadatokat, meghívásakor `createServiceBusService`.
-
-A környezeti változók beállítása a konfigurációs fájlban az Azure-Felhőszolgáltatásban példát lásd: [Node.js Felhőszolgáltatás tárolási][Node.js Cloud Service with Storage].
 
 A környezeti változók beállítása példát a [Azure-portálon] [ Azure portal] egy Azure-webhelyre, lásd: [Node.js-webalkalmazás tárolóval] [ Node.js Web Application with Storage].
 
@@ -177,7 +176,7 @@ Még nincs hozzárendelve az üzenetsorban lévő időtúllépés, és ha az alk
 
 Abban az esetben, ha az alkalmazás összeomlik, de előtte az üzenet feldolgozása után a `deleteMessage` metódust, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*, ez azt jelenti, hogy minden üzenet legalább egyszer dolgoz fel, de bizonyos helyzetekben a a ugyanazon üzenet újbóli kézbesítése is lehet. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el, használja a **MessageId** az üzenet, amely állandó marad a kézbesítési kísérletek tulajdonságát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A várólisták kapcsolatos további tudnivalókért lásd a következőket.
 
 * [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions]
@@ -190,6 +189,5 @@ A várólisták kapcsolatos további tudnivalókért lásd a következőket.
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
-[Node.js Cloud Service with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
 [Service Bus quotas]: service-bus-quotas.md

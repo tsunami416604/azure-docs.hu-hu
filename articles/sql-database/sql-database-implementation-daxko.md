@@ -6,17 +6,18 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 3779b32aa1397b2ca0e05e2627241c0bfb7a8622
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b7c1d4f1b8ca0f8899ebff8178a481c7dd1d5779
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648887"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI Azure használni, annak érdekében, a fejlesztési ciklus, valamint az ügyfélszolgálat és a teljesítmény javítása érdekében
-![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
+![Daxko/CSI embléma](./media/sql-database-implementation-daxko/csidaxkologo25.png)
 
 Daxko/CSI szoftver egy ellenőrző tapasztalt: alkalmasságra és újbóli központok az ügyfél alapja gyorsan, növekszik az környezetnek köszönhetően az átfogó vállalati-szoftveres megoldás, sikeres volt, de tartja az IT-infrastruktúra igényekkel növekvő vevő Alap lett tesztelése a vállalat informatikai személyzetet tart fenn. A vállalat egyre növekvő műveletek terhelést jelenthet, különösen a növekvő adatbázisok kezelése által lett korlátozott. Adott műveletek terhelés rosszabb, fejlesztői erőforrások a új kezdeményezések, például a vállalati szoftver új mobilitási szolgáltatásai be lett kivágja.
 

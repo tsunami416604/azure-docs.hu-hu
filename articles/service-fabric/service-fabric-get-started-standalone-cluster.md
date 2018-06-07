@@ -1,24 +1,25 @@
 ---
-title: "Önálló Azure Service Fabric-fürt telepítése | Microsoft Docs"
-description: "Hozzon létre egy önálló fejlesztési fürtöt három csomóponttal, amelyek ugyanazon a számítógépen futnak. A telepítés befejezése után készen áll majd egy többgépes fürt létrehozására."
+title: Önálló Azure Service Fabric-fürt telepítése | Microsoft Docs
+description: Hozzon létre egy önálló fejlesztési fürtöt három csomóponttal, amelyek ugyanazon a számítógépen futnak. A telepítés befejezése után készen áll majd egy többgépes fürt létrehozására.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5438d8d366ef989d5ae29581477513f8c884c4b3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
-ms.translationtype: HT
+ms.openlocfilehash: 93c921e54c69693ed02c122a2491b0942f550126
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643464"
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Az első önálló Service Fabric-fürt létrehozása
 Bármilyen, Windows Server 2012 R2 vagy Windows Server 2016 rendszerű, helyszíni vagy a felhőben futó virtuális gépen vagy számítógépen létrehozhat önálló Service Fabric-fürtöt. A rövid útmutató segítségével csupán pár perc alatt létrehozhat egy önálló fejlesztési fürtöt.  Amikor végzett, egy egyetlen számítógépen futó, három csomópontot tartalmazó fürttel fog rendelkezni, amelyre appokat telepíthet.
@@ -66,7 +67,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
-A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  A Service Fabric Explorer a fürtben futó szolgáltatás, amelyet böngészőből érhet el a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) címen. 
+A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorerben talál egy olyan szolgáltatás, a fürtben, nyissa meg a böngésző használatával férhet futtató [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer). 
 
 A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását. A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton.
 
@@ -87,7 +88,7 @@ Ha törölni kívánja a Service Fabric-futtatókörnyezetet a számítógéprő
 .\CleanFabric.ps1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy telepített egy önálló fejlesztési fürtöt, tekintse meg az alábbi cikkeket:
 * [Telepíthet egy többgépes önálló fürtöt](service-fabric-cluster-creation-for-windows-server.md), és engedélyezheti a védelmet.
 * [Appokat helyezhet üzembe a PowerShell használatával](service-fabric-deploy-remove-applications.md)

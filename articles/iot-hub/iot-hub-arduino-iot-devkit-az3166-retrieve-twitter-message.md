@@ -1,24 +1,20 @@
 ---
 title: Az Azure Functions Twitter üzenet beolvasása |} Microsoft Docs
-description: A mozgásérzékelő segítségével megrázása észleli és használja az Azure Functions egy véletlenszerű tweetet egy hashtaggel történő, melyet a megkereséséhez.
-services: iot-hub
-documentationcenter: ''
+description: A mozgásérzékelő segítségével megrázása észleli és használja az Azure Functions egy véletlenszerű tweetet egy hashtaggel történő, melyet a megkereséséhez
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0c3df0642d36aa1c4471c433fe9c1d3fa3b0880d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631761"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy Tweetet a Shake – letölteni egy Twitter-üzenetet az Azure Functions!
 

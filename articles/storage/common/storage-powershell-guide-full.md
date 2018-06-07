@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 33ca8af49ed9c3a8e7133eedfd284a1b71a9a9f9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 951b69877718c5da3c165c24c297906a1ad9a976
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652501"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
 
@@ -214,7 +215,7 @@ Most, hogy megismerte a PowerShell használatával a tárfiók kezelése, a köv
 * [A PowerShell-lel blobok kezelése](../blobs/storage-how-to-use-blobs-powershell.md)
 * [A PowerShell-lel fájlok kezelése](../files/storage-how-to-use-files-powershell.md)
 * [A PowerShell-lel várólisták kezelése](../queues/storage-powershell-how-to-use-queues.md)
-* [Azure Table storage műveleteket a PowerShell használatával](../../cosmos-db/table-storage-how-to-use-powershell.md)
+* [Azure Table storage műveleteket a PowerShell használatával](../../storage/tables/table-storage-how-to-use-powershell.md)
 
 Az Azure Cosmos DB tábla API prémium szolgáltatások biztosít a table storage például kulcsrakész globális terjesztési kis késleltetésű olvasások és írások, másodlagos indexelő vagy dedikált átviteli sebesség. 
 

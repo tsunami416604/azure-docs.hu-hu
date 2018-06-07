@@ -1,18 +1,19 @@
 ---
 title: Egy DevKit eszköz csatlakoztatása az Azure IoT központi alkalmazás |} Microsoft Docs
 description: Eszköz fejlesztőként útmutató egy MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT központi alkalmazás.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 4c7074e5e7d3858919f3fc17005fea4f8dce1560
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: af5cfc2f598893328bc8d4acc979f6d777114f99
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628793"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Csatlakoztasson egy MXChip IoT DevKit eszközt az Azure IoT központi alkalmazás
 
@@ -29,7 +30,7 @@ A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz eg
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mező neve     | egység  | Minimális | Maximum | Tizedeshelyen |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | nedvességtartalma       | %      | 0       | 100     | 0              |
 | TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
@@ -48,7 +49,7 @@ A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz eg
 
 Numerikus beállításai
 
-| Megjelenített név | Mező neve | egység | Tizedeshelyen | Minimális | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
 | Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
@@ -200,4 +201,4 @@ Módosíthatja, elkészítéséhez és töltse fel a mintakódot az eszköz kapc
 
 Most, hogy megismerte a DevKit eszköz csatlakoztatása az Azure IoT központi alkalmazás rendelkezik, az alábbiakban a javasolt lépéseket:
 
-* [Készítse elő, és csatlakozzon a málna Pi](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)

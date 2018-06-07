@@ -1,5 +1,5 @@
 ---
-title: Az Azure Blockchain munkaterület üzenetek áttekintése
+title: Az Azure Blockchain munkaterület üzenetek integrációjának áttekintése
 description: Üzenetek Azure Blockchain munkaterület használatának áttekintése.
 services: azure-blockchain
 keywords: ''
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45396c3af285026e16ce641bd37bf0eadcee56d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607600"
 ---
-# <a name="azure-blockchain-workbench-messages-overview"></a>Az Azure Blockchain munkaterület üzenetek áttekintése
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Üzenetküldési integrációs Azure Blockchain munkaterület
 
 Csupán a REST API-t, Azure Blockchain munkaterület messaging-alapú integrációt is biztosít. Munkaterület közzéteszi a főkönyvi-központú események keresztül Azure esemény rács, alsóbb rétegbeli fogyasztói betöltik az adatokat, vagy hajtsa végre a műveletet ezen események alapján. Reliable üzenetküldést igénylő ügyfelek Azure Blockchain munkaterület kézbesíti üzenetek, valamint az Azure Service Bus-végpont.
 
 A fejlesztők is érdeklődést a a lehetővé teszi, hogy a felhasználók létrehozásához, szerződések létrehozása és frissítése a főkönyvi szerződések kezdeményezhet tranzakciók kommunikációhoz külső rendszerekkel. Amíg ez a funkció jelenleg nincs felfedve nyilvános előzetes verziójában, ezt a funkciót nyújt minta található a [ http://aka.ms/blockchain-workbench-integration-sample ](http://aka.ms/blockchain-workbench-integration-sample).
 
-
 ## <a name="event-notifications"></a>Eseményértesítések
 
-Eseményértesítések értesíteni a felhasználókat és alsóbb rétegbeli rendszerét eseményeket munkaterület és a blockchain hálózathoz van csatlakoztatva, használható. Eseményértesítések használhatja közvetlenül a kódban vagy alsóbb rétegbeli rendszerekre adatáramlásra elindítása az eszközöket, például a Logic Apps és a folyamat használatával.
+Eseményértesítések értesíteni a felhasználókat és alsóbb rétegbeli rendszerét eseményeket Blockchain munkaterület és a blockchain hálózathoz van csatlakoztatva, használható. Eseményértesítések használhatja közvetlenül a kódban vagy alsóbb rétegbeli rendszerekre adatáramlásra elindítása az eszközöket, például a Logic Apps és a folyamat használatával.
 
 Lásd: [értesítési üzenet hivatkozás](#notification-message-reference) különböző fogadott üzenetek részleteit.
 
-### <a name="consuming-event-grid-events-with-azure-functions"></a>Az Azure Functions rács eseményeinek felhasználása
+### <a name="consuming-event-grid-events-with-azure-functions"></a>Az Azure Functions esemény rács események felhasználása
 
 Ha a felhasználó esemény rács használni szeretne értesítést Blockchain munkaterület eseményeket szeretné, az Azure Functions használatával is használja a esemény rács származó események.
 
@@ -39,7 +39,7 @@ Ha a felhasználó esemény rács használni szeretne értesítést Blockchain m
 4. A függvény mentése. 
 5. Válassza ki az esemény rács Blockchain munkaterület erőforráscsoportból.
 
-### <a name="consuming-event-grid-events-with-logic-apps"></a>A Logic Apps rács eseményeinek felhasználása
+### <a name="consuming-event-grid-events-with-logic-apps"></a>A Logic Apps esemény rács események felhasználása
 
 1.  Hozzon létre egy új **Azure Logic Apps** az Azure portálon.
 2.  Az Azure Logic Apps a portál megnyitásakor kérni fogja eseményindító kiválasztásához. Válassza ki **Azure esemény rács--resource-esemény esetén**.
@@ -60,14 +60,14 @@ Service Bus-üzenettémakörök segítségével értesítheti a felhasználókat
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Service Bus üzenetek a Logic Apps felhasználása
 
 1. Hozzon létre egy új **Azure Logic Apps** az Azure portálon.
-2.  Az Azure Logic Apps a portál megnyitásakor kérni fogja eseményindító kiválasztásához. Típus **Service Bus** azokat a keresési mezőbe, majd válassza ki a megfelelő interakció típusú eseményindító kíván használni a Service busszal. Például **– amikor egy üzenet jelenik meg a témakör az előfizetéshez (automatikusan hajthat végre), a Service Bus**.
+2. Az Azure Logic Apps a portál megnyitásakor kérni fogja eseményindító kiválasztásához. Típus **Service Bus** azokat a keresési mezőbe, majd válassza ki a megfelelő interakció típusú eseményindító kíván használni a Service busszal. Például **– amikor egy üzenet jelenik meg a témakör az előfizetéshez (automatikusan hajthat végre), a Service Bus**.
 3. Amikor megjelenik a munkafolyamat-tervezőben, adja meg a Service Bus kapcsolati adatait.
 4. Jelölje ki az előfizetését, és adja meg a témakör a **munkaterület-külső**.
 5. Fejleszthet, amelyek ehhez az eseményindítóhoz üzenetét használja az alkalmazás logikáját.
 
 ## <a name="notification-message-reference"></a>Értesítési üzenet referencia
 
-Attól függően, hogy az OperationName az értesítési üzenetek rendelkezik a következő üzenet típusú.
+Attól függően a **OperationName**, az értesítések a következő üzenet típusok egyikével rendelkeznek.
 
 ### <a name="accountcreated"></a>AccountCreated
 
@@ -75,8 +75,8 @@ Azt jelzi, hogy az új fiók a megadott lánc hozzáadandó kért-e.
 
 | Name (Név)    | Leírás  |
 |----------|--------------|
-| Felhasználói azonosító  | A létrehozott felhasználó azonosítója |
-| ChainIdentifier | A felhasználó létrehozásának blockchain hálózati címe. A Ethereum ez lenne a felhasználó "a lánc" címét. |
+| Felhasználói azonosító  | A létrehozott felhasználói Azonosítóját. |
+| ChainIdentifier | A felhasználó létrehozásának blockchain hálózati címe. A Ethereum, ez lenne a felhasználó **-lánc** cím. |
 
 ``` csharp
 public class NewAccountRequest : MessageModelBase
@@ -93,15 +93,15 @@ Azt jelzi, hogy a kérelem nem lett végrehajtva beszúrása vagy frissítése e
 | Name (Név) | Leírás |
 |-----|--------------|
 | ChainID | A kérelemhez társított lánc egyedi azonosítója.|
-  BlockId | A blokkolás a főkönyvi egyedi azonosítója.|
-  ContractId | A szerződés egyedi azonosítója.|
-  ContractAddress |       A szerződést a főkönyvi címe.|
-  TransactionHash  |     A tranzakció a főkönyvi kivonatát.|
-  OriginatingAddress |   A tranzakció a feladó címe.|
-  Műveletnév       |     A művelet neve.|
-  IsUpdate        |      Azt jelzi, hogy ez a frissítés.|
-  Paraméterek       |     Azonosító művelet küldött paraméterek nevét, az érték és az adatok típusú objektumok listája.|
-  TopLevelInputParams |  Olyan esetekben, ahol a szerződés csatlakozik egy vagy több szerződést ezek a paraméterek a legfelső szintű szerződésből. |
+| BlockId | A blokkolás a főkönyvi egyedi azonosítója.|
+| ContractId | A szerződés egyedi azonosítója.|
+| ContractAddress |       A szerződést a főkönyvi címe.|
+| TransactionHash  |     A tranzakció a főkönyvi kivonatát.|
+| OriginatingAddress |   A tranzakció a feladó címe.|
+| Műveletnév       |     A művelet neve.|
+| IsUpdate        |      Azt jelzi, hogy ez a frissítés.|
+| Paraméterek       |     Azonosító művelet küldött paraméterek nevét, az érték és az adatok típusú objektumok listája.|
+| TopLevelInputParams |  Olyan esetekben, ahol a szerződés csatlakozik egy vagy több szerződést ezek a paraméterek a legfelső szintű szerződésből. |
 
 ``` csharp
 public class ContractInsertOrUpdateRequest : MessageModelBase
@@ -166,7 +166,7 @@ Azt jelzi, hogy a kérelem nem lett végrehajtva egy meghatározott elosztott f�
 | Name (Név)    | Leírás                              |
 |---------|------------------------------------------|
 | Cím | A felhasználót, hogy a rendszer támogatott címe. |
-| Egyensúly | A felhasználó egyenleg egyenlege.         |
+| Egyenleg | A felhasználó egyenleg egyenlege.         |
 | ChainID | A lánc egyedi azonosítója.     |
 
 
@@ -241,6 +241,65 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 {
     public int ContractId { get; set; }
     public string ChainIdentifier { get; set; }
+}
+```
+
+## <a name="classes-used-by-message-types"></a>Üzenettípusok által használt osztályok
+
+### <a name="messagemodelbase"></a>MessageModelBase
+
+A kiinduló modell összes üzenet.
+
+| Name (Név)          | Leírás                          |
+|---------------|--------------------------------------|
+| OperationName | A művelet neve.           |
+| Kérelemazonosító     | A kérelem egyedi azonosítója. |
+
+``` csharp
+public class MessageModelBase
+{
+    public string OperationName { get; set; }
+    public string RequestId { get; set; }
+}
+```
+
+### <a name="contractinputparameter"></a>ContractInputParameter
+
+Tartalmazza a nevét, a érték és a paraméter típusát.
+
+| Name (Név)  | Leírás                 |
+|-------|-----------------------------|
+| Name (Név)  | A paraméter neve.  |
+| Érték | A paraméter értékét. |
+| Típus  | A paraméter típusa.  |
+
+``` csharp
+public class ContractInputParameter
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string Type { get; set; }
+}
+```
+
+#### <a name="contractproperty"></a>ContractProperty
+
+Tartalmazza a azonosító, név, érték és egy tulajdonság típusát.
+
+| Name (Név)  | Leírás                |
+|-------|----------------------------|
+| Azonosító    | A tulajdonság azonosítója.    |
+| Name (Név)  | A tulajdonság nevét.  |
+| Érték | A tulajdonság értéke. |
+| Típus  | A tulajdonság típusát.  |
+
+``` csharp
+public class ContractProperty
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string DataType { get; set; }
 }
 ```
 

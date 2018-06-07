@@ -4,20 +4,17 @@ description: Tudnivalók az Azure Cosmos DB containsers, gyűjtemények, diagram
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: f98def7f-f012-4592-be03-f6fa185e1b1e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: sngun
-ms.openlocfilehash: 925167c6b4a7f173726ec094c2847a16ca3d0ef4
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 777655d8976990396b2c78a5b6d977a92b1a2335
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34614077"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és átviteli lekérése Azure Cosmos DB-tárolók és adatbázis
 
@@ -48,7 +45,7 @@ Ez a cikk végigvezeti az Azure Cosmos DB fiók különböző szinteken átvitel
    |Adatbázis azonosítója  |  Adjon meg egy egyedi nevet az adatbázis azonosításához. Adatbázis egy olyan logikai tároló az egy vagy több gyűjteményt. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat /, \\, #, ? karaktereket vagy záró szóközt. |
    |Katalógus azonosítója  | Adjon egyedi nevet a gyűjtemény azonosításához. A gyűjteményazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre. |
    |Tárkapacitás   | Ez az érték azt jelenti, hogy a tárolási kapacitást az adatbázis. Egy adott gyűjtemény átviteli létesítésekor tárolási kapacitás lehet **rögzített (10 GB-os)** vagy **korlátlan**. Korlátlan tárolási kapacitás meg kell adnia egy partíciókulcsot az adatok számára.  |
-   |Sebesség   | Minden gyűjtemény és az adatbázis is lehet átviteli kérelem egység / másodperc.  Rögzített tárolási kapacitás iránti minimális átviteli sebesség 400 kérelemegység (RU/mp) másodpercenként, korlátlan tárolási kapacitás, a minimális átviteli 1000 RU/mp értékre van állítva.|
+   |Teljesítmény   | Minden gyűjtemény és az adatbázis is lehet átviteli kérelem egység / másodperc.  Rögzített tárolási kapacitás iránti minimális átviteli sebesség 400 kérelemegység (RU/mp) másodpercenként, korlátlan tárolási kapacitás, a minimális átviteli 1000 RU/mp értékre van állítva.|
 
 6. Ezeket a mezőket a beírt értékeket, válassza ki **OK** menti a beállításokat.  
 

@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/28/2018
+ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651205"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb bemutatása
 
@@ -206,10 +207,9 @@ StorSimple deduplikációs és az adatok tömörítésének használatával tov�
 
 StorSimple adatbiztonsági funkciók lehetővé teszik a igény szerinti biztonsági mentések létrehozását. Emellett egy alapértelmezett biztonsági mentés ütemezése biztosítja, hogy az adatokról napi fel. Biztonsági mentés készül növekményes pillanatképet, amely a felhőben vannak tárolva formájában. Jegyezze fel a módosítások csak az utolsó biztonsági mentés óta, pillanatképeket hozható létre és gyorsan visszaállítva. Ezeket a pillanatképeket különösen fontos a vész-helyreállítási eljárással lehet, mert cserélje le a másodlagos tárterületre rendszerek (például a szalagos biztonsági mentés), és lehetővé teszik az adatok helyreállítását a datacenter vagy a másodlagos helyek szükség esetén.
 
-## <a name="gdpr-compliance"></a>GDPR megfelelőségi
-[Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR arról, hogyan gyűjtésére, tárolására és személyes adatok sok követelményeket tartalmaz. A GDPR szabályok írnak a vállalatok, állami intézményekhez és más szervezetek, amelyek EU működik és gyűjtése, Európa lakosai kötött adatok elemzése.
+## <a name="managing-personal-information"></a>Személyes adatok kezelése
 
-A StorSimple Device Manager virtuális adatsorozathoz megfelelő GDPR. Ha személyes adatok gyűjtése történik, és jelennek meg a szolgáltatás két fő példány van:
+A StorSimple Device Manager virtuális adatsorozathoz két fő példányt a személyes adatokat gyűjthetnek:
  - Riasztás, ha vannak konfigurálva a felhasználók e-mail címét, a felhasználói beállítások. Ezt az információt a rendszergazda által törölhető. 
  - A fájlmegosztásokon tárolt adatok elérő felhasználókat. Azoknak a felhasználóknak, akik hozzáférhetnek a megosztott adatok jelenik meg, és exportálhatja. Ez a lista is törlődik. a megosztások törlésekor.
 

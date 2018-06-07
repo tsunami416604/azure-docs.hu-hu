@@ -6,14 +6,15 @@ manager: craigg
 author: anumjs
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: anjangsh
-ms.openlocfilehash: fa6899b285bcd1d3f2d4c1e17e3fbab7a6e0f839
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: cf180149ceb0b6c88fab8a0a7bb58a84d25b1b9c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647231"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a rugalmas adatbázis-eszközök
 Ez a dokumentum bemutatja a fejlesztői élményének a [elastic database ügyféloldali kódtárának](sql-database-elastic-database-client-library.md) segíti a minta alkalmazás futtatására. A mintaalkalmazás létrehoz egy egyszerű szilánkos alkalmazást, és felderíti az Azure SQL Database rugalmas Adatbáziseszközöket funkciójának főbb funkciók. Alkalmazási helyzetei összpontosít [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md), [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md), és [több shard lekérdezése](sql-database-elastic-scale-multishard-querying.md). Az ügyféloldali kódtára a .NET, valamint a Java érhető el. 
@@ -81,7 +82,7 @@ Töltse le, és futtathatja, kövesse az alábbi lépéseket:
 
 5. Az ügyfél könyvtár képességeivel kapcsolatos további tudnivalókért kísérletezhet a különböző lehetőségek. Megjegyzés: a lépéseket, amelyek az alkalmazás tart, a konzol kimeneti, nyugodtan felfedezése, mely a kódot a háttérben.
    
-    ![Állapot][4]
+    ![Előrehaladás][4]
 
 Gratulálunk! Sikeresen létrehozva, és az első szilánkos alkalmazás SQL Database rugalmas Adatbáziseszközöket használatával futtassa. Visual Studio vagy SQL Server Management Studio segítségével csatlakozzon az SQL-adatbázis és a gyors tekintse meg a szilánkok, a minta hozott létre. Megfigyelheti, hogy új minta shard adatbázisok és a shard manager adatbázist a minta létrehozva.
 

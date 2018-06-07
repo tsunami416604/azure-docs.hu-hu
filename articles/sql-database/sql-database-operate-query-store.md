@@ -6,14 +6,15 @@ author: bonova
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: bonova
-ms.openlocfilehash: 4722399525b376e232f2bc7802a570836da79e29
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 92e4180f1efe62d2dae9778f70e25f1bb0273b7f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649883"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Az Azure SQL-adatbázisban található Lekérdezéstár működő
 A Lekérdezéstár az Azure-ban érhető el egy teljes körűen felügyelt adatbázis-szolgáltatás, amely folyamatosan gyűjti, és minden lekérdezést előzménymodell részletes adatait jeleníti meg. Információ a Lekérdezéstárról egy repülőgép felé továbbított adatok író, amely jelentősen leegyszerűsíti a lekérdezési teljesítmény hibaelhárítási mind a felhőalapú és helyszíni felhasználók hasonló, gondolja. Ez a cikk ismerteti a Lekérdezéstár az Azure-ban működő adott aspektusait. Ez előtti gyűjtött adatait használja, gyorsan diagnosztizálhatja és teljesítménybeli problémák megoldásához és így az üzleti összpontosító több időt tölt. 
@@ -33,8 +34,8 @@ Ez a szakasz ismerteti, amelyek működése megbízható a Lekérdezéstár és 
 | MAX_STORAGE_SIZE_MB |Megadja a Lekérdezéstár is igénybe vehet az ügyféladatbázis belüli adatok terület korlátja |100 |Az új adatbázisokat kényszerítése |
 | INTERVAL_LENGTH_MINUTES |Határozza meg az időtartományt, amely során összegyűjtött futásidejű statisztikája lekérdezésterveket összesített értéket és megőrzött méretét. Minden aktív lekérdezésterv legfeljebb egy sor rendelkezik ezzel a konfigurációval meghatározott ideig |60 |Az új adatbázisokat kényszerítése |
 | AZ STALE_QUERY_THRESHOLD_DAYS |A megőrzési időtartam megőrzött futásidejű statisztikák és inaktív lekérdezések vezérlő időalapú karbantartása házirend |30 |Az új adatbázisokat és adatbázisokat az előző alapértelmezetten (367) érvényes |
-| A SIZE_BASED_CLEANUP_MODE BEÁLLÍTÁST |Megadja, hogy automatikus adatok karbantartása kerül sor a Lekérdezéstár adatok mérete megközelíti a korlátot |AUTO |Az összes adatbázisra érvényes |
-| A QUERY_CAPTURE_MODE BEÁLLÍTÁST |Megadja, hogy lekérdezések csak egy részhalmazát vagy az összes lekérdezés követi |AUTO |Az összes adatbázisra érvényes |
+| A SIZE_BASED_CLEANUP_MODE BEÁLLÍTÁST |Megadja, hogy automatikus adatok karbantartása kerül sor a Lekérdezéstár adatok mérete megközelíti a korlátot |AUTOMATIKUS |Az összes adatbázisra érvényes |
+| A QUERY_CAPTURE_MODE BEÁLLÍTÁST |Megadja, hogy lekérdezések csak egy részhalmazát vagy az összes lekérdezés követi |AUTOMATIKUS |Az összes adatbázisra érvényes |
 | FLUSH_INTERVAL_SECONDS |Megadja, hogy rögzíteni futásidejű statisztikák lemezre kiürítése előtt a memóriában, mindig maximális időtartama |900 |Az új adatbázisokat kényszerítése |
 |  | | | |
 

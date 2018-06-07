@@ -7,28 +7,29 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
-ms.openlocfilehash: b2f87c965a7c69614d476f0d931802587f0f1297
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 18276b5706caad854c0160044b7e0efff10bc280
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616168"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Adatok másolása az Amazon egyszerű Társzolgáltatás Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1. verzió – Általánosan elérhető](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [2. verzió – Előzetes verzió](connector-amazon-simple-storage-service.md)
 
-Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory és az Azure Blob Storage-adatok másolása. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatok másolása az Amazon S3. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [Amazon S3 connnector a V1](v1/data-factory-amazon-simple-storage-service-connector.md).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
-Adatok másolása az egyetlen támogatott forrás adattár az Azure Data Lake Store, vagy adatok másolása az Azure Data Lake Store az egyetlen támogatott fogadó adattár. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Adatok Amazon S3 bármely támogatott fogadó adattár másolhatja. A másolási tevékenység által támogatott adatforrások vagy mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Pontosabban, az Amazon S3 összekötő támogatja-e a fájlok másolása,-, vagy a fájlok elemzése a [támogatott formátumok és a tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
@@ -162,7 +163,7 @@ Adatok másolása az Amazon S3, állítsa be a type tulajdonságot az adathalmaz
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az Azure Data Lake-forrás és a fogadó által támogatott tulajdonságokról.
+Szakaszok és a rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [folyamatok](concepts-pipelines-activities.md) cikk. Ez a témakör az Amazon S3 forrás által támogatott tulajdonságokról.
 
 ### <a name="amazon-s3-as-source"></a>Amazon S3 forrásaként
 

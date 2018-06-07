@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 05/21/2018
 ms.author: sethm
-ms.openlocfilehash: d433fb916280e98dd0f2af61728596b8566be71b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1795c1ec0b4129e3c99fff3fc893148e191ce83e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641492"
 ---
 # <a name="azure-relay-faqs"></a>Az Azure továbbító – gyakori kérdések
 
-Ebben a cikkben megválaszolunk néhány gyakran ismételt kérdések (GYIK) kapcsolatos [Azure továbbítási](https://azure.microsoft.com/services/service-bus/). Általános Azure tarifa- és támogatási információk: [Azure támogatja – gyakori kérdések](https://azure.microsoft.com/en-in/support/faq/).
+Ebben a cikkben megválaszolunk néhány gyakran ismételt kérdések (GYIK) kapcsolatos [Azure továbbítási](https://azure.microsoft.com/services/service-bus/). Általános Azure tarifa- és támogatási információ: a [Azure támogatja – gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="general-questions"></a>Általános kérdések
 ### <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
@@ -35,7 +36,7 @@ A [névtér](relay-create-namespace-portal.md) egy hatókörkezelési tárolót,
 A korábban elnevezett Service Bus Relay szolgáltatás neve [WCF továbbító](relay-wcf-dotnet-get-started.md). Továbbra is a megszokott módon használja ezt a szolgáltatást. A hibrid kapcsolat egy szolgáltatás, amely az Azure BizTalk szolgáltatások van lett visszaültetett frissített verziója. WCF továbbító és a hibrid kapcsolatok mindkét továbbra is használhatók.
 
 ## <a name="pricing"></a>Díjszabás
-Ez a szakasz néhány gyakori kérdés a struktúra árképzési Relayjel kapcsolatos választ ad. Is látható [Azure támogatás – gyakori kérdések](http://go.microsoft.com/fwlink/?LinkID=185083) általános Azure-beli árakról. A továbbító árazással kapcsolatos részletes információkért lásd: [díjszabása Service Bus][Pricing overview].
+Ez a szakasz néhány gyakori kérdés a struktúra árképzési Relayjel kapcsolatos választ ad. Is megtekintheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure-beli árakról. A továbbító árazással kapcsolatos részletes információkért lásd: [díjszabása Service Bus][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hogyan tegye meg a díjat hibrid kapcsolatok és WCF továbbító?
 A továbbító árazással kapcsolatos részletes információkért tekintse meg a [hibrid kapcsolatok és WCF-továbbítók] [ Pricing overview] tábla díjszabás részleteit megjelenítő oldalon a Service buson. Mellett az adott oldalon rögzített árakat van szó, a kimenő forgalom kívül az adatközpontban, amelyben az alkalmazás ki van építve a kapcsolódó adatátvitel.
@@ -81,8 +82,8 @@ A megnyitott továbbítók a **netTCPRelay** WCF kötés üzenetek kezelni, nem 
 | A továbbító egyidejű figyelőinek |Entitás |A további kapcsolatokhoz későbbi kérelmek azért lettek elutasítva, és kivételt megkapta a hívó kód. |25 |
 | A névtér összes továbbítási végpontok egyidejű továbbító-kapcsolatok |Névtér |- |5000 |
 | Továbbítási végpontok száma a szolgáltatás névtere |Névtér |- |10,000 |
-| Üzenet mérete [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) és [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) továbbítja |Névtér |Meghaladnia ezek mely százalékértékénél kéri, hogy a bejövő üzenetek utasítja el, és egy kivételt a hívó kód érkezik. |64 KB |
-| Üzenet mérete [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) és [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) továbbítja |Névtér |Az üzenet mérete nincs korlátozva. |Korlátlan |
+| Üzenet mérete [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) és [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) továbbítja |Névtér |Meghaladnia ezek mely százalékértékénél kéri, hogy a bejövő üzenetek utasítja el, és egy kivételt a hívó kód érkezik. |64 KB |
+| Üzenet mérete [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) és [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) továbbítja |Névtér |Az üzenet mérete nincs korlátozva. |Korlátlan |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Rendelkezik a továbbítási bármely használati kvóták?
 Alapértelmezés szerint az összes felhőalapú szolgáltatás a Microsoft összes egy ügyfél-előfizetések számított egy összesített havi memóriahasználati kvóta állítja be. Tudjuk, hogy időnként igényeinek előfordulhat, hogy meghaladja ezt a korlátot. Felveheti a kapcsolatot az ügyfélszolgálat bármikor, így azt igényeinek megismeréséhez és annak megfelelően módosítsa a működés felső korlátjának. Service Bus a használati kvóták a következők:
@@ -108,7 +109,7 @@ Az Azure portál segítségével Azure továbbítási névterek telepítenek át
 
 PowerShell névtér áthelyezése egy másik előfizetést egy Azure-előfizetéssel, használja a következő parancssorozat. Ez a művelet végrehajtásához a névtér már aktívnak kell lennie, és a felhasználó a PowerShell-parancsok futtatásával egy rendszergazda felhasználó a forrás- és a cél előfizetések kell lennie.
 
-```powershell
+```azurepowershell-interactive
 # Create a new resource group in the target subscription.
 Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
@@ -136,4 +137,4 @@ Igen. A továbbító ügyfél teljes tartománynevek használatával lehetővé 
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md
-[Shared access signatures]: ../service-bus-messaging/service-bus-sas.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md

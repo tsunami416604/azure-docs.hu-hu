@@ -7,14 +7,15 @@ author: GithubMirek
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 8c6472dcde55a7b642ced7bbf0d93893df9208e0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f3c94f41a4f5d7947b862054263ee07ff8ccd98c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650009"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzális hitelesítés használata az SQL-adatbázis és az SQL Data Warehouse (többtényezős hitelesítés támogatása SSMS)
 Az Azure SQL Database és az Azure SQL Data Warehouse támogatja az SQL Server Management Studio (SSMS) használatával kapcsolatok *Active Directory univerzális hitelesítési*. 
@@ -54,7 +55,7 @@ Az Azure Active Directory-felhasználók támogatott az Azure AD B2B forgatókö
 - [Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Adatrétegbeli alkalmazási keretrendszer (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx)  
-- [Új Azure SQL-adatbázis BACPAC fájl importálása](../sql-database/sql-database-import.md)  
-- [Azure SQL-adatbázis BACPAC fájlba exportálása](../sql-database/sql-database-export.md)  
+- [BACPAC-fájl importálása új Azure SQL Database-adatbázisba](../sql-database/sql-database-import.md)  
+- [Azure SQL Database-adatbázis exportálása BACPAC-fájlba](../sql-database/sql-database-export.md)  
 - C# felület [IUniversalAuthProvider felület](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
 - Használata esetén **Active Directory - univerzális többtényezős hitelesítéssel** hitelesítés ADAL nyomkövetés elérhető kezdődő [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Ki alapértelmezés szerint, ha bekapcsolja a ADAL nyomkövetési használatával a **eszközök**, **beállítások** menüben, a **Azure Services**, **Azure felhőbe**,  **ADAL kimeneti ablak nyomkövetési szint**, utána pedig engedélyezése **kimeneti** a a **nézet** menü. A nyomkövetési adatokat érhetők el a kimeneti ablakban lehetőséget választva **Azure Active Directory lehetőséget**.  

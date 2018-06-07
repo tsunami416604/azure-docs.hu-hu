@@ -2,22 +2,19 @@
 title: Azure Cosmos DB kérések és a tárolási figyelése |} Microsoft Docs
 description: Útmutató a teljesítménymutatók, például a kérelmek és a kiszolgáló hibát, és a szoftverhasználati mérési adatok, például a tároló fogyasztása Azure Cosmos DB fiókja.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 4c6a2e6f-6e78-48e3-8dc6-f4498b235a9e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: sngun
-ms.openlocfilehash: 008c47bbceeba1345c56b5171f5fbc1f8676b02c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1e5dba722f240bd6535ba64494912a153e9224c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612639"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB figyelése
 A Azure Cosmos DB-fiókok a figyelheti a [Azure-portálon](https://portal.azure.com/). Minden Azure Cosmos DB fiók metrikák tartalmazó teljes csomag érhető el átviteli, a tároló, a rendelkezésre állási, a késés és a konzisztencia figyelése.

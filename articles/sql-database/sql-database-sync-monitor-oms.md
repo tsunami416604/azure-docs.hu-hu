@@ -3,17 +3,18 @@ title: Az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési figyel�
 description: Log Analytics segítségével megtudhatja, hogyan figyelése Azure SQL adatszinkronizálás (előzetes verzió)
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 1b22b4ddf9fa4880b814efc3f8c3f1fc6ec7d141
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650247"
 ---
 # <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>A figyelő SQL adatok szinkronban (előzetes verzió) Naplóelemzési 
 
@@ -198,7 +199,7 @@ További információ az SQL Data Syncről:
 -   [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
 -   Teljes PowerShell-példák az SQL Data Sync konfigurálásáról:
-    -   [A PowerShell szolgáltatás használatával több Azure SQL-adatbázisok közötti szinkronizálása](scripts/sql-database-sync-data-between-sql-databases.md)
+    -   [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
     -   [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 -   [Az SQL Data Sync REST API dokumentációjának letöltése](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)

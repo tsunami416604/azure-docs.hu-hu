@@ -1,26 +1,23 @@
 ---
-title: "Kiterjesztése az r az Azure Data Lake Analytics U-SQL-parancsfájlok |} Microsoft Docs"
-description: "Megtudhatja, hogyan R-kód U-SQL-parancsfájlok futtatása"
+title: R az Azure Data Lake Analytics U-SQL-parancsfájlok kiterjesztése
+description: Megtudhatja, hogyan R-kód használata az Azure Data Lake Analytics U-SQL-parancsfájlok futtatása
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: sukvg
-editor: cgronlun
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/20/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
+ms.topic: conceptual
+ms.date: 06/20/2017
+ms.openlocfilehash: 8b22b4238b20f56727d1c7858094328ab8817dad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624924"
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Oktatóanyag: Ismerkedés a U-SQL r kiterjesztése
+# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Az R-kód az Azure Data Lake Analytics U-SQL-parancsfájlok kiterjesztése
 
 A következő példa az R-kód telepítésének lépéseit mutatja be:
 * Használja a `REFERENCE ASSEMBLY` R bővítmények engedélyezése a U-SQL parancsfájl utasítást.
@@ -97,7 +94,7 @@ U-SQL parancsfájl segítségével, hogy az erőforrás telepítése utasításs
 ### <a name="datatypes"></a>Adattípusok
 * Konvertálja a karakterláncot és a numerikus oszlopot a U-SQL-R DataFrame és a U-SQL közötti [támogatott típusok: `double`, `string`, `bool`, `integer`, `byte`].
 * A `Factor` adattípus nem támogatott a U-SQL.
-* `byte[]`a base64-kódolású kell szerializálhatók `string`.
+* `byte[]` a base64-kódolású kell szerializálhatók `string`.
 * U-SQL-karakterláncok konvertálhatók tényezők az R-kód, amennyiben az U-SQL R bemeneti dataframe létrehozása vagy nyomáscsökkentő paramétert `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Sémák
@@ -210,7 +207,7 @@ Először hozzon létre egy egyéni R modult, és azt a zip-, majd töltse fel a
 
     OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [U-SQL ablak függvények használata az Azure Data Lake Analytics-feladatok](data-lake-analytics-use-window-functions.md)

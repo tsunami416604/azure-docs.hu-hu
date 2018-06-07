@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643032"
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Biztonsági mentése és visszaállítása a Reliable Services és Reliable Actors
 Az Azure Service Fabric egy magas rendelkezésre állású platform, amely replikálja az állapot karbantartásához a magas rendelkezésre állás több csomópont között.  Így még akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatások is elérhetőek. Amikor ez a platform által biztosított a beépített redundanciát lehet, hogy elegendő-e bizonyos, bizonyos esetekben célszerű a szolgáltatás számára az adatok biztonsági másolatát (külső áruházban).
@@ -153,7 +154,7 @@ Ha tartalmazza a teljes biztonsági mentés, például az első növekményes é
 > 
 
 ## <a name="deleted-or-lost-service"></a>A törölt vagy elveszett szolgáltatás
-Ha a szolgáltatás el lett távolítva, meg kell először hozza létre a szolgáltatás előtt az adatok visszaállíthatók.  Fontos létrehozni a szolgáltatást az azonos konfigurációval, például particionálási sémát, hogy az adatok zökkenőmentesen állíthatók vissza.  Ha a szolgáltatás működik-e, az adatok helyreállítását API (`OnDataLossAsync` fent) meg kell hívni minden partícióján a szolgáltatás rendelkezik. Egyik módszere azt használatával `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` minden partícióján.  
+Ha a szolgáltatás el lett távolítva, meg kell először hozza létre a szolgáltatás előtt az adatok visszaállíthatók.  Fontos létrehozni a szolgáltatást az azonos konfigurációval, például particionálási sémát, hogy az adatok zökkenőmentesen állíthatók vissza.  Ha a szolgáltatás működik-e, az adatok helyreállítását API (`OnDataLossAsync` fent) meg kell hívni minden partícióján a szolgáltatás rendelkezik. Egyik módszere azt használatával [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) minden partícióján.  
 
 Ettől a ponttól kezdve megvalósítási megegyezik a fenti forgatókönyv. Mindegyik partíció kell legújabb vonatkozó biztonsági másolat visszaállítása a külső áruházban. Egy szerint, hogy a Partícióazonosító most megváltozhatott, mert a futtatókörnyezet partíciót hoz létre azonosítók dinamikusan. Így a szolgáltatás kell tárolni a megfelelő partíció információkat és a szolgáltatás nevét a helyes legutóbbi biztonsági másolatból történő visszaállítását minden partíció esetében.
 

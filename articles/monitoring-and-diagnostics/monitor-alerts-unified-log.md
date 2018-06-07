@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 175e512d0bdaa84d5251f4bbdb09aed3aed436f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638721"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Napló riasztásait az Azure Monitor - riasztás 
 Ez a cikk ismerteti a napló riasztások részleteit is támogatott belül az új riasztások típusú [Azure riasztások](monitoring-overview-unified-alerts.md) és a felhasználók Azure analytics platform használni alapjául riasztások... A naplók segítségével metrika riasztások leírását, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)
@@ -35,7 +36,7 @@ Napló-szabályok keresése a következő adatokat határozzák meg:
 - **Lekérdezés jelentkezzen**.  A lekérdezés, amely futtatja a minden alkalommal, amikor a riasztási szabály következik be.  Ez a lekérdezés által visszaadott rekordok segítségével meghatározhatja, hogy riasztás jöjjön létre. *Az Azure Application Insights* lekérdezés is tartalmazhatnak [alkalmazások közötti hívások](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), amennyiben a felhasználó rendelkezik-e hozzáférési jogosultsága ahhoz, hogy a külső alkalmazásokkal. 
 
     > [!IMPORTANT]
-    > Támogatja a következő kapcsolattípust a [közötti alkalmazás lekérdezés az Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) előzetes - funkcióit és felhasználói élmény változhat. Használatát [közötti munkaterület lekérdezés](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) és [Naplóelemzési a kereszt-erőforrás lekérdezés](../log-analytics/log-analytics-cross-workspace-search.md) jelenleg **nem támogatott** Azure riasztásokban.
+    > Támogatja a következő kapcsolattípust a [közötti alkalmazás lekérdezés az Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) Preview - funkcióinak korlátozott, 2 vagy több alkalmazás használata és felhasználói élményt változhat. Használatát [közötti munkaterület lekérdezés](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) és [Naplóelemzési a kereszt-erőforrás lekérdezés](../log-analytics/log-analytics-cross-workspace-search.md) jelenleg **nem támogatott** Azure riasztásokban.
 
 - **Időszak**.  Adja meg a lekérdezés időintervallumát. A lekérdezés csak azokat a rekordokat adja vissza, amelyek az aktuális idő ezen tartományában jöttek létre. Időszakra vonatkozóan az adatokat, a napló lekérdezés visszaélés megakadályozására lehívott korlátozza, és minden alkalommal parancs megkerüli (például a következő időpontban) napló lekérdezésben használt. <br>*Például ha az adott időszakban 60 percre van beállítva, és a lekérdezés futtatása, 1:15 előtti, csak a 12:15 előtti és 1:15 előtti között létrejövő rekordok ad vissza napló lekérdezés végrehajtása. Most, ha a napló lekérdezés idő telt el például a parancs használja (7d), a napló volna kell a lekérdezés futtatása csak 12:15 előtti és: 15 előtti - 1 közötti, mintha csak az elmúlt 60 perc tartozik adat. Nem pedig az adatok a lekérdezési napló hét nap.*
 - **Gyakoriság**.  Meghatározza, hogy milyen gyakran kell futtatni a lekérdezést. Bármely érték 5 perc és 24 óra közötti lehet. Az adott időszakban kisebbnek vagy azzal egyenlőnek kell lennie.  Ha az érték nagyobb, mint az adott időszakban, azzal alatt elmulasztott rekordok kockáztatja ki.<br>*Vegye figyelembe például egy időszak 30 perc és 60 perc gyakorisága.  Ha a lekérdezés futtatása, 1:00, 12:30 és 1:00 PM rekordok adja vissza.  A következő szeretné futtatni a lekérdezést ideje 2:00 amikor meghaladná a 1:30 és 2:00 között rögzíti.  1:00 és 1:30 között létrejövő rekordok volna soha nem értékelhető ki.*
@@ -125,7 +126,7 @@ API-k előírt napló riasztások RESTful, és az Azure Resource Manager REST AP
 
 A részletek és a REST API használatával példák hogy tekintse meg:
 - [Naplófájl Analytics riasztás REST API](../log-analytics/log-analytics-api-alerts.md) - hozhat létre, és az Azure Naplóelemzés napló keresési riasztási szabályok kezelése
-- [Az Azure figyelő ütemezett lekérdezési szabályok REST API](https://docs.microsoft.com/en-us/rest/api/monitorr/scheduledqueryrules/) - hozhat létre, és a Azure Application Insights napló keresési riasztási szabályok kezelése
+- [Az Azure figyelő ütemezett lekérdezési szabályok REST API](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) - hozhat létre, és a Azure Application Insights napló keresési riasztási szabályok kezelése
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 A felhasználó is használhatja a által nyújtott rugalmasság [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) létrehozása és frissítése erőforrások - létrehozásához vagy frissítéséhez napló riasztásokat.

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c6e4e05623aae3aca1e782bc492690918a041993
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 280c91d6a871984959d587e9895166853e89cc45
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615682"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
 
@@ -117,7 +118,7 @@ Adatok másolása az Azure Search szolgáltatásba történő, állítsa be a fo
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **AzureSearchIndexSink** | Igen |
 | WriteBehavior | Megadja, hogy egyesíteni vagy cserélje le, ha az index már létezik egy dokumentumot. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Két érték engedélyezett: **egyesítése** (alapértelmezett), és **feltöltése**. | Nem |
-| writeBatchSize | Amikor a puffer mérete eléri writeBatchSize feltölti az adatok be az Azure Search-index. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek: 1-1 000; egész szám alapértelmezett érték 1000. | Nem |
+| WriteBatchSize | Amikor a puffer mérete eléri writeBatchSize feltölti az adatok be az Azure Search-index. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek: 1-1 000; egész szám alapértelmezett érték 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 
@@ -130,7 +131,7 @@ A AzureSearchSink az alábbi két upsert viselkedésmódok biztosít a (AzureSea
 
 Az alapértelmezett viselkedés **egyesítése**.
 
-### <a name="writebatchsize-property"></a>WriteBatchSize Property
+### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
 
 Az Azure Search szolgáltatás egy kötegelt dokumentumok írása támogatja. A kötegelt 1-1 000 műveletek is tartalmazhat. Egy műveletet a feltöltési/egyesítési művelet egy dokumentum kezeli.
 

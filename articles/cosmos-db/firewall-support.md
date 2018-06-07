@@ -6,20 +6,17 @@ services: cosmos-db
 author: SnehaGunda
 manager: kfile
 tags: azure-resource-manager
-documentationcenter: ''
-ms.assetid: c1b9ede0-ed93-411a-ac9a-62c113a8e887
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 21274a71042c5acf38711d29a5062e9f68b6a6a0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f0cbbe147386aa5d50e207fdd9c86fd9571ec144
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611738"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
 Egy Azure Cosmos-adatbázis adatbázis-fiókban tárolt adatok védelme érdekében Azure Cosmos DB nyújtott támogatás a titkos kulcs alapú [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely erős kivonat-alapú üzenethitelesítő kódot (HMAC) használja. Most a titkos alapú engedélyezési modell mellett Azure Cosmos DB bejövő tűzfaltámogatás IP-alapú hozzáférés-vezérléssel vezérelt házirend támogatja. Ebben a modellben a hagyományos adatbázis rendszer tűzfalszabályok hasonló, és egy további Azure Cosmos DB adatbázis fiókhoz biztonsági szintet. Ez a modell segítségével mostantól beállíthatja egy Azure Cosmos DB adatbázisfiók csak egy jóváhagyott gépek halmazát jelenti érhetők el, illetve a felhőalapú szolgáltatások. A jóváhagyott halmazok gépek és szolgáltatások Azure Cosmos DB erőforrásokhoz való hozzáférés továbbra is szükség van egy érvényes hitelesítési jogkivonatot a hívó.

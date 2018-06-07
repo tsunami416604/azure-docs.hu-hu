@@ -2,30 +2,27 @@
 title: Élettartam Azure Cosmos DB az adatok lejárnak |} Microsoft Docs
 description: A TTL-t a Microsoft Azure Cosmos DB teszi lehetővé a dokumentumokat egy bizonyos idő eltelte után a rendszer automatikusan törlődnek.
 services: cosmos-db
-documentationcenter: ''
 keywords: élettartam
 author: SnehaGunda
 manager: kfile
-ms.assetid: 25fcbbda-71f7-414a-bf57-d8671358ca3f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 13f2caa631817a5745f39b44faccb11252a2d549
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615121"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Azure Cosmos DB gyűjtemények automatikusan élettartama adatok lejár
-Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak az alkalmazás igényeinek felesleges ezek az adatok kiürítése és a tárolási igényeinek, az alkalmazások biztonságos.
+Alkalmazások létrehozására és hatalmas mennyiségű adat tárolására is használható. Az adatok egy részét, például generált gép esemény adatokat, a naplókat, és a felhasználói munkamenet az információ csak véges időn. Miután az adatok válnak többlet az alkalmazás igényeinek, az ezeket az adatokat és csökkenti a tárolási igényeinek, az alkalmazások biztonságos.
 
 "Élő idő" vagy a TTL-t a Microsoft Azure Cosmos DB nyújt a lehetővé teszi, hogy a dokumentumok automatikusan törlődnek az adatbázis egy bizonyos idő eltelte után. Az alapértelmezett élettartama a gyűjtemény szintjén állítsa be, és dokumentumra alapon felülbírálható. Élettartam beállítása, a gyűjtemény alapértelmezett vagy a dokumentum szinten után Cosmos DB automatikusan eltávolítja a dokumentumok létező adott időn belül, (másodpercben), mert utolsó módosítás.
 
-A Cosmos DB élettartama a dokumentum utolsó módosításának elleni eltolás használja. Ehhez használja a `_ts` mező, amelyben megtalálható minden a dokumentumban. A _ts mezője dátumát és idejét jelző időbélyeg unix típusú epoch. A `_ts` mező frissül minden alkalommal, amikor a dokumentum módosításakor. 
+Az Azure Cosmos Adatbázisba élettartama a dokumentum utolsó módosításának elleni eltolás használja. Ehhez használja a `_ts` mező, amely létezik a minden a dokumentumban. A _ts mezője dátumát és idejét jelző időbélyeg unix típusú epoch. A `_ts` mező frissül minden alkalommal, amikor a dokumentum módosításakor. 
 
 ## <a name="ttl-behavior"></a>Élettartam viselkedése
 A TTL-szolgáltatás TTL tulajdonságok két szinten – a gyűjtemény és a dokumentum vezérli. Az értékek másodpercen belül vannak beállítva, és a különbözeti számít a `_ts` azon, hogy a dokumentum utolsó volt módosítani.
@@ -33,22 +30,22 @@ A TTL-szolgáltatás TTL tulajdonságok két szinten – a gyűjtemény és a do
 1. A gyűjtemény DefaultTTL
    
    * Ha hiányoznak (vagy null értékű), dokumentumok nem törlődnek automatikusan.
-   * Ha jelen van, és az érték "-1" = végtelen – dokumentumok alapértelmezés szerint nem jár le
-   * Ha jelen van, és az érték az egyes szám ("n") – a dokumentumok lejárnak "n" másodperc után utolsó módosítás
+   * Ha jelen van, és az érték "-"1 = végtelen – dokumentumok alapértelmezés szerint nem jár le
+   * Ha jelen van, és az érték van beállítva egyes szám ("n") – a dokumentumok lejárnak "n" másodperc után utolsó módosítás
 2. A dokumentumok élettartam: 
    
    * A tulajdonság csak akkor, ha a fölérendelt gyűjtemény DefaultTTL nincs alkalmazható.
    * Felülbírálja a fölérendelt gyűjtemény DefaultTTL értékét.
 
-Amint a dokumentum lejárt (`ttl`  +  `_ts` < = aktuális server idő), a dokumentum jelölést "lejárt". Nincs művelet után most kapnak a dokumentumokon, és azok nem kerülnek bele az összes végrehajtott lekérdezések eredményeit. A dokumentumok fizikailag törlődnek a rendszerben, és törli a háttérben szerint egy későbbi időpontban. Ez nem foglal le a [kérelem egységek (RUs)](request-units.md) gyűjtemény költségvetés.
+Amint a dokumentum lejárt (`ttl`  +  `_ts` < aktuális server idő =), a dokumentum jelölést "lejárt." Nincs művelet után most kapnak a dokumentumokon, és azok nem kerülnek bele az összes végrehajtott lekérdezések eredményeit. A dokumentumok fizikailag törlődnek a rendszerben, és törli a háttérben szerint egy későbbi időpontban. Ez nem foglal le a [kérelem egységek (RUs)](request-units.md) gyűjtemény költségvetés.
 
 A fenti logika mutatja be a következő mátrix:
 
 |  | DefaultTTL hiányzik vagy nem a gyűjtemény beállítása | DefaultTTL = -1-gyűjteménytől | DefaultTTL = "n" gyűjteménytől |
 | --- |:--- |:--- |:--- |
 | A dokumentum hiányzó élettartam |Nem végezhető el a dokumentum szinten bírálja felül, mivel a dokumentum és a gyűjtemény nem ismerik a TTL-t. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A gyűjtemény dokumentumok amikor időköz n lejárta lejár. |
-| Élettartam dokumentum -1 = |Nincs a szintjén bírálja felül, mert a gyűjtemény nem adja meg a dokumentum felülíró DefaultTTL tulajdonság. Egy dokumentumot a TTL-t a rendszer nem értelmezett. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A dokumentum az élettartam =-1. a gyűjtemény nem jár. Minden más dokumentum "n" időszak után lejár. |
-| Élettartam dokumentumon n = |Nem végezhető el a felülírja a dokumentum szinten. Egy dokumentumot a TTL-t a rendszer nem értelmezett. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat fog örökli időintervalluma -1, és nem jár le. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat "n" időköz örökli a gyűjteményben. |
+| Élettartam dokumentum -1 = |Nincs a szintjén bírálja felül, mert a gyűjtemény nem adja meg a dokumentum felülíró DefaultTTL tulajdonság. Egy dokumentumot a TTL-t a rendszer értelmezett nem alkalmasak. |Ebben a gyűjteményben nem dokumentumok lejárnak. |A dokumentum az élettartam =-1. a gyűjtemény nem jár. Minden más dokumentum "n" időszak után lejár. |
+| Élettartam dokumentumon n = |Nem végezhető el a felülírja a dokumentum szinten. Egy dokumentumot a TTL-t a rendszer értelmezett nem alkalmasak. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat fog örökli időintervalluma -1, és nem jár le. |A dokumentum TTL = n időköz n másodperc után lejár. Egyéb dokumentumokat "n" időköz örökli a gyűjteményben. |
 
 ## <a name="configuring-ttl"></a>Élettartam konfigurálása
 Alapértelmezés szerint élettartama összes Cosmos DB gyűjtemények, valamint minden dokumentumok alapértelmezés szerint le van tiltva. Élettartam beállítható programozott módon, vagy az Azure portálon, a a **beállítások** szakasz a gyűjteményhez. 
@@ -81,7 +78,7 @@ Biztosan egy alapértelmezett élettartama a gyűjtemény szintjén konfigurálh
 
 
 ## <a name="setting-ttl-on-a-document"></a>A dokumentum TTL beállítása
-Egy gyűjtemény egy alapértelmezett élettartam beállítása mellett adott TTL dokumentum szinten állíthatja be. Ez a művelet felülírja a gyűjtemény az alapértelmezett.
+Mellett egy alapértelmezett élettartam szervezendő, adott TTL dokumentum szinten állíthatja be. Ez a művelet felülírja a gyűjtemény az alapértelmezett.
 
 * A dokumentum az élettartam beállításához meg kell adnia egy nullától eltérő pozitív szám, amely megadja, hogy az az időtartam (másodpercben), a dokumentum lejárati után utolsó módosításának időbélyeg a dokumentum (`_ts`).
 * Ha egy dokumentum TTL mező nem rendelkezik, a gyűjtemény az alapértelmezett fog vonatkozni.
@@ -150,7 +147,7 @@ A TTL letiltása teljes egészében a gyűjtemény, majd állítsa le a háttér
 
 <a id="ttl-and-index-interaction"></a> 
 ## <a name="ttl-and-index-interaction"></a>Élettartam és index interakció
-Hozzáadása vagy módosítása egy gyűjteményt az élettartam beállítása módosítja az alapul szolgáló index. Amikor az élettartam értéke a be-vagy kikapcsolása módosul, a gyűjtemény újraindexelése van. Ha módosítja az indexelési házirendet konzisztens az indexelési mód esetén, felhasználók nem láthatja az index olyan módosítás. Az indexelő mód esetén a Lusta van beállítva az index mindig elfogja, és az élettartam értéke megváltozott, ha az index teljesen új újból létrejön. Az élettartam értéke megváltozott, és az index mód értéke Lusta, ha az index rebuild során végzett lekérdezések nem adják vissza teljes vagy a megfelelő eredményeket.
+Hozzáadása vagy módosítása egy gyűjteményt az élettartam beállítása módosítja az alapul szolgáló index. Amikor az élettartam értéke a be-vagy kikapcsolása módosul, a gyűjtemény újraindexelése van. Ha módosítja az indexelési házirendet konzisztens az indexelési mód esetén, felhasználók nem láthatja az index olyan módosítás. Az indexelő mód értéke Lusta, ha az index mindig elfogja, és az élettartam értéke megváltozott, ha az index teljesen új újból létrejön. Az élettartam értéke megváltozott, és az index mód értéke Lusta, ha az index rebuild során végzett lekérdezések nem adják vissza teljes vagy a megfelelő eredményeket.
 
 Ha adott vissza pontos adat van szüksége, ne módosítsa az élettartam értéke Ha az indexelési mód beállítása Lusta. Ideális esetben konzisztens index lekérdezés konzisztens eredmények biztosítása kell kiválasztani. 
 
@@ -169,7 +166,7 @@ Nem, nem lesznek nincs hatással az keresztül (élettartam) – Cosmos DB lejá
 
 **A TTL-szolgáltatás csak vonatkozik a teljes dokumentumot, vagy is szeretnék egyes dokumentum tulajdonságértékek lejárnak?**
 
-TTL-t a teljes dokumentum vonatkozik. Ha azt szeretné, csak egy dokumentumot egy részének lejár, majd javasoljuk, hogy az a része kinyerése a fő dokumentum külön "kapcsolódó" dokumentumhoz, és majd használni a TTL-t a kibontott dokumentumon.
+TTL-t a teljes dokumentum vonatkozik. Ha azt szeretné, csak egy dokumentumot egy részének lejár, majd javasoljuk, hogy az a része kinyerése a dokumentum egy külön "kapcsolódó" dokumentumba, és majd használjon a TTL-t a kibontott dokumentumon.
 
 **Rendelkezik a TTL-t a szolgáltatás indexelési különleges követelményeket?**
 

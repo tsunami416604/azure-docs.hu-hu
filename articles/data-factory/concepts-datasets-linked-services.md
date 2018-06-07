@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 17043ef3450554dd4ea272a4b7732367bae8e369
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616005"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Adatkészletek és az Azure Data Factory összekapcsolt szolgáltatások 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +37,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A **csővezeték** logik
 
 Most egy **dataset** egyszerűen mutat, vagy a használni kívánt adatforrásra hivatkozik adatok nevű nézete a **tevékenységek** bemenetekhez és kimenetekhez. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt a Blob Storage-mappát, amelyből a tevékenység beolvassa az adatokat.
 
-Mielőtt létrehozna egy adatkészletet, létre kell hoznia egy **társított szolgáltatás** az adattároló csatolása az adat-előállítóban. A társított szolgáltatások nagyon hasonlóak a kapcsolati karakterláncokhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Azt gondolja, hogy így; a dataset jelenti. a csatolt adattárolókhoz belül az adatok szerkezete, és a társított szolgáltatás határozza meg a kapcsolat az adatforráshoz. Például egy Azure Storage kapcsolódó szolgáltatás hivatkozások egy tárfiókot az adat-előállítóban. Egy Azure Blob-adathalmazra jelenti. a blob-tároló és a mappában, hogy Azure storage-fiók, amely tartalmazza a bemeneti BLOB feldolgozásra.
+Mielőtt létrehozna egy adatkészletet, létre kell hoznia egy **társított szolgáltatás** az adattároló csatolása az adat-előállítóban. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Azt gondolja, hogy így; a dataset jelenti. a csatolt adattárolókhoz belül az adatok szerkezete, és a társított szolgáltatás határozza meg a kapcsolat az adatforráshoz. Például egy Azure Storage kapcsolódó szolgáltatás hivatkozások egy tárfiókot az adat-előállítóban. Egy Azure Blob-adathalmazra jelenti. a blob-tároló és a mappában, hogy Azure storage-fiók, amely tartalmazza a bemeneti BLOB feldolgozásra.
 
 Íme egy példa. Adatok másolása Blob-tároló SQL-adatbázis, a két társított szolgáltatások létrehozásához: Azure Storage és az Azure SQL Database. Ezután hozzon létre két adatkészletet: Azure Blob-adathalmazra (amely az Azure tárolás társított szolgáltatásának vonatkozik) és az Azure SQL-tábla a dataset (amely a kapcsolódó Azure SQL Database szolgáltatás vonatkozik). Az Azure Storage és az Azure SQL Database kapcsolódó szolgáltatások tartalmaznia az csatlakozni az Azure Storage és az Azure SQL Database, illetve futásidőben használja a Data Factory-kapcsolati karakterláncok. Az Azure Blob-adathalmazra blobtárolót és a bemeneti BLOB a Blob Storage tárolóban tartalmazó blob mappát adja meg. Az Azure SQL-tábla adatkészletet az SQL-tábla az SQL-adatbázis, amelyre az adatok másolása az határozza meg.
 

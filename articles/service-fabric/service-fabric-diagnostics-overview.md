@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: srrengar
-ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f7fe07500f877cf34626e53361c9c68dd459a5e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643175"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Megfigyelési és diagnosztikai az Azure Service Fabric
 
@@ -46,9 +47,6 @@ A Service Fabric események a kezdő verzióról széles választékát nyújtja
 Azt javasoljuk, hogy használja a EventStore gyors elemzés céljára, valamint hogy a pillanatkép meghatározni, hogy a fürt működéséről, és ha dolog hogy a várt. A naplók és a rendszer a fürt által létrehozott események gyűjtéséhez általában javasoljuk a [Azure Diagnostics bővítmény](service-fabric-diagnostics-event-aggregation-wad.md). Ez jól integrálható a Service Fabric elemzés, OMS Log Analytics Service Fabric bizonyos megoldást, amely tartalmaz egy egyéni irányítópultot Service Fabric-fürtök megfigyelésére szolgáló, és lehetővé teszi, hogy a fürt események és riasztások beállítása. További információk a következő [esemény elemzésekről az OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
  További, a fürt figyelésével kapcsolatos [Platform szintű esemény és a naplófájlok generációs](service-fabric-diagnostics-event-generation-infra.md).
-
-
- ![OMS ú megoldás](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
 ## <a name="performance-monitoring"></a>Teljesítményfigyelés
 Az alapul szolgáló infrastruktúra figyelése része egy kulcs állapotát, a fürt és az erőforrás-használat ismertetése. Méri a rendszer teljesítményét több tényezőtől függ, amelyek általában mérik a fő teljesítménymutatók (KPI-k). A Service Fabric vonatkozó KPI-k rendelhetők metrikakészletet teljesítményszámlálók, a fürt a csomópontok gyűjteni kell.

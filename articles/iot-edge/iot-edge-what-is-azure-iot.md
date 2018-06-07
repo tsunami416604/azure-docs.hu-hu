@@ -1,28 +1,23 @@
 ---
-title: "Azure-megoldások az eszközök internetes hálózatához (IoT Edge) | Microsoft Docs"
-description: "Egy példa IoT-megoldásarchitektúra áttekintése, és hogy miként kapcsolódik eszközökhöz, az Azure IoT Hub szolgáltatáshoz, az Azure IoT eszközoldali SDK-hoz, az Azure IoT szolgálatásoldali SDK-khoz és egyéb Azure-szolgáltatásokhoz."
-services: iot-hub
-documentationcenter: 
+title: Azure-megoldások az eszközök internetes hálózatához (IoT Edge) | Microsoft Docs
+description: Egy példa IoT-megoldásarchitektúra áttekintése, és hogy miként kapcsolódik eszközökhöz, az Azure IoT Hub szolgáltatáshoz, az Azure IoT eszközoldali SDK-hoz, az Azure IoT szolgálatásoldali SDK-khoz és egyéb Azure-szolgáltatásokhoz.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a859e379-dca7-42fa-bdf6-1125c86ad140
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: 587b733106d511ec63d71f67a06e520324a3e594
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
-ms.translationtype: HT
+ms.openlocfilehash: bd59e740803f8f0e6f5f542805d615772efba913
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630340"
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure IoT Edge egy olyan Azure-beli szolgáltatás, amely lehetővé teszi elemzések és adatfeldolgozási műveletek elvégzését a peremhálózaton. Az IoT Edge segítségével felruházhatja az eszközeit egy tárolóalapú kóddal, amely vagy a használt Azure-szolgáltatásokból közvetlenül lekért logikát, vagy az Ön saját megoldásspecifikus kódját tartalmazza. Ez lehetővé teszi, hogy az adott eszköz:
 

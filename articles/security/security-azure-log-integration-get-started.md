@@ -12,21 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/20/2018
-ms.author: TomSh
+ms.date: 05/25/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 3e229c4db44fc3c8d16aa2bd0a014fb1acc64a5e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8ceffb666eb18ee7b087ad1e1dbc27b57388ee49
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641196"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Az Azure diagnosztikai naplózás és a Windows-eseménytovábbítás Azure napló-integráció
 
-Azure napló-integráció nyújt a felhasználók egy alternatív Ha egy [Azure figyelő](../monitoring-and-diagnostics/monitoring-get-started.md) connector nem érhető el a biztonsági incidens és az esemény felügyeleti SIEM-szállítótól. Azure napló-integráció elérhetővé teszi az Azure naplói a siem-rendszerébe, hogy létrehozhasson egy egységes biztonsági irányítópult minden eszköz.
+Csak akkor ajánlott Azure naplóelemzés integrációs Ha egy [Azure figyelő](../monitoring-and-diagnostics/monitoring-get-started.md) connector nem érhető el a biztonsági incidens és az esemény felügyeleti SIEM-forgalmazójától.
 
-> [!NOTE]
-> Azure-figyelővel kapcsolatos további információkért lásd: [Ismerkedés az Azure-figyelő](../monitoring-and-diagnostics/monitoring-get-started.md). Az Azure-figyelő összekötő állapotával kapcsolatos további információkért forduljon a SIEM gyártójához.
+Azure napló-integráció elérhetővé teszi az Azure naplói a siem-rendszerébe, hogy létrehozhasson egy egységes biztonsági irányítópult minden eszköz.
+Az Azure-figyelő összekötő állapotával kapcsolatos további információkért forduljon a SIEM gyártójához.
 
 > [!IMPORTANT]
 > Ha elsődleges érdeklődését van a virtuális gép naplók gyűjtésére, legtöbb SIEM-beszállítót a megoldás vegye fel ezt a beállítást. A SIEM gyártója által biztosított összekötő használata mindig az előnyben részesített megoldás.
@@ -118,7 +119,7 @@ Alapszintű telepítő befejezése után készen áll a telepítés utáni és e
   > [!NOTE]
   > Visszajelzés nem érkezik, ha a parancs sikeres. 
 
-4. Figyelheti, hogy a rendszer, meg kell, amely az Azure Diagnostics szolgál a tárfiók nevét. Az Azure-portálon lépjen **virtuális gépek**. Keresse meg a virtuális gépet, a figyelheti. Az a **tulajdonságok** szakaszban jelölje be **diagnosztikai beállítások**.  Ezt követően válassza **ügynök**. Jegyezze meg a megadott tárfiók neve. A fiók nevét egy későbbi lépésben van szüksége.
+4. Figyelheti, hogy a rendszer, meg kell, amely az Azure Diagnostics szolgál a tárfiók nevét. Az Azure-portálon lépjen **virtuális gépek**. Keresse meg a Windows rendszerű virtuális gép, amelyet felügyel. Az a **tulajdonságok** szakaszban jelölje be **diagnosztikai beállítások**.  Ezt követően válassza **ügynök**. Jegyezze meg a megadott tárfiók neve. A fiók nevét egy későbbi lépésben van szüksége.
 
   ![Képernyőfelvétel az Azure diagnosztikai beállítások panelen](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
@@ -134,14 +135,14 @@ Alapszintű telepítő befejezése után készen áll a telepítés utáni és e
   4. Jelentkezzen be az Azure-ba.
   5. Győződjön meg arról, hogy látja-e a tárfiók, az Azure Diagnostics konfigurált: 
 
-    ![Képernyőkép a Tártallózó storage-fiók](./media/security-azure-log-integration-get-started/storage-explorer.png)
+   ![Képernyőkép a Tártallózó storage-fiók](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
   6. Néhány lehetőség alatt tárfiókok jelennek meg. A **táblák**, láthatja, hogy a következő táblába **WADWindowsEventLogsTable**.
 
   Ha a figyelés nem engedélyezett, a virtuális gép létrehozásakor, engedélyezheti azt, a fentebb leírt módon.
 
 
-## <a name="integrate-azure-diagnostics-logging"></a>Integrálása az Azure diagnosztikai naplózás
+## <a name="integrate-windows-vm-logs"></a>Windows virtuális gép naplók integrálása
 
 Ebben a lépésben konfigurálja a naplófájlokat tartalmazó tárfiókot csatlakozni Azure napló integrációs szolgáltatást futtató számítógép.
 
@@ -178,7 +179,7 @@ A biztonságitár-kulcs beszerzése, kövesse az alábbi lépéseket:
 
   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  Példa: 
+  Példa:
   
   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
@@ -207,8 +208,37 @@ Ha probléma merül fel a telepítés és konfigurálás során, létrehozhat eg
 
 Egy másik támogatási lehetőség az [Azure napló integrációs MSDN fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Az MSDN fórumon az a közösségi kérdések megválaszolásával és megosztása, tippeket és használatáról a legtöbbet hozhatja ki Azure napló integrációs trükkök is támogatja. Az Azure napló integrációs csoport is ezen a fórumon figyeli. Amikor a következőkre segítenek.
 
+## <a name="integrate-azure-activity-logs"></a>Az Azure tevékenységi naplóit integrálása
+
+Az Azure tevékenységnapló egy előfizetési napló, amely történt az Azure-előfizetés szintű események betekintést nyújt. Ez magában foglalja az Azure Resource Manager működési adatokat a frissítésekre a szolgáltatás állapotával kapcsolatos események adatait számos. Ez a napló az Azure Security Center riasztásait is megtalálhatók.
+> [!NOTE]
+> A cikkben ismertetett-megkezdése előtt át kell néznie a [Ismerkedés](security-azure-log-integration-get-started.md) cikk és a lépéseket van.
+
+### <a name="steps-to-integrate-azure-activity-logs"></a>Azure tevékenységi naplóit integrálásának lépései
+
+1. Nyissa meg a parancssort, és futtassa a parancsot:  ```cd c:\Program Files\Microsoft Azure Log Integration```
+2. Futtassa ezt a parancsot:  ```azlog createazureid```
+
+    Ez a parancs kéri az Azure bejelentkezési. A parancs majd hoz létre egy Azure Active Directory szolgáltatás egyszerű az Azure AD-bérlőkkel, amely az Azure-előfizetéseket, amelyben a bejelentkezett felhasználó nem rendszergazda, a társadminisztrátorának vagy a tulajdonos tárolni. A parancs sikertelen lesz, ha a bejelentkezett felhasználó csak a Vendég felhasználó az Azure AD-bérlő. Hitelesítés az Azure-bA az Azure AD segítségével történik. Az Azure AD identity arra, hogy az Azure-előfizetések olvasási hozzáférést egy egyszerű Azure napló integrációs szolgáltatás létrehozásakor létrejön.
+3.  A következő parancsot az előző lépés a hozzáférést az olvasás a műveletnapló az előfizetés létrehozott egyszerű Azure napló integrációs szolgáltatás engedélyezése. Kell lennie az előfizetés tulajdonosa a parancs futtatásához.
+
+    ```Azlog.exe authorize subscriptionId``` Példa:
+
+```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+4.  Ellenőrizze a következő mappák győződjön meg arról, hogy az Azure Active Directory JSON naplófájlok bennük jönnek létre:
+    - C:\Users\azlog\AzureResourceManagerJson
+    - C:\Users\azlog\AzureResourceManagerJsonLD
+
+> [!NOTE]
+> A JSON-fájlokban szereplő információk üzembe a biztonsági információk és eseménykezelő rendszer (SIEM) kapcsolatos tudnivalókat forduljon a SIEM gyártójához.
+
+Közösségi támogatás érhető el a [Azure napló integrációs MSDN fórumon](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Ezen a fórumon lehetővé teszi, hogy a személyek Azure napló integráció közösségi egymással kérdéseket, válaszokat, tippeket és trükkök támogatásához. Ezenkívül az Azure napló integrációs csoport ezen a fórumon figyeli, és amikor azt is segít.
+
+Is megnyithatja a [támogatási kérelem](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki a napló-integráció a szolgáltatást, amelynek támogatási kérelmet.
+
 ## <a name="next-steps"></a>További lépések
-Azure napló integrációs kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+
+Azure napló integrációs kapcsolatos további tudnivalókért tekintse meg a következő cikkeket: a cikkben ismertetett-megkezdése előtt meg kell tekintse át a Get elindult és végrehajtásához a hiba.
 
 * [Azure napló-integráció az Azure-naplók](https://www.microsoft.com/download/details.aspx?id=53324). A letöltőközpontból részleteit, rendszerkövetelmények és telepítési utasításait Azure napló integrációs tartalmazza.
 * [Bevezetés az Azure Naplóelemzés integrációs](security-azure-log-integration-overview.md). Ez a cikk bemutatja a Azure napló integrációs, annak főbb funkcióit és annak működéséről.

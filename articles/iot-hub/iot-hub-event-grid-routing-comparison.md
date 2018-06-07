@@ -1,22 +1,19 @@
 ---
-title: "Esemény rács, IoT hub útválasztási összehasonlítása |} Microsoft Docs"
-description: "Az IoT-központ lehetővé teszi a saját üzenet az útválasztási szolgáltatás, de együttműködik a esemény rács esemény közzététele. Hasonlítsa össze a két funkció."
-services: iot-hub
-documentationcenter: 
+title: Esemény rács, IoT hub útválasztási összehasonlítása |} Microsoft Docs
+description: Az IoT-központ lehetővé teszi a saját üzenet az útválasztási szolgáltatás, de együttműködik a esemény rács esemény közzététele. Hasonlítsa össze a két funkció.
 author: kgremban
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 5a0a97ccf033b2981ba13be455482146ba212228
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 320320687e441a1296065eb9d0b7b12771036459
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636171"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Hasonlítsa össze az üzenet útválasztás és az IoT-központ esemény rács
 
@@ -34,10 +31,10 @@ Az Azure IoT-központ lehetővé teszi a csatlakoztatott eszközökből adatok f
 | **Eszközre küldött üzenetek** | Igen, üzenet-útválasztás használható telemetriai adatokat. | Nem, esemény rács csak használható nem telemetriai adatokat az IoT-központ események. |
 | **Esemény típusa** | Igen, üzenet-útválasztás jelenthetik-e kettős módosításokat, és az eszköz életciklusa események. | Igen, esemény rács is tud jelentéseket, amikor az eszköz regisztrálva van az IoT-központ, és eszközök törlésekor. |
 | **Rendezés** | Igen, az események megmarad.  | Események sorrendje nem, nem garantált. | 
-| **Maximális méret** | 256 KB, device-to-cloud | 64 KB |
+| **Maximális méret** | 256 KB, eszköz-felhő | 64 KB |
 | **Szűrés** | SQL-szerű nyelv szűrési gazdag támogatja a szűrést, a fejlécek és a szervezetek. Tekintse meg a [IoT-központ lekérdezési nyelv](iot-hub-devguide-query-language.md). | Szűrés alapuló utótag/eszköz azonosítóját, amely hierarchikus szolgáltatásokat, mint a tárolás esetén működik. |
 | **Végpontok** | <ul><li>Eseményközpont</li> <li>Storage-blobba</li> <li>Service Bus-üzenetsor</li> <li>Service Bus-témák</li></ul><br>10 egyéni végpontokat fizetős IoT Hub termékváltozatok (S1, S2 és S3) korlátozódnak. az IoT-központ / 100 útvonalak hozhatók létre. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Eseményközpont</li> <li>Logic Apps</li> <li>Microsoft Flow</li> <li>Külső szolgáltatások Webhookok keresztül</li></ul><br>Végpontok legfrissebb listáját lásd: [esemény rács eseménykezelők](../event-grid/overview.md#event-handlers). |
-| **Költség** | Nincs külön díjmentes üzenet útválasztást. Csak az IoT hubhoz telemetriai érkező fel van töltve. Például ha egy üzenetet, három különböző végpontokra irányítása, díját is felszámítjuk csak egy üzenet. | Nincs az IoT-központ nem kell fizetni. Esemény rács kínál havonta az első 100 000 műveletek szabad, és majd $0,60 ezt követően millió műveleteket. |
+| **Költségek** | Nincs külön díjmentes üzenet útválasztást. Csak az IoT hubhoz telemetriai érkező fel van töltve. Például ha egy üzenetet, három különböző végpontokra irányítása, díját is felszámítjuk csak egy üzenet. | Nincs az IoT-központ nem kell fizetni. Esemény rács kínál havonta az első 100 000 műveletek szabad, és majd $0,60 ezt követően millió műveleteket. |
 
 Az IoT-központ üzenet útválasztási és esemény rács kell Hasonlóságok túl, a következő táblázat részletezi, amelyek:
 

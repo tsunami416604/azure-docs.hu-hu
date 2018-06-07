@@ -1,23 +1,19 @@
 ---
-title: "Útmutató az Azure IoT Hub X.509 biztonsági |} Microsoft Docs"
-description: "Ismerkedés az Azure IoT hub szimulált környezetben X.509-alapú biztonsági."
-services: iot-hub
-documentationcenter: 
+title: Útmutató az Azure IoT Hub X.509 biztonsági |} Microsoft Docs
+description: Ismerkedés az Azure IoT hub szimulált környezetben X.509-alapú biztonsági.
 author: dsk-2015
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: 93f9099d7aef1161f7789e7b21a88a8691cb2a8e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: dd5b9f196f911011d9dd606d46f515b88d338531
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635576"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az Azure IoT hub X.509 biztonsági beállítása
 
@@ -67,7 +63,7 @@ Ezeket a lépéseket mutatja be egy új hitelesítésszolgáltató hozzáadása 
  
 9. Töltse fel az eredményül kapott aláírás a portálon az IoT hub 8. lépésben fent. Az a **Tanúsítványadatok** panel az Azure portálon lépjen a **ellenőrző tanúsítvány .pem vagy .cer fájl**, és válassza ki például az aláírás *VerifyCert4.cer*hozta létre a minta PowerShell parancs segítségével a _Fájlkezelőben_ mellett az ikonra.
 
-10. Ha a tanúsítvány sikeresen feltöltődött, kattintson **ellenőrizze**. A **állapot** a tanúsítvány módosításait  **_ellenőrizve_**  a a **tanúsítványok** panelen. Kattintson a **frissítése** Ha nem frissíti automatikusan.
+10. Ha a tanúsítvány sikeresen feltöltődött, kattintson **ellenőrizze**. A **állapot** a tanúsítvány módosításait **_ellenőrizve_** a a **tanúsítványok** panelen. Kattintson a **frissítése** Ha nem frissíti automatikusan.
 
    ![Ellenőrző tanúsítvány feltöltése](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
 
@@ -80,7 +76,7 @@ Ezeket a lépéseket mutatja be egy új hitelesítésszolgáltató hozzáadása 
 
 2. Kattintson a **Hozzáadás** új eszköz hozzáadásához. 
 
-3. Egy jól hangzó megjelenítési nevet adjon a **Eszközazonosító**, és válassza ki  **_X.509 hitelesítésszolgáltató aláírt_**  , a **hitelesítési típus**. Kattintson a **Save** (Mentés) gombra.
+3. Egy jól hangzó megjelenítési nevet adjon a **Eszközazonosító**, és válassza ki **_X.509 hitelesítésszolgáltató aláírt_** , a **hitelesítési típus**. Kattintson a **Save** (Mentés) gombra.
 
    ![X.509-eszköz létrehozása a portálon](./media/iot-hub-security-x509-get-started/create-x509-device.png)
 
@@ -170,7 +166,7 @@ Ezután láthatja, hogyan hozhat létre egy C# alkalmazást, az X.509 eszköz re
 7. Mivel ez az alkalmazás fér hozzá egy *.pfx* fájlt kell végrehajtani ezt a *Admin* mód. A Visual Studio megoldás felépítéséhez. Nyisson meg egy új parancsablakot, mint egy **rendszergazda**, és lépjen abba a mappába, amely tartalmazza az ebben a megoldásban. Keresse meg a *bin/Debug* belül a megoldás mappa elérési útja. Az alkalmazás futtatásához **SimulateX509Device.exe** a a _Admin_ parancsablakot. Meg kell jelennie az eszközt sikeresen csatlakozik a központ és az események küldése. 
    ![Eszköz-alkalmazás futtatása](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 Az IoT-megoldásból biztosításával kapcsolatos további tudnivalókért lásd:
 
 * [Az IoT ajánlott biztonsági eljárások][lnk-security-best-practices]
@@ -179,7 +175,7 @@ Az IoT-megoldásból biztosításával kapcsolatos további tudnivalókért lás
 
 Az IoT-központ képességeit további megismeréséhez lásd:
 
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 [lnk-security-best-practices]: iot-hub-security-best-practices.md
 [lnk-security-architecture]: iot-hub-security-architecture.md

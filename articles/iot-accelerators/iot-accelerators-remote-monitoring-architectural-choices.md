@@ -1,28 +1,25 @@
 ---
 title: Távoli figyelés megoldás architekturális lehetőségek - Azure |} Microsoft Docs
 description: Ez a cikk ismerteti a használt architekturális és technikai lehetőségeket távoli figyelése
-services: iot-suite
-suite: iot-suite
 author: timlaverty
 manager: camerons
 ms.author: timlav
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 04/30/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 607b8aeb2f986eebddf8fe13b88e7f3bc7b4494b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 6c4bf0e4bf0a6c1a791cf762ec9bb44ed5c0b1bd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627688"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Távoli figyelés architekturális lehetőségek
 
-Az Azure IoT távoli figyelése (RM) egy nyílt forráskódú, MIT licenccel rendelkező, megoldásgyorsító, amely bemutatja a közös IoT-forgatókönyvek esetén például az eszköz kapcsolatot, a kezelés és a adatfolyam feldolgozása, így az ügyfelek a fejlesztési folyamatokkal meggyorsíthatja a.  Erőforrás-kezelő a következő közzétett ajánlott Azure IoT-referenciaarchitektúra [Itt](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/).  
+Az Azure IoT távoli megfigyelési megoldásgyorsító egy nyílt forráskódú, MIT licenccel rendelkező, amely bemutatja a közös IoT-forgatókönyvek esetén például az eszköz kapcsolatot, a kezelés és a adatfolyam feldolgozása, így az ügyfelek felgyorsíthatja a fejlesztési megoldásgyorsító a folyamatot.  A távoli figyelésére szolgáló megoldás a következő közzétett ajánlott Azure IoT-referenciaarchitektúra [Itt](https://aka.ms/iotrefarchitecture).  
 
-Ez a cikk ismerteti a használt architekturális és technikai minden a alrendszereket számára választott RM, és figyelembe veendő alternatívák ismerteti.  Fontos megjegyezni, hogy a műszaki lehetőségeket erőforrás-kezelő nem az egyetlen lehetőség a távoli felügyeleti IoT-megoldás megvalósításához.  A technikai kivitelezéstől készítéséhez sikeres alkalmazásának az alapterv és a képességek felhasználói élmény és a felhasználói megoldás megvalósításának függőleges alkalmazások igényeihez megfelelően kell módosítani.
+A cikk az egyes, a távoli figyelésére szolgáló megoldás a alrendszerek használt architekturális és technikai lehetőségeket ismerteti, valamint figyelembe veendő alternatívák ismerteti.  Fontos megjegyezni, hogy a távoli figyelésére szolgáló megoldás műszaki lehetőségeket nem valósítja meg a távoli felügyeleti IoT-megoldás az egyetlen lehetőség.  A technikai kivitelezéstől készítéséhez sikeres alkalmazásának az alapterv és a képességek felhasználói élmény és a felhasználói megoldás megvalósításának függőleges alkalmazások igényeihez megfelelően kell módosítani.
 
 ## <a name="architectural-choices"></a>Az architektúra lehetőségek
 
@@ -32,29 +29,29 @@ Az IoT-alkalmazásokhoz felhő natív, mikroszolgáltatási, és kiszolgáló n�
 
 ## <a name="core-subsystem-technology-choices"></a>Alapvető alrendszer technológia lehetőségek
 
-Ez a szakasz részletesen technológia lehetőségeket RM az egyes a core alrendszerei.
+Ez a szakasz részletesen technológia lehetőségeket a távoli figyelésére szolgáló megoldás az egyes a core alrendszerei.
 
 ![Core diagramja](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png) 
 
 ### <a name="cloud-gateway"></a>Átjáró
-Az Azure IoT Hub lesz az erőforrás-kezelő Felhőátjáróhoz.  Az IoT Hub-eszközökkel biztonságos, kétirányú kommunikációs kínál. További tudnivalók az IoT-központ [Itt](https://azure.microsoft.com/services/iot-hub/). Az IoT-eszköz kapcsolat a .NET Core és a Java IoT Hub SDK-k használják.  Az SDK-k kínálnak burkolók körül újrapróbálkozási, például az IoT Hub REST API-t és a leíró forgatókönyvek 
+Az Azure IoT Hub lesz a távoli figyelési megoldást felhőátjáróhoz.  Az IoT Hub-eszközökkel biztonságos, kétirányú kommunikációs kínál. További tudnivalók az IoT-központ [Itt](https://azure.microsoft.com/services/iot-hub/). Az IoT-eszköz kapcsolat a .NET Core és a Java IoT Hub SDK-k használják.  Az SDK-k burkolók körül az IoT Hub REST API-t és a forgatókönyvek használhatók, mint az újrapróbálkozások kezelni.
 
 ### <a name="stream-processing"></a>Stream-feldolgozás
-Az adatfolyam feldolgozása RM összetett szabály feldolgozása Azure Stream Analytics használ.  A felhasználó, aki a egyszerűbb szabályok esetén azt is támogatja az egyszerű szabályok feldolgozása egy egyéni mikroszolgáltatási bár ez nem része a mezőbe telepítési kívüli telepítés. A referencia-architektúrában azt javasolja, hogy az Azure Functions egyszerű szabály feldolgozása és használható Azure Stream Analytics (ASA) az összetett szabály feldolgozása.  
+Az adatfolyam feldolgozása a távoli figyelésére szolgáló megoldás használja Azure Stream Analytics összetett szabály feldolgozása.  A felhasználó, aki a egyszerűbb szabályok esetén azt is támogatja az egyszerű szabályok feldolgozása egy egyéni mikroszolgáltatási bár ez nem része a mezőbe telepítési kívüli telepítés. A referencia-architektúrában azt javasolja, hogy az Azure Functions egyszerű szabály feldolgozása és használható Azure Stream Analytics (ASA) az összetett szabály feldolgozása.  
 
 ### <a name="storage"></a>Storage
-A tároláshoz Cosmos DB szolgál az összes tárolási igényeinek megfelelően: cold tárolási, a meleg tároló, a szabályok tárolási és a riasztást. Végezzük jelenleg áthelyezése az Azure blob storage a referencia-architektúrában által javasolt módon.  Cosmos DB az IoT-alkalmazásokhoz ajánlott általános célú meleg tárolási megoldás, bár sok használati esetek megoldások Azure idő adatsorozat elemzések és az Azure Data Lake például megfelelőek.
+Tárolási, az Azure Cosmos DB használt összes tárolási igényeinek: cold tárolási, a meleg tároló, a szabályok tárolási és a riasztást. Végezzük jelenleg áthelyezése az Azure blob storage a referencia-architektúrában által javasolt módon.  Azure Cosmos DB az IoT-alkalmazásokhoz ajánlott általános célú meleg tárolási megoldás, bár sok használati esetek megoldások Azure idő adatsorozat elemzések és az Azure Data Lake például megfelelőek.
 
 ### <a name="business-integration"></a>Üzleti integráció
-Az erőforrás-kezelő üzleti integrációs riasztásokat, amelyek meleg tárolási kerülnek generációja korlátozódik. További üzleti integrációja a megoldás az Azure Logic Apps integrálásával hajtható végre.
+A távoli figyelésére szolgáló megoldás az üzleti integrációs riasztásokat, amelyek meleg tárolási kerülnek generációja korlátozódik. További üzleti integrációja a megoldás az Azure Logic Apps integrálásával hajtható végre.
 
 ### <a name="user-interface"></a>Felhasználói felület
 A webes felhasználói felület a JavaScript reagálni épül.  Egy gyakran használt iparági webes felhasználói felület keretrendszert biztosít és egyéb népszerű keretrendszerek, például a Angular hasonló.  
 
 ### <a name="runtime-and-orchestration"></a>Futásidejű és vezénylési
-Az alkalmazás futtatókörnyezete, az erőforrás-kezelő alrendszer implementációjában választott Docker tárolók Kubernetes (K8s), mint a horizontális skálázhatóságot az orchestrator.  Ez az architektúra lehetővé teszi, hogy az egyes méretezési definition / alrendszer azonban azt eredményezi azok háromszorosa frissítése virtuális gépek és a tárolók biztonsági szempontból a DevOps költségek.  A Docker & K8s ilyen például a PaaS szolgáltatások (például az Azure App Service) mikroszolgáltatások rendez, vagy az orchestrator használatával a Service Fabric, Vezénylőtípusú, Swarm, stb.
+Az alkalmazás futtatókörnyezete, az alrendszer végrehajtása a távoli figyelésére szolgáló megoldás a választott Kubernetes Docker tárolók, mint a horizontális skálázhatóságot az orchestrator.  Ez az architektúra lehetővé teszi, hogy az egyes méretezési definition / alrendszer azonban azt eredményezi azok háromszorosa frissítése virtuális gépek és a tárolók biztonsági szempontból a DevOps költségek.  Docker és Kubernetes ilyen például a PaaS szolgáltatások (például az Azure App Service) mikroszolgáltatások rendez, vagy az orchestrator használatával a Service Fabric, Vezénylőtípusú, Swarm, stb.
 
 ## <a name="next-steps"></a>További lépések
-* Az erőforrás-kezelő megoldás üzembe helyezéséhez [Itt](https://www.azureiotsuite.com/).
+* A távoli figyelésére szolgáló megoldás telepítése [Itt](https://www.azureiotsolutions.com/).
 * Megismerkedhet a Githubon code [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) és [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/).  
-* További tudnivalók az IoT-Referenciaarchitektúra [Itt](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/).
+* További tudnivalók az IoT-Referenciaarchitektúra [Itt](https://aka.ms/iotrefarchitecture).

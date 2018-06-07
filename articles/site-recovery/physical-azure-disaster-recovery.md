@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/23/2018
 ms.author: raynew
-ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643311"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>A helyszíni fizikai kiszolgálók Azure-bA vész-helyreállítási beállítása
 
@@ -27,18 +28,25 @@ Az oktatóanyag bemutatja, hogyan állíthat be a helyszíni fizikai Windows és
 > * Replikációs házirend létrehozása
 > * A kiszolgáló replikáció engedélyezése
 
+[Tekintse át a architektúra](concepts-hyper-v-to-azure-architecture.md) a vész-helyreállítási forgatókönyv esetében.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
-- Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](physical-azure-architecture.md).
+- Győződjön meg arról, hogy tudomásul veszi a [architektúrája és összetevői](physical-azure-architecture.md) ehhez a forgatókönyvhöz.
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](vmware-physical-secondary-support-matrix.md).
 - Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek [Azure virtuális gép](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Azure előkészítése. Azure-előfizetéssel, Azure virtuális hálózat és a storage-fiók szükséges.
 - Egy fiók előkészítése automatikus telepíteni a mobilitási szolgáltatást minden replikálni kívánt kiszolgálón.
 
-> [!NOTE]
-> Mielőtt elkezdené, vegye figyelembe, hogy feladatátvétel az Azure-ba, fizikai kiszolgálók nem lehet nem vissza a helyszíni fizikai gépek. A feladatvisszavétel csak vissza a VMware virtuális gépek. 
+Mielőtt elkezdené, vegye figyelembe, hogy:
+
+- Feladatátvétel az Azure-bA a fizikai kiszolgálók vissza a helyszíni fizikai gépek nem sikerült. A feladatvisszavétel csak vissza a VMware virtuális gépek. 
+- Ez az oktatóanyag beállítja a fizikai kiszolgáló vész-helyreállítási az Azure-bA a legegyszerűbb beállításokkal. Ha szeretné megismerni az egyéb lehetőséget, akkor olvassa végig útmutató útmutatókat:
+    - Állítsa be a [forrásként](physical-azure-set-up-source.md), beleértve a Site Recovery konfigurációs kiszolgáló.
+    - Állítsa be a [replikációs cél](physical-azure-set-up-target.md).
+    - Konfigurálja a [replikációs házirend](vmware-azure-set-up-replication.md), és [engedélyezze a replikálást](vmware-azure-enable-replication.md).
 
 
 ### <a name="set-up-an-azure-account"></a>Az Azure-fiók beállítása

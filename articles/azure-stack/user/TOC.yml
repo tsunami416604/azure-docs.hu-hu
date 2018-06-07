@@ -35,9 +35,9 @@
       href: azure-stack-rest-api-use.md
     - name: Biztonság és megfelelőség
       items:
-        - name: Az RBAC kezelése
+        - name: Szerepköralapú hozzáférés-vezérlés alkalmazása
           href: azure-stack-manage-permissions.md
-        - name: Szolgáltatásnevek létrehozása
+        - name: Használja a szolgáltatás rendszerbiztonsági tagok
           href: Azure-stack-create-service-principals.md
     - name: Szolgáltatások használata
       items:
@@ -107,7 +107,7 @@
           items:
             - name: Az Azure Stack PowerShell telepítése
               href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: Eszközök letöltése
+            - name: Töltse le az Azure-verem eszközök
               href: azure-stack-powershell-download.md
             - name: A PowerShell konfigurálása – Felhasználó
               href: azure-stack-powershell-configure-user.md
@@ -128,13 +128,13 @@
                   href: azure-stack-version-profiles-python.md
                 - name: Erőforrás-szolgáltató profilok által támogatott API-k
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Szabályzatmodul használata
+        - name: Az Azure verem házirend modul használata
           href: azure-stack-policy-module.md
         - name: Sablonok használata
           items:
             - name: Sablonok áttekintése
               href: azure-stack-arm-templates.md
-            - name: Sablonok fejlesztése
+            - name: Sablon kapcsolatos szempontok
               href: azure-stack-develop-templates.md
             - name: Sablonok ellenőrzése
               href: azure-stack-validate-templates.md

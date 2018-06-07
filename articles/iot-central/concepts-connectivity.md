@@ -1,18 +1,19 @@
 ---
 title: Az Azure IoT-központ eszközkapcsolatok |} Microsoft Docs
 description: Ez a cikk az Azure IoT-központ eszközkapcsolatok kapcsolatos főbb fogalmakat be
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: conceptual
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: 00b621a4635ef1ceda26772ac5876fa2599b56f8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dc9fe144c2258f33ce59c61ce63c15835cc3fa53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628334"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Az Azure IoT-központ eszközkapcsolatok
 
@@ -49,7 +50,7 @@ A következő táblázat összefoglalja, hogyan Azure IoT központi eszközök s
 
 Az eszköz SDK-k használatával kapcsolatos további tudnivalókért lásd: egyet az alábbi cikkekben például kód:
 
-- [Általános Node.js ügyfél csatlakoztatása az Azure IoT központi alkalmazás](howto-connect-nodejs.md)
+- [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)
 - [A Pi málna eszköz csatlakoztatása az Azure IoT központi alkalmazás](howto-connect-raspberry-pi-python.md)
 - [Egy DevDiv kit eszköz csatlakoztatása az Azure IoT központi alkalmazás](howto-connect-devkit.md).
 
@@ -81,5 +82,5 @@ Eszközök és az Azure IoT központi között továbbított összes adat titkos
 Most, hogy az eszköz kapcsolatot az Azure IoT-központ megismerte az alábbiakban a javasolt lépéseket:
 
 - [Készítse elő, és egy DevKit eszköz csatlakoztatása](howto-connect-devkit.md)
-- [Készítse elő, és csatlakozzon a málna Pi](howto-connect-raspberry-pi-python.md)
-- [Általános Node.js ügyfél csatlakoztatása az Azure IoT központi alkalmazás](howto-connect-nodejs.md)
+- [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
+- [Általános Node.js-ügyfél csatlakoztatása az Azure IoT Central-alkalmazáshoz](howto-connect-nodejs.md)

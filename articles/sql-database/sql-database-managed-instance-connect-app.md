@@ -5,17 +5,18 @@ ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bea1dc88d66717717cdeacbc8504f5df7e37ba04
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647833"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakozás az Azure SQL adatbázis felügyelt példány alkalmazás
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
 Ma több lehetősége van, amikor arról dönt, hogy hol és hogyan lehet az alkalmazás működteti. 
  
@@ -39,10 +40,10 @@ Kapcsolódás Vnetek két lehetőség áll rendelkezésre:
 - [Az Azure virtuális hálózati társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) 
 - VNet – VNet VPN-átjáró ([Azure-portálon](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)) 
  
-A társviszony-létesítési beállítás azt előnyösebb mert társviszony-létesítés használ Microsoft hálózat tehát kapcsolat szempontjából, nincs észrevehető különbség a késés VNet társítottak, és ugyanazt a virtuális hálózatot a virtuális gépek között. Vnetben társviszony-létesítés korlátozva ugyanabban a régióban, hálózatok, bár a kereszt-régió társviszony-létesítés engedélyezve van az egyes régiókban által megtekinthető villámnézetként.  
+A társviszony-létesítési beállítás azt előnyösebb mert társviszony-létesítés használ Microsoft hálózat tehát kapcsolat szempontjából, nincs észrevehető különbség a késés VNet társítottak, és ugyanazt a virtuális hálózatot a virtuális gépek között. Vnetben társviszony-létesítés korlátozva a hálózat ugyanabban a régióban.  
  
 > [!IMPORTANT]
-> Kereszt-régióban létrehozott hálózatok esetében nem lehet a rendelkezésre állást és megbízhatóságot, mint a nyilvános elérhetőség utáni kiadás esetében azonos szinten. Vnetben társviszony van, korlátozott képességeit, és előfordulhat, hogy nem érhető el az összes Azure-régiók. A rendelkezésre állás és a szolgáltatás állapotát a legfrissebb értesítések, tekintse meg a [Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network) frissítések lap. 
+> A hálózatok ugyanabban a régióban, mert a példány felügyelt társviszony-létesítési VNet-forgatókönyv korlátozódik [megkötések a globális virtuális hálózati társviszony](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). 
 
 ## <a name="connect-an-on-premises-application"></a>A helyszíni alkalmazást 
 

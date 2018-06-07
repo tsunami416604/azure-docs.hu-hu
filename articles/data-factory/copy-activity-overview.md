@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 8ae1402b6821d1b42fa8f2bf9c2f6453a5ce7109
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c5ec07603088edd3f95f08f12b6982022b396d05
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618487"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Az Azure Data Factory a másolási tevékenység
 
@@ -133,7 +134,7 @@ A másolási tevékenység a következő sablon tartalmazza a támogatott tulajd
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység tulajdonságra kell beállítani: **másolása** | Igen |
-| Bemenetek | Adja meg az adatkészlet mely pontok a forrásadatokhoz való létrehozott. Másolási tevékenység során csak egyetlen bemenetet támogatja. | Igen |
+| bemenetek | Adja meg az adatkészlet mely pontok a forrásadatokhoz való létrehozott. Másolási tevékenység során csak egyetlen bemenetet támogatja. | Igen |
 | kimenetek | Adja meg az adatkészlet mely pontok, a fogadó adatok létrehozott. Másolási tevékenység során csak egyetlen kimeneti támogatja. | Igen |
 | typeProperties | Tulajdonságok másolása tevékenység konfigurálása csoportja. | Igen |
 | source | Adja meg a másolási adatforrás típusa és a vonatkozó tulajdonságok kapcsolatos adatok lekéréséhez.<br/><br/>További részletek az összekötő a cikkben szereplő "Másolása a tevékenység tulajdonságai" szakaszából [adatokról és formátumok támogatott](#supported-data-stores-and-formats). | Igen |

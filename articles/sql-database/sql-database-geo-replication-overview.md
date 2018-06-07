@@ -6,15 +6,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 39c61fd3b2f03c99d74fded22927f319cc7f4cdd
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0c27aec90dad6eb3aeb46871d20202870eba886d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647645"
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>Áttekintés: Feladatátvételi csoportok és aktív georeplikáció
 Aktív georeplikáció legfeljebb négy olvasható másodlagos adatbázisok konfigurálása az ugyanazon vagy másik data center helyeken (régió) teszi lehetővé. Másodlagos adatbázisok érhetők el, a lekérdezésre, és a feladatátvételi, ha van egy adatközpont-meghibásodás után, vagy nem az elsődleges adatbázishoz való kapcsolódáshoz. A feladatátvételi kell kezdeményeznie manuálisan az alkalmazás a felhasználó. A feladatátvétel után az új elsődleges van egy másik kapcsolat végpontját. 

@@ -1,24 +1,20 @@
 ---
-title: "Ismerkedés az Azure IoT Hub eszköz twins (.NET/csomópont) |} Microsoft Docs"
-description: "Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazás és az Azure IoT szolgáltatás SDK for .NET egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához."
-services: iot-hub
-documentationcenter: node
+title: Ismerkedés az Azure IoT Hub eszköz twins (.NET/csomópont) |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök SDK for Node.js használatával valósítja meg a szimulált eszköz alkalmazás és az Azure IoT szolgáltatás SDK for .NET egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: f7e23b6e-bfde-4fba-a6ec-dbb0f0e005f4
+manager: ''
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: elioda
-ms.openlocfilehash: 4cf607e8e0ccd3aab06be54d715c2bf3777caeb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2d78fe3f43c493eb126af86580ee473a6aa18c2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634420"
 ---
 # <a name="get-started-with-device-twins-netnode"></a>Ismerkedés az eszköz twins (.NET/csomópont)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -56,7 +52,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) a társított
 1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
         using Microsoft.Azure.Devices;
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati karakterláncra.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati sztringre.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
@@ -97,7 +93,7 @@ Ebben a szakaszban egy .NET-Konzolalkalmazás (használatával C#) a társított
         Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **AddTagsAndQuery** projekt **Start**. A megoldás felépítéséhez.
+1. A Solution Explorerben nyissa meg a **állítsa be indítási projektek...**  , és győződjön meg arról, hogy a **művelet** a **AddTagsAndQuery** projekt **Start**. Hozza létre a megoldást.
 1. Az alkalmazás futtatásához a jobb gombbal a **AddTagsAndQuery** projektet, majd válassza **Debug**, utána pedig **Start új példányt**. Megjelenik az eredmények között egy eszközön a lekérdezés kérni a minden eszköz a mappában lévő **Redmond43** és a lekérdezés, amely korlátozza az eredmények mobilhálózati használó eszközök sem.
    
     ![Lekérdezés eredményei ablakban][img-addtagapp]
@@ -166,7 +162,7 @@ Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely kapcsolódik a hub, lét
    
     ![][img-addtagapp2]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Fel van véve eszköz metaadatait címkék egy háttér-alkalmazásból, és a szimulált eszköz alkalmazásának megírt az eszköz a két jelentés eszköz kapcsolódási adatok. Megtudta, ezt az információt az SQL-szerű IoT Hub lekérdezési nyelv lekérdezése is.
 
 A következő források segítségével megtudhatja, hogyan:

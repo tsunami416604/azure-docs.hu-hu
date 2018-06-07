@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: ea76bc4cc182902fb5618d23358579ec229a5ef4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a40ca715c15540bf7048fae8b5dde152890eb1c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648326"
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -28,7 +29,7 @@ Az SQL minden fajtájában elérhető biztonsági funkciók teljes körű áttek
 SQL-adatbázis, adja meg a mozgásérzékelő – az adatok titkosítása az adatok biztonságossá tételére [Transport Layer Security](https://support.microsoft.com/kb/3135244), az inaktív adatok [átlátható adattitkosítási](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), és az adatok használatban van a [ Mindig titkosítja](https://msdn.microsoft.com/library/mt163865.aspx). 
 
 > [!IMPORTANT]
->Az Azure SQL Database-hez való kapcsolódáshoz minden esetben titkosítás (SSL/TLS) szükséges, amikor az adatok átvitele folyamatban van az adatbázisból vagy az adatbázisba. Az alkalmazás a kapcsolati karakterláncot, meg kell adnia a kapcsolat titkosítására paraméterek és *nem* kell bíznia a kiszolgáló (ebben az esetben, ha a kapcsolati karakterláncot az Azure-portálon kívül), ellenkező esetben a kapcsolat nem ellenőrzi a kiszolgáló identitásának, és ki vannak téve a "man közel" támadásokkal szemben. Az ADO.NET-illesztő számára például a következők a kapcsolati karakterlánc paraméterei: **Encrypt=True** és **TrustServerCertificate=False**. További információ a TLS és a kapcsolat: [TLS kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+>Az Azure SQL Database-hez való kapcsolódáshoz minden esetben titkosítás (SSL/TLS) szükséges, amikor az adatok átvitele folyamatban van az adatbázisból vagy az adatbázisba. Az alkalmazás a kapcsolati karakterláncot, meg kell adnia a kapcsolat titkosítására paraméterek és *nem* kell bíznia a kiszolgáló (ebben az esetben, ha a kapcsolati karakterláncot az Azure-portálon kívül), ellenkező esetben a kapcsolat nem ellenőrzi a kiszolgáló identitásának, és ki vannak téve a "man közel" támadásokkal szemben. Az ADO.NET-illesztő számára például a következők a kapcsolati sztring paraméterei: **Encrypt=True** és **TrustServerCertificate=False**. További információ a TLS és a kapcsolat: [TLS kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alábbiakat:
 
@@ -78,7 +79,7 @@ Az SQL Database naplózási szolgáltatása nyomon követi az adatbázisok esem�
 A Fenyegetésészlelés kiegészíti a naplózás esetén az Azure SQL Database szolgáltatás által észlelt szokatlan és potenciálisan káros kísérletek eléréséhez, vagy az adatbázis a biztonsági rések elleni beépített biztonsági eszközintelligencia további réteget megadásával. Figyelmeztetést gyanús tevékenységek, a potenciális biztonsági réseket és a SQL injektálási támadások, valamint rendellenes adatbázis memóriahozzáférési mintáitól. Figyelmeztetések-ból is megtekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és a gyanús tevékenység részleteinek megadása, és vizsgálja meg, és a fenyegetések mérséklésére művelet javasolja. A Fenyegetésészlelés $15/kiszolgáló/hó költségek. Szabad az első 60 nap. További információk: [Ismerkedés az SQL Database fenyegetések észlelése szolgáltatásával](sql-database-threat-detection.md).
  
 ## <a name="compliance"></a>Megfelelőség
-Rendszeres ellenőrzéseket részt vesz a fenti szolgáltatásait és funkcióit, amelyekkel az alkalmazás különböző biztonsági követelmények, az Azure SQL Database is teljesítéséhez mellett, és megfelelőségi követelményeket számos elleni hitelesített. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://azure.microsoft.com/support/trust-center/services/) aktuális listájával együtt.
+Rendszeres ellenőrzéseket részt vesz a fenti szolgáltatásait és funkcióit, amelyekkel az alkalmazás különböző biztonsági követelmények, az Azure SQL Database is teljesítéséhez mellett, és megfelelőségi követelményeket számos elleni hitelesített. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter/compliance/complianceofferings/) aktuális listájával együtt.
 
 
 ## <a name="security-management"></a>Biztonság kezelése

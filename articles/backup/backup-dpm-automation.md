@@ -1,24 +1,19 @@
 ---
-title: Az Azure Backup - a PowerShell szolgáltatás használatával a DPM-munkaterhelések biztonsági mentése |} Microsoft Docs
+title: Az Azure Backup - a PowerShell szolgáltatás használatával a DPM-munkaterhelések biztonsági mentése
 description: Megtudhatja, hogyan telepíthetnek és kezelhetnek az Azure Backup a Data Protection Manager (DPM) PowerShell használatával
 services: backup
-documentationcenter: ''
 author: NKolli1
 manager: shreeshd
-editor: ''
-ms.assetid: e9bd223c-2398-4eb1-9bf3-50e08970fea7
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/23/2017
-ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: adigan
+ms.openlocfilehash: 4a74aa674bd80f3d1297e71873eb9d71e46fd4cb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606919"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
 Ez a cikk bemutatja, hogyan PowerShell használatával történő telepítés Azure biztonsági mentés DPM-kiszolgálón, és kezelheti a biztonsági mentés és helyreállítás.
@@ -80,7 +75,7 @@ A következő lépések alapján a Recovery Services-tároló létrehozása. Rec
 4. Megadhatja a használandó; adattároló redundanciája, amely használhat [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) vagy [földrajzi redundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md). A következő példa bemutatja a - BackupStorageRedundancy beállítás a testVault GeoRedundant értékre van állítva.
 
    > [!TIP]
-   > Sok Azure biztonsági mentést készítő parancsmagok bemeneti adatokként a Recovery Services-tároló objektum szükséges. Emiatt célszerű a Recovery Services biztonsági másolat tároló objektum tárolható egy változóban.
+   > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
    >
    >
 
@@ -133,14 +128,14 @@ Az elérhető lehetőségek a következők:
 | Beállítás | Részletek | Alapértelmezett |
 | --- | --- | --- |
 | /q |Csendes telepítés |- |
-| / p: "hely" |Az Azure Backup szolgáltatás ügynökének a telepítési mappa elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent |
+| / p: "hely" |Az Azure Backup szolgáltatás ügynökének a telepítési mappa elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent ügynök |
 | / s: "hely" |Az Azure Backup szolgáltatás ügynökének a gyorsítótár mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Részvétel a Microsoft Update |- |
 | /nu |Ne keressen frissítéseket telepítésének befejezése után |- |
-| /d |Eltávolítja a Microsoft Azure Recovery Services Agent ügynök |- |
+| /nap |Eltávolítja a Microsoft Azure Recovery Services Agent ügynök |- |
 | /pH |Állomás proxycím |- |
 | /po |Proxy Host Port száma |- |
-| /pu |Proxy Host UserName |- |
+| /Pu |Proxy-állomás felhasználónév |- |
 | /pW |Proxy jelszava |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Egy helyreállítási regisztrálásakor DPM szolgáltatások tároló

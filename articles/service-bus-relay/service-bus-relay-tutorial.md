@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus WCF továbbító útmutató |} Microsoft Docs"
-description: "Összeállíthat egy WCF továbbító használó ügyfél- és alkalmazást."
+title: Azure Service Bus WCF továbbító útmutató |} Microsoft Docs
+description: Összeállíthat egy WCF továbbító használó ügyfél- és alkalmazást.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: a0b06c32cf5f154cf5eb01842d9b917dcb35f7b3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642308"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF továbbító útmutató
 
-Ez az oktatóanyag ismerteti, hogyan hozhat létre egy egyszerű WCF továbbító ügyfélalkalmazást, és Azure Relay szolgáltatást. Egy alkalmazó hasonló oktatóanyagért [Service Bus üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Ez az oktatóanyag ismerteti, hogyan hozhat létre egy egyszerű WCF továbbító ügyfélalkalmazást, és Azure Relay szolgáltatást. Egy alkalmazó hasonló oktatóanyagért [Service Bus üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
 Az oktatóanyag feldolgozása révén lehetővé teszi egy WCF továbbító ügyfél és -szogáltatásalkalmazás létrehozásához szükséges lépéseket megértéséhez. Az eredeti WCF megfelelők esetében, mint például a "szolgáltatás" olyan konstrukció, amely egy vagy több végpontot, azt mutatja, amelyek egy vagy több szolgáltatási műveletet tesz elérhetővé. A szolgáltatások végpontja megad egy címet, ahol a szolgáltatás megtalálható, egy kötést, amely tartalmazza az információkat, amelyeket az ügyfélnek kommunikálnia kell a szolgáltatás felé, valamint egy szerződést, amely meghatározza a szolgáltatás által az ügyfeleknek nyújtott funkciókat. A WCF és WCF továbbító közötti fő különbség a, hogy a végpont a számítógépre helyi ahelyett, hogy a felhőben van közzétéve.
 
@@ -39,7 +40,7 @@ Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
 ## <a name="create-a-service-namespace"></a>Szolgáltatásnévtér létrehozása
 
-Az első lépés egy névtér létrehozása, valamint a egy [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) kulcs. A névtér egy biztosít a továbbítási szolgáltatás keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és SAS-kulcs együttes használata a hitelesítő adatokat az Azure-alkalmazáshoz való hozzáférés hitelesítéséhez biztosít. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
+Az első lépés egy névtér létrehozása, valamint a egy [közös hozzáférésű Jogosultságkód (SAS)](../service-bus-messaging/service-bus-sas.md) kulcs. A névtér egy biztosít a továbbítási szolgáltatás keresztül közzétett minden alkalmazáshoz. A SAS-kulcsot a rendszer automatikusan előállítja a szolgáltatásnévtér létrehozásakor. A szolgáltatásnévtér és SAS-kulcs együttes használata a hitelesítő adatokat az Azure-alkalmazáshoz való hozzáférés hitelesítéséhez biztosít. Relay-névtér létrehozásához kövesse az [itt leírt utasításokat](relay-create-namespace-portal.md).
 
 ## <a name="define-a-wcf-service-contract"></a>A WCF szolgáltatási szerződés megadása
 
@@ -712,9 +713,9 @@ namespace Microsoft.ServiceBus.Samples
     `Server echoed: My sample text`
 12. Ezzel a módszerrel folytathatja szöveges üzenetek küldését az ügyfélről a szolgáltatásba. Ha kész van, a két alkalmazás befejezéséhez nyomja le az Enter billentyűt az ügyfél és a szolgáltatás konzolablakában is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Azure-továbbítási-ügyfélalkalmazást és szolgáltatást a Service Bus WCF továbbítási képességeivel. Egy alkalmazó hasonló oktatóanyagért [Service Bus üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Azure-továbbítási-ügyfélalkalmazást és szolgáltatást a Service Bus WCF továbbítási képességeivel. Egy alkalmazó hasonló oktatóanyagért [Service Bus üzenetkezelés](../service-bus-messaging/service-bus-messaging-overview.md), lásd: [Ismerkedés a Service Bus-üzenetsorok](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
 Azure Relayjel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket.
 

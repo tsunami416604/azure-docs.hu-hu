@@ -1,19 +1,19 @@
 ---
 title: A távoli figyelésére szolgáló megoldás integrálása az Azure Data Lake Store |} Microsoft Docs
 description: Ismerje meg, hogy a távoli figyelésére szolgáló megoldás integrálása az Azure Data Lake Store használatának az Azure Stream Analytics-feladat.
-+services: ''
-+suite: iot-suite
-+author: philmea
-+manager: timlt
-+ms.author: philmea
-+ms.date: 04/029/2018
-+ms.topic: article
-+ms.service: iot-suite
-ms.openlocfilehash: 426ded8079ba5d6de4c186a8d18dd284082b0c1c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+author: philmea
+manager: timlt
+ms.author: philmea
+ms.date: 04/29/2018
+ms.topic: conceptual
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.openlocfilehash: 3bd29e348fd067c12def8ca36fbdc1d7e35b2874
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627586"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelésére szolgáló megoldás integrálása az Azure Data Lake Store
 
@@ -25,7 +25,7 @@ Ez az útmutató a szüksége lesz egy Azure Stream Analytics-feladat adatfolyam
 
 Ez az útmutató elvégzéséhez a következőkre lesz szüksége:
 
-* [A távoli felügyeleti előkonfigurált megoldás üzembe helyezéséhez](iot-accelerators-remote-monitoring-deploy.md).
+* [A távoli megfigyelési megoldásgyorsító központi telepítése](iot-accelerators-remote-monitoring-deploy.md).
   * A távoli figyelésére szolgáló megoldás fogja központilag telepíteni, az IoT-központ és az a cikk ezt használja az Azure-előfizetéshez az Azure Stream Analytics-feladat.
 * [Egy Azure Data Lake Store telepítése](../data-lake-store/data-lake-store-get-started-portal.md)
   * A Data Lake Store és a távoli figyelésére szolgáló megoldás ugyanabban a régióban kell elhelyezni.

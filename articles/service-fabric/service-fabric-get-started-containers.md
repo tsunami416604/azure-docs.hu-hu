@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366528"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643209"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -29,14 +29,21 @@ ms.locfileid: "34366528"
 A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk ismerteti a Python [Flask](http://flask.pocoo.org/)-webalkalmazást tartalmazó Docker-rendszerképek létrehozását, illetve egy Service Fabric-fürtön való üzembe helyezését. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 ## <a name="prerequisites"></a>Előfeltételek
-Egy fejlesztői számítógép, amelyen a következők futnak:
-* Visual Studio 2015 vagy Visual Studio 2017.
-* [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
-*  Windows rendszerhez készült Docker. [A Docker CE for Windows (stable) letöltése](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
+* Egy fejlesztői számítógép, amelyen a következők futnak:
+  * Visual Studio 2015 vagy Visual Studio 2017.
+  * [Service Fabric SDK és -eszközök](service-fabric-get-started.md).
+  *  Windows rendszerhez készült Docker. [A Docker CE for Windows (stable) letöltése](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
-Egy Windows-fürt legalább három, Windows Server 2016 rendszerű, a Containerst futtató csomóponttal. Ehhez [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) vagy [próbálja ki ingyen a Service Fabricot](https://aka.ms/tryservicefabric).
+* Windows fut a Windows Server-tárolók három vagy több csomópontot tartalmazó fürtben. 
 
-Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
+  Ez a cikk a tárolók a fürt csomópontjain futó Windows Server verziója (build) meg kell egyeznie a fejlesztési számítógépén. Ennek az az oka a docker lemezképet készít a fejlesztői számítógépén, és nincsenek kompatibilitási megkötések a tároló az operációs rendszer és a gazda operációs rendszer közötti érő van telepítve. További információkért lásd: [Windows Server tároló operációs rendszer és a gazdagép operációsrendszer-kompatibilitás](#windows-server-container-os-and-host-os-compatibility). 
+  
+  Tárolók van szüksége a fürt Windows Server verziójának, futtassa a `ver` a fejlesztési számítógépén Windows parancssori parancsot:
+
+  * Ha a verziót tartalmaz *x.x.14323.x*, majd [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) alatt válassza az *WindowsServer 2016-adatközpont-az-tárolók* az operációs rendszerhez vagy [Service Fabric szabad próbálja](https://aka.ms/tryservicefabric) egy entitás fürttel.
+  * Ha a verziót tartalmaz *x.x.16299.x*, majd [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) alatt válassza az *WindowsServerSemiAnnual Datacenter-Core-1709-az-tárolók* a a operációs rendszer. Egy entitás fürt nem használhatja.
+
+* Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
 > [!NOTE]
 > A tárolók üzembe helyezése Service Fabric-fürtökön a Windows 10-ben vagy Docker CE-t futtató fürtökön nem támogatott. Ez az útmutató helyi ellenőrzéseket végez a Docker-motor használatával a Windows 10 rendszeren, majd végül egy Azure-beli, a Docker CE-t futtató Windows Server-fürtön helyezi üzembe a tárolószolgáltatásokat. 
@@ -316,7 +323,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 ```
 
 ## <a name="configure-isolation-mode"></a>Az elkülönítési mód konfigurálása
-A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Folyamatelkülönítési módban az ugyanazon a gazdagépen futó összes tároló ugyanazt a kernelt használja, mint a gazdagép. Hyper-V elkülönítési módban az egyes Hyper-V tárolók és a tároló gazdagép kernelei elkülönülnek. Az elkülönítési mód az alkalmazásjegyzék-fájl `ContainerHostPolicies` elemében van meghatározva. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az elkülönítési mód alapértelmezett értéke a Windows Server-gazdagépeken `process`, a Windows 10-gazdagépeken pedig `hyperv`. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
+A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Folyamatelkülönítési módban az ugyanazon a gazdagépen futó összes tároló ugyanazt a kernelt használja, mint a gazdagép. Hyper-V elkülönítési módban az egyes Hyper-V tárolók és a tároló gazdagép kernelei elkülönülnek. Az elkülönítési mód az alkalmazásjegyzék-fájl `ContainerHostPolicies` elemében van meghatározva. A megadható elkülönítési módok a következők: `process`, `hyperv` és `default`. Az alapértelmezett érték folyamatok elkülönítési módjában a Windows Server-állomásokat. A Windows 10-gazdagépeken csak a Hyper-V elkülönítési üzemmódját támogatott, így az elkülönítési üzemmódját függetlenül a Hyper-V elkülönítési módban fut. a tárolót. A következő kódrészlet azt mutatja be, hogyan van határozható meg az elkülönítési mód az alkalmazásjegyzék-fájlban.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
@@ -387,19 +394,44 @@ docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
 
+## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server tároló operációs rendszer és a gazdagép operációsrendszer-kompatibilitás
+
+Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszer összes verziója között. Példa:
+ 
+- Windows Server verzió 1709 használatával készített Windows Server-tárolók nem működnek a Windows Server verzió 2016 rendszerű gazdagépen. 
+- Windows Server 2016 használatával készített Windows Server-tárolók csak a Windows Server 1709 verziót futtató Hyper-v elkülönítési módban működik. 
+- A Windows Server-tárolók Windows Server 2016 használatával készített szükség lehet annak érdekében, hogy a tároló az operációs rendszer és a gazda operációs rendszer változatát azonos Windows Server 2016 rendszerű gazdagépen folyamatainak elkülönítési módjának futtatásakor.
+ 
+További tudnivalókért lásd: [Windows tároló verziókompatibilitás](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+
+Vegye figyelembe a gazda operációs rendszer és a tároló az operációs rendszer összeállításakor és tárolók telepítése a Service Fabric-fürt kompatibilitását. Példa:
+
+- Ellenőrizze, hogy telepít egy operációs rendszer kompatibilis legyen az operációs rendszer tárolók a fürtcsomópontokon.
+- Győződjön meg arról, hogy a tároló alkalmazás megadott elkülönítési üzemmódját konzisztensek legyenek a csomóponton, ahol annak telepítése történik a tároló az operációs rendszer támogatása.
+- Vegye figyelembe, hogy milyen operációs rendszer frissítéseit a fürtcsomópontok vagy a tárolókat is való kompatibilitás hatással lehet. 
+
+Azt javasoljuk, hogy a következő eljárásokat, győződjön meg arról, hogy tárolók megfelelően vannak-e telepítve a Service Fabric-fürt:
+
+- A Docker-lemezképekkel címkézés explicit lemezkép használatával adja meg a tároló össze, a Windows Server operációs rendszer verzióját. 
+- Használjon [OS címkézés](#specify-os-build-specific-container-images) az Alkalmazásjegyzék-fájl győződjön meg arról, hogy az alkalmazás nem kompatibilis a különböző Windows Server-verziók és a frissítések a.
+
+> [!NOTE]
+> A Service Fabric 6.2-es és újabb verzióit a Windows 10 gazdagépen helyileg a Windows Server 2016 alapján tároló üzembe helyezése. Windows 10-es tárolók futtassa a Hyper-V elkülönítési üzemmódját, függetlenül a elkülönítési üzemmódját, állítsa be az alkalmazásjegyzékben. További tudnivalókért lásd: [konfigurálása elkülönítési üzemmódját](#configure-isolation-mode).   
+>
+ 
 ## <a name="specify-os-build-specific-container-images"></a>Specifikus tárolórendszerképek megadása az operációs rendszer buildje alapján 
 
-A Windows Server-tárolók (folyamatelkülönítési mód) esetleg nem kompatibilisek az operációs rendszer újabb verzióival. Például, a Windows Server 2016-tal létrehozott Windows Server-tárolók nem működnek a Windows Server 1709-es verziójában. Ezért amikor a fürtcsomópontokat a legújabb verzióra frissíti, az operációs rendszer korábbi verzióival létrehozott tárolószolgáltatások esetleg nem működnek majd. Annak érdekében, hogy ezt a futtatókörnyezet 6.1-es vagy újabb verzióiban meggátolja, a Service Fabricban több operációsrendszer-lemezképet lehet tárolóként megadni, és felcímkézni azokat az operációs rendszer buildverzióival (ennek lekéréséhez futtassa a `winver` parancsot egy Windows-parancssorban). Frissítse az alkalmazásjegyzékeket, és operációsrendszer-verziónként adjon meg külön rendszerkép-felülbírálásokat, mielőtt frissítené az operációs rendszert a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
+Windows Server-tárolók nem lehet kompatibilis az operációs rendszer különböző verziói között. Windows Server 2016 használatával készített Windows Server-tárolók például Windows Server verzió 1709 a folyamatok elkülönítési módjában nem működnek. Ezért ha fürtcsomópontok frissítése a legújabb verzióra, az operációs rendszer korábbi verzióiban használatával készített tárolószolgáltatások sikertelenek lehetnek. Ez megkerülésére 6.1-es és újabb, a futtatókörnyezet verziójával, a Service Fabric több operációs rendszer kép / tároló megadása, és a címkézés azokat az operációs rendszer, az alkalmazásjegyzékben build verzióját támogatja. Az operációs rendszer buildszámát lekéréséhez futtassa `winver` Windows parancsot a parancssorba. Frissítse az alkalmazásjegyzékeket, és operációsrendszer-verziónként adjon meg külön rendszerkép-felülbírálásokat, mielőtt frissítené az operációs rendszert a csomópontokon. A következő kódrészlet azt mutatja be, hogyan adható meg több tároló-rendszerkép az **ApplicationManifest.xml** alkalmazásjegyzék-fájlban:
 
 
 ```xml
-<ContainerHostPolicies> 
+      <ContainerHostPolicies> 
          <ImageOverrides> 
            <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
-     </ContainerHostPolicies> 
+      </ContainerHostPolicies> 
 ```
 A Windows Server 2016 buildverziója 14393, a 1709-es verzió buildverziója 16299. A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg mindegyik tárolószolgáltatáshoz, ahogy az alábbi kódrészletben is látható:
 

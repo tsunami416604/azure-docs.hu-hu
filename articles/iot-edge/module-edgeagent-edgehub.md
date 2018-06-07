@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT EdgeAgent és EdgeHub referencia |} Microsoft Docs
 description: Tekintse át a megadott tulajdonságok és azok értékei a edgeAgent és edgeHub modul twins számára
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+services: iot-edge
+ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632907"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>A peremhálózati ügynök és a peremhálózati hub modul twins tulajdonságait
 
@@ -42,8 +42,8 @@ A modul iker az Edge ügynök nevezik `$edgeAgent` és koordinálja a peremhál�
 | systemModules.edgeHub.settings.createOptions | A peremhálózati hub tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
 | systemModules.edgeHub.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
 | modules.{moduleId}.version | Ez a modul verziója megfelelő, felhasználó által definiált karakterláncot. | Igen |
-| modules.{moduleId}.type | "Docker" lehet. | Igen |
-| modules.{moduleId}.restartPolicy | {"soha" \| "a-sikertelen" \| "meg-a nem megfelelő" \| "always"} | Igen |
+| modulok. {moduleId} .type | "Docker" lehet. | Igen |
+| modulok. {moduleId} .restartPolicy | {"soha" \| "a-sikertelen" \| "meg-a nem megfelelő" \| "always"} | Igen |
 | modules.{moduleId}.settings.image | A modul lemezkép URI. | Igen |
 | modules.{moduleId}.settings.createOptions | A modul tároló létrehozásához a beállításokat tartalmazó stringified JSON. [Docker-beállítások létrehozása][lnk-docker-create-options] | Nem |
 | modules.{moduleId}.configuration.id | A telepítésben Ez a modul telepített azonosítója. | Ezt állítja be az IoT-központ alkalmazásakor a jegyzékfájlban központi telepítéssel. Nem része egy üzembe helyezési jegyzékben. |
@@ -71,7 +71,7 @@ A következő táblázat az információt, amely a kívánt tulajdonságokkal á
 | DeviceHealth | `healthy` Ha az összes modul futási állapotát `running` vagy `stopped`, `unhealthy` egyéb |
 | configurationHealth.{deploymentId}.health | `healthy` Ha a futási állapotát a központi telepítés {deploymentId} által beállított összes modul `running` vagy `stopped`, `unhealthy` egyéb |
 | runtime.platform.OS | Jelentéskészítés az eszközön futó operációs rendszer |
-| runtime.platform.architecture | A Processzor architektúrájától Reporting az eszközön |
+| Runtime.platform.Architecture | A Processzor architektúrájától Reporting az eszközön |
 | systemModules.edgeAgent.runtimeStatus | A jelzett állapot peremhálózati ügynök: {"fut" \| "nem megfelelő"} |
 | systemModules.edgeAgent.statusDescription | A peremhálózati ügynök jelentett állapotát a leírását. |
 | systemModules.edgeHub.runtimeStatus | Biztonsági központ aktuális állapota: {"fut" \| "leállt" \| "sikertelen" \| "leállítási" \| "nem megfelelő"} |
@@ -83,7 +83,7 @@ A következő táblázat az információt, amely a kívánt tulajdonságokkal á
 | systemModules.edgeHub.restartCount | Ez a modul az újraindítási házirend részeként újraindult ennyiszer. |
 | modules.{moduleId}.runtimeStatus | A modul aktuális állapota: {"fut" \| "leállt" \| "sikertelen" \| "leállítási" \| "nem megfelelő"} |
 | modules.{moduleId}.statusDescription | A modul sérült állapotba, ha az aktuális állapotát a leírását. |
-| modules.{moduleId}.exitCode | Ha kilépett, a modul tároló által jelentett a kilépési kód |
+| modulok. {moduleId} .exitCode | Ha kilépett, a modul tároló által jelentett a kilépési kód |
 | modules.{moduleId}.startTimeUtc | Ha a modul utolsó elindításának ideje |
 | modules.{moduleId}.lastExitTimeUtc | Ha a modul utolsó kilépett idő |
 | modules.{moduleId}.lastRestartTimeUtc | Ha a modul utolsó újraindítása idő |

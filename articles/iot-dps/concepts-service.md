@@ -1,22 +1,19 @@
 ---
 title: Szolgáltatás az Azure IoT Hub eszköz kiépítése szolgáltatáshoz fogalmak |} Microsoft Docs
 description: Jellemző a terjesztési pontok és az IoT-központ szolgáltatás létesítési fogalmakat ismerteti
-services: iot-dps
-keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: d2bc58514ea716954ec3ac96151549168fedc2ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628300"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Az IoT Hub eszköz kiépítése szolgáltatással kapcsolatos fogalmak
 
@@ -45,7 +42,7 @@ A szolgáltatási szint beállítása, amely meghatározza, hogy hogyan eszköz 
 * **Legkisebb mértékű késleltetést**: eszközök az eszközre a legkisebb mértékű késleltetést törlődnek az IoT-központ számára. Ha több csatolt IoT-központok volna a azonos legkisebb mértékű késleltetést biztosít, a létesítési szolgáltatás eszközök csak ezek hubok között
 * **A beléptetési listán keresztül statikus konfigurációs**: a regisztráció listán a kívánt IoT-központ megadását prioritást élvez a szolgáltatásiszint-elosztási házirend.
 
-## <a name="enrollment"></a>Igénylés
+## <a name="enrollment"></a>Regisztráció
 
 A beléptetési eszközöket vagy eszközöket, amelyeket automatikus kiépítés keresztül lehet regisztrálni a bejegyzését. A beléptetési rekord az eszközt vagy eszközöket, beleértve a vonatkozó információkat tartalmazza:
 - a [állapotigazolási mechanizmus](concepts-security.md#attestation-mechanism) a eszköz által használt

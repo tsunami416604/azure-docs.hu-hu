@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: b2369f9468c54f10d01203841b6d7ba44b7ba2de
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642852"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Így használja a Reliable Actors a Service Fabric platformot
 Ez a cikk bemutatja, hogy Reliable Actors működik-e az Azure Service Fabric-platformon. Futtassa a keretrendszer, amely a egy állapotalapú szolgáltatás megvalósítását a Reliable Actors hívása a *szereplő szolgáltatás*. Az aktor szolgáltatás összes életciklusa és a a szereplőket terjesztéséhez üzenet kezeléséhez szükséges összetevőket tartalmazza:
@@ -41,9 +42,6 @@ A Reliable Services, a szolgáltatás örökli a `StatefulService` osztály. Ez 
 * Szolgáltatás biztonsági mentése és visszaállítása.
 * Összes szereplő, például egy áramköri megszakító megosztás funkciót.
 * Távoli eljáráshívások a szereplő maga és a minden egyes szereplő.
-
-> [!NOTE]
-> Állapotalapú szolgáltatások jelenleg nem támogatottak a Java/Linux.
 
 További információkért lásd: [végrehajtási szolgáltatásiszint-szolgáltatásokat az aktor szolgáltatásban](service-fabric-reliable-actors-using.md).
 

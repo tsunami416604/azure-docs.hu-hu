@@ -1,22 +1,19 @@
 ---
 title: Azure eszköz üzembe helyezése eszköz fogalmak |} Microsoft Docs
 description: Eszköz-üzembehelyezési a eszköz kiépítése szolgáltatáshoz és az IoT-központ jellemző fogalmakat ismerteti
-services: iot-dps
-keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 09/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 5482801461e2afea33d65d559723116f37a35d1f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+services: iot-dps
+manager: briz
+ms.openlocfilehash: bd77a56acee948995bb2fcbb5beea60f69cda9ee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630153"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub eszköz kiépítése szolgáltatáshoz eszköz fogalmak
 

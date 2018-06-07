@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 2780438e715b6f6cb04d820c02d09f14e14b480f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638500"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Azure Media Services eseményeket továbbítani egy egyéni webkiszolgáló-végpont parancssori felület használatával
 
@@ -27,7 +28,7 @@ A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadato
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be a [Azure-portálon](http://portal.azure.com) , majd indítsa el **CloudShell** végrehajtani parancssori felület parancsait, ahogy az az alábbi lépéseket.
+Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a **CloudShell** szolgáltatást a parancssori felületi parancsok végrehajtásához, ahogy az az alábbi lépésekben látható.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -184,4 +185,8 @@ az group delete --name <resource_group_name>
 
 ## <a name="next-steps"></a>További lépések
 
-[Események reagálnak](reacting-to-media-services-events.md)
+[Események reagálnak](reacting-to-media-services-events.md)## lásd még:
+
+## <a name="see-also"></a>Lásd még
+
+[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

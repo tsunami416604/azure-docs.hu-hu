@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/07/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 69806520f3d57cb1d383999ba53fefb7e0bd56b4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642811"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürt javítás
 
@@ -316,6 +317,10 @@ A. Az idő a javítás vezénylési alkalmazás szükséges alapvetően a követ
 Q. **Miért látom néhány frissítést, a Windows Update eredmények REST API-n keresztül, de nem a számítógépen a Windows Update előzmények alapján?**
 
 A. Egyes frissítéseket csak a megfelelő frissítési/javítás előzmények jelennek meg. Például a Windows Defender frissítések nem jelennek meg a Windows Server 2016-os Windows Update előzmények.
+
+Q. **Javítás Vezénylési alkalmazás segítségével a saját fejlesztői fürt (egy csomópontos fürtre) javítás?**
+
+A. Nem, javítás vezénylési alkalmazás nem használható javítás egy csomópontos fürtre. Ez a korlátozás van, úgy lett kialakítva, mint [háló rendszerszolgáltatások szolgáltatás](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) vagy alkalmazások vevői fognak adódni az állásidőt, és ezért a javítási feladat javítás céljából volna soha nem beolvasása jóvá manager javítást.
 
 ## <a name="disclaimers"></a>Felelősséget kizáró nyilatkozatok
 

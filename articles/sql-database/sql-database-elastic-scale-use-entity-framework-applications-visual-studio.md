@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: fba872b01d4ddf0bb4e6aa8d0217042617688b8a
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 2eafd4b23da8f21f1a4b3ffcf29e50b65882d6c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646762"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Az Entity Framework rugalmas adatbázis ügyféloldali kódtár
 Ez a dokumentum láthatók, amelyek szükségesek ahhoz, hogy integrálható az Entity Framework alkalmazásban a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A elsősorban összeállítása [shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md) és [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md) az Entity Framework rendelkező **Code First** megközelítést. A [Code először - új adatbázis](http://msdn.microsoft.com/data/jj193542.aspx) EF útmutató Ez a dokumentum futó példaként szolgál. Ez a dokumentum kísérő mintakód beállítása a Visual Studio-Kódminták található minták rugalmas adatbázis eszközök részét képezi.
@@ -177,9 +178,9 @@ A fenti példák bemutatják, hogy az alapértelmezett konstruktor átírja ahho
 | MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kapcsolat kell lennie a shard leképezés és az adatok függő útválasztási kulcsot. Kihagyva automatikus kapcsolat létrehozásának EF kell, és helyette a shard térkép segítségével replikaszervező a kapcsolatot. |
 | MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A szilánkok leképezés és az adatok függő útválasztási kulcs létrejön a kapcsolat. A rögzített adatbázis neve vagy a kapcsolati karakterlánc nem működik, akkor a shard térkép által kihagyva érvényesítési. |
 | MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A kapcsolat az adott shard térkép és horizontális kulcs jön létre a megadott mintának. A lefordított modell átadódik az alap c'tor. |
-| MyContext (DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext (DbConnection, bool) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). A logikai érték lett átadva. |
+| MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, logikai) |DbContext (DbConnection, bool) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). A logikai érték lett átadva. |
 | MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. Azt nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs lett használatával). A lefordított modell lett átadva. |
-| MyContext (ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Gondoskodjon arról, hogy a kapcsolat a adatként az ObjectContext objektumban található átirányítását kezeli a rugalmas bővítést kapcsolatra kell az új konstruktor. Részletes leírását az ObjectContexts nem a jelen dokumentum terjed. |
+| MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Gondoskodjon arról, hogy a kapcsolat a adatként az ObjectContext objektumban található átirányítását kezeli a rugalmas bővítést kapcsolatra kell az új konstruktor. Részletes leírását az ObjectContexts nem a jelen dokumentum terjed. |
 | MyContext(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool); |A kapcsolat kell következtethető ki a shard térkép és a kulcsot. A kapcsolat nem adható meg bemenetként (kivéve, ha a bemenetet a shard térkép és a kulcs már használja). Modell és a logikai átadott a alaposztály konstruktor. |
 
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>A shard séma telepítési keresztül EF-áttelepítések

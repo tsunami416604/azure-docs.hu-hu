@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: 9768fd96b8023ac97d8c5711e0c02f2c147e28f6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 128a16f0fbde87136ca01812b0217523fdbeeeeb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638986"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure tevékenységnapló figyelő előfizetés tevékenység
 
@@ -50,7 +51,7 @@ A műveletnapló számos modulkategória közül adatokat tartalmazza. Az ezekbe
 * **Szolgáltatás állapota** -ebbe a kategóriába történt az Azure-szolgáltatás állapotának események adatait tartalmazza. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa: "USA keleti régiója az SQL Azure tapasztal állásidő." Szolgáltatás állapotával kapcsolatos események térjen öt fajta: beavatkozás szükséges, támogatott helyreállítási, incidens, karbantartási, adatokat vagy biztonsági, és csak jelenik meg, ha egy erőforrást, amely akkor negatív hatással lehet az esemény az előfizetést.
 * **Riasztási** -ebbe a kategóriába látható Azure riasztások valamennyi aktiváláshoz. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa: "CPU % myVM már több mint 80 az elmúlt 5 percben." Az Azure rendszereket rendelkezik egy riasztási koncepció--valamiféle szabály megadása, és értesítést kaphat, ha feltételek egyeznek meg, hogy a szabály. Minden alkalommal, amikor egy támogatott Azure riasztástípus "aktiválja," vagy a feltételek értesítést létrehozásához, egy rekordot az aktiválás is leküldött ebbe a kategóriába a műveletnapló.
 * **Automatikus skálázás** – Ez a kategória tartalmazza a rekord a a művelethez az automatikus skálázás motor bármely adta meg az előfizetés automatikus skálázás beállításai alapján a kapcsolódó események. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa, hogy "Automatikus skálázás felskálázott művelete nem sikerült." Használja az automatikus skálázás, automatikusan horizontális felskálázás vagy méretezni támogatott erőforrástípus található példányok száma a nap és/vagy terhelés (mérték) adatok az automatikus skálázási beállítás használatával ideje alapján. Ha a feltételek felfelé vagy lefelé méretezési, a kezdő és a sikeres és sikertelen események ebbe a kategóriába tartozó rögzítését.
-* **A javaslat** -ebbe a kategóriába bizonyos erőforrástípusokra, például a webhelyek és az SQL Server-kiszolgálók az ajánlás eseményeket tartalmazza. Ezeket az eseményeket az erőforrások jobb használatára módjára vonatkozó javaslatokkal kínálnak. Az ilyen típusú események csak ha erőforrásokat, amelyek a kibocsátás javaslatokat kap.
+* **A javaslat** -ebbe a kategóriába Azure Advisor szolgáltatásból való javaslat eseményeket tartalmazza.
 * **Biztonsági** – Ez a kategória tartalmazza az Azure Security Center által generált riasztások adatainak. Az ebbe a kategóriába tartozó mutatunk be eseménytípusra példa, hogy "gyanús dupla bővítményfájl végrehajtása."
 * **Házirend- és erőforrás állapota** – ezen kategóriák nem tartalmaz eseményeket, a jövőbeli használatra fenntartva.
 
@@ -60,7 +61,7 @@ A műveletnapló számos modulkategória közül adatokat tartalmazza. Az ezekbe
 ## <a name="what-you-can-do-with-the-activity-log"></a>Mire képes a műveletnapló
 Íme néhány a műveletnapló teheti:
 
-![Azure tevékenységnapló](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
+![Azure-tevékenységnapló](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
 
 * Lekérdezés, és megtekintheti a a **Azure-portálon**.
@@ -103,7 +104,7 @@ A **napló profil** a tevékenységnapló exportálásának módját szabályozz
 * Mennyi ideig a műveletnapló rendszer meddig őrizze meg a Storage-fiók.
     - Egy nulla napos megőrzési azt jelenti, hogy a naplók végtelen tartanak. Ellenkező esetben a értéke lehet bármely 1 és 2147483647 között eltelt napok számát.
     - Ha a megőrzési házirend-beállításokat, de naplók tárolása a Storage-fiók le van tiltva, (például, ha csak az Event Hubs vagy Naplóelemzési beállítások vannak jelölve), az adatmegőrzési hatástalan.
-    - Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg.
+    - Adatmegőrzési alkalmazott napi,, így napi (UTC) szerint naplókat, amelyik most már a megőrzési túl napjától végén házirend törlődnek. Például ha egy nap adatmegőrzési, mai nap kezdetén a napló, a nap előtt tegnap törlése akkor történik meg. A törlési folyamat kezdődik éjfél UTC, de vegye figyelembe, hogy törli a tárfiókot az naplók akár 24 óráig is eltarthat.
 
 A tárolási fiók vagy esemény hub névtér, amely nem ugyanahhoz az előfizetéshez, mint a naplók kibocsátó is használhatja. A beállítás konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC hozzáféréssel kell rendelkeznie.
 
@@ -147,7 +148,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | StorageAccountId |Nem |Erőforrás-azonosító a tárfiók a műveletnapló mentésére. |
 | serviceBusRuleId |Nem |Service Bus-Szabályazonosító a Service Bus-névtér szeretné létrehozni az event hubs rendelkezik. Egy karakterlánc, ebben a formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeinek gyűjtése vesszővel tagolt listája. |
-| RetentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
+| retentionInDays |Igen |Az eseményeket meg kell őrizni, 1 és 2147483647 közötti napok számát. A nulla érték a naplók határozatlan ideig tárolja (végtelen). |
 | Kategóriák |Nem |Be kell esemény kategóriák vesszővel tagolt listája. Lehetséges értékek a következők: Olvasás, törlés és művelet. |
 
 #### <a name="remove-a-log-profile"></a>Napló-profil eltávolítása

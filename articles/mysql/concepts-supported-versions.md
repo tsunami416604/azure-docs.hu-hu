@@ -8,21 +8,22 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/22/2018
-ms.openlocfilehash: 53c8d51ddf9b7465a99b8b0685d7f6ce177fc526
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 05/23/2018
+ms.openlocfilehash: 4402867c93d9eb3f0d11a156da6045e758ac661a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639792"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure-adatbázis a MySQL server-verziók
 A MySQL adatbázis Azure identitáskezelési [MySQL Community Edition](https://www.mysql.com/products/community/), a InnoDB használata.  Azure MySQL-adatbázis jelenleg az alábbi verzióit támogatja:
 
-## <a name="mysql-version-5638"></a>MySQL-verzió 5.6.38
-Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-38.html) további fejlesztések és MySQL 5.6.38 javításaival kapcsolatos.
+## <a name="mysql-version-5639"></a>MySQL-verzió 5.6.39
+Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-39.html) további fejlesztések és MySQL 5.6.39 javításaival kapcsolatos.
 
-## <a name="mysql-version-5720"></a>MySQL-verzió 5.7.20
-Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-20.html) fejlesztései és javításaival kapcsolatos további a MySQL 5.7.20.
+## <a name="mysql-version-5721"></a>MySQL-verzió 5.7.21
+Tekintse meg a MySQL [dokumentáció](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html) fejlesztései és javításaival kapcsolatos további a MySQL 5.7.21.
 
 > [!NOTE]
 > A szolgáltatás egy átjáró használatával a kapcsolatok átirányítása server-példányokat. A kapcsolat létrejötte után a MySQL-ügyfél verziószáma MySQL állítsa be az átjáró, a tényleges verzió a MySQL server-példányon futnak. A MySQL kiszolgálópéldány verziójának meghatározásához használja a `SELECT VERSION();` parancsot a MySQL-parancssorba. 

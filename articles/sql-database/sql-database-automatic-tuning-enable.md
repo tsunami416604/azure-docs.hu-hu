@@ -6,14 +6,15 @@ author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: e4c3a2c1f21bf14bfc75f20dd18cefca68fd2067
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4d3b7f54c7393b57339ea149e8a79f97891dc20
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646031"
 ---
 # <a name="enable-automatic-tuning"></a>Automatikus hangolás engedélyezése
 
@@ -23,36 +24,40 @@ Az Azure SQL Database az automatikusan kezelt adatok szolgáltatása, amely foly
 A kiszolgáló szintjén választhat öröklik az "Azure alapértelmezett értéke" automatikus hangolási beállítás, vagy nem az, hogy örökölje a konfigurációt. Az Azure azok FORCE_LAST_GOOD_PLAN engedélyezve van, engedélyezve van a CREATE_INDEX és DROP_INDEX le van tiltva.
 
 ### <a name="azure-portal"></a>Azure Portal
-Ahhoz, hogy az Azure SQL Database-automatikus hangolása **server**, keresse fel a kiszolgálót az Azure portálon, és válassza ki **automatikus hangolása** a menüben. Válassza ki a engedélyezése, és válassza ki az automatikus hangolási lehetőségeket **alkalmaz**.
+Ahhoz, hogy az Azure SQL Database logikai automatikus hangolása **server**, keresse fel a kiszolgálót az Azure portálon, és válassza ki **automatikus hangolása** a menüben.
 
 ![Kiszolgáló](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Ne feledje, hogy **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások, és nem be kell kapcsolni ezekben az esetekben.
+> Ne feledje, hogy **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások és ezekben az esetekben nem engedélyezhető.
 >
 
-A kiszolgáló automatikus hangolási lehetőségeket a kiszolgálón lévő összes adatbázis is vonatkozik. Alapértelmezés szerint minden adatbázisok a konfigurációs öröklése a fölérendelt kiszolgáló, de ez felül, és az egyes adatbázisok külön-külön megadott.
+Válassza ki a engedélyezése, és válassza ki az automatikus hangolási lehetőségeket **alkalmaz**.
+
+Automatikus hangolási lehetőségeket a kiszolgálón lévő összes adatbázis is vonatkozik. Alapértelmezés szerint minden adatbázisok konfigurációs öröklése a fölérendelt kiszolgáló, de ez felül, és az egyes adatbázisok külön-külön megadva.
 
 ### <a name="rest-api"></a>REST API
 [Ide kattintva további engedélyezéséről a REST API-n keresztül a kiszolgáló szintjén automatikus hangolása](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Egyedi adatbázis automatikus hangolása engedélyezése
 
-Az Azure SQL Database lehetővé teszi, hogy egyesével adja meg az automatikus hangolási beállítás az összes adatbázisra. Az adatbázis szintjén választhat automatikus hangolási beállítás öröklése a fölérendelt kiszolgáló, "Azure alapértelmezett értéke", vagy nem az, hogy örökölje a konfigurációt. Az Azure alapértelmezett FORCE_LAST_GOOD_PLAN engedélyezve van, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
+Az Azure SQL Database lehetővé teszi az automatikus hangolási beállítás, az egyes adatbázisok külön-külön megadását. Az adatbázis szintjén választhat automatikus hangolási beállítás öröklése a fölérendelt kiszolgáló, "Azure alapértelmezett értéke", vagy nem az, hogy örökölje a konfigurációt. Az Azure alapértelmezés szerint engedélyezve van a FORCE_LAST_GOOD_PLAN, CREATE_INDEX engedélyezve van, és DROP_INDEX le van tiltva.
 
 > [!NOTE]
-> Az általános javasoljuk, hogy ugyanazokat a konfigurációs beállításokat is az összes adatbázis automatikusan alkalmazza az automatikus hangolási beállítás kiszolgálói szinten kezelését. Konfigurálja automatikus hangolással a egyedi adatbázis Ha az adatbázis különböző, hogy mások ugyanazon a kiszolgálón.
+> Az általános javasoljuk, hogy az automatikus hangolási beállítás, kezelése **kiszolgálószintű** , ugyanazokat a konfigurációs beállításokat alkalmazhassa az összes adatbázis automatikusan. Konfigurálja az automatikus hangolással a egyedi adatbázis csak akkor, ha szükséges, hogy az adatbázis különböző beállításokat, mint a többire beállításokat örököl ugyanarra a kiszolgálóra.
 >
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Ahhoz, hogy az automatikus hangolással egy **egyetlen adatbázis**, keresse meg az adatbázist, az Azure portálon, és majd, és válassza ki **automatikus hangolása**. Beállíthatja, hogy a beállítások öröklése a kiszolgálóról a beállítás kiválasztásával egyetlen adatbázis, vagy a konfigurációs adatbázis egyesével adja meg.
+Ahhoz, hogy az automatikus hangolással a **egyetlen adatbázis**, keresse meg az adatbázist, az Azure portálon, és válassza ki **automatikus hangolása**.
+
+Egyes automatikus hangolási beállításainak külön konfigurálhatók az egyes adatbázisok. Az egyes automatikus hangolási beállítás, vagy adja meg, hogy egy beállítást beállításait örökli a kiszolgáló manuálisan.
 
 ![Adatbázis](./media/sql-database-automatic-tuning-enable/database.png)
 
-Miután kiválasztotta a megfelelő konfigurációs, kattintson a **alkalmaz**.
+Vegye figyelembe, hogy DROP_INDEX beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások és ezekben az esetekben nem engedélyezhető.
 
-Vegye figyelembe, hogy DROP_INDEX beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások, és nem be kell kapcsolni ezekben az esetekben.
+Miután kiválasztotta a kívánt konfiguráció, kattintson a **alkalmaz**.
 
 ### <a name="rest-api"></a>REST API
 [Ide kattintva további engedélyezéséről a REST API-n keresztül egy önálló adatbázis automatikus hangolása](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)

@@ -11,19 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 12a176a6eba3b6dd83ef7fb97f89ecfe99083059
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637361"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Az Azure Key Vault felhasználói adatokkal kapcsolatos funkciókkal
 
 Az Azure Key Vault kap ügyféladatok létrehozása vagy a tárolók, a kulcsokat, a titkos kulcsokat, a tanúsítványok és a felügyelt storage-fiókok módosítása során. Az ügyféladatok látható közvetlenül az Azure portálon, és a REST API-n keresztül. Felhasználói adatok szerkeszthetők és törölte a frissítése vagy törlése az objektum, amely tartalmazza az adatokat.
 
 Rendszer belépési naplók jön létre, amikor egy felhasználó vagy alkalmazás fér hozzá a Key Vault. Részletes belépési naplók Azure Insights felhasználója számára érhetők el.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="identifying-customer-data"></a>Felhasználói adatok azonosítása
 

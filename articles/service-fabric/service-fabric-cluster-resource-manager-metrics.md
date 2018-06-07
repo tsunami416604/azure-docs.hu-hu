@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7457a820d9179248eab976ceec64f6b7a4a38563
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643338"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Kezelése erőforrás-felhasználás és a metrikák a Service Fabric terheléselosztási
 *Metrikák* az erőforrás, a szolgáltatások ítélt információkat, és amely a fürt csomópontja által biztosított. Egy metrika, amelyeket szeretne kezelni, javítása vagy a szolgáltatások teljesítményének figyeléséhez. Például előfordulhat, hogy figyelje a rendszermemóriát tudni, hogy ha a szolgáltatás túlterhelt. Egy másik rendeltetése mérje fel, hogy a szolgáltatás tudta áthelyezni máshol ahol memória kisebb korlátozott ahhoz, hogy nagyobb teljesítményre van szüksége-e.
@@ -32,11 +33,12 @@ Tegyük fel, hogy szeretné-e a kezdéshez írást, és a szolgáltatás telepí
   - ReplicaCount - csomóponton teljes állapot-nyilvántartó replikák száma
   - Szám - szolgáltatás-objektumok (állapotmentes és állapotalapú) azon a csomóponton száma
 
-| Metrika | Állapot nélküli példány betöltése | Állapot-nyilvántartó másodlagos betöltése | Állapot-nyilvántartó elsődleges betöltése |
-| --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |
-| ReplicaCount |0 |1 |1 |
-| Darabszám |1 |1 |1 |
+| Metrika | Állapot nélküli példány betöltése | Állapot-nyilvántartó másodlagos betöltése | Állapot-nyilvántartó elsődleges betöltése | Súlyozás |
+| --- | --- | --- | --- | --- |
+| PrimaryCount |0 |0 |1 |0 |
+| ReplicaCount |0 |1 |1 |0 |
+| Darabszám |1 |1 |1 |0 |
+
 
 Alapszintű munkaterhelések esetén az alapértelmezett metrikák adja meg a fürt munka decent terjesztési. A következő példában nézzük meg, mi történik, ha azt hozzon létre két szolgáltatást, és a terheléselosztás alapértelmezett metrikáit. Az első szolgáltatás egy állapotalapú szolgáltatás három partíciókat és a cél replika három méretének beállítása. A második szolgáltatás egy olyan állapot nélküli szolgáltatás egy partíciót és három példányszám.
 

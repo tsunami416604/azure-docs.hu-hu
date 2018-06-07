@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/25/2018
 ms.author: bwren
-ms.openlocfilehash: d42069e8ed72a834973b56df55488955d62e71f2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 33b98c56cde8d4a876f217d0bbdd716d3a336260
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636732"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analyticshez a HTTP adatait gyűjtője API-t (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan használja a HTTP adatok adatgyűjtő API REST API-ügyfél Naplóelemzési adatküldéshez.  Bemutatja, hogyan lehet a parancsfájl vagy az alkalmazás által összegyűjtött adatok formázása, adja hozzá a kérelem és a kérésre Naplóelemzési engedélyezve van.  A példák PowerShell, a C# és Python.
@@ -44,7 +45,7 @@ A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, am
 |:--- |:--- |
 | Módszer |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
-| Tartalomtípus |application/json |
+| Tartalom típusa |application/json |
 
 ### <a name="request-uri-parameters"></a>A kérelem URI-paraméterei
 | Paraméter | Leírás |
@@ -59,7 +60,7 @@ A HTTP-adatokat gyűjtő API használatához hozzon létre egy POST kérést, am
 | Engedélyezés |Az engedélyezési aláírás. A cikk későbbi részében olvashat létrehozása egy HMAC-SHA256-fejlécben. |
 | Napló-típusa |Adja meg az adatok küldése folyamatban rekord típusát. A napló típusa jelenleg csak alfanumerikus karaktereket tartalmazhat. Nem támogatja írhatók vagy speciális karaktereket. A méretkorlát a paraméter nem 100 karakternél. |
 | x-ms-dátuma |A kérelem feldolgozása, RFC 1123 formátumban dátuma. |
-| time-generated-field |Az adatok, amely tartalmazza az elem a Timestamp típusú mező neve. Ha a megadott mező, akkor annak tartalmát használt **TimeGenerated**. Ha ez a mező nincs megadva, az alapértelmezett **TimeGenerated** a alkalom, hogy az üzenet van okozhatnak. A mező tartalmának érdemes követnie az ISO 8601 formátum éééé-hh-SSz. |
+| time-generated-field |Az adatok, amely tartalmazza az elem a Timestamp típusú mező neve. Ha a megadott mező, akkor annak tartalmát használt **TimeGenerated**. Nem lehet null értékű, és tartalmaznia kell egy érvényes dátum idő. Ha ez a mező nincs megadva, az alapértelmezett **TimeGenerated** a alkalom, hogy az üzenet van okozhatnak. A mező tartalmának érdemes követnie az ISO 8601 formátum éééé-hh-SSz. |
 
 ## <a name="authorization"></a>Engedélyezés
 A napló Analytics HTTP adatokat gyűjtő API kérésének tartalmaznia kell egy engedélyezési fejléc. A kérés hitelesítéséhez, be kell jelentkeznie a kérelmet az elsődleges vagy másodlagos kulcsát a munkaterületen, a kérést. Így továbbítsa az adott aláírás a kérelem részeként.   
@@ -188,8 +189,8 @@ Ez a táblázat felsorolja a szolgáltatás esetleg vissza állapotkódokat telj
 | 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy a munkaterület azonosítója és a kapcsolat kulcs érvényesek. |
 | 404 |Nem található | | A megadott URL-cím érvénytelen, vagy a kérelem túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás problémát nagyszámú fiókja adatait. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba. |UnspecifiedError |A szolgáltatás belső hibát észlelt. Próbálja megismételni a kérelmet. |
-| 503 |A szolgáltatás nem érhető el |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Próbálja megismételni a kérést. |
+| 500 |Belső kiszolgálóhiba |UnspecifiedError |Belső szolgáltatáshiba történt. Próbálja megismételni a kérelmet. |
+| 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Próbálja megismételni a kérést. |
 
 ## <a name="query-data"></a>Adatok lekérdezése
 A napló Analytics HTTP adatokat gyűjtő API rekordokat keres által küldött lekérdezési adatok **típus** , amely megegyezik a **LogType** , amely a megadott érték hozzáíródik **_CL**. Például, ha a használt **MyCustomLog**, majd az összes rekordot alakítanák vissza **típus = MyCustomLog_CL**.
@@ -211,7 +212,7 @@ Minden egyes minta hajtsa végre ezeket a lépéseket, a változók beállítás
 
 Azt is megteheti módosíthatja a változók a napló típusa és a JSON-adatokat.
 
-### <a name="powershell-sample"></a>PowerShell-példa
+### <a name="powershell-sample"></a>PowerShell-minta
 ```
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  

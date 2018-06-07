@@ -10,31 +10,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
-ms.author: mattbriggs
+ms.date: 05/21/2018
+ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a3a69f3cf91c0d202d54d0da5dc5fe0531ef9db1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9704f05cc6da97e33c0043b93acedc9e66bdcc36
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714901"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>A Tártallózó csatlakozni az Azure-verem előfizetéssel vagy a storage-fiók
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Ebből a cikkből megtudhatja, hogyan csatlakozni a veremben Azure-előfizetések és a Tártallózó alkalmazó tárfiókok. Az Azure Tártallózó egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure verem Storage-adatokkal Windows, a macOS és a Linux.
+Ebből a cikkből megtudhatja, hogyan csatlakozni a veremben Azure-előfizetések és a Tártallózó alkalmazó tárfiókok. Az Azure storage explorer egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure verem storage-adatokkal Windows, a macOS és a Linux.
 
->[!NOTE]
->Nincsenek áthelyezni az adatokat, és az Azure Storage-verem használható eszközöket. További információkért lásd: [adatok át Azure verem tárolási eszközök](azure-stack-storage-transfer.md).
+> [!NOTE]  
+> Nincsenek elérhető áthelyezni az adatokat, és az Azure-verem tárolási eszközöket. További információkért lásd: [adatok át Azure verem tárolási eszközök](azure-stack-storage-transfer.md).
 
 Ha még nem telepítette a Tártallózó még, [töltse le a Tártallózó](http://www.storageexplorer.com/) és telepítéséhez.
 
-Miután kapcsolódott egy Azure verem előfizetés vagy tárfiók, használhatja a [Azure Tártallózó cikkek](../../vs-azure-tools-storage-manage-with-storage-explorer.md) az Azure-verem adatait. 
+Miután kapcsolódott egy Azure verem előfizetés vagy tárfiók, használhatja a [az Azure storage explorer cikkek](../../vs-azure-tools-storage-manage-with-storage-explorer.md) az Azure-verem adatait. 
 
 ## <a name="prepare-for-connecting-to-azure-stack"></a>Kapcsolódás Azure verem előkészítése
 
-Az Azure-verem vagy Tártallózó a VPN-kapcsolat az Azure-verem előfizetés eléréséhez közvetlen hozzáférést van szüksége. A VPN-kapcsolat Azure Stackhez való beállításáról a [Csatlakozás az Azure Stackhez VPN segítségével](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) témakörben talál további információt.
+Az Azure-verem vagy Tártallózó az Azure-verem előfizetés eléréséhez a VPN-kapcsolat közvetlen hozzáférés szükséges. A VPN-kapcsolat Azure Stackhez való beállításáról a [Csatlakozás az Azure Stackhez VPN segítségével](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) témakörben talál további információt.
 
 Az Azure verem szoftverfejlesztői készlet kell exportálni a Azure verem legfelső szintű tanúsítványát.
 
@@ -52,7 +53,7 @@ Az Azure verem szoftverfejlesztői készlet kell exportálni a Azure verem legfe
 
     Az exportált tanúsítványt a következő lépésben fogja használni.
 
-5. Indítsa el a Tártallózót, és ha megjelenik a **csatlakozás az Azure Storage** párbeszédpanel mezőbe megszakítja a műveletet.
+5. Indítsa el a tártallózót, és ha megjelenik a **csatlakozás az Azure Storage** párbeszédpanel mezőbe megszakítja a műveletet.
 
 6. Az a **szerkesztése** menüben mutasson a **SSL-tanúsítványok**, majd válassza ki **importálási tanúsítványok**. A fájlválasztó párbeszédpanellel keresse meg és nyissa meg az előző lépésben exportált tanúsítványt.
 
@@ -75,9 +76,9 @@ Az alábbi lépések segítségével Tártallózó csatlakozás verem Azure-elő
 
     ![Azure Stack-fiók hozzáadása](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. A csatlakozás Azure Storage párbeszédpanelen alatt **Azure környezetben**, jelölje be **Azure** vagy **Azure Kína**használata Azure verem fiók attól függően, hogy. Válassza ki **bejelentkezés** bejelentkezni a Azure verem fiókot, amely az legalább egy aktív Azure-verem előfizetéséhez rendelve van.
+3. A csatlakozás Azure Storage párbeszédpanelen alatt **Azure környezetben**, jelölje be **Azure** vagy **Azure Kína**, függ a verem Azure-fiókra, amely használatban van, jelölje be **Bejelentkezés** a legalább egy aktív Azure-verem előfizetéshez tartozó Azure verem fiókkal bejelentkezni.
 
-    ![Csatlakozás az Azure Storage](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
+    ![Csatlakozás az Azure Storage-hoz](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 
 4. Amint sikeresen bejelentkezett egy Azure Stack-fiókkal, a bal oldali ablaktáblán megjelenik a fiókhoz társított összes Azure Stack-előfizetés. Válassza ki azt az Azure Stack-előfizetést, amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget. (Az **Összes előfizetés** kiválasztásával vagy törlésével kijelölheti az összes felsorolt Azure Stack-előfizetést, vagy törölheti mindegyik jelölését.)
 
@@ -115,5 +116,5 @@ Egy Azure verem storage-fiók használata a tárfiók neve vagy a kulcspár is k
 ## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés a Tártallózó alkalmazással](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Verem az Azure Storage: különbségek és szempontok](azure-stack-acs-differences.md)
-* Azure Storage kapcsolatos további információkért lásd: [Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
+* [Verem az Azure storage: különbségek és szempontok](azure-stack-acs-differences.md)
+* Az Azure storage kapcsolatos további információkért lásd: [Microsoft Azure storage bemutatása](../../storage/common/storage-introduction.md)

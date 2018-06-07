@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640472"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Azure Redis Cache a gyakori kérdéseket, a mintákat és ajánlott eljárások a válaszok megismerése.
@@ -82,7 +83,7 @@ Ebben a szakaszban a gyakran ismételt kérdéseket fedik le a közös figyelés
 * [Mely Azure Cache-ajánlatot az megfelelő a számomra?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-redis-cache"></a>Mi az az Azure Redis Cache?
-Azure Redis Cache alapul a népszerű nyílt forráskódú [Redis gyorsítótár](http://redis.io). Ez hozzáférést biztosít a biztonságos, dedikált Redis gyorsítótár, a Microsoft által felügyelt, és elérhető bármely alkalmazásból az Azure-ban. Részletesebb áttekintéséért lásd: a [Azure Redis Cache](https://azure.microsoft.com/services/cache/) az Azure.com-on a termék oldalát.
+Az Azure Redis Cache a népszerű, nyílt forráskódú [Redis Cache](http://redis.io)-re épül. Ez hozzáférést biztosít a biztonságos, dedikált Redis gyorsítótár, a Microsoft által felügyelt, és elérhető bármely alkalmazásból az Azure-ban. Részletesebb áttekintéséért lásd: a [Azure Redis Cache](https://azure.microsoft.com/services/cache/) az Azure.com-on a termék oldalát.
 
 ### <a name="how-can-i-get-started-with-azure-redis-cache"></a>Hogyan lehet kezdjem el az Azure Redis Cache?
 Ismerkedés az Azure Redis Cache számos módja van.
@@ -385,7 +386,7 @@ Ezt az információt kap, Határozottan javasoljuk, hogy az ügyfelek beállít�
 
 Hogyan kell konfigurálnia a beállítást:
 
-* Az ASP.NET, használja a ["minIoThreads" konfigurációs beállítás] [ "minIoThreads" configuration setting] alatt a `<processModel>` konfigurációs elem a Web.config fájlban. Ha Azure Websitesra belül futtat, akkor ezt a beállítást nincs közzétéve, az a konfigurációs beállításokat. Azonban továbbra is konfigurálhatja ezt a beállítást programozott módon kell (lásd alább) a Application_Start metódus a global.asax.cs.
+* Az ASP.NET, használja a ["minIoThreads" vagy "minWorkerThreads" konfigurációs beállítás] [ "minIoThreads" configuration setting] alatt a `<processModel>` konfigurációs elem a Web.config fájlban. Ha Azure Websitesra belül futtat, akkor ezt a beállítást nincs közzétéve, az a konfigurációs beállításokat. Azonban továbbra is konfigurálhatja ezt a beállítást programozott módon kell (lásd alább) a Application_Start metódus a global.asax.cs.
 
   > [!NOTE] 
   > A konfigurációs elemben megadott érték egy *-core* beállítást. Például ha egy 4 processzormagos számítógép, és a minIOThreads beállítást kell lennie 200 futásidőben, használhatja `<processModel minIoThreads="50"/>`.

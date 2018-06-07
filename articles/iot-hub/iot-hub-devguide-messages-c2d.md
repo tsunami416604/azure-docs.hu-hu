@@ -1,23 +1,19 @@
 ---
 title: Azure IoT Hub eszközre cloud messaging megértése |} Microsoft Docs
 description: Fejlesztői útmutató - felhő eszközre üzenetküldés az IoT-központ használatával. Az üzenet életciklusát, és a konfigurációs beállítások kapcsolatos adatokat tartalmaz.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d3d8df0d1e00fdff4d0e1e93715e1a408116d1e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632475"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Felhő-eszközre küldött üzenetek küldése az IoT-központ
 
@@ -77,7 +73,7 @@ A felhőből eszközre üzenetet küld, ha a szolgáltatás kérhetnek az üzene
 
 | Nyugtázási tulajdonság | Viselkedés |
 | ------------ | -------- |
-| **positive** | Ha a felhő eszközre üzenet eléri a **befejezve** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
+| **Pozitív** | Ha a felhő eszközre üzenet eléri a **befejezve** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
 | **negative** | Ha a felhő eszközre üzenet eléri a **Dead lettered** állapotba kerül, az IoT-központ visszajelzés üzenetet hoz létre. |
 | **full**     | Az IoT-központ visszajelzés üzenet mindkét esetben állít elő. |
 
@@ -88,7 +84,7 @@ A [végpontok][lnk-endpoints], IoT-központ biztosítja a szolgáltatás felé n
 | Tulajdonság     | Leírás |
 | ------------ | ----------- |
 | EnqueuedTime | Jelzi, ha a visszajelzés üzenetet kapott a központ időbélyegző. |
-| UserId       | `{iot hub name}` |
+| Felhasználói azonosító       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 A szervezet rekord, egy JSON-szerializált tömbje, minden, a következő tulajdonságokkal:
@@ -97,9 +93,9 @@ A szervezet rekord, egy JSON-szerializált tömbje, minden, a következő tulajd
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Mikor történt, az üzenet eredményeit jelző időbélyegző. Például a központ visszajelzés hibaüzenetet kapta, vagy az eredeti üzenet érvényessége lejárt. |
 | OriginalMessageId  | **MessageId** a felhőből eszközre üzenet, amely a visszajelzési információk vonatkozik. |
-| statusCode         | Szükséges karakterlánc. Az IoT-központ által generált visszajelzés üzenetekben használatos. <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> "Visszautasított" <br/> "Kiürítve" |
+| statusCode         | Szükséges karakterlánc. Az IoT-központ által generált visszajelzés üzenetekben használatos. <br/> "Sikeres" <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> "Visszautasított" <br/> "Kiürítve" |
 | Leírás        | Karakterlánc-értékek **StatusCode**. |
-| DeviceId           | **DeviceId** a célként megadott eszköz a felhőből eszközre üzenet, amely a visszajelzésekben vonatkozik. |
+| Eszközazonosító           | **DeviceId** a célként megadott eszköz a felhőből eszközre üzenet, amely a visszajelzésekben vonatkozik. |
 | DeviceGenerationId | **DeviceGenerationId** a célként megadott eszköz a felhőből eszközre üzenet, amely a visszajelzésekben vonatkozik. |
 
 A szolgáltatás meg kell adnia egy **MessageId** a felhőből eszközre üzenet tudjanak a visszajelzés a kivizsgált az eredeti üzenet.

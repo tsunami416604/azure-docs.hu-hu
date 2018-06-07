@@ -1,25 +1,19 @@
 ---
-title: Az Azure biztonsági mentést a Recovery Services-tároló frissítési Backup-tárolóban |} Microsoft Docs
+title: Az Azure biztonsági mentést a Recovery Services-tároló frissítési Backup-tárolóban "
 description: Az új szolgáltatások, mint az erőforrás-kezelő virtuális gépeken, a fokozott biztonság, a VMware virtuális gép biztonsági mentése és a rendszerállapot biztonsági mentése a Windows-kiszolgálók biztonsági mentését a beolvasandó Recovery Services-tároló frissítési mentési tárolóba
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: vijayts
-editor: ''
-keyword: backup vault; upgrade vault; recovery services vault
-ms.assetid: d037a8bf-49f2-4578-974a-3471d87ca278
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/10/2017
-ms.author: trinadhk, sogup
-ms.openlocfilehash: ffc5f11a324b5ac65c872ca2c033f039c129c5f8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: trinadhk
+ms.openlocfilehash: 358c7b0e61d1c85e236007c2495941a31502431a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606859"
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Recovery Services-tároló frissített mentési tároló
 Ez a cikk áttekintést nyújt milyen Recovery Services-tároló, a Recovery Services-tároló és a frissítés utáni lépések tároló létező biztonsági másolathoz történő frissítéssel kapcsolatos gyakran ismételt kérdések. Recovery Services-tároló megfelel az Azure Resource Manager egy biztonsági mentési tárolót, amely a biztonsági mentési adatokat. Az adatokat a program általában másolja az adatokat, vagy a konfigurációs adatokat a virtuális gépek (VM), a munkaterhelések, a kiszolgálók vagy a munkaállomások, hogy a helyszíni vagy az Azure-ban.

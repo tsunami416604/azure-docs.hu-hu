@@ -1,22 +1,19 @@
 ---
 title: Az eszköz szimuláció megoldás - Azure üzembe helyezése |} Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogyan azureiotsuite.com az eszköz szimuláció megoldást kiépítéséhez.
-services: iot device simulation
-suite: iot-suite
 author: troyhopwood
-manager: timlt
+manager: ''
 ms.author: troyhop
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 12/18/2017
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 4d468c527c658707da2b5f35f43676626baf5ca2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e96c0f16ca4b69d103674b7f895c52d197280ca5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627006"
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>Az Azure IoT eszköz szimuláció megoldás üzembe helyezéséhez
 
@@ -39,7 +36,7 @@ Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. T
 
 Csak a megoldás telepítheti az Azure-előfizetéshez, ki kell választania néhány konfigurálási beállításhoz:
 
-1. Jelentkezzen be [azureiotsuite.com](https://www.azureiotsuite.com) az Azure használatával fiók hitelesítő adatait, és kattintson a **+** egy új megoldás létrehozásához:
+1. Jelentkezzen be [azureiotsuite.com](https://www.azureiotsolutions.com) az Azure használatával fiók hitelesítő adatait, és kattintson a **+** egy új megoldás létrehozásához:
 
     ![Új megoldás létrehozása](./media/iot-accelerators-device-simulation-deploy/createnewsolution.png)
 

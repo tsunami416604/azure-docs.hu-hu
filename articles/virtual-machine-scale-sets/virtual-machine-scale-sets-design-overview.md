@@ -1,9 +1,9 @@
 ---
-title: "Kialakítási szempontok a Azure virtuálisgép-méretezési csoportok |} Microsoft Docs"
-description: "További tudnivalók az Azure virtuálisgép-méretezési csoportok kialakítási szempontjai"
-keywords: "Linux virtuális gép, virtuálisgép-méretezési beállítása"
+title: Kialakítási szempontok a Azure virtuálisgép-méretezési csoportok |} Microsoft Docs
+description: További tudnivalók az Azure virtuálisgép-méretezési csoportok kialakítási szempontjai
+keywords: Linux virtuális gép, virtuálisgép-méretezési beállítása
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 8c9253caad8b85b25e3142429c1e23be6f92dd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652399"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Méretezési csoportok kialakítási szempontjai
 A cikk ismerteti a virtuálisgép-méretezési csoportok kialakítási szempontjai. Mik azok a virtuálisgép-méretezési csoportok kapcsolatos információkért tekintse meg [virtuális gépek méretezési készletek áttekintése](virtual-machine-scale-sets-overview.md).
@@ -30,24 +31,21 @@ A cikk ismerteti a virtuálisgép-méretezési csoportok kialakítási szempontj
 
 ### <a name="scale-set-specific-features"></a>Méretezési készlet-specifikus szolgáltatásai
 
-- A méretezési konfigurációs ad meg, miután frissítheti párhuzamosan további virtuális gépek telepítése a "kapacitás" tulajdonság. Ez egy sokkal egyszerűbb, mint a kell levezényelni a párhuzamos sok egyes virtuális gépek telepítését egy parancsfájl írásához.
+- A méretezési konfigurációs ad meg, ha frissíti a *kapacitás* tulajdonság párhuzamosan további virtuális gépek telepítéséhez. Ez a folyamat jobb, mint kell levezényelni a párhuzamos sok egyes virtuális gépek telepítését egy parancsfájl írásához.
 - Is [Azure automatikus skálázás segítségével automatikusan átméretezi a méretezési](./virtual-machine-scale-sets-autoscale-overview.md) , de nem az egyes virtuális gépek.
 - Is [lemezkép-visszaállítási méretezési virtuális gépek](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) , de [nem az egyes virtuális gépek](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Is [szükségesnél több erőforrás](./virtual-machine-scale-sets-design-overview.md) méretezési virtuális gépek nagyobb megbízhatóságot és gyorsabb telepítési időpontokat. Nem ehhez az egyes virtuális gépeken kivéve ennek egyéni kód írását, akkor.
+- Is [szükségesnél több erőforrás](./virtual-machine-scale-sets-design-overview.md) méretezési virtuális gépek nagyobb megbízhatóságot és gyorsabb telepítési időpontokat. Az egyes virtuális gépek nem overprovision, kivéve, ha az adott művelet végrehajtására egyéni kód írását, akkor.
 - Megadhat egy [házirend frissítése](./virtual-machine-scale-sets-upgrade-scale-set.md) megkezdik frissítések virtuális gépek között a méretezési csoportban lévő megkönnyítése. Az egyes virtuális gépeken meg kell levezényelni a frissítéseket magát.
 
 ### <a name="vm-specific-features"></a>VM-specifikus szolgáltatásai
 
 Néhány funkció jelenleg csak a virtuális gépek:
 
-- Az adatlemezek csatolhat adott egyes virtuális gépeken, de csatolt adatlemezek méretezési csoportban lévő összes virtuális gépek vannak konfigurálva.
-- Nem üres adatlemez csatolása egyes virtuális gépeken, de nem méretezési csoportban lévő virtuális gépek.
-- Egy adott virtuális Gépre, de nem egy Virtuálisgép-méretezési csoportban lévő lehet pillanatkép.
-- Az egy adott virtuális Gépre, de nem egy Virtuálisgép-méretezési csoportban lévő lemezkép rögzítheti.
-- Telepíthet át egy adott virtuális Gépre natív lemezek felügyelt lemezekre, de nem ehhez a virtuális gépek méretezési csoportban lévő.
-- IPv6 nyilvános IP-címek rendelhet az egyes virtuális gép hálózati adapterek, de nem ehhez a virtuális gépek méretezési csoportban lévő. IPv6 nyilvános IP-címek terheléselosztókhoz elé vagy egyedi virtuális gépeket rendelhet, vagy a virtuális gépek méretezési csoportjának virtuális gépek.
+- Rögzítheti a lemezkép egy adott virtuális Gépre, de nem méretezési csoportban lévő virtuális gép alapján.
+- Telepíthet át egy adott virtuális Gépre natív lemezek felügyelt lemezekre, de méretezési csoportban lévő Virtuálisgép-példányok nem telepíthetők át.
+- IPv6 nyilvános IP-címek rendelhet az egyes virtuális gép virtuális hálózati adapterek (NIC), de nem ehhez a Virtuálisgép-méretezési csoportban lévő példányok. IPv6 nyilvános IP-címek terheléselosztókhoz elé vagy egyedi virtuális gépeket rendelhet, vagy a virtuális gépek méretezési csoportjának virtuális gépek.
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Az Azure Managed lemezek méretezési csoportok
 Méretezési csoportok hozhatók létre [Azure felügyelt lemezek](../virtual-machines/windows/managed-disks-overview.md) hagyományos Azure storage-fiókok helyett. Felügyelt lemezek előnyei a következők:

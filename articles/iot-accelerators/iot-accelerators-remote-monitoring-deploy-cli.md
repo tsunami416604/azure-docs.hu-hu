@@ -1,30 +1,27 @@
 ---
-title: A távoli felügyeleti megoldás - Azure Java telepítése |} Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan lehet kiépíteni a távoli felügyeleti megoldásgyorsító a parancssori felület használatával.
-services: iot-suite
-suite: iot-suite
+title: A Java távoli figyelésére szolgáló megoldás - Azure telepítése |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan lehet kiépíteni a távoli megfigyelési megoldásgyorsító a parancssori felület használatával.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3178d51cd2c04f3be8d4a6284a4f1635845def8c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628123"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Telepítheti a távoli felügyeleti megoldásgyorsító a parancssori felület használatával
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Telepítheti a távoli megfigyelési megoldásgyorsító a parancssori felület használatával
 
-Ez az oktatóanyag bemutatja, hogyan a távoli felügyeleti megoldásgyorsító kiépítéséhez. A megoldás a parancssori felület használatával telepít. A webes felhasználói felület használata azureiotsuite.com, a további tudnivalók a beállítás további részletekért lásd a megoldás is telepíthet [telepíteni a távoli felügyeleti megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md).
+Ez az oktatóanyag bemutatja, hogyan a távoli megfigyelési megoldásgyorsító kiépítéséhez. A megoldás a parancssori felület használatával telepít. A webes felhasználói felület használata azureiotsuite.com, a további tudnivalók a beállítás további részletekért lásd a megoldás is telepíthet [telepíteni a távoli megfigyelési megoldásgyorsító](iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A távoli felügyeleti megoldásgyorsító központi telepítéséhez szükséges egy aktív Azure-előfizetéssel.
+A távoli megfigyelési megoldásgyorsító központi telepítéséhez aktív Azure-előfizetés szükséges.
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -57,7 +54,7 @@ A megoldásgyorsító központi telepítésekor többféle módon, hogy a telep�
 | SKU    | `basic`, `standard`, `local` | A _alapvető_ központi telepítés a célja a teszt-és bemutatók, egyetlen virtuális gépre telepíti a mikroszolgáltatások létrehozására. A _szabványos_ központi telepítés a célja az üzemi, több virtuális gép telepíti a mikroszolgáltatások létrehozására. A _helyi_ telepítési konfigurál egy Docker-tároló a helyi számítógépen a mikroszolgáltatások futtatásához, és használja az Azure-szolgáltatások, például a tárolási és Cosmos DB, a felhőben. |
 | Futtatókörnyezet | `dotnet`, `java` | Kiválasztja a mikroszolgáltatások nyelvi végrehajtására. |
 
-A helyi telepítés használatával kapcsolatos további tudnivalókért lásd: [helyben fut a távoli felügyeleti megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
+A helyi telepítés használatával kapcsolatos további tudnivalókért lásd: [helyben fut a távoli figyelésére szolgáló megoldás](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables).
 
 ## <a name="basic-vs-standard-deployments"></a>Alapszintű Visual Studio. Normál központi telepítések
 
@@ -96,7 +93,7 @@ A szokásos megoldás létrehozása az Azure-szolgáltatásokat az Azure-előfiz
 
 ### <a name="example-deploy-net-version"></a>Példa: telepítse a .NET-verziót
 
-A következő példa bemutatja, hogyan telepítheti a basic, a távoli felügyeleti megoldásgyorsító .NET verzióját:
+A következő példa bemutatja, hogyan telepítse a távoli megfigyelési megoldásgyorsító alapvető, .NET verzióját:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
@@ -104,7 +101,7 @@ pcs -t remotemonitoring -s basic -r dotnet
 
 ### <a name="example-deploy-java-version"></a>Példa: a Java-verzió telepítése
 
-A következő példa bemutatja, hogyan a standard, a Java verzióját a távoli felügyeleti megoldásgyorsító központi telepítéséhez:
+A következő példa bemutatja, hogyan telepítse a távoli megfigyelési megoldásgyorsító szabványos, Java verzióját:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java
@@ -138,6 +135,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A megoldásgyorsító központi telepítése
 > * Jelentkezzen be a megoldásgyorsító
 
-A távoli felügyeleti megoldás telepített, akkor a következő lépéssel fogja [megismerkedhet a megoldás irányítópultja képességeit](./iot-accelerators-remote-monitoring-deploy.md).
+A távoli figyelésére szolgáló megoldás telepített, akkor a következő lépéssel fogja [megismerkedhet a megoldás irányítópultja képességeit](./iot-accelerators-remote-monitoring-deploy.md).
 
 <!-- Next tutorials in the sequence -->

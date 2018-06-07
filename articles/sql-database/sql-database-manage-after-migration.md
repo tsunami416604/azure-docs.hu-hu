@@ -6,17 +6,18 @@ author: joesackmsft
 manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650111"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>A felhőben – az Azure SQL Database adatbázis új DBA
 
@@ -38,7 +39,7 @@ A cikk ismerteti az egyes Azure SQL Database alapvető jellemzői, amelyek könn
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Hogyan létrehozása és kezelése az SQL-adatbázis a biztonsági mentések?
 Az Azure SQL-adatbázis biztonsági másolatok ne hozzon létre és, mert nem kell. SQL-adatbázis automatikusan-adatbázisok biztonsági mentését, így Ön már nem kell foglalkoznia az ütemezés, véve, és a biztonsági mentések kezelése. A platform teljes biztonsági mentés hetente, különbözeti biztonsági mentési óránként és a napló biztonsági mentését 5 percenként annak biztosítása érdekében, a vész-helyreállítási hatékony, és az adatvesztés minimális vesz igénybe. Az első teljes biztonsági mentés, amint az adatbázis létrehozása történik. A biztonsági mentése "Megőrzési időtartam" nevű egy bizonyos ideig rendelkezésére álljanak, és úgy dönt, teljesítményszint függően változik.  SQL-adatbázis visszaállítása bármely belül a megőrzési időszak használata lehetőséget nyújt, [idő-helyreállítás (PITR) pont](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Teljesítményszint|Megőrzési időszak napban|
+|Teljesítményszinttel|Megőrzési időszak napban|
 |---|:---:|
 |Alapszintű|7|
 |Standard|35|
@@ -70,7 +71,7 @@ SQL-adatbázis nagyon súlyos készít biztonsági és adatvédelmi. SQL-adatbá
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL adatbázis felhasználói hitelesítési módszerek érhető el?
 Nincsenek [két hitelesítési módszerek](sql-database-control-access.md#authentication) érhető el az SQL-adatbázis: 
-- [Azure Active Directory Authentication](sql-database-aad-authentication.md)
+- [Az Azure Active Directory-hitelesítés](sql-database-aad-authentication.md)
 - SQL-hitelesítést. 
 
 A hagyományos windows-hitelesítés nem támogatott. Az Azure Active Directory (AD) egy olyan központi identitások és hozzáférések felügyeleti szolgáltatás. Ez nagyon kényelmesen tartalmaz egy egyszeri bejelentkezés Access (SSO) az összes személyek a szervezetében. Mi ez azt jelenti, hogy a hitelesítő adatok közösen használhatóak az összes Azure-szolgáltatások egyszerűbb hitelesítéshez. Támogatja az aad-ben [többtényezős hitelesítés (többtényezős hitelesítést)](sql-database-ssms-mfa-authentication.md) és egy, a [mindössze néhány kattintással](../active-directory/connect/active-directory-aadconnect-get-started-express.md) AAD integrálható a Windows Server Active Directory. SQL-hitelesítés már használta azt a múltban ugyanúgy működik. Megadja a felhasználónév/jelszó, és akkor is hitelesítheti a felhasználókat a bármely adatbázis a megadott logikai kiszolgálón. Ez is lehetővé teszi, hogy SQL-adatbázis és az SQL Data Warehouse a többtényezős hitelesítést és a Vendég felhasználói fiókok Azure AD-tartományban. Ha már rendelkezik egy Active Directory helyszíni, akkor is vonható össze, az Azure Active Directory segítségével terjed ki a címtár az Azure directory.
@@ -97,7 +98,7 @@ Tűzfal megakadályozza, hogy hozzáférést a kiszolgálóhoz egy külső entit
 
 Tűzfal-szabályokat hozhat létre, a kiszolgáló szintjén vagy az adatbázis szintjén. Szolgáltatásiszint-kiszolgáló tűzfalszabályainak vagy létrehozása a portálon keresztül vagy a szolgáltatáshoz az SSMS használatával is. További információk a kiszolgáló- és adatbázis szintű tűzfalszabály beállításával, lásd: [létre tűzfalszabályokat az SQL-adatbázis](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
 
-#### <a name="service-endpoints"></a>Szolgáltatás-végpontok
+#### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 Alapértelmezés szerint az SQL-adatbázis mérete úgy konfigurálva, hogy "Az összes Azure-szolgáltatások engedélyezése" – ami azt jelenti, hogy a virtuális gépek adatait az Azure-ban megkísérelhet csatlakozni az adatbázishoz. Ezeket a kísérleteket kell hitelesítik. Azonban ha nem szeretné, az adatbázis bármely Azure IP-címek által elérhetőnek kell lennie, letilthatja "Az összes Azure-szolgáltatások engedélyezése". Emellett konfigurálhatja [VNET Szolgáltatásvégpontok](sql-database-vnet-service-endpoint-rule-overview.md).
 
 Szolgáltatásvégpontok (SE) teszik lehetővé teszi közzé a kritikus fontosságú Azure-erőforrások csak a saját titkos virtuális hálózat az Azure-ban. Ezzel a módszerrel lényegében nincs nyilvános hozzáférés az erőforrásokhoz. A virtuális hálózat az Azure közötti forgalom Azure hálózat marad. Használata nélkül kap a kényszerített bújtatás csomag útválasztást. A virtuális hálózat kényszeríti a szervezet internetes forgalmat és az Azure szolgáltatás forgalom az azonos útvonal áthaladhat. Szolgáltatás végpontokon optimalizálhatja ez óta a csomagok adatfolyam rögtön a virtuális hálózatról Azure gerincét hálózati szolgáltatáshoz.
@@ -124,7 +125,7 @@ Titkosítási védelemmel való ellátásához, és megvédi a bizalmas adatokat
 
 Az SQL-adatbázis, alapértelmezés szerint az adatokat az alrendszer adatainak és naplókönyvtárainak fájlok aktívan teljesen és mindig titkosított keresztül [átlátható adattitkosítási [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql). A biztonsági másolatok is titkosítva vannak. A TDE esetén nem fér hozzá ezeket az adatokat az alkalmazás oldalon igényelt módosításokat. A titkosítási és visszafejtési fordulhat elő, transzparens módon; ezért a neve. Az üzenetsoroktól a bizalmas adatok védelmének és aktívan SQL-adatbázis nevű funkcióval rendelkezik [mindig titkosítja (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE olyan ügyféloldali titkosítás, mely az adatbázis-és nagybetűket oszlopok titkosítja (úgy, hogy azok az adatbázis-rendszergazdák és a jogosulatlan felhasználók számára a titkosított szöveg) típusú. A kiszolgáló először kap a titkosított adatokat. Mindig titkosítja a kulcsot is tárolja az ügyféloldalon, így csak az arra jogosult ügyfelek vissza tudja fejteni a bizalmas oszlopok. A kiszolgáló és az adatok a rendszergazdák nem tekintse meg a bizalmas adatokat, mivel a titkosítási kulcsok tárolási helye az ügyfél. AE titkosítja a bizalmas oszlopok a tábla teljes körű, illetéktelen ügyfelekről a fizikai lemezhez. AE napjainkban támogatja egyenlőségi összehasonlítást, így a DBAs továbbra is a titkosított oszlopokban lekérdezni az SQL-parancsok részeként. Mindig titkosított használható számos tárolt kulcs lehetőséggel, például a [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), Windows tanúsítványtárolójába, és helyi hardveres biztonsági modulok.
 
-|**Jellemzői**|**Always Encrypted**|**Átlátható adattitkosítás**|
+|**Jellemzői**|**Mindig titkosítja.**|**Átlátható adattitkosítás**|
 |---|---|---|
 |**Titkosítási span**|Végpontok közötti|Nyugalmi adatok|
 |**Adatbázis-kiszolgáló hozzáférhet bizalmas adatokhoz**|Nem|Igen, mert a titkosítás az adatok aktívan|
@@ -161,7 +162,7 @@ Az alábbi ábrán látható a kulcstároló-beállításait az oszlop főkulcso
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Hogyan optimalizálása és védik a forgalmat a szervezet és az SQL-adatbázis között?
 A szervezet és az SQL-adatbázis közötti hálózati forgalom általában a nyilvános hálózaton keresztül kellene beolvasása irányítja. Azonban ha optimalizálása ezt az elérési utat, és lehetővé teszi a nagyobb biztonságot nyújt, megtekintheti az Express Route. Expressroute lényegében lehetővé teszi a vállalati hálózat kiterjeszti az Azure platformon titkos kapcsolaton keresztül. Ezzel a módszerrel nem lépjen a nyilvános interneten keresztül. Is kap magasabb szintű biztonságra, megbízhatóságra és útválasztási optimalizálás, amely alacsonyabb hálózati késések fordulnak elő, és sokkal gyorsabb sebességű, mint amennyit általában akkor tapasztalnak, a nyilvános interneten keresztül is. Ha azt tervezi, a jelentős adattömb az adatok átvitele a szervezet és az Azure között, használja az Express Route partíciónként akár költségelőnyökhöz juthat. Választhat a három különböző modellek a kapcsolat a szervezet az Azure-bA: 
 - [Felhőalapú Exchange közös elhelyezése](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Bármely elem közöttiként](../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Expressroute is lehetővé teszi kapacitásnövelés legfeljebb 2 x a sávszélesség-korlátozás megvásárlása esetén nem kell külön fizetni. Akkor is közötti régió kapcsolat expressroute segítségével konfigurálhatja. ER kapcsolat szolgáltatók listájának megtekintéséhez lásd: [Express Route-partnerek és társviszony-létesítés helyek](../expressroute/expressroute-locations.md). Az alábbi cikkek Express Route részletesebben ismertetik:

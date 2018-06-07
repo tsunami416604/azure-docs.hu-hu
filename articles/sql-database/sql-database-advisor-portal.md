@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d52838aa65ade8e2dfac75089ee82b4b1bae5257
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644195"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítmény javaslatok alkalmazása
 
@@ -101,8 +102,10 @@ Beállíthatja, hogy az Azure SQL Database javaslatok automatikus végrehajtása
     ![Ajánlott indexek](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Ne feledje, hogy **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások, és nem be kell kapcsolni ezekben az esetekben.
+> Ne feledje, hogy **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíció váltás és index mutatókat használó alkalmazások és ezekben az esetekben nem engedélyezhető.
 >
+
+Miután kiválasztotta a kívánt konfiguráció, kattintson az Alkalmaz gombra.
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>Az ajánlott T-SQL parancsfájl manuális futtatása
 Válassza ki a javaslat, és kattintson a **parancsfájl megtekintése**. Futtassa a parancsfájlt az adatbázis a javaslat manuális alkalmazásához.

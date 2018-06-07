@@ -6,13 +6,14 @@ author: luiscabrer
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 3ab35cfd8ce5cf54a68473736fe05b78d26850de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 816951ac128fb76d748262cfbc5f064a44e6376c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640926"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Egy skillset dúsító-feldolgozási folyamat létrehozása
 
@@ -51,7 +52,7 @@ Az ábrán a *dokumentum repedés* lépés automatikusan megtörténik. Alapvet�
 
 ## <a name="skillset-definition-in-rest"></a>REST-Skillset definíciójában
 
-Egy skillset képességek tömb típusúként van definiálva. Minden egyes szakértelem bemenet a forrás- és a állítanak nevét határozza meg. Használja a [Skillset REST API létrehozása](ref-create-skillset.md), megadhat egy skillset, amely megfelel az előző ábrának: 
+Egy skillset képességek tömb típusúként van definiálva. Minden egyes szakértelem bemenet a forrás- és a állítanak nevét határozza meg. Használja a [Skillset REST API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-skillset), megadhat egy skillset, amely megfelel az előző ábrának: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -103,7 +104,7 @@ Content-Type: application/json
      "description": "Calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       },
       "context": "/document/content/organizations/*",
       "inputs": [
@@ -123,7 +124,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="create-a-skillset"></a>Hozzon létre egy skillset
+## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
 Egy skillset létrehozásakor megadhat egy leírást, hogy ellenőrizze a skillset önálló dokumentálása. A Leírás: a nem kötelező, de hasznos nyomon követése céljából egy skillset funkciója. Mivel skillset egy JSON-dokumentumában, amely nem engedélyezi a megjegyzéseket, használjon egy `description` elemen.
 
@@ -152,8 +153,7 @@ Az első szakértelem, amely az előre meghatározott nézzük [nevű entitás f
           "name": "text",
           "source": "/document/content"
         }
-      ],
-      "outputs": [
+      ],      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -208,7 +208,7 @@ Az egyéni Bing entitás keresési enricher szerkezete visszahívása:
      "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       }
       "context": "/document/content/organizations/*",
       "inputs": [

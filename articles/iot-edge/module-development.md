@@ -1,19 +1,19 @@
 ---
-title: "Az Azure IoT peremhálózati modulok fejlesztése |} Microsoft Docs"
-description: "További tudnivalók az egyéni modulok létrehozása az Azure IoT peremhálózati"
-services: iot-edge
-keywords: 
+title: Az Azure IoT peremhálózati modulok fejlesztése |} Microsoft Docs
+description: További tudnivalók az egyéni modulok létrehozása az Azure IoT peremhálózati
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 95b1d5d4e5e11f96b6abb17f0aeba935cc65512d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: bf6a14020f26691195963a210d668912705f3b8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631717"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules---preview"></a>Követelmények és fejlesztési IoT peremhálózati modulok eszközök – előzetes
 
@@ -72,7 +72,7 @@ Az oktatóanyag [fejlesztése és egy peremhálózati IoT-modul telepítése a s
 Az IoT-Edge modulok Docker képként vannak csomagolva.
 Docker toolchain közvetlenül, vagy a Visual Studio Code is használhatja a látható módon az oktatóanyag [fejlesztése és egy peremhálózati IoT-modul telepítése a szimulált eszköz][lnk-tutorial2].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy modul elkészítéséhez után megtudhatja, hogyan [telepítés IoT peremhálózati modulok léptékű figyelése és][lnk-howto-deploy].
 

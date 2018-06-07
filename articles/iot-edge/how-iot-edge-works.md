@@ -1,25 +1,20 @@
 ---
 title: Az Azure IoT Edge bemutatása | Microsoft Docs
 description: Az Azure IoT Edge szolgáltatás áttekintése
-services: iot-Edge
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: chipalost
-ms.assetid: ''
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.reviewer: chipalost
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: ''
-ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 52956e9888d67e0502a9ea82657acb9728216111
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630697"
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Az Azure IoT Edge bemutatása – előzetes verzió
 
@@ -69,7 +64,7 @@ Az Azure IoT Edge-futtatókörnyezet nagy mennyiségű IoT-eszközön fut, hogy 
 
 A vállalati eszközök szoftveres életciklusainak felügyelete bonyolult feladat. Több millió különböző IoT-eszköz szoftveres életciklusainak felügyelete még bonyolultabb feladat. A számítási feladatokat az adott eszköztípus sajátosságai szerint kell létrehozni és konfigurálni, egyszerre több millió eszközön kell azokat üzembe helyezni a megoldáson belül, és monitorozással ki kell szűrni a rendellenesen működő eszközöket. Ezeket a tevékenységeket nem lehet eszközönként végrehajtani, ezért nagy léptékben kell elvégezni őket.
 
-Az Azure IoT zökkenőmentesen integrálható az Azure IoT Suite-tal, hogy a megoldás igényeit egyetlen felületről lehessen kezelni. A felhőszolgáltatások a következőket tesik lehetővé a felhasználók számára:
+Az Azure IoT peremhálózati integrálható Azure IoT-megoldás gyorsítók egy vezérlő vezérlősík biztosít a megoldás igényeinek. A felhőszolgáltatások a következőket tesik lehetővé a felhasználók számára:
 
 * Számítási feladatok létrehozása és konfigurálása egy adott típusú eszközön való futtatáshoz.
 * Számítási feladatok küldése több eszközre.

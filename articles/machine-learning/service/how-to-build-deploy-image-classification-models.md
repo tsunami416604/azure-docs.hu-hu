@@ -9,11 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: bd9f01e76c68fa41616818251b5b54553059cbcc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637735"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Hozza létre és központi telepítése a lemezképet a besorolási modell Azure Machine Learning segítségével
 
@@ -227,7 +228,6 @@ else:
 ## <a name="define-dnn-models"></a>Adja meg a DNN modellek
 
 A következő pretrained mély Neurális hálózat modellek csomaggal támogatottak: 
-+ AlexNet
 + Resnet 18.
 + Resnet-34
 + Resnet-50
@@ -444,13 +444,9 @@ Használatával egy [Azure](https://azure.microsoft.com/) egy érvényes előfiz
 + Az aktuális modell felügyeleti fiók megtekintéséhez használja a parancsot:
   <br>`az ml account modelmanagement show`
 
-**Hozzon létre, és a telepítési környezet beállítása**
+**Hozzon létre, és a fürt telepítési környezet beállítása**
 
 Csak a telepítési környezet egyszer be kell. Ha egy még nem rendelkezik, állítsa be a telepítési környezet megismerésére [ezeket az utasításokat](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
-
-Kövesse a helyi vagy a fürt telepítési beállítási lépéseket az igényeknek megfelelően alapján.
-+ Helyi telepítések támogatottak, a Linux és Windows 10 gépek, de nem Windows adatok tudományos a virtuális gép vagy a mély tanulási virtuális Gépet. 
-+ Linux és a Windows fürt környezetben történő telepítések esetén támogatottak. 
 
 Az aktív központi telepítéssel környezet, használja a következő parancssori parancsot:
 <br>`az ml env show`

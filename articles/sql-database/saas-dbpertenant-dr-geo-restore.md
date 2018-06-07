@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 8fd25e13f6796b8be99ad3efd425bcde7bca3905
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fc28622ad6d2569d455f82a30a84c47647baa1e2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645334"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Georedundáns helyreállítás használja egy több-bérlős SaaS-alkalmazáshoz helyreállíthatja az adatbázis biztonsági mentése
 

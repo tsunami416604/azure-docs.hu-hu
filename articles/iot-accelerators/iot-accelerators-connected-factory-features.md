@@ -1,29 +1,23 @@
 ---
 title: Gyári megoldás szolgáltatásokat – Azure csatlakoztatott |} Microsoft Docs
 description: Az előre konfigurált csatlakoztatott gyári-megoldás funkcióinak áttekintése.
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: 7ee86a59e7c47406ea1a890f1a9d1eb2ed4ad772
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3478217771418ab31772d6a42a7ed8d8a2e8069a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626496"
 ---
-# <a name="what-is-azure-iot-suite-connected-factory"></a>Mi az Azure IoT Suite csatlakoztatott gyári?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Mi az a csatlakoztatott gyári IoT megoldásgyorsító?
 
-Csatlakoztatott gyári a Microsoft Azure ipari IoT referencia-architektúrában, mint a nyílt forráskódú megoldás csomagolt megvalósítása. Használhatja kiindulási pontként egy kereskedelmi termékhez. A csatlakoztatott gyári megoldás előre elkészített verziója telepítheti be az Azure-előfizetése [Azure IoT Suite](https://www.azureiotsuite.com/#solutions/types/CF).
+Csatlakoztatott gyári a Microsoft Azure ipari IoT referencia-architektúrában, mint a nyílt forráskódú megoldás csomagolt megvalósítása. Használhatja kiindulási pontként egy kereskedelmi termékhez. A csatlakoztatott gyári megoldás előre elkészített verziója telepítheti be az Azure-előfizetése [Azure IoT-megoldás gyorsítók](https://www.azureiotsolutions.com/#solutions/types/CF).
 
 ![Csatlakoztatott gyári megoldás irányítópultja](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
@@ -64,7 +58,7 @@ Csatlakoztatott gyári az alábbi szolgáltatásokat tartalmazza:
 
 ## <a name="customizability"></a>Testreszabhatóság miatt
 
-- [Testre szabhatja](../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md) a megoldás speciális üzleti követelményeinek megfelelően.
+- Testre szabhatja a megoldás speciális üzleti követelményeinek megfelelően.
 - Teljes körű megoldás-forráskód elérhető a Githubon. Tekintse meg a [csatlakoztatott gyári előre konfigurált megoldás](https://github.com/Azure/azure-iot-connected-factory) tárházba.
 
 ## <a name="next-steps"></a>További lépések

@@ -1,24 +1,19 @@
 ---
 title: Importálás és exportálás Azure IoT Hub eszköz identitások |} Microsoft Docs
 description: Hogyan használható az Azure IoT szolgáltatás SDK szemben az identitásjegyzékhez történő importálására és exportálására eszköz identitások tömeges műveletek végrehajtásához. Importálási műveletek lehetővé teszik létrehozása, frissítése és törlése eszköz identitások egyszerre.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 2ade1494-45ea-46a7-ade7-cf6e11ce62da
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 97b0e4c4dd8c67fdcd422fb04b7c32815b6c3fdb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 63e7fd5807f0cf6d05d81af138d649b75024d9bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634022"
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Az IoT Hub eszköz identitásai tömeges kezelése
 
@@ -60,7 +55,7 @@ RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{y
 
 A kapcsolati karakterlánc megkeresése az IoT hub, az Azure-portálon:
 
-- Nyissa meg az IoT hub.
+- Keresse meg az IoT-központot.
 - Válassza ki **megosztott elérési házirendek**.
 - Jelöljön ki egy házirendet, figyelembe véve a szükséges engedélyekkel.
 - A képernyő jobb oldali panelen másolja ki a ConnectionString kapcsolódási karakterláncban.
@@ -247,7 +242,7 @@ Ha az importált fájl iker metaadatokat tartalmaz, a metaadatok felülírja a m
 
 Használja az opcionális **amelyben a importMode** tulajdonság szerializációs adatok importálása az egyes eszközök az importálási folyamat eszközönkénti szabályozására. A **amelyben a importMode** tulajdonságnak a következő beállításokat:
 
-| importMode | Leírás |
+| amelyben a importMode | Leírás |
 | --- | --- |
 | **createOrUpdate** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, a megadott bemeneti adatok nélkül tekintettel felülírja a meglévő adatokat a **ETag** érték. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |
 | **létrehozás** |Ha egy eszköz nem létezik a megadott **azonosító**, újonnan regisztrálva van. <br/>Ha az eszköz már létezik, egy hiba kerül a naplófájlba írást. <br> A felhasználó megadja a két adatok az eszköz adatokkal együtt. A kettős etag, ha meg van adva, akkor feldolgozott egymástól függetlenül az eszköz etag. Ha eltérést okoz a meglévő iker etag, egy hiba kerül a naplófájlba írást. |

@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/14/2018
+ms.date: 05/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7e64bc34f5c39edaf87cc732d7c4702655df0e3e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 7dadaadd0e6a6e6d71685356568076ad26305cc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212670"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642223"
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Az első Service Fabric állapotalapú Reliable Services-alkalmazás létrehozása C#-környezettel
 
@@ -68,12 +68,15 @@ A szolgáltatási projekt tartalmának áttekintéséhez lásd: [Bevezetés a Re
 
 Most, hogy már van egy alkalmazása, az alábbi lépésekkel helyezheti üzembe, futtathatja, és végezhet rajta hibakeresést.
 
-1. Nyomja le az F5 billentyűt a Visual Studióban, hogy üzembe helyezze az alkalmazást a hibakereséshez.
+1. A Visual Studio válassza **F5** hibakeresési az alkalmazás telepítéséhez.  Kattintson a **Igen** Ha jelenik meg a "ServiceFabricAllowedUsers" csoport olvasási és végrehajtási engedélyeket a Visual Studio-projekt könyvtárában megadását kérő üzenet mezőbe.
 
     >[!NOTE]
     >Az alkalmazás első helyi történő üzembe helyezésekor a Visual Studio létrehoz egy helyi hibakeresési fürtöt. Ez eltarthat egy ideig. A fürt létrehozási állapota a Visual Studio kimeneti ablakában jelenik meg.
-
-    Amikor a fürt létrejött, értesítést kap a helyi fürt SDK-hoz tartozó rendszertálca-kezelő alkalmazásától.
+    
+     Amikor a fürt létrejött, értesítést kap a helyi fürt SDK-hoz tartozó rendszertálca-kezelő alkalmazásától.
+     
+    >[!NOTE]
+    >Ebben a gyakorlatban reqires 5 csomópont (vs. 1 csomópont) fürthöz. Ezt ellenőrizheti az alábbiak szerint: Indítsa el a Service Fabric Explorer eszközt, kattintson a jobb gombbal a **Service Fabric Local Cluster Manager** rendszer alkalmazást, és kattintson **kapcsoló fürt mód**. Kattintson a **5 csomópont** 1 csomópont van kijelölve.
     
     ![A helyifürt-rendszertálca értesítése][4]
 
@@ -107,7 +110,7 @@ Most, hogy már van egy alkalmazása, az alábbi lépésekkel helyezheti üzembe
 
     ![Töréspont az állapotalapú szolgáltatás RunAsync metódusában][7]
 
-7. A Service Fabric Explorer eszköz elindításához kattintson a jobb gombbal a **Local Cluster Manager** rendszertálca-alkalmazásra, és válassza a **Helyi fürt kezelése** lehetőséget.
+7. Indítsa el a Service Fabric Explorer eszközt, kattintson a jobb gombbal a **Service Fabric Local Cluster Manager** rendszer alkalmazást, és jelölje be **helyi fürt kezelése**.
 
     ![A Fabric Explorer elindítása a Local Cluster Managerből][systray-launch-sfx]
 
@@ -117,7 +120,7 @@ Most, hogy már van egy alkalmazása, az alábbi lépésekkel helyezheti üzembe
 
     ![Csomópont leállítása a Service Fabric Explorerben][sfx-stop-node]
 
-    Pillanatnyilag a töréspont megjelenését tekintheti meg a Visual Studióban, mivel az egyik csomóponton korábban végzett számítása zökkenőmentesen átadja a feladatokat egy másiknak.
+    Pillanatnyilag a töréspont megjelenését tekintheti meg a Visual Studióban, mivel az egyik csomóponton korábban végzett számítása zökkenőmentesen átadja a feladatokat egy másiknak. Nyomja le az **F5** folytatja.
 
 9. Ezután térjen vissza a Diagnosztikai eseménynaplóhoz, és vizsgálja meg az üzeneteket. A számláló értéke továbbra is növekszik, annak ellenére, hogy az események valójában egy másik csomópontról érkeznek.
 

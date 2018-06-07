@@ -1,22 +1,19 @@
 ---
 title: A távoli felügyeleti megoldás - Azure eszközviselkedés szimulált |} Microsoft Docs
 description: Ez a cikk ismerteti a szimulált eszköz viselkedésének meghatározása a távoli felügyeleti megoldás a JavaScript használatával.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: cd6c3c20f8d776996a7089873e010430fd2b570b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 7e874723833eee239a55b937e3fd0bdfc52d762a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627671"
 ---
 # <a name="implement-the-device-model-behavior"></a>Az eszköz modell viselkedés
 
@@ -29,7 +26,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 >[!div class="checklist"]
 > * A szimulált eszköz állapotának ellenőrzése
-> * Adja meg, hogyan felelnek meg a szimulált eszköz reponds metódusra, és a távoli felügyeleti megoldás
+> * Adja meg, hogyan felelnek meg a szimulált eszköz reponds metódusra, és a távoli figyelésére szolgáló megoldás
 > * A parancsfájlok hibakeresése
 
 ## <a name="state-behavior"></a>Állapot viselkedése
@@ -263,12 +260,12 @@ Ez a cikk ismerteti a saját egyéni szimulált eszköz modell viselkedését de
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
 > * A szimulált eszköz állapotának ellenőrzése
-> * Adja meg, hogyan felelnek meg a szimulált eszköz reponds metódusra, és a távoli felügyeleti megoldás
+> * Adja meg, hogyan felelnek meg a szimulált eszköz reponds metódusra, és a távoli figyelésére szolgáló megoldás
 > * A parancsfájlok hibakeresése
 
 Most már rendelkezik megtudta, hogyan adja meg, a szimulált eszköz, a javasolt következő lépésre megtudhatja, hogyan [a szimulált eszköz létrehozásához](iot-accelerators-remote-monitoring-test.md).
 
-Fejlesztői kapcsolatos további információkért a távoli felügyeleti megoldás az alábbi témakörben talál:
+A távoli figyelésére szolgáló megoldás fejlesztői ismertetését lásd:
 
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

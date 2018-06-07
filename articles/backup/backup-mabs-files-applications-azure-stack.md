@@ -1,25 +1,19 @@
 ---
-title: Készítsen biztonsági másolatot az Azure-verem fájlokhoz és alkalmazásokhoz |} Microsoft Docs
+title: Azure verem fájlok és alkalmazások biztonsági mentése
 description: Azure Backup használatával biztonsági mentése és helyreállítása Azure verem fájlokat és alkalmazásokat az Azure-verem környezethez.
 services: backup
-documentationcenter: ''
 author: adiganmsft
 manager: shivamg
-editor: ''
-keyword: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 5/11/2018
-ms.author: adigan,markgal
-ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.date: 5/18/2018
+ms.author: adigan
+ms.openlocfilehash: 6c7fcc0182add05b68a7b41ab6fe50e18427f6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607303"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem
 Azure Backup segítségével védeni (vagy készítsen biztonsági másolatot) fájlok és alkalmazások Azure veremben. Biztonsági másolatot készíteni a fájlokhoz és alkalmazásokhoz, telepítse a Microsoft Azure Backup Server Azure verem futó virtuális gépként. Az azonos virtuális hálózatban lévő bármely Azure verem kiszolgálón futó alkalmazások, védelmet biztosíthat. Egyszer telepítette az Azure Backup Server, adja hozzá az Azure-lemezeket a helyi tárterület érhető el, a rövid távú biztonsági másolatok növelése érdekében. Az Azure Backup Server hosszú távú megőrzési Azure tárolást használ.
@@ -47,7 +41,7 @@ Az Azure Backup Server a következő Azure verem virtuálisgép-munkaterhelésé
 
 
 ## <a name="install-azure-backup-server"></a>Az Azure Backup Server telepítése
-Azure Backup Server telepítése egy Azure verem virtuális gépen, tekintse meg a cikk [készül, hogy az Azure Backup Server használatával-munkaterhelések biztonsági mentése](backup-azure-microsoft-azure-backup.md). Kiszolgáló telepítése és konfigurálása Azure biztonsági mentés, mielőtt vegye figyelembe a következőket:
+Azure Backup Server telepítése egy Azure verem virtuális gépen, tekintse meg a cikk [készül, hogy az Azure Backup Server használatával-munkaterhelések biztonsági mentése](backup-mabs-install-azure-stack.md). Kiszolgáló telepítése és konfigurálása Azure biztonsági mentés, mielőtt vegye figyelembe a következőket:
 
 ### <a name="determining-size-of-virtual-machine"></a>Virtuális gép mérete meghatározása
 Egy Azure verem virtuális gépen futó Azure Backup Server, használja a A2 méret vagy nagyobb. Ha segítségre van szüksége a virtuálisgép-méret kiválasztása, töltse le a [Azure verem virtuális gép mérete Számológép](https://www.microsoft.com/download/details.aspx?id=56832).

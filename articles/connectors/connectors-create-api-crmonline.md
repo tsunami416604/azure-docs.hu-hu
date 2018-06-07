@@ -1,25 +1,22 @@
 ---
-title: "Csatlakozás az Azure Logic Apps Dynamics 365 (online) |} Microsoft Docs"
-description: "Munkafolyamatokat logic app által kezelt Dynamics 365 (online) entitásokat a Dynamics 365-összekötő által nyújtott API-n keresztül"
-services: logic-apps
-cloud: Azure Stack
+title: Dynamics 365 - Azure Logic Apps csatlakozni |} Microsoft Docs
+description: Bejegyzések Dynamics 365 (online) REST API-k és az Azure Logic Apps alkalmazások létrehozásakor és kezelésekor
 author: Mattp123
-manager: anneta
-documentationcenter: 
-tags: connectors
-ms.assetid: 0dc2abef-7d2c-4a2d-87ca-fad21367d135
-ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+manager: cfowler
+ms.author: matp
 ms.date: 02/10/2017
-ms.author: matp; LADocs
-ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 015f587257603330eab9840edf661ba9675f4ba8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609895"
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Dynamics 365 csatlakoztatja a logic app munkafolyamatok
 

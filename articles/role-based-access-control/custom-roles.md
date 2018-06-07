@@ -15,15 +15,18 @@ ms.date: 05/12/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e75f2cceed83d577730cd29490f80011bdb0a508
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640982"
 ---
 # <a name="create-custom-roles-in-azure"></a>Hozzon létre egyéni szerepkörök az Azure-ban
 
-Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a kívánt hozzáférés igényeinek, saját egyéni szerepköröket is létrehozhat. Hasonlóan a beépített szerepkörök egyéni szerepkörök hozzárendelése felhasználók, csoportok és szolgáltatásnevekről előfizetés, erőforráscsoport és erőforrás-hatókörök. Egyéni szerepkörök az Azure Active Directory (Azure AD) bérlő tárolódnak, és előfizetések között megosztható legyen. Egyéni szerepkörök az Azure PowerShell, az Azure parancssori felület vagy a REST API használatával hozhatók létre. Ez a cikk ismerteti a példa bemutatja, hogyan való PowerShell és az Azure parancssori felület használatával egyéni szerepkörök létrehozásához.
+Ha a [beépített szerepkörök](built-in-roles.md) nem felelnek meg a kívánt hozzáférés igényeinek, saját egyéni szerepköröket is létrehozhat. Hasonlóan a beépített szerepkörök egyéni szerepkörök hozzárendelése felhasználók, csoportok és szolgáltatásnevekről előfizetés, erőforráscsoport és erőforrás-hatókörök. Egyéni szerepkörök az Azure Active Directory (Azure AD) bérlő tárolódnak, és előfizetések között megosztható legyen. Mindegyik bérlő legfeljebb 2000 egyéni szerepkörök is rendelkezhetnek. Egyéni szerepkörök az Azure PowerShell, az Azure parancssori felület vagy a REST API használatával hozhatók létre.
+
+Ez a cikk ismerteti a példa bemutatja, hogyan való PowerShell és az Azure parancssori felület használatával egyéni szerepkörök létrehozásához.
 
 ## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Hozzon létre egy egyéni biztonsági szerepkört megnyitásához támogatási kérelmek PowerShell használatával
 

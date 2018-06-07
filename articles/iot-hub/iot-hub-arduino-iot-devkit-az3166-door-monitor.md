@@ -1,24 +1,20 @@
 ---
 title: E-mailt küld ajtó meg van nyitva, SendGrid szolgáltatás és az Azure Functions használatával |} Microsoft Docs
 description: A mágneses érzékelő észlelés, ha az ajtó már meg van nyitva, és e-mailben értesítést küldeni az Azure Functions használatával figyelheti.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 4eb13a588f0ffd1377caf3ce9bac4886f052a22f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 80537bb817baf20831ad5020f0db775f21836f92
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632135"
 ---
 # <a name="door-monitor"></a>Ajtó figyelője          
 

@@ -5,15 +5,16 @@ services: sql-database
 author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 04/09/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6e282291a6e6e219bb275dd4da91f3815590adc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 075e04db27006719ec7d6e08eb2696436d1010f4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648649"
 ---
 # <a name="dtu-based-purchasing-model-for-azure-sql-database"></a>Az Azure SQL Database alapjául szolgáló vásárlási modell DTU-alapú 
 
@@ -80,9 +81,9 @@ További részletek a meghatározott teljesítményszintet és a tárolási mér
 ||||||
 
 > [!IMPORTANT]
-> -  Tárolási mérete nagyobb, mint a belefoglalt tárolókapacitást még csak előzetes verziójúak, és további költségek alkalmazni. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
-> -  Prémium szint több, mint 1 TB-nyi tárhelyre érhető el jelenleg a következő régiókban: Kelet-Ausztrália, Ausztrália délkeleti, Dél-Brazília, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Franciaország központi, Németország központi, kelet-japán, Nyugat-japán, koreai központi Észak-USA középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati régiója, USA – (kormányzati) Virginia és Nyugat-Európa. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
+> - A szolgáltatási keretbe foglaltnál nagyobb tárterületek előzetes verzióban érhetők el, és további költségek vonatkoznak rájuk. Részletes információ: [SQL Database – Díjszabás](https://azure.microsoft.com/pricing/details/sql-database/). 
+> - Több mint 1 TB-nyi tárhelyre a Premium szinten lévő érhető el minden régióban, kivéve a következőt: Egyesült Királyság északi régiója, nyugati középső Régiójában, UK South2, Kína keleti, USDoDCentral, Németország központi, USDoDEast, USA – (kormányzati) délnyugati, Velünk – (kormányzati) Dél központi, Németország szerepel, Kína Észak, Velünk – (kormányzati) Keleti. A jövőben a lefedettség bővülni fog. Más régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> 
 További részletek a meghatározott teljesítményszintet és a tároló mérete lehetőségeit a rugalmas: [SQL Database DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md#elastic-pool-storage-sizes-and-performance-levels).
 
 

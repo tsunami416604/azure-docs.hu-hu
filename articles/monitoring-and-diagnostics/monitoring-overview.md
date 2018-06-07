@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 354aadd4377e054bc9c10561bbda8fc8009a98a7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640098"
 ---
-# <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és erőforrások figyelése
+# <a name="monitoring-azure-applications-and-resources"></a>Azure-alkalmazások és -erőforrások monitorozása
 
 A gyűjtése és elemzése adatok megállapításához a teljesítményt, állapotának és rendelkezésre állását, valamint az üzleti alkalmazás az erőforrásokat, amelyek attól függ, a folyamat figyelése. Egy hatékony felügyeleti stratégia segít megérteni a az alkalmazás összetevői részletes működését. Emellett segítséget nyújt a hasznos üzemidő növeléséhez a proaktív értesítés, kritikus fontosságú problémáit, hogy a megoldásuk mielőtt azok veszélyeztetnék.
 
@@ -117,9 +118,9 @@ Nincsenek, amelyek együttműködése különböző szempontjairól a hálózat 
 
 [Hálózati figyelő](../network-watcher/network-watcher-monitoring-overview.md) forgatókönyv-alapú figyelési és diagnosztika biztosít a különböző hálózati forgatókönyvek az Azure-ban. Az Azure metrikák és diagnosztika további elemzés céljából tárolja az adatokat. A különböző szempontjairól a hálózat figyeléséhez a következő megoldásokkal működik.
 
-[A hálózati teljesítmény figyelése (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) egy felhőalapú hálózat figyelőmegoldás, amely a nyilvános felhők, adatközpontok és a helyszíni környezetben kapcsolatát figyeli.
+[A hálózati teljesítmény figyelése (NPM)](../log-analytics/log-analytics-network-performance-monitor.md) egy felhőalapú hálózat figyelőmegoldás, amely a nyilvános felhők, adatközpontok és a helyszíni környezetben kapcsolatát figyeli.
 
-[Az ExpressRoute-figyelő](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) egy NPM képesség, amely figyeli a végpontok közötti kapcsolat és a teljesítmény Azure ExpressRoute-Kapcsolatcsoportok keresztül.
+[Az ExpressRoute-figyelő](../expressroute/how-to-npm.md) egy NPM képesség, amely figyeli a végpontok közötti kapcsolat és a teljesítmény Azure ExpressRoute-Kapcsolatcsoportok keresztül.
 
 [DNS Analytics](../log-analytics/log-analytics-dns.md) olyan megoldás, amely biztosítja a biztonság, teljesítmény és kapcsolatos műveletek insights, a DNS-kiszolgálók alapján.
 

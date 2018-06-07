@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 16757af0bab7cfd43488118f62300fb167c193a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cd3f947bfc44055bfec4198a1e7c6a9bb2fab5d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642624"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Miért egy mikroszolgáltatások közelítik meg az alkalmazások?
 Szoftverfejlesztők, mert jelenleg nincs újdonságunk a ahogyan szerintünk kapcsolatos faktoring egy alkalmazás összetevő részre. A központi paradigma objektum tájolás, a szoftver absztrakt entitással egészült ki, és a componentization. Napjainkban a factorization általában osztályok és a megosztott szalagtárakkal és technológiai réteg kapcsolódási formájában. Általában a rétegzett megközelítés használatban van egy háttér-tároló, középszintű üzleti logika és előtér felhasználói felület (UI). Mi *rendelkezik* változások az elmúlt néhány évben, hogy azt, mint a fejlesztők számára által létrehozott elosztott alkalmazások, amelyek a felhőben és a vállalat által vezérelt.
@@ -162,7 +163,7 @@ Fontos, hogy hangsúlyozzák az, hogy újra **indítása és leállítása, ezek
 - Költség csökkentése vagy konszolidáció és magasabb sűrűség meglévő hardver- vagy futó alkalmazásokat eltávolítása miatt. 
 - Egységes telepítési szerződés fejlesztésre, működésre között.
 
-Költség csökkentésének érthető, és a Microsofton belül nagyszámú meglévő alkalmazások vannak folyamatban indexelése egyszerűen több millió dolláros mentésére. Egységes telepítési nehezebb értékelje ki, de egyaránt fontos. Azt jelzi, hogy a fejlesztők is továbbra is szabadon választhat a technológia, hogy a csomagok őket, azonban a műveleteket csak fogad egy egyetlen konkrét módszert meghatározni telepítéséhez és ezeket az alkalmazásokat kezeléséhez. Kiküszöböli az kellene számos különböző technológiák összetettsége foglalkozik, illetve a felhasználók a fejlesztők számára, hogy csak az egyes néhányat a meglévők közül válassza a műveletek. Gyakorlatilag minden egyes alkalmazás van indexelése az önálló telepítési lemezképeket.
+Költség csökkentésének érthető, és a Microsofton belül nagyszámú meglévő alkalmazások vannak folyamatban indexelése egyszerűen több millió dolláros mentésére. Egységes telepítési nehezebb értékelje ki, de egyaránt fontos. Azt jelzi, hogy a fejlesztők is továbbra is szabadon választhat a technológia, amely megfelel, azonban a műveleteket csak fogad egy egyetlen konkrét módszert meghatározni telepítéséhez és ezeket az alkalmazásokat kezeléséhez. Kiküszöböli az kellene számos különböző technológiák összetettsége foglalkozik, illetve a felhasználók a fejlesztők számára, hogy csak az egyes néhányat a meglévők közül válassza a műveletek. Gyakorlatilag minden egyes alkalmazás van indexelése az önálló telepítési lemezképeket.
 
 Számos szervezet itt leállítása. A tárolók előnyeit már rendelkeznek, és a Service Fabric a teljes kezelést biztosít központi telepítés, frissítés, versioning, visszagörgetése, egészségügyi figyelési stb.
 

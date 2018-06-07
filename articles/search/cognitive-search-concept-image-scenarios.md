@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77fbd69aad6c78ecd5c933d8017c980afaa661a3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640200"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan kell feldolgozni információk kinyerése kognitív keresési forgatókönyvekben lemezképek
 
@@ -44,7 +45,7 @@ Kikapcsolja a normalizálást kép nem kapcsolható. Lemezképek ismétlés kés
 Az alapértelmezett 2000 képpontos normalizált képek maximális szélességét és magasságát által támogatott maximális méret alapján a [OCR szakértelem](cognitive-search-skill-ocr.md) és a [elemzés szakértelem kép](cognitive-search-skill-image-analysis.md). Ha növeli a maximális korlátai, a feldolgozás sikertelen lehet, a nagyobb méretű képek.
 
 
-Megadja a imageAction a [indexelő definition](ref-create-indexer.md) az alábbiak szerint:
+Megadja a imageAction a [indexelő definition](https://docs.microsoft.com/rest/api/searchservice/create-indexer) az alábbiak szerint:
 
 ```json
 {
@@ -217,7 +218,7 @@ Segítő, mint az eredeti koordináta területre normalizált koordináták áta
 ```
 
 ## <a name="see-also"></a>Lásd még
-+ [Az indexelő (REST) létrehozása](ref-create-indexer.md)
++ [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Kép Szakértelem elemzése](cognitive-search-skill-image-analysis.md)
 + [OCR szakértelem](cognitive-search-skill-ocr.md)
 + [Szöveg egyesítési szakértelem](cognitive-search-skill-textmerger.md)

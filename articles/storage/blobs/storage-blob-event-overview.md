@@ -8,11 +8,12 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db062fc36478d6ba2cf0f00544793f635ccdbb06
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650128"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagál a Blob storage-események
 
@@ -30,7 +31,7 @@ A BLOB storage-események találhatók [Blob storage-fiókok](../common/storage-
 ## <a name="available-blob-storage-events"></a>Elérhető a Blob storage-események
 Esemény rács által használt [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) esemény üzenetek előfizetőknek.  A BLOB storage esemény előfizetések tartalmazhatnak kétféle esemény:  
 
-> |Esemény neve|Leírás|
+> |Eseménynév|Leírás|
 > |----------|-----------|
 > |`Microsoft.Storage.BlobCreated`|Blob létrehozásakor vagy cserélni keresztül következik a `PutBlob`, `PutBlockList`, vagy `CopyBlob` műveletek|
 > |`Microsoft.Storage.BlobDeleted`|Egy blob keresztül törlésekor következik a `DeleteBlob` művelet|
@@ -46,7 +47,7 @@ További információ a használati esemény rács esemény tulajdonságainak r�
 > |eventTime|karakterlánc|Dátum és idő, hogy az eseményt a rendszer létrehozta, ISO 8601 formátumban|
 > |eventType|karakterlánc|“Microsoft.Storage.BlobCreated” or “Microsoft.Storage.BlobDeleted”|
 > |Azonosító|karakterlánc|Egyedi azonosító, ha ez az esemény|
-> |dataVersion|karakterlánc|Az objektum séma verziója.|
+> |dataVersion|karakterlánc|Az adatobjektum sémaverziója.|
 > |metadataVersion|karakterlánc|A legfelső szintű tulajdonságok séma verziója.|
 > |adat|objektum|A blob storage-specifikus eseményadatok gyűjteménye|
 > |data.contentType|karakterlánc|A BLOB, mint a blobból a Content-Type fejléc vissza a tartalom típusa|
@@ -118,7 +119,7 @@ A blob nevének előtagját megosztása adott tárolóban létrehozott BLOB szá
 
 A BLOB egy blob utótagot megosztása adott tárolóban létrehozott események kereséséhez használja a `subjectEndsWith` például ".log" vagy ".jpg" szűrő
 
-További információkért lásd: [esemény rács fogalmak](../../event-grid/concepts.md#filters).
+További információkért lásd: [esemény rács fogalmak](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Események felhasználásához tartozó eljárásokat
 Alkalmazások, amelyek kezelik a Blob storage-események néhány javasolt eljárást kell követnie:

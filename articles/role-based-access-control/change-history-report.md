@@ -11,36 +11,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2017
+ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e48ea2293c186bbc337f9d70464df374d64b5e61
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 737f8d49d8254806891d3177cde59187cd8e1f2e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640183"
 ---
 # <a name="view-activity-logs-for-role-based-access-control-changes"></a>A szerepköralapú hozzáférés-vezérlési változásokat tevékenység naplók megtekintése
 
-Valaki módosítást hajt végre szerepkör-definíciók vagy szerepkör-hozzárendelések belül előfizetése, amikor a módosítások naplózásra [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) a felügyeleti kategória. A tevékenység naplók megtekintéséhez a szerepköralapú hozzáférés-vezérlést (RBAC) változások az elmúlt 90 napban tekintheti meg.
+Néha kell szerepköralapú hozzáférés-vezérlést (RBAC) módosításokat, például a naplózás vagy hibaelhárítási célból. Valaki módosítást hajt végre szerepkör-hozzárendelések vagy szerepkör-definíciók belül előfizetése, amikor a módosítások naplózásra [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). A tevékenység naplójában az RBAC-változások az elmúlt 90 napra vonatkozó tekintheti meg.
 
 ## <a name="operations-that-are-logged"></a>Műveletek, amelyeket a rendszer
 
 Az alábbiakban az RBAC-kapcsolatos műveletek, amelyeket a rendszer műveletnaplóban:
 
-- Egyéni szerepkör-definíció létrehozása vagy módosítása
-- Egyéni szerepkör-definíció törlése
 - Szerepkör-hozzárendelés létrehozása
 - Szerepkör-hozzárendelés törlése
+- Egyéni szerepkör-definíció létrehozása vagy módosítása
+- Egyéni szerepkör-definíció törlése
 
 ## <a name="azure-portal"></a>Azure Portal
 
-A kezdéshez legkönnyebben a tevékenységi naplóit, és az Azure portál megtekintése. Az alábbi képernyőfelvételen látható egy példa egy szűrt változatának visszaadása megjelenítendő tevékenységnapló a **felügyeleti** kategória szerepkör-definíció- és szerepkör-hozzárendelési műveletek együtt. A naplók letöltése CSV-fájlként hivatkozást is tartalmaz.
+A kezdéshez legkönnyebben a tevékenységi naplóit, és az Azure portál megtekintése. Az alábbi képernyőfelvételen egy szerepkör-hozzárendelés és szerepkör-definíció műveletek megjelenítendő szűrt tevékenységnapló példáját mutatja be. A naplók letöltése CSV-fájlként hivatkozást is tartalmaz.
 
 ![Tevékenység naplókat a portálon – képernyőkép](./media/change-history-report/activity-log-portal.png)
 
-További információkért lásd: [események megtekintéséhez műveletnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+A műveletnapló a portálon több szűrőt tartalmaz. Az RBAC-kapcsolódó szűrők a következők:
+
+|Szűrés  |Érték  |
+|---------|---------|
+|Eseménykategória     | <ul><li>Adminisztratív</li></ul>         |
+|Művelet     | <ul><li>Szerepkör-hozzárendelés létrehozása</li> <li>Szerepkör-hozzárendelés törlése</li> <li>Egyéni szerepkör-definíció létrehozása vagy módosítása</li> <li>Egyéni szerepkör-definíció törlése</li></ul>      |
+
+
+Tevékenységi naplóit kapcsolatos további információkért lásd: [események megtekintéséhez műveletnaplóban](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -99,7 +108,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Az Azure Naplóelemzés](../log-analytics/log-analytics-overview.md) használhatja, amely összegyűjti és elemzi a szerepköralapú hozzáférés-vezérlési módosításokat az összes Azure-erőforrások egy másik eszköz. Naplóelemzési használata a következő előnyökkel jár:
+[Az Azure Naplóelemzés](../log-analytics/log-analytics-overview.md) egy másik eszköz összegyűjti és elemzi az összes Azure-erőforrások változásainak RBAC segítségével. Naplóelemzési használata a következő előnyökkel jár:
 
 - Írási összetett lekérdezések és logika
 - Integrálható a riasztásokat, a Power bi-ban és a más eszközök

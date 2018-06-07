@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 15fc879958bfd886210a90239e0247c60fe231f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640965"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Hibaelhárítási kognitív keresési tippek
 
@@ -53,15 +54,15 @@ Ebben az esetben érdemes állapítható meg, hogy az indexelő figyelmen kívü
 ## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>4 tipp: A technikai részletek bővített dokumentumok megnézi 
 Bővített dokumentumok olyan ideiglenes struktúrák dúsító során létrehozott, és a törölt Ha feldolgozása befejeződött.
 
-Az indexelés során létrehozott bővített dokumentum pillanatképe rögzítéséhez nevű mező felvétele ```enriched``` az indexe. Az indexelő automatikusan listázása a mezőbe egy adott dokumentumra vonatkozó összes fokozatokká karakterláncos ábrázolása.
+Ha pillanatképet szeretne készíteni az indexelés során létrejött bővített dokumentumról, adja hozzá az indexhez az ```enriched``` mezőt. Az indexelő automatikusan hozzáadja a mezőhöz az adott dokumentum bővítéseinek karakterláncos leképezését.
 
-A ```enriched``` mezőben karakterlánc, amely a JSON-ban a memórián belüli bővített dokumentum logikai reprezentációja.  A mező értéke egy érvényes JSON-dokumentumában, azonban. Idézőjelek között van escape-karaktersorozatot, ki kell cserélni `\"` rendelkező `"` tekintheti meg a dokumentumot JSON formátumú. 
+Az ```enriched``` mező egy sztringet tartalmaz, amely a JSON-ban szereplő memóriabeli bővített dokumentum logikai leképezése.  A mező értéke azonban egy érvényes JSON-dokumentum. Mivel az idézőjelek előtt escape-karakter áll, a `\"` karaktereket `"` karakterre kell cserélnie, ha a dokumentumot formázott JSON-ként szeretné megtekinteni. 
 
 A bővített mező szánt hibakeresési célra csak, megismerheti a tartalom kifejezések elleni alatt kiértékelt logikai alakját. Ön nem ebben a mezőben az indexelés céljából függ.
 
 Adja hozzá egy ```enriched``` mező az index definícióját hibakeresési célra részeként:
 
-#### <a name="request-body-syntax"></a>Törzs szintaxis
+#### <a name="request-body-syntax"></a>Kéréstörzs szintaxisa
 ```json
 {
   "fields": [
@@ -98,7 +99,7 @@ Portál-alapú az indexelés (leírtak a gyors üzembe helyezés), válassza az 
 
 ## <a name="tip-7-increase-indexing-throughput"></a>7. tipp: Növelje az indexelési teljesítmény
 
-A [párhuzamos indexelő](search-howto-reindex.md#parallel-indexing), helyezze az adatokat több tároló vagy ugyanabban a tárolóban található több virtuális mappákat. Ezután hozzon létre több datasource és indexelő párokat. Összes indexelő használhatja az azonos skillset és írni az azonos cél-keresési index, ezért a fájlkeresés alkalmazás nem kell figyelembe vennie a particionálást.
+A [párhuzamos indexelő](search-howto-large-index.md), helyezze az adatokat több tároló vagy ugyanabban a tárolóban található több virtuális mappákat. Ezután hozzon létre több datasource és indexelő párokat. Összes indexelő használhatja az azonos skillset és írni az azonos cél-keresési index, ezért a fájlkeresés alkalmazás nem kell figyelembe vennie a particionálást.
 További információkért lásd: [nagy adatkészletek indexelő](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Lásd még

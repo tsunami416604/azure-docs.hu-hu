@@ -11,11 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: a05c816bd876f7c66a1e62515dea44c6fd969c8c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 954616e8fbf9e3c3be35fc219d15e3fb36260e1f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608916"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Kis prioritású virtuális gépek használata a kötegelt
 
@@ -94,7 +95,7 @@ Készlet létrehozása az Azure virtuális gépek (ebben az esetben Linux virtu�
 ImageReference imageRef = new ImageReference(
     publisher: "Canonical",
     offer: "UbuntuServer",
-    sku: "16.04.0-LTS",
+    sku: "16.04-LTS",
     version: "latest");
 
 // Create the pool

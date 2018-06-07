@@ -1,33 +1,28 @@
 ---
-title: "Az Azure IoT Hub kommunikációs protokollok és portok |} Microsoft Docs"
-description: "Fejlesztői útmutató - ismerteti a támogatott kommunikációs protokollok a eszközről a felhőbe és a felhő-eszköz- és a portszámok, amelyek nyitva kell lennie."
-services: iot-hub
-documentationcenter: .net
+title: Az Azure IoT Hub kommunikációs protokollok és portok |} Microsoft Docs
+description: Fejlesztői útmutató - ismerteti a támogatott kommunikációs protokollok a eszközről a felhőbe és a felhő-eszköz- és a portszámok, amelyek nyitva kell lennie.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fe3dd719877dac23410ff1ca00d559636a5ed60
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633002"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Olyan kommunikációs protokollt hivatkozhat - a
 
 Az IoT-központ lehetővé teszi, hogy az eszköz a következő protokollok eszközoldali kommunikációra használja:
 
 * [MQTT][lnk-mqtt]
-* MQTT websocket elemek keresztül
+* MQTT WebSocketen keresztül
 * [AMQP][lnk-amqp]
-* Az AMQP keresztül websocket elemek
+* AMQP WebSocketen keresztül
 * HTTPS
 
 Ezeket a protokollokat hogyan támogatják a különböző funkciók IoT-központ kapcsolatos információkért lásd: [eszközről a felhőbe kommunikációs útmutatást] [ lnk-d2c-guidance] és [felhő eszközre kommunikációs útmutatást] [lnk-c2d-guidance].
@@ -58,9 +53,9 @@ Eszközök képesek kommunikálni az Azure-ban a különböző protokollok IoT-k
 | Protokoll | Port |
 | --- | --- |
 | MQTT |8883 |
-| MQTT websocket elemek keresztül |443 |
+| MQTT WebSocketen keresztül |443 |
 | AMQP |5671 |
-| Az AMQP keresztül websocket elemek |443 |
+| AMQP WebSocketen keresztül |443 |
 | HTTPS |443 |
 
 Miután létrehozta az IoT-központ Azure-régióban, az IoT hub megtartja ugyanazt a címet, hogy az IoT-központ teljes. Azonban ha a Microsoft szolgáltatás-minőségi fenntartásához különböző méretezési egység az IoT hub kerül, majd ezt a jogosultságot egy új IP-címet.

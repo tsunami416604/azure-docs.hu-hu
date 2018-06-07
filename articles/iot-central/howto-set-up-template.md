@@ -1,18 +1,19 @@
 ---
 title: Egy Azure IoT központi alkalmazásban eszköz sablon beállítása |} Microsoft Docs
 description: Megtudhatja, hogyan mérések, beállítások, tulajdonságok, szabályok és irányítópult eszköz sablon beállítása.
-services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: c88b27edab71527b4b3eca71c00af2930c22f8cd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629235"
 ---
 # <a name="set-up-a-device-template"></a>Eszköz sablon beállítása
 
@@ -39,7 +40,7 @@ A eszköz sablonból operátor hozhat létre és valós ventilátor eszközök c
 > [!NOTE]
 Csak a létrehozói és a rendszergazdák létrehozása, szerkesztése és törlése eszköz sablonok. Bármely felhasználó létrehozhat az eszközök a **eszköz Explorer** meglévő eszköz felügyeleticsomag-sablonok lap.
 
-## <a name="create-a-new-device-template"></a>Új eszköz-sablon létrehozása
+## <a name="create-a-new-device-template"></a>Új eszközsablon létrehozása
 
 1. Keresse meg a **alkalmazás jelentéskészítő** lap.
 
@@ -106,7 +107,7 @@ Kiválasztása után **mentése**, a **ventilátor mód** állapot mérési mér
 
 ![Állapot mérések diagram](./media/howto-set-up-template/statemeasurementschart.png)
 
-Abban az esetben, az eszköz által küldött belül egy kis időtartama túl sok adatpont van, az állapot mérési megjelenő egy másik visual alább látható módon. Kattintson a diagramra, majd a meghatározott időszakon belül adatpontok jelennek időrendi sorrendben. Az időtartományt, tekintse meg a mérték a diagramon ábrázolt is szűkítéséhez.
+Abban az esetben, ha az eszköz túl sok adatpontot küld egy rövid időtartam alatt, az állapot mérése más vizualizációval jelenik meg, az alább látható módon. Ha a diagramra kattint, akkor az abba az időszakba eső összes adatpont időrendben jelenik meg. Az időtartományt, tekintse meg a mérték a diagramon ábrázolt is szűkítéséhez.
 
 ![Állapot mérések részletei](./media/howto-set-up-template/statemeasurementsdetail.png)
 

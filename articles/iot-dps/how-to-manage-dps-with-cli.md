@@ -1,22 +1,19 @@
 ---
 title: Az Azure CLI 2.0 és az IoT-bővítmény használata eszközregisztrációs szolgáltatások kezelésére | Microsoft Docs
 description: Útmutató az Azure CLI 2.0 és az IoT-bővítmény használatához eszközregisztrációs szolgáltatások kezelésére
-services: iot-dps
-keywords: ''
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
-ms.topic: tutorial
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 8e8bbf5808c11709a49f1cb6ebeba410837e5810
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 174f8447b17d1fa580472cbb45d0a72f41c793c3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628317"
 ---
 # <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Az Azure CLI 2.0 és az IoT-bővítmény használata eszközregisztrációs szolgáltatások kezelésére
 

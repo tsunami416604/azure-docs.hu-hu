@@ -1,31 +1,25 @@
 ---
 title: A node.js - Azure távoli megfigyeléshez Raspberry Pi kiépítése |} Microsoft Docs
 description: Ismerteti, hogyan málna Pi eszköz csatlakozni a távoli megfigyelési megoldásgyorsító Node.js nyelven írt alkalmazás segítségével.
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: a47cc34e6791ae03f4da968e3d44660b47e1214d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 78647612fc747ec328279536d82fb31bb4858688
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626870"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>A Pi málna eszköz csatlakozni a távoli felügyeleti megoldásgyorsító (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Csatlakoztassa az málna Pi eszközt a távoli megfigyelési megoldásgyorsító (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli megfigyelési megoldásgyorsító. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
 
 ### <a name="required-hardware"></a>Szükséges hardver
 
@@ -109,7 +103,7 @@ Az alábbi lépésekkel használatával a `ssh` a málna Pi kapcsolatot:
     var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét `{device connection string}` az eszköz feljegyzett értékű kiépítve a távoli felügyeleti megoldásban:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét `{device connection string}` az eszköz feljegyzett értékkel, a távoli figyelésére szolgáló megoldás kiépítve:
 
     ```nodejs
     var connectionString = '{device connection string}';

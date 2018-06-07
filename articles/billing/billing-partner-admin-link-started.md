@@ -10,11 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a5b6bb683538bd5359ebcbbe2640216e574b3e00
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: a48298668e2297cb95f2a2f16eac6387ff509781
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608712"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Az Azure-fiókra való hivatkozást Partnerazonosító
 
@@ -32,7 +33,7 @@ Mielőtt a hivatkozás a partner Partnerazonosítóját, az ügyfél kell hozzá
 
 - **Szolgáltatásnév:** az ügyfél egy alkalmazás vagy a parancsfájl hozzáadása a saját szervezetétől a könyvtárban, és bármely RBAC szerepkör hozzárendelése. Az alkalmazás vagy parancsprogram egyszerű néven ismert.
 
-## <a name="link-partner-id"></a>Hivatkozás Partnerazonosítót.
+## <a name="link-partner-id"></a>Hivatkozás partnerazonosítóra
 
 Ha az ügyfél erőforrásokhoz való hozzáférés, segítségével Azure-portálon, a PowerShell vagy a CLI-t a Microsoft Partner hálózati azonosító (MPN azonosító) hivatkozásra a felhasználói azonosító vagy az egyszerű szolgáltatásnév. Akkor kell kapcsolni a partner Partnerazonosítóját, minden ügyfél-bérlőben.
 
@@ -52,7 +53,7 @@ Ha az ügyfél erőforrásokhoz való hozzáférés, segítségével Azure-port�
 
 ### <a name="use-powershell-to-link-new-partner-id"></a>Csatolás új Partnerazonosító a PowerShell használatával
 
-1. Telepítse a [AzurePartnerRP](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner/0.1.0-preview) PowerShell-modult.
+1. Telepítse a [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) PowerShell-modult.
 
 2. Jelentkezzen be a felhasználói fiók, valamint az egyszerű szolgáltatásnév, további információ az ügyfél bérlői című [Powershell történő bejelentkezés](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-5.2.0).
  

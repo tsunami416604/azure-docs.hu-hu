@@ -1,26 +1,20 @@
 ---
 title: Ismerkedés az Azure IoT Hub-modulidentitással és -modulikerrel (portál és .NET) | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre modulidentitást és frissíthet modulikreket a portál és a .NET használatával.
-services: iot-hub
-documentationcenter: .net
-author: chrissie926
+author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: f40604ff-8fd6-4969-9e99-8574fbcf036c
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30a53620a640b0122286a6ac69c0f98cd0bbde40
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: b4502dfc8f856516989326c8d748a5d13fdba02b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361688"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634590"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel a portál és a .NET eszköz használata mellett
 
@@ -61,7 +55,7 @@ Egy eszközidentitáson belül legfeljebb 20 modulidentitás hozható létre. Ka
 
 ![Eszközadatok][9]
 
-Mentse a frissen létrehozott modulidentitást, és kattintson rá. Megjelennek a modulidentitás adatai. Mentse el a kapcsolati karakterlánc elsődleges kulcsát. Ezt a következő szakaszban fogjuk használni, amikor beállítjuk a modult az eszközön.
+Mentse a frissen létrehozott modulidentitást, és kattintson rá. Megjelennek a modulidentitás adatai. Mentse el a kapcsolati sztring elsődleges kulcsát. Ezt a következő szakaszban fogjuk használni, amikor beállítjuk a modult az eszközön.
 
 ![Eszközadatok][12]
 
@@ -74,11 +68,12 @@ Sikeresen létrehozta a modulidentitást az IoT Hubban. Ideje megkísérelni a f
 
     ![Visual Studio-projekt létrehozása][13]
 
-2. **Telepítse az Azure IoT Hub .NET eszközoldali SDK 1.16.0-preview-005-ös verzióját** – A modulidentitás és a moduliker nyilvános előzetes verzióban érhető el. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki az 1.16.0-preview-005-ös verziót, és telepítse azt. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
+2. **Telepítse a legújabb Azure IoT Hub .NET SDK eszköz** -modul identitás- és modul két nyilvános előzetes verziójában van. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
 
     ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése][14]
 
-3. **Szerezze be a modul kapcsolati karakterláncát** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati karakterláncát. A következő lépés során szükség lesz rá.
+3. 
+  **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
     ![Az Azure Portal moduladatai][15]
 
@@ -89,7 +84,7 @@ Sikeresen létrehozta a modulidentitást az IoT Hubban. Ideje megkísérelni a f
     using Microsoft.Azure.Devices.Shared;
     ```
 
-    Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati karakterláncára.
+    Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
 
     ```csharp
     private const string ModuleConnectionString = "<Your module connection string>“;

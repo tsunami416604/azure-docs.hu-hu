@@ -2,23 +2,20 @@
 title: A földrajzi adatok az Azure Cosmos DB |} Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és az SQL API térbeli objektumok lekérdezése.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 82ce2898-a9f9-4acf-af4d-8ca4ba9c7b8f
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 858d6c2154a74a6e5fe16c9392827cc8a6354f9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611367"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>A földrajzi és GeoJSON helyre adatokat az Adatbázisba az Azure Cosmos használata
 Ez a cikk az a földrajzi funkcióinak bemutatása [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Ez elolvasása, után lesz a következő kérdések megválaszolásához:
@@ -98,7 +95,7 @@ Pontokon, felül GeoJSON is támogatja a Linestring és sokszögek. **Linestring
 Mellett pont, LineString, Polygon, GeoJSON is meghatározza a több földrajzi helyek csoportosítása, valamint tetszőleges tulajdonságok társítása földrajzi hely meghatározásának, ábrázolását egy **szolgáltatás**. Mivel ezek az objektumok érvényes JSON-adatokat, akkor is összes tárolása és feldolgozása történhet az Azure Cosmos-Adatbázisba. Azonban Azure Cosmos DB csak akkor támogatja a pontok automatikus indexeléshez.
 
 ### <a name="coordinate-reference-systems"></a>Ütemezze referenciarendszert
-Mivel a föld alakját szabálytalan, hány koordináta referenciarendszert (CRS), mindegyiket a saját keretek a referencia- és mértékegységek koordinátáját földrajzi adatok jelennek meg. Például a "nemzeti rács a Britannia" egy referenciarendszert nagyon pontos az Egyesült Királyságban, de nem kívül. 
+Mivel a föld alakját szabálytalan, hány koordináta referenciarendszert (CRS), mindegyiket a saját keretek a referencia- és mértékegységek koordinátáját földrajzi adatok jelennek meg. Például a "nemzeti rács a Britannia" egy referenciarendszert pontos az Egyesült Királyságban, de nem kívül. 
 
 Használja a legnépszerűbb CRS ma a globális geodéziai rendszer [WGS-84](http://earth-info.nga.mil/GandG/wgs84/). GPS-eszközöket, és számos leképezési szolgáltatás, beleértve a Google térképeket és a Bing térképek API-k használata WGS-84. Azure Cosmos-adatbázis indexelő, és csak a WGS-84 CRS használatával földrajzi adatok lekérdezését támogatja. 
 
@@ -223,7 +220,7 @@ ST_WITHIN sokszög argumentumainak tartalmazhat csak csengetés, ez azt jelenti,
 > 
 > 
 
-Azure Cosmos-adatbázis is támogat más néven inverz lekérdezések végrehajtásához, ez azt jelenti, hogy sokszögek vagy Azure Cosmos DB sorainak index, majd a megadott pontot tartalmazó területekre lekérdezése. Ezt a mintát gyakran a logisztikai azonosítására szolgál például amikor egy teherautó be- vagy egy meghatározott terület. 
+Azure Cosmos-adatbázis is támogat más néven inverz lekérdezések végrehajtásához, ez azt jelenti, hogy sokszögek vagy Azure Cosmos DB sorainak index, majd a megadott pontot tartalmazó területekre lekérdezése. Ezt a mintát gyakran használják a logisztikai azonosításához, például egy teherautó be- vagy egy meghatározott terület. 
 
 **Lekérdezés**
 
@@ -272,7 +269,7 @@ Ezeket a funkciókat is sokszögek érvényesítéséhez használható. Példáu
     }]
 
 ### <a name="linq-querying-in-the-net-sdk"></a>A .NET SDK lekérdezése LINQ
-Az SQL .NET SDK-t is szolgáltatók helyettes módszerek `Distance()` és `Within()` LINQ kifejezés belüli használatra. Az SQL LINQ szolgáltatónál fordítja le a megfelelő SQL beépített függvényhívásokat módszert hívásokat a (ST_DISTANCE és ST_WITHIN rendre). 
+Az SQL .NET SDK-t is szolgáltatók helyettes módszerek `Distance()` és `Within()` LINQ kifejezés belüli használatra. Az SQL LINQ szolgáltatónál fordítja le ezt a módszert a megfelelő SQL beépített függvényhívások hívásainak (ST_DISTANCE és ST_WITHIN rendre). 
 
 Íme egy példa a LINQ lekérdezés, amely megkeresi az összes dokumentum a Azure Cosmos DB gyűjtemény, amelynek "hely" érték van belül egy megadott 30 km radius pont LINQ használatával.
 
@@ -391,7 +388,7 @@ Az alábbi JSON kódrészletben láthatja az indexelési házirendet a térbeli 
 > 
 
 ## <a name="next-steps"></a>További lépések
-Ismerkedés az Azure Cosmos Adatbázisba földrajzi támogatásával kapcsolatos korábban szerzett tapasztalatok Nolearned, a következőket teheti:
+Most, hogy rendelkezik megtudta, hogyan Ismerkedés az Azure Cosmos DB földrajzi támogatást, ezután a következőket teheti:
 
 * A elkezdésére a [földrajzi .NET mintakódjainak megtekintése a Githubon](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * Beavatkozás nélküli lekérdezni földrajzi kérdez le a [Azure Cosmos DB Tesztlekérdezéseket](http://www.documentdb.com/sql/demo#geospatial)

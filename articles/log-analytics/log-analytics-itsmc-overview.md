@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: da81d1455649f1e3f3ab43016df49953ce90e0ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637616"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás Azure ITSM eszközök IT Service Management-összekötő használatával
 
@@ -98,7 +99,7 @@ Miután a ITSM eszközök rendelkezik prepped, az alábbi lépésekkel VPN-kapcs
 
     > [!NOTE]
 
-    > Alapértelmezés szerint ITSMC 24 óránként egyszer a frissítésre, a kapcsolat konfigurációs adatokat. Azonnal az esetleges módosításokat, vagy a Szolgáltatássablon-frissítések, amelyek miatt, a "Frissítés" gombra a kapcsolat mellett megjelenik a kapcsolati adatok frissítéséhez.
+    > Alapértelmezés szerint ITSMC 24 óránként egyszer a frissítésre, a kapcsolat konfigurációs adatokat. Instantly a szerkesztések és sablon frissíti, ellenőrizze a kapcsolati adatok frissítéséhez kattintson a **szinkronizálási** gombra a kapcsolat panelen.
 
     ![Kapcsolat frissítése](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
 
@@ -137,58 +138,6 @@ Azure riasztási szabály létrehozása/szerkesztése, során művelet csoportot
 >[!NOTE]
 
 > ITSM művelet árakkal kapcsolatos információkért lásd: a [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/monitor/) művelet csoportok számára.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-alerts"></a>Log Analytics-riasztások ITSM munkaelemek létrehozása
-
-Konfigurálhatja a riasztási szabályok az Azure Naplóelemzés portáljáról ITSM eszköz, a munkaelemek létrehozásához hajtsa végre az alábbi eljárást.
-
-1. A **naplófájl-keresési** ablakban futtassa a napló keresési lekérdezés adatainak megtekintéséhez. Lekérdezés eredményei munkaelemek forrását.
-2. A **naplófájl-keresési**, kattintson a **riasztási** megnyitásához a **riasztási szabály hozzáadása** lap.
-
-    ![Napló elemzési képernyő](./media/log-analytics-itsmc/itsmc-work-items-for-azure-alerts.png)
-
-3. Az a **riasztási szabály hozzáadása** ablakban adja meg a szükséges adatokat a **neve**, **súlyossági**, **keresési lekérdezés**, és **riasztás feltételek** (ablakban/Időmetrika mérési).
-4. Válassza ki **Igen** a **ITSM műveletek**.
-5. Válassza ki a ITSM kapcsolatot a **válassza ki a kapcsolat** listája.
-6. Adja meg szükség szerint adatait.
-7. Minden naplóbejegyzés a riasztás egy külön munkaelemet létrehozásához válassza a **minden naplóbejegyzés egyes munkaelemek létrehozása** jelölőnégyzetet.
-
-    Vagy
-
-    hagyja üresen ezt a jelölőnégyzetet, jelölje ki az ebben a riasztásban vonta naplóbejegyzések tetszőleges számú csak egy munkaelem létrehozásához.
-
-7. Kattintson a **Save** (Mentés) gombra.
-
-Megtekintheti a Log Analytics-riasztás alapján létrehozott **beállítások > értesítések**. A megfelelő ITSM kapcsolat munkaelemek jönnek létre, ha a megadott riasztás feltétel teljesül.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-log-records"></a>Log Analytics naplórekordokat ITSM munkaelemek létrehozása
-
-A csatlakoztatott ITSM forrásokban közvetlenül egy naplóbejegyzést képviselnek a munkaelemek is létrehozhat. Ez a kapcsolat megfelelően működik-e tesztelje, hogy is használható.
-
-
-1. A **naplófájl-keresési**, keresse meg a szükséges adatokat, válassza ki a részleteket, és kattintson **létrehozás munkaelem**.
-
-    A **ITSM munkaelem létrehozása** ablak jelenik meg:
-
-    ![Napló elemzési képernyő](media/log-analytics-itsmc/itsmc-work-items-from-azure-logs.png)
-
-2.   Adja hozzá a következő adatokat:
-
-  - **Munkaelem-cím**: a munkaelem címét.
-  - **Munkaelem-leírás**: az új munkaelemhez leírását.
-  - **Érintett számítógép**: Ha a napló adatokat talált a számítógép nevét.
-  - **Válassza ki a kapcsolat**: ITSM kapcsolat, amelyben szeretné létrehozni ezt a munkaelemet.
-  - **Munkaelem**: típusú munkaelemet.
-
-3. Incidens egy meglévő munkaelemsablonból használatához kattintson **Igen** alatt **készítése működik elemet a sablon alapján** lehetőséget, majd kattintson a **létrehozása**.
-
-    Vagy
-
-    Kattintson a **nem** Ha lehetővé szeretné tenni a szabott értékekhez.
-
-4. Adja meg a megfelelő értékeket a **ügyfél típusú**, **hatás**, **sürgősség**, **kategória**, és **alkategória** szövegmezőbe, és kattintson **létrehozása**.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Megjelenítheti és az incidens elemzése és kérelem adatainak módosítása

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 5d13c711d7d71df7469e6408ce78cf0df611632b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e447c04f4a94f2fb534ecb0605595a90816431e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638296"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Az egy automatikusan létrehozott sávszélességű létra kódolása
 
@@ -27,18 +28,18 @@ Ez a cikk ismerteti, hogyan a adás a Media Services egy bemeneti videó egy aut
 
 ### <a name="encoding-for-streaming"></a>Az adatfolyam-kódolás
 
-A nevet javasol, ha használ, a **AdaptiveStreaming** egy kódolási átalakító létrehozásakor beállított, elérhetővé válik egy kimeneti megfelelő kézbesítési keresztül adatfolyam-protokollok, például a HLS, DASH, CMAF stb. Ez használatakor **AdaptiveStreaming** előzetesen létrehozott, a kódoló intelligens módon meghatározza, hogy hány videó rétegek létrehozásához, és milyen átviteli sebesség és a megoldás. A kimenet eszköz ahol AAC kódolású audió és videó H.264 kódolású nem időosztásos MP4-fájlokat tartalmazza.
+Használatakor a **AdaptiveStreaming** az előre definiált **átalakítási**, megfelelő kézbesítési keresztül protokollokkal HLS és kötőjel streaming kimenetnek kap. Ha ezt a beállítást, a szolgáltatás intelligens módon meghatározza, hogy hány videó rétegek létrehozásához, és milyen átviteli sebesség és a megoldás. A kimeneti ahol AAC kódolású audió és videó H.264 kódolású nem időosztásos MP4-fájlokat tartalmazza.
 
 Például hogyan használja fel a készletet, olvassa el [adatfolyam-fájl](stream-files-dotnet-quickstart.md).
 
 ## <a name="output"></a>Kimenet
 
-Ez a szakasz bemutatja a Media Services kódoló miatt kódolás kimenete videó rétegek három példái a **AdaptiveStreaming** előre. Minden esetben a kimeneti 128 kb/s, kódolású sztereó hanggal fogja tartalmazni csak MP4-fájlokat.
+Ez a szakasz bemutatja a Media Services kódoló miatt kódolás kimenete videó rétegek három példái a **AdaptiveStreaming** előre. Minden esetben a kimeneti 128 kb/s, kódolású sztereó hanggal csak MP4-fájlokat tartalmazza.
 
 ### <a name="example-1"></a>1. példa
 A magasság "1080" és "29.970" képkockasebességhez forrás 6 videó rétegek hoz létre:
 
-|Réteg|Magassága|Szélessége|Bitrate(kbps)|
+|Réteg|Magasság|Szélesség|Átviteli sebesség (KB/s)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -50,7 +51,7 @@ A magasság "1080" és "29.970" képkockasebességhez forrás 6 videó rétegek 
 ### <a name="example-2"></a>2. példa
 A magasság "720" és "23.970" képkockasebességhez forrás 5 videó rétegek hoz létre:
 
-|Réteg|Magassága|Szélessége|Bitrate(kbps)|
+|Réteg|Magasság|Szélesség|Átviteli sebesség (KB/s)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -61,7 +62,7 @@ A magasság "720" és "23.970" képkockasebességhez forrás 5 videó rétegek h
 ### <a name="example-3"></a>3. példa
 A magasság "360" és "29.970" képkockasebességhez forrás 3 videó rétegek hoz létre:
 
-|Réteg|Magassága|Szélessége|Bitrate(kbps)|
+|Réteg|Magasság|Szélesség|Átviteli sebesség (KB/s)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -70,4 +71,4 @@ A magasság "360" és "29.970" képkockasebességhez forrás 3 videó rétegek h
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egy fájlt](stream-files-dotnet-quickstart.md)
+> [Fájl streamelése](stream-files-dotnet-quickstart.md)

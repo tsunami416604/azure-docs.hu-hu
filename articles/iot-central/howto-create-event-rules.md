@@ -1,18 +1,19 @@
 ---
 title: Létrehozása és kezelése az Azure IoT központi alkalmazásban eseményszabályok |} Microsoft Docs
 description: Az Azure IoT központi esemény szabályok lehetővé teszik az eszközök közel valós idejű figyelését, és automatikusan meghívni a műveletek, például egy e-mailek küldéséhez, amikor a szabály gondoskodik.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932b1906b767ee7676f46ffd7242ad3d478d41c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628368"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Egy esemény szabály létrehozása és az Azure IoT központi alkalmazásban értesítések beállítása
 
@@ -20,7 +21,7 @@ A Microsoft Azure IoT központi használatával távolról figyelheti a csatlako
 
 Használja az Azure IoT központi [esemény mérési](howto-set-up-template.md) eszköz adatok rögzítéséhez. Minden mérési, amelyek meghatározzák a mérési kulcsattribútummal rendelkezik. Minden eszköz mérési típusú figyelése, és elindítja a szabály riasztást generáljon szabályokat hozhat létre. Egy esemény szabály váltja ki, ha a kijelölt esemény nem jelentette-e az eszközön.
 
-## <a name="create-an-event-rule"></a>Egy esemény szabály létrehozása
+## <a name="create-an-event-rule"></a>Eseményszabály létrehozása
 
 Ez a szakasz bemutatja, hogyan hozható létre esemény szabály. A példa egy hűtött Eladóautomata eszközt, hogy jelentések ventilátor motor hiba esemény. A szabály az eszköz által jelentett esemény figyeli, és egy e-mailt küld, amikor az esemény az elvártnak.
 

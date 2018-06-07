@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 2c7dd89d9c2e5d50f2533101499a6e50e52047b3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636606"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, a titkos kulcsok és a tanúsítványok
 Az Azure Key Vault lehetővé teszi, hogy a felhasználók tárolhatják és a Microsoft Azure-környezeten belül titkosítási kulcsok használata. Key Vault több ellenőrzőkulcs-típusok és algoritmusokat támogatja, és lehetővé teszi, hogy értékes kulcsok használata hardveres biztonsági modulok (HSM). Emellett a Key Vault segítségével a felhasználók biztonságosan tárolni a titkos kulcsok. A titkokat korlátozott mérete octet objektumok nem adott szemantikájú. Key Vault is támogatja a tanúsítványok, amelyek kulcsok és titkos épül, és adja hozzá az automatikus megújítási szolgáltatást.
@@ -327,7 +328,7 @@ A tanúsítvány attribútumait tükrözi, a attribútumait a megcímezhető kul
 
 A Key Vault tanúsítvány a következő attribútumokkal rendelkezik:  
 
--   *engedélyezett*: boolean, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum is megadható annak jelzésére, hogy a tanúsítvány adatainak beolvasható titkos vagy működtethető kulcsként. Együtt használatos *nbf* és*exp*művelet esetén közötti *nbf* exp, akkor lesz csak engedélyezett, ha engedélyezve van, és értéke TRUE. Kívül a *nbf* és*exp*ablakban automatikusan engedélyezettek.  
+-   *engedélyezett*: boolean, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum is megadható annak jelzésére, hogy a tanúsítvány adatainak beolvasható titkos vagy működtethető kulcsként. Együtt használatos *nbf* és *exp* művelet esetén közötti *nbf* és *exp*, akkor lesz csak engedélyezett, ha engedélyezve van értéke TRUE. Kívül a *nbf* és *exp* ablakban automatikusan engedélyezettek.  
 
 Nincsenek a válaszban szereplő további írásvédett attribútumok:
 

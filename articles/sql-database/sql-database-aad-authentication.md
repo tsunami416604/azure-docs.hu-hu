@@ -6,14 +6,15 @@ author: GithubMirek
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: fe3864c3f765ff4858deede798d5641a55dd8aef
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c016d593f62e2f0616b426a87baf8d9390645b4a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645065"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Az SQL-adatbázis, a példány kezelt vagy az SQL Data Warehouse hitelesítéshez használandó Azure Active Directory-hitelesítés
 Az Azure Active Directory-hitelesítés a Microsoft Azure SQL-adatbázishoz szeretne csatlakozni egy olyan mechanizmus és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitások az Azure Active Directory (Azure AD) segítségével. Az Azure AD-alapú hitelesítés adatbázis-felhasználók identitását, és más Microsoft-szolgáltatásokban egyetlen központi helyen központilag kezelheti. Központi azonosítófelügyeleti biztosít egy helyen adatbázis-felhasználók kezelése és egyszerűbbé teszi a jogosultság kezelése. Előnyei a következők:

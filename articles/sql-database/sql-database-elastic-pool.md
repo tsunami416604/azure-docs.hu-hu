@@ -9,12 +9,13 @@ ms.service: sql-database
 ms.custom: DBs & servers
 ms.date: 04/10/2018
 ms.author: ninarn
-ms.topic: article
-ms.openlocfilehash: ecf9450271e82132b0f31fd0c65ce95d95c2cb3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: conceptual
+ms.openlocfilehash: 2680ee2354a8cf76491a8a3b63e14d91b4c6cbd6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645827"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése, és több Azure SQL-adatbázisok méretezése
 
@@ -158,7 +159,7 @@ A készlet konfigurálása befejezése után kattintson az "Alkalmaz", a készle
 
 Az Azure portálon megfigyelheti a rugalmas készletek és a készlethez tartozó adatbázis-felhasználását. Módosítások készlete teheti a rugalmas készlethez és egyszerre az összes változtatás is. Ezen változtatások közé tartozik a Hozzáadás, adatbázisok, a rugalmas készlet beállításainak módosítása, vagy nem módosíthatja az adatbázis-beállításokat.
 
-A rugalmas készlet figyelése, keresse meg, és nyissa meg a rugalmas készletekben a portálon. Először, amely áttekintést nyújt a rugalmas készlet állapotát képernyő jelenik meg. Ehhez a következőket:
+A rugalmas készlet figyelése, keresse meg, és nyissa meg a rugalmas készletekben a portálon. Először, amely áttekintést nyújt a rugalmas készlet állapotát képernyő jelenik meg. Az érintett műveletek közé tartoznak az alábbiak:
 
 * A rugalmas készlet erőforrások felhasználásának ábrázoló diagramok figyelése
 * Legutóbbi riasztások és javaslatok, ha elérhető, a rugalmas készlet

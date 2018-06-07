@@ -6,19 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: df9c22877eeac381d936f2fb86f5720c9cc9c930
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724258"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Azure verem IDN bemutatása
 
@@ -30,9 +31,9 @@ IDN az Azure verem hálózati szolgáltatása: lehetővé teszi a külső DNS-ne
 
 IDN Azure-készletben akkor az alábbi képességeket egyéni DNS-kiszolgálóbejegyzéseik megadása nélkül beolvasása:
 
-* Megosztott DNS névfeloldási szolgáltatást bérlői munkaterheléseket.
-* A névfeloldás és a DNS-regisztráció a bérlői virtuális hálózaton belül mérvadó DNS-szolgáltatás.
-* A rekurzív DNS-szolgáltatás a bérlői virtuális gépek Internet-nevek feloldását. Bérlők már nem kell adnia az egyéni DNS-bejegyzések Internet névfeloldás (például www.bing.com.)
+- Megosztott DNS névfeloldási szolgáltatást bérlői munkaterheléseket.
+- A névfeloldás és a DNS-regisztráció a bérlői virtuális hálózaton belül mérvadó DNS-szolgáltatás.
+- A rekurzív DNS-szolgáltatás a bérlői virtuális gépek Internet-nevek feloldását. Bérlők már nem kell adnia az egyéni DNS-bejegyzések Internet névfeloldás (például www.bing.com.)
 
 Továbbra is a saját DNS állapotba, és egyéni DNS-kiszolgálók használata. Azonban IDN formátumú tartománynevek használatával oldható fel internetes DNS-nevek, és az azonos virtuális hálózatban lévő más virtuális gépek csatlakozni, nem kell egyéni DNS-bejegyzéseket létrehozni.
 
@@ -48,10 +49,10 @@ Ahogy az előző ábrán látható, Azure létrehoz egy "A" rekord a DNS-ben a D
 
 Az Azure verem csak támogatja belső névregisztráció, IDN, így nem tegye a következőket:
 
-* Egy meglévő üzemeltetett DNS-zóna (például local.azurestack.external.) a DNS-rekord létrehozása
-* Hozzon létre egy DNS-zóna (például Contoso.com.)
-* A saját egyéni DNS-zóna rekordot kell létrehozni.
-* A tartománynevek vásárlásának támogatja.
+- Egy meglévő üzemeltetett DNS-zóna (például local.azurestack.external.) a DNS-rekord létrehozása
+- Hozzon létre egy DNS-zóna (például Contoso.com.)
+- A saját egyéni DNS-zóna rekordot kell létrehozni.
+- A tartománynevek vásárlásának támogatja.
 
 ## <a name="next-steps"></a>További lépések
 

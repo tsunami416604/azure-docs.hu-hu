@@ -8,14 +8,15 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 05/22/2018
+ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640013"
 ---
-# <a name="azure-database-for-postgresql-servers"></a>Azure-adatbázis PostgreSQL-kiszolgálókhoz
+# <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL-kiszolgálók
 Ez a cikk szempontjait és útmutatást biztosít PostgreSQL-kiszolgálók Azure-adatbázis használata.
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>Mi az az Azure-adatbázis PostgreSQL-kiszolgáló?
@@ -45,13 +46,22 @@ A következő elemek biztosítható, hogy az adatbázishoz való biztonságos ho
 | **TCP/IP** | A protokoll támogatott TCP/IP felett, és a Unix-tartomány szoftvercsatornákon keresztül. |
 | **Tűzfal** | Az adatok védelme érdekében egy tűzfalszabály megakadályozza, hogy minden hozzáférés a kiszolgálóhoz és az adatbázisok csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. Lásd: [PostgreSQL-kiszolgáló tűzfalszabályainak az Azure-adatbázis](concepts-firewall-rules.md). |
 
-## <a name="how-do-i-manage-a-server"></a>Hogyan kezelheti a kiszolgáló?
+## <a name="managing-your-server"></a>A kiszolgáló kezelése
 Kezelheti az Azure Database PostgreSQL-kiszolgálók használatával a [Azure-portálon](https://portal.azure.com) vagy a [Azure CLI](/cli/azure/postgres).
+
+Egy kiszolgáló létrehozásakor állíthatja be a hitelesítő adatokat a rendszergazda felhasználó számára. A rendszergazdai jogú felhasználó az a legnagyobb jogosultsággal felhasználó, a kiszolgálón. A szerepkör azure_pg_admin tartozik. Ez a szerepkör nem rendelkezik teljes felügyelő engedélyekkel. 
+
+A PostgreSQL felügyelő attribútum a azure_superuser, a felügyelt szolgáltatás, amely hozzá van rendelve. Nincs hozzáférése ehhez a szerepkörhöz.
+
+Egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis két alapértelmezett adatbázis rendelkezik: 
+- **postgres** -csatlakozhat egyszer a kiszolgáló alapértelmezett adatbázis jön létre.
+- **azure_maintenance** -ezt az adatbázist választja el egymástól a a folyamatok, amelyek a felügyelt szolgáltatást, a felhasználói műveleteket. Nincs hozzáférése ehhez az adatbázishoz.
+
 
 ## <a name="server-parameters"></a>Kiszolgálói paraméterek
 A PostgreSQL server paraméterek határozzák meg a kiszolgáló konfigurációját. PostgreSQL Azure-adatbázisban paraméterek listáját lehet megtekinteni és szerkeszteni az Azure-portálon vagy az Azure parancssori felület használatával. 
 
-A Postgres felügyelt szolgáltatásként konfigurálható PostgreSQL az Azure-adatbázis paraméterei a paramétereket a Postgres helyi példányát egy részét (Postgres paraméterek további információkért lásd: a [PostgreSQL-dokumentáció](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Az Azure-adatbázis PostgreSQL-kiszolgáló létrehozása az egyes paramétereket alapértelmezett értékekkel engedélyezve van. A kiszolgáló újraindexelést igénylő paraméterek indítsa újra, vagy felügyelő hozzáférés a módosítások életbe léptetéséhez nem kell konfigurálni, a felhasználó által.
+A Postgres felügyelt szolgáltatásként konfigurálható PostgreSQL az Azure-adatbázis paraméterei a paramétereket a Postgres helyi példányát egy részét (Postgres paraméterek további információkért lásd: a [PostgreSQL-dokumentáció](https://www.postgresql.org/docs/9.6/static/runtime-config.html)). Az Azure-adatbázis PostgreSQL-kiszolgáló létrehozása az egyes paramétereket alapértelmezett értékekkel engedélyezve van. Egyes paraméterek, amelyek a kiszolgáló igényelnének indítsa újra, vagy a módosítások életbe léptetéséhez felügyelő hozzáférés nem lehet konfigurálni a felhasználó által.
 
 
 ## <a name="next-steps"></a>További lépések

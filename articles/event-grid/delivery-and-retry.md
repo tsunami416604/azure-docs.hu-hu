@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8eb6717369b48289bd31dcd1972ce275bc550c77
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 83852917909d13555e7a0a339d2ecc805eeead42
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625797"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Esemény rács üzenetkézbesítést, és próbálkozzon újra 
 
@@ -62,10 +63,10 @@ Esemény rács az exponenciális leállítási újrapróbálkozási házirend es
 
 Esemény rács intervallumokban újra egy kis véletlenszerű hozzáadja. Egy óra múlva esemény kézbesítési a rendszer ismét megkísérli óránként.
 
-Alapértelmezés szerint esemény rács összes eseményt, amely nem érkeznek meg 24 órán belül lejár.
+Esemény rács leállítja az összes esemény 24 órán belül nem küldött kézbesítését.
 
 ## <a name="next-steps"></a>További lépések
 
 * Esemény kézbesítések állapotának megtekintése: [figyelő esemény rács üzenetkézbesítést](monitor-event-delivery.md).
-* Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Ha gyorsan esemény rács segítségével, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).

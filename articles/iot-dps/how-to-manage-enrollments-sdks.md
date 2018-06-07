@@ -1,22 +1,19 @@
 ---
 title: Azure eszköz kiépítése szolgáltatáshoz SDK-k használatával eszközbeléptetésnél kezelése |} Microsoft Docs
 description: Az IoT Hub eszköz kiépítése szolgáltatás a szolgáltatás SDK-k használatával eszközbeléptetésnél kezelése
-services: iot-dps
-keywords: ''
 author: yzhong94
 ms.author: yizhon
 ms.date: 04/04/18
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 1ec86d319f529fe63b0924f4cfa0c2be178cd4d8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: arjmands
+ms.openlocfilehash: 9a68d928c70e1e233f6de7df13441a1f688f456a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629847"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Eszköz regisztrációját az Azure eszköz kiépítése szolgáltatáshoz SDK-k kezelése
 A *eszközregisztráció* létrehoz egy rekordot egyetlen eszközt vagy eszközöket, amelyek bármikor előfordulhat, hogy regisztrálja az eszköz kiépítése szolgáltatáshoz csoportja. A beléptetési rekord tartalmazza a kezdeti kívánt beállításait, hogy a regisztráció, beleértve a kívánt IoT-központ részeként őket. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a létesítési szolgáltatás programozott módon, az Azure IoT kiépítése szolgáltatáshoz SDK-k.  Az SDK-k az adott adattár, Azure IoT SDK a githubon érhetők el.

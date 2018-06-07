@@ -1,19 +1,20 @@
 ---
-title: "Az Azure App Service - sync hálózati konfigurációja |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan lehet szinkronizálni az Azure App Service-üzemeltetési terv a hálózati konfiguráció."
+title: Az Azure App Service - sync hálózati konfigurációja |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan lehet szinkronizálni az Azure App Service-üzemeltetési terv a hálózati konfiguráció.
 ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5b139b1279776acfca63def25a9fdae0f627a727
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ea8f4aae0324e201def6b9b6cd33b0e79042ebbe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647969"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Az Azure App Service-üzemeltetési terv fürttaghálózati konfiguráció szinkronizálása
 
@@ -33,7 +34,7 @@ Ehhez kövesse az alábbi lépéseket:
 
 3. Válassza ki a **VNet** kattintson **szinkronizálási hálózati**. 
  
-   ![sync network](./media/sql-database-managed-instance-sync-networking/sync.png)
+   ![szinkronizálási hálózati](./media/sql-database-managed-instance-sync-networking/sync.png)
 
 4. Várjon, amíg a szinkronizálás történik.
   

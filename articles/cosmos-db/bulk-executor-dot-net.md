@@ -6,19 +6,20 @@ services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 608551090ce10e08ba517def644c72186a6f25e1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611160"
 ---
 # <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges műveleteinek elvégzéséhez Azure Cosmos DB BulkExecutor .NET kódtár használata
 
-Ez az oktatóanyag útmutatás az Azure Cosmos DB BulkExecutor .NET könyvtár használatával importálása és frissítése a dokumentumok Azure Cosmos DB gyűjteményekhez. BulkExecutor könyvtárban, és hogyan nyújt segítséget a kihasználja a nagy átviteli sebesség és tárterület kapcsolatos további tudnivalókért lásd: [BulkExecutor könyvtárának](bulk-executor-overview.md) cikk. Ez az oktatóanyag végigvezeti a .NET mintaalkalmazás tömeges véletlenszerűen generált dokumentumok importálása egy Cosmos-DB Azure gyűjteménybe. Importálás, után megmutatja, hogyan tömegesen frissíti az importált adatok megadásával a javítások, műveletek végrehajtását az adott dokumentum mező.
+Ez az oktatóanyag útmutatás az Azure Cosmos DB BulkExecutor .NET könyvtár használatával importálása és frissítése a dokumentumok Azure Cosmos DB gyűjteményekhez. BulkExecutor könyvtárban, és hogyan nyújt segítséget a kihasználja a nagy átviteli sebesség és tárterület kapcsolatos további tudnivalókért lásd: [BulkExecutor könyvtárának](bulk-executor-overview.md) cikk. Ez az oktatóanyag végigvezeti .NET mintaalkalmazás, amely importálja véletlenszerűen generált dokumentumok tömeges egy Azure Cosmos DB gyűjteménybe. Importálás, után megmutatja, hogyan tömegesen frissíti az importált adatok megadásával a javítások, műveletek végrehajtását az adott dokumentum mező.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +39,7 @@ Most tegyük váltson kóddal úgy, hogy egyes minta .NET alkalmazások letölti
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-A klónozott tárház két minta "BulkImportSample" és "BulkUpdateSample" tartalmazza. Nyissa meg a minta-alkalmazások, a kapcsolati karakterláncokkal az App.config fájlban frissítse Azure Cosmos DB fiókja kapcsolati karakterláncok, a megoldás felépítéséhez, és futtassa. 
+A klónozott tárház tartalmaz két minta "BulkImportSample" és "BulkUpdateSample." Nyissa meg a minta-alkalmazások, a kapcsolati karakterláncokkal az App.config fájlban frissítse Azure Cosmos DB fiókja kapcsolati karakterláncok, a megoldás felépítéséhez, és futtassa. 
 
 A "BulkImportSample" alkalmazás véletlenszerű dokumentumok hoz létre, és tömeges Azure Cosmos DB importálja azokat. A "BulkUpdateSample" alkalmazás tömeges javítások, műveletek végrehajtását az adott dokumentum mező megadása az importált dokumentumok frissítéséhez. A következő szakaszokban lévő rendszer tekintse át a kódot minden minta alkalmazásokat.
 
@@ -159,7 +160,7 @@ A BulkUpdateAsync API használatával frissítheti a meglévő dokumentumokat. E
 
    |**A paraméter**  |**Leírás** |
    |---------|---------|
-   |NumberOfDocumentsUpdated (nagy)    |   A teljes helyreállításra frissítése sikerült dokumentumok száma a tömeges frissítés számára megadott API-hívás.      |
+   |NumberOfDocumentsUpdated (nagy)    |   A tömeges frissítés API-hívás megadott helyreállításra sikeresen frissített dokumentumok teljes száma.      |
    |TotalRequestUnitsConsumed (kétirányú)   |    A teljes kérelemegység (RU) a tömeges frissítés által használt API-hívás.    |
    |TotalTimeTaken (időtartam)   | A teljes ideje a tömeges frissítése API-hívás végrehajtása befejeződik. |
     
@@ -167,11 +168,11 @@ A BulkUpdateAsync API használatával frissítheti a meglévő dokumentumokat. E
 
 Vegye figyelembe a következő szempontokat a jobb teljesítmény, BulkExecutor szalagtár használata esetén:
 
-* A legjobb teljesítmény érdekében futtassa az alkalmazást egy Azure virtuális gépet, amely ugyanabban a régióban, mint a Cosmos DB írási régióját.  
+* A legjobb teljesítmény érdekében futtassa az alkalmazást egy Azure virtuális gépen, amely ugyanabban a régióban, mint a Cosmos DB fiók írási terület.  
 
-* A teljes alkalmazáshoz belül egy megadott Cosmos DB gyűjtemény megfelelő egyetlen virtuális gép egyetlen BulkExecutor objektum példányosítani javasoljuk.  
+* Javasoljuk, hogy a teljes alkalmazáshoz belül egy megadott Cosmos DB gyűjtemény megfelelő egyetlen virtuális gép egyetlen BulkExecutor objektum hozható létre.  
 
-* Mivel egy egyetlen tömeges API művelet végrehajtása egy nagy darabjának az ügyfélszámítógépen Processzor- és a hálózati IO igényel. Több feladat belsőleg származtatását szerint ez történik, elkerülheti a minden egyes végrehajtott tömeges művelet API-hívások alkalmazás folyamaton belül több egyidejű feladatok származtatását. Ha egyetlen virtuális gépen futó egyetlen tömeges művelet API hívása nem tudja használni a teljes gyűjteményt átviteli sebesség (Ha a gyűjtemény átviteli > 1 millió RU/mp), a előnyösebb tömeges egyidejűleg végrehajtásához külön virtuális gépek létrehozása a művelet API-hívások száma.  
+* Mivel egy egyetlen tömeges API művelet végrehajtása egy nagy darabjának az ügyfélszámítógépen Processzor- és a hálózati IO igényel. Több feladat belsőleg származtatását szerint ez történik, elkerülheti a minden egyes végrehajtott tömeges művelet API-hívások alkalmazás folyamaton belül több egyidejű feladatok származtatását. Ha egyetlen virtuális gépen futó egyetlen tömeges művelet API hívása nem tudja használni a teljes gyűjteményt átviteli sebesség (Ha a gyűjtemény átviteli > 1 millió RU/mp), érdemes külön virtuális gépek tömeges egyidejűleg végrehajtásához létrehozása a művelet API-hívások száma.  
 
 * Róla InitializeAsync() után egy BulkExecutor objektum beolvasása a célként megadott Cosmos DB gyűjtemény partíciótérképen példányának.  
 
@@ -181,7 +182,7 @@ Vegye figyelembe a következő szempontokat a jobb teljesítmény, BulkExecutor 
     <gcServer enabled="true" />
   </runtime>
   ```
-* A könyvtár bocsát ki a nyomkövetési adatokat, amelyek gyűjthetők fájlba vagy a konzolon. Mindkét engedélyezéséhez vegye fel a következő az alkalmazás App.Config.
+* A könyvtár bocsát ki a nyomkövetési adatok gyűjthetők a fájlba, vagy a konzolon. Mindkét engedélyezéséhez vegye fel a következő az alkalmazás App.Config.
 
   ```xml
   <system.diagnostics>

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a34a4be75488aca46fe232331e4bac3e0ac414b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637769"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Nagios és az OMS-ügynököt a Naplóelemzési Zabbix riasztások gyűjtése Linux 
 [Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forráskódú figyelési eszközök. Begyűjtheti riasztások ezeket az eszközöket a Log Analyticshez való elemezheti őket, valamint hogy [más forrásokból származó riasztások](log-analytics-alerts.md).  Ez a cikk ismerteti a riasztások gyűjteni ezek a rendszerek Linux OMS-ügynök konfigurálása.
@@ -56,7 +57,7 @@ Riasztások gyűjtése, hajtsa végre az alábbi lépéseket a Nagios-kiszolgál
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Zabbix riasztások gyűjtésének konfigurálása
-A riasztások gyűjtése Zabbix-kiszolgálótól, meg kell adnia egy felhasználói és a jelszó *törölje a szöveget*.  Amíg nem ideális, javasoljuk, hogy a felhasználó létrehozása, és engedélyeket onlu figyelésére.
+A riasztások gyűjtése Zabbix-kiszolgálótól, meg kell adnia egy felhasználói és a jelszó *törölje a szöveget*.  Közben nem támogatott, ideális, azt javasoljuk, hogy hozzon létre egy Zabbix felhasználó van szüksége a megfelelő riasztások olvasási engedélyekkel.
 
 Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépéseket.
 
@@ -73,7 +74,7 @@ Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépése
 
 2. Indítsa újra a omsagent démon
 
-    sudo megosztása /opt/microsoft/omsagent/bin/service_control újraindítása
+    `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>Riasztási rekordok

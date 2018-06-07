@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 05/21/2018
 ms.author: raynew
-ms.openlocfilehash: a7e0455d92635b7767227685b622bdae303f9621
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.openlocfilehash: 1557567170654506c0010fafea7b035a2535aaeb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643729"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -27,10 +28,10 @@ Fizikai kiszolgálók | A helyszíni windowsos/Linuxos fizikai serversto Azure r
 
 ## <a name="on-premises-virtualization-servers"></a>A helyszíni virtualizálási kiszolgálók
 
-**Server** | **Követelmények** | **Részletek**
+**Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
 VMware | vCenter Server 6.5 6.0, vagy 5.5 vagy vSphere 6.5, 6.0 vagy 5.5 | Azt javasoljuk, hogy használja-e a vCenter-kiszolgálót.<br/><br/> Azt javasoljuk, hogy a vSphere gazdagépek és vCenter-kiszolgáló található-e a folyamatkiszolgáló és a ugyanahhoz a hálózathoz. Alapértelmezés szerint a folyamat kiszolgáló-összetevők fut a konfigurációs kiszolgálón, így ez lesz a hálózatot, amelyben állítsa be a konfigurációs kiszolgáló, kivéve, ha egy dedikált folyamat kiszolgáló.
-Fizikai | N.A.
+Fizikai | –
 
 ## <a name="site-recovery-configuration-server"></a>Helykiszolgáló helyreállítási konfiguráció
 
@@ -73,26 +74,27 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel-verziók
 
 
-**Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel-verzió** |
+**Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel verziója** |
 --- | --- | --- |
-14.04 LTS | 9.12 | a 3.13.0-132-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-96-generic 4.4.0-21-Generic |
 14.04 LTS | 9.13 | a 3.13.0-137-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-104-generic 4.4.0-21-Generic |
 14.04 LTS | 9.14 | a 3.13.0-142-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-116-generic 4.4.0-21-Generic |
 14.04 LTS | 9.15 | a 3.13.0-144-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-119-generic 4.4.0-21-Generic |
-16.04 LTS | 9.12 | a 4.4.0-96-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-35-generic 4.10.0-14-Generic |
+14.04 LTS | 9.16 | a 3.13.0-144-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-119-generic 4.4.0-21-Generic |
 16.04 LTS | 9.13 | a 4.4.0-104-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic 4.10.0-14-Generic |
 16.04 LTS | 9.14 | a 4.4.0-116-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-36-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1011-azure 4.13.0-1005-Azure |
 16.04 LTS | 9.15 | a 4.4.0-119-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-38-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1012-azure 4.13.0-1005-Azure |
+16.04 LTS | 9.16 | a 4.4.0-119-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-38-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1012-azure 4.13.0-1005-Azure |
 
 
 
 ### <a name="debian-kernel-versions"></a>Debian kernel-verziók
 
 
-**Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel-verzió** |
+**Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9.14, 9.15 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.14, 9.15, 9.16 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
 Debian 8 | 9.14, 9.15 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+Debian 8 | 9.16 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux rendszerek/Vendég fájltároló
@@ -110,7 +112,7 @@ XFSv5 | A 9.10 Mobilitásiszolgáltatás-verziót meghajtóbetűjeltől XFS fáj
 
 
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
 **Összetevő** | **Támogatott**
 --- | ---
@@ -139,9 +141,9 @@ Fenntartott IP-cím | Igen
 IPv4 | Igen
 Tartsa meg a forrás IP-címe | Igen
 Azure virtuális hálózat szolgáltatás-végpontok<br/> (nélkül az Azure Storage tűzfalak) | Igen
-Gyorsított hálózatkezelés | Nincs
+Gyorsított hálózatkezelés | Nem
 
-## <a name="storage"></a>Tárhely
+## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Állomás NFS | VMware Igen<br/><br/> Fizikai kiszolgálók esetében nem
@@ -151,19 +153,19 @@ Gyorsított hálózatkezelés | Nincs
 Virtuális Gazdaköteteket (VVols) | VMware Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló vmdk-fájl | Igen
 Vendég-kiszolgáló EFI/UEFI| Részleges (Azure a Windows Server 2012 és újabb verziók VMware virtuális gépek csak áttelepítés) </br></br> Lásd a táblázat végén a megjegyzést
-Vendég-kiszolgáló megosztott fürtlemez | Nincs
-Vendég/server titkosított lemez | Nincs
-NFS Vendég-kiszolgáló | Nincs
-Az SMB 3.0 Vendég-kiszolgáló | Nincs
+Vendég-kiszolgáló megosztott fürtlemez | Nem
+Vendég/server titkosított lemez | Nem
+NFS Vendég-kiszolgáló | Nem
+Az SMB 3.0 Vendég-kiszolgáló | Nem
 Vendég-kiszolgáló RDM | Igen<br/><br/> A fizikai kiszolgálók N/A
 Vendég-kiszolgáló > 1 TB méretű lemez | Igen<br/><br/>Legfeljebb 4095 GB
 Vendég/server 4 KB-os logikai és a 4 KB-os fizikai szektort méretű lemez | Igen
 Vendég/server 4 KB-os logikai lemez és 512 bájtos fizikai szektorméretet | Igen
 Csíkozott Vendég/server kötetet > 4 TB-os <br><br/>Logikai kötetkezelés (LVM)| Igen
-Vendég/kiszolgáló - tárolóhelyek | Nincs
-Vendég/server gyakran használt adatok hozzáadása lemez | Nincs
+Vendég/kiszolgáló - tárolóhelyek | Nem
+Vendég/server gyakran használt adatok hozzáadása lemez | Nem
 Vendég/kiszolgáló - kizárási lemez | Igen
-Vendég-kiszolgáló többutas (MPIO) | Nincs
+Vendég-kiszolgáló többutas (MPIO) | Nem
 
 > [!NOTE]
 > UEFI rendszerindítási VMware virtuális gépek Windows Server 2012 rendszert futtató, vagy később is telepíthető az Azure-bA. A következő korlátozások vonatkoznak:
@@ -173,27 +175,27 @@ Vendég-kiszolgáló többutas (MPIO) | Nincs
 > - Mobilitási szolgáltatás verziója 9.13 vagy újabb verzió szükséges.
 > - Fizikai kiszolgálók esetében nem támogatott.
 
-## <a name="azure-storage"></a>Azure-tároló
+## <a name="azure-storage"></a>Azure Storage tárterület
 
 **Összetevő** | **Támogatott**
 --- | ---
 Helyileg redundáns tárolás | Igen
 Georedundáns tárolás | Igen
 Írásvédett georedundáns tárolás | Igen
-Ritkán használt adatok | Nincs
-Gyakran használt adatok| Nincs
-Blokkblobok | Nincs
+Ritkán használt adatok | Nem
+Gyakran használt adatok| Nem
+Blokkblobok | Nem
 Titkosítását (Storage szolgáltatás titkosítási)| Igen
 Prémium szintű Storage | Igen
-Import/export szolgáltatás | Nincs
-A célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok az Azure Storage tűzfalak | Nincs
-Általános célú v2 storage-fiókok (a gyakran és ritkán használt rétegek) | Nincs
+Import/export szolgáltatás | Nem
+A célként megadott tárolási/gyorsítótár storage-fiók (használt replikációs adatokat tároló) konfigurált virtuális hálózatok az Azure Storage tűzfalak | Nem
+Általános célú v2 storage-fiókok (a gyakran és ritkán használt rétegek) | Nem
 
 ## <a name="azure-compute"></a>Az Azure compute
 
 **Funkció** | **Támogatott**
 --- | ---
-Rendelkezésre állási készletek | Igen
+Rendelkezésre állási csoportok | Igen
 HUB | Igen
 Felügyelt lemezek | Igen
 
@@ -213,15 +215,15 @@ Hálózati adapterek | Több adapter támogatottak. |
 Megosztott virtuális merevlemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 FC-lemez | Nem támogatott. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 BitLocker | Nem támogatott. | A BitLocker a gépek replikációjának engedélyezése előtt le kell tiltani. |
-Virtuális gép neve | 1 és 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
+a virtuális gép neve | 1 és 63 karakter.<br/><br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A számítógépnév kell kezdődnie, és betűvel vagy számmal végződhet. |  Frissítse az értéket a virtuálisgép-tulajdonságokat a Site Recovery szolgáltatásban.
 
 
 ## <a name="vault-tasks"></a>Tároló feladatok
 
 **Művelet** | **Támogatott**
 --- | ---
-Erőforráscsoportok közötti áthelyezése közben tároló<br/><br/> Belül és között előfizetések | Nincs
-Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok áthelyezéséhez<br/><br/> Belül és között előfizetések | Nincs
+Erőforráscsoportok közötti áthelyezése közben tároló<br/><br/> Belül és között előfizetések | Nem
+Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok áthelyezéséhez<br/><br/> Belül és között előfizetések | Nem
 
 
 ## <a name="mobility-service"></a>Mobilitási szolgáltatás

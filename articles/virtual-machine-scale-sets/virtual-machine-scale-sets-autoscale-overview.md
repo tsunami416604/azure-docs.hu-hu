@@ -13,25 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 05/29/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03053f8427fbd20b0a7288d930dca258ee3070b6
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 49ef3821ba5dd10d745649c6b4546ec04282714f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652304"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Beállítja az Azure virtuálisgép-méretezési automatikusan skálázva áttekintése
-Egy Azure virtuálisgép-méretezési csoport automatikusan növelhető és csökkenthető az alkalmazást futtató Virtuálisgép-példányok számát. Automatizált és rugalmas mindez csökkenti a felügyeleti figyelését, valamint az alkalmazás teljesítményének optimalizálásához. Egy pozitív felhasználói élmény a minimálisan elfogadható teljesítményt meghatározó szabályok létrehozása. Ha meghatározott küszöbértékeket mindegyike teljesül, az automatikus skálázási szabályok úgy, hogy a kapacitás, a méretezési művelet igénybe vehet. Események megadásával automatikusan növelhető vagy csökkentse a kapacitás, a méretezési rögzített többször is ütemezhető. Ez a cikk ismerteti, amelyek metrikák érhetők el áttekintése és milyen műveletek automatikus skálázás hajthat végre.
+Egy Azure virtuálisgép-méretezési csoport automatikusan növelhető és csökkenthető az alkalmazást futtató Virtuálisgép-példányok számát. Automatizált és rugalmas mindez csökkenti a felügyeleti figyelését, valamint az alkalmazás teljesítményének optimalizálásához. Létrehozhat szabályokat, amelyek meghatározzák az elfogadható teljesítmény pozitív felhasználói élmény. Ha meghatározott küszöbértékeket mindegyike teljesül, az automatikus skálázási szabályok úgy, hogy a kapacitás, a méretezési művelet igénybe vehet. Események megadásával automatikusan növelhető vagy csökkentse a kapacitás, a méretezési rögzített többször is ütemezhető. Ez a cikk ismerteti, amelyek metrikák érhetők el áttekintése és milyen műveletek automatikus skálázás hajthat végre.
 
 
 ## <a name="benefits-of-autoscale"></a>Automatikus skálázás előnyei
-Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép-példány a skála terhelését növeli állítsa be. Ha ez a megnövekedett terhelés egységes, ahelyett, hogy csak egy rövid igény szerinti, konfigurálhatja az automatikus skálázási szabályok a méretezési csoportban lévő Virtuálisgép-példányok számának növeléséhez.
+Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lévő virtuálisgép-példányok terhelése is nő. Ha a megnövekedett terhelés állandó, nem csak pillanatnyi igény, akkor megadhatja, hogy az automatikus skálázási szabály növelje meg a virtuálisgép-példányok számát a méretezési csoportban.
 
-Ezek a Virtuálisgép-példányok jönnek létre, és az alkalmazások vannak telepítve, a méretezési hozzákezd terjesztése azokra a terheléselosztó forgalmát. Milyen metrikák figyeléséhez, mint a CPU vagy memória, mennyi ideig alkalmazásterhelés meg kell felelnie a megadott küszöbértéket, és hány Virtuálisgép-példányok a skála hozzáadása set szabályozhatja.
+Ezen virtuálisgép-példányok létrehozását és az alkalmazások telepítését követően a méretezési csoport megkezdi a forgalom elosztását közöttük a terheléselosztón keresztül. Milyen metrikák figyeléséhez, mint a CPU vagy memória, mennyi ideig alkalmazásterhelés meg kell felelnie a megadott küszöbértéket, és hány Virtuálisgép-példányok a skála hozzáadása set szabályozhatja.
 
-Egy este vagy hétvégi az alkalmazás igény szerinti csökkenhet. Ha egy meghatározott időtartamra vonatkozóan ez csökkentheti a betöltés egységes, konfigurálhatja az automatikus skálázási szabályok segítségével csökkentheti a méretezési csoportban lévő Virtuálisgép-példányok számát. A skálázási művelet csökkenti a költségeket a méretezési készletben a futtatásakor csak az aktuális igény kielégítésére szükséges példányok futtatásához.
+Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a csökkent terhelés egy adott időtartam alatt állandó, akkor megadhatja, hogy az automatikus skálázási szabály csökkentse a virtuálisgép-példányok számát a méretezési csoportban. A horizontális leskálázási művelet csökkenti a méretezési csoport futtatásának költségeit, mivel csak az aktuális igényt kielégítő számú példányt futtat.
 
 
 ## <a name="use-host-based-metrics"></a>Gazdagép-alapú metrikák használata
@@ -87,12 +88,12 @@ Egy metrika figyelése automatikus skálázási szabályok létrehozásakor a sz
 
 Az automatikus skálázási szabályok majd által kiváltott, ha a metrikák összehasonlítja a megadott küszöbértéket meghaladó valamelyik az alábbi műveleteket:
 
-| Operátor                 |
+| Művelet                 |
 |--------------------------|
 | Nagyobb mint             |
 | Nagyobb vagy egyenlő |
 | Kisebb mint                |
-| kisebb vagy egyenlő    |
+| Kisebb vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
 
@@ -115,7 +116,7 @@ Az Azure diagnostics kiterjesztés olyan ügynök, amely belül egy Virtuálisg�
 
 Az Azure diagnostics-bővítmény használatához meg kell az Azure storage-fiókok létrehozása a Virtuálisgép-példányok, az Azure diagnosztikai ügynök telepítése, majd adatfolyam egyes teljesítményszámlálókat a tárfiók a virtuális gép konfigurálása.
 
-További információt az Azure diagnosztikai bővítmény [Linux virtuális gépen](../virtual-machines/linux/diagnostic-extension.md) vagy [Windows virtuális gépen](../virtual-machines/windows/ps-extensions-diagnostics.md) való engedélyezésével kapcsolatos cikkekben talál.
+További információt az Azure diagnosztikai bővítmény [Linux virtuális gépen](../virtual-machines/extensions/diagnostics-linux.md) vagy [Windows virtuális gépen](../virtual-machines/extensions/diagnostics-windows.md) való engedélyezésével kapcsolatos cikkekben talál.
 
 
 ## <a name="application-level-metrics-with-app-insights"></a>App Insights alkalmazás szintű metrikák

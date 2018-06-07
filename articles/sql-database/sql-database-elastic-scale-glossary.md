@@ -7,14 +7,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 010d4f6d9f33b8fb6f1622321a3b566f68f28f5f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4ab938bc556d5e3dea8b7ec093f590ff1746ea29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647544"
 ---
 # <a name="elastic-database-tools-glossary"></a>A rugalmas adatbázis eszközök szószedet
 A következő feltételek meghatározása a [skálázáshoz rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), Azure SQL-adatbázis szolgáltatása. Az eszközök kezeléséhez használt [shard leképezhető](sql-database-elastic-scale-shard-map-management.md), és adja meg a [ügyféloldali kódtár](sql-database-elastic-database-client-library.md), a [vegyes egyesítéses eszköz](sql-database-elastic-scale-overview-split-and-merge.md), [rugalmas készletek](sql-database-elastic-pool.md), és [lekérdezések](sql-database-elastic-query-overview.md). 

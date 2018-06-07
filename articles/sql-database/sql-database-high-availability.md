@@ -5,15 +5,16 @@ services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c7c2b72b3a164e35c464a92f82cddb3329250283
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650060"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL-adatbázis
 Az Azure SQL adatbázis Platformszolgáltatási ajánlat kezdete óta a Microsoft tett a felhőalkalmazások nyújtotta az ügyfelek, amelyek a szolgáltatás részét magas rendelkezésre állású (HA), és az ügyfelek nem szükséges üzemeltetéséhez, különleges logika hozzáadása, és magas rendelkezésre ÁLLÁSÚ körül döntéseket. A Microsoft fenntartja a magas rendelkezésre ÁLLÁSÚ rendszerkonfiguráció és a művelet, teljes hozzáféréssel, szolgáltatásiszint-szerződésben garantált kínál az ügyfeleknek. A magas rendelkezésre ÁLLÁSÚ SLA régióban SQL-adatbázis vonatkozik, és nem nyújt védelmet a teljes tartomány hibák, amely kívül a Microsoft irányítása alá tartozó tényezők miatt esetekben (például természeti katasztrófa, war, tevékenységéért terrorakció is történhet, lázadások, kormányzati műveletet, vagy egy hálózati vagy az eszköz hiba a Microsoft adatközpontokban, beleértve az ügyfél helyeken vagy a felhasználói helyek és a Microsoft-adatközpont közti külső).

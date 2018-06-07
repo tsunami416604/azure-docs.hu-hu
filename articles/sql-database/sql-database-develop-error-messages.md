@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bf94e99d84b7f5b727b185209ba0288096b30607
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: af0cb98d679125d20b3f4b7819012bee70e04cd1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645497"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódjai: adatbázis-csatlakozási hibáinak és egyéb problémák
 
@@ -46,7 +47,7 @@ Tárgyalja a *blokkolási időtartam* ADO.NET használó ügyfelek számára ér
 ### <a name="transient-fault-error-codes"></a>Átmeneti hiba hibakódok
 Hibák a következők átmeneti jellegűek, és meg kell ismételni a úgy az alkalmazáslogikát: 
 
-| Hibakód | Súlyosság | Leírás |
+| Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
 | 40197 |17 |A szolgáltatás a kérelem feldolgozása hibát észlelt. Kérjük, próbálkozzon újból. Hibakód: %d.<br/><br/>Ha a szolgáltatás szoftver vagy a hardverfrissítés, a hardver meghibásodása vagy a más feladatátvételi problémák miatt nem működik a hibaüzenetet kap. Az üzenet hiba 40197 ágyazott hibakód: (%d) milyen típusú hiba vagy a feladatátvétel történt további információkkal szolgál. Néhány példa a kódok vannak ágyazva az üzenet hiba 40197 hiba 40020, 40143, 40166 és 40540.<br/><br/>Az SQL Database-kiszolgálóhoz csatlakozni automatikusan csatlakoztatja az adatbázis megfelelő példányához. Az alkalmazás kell catch 40197, hibanapló hibaelhárítási üzeneten belüli beágyazott hibakód: (%d), és próbáljon újra csatlakozni az SQL-adatbázis, az erőforrások elérhetők, amíg újból létrejött a kapcsolat. |
@@ -60,7 +61,7 @@ Hibák a következők átmeneti jellegűek, és meg kell ismételni a úgy az al
 ## <a name="database-copy-errors"></a>Adatbázis-másolási hibák
 A következő hiba is történt a adatbázis másolása az Azure SQL-adatbázis. További információk az [Azure SQL Database másolása](sql-database-copy.md) című részben.
 
-| Hibakód | Súlyosság | Leírás |
+| Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | 40635 |16 |Ügyfél IP-címmel ( '%.&#x2a;ls' ) ideiglenesen le van tiltva. |
 | 40637 |16 |Hozzon létre adatbázis-másolás jelenleg le van tiltva. |
@@ -88,7 +89,7 @@ Kapcsolódó témakörök:
 
 * További részletes információk érhető el itt: [erőforrás-korlátozások az Azure SQL Database](sql-database-service-tiers-dtu.md).
 
-| Hibakód | Súlyosság | Leírás |
+| Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s korlátozást %d, és el lett érve. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális száma: %d, és az adatbázis aktuális kihasználását: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosító = 1. A munkamenetekben, az erőforrás-azonosító = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Erőforrás-korlátozások az azure SQL Database](sql-database-service-tiers-dtu.md). |
@@ -135,7 +136,7 @@ Kapcsolódó témakörök:
 ## <a name="general-errors"></a>Általános hiba
 Hibák a következők nem minden korábbi kategóriába tartoznak.
 
-| Hibakód | Súlyosság | Leírás |
+| Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) alhálózatnév nem érvényes, mert érvénytelen karaktereket tartalmaz. |
 | 18452 |14 |A bejelentkezés nem sikerült. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |

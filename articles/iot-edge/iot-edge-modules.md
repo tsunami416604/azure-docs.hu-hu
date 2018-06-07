@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT peremhálózati modulok megértése |} Microsoft Docs"
-description: "Tudnivalók Azure IoT Edge-modulokat és azok miként vannak konfigurálva:"
-services: iot-edge
-keywords: 
+title: Azure IoT peremhálózati modulok megértése |} Microsoft Docs
+description: 'Tudnivalók Azure IoT Edge-modulokat és azok miként vannak konfigurálva:'
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 02/15/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0f3ce7496427b6975eb4ac476e7d1737321ed2e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+services: iot-edge
+ms.openlocfilehash: 60c2c17d7a5cca66a6323f43e1ab2662afff54ee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630836"
 ---
 # <a name="understand-azure-iot-edge-modules---preview"></a>Azure IoT peremhálózati modulok megismerése – előzetes
 

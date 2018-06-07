@@ -1,12 +1,12 @@
 ---
-title: "Windows rendszerű számítógépek csatlakozzon az Azure Naplóelemzés szolgáltatáshoz |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan Windows rendszerű számítógépeken tárolt többi felhőt vagy a helyszíni és a Microsoft Monitoring Agent (MMA) szolgáltatáshoz kapcsolódni."
+title: Windows rendszerű számítógépek csatlakozzon az Azure Naplóelemzés szolgáltatáshoz |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan Windows rendszerű számítógépeken tárolt többi felhőt vagy a helyszíni és a Microsoft Monitoring Agent (MMA) szolgáltatáshoz kapcsolódni.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 342387edb3793358d041702eaa6d76b462aef527
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637412"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -33,7 +34,7 @@ Az ügynök az alábbi módszerek egyikének használatával telepíthetők. A l
 * PowerShell-parancsfájlt.
 * Resource Manager-sablon virtuális gépek helyszíni Windows Azure-készletben.  
 
-A Windows-ügynök telepítése a hálózati és a rendszer követelmények megértése érdekében tekintse át a [Előfeltételek a Windows rendszerű számítógépeken](log-analytics-concept-hybrid.md#prerequisites).
+Támogatott konfigurációinak megértését megkönnyíti, tekintse át a [támogatott Windows operációs rendszerek](log-analytics-concept-hybrid.md#supported-windows-operating-systems) és [hálózati tűzfal-konfiguráció](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
 A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége lesz a Log Analytics-munkaterület azonosítójára és kulcsára.  Szükség az egyes telepítési módszerek megfelelően konfigurálni az ügynököt, és képes sikeresen kommunikálni a kereskedelmi Azure Naplóelemzés és az USA szövetségi kormányzatának felhő telepítés során.  

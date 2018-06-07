@@ -1,23 +1,20 @@
 ---
-title: "Ismerkedés az Azure IoT Hub kezelés (Java) |} Microsoft Docs"
-description: "Hogyan használható az Azure IoT Hub kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT-eszközök SDK Java segítségével valósítja meg a szimulált eszköz alkalmazást, amely közvetlen módszer és az Azure IoT szolgáltatást megvalósítása, amely a közvetlen módszer hívja service-alkalmazást Java SDK tartalmazza."
-services: iot-hub
-documentationcenter: .java
+title: Ismerkedés az Azure IoT Hub kezelés (Java) |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub kezelés távoli eszköz újraindítás kezdeményezése. Az Azure IoT-eszközök SDK Java segítségével valósítja meg a szimulált eszköz alkalmazást, amely közvetlen módszer és az Azure IoT szolgáltatást megvalósítása, amely a közvetlen módszer hívja service-alkalmazást Java SDK tartalmazza.
 author: dominicbetts
 manager: timlt
-editor: 
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: java
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a4ba8c2b88520dff028610cf64aa9b3a6e3fefd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636188"
 ---
 # <a name="get-started-with-device-management-java"></a>Eszközkezelés (Java) az első lépései
 

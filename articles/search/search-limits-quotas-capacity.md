@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641169"
 ---
 # <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatásra vonatkozó korlátozások
 Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [kiépíteni az Azure Search](search-create-service-portal.md) : **szabad**, **alapvető**, vagy **Szabványos** tarifacsomag szükséges.
@@ -30,7 +31,7 @@ Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumen
 > A szolgáltatás van üzembe helyezve egy konkrét csomagot kiválasztani. Ahhoz, hogy a kapacitás rétegek Ugrás magában foglalja a (nincs nincs frissítés) egy új szolgáltatás kiépítését. További információkért lásd: [válasszon egy SKU vagy a réteg](search-sku-tier.md). Beállítja egy már kiépített szolgáltatás belül kapcsolatos további információkért lásd: [erőforrás szintek lekérdezési és indexelési munkaterhelések méretezése](search-capacity-planning.md).
 >
 
-## <a name="subscription-limits"></a>Előfizetési korlátozásait
+## <a name="subscription-limits"></a>Előfizetés korlátai
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
 ## <a name="storage-limits"></a>Tárolási korlátai
@@ -92,13 +93,16 @@ Tartsa a dokumentum mérete, ne felejtse el nem lekérdezhető adatok kihagyása
 
 Késői 2017 után létrehozott alapvető szolgáltatások megnövekedett legfeljebb 15 indexek, az adatforrások, skillsets és indexelők rendelkeznek.
 
+Erőforrás-igényes műveletek, például a lemezkép elemzés Azure blobindexelés vagy kognitív keresési természetes nyelvű feldolgozási rövidebb maximális futó idővel rendelkezik, úgy, hogy más, az indexelő feladat elhelyezhetők. Az indexelő feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, ha futtassa az ütemezés szerint. Az ütemező nyomon követi az indexelési állapot. Ha egy ütemezett indexelő feladat bármilyen okból megszakad, az indexelő is onnan folytathatja az adatgyűjtést, ahol utolsó abbahagyta a következő ütemezett futáskor.
+
 | Erőforrás | Szabad&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |
 | Maximális skillsets <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |
 | Hívásonkénti maximális indexelési betöltése |10 000 dokumentumok |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |– |
-| Maximális futási időt | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |
+| Maximális futási idejét <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |
+| Maximális futási ideje kognitív keresési skillsets vagy a kép elemzés indexelő blob <sup>5</sup> | 3 – 10 percig |2 óra |2 óra |2 óra |2 óra |–  |
 | A BLOB indexelő: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |
 | A BLOB indexelő: blob kinyert tartalom maximális karakterszám |32,000 |64,000 |4 millió |4 millió |4 millió |– |
 
@@ -109,6 +113,8 @@ Késői 2017 után létrehozott alapvető szolgáltatások megnövekedett legfel
 <sup>3</sup> S3 HD services nem támogatja az indexelő.
 
 <sup>4</sup> maximális száma skillset 30 képességek.
+
+<sup>5</sup> kognitív keresési munkaterhelések és lemezkép elemzése az Azure blob indexelő mint rendszeres szöveges indexelés rövidebb futó idővel rendelkezik. Kép elemzés természetes nyelvű feldolgozási számításilag intenzív és rendelkezésre álló számítási kapacitásért le aránytalanul nagy mennyiségű felhasználását. Futásidő le lett csökkentve a várólista más feladatok futtatásához lehetőséget ad.  
 
 ## <a name="queries-per-second-qps"></a>Lekérdezések / másodperc (QPS)
 
@@ -123,7 +129,7 @@ Megbecsli több előre jelezhető, ha a dedikált erőforrások (Basic és Stand
 * A $orderby záradékban maximális 32 mezők
 * Maximális keresési kifejezés mérete 32766 bájt (32 KB-os mínusz 2 bájt) UTF-8 kódolású szöveg
 
-<sup>1</sup> az Azure Search kérelem törzse 16 MB, a gyakorlati küszöbérték egyéni mezők vagy gyűjtemények, ellenkező esetben nem korlátozott elméleti korlátok tartalmára előíró felső korlát vonatkozik (lásd: [támogatott adatok típusok](https://msdn.microsoft.com/library/azure/dn798938.aspx) mező összetételűnek és korlátozások olvashat).
+<sup>1</sup> az Azure Search kérelem törzse 16 MB, a gyakorlati küszöbérték egyéni mezők vagy gyűjtemények, ellenkező esetben nem korlátozott elméleti korlátok tartalmára előíró felső korlát vonatkozik (lásd: [támogatott adatok típusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) mező összetételűnek és korlátozások olvashat).
 
 ## <a name="api-response-limits"></a>API-válaszból korlátok
 * A keresési eredmények laponként visszaadott legfeljebb 1000 dokumentumok

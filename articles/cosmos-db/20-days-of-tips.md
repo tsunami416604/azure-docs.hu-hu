@@ -4,20 +4,18 @@ description: Egy helyen található összes Simona Cotin 20 nap Azure Cosmos DB 
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: sngun
 ms.custom: cda
-ms.openlocfilehash: 79ef4a8c22143ed77535e1190b5f7e8eb5d17bb0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 43fd8b23be029511933f3a238f42b440f81aa121
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610616"
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>Azure Cosmos DB tippek 20 nap
 
@@ -33,7 +31,7 @@ Mi az a #cosmosdb? A legjobb NoSQL-adatbázis, amely nem használja! [https://ak
 
 > [!VIDEO https://www.youtube.com/embed/cGxO995iakM] 
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905083120487022593)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6310849010374631425/)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905083120487022593)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6310849010374631425/)
 
 ## <a name="tip-2-seeing-is-believing"></a>2. tipp: Jelent meg, akkor feltételezhető
 
@@ -41,7 +39,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/4aWL5p_SJDE]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905449095648731136)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311218673575088128)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905449095648731136)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311218673575088128)
 
 ## <a name="tip-3-replicate-data-globally"></a>3. tipp: Globálisan replikálja az adatokat
 
@@ -49,7 +47,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/i22R7I_Rgdg]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905783001937833984)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311547372904214528)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905783001937833984)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311547372904214528)
 
 ## <a name="tip-4-gremlin-graph-support"></a>4. tipp: Gremlin graph-támogatás
 
@@ -57,7 +55,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/906199438737203201)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311965366943834112)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/906199438737203201)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311965366943834112)
 
 ## <a name="tip-5-try-azure-cosmos-db-free"></a>5. tipp: Próbálja Azure Cosmos DB szabad
 
@@ -65,7 +63,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/Vf8iZCmoG2E]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907258302576431107)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313024454544932864)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907258302576431107)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313024454544932864)
 
 ## <a name="tip-6-migrate-your-mean-app"></a>6. tipp: Az átlagos alkalmazás áttelepítése
 
@@ -73,7 +71,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/vlAUxc3d2ak]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907634936160559105)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313400758263967744/)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907634936160559105)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313400758263967744/)
 
 ## <a name="tip-8-build-a-nodejs-app-by-using-sql-api"></a>8 tipp: Az SQL API-val egy Node.js-alkalmazást hozhat létre
 
@@ -81,7 +79,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/_gd9ZY-rHtM]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/908344625101815808)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6314096399197757440)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/908344625101815808)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6314096399197757440)
 
 ## <a name="tip-9-query-using-mongodb-in-nodejs"></a>9. tipp: Lekérdezés MongoDB használatával a node.js
 
@@ -89,7 +87,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 ![A lekérdezés a MongoDB-vel](./media/20-days-of-tips/cosmos-db-tip-9-mongodb-query.png)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/908737218759376896)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6314500690261655552)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/908737218759376896)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6314500690261655552)
 
 ## <a name="tip-10-copy-mongodb-data-using-studio-3t"></a>10. tipp: Másolás MongoDB adatok Studio 3T használatával
 
@@ -97,7 +95,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 > [!VIDEO https://www.youtube.com/embed/Qa4YpShYEcI]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/909794178489507840)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315565289329164288)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/909794178489507840)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315565289329164288)
 
 ## <a name="tip-11-use-react-nodejs-and-azure-cosmosdb"></a>11. tipp: Reagálni, Node.js és az Azure #CosmosDB használata
 
@@ -105,7 +103,7 @@ Feltételezhető a jelent meg. Az Azure portálon #cosmosDB visual illesztő seg
 
 A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910156604875649025)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315922463670751233)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910156604875649025)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315922463670751233)
 
 ## <a name="tip-12-go-serverless"></a>A tipp 12: Kiszolgáló nélküli nyissa meg
 
@@ -113,7 +111,7 @@ A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](http
 
 > [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910534418716069889)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316301619252248576)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910534418716069889)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316301619252248576)
 
 ## <a name="tip-13-mean-app-from-scratch"></a>13 tipp: Teljesen új átlagos app
 
@@ -121,7 +119,7 @@ A cikk: [reagálni és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](http
 
 A cikk: [szögben kifejezett és Azure Cosmos DB a MongoDB-alkalmazás létrehozása](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910881618855907329)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316647045599944704)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910881618855907329)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316647045599944704)
 
 ## <a name="tip-14-use-cases"></a>14. tipp: Használati esetekben
 
@@ -129,7 +127,7 @@ A cikk: [szögben kifejezett és Azure Cosmos DB a MongoDB-alkalmazás létrehoz
 
 A cikk: [közös Azure Cosmos DB használati esetekben](https://aka.ms/Ihpf00)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/911270472481992704)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6317036550945333248)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/911270472481992704)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6317036550945333248)
 
 ## <a name="tip-15-vs-code-integration"></a>15. tipp: Visual STUDIO Code-integráció
 
@@ -137,7 +135,7 @@ A cikk: [közös Azure Cosmos DB használati esetekben](https://aka.ms/Ihpf00)
 
 > [!VIDEO https://www.youtube.com/embed/w8HyW8AHHZQ]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912384598486679557)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318150514613850112)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912384598486679557)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318150514613850112)
 
 
 ## <a name="tip-16-functions-and-twilio-demo"></a>16. tipp: Függvények és Twilio bemutató
@@ -146,7 +144,7 @@ A cikk: [közös Azure Cosmos DB használati esetekben](https://aka.ms/Ihpf00)
 
 > [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912703755988160512)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318469696291246081)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912703755988160512)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318469696291246081)
 
 
 ## <a name="tip-17-using-mongoose-discriminators"></a>17 tipp: Mongoose segítségével discriminators
@@ -155,7 +153,7 @@ A cikk: [közös Azure Cosmos DB használati esetekben](https://aka.ms/Ihpf00)
 
 Blog: [Mongoose Discriminators használatával több entitás által Antal csú egyetlen Cosmos DB gyűjtemény használatával](https://aka.ms/M488jm)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913076502429933569)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318842474928443393)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913076502429933569)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318842474928443393)
 
 ## <a name="tip-18-request-units"></a>18. tipp: Kérelemegység
 
@@ -163,7 +161,7 @@ Blog: [Mongoose Discriminators használatával több entitás által Antal csú 
 
 A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913449916026032128)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319223402796326912)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913449916026032128)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319223402796326912)
 
 ## <a name="tip-19-partition-partition-partition"></a>19 tipp: partíció! Partíció! Partíció! 
 
@@ -171,7 +169,7 @@ A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
 > [!VIDEO https://www.youtube.com/embed/I_tVk3hKvSI]
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913773131499794433)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319541726637883392)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913773131499794433)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319541726637883392)
 
 ## <a name="tip-20-cheatsheet"></a>20 tipp: puska
 
@@ -179,7 +177,7 @@ A cikk: [Azure Cosmos DB egység kérése](https://aka.ms/Kt2nbn)
 
 – Áttekintés: [Azure Cosmos DB: SQL-lekérdezés Adatlap PDF](https://aka.ms/Nt01nl)
 
-[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)[![Könyvtármegosztáson található a LinkedIn   ](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
+[![A twitteren retweet](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)[![Könyvtármegosztáson található a LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 
 ## <a name="next-steps"></a>További lépések
 

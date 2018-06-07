@@ -1,24 +1,19 @@
 ---
-title: "Fájl feltöltése az Azure CLI-vel (az.py) IoT-központ konfigurálása |} Microsoft Docs"
-description: "Hogyan fileuploads az Azure IoT hubhoz a platformok közötti Azure CLI 2.0 (az.py) használatával konfigurálható."
-services: iot-hub
-documentationcenter: 
+title: Fájl feltöltése az Azure CLI-vel (az.py) IoT-központ konfigurálása |} Microsoft Docs
+description: Hogyan fileuploads az Azure IoT hubhoz a platformok közötti Azure CLI 2.0 (az.py) használatával konfigurálható.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6b100e65aba604fd8becb02c3a205b3348872bc4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 378fb06f7ac9cbb6dc645994682786f474077d03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633852"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurálja az IoT-központ fájlfeltöltések Azure parancssori felület használatával
 
@@ -31,27 +26,27 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Aktív Azure-fiók. Ha nincs fiókja, néhány perc alatt létrehozhat egy [ingyenes fiókot][lnk-free-trial].
 * [Az Azure CLI 2.0][lnk-CLI-install].
 * Az Azure IoT-központ. Ha még nem rendelkezik az IoT-központ, használhatja a `az iot hub create` [parancs] [ lnk-cli-create-iothub] hozzon létre egyet, vagy a portál használatával [létrehoz egy IoT-központot] [lnk-portal-hub].
-* Egy Azure Storage-fiókot. Ha egy Azure Storage-fiók nem rendelkezik, használhatja a [Azure CLI 2.0 - storage-fiókok kezelése] [ lnk-manage-storage] hozzon létre egyet, vagy használja a portál [hozzon létre egy tárfiókot][lnk-portal-storage].
+* Egy Azure Storage-fiók. Ha egy Azure Storage-fiók nem rendelkezik, használhatja a [Azure CLI 2.0 - storage-fiókok kezelése] [ lnk-manage-storage] hozzon létre egyet, vagy használja a portál [hozzon létre egy tárfiókot][lnk-portal-storage].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Jelentkezzen be, és állítsa be az Azure-fiókjával
 
-Jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését.
+Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
-1. A parancssorban futtassa a [bejelentkezési parancs][lnk-login-command]:
+1. A parancssorban futtassa a [login parancsot][lnk-login-command]:
 
     ```azurecli
     az login
     ```
 
-    Kövesse az utasításokat a hitelesítést a kódot, és jelentkezzen be az Azure-fiókjával webböngészőn keresztül.
+    Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
 
-1. Ha több Azure-előfizetéssel rendelkezik, az Azure-bA bejelentkezés engedélyezi a hozzáférést az Azure fiókokhoz tartozó hitelesítő adatait. Használja a következő [paranccsal listát készíthet az Azure-fiókra] [ lnk-az-account-command] elérhető lesz szükség:
+1. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat][lnk-az-account-command]:
 
     ```azurecli
     az account list
     ```
 
-    Az alábbi parancs segítségével válassza ki, hogy az IoT hub létrehozására szolgáló parancsok futtatásához használni kívánt előfizetést. Az előfizetés neve vagy azonosítója is használhatja, ha az előző parancs kimenetében:
+    Az alábbi parancs segítségével válassza ki azt az előfizetést, amelyet az IoT Hub létrehozásához szükséges parancsok futtatásához kíván használni. Használhatja az előző parancs kimenetéből származó előfizetésnevet vagy -azonosítót:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
@@ -131,7 +126,7 @@ A fájl feltöltése konfigurációs az IoT hub, a következő parancsot a tekin
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az IoT-központ a fájl feltöltése képességeivel kapcsolatos további információk: [egy eszközről tölt fel][lnk-upload].
 
@@ -144,7 +139,7 @@ Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
 Az IoT-központ képességeit további megismeréséhez lásd:
 
 * [IoT Hub fejlesztői útmutató][lnk-devguide]
-* [Az Azure IoT peremhálózati peremeszközök AI központi telepítése][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 * [Az IoT-megoldásból az alapoktól biztonságos mentése][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png

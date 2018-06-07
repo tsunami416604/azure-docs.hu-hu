@@ -1,24 +1,19 @@
 ---
 title: A csatlakoztatott gyári átjáró - Azure üzembe helyezéséhez |} Microsoft Docs
 description: Ügyfélszoftverek központi telepítése egy átjáró a Windows vagy a Linux és a kapcsolódó gyári megoldásgyorsító engedélyezéséhez.
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 829b2031458b78a1046e900dbf37028ac9eb4dc8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626904"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>A Windows vagy Linux a csatlakoztatott gyári megoldásgyorsító egy peremhálózati átjáró üzembe helyezéséhez
 
@@ -170,6 +165,6 @@ A saját OPC EE-kiszolgálók hozzáadása a csatlakoztatott gyári megoldásgyo
 
 ## <a name="next-steps"></a>További lépések
 
-A csatlakoztatott gyári megoldásgyorsító architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári megoldás gyorsító forgatókönyv](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+A csatlakoztatott gyári megoldásgyorsító architektúrájával kapcsolatos további tudnivalókért lásd: [csatlakoztatott gyári megoldás gyorsító forgatókönyv](iot-accelerators-connected-factory-sample-walkthrough.md).
 
 További tudnivalók a [OPC Publisher hivatkozás megvalósítási](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

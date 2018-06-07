@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/27/2018
+ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 80cdd2bdad5962a9d5f6a0e20f34ac3db1942741
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650937"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple-biztonság és adatvédelem
 
@@ -204,6 +205,18 @@ StorSimple használja a következő titkosítási algoritmusok tárolt adatok v�
 
 [!INCLUDE [storsimple Cloud Appliance security](../../includes/storsimple-virtual-device-security.md)]
 
+## <a name="managing-personal-inforamation"></a>Személyes je kezelése
+
+A StorSimple Device Manager fizikai és virtuális adatsor a következő kulcs példányát személyes adatokat gyűjthetnek:
+
+- Riasztás, ahol a felhasználók e-mail címét konfigurációja felhasználói beállításokat. Ezek az információk tekinthetők meg és a rendszergazda törli. Ez vonatkozik a StorSimple 8000 sorozat eszközeire és a StorSimple virtuális tömbök.
+ * Megtekintheti, és törölje a StorSimple 8000 Series beállításokat, kövesse a lépéseket a [nézet és a StorSimple-riasztások kezelése](storsimple-8000-manage-alerts.md#configure-alert-settings)
+ * Megtekintheti, és törölje a beállításokat a StorSimple virtuális tömb, kövesse a lépéseket a [nézet és a StorSimple-riasztások kezelése](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+- A fájlmegosztásokon tárolt adatok elérő felhasználókat. Azoknak a felhasználóknak, akik hozzáférhetnek a megosztott adatok jelenik meg, és megtekinthetők. Ez a lista is törlődik. a megosztások törlésekor. Ez csak a StorSimple virtuális tömbök vonatkozik.
+ * A lista érheti el és törli a megosztást, kövesse a lépéseket, a felhasználó megtekintéséhez [a StorSimple virtuális tömb-megosztások kezelése](storsimple-virtual-array-manage-shares.md)
+
+További információkért tekintse át a Microsoft Privacy házirendje [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
+
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
 Az alábbi táblázat néhány kapcsolatos kérdések és válaszok biztonsági és a Microsoft Azure StorSimple.
@@ -268,19 +281,7 @@ Az alábbi táblázat néhány kapcsolatos kérdések és válaszok biztonsági 
 
 **V:** az összes adat titkosítva van a szolgáltatásban, és a titkos kulcs megőrzi az eszközzel, mert a kormányzati entitás kérje meg az ügyfél az adatok számára.
 
-## <a name="gdpr-compliance"></a>GDPR megfelelőségi
 
-[Általános Data Protection szabályozás (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) Európai Unió adatok védelmét és adatvédelmi törvény van. A GDPR arról, hogyan gyűjtésére, tárolására és személyes adatok sok követelményeket tartalmaz. A GDPR szabályok írnak a vállalatok, állami intézményekhez és más szervezetek, amelyek EU működik és gyűjtése, Európa lakosai kötött adatok elemzése. 
-
-A StorSimple Device Manager fizikai és virtuális adatsorozathoz megfelelő GDPR. Ha személyes adatok gyűjtése történik, és jelennek meg a szolgáltatás két fő példány van:
-
-- Riasztás, ahol a felhasználók e-mail címét konfigurációja felhasználói beállításokat. Ezek az információk tekinthetők meg és a rendszergazda törli. Ez vonatkozik a StorSimple 8000 sorozat eszközeire és a StorSimple virtuális tömbök.
- * Megtekintheti, és törölje a StorSimple 8000 Series beállításokat, kövesse a lépéseket a [nézet és a StorSimple-riasztások kezelése](storsimple-8000-manage-alerts.md#configure-alert-settings)
- * Megtekintheti, és törölje a beállításokat a StorSimple virtuális tömb, kövesse a lépéseket a [nézet és a StorSimple-riasztások kezelése](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
-- A fájlmegosztásokon tárolt adatok elérő felhasználókat. Azoknak a felhasználóknak, akik hozzáférhetnek a megosztott adatok jelenik meg, és megtekinthetők. Ez a lista is törlődik. a megosztások törlésekor. Ez csak a StorSimple virtuális tömbök vonatkozik.
- * A lista érheti el és törli a megosztást, kövesse a lépéseket, a felhasználó megtekintéséhez [a StorSimple virtuális tömb-megosztások kezelése](storsimple-virtual-array-manage-shares.md)
-
-További információkért tekintse át a Microsoft Privacy házirendje [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>További lépések
 

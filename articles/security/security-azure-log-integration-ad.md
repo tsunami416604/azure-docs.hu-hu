@@ -1,35 +1,35 @@
 ---
-title: "Vizsgálati naplóit Azure Active Directory integrálása az Azure napló |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse az Azure napló integrációs szolgáltatást, és integrálhatja a naplók az Azure felügyeleti naplók"
+title: Vizsgálati naplóit Azure Active Directory integrálása az Azure napló |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse az Azure napló integrációs szolgáltatást, és integrálhatja a naplók az Azure felügyeleti naplók
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/16/2018
+ms.date: 05/25/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0f45f43a0296a7d90a68b0526f805ea50a1ce6c6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 201e34cf9e9c917f1f79964facce136e7c0c2fd3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642461"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrálása az Azure Active Directory-naplók
 
 Az Azure Active Directory (Azure AD) naplózási események segítségével azonosíthatja a privilegizált műveletekhez, hogy megtörtént az Azure Active Directoryban. Láthatja, hogy milyen típusú eseményeket vizsgálatával nyomon követett [Azure Active Directory auditnaplójának jelentési eseményei](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md).
 
+## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory integrálásának lépései naplók
 
 > [!NOTE]
-> A cikkben ismertetett-megkezdése előtt át kell néznie a [Ismerkedés](security-azure-log-integration-get-started.md) cikk és a lépéseket van.
-
-## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory integrálásának lépései naplók
+> A cikkben ismertetett-megkezdése előtt át kell néznie a [Ismerkedés](security-azure-log-integration-get-started.md) a következő cikket, és hajtsa végre a megfelelő lépéseket.
 
 1. Nyissa meg a parancssort, és futtassa a parancsot:
 

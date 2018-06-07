@@ -12,22 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/20/2017
+ms.date: 5/21/2018
 ms.author: msfussell
-ms.openlocfilehash: c70db92d6071a295dfc329768ab8a0fd561f8ce5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641912"
 ---
 # <a name="service-fabric-and-containers"></a>A Service Fabric és a tárolók
-> [!NOTE]
-> Tárolók telepítése a Windows 10- vagy Docker CE Service Fabric-fürt nem támogatott. 
->   
-
-> [!NOTE]
-> A Service Fabric 6.1-es verziója előzetes verzióban támogatja a Windows Server 1709-es verzióját. A nyílt hálózatkezelés és a Service Fabric DNS-szolgáltatás nem működik a Windows Server 1709-es verziójával. 
-> 
 
 ## <a name="introduction"></a>Bevezetés
 Az Azure Service fabric egy [orchestrator](service-fabric-cluster-resource-manager-introduction.md) szolgáltatások gépet fürtön belül, használatát és az optimalizálást a jelentős mértékű évnyi szolgáltatásokat, amely Microsoft. Szolgáltatások használatával számos módon fejleszthetők a [programozási modellek Service Fabric](service-fabric-choose-framework.md) telepítésével [Vendég végrehajtható fájlok](service-fabric-guest-executables-introduction.md). Alapértelmezés szerint a Service Fabric telepíti, és ezek a szolgáltatások, folyamatok aktiválja. Folyamatok adja meg a leggyorsabb aktiválás és a legmagasabb sűrűség használatát egy fürtön. A Service Fabric szolgáltatások tároló képek is telepítheti. Fontos kombinálhatja a folyamatokat a szolgáltatások és szolgáltatások tárolókban ugyanabban az alkalmazásban.   
@@ -44,10 +38,6 @@ Tárolók egy virtualizációs technológia, amely Virtualizálja az alapul szol
 
 ## <a name="container-types-and-supported-environments"></a>Támogatott környezetek és a tároló esetében
 A Service Fabric tárolók támogatja a Linux és a Windows, és is támogatja az utóbbi a Hyper-V elkülönítési üzemmódját. 
-
-> [!NOTE]
-> A Service Fabric-fürt Windows 10-tárolók telepítése jelenleg nem támogatott. 
-> 
 
 ### <a name="docker-containers-on-linux"></a>Linux docker-tároló
 Docker biztosít magas szintű API-k létrehozásához és kezeléséhez tárolók Linux kernel tárolók felett. Docker egy központi tárházban tárolásához és lekéréséhez tároló képek is.

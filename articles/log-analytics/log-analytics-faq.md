@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637174"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Naplóelemzés gyakran feltett kérdésekre listáját. Amennyiben a Naplóelemzési kapcsolatos további kérdése van, a [vitafóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és kérdéseit. Ha kérdése van gyakori, azt adja hozzá a cikkben, hogy gyorsan és könnyen megtalálhatók.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics használata ugyanaz az ügynök, az Azure Security Center?
 
@@ -96,7 +97,7 @@ A. Nem, lehetetlen jelenleg tetszőleges táblák vagy a tárolókat az Azure st
 
 A. A Naplóelemzési szolgáltatás Azure épül. Napló Analytics IP-címek szerepelnek a [Microsoft Azure Datacenter IP-címtartományok](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Mivel szolgáltatástelepítések történik, megváltozik a Naplóelemzés szolgáltatás a tényleges IP-címe. A tűzfalon keresztül engedélyezi a DNS-nevek szerepelnek a [rendszerkövetelmények](log-analytics-concept-hybrid.md#prerequisites).
+Mivel szolgáltatástelepítések történik, megváltozik a Naplóelemzés szolgáltatás a tényleges IP-címe. A tűzfalon keresztül engedélyezi a DNS-nevek szerepelnek a [hálózati vonatkozó követelmények](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Q. Kapcsolódás Azure ExpressRoute használatával. A Naplóelemzési forgalom használ a saját ExpressRoute-kapcsolatot?
 

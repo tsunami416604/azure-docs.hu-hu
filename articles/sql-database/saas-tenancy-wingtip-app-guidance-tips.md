@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 1e3ecd27ce7ec2e2763a7249428875e51872bf63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6c352298c701c827cd01c0ed7f427b7ed6015e29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646677"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip jegyek való munkához általános útmutatás mintavételhez SaaS-alkalmazásokhoz
 
@@ -84,7 +85,7 @@ Ahhoz, hogy a sikeres bemutató kapcsolatot, az összes kiszolgáló rendelkezik
 
 
 1. Nyissa meg *SSMS* és a bérlők kapcsolódni. A kiszolgáló nevét az adatbázis bérleti mintát (lásd lent rögzítésen) kijelölt függ:
-    - **Önálló alkalmazás:** kiszolgálók az egyes bérlők számára (például) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
+    - **Önálló alkalmazás:** kiszolgálók az egyes bérlők számára (például) *contosoconcerthall -&lt;felhasználói&gt;. database.windows.net*) 
     - **Adatbázis bérlőnként:** *tenants1-dpt -&lt;felhasználói&gt;. database.windows.net*
     - **Több-bérlős adatbázis:** *tenants1-mt -&lt;felhasználói&gt;. database.windows.net* 
 2. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :
@@ -94,7 +95,7 @@ Ahhoz, hogy a sikeres bemutató kapcsolatot, az összes kiszolgáló rendelkezik
 3. Bemutató hitelesítő adatai: bejelentkezés = *fejlesztő*, jelszó =*P@ssword1*
 
     Az alábbi képen azt mutatja be, a bejelentkezési adatait a következő a *bérlőnként adatbázis* mintát. 
-    ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    ![Kapcsolat](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 

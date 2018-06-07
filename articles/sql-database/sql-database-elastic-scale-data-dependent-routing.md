@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 8a9b0b2c0541504954c4a1352180552cc650a31f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 715b6e55b053b3f999f3bd938c14d72a8e20ad1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646881"
 ---
 # <a name="data-dependent-routing"></a>Adatfüggő útválasztás
 **Adatok függő útválasztási** képessége, hogy a lekérdezés az adatok használatával továbbítja a kérelmet a megfelelő adatbázishoz. Ez az alapvető mintát, az szilánkos adatbázisok használatakor. A kérés környezete is használható a kérelem továbbításához, különösen akkor, ha a horizontális kulcs része nem a lekérdezés. Minden egyedi lekérdezés vagy a tranzakció az adatok függő útválasztási használó alkalmazások elérése egy önálló adatbázis kérelmenként korlátozódik. Az Azure SQL Database rugalmas eszközök, az Útválasztás segítségével történik a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) osztály.

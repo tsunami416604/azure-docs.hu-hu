@@ -1,25 +1,22 @@
 ---
-title: "Használja az Office 365 videó összekötőt a Logic apps |} Microsoft Docs"
-description: "Ismerkedés a Microsoft Azure App service Logic apps az Office 365 videó összekötővel"
-services: 
-documentationcenter: 
+title: Kapcsolódás az Office 365 Video - Azure Logic Apps |} Microsoft Docs
+description: Az Office 365 videó REST API-k és az Azure Logic Apps videók kezeléséhez
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 738e5aa7-2523-4116-8b65-211b9063852d
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: cfowler
+ms.author: estfan
 ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 30ec8c7aa55013668d2ec0897278d435b9e864c7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: ef56159735654cd5cefbba99ee9cead42c81086b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610333"
 ---
 # <a name="get-started-with-the-office365-video-connector"></a>Az Office365 videó összekötő az első lépései
 Csatlakoztassa Office 365 videó videó az Office 365 adatainak beolvasása, videókat és egyéb listájának beolvasása. Az Office 365 videó a következőket teheti:

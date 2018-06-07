@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 9542f11830415a84af6857c9008ad26056a8af3d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3a858e3e901f300ce5f0dbc44437106905078375
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617715"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Feldolgozási sor tevékenység végrehajtása az Azure Data Factory
 A feldolgozási sor végrehajtása tevékenység lehetővé teszi, hogy a Data Factory-folyamathoz meghívni egy másik folyamat.
@@ -68,7 +69,7 @@ név | A végrehajtási folyamat tevékenység nevét. | Karakterlánc | Igen
 type | Értékre kell állítani: **ExecutePipeline**. | Karakterlánc | Igen
 adatcsatorna | Hivatkozás a függő folyamat, amely ebben az adatcsatornában hívja meg a következő feldolgozási sorban. A folyamat referenciaobjektum két tulajdonságokkal rendelkezik: **hivatkozásnév** és **típus**. A hivatkozásnév tulajdonság határozza meg a referencia-feldolgozási folyamat nevét. A type tulajdonságot meg kell PipelineReference. | PipelineReference | Igen
 paraméterek | A meghívott csővezeték átadandó paraméterek | Egy JSON-objektum, amely leképezhető argumentumérték paraméterének neve | Nem
-waitOnCompletion | Meghatározza, hogy tevékenység végrehajtási megvárja-e a függő feldolgozási sor végrehajtása befejeződik. | Alapértelmezett értéke false. | Logikai | Nem
+waitOnCompletion | Meghatározza, hogy tevékenység végrehajtási megvárja-e a függő feldolgozási sor végrehajtása befejeződik. | Az alapértelmezett érték a false (hamis). | Logikai | Nem
 
 ## <a name="sample"></a>Sample
 Ebben a forgatókönyvben két folyamatok rendelkezik:

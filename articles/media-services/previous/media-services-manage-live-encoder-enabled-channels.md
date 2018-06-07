@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5aa6f629b04a4c187a43b13c929a122a6304c575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639435"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -223,8 +224,8 @@ Vegye figyelembe, hogy ha egyéni készletek van szüksége, forduljon amslived@
 | 1350 |704 |396 |30 |Elsődleges |Video_704x396_1350kbps |
 | 850 |512 |288 |30 |Elsődleges |Video_512x288_850kbps |
 | 550 |384 |216 |30 |Elsődleges |Video_384x216_550kbps |
-| 350 |340 |192 |30 |Alapkonfiguráció |Video_340x192_350kbps |
-| 200 |340 |192 |30 |Alapkonfiguráció |Video_340x192_200kbps |
+| 350 |340 |192 |30 |Alapterv |Video_340x192_350kbps |
+| 200 |340 |192 |30 |Alapterv |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Kimeneti hangadatfolyam
 Hang sztereó AAC-LC 64 KB/s, mintavételi ráta 44,1 kHz, hogy van kódolva.
@@ -332,7 +333,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 * Ha a csatorna csak számlázása a **futtató** állapota. További információkért tekintse meg [ez](media-services-manage-live-encoder-enabled-channels.md#states) szakasz.
 * Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
 * Ügyeljen arra, hogy rendelkezik a streamvégpontján, amelyből el kívánja segítségével a tartalmat a **futtató** állapotát.
-* A kódolási beállításkészlet használja a "max sebessége" 30 fps fogalmát. Igen, ha a bemeneti érték 60fps / 59.97i, a bemeneti keretek eldobott/inaktiválása-interlaced 30/29,97 fps számára. A bemeneti érték 50fps/50i, ha a bemeneti keretek eldobott/inaktiválása-interlaced 25 fps számára. Ha 25 fps a bemeneti, kimeneti 25 fps értéken marad.
+* A kódolási beállításkészlet használja a "max sebessége" 30 fps fogalmát. Igen, ha a bemeneti érték 60fps / 59.94i, a bemeneti keretek eldobott/inaktiválása-interlaced 30/29,97 fps számára. A bemeneti érték 50fps/50i, ha a bemeneti keretek eldobott/inaktiválása-interlaced 25 fps számára. Ha 25 fps a bemeneti, kimeneti 25 fps értéken marad.
 * Ne feledje STOP YOUR csatornák végzett. Ha ezt elmulasztja, számlázási továbbra is.
 
 ## <a name="known-issues"></a>Ismert problémák

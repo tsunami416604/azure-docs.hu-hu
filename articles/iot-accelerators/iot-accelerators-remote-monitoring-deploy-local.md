@@ -1,30 +1,27 @@
 ---
 title: Azure - helyileg a távoli felügyeleti megoldás üzembe helyezéséhez |} Microsoft Docs
 description: Az oktatóanyag bemutatja, tesztelése és fejlesztési a helyi számítógép a távoli felügyeleti megoldásgyorsító központi telepítése.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 03/07/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: a11df1dc17b4dcbacece85526eeac39502cbbe34
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 3f723d716a652e64527310a499d6b06a6cf6bc6f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627231"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>A távoli felügyeleti megoldásgyorsító helyileg telepíteni
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>A távoli megfigyelési megoldásgyorsító helyileg telepíteni
 
-Ez a cikk bemutatja a teszteléshez és a fejlesztői a helyi számítógép a távoli felügyeleti megoldásgyorsító központi telepítése. Ez a megközelítés a mikroszolgáltatások telepíti egy helyi Docker-tároló, és a felhőben az IoT-központ, a Cosmos-adatbázis és az Azure storage szolgáltatások használja. A megoldás gyorsítók (számítógépek) parancssori felület telepítése az Azure felhőszolgáltatások használhatja.
+Ez a cikk bemutatja a teszteléshez és a fejlesztői a helyi számítógép a távoli megfigyelési megoldásgyorsító központi telepítése. Ez a megközelítés a mikroszolgáltatások telepíti egy helyi Docker-tároló, és a felhőben az IoT-központ, a Cosmos-adatbázis és az Azure storage szolgáltatások használja. A megoldás gyorsítók (számítógépek) parancssori felület telepítése az Azure felhőszolgáltatások használhatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A távoli felügyeleti megoldásgyorsító által használt Azure-szolgáltatásokhoz központi telepítéséhez aktív Azure-előfizetés szükséges.
+A távoli megfigyelési megoldásgyorsító által használt Azure-szolgáltatásokhoz központi telepítéséhez aktív Azure-előfizetés szükséges.
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -52,7 +49,7 @@ A parancssori Felülettel kapcsolatos további információkért lásd: [a CLI h
 
 ### <a name="download-the-source-code"></a>A forráskód letöltése
 
- A távoli felügyeleti kód tárházban magában foglalja a Docker konfigurációs fájlokat kell letölteni, konfigurálásához és futtatásához a Docker-lemezképeket, amelyek tartalmazzák a mikroszolgáltatások létrehozására. Klónozza, és a tárház helyi verziót hoz létre, keresse meg a megfelelő mappát a helyi számítógépen a kedvenc parancssor vagy a Terminálszolgáltatások keresztül, és futtassa a következő parancsok egyikét:
+ A távoli megfigyelési forráskódraktárban magában foglalja a Docker konfigurációs fájlokat kell letölteni, konfigurálásához és futtatásához a Docker-lemezképeket, amelyek tartalmazzák a mikroszolgáltatások létrehozására. Klónozza, és a tárház helyi verziót hoz létre, keresse meg a megfelelő mappát a helyi számítógépen a kedvenc parancssor vagy a Terminálszolgáltatások keresztül, és futtassa a következő parancsok egyikét:
 
 A Java implementációja a mikroszolgáltatások telepítéséhez futtassa:
 
@@ -119,13 +116,13 @@ Ez a parancs első futtatásakor Docker letölti a mikroszolgáltatási képek D
 
 Egy külön rendszerhéj-tárolójából. a naplók megtekintéséhez használhatja. Először a tárolót azonosító használatával található a `docker ps -a` parancsot. Ezután `docker logs {container-id} --tail 1000` megtekintése a legutóbbi 1000 naplóbejegyzéseket a megadott tároló.
 
-A távoli felügyeleti megoldás irányítópultja eléréséhez lépjen [ http://localhost:8080 ](http://localhost:8080) a böngészőben.
+A távoli figyelési megoldást irányítópult eléréséhez lépjen [ http://localhost:8080 ](http://localhost:8080) a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 Elkerülése érdekében szükségtelen, ha befejezte a tesztelést, távolítsa el a felhőszolgáltatások az Azure-előfizetéshez. Távolítsa el a szolgáltatásokat a legegyszerűbb módja lehetőségre, és navigáljon a [Azure-portálon](https://ms.portal.azure.com) segítségével létrehozott erőforráscsoport törlése és a `pcs` eszköz.
 
-Használja a `docker-compose down --rmi all` parancs futtatásával távolítsa el a Docker képek és szabadítson fel lemezterületet a helyi számítógépen. A helyi példány, a távoli felügyeleti tárház jön létre, amikor a Githubból a forráskód klónozott is törölheti.
+Használja a `docker-compose down --rmi all` parancs futtatásával távolítsa el a Docker képek és szabadítson fel lemezterületet a helyi számítógépen. A helyi példány, a távoli megfigyelési jön létre, amikor a Githubból a forráskód klónozott tárház is törölheti.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -137,6 +134,6 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A megoldásgyorsító központi telepítése
 > * Jelentkezzen be a megoldásgyorsító
 
-A távoli felügyeleti megoldás telepített, akkor a következő lépéssel fogja [megismerkedhet a megoldás irányítópultja képességeit](iot-accelerators-remote-monitoring-deploy.md).
+A távoli figyelésére szolgáló megoldás telepített, akkor a következő lépéssel fogja [megismerkedhet a megoldás irányítópultja képességeit](iot-accelerators-remote-monitoring-deploy.md).
 
 <!-- Next tutorials in the sequence -->

@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c70279bd52f7b0b0e0cbc27742eca93d9af5e630
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3c68b18a96ae79cd32cd3059eab837e6051847dd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647418"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 Ha egy szoftver szolgáltatás fejlesztőként, és hirtelen az alkalmazás megy keresztül rengeteg igény szerint, akkor a növekedési igazodniuk kell. Így adhat meg további adatbázisok (szilánkok). Hogyan az adatokat az új adatbázisok újraterjeszteni a adatok integritásának megszakítása nélkül Használja a **vegyes egyesítéses eszköz** korlátozott adatbázisból származó adatok áthelyezése az új adatbázisokat.  
@@ -74,7 +75,7 @@ Korlátozza a kapcsolat leállítása végleges, tehát az aktuális köteg shar
 
 A felosztott egyesítéses szolgáltatás egy adatbázist használ, állapotának karbantartásához és naplók kérelem feldolgozása során. A felhasználó hoz létre az adatbázis az előfizetését, és biztosít a kapcsolati karakterláncot, a szolgáltatás központi telepítése a konfigurációs fájlban. A felhasználó szervezete rendszergazdákat is csatlakozhat az adatbázis kérelem lefolyásának áttekintéséhez, és vizsgálja meg a lehetséges hibák kapcsolatos részletes információk.
 
-**Sharding-awareness**
+**Horizontális-figyelése**
 
 A felosztott egyesítéses szolgáltatás (1) szilánkos táblák, (2) hivatkozás táblázatok, illetve (3) normál közötti különbséget tesz. A felosztott/egyesítési/áthelyezés szemantikáját használt tábla típusa határozza meg, és az alábbiak szerint definiáltuk: 
 

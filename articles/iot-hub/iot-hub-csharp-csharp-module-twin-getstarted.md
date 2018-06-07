@@ -1,28 +1,22 @@
 ---
 title: Ismerkedés az Azure IoT Hub-modulidentitással és -modulikerrel (.NET) | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre modulidentitást és frissíthet modulikert a .NET-hez készült IoT SDK-k használatával.
-services: iot-hub
-documentationcenter: .net
 author: chrissie926
-manager: timlt
-editor: ''
-ms.assetid: f40604ff-8fd6-4969-9e99-8574fbcf036c
+manager: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f71ac333aeb73df00856dde279b56f94464127b5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: 5855396fc87b7d8de17be65a66af40963c59fc71
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361120"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633478"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-backup-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel .NET biztonsági mentés és .NET eszköz használata mellett
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>Ismerkedés az IoT-központ modul identitás- és modul iker .NET háttér és a .NET-eszköz használata
 
 > [!NOTE]
 > [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Amíg az Azure IoT Hub eszközidentitása és eszközikre lehetővé teszi a háttéralkalmazás számára az eszköz konfigurálását, és rálátást nyújt az eszköz feltételeire, a modulidentitás és a moduliker az eszköz egyes összetevőihez biztosítja ezeket a lehetőségeket. A megfelelő, több összetevős eszközök, például az operációs rendszeren vagy a belső vezérlőprogramon alapuló eszközök esetében lehetővé teszi az elkülönített konfigurációk és feltételek beállítását az egyes összetevőkhöz.
@@ -42,7 +36,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Létrehozta a IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati karakterlánccal.
+Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati sztringgel.
 
 <a id="DeviceIdentity_csharp"></a>
 [!INCLUDE [iot-hub-get-started-create-module-identity-csharp](../../includes/iot-hub-get-started-create-module-identity-csharp.md)]
@@ -57,11 +51,12 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
 
     ![Hozzon létre egy Visual Studio-projektet.][13]
 
-2. **Telepítse az Azure IoT Hub .NET eszközoldali SDK 1.16.0-preview-005-ös verzióját** – A modulidentitás és a moduliker nyilvános előzetes verzióban érhető el. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki az 1.16.0-preview-005-ös verziót, és telepítse azt. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
+2. **Telepítse a legújabb Azure IoT Hub .NET SDK eszköz** -modul identitás- és modul két nyilvános előzetes verziójában van. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
 
     ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése][14]
 
-3. **Szerezze be a modul kapcsolati karakterláncát** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati karakterláncát. A következő lépés során szükség lesz rá.
+3. 
+  **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
     ![Az Azure Portal moduladatai][15]
 
@@ -74,7 +69,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
     using Newtonsoft.Json;
     ```
 
-    Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati karakterláncára.
+    Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
 
     ```csharp
     private const string ModuleConnectionString = "<Your module connection string>";
@@ -119,7 +114,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
             var twinTask = Client.GetTwinAsync();
             twinTask.Wait();
             var twin = twinTask.Result;
-            Console.WriteLine(JsonConvert.SerializeObject(twin));
+            Console.WriteLine(JsonConvert.SerializeObject(twin.Properties)); 
 
             Console.WriteLine("Sending app start time as reported property");
             TwinCollection reportedProperties = new TwinCollection();
@@ -140,7 +135,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközö
 
     A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
-5. A fenti **fő** módszer mellett az alábbi kódblokk hozzáadásával is lehet eseményt küldeni az IoT Hub részére a modulból:
+5. A fentiek mellett **fő** módszer, adhat hozzá alább kódblokk eseményt küldeni az IoT-központ a modulból:
     ```csharp
     Byte[] bytes = new Byte[2];
     bytes[0] = 0;

@@ -1,25 +1,19 @@
 ---
 title: Gyári megoldás gyakori kérdések – Azure csatlakoztatott |} Microsoft Docs
 description: Gyakori kérdések a csatlakoztatott gyári megoldásgyorsító
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 4ed0cd413480e717e686f7e52123102e1a838f19
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627501"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott gyári megoldásgyorsító
 
@@ -67,7 +61,7 @@ Az IP-cím eltávolítása két lehetőség közül választhat:
 
 A szimuláció VM bejelentkezés csak támogatott, ha a megoldás a PowerShell-parancsfájl használatával telepített `build.ps1` a a [tárház](https://github.com/Azure/azure-iot-connected-factory).
 
-Ha telepítette a www.azureiotsuite.com megoldást, nem tud bejelentkezni virtuális gép. Nem tud bejelentkezni, mert a jelszó véletlenszerűen történik, és nem állítható alaphelyzetbe.
+Ha telepítette a www.azureiotsolutions.com megoldást, nem tud bejelentkezni virtuális gép. Nem tud bejelentkezni, mert a jelszó véletlenszerűen történik, és nem állítható alaphelyzetbe.
 
 1. A nyilvános IP-cím hozzáadása a virtuális Gépet. Lásd: [hogyan adni a nyilvános IP-címnek a szimuláció VM?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. A virtuális géphez az IP-címmel, a virtuális gép SSH-munkamenetet létrehozni.
@@ -148,11 +142,11 @@ Ha nem az IoT-központ küldött adatokat, majd nincs a szimuláció kapcsolatos
 
 Ahhoz, hogy a kapcsolódó gyári megoldásban interaktív térkép, rendelkeznie kell egy meglévő Bing térképek API vállalati terv.
 
-A központi telepítésekor [www.azureiotsuite.com](http://www.azureiotsuite.com), a telepítési folyamat ellenőrzi, hogy az előfizetés egy engedélyezett Bing térképek API vállalati terv rendelkezik, és automatikusan telepíti az interaktív térkép csatlakoztatott gyári be. Ha nem ez a helyzet, továbbra is engedélyezheti egy interaktív leképezés a központi telepítésben az alábbiak szerint:
+A központi telepítésekor [www.azureiotsolutions.com](http://www.azureiotsolutions.com), a telepítési folyamat ellenőrzi, hogy az előfizetés egy engedélyezett Bing térképek API vállalati terv rendelkezik, és automatikusan telepíti az interaktív térkép csatlakoztatott gyári be. Ha nem ez a helyzet, továbbra is engedélyezheti egy interaktív leképezés a központi telepítésben az alábbiak szerint:
 
 Központi telepítésekor használ a `build.ps1` parancsfájl a csatlakoztatott gyári github tárház, és a Bing térképek API vállalati terv rendelkezik, és állítsa a környezeti változó `$env:MapApiQueryKey` a build ablakban, a lekérdezési kulcsot a csomag számára. Az interaktív térkép majd automatikusan engedélyezve lesz.
 
-Ha még nem rendelkezik a Bing térképek API vállalati terv, központi telepítése a csatlakoztatott gyári megoldást [www.azureiotsuite.com](http://www.azureiotsuite.com) használatával vagy a `build.ps1` parancsfájl. Majd adja hozzá a Bing térképek API vállalati terv az előfizetés a [hogyan hozható létre a Bing térképek API vállalati fiók?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). A fiókhoz tartozó lekérdezési kulcs kereshető [a Bing térképek API beszerzése a vállalati QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) , és mentse ezt a kulcsot. Navigáljon az Azure portálra, és a kapcsolódó gyári környezetben App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a lekérdezési kulcsot kapott. A beállítások mentéséhez, majd lépjen **áttekintése** , és indítsa újra az App Service.
+Ha még nem rendelkezik a Bing térképek API vállalati terv, központi telepítése a csatlakoztatott gyári megoldást [www.azureiotsolutions.com](http://www.azureiotsolutions.com) használatával vagy a `build.ps1` parancsfájl. Majd adja hozzá a Bing térképek API vállalati terv az előfizetés a [hogyan hozható létre a Bing térképek API vállalati fiók?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). A fiókhoz tartozó lekérdezési kulcs kereshető [a Bing térképek API beszerzése a vállalati QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) , és mentse ezt a kulcsot. Navigáljon az Azure portálra, és a kapcsolódó gyári környezetben App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a lekérdezési kulcsot kapott. A beállítások mentéséhez, majd lépjen **áttekintése** , és indítsa újra az App Service.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozható létre a Bing térképek API vállalati fiók
 
@@ -212,6 +206,6 @@ A telemetriai adatokat küldeni nem OPC EE az eszközök gyári csatlakoztatva:
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A prediktív karbantartási megoldásgyorsító áttekintése](../iot-suite/iot-suite-predictive-overview.md)
+* [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
 * [Csatlakoztatott gyári megoldás gyorsító – áttekintés](iot-accelerators-connected-factory-overview.md)
-* [Az IoT biztonsági másolatot az alapoktól](../iot-suite/securing-iot-ground-up.md)
+* [Az IoT biztonsági másolatot az alapoktól](securing-iot-ground-up.md)

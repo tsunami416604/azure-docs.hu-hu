@@ -4,14 +4,15 @@ description: A gyűjtő készüléket és konfigurálásának áttekintése.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: d0dd310a1f6dff389a4d3dd41dc389b7117272fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32554b2f297c2079374a5edd7739af7320bc1234
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640227"
 ---
 # <a name="collector-appliance"></a>Adatgyűjtő-készülék
 
@@ -35,7 +36,7 @@ A lépéseket követve hozhat létre a gyűjtő ide - [a gyűjtő virtuális gé
 | Összetevő      | Kommunikációs cél   | Szükséges port                            | Ok                                   |
 | -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
 | Gyűjtő      | Azure Migrate szolgáltatás | 443-as TCP                                  | Gyűjtő képes kommunikálni a szolgáltatás, az SSL-port 443-as porton keresztül kell lennie. |
-| Gyűjtő      | vCenter Server        | Alapértelmezett: 443                             | Kell, hogy a gyűjtő képes kommunikálni a vCenter-kiszolgáló. Alapértelmezés szerint csatlakozik a 443-as vCenter. Ha egy másik porton figyel a vCenter, ezt a portot, a gyűjtő kimenő port elérhetőnek kell lennie |
+| Gyűjtő      | vCenter Server        | 443-as alapértelmezett                             | Kell, hogy a gyűjtő képes kommunikálni a vCenter-kiszolgáló. Alapértelmezés szerint csatlakozik a 443-as vCenter. Ha egy másik porton figyel a vCenter, ezt a portot, a gyűjtő kimenő port elérhetőnek kell lennie |
 | Gyűjtő      | RDP|   | 3389-ES TCP | Ahhoz, hogy a gyűjtő géppé RDP tudja |
 
 
@@ -187,37 +188,37 @@ Javasoljuk továbbá az alábbi lépéseket a készülék biztonságos
 
 A gyűjtő a petesejtek ismét letöltése nélkül frissítheti a legújabb verzióra.
 
-1. Töltse le a legújabb [frissítési csomag](https://aka.ms/migrate/col/latestupgrade).
+1. Töltse le a legújabb [frissítési csomag](https://aka.ms/migrate/col/upgrade_9_11) (verzió: 1.0.9.11).
 2. Győződjön meg arról, hogy a letöltött gyorsjavítás biztonságos, nyissa meg a rendszergazdai parancsablakot, és a ZIP-fájl a kivonat létrehozásához a következő parancsot. A generált kivonatoló meg kell felelnie a kettős kereszttel említett szemben az adott verzió:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    (például használati C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
+    (például használati C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
 3. A zip-fájl másolása az Azure adatgyűjtő virtuális gép áttelepítése (adatgyűjtő készülék).
 4. Kattintson a jobb gombbal a zip-fájl, és válassza ki az összes kibontása.
 5. Kattintson a jobb gombbal a Setup.ps1, és válassza a Futtatás a PowerShell segítségével, és kövesse a képernyőn a frissítés telepítéséhez.
 
 ### <a name="list-of-updates"></a>Frissítések listája
 
+#### <a name="upgrade-to-version-10911"></a>Frissítés 1.0.9.11 verzióról
+
+Frissítés értékek kivonatoló [1.0.9.11 csomag](https://aka.ms/migrate/col/upgrade_9_11)
+
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | 0e36129ac5383b204720df7a56b95a60
+SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
+SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
+
 #### <a name="upgrade-to-version-1097"></a>Frissítés 1.0.9.7 verzióról
 
-Frissítés verzió 1.0.9.7 letöltési [csomag](https://aka.ms/migrate/col/upgrade_9_7)
+Frissítés értékek kivonatoló [1.0.9.7 csomag](https://aka.ms/migrate/col/upgrade_9_7)
 
 **Algoritmus** | **Kivonat értéke**
 --- | ---
 MD5 | 01ccd6bc0281f63f2a672952a2a25363
 SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
 SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
-
-#### <a name="upgrade-to-version-1095"></a>Frissítés 1.0.9.5 verzióról
-
-Frissítés verzió 1.0.9.5 letöltési [csomag](https://aka.ms/migrate/col/upgrade_9_5)
-
-**Algoritmus** | **Kivonat értéke**
---- | ---
-MD5 | d969ebf3bdacc3952df0310d8891ffdf
-SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
-SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>További lépések
 

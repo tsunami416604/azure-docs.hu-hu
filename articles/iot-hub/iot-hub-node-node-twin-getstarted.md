@@ -1,24 +1,20 @@
 ---
-title: "Ismerkedés az Azure IoT Hub eszköz twins (csomópont) |} Microsoft Docs"
-description: "Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT SDK for Node.js használatával megvalósítható a szimulált eszköz alkalmazást és egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása."
-services: iot-hub
-documentationcenter: node
+title: Ismerkedés az Azure IoT Hub eszköz twins (csomópont) |} Microsoft Docs
+description: Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT SDK for Node.js használatával megvalósítható a szimulált eszköz alkalmazást és egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: 314c88e4-cce1-441c-b75a-d2e08e39ae7d
+manager: ''
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: df49f054b5eb26c3d68f088bc05f5209cf2ebccf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbb28d7df104887a4056489e9f693ce28ec406df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635100"
 ---
 # <a name="get-started-with-device-twins-node"></a>Ismerkedés az eszköz twins (csomópont)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -192,7 +188,7 @@ Ebben a szakaszban egy Node.js-Konzolalkalmazás, amely kapcsolódik a hub, lét
    
     ![][3]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Fel van véve eszköz metaadatait címkék egy háttér-alkalmazásból, és a szimulált eszköz alkalmazásának megírt az eszköz a két jelentés eszköz kapcsolódási adatok. Megtudta, ezt az információt az SQL-szerű IoT Hub lekérdezési nyelv lekérdezése is.
 
 A következő források segítségével megtudhatja, hogyan:
