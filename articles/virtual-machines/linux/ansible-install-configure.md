@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
 ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c00ebcb771081f8e35c67bf384f5f6822e16f268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652991"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Telepítse és konfigurálja az Azure virtuális gépek kezeléséhez Ansible
 
@@ -149,7 +150,7 @@ Most helyezze át a [létrehozása Azure hitelesítő adatok](#create-azure-cred
 
 Ansible kommunikál az Azure-ban, a felhasználónév és jelszó vagy egy egyszerű szolgáltatást. Egy Azure szolgáltatás egyszerű egy biztonsági azonosító, amely alkalmazások, szolgáltatások és automatizálási eszközökkel, például a Ansible használható. Szabályozza, és adja meg az engedélyeket, hogy milyen műveletek a szolgáltatás egyszerű hajthat végre az Azure-ban. A biztonság növelése érdekében csak a felhasználónév és jelszó megadása keresztül alábbi példa létrehoz egy alapszintű service egyszerű.
 
-Az állomáson, vagy az Azure-felhő rendszerhéj létre szolgáltatás egyszerű [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#create-for-rbac). Ansible szükséges hitelesítő adatok a képernyőre kimeneti:
+Az állomáson, vagy az Azure-felhő rendszerhéj létre szolgáltatás egyszerű [az ad sp létrehozása-az-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Ansible szükséges hitelesítő adatok a képernyőre kimeneti:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -165,7 +166,7 @@ A kimenet a fenti parancsok például a következőképpen történik:
 }
 ```
 
-A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetés azonosítója használatával [az fiók megjelenítése](/cli/azure/account#az_account_show):
+A hitelesítéshez az Azure-ba is be kell szereznie az Azure-előfizetés azonosítója használatával [az fiók megjelenítése](/cli/azure/account#az-account-show):
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

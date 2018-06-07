@@ -4,7 +4,7 @@ description: Útmutató az Azure-ban a Linux virtuális gépeken SAP szoftver k�
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: a8929cfd0a484cdcd1adbd3d2ead4fd36cc49cd3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cb402f51ca20551bf34140322f3f259470a637ac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656397"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver Azure virtuális gépek központi telepítését
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -427,7 +428,7 @@ A varázsló végigvezeti Önt a virtuális gép, minden szükséges erőforrás
     * **Hálózati biztonsági csoport**: további információkért lásd: [hálózati biztonsági csoportokkal hálózati adatforgalom szabályozásához][virtual-networks-nsg].
   * **Bővítmények**: telepítése virtuálisgép-bővítmények központi hozzáadásával. Nem kell hozzáadnia a bővítmények ebben a lépésben. A SAP támogatásához szükséges extensions telepítve később. Című [konfigurálása az Azure fokozott Figyelőbővítmény az SAP] [ deployment-guide-4.5] az útmutatóban.
   * **Magas rendelkezésre állású**: Válasszon ki egy rendelkezésre állási csoportot, vagy adja meg a paraméter egy új rendelkezésre állási készlet létrehozásához. További információkért lásd: [Azure rendelkezésre állási készletek][planning-guide-3.2.3].
-  * **Figyelés**
+  * **Monitorozás**
     * **Rendszerindítási diagnosztika**: kiválaszthatja **letiltása** vonatkozó rendszerindítási diagnosztika.
     * **Vendég operációs rendszer diagnosztika**: kiválaszthatja **letiltása** diagnosztika figyelésre.
 
@@ -558,7 +559,7 @@ A varázsló végigvezeti Önt a virtuális gép, minden szükséges erőforrás
     * **Hálózati biztonsági csoport**: további információkért lásd: [hálózati biztonsági csoportokkal hálózati adatforgalom szabályozásához][virtual-networks-nsg].
   * **Bővítmények**: telepítése virtuálisgép-bővítmények központi hozzáadásával. Nem kell felvenni a bővítményt ebben a lépésben. A SAP támogatásához szükséges extensions telepítve később. Című [konfigurálása az Azure fokozott Figyelőbővítmény az SAP] [ deployment-guide-4.5] az útmutatóban.
   * **Magas rendelkezésre állású**: Válasszon ki egy rendelkezésre állási csoportot, vagy adja meg a paraméter egy új rendelkezésre állási készlet létrehozásához. További információkért lásd: [Azure rendelkezésre állási készletek][planning-guide-3.2.3].
-  * **Figyelés**
+  * **Monitorozás**
     * **Rendszerindítási diagnosztika**: kiválaszthatja **letiltása** vonatkozó rendszerindítási diagnosztika.
     * **Vendég operációs rendszer diagnosztika**: kiválaszthatja **letiltása** diagnosztika figyelésre.
 

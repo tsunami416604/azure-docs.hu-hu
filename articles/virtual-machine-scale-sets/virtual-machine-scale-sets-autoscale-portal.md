@@ -13,18 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 05/29/2018
 ms.author: iainfou
-ms.openlocfilehash: 984b16dae26fb6d9d33ef68ac3e8c8b658e82e08
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c9386f7dd0ba390a5f089be058c7f3edd6e33cf9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652372"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatikus méretezése a virtuálisgép-méretezési beállítása az Azure-portálon
-A méretezési csoport létrehozásakor megadhatja a futtatni kívánt Virtuálisgép-példányok száma. Az alkalmazás igény szerinti változásával automatikusan növeli vagy csökkenti a Virtuálisgép-példányok számát. Automatikus skálázás teszi lehetővé teszi keresletének tartani, vagy az alkalmazás életciklusa során alkalmazás teljesítmény változásait.
+Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
 
-Ez a cikk bemutatja, hogyan automatikus skálázási szabályok létrehozását az Azure portálon, a méretezési csoportban lévő Virtuálisgép-példányok teljesítményének figyeléséhez. Ezek a szabályok automatikus skálázás növelje, vagy csökkentse a metrikák válaszul Virtuálisgép-példányok száma. Ezeket a lépéseket is végre tudja [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md) vagy a [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md).
+Ez a cikk bemutatja, hogyan automatikus skálázási szabályok létrehozását az Azure portálon, a méretezési csoportban lévő Virtuálisgép-példányok teljesítményének figyeléséhez. Ezek a szabályok automatikus skálázás növelje, vagy csökkentse a metrikák válaszul Virtuálisgép-példányok száma. Ezeket a lépéseket is végre tudja [Azure PowerShell](tutorial-autoscale-powershell.md) vagy a [Azure CLI 2.0](tutorial-autoscale-cli.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -32,7 +33,7 @@ Automatikus skálázási szabályok létrehozásához szükséges egy meglévő 
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Hozzon létre egy szabályt, amely automatikusan horizontális felskálázása
-Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép-példány a skála terhelését növeli állítsa be. Ha ez a megnövekedett terhelés egységes, ahelyett, hogy csak egy rövid igény szerinti, konfigurálhatja az automatikus skálázási szabályok a méretezési csoportban lévő Virtuálisgép-példányok számának növeléséhez. Ezek a Virtuálisgép-példányok jönnek létre, és az alkalmazások vannak telepítve, a méretezési hozzákezd terjesztése azokra a terheléselosztó forgalmát. Milyen metrikák figyeléséhez, mint a CPU vagy lemez, mennyi ideig alkalmazásterhelés meg kell felelnie a megadott küszöbértéket, és hány Virtuálisgép-példányok a skála hozzáadása set szabályozhatja.
+Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lévő virtuálisgép-példányok terhelése is nő. Ha a megnövekedett terhelés állandó, nem csak pillanatnyi igény, akkor megadhatja, hogy az automatikus skálázási szabály növelje meg a virtuálisgép-példányok számát a méretezési csoportban. Ezen virtuálisgép-példányok létrehozását és az alkalmazások telepítését követően a méretezési csoport megkezdi a forgalom elosztását közöttük a terheléselosztón keresztül. Ön határozza meg, hogy milyen metrikákat kíván monitorozni – például a processzort vagy a lemezt, meddig kell az alkalmazás terhelésének elérnie egy megadott küszöbértéket, hány virtuálisgép-példányt kell hozzáadni a méretezési csoporthoz.
 
 1. Nyissa meg az Azure portál és select **erőforráscsoportok** a bal oldalon az irányítópult-menüjéből.
 2. Válassza ki az erőforráscsoportot, amely tartalmazza a méretezési csoportban, majd kattintson a méretezési készletben erőforrások közül.
@@ -48,17 +49,17 @@ Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép
     
     | Paraméter              | Magyarázat                                                                                                         | Érték          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Idő összesítése*     | Határozza meg, hogy az összegyűjtött metrikák elemzések céljából összesíti kell-e.                                                | Átlag        |
-    | *Metrika neve*          | A teljesítmény metrika figyelésére és a skála alkalmazni az alábbi műveletek beállítani.                                                   | Százalékos processzorhasználat |
+    | *Idő összesítése*     | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag        |
+    | *Metrika neve*          | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat |
     | *Idő felbontása statisztika* | Határozza meg, hogy minden időfelbontási a gyűjtött metrikák elemzések céljából összesíti kell-e.                             | Átlag        |
-    | *Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                     | Nagyobb mint   |
+    | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb mint   |
     | *Küszöbérték*            | Az automatikus skálázási szabály elindítani egy műveletet kiváltó százalékos.                                                 | 70             |
-    | *Időtartam*             | Az időtartam a metrika és a küszöbértéket az összehasonlítás előtt figyeli.                                   | 10 perc     |
+    | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 10 perc     |
     | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                        | Százalék növelése a következővel: |
-    | *A példányok száma*       | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                            | 20             |
-    | *Cool le (perc)*  | Mennyi ideig várjon a szabály alkalmazza újra, így az automatikus skálázási műveletek érvénybe lépéséhez idő kell. | 5 perc      |
+    | *A példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 20             |
+    | *Cool le (perc)*  | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc      |
 
-    A következő példák azt szemléltetik, ezek a beállítások megfelelő Azure-portálon létrehozott egy szabályt:    
+    A következő példák azt szemléltetik, ezek a beállítások megfelelő Azure-portálon létrehozott egy szabályt:
 
     ![Virtuálisgép-példányok számának növeléséhez automatikus skálázási szabály létrehozása](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
 
@@ -66,7 +67,7 @@ Az alkalmazás igény szerinti egyenes arányban növekszik, ha a Virtuálisgép
 
 
 ## <a name="create-a-rule-to-automatically-scale-in"></a>Hozzon létre egy szabályt, amely az automatikus méretezése
-Egy este vagy hétvégi az alkalmazás igény szerinti csökkenhet. Ha egy meghatározott időtartamra vonatkozóan ez csökkentheti a betöltés egységes, konfigurálhatja az automatikus skálázási szabályok segítségével csökkentheti a méretezési csoportban lévő Virtuálisgép-példányok számát. A skálázási művelet csökkenti a költségeket a méretezési készletben a futtatásakor csak az aktuális igény kielégítésére szükséges példányok futtatásához.
+Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a csökkent terhelés egy adott időtartam alatt állandó, akkor megadhatja, hogy az automatikus skálázási szabály csökkentse a virtuálisgép-példányok számát a méretezési csoportban. A horizontális leskálázási művelet csökkenti a méretezési csoport futtatásának költségeit, mivel csak az aktuális igényt kielégítő számú példányt futtat.
 
 1. Válassza ki a **szabály hozzáadása** újra.
 2. Hozzon létre egy szabályt, amely csökken a Virtuálisgép-példány terjedő skálán állítható be, ha a átlagos CPU-terhelést, majd alá süllyed 30 % 10 perc alatt. A szabály akkor váltja ki, ha a Virtuálisgép-példányok száma 20 %-kal csökken.
@@ -75,10 +76,10 @@ Egy este vagy hétvégi az alkalmazás igény szerinti csökkenhet. Ha egy megha
     
     | Paraméter              | Magyarázat                                                                                                          | Érték          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
-    | *Operátor*             | Hasonlítsa össze a metrikaadatokat szemben a küszöbérték operátor.                                                      | Kisebb mint   |
+    | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb mint   |
     | *Küszöbérték*            | Az automatikus skálázási szabály elindítani egy műveletet kiváltó százalékos.                                                 | 30             |
     | *Művelet*            | Meghatározza, hogy a méretezési fel vagy le, ha a szabály vonatkozik, és milyen növekményű kell méretezni.                         | Százalék csökkentése a következővel: |
-    | *A példányok száma*       | Virtuálisgép-példányok hány százalékát módosítani kell, amikor a szabály gondoskodik.                                             | 20             |
+    | *A példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                             | 20             |
 
 3. A szabály létrehozásához válassza **hozzáadása**
 

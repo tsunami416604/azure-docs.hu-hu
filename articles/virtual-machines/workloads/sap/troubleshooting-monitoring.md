@@ -1,11 +1,11 @@
 ---
-title: "Hibaelhárítás és megfigyelése az Azure (nagy példányok) SAP HANA |} Microsoft Docs"
-description: "Hibaelhárítás, és figyelje az SAP HANA egy Azure (nagy példány)."
+title: Hibaelhárítás és megfigyelése az Azure (nagy példányok) SAP HANA |} Microsoft Docs
+description: Hibaelhárítás, és figyelje az SAP HANA egy Azure (nagy példány).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 41fbeb848d7d97e5ee41a2221b69cc88380dc1e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657196"
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>És figyelheti az SAP HANA (nagy példány) az Azure-on
 
@@ -38,7 +39,7 @@ Mi a teendő, hogy a fent megnevezett szoftverre erőforrás osztályok-e elegen
 
 **Memória-felhasználás:** fontos, hogy a egységen HANA belül, valamint HANA kívül a figyelheti. Belül HANA hogy az adatok nem használ-e HANA lefoglalt memória ahhoz, hogy az SAP szükséges méretezési útmutatást belül maradnak figyelése. Szeretné a nagy példány szintjén, győződjön meg arról, hogy további telepített nem-HANA szoftver nem túl sok memóriát használ, és ezért versenyeznek HANA-memória memória-felhasználás figyelése.
 
-**Hálózati sávszélességet:** az Azure virtuális hálózatot átjáró korlátozott sávszélesség az adatok áthelyezése az Azure VNet, akkor célszerű egy Vnetet, hogy milyen közel vannak a kiválasztott Termékváltozat Azure átjáró keretein belül az összes Azure VMs által fogadott adatok figyelésére. A nagy példány HANA egységen akkor értelme bejövő és kimenő hálózati forgalom figyelését is, és a kötetek adott idő alatt végrehajtott nyomon követéséhez.
+**Hálózati sávszélességet:** az Azure virtuális hálózatot átjáró az adatok áthelyezése az Azure virtuális hálózat sávszélessége korlátozott, ezért hasznos lehet a figyelheti az adatok által fogadott összes az Azure virtuális gépeken belül egy Vnetet, hogy milyen közel a Azure gateway SKU határain, ö ijelölt. A nagy példány HANA egységen akkor értelme bejövő és kimenő hálózati forgalom figyelését is, és a kötetek adott idő alatt végrehajtott nyomon követéséhez.
 
 **Szabad lemezterület:** lemezterület-felhasználást általában növekszik adott idő alatt. Ennek számos oka lehet, de a legtöbb összes: adatmennyiség növekszik, a tranzakciónapló biztonsági mentései, nyomkövetési fájlokat tárolja, és a storage-pillanatfelvételekkel végrehajtása végrehajtását. Ezért fontos, a felhasznált lemezterület felügyeletét és kezelését a HANA nagy példány egységhez társított lemezterület.
 
@@ -71,7 +72,7 @@ Első lépésként a naplófájlokban aktuális SAP HANA riasztások. Az SAP HAN
 
 ![Az SAP HANA Studio, nyissa meg a felügyeleti konzol: riasztások: megjelenítése: az összes riasztás](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
-**PROCESSZOR**
+**CPU**
 
 Küszöbérték helytelen beállítás miatt indított riasztást megoldást, hogy visszaállítása az alapértelmezett érték vagy egyéb ésszerű küszöbértéket.
 
@@ -137,7 +138,7 @@ Használja továbbá a nyílt forráskódú [IPERF](https://iperf.fr/) eszköz (
 
 Tekintse meg a [SAP HANA-hibaelhárítás: hálózati teljesítmény és a kapcsolódási problémái vannak](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) helyen részletes hibaelhárítási lépéseket.
 
-**Tárolás**
+**Storage**
 
 Végfelhasználói szempontból egy alkalmazás (vagy a rendszer egészének) nehézkesen futtatja, nem válaszol, vagy még is úgy tűnik, hogy lefagy, ha problémák i/o-teljesítményét. Az a **kötetek** lapon SAP HANA Studio, a megtekintheti, milyen kötetek minden szolgáltatás által használt, és a kapcsolódó kötetek.
 

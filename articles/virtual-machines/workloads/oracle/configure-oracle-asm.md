@@ -1,13 +1,13 @@
 ---
-title: "Egy Azure Linux virtuális gép Oracle ASM beállítása |} Microsoft Docs"
-description: "Gyorsan karban lehessen Oracle ASM be és az Azure környezetben futna."
+title: Egy Azure Linux virtuális gép Oracle ASM beállítása |} Microsoft Docs
+description: Gyorsan karban lehessen Oracle ASM be és az Azure környezetben futna.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cc75235680eeace5107ef6ac0380e8b7a42974fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656109"
 ---
-# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle címterület-kezelés beállítása az Azure Linux virtuális gépen  
+# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM beállítása Azure Linux virtuális gépen  
 
-Az Azure virtuális gépek adjon meg egy teljes mértékben konfigurálhatók és rugalmas számítási környezet. Ez az oktatóanyag kombinálva, a telepítés és konfigurálás az Oracle automatikus tárolási kezelési (ASM) alapszintű Azure virtuálisgép-telepítést ismertet.  Az alábbiak végrehajtásának módját ismerheti meg:
+Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és rugalmas számítási környezetet nyújtanak. Ez az oktatóanyag kombinálva, a telepítés és konfigurálás az Oracle automatikus tárolási kezelési (ASM) alapszintű Azure virtuálisgép-telepítést ismertet.  Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Hozzon létre, és csatlakozzon az Oracle adatbázis-virtuális gép
@@ -200,7 +201,7 @@ Ebben az oktatóanyagban az alapértelmezett felhasználói van *rács* és alap
    ```
 
 3. Lemez formázása */dev/sdc* a következő parancs futtatásával, majd a kérdések megválaszolásával:
-   - *n*Új partíció
+   - *n* új partíció
    - *p* elsődleges partíció
    - *1* jelölje be az első partíció
    - nyomja le az ENTER `enter` a vonatkozó alapértelmezett első henger

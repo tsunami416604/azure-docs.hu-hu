@@ -1,13 +1,13 @@
 ---
-title: "SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, az Azure-on Windows Server feladatátvételi fürtszolgáltatási és -fájlmegosztást |} Microsoft Docs"
-description: "Azure multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és a fájl SAP ASC/SCS-példányok megosztás"
+title: SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, az Azure-on Windows Server feladatátvételi fürtszolgáltatási és -fájlmegosztást |} Microsoft Docs
+description: Azure multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és a fájl SAP ASC/SCS-példányok megosztás
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3522e7ef0e3d49ce1bd8bed750b239fa384af8b8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 604179ec856d21dce51101fdafa5d51eed08f89f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657213"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -447,7 +448,7 @@ Kövesse a telepítési és konfigurációs lépéseket egy SAP ismertetett mód
 ### <a name="install-dbms-and-sap-application-servers"></a>Telepítse az adatbázis-kezelő és az SAP alkalmazáskiszolgálók
 Telepítse az adatbázis-kezelő és a SAP alkalmazáskiszolgálók ismertetett módon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egy ASC/SCS példányát telepítenie, egy olyan feladatátvevő fürthöz megosztott lemez nélküli][sap-official-ha-file-share-document]: egy magas rendelkezésre ÁLLÁSÚ fájlmegosztás hivatalos SAP irányelvek
 

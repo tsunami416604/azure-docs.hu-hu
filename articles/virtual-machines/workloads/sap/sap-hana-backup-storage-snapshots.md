@@ -1,11 +1,11 @@
 ---
-title: "A storage-pillanatfelvételekkel alapján SAP HANA Azure biztonsági mentés |} Microsoft Docs"
-description: "Két fő biztonsági mentési lehetőség SAP Hana az Azure virtuális gépeken, ez a cikk ismerteti a storage-pillanatfelvételekkel alapján SAP HANA biztonsági mentése"
+title: A storage-pillanatfelvételekkel alapján SAP HANA Azure biztonsági mentés |} Microsoft Docs
+description: Két fő biztonsági mentési lehetőség SAP Hana az Azure virtuális gépeken, ez a cikk ismerteti a storage-pillanatfelvételekkel alapján SAP HANA biztonsági mentése
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -13,11 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.openlocfilehash: f332b8ac091b75a23489ac27f15ad1fd10d24ec6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 819888800b9663f9b920fbaf11b30ad28287a0b5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658723"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Tárolási pillanatképeken alapuló biztonsági mentés SAP HANA-hoz
 
@@ -164,7 +165,7 @@ Csak egy Azure virtuális Gépre, az első virtuális gép új egyedi azonosít�
 
 Ha sikerült a blob pillanatképek előtt állítsa le a SAP HANA, az eljárás kevésbé összetett lesz. Ebben az esetben egy sikerült hagyja ki a HANA pillanatkép és, ha nincs más zajlik a rendszer is hagyhatja a fájl rendszer rögzíteni. A képbe hozzáadott összetettsége származik, közben minden online pillanatképek ehhez szükség esetén. Lásd: _SAP HANA adatkonzisztencia véve a storage-pillanatfelvételekkel_ a kapcsolódó cikkben [biztonsági útmutató SAP Hana Azure virtuális gépeken](sap-hana-backup-guide.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Biztonsági mentési útmutató SAP Hana Azure virtuális gépeken](sap-hana-backup-guide.md) áttekintése és bevezető információkat biztosít.
 * [SAP HANA biztonsági másolat alapján fájlszintű](sap-hana-backup-file-level.md) tartalmazza a fájl alapú biztonsági mentési beállítás.
 * Magas rendelkezésre állás és az Azure (nagy példány) az SAP HANA vész-helyreállítási terv létrehozásához, lásd: [SAP HANA (nagy példányok) magas rendelkezésre állási és vészhelyreállítási helyreállítási Azure](hana-overview-high-availability-disaster-recovery.md).

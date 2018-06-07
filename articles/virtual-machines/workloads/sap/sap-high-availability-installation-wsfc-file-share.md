@@ -1,13 +1,13 @@
 ---
-title: "SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok az Azure-on |} Microsoft Docs"
-description: "SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok"
+title: SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok az Azure-on |} Microsoft Docs
+description: SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc957ece0250d233db9cec4f1fdd8b063c13a136
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658655"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állással telepített Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok az Azure-on
 
@@ -88,7 +89,7 @@ ms.lasthandoff: 11/17/2017
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -236,12 +237,12 @@ SAP ASC/SCS példánya telepíthető *mindkét* a ASC/SCS fürt csomópontjait. 
 
 A példány, a SAP SWPM telepítési eszköz telepítéséhez Ugrás:
 
-**\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP**(vagy **Java**) > **rendszer elosztott** > **ASC/SCS példány**
+**\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **rendszer elosztott** > **ASC/SCS példány**
 
 > [!IMPORTANT]
 > A fájlmegosztás forgatókönyvet az SAP SWPM telepítési eszköz által nem támogatott. Ön *nem használható* a következő telepítési elérési út:
 >
-> **\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP**(vagy **Java**) > **magas rendelkezésre állású rendszer** >...
+> **\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású rendszer** >...
 >
 
 ### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>Távolítsa el a SAPMNT és SAPLOC fájlmegosztás létrehozása
@@ -390,7 +391,7 @@ Az új SAP ASC/SCS virtuális állomás nevét, és globális állomásnév SAP,
 ### <a name="update-sap-default-profile"></a>SAP alapértelmezett profil frissítése
 
 
-| Paraméter neve | Paraméterérték |
+| Paraméter neve | Paraméter értéke |
 | --- | --- |
 | SAPGLOBALHOST | **sapglobal** |
 | rdisp/mshost | **PR1-ASC** |
@@ -398,7 +399,7 @@ Az új SAP ASC/SCS virtuális állomás nevét, és globális állomásnév SAP,
 
 ### <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASC/SCS példány profil frissítése
 
-| Paraméter neve | Paraméterérték |
+| Paraméter neve | Paraméter értéke |
 | --- | --- |
 | SAPGLOBALHOST | **sapglobal** |
 | DIR_PROFILE | \\\sapglobal\sapmnt\PR1\SYS\profile |
@@ -578,7 +579,7 @@ Az SAP rendszer telepítésének véglegesítéséhez telepítése:
 * Egy elsődleges SAP-alkalmazáskiszolgáló.
 * További SAP alkalmazáskiszolgáló.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Egy ASC/SCS példányát telepítenie, a megosztott lemez - magas rendelkezésre állású fájlmegosztás hivatalos SAP irányelvek a feladatátvevő fürtben][sap-official-ha-file-share-document]
 

@@ -4,7 +4,7 @@ description: Frissített listáját a jelen konfigurációkat és az Azure platf
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: 1038f0c8a967c05ebf07849619268f22b1eb0c4b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: f2d342558e83c54e101e0ff9128611da9bec1e77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656958"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-tanúsítványokról és a Microsoft Azure-on futó konfigurációk
 
@@ -54,7 +55,7 @@ Hivatkozások:
 | --- | --- | --- | --- |
 | SAP Business Suite | A Windows, a SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, az Oracle (Windows, és csak az Oracle Linux), a DB2, SAP ASE |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
 | SAP Business All-in-One | A Windows, a SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, az Oracle (Windows, és csak az Oracle Linux), a DB2, SAP ASE |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
-| SAP BusinessObjects BI | Windows |N.A. |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
+| SAP BusinessObjects BI | Windows |– |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
 | SAP NetWeaver | A Windows, a SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, az Oracle (Windows, és csak az Oracle Linux), a DB2, SAP ASE |A A11, a D14, a DS14, a DS15_v2, a GS5, a D64s_v3, a E64s_v3, hogy M128ms M64s E2s_v3 D2s_v3 GS1 DS11_v2 DS11 D11 a5 csomag |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Egyéb Azure támogatott SAP munkaterhelés

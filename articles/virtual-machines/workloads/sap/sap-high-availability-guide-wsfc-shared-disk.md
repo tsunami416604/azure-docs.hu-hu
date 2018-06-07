@@ -1,13 +1,13 @@
 ---
-title: "SAP ASC/SCS példány fürtön egy Windows feladatátvevő fürt fürt megosztott lemezt használ az Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan SAP ASC/SCS példány egy Windows feladatátvevő fürtre a fürt egy fürt megosztott lemez."
+title: SAP ASC/SCS példány fürtön egy Windows feladatátvevő fürt fürt megosztott lemezt használ az Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan SAP ASC/SCS példány egy Windows feladatátvevő fürtre a fürt egy fürt megosztott lemez.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: f6fb85f8-c77a-4af1-bde8-1de7e4425d2e
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9eec2d28b436b97cbdaaf4e0e5f154a6ef15fe8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 69071ef211e6787aa7bbae121cc4d55ccf2a6ef6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657754"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -71,7 +72,7 @@ ms.lasthandoff: 11/14/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -273,7 +274,7 @@ _**5. ábra:** Windows feladatátvételi fürtszolgáltatás konfigurálása az 
 > Nincs szükség a megosztott lemez néhány DBMS termékekkel, például az SQL Server magas rendelkezésre állásra. Az SQL Server AlwaysOn adatbázis-kezelő adatainak és naplókönyvtárainak fájlokat replikálja a helyi lemez egy másik csomópont a helyi lemez egy fürtcsomópont. A Windows-fürt konfigurációs ebben az esetben egy megosztott lemez nem szükséges.
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure-infrastruktúra előkészítése az SAP magas rendelkezésre ÁLLÁSÚ egy Windows feladatátvevő fürt és a megosztott lemez egy SAP ASC/SCS példány használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
 

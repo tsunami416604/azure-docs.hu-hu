@@ -5,16 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/03/2018
+ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34677359"
 ---
-**Utolsó dokumentálja a frissítés**:. április 3, 3:00 ESTE.
+**Utolsó dokumentálja a frissítés**: 21 előfordulhat, hogy 2018 3:00 ESTE.
 
 A legutóbbi közzétételének egy [CPU biztonsági rések új osztály](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) néven ismert spekulatív végrehajtási ügyféloldali csatorna támadások, így további egyértelműség kérő ügyfelek kérdéseket.  
 
@@ -23,6 +24,8 @@ A Microsoft a felhőszolgáltatás megoldást alkalmazva van. Az infrastruktúra
 Emellett Azure használatát bővíti [megőrzi az karbantartási memória](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) amikor csak lehetséges, a virtuális Gépet, miközben a rendszer frissíti a gazdagép legfeljebb 30 másodpercig vagy a virtuális gép felfüggesztése kerül egy már frissített gazdagépet.  Megőrzi az karbantartási további memória minimalizálja ügyfél, és nem kell az újraindítások.  Azure felhasznál ezeket a módszereket, rendszerszintű frissítések a gazdagép meghozásakor.
 
 > [!NOTE] 
+2018. május 21. Google projekt nulla és a Microsoft bejelentette spekulatív ügyféloldali csatorna biztonsági spekulatív tároló áthidaló néven új alosztálya. A mélység azok mérséklési további védelmet a Microsoft felhőalapú infrastruktúra, amely közvetlenül a spekulatív végrehajtási réseinek között van telepítve. További információ érhető el itt: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
+>
 > Késedelmes. február 2018 Intel Corporation közzétett frissített [mikrokód változat útmutatást](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) azok mikrokód kiadások, amely stabilitást és nyilvánosságralegutóbbibiztonságirésekelleniállapotának[Google projekt nulla](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Az Azure-beli függeszthetők a megoldást [2018. január 3](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) Intel mikrokód frissítés nem érinti. Microsoft erős megoldást már vezetnek be Azure-ügyfél más Azure virtuális gépek elleni védelméhez.  
 >
 > Intel mikrokód címek variant 2 színkép ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) vagy fiókirodai cél injektálási), amely csak akkor alkalmazható futtató megosztott vagy nem megbízható munkaterhelések belül a virtuális gépek Azure-on lánctámadások elleni védelem érdekében. A mérnökök teszteli a stabilitás minimalizálása érdekében a mikrokód, mielőtt elérhetővé tétele az Azure-ügyfél számára a részeinek teljesítményére.  Kevés ügyfelet a virtuális gépeken nem megbízható alkalmazásokat és szolgáltatásokat futtathatnak, mivel a legtöbb ügyfél nem kell ahhoz, hogy ez a funkció egyszer kiadott. 
@@ -42,13 +45,13 @@ Az a következő ajánlatok az alábbiakban az operációs rendszer frissítés�
 
 <table>
 <tr>
-<th>Az ajánlat</th> <th>Javasolt művelet </th>
+<th>Az ajánlat</th> <th>Ajánlott művelet </th>
 </tr>
 <tr>
 <td>Azure Cloud Services </td>  <td>Automatikus frissítés engedélyezéséhez, vagy ellenőrizni kell, hogy a legújabb vendég operációs rendszer.</td>
 </tr>
 <tr>
-<td>Az Azure Linux virtuális gépek</td> <td>Frissítések telepítése az operációs rendszer szolgáltatótól, ha elérhető. </td>
+<td>Azure Linux Virtual Machines</td> <td>Frissítések telepítése az operációs rendszer szolgáltatótól, ha elérhető. </td>
 </tr>
 <tr>
 <td>A Windows Azure virtuális gépek </td> <td>Győződjön meg arról, hogy egy támogatott víruskereső alkalmazást futtatja, az operációs rendszer frissítéseinek telepítése előtt. Lépjen kapcsolatba a víruskereső szoftver gyártójával kompatibilitási információt.<p> Telepítse a [január a biztonság összegzése](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </p></td>

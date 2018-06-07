@@ -1,6 +1,6 @@
 | Erőforrás | Cél |
 |----------|---------------|
-| Egy blob tároló maximális mérete | 500 TiB |
+| Egy blob tároló maximális mérete | Ugyanaz, mint a maximális tárolókapacitás fiók |
 | Legfeljebb blokkokat a blokkblob vagy hozzáfűző blob | 50 000 blokkot |
 | A blokkblob egy blokkja maximális mérete | 100 MiB |
 | A blokkblob maximális mérete | 50 000 x 100 MiB (KB. 4.75 TiB) |

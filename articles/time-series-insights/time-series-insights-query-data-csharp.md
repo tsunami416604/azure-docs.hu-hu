@@ -1,22 +1,22 @@
 ---
 title: Adatait kéri le egy C#-kódban használó Azure idő adatsorozat Insights környezetben |} Microsoft Docs
 description: Ez a cikk ismerteti a adatait kéri le egy Azure idő adatsorozat Insights környezet által a C# (C-éles) .NET nyelven írt egyéni alkalmazás kódolása.
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: ankryach
 ms.author: ankryach
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 2cbdf4a5c7272e88430b1db7b853f8b6d441c893
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9eb11c4e5f0fcdb8429fe2d65e08ccb507c12c3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653756"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Az Azure idő adatsorozat Insights környezet használatával C# az adatait
 

@@ -5,25 +5,25 @@ services: storage,event-grid
 keywords: ''
 author: david-stanford
 ms.author: dastanfo
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: b6764ffa0e7cfbc888f11c22af855d48d8160372
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650502"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Útvonal Blob storage-események egy egyéni webkiszolgáló-végponthoz, a PowerShell használatával
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben előfizetni a Blob storage-események, eseményindító egy eseményt, az Azure PowerShell használatával, és az eredmény. 
 
-Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek reagálnak az eseményre, például egy webhooknak vagy egy Azure-függvénynek. Ebben a cikkben bemutatott példában leegyszerűsítése események küldése egy URL-címet, az üzenetek csupán gyűjti. Az URL-címet a [Hookbin](https://hookbin.com/) külső eszközével fogjuk létrehozni.
+Általában olyan végponttal, amely az eseményadatok feldolgozza, és műveleteket hajtja végre küldött események. Ez a cikk leegyszerűsítése az események küldése egy webalkalmazásba, amely összegyűjti és az üzeneteket jelenít meg.
 
-> [!NOTE]
-> **Hookbin** nem célja a magas teljesítmény-használatról. Az eszköz jelen használata kizárólag bemutató célt szolgál. Ha egyszerre több eseményt továbbít, lehetséges, hogy az eszközben nem fog megjelenni az összes esemény. Emellett a következőket kell figyelembe venni, hogy **Hookbin** lekérdezi [különleges kezelést](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint) Azure esemény rács által. Tesztelési megkönnyítéséhez esemény rács események nem küld anélkül, hogy az előfizetés érvényesítése kérelmek helyes választ (amely történne [egyéb](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details)).
+Ha végzett, megjelenik az, hogy az eseményadat a webes alkalmazás el lett küldve.
 
-A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
+![Eredmények megtekintése](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
 ## <a name="setup"></a>Beállítás
 
@@ -82,23 +82,41 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Az eseményre reagáló kód írása helyett egy olyan végpontot hozzunk létre, amely gyűjti az üzeneteket, hogy meg tudja őket tekinteni. A Hookbin egy külső eszköz, amely lehetővé teszi egy végpont létrehozását és a neki küldött kérések megtekintését. Nyissa meg a [Hookbin](https://hookbin.com/) eszközt, és kattintson a **Create New Endpoint** (Új végpont létrehozása) elemre. Másolja a bin URL-címet, és cserélje le `<bin URL>` a következő parancsfájlban.
+A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Általában a végpont eseményadatok alapján műveleteket hajtja végre. A gyors üzembe helyezés leegyszerűsítése telepít egy [előre elkészített webalkalmazás](https://github.com/dbarkol/azure-event-grid-viewer) , amely az esemény üzeneteket jelenít meg. A telepített megoldás tartalmaz az App Service-csomag, az App Service web app és forráskód a Githubról.
+
+Cserélje le `<your-site-name>` a webalkalmazás egyedi névvel. A webalkalmazás nevének egyedinek kell lennie, mert része a DNS-bejegyzés.
 
 ```powershell
-$binEndPoint = "<bin URL>"
+$sitename="<your-site-name>"
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $resourceGroup `
+  -TemplateUri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" `
+  -siteName $sitename `
+  -hostingPlanName viewerhost
 ```
+
+A telepítés néhány percet is igénybe vehet. A telepítés sikeres befejezése, után megtekintheti a győződjön meg arról, hogy a webalkalmazás fut-e. A webböngésző keresse meg: `https://<your-site-name>.azurewebsites.net`
+
+Meg kell jelennie a hely nem aktuálisan megjelenő üzeneteket.
 
 ## <a name="subscribe-to-your-storage-account"></a>A storage-fiók előfizetés
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a tárfiókot hozott létre, és az URL-cím továbbítja a Hookbin és a végpontnak a eseményértesítés számítógépcsoportra fizetett elő. 
+A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni. A következő példa a tárfiókot hozott létre, és adja át az URL-címet a webes alkalmazás és a végpontnak a eseményértesítés számítógépcsoportra fizetett elő. A webalkalmazás a végpontot tartalmaznia kell a utótag `/api/updates/`.
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
+$endpoint="https://$sitename.azurewebsites.net/api/updates"
+
 New-AzureRmEventGridSubscription `
   -EventSubscriptionName gridBlobQuickStart `
-  -Endpoint $binEndPoint `
+  -Endpoint $endpoint `
   -ResourceId $storageId
 ```
+
+A webalkalmazás ismét megtekintheti, és figyelje meg, hogy egy előfizetés érvényesítési esemény el lett küldve azt. Válassza ki a szem ikonra, bontsa ki az eseményadatok. Esemény rács küld az érvényesítési eseményt, így a végpont ellenőrizheti, hogy azt kéri a eseményadatok. A webalkalmazás az előfizetés érvényesítése kódot tartalmazza.
+
+![Előfizetés eseményének megtekintése](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Esemény kiváltása a Blob Storage-ból
 
@@ -113,7 +131,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Lépjen a végpont korábban létrehozott URL-címére, vagy kattintson a megnyitott böngésző frissítés gombjára. Megjelenik az imént elküldött esemény. 
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg az imént a telefonjára küldött esemény webalkalmazás megtekintése.
 
 ```json
 [{

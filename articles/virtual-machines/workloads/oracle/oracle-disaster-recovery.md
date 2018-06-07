@@ -1,13 +1,13 @@
 ---
-title: "Az Oracle vész-helyreállítási forgatókönyv az Azure környezetben áttekintése |} Microsoft Docs"
-description: "Oracle Database 12c adatbázis az Azure környezetben vészhelyreállítás"
+title: Az Oracle vész-helyreállítási forgatókönyv az Azure környezetben áttekintése |} Microsoft Docs
+description: Oracle Database 12c adatbázis az Azure környezetben vészhelyreállítás
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/2/2017
 ms.author: rclaus
-ms.openlocfilehash: aede44d964994bd2ef9b46a133b1f1ee303ef309
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb319c4ba9bbfba584803b35a0db0763fcf97b86
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657861"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Oracle Database 12c adatbázis Azure környezetben vészhelyreállítás
 
@@ -35,7 +36,7 @@ ms.lasthandoff: 12/08/2017
 
 Az ügyfél rendelkezik egy Oracle adatbázis-állítsa be az elsődleges helyen. A vész-Helyreállítási hely van egy másik régióban. Az ügyfél Oracle Data Guard használja a helyek közötti gyors helyreállítás. Az elsődleges hely is rendelkezik, egy másodlagos adatbázis jelentéskészítéshez és egyéb felhasználásra. 
 
-### <a name="topology"></a>topológia
+### <a name="topology"></a>Topológia
 
 Ez az Azure beállítása összefoglalása:
 
@@ -61,7 +62,7 @@ Kétféleképpen a telepítés.
 
 Közvetlen kapcsolatok nem ajánlott, mert a TCP-portok a külvilág szolgáltatnak.
 
-#### <a name="topology"></a>topológia
+#### <a name="topology"></a>Topológia
 
 Az alábbiakban olvashat az Azure beállítása összefoglalása:
 
@@ -80,7 +81,7 @@ Az alábbiakban olvashat az Azure beállítása összefoglalása:
 ### <a name="approach-2-site-to-site-vpn"></a>2. módszer: Telephelyek közötti VPN
 Telephelyek közötti VPN jobb megközelítés. VPN-en beállításával kapcsolatos további információkért lásd: [virtuális hálózat létrehozása a parancssori felület használatával telephelyek közötti VPN-kapcsolattal rendelkező](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
-#### <a name="topology"></a>topológia
+#### <a name="topology"></a>Topológia
 
 Az alábbiakban olvashat az Azure beállítása összefoglalása:
 
@@ -103,7 +104,7 @@ Az alábbiakban olvashat az Azure beállítása összefoglalása:
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Hozzon létre magas rendelkezésre állású virtuális gépek](../../linux/create-cli-complete.md)
 - [Virtuális gép telepítése az Azure parancssori felület minták felfedezése](../../linux/cli-samples.md)

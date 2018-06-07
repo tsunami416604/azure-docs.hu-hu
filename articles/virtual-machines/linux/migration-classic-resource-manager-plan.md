@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 586a5590c88ef4124543c47389f62eaa864d2d18
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19dd6a693daf0b54c7df448f21bdb098d9bbdcac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653501"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrásokra a klasszikus Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager nagy mennyiségű elképesztő funkciókat kínál, miközben nagyon fontos tervezze meg az áttelepítési út zökkenőmentesek sure művelet. Tervezési idő költségeik biztosítja, hogy nem tapasztal, az áttelepítési tevékenységek végrehajtása során. 
 
 > [!NOTE] 
-> A következő volt fokozottan által közzétett útmutatásokat az az Azure felhasználói Ügyféltanácsadói csapatának és a felhőalapú megoldás fejlesztők használata az ügyfelek áttelepítése nagy enviornments. Ilyen Ez a dokumentum továbbra is frissülnek, sikeres új mintáinak merülnek fel, ezért ellenőrizze újból az idő, ha van-e új javaslatokkal időre.
+> A következő volt fokozottan által közzétett útmutatásokat az az Azure felhasználói Ügyféltanácsadói csapatának és a felhőalapú megoldás fejlesztők használata az ügyfelek áttelepítése nagyméretű környezetekben. Ilyen Ez a dokumentum továbbra is frissülnek, sikeres új mintáinak merülnek fel, ezért ellenőrizze újból az idő, ha van-e új javaslatokkal időre.
 
 Az áttelepítési út négy általános fázisból áll:
 
@@ -54,7 +55,7 @@ Attól függően, hogy a műszaki követelményeiben méret, földrajzi és üze
 Sikeres ügyfél terveket, ahol a fenti kérdések tárgyalt, dokumentált és szabályozott részletesen.  Győződjön meg arról, az áttelepítési terveket körben közlik szponzorok és az érdekelt felekkel.  Az áttelepítési beállítások; ismereteket ellátására saját kezűleg egész megadása az alábbi áttelepítési dokumentumban ajánlott.
 
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager platform által támogatott áttelepítésének áttekintése](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Műszaki részletes bemutatója a platform által támogatott áttelepítési a klasszikus Azure Resource Managerbe](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [IaaS-erőforrások áttelepítése a klasszikus Azure Resource Manager PowerShell használatával](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [IaaS-erőforrások áttelepítése a klasszikus Azure Resource Manager parancssori felület használatával](migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -71,7 +72,7 @@ Sikeres ügyfél terveket, ahol a fenti kérdések tárgyalt, dokumentált és s
 
 ## <a name="lab-test"></a>Tesztelési labor 
 
-**A felhasználásához replikálja, és hajtsa végre a test-áttelepítés**
+**A környezet replikálja, és hajtsa végre a test-áttelepítés**
   > [!NOTE]
   > A meglévő környezet replikációs végrehajtása hivatalosan nem támogatott Microsoft Support közösségi hozzájárultak eszköz használatával. Emiatt egy **választható** a legjobb módszer problémák a termelési környezetben érintése nélkül, de a lépést. Ha egy közösségi hozzájárult eszközzel lehetőség nem érhető el, majd olvassa el az alábbi ellenőrzése/Prepare/megszakítási próbafuttatást ajánlás.
   >
@@ -79,7 +80,7 @@ Sikeres ügyfél terveket, ahol a fenti kérdések tárgyalt, dokumentált és s
   A legjobb módszer a zökkenőmentes áttelepítés végrehajtása egy laboratóriumi tesztelése a pontos forgatókönyv (számítási, hálózati és tárolási). Ezzel biztosítja:
 
   - Egy teljesen különálló labor- vagy egy meglévő nem éles környezetben történő teszteléséhez. Azt javasoljuk, hogy egy teljesen különálló tesztkörnyezetet, mely ismételten telepíthető át, és a korábbi módosítható.  A valós előfizetések metaadatok gyűjtése/hidrát parancsfájlok alább láthatók.
-  - Célszerű a labor létrehozása a különálló előfizetést. A hiba oka, hogy a labor fog kell bontva ismételten, és rendelkezik egy különálló, elkülönített előfizetés csökkenti az esélye, hogy valami valós kap véletlenül törölt.
+  - Célszerű a labor létrehozása a különálló előfizetést. Az oka, hogy a labor fog kell bontva ismételten, és hogy egy különálló, elkülönített előfizetés csökkenti az esélye, hogy valami valós véletlenül törlődni fog.
 
   Ehhez a AsmMetadataParser eszközzel. [További tudnivalók az eszköz itt](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
@@ -110,7 +111,7 @@ A következő volt a nagyobb áttelepítések számos felfedezett problémákat.
 - **Az Azure erőforrás-kezelő kvótái** -Azure-régiók Azure Resource Manager és klasszikus külön kvóták/korlátokkal rendelkeznek. Annak ellenére, hogy az áttelepítési forgatókönyvben új hardver nem feldolgozottként *(jelenleg éppen áttelepíteni a forráskörnyezetból meglévő virtuális gépek a klasszikus Azure Resource Manager)*, Azure erőforrás-kezelő kvótái továbbra is szeretné helyen elegendő kapacitással rendelkező az áttelepítés megkezdése előtt kell. Az alábbiakban is láttuk jelentős korlátokat problémákhoz.  Emelje meg a kvóta támogatási jegy megnyitása. 
 
     > [!NOTE]
-    > Ezek a korlátozások kell áttelepíteni az aktuális felhasználásához ugyanabban a régióban kell emelni.
+    > Ezek a korlátozások kell áttelepíteni a jelenlegi környezet ugyanabban a régióban kell emelni.
     >
 
     - Hálózati illesztők
@@ -205,7 +206,7 @@ Ne feledje, hogy miért használatba a klasszikus – Azure Resource Manager át
 ## <a name="next-steps"></a>További lépések
 
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager platform által támogatott áttelepítésének áttekintése](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Műszaki részletes bemutatója a platform által támogatott áttelepítési a klasszikus Azure Resource Managerbe](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [IaaS-erőforrások áttelepítése a klasszikus Azure Resource Manager PowerShell használatával](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager áttelepítésének védelmével kapcsolatos közösségi eszközök](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,21 +1,21 @@
 ---
-title: "A referencia-adatkészlet felvétele az Azure idő adatsorozat Insights környezet"
-description: "Ez a cikk ismerteti a Azure idő adatsorozat Insights környezetben lévő adatok révén hivatkozás adatkészlet hozzáadása."
-services: time-series-insights
+title: A referencia-adatkészlet felvétele az Azure idő adatsorozat Insights környezet
+description: Ez a cikk ismerteti a Azure idő adatsorozat Insights környezetben lévő adatok révén hivatkozás adatkészlet hozzáadása.
 ms.service: time-series-insights
+services: time-series-insights
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: e0d11f253d5aa143ff636c4dc8dff7665a80360e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7da2393bb5114de20747581e366a8f416c9ff9a4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653637"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Létrehozhat egy hivatkozási adatokat a idő adatsorozat Insights környezet az Azure portál használatával
 
@@ -63,7 +63,7 @@ Referenciaadatok visszamenőleges nincs tartományhoz csatlakoztatva. Ez azt jel
 
    ![Referenciaadatok hozzáadása](media/add-reference-data-set/parse_data.png)
 
-9. Minden oszlopban tekintheti meg az adattípust, feltételezve, hogy tekintse át, és szükség esetén változtassa meg az adattípust.  Válassza ki az adatok típusa szimbólum az oszlopfejléc:  **#**  dupla (numerikus adatokat), a **T |} F** a logikai érték, vagy **Abc** karakterláncot kell megadnia.
+9. Minden oszlopban tekintheti meg az adattípust, feltételezve, hogy tekintse át, és szükség esetén változtassa meg az adattípust.  Válassza ki az adatok típusa szimbólum az oszlopfejléc: **#** dupla (numerikus adatokat), a **T |} F** a logikai érték, vagy **Abc** karakterláncot kell megadnia.
 
    ![Válassza ki az oszlopfejlécek adattípusokat.](media/add-reference-data-set/choose_datatypes.png)
 
@@ -81,7 +81,7 @@ Referenciaadatok visszamenőleges nincs tartományhoz csatlakoztatva. Ez azt jel
 
    ![Válassza ki a kulcs oszlopoknak.](media/add-reference-data-set/set_primary_key.png)
 
-   Bejelölheti a  **+**  gombra kattintva adja hozzá egy másodlagos kulcs oszlop egy összetett elsődleges kulcs. Ha a kijelölés visszavonása van szüksége, az üres érték közül választhat a legördülő lista távolítsa el a másodlagos kulcsot.
+   Bejelölheti a **+** gombra kattintva adja hozzá egy másodlagos kulcs oszlop egy összetett elsődleges kulcs. Ha a kijelölés visszavonása van szüksége, az üres érték közül választhat a legördülő lista távolítsa el a másodlagos kulcsot.
 
 15.  Töltse fel az adatokat, válassza ki a **sor feltöltése** gombra.
 

@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8173a5abbbeea38bc831b7cc76898714cd4dd4d4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dc54c232b972c25e6b21dbbb8a91a0218f17d584
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670207"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Virtuális gép befolyásolja az Azure-ban vezethet három forgatókönyv: a hardver nem tervezett karbantartás váratlan állásidőt és tervezett karbantartást.
@@ -20,7 +21,7 @@ Virtuális gép befolyásolja az Azure-ban vezethet három forgatókönyv: a har
 * **Nem tervezett hardverkarbantartási esemény** akkor fordul elő, ha az Azure platform előre jelzi, hogy egy adott fizikai kiszolgálóhoz tartozó hardver vagy bármely platformösszetevő meg fog hibásodni. Amikor a platform előre jelez egy hibát, kiad egy nem tervezett hardverkarbantartási eseményt az adott hardveren futtatott virtuális gépekre gyakorolt hatás csökkentése érdekében. Az Azure az Élő áttelepítés technológiával migrálja a Virtual Machines gépeket a hibás hardverről egy megfelelő állapotú fizikai gépre. Az Élő áttelepítés a virtuális gépet megőrző művelet, amely csak minimális időre állítja le a virtuális gépet. A memória tartalmát, a megnyitott fájlokat és a hálózati kapcsolatokat mind megőrzi, azonban a teljesítmény az esemény előtt és/vagy után csökkenhet. Ha az Élő áttelepítés nem használható, a virtuális gépen váratlan állásidő következik be az alábbiak szerint.
 
 
-* Ritka esetekben **váratlan állásidő** következik be, ha a virtuális gép mögöttes hardveres vagy fizikai infrastruktúrája valamiképp meghibásodik. Ez lehet helyi hálózati hiba, a helyi lemezek meghibásodása, vagy egyéb állványszintű meghibásodások. Ilyen hiba lép fel, ha az Azure platformon automatikusan áttelepíti (heals) a virtuális gép a megfelelő fizikai gépek ugyanabban az adatközpontban. A javítási folyamat során a virtuális gép állásideje következik be (újraindítás), valamint bizonyos esetekben elveszhet az ideiglenes meghajtó. A csatlakoztatott rendszer- és adatmeghajtók minden esetben megmaradnak. 
+* **Egy nem várt leállás** akkor, ha a hardver- vagy a fizikai infrastruktúra, a virtuális gép váratlanul meghibásodik. Ilyen lehet például a helyi hálózati hibák, helyi lemezhiba vagy más állvány szintű hibák. Ha észlel, az Azure platformon automatikusan áttelepíti (heals) a virtuális gép a megfelelő fizikai gépek ugyanabban az adatközpontban. A javítási folyamat során a virtuális gép állásideje következik be (újraindítás), valamint bizonyos esetekben elveszhet az ideiglenes meghajtó. A csatlakoztatott rendszer- és adatmeghajtók minden esetben megmaradnak. 
 
   Virtuális gépek is tapasztalhat, áramkimaradás vagy az egész adatközpont, vagy akár egy teljes terület érintő vész valószínűtlen esetben az állásidő. Ezek a forgatókönyvek az Azure biztosít a védelmi beállításokat, beleértve a [rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) és [régiók párosítva](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 

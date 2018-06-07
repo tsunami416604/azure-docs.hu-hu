@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 6f2f5eae8a4512595457d92d17832cf462b4bec4
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ebe1f67c7c662af6d9e1888580149834a007200
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657471"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Egy általánosított virtuális merevlemez feltöltéséhez, és beállítsa, hogy létrehozott egy új virtuális gépet az Azure-ban
 
@@ -36,7 +37,7 @@ Ha egy minta parancsfájlt használni kívánt, lásd: [mintaparancsfájl virtu�
 
 ## <a name="generalize-the-source-vm-using-sysprep"></a>A virtuális gép – forrásként generalize Sysprep használatával
 
-A Sysprep eltávolítja a személyes adatok, többek között, és előkészíti a számítógépet, hogy képként használni. A Sysprep kapcsolatos részletekért lásd: [hogyan használja a Sysprep: Bevezetés](http://technet.microsoft.com/library/bb457073.aspx).
+A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. A Sysprep kapcsolatos részletekért lásd: a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -46,13 +47,13 @@ Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szer
 > 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gép.
-2. Nyissa meg a parancssort rendszergazdaként. Lépjen be **%windir%\system32\sysprep**, majd futtassa a `sysprep.exe`.
-3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg a rendszer Out-of-Box élmény (OOBE)**, és győződjön meg arról, hogy a **Generalize** jelölőnégyzet be van jelölve.
+2. Nyissa meg a parancsablakot rendszergazdaként. Lépjen be **%windir%\system32\sysprep**, majd futtassa a `sysprep.exe`.
+3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **leállítási beállítások**, jelölje be **leállítási**.
 5. Kattintson az **OK** gombra.
    
     ![Indítsa el a Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. A Sysprep befejezését követően a virtuális gép leáll. Ne indítsa újra a virtuális Gépet.
+6. A Sysprep a feladat befejezése után leállítja a virtuális gépet. Ne indítsa újra a virtuális Gépet.
 
 
 ## <a name="get-the-storage-account"></a>A storage-fiók beszerzése
@@ -145,7 +146,7 @@ New-AzureRmImage `
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Most, hogy egy lemezképet, létrehozhat egy vagy több új virtuális gépek a lemezképből. Ez a példa létrehoz egy nevű virtuális gép *myVM* a a *myImage*, a a *myResourceGroup*.
+Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új virtuális gépet. Ez a példa létrehoz egy nevű virtuális gép *myVM* a a *myImage*, a a *myResourceGroup*.
 
 
 ```powershell

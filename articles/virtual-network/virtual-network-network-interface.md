@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: e86353703d4eb8ee9acc251d62cf77d139d18ddb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a6e3bb31886f1b682ef20404b536bfc4a0c07151
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656883"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy a hálózati illesztő törlése
 
@@ -52,7 +53,7 @@ Az Azure portál használatával virtuális gép létrehozásakor a portált egy
     |Virtuális hálózat|Igen|Válassza ki a virtuális hálózatot a hálózati adapter. Csak egy virtuális hálózatot, ugyanazt az előfizetést és a hálózati adapter és a helyen található rendelhet egy adott hálózati csatoló. A hálózati illesztő létrehozása után hozzá van rendelve a virtuális hálózat nem módosítható. A virtuális gépet, akkor adja hozzá a hálózati adaptert is szerepelnie kell az azonos helyen és a hálózati adapterként előfizetés.|
     |Alhálózat|Igen|Válassza ki egy alhálózatot a kiválasztott virtuális hálózaton belül. Az alhálózat, a hálózati adapter van rendelve létrehozása után módosíthatja.|
     |Privát IP-cím hozzárendelése|Igen| Ezt a beállítást, az IPv4-cím hozzárendelés módszer van kiválasztása. A következő hozzárendelési módszer közül választhat: **dinamikus:** Ha ezt a lehetőséget választja, Azure automatikusan rendeli hozzá a következő elérhető címek a kiválasztott alhálózat címtartománya. **Statikus:** Ha ezt a lehetőséget választja, kézzel kell rendelnie egy szabad IP-cím az alhálózat kijelölt belülre. Statikus és dinamikus címek nem megváltoztatni, amíg meg nem módosítja őket, vagy a hálózati illesztő törlése. A hálózati illesztő létrehozása után módosíthatja a hozzárendelési módszert. Az Azure DHCP-kiszolgáló ezt a címet rendel a virtuális gép operációs rendszerében a hálózati illesztőt.|
-    |Hálózati biztonsági csoport|Nem| Hagyja beállítása **nincs**, válasszon ki egy létező [hálózati biztonsági csoport](security-overview.md), vagy [hálózati biztonsági csoport létrehozása](tutorial-filter-network-traffic.md). Hálózati biztonsági csoportok lehetővé teszi, hogy egy adott hálózati csatoló mindkét hálózati forgalom szűrésére. Nulla vagy egy hálózati biztonsági csoport egy adott hálózati csatoló alkalmazhatja. Nulla vagy egy hálózati biztonsági csoportot az alhálózathoz van hozzárendelve a hálózati adapter is alkalmazhatók. Néha váratlan eredményekhez fordulhat elő, a hálózati biztonsági csoport alkalmazásakor a hálózati adaptert és az alhálózatot a hálózati adapter van hozzárendelve. Hálózati adapterek és alhálózatok alkalmazott hálózati biztonsági csoportok elhárításához lásd: [hibaelhárítása a hálózati biztonsági csoportok](virtual-network-nsg-troubleshoot-portal.md#nsg).|
+    |Hálózati biztonsági csoport|Nem| Hagyja beállítása **nincs**, válasszon ki egy létező [hálózati biztonsági csoport](security-overview.md), vagy [hálózati biztonsági csoport létrehozása](tutorial-filter-network-traffic.md). Hálózati biztonsági csoportok lehetővé teszi, hogy egy adott hálózati csatoló mindkét hálózati forgalom szűrésére. Nulla vagy egy hálózati biztonsági csoport egy adott hálózati csatoló alkalmazhatja. Nulla vagy egy hálózati biztonsági csoportot az alhálózathoz van hozzárendelve a hálózati adapter is alkalmazhatók. Néha váratlan eredményekhez fordulhat elő, a hálózati biztonsági csoport alkalmazásakor a hálózati adaptert és az alhálózatot a hálózati adapter van hozzárendelve. Hálózati adapterek és alhálózatok alkalmazott hálózati biztonsági csoportok elhárításához lásd: [hibaelhárítása a hálózati biztonsági csoportok](diagnose-network-traffic-filter-problem.md).|
     |Előfizetés|Igen|Válasszon egyet az Azure [előfizetések](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). A virtuális gép csatlakoztatása a hálózati adaptert, és kösse össze a virtuális hálózat ugyanabban az előfizetésben léteznie kell.|
     |Magánhálózati IP-cím (IPv6)|Nem| Ha bejelöli ezt a jelölőnégyzetet, az IPv6-címek a hálózati kapcsolat mellett a hálózati illesztő rendelt IPv4-cím van hozzárendelve. Tekintse meg a [IPv6](#IPv6) című szakaszban a fontos adatokat IPv6 hálózati adapterrel együtt. Nem választhat ki egy hozzárendelési módszert az IPv6-cím használatára. Ha IPv6-címet hozzárendelni, a dinamikus módszerrel van hozzárendelve.
     |IPv6-név (csak akkor jelenik meg, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve) |Igen, ha a **magánhálózati IP-cím (IPv6)** jelölőnégyzet be van jelölve.| Ez a név egy másodlagos IP-konfiguráció a hálózati adapter van hozzárendelve. IP-konfigurációkkal kapcsolatos további tudnivalókért lásd: [hálózati kapcsolati beállítások megtekintése](#view-network-interface-settings).|

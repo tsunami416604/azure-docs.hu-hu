@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2372550548f40ad07b4f76c19bc3bc1cb8380830
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653433"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése Azure-beli használatra
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -93,9 +94,9 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
      ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa függetlenül esetleg szükség lenne rá kell lennie.
 15. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent-force - deprovision
-    # <a name="export-histsize0"></a>exportálja a HISTSIZE = 0
-    # <a name="logout"></a>kijelentkezés
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 16. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
 
 - - -
@@ -128,7 +129,7 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
         # sudo zypper update
 5. Az Azure Linux ügynök telepítése.
    
-   # <a name="sudo-zypper-install-walinuxagent"></a>sudo zypper telepítés WALinuxAgent
+        # sudo zypper install WALinuxAgent
 6. Módosítsa a kernel rendszerindító sor lárvajárat konfigurációs kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez nyissa meg a "/ boot/grub/menu.lst" egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel az alábbi paramétereket tartalmazza:
    
      console=ttyS0 earlyprintk=ttyS0 rootdelay=300
@@ -150,9 +151,9 @@ A saját virtuális merevlemez létrehozása helyett, SUSE is közzéteszi (Brin
      ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Megjegyzés: állítsa függetlenül esetleg szükség lenne rá kell lennie.
 11. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo waagent-force - deprovision
-    # <a name="export-histsize0"></a>exportálja a HISTSIZE = 0
-    # <a name="logout"></a>kijelentkezés
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 12. Győződjön meg arról, az Azure Linux ügynök a indításakor fut:
     
         # sudo systemctl enable waagent.service

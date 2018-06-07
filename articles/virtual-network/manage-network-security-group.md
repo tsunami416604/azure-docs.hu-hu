@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658672"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy a hálózati biztonsági csoport törlése
 
@@ -65,7 +66,7 @@ Adja meg a keresési mezőbe, a portál felső, *hálózati biztonsági csoporto
 ### <a name="view-details-of-a-network-security-group"></a>A hálózati biztonsági csoportok részleteinek megtekintése
 
 1. Adja meg a keresési mezőbe, a portál felső, *hálózati biztonsági csoportok*. Ha **hálózati biztonsági csoportok** jelennek meg a keresési eredmények között, válassza ki azt.
-2. Jelölje ki a hálózati biztonsági csoportot a listában a létrehozott részleteinek megtekintése. A **beállítások** megtekintheti a **bejövő biztonsági szabályok** és **kimenő biztonsági szabályok**, a **hálózati illesztőt** és  **Alhálózatok** a hálózati biztonsági csoport társítva. Is engedélyezheti vagy letilthatja **diagnosztikai naplók** és nézet **hatékony biztonsági szabályok**. További tudnivalókért lásd: [diagnosztikai naplók](virtual-network-nsg-manage-log.md) és [hatékony biztonsági szabályok megtekintéséhez](virtual-network-nsg-troubleshoot-portal.md).
+2. Jelölje ki a hálózati biztonsági csoportot a listában a létrehozott részleteinek megtekintése. A **beállítások** megtekintheti a **bejövő biztonsági szabályok** és **kimenő biztonsági szabályok**, a **hálózati illesztőt** és  **Alhálózatok** a hálózati biztonsági csoport társítva. Is engedélyezheti vagy letilthatja **diagnosztikai naplók** és nézet **hatékony biztonsági szabályok**. További tudnivalókért lásd: [diagnosztikai naplók](virtual-network-nsg-manage-log.md) és [hatékony biztonsági szabályok megtekintéséhez](diagnose-network-traffic-filter-problem.md).
 3. A közös Azure-beállítások kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
     *   [Tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
@@ -152,7 +153,7 @@ A listában a létrehozott szabályok és a hálózati biztonsági csoport [alap
 - Az Azure CLI: [az hálózati nsg-szabályok listája](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
 - PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
 
-### <a name="view-details-of-a-security-rule"></a>A biztonsági szabály részleteinek megtekintése
+### <a name="view-details-of-a-security-rule"></a>Biztonsági szabály részleteinek megtekintése
 
 1. Adja meg a keresési mezőbe, a portál felső, *hálózati biztonsági csoportok*. Ha **hálózati biztonsági csoportok** jelennek meg a keresési eredmények között, válassza ki azt.
 2. Válassza ki a hálózati biztonsági csoport biztonsági szabály részleteinek megtekintéséhez.

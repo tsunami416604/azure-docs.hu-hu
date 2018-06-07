@@ -4,21 +4,22 @@ description: Magas rendelkezésre állás és az Azure (nagy példány) az SAP H
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2018
+ms.date: 05/30/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c939e0fb59c7fce2c1c34aca1b77bd0b8cec0c5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658315"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>SAP HANA nagy példányok magas rendelkezésre állási és vészhelyreállítási helyreállítási az Azure-on 
 
@@ -36,7 +37,7 @@ A Microsoft támogatja a bizonyos SAP HANA magas rendelkezésre állású funkci
 - **HANA replikációs**: A [replikáció az összes adat az SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) egy külön SAP HANA-rendszerhez. A helyreállítási idő célkitűzése keresztül rendszeres időközönként adatreplikáció másodpercekre csökken. SAP HANA aszinkron, szinkron memórián belüli és szinkron módot támogat. Szinkron módban csak az ugyanabban az adatközpontban, vagy legalább 100 km-egymástól SAP HANA rendszereken használatos. Az aktuális terv HANA nagy példány stampgyűjteményt HANA replikációs a magas rendelkezésre állás csak egy régió belül használható. HANA replikációs igényel egy külső fordított proxy vagy az útválasztási egy másik Azure-régió, a vész-helyreállítási beállítások. 
 - **Gazdagép automatikus feladatátvételt**: A helyi hiba-helyreállítási megoldás, amely alternatív megoldás HANA replikációs SAP Hana. A fő csomópont nem érhető el, ha konfigurál egy vagy több készenléti SAP HANA-csomópont kibővített módban, és SAP HANA automatikusan átadja a feladatokat egy készenléti csomópont.
 
-SAP HANA Azure (nagy példányok) a két Azure-régiók három geopolitikai területeken (USA Ausztrália és Európa) kínálják. Két régió egy geopolitikai területen HANA nagy példány bélyegzők üzemeltető különálló dedikált hálózati kapcsolatok csatlakoznak. Ezek használhatók a storage-pillanatfelvételekkel replikálására vész-helyreállítási módszerek biztosításához. A replikáció alapértelmezés szerint nem jön létre, de beállítva az ügyfelek, akik a vész-helyreállítási funkcióhoz sorrendben. Tárolási replikációs szolgáltatása a storage-pillanatfelvételekkel nagy HANA-példányok használatát függ. Nincs lehetőség a válasszon ki egy Azure-régió, egy vész-Helyreállítási területet, amely egy másik geopolitikai területén legyen. 
+SAP HANA Azure (nagy példányok) a két Azure-régiók négy geopolitikai területeken (Egyesült Államok, Ausztrália, Európában és japán) kínálják. Két régió egy geopolitikai területen HANA nagy példány bélyegzők üzemeltető különálló dedikált hálózati kapcsolatok csatlakoznak. Ezek használhatók a storage-pillanatfelvételekkel replikálására vész-helyreállítási módszerek biztosításához. A replikáció alapértelmezés szerint nem jön létre, de beállítva az ügyfelek, akik a vész-helyreállítási funkcióhoz sorrendben. Tárolási replikációs szolgáltatása a storage-pillanatfelvételekkel nagy HANA-példányok használatát függ. Nincs lehetőség a válasszon ki egy Azure-régió, egy vész-Helyreállítási területet, amely egy másik geopolitikai területén legyen. 
 
 Az alábbi táblázat a jelenleg támogatott magas rendelkezésre állási és vészhelyreállítási helyreállítási módszerek és kombinációit:
 
@@ -81,6 +82,7 @@ A vészhelyreállítás telepítője HANA nagy osztályt az előző követelmén
 
 - Az Azure (nagy példányok) termékváltozatok akkora, mint az éles tárhely termékváltozatok az SAP HANA sorrendben, és telepítheti azokat a vész-helyreállítási régióban. Ezek a példányok az aktuális felhasználói telepítés, nem éles HANA példányok futtatásához használ. Ezek a konfigurációk nevezzük *többcélú vész-Helyreállítási beállítások*.   
 - Az egyes az Azure (nagy példányok) SKU, amely a vész-helyreállítási hely helyreállítja a SAP HANA-rendezési további tárterületet a vész-Helyreállítási helyen. További tárhely vásárlás lehetővé teszi a tárolási köteteinek lefoglalásához. A tároló az éles Azure-régió, a vész-helyreállítási Azure-régió, a replikáció célját kötetekhez foglalhatja le.
+- Abban az esetben, ha HSR telepítés rendelkezik az elsődleges, és a telepítő-alapú tárolás replikációs a vész-Helyreállítási helyre, akkor kell vásárolhat további tárterületet, a vész-Helyreállítási helyen, mind az elsődleges és másodlagos csomópontot adatok replikálását a vész-Helyreállítási helyre.
 
  
 
@@ -113,7 +115,7 @@ SAP HANA Azure (nagy példányok) két biztonsági mentési és helyreállítás
 A tároló-infrastruktúra az alapul szolgáló SAP HANA (nagy példányok) Azure storage-pillanatfelvételekkel kötetek támogatja. Biztonsági mentési és a kötetek helyreállítása támogatott, azzal a következőket kell figyelembe venni:
 
 - Helyett adatbázis teljes biztonsági mentést a rendszer az tárolási kötet-pillanatképek hajtja végre a gyakran.
-- Pillanatkép kiváltó /hana/data és /hana/shared (tartalmazza a /usr/sap) keresztül kötetek, a pillanatkép-technológia indít el egy SAP HANA pillanatkép készítése a tárolási pillanatkép végrehajtása előtt. Az SAP HANA-pillanatkép végleges napló visszaállítását a telepítő pontja a tárolási pillanatkép a helyreállítás után.
+- Pillanatkép kiváltó /hana/data és /hana/shared (tartalmazza a /usr/sap) keresztül kötetek, a pillanatkép-technológia indít el egy SAP HANA pillanatkép készítése a tárolási pillanatkép végrehajtása előtt. Az SAP HANA-pillanatkép végleges napló visszaállítását a telepítő pontja a tárolási pillanatkép a helyreállítás után. A sikeres HANA pillanatkép kell aktív HANA példánya.  HSR esetben a tároló snapshot utasítás nem támogatott az aktuális másodlagos csomópontra, ahol HANA pillanatkép nem hajtható végre.
 - Miután a tárolási pillanatkép sikeresen végre lett hajtva, a SAP HANA-pillanatkép törlését.
 - Tranzakciónapló biztonsági mentései gyakran kerül, és a /hana/logbackups kötetet, vagy az Azure-ban tárolja. A /hana/logbackups kötet, amely tartalmazza a tranzakciónapló biztonsági mentései egy pillanatkép készítése külön-külön aktiválhatók. Ebben az esetben nem kell végrehajtani egy HANA pillanatkép.
 - Ha vissza kell állítania egy adatbázis egy bizonyos mértékig időben, kérelmek, hogy a Microsoft Azure támogatási szolgálatához (a termelési kimaradásáról) vagy a SAP HANA Azure szolgáltatásfelügyelet visszaállításkor egy bizonyos tárolási pillanatképre. Példa: a tervezett visszaállítás védőfal rendszer eredeti állapotát.
@@ -126,6 +128,7 @@ Storage-pillanatfelvételekkel kötetek három osztályok célzó végezheti el:
 - Külön pillanatkép/hana/logbackups keresztül.
 - Az operációsrendszer-partíció.
 
+A legújabb pillanatkép parancsfájlok és dokumentáció [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). 
 
 ### <a name="storage-snapshot-considerations"></a>Tárolási pillanatkép kapcsolatos szempontok
 
@@ -144,7 +147,7 @@ Az SAP HANA-adatainak és naplókönyvtárainak kötetek mérete rögzített SAP
 
 A következő szakaszok ezeket a pillanatképeket, beleértve az általános ajánlásokat végrehajtásához információkkal:
 
-- Abban az esetben, ha a hardver kötetenként 255 pillanatképek képes elviselni, ez a szám alatt maradnak szeretné.
+- Abban az esetben, ha a hardver kötetenként 255 pillanatképek képes elviselni, ez a szám alatt maradnak szeretné. Javasoljuk, 250 vagy kisebb.
 - Mielőtt elvégezné a storage-pillanatfelvételekkel, figyeléséhez és nyomon követésére szabad terület.
 - A szabad lemezterület alapján tárolási pillanatképek számának csökkentéséhez. Mindig a pillanatképek száma csökkenthető, vagy kiterjesztheti a köteteket. További tárhely 1 terabájtnál egységekbe rendezheti.
 - Során tevékenységek, például SAP HANA SAP platform áttelepítési eszközökről (R3load) adatok áthelyezése vagy SAP HANA-adatbázisok visszaállítása biztonsági másolatból tiltsa le a storage-pillanatfelvételekkel a /hana/data köteten. 
@@ -171,6 +174,8 @@ Storage-pillanatfelvételekkel HANA nagy osztályt beállításához kövesse az
 6. Másolja a parancsfájlok és a konfigurációs fájl [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) helyére **hdbsql** a SAP HANA-telepítésnek.
 7. Módosítsa a *HANABackupDetails.txt* fájl a megfelelő felhasználói előírások szerint szükséges.
 
+A legújabb pillanatkép parancsfájlok és dokumentáció [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+
 ### <a name="consideration-for-mcod-scenarios"></a>Szempont MCOD forgatókönyvek esetén
 Ha futtat egy [MCOD forgatókönyv](https://launchpad.support.sap.com/#/notes/1681092) több SAP HANA példány egy HANA nagy példány egységen, az informatikai részleg külön a SAP HANA-példányok mindegyikének kiosztott köteteket. Az önkiszolgáló pillanatkép-automatizálás jelenlegi verziójában nem kezdeményezhet külön pillanatképek minden HANA példány rendszeren azonosítója (SID). A funkció ellenőrzi a kiszolgáló a konfigurációs fájlban (lásd a cikkben később) regisztrált SAP HANA-példányok nyújt, és végrehajtja a kötetek egységben regisztrált szoftverpéldányok egyidejű pillanatkép.
  
@@ -180,7 +185,7 @@ Ha futtat egy [MCOD forgatókönyv](https://launchpad.support.sap.com/#/notes/16
 SAP HANA Azure (nagy példányok) a Linux operációs rendszerrel a mappák és a parancsfájlok a biztonsági mentés és katasztrófa-helyreállítás céljából SAP HANA-tárolási pillanatképek végrehajtásához szükséges tartalmazza. Ellenőrizze a korábbi kiadásokban [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). A parancsfájlok a legújabb verzió 3.x. Előfordulhat, hogy a különböző parancsfájlok belül az azonos fő verziók különböző kisebb kiadások.
 
 >[!IMPORTANT]
->Amikor 2.1-es verziója a parancsfájlok 3.0-s verzióját, vegye figyelembe, hogy a konfigurációs fájlban és néhány szintaxis struktúrája megváltozott. Tekintse meg az adott szakaszok feliratokat. 
+>Amikor 2.1-es verzióra 3.x a parancsfájlok, vegye figyelembe, hogy a konfigurációs fájlban és néhány szintaxis struktúrája megváltozott. Tekintse meg az adott szakaszok feliratokat. 
 
 A feladata az SAP HANA HDB ügyfél SAP HANA telepíti a HANA nagy példány egységeken telepítéséhez.
 
@@ -234,7 +239,7 @@ Ezen a ponton lépjen kapcsolatba az Azure szolgáltatásfelügyelet SAP HANA, �
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>4. lépés: Egy SAP HANA-felhasználói fiók létrehozása
 
-SAP HANA-pillanatképek létrehozásának kezdeményez, hozzon létre egy felhasználói fiókot, amellyel a tárolási pillanatkép parancsfájlok SAP HANA kell. Létre kell hozni egy SAP HANA Studio SAP HANA-felhasználói fiókot. A felhasználó a SYSTEMDB és az SID-adatbázis nem keretében létre kell hozni. Ezt a fiókot a következő jogosultságokkal kell rendelkeznie: **biztonsági mentési rendszergazda** és **katalógus olvasási**. Ebben a példában a felhasználónév az **SCADMIN**. A felhasználói fiók nevét a HANA Studióban létrehozott a kis-és nagybetűket. Ügyeljen arra, hogy válasszon **nem** , amelyek a felhasználó megváltoztassa a jelszavát a következő bejelentkezés esetén.
+SAP HANA-pillanatképek létrehozásának kezdeményez, hozzon létre egy felhasználói fiókot, amellyel a tárolási pillanatkép parancsfájlok SAP HANA kell. Létre kell hozni egy SAP HANA Studio SAP HANA-felhasználói fiókot. A felhasználó léteznie kell a SYSTEMDB és nem a SID-adatbázis a MDC. Egyetlen tároló környezetben a felhasználói beállítások alapján a bérlő adatbázis az. Ezt a fiókot a következő jogosultságokkal kell rendelkeznie: **biztonsági mentési rendszergazda** és **katalógus olvasási**. Ebben a példában a felhasználónév az **SCADMIN**. A felhasználói fiók nevét a HANA Studióban létrehozott a kis-és nagybetűket. Ügyeljen arra, hogy válasszon **nem** , amelyek a felhasználó megváltoztassa a jelszavát a következő bejelentkezés esetén.
 
 ![A felhasználó létrehozása a HANA Studióban](./media/hana-overview-high-availability-disaster-recovery/image3-creating-user.png)
 
@@ -245,7 +250,7 @@ Ha több SAP HANA-osztályt egy egységen MCOD központi telepítéseket haszná
 Ebben a lépésben is engedélyezni szeretné a létrehozott, SAP HANA-felhasználói fiókot, hogy a parancsfájlok nem kell küldenie a jelszavak futásidőben. Az SAP HANA-parancs `hdbuserstore` létrehozását lehetővé tevő egy SAP HANA felhasználói kulcs, amely legalább egy SAP HANA-csomópontja tárolja. A felhasználói kulcs lehetővé teszi, hogy a felhasználói hozzáférés SAP HANA a parancsfájl-kezelési folyamaton belül a jelszavak kezelése nélkül. A parancsfájl-kezelési folyamat Ez a cikk későbbi részében olvashat.
 
 >[!IMPORTANT]
->A következő parancsot, `root`. Ellenkező esetben a parancsfájl nem működik megfelelően.
+>A következő parancsot az a felhasználó a parancsfájlok futtatását tervezett. Ellenkező esetben a parancsfájl nem működik megfelelően.
 
 Adja meg a `hdbuserstore` parancsot a következőképpen:
 
@@ -285,7 +290,7 @@ testHANAConnection.pl
 testStorageSnapshotConnection.pl 
 removeTestStorageSnapshot.pl
 azure_hana_dr_failover.pl
-azure_hana_dr_failover.pl 
+azure_hana_test_dr_failover.pl 
 HANABackupCustomerDetails.txt 
 ``` 
 
@@ -319,12 +324,12 @@ A különböző parancsfájlok és a fájlok célja az alábbiak szerint:
 - **Azure\_hana\_tesztelése\_vész-helyreállítási\_failover.pl**: ezt a parancsfájlt a vész-Helyreállítási helyre feladatátvételi tesztet hajt végre. Ellentétben a azure_hana_dr_failover.pl parancsfájl a végrehajtását nem szakítják meg a tárolási replikációt az elsődleges másodlagos. Ehelyett a replikált tároló kötetek klónok jönnek létre, a vész-Helyreállítási oldalon, és a csatlakozási pontok le a klónozott kötetek találhatók. 
 - **HANABackupCustomerDetails.txt**: ezt a fájlt egy olyan módosítania kell a SAP HANA-konfiguráció támogató módosíthatóvá konfigurációs fájl. A *HANABackupCustomerDetails.txt* futtatja a storage-pillanatfelvételekkel a parancsfájl-vezérléshez és a konfigurációs fájl. Állítsa be a fájlt a célokra és a telepítőt. Kapni a **tárolási biztonsági másolat neve** és a **tárolási IP-cím** az SAP HANA az Azure szolgáltatásfelügyelet a példányok telepítésekor. A sorozat nem módosítható, rendezés, vagy bármely, a változók a fájlban található térköz. Ha így tesz, akkor ezek a parancsfájlok nem működnek majd megfelelően. Megjelenhet az IP-címét a méretezett vagy a fő csomópontot (Ha a kibővített) az Azure szolgáltatásfelügyelet az SAP HANA. Az SAP HANA telepítése során kapott HANA példányszámának is ismeri. Most akkor hozzon létre egy biztonsági másolat neve a konfigurációs fájl.
 
-A konfigurációs fájl méretezett és kibővített üzembe helyezés esetén lenne az alábbi példához hasonló Miután kitölti a kiszolgálónevet a HANA nagy példány egység és a kiszolgáló IP-címét. SAP HANA replikációs használata, használja a HANA rendszer replikációs konfiguráció virtuális IP-címét. Töltse ki az összes szükséges mezők minden SAP HANA SID kívánt biztonsági mentését vagy helyreállítását.
+A konfigurációs fájl méretezett és kibővített üzembe helyezés esetén lenne az alábbi példához hasonló Miután kitölti a kiszolgálónevet a HANA nagy példány egység és a kiszolgáló IP-címét. Töltse ki az összes szükséges mezők minden SAP HANA SID kívánt biztonsági mentését vagy helyreállítását.
 
 Még nem kívánt biztonsági mentése egy ideig hozzáadása a "#" mezőt kötelező kitölteni elé példányok sorok megjegyzéssé. Akkor is nem kell SAP HANA összes példányát a kiszolgálón található készítsen biztonsági másolatot, vagy állítsa helyre az adott esetben nincs szükség esetén adja meg. A formátum kell tartani, minden mezőbe, vagy minden parancsfájl throw hibaüzenetet, és a parancsfájl befejeződik. Bármely SID adatai nem használja az utolsó SAP HANA-példányok után további szükséges sorát törölheti. Az összes sort kell vagy kitölti, megjegyzésként szerepel, vagy törölve.
 
 >[!IMPORTANT]
->A 3.0-s verzió a 2.1-es verziója áthelyezést módosítható fájl struktúráját. Ha a 3.0-s verzió parancsfájlok használni kívánt, akkor igazítja a konfigurációs fájl struktúra. 
+>A fájl struktúrája megváltozott a 2.1-es verzióra való áthelyezést 3.x. Ha a 3.x verzió parancsfájlok használni kívánt, akkor igazítja a konfigurációs fájl struktúra. 
 
 
 ```
@@ -379,7 +384,7 @@ Emiatt a HANA példány része, amelynek argumentuma. A végrehajtás sikertelen
 
 2. Futtassa a test-parancsfájlt:
    ```
-    ./testStorageSnapshotConnection.pl <HANA SID>
+    ./testStorageSnapshotConnection.pl
    ```
 
 A parancsfájl megpróbál a nyilvános kulcs lett megadva az előző lépésben a telepítő és a konfigurált adatokkal használatával jelentkezzen be a tároló a *HANABackupCustomerDetails.txt* fájlt. Ha a bejelentkezés sikeres, a következő tartalmat látható:
@@ -447,7 +452,7 @@ Három típusú pillanatképes biztonsági hozhat létre:
 
 
 >[!NOTE]
-> A hívási szintaxis az alábbi három különböző módosítható az áthelyezés verziójára 3.0-s parancsfájlokat, amelyek MCOD központi telepítések támogatására. Nincs szükség a HANA SID példány már meg. Győződjön meg arról, hogy egy SAP HANA példányai vannak-e konfigurálva a konfigurációs fájlban kell *HANABackupCustomerDetails.txt*.
+> Ezek az áthelyezés MCOD központi telepítések támogatására verzió 3.x parancsfájlok módosítható három különböző hívás szintaxisa. Nincs szükség a HANA SID példány már meg. Győződjön meg arról, hogy egy SAP HANA példányai vannak-e konfigurálva a konfigurációs fájlban kell *HANABackupCustomerDetails.txt*.
 
 >[!NOTE]
 > Először hajtsa végre a parancsfájlt, ha azt a váratlan hibák multi-SID környezeti előfordulhat, hogy megjelenítése. A hibát, majd futtassa újból a parancsfájl javítja.
@@ -472,7 +477,7 @@ A részletek a paraméterek a következők:
 
 - Az első paraméter karakterizálja a pillanatkép biztonsági másolat típusa. Az engedélyezett értékek a következők **hana**, **naplók**, és **rendszerindító**. 
 - A paraméter **<HANA Large Instance Type>** rendszerindító kötetet a biztonsági másolatokat csak szükséges. Nincsenek függő HANA nagy példány egységben "TypeI" vagy "TypeII" két érvényes érték. Tudja meg, hogy milyen típusú a egység című [SAP HANA (nagy példányok) – áttekintés és Azure architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
-- A paraméter **< snapshot_prefix >** snapshot vagy snapshot típusú biztonsági mentési címke. Két célja van: egyet az, hogy adjon neki egy nevet, így ismerjük ezeket a pillanatképeket vonatkozó. A második feladata a parancsfájl *azure\_hana\_backup.pl* függvénnyel határozhatja meg, hogy adott címke alatt maradnak storage-pillanatfelvételekkel számát. Ha ütemez két tárolási pillanatképes biztonsági ugyanabba a típusba tartozik (például **hana**), két különböző címkével, és határozza meg, hogy 30 pillanatképek kell tartani az egyes, hogy végül 60 storage-pillanatfelvételekkel a kötetek is hatással. 
+- A paraméter **< snapshot_prefix >** snapshot vagy snapshot típusú biztonsági mentési címke. Két célja van: egyet az, hogy adjon neki egy nevet, így ismerjük ezeket a pillanatképeket vonatkozó. A második feladata a parancsfájl *azure\_hana\_backup.pl* függvénnyel határozhatja meg, hogy adott címke alatt maradnak storage-pillanatfelvételekkel számát. Ha ütemez két tárolási pillanatképes biztonsági ugyanabba a típusba tartozik (például **hana**), két különböző címkével, és határozza meg, hogy 30 pillanatképek kell tartani az egyes, hogy végül 60 storage-pillanatfelvételekkel a kötetek is hatással. Csak alfanumerikus ("A-Z, a-z, 0-9"), aláhúzás ("_") és kötőjel ("-") karakterek használhatók. 
 - A paraméter **< snapshot_frequency >** fenntartja a jövőbeli fejlesztésekkel, és nincs semmilyen hatása. Állítsa be a "3 perc" típusú biztonsági mentés végrehajtásakor **napló**, és a "15 perc" a többi biztonsági mentési típusok végrehajtása közben.
 - A paraméter **<number of snapshots retained>** megtartása, a pillanatképek közvetve számú pillanatkép azonos előtaggal pillanatkép (címke) megadásával határozza meg. Ez a paraméter fontos ütemezett végrehajtások cron keresztül. Ha a ugyanazon snapshot_prefix pillanatképei száma meghaladja az ezzel a paraméterrel megadott, a legrégebbi pillanatkép törlését egy új tárolási pillanatkép végrehajtása előtt.
 
@@ -500,7 +505,7 @@ A szempontokat és ajánlásokat, az alábbi, a feltételezi, hogy végezzen, *n
 - A használt lemezterület.
 - A helyreállítási pont és helyreállítási időre vonatkozó célkitűzések a potenciális helyreállítás során egy olyan vészhelyzet esetén.
 - A végleges végrehajtása HANA teljes-adatbázis biztonsági mentését lemezek ellen. Amikor teljes-adatbázis biztonsági másolatának elleni lemezek vagy a **backint** felület történik, a storage-pillanatfelvételekkel végrehajtása sikertelen lesz. Ha azt tervezi, hogy a teljes-adatbázis biztonsági másolatait fölött storage-pillanatfelvételekkel hajtható végre, ellenőrizze, hogy a storage-pillanatfelvételekkel végrehajtása le van tiltva ebben az időszakban.
-- A pillanatképek kötetenként (legfeljebb 255) száma.
+- A pillanatképek kötetenként (legfeljebb 250) száma.
 
 
 A vész helyreállítási funkciójának HANA nagy példányok nem használó ügyfelek a pillanatkép időszak ritkábban. Ebben az esetben az ügyfelek a kombinált pillanatképek /hana/data és végezni (tartalmazza a /usr/sap) /hana/shared 12 órás vagy 24 órás időszakban, és a pillanatképek egy hónapig vezetnek. Ugyanez érvényes a napló biztonsági mentési kötet pillanatfelvételekkel. Azonban SAP HANA tranzakciónapló biztonsági mentései a napló biztonsági mentési köteten végrehajtása történik 5 perces 15 perces időszakokra.
@@ -532,9 +537,7 @@ A következő ábra az előző példában a logikai egység rendszerindító kiv
 
 SAP HANA hajt végre a /hana/log kötet milyen véglegesített módosításokat az adatbázis rendszeres írására. Rendszeresen SAP HANA ír egy mentési pontra a /hana/data kötetre. Meghatározott crontab 5 percenként végrehajtása egy SAP HANA tranzakciós napló biztonsági mentését. Is láthatja, hogy egy SAP HANA-pillanatkép végrehajtja a rendszer minden órában miatt kombinált tárolási pillanatkép időt a /hana/data és /hana/shared kötetek keresztül. Miután a HANA pillanatkép sikeres, a kombinált tárolási pillanatkép végrehajtása. Útmutatását crontab, a tárolási pillanatkép a /hana/logbackup köteten minden 5 perc, a HANA tranzakciós napló biztonsági mentését követően körülbelül 2 percet végrehajtása.
 
-> [!NOTE]
->Ha tárolási pillanatképes biztonsági nélküli HANA replikációs telepítése két csomópontjára, győződjön meg arról, hogy a pillanatkép biztonsági mentések a két csomópont között végrehajtások nincsenek átfedésben szeretné. SAP HANA egyszerre csak egy HANA pillanatkép kezelésére korlátozás tartozik. Mivel egy HANA pillanatkép egy sikeres tárolási pillanatkép biztonsági másolatából egy elemi összetevője, győződjön meg arról, hogy a rendszer túllépte az a tárolási pillanatkép, az elsődleges és másodlagos csomópontra, és egy esetleges harmadik csomópont a egymástól kell.
-
+> 
 
 >[!IMPORTANT]
 > A storage-pillanatfelvételekkel SAP HANA biztonsági mentés használata értékes csak akkor, ha a pillanatképek SAP HANA tranzakciónapló biztonsági mentései együtt történik. A tranzakciós napló biztonsági mentése, amelyek között a storage-pillanatfelvételekkel időszakokat kell. 
@@ -557,7 +560,7 @@ Az adatbázis soha nem készült biztonsági másolat, a végső lépés esetén
 
 Az első sikeres storage-pillanatfelvételekkel végrehajtása után törölheti a teszt pillanatképet, amely a 6. lépésben végre lett hajtva. Ehhez futtassa a parancsfájlt `removeTestStorageSnapshot.pl`:
 ```
-./removeTestStorageSnapshot.pl <hana instance>
+./removeTestStorageSnapshot.pl
 ```
 
 A következő egy példa a parancsfájl kimenete:
@@ -636,7 +639,7 @@ HANA Backup ID:
 
 
 ### <a name="file-level-restore-from-a-storage-snapshot"></a>Egy tároló pillanatképből fájlszintű visszaállítása
-A pillanatkép-típusok **hana** és **naplók**, közvetlenül a köteteken a pillanatképek végezheti el a **.snapshot** könyvtár. Nincs minden, a pillanatképek egyik alkönyvtár. Minden fájl másolhatja, mint a pillanatkép, az, hogy a tényleges directory struktúrába alkönyvtár helyén állapotban.
+A pillanatkép-típusok **hana** és **naplók**, közvetlenül a köteteken a pillanatképek végezheti el a **.snapshot** könyvtár. Nincs minden, a pillanatképek egyik alkönyvtár. Minden fájl másolhatja, mint a pillanatkép, az, hogy a tényleges directory struktúrába alkönyvtár helyén állapotban. A parancsfájl az aktuális verziójában nincs **nem** állítsa vissza a parancsprogram előírt a pillanatkép-visszaállítás egy önkiszolgáló (bár a pillanatkép-visszaállítás segítségével hajtható végre, mert az önkiszolgáló vész-Helyreállítási része a feladatátvétel során a parancsfájlok a vész-Helyreállítási helyen). Nyissa meg a kívánt pillanatkép visszaállítása a meglévő elérhető származó szolgáltatáskérés forduljon a Microsoft operations csoportja.
 
 >[!NOTE]
 >Visszaállítás egy fájlból nem működik a rendszerindító logikai egység független a HANA nagy példány mértékegység típusát a pillanatkép-készítési. A **.snapshot** directory a rendszerindítási logikai egység nem lesz közzétéve. 
@@ -819,7 +822,7 @@ Az eddig telepített forgatókönyvekben az ügyfelek használja az egység a v�
 Ahogyan az Áttekintés ábrán látható, majd egy második együttesét lemezkötetek sorrendben kell. A cél lemezkötetek akkora, mint a termelési kötetek, a vész-helyreállítási egység az éles példány. A kötetek társítva a HANA nagy példány server egység a vész-helyreállítási helyen. A következő kötetek replikálva vannak a termelési régióban a vész-Helyreállítási hely:
 
 - / hana/adatok
-- /hana/logbackups 
+- / hana/logbackups 
 - /Hana/Shared (tartalmazza a/usr/sap)
 
 A /hana/log kötet nem replikálódik, mert a SAP HANA-tranzakciónapló módon történik, ezek a kötetek való visszaállítása nem szükséges. 
@@ -830,11 +833,8 @@ A teljes kötet első adatátvitelt kell lennie, mielőtt adatok mennyisége kis
 
 MCOD központi telepítések egy HANA nagy példány egységet több független SAP HANA osztályt, esetén várható, hogy minden SAP HANA-példány a vész-Helyreállítási oldalon replikált tároló kap.
 
-Azokban az esetekben, ahol HANA rendszer replikáció használata magas rendelkezésre állású funkcióinak a munkakörnyezeti helyet a csak a 2. rétegbeli (vagy replika) példány kötetek replikálódnak. Ez a konfiguráció a vész-Helyreállítási hely a tároló replikációs késés előfordulhat, hogy okozhat, ha karbantartása, vagy a másodlagos replika (2. szint) kiszolgáló egység vagy SAP HANA-példány ebben miatt le. 
+Olyan esetekben, amikor a munkakörnyezeti helyet a magas rendelkezésre állású funkció HANA replikációs használják, és tároló-alapú replikáció használata a vész-Helyreállítási hely replikálva vannak a kötetek mindkét csomópont elsődleges helyről a vész-Helyreállítási példányhoz. További tárterület (elsődleges csomópont frissítésétől azonos méretűnek) kell vásárolnia, az elsődleges és másodlagos, a vész-Helyreállítási replikációs olyan vész-Helyreállítási helyen. 
 
-
->[!IMPORTANT]
->Csakúgy, mint a többrétegű HANA replikációs, a réteg 2 HANA példányt, vagy a kiszolgáló egység leállítására replikációt, hogy a vész-helyreállítási hely blokkolja, a HANA nagy példány vész-helyreállítási funkciójának használatakor.
 
 
 >[!NOTE]
@@ -999,7 +999,7 @@ Ez a parancs a parancsprogram hívása:
 
 A kimeneti van szerinti bontásban, kötet a következő szakaszokra:  
 
-- Hivatkozás állapota
+- Kapcsolat állapota
 - Az aktuális replikációs tevékenység
 - Replikált legújabb pillanatkép 
 - A legújabb pillanatkép mérete

@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20bcb822ff39b9587a479fd6cc43b7daa9b83627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654283"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>N-sorozat linuxos virtuális gépek NVIDIA GPU illesztőprogramok telepítéséhez
 
@@ -30,7 +31,7 @@ N sorozatú virtuális gép specifikációk, tárolási kapacitás, és a lemez 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>A hálózati vezérlő által, NCv2, NCv3 és ND sorozatú virtuális gépek CUDA illesztőprogramok telepítése
+## <a name="install-cuda-drivers-on-n-series-vms"></a>N sorozatú virtuális gépeken CUDA illesztőprogramok telepítése
 
 Az alábbiakban a NVIDIA CUDA eszközkészlet N sorozatú virtuális gépeken a CUDA illesztőprogramok telepítésének lépéseit. 
 
@@ -155,7 +156,7 @@ Ha az illesztőprogram telepítve van, látni fogja a következőhöz hasonló k
 
 ## <a name="rdma-network-connectivity"></a>RDMA hálózati kapcsolat
 
-RDMA hálózati kapcsolatot az RDMA-kompatibilis N sorozatú virtuális gépeken futó engedélyezhető, mint például az azonos rendelkezésre állási csoport vagy a Virtuálisgép-méretezési készlet NC24r telepítve. Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja az Intel MPI futó alkalmazások 5.x-es vagy újabb verziója. Kövesse a további követelmények:
+RDMA hálózati kapcsolat engedélyezhető az RDMA-kompatibilis N sorozatú virtuális gépeken, például NC24r telepített, az azonos rendelkezésre állási csoport vagy a Virtuálisgép-méretezési csoportban lévő egyetlen elhelyezési csoport. Az RDMA hálózati Message Passing Interface (MPI) forgalmat támogatja az Intel MPI futó alkalmazások 5.x-es vagy újabb verziója. Kövesse a további követelmények:
 
 ### <a name="distributions"></a>Felosztások
 
@@ -167,7 +168,7 @@ Az Azure piactéren, amely támogatja az RDMA-kapcsolatot az N-sorozatú virtuá
 
 * **7.4 HPC centOS alapú** -RDMA-illesztőprogramok és Intel MPI 5.1 telepítve vannak a virtuális Gépet.
 
-## <a name="install-grid-drivers-for-nv-series-vms"></a>Portok HV-sorozatú virtuális gépek rács illesztőprogramok telepítése
+## <a name="install-grid-drivers-on-nv-series-vms"></a>A portok HV-sorozatú virtuális gépeken rács illesztőprogramok telepítése
 
 Portok HV-sorozatú virtuális gépeken NVIDIA rács illesztőprogramok telepítéséhez az SSH-kapcsolat ellenőrizze az egyes virtuális, és kövesse a lépéseket a Linux terjesztéshez. 
 
@@ -330,7 +331,7 @@ BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 |
 if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
 ```
 
-Ezután hozzon létre egy bejegyzést a upate parancsfájlt a `/etc/rc.d/rc3.d` , a parancsfájl hívja meg, a legfelső szintű rendszerindító szerepel.
+Ezután hozzon létre egy bejegyzést a frissítési parancsfájlt a `/etc/rc.d/rc3.d` , a parancsfájl hívja meg, a legfelső szintű rendszerindító szerepel.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

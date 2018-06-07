@@ -1,13 +1,13 @@
 ---
-title: "Oracle Data Guard valósítja meg az Azure Linux virtuális gép |} Microsoft Docs"
-description: "Gyorsan karban lehessen Oracle Data Guard mentése és az Azure környezetben futna."
+title: Oracle Data Guard valósítja meg az Azure Linux virtuális gép |} Microsoft Docs
+description: Gyorsan karban lehessen Oracle Data Guard mentése és az Azure környezetben futna.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
-ms.openlocfilehash: 822e18db4d01210d741addad4c820f51adc8f26a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f77a34fe4157e6c7ec763701e59db3330a1003c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657937"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard valósítja meg az Azure Linux virtuális gép 
 
-Az Azure CLI segítségével létrehozása és kezelése az Azure-erőforrások, a parancssorban vagy parancsfájlokban. Ez a cikk ismerteti az Azure CLI használata az Oracle-adatbázishoz 12c adatbázis az Azure piactér lemezképről való telepítéséhez. Ez a cikk megjeleníti a, lépésről lépésre, hogyan kell telepíteni és konfigurálni a Data Guard egy Azure virtuális gépen (VM).
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a cikk ismerteti az Azure CLI használata az Oracle-adatbázishoz 12c adatbázis az Azure piactér lemezképről való telepítéséhez. Ez a cikk megjeleníti a, lépésről lépésre, hogyan kell telepíteni és konfigurálni a Data Guard egy Azure virtuális gépen (VM).
 
 Mielőtt elkezdené, győződjön meg arról, hogy telepítve van-e az Azure parancssori felület. További információkért lásd: a [Azure parancssori felület telepítési útmutató](https://docs.microsoft.com/cli/azure/install-azure-cli).
 

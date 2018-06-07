@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 674f4ec53300643450d8a576db6fcb50e86dd9d2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652069"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple szerepköralapú hozzáférés-vezérlés
 
@@ -30,7 +31,7 @@ Ez a cikk vonatkozik a StorSimple 8000 sorozat eszközeire frissítés 3.0 fut, 
 
 Az RBAC-alapú szerepkörök rendelhetők. A szerepkörök gondoskodjon arról, hogy bizonyos jogosultsági szintek a környezetben elérhető erőforrások alapján. StorSimple-felhasználók közül választhatnak szerepkörök két típusa van: beépített és egyéni.
 
-* **Beépített szerepkörök** -tulajdonos, közreműködő, olvasó vagy felhasználói hozzáférés adminisztrátora a beépített szerepkörök lehet. További információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../role-based-access-control/overview.md#built-in-roles).
+* **Beépített szerepkörök** -tulajdonos, közreműködő, olvasó vagy felhasználói hozzáférés adminisztrátora a beépített szerepkörök lehet. További információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../role-based-access-control/built-in-roles.md).
 
 * **Egyéni szerepkörök** -Ha a beépített szerepkörök nem a saját igényeinek megfelelően, a StorSimple hozhat létre egyéni RBAC-szerepkörök. Egyéni RBAC-szerepkör létrehozásához egy beépített szerepkör kezdődhet, szerkesztheti, majd importálja vissza a környezetben. A letöltés és a szerepkör feltöltése felügyelt Azure PowerShell vagy az Azure parancssori felület használatával. További információkért lásd: [egyedi szerepkörök létrehozását a szerepköralapú hozzáférés-vezérlési](../role-based-access-control/custom-roles.md).
 
@@ -153,7 +154,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>Felhasználók hozzáadása az egyéni szerepkör
 
-A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. Ha hozzáférést biztosító, figyelembe kell vennie, hogy a gyermek örökli a szülő csomópontban biztosított hozzáférést. További információkért látogasson el [erőforrás hierarchia és hozzáférési öröklési](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance).
+A hozzáférés a szerepkör-hozzárendelés hatókörébe tartozó erőforrásból, erőforráscsoportból vagy előfizetésből biztosítható. Ha hozzáférést biztosító, figyelembe kell vennie, hogy a gyermek örökli a szülő csomópontban biztosított hozzáférést. További információkért látogasson el [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 1. Ugrás a **hozzáférés-vezérlés (IAM)**. Kattintson a **+ Hozzáadás** a hozzáférés-vezérlő panelen.
 

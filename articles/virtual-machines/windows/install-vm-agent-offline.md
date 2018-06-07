@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 2d332ce0da8622441d31a16a0addb9c06058998c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: df1bb64d0d753ae1853a2212c7c89d2e1613b8bc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657315"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure virtuális gép ügynökének telepítése kapcsolat nélküli módban 
 
@@ -108,7 +109,7 @@ Az alábbi lépések segítségével a Virtuálisgép-ügynök telepítése a ka
 
 Ha a virtuális gép Resource Manager deployment telepítési modellel létrehozott, az elkészült.
 
-### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>Használja a ProvisionGuestAgent tulajdonságot az Azure Resource Manager eszközzel létrehozott virtuális gépek
+### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>A ProvisionGuestAgent tulajdonsággal klasszikus virtuális gépekhez
 
 Ha a klasszikus modellt használó hozta létre a virtuális gép, használja az Azure PowerShell modul frissítése a **ProvisionGuestAgent** tulajdonság. A tulajdonság az Azure tájékoztatja, hogy a virtuális gép rendelkezik-e a Virtuálisgép-ügynök telepítve.
 

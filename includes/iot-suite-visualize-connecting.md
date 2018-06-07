@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666009"
 ---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
@@ -32,7 +33,7 @@ Az eszközről küldött telemetriai adatok megtekintheti a **eszközök** lap a
 
 ## <a name="act-on-your-device"></a>Az eszközön működésre
 
-Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli felügyeleti megoldás. Például a távoli felügyeleti megoldás a **hűtő** eszközök valósítja meg a **FirmwareUpdate** metódust.
+Az eszközök metódusok meghívása, használja a **eszközök** a távoli figyelésére szolgáló megoldás lapján. Például a távoli figyelésére szolgáló megoldás a **hűtő** eszközök valósítja meg a **FirmwareUpdate** metódust.
 
 1. Válasszon **eszközök** lehetőségre, és navigáljon a **eszközök** lap a megoldásban.
 
@@ -57,4 +58,4 @@ Az eszközök metódusok meghívása, használja a **eszközök** lap a távoli 
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk [testre szabhatja a távoli felügyeleti megoldásgyorsító](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) testre szabhatja a megoldásgyorsító néhány módját ismerteti.
+A cikk [testre szabhatja a távoli megfigyelési megoldásgyorsító](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) testre szabhatja a megoldásgyorsító néhány módját ismerteti.

@@ -14,17 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657570"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Tártallózó kibocsátási megjegyzései
 
 Ez a cikk az Azure Tártallózó 1.0.0 kiadás kibocsátási megjegyzései, valamint a kibocsátási megjegyzések a korábbi verziók tartalmazza.
 
 [A Microsoft Azure Tártallózó](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy különálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, a macOS és a Linux rendszeren.
+
+## <a name="version-110"></a>1.1.0-ás verzió
+05/09/2018
+
+### <a name="download-azure-storage-explorer-110"></a>Töltse le az Azure Storage Explorer 1.1.0-ás
+- [A Windows Azure Tártallózó 1.1.0-ás](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Az Azure Storage Explorer 1.1.0-ás Mac rendszerre](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Az Azure Storage Explorer 1.1.0-ás Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Új
+* A Tártallózó mostantól támogatja a Azurite. Megjegyzés: a Azurite a kapcsolat nem az alapértelmezett fejlesztési végpontokhoz szoftveresen kötött.
+* A Tártallózó mostantól támogatja a hozzáférési rétegek csak Blob és GPV2 Storage-fiókok. További információ a hozzáférési rétegek [Itt](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
+* A kezdési idő már nincs szükség, ha SAS-kód generálásához.
+
+### <a name="fixes"></a>Javítások
+* Az Amerikai Egyesült államokbeli kormányzati fiókok előfizetések lekérése megszakadt. A probléma javítását. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* Hozzáférési házirendek lejárati idejének mentése helytelen volt folyamatban. A probléma javítását. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* Egy elem egy SAS URL-címet a tárolóban lévő létrehozásakor a elem neve lett nem alatt fűzött URL-CÍMÉT. A probléma javítását. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* SAS-kód létrehozásakor a lejárati idő, amelyek az elmúlt néha lenne az alapértelmezett érték. Ez volt, ami a Tártallózó az utolsó kezdő és lejárati ideje használja alapértelmezett értékként. Most minden alkalommal, amikor megnyitja az SAS-párbeszédpanel, egy új alapértelmezett értékhalmazt jön létre. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* Másolás Storage-fiókok között, ha egy 24 órás SAS jön létre. Ha a Másolás 24 óránál hosszabb tartott, majd a példány sikertelen lesz. Azt is nagyobb a SAS tartozó utolsó 1 hét csökkenti annak esélyét egy példány egy lejárt SAS miatt sikertelen. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* Bizonyos tevékenységek a "Mégse" gombra kattintva volna nem mindig működnek. A probléma javítását. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* Bizonyos tevékenységek az átviteli sebesség hibás volt. A probléma javítását. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* A Nézet menü "Előző" helyesírását hibás volt. Ez most már megfelelően írta be. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* A Windows installer utolsó lapján kellett a "Tovább" gombra. Megváltoztatta a "Befejezés" gombra. [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* Lapon fókusz nem látható volt párbeszédek gombok HC fekete téma használatakor. Már látható. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* A kis-és az "Automatikus feloldása" műveletekhez a műveletnaplóban hibás volt. Már megfelelő. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* Entitás törlése a táblázatból, a jóváhagyást kérő párbeszédpanel hibajelző ikon jelenik meg. A párbeszédpanel mostantól használ egy figyelmeztető ikon. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>Ismert problémák
+* Ha a VS Mac használjon, és korábban már hozott létre egyéni AAD-konfigurációt, esetleg nem jelentkezik be. A probléma megoldása érdekében törölje a tartalmát ~ /. IdentityService/AadConfigurations. Ha ezzel nem feloldásához, adjon fűzni [probléma](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite még teljesen létrehozva összes Storage API-k. Emiatt előfordulhat váratlan hibák vagy viselkedés tárolására való használata során Azurite fejlesztési.
+* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors elérés érdekében. Ezt követően a fókusz, frissítse az összes is.
+* A onedrive vállalati verzió mappából feltöltése NodeJS hiba miatt nem működik. A hiba rögzített, de még nincs integrálva elektronsugár.
+* Ha Azure verem célzó, bizonyos fájlokat, hozzáfűző blobok feltöltése meghiúsulhat.
+* Után a "Mégse gombra" kattintva meg olyan feladatra, ez eltarthat egy kis ideig, megszakítja a tevékenység. Ennek az az oka leírt Mégse szűrő megoldást használjuk [Itt](https://github.com/Azure/azure-storage-node/issues/317). 
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd akkor kell biztosítani, hogy a döntési elfelejti Tártallózó újraindítására.
+* Blobok (külön-külön vagy átnevezett blob tárolóhoz belül) átnevezése nem őrzi meg a pillanatképeket. Minden más tulajdonságok és metaadatok BLOB-, fájl-és entitások egy átnevezési megőriz.
+* Bár az Azure-verem jelenleg nem támogatja a fájlmegosztásokat, fájlmegosztások csomópont továbbra is egy csatolt verem Azure storage-fiók alatt jelenik meg.
+* A Tártallózó által használt elektronsugár rendszerhéj problémák léptek fel néhány (grafikus processzorral) GPU-hardveres gyorsítás rendelkezik. A Tártallózó (üres) üres fő ablak megjelenítése, ha megpróbálhatja Tártallózó indítása a parancssorból, és a GPU gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* A Linux-felhasználók számára, szüksége lesz a telepítendő [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Ubuntu 14.04 felhasználójához, meg kell győződnie arról ÖET folyamatosan naprakész adatokat tartalmazzon – ezt megteheti a következő parancsok futtatásával, és indítsa újra a számítógépet:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a számítógépet erre:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Korábbi kiadások
+
+* [1.0.0 verzió](#version-100)
+* [0.9.6 verzió](#version-096)
+* [0.9.5 verzió](#version-095)
+* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
+* [0.9.2 verzió](#version-092)
+* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
+* [0.8.16 verzió](#version-0816)
+* [0.8.14 verzió](#version-0814)
+* [0.8.13 verzió](#version-0813)
+* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
+* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
+* [0.8.7 verzió](#version-087)
+* [0.8.6 verzió](#version-086)
+* [0.8.5 verzió](#version-085)
+* [0.8.4 verzió](#version-084)
+* [0.8.3 verzió](#version-083)
+* [0.8.2 verzió](#version-082)
+* [0.8.0 verzió](#version-080)
+* [0.7.20160509.0 verzió](#version-07201605090)
+* [0.7.20160325.0 verzió](#version-07201603250)
+* [0.7.20160129.1 verzió](#version-07201601291)
+* [0.7.20160105.0 verzió](#version-07201601050)
+* [0.7.20151116.0 verzió](#version-07201511160)
 
 ## <a name="version-100"></a>1.0.0 verzió
 04/16/2018
@@ -44,7 +130,7 @@ Ez a cikk az Azure Tártallózó 1.0.0 kiadás kibocsátási megjegyzései, vala
 * Továbbfejlesztett kisegítő és képernyős olvasó támogatása. Ha kisegítő lehetőségeit, tekintse meg a [kisegítő dokumentáció](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) további információt.
 * Most már a Tártallózó elektronsugaras 1.8.3.
 
-### <a name="breaking-changes"></a>Módosítások megszakítása
+### <a name="breaking-changes"></a>Kompatibilitástörő változások
 * A Tártallózó átváltott egy új hitelesítési könyvtárat. A kapcsolót, hogy a szalagtár részeként szüksége lesz a fiók ismételt bejelentkezni, és újra szűrt előfizetése
 * A bizalmas adatok titkosítására használt módszer megváltozott. Ez azt eredményezheti, a újra hozzáadásra kellene gyorselérési elemek egy része, és/vagy is csatlakoztatva kell lennie objektumkörnyezetben erőforrásokat.
 
@@ -95,31 +181,6 @@ Ez a cikk az Azure Tártallózó 1.0.0 kiadás kibocsátási megjegyzései, vala
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Korábbi kiadások
-
-* [0.9.6 verzió](#version-096)
-* [0.9.5 verzió](#version-095)
-* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
-* [0.9.2 verzió](#version-092)
-* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
-* [0.8.16 verzió](#version-0816)
-* [0.8.14 verzió](#version-0814)
-* [0.8.13 verzió](#version-0813)
-* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
-* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
-* [0.8.7 verzió](#version-087)
-* [0.8.6 verzió](#version-086)
-* [0.8.5 verzió](#version-085)
-* [0.8.4 verzió](#version-084)
-* [0.8.3 verzió](#version-083)
-* [0.8.2 verzió](#version-082)
-* [0.8.0 verzió](#version-080)
-* [0.7.20160509.0 verzió](#version-07201605090)
-* [0.7.20160325.0 verzió](#version-07201603250)
-* [0.7.20160129.1 verzió](#version-07201601291)
-* [0.7.20160105.0 verzió](#version-07201601050)
-* [0.7.20151116.0 verzió](#version-07201511160)
 
 ## <a name="version-096"></a>0.9.6 verzió
 02/28/2018

@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9a590050acff814834dac85085d1a4dc5fc8190f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ab101d78320819b9fb48f2c431fb0f6afdb895ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657825"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Windows Azure virtuális gépek távoli asztali kapcsolat hibák részletes hibaelhárítási lépéseket
 A cikkben az Azure virtuális gépek Windows-alapú összetett távoli asztal hibák megoldásában részletes hibaelhárítási lépéseket.
@@ -112,7 +113,7 @@ Ellenőrizze, hogy a végpont-e a probléma, távolítsa el a jelenlegi végpont
 ## <a name="source-4-network-security-groups"></a>4. forrás: Hálózati biztonsági csoportok
 Hálózati biztonsági csoportok lehetővé teszik a részletesebben vezérelhető, engedélyezett bejövő és kimenő forgalom. Alhálózatok átfedés szabályokat hozhat létre, és a felhőalapú szolgáltatások egy Azure virtuális hálózatra.
 
-Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. Hatékony biztonsági csoport szabályokat, hogy biztosítsa a bejövő "Engedélyezés" NSG-t is felhasználhatja a szabály létezik-e, és a rendszer előrébb RDP-porthoz (3389-es alapértelmezett). További információkért lásd: [használatával hatékony biztonsági szabályokat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+Az [IP-folyamat ellenőrzésével](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) győződjön meg róla, hogy a hálózati biztonsági csoportok szabályai nem blokkolják a virtuális gépek kimenő és bejövő forgalmát. Hatékony biztonsági csoport szabályokat, hogy biztosítsa a bejövő "Engedélyezés" NSG-t is felhasználhatja a szabály létezik-e, és a rendszer előrébb RDP-porthoz (3389-es alapértelmezett). További információkért lásd: [használatával hatékony biztonsági szabályokat hibáinak elhárítása a virtuális gép forgalom bonyolódjon](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ## <a name="source-5-windows-based-azure-vm"></a>5. forrás: Windows-alapú Azure virtuális gép
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)

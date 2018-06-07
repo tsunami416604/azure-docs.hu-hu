@@ -1,22 +1,22 @@
 ---
 title: Események küldése az Azure idő adatsorozat Insights környezetre |} Microsoft Docs
 description: Ez az oktatóanyag azt ismerteti, hogyan létrehozása és konfigurálása az event hubs, és futtassa a mintaalkalmazást, leküldéses események jelennek meg Azure idő adatsorozat Insights.
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
-editor: MarkMcGeeAtAquent
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 2621b7fd7a72c4ac3c8cbe7b166a6504f316e3d5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: db528f5a02d90e7e1e2e2cd3da30f04755575777
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657788"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Események küldése Time Series Insights-környezetbe eseményközponton keresztül
 Ez a cikk ismerteti, hogyan hozza létre és konfigurálja az eseményközpont, és futtassa a mintaalkalmazást leküldéses eseményekre. Ha egy meglévő event hubs eseményközpontot, az események JSON formátumban, ez az oktatóanyag kihagyhatja, és megtekintheti a környezet [idő adatsorozat Insights](https://insights.timeseries.azure.com).
@@ -71,9 +71,9 @@ Referenciaadatok idő adatsorozat insightsban kezeléséről további informáci
 ## <a name="sample-code-to-push-events"></a>Mintakód események leküldéséhez
 1. Nyissa meg az event hub csoportházirend nevű **MySendPolicy**. Másolás a **kapcsolati karakterlánc** a házirend-kulccsal.
 
-  ![A MySendPolicy kapcsolati karakterlánc másolása](media/send-events/sample-code-connection-string.png)
+  ![A MySendPolicy kapcsolati sztring másolása](media/send-events/sample-code-connection-string.png)
 
-2. A következő kód futtatásával 600 eseményt küld mindhárom eszközre. Frissítse az `eventHubConnectionString` elemet a kapcsolati karakterlánccal.
+2. A következő kód futtatásával 600 eseményt küld mindhárom eszközre. Frissítse az `eventHubConnectionString` elemet a kapcsolati sztringgel.
 
 ```csharp
 using System;

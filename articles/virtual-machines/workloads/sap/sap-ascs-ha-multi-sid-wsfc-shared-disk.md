@@ -1,13 +1,13 @@
 ---
-title: "SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-on |} Microsoft Docs"
-description: "Multi-SID a magas rendelkezésre állás, a Windows Server feladatátvételi fürtszolgáltatás és megosztott lemez Azure SAP ASC/SCS példányok"
+title: SAP ASC/SCS példány multi-SID a magas rendelkezésre állás, Windows Server feladatátvételi fürtszolgáltatás és megosztott lemezt az Azure-on |} Microsoft Docs
+description: Multi-SID a magas rendelkezésre állás, a Windows Server feladatátvételi fürtszolgáltatás és megosztott lemez Azure SAP ASC/SCS példányok
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82cc943f983b3dedfc0f64f2eec5b4425a4bf81
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656730"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -248,7 +249,7 @@ A teljes fekvő két magas rendelkezésre állású SAP rendszerrel néz ki:
 
 ![SAP magas rendelkezésre állású multi-SID telepítése két SAP rendszer SID-k][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a>Az infrastruktúra előkészítése egy SAP multi-SID forgatókönyv
+## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Az infrastruktúra előkészítése egy SAP multi-SID forgatókönyv
 
 Készítse elő az infrastruktúrát, egy további SAP ASC/SCS példányát telepítheti a következő paraméterekkel:
 
@@ -432,7 +433,7 @@ A magas szintű eljárás a következőképpen történik:
 
 10. [Az SAP ASC/SCS-példány feladatátvevő és SIOS replikációs teszteléséhez][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hálózatkezelés korlátok: az Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több virtuális IP-címek az Azure terheléselosztó][load-balancer-multivip-overview]

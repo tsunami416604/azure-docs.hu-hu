@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e15016da271d512fd9b87d5c14091305a92770b5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a2405eb9698b326693b873edf1cc1396eecadafa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666004"
 ---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>Az IoT eszköz viselkedésének meghatározása
 
 Az IoT Hub szerializáló ügyfélkódtára egy modell alapján határozza meg az eszköz és az IoT Hub közötti üzenetek formátumát.
 
-1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a helyőrző értékeket `[Device Id]` és `[Device connection string]` fizikai eszköz feljegyzett értékekkel felvette a távoli figyelési megoldást:
+1. Adja hozzá a következő változódeklarációkat az `#include` utasítások után. Cserélje le a helyőrző értékeket `[Device Id]` és `[Device connection string]` fizikai eszköz feljegyzett értékekkel felvette a távoli figyelésére szolgáló megoldás:
 
     ```c
     static const char* deviceId = "[Device Id]";
@@ -283,7 +284,7 @@ Most adja hozzá a kódot, amely megvalósítja a modellben meghatározott visel
 
     - Inicializálja a platformot.
     - Regisztrálja a Contoso névteret a szerializációs kódtárban.
-    - Inicializálja az ügyfelet az eszközkapcsolati karakterlánccal.
+    - Inicializálja az ügyfelet az eszközkapcsolati sztringgel.
     - Hozzon létre egy példányát a **hűtő** modell.
     - Létrehozza és elküldi a jelentett tulajdonságértékeket.
     - Minden ötödik másodperc, amíg a belső vezérlőprogram-frissítés állapota telemetriai adatokat küldhet hurkot hoz létre **Várakozás**.

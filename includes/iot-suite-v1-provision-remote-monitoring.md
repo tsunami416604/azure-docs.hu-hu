@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: iot-accelerators
+author: dominicbetts
+ms.service: iot-accelerators
+ms.topic: include
+ms.date: 05/30/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 4224575644e754724d2129f101aed6b9e4b54b65
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670166"
+---
 ## <a name="provision-the-solution"></a>A megoldás megvalósítása
 
 Ha még nem építette ki az előre konfigurált távoli figyelési megoldást a fiókban:
@@ -21,7 +38,7 @@ Ha még nem építette ki az előre konfigurált távoli figyelési megoldást a
 
 Hiányol bizonyos részleteket a megoldásával kapcsolatban? A [felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/321918-azure-iot) elküldheti a szolgáltatásokkal kapcsolatos javaslatait.
 
-[lnk-azureiotsuite]: https://www.azureiotsuite.com
+[lnk-azureiotsuite]: https://www.azureiotsolutions.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-v1-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-v1-faq.md

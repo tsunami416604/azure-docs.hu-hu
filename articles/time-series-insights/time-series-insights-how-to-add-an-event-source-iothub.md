@@ -1,21 +1,21 @@
 ---
-title: "Az IoT-központ eseményforrást hozzáadása Azure idő adatsorozat Insights |} Microsoft Docs"
-description: "Ez a cikk ismerteti, amely az IoT-központ az idő adatsorozat Insights-környezethez csatlakozik egy eseményforrás hozzáadása"
-services: time-series-insights
+title: Az IoT-központ eseményforrást hozzáadása Azure idő adatsorozat Insights |} Microsoft Docs
+description: Ez a cikk ismerteti, amely az IoT-központ az idő adatsorozat Insights-környezethez csatlakozik egy eseményforrás hozzáadása
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 01ab5017a5f16a0c46ea2bc600cef6bbf81de963
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652525"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Az IoT-központ eseményforrást felvétele idő adatsorozat Insights környezet
 A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az adatokat az IoT-központ idő adatsorozat Insights környezetébe eseményforrást hozzáadása.
@@ -34,7 +34,7 @@ A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az ad
 3. Az a **környezet topológia** elemcsoportban kattintson **eseményforrások**.
    ![Esemény adatforrásokat + Hozzáadás](media/time-series-insights-how-to-add-an-event-source-iothub/1-event-sources.png)
 
-4. Kattintson a **+ Hozzáadás**.
+4. Kattintson a **+Hozzáadás** gombra.
 
 5. Adjon meg egy **Eseményforrás neve** egyedi idő adatsorozat Insights ebben a környezetben, mint **esemény-adatfolyam**.
 
@@ -57,7 +57,7 @@ A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az ad
    | Az IoT-központ házirend neve | Válassza ki a megosztott elérési házirendet, amely az IoT-központ beállítások lapján található. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. A megosztott hozzáférési házirend a eseményforrás *kell* rendelkezik **service csatlakozás** engedélyek.
    | Az IoT-központ házirend kulcs | A kulcs van előre feltöltve.
    | Az IoT-központ fogyasztói csoportot | A rendszer kiolvassa az eseményeket az IoT hubból fogyasztói csoportot. Ajánlott az eseményforrás dedikált fogyasztói csoportot használja.
-   | Esemény szerializálási formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
+   | Eseményszerializációs formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
    | Időbélyeg-tulajdonság neve | Ez az érték határozza meg, az üzenet adataihoz, az IoT hubhoz küldött üzenet formátuma tisztában kell. Ez az érték a **neve** az üzenet adataihoz, az esemény időbélyegzője használni kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen marad, a **esemény sorba helyezni időtartam** belül az esemény az esemény időbélyegzője forrás használatos. |
 
 9. Ha be van jelölve a **adja meg az IoT Hub beállításainak manuális** beállítást, a következő táblázat ismerteti, minden szükséges tulajdonság:
@@ -70,7 +70,7 @@ A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az ad
    | Az IoT-központ házirend neve | A megosztott elérési házirendet, amelyet létrehozhat az IoT-központ beállítások lapon. Minden megosztott elérési házirend rendelkezik egy nevet, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsokkal. A megosztott hozzáférési házirend a eseményforrás *kell* rendelkezik **service csatlakozás** engedélyek.
    | Az IoT-központ házirend kulcs | A megosztott elérési kulcsot a Service Bus-névtér való hozzáférés hitelesítéséhez használt. Ide írja be az elsődleges vagy másodlagos kulcsot.
    | Az IoT-központ fogyasztói csoportot | A rendszer kiolvassa az eseményeket az IoT hubból fogyasztói csoportot. Ajánlott az eseményforrás dedikált fogyasztói csoportot használja.
-   | Esemény szerializálási formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
+   | Eseményszerializációs formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
    | Időbélyeg-tulajdonság neve | Ez az érték határozza meg, az üzenet adataihoz, az IoT hubhoz küldött üzenet formátuma tisztában kell. Ez az érték a **neve** az üzenet adataihoz, az esemény időbélyegzője használni kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen marad, a **esemény sorba helyezni időtartam** belül az esemény az esemény időbélyegzője forrás használatos. |
 
 10. Válassza ki **létrehozása** hozzáadása az új esemény forrását.
@@ -95,7 +95,7 @@ Egy új felhasználói csoport hozzáadása az IoT Hub, kövesse az alábbi lép
 
 5. Válassza ki **mentése** menteni az új fogyasztói csoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Adja meg az adat-hozzáférési házirendjeit](time-series-insights-data-access.md) az adatok védelmét.
 - [Események küldése](time-series-insights-send-events.md) esemény forrását.
 - A környezet az elérni a [idő adatsorozat Insights explorer](https://insights.timeseries.azure.com).

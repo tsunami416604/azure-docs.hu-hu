@@ -1,9 +1,9 @@
 ---
-title: "Oracle-megoldások a Microsoft Azure |} Microsoft Docs"
-description: "További tudnivalók a támogatott konfigurációk és korlátozások vonatkoznak a Microsoft Azure Oracle-megoldások."
+title: Oracle-megoldások a Microsoft Azure |} Microsoft Docs
+description: További tudnivalók a támogatott konfigurációk és korlátozások vonatkoznak a Microsoft Azure Oracle-megoldások.
 services: virtual-machines-linux
-documentationcenter: 
-manager: timlt
+documentationcenter: ''
+manager: jeconnoc
 author: rickstercdn
 tags: azure-resource-management
 ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: daed709b4b4be87ba75f5539bd31c666b3a37414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656346"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Oracle-megoldások és a központi telepítést, a Microsoft Azure
 Ez a cikk a Microsoft Azure különböző Oracle megoldások sikeres telepítéséhez szükséges információkat tárgyalja. Ezek a megoldások az Azure piactéren Oracle által közzétett virtuálisgép-rendszerképek alapulnak. Jelenleg elérhető rendszerkép listájának lekéréséhez futtassa a következő parancsot:
@@ -102,6 +103,6 @@ Kapcsolódó tudnivalókért lásd a Tudásbázis következő cikkét **860340.1
    A JDK 6 és 7 lemezképeket, és a virtuális gépek és származik, képek JDK csak Azure-ban használható.
 * **64 bites JDK.** Oracle WebLogic Server virtuálisgép-lemezképeket és az Azure által biztosított Oracle JDK virtuálisgép-lemezképeket tartalmaz a Windows Server és a JDK 64 bites verziói.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már rendelkezik aktuális Oracle megoldások áttekintése a Microsoft Azure-on. A következő lépés központi telepítése az Azure első Oracle-adatbázishoz.
 - Próbálja meg a [az Oracle-adatbázis létrehozása az Azure](oracle-database-quick-create.md) oktatóanyag első lépéseiben.

@@ -1,11 +1,11 @@
 ---
-title: "Magas rendelkezésre állású STONITH SAP Hana Azure (nagy példányok) beállítása |} Microsoft Docs"
-description: "Magas rendelkezésre állású SAP Hana Azure (nagy példányok) használatával a STONITH SUSE létrehozni"
+title: Magas rendelkezésre állású STONITH SAP Hana Azure (nagy példányok) beállítása |} Microsoft Docs
+description: Magas rendelkezésre állású SAP Hana Azure (nagy példányok) használatával a STONITH SUSE létrehozni
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,17 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d710fe24673c6ddc581d36e4f0cacdb750ff74f9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 344a48ff82bd93bf8dc9924e09399e72b9f88e2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656363"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Állítsa be a STONITH használatával SUSE a magas rendelkezésre állás
 A dokumentum biztosít a részletes, lépésekre osztott utasításaiért beállítása a magas rendelkezésre állás az STONITH eszközt SUSE operációs rendszeren.
 
-**Jogi nyilatkozat:** *Ez az útmutató a készlet teszteléséhez mentése sikeresen működik a Microsoft HANA nagy példányok környezetben származik. Microsoft szolgáltatás-felügyeleti csoport nagy HANA-példányok nem támogatja az operációs rendszer, mert szükség lehet további hibaelhárítási és az operációs rendszer réteg tisztázása SUSE kapcsolódni. Microsoft felügyeleti csoport STONITH eszköz beállítása és teljes mértékben támogatja, és tehetők STONITH eszközök kapcsolatos problémák elhárítása.*
+**Jogi nyilatkozat:** *Ez az útmutató a telepítő sikeresen működik a Microsoft HANA nagy példányok környezetben végzett teszteléséhez származik. Microsoft szolgáltatás-felügyeleti csoport nagy HANA-példányok nem támogatja az operációs rendszer, mert szükség lehet további hibaelhárítási és az operációs rendszer réteg tisztázása SUSE kapcsolódni. Microsoft felügyeleti csoport STONITH eszköz beállítása és teljes mértékben támogatja, és tehetők STONITH eszközök kapcsolatos problémák elhárítása.*
 ## <a name="overview"></a>Áttekintés
 Állítsa be a SUSE fürtszolgáltatás használata magas rendelkezésre állás, a következő előfeltételeknek kell megfelelnie.
 ### <a name="pre-requisites"></a>Előfeltételek
@@ -32,10 +33,10 @@ A dokumentum biztosít a részletes, lépésekre osztott utasításaiért beáll
 - HANA nagy példányok kiszolgálók SMT server javítások/csomagok segítségével csatlakoznak
 - Operációs rendszer van telepítve, a legújabb javítások
 - NTP (kiszolgálót) be van állítva.
-- Elolvastam és megértettem a legújabb SUSE dokumentációja beállítása magas rendelkezésre ÁLLÁSÚ
+- Elolvastam és megértettem a magas rendelkezésre ÁLLÁSÚ telepítés SUSE dokumentációja legújabb verzióját
 
-### <a name="set-up-details"></a>Részletek beállítása
-- Ebben az útmutatóban használt állítsa be a következőt:
+### <a name="setup-details"></a>A telepítő részletei
+Ez az útmutató a következő telepítő használja:
 - Operációs rendszer: SLES 12 SP1 SAP
 - HANA nagy példányok: 2xS192 (négy szoftvercsatornák, 2 TB)
 - HANA-verzió: HANA 2.0 SP1
@@ -50,7 +51,7 @@ Nagy példányok HANA HSR beállításakor szolgáltatás vezetőség Microsoft 
 - Ügyfél neve (például Microsoft)
 - SID - HANA rendszerazonosító (például H11)
 
-Miután beállította a STONITH eszköz, Microsoft Service vezetőség adhat a SBD eszköz neve, és az iSCSI-tárolóhoz, STONITH konfigurálására használó IP-címének beállítása. 
+Miután beállította a STONITH eszköz, a Microsoft szolgáltatás-felügyeleti csoport biztosít SBD eszköz nevét és az iSCSI-tárolóhoz, amelyet felhasználhat STONITH telepítő konfigurálását célzó IP-címét. 
 
 A végpontok közötti STONITH használatával magas rendelkezésre ÁLLÁSÚ beállításához a következő lépéseket kell követni kell:
 
@@ -64,7 +65,7 @@ A végpontok közötti STONITH használatával magas rendelkezésre ÁLLÁSÚ be
 8.  A feladatátvételi folyamat tesztelése
 
 ## <a name="1---identify-the-sbd-device"></a>1.   A SBD eszköz azonosítására
-Ez a szakasz ismerteti, hogyan meghatározásához SBD a készlet mentése után a Microsoft service management csapatának van beállítva a STONITH. **Ez a szakasz csak a meglévő ügyfél vonatkozik**. Ha egy új ügyfél, a Microsoft felügyeleti csoport által nyújtott SBD eszköz neve, és hogy ez a szakasz kihagyhatja.
+Ez a szakasz ismerteti, hogyan meghatározásához SBD a telepítés után a Microsoft service management csapatának van beállítva a STONITH. **Ez a szakasz csak a meglévő ügyfél vonatkozik**. Ha egy új ügyfél, a Microsoft felügyeleti csoport által nyújtott SBD eszköz neve, és hogy ez a szakasz kihagyhatja.
 
 1.1 módosítása */etc/iscsi/initiatorname.isci* számára 
 ``` 
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 a fürt beállítása
-3.2.1 használhatja *magas rendelkezésre állású fürt-inicializálás* parancsot, vagy a fürt beállítása a yast2 varázsló segítségével. Ebben az esetben yast2 varázslót használta azt. Ez a lépés végrehajtása **csak az elsődleges csomóponton lévő**.
+3.2.1 használhatja *magas rendelkezésre állású fürt-inicializálás* parancsot, vagy a fürt beállítása a yast2 varázsló segítségével. Ebben az esetben használja a yast2 varázslót. Ez a lépés végrehajtása **csak az elsődleges csomóponton lévő**.
 
 Hajtsa végre a yast2 > magas rendelkezésre állású > fürt ![yast-vezérlő-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-Kattintson a **Mégse** azt már a halk2 csomag telepítve van.
+Kattintson a **Mégse** óta a halk2 csomag már telepítve van.
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -163,7 +164,7 @@ A hitelesítés az IP-címek és előtti shared kulcsok használata az Csync2 t�
 Kattintson a **következő**
 ![yast-fürt-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
-Az alapértelmezett beállítás rendszerindítása ki volt kapcsolva, módosítsa az "on", így támasztja rendszerindító elindult. A választás a beállított követelmények alapján végezheti el.
+Az alapértelmezett beállítás rendszerindítása ki volt kapcsolva, módosítsa az "on", így támasztja rendszerindító elindult. A választás a telepítési követelmények alapján végezheti el.
 Kattintson a **következő** és a fürt konfigurálása nem fejeződött be.
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4.   A Softdog figyelő beállítása
@@ -261,7 +262,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Fürt tulajdonságainak és erőforrásainak konfigurálása 
 Ez a szakasz a fürterőforrásokat konfigurálásának lépéseit ismerteti.
-Ebben a példában azt adta meg a következő erőforrást, a többi konfigurálhatja (ha szükséges) hivatkozik a SUSE magas rendelkezésre ÁLLÁSÚ útmutató. Hajtsa végre a config **egyik csomópontján** csak. Hajtsa végre az elsődleges csomóponton.
+Ebben a példában, állítsa be a következő erőforrás a többi konfigurálhatja (ha szükséges) a SUSE magas rendelkezésre ÁLLÁSÚ útmutató hivatkozik. Hajtsa végre a config **egyik csomópontján** csak. Hajtsa végre az elsődleges csomóponton.
 
 - Fürt rendszerindítási
 - STONITH eszköz
@@ -342,7 +343,7 @@ Most, támasztja szolgáltatás leállítása **csomópont2** és erőforrások 
 
 
 ## <a name="9-troubleshooting"></a>9. Hibaelhárítás
-Ez a szakasz ismerteti a néhány hiba forgatókönyveket, amelyek a létrehozott terjedelme is. Előfordulhat, hogy nem feltétlenül szembesülhetnek ezeket a problémákat.
+Ez a szakasz ismerteti a néhány hiba forgatókönyveket, amelyek a telepítés során előforduló is. Előfordulhat, hogy nem feltétlenül szembesülhetnek ezeket a problémákat.
 
 ### <a name="scenario-1-cluster-node-not-online"></a>1. forgatókönyv: Fürtcsomópont nincs online állapotban
 Ha a csomópontokon nem jeleníti meg a kezelő online, megpróbálhatja kapcsolása a következő.
@@ -397,7 +398,7 @@ Tekintse át a módosításokat, és kattintson az OK gombra
 
 Csomag telepítési hibákra vonatkozó ![yast végrehajtása installation.png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-Kattintson a Tovább gombra
+Kattintson a Next (Tovább) gombra.
 
 ![yast-telepítés – report.png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
@@ -534,7 +535,7 @@ A fenti javítás után csomópont2 kell hozzáadják a fürt
 ![magas rendelkezésre állású-fürt-illesztési-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
 ## <a name="10-general-documentation"></a>10. Általános dokumentáció
-További információ a SUSE magas rendelkezésre ÁLLÁSÚ állítsa be a következő cikkekben talál: 
+A következő cikkekben található további információ a SUSE magas rendelkezésre ÁLLÁSÚ telepítés: 
 
 - [SAP HANA SR teljesítményre optimalizált forgatókönyv](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
 - [Storage-alapú kerítés](https://www.suse.com/documentation/sle-ha-2/book_sleha/data/sec_ha_storage_protect_fencing.html)

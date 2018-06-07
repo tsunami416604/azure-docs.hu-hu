@@ -4,7 +4,7 @@ description: Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepí
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c78b764b66e677144186831b6139fd6a0aae7e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656193"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Az SAP NetWeaver Azure virtuális gépek adatbázis-kezelő telepítése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -539,9 +540,10 @@ Egy forgatókönyvek, ahol ügyfélként szeretné helyezni a központilag telep
 Felügyelt lemezek használatakor telepítheti át a prémium szintű Storage szerint:
 
 1. A virtuális gép felszabadítása
-2. Ha szükséges, méretezze át a virtuális gép a megfelelő méretűre, amely támogatja a prémium szintű Storage (például a DS vagy a GS)
-3. Prémium (SSD) lemez felügyelt fiók típusának módosítása
-4. A virtuális gép elindítása
+1. Ha szükséges, méretezze át a virtuális gép a megfelelő méretűre, amely támogatja a prémium szintű Storage (például a DS vagy a GS)
+1. Prémium (SSD) lemez felügyelt fiók típusának módosítása
+1. Módosítsa a gyorsítótárazást az adatlemezek fejezetben szereplő ajánlás szerint [a virtuális gépek és az adatok gyorsítótárazása][dbms-guide-2.1]
+1. A virtuális gép elindítása
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Virtuális gépek telepítése az SAP, az Azure-ban
 A Microsoft Azure virtuális gépek és a kapcsolódó lemezek telepítendő több lehetőséget is kínál. Ezáltal fontos különbségek megismeréséhez, mert a virtuális gépek előkészített eltérőek lehetnek, a központi telepítési módszer függ. Általában azt megismerhetők a forgatókönyvek a következő fejezet ismerteti.
