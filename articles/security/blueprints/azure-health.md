@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "33894313"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi tervezetének - HIPAA/HITRUST állapotadatok és AI
 
@@ -368,7 +369,7 @@ A megoldás Azure esemény rács, az útválasztás kezelése összes események
 ### <a name="application-insights"></a>Application Insights
 - [Az Application Insights](/azure/application-insights/app-insights-overview) egy bővíthető alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek, több platformon. Az élő webalkalmazásának figyelésére használhatja. Teljesítményanomáliákat észlel. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást. Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot.
 
-### <a name="azure-alerts"></a>Az Azure riasztások
+### <a name="azure-alerts"></a>Azure-riasztások
 - [Riasztások kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszik adatok konfigurálhatja a platformesemények létrehozási feltételeit. Riasztások is adja meg az értesítéseket, egy riasztási feltétel megegyezik a figyelési adatokat.
 
 ### <a name="operations-management-suite-oms"></a>Az Operations Management Suite (OMS)
@@ -382,7 +383,7 @@ A megoldás Azure esemény rács, az útválasztás kezelése összes események
 
     -   Identitás és hozzáférés
 
-    -   Biztonsági és naplózása
+    -   Biztonság és naplózás
 
     -   Azure SQL DB Analytics
 

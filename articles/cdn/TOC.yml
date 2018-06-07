@@ -10,10 +10,12 @@
   items:
     - name: Profil és -végpont létrehozása
       href: cdn-create-new-endpoint.md
+    - name: Tárfiók integrálása
+      href: cdn-create-a-storage-account-with-cdn.md
 - name: Oktatóanyagok
   items:
     - name: Az Azure CDN hozzáadása webalkalmazáshoz
-      href: app-service-web-tutorial-content-delivery-network.md
+      href: cdn-add-to-web-app.md
     - name: Egyéni tartomány hozzáadása
       href: cdn-map-content-to-custom-domain.md
     - name: HTTPS konfigurálása egyéni tartományon
@@ -28,29 +30,21 @@
   items:
     - name: A gyorsítótárazás működése
       href: cdn-how-caching-works.md
+    - name: 'Tartalomkézbesítés, Kína'
+      href: cdn-china-delivery.md
+    - name: HTTP/2-támogatás
+      href: cdn-http2.md
 - name: Útmutatók
   items:
-    - name: Integrálás
-      items:
-        - name: Storage
-          items:
-            - name: Tárfiók integrálása
-              href: cdn-create-a-storage-account-with-cdn.md
-            - name: SAS-tároló támogatása
-              href: cdn-sas-storage-support.md
-        - name: Eltérő eredetű erőforrások megosztása
-          href: cdn-cors.md
     - name: Tartalom optimalizálása
+      href: cdn-optimization-overview.md
       items:
-        - name: Optimalizálás áttekintése
-          href: cdn-optimization-overview.md
-          items:
-            - name: Nagyméretű fájlok optimalizálása
-              href: cdn-large-file-optimization.md
-            - name: Online médialejátszás optimalizálása
-              href: cdn-media-streaming-optimization.md
-            - name: Dinamikus helygyorsítás
-              href: cdn-dynamic-site-acceleration.md
+        - name: Nagyméretű fájlok optimalizálása
+          href: cdn-large-file-optimization.md
+        - name: Online médialejátszás optimalizálása
+          href: cdn-media-streaming-optimization.md
+        - name: Dinamikus helygyorsítás
+          href: cdn-dynamic-site-acceleration.md
     - name: Kezelés
       items:
         - name: Kezelés az Azure PowerShell-lel
@@ -61,11 +55,9 @@
           href: cdn-improve-performance.md
         - name: A gyorsítótárazási viselkedés vezérlése
           items:
-            - name: A gyorsítótárazás működése
-              href: cdn-how-caching-works.md
             - name: A gyorsítótárazási viselkedés vezérlése gyorsítótár-szabályokkal
               href: cdn-caching-rules.md
-            - name: Tartalom gyorsítótárazása lekérdezési karakterláncok szerint
+            - name: Tartalom gyorsítótárazása lekérdezési sztringek szerint
               items:
                 - name: Standard csomag
                   href: cdn-query-string.md
@@ -83,35 +75,35 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Jogkivonat-hitelesítés
           href: cdn-token-auth.md
+        - name: SAS-tároló támogatása
+          href: cdn-sas-storage-support.md
+        - name: Eltérő eredetű erőforrások megosztása
+          href: cdn-cors.md
         - name: Erőforrások megfigyelése
           href: cdn-resource-health.md
         - name: A működés felülbírálása szabályokkal
           href: cdn-rules-engine.md
-        - name: Valós idejű értesítéseket kaphat
-          href: cdn-real-time-alerts.md
-        - name: HTTP/2-támogatás
-          href: cdn-http2.md
     - name: Elemzés
+      href: cdn-log-analysis.md
       items:
-        - name: Az Azure CDN használati mintáinak elemzése
-          href: cdn-log-analysis.md
+        - name: Azure-beli diagnosztikai naplók
+          href: cdn-azure-diagnostic-logs.md
+        - name: Elemzési eszközök az Azure CDN-hez a Verizontól
           items:
-            - name: Azure-beli diagnosztikai naplók
-              href: cdn-azure-diagnostic-logs.md
-            - name: Elemzési eszközök az Azure CDN-hez a Verizontól
-              items:
-                - name: Alapvető jelentések a Verizontól
-                  href: cdn-analyze-usage-patterns.md
-                - name: Egyéni jelentések a Verizontól
-                  href: cdn-verizon-custom-reports.md
-            - name: Elemzési eszközök az Azure CDN Premiumhoz a Verizontól
-              items:
-                - name: Extra szintű HTTP-jelentések létrehozása
-                  href: cdn-advanced-http-reports.md
-                - name: Valós idejű statisztikák megjelenítése
-                  href: cdn-real-time-stats.md
-                - name: Élcsomópont teljesítményelemzése
-                  href: cdn-edge-performance.md
+            - name: Alapvető jelentések a Verizontól
+              href: cdn-analyze-usage-patterns.md
+            - name: Egyéni jelentések a Verizontól
+              href: cdn-verizon-custom-reports.md
+        - name: Elemzési eszközök az Azure CDN Premiumhoz a Verizontól
+          items:
+            - name: Extra szintű HTTP-jelentések létrehozása
+              href: cdn-advanced-http-reports.md
+            - name: Valós idejű statisztikák megjelenítése
+              href: cdn-real-time-stats.md
+            - name: Élcsomópont teljesítményelemzése
+              href: cdn-edge-performance.md
+            - name: Valós idejű értesítéseket kaphat
+              href: cdn-real-time-alerts.md
     - name: Fejlesztés
       items:
         - name: .NET

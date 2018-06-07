@@ -73,10 +73,15 @@
       href: azure-web-sites-web-hosting-plans-in-depth-overview.md
     - name: OS-funkciók
       href: web-sites-available-operating-system-functionality.md
+    - name: Biztonság
+      href: app-service-security.md
+      items:
+        - name: Hitelesítés és engedélyezés
+          href: app-service-authentication-overview.md
+        - name: Az operációs rendszer és a futtatókörnyezet javítása
+          href: app-service-patch-os-runtime.md
     - name: Bemeneti és kimeneti IP-címek
       href: app-service-ip-addresses.md
-    - name: Hitelesítés és engedélyezés
-      href: app-service-authentication-overview.md
     - name: Hibrid kapcsolatok
       href: app-service-hybrid-connections.md
     - name: A Traffic Manager integrálása
@@ -85,8 +90,6 @@
       href: app-service-local-cache-overview.md
     - name: Diagnosztika
       href: app-service-diagnostics.md
-    - name: Az operációs rendszer és a futtatókörnyezet javítása
-      href: app-service-patch-os-runtime.md
 - name: Útmutatók
   items:
     - name: Alkalmazás konfigurálása

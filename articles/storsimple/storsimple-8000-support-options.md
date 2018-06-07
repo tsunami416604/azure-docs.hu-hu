@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "32191546"
 ---
 # <a name="storsimple-solution-support"></a>A StorSimple megoldás támogatása
 
@@ -44,7 +45,7 @@ A Microsoft a tárolási ügyfelek StorSimple vállalati rugalmas támogatási l
 | Segélyszolgálat kezdeti válasz ideje 24 x 7 támogatási jegy beküldése <br> Kezdeti válaszidő súlyosság alapján <sup>2 | Súlyossági A: 2 órán belül <br> Súlyossági b: 4 órán belül <br> Súlyossági C: 8 órán belül | Súlyossági A: belül 60 perc <br> Súlyossági b: 2 órán belül <br> Súlyossági C: 4 órán belül |
 | Telefonos támogatási lehetőséget (visszahívás)                                                                               | ✓                                                                               | ✓                                                                              |
 | Speciális részek csere (csak a StorSimple 8000 series) <sup>3</sup>                                              | Következő munkanapig <sup>4                                                              | 4 óránként                                                                 |
-| A mező helyszíni szolgáltatások Visszafejtés (csak a StorSimple 8000 series) <sup>3</sup>                                         | Nincs                                                                   | 4 óránként                                                                 |
+| A mező helyszíni szolgáltatások Visszafejtés (csak a StorSimple 8000 series) <sup>3</sup>                                         | Nem érhető el                                                                   | 4 óránként                                                                 |
 | A StorSimple virtuális tömb <sup>5</sup>                                                                              | ✓                                                                               | ✓                                                                              |
 | A StorSimple virtuális tömb példányok <sup>5</sup>                                                                 | Korlátlan                                                                        | Korlátlan                                                                       |
 

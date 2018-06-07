@@ -1,6 +1,6 @@
 ---
 title: Az egyes felhasználók Azure Notification Hubs használata leküldéses értesítések |} Microsoft Docs
-description: Megtudhatja, hogyan küldhetők leküldéses értesítések az egyes felhasználók Azure Notification Hubs használatával.
+description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
 documentationcenter: ios
 author: dimazaid
 manager: kpiteira
@@ -15,24 +15,25 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: dimazaid
 ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "33777535"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: Az egyes felhasználók Azure Notification Hubs használata leküldéses értesítések
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-Az oktatóanyag bemutatja, hogyan küldhetők az Azure Notification Hubs használatával leküldéses értesítések adott alkalmazásfelhasználónak, meghatározott eszközre. ASP.NET WebAPI háttérrendszerből használt hitelesíti az ügyfeleket, és értesítéseket, ahogy az az útmutató témakör [az alkalmazás háttérrendszeréből regisztrálása](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+Az oktatóanyag bemutatja, hogy hogyan küldhetők leküldéses értesítések adott alkalmazásfelhasználónak, adott eszközre az Azure Notification Hubs használatával. ASP.NET WebAPI háttérrendszerből használt hitelesíti az ügyfeleket, és értesítéseket, ahogy az az útmutató témakör [az alkalmazás háttérrendszeréből regisztrálása](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
-Ebben az oktatóanyagban tegye a következőket:
+Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * A WebAPI projekt létrehozása
-> * Hitelesíti az ügyfeleket, hogy a WebAPI háttérrendszerből
-> * Regisztrálhat a WebAPI háttérrendszerből használatával
-> * Értesítések küldése a WebAPI háttérrendszerből
-> * Az új WebAPI háttérrendszerből közzététele
+> * A WebAPI-projekt létrehozása
+> * Ügyfelek hitelesítése a WebAPI háttérrendszeren
+> * Regisztráció értesítésekre a WebAPI háttérrendszer használatával
+> * Értesítések küldése a WebAPI háttérrendszerről
+> * Az új WebAPI háttérrendszer közzététele
 > * Az iOS-alkalmazás módosítása
 > * Az alkalmazás tesztelése
 
@@ -82,7 +83,7 @@ Ha szeretné használni a háttérszolgáltatás Mobile Apps, tekintse meg a [Mo
    
         - (IBAction)LogInAction:(id)sender;
     ```
-2. A ViewController.h, adja hozzá a következő `#define` után az importálási utasítást. Helyettesítő a *< írja be a háttérkiszolgáló végpont\>*  helyőrző a célként megadott URL-címet, a háttéralkalmazás az előző szakaszban központi telepítéséhez használt. Például *http://you_backend.azurewebsites.net*.
+2. A ViewController.h, adja hozzá a következő `#define` után az importálási utasítást. Helyettesítő a *< írja be a háttérkiszolgáló végpont\>*  helyőrző a célként megadott URL-címet, a háttéralkalmazás az előző szakaszban központi telepítéséhez használt. Például: *http://you_backend.azurewebsites.net*.
    
     ```obj-c
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
@@ -478,10 +479,10 @@ Ha szeretné használni a háttérszolgáltatás Mobile Apps, tekintse meg a [Mo
     ![][4]
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóprogramban megtanulhatta leküldéses értesítések küldése adott felhasználóknak, akik számára a regisztrációt társított címkék. Leküldéses értesítések helyalapú beállításáról előzetes következő oktatóanyagot: 
+Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra: 
 
 > [!div class="nextstepaction"]
->[Leküldéses értesítések helyalapú](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
+>[Helyalapú leküldéses értesítések küldése](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
 
 
 [1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-interface.png

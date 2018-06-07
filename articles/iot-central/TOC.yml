@@ -81,7 +81,7 @@
   items:
     - name: Megoldások
       items:
-        - name: IoT Suite előre konfigurált megoldások
+        - name: IoT-megoldásgyorsítók
           href: /azure/iot-suite
         - name: IoT-központ
           href: /microsoft-iot-central

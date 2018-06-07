@@ -81,6 +81,8 @@
               href: n-series-driver-setup.md
         - name: Nagy teljesítményű számítás
           href: sizes-hpc.md
+        - name: Előző generációk
+          href: sizes-previous-gen.md
         - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
           href: acu.md
         - name: Teljesítményteszt pontszámai
@@ -190,7 +192,12 @@
         - name: Virtuális gép címkézése
           href: tag.md
         - name: Szkriptek futtatása virtuális gépeken
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Egyéni szkriptbővítmény
+              href: ../extensions/custom-script-windows.md
+            - name: Parancs futtatása
+              href: run-command.md
         - name: Ideiglenes meghajtó betűjelének módosítása
           href: change-drive-letter.md
         - name: Rendelkezésre állási csoport módosítása
@@ -329,41 +336,7 @@
         - name: DNS feloldása
           href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Virtuálisgép-bővítmények használata
-      items:
-        - name: Virtuálisgép-bővítmények – Áttekintés
-          href: extensions-features.md
-        - name: Egyéni parancsfájl-bővítmény
-          href: extensions-customscript.md
-        - name: OMS-ügynök bővítmény
-          href: extensions-oms.md
-        - name: PowerShell DSC bővítmény
-          href: extensions-dsc-overview.md
-          items:
-            - name: A PowerShell DSC bővítmény hitelesítőadat-kezelése
-              href: extensions-dsc-credentials.md
-            - name: DSC és VMSS sablonokkal
-              href: extensions-dsc-template.md
-        - name: Azure naplógyűjtő bővítmény
-          href: log-collector-extension.md
-        - name: Azure diagnosztikai bővítmény
-          href: extensions-diagnostics.md
-          items:
-            - name: Bővítményséma
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
-            - name: Engedélyezés a PowerShell használatával
-              href: ps-extensions-diagnostics.md
-            - name: Engedélyezés sablonokkal
-              href: extensions-diagnostics-template.md
-            - name: Hibaelhárítás
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
-        - name: Virtuálisgép-bővítmények exportálása
-          href: extensions-export-templates.md
-        - name: Bővítmények hibaelhárítása
-          href: extensions-troubleshoot.md
-        - name: Network Watcher-ügynök
-          href: extensions-nwa.md
-        - name: Bővítménytelepítés korlátozása
-          href: ../extensions/extensions-rmpolicy-howto-ps.md
+      href: ../extensions/overview.md
     - name: Virtuális gépek áttelepítése
       items:
         - name: AWS és helyszíni virtuális gépek migrálása

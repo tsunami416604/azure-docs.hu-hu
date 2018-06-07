@@ -13,7 +13,7 @@
 - name: Üzenetsorok
   href: ./queues/storage-queues-introduction.md
 - name: Táblák
-  href: ../cosmos-db/table-storage-overview.md
+  href: ./tables/table-storage-overview.md
 - name: Lemezek
   items:
     - name: Windows

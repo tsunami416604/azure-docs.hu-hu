@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.openlocfilehash: 808f25ee2c0b72f557ec72d159318e25cb7387ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
 ms.locfileid: "33790558"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media csomagoló segítségével statikus csomagolás feladatok végrehajtása
@@ -708,7 +708,7 @@ Ha szeretné titkosítani a HLS az AES-128, akkor a dinamikus (ajánlott) vagy s
 > [!NOTE]
 > Ahhoz, hogy a tartalom átalakítása HLS, meg kell először convert/a tartalom kódolása Smooth Streaming be.
 > Az beszerzése egyaránt AES HLS ellenőrizzük, hogy a MediaPackager_SmoothToHLS.xml fájlban a következő tulajdonságok beállítása: igaz, a kulcs értékét, és mutasson a authentication\authorization server keyuri érték titkosítása tulajdonság értéke.
-> A Media Services kulcsfájlt létre, és helyezheti el az eszköz a tárolóban. Másolja a /asset-containerguid/\*.key fájlt a kiszolgálóra kell (vagy a saját kulcs fájl létrehozása), és törölje a \*.key fájlt az eszköz a tárolóból.
+> A Media Services kulcsfájlt létre, és helyezheti el az eszköz a tárolóban. Másolja a /asset-containerguid/*.key fájlt a kiszolgálóra kell (vagy a saját kulcs fájl létrehozása), és törölje a *.key fájlt az eszköz a tárolóból.
 > 
 > 
 

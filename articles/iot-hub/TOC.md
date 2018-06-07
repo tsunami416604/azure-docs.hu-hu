@@ -151,11 +151,6 @@
 #### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
 ### [Fejlesztés korlátozott eszközökhöz](iot-hub-devguide-develop-for-constrained-devices.md)
 ### [Fejlesztés mobileszközökhöz](iot-hub-how-to-develop-for-mobile-devices.md)
-### Útválasztási üzenetek
-#### [.NET](iot-hub-csharp-csharp-process-d2c.md)
-#### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.js](iot-hub-node-node-process-d2c.md)
-#### [Python](iot-hub-python-python-process-d2c.md)
 ### [Avro-adatok lekérdezése központi útvonalról](iot-hub-query-avro-data.md)
 ### Üzenetküldés a felhőből az eszközökre
 #### [.NET](iot-hub-csharp-csharp-c2d.md)

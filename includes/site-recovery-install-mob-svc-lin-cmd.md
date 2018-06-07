@@ -24,7 +24,7 @@ Usage:
 
 |Paraméter|Típus|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|-r |Kötelező|Megadja, hogy a mobilitási szolgáltatás (MS) kell telepíteni, vagy MasterTarget (MT) kell telepíteni.|MS </br> MT|
+|-r |Kötelező|Megadja, hogy a mobilitási szolgáltatás (MS) kell telepíteni, vagy MasterTarget (MT) kell telepíteni.|MS </br> FŐ CÉLKISZOLGÁLÓ|
 |-d |Optional|Hely, ahol telepítve van.|/usr/local/ASR|
 |-v|Kötelező|Adja meg azt a platformot, amelyre telepítve van. </br> </br>- **VMware**: használja ezt az értéket, ha a mobilitási szolgáltatás telepítése a futó virtuális gép *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek*, és *fizikai kiszolgálók*. </br> - **Azure**: használja ezt az értéket, ha az ügynök telepítése egy Azure IaaS virtuális gépen.| VMware </br> Azure|
 |-k|Optional|Meghatározza, hogy a telepítő futtatásához csendes módban.| –|

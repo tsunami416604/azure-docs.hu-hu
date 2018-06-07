@@ -1,5 +1,5 @@
 - name: Az ExpressRoute dokumentációja
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az az ExpressRoute?
