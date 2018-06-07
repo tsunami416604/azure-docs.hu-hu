@@ -1,12 +1,29 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: jboeshart
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: jaboes
+ms.custom: include file
+ms.openlocfilehash: f363c52093e0ae8314e07e750eb4362f71e9a4b1
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826514"
+---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok lemezek felügyelt
 
-Ez a dokumentum végigvezeti a virtuális gépeket Azure Resource Manager-sablonok használatával kezelt és nem kezelt lemezek közötti különbségeket. Ez segít frissíteni a felügyelt lemezek nem felügyelt lemezt használ, meglévő sablonok. Referenciaként használjuk a [101-vm-egyszerű-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) útmutatóként sablont. Láthatja, hogy a sablon használatával is [által kezelt lemezeken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) egy korábbi verzióját használja, és [lemezek nem felügyelt](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) Ha szeretne közvetlenül hasonlítsa össze azokat.
+Ez a dokumentum végigvezeti a virtuális gépeket Azure Resource Manager-sablonok használatával kezelt és nem kezelt lemezek közötti különbségeket. A példák segítségével felügyelt lemezek nem felügyelt lemezt használ, meglévő sablonok frissítése. Referenciaként használjuk a [101-vm-egyszerű-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) útmutatóként sablont. Láthatja, hogy a sablon használatával is [által kezelt lemezeken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) egy korábbi verzióját használja, és [lemezek nem felügyelt](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) Ha szeretne közvetlenül hasonlítsa össze azokat.
 
 ## <a name="unmanaged-disks-template-formatting"></a>Nem felügyelt lemezek sablon formázás
 
-Első lépésként azt tekintse meg, hogyan nem felügyelt lemezek vannak telepítve. Nem felügyelt lemezek létrehozásakor a VHD-fájlok tárolásához storage-fiók szükséges. Hozzon létre egy új tárfiókot, vagy használjon már meglévő. Ez a cikk bemutatja, hogyan hozzon létre egy új tárfiókot. Ehhez szüksége van a tárolási fiók erőforrás az erőforrások blokkban alább látható módon.
+Első lépésként most hajtsa végre a megfelelő hogyan nem felügyelt lemezek egy pillantást vannak telepítve. Nem felügyelt lemezek létrehozásakor a VHD-fájlok tárolásához storage-fiók szükséges. Hozzon létre egy új tárfiókot, vagy használjon már meglévő. Ez a cikk bemutatja, hogyan hozzon létre egy új tárfiókot. Hozzon létre egy tárolási fiók erőforrást az erőforrások blokkban alább látható módon.
 
-```
+```json
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
@@ -20,9 +37,9 @@ Első lépésként azt tekintse meg, hogyan nem felügyelt lemezek vannak telep�
 }
 ```
 
-A virtuális gép objektumon belül igazolnia kell a storage-fiók segítségével győződjön meg arról, hogy a virtuális gép előtt létrehozott függ. Belül a `storageProfile` szakaszban azt adja meg a teljes URI-azonosítója a VHD helye, amely hivatkozik a tárfiók, és az operációsrendszer-lemezképet és az adatok lemezzel van szükség. 
+A virtuális gép objektumban hozzáadjon egy függőséget a tárfiók annak érdekében, hogy a virtual machine létrehozták. Belül a `storageProfile` szakaszban adja meg a teljes URI-azonosítója a VHD helye, amely hivatkozik a tárfiók, és az operációsrendszer-lemezképet és az adatok lemezzel van szükség.
 
-```
+```json
 {
     "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines",
@@ -81,7 +98,7 @@ Azure felügyelt lemezek a lemez egy legfelső szintű erőforrás lesz, és tö
 
 Felügyelt lemezzel rendelkező virtuális gép létrehozása, már nem szeretne létrehozni a tárolási erőforrás fiókot, és a következőképpen frissítheti a virtuálisgép-erőforrást. Kifejezetten vegye figyelembe, hogy a `apiVersion` tükrözi `2017-03-30` és a `osDisk` és `dataDisks` már nem hivatkozik egy adott URI-t a virtuális merevlemez. További tulajdonságok megadása nélkül való telepítésekor a fogja használni a lemez [Standard-LRS tárolási](../articles/storage/common/storage-redundancy.md). Ha nem ad meg nevet, tart formátuma `<VMName>_OsDisk_1_<randomstring>` az operációsrendszer-lemezképet a és `<VMName>_disk<#>_<randomstring>` adatok lemezek. Alapértelmezés szerint az Azure disk encryption le van tiltva; Olvasási/írási gyorsítótárazást az operációsrendszer-lemez és adatlemezek nincs. Az alábbi példában szereplő Észreveheti, továbbra is fennáll a tárolási fiók függőségi, bár ez csak a tárolási diagnosztikai és a lemezes tárolás esetén nem szükséges.
 
-```
+```json
 {
     "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
@@ -120,9 +137,9 @@ Felügyelt lemezzel rendelkező virtuális gép létrehozása, már nem szeretne
 
 ### <a name="using-a-top-level-managed-disk-resource"></a>Egy legfelső szintű felügyelt lemezes erőforrást használja
 
-Másik megoldásként a lemezkonfiguráció megadása a virtuálisgép-objektumot hozzon létre egy legfelső szintű lemezerőforrás, és csatlakoztassa a virtuális gép létrehozása során nem. Olyan lemezerőforrást az alábbiak szerint használandó adatlemezt például létrehozhatunk olyan.
+Másik megoldásként a lemezkonfiguráció megadása a virtuálisgép-objektumot hozzon létre egy legfelső szintű lemezerőforrás, és csatlakoztassa a virtuális gép létrehozása során nem. Például a következőképpen használandó adatlemezt lemezerőforrást is létrehozhat.
 
-```
+```json
 {
     "type": "Microsoft.Compute/disks",
     "name": "[concat(variables('vmName'),'-datadisk1')]",
@@ -140,9 +157,9 @@ Másik megoldásként a lemezkonfiguráció megadása a virtuálisgép-objektumo
 }
 ```
 
-A Virtuálisgép-objektum belül a lemez objektum csatolni kell majd azt is hivatkozhatnak. Adja meg a felügyelt lemezes, a létrehozott erőforrás-azonosítója a `managedDisk` tulajdonság lehetővé teszi a mellékletet, a lemez számára, a virtuális gép létrehozása. Vegye figyelembe, hogy a `apiVersion` a virtuális gép erőforrás értéke `2017-03-30`. Ne feledje, hogy létrehoztunk Önnek függősége a lemezerőforrástól sikeres létrehozása előtt a Virtuálisgép-létrehozási biztosításához. 
+Belül a Virtuálisgép-objektum a lemez objektum csatolni kell hivatkoznia. Adja meg a létrehozott kezelt lemez az erőforrás-azonosítója a `managedDisk` tulajdonság lehetővé teszi a mellékletet, a lemez számára, a virtuális gép létrehozása. A `apiVersion` a virtuális gép erőforrás értéke `2017-03-30`. Győződjön meg arról, sikeres létrehozása előtt a virtuális gép létrehozása a lemezerőforrástól függőség kerül. 
 
-```
+```json
 {
     "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
@@ -185,9 +202,9 @@ A Virtuálisgép-objektum belül a lemez objektum csatolni kell majd azt is hiva
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Felügyelt rendelkezésre állási csoportok felügyelt lemezek használata virtuális gépek létrehozása
 
-Felügyelt létrehozásához rendelkezésre állási készletek virtuális gépek felügyelt lemezt használ, adja hozzá a `sku` objektum a következő rendelkezésre állási erőforrás beállításához, állítsa be a `name` tulajdonságot `Aligned`. Ez biztosítja, hogy az egyes virtuális gépek a lemezek megfelelően különítve egymástól elkerülése érdekében a hibaérzékeny pontokat. Ne feledje, hogy a `apiVersion` esetében a rendelkezésre állási erőforrás értéke `2017-03-30`.
+Felügyelt létrehozásához rendelkezésre állási készletek virtuális gépek felügyelt lemezt használ, adja hozzá a `sku` objektum a következő rendelkezésre állási erőforrás beállításához, állítsa be a `name` tulajdonságot `Aligned`. Ez a tulajdonság biztosítja, hogy az egyes virtuális gépek a lemezek megfelelően különítve egymástól elkerülése érdekében a hibaérzékeny pontokat. Ne feledje, hogy a `apiVersion` esetében a rendelkezésre állási erőforrás értéke `2017-03-30`.
 
-```
+```json
 {
     "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/availabilitySets",
@@ -203,6 +220,29 @@ Felügyelt létrehozásához rendelkezésre állási készletek virtuális gépe
 }
 ```
 
+### <a name="standard-ssd-disks"></a>Standard SSD-lemezek
+
+Az alábbiakban a Standard SSD-lemezek létrehozásához a Resource Manager-sablon a szükséges paramétereket:
+
+* *apiVersion* Microsoft.Compute kell beállítani, mint `2018-04-01` (vagy újabb)
+* Adja meg *managedDisk.storageAccountType* , `StandardSSD_LRS`
+
+Az alábbi példa azt mutatja meg a *properties.storageProfile.osDisk* szakasz a szabványos SSD-lemezeket használó virtuális gépek:
+
+```json
+"osDisk": {
+    "osType": "Windows",
+    "name": "myOsDisk",
+    "caching": "ReadWrite",
+    "createOption": "FromImage",
+    "managedDisk": {
+        "storageAccountType": "StandardSSD_LRS"
+    }
+}
+```
+
+A teljes sablon példa bemutatja, hogyan sablonnal szabványos SSD lemez létrehozása, lásd: [virtuális gép létrehozása a Windows-lemezkép szabványos SSD Adatlemezekkel rendelkező](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+
 ### <a name="additional-scenarios-and-customizations"></a>További forgatókönyvek és testreszabása
 
 Teljes információ keresése a REST API előírásoknak, tekintse át a [felügyelt lemezes REST API-dokumentáció](/rest/api/manageddisks/disks/disks-create-or-update). További helyzeteket is, valamint az alapértelmezett és az elfogadható értékek, amelyek küldheti el a sablon központi telepítések keresztül API találja. 
@@ -216,4 +256,4 @@ Teljes információ keresése a REST API előírásoknak, tekintse át a [felüg
 * Látogasson el a [Azure felügyelt lemezekhez – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentum felügyelt lemezek tájékozódhat.
 * Tekintse át a virtuális gép erőforrásai sablon dokumentációját látogasson el a [Microsoft.Compute/virtualMachines sablonra való hivatkozást](/azure/templates/microsoft.compute/virtualmachines) dokumentum.
 * Tekintse át a sablon referenciadokumentációt tartalmaz lemezerőforrásokat látogasson el a [Microsoft.Compute/disks sablonra való hivatkozást](/azure/templates/microsoft.compute/disks) dokumentum.
-* Az Azure VM skálázási készletekben felügyelt lemezek használatáról további információért látogasson el a [adatlemezek használata méretezési csoportok](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) dokumentum.
+* Az Azure virtuálisgép-méretezési csoportok felügyelt lemezek használatáról további információért látogasson el a [adatlemezek használata méretezési csoportok](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) dokumentum.

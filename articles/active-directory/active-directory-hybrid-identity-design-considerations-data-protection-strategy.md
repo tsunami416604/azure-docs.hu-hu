@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 71a49b3d1ce22906a534a71f745685981b93f594
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801898"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824168"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az adatok védelme stratégia meghatározása
 Ebben a feladatban fogja definiálni, a data protection stratégiája a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, amelyet a megadott:
@@ -117,22 +117,21 @@ Miután a felhasználó hitelesítése az Azure AD, fontos értékelje ki a hozz
 
 A diagramban. ábra x. bemutatta minden interakció egy esetén elegendő az Azure AD hozzáférési vezérlési forgatókönyv jelöli. Az alábbiakban egy leírást az egyes forgatókönyvek közül választhat:
 
-1. Feltételes hozzáférés az alkalmazásokhoz a helyszínen szolgáltatott: használhat regisztrált eszközöket hozzáférési házirendekkel alkalmazásokat, amelyek a Windows Server 2012 R2 AD FS használatára van konfigurálva. A helyszíni feltételes hozzáférés beállításáról további információért lásd: [Helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával](active-directory-conditional-access-azure-portal.md).
+  1. Feltételes hozzáférés az alkalmazásokhoz a helyszínen szolgáltatott: használhat regisztrált eszközöket hozzáférési házirendekkel alkalmazásokat, amelyek a Windows Server 2012 R2 AD FS használatára van konfigurálva. A helyszíni feltételes hozzáférés beállításáról további információért lásd: [Helyszíni feltételes hozzáférés beállítása az Azure Active Directory eszközregisztrációjával](active-directory-conditional-access-azure-portal.md).
 
-2. Hozzáférés-vezérlés az Azure portálon: Azure is lehetővé teszi a portálhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlést (RBAC) használatával). Ez a módszer lehetővé teszi, hogy a vállalat az Azure portálon teheti meg egy adott műveletek számának korlátozása. Az RBAC történő hozzáférés szabályozása érdekében a portál használatával IT-rendszergazdák a következő hozzáférés-felügyeleti módszerek használatával is adhat hozzáférést:
+  2. Hozzáférés-vezérlés az Azure portálon: Azure is lehetővé teszi a portálhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlést (RBAC) használatával). Ez a módszer lehetővé teszi, hogy a vállalat az Azure portálon teheti meg egy adott műveletek számának korlátozása. Az RBAC történő hozzáférés szabályozása érdekében a portál használatával IT-rendszergazdák a következő hozzáférés-felügyeleti módszerek használatával is adhat hozzáférést:
 
-    * Csoportalapú szerepkör-hozzárendelést: is hozzáférést biztosít, amely képes-e szinkronizálva az Azure AD-csoportok a helyi Active Directoryból. Ez lehetővé teszi kihasználja a meglévő beruházások értékét, amely a szervezet által végrehajtott tooling és-folyamatok csoportok kezelése. Használhatja az Azure AD Premium a delegált csoport felügyeleti szolgáltatása.
-    * Beépített szerepkörök használatával az Azure-ban: használhatja három szerepkörök – tulajdonos, közreműködő, és ahhoz való olvasóra, biztosítja, hogy felhasználók és csoportok csak a feladatok elvégzésének a munkája elvégzéséhez szükséges engedéllyel.
-    * A részletes erőforrásokhoz való hozzáférés: szerepkörök hozzárendelése felhasználók és csoportok az adott előfizetéshez, erőforráscsoport vagy egy egyedi az Azure erőforrás, például egy webhely vagy az adatbázis. Így biztosítható, hogy a felhasználók rendelkeznek az összes, a szükséges erőforrások elérése és nem érhető el, hogy nem kell kezelése erőforrások.
+   - Csoportalapú szerepkör-hozzárendelést: is hozzáférést biztosít, amely képes-e szinkronizálva az Azure AD-csoportok a helyi Active Directoryból. Ez lehetővé teszi kihasználja a meglévő beruházások értékét, amely a szervezet által végrehajtott tooling és-folyamatok csoportok kezelése. Használhatja az Azure AD Premium a delegált csoport felügyeleti szolgáltatása.
+   - Beépített szerepkörök használatával az Azure-ban: használhatja három szerepkörök – tulajdonos, közreműködő, és ahhoz való olvasóra, biztosítja, hogy felhasználók és csoportok csak a feladatok elvégzésének a munkája elvégzéséhez szükséges engedéllyel.
+   -  A részletes erőforrásokhoz való hozzáférés: szerepkörök hozzárendelése felhasználók és csoportok az adott előfizetéshez, erőforráscsoport vagy egy egyedi az Azure erőforrás, például egy webhely vagy az adatbázis. Így biztosítható, hogy a felhasználók rendelkeznek az összes, a szükséges erőforrások elérése és nem érhető el, hogy nem kell kezelése erőforrások.
 
-> [!NOTE]
-> Ha fejleszt alkalmazásokat, és testre szeretne szabni a hozzáférés-vezérlés a számukra, akkor is az Azure AD alkalmazás-szerepkörök használatára a hitelesítéshez. Tekintse át a [WebApp-RoleClaims-DotNet példa](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) hogyan Ez a funkció használatához az alkalmazás elkészítésére.
->
->
+   > [!NOTE]
+   > Ha fejleszt alkalmazásokat, és testre szeretne szabni a hozzáférés-vezérlés a számukra, akkor is az Azure AD alkalmazás-szerepkörök használatára a hitelesítéshez. Tekintse át a [WebApp-RoleClaims-DotNet példa](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) hogyan Ez a funkció használatához az alkalmazás elkészítésére.
 
-3. Feltételes hozzáférés az Office 365-alkalmazások Microsoft Intune-nal: IT-rendszergazdák hozhat létre feltételes hozzáférési szabályzatok, lehetővé téve az információkkal dolgozó szakemberek a szolgáltatásokat a feltételeknek megfelelő eszközökön a vállalati erőforrások biztonságossá tételére. További információ: [Feltételes hozzáférés eszközházirendjei Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md).
 
-4. Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál: [Ez a szolgáltatás](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) lehetővé teszi a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton a felhasználók hozzáférésének blokkolása konfigurálását. A multi-factor Authentication hitelesítés szabályokat alkalmazhat az alkalmazáshoz, vagy csak a felhasználók számára megadott biztonsági csoportokban rendelt összes felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás egy IP-címről, amelyek a szervezeten belüli hálózati érik el.
+  3. Feltételes hozzáférés az Office 365-alkalmazások Microsoft Intune-nal: IT-rendszergazdák hozhat létre feltételes hozzáférési szabályzatok, lehetővé téve az információkkal dolgozó szakemberek a szolgáltatásokat a feltételeknek megfelelő eszközökön a vállalati erőforrások biztonságossá tételére. További információ: [Feltételes hozzáférés eszközházirendjei Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md).
+
+  4. Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál: [Ez a szolgáltatás](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) lehetővé teszi a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton a felhasználók hozzáférésének blokkolása konfigurálását. A multi-factor Authentication hitelesítés szabályokat alkalmazhat az alkalmazáshoz, vagy csak a felhasználók számára megadott biztonsági csoportokban rendelt összes felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás egy IP-címről, amelyek a szervezeten belüli hálózati érik el.
 
 A hozzáférés-vezérlési beállításokat egy többrétegű módszert használja, mivel ezek a lehetőségek összehasonlítása nem vonatkoznak a feladathoz. Győződjön meg arról, hogy minden beállítás érhető el az egyes forgatókönyvek esetében, amelyhez engedélyeznie kell az erőforrásokhoz való hozzáférés szabályozása hasznosítja ki.
 

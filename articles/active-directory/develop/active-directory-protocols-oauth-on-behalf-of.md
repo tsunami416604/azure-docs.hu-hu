@@ -13,18 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2017
+ms.date: 06/06/2017
 ms.author: celested
-ms.reviewer: nacanuma
+ms.reviewer: hirsin; nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f7566bc696d07ad3a8003b3493a382f494c4599
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2bb0d10fee04c4ee48344695769fa7768b0f3a85
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823866"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatás hívásokon szolgáltatás meghatalmazott az On-meghatalmazásos folyamat-beli felhasználói identitás
-Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
+Az OAuth 2.0 On-Behalf-Of (OBO) folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
+
+> [!IMPORTANT]
+> Nyilvános használó ügyfelek számára a [OAuth 2.0 típusú implicit grant](active-directory-dev-understanding-oauth2-implicit-grant.md) a OBO folyamat nem használható. Ezek az ügyfelek egy középső rétegbeli bizalmas ügyfél OBO adatfolyamok végrehajtásához meg kell felelnie a hozzáférési jogkivonat. További információk arról, hogy mely ügyfelek OBO hívások hajthat végre: [ügyfél korlátozások](#client-limitations).
 
 ## <a name="on-behalf-of-flow-diagram"></a>A-nevében-: folyamatábrája
 Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást, amely a a [OAuth 2.0 hitelesítési kódot adjon folyamat](active-directory-protocols-oauth-code.md). Ezen a ponton az alkalmazás rendelkezik olyan hozzáférési jogkivonatot (lexikális elem A) a felhasználói jogcímek és beleegyezése a középső rétegbeli webes API-k (API-A) eléréséhez. Most API A kell hitelesített kéréseknél az alsóbb rétegbeli webes API (API-B).
@@ -197,6 +201,8 @@ GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
+## <a name="client-limitations"></a>A Client korlátozásai
+A helyettesítő karakteres válasz URL-címek nyilvános ügyfelek nem használhatják az `id_token` OBO folyamatok. Bizalmas ügyfél azonban továbbra is beválthatja hozzáférési jogkivonatok az implicit grant flow keresztül beszerzett, még akkor is, ha a nyilvános ügyfél van egy helyettesítő karakteres átirányítási URI regisztrálva.
 
 ## <a name="next-steps"></a>További lépések
 További információk az OAuth 2.0 protokollt, és úgy is hajtsa végre a szolgáltatások közötti hitelesítési ügyfél hitelesítő adataival.

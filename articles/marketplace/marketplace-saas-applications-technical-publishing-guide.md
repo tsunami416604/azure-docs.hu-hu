@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: pabutler
-ms.openlocfilehash: 48b0b4177dad6262105bf30be2b8714f6ea1228f
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809471"
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>SaaS alkalmazások műszaki közzétételi útmutató
 
@@ -50,7 +51,7 @@ Mindkét Azure kirakatokkal SaaS-alkalmazások elérhetők a következő táblá
 | **Power bi / Dynamics** | Igen | Igen (az Azure AD-integrációs) |  
 | **SaaS-alkalmazásokhoz**| Igen | Igen (az Azure AD-integrációs) |     
 
-További információ a piactér kirakatokkal és az egyes közzétételi lehetőségek adati a következők szerint: a [piactér Publisher útmutató](https://aka.ms/sellerguide) és [közzétételi beállítások](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
+További információ a piactér kirakatokkal és az egyes közzétételi lehetőségek adati a következők szerint: a [piactér Publisher útmutató](https://aka.ms/sellerguide) és [közzétételi beállítások](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
 
 ## <a name="business-requirements"></a>Üzleti feltételek
 A Szolgáltatottszoftver kínál az üzleti követelmények és a technikai követelmények párhuzamosan is elvégezhető. Legtöbb üzleti követelmények és információk gyűjtése a Cloud Partner portálra a SaaS ajánlat létrehozásakor. Az üzleti követelmények a következők: 
@@ -61,7 +62,7 @@ A Szolgáltatottszoftver kínál az üzleti követelmények és a technikai köv
 * Adatvédelmi szabályzatát, illetve a használati feltételek beállítása
 * A támogatási kapcsolattartó meghatározása  
 
-További információt, akkor itt található: a témakör [piactér közzététel előfeltételei](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
+További információt, akkor itt található: a témakör [piactér közzététel előfeltételei](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
@@ -71,11 +72,11 @@ Indítsa el, azt javasoljuk, hogy rendelkezik előfizetéssel az Azure piactér 
 
 A legjobb Azure Active Directory dokumentációjának, mintákat és útmutatást a következő helyeken találhatók meg: 
 
-* [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+* [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-* [Az Azure Active Directory integrálása](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+* [Az Azure Active Directory integrálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-* [Alkalmazások integrálása az Azure Active Directoryval](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+* [Alkalmazások integrálása az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 * [Azure menetrend - biztonság és identitás](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -124,7 +125,7 @@ A következő táblázat ismerteti az egyes fő közzétételi lépéseket:
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Az Azure Active Directoryval kísérletek engedélyezése  
 
-Microsoft összes piactér felhasználóit hitelesíti az Azure ad-val, így amikor a hitelesített felhasználók a próbaverzió listázása a piactéren keresztül kattint, és átirányítja a próbaverzió környezet, létesíthet a felhasználó közvetlenül a próbaverzió anélkül, hogy egy további bejelentkezési lépést. A jogkivonatot, amely az alkalmazás fogad az Azure AD-hitelesítés során használhatja egy felhasználói fiókot létrehozni az alkalmazás, így a telepítési élmény automatizálásához és átalakítás érdekében értékes felhasználói adatokat tartalmaz. A token kapcsolatos további információkért lásd: [minta jogkivonatok](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft összes piactér felhasználóit hitelesíti az Azure ad-val, így amikor a hitelesített felhasználók a próbaverzió listázása a piactéren keresztül kattint, és átirányítja a próbaverzió környezet, létesíthet a felhasználó közvetlenül a próbaverzió anélkül, hogy egy további bejelentkezési lépést. A jogkivonatot, amely az alkalmazás fogad az Azure AD-hitelesítés során használhatja egy felhasználói fiókot létrehozni az alkalmazás, így a telepítési élmény automatizálásához és átalakítás érdekében értékes felhasználói adatokat tartalmaz. A token kapcsolatos további információkért lásd: [minta jogkivonatok](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Az alkalmazás vagy a próbaidőszak 1 kattintással hitelesítés engedélyezése az Azure AD használatával hajtja végre a következő:  
 * Leegyszerűsíti a felhasználói élmény a próba a piactér.  
@@ -140,15 +141,15 @@ Is az Azure AD-integrációs tanúsítsa, számos különböző módja, attól f
 
 Ha már támogatja az Azure AD, tegye a következőket:
 1.  Az alkalmazás regisztrálása az Azure-portálon
-2.  A több-bérlős támogatás funkció engedélyezése az Azure AD-be a "Tallózás" próbaverziója beolvasása. További információk találhatók [Itt](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).  
+2.  A több-bérlős támogatás funkció engedélyezése az Azure AD-be a "Tallózás" próbaverziója beolvasása. További információk találhatók [Itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
 Ha most ismerkedik az Azure AD összevont egyszeri Bejelentkezést, tegye a következőket: 
 1.  Az alkalmazás regisztrálása az Azure-portálon
-2.  Egyszeri bejelentkezés fejlesztése az Azure AD használatával [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Több vállalat kiszolgálása támogatásának engedélyezése a "Tallózás" próbaverziója további információk eléréséhez az AAD szolgáltatás található [Itt](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
+2.  Egyszeri bejelentkezés fejlesztése az Azure AD használatával [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) vagy [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
+3.  Több vállalat kiszolgálása támogatásának engedélyezése a "Tallózás" próbaverziója további információk eléréséhez az AAD szolgáltatás található [Itt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
 
 **Single-bérlőt az alkalmazáshoz használja a következő beállításokat:**  
-* Felhasználók hozzáadása a címtárhoz Vendég felhasználóként [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+* Felhasználók hozzáadása a címtárhoz Vendég felhasználóként [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 * Manuálisan hozzon létre, az ügyfelek kísérletek "Me forduljon" használatával
 * /-Ügyfél "Tesztelése" fejlesztése
 * Egy több-bérlős bemutató mintaalkalmazás SSO összeállítása

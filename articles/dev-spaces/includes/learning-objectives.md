@@ -10,14 +10,15 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 56233a6764c50ed816a5fd10e79d3a66fff08a0a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ad02c7abf42d61d5e67eefdbb42fe3501e4cfba8
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823791"
 ---
-Ez az útmutató megtudhatja, hogyan:
+Ebből az útmutatóból a következőket tudhatja meg:
 
-- Hozzon létre egy Kubernetes-alapú környezetben fejlesztésére optimalizált Azure-ban.
+- Hozzon létre egy Kubernetes-alapú környezetben az Azure-fejlesztés – optimalizált egy _fejlesztői terület_.
 - Visual STUDIO Code és a parancssor használatával tárolókban lévő kód ismételt fejlesztéséhez.
-- Megtartják fejlesztése és csoportos környezetben tesztelheti a kódját.
+- A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.

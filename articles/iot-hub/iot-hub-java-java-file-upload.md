@@ -1,24 +1,20 @@
 ---
 title: Az Azure IoT Hub Java eszközökről fájlok feltöltése |} Microsoft Docs
 description: Hogyan tölt fel az eszközről a felhőbe Javához készült Azure IoT-eszközök SDK használatával. Egy Azure blob tároló feltöltött fájlok tárolják.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 794ebd3b2d25f6b7d5dcb86b0834380fce9b9a27
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 09580f3bb5d6f6f5ccb15adddf0cf1f9e19c2210
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807577"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Az eszközről a felhőbe, IoT-központ fájlok feltöltése
 
@@ -29,7 +25,7 @@ Ez az oktatóanyag épít, a kód a [IoT Hub-felhő eszközre üzenetek](iot-hub
 - Biztonságosan adjon meg egy eszközt az Azure blob URI-fájl feltöltése.
 - Az IoT-központ fájl feltöltése értesítések használatával indul el, az alkalmazás háttérbeli fájl feldolgozása.
 
-A [Ismerkedés az IoT-központ](iot-hub-java-java-getstarted.md) és [IoT Hub-felhő eszközre üzenetek](iot-hub-java-java-c2d.md) oktatóanyagok alapvető eszköz-felhő és a felhő eszközre üzenetkezelési funkcióit az IoT-központ megjelenítése. A [folyamat eszköz felhőbe küldött üzeneteket](iot-hub-java-java-process-d2c.md) az oktatóanyag leírja, hogy megbízhatóan tárolja az eszköz a felhőbe küldött üzeneteket az Azure blob storage. Bizonyos esetekben azonban leképezése nem az eszközök elküldik üzenetbe a viszonylag kis eszközről a felhőbe, amely az IoT-központ fogadja az adatokat könnyen. Példa:
+A [Ismerkedés az IoT-központ](iot-hub-java-java-getstarted.md) és [IoT Hub-felhő eszközre üzenetek](iot-hub-java-java-c2d.md) oktatóanyagok alapvető eszköz-felhő és a felhő eszközre üzenetkezelési funkcióit az IoT-központ megjelenítése. A [folyamat eszköz felhőbe küldött üzeneteket](tutorial-routing.md) az oktatóanyag leírja, hogy megbízhatóan tárolja az eszköz a felhőbe küldött üzeneteket az Azure blob storage. Bizonyos esetekben azonban leképezése nem az eszközök elküldik üzenetbe a viszonylag kis eszközről a felhőbe, amely az IoT-központ fogadja az adatokat könnyen. Példa:
 
 * Nagy fájlok, amelyek képeket
 * Videók

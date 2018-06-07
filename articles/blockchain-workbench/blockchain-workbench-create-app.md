@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a4b704f433f02afcff7b94f98c19a478caaa02b2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808060"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Azure Blockchain munkaterület blockchain-alkalmazás létrehozása
 
@@ -237,7 +238,7 @@ Adja hozzá a következő verzió pragma tetején `HelloBlockchain.sol` intellig
 
 ### <a name="base-class"></a>Alaposztály
 
-**WorkbenchBase** alaposztály lehetővé teszi, hogy a munkaterület Blockchain létre kell hoznia egy frissítést a szerződést. Az alaposztály Blockchain munkaterület intelligens szerződés kód szükség. A szerződés kell örökölnie a **WorkbenchBase** alaposztály.
+**WorkbenchBase** alaposztály lehetővé teszi, hogy a Blockchain munkaterület létrehozása és frissítése a szerződést. Az alaposztály Blockchain munkaterület intelligens szerződés kód szükség. A szerződés kell örökölnie a **WorkbenchBase** alaposztály.
 
 A `HelloBlockchain.sol` szerződés kódfájl intelligens, adja hozzá a **WorkbenchBase** a fájl elején osztály. 
 
@@ -374,7 +375,7 @@ Mielőtt kilépne a függvény, hívja az `ContractUpdated()` függvény. A füg
 Blockchain munkaterület blockchain alkalmazás hozzáadása, a konfigurációs és intelligens szerződés fájlok meghatározásához az alkalmazás feltöltése.
 
 1. Egy webböngészőben keresse meg a Blockchain munkaterület webcímet. Például `https://{workbench URL}.azurewebsites.net/` a webes alkalmazás létrehozásakor Blockchain munkaterület központi telepítésekor. Információk megkereséséhez a Blockchain munkaterület webcímet: [Blockchain munkaterület webes URL-címe](blockchain-workbench-deploy.md#blockchain-workbench-web-url)
-2. Jelentkezzen be egy Blockchain munkaterület rendszergazdaként. Felhasználók kezelésével kapcsolatban további információkért lásd: [felhasználók kezelése az Azure Blockchain munkaterület](blockchain-workbench-manage-users.md).
+2. Jelentkezzen be egy [Blockchain munkaterület Rendszergazda](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
 3. Válassza ki **alkalmazások** > **új**. A **új alkalmazás** ablaktáblán jelenik meg.
 4. Válassza ki **töltse fel a szerződés konfigurációs** > **Tallózás** kereséséhez a **HelloBlockchain.json** létrehozott konfigurációs fájl. A konfigurációs fájl automatikusan érvényesítve. Válassza ki a **megjelenítése** érvényesítési hibák megjelenítése csatolás. Javítsa az érvényesítési hibák, az alkalmazás központi telepítése előtt.
 5. Válassza ki **töltse fel a szerződés kód** > **Tallózás** kereséséhez a **HelloBlockchain.sol** intelligens szerződés forráskód fájlja. A forráskód fájlja automatikusan érvényesítve. Válassza ki a **megjelenítése** érvényesítési hibák megjelenítése csatolás. Javítsa az érvényesítési hibák, az alkalmazás központi telepítése előtt.

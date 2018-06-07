@@ -11,17 +11,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/08/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: f5da2a74b3a399c60c518f386ccf2e60a617aeda
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 494526ae2084053f23bb3a096ac7d089c47a731a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823435"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibák megoldása
 
-Ez a cikk ismerteti a hibák jelentkezhetnek, ha egy erőforrás nem található a telepítés során.
+Ez a cikk ismerteti a hibákat, láthatja, ha egy erőforrás nem található a telepítés során.
 
 ## <a name="symptom"></a>Jelenség
 
@@ -32,7 +33,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Ha úgy próbálja használni a [hivatkozás](resource-group-template-functions-resource.md#reference) vagy [listKeys](resource-group-template-functions-resource.md#listkeys) működik együtt a erőforrása, amely nem oldható fel, a következő hibaüzenetet kapja:
+Ha használja a [hivatkozás](resource-group-template-functions-resource.md#reference) vagy [listKeys](resource-group-template-functions-resource.md#listkeys) működik együtt a erőforrása, amely nem oldható fel, a következő hibaüzenetet kapja:
 
 ```
 Code=ResourceNotFound;
@@ -59,9 +60,9 @@ Ha a megszüntetni kívánt központi telepítése a hiányzó erőforrást a sa
 }
 ```
 
-De el szeretné kerülni, nem szükséges függőségek beállítása. Ha szükségtelen függőségek, erőforrások, amelyek nincsenek a párhuzamos telepített egymástól függenek, hogy meghosszabbítani az üzemelő példány időtartama. Ezenkívül létrehozhat körkörös függőségek, amelyek a központi telepítés letiltása. A [hivatkozás](resource-group-template-functions-resource.md#reference) funkció egy implicit függőség a hivatkozott erőforrás hoz létre, ha ugyanazt a sablont, hogy az erőforrás lett telepítve. Emiatt előfordulhat, hogy további függőségek, mint a függőségek megadott a **dependsOn** tulajdonság. A [resourceId](resource-group-template-functions-resource.md#resourceid) függvény létrehozása egy implicit függőség, vagy nem ellenőrzi, hogy létezik-e az erőforrást.
+De szeretné elkerülni azt, amelyik nem szükséges függőségek beállítása. Ha szükségtelen függőségek, erőforrások, amelyek nem a párhuzamos telepített egymástól függenek, hogy meghosszabbítani az üzemelő példány időtartama. Ezenkívül létrehozhat körkörös függőségek, amelyek a központi telepítés letiltása. A [hivatkozás](resource-group-template-functions-resource.md#reference) függvény és [lista *](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) funkciók egy implicit függőség a hivatkozott erőforrás hoz létre, ha adott erőforrás ugyanabban a sablonban és a név (nem erőforrás-azonosító által hivatkozott ). Emiatt előfordulhat, hogy további függőségek, mint a függőségek megadott a **dependsOn** tulajdonság. A [resourceId](resource-group-template-functions-resource.md#resourceid) függvény nem létrehozása egy implicit függőség, vagy ellenőrizze, hogy létezik-e az erőforrást. A [hivatkozás](resource-group-template-functions-resource.md#reference) függvény és [lista *](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) funkciók nem létrehozása egy implicit függőség, amikor az erőforrás hivatkozik az erőforrás-azonosító. Egy implicit függőség létrehozásához adja át a ugyanazt a sablont üzembe helyezett erőforrás nevét.
 
-Amikor a függőség problémákat tapasztal, kell betekintést erőforrás telepítési sorrendjét. A telepítési műveletek sorrendjét megtekintése:
+Amikor megjelenik a függőségi problémák, kell betekintést erőforrás telepítési sorrendjét. A telepítési műveletek sorrendjét megtekintése:
 
 1. Válassza ki az üzembe helyezési előzményeket az erőforráscsoport számára.
 
@@ -92,7 +93,7 @@ Amikor az erőforrás létezik-e egy másik erőforráscsoportban található, m
 
 ## <a name="solution-3---check-reference-function"></a>Megoldás 3 - ellenőrzés hivatkozás függvény
 
-Keressen egy kifejezés, amely magában foglalja a [hivatkozás](resource-group-template-functions-resource.md#reference) függvény. Megadja az értékeket e az erőforrás van ugyanazon a sablonban, erőforráscsoport és előfizetés függően változhat. A ellenőrizze, hogy meg van adva a szükséges paraméterértékeket a forgatókönyvéhez. Ha az erőforrás egy másik erőforráscsoportban található, adja meg a teljes erőforrás-azonosító. Például hivatkozhat egy másik erőforráscsoportban található a tárfiók, használja:
+Keressen egy kifejezés, amely magában foglalja a [hivatkozás](resource-group-template-functions-resource.md#reference) függvény. Megadja az értékeket e az erőforrás van ugyanazon a sablonban, erőforráscsoport és előfizetés függően változhat. A ellenőrizze, hogy van-e a szükséges paraméterértékeket biztosítása a forgatókönyvéhez. Ha az erőforrás egy másik erőforráscsoportban található, adja meg a teljes erőforrás-azonosító. Például hivatkozhat egy másik erőforráscsoportban található a tárfiók, használja:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

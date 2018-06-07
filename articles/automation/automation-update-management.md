@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83204132a7494dc766420520eeaf2362c98d878f
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 43cfb16e9471736c0f112ef879faaf01badebc4f
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801813"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824948"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -56,7 +56,7 @@ A következő táblázat a támogatott operációs rendszerek listáját jelení
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Csak értékelés frissítése         |
-|Windows Server 2008 R2 SP1 és újabb rendszer     |A Windows PowerShell 4.0-s vagy újabb rendszer szükséges ([töltse le a WMF 4.0-s](https://www.microsoft.com/download/details.aspx?id=40855)).</br> A Windows PowerShell 5.1 ([letöltése WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóbbak ajánlott.         |
+|Windows Server 2008 R2 SP1 és újabb rendszer     |.NET-keretrendszer 4.5-ös vagy újabb rendszer szükséges ([töltse le a .NET-keretrendszer](/dotnet/framework/install/guide-for-developers)).</br> A Windows PowerShell 4.0-s vagy újabb rendszer szükséges ([töltse le a WMF 4.0-s](https://www.microsoft.com/download/details.aspx?id=40855)).</br> A Windows PowerShell 5.1 ([letöltése WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóbbak ajánlott.         |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |

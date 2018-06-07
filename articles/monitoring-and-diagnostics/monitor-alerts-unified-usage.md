@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: fdb3ebe3820191a642c4503851b04dd5fc5e6048
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bb532f5e249947534ba44a41edfadac22ef9e217
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824914"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure-figyelővel riasztások  
 
@@ -39,9 +40,9 @@ Riasztás kifejezést használja **napló riasztások** megadásával írhatja l
 
 Részletes tovább részletes útmutató az Azure figyelmeztetések használatával a rendszer.
 
-## <a name="create-an-alert-rule-with-the-azure-portal"></a>Riasztási szabályt létrehozni és az Azure portál
+## <a name="create-an-alert-rule-with-the-azure-portal"></a>Riasztási szabályt létrehozni az Azure portállal
 1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások**.  
-    ![Figyelés](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![Monitorozás](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
 
 2. Válassza ki a **új riasztást szabály** gombra kattintva új riasztás létrehozása, az Azure-ban.
     ![Riasztások hozzáadása](./media/monitor-alerts-unified/AlertsPreviewOption.png)
@@ -50,7 +51,7 @@ Részletes tovább részletes útmutató az Azure figyelmeztetések használatá
 
     ![Szabály létrehozása](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  A riasztási feltétel megadása segítségével a **válasszon erőforrás** hivatkozásra, és adja meg a célként megadott erőforrás kiválasztásával. Válassza ki a szűrő a *előfizetés* , *erőforrástípus* , és végül kiválasztása szükséges *erőforrás*.
+4.  A riasztási feltétel megadása segítségével a **válasszon erőforrás** hivatkozásra, és adja meg a célként megadott erőforrás kiválasztásával. Válassza ki a szűrő a * előfizetés, * erőforrástípus, és végül kiválasztása szükséges *erőforrás*.
 
     >[!NOTE]
 
@@ -67,7 +68,7 @@ Részletes tovább részletes útmutató az Azure figyelmeztetések használatá
 
     > Napló tevékenységriasztásokat is támogatottak, de még csak előzetes verziójúak. [További információk](monitoring-activity-log-alerts-new-experience.md).
 
-5. *Metrika riasztások* : Győződjön meg arról **erőforrástípus** jel típusú, mint a kiválasztott **metrika**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson  *Kész* gombra kattintva visszatérhet a riasztás létrehozása. Ezután használja a **adja meg a feltételeket** jel beállítások, az állapotfigyelő szolgáltatás és a felsorolt - típus közül az adott jel kiválasztása gomb, ami a korábban kiválasztott erőforrás érhetők el.
+5. * Metrika riasztások: Győződjön meg arról **erőforrástípus** jel típusú, mint a kiválasztott **metrika**, majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson *végzett*gombra kattintva visszatérhet a riasztás létrehozása. Ezután használja a **adja meg a feltételeket** jel beállítások, az állapotfigyelő szolgáltatás és a felsorolt - típus közül az adott jel kiválasztása gomb, ami a korábban kiválasztott erőforrás érhetők el.
 
     ![Erőforrás kiválasztása](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -83,9 +84,9 @@ Részletes tovább részletes útmutató az Azure figyelmeztetések használatá
 
     a. Válasszon egy időtartamot a **előzmények megjelenítése** legördülő egy másik idő megjelenítéséhez. Kiválaszthatja a támogatott metrikáihoz idősor; szűréshez dimenziók a dimenziók kiválasztása nem kötelező, és felfelé történő öt dimenziók használhatók. 
 
-    b. **Riasztási logika** kiválasztható a megjelenített beállítások *feltétel*, *összesítési* és *küszöbérték*. A megadott logikai előnézete, mint a feltétel látható jel előzmények, valamint a képi megjelenítés lejátszásához, ha a riasztás az elmúlt elindítva lenne. 
+    b. **Riasztási logika** kiválasztható a megjelenített beállítások *feltétel*, * összesítési, és *küszöbérték*. A megadott logikai előnézete, mint a feltétel látható jel előzmények, valamint a képi megjelenítés lejátszásához, ha a riasztás az elmúlt elindítva lenne. 
 
-    c. Adja meg az időtartamot, a döntött, hogy **időszak** milyen gyakran együtt a riasztás kiválasztásával fusson **gyakoriság**.
+    c. Adja meg az időtartama, válassza a **időszak** milyen gyakran együtt a riasztás kiválasztásával fusson **gyakoriság**.
 
     ![Többdimenziós metrika jel logikát konfigurálása](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
@@ -125,14 +126,20 @@ A **napló riasztások** riasztások alapulhat:
 
         ![Napló riasztásokat tiltja le a riasztások](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
 
+        > [!TIP]
+        > Adjon meg egy mellőzése riasztási érték nagyobb, mint a riasztásból értesítéseket le van állítva, átfedés nélkül biztosításához gyakorisága
+
 12. Adja meg a harmadik és utolsó lépésként, ha van ilyen **művelet csoport** riasztási feltétel teljesülésekor a riasztási szabály bekövetkezhet kell. Válassza a meglévő művelet csoport riasztáshoz, vagy hozzon létre egy új művelet csoportot. A következők szerint kijelölt művelet csoport eseményindító Azure lesz riasztás esetén: email(s) küldése, SMS(s) küldeni, Webhook(s) hívja, szervizelése használata Azure Runbookok, leküldéses ITSM eszköz, stb. További információ [művelet csoportok](monitoring-action-groups.md).
 
     A **napló riasztások** további funkciókkal felülbírálhatja az alapértelmezett műveletek érhető el:
 
-    - **E-mailes értesítés**: felülbírálások *e-mail tárgya* az e-mailben küldött művelet csoport; keresztül, ha egy vagy több e-mail műveletet a kérdéses művelet csoportban. Az üzenet törzse nem módosítható, és ez a mező **nem** az e-mail cím.
-    - **Egyéni Json-adattartalmat tartalmaznak**: felülbírálja a webhook JSON művelet csoportok; használják, ha egy vagy több webhook műveletet a kérdéses művelet csoportban. Felhasználói is JSON társított művelet csoport; konfigurált összes webhookok használandó adja meg formátuma a webhook formátumok további információkért lásd: [webhook műveleti napló riasztások](monitor-alerts-unified-log-webhook.md). Teszt Webhook beállítás formátum és a cél JSON mintát használja feldolgozásra rendszernek, és ez a beállítás címkével csak azt jelentette, hogy **tesztelés** céljából.
+    - **E-mailes értesítés**: felülbírálások *e-mail tárgya* az e-mailben művelet csoport; keresztül küldi el, ha az említett művelet csoport szerepel egy vagy több e-mail művelet. Az üzenet törzse nem módosítható, és ez a mező **nem** az e-mail cím.
+    - **Egyéni Json-adattartalmat tartalmaznak**: felülbírálja a webhook JSON művelet csoportok; használják, ha egy vagy több webhook műveletet a kérdéses művelet csoportban. Felhasználó megadhatja a JSON társított művelet csoport; konfigurált összes webhookok használandó formátuma a webhook formátumok további információkért lásd: [webhook műveleti napló riasztások](monitor-alerts-unified-log-webhook.md). Teszt Webhook beállítás formátum és a cél JSON mintát használja feldolgozásra rendszernek, és ez a beállítás címkével csak azt jelentette, hogy **tesztelés** céljából.
 
         ![A művelet felülbírálásokat napló riasztások](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+
+        > [!NOTE]
+        > A **teszt Webhook** működéséhez beállításnál támogatniuk kell a végpont [Cross Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) és a felhasználó használhatja a CORS-proxy "Nincs hozzáférés-vezérlési-engedélyezése-forrás fejléc" problémák elkerülése érdekében
 
 13. Ha a mezők egyike sem érvényes, és a zöld osztásjelek a **riasztási szabályt létrehozni** gombbal rákattintva és a riasztás jön létre az Azure Monitor - riasztás. Az összes riasztás a riasztások irányítópult is megtekinthetők.
 
@@ -140,7 +147,7 @@ A **napló riasztások** riasztások alapulhat:
 
     Néhány percen belül a riasztás aktív, és elindítja a leírt módon.
 
-## <a name="view-your-alerts-in-azure-portal"></a>A riasztás megtekintése az Azure-portálon
+## <a name="view-your-alerts-in-azure-portal"></a>A riasztás megtekintése az Azure portálon
 
 1. Az a [portal](https://portal.azure.com/), jelölje be **figyelő** és - FIGYELŐ szakaszban válasszon **riasztások**.  
 

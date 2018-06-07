@@ -1,8 +1,8 @@
 ---
-title: "Webalkalmazás-alkalmazások teljesítményének figyelését - Azure Application Insights |} Microsoft Docs"
+title: Webalkalmazás-alkalmazások teljesítményének figyelését - Azure Application Insights |} Microsoft Docs
 description: Hogyan illeszkedik az Application Insights a devOps ciklus
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 24e249bb515c509f2fba1f943ac5e23a1ea9965e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808478"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell az Application Insights?
@@ -104,7 +105,7 @@ Mindkét esetben a riasztás nem csak azt ismerteti, a jelenség fel van derítv
 
 Ügyfél Samtec említett: "cutover legutóbbi funkció során észleltünk egy alapján méretezi adatbázis elérte-e az erőforrás-korlátozások és időtúllépéseket okoz. A proaktív azonosítási riasztások érkezett hirdetett azt volt triaging a problémát, nagyon közel valós idejű szó. Ez a riasztás az Azure platformon riasztások alapján kialakulhat segített velünk szinte azonnal hárítsa el a problémát. Összesített állásidő < 10 perc."
 
-## <a name="live-metrics-stream"></a>Élő Stream metrikák
+## <a name="live-metrics-stream"></a>Élő metrikastream
 A legújabb buildjével telepítése lehet törekedve arra élményt. Bármely problémák vannak, ha meg szeretné ismerni róluk azonnal, úgy, hogy szükség esetén készítsen biztonsági. Élő metrikák adatfolyam lehetővé teszi az alapvető metrikákat körülbelül egy második késéssel.
 
 ![Élő metrikák](./media/app-insights-devops/040.png)
@@ -168,7 +169,7 @@ Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerkedés az Application Insights szolgáltatással is könnyen. A fő lehetőségek közül választhat:
 
 * Egy már futó webalkalmazás állíthatnak be. Ez lehetővé teszi a beépített teljesítmény telemetriai adatokat. Használható a [Java](app-insights-java-live.md) és [IIS-kiszolgálókkal](app-insights-monitor-performance-live-website-now.md), és is [Azure-webalkalmazásokban](app-insights-azure.md).

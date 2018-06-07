@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 1ebbdb22698ec1eab76b6b6b504fe27a6f0b28bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824761"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Az Azure Stream Analytics első lépéseiben: valós idejű csalások felderítése
 
@@ -35,7 +36,7 @@ A távközlési vállalat rendelkezik nagy mennyiségű bejövő hívások adata
 
 Ebben az oktatóanyagban a telefonhívás-adatok szimulálása lesz egy ügyfél-alkalmazással, amely mintát telefonhívás metaadatokat hoz létre. Néhány rekordot, amely az alkalmazás létrehozza a csalárd hívások tűnik. 
 
-Mielőtt elkezdené, győződjön meg arról, hogy a következő:
+Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Egy Azure-fiók.
 * A hívás-esemény készítő alkalmazást. Ez a letöltés kaphat a [TelcoGenerator.zip fájl](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) a Microsoft Download Center webhelyről. Bontsa ki a csomagot egy mappába a számítógépen. Ha meg szeretné tekinteni a forrás-kód és az alkalmazás futtatásához a hibakereső, az alkalmazás forráskódjának kaphat [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
@@ -69,15 +70,15 @@ Ebben az eljárásban először létre kell hoznia egy event hub névtér, és e
 
     ![Az Eseményközpont hozzáadása gombra egy új eseményközpont létrehozása ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Az új eseményközpont neve `sa-eh-frauddetection-demo`. Használhat egy másik nevet. Ha így tesz, jegyezze fel, mert később szüksége nevét. Bármely más vonatkozó beállítások megadása az event hubs most nem kell.
+6. Az új eseményközpont neve `sa-eh-frauddetection-demo`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége nevét. Bármely más vonatkozó beállítások megadása az event hubs most nem kell.
 
     ![Egy új eseményközpont létrehozása panel](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
     
  
 7. Kattintson a **Create** (Létrehozás) gombra.
-### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az event hubs hozzáférést, és a kapcsolati karakterlánc beolvasása
+### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Az eseményközponthoz való hozzáférés engedélyezése és kapcsolati sztring beszerzése
 
-Egy folyamat adatokat küldhet egy eseményközpontot, az event hubs egy házirendet, amely lehetővé teszi, hogy a megfelelő hozzáféréssel kell rendelkeznie. A hozzáférési házirendet hoz létre egy kapcsolati karakterláncot, amely tartalmazza az engedélyezési adatok.
+Egy folyamat adatokat küldhet egy eseményközpontot, az event hubs egy házirendet, amely lehetővé teszi, hogy a megfelelő hozzáféréssel kell rendelkeznie. A hozzáférési szabályzat egy kapcsolati sztringet hoz létre, amelyben megtalálhatók az engedélyezési információk.
 
 1.  Az esemény névtér ablaktáblán kattintson **Event Hubs** és kattintson az új eseményközpont nevét.
 
@@ -98,7 +99,7 @@ Egy folyamat adatokat küldhet egy eseményközpontot, az event hubs egy házire
     
     ![A hozzáférési házirendben az elsődleges kapcsolódási karakterlánc kulcs másolása](./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png)
  
-7.  A kapcsolati karakterlánc illessze be a szövegszerkesztőben. Ez a kapcsolati karakterlánc szükséges ahhoz, hogy a következő szakaszban után néhány kisebb módosításokat végez.
+7.  Illessze be a kapcsolati sztringet egy szövegszerkesztőbe. Ez a kapcsolati karakterlánc szükséges ahhoz, hogy a következő szakaszban után néhány kisebb módosításokat végez.
 
     A kapcsolati karakterlánc így néz ki:
 
@@ -131,26 +132,26 @@ Mielőtt elkezdené a TelcoGenerator alkalmazást, akkor konfigurálja úgy, hog
 1.  Nyisson meg egy parancsablakot, és módosítsa a mappát, ahol a TelcoGenerator app tömörítetlen.
 2.  Írja be a következő parancsot:
 
-        telcodatagen.exe 1000 .2 2
+        telcodatagen.exe 1000 0.2 2
 
     A paraméterek a következők: 
 
     * Óránként EK számát. 
-    * SIM kártyával csalás valószínűség: Milyen gyakran összes hívást, hogy az alkalmazás kell szimulálása a csalárd hívás százalékában. .2 érték azt jelenti, amely körülbelül 20 %-a hívás rekordok fog kinézni csalárd.
+    * SIM kártyával csalás valószínűség: Milyen gyakran összes hívást, hogy az alkalmazás kell szimulálása a csalárd hívás százalékában. 0,2 érték azt jelenti, amely körülbelül 20 %-a hívás rekordok fog kinézni csalárd.
     * Hossza (óra). Az alkalmazás fusson órák száma. Is leállíthatja, az alkalmazás bármikor parancssori Ctrl + C billentyűt lenyomásával.
 
-    Néhány másodpercen belül az alkalmazás indítása telefonhívás rekordjainak megjelenítéséhez a képernyőn, az event hubs küldi azokat.
+    Néhány másodperc elteltével az alkalmazás elkezdi kijelezni a hívásrekordokat a képernyőn, miközben az eseményközpontba küldi őket.
 
 A valós idejű csalások észlelése alkalmazásban használt kulcsmezők a következő:
 
-|**Record**|**Meghatározása**|
+|**Rekord**|**Definíció**|
 |----------|--------------|
-|`CallrecTime`|A hívás időbélyegzőjét kezdési időpontja. |
-|`SwitchNum`|A telefon kapcsoló használatával kapcsolódni a hívást. Az ebben a példában a kapcsolók a következők karakterláncok, amelyek megfelelnek a származási (Egyesült Államok, Kína, UK, Németország vagy Ausztrália). |
-|`CallingNum`|A hívó telefonszámát. |
-|`CallingIMSI`|A nemzetközi mobil előfizető Identity (IMSI). Ez az a hívó egyedi azonosítóját. |
-|`CalledNum`|A hívás címzettje telefonszámát. |
-|`CalledIMSI`|Nemzetközi mobil előfizető Identity (IMSI). Ez az a hívás címzettje egyedi azonosítóját. |
+|`CallrecTime`|A hívási kezdési idejét jelölő időbélyegző. |
+|`SwitchNum`|A hívás csatlakozásához használt telefonkapcsoló. Ebben a példában a kapcsolók olyan sztringek, amelyek a származási országot jelölik (USA, Kína, Egyesült királyság, Németország vagy Ausztrália). |
+|`CallingNum`|A hívó telefonszáma. |
+|`CallingIMSI`|Az International Mobile Subscriber Identity (IMSI). Ez az a hívó egyedi azonosítóját. |
+|`CalledNum`|A hívott fél telefonszáma. |
+|`CalledIMSI`|International Mobile Subscriber Identity (IMSI). Ez az a hívás címzettje egyedi azonosítóját. |
 
 
 ## <a name="create-a-stream-analytics-job-to-manage-streaming-data"></a>A streamelési adatok kezelésében a Stream Analytics-feladat létrehozása
@@ -171,7 +172,7 @@ Most, hogy egy az események streamjét a hívást, beállíthat egy Stream Anal
 
     A feladat jön létre, és a portál megjeleníti a feladat részleteit. Semmi sem fut-e még, azonban – meg kell adnia a feladat, mielőtt indíthatók el.
 
-### <a name="configure-job-input"></a>Feladat bemeneti konfigurálása
+### <a name="configure-job-input"></a>Feladatbemenet konfigurálása
 
 1. Az irányítópult vagy a **összes erőforrás** ablaktáblán, megkeresheti, és válassza ki a `sa_frauddetection_job_demo` Stream Analytics-feladat. 
 2. Az a **feladat topológia** szakasz a Stream Analytics-feladat panelen kattintson a **bemeneti** mezőbe.
@@ -221,7 +222,7 @@ A TelcoGenerator app hívás rekordot küld az event hubs, és a Stream Analytic
 
     Azure-minták a bemeneti adatfolyam adatait 3 perc alatt érkezett, és értesíti, amikor készen áll a mintaadatok. (Ez időt vesz igénybe egy rövid ideig.) 
 
-A mintaadatok ideiglenesen tárolja, és áll rendelkezésre, míg a lekérdezési ablakban nyissa meg a rendelkezik. Ha bezárja a lekérdezési ablakban, a minta adatait a rendszer törli, és konfigurálnia kell egy új mintaadatok létrehozása. 
+A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakot, a mintaadatok elvesznek, és új mintaadatkészletet kell létrehoznia. 
 
 Alternatív megoldásként egy .JSON kiterjesztésű fájlt, amely rendelkezik a mintaadatok azt kaphat [a Githubról](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json), majd töltse fel az adott .JSON kiterjesztésű fájlt kívánja használni, mint a mintaadatok az `CallStream` bemeneti. 
 
@@ -289,7 +290,7 @@ Ez a transzformáció keresi, amely nem fedi át a historikus windows sorozatát
  
 ### <a name="detect-sim-fraud-using-a-self-join"></a>Önillesztés használatával SIM csalások észlelése
 
-Ebben a példában azt is érdemes megfontolni csalárd használati hívások, amely ugyanahhoz a felhasználóhoz, de különböző helyeken egy másik 5 másodpercen belül kell. Például ugyanaz a felhasználó nem szabályosan hívás az USA és Ausztrália egyszerre. 
+Ebben a példában azt is érdemes megfontolni csalárd használati hívások, amely ugyanahhoz a felhasználóhoz, de különböző helyeken egy másik 5 másodpercen belül kell. Például ugyanaz a felhasználó nem indíthat szabályosan hívásokat egyszerre az USA-ból és Ausztráliából. 
 
 Ellenőrizze az ezekben az esetekben, használhatja a streamelési adatok önillesztés önillesztést az adatfolyam alapján a `CallRecTime` érték. Majd keressen a hívás where rögzíti a `CallingIMSI` (származó szám) értéke azonos, de a `SwitchNum` (származási) értéke nem ugyanaz.
 

@@ -12,23 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5a9bde85e894f2f4283348771dc5cacc7a08f23
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824655"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Adja meg a ahhoz, hogy az Azure Resource Manager sablonokban erőforrások telepítése
 A megadott erőforrás lehet más erőforrások, amelyek már léteznie kell az erőforrás van telepítve. Például egy SQL server léteznie kell egy SQL-adatbázis telepítése előtt. Ez a kapcsolat egy erőforrást, mint a más erőforrástól függő megjelölésével határozza meg. A függőség megadhatja a **dependsOn** elem, vagy használatával a **hivatkozás** függvény. 
 
-Erőforrás-kezelő kiértékeli az erőforrások közti függőségeket, és telepíti azokat a függő sorrendben. Ha nincsenek függő erőforrások, erőforrás-kezelő telepíti azokat párhuzamosan. Csak akkor kell megadni telepített erőforrások függőségek ugyanabban a sablonban. 
+Erőforrás-kezelő kiértékeli az erőforrások közti függőségeket, és telepíti azokat a függő sorrendben. Ha erőforrások nem egymástól függenek, erőforrás-kezelő telepíti azokat párhuzamosan. Csak akkor kell megadni telepített erőforrások függőségek ugyanabban a sablonban. 
 
 ## <a name="dependson"></a>dependsOn
 A sablonon belül a dependsOn elem teszi meghatározni egy erőforrást, egy vagy több erőforrást egy függ. Az érték lehet erőforrásnevek vesszővel tagolt listája. 
 
-A következő példában egy virtuálisgép-méretezési csoport, amely egy adott terheléselosztóhoz, a virtuális hálózati és a több tárfiókot létrehozó hurkot függ. Ezeket az erőforrásokat nem jelennek meg az alábbi példában, de a sablonban máshol léteznie kell.
+A következő példában egy virtuálisgép-méretezési csoport, amely egy adott terheléselosztóhoz, a virtuális hálózati és a több tárfiókot létrehozó hurkot függ. Ezeket az erőforrásokat nem az alábbi példában látható módon, de a sablonban máshol léteznie kell.
 
 ```json
 {
@@ -59,10 +60,10 @@ Függőségek meghatározásakor az erőforrás-szolgáltató névtere és a fé
 ]
 ``` 
 
-Akkor lehet, hogy az erőforrások közötti kapcsolatok DependsOn tulajdonság használatával kell dönteni, de napjainkban fontos tudni, miért végzett azt. Például hogyan erőforrásokat kötik dokumentum dependsOn nincs a megfelelő módszert. Nem lehet lekérdezni, mely erőforrásokat telepítést követően a DependsOn tulajdonság elemben definiált. DependsOn tulajdonság használatával, potenciálisan hatással van az telepítési idő mert erőforrás-kezelő nem telepíti a függőségi viszonyban párhuzamos két erőforrásokat. A dokumentum erőforrásainak kapcsolatai helyette használja a [erőforrás linking](/rest/api/resources/resourcelinks).
+Akkor lehet, hogy az erőforrások közötti kapcsolatok DependsOn tulajdonság használatával kell dönteni, de napjainkban fontos tudni, miért végzett azt. Dokumentálása, milyen erőforrásokat kötik, például a DependsOn tulajdonság nem a megfelelő módszert. Nem lehet lekérdezni, mely erőforrásokat telepítést követően a DependsOn tulajdonság elemben definiált. DependsOn tulajdonság használatával, potenciálisan befolyásolja a központi telepítés alkalmával mert függőségi viszonyban párhuzamos két erőforrások erőforrás-kezelő nem telepítheti. A dokumentum erőforrásainak kapcsolatai helyette használja a [erőforrás linking](/rest/api/resources/resourcelinks).
 
 ## <a name="child-resources"></a>Gyermek-erőforrások
-Az erőforrás-tulajdonság adja meg, amely kapcsolódik a múltbeli erőforrás gyermekerőforrásait teszi lehetővé. Gyermek erőforrások csak meghatározott öt szintnél mélyebb lehet. Fontos megjegyezni, hogy egy implicit függőség nem jön létre a gyermek-erőforrás és a szülő erőforrás között. A gyermek-erőforrás a szülő erőforrás után telepítésre van szüksége, a dependsOn tulajdonság függőséget explicit módon meg kell adni. 
+Az erőforrás-tulajdonság adja meg, amely kapcsolódik a múltbeli erőforrás gyermekerőforrásait teszi lehetővé. Gyermek erőforrások csak meghatározott öt szintnél mélyebb lehet. Fontos megjegyezni, hogy a nem a gyermek-erőforrás és a szülő erőforrás között jön létre egy implicit függőség. A gyermek-erőforrás a szülő erőforrás után telepítésre van szüksége, a dependsOn tulajdonság függőséget explicit módon meg kell adni. 
 
 Minden szülő erőforrás csak bizonyos típusú erőforrások gyermekerőforrásait fogad el. Az elfogadott erőforrás típusok vannak megadva a [sablonséma](https://github.com/Azure/azure-resource-manager-schemas) a szülő erőforrás. A gyermek erőforrástípus neve tartalmazza a szülő erőforrástípus nevét, mint **Microsoft.Web/sites/config** és **Microsoft.Web/sites/extensions** mindkét alsóbb szintű erőforrásai vannak a **Microsoft.Web/sites**.
 
@@ -106,11 +107,19 @@ A következő példában egy SQL server és SQL-adatbázis. Figyelje meg, hogy e
 ]
 ```
 
-## <a name="reference-function"></a>hivatkozás függvény
-A [függvényre](resource-group-template-functions-resource.md#reference) lehetővé teszi, hogy a kifejezés értéke származik más JSON név-érték párok vagy futásidejű erőforrásokat. Hivatkozási kifejezések implicit módon deklarálja, hogy egy erőforrást egy másik függ. Az általános formátuma:
+## <a name="reference-and-list-functions"></a>referencia- és funkciók
+A [függvényre](resource-group-template-functions-resource.md#reference) lehetővé teszi, hogy a kifejezés értéke származik más JSON név-érték párok vagy futásidejű erőforrásokat. A [lista * funkciók](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) a list művelet származó visszaadott értékekre erőforrás.  Referencia- és kifejezések implicit módon deklarálja, hogy egy erőforrást egy másik, ugyanazt a sablont a hivatkozott erőforrás telepítésekor függ, és a név (nem erőforrás-azonosító) által hivatkozott. A hivatkozás vagy a lista függvényekké adja meg az erőforrás-azonosító, ha egy implicit hivatkozási nem jön létre.
+
+A hivatkozás függvény általános formátuma:
 
 ```json
 reference('resourceName').propertyPath
+```
+
+A listKeys függvény általános formátuma:
+
+```json
+listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
 A következő példában a CDN-végpontok explicit módon függ a CDN-profilt, és implicit módon függ a webes alkalmazás.
@@ -130,7 +139,7 @@ A következő példában a CDN-végpontok explicit módon függ a CDN-profilt, �
     }
 ```
 
-Függőségeket használhatja ezt az elemet vagy a dependsOn elem, de nem szeretné használni, mind az azonos függő erőforráshoz. Amikor csak lehetséges, használjon egy implicit hivatkozási szükségtelen-függőség felvétele elkerülése érdekében.
+Függőségeket használhatja ezt az elemet vagy a dependsOn elem, de nem használhatók egyszerre ugyanazon függő erőforrás kell. Amikor csak lehetséges, használjon egy implicit hivatkozási szükségtelen-függőség felvétele elkerülése érdekében.
 
 További tudnivalókért lásd: [függvényre](resource-group-template-functions-resource.md#reference).
 
@@ -140,12 +149,12 @@ Amikor eldönti, milyen függőségek beállításához, kövesse az alábbi ir�
 
 * A lehető legkevesebb függőségek beállítása.
 * Állítsa be a gyermek-erőforrás a szülő erőforrás függ.
-* Használja a **hivatkozás** függvényt kell megosztani egy tulajdonság erőforrások közötti implicit függőségek beállítása. Ne vegyen fel egy explicit függőség (**dependsOn**) Ha már megadta egy implicit függőség. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatot. 
-* Amikor az erőforrás nem lehet a függőség beállítása **létrehozott** nélkül egy másik erőforrás funkciói. Ne állítson be egy függőséget az erőforrások csak interaktív telepítés után.
-* Lehetővé függőségek cascade explicit módon beállítás nélkül. Például a virtuális gép virtuális hálózati adapteren, valamint a virtuális hálózati adapter függ a virtuális hálózat és a nyilvános IP-címeket. Ezért a virtuális gép telepített összes három erőforrások, de nincs explicit módon beállítva a virtuális gép összes három erőforrástól függ. Ez a megközelítés a függőségi sorrend tisztázza, és megkönnyíti a sablon később módosítható.
+* Használja a **hivatkozás** funkciót, és adjon át kell megosztani egy tulajdonság erőforrások közötti implicit függőségek beállítani az erőforrás nevét. Ne adja hozzá egy explicit függőség (**dependsOn**) Ha már megadott egy implicit függőség. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatot. 
+* Amikor az erőforrás nem lehet a függőség beállítása **létrehozott** nélkül egy másik erőforrás funkciói. Függőség nem állítható be, ha az erőforrások csak interaktív telepítés után.
+* Lehetővé függőségek cascade explicit módon beállítás nélkül. Például a virtuális gép virtuális hálózati adapteren, valamint a virtuális hálózati adapter függ a virtuális hálózat és a nyilvános IP-címeket. Ezért a virtuális gép telepített összes három erőforrások, de nincs explicit módon állítja be a virtuális gép összes három erőforrástól függ. Ez a megközelítés a függőségi sorrend tisztázza, és megkönnyíti a sablon később módosítható.
 * Ha a telepítés előtt értéket lehet meghatározni, próbálja üzembe helyezni a függőség nélküli erőforrás. Például ha egy konfigurációs értéke egy másik erőforrás nevét, nem szükség lehet egy függőséget. Ez az útmutató nem mindig működik, mert egyes erőforrásokat ellenőriznie az egyéb erőforrásokat. Ha hibaüzenetet kap, hozzáadjon egy függőséget. 
 
-Erőforrás-kezelő körkörös függőségi viszony azonosítja a sablon érvényesítése során. Ha hibaüzenet jelenik meg, amely meghatározza, hogy, hogy létezik-e körkörös függőséget, értékelje ki, hogy összes függőséget nem szükségesek, és el kell távolítani a sablont. Ha függőségek nem segít, elkerülhető körkörös függőségi viszony, néhány telepítési művelet áthelyezése gyermekszintű erőforrása, amely után az erőforrásokat, amelyek a körkörös függőségi viszonyban vannak telepítve. Tegyük fel például, két olyan virtuális gépet telepít, de a tulajdonságokat meg kell adni az egyes, amely a másikra hivatkozik. A következő sorrendben telepíthetők:
+Erőforrás-kezelő körkörös függőségi viszony azonosítja a sablon érvényesítése során. Ha hibaüzenet jelenik meg, amely meghatározza, hogy, hogy létezik-e körkörös függőséget, értékelje ki, hogy összes függőséget nem szükségesek, és el kell távolítani a sablont. Függőségek eltávolítása nem működik, ha úgy kerülheti el körkörös függőségi viszony néhány telepítési művelet áthelyezése gyermekszintű erőforrása, amely után az erőforrásokat, amelyek a körkörös függőségi viszonyban vannak telepítve. Tegyük fel például, két olyan virtuális gépet telepít, de tulajdonságokat meg kell adni az egyes, amely a másikra hivatkozik. A következő sorrendben telepíthetők:
 
 1. vm1
 2. vm2

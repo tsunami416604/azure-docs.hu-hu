@@ -1,23 +1,19 @@
 ---
 title: Azure IoT Hub eszközről a felhőbe üzenetküldési megértése |} Microsoft Docs
 description: Fejlesztői útmutató - eszközről a felhőbe az IoT-központ az üzenetküldési használata. A telemetriai adatokat, és nem telemtry adatok küldését, és üzeneteket a útválasztás használatával kapcsolatos adatokat tartalmaz.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 54b2961713f529438f5508bb0615824ec6bec214
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6096d726d7a00a4ddf8047edeebb74ab3f151e51
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808257"
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>Eszköz-felhő üzenetek küldése az IoT-központ
 
@@ -65,8 +61,8 @@ A **ConnectionAuthMethod** tulajdonsága tartalmazza egy szerializált JSON-obje
 
 ```json
 {
-  "scope": "{ hub | device}",
-  "type": "{ symkey | sas}",
+  "scope": "{ hub | device }",
+  "type": "{ symkey | sas | x509 }",
   "issuer": "iothub"
 }
 ```
@@ -90,4 +86,4 @@ A [Ismerkedés] [ lnk-get-started] oktatóprogramok bemutatják a eszközről a 
 [lnk-compatible-endpoint]: iot-hub-devguide-messages-read-builtin.md
 [lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
 [lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-d2c-tutorial]: tutorial-routing.md

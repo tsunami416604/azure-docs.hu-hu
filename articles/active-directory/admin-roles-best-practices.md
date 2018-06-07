@@ -13,10 +13,11 @@ ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
 ms.openlocfilehash: 45a0cf104df6d29515ed1a94c78c8cc1e42a2223
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808318"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Biztonságossá tétele a felhőalapú és hibrid telepítések privileged access Azure AD-ben
 
@@ -368,7 +369,7 @@ Határozza meg, ha szükséges [egy másik fiókot az Azure-előfizetés tulajdo
 
 ## <a name="break-glass-what-to-do-in-an-emergency"></a>"Vészhelyzeti": Mi a teendő, vészhelyzet esetén
 
-![Sürgős](./media/admin-roles-best-practices/emergency.jpeg)
+![Vészhelyzet](./media/admin-roles-best-practices/emergency.jpeg)
 
 1. Értesítse a kulcs kezelők és biztonsági tisztviselő vonatkozó információkkal kapcsolatban az incidens.
 

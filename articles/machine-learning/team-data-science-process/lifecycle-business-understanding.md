@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: b406a0cd3e5176649b33d6ad8f41facb7043952d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c851a9a5c20c3f658e8681a4178ebe67294fd773
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808077"
 ---
 # <a name="business-understanding"></a>Üzleti ismertetés
 
@@ -80,7 +81,7 @@ Előfordulhat például, hogy a meglévő rendszerek kell gyűjteni, és oldja m
 Ebben a szakaszban az alábbiakban a termékek esetében:
 
    * [Okleveles dokumentum](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): szabványos sablon megtalálható a TDSP projekt struktúra definíciójának. A bérleti dokumentum egy élő dokumentumot. A sablon a projekt teljes frissíti, akkor ellenőrizze, hogy új felderítések és üzleti követelmények változnak. A fontos, hogy ez a dokumentum részletesen, hozzáadása során a felderítési folyamat során többször. Megőrzése az ügyfél és egyéb érintett felek részt vesz a módosítások elvégzése, és egyértelműen kommunikálnak a okok miatt a módosítások.  
-   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): A **nyers adatforrások** szakasza a **adatmeghatározások** jelentést, amely megtalálható a TDSP projekt **jelentés** mappa tartalmazza az adatokat forrás. Ez a szakasz a nyers adatok eredeti és a rendeltetési helyét adja meg. Későbbi szakaszaiban ki további adatait, például a parancsfájlok az adatok áthelyezése az analitikus környezethez.  
+   * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): A **nyers adatforrások** szakasza a **adatmeghatározások** jelentést, amely megtalálható a TDSP projekt **jelentés** mappa tartalmazza az adatokat forrás. Ez a szakasz a nyers adatok eredeti és a rendeltetési helyét adja meg. Későbbi szakaszaiban ki további adatait, például a parancsfájlok az adatok áthelyezése az analitikus környezethez.  
    * [Adatok szótárak](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ez a dokumentum ismerteti az ügyfél által meghatározott adatok. A leírások információkat tartalmaznak a séma (a az adattípusokat és az információkat az ellenőrzési szabályok, ha van ilyen) és az entitás-kapcsolat diagramokat, ha elérhető.
 
 ## <a name="next-steps"></a>További lépések

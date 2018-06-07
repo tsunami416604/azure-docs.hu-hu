@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 74a738f85a969e3c3451dc326de9b4284c0984c8
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809573"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>A Naplóelemzési teljesítményfigyelés
 
@@ -73,19 +74,27 @@ Töltse le, és módosítsa a sablon az igényeinek leginkább megfelelő a für
 
 Most, hogy az OMS-ügynököt, head hozzáadta a kiválaszthatja, melyik teljesítményszámlálóinak Log Analytics-portálról való szeretne gyűjteni. 
 
-1. Az Azure-portálon lépjen az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfOMSWorkspace\>**  és Ugrás a – áttekintés oldalra. A lap tetején kattintson a hivatkozásra kattintva nyissa meg az OMS-portálon.
+1. Az Azure-portálon lépjen az erőforráscsoporthoz, amelyben létrehozta a Service Fabric elemzési megoldások. Válassza ki **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. Miután Ön a portálon, minden a megoldásairól engedélyezve van, egy a Service Fabric megjelenik egy grafikonon formájában csempék. Ide kattintva továbbra is a Service Fabric elemzési megoldások. 
+2. Kattintson a **OMS-munkaterület**.
 
-3. Most megjelenik a diagramok néhány csempék működési csatorna és megbízható szolgáltatások események. Kattintson a jobb oldali fogaskerék ikonra kattintva nyissa meg a beállítások lapra.
+3. Kattintson a **speciális beállítások**.
 
-    ![OMS-beállítások](media/service-fabric-diagnostics-oms-agent/oms-solutions-settings.png)
+4. Kattintson a **adatok**, majd kattintson a **Windows vagy Linux-teljesítményszámlálók**. Dönthet úgy, hogy alapértelmezett számlálók listája, és a gyűjtemény intervallumát túl állíthatja be. Azt is megteheti [további teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) gyűjtéséhez. A megfelelő formátumú a hivatkozott [cikk](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
 
-4. A beállítások lapon kattintson az adatokat, és válassza a Windows vagy Linux-teljesítményszámlálókat. Dönthet úgy, hogy megfelelően alapértelmezett listáját, és a gyűjtemény intervallumát túl állíthatja be. Azt is megteheti [további teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md) gyűjtéséhez. A megfelelő formátumú a hivatkozott [cikk](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+5. Kattintson a **mentése**, majd kattintson a **OK**.
 
-Amennyiben a számlálók vannak konfigurálva, head biztonsági megoldások lapjára, és hamarosan megjelenik adatok továbbítására a és a a grafikonon megjelenített **csomópont metrikák**. A teljesítményszámláló-adatok hasonlóan a fürthöz kapcsolódó események és a csomópontok, telj számláló neve, valamint a Kusto lekérdezési nyelv értékek szűrő is lekérheti. 
+6. Zárja be a Speciális beállítások panelen.
 
-![OMS telj számláló lekérdezés](media/service-fabric-diagnostics-oms-agent/oms-perf-counter-query.png)
+7. Általános fejléc alatt kattintson **áttekintése**.
+
+8. Az egyes a megoldásairól engedélyezve van, egy a Service Fabric csempék egy grafikonon formájában jelenik meg. Kattintson a **Service Fabric** diagramot úgy, hogy továbbra is a Service Fabric elemzési megoldások.
+
+9. Néhány csempe található diagramokat, amelyik a műveleti csatornát és megbízható szolgáltatások események jelenik meg. A kijelölt számlálók áramló adatokat grafikus ábrázolása metrikák csomópont alatt jelenik meg. 
+
+10. Kattintson a tároló metrika grafikon további részletek megtekintéséhez. A teljesítményszámláló-adatok hasonlóan a fürthöz kapcsolódó események és a csomópontok, telj számláló neve, valamint a Kusto lekérdezési nyelv értékek szűrő is lekérheti.
+
+![OMS telj számláló lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>További lépések
 

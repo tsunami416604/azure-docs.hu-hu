@@ -1,6 +1,6 @@
 ---
-title: "A kiadási jegyzetek az Application Insights |} Microsoft Docs"
-description: "Központi telepítés hozzáadása, vagy összeállíthatja a metrikák explorer diagramokat az Application Insightsban való jelölőket."
+title: A kiadási jegyzetek az Application Insights |} Microsoft Docs
+description: Központi telepítés hozzáadása, vagy összeállíthatja a metrikák explorer diagramokat az Application Insightsban való jelölőket.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
 ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807798"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Az Application Insightsban metrika diagramok jegyzetek
 A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelyen rendszerbe van állítva egy új buildverziót, vagy más jelentős esemény történt. Akkor könnyen látható, hogy a módosítások volt-e az alkalmazás teljesítményére hatással. Ezek automatikusan létrehozhatók a [Visual Studio Team Services rendszer build](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Jegyzeteket, tetszés szerint mindenképpen jelzőt is létrehozhat [hozza létre őket a Powershellből](#create-annotations-from-powershell).
@@ -102,7 +103,7 @@ Jegyzetek e folyamat (nélkül használja a Visual STUDIO Team System) is létre
 
 Nem módosítja a parancsfájlt, például az előző jegyzetek írására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Munkaelemek létrehozása](app-insights-diagnostic-search.md#create-work-item)
 * [Automatizálása a PowerShell](app-insights-powershell.md)

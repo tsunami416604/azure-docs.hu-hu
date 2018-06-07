@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824710"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS-védelem: Ajánlott eljárások és architektúrák hivatkozik
 
@@ -291,18 +292,9 @@ Ebben az architektúrában az internetről a HDInsight-fürthöz rendelt tovább
 
 A referencia-architektúrában további információkért tekintse meg a [kiterjesztése Azure HDInsight Azure virtuális hálózat használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) dokumentációját.
 
-### <a name="azure-api-management"></a>Azure API Management
-
-A referencia-architektúrában megvédi a nyilvános végpontot a [Azure API Management](../api-management/api-management-key-concepts.md) erőforrás-közzétételi API-k az ügyfél számára a szervezeten kívül. DDoS-védelem engedélyezése külső virtuális hálózatot az API Management központi telepítését.
-
-![A referencia-architektúrában az API Management ábrája](media/azure-ddos-best-practices/image15.png)
-
-Ha a külső virtuális hálózatot kell konfigurálni, a nyilvános interneten keresztül egy nyilvános terheléselosztó az API Management-átjáró és a fejlesztői portálon érhetők el. Ebben az architektúrában szabványos DDoS-védelem engedélyezve van a külső virtuális hálózat az API Management. Továbbítódik az internetről a nyilvános IP-címet a API-kezelés a 3. rétegbeli és 4 hálózati támadások ellen védett. Réteg 7 HTTP/HTTPS lánctámadások elleni védelem érdekében, konfigurálhatja az Alkalmazásátjáró WAF módban.
-
-Telepítve van a virtuális hálózatban, és konfigurálhatja a DDoS védelem szabványos további szolgáltatások listáját lásd: [Ez a cikk](../virtual-network/virtual-network-for-azure-services.md). DDoS védelem szabványos támogatja csak az Azure Resource Manager-erőforrásokat. 
 
 > [!NOTE]
-> App Service Environment-környezet injected telepítés nyilvános IP-címet a virtuális hálózatban a PowerApps natív módon nem támogatott. App Service Environment-környezet ellátásáról részletekért lásd: Ebben a szakaszban.
+> Az Azure App Service-környezet PowerApps vagy az API Management része virtuális hálózatnak egy nyilvános IP-is natív módon nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

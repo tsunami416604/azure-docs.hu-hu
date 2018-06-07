@@ -15,10 +15,11 @@ ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: 15fa3e7738810ada48f471a685f79a82445ad70c
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808859"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Parancsfájlművelet Windows-alapú HDInsight-fürtök testreszabása
 **Parancsfájl-művelet** alkalmazásához használt [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a fürt további szoftver telepítése a fürt létrehozása során.

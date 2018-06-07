@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1557567170654506c0010fafea7b035a2535aaeb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 5db7d57045acea3ded82e880169ebf02f4151ec5
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643729"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824727"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -205,7 +205,7 @@ A helyszíni virtuális gépek replikálása Azure-ba, meg kell felelnie Azure v
 
 **Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated machines). | Ellenőrzés sikertelen lesz, ha nem támogatott.
+Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated-machines). | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Vendég operációs rendszer architektúrája | 64 bites. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Operációs rendszert tároló lemez mérete | Legfeljebb 2048 GB. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Operációs rendszer lemez száma | 1 | Ellenőrzés sikertelen lesz, ha nem támogatott.  

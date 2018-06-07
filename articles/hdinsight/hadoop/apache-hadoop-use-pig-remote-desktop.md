@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8d403e46f7460dff92cc418b829cc5510efd982
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 700569684888428032997dd81c10023c6fd5a7d8
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823305"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>A távoli asztali kapcsolat-ről futtatva a Pig-feladatokhoz
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -76,7 +77,7 @@ A távoli asztal engedélyezése a HDInsight-fürthöz, majd csatlakozni a köve
     <tr>
     <td>EREDMÉNY = rendelés GYAKORISÁGOT által száma desc;</td><td>A naplózási szintek rendelések (csökkenő) száma szerint, és tárolja az eredmény</td>
     </tr>
-    </table>
+</table>
 6. Az átalakítás eredménye használatával is mentheti a `STORE` utasítást. Például a következő parancsot a menti a `RESULT` számára a **/example/data/pigout** könyvtárban lévő az alapértelmezett tároló, a fürt:
 
         STORE RESULT into 'wasb:///example/data/pigout'

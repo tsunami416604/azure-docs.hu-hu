@@ -15,21 +15,22 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 026c686b1d5654aa50dd63b9addd619dd5322da0
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808145"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Hozzáférés-vezérléssel Azure Stack Role-Based erőforrásokhoz való hozzáférés kezelése
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-Azure verem támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) azonos [kezelési biztonsági modell](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) , amely a Microsoft Azure használja. Az RBAC segítségével kezelheti a felhasználó, csoport vagy előfizetések, erőforrások és szolgáltatások alkalmazás eléréséhez.
+Azure verem támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) azonos [kezelési biztonsági modell](https://docs.microsoft.com/azure/role-based-access-control/overview) , amely a Microsoft Azure használja. Az RBAC segítségével kezelheti a felhasználó, csoport vagy előfizetések, erőforrások és szolgáltatások alkalmazás eléréséhez.
 
 ## <a name="basics-of-access-management"></a>Kezelési alapjai
 
-Szerepköralapú hozzáférés-vezérlés lehetővé részletes hozzáférés-vezérlést használó megvédeni környezetét. Felhasználók megadhatja a pontos által egy adott hatókörben RBAC szerepkör hozzárendelése szükséges engedélyeket. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást. Olvassa el a [szerepköralapú hozzáférés-vezérlés az Azure portálon](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) cikkel, hogy hozzáférés-kezeléssel kapcsolatos további részletes információk.
+Szerepköralapú hozzáférés-vezérlés lehetővé részletes hozzáférés-vezérlést használó megvédeni környezetét. Felhasználók megadhatja a pontos által egy adott hatókörben RBAC szerepkör hozzárendelése szükséges engedélyeket. A szerepkör-hozzárendelés hatóköre lehet előfizetés, egy erőforráscsoport vagy egy erőforrást. Olvassa el a [szerepköralapú hozzáférés-vezérlés az Azure portálon](https://docs.microsoft.com/azure/role-based-access-control/overview) cikkel, hogy hozzáférés-kezeléssel kapcsolatos további részletes információk.
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
@@ -59,7 +60,7 @@ Több szerepkör hozzárendelése egy felhasználóhoz, és minden egyes szerepk
 * Előfizetés-1 TestUser-A az olvasó szerepkört rendelni.
 * A tulajdonosi TestUser-A szerepkör hozzárendelése TestVM-1.
 
-Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
+Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Erőforrás-hierarchiát és öröklés
 
@@ -81,14 +82,14 @@ Több szerepkör hozzárendelése egy felhasználóhoz, és minden egyes szerepk
 * Előfizetés-1 TestUser-A az olvasó szerepkört rendelni.
 * A tulajdonosi TestUser-A szerepkör hozzárendelése TestVM-1.
 
-Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
+Az Azure [szerepkör-hozzárendelések](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) cikk megtekintése, hozzárendelése és szerepkörök törlése kapcsolatos részletes információkat tartalmazza.
 
 ## <a name="set-access-permissions-for-a-user"></a>A felhasználó hozzáférési engedélyeinek beállítása
 
 Az alábbi lépéseket egy felhasználó engedélyeinek konfigurálását ismertetik.
 
 1. Olyan fiókkal jelentkezzen be, amely a kezelni kívánt erőforrás tulajdonos jogosult.
-2. A bal oldali navigációs ablakból válassza **erőforráscsoportok**.
+2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza ki az engedélyek beállítása a kívánt erőforráscsoport nevét.
 4. Az erőforrás csoport navigációs ablaktábláján válassza **hozzáférés-vezérlés (IAM)**. A **hozzáférés-vezérlés** nézet az erőforráscsoport hozzáféréssel rendelkező elemeket sorolja fel. Az eredmények szűréséhez, és használja a menüsávon hozzáadása vagy eltávolítása.
 5. Az a **hozzáférés-vezérlés** menü megnyitásához, válassza a **+ Hozzáadás**.

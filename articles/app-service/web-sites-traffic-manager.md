@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Traffic Manager Azure App Service-forgalom vezérlése"
-description: "A cikkben összefoglaló információkat az Azure Traffic Manager, az Azure App Service vonatkozik."
+title: Az Azure Traffic Manager Azure App Service-forgalom vezérlése
+description: A cikkben összefoglaló információkat az Azure Traffic Manager, az Azure App Service vonatkozik.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: efb732e9be62313eb199cb2cfbb1fa4d2cde0282
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824040"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Az Azure Traffic Manager Azure App Service-forgalom vezérlése
 > [!NOTE]
@@ -30,13 +31,13 @@ ms.lasthandoff: 11/29/2017
 ## <a name="introduction"></a>Bevezetés
 Azure Traffic Manager segítségével szabályozhatja, hogyan továbbítja őket a az Azure App Service apps webes ügyfelektől érkező kérelmeket. Amikor App Service-végpontok egy Azure Traffic Manager-profilt, Azure Traffic Manager nyomon követi az állapota (fut, leállítva vagy törölt.) az App Service-alkalmazásokhoz, hogy eldöntheti, amelyek ezekre a végpontokra kell kapnia a forgalmat.
 
-## <a name="routing-methods"></a>útválasztási metódusait
+## <a name="routing-methods"></a>Útválasztási módszerek
 Az Azure Traffic Manager négy különböző útválasztási metódusait használja. Ezeket a módszereket az alábbi lista ismerteti a, az Azure App Service eseménykódok.
 
-* **[Prioritás](#priority):** elsődleges alkalmazás használata az összes forgalom, és adja meg a biztonsági mentések, abban az esetben, ha az elsődleges vagy a biztonsági másolatot készítő alkalmazások nem érhetők el.
-* **[Súlyozott](#weighted):** forgalom szét kapnia, egyenletesen vagy megfelelően súlyok, amelyet kell megadni.
-* **[Teljesítmény](#performance):** Ha különböző földrajzi helyeken található alkalmazások, az "legközelebbi" alkalmazást a legkisebb hálózati késést tekintetében használja.
-* **[Földrajzi](#geographic):** közvetlen felhasználók adott alkalmazásokra alapján mely földrajzi helyen található, a DNS-lekérdezés származik. 
+* **[Prioritás](../traffic-manager/traffic-manager-routing-methods.md#priority):** elsődleges alkalmazás használata az összes forgalom, és adja meg a biztonsági mentések, abban az esetben, ha az elsődleges vagy a biztonsági másolatot készítő alkalmazások nem érhetők el.
+* **[Súlyozott](../traffic-manager/traffic-manager-routing-methods.md#weighted):** forgalom szét kapnia, egyenletesen vagy megfelelően súlyok, amelyet kell megadni.
+* **[Teljesítmény](../traffic-manager/traffic-manager-routing-methods.md#performance):** Ha különböző földrajzi helyeken található alkalmazások, az "legközelebbi" alkalmazást a legkisebb hálózati késést tekintetében használja.
+* **[Földrajzi](../traffic-manager/traffic-manager-routing-methods.md#geographic):** közvetlen felhasználók adott alkalmazásokra alapján mely földrajzi helyen található, a DNS-lekérdezés származik. 
 
 További információkért lásd: [Traffic Manager útválasztási módjai](../traffic-manager/traffic-manager-routing-methods.md).
 
@@ -53,7 +54,7 @@ Az Azure-ral Azure Traffic Manager használatakor vegye figyelembe a következő
 * Az egyéni tartománynevek működnek megfelelően, de az alkalmazásokhoz hozzáadásán, úgy kell konfigurálnia a DNS-leképezés a Traffic Manager URL-címre mutasson. Az App Service alkalmazás az egyéni tartománynév beállítása további információkért lásd: [egy meglévő egyéni DNS-névvel hozzárendelése az Azure Web Apps](app-service-web-tutorial-custom-domain.md).
 * Csak a standard vagy prémium szintű Azure Traffic Manager-profil üzemmódban működő alkalmazások adhat hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A fogalmi és technikai áttekintés az Azure Traffic Manager: [Traffic Manager – áttekintés](../traffic-manager/traffic-manager-overview.md).
 
 Az App Service Traffic Manager használatával kapcsolatos további információkért tekintse meg a blogbejegyzések [Azure Traffic Manager használata az Azure-webhelyek](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) és [Azure Traffic Manager most már integrálható az Azure-webhelyek](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/).

@@ -1,24 +1,21 @@
 ---
-title: "Többrétegű .NET-alkalmazás az Azure Service Bus használatával | Microsoft Docs"
-description: "Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között."
+title: Többrétegű .NET-alkalmazás az Azure Service Bus használatával | Microsoft Docs
+description: Ezen .NET-oktatóanyag segítségével többrétegű alkalmazást fejleszthet az Azure-ban, amely Service Bus-üzenetsorokkal kommunikál a rétegek között.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
 ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809454"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 
@@ -58,25 +55,19 @@ Ennek a kommunikációs mechanizmusnak több előnye is van a közvetlen üzenet
 
 Az alábbi szakaszok az architektúrát megvalósító kódot ismertetik.
 
-## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
-Az Azure-alkalmazások fejlesztésének megkezdése előtt szerezze be az eszközöket és állítsa be a fejlesztési környezetet.
-
-1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
-2. A **.NET** oszlopban kattintson a használt [Visual Studio](http://www.visualstudio.com)-verzióra. A jelen oktatóanyagban szereplő lépések a Visual Studio 2015-öt használják, de ezek a Visual Studio 2017-ben is működnek.
-3. A telepítő futtatásának vagy mentésének kérdésére válaszolva kattintson a **Futtatás** gombra.
-4. A **Webplatform-telepítőben** kattintson a **Telepítés** gombra, és folytassa a telepítést.
-5. A telepítés végén az alkalmazás fejlesztésének megkezdéséhez szükséges összes eszközzel rendelkezni fog. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban.
-
 ## <a name="create-a-namespace"></a>Névtér létrehozása
-A következő lépés egy *névtér* létrehozása, valamint egy [közös hozzáférésű jogosultságkód (SAS-) kulcs](service-bus-sas.md) beszerzése a névtérhez. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtérnév és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
+
+Az első lépés az, hogy hozzon létre egy *névtér*, és szerezzen be egy [közös hozzáférésű Jogosultságkód (SAS)](service-bus-sas.md) kulcs a névtérhez. A névtér egy alkalmazáshatárt biztosít a Service Buson keresztül közzétett minden alkalmazáshoz. Az SAS-kulcsot a rendszer állítja elő a névtér létrehozásakor. A névtérnév és az SAS-kulcs együttes használata hitelesítő adatokat biztosít a Service Bus számára, amellyel hitelesíti a hozzáférést egy alkalmazáshoz.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Webes szerepkör létrehozása
+
 Ebben a szakaszban az alkalmazás előtérrendszerét hozza létre. Először létrehozza az alkalmazás által megjelenített oldalakat.
 Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzenetsorba, és megjeleníti az üzenetsor állapotára vonatkozó információkat.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
+
 1. Rendszergazdai jogosultságokkal indítsa el a Visual Studio alkalmazást: kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
    
    A Visual Studio programban, a **File** (Fájl) menüben kattintson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
@@ -325,7 +316,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
    
    ![][23]
 5. A **Name** (Név) mezőben adja az **OrderProcessingRole** nevet a projektnek. Ezután kattintson az **Add** (Hozzáadás) gombra.
-6. Másolja a „Service Bus-névtér létrehozása” szakasz 9. lépésében beszerzett kapcsolati karakterláncot a vágólapra.
+6. Másolja a „Service Bus-névtér létrehozása” szakasz 9. lépésében beszerzett kapcsolati sztringet a vágólapra.
 7. A **Megoldáskezelőben** kattintson a jobb gombbal az 5. lépésben létrehozott **OrderProcessingRole** szerepkörre (az **OrderProcessingRole** szerepkörre kattintson a jobb gombbal a **Roles** (Szerepkörök) részen, és ne az osztályra). Ezután kattintson a **Properties** (Tulajdonságok) elemre.
 8. A **Properties** (Tulajdonságok) párbeszédpanel **Settings** (Beállítások) lapján kattintson a **Microsoft.ServiceBus.ConnectionString** **Value** (Érték) mezőjébe, és illessze be a 6. lépésben másolt végpontértéket.
    

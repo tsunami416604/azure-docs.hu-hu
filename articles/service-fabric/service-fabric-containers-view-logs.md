@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: ryanwi
-ms.openlocfilehash: b2b3562f65e7e861b7e4dff7b7c26d58081ff29e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8b6bc791700e6811f5681ee70329e4d2ac05991
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824611"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>A Service Fabric-tároló szolgáltatás naplók megtekintése
 Az Azure Service Fabric egy tároló orchestrator és egyaránt támogat [Linux-és Windows](service-fabric-containers-overview.md).  Ez a cikk ismerteti, hogyan futó tárolószolgáltatás vagy egy inaktív tároló tároló naplók megtekintéséhez, hogy diagnosztizálása és elhárítása.
@@ -34,6 +35,14 @@ A fa nézetben található a kódcsomag a *_lnxvm_0* csomópont kibontásával *
 
 ## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>A naplók a inaktív vagy lefagyott tároló hozzáférés
 6.2-es kezdődően akkor is is beolvasása a naplók egy inaktív vagy lefagyott tároló használatára vonatkozó [REST API-k](/rest/api/servicefabric/sfclient-index) vagy [Service Fabric CLI (SFCTL)](service-fabric-cli.md) parancsok.
+
+### <a name="set-container-retention-policy"></a>Tárolómegőrzési szabályzat megadása
+A tárolóindítási hibák diagnosztizálásának elősegítése céljából a Service Fabric (6.1-es vagy újabb verzió esetén) támogatja a megszakadt működésű vagy el sem induló tárolók megőrzését. Ez a szabályzat az **ApplicationManifest.xml** fájlban állítható be az alábbi kódrészletben látható módon:
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+ ```
+
+A **ContainersRetentionCount** beállítása megadja a hiba esetén megőrzendő tárolók számát. Ha negatív érték van megadva, a rendszer minden olyan tárolót megőriz, amelyen hiba jelentkezik. Ha a **ContainersRetentionCount** attribútum nincs megadva, nincs tárolók megmaradnak. A **ContainersRetentionCount** attribútum az Alkalmazásparamétereket is támogatja, így a felhasználók különböző értékeket adhatnak meg a tesztelési és az éles fürtökön. A funkció használatakor alkalmazzon elhelyezési korlátozásokat, hogy a tárolószolgáltatás egy adott csomóponton maradjon, és a rendszer ne kerüljön át más csomópontokra. Az ezzel a funkcióval megőrzött tárolókat manuálisan kell eltávolítani.
 
 ### <a name="rest"></a>REST
 Használja a [beolvasása tároló telepítve a szolgáltatók](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) lekérdezése a naplók lefagyott a tárolóhoz. Adja meg, hogy a tároló kiszolgálón már futott a csomópont neve, alkalmazásnevet, service manifest nevét és a csomag neve.  Adja meg `&Previous=true`. A válasz tartalmazza a tároló keresse meg a halott tároló kód csomag példány.

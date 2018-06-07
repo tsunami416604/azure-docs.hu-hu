@@ -1,4 +1,21 @@
-<a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik.
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: networking
+author: jimdial
+ms.service: networking
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: f4071f2555607b6035352a2aec38c986941c41a9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826531"
+---
+<a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -18,7 +35,7 @@
 | Végponthozzáférés-vezérlési listák (ACL-ek) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Hálózatkezelési korlátok – Azure Resource Manager
-Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik.
+Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |

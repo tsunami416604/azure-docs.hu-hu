@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: c2e18f30e55007a0625a19258ec3745f64dc25da
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd43d567a9839ae38c5b5eb4cdb851f8b80dcfff
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824570"
 ---
-# <a name="provide-applications-access-to-azure-stack"></a>Alkalmazások elérést biztosíthat az Azure-verem
+# <a name="provide-applications-access-to-azure-stack"></a>Hozzáférést biztosít az alkalmazásoknak az Azure Stackhez
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
@@ -29,7 +30,7 @@ Például előfordulhat, hogy a konfigurációs felügyeleti eszközt, amely Azu
 
 Szolgáltatásnevekről előnyösebb fut az alkalmazás a saját hitelesítő adatok, mert:
 
-* Engedélyeket rendelhet az egyszerű szolgáltatásnév, amelyek eltérnek a saját fiók engedélyeit. Ezek az engedélyek általában korlátozódik, hogy mit az alkalmazás kell tennie.
+* Engedélyeket rendelhet az egyszerű szolgáltatásnév, amelyek eltérnek a saját fiók engedélyeit. Ezek az engedélyek jellemzően csak azt engedélyezik, amire az alkalmazásnak szüksége van.
 * Nem kell módosítani az alkalmazás hitelesítő adatokat, ha az Ön feladatkörei módosítása.
 * Tanúsítvány segítségével automatizálhatja a hitelesítést egy felügyelet nélküli parancsfájl végrehajtása közben.  
 
@@ -50,7 +51,7 @@ Ebben a szakaszban hoz létre egy alkalmazást (egyszerű szolgáltatásnév) az
 
 Az alkalmazás hozott létre egy egyszerű szolgáltatást.
 
-### <a name="get-credentials"></a>Hitelesítő adatainak lekérése
+### <a name="get-credentials"></a>Hitelesítő adatok beolvasása
 Bejelentkezéskor programozott módon, az alkalmazáshoz, és a webes alkalmazás Azonosítóját használnia / API-t a hitelesítési kulcs. Az értékek beszerzéséhez kövesse az alábbi lépéseket:
 
 1. A **App regisztrációk** az Active Directoryban, válassza ki az alkalmazást.
@@ -76,7 +77,7 @@ A parancsfájl futtatása a rendszerjogosultságú végpontról ERCS virtuális 
 
 
 Követelmények:
-- Egy hitelesített meg kell adni.
+- Egy tanúsítványra szükség.
 
 **Paraméterek**
 

@@ -12,28 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 06/05/2018
 ms.author: ancav
-ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ceabefa47b7627b8a9f952d487f78a96e338838d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824744"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Ez a cikk ismerteti, hogy milyen adatok gyűjtése le van a Microsoft Azure-ban az előnyöket, és használatuk indítása.  
 
 ## <a name="what-are-metrics"></a>Mik azok a metrikák?
 Azure figyelő címinfrastruktúra megjelenítési lehetőségeinek a teljesítmény- és a munkaterhelések Azure állapot telemetriai adatok felhasználását teszi lehetővé. A legfontosabb Azure telemetriai adatok típus (más néven teljesítményszámlálók) vagy az Azure erőforrások által kibocsátott metrikákat. Az Azure figyelő többféleképpen is konfigurálhatja, és felhasználhatják a figyeléshez és hibaelhárításhoz metrikákat.
-
-## <a name="what-can-you-do-with-metrics"></a>Mire szolgál a metrikák?
-Metrikák egy értékes telemetriai adatok forrását, és lehetővé teszik a következő feladatokat:
-
-* **A teljesítmény nyomon** az erőforrás (például egy virtuális gép, a webhely vagy a logikai alkalmazást) a metrikák a portál diagramon ábrázolásához és, hogy a diagramot irányítópulton való rögzítéshez.
-* **Probléma értesítés** , amely teljesítményére hatással van az erőforrás metrika ebbe a meghatározott küszöbérték.
-* **Konfigurálja az automatikus műveleteket**, például az automatikus skálázás egy erőforrás vagy runbook kiváltó metrika ebbe a meghatározott küszöbérték.
-* **Hajtsa végre a speciális elemzés** vagy a teljesítmény vagy a használati trendeket a erőforrás jelentés.
-* **Archív** az erőforrás teljesítmény vagy a rendszerállapot előzményeinek **megfelelőség és naplózás** céljából.
 
 ## <a name="what-are-the-characteristics-of-metrics"></a>Mik azok a metrikák jellemzői?
 Metrikák a következő jellemzőkkel rendelkezik:
@@ -43,19 +35,17 @@ Metrikák a következő jellemzőkkel rendelkezik:
 * Van-e hozzáférési **93 a napok** minden mérőszám. Gyorsan megtalálhatja a legutóbbi és havi kapcsolatos trendeket szemlélteti a teljesítmény- vagy az erőforrás állapotát.
 * Néhány metrikák is attribútumokkal név-érték pár nevű **dimenziók**. Ezek lehetővé teszik a további szegmentálni, és vizsgálja meg a metrika részletesebb módon.
 
-További lehetőségek:
+## <a name="what-can-you-do-with-metrics"></a>Mire szolgál a metrikák?
+Metrikák lehetővé teszik a következő feladatokat:
 
-* Metrika konfigurálása **szabályt, amely értesítést küld vagy fogad automatikus művelet riasztás** amikor keverve használ a metrika a beállított küszöbértéket. Automatikus skálázás, amely lehetővé teszi a bejövő kérések teljesítéséhez erőforrás horizontális vagy tölti be a webhely vagy a számítási erőforrások további automatizált műveletet. Konfigurálhatja az automatikus skálázási beállítás szabály bejövő vagy kimenő méretezése a küszöbértéket meghaladó metrika alapján.
 
-* **Útvonal** összes metrikákat az Application Insights vagy Naplóelemzési azonnali analytics, a Keresés és a egyéni riasztási metrikai adatok az erőforrások közül. Adatfolyam formájában a mérni kívánt Eseményközpontban, amely lehetővé teszi majd irányíthatja őket Azure Stream Analytics vagy egyéni alkalmazások, a közel valós idejű elemzési is. Beállíthatja az Event Hubs streaming a diagnosztikai beállítások használatával.
-
-* **Archiválja a mérni kívánt tárolási** a hosszabb megőrzési vagy offline jelentéskészítésre használja őket. Az erőforrás diagnosztikai beállításainak konfigurálásakor irányítani tudja a metrikákat, az Azure Blob storage.
-
-* Könnyen felderítése, fér hozzá, és **megtekintése összes metrikát** Azure-portálon a jelöljön ki egy erőforrást, és a metrikák a diagram megrajzolásához.
-
-* **Felhasználását** a metrikák az új Azure figyelő REST API-kon keresztül.
-
-* **Lekérdezés** metrikákat a PowerShell-parancsmagok és a platformok közötti REST API használatával.
+- Metrika konfigurálása **szabályt, amely értesítést küld vagy fogad automatikus művelet riasztás** amikor keverve használ a metrika a beállított küszöbértéket. Műveletek vezérli [művelet csoportok](monitoring-action-groups.md). Példa műveletek a következők lehetnek: e-mail, telefon és SMS-értesítések, hívja a webhook egy runbookot, és több indítása. **Automatikus skálázás** egy speciális automatizált művelet, amelynek segítségével méretezhető, erőforrás felfelé és lefelé terhelhető még költséges tartása alacsonyabb, amikor nem terhelés alatt van. Konfigurálhatja az automatikus skálázási beállítás szabály bejövő vagy kimenő méretezése a küszöbértéket meghaladó metrika alapján.
+- **Útvonal** összes mérni kívánt *Application Insights* vagy *Naplóelemzési* azonnali analytics, a Keresés és a egyéni riasztási metrikai adatok az erőforrások közül. Is adatfolyam formájában a metrikák egy *Eseményközpont*, így lehetővé teszi, és Azure Stream Analytics vagy egyéni alkalmazások, a közel valós idejű elemzési irányíthatja őket. Beállíthatja az Event Hubs streaming a diagnosztikai beállítások használatával.
+- **Archív** az erőforrás a megfelelés, a naplózás vagy kapcsolat nélküli jelentéskészítési célból a teljesítmény vagy a rendszerállapot előzményeit.  Az erőforrás diagnosztikai beállításainak konfigurálásakor irányítani tudja a metrikákat, az Azure Blob storage.
+- Használja a **Azure-portálon** felderítésére, eléréséhez, és minden metrikák megtekintéséhez jelöljön ki egy erőforrást, és a metrikák a diagram megrajzolásához. Az erőforrás (például egy virtuális gép, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követéséhez a diagram az irányítópulton való rögzítéshez.  
+- **Hajtsa végre a speciális elemzés** vagy a teljesítmény vagy a használati trendeket a erőforrás jelentés.
+- **Lekérdezés** metrikákat a PowerShell-parancsmagok és a platformok közötti REST API használatával.
+- **Felhasználását** a metrikák az új Azure figyelő REST API-kon keresztül.
 
   ![Az Azure a figyelő a metrikák útválasztását](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
@@ -107,9 +97,9 @@ Nyissa meg a **diagnosztikai beállítások** részen a **figyelő** lapra, és 
 A Resource Manager-sablonok, konfigurálható [PowerShell](insights-powershell-samples.md), [Azure CLI](insights-cli-samples.md), vagy [REST API-k](https://msdn.microsoft.com/library/dn931943.aspx).
 
 > [!NOTE]
-> Diagnosztikai beállítások keresztül többdimenziós metrikák küldése jelenleg nem támogatott. Metrikák többdimenziósak, egybesimított egyetlen dimenzionális metrika, dimenzióértékek gyűjtődnek exportálja.
+> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: A "Bejövő üzenetek" metrika eseményközpontban felfedezte, és a forrásadatok egy várólista szintenként. Azonban a metrika fog megjelenni minden bejövő üzenet összes diagnosztikai beállítások keresztül exportálásakor várólisták a központ.
+> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 

@@ -1,6 +1,23 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines
+author: rogara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 06/03/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: bf0853b137e65ddd6ad40483c50fc8debb62f920
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826548"
+---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gép és a kezelt és kezeletlen premium lemezek kapcsolatos gyakori kérdések
 
-Ebben a cikkben megválaszolunk néhány Azure felügyelt lemezek és a prémium szintű Azure Storage kapcsolatos gyakori kérdésekre.
+Ebben a cikkben megválaszolunk néhány Azure felügyelt lemezek és Azure Premium SSD lemezek kapcsolatos gyakori kérdésekre.
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
@@ -46,7 +63,7 @@ Kezelt lemezek megszünteti a társított tárfiókok korlátok. A maximális sz
 
 **Eltarthat egy kezelt lemez növekményes pillanatképet?**
 
-Nem. Az aktuális pillanatkép-készítés révén felügyelt lemezes teljes másolata. Azonban azt tervezi, hogy a jövőben támogatja a növekményes pillanatképek.
+Nem. Az aktuális pillanatkép-készítés révén felügyelt lemezes teljes másolata.
 
 **Virtuális gépek rendelkezésre állási csoport által felügyelt és nem kezelt lemezek kombinációja állhat?**
 
@@ -66,7 +83,7 @@ Attól függően, hogy a régió, ahol a rendelkezésre állási csoport által 
 
 **Hogyan van a standard szintű tárfiók beállítása diagnosztikai?**
 
-A Virtuálisgép-diagnosztika titkos tárolási fiók beállítása. A jövőben tervezzük diagnosztika váltani kezelt lemezeken is.
+A Virtuálisgép-diagnosztika titkos tárolási fiók beállítása.
 
 **Milyen típusú szerepköralapú hozzáférés-vezérlés támogatásának felügyelt lemezek érhető el?**
 
@@ -86,7 +103,7 @@ A csak olvasható közös hozzáférésű jogosultságkód URI lekérése a fel�
 
 **Nem felügyelt lemezek továbbra is támogatottak?**
 
-Igen. Nem felügyelt és a felügyelt támogatjuk. Javasoljuk, hogy új munkaterhelések esetén használja a felügyelt lemezeit, és az aktuális munkaterheléseket telepít át kezelt lemezek.
+Igen, mind a nem kezelt, mind a kezelt támogatottak. Javasoljuk, hogy új munkaterhelések esetén használja a felügyelt lemezeit, és az aktuális munkaterheléseket telepít át kezelt lemezek.
 
 
 **Ha megkezdtem 128 GB-os lemez létrehozása, és növelje a 130 GB-os méret, I megterheljük a következő lemez méretét (512 GB)?**
@@ -113,6 +130,39 @@ Nem. A számítógép name tulajdonság nem frissíthető. Az új virtuális gé
 * [Felügyelt lemezekkel sablonok listája](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
+## <a name="standard-ssd-disks-preview"></a>Standard SSD-lemezek (előzetes verzió)
+
+**Mik azok a lemezeken Azure Standard SSD?**
+Standard SSD-lemezek SSD media IOPS alacsonyabb szinteken konzisztens teljesítményt igénylő munkaterheléseknél költséghatékony tárolóként optimalizált által támogatott szabványos lemezek. A képen elérhető régiók, korlátozott kezelhetőségi (Resource Manager-sablonok keresztül érhető el) korlátozott számú.
+
+<a id="standard-ssds-azure-regions"></a>**Mik a régiók jelenleg támogatott szabványos SSD-lemezek (előzetes verzió)?**
+* Észak-Európa
+
+**Hogyan hozható létre szabványos SSD lemezek?**
+Jelenleg szabványos SSD lemezek Azure Resource Manager-sablonok segítségével hozhat létre. Az alábbiakban a Standard SSD-lemezek létrehozásához a Resource Manager-sablon a szükséges paramétereket:
+
+* *apiVersion* Microsoft.Compute kell beállítani, mint `2018-04-01` (vagy újabb)
+* Adja meg *managedDisk.storageAccountType* , `StandardSSD_LRS`
+
+Az alábbi példa azt mutatja meg a *properties.storageProfile.osDisk* szakasz a szabványos SSD-lemezeket használó virtuális gépek:
+
+```json
+"osDisk": {
+    "osType": "Windows",
+    "name": "myOsDisk",
+    "caching": "ReadWrite",
+    "createOption": "FromImage",
+    "managedDisk": {
+        "storageAccountType": "StandardSSD_LRS"
+    }
+}
+```
+
+A teljes sablon példa bemutatja, hogyan sablonnal szabványos SSD lemez létrehozása, lásd: [virtuális gép létrehozása a Windows-lemezkép szabványos SSD Adatlemezekkel rendelkező](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+
+**Nem felügyelt lemezek is használhatók szabványos SSD?**
+Standard SSD lemezek nem, felügyelt lemezként csak érhetők el.
+
 ## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre 
 
 **Milyen kell módosítania a meglévő Azure Backup szolgáltatás konfigurációs előtt vagy után az áttelepítés lemezek felügyelt?**
@@ -127,9 +177,9 @@ Igen, biztonsági mentések zökkenőmentesen működjön.
 
 Nincs módosításokra szükség. 
 
-**Nem felügyelt lemezekből rendszerről való automatikus áttelepítéshez, egy meglévő VM skálázási készletek (VMSS)-hoz támogatott felügyelt lemezek?**
+**Az automatizált áttelepítését egy meglévő virtuálisgép-méretezési készletek nem felügyelt lemezekből felügyelt lemezek támogatott?**
 
-Nem. Létrehozhat egy új VMSS felügyelt lemezeket a régi VMSS a lemezkép használatával nem kezelt lemezek. 
+Nem. Létrehozhat egy új méretezési készletben felügyelt lemezeket a régi méretezési a nem felügyelt lemezek beállítása a lemezkép használatával. 
 
 **Hozható létre egy felügyelt lemezt egy lap blob pillanatképből felügyelt lemezek áttelepítése előtt?**
 
@@ -139,9 +189,9 @@ Nem. Lap blob pillanatkép oldalakra vonatkozó blob exportálni, és majd hozha
 
 Igen, ha szeretné felügyelt lemezzel rendelkező virtuális gép feladatátvétele.
 
-**Bármely Azure hely helyreállítás (ASR) által védett Azure az Azure-bA replikációval Azure virtuális gépeken az áttelepítés hatása van?**
+**Bármely Azure az Azure-bA replikációval Azure Site Recovery által védett Azure virtuális gépeken az áttelepítés hatása van?**
 
-Igen. Felügyelt lemezzel rendelkező virtuális gépek automatikus rendszer-Helyreállítás Azure az Azure-bA védelmét jelenleg csak a nyilvános előzetes szolgáltatásként érhető el.
+Igen. Felügyelt lemezzel rendelkező virtuális gépek Azure az Azure-bA védelmét az Azure Site Recovery jelenleg csak a nyilvános előzetes szolgáltatásként érhető el.
 
 **Áttelepíthetem a nem felügyelt a storage-fiókok vagy kezelt lemezek korábban titkosított lévő lemezzel rendelkező virtuális gépek?**
 
@@ -163,7 +213,7 @@ Nem.
 
 **Érhető Storage szolgáltatás titkosítási csak meghatározott régióiba?**
 
-Nem. Érhető el minden olyan régióban, amennyiben rendelkezésre áll-e felügyelt lemezek. Felügyelt lemezek minden nyilvános régiók és Németországban érhető el.
+Nem. Érhető el minden olyan régióban, ahol kezelt lemezek érhetőek el. Felügyelt lemezek minden nyilvános régiók és Németországban érhető el.
 
 **Hogyan tudhatom meg titkosítottak, ha a felügyelt lemezes?**
 
@@ -190,19 +240,19 @@ Nem. De ha egy virtuális Merevlemezt egy titkosított tárfiókba történő ex
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Prémium szintű lemezekhez: felügyelt és nem felügyelt
 
-**Egy virtuális gép használ, amely támogatja a prémium szintű Storage, például egy DSv2 mérete több premium és a szabványos adatlemezek csatolható?** 
+**Egy virtuális gép használ, amely támogatja a prémium SSD lemezek, például egy DSv2 mérete több premium és a szabványos adatlemezek csatolható?** 
 
 Igen.
 
-**Csatolható prémium és standard adatlemezek is, amely nem támogatja a prémium szintű Storage, például a D, Dv2, G vagy F adatsorozat mérete több?**
+**Csatolható prémium és standard adatlemezek is, amely nem támogatja a prémium SSD lemezeket, például a D, Dv2, G vagy F adatsorozat mérete több?**
 
-Nem. Csak a standard adatlemezek csatolhat a virtuális gépek, amelyek nem használják, amely támogatja a prémium szintű Storage mérete több.
+Nem. Csak a standard adatlemezek csatolhat a virtuális gépek, amelyek nem használják, amely támogatja a prémium SSD lemezek mérete azokat.
 
 **Ha egy meglévő virtuális merevlemezről, de a 80 GB prémium adatlemezt hozok létre, mennyire, amely ára?**
 
 80 GB-os virtuális merevlemezről létrehozott prémium adatlemezt a rendszer a következő érhető el prémium szintű lemez méretet, amelyet P10 lemez. Most a P10 lemez díjszabás alapján számítjuk fel.
 
-**Vannak-e a prémium szintű Storage tranzakciós költségek?**
+**Vannak-e tranzakciós költségek prémium SSD lemezeket használni?**
 
 Nincs minden lemez méretét, amelyet adott határral kiosztott iops-érték és az átvitel meg egy rögzített költséget. Az egyéb költségekkel kimenő sávszélesség és a pillanatkép-kapacitást, ha van ilyen. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/storage) olvasható.
 
@@ -226,7 +276,7 @@ A partíció típusa, amely Azure támogatja az operációsrendszer-lemez a fő 
 
 **Mi az a legnagyobb blob mérete támogatott?**
 
-A legnagyobb blob mérete, amely támogatja az Azure rendszeren 8 TB (8,191 GB). Nagyobb, mint 4 TB-os (4095 GB) egy virtuális Géphez csatlakozik, adatok vagy az operációs rendszer lemezek lapblobokat nem támogatottak.
+A legnagyobb blob mérete, amely támogatja az Azure rendszeren 8 TB (8,191 GB). A maxmium lap blog amikor egy virtuális Géphez csatlakozik, adatok vagy az operációs rendszer lemezek mérete 4 TB-os (4095 GB).
 
 **Kell létrehozni, csatolja, átméretezése és 1 TB-nál nagyobb lemezek feltöltése Azure eszközök új verziójának segítségével?**
 

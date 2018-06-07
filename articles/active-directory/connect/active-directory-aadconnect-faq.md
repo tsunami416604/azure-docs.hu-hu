@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dbe6f5f6f3aa128b3180c1b7aecb17853aa6a0aa
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4cef685d71a64f8a6681a3449e4fe0b67899c67c
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801398"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808604"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Gyakori kérdések az Azure Active Directory Connect
 
@@ -28,7 +28,7 @@ ms.locfileid: "34801398"
 2016. februári a buildeket, az ebben a forgatókönyvben esetén támogatott.
 
 **K: az Azure AD Connect felügyelet nélküli telepítéséhez úgy van?**  
-Csak a telepítési varázsló segítségével az Azure AD Connect telepítése támogatott. Felügyelet nélküli és a csendes telepítés nem támogatott.
+Csak a telepítési varázsló segítségével az Azure AD Connect telepítése támogatott. Felügyelet nélküli és a csendes telepítés használata nem támogatott.
 
 **K: erdővel rendelkezem ahol tartománya nem érhető el. Hogyan kell telepíteni az Azure AD Connect?**  
 2016. februári a buildeket, az ebben a forgatókönyvben esetén támogatott.
@@ -41,7 +41,17 @@ Igen. Az ügynök telepítése után végezze el a regisztrációs folyamat sor�
 **K: AADConnect támogatja az Azure ad-val a két tartomány szinkronizálását?**</br>
 Igen, ez a forgatókönyv támogatott. Tekintse meg [több tartományban](active-directory-aadconnect-multiple-domains.md)
  
-**K: van több összekötőket az Active Directory-tartományhoz az Azure AD connect?**</br> Nem, több összekötők a ugyanazon AD-tartomány nem támogatott. 
+**K: van több összekötőket az Active Directory-tartományhoz az Azure AD connect?**</br> Az azonos AD-tartomány nem, több összekötők használata nem támogatott. 
+
+**K: áthelyezhető az Azure AD Connect-adatbázisban a helyi adatbázis egy távoli SQL Server?**</br> Igen, az alábbi lépéseket pedig általános útmutatást nyújtanak ennek módjáról.  Jelenleg dolgozunk egy részletesebb dokumentumot, amely hamarosan elérhető lesz.
+
+
+   1. Biztonsági másolat a LocalDB "ADSync" adatbázis ennek legegyszerűbb módja, hogy az Azure AD Connect ugyanazon a számítógépen telepített SQL Server Management Studio használja. Csatlakozás "(localdb)\.\ADSync" – majd az ADSync adatbázis biztonsági mentése
+   2. A "ADSync" adatbázis visszaállítása a távoli SQL-példányra
+   3. A meglévő szemben Azure AD Connect telepítése [távoli SQL-adatbázis](active-directory-aadconnect-existing-database.md) hivatkozásra a megadása kötelező, ha áttelepíti a helyi SQL-adatbázis használata a lépéseit mutatja be. Ha távoli SQL-adatbázis használatával telepít majd 5. lépésben a folyamat is akkor adja meg, amely a Windows szinkronizálási szolgáltatás fut, mint a meglévő szolgáltatásfiók. A szinkronizálási motor szolgáltatásfiókot az alábbiakban ismertetjük:</br></br>
+   **Meglévő szolgáltatásfiók használata**– az Azure AD Connect szinkronizálási szolgáltatások virtuális szolgáltatás-fiókot használ használandó alapértelmezés szerint. Ha távoli SQL-kiszolgálót, vagy egy hitelesítést igénylő proxyt használ, meg kell felügyelt szolgáltatásfiók vagy a szolgáltatás fiók használata a tartományban, és a jelszó ismerete. Ezekben az esetekben adja meg a használni kívánt fiókot. Bizonyosodjon meg róla, hogy a telepítést futtató felhasználó rendszergazda az SQL Serveren, hogy létre lehessen hozni bejelentkezési adatokat a szolgáltatásfiókhoz. További információ: [Azure AD Connect-fiókok és -engedélyek](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account).</br></br> A legújabb buildben az SQL-rendszergazda sávon kívül kiépítheti az adatbázist, majd az Azure AD Connect-rendszergazda adatbázis-tulajdonosi jogosultságokkal telepítheti. További információ: [Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel](active-directory-aadconnect-sql-delegation.md).
+
+Tartsa dolgot egyszerű javasoljuk, hogy az Azure AD Connect telepítése felhasználó szerepel-e a rendszergazda az SQL. (Az SQL-rendszergazdák azonban a legutóbbi buildek most már használhatja meghatalmazott leírtak [Itt](active-directory-aadconnect-sql-delegation.md).
 
 ## <a name="network"></a>Network (Hálózat)
 **K: van egy tűzfal, a hálózati eszköz, vagy valami mást, amely korlátozza a maximális időt kapcsolatok maradhat, nyissa meg a hálózaton. Mennyi ideig kell a ügyféloldali időkorlát küszöbértéke lehet, ha az Azure AD Connect használatával?**  

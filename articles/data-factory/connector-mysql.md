@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
-ms.openlocfilehash: d7dea9a3d9eabdc9e4cdf21e6e584b745d22a54e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808723"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MySQL
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +41,7 @@ Pontosabban, a MySQL-összekötő támogatja a MySQL **5.1-es verzió vagy újab
 A MySQL-összekötő használata esetén meg kell:
 
 - Állítson be egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben alább.
-- Telepítse a [MySQL összekötő/Net számára a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) 6.6.5 verzió vagy újabb a integrációs futásidejű gépen. Ez az 32 bites illesztőprogram nem kompatibilis a 64 bites infravörös
+- Telepítse a [MySQL összekötő/Net számára a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verzió 6.6.5 és az integrációs futásidejű gépen 6.10.7 között. Ez az 32 bites illesztőprogram nem kompatibilis a 64 bites infravörös
 
 > [!TIP]
 > Kattintson a "Hitelesítés sikertelen, mert a távoli fél bezárta az átviteli adatfolyamot." hibaüzenet, ha fontolja meg a MySQL-összekötő/Net frissítése újabb verzióra.

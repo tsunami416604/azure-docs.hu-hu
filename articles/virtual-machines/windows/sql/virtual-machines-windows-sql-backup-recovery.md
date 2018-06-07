@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 29abd62b0602686c912f022ec8870dcb6f1b39eb
-ms.sourcegitcommit: 0a7c9629dea6f5eb52cc45a1e31112def210dfc2
+ms.openlocfilehash: 4b90d1b9b2ee64722d3c92bcbd8fa205c9b59ebd
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34730883"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809607"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -59,7 +59,7 @@ SQL virtuális gépek automatikus biztonsági mentés konfigurálásával kapcso
 - **SQL Server 2016/2017**: [automatikus biztonsági mentési v2 az Azure virtuális gépeken ](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**: [automatikus biztonsági mentés SQL Server 2014 virtuális gépekhez](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Azure biztonsági mentés SQL virtuális gépek
+## <a id="azbackup"></a> Azure biztonsági mentés SQL virtuális gépek (nyilvános előzetes verzió)
 
 [Azure biztonsági mentés](/azure/backup/) egy vállalati osztály biztonsági mentési lehetőséget nyújt az Azure virtuális gépeken futó SQL Server. Minden biztonsági mentés tárolja és kezeli a Recovery Services-tároló. Van több előnye, hogy a megoldás biztosít, különösen a vállalatok számára:
 
@@ -128,7 +128,7 @@ További információkért tekintse meg a következő cikkekben talál az SQL Se
 
 Az alábbi táblázat foglalja össze az egyes biztonsági mentési és visszaállítási lehetőségek az SQL Server Azure virtuális gép képességeit.
 
-|| **Automatikus biztonsági mentés** | **Azure biztonsági mentés SQL virtuális gépek** | **Manuális biztonsági mentés** |
+|| **Automatikus biztonsági mentés** | **Az SQL Azure biztonsági mentés** | **Manuális biztonsági mentés** |
 |---|---|---|---|
 | További Azure-szolgáltatás szükséges |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | A biztonsági mentési házirend konfigurálása az Azure-portálon | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
@@ -139,11 +139,13 @@ Az alábbi táblázat foglalja össze az egyes biztonsági mentési és visszaá
 | Rövid távú biztonsági mentés megőrzési házirend (nap) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Hosszú távú biztonsági mentés megőrzési házirend (hónap, év) |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | SQL Server Always On beépített támogatása |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Konszolidált e-mailes riasztásokhoz hibák |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Szerepköralapú hozzáférés-vezérlés |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Recovery Services-tároló történő biztonsági mentés |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Azure-tárfiókok történő biztonsági mentés | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Azure-tárfiókok történő biztonsági mentés | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automatikus) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automatikus) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(az ügyfél által felügyelt) |
+| Tárolás és a biztonsági mentési fájlok felügyelete | | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |  |
 | Csatlakoztatott lemezek, a virtuális Gépre történő biztonsági mentés |   |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Központi testreszabható biztonsági jelentések |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Konszolidált e-mailes riasztásokhoz hibák |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Testre szabhatja a figyelést az OMS-ben |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Az SSMS vagy a Transact-SQL-parancsfájlok biztonsági mentési feladatok figyelése | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Az SSMS vagy a Transact-SQL-parancsfájlok adatbázisainak visszaállítása | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 
 ## <a name="next-steps"></a>További lépések

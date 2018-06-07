@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807458"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -26,7 +27,7 @@ Ez az oktatóanyag bemutatja, hogyan tegye biztonságossá webalkalmazását ál
 
 ## <a name="step-1---log-in-to-azure"></a>1. lépés – Azure való bejelentkezéshez
 
-Jelentkezzen be az Azure-portálon: http://portal.azure.com
+Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>2. lépés - az SSL-tanúsítvány megrendelés
 
@@ -196,13 +197,24 @@ Kattintson a **kulcsismétlés** gombra kattintva indítani a folyamatot. Ez az 
 
 A tanúsítvány újbóli visszaállítja a tanúsítványt a hitelesítésszolgáltatótól származó kibocsátott új tanúsítványt.
 
+## <a name="renew-the-certificate"></a>A tanúsítvány megújítása
+
+Kapcsolja be a tanúsítvány automatikus megújítását bármikor, kattintson a **automatikus megújításához beállítások** a tanúsítvány kezelése lapon. Válassza ki **a** kattintson **mentése**.
+
+![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+
+Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális megújítása** helyette.
+
+> [!NOTE]
+> A megújított tanúsítvány nem automatikusan kötött az alkalmazást, akár manuálisan megújítani automatikusan újulnak meg. Az alkalmazás kötni, lásd: [megújítani a tanúsítványokat](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+
 <a name="notrenewed"></a>
-## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>Miért érdemes az SSL-tanúsítvány nem automatikus-megújult?
+## <a name="why-is-my-certificate-not-auto-renewed"></a>Miért a tanúsítvány nem automatikus-megújult?
 
-Ha az SSL-tanúsítvány automatikus megújítási van konfigurálva, de nem automatikusan megújítani, előfordulhat, hogy a függőben lévő tartományok ellenőrzésének. Vegye figyelembe a következőket: 
+Ha az SSL-tanúsítvány automatikus megújítási van konfigurálva, de nem automatikusan megújítani, előfordulhat, hogy a függőben lévő tartományok ellenőrzésének. Vegye figyelembe: 
 
-- GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartományok ellenőrzésének három évente egyszer igényel. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzése. Nem sikerült ellenőrizni az e-mailben, vagy ellenőrizze a tartományt a megakadályozza, hogy az App Service-tanúsítvány megújítása automatikusan folyamatban. 
-- Március 31 2017 előtt kiadott összes App Service-tanúsítványt igényel reverification tartomány a következő megújítási időpontjában, (még akkor is, ha az automatikus tartománymegújítási engedélyezve van a tanúsítvány). Ez a GoDaddy házirend változás eredménye. Nézze meg leveleit, és a tartomány egyszeri igazolásához automatikus az App Service-tanúsítvány megújítási a folytatáshoz. 
+- GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartományok ellenőrzésének két évente van szükség. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzése. Nem sikerült ellenőrizni az e-mailben, vagy ellenőrizze a tartományt a megakadályozza, hogy az App Service-tanúsítvány megújítása automatikusan folyamatban. 
+- GoDaddy házirend változása miatt 2018. március 1. előtt kiadott összes App Service-tanúsítványt (még akkor is, ha az automatikus tartománymegújítási engedélyezve van a tanúsítvány) szükséges reverification tartomány a következő megújítási idején. Nézze meg leveleit, és a tartomány egyszeri igazolásához automatikus az App Service-tanúsítvány megújítási a folytatáshoz. 
 
 ## <a name="more-resources"></a>További erőforrások
 

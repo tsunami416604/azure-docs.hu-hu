@@ -13,15 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2aa1c33f138619283a8785aaf3772465df6c9aee
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8ee71a5c37357e0a92f794d7b808948f4e5b4ff0
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823928"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Az Azure Active Directory v2.0 és OAuth 2.0 On-Behalf-Of folyamata
 Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.
@@ -29,13 +30,13 @@ Az OAuth 2.0 On-Behalf-Of folyamat szolgál a használati eset, ahol egy alkalma
 > [!NOTE]
 > A v2.0-végpontra nem támogatja, minden Azure Active Directory forgatókönyvek és funkciók. Annak megállapításához, hogy a v2.0-végponttal kell használnia, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
 >
->
+
+
+> [!IMPORTANT]
+> A [implicit grant](active-directory-v2-protocols-implicit.md) nem használható az On-meghatalmazásos folyamat - gyógyfürdők meg kell felelnie a (implicit engedélyezési folyamat) jogkivonatot egy középső rétegbeli bizalmas ügyfél OBO tranzakciós végrehajtásához.  Lásd: [korlátozások](#client-limitations) amelyen ügyfelek végezheti a nevében-az hívások további részleteket.  
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást, amely a a [OAuth 2.0 hitelesítési kódot adjon folyamat](active-directory-v2-protocols-oauth-code.md). Ezen a ponton az alkalmazás rendelkezik-e a hozzáférési token *az API A* (lexikális elem: A) a felhasználói jogcímek és hozzájárulási eléréséhez a középső rétegbeli webes API-t (API-A). Most API A kell hitelesített kéréseknél az alsóbb rétegbeli webes API (API-B).
-
-> [!IMPORTANT]
-> Jogkivonatok szerez a [implicit grant](active-directory-v2-protocols-implicit.md) az On-meghatalmazásos folyamat nem használható. Az ügyfél számára implcit adatfolyamok (pl. ügyfélkulcs) keresztül nem hitelesített, és ezért nem szabadna egy másik, valószínűleg hatékonyabb jogkivonatba rendszerindításának.
 
 A következő lépések az On-meghatalmazásos folyamat jelent, és segítségével. a következő ábra ismerteti.
 
@@ -178,6 +179,9 @@ GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
+
+## <a name="client-limitations"></a>A Client korlátozásai
+Ha egy ügyfél az implicit engedélyezési folyamat használ egy id_token lekérni, és, hogy az ügyfél is van a válasz URL-címében helyettesítő karaktereket, a id_token egy OBO folyamat nem használható.  Azonban a implicit grant flow keresztül szerzett hozzáférési jogkivonatok is továbbra is váltható egy bizalmas ügyfél akkor is, ha a kezdeményező ügyfél helyettesítő válasz URL-címet regisztrálni. 
 
 ## <a name="next-steps"></a>További lépések
 További információk az OAuth 2.0 protokollt, és úgy is hajtsa végre a szolgáltatások közötti hitelesítési ügyfél hitelesítő adataival.

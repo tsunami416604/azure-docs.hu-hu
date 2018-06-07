@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 41a62c0c77b177179907d8e4a7631af889cd8bd6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798814"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824587"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage táblázat kialakítási Útmutató: Méretezhető tervezésével és Performant táblák
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -523,7 +523,7 @@ Engedélyezze a idővel konzisztenssé viselkedés partícióhatárok vagy táro
 #### <a name="context-and-problem"></a>Kontextus és probléma
 EGTs atomi tranzakciók engedélyezhető a kiszolgálók közötti ugyanazzal a partíciós kulccsal rendelkező entitásokat. A teljesítmény és méretezhetőség érdekében dönthet külön partíciók vagy egy különálló tárhelyet rendszer konzisztencia-követelményekkel rendelkező entitások tárolására: ilyen esetben nem használhat EGTs biztosítja az egységességet. Például lehetséges, hogy követelmény a végleges konzisztencia közötti karbantartása:  
 
-* Az entitások tárolva két különböző partíciók ugyanabban a táblában, a különböző táblák, a másik tárfiókokban.  
+* Két különböző partíciók ugyanabban a táblában, különböző táblákhoz, vagy eltérő tárfiókokból tárolt entitásokat.  
 * A Table szolgáltatásban tárolni entitás és a Blob szolgáltatásban tárolt blob.  
 * A Table szolgáltatás és a fájl a fájlrendszerben tárolt entitás.  
 * A Table szolgáltatásban az entitást áruházra még indexelése az Azure Search szolgáltatás használatával.  
@@ -718,7 +718,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 Beolvasni a *n* partíció legutóbb hozzáadott entitások egy **RowKey** érték, amely fordított dátum és idő sorrendben rendezi.  
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
-A közös vonatkozó követelmény akkor állítható vissza a legutóbb létrehozott entitások, például a tíz legújabb kiadás az alkalmazottak által küldött jogcímek. Táblázat a támogatási lekérdezi egy **$top** lekérdezési művelet vissza az első *n* egy entitás: az utolsó n entitások vissza egy készlet nincs egyenértékű lekérdezési művelet.  
+Általános követelmény, hogy állítható vissza a legutóbb létrehozott entitások, például a tíz legújabb kiadás az alkalmazottak által küldött jogcímek. Táblázat a támogatási lekérdezi egy **$top** lekérdezési művelet vissza az első *n* egy entitás: az utolsó n entitások vissza egy készlet nincs egyenértékű lekérdezési művelet.  
 
 #### <a name="solution"></a>Megoldás
 Az entitások használatával tárolja a **RowKey** , hogy természetes rendezi fordított dátum/idő ahhoz, így a legutóbbi bejegyzés használatával, mindig az első egy a táblázatban.  
@@ -1059,7 +1059,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 #### <a name="server-side-projection"></a>Kiszolgálóoldali leképezése
-Egy entitás legfeljebb 255 jellemzőkkel rendelkezik, és legfeljebb 1 MB méretű lehet. Ha a tábla lekérdezése, és kérje le az entitásokat, nem feltétlenül kell a tulajdonságok, és elkerülheti a adatátvitel feleslegesen (a késés és a költségek csökkentése érdekében). Kiszolgálóoldali leképezése vihet át kell tulajdonságait. A következő példa egy lekéri csak a **E-mail** tulajdonság (valamint **PartitionKey**, **RowKey**, **időbélyeg**, és **ETag**) az a lekérdezés által kiválasztott entitások.  
+Egy entitás legfeljebb 255 jellemzőkkel rendelkezik, és legfeljebb 1 MB méretű lehet. Ha a tábla lekérdezése, és kérje le az entitásokat, nem feltétlenül kell a tulajdonságok, és elkerülheti a adatátvitel feleslegesen (a késés és a költségek csökkentése érdekében). Kiszolgálóoldali leképezése vihet át kell tulajdonságait. Most kéri le a következő példa a **E-mail** tulajdonság (valamint **PartitionKey**, **RowKey**, **időbélyeg**, és **ETag**) az a lekérdezés által kiválasztott entitások.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(

@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: d81b6fc89c90b769650505e845d6d6c6cd70049f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616926"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824931"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezeteket, melyekkel folyamat vagy átalakítási adatok. Emellett biztosítja az adat-előállító támogatott, ha ezek linking összekapcsolt szolgáltatások konfigurálása (igény szerinti és kapcsolja a saját) különböző konfigurációkkal kapcsolatos részletek számítási környezetek számára egy Azure data factory.
@@ -38,8 +38,6 @@ Az ilyen típusú konfigurációs a számítógépes környezet teljes kezeli az
 
 > [!NOTE]
 > Az igény szerinti konfigurációs jelenleg csak az Azure HDInsight-fürtök támogatott.
->
-> 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Az Azure HDInsight igény társított szolgáltatás
 Az Azure Data Factory szolgáltatásnak automatikusan adatfeldolgozásra történő igény szerinti HDInsight-fürtöt hozhat létre. A fürt létrehozása a tárfiók (linkedServiceName tulajdonságot a JSON-ban) a fürthöz tartozó ugyanabban a régióban. A tárfiók egy általános célú standard Azure-tárfiókot kell lennie. 
@@ -49,11 +47,14 @@ Vegye figyelembe a következőket **fontos** kapcsolatos igény szerinti HDInsig
 * Az igény szerinti HDInsight-fürt létrehozása az Azure-előfizetéshez tartozó. Biztos, hogy a fürt az Azure-portálon láthatók, ha a fürt működik-e és fut. 
 * A naplók az igény szerinti HDInsight-fürtök a futó feladatok a tárfiókot, a HDInsight-fürthöz társított lesz másolva. A clusterUserName, clusterPassword, clusterSshUserName, a társított szolgáltatás definíciójának definiált clusterSshPassword használatával jelentkezzen be a fürt részletes hibaelhárítási a fürt az életciklus során. 
 * Van szó, csak a az időpontot, amikor a HDInsight-fürt mentése és a futó feladatok.
+* A parancsfájl művelet nem használható az Azure HDInsight igény csatolt szolgáltatással. Ha más függőségek telepítése, például érdemes Azure Automation futtatni egy PowerShell-parancsfájlt, amely a következőket:  
+  a. A HDInsight-fürtök létrehozása.  
+  b. Például a más függőségek telepítése parancsfájl műveletet futtatni.  
+  c. Futtassa a Data Factory-folyamathoz.  
+  d. A fürt törlésekor.  
 
 > [!IMPORTANT]
 > Általában tart **20 perc** vagy nagyobb az igény szerinti Azure HDInsight-fürtök kiépítéséhez.
->
-> 
 
 ### <a name="example"></a>Példa
 A következő JSON igény kapcsolódó HDInsight Linux-alapú szolgáltatás határozza meg. A Data Factory szolgáltatásnak automatikusan létrehoz egy **Linux-alapú** HDInsight-fürt tevékenység feldolgozni. 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2e6b8dd5e0ec0ae73fff4a25ad79045e3414e9cc
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824999"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -140,7 +141,7 @@ SNAT portok azonos számú előzetesen lefoglalt az UDP- és TCP kulcsattribútu
 >[!IMPORTANT]
 >Standard Termékváltozat SNAT programozási / IP-átviteli protokoll és a terheléselosztási szabályt származik.  Ha csak egy TCP terheléselosztási szabályt létezik, SNAT lehetőség csak a TCP. Ha csak egy TCP terheléselosztási szabály és kimenő SNAT kell UDP-hez, UDP terheléselosztási szabály ugyanazokat az előtér-azonos háttérkészlet létrehozása.  Ez akkor indul el, az UDP programozási SNAT.  Egy működő szabály vagy a rendszerállapot mintavételt nincs szükség.  Alapszintű Termékváltozat SNAT SNAT mindig programok mindkét IP átviteli protokoll, az átviteli protokoll a terheléselosztási szabály megadott függetlenül.
 
-Azure preallocates SNAT portok minden egyes VM hálózati adapter IP-konfigurációhoz. Amikor IP-konfigurációt ad hozzá a készlethez, a SNAT portok vannak előzetesen lefoglalt az IP-konfiguráció, a háttér-készlet mérete alapján. Kimenő forgalom létrehozásakor [PAT](#pat) dinamikusan használ fel (de előzetesen lefoglalt), majd felenged ezeket a portokat, a folyamat befejeződésekor vagy [az üresjárati időkorlát](#ideltimeout) fordulhat elő.
+Azure preallocates SNAT portok minden egyes VM hálózati adapter IP-konfigurációhoz. Amikor IP-konfigurációt ad hozzá a készlethez, a SNAT portok vannak előzetesen lefoglalt az IP-konfiguráció, a háttér-készlet mérete alapján. Kimenő forgalom létrehozásakor [PAT](#pat) dinamikusan használ fel (de előzetesen lefoglalt), majd felenged ezeket a portokat, a folyamat befejeződésekor vagy [az üresjárati időkorlát](#idletimeout) fordulhat elő.
 
 Az alábbi táblázat a SNAT port preallocations háttér címkészletet méretű rétege számára:
 

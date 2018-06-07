@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808094"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Helyezze át az adatokat a MySQL Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +43,7 @@ Data Factory szolgáltatásnak a helyszíni MySQL adatforrások az adatkezelési
 > Lásd: [átjáró elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolati/átjáró hibaelhárítási tippek a kapcsolódó problémákat.
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
-Az adatkezelési átjáró a MySQL-adatbázishoz való kapcsolódáshoz, telepítenie kell a [MySQL összekötő/Net számára a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (6.6.5 verzió vagy újabb) az adatkezelési átjáró ugyanazon a rendszeren. Ez az 32 bites illesztőprogram nem kompatibilis a 64 bites az adatkezelési átjáró. 5.1-es verzió MySQL és az újabb verzió esetén támogatott.
+Az adatkezelési átjáró a MySQL-adatbázishoz való kapcsolódáshoz, telepítenie kell a [MySQL összekötő/Net számára a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (verzió: 6.6.5 és 6.10.7 között) az adatkezelési átjáró ugyanazon a rendszeren. Ez az 32 bites illesztőprogram nem kompatibilis a 64 bites az adatkezelési átjáró. 5.1-es verzió MySQL és az újabb verzió esetén támogatott.
 
 > [!TIP]
 > Kattintson a "Hitelesítés sikertelen, mert a távoli fél bezárta az átviteli adatfolyamot." hibaüzenet, ha fontolja meg a MySQL-összekötő/Net frissítése újabb verzióra.
@@ -311,13 +312,13 @@ Ha az adatok áthelyezése a MySQL, .NET típusú a következő megfeleltetések
 | dátum/idő |Dátum és idő |
 | Decimális |Decimális |
 | a kétszeres pontosság |Dupla |
-| Dupla |Dupla |
+| double |Dupla |
 | Enum |Karakterlánc |
-| Lebegőpontos |Egyedülálló |
+| lebegőpontos |Önálló |
 | aláíratlan int |Int64 |
 | int |Int32 |
 | aláíratlan egész szám |Int64 |
-| integer |Int32 |
+| egész szám |Int32 |
 | hosszú varbinary |Byte] |
 | hosszú varchar |Karakterlánc |
 | longblob |Byte] |
@@ -331,8 +332,8 @@ Ha az adatok áthelyezése a MySQL, .NET típusú a következő megfeleltetések
 | Állítsa be |Karakterlánc |
 | aláíratlan smallint |Int32 |
 | smallint |Int16 |
-| Szöveg |Karakterlánc |
-| time |TimeSpan |
+| szöveg |Karakterlánc |
+| time |A TimeSpan |
 | időbélyeg |Dátum és idő |
 | tinyblob |Byte] |
 | aláíratlan tinyint |Int16 |

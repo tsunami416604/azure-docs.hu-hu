@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88852fe7843e24fde50749e2f994bcfeb596305d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e9e147e2cbe5ff42562d6fcfab62460df48f3d65
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809726"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és a Windows szolgáltatások
 
@@ -67,7 +68,7 @@ Bővítménycsomagok letölteni az Azure Storage bővítménytárban, és Azure 
 > [!IMPORTANT]
 > Ha a letiltott hozzáférés *168.63.129.1* a Vendég tűzfalat használ, akkor bővítmények sikertelen függetlenül a fent.
 
-Ügynökök csak bővítménycsomagok és állapotjelentést letöltésére használható. Például ha egy bővítmény telepítési le kell töltenie egy parancsfájlt a Githubról (egyéni parancsfájl), vagy meg kell majd elérni az Azure Storage (az Azure Backup), további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. Egyes bővítmények különféle eltérő követelmények vonatkoznak, lehet, mert a saját jobbra lévő alkalmazások. Azure Storage hozzáférést igénylő bővítményekhez, engedélyezheti az Azure NSG szolgáltatás címkék használatával [tárolási](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Ügynökök csak bővítménycsomagok és állapotjelentést letöltésére használható. Például ha egy bővítmény telepítési le kell töltenie egy parancsfájlt a Githubról (egyéni parancsfájl), vagy meg kell majd elérni az Azure Storage (az Azure Backup), további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. Egyes bővítmények különféle eltérő követelmények vonatkoznak, lehet, mert a saját jobbra lévő alkalmazások. Azure Storage hozzáférést igénylő bővítményekhez, engedélyezheti az Azure NSG szolgáltatás címkék használatával [tárolási](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 A Windows-Vendégügynök nincs proxykiszolgáló támogatja az ügynök forgalom kérelmeket keresztül irányíthatja.
 
@@ -134,7 +135,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-A `Set-AzureRmVMExtension` parancs segítségével indítsa el a Virtuálisgép-bővítmény. További információkért lásd: a [Set-AzureRmVMExtension hivatkozás](https://msdn.microsoft.com/en-us/library/mt603745.aspx).
+A `Set-AzureRmVMExtension` parancs segítségével indítsa el a Virtuálisgép-bővítmény. További információkért lásd: a [Set-AzureRmVMExtension hivatkozás](https://msdn.microsoft.com/library/mt603745.aspx).
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -419,7 +420,7 @@ Is eltávolíthatja kiterjesztése az Azure-portálon az alábbiak szerint:
 | A Windows egyéni parancsprogramok futtatására szolgáló bővítmény |Parancsfájlok futtatásához egy Azure virtuális gépen |[A Windows egyéni parancsprogramok futtatására szolgáló bővítmény](custom-script-windows.md) |
 | A Windows DSC-bővítményt |PowerShell DSC (célállapot-konfiguráció) bővítmény |[A Windows DSC-bővítményt](dsc-overview.md) |
 | Azure Diagnostics bővítmény |Az Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Azure virtuális gép hozzáférési bővítmény |Felhasználók és a hitelesítő adatok kezelése |[Linux virtuális gép hozzáférési bővítmény](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Azure virtuális gép hozzáférési bővítmény |Felhasználók és a hitelesítő adatok kezelése |[Linux virtuális gép hozzáférési bővítmény](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>További lépések
 

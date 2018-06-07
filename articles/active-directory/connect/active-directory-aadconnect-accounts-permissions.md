@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bde8e68eeb63e76a0dde40a09eededde8a545a83
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30763f88a7d78678411abd7fe7cc6375e00cb6f6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595087"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824268"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 Az Azure AD Connect telepítővarázsló biztosít két különböző elérési utak:
@@ -187,9 +187,9 @@ A fiók is engedéllyel rendelkezik a fájlokat, beállításkulcsokat és más 
 ### <a name="azure-ad-service-account"></a>Azure AD-szolgáltatásfiók
 A szinkronizálási szolgáltatás használata az Azure AD-fiók jön létre. Ez a fiók a megjelenített név alapján azonosítható.
 
-![AD-fiókot](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount.png)
+![AD-fiókot](./media/active-directory-aadconnect-accounts-permissions/aadsyncserviceaccount2.png)
 
-A második rész a felhasználónév azonosíthatók a a fiókot használja a kiszolgáló nevét. A képen látható a kiszolgáló neve, FABRIKAMCON. Ha még kiszolgáló átmeneti, minden kiszolgáló rendelkezik saját fiók.
+A második rész a felhasználónév azonosíthatók a a fiókot használja a kiszolgáló nevét. A képen látható a kiszolgáló neve DC1. Ha még kiszolgáló átmeneti, minden kiszolgáló rendelkezik saját fiók.
 
 A fiók létrejön egy hosszú összetett jelszót, amely nem jár le. Egy különös szerepet kap **szinkronizálási Címtárfiókjainak** , amely jogosult csak címtár-szinkronizálási feladatok elvégzéséhez. Ez a különleges beépített szerepkör nem adható meg az Azure AD Connect varázsló kívül. Az Azure-portálon jeleníti meg ezt a fiókot a szerepkör **felhasználói**.
 

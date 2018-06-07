@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/22/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ba4c9d9cd5f8a43be0f97053c02798e3b84a5f7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f1271a6afba91cf75820f2e4b973b7cd42782449
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824336"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz erőforrás-funkciók
 
@@ -95,7 +96,7 @@ Annak meghatározásához, mely rendelkezik a list művelet, a következő lehet
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Adja meg az erőforrás használatával vagy a [resourceId függvény](#resourceid), vagy a formátum `{providerNamespace}/{resourceType}/{resourceName}`.
+Adjon meg az erőforrás vagy az erőforrás neve vagy a [resourceId függvény](#resourceid). Ha ez a funkció a ugyanazt a sablont, amely a hivatkozott erőforrás telepít, használja az erőforrás nevét.
 
 ### <a name="example"></a>Példa
 
@@ -257,7 +258,7 @@ Minden erőforrástípus adja vissza a hivatkozás függvény különböző tula
 
 A hivatkozás függvény az értékét a futásidejű állapot osztályból származik, és ezért nem használható a változók szakaszban. A sablon kimenetének részében használható vagy [csatolt sablon](resource-group-linked-templates.md#link-or-nest-a-template). A kimenetek szakaszában nem használható egy [beágyazott sablon](resource-group-linked-templates.md#link-or-nest-a-template). Egy beágyazott sablon üzembe helyezett erőforrás értékek visszaállításához a beágyazott sablon átalakítása csatolt sablont. 
 
-A hivatkozás függvény használatával, akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás ugyanazt a sablont belül lett beállítva. Nem kell a dependsOn tulajdonság is használhatja. A függvény a rendszer nem értékeli ki, a hivatkozott erőforrás telepítés befejeződéséig.
+A hivatkozás függvény használatával, akkor implicit módon deklarálja, hogy egy erőforrás függ-e egy másik erőforrás, ha a hivatkozott erőforrás ki van építve belül ugyanazt a sablont, és az erőforrás neve (nem erőforrás-azonosító) hivatkozik. Nem kell a dependsOn tulajdonság is használhatja. A függvény a rendszer nem értékeli ki, a hivatkozott erőforrás telepítés befejeződéséig.
 
 Lásd: a tulajdonság és erőforrástípus tartozó értékek, hozzon létre egy sablont, amely a kimenetek szakaszban adja vissza az objektum. Ha az adott típusú erőforrással rendelkezik, a sablon bármely új erőforrások telepítése nélkül a objektum beállítása/beolvasása. 
 

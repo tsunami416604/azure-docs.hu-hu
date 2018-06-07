@@ -1,5 +1,5 @@
 ---
-title: Újabb metrika riasztásait az Azure-figyelő támogatott források |} Microsoft Docs
+title: Az újabb Azure metrika riasztások erőforrások támogatott |} Microsoft Docs
 description: A támogatási metrikák és a naplókat a közel valós idejű metrika riasztásokat az újabb Azure hivatkozás.
 author: snehithm
 manager: kmadnani1
@@ -15,24 +15,15 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e09cc1a91daf2e6a043d73ef1f41aa265334dec2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809828"
 ---
-# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Azure-szolgáltatásokat az Azure portálon újabb metrika riasztásai
-Azure figyelő mostantól támogatja az Új riasztási típust. Az újabb riasztások Miben különböznek a [klasszikus metrika riasztások](insights-alerts-portal.md) néhány módon:
-
-- **Továbbfejlesztett késés**: újabb metrika riasztások egy percenként gyakorisággal futtatható. Régebbi metrika riasztások, 5 perces gyakorisággal végezni. Napló riasztásokat továbbra is fennáll a hosszabb, mint 1 perces késleltetési idő miatt tölti be a naplók vesz igénybe. 
-- **A többdimenziós metrikák támogatása**: figyelmeztetik a dimenzionális mérőszámokat, hogy lehetővé teszi a figyelheti egy csak a metrika az érdekes szegmens. 
-- **Metrika feltételek teljesebb körű vezérlése**: gazdagabb riasztási szabályokat adhat meg. Az újabb riasztások a maximális, minimális, átlagos, és az összes érték a mérőszámok figyelésére alkalmas. 
-- **Egyszerre több metrikák figyelését**: figyelheti a (jelenleg legfeljebb két metrikák) kezelhető egyetlen szabállyal több metrikákat. Riasztást vált ki, ha mindkét metrikák megsértik a megfelelő küszöbértéket a megadott időszakban. 
-- **Értesítési rendszer jobb**: minden újabb riasztás használja [művelet csoportok](monitoring-action-groups.md), amely megnevezett értesítések és a műveletek a több riasztás is használhatnak. Klasszikus metrika riasztások és értesítések. Naplóelemzési régebbi. ne használjon művelet csoportok. 
-- **A naplók metrikák** (korlátozott nyilvános előzetes verzió): adatok, amelyek Log Analytics mostantól napló kicsomagolja és Azure figyelő metrikák alakítja át és más metrikákkal hasonlóan a majd riasztást. 
-
-Az Azure portál egy újabb metrika riasztás létrehozása, lásd: [riasztási szabályt létrehozni az Azure portálon](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal). A létrehozás után kezelheti a riasztás ismertetett lépések segítségével [a riasztásokat az Azure portálon](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
-
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Új mérték riasztások támogatott metrikák és a létrehozási módszerei
+Azure figyelő most már támogatja a [új metrika riasztástípus](monitoring-overview-unified-alerts.md) jelentős előnyt tartalmaz a régebbi keresztül [klasszikus metrika riasztások](insights-alerts-portal.md). A régebbi riasztások támogatja a [metrikák nagy listája](monitoring-supported-metrics.md). Az újabb riasztások nagyobb listában (növekvő) részhalmazának támogatja. Ez a cikk részhalmaz sorolja fel. 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portál, PowerShell, a parancssori felület, a többi támogatja
 Jelenleg csak az Azure-portálon, létrehozhat újabb metrika riasztások [REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). PowerShell-lel újabb riasztások konfigurálásának a támogatását, és az az Azure parancssori felület (Azure CLI 2.0) hamarosan.

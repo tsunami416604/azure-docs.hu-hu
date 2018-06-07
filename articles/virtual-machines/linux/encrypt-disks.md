@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Linux virtuális gép lemezeinek titkosítása |} Microsoft Docs"
-description: "A fokozott biztonság, az Azure CLI 2.0 használatával Linux virtuális gép virtuális lemezein titkosítása"
+title: Az Azure Linux virtuális gép lemezeinek titkosítása |} Microsoft Docs
+description: A fokozott biztonság, az Azure CLI 2.0 használatával Linux virtuális gép virtuális lemezein titkosítása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
 ms.service: virtual-machines-linux
@@ -15,14 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: b87d187eadff98ba84aa6478c2d233f2ec1c203c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c35cd220eab26300404a039467e1a0b35592f23d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824778"
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Virtuális lemezek, a Linux virtuális gép titkosítása
 A bővített virtuális gép (VM) biztonsági és megfelelőségi a virtuális lemezek, a virtuális gépért titkosíthatók. Virtuális gépek titkosítása egy Azure Key Vault a titkosított titkosítási kulcsok használatával. Szabályozhatja a titkosítási kulcsokat, és a használatukat naplózhatók. Ez a cikk részletesen titkosítása a Linux virtuális gépet az Azure CLI 2.0 virtuális lemezzel. Az [Azure CLI 1.0-s](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
+
+> [!NOTE]
+> Győződjön meg arról, hogy rendelkezik-e a vfat illesztőprogram, a Linux virtuális gépen engedélyezve van. Néhány biztonsági eljárásokat, például a CIS referenciaalapok kérdezze meg, hogy tiltsa le a vfat illesztőprogramot. A titkosítás működéséhez az a folyamat befejezése után működéséhez szükség.
 
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha szeretné gyorsan a feladatnak a, a következő szakasz részleteit a következő parancsokat a virtuális Gépen lévő virtuális lemezek titkosításához. Részletes információkat és a környezetben az egyes lépések a dokumentum többi részén található [itt indítása](#overview-of-disk-encryption).
@@ -146,6 +150,7 @@ Támogatott esetek és lemez titkosítására vonatkozó követelményekkel kapc
 * Az azonos Azure-régió, és az előfizetés összes erőforrások (például a Key Vault, a tárfiók és a virtuális gép) kell lennie.
 * Standard A, a D, a DS-ben, a G, a GS, adatsorozat VMs, stb.
 * A titkosítási kulcsok egy már titkosított Linux virtuális gép frissítése.
+* A Linux virtuális gép VFAT illesztőprogram engedélyezve van.
 
 Lemeztitkosítás jelenleg nem támogatott a következő esetekben:
 

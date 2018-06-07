@@ -1,18 +1,19 @@
 ---
 title: Az Azure IoT központi alkalmazás lévő mobileszközök felügyelete |} Microsoft Docs
 description: Kezelőként megtudhatja, hogyan kezelheti az Azure IoT központi alkalmazás eszközöket.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 75472d701160e7cfd331d01efcdc1a19ae20fb2d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807475"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT központi alkalmazásban eszközök kezelése
 
@@ -53,7 +54,7 @@ Eszköz hozzáadása az Azure IoT központi alkalmazáshoz:
 Nagy számú eszköz kapcsolódni az alkalmazáshoz, Azure IoT központi ajánlatok tömeges importálását eszközök keresztüli CSV-fájl. 
 
 CSV-fájl követelmények:
-1. A CSV-fájl csak egy eszköz azonosítóit tartalmazó oszlop kell rendelkeznie.
+1. A CSV-fájl csak egy oszlop, amely tartalmazza az eszköz azonosítóját kell rendelkeznie.
 
 1. A fájl nem rendelkezhet minden fejléc.
 
@@ -76,8 +77,33 @@ A tömeges-regisztráció eszközök az alkalmazásban:
 
     [![Tömeges importálása sikeres](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-Ha az eszköz importálja a művelet sikertelen, hiba történt az eszköz rács látható lesz. A naplófájl a hibákat a rögzítés jön létre, és a hibaüzenet a következő kattintva tölthető le.
+Ha az eszköz importálja a művelet sikertelen lesz, látni fogja hibaüzenet jelenik meg az eszköz rács. A naplófájl a hibákat a rögzítés jön létre, és a hibaüzenet a következő kattintva tölthető le.
 
+## <a name="export-devices"></a>Eszközök exportálása
+
+Eszközök csatlakoztatása az IoT központi telepítéséhez, szüksége lesz az eszköz IoT központi által generált kapcsolati karakterlánca. Az Exportálás funkció segítségével a kapcsolati karakterláncokat, és az eszközök más tulajdonságainak beolvasása tömeges az alkalmazásból. Exportálás hoz létre egy CSV-fájlt az Eszközidentitás, az eszköz nevét és az elsődleges kapcsolódási karakterlánc a kiválasztott eszközökhöz.
+
+Az alkalmazásból exportálási eszközök tömeges:
+1. Válasszon **Explorer** a bal oldali navigációs menü.
+
+1. A bal oldali panelen válassza az eszköz sablon, amelynek az eszközök exportálni szeretné.
+
+1. Jelölje ki az exportálni, és kattintson a kívánt eszközöket a **exportálása** művelet.
+
+    [![Exportálás](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. Exportálási folyamat elindul, és nyomon követheti a rács tetején állapotát. 
+
+1. Az exportálás után egy üzenetet látható valamint egy hivatkozást a létrehozott fájl letöltéséhez.
+
+1. Kattintson a **üzenetet** letölteni a fájlt egy helyi mappába a lemezen.
+
+    [![Sikeres exportálása](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. Az exportált CSV-fájl lesz a következő információkat:
+    1. Name (Név)
+    1. Eszközazonosító
+    1. Elsődleges kapcsolati karakterlánc
 
 
 ## <a name="delete-a-device"></a>Eszköz törlése

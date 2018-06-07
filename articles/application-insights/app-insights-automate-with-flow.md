@@ -1,8 +1,8 @@
 ---
-title: "A Microsoft Flow Azure Application Insights-folyamatok automatizálása"
-description: "Ismerje meg, hogyan használhatja a Microsoft Flow gyorsan automatizálása ismételhető az Application Insights-összekötő használatával."
+title: A Microsoft Flow Azure Application Insights-folyamatok automatizálása
+description: Ismerje meg, hogyan használhatja a Microsoft Flow gyorsan automatizálása ismételhető az Application Insights-összekötő használatával.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -13,10 +13,11 @@ ms.topic: article
 ms.date: 06/25/2017
 ms.author: mbullwin
 ms.openlocfilehash: a1d2787626ed8fa71e3e4e9921ffb8a4680014cb
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807781"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az összekötővel Azure Application Insights-folyamatok automatizálása a Microsoft Flow
 
@@ -122,7 +123,7 @@ Ha a folyamat fut, a címzettek, az e-mailek listában megadott kapnak e-mailt, 
 ![Példa e-mailre](./media/app-insights-automate-with-flow/flow9.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók: létrehozása [elemzési lekérdezések](app-insights-analytics-using.md).
 - További információ [Microsoft Flow](https://ms.flow.microsoft.com).

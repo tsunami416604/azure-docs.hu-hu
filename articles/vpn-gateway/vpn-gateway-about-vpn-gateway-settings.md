@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9ecd8dc40e168c2fd37e3d58ee588a0d9626a04a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824846"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN-átjáró konfigurációs beállításairól
 
@@ -137,6 +138,10 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 ## <a name="gwsub"></a>Átjáró-alhálózatot
 
 VPN-átjáró létrehozása előtt létre kell hoznia egy átjáró-alhálózatot. Az átjáró alhálózatának az IP-címek, amelyek a virtuális hálózati átjáró virtuális gépeket és szolgáltatásokat tartalmazza. A virtuális hálózati átjáró létrehozásakor átjáró virtuális gépek az átjáró alhálózatának telepítve és konfigurálva a VPN-átjáró szükséges beállításokat. Soha ne telepítenie kell semmi mást (például további virtuális gépek) az átjáró-alhálózathoz. Az átjáró alhálózatának a "GatewaySubnet" nevű kell megfelelően működjön. Az átjáró alhálózatának elnevezése "GatewaySubnet" lehetővé teszi, hogy tudja, hogy ez az alhálózat, a virtuális hálózati átjáró virtuális gépek és szolgáltatások telepítése Azure.
+
+>[!NOTE]
+>[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
+>
 
 Az átjáróalhálózat létrehozásakor meg kell adnia, hogy hány IP-címet tartalmaz az alhálózat. Az átjáró alhálózatának IP-címek az átjáró virtuális gépek és az átjáró szolgáltatások foglal le. Egyes konfigurációknak a többinél nagyobb számú IP-címre van szükségük. Nézze meg az utasításokat, amelyet szeretne létrehozni, és győződjön meg arról, hogy az átjáró alhálózatának szeretne létrehozni a konfiguráció megfelel ezeknek a követelményeknek. Emellett érdemes lehet ellenőrizze, hogy az átjáró-alhálózatot tartalmaz elég IP-cím lehetséges jövőbeli további konfiguráció alkalmazásához. Létrehozhat egy átjáró-alhálózat mérete /29 legyen, de javasolt, hogy hozzon létre egy átjáró-alhálózatot /28 vagy nagyobb (/ 28, /27, /26 stb.). Ily módon való hozzáadásakor funkcióit a jövőben nem kell az átjáró szakadjon el, majd törölje és hozza létre újra az átjáró alhálózatának további IP-címek lehetővé.
 

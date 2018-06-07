@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 9b4825be7ce7fb05b109310f21cd65cfe3819ae8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 03c8bf129bcb8bf1b8af4bb7d189f1a38ba8f503
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809090"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
 A Reliable Actors futásidejű bocsát ki [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) események és [teljesítményszámlálók](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Ezek a futtatókörnyezet működéséről betekintést és a hibaelhárítás és a teljesítmény figyelése súgó.
@@ -170,5 +171,5 @@ Amikor egy ügyfél keresztül szereplő proxy objektum metódus meghívja, egy 
 ## <a name="next-steps"></a>További lépések
 * [A Service Fabric-platformról használatát a Reliable Actors](service-fabric-reliable-actors-platform.md)
 * [Aktor API referenciadokumentációt](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Mintakód](https://github.com/Azure/servicefabric-samples)
+* [Mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [A PerfView EventSource szolgáltatók](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

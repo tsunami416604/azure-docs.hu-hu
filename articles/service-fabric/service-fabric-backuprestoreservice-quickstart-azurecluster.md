@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: b2e2e7dcc26bece79ae0423d55b08416065d599e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ad2faabbab74ba343328b6fe30e09c87520e7019
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809794"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió)
 > [!div class="op_single_selector"]
@@ -119,11 +120,11 @@ Első lépés, ha a biztonsági mentési házirend ütemezett biztonsági menté
 
 Biztonságimásolat-tároláshoz az Azure Storage a fenti létrehozott fiókot használja. Ez a példa azt feltételezi, hogy az Azure Storage-fiók nevű `sfbackupstore`. Tároló `backup-container` van konfigurálva. biztonsági másolatok tárolására, tároló ezen a néven jön létre, ha még nincs letöltve, biztonsági mentési feltöltés közben. Feltöltése `ConnectionString` az Azure Storage-fiók érvényes kapcsolati karakterlánccal.
 
-Hajtsa végre a következő PowerShell-parancsfájl az új házirend létrehozásához szükséges REST API meghívása.
+Hajtsa végre a következő PowerShell-parancsfájl az új házirend létrehozásához szükséges REST API meghívása. Cserélje le `account-name` rendelkező a tárfiók nevére, és `account-key` rendelkező a tárfiók kulcsára.
 
 ```powershell
 $StorageInfo = @{
-    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=sfbackupstore;AccountKey=64S+3ykBgOuKhd2DK1qHJJtDml3NtRzgaZUa+8iwwBAH4EzuGt95JmOm7mp/HOe8V3l645iv5l8oBfnhhc7dJA==;EndpointSuffix=core.windows.net'
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
     ContainerName = 'backup-container'
     StorageKind = 'AzureBlobStore'
 }

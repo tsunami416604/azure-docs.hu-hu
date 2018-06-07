@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 3492f73b4e376bfd6cc069a97e935442da99dcfb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d63cb26acdc0a8b6c8435167b1043428de9f0729
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807618"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása az Google BigQuery Azure Data Factory használatával
 
@@ -45,7 +46,7 @@ A Google BigQuery társított szolgáltatásnak az alábbi tulajdonságok eseté
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot meg kell **GoogleBigQuery**. | Igen |
-| Projekt | Az alapértelmezett BigQuery projekt irányuló lekérdezésben projekt azonosítója.  | Igen |
+| project | Az alapértelmezett BigQuery projekt irányuló lekérdezésben projekt azonosítója.  | Igen |
 | additionalProjects | Nyilvános projektazonosítók vesszővel elválasztott listája BigQuery projekt eléréséhez.  | Nem |
 | requestGoogleDriveScope | E Google meghajtó hozzáférést kérni. Google meghajtó hozzáférés lehetővé teszi, hogy a támogatás a Google meghajtóról adatokkal BigQuery adatok egyesítése összevont táblák esetében. Az alapértelmezett érték **hamis**.  | Nem |
 | authenticationType | A hitelesítéshez használt OAuth 2.0 hitelesítési módszert. ServiceAuthentication csak Self-hosted integrációs futásidejű is használhatók. <br/>Két érték engedélyezett **UserAuthentication** és **ServiceAuthentication**. Tekintse meg a további tulajdonságok és adott hitelesítési típusok JSON-példák a táblázat alatti részek kulcsattribútumokkal. | Igen |
@@ -58,7 +59,7 @@ A Google BigQuery társított szolgáltatásnak az alábbi tulajdonságok eseté
 |:--- |:--- |:--- |
 | clientId | A frissítési jogkivonat létrehozásához használt alkalmazás azonosítója. | Nem |
 | clientSecret | Az alkalmazás a frissítési jogkivonat létrehozásához használt titkos kulcs. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
-| refreshToken | A frissítési jogkivonat BigQuery elérésének hitelesítéséhez használt Google kapott. Ismerje meg az beszerzése [megszerezni OAuth 2.0 hozzáférési jogkivonatok](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens). Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
+| refreshToken | A frissítési jogkivonat BigQuery elérésének hitelesítéséhez használt Google kapott. Megtudhatja, hogyan kérhet közül [megszerezni OAuth 2.0 hozzáférési jogkivonatok](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) és [a közösségi blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 
 **Példa**
 
@@ -92,7 +93,7 @@ A Google BigQuery társított szolgáltatásnak az alábbi tulajdonságok eseté
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| e-mail | A szolgáltatás e-mail Fiókazonosító ServiceAuthentication használt. Csak a Self-hosted integrációs futásidejű használható.  | Nem |
+| e-mailben | A szolgáltatás e-mail Fiókazonosító ServiceAuthentication használt. Csak a Self-hosted integrációs futásidejű használható.  | Nem |
 | keyFilePath | A fájl teljes elérési útja a .p12 kulcs, amely segítségével hitelesíti a szolgáltatási fiók e-mail címét. | Nem |
 | trustedCertPath | A teljes elérési útja a .pem fájl, amely tartalmazza a megbízható Hitelesítésszolgáltatói tanúsítvány segítségével ellenőrizze a kiszolgáló SSL-en keresztül csatlakoztatásakor. Ez a tulajdonság csak akkor, ha az SSL használatát Self-hosted integrációs futásidejű állítható be. Az alapértelmezett érték: a telepített integrációs futásidejű cacerts.pem fájlt.  | Nem |
 | useSystemTrustStore | Megadja, hogy a CA-tanúsítvány használatára, a rendszer megbízható áruházból vagy egy megadott .pem fájlt. Az alapértelmezett érték **hamis**.  | Nem |

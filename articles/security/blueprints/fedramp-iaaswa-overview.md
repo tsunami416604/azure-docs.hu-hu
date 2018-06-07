@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 27346d8e2133ea61056817fb48050a4e5c8c3c97
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6a2a72f46c4d5faacb7d5871f4c917a5cd578e96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726482"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809165"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi tervezetének: IaaS-webalkalmazás FedRAMP
 
@@ -106,12 +106,12 @@ Az architektúra inaktív adatok több titkosítási mértékek használatával 
 **SQL Server**: SQL-kiszolgáló használatára van konfigurálva [átlátszó Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption), amely végrehajtja a valós idejű titkosítási és visszafejtési adatainak és naplókönyvtárainak fájlok aktívan információk védelme érdekében. TDE biztosítja, hogy a tárolt adatok nem lett bárki hozzáférhet.
 
 Az ügyfelek is beállíthatja a következő SQL Server biztonsági intézkedéseket:
--   [AD hitelesítési és engedélyezési](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) adatbázis-felhasználók és más Microsoft-szolgáltatásokban egyetlen központi helyen identitás kezelését teszi lehetővé.
--   [SQL-adatbázis naplózásának](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing-get-started) nyomon követi az adatbázisok események, mind az írás őket naplózási jelentkezzen be Azure storage-fiók.
--   [Tűzfal-szabályok](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure) tagadni a hozzáférést minden adatbázis-kiszolgálók csak a megfelelő engedélyekkel. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   [A Fenyegetésészlelés SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-threat-detection-get-started) lehetővé teszi, hogy felderítésére és a lehetséges veszélyforrásokra választ, adja meg a biztonsági riasztások adatbázis gyanús tevékenységek, a potenciális biztonsági réseket, az SQL injektálási támadások és a rendellenes adatbázis-hozzáférési előforduló minták.
--   [Mindig titkosítja az oszlopok](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault) győződjön meg arról, hogy bizalmas adatok soha nem jelenik meg az adatbázis rendszerében szövegként. Miután engedélyezte az adattitkosítást, csak az ügyfélalkalmazások vagy a kulcsoknak access app kiszolgálók hozzáférhet egyszerű szöveges adatokat.
--   [SQL-adatbázis dinamikus adatmaszkolási](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-dynamic-data-masking-get-started) teheti, miután telepíti a referencia-architektúrában. Állítsa be a dinamikus adatmaszkolási beállítások igazodnia kell az adatbázis-séma esetén szükséges.
+-   [AD hitelesítési és engedélyezési](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) adatbázis-felhasználók és más Microsoft-szolgáltatásokban egyetlen központi helyen identitás kezelését teszi lehetővé.
+-   [SQL-adatbázis naplózásának](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) nyomon követi az adatbázisok események, mind az írás őket naplózási jelentkezzen be Azure storage-fiók.
+-   [Tűzfal-szabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) tagadni a hozzáférést minden adatbázis-kiszolgálók csak a megfelelő engedélyekkel. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
+-   [A Fenyegetésészlelés SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) lehetővé teszi, hogy felderítésére és a lehetséges veszélyforrásokra választ, adja meg a biztonsági riasztások adatbázis gyanús tevékenységek, a potenciális biztonsági réseket, az SQL injektálási támadások és a rendellenes adatbázis-hozzáférési előforduló minták.
+-   [Mindig titkosítja az oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) győződjön meg arról, hogy bizalmas adatok soha nem jelenik meg az adatbázis rendszerében szövegként. Miután engedélyezte az adattitkosítást, csak az ügyfélalkalmazások vagy a kulcsoknak access app kiszolgálók hozzáférhet egyszerű szöveges adatokat.
+-   [SQL-adatbázis dinamikus adatmaszkolási](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) teheti, miután telepíti a referencia-architektúrában. Állítsa be a dinamikus adatmaszkolási beállítások igazodnia kell az adatbázis-séma esetén szükséges.
 
 **Az Azure Disk Encryption**: Azure Disk Encryption windowsos infrastruktúra-szolgáltatási virtuális gép lemezeinek titkosított szolgál. [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) kihasználja a Windows operációs rendszer és az adatlemezek kötettitkosítást biztosít a BitLocker-szolgáltatás. A megoldás integrálva van az Azure Key Vault szabályozni, és a lemez-titkosítási kulcsok kezeléséhez.
 
@@ -144,7 +144,7 @@ Az alábbi technológiákat biztosítja az identitás Eszközkezelési funkciók
 
 **Recovery Services-tároló**: A [Recovery Services-tároló](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) Kezelőkód biztonsági mentési adatokat, és az összes konfiguráció Azure virtuális gépek ebben az architektúrában védelmét. A Recovery Services-tároló, az ügyfelek is fájlok és mappák visszaállítása egy infrastruktúra-szolgáltatási virtuális gép helyreállítása a teljes virtuális gép, gyorsabb visszaállítás engedélyezése nélkül.
 
-**A felhő tanúsító**: [felhő tanúsító](https://docs.microsoft.com/en-us/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) a feladatátvevő fürt kvórum tanúsítójának a Windows Server 2016-os, amely kihasználja az Azure-bA az egyeztetési pont típusa. A felhő tanúsító, mint bármely más kvórum tanúsító szavazás lekérdezi és részt vesznek a kvórumszámításokat, de a szabványos nyilvánosan elérhető Azure Blob Storage használ. Ez megszünteti az extra karbantartási növeli a nyilvános felhőben üzemeltetett virtuális gépeket.
+**A felhő tanúsító**: [felhő tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) a feladatátvevő fürt kvórum tanúsítójának a Windows Server 2016-os, amely kihasználja az Azure-bA az egyeztetési pont típusa. A felhő tanúsító, mint bármely más kvórum tanúsító szavazás lekérdezi és részt vesznek a kvórumszámításokat, de a szabványos nyilvánosan elérhető Azure Blob Storage használ. Ez megszünteti az extra karbantartási növeli a nyilvános felhőben üzemeltetett virtuális gépeket.
 
 ### <a name="logging-and-auditing"></a>Naplózás és naplózás
 
@@ -166,7 +166,7 @@ Emellett a következő OMS-megoldások ebbe az architektúrába részeként tele
 -   [A változáskövetés](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): A változáskövetési megoldás lehetővé teszi az ügyfelek azonosítását a változtatásokat a környezetben.
 
 **Az Azure figyelő**
-[Azure figyelő](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény nyomon követése, biztonsági karbantartása és azonosíthatja a trendeket szervezetek naplózni, létre riasztásokat, és archiválja, beleértve a követési API-hívások engedélyezésével a felhasználók Azure-erőforrások.
+[Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény nyomon követése, biztonsági karbantartása és azonosíthatja a trendeket szervezetek naplózni, létre riasztásokat, és archiválja, beleértve a követési API-hívások engedélyezésével a felhasználók Azure-erőforrások.
 
 ## <a name="threat-model"></a>Fenyegetések modellezése
 Az adatfolyam-diagram a referenciaarchitektúra érhető el [letöltése](https://aka.ms/fedrampWAdfd) vagy alatt található. Ez a modell segít megérteni a pontokat a rendszer infrastruktúra kockázatokkal módosításakor az ügyfelek.
@@ -198,11 +198,11 @@ Az Azure biztonsági és megfelelőségi tervezetének Automation JSON-konfigur�
 ### <a name="vpn-and-expressroute"></a>VPN- és ExpressRoute
 Biztonságos VPN-alagúton vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) kell konfigurálni, hogy biztonságos kapcsolatot létrehozni a IaaS webes alkalmazás referencia-architektúrában részeként telepített erőforrások. Megfelelően állítja be a VPN- vagy ExpressRoute, az ügyfelek megteheti egy védelmi réteget biztosít adatokat az átvitel során.
 
-Az Azure-ral biztonságos VPN-alagúton implementálásával egy a helyszíni hálózat és az Azure virtuális hálózat közötti virtuális magánhálózati kapcsolat hozhatók létre. Ezt a kapcsolatot az interneten keresztül történik, és lehetővé teszi az ügyfelek biztonságosan "tunnel" információkhoz belül az ügyfél hálózati és az Azure közötti egy titkosított kapcsolat. Telephelyek közötti VPN egy biztonságos, érett technológia, amely különböző méretű vállalatok által évtizedeken van telepítve. A [IPsec-bújtatásos mód](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) ezt a beállítást olyan titkosítási módszert használatban van.
+Az Azure-ral biztonságos VPN-alagúton implementálásával egy a helyszíni hálózat és az Azure virtuális hálózat közötti virtuális magánhálózati kapcsolat hozhatók létre. Ezt a kapcsolatot az interneten keresztül történik, és lehetővé teszi az ügyfelek biztonságosan "tunnel" információkhoz belül az ügyfél hálózati és az Azure közötti egy titkosított kapcsolat. Telephelyek közötti VPN egy biztonságos, érett technológia, amely különböző méretű vállalatok által évtizedeken van telepítve. A [IPsec-bújtatásos mód](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) ezt a beállítást olyan titkosítási módszert használatban van.
 
 Forgalom a VPN-alagút belül haladnak át a telephelyek közötti VPN az internethez, mert a Microsoft egy másik, a megoldás még biztonságosabbá kapcsolat lehetőséget is kínál. Az Azure ExpressRoute egy dedikált WAN Azure és egy helyszíni helyre vagy az Exchange-szolgáltató közötti kapcsolat. ExpressRoute-kapcsolatok az interneten keresztül halad, mivel ezeket a kapcsolatokat további megbízhatóságát, gyorsabb sebességű, kisebb késések fordulnak elő, és kínálnak nagyobb biztonságot nyújtana tipikus kapcsolatok az interneten keresztül. Továbbá mivel ez a közvetlen kapcsolat az ügyfél telekommunikációs szolgáltató, az adatok nem használható az interneten keresztül tartalmaz, és ezért nem érhető el azt.
 
-Ajánlott eljárások a biztonságos hibrid hálózat, amely egy helyi hálózati kibővíti az Azure-bA [elérhető](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+Ajánlott eljárások a biztonságos hibrid hálózat, amely egy helyi hálózati kibővíti az Azure-bA [elérhető](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 
