@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: adegeo
-ms.openlocfilehash: 0139c42334b53364aee8cfd29cfa771d47e2ccc8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b5d706f82dd41f0c271aa5f67676bba08cceb3b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608593"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Socket.IO Node.js csevegőalkalmazás létrehozása az Azure Cloud Service-kiszolgálón
 
@@ -57,7 +58,7 @@ Az alábbi lépéseket a felhőszolgáltatás-projekt, amely üzemelteti a Socke
     ![Az új-azureservice és hozzáadása azurenodeworkerrolecmdlets kimenete](./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png)
 
 ## <a name="download-the-chat-example"></a>Töltse le a Csevegés – példa
-Ebben a projektben a Csevegés példa fogjuk használni a [Socket.IO GitHub-tárházban]. A következő lépésekkel töltse le a példában, és adja hozzá a projekthez, korábban létrehozott.
+Ebben a projektben a Csevegés példa fogjuk használni a [Socket.IO GitHub-adattár]. A következő lépésekkel töltse le a példában, és adja hozzá a projekthez, korábban létrehozott.
 
 1. A tárház helyi másolat létrehozása a **Klónozás** gombra. Is használhatja a **ZIP-** gombra kattintva töltse le a projektet.
    
@@ -151,16 +152,16 @@ Az alkalmazás mostantól az Azure-on fut, és továbbíthat csevegési üzenete
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag megtanulta, hogyan hozhat létre egy Azure-Felhőszolgáltatásban tárolt alapvető Csevegés alkalmazást. Ez az alkalmazás az Azure-webhely üzemeltetésére, lásd: [összeállíthat egy Node.js Csevegés alkalmazást a Socket.IO segítségével az Azure webhelyén található][chatwebsite].
 
-További információ: a [Node.js fejlesztői központ](/develop/nodejs/).
+További információ: a [Node.js fejlesztői központ](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
 
-[chatwebsite]: /develop/nodejs/tutorials/website-using-socketio/
+[chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
 [Azure SLA]: http://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
-[Socket.IO GitHub-tárházban]: https://github.com/LearnBoost/socket.io/tree/0.9.14
+[Socket.IO GitHub-adattár]: https://github.com/LearnBoost/socket.io/tree/0.9.14
 [Azure Considerations]: #windowsazureconsiderations
 [Hosting the Chat Example in a Worker Role]: #hostingthechatexampleinawebrole
 [Summary and Next Steps]: #summary

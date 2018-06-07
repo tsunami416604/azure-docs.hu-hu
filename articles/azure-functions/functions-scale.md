@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 06/05/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807533"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetéséhez
 
@@ -43,12 +44,12 @@ Az App Service-csomag a méretezhető különböző mennyiségű erőforrást le
 
 ## <a name="consumption-plan"></a>Használatalapú csomag
 
-Amikor egy fogyasztás tervet használja, az Azure Functions állomás példányai dinamikusan felvétele, illetve eltávolítása a bejövő események száma alapján. Ez a csomag automatikusan méretezi, és van szó, a számítási erőforrások csak akkor, ha a függvények futnak. Felhasználás tervezze a függvény legfeljebb 10 perc futtathatja. 
+Amikor egy fogyasztás tervet használja, az Azure Functions állomás példányai dinamikusan felvétele, illetve eltávolítása a bejövő események száma alapján. Ez a csomag automatikusan méretezi, és van szó, a számítási erőforrások csak akkor, ha a függvények futnak. Felhasználás tervezze a függvény végrehajtása időtúllépése konfigurálható időn belül. 
 
 > [!NOTE]
-> Az alapértelmezett időtúllépési fogyasztás tervezze függvények érték 5 perc. Az érték növelhető 10 perc a függvény alkalmazás tulajdonságának módosításával `functionTimeout` a a [host.json](functions-host-json.md#functiontimeout) projektfájlt.
+> Az alapértelmezett időtúllépési fogyasztás tervezze függvények érték 5 perc. Az érték tulajdonságának módosításával növelhető a függvény alkalmazás legfeljebb 10 perces `functionTimeout` a a [host.json](functions-host-json.md#functiontimeout) projektfájlt.
 
-Számlázási végrehajtások, a végrehajtási idő és a felhasznált memória alapul. Számlázási összesíti egy függvény alkalmazásból minden funkciók között. További információkért lásd: a [árképzést ismertető oldalra Azure Functions].
+Számlázási végrehajtások, a végrehajtási idő és a felhasznált memória alapul. Számlázási összesíti egy függvény alkalmazásból minden funkciók között. További információkért lásd: a [Az Azure Functions árképzést ismertető oldalra].
 
 A felhasználási tervben az üzemeltetési terv alapértelmezett, és a következő előnyöket biztosítja:
 - Után kell fizetnie, csak ha a függvények futnak.
@@ -90,7 +91,7 @@ Tárfióktípusokat kapcsolatos további információkért lásd: [az Azure Stor
 
 ## <a name="how-the-consumption-plan-works"></a>A felhasználási terv működése
 
-A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és memória-erőforrások hozzáadásával további példányait a funkciók gazdagép, a funkciók által kiváltott a várakozó események száma alapján. A funkciók állomás minden példánya 1,5 GB memória korlátozódik.  A gazdagép egy példány a függvény App, tehát függvényen belüli összes funkciójának app erőforrások megosztása belül egy példány és a skála egyszerre.
+A felhasználási tervben a skála vezérlő automatikusan méretezi CPU és memória-erőforrások hozzáadásával további példányait a funkciók gazdagép, a funkciók által kiváltott a várakozó események száma alapján. A funkciók állomás minden példánya 1,5 GB memória korlátozódik.  A gazdagép egy példány a függvény app, tehát függvényen belüli összes funkciójának app erőforrások megosztása belül egy példány és a skála egyszerre. Függvény-alkalmazásokat, amelyek ugyanabban a fogyasztás csomagban független méretezése.  
 
 A felhasználás üzemeltetési terv használatakor függvény kódfájlok Azure fájlmegosztásokat a funkció fő tárfiók tárolja. A fő tárfiókot, a függvény alkalmazás törlése, a függvény kód fájlok törlődnek, és nem állítható helyre.
 
@@ -121,8 +122,8 @@ Számos szempontot, amelyek befolyásolják, mennyire azt lehessen méretezni, t
 
 ### <a name="billing-model"></a>Számlázási modell
 
-A felhasználási terv részletes leírását lásd a számlázási a [árképzést ismertető oldalra Azure Functions]. Használati függvény alkalmazásszinten összesített értéket, és csak arra az időre funkciókódot végrehajtott számát. Számlázási egységei a következők: 
+A felhasználási terv részletes leírását lásd a számlázási a [Az Azure Functions árképzést ismertető oldalra]. Használati függvény alkalmazásszinten összesített értéket, és csak arra az időre funkciókódot végrehajtott számát. Számlázási egységei a következők: 
 * **Erőforrás-felhasználás (GB-s) GB-másodperc**. Számított, a memóriaméret és a végrehajtási idő összes funkciójának függvény alkalmazásokban. 
 * **Végrehajtások**. Minden alkalommal, amikor egy függvény végrehajtása eseményindító válaszul számítanak.
 
-[árképzést ismertető oldalra Azure Functions]: https://azure.microsoft.com/pricing/details/functions
+[Az Azure Functions árképzést ismertető oldalra]: https://azure.microsoft.com/pricing/details/functions

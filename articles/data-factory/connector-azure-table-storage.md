@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ef43037ff33b693256c82459eec2e4b3beab4d9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617178"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása és az Azure Table storage Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -203,7 +204,7 @@ Adatok másolása az Azure Table, állítsa be a fogadó típusa a másolási te
 | azureTablePartitionKeyName |Adja meg az oszlop, amelynek értékeket fogja használni, mint partíciókulcsok nevét. Ha nincs megadva, a partíciós kulcs "AzureTableDefaultPartitionKeyValue" lesz. |Nem |
 | azureTableRowKeyName |Adja meg az az oszlop, amelynek oszlop értékeit a sor kulcsaként vannak használatban. Ha nincs megadva, minden egyes sorára használjon a GUID Azonosítót. |Nem |
 | azureTableInsertType |Adatok beszúrása Azure Table mód. Ez a tulajdonság szabja meg, hogy rendelkeznek-e a meglévő sorokat a táblában az egyező partíció-és sorkulcsok cseréje vagy egyesített értékükre. <br/><br/>Két érték engedélyezett **egyesítési** (alapértelmezett) és **cserélje le**. <br/><br> Ez a beállítás a táblázatok szintjén nem vonatkozik a sor szintjén. Sem a lehetőség törli a sorokat a kimeneti táblához, amely nem szerepel a bemeneti. Című témakörben olvashat a lemezegyesítési és -csere beállítások működése, [entitás beszúrása vagy egyesítési](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [beszúrása vagy entitás cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Nem |
-| writeBatchSize |Szúr be Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (alapértelmezett érték 10 000) |
+| WriteBatchSize |Szúr be Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: egész szám (sorok száma). |Nem (alapértelmezett érték 10 000) |
 | writeBatchTimeout |Szúr be Azure Table adatokat, amikor writeBatchSize vagy writeBatchTimeout találati.<br/>Megengedett értékek: timespan. Például "00: 20:00" (20 perc). |Nem (alapértelmezett érték 90 másodperc, a tárolási ügyfél alapértelmezett időtúllépés) |
 
 **Példa**
@@ -271,8 +272,8 @@ Amikor áthelyezni és az Azure tábla, a következő [megfeleltetéseket határ
 |:--- |:--- |:--- |
 | Edm.Binary |Byte] |Bájttömb legfeljebb 64 KB. |
 | Edm.Boolean |logikai érték |Logikai érték. |
-| Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdete éjfél. január 1, i. 1601. (C.E.), UTC. A tartomány véget ér. December 31 9999. |
-| Edm.Double |Dupla |Egy 64 bites lebegőpontos értéket. |
+| Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdete éjfél. január 1, i. 1601. (SZ) (UTC). A tartomány véget ér. December 31 9999. |
+| Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |

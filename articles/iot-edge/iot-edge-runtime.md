@@ -1,19 +1,19 @@
 ---
-title: "Az Azure IoT peremhálózati futásidejű megértése |} Microsoft Docs"
-description: "További tudnivalók az Azure IoT peremhálózati futásidejű, és hogyan lehetővé teszi az edge-eszközök"
-services: iot-edge
-keywords: 
+title: Az Azure IoT peremhálózati futásidejű megértése |} Microsoft Docs
+description: További tudnivalók az Azure IoT peremhálózati futásidejű, és hogyan lehetővé teszi az edge-eszközök
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 02/15/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8bd725e2201cb08853f4fb63d156b6359427663b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+services: iot-edge
+ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632074"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Az Azure IoT peremhálózati futásidejű és az architektúra – előzetes
 
@@ -93,7 +93,7 @@ A modulok szótárban egyes elemek modul vonatkozó információkat tartalmaz, �
 * **Settings.Image** – a tároló lemezképet, a peremhálózati ügynök használja a modul elindításához. A peremhálózati ügynök tároló beállításjegyzék hitelesítő adatokkal kell konfigurálni, ha a kép jelszóval védett. A peremhálózati ügynök, használja a következő parancsot: `azure-iot-edge-runtime-ctl.py –configure`
 * **settings.createOptions** – karakterlánc, amely közvetlenül átadódik a Docker démon a modul tároló indításakor. Ebben a tulajdonságban Docker beállítások hozzáadása lehetővé teszi a Speciális beállítások, például a továbbítási vagy kötetek csatlakoztatása egy modul tárolóba port.  
 * **állapot** – pedig a peremhálózati ügynök helyezi el a modul állapotát. Ez általában értéke *futtató* , a legtöbben szeretné a peremhálózati ügynök azonnal elindítani az eszközön lévő összes modul. Azonban kell megadni egy modul kell állítani, és várja meg, hogy egy modul elindításához a peremhálózati ügynök később bármikor kezdeti állapotában. A peremhálózati ügynök jelent modulokhoz állapotának vissza a jelentett tulajdonságaiban a felhőben. A kívánt tulajdonságot és a jelentett tulajdonság egy kijelző vagy átirányítóban eszköz. A támogatott állapotok az alábbiak:
-   * Letöltés
+   * Letöltés folyamatban
    * Fut
    * Nem kifogástalan
    * Meghiúsult

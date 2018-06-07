@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 981b6b65675550fd1403064ad3113c2dca0c3f6e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638670"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>A napló riasztási szabályok webhookműveletek
 Ha egy [riasztást hoz létre az Azure-ban ](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása művelet csoportok használatával](monitoring-action-groups.md) egy vagy több műveletek elvégzéséhez.  Ez a cikk ismerteti a rendelkezésre álló különböző webhookműveletek és a részletek a egyéni JSON-alapú webhook konfigurálásával.
@@ -32,7 +33,7 @@ Webhookműveletek megkövetelése a tulajdonságok a következő táblázatban:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Webhook URL-CÍMÉT |A webhook URL-CÍMÉT. |
+| Webhook URL-címe |A webhook URL-CÍMÉT. |
 | Egyéni JSON-adattartalmat |Riasztás létrehozása során ezt a lehetőséget választja, a webhook küldött egyéni hasznos. Rendelkezésre álló részletek [használata Azure riasztások-riasztások kezelése ](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
@@ -44,14 +45,14 @@ Webhook URL-címet és a hasznos adatok között, amely a külső szolgáltatás
 | Paraméter | Változó | Leírás |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |A riasztási szabály neve. |
-| Súlyosság |#severity |Állítsa be a égetett napló riasztás súlyossága. |
+| Severity |#severity |Állítsa be a égetett napló riasztás súlyossága. |
 | AlertThresholdOperator |#thresholdoperator |A riasztási szabály operátor küszöbértéket.  *Nagyobb, mint* vagy *kisebb, mint*. |
 | AlertThresholdValue |#thresholdvalue |A riasztási szabály tartozó küszöbérték. |
-| LinkToSearchResults |#linktosearchresults |A lekérdezésből, amely a riasztás létrehozása a rekordok visszaadó Naplóelemzési napló keresési kapcsolódik. |
+| LinkToSearchResults |#linktosearchresults |Csatolja a rekordot ad vissza a lekérdezést, amely a riasztás létrehozása Analytics-portálról. |
 | Attribútumhoz resultcount számlálót. |#searchresultcount |A keresési eredmények rekordok száma. |
-| Keresési intervallum befejezési időpontja |#searchintervalendtimeutc |Befejezési ideje UTC formátumban a lekérdezést. |
-| Keresési intervallum |#searchinterval |A riasztási szabály időszak. |
-| Keresési intervallum kezdő időpont |#searchintervalstarttimeutc |Indítsa el a lekérdezések ideje UTC formátumban. 
+| Keresési intervallum befejezési időpontja |#searchintervalendtimeutc |A Befejezés időpontja UTC szerint, a lekérdezés format - hh/nn/éééé óó: pp: ss du. |
+| Keresési intervallum |#searchinterval |A riasztás időkerete szabály, - formátum ÓÓ: pp:. |
+| Keresési intervallum kezdő időpont |#searchintervalstarttimeutc |Kezdő időpontja a lekérdezést UTC formátumban, format - hh/nn/éééé óó: pp: ss du.... 
 | SearchQuery |#searchquery |Naplófájl-keresési lekérdezés a riasztási szabály által használt. |
 | SearchResults |"IncludeSearchResults": igaz|Táblaként JSON, csak az első 1000 rekord; a lekérdezés által visszaadott rekordok Ha "IncludeSearchResults": true egyéni JSON webhook definition legfelső szintű tulajdonságként fel van véve. |
 | WorkspaceID |#workspaceid |A Naplóelemzési munkaterület azonosítója. |
@@ -74,6 +75,7 @@ Ez a példa hasznos volna oldja fel a következőhöz, ha a webhook.
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
+Mivel minden változóját egy egyéni webhook JSON ház, például a "#searchinterval" értéket, a eredő webhook is változó adatok belül ház például "00: 05:00".
 
 Keresési eredmények belefoglalása az egyéni adattartalom, ügyeljen arra, hogy **IncudeSearchResults** a json-adattartalmat legfelső szintű tulajdonság be van állítva. 
 

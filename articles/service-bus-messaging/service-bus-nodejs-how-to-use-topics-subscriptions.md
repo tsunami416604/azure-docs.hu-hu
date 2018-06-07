@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus-üzenettémák és előfizetések használata Node.js |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a Service Bus-üzenettémák és előfizetések az Azure-ban from a Node.js-alkalmazás."
+title: Azure Service Bus-üzenettémák és előfizetések használata Node.js |} Microsoft Docs
+description: Megtudhatja, hogyan használja a Service Bus-üzenettémák és előfizetések az Azure-ban from a Node.js-alkalmazás.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,29 +14,39 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: d9e463273fff0ecc198b0574443c4241dde7be79
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641305"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használja a Service Bus-üzenettémák és előfizetések a Node.js
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ez az útmutató ismerteti a Service Bus-üzenettémák és előfizetések a Node.js-alkalmazások használatáról. Az ismertetett forgatókönyvek **üzenettémák és előfizetések létrehozása**, **előfizetés-szűrők létrehozása**, **üzenetküldésre** egy témakörbe **fogadása előfizetés üzeneteit**, és **üzenettémák és előfizetések törlése**. Az üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
+Ez az útmutató ismerteti a Service Bus-üzenettémák és előfizetések a Node.js-alkalmazások használatáról. Az ismertetett forgatókönyvek a következők:
+
+- Üzenettémák és előfizetések létrehozása 
+- Előfizetés-szűrők létrehozása 
+- A témakör üzenetek küldése 
+- Üzenetek fogadása egy előfizetésből
+- Üzenettémák és előfizetések törlése 
+
+Üzenettémakörökkel és előfizetésekkel kapcsolatos további információkért lásd: [további lépések](#next-steps) szakasz.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Üres Node.js-alkalmazás létrehozása. A Node.js-alkalmazás létrehozása, lásd: [létrehozása és központi telepítése egy Node.js-alkalmazás az Azure webhelyén], [Node.js felhőalapú szolgáltatás] [ Node.js Cloud Service] Windows használatával PowerShell, vagy a webhelyet a WebMatrix.
+Üres Node.js-alkalmazás létrehozása. A Node.js-alkalmazás létrehozása, lásd: [Létrehozhat és telepíthet egy Node.js-alkalmazás az Azure webhelyén], [Node.js felhőalapú szolgáltatás] [ Node.js Cloud Service] Windows használatával PowerShell, vagy a webhelyet a WebMatrix.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Állítsa be az alkalmazását, Service Bus használatára
 A Service Bus használatához le kell töltenie a Node.js Azure-csomag. Ez a csomag tartalmaz egy szalagtár szerepel, amely a Service Bus REST-szolgáltatásokkal kommunikálni.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Csomópont Package Manager (NPM) használja a csomag beszerzése
-1. Használjon például egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac) vagy **Bash** (Unix), lépjen abba a mappába, amelyben létrehozta a mintaalkalmazáshoz.
-2. Típus **npm telepítése azure** a parancsablakban, amely eredményez a következő kimeneti:
+1. Például nyisson meg egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac), vagy **Bash** (Unix).
+2. Lépjen abba a mappába, amelyben létrehozta a mintaalkalmazáshoz.
+3. Típus **npm telepítése azure** a parancsablakban, amely eredményez a következő kimeneti:
 
    ```
        azure@0.7.5 node_modules\azure
@@ -61,11 +71,11 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>A Service Bus-kapcsolat beállítása
-Az Azure modul olvassa be a következő környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` a kapcsolati karakterlánc az előző lépésben beszerzett, "a hitelesítő adatok beszerzése". Ha e környezeti változó nincs beállítva, meg kell adnia a fiókadatokat, meghívásakor `createServiceBusService`.
+Az Azure modul olvassa be a következő környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` a kapcsolati karakterlánc az előző lépésben beszerzett, "a hitelesítő adatok beszerzése." Ha e környezeti változó nincs beállítva, meg kell adnia a fiókadatokat, meghívásakor `createServiceBusService`.
 
 A környezeti változók beállítása az Azure-Felhőszolgáltatásban példát talál [Node.js Felhőszolgáltatás tárolási][Node.js Cloud Service with Storage].
 
-Például egy Azure-webhely környezeti változókkal, lásd: [Node.js-webalkalmazás tárolóval][Node.js Web Application with Storage].
+
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
 A **ServiceBusService** objektum lehetővé teszi a témakörök együttműködni. Az alábbi kód létrehoz egy **ServiceBusService** objektum. Az tetején adja hozzá a **server.js** fájl, az utasítást, hogy az azure modul importálása után:
@@ -74,7 +84,7 @@ A **ServiceBusService** objektum lehetővé teszi a témakörök együttműködn
 var serviceBusService = azure.createServiceBusService();
 ```
 
-Meghívásával `createTopicIfNotExists` a a **ServiceBusService** objektum, a megadott témakör az eredmény (ha van ilyen), vagy egy új téma a megadott néven jön létre. A következő kódban `createTopicIfNotExists` létrehozása vagy csatlakozás nevű üzenettémakör `MyTopic`:
+Ha meghívja a `createTopicIfNotExists` a a **ServiceBusService** objektum, a megadott témakör ad vissza (ha van ilyen), vagy egy új téma a megadott néven jön létre. A következő kódban `createTopicIfNotExists` létrehozása vagy csatlakozás nevű üzenettémakör `MyTopic`:
 
 ```javascript
 serviceBusService.createTopicIfNotExists('MyTopic',function(error){
@@ -85,7 +95,9 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-A `createServiceBusService` metódus is támogatja a további beállításokat, amelyek lehetővé teszik a bírálja felül az alapértelmezett témakör beállításokat, például üzenet time to live vagy maximális témakör ezen méretét. Az alábbi példa méretét állítja be maximális témakör 5GB 1 perces élő időpontja:
+A `createServiceBusService` metódus is támogatja a további beállításokat, amelyek lehetővé teszik a bírálja felül az alapértelmezett témakör beállításokat, például üzenet time to live vagy maximális témakör ezen méretét. 
+
+Az alábbi példa méretét állítja be maximális témakör 5 GB perces élő időpontja:
 
 ```javascript
 var topicOptions = {
@@ -107,13 +119,13 @@ Választható szűrési műveletek használatával végrehajtott műveletek alka
 function handle (requestOptions, next)
 ```
 
-Előfeldolgozása kérelmet a beállítások elvégzése után a metódushívások `next`, átadja a következő aláírással rendelkező visszahívás:
+Előfeldolgozása kérelmet a beállítások elvégzése után a metódushívások `next`, és adja át a következő aláírással rendelkező visszahívás:
 
 ```javascript
 function (returnObject, finalCallback, next)
 ```
 
-A visszahívási, és feldolgozás után a `returnObject` (válasza a kérés a kiszolgáló), a visszahívás kell rá folytatni más szűrők mellett invoke vagy a meghívása `finalCallback` ellenkező esetben a szolgáltatás hívás befejezéséhez.
+A visszahívási, és feldolgozás után a `returnObject` (válasza a kérés a kiszolgáló), a visszahívás kell meghívni mellett (ha van ilyen) más szűrők feldolgozása a folytatáshoz, vagy meghívása `finalCallback` a szolgáltatás hívás befejezéséhez.
 
 Két szűrőket, amelyek megvalósítják az újrapróbálkozási logika érhetők el az Azure SDK for Node.js, a **ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**. A következő létrehoz egy **ServiceBusService** objektum, amely használja a **ExponentialRetryPolicyFilter**:
 
@@ -123,15 +135,15 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 ```
 
 ## <a name="create-subscriptions"></a>Előfizetések létrehozása
-Üzenettémakör-előfizetéseket is jönnek létre a **ServiceBusService** objektum. Előfizetések vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek az előfizetés virtuális üzenetsorában kézbesített üzenetek korlátoz.
+Üzenettémakör-előfizetéseket is jönnek létre a **ServiceBusService** objektum. Előfizetések megnevezett, és rendelkezhetnek olyan szűrőkkel, amelyek az előfizetés virtuális üzenetsorában kézbesített üzenetek korlátoz.
 
 > [!NOTE]
-> Előfizetések állandó, és továbbra is létezik, vagy csak, vagy a következő témakörben társítva, a rendszer törli. Ha az alkalmazás előfizetés létrehozása a logikát tartalmaz, azt kell először ellenőrizze, hogy az előfizetés már léteznek használatával a `getSubscription` metódust.
+> Előfizetések következetesek vagy csak, vagy a következő témakörben társítva, a rendszer törli. Ha az alkalmazás előfizetés létrehozása a logikát tartalmaz, akkor először győződjön meg arról hogy létezik-e az előfizetés használatával a `getSubscription` metódust.
 >
 >
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
-A **MatchAll** szűrő az alapértelmezett szűrő, amely akkor használatos, ha nincs meghatározva szűrő egy új előfizetés létrehozásakor. Ha a **MatchAll** szűrővel, a témakörbe közzétett összes üzenetet kerülnek, az előfizetés virtuális üzenetsorában. A következő példa egy "AllMessages" nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrő.
+A **MatchAll** szűrő az alapértelmezett szűrő előfizetés létrehozásakor használható. A **MatchAll** szűrő használatakor a rendszer a témakörbe közzétett összes üzenetet elhelyezi az előfizetés virtuális üzenetsorában. A következő példa egy AllMessages nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrő.
 
 ```javascript
 serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
@@ -223,14 +235,14 @@ var rule={
 }
 ```
 
-Ha egy most üzenettel `MyTopic`, azt mindig kézbesíti a rendszer az előfizetett fogadó számára a `AllMessages` üzenettémakör-előfizetésre, és szelektív módon kézbesíti a a `HighMessages` és `LowMessages` témakör előfizetések () attól függően, az üzenet tartalma).
+Ha egy most üzenettel `MyTopic`, akkor kézbesíti a rendszer az előfizetett fogadó számára a `AllMessages` üzenettémakör-előfizetésre, és szelektív módon kézbesíti a a `HighMessages` és `LowMessages` üzenettémakör-előfizetéseket (attól függően, az üzenet tartalma).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Üzenetek küldése egy témakörbe
 A Service Bus-témakörbe való üzenetküldéshez az alkalmazást kell használnia a `sendTopicMessage` metódusában a **ServiceBusService** objektum.
 Service Bus-üzenettémakörök küldött üzenetek **BrokeredMessage** objektumok.
 **BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `Label` és `TimeToLive`), amellyel az egyéni alkalmazásspecifikus tulajdonságokat, valamint egy karakterláncadatokat törzsét. Az alkalmazás beállíthatja az üzenet törzsét úgy, hogy a karakterlánc-érték a `sendTopicMessage` és a szabványos tulajdonságait tölti fel a alapértelmezett értékek szerint szükséges.
 
-A következő példa bemutatja, hogyan küldhető öt tesztüzenet az `MyTopic`. Vegye figyelembe, hogy a `messagenumber` minden üzenetet tulajdonság értékének meg az a ciklus ismétléseinek számától függően változik (Ez határozza meg, hogy melyik előfizetések fogják megkapni):
+A következő példa bemutatja, hogyan küldhető öt tesztüzenet az `MyTopic`. A `messagenumber` minden üzenetet tulajdonság értékének meg az a ciklus ismétléseinek számától függően változik (Ez határozza meg, melyik előfizetések fogják megkapni):
 
 ```javascript
 var message = {
@@ -251,15 +263,15 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma korlátlan, a témakörök által tárolt üzenetek teljes mérete azonban korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
+A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma nincs korlátozva, de a témakörök által tárolt üzenetek teljes mérete korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetés
-Üzenetek fogadása egy előfizetés használatával a `receiveSubscriptionMessage` metódust a **ServiceBusService** objektum. Alapértelmezés szerint az üzenetek törlődnek az előfizetésből, olvasott; azonban (betekintés) olvasni és zárolni az üzenetet úgy, hogy a nem kötelező paraméter az előfizetés törlése nélkül `isPeekLock` való **igaz**.
+Üzenetek fogadása egy előfizetés használatával a `receiveSubscriptionMessage` metódust a **ServiceBusService** objektum. Üzenetek alapértelmezés szerint törlődnek az előfizetésből, beolvasni azokat. Azonban a nem kötelező paraméter állítható `isPeekLock` való **igaz** (betekintés) és az üzenet zárolása anélkül, hogy törölné az előfizetés.
 
-Olvasási és az üzenet törlése a fogadási művelet részeként alapértelmezett viselkedése a legegyszerűbb modell, és forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet hiba esetén a legjobban. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus csak fel az üzenetet, feldolgozottként, majd az alkalmazás újraindításakor és megkezdése az üzenetek fel újra, amikor ki fogja hagyni a az összeomlás előtt feldolgozott üzenetet.
+Olvasási és az üzenet törlése a fogadási művelet részeként alapértelmezett viselkedése a legegyszerűbb modell, és forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet hiba esetén a legjobban. Szeretné megtudni, ez a viselkedés, fontolja meg egy olyan forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus csak fel az üzenetet, feldolgozottként, majd az alkalmazás újraindításakor és megkezdése az üzenetek fel újra, amikor ki fogja hagyni a az összeomlás előtt feldolgozott üzenetet.
 
-Ha a `isPeekLock` paraméter értéke **igaz**, a receive két szakaszból álló művelet, amely lehetővé teszi az alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek lesz. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak.
-Miután az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), végrehajtja a második a fogadási folyamat meghívásával **deleteMessage** metódus és a törlendő az üzenet egy a paraméter. A **deleteMessage** metódus lesz használnak az üzenetet, és távolítsa el az előfizetésből.
+Ha a `isPeekLock` paraméter értéke **igaz**, a receive kétszakaszos művelet, ami lehetővé teszi az alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek lesz. Service Bus kérelmet kap, ha azt talál a következő üzenet felhasználását, zárolja azt, hogy más fogyasztók ne fogadjon azt, és visszaadja az alkalmazásnak.
+Miután az alkalmazás feldolgozza az üzenetet (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), végrehajtja a második a fogadási folyamat meghívásával **deleteMessage** metódust, és az üzeneteket paraméterként törlése. A **deleteMessage** metódus feldolgozottként jelöli meg a az üzenetet, és eltávolítása az előfizetésből.
 
 A következő példa bemutatja, hogyan lehet üzeneteket fogadni, és a feldolgozott használatával `receiveSubscriptionMessage`. A példa első fogadása és üzenet törlése a "LowMessages" előfizetés, és majd üzenetet kap a "HighMessages" előfizetést a `isPeekLock` igaz értékre állítva. Majd törli az üzenet használatával `deleteMessage`:
 
@@ -285,11 +297,11 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás nem tudja feldolgozni az üzenetet valamilyen okból kifolyólag, majd akkor meghívhatja a `unlockMessage` metódust a **ServiceBusService** objektum. Ennek hatására a Service Bus feloldja az üzenet az előfizetésen belüli zárolását, és lehetővé teszi a felhasználó az alkalmazás vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás nem tudja feldolgozni az üzenetet valamilyen okból kifolyólag, majd akkor meghívhatja a `unlockMessage` metódust a **ServiceBusService** objektum. Ez a módszer hatására a Service Bus feloldja az üzenet az előfizetésen belüli zárolását, és tegye elérhetővé az újbóli fogadását. Ebben a példában a felhasználó az alkalmazás vagy egy másik fogyasztó alkalmazás.
 
-Emellett van lévő az előfizetéshez társított időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási előtt időkorlát lejárta (például, ha az alkalmazás összeomlik), majd a Service Bus automatikusan feloldja az üzenet és lehetővé teszi az újbóli fogadását.
+Az előfizetés lévő társított időtúllépés is van. Ha az alkalmazás nem tudja feldolgozni az üzenetet, járjon le a zárolás időtúllépését (például, ha az alkalmazás összeomlik), a Service Bus automatikusan feloldja az üzenet, és lehetővé teszi az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, de előtte az üzenet feldolgozása után a `deleteMessage` metódust, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*, ez azt jelenti, hogy minden üzenet legalább egyszer dolgoz fel, de bizonyos helyzetekben a a ugyanazon üzenet újbóli kézbesítése is lehet. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez gyakran érhető el, használja a **MessageId** az üzenet, amely állandó marad a kézbesítési kísérletek tulajdonságát.
+Abban az esetben, ha az alkalmazás összeomlik, de előtte az üzenet feldolgozása után a `deleteMessage` metódust, az üzenet újból kézbesítve az alkalmazásnak, amikor újraindul. Ez a jelenség gyakran nevezik *legalább egyszer feldolgozása*. Ez azt jelenti, hogy minden üzenet legalább egyszer fel, de bizonyos helyzetekben a a ugyanazon üzenet újbóli kézbesítése is lehet. A forgatókönyvben nem lehetségesek, majd adja logika kezelni a duplikált üzenetek kézbesítése az alkalmazáshoz. Használhatja a **MessageId** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
 Üzenettémák és előfizetések következetesek, és explicit módon kell lennie vagy törölte a [Azure-portálon] [ Azure portal] vagy programon keresztül.
@@ -303,7 +315,7 @@ serviceBusService.deleteTopic('MyTopic', function (error) {
 });
 ```
 
-A témakör is törlése eltávolítja az adott témakörre regisztrált előfizetése. Az előfizetések független módon is törölhetők. A következő példa bemutatja, hogyan nevű előfizetés törlése `HighMessages` a a `MyTopic` témakör:
+Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. A következő példa bemutatja, hogyan nevű előfizetés törlése `HighMessages` a a `MyTopic` témakör:
 
 ```javascript
 serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error) {
@@ -313,7 +325,7 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, az alábbi hivatkozásokból további.
 
 * Lásd: [üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions].
@@ -326,6 +338,6 @@ Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, az alábbi hiv
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[létrehozása és központi telepítése egy Node.js-alkalmazás az Azure webhelyén]: ../app-service/app-service-web-get-started-nodejs.md
+[Létrehozhat és telepíthet egy Node.js-alkalmazás az Azure webhelyén]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js Web Application with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
+

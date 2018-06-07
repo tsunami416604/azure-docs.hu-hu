@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: olyan konfigurációs módosítást az Azure AD Connect szinkronizálási szolgáltatás |} Microsoft Docs"
-description: "Bemutatja, hogyan lehet módosítani az Azure AD Connect-szinkronizálás konfigurációs módjáról."
+title: 'Azure AD Connect szinkronizálása: olyan konfigurációs módosítást az Azure AD Connect szinkronizálási szolgáltatás |} Microsoft Docs'
+description: Bemutatja, hogyan lehet módosítani az Azure AD Connect-szinkronizálás konfigurációs módjáról.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bad1cbe0b142e146ada28f2af5d152973100e919
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595104"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect szinkronizálása: megváltoztatja az alapértelmezett konfiguráció
 Ez a cikk célja végigvezetik Önt az Azure Active Directory (Azure AD) Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációs módosításokat. Lépéseket biztosít olyan gyakori forgatókönyveket tartalmaz. Ennek az információnak a egyszerű módosíthatják a saját üzleti szabályok alapján saját konfigurációs kell lennie.
@@ -204,7 +206,7 @@ Ahhoz, hogy a UserType attribútuma szinkronizálását, először határozza me
 
     Ha ezt a módszert választja, gondoskodnia kell arról, hogy a kijelölt attribútum a helyes értéket minden meglévő felhasználói objektumhoz a helyszíni Active Directoryban, amely szinkronizálva az Azure AD-UserType attribútuma szinkronizálásának engedélyezése előtt a telepítéskor .
 
-- Másik lehetőségként UserType attribútuma értéke is származik egyéb tulajdonságait. Például minden felhasználó, mint a szinkronizálni kívánt **vendég** Ha a helyszíni AD userPrincipalName attribútum a tartományrészt végződik  *@partners.fabrikam123.org* . 
+- Másik lehetőségként UserType attribútuma értéke is származik egyéb tulajdonságait. Például minden felhasználó, mint a szinkronizálni kívánt **vendég** Ha a helyszíni AD userPrincipalName attribútum a tartományrészt végződik *@partners.fabrikam123.org*. 
 
     Ahogy korábban említettük, az Azure AD Connect nem teszi lehetővé a UserType attribútuma a meglévő Azure AD-felhasználók az Azure AD Connect módosítható. Ezért akkor biztosítania kell, hogy kiválasztotta konzisztensek legyenek hogyan UserType attribútuma már be van állítva az összes meglévő Azure Active Directory-felhasználók az Ön bérelt szolgáltatásának logikát.
 
@@ -264,13 +266,13 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
     | Leírás | *Adjon meg egy leírást* |  |
     | Csatlakoztatott rendszer | *Válassza ki a helyszíni AD-összekötő* |  |
     | Objektumtípus csatlakoztatva | **Felhasználó** |  |
-    | Metaverzum-objektum típusa | **Person** |  |
+    | Metaverzum-objektum típusa | **Személy** |  |
     | Kapcsolat típusa | **Csatlakozás** |  |
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
 5. Lépjen a **Scoping szűrő** lapra, és adja hozzá a **egyetlen tartalmazó szűrő csoport** következő utasítással:
 
-    | Attribútum | Operátor | Érték |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Felhasználó\_ |
 
@@ -282,7 +284,7 @@ A bejövő szinkronizálási szabály lehetővé teszi a forrásattribútum a he
     | --- | --- | --- | --- | --- |
     | Közvetlen | UserType | extensionAttribute1 | Nincs bejelölve | Frissítés |
 
-    Egy másik példa kívánt UserType attribútuma értéke származik egyéb tulajdonságait. Például minden felhasználó szinkronizálni vendégként, ha szeretné a helyszíni AD userPrincipalName attribútum a tartományrészt végződik  *@partners.fabrikam123.org* . A kifejezés valósíthatja meg:
+    Egy másik példa kívánt UserType attribútuma értéke származik egyéb tulajdonságait. Például minden felhasználó szinkronizálni vendégként, ha szeretné a helyszíni AD userPrincipalName attribútum a tartományrészt végződik *@partners.fabrikam123.org*. A kifejezés valósíthatja meg:
 
     | Típusa | Célattribútum | Forrás | Egyszer alkalmazása | Egyesítési típus |
     | --- | --- | --- | --- | --- |
@@ -306,13 +308,13 @@ A kimenő szinkronizálási szabály lehetővé teszi az attribútumérték fel�
     | Leírás | *Adjon meg egy leírást* ||
     | Csatlakoztatott rendszer | *Válassza ki az AAD-összekötő* ||
     | Objektumtípus csatlakoztatva | **Felhasználó** ||
-    | Metaverzum-objektum típusa | **Person** ||
+    | Metaverzum-objektum típusa | **Személy** ||
     | Kapcsolat típusa | **Csatlakozás** ||
     | Sorrend | *Válassza ki az 1 – 99 közötti szám* | 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Nem válasszon egy másik szinkronizálási szabály által használt érték. |
 
 5. Lépjen a **Scoping szűrő** lapra, és adja hozzá a **egyetlen tartalmazó szűrő csoport** a két záradékokkal:
 
-    | Attribútum | Operátor | Érték |
+    | Attribútum | Művelet | Érték |
     | --- | --- | --- |
     | sourceObjectType | EGYENLŐ | Felhasználó |
     | cloudMastered | NOTEQUAL | True (Igaz) |

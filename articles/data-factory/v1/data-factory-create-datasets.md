@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a572824225c0d83af698c4ff18d6b297b1ebb729
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620479"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Az Azure Data Factory adathalmazok
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +39,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A **csővezeték** logik
 
 Egy tevékenység is igénybe vehet a nulla vagy több bemeneti **adatkészletek**, majd előállítanak egy vagy több kimeneti adatkészletek. Egy bemeneti adatkészlet a tevékenység a folyamat a megadott, és egy kimeneti adatkészlet a tevékenység kimeneti jelenti. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Például egy Azure Blob-adathalmazra határozza meg a blob-tároló és mappa Blob-tároló, ahonnan a feldolgozási sor olvassa el az adatokat. 
 
-A DataSet adatkészlet létrehozása előtt hozzon létre egy **társított szolgáltatás** az adattároló csatolása az adat-előállítóban. A társított szolgáltatások nagyon hasonlóak a kapcsolati karakterláncokhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Adatkészletek azonosíthatja az adatokat a csatolt adatokat tárolja, például az SQL-táblák, fájlok, mappák és dokumentumok belül. Például egy Azure Storage kapcsolódó szolgáltatás hivatkozások egy tárfiókot az adat-előállítóban. Egy Azure Blob-adathalmazra jelenti. a blob-tároló és a bemeneti BLOB feldolgozandó tartalmazó mappát. 
+A DataSet adatkészlet létrehozása előtt hozzon létre egy **társított szolgáltatás** az adattároló csatolása az adat-előállítóban. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Adatkészletek azonosíthatja az adatokat a csatolt adatokat tárolja, például az SQL-táblák, fájlok, mappák és dokumentumok belül. Például egy Azure Storage kapcsolódó szolgáltatás hivatkozások egy tárfiókot az adat-előállítóban. Egy Azure Blob-adathalmazra jelenti. a blob-tároló és a bemeneti BLOB feldolgozandó tartalmazó mappát. 
 
 Íme egy példa. Adatok másolása Blob-tároló SQL-adatbázis, a két társított szolgáltatások létrehozásához: Azure Storage és az Azure SQL Database. Ezután hozzon létre két adatkészletet: Azure Blob-adathalmazra (amely az Azure tárolás társított szolgáltatásának vonatkozik) és az Azure SQL-tábla a dataset (amely a kapcsolódó Azure SQL Database szolgáltatás vonatkozik). Az Azure Storage és az Azure SQL Database kapcsolódó szolgáltatások tartalmaznia az csatlakozni az Azure Storage és az Azure SQL Database, illetve futásidőben használja a Data Factory-kapcsolati karakterláncok. Az Azure Blob-adathalmazra blobtárolót és a bemeneti BLOB a Blob Storage tárolóban tartalmazó blob mappát adja meg. Az Azure SQL-tábla adatkészletet az SQL-tábla az SQL-adatbázis, amelyre az adatok másolása az határozza meg.
 
@@ -282,7 +283,7 @@ A következő adatkészlet havi, és a 3., havonta, de a hozzák (`3.08:00:00`):
 A **házirend** az adatkészlet-definícióban szakaszban határozza meg, a feltételek vagy a feltétellel, hogy a dataset szeletek teljesítenie kell.
 
 ### <a name="validation-policies"></a>Házirendek érvényesítése
-| Szabályzat neve | Leírás | Vonatkozik. | Szükséges | Alapértelmezett |
+| Házirend neve | Leírás | Vonatkozik. | Szükséges | Alapértelmezett |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Azt ellenőrzi, hogy az adatok **Azure Blob Storage tárolóban** megfelel a minimális méretét (megabájtban). |Azure Blob Storage |Nem |NA |
 | minimumRows |Azt ellenőrzi, hogy az adatokat egy **Azure SQL adatbázis** vagy egy **Azure-tábla** a sorok legkisebb számát tartalmazza. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
@@ -321,7 +322,7 @@ Kivéve, ha a Data Factory hozzák alatt álló adatkészlet, azt kell megjelöl
 | Name (Név) | Leírás | Szükséges | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | dataDelay |A külső adatokat az adott szelet rendelkezésre állásának az ellenőrzését késleltetési idő. Például egy óránkénti ellenőrzést késleltetheti a beállítás használatával.<br/><br/>A beállítás csak a jelenlegi időpont vonatkozik.  Például ha 1:00 PM azonnal, és az értéke 10 perc, az érvényesítési kezdődik, 1:10 óra.<br/><br/>Vegye figyelembe, hogy ez a beállítás nincs hatással szeletek a múltban. A szeletek **szelet befejezésének** + **dataDelay** < **most** dolgoznak fel késedelem nélkül.<br/><br/>Időpontokban nagyobb, mint 23:59 óra kell használatával adhatók meg a `day.hours:minutes:seconds` formátumban. Például adja meg a 24 órát, ne használja 24:00:00. Ehelyett használjon 1.00:00:00. Ha 24:00:00 használja, akkor a rendszer 24 napos (24.00:00:00). 1 nap és 4 óra adja meg 1:04:00:00. |Nem |0 |
-| retryInterval |A várakozási idő hiba és a következő kísérlet között. A beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
+| RetryInterval |A várakozási idő hiba és a következő kísérlet között. A beállítás jelenlegi idő vonatkozik. Ha az előző sikertelen, a következő kísérlet után van-e a **retryInterval** időszak. <br/><br/>Ha 1:00 PM most, az első lépések az első próbálkozás. Ha az első ellenőrzési ellenőrzés időtartam 1 perc és a művelet sikertelen volt, a következő újrapróbálkozási jelenleg 1:00 + 1 perc (időtartam) + 1 perces (újrapróbálkozási időköz) = 1:02 PM. <br/><br/>A múltban szeletek nincs késleltetés. Az újrapróbálkozási azonnal történik. |Nem |00:01:00 (1 perc) |
 | retryTimeout |Az egyes újrapróbálkozások időkorlátját.<br/><br/>Ha ez a tulajdonság 10 percre van beállítva, az érvényesítési 10 percen belül kell végrehajtani. Ha az érvényesítés végrehajtásához 10 percnél hosszabb ideig tart, az ismételt próbálkozás túllépi az időkorlátot.<br/><br/>Ha az érvényesítés időkorlát összes kísérleteit, a szelet van megjelölve, **időtúllépésbe került**. |Nem |00:10:00 (10 perc) |
 | maximumRetry |A száma a rendelkezésre állási, a külső adatok kereséséhez. A megengedett maximális érték: 10. |Nem |3 |
 

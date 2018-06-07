@@ -1,24 +1,19 @@
 ---
 title: Az Azure IoT Hub IP-kapcsolat szűrők |} Microsoft Docs
 description: Útmutató az Azure IoT hub az adott IP-címek a blokk-kapcsolatokat a szűrési IP-címet használ. Letilthatja egyes érkező kapcsolatokat vagy IP-címek tartományát.
-services: iot-hub
-documentationcenter: ''
 author: BeatriceOltean
-manager: timlt
-editor: ''
-ms.assetid: f833eac3-5b5f-46a7-a47b-f4f6fc927f3f
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: boltean
-ms.openlocfilehash: 0229b8b16de1fa04d953c90895b29e4fbad60ec3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fa44fd21eadb910ce90523b46332505c7303751e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635967"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -28,7 +23,7 @@ A biztonság az Azure IoT Hub alapján IoT megoldások fontos eleme. Néha kell 
 
 Nincsenek két adott használati esetek letilthatja egyes IP-címek az IoT-központok végpontjai hasznos:
 
-- Az IoT hub kell forgalom fogadására csak a megadott IP-címről, és minden más elutasítása. Az IoT hub való használata esetén például [Azure Express Route] az IoT-központ és a helyszíni infrastruktúra közötti magánhálózati kapcsolatok létrehozásához.
+- Az IoT hub kell forgalom fogadására csak a megadott IP-címről, és minden más elutasítása. Az IoT hub való használata esetén például [Az Azure Expressroute] az IoT-központ és a helyszíni infrastruktúra közötti magánhálózati kapcsolatok létrehozásához.
 - Az IoT hub-rendszergazda által azonosított, gyanús IP-címekről érkező forgalom elutasítása kell.
 
 ## <a name="how-filter-rules-are-applied"></a>Állapotszűrő szabályok alkalmazása
@@ -103,7 +98,7 @@ Az IoT-központ képességeit további megismeréséhez lásd:
 <!-- Links -->
 
 [IoT Hub developer guide]: iot-hub-devguide.md
-[Azure Express Route]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
+[Az Azure Expressroute]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
 [lnk-metrics]: iot-hub-metrics.md
