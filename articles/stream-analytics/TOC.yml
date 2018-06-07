@@ -50,8 +50,6 @@
   items:
     - name: Kezelés
       items:
-        - name: Feladat frissítése
-          href: stream-analytics-job-reliability.md
         - name: Hitelesítő adatok frissítése
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Riasztások konfigurálása
@@ -60,6 +58,10 @@
           href: stream-analytics-test-query.md
         - name: Eredmények megtekintése az irányítópulton
           href: stream-analytics-power-bi-dashboard.md
+        - name: A feladat törlése
+          href: stream-analytics-clean-up-your-job.md
+        - name: Feladatok párosítása a megbízhatóság érdekében
+          href: stream-analytics-job-reliability.md
     - name: Megoldások kiépítése
       items:
         - name: Twitter-hangulatelemzés

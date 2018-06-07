@@ -3,16 +3,19 @@ title: Oktatóanyag – ASP.NET Core webes API-hoz való hozzáférés engedély
 description: Arra vonatkozó útmutató, hogyan használhatja az Active Directory B2C-t egy .NET Core webes API védelmére és meghívására egy egyoldalas alkalmazásból.
 services: active-directory-b2c
 author: davidmu1
+manager: mtillman
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9e3074e2cdd9ec3adc814779811d150cd11010
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 5b99f60c1bd81b77a5fc2be5575f65fc63eb0c11
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34711093"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Oktatóanyag: ASP.NET Core webes API-hoz való hozzáférés engedélyezése egy egyoldalas alkalmazásból az Azure Active Directory B2C használatával
 
@@ -155,13 +158,15 @@ Ahhoz, hogy az egyoldalas alkalmazás meghívhassa az ASP.NET Core webes API-t, 
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
+3. A **Tulajdonságok** területen nyissa meg a **launchSettings.json** fájlt, keresse meg az *applicationURL* beállítást, és jegyezze fel az értéket a következő szakaszhoz.
+
 ### <a name="configure-the-single-page-app"></a>Az egyoldalas alkalmazás konfigurálása
 
 Az egyoldalas alkalmazás Azure AD B2C-t használ a felhasználók regisztrációjához és bejelentkeztetéséhez, és meghívja a védett ASP.NET Core webes API-t. Frissítenie kell a .NET Core webes API-t hívó egyoldalas alkalmazást.
 Az alkalmazás beállításainak módosításához:
 
 1. Nyissa meg az `index.html` fájlt az egyoldalas Node.js-mintaalkalmazásban.
-2. Konfigurálja a mintát az Azure AD B2C-bérlő regisztrációs információival. Módosítsa a **b2cScopes** és a **webApi** értékét az alábbi kódsorokban:
+2. Konfigurálja a mintát az Azure AD B2C-bérlő regisztrációs információival. Az alábbi kódban adja hozzá a bérlő nevét a **b2cScopes** paraméterhez, és módosítsa a **webApi** értékét a korábban feljegyzett *applicationURL* értékre:
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -169,7 +174,7 @@ Az alkalmazás beállításainak módosításához:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:58553/api/values',
+        webApi: 'http://localhost:64791/api/values',
     };
     ```
 

@@ -1,18 +1,18 @@
-## <a name="navigate-to-your-apim-instance"></a>Keresse meg a APIM példányát
+## <a name="navigate-to-your-apim-instance"></a>Az APIM-példány megkeresése
 
-Keresse meg a APIM példányát, kövesse az alábbi lépéseket:
+Az APIM-példány megkereséséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Válassza a bal felső, a képernyő, **minden szolgáltatás**.  
-3. A keresőmezőbe írja be a "api".
-4. Kattintson a **API Management-szolgáltatások**.
+2. A képernyő bal felső sarkában válassza a **Minden szolgáltatás** lehetőséget.  
+3. A keresőmezőbe írja be az „api” kifejezést.
+4. Kattintson az **API Management-szolgáltatások** elemre.
 
-    ![Keresse meg](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
+    ![Navigálás](./media/api-management-navigate-to-instance/navigate-to-api-management-services.png)
 
 5. Válassza ki az APIM-szolgáltatáspéldányt.
 
 >[!TIP]
->API-felügyeleti (APIM) felvétele a Kedvencek közé, az Azure-portálon a csillag gombra kattintva. <br/>Ez biztosítja a APIM ikon a portál bal oldali menüben. A APIM szolgáltatások megtekintéséhez kattintson az ikonra (![APIM ikon](./media/api-management-navigate-to-instance/apim-icon.png)).
+>A csillagra kattintva adja hozzá az API Managementet (APIM) a kedvenceihez az Azure Portalon. <br/>Ez hozzáadja az APIM ikont a portál bal oldalán található menühöz. Az összes APIM-szolgáltatás megtekintéséhez kattintson az ikonra (![APIM ikon](./media/api-management-navigate-to-instance/apim-icon.png)).
  
 
 

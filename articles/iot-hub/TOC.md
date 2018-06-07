@@ -9,6 +9,7 @@
 ## [Telemetria küldése (.NET)](quickstart-send-telemetry-dotnet.md)
 ## [Telemetria küldése (Java)](quickstart-send-telemetry-java.md)
 ## [Telemetria küldése (Python)](quickstart-send-telemetry-python.md)
+## [Telemetria küldése (iOS)](quickstart-send-telemetry-ios.md)
 ## [Eszköz vezérlése (Node.js)](quickstart-control-device-node.md)
 ## [Eszköz vezérlése (.NET)](quickstart-control-device-dotnet.md)
 ## [Eszköz vezérlése (Java)](quickstart-control-device-java.md)
@@ -18,29 +19,19 @@
 
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Útválasztási üzenetek](tutorial-routing.md)
+## [Eszközök konfigurálása](tutorial-device-twins.md)
+## [Eszközkapcsolatok tesztelése](tutorial-connectivity.md)
 ## Üzenetküldés a felhőből az eszközökre
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
 ### [Java](iot-hub-java-java-c2d.md)
 ### [Node.js](iot-hub-node-node-c2d.md)
 ### [Python](iot-hub-python-python-c2d.md)
-## Ikereszközök – első lépések
-### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-getstarted.md)
-### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
-### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-getstarted.md)
-### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-getstarted.md)
-### [Python-háttérrendszer/Python-eszköz](iot-hub-python-twin-getstarted.md)
 ## Ismerkedés az eszközfelügyelettel
 ### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-device-management-get-started.md)
 ### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-device-management-get-started.md)
 ### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-device-management-get-started.md)
 ### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-device-management-getstarted.md)
 ### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-device-management-get-started.md)
-## Az ikertulajdonságok használata
-### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-how-to-configure.md)
-### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-how-to-configure.md)
-### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-how-to-configure.md)
-### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-how-to-configure.md)
-### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-twin-how-to-configure.md)
 ## Eszközfeladatok használata az eszköz belső vezérlőprogramjának frissítéséhez
 ### [Node-háttérrendszer/Node-eszköz](iot-hub-node-node-firmware-update.md)
 ### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-firmware-update.md)
@@ -80,6 +71,8 @@
 ### [Kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md)
 ### [Díjszabási példák](iot-hub-devguide-pricing.md)
 ### [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
+### [Fejlesztés korlátozott eszközökhöz](iot-hub-devguide-develop-for-constrained-devices.md)
+### [Fejlesztés mobileszközökhöz](iot-hub-how-to-develop-for-mobile-devices.md)
 ### [MQTT-támogatás](iot-hub-mqtt-support.md)
 ### [Szószedet](iot-hub-devguide-glossary.md)
 
@@ -89,7 +82,6 @@
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
-#### [iOS (Swift)](quickstart-send-telemetry-ios.md)
 ## [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
 ### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
 ### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
@@ -157,17 +149,26 @@
 ### [A C IoT eszközoldali SDK-jának használata](iot-hub-device-sdk-c-intro.md)
 #### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
 #### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
+### [Fejlesztés korlátozott eszközökhöz](iot-hub-devguide-develop-for-constrained-devices.md)
+### [Fejlesztés mobileszközökhöz](iot-hub-how-to-develop-for-mobile-devices.md)
 ### Útválasztási üzenetek
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
+### [Avro-adatok lekérdezése központi útvonalról](iot-hub-query-avro-data.md)
 ### Üzenetküldés a felhőből az eszközökre
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
 #### [iOS](iot-hub-ios-swift-c2d.md)
+### Ikereszközök – első lépések
+#### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-twin-getstarted.md)
+#### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-twin-getstarted.md)
+#### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-twin-getstarted.md)
+#### [Python-háttérrendszer/Python-eszköz](iot-hub-python-twin-getstarted.md)
 ### Fájlok feltöltése eszközökről
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
@@ -217,13 +218,6 @@
 ### [Java](iot-hub-java-java-file-upload.md)
 ### [Node.js](iot-hub-node-node-file-upload.md)
 ### [Python](iot-hub-python-python-file-upload.md)
-
-## Feladatok ütemezése és szórása
-### [Node.js-háttérrendszer/Node.js-eszköz](iot-hub-node-node-schedule-jobs.md)
-### [.NET-háttérrendszer/Node.js-eszköz](iot-hub-csharp-node-schedule-jobs.md)
-### [.NET-háttérrendszer/.NET-eszköz](iot-hub-csharp-csharp-schedule-jobs.md)
-### [Java-háttérrendszer/Java-eszköz](iot-hub-java-java-schedule-jobs.md)
-### [Python-háttérrendszer/Python-eszköz](iot-hub-python-python-schedule-jobs.md)
 
 ## IoT Hub létrehozása 
 ### [Az Azure Portal használata](iot-hub-create-through-portal.md)

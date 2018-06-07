@@ -1,0 +1,222 @@
+- name: A Service Bus-üzenetkezelés dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az a Service Bus üzenetkezelés?
+      href: service-bus-messaging-overview.md
+    - name: Üzenetküldő szolgáltatások összehasonlítása
+      href: ../event-grid/compare-messaging-services.md
+- name: Gyors útmutatók
+  items:
+    - name: Üzenetküldés – PowerShell
+      href: service-bus-quickstart-powershell.md
+    - name: Üzenetküldés – Portál
+      href: service-bus-quickstart-portal.md
+    - name: Üzenetküldés – parancssori felület
+      href: service-bus-quickstart-cli.md
+- name: Oktatóanyagok
+  items:
+    - name: Leltárfrissítés - PowerShell
+      href: service-bus-tutorial-topics-subscriptions-powershell.md
+    - name: Leltárfrissítés – Portál
+      href: service-bus-tutorial-topics-subscriptions-portal.md
+    - name: Leltárfrissítés – parancssori felület
+      href: service-bus-tutorial-topics-subscriptions-cli.md
+- name: Példák
+  items:
+    - name: Service Bus-példák
+      href: service-bus-samples.md
+- name: Alapelvek
+  items:
+    - name: Felügyeltszolgáltatás-identitás (előzetes verzió)
+      href: service-bus-managed-service-identity.md
+    - name: Szerepköralapú hozzáférés-vezérlés (előzetes verzió)
+      href: service-bus-role-based-access-control.md
+    - name: Prémium szintű üzenettovábbítás
+      href: service-bus-premium-messaging.md
+    - name: Azure-üzenetsorok és Azure Service Bus-üzenetsorok összehasonlítása
+      href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - name: Teljesítmény optimalizálása
+      href: service-bus-performance-improvements.md
+    - name: Georeplikációs vészhelyreállítás és georeplikáció
+      href: service-bus-geo-dr.md
+    - name: Aszinkrón üzenetkezelés és magas rendelkezésre állás
+      href: service-bus-async-messaging.md
+    - name: Leállások és katasztrófák kezelése
+      href: service-bus-outages-disasters.md
+- name: Útmutatók
+  items:
+    - name: Névtér létrehozása
+      href: service-bus-create-namespace-portal.md
+    - name: Üzenetsorok használata
+      items:
+        - name: .NET
+          href: service-bus-dotnet-get-started-with-queues.md
+        - name: Java
+          href: service-bus-java-how-to-use-queues.md
+        - name: Node.js
+          href: service-bus-nodejs-how-to-use-queues.md
+        - name: PHP
+          href: service-bus-php-how-to-use-queues.md
+        - name: Python
+          href: service-bus-python-how-to-use-queues.md
+        - name: Ruby
+          href: service-bus-ruby-how-to-use-queues.md
+        - name: REST
+          href: /rest/api/servicebus/queues
+    - name: Témakörök és előfizetések használata
+      items:
+        - name: .NET
+          href: service-bus-dotnet-how-to-use-topics-subscriptions.md
+        - name: Java
+          href: service-bus-java-how-to-use-topics-subscriptions.md
+        - name: Node.js
+          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+        - name: PHP
+          href: service-bus-php-how-to-use-topics-subscriptions.md
+        - name: Python
+          href: service-bus-python-how-to-use-topics-subscriptions.md
+        - name: Ruby
+          href: service-bus-ruby-how-to-use-topics-subscriptions.md
+    - name: Fejlesztés
+      items:
+        - name: Üzenetkezelés
+          items:
+            - name: 'Queues, topics, and subscriptions'
+              href: service-bus-queues-topics-subscriptions.md
+            - name: 'Üzenetek, hasznos adatforgalom és szerializáció'
+              href: service-bus-messages-payloads.md
+            - name: 'Üzenetek átvitele, zárolása és elszámolása'
+              href: message-transfers-locks-settlement.md
+            - name: Üzenetek előkészítése és időbélyegek
+              href: message-sequencing.md
+            - name: Üzenetek lejárata (élettartama)
+              href: message-expiration.md
+            - name: Üzenetkezelés az Azure Event Griddel
+              href: service-bus-to-event-grid-integration-concept.md
+            - name: Azure Event Grid-példák
+              href: service-bus-to-event-grid-integration-example.md
+        - name: Hitelesítés és engedélyezés
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Migrálás ACS-ről SAS rendszerre
+              href: service-bus-migrate-acs-sas.md
+            - name: Hitelesítés közös hozzáférésű jogosultságkódokkal
+              href: service-bus-sas.md
+        - name: Témakörszűrők és -műveletek
+          href: topic-filters.md
+        - name: Particionált üzenetsorok és témakörök
+          href: service-bus-partitioning.md
+        - name: Üzenet-munkamenetek
+          href: message-sessions.md
+        - name: AMQP
+          items:
+            - name: Az AMQP áttekintése
+              href: service-bus-amqp-overview.md
+            - name: .NET
+              href: service-bus-amqp-dotnet.md
+            - name: Java
+              href: service-bus-amqp-java.md
+            - name: Java Message Service és AMQP
+              href: service-bus-java-how-to-use-jms-api-amqp.md
+            - name: AMQP protokoll-útmutató
+              href: service-bus-amqp-protocol-guide.md
+            - name: AMQP kérés-válasz alapú műveletek
+              href: service-bus-amqp-request-response.md
+        - name: Speciális funkciók
+          items:
+            - name: Kézbesíthetetlen levelek sorai
+              href: service-bus-dead-letter-queues.md
+            - name: Üzenetek előzetes betöltése
+              href: service-bus-prefetch.md
+            - name: Ismétlődő üzenetek észlelése
+              href: duplicate-detection.md
+            - name: Üzenetszámlálók
+              href: message-counters.md
+            - name: Üzenetek halasztása
+              href: message-deferral.md
+            - name: Üzenetek tallózása
+              href: message-browsing.md
+            - name: Entitások láncolása automatikus továbbítással
+              href: service-bus-auto-forwarding.md
+            - name: Tranzakciófeldolgozás
+              href: service-bus-transactions.md
+            - name: Párosított névterek megvalósítása
+              href: service-bus-paired-namespaces.md
+        - name: Átfogó nyomkövetés és diagnosztika
+          href: service-bus-end-to-end-tracing.md
+        - name: Többrétegű Service Bus-alkalmazás felépítése
+          href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+    - name: Kezelés
+      items:
+        - name: Entitások üzembe helyezése az Azure PowerShell használatával
+          href: service-bus-manage-with-ps.md
+        - name: A Service Bus monitorozása az Azure Monitoringgal
+          href: service-bus-metrics-azure-monitor.md
+        - name: A Service Bus felügyeleti könyvtárai
+          href: service-bus-management-libraries.md
+        - name: Diagnosztikai naplók
+          href: service-bus-diagnostic-logs.md
+        - name: Üzenetküldési entitások felfüggesztése és újraaktiválása
+          href: entity-suspend.md
+        - name: Használjon Azure Resource Manager-sablonokat
+          href: service-bus-resource-manager-overview.md
+          items:
+            - name: Névtér létrehozása
+              href: service-bus-resource-manager-namespace.md
+            - name: Névtér és üzenetsor létrehozása
+              href: service-bus-resource-manager-namespace-queue.md
+            - name: Névtér létrehozása témakörrel és előfizetéssel
+              href: service-bus-resource-manager-namespace-topic.md
+            - name: Engedélyezési szabály létrehozása névtérhez és üzenetsorhoz
+              href: service-bus-resource-manager-namespace-auth-rule.md
+            - name: 'Névtér létrehozása témakörrel, előfizetéssel és szabállyal'
+              href: service-bus-resource-manager-namespace-topic-with-rule.md
+- name: Referencia
+  items:
+    - name: .NET
+      items:
+        - name: Microsoft.ServiceBus.Messaging (.NET-keretrendszer)
+          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Microsoft.Azure.ServiceBus (.NET Standard)
+          href: /dotnet/api/microsoft.azure.servicebus
+    - name: Java
+      href: /java/api/overview/azure/servicebus
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.servicebus
+    - name: REST
+      href: /rest/api/servicebus
+    - name: Kivételek
+      href: service-bus-messaging-exceptions.md
+    - name: Kvóták
+      href: service-bus-quotas.md
+    - name: SQLFilter-szintaxis
+      href: service-bus-messaging-sql-filter.md
+    - name: SQLRuleAction-szintaxis
+      href: service-bus-messaging-sql-rule-action.md
+- name: További források
+  items:
+    - name: GYIK
+      href: service-bus-faq.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: Blog
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: A Microsoft Developer Network fórumai
+      href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Díjszabás részletei
+      href: service-bus-pricing-billing.md
+    - name: ServiceBus360
+      href: 'https://www.servicebus360.com/'
+    - name: Service Bus Explorer
+      href: 'https://github.com/paolosalvatori/ServiceBusExplorer'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=service-bus'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azureservicebus'
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-bus'

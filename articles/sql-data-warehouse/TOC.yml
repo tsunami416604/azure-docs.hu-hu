@@ -10,6 +10,8 @@
   items:
     - name: 2018. május
       href: release-notes-may-2018.md
+    - name: 2018. április
+      href: release-notes-april-2018.md
 - name: Gyors útmutatók
   expanded: true
   items:

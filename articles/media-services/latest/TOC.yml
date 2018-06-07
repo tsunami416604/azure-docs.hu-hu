@@ -12,9 +12,15 @@
 - name: Oktatóanyagok
   items:
     - name: 'Feltöltés, kódolás és streamelés'
-      href: stream-files-tutorial-with-api.md
+      items:
+        - name: .NET-tel
+          href: stream-files-tutorial-with-api.md
+        - name: A REST-tel
+          href: stream-files-tutorial-with-rest.md
     - name: Videó elemzése
-      href: analyze-videos-tutorial-with-api.md
+      items:
+        - name: .NET-tel
+          href: analyze-videos-tutorial-with-api.md
 - name: Példák
   items:
     - name: Azure-kódminták
@@ -25,18 +31,24 @@
   items:
     - name: Objektumok
       href: assets-concept.md
-    - name: Adaptív sávszélességi skála automatikus létrehozása
-      href: autogen-bitrate-ladder.md
+    - name: Encoding
+      items:
+        - name: Áttekintés
+          href: encoding-concept.md
+        - name: Adaptív sávszélességi skála automatikus létrehozása
+          href: autogen-bitrate-ladder.md
     - name: Médiaintelligencia
       href: intelligence-concept.md
+    - name: Reagálás az eseményekre
+      href: reacting-to-media-services-events.md
     - name: Tárfiókok
       href: storage-account-concept.md
     - name: Átalakítások és feladatok
       href: transform-concept.md
-    - name: Reagálás az eseményekre
-      href: reacting-to-media-services-events.md
 - name: Útmutatók
   items:
+    - name: Migrálás a 2-esről a 3-as verzióra
+      href: migrate-from-v2-to-v3.md
     - name: Fiók létrehozása – parancssori felület
       href: create-account-cli-how-to.md
     - name: Adatelérési API-k – parancssori felület
@@ -49,8 +61,14 @@
           href: job-input-from-http-how-to.md
         - name: Egy helyi fájlból
           href: job-input-from-local-file-how-to.md
+    - name: Előzetes átalakítási beállítások testreszabása
+      items:
+        - name: .NET Core-ral
+          href: customize-encoder-presets-how-to.md
 - name: Referencia
   items:
+    - name: OpenAPI-specifikáció (Swagger)
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
     - name: Azure CLI 2.0
       href: 'https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest'
     - name: REST
@@ -61,6 +79,8 @@
       href: 'https://docs.microsoft.com/java/api/overview/azure/mediaservices'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Eseménysémák
       href: media-services-event-schemas.md
 - name: További források
@@ -77,3 +97,5 @@
       href: release-notes.md
     - name: Kvóták és korlátozások
       href: limits-quotas-constraints.md
+    - name: GYIK
+      href: frequently-asked-questions.md

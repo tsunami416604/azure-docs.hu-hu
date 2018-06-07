@@ -63,6 +63,8 @@
           items:
             - name: Az Azure Backup Server számítási feladatainak előkészítése az Azure Portalon
               href: backup-azure-microsoft-azure-backup.md
+            - name: Azure Backup Server telepítése az Azure Stacken
+              href: backup-mabs-install-azure-stack.md
             - name: Tárterület hozzáadása az Azure Backup Serverhez
               href: backup-mabs-add-storage.md
             - name: Az Azure Backup Server frissítése a 2-es verzióra
@@ -157,12 +159,10 @@
           href: backup-dpm-automation.md
         - name: Windows Server az Azure Portalon
           href: backup-client-automation.md
-    - name: Azure SQL Database
+    - name: SQL Azure-beli virtuális gépeken
       items:
-        - name: Az SQL Database biztonsági mentéseinek konfigurálása és helyreállítása – SQL-tároló
-          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Az SQL Database biztonsági mentéseinek konfigurálása és helyreállítása – Recovery Services-tároló
-          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: SQL Database-adatbázis biztonsági mentése az Azure-ban
+          href: backup-azure-sql-database.md
     - name: Windows Server
       items:
         - name: Windows Serveren lévő fájlok és mappák biztonsági mentése

@@ -95,11 +95,11 @@
           href: security-internet-of-things-overview.md
           items:
             - name: Ajánlott biztonsági eljárások az IoT-hez
-              href: ../iot-suite/iot-security-best-practices.md
+              href: ../iot-accelerators/iot-security-best-practices.md
             - name: IoT-biztonság
-              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+              href: '../iot-accelerators/iot-security-architecture.md#security-in-iot'
             - name: Az IoT üzemelő példányának védelme
-              href: ../iot-suite/iot-suite-security-deployment.md
+              href: ../iot-accelerators/iot-accelerators-security-deployment.md
     - name: Az Azure Service Fabric biztonsága
       href: azure-service-fabric-security-overview.md
       items:
@@ -159,6 +159,8 @@
           href: ./blueprints/fedramp-datawarehouse-overview.md
         - name: IaaS-webalkalmazás
           href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: PaaS webalkalmazás
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:
@@ -197,6 +199,8 @@
       href: ./blueprints/azure-health.md
 - name: Tanulmányok
   href: security-white-papers.md
+- name: Azure biztonsági szolgáltatások
+  href: azure-security-services-technologies.md
 - name: Műszaki áttekintések
   href: security-overviews.md
 - name: Ajánlott eljárások

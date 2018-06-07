@@ -1,5 +1,5 @@
 
 
-A minta futtatásához, ellenőrizze, hogy telepítette a legújabb [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Indításához futtassa `az login` kapcsolat létrehozása az Azure-ral.
+A minta futtatásához győződjön meg arról, hogy az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verziója van telepítve. Első lépésként futtassa a `az login` parancsot, hogy kapcsolatot hozzon létre az Azure-ral.
 
-Ez a minta a rendszerhéjakba működik. Az Azure parancssori felület parancsfájlok futtatásához a Windows-ügyfelén beállítások, lásd: [futtatása az Azure parancssori felület a Windows](../articles/virtual-machines/windows/cli-options.md).
+A példa Bash-felületen működik. Az Azure CLI-szkriptek Windows-ügyfeleken való futtatásának lehetőségeiről az [Azure CLI Windows rendszeren való telepítésével](/cli/azure/install-azure-cli-windows) foglalkozó témakörben talál további információt.

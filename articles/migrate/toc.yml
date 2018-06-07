@@ -10,7 +10,7 @@
       href: tutorial-assessment-vmware.md
 - name: Alapelvek
   items:
-    - name: Gyűjtői alapelvek
+    - name: Tudnivalók a gyűjtőről
       href: concepts-collector.md
     - name: Értékelési számítások
       href: concepts-assessment-calculation.md
@@ -18,13 +18,15 @@
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
-    - name: Helyszíni erőforrások migrálása az Azure-ba
+    - name: Contoso migrálási sorozat
       items:
-        - name: Forgatókönyv áttekintése – Helyszíni erőforrások migrálása az Azure-ba
-          href: migrate-scenarios-overview.md
-        - name: 1. forgatókönyv – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
+        - name: 1. Contoso – migrálás áttekintése
+          href: contoso-migration-overview.md
+        - name: 2. Contoso – Azure-infrastruktúra beállítása
+          href: contoso-migration-infrastructure.md
+        - name: 3. Contoso – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
           href: migrate-scenarios-assessment.md
-        - name: 2. forgatókönyv – Átemeléses migrálás az Azure-ba
+        - name: 4. Contoso – Üzemeltetés áthelyezése Azure-beli virtuális gépekre és felügyelt Azure SQL-példányra
           href: migrate-scenarios-lift-and-shift.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md

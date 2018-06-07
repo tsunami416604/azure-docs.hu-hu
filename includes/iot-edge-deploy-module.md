@@ -1,21 +1,21 @@
-Egy Azure IoT peremhálózati főbb képességei van tudnak modulok az eszközökre telepíteni kívánt IoT peremhálózati a felhőből. Egy IoT-Edge-modul egy végrehajtható csomag valósul meg a tároló. Ebben a szakaszban telepít egy modul, amely a szimulált eszköz telemetriai adatokat állít elő. 
+Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üzembe helyezése az IoT Edge-eszközökön. Az IoT Edge-modul egy tárolóként megvalósított végrehajtható csomag. Ebben a szakaszban üzembe helyez egy modult, amely telemetriát hoz létre a szimulált eszköz számára. 
 
-1. Az Azure-portálon lépjen az IoT hub.
-1. Ugrás a **IoT peremhálózati (előzetes verzió)** és az IoT-peremhálózati eszköz kiválasztásához.
-1. Válassza ki **modulok beállítása**.
-1. Válassza ki **IoT peremhálózati modul hozzá lesz adva**.
-1. Az a **neve** mezőbe írja be `tempSensor`. 
-1. Az a **lemezkép URI** mezőbe írja be `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`. 
-1. Hagyja változatlanul az egyéb beállításokat, és válassza ki **mentése**.
+1. Az Azure Portalon keresse meg az IoT-központot.
+1. Lépjen az **IoT Edge (előzetes verzió)** részhez, és válassza ki az IoT Edge-eszközt.
+1. Válassza a **Modulok beállítása** lehetőséget.
+1. Válassza az **IoT Edge-modul hozzáadása** lehetőséget.
+1. A **Név** mezőbe írja a következőt: `tempSensor`. 
+1. A **Rendszerkép URI** mezőbe írja be a következőt: `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`. 
+1. Hagyja változatlanul a többi beállítást, és válassza a **Mentés** lehetőséget.
 
-   ![Mentse a IoT peremhálózati modul nevét és a lemezkép URI megadása után](./media/iot-edge-deploy-module/name-image.png)
+   ![IoT Edge-modul mentése a név és a rendszerkép URI megadása után](./media/iot-edge-deploy-module/name-image.png)
 
-1. Vissza a **modulok hozzáadása** jelölje be a lépésben **következő**.
-1. Az a **adja meg az útvonalakat** jelölje be a lépésben **tovább**.
-1. Az a **felülvizsgálati sablonja** lépésben jelölje be **Submit**.
-1. Térjen vissza az eszköz részleteit megjelenítő oldalra, és válassza ki **frissítése**. Meg kell jelennie az új tempSensor modul az IoT-Edge futásidejű mentén. 
+1. A **Modulok hozzáadása** lépésben kattintson a **Tovább** gombra.
+1. Az **Útvonalak megadása** lépésben kattintson a **Tovább** gombra.
+1. A **Sablon áttekintése** lépésben kattintson a **Küldés** elemre.
+1. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre. Látható, hogy az új tempSensor modul fut az IoT Edge-futtatókörnyezettel együtt. 
 
-   ![A telepített modulok listájának megtekintése tempSensor][1]
+   ![A tempSensor megtekintése az üzembe helyezett modulok listájában][1]
 
 <!-- Images -->
 [1]: ../articles/iot-edge/media/tutorial-simulate-device-windows/view-module.png

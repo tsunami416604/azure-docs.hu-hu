@@ -433,6 +433,8 @@
           href: service-fabric-visualstudio-configure-secure-connections.md
         - name: .NET-szolgáltatás hibakeresése a VS-ben
           href: service-fabric-debugging-your-application.md
+        - name: Hibakeresés Windows-tárolókon a Service Fabric és a VS használatával
+          href: service-fabric-how-to-debug-windows-containers.md
         - name: Gyakori hibák és kivételek
           href: service-fabric-errors-and-exceptions.md
         - name: Helyi monitorozás és diagnosztika
@@ -521,12 +523,18 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: A tanúsítvány köznapi nevét használó fürt
                   href: service-fabric-create-cluster-using-cert-cn.md
+                - name: Lemeztitkosítás engedélyezése Windowson
+                  href: service-fabric-enable-azure-disk-encryption-windows.md
+                - name: Lemeztitkosítás engedélyezése Linuxon
+                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: Méretezés
               items:
-                - name: Manuálisan
+                - name: Horizontális felskálázás manuálisan
                   href: service-fabric-cluster-scale-up-down.md
-                - name: Programozott módon
+                - name: Horizontális felskálázás programozott módon
                   href: service-fabric-cluster-programmatic-scaling.md
+                - name: Elsődleges csomópont típusú virtuális gépek vertikális felskálázása
+                  href: service-fabric-cluster-upgrade-primary-nodetype-vm.md
             - name: Frissítés
               href: service-fabric-cluster-upgrade.md
             - name: Hozzáférés-vezérlés beállítása
@@ -599,10 +607,10 @@
               href: service-fabric-diagnostics-event-analysis-oms.md
         - name: Infrastruktúra monitorozása
           items:
-            - name: Teljesítményfigyelés WAD használatával
-              href: service-fabric-diagnostics-perf-wad.md
             - name: Teljesítménymonitorozás az OMS-ügynökkel
               href: service-fabric-diagnostics-oms-agent.md
+            - name: Teljesítményfigyelés WAD használatával
+              href: service-fabric-diagnostics-perf-wad.md
         - name: Az állapot monitorozása
           items:
             - name: Állapot jelentése és ellenőrzése
@@ -613,6 +621,8 @@
               href: service-fabric-view-entities-aggregated-health.md
         - name: A helyi fürt hibaelhárítása
           href: service-fabric-troubleshoot-local-cluster-setup.md
+        - name: Gyakori forgatókönyvek diagnosztizálása
+          href: service-fabric-diagnostics-common-scenarios.md
 - name: Referencia
   items:
     - name: Azure PowerShell
@@ -628,20 +638,29 @@
           href: service-fabric-sfctl-application.md
         - name: sfctl-káosz
           href: service-fabric-sfctl-chaos.md
+          items:
+            - name: sfctl-káosz ütemterv
+              href: service-fabric-sfctl-chaos-schedule.md
         - name: sfctl-fürt
           href: service-fabric-sfctl-cluster.md
         - name: sfctl-összeállítás
           href: service-fabric-sfctl-compose.md
+        - name: sfctl-tároló
+          href: service-fabric-sfctl-container.md
         - name: sfctl értéke
           href: service-fabric-sfctl-is.md
         - name: sfctl-csomópont
           href: service-fabric-sfctl-node.md
         - name: sfctl-partíció
           href: service-fabric-sfctl-partition.md
+        - name: sfctl-tulajdonság
+          href: service-fabric-sfctl-property.md
         - name: sfctl-replika
           href: service-fabric-sfctl-replica.md
         - name: sfctl rpm
           href: service-fabric-sfctl-rpm.md
+        - name: sfctl sa-fürt
+          href: service-fabric-sfctl-sa-cluster.md
         - name: sfctl service
           href: service-fabric-sfctl-service.md
         - name: sfctl-tároló

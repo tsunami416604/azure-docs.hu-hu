@@ -1,25 +1,42 @@
-1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válasszon **új** , majd **közzététele**. 
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: functions
+author: ggailey777
+ms.service: functions
+ms.topic: include
+ms.date: 05/22/2018
+ms.author: glenga
+ms.custom: include file
+ms.openlocfilehash: 6cbf24c56458ab8b3b6c7b44bedbd8b48d4677b3
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34702421"
+---
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-    ![Új függvényalkalmazás közzététele és létrehozása](./media/functions-vstools-publish/functions-vstools-publish-new-function-app.png)
+2. Válassza az **Azure-függvényalkalmazás**, az **Új létrehozása**, majd a **Közzététel** lehetőséget.
 
-2. Ha a Visual Studio már Azure-fiókja még nem kapcsolódik, válassza ki a **fiók hozzáadása...** .  
+    ![Közzétételi cél kiválasztása](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
 
-3. Az **Create App Service** (Alkalmazásszolgáltatás létrehozása) párbeszédpanelen alkalmazza az **Hosting** (Üzemeltetés) beállításait a következő táblázatban megadott módon: 
+2. Ha még nem csatlakoztatta a Visual Studiót az Azure-fiókjához, válassza a **Fiók hozzáadása...** lehetőséget.
 
-    ![Az Azure helyi futtatókörnyezete](./media/functions-vstools-publish/functions-vstools-publish.png)
+3. Az **App Service létrehozása** párbeszédpanelen alkalmazza a kép alatti táblázatban megadott **Üzemeltetési** beállításokat:
+
+    ![A Create App Service (App Service létrehozása) párbeszédpanel](./media/functions-vstools-publish/functions-vstools-publish.png)
 
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Alkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. |
     | **Előfizetés** | Válassza ki az előfizetését | A használandó előfizetés. |
-    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Az erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Válasszon **új** egy új erőforráscsoport létrehozásához.|
-    | **[App Service-csomag](../articles/azure-functions/functions-scale.md)** | Használatalapú csomag | Ügyeljen arra, hogy válassza ki a **fogyasztás** alatt **mérete** kattintás után **új** hozhat létre egy új tervet. Válassza ki, egy **hely** a egy [régió](https://azure.microsoft.com/regions/) környéken vagy egyéb szolgáltatásokat a funkciók eléréséhez.  |
+    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Az erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Válassza az **Új** elemet egy új erőforráscsoport létrehozásához.|
+    | **[App Service-csomag](../articles/azure-functions/functions-scale.md)** | Használatalapú csomag | Miután rákattintott az **Új** elemre a csomag létrehozásához, győződjön meg róla, hogy a **Méret** elemnél a **Felhasználás** lehetőséget választja. Ezenkívül válasszon ki egy **Helyet** egy, a közelben, vagy a függvények által elért más szolgáltatások közelében található [régióban](https://azure.microsoft.com/regions/).  |
+    | **[Storage-fiók](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** | Általános célú Storage-fiók | A Functions futtatókörnyezetének szüksége van egy Azure Storage-fiókra. Kattintson az **Új** elemre egy általános célú tárfiók létrehozásához, vagy használjon egy meglévőt.  |
 
-    >[!NOTE]
-    >A Functions futtatókörnyezete Azure storage-fiók használata szükséges. Emiatt egy új Azure Storage-fiók létrejön egy függvény alkalmazás létrehozásakor.
+4. Kattintson a **Létrehozás** elemre egy függvényalkalmazás és a kapcsolódó erőforrások Azure-ban való létrehozásához ezekkel a beállításokkal, illetve a függvény projektkódjának üzembe helyezéséhez. 
 
-4. Kattintson a **létrehozása** egy függvény alkalmazást és a kapcsolódó erőforrások létrehozása az Azure ezekkel a beállításokkal, és telepítse függvény projekt kódját. 
+5. Miután az üzembe helyezés befejeződött, jegyezze fel a **webhely URL-címét**, amely a függvényalkalmazás címe az Azure-ban.
 
-5. A telepítés befejezése után jegyezze fel a **webhely URL-címe** értéket, amely a cím, a függvény alkalmazás az Azure-ban.
-
-    ![Az Azure helyi futtatókörnyezete](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
+    ![Sikeres közzétételt jelző üzenet](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
