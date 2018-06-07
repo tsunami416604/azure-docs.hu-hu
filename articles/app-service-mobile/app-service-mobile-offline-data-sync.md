@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Mobile Apps az offline adatszinkronizálás |} Microsoft Docs"
-description: "Fogalmi referenciája és a kapcsolat nélküli szinkronizálás funkció az Azure Mobile Apps áttekintése"
+title: Az Azure Mobile Apps az offline adatszinkronizálás |} Microsoft Docs
+description: Fogalmi referenciája és a kapcsolat nélküli szinkronizálás funkció az Azure Mobile Apps áttekintése
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597977"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Kapcsolat nélküli adatszinkronizálás az Azure Mobile Apps megoldásban
 ## <a name="what-is-offline-data-sync"></a>Mi az az offline adatszinkronizálás?
@@ -42,7 +43,7 @@ Az alábbi oktatóanyagok bemutatják, hogyan kapcsolat nélküli szinkronizál�
 * [Xamarin iOS: kapcsolat nélküli szinkronizálásának engedélyezése]
 * [Xamarin Android: Kapcsolat nélküli szinkronizálásának engedélyezése]
 * [Xamarin.Forms: Engedélyezése kapcsolat nélküli szinkronizálás](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [univerzális Windows Platform: kapcsolat nélküli szinkronizálásának engedélyezése]
+* [Univerzális Windows Platform: Kapcsolat nélküli szinkronizálásának engedélyezése]
 
 ## <a name="what-is-a-sync-table"></a>Mi az a egy szinkronizálás tábla?
 A "/ táblák" végpont szeretne használni, az Azure Mobile ügyfél SDK-k meg felületek például `IMobileServiceTable` (.NET SDK-ügyfél) vagy `MSTable` (iOS-ügyfél). Ezen API-k közvetlen csatlakoztatása az Azure Mobile Apps-háttéralkalmazás, és sikertelen lesz, ha az ügyféleszköz nincs hálózati kapcsolat.
@@ -52,14 +53,14 @@ Kapcsolat nélküli használatát támogatja, az alkalmazás inkább használjon
 ## <a name="what-is-a-local-store"></a>Mi az a helyi tárolót?
 A helyi tárolójába a adatmegőrző réteget az ügyféleszközön. Az Azure Mobile Apps-ügyfél SDK-k implementálásához alapértelmezett helyi tárolóból. A Windows, a Xamarin és az Android SQLite alapul. IOS az alapvető adatokon alapul.
 
-A Windows Phone vagy Windows áruház 8.1 az SQLite-alapú megvalósítás használatához telepítendő egy SQLite-bővítmény. További információkért lásd: [univerzális Windows Platform: kapcsolat nélküli szinkronizálásának engedélyezése]. Android és iOS rendszerrel szállított egy SQLite verziója az eszköz operációs rendszere saját magát, így azt nem hivatkozhat saját SQLite verzióját.
+A Windows Phone-vagy Microsoft Store az SQLite-alapú megvalósítás használatához szüksége egy SQLite-kiterjesztés telepítése. További információkért lásd: [Univerzális Windows Platform: Kapcsolat nélküli szinkronizálásának engedélyezése]. Android és iOS rendszerrel szállított egy SQLite verziója az eszköz operációs rendszere saját magát, így azt nem hivatkozhat saját SQLite verzióját.
 
 A fejlesztők is megvalósíthatja a saját helyi tárolóból. Például ha szeretne az adatok tárolása a mobil ügyfélen titkosított formátumban, megadhat titkosításhoz SQLCipher használó helyi tároló.
 
 ## <a name="what-is-a-sync-context"></a>Mi az a szinkronizálási környezetet?
 A *szinkronizálási környezetet* egy mobil ügyfél objektumhoz társított (például `IMobileServiceClient` vagy `MSClient`) és szinkronizáló táblákkal végzett módosításokat követi nyomon. A szinkronizálási környezetben kezeli az *művelet várólista*, amely tartja a rendezett listáját CUD műveleteket (létrehozás, frissítés, Törlés), amely későbbi küldi el a kiszolgálónak.
 
-A szinkronizálás környezet használatával, mint egy inicializálási metódusa társítva a helyi tárolójába `IMobileServicesSyncContext.InitializeAsync(localstore)` a a [.NET ügyfél SDK].
+A szinkronizálás környezet használatával, mint egy inicializálási metódusa társítva a helyi tárolójába `IMobileServicesSyncContext.InitializeAsync(localstore)` a a [.NET-ügyfél SDK].
 
 ## <a name="how-sync-works"></a>Hogyan kapcsolat nélküli szinkronizálás használata
 Szinkronizálási táblák használata esetén az Ügyfélkód szabályozza, amikor változtatásokat szinkronizálva van-e az Azure Mobile Apps-háttéralkalmazás. Semmi sem küld a háttér csak akkor hívása *leküldéses* helyi módosításokkal. Hasonlóképpen, a helyi tárolójába fel van töltve az új adatokat csak akkor, ha egy hívás a *lekéréses* adatokat.
@@ -92,12 +93,12 @@ Szinkronizálási táblák használata esetén az Ügyfélkód szabályozza, ami
 * [iOS: kapcsolat nélküli szinkronizálásának engedélyezése]
 * [Xamarin iOS: kapcsolat nélküli szinkronizálásának engedélyezése]
 * [Xamarin Android: Kapcsolat nélküli szinkronizálásának engedélyezése]
-* [univerzális Windows Platform: kapcsolat nélküli szinkronizálásának engedélyezése]
+* [Univerzális Windows Platform: Kapcsolat nélküli szinkronizálásának engedélyezése]
 
 <!-- Links -->
-[.NET ügyfél SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[.NET-ügyfél SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
 [Android: Kapcsolat nélküli szinkronizálásának engedélyezése]: app-service-mobile-android-get-started-offline-data.md
 [iOS: kapcsolat nélküli szinkronizálásának engedélyezése]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: kapcsolat nélküli szinkronizálásának engedélyezése]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: Kapcsolat nélküli szinkronizálásának engedélyezése]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[univerzális Windows Platform: kapcsolat nélküli szinkronizálásának engedélyezése]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[Univerzális Windows Platform: Kapcsolat nélküli szinkronizálásának engedélyezése]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

@@ -1,24 +1,19 @@
 ---
 title: Az Azure IoT Hub (iOS) felhő eszközre üzenetek |} Microsoft Docs
 description: Hogyan küldhetők felhő-eszközre küldött üzenetek eszközökre az Azure IoT-központ az Azure IoT SDK-k használata iOS-hez.
-services: iot-hub
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 23dbd1f359f947b8e87ab4115887120dfd55907a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 62647620f6bbeadecfa778f91855ef1eee5240dd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634279"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Az IoT-központ (iOS) felhő eszközre-üzenetek
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -166,7 +161,7 @@ A kimenet az alábbihoz hasonlóan kell kinéznie:
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóprogramban megismerte felhő eszközre üzeneteket küldjön és fogadjon. 
 
-Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [megoldásgyorsító Azure IoT távoli megfigyelési].
+Példák teljes végpontok közötti megoldások, amelyek használják az IoT-központot, lásd: [Az Azure IoT távoli megfigyelési megoldásgyorsító].
 
 Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutató].
 
@@ -176,7 +171,7 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [img-message-recieved]: media/iot-hub-python-python-c2d/message-recieved.png
 
 <!-- Links -->
-[telemetriai adatokat küldhet egy eszközről IoT hubhoz]: quickstart-send-telemetry-ios.md
+[Telemetriai adatokat küldhet egy eszközről IoT hubhoz]: quickstart-send-telemetry-ios.md
 
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
@@ -185,4 +180,4 @@ Az IoT hubbal megoldások fejlesztésével kapcsolatos további tudnivalókért 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure portal]: https://portal.azure.com
-[megoldásgyorsító Azure IoT távoli megfigyelési]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[Az Azure IoT távoli megfigyelési megoldásgyorsító]: https://azure.microsoft.com/documentation/suites/iot-suite/

@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: 2b7620611c4587d00612f98c86b5792984ff548b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10ce9058fca0ec56640e9bedabcc82683046fe9f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598453"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -61,7 +62,7 @@ public class TodoItem
 
 A [JsonPropertyAttribute] [ 6] azonosítására szolgál a *PropertyName* az ügyfél és a tábla mező közötti megfeleltetés.
 
-Táblázatok létrehozása a Mobile Apps-háttéralkalmazásának további tudnivalókért lásd: a [.NET Server SDK témakörben] [ 7] vagy a [Node.js Server SDK témakörben][8]. Ha a gyors üzembe helyezés az Azure portálon létrehozott Mobile Apps-háttéralkalmazását, használhatja a **könnyen táblák** beállítást azokban a [Azure-portálon].
+Táblázatok létrehozása a Mobile Apps-háttéralkalmazásának további tudnivalókért lásd: a [.NET Server SDK témakörben] [ 7] vagy a [Node.js Server SDK témakörben][8]. Ha a gyors üzembe helyezés az Azure portálon létrehozott Mobile Apps-háttéralkalmazását, használhatja a **könnyen táblák** beállítást azokban a [Azure Portal].
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Útmutató: a kezelt ügyfél SDK telepítéséhez
 A felügyelt ügyfél SDK csomag telepítéséhez a Mobile Apps-alkalmazáshoz az alábbi módszerek valamelyikével [NuGet][9]:
@@ -85,7 +86,7 @@ A következő kódot hoz létre a [MobileServiceClient] [ 12] objektum, amely ha
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Cserélje le az előzőekben látható kód `MOBILE_APP_URL` a Mobile Apps-háttéralkalmazás URL-címét, amely megtalálható a Mobile Apps-háttéralkalmazását panel a [Azure-portálon]. A MobileServiceClient objektum egypéldányos kell lennie.
+Cserélje le az előzőekben látható kód `MOBILE_APP_URL` a Mobile Apps-háttéralkalmazás URL-címét, amely megtalálható a Mobile Apps-háttéralkalmazását panel a [Azure Portal]. A MobileServiceClient objektum egypéldányos kell lennie.
 
 ## <a name="work-with-tables"></a>A táblázatok használata
 Az alábbi szakasz részletesen keresése és lehívása és módosíthatja az adatokat a táblán belül.  A következő témaköröket:
@@ -134,7 +135,7 @@ Ez a szakasz ismerteti, hogyan lekérdezések kiadni a Mobile Apps-háttéralkal
 > Egy kiszolgáló adatvezérelt oldalméret ad vissza az összes sort megakadályozása van kényszerítve.  Lapozófájl alapértelmezett kérelmek nagy adatkészletek tarthatja negatív hatással a szolgáltatás.  Több mint 50 sorok visszaállításához használja a `Skip` és `Take` metódus, a [vissza adatokat a lapok](#paging).
 
 ### <a name="filtering"></a>Hogyan: szűrő adatokat adott vissza.
-Az alábbi kód bemutatja az adatok szűrése, beleértve a következőket a `Where` alzáradékában. Az összes elemet adja vissza `todoTable` amelynek `Complete` tulajdonság értéke `false`. A [ahol] függvény egy sort a lekérdezéshez a táblázaton predikátum szűrés vonatkozik.
+Az alábbi kód bemutatja az adatok szűrése, beleértve a következőket a `Where` alzáradékában. Az összes elemet adja vissza `todoTable` amelynek `Complete` tulajdonság értéke `false`. A [Ha] függvény egy sort a lekérdezéshez a táblázaton predikátum szűrés vonatkozik.
 
 ```
 // This query filters out completed TodoItems and items without a timestamp.
@@ -214,7 +215,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>Hogyan: vissza adatokat lap
-Alapértelmezés szerint a háttér csak az első 50 sort adja vissza. Visszaadott sorok száma meghívásával növelheti a [érvénybe] metódust. Használjon `Take` együtt a [kihagyása] módszer egy adott "lap" a teljes adatkészlet a lekérdezés által visszaadott kéréséhez. A következő lekérdezés végrehajtásakor, a három legfontosabb cikkeket a táblát adja vissza.
+Alapértelmezés szerint a háttér csak az első 50 sort adja vissza. Visszaadott sorok száma meghívásával növelheti a [érvénybe] metódust. Használjon `Take` együtt a [Skip] módszer egy adott "lap" a teljes adatkészlet a lekérdezés által visszaadott kéréséhez. A következő lekérdezés végrehajtásakor, a három legfontosabb cikkeket a táblát adja vissza.
 
 ```
 // Define a filtered query that returns the top 3 items.
@@ -245,7 +246,7 @@ Egy valós alkalmazás használatával az előző példához hasonló lekérdez�
 
 
 ### <a name="selecting"></a>Hogyan: egyes oszlopok kiválasztásához
-Megadhatja, amely tulajdonságok beállítása hozzáadásával az eredmények felvenni egy [kiválasztása] záradékot a lekérdezéshez. Például a következő kód bemutatja, csak egy mező kiválasztása, és válassza ki, és több mező formázása:
+Megadhatja, amely tulajdonságok beállítása hozzáadásával az eredmények felvenni egy [Kiválasztás] záradékot a lekérdezéshez. Például a következő kód bemutatja, csak egy mező kiválasztása, és válassza ki, és több mező formázása:
 
 ```
 // Select one field -- just the Text
@@ -458,7 +459,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-További információkért lásd: a [az Azure Mobile Apps Offline adatszinkronizálás] témakör.
+További információkért lásd: a [Offline adatszinkronizálás az Azure Mobile Appsban] témakör.
 
 ### <a name="binding"></a>Útmutató: egy Windows felhasználói felületét Bind Mobile Apps-adatok
 Ez a szakasz bemutatja, hogyan visszaadott adatok objektumok felhasználói felületi elemei használják a Windows-alkalmazások megjelenítéséhez.  Az alábbi példakód az a lista forrása a hiányos elemeket a lekérdezéssel van kötve. A [MobileServiceCollection] létrehoz egy Mobile Apps-kompatibilis kötés gyűjteményt.
@@ -620,14 +621,14 @@ Példa:
 InvokeApiAsync segítségével bármely WebAPI, beleértve a nem meghatározott e WebAPIs az Azure Mobile Apps hívja.  InvokeApiAsync() használata esetén a megfelelő fejlécek, beleértve a hitelesítési fejléceket, a kérelem küldése.
 
 ## <a name="authentication"></a>Felhasználók hitelesítéséhez
-Mobile Apps hitelesítése és engedélyezése a felhasználók alkalmazás különböző külső Identitásszolgáltatók támogatja: Facebook, a Google, a Microsoft Account, a Twitter és az Azure Active Directory. A engedélyeket korlátozhatja a hozzáférést a megadott művelet csak a hitelesített felhasználók táblákon. Hitelesített felhasználók identitásának használhatja, ha az engedélyezési szabályok megvalósítását a kiszolgáló parancsfájlokat. További információt a [hitelesítés alkalmazásokhoz történő hozzáadását] ismertető oktatóanyagban találhat.
+Mobile Apps hitelesítése és engedélyezése a felhasználók alkalmazás különböző külső Identitásszolgáltatók támogatja: Facebook, a Google, a Microsoft Account, a Twitter és az Azure Active Directory. A engedélyeket korlátozhatja a hozzáférést a megadott művelet csak a hitelesített felhasználók táblákon. Hitelesített felhasználók identitásának használhatja, ha az engedélyezési szabályok megvalósítását a kiszolgáló parancsfájlokat. További információt a [Hitelesítés hozzáadása az alkalmazáshoz] ismertető oktatóanyagban találhat.
 
 Két hitelesítési forgalom támogatottak: *ügyfél által felügyelt* és *kiszolgáló által kezelt* folyamata. A kiszolgáló által felügyelt folyamat nyújt a legegyszerűbb felhasználói hitelesítés, a szolgáltató webes hitelesítés felület támaszkodnak. Az ügyfél által felügyelt folyamat lehetővé teszi a eszközspecifikus képességekkel szorosabb integrációt, a szolgáltatói eszközspecifikus SDK-k támaszkodnak.
 
 > [!NOTE]
 > Az éles alkalmazásokban lévő ügyfél által felügyelt folyamat használatát javasoljuk.
 
-Hitelesítés beállítása az alkalmazás regisztrálnia kell egy vagy több identitás-szolgáltatóktól.  Az identitásszolgáltató egy ügyfél-Azonosítót és az alkalmazás egy ügyfélkulcsot hoz létre.  Ezeket az értékeket az a kiszolgáló akkor értéke a engedélyezése az Azure App Service hitelesítés/engedélyezés.  További információkért kövesse a részletes utasításokat az oktatóanyag [hitelesítés alkalmazásokhoz történő hozzáadását].
+Hitelesítés beállítása az alkalmazás regisztrálnia kell egy vagy több identitás-szolgáltatóktól.  Az identitásszolgáltató egy ügyfél-Azonosítót és az alkalmazás egy ügyfélkulcsot hoz létre.  Ezeket az értékeket az a kiszolgáló akkor értéke a engedélyezése az Azure App Service hitelesítés/engedélyezés.  További információkért kövesse a részletes utasításokat az oktatóanyag [Hitelesítés hozzáadása az alkalmazáshoz].
 
 Ez a szakasz a következő témákat tárgyalja:
 
@@ -647,11 +648,11 @@ Példák a következő ügyfél-folyamat hitelesítési minták áll rendelkezé
 #### <a name="adal"></a>Az Active Directory Authentication Library a felhasználók hitelesítéséhez
 Az Active Directory Authentication Library (ADAL) segítségével kezdeményezhet felhasználói hitelesítést, az Azure Active Directory-hitelesítéssel ügyfél.
 
-1. A mobil-háttéralkalmazás az aad-ben bejelentkezés konfigurálása a következő a [App Service konfigurálása az Active Directory bejelentkezési] oktatóanyag. Ügyeljen arra, hogy a natív ügyfélalkalmazás regisztrációján választható lépés elvégzése után.
+1. A mobil-háttéralkalmazás az aad-ben bejelentkezés konfigurálása a következő a [App Service konfigurálása az Active Directory bejelentkezéshez] oktatóanyag. Ügyeljen arra, hogy a natív ügyfélalkalmazás regisztrációján választható lépés elvégzése után.
 2. A Visual Studio és Xamarin Studio, nyissa meg a projektet, és adjon hozzá egy hivatkozást, a `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet-csomagot. Ha keres, vegye fel az előzetes verzióját.
 3. Adja hozzá a következő kódot az alkalmazásba, használja a platformtól függően. Az egyes ellenőrizze az alábbi új:
 
-   * Cserélje le **INSERT-SZOLGÁLTATÓ-Itt** nevű, a bérlő, amelyben az alkalmazás üzembe. A következő formátumban kell megadni https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapján a [Azure-portálon].
+   * Cserélje le **INSERT-SZOLGÁLTATÓ-Itt** nevű, a bérlő, amelyben az alkalmazás üzembe. A következő formátumban kell megadni https://login.microsoftonline.com/contoso.onmicrosoft.com. Ez az érték lehet másolni az Azure Active Directory tartományi lapján a [Azure Portal].
    * Cserélje le **INSERT-erőforrás-azonosító-Itt** az ügyfél-azonosító a mobil-háttéralkalmazás számára. Ezt úgy szerezheti be az ügyfél-azonosító a **speciális** lap **Azure Active Directory beállításai** a portálon.
    * Cserélje le **INSERT-ügyfél-azonosító-Itt** , az ügyfél-Azonosítót a natív ügyfélalkalmazás másolta.
    * Cserélje le **INSERT-REDIRECT-URI-Itt** a hellyel való */.auth/login/done* végpont, a HTTPS protokollt használ. Ez az érték a következőképpen kell kinéznie *https://contoso.azurewebsites.net/.auth/login/done*.
@@ -794,7 +795,7 @@ private async Task AuthenticateAsync()
 ```
 
 #### <a name="client-livesdk"></a>Egyszeri bejelentkezés Microsoft Account használatával az élő SDK-val
-Hitelesíti a felhasználókat, regisztrálnia kell az alkalmazást a Microsoft-fiók fejlesztői központban. A regisztrációs adatokat konfigurálja a mobilalkalmazás háttérrendszerének. Hozzon létre egy Microsoft-fiók regisztrálása, és csatlakoztassa a mobil-háttéralkalmazást, hajtsa végre a lépéseket a [regisztrálja az alkalmazást egy Microsoft-fiók bejelentkezési használandó]. Ha az alkalmazás Windows áruház és a Windows Phone 8/Silverlight verzióit, először Regisztráljon a Windows Áruházbeli verziójához.
+Hitelesíti a felhasználókat, regisztrálnia kell az alkalmazást a Microsoft-fiók fejlesztői központban. A regisztrációs adatokat konfigurálja a mobilalkalmazás háttérrendszerének. Hozzon létre egy Microsoft-fiók regisztrálása, és csatlakoztassa a mobil-háttéralkalmazást, hajtsa végre a lépéseket a [Regisztrálja az alkalmazást egy Microsoft-fiók bejelentkezési használata]. Ha az alkalmazás Microsoft Store és a Windows Phone 8/Silverlight verzióit, először Regisztráljon a Microsoft Store verziót.
 
 Az alábbi kód Live SDK használatával, és jelentkezzen be a mobilalkalmazás háttérrendszerének a visszaküldött jogkivonat alapján.
 
@@ -807,7 +808,7 @@ private async System.Threading.Tasks.Task AuthenticateAsync()
     // Get the URL the Mobile App backend.
     var serviceUrl = App.MobileService.ApplicationUri.AbsoluteUri;
 
-    // Create the authentication client for Windows Store using the service URL.
+    // Create the authentication client for Microsoft Store using the service URL.
     LiveAuthClient liveIdClient = new LiveAuthClient(serviceUrl);
     //// Create the authentication client for Windows Phone using the client ID of the registration.
     //LiveAuthClient liveIdClient = new LiveAuthClient(clientId);
@@ -847,7 +848,7 @@ private async System.Threading.Tasks.Task AuthenticateAsync()
 }
 ```
 
-További információkért lásd: a [Windows Live SDK] dokumentációját.
+További információkért lásd: a [A Windows Live SDK] dokumentációját.
 
 ### <a name="serverflow"></a>A hitelesítési kiszolgáló által felügyelt
 Miután regisztrálta az identitásszolgáltató, hívja az [LoginAsync] [MobileServiceClient] rendelkező metódust a [MobileServiceAuthenticationProvider] érték a szolgáltató. Az alábbi kód például a kiszolgáló folyamata bejelentkezés kezdeményezi, Facebook-fiókkal.
@@ -880,10 +881,10 @@ private async System.Threading.Tasks.Task Authenticate()
 
 Ha eltérő Facebook identitásszolgáltató használ, módosítsa [MobileServiceAuthenticationProvider] a szolgáltató értékre.
 
-Egy kiszolgáló folyamatában Azure App Service szolgáltatás az OAuth hitelesítési folyamatot megjelenítése a bejelentkezési lapon a kiválasztott szolgáltató.  Miután az identity provider értéket ad eredményül, Azure App Service létrehoz egy App Service hitelesítés jogkivonatot. A [LoginAsync] metódus értéket ad vissza egy [MobileServiceUser], amely biztosítja, hogy mind a [UserId] a hitelesített felhasználó és a [MobileServiceAuthenticationToken], egy JSON webes jogkivonatot (JWT). Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár. További információkért lásd: [a hitelesítési jogkivonat gyorsítótárazás](#caching).
+Egy kiszolgáló folyamatában Azure App Service szolgáltatás az OAuth hitelesítési folyamatot megjelenítése a bejelentkezési lapon a kiválasztott szolgáltató.  Miután az identity provider értéket ad eredményül, Azure App Service létrehoz egy App Service hitelesítés jogkivonatot. A [LoginAsync] metódus értéket ad vissza egy [MobileServiceUser], amely biztosítja, hogy mind a [Felhasználói azonosítóját] a hitelesített felhasználó és a [MobileServiceAuthenticationToken], egy JSON webes jogkivonatot (JWT). Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár. További információkért lásd: [a hitelesítési jogkivonat gyorsítótárazás](#caching).
 
 ### <a name="caching"></a>A hitelesítési jogkivonat gyorsítótárazása
-Néhány esetben a bejelentkezési metódus hívása elkerülhető az első sikeres hitelesítést követően a hitelesítési jogkivonat-szolgáltatójáról való elhelyezésével.  Windows áruház és az UWP-alkalmazások használhatják [PasswordVault] a következőképpen gyorsítótárában, miután egy sikeres bejelentkezés, a jelenlegi hitelesítési jogkivonat:
+Néhány esetben a bejelentkezési metódus hívása elkerülhető az első sikeres hitelesítést követően a hitelesítési jogkivonat-szolgáltatójáról való elhelyezésével.  Microsoft Store és UWP-alkalmazások használhatják [PasswordVault] a következőképpen gyorsítótárában, miután egy sikeres bejelentkezés, a jelenlegi hitelesítési jogkivonat:
 
 ```
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -935,7 +936,7 @@ await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 A következő témakörök a leküldéses értesítések terjed ki:
 
 * [A leküldéses értesítések regisztrálása](#register-for-push)
-* [Szerezzen be egy Windows Áruházbeli csomag biztonsági azonosítója](#package-sid)
+* [Szerezzen be egy Microsoft Store csomag biztonsági azonosítója](#package-sid)
 * [Platformok közötti sablonok regisztrálása](#register-xplat)
 
 ### <a name="register-for-push"></a>Útmutató: a leküldéses értesítések regisztrálása
@@ -952,20 +953,20 @@ private async void InitNotificationsAsync()
 }
 ```
 
-Ha a WNS leküldendő, akkor meg kell [Windows áruház csomagot SID](#package-sid).  További információ a Windows-alkalmazásokra, hogyan kell regisztrálni a sablon regisztrációhoz, beleértve: [leküldéses értesítések hozzáadása az alkalmazáshoz].
+Ha a WNS leküldendő, akkor meg kell [Microsoft Store csomagot SID](#package-sid).  További információ a Windows-alkalmazásokra, hogyan kell regisztrálni a sablon regisztrációhoz, beleértve: [Leküldéses értesítések hozzáadása az alkalmazáshoz].
 
 Címkék kér az ügyfél nem támogatott.  A regisztrációs csendes eldobott címke kérelmek.
 Ha az eszköz regisztrálása címkék, hozzon létre egy egyéni API-t, amely a regisztráció elvégzéséhez a nevünkben a Notification Hubs API segítségével.  [Az egyéni API](#customapi) ahelyett, hogy a `RegisterNativeAsync()` metódust.
 
-### <a name="package-sid"></a>Hogyan: szerezze be a Windows áruház csomag biztonsági azonosítója
-A Windows Áruházbeli alkalmazások leküldéses értesítések engedélyezése a csomag biztonsági azonosítója szükséges.  Ha szeretne kapni a csomag biztonsági azonosítója, regisztrálhatja alkalmazását a Windows áruházban.
+### <a name="package-sid"></a>Hogyan: szerezze be a Microsoft Store csomag biztonsági azonosítója
+A csomag biztonsági azonosítója leküldéses értesítések a Microsoft Store apps engedélyezése szükséges.  Ha szeretne kapni a csomag biztonsági AZONOSÍTÓJÁT, a Microsoft Store regisztrálhatja alkalmazását.
 
 Ez az érték beszerzése:
 
-1. A Visual Studio Solution Explorerben kattintson a jobb gombbal a Windows Áruházbeli alkalmazás projektjére, kattintson a **tároló** > **az áruház alkalmazás társítása...** .
+1. A Visual Studio Solution Explorerben kattintson a jobb gombbal a Microsoft Store alkalmazás projektjére, kattintson a **tároló** > **az áruház alkalmazás társítása...** .
 2. A varázslóban kattintson **következő**, jelentkezzen be Microsoft-fiókjával, adjon meg egy nevet az alkalmazáshoz a **lefoglalni egy új alkalmazás neve**, majd kattintson a **tartalék**.
 3. Az alkalmazás-regisztráció sikeres létrehozása után válassza ki az alkalmazás nevére, kattintson a **következő**, és kattintson a **társítása**.
-4. Jelentkezzen be a [Windows fejlesztői központ] a Microsoft Account. A **alkalmazásaimat**, kattintson a létrehozott alkalmazás regisztrációját.
+4. Jelentkezzen be a [A Windows fejlesztői központ] a Microsoft Account. A **alkalmazásaimat**, kattintson a létrehozott alkalmazás regisztrációját.
 5. Kattintson a **Alkalmazáskezelés** > **identitását**, majd görgessen le a Keresés és a **CSOMAGAZONOSÍTÓT**.
 
 A csomag biztonsági AZONOSÍTÓJÁT számos felhasználási kezelni egy URI-azonosítóként, ebben az esetben kell használnia *ms-app: / /* sémát. Jegyezze meg a csomag biztonsági azonosítója, ez az érték előtagjaként hozzáfűzésével megfelelő verzióját.
@@ -1039,7 +1040,7 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-Egy másik példa való hibaállapotok itt található: a [Mobile Apps fájlok minta]. A [LoggingHandler] példa biztosít a naplózás delegált kezelő naplózni a háttérrendszer történik.
+Egy másik példa való hibaállapotok itt található: a [Mobilalkalmazások fájlok minta]. A [LoggingHandler] példa biztosít a naplózás delegált kezelő naplózni a háttérrendszer történik.
 
 ### <a name="headers"></a>Hogyan: testreszabása kérelem fejlécei
 Az adott alkalmazást forgatókönyv támogatása érdekében szükség lehet a Mobile Apps-háttéralkalmazás kommunikáció testreszabása. Érdemes lehet például egy egyéni fejléc hozzáadását a kimenő kérelmek vagy is módosíthatja a válaszok állapotkódok. Használhat egyéni [DelegatingHandler], az alábbi példa szerint:
@@ -1092,11 +1093,11 @@ public class MyHandler : DelegatingHandler
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[hitelesítés alkalmazásokhoz történő hozzáadását]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[az Azure Mobile Apps Offline adatszinkronizálás]: app-service-mobile-offline-data-sync.md
-[leküldéses értesítések hozzáadása az alkalmazáshoz]: app-service-mobile-windows-store-dotnet-get-started-push.md
-[regisztrálja az alkalmazást egy Microsoft-fiók bejelentkezési használandó]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[App Service konfigurálása az Active Directory bejelentkezési]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[Hitelesítés hozzáadása az alkalmazáshoz]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Offline adatszinkronizálás az Azure Mobile Appsban]: app-service-mobile-offline-data-sync.md
+[Leküldéses értesítések hozzáadása az alkalmazáshoz]: app-service-mobile-windows-store-dotnet-get-started-push.md
+[Regisztrálja az alkalmazást egy Microsoft-fiók bejelentkezési használata]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
+[App Service konfigurálása az Active Directory bejelentkezéshez]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/library/azure/dn250636(v=azure.10).aspx
@@ -1116,22 +1117,22 @@ public class MyHandler : DelegatingHandler
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [érvénybe]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[kiválasztása]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[kihagyása]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Kiválasztás]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [Felhasználói azonosítóját]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[ahol]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure-portálon]: https://portal.azure.com/
+[Ha]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Windows fejlesztői központ]: https://dev.windows.com/en-us/overview
+[A Windows fejlesztői központ]: https://dev.windows.com/en-us/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
-[Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
+[A Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: http://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [Notification Hubs API-k]: https://msdn.microsoft.com/library/azure/dn495101.aspx
-[Mobile Apps fájlok minta]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
+[Mobilalkalmazások fájlok minta]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->
