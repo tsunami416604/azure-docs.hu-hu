@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ee466c85b68ebc72dbd55849db84a473d584ffb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d566a719abaf09146965a677868d363d33d10e5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622764"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával PostgreSQL
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -326,9 +327,9 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | intarry | |Karakterlánc |&nbsp;
 | int4range | |Karakterlánc |&nbsp;
 | int8range | |Karakterlánc |&nbsp;
-| integer |int, int4 |Int32 |
+| egész szám |int, int4 |Int32 |
 | időköz [mezők] [(p)] | |Időtartomány |&nbsp;
-| json | |Karakterlánc |&nbsp;
+| JSON | |Karakterlánc |&nbsp;
 | jsonb | |Byte] |&nbsp;
 | sor | |Byte [], karakterlánc |&nbsp;
 | lseg | |Byte [], karakterlánc |&nbsp;
@@ -336,16 +337,16 @@ Amikor adatokat PostgreSQL helyezi át, a következő megfeleltetéseket segíts
 | pénz | |Decimális |&nbsp;
 | numerikus [(p, s)] |Decimal [(p, s)] |Decimális |
 | numrange | |Karakterlánc |&nbsp;
-| oid | |Int32 |&nbsp;
+| OID | |Int32 |&nbsp;
 | elérési út | |Byte [], karakterlánc |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
 | pont | |Byte [], karakterlánc |&nbsp;
 | Sokszög | |Byte [], karakterlánc |&nbsp;
-| valós |float4 |Egyedülálló |
+| valós |float4 |Önálló |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | gyártási |serial4 |Int32 |
-| Szöveg | |Karakterlánc |&nbsp;
+| szöveg | |Karakterlánc |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
 A forrás oszlop szerepel a fogadó dataset adatkészlet leképezési oszlopok, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).

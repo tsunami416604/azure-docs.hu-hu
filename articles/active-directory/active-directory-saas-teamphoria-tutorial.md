@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2017
+ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: f2d7a871d6cfb5fd694671c21f2aeacba6abe48f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 89dea3114c502cbc726e48066138169dc4cc7e04
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Oktatóanyag: Azure Active Directoryval integrált Teamphoria
 
@@ -27,9 +28,9 @@ Teamphoria integrálása az Azure AD lehetővé teszi a következő előnyöket 
 
 - Megadhatja a Teamphoria hozzáféréssel rendelkező Azure AD-ben
 - Engedélyezheti a felhasználóknak, hogy automatikusan beolvasása bejelentkezett Teamphoria (egyszeri bejelentkezés) számára a saját Azure AD-fiókok
-- Kezelheti a fiókokat, egy központi helyen – az Azure felügyeleti portálon
+- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,11 +44,12 @@ Konfigurálása az Azure AD-integrációs Teamphoria, a következőkre van szük
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, ha ez nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben.
+Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
 1. A gyűjteményből Teamphoria hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
@@ -57,7 +59,7 @@ Az Azure AD integrálása a Teamphoria konfigurálásához kell hozzáadnia Team
 
 **A gyűjteményből Teamphoria hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure felügyeleti portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure Portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra.
 
     ![Active Directory][1]
 
@@ -82,8 +84,6 @@ Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentk
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Teamphoria a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Teamphoria közötti kapcsolat kapcsolatot kell létrehozni.
 
-Ez a hivatkozás kapcsolat létesíti értéket rendeli az **felhasználónév** értékeként Azure AD-ben a **felhasználónév** Teamphoria a.
-
 Az Azure AD egyszeri bejelentkezést a Teamphoria tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
@@ -94,30 +94,30 @@ Az Azure AD egyszeri bejelentkezést a Teamphoria tesztelése és konfigurálás
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure felügyeleti portálon, és konfigurálása egyszeri bejelentkezéshez az Teamphoria alkalmazásban.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az Teamphoria alkalmazásban.
 
 **Konfigurálása az Azure AD az egyszeri bejelentkezés Teamphoria, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálján a a **Teamphoria** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **Teamphoria** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
-2. A a **egyszeri bejelentkezés** párbeszédpanel, mint **mód** kiválasztása **SAML-alapú bejelentkezés** a engedélyezése az egyszeri bejelentkezéshez.
- 
+2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
 3. Az a **Teamphoria tartomány és az URL-címek** területen tegye a következőket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-CÍMÉT a következő mintát: `https://<sub-domain>.teamphoria.com/login`    
+    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-CÍMÉT a következő mintát: `https://<sub-domain>.teamphoria.com/login`   
 
     > [!NOTE] 
-    > Ne feledje, hogy ezek nincsenek a valódi értékek. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-címmel rendelkezik. Ügyfél [Teamphoria ügyfél-támogatási csoport](https://www.teamphoria.com/) lekérni a bejelentkezési URL-CÍMÉT. 
+    > A bejelentkezési URL-cím értéke nincs valós. Ez az érték a tényleges bejelentkezési URL-címet frissíteni kell. Ügyfél [Teamphoria ügyfél-támogatási csoport](https://www.teamphoria.com/) lekérni a bejelentkezési URL-CÍMÉT.
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványt a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_certificate.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
@@ -125,11 +125,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. A a **Teamphoria konfigurációs** kattintson **konfigurálása Teamphoria** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_configure.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_configure.png)
 
 7. Egyszeri bejelentkezés konfigurálása **Teamphoria** oldalán, jelentkezzen be rendszergazdaként a Teamphoria alkalmazás.
 
-8. Ugrás a **rendszergazdai beállítások** lehetőséget a bal oldali eszköztáron és a a a konfigurálása lapon kattintson a **egyetlen SIGN-ON** az SSO konfigurációs ablak megnyitásához.
+8. Ugrás a **rendszergazdai beállítások** lehetőséget a bal oldali eszköztár, valamint az konfigurálása lapon kattintson a **egyetlen SIGN-ON** az SSO konfigurációs ablak megnyitásához.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/admin_sso_configure.png)
 
@@ -141,47 +141,34 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **MEGJELENÍTENDŐ név** : a beépülő modul megjelenítendő nevét adja meg a felügyelet lapon.
+    a. **MEGJELENÍTENDŐ név**: a beépülő modul megjelenítendő nevét adja meg a felügyelet lapon.
 
-    b. **GOMB neve** : a lap használatával történő Egyszeri bejelentkezéshez a bejelentkezési oldal megjelenítő nevét.
+    b. **GOMB neve**: a lap használatával történő Egyszeri bejelentkezéshez a bejelentkezési lapon megjelenő nevét.
 
-    c. **TANÚSÍTVÁNY** : Nyissa meg a tanúsítványt a Jegyzettömbben, Azure-portálról letöltött ugyanazt a tartalom másolása és illessze be ide a mezőbe.
+    c. **TANÚSÍTVÁNY**: Nyissa meg a tanúsítványt a Jegyzettömbben, Azure-portálról letöltött ugyanazt a tartalom másolása és illessze be ide a mezőbe.
 
-    d. **A belépési pont** : illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** másolt korábbi űrlap az Azure-portálon.
+    d. **A belépési pont**: illessze be a **SAML-alapú egyszeri bejelentkezési URL-címe** kimásolt Azure-portálról.
 
-    e. Váltás is **ON** , majd kattintson a **mentése**.   
-
-<!--### Next steps
-
-To ensure users can sign-in to Teamphoria after it has been configured to use Azure Active Directory, review the following tasks and topics:
-
-- User accounts must be pre-provisioned into Teamphoria prior to sign-in. To set this up, see Provisioning.
- 
-- Users must be assigned access to Teamphoria in Azure AD to sign-in. To assign users, see Users.
- 
-- To configure access polices for Teamphoria users, see Access Policies.
- 
-- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
-
+    e. Váltás is **ON** , majd kattintson a **mentése**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti portálján Britta Simon nevezik.
+Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
 ![Az Azure AD-felhasználó létrehozása][100]
 
 **Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **Azure Management portal**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
 
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_01.png) 
 
-2. Ugrás a **felhasználók és csoportok** kattintson **minden felhasználó** azon felhasználók listájának megjelenítéséhez.
-    
+2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_02.png) 
 
 3. Kattintson a párbeszédpanel tetején **Hozzáadás** megnyitásához a **felhasználói** párbeszédpanel.
  
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_03.png) 
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_03.png)
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
  
@@ -194,12 +181,12 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti por
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-teamphoria-test-user"></a>Teamphoria tesztfelhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók Teamphoria bejelentkezni, akkor ki kell építenie Teamphoria be. Teamphoria, ha egy kézi tevékenység.
 
-**A felhasználói fiókok létrehozásához hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók létrehozásához hajtsa végre az alábbi lépéseket:**
 
 1. Jelentkezzen be rendszergazdaként a Teamphoria vállalati webhely.
 
@@ -209,11 +196,11 @@ Ahhoz, hogy az Azure AD-felhasználók Teamphoria bejelentkezni, akkor ki kell �
 
 3. Kattintson a **manuális MEGHÍVÁSA** lehetőséget.
 
-    ![Felkérése](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)  
+    ![Felkérése](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)
 
-4. Ezen a lapon hajtsa végre a következő művelet. 
+4. Ezen a lapon hajtsa végre a következő művelet.
     
-    ![Felkérése](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)  
+    ![Felkérése](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)
 
     a. Az a **E-mail cím** szövegmezőhöz a **e-mail cím** a BrittaSimon.
 
@@ -225,15 +212,15 @@ Ahhoz, hogy az Azure AD-felhasználók Teamphoria bejelentkezni, akkor ki kell �
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított a hozzáférés Teamphoria Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Teamphoria Azure egyszeri bejelentkezéshez használandó.
 
-![Felhasználó hozzárendelése][200] 
+![Felhasználó hozzárendelése][200]
 
 **Britta Simon hozzárendelése Teamphoria, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure felügyeleti portálra, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
 2. Az alkalmazások listában válassza ki a **Teamphoria**.
 
@@ -241,7 +228,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított a hozzáféré
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![Felhasználó hozzárendelése][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
@@ -252,19 +239,17 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított a hozzáféré
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további tudnivalókért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586). 
+Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -279,4 +264,3 @@ Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez
 [201]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-teamphoria-tutorial/tutorial_general_203.png
-

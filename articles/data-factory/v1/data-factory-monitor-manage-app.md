@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b71ad5701cfd1f8a274318c69d3464cf4fa34708
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621088"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Figyelheti és kezelheti az Azure Data Factory adatcsatornák a figyelés és felügyelet alkalmazással
 > [!div class="op_single_selector"]
@@ -211,7 +212,7 @@ Tevékenység windows a következő állapotok valamelyikében lehet:
 <td>Kihagyva</td><td>-</td><td>A tevékenység ablak nincs feldolgozva.</td>
 </tr>
 <tr>
-<td>Nincs</td><td>-</td><td>Egy tevékenység ablakban létezett egy eltérő állapottal, de alaphelyzetbe lett állítva.</td>
+<td>None</td><td>-</td><td>Egy tevékenység ablakban létezett egy eltérő állapottal, de alaphelyzetbe lett állítva.</td>
 </tr>
 </table>
 

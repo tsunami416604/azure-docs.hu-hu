@@ -1,9 +1,9 @@
 ---
-title: "Az Azure Active Directory átmenő hitelesítést biztonsági részletes bemutatója |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan védi az Azure Active Directory (Azure AD) áteresztő hitelesítés a a helyszíni fiókok"
+title: Az Azure Active Directory átmenő hitelesítést biztonsági részletes bemutatója |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan védi az Azure Active Directory (Azure AD) áteresztő hitelesítés a a helyszíni fiókok
 services: active-directory
-keywords: "Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.service: active-directory
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595036"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítést biztonsági részletes bemutatója
 
@@ -181,7 +183,7 @@ A frissítési alkalmazás automatikusan frissíti a hitelesítési ügynök, am
 
 Az Azure AD-tároló egy aláírt, a szoftver új verziója **Windows Installer-csomag (MSI)**. Az MSI-fájl használatával legyen aláírva [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) SHA-256 kivonatoló algoritmus. 
 
-![Az automatikus frissítés](./media/active-directory-aadconnect-pass-through-authentication-security-deep-dive/pta5.png)
+![Automatikus frissítés](./media/active-directory-aadconnect-pass-through-authentication-security-deep-dive/pta5.png)
 
 Az automatikus frissítés hitelesítési ügynök:
 
@@ -203,7 +205,7 @@ Az automatikus frissítés hitelesítési ügynök:
 >
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md): megtudhatja, mely forgatókönyvek is támogatottak, és melyek nem.
 - [Gyors üzembe helyezési](active-directory-aadconnect-pass-through-authentication-quick-start.md):, amelyekből megismerheti az Azure AD áteresztő hitelesítés.
 - [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): az intelligens zárolás funkció konfigurálásához a bérlő felhasználói fiókok védelme.

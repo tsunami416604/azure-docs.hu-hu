@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ac807bf12e0d6a465b1741d34e6d3d02885c8ea1
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0c09ad0dd6ca2748a19aabc161390d9e0d09c6e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594917"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage érhetnek el egy SAS-hitelesítő adat szolgáltatás Windows virtuális gép felügyelt identitás használatára
 
@@ -227,15 +228,11 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+Ebben az oktatóanyagban megtudta, hogyan hozható létre egy SAS-hitelesítő adat segítségével Azure Storage eléréséhez felügyelt Szolgáltatásidentitás.  Az Azure Storage SAS webhelyen olvashat:
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
-- Hogyan hajtsa végre ugyanezt az oktatóanyagot használata a tárfiók kulcsára, lásd: [Azure Storage eléréséhez használja Windows virtuális gép által felügyelt-szolgáltatási identitás](tutorial-windows-vm-access-storage.md)
-- Az Azure Storage-fiók SAS szolgáltatás kapcsolatos további információkért lásd:
-  - [Közös hozzáférésű jogosultságkód (SAS) használatával](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [A szolgáltatásalapú SAS létrehozása](/rest/api/storageservices/Constructing-a-Service-SAS.md)
-
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+> [!div class="nextstepaction"]
+>[Közös hozzáférésű jogosultságkód (SAS) használatával](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 
 

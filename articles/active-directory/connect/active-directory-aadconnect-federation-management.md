@@ -1,12 +1,12 @@
 ---
-title: "Az Azure AD Connect - AD FS kezelő és a Testreszabás |} Microsoft Docs"
-description: "AD FS felügyelet az Azure AD Connect és felhasználói AD FS bejelentkezési élmény és az Azure AD Connect PowerShell testreszabása."
-keywords: "Az AD FS-, ADFS, az AD FS felügyeleti AAD-csatlakozás, csatlakozás, bejelentkezés, az AD FS testreszabás javítani bizalmi kapcsolat, O365, összevonási, függő entitás"
+title: Az Azure AD Connect - AD FS kezelő és a Testreszabás |} Microsoft Docs
+description: AD FS felügyelet az Azure AD Connect és felhasználói AD FS bejelentkezési élmény és az Azure AD Connect PowerShell testreszabása.
+keywords: Az AD FS-, ADFS, az AD FS felügyeleti AAD-csatlakozás, csatlakozás, bejelentkezés, az AD FS testreszabás javítani bizalmi kapcsolat, O365, összevonási, függő entitás
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590854"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelése és testreszabása az Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk ismerteti a kezelése és testreszabása az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Egyéb gyakori AD FS feladatok, amelyek hasznosak lehetnek az AD FS-farm teljes konfigurációját is tartalmaz.
@@ -29,7 +31,7 @@ Ez a cikk ismerteti a kezelése és testreszabása az Active Directory összevon
 |:--- |:--- |
 | **Az AD FS kezelése** | |
 | [Javítsa ki a bizalmi kapcsolat](#repairthetrust) |Javítsa ki az összevonási megbízhatósági kapcsolat, és az Office 365 módjáról. |
-| [Az Azure AD használatával másodlagos bejelentkezési Azonosítóval összevonni](#alternateid) | Másodlagos bejelentkezési azonosítóval összevonás konfigurálása  |
+| [Az Azure AD használatával másodlagos bejelentkezési Azonosítóval összevonni ](#alternateid) | Másodlagos bejelentkezési azonosítóval összevonás konfigurálása  |
 | [Az AD FS-kiszolgáló hozzáadása](#addadfsserver) |Hogyan bontsa ki az AD FS-farm további AD FS-kiszolgálóval. |
 | [AD FS webalkalmazás-Proxy kiszolgáló hozzáadása](#addwapserver) |Bontsa ki a további webalkalmazás-proxykiszolgálóként (WAP) kiszolgáló AD FS farmot módjáról. |
 | [Összevont tartomány hozzáadása](#addfeddomain) |Hogyan adhat egy összevont tartományt. |
@@ -223,7 +225,7 @@ Továbbá használatával **hozzáadása** és nem **probléma**, ne telepítsen
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Ez a szabály meghatározása nevű ideiglenes jelzőt **idflag** értékre van állítva, amely **useguid** esetén nem **ms-ds-consistencyguid** feltöltve a felhasználó számára. Ez mögötti logika a tényt, hogy az AD FS nem engedélyezi üres jogcímeket. Ezért amikor hozzáadja jogcímek http://contoso.com/ws/2016/02/identity/claims/objectguid és http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid Rule 1, hogy végül egy **msdsconsistencyguid** csak jogcím, ha a rendszer a felhasználó tölti fel az értéket. Ha azt nem üres, az AD FS látja, hogy egy üres érték fog szerepelni, elutasítja azokat azonnal. Minden objektumot kell **objectGuid**, így az igény mindig van 1. szabály végrehajtása után.
+Ez a szabály meghatározása nevű ideiglenes jelzőt **idflag** értékre van állítva, amely **useguid** esetén nem **ms-ds-consistencyguid** feltöltve a felhasználó számára. Ez mögötti logika a tényt, hogy az AD FS nem engedélyezi üres jogcímeket. Ezért amikor jogcímeket adhatnak hozzá http://contoso.com/ws/2016/02/identity/claims/objectguid és http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 1. szabály, hogy végül egy **msdsconsistencyguid** csak jogcím, ha a rendszer a felhasználó tölti fel az értéket. Ha azt nem üres, az AD FS látja, hogy egy üres érték fog szerepelni, elutasítja azokat azonnal. Minden objektumot kell **objectGuid**, így az igény mindig van 1. szabály végrehajtása után.
 
 **3. szabály: Ki az ms-ds-consistencyguid ID nem módosítható, ha telepítve**
 
@@ -262,7 +264,7 @@ Az alapértelmezett szabály egyszerűen vesz igénybe az UPN-utótagot, és has
 
     => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
 
-**A jogcím értéke:** http://sub.contoso.com/adfs/services/trust/
+**A jogcím értéke:**  http://sub.contoso.com/adfs/services/trust/
 
 A kibocsátó jogcím értéke csak a legfelső szintű tartomány van, módosítsa megfelelően a következő jogcímszabály:
 

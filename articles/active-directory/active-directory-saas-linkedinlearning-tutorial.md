@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: fabb79a1449529cde97db7054eb954564b4dfa68
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b0db212b215d2d53b32437d703394148bcc4ac92
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Oktatóanyag: Azure Active Directory-integráció LinkedIn Learning segítségével
 
@@ -165,7 +166,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 11. Az a **SAML-aláíró tanúsítványa** kattintson **metaadatainak XML-kódja** , és mentse az XML-fájlt a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
 
 12. Kattintson a **Save** (Mentés) gombra.
 
@@ -208,12 +209,12 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
-    d. Kattintson a **Create** (Létrehozás) gombra. 
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="creating-a-linkedin-learning-test-user"></a>LinkedIn tanulási tesztfelhasználó létrehozása
 
-Csatolt tanulási alkalmazás támogatja. Csak az idő a felhasználók átadása, és a hitelesítés után felhasználók automatikusan jönnek létre az alkalmazásban. A rendszergazda a beállítások lapon a a LinkedIn tanulási portál tükrözés a kapcsoló **automatikus hozzárendelése licencek** közvetlenül ahhoz, hogy időben aktív kiépítés, és ez lesz is rendel egy licencet a felhasználó.
-   
+LinkedIn tanulási alkalmazás támogatja közvetlenül az az idő a felhasználók átadása, miután a felhasználók hitelesítésére az alkalmazás automatikusan létrejönnek. A rendszergazda a beállítások lapon a a LinkedIn tanulási portál tükrözés a kapcsoló **automatikus hozzárendelése licencek** időben aktív közvetlenül az üzembe helyezési, és ez lesz is rendel egy licencet a felhasználó. További részletei, LinkedIn tanulási is támogatja a felhasználók automatikus átadása [Itt](active-directory-saas-linkedinlearning-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+
    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-linkedinLearning-tutorial/LinkedinUserprovswitch.png)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
@@ -226,15 +227,15 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
 2. Az alkalmazások listában válassza ki a **LinkedIn tanulási**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![Felhasználó hozzárendelése][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
@@ -245,7 +246,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
@@ -256,6 +257,7 @@ Ha a hozzáférési Panel LinkedIn tanulási mozaik gombra kattint, szerezheti b
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
+* [A felhasználók átadása konfigurálása](active-directory-saas-linkedinlearning-provisioning-tutorial.md)
 
 <!--Image references-->
 

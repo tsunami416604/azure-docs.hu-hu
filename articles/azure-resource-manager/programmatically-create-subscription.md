@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 308202addbca447ee0dab7a55a1ad2b3b6600a10
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603321"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programozott módon létrehozása az Azure vállalati előfizetések (előzetes verzió)
 
@@ -175,7 +176,7 @@ A válaszban vissza egy `subscriptionOperation` objektum figyelésre. Ha az elő
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ez a minta modul használatához telepítse futtatásával `Install-Module AzureRM.Subscription -AllowPrerelease` első. Győződjön meg arról, hogy `-AllowPrerelease` működik, a PowerShellGet legújabb verziójának telepítése [PowerShellGet lekérési modulja](/powershell/gallery/psget/get_psget_module).
+Ez a minta modul használatához telepítse futtatásával `Install-Module AzureRM.Subscription -AllowPrerelease` első. Győződjön meg arról, hogy `-AllowPrerelease` működik, a PowerShellGet legújabb verziójának telepítése [PowerShellGet lekérési modulja](/powershell/gallery/installing-psget).
 
 Használja a [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) együtt `enrollmentAccount` objektumazonosító, a `EnrollmentAccountObjectId` paraméter segítségével hozzon létre egy új előfizetést. 
 
@@ -299,4 +300,4 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 * Például a .NET használatával előfizetések létrehozása, [mintát a Githubon code](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Azure Resource Manager és az API-k kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](resource-group-overview.md).
 * A felügyeleti csoportok előfizetések nagy számú kezelésével kapcsolatos további tudnivalókért lásd: [az Azure felügyeleti csoportok-erőforrások rendszerezése](management-groups-overview.md)
-* Egy átfogó bevált gyakorlatokat tartalmazó útmutatóval nagy méretű szervezeteknek előfizetés cégirányításra fókuszálnak, olvassa el [Azure enterprise scaffold - részletes utasításokkal megadott előfizetés-irányítás](resource-manager-subscription-governance.md)
+* Egy átfogó bevált gyakorlatokat tartalmazó útmutatóval nagy méretű szervezeteknek előfizetés cégirányításra fókuszálnak, olvassa el [Azure enterprise scaffold - részletes utasításokkal megadott előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance)

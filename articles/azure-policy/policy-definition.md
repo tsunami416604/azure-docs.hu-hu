@@ -4,15 +4,16 @@ description: Ismerteti, hogyan erőforrás házirend-definíció Azure házirend
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f864cf45b255ac26ccf0efac9a89683d1ae650b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601258"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -63,7 +64,7 @@ Például a következő JSON mutatja egy házirendet, amely korlátozza, amelyek
 }
 ```
 
-Minden Azure házirend sablon minták erővel [sablonok Azure házirend](json-samples.md).
+Minden Azure házirend minták erővel [házirend minták](json-samples.md).
 
 ## <a name="mode"></a>Mód
 
@@ -203,7 +204,7 @@ A következő mezők támogatottak:
 
 - `name`
 - `fullName`
-  - Az erőforrást, beleértve a szülője (például "myServer/adatbázis") teljes nevét adja vissza
+  - Az erőforrás teljes nevét adja vissza. A teljes nevet, egy erőforrást az erőforrás nevét, a szülő erőforrás neve (például "myServer/adatbázis") $a.
 - `kind`
 - `type`
 - `location`
@@ -250,6 +251,8 @@ Az érték lehet egy karakterlánc vagy egy JSON-formátumú objektum.
 
 A **AuditIfNotExists** és **DeployIfNotExists** értékelje ki a kapcsolódó erőforrások meglétét, és alkalmazza a szabályt, és a megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy egy hálózati figyelőt az összes virtuális hálózathoz van-e telepítve.
 Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg [kiterjesztés nem található naplózási](scripts/audit-ext-not-exist.md).
+
+Minden egyes lépéséhez, értékelése, a tulajdonságok és a példák, sorrendjét a részleteket lásd: [ismertetése házirend hatások](policy-effects.md).
 
 ## <a name="aliases"></a>Aliasok
 
@@ -391,4 +394,4 @@ A következő példa bemutatja, hogyan létrehozása kezelési két címkék kez
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át az Azure házirend sablon minták [sablonok Azure házirend](json-samples.md).
+- Tekintse át a következő további példákat [Azure házirend minták](json-samples.md).

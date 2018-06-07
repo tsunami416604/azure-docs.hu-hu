@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598470"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 ## <a name="about-this-list"></a>Ez a lista
 Ha importál egy API-t, előfordulhat, hogy során bizonyos korlátozások vonatkoznak, vagy kapcsolatos problémákat jeleznek, amelyek sikeresen importálása előtt kell-e javítani kell. Ez a cikk a dokumentum fenti szerint vannak rendszerezve az API formátuma.
 
-## <a name="open-api"> </a>Open API/Swagger
-A nyílt API-t dokumentum importálása hibák fordulnak elő, ha győződjön meg arról,-, vagy a-tervező használata az Azure portálon (Tervező - előtér - API Specification szerkesztő megnyitása), ellenőrzése, vagy egy külső gyártótól származó eszközzel, mint <a href="http://www.swagger.io">Swagger Editor</a>.
+## <a name="open-api"> </a>OpenAPI/Swagger
+A OpenAPI dokumentum importálása hibák fordulnak elő, ha győződjön meg arról,-, vagy a-tervező használata az Azure portálon (Tervező - előtér - OpenAPI specifikáció-szerkesztőben) ellenőrzése, vagy egy külső gyártótól származó eszközzel, mint <a href="http://www.swagger.io">Swagger Editor</a>.
 
 * Csak a OpenAPI JSON formátum támogatott.
+* Kötelező paraméterek között útvonal és a lekérdezés neve csak egyedi lehet. (A OpenAPI a paraméter neve csak egyedinek kell lennie egy helyen, például a elérési útja, a lekérdezés, a fejléc.  Azonban az API Management lehetővé hogy műveletek hátrányos kell megkülönböztetés útvonal és a lekérdezés paraméter (amely nem támogatja a OpenAPI) alapján. Ezért kérjük paraméterek nevei a teljes URL-cím sablon belül egyedinek kell lennie.)
 * Használatával sémák **$ref** tulajdonságok nem tartalmazhat más **$ref** tulajdonságait.
 * **$ref** mutatók nem hivatkozhatnak külső fájlokat.
 * **x-ms-elérési utak** és **x-kiszolgálók** csak támogatott kiterjesztések az alábbiak.

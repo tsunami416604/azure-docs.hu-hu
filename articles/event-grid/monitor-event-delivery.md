@@ -6,19 +6,20 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9719bb1f1563c55537c7ef32278411a2034bd75
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626989"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Üzenet kézbesítési esemény rács figyelése 
 
 A cikkből megtudhatja, hogyan használhatja a portált esemény kézbesítések állapotát tekintheti meg.
 
-Esemény rács tartós kézbesítési biztosít. Minden üzenet legalább egyszer az egyes előfizetésekhez biztosítja. Az események küldhetők az egyes előfizetések regisztrált webhook azonnal. A webhook nem átvételét egy eseményt az első kézbesítési kísérlet 60 másodpercen belül, ha az esemény rács kézbesítési esemény újrapróbálkozik.
+Esemény rács tartós kézbesítési biztosít. Minden üzenet legalább egyszer az egyes előfizetésekhez biztosítja. Az események küldhetők az egyes előfizetések regisztrált webhook azonnal. A webhook nem nyugtázta egy eseményt az első kézbesítési kísérlet 60 másodpercen belül, ha az esemény rács kézbesítési esemény újrapróbálkozik.
 
 Esemény kézbesítési és, az újrapróbálkozásokat információt [esemény rács üzenetkézbesítést, és próbálkozzon újra](delivery-and-retry.md).
 
@@ -41,9 +42,15 @@ Az előfizetések, az adatok gyűjtése le van:
 
 ## <a name="event-subscription-status"></a>Előfizetési eseményállapot
 
-Egy Eseményelőfizetés metrikáját, keressen **esemény rács előfizetések** a szolgáltatásokat, és válassza ki azt.
+Az esemény-előfizetésre metrikák megtekintéséhez vagy kereshet az előfizetési típust, vagy egy adott erőforrás előfizetések.
 
-![Keresse meg az esemény-előfizetések](./media/monitor-event-delivery/select-event-subscriptions.png)
+Előfizetés Eseménytípus szerint megkereséséhez válassza **minden szolgáltatás**.
+
+![Válassza ki az összes szolgáltatás](./media/monitor-event-delivery/all-services.png)
+
+Keresse meg **esemény rács** válassza **esemény rács előfizetések** az elérhető lehetőségek közül.
+
+![Keresse meg az esemény-előfizetések](./media/monitor-event-delivery/search-and-select.png)
 
 Szűrés milyen típusú eseményt, az előfizetésben és helyen. Válassza ki **metrikák** az előfizetés megtekintéséhez.
 
@@ -53,9 +60,15 @@ Tekintse meg az esemény-témakör és az előfizetés metrikákat.
 
 ![Nézet esemény metrikák](./media/monitor-event-delivery/subscription-metrics.png)
 
+A metrikák egy adott erőforrás megkereséséhez válassza ki az adott erőforrás. Ezt követően válassza **események**.
+
+![Válassza ki az erőforrás eseményei](./media/monitor-event-delivery/select-events.png)
+
+Megjelenik a metrikák elő az adott erőforráshoz.
+
 ## <a name="custom-event-status"></a>Egyéni esemény állapota
 
-Egy egyéni témakör közzétételekor megtekintheti a metrikák azt. Válassza ki a témakör tartalmazó erőforráscsoportot, és válassza ki a következő témakörben.
+Ha közzétett egy egyéni témakör, megtekintheti a metrikák azt. Válassza ki az erőforráscsoportot a témakörhöz, és válassza ki a következő témakörben.
 
 ![Válassza ki az egyéni témakör](./media/monitor-event-delivery/select-custom-topic.png)
 
@@ -66,5 +79,5 @@ Tekintse meg az egyéni esemény-témakör metrikáit.
 ## <a name="next-steps"></a>További lépések
 
 * Esemény kézbesítési és, az újrapróbálkozásokat információt [esemény rács üzenetkézbesítést, és próbálkozzon újra](delivery-and-retry.md).
-* Esemény rácshoz ismertetőért lásd: [esemény rács](overview.md).
+* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
 * Ha gyorsan esemény rács segítségével, lásd: [Azure esemény rácshoz hozza létre és útvonal egyéni események](custom-event-quickstart.md).

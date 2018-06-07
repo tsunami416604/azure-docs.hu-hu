@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: a7bdbee064e6acdd3d1ef95879b98daa43fdb230
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 9bfaf7f4fa4b7778650638b3b4670e29906838a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594781"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Oktatóanyag: Azure Storage érhetnek el a hozzáférési kulcsot a szolgáltatás Windows virtuális gép felügyelt identitás használatára
 
@@ -195,15 +196,10 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+Ebben az oktatóanyagban megtudta, hogyan hozható létre hozzáférési kulcs használata Azure Storage eléréséhez felügyelt Szolgáltatásidentitás.  További információk az Azure Storage elérési kulcsok témakörben talál:
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
-- Ez a tároló SAS-hitelesítő adatok használatával ugyanezt az oktatóanyagot módjáról további tudnivalókért lásd: [szolgáltatás Windows virtuális gép felügyelt identitás használatára az Azure Storage érhetnek el egy SAS-hitelesítő adat](tutorial-windows-vm-access-storage-sas.md)
-- Az Azure Storage-fiók SAS szolgáltatás kapcsolatos további információkért lásd:
-  - [Közös hozzáférésű jogosultságkód (SAS) használatával](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [A szolgáltatásalapú SAS létrehozása](/rest/api/storageservices/Constructing-a-Service-SAS.md)
-
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom
-
+> [!div class="nextstepaction"]
+>[A tárelérési kulcsok kezelése](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
 

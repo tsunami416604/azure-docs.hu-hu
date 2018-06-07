@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8643e75a24ff7840b71dfaceae9934cdda566d30
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604420"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
 Az Azure verem SQL Server erőforrás-szolgáltató használatával teszi közzé az SQL-adatbázisok Azure verem szolgáltatásként. Az SQL-erőforrás-szolgáltató szolgáltatás fut az SQL-erőforrás-szolgáltató egy Windows Server core virtuális gép virtuális gép.
@@ -29,10 +30,14 @@ Nincsenek több előfeltételnek kell, mielőtt telepíthetné a verem SQL Azure
 - Ön még nem tette meg, ha [regisztrálni Azure verem](.\azure-stack-registration.md) az Azure-ral, hogy az Azure piactéren elemek is letöltheti.
 - A verem Azure piactér úgy, hogy letölti a szükséges Windows Server core virtuális gép hozzáadása a **Windows Server 2016 Server core** kép. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy. A helyi függőségi elérési MSU-csomagot. Ha egynél több. MSU fájl található, SQL erőforrás-szolgáltató telepítése sikertelen lesz.
 - Töltse le a bináris SQL erőforrás-szolgáltató, és futtassa az ideiglenes könyvtár tartalmának önkibontó. Az erőforrás-szolgáltató build minimális megfelelő Azure verem rendelkezik. Győződjön meg arról, a megfelelő bináris Azure verem, Ön által futtatott verziójának letöltéséhez:
-    - Az Azure verem 1802 (1.0.180302.1) verziója: [SQL RP verzió 1.1.18.0](https://aka.ms/azurestacksqlrp1802).
-    - Az Azure verem verzió 1712 (1.0.180102.3, 1.0.180103.2 vagy 1.0.180106.1 (integrált rendszert)): [SQL RP verzió 1.1.14.0](https://aka.ms/azurestacksqlrp1712).
+
+    |Verem az Azure-verzió|SQL RP verziója|
+    |-----|-----|
+    |Verzió 1804 (1.0.180513.1)|[SQL RP 1.1.24.0 verziója](https://aka.ms/azurestacksqlrp1804)
+    |Verzió 1802 (1.0.180302.1)|[SQL RP 1.1.18.0 verziója](https://aka.ms/azurestacksqlrp1802)|
+    |Verzió 1712 (1.0.180102.3, 1.0.180103.2 vagy 1.0.180106.1 (integrált rendszert))|[SQL RP 1.1.14.0 verziója](https://aka.ms/azurestacksqlrp1712)|
+    |     |     |
 - Csak integrált rendszerek telepítések esetén meg kell adnia az SQL PaaS PKI-tanúsítványt a választható PaaS tanúsítványok szakaszában leírtak szerint [Azure verem PKI követelményektől](.\azure-stack-pki-certs.md#optional-paas-certificates), úgy, hogy a .pfx fájlt a helyen által a **DependencyFilesLocalPath** paraméter.
-- Győződjön meg arról, hogy a [Azure verem PowerShell legújabb verziójának](.\azure-stack-powershell-install.md) (v1.2.11) telepítve. 
 
 ## <a name="deploy-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató telepítése
 Miután sikeresen előkészítette az SQL erőforrás-szolgáltató telepítése teljesíti az összes előfeltétel, most futtathatja a **DeploySqlProvider.ps1** parancsfájl központi telepítése az SQL erőforrás-szolgáltató. A DeploySqlProvider.ps1 parancsfájl ki kell olvasni az SQL erőforrás-szolgáltató bináris részeként, hogy letöltötte az Azure-verem verziója megfelelő. 
@@ -81,10 +86,9 @@ Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely param
 Szükséges információk manuális bevitelét, ha fut a DeploySqlProvider.ps1 parancsfájl elkerüléséhez testre az alapértelmezett fiók- és igény szerint módosítsa úgy az alábbi mintaparancsfájl:
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
+# Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
@@ -113,12 +117,13 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
-  -VMLocalCredential $vmLocalAdminCreds `
-  -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint $privilegedEndpoint `
-  -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+$tempDir\DeploySQLProvider.ps1 `
+    -AzCredential $AdminCreds `
+    -VMLocalCredential $vmLocalAdminCreds `
+    -CloudAdminCredential $cloudAdminCreds `
+    -PrivilegedEndpoint $privilegedEndpoint `
+    -DefaultSSLCertificatePassword $PfxPass `
+    -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>A verem Azure portál használatával a telepítés ellenőrzése

@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: d766af40ab5d99f33605f5aef7f9c2e7140896e4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2a3b4efb766b58faa63caa31caeaf8699d8c5c97
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>Oktatóanyag: Azure Active Directoryval integrált Jive
 
@@ -47,7 +48,8 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 - Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió kaphat [Itt](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben.
+Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
 1. A gyűjteményből Jive hozzáadása
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
@@ -64,7 +66,7 @@ Az Azure AD-be Jive integrálása konfigurálásához kell hozzáadnia Jive a gy
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![Alkalmazások][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
     ![Alkalmazások][3]
@@ -103,7 +105,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_samlbase.png)
 
 3. Az a **Jive tartomány és az URL-címek** területen tegye a következőket:
@@ -114,12 +116,12 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<instance name>.jiveon.com`
 
-    > [!NOTE] 
-    > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Jive ügyfél-támogatási csoport](https://www.jivesoftware.com/services-support/) beolvasni ezeket az értékeket. 
- 
+    > [!NOTE]
+    > Ezek az értékek nincsenek tényleges. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Jive ügyfél-támogatási csoport](https://www.jivesoftware.com/services-support/) beolvasni ezeket az értékeket.
+
 4. Az a **SAML-aláíró tanúsítványa** kattintson **metaadatainak XML-kódja** , és mentse az XML-fájlt a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_certificate.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
@@ -131,29 +133,25 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_002.png)
 
-    a. Válassza ki **engedélyezve** alatt a **általános** fülre.   
-    b. Kattintson a "**összes saml-beállításainak mentése**" gombra.
+    a. Válassza ki **engedélyezve** alatt a **általános** b fülre. Kattintson a "**összes saml-beállításainak mentése**" gombra.
 
 8. Keresse meg a "**Idp metaadatok**" lapon.
-   
+
     ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_003.png)
-   
+
     a. Másolja a letöltött metaadatok XML-fájl tartalmát, és illessze be azt a **Identity Provider (IDP) metaadatok** szövegmező.
-    
-    b. Kattintson a "**összes saml-beállításainak mentése**" gombra. 
+
+    b. Kattintson a "**összes saml-beállításainak mentése**" gombra.
 
 9. Lépjen a "**attribútum Felhasználóleképezés**" lapon.
-   
-    ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_004.png)
-   
-    a. Az a **E-mail** szövegmező, másolja be az attribútum nevét **mail** érték.
-   
-    b. Az a **Utónév** szövegmező, másolja be a telefonmelléket **givenname** érték.
-   
-    c. Az a **Vezetéknév** szövegmező, másolja be a telefonmelléket **vezetékneve** érték.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+    ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-jive-tutorial/tutorial_jive_004.png)
+
+    a. Az a **E-mail** szövegmező, másolja be az attribútum nevét **mail** érték.
+
+    b. Az a **Utónév** szövegmező, másolja be a telefonmelléket **givenname** érték.
+
+    c. Az a **Vezetéknév** szövegmező, másolja be a telefonmelléket **vezetékneve** érték.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -167,16 +165,16 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-jive-tutorial/create_aaduser_01.png) 
 
 2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-jive-tutorial/create_aaduser_02.png) 
+
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-jive-tutorial/create_aaduser_02.png)
 
 3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-jive-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-jive-tutorial/create_aaduser_04.png) 
+
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-jive-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
 
@@ -185,10 +183,12 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-jive-test-user"></a>Jive tesztfelhasználó létrehozása
 
-Együttműködve [Jive ügyfél-támogatási csoport](https://www.jivesoftware.com/services-support/) a felhasználók hozzáadása a Jive platform.
+Ez a szakasz célja Jive Britta Simon nevű felhasználót létrehozni. Jive támogatja az automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](active-directory-saas-jive-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+
+Ha szeretné létrehozni a felhasználót manuálisan, [Jive ügyfél-támogatási csoport](https://www.jivesoftware.com/services-support/) a felhasználók hozzáadása a Jive platform.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
 
@@ -245,4 +245,3 @@ Ha a hozzáférési panelen Jive csempére kattint, akkor kell beolvasása autom
 [201]: ./media/active-directory-saas-jive-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-jive-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-jive-tutorial/tutorial_general_203.png
-

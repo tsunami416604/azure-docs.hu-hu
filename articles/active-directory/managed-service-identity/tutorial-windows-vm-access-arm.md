@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 1b23101de9a84da487e73558366cc574a22e849d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8abd4f0f597cf255be3c1bc2fdd78a121cfb6517
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594985"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Erőforrás-kezelő eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 
@@ -117,9 +118,10 @@ Meg kell használnia **PowerShell** ezen részében.  Ha nincs telepítve, tölt
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}}
     ```
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="next-steps"></a>További lépések
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
+Ebben az oktatóanyagban megtudta, hogyan hozzon létre egy felhasználó identitását, és csatlakoztassa azt egy Azure virtuális gép az Azure Resource Manager API eléréséhez.  Az Azure Resource Manager webhelyen olvashat:
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+> [!div class="nextstepaction"]
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
 

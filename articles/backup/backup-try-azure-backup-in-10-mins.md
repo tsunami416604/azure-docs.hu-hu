@@ -1,25 +1,20 @@
 ---
-title: Windows-fájlok és -mappák biztonsági mentése az Azure-ba (Resource Manager) | Microsoft Docs
+title: Windows-fájlok és mappák biztonsági mentése az Azure-ba (Resource Manager)
 description: Windows-fájlok és -mappák biztonsági mentése az Azure-ba egy Resource Manager-alapú üzemelő példányon.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: biztonsági mentés menete; biztonsági mentési útmutató; fájlok és mappák biztonsági mentése
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 8/15/2017
-ms.author: markgal;
-ms.openlocfilehash: 55f83bda1a9de9274194ec220fa9a4a5c8b7f0fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.author: markgal
+ms.openlocfilehash: 7abdf06d1b5a4361da9ddb75cec01d6fd1630d08
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606970"
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>Áttekintés: Fájlok és mappák biztonsági mentése a Resource Manager-alapú üzemelő példányban
 Ez a cikk leírja, hogyan készíthet biztonsági másolatot a Windows Server (vagy Windows-számítógép) fájljairól és mappáiról az Azure-ba Resource Manager-alapú üzemelő példány használatával. Ez az oktatóanyag végigvezeti az alapokon. Ha el szeretné kezdeni az Azure Backup használatát, jó helyen van.

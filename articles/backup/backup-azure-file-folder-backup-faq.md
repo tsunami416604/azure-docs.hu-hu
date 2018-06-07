@@ -1,25 +1,20 @@
 ---
-title: "Azure Backup-ügynök – gyakori kérdések | Microsoft Docs"
-description: "Válaszok a gyakori kérdésekre a következőkkel kapcsolatban: az Azure Backup-ügynök működése, biztonsági mentési és megőrzési korlátok."
+title: Az Azure Backup szolgáltatás ügynökének – gyakori kérdések
+description: 'Válaszok a gyakori kérdésekre a következőkkel kapcsolatban: az Azure Backup-ügynök működése, biztonsági mentési és megőrzési korlátok.'
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás"
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
+keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/18/2017
-ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: trinadhk
+ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605531"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Kérdések az Azure Backup-ügynökkel kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure Backup-ügynök összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -71,7 +66,7 @@ A biztonsági mentési adatokat a rendszer annak a tárolónak az adatközpontj�
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Az Azure Backup ügynök működik egy Windows Server 2012 deduplikációt használó kiszolgálón? <br/>
 Igen. Az ügynökszolgáltatás átalakítja a deduplikált adatokat normális adatokká, amikor előkészíti a biztonsági mentési műveletet. Ezután optimalizálja az adatokat a biztonsági mentéshez, titkosítja őket, majd elküldi a titkosított adagokat az online biztonsági mentési szolgáltatásba.
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Hogyan változtathatom meg az Azure Backup ügynök számára meghatározott gyorsítótár helyét?<br/>
 Használja az alábbi listát a gyorsítótár helyének módosításához.
 

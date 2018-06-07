@@ -1,11 +1,11 @@
 ---
-title: "Identitás-szinkronizálással és duplikált attribútum rugalmassági |} Microsoft Docs"
-description: "Új viselkedését, hogy hogyan kezelje az egyszerű Felhasználónevet vagy ProxyAddress ütközések objektumok címtár-szinkronizálás Azure AD Connect használatával."
+title: Identitás-szinkronizálással és duplikált attribútum rugalmassági |} Microsoft Docs
+description: Új viselkedését, hogy hogyan kezelje az egyszerű Felhasználónevet vagy ProxyAddress ütközések objektumok címtár-szinkronizálás Azure AD Connect használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi
-ms.openlocfilehash: 975abed469a78573553c0879b33181d2a58ec48c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: cfed9d32e919cc3c1b7b9c2a6ea5ddb31f2a8fb9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593208"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútum rugalmasság az Azure Active Directoryban, amely kiküszöböli a okozta súrlódás szolgáltatása **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálási eszközöket.
@@ -141,9 +143,9 @@ Ezek a problémák egyike hatására az adatok elvesztése vagy szolgáltatás t
 1. A specifikus attribútummal konfigurációival objektumok azután is megkapják az Exportálás hibák szemben a karanténba helyezett duplikált attribútum.  
    Példa:
    
-    a. Új felhasználó jön létre egy egyszerű az Active Directory  **Joe@contoso.com**  és ProxyAddress**smtp:Joe@contoso.com**
+    a. Új felhasználó jön létre egy egyszerű az Active Directory **Joe@contoso.com** és ProxyAddress **smtp:Joe@contoso.com**
    
-    b. Ez az objektum tulajdonságainak ütközik egy meglévő csoportot, ahol ProxyAddress az  **SMTP:Joe@contoso.com** .
+    b. Ez az objektum tulajdonságainak ütközik egy meglévő csoportot, ahol ProxyAddress az **SMTP:Joe@contoso.com**.
    
     c. Exportáláskor egy **ProxyAddress ütközés** hibát vált ki, ahelyett, hogy a karanténba helyezett ütközés attribútumok. A művelet megismétlése minden ezt követő szinkronizálási ciklust követően, mielőtt az rugalmassági engedélyezve lett volna.
 2. Két csoport jön létre a helyszíni azonos SMTP-címével, ha egy nem sikerül az első kísérlet a szabványos duplikált rendelkezés **ProxyAddress** hiba. Azonban az ismétlődő értéket megfelelően karanténban van, a következő szinkronizálási ciklusban.
@@ -157,16 +159,16 @@ Ezek a problémák egyike hatására az adatok elvesztése vagy szolgáltatás t
    
     b. **"B" felhasználó** megpróbálta be a következő szinkronizálva **UPN = User@contoso.com** .
    
-    c. **Felhasználói B** UPN változott  **User1234@contoso.onmicrosoft.com**  és  **User@contoso.com**  hozzáadódik **DirSyncProvisioningErrors**.
+    c. **Felhasználói B** UPN változott **User1234@contoso.onmicrosoft.com** és **User@contoso.com** hozzáadódik **DirSyncProvisioningErrors**.
    
-    d. A hibaüzenetet **felhasználói B** kell jeleznie, hogy **a felhasználó** már  **User@contoso.com**  egy egyszerű, de látható **felhasználói B** saját displayName.
+    d. A hibaüzenetet **felhasználói B** kell jeleznie, hogy **a felhasználó** már **User@contoso.com** egy egyszerű, de látható **felhasználói B** saját displayName.
 
 **Identitás szinkronizálási esetleges hibajelentésben való megjelenítéshez**:
 
 A mutató *lépéseit a probléma megoldásához* helytelen:  
     ![Aktív felhasználók](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "aktív felhasználók")  
 
-Mutasson kell [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
+Mutasson kell [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/duplicateattributeresiliency).
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure AD Connect szinkronizálása](active-directory-aadconnectsync-whatis.md)

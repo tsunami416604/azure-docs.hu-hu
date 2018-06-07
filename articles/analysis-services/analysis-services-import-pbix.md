@@ -3,23 +3,24 @@ title: A Power BI Desktop fájlt importálja az Azure Analysis Services |} Micro
 description: Ismerteti, hogyan importálhatja a Power BI Desktop-fájl (pbix-fájlt) az Azure portál használatával.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/22/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 35bf2ba85017de43788f802b6244d61ed2bb62df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aea6f3efcf3740527c43b75a30caadf6b2a8b623
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601071"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
-Létrehozhat egy új modell az Azure-AS importálásával egy Power BI Desktop-fájl (pbix-fájlt). Modell metaadatait, a gyorsítótárazott adatokat és adatforrás-kapcsolatok importálása. Jelentések és a képi megjelenítések nincsenek importálva.
+Azure Analysis Services egy adatmodell a Power BI Desktop-fájl (pbix-fájlt) importálhatja. Modell metaadatait, a gyorsítótárazott adatokat és adatforrás-kapcsolatok importálása. Jelentések és a képi megjelenítések nincsenek importálva. Importálta az adatokat a Power BI Desktop modellek vannak a 1 400 kompatibilitási szinten.
 
 **Korlátozások**   
-- A pbix-fájlt modellt az Azure SQL Database és az Azure SQL Data Warehouse adatforrások csak csatlakozhat. 
+- A pbix-modell csatlakozni tud-e **Azure SQL Database** és **Azure SQL Data Warehouse** adatforrások csak. 
 - A pbix-modell nem lehet élő vagy DirectQuery kapcsolatok. 
 - Importálás sikertelen lehet, ha a pbix-fájlt adatmodell Analysis Services nem támogatja a metaadatokat tartalmaz.
 

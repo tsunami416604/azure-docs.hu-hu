@@ -1,25 +1,20 @@
 ---
-title: Telepítéséhez és kezeléséhez biztonsági mentések erőforrás-kezelő telepített virtuális gépek PowerShell használatával |} Microsoft Docs
+title: A biztonsági mentés üzembe helyezése és kezelése a Resource Managerrel üzembe helyezett virtuális gépeken a PowerShell-lel
 description: Használja a PowerShell telepítése és kezelése az Azure biztonsági mentések erőforrás-kezelő telepített virtuális gépekhez
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: 68606e4f-536d-4eac-9f80-8a198ea94d52
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk;pullabhk
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4d3c0d08b2a34313c10ab89f2972894ffabe19d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606239"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Készítsen biztonsági másolatot a virtuális gépek AzureRM.RecoveryServices.Backup-parancsmagok használatával
 
@@ -92,19 +87,17 @@ Megkezdéséhez:
 
     ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ```
 
 6. Ellenőrizheti, hogy a szolgáltatók regisztrálása sikeresen befejeződött, a következő parancsokkal:
     ```PS
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
 A parancs kimenetében a **RegistrationState** be kell állítania, **regisztrált**. Ha nem, most futtassa újra a **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** parancsmag fent látható.
 
 A PowerShell segítségével automatizálhatók a következő feladatokat:
 
-* [Recovery Services-tároló létrehozása](backup-azure-vms-automation.md#create-a-recovery-services-vault)
+* [Helyreállítási tár létrehozása](backup-azure-vms-automation.md#create-a-recovery-services-vault)
 * [Azure-beli virtuális gépek biztonsági mentése](backup-azure-vms-automation.md#back-up-azure-vms)
 * [A biztonsági mentési feladatot indít](backup-azure-vms-automation.md#trigger-a-backup-job)
 * [A figyelő egy biztonsági mentési feladat](backup-azure-vms-automation.md#monitoring-a-backup-job)

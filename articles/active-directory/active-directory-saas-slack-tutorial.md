@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c3fb9eb3e8dd4b8c3add5dcf0436958500aa0189
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2b1b6b8e119cc842ae780cd244ea3b265340fb3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589824"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Azure Active Directoryval integrált Slackhez
 
@@ -138,11 +139,11 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute1.png)
 
     a. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
-    
+
     b. Az a **érték** listára, válassza ki a sorhoz látható attribútum értéke.
 
     c. Hagyja a **Namespace** üres.
-    
+
     d. Kattintson az **OK** gombra
 
 6. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
@@ -155,17 +156,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 8. A a **Slackhez konfigurációs** kattintson **konfigurálása Slackhez** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png)
 
-9.  Egy másik webes böngészőablakban jelentkezzen be a Slack vállalati webhely rendszergazdaként.
+9. Egy másik webes böngészőablakban jelentkezzen be a Slack vállalati webhely rendszergazdaként.
 
-10.  Navigáljon a **Microsoft Azure AD** majd navigáljon **Team beállításainak**.
+10. Navigáljon a **Microsoft Azure AD** majd navigáljon **Team beállításainak**.
 
      ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_001.png)
 
-11.  Az a **Team beállításainak** területen kattintson a **hitelesítési** fülre, majd **beállításainak módosítása**.
+11. Az a **Team beállításainak** területen kattintson a **hitelesítési** fülre, majd **beállításainak módosítása**.
 
-     ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
+    ![Alkalmazás ügyféloldali egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
 
 12. Az a **SAML-alapú hitelesítési beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
 
@@ -180,10 +181,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     d. Állítsa be a fenti három megfelelő beállításokat a Slack-csoport. A beállításokkal kapcsolatos további információkért kérjük található a **Slackhez tartozó SSO konfigurációs útmutató** itt. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     e.  Kattintson a **konfigurációjának mentéséhez**.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -201,12 +198,12 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-slack-tutorial/create_aaduser_02.png) 
 
 3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png) 
+
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png)
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png) 
+
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png)
 
     a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
 
@@ -215,12 +212,10 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-slack-test-user"></a>Slack tesztfelhasználó létrehozása
 
-Ez a szakasz célja a Slackhez Britta Simon nevű felhasználót létrehozni. Slackhez támogatja just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve.
-
-Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az Ha még nem létezik a Slackhez elérésére tett kísérlet során.
+Ez a szakasz célja a Slackhez Britta Simon nevű felhasználót létrehozni. Slackhez támogatja just-in-time kiosztást, amely alapértelmezés szerint van engedélyezve. Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az Ha még nem létezik a Slackhez elérésére tett kísérlet során. A tartalékidő is támogatja az automatikus a felhasználók átadása, további részletei [Itt](active-directory-saas-slack-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
 
 > [!NOTE]
 > Hozza létre a felhasználó manuálisan kell, ha kapcsolatba kell [Slack támogatási csoport](https://slack.com/help/contact).
@@ -229,7 +224,7 @@ Nincs ebben a szakaszban az Ön művelet elem. Új felhasználó jön létre az 
 
 Ebben a szakaszban Britta Simon hozzáférés biztosítása a slackhez által használandó Azure egyszeri bejelentkezés engedélyezése.
 
-![Felhasználó hozzárendelése][200] 
+![Felhasználó hozzárendelése][200]
 
 **Britta Simon hozzárendelése a Slackhez, hajtsa végre a következő lépéseket:**
 
@@ -265,6 +260,8 @@ A Slack csempe elemre a hozzáférési panelen, meg kell beolvasása automatikus
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
+* [A felhasználók átadása konfigurálása](active-directory-saas-slack-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -279,4 +276,3 @@ A Slack csempe elemre a hozzáférési panelen, meg kell beolvasása automatikus
 [201]: ./media/active-directory-saas-slack-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-slack-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-slack-tutorial/tutorial_general_203.png
-

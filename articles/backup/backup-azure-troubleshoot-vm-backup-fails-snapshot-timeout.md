@@ -1,25 +1,20 @@
 ---
-title: 'Azure biztonsági mentési hiba elhárítása: Vendég ügynök állapota nem érhető el |} Microsoft Docs'
+title: 'Azure biztonsági mentési hiba elhárítása: Vendég ügynök állapota nem érhető el'
 description: A jelenség okok és megoldások Azure biztonsági mentési hibák ügynök, a bővítmény és a lemezek.
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
 keywords: Az Azure backup; Virtuálisgép-ügynök; Hálózati kapcsolat;
-ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
-ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: genli
+ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606358"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -63,7 +58,7 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Biztonsági mentés sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
 
-Hibaüzenet: "Nem lehet végrehajtani a műveletet, a Virtuálisgép-ügynök nem válaszol" <br>
+Hibaüzenet: "Nem tudott kommunikálni a Virtuálisgép-ügynök pillanatkép állapot" <br>
 Hibakód: "GuestAgentSnapshotTaskStatusError"
 
 Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás ütemezése, biztonsági mentés indít el a feladat által a biztonsági mentés Virtuálisgép-bővítmény időpontban pillanatképének elkészítéséhez kommunikál. A következő esetekben előfordulhat, hogy a pillanatkép indított folyamatban. Ha a pillanatkép nem elindul, a biztonsági mentési hiba léphet fel. Fejezze be a következő hibaelhárítási lépéseket a megadott sorrendben, majd próbálja megismételni a műveletet:  
@@ -91,6 +86,16 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 
 Megfelelő működéséhez a biztonsági mentés bővítmény használatához az Azure nyilvános IP-címek hozzáférés szükséges. A bővítmény parancsokat küld a pillanatképek a virtuális gép kezelése az Azure storage végpont (HTTP URL-cím). Ha a kiterjesztés nem fér hozzá a nyilvános interneten, biztonsági mentés végül sikertelen.
 
+Ez azt a VM forgalmat proxykiszolgáló telepíthető.
+##### <a name="create-a-path-for-http-traffic"></a>A HTTP-forgalom elérési utat hoz létre
+
+1. Ha korlátozásait a hálózati hely (például a hálózati biztonsági csoport) található, a forgalmat a HTTP-proxy kiszolgáló telepítése
+2. Engedélyezi az internet elérését a HTTP-proxy kiszolgáló, a szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
+
+Megtudhatja, hogyan állíthat be egy HTTP-proxy a virtuális gép biztonsági mentésekhez, lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+
+A biztonsági mentésben szereplő virtuális gép vagy a proxykiszolgáló, amelyen keresztül a továbbítódik Azure nyilvános IP-címek hozzáférést igényel.
+
 ####  <a name="solution"></a>Megoldás
 A probléma megoldása érdekében próbálkozzon a következő módszerek egyikét:
 
@@ -104,13 +109,6 @@ Szeretné megtudni, a lépéseit szolgáltatás címkék konfigurálásához, te
 
 > [!WARNING]
 > Tárolási szolgáltatás címkék még csak előzetes verziójúak. Elérhetők csak adott régióban. Régiók listáját lásd: [tárolási címkék szolgáltatás](../virtual-network/security-overview.md#service-tags).
-
-##### <a name="create-a-path-for-http-traffic"></a>A HTTP-forgalom elérési utat hoz létre
-
-1. Ha korlátozásait a hálózati hely (például a hálózati biztonsági csoport) található, a forgalmat a HTTP-proxy kiszolgáló telepítése
-2. Engedélyezi az internet elérését a HTTP-proxy kiszolgáló, a szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
-
-Megtudhatja, hogyan állíthat be egy HTTP-proxy a virtuális gép biztonsági mentésekhez, lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Azure által felügyelt lemezek használatakor szükség lehet egy további port megnyitásával (port 8443) a tűzfalat.
 
@@ -194,6 +192,19 @@ Ez a hiba csak a felügyelt virtuális gépekhez, amelyben a felhasználó záro
 
 #### <a name="solution"></a>Megoldás
 
-A probléma megoldásához távolítsa el a zárolást az erőforráscsoportot, és lehetővé teszik az Azure biztonsági mentési szolgáltatás törölheti a helyreállítási pont gyűjtemény és a következő biztonsági mentés az alapul szolgáló pillanatképeket.
-Ha végzett, újra helyezheti vissza a zárolást a Virtuálisgép-csoport. 
+A probléma megoldásához távolítsa el a zárolást az erőforráscsoportot, és kövesse az alábbi lépéseket a visszaállítási pont gyűjtemény eltávolítása: 
+ 
+1. Távolítsa el a zárolást az erőforráscsoportban, ahol a virtuális gép is található. 
+2. Telepítse a ARMClient Chocolatey használatával: <br>
+   https://github.com/projectkudu/ARMClient
+3. Jelentkezzen be ARMClient: <br>
+    `.\armclient.exe login`
+4. A visszaállítási pont gyűjteményben, amely megfelel a virtuális gép beolvasása: <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
+    Példa: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+5. A visszaállítási pont gyűjtemény törlése: <br>
+    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+6. A következő ütemezett biztonsági mentés automatikusan létrehoz egy helyreállítási pont gyűjtemény és az új visszaállítási pontok.
+
+Ha végzett, újra helyezheti vissza a zárolást a Virtuálisgép-csoport. 

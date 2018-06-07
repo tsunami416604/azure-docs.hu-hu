@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bf47ad3f401abced4e74260dc9180413d69268c3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 683e8b1407042624d08aee1f0a2120990e2f702e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621710"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Másolja az adatokat, és az Azure SQL adatbázis Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -148,7 +149,7 @@ GO
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
-| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtása úgy, hogy egy adott szelet adatait. További információkért lásd: [ismételhető másolási](#repeatable-copy). |A lekérdezési utasítást. |Nem |
 | sliceIdentifierColumnName |Adja meg a másolási tevékenység során automatikusan létrejön szelet azonosítóval, amely távolítja el az adatokat egy adott szelet, amikor futtassa újra a kitöltésének oszlop nevét. További információkért lásd: [ismételhető másolási](#repeatable-copy). |Egy oszlop binary(32) adattípusú oszlop neve. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárás, amely meghatározza, hogyan alkalmazhat forrásadatok a céloldali tábla, pl. do upserts vagy a saját üzleti logikát használó átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás fog **kötegenként meghívott**. Ha művelet, amelynek csak egyszer futnak, és érinti a elvégezni a segítségével például törlés/truncate forrásadatok használja szeretné `sqlWriterCleanupScript` tulajdonság. |A tárolt eljárás neve. |Nem |
@@ -644,25 +645,25 @@ Ha az adatok mozgatása az Azure SQL Database, a következő megfeleltetéseket 
 | dátum |DateTime |
 | Dátum és idő |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
-| image |Byte] |
+| Kép |Byte] |
 | int |Int32 |
 | pénz |Decimális |
 | nchar |Karakterlánc, Char] |
 | ntext |Karakterlánc, Char] |
 | Numerikus |Decimális |
 | nvarchar |Karakterlánc, Char] |
-| valós |Egyedülálló |
+| valós |Önálló |
 | ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
-| Szöveg |Karakterlánc, Char] |
-| time |TimeSpan |
+| szöveg |Karakterlánc, Char] |
+| time |A TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Bájt |
 | egyedi azonosító |GUID |

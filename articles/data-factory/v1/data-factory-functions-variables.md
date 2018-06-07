@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b9884dac8a2716cbce6fca7b8172f7d272ad8f2f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 265b227520f25ebd1112d940aaf28fed9f88ecdc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621020"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Az Azure Data Factory - funkciók és a rendszer változói
 > [!NOTE]
@@ -94,7 +95,7 @@ Az alábbi táblázatok tartalmazzák az Azure Data Factory a függvények:
 | Dátum |EndOfDay(X) |X: dátum és idő |Lekérdezi a X (nap összetevőjének) napját végét jelölő dátum-idő.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | Dátum |EndOfMonth(X) |X: dátum és idő |A hónap összetevőjét X paraméter által jelölt hónap végének lekérdezi. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (dátuma és időpontja. szeptember a hónap végét jelölő) |
 | Dátum |StartOfDay(X) |X: dátum és idő |Lekérdezi a nap összetevőjének megállapítása X paraméter által jelölt nap kezdete.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |FROM(X) |X: String |Egy dátum-idő X karakterláncot elemezni. |
+| DateTime |FROM(X) |X: karakterlánc |Egy dátum-idő X karakterláncot elemezni. |
 | DateTime |Ticks(X) |X: dátum és idő |Lekérdezi a ticks X paraméter tulajdonsága. Egy osztásjelek 100 nanoszekundumban egyenlő. Ez a tulajdonság értékének ticks, 1 januárt, 12:00:00 éjfél óta eltelt 0001 számát jelöli. |
 | Szöveg |Format(X) |X: karakterlánc-változóvá |A szöveg (használata `\\'` karaktert kombinációja `'` karakter).|
 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9d8d0daae3fd35cd8a2527a3a29da235424830e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622560"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával teradata rendszerhez
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -286,7 +287,7 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 | Teradata-adatbázishoz típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | Karakter |Karakterlánc |
-| Clob |Karakterlánc |
+| CLOB |Karakterlánc |
 | Kép |Karakterlánc |
 | VarChar |Karakterlánc |
 | VarGraphic |Karakterlánc |
@@ -301,24 +302,24 @@ Adatok áthelyezése a teradata rendszerhez, amikor a következő leképezéseit
 | Szám |Dupla |
 | SmallInt |Int16 |
 | Dátum |DateTime |
-| Time |TimeSpan |
+| Time |A TimeSpan |
 | Időzóna idő |Karakterlánc |
 | Időbélyeg |DateTime |
 | Az időzóna időbélyeg |DateTimeOffset |
-| Időköz nap |TimeSpan |
-| Időköz nap, óra |TimeSpan |
-| Naponta időköz percben |TimeSpan |
-| Második intervallum naponta |TimeSpan |
-| Időköz óra |TimeSpan |
-| Időköz óra, perc alatt |TimeSpan |
-| Második intervallum óra |TimeSpan |
-| Időköz percben |TimeSpan |
-| Másik időköz percben |TimeSpan |
-| Időköz második |TimeSpan |
+| Időköz nap |A TimeSpan |
+| Időköz nap, óra |A TimeSpan |
+| Naponta időköz percben |A TimeSpan |
+| Második intervallum naponta |A TimeSpan |
+| Időköz óra |A TimeSpan |
+| Időköz óra, perc alatt |A TimeSpan |
+| Második intervallum óra |A TimeSpan |
+| Időköz percben |A TimeSpan |
+| Másik időköz percben |A TimeSpan |
+| Időköz második |A TimeSpan |
 | Időköz év |Karakterlánc |
 | Időköz hónap év |Karakterlánc |
 | Időköz hónap |Karakterlánc |
-| Period(Date) |Karakterlánc |
+| Period(date) |Karakterlánc |
 | Period(Time) |Karakterlánc |
 | Időtartam (idő időzóna) |Karakterlánc |
 | Period(Timestamp) |Karakterlánc |

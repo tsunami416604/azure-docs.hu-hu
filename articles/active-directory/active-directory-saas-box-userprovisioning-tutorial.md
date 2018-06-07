@@ -13,23 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0a6386f9d0207ab71c490801ea995e504825e0c8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589314"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: Az automatikus felhasználó lépnek beállítása használata
 
 Ez az oktatóanyag célja szemlélteti a lépéseket kell elvégeznie a mezőbe, és az Azure AD automatikus kiépítés és deaktiválás rendelkezés felhasználói fiókok Azure ad-mezőben.
 
+> [!NOTE]
+> Ez az oktatóanyag leírja egy összekötőt, az Azure AD-felhasználó kiépítési Service platformra épül. Ez a szolgáltatás funkciója, hogyan működik, és gyakran ismételt kérdések fontos tudnivalókat tartalmaz [felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](./active-directory-saas-app-provisioning.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az Azure AD-integráció konfigurálása a jelölését, a következőkre van szükség:
 
-*   Az Azure Active directory-bérlő.
-*   A mezőben egyszeri bejelentkezés engedélyezve van az előfizetésben.
-*   Egy felhasználói fiókot mezőben Team rendszergazdai engedélyekkel.
+- Az Azure AD-bérlő
+- Egy mezőben üzleti terv vagy nagyobb frekvenciával
+
+> [!NOTE]
+> Ebben az oktatóanyagban tesztelésekor a lépéseket, azt javasoljuk, hogy végezzen *nem* használja az éles környezetben.
+
+Ez az oktatóanyag lépéseit teszteléséhez hajtsa végre az ezek az ajánlások:
+
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="assigning-users-to-box"></a>Felhasználók hozzárendelése mezőbe 
 

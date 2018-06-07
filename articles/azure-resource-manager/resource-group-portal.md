@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: fda195c03c589361b8a798166b0ae4d93611bcd0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7398e01a46b5d296f26905e2063acdb98383f567
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603385"
 ---
 # <a name="manage-azure-resources-through-portal"></a>Azure-portálon keresztül erőforrások kezelése
 
@@ -58,7 +59,7 @@ Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Ezért ha 
    
     ![PIN-kód erőforráscsoport](./media/resource-group-portal/show-resource-group-dashboard.png)
 
-## <a name="tag-resources"></a>Címke erőforrások
+## <a name="tag-resources"></a>Erőforrások címkézése
 A címkékkel erőforráscsoportok és erőforrásokhoz, hogy logikusan rendszerezhesse az Ön eszközeit. A címkék használatáról információkért lásd: [az Azure-erőforrások rendszerezése címkék használatával](resource-group-using-tags.md).
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
@@ -130,5 +131,5 @@ Erőforráscsoport törlésekor törlődnek a benne található összes erőforr
 * A központi telepítés részleteinek megtekintéséhez lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).
 * Az erőforrásoknak a portálon keresztül történő központi telepítéséhez lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](resource-group-template-deploy-portal.md).
 * Erőforrások elérésének kezelésében, tekintse meg [az Azure-előfizetés erőforrásokhoz való hozzáférés kezelése a szerepkör-hozzárendelések segítségével](../role-based-access-control/role-assignments-portal.md).
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 

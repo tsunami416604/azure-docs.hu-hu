@@ -1,23 +1,19 @@
 ---
-title: Helyreállítási szolgáltatások – áttekintés tárolók |} Microsoft Docs
+title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és Recovery Services-tárolók és az Azure mentési tárolókban összehasonlítása.
 services: backup
-documentationcenter: " "
 author: markgalioto
 manager: carmonm
-ms.assetid: 38d4078b-ebc8-41ff-9bc8-47acf256dc80
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 10/15/2017
-ms.author: markgal;arunak;sogup
-ms.openlocfilehash: 12ecc7ab33dba2f4f9842a4fbd6491400024a4e5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: markgal
+ms.openlocfilehash: b6195feb25a7206d7c453e31f0ac312e070b3113
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606171"
 ---
 # <a name="recovery-services-vaults-overview"></a>Helyreállítási szolgáltatások tárolók áttekintése
 

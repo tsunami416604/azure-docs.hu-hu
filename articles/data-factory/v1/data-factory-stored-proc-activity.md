@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3a0d6998671df7f05d7077da6fffc20a5bf27e8a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622499"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -313,7 +314,7 @@ A következő táblázat ismerteti ezeket a JSON-tulajdonságokat:
 | név | A tevékenység neve. |Igen |
 | leírás |Mire használható a tevékenységet leíró szöveg |Nem |
 | type | Értékre kell állítani: **SqlServerStoredProcedure** | Igen |
-| Bemenetek | Választható. Ha megad egy bemeneti adatkészlet, elérhetőnek kell lennie (a "Kész" állapotú) a tárolt eljárás tevékenység futtatásához. A bemeneti adatkészletet a tárolt eljárás nem használható paraméterként. Csak a tárolt eljárási tevékenység megkezdése előtt ellenőrizze, a függőség szolgál. |Nem |
+| bemenetek | Választható. Ha megad egy bemeneti adatkészlet, elérhetőnek kell lennie (a "Kész" állapotú) a tárolt eljárás tevékenység futtatásához. A bemeneti adatkészletet a tárolt eljárás nem használható paraméterként. Csak a tárolt eljárási tevékenység megkezdése előtt ellenőrizze, a függőség szolgál. |Nem |
 | kimenetek | Meg kell adnia egy tárolt eljárás tevékenység egy kimeneti adatkészletet. Kimeneti adatkészlet határozza meg a **ütemezés** a tárolt eljárás tevékenység (óránként, heti, havi, stb.). <br/><br/>A kimeneti adatkészlet kell használnia egy **társított szolgáltatás** , amely egy Azure SQL Database vagy az Azure SQL Data Warehouse vagy a tárolt eljárás futtatásához használni kívánt SQL Server-adatbázis hivatkozik. <br/><br/>A kimeneti adatkészlet felelt meg a tárolt eljárás eredményét a későbbi feldolgozásra, amelyet egy másik tevékenység módon működhetnek ([tevékenységek láncolás](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) folyamatban. Azonban adat-előállító nem automatikusan kiírhatja a kimenetet tárolt eljárás ehhez a DataSet adatkészlethez. A tárolt eljárás, amely egy SQL táblázat, amely a kimeneti adatkészlet mutat ír. <br/><br/>Bizonyos esetekben a kimeneti adatkészlet lehet egy **dummy dataset**, amellyel csak a tárolt eljárási tevékenység fut ütemezése. |Igen |
 | storedProcedureName |Adja meg a tárolt eljárás neve az Azure SQL database vagy az Azure SQL Data Warehouse vagy SQL Server adatbázis, amely a társított szolgáltatás, amely a bemeneti tábla használja. |Igen |
 | storedProcedureParameters |Adja meg a tárolt eljárás paraméter értékét. Ha az egyik paraméter null értéket átadni van szüksége, használja a szintaxist: "param1": (összes kisbetű) NULL értékű. Tekintse meg az alábbi minta tájékozódhat az e tulajdonság használatával. |Nem |

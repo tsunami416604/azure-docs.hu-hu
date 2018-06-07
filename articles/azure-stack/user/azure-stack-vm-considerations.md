@@ -12,13 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 324fa19aa97cead44f38d07a2fd0765048cd6238
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605388"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Virtuális gépek Azure-készletben használatának szempontjai
 
@@ -102,7 +103,7 @@ A támogatott erőforrástípusai és API-verziók listáját változhat, ha a f
 A Windows-termékeket termékkel használati jogosultságok és a Microsoft feltételeinek megfelelően kell használni. Használja az Azure verem [automatikus Virtuálisgép-aktiválás](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) Windows Server virtuális gépek (VM) aktiválása (AVMA).
 
 - Az Azure-verem gazdagép akkor aktiválódik, a Windows Server 2016 Windows az AVMA kulcsokat. Minden virtuális gép, amely a Windows Server 2012 vagy újabb rendszer automatikusan aktiválja.
-- Futtassa a Windows Server 2008 R2 automatikusan nincs aktiválva, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx).
+- Futtassa a Windows Server 2008 R2 automatikusan nincs aktiválva, és aktiválni kell a virtuális gépek [MAK-aktiválást](https://technet.microsoft.com/library/ff793438.aspx). MAK-aktiválást használ, meg kell adnia a saját termékkulcsot.
 
 Microsoft Azure használatával, hogy a KMS-aktiválás Windows virtuális gépek aktiválása. Ha áthelyezi a virtuális gépek Azure-veremből Azure és az esetlegesen fellépő problémák aktiválása, lásd: [hibaelhárítása a Windows Azure virtuális gép aktiválással kapcsolatos problémák](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). További információk találhatók a [hibaelhárítás Windows aktiválási hibák Azure virtuális gépeken](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure támogatási csapatának blogja post.
 

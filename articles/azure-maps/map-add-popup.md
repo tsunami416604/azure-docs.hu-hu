@@ -1,28 +1,26 @@
 ---
 title: Adja hozzá az Azure-leképezések egy előugró ablak |} Microsoft Docs
 description: Javascript-leképezés egy előugró ablak hozzáadása
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7425081597bfa9379594597277555ee30809c4e6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d9eeac28b204af0bb7d8e204762aae854055b33a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599303"
 ---
 # <a name="add-a-popup-to-the-map"></a>A térkép egy előugró ablak hozzáadása
 
 Ez a cikk bemutatja, hogyan egy előugró ablak felvétele a térképre.  
 
-## <a name="understand-the-code"></a>A kód ismertetése
+## <a name="understand-the-code"></a>A kód értelmezése
 
 <a id="addAPopup"></a>
 
@@ -51,3 +49,7 @@ További tudnivalók az osztályok és az ebben a cikkben használt módszerek:
     * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#setpopupoptions)
     * [Nyissa meg](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#open)
     * [Zárja be](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#close)
+    
+További kód hozzáadása a maps, tekintse meg a következő cikkeket: 
+* [Egy alakzat hozzáadása](./map-add-shape.md)
+* [Adja hozzá az egyéni HTML](./map-add-custom-html.md)

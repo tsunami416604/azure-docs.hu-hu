@@ -1,25 +1,20 @@
 ---
-title: Azure Backup-ügynököt fájlok és mappák biztonsági mentése |} Microsoft Docs
+title: Azure Backup szolgáltatás ügynökének használja a fájlok és mappák biztonsági mentése
 description: A Microsoft Azure Backup szolgáltatás ügynökének használatával Windows-fájlok és mappák biztonsági mentése az Azure-bA. Recovery Services-tároló létrehozása, a biztonsági mentési ügynök telepítése, a biztonsági mentési házirend meghatározása és a fájlok és mappák a kezdeti biztonsági mentés futtatására.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: mentési tároló; Készítsen biztonsági másolatot a Windows server; biztonsági mentési Időablakok;
-ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/5/2018
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 38f98a29edc2a0bfb0141a0a6fabad2727175f29
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: markgal
+ms.openlocfilehash: 583149ed892f82af8687d698cabe1a876aaaa523
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606257"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Windows-kiszolgálóról vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával
 Ez a cikk azt ismerteti, hogyan biztonsági másolatot készíthet a Windows Server (és a Windows-ügyfél) fájlok és mappák Azure Resource Manager telepítési modellel Azure Backup szolgáltatásnál.

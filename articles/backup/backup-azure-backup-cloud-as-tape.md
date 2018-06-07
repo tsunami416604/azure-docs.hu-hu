@@ -1,25 +1,20 @@
 ---
-title: "Cserélje le a szalag infrastruktúra az Azure Backup használatával |} Microsoft Docs"
-description: "Ismerje meg, hogy Azure Backup szolgáltatás biztosítja a szalag-szerű szemantikáját, amely lehetővé teszi biztonsági mentése és visszaállítása az adatok Azure-ban"
+title: Az Azure Backup használata a szalagos infrastruktúra lecseréléséhez
+description: Ismerje meg, hogy Azure Backup szolgáltatás biztosítja a szalag-szerű szemantikáját, amely lehetővé teszi biztonsági mentése és visszaállítása az adatok Azure-ban
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: vijayts
-editor: 
-ms.assetid: 2e1bb67d-986c-4437-8056-3a63169b4214
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 1/10/2017
-ms.author: saurse;trinadhk;markgal
+ms.author: saurse
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0f3152daf5f91f7c9e540797bf09b21969d2d33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff30dd0e4c7cadabddbeddc38c28a773db68d8ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606494"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>A hosszú távú tárolás szalagon áthelyezése az Azure felhőben
 Azure biztonsági mentési és a System Center Data Protection Manager-ügyfél a következőket teheti:
@@ -42,7 +37,7 @@ Az ügyfelek is ütemezheti a heti biztonsági másolatot. Például a következ
 ## <a name="what-is-the-retention-policy"></a>Mi az az adatmegőrzési?
 Az adatmegőrzési Megadja azt az időtartamot, amelyre a biztonsági mentést kell tárolni. Ahelyett, hogy csak adja meg az összes biztonsági mentési pont "egyszerű policy", az ügyfelek házirendeket határozhatnak meg, a különböző megőrzési alapján, ha a biztonsági mentés használatban van. Például a biztonsági mentési pont végrehajtott naponta, ami működési helyreállítási pontjaként szolgál 90 napig őrzi meg. A naplózási célra minden negyedév végén végrehajtott biztonsági mentési pont hosszabb ideig megőrzi.
 
-![Adatmegőrzési házirend](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
+![Adatmegőrzési szabályzat](./media/backup-azure-backup-cloud-as-tape/retentionpolicy.png)
 
 "Adatmegőrzési pontokat" Ebben a házirendben megadott teljes száma érték a 90 (napi pontok) + 40 (minden egy 10 éve negyedév) = 130.
 
@@ -73,7 +68,7 @@ Kattintva **módosítás** az előző képernyőn a felhasználóknak kell tová
 
 ![Módosítás](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure biztonsági mentéssel kapcsolatos további információkért lásd:
 
 * [Az Azure Backup bemutatása](backup-introduction-to-azure-backup.md)

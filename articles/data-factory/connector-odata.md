@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d1de8baf725233bee30a14eca770e4f04e7a70b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f648bec7530260a6445f74b6d141140f728674ee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617161"
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával OData-forrásra
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -133,7 +134,7 @@ Adatok másolása az OData, állítsa be a type tulajdonságot az adathalmaz **O
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adathalmaz értékre kell állítani: **ODataResource** | Igen |
-| elérési út | Az OData-erőforrás elérési útja. | Nem |
+| elérési út | Az OData-erőforrás elérési útja. | Igen |
 
 **Példa**
 
@@ -207,19 +208,19 @@ Az adatok másolása OData, amikor az Azure Data Factory ideiglenes adattípusok
 | Az OData-adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
 | Edm.Binary | Byte] |
-| Edm.Boolean | Logikai |
+| Edm.Boolean | logikai érték |
 | Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimális |
 | Edm.Double | Dupla |
-| Edm.Single | Egyedülálló |
+| Edm.Single | Önálló |
 | Edm.Guid | GUID |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Karakterlánc |
-| Edm.Time | TimeSpan |
+| Edm.Time | A TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!Note]

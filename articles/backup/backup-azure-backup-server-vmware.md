@@ -1,23 +1,19 @@
 ---
-title: "Készítsen biztonsági másolatot a VMware Server az Azure Backup Server |} Microsoft Docs"
-description: "Azure Backup Server használatával egy VMware vCenter/ESXi-kiszolgálók biztonsági mentését Azure vagy lemezre. Ez a cikk ismerteti a lépés = biztonsági mentése (vagy védelmének)-lépésre utasítást a VMware-munkaterhelések."
+title: Az Azure Backup Server VMware-kiszolgálók biztonsági mentését
+description: Azure Backup Server használatával egy VMware vCenter/ESXi-kiszolgálók biztonsági mentését Azure vagy lemezre. Ez a cikk ismerteti a lépés = biztonsági mentése (vagy védelmének)-lépésre utasítást a VMware-munkaterhelések.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-ms.assetid: 6b131caf-de85-4eba-b8e6-d8a04545cd9d
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: markgal;
-ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605423"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Készítsen biztonsági másolatot egy VMware-kiszolgálóról az Azure-bA
 
@@ -380,7 +376,7 @@ Ha még nem használta a System Center Data Protection Manager vagy az Azure Bac
 
     ![Védelmi csoport tagja és beállítás összegzése](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Azure Backup Server használatával VMware munkaterhelések védelmét, ha szeretné Azure Backup Server védelme is egy [Microsoft Exchange server](./backup-azure-exchange-mabs.md), egy [Microsoft SharePoint-farm](./backup-azure-backup-sharepoint-mabs.md), vagy egy [SQL Server-adatbázis](./backup-azure-sql-mabs.md).
 
 Az ügynök regisztrálása problémáit, a védelmi csoport konfigurálásához, vagy biztonsági mentése feladat, kapcsolatban információk [hibaelhárítása Azure Backup Server](./backup-azure-mabs-troubleshoot.md).

@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 838bdccb06e5763d33f63208cb6f941a55778b32
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 93bcb3c1f11a8c39286dd33c503c099ceb7f962c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588930"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása
 Ha hiba történik, a közzétett alkalmazás eléréséhez, vagy az alkalmazás-közzététel, ellenőrizze a megjelenítéséhez, ha a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -48,7 +49,7 @@ Regisztrációs varázsló Connector telepítése közben meghiúsul, ha két m�
 
 Miután megtalálta az összekötő hibát az eseménynaplóban, használja a táblázat előforduló hibákat a probléma megoldásához:
 
-| Hiba | Ajánlott lépések |
+| Hiba | Javasolt lépések |
 | ----- | ----------------- |
 | Összekötő regisztrálása nem sikerült: Ellenőrizze, hogy engedélyezte az Azure felügyeleti portálon Proxy és a megadott megfelelően az Active Directory-felhasználónevet és jelszót. Hiba: "egy vagy több hiba történt." | Ha korábban bezárta a regisztrációs ablakban az Azure AD bejelentkezés nélkül, futtassa újra az összekötő varázslót, és regisztrálja az összekötőt. <br><br> A regisztrációs ablak nyílik meg, és azonnal bezárása után, de nem engedélyezi, hogy jelentkezzen be, ha a hiba valószínűleg jelenik meg. Ez a hiba akkor fordul elő, amikor egy hálózati hiba van a rendszeren. Győződjön meg arról, hogy lehet csatlakozni a böngészőből nyilvános webhelyeken és, hogy a portok: Nyissa meg a [proxyval Előfeltételek](manage-apps/application-proxy-enable.md). |
 | Törölje a jelet hiba az ablakban jelenik meg. Nem lehet folytatni | Ha ezt a hibaüzenetet látja, és majd a időszak véget ér, a megadott a rossz felhasználónévvel vagy jelszóval. Próbálja meg újra. |
@@ -61,7 +62,7 @@ Miután megtalálta az összekötő hibát az eseménynaplóban, használja a t�
 
 Ez a táblázat ismerteti a gyakori hibákat, és konfigurálja a Kerberos érkező, és megoldási javaslatokat is.
 
-| Hiba | Ajánlott lépések |
+| Hiba | Javasolt lépések |
 | ----- | ----------------- |
 | Nem sikerült beolvasni a jelenlegi, PowerShell-parancsfájlok futtatására vonatkozó végrehajtási házirend. | Ha az összekötő telepítése nem sikerül, ellenőrizze, hogy győződjön meg arról, hogy a PowerShell végrehajtási házirend nincs letiltva.<br><br>1. Nyissa meg a Helyicsoportházirend-szerkesztő.<br>2. Ugrás a **számítógép konfigurációja** > **felügyeleti sablonok** > **Windows-összetevők**  >   **A Windows PowerShell** duplán **kapcsolja be a parancsfájl végrehajtása**.<br>3. A végrehajtási házirendet is megadni **nincs konfigurálva** vagy **engedélyezve**. Ha beállítása **engedélyezve**, győződjön meg arról, hogy a beállítások, a végrehajtási házirend beállítása értékre **engedélyezése a helyi és távoli aláírt parancsfájlok** vagy **összes parancsfájlok**. |
 | 12008 - az azure AD és a háttérkiszolgáló engedélyezett Kerberos hitelesítési kísérletek maximális száma túllépve. | Ez a hiba arra utalhat az Azure AD közötti helytelen konfiguráció és a háttérkiszolgáló, vagy mindkét gépen dátumával és időpontjával konfigurációs problémát. A háttérkiszolgáló elutasította az Azure AD által létrehozott Kerberos jegyet. Győződjön meg arról, hogy az Azure AD és a háttér-alkalmazáskiszolgáló megfelelően van konfigurálva. Győződjön meg arról, hogy az Azure ad-val dátumával és időpontjával konfigurációs és a háttérkiszolgáló alkalmazás szinkronizálja a rendszer. |
@@ -74,7 +75,7 @@ Ez a táblázat ismerteti a gyakori hibákat, és konfigurálja a Kerberos érke
 
 Ez a lista azokat a hibákat, a végfelhasználók akkor léphetnek fel, ha próbálnak hozzáférni az alkalmazáshoz, és sikertelen lesz. 
 
-| Hiba | Ajánlott lépések |
+| Hiba | Javasolt lépések |
 | ----- | ----------------- |
 | A webhely a lap nem jeleníthető meg. | A felhasználó előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha az alkalmazás integrált Windows-Hitelesítést alkalmazás közzétett elérésére tett kísérlet során. A megadott egyszerű Szolgáltatásnevet az alkalmazás helytelen lehet. Integrált Windows-Hitelesítést alkalmazások esetén győződjön meg róla, hogy az egyszerű Szolgáltatásnevet az alkalmazáshoz beállított helyes. |
 | A webhely a lap nem jeleníthető meg. | A felhasználó előfordulhat, hogy ez a hibaüzenet az alkalmazást, ha az alkalmazás az OWA alkalmazás közzétett elérésére tett kísérlet során. Ennek oka lehet a következők egyikét:<br><li>A megadott egyszerű Szolgáltatásnevet az alkalmazás nem megfelelő. Győződjön meg arról, hogy helyesen-e az egyszerű Szolgáltatásnevet az alkalmazáshoz beállított.</li><li>A felhasználó megpróbált hozzáférni az alkalmazáshoz használja a megfelelő vállalati fiók helyett a Microsoft-fiókkal való bejelentkezéshez, vagy egy Vendég felhasználó. Győződjön meg arról, hogy a felhasználó a vállalati fiók, amely megfelel a tartomány a közzétett alkalmazás használatával jelentkezik be. Microsoft Account felhasználók és a vendég nem hozzáférhessenek az integrált Windows-Hitelesítést alkalmazásokhoz.</li><li>A felhasználó megpróbált hozzáférni az alkalmazáshoz megfelelő nincs definiálva a helyszíni oldalon az alkalmazáshoz. Győződjön meg arról, hogy az a felhasználó a megfelelő engedélyekkel rendelkezik a helyszíni gépen háttér alkalmazás meghatározottak szerint. |

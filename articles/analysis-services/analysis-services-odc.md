@@ -3,16 +3,17 @@ title: Hozzon létre egy Azure Analysis Services-kiszolgálóhoz való kapcsoló
 description: Megtudhatja, hogyan hozzon létre egy Office Data Connection fájlt adatokat lekérni az Azure-ban egy Analysis Services-kiszolgálóhoz való csatlakozáshoz.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4cf7257f5eb51f82bb129aa57231339a28991193
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8f3b6ae8cf0017a1695b4a01a2ae606f7b64c6aa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598810"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office Data Connection-fájl létrehozása
 

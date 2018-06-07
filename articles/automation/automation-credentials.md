@@ -9,15 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8055e6fdf8cc9af14d94177c9ffdeb142352d5a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9bf671ab6f14f95d5d707c3c3521b1d1c6e15ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598932"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli hitelesítőadat eszközök
 
-Automation szolgáltatásbeli hitelesítőadat-eszköz rendelkezik egy [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektum. A Runbookok és a DSC-konfigurációk használhat parancsmagokat, fogadja el a hitelesítést egy PSCredential objektumot, vagy azokat lehet, hogy bontsa ki a felhasználónevet és jelszót a PSCredential objektum bizonyos alkalmazás vagy a hitelesítés megkövetelése a szolgáltatás biztosításához. Egy hitelesítő adat tulajdonságait az Azure Automationben biztonságosan tároljuk, és a runbookot vagy a DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
+Automation szolgáltatásbeli hitelesítőadat-eszköz egy objektumot, amely tartalmazza a biztonsági hitelesítő adatok, például a felhasználónév és jelszó érvényes. A Runbookok és a DSC-konfigurációk használhat parancsmagokat, fogadja el a hitelesítést egy PSCredential objektumot, vagy azokat lehet, hogy bontsa ki a felhasználónevet és jelszót a PSCredential objektum bizonyos alkalmazás vagy a hitelesítés megkövetelése a szolgáltatás biztosításához. Egy hitelesítő adat tulajdonságait az Azure Automationben biztonságosan tároljuk, és a runbookot vagy a DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 

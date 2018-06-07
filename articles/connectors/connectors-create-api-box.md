@@ -1,25 +1,22 @@
 ---
-title: "Adja hozzá a mezőbe összekötőt a Logic Apps |} Microsoft Docs"
-description: "A REST API-paraméterekkel rendelkező mezőben összekötő áttekintése"
-services: 
-documentationcenter: 
+title: Be - Azure Logic Apps csatlakozni |} Microsoft Docs
+description: Létrehozása és kezelése mezőben REST API-k és az Azure Logic Apps fájlokat
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 949579cf-a81c-4790-9ef5-fe39b4fbd0c5
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: cfowler
+ms.author: estfan
 ms.date: 11/07/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 43268653a507ee76778e8594c5d001e4148dd910
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: d590b3f681d6344764f7a189a8e32a2931baef02
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610038"
 ---
 # <a name="get-started-with-the-box-connector"></a>A mezőben összekötő az első lépései
 Csatlakoztatása a mezőbe, és fájlokat, törölje a fájlokat, és több létrehozása. A mezőbe a következőket teheti:

@@ -10,15 +10,16 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 996fdd9934d79f1640e58c7853564ac05ebb90bb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d0897f73ed1a321c8287729eaba775a625f51e4d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620986"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése, és az Azure Cosmos Adatbázisba az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -132,7 +133,7 @@ Ha forrás típusa másolási tevékenység esetén **DocumentDbCollectionSource
 | **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
 | --- | --- | --- | --- |
 | nestingSeparator |A forrás oszlop nevét jelzi, hogy a beágyazott dokumentum egy különleges karakterek van szükség. <br/><br/>Például fent: `Name.First` a kimeneti táblát hoz létre a következő JSON struktúrában a Cosmos DB dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Alapértelmezett érték `.` (pont). |
-| writeBatchSize |Dokumentumok létrehozásához Azure Cosmos DB szolgáltatás párhuzamos kérelmek száma.<br/><br/>A teljesítmény úgy finomhangolhatja, és a Cosmos DB adatok másolásakor e tulajdonság használatával. A jobb teljesítmény számíthat, mivel több párhuzamos kérelem Cosmos DB writeBatchSize növelésével. Azonban kell elkerülheti a sávszélesség-szabályozás, amely képes throw a hibaüzenet a következő: "Ez nagy lekérő".<br/><br/>Sávszélesség-szabályozás tényező, beleértve a dokumentumok, a dokumentumok számát méretét, indexelő házirend célgyűjteményt stb határoz meg. A másolási műveletek segítségével jobban gyűjtemény (pl. S3) rendelkezik a legtöbb átviteli sebesség érhető el (2500 kérés egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
+| WriteBatchSize |Dokumentumok létrehozásához Azure Cosmos DB szolgáltatás párhuzamos kérelmek száma.<br/><br/>A teljesítmény úgy finomhangolhatja, és a Cosmos DB adatok másolásakor e tulajdonság használatával. A jobb teljesítmény számíthat, mivel több párhuzamos kérelem Cosmos DB writeBatchSize növelésével. Azonban kell elkerülheti a sávszélesség-szabályozás, amely képes throw a hibaüzenet a következő: "Ez nagy lekérő".<br/><br/>Sávszélesség-szabályozás tényező, beleértve a dokumentumok, a dokumentumok számát méretét, indexelő házirend célgyűjteményt stb határoz meg. A másolási műveletek segítségével jobban gyűjtemény (pl. S3) rendelkezik a legtöbb átviteli sebesség érhető el (2500 kérés egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
 | writeBatchTimeout |Várakozási idő a művelet befejezését, mielőtt azt az időkorlátot. |A TimeSpan<br/><br/> Példa: "00: 30:00" (30 perc). |Nem |
 
 ## <a name="importexport-json-documents"></a>Importálási/exportálási JSON-dokumentumok
@@ -481,7 +482,7 @@ A kimeneti JSON-t Cosmos DB lesz majd megfelelően:
 ```
 Azure Cosmos-adatbázis egy NoSQL-tároló JSON-dokumentumok, amelyben beágyazott struktúrákat engedélyezett. Az Azure Data Factory lehetővé teszi, hogy a felhasználó keresztül hierarchia jelöléséhez **nestingSeparator**, amely "." Ebben a példában. A elválasztóval, a másolási tevékenység hoz létre a "Name" objektum három gyermekek elemekkel először középső és az utolsó, "Name.First", "Name.Middle" és "Name.Last" tábla definíciójában.
 
-## <a name="appendix"></a>Függelék:
+## <a name="appendix"></a>Függelék
 1. **Kérdés:** a másolási tevékenység támogatási frissítés a meglévő rekordok Does?
 
     **Válasz:** nem.

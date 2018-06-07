@@ -1,25 +1,20 @@
 ---
-title: A virtuális gép az Azure biztonsági mentési infrastruktúra megtervezése |} Microsoft Docs
+title: A virtuális gép az Azure biztonsági mentési infrastruktúra tervezése
 description: Az Azure virtuális gépek biztonsági megtervezésekor fontos tudnivalók találhatók
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: virtuális gépek biztonsági mentése, a virtuális gépek biztonsági mentése
-ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk;sogup
-ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: markgal
+ms.openlocfilehash: 92122e7dc62e0f402bcddff099984e6e2c605fae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606086"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
 Ez a cikk ismerteti a teljesítmény- és erőforrás-javaslatok a virtuális gép biztonsági mentési infrastruktúra tervezéséhez nyújtanak segítséget. A biztonsági mentési szolgáltatás; fő szempontjait is meghatározza lehet, hogy ezeket az jellemzőket fontos meghatározni, hogy az architektúra a kapacitástervezés és ütemezés. Ha megismerte [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezés, mint a megkezdése előtt [biztonsági mentése a virtuális gépek](backup-azure-arm-vms.md). Ha az Azure virtuális gépek több információra van szüksége, tekintse meg a [Virtual Machines – dokumentáció](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -27,7 +22,7 @@ Ez a cikk ismerteti a teljesítmény- és erőforrás-javaslatok a virtuális g�
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Hogyan működik az Azure virtuális gépek biztonsági mentése?
 Ha az Azure Backup szolgáltatás indít el a biztonsági mentési feladatot a megadott időpontban, a szolgáltatás eseményindítók időpontban pillanatképének elkészítéséhez tartalék mellék. Az Azure Backup szolgáltatás használ a _VMSnapshot_ Windows, a bővítmény és a _VMSnapshotLinux_ Linux bővítményt. A bővítmény telepítve van a virtuális gép első biztonsági mentés során. A bővítmény telepítéséhez, a virtuális Gépen kell futnia. Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
 
-Windows virtuális gépek pillanatkép létrehozása van folyamatban, amikor a biztonsági mentési szolgáltatás koordinálja a a kötet árnyékmásolata szolgáltatás (VSS) a virtuális gép lemezeinek konzisztens pillanatképének eléréséhez. Ha biztonsági mentést készít a Linux virtuális gépek, szkripteket saját egyéni konzisztencia biztosításához, ha a virtuális gép pillanatkép létrehozása van folyamatban. Meghívja a parancsfájlokat a részletek a cikk későbbi részében találhatók.
+Amikor Windows rendszerű virtuális gépekről készít pillanatképet, a Backup szolgáltatás együttműködik a Kötet árnyékmásolata szolgáltatással (VSS), hogy egységes pillanatképet készítsen a virtuális gép lemezeiről. Ha biztonsági mentést készít a Linux virtuális gépek, szkripteket saját egyéni konzisztencia biztosításához, ha a virtuális gép pillanatkép létrehozása van folyamatban. Meghívja a parancsfájlokat a részletek a cikk későbbi részében találhatók.
 
 Amikor az Azure Backup szolgáltatás elkészítette a pillanatképet, az adatok átkerülnek a tárolóba. A maximális hatékonyság érdekében a szolgáltatás csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
@@ -119,7 +114,7 @@ Javasoljuk, hogy ezeket a gyakorlatokat, virtuális gépek biztonsági mentései
 * Virtuális gép biztonsági mentések ütemezése során csúcsidőn kívül. Ily módon a biztonsági mentési szolgáltatás IOPS használ az ügyfél tárfiókja adatokat továbbít a tárolóban.
 * Győződjön meg arról, hogy a házirend érvényben van-e elosztva a eltérő tárfiókokból virtuális gépeken. Javasoljuk, hogy legfeljebb 20 teljes lemezek egyetlen tárfiókból védi a ugyanazt biztonsági mentés ütemezése. Ha nagyobb, mint 20 lemezek tárfiókokban, a virtuális gépek elosztva több házirendet a szükséges IOPS lekérni a biztonsági mentési folyamat átviteli szakasza során.
 * Ne állítson vissza egy virtuális Gépen futó prémium szintű storage ugyanazt a tárfiókot. Ha a visszaállítási művelet folyamat megegyezik a biztonsági mentési művelet, csökkenti a rendelkezésre álló IOPS a biztonsági mentéshez.
-* A prémium szintű virtuális gép biztonsági mentése győződjön meg arról, hogy az állomások premium lemezek rendelkezik-e legalább 50 % szabad terület a sikeres biztonsági mentéshez pillanatkép átmeneti tárolási fiók. 
+* A prémium szintű virtuális gép biztonsági mentése a virtuális gép biztonsági mentési csomagjának V1 javasoljuk, hogy a teljes tárolóhelynek fiók csak 50 %-át osszon ki, hogy az Azure Backup szolgáltatás másolhatja a pillanatkép storage-fiók és átviteli adatokat erről a helyről másolt tárfiókban a tárolóba.
 * Győződjön meg arról, hogy a Linux virtuális gépeken python verzió engedélyezett a biztonsági mentés 2.7
 
 ## <a name="data-encryption"></a>Adattitkosítás
@@ -149,7 +144,7 @@ A megadott virtuális gép számlázási leállítja, csak akkor, ha a védelem 
 Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>További lépések
-* [Készítsen biztonsági másolatot a virtuális gépek](backup-azure-arm-vms.md)
+* [Virtuális gépek biztonsági mentése](backup-azure-arm-vms.md)
 * [Kezelheti a virtuális gép biztonsági mentése](backup-azure-manage-vms.md)
 * [Virtuális gépek visszaállítása](backup-azure-arm-restore-vms.md)
 * [Virtuális gép biztonsági másolatával kapcsolatos problémák elhárítása](backup-azure-vms-troubleshoot.md)

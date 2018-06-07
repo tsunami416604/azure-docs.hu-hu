@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55fde1a1a61f8ec0479cd264b2ce4dd37789c5a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b87ed8b9d9b43de81bfe4173d117d9f1e2bd7abd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622006"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Helyezi át az adatokat a egy OData-forrásra Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -159,7 +160,7 @@ Ha a forrás típusa van **RelationalSource** (amely magában foglalja az OData)
 
 | Tulajdonság | Leírás | Példa | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |"?$select=Name, Description&$top=5" |Nem |
+| lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |"? $select neve, leírása és $top = = 5" |Nem |
 
 ## <a name="type-mapping-for-odata"></a>Az OData-leképezésének
 Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, a másolási tevékenység az eseményforrás-típusnak a következő kétlépéses módszert típusok gyűjtése automatikus típuskonverziók hajt végre.
@@ -169,22 +170,22 @@ Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activi
 
 Amikor adatokat OData, a következő megfeleltetéseket szolgálnak az OData-típusok .NET-típusa.
 
-| Az OData-adattípus | .NET Type |
+| Az OData-adattípus | .NET-típusa |
 | --- | --- |
 | Edm.Binary |Byte] |
-| Edm.Boolean |Logikai |
+| Edm.Boolean |logikai érték |
 | Edm.Byte |Byte] |
 | Edm.DateTime |DateTime |
 | Edm.Decimal |Decimális |
 | Edm.Double |Dupla |
-| Edm.Single |Egyedülálló |
+| Edm.Single |Önálló |
 | Edm.Guid |GUID |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
 | Edm.String |Karakterlánc |
-| Edm.Time |TimeSpan |
+| Edm.Time |A TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]

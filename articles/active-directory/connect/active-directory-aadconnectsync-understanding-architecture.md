@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: a architektúra ismertetése |} Microsoft Docs"
-description: "Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás architektúrája és a használt kifejezések magyarázatát."
+title: 'Azure AD Connect szinkronizálása: a architektúra ismertetése |} Microsoft Docs'
+description: Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás architektúrája és a használt kifejezések magyarázatát.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 465bcbe9-3bdd-4769-a8ca-f8905abf426d
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6a6150dca80a137e9787d943bfe9abb4224e6fe6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 079dfe772e6c189c0e81ea7af16d11a1c40f3ebe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593486"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect szinkronizálása: a architektúra ismertetése
 Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás alapvető architektúráját. Számos tekintetben hasonló a korábbi verzióknál MIIS 2003 ILM 2007 és a FIM 2010. Azure AD Connect szinkronizálása, ezek a technológiák alakulását. Ha ismeri az összes ilyen korábbi technológiát, ez a témakör tartalma lesz ismerős lehet is. Ha most ismerkedik a szinkronizálást, akkor ez a témakör értéke meg. Van azonban nem követelmény az ebben a témakörben a testreszabási az Azure AD Connect sync (néven a szinkronizálási motor ebben a témakörben) sikeres részleteit.
@@ -33,7 +35,7 @@ A szinkronizálási motor hívása modulon belül csatlakoztatott adatforráshoz
 
 Összekötők hívások API-t az exchange-azonosító adatokat (olvasási és írási) olyan csatlakoztatott adatforráshoz. Akkor is a bővíthető kapcsolat keretrendszer egyéni összekötő hozzáadásához. A következő ábra azt mutatja, hogy egy összekötő hogyan csatlakozzon a csatlakoztatott adatforrás a szinkronizálási motor.
 
-![Arch1](./media/active-directory-aadconnectsync-understanding-architecture/arch1.png)
+![Ossz1](./media/active-directory-aadconnectsync-understanding-architecture/arch1.png)
 
 Mindkét irányban áramolhasson az adatokat, de azt nem flow mindkét irányban egyidejűleg. Más szóval összekötő beállítható úgy, hogy teszi lehetővé az adatok áramlását a szinkronizálási motor a csatlakoztatott adatforrás vagy a szinkronizálási motor a csatlakoztatott adatforráshoz, de ezek a műveletek közül csak akkor fordulhat elő, és egy attribútum egy időben. A lehet különböző, a különböző objektumok esetében, és különböző attribútumokhoz.
 

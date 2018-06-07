@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 13e5836aea0e307cdce5bcdcd5cf3c50969dfbf8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 02616ef566dd576c3f406d4b9f3059dab27bf3e0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603413"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Az Azure PowerShell-erőforrások kezelése
 
@@ -26,9 +27,9 @@ ms.lasthandoff: 05/20/2018
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha úgy dönt, hogy telepítse és a PowerShell segítségével helyileg, lásd: [telepítése Azure PowerShell modul](/powershell/azure/install-azurerm-ps). Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha a PowerShell helyi telepítése és használata mellett dönt, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="understand-scope"></a>Hatókör ismertetése
+## <a name="understand-scope"></a>A hatókör megismerése
 
 [!INCLUDE [Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
@@ -49,13 +50,13 @@ Az erőforráscsoport jelenleg üres.
 
 ### <a name="assign-a-role"></a>A szerepkör hozzárendelése
 
-Ez a cikk telepít, a virtuális gépek és a kapcsolódó virtuális hálózatot. A virtuális gép megoldások kezelése, számos három erőforrás-specifikus szerepköröket, amelyek gyakran szükséges hozzáférést biztosítanak.
+Ez a cikk telepít, a virtuális gépek és a kapcsolódó virtuális hálózatot. A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepkör létezik, amelyek biztosítják a leggyakrabban szükséges hozzáféréseket:
 
-* [Virtuális gép közreműködő](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Virtuális gépek közreműködője](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 * [Hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor)
-* [Tárolási fiók közreműködői](../role-based-access-control/built-in-roles.md#storage-account-contributor)
+* [Tárfiók-közreműködő](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Szerepkörök hozzárendelése az egyéni felhasználók számára, helyett célszerűbb gyakran [Azure Active Directory-csoport létrehozása](../active-directory/active-directory-groups-create-azure-portal.md) a felhasználók, akik hasonló műveletekre. Adott csoporthoz, majd rendelje hozzá a megfelelő szerepkörhöz. Ez a cikk leegyszerűsítése hoz létre egy Azure Active Directory-csoport tagjai nélkül. Ez a csoport továbbra is hozzárendelése szerepkörhöz hatókörhöz. 
+Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../active-directory/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
 
 Az alábbi példa létrehoz egy csoportot, és hozzárendeli a virtuális gép közreműködő szerepkört ahhoz az erőforráscsoporthoz. Futtatásához a `New-AzureAdGroup` parancsban, vagy használja kell a [Azure Cloud rendszerhéj](/azure/cloud-shell/overview) vagy [töltse le az Azure AD PowerShell modult](https://www.powershellgallery.com/packages/AzureAD/).
 
@@ -69,21 +70,21 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Általában, ismételje meg a folyamatot **hálózat közreműködő** és **tárolási fiók közreműködői** való győződjön meg arról, hogy a felhasználók vannak hozzárendelve a telepített erőforrások kezelése. A cikkben kihagyhatja ezeket a lépéseket.
+A folyamatot általában a **Hálózati közreműködő** és a **Tárfiók-közreműködő** szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 
-## <a name="azure-policies"></a>Az Azure házirendek
+## <a name="azure-policies"></a>Azure-szabályzatok
 
 [!INCLUDE [Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
 
-### <a name="apply-policies"></a>Házirendek alkalmazása
+### <a name="apply-policies"></a>Szabályzatok alkalmazása
 
-Az előfizetés már rendelkezik több házirend-definíciók. A rendelkezésre álló házirend-definíciók megjelenítéséhez használja:
+Az előfizetése már számos szabályzatdefinícióval rendelkezik. A rendelkezésre álló házirend-definíciók megjelenítéséhez használja:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-Megjelenik a meglévő házirend-definíciók. A házirend típusát vagy a **beépített** vagy **egyéni**. Nézze át a definícióit, hozzárendelése kívánt feltétel leírása. Ebben a cikkben hozzárendelt házirendek, amelyek:
+Itt láthatja a meglévő szabályzatdefiníciókat. A szabályzat típusa lehet **Beépített** vagy **Egyéni**. Keresse meg azokat a definíciókat, amelyek az Ön által hozzárendelni kívánt feltételt írják le. Ebben a cikkben olyan szabályzatokat rendel hozzá, amelyek:
 
 * a helyek, az összes erőforrás korlátozása
 * korlátozza a virtuális gépek termékváltozatok
@@ -112,9 +113,9 @@ New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
   -PolicyDefinition $auditDefinition
 ```
 
-## <a name="deploy-the-virtual-machine"></a>A virtuális gép telepítése
+## <a name="deploy-the-virtual-machine"></a>A virtuális gép üzembe helyezése
 
-Szerepkörök és a házirendeket, készen áll a megoldás üzembe helyezéséhez rendelt hozzá. Az alapértelmezett méret Standard_DS1_v2, amely egyike a megengedett SKU. Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszavát.
+A szerepkörök és szabályzatok hozzárendelése megtörtént, így megkezdheti a megoldás üzembe helyezését. Az alapértelmezett méret a Standard_DS1_v2, amely az egyik engedélyezett termékváltozat. Ennek a lépésnek a futtatásakor a rendszer a hitelesítő adatok megadását kéri. Az itt megadott értékek határozzák meg a virtuális géphez tartozó felhasználónevet és jelszavát.
 
 ```azurepowershell-interactive
 New-AzureRmVm -ResourceGroupName "myResourceGroup" `
@@ -127,7 +128,7 @@ New-AzureRmVm -ResourceGroupName "myResourceGroup" `
      -OpenPorts 80,3389
 ```
 
-A telepítés befejezése után további felügyeleti beállításokat alkalmazhat a megoldás.
+Az üzembe helyezés befejezése után további kezelési beállításokat alkalmazhat a megoldáson.
 
 ## <a name="lock-resources"></a>Erőforrások zárolása
 
@@ -150,13 +151,13 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
   -ResourceGroupName myResourceGroup
 ```
 
-A virtuális gép csak akkor lehet törölni, ha kifejezetten távolítsa el a zárolást. A lépés megjelenik-e a [erőforrások törlése](#clean-up-resources).
+A virtuális gép csak akkor lehet törölni, ha kifejezetten távolítsa el a zárolást. Ezt a lépést [Az erőforrások eltávolítása](#clean-up-resources) című szakasz ismerteti.
 
-## <a name="tag-resources"></a>Címke erőforrások
+## <a name="tag-resources"></a>Erőforrások címkézése
 
 [!INCLUDE [Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
 
-### <a name="tag-resources"></a>Címke erőforrások
+### <a name="tag-resources"></a>Erőforrások címkézése
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
 
@@ -177,13 +178,13 @@ A címke neve és értéke erőforrások megkereséséhez használja:
 (Find-AzureRmResource -TagName Environment -TagValue Test).Name
 ```
 
-A felügyeleti feladatokat, például egy címke az összes virtuális gép leállítása a visszaadott értékeket is használhat.
+A visszaadott értékeket kezelési feladatokhoz, például az adott címkeértékkel rendelkező összes virtuális gép leállításához használhatja.
 
 ```azurepowershell-interactive
 Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
-### <a name="view-costs-by-tag-values"></a>Nézet költségek címkeértékeket.
+### <a name="view-costs-by-tag-values"></a>Költségek megtekintése címkeértékek szerint
 
 Címkék alkalmazása az erőforrásokat, után megtekintheti a címkék erőforrás költségeket. Költség elemzéshez megjelenítése a legutóbbi használati, ezért még nem láthatók a költségek igénybe vesz igénybe. A költségek érhetők el, tekintheti költségek erőforrások erőforráscsoportok közötti az előfizetésben. Felhasználónak rendelkeznie kell [szintű hozzáféréssel előfizetés számlázási adatokat](../billing/billing-manage-access.md) költségeket megjelenítéséhez.
 
@@ -199,7 +200,7 @@ Használhatja a [Azure számlázási API-k](../billing/billing-usage-rate-card-o
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A zárolt hálózati biztonsági csoport nem törölhető, amíg a rendszer eltávolítja a zárolást. Távolítsa el a zárolást, használja:
+A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. Távolítsa el a zárolást, használja:
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceLock -LockName LockVM `
@@ -222,4 +223,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 * A virtuális gépek figyelésével kapcsolatos további tudnivalókért lásd: [figyelésére és frissítésére a Windows rendszerű virtuális gép az Azure PowerShell](../virtual-machines/windows/tutorial-monitoring.md).
 * További információ az Azure Security Center megvalósításához ajánlott biztonsági eljárások használatáról [virtuális gép biztonsági figyelje az Azure Security Center](../virtual-machines/windows/tutorial-azure-security.md).
 * Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

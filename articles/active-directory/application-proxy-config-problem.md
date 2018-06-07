@@ -3,21 +3,24 @@ title: A probléma az alkalmazásproxy-alkalmazás létrehozása |} Microsoft Do
 description: Alkalmazásproxy-alkalmazások létrehozása az Azure AD felügyeleti portál kapcsolatos problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 376925715e954904cfdadccb060d0ca242bbec4a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 953d3399012b92442c0dcb4c0db717f2bf273f1b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591796"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>A probléma az alkalmazásproxy-alkalmazás létrehozása 
 

@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57e1226a263a045784f0278c68246c0e953f6e22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1a0f813e1857d2f1c1cc36b34b6339d26fa91c13
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602686"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Váratlan módosítható erőforrások zárolása 
 
-Ha Ön rendszergazda szükség lehet egy előfizetés, erőforráscsoportból vagy erőforrás véletlen törlése vagy a kritikus erőforrásokat módosítása a munkahely más felhasználóinak megelőzése érdekében zárolja. Beállíthatja a zárolási szint beállítása azokhoz a **CanNotDelete** vagy **ReadOnly**. A portálon, a zárolás neve **törlése** és **írásvédett** kulcsattribútumokkal.
+Ha Ön rendszergazda szükség lehet egy előfizetés, erőforráscsoportból vagy erőforrás véletlen törlése vagy a kritikus erőforrásokat módosítása a munkahely más felhasználóinak megelőzése érdekében zárolja. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon, a zárolás neve **törlése** és **írásvédett** kulcsattribútumokkal.
 
 * **CanNotDelete** azt jelenti, hogy a jogosult felhasználók továbbra is olvasni és módosítani az erőforrást, de azokat nem lehet törölni az erőforrás. 
 * **Csak olvasható** azt jelenti, hogy a jogosult felhasználók olvashatják egy erőforrást, de nem lehet törölni vagy az erőforrás frissítése. A zárolás alkalmazása hasonlít összes jogosult felhasználó által megadott engedélyek korlátozása a **olvasó** szerepkör. 
@@ -38,7 +39,7 @@ Csak a fordul elő a felügyeleti vezérlősík, amely küldött műveletek műv
 Alkalmazása **ReadOnly** váratlan eredményekhez vezethet, mivel az egyes műveletek, amelyek az adatok, például olvasási műveletek ténylegesen szükséges további műveleteket. Például, ha kialakít egy **ReadOnly** zárolását egy tárfiókot minden felhasználót megakadályoz a kulcsainak listázása. A listában kulcsok művelet segítségével egy POST kérést kezel, mert a visszaadott kulcsok érhetők el az írási műveletek. Például ha kialakít egy **csak olvasható** egy App Service erőforrás zárolását megakadályozza, hogy a Visual Studio Server Explorer megjelenítése az erőforrás fájlok, mert adott interakció írási hozzáféréssel kell rendelkeznie.
 
 ## <a name="who-can-create-or-delete-locks-in-your-organization"></a>Aki létrehozhat vagy törölhet zárolásokat a szervezetében
-Hozzon létre, vagy törölje a felügyeleti zárolás, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveletek. A beépített szerepkörök, csak **tulajdonos** és **felhasználói hozzáférés adminisztrátora** kapnak a csatolási műveleteket.
+Hozzon létre, vagy törölje a felügyeleti zárolás, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` műveletek. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
 ## <a name="portal"></a>Portál
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
@@ -218,5 +219,5 @@ A kérelemben egy JSON-objektum, amely meghatározza a zárolás tulajdonságait
 * Az erőforrások logikailag rendszerezéséhez, lásd: [az erőforrások rendszerezése címkék használatával](resource-group-using-tags.md)
 * Mely erőforrás található erőforráscsoport módosításához lásd [erőforrások áthelyezése új erőforráscsoportba](resource-group-move-resources.md)
 * Az előfizetés testreszabott házirendekkel korlátozások és egyezmények alkalmazhat. További információ: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
 

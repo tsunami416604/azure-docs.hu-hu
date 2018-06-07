@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2d790b067630f15b96eba5e46ea12e1997a47c86
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6e6b9bf194da17ebd03389829ba594bf3fbf1e64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622101"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni Cassandra adatbázisból
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,7 +68,7 @@ A következő táblázat a JSON-elemek szerepelnek Cassandra kapcsolódó szolg�
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | type |A type tulajdonságot kell beállítani: **OnPremisesCassandra** |Igen |
-| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/><br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
+| gazdagép |Egy vagy több IP-címek vagy Cassandra kiszolgálók állomás nevét.<br/><br/>IP-címek vagy állomásnevek kiszolgálókhoz való kapcsolódáshoz összes egyidejűleg vesszővel tagolt listáját adja meg. |Igen |
 | port |A TCP-portot, amelyen a Cassandra kiszolgáló ügyfélkapcsolatokat. |Nem, alapértelmezett érték: 9042 |
 | authenticationType |Basic vagy Anonymous |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
@@ -82,7 +83,7 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| keyspace |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
+| kulcstérértesítések használatával |Kulcstérértesítések használatával vagy séma Cassandra adatbázis nevét. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
 | tableName |A tábla Cassandra adatbázis neve. |Igen (Ha **lekérdezés** a **CassandraSource** nincs definiálva). |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -261,11 +262,11 @@ Lásd: [RelationalSource típustulajdonságokat](#copy-activity-properties) a Re
 | --- | --- |
 | ASCII |Karakterlánc |
 | BIGINT |Int64 |
-| BLOB |Byte] |
+| A BLOB |Byte] |
 | LOGIKAI ÉRTÉK |Logikai |
 | DECIMÁLIS |Decimális |
 | DUPLA |Dupla |
-| LEBEGŐPONTOS |Egyedülálló |
+| LEBEGŐPONTOS |Önálló |
 | INET |Karakterlánc |
 | INT |Int32 |
 | SZÖVEG |Karakterlánc |
@@ -324,12 +325,12 @@ Az alábbi táblázatok bemutatják az adatokat a listában, térkép és String
 | 3 |2 |102 |
 | 3 |3 |103 |
 
-#### <a name="table-exampletablevtmap"></a>Table “ExampleTable_vt_Map”:
+#### <a name="table-exampletablevtmap"></a>"ExampleTable_vt_Map". tábla:
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
 | 1 |S1 |A |
 | 1 |S2 |b |
-| 3 |S1 |t |
+| 3 |S1 |T |
 
 #### <a name="table-exampletablevtstringset"></a>Table “ExampleTable_vt_StringSet”:
 | pk_int | StringSet_value |

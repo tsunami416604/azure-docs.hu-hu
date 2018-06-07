@@ -14,14 +14,15 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b1185fef53797a88ae929e35be56d2bc79067b49
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fa299603a14ef94ab4cf3eac2b1123def1a0b6de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594883"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Egy nem felügyelt directory átveszi az Azure Active Directoryban rendszergazdaként
-Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?]()
+Ez a cikk ismerteti a két módon vegye át egy DNS-tartománynév, az Azure Active Directory (Azure AD) egy nem felügyelt könyvtárban. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló, vagy a szolgáltatás "ugrásszerű" létrehozni kapcsolatban bővebben lásd: [Mi az az Azure Active Directory önkiszolgáló regisztráció?](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-self-service-signup)
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Eldöntheti, hogyan egy nem felügyelt directory átvétele
 A rendszergazdai átvétel során az [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md) című cikkben leírt módon bizonyíthatja tulajdonjogát. A következő szakaszok részletesen ismertetik a rendszergazdai feladatokat, amelyek összegzése itt olvasható:

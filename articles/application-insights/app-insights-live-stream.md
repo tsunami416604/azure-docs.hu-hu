@@ -11,15 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 05/24/2018
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 0c3662984c63195d8fc903c66b27aa253ce419cb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: 352fff53d9e35ddd8d8e0c107e969357d9c766b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599235"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Metrikák adatfolyamot: Figyelő & Diagnosztizálás és 1 másodperc késleltetés 
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Metrikák adatfolyamot: Figyelő & Diagnosztizálás és 1 másodperc késleltetés
 
 Az élő, éles a webes alkalmazás ki szívveréseket lelke mintavételi származó élő metrikák adatfolyam használatával [Application Insights](app-insights-overview.md). Válassza ki, és valós időben, a szolgáltatás zavarok nélkül bemutató metrikák és számlálóinak szűréséhez. Vizsgálja meg a minta sikertelen kérelmek és kivételek híváslánc megjelenik. Együtt [Profilkészítő](app-insights-profiler.md), [pillanatkép hibakereső](app-insights-snapshot-debugger.md), és [Teljesítménytesztelés](app-insights-monitor-web-app-availability.md#performance-tests), metrikák adatfolyamot egy hatékony és nem zavarja a munkában diagnosztikai eszköz biztosít a élő webhelyet.
 
@@ -34,8 +35,6 @@ Az élő metrikák adatfolyam-továbbítás segítségével:
 * A kiszolgáló, amelynek problémákat, és minden a KPI/live-hírcsatornát, hogy csak az adott kiszolgálón szűrő könnyebb azonosításához.
 
 [![Élő adatfolyam metrikák videó](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
-
-Metrikák élő adatfolyam már érhető el a helyileg futó ASP.NET-alkalmazásokra vagy a felhőben. 
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -128,9 +127,37 @@ Az applicationinsights.config fájlban vegye fel a AuthenticationApiKey a QuickP
 ```
 Vagy a kódban, állítsa be a QuickPulseTelemetryModule meg:
 
-``` C#
+```csharp
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+             TelemetryConfiguration configuration = new TelemetryConfiguration();
+            configuration.InstrumentationKey = "YOUR-IKEY-HERE";
+
+            QuickPulseTelemetryProcessor processor = null;
+
+            configuration.TelemetryProcessorChainBuilder
+                .Use((next) =>
+                {
+                    processor = new QuickPulseTelemetryProcessor(next);
+                    return processor;
+                })
+                        .Build();
+
+            var QuickPulse = new QuickPulseTelemetryModule()
+            {
+
+                AuthenticationApiKey = "YOUR-API-KEY"
+            };
+            QuickPulse.Initialize(configuration);
+            QuickPulse.RegisterTelemetryProcessor(processor);
+            foreach (var telemetryProcessor in configuration.TelemetryProcessors)
+                {
+                if (telemetryProcessor is ITelemetryModule telemetryModule)
+                    {
+                    telemetryModule.Initialize(configuration);
+                    }
+                }
 
 ```
 

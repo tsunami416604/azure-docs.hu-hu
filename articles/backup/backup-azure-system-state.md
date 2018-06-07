@@ -1,25 +1,20 @@
 ---
-title: Készítsen biztonsági másolatot a Windows rendszer állapotát az Azure-bA |} Microsoft Docs
+title: Rendszerállapot biztonsági mentését a Windows Azure-bA
 description: Ismerje meg, a rendszerállapot biztonsági mentését a Windows Server és/vagy a Windows számítógépek az Azure-bA.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
-manager: carmonm
-editor: ''
+manager: shivamg
 keywords: biztonsági mentés menete; biztonsági mentési útmutató; fájlok és mappák biztonsági mentése
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/31/2017
-ms.author: saurse;markgal
-ms.openlocfilehash: b4847a4b2d8397530d8a6bb4bc4729a6966634f2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 05/23/2018
+ms.author: saurse
+ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606069"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>A Resource Manager telepítés Windows rendszerállapot biztonsági mentését
 Ez a cikk ismerteti a rendszerállapot biztonsági mentését a Windows Server az Azure-bA. Ez az oktatóanyag végigvezeti az alapokon.
@@ -175,6 +170,11 @@ A kezdeti biztonsági másolatot a két feladatokból áll:
 * Rendszerállapot biztonsági mentését az első alkalommal
 
 A kezdeti biztonsági mentés végrehajtásához használja a Microsoft Azure Recovery Services-ügynököt.
+
+> [!NOTE]
+> Windows Server 2008 R2, Windows Server 2016 keresztül biztonsági rendszer állapotát. A rendszerállapot biztonsági legfeljebb nem támogatott az ügyfél-SKU. Rendszerállapot lehetőség nem jelennek meg a Windows-ügyfelek vagy a Windows Server 2008 SP2 gépek.
+>
+>
 
 ### <a name="to-schedule-the-backup-job"></a>A biztonsági mentési feladat ütemezése
 

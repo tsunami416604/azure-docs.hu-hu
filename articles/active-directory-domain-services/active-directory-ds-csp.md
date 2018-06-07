@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások az Azure felhőalapú Megoldásszolgáltatók közül |} Microsoft Docs"
-description: "Az Azure Active Directory tartományi szolgáltatások, Azure Cloud Solution szolgáltatók."
+title: Az Azure Active Directory tartományi szolgáltatások az Azure felhőalapú Megoldásszolgáltatók közül |} Microsoft Docs
+description: Az Azure Active Directory tartományi szolgáltatások, Azure Cloud Solution szolgáltatók.
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 313c4853b0f585921739779bb764c50036c9ac8a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: f8a6e73420f1b53b8c253842001e8227e48e7d4a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589525"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Az Azure Active Directory (AD) tartományi szolgáltatásokban az Azure felhőalapú megoldás szolgáltatók (CSP)
 Ez a cikk azt ismerteti, hogyan használható az Azure AD tartományi szolgáltatások egy Azure CSP előfizetésben.
@@ -84,7 +86,7 @@ A következő szempontokat alkalmazza, ha egy felügyelt tartomány egy Azure CS
 * **A felhasználói fiókhoz létrehozott az adminisztrációra hozzá kell adni a "AAD DC rendszergazdák" csoportba:** a "AAD DC rendszergazdák" csoport nem rendelkezik jogosultsággal a bizonyos delegált felügyeleti feladatok végrehajtása a felügyelt tartományra. Ezek a feladatok közé tartoznak a szervezeti egységeket, stb. Csoportházirend felügyelete hoz létre, a DNS konfigurálása. Olyan feladatokat hajthat végre egy felügyelt tartomány CSP partner egy felhasználói fiókot kell létrehozni az ügyfél az Azure Active Directoryban. Ez a fiók hitelesítő adatait meg kell osztani a CSP partner által létrehozott felügyeleti ügynök. Ez a felhasználói fiók is, a "AAD DC rendszergazdák" csoportba ahhoz, hogy a feladatokat a felügyelt tartomány végezhető el ez a felhasználói fiók használatával kell adni.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure CSP programhoz való csatlakozás](https://partnercenter.microsoft.com/partner/programs) és Azure CSP vállalatra létrehozásának megkezdése.
 * Tekintse át a listában, [Azure CSP elérhető Azure-szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)

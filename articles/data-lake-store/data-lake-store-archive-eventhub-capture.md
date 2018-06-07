@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cff2ca87ab2916c9d5aa8bb308325cb7a0227d75
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624661"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Használata Azure Data Lake Store Eseményközpontokból származó adatok rögzítéséhez
 
@@ -56,12 +57,12 @@ Ebben a szakaszban a fiókon belül hol kívánja rögzíteni az adatokat az Eve
 
     c. A **engedélyek hozzárendelése**, kattintson a **Select engedélyeket**. Állítsa be **engedélyek** való **hajtható végre**. Állítsa be **hozzáadása** való **ezt a mappát, és minden gyermeknek**. Állítsa be **hozzáadni** való **egy hozzáférési engedélybejegyzés és egy alapértelmezett engedélybejegyzés**.
 
-> [!IMPORTANT]
-> Az Azure Event Hubs által fogadott adatok rögzítéséhez egy új mappahierarchiában létrehozásakor ez egyszerű módja a célmappa való hozzáférés biztosításához.  Azonban a legfelső szintű mappa minden gyermeknek sok gyermek fájlokhoz és mappákhoz engedélyek hozzáadása a sok időre lehet szükség.  Ha a gyökérmappában található fájlok és mappák sok tartalmaz, akkor lehet gyorsabb hozzáadása **Execute** engedélyeinek `Microsoft.EventHubs` külön-külön történő minden mappa elérési útját a végső rendeltetési mappára. 
+    > [!IMPORTANT]
+    > Az Azure Event Hubs által fogadott adatok rögzítéséhez egy új mappahierarchiában létrehozásakor ez egyszerű módja a célmappa való hozzáférés biztosításához.  Azonban a legfelső szintű mappa minden gyermeknek sok gyermek fájlokhoz és mappákhoz engedélyek hozzáadása a sok időre lehet szükség.  Ha a gyökérmappában található fájlok és mappák sok tartalmaz, akkor lehet gyorsabb hozzáadása **Execute** engedélyeinek `Microsoft.EventHubs` külön-külön történő minden mappa elérési útját a végső rendeltetési mappára. 
 
-    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+    ![Engedélyeket rendelhet a Data Lake Store legfelső szintű](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "engedélyeket rendelhet a Data Lake Store gyökér")
 
-    Click **OK**.
+    Kattintson az **OK** gombra.
 
 4. Rendelje hozzá a Data Lake Store-fiókjában hol kívánja rögzíteni adatok mappára vonatkozó engedélyeket.
 

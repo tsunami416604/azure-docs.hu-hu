@@ -1,25 +1,20 @@
 ---
-title: Azure Backup – gyakori kérdések | Microsoft Docs
+title: Azure Backup – Gyakori kérdések
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
-ms.assetid: 1011bdd6-7a64-434f-abd7-2783436668d7
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/9/2018
-ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: d16991d15d76caa496b2923c8d0210b6ccb10a9a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: markgal
+ms.openlocfilehash: ac3c90fef602c5f840fff9ccd03efc360ca16200
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605824"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup szolgáltatás-összetevőivel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).

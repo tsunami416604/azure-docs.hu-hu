@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/05/2018
+ms.topic: conceptual
+ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 9ba48a9072a85e7d8e6e9fb17957efbf27711df8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c862f269a8e32814dfb6d311706e65b57d52d1bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617076"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Másolja a adatok vagy az Azure SQL Data Warehouse Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -348,7 +349,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa a má
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **SqlDWSink** | Igen |
-| allowPolyBase |Azt jelzi, hogy (ha alkalmazható), a PolyBase használata helyett BULKINSERT mechanizmus. <br/><br/> **Az ajánlott módszer az adatok betöltése az SQL Data Warehouse PolyBase a használata.** Lásd: [használja a PolyBase az adatok betöltése az Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) szakaszban a korlátozások és részleteit.<br/><br/>Két érték engedélyezett: **igaz** (alapértelmezett), és **hamis**.  |Nem |
+| allowPolyBase |Azt jelzi, hogy (ha alkalmazható), a PolyBase használata helyett BULKINSERT mechanizmus. <br/><br/> **Az ajánlott módszer az adatok betöltése az SQL Data Warehouse PolyBase a használata.** Lásd: [használja a PolyBase az adatok betöltése az Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) szakaszban a korlátozások és részleteit.<br/><br/>Két érték engedélyezett: **igaz**, és **hamis** (alapértelmezett).  |Nem |
 | polyBaseSettings |Egy csoport, amely tulajdonságok megadott, amikor a **allowPolybase** tulajdonsága **igaz**. |Nem |
 | rejectValue |Megadja a szám vagy is el kell utasítani, mielőtt a lekérdezés nem sikerült sorokat százalékát.<br/><br/>További információ a PolyBase utasítsa el a beállítások elemre a **argumentumok** szakasza [külső tábla létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) témakör. <br/><br/>Engedélyezett értékek: 0 (alapértelmezés), 1, 2,... |Nem |
 | rejectType |Határozza meg, hogy a rejectValue beállítás konstans értéket vagy százalékában van megadva.<br/><br/>Két érték engedélyezett: **érték** (alapértelmezett), és **százalékos**. |Nem |
@@ -572,7 +573,7 @@ A/az Azure SQL Data Warehouse-adatok másolásakor a következő leképezéseit 
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
-| Szöveg |Karakterlánc, Char] |
+| szöveg |Karakterlánc, Char] |
 | time |A TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Bájt |

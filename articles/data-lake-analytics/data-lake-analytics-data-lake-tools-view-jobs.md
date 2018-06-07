@@ -1,26 +1,23 @@
 ---
-title: Feladat böngésző és a feladatok használja az Azure Data Lake Analytics-feladatok |} Microsoft Docs
-description: 'Útmutató feladat böngésző és a feladatok az Azure Data Lake Analytics-feladatok. '
+title: Feladat böngésző és a feladatok használja az Azure Data Lake Analytics-feladatok
+description: Ez a cikk ismerteti az Azure Data Lake Analytics-feladatok feladat böngésző és feladatok segítségével.
 services: data-lake-analytics
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+editor: jasonwhowell
+ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
+ms.topic: conceptual
 ms.date: 08/02/2017
-ms.author: jgao
-ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d7ebc8d14e82281e074ff52abd41a16871470c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623230"
 ---
-# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Feladat böngésző és a feladatok használja az Azure Data lake Analytics-feladatok
+# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Használja feladat böngésző és az Azure Data Lake Analytics feladat nézetére
 Az Azure Data Lake Analytics szolgáltatás archiválja az elküldött feladatok egy [lekérdezéstár](#query-store). Ebből a cikkből megismerheti, hogyan feladat böngésző és a feladatok használatát az Azure Data Lake Tools for Visual Studio korábbi adatok kereséséhez. 
 
 Alapértelmezés szerint a Data Lake Analytics szolgáltatás archiválja a feladatok 30 napig. A lejárati időszak konfigurálhatja az Azure-portálon, a testre szabott elévülési szabályzatának konfigurálása. Pedig nem fogják tudni elérni a lejárat után a feladat adatait. 
@@ -54,7 +51,7 @@ Feladat-nézet tartalmazza:
     * Véglegesítése: A feladat befejeződik (például a fájl véglegesítése).
       
       A feladat minden fázisban sikertelen lehet. Például fordítási hibákat a előkészítése fázis, a várakozik fázisban időtúllépést és végrehajtási hibák a futó fázis stb.
-  * Alapvető információk
+  * Alapvető adatok
     
       Az alapvető feladatok adatait jeleníti meg a feladat összegzése panel alsó részén.
     

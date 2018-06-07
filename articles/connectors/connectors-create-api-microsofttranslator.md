@@ -1,26 +1,22 @@
 ---
-title: "Adja hozzá a Microsoft Translator a logic apps |} Microsoft Docs"
-description: "A Microsoft Translator összekötő REST API-paraméterekkel rendelkező áttekintése"
-services: 
-suite: 
-documentationcenter: 
+title: Kapcsolódás a Microsoft Translator – az Azure Logic Apps |} Microsoft Docs
+description: Szöveg fordítása, és az egyéb Microsoft Translator REST API-k és az Azure Logic Apps nyelvi feladatok végrehajtása
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: da782baf-8bf8-4973-8238-e469865f5328
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+manager: cfowler
+ms.author: estfan
 ms.date: 11/07/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 83d6324dce93fd9943cbd596c808abce23e5d432
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 9c1e20bff43ff459bf5bf9e265a38086829c1b7e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609613"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>A Microsoft Translator összekötő az első lépései
 Kapcsolódás Microsoft Translator lefordítani a szöveg, a nyelvet, és több észlelése. A Microsoft Translator segítségével: 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 9924d06f149b0d234cd8f5546cab8abbab740aac
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7041bd19c464c0ce6fb0f3d695a87581fed290e5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592021"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Összevont egyszeri bejelentkezés az Azure Active Directoryban tanúsítványainak kezelése
 Ez a cikk ismerteti a gyakori kérdéseket és a tanúsítványok, az Azure Active Directory (Azure AD) hoz létre az SaaS-alkalmazások létrehozásához összevont egyszeri bejelentkezést (SSO) kapcsolatos adatokat. Az Azure AD-alkalmazásgyűjtemény vagy egy alkalmazás nem galéria sablon használatával, vegyen fel alkalmazásokat. Az alkalmazás beállítása az összevont egyszeri bejelentkezési beállítás használatával.
@@ -57,6 +58,15 @@ A képernyőfelvételek Salesforce használja az példa, de ezeket a lépéseket
 6. Most már az új tanúsítvány áll le. Kattintson a **tanúsítvány** innen tölthető le azt. Ezen a ponton a tanúsítvány nem lesz aktív. Ha szeretné ezt a tanúsítványt a váltása, válassza ki a **új tanúsítvány aktiválásához** jelölőnégyzetet, majd kattintson **mentése**. Ettől a ponttól az Azure AD elindítja az új tanúsítványt használja a válasz az aláíráshoz.
 
 7.  Megtudhatja, hogyan tölthet fel a tanúsítvány az adott SaaS-alkalmazáshoz, kattintson a **nézet konfigurációs oktatóanyag** hivatkozásra.
+
+## <a name="certificate-expiration-notification-email"></a>Tanúsítvány lejáratának értesítő e-mailt
+
+Az Azure AD elküld egy e-mailek értesítés 60, 30 és 7 nap SAML-tanúsítvány érvényességének lejárta előtt. Az e-mail címet az értesítés küldési helyének megadása:
+
+- Az Azure Active Directory alkalmazás egyszeri bejelentkezés lapon nyissa meg az értesítő e-mailt mező.
+- Adja meg a tanúsítvány lejárati értesítő e-mailt kell kapnia, e-mail címét. Alapértelmezés szerint ez a mező a rendszergazda, aki hozzá az alkalmazás e-mail címét használja.
+
+Az értesítő e-mailt fog kapni aadnotification@microsoft.com. Az e-mailt a levélszemét-helyre is elkerülése érdekében ügyeljen arra, hogy adja hozzá az e-mailt az ügyfelekhez. 
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Rövidesen lejáró tanúsítvány megújítása
 A következő megújítási lépéseket kell eredményeznie jelentős állásidő nélkül a felhasználók számára. Ez a szakasz a szolgáltatás Salesforce példaként, de ezeket a lépéseket a képernyőképek bármely összevont SaaS-alkalmazás is alkalmazhatja.

@@ -1,34 +1,35 @@
 ---
-title: Ismerkedés az Azure Storage-verem Fejlesztőeszközök
-description: Ismerkedés az Azure Storage-verem fejlesztői eszközök segítségével útmutató
+title: Ismerkedés az Azure-verem tárolási Fejlesztőeszközök |} Microsoft Docs
+description: Útmutató a verem Azure tárolás fejlesztői eszközök használatával
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604477"
 ---
-# <a name="get-started-with-azure-stack-storage-development-tools"></a>Ismerkedés az Azure Storage-verem Fejlesztőeszközök
+# <a name="get-started-with-azure-stack-storage-development-tools"></a>Ismerkedés az Azure-verem tárolási Fejlesztőeszközök
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
 A Microsoft Azure verem tárolási szolgáltatások olyan készlete, amely tartalmazza a blob, table és a queue storage biztosít.
 
-Ez a cikk használja útmutatóként Azure Storage-verem fejlesztői eszközök használatának megkezdése. További részletes információk és mintakódját, valamint a megfelelő Azure Storage oktatóanyagok találja.
+Ez a cikk használja útmutatóként verem Azure tárolás fejlesztői eszközök használatának megkezdése. További részletes információk és mintakódját, valamint a megfelelő az Azure storage oktatóanyagok találja.
 
->[!NOTE]
->Azure Storage-verem és az Azure-tároló, beleértve a különleges követelményeket az egyes platformokon különbségei ismertek. Például nincsenek adott ügyféloldali kódtáraknál és az adott végponti utótag követelmények Azure verem. További információkért lásd: [Azure verem Storage: szempontok és a különbségeket](azure-stack-acs-differences.md).
+> [!NOTE]  
+> Azure verem tárolási és az Azure-tárolót, beleértve a különleges követelményeket az egyes platformokon különbségei ismertek. Például nincsenek adott ügyféloldali kódtáraknál és az adott végponti utótag követelmények Azure verem. További információkért lásd: [verem Azure storage: szempontok és a különbségeket](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Azure ügyfélkódtárai
 
-Az Azure verem Storage REST API verziók a következők: 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 frissítés vagy újabb verziók és 2015-04-05 korábbi verzióihoz. Az Azure-verem végpontok nem rendelkezik teljes paritásos az Azure Storage REST API-t a legújabb verziójával. A storage ügyfélkódtáraival kell figyelembe vennie a REST API-val kompatibilis verzióra.
+A verem Azure storage REST API verziók a következők: 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 frissítés vagy újabb verziók és 2015-04-05 korábbi verzióihoz. Az Azure-verem végpontok nem rendelkezik teljes paritásos az Azure storage REST API-t a legújabb verziójával. A storage ügyfélkódtáraival kell figyelembe vennie a REST API-val kompatibilis verzióra.
 
 ### <a name="1802-update-or-newer-versions"></a>1802 frissítés vagy újabb verzió
 
@@ -209,4 +210,4 @@ A következő Azure Table storage oktatóprogramok találhatók Azure verem alka
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
+* [A Microsoft Azure storage bemutatása](../../storage/common/storage-introduction.md)

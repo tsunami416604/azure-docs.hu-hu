@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 2889e509d4ba0e055d86a67adaf4bd734f4f9e0c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4f5e0cf0b45e4972cc1c318861025ae4b926a966
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Oktatóanyag: Azure Active Directoryval integrált Weekdone
 
@@ -44,7 +45,7 @@ Konfigurálása az Azure AD-integrációs Weekdone, a következőkre van szüks�
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
 - Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, egy hónapos próbaverzió Itt kaphat: [próbaverzió ajánlat](https://azure.microsoft.com/pricing/free-trial/).
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
@@ -82,8 +83,6 @@ Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentk
 
 Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó Weekdone a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Weekdone közötti kapcsolat kapcsolatot kell létrehozni.
 
-Weekdone, rendelje hozzá a értékének a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
 Az Azure AD egyszeri bejelentkezést a Weekdone tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
@@ -110,7 +109,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_url1.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://weekdone.com/a/<tenantname>`
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://weekdone.com/a/<tenant>/metadata`
+
+    > [!NOTE]
+    > A metaadatfájl weekdone a lekérhető az azonos URL-cím használatával.
 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://weekdone.com/a/<tenantname>`
 
@@ -136,10 +138,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_configure.png) 
 
 8. Egyszeri bejelentkezés konfigurálása **Weekdone** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja, Sign-Out URL-címe, SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** való [Weekdone támogatási csoport](mailto:hello@weekdone.com).
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -235,4 +233,3 @@ Ha a hozzáférési panelen Weekdone csempére kattint, akkor kell beolvasása a
 [201]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_203.png
-

@@ -3,16 +3,17 @@ title: 'Azure Analysis Services oktatóanyag – 3. lecke: Megjelölés dátumt�
 description: A lecke a dátumtáblák megjelölését ismerteti az Azure Analysis Services oktatóprojektjében.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b7f6252faef02676be6ccb22653f5d4805020df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 837543b6e9af714189e1d79eef483caabc2d32ad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597314"
 ---
 # <a name="mark-as-date-table"></a>Megjelölés dátumtáblázatként
 

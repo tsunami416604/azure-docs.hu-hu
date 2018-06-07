@@ -1,24 +1,19 @@
 ---
-title: "Azure biztonsági mentés az SQL Server számítási feladatait az Azure Backup Server használatával |} Microsoft Docs"
-description: "Megismerkedhet az Azure Backup Server használatával az SQL Server-adatbázisainak biztonsági mentése"
+title: Azure biztonsági mentés az SQL Server számítási feladatait az Azure Backup Server használatával
+description: Megismerkedhet az Azure Backup Server használatával az SQL Server-adatbázisainak biztonsági mentése
 services: backup
-documentationcenter: 
 author: pvrk
 manager: Shivamg
-editor: 
-ms.assetid: c8b1f7ec-26b1-4ef0-a3f2-91aec959daea
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 2af9ebaa8f52690ed63406cbd85b77544d2d900d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d0fc66ff81672116d3d98ee9970456515ab3c9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606392"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Biztonsági mentés SQL Server Azure With Azure Backup Server
 Ez a cikk végigvezeti a konfigurációs lépések a Microsoft Azure biztonsági mentési Server (MABS) használó SQL Server-adatbázisok biztonsági mentéséhez.
@@ -97,7 +92,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy [telepítve, és az Azure Bac
 
 13. Válassza ki az adatmegőrzési házirend-ütemezést. A részleteket az adatmegőrzési működése biztosított [használata Azure Backup lecseréli a szalag infrastruktúra cikk](backup-azure-backup-cloud-as-tape.md).
 
-    ![Adatmegőrzési házirend](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Adatmegőrzési szabályzat](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Ebben a példában:
 

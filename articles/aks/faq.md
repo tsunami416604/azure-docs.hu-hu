@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ca8d883add04d623c17390a0b5031aaf08be0429
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596497"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések kapcsolatos Azure Kubernetes szolgáltatás (AKS)
 
@@ -26,8 +27,8 @@ Ez a cikk címek gyakran használják az Azure Kubernetes szolgáltatás (AKS) k
 
 - Közép-Kanada
 - Kelet-Kanada
-- Egyesült Államok, középső régió
-- Egyesült Államok, keleti régió
+- USA középső régiója
+- USA keleti régiója
 - Nyugat-Európa
 
 ## <a name="when-will-additional-regions-be-added"></a>Ha további régiókban megkapja?
@@ -72,7 +73,7 @@ Futtassa a Windows Server-tárolók, Windows Server-alapú csomópontok futtatni
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az AKS?
 
-Minden egyes AKS központi telepítés két erőforráscsoport is. Az első hozta létre, és csak a AKS erőforrást tartalmaz. A AKS erőforrás-szolgáltató automatikusan hoz létre központi telepítése során a második érték egy nevet, például a *MC_myResourceGRoup_myAKSCluster_eastus*. A második erőforráscsoport az összes az infrastruktúrához kapcsolódó erőforrások a fürt, például a virtuális gépekhez társított tartalmazza a hálózati és adattárolási. Erőforrás-karbantartása leegyszerűsítése érdekében a rendszer létrehozza.
+Minden egyes AKS központi telepítés két erőforráscsoport is. Az első hozta létre, és csak a AKS erőforrást tartalmaz. A AKS erőforrás-szolgáltató automatikusan hoz létre központi telepítése során a második érték egy nevet, például a *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport az összes az infrastruktúrához kapcsolódó erőforrások a fürt, például a virtuális gépekhez társított tartalmazza a hálózati és adattárolási. Erőforrás-karbantartása leegyszerűsítése érdekében a rendszer létrehozza.
 
 A AKS-fürthöz, például a storage-fiókok vagy fenntartott nyilvános IP-cím használható erőforrások létrehozásakor meg kell helyezze el őket az automatikusan létrehozott erőforráscsoportot.
 

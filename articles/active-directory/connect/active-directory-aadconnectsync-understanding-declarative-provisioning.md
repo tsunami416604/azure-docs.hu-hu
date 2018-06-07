@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Understanding deklaratív kiépítés |} Microsoft Docs"
-description: "A deklaratív üzembe helyezési modell az Azure AD Connectben ismerteti."
+title: 'Az Azure AD Connect: Understanding deklaratív kiépítés |} Microsoft Docs'
+description: A deklaratív üzembe helyezési modell az Azure AD Connectben ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bb6a0c16322884afba3d306c491c3cd592fc8595
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593191"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálása: Understanding deklaratív kiépítés
 Ez a témakör ismerteti az Azure AD Connect konfigurációs modell. A modell deklaratív kiépítés nevezik, és lehetővé teszi olyan konfigurációs módosítást alkalmazásaiba. A jelen témakörben ismertetett számos elemet speciális, és a legtöbb ügyfél forgatókönyvhöz nem szükséges.
@@ -88,7 +90,7 @@ A metaverzum-objektum marad, amíg nincs egy szinkronizálási szabály hatókö
 
 A törölt metaverzum-objektum egy kimenő szinkronizálási szabályt társított összes objektumot megjelölve **rendelkezés** törlési vannak megjelölve.
 
-## <a name="transformations"></a>Transformations
+## <a name="transformations"></a>Átalakítás
 Az átalakítás segítségével határozza meg, hogyan attribútumok kell flow-bejegyzéseket a cél. A forgalom a következők egyike lehet **típusok flow**: közvetlen, állandó vagy kifejezés. A közvetlen folyamat zajlik egy attribútum értékét,-átalakítás nélküli további van. Konstans érték megadása esetén a megadott érték. Egy kifejezés Express, hogyan kell lennie az átalakítás deklaratív létesítési kifejezés nyelvét használja. A kifejezés nyelven részletek megtalálhatók a [deklaratív létesítési kifejezés nyelvi ismertetése](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) témakör.
 
 ![Kiépítés, vagy csatlakozzon](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/transformations1.png)  

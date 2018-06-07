@@ -3,27 +3,30 @@ title: Nem tud hozzáférni a vállalati alkalmazás hiba alkalmazásproxy alkal
 description: Az Azure AD alkalmazásproxy alkalmazásokkal közös hozzáférési problémák elhárításáról.
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: b9a643dab98fa685bb4873705c177a834af831ce
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: c2571a7ca9e92c5088aec600f1865f84736c5bfa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592510"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nem tud hozzáférni a vállalati alkalmazás" hiba az alkalmazásproxy alkalmazás használatakor
 
 Ez a cikk segítséget nyújt a "Vállalati alkalmazás nem érhető el" hiba történt az Azure AD-alkalmazásproxy kérelmet a gyakori problémák elhárításához.
 
-## <a name="overview"></a>Áttekintés (klasszikus)
+## <a name="overview"></a>Áttekintés
 Ha ezt a hibaüzenetet látja, keresés az állapotkód: a hiba lapon. Ezt a kódot, valószínűleg egy, a következő állapotkódok:
 
 -   **Átjáró időtúllépése**: az alkalmazásproxy-szolgáltatás nem tudja elérni az összekötőt. Ez a hiba általában a connector hozzárendeléssel, összekötő kapcsolatos problémát jelez, vagy a hálózati szabályok az összekötő körül.

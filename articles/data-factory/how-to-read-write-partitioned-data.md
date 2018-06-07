@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: e3b6ccd1e7066ed86b3d6d2d85228688b06931c4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619082"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Hogyan olvasására vagy írására particionálva adatokat az Azure Data Factory 2-es verzió
 1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. A 2-es verzióját ez a viselkedés a paraméter értékének csővezeték paraméter és a trigger elem ütemezett időpont/kezdete segítségével érhet el. 
@@ -26,7 +27,7 @@ ms.lasthandoff: 03/23/2018
 1. verziójában használhatja a partitionedBy tulajdonság és SliceStart rendszer változó a következő példában látható módon: 
 
 ```json
-"folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/yearno={Year}/monthno={Month}/dayno={Day}/",
+"folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
 "partitionedBy": [
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "%M" } },
@@ -38,25 +39,31 @@ A partitonedBy tulajdonságra vonatkozó további információkért lásd: [1-es
 
 2. verziója Ez a viselkedés érdekében, hogy a következő műveleteket hajthatja végre: 
 
-1. Adja meg a **paraméter a következő feldolgozási sorban** karakterlánc típusú. A következő példában az adatcsatorna paraméter neve nem **scheduledRunTime**. 
-2. Állítsa be **folderPath** az adatcsatorna paraméter értéke az adatkészlet-definícióban. 
-3. A paraméter szoftveresen kötött értéket továbbítani a feldolgozási sor futtatása előtt. Vagy adja át a trigger elem kezdési ideje vagy ütemezett időpont dinamikusan futásidőben. 
+1. Adja meg a **paraméter a következő feldolgozási sorban** karakterlánc típusú. A következő példában az adatcsatorna paraméter neve nem **windowStartTime**. 
+2. Állítsa be **folderPath** hivatkozhasson rá az adatcsatorna paraméter értékének adatkészlet-definícióban. 
+3. A csővezeték-igény szerinti hívásakor adja át a a tényleges érték a paraméterhez, vagy egy eseményindító ütemezett időpont/kezdete dinamikusan futásidőben adja át. 
 
 ```json
 "folderPath": {
-      "value": "@concat(pipeline().parameters.blobContainer, '/logs/marketingcampaigneffectiveness/yearno=', formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy'), '/monthno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%M'), '/dayno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%d'), '/')",
+      "value": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/@{formatDateTime(pipeline().parameters.windowStartTime, 'yyyy/MM/dd')}/",
       "type": "Expression"
 },
 ```
 
 ## <a name="pass-in-value-from-a-trigger"></a>Adjon át egy értéket
-A következő eseményindító definícióját, az ütemezett az eseményindító már elmúlt értékeként a **scheduledRunTime** paraméter a következő feldolgozási sorban: 
+A következő átfedésmentes ablak eseményindító definícióját, az ablak indítási időpontja az eseményindító a feldolgozási sor paraméter értékeként átadott **windowStartTime**: 
 
 ```json
 {
     "name": "MyTrigger",
     "properties": {
-       ...
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+            "frequency": "Hour",
+            "interval": "1",
+            "startTime": "2018-05-15T00:00:00Z",
+            "delay": "00:10:00",
+            "maxConcurrency": 10
         },
         "pipeline": {
             "pipelineReference": {
@@ -64,7 +71,7 @@ A következő eseményindító definícióját, az ütemezett az eseményindít�
                 "referenceName": "MyPipeline"
             },
             "parameters": {
-                "scheduledRunTime": "@trigger().scheduledTime"
+                "windowStartTime": "@trigger().outputs.windowStartTime"
             }
         }
     }
@@ -73,14 +80,15 @@ A következő eseményindító definícióját, az ütemezett az eseményindít�
 
 ## <a name="example"></a>Példa
 
-Íme egy minta adatkészlet-definícióban (nevű paramétert használó: `date`):
+Íme egy minta adatkészlet-definícióban:
 
 ```json
 {
+  "name": "SampleBlobDataset",
   "type": "AzureBlob",
   "typeProperties": {
     "folderPath": {
-      "value": "@concat(pipeline().parameters.blobContainer, '/logs/marketingcampaigneffectiveness/yearno=', formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy'), '/monthno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%M'), '/dayno=', formatDateTime(pipeline().parameters.scheduledRunTime, '%d'), '/')",
+      "value": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/@{formatDateTime(pipeline().parameters.windowStartTime, 'yyyy/MM/dd')}/",
       "type": "Expression"
     },
     "format": {
@@ -129,20 +137,16 @@ Feldolgozási sor definíciója:
                         "value": "@concat('wasb://', pipeline().parameters.blobContainer, '@', pipeline().parameters.blobStorageAccount, '.blob.core.windows.net/logs/', pipeline().parameters.inputRawLogsFolder, '/')",
                         "type": "Expression"
                     },
-                    "PARTITIONEDOUTPUT": {
-                        "value": "@concat('wasb://', pipeline().parameters.blobContainer, '@', pipeline().parameters.blobStorageAccount, '.blob.core.windows.net/logs/partitionedgameevents/')",
-                        "type": "Expression"
-                    },
                     "Year": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, 'yyyy')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'yyyy')",
                         "type": "Expression"
                     },
                     "Month": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, '%M')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'MM')",
                         "type": "Expression"
                     },
                     "Day": {
-                        "value": "@formatDateTime(pipeline().parameters.scheduledRunTime, '%d')",
+                        "value": "@formatDateTime(pipeline().parameters.windowStartTime, 'dd')",
                         "type": "Expression"
                     }
                 }
@@ -154,7 +158,7 @@ Feldolgozási sor definíciója:
             "name": "HivePartitionGameLogs"
         }],
         "parameters": {
-            "scheduledRunTime": {
+            "windowStartTime": {
                 "type": "String"
             },
             "blobStorageAccount": {
@@ -164,9 +168,6 @@ Feldolgozási sor definíciója:
                 "type": "String"
             },
             "inputRawLogsFolder": {
-                "type": "String"
-            },
-            "partitionHiveScriptFile": {
                 "type": "String"
             }
         }

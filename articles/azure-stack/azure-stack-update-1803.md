@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 095356e76dc72c3e549c23ab3855962e9c2f1d26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 1186776742562566be893c411a642d2feb819a86
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603944"
 ---
 # <a name="azure-stack-1803-update"></a>Az Azure verem 1803 frissítés
 
@@ -56,7 +57,7 @@ Az Azure verem 1803 frissítés buildszáma **20180329.1**.
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
 - 1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
 
-  - [KB 4103348 - az hálózati vezérlő API szolgáltatás leáll, ha egy Azure verem frissítés telepítésekor](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4294441 - erőforrások nem bérlői és váratlan megosztások műveleteket jönnek létre a ugyanannak a bérlőnek vagy infrastruktúra-köteten](https://support.microsoft.com/en-us/help/4294441)
 
 - A frissítés telepítése után tekintse át a tűzfal konfigurációját, és győződjön meg arról [szükséges portok](azure-stack-integrate-endpoints.md) nyitva. A frissítés például vezet be az Azure figyelő, köztük a naplók tevékenység naplókban is megváltoztatását. A módosítás port 13012 most szolgál, és meg van nyitva.  
 
@@ -110,6 +111,9 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **20180323.2**.
 
 #### <a name="portal"></a>Portál
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  Megkerülő megoldás: A frissítés telepítése után a probléma megoldásához használja a 3. lépés a [konfigurálása eseményindító automatizálási jogcím-szolgáltatói megbízhatósági Azure verem](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) alaphelyzetbe állítani az alapértelmezett szolgáltató előfizetés tulajdonosának eljárást.   
+
 - Lehetővé teszi [új támogatási kérést nyithat a legördülő menüből](azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portál nem érhető el. Ehelyett használja a következő hivatkozásra:     
     - Azure verem integrált, rendszereihez https://aka.ms/newsupportrequest.
 
@@ -131,7 +135,23 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
   Ez a riasztás biztonságosan figyelmen kívül hagyhatja. 
 
 
-<!-- #### Health and monitoring --> 
+#### <a name="health-and-monitoring"></a>Állapot- és figyelés
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Riasztási #1:
+   - NAME: Infrastruktúra-szerepkör nem kifogástalan
+   - SÚLYOSSÁG: figyelmeztetés
+   - ÖSSZETEVŐ: Rendszerállapot-vezérlő
+   - Leírás: A rendszerállapot-vezérlő szívverés képolvasó nem érhető el. Ez érinthet állapotjelentések és metrikákat.  
+
+  Riasztási #2:
+   - NAME: Infrastruktúra-szerepkör nem kifogástalan
+   - SÚLYOSSÁG: figyelmeztetés
+   - ÖSSZETEVŐ: Rendszerállapot-vezérlő
+   - Leírás: A rendszerállapot vezérlő tartalék képolvasó nem érhető el. Ez érinthet állapotjelentések és metrikákat.
+
+  Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik adott idő alatt.  
+
 
 #### <a name="marketplace"></a>Piactér
 - A felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
@@ -143,7 +163,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 - Nyissa meg a portálon beállított rendelkezésre állási létrehozásakor **új** > **számítási** > **rendelkezésre állási csoport**, csak hozhat létre egy rendelkezésre állási csoport egy tartalék tartomány és a frissítési tartomány 1. A probléma megoldásához, amikor egy új virtuális gép létrehozása, hozzon létre a rendelkezésre állási csoportot a powershellel, CLI-t, vagy a portálon.
 
-- Az Azure-verem felhasználói portál virtuális gépek létrehozásakor, a portál megjeleníti, hogy a DS-ben több virtuális gép csatolhat adatlemezek száma helytelen. DS adatsorozat virtuális gépek lehetővé teszi tetszőleges számú adatlemezek Azure beállításként.
+- Az Azure-verem felhasználói portál virtuális gépek létrehozásakor, a portál megjeleníti, hogy a D sorozat VM csatolhat adatlemezek száma helytelen. Az összes támogatott D sorozat virtuális gépek lehetővé teszi tetszőleges számú adatlemezek Azure beállításként.
 
 - Egy Virtuálisgép-lemezkép nem hozható létre, amikor egy sikertelen elem, amely nem törölhető, előfordulhat, hogy a virtuális gép képek számítási panel hozzáadni.
 
@@ -264,6 +284,8 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>A Githubból Azure verem eszközök letöltése
 - Használatakor a *meghívása webrequest* PowerShell parancsmag használatával töltheti le az Azure-verem eszközök a Githubból, hibaüzenet:     

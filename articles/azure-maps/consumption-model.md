@@ -1,24 +1,21 @@
 ---
 title: A Maps-Azure felhasználási modell |} Microsoft Docs
 description: További tudnivalók a Maps-Azure felhasználási modell
-services: azure-maps
-keywords: ''
 author: subbarayudukamma
 ms.author: skamma
-ms.date: 5/8/2018
-ms.topic: article
+ms.date: 05/08/2018
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: 146ea084c02bb3de0c74da79ca85021589207de8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+services: azure-maps
+manager: ''
+ms.openlocfilehash: cf20c7dbfbf7cd3f09579b03b835148c1c295137
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600629"
 ---
-# <a name="consumption-model"></a>Felhasználás modell
+# <a name="consumption-model"></a>Használatalapú modell
 
 Online útválasztás paraméterek biztosít részletes leírása a vehicle-specifikus fogyasztás modell.
 Attól függően, hogy értékének **vehicleEngineType**, két fő felhasználási modellek támogatottak: _égésű_ és _elektromos_. Adja meg a paraméterek a kérésben különböző modell tartozó hiba.

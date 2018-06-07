@@ -3,42 +3,54 @@ title: A PowerShell segítségével az Azure Analysis Services kezelése |} Micr
 description: Az Azure Analysis Services kezelése a PowerShell használatával.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: reference
-ms.date: 04/12/2018
+ms.date: 05/22/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c7315835bca446c4cae592f4bdd58a733b203655
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b4e819bdce971e92e4b2d99e68f51ddbf8a22182
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597467"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>A PowerShell segítségével az Azure Analysis Services kezelése
 
 Ez a cikk ismerteti az Azure Analysis Services-kiszolgáló és adatbázis-felügyeleti feladatok végrehajtásához használt PowerShell-parancsmagokkal. 
 
-Server kezelési feladatainak létrehozása kiszolgáló törlése, felfüggesztése vagy folytatása a kiszolgáló műveletek vagy módosítása a szolgáltatási szint (réteg) például az Azure Resource Manager (AzureRM) parancsmagok használata. Egyéb feladatok hozzáadásával vagy eltávolításával szerepkör tagjai például adatbázisok kezeléséhez, feldolgozás, vagy a particionálás parancsmagokat használja az SQL Server Analysis Services, ugyanazon SQL Server-moduljában található.
+Server kezelési feladatainak például létrehozása kiszolgáló törlése, felfüggesztése vagy folytatása a kiszolgáló műveletek vagy módosítása a szolgáltatási szint (réteg) Azure Resource Manager (erőforrás) parancsmagok és Analysis Services (kiszolgáló)-parancsmagokat használja. Egyéb feladatok hozzáadásával vagy eltávolításával szerepkör tagjai például adatbázisok kezeléséhez, feldolgozás, vagy a particionálás parancsmagokat használja az SQL Server Analysis Services, ugyanazon SQL Server-moduljában található.
 
 ## <a name="permissions"></a>Engedélyek
-A legtöbb PowerShell feladatok szükséges rendszergazdai jogosultságokkal rendelkezik az Analysis Services-kiszolgáló felügyeli. Felügyelet nélküli műveletek PowerShell ütemezett feladatok, amelyek. Az ütemező futtatásához használt fiók rendszergazdai jogosultságokkal kell rendelkeznie az Analysis Services-kiszolgálóhoz. 
+A legtöbb PowerShell feladatok szükséges rendszergazdai jogosultságokkal rendelkezik az Analysis Services-kiszolgáló felügyeli. Felügyelet nélküli műveletek PowerShell ütemezett feladatok, amelyek. Az ütemező futtató fiók vagy szolgáltatás elve az Analysis Services-kiszolgálón rendszergazdai jogosultságokkal kell rendelkeznie. 
 
 A kiszolgáló műveleteket AzureRm-parancsmagok használatával, a fiók vagy a Feladatütemező futtató fiók is szerepkörhöz kell tartoznia a tulajdonos az erőforrás a [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). 
 
-## <a name="server-operations"></a>Kiszolgáló műveletei 
-Az Azure Analysis Services-parancsmagok szerepelnek a [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) összetevő modul. AzureRM parancsmag-modulok telepítése, lásd: [Azure Resource Manager parancsmagjainak](/powershell/azure/overview) a PowerShell-galériában.
+## <a name="resource-management-operations"></a>Erőforrás-kezelési műveletek 
+A modul - [AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices)
 
 |Parancsmag|Leírás| 
 |------------|-----------------| 
-|[Add-AzureAnalysisServicesAccount](/powershell/module/azurerm.analysisservices/add-azureanalysisservicesaccount)|Az Azure Analysis Services-kiszolgáló parancsmag kérelmekhez használandó hitelesített fiókot ad.| 
 |[Get-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/get-azurermanalysisservicesserver)|Lekérdezi a server-példány részletes adatait.|  
 |[New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver)|Hoz létre egy kiszolgálópéldányt.|   
+|[Új AzureRmAnalysisServicesFirewallConfig](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallconfig)|Létrehoz egy új Analysis Services-tűzfal config.|   
+|[Új AzureRmAnalysisServicesFirewallRule](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesfirewallrule)|Létrehoz egy új Analysis Services tűzfalszabályt.|   
 |[Remove-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/remove-azurermanalysisservicesserver)|Eltávolítja a server-példányt.|  
-|[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Analysis Services-kiszolgáló példányának újraindítja az aktuálisan bejelentkezett környezetben; Add-AzureAnalysisServicesAccount parancsban megadott.|  
 |[Resume-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/resume-azurermanalysisservicesserver)|A server-példány folytatja.|  
 |[Suspend-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/suspend-azurermanalysisservicesserver)|Felfüggeszti a server-példányt.| 
 |[Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)|A server-példány módosítása.|   
 |[Test-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/test-azurermanalysisservicesserver)|Teszteli a kiszolgálópéldány megléte.| 
+
+## <a name="server-management-operations"></a>Kiszolgáló felügyeleti műveletei
+
+A modul - [Azure.AnalysisServices](https://www.powershellgallery.com/packages/Azure.AnalysisServices)
+
+|Parancsmag|Leírás| 
+|------------|-----------------| 
+|[Add-AzureAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-azureanalysisservicesaccount)|Az Azure Analysis Services-kiszolgáló parancsmag kérelmekhez használandó hitelesített fiókot ad.| 
+|[Export-AzureAnalysisServicesInstance]()|Exportálja a napló a jelenleg bejelentkezett környezetben Add-AzureAnalysisServicesAccount parancsban megadott az Analysis Services-kiszolgáló egy példánya|  
+|[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Analysis Services-kiszolgáló példányának újraindítja az aktuálisan bejelentkezett környezetben; Add-AzureAnalysisServicesAccount parancsban megadott.|  
+|[Szinkronizálási-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|A megadott adatbázis az Analysis Services-kiszolgáló az a jelenleg bejelentkezett környezetben Add-AzureAnalysisServicesAccount parancsban megadott összes lekérdezés scaleout példányára megadott példányán szinkronizálása|  
 
 ## <a name="database-operations"></a>Adatbázis-műveletek
 

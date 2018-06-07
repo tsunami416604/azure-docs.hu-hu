@@ -8,14 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: 6f9f0f9a9bab7e6865ae5a48552ac702ae2bf6fb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d81b6fc89c90b769650505e845d6d6c6cd70049f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616926"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezeteket, melyekkel folyamat vagy átalakítási adatok. Emellett biztosítja az adat-előállító támogatott, ha ezek linking összekapcsolt szolgáltatások konfigurálása (igény szerinti és kapcsolja a saját) különböző konfigurációkkal kapcsolatos részletek számítási környezetek számára egy Azure data factory.
@@ -419,7 +420,7 @@ Létrehozhat egy **Azure Data Lake Analytics** társított szolgáltatás az Azu
 | Fióknév          | Az Azure Data Lake Analytics-fiók neve.  | Igen                                      |
 | dataLakeAnalyticsUri | Az Azure Data Lake Analytics URI.           | Nem                                       |
 | subscriptionId       | Az Azure előfizetés-azonosító                    | Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
-| resourceGroupName    | Azure erőforráscsoport-név                | Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
+| resourceGroupName    | Azure-erőforráscsoport neve                | Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
 | servicePrincipalId   | Adja meg az alkalmazás ügyfél-azonosítót.     | Igen                                      |
 | servicePrincipalKey  | Adja meg az alkalmazás kulcsot.           | Igen                                      |
 | bérlő               | Adja meg a bérlői adatokat (tartomány nevét vagy a bérlő azonosító) alatt az alkalmazás található. Azt az Azure-portál jobb felső sarkában az egér rámutató által kérheti le. | Igen                                      |

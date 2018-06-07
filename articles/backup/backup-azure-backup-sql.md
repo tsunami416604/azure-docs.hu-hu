@@ -1,24 +1,19 @@
 ---
-title: "Az SQL Server számítási feladatait a DPM használata az Azure Backup |} Microsoft Docs"
-description: "Az Azure Backup szolgáltatás használatával az SQL Server-adatbázisok biztonsági másolatának bemutatása"
+title: A számítási SQL Server-feladatok Azure Backup-alapú biztonsági mentése a DPM használatával
+description: Az Azure Backup szolgáltatás használatával az SQL Server-adatbázisok biztonsági másolatának bemutatása
 services: backup
-documentationcenter: 
 author: adigan
 manager: Nkolli
-editor: 
-ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
-ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c9edc066ea2edc9cd4b8453047d5584a588174dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: cebbe532b5d1b13588604c61ac10bf3c56a85e07
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604964"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Az Azure-ba, a DPM-munkaterhelések biztonsági mentése SQL Server
 Ez a cikk végigvezeti az Azure Backup szolgáltatás használatával az SQL Server-adatbázisok biztonsági mentéséhez konfigurációs lépéseket.
@@ -99,7 +94,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy minden a [Előfeltételek](ba
 
 13. Válassza ki az adatmegőrzési házirend-ütemezést. A részleteket az adatmegőrzési működése biztosított [használata Azure Backup lecseréli a szalag infrastruktúra cikk](backup-azure-backup-cloud-as-tape.md).
 
-    ![Adatmegőrzési házirend](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Adatmegőrzési szabályzat](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     Ebben a példában:
 

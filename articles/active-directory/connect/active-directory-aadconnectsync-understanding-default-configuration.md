@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációt."
+title: 'Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése |} Microsoft Docs'
+description: Ez a cikk ismerteti az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595308"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti a out-of-box konfigurációs szabályok. Az dokumentumokat, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Azt is bemutatja, hogyan kell az Azure AD Connect szinkronizálási szolgáltatás az alapértelmezett konfigurációját. Az célja, hogy az olvasó együttműködik a deklaratív kiépítés nevű konfigurációs modell egy valós példában alakulását. Ez a cikk feltételezi, hogy már telepített, és állítsa be a telepítési varázsló segítségével az Azure AD Connect sync.
@@ -178,7 +180,7 @@ Szinkronizálási szabályok kiértékelésekor meghatározott illesztési szab�
 
 Ha a fenti kép tekinti meg, akkor láthatja, hogy a szabály próbál csatlakozni, **objectSID** rendelkező **msExchMasterAccountSid** (Exchange) és **msRTCSIP-OriginatorSid** (Lync). Ez az felel meg az elvártnak a fiók-erőforrás erdő topológiájában. Ugyanaz a szabály az összes erdőben található meg. A feltételezi, hogy minden erdőben vagy egy fiókot, vagy az erőforrás erdő lehet. Ez a konfiguráció is működik, ha fiókokat, amelyek az adott erdő live, és nem kell csatlakoztatni.
 
-#### <a name="transformations"></a>Transformations
+#### <a name="transformations"></a>Átalakítás
 Transzformációs szakaszából határozza meg az összes attribútumfolyamok, amelyek érvényesek a célobjektum objektumok tartományhoz csatlakoztatott és a hatókör szűrő teljesül-e. Ha visszalép, hogy a **a az AD-felhasználó AccountEnabled** szinkronizálási szabály található a következő átalakítások:
 
 ![Átalakítások szinkronban szabály szerkesztő lap ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruletransformations.png)

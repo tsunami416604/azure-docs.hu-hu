@@ -10,14 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: e568ffd2c3adb97ed0b727b85e7888fb797db1f9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: adbe88a44ac38868a68a6845c328ef4cf7fba60c
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604437"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure verem API-verzió profilok kezelése
 
@@ -36,7 +37,7 @@ Ez a témakör nyújt segítséget:
 ## <a name="summary-of-api-profiles"></a>API-profilok összegzése
 
 - API-profilok használatosak az Azure erőforrás-szolgáltatók és az API-verziók.
-- API-profilok jöttek létre a fejlesztők számára, így több Azure-felhőkben sablonokat hozhatnak létre. A kompatibilis és állandó felület szükség teljesítéséhez készültek.
+- API-profilokat hozhat létre a sablonok több Azure felhőkben létre. A kompatibilis és állandó kapcsolat az igényeknek megfelelő készültek.
 - Profilok évente négyszer kiadásakor.
 - Három profil elnevezési konvenciókat használhatók:
     - **legújabb**  
@@ -66,17 +67,11 @@ Ahelyett, hogy minden erőforrás-szolgáltató és az Azure-verem által támog
 
 API-profilok Azure Resource Manager, például a PowerShell, az Azure parancssori felület, az SDK és a Microsoft Visual Studio code használó eszközök működik. Eszközök és SDK-k segítségével profilok olvassa el a modulok és a szalagtárak, amikor egy alkalmazás felépítése verziójának.
 
-**A profilt használó fejlesztési forgatókönyv**  
-Tegyük fel, hogy létrehozásához PowerShell használja:
+Például, ha a PowerShell egy tároló létrehozásához használja a fiók a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja az api-version 2016-03-30 és a virtuális gépek a Microsoft.Compute erőforrás-szolgáltató 2015-12-01 api-version paraméterrel , keressen fel, amely PowerShell-modul támogatja 2016-03-30 tárolási kell, és melyik modul 2015-02-01 támogatja a számítás és a telepítést. Ehelyett egy profilt is használhatja. A parancsmag ** Install-profil * profilnév x és PowerShell betölti a modulok a megfelelő verziója.
 
-* A storage-fiók, amely használja a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja az api-version 2016-03-30.
-* A virtuális gép által használt a **Microsoft.Compute** erőforrás-szolgáltató, amely 2015-12-01 api-verzió támogatja.
+Hasonlóképpen ha a Python SDK segítségével összeállíthat egy Python-alapú alkalmazást, megadhatja a profil. Az SDK-t a megfelelő modulok az erőforrás-szolgáltató a parancsfájlban megadott tölt be.
 
-Keresése és telepítése a PowerShell-modul, amely támogatja a api-verzióit, tárolási és számítási van szüksége, helyett egy profilt is használhatja. A parancsmag ** Install-profil * profilnév x és PowerShell betölti a modulok megfelelő verziójával.
-
-Hasonlóképpen a Python SDK segítségével összeállíthat egy Python-alapú alkalmazást, ha egy profil használhatja. Az SDK-t a megfelelő modulok az erőforrás-szolgáltató a parancsfájlban megadott tölt be.
-
-Fejlesztőként összpontosíthat írása a megoldás. Használhatja egy profilt, hogy tudnák, hogy a kód működni fog-e a profil támogató összes felhő között.
+Fejlesztőként összpontosíthat írása a megoldás. Ahelyett, hogy mely api-verzióit, erőforrás-szolgáltató vizsgálja, és melyik felhőalapú működik együtt, egy profil és tudja, hogy a kód, amely támogatja a profilt minden felhőkben fognak működni.
 
 ## <a name="api-profile-code-samples"></a>API-profil mintakódok
 
@@ -90,6 +85,8 @@ Frissítheti a környezet konfigurációjának Azure verem meghatározott API ve
 NYISSA meg SDK egy profil a különféle szolgáltatások eltérő verziójú különböző típusú kombinációja. a profilok alatt érhetők el profilok / elérési utat, a verziót a **éééé-hh-nn** formátumban. További információ: [használata API verziója profilokat NYISSA meg a](azure-stack-version-profiles-go.md).
 - **Ruby**  
 A Ruby SDK az Azure verem erőforrás-kezelőhöz biztosít eszközök segítségével felépítéséhez és az infrastruktúra kezelését. Erőforrás-szolgáltató az SDK tartalmazza a számítási, a virtuális hálózatok és a tárolási Ruby nyelveket. További információ: [Ruby profilokkal használata API verziója](azure-stack-version-profiles-ruby.md)
+- **Python**  
+- A Python SDK API verziója profilok, amelyekre a felhő különböző platformokon, például Azure verem és a globális Azure támogatja. A hibrid felhő megoldások létrehozása API-profilok is használhatja. További információ: [Python profilokkal használata API verziója](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>További lépések
 

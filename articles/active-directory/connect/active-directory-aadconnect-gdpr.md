@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e3f81a6480e9de55c8f803e2266c4ac6e33c316
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590538"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Felhasználói adatok és az Azure AD Connect 
 
@@ -26,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 >[!NOTE] 
 >Ez a cikk az Azure AD Connect és a felhasználói adatvédelem foglalkozik.  Az Azure AD Connect Health és felhasználói adatvédelmi információkat lásd: a cikk [Itt](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
 
-Felhasználói adatvédelmi megfelelőségének az Azure AD Connect telepítése kétféleképpen érhető el:
+Javítja a felhasználói adatvédelem az Azure AD Connect telepítése két módon:
 
 1.  Kérésre adatok kinyerése a személy, és távolítsa el adatait az adott személy a létesítmények
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.

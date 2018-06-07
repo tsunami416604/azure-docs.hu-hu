@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 41948d8141d0f3c0e41b95f169bcec6c4b641106
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3328a7c80a05a48b3c04ad5492a7eafe62059681
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622465"
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – Termékajánlások
 Az Azure Data Factory a Cortana Intelligence Suite a megoldás gyorsítók végrehajtásához használt sok szolgáltatások egyike.  Lásd: [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) lap ennek a programcsomagnak vonatkozó további információért. Ebben a dokumentumban azt ismertetik, amelyek az Azure felhasználók már lehet megoldani, és Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások készletével megvalósított gyakori használati eset.

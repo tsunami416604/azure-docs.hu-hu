@@ -1,30 +1,25 @@
 ---
-title: "Egy Azure Backup Server tárolt adatok helyreállításához |} Microsoft Docs"
-description: "A korábban védett a Recovery Services-tároló bármely Azure biztonsági mentés kiszolgálóról, hogy a tároló regisztrált adatok helyreállítását."
+title: Egy Azure Backup Server tárolt adatok helyreállításához
+description: A korábban védett a Recovery Services-tároló bármely Azure biztonsági mentés kiszolgálóról, hogy a tároló regisztrált adatok helyreállítását.
 services: backup
-documentationcenter: 
 author: nkolli1
 manager: shreeshd
-editor: 
-ms.assetid: a55f8c6b-3627-42e1-9d25-ed3e4ab17b1f
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/18/2017
-ms.author: adigan;giridham;trinadhk;markgal
-ms.openlocfilehash: 688d155b68bc2d76d53f78d251bc2f659582845f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 8559532f873e8073e736f881374fec1c080d08c3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604403"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Adatok helyreállítása az Azure Backup Serverről
 Azure Backup Server használatával állítsa helyre az adatokat készített biztonsági mentést a Recovery Services-tároló. Ennek a folyamat úgy integrálva van az Azure Backup Server kezelőkonzolján, és a helyreállítási munkafolyamat más Azure Backup szolgáltatás-összetevők hasonló.
 
 > [!NOTE]
-> Ez a cikk kell alkalmazni, a [System Center Data Protection Manager 2012 R2 vagy újabb verziójával UR7] (https://support.microsoft.com/en-us/kb/3065246) együtt a [legújabb Azure Backup szolgáltatás ügynökének](http://aka.ms/azurebackup_agent).
+> Ez a cikk esetén alkalmazható [System Center Data Protection Manager 2012 R2 vagy újabb verziójával UR7] (https://support.microsoft.com/en-us/kb/3065246), együtt a [legújabb Azure Backup szolgáltatás ügynökének](http://aka.ms/azurebackup_agent).
 >
 >
 
@@ -90,7 +85,7 @@ Adatok helyreállítása egy Azure Backup Server:
 | 1. |Ez a kiszolgáló nincs regisztrálva a tárolónál, amelyet a tároló hitelesítő adatait. |**OK:** Ez a hiba akkor jelenik meg, amikor a kijelölt tároló hitelesítő adatait tartalmazó fájlt nem tartozik a Recovery Services-tároló, amelyen a helyreállítási kísérlet Azure biztonsági mentés kiszolgálóhoz társított. <br> **Megoldás:** letöltési a tárolói hitelesítő adatok fájlját az a Recovery Services-tároló az Azure Backup Server regisztrálni. |
 | 2. |A helyreállítható adatok nem érhető el, vagy a kijelölt kiszolgálón található DPM-kiszolgáló. |**OK:** van regisztrálva a Recovery Services-tároló, hogy más Azure biztonsági mentés kiszolgálók vagy a kiszolgálók még nem feltöltött a metaadatok, vagy a kiválasztott kiszolgáló nem egy Azure Backup Server (más néven a Windows Server vagy a Windows ügyfél). <br> **Megoldás:** Ha egyéb Azure Backup-kiszolgáló regisztrálva a Recovery Services-tároló, győződjön meg arról, hogy telepítve van-e a legújabb Azure Backup szolgáltatás ügynöke. <br>Ha más Azure Backup-kiszolgáló regisztrálva a Recovery Services-tároló, várja meg a helyreállítási folyamat elindításához a telepítés után naponta. Az ütemezett feladat fel kell töltenie az összes védett biztonsági mentés felhőbe metaadatait. Az adatok elérhetők helyreállítás. |
 | 3. |Egyetlen más DPM-kiszolgáló regisztrálva van ebben a tárolóban. |**OK:** nincsenek kiszolgálók, amelyek más Azure biztonsági mentése a tárolóba, ahol a helyreállítási kísérletek regisztrált.<br>**Megoldás:** Ha egyéb Azure Backup-kiszolgáló regisztrálva a Recovery Services-tároló, győződjön meg arról, hogy telepítve van-e a legújabb Azure Backup szolgáltatás ügynöke.<br>Ha más Azure Backup-kiszolgáló regisztrálva a Recovery Services-tároló, várja meg a helyreállítási folyamat elindításához a telepítés után naponta. Az ütemezett feladat minden védett felhőbe biztonsági mentés metaadatainak feltöltését. Az adatok elérhetők helyreállítás. |
-| 4. |A megadott titkosítási jelszó nem egyezik a következő kiszolgálóhoz tartozó jelszóval:**<server name>** |**OK:** folyamatban van, az Azure Backup Server adatokból, amelyik a helyreállítandó adatok titkosítására használt titkosítási jelszó nem egyezik meg a megadott titkosítási jelszó. Az ügynök nem tudja visszafejteni az adatokat. Ezért a helyreállítás sikertelen lesz.<br>**Megoldás:** adja meg a helyreállítás alatt álló amelyek esetén az Azure biztonsági mentés kiszolgálóhoz tartozó pontos azonos titkosítási jelszó. |
+| 4. |A megadott titkosítási jelszó nem egyezik a következő kiszolgálóhoz tartozó jelszóval: **<server name>** |**OK:** folyamatban van, az Azure Backup Server adatokból, amelyik a helyreállítandó adatok titkosítására használt titkosítási jelszó nem egyezik meg a megadott titkosítási jelszó. Az ügynök nem tudja visszafejteni az adatokat. Ezért a helyreállítás sikertelen lesz.<br>**Megoldás:** adja meg a helyreállítás alatt álló amelyek esetén az Azure biztonsági mentés kiszolgálóhoz tartozó pontos azonos titkosítási jelszó. |
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -100,7 +95,7 @@ A DPM-kiszolgálók (az Update Rollup 7-nél korábbi felhasználásával kumula
 
 ### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Újdonságok a Microsoft Azure Recovery Services Agent ügynököt szükséges minimális verziója?
 
-A Microsoft Azure Recovery Services Agent ügynököt, vagy az Azure Backup szolgáltatás ügynöke, a szolgáltatás engedélyezéséhez szükséges minimális verziója 2.0.8719.0.  Az ügynök verziójának megtekintése: Nyissa meg a Vezérlőpultot  **>**  összes elemek  **>**  programok és szolgáltatások  **>**  Microsoft Azure Recovery Services Agent. Ha a verziószáma kisebb, mint 2.0.8719.0, töltse le és telepítse a [legújabb Azure Backup szolgáltatás ügynökének](https://go.microsoft.com/fwLink/?LinkID=288905).
+A Microsoft Azure Recovery Services Agent ügynököt, vagy az Azure Backup szolgáltatás ügynöke, a szolgáltatás engedélyezéséhez szükséges minimális verziója 2.0.8719.0.  Az ügynök verziójának megtekintése: Nyissa meg a Vezérlőpultot **>** összes elemek **>** programok és szolgáltatások **>** Microsoft Azure Recovery Services Agent. Ha a verziószáma kisebb, mint 2.0.8719.0, töltse le és telepítse a [legújabb Azure Backup szolgáltatás ügynökének](https://go.microsoft.com/fwLink/?LinkID=288905).
 
 ![Külső DPM törlése](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
 

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/24/2018
 ms.author: brenduns
-ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4c5b53a46792e31316f752f8902d7a05554b57d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604148"
 ---
 # <a name="azure-stack-1712-update"></a>Az Azure verem 1712 frissítés
 
@@ -116,13 +117,31 @@ Ez a szakasz telepítés utáni build szolgáltatással kapcsolatos ismert probl
 
 #### <a name="health-and-monitoring"></a>Állapot- és figyelés
 
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Riasztási #1:
+   - NAME: Infrastruktúra-szerepkör nem kifogástalan
+   - SÚLYOSSÁG: figyelmeztetés
+   - ÖSSZETEVŐ: Rendszerállapot-vezérlő
+   - Leírás: A rendszerállapot-vezérlő szívverés képolvasó nem érhető el. Ez érinthet állapotjelentések és metrikákat.  
+
+  Riasztási #2:
+   - NAME: Infrastruktúra-szerepkör nem kifogástalan
+   - SÚLYOSSÁG: figyelmeztetés
+   - ÖSSZETEVŐ: Rendszerállapot-vezérlő
+   - Leírás: A rendszerállapot vezérlő tartalék képolvasó nem érhető el. Ez érinthet állapotjelentések és metrikákat.
+
+  Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik adott idő alatt.  
+
 - Ha újraindítja az infrastruktúra-szerepkör példánya, az újraindítás sikertelen jelző üzenet jelenhet meg. Azonban az újraindítás ténylegesen sikeresen befejeződött.
+
+
 
 #### <a name="marketplace"></a>Piactér
 - Néhány Piactéri elemek el ebben a kiadásban kompatibilitási megfontolások miatt. Ezek lesznek ismét engedélyezni kell további ellenőrzése után.
 - Felhasználók megkeresheti a teljes piactérre előfizetés nélkül, és láthatja például tervek és ajánlatok felügyeleti elemeket. Ezek az elemek nem működőképes a felhasználók számára is.
 
-#### <a name="compute"></a>Számítás
+#### <a name="compute"></a>Compute
 - Felhasználók rendszer felajánlja a lehetőséget a virtuális gép létrehozása a georedundáns tárolást. E konfiguráció hatására a virtuális gép nem hozható létre.
 - Beállíthatja, hogy a virtuális gép rendelkezésre állási csoportban, csak az egyik tartalék tartomány, és egy frissítési tartomány.
 - Nincs nincs Piactéri élmény virtuálisgép-méretezési csoportok létrehozásához. A skála beállítása egy sablon használatával hozhat létre.

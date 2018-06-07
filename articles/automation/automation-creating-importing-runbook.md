@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac7b050bf96401d33254dedad5035e43850ecc52
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea03f34a2e709fe6f6d8d2f7e13798cf6dcd1e34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598242"
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Létrehozása vagy egy Azure Automation forgatókönyv importálása
 Hozzáadhat egy runbook az Azure Automation által [újat hoz létre](#creating-a-new-runbook) vagy egy létező runbookot importál egy fájlból, vagy a a [forgatókönyvek](automation-runbook-gallery.md). Ez a cikk bemutatja, létrehozása és runbookok importálása fájlból.  Összes közösségi runbookok és a modulok használata a részletes kaphat [az Azure Automation forgatókönyv- és gyűjtemények](automation-runbook-gallery.md).
@@ -33,8 +34,10 @@ Használhatja a [New-AzureRmAutomationRunbook](https://msdn.microsoft.com/librar
 
 A következő mintaparancsok bemutatják, hogyan hozzon létre egy új üres runbookot.
 
-    New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
-    -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+```azurepowershell-interactive
+New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
+-Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+```
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>Runbook Azure Automation-fájlból való importálása
 Létrehozhat egy új runbookot az Azure Automation a PowerShell vagy a PowerShell-munkafolyamati (.ps1 kiterjesztéssel), az exportált grafikus forgatókönyvnek (.graphrunbook), vagy Python 2 parancsfájl (.py kiterjesztés) importálásával.  Meg kell adnia a [típusú forgatókönyvet](automation-runbook-types.md) az alábbiakat is figyelembe véve, az importálás során létrehozott.
@@ -70,15 +73,16 @@ Használhatja a [Import-AzureRMAutomationRunbook](https://msdn.microsoft.com/lib
 
 A következő mintaparancsok bemutatják, hogyan importálhat parancsfájlt runbookba.
 
-    $automationAccountName =  "AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-    $RGName = "ResourceGroup"
+```azurepowershell-interactive
+$automationAccountName =  "AutomationAccount"
+$runbookName = "Sample_TestRunbook"
+$scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
+$RGName = "ResourceGroup"
 
-    Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
-    -ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
-    -Type PowerShellWorkflow 
-
+Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
+-ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
+-Type PowerShellWorkflow
+```
 
 ## <a name="publishing-a-runbook"></a>Runbook közzététele
 Létrehozásakor, vagy egy új forgatókönyv importálása, közzé kell tennie, mielőtt futtatná azt.  Minden runbook Automation rendelkezik, egy Piszkozat és egy közzétett verziója. Csak a közzétett verziót lehet futtatható legyen, és kizárólag a piszkozat verzió szerkeszthető. A közzétett verziója nincs hatással a piszkozat verzióban végrehajtott módosítások. A vázlatként megjelölt verziót elérhetővé kell tenni, ha majd beállíthatja azt is, amely felülírja a közzétett verziót a vázlatként megjelölt verziót.
@@ -91,13 +95,14 @@ Létrehozásakor, vagy egy új forgatókönyv importálása, közzé kell tennie
 ## <a name="to-publish-a-runbook-using-windows-powershell"></a>A Windows PowerShell runbook közzététele
 Használhatja a [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603705.aspx) közzé egy runbookot, a Windows PowerShell-parancsmagot. A következő mintaparancsok bemutatják, hogyan minta runbook közzététele.
 
-    $automationAccountName =  AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $RGName = "ResourceGroup"
+```azurepowershell-interactive
+$automationAccountName =  "AutomationAccount"
+$runbookName = "Sample_TestRunbook"
+$RGName = "ResourceGroup"
 
-    Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
-    -Name $runbookName -ResourceGroupName $RGName
-
+Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
+-Name $runbookName -ResourceGroupName $RGName
+```
 
 ## <a name="next-steps"></a>További lépések
 * Hogyan előnyeit úgy használhatja ki a Runbookot és a PowerShell modul gyűjteménye, lásd: [az Azure Automation forgatókönyv- és minták](automation-runbook-gallery.md)

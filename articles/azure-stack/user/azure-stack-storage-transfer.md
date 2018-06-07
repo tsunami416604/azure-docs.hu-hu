@@ -1,30 +1,30 @@
 ---
-title: Eszközök Azure verem tárolás
+title: Eszközök Azure verem tárolási |} Microsoft Docs
 description: Tudnivalók a verem Azure storage-adatokkal átviteli eszközök
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/25/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a148f8089dd104933e6ba95f573182e0c1a32ae5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3d9bd187a70e8b8292e9c47497c2c6b13764045d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604726"
 ---
-# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Az Azure Storage-verem adatok átvitel eszközök használata
+# <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Adatok átvitel eszközeivel Azure verem tárolás
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-A Microsoft Azure verem a tárolási szolgáltatások lemezek, blobok, táblák, üzenetsorok és fiók felügyeleti funkciókat biztosít. Azure Storage-eszközöket is használhatja, ha azt szeretné, kezeléséhez, vagy helyezze át az adatokat, vagy az Azure-verem tárolóból. Ez a cikk áttekintést azokról az eszközökről.
+A Microsoft Azure verem a tárolási szolgáltatások lemezek, blobok, táblák, üzenetsorok és fiók felügyeleti funkciókat biztosít. Az Azure storage-eszközöket is használhatja, ha azt szeretné, kezeléséhez, vagy helyezze át az adatokat, vagy a verem Azure storage. Ez a cikk áttekintést azokról az eszközökről.
 
 A követelményei határozzák meg, amely a következő eszközök Önnek legjobban:
 
@@ -44,7 +44,7 @@ A követelményei határozzák meg, amely a következő eszközök Önnek legjob
 
     Könnyen használható önálló alkalmazás felhasználói felületet.
 
-A tárolási szolgáltatások az Azure és az Azure-verem közötti különbségeket, miatt előfordulhat, egyes konkrét követelmények az egyes eszközök a következő szakaszok ismertetik. Azure verem tárolási és az Azure storage között, lásd: [Azure verem Storage: szempontok és a különbségeket](azure-stack-acs-differences.md).
+A tárolási szolgáltatások az Azure és az Azure-verem közötti különbségeket, miatt előfordulhat, egyes konkrét követelmények az egyes eszközök a következő szakaszok ismertetik. Azure verem tárolási és az Azure storage között, lásd: [verem Azure storage: szempontok és a különbségeket](azure-stack-acs-differences.md).
 
 ## <a name="azcopy"></a>AzCopy
 
@@ -102,9 +102,9 @@ azcopy \
     --dest-key <key>
 ````
 
-### <a name="move-data-between-azure-and-azure-stack-storage"></a>Adatok áthelyezése az Azure és az Azure Storage-verem között
+### <a name="move-data-between-azure-and-azure-stack-storage"></a>Adatok áthelyezése az Azure és az Azure-verem tárolási között
 
-Azure Storage és Azure verem közötti aszinkron adatforgalom nem támogatott. Meg kell adnia az átvitelt a **/SyncCopy** vagy **--másolatának szinkronizálása** lehetőséget.
+Aszinkron adatok átviteléhez az Azure storage és Azure verem között nem támogatott. Meg kell adnia az átvitelt a **/SyncCopy** vagy **--másolatának szinkronizálása** lehetőséget.
 
 **Windows**
 
@@ -127,7 +127,7 @@ azcopy \
 ### <a name="azcopy-known-issues"></a>Azcopy ismert problémák
 
  - Szolgáltatásfájl-tároló bármely AzCopy művelet nem érhető el, mert a file storage még nem érhető el, Azure-készletben.
- - Azure Storage és Azure verem közötti aszinkron adatforgalom nem támogatott. Megadhatja az átvitelt a **/SyncCopy** másolja az adatokat.
+ - Aszinkron adatok átviteléhez az Azure storage és Azure verem között nem támogatott. Megadhatja az átvitelt a **/SyncCopy** másolja az adatokat.
  - A Linux az Azcopy csak verzióval 1802 frissítés vagy újabb verzió. És az nem támogatja a Table szolgáltatás.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
@@ -150,7 +150,7 @@ Ez a minta során feltételezzük, hogy sikeresen [telepített PowerShell Azure 
    > [!NOTE]
    > Ez a parancsfájl futtatásához a gyökérkönyvtárban a rendelkezik **AzureStack_Tools**.
 
-```PowerShell
+```PowerShell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environemnt name
@@ -213,7 +213,7 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-```
+````
 
 ### <a name="powershell-known-issues"></a>PowerShell ismert problémák
 
@@ -222,12 +222,12 @@ Kompatibilis Azure PowerShell modul Azure verem nem 1.3.0. Eltér az Azure Power
 * A visszatérési érték formátuma `Get-AzureRmStorageAccountKey` verziójában 1.3.0 két tulajdonságokkal rendelkezik: `Key1` és `Key2`, amíg a jelenlegi Azure-verzió a fiók kulcsok tartalmazó tömböt ad vissza.
 
    ```
-   # This command gets a specific key for a Storage account, 
+   # This command gets a specific key for a storage account, 
    # and works for Azure PowerShell version 1.4, and later versions.
    (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
    -AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a Storage account, 
+   # This command gets a specific key for a storage account, 
    # and works for Azure PowerShell version 1.3.2, and previous versions.
    (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
    -AccountName "MyStorageAccount").Key1
@@ -242,11 +242,11 @@ Az Azure parancssori felület található az Azure parancssori Azure-erőforrás
 
 Az Azure CLI megfelelően lett optimalizálva, kezelése és felügyelete az Azure-erőforrások a parancssorból, és automatizálási parancsfájlokat, szemben az Azure Resource Managerrel működő készítéséhez. Nagy része megtalálható a verem Azure portál, beleértve a funkciógazdag adatelérési ugyanazokat a funkciókat biztosít.
 
-Az Azure verem Azure CLI 2.0-s verziója szükséges. Azure CLI-t az Azure veremnek megfelelő konfigurálásával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure CLI-verem](azure-stack-version-profiles-azurecli2.md). Több feladatait a Azure verem tárfiókban lévő erőforrások használata az Azure CLI 2.0 használatával kapcsolatos további információkért lásd: [az Azure CLI2.0 az Azure Storage használata](../../storage/storage-azure-cli.md)
+Az Azure verem Azure CLI 2.0-s verziója szükséges. Azure CLI-t az Azure veremnek megfelelő konfigurálásával kapcsolatos további információkért lásd: [telepítése és konfigurálása az Azure CLI-verem](azure-stack-version-profiles-azurecli2.md). Több feladatait működik-e a verem Azure-tárfiók erőforrásokat az Azure CLI 2.0 használatával kapcsolatos további információkért lásd: [az Azure CLI2.0 használata az Azure storage](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Az Azure CLI mintaparancsfájl Azure verem
 
-Ha befejezte a parancssori felület telepítése és konfigurálása, megpróbálhatja dolgozhat Azure verem tárolási erőforrások együttműködhet egy kis rendszerhéj parancsfájlt az alábbi lépéseket. A parancsfájl befejezi a következő műveleteket:
+Ha befejezte a parancssori felület telepítése és konfigurálása, próbálkozzon az alábbi lépéseket egy kis rendszerhéj parancsfájlt kommunikál a verem Azure storage-erőforrások használata. A parancsfájl befejezi a következő műveleteket:
 
 * A tárfiók hoz létre egy új tároló.
 * A tároló feltölt egy már létező fájlt (a blob).
@@ -263,7 +263,7 @@ A parancsfájl futtatása előtt győződjön meg arról, hogy akkor sikeresen c
 
 ```bash
 #!/bin/bash
-# A simple Azure Stack Storage example script
+# A simple Azure Stack storage example script
 
 export AZURESTACK_RESOURCE_GROUP=<resource_group_name>
 export AZURESTACK_RG_LOCATION="local"
@@ -292,17 +292,18 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-```
+````
 
-## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+## <a name="microsoft-azure-storage-explorer"></a>A Microsoft Azure Tártallózó
 
-A Microsoft Azure Tártallózó egy különálló alkalmazás, a Microsoft. Ez lehetővé teszi, hogy egyszerűen dolgozhat Azure Storage mind Azure verem Storage-adatokkal Windows, a macOS és a Linux rendszerű számítógépeken. Ha azt szeretné, hogy egyszerűen az Azure Storage-verem adatok kezelésére, fontolja meg a Microsoft Azure Tártallózó használatával.
+A Microsoft Azure Tártallózó egy különálló alkalmazás, a Microsoft. Ez lehetővé teszi, hogy egyszerűen dolgozhat Azure storage és a verem Azure storage adatokat a Windows, a macOS és a Linux rendszerű számítógépeken. Ha azt szeretné, hogy egyszerűen a verem Azure storage adatok kezelésére, fontolja meg a Microsoft Azure Tártallózó használatával.
 
-* Azure verem használható Azure Tártallózó konfigurálásával kapcsolatos további tudnivalókért lásd: [Tártallózó csatlakozni a veremben Azure-előfizetéshez](azure-stack-storage-connect-se.md).
+* Azure verem használható Azure Tártallózó konfigurálásával kapcsolatos további tudnivalókért lásd: [Connect Tártallózó verem Azure-előfizetéshez](azure-stack-storage-connect-se.md).
 * A Microsoft Azure Tártallózó kapcsolatos további információkért lásd: [Ismerkedés a Tártallózó alkalmazással](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 
 ## <a name="next-steps"></a>További lépések
+
 * [Csatlakozás a Tártallózó verem Azure-előfizetéshez](azure-stack-storage-connect-se.md)
 * [Ismerkedés a Tártallózó alkalmazással](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure-konzisztens tárolási: különbségek és szempontok](azure-stack-acs-differences.md)
-* [A Microsoft Azure Storage bemutatása](../../storage/common/storage-introduction.md)
+* [A Microsoft Azure storage bemutatása](../../storage/common/storage-introduction.md)

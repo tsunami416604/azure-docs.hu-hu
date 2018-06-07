@@ -1,25 +1,20 @@
 ---
-title: 'Az Azure Backup: Visszaállítása a virtuális gépek az Azure-portál használatával |} Microsoft Docs'
+title: 'Az Azure Backup: Visszaállítása a virtuális gépek az Azure-portál használatával'
 description: Egy Azure virtuális gép visszaállíthatja őket egy helyreállítási pontból az Azure portál használatával
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: biztonsági másolat visszaállításával lehetséges; visszaállítása; helyreállítási pont;
-ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/04/2017
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: markgal
+ms.openlocfilehash: 52ca7cf4a04ace2a43f15433c05a2db26bde3602
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605593"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Az Azure-portál használatával állítsa vissza a virtuális gépek
 Pillanatképek készítése a adatait meghatározott időközönként védeni az adatokat. Ezeket a pillanatképeket nevezzük helyreállítási pontokat, és vannak tárolva, a Recovery Services-tárolók. Szükség esetén javítsa vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontok. A helyreállítási pont visszaállításakor teheti:
@@ -70,7 +65,7 @@ A virtuális gép vagy az összes lemez visszaállítása a virtuális gép bizt
 
     A **visszaállítása** panel nyílik meg.
 
-    ![visszaállítás panel](./media/backup-azure-arm-restore-vms/restore-blade.png)
+    ![Panel visszaállítása](./media/backup-azure-arm-restore-vms/restore-blade.png)
 7. Az a **visszaállítása** panelen válassza **visszaállítási pont**. A **visszaállítási pont kiválasztása** panel nyílik meg.
 
     ![Válasszon visszaállítási pontot](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)

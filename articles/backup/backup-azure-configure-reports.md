@@ -1,25 +1,20 @@
 ---
-title: "Jelentések konfigurálása az Azure Backup szolgáltatásra"
-description: "Ez a cikk beszél Power BI-jelentések konfigurálása az Azure Backup használatával Recovery Services-tároló."
+title: Jelentések konfigurálása az Azure Backup szolgáltatásra
+description: Ez a cikk beszél Power BI-jelentések konfigurálása az Azure Backup használatával Recovery Services-tároló.
 services: backup
-documentationcenter: 
 author: JPallavi
 manager: vijayts
-editor: 
-ms.assetid: 86e465f1-8996-4a40-b582-ccf75c58ab87
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b645d12255ab2bd6c3747eb966b2a6ecc3e284b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605229"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk beszél lépéseket jelentések konfigurálása az Azure Backup használatával Recovery Services-tároló, és ezek a jelentések használata a Power BI eléréséhez. A lépések elvégzése után közvetlenül nyissa meg a jelentéseket a Power bi-ba, testreszabása és jelentések létrehozása. 
@@ -147,7 +142,7 @@ Tárfiók konfigurálása jelent a recovery services-tároló használatával, m
 
    Igen, különböző tárolók kereszt-tároló-jelentéseket szeretne megjeleníteni a tárfiókon is konfigurálhatók. A tárolók ugyanazt a tárfiókot is, előfizetések is konfigurálhatók. Ezután használhatja ezt a tárfiókot Azure biztonsági mentés a tartalomcsomag a Power bi-ban való kapcsolódás során a jelentések megtekintéséhez. A kiválasztott tárolási fiók azonban és recovery services-tárolónak ugyanabban a régióban kell lennie.
    
-## <a name="troubleshooting-errors"></a>Kapcsolatos hibák elhárítása
+## <a name="troubleshooting-errors"></a>Hibaelhárítás
 | Hiba részletei | Megoldás: |
 | --- | --- |
 | Biztonsági mentés a jelentéseknél a storage-fiók beállítása után **Tárfiók** továbbra is mutatja **nincs konfigurálva**. | Ha a tárfiók sikeresen konfigurálta, a jelentéskészítési adatok a erdőtől áramolnak annak ellenére, hogy a probléma. A probléma megoldásához keresse fel az Azure portál > minden szolgáltatások > diagnosztikai beállítások > RS tároló > beállítás szerkesztése. Törli a korábban konfigurált beállítást, és hozzon létre egy új beállítás azonos paneljén. Most, állítsa be a mezőt **neve** való **szolgáltatás**. Ez a beállított tárfiókot kell megjelennie. |

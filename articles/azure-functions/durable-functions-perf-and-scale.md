@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18a3f3080c58e01117e0fc73adad76d28c298536
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599432"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség tartós funkciókkal (az Azure Functions)
 
@@ -161,7 +162,7 @@ Tervezi a tartós funkciók használata termelési alkalmazások esetében, font
 > [!TIP]
 > Szétterítési, eltérően fan-in műveletek esetében csak egy virtuális. Ha az alkalmazás a kívánt szétterítési, fan-in mintát használja, és fan-in teljesítmény aggódik, érdemes lehet részterv osztani a tevékenység függvény szétterítési több [alárendelt álló üzenettípusok összehangolását](durable-functions-sub-orchestrations.md).
 
-Az alábbi táblázatban láthatók a várható *maximális* átviteli számokat a leírt forgatókönyvek esetén. "Példány" hivatkozik egy példányban fut a egyetlen kis orchestrator funkcióinak ([A1](../virtual-machines/windows/sizes-general.md#a-series)) méretű Azure App Service-ben. Minden esetben feltételezzük, hogy [munkamenetek kiterjesztett](#orchestrator-function-replay) engedélyezve vannak. Tényleges eredmény eltérhetnek attól függően, hogy a Processzor- vagy i/o munkahelyi végzi el a funkciókódot.
+Az alábbi táblázatban láthatók a várható *maximális* átviteli számokat a leírt forgatókönyvek esetén. "Példány" hivatkozik egy példányban fut a egyetlen kis orchestrator funkcióinak ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) méretű Azure App Service-ben. Minden esetben feltételezzük, hogy [munkamenetek kiterjesztett](#orchestrator-function-replay) engedélyezve vannak. Tényleges eredmény eltérhetnek attól függően, hogy a Processzor- vagy i/o munkahelyi végzi el a funkciókódot.
 
 | Forgatókönyv | Maximális átviteli sebesség |
 |-|-|

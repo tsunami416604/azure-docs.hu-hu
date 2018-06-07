@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622853"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,18 +42,18 @@ U-SQL-tevékenység alábbi Data Lake Analytics elleni hitelesítési típust t�
 
 Azt javasoljuk, hogy használja-e szolgáltatás egyszerű hitelesítést, különösen a egy ütemezett U-SQL-végrehajtást. Jogkivonat lejáratáról fordulhat elő a felhasználói hitelesítő adatok hitelesítéssel. További konfigurációs információkért lásd: a [szolgáltatástulajdonságok kapcsolódó](#azure-data-lake-analytics-linked-service) szakasz.
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics Linked Service
+## <a name="azure-data-lake-analytics-linked-service"></a>Az Azure Data Lake Analytics társított szolgáltatás
 Létrehozhat egy **Azure Data Lake Analytics** társított szolgáltatás az Azure Data Lake Analytics csatolásához számítási egy az Azure data factory szolgáltatást. A Data Lake Analytics U-SQL-tevékenység a feldolgozási szolgáltatásnak hivatkozik. 
 
 A következő táblázat ismerteti a JSON-definícióból használt általános tulajdonságok. További választhat egyszerű szolgáltatásnév és felhasználói hitelesítő adatok hitelesítése.
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **Típusa** |A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. |Igen |
+| **type** |A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. |Igen |
 | **Fióknév** |Az Azure Data Lake Analytics-fiók neve. |Igen |
 | **dataLakeAnalyticsUri** |Az Azure Data Lake Analytics URI. |Nem |
 | **subscriptionId** |Az Azure előfizetés-azonosító |Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
-| **resourceGroupName** |Azure erőforráscsoport-név |Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
+| **resourceGroupName** |Azure-erőforráscsoport neve |Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
 
 ### <a name="service-principal-authentication-recommended"></a>Szolgáltatás egyszerű hitelesítés (ajánlott)
 Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és hozzáférést, a Data Lake Store-bA. Részletes útmutató: [szolgáltatások közötti hitelesítési](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:
@@ -92,7 +93,7 @@ Alternatív megoldásként használható felhasználói hitelesítő Data Lake A
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| **authorization** | Kattintson a **engedélyezés** a Data Factory Editor gombra, és adja meg a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen |
+| **Engedélyezési** | Kattintson a **engedélyezés** a Data Factory Editor gombra, és adja meg a hitelesítő adatok, amelyek az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ehhez a tulajdonsághoz. | Igen |
 | **sessionId** | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használható. Ez a beállítás automatikusan jön létre, a Data Factory Editor használatakor. | Igen |
 
 **Példa: Felhasználók hitelesítő adatok hitelesítése**
@@ -114,7 +115,7 @@ Alternatív megoldásként használható felhasználói hitelesítő Data Lake A
 ```
 
 #### <a name="token-expiration"></a>Jogkivonat lejáratáról
-Az engedélyezési kód használatával előállított a **engedélyezés** gomb némi várakozás után lejár. Lásd az alábbi táblázatban a különböző típusú felhasználói fiókokat a lejárati idejét. Jelenhetnek meg a következő hiba jelenik meg, ha a hitelesítési **-token érvényessége lejár**: hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő adatok ellenőrzése. AADSTS70008: A megadott hozzáférés biztosítása lejárt vagy visszavonták. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21:09:31Z
+Az engedélyezési kód használatával előállított a **engedélyezés** gomb némi várakozás után lejár. Lásd az alábbi táblázatban a különböző típusú felhasználói fiókokat a lejárati idejét. Jelenhetnek meg a következő hiba jelenik meg, ha a hitelesítési **-token érvényessége lejár**: hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő adatok ellenőrzése. AADSTS70008: A megadott hozzáférés biztosítása lejárt vagy visszavonták. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelációazonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 időbélyegző: 2015-12-15 21:09:31Z
 
 | Felhasználó típusa | Után lejár |
 |:--- |:--- |
@@ -288,7 +289,7 @@ Ez a minta Azure Data Lake Store társított szolgáltatás által a bemeneti/ki
 
 Lásd: [helyezze át az adatokat, és az Azure Data Lake Store](data-factory-azure-datalake-connector.md) cikk a JSON-tulajdonságok leírását. 
 
-## <a name="sample-u-sql-script"></a>Sample U-SQL Script
+## <a name="sample-u-sql-script"></a>Minta U-SQL parancsfájl
 
 ```
 @searchlog =

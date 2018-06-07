@@ -3,16 +3,17 @@ title: Kapcsolódás Azure Analysis Services-kiszolgálók |} Microsoft Docs
 description: Megtudhatja, hogyan csatlakozhat, és adatokat lekérni az Analysis Services-kiszolgálóhoz, az Azure-ban.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 53a8a1eea5ffa50fcdaf4a60c9bbd03d30d8e311
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ce95337c042d6acbdf6e7cff300eb643146e3d87
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597368"
 ---
 # <a name="connecting-to-servers"></a>Kiszolgálók csatlakoztatása
 
@@ -38,7 +39,7 @@ A **Azure-portálon** > server > **áttekintése** > **kiszolgálónév**, máso
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 
-## <a name="connection-string"></a>Kapcsolati karakterlánc
+## <a name="connection-string"></a>Kapcsolati sztring
 
 Azure Analysis Services az objektum táblázatos modell használatával szeretne csatlakozni, használja a következő kapcsolati karakterlánc-formátumairól:
 

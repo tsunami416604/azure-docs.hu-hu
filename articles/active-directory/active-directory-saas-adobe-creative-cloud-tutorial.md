@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 05/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 808debcee11eb83f7e6afa1f3443a35c9f6767c4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 53513b2d07f75e917845ad307a2833a5149ab677
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590011"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Oktatóanyag: Azure Active Directoryval integrált Adobe kreatív felhő
 
@@ -80,8 +81,6 @@ Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentk
 
 Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó Adobe kreatív felhőben Újdonságok egy felhasználó számára az Azure ad-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó Adobe kreatív felhőben közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az Adobe kreatív felhőben, rendelje az értékét a **felhasználónév** értékeként Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
 Az Azure AD egyszeri bejelentkezést a Adobe kreatív felhőalapú tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
@@ -101,7 +100,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés párbeszédpanel](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_samlbase.png)
 
 3. Az a **Adobe kreatív felhőalapú tartományt és URL-címek** szakaszban, ha szeretne beállítani az alkalmazás által kezdeményezett IDP módban, hajtsa végre az alábbi lépéseket:
@@ -112,8 +111,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company name>.okta.com/auth/saml20/accauthlinktest`
 
-    > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [Adobe kreatív felhőalapú ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) beolvasni ezeket az értékeket. 
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [Adobe kreatív felhőalapú ügyfél-támogatási csoport](https://helpx.adobe.com/in/contact/support.html) beolvasni ezeket az értékeket.
 
 4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
 
@@ -138,41 +137,44 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | E-mail |user.mail |
 
     a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
-    
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_attribute_04.png)
-    
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_attribute_05.png)
-    
+
     b. Az a **neve** szövegmező, írja be az adott sorhoz feltüntetett attribútumot nevét.
-    
+
     c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
-    
+
     d. Kattintson az **OK** gombra.
-    
+
+    > [!NOTE]
+    > Felhasználók szükséges érvényes Office 365 ExO licenc az e-mailek jogcím értéke a SAML-válasz feltöltését.
+
 8. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_400.png)
-    
+
 9. A a **Adobe egy Felhőkonfigurációk kreatív** kattintson **Adobe kreatív felhő konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz**.
 
     ![Adobe Creative Cloud Configuration](./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_adobecreativecloud_configure.png)
-    
+
 10. Egy másik webes böngészőablakban bejelentkezés az [Adobe felügyeleti konzol](https://adminconsole.adobe.com) rendszergazdaként.
 
 11. Lépjen **beállítások** a felső navigációs sáv megnyitásához, majd válassza a **identitás**. A tartományok listáját nyitja meg. Kattintson a **konfigurálása** hivatkozás a tartomány alapján. Végezze el az alábbi lépéseket a **egyszeri bejelentkezési a konfiguráció szükséges** szakasz. További információkért lásd: [tartomány beállítása](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
 
     ![Beállítások](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "beállítások")
-    
+
     a. Kattintson a **Tallózás** az Azure AD-be a letöltött tanúsítvány feltöltése **IDP tanúsítvány**.
-    
+
     b. Az a **IDP kibocsátó** szövegmező, írja be az értéket a **SAML entitásazonosító** , amely a másolt **bejelentkezés konfigurálása** szakaszban az Azure portálon.
-    
+
     c. Az a **IDP bejelentkezési URL-cím** szövegmező, írja be az értéket a **SAML SSO URL-címe** , amely a másolt **bejelentkezés konfigurálása** szakaszban az Azure portálon.
-    
+
     d. Válassza ki **HTTP - átirányítási** , **IDP kötés**.
-    
+
     e. Válassza ki **E-mail cím** , **felhasználói bejelentkezési beállítás**.
-    
+
     f. Kattintson a **mentése** gombra.
 
 12. Az irányítópult mostantól megjelennek az XML-fájl **"Metaadatok letöltése"** fájlt. Adobe EntityDescriptor és URL-címe AssertionConsumerService tartalmaz. Nyissa meg a fájlt, és konfigurálja őket az Azure AD-alkalmazás.
@@ -182,9 +184,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     a. Használja az Adobe meg a megadott EntityDescriptor értéket **azonosító** a a **Alkalmazásbeállítások konfigurálása** párbeszédpanel.
 
     b. Használja az Adobe meg a megadott AssertionConsumerService értéket **válasz URL-CÍMEN** a a **Alkalmazásbeállítások konfigurálása** párbeszédpanel.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -290,4 +289,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_203.png
-

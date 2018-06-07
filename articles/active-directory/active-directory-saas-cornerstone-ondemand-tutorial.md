@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: df2bc27a5f17120b222e91007a47f85f0566b616
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c609c32e423625c479f3f169da4a31616d200e57
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Oktatóanyag: Azure Active Directoryval integrált legfontosabb feladatai közé tartoznak kötegmérete
 
@@ -64,7 +65,7 @@ Az Azure AD integrálása a legfontosabb feladatai közé tartoznak OnDemand kon
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![Alkalmazások][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
     ![Alkalmazások][3]
@@ -103,7 +104,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
 
 3. Az a **legfontosabb feladatai közé tartoznak OnDemand tartomány és az URL-címek** csoportjában hajtsa végre a következő lépést:
@@ -115,8 +116,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. A **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<company>.csod.com`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [legfontosabb feladatai közé tartoznak OnDemand ügyfél-támogatási csoport](mailTo:moreinfo@csod.com) beolvasni ezeket az értékeket. 
- 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [legfontosabb feladatai közé tartoznak OnDemand ügyfél-támogatási csoport](mailTo:moreinfo@csod.com) beolvasni ezeket az értékeket.
+
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
@@ -131,9 +132,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 7. Egyszeri bejelentkezés konfigurálása **legfontosabb feladatai közé tartoznak OnDemand** oldalon kell küldeniük a letöltött **tanúsítvány**, **Sign-Out URL-cím** és **SAML-alapú egyszeri bejelentkezési URL-címe** való [legfontosabb feladatai közé tartoznak OnDemand támogatási csoport](mailTo:moreinfo@csod.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
@@ -143,18 +141,18 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
 1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_01.png) 
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_01.png)
 
 2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_02.png) 
 
 3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_03.png) 
+
+    ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_03.png)
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_04.png) 
 
     a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
@@ -164,10 +162,12 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-cornerstone-ondemand-test-user"></a>A legfontosabb feladatai közé tartoznak OnDemand tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók legfontosabb feladatai közé tartoznak OnDemand bejelentkezni, azok ki kell építenie az OnDemand legfontosabb feladatai közé tartoznak. Legfontosabb feladatai közé tartoznak Ondemanddetection, ha egy kézi tevékenység.
+Ez a szakasz célja Britta Simon nevű OnDemand legfontosabb feladatai közé tartoznak a felhasználó létrehozásához. Legfontosabb feladatai közé tartoznak OnDemand támogatja automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](active-directory-saas-cornerstone-ondemand-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+
+**Ha szeretne létrehozni a felhasználót manuálisan, akkor hajtsa végre a következő lépéseket:**
 
 Konfigurálhatja a felhasználók átadása, küldje el a (pl.: név, E-mail) az Azure AD-felhasználó meg szeretné azokat a [legfontosabb feladatai közé tartoznak OnDemand támogatási csoport](mailTo:moreinfo@csod.com).
 
@@ -215,8 +215,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
-
-
+* [A felhasználók átadása konfigurálása](active-directory-saas-cornerstone-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -231,4 +230,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_203.png
-

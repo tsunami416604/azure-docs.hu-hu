@@ -3,7 +3,7 @@ title: Az Azure Active Directory kockázati események |} Microsoft Docs
 description: A artice Mik azok a kockázati események részletes áttekintést nyújt.
 services: active-directory
 keywords: az Azure active directory azonosító adatok védelmét, biztonság, kockázat, kockázati szint, biztonsági rést, biztonsági házirend
-author: MarkusVi
+author: rolyon
 manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -11,14 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/14/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e883caa63bde26e13234dde949ce4517b328e3a5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2a616cf644ee4f71e1340993f01b37031d567a09
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588777"
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati események
 
@@ -73,7 +75,7 @@ A kockázat esemény két bejelentkezéseket földrajzilag távoli helyről, aho
 
 Az algoritmus figyelmen kívül hagyja a nyilvánvaló "vakriasztásokat" hozzájárul a lehetetlen odautazás feltételek, például a virtuális magánhálózatok és rendszeresen a szervezeten belüli más felhasználók által használt helyek. A rendszer kezdeti tanulási időszaka 14 napos, amely során egy új felhasználó bejelentkezési viselkedésének Tanulja meg. 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
+### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés szokatlan helyekről
 
 A kockázat eseménytípus úgy ítéli meg, bejelentkezési helyek túli (szélesség, IP / hosszúság és a ASN) új / ismeretlen helyek meghatározásához. A rendszer fent említett helyeken, felhasználó által használt kapcsolatos információkat tárolja, és úgy ítéli meg ezeket a "megszokott" helyeket. A kockázat esemény akkor váltódik ki, amikor a bejelentkezés következik be, amely még nem ismeri helyek listáját egy helyről. A rendszer kezdeti tanulási időszaka a 30 nap során, ami azt nem ez a jelző bármely új helyek ismeretlen helyként. A rendszer is bejelentkezések ismerős eszközöket, és egy ismert helyre földrajzilag megközelítik helyek figyelmen kívül hagyja. 
 
@@ -143,7 +145,7 @@ Lehetetlen odautazás az általában jól jelzi, hogy egy támadó sikeresen jel
 > [!TIP]
 > A kockázat eseménytípus jelentett hamis pozitív mennyisége segítségével csökkenthető [helyek nevű](active-directory-named-locations.md). 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
+### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés szokatlan helyekről
 
 Ismeretlen helyek biztosíthat egy erős annak jelzése, hogy egy támadó képes ellopott identitás használatára. Hamis – pozitív akkor fordulhat elő, amikor egy felhasználó utazik, próbálja ki az új eszköz vagy egy új VPN-t használja. A vakriasztások miatt a kockázati szintjét esemény van **Közepes**.
 

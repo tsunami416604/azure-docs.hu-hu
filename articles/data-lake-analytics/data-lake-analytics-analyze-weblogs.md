@@ -1,24 +1,21 @@
 ---
-title: "Azure Data Lake Analytics használatával webhelyek naplóinak elemzése |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a Data Lake Analytics webhelyek naplóinak elemzése. "
+title: Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
+description: Megtudhatja, hogyan használja a Data Lake Analytics webhelyek naplóinak elemzése.
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
 manager: saveenr
-editor: cgronlun
+editor: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8cb8e0f683c2790d7aebb87a684798ea0a36417f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623366"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelyek naplóinak elemzése az Azure Data Lake Analytics használatával
 Megtudhatja, hogyan használja a Data Lake Analytics, különösen akkor tudni, melyik hivatkozó kérelmei hibába ütközött a webhelyen való webhelyek naplóinak elemzése.
@@ -172,7 +169,7 @@ Az alkalmazás hozzáadása felhasználói operátorok adhat hozzá.  További i
 3. Kattintson duplán a **UnsuccessfulResponsees.log**.
 4. Ahhoz, hogy közvetlenül a kimeneti keresse meg a kimeneti fájl belül a diagram nézet, a feladat is duplán.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:
 
 * [A Data Lake Analytics használatának első lépései az Azure Portallal](data-lake-analytics-get-started-portal.md)

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 53de4afb42e9ea5b7845a9c862dc1e06c6de36df
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e4ce2a17f475fa3e11a4101c448f1c1c60dc66ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604743"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Az Azure felügyeleti csoportok-erőforrások rendszerezése 
 
@@ -69,7 +70,7 @@ Minden könyvtár kap a "Gyökér" felügyeleti csoport egyetlen legfelső szint
 
 Támogatja az Azure felügyeleti csoportok [átruházásához hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az összes erőforrás hozzáférések és szerepkör-definíciók. Ezeket az engedélyeket a hierarchiában található gyermek erőforrásokhoz örökölt.   
 
-Miközben bármely [beépített RBAC szerepkör](../role-based-access-control/overview.md#built-in-roles) lehet hozzárendelni felügyeleti csoporthoz, általánosan használt négy szerepkör is létezik: 
+Miközben bármely [beépített RBAC szerepkör](../role-based-access-control/built-in-roles.md) lehet hozzárendelni felügyeleti csoporthoz, általánosan használt négy szerepkör is létezik: 
 - **Tulajdonos** minden erőforrást, beleértve a jogot, hogy mások számára delegálása teljes hozzáféréssel rendelkezik. 
 - **A közreműködői** is létrehozása és kezelése az Azure-erőforrások minden típusú, de nem tud hozzáférést biztosítani, mások számára.
 - **Erőforrás házirend közreműködői** hozhat létre és kezelhet házirendeket az erőforrások könyvtárában.     

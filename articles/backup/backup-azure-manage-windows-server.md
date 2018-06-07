@@ -1,24 +1,19 @@
 ---
-title: "Azure Recovery Services-tárolók és a kiszolgálók felügyeletére |} Microsoft Docs"
-description: "Ez a cikk segítségével Azure Recovery Services-tárolók és a kiszolgálók felügyeletére."
+title: Azure Recovery Services-tárolók és a kiszolgálók kezelése
+description: Ez a cikk segítségével Azure Recovery Services-tárolók és a kiszolgálók felügyeletére.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-editor: tysonn
-ms.assetid: 4eea984b-7ed6-4600-ac60-99d2e9cb6d8a
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: markgal
-ms.openlocfilehash: 18ab960c3d86f4154f7cbbaa3dd4909b9b16b697
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3d0404654631520909e63853d47b7de2b6cb4361
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606528"
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows-gépek Azure Recovery Services-tárolóinak és -kiszolgálóinak figyelése és kezelése
 
@@ -185,7 +180,7 @@ Nyissa meg a **Microsoft Azure Backup szolgáltatás ügynökének** (rákeresve
 
 Az a **műveletek** érhető el a biztonságimásolat-készítő ügynök konzol jobb akkor hajtsa végre az alábbi felügyeleti feladatokat:
 
-* Register Server
+* Kiszolgáló regisztrálása
 * Biztonsági mentés ütemezése
 * Biztonsági másolat készítése
 * Tulajdonságainak módosítása
@@ -290,7 +285,7 @@ Elemre a szabályozás engedélyezéséhez:
 
 A.2 riasztás jelenik meg, az Azure biztonsági mentési hiba 20 perc belül.
 
-**Q3. Ha egy e-mailt nem küldi el, ha értesítések beállítása eset van?**
+**3. NEGYEDÉVÉBEN. Ha egy e-mailt nem küldi el, ha értesítések beállítása eset van?**
 
 3. válasz Az alábbiakban az esetekben, amikor az értesítés nem lesz elküldve riasztás zaj csökkentése érdekében:
 

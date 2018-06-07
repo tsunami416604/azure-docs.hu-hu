@@ -1,26 +1,22 @@
 ---
-title: 'Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval | Microsoft Docs'
+title: 'Áttekintés: Azure virtuális gépek védelme Recovery Services-tárolóval'
 description: Megvédheti Azure virtuális gépeit egy Recovery Services-tárolóval. Adatai védelmére a Resource Manager-alapú és a klasszikus üzemi modellen alapuló virtuális gépek, a Premium Storage-alapú virtuális gépek, a titkosított virtuális gépek és a Managed Disksen található virtuális gépek biztonsági másolatait használhatja. Létrehozhat és regisztrálhat egy Recovery Services-tárolót. Regisztrálhat virtuális gépeket, létrehozhat egy házirendet, és megvédheti virtuális gépeit az Azure-ban.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keyword: backups; vm backup
-ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2018
-ms.author: markgal;jimpark;sogup
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+keywords: biztonsági mentések; virtuális gép biztonsági mentése
+ms.openlocfilehash: feae4ac83b637588fe0979a82ce05a56c2d339ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606035"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Biztonsági másolatot az Azure virtuális gépek Recovery Services-tároló
 

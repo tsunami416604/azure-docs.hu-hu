@@ -4,15 +4,14 @@
 ## [Mi a Mobile Apps szolgáltatás?](app-service-mobile-value-prop.md)
 ## [App Service-csomagok](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-# Első lépések
-## Mobilalkalmazások létrehozása
-### [Android](app-service-mobile-android-get-started.md)
-### [Cordova](app-service-mobile-cordova-get-started.md)
-### [iOS](app-service-mobile-ios-get-started.md)
-### [Windows](app-service-mobile-windows-store-dotnet-get-started.md)
-### [Xamarin.Android](app-service-mobile-xamarin-android-get-started.md)
-### [Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md)
-### [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md)
+# Gyors útmutatók
+## [Android](app-service-mobile-android-get-started.md)
+## [Cordova](app-service-mobile-cordova-get-started.md)
+## [iOS](app-service-mobile-ios-get-started.md)
+## [Windows](app-service-mobile-windows-store-dotnet-get-started.md)
+## [Xamarin.Android](app-service-mobile-xamarin-android-get-started.md)
+## [Xamarin.Forms](app-service-mobile-xamarin-forms-get-started.md)
+## [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started.md)
 
 # Útmutató
 
@@ -136,7 +135,7 @@
 #### [Többrétegű biztonsági architektúra megvalósítása](../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Biztonságos csatlakozás a háttérerőforrásokhoz](../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Biztonsági mentés
+## Backup
 ### [Alkalmazás biztonsági mentése az Azure-ban](../app-service/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Alkalmazás visszaállítása az Azure-ban](../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 

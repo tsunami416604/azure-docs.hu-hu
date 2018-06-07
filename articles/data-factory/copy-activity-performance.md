@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619252"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolja a tevékenység teljesítmény- és hangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -249,7 +250,7 @@ Javasoljuk, hogy szánjon a Data Factory szolgáltatásnak a másolási tevéken
      * [Előkészített másolása](#staged-copy)
      * [Önálló üzemeltetett integrációs futásidejű méretezhetőség](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Önálló üzemeltetett integrációs futásidejű](#considerations-for-self-hosted-integration-runtime)
-   * [Source](#considerations-for-the-source)
+   * [Forrás](#considerations-for-the-source)
    * [Sink](#considerations-for-the-sink)
    * [Szerializálás és a deszerializálás](#considerations-for-serialization-and-deserialization)
    * [Tömörítés](#considerations-for-compression)

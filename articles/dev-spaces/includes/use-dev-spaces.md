@@ -10,18 +10,18 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 2563f7c36283521541562bcd88f973d86a6f672a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7f4dced6f82622ba735b1b059f30d88830347fba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625848"
 ---
 ## <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>Használhat Azure fejlesztői szóközöket a AKS fürt konfigurálása
 
-Nyisson meg egy parancsablakot, és adja meg a következő Azure CLI-parancsok, az erőforráscsoport, amely tartalmazza a AKS fürt és a AKS fürt nevét használja:
+Nyisson meg egy parancsablakot, és adja meg a következő Azure CLI-parancsot, az erőforráscsoport, amely tartalmazza a AKS fürt és a AKS fürt nevét használja. A parancs a fürt támogatja az Azure fejlesztői szóközöket konfigurálja.
 
    ```cmd
-   az extension add --name dev-spaces-preview 
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
-Az első parancs bővítmény telepíti az Azure CLI Azure fejlesztői tárolóhelyek támogatásához, és a második konfigurálja a fürt támogatja az Azure fejlesztői szóközöket.
+

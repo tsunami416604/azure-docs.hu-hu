@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f65e84bff63bbdb781991ff6648b0fb98ca5208f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592313"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Objektum-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
-Ez a dokumentum ismerteti a problémák elhárítása hibaelhárítási feladat szinkronizációs lépéseit.
+Ez a cikk lépéseit kapcsolatos hibák elhárításához szinkronizációs a hibaelhárítási feladattal. Hibaelhárítás hogyan működik az Azure Active Directory (Azure AD) Connect megtekintéséhez nézze meg [ebből a rövid videóból](https://aka.ms/AADCTSVideo).
 
 ## <a name="troubleshooting-task"></a>A feladat hibaelhárítása
-Az Azure Active Directory (AAD) telepítési csatlakozás verziója 1.1.749.0 vagy újabb rendszerre, használja a hibaelhárítási feladat a varázsló objektum szinkronizálási kapcsolatos problémák elhárítása. Korábbi verzióihoz adjon hibaelhárítása leírtak manuálisan [Itt](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
+Az Azure Active Directory telepítési csatlakozás verziója 1.1.749.0 vagy újabb rendszerre, használja a hibaelhárítási feladat a varázsló objektum szinkronizálási kapcsolatos problémák elhárítása. Korábbi verzióihoz adjon hibaelhárítása leírtak manuálisan [Itt](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>A hibaelhárítási feladat futtatása a varázsló
 A varázsló a hibaelhárítási feladat futtatásához a következő lépésekkel:

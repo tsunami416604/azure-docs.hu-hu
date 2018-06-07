@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3da4b0286ddea88d8009757ea44797e4269140a2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cb68b00232edd79a7b9cf239c1576c88731812d6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617681"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Másolja az adatokat, és az SQL-kiszolgáló Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -254,7 +255,7 @@ Adatok másolása az SQL Server, állítsa be a fogadó típusa a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **SqlSink** | Igen |
-| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett: 10000) |
+| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
 | preCopyScript |Adja meg a másolási tevékenység végrehajtása előtt az adatok írása az SQL Server egy SQL-lekérdezést. Akkor lesz csak egyszer hívható futtatása példányonként. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
 | sqlWriterStoredProcedureName |A tárolt eljárás, amely meghatározza, hogyan alkalmazhat forrásadatok a céloldali tábla, pl. do upserts vagy a saját üzleti logikát használó átalakító neve. <br/><br/>Megjegyzés: Ez a tárolt eljárás fog **kötegenként meghívott**. Ha művelet, amelynek csak egyszer futnak, és érinti a elvégezni a segítségével például törlés/truncate forrásadatok használja szeretné `preCopyScript` tulajdonság. |Nem |
@@ -488,11 +489,11 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 | dátum |DateTime |
 | Dátum és idő |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| datetimeoffset |DateTimeOffset |
 | Decimális |Decimális |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
 | Lebegőpontos |Dupla |
-| image |Byte] |
+| Kép |Byte] |
 | int |Int32 |
 | pénz |Decimális |
 | nchar |Karakterlánc, Char] |
@@ -505,8 +506,8 @@ Ha másol adatokat az/SQL Server, a következő megfeleltetéseket segítségév
 | smallint |Int16 |
 | kis pénz típusú értéknél |Decimális |
 | sql_variant |Objektum * |
-| Szöveg |Karakterlánc, Char] |
-| time |TimeSpan |
+| szöveg |Karakterlánc, Char] |
+| time |A TimeSpan |
 | időbélyeg |Byte] |
 | tinyint |Int16 |
 | egyedi azonosító |GUID |

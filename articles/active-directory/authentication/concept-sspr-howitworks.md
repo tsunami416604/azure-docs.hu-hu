@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593591"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Az önkiszolgáló jelszó-változtatási az Azure AD részletes bemutatója
 
@@ -152,6 +153,8 @@ Hajtsa végre az előre definiált kérdések az Office 365 nyelveken a teljes k
 Egyéni biztonsági kérdések nem a különböző területi beállításokhoz honosított. Minden egyéni kérdések jelennek meg nyelvével azonos nyelven, szerepel a felügyeleti felhasználói felület, akkor is, ha a felhasználó a böngésző nyelve nem egyezik. Ha honosított kérdése van szüksége, az előre definiált kérdéseket kell használnia.
 
 Egy egyéni biztonsági kérdés hossza legfeljebb 200 karakter lehet.
+
+Jelszó-változtatási portál és kérdések megjelenítése eltérő honosított nyelvű hozzáfűzése "? mkt =<Locale>" végén a jelszó alaphelyzetbe állítása az URL-cím azaz utáni spanyol példaként [ https://passwordreset.microsoftonline.com/?mkt=es-us ](https://passwordreset.microsoftonline.com/?mkt=es-us).
 
 ### <a name="security-question-requirements"></a>Biztonsági kérdés követelmények
 

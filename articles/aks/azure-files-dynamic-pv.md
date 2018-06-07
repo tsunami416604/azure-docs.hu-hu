@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597501"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Az Azure files állandó kötetek
 
@@ -23,29 +24,20 @@ További információ a Kubernetes állandó kötetek statikus létrehozása, be
 
 ## <a name="create-storage-account"></a>Storage-fiók létrehozása
 
-Dinamikusan létrehozása az Azure fájlmegosztások Kubernetes kötetként esetén minden tárfiók használható, amíg a AKS fürtként ugyanabban az erőforráscsoportban van. Szükség esetén hozzon létre egy tárfiókot a ugyanabban az erőforráscsoportban a AKS fürtként.
-
-A megfelelő erőforráscsoport azonosításához használja a [az listájának] [ az-group-list] parancsot.
+Dinamikusan létrehozása az Azure fájlmegosztások Kubernetes kötetként esetén minden tárfiók is használható, mindaddig, amíg a AKS van **csomópont** erőforráscsoportot. Az erőforráscsoport neve az beszerzése a [az erőforrás megjelenítése] [ az-resource-show] parancsot.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Keresse meg egy erőforráscsoportot, egy hasonló nevű `MC_clustername_clustername_locaton`.
-
-```
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Használja a [az storage-fiók létrehozása] [ az-storage-account-create] parancsot a tárfiók létrehozásához.
 
-Ez a példa használ, frissítse `--resource-group` az erőforráscsoport nevét és `--name` az Ön által választott névre.
+Frissítés `--resource-group` az előző lépésben összegyűjtött az erőforráscsoport nevét és `--name` az Ön által választott névre.
 
 ```azurecli-interactive
-az storage account create --resource-group MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
+az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
 ## <a name="create-storage-class"></a>Tárolási osztály létrehozása
@@ -76,7 +68,7 @@ kubectl apply -f azure-file-sc.yaml
 
 Egy állandó kötet jogcímet (PVC) tárolóobjektum osztály használatával dinamikusan létesítenek az Azure fájlmegosztások.
 
-A következő YAM segítségével hozzon létre egy állandó kötet jogcím `5GB` a méreténél `ReadWriteOnce` hozzáférést. A hozzáférési további információkért lásd: a [Kubernetes állandó kötet] [ access-modes] dokumentációját.
+A következő YAM segítségével hozzon létre egy állandó kötet jogcím `5GB` a méreténél `ReadWriteMany` hozzáférést. A hozzáférési további információkért lásd: a [Kubernetes állandó kötet] [ access-modes] dokumentációját.
 
 Hozzon létre egy fájlt `azure-file-pvc.yaml` és a következő YAM másolja. Győződjön meg arról, hogy a `storageClassName` megegyezik az előző lépésben létrehozott tárolási osztály.
 
@@ -87,7 +79,7 @@ metadata:
   name: azurefile
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: azurefile
   resources:
     requests:
@@ -209,6 +201,7 @@ További tudnivalók Kubernetes állandó kötetek Azure fájlokat használja.
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show
 [az-storage-account-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list

@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2bb6491a470e7041568bb6b9183e996d2a9119d9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b998b47cdc65be91f62543369f5c3f18e4f270c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619643"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS-integrációs futásidejű csatlakoztatása egy virtuális hálózatot
 Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuális hálózatra, a következő esetekben: 
@@ -86,7 +87,7 @@ Ha kell megvalósítani a hálózati biztonsági csoport (NSG) segítségével a
 
 | Irány | Átviteli protokoll | Forrás | Forrás porttartomány | Cél | Célport tartomány | Megjegyzések |
 |---|---|---|---|---|---|---|
-| Bejövő | TCP | Internet | * | VirtualNetwork | 29876, 29877 (ha az infravörös csatlakoztatása az Azure Resource Manager virtuális hálózat) <br/><br/>10100, 20100, 30100 (ha az infravörös csatlakoztatása a klasszikus virtuális hálózatot)| A Data Factory szolgáltatásnak ezeket a portokat használ a virtuális hálózat az Azure-SSIS integrációs futásidejű csomópontjai folytatott kommunikációhoz. |
+| Bejövő | TCP | Internet | * | VirtualNetwork | 29876, 29877 (ha az infravörös csatlakoztatása az Azure Resource Manager virtuális hálózat) <br/><br/>10100, 20100, 30100 (ha az infravörös csatlakoztatása a klasszikus virtuális hálózatot)| A Data Factory szolgáltatásnak ezeket a portokat használ a virtuális hálózat az Azure-SSIS integrációs futásidejű csomópontjai folytatott kommunikációhoz. <br/><br/> Egy NSG-t vagy nem ad meg, hogy adat-előállító mindig konfigurálja a egy NSG-t a csatolva az Azure-SSIS infravörös üzemeltető virtuális gépek szintjén, a hálózati adapterek (NIC) A Data Factory IP-címek csak a bejövő forgalom engedélyezett. Akkor is, ha az internetes forgalmat a portok megnyitásához, amelyek nincsenek Data Factory IP-címek IP-címekről érkező forgalom le van tiltva, a hálózati adapter szintjén. |
 | Kimenő | TCP | VirtualNetwork | * | Internet | 443 | A virtuális hálózat az Azure-SSIS integrációs futásidejű csomópontjai Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs eléréséhez használja ezt a portot. |
 | Kimenő | TCP | VirtualNetwork | * | Internet vagy Sql | 1433-as számú 11000-11999, 14000-14999 | A virtuális hálózat az Azure-SSIS integrációs futásidejű csomópontjai ezeket a portokat használja, az Azure SQL adatbázis-kiszolgáló által üzemeltetett SSISDB eléréséhez. (Erre a célra nincs SQL adatbázis felügyelt példány (előzetes verzió) által üzemeltetett SSISDB vonatkozik.) |
 ||||||||

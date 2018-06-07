@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/25/2018
 ms.author: sachins
-ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625338"
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store használatának ajánlott eljárásai
 Ebből a cikkből megismerheti kapcsolatos ajánlott eljárásokról és az Azure Data Lake Store használata szempontjai. A cikkben információkat biztosít a biztonsági, a teljesítmény, a rugalmasság és a Data Lake Store figyelését. Data Lake Store, mielőtt Azure HDInsight hasonló szolgáltatások valóban nagy adatokkal végzett bonyolult volt. Kellett részekre bonthatók az adatok több Blob storage-fiókok között, hogy petabájtnyi tárolási és optimális teljesítményt, hogy biztosít. A Data Lake Store a szigorú korlátok mérete és a teljesítményt a legtöbb törlődnek. Van azonban továbbra is számításba kell, hogy ez a cikk ismerteti, hogy a legjobb teljesítmény érdekében a Data Lake Store kaphat. 
@@ -65,9 +66,9 @@ POSIX engedélyek és a naplózás a Data Lake Store tartalmaz egy terhelést, n
 * Gyorsabb másolását vagy replikációs
 * Kevesebb fájlt dolgozza fel, ha a Data Lake Store POSIX engedélyek frissítése 
 
-Attól függően, hogy milyen szolgáltatásokat és a munkaterhelések használ az adatok a helyes figyelembe kell venni a fájlméret tartománya 1 GB, ideális esetben nem fogja a 100 MB alatt vagy felett 2 GB 256 MB. Ha a fájl mérete nem lehet kötegelni, ha a Data Lake Store üzenetsorokra, akkor egy külön tömörítés feladatot, amely nagyobb állók közül. ezeket a fájlokat egyesíti. További információk és a fájlméret és az adatok a Data Lake Store javaslat: [az adatkészlet szerkezeti](data-lake-store-performance-tuning-guidance.md#structure-your-data-set). 
+Attól függően, hogy milyen szolgáltatásokat és a munkaterhelések használ az adatok, a helyes figyelembe kell venni a fájlok mérete 256 MB vagy kisebb. Ha a fájl mérete nem lehet kötegelni, ha a Data Lake Store üzenetsorokra, akkor egy külön tömörítés feladatot, amely nagyobb állók közül. ezeket a fájlokat egyesíti. További információk és a fájlméret és az adatok a Data Lake Store javaslat: [az adatkészlet szerkezeti](data-lake-store-performance-tuning-guidance.md#structure-your-data-set).
 
-### <a name="large-file-sizes-and-potential-performance-impact"></a>Nagy fájlok mérete és a teljesítményre gyakorolt lehetséges hatásának 
+### <a name="large-file-sizes-and-potential-performance-impact"></a>Nagy fájlok mérete és a teljesítményre gyakorolt lehetséges hatásának
 
 Bár a Data Lake Store támogatja nagy fájlok petabájt méretű, az optimális teljesítmény és attól függően, hogy az adatok olvasása a folyamat nem lehet ideális átlagosan 2 GB feletti ugorhat. Használata esetén például **ból a Distcp** helyek vagy eltérő tárfiókokból közötti másolásához fájljai a részletezettséggel granularitási térkép feladatok határozza meg. Igen 1 TB 10 fájlok másolása, legfeljebb 10 mappers foglal le. Is nagy mennyiségű fájlban a hozzárendelt mappers, először a mappers működnek, nagy fájlok áthelyezése párhuzamosan. A feladat indulásakor lezárását csak néhány mappers maradnak, és lehet elakadt a nagy fájlok rendelt egy egyetlen leképező. Microsoft elküldte a probléma megoldásához Hadoop későbbi verzióiban ból a Distcp fejlesztései.  
 

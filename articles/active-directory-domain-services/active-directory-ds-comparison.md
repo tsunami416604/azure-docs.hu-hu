@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 172477af5d5ae19cd0362cb1de0a8c66332cb0bd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587834"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>A használati esetnek megfelelő kiválasztásáról, ha az Azure AD tartományi szolgáltatások
 Az Azure AD tartományi szolgáltatásokkal telepítheti is az Azure infrastruktúra-szolgáltatásokat, a munkaterhelés nem kell foglalkoznia az identitás-infrastruktúra az Azure-ban karbantartása. A felügyelt szolgáltatás eltér a szokásos Windows Server Active Directory központi telepítéséhez, telepítheti és felügyelheti a saját. A szolgáltatás könnyű üzembe helyezni, és kézbesíti az automatizált állapotfigyelést és javítási. Folyamatosan fejlődik azt a szolgáltatás használatát a gyakori telepítési forgatókönyvekben.
@@ -45,7 +47,7 @@ Az alábbi táblázat segítségével eldöntheti, hogy Azure AD tartományi szo
 | [**Sémakiterjesztések**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD-tartomány vagy erdő megbízhatónak tekinti**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
 | [**LDAP olvasása**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
-| [**Secure LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
+| [**Biztonságos LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
 | [**LDAP írási**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
 | [**Csoportházirend**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
 | [**Földrajzilag elosztott központi telepítések**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
@@ -63,7 +65,7 @@ Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz felü
 #### <a name="domain-or-enterprise-administrator-privileges"></a>Tartományi vagy vállalati rendszergazdai jogosultságokkal
 Ezek a emelt szintű jogosultságok nem érhető el a az AAD-Directory tartományi szolgáltatások által felügyelt tartományokhoz. Ezek a emelt szintű jogosultságok nem telepíthető az AAD-DS-en igénylő alkalmazások felügyelt tartományok. Rendszergazdai jogosultságokkal kisebb részhalmazát az úgynevezett "AAD DC rendszergazdák" delegált felügyeleti csoport tagjai számára érhető el. Ezek a jogosultságok például jogosultsága a DNS konfigurálása, csoportházirend konfigurálásához, hogy rendszergazdai jogokkal a tartományhoz csatlakozó gépek stb.
 
-#### <a name="domain-join"></a>Domain join
+#### <a name="domain-join"></a>Csatlakozás tartományhoz
 Csatlakozhat a virtuális gépek hasonló hogyan számítógépek csatlakoztatása egy Active Directory-tartománynak a felügyelt tartományra.
 
 #### <a name="domain-authentication-using-ntlm-and-kerberos"></a>Tartomány hitelesítése NTLM és Kerberos használatával

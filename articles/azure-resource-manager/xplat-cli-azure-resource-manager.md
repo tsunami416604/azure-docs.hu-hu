@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 90dd1b6b7e65178f6b339e4ac0bb781fb74a25a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4111d1d990f3e9efb78fae0476b027d5bae013af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603246"
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Azure-erőforrások és csoportok kezelése az Azure parancssori felület használatával
 
@@ -215,7 +216,7 @@ Egy erőforrás vagy egy erőforráscsoportot is eltávolíthat. Egy erőforrás
   az storage account delete -n myuniquestorage -g TestRG1
   ```
 
-* Az erőforráscsoport és az ahhoz tartozó összes erőforrást törölheti a **az csoport törlése** parancsot.
+* Az erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez használja az **az group delete** parancsot.
 
   ```azurecli-interactive
   az group delete -n TestRG1
@@ -227,4 +228,4 @@ Mindkét parancsok a rendszer felkéri győződjön meg arról, hogy szeretne-e 
 * Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).
 * Sablonok telepítésével kapcsolatos további tudnivalókért lásd: [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy-cli.md).
 * Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Tekintse meg a [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

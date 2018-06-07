@@ -1,22 +1,20 @@
 ---
-title: "What is Azure Backup Server biztonsági mentése |} Microsoft Docs"
-description: "A cikkben egy támogatási mátrixban minden munkaterhelések, az adattípusokat és telepítések Azure Backup Server v2 védő listázása."
+title: What is Azure Backup Server biztonsági másolatot készíteni
+description: A cikkben egy támogatási mátrixban minden munkaterhelések, az adattípusokat és telepítések Azure Backup Server v2 védő listázása.
 services: backup
-documentation center: 
 author: markgalioto
-ms.assetid: 
 ms.service: backup
-ms.workload: storage-backup-recovery
-keywords: 
+keywords: ''
 ms.date: 11/28/2017
-ms.topic: article
-ms.author: markgal,masaran
+ms.topic: conceptual
+ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: eae17160d0e412b347d89d83d635602d840db0f8
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 2edf6b4076dfafd775e723d44ed4d93b7493828b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607242"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 

@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: Első lépések |} Microsoft Docs"
-description: "Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával"
+title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések |} Microsoft Docs'
+description: Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 2a171490faf9804196c93d33c5ee74d22533c044
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f7c0372ec53157d42a229feddb5b3fce92ff4cd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587902"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
 
@@ -40,16 +42,19 @@ A varázsló automatikusan létrehozza a felügyeleti csoport az Azure AD-címt�
 
 3. Amikor elkészült, kattintson a **OK** a áthelyezése a **összegzés** a varázsló.
 
-4. A a **összegzés** oldalon a varázsló, tekintse át a felügyelt tartományra konfigurációs beállításait. Később is visszatérhet módosításokat végezni, a varázsló minden lépésre szükség. Amikor elkészült, kattintson a **OK** az új felügyelt tartomány létrehozásához.
 
-    ![Összefoglalás](./media/getting-started/domain-services-blade-summary.png)
+## <a name="deploy-your-managed-domain"></a>A felügyelt tartományok telepítése
 
-5. Megjelenik egy értesítés, hogy az Azure AD tartományi szolgáltatásokhoz központi telepítés végrehajtási állapotát tartalmazza. Kattintson az értesítésre tekintse meg a központi telepítés részletes folyamatban van.
+1. A a **összegzés** oldalon a varázsló, tekintse át a felügyelt tartományra konfigurációs beállításait. Később is visszatérhet módosításokat végezni, a varázsló minden lépésre szükség. Amikor elkészült, kattintson a **OK** az új felügyelt tartomány létrehozásához.
+
+    ![Összegzés](./media/getting-started/domain-services-blade-summary.png)
+
+2. Megjelenik egy értesítés, hogy az Azure AD tartományi szolgáltatásokhoz központi telepítés végrehajtási állapotát tartalmazza. Kattintson az értesítésre tekintse meg a központi telepítés részletes folyamatban van.
 
     ![Értesítés - telepítés folyamatban](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
-## <a name="provision-your-managed-domain"></a>A felügyelt tartományok kiépítése
+## <a name="check-the-deployment-status-of-your-managed-domain"></a>A felügyelt tartományok központi telepítési állapotának ellenőrzése
 A felügyelt tartományok kiépítési folyamat egy óráig is eltarthat.
 
 1. Amíg a telepítés folyamatban van, a a "tartományi szolgáltatások" kereshet a **keresési erőforrások** keresőmezőbe. Válassza ki **Azure AD tartományi szolgáltatások** a keresési eredmény alapján. A **Azure AD tartományi szolgáltatások** panel sorolja fel a felügyelt tartományra, amelyek telepítése folyamatban van.
@@ -73,7 +78,7 @@ A felügyelt tartományok kiépítési folyamat egy óráig is eltarthat.
     ![Tartományi szolgáltatások - teljesen kiépítése után tulajdonságai lap](./media/getting-started/domain-services-provisioned-properties.png)
 
 
-## <a name="need-help"></a>Segítségre van szüksége?
+## <a name="need-help"></a>Segítség
 Szükség lehet egy óráig vagy két úgy kell létrehozni a felügyelt tartományok mindkét tartományvezérlőn. Ha a telepítés sikertelen volt, vagy a "Függő" állapotba Beragadt több mint néhány óra múlva, nyugodtan [segítségért lépjen kapcsolatba a termékért felelős csoport](active-directory-ds-contact-us.md).
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Előfeltételek és hardver |} Microsoft Docs"
-description: "Ez a témakör ismerteti a szükséges előfeltételek és a hardverkövetelmények az Azure AD Connect"
+title: 'Az Azure AD Connect: Előfeltételek és hardver |} Microsoft Docs'
+description: Ez a témakör ismerteti a szükséges előfeltételek és a hardverkövetelmények az Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d6d6eadf0ae8996b019a0564715f843913101944
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 23d2c858fc51e35948bf83c6b5824b35020cb2e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593367"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Előfeltételek az Azure AD Connect
 Ez a témakör ismerteti a szükséges előfeltételek és az Azure AD Connect hardverkövetelményeinek.
@@ -45,7 +47,7 @@ Az Azure AD Connect telepítése előtt van néhány dolog, amelyekre szüksége
 * Az **nem támogatott** használatához a helyi erdők/tartományok "pontozott" (nevében pont szerepel ".") NetBios-nevét.
 * Javasoljuk, hogy [az Active Directory Lomtár engedélyezése](active-directory-aadconnectsync-recycle-bin.md).
 
-### <a name="azure-ad-connect-server"></a>Azure AD Connect server
+### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials. A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect-kiszolgáló telepítve teljes grafikus felhasználói Felülettel kell rendelkeznie. Az **nem támogatott** telepítése server core-on.
 * Az Azure AD Connect a Windows Server 2008 vagy újabb rendszerre telepíthető. Ez a kiszolgáló lehet egy tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. Ha egyéni beállításokat használja, a kiszolgáló is lehet önálló, és nem kell tartományhoz csatlakoztatni.

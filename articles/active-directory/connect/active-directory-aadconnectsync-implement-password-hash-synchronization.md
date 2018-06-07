@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c223091e423d0f342f14424c58d6b7447cda50e8
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: abe439cc91a003137c116f57c0cc8bbb61430114
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593452"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása
 A cikkből megtudhatja, hogy szeretné-e a felhőalapú Azure Active Directory (Azure AD) példánya a helyszíni Active Directory-példányról a felhasználói jelszavakat szinkronizálja.
@@ -81,9 +83,9 @@ A következő részletes Jelszókivonat-szinkronizálást működését ismertet
 2. Küldés előtt, a tartományvezérlő a MD4 Jelszókivonat titkosítja egy kulcs, amely használatával a [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) RPC munkamenetkulcsot és az egy kivonatát. Majd küld az eredmény a jelszó kivonatát szinkronizálási ügynök RPC-n keresztül. A tartományvezérlő is átadása a védőérték a szinkronizálási ügynök által a tartományvezérlő replikációs protokoll segítségével, hogy az ügynök tudja majd visszafejteni a boríték történjen.
 3.  A jelszó kivonatát szinkronizálási ügynök van a titkosított boríték, miután használ [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) és a védőérték vissza az eredeti MD4 formátumában fogadott adatok visszafejtéséhez a kulcs létrehozásához. A jelszó kivonatát szinkronizálási ügynök nem rendelkezik a tiszta szöveges jelszót. A jelszó kivonatát szinkronizálási ügynök használt MD5 használatát szigorúan replikációs protokoll kompatibilitás a DC-vel, és csak használja a helyszínen, a tartományvezérlő és a jelszó kivonatát szinkronizálási ügynök között.
 4.  A jelszó kivonatát szinkronizálási ügynök bontja ki a 16 bájtos bináris Jelszókivonat 64 bájt átalakításával első 32 bájtos hexadecimális karakterlánc, majd ezt átalakítják Ez a karakterlánc a kivonat biztonsági UTF-16 kódolással bináris formátumra.
-5.  A jelszó kivonatát szinkronizálási ügynök ad hozzá egy salt egy 10 bájtos hossza védőérték, a 64 bájtos bináris fokozott védelme érdekében az eredeti kivonatoló álló.
-6.  A jelszó kivonatát szinkronizálási ügynök ezután egyesíti a MD4 kivonatoló túl a védőérték, és a bemeneti be azt a [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) függvény. 1000 ismétlésének a [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) létre kivonatoló algoritmust használnak. 
-7.  A jelszó kivonatát szinkronizálási ügynök az eredményül kapott 32 bájtos kivonatoló vesz igénybe, összefűzi a védőérték, mind az SHA-256 lépésszám rá (az Azure ad használatára), majd továbbítja a karakterláncot az Azure AD Connect, az Azure AD SSL-en keresztül.</br> 
+5.  A jelszó kivonatát szinkronizálási ügynök ad hozzá egy felhasználói védőérték, a 10-bájt hosszúságú védőérték, a 64 bájtos bináris fokozott védelme érdekében az eredeti kivonatoló álló száma.
+6.  A jelszó kivonatát szinkronizálási ügynök majd egyesíti a MD4 kivonatoló és az egyes felhasználói védőérték, és a bemeneti be azt a [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) függvény. 1000 ismétlésének a [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) létre kivonatoló algoritmust használnak. 
+7.  A jelszó kivonatát szinkronizálási ügynök az eredményül kapott 32 bájtos kivonatoló vesz igénybe, mindkét összefűzi a minden felhasználó védőérték és SHA-256 száma az ismétlés azt (általi használatra az Azure AD), majd továbbítja a karakterláncot az Azure AD Connect, az Azure AD SSL-en keresztül.</br> 
 8.  Ha egy felhasználó megpróbál bejelentkezni az Azure AD, és beírja a jelszavát, a jelszó fut a azonos MD4 + védőérték + PBKDF2 + HMAC-SHA256 folyamat keresztül. Az eredményül kapott kivonatoló egyezik a Azure AD-ben tárolt, ha a felhasználó a helyes jelszót került, és van hitelesítve. 
 
 >[!Note] 

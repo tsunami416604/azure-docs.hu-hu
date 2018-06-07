@@ -1,25 +1,22 @@
 ---
-title: "Adja hozzá a OneDrive-összekötőt a Logic Apps |} Microsoft Docs"
-description: "A OneDrive-összekötő REST API-paraméterekkel rendelkező áttekintése"
-services: logic-apps
-documentationcenter: 
+title: A OneDrive - Azure Logic Apps csatlakozni |} Microsoft Docs
+description: A onedrive vállalati verzió REST API-k és az Azure Logic Apps fájlok kezelését és feltöltését
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 47a8582a-1b1a-4fc3-beb5-97c60c4306fe
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 10/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 15b88baf21ead5a6b9506c47ca9930d5088b8787
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 12df6efc21be30f1c42fa7db98823908ae0f5964
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610055"
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>A OneDrive-összekötő az első lépései
 Csatlakozni a onedrive-nak a fájlok kezelését, beleértve a feltöltés, get, törölje a fájlokat, és több. 

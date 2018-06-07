@@ -7,18 +7,20 @@ author: eringreenlee
 manager: ''
 editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7cd16d64d18b4cdcb710f68c55a8251904acda86
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 18a09a22a5dfa4ed94627727cc844c6b7ffc11f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589449"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>A felügyelt tartományok érvénytelen egyszerű konfiguráció hibaelhárítása
 
@@ -38,7 +40,7 @@ Az alábbi lépések segítségével határozza meg, melyik szolgáltatás rends
 2. Az a **megjelenítése** legördülő menüből válassza **összes alkalmazás** kattintson **alkalmaz**.
 3. Az alábbi táblázatban keresse meg a azonosító beillesztése a keresési mezőbe, majd nyomja le az egyes Alkalmazásazonosító adja meg. Ha a keresési eredmények üres, újra létre kell hoznia a "megoldási" oszlopban szereplő lépések a szolgáltatásnevet.
 
-| Alkalmazás azonosítója | Felbontás |
+| Alkalmazásazonosító | Megoldás: |
 | :--- | :--- | :--- |
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Hozza létre újra a hiányzó egyszerű PowerShell használatával](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Regisztrálja újra a Microsoft.AAD névtérhez](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
@@ -116,5 +118,5 @@ A probléma megoldására PowerShell ablakban írja be a következő parancsokat
 3. A törölt is, a rendszer magának kijavítani, és hozza létre újra az alkalmazásokat, a jelszó-szinkronizálás szükséges. Annak érdekében, hogy a riasztás sikeresen szervizelve lett, két óra várakozás után ellenőrizze a tartomány állapotát.
 
 
-## <a name="contact-us"></a>Kapcsolatfelvétel
+## <a name="contact-us"></a>Kapcsolat
 Lépjen kapcsolatba az Azure Active Directory tartományi szolgáltatások termékért felelős csoport a [visszajelzés fájlmegosztás vagy a támogatáshoz](active-directory-ds-contact-us.md).

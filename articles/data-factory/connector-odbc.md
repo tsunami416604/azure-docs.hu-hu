@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8b8a200fb7234feeac8679b657c8d4be6ee8b748
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f1ab981247191db0abebd67701b07bf48b934292
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617110"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása az és ODBC adattárolókhoz Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -197,7 +198,7 @@ Adatok másolása az ODBC-kompatibilis adattár, állítsa be a fogadó típusa 
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani: **OdbcSink** | Igen |
 | writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezését, mielőtt azt az időkorlátot.<br/>Két érték engedélyezett: timespan. Példa: "00: 30:00" (30 perc). |Nem |
-| writeBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett érték a 0 – automatikus észlelt) |
+| WriteBatchSize |Szúr be az SQL-tábla adatokat, amikor a puffer mérete eléri writeBatchSize.<br/>Két érték engedélyezett: egész szám (sorok száma). |Nem (alapértelmezett érték a 0 – automatikus észlelt) |
 | preCopyScript |Adja meg a másolási tevékenység végrehajtása előtt minden egyes futtatásához adattárba adatok írása az SQL-lekérdezést. Ez a tulajdonság segítségével törölje az előre betöltött adatokat. |Nem |
 
 > [!NOTE]

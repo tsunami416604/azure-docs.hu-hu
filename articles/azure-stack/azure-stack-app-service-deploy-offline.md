@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604284"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató felvétele AD FS által védett leválasztott Azure verem környezet
 
@@ -81,6 +82,12 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
     1. Kattintson a **Connect** megjelenítő gombra a **Azure verem előfizetések** mezőbe.
         - Adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Írja be a jelszót, és kattintson a **bejelentkezés**.
     2. Az a **Azure verem előfizetések** mezőben válassza a **alapértelmezett szolgáltató előfizetés**.
+    
+    > [!NOTE]
+    > App Service csak telepíthető a a **alapértelmezett szolgáltató előfizetés** most.  Az egy későbbi kiadásban az üzembe helyezés az Azure verem 1804 rendszerben bevezetett új szoftverhasználat-mérő előfizetés lesz az App Service, és minden meglévő üzemelő példányt telepíti át az új előfizetés is.
+    >
+    >
+    
     3. Az a **Azure verem helyek** válassza ki a helyet, amely megfelel a régióban való telepítése esetén. Válassza például **helyi** Ha a központi telepítése az Azure verem szoftverfejlesztői készlet.
     4. Kattintson a **Tovább** gombra.
 
@@ -96,12 +103,12 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
     ![Az App Service-telepítő][5]
 
-9. Adja meg a fájlmegosztás adatait, és kattintson a **következő**. A fájlmegosztás címét a teljesen minősített tartománynév vagy IP-címet a fájlkiszolgáló kell használnia. Például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.
+9. Adja meg a fájlmegosztás adatait, és kattintson a **következő**. A fájlmegosztás címét a teljesen minősített tartománynév vagy IP-címet a fájlkiszolgáló kell használnia. Például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites
 
-> [!NOTE]
-> A telepítő megpróbálja használt kapcsolatok tesztelése a fájlmegosztáshoz való továbblépéshez.  Azonban ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni a fájlmegosztási és megkérdezi, hogy folytatja, figyelmeztetést jelenít meg.  Ellenőrizze a fájlmegosztási adatokat, és továbbra is, ha azok helyességét.
->
->
+    > [!NOTE]
+    > A telepítő megpróbálja használt kapcsolatok tesztelése a fájlmegosztáshoz való továbblépéshez.  Azonban ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni a fájlmegosztási és megkérdezi, hogy folytatja, figyelmeztetést jelenít meg.  Ellenőrizze a fájlmegosztási adatokat, és továbbra is, ha azok helyességét.
+    >
+    >
 
    ![Az App Service-telepítő][8]
 
@@ -128,10 +135,10 @@ App Service-t leválasztott környezetben telepíti, akkor először létre kell
 
 12. Adja meg az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és kattintson a server-példány az SQL Server részleteit **következő**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai. Ön **kell** adja meg a belső ip- vagy teljes tartománynevét adja meg az SQL Server neve.
 
-> [!NOTE]
-> A telepítő megpróbálja tesztelése az SQl Server, a folytatás előtt.  Ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni az SQL Server és megkérdezi, hogy folytatja figyelmeztetést jelenít meg.  Ellenőrizze az SQL Server-adatokat, és továbbra is, ha azok helyességét.
->
->
+    > [!NOTE]
+    > A telepítő megpróbálja tesztelése az SQl Server, a folytatás előtt.  Ha úgy dönt, hogy a meglévő virtuális hálózat üzembe, a telepítő nem lehet csatlakozni az SQL Server és megkérdezi, hogy folytatja figyelmeztetést jelenít meg.  Ellenőrizze az SQL Server-adatokat, és továbbra is, ha azok helyességét.
+    >
+    >
    
    ![Az App Service-telepítő][12]
 

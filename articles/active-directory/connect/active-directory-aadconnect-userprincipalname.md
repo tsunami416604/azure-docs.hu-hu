@@ -2,17 +2,19 @@
 title: Az Azure AD UserPrincipalName feltöltése
 description: A következő dokumentum ismerteti, hogyan a UserPrincipalName attribútum fel van töltve.
 author: billmath
+ms.component: hybrid
 ms.author: billmath
 ms.date: 02/02/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 73238b1f79e639f832499eed15ac1e4499eb6e84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593397"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Az Azure AD UserPrincipalName feltöltése
 
@@ -35,7 +37,7 @@ Ez a cikk a következő kifejezésekkel használja:
 UserPrincipalName olyan attribútum, amely egy internetes bejelentkezési név az internetes szabvány alapján felhasználó [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). 
 
 ### <a name="upn-format"></a>Egyszerű felhasználónév formátuma
-Egy egyszerű felhasználónév UPN előtag (felhasználói fiók nevét) és egy egyszerű Felhasználónévi utótagot (egy DNS-tartománynév) áll. Az előtag a utótag használatával kapcsolódik a "@" szimbólummal. Például "someone@example.com". Egy egyszerű felhasználónév összes rendszerbiztonsági tagnak directory erdőn belül egyedinek kell lennie. 
+Egy egyszerű felhasználónév UPN előtag (felhasználói fiók nevét) és egy egyszerű Felhasználónévi utótagot (egy DNS-tartománynév) áll. Az előtag a utótag használatával kapcsolódik a "@" szimbólummal. Például: „someone@example.com”. Egy egyszerű felhasználónév összes rendszerbiztonsági tagnak directory erdőn belül egyedinek kell lennie. 
 
 ## <a name="upn-in-azure-ad"></a>Az Azure AD egyszerű felhasználónév 
 Az egyszerű Felhasználónevet a felhasználó bejelentkezhet az Azure AD használják.  A felhasználónév, amellyel a felhasználó, függ-e a tartomány ellenőrzése után.  Ha a tartomány ellenőrzése után, akkor a felhasználó adott utótaggal rendelkező rendszer engedélyezi-e bejelentkezés az Azure AD.  
@@ -97,7 +99,7 @@ Szinkronizálja az Azure AD-bérlő felhasználói objektum első alkalommal
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us1           
-- UserPrincipalName: us1@contoso.onmicrosoft.com
+- userPrincipalName: us1@contoso.onmicrosoft.com
 
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>2. eset: Nem ellenőrzött UPN-utótagot – beállítása a helyszíni mailNickName attribútum
@@ -114,7 +116,7 @@ Frissítés Azure AD-bérlő helyszíni mailNickName attribútum szinkronizálá
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4
-- UserPrincipalName: us1@contoso.onmicrosoft.com
+- userPrincipalName: us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>3. eset: Nem ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum
 
@@ -131,7 +133,7 @@ Frissítés a userPrincipalName attribútum a helyszíni Azure AD-bérlő szinkr
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4
-- UserPrincipalName: us4@contoso.onmicrosoft.com
+- userPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>4. forgatókönyv: A nem ellenőrzött UPN-utótagot – frissítés elsődleges SMTP-cím és a helyszíni mail attribútum
 
@@ -146,7 +148,7 @@ Szinkronizálás a helyszíni levél attribútum és az Azure AD-bérlő elsődl
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4
-- UserPrincipalName: us4@contoso.onmicrosoft.com
+- userPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>5. forgatókönyv: Ellenőrzött UPN-utótagot – frissítés a helyszíni userPrincipalName attribútum utótag
 
@@ -162,7 +164,7 @@ Szinkronizálja a helyszíni userPrincipalName attribútum a Azure AD-bérlő fr
 
 Az Azure AD-bérlő felhasználói objektum:
 - MailNickName: us4     
-- UserPrincipalName: us5@verified.contoso.com
+- userPrincipalName: us5@verified.contoso.com
 
 ## <a name="next-steps"></a>További lépések
 - [A helyszíni címtárak integrálása az Azure Active Directoryval](active-directory-aadconnect.md)

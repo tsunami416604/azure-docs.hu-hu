@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: e0217080963502094800a8b62de9c781817aec61
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ae906712b6169f2d352013bf2b786c5cc772aa9a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618555"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
 Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
@@ -39,7 +40,7 @@ Ez a cikk egy Azure-SSIS-IR-kiépítés különböző módokat ismerteti:
 
 Egy Azure-SSIS-IR létrehozásakor adat-előállító kapcsolódik az Azure SQL-adatbázis előkészítése a SSIS-katalógus-adatbázis (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
 
-Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. További összetevőket is telepíthet. További információk: [egyéni beállítása az Azure-SSIS-integráció futási időben](how-to-configure-azure-ssis-ir-custom-setup.md).
+Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Ezenkívül további összetevőket is telepíthet. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +55,7 @@ Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack 
 
 > [!NOTE]
 > - 2-es verziójú adat-előállítót a következő régiókban hozhat létre: USA keleti régiója, USA 2. keleti régiója, Délkelet-Ázsia és Nyugat-Európa. 
-> - A következő régiókban is létrehozhat egy Azure-SSIS-IR: USA keleti régiója, USA keleti régiója 2. régiója, USA középső RÉGIÓJA, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója és Kelet-Ausztrália.
+> - A következő régiókban hozhat létre Azure-SSIS integrációs modult: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA 2. nyugati régiója, Észak-Európa, Nyugat-Európa, az Egyesült királyság déli régiója és Kelet-Ausztrália.
 
 ## <a name="azure-portal"></a>Azure Portal
 Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory felhasználói felületén hozzon létre egy Azure-SSIS infravörös 
@@ -72,7 +73,7 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
  
    Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+       `Data factory name �MyAzureSsisDataFactory� is not available`
 
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:

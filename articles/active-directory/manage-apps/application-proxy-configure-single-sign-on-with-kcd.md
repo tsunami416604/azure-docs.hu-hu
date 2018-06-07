@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 506ff0bce0b68b1477f27f913bd3fe119e36cca1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ae79d081cc171fe904bf50b2341d7abd8f58e4f5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594499"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba a Proxy
 
@@ -84,7 +85,23 @@ A szervizcsomag-verzió vagy egy szolgáltatás fiókjának alatt a szervizcsoma
 
 
 ## <a name="sso-for-non-windows-apps"></a>Egyszeri bejelentkezés a Windows alkalmazások
-A Kerberos-delegálás folyamata a Azure AD alkalmazásproxy kezdődik, amikor az Azure AD akkor hitelesíti a felhasználót, a felhőben. A kérelem érkezik a helyszínen, ha az Azure AD alkalmazásproxy-összekötő által a helyi Active Directoryban való interakció állít ki a Kerberos jegyet a felhasználó nevében. A folyamatnak a neve, a Kerberos által korlátozott delegálás (KCD). A következő szakaszban kérelmet küldeni a Kerberos jegyet a háttér alkalmazást. Nincsenek több protokollok, amelyek meghatározzák, hogyan küldhet az ilyen kérelmeket. A legtöbb-Windows kiszolgálók várt Negotiate/SPNego mostantól támogatott az Azure AD-alkalmazásproxyval oldható meg.
+
+A Kerberos-delegálás folyamata a Azure AD alkalmazásproxy kezdődik, amikor az Azure AD akkor hitelesíti a felhasználót, a felhőben. A kérelem érkezik a helyszínen, ha az Azure AD alkalmazásproxy-összekötő által a helyi Active Directoryban való interakció állít ki a Kerberos jegyet a felhasználó nevében. A folyamatnak a neve, a Kerberos által korlátozott delegálás (KCD). A következő szakaszban kérelmet küldeni a Kerberos jegyet a háttér alkalmazást. 
+
+Nincsenek több protokollok, amelyek meghatározzák, hogyan küldhet az ilyen kérelmeket. A legtöbb-Windows kiszolgálók SPNEGO egyeztetni várt. Ez a protokoll támogatott az Azure AD-alkalmazásproxyval oldható meg, de alapértelmezés szerint le van tiltva. A kiszolgáló lehet SPNEGO vagy standard Kerberos által korlátozott Delegálás konfigurálva, de nem mindkettőn keresztül.
+
+Ha az összekötő gép beállítása SPNEGO, győződjön meg arról, hogy a Connector csoport többi összekötőt is vannak konfigurálva SPNEGO. Alkalmazások standard Kerberos által korlátozott Delegálás a rendszer a többi összekötőt, amelyek nincsenek beállítva az SPNEGO kell továbbít.
+ 
+
+SPNEGO engedélyezése:
+
+1. Nyisson meg egy parancssort rendszergazdaként futtató.
+2. A parancssorból futtassa a következő parancsokat a SPNEGO igénylő összekötő kiszolgálókon.
+
+    ```
+    REG ADD "HKLM\SOFTWARE\Microsoft\Microsoft AAD App Proxy Connector" /v UseSpnegoAuthentication /t REG_DWORD /d 1
+    net stop WAPCSvc & net start WAPCSvc
+    ```
 
 Kerberos kapcsolatos további információkért lásd: [összes meg szeretné ismerni a kapcsolatos a Kerberos által korlátozott delegálás (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd).
 

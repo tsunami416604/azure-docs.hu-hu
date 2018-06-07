@@ -1,22 +1,19 @@
 ---
-title: "Azure Backup Server v2 csendes telepítése |} Microsoft Docs"
-description: "PowerShell parancsfájl segítségével csendes telepítéséhez az Azure Backup Server v2. Az ilyen típusú telepítés felügyelet nélküli telepítés néven is ismert."
+title: Azure Backup Server v2 csendes telepítése
+description: PowerShell parancsfájl segítségével csendes telepítéséhez az Azure Backup Server v2. Az ilyen típusú telepítés felügyelet nélküli telepítés néven is ismert.
 services: backup
-documentationcenter: " "
 author: markgalioto
 manager: carmonm
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 05/30/2017
-ms.author: markgal;masaran
-ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606409"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Az Azure Backup Server v2 felügyelet nélküli telepítés futtatása
 
@@ -63,7 +60,7 @@ Ezeknek a jelzőknek a telepítéshez használható:</br>
 **/i**: telepítési útvonala</br>
 **/x**: távolítsa el az elérési út</br>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Biztonsági kiszolgáló telepítése után megtudhatja, hogyan készíti elő a kiszolgálót, vagy indítsa el a védelmet a munkaterhelés.
 
 - [A kiszolgálói biztonsági mentési feladatok előkészítése](backup-azure-microsoft-azure-backup.md)

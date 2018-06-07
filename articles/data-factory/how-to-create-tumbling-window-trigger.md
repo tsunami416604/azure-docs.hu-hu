@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 312072a5de21ff1c6b602fed93b77c564b15a9f1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61d53e0d5f32f40b67f5b2d4ce888b047f8c4cea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619711"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely egy folyamat fut egy átfedésmentes ablak
 Ez a cikk lépéseit létrehozása, indítsa el, és figyelheti a átfedésmentes ablak eseményindítót. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [csővezeték-végrehajtási és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -74,7 +75,7 @@ A következő táblázat a fő JSON-elemek szerepelnek, amelyek kapcsolódnak is
 
 | JSON-elem | Leírás | Típus | Megengedett értékek | Szükséges |
 |:--- |:--- |:--- |:--- |:--- |
-| **Típusa** | Az eseményindító típusa. A típus a rögzített érték "TumblingWindowTrigger." | Karakterlánc | "TumblingWindowTrigger" | Igen |
+| **type** | Az eseményindító típusa. A típus a rögzített érték "TumblingWindowTrigger." | Karakterlánc | "TumblingWindowTrigger" | Igen |
 | **runtimeState** | A jelenlegi állapotában az eseményindító futási időt.<br/>**Megjegyzés:**: Ez az elem \<readOnly >. | Karakterlánc | "Lépések", "leállt," "Letiltva" | Igen |
 | **frequency** | A gyakoriság egységet (perc vagy óra), az eseményindító ismét előfordul jelölő karakterlánccá. Ha a **startTime** dátum értékei részletesebben, mint a **gyakoriság** érték, a **startTime** dátumok minősülnek, ha az ablak határok arra az esetre vonatkoznak. Például ha a **gyakoriság** értéke óránkénti és a **startTime** értéke 2016-04-01T10:10:10Z, az első ablakban van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Karakterlánc | "minute", "hour"  | Igen |
 | **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Például ha a **időköz** 3 és a **gyakoriság** "óra," az eseményindító 3 óránként ismétlődik. | Egész szám | Egy pozitív egész szám. | Igen |

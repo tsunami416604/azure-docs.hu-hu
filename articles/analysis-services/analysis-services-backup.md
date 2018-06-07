@@ -3,16 +3,17 @@ title: Az Azure Analysis Services-adatbázis biztonsági mentése és visszaáll
 description: Ismerteti, hogyan biztonsági mentése és visszaállítása az Azure Analysis Services-adatbázis.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ec213d5c223180825ea0eabe95881002432b92e9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07b2cebde40983955c5244ac2b7f0b759dcdbd14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597297"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -44,13 +45,13 @@ A biztonsági másolatot, előtt kell a kiszolgáló a tárolási beállítások
 
 4. Jelöljön ki egy tárolót, vagy hozzon létre egy újat.
 
-    ![Válassza ki a tárolót](./media/analysis-services-backup/aas-backup-container.png)
+    ![Tároló kiválasztása](./media/analysis-services-backup/aas-backup-container.png)
 
 5. A biztonsági mentési beállítások mentéséhez.
 
     ![Biztonsági mentési beállításainak mentése](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Biztonsági mentés
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>A biztonsági mentési szolgáltatáshoz az SSMS használatával
 

@@ -1,40 +1,41 @@
 ---
-title: 'Verem az Azure Storage: Különbségek és szempontok'
-description: Azure verem központi telepítésével kapcsolatos megfontolások együtt Azure verem Storage és az Azure Storage közötti különbségek megismeréséhez.
+title: Az Azure verem tárolási különbségek és szempontok |} Microsoft Docs
+description: A verem az Azure storage és az Azure storage Azure verem központi telepítésével kapcsolatos megfontolások együtt közötti különbségek megismeréséhez.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.reviwer: xiaofmao
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviwer: xiaofmao
+ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604460"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Verem az Azure Storage: Különbségek és szempontok
+# <a name="azure-stack-storage-differences-and-considerations"></a>A verem az Azure storage: különbségek és szempontok
 
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
 
-A verem az Azure Storage tárolási cloud services csomag Microsoft Azure verem egy. Az Azure verem Storage blob, table, várólista és az Azure-konzisztens szemantikáját funkciók biztosít.
+A verem az Azure storage egy a tárolási cloud services csomag Microsoft Azure-készletben. Azure verem tárolási blob, table, várólista és az Azure-konzisztens szemantikáját funkciók biztosít.
 
-Ez a cikk az Azure Storage szolgáltatás ismert Azure Storage-verem különbségeket foglalja össze. Emellett Azure verem telepítésekor megfontolandó szempontok sorolja fel. Azure verem és az Azure közötti magas szintű különbségek kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) témakör.
+Ez a cikk az Azure Storage szolgáltatás ismert Azure Storage-verem különbségeket foglalja össze. Emellett Azure verem telepítésekor megfontolandó szempontok sorolja fel. Globális Azure és az Azure-verem magas szintű különbségei kapcsolatos további tudnivalókért lásd: a [szempontok kulcs](azure-stack-considerations.md) témakör.
 
 ## <a name="cheat-sheet-storage-differences"></a>Lap cheat: tárolási különbségek
 
 | Szolgáltatás | Azure (globális) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Felhőalapú SMB-fájlmegosztások támogatott|Még nem támogatott.
-|Az Azure Storage szolgáltatás inaktívadat-titkosítása|256 bites AES titkosítást|A BitLocker 128 bites AES titkosítást
-|Tárfiók típusa|Általános célú és az Azure Blob storage-fiókok|Általános célú csak.
+|Az Azure storage szolgáltatás titkosítási az inaktív adatok|256 bites AES titkosítást|A BitLocker 128 bites AES titkosítást
+|Tárfiók típusa|Általános célú és az Azure blob storage-fiókok|Általános célú csak.
 |Replikációs beállítások|Helyileg redundáns tárolás, a georedundáns tárolást, az írásvédett georedundáns tárolás és a zónaredundáns tárolás|Helyileg redundáns tárolás.
 |Prémium szintű Storage|Teljes mértékben támogatott.|Telepíthető, de nincs teljesítményszint vagy garantált.
 |Felügyelt lemezek|Prémium és standard támogatott|Még nem támogatott.
@@ -80,7 +81,7 @@ Az Azure Storage szolgáltatások felügyeleti API-kat:
 
 ## <a name="sdk-versions"></a>SDK-verzió
 
-Az Azure verem Storage támogatja a következő klienskódtárak segítségével:
+Az Azure verem storage támogatja a következő klienskódtárak segítségével:
 
 | Ügyfélkódtár | A verem használható az Azure-verzió | Hivatkozás                                                                                                                                                                                                                                                                                                                                     | Végpont meghatározása       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|

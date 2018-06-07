@@ -1,24 +1,20 @@
 ---
-title: "Az Azure Backup Server rendszerállapot védi, és visszaállítja az operációs rendszer nélküli |} Microsoft Docs"
-description: "Azure Backup Server használatával a rendszerállapot biztonsági mentését, és az operációs rendszer nélküli helyreállítás (BMR) védelmet nyújt."
+title: Az Azure Backup Server rendszerállapot védi, és visszaállítja az operációs rendszer nélküli
+description: Azure Backup Server használatával a rendszerállapot biztonsági mentését, és az operációs rendszer nélküli helyreállítás (BMR) védelmet nyújt.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-keywords: 
-ms.assetid: 
+keywords: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.targetplatform: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal,masaran
-ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607208"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Rendszerállapot biztonsági mentését, és állítsa vissza az Azure Backup Server operációs rendszer nélküli
 
@@ -33,7 +29,7 @@ Az Azure Backup Server készít biztonsági másolatot a rendszer állapotát, �
 
 A következő táblázat összefoglalja, mit akkor is biztonsági mentését és helyreállítását. A BMR és rendszerállapot védhető app verzióival kapcsolatos részletes információkért lásd: [biztonsági mentése Azure Backup Server funkciója?](backup-mabs-protection-matrix.md).
 
-|Biztonsági mentés|Probléma|Az Azure Backup Server biztonsági másolat helyreállítása|Rendszerállapot helyreállítása|OPERÁCIÓS RENDSZER NÉLKÜLI HELYREÁLLÍTÁS|
+|Backup|Probléma|Az Azure Backup Server biztonsági másolat helyreállítása|Rendszerállapot helyreállítása|OPERÁCIÓS RENDSZER NÉLKÜLI HELYREÁLLÍTÁS|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Fájladatok**<br /><br />Rendszeres biztonsági mentését<br /><br />BMR vagy rendszerállapot biztonsági mentése|Elveszett adatok|I|N|N|
 |**Fájladatok**<br /><br />Az Azure Backup Server az adatok biztonsági mentése fájlba<br /><br />BMR vagy rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
@@ -59,7 +55,7 @@ Testre szabhatja a helykiszolgáló biztonsági mentése által a rendszerállap
 
 Ne feledje, hogy a védelmi kiszolgáló egy fürt része, ha lehetséges, hogy a fürt meghajtó lesz kiválasztva a legtöbb szabad területtel rendelkező meghajtóként. Ha a meghajtó tulajdonosa egy másik csomópontra, és a rendszer állapota biztonsági mentés futtatása lett átadva, a meghajtó nem érhető el, és a biztonsági mentés sikertelen. Ebben az esetben módosítsa a psdatasourceconfig.xml fájlt egy helyi meghajtóra.
 
-Ezt követően a Windows Server biztonsági másolat egy gyökérkönyvtárában található a visszaállítási mappát a WindowsImageBackup nevű mappát hoz létre. Mivel a Windows Server biztonsági másolat hozza létre a biztonsági mentés, a rendszer az adatok kerülnek, ebben a mappában. Ha a biztonsági mentés befejeződött, a fájl átkerül a biztonsági mentési számítógépén. Vegye figyelembe a következőket:
+Ezt követően a Windows Server biztonsági másolat egy gyökérkönyvtárában található a visszaállítási mappát a WindowsImageBackup nevű mappát hoz létre. Mivel a Windows Server biztonsági másolat hozza létre a biztonsági mentés, a rendszer az adatok kerülnek, ebben a mappában. Ha a biztonsági mentés befejeződött, a fájl átkerül a biztonsági mentési számítógépén. Tekintse meg az alábbi információkat:
 
 * Ez a mappa és annak tartalma nem törlődnek a biztonsági mentési vagy átviteli befejezésekor. Ez a legjobb módszer az, hogy a hely a rendszer fenntartja a biztonsági mentés befejeződött a következő alkalommal.
 * A mappa minden alkalommal létrejön egy biztonsági másolat legyen. A dátumával és időpontjával stamp tükrözze az utolsó rendszerállapot biztonsági mentését idején.
@@ -220,9 +216,9 @@ Futtassa a Windows Server biztonsági másolat:
 
 5.  Az a **megerősítő** lapon jelölje be **helyreállítása**. A visszaállítás után indítsa újra a kiszolgálót.
 
-6.  Is futtathatja a rendszerállapot-visszaállítást a parancssorba. Ehhez indítsa el a Windows Server biztonsági másolat a helyreállítani kívánt számítógépen. Ahhoz, hogy a verzió azonosítóját meg egy parancssori ablakot, írja be:```wbadmin get versions -backuptarget \<servername\sharename\>```
+6.  Is futtathatja a rendszerállapot-visszaállítást a parancssorba. Ehhez indítsa el a Windows Server biztonsági másolat a helyreállítani kívánt számítógépen. Ahhoz, hogy a verzió azonosítóját meg egy parancssori ablakot, írja be: ```wbadmin get versions -backuptarget \<servername\sharename\>```
 
-    A verzióazonosító segítségével indítsa el a rendszerállapot-visszaállítást. A parancssorba írja be:```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+    A verzióazonosító segítségével indítsa el a rendszerállapot-visszaállítást. A parancssorba írja be: ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
 
     Győződjön meg arról, hogy szeretné-e a helyreállítás indítása. A folyamat a parancssori ablakban látható. Egy visszaállítási napló jön létre. A visszaállítás után indítsa újra a kiszolgálót.
 

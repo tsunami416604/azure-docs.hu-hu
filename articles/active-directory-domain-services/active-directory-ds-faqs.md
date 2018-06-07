@@ -1,30 +1,32 @@
 ---
-title: "Gyakori kérdések – Azure Active Directory tartományi szolgáltatások |} Microsoft Docs"
-description: "Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdések"
+title: Gyakori kérdések – Azure Active Directory tartományi szolgáltatások |} Microsoft Docs
+description: Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdések
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: aab6e893a6da1c5b877498f2bf6cbeaa6d0a5c2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587783"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakran ismételt kérdések (GYIK)
 Ezen a lapon az Azure Active Directory tartományi szolgáltatások kapcsolatos gyakori kérdésekre. Tartsa biztonsági frissítések keresése.
 
 ## <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
-Tekintse meg a [hibaelhárítási útmutatója](active-directory-ds-troubleshooting.md) észlelt, amikor konfigurálása és felügyelete az Azure AD tartományi szolgáltatások gyakori problémák megoldásainak.
+Tekintse meg a [hibaelhárítási útmutatója](active-directory-ds-troubleshooting.md) konfigurálása és felügyelete az Azure AD tartományi szolgáltatások termékkel kapcsolatos gyakori hibák megoldások keresése.
 
 ## <a name="configuration"></a>Konfiguráció
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Hozható létre több felügyelt tartományok egyetlen Azure AD-címtár?
@@ -55,7 +57,7 @@ Igen. Lásd: [engedélyezése az Azure AD tartományi szolgáltatások a PowerSh
 Nem. Az Azure AD tartományi szolgáltatások által biztosított tartománya felügyelt tartományhoz. Nem kell kiépíteni, konfigurálása, vagy egyéb módon kezelje a tartományvezérlők a tartomány - e felügyeleti tevékenységek szolgáltatásként Microsoft által biztosított. További tartományvezérlők (olvasási és írási vagy olvasási) a felügyelt tartomány számára, ezért nem adható hozzá.
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Használhatja a vendégfelhasználók meghívót, hogy a címtár Azure AD tartományi szolgáltatásokat?
-Nem. A vendégfelhasználók meghívót, hogy az Azure Active directory használatával a [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) a meghívás folyamat sycned be az Azure AD tartományi szolgáltatások által kezelt tartomány. Ezek a felhasználók jelszavainak azonban nem tárolódnak az Azure AD-címtár. Ezért az Azure AD tartományi szolgáltatások rendelkezik semmilyen módon nem lehet szinkronizálni az NTLM, és a Kerberos csak ezek a felhasználók a felügyelt tartományba. Ennek eredményeképpen ezek a felhasználók nem bejelentkezni a felügyelt tartományra vagy illesztési számítógépek a felügyelt tartományra.
+Nem. A vendégfelhasználók meghívót, hogy az Azure Active directory használata a [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) a meghívás folyamat szinkronizálva az Azure AD tartományi szolgáltatások által kezelt tartomány be. Ezek a felhasználók jelszavainak azonban nem tárolódnak az Azure AD-címtár. Ezért az Azure AD tartományi szolgáltatások rendelkezik semmilyen módon nem lehet szinkronizálni az NTLM, és a Kerberos csak ezek a felhasználók a felügyelt tartományba. Ennek eredményeképpen ezek a felhasználók nem jelentkezzen be a felügyelt tartományra vagy számítógépek csatlakoztatása a felügyelt tartományra.
 
 ## <a name="administration-and-operations"></a>Felügyelet és műveletek
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Képes kapcsolódni a tartományvezérlő a távoli asztal használata felügyelt tartomány?
@@ -65,13 +67,13 @@ Nem. Nincs engedélye csatlakozni a távoli asztalon keresztül a felügyelt tar
 A felügyeleti csoport "AAD DC rendszergazdák" Csatlakozás tartományhoz gép is. Emellett a csoport tagjai távoli asztali gépek, a tartományhoz csatlakozott hozzáférési engedéllyel.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatások által biztosított felügyelt tartományhoz tartozó tartományi rendszergazdai jogosultságokkal kell?
-Nem. Akkor kapnak rendszergazdai jogosultságokkal azon a felügyelt tartományra. "Tartományi rendszergazda" és a "vállalati rendszergazda" jogosultságokkal lesz szükség a tartományon belül nem érhetők el. Meglévő tartomány rendszergazdája vagy vállalati rendszergazdai csoportok belül az Azure AD-címtár is nem kapnak tartományi vagy vállalati rendszergazdai jogosultságokkal a tartományon.
+Nem. Akkor kapnak rendszergazdai jogosultságokkal azon a felügyelt tartományra. "Tartományi rendszergazda" és a "vállalati rendszergazda" jogosultságokkal lesz szükség a tartományon belül nem érhetők el. A tartományi rendszergazda vagy a vállalati rendszergazdai csoportok a helyszíni Active Directoryban is kapnak nem tartományi vagy vállalati rendszergazdai jogosultságokkal a felügyelt tartományra.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Módosíthatja a csoporttagságot a felügyelt tartományok LDAP és egyéb AD felügyeleti eszközök használatával?
 Nem. Csoporttagságok Azure AD tartományi szolgáltatások által kiszolgált tartományok nem módosítható. Ugyanez vonatkozik, a felhasználói attribútumokat. Csoporttagságok vagy a felhasználói attribútumokat azonban változtassa meg az Azure ad-ben vagy a helyszíni tartományban. Változások a rendszer automatikusan szinkronizálja az Azure AD tartományi szolgáltatásokra.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Mennyi időt vesz igénybe a változásokat I lesz látható a saját felügyelt tartomány számára saját Azure AD-címtár tenni?
-Az Azure AD-címtár az Azure AD felhasználói felületén vagy a PowerShell használatával végzett változásokat szinkronizálja a rendszer a felügyelt tartományra. Ez a szinkronizálási folyamat fut a háttérben. A könyvtár egyszeri kezdeti szinkronizálás befejezése után, általában a felügyelt tartományok megjelennek az Azure ad-ben végzett módosítások körülbelül 20 percet vesz igénybe.
+Az Azure AD-címtár az Azure AD felhasználói felületén vagy a PowerShell használatával végzett változásokat szinkronizálja a rendszer a felügyelt tartományra. Ez a szinkronizálási folyamat fut a háttérben. Kezdeti szinkronizálás befejezése után, általában a felügyelt tartományok megjelennek az Azure ad-ben végzett módosítások körülbelül 20 percet vesz igénybe.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Ki lehet terjeszteni a felügyelt tartományra Azure AD tartományi szolgáltatások által biztosított sémája?
 Nem. A séma a Microsoft felügyeli a felügyelt tartomány számára. Sémakiterjesztések nem támogatottak az Azure AD tartományi szolgáltatásokat.
@@ -81,6 +83,9 @@ Igen. A "AAD DC rendszergazdák" csoportba kapnak "DNS-rendszergazda" jogosults�
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Mi az a jelszóházirend élettartama egy felügyelt tartomány része?
 Az Azure AD-tartomány az alapértelmezett jelszó élettartamának szolgáltatások által kezelt tartomány 90 nap. A jelszó élettartama nincs szinkronizálva az Azure ad-ben beállított jelszót élettartamát. Emiatt előfordulhat, hogy olyan helyzet, amikor a felhasználói jelszavak jár le, a felügyelt tartományok, de továbbra is érvényesek az Azure ad-ben. Ilyen esetekben a felhasználóknak kell módosítani a jelszavát, az Azure ad-ben, és az új jelszót fogja szinkronizálni a felügyelt tartományra. Emellett a "jelszó-biztosítja – nem-jár le" és "user-must-change-password-at-next-logon" attribútumok a felhasználói fiókok nincsenek szinkronizálva a felügyelt tartományra.
+
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD tartományi szolgáltatásokat nyújt AD fiókzárolási Fiókvédelem?
+Igen. Öt érvénytelen bejelentkezési kísérletek 2 percen belül a felügyelt tartományra a felhasználói fiókot az 30 percig zárolása miatt. 30 másodperc után automatikusan fel nem a felhasználói fiók. Érvénytelen bejelentkezési kísérletek a felügyelt tartomány nem a felhasználói fiók zárolása az Azure ad-ben. A felhasználói fiók ki van zárva, csak az Azure AD tartományi szolgáltatások által felügyelt tartományon belül.
 
 ## <a name="billing-and-availability"></a>Számlázási és rendelkezésre állás
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Az Azure AD tartományi szolgáltatások egy fizetős szolgáltatás?

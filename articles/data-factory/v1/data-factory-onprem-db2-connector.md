@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622023"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory másolási tevékenység segítségével DB2 tárolt adatok mozgatása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,12 +82,12 @@ Az alábbi táblázat a DB2 rendszerhez kapcsolódó szolgáltatásra vonatkozó
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| **Típusa** |Ez a tulajdonság értékre kell állítani **OnPremisesDb2**. |Igen |
+| **type** |Ez a tulajdonság értékre kell állítani **OnPremisesDb2**. |Igen |
 | **server** |A DB2-kiszolgáló nevét. |Igen |
 | **database** |Neve a DB2-adatbázishoz. |Igen |
 | **schema** |A DB2-adatbázishoz a séma neve. Ez a tulajdonság a kis-és nagybetűket. |Nem |
 | **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek: névtelen, alapszintű és a Windows. |Igen |
-| **username** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
+| **Felhasználónév** |A Basic vagy Windows-hitelesítés használata esetén a felhasználói fiók nevét. |Nem |
 | **Jelszó** |A felhasználói fiók jelszavát. |Nem |
 | **gatewayName** |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni DB2-adatbázishoz való kapcsolódáshoz neve. |Igen |
 
@@ -311,14 +312,14 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Real |Egyedülálló |
+| Real |Önálló |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
 | Decimális |Decimális |
 | DecimalFloat |Decimális |
 | Numerikus |Decimális |
 | Dátum |DateTime |
-| Time |TimeSpan |
+| Time |A TimeSpan |
 | Időbélyeg |DateTime |
 | Xml |Byte] |
 | Karakter |Karakterlánc |
@@ -331,20 +332,20 @@ A következő megfeleltetéseket szolgálnak, amikor a másolási tevékenység 
 | Kép |Karakterlánc |
 | VarGraphic |Karakterlánc |
 | LongVarGraphic |Karakterlánc |
-| Clob |Karakterlánc |
+| CLOB |Karakterlánc |
 | Blob |Byte] |
 | DbClob |Karakterlánc |
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Real |Egyedülálló |
+| Real |Önálló |
 | Dupla |Dupla |
 | Lebegőpontos |Dupla |
 | Decimális |Decimális |
 | DecimalFloat |Decimális |
 | Numerikus |Decimális |
 | Dátum |DateTime |
-| Time |TimeSpan |
+| Time |A TimeSpan |
 | Időbélyeg |DateTime |
 | Xml |Byte] |
 | Karakter |Karakterlánc |

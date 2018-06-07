@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 193e74d94017cf0ca8ec0600c7e5a3dc4b7a6dea
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6d09a057d9b8a02c7f8313161e64aa3a42eb6db2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604335"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Paraméterek szakaszban az Azure Resource Manager-sablonok
 A sablon a Paraméterek szakaszban adja meg az erőforrások telepítése során is bemeneti értékeket. A paraméterértékek lehetővé teszik a központi telepítés testreszabása egy adott környezetben (például a fejlesztői, tesztelési és éles) is lefednek értékek megadásával. A sablon a paraméterek megadása nem szükséges, de a paraméterek nélkül a sablon mindig központilag ugyanazon a nevét, helyét és tulajdonságok ugyanazokat az erőforrásokat.
 
-Azonban legfeljebb 255 paramétereket a sablonban. A paraméterek számát objektumokat, amelyek több tulajdonságainak megjelenítése a cikkben, csökkentheti.
+Azonban legfeljebb 255 paramétereket a sablonban. A paraméterek számát csökkentheti objektumokat, amelyek több tulajdonság használatával, a cikkben ismertetett módon.
 
 ## <a name="define-and-use-a-parameter"></a>Adja meg, és egy paraméterrel
 

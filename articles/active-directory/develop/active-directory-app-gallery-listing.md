@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 ms.author: celested
+ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 22833851b85427dd8e9583f9c783fd55b9d31414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594085"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -33,20 +35,19 @@ Azure Active Directory (Azure AD) egy olyan felhőalapú identitás-szolgáltat�
 
 *  Ügyfelek keresése a legjobb lehetséges egyszeri bejelentkezést.
 
-*  Az alkalmazás konfigurációja egyszerű és minimális. 
+*  Az alkalmazás konfigurációja egyszerű és minimális.
 
 *  A gyors kereséséhez az alkalmazás a gyűjteményben.
 
-*  Ingyenes, Basic, és az Azure AD Premium-ügyfelek ezt az integrációt is használja. 
+*  Ingyenes, Basic, és az Azure AD Premium-ügyfelek ezt az integrációt is használja.
 
-*  Kölcsönös ügyfelek részletes konfigurációs oktatóanyag beolvasása. 
+*  Kölcsönös ügyfelek részletes konfigurációs oktatóanyag beolvasása.
 
 *  SCIM használó ügyfelek használható ugyanaz az alkalmazás telepítése.
 
-
 ##  <a name="prerequisites-implement-federation-protocol"></a>Előfeltételek: Megvalósítása összevonási protokoll
 
-Az alkalmazás az Azure AD-alkalmazásgyűjtemény listázásához, először kell megvalósítani a következő összevonási protokollok, az Azure AD által támogatott. Olvassa el a feltételeket és kikötéseket, az Azure AD application gallery itt. 
+Az alkalmazás az Azure AD-alkalmazásgyűjtemény listázásához, először a következő összevonási protokollok, az Azure AD által támogatott bevezetése, valamint az Azure AD application Gallery feltételek és kikötések elfogadja. Olvassa el a használati feltételeket az Azure AD alkalmazás tár a [Itt](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
 *   **OpenID Connect**: a több-bérlős alkalmazás létrehozása az Azure ad-ben és a megvalósítását az [az Azure AD hozzájárulási keretrendszer](active-directory-integrating-applications.md#overview-of-the-consent-framework) az alkalmazáshoz. Így minden ügyfél biztosítani tudja az alkalmazás hozzájárul a bejelentkezési kérelem elküldése egy közös végpontot. Szabályozhatja a felhasználó hozzáférést a bérlő azonosítója és a felhasználói UPN megkapta a jogkivonatot a alapján. Az alkalmazás integrálja az Azure AD-val, hajtsa végre a [fejlesztő utasításokat](active-directory-authentication-scenarios.md).
 

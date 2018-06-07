@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: A Windows Server virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs"
-description: "Windows Server virtuális gép csatlakoztatása az Azure Active Directory tartományi szolgáltatások"
+title: 'Az Azure Active Directory tartományi szolgáltatások: A Windows Server virtuális gép csatlakoztatása felügyelt tartományhoz |} Microsoft Docs'
+description: Windows Server virtuális gép csatlakoztatása az Azure Active Directory tartományi szolgáltatások
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: 7b5c23f1f4b6180d8b664f1371ccfd8a075572e6
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: dadc20cdee68730fa1d81dd86b3ffa0b0022a5b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34586953"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan telepítse a Windows Server virtuális gépet az Azure portál használatával. Ezután bemutatja hogyan csatlakoztathatók a virtuális gépet az Azure Active Directory tartományi szolgáltatások (az Azure AD DS) által felügyelt tartományokhoz.
@@ -103,7 +105,7 @@ A Windows Server virtuális gép csatlakoztatása az Azure AD DS által felügye
 
 7. Hitelesítő adatokat adhat meg a következő módon:
 
-   * **Egyszerű**: (ajánlott), adja meg az egyszerű felhasználónév (UPN) utótag a felhasználói fiók az Azure AD-be. Ebben a példában a felhasználói UPN-utótagját *bob* van  *bob@domainservicespreview.onmicrosoft.com* .
+   * **Egyszerű**: (ajánlott), adja meg az egyszerű felhasználónév (UPN) utótag a felhasználói fiók az Azure AD-be. Ebben a példában a felhasználói UPN-utótagját *bob* van *bob@domainservicespreview.onmicrosoft.com*.
 
    * **SAMAccountName formátum**: SAMAccountName formátumban is adja meg a fiók nevét. Ebben a példában a felhasználó *bob* volna meg kell adnia *CONTOSO100\bob*.
 
@@ -142,7 +144,7 @@ Ha hiba történt a hitelesítő adatokkal, és nem tud csatlakozni a tartomány
 
 * Győződjön meg arról, hogy [engedélyezve a jelszó-szinkronizálás](active-directory-ds-getting-started-password-sync.md) megfelel-e az első lépésekről szóló útmutatót leírt lépéseket.
 
-* Győződjön meg arról, hogy a felhasználó egyszerű Felhasználónevét az Azure AD-be (például  *bob@domainservicespreview.onmicrosoft.com* ) való bejelentkezéshez.
+* Győződjön meg arról, hogy a felhasználó egyszerű Felhasználónevét az Azure AD-be (például *bob@domainservicespreview.onmicrosoft.com*) való bejelentkezéshez.
 
 * Győződjön meg arról, hogy amíg a jelszó-szinkronizálás befejeződött, a várt az első lépésekről szóló útmutatót megadottak szerint.
 

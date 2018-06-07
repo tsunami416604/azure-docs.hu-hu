@@ -1,24 +1,21 @@
 ---
-title: "Egy Azure Data Lake Tools for Visual Studio használatával U-SQL-adatbázis-exportálási |} Microsoft Docs"
-description: "Útmutató: Azure Data Lake Tools for Visual Studio segítségével exportálja a U-SQL-adatbázis, és automatikusan importálja a helyi fiók."
+title: Egy Azure Data Lake Tools for Visual Studio használatával U-SQL-adatbázis exportálása
+description: 'Útmutató: Azure Data Lake Tools for Visual Studio segítségével exportálja a U-SQL-adatbázis, és automatikusan importálja a helyi fiók.'
 services: data-lake-analytics
-documentationcenter: 
 author: yanancai
-manager: 
-editor: 
+ms.author: yanacai
+manager: kfile
+editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: yanacai
-ms.openlocfilehash: 441606258f9541c9552925e7c0cbc9b3a9effb4d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1dbcf9b88af7777a1103876a429ccc26450e2f58
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623410"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
 
@@ -86,7 +83,7 @@ Az adatbázis importálására különböző Data Lake Analytics-fiókhoz:
 
 Jelenleg Ha a **séma- és** lehetőséget a 3. lépésben, az eszköz fut egy U-SQL-feladatot, amely a táblákban tárolt adatok exportálása. Ezért az adatok exportálási folyamata lassú lehet, és előfordulhat, hogy fel Önnek a költségeket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információk a U-SQL-adatbázisok](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
 * [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)

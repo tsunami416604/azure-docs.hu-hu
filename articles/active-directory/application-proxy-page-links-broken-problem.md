@@ -3,27 +3,30 @@ title: A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmaz�
 description: Érvénytelen hivatkozásokkal a integrálva van az Azure AD alkalmazásproxy-alkalmazásokkal kapcsolatos problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7c505080e6b6144ab3cf24ad89bb084efbb77c29
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/18/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 3e356beda3e95748cbee64a180612dd183a7ce0e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592296"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>A lapon lévő hivatkozások nem működnek az alkalmazásproxy alkalmazás
 
 Ez a cikk segít hibaelhárítása, ezért az Azure Active Directory Alkalmazásproxyjával alkalmazás lévő hivatkozások nem működnek megfelelően.
 
-## <a name="overview"></a>Áttekintés (klasszikus) 
+## <a name="overview"></a>Áttekintés 
 Miután közzétette az alkalmazásproxy-alkalmazást, a csak hivatkozások, amelyek az alkalmazás alapértelmezés szerint működnek a célok a közzétett gyökér URL-cím található hivatkozások olyan. Az alkalmazásokon belül a hivatkozások nem működnek, az alkalmazás belső URL-címe valószínűleg nem tartalmaz hivatkozásokat az alkalmazáson belül a célhelyre.
 
 **Miért történik ez?** Amikor egy alkalmazás egy hivatkozásra kattint, a alkalmazásproxy megpróbálja feloldani az URL-címet, vagy belső URL-címként belül ugyanazt az alkalmazást, vagy kívülről elérhető URL-címként. A hivatkozás mutat egy belső URL-CÍMÉT, amely kívül esik az ugyanahhoz az alkalmazáshoz, ha azt nem tartozik sem a gyűjtők és nem talált hibát eredményez.

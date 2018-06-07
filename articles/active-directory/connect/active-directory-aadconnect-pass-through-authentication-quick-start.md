@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD áteresztő hitelesítés – gyors üzembe helyezési |} Microsoft Docs"
-description: "Ez a cikk ismerteti a Ismerkedés az Azure Active Directory (Azure AD) áteresztő hitelesítés."
+title: Az Azure AD áteresztő hitelesítés – gyors üzembe helyezési |} Microsoft Docs
+description: Ez a cikk ismerteti a Ismerkedés az Azure Active Directory (Azure AD) áteresztő hitelesítés.
 services: active-directory
-keywords: "Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da3d78880a3d389c2a247f9940b708c026c96e03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591330"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítést: Gyors üzembe helyezési
 
@@ -139,7 +141,7 @@ Először is elvégezheti interaktív módon csak a letöltött végrehajtható 
 Ezután hozzon létre, és egy felügyelet nélküli telepítési parancsfájl futtatása. Ez akkor hasznos, ha szeretné telepíteni egyszerre több hitelesítési ügynök, vagy hitelesítési ügynökök telepítése Windows-kiszolgálók, amely nem rendelkezik a felhasználói felület engedélyezve van, vagy a távoli asztal nem érhetők el. Az alábbiakban ezt a módszert használja a útmutatást:
 
 1. Hitelesítési ügynök telepítéséhez a következő parancsot: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. A hitelesítési ügynök regisztrálhatja az szolgáltatás Windows PowerShell használatával. Hozzon létre egy PowerShell hitelesítő objektumot `$cred` egy globális rendszergazdai jogosultságú felhasználónevet és jelszót, amely tartalmazza a bérlő számára. A következő parancsot, cseréje  *\<felhasználónév\>*  és  *\<jelszó\>*:
+2. A hitelesítési ügynök regisztrálhatja az szolgáltatás Windows PowerShell használatával. Hozzon létre egy PowerShell hitelesítő objektumot `$cred` egy globális rendszergazdai jogosultságú felhasználónevet és jelszót, amely tartalmazza a bérlő számára. A következő parancsot, cseréje *\<felhasználónév\>* és  *\<jelszó\>*:
    
         $User = "<username>"
         $PlainPassword = '<password>'

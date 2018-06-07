@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: Központi telepítési forgatókönyvek |} Microsoft Docs"
-description: "Az Azure AD tartományi szolgáltatásokhoz központi telepítési forgatókönyvek"
+title: 'Az Azure Active Directory tartományi szolgáltatások: Központi telepítési forgatókönyvek |} Microsoft Docs'
+description: Az Azure AD tartományi szolgáltatásokhoz központi telepítési forgatókönyvek
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: maheshu
-ms.openlocfilehash: 11844fb8fabada9d863fe4adf0839ae6fa2ed101
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ae8485f94a8a86862f09c1776222cb6603967614
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587558"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Központi telepítési forgatókönyvek és példák
 Ebben a szakaszban úgy tekintünk, néhány forgatókönyvek és használati esetet, amelyekkel igénybe vehesse az Azure Active Directory (AD) tartományi szolgáltatásokban.

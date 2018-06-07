@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 74bc28619996b7cd52d2280d4d8b6288aa7c904f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 280b1340c094a89ad5980178947045b707128807
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595019"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Oktatóanyag: A Linux virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure Key Vault elérésére használhat. 
 
@@ -134,12 +135,12 @@ Lépések elvégzéséhez szüksége van egy SSH-ügyfél.  Windows használ, ha
     
 Ha a titkos kulcsot a Key Vault korábban lekért, használhatja, hogy egy szolgáltatás, amely egy nevet és jelszót igényel hitelesítést.
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+Ebben az oktatóanyagban megtudta, hogyan használja a felügyelt Szolgáltatásidentitás a Linux virtuális gépek az Azure Key Vault eléréséhez.  További információt az Azure Key Vault lásd:
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
-
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+> [!div class="nextstepaction"]
+>[Azure Key Vault](/azure/key-vault/key-vault-whatis)
 
 
 

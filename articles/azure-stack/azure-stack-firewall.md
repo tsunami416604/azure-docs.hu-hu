@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/23/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604216"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure verem tűzfal-integráció
 Javasoljuk, hogy a tűzfal eszközt használ-e biztonságos Azure verem segítségével. Bár tűzfalak segítségére lehetnek többek között elosztott-szolgáltatásmegtagadásos (DDOS-) támadások, a behatolás-észlelés és a tartalomvizsgálat a, a teljesítmény szűk keresztmetszetek az Azure storage szolgáltatások, például a blobot, táblát és üzenetsort is válnának is.
@@ -48,7 +49,7 @@ Az él központi telepítése Azure verem közvetlenül a peremhálózati útvá
 
 Általában nyilvános elérhető IP-címet adott meg a külső hálózati nyilvános virtuális IP-címkészletet a központi telepítéskor. Az edge esetben nem ajánlott nyilvános irányítható IP-címek használata bármely más hálózati biztonsági okokból. Ebben a forgatókönyvben lehetővé teszi, hogy a felhasználót, hogy a teljes önálló ellenőrzött felhő élményt, például az Azure nyilvános felhő mint tapasztalhat.  
 
-![Az Azure verem peremhálózati tűzfal – példa](.\media\azure-stack-firewall\edge-firewall-scenario.png)
+![Az Azure verem peremhálózati tűzfal – példa](.\media\azure-stack-firewall\firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>A vállalati intranet vagy peremhálózati tűzfal forgatókönyve
 A vállalati intranet vagy szegélyhálózat üzembe helyezés Azure-verem telepítve vannak multi-zónájában tűzfal vagy a peremhálózati tűzfalon és a belső, a vállalati hálózat tűzfalán Between. A forgalom majd elosztása a biztonságos, szegélyhálózaton (vagy DMZ) között, és nem biztonságos zónák, az alábbiakban:

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure AD Connect - frissítés az SSL-tanúsítványt az AD FS-farm |} Microsoft Docs"
-description: "Ez a dokumentum adatokat a lépéseket az Azure AD Connect használatával az SSL-tanúsítvány egy AD FS-farm frissítéséhez."
+title: Az Azure AD Connect - frissítés az SSL-tanúsítványt az AD FS-farm |} Microsoft Docs
+description: Ez a dokumentum adatokat a lépéseket az Azure AD Connect használatával az SSL-tanúsítvány egy AD FS-farm frissítéséhez.
 services: active-directory
-keywords: "az Azure ad connect, az AD FS ssl-frissítés, az AD FS-tanúsítványt frissítés, módosítsa az AD FS-tanúsítványt, új AD FS-tanúsítványt, az AD FS tanúsítványt, a frissítés AD FS ssl-tanúsítványt, a frissítés ssl tanúsítvány adfs konfigurálása az AD FS ssl-tanúsítvány, az AD FS, ssl, tanúsítvány, az AD FS szolgáltatás közötti kommunikációs tanúsítványt, a frissítés összevonási, összevonás konfigurálása, aad-csatlakozás"
+keywords: az Azure ad connect, az AD FS ssl-frissítés, az AD FS-tanúsítványt frissítés, módosítsa az AD FS-tanúsítványt, új AD FS-tanúsítványt, az AD FS tanúsítványt, a frissítés AD FS ssl-tanúsítványt, a frissítés ssl tanúsítvány adfs konfigurálása az AD FS ssl-tanúsítvány, az AD FS, ssl, tanúsítvány, az AD FS szolgáltatás közötti kommunikációs tanúsítványt, a frissítés összevonási, összevonás konfigurálása, aad-csatlakozás
 authors: anandyadavmsft
 manager: mtillman
 editor: billmath
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
+ms.component: hybrid
 ms.author: anandy
 ms.custom: seohack1
-ms.openlocfilehash: b31a4d178d287eba275a0072936b4222a2c84346
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d657725b7bfb75a118c1d8bbbe701c1c121b1ef2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595002"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Az SSL-tanúsítványt az Active Directory összevonási szolgáltatások (AD FS) farm frissítése
 

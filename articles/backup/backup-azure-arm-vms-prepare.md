@@ -1,25 +1,20 @@
 ---
-title: 'Az Azure Backup: Biztonsági másolatot készíteni a virtuális gépek előkészítése |} Microsoft Docs'
+title: 'Az Azure Backup: Biztonsági másolatot készíteni a virtuális gépek előkészítése'
 description: Győződjön meg arról, hogy a környezet elő kell készíteni az Azure virtuális gépek biztonsági mentését.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: biztonsági mentések; biztonsági mentése;
-ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: markgal
+ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606636"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -59,6 +54,7 @@ A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások 
 * A kijelölt hálózatokhoz, Miután konfigurálta a tűzfal és a virtuális hálózati beállításait a tárfiók, válassza **engedélyezése a Microsoft-szolgáltatások hozzáférésének ezt a tárfiókot megbízható** kivételként az Azure Backup szolgáltatás engedélyezése a korlátozott hálózati tárfiók eléréséhez. Elemszintű helyreállítás nem támogatott korlátozott hálózati storage-fiókok.
 * Minden nyilvános régióiba Azure virtuális gépek biztonsági. (Lásd a [ellenőrzőlista](https://azure.microsoft.com/regions/#services) a támogatott régiók.) A régiót, amelyben keres jelenleg nem támogatott, ha már nem jelenik a legördülő listából válassza ki a tároló létrehozása során.
 * A tartományvezérlők visszaállítását (DC) virtuális Gépet, amely része egy multi-tartományvezérlő-konfiguráció támogatott csak a PowerShell segítségével. További tudnivalókért lásd: [multi-DC tartományvezérlő visszaállítása](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
+* Az engedélyezett írási gyorsító lemezen Snapshot utasítás nem támogatott. Ez a korlátozás blokkolja az Azure Backup szolgáltatás képes-e a virtuális gép összes lemeze egy alkalmazás konzisztens pillanatképe végrehajtásához.
 * Az alábbi speciális beállításokkal rendelkező virtuális gépek visszaállításakor csak a PowerShell használatával támogatott. A visszaállítási munkafolyamat a felhasználói felület segítségével létrehozott virtuális gépek nem fognak rendelkezni a hálózati konfigurációt, a visszaállítási művelet befejezése után. További tudnivalókért lásd: [visszaállítását virtuális gépek speciális hálózati konfigurációkkal](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Virtuális gépek a terheléselosztó-konfigurációja (belső és külső)
   * Virtuális gépek több foglalt IP-címmel
@@ -174,7 +170,9 @@ Ha problémába ütközik a virtuális gép rögzítése, tekintse meg a követk
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>A Virtuálisgép-ügynök telepítése a virtuális gépen
 A biztonsági mentés bővítmény használatához az Azure [Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) telepíteni kell az Azure virtuális géphez. Ha a virtuális gép létrehozása az Azure piactérről, a Virtuálisgép-ügynök már telepítve a virtuális gép. 
 
-Olyan esetekben, ahol a következő információ *nem* használatával egy virtuális gép létrehozása az Azure piactérről. Például végezte az áttelepítést egy virtuális Gépet egy olyan helyszíni adatközpontban. Ebben az esetben a Virtuálisgép-ügynök telepítve kell lennie ahhoz, hogy a virtuális gép védelmét.
+Olyan esetekben, ahol a következő információ *nem* használatával egy virtuális gép létrehozása az Azure piactérről. **Például végezte az áttelepítést egy virtuális Gépet egy olyan helyszíni adatközpontban. Ebben az esetben a Virtuálisgép-ügynök telepítve kell lennie ahhoz, hogy a virtuális gép védelmét.**
+
+**Megjegyzés:**: a Virtuálisgép-ügynök telepítése után is használnia kell az Azure PowerShell frissíteni a ProvisionGuestAgent tulajdonság, Azure tudja, hogy a virtuális Gépnek az ügynök telepítve legyen. 
 
 Ha problémába ütközik az Azure virtuális gép biztonsági mentéséről, az alábbi táblázat segítségével ellenőrizze, hogy az Azure Virtuálisgép-ügynök megfelelően telepítve van a virtuális gépen. A táblázat további információt a Windows és Linux virtuális gépek a Virtuálisgép-ügynök.
 

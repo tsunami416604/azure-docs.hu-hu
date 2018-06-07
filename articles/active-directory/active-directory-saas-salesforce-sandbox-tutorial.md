@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0660bdb3592e36cb25f68243f16e32d7e51fb85c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4ccb3fd457f9541354281e3dc11dce273f75d9a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590426"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Oktatóanyag: Azure Active Directoryval integrált Salesforce védőfal
 
@@ -153,51 +154,48 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. Az a **kibocsátó** mezőbe illessze be az értékét **SAML Entitásazonosító**, amely az Azure-portálon másolta
 
-    c. Az a **entitásazonosító** szövegmezőhöz típus `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Salesforce védőfal elsősorban a könyvtárhoz hozzáadandó esetén. Ha már van egy példánya Salesforce védőfal, majd a a **Entitásazonosító** írja be a **URL-cím bejelentkezési**, amely a következő formátumban kell lennie: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
- 
-    d. Töltse fel a **szolgáltató Identitástanúsítvány**, kattintson a **Choose File** keresse meg és jelölje ki a tanúsítványfájlt, amely az Azure-portálról letöltött.  
+    c. Az a **entitásazonosító** szövegmezőhöz típus `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Salesforce védőfal elsősorban a könyvtárhoz hozzáadandó esetén. Ha már van egy példánya Salesforce védőfal, majd a a **Entitásazonosító** írja be a **URL-cím bejelentkezési**, amely a következő formátumban kell lennie: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
+
+    d. Töltse fel a **szolgáltató Identitástanúsítvány**, kattintson a **Choose File** keresse meg és jelölje ki a tanúsítványfájlt, amely az Azure-portálról letöltött.
 
     e. Mint **SAML identitástípus**, a következő lehetőségek közül választhat:
-    
+
       * Válassza ki **helyességi feltételt tartalmaz, a felhasználónév Salesforce**, ha a SAML-előfeltétel szolgáltatóé, a Salesforce felhasználónév
 
       * Válassza ki **helyességi feltételt tartalmaz az összevonási azonosító felhasználó**, ha a felhasználó objektum összevonási azonosító van beadott SAML-előfeltétel
 
       * Válassza ki **helyességi feltételt tartalmaz a használja a User objektum azonosítója**, ha a SAML-előfeltétel szolgáltatóé, a felhasználó a felhasználói azonosító
- 
+
     f. Mint **SAML-alapú identitás hely**, jelölje be **identitás a tulajdonos utasítás NameIdentifier elemében van**.
 
-    g. Mint **szolgáltató által kezdeményezett kérelem Szolgáltatáskötés**, jelölje be **HTTP POST**. 
+    g. Mint **szolgáltató által kezdeményezett kérelem Szolgáltatáskötés**, jelölje be **HTTP POST**.
 
-    h. A **Identity Provider bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta. 
+    h. A **Identity Provider bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **egyszeri bejelentkezési URL-címe**, amely az Azure-portálon másolta.
 
     i. SFDC nem támogatja az SAML jelentkezzen ki.  A probléma megoldásához, illessze be `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` be azt a **Identity Provider kijelentkezési URL-cím** szövegmező.
 
     j. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="enable-your-domain"></a>A tartomány
+
 Jelen szakaszban feltételezzük, hogy már létrehozta a tartományhoz.  További információkért lásd: [meghatározása saját tartomány neve](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US).
 
 **Ahhoz, hogy a tartomány, hajtsa végre a következő lépéseket:**
 
 1. A Salesforce bal oldali navigációs ablaktábláján kattintson **vállalati beállítások** bontsa ki a kapcsolódó csomópontot, majd **saját tartomány**.
-   
-     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
-   
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
+
    >[!NOTE]
-   >Győződjön meg arról, hogy a tartomány megfelelően van konfigurálva. 
+   >Győződjön meg arról, hogy a tartomány megfelelően van konfigurálva.
 
 2. Az a **hitelesítési konfigurációt** területen kattintson **szerkesztése**, majd, mint a **hitelesítési szolgáltatás**, válassza ki a nevét a SAML egyszeri bejelentkezés beállítása az előző szakaszt, és végül kattintson a **mentése**.
-   
+
    ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-Amint egy tartományhoz, konfigurálva van, a felhasználók használjon bejelentkezni a Salesforce védőfal tartomány URL-CÍMÉT.  
+Amint egy tartományhoz, konfigurálva van, a felhasználók használjon bejelentkezni a Salesforce védőfal tartomány URL-CÍMÉT.
 
 Ahhoz, hogy az URL-cím értékét, kattintson az előző szakaszban létrehozott SSO profilra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -230,17 +228,16 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="create-a-salesforce-sandbox-test-user"></a>Salesforce védőfal tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználó Britta Simon nevű Salesforce védőfal jön létre. Salesforce védőfal támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van.
-Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a Salesforce védőfal, egy új létrejön a Salesforce védőfal elérésére tett kísérlet során.
+Ebben a szakaszban egy felhasználó Britta Simon nevű Salesforce védőfal jön létre. Salesforce védőfal támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van. Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a Salesforce védőfal, egy új létrejön a Salesforce védőfal elérésére tett kísérlet során. Salesforce védőfal is támogatja az automatikus a felhasználók átadása, további részletei [Itt](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
 Ebben a szakaszban Britta Simon hozzáférést biztosít a Salesforce védőfal által használandó Azure egyszeri bejelentkezés engedélyezése.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
 **Britta Simon hozzárendelése Salesforce védőfal, hajtsa végre az alábbi lépéseket:**
 
@@ -277,6 +274,8 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
+* [A felhasználók átadása konfigurálása](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -291,4 +290,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_203.png
-

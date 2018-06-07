@@ -1,25 +1,26 @@
 ---
-title: "Data Factory Azure másolása varázsló |} Microsoft Docs"
-description: "Ismerje meg az adatokat másolni a támogatott adatforrások mosdók a Data Factory Azure másolása varázsló használatával kapcsolatban."
+title: Data Factory Azure másolása varázsló |} Microsoft Docs
+description: Ismerje meg az adatokat másolni a támogatott adatforrások mosdók a Data Factory Azure másolása varázsló használatával kapcsolatban.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aeed2b2413f14b60d018ebd4f09293d6c41554d2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ebd8abf8c34be1fa6fcd282c9bfbc63d81a56239
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621132"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Az Azure Data Factory másolása varázsló
 > [!NOTE]

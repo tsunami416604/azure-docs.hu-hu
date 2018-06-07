@@ -1,24 +1,19 @@
 ---
-title: Az Azure Backup - Offline biztonsági másolat vagy az Azure Import/Export szolgáltatás használatával kezdeti összehangolása |} Microsoft Docs
+title: Az Azure Backup - Offline biztonsági másolat vagy a kezdeti összehangolása az Azure Import/Export szolgáltatás használata
 description: Ismerje meg, hogyan Azure Backup szolgáltatás lehetővé teszi az Azure Import/Export szolgáltatás használata a hálózati adatokat küldeni. Ez a cikk ismerteti a kezdeti biztonsági másolati adatokat kapcsolat nélküli összehangolása az Azure importálási exportálása szolgáltatás használatával.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 801de343ebb88394f04a65236997f9ec80a2f535
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 05/17/2018
+ms.author: saurse
+ms.openlocfilehash: cb37c94d3ec819823083041708cfc28ead0ed5cf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606137"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Azure biztonsági mentés számos beépített hatékonyság, hálózati és tárolási költségek csökkentése során a kezdeti teljes biztonsági mentés az Azure-bA rendelkezik. Kezdeti teljes biztonsági mentés általában nagy adatmennyiségek átvitelét, és azt követő biztonsági mentéseket, amely csak az eltérések/növekményes átviteli képest nagyobb hálózati sávszélesség szükséges. A folyamatot, amely offline összehangolása Azure biztonsági mentési lemezek is használhatók az offline biztonsági mentési adatokat feltölteni az Azure-bA.
@@ -67,7 +62,7 @@ Az Offline biztonsági másolat munkafolyamat kezdeményezése, előtt hajtsa v�
     4. A szolgáltatók görgessen le Microsoft.ImportExport közül. Ha az állapot NotRegistered, kattintson a **regisztrálása**.
     ![az erőforrás-szolgáltató regisztrálása](./media/backup-azure-backup-import-export/registerimportexport.png)
 * Egy ideiglenes helyet, amely lehet, hogy egy hálózati megosztásra vagy bármely további meghajtó a számítógépen, belső vagy külső, a kezdeti másolat tárolásához elegendő lemezterülettel rendelkező jön létre. Például ha próbál 500 GB-os fájlkiszolgáló biztonsági mentése, győződjön meg arról, hogy az átmeneti területre legalább 500 GB. (Tömörítés miatt a kisebb méretű használja.)
-* Lemezek küld az Azure-ba, csak a 2,5 hüvelyk SSD vagy 2.5-es vagy 3,5 hüvelykes SATA II/III belső merevlemez-meghajtókat használnak. Merevlemez-meghajtókat is használhat legfeljebb 10 TB. Ellenőrizze a [Azure Import/Export szolgáltatás dokumentációja](../storage/common/storage-import-export-service.md#hard-disk-drives) meghajtók, a szolgáltatás által támogatott legújabb készlete esetében.
+* Lemezek küld az Azure-ba, csak a 2,5 hüvelyk SSD vagy 2.5-es vagy 3,5 hüvelykes SATA II/III belső merevlemez-meghajtókat használnak. Merevlemez-meghajtókat is használhat legfeljebb 10 TB. Ellenőrizze a [Azure Import/Export szolgáltatás dokumentációja](../storage/common/storage-import-export-requirements.md#supported-hardware) meghajtók, a szolgáltatás által támogatott legújabb készlete esetében.
 * A SATA meghajtókat kapcsolódnia kell a számítógép (néven egy *másolási számítógép*), amelyről származó biztonsági mentési adatok másolása az *átmeneti helyre* számára a SATA meghajtókat történik. Győződjön meg arról, hogy a Bitlocker engedélyezve van a *másolási számítógép*.
 
 ## <a name="workflow"></a>Munkafolyamat

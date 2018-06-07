@@ -1,24 +1,19 @@
 ---
-title: "Modern biztonsági mentési tárhelyet használ az Azure Backup Server v2 |} Microsoft Docs"
-description: "További tudnivalók az Azure Backup Server v2 új funkciókkal. A cikkből megtudhatja, hogyan lehet frissíteni a biztonsági mentés Server telepítését."
+title: Azure biztonságimásolat-kiszolgáló v2 Modern biztonsági másolatokat tároló használata
+description: További tudnivalók az Azure Backup Server v2 új funkciókkal. A cikkből megtudhatja, hogyan lehet frissíteni a biztonsági mentés Server telepítését.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: masaran;markgal
-ms.openlocfilehash: 751b9b495fd368dff1f72429707f5f33a0ccb569
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 7c583ea048ed1837c662869c62039165aaa3c024
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606754"
 ---
 # <a name="add-storage-to-azure-backup-server-v2"></a>Azure Backup Server v2 tároló hozzáadása
 
@@ -77,7 +72,7 @@ Kiszolgáló biztonsági mentése, a kötet hozzáadása a **felügyeleti** abla
 
 Munkaterhelés-kompatibilis tárolóval kiválaszthatja a bizonyos típusú munkaterhelések lehetőleg tárolására szolgáló köteteknél. Például beállíthat költséges kötetek, amelyek támogatják a bemeneti/kimeneti műveletek száma másodpercenként (IOPS) túl magas száma csak a szolgáltatások, amelyek rendszeres, nagy mennyiségű biztonsági másolatok tárolásához. Példa: SQL Server, a tranzakciós naplók. Egyéb munkaterhelések, amelyekről a ritkábban, például a virtuális gépek, alacsony költségű kötetek készíthető.
 
-### <a name="update-dpmdiskstorage"></a>Frissítés-DPMDiskStorage
+### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
 Munkaterhelés-t támogató tárolási állíthat be egy kötetet a tárolókészletből a Data Protection Manager-kiszolgáló tulajdonságait frissítve frissítés-DPMDiskStorage PowerShell-parancsmag használatával.
 
@@ -96,7 +91,7 @@ A PowerShell használatával a módosítások megjelennek a biztonsági mentés 
 
 ![A lemezek és kötetek a felügyeleti konzol](./media/backup-mabs-add-storage/mabs-add-storage-9.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Biztonsági kiszolgáló telepítése után megtudhatja, hogyan készíti elő a kiszolgálót, vagy indítsa el a védelmet a munkaterhelés.
 
 - [A kiszolgálói biztonsági mentési feladatok előkészítése](backup-azure-microsoft-azure-backup.md)

@@ -1,24 +1,19 @@
 ---
-title: "Az Azure Backup szolgáltatás ügynöke hibaelhárítása |} Microsoft Docs"
-description: "Telepítés és az Azure Backup szolgáltatás ügynökének regisztrációs hibáinak elhárítása"
+title: Az Azure Backup Agent hibaelhárítása
+description: Telepítés és az Azure Backup szolgáltatás ügynökének regisztrációs hibáinak elhárítása
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shreeshd
-editor: 
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/4/2017
-ms.author: saurse;markgal;
-ms.openlocfilehash: f7f4ac328c4e35f52bcc9708faf96d06189dd9ac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: saurse
+ms.openlocfilehash: aee0a3044ea4d1b9b867e795e94a37f8835ad212
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605756"
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>Azure Backup szolgáltatás ügynöke konfigurációs és regisztrációs problémák elhárítása
 ## <a name="recommended-steps"></a>Javasolt lépések
@@ -47,7 +42,7 @@ Tekintse meg a javasolt művelet a következő táblázatok hárítsa el a konfi
 
 | Hiba részletei | Lehetséges okok | Javasolt teendők |
 | ---     | ---     | ---    |          
-| **Hiba történt** </br><ol><li>*Az aktiválás sikertelenül zárult. Az aktuális művelet [0x1FC07] belső szolgáltatási hiba miatt sikertelen volt. Próbálkozzon újra a művelettel valamivel később. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához* <li>*Error 34506. Ezen a számítógépen tárolt titkosítási jelszó nem megfelelően van beállítva*. | <li> Az ideiglenes mappa nincs elegendő lemezterület a köteten. <li> Az ideiglenes mappa helytelenül került át egy másik helyre. <li> A OnlineBackup.KEK fájl hiányzik. | <li>Helyezze át az ideiglenes mappa vagy a gyorsítótár helye olyan kötetet, amelyen a biztonsági mentési adatok teljes mérete 5 – 10 %-ának megfelelő szabad lemezterület. A gyorsítótár helye áthelyezni, tekintse meg a lépéseket [az Azure Backup szolgáltatás ügynökének kapcsolatos kérdéseket](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Gondoskodjon arról, hogy a OnlineBackup.KEK fájlt. <br>*Az alapértelmezett hely az ideiglenes mappa vagy a gyorsítótár elérési útjának: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+| **Hiba történt** </br><ol><li>*Az aktiválás sikertelenül zárult. Az aktuális művelet [0x1FC07] belső szolgáltatási hiba miatt sikertelen volt. Próbálkozzon újra a művelettel valamivel később. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához* <li>*Hiba történt a 34506. Ezen a számítógépen tárolt titkosítási jelszó nem megfelelően van beállítva*. | <li> Az ideiglenes mappa nincs elegendő lemezterület a köteten. <li> Az ideiglenes mappa helytelenül került át egy másik helyre. <li> A OnlineBackup.KEK fájl hiányzik. | <li>Helyezze át az ideiglenes mappa vagy a gyorsítótár helye olyan kötetet, amelyen a biztonsági mentési adatok teljes mérete 5 – 10 %-ának megfelelő szabad lemezterület. A gyorsítótár helye áthelyezni, tekintse meg a lépéseket [az Azure Backup szolgáltatás ügynökének kapcsolatos kérdéseket](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Gondoskodjon arról, hogy a OnlineBackup.KEK fájlt. <br>*Az alapértelmezett hely az ideiglenes mappa vagy a gyorsítótár elérési útjának: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

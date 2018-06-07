@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 79c339c136e614be8a98461533c63d244dabc166
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 317c94abdf14d3d88e07e32ab16769bd1f641438
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591296"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Hibrid identitás – szükséges portok és protokollok
 A következő dokumentum a szükséges portok és protokollok a hibrid identitáskezelési megoldás megvalósításának műszaki hivatkozást. Használja az alábbi ábrán látható, és tekintse meg a megfelelő táblázatot.
@@ -32,7 +34,7 @@ Ez a táblázat ismerteti a portok és az Azure AD Connect-kiszolgáló között
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |DNS-keresések a cél-erdőre. |
 | Kerberos |88 (TCP/UDP) |Kerberos-hitelesítés az AD-erdőben. |
-| MS-RPC |135 (TCP/UDP) |Ha az AD-erdőben is kötődik az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
+| MS-RPC |135-ÖS (TCP/UDP) |Ha az AD-erdőben is kötődik az Azure AD Connect varázsló a kezdeti konfiguráció során és a jelszó-szinkronizálás során használt. |
 | LDAP |389 (TCP/UDP) |Adatok importálása az Active Directoryból használatos. A Kerberos-aláírás és a titkosítással titkosítja az adatokat. |
 | RPC | 445 (TCP/UDP) |Zökkenőmentes SSO használják a számítógép-fiók létrehozása az Active Directory-erdőben. |
 | LDAP/SSL |636 (TCP/UDP) |Adatok importálása az Active Directoryból használatos. Az adatátvitel van aláírását és titkosítását. Csak akkor használható, ha SSL-t használ. |
@@ -55,7 +57,7 @@ Ez a táblázat ismerteti a portok és protokollok, az Azure AD Connect-kiszolg�
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |Töltse le a visszavonási listák (tanúsítvány-visszavonási listákat) SSL-tanúsítványok ellenőrzésére használt. |
 | HTTPS |443(TCP/UDP) |Az Azure ad-val szinkronizálásához használni. |
-| WinRM |5985 |WinRM Listener |
+| WinRM |5985 |A WinRM figyelő |
 
 ## <a name="table-4---wap-and-federation-servers"></a>4. táblázat – WAP és az összevonási kiszolgálók
 Ez a táblázat ismerteti a portok és protokollok, az összevonási kiszolgálók és a WAP-kiszolgálókkal közötti kommunikációhoz szükséges.

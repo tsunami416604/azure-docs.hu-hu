@@ -9,17 +9,18 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bf5a3a1dc67752e3f911d07f23c7b408e6d38c3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c1ac698a1774a7a6242506ec65193434bb81cc25
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598769"
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Azure Automation futtató fiók hitelesítésének tesztelése
 Az Automation-fiók sikeres létrehozását követően végrehajthat egy egyszerű tesztet annak megállapítására, hogy az újonnan létrehozott vagy frissített Automation futtató fiók alkalmas-e a sikeres hitelesítésre az Azure Resource Managerben vagy a klasszikus Azure üzembe helyezési modellben.    
 
 ## <a name="automation-run-as-authentication"></a>Hitelesítés Automation futtató fiókkal
-Az alábbi mintakód segítségével egy [PowerShell-runbook létrehozásával](automation-creating-importing-runbook.md) ellenőrizheti a futtató fiókkal történő hitelesítést, valamint az egyéni runbookokban hitelesítheti és kezelheti a Resource Manager-erőforrásokat az Automation-fiókkal.   
+Az alábbi mintakód segítségével egy [PowerShell-runbook létrehozásával](automation-creating-importing-runbook.md) ellenőrizheti a futtató fiókkal történő hitelesítést, valamint az egyéni runbookokban hitelesítheti és kezelheti a Resource Manager-erőforrásokat az Automation-fiókkal.
 
     $connectionName = "AzureRunAsConnection"
     try
@@ -60,6 +61,9 @@ Az alábbi mintakód segítségével egy [PowerShell-runbook létrehozásával](
     } 
 
 Figyelje meg, a parancsmag hitelesítéséhez szeretne használni a runbook - **Connect-AzureRmAccount**, használja a *ServicePrincipalCertificate* paraméterhalmaz.  Ez a szolgáltatásnév segítségével, és nem hitelesítő adatokkal végzi el a hitelesítést.  
+
+> [!IMPORTANT]
+> **Adja hozzá-AzureRmAccount** alias már **Connect-AzureRMAccount**. Ha nem látja **Connect-AzureRMAccount**, használhat **Add-AzureRmAccount**, vagy frissítheti a modulok az Automation-fiókban.
 
 Ha Ön [a runbook futtatásához](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) a Futtatás mint fiók érvényesítéséhez egy [runbook-feladat](automation-runbook-execution.md) jön létre, a feladat lap jelenik meg, és a feladat állapota megjelenik a **feladat összegzése** csempére. A feladat állapota kezdetben *Várólistán*, azt mutatva, hogy egy felhőben lévő forgatókönyv-feldolgozó elérhetővé válására vár. Ezután *Indítás* állapotúra változik, ha egy feldolgozó elvállalja a feladatot, majd *Fut* állapotúra, amikor a forgatókönyv elkezd futni.  Ha befejeződik a forgatókönyv-feladat, normál esetben a **Befejezve** állapotnak kell megjelennie.
 

@@ -1,18 +1,19 @@
 ---
 title: Az Azure a Maps-fiókot és a kulcsok kezelése |} Microsoft Docs
 description: Az Azure portál segítségével kezelheti Azure Maps fiókját, és a elérési kulcsok kezelése.
-services: azure-maps
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
+services: azure-maps
 manager: timlt
-ms.openlocfilehash: 091b91b51f7c880a1edbf65a0e2c83560d4bc38b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 153fb87b0e2b576fd67a24bb833165f2a1c93c56
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599660"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Az Azure a Maps-fiókot és a kulcsok kezelése
 

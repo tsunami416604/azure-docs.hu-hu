@@ -1,25 +1,22 @@
 ---
-title: "Adja hozzá az Office 365-felhasználók összekötőt a Logic Apps |} Microsoft Docs"
-description: "Office 365-felhasználók összekötő REST API-paraméterekkel rendelkező áttekintése"
-services: 
-documentationcenter: 
+title: Csatlakozás az Office 365 felhasználók – az Azure Logic Apps |} Microsoft Docs
+description: Az Office 365 felhasználók REST API-k és az Azure Logic Apps felhasználói profilok kezelése
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: b2146481-9105-4f56-b4c2-7ae340cb922f
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 3d281bcb8e1d0ba4d1eb0b636bdd618340399898
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 92eaa2f323da9a96b0be4379d2dbcea8d90733e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609428"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Az Office 365-felhasználók összekötő az első lépései
 Office 365 felhasználói profilok, a keresés felhasználói és több csatlakozni. Az Office 365-felhasználók a következőket teheti:

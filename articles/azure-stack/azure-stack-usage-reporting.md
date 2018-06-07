@@ -3,7 +3,7 @@ title: Jelentés Azure verem használati adatait az Azure-bA |} Microsoft Docs
 description: Ismerje meg, hogyan állíthat be Azure verem reporting használati adatok.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/30/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603702"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Jelentés Azure verem használati adatait az Azure-bA 
 
@@ -42,7 +43,7 @@ Használati adatok jelentése beállításához kell [Azure verem példány regi
 - **Mennyiség** – erőforrás-használat mennyisége.
 - **Hely** – helyre az aktuális Azure verem erőforrás telepítési helyét.
 - **Erőforrás URI** –, amelynek használati jelentett az erőforrás URI a teljes minősítése.
-- **Előfizetés-azonosító** – Azure verem felhasználó előfizetés-azonosító. Ez az a helyi (Azure-verem) előfizetés.
+- **Előfizetés-azonosító** – Azure verem felhasználó, amely a helyi (Azure-verem) előfizetés előfizetés-azonosító.
 - **Idő** – kezdő és záró idő a használati adatok. Van néhány késleltetés közötti idő amikor ezeket az erőforrásokat az Azure-készletben felhasználják, és a használati adatok commerce jelentésekor. 24 óránként Azure verem összesítések használati adatok és a jelentéskészítési használati adatokat az Azure kereskedelmi folyamat egy másik néhány órát igényel. Igen használati, amely hamarosan éjfél előtt előfordulhat, hogy jelennek meg az Azure a következő napon.
 
 ## <a name="generate-usage-data-reporting"></a>Használati adatok jelentése készítése
@@ -68,7 +69,7 @@ Ha regisztrált az Azure verem bármely más előfizetés típus használatával
 
    ![számlázási folyamat](media/azure-stack-usage-reporting/pricing-details.png)
 
-Az Azure verem szoftverfejlesztői készlet Azure verem erőforrások nem fizetnie, az ár $0,00 jelenik meg. Amikor Azure verem többcsomópontos általánosan elérhetővé válik, a tényleges költség megtekintheti az egyes ezeket az erőforrásokat.
+Az Azure verem szoftverfejlesztői készlet Azure verem erőforrások nem fizetnie, az ár $0,00 jelenik meg.
 
 ## <a name="which-azure-stack-deployments-are-charged"></a>Mely Azure verem központi telepítések van szó?
 
@@ -82,7 +83,7 @@ Felhasználók csak a bérlői előfizetések alatt futó virtuális gépek van 
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Azure-veremben használni kívánt Windows Server licenccel kell, hogyan ehhez tennem?
 
-A meglévő-licencet használ elkerüli a használati mérőszámok létrehozásakor. Meglévő Windows Server-licenceket használható Azure-készletben, a "Meglévő szoftver használata Azure verem" szakaszában leírt [az Azure verem licencelési útmutató](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Az ügyfelek kell telepítenie a Windows Server virtuális gépei, lásd: a [hibrid juttatása Windows Server-licenc](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) ahhoz, hogy a meglévő licenceiket témakör.
+A meglévő-licencet használ elkerüli a használati mérőszámok létrehozásakor. Meglévő Windows Server-licenceket használható Azure-készletben, a "Meglévő szoftver használata Azure verem" szakaszában leírt [az Azure verem licencelési útmutató](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Az ügyfelek kell telepítenie a Windows Server virtuális gépei, lásd: a [Windows Server-licenc hibrid juttatása](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) ahhoz, hogy a meglévő licenceiket cikk.
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Mely előfizetés fel van töltve, a felhasznált erőforrásokért?
 Az előfizetés, mikor biztosított [Azure verem regisztrálása az Azure-ral](azure-stack-register.md) fel van töltve.
@@ -101,7 +102,7 @@ Felhasználók a használat részleteiről fájlban Azure verem használati adat
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Miért nem egyezik meg az Azure-készletben jelentett használati Azure Account Center által létrehozott jelentést?
 
-Mindig legyen egy delaybetween a használati adatokat az Azure-verem használati API-k és a használati adatokat az Azure Account Center által jelentett által jelentett... Ez a késés az használati adatokat az Azure kereskedelmi Azure veremből feltöltéséhez szükséges idő. Ez a késés miatt, amely hamarosan előtt éjfél használati előfordulhat, hogy jelenik meg az Azure-ban a következő napon. Ha használja a [Azure verem használati API-k](azure-stack-provider-resource-api.md), és hasonlítsa össze a használathoz az Azure számlázási portálon jelentett eredményt úgy is, hogy eltérés.
+Az az Azure-verem használati API-k által jelentett használati adatok és a használati adatokat az Azure Account Center által jelentett késleltetés mindig van. Ez a késés az használati adatokat az Azure kereskedelmi Azure veremből feltöltéséhez szükséges idő. Ez a késés miatt, amely hamarosan előtt éjfél használati előfordulhat, hogy jelenik meg az Azure-ban a következő napon. Ha használja a [Azure verem használati API-k](azure-stack-provider-resource-api.md), és hasonlítsa össze a használathoz az Azure számlázási portálon jelentett eredményt úgy is, hogy eltérés.
 
 ## <a name="next-steps"></a>További lépések
 

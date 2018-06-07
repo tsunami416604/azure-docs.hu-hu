@@ -1,24 +1,19 @@
 ---
-title: "Erőforrás-kezelő telepített virtuális gépek biztonsági mentéseinek kezelése |} Microsoft Docs"
-description: "Ismerje meg, hogyan kezelheti és figyelheti az erőforrás-kezelő telepített virtuális gépek biztonsági mentéseinek"
+title: Erőforrás-kezelő telepített virtuális gépek biztonsági mentéseinek kezelése
+description: Ismerje meg, hogyan kezelheti és figyelheti az erőforrás-kezelő telepített virtuális gépek biztonsági mentéseinek
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-ms.assetid: f3050283-d60f-472d-b464-cb844e70d67e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk;markgal
-ms.openlocfilehash: f4613746a427e6987366eeb46605524cd3aacbe2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: trinadhk
+ms.openlocfilehash: 4d45db6ba6354f85c3ed67561751720b6f6f4b77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606341"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése
 
@@ -192,8 +187,8 @@ A virtuális gép védelmének folytatása
 
     ![Sikeresen védett virtuális gép](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>Biztonságimásolat-adatok törlése
-A során a virtuális géphez tartozó biztonsági mentési adatok törlése a **Stop biztonsági mentés** feladat, vagy a biztonsági mentés azt követően bármikor feladat befejeződött. Akkor lehet hasznos nap vagy hét, a helyreállítási pontok törlése előtt várja meg. Ellentétben a helyreállítási pontok visszaállítása a biztonsági mentési adatok törlésekor, adott helyreállítási pont törlése nem választható. Ha törli a biztonsági mentési adatokat, az elemhez tartozó összes helyreállítási pont törlése.
+## <a name="delete-backup-data"></a>Biztonsági másolatok adatainak törlése
+A során a virtuális géphez tartozó biztonsági mentési adatok törlése a **Stop biztonsági mentés** feladat, vagy a biztonsági mentés azt követően bármikor feladat befejeződött. Érdemes lehet akár napokat vagy heteket is várni a helyreállítási pontok törlése előtt. A helyreállítási pontok visszaállításával ellentétben a biztonsági másolatok adatainak törlésekor nem törölhet meghatározott helyreállítási pontokat. Ha úgy dönt, hogy törli a biztonsági másolatok adatait, azzal törli az elemhez tartozó összes helyreállítási pontot is.
 
 A következő eljárás azt feltételezi, hogy a biztonsági mentési feladatot a virtuális gép leállítása vagy letiltása. A biztonsági mentési feladat le van tiltva, ha a **biztonsági mentés folytatása** és **Delete biztonsági mentés** beállítások érhetők el a tároló elem irányítópulton.
 
@@ -203,11 +198,11 @@ A virtuális gépen, a biztonsági mentési adatok törléséhez a *biztonsági 
 
 1. Az a [tároló elem irányítópult](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kattintson a **Delete biztonsági mentés**.
 
-    ![Virtuálisgép-típussá](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+    ![Virtuális gép típusa](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
     A **biztonságimásolat-adatok törlése** panel nyílik meg.
 
-    ![Virtuálisgép-típussá](./media/backup-azure-manage-vms/delete-backup-blade.png)
+    ![Virtuális gép típusa](./media/backup-azure-manage-vms/delete-backup-blade.png)
 2. Írja be annak ellenőrzéséhez, hogy törli a helyreállítási pontok az elem nevét.
 
     ![Állítsa le a ellenőrzése](./media/backup-azure-manage-vms/item-verification-box.png)

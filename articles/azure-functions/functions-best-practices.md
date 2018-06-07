@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8b11d4ab7188141b36b998e16429329c33f09cee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599568"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
@@ -116,7 +117,8 @@ A hosts fájl beállításokat az alkalmazáson belüli összes funkciójának a
 Más gazdagép-konfigurációs beállítások található [az állomás konfigurációs dokumentum](functions-host-json.md).
 
 ## <a name="next-steps"></a>További lépések
+
 További információkért lásd a következőket:
 
-Mivel az Azure Functions használ akkor is tisztában kell lennie az App Service-irányelvek Azure App Service-ben.
-* [Minták és gyakorlatok HTTP teljesítményoptimalizálás](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
+* [Az Azure Functions kapcsolatok kezelése](manage-connections.md)
+* [Az Azure App Service-ajánlott eljárások](../app-service/app-service-best-practices.md)

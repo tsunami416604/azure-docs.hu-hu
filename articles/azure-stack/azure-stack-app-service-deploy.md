@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 9554309522e4a1e60fd3599b9a19bcf9cf4bbefb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f44e6e917058306e37b9eb99819afda76a742389
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604267"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása Azure verem
 
@@ -66,6 +67,12 @@ App Service erőforrás-szolgáltató telepítéséhez kövesse az alábbi lép�
         * Azure Active Directory (Azure AD) használata, adja meg az Azure AD rendszergazdai fiókot és Azure verem telepítésekor megadott jelszót. Kattintson a **bejelentkezés**.
         * Ha Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: cloudadmin@azurestack.local. Írja be a jelszót, és kattintson a **bejelentkezés**.
     2. Az a **Azure verem előfizetések** mezőben válassza a **alapértelmezett szolgáltató előfizetés**.
+    
+    > [!NOTE]
+    > App Service csak telepíthető a a **alapértelmezett szolgáltató előfizetés** most.  Az egy későbbi kiadásban az üzembe helyezés az Azure verem 1804 rendszerben bevezetett új szoftverhasználat-mérő előfizetés lesz az App Service, és minden meglévő üzemelő példányt telepíti át az új előfizetés is.
+    >
+    >
+    
     3. Az a **Azure verem helyek** válassza ki a helyet, amely megfelel a régióban való telepítése esetén. Válassza például **helyi** Ha a központi telepítése az Azure verem szoftverfejlesztői készlet.
 
     ![Az App Service-telepítő][3]

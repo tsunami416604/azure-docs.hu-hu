@@ -1,29 +1,26 @@
 ---
-title: "Azure Data Lake Analytics Azure .NET SDK használatával kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a Data Lake Analytics-feladatok, az adatforrások, a felhasználók. "
+title: Azure Data Lake Analytics Azure .NET SDK használatával kezelése
+description: Ez a cikk ismerteti a Data Lake Analytics-feladatok, a adatforrások és a felhasználók felügyelt alkalmazások írni az Azure .net SDK használatával.
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
-manager: saveenr
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 06/18/2017
-ms.author: saveenr
-ms.openlocfilehash: 0f8a95f96ce4c816dfb9132923faa9a9bf20c205
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc49bb9b5461a4e8eb3573877276f5876e12f340
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625120"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>Azure Data Lake Analytics Azure .NET SDK használatával kezelése
+# <a name="manage-azure-data-lake-analytics-a-net-app"></a>Az Azure Data Lake Analytics a .NET-alkalmazások kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Útmutató: Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és az Azure .NET SDK-t használó feladatok kezelése. 
+Ez a cikk ismerteti az Azure Data Lake Analytics fiókok, adatforrások, felhasználók és az Azure .NET SDK használatával írt alkalmazások használó feladatok kezelése. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +57,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Lehetősége van több Azure Data Lake Analytics történő bejelentkezéshez. Az alábbi részlet egy előugró ablak az interaktív felhasználói hitelesítéssel hitelesítési példáját mutatja be.
 
@@ -288,6 +285,8 @@ using (var memstream = new MemoryStream())
    {
       sw.WriteLine("Hello World");
       sw.Flush();
+      
+      memstream.Position = 0;
 
       adlsFileSystemClient.FileSystem.Create(adls, "/Samples/Output/randombytes.csv", memstream);
    }
@@ -423,7 +422,7 @@ var newPolicyParams = new ComputePolicyCreateOrUpdateParameters(userAadObjectId,
 adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Az Azure Data Lake Analytics kezelése az Azure Portal használatával](data-lake-analytics-manage-use-portal.md)
 * [Az Azure Data Lake Analytics-feladatok figyelése és hibaelhárítása az Azure Portal használatával](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

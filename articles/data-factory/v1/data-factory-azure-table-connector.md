@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 996b1e5cbc477bf8a67a8cbb118961aaedf151fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621506"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése, és az Azure tábla Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +82,7 @@ A typeProperties szakaszban a tevékenység tulajdonságai a tevékenységek min
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Az egyéni lekérdezés segítségével adatokat olvasni. |Azure-tábla lekérdezési karakterlánc. Példák a következő szakaszban. |Nem. Amikor egy Táblanév egy azureTableSourceQuery nélkül van megadva, a tábla összes rekordot a cél lesz másolva. Ha egy azureTableSourceQuery is meg van adva, a cél a táblázatból, amely eleget tesz a lekérdezés rekordok lesz másolva. |
-| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivétel swallow nem létezik. |IGAZ<br/>FALSE |Nem |
+| azureTableSourceIgnoreTableNotFound |Azt jelzi, hogy a tábla kivétel swallow nem létezik. |IGAZ<br/>HAMIS |Nem |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery példák
 Ha Azure táblaoszlop karakterlánc típusú:
@@ -104,7 +105,7 @@ Ha Azure táblaoszlop dátum/idő típusú:
 | azureTablePartitionKeyName |Adja meg az oszlop, amelynek értékeket fogja használni, mint partíciókulcsok nevét. Ha nincs megadva, a partíciós kulcs AzureTableDefaultPartitionKeyValue lesz. |Egy oszlop neve. |Nem |
 | azureTableRowKeyName |Adja meg az oszlop, amelynek oszlop értékeit sor kulcsaként vannak használatban. Ha nincs megadva, minden egyes sorára használjon a GUID Azonosítót. |Egy oszlop neve. |Nem |
 | azureTableInsertType |A mód lehet adatokat beszúrni az Azure-tábla.<br/><br/>Ez a tulajdonság szabja meg, hogy rendelkeznek-e a meglévő sorokat a táblában az egyező partíció-és sorkulcsok cseréje vagy egyesített értékükre. <br/><br/>Ezeket a beállításokat (lemezegyesítési és -csere) működése, lásd: [Insert vagy az egyesítéses entitás](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [Insert vagy az entitás cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjén, a táblázatok szintjén nem vonatkozik, és sem a lehetőség törli a kimeneti táblához, amely nem szerepel a bemeneti sorokat. |Egyesítés (alapértelmezett)<br/>cserélje le |Nem |
-| writeBatchSize |Amikor writeBatchSize vagy writeBatchTimeout találati adatok beillesztése az Azure-tábla. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| WriteBatchSize |Amikor writeBatchSize vagy writeBatchTimeout találati adatok beillesztése az Azure-tábla. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Adatok szúr be az Azure-táblázatra, ha a writeBatchSize vagy writeBatchTimeout találati |A TimeSpan<br/><br/>Példa: "00: 20:00" (20 perc) |Nem (alapértelmezett tároló ügyfél alapértelmezett időtúllépési érték 90 másodperc) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
@@ -473,12 +474,12 @@ Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activi
 
 Ha megköveteli az adatok & Azure táblából, a következő [Azure Table szolgáltatás által meghatározott hozzárendelések](https://msdn.microsoft.com/library/azure/dd179338.aspx) használják az Azure tábla OData típusok .NET-típus, és ez fordítva is igaz.
 
-| Az OData-adattípus | .NET Type | Részletek |
+| Az OData-adattípus | .NET-típusa | Részletek |
 | --- | --- | --- |
 | Edm.Binary |Byte] |Bájttömb legfeljebb 64 KB. |
 | Edm.Boolean |logikai érték |Logikai érték. |
-| Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.), UTC. A tartomány vége December 31 9999. |
-| Edm.Double |Dupla |Egy 64 bites lebegőpontos értéket. |
+| Edm.DateTime |DateTime |Egy 64 bites érték kifejezett, egyezményes világidő (UTC). A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (SZ) (UTC). A tartomány vége December 31 9999. |
+| Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
 | Edm.Guid |GUID |A 128 bites globálisan egyedi azonosítóját. |
 | Edm.Int32 |Int32 |Egy 32 bites egész számot. |
 | Edm.Int64 |Int64 |Egy 64 bites egész számot. |

@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: technikai fogalmak |} Microsoft Docs"
-description: "Ismerteti az Azure AD Connect szinkronizálási szolgáltatás műszaki elveit."
+title: 'Azure AD Connect szinkronizálása: technikai fogalmak |} Microsoft Docs'
+description: Ismerteti az Azure AD Connect szinkronizálási szolgáltatás műszaki elveit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi;andkjell
-ms.openlocfilehash: 2cb5143729fa92d12b21701e62416bced31c1fc7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 591f67747316b950f32c5a113edda1080ed814a0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592840"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak
 Ez a cikk, a következő témakörben összegzését [ismertetése architektúra](active-directory-aadconnectsync-technical-concepts.md).

@@ -11,12 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8b105d7a374e281e46064f83a6e103c2a7cf84f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ad1e5d176caff6553159c5f35fe2b199ba50769f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592381"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect SQL-csatlakozási problémák elhárítása
 Ez a cikk azt ismerteti, hogyan csatlakozási problémák az Azure AD Connect és az SQL Server között. 
@@ -169,6 +171,6 @@ TcpStatus    : Blocked - the inbound firewall rule for port 58379 is missing or 
 PS C:\Program Files\Microsoft Azure Active Directory Connect\tools>  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md)
--  [Az Azure AD Connect Azure AD-kapcsolat](active-directory-aadconnect-troubleshoot-connectivity.md)
+-  [Azure AD-csatlakozási lehetőségek az Azure AD Connecttel](active-directory-aadconnect-troubleshoot-connectivity.md)

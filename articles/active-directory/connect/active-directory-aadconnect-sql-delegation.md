@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d0cfce1dfe6482397e421d85d59494e6d75cc441
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591157"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL meghatalmazott rendszergazdai engedélyek használatával az Azure AD Connect telepítése
 Az Azure AD Connect legújabb buildjével, mielőtt felügyeleti delegálás, a szükséges SQL-konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése az SQL server kiszolgáló rendszergazdai engedélyekre van szükség.

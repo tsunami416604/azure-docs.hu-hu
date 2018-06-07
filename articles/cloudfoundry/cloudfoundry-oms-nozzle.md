@@ -4,7 +4,7 @@ description: Részletes útmutatás a felhő Foundry loggregator dugulásellenő
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 687356b60ad0bbc469d67e071ce3bccc8b61ebd7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609001"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Felhő Foundry system monitoring Azure napló Analytics dugulásellenőrzési telepítése
 
@@ -55,9 +56,9 @@ Mielőtt beállítaná a UAA parancssori ügyfél, győződjön meg arról, hogy
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. A Naplóelemzési munkaterület létrehozása az Azure-ban
 
-A Naplóelemzési munkaterület manuálisan vagy egy sablon használatával hozhat létre. A előre konfigurált OMS-nézetek és a riasztások betöltése a fúvóka központi telepítés befejezése után.
+A Naplóelemzési munkaterület manuálisan vagy egy sablon használatával hozhat létre. A sablon telepíti a telepítés OMS KPI előre konfigurált nézeteket és riasztásokat az OMS-konzolhoz. 
 
-A munkaterület manuális létrehozása:
+#### <a name="to-create-the-workspace-manually"></a>A munkaterület manuális létrehozása:
 
 1. Az Azure portálon a szolgáltatások listájában keresse az Azure piactéren, és válassza a Naplóelemzési.
 2. Válassza ki **létrehozása**, majd válassza ki a következő elemeket kell:
@@ -70,7 +71,22 @@ A munkaterület manuális létrehozása:
 
 További információkért lásd: [Ismerkedés a Naplóelemzési](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-Másik lehetőségként a Naplóelemzési munkaterület az OMS-sablon segítségével is létrehozhat. Ezzel a módszerrel a sablon betölti a OMS előre konfigurált nézeteket és riasztásokat automatikusan. További információkért lásd: a [felhő Foundry Azure Naplóelemzés megoldás](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
+#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Az OMS-figyelési sablon segítségével az OMS-munkaterület létrehozása az Azure piactéren:
+
+1. Nyissa meg az Azure-portálon.
+2. Kattintson a "+" jel, vagy "Erőforrás létrehozása" a bal felső sarkában.
+3. A Keresés ablakban írja be a "Felhő Foundry", "OMS felhő Foundry figyelésére szolgáló megoldás" kiválasztása.
+4. Az OMS felhő Foundry figyelési megoldást első sablonlap be van töltve, kattintson a "Létrehozás" kattintva elindíthatja a sablon panelt.
+5. Adja meg a szükséges paramétereket:
+    * **Előfizetés**: jelölje be az OMS-munkaterület, általában ugyanaz az felhő Foundry telepítésének az Azure-előfizetéssel.
+    * **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az OMS-munkaterület.
+    * **Az erőforráscsoport helye**: válassza ki azt a helyet, az erőforráscsoport.
+    * **OMS_Workspace_Name**: Adja meg a munkaterület nevét, ha a munkaterületet nem létezik, a sablont hoz létre egy újat.
+    * **OMS_Workspace_Region**: válassza ki a helyet a munkaterülethez.
+    * **OMS_Workspace_Pricing_Tier**: jelölje be az OMS-munkaterület Termékváltozat. Tekintse meg a [útmutatást árképzési](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
+    * **Jogi feltételek**: kattintson a jogi feltételeket, majd kattintson a "Létrehozás" gombra, fogadja el a jogi feltételek.
+- Miután az összes paraméter meg van adva, kattintson a "Létrehozás" gombra a sablon telepítéséhez. A telepítés befejezése után az állapot jelennek meg az értesítési lapját.
+
 
 ## <a name="deploy-the-nozzle"></a>A fúvóka telepítése
 
@@ -78,9 +94,9 @@ Többféleképpen is telepítheti a fúvóka néhány: PCF csempe vagy CF alkalm
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>Központi telepítése a fúvóka PCF Ops Manager csempe
 
-Ha PCF telepítése után az Ops Manager használatával, kövesse a lépéseket [telepíteni és beállítani a fúvóka PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). A fúvóka csempe az Ops Manager telepítve van.
+Kövesse a lépéseket a [telepíteni és beállítani az Azure napló Analytics fúvóka PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Ez az egyszerűsített módszerrel, a PCF Ops manager csempe automatikusan konfigurálja és a fúvóka leküldéses. 
 
-### <a name="deploy-the-nozzle-as-a-cf-application"></a>A fúvóka CF alkalmazás telepítése
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>A fúvóka manuálisan CF alkalmazás központi telepítése
 
 Ha nem használ PCF Ops Manager, központi telepítése a fúvóka alkalmazásként. A következő szakaszok ismertetik a folyamatot.
 
@@ -163,6 +179,10 @@ Ellenőrizze, fut-e az OMS dugulásellenőrzési alkalmazást.
 
 ## <a name="view-the-data-in-the-oms-portal"></a>Az adatok megtekintése az OMS-portálon
 
+Ha telepítette az OMS-felügyeleti megoldás keresztül a piactéren sablon nyissa meg az Azure-portálhoz, és az OMS-megoldás található. A megoldás a sablonban megadott erőforráscsoportban található. Kattintson a megoldást, keresse meg a "OMS konzolt", az előre konfigurált nézeteket szerepel a listában, felső felhő Foundry rendszer KPI-k, az alkalmazásadatok, a riasztások és a VM állapotának metrikákat. 
+
+Ha az OMS-munkaterület kézzel létrehozott, kövesse az alábbi lépéseket a nézetek és a riasztások létrehozásához:
+
 ### <a name="1-import-the-oms-view"></a>1. Az OMS-nézet importálása
 
 Az OMS-portálon keresse meg a **adatforrásnézet-tervezőből** > **importálási** > **Tallózás**, és válassza ki a omsview fájlokat. Válassza például *felhő Foundry.omsview*, és menti a nézetet. Most egy csempe jelenik meg a **áttekintése** lap. Válassza ki azt, hogy feladatkonfigurációkat metrikákat.
@@ -226,6 +246,6 @@ Azure napló Analytics dugulásellenőrzési termékekre van megnyitva. A kérd�
 
 ## <a name="next-step"></a>Következő lépés
 
-Mellett a felhő Foundry metrika a fúvóka tárgyalja az OMS-ügynököt segítségével betekintést nyerhet Virtuálisgép-szintű működési adatokat (például Syslog, teljesítmény, riasztások, a szoftverleltár). Az OMS-ügynök van telepítve egy Bosh bővítmény a CF virtuális gépekhez.
+PCF2.0, a virtuális gép teljesítménymutatók kerüljenek az Azure naplóelemzés analytics fúvóka rendszer metrikák továbbító, és az OMS-munkaterület integrálva. Már nincs szüksége az OMS-ügynököt a virtuális gép metrika. Syslog kapcsolatos információk összegyűjtéséhez azonban az OMS-ügynököt továbbra is használhatja. Az OMS-ügynök van telepítve egy Bosh bővítmény a CF virtuális gépekhez. 
 
 További információkért lásd: [telepítése OMS-ügynök a felhő Foundry telepítéséhez](https://github.com/Azure/oms-agent-for-linux-boshrelease).

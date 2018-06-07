@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8af15e4751b696a6f30d3dc70556ab856020bedb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f0739c821f1521eb761912e5092661c7b5c0fd78
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591255"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Oktatóanyag: Azure Active Directoryval integrált Sansan
 
@@ -110,7 +111,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet a következő minták használatával írja be: 
+    Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet a következő minták használatával írja be: 
     
     | Környezet | URL-cím |
     |:--- |:--- |
@@ -118,16 +119,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | Natív mobilalkalmazás |`https://internal.api.sansan.com/saml2/<company name>/acs` |
     | Mobil böngésző beállításai |`https://ap.sansan.com/s/saml2/<company name>/acs` |  
 
-    b. Az a **azonosító** szövegmezőhöz URL-címet a következő minták használatával írja be:
-    | Környezet             | URL-cím |
-    | :-- | :-- |
-    | PC-webalkalmazás                  | `https://ap.sansan.com/v/saml2/<company name>`|
-    | Natív mobilalkalmazás       | `https://internal.api.sansan.com/saml2/<company name>` |
-    | Mobil böngésző beállításai | `https://ap.sansan.com/s/saml2/<company name>` |
-
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [Sansan ügyfél-támogatási csoport](https://www.sansan.com/form/contact) beolvasni ezeket az értékeket. 
-
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-címet. Ügyfél [Sansan ügyfél-támogatási csoport](https://www.sansan.com/form/contact) beolvasni ezeket az értékeket. 
+     
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_certificate.png) 
@@ -136,19 +130,77 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-sansan-tutorial/tutorial_general_400.png)
 
-6. A a **Sansan konfigurációs** kattintson **konfigurálása Sansan** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+6. Sansan alkalmazás vár több **azonosítók** és **válasz URL-címek** támogatásához több környezet (PC web, natív mobilalkalmazás, mobil böngészőbeállítások), amely konfigurálható a PowerShell használatával parancsfájl. A részletes lépéseket ismertetése az alábbiakban olvasható.
+
+7. Több konfigurálása **azonosítók** és **válasz URL-címek** Sansan alkalmazás PowerShell-parancsfájl használatával, hajtsa végre a következő lépéseket:
+
+    ![Egyszeri bejelentkezés obj konfigurálása](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_objid.png)    
+
+    a. Lépjen a **tulajdonságok** oldalán **Sansan** alkalmazás, és másolja a **Objektumazonosító** használatával **másolási** gombra, majd illessze be a Jegyzettömbbe.
+
+    b. A **Objektumazonosító**, amely az Azure-portálon másolta használt **ServicePrincipalObjectId** az oktatóanyag későbbi részében használt PowerShell-parancsfájl a. 
+
+    c. Most nyisson meg egy rendszergazda jogú Windows PowerShell-parancssort.
+    
+    >[!NOTE] 
+    > Telepítenie kell a AzureAD modul (a parancs `Install-Module -Name AzureAD`). Ha a NuGet-modulok vagy az új Azure Active Directory V2 PowerShell modul telepítésére kéri, írja be az I, és nyomja le az ENTER.
+
+    d. Futtatás `Connect-AzureAD` , és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
+
+    e. A következő parancsfájl segítségével több URL-cím egy alkalmazás frissítése:
+
+    ```poweshell
+     Param(
+    [Parameter(Mandatory=$true)][guid]$ServicePrincipalObjectId,
+    [Parameter(Mandatory=$false)][string[]]$ReplyUrls,
+    [Parameter(Mandatory=$false)][string[]]$IdentifierUrls
+    )
+
+    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
+
+    if($ReplyUrls.Length)
+    {
+    echo "Updating Reply urls"
+    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls $ReplyUrls
+    echo "updated"
+    }
+    if($IdentifierUrls.Length)
+    {
+    echo "Updating Identifier urls"
+    $applications = Get-AzureADApplication -SearchString $servicePrincipal.AppDisplayName 
+    echo "Found Applications =" $applications.Length
+    $i = 0;
+    do
+    {  
+    $application = $applications[$i];
+    if($application.AppId -eq $servicePrincipal.AppId){
+    Set-AzureADApplication -ObjectId $application.ObjectId -IdentifierUris $IdentifierUrls
+    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
+    echo "Updated"
+    return;
+    }
+    $i++;
+    }while($i -lt $applications.Length);
+    echo "Not able to find the matched application with this service principal"
+    }
+    ```
+
+8. PowerShell parancsfájl sikeres befejezését követően a parancsfájl eredménye a lent látható módon ehhez hasonló lesz, és az URL-cím értékek frissített, de azok nem get megjelenni Azure-portálon. 
+
+    ![Egyszeri bejelentkezés parancsfájl](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_powershell.png)
+
+
+9. A a **Sansan konfigurációs** kattintson **konfigurálása Sansan** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out URL-címet, a SAML entitás azonosítója és a SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_configure.png) 
 
-7. Egyszeri bejelentkezés konfigurálása **Sansan** oldalon kell küldeniük a letöltött **tanúsítvány**, **Sign-Out URL-cím**, **SAML Entitásazonosító**, és **SAML-alapú egyszeri bejelentkezési URL-címe** való [Sansan támogatási csoport](https://www.sansan.com/form/contact). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+10. Egyszeri bejelentkezés konfigurálása **Sansan** oldalon kell küldeniük a letöltött **tanúsítvány**, **Sign-Out URL-cím**, **SAML Entitásazonosító**, és **SAML-alapú egyszeri bejelentkezési URL-címe** való [Sansan támogatási csoport](https://www.sansan.com/form/contact). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 >[!NOTE]
->PC-böngészőbeállítások a mobilalkalmazás és a mobil böngésző PC webes együtt is működik.  
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+>PC-böngészőbeállítások a mobilalkalmazás és a mobil böngésző PC webes együtt is működik. 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
+
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
 
 ![Az Azure AD-felhasználó létrehozása][100]
@@ -181,7 +233,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
  
 ### <a name="creating-a-sansan-test-user"></a>Sansan tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy SanSan Britta Simon nevű felhasználót hoz létre. SanSan alkalmazást kell a felhasználót, hogy az alkalmazás egyszeri bejelentkezési előtte építhető ki. 
+Ebben a szakaszban egy Sansan Britta Simon nevű felhasználót hoz létre. Sansan alkalmazást kell a felhasználót, hogy az alkalmazás egyszeri bejelentkezési előtte építhető ki. 
 
 >[!NOTE]
 >Ha manuálisan hozzon létre egy felhasználót vagy kötegelt kell a felhasználók kapcsolatba kell lépnie a [Sansan támogatási csoport](https://www.sansan.com/form/contact). 

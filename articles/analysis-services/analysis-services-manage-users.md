@@ -3,16 +3,17 @@ title: Az Azure Analysis Services hitelesítés és a felhasználói engedélyek
 description: További tudnivalók az Azure Analysis Services hitelesítés és a felhasználó engedélyeit.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47846af015bf02940da7a7b8a4154113aab57b08
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597630"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és a felhasználói engedélyek
 Az Azure Analysis Services az Azure Active Directory (Azure AD) identitás- és felhasználói hitelesítés. Bármely felhasználó létrehozása, kezelése és csatlakozás az Azure Analysis Services szolgáltatáshoz server rendelkeznie kell érvényes felhasználói azonosítót egy [Azure AD-bérlő](../active-directory/active-directory-administer.md) ugyanahhoz az előfizetéshez.

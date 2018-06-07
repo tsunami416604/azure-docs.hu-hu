@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 70dd61758b30c1c7a89374e708fe37c1443d3a2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4489f194329727160d770ab72d9cd36115f2e64d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594757"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Oktatóanyag: Felügyelt szolgáltatás identitásának használata a Linux virtuális gépek Azure Data Lake Store eléréséhez
 
@@ -181,12 +182,9 @@ Más API-k használatával a Data Lake Store-fájlrendszer, fűzze hozzá a fáj
 
 Gratulálunk! MSI-fájl használata a Linux virtuális gépek által hitelesített már a Data Lake Store fájlrendszerhez.
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="next-steps"></a>További lépések
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
-- A műveleteket Data Lake Store az Azure Resource Manager.  Az MSI hitelesítésére az erőforrás-kezelő használatával további információkért lásd: [egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI) használatával férjenek hozzá a Resource Manager](https://docs.microsoft.com/azure/active-directory/msi-tutorial-linux-vm-access-arm).
-- További információ [hitelesítés az Azure Active Directory használatával a Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory).
-- További információ [fájl rendszerműveletekről az Azure Data Lake Store REST API használatával](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-operations-rest-api) vagy a [WebHDFS fájlrendszer API-k](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
-- További információ [hozzáférés-vezérlés a Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control).
+Ebben az oktatóanyagban megtudta, hogyan felügyelt Szolgáltatásidentitás Linux virtuális gép az Azure Data Lake Store elérésére használhat. További információt az Azure Data Lake Store további részletekért lásd:
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+> [!div class="nextstepaction"]
+>[Azure Data Lake Store](/azure/data-lake-store/data-lake-store-overview)

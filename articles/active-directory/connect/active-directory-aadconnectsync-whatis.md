@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
+ms.component: hybrid
 ms.author: markvi
-ms.openlocfilehash: a808f929dcd27b53821f59ed8fd3ab67af81a273
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b2724f4c9511d606ab8eeac2dedea8759283883
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595257"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect szinkronizálása: megértéséhez, valamint a szinkronizálás testreszabása
 Az Azure Active Directory Connect szinkronizálási szolgáltatások (az Azure AD Connect szinkronizálása) az Azure AD Connect fő összetevője. Ez gondoskodik az identitás a helyszíni környezetben és az Azure AD közti adatszinkronizálást kapcsolatos műveleteket. Azure AD Connect szinkronizálása a követő DirSync, az Azure AD Sync és a Forefront Identity Manager az az Azure Active Directory Connector konfigurálva.

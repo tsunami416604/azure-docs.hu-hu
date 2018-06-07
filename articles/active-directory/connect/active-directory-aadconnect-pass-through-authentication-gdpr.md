@@ -12,14 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591174"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok és az Azure Active Directory áteresztő hitelesítés
 
@@ -28,13 +30,13 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure AD áteresztő hitelesítés hoz létre a következő napló típusú, amely tartalmazhat EUII:
+Az Azure AD áteresztő hitelesítés hoz létre a következő napló típus, amely tartalmazhatnak személyes adatokat:
 
 - Az Azure AD Connect nyomkövetésének naplófájljait.
 - Hitelesítési ügynök nyomkövetésének naplófájljait.
 - Windows-esemény naplófájlokat.
 
-Felhasználói adatok áteresztő hitelesítés kétféleképpen érhető el:
+Felhasználói adatok javítása áteresztő hitelesítés két módon:
 
 1.  Kérésre adatok kinyerése a személy, és adatok eltávolítása a telepítések az adott személyt.
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.

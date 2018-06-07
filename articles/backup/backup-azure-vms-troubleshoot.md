@@ -1,24 +1,19 @@
 ---
-title: A virtuális gép az Azure biztonsági mentési hibák elhárítása |} Microsoft Docs
+title: A virtuális gép az Azure biztonsági mentési hibák elhárítása
 description: Biztonsági mentés és visszaállítás az Azure virtuális gépek hibaelhárítása
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: ''
-ms.assetid: 73214212-57a4-4b57-a2e2-eaf9d7fde67f
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2018
-ms.author: trinadhk;markgal;jpallavi;sogup
-ms.openlocfilehash: 25008736dbff87aafe2f2ef2d13bbaf746e95e4d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: trinadhk
+ms.openlocfilehash: d6e78d46f0886b06cb1cf3577c16c8bc4f842bab
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607259"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az Azure Backup segítségével információkat az alábbi táblázatban szereplő hibák is elháríthatók.
@@ -30,7 +25,7 @@ ms.lasthandoff: 04/28/2018
 | Virtuálisgép-ügynök nem tud kommunikálni az Azure Backup szolgáltatás. -A virtuális Gépnek legyen hálózati kapcsolata, és a Virtuálisgép-ügynök legfrissebb, és fut. Győződjön meg arról. További információkért tekintse meg  http://go.microsoft.com/fwlink/?LinkId=800034 |Ez a hiba fordul elő, ha a probléma oka a Virtuálisgép-ügynök vagy az Azure-infrastruktúra hálózati hozzáférését blokkolja a valamilyen módon. [További](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) kapcsolatos hibakeresés virtuális gépet pillanatkép-problémák.<br> Ha a Virtuálisgép-ügynök nem okoz probléma merül fel, majd indítsa újra a virtuális Gépet. Esetenként a virtuális gép állapota nem megfelelő problémákat okozhatnak, és a virtuális gép újraindítása alaphelyzetbe állítja a "hibás állapot". |
 | A virtuális gép van kiépítési állapota sikertelen – indítsa újra a virtuális Gépet, és győződjön meg arról, hogy a virtuális gép biztonsági mentés futó vagy leállítási állapotban van-e | Ez akkor fordul elő, amikor egy, a bővítmény hibák részletes útmutatást a VM állapotot üzembe helyezési állapota sikertelen. Ugrás a kiterjesztések listája, és van-e sikertelen bővítmény, távolítsa el, és indítsa újra a virtuális gép. Ha az összes bővítmény futó állapotban van, ellenőrizze, hogy fut-e a virtuális gép agent szolgáltatást. Ha nem, indítsa újra a virtuális gép agent szolgáltatást. | 
 | VMSnapshot bővítmény művelete sikertelen volt, a felügyelt lemez – próbálja megismételni a biztonsági mentési műveletet. Ha a probléma megismétlődik, kövesse "http://go.microsoft.com/fwlink/?LinkId=800034". Ha további sikertelen, forduljon a Microsoft támogatási szolgálatához | A hiba, ha Azure Backup szolgáltatás nem indítható el, egy pillanatkép. [További](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed) kapcsolatos hibakeresés a virtuális gép pillanatkép-problémák. |
-| Sikerült másolása a virtuális gép, mert a tárfiók - nincs elég szabad hely a pillanatkép győződjön meg arról, hogy a tárfiók a virtuális géphez csatolt a prémium szintű lemezein levő adatok egyenértékű szabad helye van | Prémium szintű virtuális gépeket, esetén tárfiók a pillanatkép másolja azt. Ez a, győződjön meg arról, hogy a biztonságimásolat-felügyeleti forgalmat, amely akkor működik a pillanatkép, nem a premium lemezek használó alkalmazások számára elérhető IOPS számának korlátozása. A Microsoft azt javasolja, hogy a teljes tárolóhelynek fiók csak 50 %-át foglal le, az Azure Backup szolgáltatás át tudja másolni a pillanatkép tárolási fiók és átviteli adatokat erről a helyről másolt tárfiókban a tárolóba. | 
+| Sikerült másolása a virtuális gép, mert a tárfiók - nincs elég szabad hely a pillanatkép győződjön meg arról, hogy a tárfiók a virtuális géphez csatolt a prémium szintű lemezein levő adatok egyenértékű szabad helye van | Prémium szintű virtuális gépek virtuális gép biztonsági mentési veremben V1, esetén tárfiók a pillanatkép másolja azt. Ez a, győződjön meg arról, hogy a biztonságimásolat-felügyeleti forgalmat, amely akkor működik a pillanatkép, nem a premium lemezek használó alkalmazások számára elérhető IOPS számának korlátozása. A Microsoft azt javasolja csak 50 %-os (17.5 TB) osszon ki a teljes fiók tárhely, az Azure Backup szolgáltatás át tudja másolni a pillanatkép tárolási fiók és átviteli adatokat erről a helyről másolt tárfiókban a tárolóba. | 
 | Nem sikerült végrehajtani a műveletet, a Virtuálisgép-ügynök nem válaszol |Ez a hiba fordul elő, ha a probléma oka a Virtuálisgép-ügynök vagy az Azure-infrastruktúra hálózati hozzáférését blokkolja a valamilyen módon. Windows virtuális gépek ellenőrizze a VM-ügynökszolgáltatás állapotát a szolgáltatások, és hogy az ügynök jelenik meg, a Vezérlőpult Programok telepítése. Távolítsa el a program vezérlőből panel és újratelepítése az ügynököt, ahogy azt korábban említettük [alatt](#vm-agent). Az ügynök újbóli telepítése után indul el, győződjön meg arról, hogy egy ad hoc biztonsági mentés. |
 | Helyreállítási szolgáltatások művelet sikertelen volt. -Ellenőrizze, hogy, hogy a legújabb virtuálisgép-ügynök-e a virtuális gép, és ügynökszolgáltatás fut. Próbálja megismételni a biztonsági mentési műveletet, és ha a hiba, forduljon a Microsoft támogatási szolgálatához. |Ez a hiba fordul elő, ha Virtuálisgép-ügynök elavultak. Tekintse meg a "Frissítése a Virtuálisgép-ügynök" szakaszban látható a virtuális gép ügynökének frissítése. |
 | Virtuális gép nem létezik. -Ellenőrizze, hogy a virtuális gép létezik-e, vagy válasszon másik virtuális gépet. |Ez akkor fordul elő, ha az elsődleges virtuális gép törlődik, de a biztonsági mentési házirend továbbra is fennáll, készítsen biztonsági mentést a virtuális gépek kereséséhez. Ez a hiba elhárításához: <ol><li> Hozza létre újra a virtuális gépet az azonos nevű és ugyanazon erőforráscsoport neve [cloud service name]<br>(VAGY)<br></li><li>Állítsa le a virtuális gép védelmét a biztonsági mentési adatok törlése nélkül. [További részletekért](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ea612f0c58b92e37d405f9a57611610fa187f7db
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619320"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Kifejezések és az Azure Data Factory funkciók
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,8 +52,8 @@ Kifejezések bárhol megjelenhet egy JSON karakterláncértéket, és egy másik
 |----------------|------------|  
 |"paraméterek"|A "parameters" karaktert adja vissza.|  
 |"[1] Paraméterek"|A "parameters [1]" karaktert adja vissza.|  
-|"@@"|Egy 1 tartalmazó karakterlánc ' @' adja vissza.|  
-|" @"|Egy 2 tartalmazó karakterlánc ' @' adja vissza.|  
+|"\@\@"|Egy 1 tartalmazó karakterlánc ' @' adja vissza.|  
+|" \@"|Egy 2 tartalmazó karakterlánc ' @' adja vissza.|  
   
  Kifejezések akkor is megjelenhet, karakterláncok, belül nevű szolgáltatás segítségével *köztes karakterlánc* adott kifejezések csomagolni vannak `@{ ... }`. Például:`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   

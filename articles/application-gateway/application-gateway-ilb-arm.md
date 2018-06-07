@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 05/23/2018
 ms.author: victorh
-ms.openlocfilehash: a558a5f4f1e19be7b15721c8f99dc5a2d7b396bc
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b9bdc3f4a0f7eb20b1c0cbc33fb257577da08c26
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598487"
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>Belső terheléselosztóval (ILB) rendelkező Application Gateway létrehozása az Azure Resource Manager használatával
-
-> [!div class="op_single_selector"]
-> * [Klasszikus Azure PowerShell](application-gateway-ilb.md)
-> * [Azure Resource Manager PowerShell](application-gateway-ilb-arm.md)
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Hozzon létre egy alkalmazást egy belső terheléselosztón (ILB)
 
 Az Azure Application Gateway konfigurálható egy internetre irányuló virtuális IP-címhez vagy egy internettel nem érintkező belső végponthoz, más néven egy belső terheléselosztó (ILB) végponthoz. Az átjáró ILB-vel történő konfigurálása a belső üzletági alkalmazásoknál hasznos, amelyek nem érintkeznek az internettel. Emellett a többrétegű alkalmazások szolgáltatásai és rétegei számára is hasznos, amelyek egy internettel nem érintkező biztonsági korláton belül vannak, de attól még igényelik az időszeleteléses terheléselosztást, a munkamenet tartós használatát vagy a Secure Sockets Layer (SSL) lezárását.
 

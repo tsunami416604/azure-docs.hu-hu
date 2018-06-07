@@ -1,24 +1,19 @@
 ---
-title: "Az Azure virtuális gépek biztonsági mentési riasztások figyelése |} Microsoft Docs"
-description: "Események és riasztások tartalmazzák az Azure virtuális gép biztonsági mentési feladatok figyelése A riasztások alapján e-mail küldése."
+title: Az Azure virtuális gépek biztonsági mentési riasztások
+description: Események és riasztások tartalmazzák az Azure virtuális gép biztonsági mentési feladatok figyelése A riasztások alapján e-mail küldése.
 services: backup
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: fed32015-2db2-44f8-b204-d89f6fd1bea2
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: fbdce5c244d733a2978d473f01c8d875cbeaa65e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: markgal
+ms.openlocfilehash: 3783014738ec4e8f185531773b1259dc63e7f49f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606307"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure-beli virtuális gépek biztonsági mentésével kapcsolatos riasztások figyelése
 A riasztások jelezhetik a szolgáltatásból, hogy az esemény küszöbét teljesül vagy túllépése válaszokat. Annak ismerete, ha problémák start alacsonyan tartják a költségeket üzleti kritikus fontosságú lehet. Riasztást általában nem történik meg, ütemezés szerint, és ezért fontos tudni, hogy minél hamarabb után a riasztás akkor jön létre. Például ha egy biztonsági mentési vagy helyreállítási feladat sikertelen lesz, egy riasztás a hiba öt percen belül. A tároló irányítópultjának a biztonsági riasztások csempe kritikus és a figyelmeztetési szintű eseményeket jeleníti meg. A biztonsági riasztások beállításainak megtekintheti az összes esemény. De mi a teendő, ha egy riasztás, ha egy külön probléma dolgozik? Ha nem tudja, ha a riasztás történik, akkor lehet, hogy egy kisebb kellemetlenségért, vagy az adatok biztonságát veszélyeztető. Győződjön meg arról, hogy a megfelelő személyek ismerjék riasztás - következik be, amikor konfigurálja a szolgáltatást riasztási értesítéseket e-mailben küldendő. E-mail értesítések beállításával kapcsolatos részletekért lásd: [értesítések konfigurálása](backup-azure-monitor-vms.md#configure-notifications).

@@ -17,11 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594278"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory v2.0 és az OAuth 2.0 ügyfél hitelesítő adatok folyamata
 Használhatja a [OAuth 2.0 ügyfél hitelesítő adatai megadják](http://tools.ietf.org/html/rfc6749#section-4.4) RFC 6749, más néven megadott *két Egyszárú OAuth*, az alkalmazáshoz a webkiszolgáló által szolgáltatott erőforrások eléréséhez. Gyakran engedélyezze az ilyen típusú kiszolgálók – olyan műveleteket, amelyek kell a háttérben futnak, a felhasználó azonnali közreműködése nélkül szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.
@@ -62,7 +63,7 @@ Alkalmazásengedélyek az alkalmazás használatához hajtsa végre a lépéseke
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az alkalmazás regisztrációs portálon engedélyek kéréséhez
 1. Keresse fel az alkalmazást a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), vagy [hozzon létre egy alkalmazást](active-directory-v2-app-registration.md), ha még nem tette meg. Szüksége lesz legalább egy alkalmazás titkos kulcs használatára, az alkalmazás létrehozásakor.
-2. Keresse meg a **Mcrosoft Graph engedélyek** szakaszt, és adja hozzá a **Alkalmazásengedélyek** , amely az alkalmazás használatához.
+2. Keresse meg a **Microsoft Graph engedélyek** szakaszt, és adja hozzá a **Alkalmazásengedélyek** , amely az alkalmazás használatához.
 3. **Mentés** az alkalmazás regisztrálása.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Ajánlott: Beléptetni a felhasználót az alkalmazáshoz
@@ -90,12 +91,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | bérlő |Szükséges |A directory-bérlőt, amelyet az engedélyt. Ez lehet GUID vagy rövid név formátumban. Ha nem biztos lehet bérlői a felhasználó tagja, és azt szeretné, hogy azok jelentkezzen be minden bérlő, használjon, amely `common`. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
 | redirect_uri |Szükséges |Az átirányítási URI, ha azt szeretné, hogy a válasz küldését az alkalmazások kezeléséhez. Az pontosan egyeznie kell az átirányítási URI-k, a portál regisztrált azzal a különbséggel, hogy az URL-kódolású kell lennie, és további szegmenst veheti fel. |
-| állapot |Ajánlott |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
+| state |Ajánlott |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 
 Ezen a ponton az Azure AD kényszeríti annak engedélyezése, hogy csak a bérlői rendszergazda jelentkezhetnek be a kérés teljesítéséhez. A rendszergazda jóváhagyása az alkalmazást az app-regisztrálási portál a kért közvetlen alkalmazás engedélyeket kell adnia.
 
@@ -109,7 +110,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | Paraméter | Leírás |
 | --- | --- | --- |
 | bérlő |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
-| állapot |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
+| state |Egy érték, amely megtalálható a kérelem a biztonságijogkivonat-válaszban is visszaadott. Bármely, a kívánt tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 | admin_consent |Beállítása **igaz**. |
 
 ##### <a name="error-response"></a>Hibaválaszba
@@ -121,7 +122,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Paraméter | Leírás |
 | --- | --- | --- |
-| hiba |Egy hiba kód karakterlánc, amely segítségével besorolni a hibákat, és amely hibák reagálni használhatja. |
+| error |Egy hiba kód karakterlánc, amely segítségével besorolni a hibákat, és amely hibák reagálni használhatja. |
 | error_description |Egy adott hibaüzenet, amelyik segíthet a hiba alapvető oka azonosítása. |
 
 Miután az alkalmazás üzembe helyezési végpont már a sikeres válasz érkezett, az alkalmazás köszönhetően a kért közvetlen Alkalmazásengedélyek. Most már a kívánt erőforráshoz tartozó jogkivonatot kérhet.
@@ -146,7 +147,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | bérlő |Szükséges | A directory-bérlőt az alkalmazás tervek szerint működik, GUID vagy a tartománynév formátumban. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
@@ -168,7 +169,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | bérlő |Szükséges | A directory-bérlőt az alkalmazás tervek szerint működik, GUID vagy a tartománynév formátumban. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
@@ -214,7 +215,7 @@ Egy hiba történt egy válasz így néz ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| hiba |Egy hiba kód karakterlánc, amely a besorolására a felmerülő hibákat, és reagálni hibákat is használhatja. |
+| error |Egy hiba kód karakterlánc, amely a besorolására a felmerülő hibákat, és reagálni hibákat is használhatja. |
 | error_description |Egy adott hibaüzenet, amelyek segíthetnek a hitelesítési hiba okának azonosításához. |
 | error_codes |Diagnosztika segíthet STS-specifikus hibakódok listáját. |
 | időbélyeg |Az az idő, a hiba történt. |

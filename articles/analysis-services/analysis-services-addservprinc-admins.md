@@ -3,16 +3,17 @@ title: Adja hozzá egy egyszerű Azure Analysis Services kiszolgálói rendszerg
 description: Ismerje meg az automation szolgáltatás egyszerű felvétele a rendszergazdai szerepkör
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1cc563cc13a9102dbdac7bd505b4dd844ff8247
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8840dd9a8a8e8ba1f78d461824ac0cdce32b2ac9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596770"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egy egyszerű szolgáltatás hozzáadása a kiszolgáló-rendszergazdai szerepkör 
 
@@ -22,7 +23,7 @@ ms.lasthandoff: 04/28/2018
 Ez a feladat befejezése előtt rendelkeznie kell egy egyszerű szolgáltatás regisztrálva az Azure Active Directoryban.
 
 [Hozzon létre egyszerű szolgáltatásnév - Azure-portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md)   
-[Szolgáltatásnév - PowerShell létrehozása](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+[Szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 A feladat végrehajtásához rendelkeznie kell [rendszergazda](analysis-services-server-admins.md) engedélyeket az Azure-AS kiszolgálón. 

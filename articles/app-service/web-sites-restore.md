@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5c37a693e1594f9afe40effba45d7b05a68fd49c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 152cf0c8504205e09b075714a58811d240ab431c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598300"
 ---
 # <a name="restore-an-app-in-azure"></a>Alkalmazás visszaállítása az Azure-ban
-A cikkből megtudhatja, hogyan lehet visszaállítani az alkalmazásban [Azure App Service](../app-service/app-service-web-overview.md) korábban biztonsági (lásd: [készítsen biztonsági másolatot az alkalmazás az Azure-ban](web-sites-backup.md)). Az alkalmazás a csatolt adatbázisok az igény a visszaállítás egy korábbi állapotára, vagy hozzon létre egy új alkalmazást, az eredeti alkalmazás biztonsági mentések valamelyike alapján. Az Azure App Service a következő adatbázisok biztonsági mentését és helyreállítását támogatja:
+A cikkből megtudhatja, hogyan lehet visszaállítani az alkalmazásban [Azure App Service](../app-service/app-service-web-overview.md) korábban biztonsági (lásd: [készítsen biztonsági másolatot az alkalmazás az Azure-ban](web-sites-backup.md)). Az alkalmazást és annak csatolt adatbázisait igény szerint visszaállíthatja egy korábbi állapotba, vagy az alkalmazás eredeti biztonsági másolatai alapján létrehozhat egy új alkalmazást. Az Azure App Service a következő adatbázisok biztonsági mentését és helyreállítását támogatja:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
-- [A MySQL adatbázis Azure)](https://azure.microsoft.com/services/mysql)
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgres)
 - [MySQL alkalmazásbeli](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
@@ -51,7 +52,7 @@ Futó alkalmazások számára elérhető visszaállítása biztonsági másolatb
    > 
    > 
    
-    Kiválaszthatja **meglévő App** alkalmazás biztonsági másolat visszaállítása a azonos resoure csoport egy másik alkalmazásnak. Mielőtt ezt a beállítást használja, kell már létrehozott egy másik alkalmazás a tükrözési adatbázis konfigurációja egy alkalmazás biztonsági mentési definiálva az erőforráscsoportban. Létrehozhat egy **új** app visszaállítani a tartalmat.
+    Kiválaszthatja **meglévő App** az alkalmazás biztonsági másolatának visszaállítása egy másik alkalmazásnak ugyanabban az erőforráscsoportban. Mielőtt ezt a beállítást használja, kell már létrehozott egy másik alkalmazás a tükrözési adatbázis konfigurációja egy alkalmazás biztonsági mentési definiálva az erőforráscsoportban. Létrehozhat egy **új** app visszaállítani a tartalmat.
 
 4. Kattintson az **OK** gombra.
 

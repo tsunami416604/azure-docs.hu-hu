@@ -1,31 +1,25 @@
 ---
 title: Távoli figyelés megoldásgyorsító – gyakori kérdések |} Microsoft Docs
 description: Gyakori kérdések a megoldásgyorsító távoli figyelése
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: a65f2a90aedf5aa50016a6c5e5019094f202bf55
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 094bb4b781bb554d340580377ec343f33579299e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627654"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Gyakori kérdések a megoldásgyorsító távoli figyelése
 
 Lásd még az általános [gyakran ismételt kérdések](iot-accelerators-faq.md).
 
-### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Nem mennyibe kiépíteni az új távoli figyelési megoldást igényelnek?
+### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Nem mennyibe az új távoli figyelésére szolgáló megoldás telepítéséhez?
 
 Az új megoldásgyorsító két telepítési lehetőségeket nyújtja:
 
@@ -34,7 +28,7 @@ Az új megoldásgyorsító két telepítési lehetőségeket nyújtja:
 
 ### <a name="how-can-i-ensure-i-keep-my-costs-down-while-i-develop-my-solution"></a>Hogyan tudom arról, hogy I a költséges alacsonyan tartása szeretnék a saját megoldás fejlesztése során?
 
-Csupán két eltérő központi telepítések, az új távoli figyelési megoldást igényelnek engedélyezheti vagy tilthatja le a szimulált eszköz, az igény szerinti beállítás van. A szimuláció letiltása csökkenti az adatokat, a megoldás, és így a teljes költség szempontjából okozhatnak.
+Csupán két eltérő központi telepítések, az új távoli figyelésére szolgáló megoldás engedélyezheti vagy tilthatja le a szimulált eszköz, az igény szerinti beállítás van. A szimuláció letiltása csökkenti az adatokat, a megoldás, és így a teljes költség szempontjából okozhatnak.
 
 ### <a name="what-is-the-difference-between-the-basic-and-standard-deployment-options-how-do-i-decide-between-the-two-deployment-options"></a>Mi a különbség a a basic és standard telepítési lehetőségek között? Hogyan dönt a két telepítési lehetőségek között?
 
@@ -48,7 +42,7 @@ További információkért lásd: [frissítési leképezés kulcs eszközök meg
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 
-* [A távoli felügyeleti megoldásgyorsító lehetőségeinek felfedezése](iot-accelerators-remote-monitoring-explore.md)
-* [A prediktív karbantartási megoldásgyorsító áttekintése](../iot-suite/iot-suite-predictive-overview.md)
+* [A távoli megfigyelési megoldásgyorsító lehetőségeinek felfedezése](iot-accelerators-remote-monitoring-explore.md)
+* [A prediktív karbantartási megoldásgyorsító áttekintése](iot-accelerators-predictive-overview.md)
 * [Csatlakoztatott gyári megoldás gyorsító – áttekintés](iot-accelerators-connected-factory-overview.md)
-* [Az IoT biztonsági másolatot az alapoktól](../iot-suite/securing-iot-ground-up.md)
+* [Az IoT biztonsági másolatot az alapoktól](securing-iot-ground-up.md)

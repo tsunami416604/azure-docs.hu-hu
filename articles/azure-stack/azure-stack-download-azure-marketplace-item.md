@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 69148a0ac9a5761eeee0ab47d83862724583619a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5d403f7c1d0fff466f6c0fb9942ec777ab820eab
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604532"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Töltse le a Piactéri elemek az Azure-ból az Azure-verem
 
@@ -85,7 +86,7 @@ Ez a forgatókönyv két részből áll:
 
 - Ahhoz, hogy a letöltött piactér elem, importálás a [PowerShell-környezet az Azure-verem operátorhoz](azure-stack-powershell-configure-admin.md) úgy kell konfigurálni.  
 
-- Rendelkeznie kell egy tárfiókot, amely rendelkezik egy nyilvánosan elérhető tároló (amely a tárolási blob) Azure-készletben. A Piactéri elemek gyűjteménye fájlok ideiglenes tárolóként használja a tárolót. Ha nem ismeri a storage-fiókok és a tárolók, lásd: [működik a BLOB - Azure-portálon](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) az Azure-dokumentációban.
+- Rendelkeznie kell egy [tárfiók](azure-stack-manage-storage-accounts.md) egy nyilvánosan elérhető tároló (amely a tárolási blob) rendelkező Azure-készletben. A Piactéri elemek gyűjteménye fájlok ideiglenes tárolóként használja a tárolót. Ha nem ismeri a storage-fiókok és a tárolók, lásd: [működik a BLOB - Azure-portálon](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) az Azure-dokumentációban.
 
 - A piactér szindikálási eszköz az első eljárás során le. 
 

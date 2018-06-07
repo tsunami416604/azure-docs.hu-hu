@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cad363309b6086197ced1a5d1c1793995db11228
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621616"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
 
@@ -37,7 +38,7 @@ Azure Data Factory használatával adatmozgás lett **hitelesített** esetében:
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
 -   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
--   [CSA STAR](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
+-   [CSA CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
 Ha Ön Azure megfelelőségét, és hogyan Azure biztosítja a saját infrastruktúra iránt érdeklődik, keresse fel a [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx). 
 

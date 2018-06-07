@@ -1,24 +1,26 @@
 ---
-title: "Azure AD tartományi szolgáltatások - ellenőrizze, a felügyelt tartományok állapotát |} Microsoft Docs"
-description: "Ellenőrizze, a felügyelt tartományra az állapot lapon az Azure portálon állapotát."
+title: Azure AD tartományi szolgáltatások - ellenőrizze, a felügyelt tartományok állapotát |} Microsoft Docs
+description: Ellenőrizze, a felügyelt tartományra az állapot lapon az Azure portálon állapotát.
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9421ace7abf1f3d45b1f8cd810067d79faa92ec
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5be6a2c36dfec8c8543f6dcfe252ce01b4c28e50
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587238"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz állapotának ellenőrzése
 
@@ -46,11 +48,11 @@ Az állapot felső sarkában található a health azt jelzi, a felügyelt tartom
 | Figyelmet (kritikus) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | A felügyelt tartományok nincsenek legalább egy kritikus riasztások. Figyelmeztető vagy tájékoztató riasztások is rendelkezhetnek. |
 | Központi telepítés | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | A tartomány telepítése folyamatban van. |
 
-## <a name="monitors"></a>Figyelők
+## <a name="monitors"></a>Monitorozások
 Figyelők aspektusainak rendszeresen figyeli az Azure AD tartományi szolgáltatások, a felügyelt tartományban. A legjobb tartsa a figyelő állapota kifogástalan módja a felügyelt tartományok összes aktív riasztás feloldása.
 
 Azure AD tartományi szolgáltatások jelenleg figyeli a következő:
- - Biztonsági mentés
+ - Backup
  - Az Azure AD-szinkronizálás
 
 ### <a name="the-backup-monitor"></a>A "biztonsági másolat" figyelője

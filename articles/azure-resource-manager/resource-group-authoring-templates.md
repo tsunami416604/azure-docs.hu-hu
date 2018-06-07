@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4fa610f144277b73bb6d555d46e63a01c413e07e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f7dfdc4319e50e7a6c1c6032c27de5c76397e8de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603076"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>A struktúra és az Azure Resource Manager-sablonok szintaxisát ismertetése
 Ez a cikk ismerteti az Azure Resource Manager sablon szerkezete. Azt mutatja be a különböző szakaszokat, egy sablon és az elérhető tulajdonságok köre szakaszt. A sablon JSON és összeállítani az üzemelő példány értékeit használó kifejezéseket tartalmaz. A sablonok létrehozásának részletes oktatóanyaga, lásd: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
@@ -41,14 +42,14 @@ A legegyszerűbb struktúra, a sablon a következő elemeket tartalmazza:
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
 | $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvi verzióját helye. Az előző példában is látható URL-CÍMÉT használja. |
-| contentVersion |Igen |A sablon (például 1.0.0.0) verzióját. Bármely érték biztosíthat ehhez az elemhez. A sablon eszközzel való telepítésekor ez az érték segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
+| contentVersion |Igen |A sablon (például 1.0.0.0) verzióját. Bármely érték biztosíthat ehhez az elemhez. Használja ezt az értéket, a dokumentum jelentős változásokat a sablonban. A sablon eszközzel való telepítésekor ez az érték segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
 | paraméterek |Nem |Amikor központi telepítés végrehajtása testre szabhatja az erőforrások telepítése által biztosított értéket. |
 | változók |Nem |A sablon JSON-töredék, egyszerűbbé teheti a sablonnyelvi kifejezéseket használt értékek. |
 | functions |Nem |Felhasználó által definiált függvények, a sablonon belül elérhető. |
 | erőforrások |Igen |Telepített vagy frissített erőforráscsoportban erőforrástípusok esetében. |
 | kimenetek |Nem |A telepítés utáni visszaadott értékek. |
 
-Minden elem beállítható tulajdonságokat tartalmaz. A következő példa a teljes szintaxissal sablon tartalmazza:
+Minden elem tulajdonságai állíthatja be. A következő példa egy sablon teljes szintaxisát jeleníti meg:
 
 ```json
 {
@@ -176,7 +177,7 @@ A következő példa bemutatja, hogyan használja több funkciók, ha egy érté
 Sablon funkciók teljes listáját lásd: [Azure Resource Manager sablonfüggvényei](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Paraméterek
-A sablon a Paraméterek szakaszban adja meg az erőforrások telepítése során is bemeneti értékeket. A paraméterértékek lehetővé teszik a központi telepítés testreszabása egy adott környezetben (például a fejlesztői, tesztelési és éles) is lefednek értékek megadásával. A sablon a paraméterek megadása nem szükséges, de a paraméterek nélkül a sablon mindig központilag ugyanazon a nevét, helyét és tulajdonságok ugyanazokat az erőforrásokat.
+A sablon a Paraméterek szakaszban adja meg az erőforrások telepítése során is bemeneti értékeket. A paraméterértékek lehetővé teszik a központi telepítés testreszabása egy adott környezetben (például a fejlesztői, tesztelési és éles) is lefednek értékek megadásával. Adja meg a sablonban szereplő paraméterekkel nincs, de a paraméterek nélkül a sablon mindig központilag ugyanazon a nevét, helyét és tulajdonságok ugyanazokat az erőforrásokat.
 
 Az alábbi példában egy egyszerű paraméterek definícióját:
 
@@ -194,7 +195,7 @@ Az alábbi példában egy egyszerű paraméterek definícióját:
 További információ a paraméterek megadása: [paraméterek szakaszban az Azure Resource Manager-sablonok](resource-manager-templates-parameters.md).
 
 ## <a name="variables"></a>Változók
-A változók szakaszban, a sablon egész érték, amely használható hozhat létre. Nem kell meghatároznia a változót, de azok gyakran leegyszerűsítheti a sablon csökkentésével összetett kifejezések.
+A változók szakaszban, a sablon egész érték, amely használható hozhat létre. Adja meg a változókat nem szükséges, de azok gyakran leegyszerűsítheti a sablon csökkentésével összetett kifejezések.
 
 Az alábbi példában egy egyszerű változó definíciója:
 
@@ -208,7 +209,7 @@ További információ a változók meghatározása: [változók szakaszban az Az
 
 ## <a name="functions"></a>Functions
 
-A sablonon belül létrehozhat saját függvényeket. Ezek a függvények használhatók a sablonban. Általában határozza meg, amely nem kívánt ismételje meg a sablon teljes összetett kifejezés. Kifejezések hoz létre a felhasználó által definiált függvények és [funkciók](resource-group-template-functions.md) , amelyek használata támogatott.
+A sablonon belül létrehozhat saját függvényeket. Ezek a függvények használhatók a sablonban. Általában adhat meg nem kívánja ismételje meg a sablon teljes összetett kifejezést. Kifejezések hoz létre a felhasználó által definiált függvények és [funkciók](resource-group-template-functions.md) , amelyek használata támogatott.
 
 Egy felhasználói függvény definiálásakor van bizonyos korlátozások vonatkoznak:
 
@@ -260,7 +261,7 @@ A függvény hívásakor:
 ```
 
 ## <a name="resources"></a>További források
-Erőforrások területen adja meg az erőforrások telepítése vagy frissítése. Ez a szakasz kérheti le bonyolult, mert ismernie kell a típusok esetében helyez üzembe adja meg a megfelelő értékeket.
+Erőforrások területen adja meg az erőforrások telepítése vagy frissítése. Ez a szakasz kérheti le bonyolult, mert ismernie kell a telepítése esetén adja meg a megfelelő típusú.
 
 ```json
 "resources": [
@@ -296,7 +297,7 @@ További információkért lásd: [kiírja az Azure Resource Manager-sablonok sz
 
 A sablon 1 MB-nál, és minden paraméterfájl 64 KB méretének korlátozására. 1 MB-os korlát vonatkozik a sablon a végső állapot után kiterjedt ismétlődő erőforrás-definíciókban és változók és a paraméterek értékeit. 
 
-Emellett korlátozva:
+A is szab:
 
 * 256 paraméterek
 * 256 változók

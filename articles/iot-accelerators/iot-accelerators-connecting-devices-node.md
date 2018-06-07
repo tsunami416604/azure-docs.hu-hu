@@ -1,31 +1,25 @@
 ---
 title: Ellátja az eszközöket a node.js - Azure távoli megfigyeléshez |} Microsoft Docs
 description: Ismerteti, hogyan lehet egy eszköz csatlakozni a távoli megfigyelési megoldásgyorsító Node.js nyelven írt alkalmazás segítségével.
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: e0edc2d71d5f2ceac9c631fedaa160ca7291e9d6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8bd614fd7aad248612d65717fe50e04a3fc3a9e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627330"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Csatlakoztassa az eszközt a távoli felügyeleti megoldásgyorsító (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Csatlakoztassa az eszközt a távoli megfigyelési megoldásgyorsító (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli felügyeleti megoldásgyorsító. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
+Ez az oktatóanyag bemutatja, hogyan egy fizikai eszköz csatlakozni a távoli megfigyelési megoldásgyorsító. Ebben az oktatóanyagban akkor az Node.js, amely minimális erőforrás-korlátozásokkal rendelkező környezetek jó választás.
 
 ## <a name="create-a-nodejs-solution"></a>Node.js megoldás létrehozása
 
@@ -52,7 +46,7 @@ Győződjön meg arról, hogy [Node.js](https://nodejs.org/) 4.0.0 verzió vagy 
     var async = require('async');
     ```
 
-1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét `{device connection string}` az eszköz feljegyzett értékű kiépítve a távoli felügyeleti megoldásban:
+1. Adja hozzá a következő változódeklarációkat az `require` utasítások után. Cserélje le a helyőrző értékét `{device connection string}` az eszköz feljegyzett értékkel, a távoli figyelésére szolgáló megoldás kiépítve:
 
     ```nodejs
     var connectionString = '{device connection string}';

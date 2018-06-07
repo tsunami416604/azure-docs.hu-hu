@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2caf788f1c38c701699e0c275cabe3d12eb75270
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e5b9fb0e1696e83ca4dfc8936613631f4c84ca47
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590782"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Oktatóanyag: Azure Active Directoryval integrált Salesforce
 
@@ -205,10 +206,6 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > [!NOTE]
     > Ha egynél több hitelesítési szolgáltatás be van jelölve, a rendszer kéri a felhasználóktól mely hitelesítési szolgáltatás, például a bejelentkezéshez egyszeri bejelentkezést a Salesforce-környezet elindítása során használandó kiválasztásához. Ha nem szeretné, hogy megtörténjen-e, majd meg kell **hagyja bejelölve minden hitelesítési szolgáltatás**.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -240,27 +237,26 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="create-a-salesforce-test-user"></a>Salesforce tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó létrehozása a Salesforce-ban. Salesforce támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van.
-Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a Salesforce-ban, egy új létrejön a Salesforce elérésére tett kísérlet során.
+Ebben a szakaszban egy Britta Simon nevű felhasználó létrehozása a Salesforce-ban. Salesforce támogatja közvetlenül az időponthoz kötött kiosztást, amely alapértelmezés szerint engedélyezve van. Nincs ebben a szakaszban az Ön művelet elem. Ha a felhasználó nem létezik a Salesforce-ban, egy új létrejön a Salesforce elérésére tett kísérlet során. Salesforce is támogatja az automatikus a felhasználók átadása, további részletei [Itt](active-directory-saas-salesforce-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Salesforce Azure egyszeri bejelentkezéshez használandó.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
 **Britta Simon hozzárendelése Salesforce, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
 2. Az alkalmazások listában válassza ki a **Salesforce**.
 
-    ![Az alkalmazások listáját a Salesforce-hivatkozás](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png)  
+    ![Az alkalmazások listáját a Salesforce-hivatkozás](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png)
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
@@ -275,7 +271,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
@@ -287,8 +283,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
-
-
+* [A felhasználók átadása konfigurálása](active-directory-saas-salesforce-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -303,4 +298,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_203.png
-

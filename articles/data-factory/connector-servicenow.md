@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/22/2018
+ms.topic: conceptual
+ms.date: 05/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 29fb74e49ad3fdca0bc54a431da40b02ef24882b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9fcf751d1b7655cf38bbcaca0aa8c918e38e4fda
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619065"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával ServiceNow
 
@@ -47,8 +48,8 @@ A következő tulajdonságok ServiceNow kapcsolódó szolgáltatás támogatotta
 | type | A type tulajdonságot kell beállítani: **ServiceNow** | Igen |
 | endpoint | A ServiceNow Server endpoint (`http://<instance>.service-now.com`).  | Igen |
 | authenticationType | A használandó hitelesítési típus. <br/>Két érték engedélyezett: **alapvető**, **OAuth2** | Igen |
-| felhasználónév | A ServiceNow kiszolgáló alapszintű és az OAuth2 hitelesítési való csatlakozáshoz használt felhasználónevet.  | Nem |
-| jelszó | A jelszó, a felhasználónevet Basic és az OAuth2 hitelesítési megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
+| felhasználónév | A ServiceNow kiszolgáló alapszintű és az OAuth2 hitelesítési való csatlakozáshoz használt felhasználónevet.  | Igen |
+| jelszó | A jelszó, a felhasználónevet Basic és az OAuth2 hitelesítési megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | clientId | Az OAuth2 hitelesítési ügyfél-azonosító.  | Nem |
 | clientSecret | Az OAuth2 hitelesítési titkos ügyfélkódot. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Nem |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |

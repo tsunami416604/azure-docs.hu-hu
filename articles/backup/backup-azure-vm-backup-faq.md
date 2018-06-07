@@ -1,25 +1,20 @@
 ---
-title: Azure VM Backup – gyakori kérdések | Microsoft Docs
+title: Azure virtuális gép biztonsági mentése – gyakori kérdések
 description: 'Válaszok a következő gyakori kérdésekre: hogyan működik az Azure-beli virtuális gépek biztonsági mentése, mik a korlátozások, és mi történik, ha módosítások történnek a szabályzatban'
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: ''
 keywords: azure-beli virtuális gép biztonsági mentése, azure-beli virtuális gép visszaállítása, biztonsági mentési szabályzat
-ms.assetid: c4cd7ff6-8206-45a3-adf5-787f64dbd7e1
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/18/2017
-ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 785ba078669886cf16041752bd7af5a957899d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: trinadhk
+ms.openlocfilehash: d637a98029b33be890b31f32c3080650b251f7a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606375"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).

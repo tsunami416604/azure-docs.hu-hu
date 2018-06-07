@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: A csoportházirend a felügyelt tartományok felügyelete |} Microsoft Docs"
-description: "Csoportházirend felügyelete az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok"
+title: 'Az Azure Active Directory tartományi szolgáltatások: A csoportházirend a felügyelt tartományok felügyelete |} Microsoft Docs'
+description: Csoportházirend felügyelete az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 316ddc2cbd67cfafaf44318c5baebcd8da366f93
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d9c4e33ffdb95d81660a92e0f43bac36702882a3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587004"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend a egy Azure AD tartományi szolgáltatások által kezelt tartomány felügyelete
 Az Azure Active Directory tartományi szolgáltatások beépített csoportházirend-objektumok (GPO-k) a "AADDC felhasználók" és "AADDC számítógépek" tárolók magában foglalja. Testre szabhatja a beépített csoportházirend-objektumokat a csoportházirend a kezelt tartományban. A "AAD DC rendszergazdák" csoportba, a felügyelt tartományra hozhat létre a saját egyéni szervezeti egységekhez. Akkor is egyéni csoportházirend-objektumok létrehozása, és kapcsolja őket a egyéni szervezeti egységekhez. A "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartományra csoportházirend felügyeleti jogosultságokkal.

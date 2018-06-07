@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c12630deb45fd057537c42157d88fdeef22d18b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593013"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect csatlakozási problémák
 Ez a cikk ismerteti az Azure AD Connect és az Azure AD közötti kapcsolat megfelelő működésének és a problémák elhárításáról. A problémát valószínűleg a proxykiszolgálóval környezetben kell vizsgálni.
@@ -42,9 +44,9 @@ URL-címek a következő táblázat a abszolút operációs rendszer minimálisa
 
 | URL-cím | Port | Leírás |
 | --- | --- | --- |
-| mscrl.microsoft.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
-| \*.verisign.com |HTTP/80 |Töltse le a Visszavonási listák segítségével. |
-| \*.entrust.com |HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication használatával. |
+| mscrl.microsoft.com |A HTTP/80 |Töltse le a Visszavonási listák segítségével. |
+| \*.verisign.com |A HTTP/80 |Töltse le a Visszavonási listák segítségével. |
+| \*. entrust.com |A HTTP/80 |Töltse le a Visszavonási listák a multi-factor Authentication használatával. |
 | \*.windows.net |HTTPS/443 |Az Azure AD-bejelentkezéshez használt. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Használja az MFA szolgáltatásra. |
 | \*.microsoftonline.com |HTTPS/443 |Konfigurálja az Azure AD-címtár és az importálási/exportálási adatok szolgál. |
@@ -114,7 +116,7 @@ Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési v
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -124,13 +126,13 @@ Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési v
 | Time | URL-cím |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |Csatlakozás: / /*bba900-rögzítési*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -141,8 +143,8 @@ Ez egy biztonsági másolat egy tényleges proxy naplóból és a telepítési v
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |Csatlakozás: / /*bba900-rögzítési*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |Csatlakozás: / /*bba800-rögzítési*. microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 Ez a fejezet az adal-t (az Azure AD Connect által használt hitelesítési tár) és PowerShell visszaadható hibák. A hiba azt kell megismerheti a a következő lépéseket.

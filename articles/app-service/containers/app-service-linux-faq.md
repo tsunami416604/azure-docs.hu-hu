@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/25/2018
+ms.author: msangapu
+ms.openlocfilehash: c1dbcf83927da23ceab652f8bc4dbe8d6343c1a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598402"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux – gyakori kérdések az Azure App Service
 
@@ -47,8 +48,8 @@ Ez a művelet nem ugyanaz, mint a Docker újraindítása.
 
 Igen, akkor teheti meg a forrás-vezérlő (SCM) felügyeleti webhelyen keresztül.
 
-> [!NOTE] 
-> Keresztül is csatlakozhat a alkalmazástárolóval közvetlenül gépről a helyi fejlesztési segítségével SSH, SFTP vagy Visual Studio Code (az élő hibakeresési Node.js alkalmazások). További információkért lásd: [távoli hibakereséssel és az App Service Linux SSH](https://aka.ms/linux-debug).
+> [!NOTE]
+> Az alkalmazástárolóhoz közvetlenül a helyi fejlesztési számítógépről is csatlakozhat SSH, SFTP vagy Visual Studio Code segítségével (Node.js-alkalmazások élő hibakereséséhez). További információkért tekintse meg a [Linuxon futó App Service-ben elérhető távoli hibakereséssel és SSH-val](https://aka.ms/linux-debug) kapcsolatos cikket.
 >
 
 **Hogyan hozható létre egy Linux App Service-csomag az SDK vagy az Azure Resource Manager-sablon használatával?**
@@ -113,7 +114,7 @@ Azt teheti úgy, hogy a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeáll�
 
 **A saját egyéni tároló elindításához hosszú ideig tart, és a platform újraindul a tárolóhoz, mielőtt befejezné indítása.**
 
-A platform várakozik, a tároló újraindítása előtti idő is konfigurálhat. Ehhez az szükséges, állítsa be a `WEBSITES_CONTAINER_START_TIME_LIMIT` Alkalmazásbeállítás a kívánt értéket. Az alapértelmezett érték 230 másodperc, és a maximális értéke 600 másodperc.
+A platform várakozik, a tároló újraindítása előtti idő is konfigurálhat. Ehhez az szükséges, állítsa be a `WEBSITES_CONTAINER_START_TIME_LIMIT` Alkalmazásbeállítás a kívánt értéket. Az alapértelmezett érték 230 másodperc, a maximális értéke pedig 1800 másodperc.
 
 **Mi az a személyes beállításjegyzék kiszolgáló URL-cím formátuma?**
 

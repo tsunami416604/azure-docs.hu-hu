@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ec932451d82e891b2c9b11d91f44d4dc5fce6828
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8f81e667ffd1e425527b383445f382d18233fef2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594516"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-resource-manager"></a>Azure Resource Manager eléréséhez használja egy Linux virtuális gép felügyelt szolgáltatás Identity (MSI)
 
@@ -124,11 +125,11 @@ Ezek a lépések elvégzéséhez szüksége lesz egy SSH-ügyfél. Windows haszn
      
     ```bash
     {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
-    ```
-     
-## <a name="related-content"></a>Kapcsolódó tartalom
+    ```     
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md). 
+## <a name="next-steps"></a>További lépések
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+Ebben az oktatóanyagban megtudta, hogyan hozzon létre egy felhasználó identitását, és csatlakoztassa azt egy Azure virtuális gép az Azure Resource Manager API eléréséhez.  Az Azure Resource Manager webhelyen olvashat:
 
+> [!div class="nextstepaction"]
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

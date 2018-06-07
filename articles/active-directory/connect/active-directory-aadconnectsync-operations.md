@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: működtetési feladatok és szempontok |} Microsoft Docs"
-description: "Ez a témakör ismerteti az operatív feladatok az Azure AD Connect szinkronizálási szolgáltatás és előkészítése operációs ezt az összetevőt."
+title: 'Azure AD Connect szinkronizálása: működtetési feladatok és szempontok |} Microsoft Docs'
+description: Ez a témakör ismerteti az operatív feladatok az Azure AD Connect szinkronizálási szolgáltatás és előkészítése operációs ezt az összetevőt.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0dfdae45ef7508337a1233c651d355d83b9f0430
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 6e35dc0ad8493d2f92b7e81fc66f444048482bd9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592942"
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect szinkronizálása: működtetési feladatok és szempont
 Ez a témakör célja az Azure AD Connect szinkronizálási szolgáltatás működési feladatokat írják le.
@@ -26,7 +28,7 @@ Ez a témakör célja az Azure AD Connect szinkronizálási szolgáltatás műk�
 ## <a name="staging-mode"></a>Átmeneti mód
 Az átmeneti környezetű üzemmód használható több forgatókönyvek, köztük:
 
-* Magas rendelkezésre állású.
+* Magas rendelkezésre állás.
 * Tesztelése és telepítése az új konfigurációs módosításokat.
 * Új kiszolgáló esetében, és a régi leszereléséhez.
 
@@ -48,7 +50,7 @@ Azok a régebbi szinkronizálási technológiák ismerete is az átmeneti körny
 ### <a name="verify-the-configuration-of-a-server"></a>A kiszolgáló konfigurációjának ellenőrzése
 Ha szeretné alkalmazni ezt a módszert, kövesse az alábbi lépéseket:
 
-1. [Prepare](#prepare)
+1. [Előkészítése](#prepare)
 2. [Konfigurálás](#configuration)
 3. [Importálja és szinkronizálja](#import-and-synchronize)
 4. [Ellenőrzése](#verify)
@@ -71,7 +73,7 @@ Ha egyéni módosításokat végzett az elsődleges kiszolgáló, és a átmenet
 Most előkészítette rendelkezik exportálási módosításai az Azure AD és a helyszíni AD (ha az Exchange hibrid telepítést használ). A következő lépéseket lehetővé teszi a vizsgálandó ténylegesen a könyvtárakat az exportálás megkezdése előtt megváltoztatta újdonságai.
 
 #### <a name="verify"></a>Ellenőrzés
-1. Indítsa el egy parancssort, és navigáljon a`%ProgramFiles%\Microsoft Azure AD Sync\bin`
+1. Indítsa el egy parancssort, és navigáljon a `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Futtatás: `csexport "Name of Connector" %temp%\export.xml /f:x` a nevét, az összekötő szinkronizálási szolgáltatás található. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure AD.
 3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` % temp %, amely megfelel a Microsoft Excel export.csv nevű fájlt. Ez a fájl minden exportálni, módosításokat tartalmaz.
 4. Hajtsa végre a módosításokat az adatok vagy konfiguráció, és futtassa ezeket a lépéseket újra (importálás és szinkronizálás és ellenőrzése) addig, amíg az exportálni kívánt módosításokkal várható.
@@ -124,7 +126,7 @@ Ha nem használ az SQL Server Express, az Azure AD Connect előre, majd az SQL S
 
 SQL AOA támogatása az Azure AD Connect 1.1.524.0 verziójában lett hozzáadva. Az Azure AD Connect telepítése előtt engedélyeznie kell az SQL AOA. A telepítés során az Azure AD Connect észleli, hogy a megadott SQL-példány engedélyezve van az SQL AOA vagy nem. Ha SQL AOA engedélyezve van, az Azure AD Connect további adatok Ha SQL AOA replikáció szinkron vagy aszinkron replikáció használatára van konfigurálva. A rendelkezésre állási csoport figyelőjének beállításakor javasoljuk, hogy a RegisterAllProvidersIP tulajdonságot 0 értékre állítja. Ennek az az oka az Azure AD Connect jelenleg használ SQL Native Client kapcsolódni az SQL és az SQL natív ügyfél nem támogatja a MultiSubNetFailover tulajdonság használatával.
 
-## <a name="appendix-csanalyzer"></a>Appendix CSAnalyzer
+## <a name="appendix-csanalyzer"></a>A függelék CSAnalyzer
 Című témakör [ellenőrizze](#verify) a parancsfájl használatával.
 
 ```

@@ -1,24 +1,21 @@
 ---
-title: Az Azure portál használata Azure Data Lake Analytics-feladatok figyelése |} Microsoft Docs
-description: 'Útmutató a Data Lake Analytics-feladatok hibaelhárítása az Azure portál használatával. '
+title: Az Azure portál használatával Azure Data Lake Analytics-feladatok figyelése
+description: Ez a cikk ismerteti az Azure Data Lake Analytics-feladatok hibaelhárítása az Azure-portál használatával.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 14b1f4ec9dff78e4b5d2480755a4b1f2579ec135
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+manager: kfile
+editor: jasonwhowell
+ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 8c61b8736dfb13f0c2c2520f22979ac51646e05f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623655"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure portál használata Azure Data Lake Analytics-feladatok figyelése
 

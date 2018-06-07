@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 1cfd85eda9ef59a2265a991cabe5f1b6ee83563d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fb4f43dd85f887fa051aaa8050ddf6b37313e376
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594550"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Office 365-csoportok az Azure Active Directoryban (előzetes verzió) elnevezési vonatkozó szabályzat alkalmazása
 
@@ -189,7 +190,7 @@ Iskolai adatszinkronizálás (SDS) | SDS keresztül létrehozott csoportok elnev
 Outlook ügyfél Manager (OCM) | Outlook ügyfél Manager megfelel az elnevezési házirendet, amely a rendszer automatikusan alkalmaz az Outlook ügyfél kezelőt hozott létre a csoport. Ha egy egyéni tiltott szót észlel, csoport létrehozása a OCM le van tiltva, és a felhasználó le van tiltva a OCM alkalmazással.
 Számítógéptermi alkalmazás | Számítógéptermi alkalmazásban létrehozott csoportok felel meg az elnevezési szabályzatának, de elnevezési nincs érvényben automatikusan, és az elnevezési házirend előzetes nem jelennek meg a felhasználók egy osztályteremben csoportnév beírása közben. Felhasználók meg kell adnia az előtagok és utótagok kényszerített osztályteremben csoport nevét. Ha nem, akkor a osztályteremben csoport létrehozása vagy szerkesztése hibák művelet meghiúsul.
 Power BI | A Power BI munkaterületek érhetők a szabályzatnak megfelelő elnevezési.    
-Yammer | Yammer a csatlakoztatott csoportok nem a konfigurált elnevezési házirendek kikényszerítéséhez. A naming házirenddel rendelkező szervezetek számára Yammer csatlakozó nem Office 365 csoportok, amelyek nem felelnek meg a névadási örökölt Yammer-csoportokat hoz létre.
+Yammer | Ha a Yammer az Azure Active Directory-fiókkal bejelentkezett felhasználó létrehoz egy csoportot, vagy módosítja a csoport nevét, a csoport nevét megfelelnek elnevezési házirend. Ez vonatkozik a csatlakoztatott Office 365-csoportokat és más Yammer-csoportok.<br>Ha az Office 365 csatlakoztatott csoport létrehozása előtt a elnevezési házirend van érvényben, a csoport neve nem automatikusan követi az elnevezési házirendeket. A csoportnév szerkesztésekor, kéri az előtag és utótag hozzáadásához.
 StaffHub  | StaffHub csapatok ne hajtsa végre az elnevezési házirendet, azonban az alapul szolgáló Office 365-csoport nem. StaffHub csoport neve nem érvényes az előtagok és utótagot, és nem ellenőrzi az egyéni tiltott szót. De StaffHub nem alkalmazza az előtagok és utótagok és a blokkolt szavak eltávolítja az alapul szolgáló Office 365-csoport.
 Exchange PowerShell | Exchange PowerShell-parancsmagok az alábbiak a szabályzatnak megfelelő elnevezési. Felhasználók hibaüzenetek megfelelő javasolt előtagok és utótagok és egyéni tiltott szavakra ha azok nem követi a névadási a csoport nevét és a csoport alias (mailNickname).
 Az Azure Active Directory PowerShell-parancsmagok | Az Azure Active Directory PowerShell-parancsmagok kompatibilisek az elnevezési házirend. Felhasználók hibaüzenetek megfelelő javasolt előtagok és utótagok és egyéni tiltott szavakra ha azok nem követi a csoporthoz tartozó nevek és csoport alias elnevezési konvenciót.

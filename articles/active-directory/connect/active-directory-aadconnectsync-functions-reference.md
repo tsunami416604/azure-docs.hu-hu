@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect szinkronizálása: funkciók referencia |} Microsoft Docs"
-description: "Az Azure AD Connect szinkronizálási szolgáltatás deklaratív kiépítés kifejezéseinek hivatkozását."
+title: 'Azure AD Connect szinkronizálása: funkciók referencia |} Microsoft Docs'
+description: Az Azure AD Connect szinkronizálási szolgáltatás deklaratív kiépítés kifejezéseinek hivatkozását.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ce27ca217f99b4f12ca1af0b5a178f5d61a1c89
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4814d53a86b0d90cf16f76e75c7044448cf791eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595155"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect szinkronizálása: funkciók referencia
 Az Azure AD Connectben funkciók segítségével kezelheti egy attribútum értékét a szinkronizálás során.  
@@ -56,7 +58,7 @@ A funkciók a típusú **mvbin**, **mvstr**, és **mvref** többértékű attrib
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
 | [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
+[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Átalakítás** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
@@ -73,15 +75,15 @@ A funkciók a típusú **mvbin**, **mvstr**, és **mvref** többértékű attrib
 | **Matematikai** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **Többértékű** | | | | |
-| [Tartalmazza](#contains) |[Száma](#count) |[Elem](#item) |[ItemOrNull](#itemornull) | |
+| [tartalmazza](#contains) |[Száma](#count) |[Elem](#item) |[ItemOrNull](#itemornull) | |
 | [Csatlakozás](#join) |[RemoveDuplicates](#removeduplicates) |[Vegyes](#split) | | |
 | **Program folyamata** | | | | |
-| [Hiba történt](#error) |[AZ IIF](#iif) |[Kiválasztás](#select) |[Kapcsoló](#switch) | |
-| [Ha](#where) |[A](#with) | | | |
+| [Hiba történt](#error) |[AZ IIF](#iif) |[Kiválasztás](#select) |[Switch](#switch) | |
+| [Ha](#where) |[a](#with) | | | |
 | **Szöveg** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Balra](#left) |[Hossz](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Cserélje le](#replace) | |
+| [balra](#left) |[Hossz](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[cserélje le](#replace) | |
 | [ReplaceChars](#replacechars) |[Jobbra](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
@@ -364,9 +366,9 @@ A CGuid függvény GUID karakterláncos ábrázolása konvertálja a bináris me
 A Contains belüli egy többértékű karakterlánc keresése
 
 **Szintaxis:**  
-`num Contains (mvstring attribute, str search)`-nagybetűk  
+`num Contains (mvstring attribute, str search)` -nagybetűk  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`-nagybetűk
+`num Contains (mvref attribute, str search)` -nagybetűk
 
 * attribútum: a többértékű attribútum kereséséhez.
 * Keresés: karakterlánc az attribútumban található.
@@ -388,7 +390,7 @@ Ha a proxyAddresses attribútum egy elsődleges e-mail címet (nagybetűs által
 A ConvertFromBase64 függvény a megadott base64-kódolású érték konvertál egy rendszeres karakterlánc.
 
 **Szintaxis:**  
-`str ConvertFromBase64(str source)`-feltételezi, hogy a Unicode kódolási  
+`str ConvertFromBase64(str source)` -feltételezi, hogy a Unicode kódolási  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Forrás: Base64 kódolású karakterlánc  
@@ -1180,7 +1182,7 @@ A folyamat egy többértékű attribútum (vagy egy kifejezés eredményének) s
 Összes érték visszaadása a többértékű attribútum otherPhone után a kötőjeleket (-) el lett távolítva.
 
 - - -
-### <a name="split"></a>Megosztott
+### <a name="split"></a>Vegyes
 **Leírás:**  
 A felosztott függvény elválasztóval elválasztott karakterlánc vesz igénybe, és lehetővé teszi egy többértékű karakterlánc.
 

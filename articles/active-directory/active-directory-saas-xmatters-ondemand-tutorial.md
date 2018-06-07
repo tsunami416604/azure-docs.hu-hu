@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2696be33c97b411a9f4809f0ff6ca56cd2fe6080
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3d2e64a88492db396b1c4771e605245c0cd744f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Oktatóanyag: Azure Active Directoryval integrált xMatters kötegmérete
 
@@ -103,14 +104,14 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
 3. Az a **xMatters OnDemand-tartomány és az URL-címek** területen tegye a következőket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:   
+    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -133,7 +134,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** tanúsítvány helyileg a fájlt, majd mentse **c:\\XMatters OnDemand.cer**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
-    
+
     > [!IMPORTANT]
     > A tanúsítvány továbbítani kell a [xMatters OnDemand támogatási csoport](https://www.xmatters.com/company/contact-us/). Az egyszeri bejelentkezés konfigurációs is véglegesítése előtt a xMatters támogatási csoport által feltöltött kell a tanúsítványt. 
 
@@ -148,28 +149,24 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 7. Egy másik webes böngészőablakban jelentkezzen be a XMatters OnDemand vállalati webhely rendszergazdaként.
 
 8. A felső eszköztáron kattintson **Admin**, és kattintson a **vállalat adatait** a bal oldali navigációs sávon.
-   
+
     ![Felügyeleti](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "rendszergazda")
 
 9. Az a **SAML-alapú konfigurációs** lapon, a következő lépésekkel:
-   
-    ![SAML-alapú konfigurációs](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML-konfigurációja")
-   
-    a. Válassza ki **SAML engedélyezése**.
-   
-    b. Beillesztés **SAML Entitásazonosító**, amely az Azure-portálról másolta a **identitás Szolgáltatóazonosító** szövegmező.
-   
-    c. Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe**, amely az Azure-portálról másolta a **egyszeri bejelentkezési URL-cím** szövegmező.
-   
-    d. Beillesztés **Sign-Out URL-cím**, amely az Azure-portálról másolta a **egyetlen kijelentkezési URL-címet** szövegmező.
-   
-    e. Az oldalon a vállalat adatait a lap tetején kattintson **módosítások mentése**.
-    
-    ![A vállalati részletek](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "vállalati részletei")
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![SAML-alapú konfigurációs](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML-konfigurációja")
+
+    a. Válassza ki **SAML engedélyezése**.
+
+    b. Az a **identitás Szolgáltatóazonosító** szövegmező, Beillesztés **SAML Entitásazonosító** érték, amely az Azure portálról másolta.
+
+    c. Az a **egyszeri bejelentkezési URL-cím** szövegmezőhöz Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe** érték, amely az Azure portálról másolta.
+
+    d. A a **egyetlen kijelentkezési URL-címet** szövegmezőhöz Beillesztés **Sign-Out URL-cím**, amely az Azure portálról másolta.
+
+    e. Az oldalon a vállalat adatait a lap tetején kattintson **módosítások mentése**.
+
+    ![A vállalati részletek](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "vállalati részletei")
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -183,15 +180,15 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
 2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
 3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
- 
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
 4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
+
     ![Az Azure AD tesztfelhasználó létrehozása](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
     a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
@@ -201,32 +198,33 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>XMatters OnDemand tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók XMatters OnDemand bejelentkezni, akkor ki kell építenie XMatters OnDemand be. XMatters Ondemanddetection, ha egy kézi tevékenység.
+Ez a szakasz célja xMatters OnDemand Britta Simon nevű felhasználót létrehozni. xMatters OnDemand támogatja automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>A felhasználói fiókok létrehozásához hajtsa végre az alábbi lépéseket:
+**Ha szeretne létrehozni a felhasználót manuálisan, akkor hajtsa végre a következő lépéseket:**
+
 1. Jelentkezzen be a **XMatters OnDemand** bérlő.
 
 2.  Kattintson a **felhasználók** lapra, majd kattintson **felhasználó hozzáadása**.
-  
+
     ![Felhasználók](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "felhasználók")
 
 3. Az a **hozzáadni egy felhasználót** területen tegye a következőket:
-   
+
     ![Felhasználó hozzáadása](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "felhasználó hozzáadása")
 
     a. Válassza ki **aktív**.
 
     b. Az a **Felhasználóazonosító** szövegmező, a felhasználó a felhasználói azonosító típusát, például Brittasimon@contoso.com.
-   
+
     c. Az a **Keresztnév** szövegmezőhöz Britta például a felhasználó első nevét.
 
     d. Az a **Vezetéknév** szövegmezőhöz típus Simon például a felhasználó vezetékneve.
-    
+
     e. Az a **hely** szövegmező, adjon meg egy érvényes Azure érvényes hely rendelkezés kívánt AD-fiókot.
-    
+
     f. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
@@ -270,6 +268,7 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
+* [A felhasználók átadása konfigurálása](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -284,4 +283,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_203.png
-

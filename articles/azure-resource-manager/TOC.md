@@ -4,7 +4,7 @@
 ## [Mi az a Resource Manager?](resource-group-overview.md)
 ## [Erőforrás-szolgáltatók és típusaik](resource-manager-supported-services.md)
 ## [A Resource Manager-alapú és a klasszikus üzemi modell](resource-manager-deployment-model.md)
-## [Előfizetés-irányítás](resource-manager-subscription-governance.md)
+## [Előfizetés-irányítás](/azure/architecture/cloud-adoption-guide/subscription-governance)
 ## [Erőforrások rendszerezése felügyeleti csoportokkal](management-groups-overview.md)
 
 # Bevezetés
@@ -50,7 +50,6 @@
 ### [EA-előfizetések létrehozása programozott módon](programmatically-create-subscription.md)
 ### [Felügyeleti csoportok létrehozása](management-groups-create.md)
 ### [Felügyeleti csoportok kezelése](management-groups-manage.md)
-### [Irányítási példák](resource-manager-subscription-examples.md)
 
 ## Vezérlési hozzáférés
 ### Egyszerű szolgáltatás létrehozása
@@ -89,7 +88,8 @@
 ### [Logikai függvények](resource-group-template-functions-logical.md)
 ### [Numerikus függvények](resource-group-template-functions-numeric.md)
 ### [Erőforrásfüggvények](resource-group-template-functions-resource.md)
-### [Karakterlánc-függvények](resource-group-template-functions-string.md)
+### 
+  [Sztringfüggvények](resource-group-template-functions-string.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)

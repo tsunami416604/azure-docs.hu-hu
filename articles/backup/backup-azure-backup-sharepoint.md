@@ -1,24 +1,19 @@
 ---
-title: "A DPM vagy az Azure Backup server védelmének Azure SharePoint-farm |} Microsoft Docs"
-description: "Ez a cikk a DPM vagy az Azure Backup server védelmének SharePoint-farm áttekintést nyújt az Azure-bA"
+title: A DPM vagy az Azure Backup server védelmének Azure SharePoint-farm
+description: Ez a cikk a DPM vagy az Azure Backup server védelmének SharePoint-farm áttekintést nyújt az Azure-bA
 services: backup
-documentationcenter: 
 author: adigan
 manager: Nkolli1
-editor: 
-ms.assetid: e0c0c252-dc1d-4072-b777-7222c13950b0
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/29/2016
-ms.author: adigan;giridham;jimpark;trinadhk;markgal
-ms.openlocfilehash: 1bbf3233169fa9966e3dd0fac18ee448f26caa6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 728850fe70fb3f9e64b0fa25b4ceebb1a1b51cd4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606653"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 Akkor készítsen biztonsági másolatot egy SharePoint-farm számára a Microsoft Azure hasonlóan, amely a biztonsági mentést más adatforrások a System Center Data Protection Manager (DPM) használatával. Azure biztonsági mentés naponta létrehozásához a biztonsági mentés ütemezése rugalmasságot biztosít, heti, havi vagy éves biztonsági mentést mutat, és lehetővé teszi az adatmegőrzési házirend-beállítások a különféle biztonsági mentési pontok. A DPM lehetővé teszi a helyi lemez másolat gyors helyreállítási idő célkitűzés (RTO) tárolására és gazdaságos, hosszú távú megőrzési Azure másolat tárolja.
@@ -144,7 +139,7 @@ Miután konfigurálta a DPM és a SharePoint-farm, amint azt korábban, SharePoi
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a beállításokat a a **összegzés** lapon, majd **csoport létrehozása**. Egy sikeres üzenet jelenik meg a védelmi csoport létrehozása után.
     
-    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>Egy SharePoint-elem visszaállítása a lemezről DPM használatával
 A következő példában a *helyreállítás SharePoint-elem* véletlenül törölve lett, és helyre szeretné állítani.
@@ -243,7 +238,7 @@ V: Igen, az elem állíthatók helyre az eredeti SharePoint-webhelyre.
 K: helyreállíthatók a SharePoint-adatbázist az eredeti helyre, ha a SharePoint SQL AlwaysOn használatára van konfigurálva?<br>
 V:, mert a SharePoint-adatbázisok vannak konfigurálva az SQL AlwaysOn, ezeket nem lehet módosítani kivéve, ha a rendelkezésre állási csoport eltávolítása. Ennek eredményeképpen az a DPM nem tudja visszaállítani az adatbázis az eredeti helyre. Helyreállíthatja az SQL Server-adatbázis egy másik SQL Server-példányhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információk a DPM védelme a SharePoint - lásd [videó sorozat - a SharePoint védelme a DPM](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Felülvizsgálati [kibocsátási megjegyzések a System Center 2012 – Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * Felülvizsgálati [kibocsátási megjegyzések a Data Protection Manager a System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)

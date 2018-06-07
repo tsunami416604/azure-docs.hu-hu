@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: 5805dbc0a4831f14a4f9a98943a7611fa49961eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594951"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Oktatóanyag: A Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) Azure SQL elérésére használhat.
 
@@ -269,11 +270,9 @@ Másik lehetőségként gyors módja, ha a végpontok közötti telepítés ír�
 
 Vizsgálja meg az a `$DataSet.Tables[0]` a lekérdezés eredményeinek megtekintése.  Gratulálunk, már lekérdezett az adatbázist egy virtuális gép MSI használatával és anélkül, hogy hitelesítő adatok!
 
-## <a name="related-content"></a>Kapcsolódó tartalom
+## <a name="next-steps"></a>További lépések
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
-- További információ [Azure SQL támogatása az Azure AD-alapú hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
-- További információ [konfigurálása az Azure SQL támogatása az Azure AD-alapú hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).
-- További információ [hitelesítési és hozzáférés az SQL server](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+Ebben az oktatóprogramban megismerte Azure SQL-kiszolgáló eléréséhez felügyelt Szolgáltatásidentitás létrehozása.  Az Azure SQL Server webhelyen olvashat:
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+> [!div class="nextstepaction"]
+>[Az Azure SQL Database szolgáltatásban](/azure/sql-database/sql-database-technical-overview)

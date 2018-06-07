@@ -1,10 +1,10 @@
 ---
-title: "Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazás az Azure App Service Mobile Apps szolgáltatással |} Microsoft Docs"
-description: "Megtudhatja, hogyan küldhet leküldéses értesítéseket az Apache Cordova-alkalmazást a Mobile Apps segítségével."
+title: Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazás az Azure App Service Mobile Apps szolgáltatással |} Microsoft Docs
+description: Megtudhatja, hogyan küldhet leküldéses értesítéseket az Apache Cordova-alkalmazást a Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6af5fa51f2e6553431b9f0aa2dbb368651e7e209
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13c1a53cfa3f998c9e3fa3ee1ee2dcec37357095
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597994"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Leküldéses értesítések hozzáadása az Apache Cordova-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -33,13 +34,13 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik-e egy Apache Cordova-alkalmaz�
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-* Számítógép, amelyen fut [Visual Studio Community 2015] [ 2] vagy újabb verzió 
-* [Visual Studio Tools for Apache Cordova][4]
+* Számítógép, amelyen fut [Visual Studio Community 2015] [ 2] vagy újabb verzió
+* [Apache Cordova Visual Studio eszközök][4]
 * Egy [aktív Azure-fiók][3]
 * A befejezett [Apache Cordova gyors üzembe helyezés] [ 5] projekt
 * (Android) A [Google-fiók] [ 6] egy hitelesített e-mail címmel
 * (csak iOS) Egy [Apple Fejlesztőprogrambeli tagság] [ 7] és egy iOS-eszközön (iOS-szimulátor nem támogatja a leküldéses értesítések)
-* (Windows) A [Windows áruház fejlesztői fiókjába] [ 8] és egy Windows 10 rendszerű eszköz
+* (Windows) A [Microsoft áruház fejlesztői fiókjába] [ 8] és egy Windows 10 rendszerű eszköz
 
 ## <a name="configure-hub"></a>Egy értesítési központ konfigurálása
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]

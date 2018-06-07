@@ -1,32 +1,44 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: Első lépések |} Microsoft Docs"
-description: "Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával"
+title: 'Az Azure Active Directory tartományi szolgáltatások: Első lépések |} Microsoft Docs'
+description: Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ab2897eefd1c394ba0b10ba6fce3e11af4a0b2a5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587960"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
 Ez a cikk bemutatja, hogyan engedélyezze az Azure Active Directory tartományi szolgáltatások (az Azure Active Directory tartományi szolgáltatások) az Azure portál használatával.
 
+## <a name="before-you-begin"></a>Előkészületek
+A cikkben szereplő feladatok elvégzéséhez szüksége:
+
+* Egy érvényes **Azure-előfizetés**.
+* Egy **Azure AD-címtár** -vagy egy helyszíni címtár vagy egy csak felhőalapú directory szinkronizálva.
+* A **Azure-előfizetéssel kell rendelni az Azure AD-címtár**.
+* Szüksége **globális rendszergazda** az Azure AD tartományi szolgáltatások engedélyezése az Azure AD-címtár jogosultsággal.
+
+
+## <a name="enable-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatások engedélyezése
 Elindíthatja a **engedélyezése az Azure AD tartományi szolgáltatások** varázslóban kövesse az alábbi lépéseket:
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
-2. Kattintson a bal oldali ablaktáblában **hozzon létre egy erőforrást**.
+2. A bal oldali panelen kattintson az **Erőforrás létrehozása** elemre.
 3. Az a **új** írja be **tartományi szolgáltatások** azokat a keresési sávon.
 
     ![Keresse meg a tartományi szolgáltatások](./media/getting-started/search-domain-services.png)
@@ -39,7 +51,7 @@ Elindíthatja a **engedélyezése az Azure AD tartományi szolgáltatások** var
 
 
 ## <a name="task-1-configure-basic-settings"></a>1. feladat: konfigurálja az alapbeállításokat
-Az a **alapjai** lap a varázslóban megadhatja a DNS-tartománynév, a felügyelt tartomány számára. Választhatja azt is, az erőforráscsoport és az Azure-beli hely, amelyhez a felügyelt tartományra kell telepíteni.
+Az a **alapjai** lap a varázslóban adja meg a DNS-tartománynév, a felügyelt tartomány számára. Választhatja azt is, az erőforráscsoport és az Azure-beli hely, amelyhez a felügyelt tartományra kell telepíteni.
 
 ![Alapvető beállítások konfigurálása](./media/getting-started/domain-services-blade-basics.png)
 
@@ -59,11 +71,11 @@ Az a **alapjai** lap a varázslóban megadhatja a DNS-tartománynév, a felügye
 
 2. Válassza ki az Azure **előfizetés** a szeretné létrehozni a felügyelt tartományra.
 
-3. Válassza ki a **erőforráscsoport** a felügyelt tartományra tartozik kell. Ön választhatja a **hozzon létre új** vagy **meglévő** lehetőséget választhat ki az erőforráscsoportot.
+3. Válassza ki a **erőforráscsoport** a felügyelt tartományra tartozik kell. Válassza a **hozzon létre új** vagy **meglévő** lehetőséget választhat ki az erőforráscsoportot.
 
 4. Válassza ki az Azure **hely** a a felügyelt tartományra meg kell létrehozni. Az a **hálózati** oldalon a varázsló csak virtuális hálózatok, amelyek a kijelölt helyre látja.
 
-5. Amikor elkészült, kattintson a **OK** a áthelyezése a **hálózati** a varázsló.
+5. Kattintson a **OK** a áthelyezése a **hálózati** a varázsló.
 
 
 ## <a name="next-step"></a>Következő lépés

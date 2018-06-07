@@ -1,22 +1,19 @@
 ---
 title: A Power BI - Azure használatával távoli figyelési adatok megjelenítése |} Microsoft Docs
 description: Ez az oktatóanyag a Power BI Desktop és használja Cosmos DB integerate adatok egy távoli figyelésére szolgáló megoldás a testreszabott képi megjelenítés be. A felhasználók a saját egyéni irányítópultok építhetnek és megosztásához azokat nem a megoldás a felhasználók számára.
-services: iot-suite
-suite: iot-suite
 author: asdonald
 manager: hegate
 ms.author: asdonald
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 55feb56008a54676bd0af332e251da94a9653aaf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627790"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>A Power BI használatával távoli figyelési adatok megjelenítése
 
@@ -105,7 +102,7 @@ Emellett érdemes [adatok frissítése](https://docs.microsoft.com/en-us/power-b
 
 Ebben a cikkben megtanulta, megjelenítheti a Power BI használatával távoli figyelési adatok kapcsolatos
 
-A távoli felügyeleti megoldás testreszabásával kapcsolatos további információkért lásd:
+A távoli figyelésére szolgáló megoldás testreszabásával kapcsolatos további információkért lásd:
 
 * [A távoli figyelési megoldást igényelnek felhasználói felület testreszabása](iot-accelerators-remote-monitoring-customize.md)
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)

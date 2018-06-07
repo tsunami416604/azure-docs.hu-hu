@@ -17,11 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 90c70837b3afb589e5a503681aa9cd7cf1dae930
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594114"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Ismerkedés az Azure AD Node.js webalkalmazás
 Jelen példában használjuk a Passport:
@@ -61,6 +62,10 @@ Az elkészült alkalmazást is megtalálja, valamint az oktatóanyag végén.
 
 6. Miután regisztrálta, az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Ez az érték kell a következő szakaszokban, ezért másolja az alkalmazás oldalról.
 7. Az a **beállítások** -> **tulajdonságok** az alkalmazás lapján frissítse a App ID URI. A **App ID URI** az alkalmazás egyedi azonosítója. Az egyezmény a formátumának a használatára `https://<tenant-domain>/<app-name>`, például: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+8. A titkos kulcs létrehozásához kövesse a 4. lépés a [hozzáadása az alkalmazás hitelesítő adatait, vagy webes API-k hozzáférési engedélye a](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+
+   > [!IMPORTANT]
+   > Másolja az alkalmazás kulcs értéke. Ez az az érték a `clientSecret`, amely szüksége lesz **3. lépés** alatt. 
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>2. lépés: A címtár Előfeltételek felvétele
 1. A parancssorból módosítsa a könyvtárat a gyökérmappára, ha már nem létezik, és futtassa a következő parancsokat:

@@ -1,12 +1,12 @@
 ---
-title: "Python konfigurálása az Azure App Service Web Apps alkalmazások"
-description: "Ez az oktatóanyag leírja a szerzői műveletekhez és az alapszintű webes kiszolgáló átjáró felület (WSGI) kompatibilis Python alkalmazást az Azure App Service Web Apps beállításait."
+title: Python konfigurálása az Azure App Service Web Apps alkalmazások
+description: Ez az oktatóanyag leírja a szerzői műveletekhez és az alapszintű webes kiszolgáló átjáró felület (WSGI) kompatibilis Python alkalmazást az Azure App Service Web Apps beállításait.
 services: app-service
 documentationcenter: python
 tags: python
 author: huguesv
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598640"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Python konfigurálása az Azure App Service Web Apps alkalmazások
 Ez az oktatóanyag ismerteti, szerzői és egy alapszintű Web Server átjáró felület (WSGI) kompatibilis Python alkalmazást beállításának beállítások [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -29,9 +30,9 @@ Git üzemelő példányt, például a virtuális környezet és a csomag telepí
 ## <a name="bottle-django-or-flask"></a>Bottle, a Django vagy Flask?
 Az Azure piactéren a Bottle, a Django és a Flask keretrendszerek sablonjait tartalmazza. Ha az első webalkalmazás az Azure App Service fejleszt, létrehozhat egy gyorsan az Azure-portálon:
 
-* [Webalkalmazások létrehozása a Bottle](https://portal.azure.com/#create/PTVS.Bottle)
-* [Webalkalmazások létrehozása a djangóval](https://portal.azure.com/#create/PTVS.Django)
-* [Webalkalmazások létrehozása a Flask](https://portal.azure.com/#create/PTVS.Flask)
+* [Webes alkalmazás Bottle](https://portal.azure.com/#create/PTVS.Bottle)
+* [A Django webes alkalmazás](https://portal.azure.com/#create/PTVS.Django)
+* [Linux Flask webes alkalmazás](https://portal.azure.com/#create/PTVS.FlaskLinux)
 
 ## <a name="web-app-creation-on-azure-portal"></a>Webalkalmazás létrehozása az Azure-portálon
 Ez az oktatóanyag azt feltételezi, hogy egy meglévő Azure-előfizetés és az Azure-portál eléréséhez.

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD Connect: Áteresztő hitelesítés – intelligens zárolás |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan Azure Active Directory (Azure AD) áteresztő hitelesítés védje a találgatásos jelszó támadások ellen, a felhőben a helyszíni fiókok"
+title: 'Az Azure AD Connect: Áteresztő hitelesítés – intelligens zárolás |} Microsoft Docs'
+description: Ez a cikk ismerteti, hogyan Azure Active Directory (Azure AD) áteresztő hitelesítés védje a találgatásos jelszó támadások ellen, a felhőben a helyszíni fiókok
 services: active-directory
-keywords: "Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést."
-documentationcenter: 
+keywords: Az Azure AD Connect áteresztő hitelesítés, telepítés Active Directory szükséges összetevőket az Azure AD, SSO, egyszeri bejelentkezést.
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9477d47824213d7ea15bcf6c6b615a220bae2e48
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 73a34809b354eb38f44656f8d7dd598a8e640857
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591313"
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Az Azure Active Directory áteresztő hitelesítés: Az intelligens zárolás
 

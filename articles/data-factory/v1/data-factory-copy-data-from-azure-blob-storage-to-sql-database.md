@@ -1,25 +1,26 @@
 ---
-title: "Adatok másolása SQL adatbázis - Azure Blob Storage |} Microsoft Docs"
-description: "Az oktatóanyag bemutatja, hogyan lehet egy Azure Data Factory-folyamathoz másolási tevékenység segítségével adatok másolása az Blob-tároló az SQL-adatbázis."
+title: Adatok másolása SQL adatbázis - Azure Blob Storage |} Microsoft Docs
+description: Az oktatóanyag bemutatja, hogyan lehet egy Azure Data Factory-folyamathoz másolási tevékenység segítségével adatok másolása az Blob-tároló az SQL-adatbázis.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3135c8bf6316125a164c06630bc7607a92621b26
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6575a68423df97d7727401b79ded44545a43afca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621105"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: Adatok másolása Blob-tároló az SQL Database Data Factory használatával
 > [!div class="op_single_selector"]
@@ -95,7 +96,7 @@ Most, az Azure blob storage és előkészítése Azure SQL-adatbázis az oktató
     ```
 2. Az [Azure Storage Explorer](http://storageexplorer.com/) vagy egy hasonló eszköz használatával hozza létre az **adftutorial** tárolót, és töltse fel az **emp.txt** fájlt a tárolóba.
 
-    ![Azure Storage Explorer. A Blob storage az SQL database-adatok másolása](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
+    ![Az Azure Storage Explorer. A Blob storage az SQL database-adatok másolása](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. A következő SQL-szkript használatával hozza létre az **emp** táblát az Azure SQL Database-ben.  
 
     ```SQL

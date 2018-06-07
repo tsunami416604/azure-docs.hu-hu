@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594227"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 Szűrés segítségével szabályozhatja mely objektumok jelennek meg az Azure Active Directory (Azure AD) a helyi címtárban lévő. Az alapértelmezett konfiguráció összes objektumok minden tartományban a konfigurált erdők vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók Office 365-munkaterhelések, például az Exchange Online és Skype vállalati verzióra, a kihasználhassa a teljes globális címlista, hogy e-mailek küldése és mindenki hívja. Az alapértelmezett konfigurációnál akkor ugyanazt a felhasználói élményt, hogy azok az Exchange vagy a Lync egy helyszíni példánnyal.
@@ -33,7 +35,7 @@ Egyes esetekben azonban Ön szükséges néhány módosítást az alapértelmeze
 Ez a cikk bemutatja, hogyan konfigurálhatja a különböző szűrési módszereket.
 
 > [!IMPORTANT]
-> A Microsoft nem támogatja a módosítása, vagy az Azure AD Connect szinkronizálási kívül a hivatalosan ismertetett műveletek működő. Ezek a műveletek okozhatja az Azure AD Connect szinkronizálási szolgáltatás inkonzisztens vagy nem támogatott állapotban. Ennek eredményeképpen a Microsoft nem adhatók meg a technikai támogatási szolgálathoz az ilyen környezetekben.
+> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Minden ilyen művelet azt eredményezheti, hogy az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotba kerül. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
 
 ## <a name="basics-and-important-notes"></a>Alapvető tudnivalók és fontos megjegyzések
 Az Azure AD Connect szinkronizálási szolgáltatás engedélyezheti a bármikor szűrést. Indítsa el a címtár-szinkronizálás alapértelmezett konfigurációja, és a szűrés konfigurálása, ha a program kiszűri az objektumok már nem szinkronizálódnak az Azure AD. Ez a változás miatt objektumokat az Azure ad-ben korábban szinkronizált, de majd szűrve voltak törlődnek az Azure ad-ben.

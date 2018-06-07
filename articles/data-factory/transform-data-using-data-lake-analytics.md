@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e55249ed187ad9fa74a39634bbb254c9b0b8b8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1bf030d7eaba5c8aa608c504f65c5ebf291eab3d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619694"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,11 +40,11 @@ A következő táblázat ismerteti a JSON-definícióból használt általános 
 
 | Tulajdonság                 | Leírás                              | Szükséges                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **Típusa**                 | A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. | Igen                                      |
+| **type**                 | A type tulajdonságot kell megadni: **AzureDataLakeAnalytics**. | Igen                                      |
 | **Fióknév**          | Az Azure Data Lake Analytics-fiók neve.  | Igen                                      |
 | **dataLakeAnalyticsUri** | Az Azure Data Lake Analytics URI.           | Nem                                       |
-| **subscriptionId**       | Azure subscription ID                    | Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
-| **resourceGroupName**    | Azure erőforráscsoport-név                | Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
+| **subscriptionId**       | Az Azure előfizetés-azonosító                    | Nem (Ha nincs megadva, a data factory-előfizetése szerepel). |
+| **resourceGroupName**    | Azure-erőforráscsoport neve                | Nem (Ha nincs megadva, az adat-előállító erőforráscsoport szerepel). |
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 Az Azure Data Lake Analytics kapcsolódó szolgáltatás egy szolgáltatás egyszerű hitelesítés az Azure Data Lake Analytics szolgáltatáshoz való kapcsolódáshoz szükséges. Szolgáltatás egyszerű hitelesítést használ, egy alkalmazás entitás regisztrálni kell az Azure Active Directory (Azure AD), és a Data Lake Analytics és a Data Lake Store használ hozzáférést engedélyez. Részletes útmutató: [szolgáltatások közötti hitelesítési](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő érték, melynek segítségével határozza meg a társított szolgáltatás:

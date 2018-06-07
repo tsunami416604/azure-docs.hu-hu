@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 8c240e1a654c80c34f6b612d9126058e5d67c4c2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b7f654fb3b24954bb1c9222a4e97dc4b6844411c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619031"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk az Azure Data Factory szolgáltatásnak 2 verziójára vonatkozik. Adat-előállító gyakran feltett kérdésekre adott válaszok biztosít.  
@@ -74,7 +75,7 @@ Ha szeretné a SSIS-munkaterhelések, hozzon létre egy adat-előállító 2-es 
 Ha a tapasztalt felhasználók és programozási felület keres, 2-es biztosít, amelyekkel szerzői, kezelése vagy a kedvenc IDE figyelje az adatcsatornák SDK-k széles skáláját.
 
 - **.NET SDK**: A .NET SDK frissült a 2. verzióban. 
-- **PowerShell**: A PowerShell-parancsmagok frissültek a 2. verzióban. A 2. verzió parancsmagjainak nevében szerepel a *DataFactoryV2* tag. For example, *Get-AzureRmDataFactoryV2*. 
+- **PowerShell**: A PowerShell-parancsmagok frissültek a 2. verzióban. A 2. verzió parancsmagjainak nevében szerepel a *DataFactoryV2* tag. Például *Get-AzureRmDataFactoryV2*. 
 - **Python SDK**: Ez az SDK a 2. verzióban lett bevezetve.
 - **REST API**: A REST API frissült a 2. verzióban.  
 
@@ -116,7 +117,7 @@ Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. Használ
 Adatkészletek képviselő adatstruktúrák belül az adattároló, amely egyszerűen mutasson, vagy a használni kívánt a tevékenység bemeneti vagy kimeneti, adatokra hivatkoztak. 
 
 ### <a name="linked-services"></a>Társított szolgáltatások
-A társított szolgáltatások nagyon hasonlóak a kapcsolati karakterláncokhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Azt gondolja, hogy így: összekapcsolt szolgáltatás létesítendő kapcsolatot az adatforrás és adatkészlet jelenti. az adatok szerkezete. Például az Azure tárolás társított szolgáltatásának adja meg a kapcsolati karakterlánc csatlakozni az Azure Storage-fiók. És egy Azure-Blob adatkészlet határozza meg, a blob-tároló és az adatokat tartalmazó mappát.
+A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Azt gondolja, hogy így: összekapcsolt szolgáltatás létesítendő kapcsolatot az adatforrás és adatkészlet jelenti. az adatok szerkezete. Például az Azure tárolás társított szolgáltatásának adja meg a kapcsolati karakterlánc csatlakozni az Azure Storage-fiók. És egy Azure-Blob adatkészlet határozza meg, a blob-tároló és az adatokat tartalmazó mappát.
 
 Társított szolgáltatások adat-előállítóban két célja van:
 

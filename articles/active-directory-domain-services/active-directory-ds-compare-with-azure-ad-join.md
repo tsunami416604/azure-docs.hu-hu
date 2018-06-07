@@ -1,24 +1,26 @@
 ---
-title: "Az Azure AD Join és az Azure Active Directory tartományi szolgáltatások összehasonlítása |} Microsoft Docs"
-description: "Az Azure AD Join és az Azure AD tartományi szolgáltatások érdemesebb"
+title: Az Azure AD Join és az Azure Active Directory tartományi szolgáltatások összehasonlítása |} Microsoft Docs
+description: Az Azure AD Join és az Azure AD tartományi szolgáltatások érdemesebb
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: fb28c7a66d26119444dd720c2e134f2818d46cfc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f2d09e896a41647ef3211a754a4c7aa403d8cea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587858"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Válasszon az Azure Active Directory join és az Azure Active Directory tartományi szolgáltatások
 Ez a cikk ismerteti az Azure Active Directory (AD) join és az Azure AD tartományi szolgáltatások és a választja, a használati esetek alapján segítségével közötti különbséget.
@@ -62,7 +64,7 @@ A tartományhoz csatlakoztatott számítógépeken a felhasználói hitelesíté
 | A nagy... | Végfelhasználói hordozható vagy asztali eszközök | Az Azure-ban telepített kiszolgáló virtuális gépek |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 ### <a name="learn-more-about-azure-ad-domain-services"></a>További tudnivalók az Azure AD tartományi szolgáltatások
 * [Az Azure AD tartományi szolgáltatások áttekintése](active-directory-ds-overview.md)
 * [Szolgáltatások](active-directory-ds-features.md)

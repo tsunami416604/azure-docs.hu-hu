@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 4c857af02e104940559cb86daa3ccd208d8e35a1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 763b13849470079e24aac6aff45584bac33403f0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620537"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factoryben az integrációs futásidejű figyelése  
 **Integrációs futásidejű** a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs szolgáltatásainak különböző hálózati környezetek között. Integráció futtatókörnyezetek adat-előállító által kínált három típusa van:
@@ -75,7 +76,7 @@ A következő táblázat ismerteti tulajdonságainak figyelési **minden csomóp
 | Name (Név) | Az önálló üzemeltetett integrációs futásidejű és a vele társított csomópontok nevét. Csomópont egy a helyi Windows-számítógépen, amely rendelkezik az önálló üzemeltetett integrációs futásidejű telepítve van-e. |  
 | status | A teljes önálló üzemeltetett integrációs futásidejű és minden egyes csomópont állapotát. Példa: Online/Offline/korlátozott/stb. A fenti állapotok megjelenése kapcsolatos információkért tekintse meg a következő szakaszban. | 
 | Verzió | Önálló üzemeltetett integrációs futásidejű és minden csomóponton verziója. Az önálló üzemeltetett integrációs futásidejű verzióját a csoportban lévő csomópontok többsége verziója alapján határozza meg. Csomópontok eltérő verziójú a önálló üzemeltetett integrációs futásidejű beállítása esetén csak a csomópontok a azonos verziószámú, mint a logikai önállóan üzemel integrációs futásidejű függvény megfelelően. Mások korlátozott módban van, és manuálisan kell frissíteni, (csak abban az esetben az automatikus frissítés sikertelen lesz). | 
-| Rendelkezésre álló memória | Rendelkezésre álló memória egy önálló üzemeltetett integrációs futásidejű csomóponton. Ez az érték közel valós idejű pillanatképet. | 
+| Elérhető memória | Rendelkezésre álló memória egy önálló üzemeltetett integrációs futásidejű csomóponton. Ez az érték közel valós idejű pillanatképet. | 
 | Processzorkihasználtság | Egy önálló üzemeltetett integrációs futásidejű csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. |
 | Hálózatkezelés (In/Out) | Hálózathasználat egy önálló üzemeltetett integrációs futásidejű csomópont. Ez az érték közel valós idejű pillanatképet. | 
 | Egyidejűleg futó feladatainak (futtató / Limit) | Feladatok vagy minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyes csomópontok maximális egyidejűleg futó feladatainak. Ez az érték van megadva a mérete alapján. Egyidejű feladatok végrehajtásának speciális forgatókönyvekhez, ahol Processzor/memória/hálózati alatt szükség, de tevékenységek vannak időtúllépés miatt növelheti a korlát növelhető. Ez a funkció egy egy csomópontos önálló üzemeltetett integrációs futásidejű is érhető el. |
@@ -187,7 +188,7 @@ Azure-SSIS integrációs futásidejű rendszere egy teljes körűen felügyelt f
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Állapot (teljes Azure-SSIS integrációs futásidejű)
 
-| Általános állapota | Leírás | 
+| Teljes állapot | Leírás | 
 | -------------- | ----------- | 
 | Kezdeti | Az Azure-SSIS-integrációs futásidejű csomópont még nem lettek lefoglalva/előkészítve. | 
 | Indítás | Az Azure-SSIS-integrációs futásidejű csomópontjai folyamatban van a lefoglalt/készített, és számlázási megkezdődött. |
@@ -199,7 +200,7 @@ További Azure-SSIS integrációs futásidejű információt a következő cikke
 
 - [Azure-SSIS integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást általában többek között az Azure-SSIS infravörös integrációs futtatókörnyezetek 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk kibővíti az oktatóanyag, és utasításokkal szolgál az Azure SQL felügyelt példány (előzetes verzió) használatával, és az infravörös csatlakoztatása egy virtuális hálózatot. 
+- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál az Azure SQL felügyelt példányának (előzetes verzió) használatához, illetve az integrációs modul virtuális hálózathoz történő csatlakoztatásához. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz (VNethez) való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a VNet oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson a virtuális hálózathoz. 
 

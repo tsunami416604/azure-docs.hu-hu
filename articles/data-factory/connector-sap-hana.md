@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 96d9da90114ae392c3a9e1c22d8e993fd787ada8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3afdcbfc2d1d6f40db0f0336be161a06908cb883
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617997"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával SAP HANA
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -167,18 +168,18 @@ Amikor adatokat másol SAP HANA, a következő megfeleltetéseket szolgálnak az
 |:--- |:--- |
 | ALPHANUM | Karakterlánc |
 | BIGINT | Int64 |
-| BLOB | Byte] |
+| A BLOB | Byte] |
 | LOGIKAI ÉRTÉK | Bájt |
 | CLOB | Byte] |
 | DATE | DateTime |
 | DECIMÁLIS | Decimális |
-| DUPLA | Egyedülálló |
+| DUPLA | Önálló |
 | INT | Int32 |
 | NVARCHAR | Karakterlánc |
-| VALÓS | Egyedülálló |
+| VALÓS | Önálló |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| IDŐ | TimeSpan |
+| IDŐ | A TimeSpan |
 | IDŐBÉLYEG | DateTime |
 | TINYINT | Bájt |
 | VARCHAR | Karakterlánc |

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: cf955c15b1dfe3ef0c46ab5023035986da5c5c99
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c75ec11fc11febbd896c715ead9f347062facb44
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directoryval integrált ServiceNow
 
@@ -271,10 +272,10 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > [!NOTE]
     > Konfigurálhatja az Azure AD vagy az Azure AD felhasználói azonosító (egyszerű felhasználónév), vagy az e-mail cím a SAML-jogkivonat egyedi azonosítóként kibocsátásához címen a **ServiceNow > attribútumok > egyszeri bejelentkezés** szakasza az Azure-portálon a kívánt mező a leképezési és a **nameidentifier** attribútum. A kijelölt attribútum (például az egyszerű felhasználónév) Azure AD-ben tárolt érték meg kell egyeznie a megadott mező (például felhasználónév) ServiceNow tárolt érték
 
-     e. A **x509 tanúsítvány**, a tanúsítványt az előző lépésben létrehozott sorolja fel.
+    e. A **x509 tanúsítvány**, a tanúsítványt az előző lépésben létrehozott sorolja fel.
 
-     > [!NOTE]
-     > A ServiceNow nem teszi lehetővé a kiállító terjesztési hely aktiválásának nélkül kapcsolat tesztelése gombra kattint, bírálja felül, azonos, hajtsa végre az alábbi lépéseket.
+    > [!NOTE]
+    > A ServiceNow nem teszi lehetővé a kiállító terjesztési hely aktiválásának nélkül kapcsolat tesztelése gombra kattint, bírálja felül, azonos, hajtsa végre az alábbi lépéseket.
 
 22. Kattintson a menü ikonra a konfigurálás részeként létrehozott új Identitásszolgáltatóként az és a listában válassza ki a **sys_id másolása**
 
@@ -443,7 +444,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     > Konfigurálhatja az Azure AD vagy az Azure AD felhasználói azonosító (egyszerű felhasználónév), vagy az e-mail cím a SAML-jogkivonat egyedi azonosítóként kibocsátásához címen a **ServiceNow > attribútumok > egyszeri bejelentkezés** szakasza az Azure-portálon a kívánt mező a leképezési és a **nameidentifier** attribútum. A kijelölt attribútum (például az egyszerű felhasználónév) Azure AD-ben tárolt érték meg kell egyeznie a megadott mező (például felhasználónév) ServiceNow tárolt érték
 
     f. Kattintson a **Save** (Mentés) gombra.
- 
+
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -475,10 +476,13 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="create-a-servicenow-test-user"></a>A ServiceNow tesztfelhasználó létrehozása
 
-Ebben a szakaszban a ServiceNow Britta Simon nevű felhasználó hoz létre. Ha nem tudja a felhasználó hozzáadása a ServiceNow vagy ServiceNow Express fiókját, forduljon a [ServiceNow ügyfél-támogatási csoport](https://www.servicenow.com/support/contact-support.html)
+Ez a szakasz célja a ServiceNow Britta Simon nevű felhasználó létrehozásához. A ServiceNow támogatja automatikus a felhasználók átadása, amely alapértelmezés szerint van engedélyezve. További részletek találhatók [Itt](active-directory-saas-servicenow-provisioning-tutorial.md) automatikus felhasználólétesítés konfigurálásához.
+
+> [!NOTE]
+> Hozza létre a felhasználó manuálisan kell, ha kapcsolatba kell [ServiceNow ügyfél-támogatási csoport](https://www.servicenow.com/support/contact-support.html)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
@@ -521,6 +525,8 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
+* [A felhasználók átadása konfigurálása](active-directory-saas-servicenow-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -535,4 +541,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
-

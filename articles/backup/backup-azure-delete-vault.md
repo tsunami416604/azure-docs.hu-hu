@@ -1,24 +1,19 @@
 ---
-title: " Az Azure Recovery Services-tároló törlése |} Microsoft Docs "
-description: "Ez a cikk azt ismerteti, hogyan Recovery Services-tároló törlése. A cikk a hibaelhárítási lépések, próbálja meg törölni a tárolót, de nem tartalmaz."
+title: Az Azure Recovery Services-tároló törlése "
+description: Ez a cikk azt ismerteti, hogyan Recovery Services-tároló törlése. A cikk a hibaelhárítási lépések, próbálja meg törölni a tárolót, de nem tartalmaz.
 services: service-name
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 5fa08157-2612-4020-bd90-f9e3c3bc1806
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 4f4a92159b01b197984130c15195419e1b166fd3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: markgal
+ms.openlocfilehash: 844a70aa6fe003c6ad5816aaec9c32db9104c620
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605340"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services-tároló törlése
 Ez a cikk ismerteti az Azure portálon Recovery Services-tároló törlése. Ha biztonsági mentési tárolóból, azok konvertált Recovery Services-tárolók.   
@@ -34,7 +29,7 @@ Ha már rendelkezik nyissa meg a Recovery Services-tároló, ugorjon a második 
 
 1. Nyissa meg az Azure-portálon, és az irányítópultról nyissa meg a törölni kívánt tárolót.
 
-   Ha még nem rendelkezik a Recovery Services-tároló rögzítve az irányítópulton, a központ menüben kattintson a **több szolgáltatások** írja be az erőforrások listájához, **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Recovery Services-tárolók**.
+   Ha még nem rendelkezik a Recovery Services-tároló rögzítve az irányítópulton, a központ menüben kattintson a **több szolgáltatások** írja be az erőforrások listájához, **Recovery Services**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **Helyreállítási tárak** elemre.
 
    ![Recovery Services-tároló létrehozása – 1. lépés](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
@@ -165,4 +160,4 @@ Ha több kiszolgálót a tárolóban regisztrált, számukra megjegyezhető neh�
     ![biztonságimásolat-felügyeleti kiszolgálók listája](./media/backup-azure-delete-vault/list-of-backup-management-servers.png)
 5. Kiszolgáló törlése a listából, kattintson a jobb gombbal a kiszolgáló nevét, és kattintson a **törlése**.
     A **törlése** menü megnyitása.
-6. Az a **törlése** menüben adja meg annak a kiszolgálónak a nevét. Ha hosszú a neve, másolja, és illessze be a biztonságimásolat-felügyeleti kiszolgálók listája. Kattintson a **törlése**.  
+6. Az a **törlése** menüben adja meg annak a kiszolgálónak a nevét. Ha hosszú a neve, másolja, és illessze be a biztonságimásolat-felügyeleti kiszolgálók listája. Ezután kattintson a **Törlés** gombra.  

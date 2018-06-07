@@ -3,16 +3,17 @@ title: Az Azure Analysis Services Diganostic naplózási |} Microsoft Docs
 description: További tudnivalók az Azure Analysis Services diagnosztikai naplózásának beállítása.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 396ee2fc132abb5fbfd29bf5fffe9b1388b9a964
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0baeca982cc19d327a58b7223555f2afcb4c35e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596719"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -29,7 +30,7 @@ Kiválaszthatja **motor**, **szolgáltatás**, és **metrikák** kategóriák.
 
 Kiválasztása **motor** naplózza az összes [Xevent](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events). Nem választhat ki egyéni események. 
 
-|Az XEvent kategóriák |esemény neve  |
+|Az XEvent kategóriák |Esemény neve  |
 |---------|---------|
 |Biztonsági naplózás    |   Naplózási bejelentkezés      |
 |Biztonsági naplózás    |   Kijelentkezési naplózása      |

@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: cdb406c5a0a314562ae886c797c5ebd9dc5f8796
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 66843a5dda9f7b31b2b4c79df895eaff904513e6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595580"
 ---
 # <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Kubernetes irányítópult Azure Kubernetes szolgáltatás (AKS)
 
@@ -37,7 +38,7 @@ A parancs létrehozza a fejlesztői rendszerhez és a Kubernetes API között el
 
 ## <a name="run-an-application"></a>Alkalmazás futtatása
 
-Kubernetes irányítópultján kattintson a **létrehozása** gombra a jobb felső ablakban. Nevezze el a központi telepítés a `nginx` , és írja be `nginx:latest` képek nevét. A **szolgáltatás**, jelölje be **külső** , és írja be `80` a port és a cél port.
+Kubernetes irányítópultján kattintson a **létrehozása** gombra a jobb felső ablakban. Nevezze el a központi telepítés a `nginx` , és írja be `nginx:latest` a kép Tárolónév. A **szolgáltatás**, jelölje be **külső** , és írja be `80` a port és a cél port.
 
 Ha elkészült, kattintson **telepítés** létrehozza a központi telepítést.
 

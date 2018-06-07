@@ -1,22 +1,19 @@
 ---
 title: A Maps-Azure geokódolás érvényességének |} Microsoft Docs
 description: További tudnivalók a Maps-Azure Geokódolás érvényességének
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: a7dc7a1dbf024b6d334ec374f78d5e912db3835c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6602453abd02bf91b135980b4d2c7f99ba60c236
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600289"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Az Azure Maps geokódolás érvényességének
 

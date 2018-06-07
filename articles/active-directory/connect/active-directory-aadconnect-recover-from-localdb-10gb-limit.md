@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Hogyan tudja elhárítani az LocalDB 10 GB-os korlát probléma |} Microsoft Docs"
-description: "Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás helyreállítása, ha 10 GB-os LocalDB probléma korlátozza."
+title: 'Az Azure AD Connect: Hogyan tudja elhárítani az LocalDB 10 GB-os korlát probléma |} Microsoft Docs'
+description: Ez a témakör ismerteti az Azure AD Connect szinkronizálási szolgáltatás helyreállítása, ha 10 GB-os LocalDB probléma korlátozza.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 41d081af-ed89-4e17-be34-14f7e80ae358
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b72f6730d32a71146781420923226fc521b5982b
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3ba491902444c9c05f997f854353206d78f2957d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591272"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Az Azure AD Connect: Hogyan tudja elhárítani az LocalDB 10 GB-os korlát
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk ismerteti a helyreállítási lépéseket.

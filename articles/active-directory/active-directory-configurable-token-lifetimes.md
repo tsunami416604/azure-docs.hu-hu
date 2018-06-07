@@ -16,11 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 086a2fde5905321da7d5689b6f1ee2f5139209ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588862"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -278,7 +279,7 @@ Ebben a példában a felhasználók a webalkalmazáson belüli gyakrabban hitele
 
 2.  A házirend hozzárendelése a szolgáltatásnevet. Is kell beszereznie a **ObjectId** a szolgáltatás rendszerbiztonsági tag. 
 
-    1.  A szervezet összes szolgáltatás rendszerbiztonsági tagok megtekintéséhez, lekérdezheti vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Emellett tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
+    1.  A szervezet összes szolgáltatás rendszerbiztonsági tagok megtekintéséhez, lekérdezheti vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Emellett tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
 
     2.  Ha rendelkezik a **ObjectId** , a szolgáltatás egyszerű, a következő parancsot:
 

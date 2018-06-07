@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD Connect: Frissítés egy korábbi verzióról |} Microsoft Docs"
-description: "Az Azure Active Directory Connect, beleértve a helyben frissítés és egy mozgó áttelepítési legújabb kiadására történő frissítése a különböző módszereket ismerteti."
+title: 'Az Azure AD Connect: Frissítés egy korábbi verzióról |} Microsoft Docs'
+description: Az Azure Active Directory Connect, beleértve a helyben frissítés és egy mozgó áttelepítési legújabb kiadására történő frissítése a különböző módszereket ismerteti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4d431a9e0fab8d46b244fd40178ede594c095893
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 1a6fe4fc7fd5f47bfd4bc4d9168f76c31c78b47b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592476"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Az Azure AD Connect: Frissítés egy korábbi verziójáról a legújabb verzióra
 Ez a témakör ismerteti a különböző módszereket, amelyek az Azure Active Directory (Azure AD) Connect telepítés frissítése a legújabb verzióra. Azt javasoljuk, hogy őrizze meg az Azure AD Connect kiadásainak aktuális. Is használhatja a lépéseket a [áttelepítési éppen](#swing-migration) szakaszában, amikor olyan jelentős konfigurációs módosítást hajt végre.
@@ -102,7 +104,7 @@ Előfordulhat, hogy esetekben nem célszerű ezeket a felülbírálásokat közv
 
    ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync01.png)
 
-2. Frissítés befejezése után futtassa az alábbi parancsmagot, hogy megtudja, milyen felülbírálások lettek hozzáadva:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. Frissítés befejezése után futtassa az alábbi parancsmagot, hogy megtudja, milyen felülbírálások lettek hozzáadva: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > A felülbírálások connector-specifikus. A következő példában a teljes importálás és a teljes szinkronizálás lépést lettek hozzáadva mind a helyszíni AD-összekötő és az Azure AD-összekötőt.
@@ -111,7 +113,7 @@ Előfordulhat, hogy esetekben nem célszerű ezeket a felülbírálásokat közv
 
 3. Jegyezze fel a meglévő felülbírálások hozzáadott.
    
-4. A felülbírálásokat is teljes importálást és teljes szinkronizálást egy tetszőleges összekötőn eltávolításához futtassa a következő parancsmagot:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. A felülbírálásokat is teljes importálást és teljes szinkronizálást egy tetszőleges összekötőn eltávolításához futtassa a következő parancsmagot: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Távolítsa el az összes összekötőt a felülbírálások, hajtsa végre a következő PowerShell-parancsfájlt:
 
@@ -122,12 +124,12 @@ Előfordulhat, hogy esetekben nem célszerű ezeket a felülbírálásokat közv
    }
    ```
 
-5. Az ütemező folytatásához futtassa az alábbi parancsmagot:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Az ütemező folytatásához futtassa az alábbi parancsmagot: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Ne felejtse el a szükséges szinkronizálásának lépései legkorábbi tetszés hajtható végre. Manuálisan hajtható végre ezeket a lépéseket a Synchronization Service Manager használatával, vagy adja hozzá a felülbírálások biztonsági másolatot, a Set-ADSyncSchedulerConnectorOverride parancsmaggal.
 
-A teljes importálás és a teljes szinkronizálás felülbírálásokat egy tetszőleges összekötő hozzáadásához futtassa az alábbi parancsmagot:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+A teljes importálás és a teljes szinkronizálás felülbírálásokat egy tetszőleges összekötő hozzáadásához futtassa az alábbi parancsmagot:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="next-steps"></a>További lépések
 További információ [a helyszíni identitások integrálása az Azure Active Directoryval](active-directory-aadconnect.md).

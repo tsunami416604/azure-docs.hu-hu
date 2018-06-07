@@ -1,24 +1,19 @@
 ---
-title: "Készítsen biztonsági mentést egy Exchange-kiszolgálóhoz az Azure biztonsági mentés az Azure Backup Server |} Microsoft Docs"
-description: "Útmutató: biztonsági mentése az Exchange-kiszolgáló Azure Backup szolgáltatás használatával az Azure Backup Server"
+title: Biztonsági mentése az Exchange-kiszolgáló Azure Backup szolgáltatás az Azure Backup Server
+description: 'Útmutató: biztonsági mentése az Exchange-kiszolgáló Azure Backup szolgáltatás használatával az Azure Backup Server'
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: e46557e8-2eaf-4ee0-99ea-00fbb8687dca
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d64c273a189b1fe2337c4430b156874e0adf54b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605960"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>Biztonsági mentése az Exchange-kiszolgáló Azure Backup szolgáltatás az Azure Backup Server
 Ez a cikk ismerteti, hogyan konfigurálása a Microsoft Azure Backup Server (MABS) biztonsági mentése egy Microsoft Exchange-kiszolgálóhoz az Azure-bA.  
@@ -109,5 +104,5 @@ Az online helyreállítási pontok, öt helyreállítási típusa van:
 
     ![Válassza ki az online replikációs](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure biztonsági mentési – gyakori kérdések](backup-azure-backup-faq.md)

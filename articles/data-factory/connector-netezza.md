@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617892"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Netezza
 
@@ -56,7 +57,7 @@ Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<data
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | Az illesztőprogram használja a kapcsolat az adattárolóhoz (SSL/TLS) biztonsági szintjét. Például `SecurityLevel=preferredSecured`. Támogatott értékek a következők:<br/>-Csak nem biztonságos (**onlyUnSecured**): az illesztőprogram nem használ SSL.<br/>- **Nem biztonságos (preferredUnSecured) (alapértelmezett) elsődleges**: a kiszolgáló lehetővé téve, ha az illesztőprogram nem SSL használatára. <br/>- **Előnyben részesített (preferredSecured) biztonságos**: a kiszolgáló lehetővé téve, ha az illesztőprogram SSL Protokollt használ-e. <br/>- **Csak biztonságos (onlySecured)**: az illesztőprogram nem kapcsolatot, ha az SSL-kapcsolat nem érhető el | Nem |
-| CA-tanúsítványfájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például `UseSystemTrustStore=<cert path>;`| Igen, ha az SSL engedélyezve |
+| CA-tanúsítványfájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például `CaCertFile=<cert path>;`| Igen, ha az SSL engedélyezve |
 
 **Példa**
 

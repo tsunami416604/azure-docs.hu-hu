@@ -1,24 +1,19 @@
 ---
-title: "Azure Backup-kiszolgáló SharePoint-farm mentésére az Azure-bA |} Microsoft Docs"
-description: "Azure Backup Server használatával készítsen biztonsági másolatot, és a SharePoint-adatok helyreállítása. A cikkben az adatokat a SharePoint-farm konfigurálásához, hogy a kívánt adatokat tárolhatja az Azure-ban. Védett SharePoint-adatok visszaállíthatja a lemezről, vagy az Azure-ból."
+title: Azure Backup server használatával készítsen biztonsági másolatot egy SharePoint-farm, hogy az Azure-bA
+description: Azure Backup Server használatával készítsen biztonsági másolatot, és a SharePoint-adatok helyreállítása. A cikkben az adatokat a SharePoint-farm konfigurálásához, hogy a kívánt adatokat tárolhatja az Azure-ban. Védett SharePoint-adatok visszaállíthatja a lemezről, vagy az Azure-ból.
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: 34ba87a4-91f1-4054-a4a1-272af1e15496
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 3ed000affd326eb1bd7c99773ec021ad6e03cc3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7b69e2558234159075161be7d58cc3695dfbbaf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606052"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 Akkor készítsen biztonsági másolatot egy SharePoint-farm Microsoft Azure hasonlóan, amely a biztonsági mentést más adatforrások a Microsoft Azure Backup Server (MABS) használatával. Azure biztonsági mentés naponta létrehozásához a biztonsági mentés ütemezése rugalmasságot biztosít, heti, havi vagy éves biztonsági mentést mutat, és lehetővé teszi az adatmegőrzési házirend-beállítások a különféle biztonsági mentési pontok. Helyi lemez másolat gyors helyreállítási idő célkitűzés (RTO) tárolására és gazdaságos, hosszú távú megőrzési Azure másolat tárolására is tartalmazza.
@@ -140,7 +135,7 @@ Miután konfigurálta a MABS és a SharePoint-farm, amint azt korábban, a Share
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. Tekintse át a beállításokat a a **összegzés** lapon, majd **csoport létrehozása**. Egy sikeres üzenet jelenik meg a védelmi csoport létrehozása után.
 
-    ![Összefoglalás](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Összegzés](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Egy SharePoint-elem visszaállítása a lemezről MABS használatával
 A következő példában a *helyreállítás SharePoint-elem* véletlenül törölve lett, és helyre szeretné állítani.
@@ -236,5 +231,5 @@ V: Igen, az elem állíthatók helyre az eredeti SharePoint-webhelyre.
 K: helyreállíthatók a SharePoint-adatbázist az eredeti helyre, ha a SharePoint SQL AlwaysOn használatára van konfigurálva?<br>
 V:, mert a SharePoint-adatbázisok vannak konfigurálva az SQL AlwaysOn, ezeket nem lehet módosítani kivéve, ha a rendelkezésre állási csoport eltávolítása. Ennek eredményeképpen az MABS nem tudja visszaállítani az adatbázis az eredeti helyre. Helyreállíthatja az SQL Server-adatbázis egy másik SQL Server-példányhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További tudnivalók a SharePoint védelme MABS – lásd [videó sorozat - a SharePoint védelme a DPM](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)

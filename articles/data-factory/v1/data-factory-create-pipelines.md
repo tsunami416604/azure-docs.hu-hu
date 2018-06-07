@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: be071c8138a6782ad144a42d52d737f248ff7a7b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f80a22c39608a9d9c67977f2d0493af7300f475b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622706"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Adatcsatornák és az Azure Data Factory tevékenységek
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -135,7 +136,7 @@ Az alábbi táblában a tevékenység JSON-definíciójában lévő tulajdonság
 | név | A tevékenység neve. Adjon meg egy, a tevékenység által végrehajtandó műveletet jelölő nevet. <br/><ul><li>A karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel (_) kell kezdődnie</li><li>Következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
 | leírás | Az adott tevékenységet vagy annak alkalmazását leíró szöveg |Igen |
 | type | A tevékenység típusa. Tekintse meg a [adatok mozgása tevékenységek](#data-movement-activities) és [adatok átalakítása tevékenységek](#data-transformation-activities) szakaszok a tevékenységek különböző típusú. |Igen |
-| Bemenetek |A tevékenység által felhasznált bemeneti táblák<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Igen |
+| bemenetek |A tevékenység által felhasznált bemeneti táblák<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Igen |
 | kimenetek |A tevékenység által használt kimeneti táblák.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Igen |
 | linkedServiceName |A tevékenység által használt társított szolgáltatás neve. <br/><br/>Egy adott tevékenység megkövetelheti annak a társított szolgáltatásnak a megadását, amely a szükséges számítási környezethez kapcsolódik. |Igen, a HDInsight tevékenységet és az Azure Machine Learning kötegelt pontozási tevékenység <br/><br/>Minden egyéb esetében: nem |
 | typeProperties |A tulajdonságok a **typeProperties** szakasz a tevékenység-típustól függnek. Az adott tevékenység típustulajdonságainak megtekintéséhez kattintson az előző szakaszban szereplő tevékenységhivatkozásokra. | Nem |

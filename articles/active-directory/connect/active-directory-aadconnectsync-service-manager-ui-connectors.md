@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD szinkronizálási szolgáltatás kezelő felhasználói felületének összekötők |} Microsoft Docs"
-description: "Ismerje meg a csatlakozók fülre a Synchronization Service Managert, az Azure AD Connect."
+title: Az Azure AD szinkronizálási szolgáltatás kezelő felhasználói felületének összekötők |} Microsoft Docs
+description: Ismerje meg a csatlakozók fülre a Synchronization Service Managert, az Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
 ms.service: active-directory
 ms.workload: identity
@@ -13,17 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3bbbe5d0d7a7ed7065133b4bc6e5fc2dba39bf7d
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b3c8925b213543d33f81c113b08e9601f2780bde
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593152"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Az az Azure AD Connect szinkronizálási Service Manager-összekötők használata
 
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
+![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
 Az összekötők lapon a szinkronizálási motor csatlakozik-e az összes rendszer kezelésére szolgál.
 
@@ -44,7 +46,7 @@ Az összekötők lapon a szinkronizálási motor csatlakozik-e az összes rendsz
 
 ### <a name="delete"></a>Törlés
 A törlési művelet használható két különböző fogalom.  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
+![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
 
 A beállítás **törlése csak a kapcsolódási térbe** összes adat eltávolítható, de tartani a konfigurációt.
 
@@ -55,12 +57,12 @@ Mindkét lehetőség minden objektumokat szinkronizálni, és frissítése a met
 ### <a name="configure-run-profiles"></a>Futtatási profilok konfigurálása
 Ezzel a beállítással a futtatási profil összekötőhöz beállított láthatja.
 
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
+![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Összekötőtér keresése
 A keresési összekötő terület művelet célszerű található objektumok és adatok problémák elhárításához.
 
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
+![Szinkronizálás a Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
 
 Kiválasztásával indítsa el a **hatókör**. Kereshet az adatok alapján (RDN, DN, rögzítési, részfájának), vagy az objektum (egyéb beállítások) állapot.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  

@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 7023ce1c9d8a115ae791d40c5d40a5b5d1fabed9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598385"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Az Application Insights beállítása: függőségi nyomon követése
 A *függőségi* az alkalmazás által külső összetevője. Általában le egy HTTP, vagy egy adatbázist vagy egy fájlrendszer nevű szolgáltatás. [Az Application Insights](app-insights-overview.md) méri, hogy az alkalmazás meddig függőségek, és milyen gyakran függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívások, és összekapcsolhatja őket a kéréseket, és kivételeket.
@@ -200,12 +201,13 @@ Ha azt szeretné, hogy kikapcsolja a szabványos függőségi követési modul, 
 
 *Nem jelenik meg a teljes SQL-lekérdezésben.*
 
-* Frissítse az Application Insights SDK legújabb stabil verzióját.
+Tekintse át az alábbi táblázat, és biztosítását úgy döntött, hogy a megfelelő konfigurációját, és engedélyezze a függőségi figyelő alkalmazás.
 
- Ha a .NET verziószáma kisebb, mint 4.6:
-
-* IIS-állomás: telepítése [Application Insights Agent](app-insights-monitor-performance-live-website-now.md) a gazdagép-kiszolgálón.
-* Azure-webalkalmazásban: Nyissa meg az Application Insights a webes alkalmazás Vezérlőpult fülre, és telepítse az Application insights szolgáltatással.
+| Platform | Telepítés |
+| --- | --- |
+| IIS-kiszolgálón |Vagy [Állapotmonitor telepítése a kiszolgálón](app-insights-monitor-performance-live-website-now.md). Vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
+| Azure Web App |A webes alkalmazás Vezérlőpult [nyissa meg az Application Insights panelt a webes alkalmazás Vezérlőpult](app-insights-azure-web-apps.md) , és válassza a telepítés, ha a rendszer kéri. |
+| Azure Cloud Service |[Használjon indítási tevékenységhez](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="video"></a>Videó
 

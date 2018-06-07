@@ -9,15 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9820ed9b4c0abbb79c6f92e62f294fb7fbd4c87e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 16b181631d8d91ad8137e57564792789903bccf2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621615"
 ---
 # <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával HTTP forrásból származó
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +53,7 @@ A következő táblázat a társított szolgáltatás JSON-elemek szerepelnek HT
 | type | A type tulajdonságot kell beállítani: `Http`. | Igen |
 | url | A webkiszolgáló alap URL-címe | Igen |
 | authenticationType | Megadja a hitelesítési típus. Két érték engedélyezett: **névtelen**, **alapvető**, **kivonatoló**, **Windows**, **ClientCertificate**. <br><br> Tekintse meg a további tulajdonságok és adott hitelesítési típusok JSON-példák a táblázat alatti részek kulcsattribútumokkal. | Igen |
-| enableServerCertificateValidation | Adja meg, hogy a kiszolgálói SSL-tanúsítvány hitelesítése engedélyezése, ha a forrás HTTPS webkiszolgáló | Nem, alapértelmezett érték true |
+| enableServerCertificateValidation | Adja meg, hogy a kiszolgálói SSL-tanúsítvány hitelesítése engedélyezése, ha forrás HTTPS-webkiszolgálón. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa FALSE értékre. | Nem, alapértelmezett érték true |
 | gatewayName | Neve az adatkezelési átjáró HTTP a helyszíni adatforráshoz kapcsolódni. | Igen, ha a helyszíni HTTP forrásból származó adatok másolása. |
 | encryptedCredential | Titkosított hitelesítő adatokat a HTTP-végpont elérésére. Automatikusan létrehozott másolása varázsló vagy a ClickOnce felugró párbeszédpanel a hitelesítő adatok konfigurálásakor. | Nem. Csak akkor, ha az adatok másolása helyi HTTP-kiszolgáló alkalmazni. |
 

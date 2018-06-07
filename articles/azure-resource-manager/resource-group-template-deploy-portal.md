@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: c2232e1ce92eb6198b22bad22b8c3e10bab6bf12
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603725"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -85,7 +86,7 @@ Ha szeretné a központi telepítés hajtható végre, de nem használja a sablo
 
 1. Kattintson a **Létrehozás** gombra.
 
-   ![Válassza ki létrehozása](./media/resource-group-template-deploy-portal/show-template-option.png)
+   ![Kattintás a Létrehozás gombra](./media/resource-group-template-deploy-portal/show-template-option.png)
 
 1. Megjelenik a sablonok létrehozásának számos lehetőség közül választhat. Válassza ki **a szerkesztőben saját sablon létrehozása**.
 
@@ -113,7 +114,7 @@ Ha szeretné a központi telepítés hajtható végre, de nem használja a sablo
 
 ## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Egy sablonból fiókjába erőforrások telepítése
 
-A portál lehetővé teszi egy sablon mentése az Azure-fiókjával, és telepítse újra később. További információ ezen sablonok, mentett használata [Ismerkedés az Azure portálon magánsablonok](../marketplace-consumer/mytemplates-getstarted.md).
+A portál lehetővé teszi egy sablon mentése az Azure-fiókjával, és telepítse újra később. A sablonok további információkért lásd: [létrehozása és telepítése az első Azure Resource Manager sablon](resource-manager-create-first-template.md).
 
 1. A mentett sablonok találhatók, válassza ki a **további szolgáltatások**.
 
@@ -135,4 +136,4 @@ A portál lehetővé teszi egy sablon mentése az Azure-fiókjával, és telepí
 * Naplók megtekintése: [naplózási műveletek a Resource Manager](resource-group-audit.md).
 * Telepítési hibák elhárításához lásd: [üzembe helyezési műveleteinek megtekintése](resource-manager-deployment-operations.md).
 * Egy központi telepítés vagy az erőforráscsoport a sablon lekéréséhez lásd: [Azure Resource Manager sablon exportálása létező erőforrásokból](resource-manager-export-template.md).
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.

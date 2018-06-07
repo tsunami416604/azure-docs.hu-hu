@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 57d4a3767d0ad02f136686d95703817055566c33
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e5e08985f88c7cf3018ecadce2cabac743e4bd37
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594852"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Oktatóanyag: Az Azure Storage érhetnek el egy SAS-hitelesítő adat szolgáltatás Linux virtuális gép felügyelt identitás használatára
 
@@ -253,10 +254,7 @@ Válasz:
 
 ## <a name="next-steps"></a>További lépések
 
-- MSI áttekintését lásd: [Szolgáltatásidentitás felügyelete – áttekintés](overview.md).
-- Hogyan hajtsa végre ugyanezt az oktatóanyagot használata a tárfiók kulcsára, lásd: [elérni az Azure Storage szolgáltatás Linux virtuális gép felügyelt identitás használatára](tutorial-linux-vm-access-storage.md)
-- Az Azure Storage-fiók SAS szolgáltatás kapcsolatos további információkért lásd:
-  - [Közös hozzáférésű jogosultságkód (SAS) használatával](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [A szolgáltatásalapú SAS létrehozása](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+Ebben az oktatóanyagban megtudta, hogyan használja a felügyelt Szolgáltatásidentitás a Linux virtuális gépek Azure Storage egy SAS-hitelesítő adat segítségével eléréséhez.  Az Azure Storage SAS webhelyen olvashat:
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom.
+> [!div class="nextstepaction"]
+>[Közös hozzáférésű jogosultságkód (SAS) használatával](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)

@@ -1,25 +1,22 @@
 ---
-title: "Onedrive vállalati verzió |} Microsoft Docs"
-description: "Az Azure App service Logic Apps alkalmazások létrehozása Csatlakoztassa a fájlok kezelését onedrive vállalati verzióhoz. Különböző műveletek végezhetők feltöltési, például frissítse, beolvasása, és törli a fájlokat."
-services: logic-apps
-documentationcenter: .net,nodejs,java
+title: Üzleti - Azure Logic Apps csatlakoztatni a onedrive vállalati verzió |} Microsoft Docs
+description: Töltse fel, és kezelhet fájlokat a onedrive vállalati verzió üzleti REST API-k és az Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: cf9484e9-7a20-4de0-93c8-0fa132221f2b
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: a572d3d858bcaed817198420db7f2e09732b2366
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: cf0541fc4271766ed5fe2e9720c6312f229bc450
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609594"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>A onedrive vállalati verzió üzleti összekötő az első lépései
 Csatlakoztassa a fájlok kezelését onedrive vállalati verzióhoz. Különböző műveletek végezhetők feltöltési, például frissítse, beolvasása, és törli a fájlokat.
@@ -31,7 +28,7 @@ A Logic apps onedrive vállalati verzió létrehozásához, létre kell hoznia e
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
-| Jogkivonat |Igen |Adja meg a OneDrive vállalati hitelesítő adatok |
+| Jogkivonat |Igen |Adja meg a OneDrive Vállalati verzióhoz tartozó hitelesítő adatait |
 
 Miután létrehozta a kapcsolatot, használhatja a műveletek végrehajtása és a jelen cikkben ismertetett eseményindítók figyelni.
 

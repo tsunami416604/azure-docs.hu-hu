@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c0143b4f2d6858883ac11df18f7844802c667404
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea83701e834895b09faf8eb6602bd342b648ec37
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620204"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory használatával Hadoop Streamelési tevékenységben adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,7 +83,7 @@ Ha most ismerkedik az Azure Data Factory, olvassa végig [Bevezetés az Azure Da
 | egyesítő          | A végrehajtható egyesítő neve | Nem       |
 | fileLinkedService | Az Azure tárolás társított szolgáltatásának mutató hivatkozás Teljesítményleképező egyesítő és nyomáscsökkentő programok futtatását tárolására használható. A társított szolgáltatás nem adja meg, ha az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott szolgál. | Nem       |
 | filePath          | Elérési út tömbjét adja meg a leképező egyesítő, és az Azure Storage-ban tárolt nyomáscsökkentő programok fileLinkedService hivatkozik. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
-| Bemeneti             | Meghatározza a bemeneti fájl WASB elérési útja a leképező. | Igen      |
+| bemenet             | Meghatározza a bemeneti fájl WASB elérési útja a leképező. | Igen      |
 | output            | Meghatározza a WASB a kimeneti fájl elérési útja a nyomáscsökkentő. | Igen      |
 | getDebugInfo      | Itt adhatja meg, ha a naplófájlok kerülnek az Azure Storage HDInsight-fürt által használt (vagy) leírt módon scriptLinkedService. Megengedett értékek: None, mindig, vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
 | Argumentumok         | Hadoop-feladat argumentumok tömbjét adja meg. Az argumentumok parancssori argumentumként átadott minden egyes tevékenységhez. | Nem       |

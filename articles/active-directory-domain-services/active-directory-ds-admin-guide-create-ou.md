@@ -1,24 +1,26 @@
 ---
-title: "Az Azure Active Directory tartományi szolgáltatások: Felügyeleti útmutató |} Microsoft Docs"
-description: "Hozzon létre egy szervezeti egység (OU) az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz"
+title: 'Az Azure Active Directory tartományi szolgáltatások: Felügyeleti útmutató |} Microsoft Docs'
+description: Hozzon létre egy szervezeti egység (OU) az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 197696d737e56cbdc9fe925b6fa5b9e4134e1539
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 49123a47d90970d1a99276521b5aa1d516f509ab
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587589"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Hozzon létre egy szervezeti egység (OU) az az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure AD tartományi szolgáltatások felügyelt tartományok közé tartoznak a "AADDC számítógépek" és "AADDC felhasználók" néven rendre két beépített tárolók. A AADDC Computers rendelkezik minden olyan számítógép, a felügyelt tartományra tartományhoz csatlakoztatott számítógép-objektumokat. A AADDC felhasználótároló felhasználókat és csoportokat tartalmazza az Azure AD-bérlő. Alkalmanként lehet a felügyelt tartomány munkaterhelések telepítése, a szolgáltatás fiókjainak létrehozásához szükséges. Erre a célra hozzon létre egy egyéni szervezeti egységet (OU) a felügyelt tartományra, és a szervezeti egységre belül szolgáltatásfiókok létrehozása. Ez a cikk bemutatja, hogyan hozzon létre egy szervezeti Egységet a felügyelt tartományok.

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management házirend-kifejezések |} Microsoft Docs"
-description: "További tudnivalók az Azure API Management kifejezés."
+title: Az Azure API Management házirend-kifejezések |} Microsoft Docs
+description: További tudnivalók az Azure API Management kifejezés.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 0ecfade830b2123257b8039d5f0c26f19f3f3fc6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5943357bc421bbae0caef7f0acd7aa3364813826
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597518"
 ---
 # <a name="api-management-policy-expressions"></a>API-felügyeleti házirend-kifejezések
 Ez a cikk ismerteti, amelyek házirend kifejezések szintaxisa a C# 7. Minden egyes kifejezés hozzáfér a implicit módon megadott [környezetben](api-management-policy-expressions.md#ContextVariables) változó és egy engedélyezett [részhalmaza](api-management-policy-expressions.md#CLRTypes) .NET-keretrendszer típusú.  
@@ -94,12 +95,12 @@ További információk:
 |System.Collections.Generic.Stack<TKey, TValue>|Összes|  
 |System.Convert|Összes|  
 |System.DateTime|Összes|  
-|System.DateTimeKind|Utc|  
+|System.DateTimeKind|UTC szerint|  
 |System.DateTimeOffset|Összes|  
 |System.Decimal|Összes|  
 |System.Double|Összes|  
 |System.Guid|Összes|  
-|System.IEnumerable<T\>|Összes|  
+|System.IEnumerable < T\>|Összes|  
 |System.IEnumerator<T\>|Összes|  
 |System.Int16|Összes|  
 |System.Int32|Összes|  
@@ -138,7 +139,7 @@ További információk:
 |System.Text.RegularExpressions.GroupCollection|Count elem|  
 |System.Text.RegularExpressions.Match|Üres, csoportok, eredménye|  
 |System.Text.RegularExpressions.Regex|(Konstruktor) IsMatch, egyezik, megegyezik, cserélje le a következőket:|  
-|System.Text.RegularExpressions.RegexOptions|Compiled, IgnoreCase, IgnorePatternWhitespace, Multiline, None, RightToLeft, Singleline|  
+|System.Text.RegularExpressions.RegexOptions|Lefordított, az IgnoreCase, IgnorePatternWhitespace, többsoros, None, RightToLeft, Singleline|  
 |System.TimeSpan|Összes|  
 |System.Tuple|Összes|  
 |System.UInt16|Összes|  
@@ -169,15 +170,15 @@ További információk:
   
 |Környezeti változó|Engedélyezett metódusok, tulajdonságok és értékei|  
 |----------------------|-------------------------------------------------------|  
-|A környezetben|API: IApi<br /><br /> Környezet<br /><br /> Eltelt: TimeSpan - Timestamp értéket és aktuális időpontja között eltelt idő<br /><br /> Hiba<br /><br /> Művelet<br /><br /> Product<br /><br /> Kérés<br /><br /> Kérelemazonosító: Guid - egyedi azonosítóját<br /><br /> Válasz<br /><br /> Előfizetés<br /><br /> Időbélyeg: DateTime - időpont, amikor a kérelem érkezett<br /><br /> Nyomkövetés: bool - azt jelzi, hogy nyomkövetés be- és kikapcsolása <br /><br /> Felhasználó<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> "void" Trace(message: string)|  
-|context.Api|Azonosító: karakterlánc<br /><br /> IsRevisionCurrent: logikai<br /><br />  Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Változat: karakterlánc<br /><br /> ServiceUrl: IUrl<br /><br /> Verzió: karakterlánc |  
-|context.Deployment|A régióban: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
+|A környezetben|API: IApi<br /><br /> Környezet<br /><br /> Eltelt: TimeSpan - Timestamp értéket és aktuális időpontja között eltelt idő<br /><br /> LastError<br /><br /> Művelet<br /><br /> Product<br /><br /> Kérés<br /><br /> Kérelemazonosító: Guid - egyedi azonosítóját<br /><br /> Válasz<br /><br /> Előfizetés<br /><br /> Időbélyeg: DateTime - időpont, amikor a kérelem érkezett<br /><br /> Nyomkövetés: bool - azt jelzi, hogy nyomkövetés be- és kikapcsolása <br /><br /> Felhasználó<br /><br /> Változók: IReadOnlyDictionary < karakterlánc, objektum ><br /><br /> "void" Trace(message: string)|  
+|context.Api|Azonosító: karakterlánc<br /><br /> IsCurrentRevision: logikai<br /><br />  Name: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Változat: karakterlánc<br /><br /> ServiceUrl: IUrl<br /><br /> Verzió: karakterlánc |  
+|a környezetben. Központi telepítés|A régióban: karakterlánc<br /><br /> Szolgáltatásnév: karakterlánc<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Forrás: karakterlánc<br /><br /> OK: karakterlánc<br /><br /> Üzenet: karakterlánc<br /><br /> Hatókör: karakterlánc<br /><br /> A szakasz: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> PolicyId: karakterlánc<br /><br /> További információ a környezetben. Hiba, lásd: [hibakezelés](api-management-error-handling-policies.md).|  
-|context.Operation|Azonosító: karakterlánc<br /><br /> Módszer: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> UrlTemplate: karakterlánc|  
-|context.Product|API-k: IEnumerable < IApi\><br /><br /> ApprovalRequired: logikai<br /><br /> Csoportok: IEnumerable < IGroup\><br /><br /> Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Állapot: enum ProductState {NotPublished, közzétett}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: logikai|  
-|a környezetben. Kérelem|Törzs: IMessageBody<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Headers: IReadOnlyDictionary<string, string[]><br /><br /> IP-cím: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Módszer: karakterlánc<br /><br /> OriginalUrl:IUrl<br /><br /> URL-cím: IUrl|  
+|a környezetben. Művelet|Azonosító: karakterlánc<br /><br /> Módszer: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> UrlTemplate: karakterlánc|  
+|a környezetben. A termék|API-k: IEnumerable < IApi\><br /><br /> ApprovalRequired: logikai<br /><br /> Csoportok: IEnumerable < IGroup\><br /><br /> Azonosító: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> Állapot: enum ProductState {NotPublished, közzétett}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: logikai|  
+|a környezetben. Kérelem|Törzs: IMessageBody<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Fejlécek: IReadOnlyDictionary < string, string [] ><br /><br /> IP-cím: karakterlánc<br /><br /> MatchedParameters: IReadOnlyDictionary<string, string><br /><br /> Módszer: karakterlánc<br /><br /> OriginalUrl:IUrl<br /><br /> URL-cím: IUrl|  
 |karakterlánc-környezetben. Request.Headers.GetValueOrDefault (fejléc neve: karakterlánc, alapértelmezett érték: karakterlánc)|fejléc neve: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel tagolt kérelem fejléc értékei adja vissza vagy `defaultValue` Ha a fejléc nem található.|  
-|a környezetben. Válasz|Törzs: IMessageBody<br /><br /> Headers: IReadOnlyDictionary<string, string[]><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|  
+|a környezetben. Válasz|Törzs: IMessageBody<br /><br /> Fejlécek: IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: karakterlánc|  
 |karakterlánc-környezetben. Response.Headers.GetValueOrDefault (fejléc neve: karakterlánc, alapértelmezett érték: karakterlánc)|fejléc neve: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> A fejléc értékei vesszővel tagolt választ ad vissza, vagy `defaultValue` Ha a fejléc nem található.|  
 |context.Subscription|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kulcs: karakterlánc<br /><br /> Name: karakterlánc<br /><br /> PrimaryKey: karakterlánc<br /><br /> Másodlagos kulcs: karakterlánc<br /><br /> A StartDate: DateTime?|  
 |context.User|E-mailek: karakterlánc<br /><br /> Utónév: karakterlánc<br /><br /> Csoportok: IEnumerable < IGroup\><br /><br /> Azonosító: karakterlánc<br /><br /> Identitások: IEnumerable < IUserIdentity\><br /><br /> Vezetéknév: karakterlánc<br /><br /> Megjegyzés: karakterlánc<br /><br /> RegistrationDate: DateTime|  
@@ -187,7 +188,7 @@ További információk:
 |IUrl|Állomás: karakterlánc<br /><br /> Elérési út: karakterlánc<br /><br /> Port: int<br /><br /> Query: IReadOnlyDictionary<string, string[]><br /><br /> Lekérdezési karakterlánc: karakterlánc<br /><br /> Rendszer: karakterlánc|  
 |IUserIdentity|Azonosító: karakterlánc<br /><br /> Szolgáltató: karakterlánc|  
 |ISubscriptionKeyParameterNames|Fejléc: karakterlánc<br /><br /> Lekérdezés: karakterlánc|  
-|karakterlánc-IUrl.Query.GetValueOrDefault (queryParameterName: karakterlánc, alapértelmezett érték: karakterlánc)|queryParameterName: string<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel tagolt lekérdezés paramétereinek értékét adja vissza vagy `defaultValue` Ha a paraméter nem található.|  
+|karakterlánc-IUrl.Query.GetValueOrDefault (queryParameterName: karakterlánc, alapértelmezett érték: karakterlánc)|queryParameterName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel tagolt lekérdezés paramétereinek értékét adja vissza vagy `defaultValue` Ha a paraméter nem található.|  
 |T környezetben. Variables.GetValueOrDefault < T\>(variableName: karakterlánc, defaultValue: T)|variableName: karakterlánc<br /><br /> defaultValue: T<br /><br /> Írja be a típusúvá változó értékét adja vissza `T` vagy `defaultValue` Ha a változó nem található.<br /><br /> Ez a metódus kivételt jelez, ha a megadott típus nem egyezik a tényleges típus, a visszaadott változó.|  
 |BasicAuthCredentials AsBasic(input: this string)|bemeneti: karakterlánc<br /><br /> Ha a bemeneti paraméter érvényes HTTP-hitelesítés alapszintű engedélyezési kérelem fejléc értéke tartalmaz, a metódus visszaadja típusú objektum `BasicAuthCredentials`; ellenkező esetben a metódus null értéket ad vissza.|  
 |logikai TryParseBasic (bemenet: a karakterlánc, az eredmény: BasicAuthCredentials kimenő)|bemeneti: karakterlánc<br /><br /> eredmény: BasicAuthCredentials kimenő<br /><br /> Ha a bemeneti paraméter értéke érvénytelen egyszerű HTTP-hitelesítés engedélyezési a kérelem fejlécében a metódus visszaadja `true` és az eredmény paraméter típusú értéket tartalmaz `BasicAuthCredentials`; ellenkező esetben a metódus visszaadja `false`.|  
@@ -197,11 +198,11 @@ További információk:
 |Jwt-t|Algoritmus: karakterlánc<br /><br /> A célközönség: IEnumerable < karakterlánc\><br /><br /> Claims: IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime: DateTime?<br /><br /> Azonosító: karakterlánc<br /><br /> Kibocsátó: karakterlánc<br /><br /> NotBefore: DateTime?<br /><br /> Tulajdonos: karakterlánc<br /><br /> Típus: karakterlánc|  
 |string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: karakterlánc<br /><br /> DefaultValue érték: karakterlánc<br /><br /> Vesszővel elválasztott értéket ad vissza a jogcímérték vagy `defaultValue` Ha a fejléc nem található.|
 |byte [] titkosítása (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
-|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />Vissza titkosított egyszerű szöveg.|
-|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
+|byte [] titkosítása (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />Vissza titkosított egyszerű szöveg.|
+|byte [] titkosítása (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|bemenet – egyszerű szöveges titkosításához<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Vissza titkosított egyszerű szöveg.|
 |byte [] visszafejtése (bemeneti: a byte [], alg: karakterlánc, a kulcs: byte [], a iv:byte[])|bemenet - rejtjelzésben szöveg vissza kell fejteni<br /><br />ALG - szimmetrikus titkosítási algoritmus neve<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet - rejtjelzésben szöveg vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|visszafejtendő bemeneti - bemeneti - rejtjelzésben szöveg<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|bemenet - rejtjelzésben szöveg vissza kell fejteni<br /><br />ALG - titkosítási algoritmus<br /><br />Egyszerű szövegként adja vissza.|
+|byte [] visszafejtése (bemeneti: a byte [], alg: System.Security.Cryptography.SymmetricAlgorithm, kulcs: byte [], iv:byte[])|visszafejtendő bemeneti - bemeneti - rejtjelzésben szöveg<br /><br />ALG - titkosítási algoritmus<br /><br />kulcs - titkosítási kulcs<br /><br />IV-inicializáló vektort.<br /><br />Egyszerű szövegként adja vissza.|
 
 
 ## <a name="next-steps"></a>További lépések
