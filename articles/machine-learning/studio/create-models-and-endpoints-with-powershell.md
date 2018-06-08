@@ -9,16 +9,18 @@ manager: mwinkle
 editor: cgronlun
 ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: d8ab7151680546c9b4bf5aef8998e522a79d809c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 17354891b50138911f36314620f0c826db4b5dac
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833665"
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Több Machine Learning-modellek és webszolgáltatás-végpont létrehozása egy kísérletből a PowerShell használatával
 Ez gyakori probléma machine learning: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzési és azonos algoritmus sok modellek. De azt szeretné, hogy a különböző képzési adatkészletek bemeneti adatként. Ez a cikk bemutatja, hogyan ehhez az Azure Machine Learning Studióban léptékű csak egyetlen kísérlet használatával.
@@ -46,7 +48,7 @@ A példa [tanítási kísérletet](https://gallery.cortanaintelligence.com/Exper
 
 A kísérlet használ egy **adatok importálása** modul importálása a képzés dataset *customer001.csv* az Azure storage-fiók. Tegyük fel a tanítási adathalmazt gyűjtött összes kerékpárt bérleti helyét, és közötti fájlnévvel blob storage ugyanazon a helyen tárolja őket *rentalloc001.csv* való *rentalloc10.csv*.
 
-![image](./media/create-models-and-endpoints-with-powershell/reader-module.png)
+![Kép](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
 Vegye figyelembe, hogy egy **webes szolgáltatás kimeneti** modul hozzá lett adva a **tanítási modell** modul.
 Ha ehhez a kísérlethez webszolgáltatásként lett telepítve, a végpont társított kimeneti egy .ilearner fájl formátumát a betanított modell adja vissza.
@@ -54,7 +56,7 @@ Ha ehhez a kísérlethez webszolgáltatásként lett telepítve, a végpont tár
 Vegye figyelembe azt is, hogy egy webes szolgáltatás paraméter, amely meghatározza a URL-cím beállítása, amely a **és adatokat importálhat** modul használja. Ez lehetővé teszi, hogy a paraméter segítségével adjon meg egyedi képzési adatkészletek mindegyik helyen a modell betanításához.
 Más módon sikerült ezt. A webes szolgáltatás paraméterrel egy SQL-lekérdezés segítségével adatokat lekérni az SQL Azure-adatbázis. Vagy használhat egy **webszolgáltatás bemenetét** DataSet adatkészletben átadása a webszolgáltatás modul.
 
-![image](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
+![Kép](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
 Most most futtatni a tanítási kísérletet az alapértelmezett érték használatával *rental001.csv* , a képzési adatkészlet. Ha megtekinti a kimenetét a **Evaluate** modul (kattintson a kimeneti, jelölje be **Visualize**), láthatja, beállíthatja a decent teljesítményének *AUC* = 0.91. Ekkor készen áll a tanítási kísérletet kívül webes szolgáltatás telepítése.
 
@@ -91,7 +93,7 @@ Ezután futtassa a következő PowerShell-parancsot:
 
 Most létrehozott 10 végpontok és az összes tartalmazzák azonos betanítása modell betanítása a *customer001.csv*. Azokat az Azure-portálon tekintheti meg.
 
-![image](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
+![Kép](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A PowerShell használatával külön tanítási adathalmazt használandó végpontok frissítése
 A következő lépéssel frissítése érdekében szükség a végpontok minden ügyfélnél egyedi adatokat a egyedileg betanítása modellekkel. Ehhez azonban először kell ezek a modellek létrehozásához a **kerékpárt bérleti képzési** webes szolgáltatás. Lépjen vissza a **kerékpárt bérleti képzési** webes szolgáltatás. meg kell hívnia a BES végpont 10-szer adatkészletekkel 10 különböző képzési 10 különböző modell előállításához. Használja a **InovkeAmlWebServiceBESEndpoint** ehhez PowerShell-parancsmagot.

@@ -6,13 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 06/07/2018
 ms.author: marsma
-ms.openlocfilehash: 1a025ce647cb3c071a6549a433e6505b85409fdc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bc30352f50344031f8356d2be1b800dd035f12ad
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830462"
 ---
 # <a name="set-environment-variables"></a>Környezeti változók beállítása
 
@@ -23,6 +24,8 @@ Például, ha futtatja a [microsoft/aci-wordcount] [ aci-wordcount] tároló ké
 *NumWords*: STDOUT küldött szót.
 
 *A MinLength*: ahhoz, hogy a megszámlálandó szót karakterek minimális száma. Minél nagyobb karakterkészletszámot figyelmen kívül hagyja a gyakori szavakat, például "a" és "a."
+
+Titkos kulcsok átadására környezeti változóként kell, ha támogatja az Azure tároló példányok [értékek biztonságos](#secure-values) biztonságos Windows- és Linux-tárolókon értékeit.
 
 ## <a name="azure-cli-example"></a>Az Azure parancssori felület – példa
 
@@ -151,6 +154,81 @@ Példa megtekintéséhez indítsa el a [microsoft/aci-wordcount] [ aci-wordcount
 A tároló naplók megtekintéséhez az **beállítások** válasszon **tárolók**, majd **naplók**. A kimeneti hasonló látható az előző CLI és a PowerShell szakaszok, láthatja, hogyan a parancsfájl viselkedés módosította a környezeti változók. Csak öt szavak jelennek meg, az legalább nyolc karakterből.
 
 ![Portál ábrázoló tároló kimenet][portal-env-vars-02]
+
+## <a name="secure-values"></a>Biztonságos értékek
+Biztonságos értékekkel objektumok bizalmas információkat, például jelszavak, vagy az alkalmazás kulcsok tárolására szolgálnak. Biztonságos értékek környezeti változók használata biztonságosabb, mind a rugalmasabb, mint például azt a tároló-lemezképben. Egy másik lehetőség egy titkos köteteket, leírt [Azure tároló példányát titkos kötet csatlakoztatása](container-instances-volume-secret.md).
+
+Biztonságos környezeti változókat és a biztonságos értékeket nem fedi fel a tároló tulajdonságainak biztonságos értéke, ezért az érték csak érhetők el a tárolóban. Például a tároló tulajdonságainak megtekintésére az Azure-portálon, vagy az Azure parancssori felület nem jeleníthető meg a biztonságos értékű környezeti változó.
+
+A biztonságos környezeti változó beállítása megadásával a `secureValue` tulajdonság helyett a normál `value` a változó típushoz. A két változó a következő YAM definiált változó kétféle bemutatása.
+
+### <a name="yaml-deployment"></a>YAM központi telepítés
+
+Hozzon létre egy `secure-env.yaml` fájl a következő kódtöredékre.
+
+```yaml
+apiVersion: 2018-06-01
+location: westus
+name: securetest
+properties:
+  containers:
+  - name: mycontainer
+    properties:
+      environmentVariables:
+        - "name": "SECRET"
+          "secureValue": "my-secret-value"
+        - "name": "NOTSECRET"
+          "value": "my-exposed-value"
+      image: nginx
+      ports: []
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+  osType: Linux
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
+```
+
+A következő parancsot a YAM tároló-csoport központi telepítését.
+
+```azurecli-interactive
+az container create --resource-group myRG --name securetest -f secure-env.yaml
+```
+
+### <a name="verify-environment-variables"></a>Ellenőrizze a környezeti változók
+
+A következő parancsot lekérdezéséhez a tároló környezeti változók.
+
+```azurecli-interactive
+az container show --resource-group myRG --name securetest --query 'containers[].environmentVariables`
+```
+
+A JSON-választ a tároló adatokkal megjelenítése csak a nem biztonságos környezeti változó, és a környezeti változó kulcs biztonságos.
+
+```json
+  "environmentVariables": [
+    {
+      "name": "NOTSECRET",
+      "value": "my-exposed-value"
+    },
+    {
+      "name": "SECRET"
+    }
+```
+
+Tekintse át a biztonságos környezeti változó értéke az a `exec` parancs, amely lehetővé teszi, hogy a futó tárolók belül a parancs végrehajtását. 
+
+A következő parancsot egy interaktív bash munkamenetet indítani a tárolóval.
+```azurecli-interactive
+az container exec --resource-group myRG --name securetest --exec-command "/bin/bash"
+```
+
+Az a tárolóban, nyomtassa ki a környezeti változó a következő paranccsal bash.
+```bash
+echo $SECRET
+```
 
 ## <a name="next-steps"></a>További lépések
 

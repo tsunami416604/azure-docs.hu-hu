@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: 667f385e4f157a5e1b9fcaf47b25619eafa8e9e3
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ec900182e2fe201ee598518076c6a75a7ac057c2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738244"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839569"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure fájlmegosztások a Linux terjesztéseket segítségével lehet csatlakoztatni az [SMB kernel ügyfél](https://wiki.samba.org/index.php/LinuxCIFS). Ez a cikk bemutatja az Azure fájlmegosztások csatlakoztatása kétféleképpen: az igény a `mount` parancs és a rendszerindítási bejegyzés létrehozásával `/etc/fstab`.
@@ -134,7 +134,7 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 5. **Az alábbi parancs segítségével az alábbi sor hozzáfűzése `/etc/fstab`** : ne felejtse el lecserélni `<storage-account-name>`, `<share-name>`, `<smb-version>`, és `<mount-point>` a környezetének megfelelő információkkal. Ha a Linux-disztribúció támogatja az SMB 3.0 titkosítással (lásd: [megértéséhez SMB ügyfélkövetelmények](#smb-client-reqs) további információt), használja `3.0` a `<smb-version>`. A Linux terjesztéseket, amelyek nem támogatják az SMB 3.0 a titkosítás, használjon `2.1` a `<smb-version>`. Vegye figyelembe, hogy az Azure fájlmegosztások csak lehet csatlakoztatni az Azure-régiót kívül (beleértve a helyi vagy egy másik Azure-régió) az SMB 3.0-s. 
 
     ```bash
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-key>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  

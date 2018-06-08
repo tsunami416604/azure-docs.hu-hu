@@ -4,36 +4,37 @@ description: Ismerje meg, hogyan érheti egy Azure virtuális gép Azure Automat
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830561"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>A bevezetni frissítéskezelés, a változások követése, és a készlet megoldások egy Azure virtuális gépen
 
-Azure Automation-megoldások kezelése az operációs rendszer biztonsági frissítések, követni a változásokat, és készítsen leltárt a számítógépekre telepített biztosít. Többféleképpen is előkészítésére gépekre, akkor discoveryt a megoldás a virtuális gép [az Automation-fiók a](automation-onboard-solutions-from-automation-account.md), vagy a [runbook](automation-onboard-solutions.md). Ez a cikk foglalkozik bevezetési ezek a megoldások egy Azure virtuális gépen.
+Azure Automation-megoldások kezelése az operációs rendszer biztonsági frissítések, követni a változásokat, és készítsen leltárt a számítógépekre telepített biztosít. Többféleképpen is előkészítésére gépekre, akkor discoveryt a megoldás a virtuális gép [az Automation-fiók a](automation-onboard-solutions-from-automation-account.md), [több gép tallózással](automation-onboard-solutions-from-browse.md), vagy a [runbook](automation-onboard-solutions.md). Ez a cikk foglalkozik bevezetési ezek a megoldások egy Azure virtuális gépen.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure: https://portal.azure.com
+Jelentkezzen be az Azure-ba a https://portal.azure.com címen
 
 ## <a name="enable-the-solutions"></a>A megoldások
 
 Nyissa meg egy létező virtuális gépet, és válassza **frissítéskezelés**, **készlet**, vagy **a változáskövetés** alatt **műveletek**.
+
+Ahhoz, hogy a megoldás a virtuális gép csak biztosítása a **engedélyezése a virtuális gép** választógomb meg van adva, előkészítéséről a megoldás több gép válassza **engedélyezése a virtuális gépek ebben az előfizetésben** kattintson**Kattintással jelölje ki a gépeket engedélyezése**. Megtekintéséhez [előkészítésére frissítéskezelés, a változások követése és a készlet megoldások](automation-onboard-solutions-from-automation-account.md) lépéseket bevezetésében való megtekintéséhez több számítógépek, egyszerre.
 
 A megoldás engedélyezéséhez válassza ki a Log Analytics-munkaterületet és az Automation-fiókot, majd kattintson az **Engedélyezés** gombra. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![Az Update megoldás előkészítése](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 Nyissa meg az egyéb megoldások, és kattintson a **engedélyezése**, a naplóelemzési és legördülő listák le vannak tiltva, mivel ezek ugyanazt a munkaterületet, és automatizálási fiókot az előzőekben engedélyezett megoldásként az Automation-fiókhoz.
-
-![Az Update megoldás előkészítése](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > **Változások követése** és **készlet** ugyanahhoz a megoldáshoz, használja, ha engedélyezve van a másik engedélyezve legyen.

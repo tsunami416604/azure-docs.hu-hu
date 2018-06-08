@@ -8,6 +8,7 @@ editor: mezmicrosoft
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
-ms.openlocfilehash: 081ca444aee5cd3d426ee569a98bf54c7923af79
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835100"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>A Q & A egyező Azure Machine Learning-munkaterület használatával
 Nyissa meg befejeződött a kérdések megválaszolásával nehéz feladat, és gyakran van szükség manuális adatfrissítésre az érintett témakör szakértőit (SME szól). Belső KKV iránti igény csökkentése érdekében a vállalatok gyakran létrehozása gyakran ismételt kérdések (GYIK) listája, amelyek segítik a felhasználókat. Ebben a példában a különböző hatékony machine learning módszer nyitott befejeződött a lekérdezéseket, amelyekkel korábban létező gyakran ismételt kérdések kérdés/válaszok párok megfelelően bővíthető. Ez a példa azt mutatja be, egy egyszerű fejlesztési megoldás az Azure Machine Learning-munkaterület használatával kiépítése során. 

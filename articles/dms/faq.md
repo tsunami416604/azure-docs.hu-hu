@@ -10,12 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/25/2018
-ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/08/2018
+ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850072"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Az Azure-adatbázis áttelepítése szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk felsorolja a Azure adatbázis áttelepítési szolgáltatás és a kapcsolódó válaszok együttes használatával kapcsolatos gyakori kérdésekre.
@@ -34,6 +35,9 @@ Az Azure-adatbázis áttelepítési szolgáltatás legyen az előnyben részesí
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-the-azure-migrate-offering"></a>Q. Hogyan hasonlítsa össze az Azure-adatbázis áttelepítési szolgáltatás az Azure áttelepítése elérhető?
 Az Azure áttelepítése szolgáltatás segítséget nyújt a helyszíni Azure IaaS virtuális gépek áttelepítéséhez. A szolgáltatás értékeli az áttelepítési megfelelőség és a teljesítmény-alapú méretezési, és a becsült költség biztosít a helyszíni virtuális gépek Azure-ban futó. Az Azure áttelepítése akkor hasznos, a növekedési és shift helyszíni Virtuálisgép-alapú munkaterhelések Azure IaaS virtuális gépek áttelepítéséhez. Azonban eltérően az Azure adatbázis áttelepítési szolgáltatás Azure áttelepítése nem egy speciális adatbázis áttelepítési szolgáltatás Azure PaaS relációs adatbázis platformokon, például az Azure SQL Database vagy az SQL Azure vagy Azure SQL adatbázis felügyelt példány számára.
+
+### <a name="q-what-versions-of-sql-server-does-the-azure-database-migration-service-support-as-a-source"></a>Q. Az SQL Server melyik verziója támogatja az Azure-adatbázis áttelepítési szolgáltatás forrásként?
+Az SQL Server áttelepítésekor az Azure-adatbázis áttelepítési szolgáltatás támogatja az SQL Server 2005, SQL Server 2017 keresztül.
 
 ### <a name="q-what-is-a-summary-of-the-steps-required-to-use-the-azure-database-migration-service-to-perform-a-database-migration"></a>Q. Mi az, hogy egy adatbázis áttelepítése az Azure-adatbázis áttelepítés szolgáltatás használatához szükséges lépések összefoglalása?
 Egy tipikus, egyszerű adatbázis az áttelepítés során meg:

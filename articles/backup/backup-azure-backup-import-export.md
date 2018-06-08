@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: cb37c94d3ec819823083041708cfc28ead0ed5cf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606137"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831455"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Azure biztonsági mentés számos beépített hatékonyság, hálózati és tárolási költségek csökkentése során a kezdeti teljes biztonsági mentés az Azure-bA rendelkezik. Kezdeti teljes biztonsági mentés általában nagy adatmennyiségek átvitelét, és azt követő biztonsági mentéseket, amely csak az eltérések/növekményes átviteli képest nagyobb hálózati sávszélesség szükséges. A folyamatot, amely offline összehangolása Azure biztonsági mentési lemezek is használhatók az offline biztonsági mentési adatokat feltölteni az Azure-bA.
@@ -51,7 +51,7 @@ A következő Azure biztonsági mentés vagy munkaterhelések támogatja az Offl
 Az Offline biztonsági másolat munkafolyamat kezdeményezése, előtt hajtsa végre a következő előfeltételek teljesülését: 
 * Hozzon létre egy [Recovery Services-tároló](backup-azure-recovery-services-vault-overview.md). Hozzon létre egy tárolót, tekintse meg a lépéseket [Ez a cikk](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)
 * Győződjön meg arról, hogy csak a [az Azure Backup szolgáltatás ügynökének legújabb verzióját](https://aka.ms/azurebackup_agent) telepítve van a Windows Server és Windows-ügyfél megfelelő és a számítógép regisztrálva van a Recovery Services-tároló.
-* Az Azure PowerShell 3.7.0 vagy nagyobb szükség van az Azure Backup-ügynököt futtató számítógépen. Ajánlott, hogy [Azure PowerShell legújabb verziójának telepítéséhez](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+* Az Azure PowerShell 3.7.0 Azure Backup-ügynököt futtató számítógépen kell végrehajtani. Javasoljuk, hogy töltse le és [Azure PowerShell telepítése a 3.7.0 verziója](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).
 * A számítógépen futó Azure Backup szolgáltatás ügynöke, győződjön meg arról, hogy a Microsoft Edge, illetve az Internet Explorer 11 telepítve van, engedélyezve van a JavaScript használatának. 
 * Egy Azure Storage-fiók létrehozása és a Recovery Services-tárolónak ugyanabban az előfizetésben. 
 * Győződjön meg arról, hogy a [szükséges engedélyek](../azure-resource-manager/resource-group-create-service-principal-portal.md) az Azure Active Directory-alkalmazás létrehozásához. Az Offline biztonsági másolat munkafolyamat egy Azure Active Directory-alkalmazás az Azure Storage-fiókhoz tartozó előfizetést hoz létre. Az alkalmazás célja az Azure Backup hatókörön belüli és biztonságos hozzáférést biztosíthat a az Azure importálási szolgáltatáshoz, az Offline biztonsági másolat munkafolyamat szükséges. 
@@ -108,7 +108,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a SATA meghajtókat a
 
     * A másolási számítógép érhető el az ideiglenes helyet a kapcsolat nélküli összehangolása munkafolyamat azonos hálózati elérési útját, amely lett megadva a **kezdeményezni az offline biztonsági másolat** munkafolyamat.
     * A BitLocker engedélyezve van a Másolás számítógépen.
-    * Az Azure PowerShell 3.7.0, vagy nagyobb, telepítve van.
+    * Az Azure PowerShell 3.7.0 telepítve van.
     * A legújabb kompatibilis böngészők (az Internet Explorer 11 vagy számított) telepítve vannak, és engedélyezve van a JavaScript használatának. 
     * A másolási számítógép hozzáférhessen az Azure-portálon. Ha szükséges, a másolási számítógép lehet ugyanaz, mint a forrásoldali számítógép.
     

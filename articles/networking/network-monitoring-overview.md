@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850137"
 ---
 # <a name="network-monitoring-solutions"></a>A hálózatfigyelési megoldások 
 
@@ -40,11 +41,11 @@ Teljesítményfigyelő, ExpressRoute-figyelő és végpont-figyelő szolgáltat�
 
 Teljesítményfigyelő NPM részét képezi, és a hálózat a felhőhöz, hibrid és a helyszíni környezetek figyelése. Távoli fiókirodai és a fiókirodák, a tárolási helyek, a adatközpontok és a felhők közötti hálózati kapcsolat figyelheti. Mielőtt a felhasználók panaszkodnak mert hálózati problémák észlelését. A főbb előnyei a következők:
 
-* Veszteséget és késéseket figyelése különböző alhálózatokon és értesítések beállítása
+* Különböző alhálózatokban és beállított riasztásokkal figyelheti a veszteséget és a késést
 * Összes elérési utat (például a redundáns elérési utak) a hálózat figyelése
 * Átmeneti és időpontban hálózati problémák, nehezen replikálása
 * Határozza meg a hálózaton, a teljesítmény csökkenését felelős az adott szegmens
-* A hálózati SNMP szükségessége nélkül állapotának figyelésére
+* Anélkül monitorozhatja a hálózat állapotát, hogy az SNMP protokollt kellene használnia
 
 ![NPM topológia térkép](./media/network-monitoring-overview/npm-topology-map.png) 
 
@@ -54,14 +55,15 @@ További információkért tekintse meg a következő cikkeket:
 * [Használati esetek](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 *  Termékfrissítéseket: [. február 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
-## <a name="expressroute-monitor"></a>Az ExpressRoute-figyelő
+## <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
-Az ExpressRoute NPM kínál a magánhálózati társviszony-létesítési kapcsolatok átfogó ExpressRoute megfigyelését. Figyelheti E2E kapcsolat és a fiókirodák és az Azure között ExpressRoute keresztül. A főbb funkciók a következők:
+Az ExpressRoute NPM átfogó figyelést Azure magánhálózati társviszony-létesítés és a Microsoft társviszony-létesítési kapcsolatok ExpressRoute kínál. Figyelheti E2E kapcsolat és a fiókirodák és az Azure között ExpressRoute keresztül. A főbb funkciók a következők:
 
 * Az Ön előfizetéséhez rendelve ER kapcsolatok automatikus észlelését
 * A hálózati topológiát a helyszíni a felhőalapú alkalmazások észlelése
-* Kapacitástervezési,-felhasználási elemzés, egy virtuális hálózati sávszélesség-felhasználás
+* Kapacitástervezési, sávszélesség-kihasználtságának elemzése
 * Figyelés és riasztás elsődleges és másodlagos elérési utakon található
+* Figyelés és az Azure szolgáltatások például az Office 365, Dynamics 365... ExpressRoute keresztül
 * Észleli a kapcsolatot a Vnetek teljesítménycsökkenése
 
 ![Földrajzi-társítási ábrázoló forgalom régiók között](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -71,7 +73,7 @@ További információkért tekintse át a következő cikkeket:
 * [Network Performance Monitor for ExpressRoute konfigurálása](../expressroute/how-to-npm.md)
 * [blogbejegyzés](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-endpoint-monitor"></a>Szolgáltatási végpont-figyelő
+## <a name="service-endpoint-monitor"></a>Szolgáltatásvégpont-figyelő
 
 Szolgáltatásvégpont figyeléssel, mostantól reachability alkalmazások tesztelése és a helyszíni, a vivőjel hálózatok és a felhő/titkos adatközpontok között szűk keresztmetszetek észleléséhez.
 

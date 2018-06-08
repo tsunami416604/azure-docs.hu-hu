@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 658686bec41fe1a6cfa8ca4ba6fe61d2e559297c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833719"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -34,31 +35,16 @@ A frissítéskezelés használatához a következőkre van szükség:
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A frissítéskezelés a következő operációs rendszereken támogatott:
+Frissítéskezelés a következő operációs rendszereken támogatott:
 
-### <a name="windows"></a>Windows
-
-- Windows Server 2008 és újabb, a frissítéstelepítések pedig csak Windows Server 2008 R2 SP1 és újabb rendszereken támogatottak. A Nano Server nem támogatott.
-
-  Frissítések a Windows Server 2008 R2 SP1 rendszerre való telepítésének támogatásához .NET-keretrendszer 4.5 és Windows Management Framework 5.0 vagy újabb verzió szükséges.
-
-- Az ügyféloldali Windows operációs rendszerek nem támogatottak.
-
-A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük.
-
-> [!NOTE]
-> A System Center Configuration Manager nem tudja párhuzamosan kezelni a Windows-ügynököt.
->
-
-### <a name="linux"></a>Linux
-
-- CentOS 6 (x86/x64) és 7 (x64)
-
-- Red Hat Enterprise 6 (x86/x64) és 7 (x64)
-
-- SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)
-
-- Ubuntu 12.04 LTS és újabb (x86/x64)
+|Operációs rendszer  |Megjegyzések  |
+|---------|---------|
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Csak értékelés frissítése         |
+|Windows Server 2008 R2 SP1 és újabb rendszer     |A Windows PowerShell 4.0-s vagy újabb rendszer szükséges ([töltse le a WMF 4.0-s](https://www.microsoft.com/download/details.aspx?id=40855)).</br> A Windows PowerShell 5.1 ([letöltése WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) megbízhatóbbak ajánlott.         |
+|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
+|Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
+|SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
 
 > [!NOTE]
 > Ahhoz, hogy Ubuntu rendszeren elkerülje a karbantartási időszakon kívüli frissítéstelepítést, konfigurálja újra az Unattended-Upgrade csomagot az automatikus frissítések letiltásához. További információt az [Ubuntu kiszolgáló kézikönyvének Automatikus frissítések témakörében](https://help.ubuntu.com/lts/serverguide/automatic-updates.html) talál.
@@ -142,7 +128,7 @@ Az **Új frissítéstelepítés** panelen adja meg a következőket:
 
   ![„Új frissítéstelepítés” panel](./media/manage-update-multi/update-select-computers.png)
 
-- **Frissítési besorolás**: Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés tartalmaz. A besorolási típusú ismertetését lásd: [frissítési besorolások](automation-update-management.md#update-classifications). A választható besorolási típusok a következők:
+- **Frissítési besorolás**: Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés tartalmaz. A besorolási típusok ismertetését [a frissítések besorolását](automation-update-management.md#update-classifications) leíró szakaszban találja. A választható besorolási típusok a következők:
   - Kritikus frissítések
   - Biztonsági frissítések
   - Kumulatív frissítések
@@ -151,6 +137,9 @@ Az **Új frissítéstelepítés** panelen adja meg a következőket:
   - Definíciófrissítések
   - Eszközök
   - Frissítések
+
+- **Frissítések kizárandó** -ekkor megnyílik a **kizárása** lap. Adja meg a KB vagy a csomag nevét, hogy kizárja.
+
 - **Ütemezési beállítások**: Elfogadhatja az alapértelmezett időpontot, amely a 30 perccel az aktuális idő utáni időpont, vagy megadhat egy másik időpontot.
    Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődjön. Ismétlődő ütemezés beállításához válassza az **Ismétlődés** alatti **Ismétlődő** lehetőséget.
 

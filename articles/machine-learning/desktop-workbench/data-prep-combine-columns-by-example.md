@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 469fefa48ea795a56b0e7525f99634c5149a780f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ecd2232dcf77715fdccd4e5518674500231f67ca
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830266"
 ---
 # <a name="combine-columns-by-example-transformation"></a>Példa átalakítással oszlopok egyesítése
 Ez a transzformáció lehetővé teszi a felhasználó számára egy olyan új oszlop hozzáadása kombinálásával több oszlop értékeit. Felhasználó adjon meg egy elválasztó és példákkal kombinált értékek ehhez a transzformációhoz végrehajtásához. Amikor a felhasználó kombinációja példákat tartalmaz, az átalakítás kezeli azonos **-példa** motor, amely használatban van a **Célosztályából oszlop példa alapján** átalakító.
@@ -50,7 +52,7 @@ A felhasználó már meglévő **oszlop egyesítése minta alapján** kiválaszt
 
 Vesszőt és egy szóközt egyesítése ebben a példában elválasztójelként szolgál a *utca*, *Város*, *állapot*, és *ZIP-* oszlopok.
 
-|Utca.|Város|Állapot|ZIP|Oszlop|
+|Utca|Város|Állapot|ZIP|Oszlop|
 |:----|:----|:----|:----|:----|
 |16011 N.E. 36th módja|REDMOND|WA|98052|16011 N.E. 36th módja, REDMOND, WA, 98052|
 |16021 N.E. 36th módja|REDMOND|WA|98052|16021 N.E. 36th módja, REDMOND, WA, 98052|
@@ -66,7 +68,7 @@ Vesszőt és egy szóközt egyesítése ebben a példában elválasztójelként 
 
 Az érték a **félkövér** példaként lett megadva.
 
-|Dátum|Hónap|év|Óra|Perc|Másodperc|Összetett oszlop|
+|Dátum|Hónap|Év|Óra|Perc|Másodperc|Összetett oszlop|
 |:----|:----|:----|:----|:----|:----|:----|
 |13|okt.|2016|15|01|23|**13-Oct-2016 15:01:23 CET**|
 |16|okt.|2016|16|22|33|16-Oct-2016 15:01:33 CET|

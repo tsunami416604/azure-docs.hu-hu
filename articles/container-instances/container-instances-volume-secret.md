@@ -8,18 +8,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 47abb4c305b1997fa3f44c07aa85dd01e5a94f1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a030582c885dd0a5680bd23046ea2a9c0329701a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830071"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure-tároló példányát titkos kötet csatlakoztatása
 
 Megtudhatja, hogyan csatlakoztatása egy *titkos* kötet a tároló példányát, a tárolás és a tárolók a tárolócsoportok által a bizalmas adatok lekérését.
 
 > [!NOTE]
-> Csatlakoztatása egy *titkos* kötet korlátozódik jelenleg Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+> Csatlakoztatása egy *titkos* kötet korlátozódik jelenleg Linux tárolók. Útmutató: a Windows és Linux tárolók biztonságos környezeti változók át [környezeti változók értékét](container-instances-environment-variables.md). Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
 ## <a name="secret-volume"></a>titkos kötet
 

@@ -9,21 +9,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: 7bde1c834038bdc2a010987b4e32fa49222101ee
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8064940e0d0f035010a2521752d6f32f3f9ccd9f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715275"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849831"
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Tartományhoz csatlakozó HDInsight-fürtök Azure Active Directory tartományi szolgáltatások konfigurálása
 
 Tartományhoz csatlakozó fürtök a többfelhasználós hozzáférést a HDInsight-fürtökön. A HDInsight-fürtök tartományhoz van csatlakoztatva vannak egy tartományhoz, hogy a tartományi felhasználók a tartományi hitelesítő adataik használatával hitelesítik magukat a fürtök és a big Data típusú adatok feladatok futtatásához. 
 
 Ebből a cikkből megismerheti, hogyan konfigurálhatja egy Azure Active Directory tartományi szolgáltatások tartományhoz HDInsight-fürtöt.
-
-> [!NOTE]
-> Azure Active Directory tartományi szolgáltatások egy tartományhoz csatlakozó HDInsight-fürt létrehozása szükséges. Létrehozása egy tartományhoz csatlakozó HDInsight fürt Azure IaaS virtuális gépeken futó Active Directory használatával már nem támogatott.
 
 ## <a name="create-azure-adds"></a>Az Azure ADDS létrehozása
 

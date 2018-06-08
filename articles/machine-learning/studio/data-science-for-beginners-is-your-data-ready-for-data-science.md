@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 2d9c66d89b82c63561b147f3d2537ba6ad07c511
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5ab3c7716485053432240cb74be8ebc60c9ad274
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834617"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
 ## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Adattudomány kezdők sorozat
@@ -50,7 +52,7 @@ Előtt adattudomány adhat meg a kívánt válaszokat, akkor adjon neki néhány
 Adattudomány, az egyes összetevők, például együtt kell húzni van:
 
 * Megfelelő
-* Csatlakoztatva
+* Csatlakozva
 * A pontos
 * Elegendő a használata
 

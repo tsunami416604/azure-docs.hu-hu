@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: fe916df286b0e50430464b3f2f8837b898abb827
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ca551ed07447e41ec94b0334eac0d235e0a5b6f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835083"
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>AzureML webszolgáltatások kezelése az API Management használatával
 ## <a name="overview"></a>Áttekintés
@@ -43,7 +45,7 @@ Ez az útmutató, szüksége:
 Kezelheti az Azure Machine Learning webszolgáltatásba az API Management-példánnyal.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **+ hozzon létre egy erőforrást**.
+2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 3. A keresési mezőbe írja be a "API-felügyelet", majd válassza ki a "API-kezelés" erőforrást.
 4. Kattintson a **Create** (Létrehozás) gombra.
 5. A **neve** érték használandó hozzon létre egy egyedi URL-címet (a példában az "demoazureml").
@@ -197,7 +199,7 @@ Kattintson a **Select Columns in Dataset** majd **Oszlopválasztás** válassza 
 
 Bontsa ki a **Szövegelemzések** , és húzza **Szolgáltatáskivonatolás** alakzatot a kísérletet. Csatlakozás **oszlopok kiválasztása az adathalmaz** való **Szolgáltatáskivonatolás**.
 
-![connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![Connect--projektoszlopok](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
 Típus **3** a a **bitsize kivonatoláshoz**. Ezzel létrehoz 8 (23) oszlopot.
 
@@ -243,7 +245,7 @@ Típus **Ez az jó naponta** a **col2**. Kattintson a pipa jelre.
 
 Látni fogja hasonlót
 
-![sample-output](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
+![minta-kimenet](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>Mintakód
 Egy másik módszer a RR-EKET az Ügyfélkód származik. Ha **kérelem/válasz** az irányítópultot és a felülről lefelé görgetési jelennek meg példakód C#, Python, és R. Ezenkívül megjelenik az RRS kérelem a kérelem URI-azonosítója, beleértve a szintaxist fejlécek és törzse.

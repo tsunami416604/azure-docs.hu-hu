@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849930"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok
  Kell rendeznie egy *ExpressRoute-kapcsolatcsoportot* a helyszíni infrastruktúra csatlakozni a Microsoft a kapcsolat-szolgáltató használatával. Az alábbi ábrán a WAN és a Microsoft közötti kapcsolat egy logikai ábrázolását.
@@ -86,6 +87,11 @@ Az alábbi táblázat összehasonlítja a három útválasztási tartományok:
 Ha szeretné, legalább egy, az útválasztási tartományok engedélyezéséhez az ExpressRoute-kapcsolatcsoportot részeként. Ha szeretné az útválasztási tartomány elhelyezése a azonos VPN, ha egyetlen útválasztási tartományról való egyesíthetők. Akkor helyezheti is őket másik útválasztási tartományok, a diagram hasonló. Az ajánlott konfiguráció a magánhálózati társviszony-létesítés közvetlenül kapcsolódik a központi hálózathoz, és a nyilvános és a Microsoft társviszony-létesítési hivatkozások csatlakoznak a Szegélyhálózaton.
 
 Ha minden három társviszony-létesítési munkamenetet választja, a BGP-munkamenetek (az egyes társviszony-létesítési egy pár) három párok kell rendelkeznie. A BGP-munkamenet Értékpárokat adjon meg egy magas rendelkezésre állású hivatkozást. Ha réteg 2 kapcsolat szolgáltatók keresztül kapcsolódik, telepítésért felelős, konfigurálásához és kezeléséhez útválasztást. Megtekintésével többet is megtudhat a [munkafolyamatok](expressroute-workflows.md) ExpressRoute beállításához.
+
+## <a name="expressroute-health"></a>Az ExpressRoute-állapot
+ExpressRoute-Kapcsolatcsoportok figyelhetik a rendelkezésre állás érdekében a kapcsolatot a virtuális hálózatokat és a sávszélesség kihasználtsága használatával [hálózati Teljesítményfigyelő](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) (NPM).
+
+NPM Azure magánhálózati társviszony-létesítés, és a Microsoft társviszony-létesítés állapotát figyeli.  Tekintse meg a [utáni](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) további információt.
 
 ## <a name="next-steps"></a>További lépések
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute szolgáltatás szolgáltatók és a helyek](expressroute-locations.md).

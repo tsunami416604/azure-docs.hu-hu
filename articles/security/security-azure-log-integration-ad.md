@@ -12,19 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 05/25/2018
+ms.date: 06/06/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 201e34cf9e9c917f1f79964facce136e7c0c2fd3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7ec3a3fe26600e69a7e4f511c01006a97cbe12c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642461"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839481"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrálása az Azure Active Directory-naplók
 
 Az Azure Active Directory (Azure AD) naplózási események segítségével azonosíthatja a privilegizált műveletekhez, hogy megtörtént az Azure Active Directoryban. Láthatja, hogy milyen típusú eseményeket vizsgálatával nyomon követett [Azure Active Directory auditnaplójának jelentési eseményei](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md).
+
+
+>[!IMPORTANT]
+> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik. AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory integrálásának lépései naplók
 

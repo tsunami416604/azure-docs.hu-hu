@@ -8,17 +8,19 @@ manager: jhubbard
 editor: ''
 ms.assetid: 3949fb2c-ffab-49fb-908d-27d5e42f743b
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: deguhath
-ms.openlocfilehash: 31612f56e996ba0b609a34dd556ede3a0ac498f9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 39bdbce4ada225c0fa7df8559f68b591ccfc68b7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838656"
 ---
 # <a name="heading"></a>Az SQL Server virtuális gépet az Azure adatfeldolgozásra
 Ez a dokumentum bemutatja, hogyan adatokba, és az SQL Server virtuális gép az Azure-on tárolt adatok szolgáltatásai generálásához. Ezt adatok wrangling SQL használatával, és Python hasonló programozási nyelv használatával is végrehajthatja.

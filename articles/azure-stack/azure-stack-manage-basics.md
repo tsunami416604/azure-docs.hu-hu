@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283d1c2a7ef3484cb4fd4d9a53b543a093e9baf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850303"
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure verem Adminisztráció alapjai
 Számos szempontot Ha most ismerkedik az Azure-verem felügyeleti tudnia kell. Ez az útmutató az Azure-verem kezelőként szerepkör áttekintése és a felhasználóknak a számukra gyorsan eredményesebbé kell biztosít.
@@ -31,7 +32,7 @@ Az Azure-verem integrált rendszert használ, ha Azure verem frissített verzió
  
 ### <a name="development-kit"></a>Szoftverfejlesztői készlet
 
-Ha a csomag Azure verem használata esetén tekintse át a [Mi az Azure-verem?](.\asdk\asdk-what-is.md) tudja a csomagot, és a korlátozások célja, hogy a cikk. A csomag "védőfalat," ahol Azure verem, értékelje ki és fejlesztéséhez és tesztelni az alkalmazások nem éles környezetben célszerű használni. (Központi telepítési információk: a [Azure verem szoftverfejlesztői készlet telepítési](.\asdk\asdk-deploy.md) oktatóanyag.)
+Ha a csomag Azure verem használata esetén tekintse át a [Mi az Azure-verem?](.\asdk\asdk-what-is.md) tudja a csomagot, és a korlátozások célja, hogy a cikk. A csomag "védőfalat," ahol Azure verem, értékelje ki és fejlesztéséhez és tesztelni az alkalmazások nem éles környezetben célszerű használni. (Központi telepítési információk: a [Azure verem szoftverfejlesztői készlet telepítési](.\asdk\asdk-install.md) cikkben.)
 
 Azure, például azt innovációját annak gyorsan. Azt fogja kiadás új buildek rendszeresen. Ha a csomagot futtatja, és szeretné helyezni a legújabb buildre kell [újratelepítése veremmel Azure](.\asdk\asdk-redeploy.md). Nem alkalmazhat a frissítési csomagok. Ez a folyamat időt vesz igénybe, de az az előnye, hogy a legújabb szolgáltatásokhoz kipróbálhatja. A fejlesztői csomag dokumentációjában találhatók a webhelyen tükrözi a legfrissebb kiadott buildjét.
 
@@ -43,8 +44,8 @@ Szüksége lesz egy tájékoztatási, mely szolgáltatások elérhetővé teheti
 
 Alapértelmezés szerint az Azure-verem tartalmazza a következő "eligazodást szolgáltatások" Azure verem telepítésekor:
 
-- Számítás
-- Tárolás
+- Compute
+- Storage
 - Hálózat
 - Key Vault
 
@@ -64,7 +65,7 @@ Ezek a szolgáltatások további beállításokra van szükség, mielőtt akkor 
 
 Az Azure verem továbbra is az Azure-szolgáltatások támogatását. A tervezett terv, tekintse meg a [Azure verem: Azure kiterjesztése](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) tanulmány. Ugyanígy figyelheti a [Azure verem blogbejegyzések](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) új hirdetmények.
 
-## <a name="what-account-should-i-use"></a>Milyen fiókot érdemes használni?
+## <a name="what-account-should-i-use"></a>Milyen fiókot használjak?
 Nincsenek néhány fiókokkal kapcsolatos megfontolások kell ügyelnie, ha az Azure-verem kezelése. Különösen a központi telepítések segítségével a Windows Server Active Directory összevonási szolgáltatások (AD FS) helyett az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A következő fiókokkal kapcsolatos megfontolások integrált Azure verem rendszerek és ASDK központi telepítéseket is vonatkozik:
 
 

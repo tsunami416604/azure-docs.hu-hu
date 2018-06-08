@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 4c9e7ec65db80e0af91645d70cea39bb1a396791
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ff658fd14700e9fdf66b9d929da133f7a3b3f3a0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831785"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k – áttekintés
 A Reporting API-k engedélyezése a vállalati Azure-ügyfelek számára használati és elszámolási adatok programozott módon le az elsődleges adatok elemzésére szolgáló eszközöket. 
@@ -30,7 +31,7 @@ A Reporting API-k engedélyezése a vállalati Azure-ügyfelek számára haszná
 
 |Fejléc kulcs kérése | Érték|
 |-|-|
-|Engedélyezés| Adja meg az értéket a következő formátumban: **tulajdonosi {API_KEY}** <br/> Példa: tulajdonosi eyr... 09|
+|Engedélyezés| Adja meg az értéket a következő formátumban: **tulajdonosi {API_KEY}** <br/> Példa: tulajdonosi eyr... 09| 
 
 ## <a name="consumption-apis"></a>Felhasználás API-k
 A Swagger-végpont esetében elérhető [Itt](https://consumption.azure.com/swagger/ui/index) az API-k leírt, amely alatt API könnyen introspection és képességét ügyfél SDK-k használatával engedélyezze a [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](http://swagger.io/swagger-codegen/). 2014. Előfordulhat, hogy 1 verziótól adatok az API-n keresztül érhető el. 
@@ -50,7 +51,7 @@ A fenti API a válaszban visszaadott ETag-EK. Etag változás azt jelzi, hogy az
  **Számlázási időszakok listában** – a [számlázási időszakok API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) időszakokat, amelyek a megadott regisztrációs fordított időrendben adatokkal rendelkezik számlázási listáját adja vissza. Minden időszak mutat az API útvonalat az adat - BalanceSummary, UsageDetails, piactér díjakat és árlista négy csoportjai tulajdonságot tartalmaz.
 
 
-## <a name="api-response-codes"></a>API-válaszkódok  
+## <a name="api-response-codes"></a>API-válaszkódok   
 |Válasz állapotkódja|Üzenet|Leírás|
 |-|-|-|
 |200| OK|Nincs hiba|

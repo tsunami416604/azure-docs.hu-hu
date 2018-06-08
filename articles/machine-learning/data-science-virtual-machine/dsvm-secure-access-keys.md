@@ -8,21 +8,23 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 4eb1d657adc37ef0d1e4055573b174d58baf2e0e
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ec734cf456050250396b00aa09b61bace7e9aa0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830270"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Hozzáférés tárolják az adatok tudományos virtuális gép biztonságos hitelesítő adatok
 
-Egy közös kérdés esetén felhőalapú alkalmazások kezelése a hitelesítő adatokat, amelyek kell lenniük a kódban való hitelesítéséhez. Fontos feladat biztosíthatja a rendszer ezen hitelesítő adatok védelmét. Ideális esetben azok soha nem jelennek meg a fejlesztői munkaállomásokon, vagy beolvasása beadja a verziókövetési rendszerrel. 
+A felhőalapú alkalmazások készítésének általános kihívását jelenti azon hitelesítő adatok a kódban történő kezelése, amelyekkel az alkalmazás hitelesíti magát a felhőalapú szolgáltatásokban. A hitelesítő adatok biztonságának megőrzése fontos feladat. Ideális esetben ezek soha nem jelennek meg a fejlesztői munkaállomásokon, és a verziókövetési rendszerbe sem kerülnek be. 
 
 [Szolgáltatás-identitás (MSI) felügyelt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) teszi egyszerűbbé válik a probléma megoldásához azzal, hogy az Azure-szolgáltatások az Azure Active Directory (Azure AD) automatikusan felügyelt identitást. Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, anélkül, hogy a hitelesítő adatok a kódban a szolgáltatással való hitelesítésre szolgáló használhatja. Hitelesítő adatok védelmét egy közös mintát MSI használandó együtt a [Azure Keyvault](https://docs.microsoft.com/azure/key-vault/), egy felügyelt Azure-szolgáltatásokban is titkok és titkosítási kulcsokat tárolja biztonságos helyen. A felügyelt szolgáltatás identitás használatával kulcstároló eléréséhez, és a jogosult titkos kulcsok és a titkosítási kulcsok lekérése a Key Vault. 
 

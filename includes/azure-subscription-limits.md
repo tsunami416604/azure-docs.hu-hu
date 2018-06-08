@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 57747e21cf4b5b32fc5b0ddeaf151a538337afba
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34852075"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -30,5 +31,5 @@ ms.lasthandoff: 05/20/2018
 
 <sup>1</sup>extra Small-példányok száma szerint több processzormag, annak ellenére, hogy egy részleges core segítségével az alapvető határérték felé számolnak.
 
-<sup>2</sup>fiók méretkorlátot magában foglalja a Standard és prémium szintű storage-fiókok. Ha több mint 200 storage-fiókok egy régió van szüksége, ellenőrizze a kérelmet [Azure támogatási](https://azure.microsoft.com/support/faq/). Az Azure Storage csapata kiértékeli az Ön vállalkozását, és jóváhagyhat legfeljebb 250 tárfiókot. 
+<sup>2</sup>fiók méretkorlátot magában foglalja a Standard és prémium szintű storage-fiókok. Ha több mint 200 storage-fiókok egy adott régióban van szüksége, ellenőrizze a kérelmet [Azure támogatási](https://azure.microsoft.com/support/faq/). Az Azure Storage csapat rendszer tekintse át az Ön üzleti esetében, és előfordulhat, hogy jóváhagyásához legfeljebb 250 tárfiókok az adott régió. 
 

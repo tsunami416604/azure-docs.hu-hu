@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 05/25/2018
+ms.date: 06/06/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 9f270daec40d4b395588c491a7ff88ef6ca45649
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 31524f24eea97082c8b148ba0a65bbeb24717039
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802442"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839320"
 ---
 # <a name="azure-log-integration-faq"></a>Azure Naplóelemzés integrációs – gyakori kérdések
 
 Ebben a cikkben megválaszolunk kapcsolatos gyakori kérdések (GYIK) Azure napló integráció.
+
+>[!IMPORTANT]
+> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik.  AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
 
 Azure napló-integráció egy olyan Windows operációs rendszer szolgáltatás, az Azure-erőforrások származó nyers naplók integrálja a helyszíni biztonsági információkat és az esemény (SIEM) felügyeleti rendszerek használható. Ez az integráció kínál az új, egységesített irányítópult minden Ez az eszköz, a helyszínen vagy a felhőben. Ezután összesíteni, összefüggéseket, elemzése, és az alkalmazások társított biztonsági események riasztást.
 

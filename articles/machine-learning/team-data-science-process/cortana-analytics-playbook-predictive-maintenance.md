@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 581e9d586f007fe0cd28d60b5558594777656ca8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e069a7d16fa56f2c7590edbda8339182835ef367
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837259"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat Azure AI útmutatója
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A prediktív karbantartási (**PdM**) olyan népszerű alkalmazás prediktív elemzés, amelyek segítségével a vállalatok számára a különböző iparágak magas eszköz kihasználtságának eléréséhez és a működési költségek megtakarítását. Ez az útmutató egyesíti az üzleti és analitikai iránymutatásokat és gyakorlati tanácsok sikeresen fejlesztésére és PdM megoldások segítségével telepítheti a [AI a Microsoft Azure platform](https://azure.microsoft.com/overview/ai-platform) technológia.
 
@@ -230,7 +231,7 @@ Műszaki adatok előállítása, a modell számának, a helyre, például a dát
 
 Az eddig tárgyalt adatok előkészítése erőfeszítéseket a folyamatban az alább látható módon vannak rendszerezve data vezethetnek. Képzési, tesztelése és érvényesítési adatok a logikai séma (Ez a példa bemutatja idő nap egységben) kell rendelkeznie.
 
-| Eszközazonosító | Idő | <Feature Columns> | Címke |
+| Eszközazonosító | Time | <Feature Columns> | Címke |
 | ---- | ---- | --- | --- |
 | A123 |Naponta 1 | . . . | . |
 | A123 |2 nap | . . . | . |
@@ -412,7 +413,7 @@ Ezzel szemben, magában foglalja a PdM _kötegelt pontozási_. Felel meg a model
 
 Ez az útmutató utolsó része PdM megoldás sablonok, oktatóanyagok és az Azure-ban végrehajtott kísérletekhez listáját jeleníti meg. Ezek az alkalmazások PdM is telepíthető az Azure-előfizetés bizonyos esetekben percen belül. A koncepció igazolása bemutatók, védőfalak alternatívák, vagy tényleges éles megvalósítások gyorsító kísérletezhet, is használhatók. Ezek a sablonok találhatók a [Azure Eszközintelligencia-katalógus](http://gallery.azure.ai) vagy [Azure GitHub](https://github.com/Azure). A következő különböző mintákat adott idő alatt a megoldás sablonba lesz állítva.
 
-| # | Megnevezés | Leírás |
+| # | Beosztás | Leírás |
 |--:|:------|-------------|
 | 1 | [Prediktív karbantartási Azure Machine Learning minta](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Hiba a következő N mértékegységét keresztül-előrejelzés PdM minta. Ez a minta Azure ML munkaterület projektként írása, és a PdM kezdőknek ideális. [További dokumentáció](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) Ez a minta kapcsolódik.|
 | 2 | [Az Azure prediktív karbantartási megoldás sablon](https://github.com/Azure/AI-PredictiveMaintenance) | Egy teljes körű keretrendszer több PdM forgatókönyv bemutatásához. Ez a sablon mutatja be két olyan eset: az egyik új használati eset valós idejű hiba feltétel besorolás. A második forgatókönyv, egyszerűen egy integrálása a megoldás [1] Ez a megoldás sablon. Azt mutatja be más új vagy meglévő forgatókönyvek hozzáadása telepített ugyanazon az infrastruktúrán újból.|

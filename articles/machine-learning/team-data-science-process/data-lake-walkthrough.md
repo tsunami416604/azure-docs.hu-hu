@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 91a8207f-1e57-4570-b7fc-7c5fa858ffeb
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 427c986b3099f9ae3ee25ab0106c7a4e665a35b9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 62ca89ffe7507c2dc0a0f1a86750fb2bb996a5bd
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836970"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Az Azure Data Lake méretezhető Adattudomány: egy végpont forgatókönyv
 Ez a bemutató ismerteti az Azure Data Lake használata az adatok feltárása és a bináris osztályozási feladatok NYC taxi út mintán és díjszabás adatkészlet-e a tipp egy jegy ára fizeti előre. Az végigvezeti a lépéseken, a [Team adatok tudományos folyamat](http://aka.ms/datascienceprocess), végpontok, tanítási modell az adatgyűjtést, majd egy webszolgáltatás, amely közzéteszi a modell a központi telepítéshez.
@@ -482,7 +484,7 @@ A minta futtatásához Jupyter Notebook vagy a Python parancsfájlt, a következ
 
 
 ### <a name="read-in-the-data-from-blob"></a>A blob adatainak olvasása
-* Kapcsolati karakterlánc   
+* Kapcsolati sztring   
   
         CONTAINERNAME = 'test1'
         STORAGEACCOUNTNAME = 'XXXXXXXXX'

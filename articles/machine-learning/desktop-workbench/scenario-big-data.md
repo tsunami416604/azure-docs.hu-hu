@@ -9,17 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 424af2ffd1b7931701036aeb819cbb8879cb7a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832662"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -76,7 +78,7 @@ DSVM IP-cím | xxx|
  Mező neve| Érték |  
  |------------|------|
  Tárfiók neve| xxx|
- Elérési kulcs  | xxx|
+ Hozzáférési kulcs  | xxx|
 
 
 Az Ubuntu DSVM és az előfeltétel-ellenőrzési lista létrehozása az Azure HDInsight-fürt számítási célokat. Számítási célpontjai a számítási erőforrással a környezetben a Machine Learning-munkaterület, amely eltérhet a munkaterületet futtató számítógépre.   
@@ -190,7 +192,7 @@ Az első argumentum `configFilename`, ahol tárolni a Blob storage-információk
 | storageContainer | Karakterlánc | A köztes eredmények tárolásához Azure Storage-fiók tároló |
 | StorageKey tulajdonságát | Karakterlánc |Az Azure tárfiók_elérési_kulcsa |
 | dataFile|Karakterlánc | Adatforrásfájlokat  |
-| Időtartam| Karakterlánc | Az adatok az adatforrásfájlokat időtartama|
+| időtartam| Karakterlánc | Az adatok az adatforrásfájlokat időtartama|
 
 A módosítsa `Config/storageconfig.json` és `Config/fulldata_storageconfig.json` a tárfiókot, biztonságitár-kulcs és a köztes eredményeket tárolni a blob-tároló konfigurálása. Alapértelmezés szerint a blob-tároló, a futtatásához egy hónapos adatok van `onemonthmodel`, és a teljes adatkészlet futtatásához a blob tároló `fullmodel`. Ellenőrizze, hogy ezekhez a tárolókhoz két hoz létre a tárfiók. A `dataFile` mezőjét [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) konfigurálja, hogy milyen adatok betöltése a [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). A `duration` mező konfigurálja a tartományát, az adatokat tartalmazza. Az időtartam értéke ONE_MONTH, ha az adatok betöltése az adatok hét fájlok között csak egy CSV-fájlt kell 2016. júniusi. Ha a teljes, a teljes adatkészlet (1 TB) be van töltve. Nem kell módosítani `dataFile` és `duration` a két konfigurációs fájlokban.
 

@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834355"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Egyéni R-modul létrehozása az Azure Machine Learningben
 Ez a témakör ismerteti a létrehozásáról és központi telepítése az Azure Machine Learning egy egyéni R modult. Egyéni R modul és a megadásukhoz használt fájlokat ismerteti. Azt mutatja be, hogyan készítse a fájlokat, a modulok meghatározásához és a Machine Learning-munkaterület központi telepítés modul regisztrálása. Az elemek és attribútumok az egyéni modul definíciójában használja majd ismerteti részletesen. Kiegészítő funkciók és a fájlok és a több kimenet használata is ismertet. 

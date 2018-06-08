@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831635"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület központi telepítése
 
@@ -72,7 +73,7 @@ Blockchain munkaterület telepítéséhez szükséges egy Azure AD-alkalmazás r
 A következő módosítania kell az alkalmazás jegyzékében belül az Azure AD alkalmazás-szerepkörök használni Blockchain munkaterület a rendszergazdák.  Az alkalmazásjegyzékeknek kapcsolatos további információkért lásd: [Azure Active Directory alkalmazásjegyzékének](../active-directory/develop/active-directory-application-manifest.md).
 
 1. A regisztrált alkalmazáshoz, jelölje ki a **Manifest** a regisztrált alkalmazáshoz részleteket tartalmazó ablaktáblán.
-2. Hozzon létre egy GUID Azonosítót. A PowerShell-parancs használata `[guid]::NewGuid()` vagy online eszközöket hozzon létre egy GUID Azonosítót. 
+2. Hozzon létre egy GUID Azonosítót. Létrehozhat egy GUID, [guid] PowerShell-parancs használatával:: NewGuid () vagy a New-GUID-parancsmagot. Egy másik lehetőség, hogy egy GUID-generátor webhelyet használja.
 3. Frissíteni kívánja a **appRoles** a jegyzékfájl rész. A Szerkesztés jegyzék ablaktábla, válassza a **szerkesztése** , és cserélje le `"appRoles": []` , a megadott JSON-NÁ. Ügyeljen arra, hogy cserélje le a értéke a **azonosító** mezőt a létrehozott GUID. 
 
     ``` json

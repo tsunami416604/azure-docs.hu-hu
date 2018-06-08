@@ -8,21 +8,25 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 06/06/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 42c30a825e44c289c42d0fb0a40a442c4ac950d7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9065d237057bf47d469b6f6fbf5b588c7e348232
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839357"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure napló integrációs Útmutató: az Event Hubs használatával folyamat az Azure Key Vault-események
 
-Használhatja az Azure napló integrációs naplózott események beolvasásához, és elérhetővé teszi azokat a biztonsági információk és az esemény (SIEM) felügyeleti rendszerbe. Ez az oktatóanyag azt szemlélteti, hogyan Azure napló integrációs használható az Azure Event Hubs beszerzett naplók feldolgozása.
 
 >[!IMPORTANT]
->Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
+> Az Azure Naplóelemzés integrációs szolgáltatás 06/01/2019 elavulttá válik.  AzLog letöltések 2018 jún 27 letiltásra kerül. Mi a teendő áthelyezése előre tekintse át a feladás egy vagy több útmutatót [integrálható a meglévő SIEM-eszközök használata Azure-figyelő](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
+
+Használhatja az Azure napló integrációs naplózott események beolvasásához, és elérhetővé teszi azokat a biztonsági információk és az esemény (SIEM) felügyeleti rendszerbe. Ez az oktatóanyag azt szemlélteti, hogyan Azure napló integrációs használható az Azure Event Hubs beszerzett naplók feldolgozása.
+
+Az előnyben részesített módszere integrálása az Azure naplókat, hogy a SIEM gyártója által biztosított Azure figyelő összekötővel, és ezeket a következő [utasításokat](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Azonban ha a SIEM-szállító Azure figyelése nem biztosít egy összekötőt, akkor előfordulhat, hogy fogja tudni használni Azure napló integrációs ideiglenes megoldásként (Ha a SIEM Azure napló integrációs támogatja) addig, amíg az ilyen összekötő nem érhető el.
 
  
 Ez az oktatóanyag segítségével Ismerkedjen meg a hogyan Azure napló integráció és az Event Hubs működik együtt a példa a lépéseket követve, és hogyan minden lépés támogatja a megoldást. Majd is eltarthat, mire hogy megismerte itt létrehozása a saját lépéseket a vállalat egyedi igényeinek támogatására.

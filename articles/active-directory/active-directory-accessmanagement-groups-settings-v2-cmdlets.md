@@ -11,14 +11,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: 312efd6233546ae32e498907e04fbf8aea73f7b7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b53c2b717d41cc202b20805e6513cac0ce0c2758
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850042"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Csoportok kezelése az Azure Active Directory 2-es parancsmagok
 > [!div class="op_single_selector"]
@@ -33,8 +34,9 @@ Ez a cikk tartalmaz példákat az Azure Active Directory (Azure AD) a csoportok 
 Az Azure AD PowerShell-modul telepítéséhez használja a következő parancsokat:
 
     PS C:\Windows\system32> install-module azuread
+    PS C:\Windows\system32> import-module azuread
 
-Győződjön meg arról, hogy a modul el lett-e telepítve, használja a következő parancsot:
+Annak ellenőrzéséhez, hogy a modul készen áll a használatra, a következő paranccsal:
 
     PS C:\Windows\system32> get-module azuread
 
@@ -250,7 +252,7 @@ Ha szeretne egy olyan tulajdonost eltávolítása egy csoportból, használja a 
 A csoport létrehozásakor egyes végpontokkal, a végfelhasználó számára adjon meg egy mailNickname vagy alias használata az e-mail cím, a csoport részeként. A következő magas szintű jogosultsággal rendelkező e-mail-aliasokkal használt csoportok csak az Azure AD globális rendszergazda hozhatók létre. 
   
 * visszaélés 
-* adminisztrátor 
+* Rendszergazda 
 * Rendszergazda 
 * hostmaster 
 * majordomo 

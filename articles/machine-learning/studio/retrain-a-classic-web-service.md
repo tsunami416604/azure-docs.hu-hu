@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: d0c40d952008f58f9b99c1c44d06e971a1e60c3b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6fc03865185b97fb1f34028239f647f97d5bd315
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836874"
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
 A prediktív telepített webes szolgáltatás az alapértelmezett érték scoring-végpontja. Alapértelmezett végpontok szinkronban vannak az eredeti képzési és kísérletek pontozási tárolják, és ezért a betanított modell alapértelmezett végpont nem cserélhető le. A webszolgáltatás működik, hozzá kell adnia egy új végpont a webszolgáltatással. 
@@ -68,7 +70,7 @@ Az útvonal URL-cím beolvasása:
 2. A frissítés erőforrás hivatkozásra.
 3. Másolja a PATCH kérés POST URL-CÍMÉT. Példa:
    
-     PATCH URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
+     JAVÍTÁS URL-CÍME: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
 Most már használhatja a betanított modell a korábban létrehozott pontozási végpont frissítéséhez.
 

@@ -7,14 +7,16 @@ ms.author: kefzhou
 manager: akannava
 ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: bd8888d911730831435b87d3a60b48a7797eea98
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 077af8b5d3367dd2188cbd6e5d76aaf52512a1e8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830799"
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Keresés fut, a legjobb pontosság és a legalacsonyabb időtartama
 Megadott több fut, a egy használati eset futtatása a legjobb pontossággal kereséséhez. A parancssori felület (CLI) használatával egyik módszer egy [JMESPath](http://jmespath.org/) lekérdezés. Az Azure parancssori felületen JMESPath használatával további információkért lásd: [JMESPath használjon lekérdezések az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). A következő példában négy futtatása 0, 0,98., 1 és 1 pontossága értékekkel jönnek létre. Futtatja a rendszer a tartományon lévő `[MaxAccuracy-Threshold, MaxAccuracy]` ahol `Threshold = .03`.

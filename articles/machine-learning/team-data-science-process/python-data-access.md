@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 9ab42272-c30c-4b7e-8e66-d64eafef22d0
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: f97fbb76ddf48fb3c7ec79b6b2ed8cee3e0ceabb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9f84686f8689a40cf002035053236b415481488f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838350"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 A Microsoft Azure Machine Learning Python ügyféloldali kódtár preview engedélyezheti a helyi Python-környezetben az Azure Machine Learning adatkészletekhez a biztonságos hozzáférést, és lehetővé teszi, hogy a létrehozását és kezelését egy munkaterület adathalmazok.
@@ -40,7 +42,7 @@ A Python ügyféloldali kódtára a tesztek alapján a következő környezetekb
 
 A következő csomag rendelkezik egy függőséget:
 
-* kérés
+* kérelem
 * Python-dateutil
 * pandas
 
@@ -132,7 +134,7 @@ A következő lépések bemutatják egy példa, amely hoz létre a kísérlet, f
 6. A kimeneti csomóponton kattintson a a [CSV átalakítása] [ convert-to-csv] modul.
 7. Ha a helyi menü megjelenik, válassza ki a **adatok hozzáférési kód generálása**.
    
-    ![A helyi menü][experiment]
+    ![Helyi menü][experiment]
 8. Válassza ki a kódrészletet, és a megjelenő ablakban másolja a vágólapra.
    
     ![Hozzáférési kód][intermediate-dataset-access-code]

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: caf740e45c6de2b6ae52db48a588db67033e103d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 39171f7d7a7b27ec54f67b592e184e90134a1a52
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634685"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850389"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának figyelésére, és a problémák diagnosztizálásához gyorsan
 
@@ -44,7 +44,7 @@ Az Azure figyelő azt követi nyomon az IoT-központ előforduló különféle m
 
 #### <a name="connections"></a>Kapcsolatok
 
-A kapcsolatok kategória nyomon követi az eszközök csatlakozni, vagy válassza le az IoT-központ előforduló hibákat. Ebbe a kategóriába követési akkor hasznos, jogosulatlan kapcsolódási kísérletek azonosítására és nyomon követése, ha a kapcsolat azért területein gyenge hálózati eszközökhöz.
+A kapcsolatok kategória nyomon követi eszköz csatlakozni, és egy IoT-központot, valamint a hibák kapcsolatbontási eseményt. Ebbe a kategóriába követési akkor hasznos, jogosulatlan kapcsolódási kísérletek azonosítására és nyomon követése, ha a kapcsolat azért területein gyenge hálózati eszközökhöz.
 
 ```json
 {

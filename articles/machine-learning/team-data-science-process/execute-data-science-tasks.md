@@ -7,17 +7,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: 5c617c60ff51d0b1e7717b28b0372efe63c1ee18
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ed402f9730136fdb8a4d07dd291599c567637600
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838381"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Tudományos feladatok végrehajtása: feltárása, a modellezési és a központi telepítés
 
@@ -92,14 +94,17 @@ Nincsenek különböző szempontok és platformokat a modellek üzembe helyezés
 - [Központi telepítési modell SQL-kiszolgálón](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
+> [!NOTE]
+> Telepítés előtt egy rendelkezik modell pontozása késleltetése elég alacsony, éles környezetben használandó biztosítja.
 >
->
->Megjegyzés: Telepítés előtt egy kifejezetten a Tiltás késése a modell pontozása túl alacsonyak ahhoz éles környezetben használandó biztosítja.
 >
 
 További példákat is találhatók forgatókönyvek, amelyek azt mutatják, a folyamat lépései **meghatározott forgatókönyvek**. Szerepel a listában, és kapcsolódik a miniatűr leírásokat a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan lehet felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása.
 
-Megjegyzés: a központi telepítés Azure Machine Learning Studio használatával, lásd: [központi telepítése az Azure Machine Learning webszolgáltatás](../studio/publish-a-machine-learning-web-service.md).
+> [!NOTE]
+> A telepítési Azure Machine Learning Studio használatával, lásd: [központi telepítése az Azure Machine Learning webszolgáltatás](../studio/publish-a-machine-learning-web-service.md).
+>
+>
 
 ### <a name="ab-testing"></a>A / B tesztelés
 Ha több modellek éles környezetben, ez hasznos lehet a végrehajtásához [A / B tesztelés](https://en.wikipedia.org/wiki/A/B_testing) teljesítmény modell összehasonlítására. 
@@ -108,6 +113,7 @@ Ha több modellek éles környezetben, ez hasznos lehet a végrehajtásához [A 
 ## <a name="next-steps"></a>További lépések
 
 [Adatok tudományos projektek előrehaladását úgy követheti nyomon](track-progress.md) bemutatja, hogyan egy adatok tudósok nyomon követheti a adatok tudományos projekt.
- 
+
+[A modell művelet és a CI/CD](ci-cd-flask.md) bemutatja, hogyan CI/CD fejlett modellek hajtható végre.
 
 

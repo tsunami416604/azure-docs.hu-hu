@@ -7,16 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 5d5797ede15be0779873f0a023433f0a915dd74a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ca9b46335105e62b023e7db16e0ead4061fbfd00
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830714"
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Az Azure Machine Learning data előkészítése Preview ellenőrök támogatott
 Ez a dokumentum ismerteti az előzetes verzióban elérhető ellenőrök készletét.
@@ -63,7 +65,7 @@ Ez inspector jeleníti a jelenleg kiválasztott oszlop értékeinek gyakoriság�
 
 ### <a name="options"></a>Beállítások 
 - A felső érték
-- Csökkenő sorrendben
+- Csökkenő
 - Null vagy hibaértéket tartalmazza
 - Halo megjelenítése
 - A Logaritmikus skála használata
@@ -125,7 +127,7 @@ Ez inspector a kijelölt oszlopban karakterlánc minták listáját tartalmazza.
 
 ### <a name="options"></a>Beállítások
 - A felső érték
-- Csökkenő sorrendben
+- Csökkenő
 - Halo megjelenítése
 
 ### <a name="actions"></a>Műveletek

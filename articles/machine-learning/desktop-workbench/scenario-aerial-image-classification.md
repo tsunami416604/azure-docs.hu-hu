@@ -7,14 +7,16 @@ manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
+ms.component: desktop-workbench
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 74cb72b4ddfbeace5e2409dfac4f4b6bf21ffa25
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d34f25fd75816f0ae840b3cbb2e0e88cbc2bfd91
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832407"
 ---
 # <a name="aerial-image-classification"></a>Légifelvételes kép besorolás
 
@@ -120,7 +122,7 @@ Hozzon létre egy új projektet, ebben a példában egy sablon használatával:
     az group create --location eastus --name %AZURE_RESOURCE_GROUP%
     ```
 
-#### <a name="create-the-storage-account"></a>A storage-fiók létrehozása
+#### <a name="create-the-storage-account"></a>A tárfiók létrehozása
 
 Azt hozni a tárfiókot, hogy állomások projektfájlok, amelyet a HDInsight Spark kell kezelni.
 

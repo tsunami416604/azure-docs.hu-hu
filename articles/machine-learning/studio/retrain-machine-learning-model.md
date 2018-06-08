@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: f02bf54cc8941d18c866183c9b7d12bbe7222d2b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca7ad5a46c1401a283879f8aba80c781a88fc089
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835429"
 ---
 # <a name="retrain-a-machine-learning-model"></a>A gépi tanulási modell újratanítása
 A machine learning modellek Azure Machine Learning operationalization folyamat részeként a modell betanítása és mentve. Majd a használatával hozzon létre egy predicative webszolgáltatás-bővítmény. A webszolgáltatás majd használni képes a webhelyek, az irányítópultok és a mobile apps szolgáltatásban. 

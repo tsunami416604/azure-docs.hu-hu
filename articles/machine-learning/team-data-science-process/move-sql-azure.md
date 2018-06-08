@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 50f8b862-4d32-44b2-a1e2-4fbc8024acaa
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: ce349aedc6b733d34ab61eb2e23b378727e01800
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: edee9216835917e8bd9ee13065f24507e0403cb9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839724"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
 Ez a témakör bemutatja a beállítások megköveteli az adatok strukturálatlan fájlból (CSV vagy TSV formátumban), vagy az Azure SQL-adatbázis egy helyi SQL Server tárolt adatok. Ezeket a feladatokat az adatok áthelyezését a felhőbe az Team tudományos folyamat részét képezik.

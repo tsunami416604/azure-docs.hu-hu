@@ -4,17 +4,19 @@ description: Ez a forgatókönyv bemutatja, hogyan hajtsa végre az Azure Machin
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 70baa1160e9f521ac5533eaa15d4a9ab57433a49
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c6eccda4329572a181b6a7e7e3870ace4bfac13b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832747"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Elosztott, az Azure Machine Learning-munkaterület használatával hiperparaméterek beállítása
 
@@ -107,7 +109,7 @@ A következő két szakasz megmutatjuk, hogyan hajthatja végre a távoli docker
 
 az IP-cím, felhasználónevet és DSVM jelszót. IP-címe DSVM Azure-portálon az a DSVM lap-áttekintés szakaszban talál:
 
-![VIRTUÁLIS GÉP IP](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
+![Virtuális gép IP-címe](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
 
 #### <a name="configuration-of-spark-cluster"></a>Spark-fürt konfigurálása
 
@@ -294,7 +296,7 @@ Ezután azt cseréje
 
     from sklearn.model_selection import GridSearchCV
 
-együtt 
+a következővel: 
 
     from spark_sklearn import GridSearchCV
 

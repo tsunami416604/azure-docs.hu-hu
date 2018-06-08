@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 127c51b9a2617c6b8520d972a3cd4b6c3bbcddd1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837694"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
 Előzetesen feldolgozni, és az adatok tisztítása, amelyek általában kell elvégzése előtt a DataSet adatkészlet nem használható hatékonyan gépi tanulás fontos feladatokat. Nyers adatok gyakran zajos vagy nem megbízható, és előfordulhat, hogy értékek hiányzik. Ilyen adatok használata a modellezési félrevezető eredményeket hozhat létre. Ezeket a feladatokat a csapat adatok tudományos folyamat (TDSP) a részét képezik, és általában hajtsa végre egy kezdeti feltárása a DataSet adatkészlet felderítése, és tervezze meg a szükséges előzetes feldolgozás segítségével. Részletes utasítások a TDSP folyamathoz, lásd: a leírt lépéseket a [Team adatok tudományos folyamat](overview.md).

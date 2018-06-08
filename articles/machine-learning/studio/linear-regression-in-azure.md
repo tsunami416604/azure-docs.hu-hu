@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836225"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Lineáris regresszió használata az Azure Machine Learning termékben
 > *Kate Baroni* és *Ben Boatman* vállalati megoldás fejlesztők a Microsoft Data elemzések kiváló Center vannak. Ebben a cikkben leírt tapasztalataikat áttelepítését egy meglévő regressziós elemzés suite Azure Machine Learning segítségével felhőalapú megoldásokhoz. 
@@ -81,7 +83,7 @@ A javaslatok alkalmazásakor azt a Machine Learning Studióban, az Excel alkalma
 | --- |:---:|:---:|:---:|
 | Címkézett érték |Tényleges (numerikus) |Azonos |Azonos |
 | Tanuló |Excel -> adatok elemzési regressziós -> |Lineáris regressziós. |Lineáris regressziós |
-| Tanuló beállítások |– |Alapértelmezés szerint használt érték |a szokványos legkevésbé négyzetes<br />L2 = 0.005 |
+| Tanuló beállítások |– |Alapértelmezés |a szokványos legkevésbé négyzetes<br />L2 = 0.005 |
 | Adatkészlet |26 sorok, 3 funkciókat, 1 címke. Az összes numerikus. |Azonos |Azonos |
 | Vegyes: vonat |Excel az első 18 sorban, a legutóbbi 8 sorok vizsgálni képezni. |Azonos |Azonos |
 | Vegyes: teszt |A legutóbbi 8 sorokon alkalmazott Excel regressziós képlet |Azonos |Azonos |

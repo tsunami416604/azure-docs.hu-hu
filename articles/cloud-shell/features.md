@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 3e71f2307ab68b2bc4694c7782f7a0f0d43b159b
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: b61dda5b56ca3cc8ef827a06aaedac701ca79f8f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757042"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850202"
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Szolgáltatások & Azure Cloud rendszerhéj Bash eszközei
 
@@ -58,7 +58,7 @@ A felhő rendszerhéj bash nyílt forrású eszközök például Terraform Ansib
 |Kategória   |Name (Név)   |
 |---|---|
 |Linux-eszközök            |Bash<br> SH<br> tmux<br> Dig<br>               |
-|Azure-eszközök            |[Az Azure CLI 2.0](https://github.com/Azure/azure-cli) és [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br> [blobxfer](https://github.com/Azure/blobxfer#blobxfer) |
+|Azure-eszközök            |[Az Azure CLI 2.0](https://github.com/Azure/azure-cli) és [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |A szerkesztő szövege           |VIM<br> nano<br> emacs       |
 |A verziókövetési rendszerrel         |git                    |
 |Buildet            |Ellenőrizze<br> maven<br> npm<br> a pip         |

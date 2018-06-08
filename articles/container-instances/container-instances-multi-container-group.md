@@ -6,31 +6,39 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2018
+ms.date: 06/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850569"
 ---
 # <a name="deploy-a-container-group"></a>A tároló csoport telepítése
 
 Azure-tároló példányokon alakzatot használatával egyetlen állomásra több tároló telepítését támogatja a [a tárolócsoport](container-instances-container-groups.md). Ez akkor hasznos, ha egy alkalmazás oldalkocsi naplózási, figyelési vagy bármely egyéb konfigurációs felépítése amikor egy szolgáltatás kell egy második csatolt folyamat.
 
-Ez a dokumentum végigvezeti egy egyszerű több tároló oldalkocsi konfigurációs fut az Azure Resource Manager-sablon üzembe helyezésével.
+Az Azure parancssori felület használatával több tárolócsoportok telepítéséhez két módszer áll rendelkezésre:
+
+* Erőforrás-kezelő sablon-üzembehelyezés (Ez a cikk)
+* [YAM fájltelepítés](container-instances-multi-container-yaml.md)
+
+A Resource Manager-sablon központi telepítése esetén ajánlott kell telepítenie további Azure-szolgáltatások erőforrások (például egy Azure fájlok megosztás) tároló példány központi telepítés alkalmával. Miatt a YAM formátum tömörebb természetétől YAM fájl központi telepítése tartalmazza a központi telepítés esetén ajánlott *csak* tároló példányok.
 
 > [!NOTE]
 > Több tárolócsoportok jelenleg csak Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
 ## <a name="configure-the-template"></a>A sablon konfigurálása
 
-Hozzon létre egy fájlt `azuredeploy.json` és a következő JSON másolása.
+Ez a cikk a részeket végigvezetik Önt egy egyszerű több tároló oldalkocsi konfigurációs fut az Azure Resource Manager-sablon üzembe helyezésével.
 
-Ez a példa egy tárolócsoport két tárolókhoz, egy nyilvános IP-címet, két kitett port meg van adva. A csoportban lévő első tároló internetre alkalmazást futtat. A második tároló, a oldalkocsi egy HTTP kérést küld az elsődleges webes alkalmazás a csoporthoz tartozó helyi hálózaton keresztül.
+Először hozzon létre egy fájlt `azuredeploy.json`, majd másolja a következő JSON azt.
 
-```json
+A Resource Manager sablon határozza meg, a tárolócsoport két tárolókhoz, egy nyilvános IP-cím és két kitett portok. A csoportban lévő első tároló internetre alkalmazást futtat. A második tároló, a oldalkocsi egy HTTP kérést küld az elsődleges webes alkalmazás a csoporthoz tartozó helyi hálózaton keresztül.
+
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -118,7 +126,7 @@ Ez a példa egy tárolócsoport két tárolókhoz, egy nyilvános IP-címet, ké
 
 Egy tároló titkos kép beállításjegyzék használatát, az objektum hozzáadása a JSON-dokumentum, az alábbi formátumban. Egy megvalósítási példát szemléltet konfiguráció, tekintse meg a [ACI Resource Manager-sablonra való hivatkozást] [ template-reference] dokumentációját.
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "[parameters('imageRegistryLoginServer')]",
@@ -146,13 +154,13 @@ Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát.
 
 ## <a name="view-deployment-state"></a>Központi telepítés állapotának megtekintése
 
-A központi telepítési állapotának megtekintéséhez használja a [az tároló megjelenítése] [ az-container-show] parancsot. Ez visszaad, amellyel az alkalmazás elérhető kiosztott nyilvános IP-cím.
+A központi telepítési állapotának megtekintéséhez használja a következő [az tároló megjelenítése] [ az-container-show] parancs:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Kimenet:
+Ha azt szeretné, a futó alkalmazást, keresse meg az IP-címét a böngésző. Például az IP-cím `52.168.26.124` a Ez egy példa a kimenetre:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location

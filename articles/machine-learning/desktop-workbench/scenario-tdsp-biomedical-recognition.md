@@ -9,17 +9,19 @@ editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 421af12da6d207a50d12dcbf64aac51aba06b196
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ae8c8ed9d397df0c82b74f051ff14729c0f41623
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837278"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Team adatok tudományos folyamat (TDSP) sablonnal orvosbiológiai entitás felismerés
 
@@ -104,7 +106,7 @@ Az alábbiakban látható a nyilvános GitHub-tárházban, amely tartalmazza a k
     * Munkavégző csomópontokhoz: legalább 4 [D12_V2](https://azure.microsoft.com/pricing/details/hdinsight/). A munkahelyi 11 munkavégző csomópontokhoz D12_V2 méretű használtuk.
 * [NC6 adatok tudományos virtuális gép (DSVM)](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-linux-dsvm-intro) méretezett számításhoz.
 
-### <a name="python-packages"></a>Python-csomagokat
+### <a name="python-packages"></a>Python-csomagok
 
 A szükséges függőségek a forgatókönyv projekt mappában aml_config/conda_dependencies.yml fájlban vannak definiálva. Az ebben a fájlban definiált függőségek automatikusan létrehozza a kísérletekhez docker, a virtuális gép és a HDI elleni fürt célokat. A Conda környezet fájlformátumot kapcsolatos részletekért tekintse meg a [Itt](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
 

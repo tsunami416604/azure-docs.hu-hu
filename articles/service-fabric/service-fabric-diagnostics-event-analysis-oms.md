@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 1552fbe66f7bad219d8aea8a3f208b0fe69cdf2b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716057"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839588"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Esemény elemzése és Naplóelemzési a képi megjelenítés
 
@@ -54,19 +54,19 @@ A fenti kép a Service Fabric elemzési megoldások kezdőlapján. Ez az egy pil
 * [Megbízható Services-programozási modell események](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->A műveleti csatornát mellett részletes rendszeresemények által gyűjtött [a diagnosztika bővítmény konfiguráció frissítése](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
+>A műveleti csatornát mellett részletes rendszeresemények által gyűjtött [frissítése a diagnosztika bővítmény config](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Service Fabric események megtekintése többek között a műveleteket az egyes csomópontok
 
 1. A Service Fabric Analytics lapján kattintson a grafikonon **Service Fabric események**.
 
-    ![Ú megoldás működési csatornát OMS](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
+    ![Ú megoldás működési csatornát OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. Kattintson a táblázat egy listán szereplő események megtekintéséhez. Miután itt jelenik meg a rendszer minden olyan események, összegyűjtött alkalmazásproblémát. Referenciaként ezek az Azure Storage-fiókban WADServiceFabricSystemEventsTable, és hasonló módon a reliable services és szereplője események lásd a következő a megfelelő lekérdezésben.
+2. Kattintson a **lista** megtekintéséhez az események listájában. Miután itt jelenik meg a rendszer minden olyan események, összegyűjtött alkalmazásproblémát. Referenciaként ezek az Azure Storage-fiókban WADServiceFabricSystemEventsTable, és hasonló módon a reliable services és szereplője események lásd a következő a megfelelő lekérdezésben.
     
-    ![Lekérdezés működési csatornát OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
+    ![Lekérdezés működési csatornát OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Másik lehetőségként kattintson a bal oldali a Nagyító, és találja, amit keres a Kusto lekérdezési nyelv használatával. Például található összes műveleteit a fürt csomópontja, használhatja a következő lekérdezés. A eseményazonosítókat alatt használt találhatók a [működési csatorna események referencia](service-fabric-diagnostics-event-generation-operational.md)
+Másik lehetőségként kattintson a bal oldali a Nagyító, és találja, amit keres a Kusto lekérdezési nyelv használatával. Például található összes műveleteit a fürt csomópontja, használhatja a következő lekérdezés. A eseményazonosítókat alatt használt találhatók a [működési csatorna események hivatkozás](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -79,13 +79,13 @@ A megadott csomópontok (számítógép) a rendszer szolgáltatás (feladatnév)
 
 1. A Service Fabric Analytics lapon kattintson a ábrázoló **Reliable Services**.
 
-    ![OMS ú megoldás megbízható szolgáltatások](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+    ![OMS ú megoldás megbízható szolgáltatások](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. Kattintson a táblázat egy listán szereplő események megtekintéséhez. Itt láthatja a megbízható szolgáltatás eseményeit. Ha a szolgáltatás runasync elkezdődött és befejeződött, amely általában akkor fordul elő a központi telepítések és frissítések különböző eseményeket tekintheti meg. 
+2. Kattintson a **lista** megtekintéséhez az események listájában. Itt láthatja a megbízható szolgáltatás eseményeit. Ha a szolgáltatás runasync elkezdődött és befejeződött, amely általában akkor fordul elő a központi telepítések és frissítések különböző eseményeket tekintheti meg. 
 
-    ![OMS megbízható szolgáltatások lekérdezése](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+    ![OMS megbízható szolgáltatások lekérdezése](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Megbízható szereplő események hasonló módon tekintheti meg. Részletesebb események konfigurálása a megbízható szereplőket, módosítania kell a `scheduledTransferKeywordFilter` a Config a diagnosztikai bővítmény (lásd alább). További tudnivalókat a ezek az értékek a [megbízható szereplője események referencia](service-fabric-reliable-actors-diagnostics.md#keywords)
+Megbízható szereplő események hasonló módon tekintheti meg. Részletesebb események konfigurálása a megbízható szereplőket, módosítania kell a `scheduledTransferKeywordFilter` a Config a diagnosztikai bővítmény (lásd alább). További tudnivalókat a ezek az értékek a [megbízható szereplője események hivatkozás](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -99,9 +99,9 @@ Megbízható szereplő események hasonló módon tekintheti meg. Részletesebb 
                 },
 ```
 
-A Kusto lekérdezési nyelv a hatékony. Egy másik értékes lekérdezés futtatása, hogy megtudja, mely csomópontok generál a legtöbb esemény. A lekérdezés az alábbi képernyőképen látható megbízható szolgáltatások esemény összesíteni az adott szolgáltatás és a csomópont jeleníti meg.
+A Kusto lekérdezési nyelv a hatékony. Egy másik értékes lekérdezés futtatása, hogy megtudja, mely csomópontok generál a legtöbb esemény. A lekérdezés az alábbi képernyőfelvételen a Service Fabric működési eseményeit összesíteni az adott szolgáltatás és a csomópont jeleníti meg.
 
-![Egy csomópont OMS lekérdezés események](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
+![Egy csomópont OMS lekérdezés események](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>További lépések
 

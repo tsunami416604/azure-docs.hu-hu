@@ -7,14 +7,16 @@ ms.author: roastala
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 1bd8f28b472361470fa8020149a9af0c690fbc52
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db0cfa1d91681d48a21ac160706dc4e8c72f81c2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830911"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Az Azure Machine Learning GPU használata
 Grafikus processzorra (GPU) széles körben használt, amely általában akkor szükséges, ha bizonyos mély Neurális hálózat modellek betanítása számításilag intenzív feladatok feldolgozásához. Feldolgozóegységekkel használatával jelentősen csökkentheti a modellek képzési idején. Ebben a dokumentumban megismerheti, hogyan konfigurálhatja az Azure ML munkaterület használandó [DSVM (adatok tudományos virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) Feldolgozóegységekkel felszerelt végrehajtási célként. 

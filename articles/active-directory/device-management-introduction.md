@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6384f63139eb64522409c5922e187afd878ebb09
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714136"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850008"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Kezelés az Azure Active Directoryban bemutatása
 
@@ -70,12 +70,16 @@ Az Azure AD csatlakoztatott eszközök célja leegyszerűsítése érdekében:
 
 - A munkahelyi eszközök a Windows központi telepítése 
 - A szervezeti alkalmazások és erőforrások Windows-eszköz való hozzáférést
+- Felhőalapú felügyelet a munkahelyi eszközök
 
 ![Az Azure AD regisztrált eszközök](./media/device-management-introduction/02.png)
 
+Az Azure AD Join is telepíthető a következő módszerek egyikével sem: 
+ - [Windows automata](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Tömeges központi telepítés](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Az önkiszolgáló felhasználói élmény](device-management-azuread-joined-devices-frx.md) 
 
-Ezen célok lehet elvégezni a felhasználók egy önkiszolgáló felhasználói élmény biztosítása számára a munkahelyi által birtokolt eszközök az Azure AD felügyelete alatt.  
-**Az Azure AD Join** szervezeteknek, amelyek a felügyelni kívánt kell a felhő-first vagy csak felhőalapú számára készült. Nincs korlátozva a méretét vagy a szervezeteknek, amelyek telepítheti az Azure AD Join típusú. Az Azure AD Join works is jól még egy hibrid környezetben, és engedélyezheti a helyszíni alkalmazásokhoz és erőforrásokhoz való hozzáférést.
+**Az Azure AD Join** célja a szervezeteknek, amelyek szeretnék felhő-első (Ez azt jelenti, hogy elsősorban felhőalapú szolgáltatásokat használ, a célja, hogy egy helyszíni infrastruktúra-felhasználás csökkentése) vagy csak felhőalapú (a helyszíni infrastruktúra nélkül). Nincsenek a méretét vagy a szervezeteknek, amelyek telepítheti az Azure AD Join típusú korlátozások. Az Azure AD Join works is jól hibrid környezetben, a felhőalapú és a helyszíni alkalmazásokhoz és erőforrásokhoz való hozzáférés engedélyezése.
 
 Az Azure AD csatlakoztatott eszközök végrehajtási tesz lehetővé a következő előnyöket biztosítja:
 
@@ -89,10 +93,12 @@ Az Azure AD csatlakoztatott eszközök végrehajtási tesz lehetővé a követke
 
 - **Hozzáférés korlátozása** alkalmazások csak olyan eszközökön, amelyek megfelelnek a megfelelőségi szabályzatnak.
 
-- **A helyi erőforrásokhoz való zavartalan hozzáférés** Ha az eszköz rendelkezik-e sor a láthatáron a helyi tartományvezérlőre.
+- **A helyi erőforrásokhoz való zavartalan hozzáférés** Ha az eszköz rendelkezik-e sor a láthatáron a helyi tartományvezérlőre. 
 
 
-Az Azure AD join elsődlegesen a helyi Windows Server Active Directory infrastruktúrával nem rendelkező szervezeteknek, amíg is alapértékekkel is helyzetekben használhatja, ahol:
+Az Azure AD join elsődlegesen a helyi Windows Server Active Directory infrastruktúrával nem rendelkező szervezeteknek, amíg biztosan használata forgatókönyvekben ahol:
+
+- Az Azure AD felhőalapú infrastruktúra átmenet kívánt és MDM például Intune-ra.
 
 - Nem használhat egy helyszíni tartományhoz való csatlakozást, például, ha le kell töltenie a mobil eszközök, például táblagépekről és mobiltelefonokról vezérlése alatt.
 
@@ -122,7 +128,7 @@ Ha a környezetben egy helyszíni AD kockázatokat, és azt is szeretné az Azur
 
 Az Azure AD hibrid csatlakoztatott eszközöket kell használnia, ha:
 
-- Rendelkezik Win32-alkalmazások telepítését ezekre az eszközökre, amelyek NTLM / Kerberos.
+- Win32 alkalmazásokat értünk ezekre az eszközökre, a számítógép Active Directory-hitelesítés használó telepítve van.
 
 - Eszközkezelés a csoportházirend van szüksége.
 

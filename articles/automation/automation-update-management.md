@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43cfb16e9471736c0f112ef879faaf01badebc4f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d336b0a4c1de069fccce21a370ca64dc9e9359c9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824948"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831693"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítse a felügyeleti megoldás az Azure-ban
 
@@ -166,6 +166,8 @@ Ez a nézet a gépek hiányzó frissítések, a központi telepítést és az ü
 
 Futtathatja a napló keresési, amely információkat ad vissza a gépen, frissítés, vagy a központi telepítés a listában az elem kiválasztásával. Ekkor megnyílik a **naplófájl-keresési** egy lekérdezést a kijelölt lapon.
 
+![Felügyeleti alapértelmezett nézet frissítése](media/automation-update-management/update-management-view.png)
+
 ## <a name="installing-updates"></a>Frissítések telepítése
 
 A munkaterületen található összes Linux- és Windows-számítógép frissítésének felmérését követően a szükséges frissítések telepítését egy *frissítéstelepítés* létrehozásával végezheti el. Egy központi telepítés egy vagy több számítógépet a szükséges frissítések ütemezett telepítés. Ehhez adja meg a telepítés dátumát és idejét, valamint meg kell határoznia a telepítésben érintett számítógépet vagy számítógépcsoportot. A számítógépcsoportokkal kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjaival](../log-analytics/log-analytics-computer-groups.md) kapcsolatos részt. Számítógépcsoportok szerepel a frissítések központi telepítését, ha csoporttagság ütemezés létrehozása során csak egyszer legyen kiértékelve. A csoportot érintő későbbi változások nem jelennek meg. Ennek megoldásához törölje az ütemezett frissítéstelepítést, és hozza ismét létre.
@@ -197,9 +199,8 @@ Hozzon létre egy új központi telepítésének kattintva a **ütemezés közpo
 |Operációs rendszer| Linux- vagy Windows|
 | Gépek frissítése |Válasszon ki egy mentett keresést vagy gép válasszon címet a legördülő listán, és válassza ki az egyes gépek |
 |Frissítési besorolások|Válassza ki a szükséges összes frissítési besorolások|
-|Kihagyandó frissítések|Adja meg a "KB" előtag nélkül kizárandó összes KB|
-|Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|
-| Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
+|Kihagyandó frissítések|Adja meg a frissítések kizárása. Adja meg a Windows a KB, a "KB" előtag nélkül. Linux adja meg a csomag nevét vagy egy helyettesítő karaktert.  |
+|Ütemezési beállítások|Válassza ki a dátumot, és válassza ki az egyszer, vagy az ismétlődés ismétlődő|| Karbantartási időszak |Állítsa be a frissítéseket percek számát. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 

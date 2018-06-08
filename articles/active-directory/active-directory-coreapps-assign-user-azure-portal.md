@@ -12,19 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 06/06/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: 1609942269a0c737239cf4198289fdc44ade2b32
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d7e237e1e9daae3830f9a9943d54bc6bfa90a34c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830826"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban
 Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás, a vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
+
+> [!NOTE]
+> A cikkben említett funkciók egy Azure Active Directory Premium P1 vagy Premium P2-licenc szükséges. További információkért lásd: a [Azure Active Directory árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/active-directory).
+
 > [!NOTE]
 > A Microsoft Applications (például az Office 365-alkalmazásokhoz) a PowerShell használatával felhasználók hozzárendelése egy vállalati alkalmazás.
+
 
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Hogyan oszthatok ki a felhasználói hozzáférés a vállalati alkalmazásokhoz az Azure-portálon?
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
@@ -76,7 +82,7 @@ Egy csoport hozzárendelése egy vállalati alkalmazás, ki kell cserélni `Get-
 
 ### <a name="example"></a>Példa
 
-Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft munkahelyi Analytics](https://products.office.com/en-us/business/workplace-analytics) alkalmazás PowerShell-lel.
+Ebben a példában a felhasználó Britta Simon rendeli hozzá a a [Microsoft munkahelyi Analytics](https://products.office.com/business/workplace-analytics) alkalmazás PowerShell-lel.
 
 1. PowerShell rendelje hozzá a megfelelő értékeket a változók $username, $Alkalmazás_neve és $app_role_name. 
 

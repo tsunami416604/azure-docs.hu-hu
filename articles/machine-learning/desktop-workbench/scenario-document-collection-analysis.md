@@ -7,14 +7,16 @@ ms.author: kehuan
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: cbb077796d9f14a7f9d1d00268c7b6889ade8375
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 60d65b17d4cbe8a45ff3fb62b06852d7b945e8f1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832859"
 ---
 # <a name="document-collection-analysis"></a>A dokumentum gyűjtemény elemzés
 
@@ -83,7 +85,7 @@ Ebben a forgatókönyvben a nyers adatokat gyűjtött az Egyesült Államok kong
 
 Az adatfájl kilenc adatmezők szerepelnek. Az adat mezőnevét az neve és leírása az alábbiak szerint.
 
-| Mező neve | Típus | Leírás | Hiányzó értéket tartalmaz. |
+| Mezőnév | Típus | Leírás | Hiányzó értéket tartalmaz. |
 |------------|------|-------------|---------------|
 | `ID` | Karakterlánc | A számlázási/megoldás azonosítója. Ez a mező formátuma [bill_type] [szám]-[Kongresszus]. Például "hconres1-93" azt jelenti, hogy a számlázási típusa "hconres" (végre House az egyidejű feloldási, tekintse meg [Ez a dokumentum](https://github.com/unitedstates/congress/wiki/bills#basic-information)), a számlázási értéke "1"és a Kongresszus értéke "93". | Nem |
 | `Text` | Karakterlánc | A tartalom a számlázási megoldás. | Nem |

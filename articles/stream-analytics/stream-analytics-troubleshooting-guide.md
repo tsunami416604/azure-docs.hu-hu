@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 44777946fdc829da222ffdd67dfecfa3bf240be7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2eefabcc0484fca0e6e3ad1dd5037684a759d010
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850446"
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Azure Stream Analytics a hibaelhárítási útmutatója
 
@@ -41,6 +42,7 @@ A legjobb eredmény érdekében a Stream Analytics-feladat hibaelhárítása kö
 
 5.  Közös nehézségek, például a kiküszöbölése:
     - A [ **ahol** ](https://msdn.microsoft.com/library/azure/dn835048.aspx) záradék a lekérdezés a program kiszűri összes eseményt, és meggátolja, hogy a kimenetet létrehozása folyamatban.
+    - A [ **TÍPUSKONVERZIÓ** ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) meghiúsul, a feladat sikertelenségét okozó működik. Típus típuskonverzió hibák elkerülése érdekében használja [ **TRY_CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) helyette.
     - Ablak funkciók használata esetén várja meg a teljes ablakidőtartam egy a lekérdezés eredményének megtekintéséhez.
     - Az időbélyeg események megelőzi a feladat kezdési időpontja, és ezért események eldobott.
 

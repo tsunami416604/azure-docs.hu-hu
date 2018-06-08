@@ -8,16 +8,18 @@ ms.author: yahajiza
 manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
+ms.component: studio
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 5a3d2c976ca4deef093f2640e56634acf911f4c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1e4cf34582e28e00108e280d928eea8a8134699a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834525"
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>A gépi tanulási feladatok az Azure Batch szolgáltatás
 
@@ -46,7 +48,7 @@ Webszolgáltatások létrehozásával kapcsolatos további információkért lá
 
 Miután létrehozta a készletben, a a kötegelt kérelem URL-cím segítségével a webszolgáltatás BES feladat elküldése. Dönthet úgy, hogy küldje el a készlethez, vagy a klasszikus kötegfeldolgozási. A Batch-készlet feldolgozása a feladat elküldése, a következő paraméter a feladat elküldése kérelemtörzset hozzáadhat:
 
-"AzureBatchPoolId":"&lt;pool ID&gt;"
+"AzureBatchPoolId": "&lt;azonosító tárolókészlet&gt;"
 
 Ha nem adja hozzá a paramétert, a feladat a klasszikus kötegelt folyamat-környezetében futtatható. A készlet elegendő erőforrás áll rendelkezésre, ha a a feladat futtatása azonnal elindul. A készlet nem rendelkezik szabad erőforrást, ha a feladat várólistára van állítva, amíg egy erőforrás áll rendelkezésre.
 

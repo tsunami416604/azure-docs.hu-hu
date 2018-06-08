@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 06/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24cecdc65c45d5d1ee5443740d9874ccfd74e387
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7c012bdf025a352788aec2d2d70bab33d7914577
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627715"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849542"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Az eseménykezelők Azure esemény rácsban
 
@@ -42,6 +42,14 @@ Ha az Azure Functionst használja kezelőként, használja az Event Grid-trigger
 | [Big Data típusú adatok streamelése adattárházba](event-grid-event-hubs-integration.md) | Az Event Hubs rögzítési fájlt hoz létre, amikor esemény rács függvény alkalmazásokhoz küld egy eseményt. Az alkalmazás kéri le a rögzítést fájlt, és adatokat áttelepíti az adatraktárban. |
 | [Az Azure Service Bus számára, Azure esemény rács integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Esemény rács üzeneteket küld a Service Bus-témakörbe alkalmazás és a logikai alkalmazás működik. |
 
+## <a name="event-hubs"></a>Event Hubs
+
+Az Event Hubs akkor használja, ha a megoldás lekérdezi események gyorsabb, mint az eseményeket is feldolgozza. Az alkalmazás saját ütemezést, akkor az Event Hubs eseményeit dolgozza fel. A bejövő események kezelésére a Eseményfeldolgozási méretezheti.
+
+|Beosztás  |Leírás  |
+|---------|---------|
+| [Egyéni események útvonal az Azure Event hubs az Azure CLI és az esemény rács](custom-event-to-eventhub.md) | Egyéni esemény küld egy eseményközpontot, az alkalmazás általi feldolgozás alatt. |
+
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
 Azure hibrid kapcsolatok segítségével alkalmazásokat, amelyek a vállalati hálózaton belül van, és nem kell nyilvánosan elérhető végponton elküldje az eseményeket.
@@ -62,7 +70,7 @@ A Logic Apps segítségével automatizálhatja üzleti folyamatait válaszol az 
 
 ## <a name="queue-storage"></a>Queue Storage
 
-A Queue storage segítségével lekérése-események fogadásához.
+A Queue storage segítségével lekérése-események fogadásához. A Queue storage lehet használni, ha egy hosszú ideig tartó folyamatot, amely túl lassan válaszol. Az események a Queue storage címen, az alkalmazás is lekéréses és feldolgozni az eseményeket a saját ütemezés szerint.
 
 |Beosztás  |Leírás  |
 |---------|---------|

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2016
+ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 561f317cd7afd740b83709efc8a75ed515626192
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7e05e06a5abd02dd67f58a8e01bb246e318f51de
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850236"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Telepítse az alkalmazást az Azure App Service segítségével FTP/S
 
@@ -26,29 +27,23 @@ Ez a cikk bemutatja, hogyan FTP vagy ftps-t használja a webalkalmazást, mobil-
 
 Az FTP/S-végpont az alkalmazás már aktív. FTP/S telepítési ahhoz szükséges, hogy nem igényel konfigurálást.
 
-<a name="step1"></a>
-## <a name="step-1-set-deployment-credentials"></a>1. lépés: Az üzembe helyezési hitelesítő adatok beállítása
+## <a name="open-ftp-dashboard"></a>Nyissa meg FTP irányítópult
 
-Az FTP-kiszolgáló, az alkalmazás eléréséhez először üzembe helyezési hitelesítő adatokat. 
+Az a [Azure-portálon](https://portal.azure.com), nyissa meg az alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources).
 
-Állítsa be, vagy a központi telepítési hitelesítő adatok alaphelyzetbe állítása, lásd: [Azure App Service üzembe helyezési hitelesítő adatok](app-service-deployment-credentials.md). Ez az oktatóanyag bemutatja, hogy a felhasználói szintű hitelesítő adatokat.
+Az FTP-irányítópult megnyitásához kattintson **folyamatos kézbesítési (előzetes verzió)** > **FTP** > **irányítópult**.
 
-## <a name="step-2-get-ftp-connection-information"></a>2. lépés: FTP-kiszolgáló kapcsolati adatainak lekérése
+![Nyissa meg FTP irányítópult](./media/app-service-deploy-ftp/open-dashboard.png)
 
-1. Az a [Azure-portálon](https://portal.azure.com), nyissa meg az alkalmazás [erőforrás oldala](../azure-resource-manager/resource-group-portal.md#manage-resources).
-2. Válassza ki **áttekintése** a bal oldali navigációs, majd jegyezze fel a értékeinek **FTP vagy üzembe helyező felhasználó**, **FTP-állomás neve**, és **állomásnév FTPS**. 
+## <a name="get-ftp-connection-information"></a>FTP-kiszolgáló kapcsolati adatainak lekérése
 
-    ![FTP-kapcsolat információi](./media/app-service-deploy-ftp/FTP-Connection-Info.PNG)
+Az FTP-irányítópulton kattintson **másolási** másolása a FTPS végpont és az alkalmazás hitelesítő adatait.
 
-    > [!NOTE]
-    > Az FTP-kiszolgáló megfelelő segítséget nyújt a **FTP vagy üzembe helyező felhasználó** az Azure portál által megjelenített érték tartalmazza az alkalmazás nevére.
-    > Ugyanazokat az információkat található kiválasztásakor **tulajdonságok** a bal oldali navigációs. 
-    >
-    > Emellett a telepítési jelszó soha nem jelenik meg. Ha elfelejti a központi telepítés jelszavát, lépjen vissza a [1. lépés](#step1) és a központi telepítés jelszó.
-    >
-    >
+![FTP-adatok másolása](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-## <a name="step-3-deploy-files-to-azure"></a>3. lépés: Telepítse a fájlokat az Azure
+Javasoljuk, hogy használjon **App hitelesítő adatok** való telepítése az alkalmazásban, mert minden alkalmazáshoz egyedi. Azonban ha **felhasználói hitelesítő adatok**, beállíthatja a felhasználói szintű hitelesítő adatokat, amelyek az előfizetésében szereplő összes App Service apps FTP/S-bejelentkezési használható.
+
+## <a name="deploy-files-to-azure"></a>Fájlok telepítése az Azure-bA
 
 1. Az FTP-ügyfél (például [Visual Studio](https://www.visualstudio.com/vs/community/) vagy [FileZilla](https://filezilla-project.org/download.php?type=client)), a kapcsolat az alkalmazás kapcsolódni összegyűjtött információkat felhasználva.
 3. Másolja a fájlokat és a megfelelő könyvtárstruktúrát a [ **/hely/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a **/hely/wwwroot/App_Data/feladatok/** könyvtár a webjobs-feladatok).
@@ -75,6 +70,12 @@ Titkosítatlan FTP letiltásához válassza **FTPS csak**. FTP és a ftps-t telj
 
 ![Tiltsa le az FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
+## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
+
+FTP-telepítés a [Azure CLI](/cli/azure), lásd: [webalkalmazás létrehozása és központi telepítése FTP (Azure CLI) fájlok](./scripts/app-service-cli-deploy-ftp.md).
+
+FTP-telepítés a [Azure PowerShell](/cli/azure), lásd: [fájlok feltöltése FTP (PowerShell) segítségével webes alkalmazás](./scripts/app-service-powershell-deploy-ftp.md).
+
 ## <a name="troubleshoot-ftp-deployment"></a>FTP telepítési hibáinak elhárítása
 
 - [Hogyan háríthatom FTP telepítési?](#how-can-i-troubleshoot-ftp-deployment)
@@ -85,13 +86,12 @@ Titkosítatlan FTP letiltásához válassza **FTPS csak**. FTP és a ftps-t telj
 
 Az első lépés FTP üzembe helyezés hibaelhárítása van elkülönítése a egy futásidejű alkalmazásproblémák egy központi telepítési probléma.
 
-Egy központi telepítési probléma általában a fájlok vagy hibás fájlok, az alkalmazás központi telepítése nem eredményez. Az FTP-telepítés vizsgálja, vagy jelöljön ki egy alternatív telepítési elérési utat (például a verziókövetési rendszerrel) által korrigálható.
+Egy központi telepítési probléma általában a fájlok vagy hibás fájlok, az alkalmazás központi telepítése nem eredményez. Elháríthatja a FTP telepítési vizsgál, vagy jelöljön ki egy alternatív telepítési elérési utat (például a verziókövetési rendszerrel).
 
-A futásidejű alkalmazásproblémák általában eredményez a az alkalmazás, de nem megfelelő alkalmazások viselkedése telepített fájlok megfelelő halmazát. Kód viselkedés futásidőben összpontosít, és vizsgálja a konkrét hiba elérési utak korrigálható.
+A futásidejű alkalmazásproblémák általában eredményez a az alkalmazás, de nem megfelelő alkalmazások viselkedése telepített fájlok megfelelő halmazát. Kód viselkedés futásidőben összpontosít, és vizsgálja a konkrét hiba elérési utak elhárításához.
 
 A központi telepítés, illetve runtime jelöléssel probléma megállapításához lásd: [futásidejű problémák és telepítési](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
- 
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>I nem lehet FTP, és tegye közzé a saját kód. Hogyan lehet megoldani a problémát?
 Ellenőrizze, hogy helyesen adta a megfelelő állomásnév és [hitelesítő adatok](#step-1--set-deployment-credentials). Ellenőrizze azt is, hogy a számítógépen a következő FTP-portok nem blokkolja tűzfal:
 

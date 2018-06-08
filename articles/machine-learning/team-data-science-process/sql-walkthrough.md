@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 1e53814c0c0598380944d576e1937e38d1e1d792
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 56e338c7bf28bff3fd40ac35c849b2fdf9b19ed6
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839010"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A művelet az Team tudományos folyamat: SQL Server használata
 Az oktatóanyag ismerteti a folyamatot, amely létrehozása és telepítése a gépi tanulási modellek SQL Server és a nyilvánosan elérhető dataset – a [NYC Taxi Utazgatással](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szabványos adatelemezési munkafolyamatot: betöltési, és áttekintheti az adatokat, a visszafejtés szolgáltatások megkönnyítése tanulási, majd építsenek, és a modell rendszerbe állítása.

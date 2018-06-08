@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849508"
 ---
 # <a name="asdk-administration-basics"></a>ASDK Adminisztráció alapjai 
 Számos szempontot Ha most ismerkedik az Azure verem Development Kit (ASDK) felügyeleti tudnia kell. Ez az útmutató áttekintést nyújt az Azure verem kezelőként a kiértékelési környezet a szerepkör, és gyorsan ahhoz, hogy a felhasználók tesztelése hogyan válhat hatékonyabbá.
@@ -28,7 +29,7 @@ Először tekintse át a [Mi az Azure verem szoftverfejlesztői készlet?](asdk-
 
 Például az Azure-ban Azure verem innovates gyorsan, azt fogja rendszeresen kiadási a ASDK új verziói. Azonban a ASDK nem frissíthető, például integrált Azure verem rendszerek központi telepítéseket is. Ezért, ha azt szeretné, a legújabb buildjével áthelyezése, kell teljesen [telepítse újra a ASDK](asdk-redeploy.md). Nem alkalmazhat a frissítési csomagok. Ez a folyamat időt vesz igénybe, de az az előnye, hogy próbálhatja ki a legújabb szolgáltatásokhoz, amint azok elérhetővé válnak. 
 
-## <a name="what-account-should-i-use"></a>Milyen fiókot érdemes használni?
+## <a name="what-account-should-i-use"></a>Milyen fiókot használjak?
 Nincsenek néhány fiókokkal kapcsolatos megfontolások kell ügyelnie, ha az Azure-verem kezelése. Különösen a központi telepítések segítségével a Windows Server Active Directory összevonási szolgáltatások (AD FS) helyett az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A következő fiókokkal kapcsolatos megfontolások integrált Azure verem rendszerek és ASDK központi telepítéseket is vonatkozik:
 
 |Fiók|Azure AD|AD FS|
@@ -64,5 +65,5 @@ A csomag, a támogatási egyetlen választása marad: kérje meg a támogatási 
 > Mivel a ASDK egy kiértékelési környezet, nincs érhető el a Microsoft támogatja a szolgáltatások Ügyféltámogatási hivatalos támogatás.
 
 ## <a name="next-steps"></a>További lépések
-[A ASDK telepítése](asdk-deploy.md)
+[A ASDK telepítése](asdk-install.md)
 

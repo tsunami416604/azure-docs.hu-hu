@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 88cc9ff4979c2e6a4a14a7d531054c1a842deaf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849803"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -38,36 +39,21 @@ Egy minta-tárházat követéséhez használatához futtassa a következő paran
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-## <a name="prepare-your-repository"></a>A tárház előkészítése
-
-Győződjön meg arról, hogy rendelkezik-e a megfelelő fájlokat a projektben az adattár gyökérkönyvtárában.
-
-| Futtatókörnyezet | Legfelső szintű directory fájlok |
-|-|-|
-| ASP.NET (csak Windows) | _*.sln_, _*.csproj_, vagy _default.aspx_ |
-| ASP.NET-mag | _*.sln_ vagy _*.csproj_ |
-| PHP | _index.php_ |
-| Ruby (csak Linux) | _Gemfile_ |
-| Node.js | _Server.js_, _app.js_, vagy _package.json_ egy indítási parancsfájl |
-| Python (csak Windows) | _\*.PY_, _requirements.txt_, vagy _runtime.txt_ |
-| HTML | _default.htm_, _default.html_, _default.asp_, _index.HTML_, _index.html_, vagy  _Iisstart.htm_ |
-| WebJobs | _\<job_name > / futtatásához. \<bővítmény >_ alatt _App\_adatok/feladatok/folyamatos_ (a folyamatos webjobs-feladatok) vagy _App\_adatok/feladatok/indított_ (az akkor kiváltott Webjobs-feladatok). További információkért lásd: [Kudu WebJobs-dokumentáció](https://github.com/projectkudu/kudu/wiki/WebJobs) |
-| Functions | Lásd: [folyamatos üzembe helyezés az Azure Functions](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
-
-A telepítés testreszabásához megadhat egy _.deployment_ fájlt az adattár gyökérkönyvtárában. További információkért lásd: [telepítéseinek testreszabásához](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) és [egyéni telepítési parancsfájl](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
-
-> [!NOTE]
-> Ügyeljen arra, hogy `git commit` számára telepíteni kívánja végrehajtott módosításokat.
->
->
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
+## <a name="deploy-from-local-git-with-kudu-builds"></a>A Kudu buildek a helyi Git telepítése
 
-## <a name="enable-git-for-your-app"></a>Az alkalmazás Git engedélyezése
+Ahhoz, hogy az alkalmazás a Kudu build server a helyi Git-telepítésének legegyszerűbb módja a felhő rendszerhéj használata.
 
-Egy meglévő App Service-alkalmazás Git-telepítésének engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) a felhő rendszerhéj.
+### <a name="create-a-deployment-user"></a>Üzembe helyező felhasználó létrehozása
+
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
+
+### <a name="enable-local-git-with-kudu"></a>A Kudu rendelkező helyi Git engedélyezése
+
+A Kudu build kiszolgálóval az alkalmazás helyi Git-telepítésének engedélyezéséhez futtassa [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) a felhő rendszerhéj.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -97,7 +83,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-## <a name="deploy-your-project"></a>A projekt telepítése
+### <a name="deploy-your-project"></a>A projekt telepítése
 
 A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ URL-címét a Git távoli során kapott azonosítóértékeket [Git engedélyezése az alkalmazás](#enable-git-for-you-app).
 
@@ -113,13 +99,56 @@ git push azure master
 
 Futásidejű-specifikus automatizálási a kimeneten, például az ASP.NET, az MSBuild fog látni `npm install` a Node.js, és `pip install` a Python. 
 
-Központi telepítés befejeződése után az alkalmazás az Azure portálon mostantól a rekorddal kell rendelkeznie a `git push` a a **központi telepítési beállítások** lap.
+Keresse meg azt az alkalmazásnak, hogy ellenőrizze, hogy a tartalom központi telepítése.
 
-![](./media/app-service-deploy-local-git/deployment_history.png)
+## <a name="deploy-from-local-git-with-vsts-builds"></a>A helyi Git VSTS-buildek és központi telepítése
+
+> [!NOTE]
+> Az App Service segítségével hozzon létre a szükséges összeállítása, és felszabadíthatja a definíciók VSTS-fiókjában, az Azure-fiókjába rendelkeznie kell a szerepe **tulajdonos** az Azure-előfizetésben.
+>
+
+Ahhoz, hogy a helyi Git-telepítésének beállítása az alkalmazáshoz, a Kudu build kiszolgálóval, az alkalmazást a navigáljon a [Azure-portálon](https://portal.azure.com).
+
+Kattintson a bal oldali navigációs az alkalmazás oldalát a **Telepítőközpontot** > **helyi Git** > **Folytatás**. 
+
+![](media/app-service-deploy-local-git/portal-enable.png)
+
+Kattintson a **VSTS folyamatos kézbesítési** > **továbbra is**.
+
+![](media/app-service-deploy-local-git/vsts-build-server.png)
+
+Az a **konfigurálása** lapon konfigurálja egy új VSTS-fiókot, vagy adjon meg egy meglévő fiókot. Ha befejezte, kattintson a **Folytatás**.
+
+> [!NOTE]
+> Ha egy meglévő VSTS-fiókkal, amely nem szerepel a használni kívánt, akkor [a VSTS-fiók összekötése az Azure-előfizetéshez](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+
+Az a **teszt** lapon, válassza ki, hogy betöltés tesztek engedélyezése, majd kattintson az **Folytatás**.
+
+Attól függően a [tarifacsomag](/pricing/details/app-service/plans/) az App Service-csomag, szintén megjelenik egy **az átmeneti telepítéséhez** lap. Válasszon, hogy engedélyezze az üzembe helyezési, majd kattintson az **Folytatás**.
+
+Az a **összegzés** lapon ellenőrizze a beállításokat, majd kattintson **Befejezés**.
+
+A VSTS-fiók készen áll arra, hogy néhány percet vesz igénybe. Amikor készen áll a telepítőközpontot másolja át a Git-tárház URL-CÍMÉT.
+
+![](media/app-service-deploy-local-git/vsts-repo-ready.png)
+
+A _helyi terminálablakba_ visszatérve adjon hozzá egy távoli Azure-mappát a helyi Git-adattárhoz. Cserélje le  _\<URL-címe >_ a portáltól kapott utolsó lépése URL-címet.
+
+```bash
+git remote add vsts <url>
+```
+
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Amikor a rendszer kéri a Git hitelesítőadat-kezelő felügyeli, jelentkezzen be a visualstudio.com webhelyre felhasználó. További hitelesítési módszerek, lásd: [VSTS hitelesítéskonfiguráló áttekintése](/vsts/git/auth-overview?view=vsts).
+
+```bash
+git push vsts master
+```
+
+Miután a telepítés befejeződött, a build folyamatban található `https://<vsts_account>.visualstudio.com/<project_name>/_build` és a telepítési folyamatban `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
 Keresse meg azt az alkalmazásnak, hogy ellenőrizze, hogy a tartalom központi telepítése.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting-kudu-deployment"></a>A Kudu üzembe helyezés hibaelhárítása
 
 Az alábbiakban gyakori hibák vagy problémák Git használatával az Azure App Service alkalmazás közzététele:
 

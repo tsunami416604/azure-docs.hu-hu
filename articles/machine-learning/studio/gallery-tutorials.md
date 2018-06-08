@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 6f9c765027ccd915d6754839353a744ac0743bc2
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3ca7897455f763237533aa15680fbfcf805cdaf9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834726"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Fedezze fel, és megoszthatja oktatóanyagok Azure Eszközintelligencia-katalógus
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
@@ -50,7 +52,7 @@ A gyűjtemény egy probléma megoldásához, vagy további elvét más felhaszn�
   
     ![Válassza ki a fiók nevét](./media/gallery-tutorials/click-account-name.png)
 
-3. Válassza ki **új elem**.
+3. Válassza a **New Item** (Új elem) lehetőséget.
   
     !["Az új elemet"](./media/gallery-collections/click-new-item.png)
 

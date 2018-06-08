@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4cef685d71a64f8a6681a3449e4fe0b67899c67c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2e5a7cab5c9db0c13ca0c0986c18c86adf675562
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808604"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850286"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Gyakori kérdések az Azure Active Directory Connect
 
@@ -121,7 +121,11 @@ Az automatikus frissítési folyamat először mindig meghatározzák hogy nélk
 Attól függően, hogy a környezet mérete a folyamat eltarthat néhány óra múlva, és amíg megtörténik a frissítés, a Nincs szinkronizálás a Windows Server AD és az Azure AD között történik.
 
 **K: kaptam egy e-mailt kapok, amely már nem működik az automatikus frissítés és új verzió telepítéséhez van szükség. Miért kell ehhez?**</br>
-Az elmúlt évben, az Azure AD Connect letiltó, bizonyos esetekben előfordulhat, hogy az automatikus frissítési szolgáltatás a kiszolgálón egy verziója jelent meg. Ez a hiba kijavítása az Azure AD Connectben 1.1.750.0 verziója. Az ügyfelek, akik a probléma által érintett előfordulhat, hogy a probléma elhárítása érdekében az Azure AD Connect legújabb verziójának manuálisan frissítenie kell. Frissítsen kézzel, töltse le, és a AADConnect.msi fájl legfrissebb verzióját futtassa.
+Az elmúlt évben, az Azure AD Connect letiltó, bizonyos esetekben előfordulhat, hogy az automatikus frissítési szolgáltatás a kiszolgálón egy verziója jelent meg. Ez a hiba kijavítása az Azure AD Connectben 1.1.750.0 verziója. Az ügyfelek, akik a probléma által érintett előfordulhat, hogy egy PowerShell-parancsprogrammal ez javítására, illetve a probléma elhárítása érdekében az Azure AD Connect legújabb verziójának frissítsen kézzel kell. 
+
+A PowerShell-parancsprogrammal, töltse le a parancsfájl [Itt](https://aka.ms/repairaadconnect) és az AADConnect kiszolgálón egy rendszergazda PowerShell-ablakban futtassa a parancsfájlt. [Ez az egy rövid videót](https://aka.ms/repairaadcau) , amely a részben részletesen olvashat erről.
+
+Frissítsen kézzel, töltse le, és a AADConnect.msi fájl legfrissebb verzióját futtassa.
  
 -  Ha az aktuális verziója régebbi, mint 1.1.750.0, frissítenie kell a legújabb verzióra [amely innen tölthető le](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
 - Ha az Azure AD Connect verziószáma 1.1.750.0 vagy újabb, nincs teendője elhárítása érdekében az automatikus frissítési probléma, mivel most már a verziót egy javítást a. 
@@ -165,7 +169,7 @@ Automatikus frissítési első lépése a kiadás során egy újabb verzió, íg
 **K: nem automatikus frissítési frissítési AAD Connect Health?**</br>   Igen, az automatikus frissítés is frissíti az AAD Connect Health
 
 **K: ne is AAD-csatlakozás kiszolgálók automatikus frissítési az átmeneti környezetű üzemmód?**</br>   
-Nem, akkor nem automatikus frissítési egy Azure AD Connect-kiszolgáló, amely átmeneti módban van.
+Igen, akkor is automatikus frissítési egy Azure AD Connect-kiszolgáló, amely átmeneti módban van.
 
 **Kérdés: Ha automatikus frissítési sikertelen lesz, és az AAD-Csatlakozás kiszolgálóhoz nem indul el, mi a teendő?**</br>   
 Bizonyos ritkán előforduló esetekben az Azure AD Connect szolgáltatás nem indul el a frissítés végrehajtása után. Ezekben az esetekben indítsa újra a kiszolgálót, amely a hibát általában javítja. Az Azure AD Connect szolgáltatás még mindig nem indul el, ha a támogatási jegy megnyitása. Íme egy [hivatkozás](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) , amely azt ismerteti, hogyan ehhez. 

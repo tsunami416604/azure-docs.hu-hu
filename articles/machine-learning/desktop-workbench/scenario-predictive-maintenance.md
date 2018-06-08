@@ -7,19 +7,21 @@ ms.author: jehrling
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 791c34785fa817fd68d0bec8111bf23e606c9b64
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f3f24a9b269205dd77ec3301b2650ee7a03f435b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832696"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>A valós forgatókönyv prediktív karbantartás
 
-A nem ütemezett berendezések állásidő hatását hátrányos bármely vállalati lehet. Nagyon fontos a mező berendezések kihasználtságát és a teljesítmény maximalizálása és költséges, nem ütemezett állásidő minimalizálása érdekében hagyja. Korai problémákat azonosítása segíthet korlátozott karbantartási erőforrásokat költséghatékony és minőségének javítása és ellátási lánc folyamatokat. 
+A berendezések váratlan üzemkimaradása minden cég számára káros lehet. Nagyon fontos a mező berendezések kihasználtságát és a teljesítmény maximalizálása és költséges, nem ütemezett állásidő minimalizálása érdekében hagyja. Korai problémákat azonosítása segíthet korlátozott karbantartási erőforrásokat költséghatékony és minőségének javítása és ellátási lánc folyamatokat. 
 
 Ebben a forgatókönyvben felderíti a viszonylag [nagyméretű szimulált adatkészlet](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) bízná egy prediktív karbantartási adatok tudományos projektet az adatfeldolgozást, funkció a mérnöki csapathoz, a modell létrehozásának és a modell operationalization és központi telepítés. A kód a teljes folyamat a Jupyter Notebook PySpark Azure Machine Learning munkaterület használatával íródott. A végső modell Azure Machine Learning modell Management használatával valós idejű berendezések hiba előrejelzéseket készítsen a rendszer.   
 

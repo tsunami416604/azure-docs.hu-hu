@@ -1,6 +1,6 @@
 ---
 title: Telepítse újra az Azure verem szoftverfejlesztői készlet (ASDK) |} Microsoft Docs
-description: Ebben az oktatóanyagban elsajátíthatja a ASDK újratelepítésével.
+description: Ebből a cikkből megismerheti, hogyan újra kell telepítenie a ASDK.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fcf1abfe574dd3067f00df7c5ff2632b9cc2ec4f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850320"
 ---
-# <a name="tutorial-redeploy-the-asdk"></a>Oktatóanyag: telepítse újra a ASDK
-Ebben az oktatóanyagban elsajátíthatja, hogyan telepítse újra az Azure verem Development Kit (ASDK) nem éles környezetben. A ASDK frissítése nem támogatott, mert szükség teljesen újratelepítése áthelyezése egy újabb verzióra. A ASDK szeretné teljesen elölről bármikor központilag is telepítheti.
+# <a name="redeploy-the-asdk"></a>Telepítse újra a ASDK
+Ebből a cikkből megismerheti, hogyan újratelepíteni az Azure verem Development Kit (ASDK) nem éles környezetben. A ASDK frissítése nem támogatott, mert szükség teljesen újratelepítése áthelyezése egy újabb verzióra. A ASDK szeretné teljesen elölről bármikor központilag is telepítheti.
 
 > [!IMPORTANT]
 > A ASDK egy új verzióra való frissítés nem támogatott. Akkor kell újratelepíteni az development kit állomáson ASDK minden alkalommal, amikor egy újabb verziója Azure verem ki kell számítani.
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-
-> [!div class="checklist"]
-> * Távolítsa el az Azure regisztrációs 
-> * Telepítse újra a ASDK
 
 ## <a name="remove-azure-registration"></a>Távolítsa el az Azure regisztrációs 
 Ha a ASDK telepítést már korábban regisztrált, az Azure-ral, ismételt üzembe helyezése a ASDK előtt távolítsa el a regisztrációs erőforrás. Regisztrálja újra a ASDK piactér szindikálási engedélyezése a ASDK újratelepítésekor. Ha nem már korábban regisztrált a ASDK Azure-előfizetéséhez Ez a szakasz kihagyhatja.
@@ -55,7 +50,7 @@ A regisztrációs erőforrás eltávolításához használja a **Remove-AzsRegis
 
   # Unregister Azure Stack
   Remove-AzsRegistration `
-      -CloudAdminCredential $YourCloudAdminCredential `
+      -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
 
   # Remove the Azure Stack resource group
@@ -71,7 +66,7 @@ A regisztrációs erőforrás eltávolításához használja a **Remove-AzsRegis
 
 Az Azure verem sikeresen kell az Azure-előfizetés regisztrációját. Emellett a azurestack erőforráscsoport, jön létre, amikor Azure-ban regisztrált a ASDK is törölni kell.
 
-## <a name="redeploy-the-asdk"></a>Telepítse újra a ASDK
+## <a name="deploy-the-asdk"></a>A ASDK telepítése
 Telepítse újra az Azure-vermet, el kell indítania keresztül teljesen az alább ismertetett. A lépések végrehajtására-e meg az Azure-vermet (asdk-installer.ps1) parancsfájl telepítéséhez használt a ASDK függően eltérnek.
 
 ### <a name="redeploy-the-asdk-using-the-installer-script"></a>Telepítse újra a telepítő parancsfájllal ASDK
@@ -85,7 +80,7 @@ Telepítse újra az Azure-vermet, el kell indítania keresztül teljesen az alá
 
 3. Miután a development kit gazdagép újraindítja az operációs rendszer, jelentkezzen be helyi rendszergazdaként. Keresse meg és törölje a **C:\CloudBuilder.vhdx** a korábbi központi telepítés részeként használt fájlt. 
 
-4. Ismételje meg a megtette az első lépéseket [központi telepítése a ASDK](asdk-deploy.md).
+4. Ismételje meg a megtette az első lépéseket [központi telepítése a ASDK](asdk-install.md).
 
 ### <a name="redeploy-the-asdk-without-using-the-installer"></a>Telepítse újra a ASDK a telepítő használata nélkül
 Ha nem használja a asdk-installer.ps1 parancsfájl a ASDK telepítéséhez, manuálisan kell konfigurálnia a development kit gazdaszámítógép ismételt üzembe helyezése a ASDK előtt.
@@ -100,16 +95,7 @@ Ha nem használja a asdk-installer.ps1 parancsfájl a ASDK telepítéséhez, man
 
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Távolítsa el az Azure regisztrációs 
-> * Telepítse újra a ASDK
-
-A következő oktatóanyag áttekintésével megismerheti, hogyan verem Azure piactér elem hozzáadása továbblépés.
-
-> [!div class="nextstepaction"]
-> [Vegyen fel egy Azure verem Piactéri elemet](asdk-marketplace-item.md)
+[ASDK telepítés utáni konfigurációs feladatok](asdk-post-deploy.md)
 
 
 

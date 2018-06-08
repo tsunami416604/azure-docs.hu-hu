@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 201492f033ad3e2508bc75c0865036e7c83a652a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8b85f57f79cad0a01d3c5499383108450babd507
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833763"
 ---
 # <a name="derive-column-by-example-transformation"></a>Példa átalakítással oszlop származtatni
 
@@ -290,7 +292,7 @@ Példák, amelyek lemezre van szükség ebben az esetben száma: 1
 
 Ezek a részek különböző által-példa átalakítások használata adatok ugyanazokat a könyvtárban találhatók. A félkövér betűvel írott karakterláncok képviselnek a példák, amelyek a saját megfelelő átalakításában lett megadva.
 
-|DateTime|milyen napra esik|Dátum|Hónap|év|Óra|Perc|Másodperc|
+|DateTime|milyen napra esik|Dátum|Hónap|Év|Óra|Perc|Másodperc|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |05:54:18 31-Jan-2031|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
 |13:32:01 17-Jan-1990|Sze|17|jan.|1990|13|32|01|

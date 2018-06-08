@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 6c64444fc8d42782065d42ed5ee0c193678bb1f1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1beba951a6785aa90eef22a63a8064e9da1bb27f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835117"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Ügyfél Kavarog egyidejűleg Azure Machine Learning segítségével elemzése
 ## <a name="overview"></a>Áttekintés
@@ -225,7 +227,7 @@ A dokumentum ismerteti egy ésszerű megközelítése problémájának közös �
 [5] [Telco kavarog folyamatmodell-sablont](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) a [Azure Eszközintelligencia-katalógus](http://gallery.cortanaintelligence.com/) 
  
 
-## <a name="appendix"></a>Függelék:
+## <a name="appendix"></a>Függelék
 ![][10]
 
 *12. ábra: Pillanatképe forgalom prototípuson bemutató*

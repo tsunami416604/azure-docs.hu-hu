@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 06151b211a03a971e549e88817770ef096f3f603
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839426"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 
@@ -43,7 +44,7 @@ A legalapvetőbb architektúra a következő összetevőkből áll:
 - **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan központi telepítésével a architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során.
 - **Automatikus központi telepítési parancsfájlok**. Ezek a parancsfájlok segítségével a végpont megoldás üzembe helyezéséhez. A parancsfájlok foglalják magukban:
     - A házirendmodul-telepítésének és [globális rendszergazda](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl használatával telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkörök helyesen vannak konfigurálva.
-    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample). a tartalom. Ez a megoldás forráskódját készen áll a felülvizsgálatra [tervezetének kód tárház] [kódot-tárház]. 
+    - Telepítés PowerShell-parancsfájl használata a végpont megoldás, .zip fájlt és egy előre elkészített bemutató webalkalmazás tartalmazó .bacpac fájlba keresztül megadott [SQL adatbázis minta](https://github.com/Microsoft/azure-sql-security-sample) tartalmat. Ez a megoldás forráskódját készen áll a felülvizsgálatra a [GitHub](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms). 
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 

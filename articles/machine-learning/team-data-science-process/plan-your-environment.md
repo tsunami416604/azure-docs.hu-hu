@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: d2b982669f126695e3e5baefce24853269947536
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 16cc7c5841708b8b27cff4fcc7c93cdbb2fe0fa4
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838333"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 Milyen erőforrásokat kell tervezett egy környezet beállításakor ehhez a dataset feldolgozási speciális elemzésekre? Ez a cikk megkönnyítő megválaszolandó kérdések sorát teszi fel javasolja a feladatok és a kapcsolódó erőforrások azonosítása a forgatókönyvéhez. A prediktív elemzés magas szintű lépések sorrendjének szemlélteti az [Mi az a csoport adatok tudományos folyamat (TDSP)?](overview.md). A lépések az adott forgatókönyvhöz kapcsolódó feladatok egy adott erőforráshoz van szükség. A forgatókönyv azonosításához fontos kérdések adatok logisztikai, jellemzők, ennek az adatkészletek és az eszközök, inkább az elemzést nyelvek minőségének vonatkoznak.
@@ -56,7 +58,7 @@ Ezeket a kérdéseket billentyű lenyomásával, a tárhelyek tervezésével és
    
    * Numerikus
    * Kategorikus
-   * Karakterláncok
+   * Sztringek
    * Bináris
 2. **Az adatok formázását?** Példa:
    

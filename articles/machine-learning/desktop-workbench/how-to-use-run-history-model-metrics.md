@@ -7,14 +7,16 @@ ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: dddf6af506269c7f22cea69e39b55effa2f14d63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831869"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Használjon futtatási előzményei és az Azure Machine Learning-munkaterület modell metrikák
 
@@ -113,7 +115,7 @@ Ez lehetővé teszi, hogy optimális erőforrás-használat anélkül, hogy mind
 **Futtatási előzményei** három különböző nézeteket biztosítja:
 - Irányítópult
 - Részletek
-- Összehasonlítása
+- Összehasonlítás
 
 A **irányítópult** nézet összes frissítési kísérletei során egy adott parancsfájl, grafikus, mind a táblázatos formában megjelenített adatokat jeleníti meg.
 A **részletek** a nézet jeleníti meg az összes adat jön létre egy adott futni, hanem egy adott parancsfájl, beleértve a naplózott metrikák és a kimeneti fájlok (például egy megjelenített tevékenységtérkép.) A **összehasonlító** nézet lehetővé teszi a két vagy három futtatása kell egymás mellett megjelenített eredményeit, is beleértve metrikák naplózott kimeneti fájlok.

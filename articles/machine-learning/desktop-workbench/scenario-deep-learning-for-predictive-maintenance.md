@@ -7,16 +7,18 @@ ms.author: jehrling
 manager: ireiter
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 005470298a115a822350f345cdab6e9cafb15eda
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 26b061c6bd6ff3ec9d1edbb7d99053d17db9b773
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832601"
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>A részletes learning a prediktív karbantartási valós forgatókönyv
 
@@ -27,7 +29,7 @@ A részletes tanulási a legnépszerűbb trendjeinek a gépi tanulás egyike, é
 
 Részletes Neurális hálózatokat (DNN) néven is ismert, ezek a módszerek vannak ösztönző által az agy (biológiai Neurális hálózatokat) belüli egyes idegsejtek csoportjának viselkedését.
 
-A nem ütemezett berendezések állásidő hatását hátrányos bármely vállalati lehet. Nagyon fontos a mező berendezések futtatja a kihasználtsági és a teljesítmény maximalizálása érdekében, és költséges, nem ütemezett állásidő minimalizálása érdekében hagyja. Korai problémákat azonosítása segíthet korlátozott karbantartási erőforrásokat költséghatékony és minőségének javítása és ellátási lánc folyamatokat. 
+A berendezések váratlan üzemkimaradása minden cég számára káros lehet. Nagyon fontos a mező berendezések futtatja a kihasználtsági és a teljesítmény maximalizálása érdekében, és költséges, nem ütemezett állásidő minimalizálása érdekében hagyja. Korai problémákat azonosítása segíthet korlátozott karbantartási erőforrásokat költséghatékony és minőségének javítása és ellátási lánc folyamatokat. 
 
 A prediktív karbantartási (óra) stratégia machine learning módszerek alapján határozza meg a feltétel berendezések megelőző jelleggel karbantartás káros gépek teljesítménye elkerülése érdekében. PM, az adatok gyűjtése adott idő alatt a számítógép állapotának figyelése és minták hibák megjósolható kereséséhez majd meg. [Hosszú rövid távú memória (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) hálózatok az ezt a beállítást, mert úgy lettek kialakítva, az adatok sorozatok megtudjuk vonzó.
 

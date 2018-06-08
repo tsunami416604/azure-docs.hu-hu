@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe2dbab876d1ef55ff05315cf7c823d0444663a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bd1b52dd32976ce65458e1dfe1b50d228fbd6d0e
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808672"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850525"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partíció és a skála Azure Cosmos DB
 
@@ -64,15 +64,16 @@ Azure Cosmos-adatbázis használja a particionálás kivonat-alapú. Egy cikk í
 
 A partíciós kulcs választott egy fontos döntés, hogy módosítania kell a tervezés során nem. Válassza ki az egyik tulajdonságnév, amely számos különböző értékeket tartalmaz, és nem is memóriahozzáférési mintáitól. Ajánlott eljárás, számos különböző értékeket (például több száz vagy ezer) tartalmazó partíció kulcsa. Lehetővé teszi a számítási feladatok egyenletes szét ezeket az értékeket. Az ideális partíciós kulcs egy, a lekérdezéseket szűrőként gyakran megjelenik, és annak biztosítása érdekében, a megoldás méretezhető elegendő számossága.
 
-Ha egy fizikai partíció eléri a tárolási korlátját, és az adatok a partíció rendelkezik ugyanazzal a partíciókulccsal, Azure Cosmos DB adja vissza a *"a partíciós kulcs elérte a maximális mérete 10 GB-os"* üzenetet, és a partíció nem osztott. Kiválasztása remek partíciókulcs-e egy nagyon fontos döntés. Partíciók egy Azure Cosmos DB belső fogalma és átmeneti. Hány partíciók, bizonyos átviteli sebességgel jutnak vállalása nem elég helyességéről. Az Azure Cosmos DB automatikusan átméretezi a számítási feladatok alapján létrehozott partícióknak. A partíciók száma alapján adatbázis-tervező nem szabad corelate helyette, ügyeljen arra, hogy válassza ki a megfelelő partíciós kulcs. 
+Ha egy fizikai partíció eléri a tárolási korlátját, és az adatok a partíció rendelkezik ugyanazzal a partíciókulccsal, Azure Cosmos DB adja vissza a *"a partíciós kulcs elérte a maximális mérete 10 GB-os"* üzenetet, és a partíció nem osztott. Kiválasztása remek partíciókulcs-e egy nagyon fontos döntés. Fizikai partíciók egy Azure Cosmos DB belső fogalma és átmeneti. Az Azure Cosmos DB automatikusan átméretezi a számítási feladatok alapján fizikai partíciók száma. A fizikai partíciók száma alapján adatbázis-tervező nem szabad corelate helyette, ügyeljen arra, hogy válassza ki a megfelelő partíciókulcs (logikai partíciót). 
 
 Válassza ki a partíciós kulcs úgy, hogy:
 
-* Az adatok terjesztési van, még akkor is a kulcsok között.
-* A munkaterhelés van, még akkor is a kulcsok között.
-* A kulcsok rendelkeznek, mint egy kulcs partíciókulcsok előnyben.  Kulcsok további száma az akár munkaterhelés terjesztési eredményez.
+* A tároló terjesztési van, még akkor is a kulcsok között.
+* A kötet terjesztési kérelmek adott időben van még a kulcsok között.
+* Lekérdezések nagy feldolgozási által elindított hatékonyan továbbíthatók a partíciós kulcs belefoglalja a szűrőpredikátum.  
+* A partíciós kulcs kiválasztása magasabb kulcsattribútumával használata általában ajánlott – mert, általában eredményez jobb terjesztési és méretezhetőséget. Például egy összetett kulcs alakítható szereplő számossága növeléséhez több tulajdonságok értékeit. 
 
-Ha úgy dönt, hogy a fenti szempontok a partíciós kulcs, nem kell foglalkoznia partíciók vagy mekkora átviteli lefoglalt fizikai partíciónként száma lineárisan igény szerint és egymástól függetlenül minden partíció skálázásához.
+Ha úgy dönt, hogy a fenti szempontok a partíciós kulcs, nem kell foglalkoznia a partíciók vagy mekkora átviteli lefoglalt fizikai partíciónként számát, Azure Cosmos DB méretezi fizikai partíciók számának és is méretezheti a az egyes partíciók szükség szerint.
 
 Az Azure Cosmos DB tárolók hozhatók létre *rögzített* vagy *korlátlan* az Azure portálon. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozhat létre, korlátlan számú tárolót, adjon meg partíciókulcsot és 1000 RU/mp minimális átviteli sebességgel. Azure Cosmos DB tárolók átviteli tárolók, amelyben minden egyes tárolóban kell adja meg egy készlete közötti megosztásához is konfigurálható a partíció kulcsát, és korlátlan növelhető.
 

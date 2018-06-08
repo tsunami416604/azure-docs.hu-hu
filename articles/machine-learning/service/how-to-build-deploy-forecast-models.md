@@ -3,17 +3,18 @@ title: Hozza létre, és központi telepítése egy Azure Machine Learning csoma
 description: Megtudhatja, hogyan létre, betanítását, tesztelése és telepítése az Azure Machine Learning csomagot használ előrejelzés előrejelzési modell.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.component: service
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 160ea82177368ce9b47f298cca661c40599b3bbe
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833529"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Hozza létre és telepítheti az előrejelzési modell Azure Machine Learning segítségével
 
@@ -121,7 +122,7 @@ whole_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>áruház</th>
+      <th>tároló</th>
       <th>márka</th>
       <th>hét</th>
       <th>logmove</th>
@@ -277,7 +278,7 @@ whole_df[['store','brand','WeekLastDay','Quantity']].head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>áruház</th>
+      <th>tároló</th>
       <th>márka</th>
       <th>WeekLastDay</th>
       <th>Mennyiség</th>
@@ -367,7 +368,7 @@ whole_tsdf[['Quantity']].head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>áruház</th>
+      <th>tároló</th>
       <th>márka</th>
       <th></th>
     </tr>
@@ -432,7 +433,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>áruház</th>
+      <th>tároló</th>
       <th>márka</th>
       <th></th>
     </tr>
@@ -731,7 +732,7 @@ whole_tsdf.head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>áruház</th>
+      <th>tároló</th>
       <th>márka</th>
       <th></th>
       <th></th>

@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 494c8293a1dbfccbfe2df1e2f48f770edb6452dc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d004eb16fcac13d6ba7592cbe432cbeac0401e8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834151"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 A gyors Bevezetés a adattudomány az beszerzése *Adattudomány kezdőknek* a egy felső adatok tudósok az öt rövid videók. Videók olyan alapvető, de hasznos, hogy érdekli, ennek során adattudomány vagy adatszakértőkön használata.
@@ -41,7 +43,7 @@ Ez a videó első kérdésekhez, amely meg tudja válaszolni, adattudomány típ
 * 5. Videó: [mások munkahelyi adattudomány ehhez másolja](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 perc 18 másodperc)*
 
 ## <a name="transcript-the-5-questions-data-science-answers"></a>A Beszélgetés szövegének: A 5 kérdésekre adatok tudományos válaszok
-Hi! Üdvözli a videósorozat *Adattudomány kezdőknek*.
+szia! Üdvözli a videósorozat *Adattudomány kezdőknek*.
 
 Adattudomány ijesztő lehet, ezért I lesz szükség az alapok itt egyenleteket vagy a számítógép egy zsargon programozási nélkül.
 
