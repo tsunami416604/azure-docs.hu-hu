@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34055617"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Egy egyéni által fejlesztett alkalmazás adott mezők kitöltésére
 
@@ -48,13 +49,13 @@ Miután megadta a fenti mezők, az alkalmazás regisztrálva van az Azure portá
 | Mező           | Leírás                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Alkalmazásazonosító  | Ha egy alkalmazás regisztrálása az Azure AD hozzárendeli az alkalmazás egy azonosítót. Az azonosító az alkalmazást az Azure AD hitelesítési kérelmek egyedi azonosításához, valamint erőforrások eléréséhez használható alkalmazás, például a Graph API-val.                                                          |
-| App ID URI      | Egy egyedi URI Azonosítóját, általában az űrlap legyen **https://&lt;bérlői\_neve&gt;/&lt;alkalmazás\_neve&gt;.** Ez használható az engedélyezési grant folyamat során adhatja meg az erőforrást, amely a token számára kell kiadni, az egyedi azonosítóként. A "és" jogcím a kiállított jogkivonat is válik. |
-| Töltse fel az új embléma | Ezzel az alkalmazás embléma feltöltéséhez. Az embléma .bmp, .jpg vagy .png formátumúnak kell lennie, és a fájlméret legfeljebb 100KB kell lennie. A kép méretei 215 x 215 képpont, központi lemezkép dimenziókkal 94 x 94 képpontban kell lennie.                                                       |
+| Alkalmazásazonosító URI      | Egy egyedi URI Azonosítóját, általában az űrlap legyen **https://&lt;bérlői\_neve&gt;/&lt;alkalmazás\_neve&gt;.** Ez használható az engedélyezési grant folyamat során adhatja meg az erőforrást, amely a token számára kell kiadni, az egyedi azonosítóként. A "és" jogcím a kiállított jogkivonat is válik. |
+| Új embléma feltöltése | Ezzel az alkalmazás embléma feltöltéséhez. Az embléma .bmp, .jpg vagy .png formátumúnak kell lennie, és a fájlméret legfeljebb 100KB kell lennie. A kép méretei 215 x 215 képpont, központi lemezkép dimenziókkal 94 x 94 képpontban kell lennie.                                                       |
 | Kezdőlap URL-címe   | Ez az alkalmazás regisztrálása során megadott bejelentkezési URL.                                                                                                                                                                                                                                              |
 | Kijelentkezési URL      | Ez az egyetlen kijelentkezési kijelentkezési URL-címet. Az Azure AD kijelentkezési kérést küld az URL-cím, amikor a felhasználó törli a munkamenetet és az Azure AD más regisztrált alkalmazás használatával.                                                                                                                                       |
-| Többszörös központjaként  | Ez a kapcsoló határozza meg, hogy használható-e az alkalmazás által több bérlő. Általában ez azt jelenti, hogy külső szervezetek használni az alkalmazás regisztrálása a bérlőben, és a szervezeti adatokhoz való hozzáférés biztosítása.                                                                   |
+| Több-bérlős  | Ez a kapcsoló határozza meg, hogy használható-e az alkalmazás által több bérlő. Általában ez azt jelenti, hogy külső szervezetek használni az alkalmazás regisztrálása a bérlőben, és a szervezeti adatokhoz való hozzáférés biztosítása.                                                                   |
 | Válasz URL-címek      | A válasz URL-címei a végpontok ahol az Azure AD adja vissza az alkalmazás által kért jogkivonatokhoz.                                                                                                                                                                                                          |
-| Átirányítási URI   | Natív alkalmazások ez pedig ahol a sikeres hitelesítést követően a felhasználó küldése. Az Azure AD, ellenőrizze, hogy az OAuth 2.0 kérelemben megadja az átirányítási URI-t az alkalmazás megfelel a regisztrált értékeket a portálon.                                                            |
+| Átirányítási URI azonosítók   | Natív alkalmazások ez pedig ahol a sikeres hitelesítést követően a felhasználó küldése. Az Azure AD, ellenőrizze, hogy az OAuth 2.0 kérelemben megadja az átirányítási URI-t az alkalmazás megfelel a regisztrált értékeket a portálon.                                                            |
 | Kulcsok            | Programozott hozzáférés webes API-k, felhasználói beavatkozás nélkül az Azure AD által védett kulcsokat hozhat létre. Az a \* \*kulcsok\* \* lapon adja meg egy kulcs leírását és a lejárati dátum és a kulcs létrehozásához mentéséhez. Ügyeljen arra, hogy mentse a munkafüzetet valahol biztonságos, akkor nem fog tudni férni később.             |
 
 ## <a name="next-steps"></a>További lépések

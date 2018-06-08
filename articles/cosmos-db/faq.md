@@ -5,20 +5,17 @@ keywords: Az adatbázisra vonatkozó kérdések, gyakran ismételt kérdéseket,
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34735164"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -61,6 +58,9 @@ A teljes adatmennyiség egy tárolót tárolhat Azure Cosmos DB nincs korlátozv
 
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Mik azok a Azure Cosmos DB átviteli sebességének korlátai?
 Összesen mekkora átviteli egy tároló által támogatott az Azure Cosmos Adatbázisba korlátozva van. A kulcs lényege, terjeszteni a munkaterhelés nagyjából egyenlően megfelelően nagy számú partíciós kulcsok között.
+
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Közvetlen és az átjáró csatlakozási mód titkosított? 
+Mindkét módnál Igen mindig teljesen titkosítottak. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Milyen mértékű nem költségű Azure Cosmos DB?
 További információkért tekintse meg a [Azure Cosmos DB díjszabása](https://azure.microsoft.com/pricing/details/cosmos-db/) lap. Azure Cosmos DB használati díjak kiosztott tárolók, a tárolók volt online, órák száma számát határozza meg, és minden egyes tároló a létesített átviteli sebesség. A kifejezés *tárolók* itt az SQL API-gyűjtemény, a Graph API graph, a MongoDB API gyűjtemény és a tábla API táblák hivatkozik. 
@@ -164,6 +164,10 @@ Akkor is tömeges beszúrási dokumentumokat az Azure Cosmos DB két módon:
 * Az adatáttelepítés eszközzel, a [adatbázis áttelepítési eszköz az Azure Cosmos DB](import-data.md).
 * Tárolt eljárások, a [Azure Cosmos DB kiszolgálóoldali JavaScript programozás](programming.md).
 
+### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>A gyűjteményt, szeretne használni a Lusta indexelő van a telepítő, jelenik meg, hogy a lekérdezések nem várt eredményt vissza. 
+Az indexelő szakaszban leírtak a jelenség Lusta indexelő eredményezhet. Mindig használjon konzisztens indexelő az összes alkalmazáshoz. 
+
+
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Nem, az SQL API támogatási erőforrás-hivatkozások gyorsítótárazását?
 Igen, mert Azure Cosmos DB egy RESTful szolgáltatás, erőforrás-hivatkozások nem módosíthatók és ezáltal gyorsítótárazhatók. Az SQL API-ügyfelek adjon meg egy "If-None-Match" fejlécet bármilyen erőforrás-szerű dokumentum vagy gyűjtemény olvasása, és ezután frissítse a helyi példányok, miután a kiszolgáló verziója megváltozott.
 
@@ -171,7 +175,12 @@ Igen, mert Azure Cosmos DB egy RESTful szolgáltatás, erőforrás-hivatkozások
 Igen. A [Azure Cosmos DB emulátor](local-emulator.md) egy valósághű emuláció a Cosmos DB szolgáltatást biztosít. Támogatja a funkciót, amely azonos Azure Cosmos DB, például létrehozása, és lekérdezi a JSON-dokumentumokat, kiépítés és gyűjtemények skálázás, és végrehajtása tárolt eljárásokként és eseményindítókként. Fejlesztése és tesztelése az alkalmazások az Azure Cosmos DB Emulator használatával, és telepítheti őket egy globális léptékű azáltal, hogy módosítsa a csatlakozási végpont az Azure Cosmos DB egyetlen konfigurációja.
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Miért értékeket hosszú lebegőpontos kerekíti a portálon adatkezelő megtekintve dokumentumban. 
-Ez a korlátozás a JavaScript. JavaScript számok kétszeres pontosságú lebegőpontos formázása használja, mint a megadott IEEE 754 és biztonságosan jelenthet közötti - számokat (253 - 1) és 253 – 1 (azaz 9007199254740991) csak.
+Ez a korlátozás a JavaScript. JavaScript számok kétszeres pontosságú lebegőpontos formázása használja, mint a megadott IEEE 754 és biztonságosan jelenthet közötti - számokat (253 - 1) és 253-1 (azaz 9007199254740991) csak.
+
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Amelyben engedélyezett az objektum hierarchia engedélyeket?
+
+Engedélyek létrehozása ResourceTokens segítségével a gyűjtemény szintjén, és a leszármazottai (például a dokumentumok, a mellékletek) jelenleg engedélyezett. Ez azt jelenti, amelyhez hozzá lehet engedélyt létrehozni az adatbázist, vagy egy fiókszinten jelenleg nem engedélyezett.
+
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Az API-t elleni mongodb fejlesztése
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Mi az az Azure Cosmos DB API a MongoDB?
@@ -414,7 +423,7 @@ Az átviteli sebesség meghatározása segítségével rugalmasan módosíthatja
 
 Azure Cosmos-adatbázis egy rendelkezésre állási, a késés és átviteli garanciák globálisan elosztott, SLA-alapú rendszer tervezték. Amikor lefoglalni Azure Cosmos DB átviteli sebességet, válik biztossá, szemben a más rendszerekkel átviteli sebességgel. Azure Cosmos-adatbázis, amely az ügyfelek kért, például a másodlagos indexek és globális terjesztési további képességeket biztosít.  
 
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Soha nem jelenik meg a "teljes" kvótaértesítéshez (arról, hogy a partíció teljes) Ha I betöltik az adatokat az Azure Table storage. A tábla API-t ez az üzenet jelenik meg. Ez kínál me korlátozása van, és módosíthatja a meglévő alkalmazás me?
+### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>(Ez azt jelzi, hogy a partíció megtelt) soha nem jelenik meg a teljes kvóta"értesítés amikor I betöltik az adatokat az Azure Table storage. A tábla API-t ez az üzenet jelenik meg. Ez kínál me korlátozása van, és módosíthatja a meglévő alkalmazás me?
 
 Azure Cosmos-adatbázis egy SLA-alapú rendszeren, amely korlátlan méretezési biztosít garanciák késés, teljesítményt, rendelkezésre állási és konzisztencia. Garantált prémium szintű teljesítmény biztosítása érdekében ellenőrizze, hogy az adatok mérete és az index kezelhető és méretezhető. A 10 GB-os korlátot az entitások vagy elemek száma a partíciós kulcs annak érdekében, hogy nyújtunk remek keresési és lekérdezéseivel kapcsolatos teljesítményt. Győződjön meg arról, hogy az alkalmazás méretezze át, akkor az Azure Storage, javasoljuk, hogy Ön *nem* hozza létre a gyakran használt adatok partíciót egy partíció összes információ tárolása és lekérdezéssel. 
 
@@ -475,7 +484,7 @@ Diagnosztikai naplók magyarázata a [Azure Cosmos DB diagnosztikai naplózás](
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>A partíciós kulcs fogalmának Azure Cosmos-adatbázis elsődleges kulcs térkép használ?
 Igen, a partíciós kulcs szolgál az entitás megfelelő helyen helyezze el. Az Azure Cosmos Adatbázisba szolgál egy fizikai partícióján tárolt jobb logikai partíció található. A particionáló koncepció is leírtak a [partíció és a skála Azure Cosmos DB](partition-data.md) cikk. Alapvető fontosságú a lekérési számítógépnél itt található, hogy a logikai partíció nem haladhatja meg a 10 GB-os korlát ma. 
 
-### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Mi történik, amikor a "teljes" kvótaértesítéshez azt jelzi, hogy a partíció megtelt?
+### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Mi történik, amikor egy teljes kvóta"értesítés arról, hogy a partíció teljes?
 Azure Cosmos-adatbázis egy SLA-alapú rendszeren, amely korlátlan méretezési biztosít garanciák késés, teljesítményt, rendelkezésre állási és konzisztencia. Cassandra API túl lehetővé teszi az adatok korlátlan tárterület. A korlátlan tárterület adatok használatával, a kulcs koncepció particionálás vízszintes scaleout alapul. A particionáló koncepció is leírtak a [partíció és a skála Azure Cosmos DB](partition-data.md) cikk.
 
 A 10 GB-os korlátot az entitások vagy a logikai partíciónként elemek számának meg kell felelnie. Győződjön meg arról, hogy az alkalmazás jól méretezi, javasoljuk, hogy Ön *nem* hozza létre a gyakran használt adatok partíciót egy partíció összes információ tárolása és lekérdezéssel. Ez a hiba csak származnak, ha az adatok akkor válik egyenetlenné – Ez az Ön, azaz rendelkezik nagy mennyiségű adat esetében egy partíciókulcs - lehet több mint 10 GB-os. Az adatok tárolási portál használatával terjesztési található. Javítsa ki a hibát úgy recrete a tábla és egy részletes elsődleges (partíciós kulcs), amely lehetővé teszi az adatok jobb terjesztési válassza.

@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
 ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "32309980"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP API-k tartós funkciók (az Azure Functions)
 
@@ -88,11 +89,11 @@ Minden HTTP API valósítják meg a bővítmény hajtsa végre a következő par
 | Paraméter  | A paraméter típusa  | Leírás |
 |------------|-----------------|-------------|
 | instanceId | URL-cím             | Az orchestration-példány azonosítója. |
-| taskHub    | Lekérdezési karakterlánc    | Neve a [feladat hub](durable-functions-task-hubs.md). Ha nincs megadva, az aktuális függvény app hub feladatnév feltételezi. |
-| kapcsolat | Lekérdezési karakterlánc    | A **neve** a tárfiók kapcsolati karakterlánc. Ha nincs megadva, a függvény alkalmazás alapértelmezett kapcsolati karakterláncában feltételezzük. |
-| systemKey  | Lekérdezési karakterlánc    | A hitelesítési kulcs a API meghívásához szükséges. |
-| showHistory| Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei szerepelni fog a válasz forgalma.| 
-| showHistoryOutput| Lekérdezési karakterlánc    | Nem kötelező paraméter. Ha beállítása `true`, a tevékenység kimenete fog szerepelni a vezénylési futtatási előzményei.| 
+| taskHub    | Lekérdezési sztring    | Neve a [feladat hub](durable-functions-task-hubs.md). Ha nincs megadva, az aktuális függvény app hub feladatnév feltételezi. |
+| kapcsolat | Lekérdezési sztring    | A **neve** a tárfiók kapcsolati karakterlánc. Ha nincs megadva, a függvény alkalmazás alapértelmezett kapcsolati karakterláncában feltételezzük. |
+| systemKey  | Lekérdezési sztring    | A hitelesítési kulcs a API meghívásához szükséges. |
+| showHistory| Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a vezénylési futtatási előzményei szerepelni fog a válasz forgalma.| 
+| showHistoryOutput| Lekérdezési sztring    | Nem kötelező paraméter. Ha beállítása `true`, a tevékenység kimenete fog szerepelni a vezénylési futtatási előzményei.| 
 
 `systemKey` az Azure Functions állomás által automatikusan létrehozott van egy engedélyezési kulcsot. Kifejezetten engedélyezi a hozzáférést a tartós feladatkiterjesztés API-k és azonos módon kezelhetők [más engedélyezési kulcsok](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). A legegyszerűbben úgy felderítése a `systemKey` értéke használatával a `CreateCheckStatusResponse` azt korábban említettük a API.
 
@@ -129,12 +130,12 @@ A válasz hasznos a **200-as HTTP** és **HTTP 202** esetben egy JSON-objektum a
 
 | Mező           | Adattípus | Leírás |
 |-----------------|-----------|-------------|
-| runtimeStatus   | karakterlánc    | A példány futtatási állapota. Értékek: *futtató*, *függőben lévő*, *sikertelen*, *visszavonva*, *kilépett*, *Befejeződött*. |
-| Bemeneti           | JSON      | A példány inicializáló JSON-adatokat. |
+| runtimeStatus   | sztring    | A példány futtatási állapota. Értékek: *futtató*, *függőben lévő*, *sikertelen*, *visszavonva*, *kilépett*, *Befejeződött*. |
+| bemenet           | JSON      | A példány inicializáló JSON-adatokat. |
 | customStatus    | JSON      | A JSON-adatokat használja az egyéni vezénylési állapotot. Ez a mező `null` Ha nincs beállítva. |
 | output          | JSON      | A példány JSON-kimenetét. Ez a mező `null` Ha a példány nem kész állapotú. |
-| createdTime     | karakterlánc    | Az az idő, ahol a példány létrehozása. ISO 8601 notation kiterjesztett használja. |
-| lastUpdatedTime | karakterlánc    | Az az idő, ahol a példány utolsó megőrzött. ISO 8601 notation kiterjesztett használja. |
+| createdTime     | sztring    | Az az idő, ahol a példány létrehozása. ISO 8601 notation kiterjesztett használja. |
+| lastUpdatedTime | sztring    | Az az idő, ahol a példány utolsó megőrzött. ISO 8601 notation kiterjesztett használja. |
 | historyEvents   | JSON      | A vezénylési futtatási előzményei tartalmazó JSON-tömb. Ez a mező `null` kivéve, ha a `showHistory` lekérdezési karakterlánc paraméter értéke `true`.  | 
 
 Íme egy példa válasz hasznos, beleértve a vezénylési végrehajtási előzményekhez és a tevékenység (az olvashatóság formázott):
@@ -214,9 +215,9 @@ POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 
 A kérelem ehhez az API paraméterek közé tartozik a a korábban említettük, valamint a következő egyedi paraméterek alapértelmezett beállítás:
 
-| Mező       | A paraméter típusa  | Adatok tType | Leírás |
+| Mező       | Paraméter típusa  | Adatok tType | Leírás |
 |-------------|-----------------|-----------|-------------|
-| EventName   | URL-cím             | karakterlánc    | Az eseményt, amely a célpéldány vezénylési vár a neve. |
+| EventName   | URL-cím             | sztring    | Az eseményt, amely a célpéldány vezénylési vár a neve. |
 | {tartalom}   | Tartalomkérelem | JSON      | A JSON-formátumú eseménytartalom. |
 
 #### <a name="response"></a>Válasz
@@ -262,7 +263,7 @@ Kérelem ehhez az API paraméternek számít a korábban említett, valamint a k
 
 | Mező       | A paraméter típusa  | Adattípus | Leírás |
 |-------------|-----------------|-----------|-------------|
-| reason      | Lekérdezési karakterlánc    | karakterlánc    | Választható. Leállítja a vezénylési példány okát. |
+| reason      | Lekérdezési sztring    | sztring    | Választható. Leállítja a vezénylési példány okát. |
 
 #### <a name="response"></a>Válasz
 

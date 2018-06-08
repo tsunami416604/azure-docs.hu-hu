@@ -6,20 +6,20 @@ author: MichaelHauss
 manager: vamshik
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/31/2018
 ms.author: mihauss
-ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: HT
+ms.openlocfilehash: 93b60f8957a6ae225dbc5beb33a7de817ffc5bc2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057859"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34701683"
 ---
-# <a name="soft-delete-for-azure-storage-blobs-preview"></a>Helyreállítható törlésre az Azure Storage blobs (előzetes verzió)
+# <a name="soft-delete-for-azure-storage-blobs"></a>Az Azure Storage blobs világos törlése
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Storage blob objektumokhoz a helyreállítható Törlés (előzetes verzió) most kínál, így könnyebben helyreállíthatja az adatokat a tévesen módosítani vagy törölni az alkalmazás vagy többi tárolási fiók felhasználói.
+Az Azure Storage blob objektumokhoz helyreállítható törlésre most kínál, így könnyebben helyreállíthatja az adatokat a tévesen módosítani vagy törölni az alkalmazás vagy többi tárolási fiók felhasználói.
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
@@ -30,10 +30,6 @@ Beállíthatja, hogy mennyi ideig letölthető a törölt adatokat, helyreállí
 
 Helyreállítható törlésre található visszafelé kompatibilis; ne kelljen végezze el a módosításokat az alkalmazások kihasználni a funkció számára biztosítja a védelmet. Azonban [adat-helyreállítás](#recovery) újdonsága **törlés visszavonása Blob** API.
 
-> [!NOTE]
-> Nyilvános előzetes Blob szint beállítása egy blobot a pillanatképek hívása nem engedélyezett.
-Helyreállítható törlésre állít elő, az adatok védelme érdekében, amikor a rendszer felülírja azt pillanatképeket. Folyamatosan dolgozunk a a megoldáson pillanatképekkel blobok rétegezéséhez engedélyezéséhez.
-
 ### <a name="configuration-settings"></a>Konfigurációs beállítások
 
 Amikor létrehoz egy új fiókot, helyreállítható törlésre alapértelmezés szerint van kapcsolva. Helyreállítható törlésre is alapértelmezés szerint van kapcsolva a meglévő tárfiókok. A szolgáltatás be- és kikapcsolását a tárfiók élettartama során bármikor válthat.
@@ -42,7 +38,7 @@ Is hozzáférhetnek, és véglegesen törölt adatok helyreállítása a funkci�
 
 A megőrzési időtartam azt jelzi, hogy mennyi ideig, amely letölthető a törölt adatokat tárolt és rendelkezésre a helyreállításhoz. A blobok és explicit módon törölt blob pillanatképeket a megőrzési időszak óra kezdődik, amikor az adatok törlése. Letölthető törölt pillanatkép-készítési adatokat a rendszer felülírja a helyreállítható törlés funkció által generált az óra kezdődik, amikor a pillanatkép jön létre. Jelenleg őrizheti meg 1 és 365 nap között szoftveres törölt adat.
 
-A helyreállítható törlés megőrzési időszak bármikor módosíthatja. Újonnan törölt adatok csak egy frissített megőrzési időszak vonatkozik. Korábban törölt adatok alapján fog járni a a megőrzési időszakot adott meg, amikor az adott adat törölve lett.
+A helyreállítható törlés megőrzési időszak bármikor módosíthatja. Újonnan törölt adatok csak egy frissített megőrzési időszak vonatkozik. Korábban törölt adatok alapján fog járni a a megőrzési időszakot adott meg, amikor az adott adat törölve lett. Letölthető törölt objektum törlése nem érinti a lejárati időpont.
 
 ### <a name="saving-deleted-data"></a>A törölt adatok mentése
 
@@ -64,13 +60,13 @@ Ha **Blob törlése** nevezik pillanatkép, az adott pillanatkép van megjelölv
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Ha **pillanatkép Blob** nevű B0 pillanatkép válik, és B1 BLOB aktív állapotú. A B0 pillanatkép törlését, ha meg van jelölve, enyhe törölték.\*
+*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Ha **pillanatkép Blob** nevű B0 pillanatkép válik, és B1 BLOB aktív állapotú. A B0 pillanatkép törlését, ha meg van jelölve, enyhe törölték.*
 
 Ha **Blob törlése** (a blob-, amely nem maga pillanatkép) Alap blob, metódust, hogy a blob van megjelölve, enyhe törölték. A korábbi viselkedése konzisztens hívása **Blob törlése** hibát ad vissza a blob, amely aktív pillanatképekkel rendelkezik. Hívása **Blob törlése** enyhe törölt pillanatképekkel blob a hibát nem adott vissza. Helyreállítható törlésre bekapcsolásakor blob és egyetlen műveletben a pillanatképek is törölheti. A kiinduló blob így jelöli meg, és véglegesen, a pillanatképeket törölni.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt egy **Blob törlése** kezdeményezték K2 és minden társított pillanatképet törölni. Az aktív blob, K2 és minden társított pillanatképet megjelölve a helyreállítható törlése.\*
+*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt egy **Blob törlése** kezdeményezték K2 és minden társított pillanatképet törölni. Az aktív blob, K2 és minden társított pillanatképet megjelölve a helyreállítható törlése.*
 
 > [!NOTE]
 > Letölthető törölt blob felülírja a rendszer, amikor a rendszer automatikusan előállítja a blob állapota az írási művelet előtt törölt enyhe pillanatképe. Az új blob örökli a réteg a felülírt BLOB.
@@ -103,7 +99,7 @@ Egy blob hívása adott enyhe törölt pillanatkép visszaállítása **törlés
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt **törlés visszavonása Blob** blob B, ezáltal visszaállítása az alap blob B1 és minden társított pillanatképet, itt csupán B0 aktívnak metódust. A második lépésben B0 felülírt az alap blob. A másolási művelet B1 törölt enyhe pillanatképe állít elő.\*
+*Letölthető a törölt adatokat szürke, addig, amíg aktív adatforrás kék. Több legutóbb írt adatok régebbi adatok alatt jelenik meg. Itt **törlés visszavonása Blob** blob B, ezáltal visszaállítása az alap blob B1 és minden társított pillanatképet, itt csupán B0 aktívnak metódust. A második lépésben B0 felülírt az alap blob. A másolási művelet B1 törölt enyhe pillanatképe állít elő.*
 
 Letölthető törölt blobok megtekintéséhez, és a blob-pillanatképeket, ha szeretné, a törölt adatokat **lista Blobok**. Kiválaszthatja, hogy csak enyhe törölt alap blobok megjelenítéséhez, vagy letölthető törölt blob pillanatképek is tartalmazza. Az összes szoftveres törölt adat megtekintheti az idő, amikor törölve lett az adatokat továbbá a hány nap elteltével az adatok véglegesen lejár.
 
@@ -141,7 +137,7 @@ Copy a snapshot over the base blob:
 - HelloWorld (is soft deleted: False, is snapshot: False)
 ```
 
-Tekintse meg a [további lépések](#Next steps) az alkalmazást, amely a kimenetet előállított mutató szakaszát.
+Tekintse meg a [további lépések](#next-steps) az alkalmazást, amely a kimenetet előállított mutató szakaszát.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
@@ -205,6 +201,19 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
+### <a name="azure-cli"></a>Azure CLI 
+Ahhoz, hogy a helyreállítható törlés, a blob-ügyfél szolgáltatás tulajdonságainak frissítése:
+
+```azurecli-interactive
+az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+```
+
+Világos ellenőrzése delete engedélyezve van, használja a következő parancsot: 
+
+```azurecli-interactive
+az storage blob service-properties delete-policy show --account-name mystorageaccount 
+```
+
 ### <a name="python-client-library"></a>Python ügyféloldali kódtár
 
 Ahhoz, hogy a helyreállítható törlés, a blob-ügyfél szolgáltatás tulajdonságainak frissítése:
@@ -277,11 +286,15 @@ Helyreállítható törlésre jelenleg csak blobtárolóba (objektum) érhető e
 
 **Helyreállítható törlésre érhető el tárhely minden fióktípus esetében?**
 
-Igen, helyreállítható törlésre érhető el blob storage-fiókok is blobot, amely az általános célú tárfiókok esetében. Ez a standard és a prémium szintű fiókok vonatkozik. Helyreállítható törlésre felügyelt lemezek nem érhető el.
+Igen, helyreállítható törlésre érhető el blob storage-fiókok is mint blobot, amely az általános célú tárfiókok (GPv1 és GPv2). Ez a standard és a prémium szintű fiókok vonatkozik. Helyreállítható törlésre felügyelt lemezek nem érhető el.
 
 **Helyreállítható törlésre érhető el az összes tárolási rétegek?**
 
 Igen, a helyreállítható törlésre esetén minden beleértve a gyakran használt adatok, a ritkán használt adatok tárolási rétegek és archiválási érhető el. Azonban nem biztosít a helyreállítható törlés felülírja az archív rétegében a blobok védelmét.
+
+**A Blob réteg beállítása API használatával réteg enyhe törölt pillanatképekkel blobok?**
+
+Igen. A helyreállítható törölt pillanatképek marad az eredeti tartozó, de az alap blob helyezi át az új réteget. 
 
 **Prémium szintű storage-fiókok rendelkezik egy blob pillanatkép korlát 100. Letölthető törölt pillanatképek számolják felé ezt a határt?**
 

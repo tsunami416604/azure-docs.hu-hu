@@ -12,10 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
 ms.openlocfilehash: 6b45b00de53822224afbfb3a15dbc6790deb11ce
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34356341"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy alkalmazás elérési útja-alapú útválasztási szabályokat az Azure portál használatával
 
@@ -30,77 +31,77 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Háttér-figyelő létrehozása
 > * Elérési út-alapú útválasztási szabály létrehozása
 
-![URL-cím útválasztási – példa](./media/create-url-route-portal/scenario.png)
+![URL-útválasztási példa](./media/create-url-route-portal/scenario.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-portálon: [http://portal.azure.com](http://portal.azure.com)
+Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) címen.
 
 ## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
 
-Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti kommunikációra van szükség. Két alhálózat ebben a példában jönnek létre: egyet az Alkalmazásátjáró, míg a másik a háttérkiszolgálókhoz. Az Alkalmazásátjáró létrehozott egyszerre egy virtuális hálózatot is létrehozhat.
+Egy virtuális hálózatot az Ön által létrehozott erőforrások közötti kommunikációra van szükség. Ebben a példában két alhálózatot hozunk létre: egyet az alkalmazásátjáróhoz, egy másikat pedig a háttérkiszolgálókhoz. Virtuális hálózatot az alkalmazásátjáróval együtt is létrehozhat.
 
 1. Kattintson a **új** az Azure portál bal felső sarkában található.
-2. Válassza ki **hálózati** majd **Application Gateway** kiemelt listájában.
-3. Adja meg ezeket az értékeket az Alkalmazásátjáró:
+2. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
+3. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
-    - *myAppGateway* – az Alkalmazásátjáró nevét.
-    - *myResourceGroupAG* – az új erőforráscsoport.
+    - Az alkalmazásátjáró neve *myAppGateway*.
+    - Az új erőforráscsoport *myResourceGroupAG*.
 
-    ![Új Alkalmazásátjáró létrehozása](./media/create-url-route-portal/application-gateway-create.png)
+    ![Új alkalmazásátjáró létrehozása](./media/create-url-route-portal/application-gateway-create.png)
 
-4. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **OK**.
+4. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 5. Kattintson a **virtuális hálózatot választ**, kattintson a **hozzon létre új**, és ezekkel az értékekkel adja meg a virtuális hálózat:
 
-    - *myVNet* – a virtuális hálózat nevét.
-    - *10.0.0.0/16* – a virtuális hálózat címtere.
-    - *myAGSubnet* – az alhálózati név.
-    - *10.0.0.0/24* – az alhálózati címtartományt.
+    - A virtuális hálózat neve *myVNet*.
+    - A virtuális hálózat címtere *10.0.0.0/16*.
+    - Az alhálózat neve *myAGSubnet*.
+    - Az alhálózat címtere *10.0.0.0/24*.
 
     ![Virtuális hálózat létrehozása](./media/create-url-route-portal/application-gateway-vnet.png)
 
-6. Kattintson a **OK** a virtuális hálózati és alhálózati létrehozásához.
-7. Kattintson a **egy nyilvános IP-cím kiválasztása**, kattintson a **hozzon létre új**, és írja be a nyilvános IP-cím neve. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el a további beállításoknál az alapértelmezett értékeket, és kattintson a **OK**.
+6. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
+7. Kattintson a **egy nyilvános IP-cím kiválasztása**, kattintson a **hozzon létre új**, és írja be a nyilvános IP-cím neve. Ebben a példában a nyilvános IP-cím neve *myAGPublicIPAddress*. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 8. Fogadja el az alapértelmezett értékeket, a figyelő a konfigurációhoz, hagyja a webalkalmazási tűzfal le van tiltva, és kattintson **OK**.
 9. Tekintse át a beállításokat az Összegzés lapon, és kattintson **OK** a hálózati erőforrások és az Alkalmazásátjáró létrehozása. Az alkalmazás-átjáró hozható létre, várjon, amíg a telepítés sikeresen befejeződik, mielőtt továbblép a következő szakaszban több percig is eltarthat.
 
-### <a name="add-a-subnet"></a>Adjon hozzá egy alhálózatot
+### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-1. Kattintson a **összes erőforrás** a bal oldali menüből, majd **myVNet** erőforrások listából.
+1. Kattintson a **Minden erőforrás** elemre a bal oldali menüben, majd kattintson a **myVNet** lehetőségre az erőforráslistában.
 2. Kattintson a **alhálózatok**, és kattintson a **alhálózati**.
 
     ![Alhálózat létrehozása](./media/create-url-route-portal/application-gateway-subnet.png)
 
-3. Adja meg *myBackendSubnet* neveként az alhálózati majd **OK**.
+3. Adja meg a *myBackendSubnet* nevet az alhálózat neveként, majd kattintson az **OK** gombra.
 
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
-Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használandó három virtuális gépet hoz létre. Is telepíteni az IIS ellenőrizze, hogy az Alkalmazásátjáró sikeresen létrejött-e a virtuális gépeken.
+Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használandó három virtuális gépet hoz létre. A virtuális gépeken emellett telepíti az IIS-t annak ellenőrzéséhez, hogy az alkalmazásátjáró sikeresen létrejött-e.
 
 1. Kattintson az **Új** lehetőségre.
 2. Kattintson a **számítási** majd **Windows Server 2016 Datacenter** kiemelt listájában.
-3. Adja meg a virtuális gép ezeket az értékeket:
+3. Adja meg a következő értékeket a virtuális gép számára:
 
     - A virtuális gép neve: *myVM1*.
     - A rendszergazda felhasználóneve: *azureuser*.
-    - *Azure123456!* a jelszó.
-    - Válassza ki **meglévő**, majd válassza ki *myResourceGroupAG*.
+    - A jelszó *Azure123456!* .
+    - Válassza a **Meglévő használata**, majd a *myResourceGroupAG* lehetőséget.
 
 4. Kattintson az **OK** gombra.
 5. A virtuális gép méreténél válassza a **DS1_V2** lehetőséget, majd kattintson a **Kiválasztás** gombra.
-6. Győződjön meg arról, hogy **myVNet** van kiválasztva a virtuális hálózat és az alhálózat van **myBackendSubnet**. 
+6. Győződjön meg róla, hogy virtuális hálózatként a **myVNet**, alhálózatként pedig a **myBackendSubnet** van kiválasztva. 
 7. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 8. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
-1. Az interaktív rendszerhéjat, és győződjön meg arról, hogy van-e állítva **PowerShell**.
+1. Nyissa meg az interaktív felületet, és győződjön meg róla, hogy a **PowerShell** van beállítva.
 
-    ![Egyéni kiterjesztés telepítése](./media/create-url-route-portal/application-gateway-extension.png)
+    ![Egyéni bővítmény telepítése](./media/create-url-route-portal/application-gateway-extension.png)
 
-2. A következő parancsot az IIS telepítése a virtuális gépen: 
+2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez: 
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
@@ -120,10 +121,10 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttér-címkészletek létrehozása a virtuális gépekkel
 
 1. Kattintson a **összes erőforrás** majd **myAppGateway**.
-2. Kattintson a **háttérkészletek**. Alapértelmezett címkészlet automatikusan jött létre az Alkalmazásátjáró. Kattintson a **appGateayBackendPool**.
+2. Kattintson a **Háttérkészletek** lehetőségre. Az alapértelmezett készlet automatikusan létrejött az alkalmazásátjáróval együtt. Kattintson a **appGateayBackendPool**.
 3. Kattintson a **Hozzáadás cél** hozzáadása *myVM1* appGatewayBackendPool számára.
 
-    ![Adja hozzá a háttérkiszolgálókon](./media/create-url-route-portal/application-gateway-backend.png)
+    ![Háttérkiszolgálók hozzáadása](./media/create-url-route-portal/application-gateway-backend.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 5. Kattintson a **háttérkészletek** majd **Hozzáadás**.
@@ -148,23 +149,23 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 
 5. Kattintson az **OK** gombra.
 
-## <a name="test-the-application-gateway"></a>Az Alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
 1. Kattintson a **összes erőforrás**, és kattintson a **myAGPublicIPAddress**.
 
-    ![Rekord alkalmazás átjáró nyilvános IP-címe](./media/create-url-route-portal/application-gateway-record-ag-address.png)
+    ![Alkalmazásátjáró nyilvános IP-címének rögzítése](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például a http://http://40.121.222.19.
+2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: http://http://40.121.222.19.
 
-    ![Az alkalmazás átjáró alap URL-cím tesztelése](./media/create-url-route-portal/application-gateway-iistest.png)
+    ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/create-url-route-portal/application-gateway-iistest.png)
 
 3. Módosítsa az URL-címet http://&lt;ip-cím&gt;: 8080/video/test.htm, és &lt;ip-cím&gt; az IP-címet, és meg kell megjelennie az alábbihoz hasonlót:
 
-    ![Az alkalmazás átjáró képek URL tesztelése](./media/create-url-route-portal/application-gateway-iistest-images.png)
+    ![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/create-url-route-portal/application-gateway-iistest-images.png)
 
 4. Módosítsa az URL-címet http://&lt;ip-cím&gt;: 8080/video/test.htm, és &lt;ip-cím&gt; az IP-címet, és meg kell megjelennie az alábbihoz hasonlót:
 
-    ![Az alkalmazás átjáró Videó URL tesztelése](./media/create-url-route-portal/application-gateway-iistest-video.png)
+    ![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/create-url-route-portal/application-gateway-iistest-video.png)
 
 ## <a name="next-steps"></a>További lépések
 

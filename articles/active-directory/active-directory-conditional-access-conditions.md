@@ -9,18 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34735141"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférési feltételek 
 
@@ -148,7 +150,7 @@ Az ügyfél alkalmazások feltétel lehetővé teszi, hogy egy házirendet alkal
 - Webhelyek és szolgáltatások
 - Mobilalkalmazások és asztali alkalmazások. 
 
-![Feltételek](./media/active-directory-conditional-access-conditions/04.png)
+
 
 Az alkalmazás vonatkozik:
 
@@ -156,7 +158,7 @@ Az alkalmazás vonatkozik:
 
 - A mobilalkalmazással vagy asztali alkalmazás, ha a mobilalkalmazás OpenID Connect natív ügyfél használ.
 
-A feltételes hozzáférési házirend használható ügyfél-alkalmazások teljes listáját lásd: a [Azure Active Directory feltételes hozzáférési technikai útmutató](active-directory-conditional-access-technical-reference.md#client-apps-condition).
+A feltételes hozzáférési házirend használható ügyfél-alkalmazások teljes listáját lásd: [ügyfél alkalmazások feltétel](active-directory-conditional-access-technical-reference.md#client-apps-condition) az Azure Active Directory feltételes hozzáférési műszaki útmutatóban.
 
 Ez a feltétel gyakori alkalmazási esetei házirendek, amelyek:
 
@@ -166,6 +168,20 @@ Ez a feltétel gyakori alkalmazási esetei házirendek, amelyek:
 
 Mellett a webes egyszeri bejelentkezés és a modern hitelesítési protokollok megvalósítását végzi, ez a feltétel alkalmazhat e-mail alkalmazást, amely az Exchange ActiveSync protokollon, például a natív e-mail alkalmazások a legtöbb okostelefonok. Örökölt protokollok használatával ügyfélalkalmazások jelenleg, AD FS segítségével védeni kell.
 
+Kiválaszthatja a feltétel csak ha **Office 365 Exchange Online** a kijelölt csak felhőalapú alkalmazás.
+
+![Felhőalkalmazások](./media/active-directory-conditional-access-conditions/32.png)
+
+Kiválasztása **Exchange ActiveSync** ügyfélalkalmazások, a feltétel csak akkor támogatott Ha egyéb feltételek nincs konfigurálva házirendben is szerepel. Azonban megadásával szűkíthető, ez a feltétel csak egy támogatott platformra alkalmazza a hatóköre.
+
+ 
+![Támogatott platformok](./media/active-directory-conditional-access-conditions/33.png)
+
+Ez a feltétel csak a támogatott platformok alkalmazása az összes eszközplatformra megegyezik egy [eszköz platform feltétel](active-directory-conditional-access-conditions.md#device-platforms).
+
+![Támogatott platformok](./media/active-directory-conditional-access-conditions/34.png)
+
+
  További információkért lásd:
 
 - [Az Azure Active Directory feltételes hozzáférés SharePoint Online és Exchange Online beállítása](active-directory-conditional-access-no-modern-authentication.md)
@@ -173,9 +189,53 @@ Mellett a webes egyszeri bejelentkezés és a modern hitelesítési protokollok 
 - [Azure Active Directory, alkalmazás-alapú feltételes hozzáférés](active-directory-conditional-access-mam.md) 
 
 
+### <a name="legacy-authentication"></a>A hagyományos hitelesítés  
+
+Feltételes hozzáférés mostantól a modern hitelesítést nem támogató régebbi Office-ügyfelekhez, valamint az ügyfelek, amelyek levelezési protokollok POP, IMAP, SMTP és stb vonatkozik. Ez lehetővé teszi, hogy konfigurálja a szabályzatok, például **letiltja a hozzáférést, az egyéb ügyfelektől**.
+
+
+![A hagyományos hitelesítés](./media/active-directory-conditional-access-conditions/160.png)
+ 
 
 
 
+#### <a name="known-issues"></a>Ismert problémák
+
+- A házirend beállítása **más ügyfelek** a teljes szervezet számára az egyes ügyfelek, például a SPConnect blokkolja. A régebbi ügyfelek hitelesítése nem várt módon okozza. A probléma nem vonatkozik a fő Office alkalmazások, például a régebbi Office-ügyfelekhez. 
+
+- A házirend érvénybe lépéséhez akár 24 óráig is eltarthat. 
+
+
+#### <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+**Ez meggátolja, Exchange webes szolgáltatások (EWS)?**
+
+Az EWS által használt hitelesítési protokoll függ. Ha az EWS alkalmazás modern hitelesítést használ, azt fedezi a "Mobile apps- és asztali ügyfelek" ügyfélalkalmazás. Ha az EWS alkalmazás egyszerű hitelesítést használ, azt fedezi az "Egyéb ügyfelek" ügyfélalkalmazás.
+
+
+**Milyen a vezérlők más ügyfelek számára használható**
+
+Bármelyik vezérlőre "Más ügyfelek számára" konfigurálható. Azonban a végfelhasználói élmény lesz minden esetben letiltják a hozzáférést. "Más ügyfelek" nem támogatják a többtényezős Hitelesítést, például a vezérlők megfelelő eszköz, a tartományhoz való csatlakozást, stb. 
+ 
+**Milyen feltételek használható más ügyfelek számára?**
+
+Azokat a feltételeket az "Egyéb ügyfelek" konfigurálható.
+
+**Feltételek és a vezérlőket támogatja az Exchange ActiveSync?**
+
+Nem. Az Exchange ActiveSync (EAS) támogatását összegzi a következő:
+
+- EAS csak a felhasználó- és csoportcélzási támogatja. Nem támogatja a Vendég, szerepköröket. Ha vendég/szerepkör feltétel van konfigurálva, minden felhasználó fog blokkolnánk a hozzáférését, mert jelenleg nem tudja megállapítani, ha a házirend vonatkozzon a felhasználó számára, vagy nem.
+
+- EAS csak akkor működik az Exchange kiszolgálóval, a cloud app. 
+
+- EAS nem támogatja az ügyfél alkalmazás maga kivételével minden feltétel.
+
+- EAS konfigurálható bármelyik vezérlőre (az eszköz megfelelőségének kivételével az összes irányítja blokk).
+
+**A házirendek vonatkoznak az összes ügyfél alkalmazások továbbítja alapértelmezés szerint?**
+
+Nem. Nincs az alapértelmezett házirend működésében nincs változás. A házirendek továbbra is a böngésző és a mobileszköz-alkalmazások/asztali ügyfelek alapértelmezés szerint vonatkozik.
 
 
 
