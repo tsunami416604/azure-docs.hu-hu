@@ -1,3 +1,5 @@
+# [Az Azure Active Directory dokumentációja](index.md)
+
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
 ## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
@@ -46,6 +48,7 @@
 ### [Felhasználói profilok kezelése](active-directory-users-profile-azure-portal.md)
 ### [Fiókok megosztása](active-directory-sharing-accounts.md)
 ### [Felhasználók hozzárendelése rendszergazdai szerepkörökhöz ](active-directory-users-assign-role-azure-portal.md)
+### [Törölt felhasználó visszaállítása](active-directory-users-restore.md)
 ### [Vendég felhasználók hozzáadása másik címtárból (B2B)](b2b/what-is-b2b.md)
 #### [B2B-felhasználók rendszergazdák általi hozzáadása](b2b/add-users-administrator.md)
 #### [B2B-felhasználók infomunkások általi hozzáadása](b2b/add-users-information-worker.md)
@@ -80,7 +83,8 @@
 ## [Csoportok és tagok kezelése](active-directory-manage-groups.md)
 ### Csoportok kezelése
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
 ### [Csoporttagság kezelése](active-directory-groups-membership-azure-portal.md)
@@ -88,16 +92,16 @@
 #### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre](active-directory-licensing-group-migration-azure-portal.md)
+#### [Felhasználók terméklicencek közötti migrálása](active-directory-licensing-group-product-migration.md)
 #### [További forgatókönyvek csoportalapú licenceléshez](active-directory-licensing-group-advanced.md)
 #### [Azure PowerShell-példák csoportalapú licenceléshez](active-directory-licensing-ps-examples.md)
 #### [Az Azure AD termékeinek és szolgáltatáscsomagjainak referenciája](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Office 365-csoportok lejáratának beállítása](active-directory-groups-lifecycle-azure-portal.md)
+### [A csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md)
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
 ### [Törölt Office 365-csoport visszaállítása](active-directory-groups-restore-azure-portal.md)
-### Csoportbeállítások kezelése
-#### [Azure Portal](active-directory-groups-settings-azure-portal.md)
-#### [Parancsmagok](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### [Csoportbeállítások kezelése](active-directory-groups-settings-azure-portal.md) 
 ### Speciális szabályok létrehozása
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [Önkiszolgáló csoportok beállítása](active-directory-accessmanagement-self-service-group-management.md)
@@ -114,13 +118,17 @@
 #### [Nevesített helyek konfigurálása](active-directory-named-locations.md)
 #### [Tevékenységjelentések keresése](active-directory-reporting-migration.md)
 #### [Az Azure Active Directory Power BI-tartalomcsomag használata](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Kockázatosként megjelölt felhasználók szervizelése](active-directory-report-security-user-at-risk-remediation.md)
 ### Referencia
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
 #### [Értesítések](active-directory-reporting-notifications.md)
 #### [Naplózott tevékenységekre vonatkozó referencia](active-directory-reporting-activity-audit-reference.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
+#### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md
+
+
+
 ### Hibaelhárítás
 #### [Hiányzó naplózási adatok](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -178,6 +186,14 @@
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
+### [Felhasználók átadása és az átadás megszüntetése SaaS-alkalmazásokban](active-directory-saas-app-provisioning.md) 
+#### [Alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md) 
+#### [Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz](active-directory-scim-provisioning.md) 
+#### [Attribútumleképezések testreszabása](active-directory-saas-customizing-attribute-mappings.md) 
+#### [Kifejezések írása attribútumleképezésekhez](active-directory-saas-writing-expressions-for-attribute-mappings.md) 
+#### [Hatókörszűrők használata](active-directory-saas-scoping-filters.md) 
+#### [Jelentés a felhasználók automatikus átadásáról](active-directory-saas-provisioning-reporting.md) 
+#### [A felhasználók átadásának hibaelhárítása](active-directory-application-provisioning-content-map.md) 
 
 ### [Appok távoli elérése az App Proxyval](manage-apps/application-proxy.md)
 #### Bevezetés
@@ -214,7 +230,7 @@
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 ##### [Qlik](active-directory-application-proxy-qlik.md)
-
+#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
 #### [Hibaelhárítás](active-directory-application-proxy-troubleshoot.md)
 
@@ -227,9 +243,9 @@
 #### [Felhasználói fiók üzembe helyezésének kezelése](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Egyszeri bejelentkezés kezelése nagyvállalati alkalmazások esetében](active-directory-enterprise-apps-manage-sso.md)
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [Külső gyártótól származó alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
+#### [Alkalmazás elrejtése a felhasználói felületen](active-directory-coreapps-hide-third-party-app.md)
 ### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](active-directory-auto-acceleration-using-hrd.md)
-
+### [AD FS-alkalmazások migrálása az Azure AD-be](migrate-adfs-apps-to-azure.md) 
 ### [Alkalmazások hozzáférésének kezelése](active-directory-managing-access-to-apps.md)
 #### [Egyszeri bejelentkezéses hozzáférés](manage-apps/what-is-single-sign-on.md)
 #### [Egyszeri bejelentkezés tanúsítványai](active-directory-sso-certs.md)
@@ -244,6 +260,15 @@
 ##### [Konfigurálás](active-directory-application-config-content-map.md)
 ##### [Bejelentkezés](active-directory-application-sign-in-content-map.md)
 ##### [Kiépítés](active-directory-application-provisioning-content-map.md)
+
+###### [Felhasználó létrehozásának ellenőrzése](application-provisioning-when-will-provisioning-finish-specific-user.md) 
+###### [A létrehozás hosszú ideig tart](application-provisioning-when-will-provisioning-finish.md) 
+###### [Felhasználók létrehozásának konfigurálása](application-provisioning-config-how-to.md) 
+###### [Probléma merül fel a létrehozás konfigurálása során](application-provisioning-config-problem.md) 
+###### [Probléma merül fel a rendszergazdai hitelesítő adatok mentése során](application-provisioning-config-problem-storage-limit.md) 
+###### [Egyetlen felhasználó létrehozása sem történt meg](application-provisioning-config-problem-no-users-provisioned.md) 
+###### [Helytelen felhasználók lettek létrehozva](application-provisioning-config-problem-wrong-users-provisioned.md) 
+
 ##### [Hozzáférés-kezelés](active-directory-application-access-content-map.md)
 ##### [Hozzáférési panel](active-directory-application-access-panel-content-map.md)
 ##### [Alkalmazásproxy](active-directory-application-proxy-content-map.md)
@@ -274,11 +299,15 @@
 
 ## Erőforrások hozzáférésének delegálása
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
-#### [Rendszergazdai szerepkörök hozzárendelése](active-directory-users-assign-role-azure-portal.md)
+#### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](active-directory-users-assign-role-azure-portal.md) 
+#### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](users-default-permissions.md) 
+### [Emelt szintű hozzáférés biztonsága](admin-roles-best-practices.md)  
+### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](active-directory-admin-manage-emergency-access-accounts.md) 
+
+
 #### [Alapértelmezett felhasználói engedélyek](users-default-permissions.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
-### [A rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Kiemelt szerepkörök védelme](admin-roles-best-practices.md)
 
 ## Hozzáférési felülvizsgálatok
@@ -315,9 +344,7 @@
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [Jelszóhasználat nélküli hitelesítés](active-directory-azureadjoin-passport.md)
-#### [A Vállalati Windows Hello engedélyezése](active-directory-azureadjoin-passport-deployment.md)
+
 ### Tanúsítványalapú hitelesítés
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
@@ -336,8 +363,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
-## [Más szolgáltatások integrálása az Azure AD-vel]()
-### [LinkedIn-integráció engedélyezése](linkedin-integration.md)
+## Más szolgáltatások integrálása az Azure AD-vel 
+### [LinkedIn integrálása az Azure AD-vel](linkedin-integration.md)
 
 ## [Az AD FS üzembe helyezése az Azure-ban](active-directory-aadconnect-azure-adfs.md)
 ### [Magas rendelkezésre állás](active-directory-adfs-in-azure-with-azure-traffic-manager.md)

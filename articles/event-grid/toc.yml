@@ -21,6 +21,8 @@
       href: custom-event-quickstart-portal.md
     - name: Események küldése a Queue Storage-be
       href: custom-event-to-queue-storage.md
+    - name: Események küldése az Event Hubsba
+      href: custom-event-to-eventhub.md
 - name: Oktatóanyagok
   items:
     - name: E-mail küldése a virtuális gép változásakor
