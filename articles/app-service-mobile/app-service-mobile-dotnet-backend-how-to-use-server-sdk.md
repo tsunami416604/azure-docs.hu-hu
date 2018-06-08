@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "31589628"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Az Azure Mobile Appshoz készült .NET háttérkiszolgáló-SDK használata
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -35,7 +36,7 @@ Ez a témakör bemutatja, hogyan használhatja a .NET háttérkiszolgáló SDK a
 A kiszolgáló SDK dokumentációját a következő helyen található: [Azure Mobile Apps .NET hivatkozás][1].
 
 ## <a name="create-app"></a>Hogyan: .NET Mobile Apps-háttéralkalmazás létrehozása
-Ha a számítógépet egy új projektet, létrehozhat egy App Service alkalmazás segítségével a [Azure-portálon] vagy a Visual Studio. Az App Service alkalmazás helyileg történő futtatása, vagy a projekt közzététele a felhőalapú App Service mobilalkalmazáshoz.
+Ha a számítógépet egy új projektet, létrehozhat egy App Service alkalmazás segítségével a [Azure Portal] vagy a Visual Studio. Az App Service alkalmazás helyileg történő futtatása, vagy a projekt közzététele a felhőalapú App Service mobilalkalmazáshoz.
 
 Ha egy meglévő projektjébe hozzáadni mobil funkciókkal, tekintse meg a [töltse le és inicializálja az SDK-](#install-sdk) szakasz.
 
@@ -468,7 +469,7 @@ Győződjön meg arról, hogy rendelkezik-e a mobil-háttéralkalmazást [Micros
 A fenti példában, konfigurálnia kell a *authAudience* és *authIssuer* Alkalmazásbeállítások belül a Web.config fájl az egyes URL-CÍMÉT az alkalmazás gyökereként használja a HTTPS sémát kell. Hasonló módon állítsa be *authSigningKey* kell lennie az értéket az alkalmazás csomagazonosítóját aláírási kulcs.
 Az aláírási kulcs beszerzése:
 
-1. Keresse meg az alkalmazás belül a [Azure-portálon]
+1. Keresse meg az alkalmazás belül a [Azure Portal]
 2. Kattintson a **eszközök**, **Kudu**, **Ugrás**.
 3. A Kudu felügyeleti hely, kattintson a **környezet**.
 4. Keresse meg az értéket a *webhely\_AUTH\_aláírás\_kulcs*.
@@ -481,7 +482,7 @@ Az aláírási kulcs használata a *authSigningKey* paraméter a helyi alkalmaz�
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure-portálon]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [NuGet.org]: http://www.nuget.org/
 [Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

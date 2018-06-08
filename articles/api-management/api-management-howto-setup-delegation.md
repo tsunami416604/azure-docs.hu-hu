@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 02c3a3d996fa253cf56e551a37e098639bf73533
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "32151943"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Hogyan kell delegálni a felhasználói regisztráció és a termék-előfizetéshez
 Delegálás lehetővé teszi a meglévő webhely használatát fejlesztői bejelentkezési-a/regisztrációs és termékek a fejlesztői portálra beépített funkcióval szemben-előfizetés kezeléséhez. Ez lehetővé teszi, hogy a webhely tulajdonosai a felhasználó adatait, és hajtsa végre az alábbi lépéseket az érvényesítés egy egyedi módon.
@@ -64,10 +65,10 @@ Most kell létrehoznia a **delegálás végpont**. Van több műveletet végreha
    * A fenti számított kivonat értékének összehasonlítása a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, lépjen tovább a következő lépés, egyébként visszautasítja a kérelmet.
 3. Győződjön meg arról, hogy fordulnak elő a bejelentkezési/sign up kérelmet: a **művelet** úgy lesz beállítva, lekérdezési paraméter "**SignIn**".
 4. A felhasználó bevezetését a bejelentkezési, regisztrációs vagy a felhasználói felületen
-5. Ha a felhasználó regisztrált kell létrehoznia a megfelelő fiókkal számukra az API Management. [Hozzon létre egy felhasználót] API Management REST API-val. Annak során, győződjön meg arról, hogy állítsa a felhasználói Azonosítóját, ugyanaz a felhasználókhoz tartozó tárolóban van, vagy egy azonosító, akkor is nyomon követésére szolgáló.
+5. Ha a felhasználó regisztrált kell létrehoznia a megfelelő fiókkal számukra az API Management. [Felhasználó létrehozása] API Management REST API-val. Annak során, győződjön meg arról, hogy állítsa a felhasználói Azonosítóját, ugyanaz a felhasználókhoz tartozó tárolóban van, vagy egy azonosító, akkor is nyomon követésére szolgáló.
 6. Amikor a rendszer sikeresen hitelesíteni a felhasználót:
    
-   * [egyszeri bejelentkezéses (SSO) jogkivonatot kérni] az API Management REST API-n keresztül
+   * [egyszeri bejelentkezéses (SSO) jogkivonatot kérelem] az API Management REST API-n keresztül
    * egy returnUrl lekérdezési paraméter hozzáfűzése fent API-hívás kapott egyszeri bejelentkezési URL-címe:
      
      > Például https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
@@ -124,7 +125,7 @@ Gondoskodnia kell a delegálás végpont a következő műveleteket hajtja végr
      > 
    * A fenti számított kivonat értékének összehasonlítása a **sig** lekérdezési paraméter. Ha a két kivonatok megegyeznek, lépjen tovább a következő lépés, egyébként visszautasítja a kérelmet.
 3. Hajtsa végre a kért művelet típusa alapján bármely termék feldolgozási **művelet** – például számlázási, további kérdésekre, stb.
-4. Sikeresen előfizetés a felhasználót, hogy a termék a oldalon, az előfizetés a felhasználó által az API Management termékre [termék-előfizetéshez tartozó REST API hívása].
+4. Sikeresen előfizetés a felhasználót, hogy a termék a oldalon, az előfizetés a felhasználó által az API Management termékre [a REST API felület meghívásakor termék-előfizetéshez].
 
 ## <a name="delegate-example-code"> </a> Mintakód
 Ezek mintakódok bemutatják, hogyan érvénybe a *delegálás érvényesítési kulcs*, melynek értéke a közzétevő portál delegálás képernyőjén hozzon létre egy HMAC, amit a aláírás érvényesítéséhez, igazolására az átadott érvényességét returnUrl. A termékkód és a felhasználói azonosítóját, enyhe módosítással működik ugyanazt a kódot.
@@ -172,9 +173,9 @@ Delegálás további információkért tekintse meg a következő videót:
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[egyszeri bejelentkezéses (SSO) jogkivonatot kérni]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
+[egyszeri bejelentkezéses (SSO) jogkivonatot kérelem]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Felhasználó létrehozása]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[termék-előfizetéshez tartozó REST API hívása]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
+[a REST API felület meghívásakor termék-előfizetéshez]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps
 [alábbi példakód]: #delegate-example-code
 

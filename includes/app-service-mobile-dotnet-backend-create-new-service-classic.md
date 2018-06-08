@@ -1,4 +1,4 @@
-1. Jelentkezzen be a(z) a [Azure-portálon].
+1. Jelentkezzen be a(z) a [Azure Portal].
 2. Válassza ki **+ új** > **Web + mobil** > **mobilalkalmazás**, majd meg egy nevet a Mobile Apps háttér és.
 3. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat (az alkalmazás neve használatával). 
 4. A **App Service-csomag**, az alapértelmezett terv (a a [Standard csomagra](https://azure.microsoft.com/pricing/details/app-service/)) van kiválasztva. Igény szerint kiválaszthatja egy másik csomagot, vagy [hozzon létre egy újat](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
@@ -18,4 +18,4 @@
    Várjon néhány percet, amíg az adatbázis sikeresen telepített, mielőtt továbblép.
 
 <!-- URLs. -->
-[Azure-portálon]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
