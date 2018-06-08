@@ -10,18 +10,18 @@
   items:
     - name: DevTest Labs
       items:
-        - name: 1. Egyéni tesztkörnyezet beállítása
+        - name: 1. Tesztkörnyezet beállítása
           href: tutorial-create-custom-lab.md
-        - name: 2. Egyéni tesztkörnyezet elérése
+        - name: 2. Tesztkörnyezet elérése
           href: tutorial-use-custom-lab.md
     - name: Osztályterem-tesztkörnyezetek
       items:
         - name: 1. Tesztkörnyezetfiók beállítása
-          href: tutorial-setup-lab-account.md
+          href: classroom-labs/tutorial-setup-lab-account.md
         - name: 2. Osztályterem-tesztkörnyezet beállítása
-          href: tutorial-setup-classroom-lab.md
+          href: classroom-labs/tutorial-setup-classroom-lab.md
         - name: 3. Osztályterem-tesztkörnyezet elérése
-          href: tutorial-connect-virtual-machine-classroom-lab.md
+          href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
 - name: Példák
   items:
     - name: DevTest Labs
@@ -50,20 +50,20 @@
     - name: Osztályterem-tesztkörnyezetek
       items:
         - name: Tesztkörnyezetfiókok kezelése
-          href: how-to-manage-lab-accounts.md
+          href: classroom-labs/how-to-manage-lab-accounts.md
         - name: Osztályterem-tesztkörnyezetek kezelése
-          href: how-to-manage-classroom-labs.md
+          href: classroom-labs/how-to-manage-classroom-labs.md
         - name: Osztályterem-tesztkörnyezetek elérése
-          href: how-to-use-classroom-lab.md
+          href: classroom-labs/how-to-use-classroom-lab.md
     - name: DevTest Labs
       items:
-        - name: Egyéni tesztkörnyezet létrehozása
+        - name: Labor létrehozása
           href: devtest-lab-create-lab.md
-        - name: Virtuális gép létrehozása az egyéni tesztkörnyezetben
+        - name: Virtuális gép létrehozása a tesztkörnyezetben
           href: devtest-lab-create-first-vm.md
-        - name: Egyéni tesztkörnyezetekre vonatkozó szabályzatok beállítása
+        - name: Tesztkörnyezetre vonatkozó szabályzatok létrehozása
           href: devtest-lab-get-started-with-lab-policies.md
-        - name: Virtuális gépek használata egyéni tesztkörnyezetben
+        - name: Virtuális gépek használata tesztkörnyezetben
           items:
             - name: Virtuális gépek létrehozása
               href: devtest-lab-add-vm.md
@@ -75,7 +75,7 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Virtuális gép újraindítása
               href: devtest-lab-restart-vm.md
-        - name: Környezetek használata egy egyéni tesztkörnyezetben
+        - name: Környezetek használata tesztkörnyezetben
           items:
             - name: Környezet létrehozása
               href: devtest-lab-create-environment-from-arm.md
@@ -85,7 +85,7 @@
               href: devtest-lab-add-devtest-user.md
             - name: Engedélyek testreszabása egyéni szerepkörökkel
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
-        - name: Egyéni tesztkörnyezet konfigurálása
+        - name: Tesztkörnyezet konfigurálása
           items:
             - name: Szabályzatok és ütemezések beállítása
               href: devtest-lab-set-lab-policy.md
@@ -95,11 +95,11 @@
               href: devtest-lab-configure-marketplace-images.md
             - name: Licencelt kép engedélyezése
               href: devtest-lab-enable-licensed-images.md
-            - name: Címkék hozzáadása egy egyéni tesztkörnyezethez
+            - name: Címkék hozzáadása tesztkörnyezethez
               href: devtest-lab-add-tag.md
-            - name: Értesítés közzététele egy egyéni tesztkörnyezetben
+            - name: Értesítés közzététele tesztkörnyezetben
               href: devtest-lab-announcements.md
-            - name: Támogatási információk hozzáadása egy egyéni tesztkörnyezethez
+            - name: Támogatási információ hozzáadása tesztkörnyezethez
               href: devtest-lab-internal-support-message.md
         - name: Egyéni rendszerkép vagy képlet kiválasztása
           href: devtest-lab-comparing-vm-base-image-types.md

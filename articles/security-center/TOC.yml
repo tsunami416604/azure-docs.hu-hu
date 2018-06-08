@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: Adaptív alkalmazásvezérlők
           href: security-center-adaptive-application.md
+        - name: Fájlintegritás monitorozása
+          href: security-center-file-integrity-monitoring.md
     - name: Biztonsági megoldások kezelése
       href: security-center-partner-integration.md
       items:
@@ -145,6 +147,8 @@
           href: security-center-threat-intel.md
         - name: Vizsgálat
           href: security-center-investigation.md
+        - name: Felhasználói adatok vizsgálatának kezelése
+          href: security-center-investigation-user-data.md
     - name: Biztonsági munkafolyamatok automatizálása
       items:
         - name: Logic Apps-forgatókönyvek
@@ -169,6 +173,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: További források
   items:
+    - name: Felhasználói adatok kezelése
+      href: security-center-privacy.md
     - name: GYIK
       href: security-center-faq.md
     - name: Támogatott platformok

@@ -1,39 +1,30 @@
 ---
-title: "Az Azure verem - PowerShell telepítése |} Microsoft Docs"
-description: "Ebben az oktatóanyagban a ASDK parancssorból történő telepítéséhez."
+title: Az Azure verem - PowerShell telepítése |} Microsoft Docs
+description: Ebben a cikkben a ASDK a parancssorból a PowerShell használatával telepítse.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 48ccccaba6b7f5780f1d42dfbe5d9747c5e30292
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849957"
 ---
-# <a name="tutorial-deploy-the-asdk-from-the-command-line"></a>Oktatóanyag: központi telepítése a parancssorból ASDK
-Ebben az oktatóanyagban az Azure verem Development Kit (ASDK) a parancssorból nem éles környezetben telepít. 
-
+# <a name="deploy-the-asdk-from-the-command-line"></a>A parancssorból ASDK telepítése
 A ASDK egy tesztelési és fejlesztési környezet értékelje ki, és bemutatja a verem Azure-szolgáltatások és szolgáltatások telepítése. Töltse le innen működik, és szüksége a környezet hardver készít, és néhány (Ez órát fog igénybe venni több) parancsfájlok futtatása. Ezt követően is bejelentkezik a rendszergazdai és felhasználói portálok Azure verem elindítására.
-
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
-
-> [!div class="checklist"]
-> * Töltse le, és bontsa ki a központi telepítési csomag
-> * Készítse elő a development kit gazdaszámítógépen 
-> * Telepítés utáni konfigurációk végrehajtása
-> * Regisztrálja az Azure-ral
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Készítse elő a development kit gazdaszámítógépen. Tervezze meg a hardveres, szoftveres és hálózati. A szoftverfejlesztői készlet (development kit fogadó) futtató számítógépen meg kell felelnie hardveres, szoftveres és hálózati követelményeknek. Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) használata között is ki kell választania. Ne feledje, hogy a telepítési folyamat zökkenőmentesen, a a telepítés elindítása előtt az Előfeltételek ahhoz, hogy. 
@@ -61,7 +52,7 @@ A ASDK gazdaszámítógép CloudBuilder.vhdx rendszerindítás konfigurálása:
 
   1. Nyissa meg egy parancssort rendszergazdaként.
   2. Futtassa a `bcdedit /copy {current} /d "Azure Stack"` parancsot.
-  3. Másolás (CTRL + C) a CLSID érték lett visszaadva, többek között a szükséges {} "s. Ez az érték {CLSID} hivatkozunk, és a további lépéseket a beillesztése (CTRL + V vagy kattintson a jobb gombbal) kell.
+  3. Másolás (CTRL + C) a CLSID értéke ad vissza, beleértve a szükséges {}"s. Ez az érték {CLSID} hivatkozunk, és a további lépéseket a beillesztése (CTRL + V vagy kattintson a jobb gombbal) kell.
   4. Futtassa a `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx` parancsot. 
   5. Futtassa a `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` parancsot. 
   6. Futtassa a `bcdedit /set {CLSID} detecthal on` parancsot. 
@@ -176,16 +167,5 @@ Azure verem regisztrálnia kell az Azure-ral, hogy [töltse le az Azure piactér
 ## <a name="next-steps"></a>További lépések
 Gratulálunk! A lépések elvégzése után kell a csomag környezet mindkét [rendszergazda](https://adminportal.local.azurestack.external) és [felhasználói](https://portal.local.azurestack.external) portálok. 
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * Töltse le, és bontsa ki a központi telepítési csomag
-> * Készítse elő a development kit gazdaszámítógépen 
-> * Telepítés utáni konfigurációk végrehajtása
-> * Regisztrálja az Azure-ral
-
-A következő oktatóanyag áttekintésével megismerheti, hogyan verem Azure piactér elem hozzáadása továbblépés.
-
-> [!div class="nextstepaction"]
-> [Vegyen fel egy Azure verem Piactéri elemet](asdk-marketplace-item.md)
+[ASDK telepítés utáni konfigurációs feladatok](asdk-post-deploy.md)
 

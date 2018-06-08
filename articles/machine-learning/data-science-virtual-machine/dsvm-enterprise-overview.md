@@ -8,17 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830537"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Adatok tudományos virtuálisgép-alapú Team elemzés és AI környezet 
 A [adatok tudományos virtuális gép](overview.md) (DSVM) gazdag környezetet biztosít az Azure-felhő előre elkészített szoftverrel AI és az adatok elemzéséhez. Hagyományosan a DSVM vettük egyedi analytics asztali, és egyes adatszakértőkön szerezhet az előre elkészített analytics környezetükben megosztott fogalmát termelékenységet. Nagy analytics csapatok analytics környezetük tervezése az adatelemzők és AI fejlesztők számára, az ismétlődő témák egyik megjelenik a vállalati informatikai felügyelt megosztott analytics fejlesztési és kísérletezés infrastruktúra házirendek amely is elősegíti együttműködés és konzisztencia között a teljes adattudomány / analytics csapatának. A megosztott infrastruktúra is lehetővé teszi, hogy informatikai jobban tudják használni az analytics-környezetben. A team-alapú adattudomány / analytics infrastruktúra más néven egyes szervezetek "Analytics védőfal", amely lehetővé teszi az adatszakértőkön át a gyorsan adatok megismeréséhez, futtassa a kísérletet, feltevése ellenőrizze, biztonságos módon prediktív modellek létrehozása adatok különböző eszközökhöz való hozzáférés során az éles környezetben befolyásolása nélkül. 

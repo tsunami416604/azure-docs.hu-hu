@@ -1,26 +1,27 @@
 ---
-title: "Az Azure verem Development Kit (ASDK) történő bemutatása |} Microsoft Docs"
-description: "A ASDK ismerteti és a Microsoft Azure verem értékelése gyakori alkalmazási esetei."
+title: Az Azure verem Development Kit (ASDK) történő bemutatása |} Microsoft Docs
+description: A ASDK ismerteti és a Microsoft Azure verem értékelése gyakori alkalmazási esetei.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5a268a29c7a767084049bf56270aa8bc9d2ccc3f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850627"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Mi az az Azure verem szoftverfejlesztői készlet?
 [A Microsoft Azure verem integrált rendszerek](.\.\azure-stack-poc.md) mérete a 4 – 12 csomópontok között, és a hardver partnerek és a Microsoft által közösen támogatott. Integrált Azure verem rendszerek használatával engedélyezze a termelési számítási feladatokhoz új forgatókönyvek használhatók. Ha egy Azure verem operátort, akik az integrált rendszerek infrastruktúrával kezeli és szolgáltatásokat biztosít, tekintse meg a [operátor dokumentáció](https://docs.microsoft.com/azure/azure-stack).
@@ -58,8 +59,8 @@ Kezelőként Azure verem kell tudni, hogy mely szolgáltatások elérhetővé te
 
 ### <a name="foundational-services"></a>Eligazodást szolgáltatások
 Alapértelmezés szerint az Azure-verem tartalmazza a következő "eligazodást szolgáltatások" a ASDK telepítésekor:
-- Számítás
-- Tárolás
+- Compute
+- Storage
 - Hálózat
 - Key Vault
 
@@ -79,4 +80,4 @@ Az Azure verem továbbra is támogatásáról további Azure-szolgáltatásokhoz
 
 
 ## <a name="next-steps"></a>További lépések
-Első lépésként Azure verem értékelése, elő kell készíteni a development kit állomás számítógépén, majd [telepítése a ASDK](asdk-deploy.md). Ezt követően is bejelentkezik a rendszergazda és a felhasználói portálon Azure verem elindítására.
+Első lépésként Azure verem értékelése, elő kell készíteni a development kit állomás számítógépén, majd [telepítése a ASDK](asdk-install.md). Ezt követően is bejelentkezik a rendszergazda és a felhasználói portálon Azure verem elindítására.

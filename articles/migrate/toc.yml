@@ -25,9 +25,11 @@
         - name: 2. Contoso – Azure-infrastruktúra beállítása
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso – Helyszíni erőforrások értékelése az Azure-ba való migráláshoz
-          href: migrate-scenarios-assessment.md
-        - name: 4. Contoso – Üzemeltetés áthelyezése Azure-beli virtuális gépekre és felügyelt Azure SQL-példányra
-          href: migrate-scenarios-lift-and-shift.md
+          href: contoso-migration-assessment.md
+        - name: 4. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és felügyelt Azure SQL-példányra
+          href: contoso-migration-rehost-vm-sql-managed-instance.md
+        - name: 5. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre
+          href: contoso-migration-rehost-vm.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md
     - name: Gépek csoportosítása
@@ -48,3 +50,5 @@
       href: 'https://azure.microsoft.com/migrate'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: GYIK
+      href: resources-faq.md

@@ -63,6 +63,8 @@
           href: internal-lb.md
         - name: Bejövő forgalom és TLS
           href: ingress.md
+        - name: Kimenő forgalom
+          href: egress.md
         - name: HTTP-alkalmazások útválasztása
           href: http-application-routing.md
     - name: Biztonság és hitelesítés

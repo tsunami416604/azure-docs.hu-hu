@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
-ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 94cabb73406619b95147595127e97a27aed762f9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849749"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-átjáró konfigurációs beállítások Azure verem
 
@@ -157,7 +158,10 @@ Azure, amely támogatja több ajánlatok egy kezdeményező és a válaszoló is
 |IKE verziószám |IKEv2 |
 |Titkosítás és kivonatoló algoritmusokat (titkosítás)     | GCMAES256|
 |Titkosítás és kivonatoló algoritmusokat (hitelesítés) | GCMAES256|
-|SA élettartama (Idő)  | 27 000 másodperc |
-|SA élettartama (bájt) | 819,200       |
+|SA élettartama (Idő)  | 27 000 másodperc<sup>lásd: 1. megjegyzést:</sup> |
+|SA élettartama (bájt) | 33,553,408<sup>lásd a 2. megjegyzést:</sup>     |
 |Sérülés utáni titkosságvédelem (PFS) |PFS2048 |
 |Kapcsolat megszakadásának észlelése | Támogatott|  
+
+*1. Megjegyzés:* verzió 1803, mielőtt Azure verem használ 14400 érték a rendszergazdai (SA) élettartam (Time). 
+*2. Megjegyzés:* verzió 1803, mielőtt Azure verem használ 819,200 érték a biztonsági Társítás élettartama (bájt).

@@ -8,14 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 8bf5cd802198cba48a99c029d0c75c25dd5f6d84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5ff6502b0ed023f6fe8a9475a0e81991a9918cc5
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850171"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Kép besorolás használata az Azure Machine Learning-munkaterület
 
@@ -242,15 +244,20 @@ Az első a képernyőfelvételen látható DNN pontosítás SVM képzési minden
 
 
 ### <a name="parameter-tuning"></a>A paraméter hangolása
+
 Mivel a legtöbb gépi tanulási a projektek esetében igaz értékű, gondosan meg kell paramétert, hangolása, valamint a különböző tervezési döntésekhez kiértékelése jó eredmények beolvasása Új adatkészlet igényel. A feladatok érdekében minden fontos paraméter meg van adva, és egy rövid magyarázatot egy helyen találhatók: a `PARAMETERS.py` fájlt.
 
 A legtöbb ígéret rendszere javításai vannak:
 
 - Az adatminőségi: biztosítja a tanítási és tesztelési kiváló minőségű. Ez azt jelenti, hogy a képek megjegyzésekkel ellátott helytelenül, nem egyértelmű lemezképek eltávolítása (például ruházati elemek szétterítése és pontok), és az attribútumok kölcsönösen kizárják egymást (Ez azt jelenti, hogy akkor megválasztani, hogy pontosan egy attribútummal kellene tartozik minden kép).
+
 - Ha az objektum--fontos kicsi a kép majd kép besorolás módszerekkel nem ismert működőképesek. Ilyen esetben fontolja meg az objektum észlelési módszer használatát, ez a [oktatóanyag](https://github.com/Azure/ObjectDetectionUsingCntk).
 - DNN pontosítás: megszerezni a helyes késései legfontosabb paraméter a tanulási rátát `rf_lrPerMb`. Ha a képzési pontosságának beállítása (első ábra a 2. rész) nincs közel 0-5 %, valószínűleg az okozza helytelen a tanulási rátát. A többi paraméter kezdve `rf_` kevésbé fontos. Általában a képzés hiba kell exponenciálisan csökkentheti, és hamarosan 0 % képzési után kell.
+
 - Megoldási bemeneti: az alapértelmezett lemezkép megoldás lehet 224 x 224 képpontban megadva. Magasabb képfelbontás használatával (paraméter: `rf_inputResoluton`), például gyakran jelentős 448 x 448 vagy 896 x 896 képpont pontossága javítja, de DNN pontosítás lelassul. **Magasabb képfelbontás segítségével szinte ingyenes ebédet, és szinte mindig növekedhet pontossága**.
+
 - DNN túlzott méretezés: elkerülése érdekében a képzési és a vizsgálat pontosságának jelentős különbség DNN pontosítás során (első rész 2. ábra). Ez a szünet jelkiesés díjszabás csökkenthető `rf_dropoutRate` legalább 0.5, és a regularizer súly növelésével `rf_l2RegWeight`. A magas jelkiesés mértékben használata különösen akkor hasznos, ha a DNN bemeneti képfelbontás magas lehet.
+
 - Próbálja használatával alaposabb DNNs módosításával `rf_pretrainedModelFilename` a `ResNet_18.model` vagy `ResNet_34.model` vagy `ResNet_50.model`. A Resnet-50 modell nem csak mélyebben, de az utolsó előtti réteg kimenetét mérete 2048 úszó (és a a ResNet-18-ra és ResNet-34 modellek 512 úszó). Ez a megnövekedett dimenzió különösen hasznos lehet, ha egy SVM osztályozó betanítása.
 
 ## <a name="part-3---custom-dataset"></a>3. rész - egyéni adatkészlet

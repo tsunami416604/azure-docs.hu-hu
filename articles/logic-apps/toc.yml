@@ -47,6 +47,8 @@
               href: logic-apps-control-flow-loops.md
             - name: Hatókörök
               href: logic-apps-control-flow-run-steps-group-scopes.md
+        - name: Változók létrehozása értékek mentéséhez
+          href: logic-apps-create-variables-store-values.md
         - name: Egyéni kód hozzáadása az Azure Functions használatával
           href: logic-apps-azure-functions.md
         - name: Logikai alkalmazások meghívása Azure Functions-függvényekkel

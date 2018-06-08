@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 06/07/2018
 ms.author: mamit,bwren
 ms.custom: ''
-ms.openlocfilehash: dac8052a96c98130891a9ea31994198e331e314d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 699dff42846ee1f9d42980feca55d8a79e2514e3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726465"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839843"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Egyesített riasztásait az Azure-figyelő
 
@@ -104,6 +104,8 @@ Riasztások több Azure-szolgáltatások figyelésének keresztül érhetők el.
 | Application Insights | Webalkalmazás-rendelkezésreállás figyelésére szolgáló tesztek | Egyesített riasztások nem támogatott.  Lásd: [webes teszt riasztások](../application-insights/app-insights-monitor-web-app-availability.md). Bármely szeretnék adatokat küldeni a Application Insights tagolva webhelyen érhető el. Értesítést kaphat, ha a rendelkezésre állás vagy a webhely válaszképesség nem éri el elvárásainak. |
 
 ## <a name="enhanced-unified-alerts-public-preview"></a>Továbbfejlesztett egyesített riasztások (nyilvános előzetes verzió)
+> [!NOTE]
+>  Ebben a szakaszban a funkció hamarosan elérhető. Azt nem szerepelhet a által használt még. 
 
 Továbbfejlesztett egyesített riasztások élményt 2018. június 1 Azure figyelő nyilvános előzetes verziójában lett szabadítva. Ez a felület épít, előnyeit [riasztások egyesített](#overview) március 2018 kiadott, és lehetővé teszi a kezelése, és módosítja a riasztás állapota mellett az egyes riasztások összesítése. Ez a szakasz az új szolgáltatásokat és az Azure portálon Új riasztási lapok közötti váltáshoz ismerteti.
 

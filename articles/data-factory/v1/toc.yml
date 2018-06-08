@@ -1,5 +1,7 @@
 - name: A Data Factory V1 dokumentációja
   href: null
+- name: Váltás az aktuális verzió dokumentációjára
+  href: ../index.yml
 - name: Áttekintés
   items:
     - name: Az Azure Data Factory bemutatása
@@ -193,7 +195,7 @@
       href: /rest/api/datafactory/
     - name: JSON
       href: data-factory-json-scripting-reference.md
-- name: Erőforrások
+- name: További források
   items:
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'

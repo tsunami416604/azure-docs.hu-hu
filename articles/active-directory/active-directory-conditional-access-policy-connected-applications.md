@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/07/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: afd29c83a69742d17e7cadda50c0054133458b68
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1c21c915bc0a83cdafb221a2cd592890577437ee
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736609"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849525"
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory eszközalapú feltételes hozzáférési házirendek konfigurálása
 
@@ -68,7 +68,7 @@ A feltételes hozzáférési házirend kiválaszthatja **megkövetelése az Azur
 
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Ez a beállítás csak egy helyszíni Azure AD tartományhoz csatlakoztatott Windows 10-eszközökre vonatkozik. Ezek az eszközök csak regisztrálhatja az Azure AD használatával a Azure AD hibrid csatlakozzon, amely egy [automatikus folyamat](device-management-hybrid-azuread-joined-devices-setup.md) regisztrált Windows 10-eszköz eléréséhez. 
+Ez a beállítás csak egy helyszíni tartományhoz csatlakoztatott Windows 10-eszközökre érvényes AD. Ezek az eszközök csak regisztrálhatja az Azure AD használatával a Azure AD hibrid csatlakozzon, amely egy [automatikus folyamat](device-management-hybrid-azuread-joined-devices-setup.md) regisztrált Windows 10-eszköz eléréséhez. 
 
 ![Eszköz-alapú feltételek](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

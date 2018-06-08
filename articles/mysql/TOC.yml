@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: Az SSL konfigurálása
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Áttekintés
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: Alkalmazásfejlesztés
           href: concepts-database-application-development.md
+    - name: Replikáció
+      items:
+        - name: Beérkező adatokra épülő replikáció
+          href: concepts-data-in-replication.md
 - name: Útmutatók
   items:
     - name: Kiszolgáló kezelése
@@ -119,7 +125,7 @@
       items:
         - name: Felhasználók létrehozása
           href: howto-create-users.md
-        - name: Kapcsolati karakterláncok
+        - name: Kapcsolati sztringek
           href: howto-connection-string.md
         - name: Az SSL konfigurálása
           href: howto-configure-ssl.md
@@ -141,18 +147,30 @@
       items:
         - name: Riasztások létrehozása metrikákhoz
           href: howto-alert-on-metric.md
+    - name: Replikáció
+      items:
+        - name: Beérkező adatokra épülő replikáció konfigurálása
+          href: howto-data-in-replication.md
     - name: Hibaelhárítás
       items:
         - name: Lekérdezési teljesítmény hibaelhárítása
           href: howto-troubleshoot-query-performance.md
         - name: Nézetek használata a rendszersémában
           href: howto-troubleshoot-sys-schema.md
+    - name: Virtual Network
+      items:
+        - name: Azure Portal
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
 - name: Referencia
   items:
     - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
+    - name: Beérkező adatokra épülő replikáció tárolt eljárásai
+      href: reference-data-in-stored-procedures.md
 - name: További források
   items:
     - name: Üzembehelyezési sablonok

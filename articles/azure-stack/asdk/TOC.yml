@@ -9,27 +9,11 @@
       href: asdk-release-notes.md
 - name: Oktatóanyagok
   items:
-    - name: 1. A ASDK telepítése
-      items:
-        - name: Telepítheti a ASDK - telepítő
-          href: asdk-deploy.md
-        - name: A ASDK - PowerShell telepítése
-          href: asdk-deploy-powershell.md
-        - name: Telepítse újra a ASDK
-          href: asdk-redeploy.md
-    - name: 2. Adja hozzá a Piactéri elemet
-      items:
-        - name: Töltse le az Azure-ból
-          href: asdk-marketplace-item.md
-        - name: Egy helyi forrásból hozzáadása
-          href: asdk-marketplace-item-offline.md
-    - name: 3. IaaS-szolgáltatások
-      href: asdk-offer-services.md
-    - name: 4. Előfizetés egy ajánlatra
+    - name: Előfizetés egy ajánlatra
       href: asdk-subscribe-services.md
-    - name: 5. Frissítés ajánlatok és tervek
+    - name: Frissítés ajánlatok és tervek
       href: asdk-update-offers.md
-    - name: 6. A virtuális gép létrehozása sablonból
+    - name: A virtuális gép létrehozása sablonból
       href: asdk-create-vm-template.md
 - name: Alapelvek
   items:
@@ -49,10 +33,14 @@
           href: asdk-download.md
         - name: A ASDK számítógép előkészítése
           href: asdk-prepare-host.md
-        - name: A ASDK telepítése
+        - name: Telepítheti a ASDK - telepítő
           href: asdk-install.md
+        - name: A ASDK - PowerShell telepítése
+          href: asdk-deploy-powershell.md
         - name: Telepítés utáni konfigurációjának
           href: asdk-post-deploy.md
+        - name: Telepítse újra a ASDK
+          href: asdk-redeploy.md
     - name: A ASDK regisztrálása
       href: asdk-register.md
     - name: Azure verem telemetriai beállítások konfigurálása

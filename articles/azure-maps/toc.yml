@@ -30,12 +30,14 @@
       href: render-coverage.md
     - name: Útválasztási lefedettség
       href: routing-coverage.md
-    - name: Keresés a kategóriákban
-      href: search-categories.md
+    - name: Támogatott keresési kategóriák
+      href: supported-search-categories.md
     - name: Támogatott nyelvek
       href: supported-languages.md
     - name: Használatalapú modell
       href: consumption-model.md
+    - name: geoJSON kiterjesztése
+      href: extend-geojson.md
 - name: Útmutatók
   items:
     - name: Maps-fiókok kezelése
@@ -70,17 +72,33 @@
           href: map-show-traffic.md
         - name: Vezérlés egérrel
           href: map-events.md
+        - name: Elérhető térképes alkalmazások
+          href: map-accessibility.md
 - name: Referencia
   items:
-    - name: Szolgáltatási API – REST
-      href: 'https://docs.microsoft.com/rest/api/maps/'
-    - name: Térkép vezérlőelem-API – Javascript
-      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+    - name: REST
+      items:
+        - name: Megjelenítő szolgáltatás
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/renderservice'
+        - name: Útvonal szolgáltatás
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/routeservice'
+        - name: Keresési szolgáltatás
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/searchservice'
+        - name: Időzóna szolgáltatás
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/timezoneservice'
+        - name: Forgalom szolgáltatás
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/trafficservice'
+        - name: Maps-fiókkezelés
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: Térképvezérlő
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
 - name: Kapcsolódó témakörök
   items:
     - name: Megoldások
       items:
-        - name: IoT Suite előre konfigurált megoldások
+        - name: IoT-megoldásgyorsítók
           href: /azure/iot-suite
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

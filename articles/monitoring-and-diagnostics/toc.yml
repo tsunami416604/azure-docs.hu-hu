@@ -129,6 +129,8 @@
           href: monitoring-rest-api-walkthrough.md
         - name: Azure PowerShell-minták
           href: insights-powershell-samples.md
+        - name: Azure CLI-minták
+          href: insights-cli-samples.md
     - name: Az Azure Diagnostics bővítmény használata
       items:
         - name: Küldés az Azure Storage-be

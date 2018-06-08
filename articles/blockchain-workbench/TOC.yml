@@ -50,3 +50,9 @@
       href: blockchain-workbench-messages-overview.md
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+    - name: Megoldássablonok
+      items:
+        - name: Ethereum munkaigazolás konzorcium
+          href: ethereum-deployment-guide.md
+        - name: Hyperledger Fabric konzorcium
+          href: hyperledger-fabric-single-member-blockchain.md

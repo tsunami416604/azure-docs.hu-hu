@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5c265b14a88e993512811de365f1ba51f7ba6028
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 262c9af4e0f3ee34dc89986affacb6c0d8a0d801
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835722"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Hibaelhárítási útmutató: Machine Learning-munkaterület létrehozása és kapcsolódás a Machine Learning-munkaterülethez
 Ez az útmutató egyes megoldások gyakran ütközött kihívást állítja be az Azure Machine Learning munkaterületek.
@@ -28,9 +30,9 @@ Ez az útmutató egyes megoldások gyakran ütközött kihívást állítja be a
 ## <a name="workspace-owner"></a>Munkaterület tulajdonosa
 A munkaterület megnyitásához a Machine Learning Studióban be kell jelentkeznie Microsoft Account a munkaterület létrehozásához használt, vagy meghívót kapott a tulajdonos a munkaterület csatlakozni szeretne. Az Azure-portálon kezelheti a munkaterületen található, amely lehetővé teszi a hozzáférés konfigurálása.
 
-A munkaterület kezeléséről további információkért lásd: [kezelése az Azure Machine Learning-munkaterület].
+A munkaterület kezeléséről további információkért lásd: [Egy Azure Machine Learning munkaterülettel kezelése].
 
-[kezelése az Azure Machine Learning-munkaterület]: manage-workspace.md
+[Egy Azure Machine Learning munkaterülettel kezelése]: manage-workspace.md
 
 ## <a name="allowed-regions"></a>Engedélyezett régiók
 Gépi tanulás már régiók korlátozott számú érhető el. Az előfizetés nem tartalmazza a régiók egyikéhez sem, ha a hiba üzenet jelenhet meg, "Nincs előfizetése van a megengedett régiókban."

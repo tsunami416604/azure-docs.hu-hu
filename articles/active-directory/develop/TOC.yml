@@ -1,0 +1,273 @@
+- name: Áttekintés
+  href: active-directory-developers-guide.md
+  items:
+    - name: Milyen előnyöket kínál az Azure AD?
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: A hitelesítés alapjai
+      href: active-directory-authentication-scenarios.md
+    - name: Alkalmazástípusok
+      href: 'active-directory-authentication-scenarios.md#application-types-and-scenarios'
+- name: Első lépések
+  items:
+    - name: Mobil- és asztali appok
+      items:
+        - name: Áttekintés
+          href: 'active-directory-authentication-scenarios.md#native-application-to-web-api'
+        - name: iOS
+          href: active-directory-devquickstarts-ios.md
+        - name: Android
+          href: active-directory-devquickstarts-android.md
+        - name: .NET (asztali Windows)
+          href: active-directory-devquickstarts-dotnet.md
+        - name: .NET (Xamarin)
+          href: active-directory-devquickstarts-xamarin.md
+        - name: Cordova
+          href: active-directory-devquickstarts-cordova.md
+        - name: OAuth 2.0
+          href: active-directory-protocols-oauth-code.md
+    - name: Webalkalmazások
+      items:
+        - name: Áttekintés
+          href: 'active-directory-authentication-scenarios.md#web-browser-to-web-application'
+        - name: ASP.NET
+          href: GuidedSetups/active-directory-aspnetwebapp-v1.md
+        - name: ASP.NET-mag
+          href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore'
+        - name: Java
+          href: 'https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect'
+        - name: Python
+          href: 'https://github.com/Azure-Samples/active-directory-python-webapp-graphapi'
+        - name: NodeJS
+          href: active-directory-devquickstarts-openidconnect-nodejs.md
+        - name: OpenID Connect
+          href: active-directory-protocols-openid-connect-code.md
+    - name: Egylapos appok
+      items:
+        - name: Áttekintés
+          href: 'active-directory-authentication-scenarios.md#single-page-application-spa'
+        - name: Angular JS
+          href: active-directory-devquickstarts-angular.md
+        - name: Javascript
+          href: 'https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi'
+    - name: Webes API-k
+      items:
+        - name: Áttekintés
+          href: 'active-directory-authentication-scenarios.md#web-application-to-web-api'
+        - name: ASP.NET
+          href: active-directory-devquickstarts-webapi-dotnet.md
+        - name: NodeJS
+          href: active-directory-devquickstarts-webapi-nodejs.md
+    - name: Szolgáltatások közötti
+      items:
+        - name: Áttekintés
+          href: 'active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api'
+        - name: .NET
+          href: 'active-directory-code-samples.md#server-or-daemon-application-to-web-api'
+        - name: OAuth 2.0-ügyfél hitelesítő adatai
+          href: active-directory-protocols-oauth-service-to-service.md
+- name: Útmutatók
+  items:
+    - name: Alkalmazásregisztráció
+      href: active-directory-integrating-applications.md
+    - name: Több-bérlős alkalmazások
+      href: active-directory-devhowto-multi-tenant-overview.md
+    - name: Feltételes hozzáférés
+      href: active-directory-conditional-access-developer.md
+    - name: Engedélyek
+      href: active-directory-permissions.md
+    - name: OAuth és OpenID Connect
+      items:
+        - name: OpenID Connect-protokoll
+          href: active-directory-protocols-openid-connect-code.md
+        - name: Oauth 2.0 hitelesítésikód-engedélyezés
+          href: active-directory-protocols-oauth-code.md
+        - name: OAuth 2.0 implicit engedélyezés
+          href: active-directory-dev-understanding-oauth2-implicit-grant.md
+    - name: SAML 2.0
+      href: active-directory-saml-protocol-reference.md
+      items:
+        - name: Szerepkörjogcím konfigurálása
+          href: ../active-directory-enterprise-app-role-management.md
+        - name: Jogcímek testreszabása
+          href: active-directory-saml-claims-customization.md
+        - name: SAML-alapú SSO hibakeresése
+          href: active-directory-saml-debugging.md
+        - name: Egyszeri bejelentkezéses SAML-protokoll
+          href: active-directory-single-sign-on-protocol-reference.md
+        - name: Egyszeri kijelentkezéses SAML-protokoll
+          href: active-directory-single-sign-out-protocol-reference.md
+    - name: Bérlő létrehozása
+      href: active-directory-howto-tenant.md
+    - name: Szolgáltatási feltételek és adatvédelmi nyilatkozat
+      href: active-directory-app-terms-service-privacy-statement.md
+    - name: Védjegyzési útmutató
+      href: active-directory-branding-guidelines.md
+    - name: Mobil és asztali egyszeri bejelentkezés
+      items:
+        - name: Egyszeri bejelentkezés engedélyezése Android rendszeren
+          href: active-directory-sso-android.md
+        - name: Egyszeri bejelentkezés engedélyezése iOS rendszeren
+          href: active-directory-sso-ios.md
+    - name: Azure AD B2B
+      href: ../active-directory-b2b-what-is-azure-ad-b2b.md
+    - name: Felhasználókiépítés az SCIM-mel
+      href: ../active-directory-scim-provisioning.md
+    - name: Azure AD Graph API
+      href: active-directory-graph-api.md
+      items:
+        - name: Az AAD Graph használatának első lépései
+          href: active-directory-graph-api-quickstart.md
+    - name: AppSource-tanúsítvány
+      href: active-directory-devhowto-appsource-certified.md
+    - name: Azure AD alkalmazáskatalógus
+      href: active-directory-app-gallery-listing.md
+    - name: Office 365-értékesítői információ-központ
+      href: 'https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard'
+    - name: A Visual Studio használata
+      items:
+        - name: Az Active Directory csatlakoztatott szolgáltatás használata
+          href: vs-active-directory-add-connected-service.md
+        - name: Bevezetés a .NET MVC-projektek használatába
+          href: vs-active-directory-dotnet-getting-started.md
+        - name: Mi történt a .NET MVC-projektemmel?
+          href: vs-active-directory-dotnet-what-happened.md
+        - name: Bevezetés a WebAPI-projektek használatába
+          href: vs-active-directory-webapi-getting-started.md
+        - name: Mi történt a WebAPI-projektemmel?
+          href: vs-active-directory-webapi-what-happened.md
+        - name: Hiba a hitelesítés észlelésekor
+          href: vs-active-directory-error.md
+    - name: Windows Server ADFS
+      href: 'https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+    - name: ACS migrálása
+      href: active-directory-acs-migration.md
+    - name: Ajánlott hibakezelési eljárások az ADAL-hoz
+      href: active-directory-devhowto-adal-error-handling.md
+- name: Referencia
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+    - name: Hitelesítési tárak (ADAL)
+      href: active-directory-authentication-libraries.md
+    - name: Kódminták forgatókönyv szerint
+      href: active-directory-code-samples.md
+    - name: Szószedet
+      href: active-directory-dev-glossary.md
+    - name: Hitelesítési protokollok
+      href: active-directory-authentication-protocols.md
+      items:
+        - name: OpenID Connect
+          href: active-directory-protocols-openid-connect-code.md
+        - name: Oauth
+          href: active-directory-protocols-oauth-code.md
+        - name: Szolgáltatások közötti hívások
+          href: active-directory-protocols-oauth-service-to-service.md
+        - name: Meghatalmazásos folyamat
+          href: active-directory-protocols-oauth-on-behalf-of.md
+        - name: Támogatott token- és jogcímtípusok
+          href: active-directory-token-and-claims.md
+        - name: Alkalmazás választható és egyéni jogcímeinek konfigurálása
+          href: active-directory-optional-claims.md
+        - name: Aláírókulcs-váltás
+          href: active-directory-signing-key-rollover.md
+        - name: Összevonási metaadatok
+          href: active-directory-federation-metadata.md
+        - name: Tanúsítványok hitelesítő adatai
+          href: active-directory-certificate-credentials.md
+    - name: Alkalmazásobjektumok
+      href: active-directory-application-objects.md
+      items:
+        - name: Alkalmazások és az Azure AD
+          href: active-directory-how-applications-are-added.md
+    - name: Alkalmazásjegyzék
+      href: active-directory-application-manifest.md
+    - name: A jogkivonatok élettartama
+      href: ../active-directory-configurable-token-lifetimes.md
+    - name: Szolgáltatási korlátozások
+      href: ../active-directory-service-limits-restrictions.md
+- name: 2.0 verziójú végpont
+  items:
+    - name: Áttekintés
+      href: active-directory-appmodel-v2-overview.md
+      items:
+        - name: Alkalmazástípusok
+          href: active-directory-v2-flows.md
+        - name: Korlátozások
+          href: active-directory-v2-limitations.md
+        - name: v1-v2 összehasonlítása
+          href: active-directory-v2-compare.md
+    - name: Első lépések
+      items:
+        - name: Mobil- és asztali appok
+          items:
+            - name: iOS
+              href: guidedsetups/active-directory-ios.md
+            - name: Android
+              href: guidedsetups/active-directory-android.md
+            - name: Windows asztali .NET
+              href: guidedsetups/active-directory-windesktop.md
+            - name: Univerzális Windows-platform
+              href: guidedsetups/active-directory-uwp-v2.md
+        - name: Webalkalmazások
+          items:
+            - name: ASP.NET
+              href: guidedsetups/active-directory-aspnetwebapp.md
+            - name: ASP.NET-mag
+              href: 'https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2'
+            - name: NodeJS
+              href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
+        - name: Webes API-k
+          items:
+            - name: ASP.NET
+              href: 'https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet'
+            - name: ASP.NET-mag
+              href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
+            - name: NodeJS
+              href: 'https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2'
+        - name: Egylapos appok
+          items:
+            - name: JavaScript
+              href: guidedsetups/active-directory-javascriptspa.md
+        - name: Szolgáltatások közötti
+          items:
+            - name: ASP.NET
+              href: 'https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2'
+    - name: Útmutatók
+      items:
+        - name: Alkalmazás regisztrálása
+          href: active-directory-v2-app-registration.md
+        - name: Alkalmazásregisztráció-referencia
+          href: active-directory-v2-registration-portal.md
+    - name: Referencia
+      items:
+        - name: Hitelesítési tárak
+          href: active-directory-v2-libraries.md
+        - name: 2.0-s verziójú kódminták forgatókönyv szerint
+          href: active-directory-v2-code-samples.md
+        - name: 2.0-s hitelesítési protokollok
+          href: active-directory-v2-protocols.md
+          items:
+            - name: OpenID Connect
+              href: active-directory-v2-protocols-oidc.md
+            - name: OAuth 2.0 hitelesítési kódmegadás
+              href: active-directory-v2-protocols-oauth-code.md
+            - name: OAuth 2.0 implicit engedélyezés
+              href: active-directory-v2-protocols-implicit.md
+            - name: OAuth 2.0-ügyfél hitelesítő adatainak megadása
+              href: active-directory-v2-protocols-oauth-client-creds.md
+            - name: OAuth 2.0-alapú meghatalmazásos folyamat
+              href: active-directory-v2-protocols-oauth-on-behalf-of.md
+            - name: Tanúsítványok hitelesítő adatai
+              href: active-directory-certificate-credentials.md
+        - name: Tokenek
+          href: active-directory-v2-tokens.md
+        - name: Hatókörök és jóváhagyások
+          href: active-directory-v2-scopes.md
+- name: További források
+  items:
+    - name: Segítség kérése
+      href: active-directory-develop-help-support.md
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'

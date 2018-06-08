@@ -4,20 +4,22 @@
   items:
     - name: Tudnivalók a felügyeltszolgáltatás-identitásról
       href: overview.md
-    - name: Gyors útmutatók
+- name: Gyors útmutatók
+  items:
+    - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
       items:
-        - name: Virtuális gép MSI használata az Azure Resource Manager eléréséhez
-          items:
-            - name: Windows rendszerű virtuális gép
-              href: tutorial-windows-vm-access-arm.md
-            - name: Linux rendszerű virtuális gép
-              href: tutorial-linux-vm-access-arm.md
+        - name: Windows rendszerű virtuális gép
+          href: tutorial-windows-vm-access-arm.md
+        - name: Linux rendszerű virtuális gép
+          href: tutorial-linux-vm-access-arm.md
 - name: Oktatóanyagok
   items:
     - name: Windows VM/VMSS
       items:
         - name: Az Azure Data Lake Store elérése
           href: tutorial-windows-vm-access-datalake.md
+        - name: Az Azure Storage elérése
+          href: tutorial-vm-windows-access-storage.md
         - name: Az Azure Storage elérése hozzáférési kulcs használatával
           href: tutorial-windows-vm-access-storage.md
         - name: Az Azure Storage elérése SAS-sel
@@ -34,6 +36,8 @@
       items:
         - name: Az Azure Data Lake Store elérése
           href: tutorial-linux-vm-access-datalake.md
+        - name: Az Azure Storage elérése
+          href: tutorial-linux-vm-access-storage.md
         - name: Az Azure Storage elérése hozzáférési kulcs használatával
           href: tutorial-linux-vm-access-storage-access-key.md
         - name: Az Azure Storage elérése SAS-sel
@@ -116,3 +120,7 @@
       href: known-issues.md
     - name: A felügyelt identitást támogató Azure-szolgáltatások
       href: services-support-msi.md
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-msi'
+    - name: ADD fejlesztői fórum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences'

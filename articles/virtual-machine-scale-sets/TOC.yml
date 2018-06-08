@@ -5,6 +5,7 @@
     - name: Mik a virtuálisgép-méretezési csoportok?
       href: overview.md
 - name: Gyors útmutatók
+  expanded: true
   items:
     - name: Létrehozás az Azure Portalon
       href: quick-create-portal.md
@@ -64,6 +65,102 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+- name: Alapelvek
+  items:
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+      maintainContext: true
+    - name: Régiók és rendelkezésre állás
+      href: ../virtual-machines/windows/regions-and-availability.md
+      maintainContext: true
+    - name: Virtuálisgép-típusok és -méretek
+      href: ../virtual-machines/windows/sizes.md
+      maintainContext: true
+      items:
+        - name: Általános célú
+          href: ../virtual-machines/windows/sizes-general.md
+          maintainContext: true
+          items:
+            - name: B sorozat – adatlöket-kezelés
+              href: ../virtual-machines/windows/b-series-burstable.md
+              maintainContext: true
+        - name: Számításra optimalizált
+          href: ../virtual-machines/windows/sizes-compute.md
+          maintainContext: true
+        - name: Memóriaoptimalizált
+          href: ../virtual-machines/windows/sizes-memory.md
+          maintainContext: true
+          items:
+            - name: Korlátozott vCPU-k
+              href: ../virtual-machines/windows/constrained-vcpu.md
+              maintainContext: true
+        - name: Tárolásra optimalizált
+          href: ../virtual-machines/windows/sizes-storage.md
+          maintainContext: true
+        - name: GPU-optimalizált
+          href: ../virtual-machines/windows/sizes-gpu.md
+          maintainContext: true
+          items:
+            - name: GPU-illesztők beállítása
+              href: ../virtual-machines/windows/n-series-driver-setup.md
+              maintainContext: true
+        - name: Nagy teljesítményű számítás
+          href: ../virtual-machines/windows/sizes-hpc.md
+          maintainContext: true
+        - name: 'Azure számítási egységek (Azure Compute Units, ACU-k)'
+          href: ../virtual-machines/windows/acu.md
+          maintainContext: true
+        - name: Teljesítményteszt pontszámai
+          href: ../virtual-machines/windows/compute-benchmark-scores.md
+          maintainContext: true
+    - name: Támogatott Linux-disztribúciók
+      href: ../virtual-machines/linux/endorsed-distros.md
+      maintainContext: true
+    - name: Karbantartás és frissítések
+      href: ../virtual-machines/windows/maintenance-and-updates.md
+      maintainContext: true
+    - name: Lemezes tárolás
+      href: ../virtual-machines/windows/about-disks-and-vhds.md
+      maintainContext: true
+      items:
+        - name: Felügyelt lemezek
+          href: ../virtual-machines/windows/managed-disks-overview.md
+          maintainContext: true
+        - name: Prémium szintű Storage
+          href: ../virtual-machines/windows/premium-storage.md
+          maintainContext: true
+        - name: Prémium szintű tárolási teljesítmény
+          href: ../virtual-machines/windows/premium-storage-performance.md
+          maintainContext: true
+        - name: Standard szintű Storage
+          href: ../virtual-machines/windows/standard-storage.md
+          maintainContext: true
+        - name: Lemezek skálázási célértékei
+          href: ../virtual-machines/windows/disk-scalability-targets.md
+          maintainContext: true
+        - name: Lemezek biztonsági mentése és vészhelyreállítása
+          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          maintainContext: true
+    - name: Hálózat
+      href: ../virtual-machines/windows/network-overview.md
+      maintainContext: true
+    - name: Infrastruktúra automatizálása
+      href: ../virtual-machines/windows/infrastructure-automation.md
+      maintainContext: true
+    - name: Biztonság és szabályzatok
+      href: ../virtual-machines/windows/security-policy.md
+      maintainContext: true
+    - name: Figyelés
+      href: ../virtual-machines/windows/monitor.md
+      maintainContext: true
+    - name: Nagy teljesítményű feldolgozás
+      href: ../virtual-machines/windows/high-performance-computing.md
+      maintainContext: true
+    - name: Telepítési szempontok
+      items:
+        - name: vCPU-kvóták
+          href: ../virtual-machines/windows/quotas.md
+          maintainContext: true
 - name: Útmutató
   items:
     - name: Tervezés és kialakítás

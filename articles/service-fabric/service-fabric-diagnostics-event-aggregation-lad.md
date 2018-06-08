@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 681a29776914263c62b9887e4d8dafb715cd14e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a8f58569618482ba94b0895b7e3149d77ef2f4fa
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849847"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Esemény összevonásának és a gyűjtemény Linux Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -51,5 +52,5 @@ Ez konfigurálja a LAD ügynök megadott naplófájlok figyeléséhez. Amikor eg
 
 ## <a name="next-steps"></a>További lépések
 
-1. Milyen eseményeket meg kell vizsgálni a problémák elhárítása során részletes ismertetése: [LTTng dokumentáció](http://lttng.org/docs) és [használatával LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+1. Milyen eseményeket meg kell vizsgálni a problémák elhárítása során részletes ismertetése: [LTTng dokumentáció](http://lttng.org/docs) és [használatával LAD](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/diagnostics-linux).
 2. [A Naplóelemzési ügynök beállítása](service-fabric-diagnostics-event-analysis-oms.md) gyűjtse össze a metrikák érdekében a fürt telepített tárolók figyelése és jelenítheti meg a naplókat 
