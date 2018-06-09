@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/07/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: 7d1ab75146c9899bf2699309cd5dd4ed523096ef
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6017052db3e6c3f0cfc22b18263727e997944483
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638806"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236416"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása az Azure-erőforrások naplóadatait
 
@@ -45,6 +45,9 @@ Az alábbiakban néhány erőforrás diagnosztikai naplók teheti:
 * Elemezheti őket a [Naplóelemzési](../log-analytics/log-analytics-azure-storage.md)
 
 Egy tárfiókhoz vagy az Event Hubs névtér, amely megegyezik a naplók kibocsátó ugyanahhoz az előfizetéshez nincs használható. A beállítás konfiguráló felhasználónak mindkét előfizetéshez megfelelő RBAC hozzáféréssel kell rendelkeznie.
+
+> [!NOTE]
+>  Jelenleg nem archiválhatja adatok tárolási funkciókat biztosító fiókot, amellyel mögött egy védett virtuális hálózatot.
 
 ## <a name="resource-diagnostic-settings"></a>Erőforrás diagnosztikai beállítások
 

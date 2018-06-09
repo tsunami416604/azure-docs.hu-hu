@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ad7b9d16e00319320f638593c9f24ccb75c2bb9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616151"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235277"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Cassandra
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,8 +37,11 @@ Adatok bármely támogatott fogadó adattárolóhoz Cassandra adatbázis másolh
 
 Konkrétan ez Cassandra az összekötő támogatja:
 
-- Cassandra **verziók 2.X**.
+- Cassandra **verziók 2.x és 3.x**.
 - Adatok másolása **alapvető** vagy **névtelen** hitelesítés.
+
+>[!NOTE]
+>A tevékenység fut a Self-hosted integrációs futásidejű Cassandra 3.x IR 3.7-es verziója óta vagy újabb támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,6 +66,9 @@ A következő tulajdonságok Cassandra kapcsolódó szolgáltatás támogatottak
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
 | jelszó |Adja meg a felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen, ha authenticationType beállítása alapszintű. |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhatja Self-hosted integrációs futásidejű vagy Azure integrációs futásidejű (ha az adattároló nyilvánosan elérhető). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+
+>[!NOTE]
+>Kapcsolat SSL használatával Cassandra jelenleg nem támogatott.
 
 **Példa**
 
@@ -172,20 +178,20 @@ Az adatok másolása Cassandra, amikor az Azure Data Factory ideiglenes adattíp
 
 | Cassandra adattípus | Data factory ideiglenes adattípus |
 |:--- |:--- |
-| ASCII |Karakterlánc |
+| ASCII |Sztring |
 | BIGINT |Int64 |
 | A BLOB |Byte] |
 | LOGIKAI ÉRTÉK |Logikai |
 | DECIMÁLIS |Decimális |
 | DUPLA |Dupla |
 | LEBEGŐPONTOS |Önálló |
-| INET |Karakterlánc |
+| INET |Sztring |
 | INT |Int32 |
-| SZÖVEG |Karakterlánc |
+| SZÖVEG |Sztring |
 | IDŐBÉLYEG |DateTime |
 | TIMEUUID |GUID |
 | UUID |GUID |
-| VARCHAR |Karakterlánc |
+| VARCHAR |Sztring |
 | VARINT |Decimális |
 
 > [!NOTE]

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2018
+ms.date: 06/08/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ddfa3d70e2ce901a59476c5c0784d35999731ed6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0730fbd2df6c2a0a8b8d0930c86709c0e3012002
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724360"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248720"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Feltételes hozzáférés az Azure Active Directoryban
 
@@ -32,6 +32,7 @@ A biztonság az elsődleges szempont a szervezetek számára a felhővel. Egyik 
 ![Vezérlés](./media/active-directory-conditional-access-azure-portal/81.png)
 
 Ez a cikk biztosít a feltételes hozzáférés elméleti áttekintése Azure AD-ben.
+
 
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek

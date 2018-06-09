@@ -1,5 +1,5 @@
 ---
-title: A WebJobs SDK használata eseményvezérelt háttérben történő feldolgozás – Azure
+title: Az Azure WebJobs SDK használatával
 description: További tudnivalókért arról, hogyan írhat kódot a WebJobs SDK-ban. Eseményvezérelt háttérben történő feldolgozási feladatok létrehozására, amelyek az Azure-szolgáltatások és harmadik féltől származó szolgáltatással adatok eléréséhez.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 18b47014e6fe3e489f783f675a3498c58981b99f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 08272ba7d828f744336723f25b482bf06b9e43dc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725530"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234650"
 ---
-# <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>Az esemény-vezérelt háttérben történő feldolgozás a WebJobs SDK használatával
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Hogyan használható az Azure WebJobs SDK a eseményvezérelt háttérben történő feldolgozás
 
-Ez a cikk nyújt útmutatást, hogyan írhat kódot [a WebJobs SDK](webjobs-sdk-get-started.md). A dokumentáció foglaltak azokra 2.x és 3.x jelzés hiányában. A fő módosítása 3.x által bevezetett a .NET Core helyett a .NET-keretrendszer használatát.
+Ez a cikk nyújt útmutatást, hogyan írhat kódot [az Azure WebJobs SDK](webjobs-sdk-get-started.md). A dokumentáció foglaltak azokra 2.x és 3.x jelzés hiányában. A fő módosítása 3.x által bevezetett a .NET Core helyett a .NET-keretrendszer használatát.
 
 >[!NOTE]
-> [Az Azure Functions](../azure-functions/functions-overview.md) a WebJobs SDK, és ez a cikk hivatkozásokat tartalmaz néhány témaköre az Azure Functions dokumentációja épül. Megjegyzés: a funkciók és a WebJobs SDK között a következő eltérésekkel:
+> [Az Azure Functions](../azure-functions/functions-overview.md) épül, a WebJobs SDK, és ez a cikk hivatkozásokat tartalmaz néhány témaköre az Azure Functions dokumentációjában olvashatók. Megjegyzés: a funkciók és a WebJobs SDK között a következő eltérésekkel:
 > * Azure WebJobs SDK-verzió 1.x megfelel-e funkciók-verzió 2.x, és a 2.x WebJobs SDK felel meg az Azure Functions 3.x. Forráskódú adattárakban kövesse a WebJobs SDK számozására, és sok v2.x ágak, a főágba jelenleg a 3.x kóddal rendelkező rendelkezik.
 > * Az Azure Functions C# osztálykönyvtárakhoz mintakód hasonlóan a WebJobs SDK-kód kivételével nincs szükség van egy `FunctionName` attribútum sem. a WebJobs SDK projektben.
 > * Néhány kötési típusok csak támogatottak a Funkciók, például HTTP webhook vagy esemény rács (alapuló HTTP). 

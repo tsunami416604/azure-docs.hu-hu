@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 88cc9ff4979c2e6a4a14a7d531054c1a842deaf8
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a614dadae40fcfc28eba85e5943f60a38653224b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849803"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233903"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -147,6 +147,8 @@ git push vsts master
 Miután a telepítés befejeződött, a build folyamatban található `https://<vsts_account>.visualstudio.com/<project_name>/_build` és a telepítési folyamatban `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
 Keresse meg azt az alkalmazásnak, hogy ellenőrizze, hogy a tartalom központi telepítése.
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshooting-kudu-deployment"></a>A Kudu üzembe helyezés hibaelhárítása
 

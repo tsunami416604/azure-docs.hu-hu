@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e6b9bf194da17ebd03389829ba594bf3fbf1e64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 01ac558ec032d2da8026ce48923d839bd05e85c1
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622101"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235464"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni Cassandra adatbázisból
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Fact
 Egy helyszíni Cassandra adattároló adatok bármely támogatott fogadó adattárolóhoz másolhatja. A másolási tevékenység által támogatott mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. Adat-előállító jelenleg mozgási adatok kizárólag egy Cassandra adattárból egyéb adattárakhoz, de nem az adatok áthelyezése az egyéb adattárakhoz Cassandra adattárat. 
 
 ## <a name="supported-versions"></a>Támogatott verziók
-A Cassandra összekötő Cassandra a következő verzióit támogatja: 2.X.
+A Cassandra összekötő Cassandra a következő verzióit támogatja: 2.x és 3.x. A tevékenység fut a Self-hosted integrációs futásidejű Cassandra 3.x IR 3.7-es verziója óta vagy újabb támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A helyszíni Cassandra adatbázishoz csatlakozni az Azure Data Factory szolgáltatás telepítenie kell az adatkezelési átjáró ugyanazon a számítógépen, amelyen az adatbázis vagy egy külön számítógépen elkerülésére használják a források az adatbázissal. Az adatkezelési átjáró összetevő, amely a helyszíni adatforrások felhőszolgáltatások felügyelt és biztonságos módon. Lásd: [az adatkezelési átjáró](data-factory-data-management-gateway.md) szóló cikkben olvashat az adatkezelési átjáró. Lásd: [tárolt adatok mozgatása felhőbe helyszíni](data-factory-move-data-between-onprem-and-cloud.md) cikk lépésenkénti adatok folyamat az átjáró beállítása áthelyezni az adatokat.
@@ -75,6 +75,9 @@ A következő táblázat a JSON-elemek szerepelnek Cassandra kapcsolódó szolg�
 | jelszó |Adja meg a felhasználói fiók jelszavát. |Igen, ha authenticationType beállítása alapszintű. |
 | gatewayName |A helyszíni Cassandra adatbázishoz való csatlakozáshoz használt átjáró neve. |Igen |
 | encryptedCredential |Az átjáró által titkosított hitelesítő. |Nem |
+
+>[!NOTE]
+>Kapcsolat SSL használatával Cassandra jelenleg nem támogatott.
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
@@ -260,20 +263,20 @@ Lásd: [RelationalSource típustulajdonságokat](#copy-activity-properties) a Re
 ### <a name="type-mapping-for-cassandra"></a>Típus identitástagok esetén Cassandra
 | Cassandra típusa | .NET-alapú típusa |
 | --- | --- |
-| ASCII |Karakterlánc |
+| ASCII |Sztring |
 | BIGINT |Int64 |
 | A BLOB |Byte] |
 | LOGIKAI ÉRTÉK |Logikai |
 | DECIMÁLIS |Decimális |
 | DUPLA |Dupla |
 | LEBEGŐPONTOS |Önálló |
-| INET |Karakterlánc |
+| INET |Sztring |
 | INT |Int32 |
-| SZÖVEG |Karakterlánc |
+| SZÖVEG |Sztring |
 | IDŐBÉLYEG |DateTime |
 | TIMEUUID |GUID |
 | UUID |GUID |
-| VARCHAR |Karakterlánc |
+| VARCHAR |Sztring |
 | VARINT |Decimális |
 
 > [!NOTE]

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d0cfce1dfe6482397e421d85d59494e6d75cc441
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 198ecdbf81c2b8efeec23da2c5d5d087128b20e9
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591157"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233563"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL meghatalmazott rendszergazdai engedélyek használatával az Azure AD Connect telepítése
 Az Azure AD Connect legújabb buildjével, mielőtt felügyeleti delegálás, a szükséges SQL-konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése az SQL server kiszolgáló rendszergazdai engedélyekre van szükség.
@@ -48,7 +48,7 @@ A sávon kívüli adatbázis létesítéséhez, és az Azure AD Connect telepít
 2.  Adja meg az Azure AD Connect rendszergazda és a tartományi szolgáltatásfiókot az alábbi engedélyeket:
     - SQL-bejelentkezés 
     - **adatbázis-owner(dbo)** jogok.  </br>
-![Engedélyek](media/active-directory-aadconnect-sql-delegation/sql3.png)
+![Engedélyek](media/active-directory-aadconnect-sql-delegation/sql3a.png)
 3.  E-mail küldése az Azure AD Connect rendszergazda jelző kell használni, amikor az Azure AD Connect telepítése az SQL server és a példány neve.
 
 ## <a name="additional-information"></a>További információ

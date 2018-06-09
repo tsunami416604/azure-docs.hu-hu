@@ -1,35 +1,35 @@
 ---
 title: Az Azure SQL-adatbázis szolgáltatások összehasonlítása |} Microsoft Docs
-description: Ez a cikk az Azure SQL Database és a felügyelt példányok funkcióit egymással, és az SQL Server hasonlítja össze.
+description: Ez a cikk összehasonlítja a szolgáltatásokat az SQL Server által biztosított az Azure SQL Database különböző változataira jellemző.
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: eaaadd48c92ef79964f712dae9bffb24dac271cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646721"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248809"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
-Az Azure SQL-adatbázis egy közös kódbázis osztja meg az SQL Server. Az Azure SQL Database által támogatott SQL Server funkcióit az Ön által létrehozott Azure SQL adatbázis típusától függ. Az Azure SQL Database, vagy létrehozhat egy adatbázist részeként egy [felügyelt példány](sql-database-managed-instance.md) (jelenleg a nyilvános előzetes verzió), vagy létrehozhat egy adatbázist, amely egy adatbázist vagy egy adatbázist, amely egy rugalmas készlet része. 
+Az Azure SQL-adatbázis egy közös kódbázis osztja meg az SQL Server. Az Azure SQL Database által támogatott SQL Server funkcióit az Ön által létrehozott Azure SQL adatbázis típusától függ. Az Azure SQL Database, vagy létrehozhat egy adatbázist részeként egy [felügyelt példány](sql-database-managed-instance.md) (jelenleg a nyilvános előzetes verzió), vagy létrehozhat egy adatbázist, amely része a logikai kiszolgáló, és opcionálisan elhelyezett rugalmas készlethez. 
 
 A Microsoft továbbra is hozzáadhat szolgáltatásokat az Azure SQL Database. Látogasson el az Azure a szolgáltatásfrissítések weblap a legújabb frissítések, ezek a szűrők használatával:
 
 * Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
 * Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
 
-## <a name="sql-server-and-sql-database-feature-support"></a>SQL Server és SQL-adatbázis által nyújtott szolgáltatások támogatásáról
+## <a name="sql-server-feature-support-in-azure-sql-database"></a>SQL Server által nyújtott szolgáltatások támogatásáról az Azure SQL-adatbázis
 
 A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és információt nyújt a szolgáltatás részlegesen vagy teljesen támogatja-e, és a szolgáltatásra vonatkozó további információkra mutató hivatkozás. 
 
-| **SQL-szolgáltatás** | **Az Azure SQL-adatbázis támogatott** | **Felügyelt példány (előzetes verzió)** |
+| **SQL-szolgáltatás** | **Támogatja az Azure SQL Database logikai kiszolgáló** | **Támogatott az Azure SQL adatbázis/felügyelt példány (előzetes verzió)** |
 | --- | --- | --- |
 | [Mindig titkosítja.](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd: [tanúsítványtároló](sql-database-always-encrypted.md) és [kulcstároló](sql-database-always-encrypted-azure-key-vault.md) | Igen – lásd: [tanúsítványtároló](sql-database-always-encrypted.md) és [kulcstároló](sql-database-always-encrypted-azure-key-vault.md) |
 | [AlwaysOn rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) |
@@ -40,7 +40,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Automatikus hangolása (kényszerített)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| [Igen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatikus hangolása (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| Nem |
 | [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL adatbázis exportálása](sql-database-export.md) | Igen |
-| [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL adatbázis importálása](sql-database-import.md) | Igen |
+| [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL adatbázis importálása](sql-database-import.md) | Nem |
 | [Biztonsági MENTÉSI parancs](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nem, csak rendszer által kezdeményezett automatikus biztonsági mentés - látható [automatikus biztonsági mentés](sql-database-automated-backups.md) | Rendszer által kezdeményezett automatikus biztonsági mentés és a felhasználó által kezdeményezett csak másolatot biztonsági mentések – lásd [különbségek biztonsági mentése](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Beépített funkciók](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes funkciók | Igen – lásd: [a tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Adatrögzítés módosítása](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nem | Igen |
@@ -137,7 +137,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 |Fenyegetések észlelése|  [Igen](sql-database-threat-detection.md)|[Igen](sql-database-managed-instance-threat-detection.md)|
 | [Követésjelzői](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Nem |
 | [Változók](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Igen | Igen |
-| [Az átlátható adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen | Nem, nem a nyilvános előzetes kiadásában |
+| [Az átlátható adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen | Részleges, csak a szolgáltatás által kezelt titkosítás |
 [Virtuális hálózat](../virtual-network/virtual-networks-overview.md) | Részleges - lásd [VNETET végpontjai](sql-database-vnet-service-endpoint-rule-overview.md) | Igen, csak a Resource Manager modellt |
 | [Windows Server feladatátvételi fürtszolgáltatás](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) |
 | [XML-index](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Igen | Igen |

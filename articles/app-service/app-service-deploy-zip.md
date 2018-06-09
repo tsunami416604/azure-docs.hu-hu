@@ -1,11 +1,11 @@
 ---
-title: "Telepítse az alkalmazást az Azure App Service egy ZIP- vagy háborús fájllal |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítse az alkalmazást az Azure App Service egy ZIP-fájlt (vagy a Java-fejlesztők számára a WAR-fájl)."
+title: Telepítse az alkalmazást az Azure App Service egy ZIP- vagy háborús fájllal |} Microsoft Docs
+description: Megtudhatja, hogyan telepítse az alkalmazást az Azure App Service egy ZIP-fájlt (vagy a Java-fejlesztők számára a WAR-fájl).
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: 6ecbf111bad96bce310109ac1a3e8f3bb846be6c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3178d5cb09087a243a51e20567895d03ce1f7fb
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234134"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Telepítse az alkalmazást az Azure App Service egy ZIP- vagy háborús fájllal
 
@@ -82,7 +83,7 @@ Ez a parancs üzembe helyezi a ZIP-fájlban szereplő fájlokat és könyvtárak
 
 ## <a name="deploy-war-file"></a>WAR-fájl központi telepítése
 
-Az App Service a WAR-fájl telepítéséhez https://<app_name>.scm.azurewebsites.net/api/wardeploy egy POST kérést küld. A POST-kérelmet tartalmaznia kell a .war fájlt, az üzenet törzsében. Az üzembe helyezési hitelesítő adatok beállítása az alkalmazáshoz szerepelnek a kérelem HTTP BASIC hitelesítés használatával. 
+Az App Service a WAR-fájl telepítéséhez https://<app_name>.scm.azurewebsites.net/api/wardeploy egy POST kérést küld. A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva. 
 
 A HTTP BASIC hitelesítés van szüksége az App Service üzembe helyezési hitelesítő adatokat. Az üzembe helyezési hitelesítő adatok beállításával kapcsolatos információk: [beállítása és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása](app-service-deployment-credentials.md#userscope).
 
@@ -106,6 +107,8 @@ $apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
 ```
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="next-steps"></a>További lépések
 

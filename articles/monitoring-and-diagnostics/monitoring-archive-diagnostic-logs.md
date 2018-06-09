@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/07/2018
 ms.author: johnkem
-ms.openlocfilehash: 32360a1af25b92fe232e3e504cb6587dcb364f48
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9bd197ff03ec0c1f9a320a721f69f2efc6a73b4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638765"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235974"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók archiválása
 
@@ -28,6 +28,9 @@ Ebben a cikkben megmutatjuk használatát az Azure-portálon, a PowerShell-paran
 ## <a name="prerequisites"></a>Előfeltételek
 
 Kezdés előtt kell [hozzon létre egy tárfiókot](../storage/storage-create-storage-account.md) , amelyhez úgy archiválhatók a diagnosztikai naplókat. Erősen ajánlott, hogy nem használja a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok, amelyeket más, nem figyelési adatokat tartalmazó meglévő tárfiókot. Azonban ha is archiválása a tevékenységnapló és diagnosztikai metrikák egy tárfiókba, logikus összes figyelési adatot elhelyez egy központi helyen, valamint a diagnosztikai naplók tárolási fiók használatával. A storage-fiók használata egy általános célú tárfiókkal, nem a blob storage-fiók kell lennie.
+
+> [!NOTE]
+>  Jelenleg nem archiválhatja adatok tárolási funkciókat biztosító fiókot, amellyel mögött egy védett virtuális hálózatot.
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 

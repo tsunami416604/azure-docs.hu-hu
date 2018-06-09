@@ -10,13 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/14/2018
-ms.author: billmath
-ms.openlocfilehash: 784a461421420af403a43f944d6f63aef3ccc152
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234073"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Hozzon létre egy áttekintése csoporttagok vagy alkalmazás-hozzáférés az Azure ad-vel
 
@@ -34,9 +36,9 @@ Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem
 
 5. Állítsa be a kezdő dátum. Alapértelmezés szerint egy áttekintése többször fordul, létrejön egy időben elindul, és ezzel véget ér, egy hónap. Módosíthatja a kezdő és záró dátumát, az elérhető legyen, ellenőrizze start legutóbbi és a jövőben azonban hány napig szeretné.
 
-6. A hozzáférés felülvizsgálati ismétlődő, gyakoriságának módosítása egy alkalommal a heti, havi, negyedéves vagy évente, és használja, a csúszka vagy szöveges mezőben adja meg, hány napig minden át kell tekinteni az ismétlődő adatsorozat fog runbe nyissa meg a bemeneti a véleményezők. Például Tnem maximális időtartama a beállíthatja a havi áttekintése 27 nap, hogy kerülje az átfedésben lévő értékelést. 
+6. A hozzáférés felülvizsgálati ismétlődő, gyakoriságának módosítása egy alkalommal a heti, havi, negyedéves vagy évente, és használja, a csúszka vagy szöveges mezőben adja meg, hány napig minden át kell tekinteni a sorozat ismétlődő adatokat a véleményezők lesz. Például a maximális időtartamot tartozó állíthatja be a havi áttekintése: 27 nap értékelést átfedés elkerülése érdekében. 
 
-7.  Az ismétlődő hozzáférés felülvizsgálati adatsorozat 3 módon fejezheti: értékelést határozatlan ideig elindításához folyamatosan fut, vagy egy adott dátumig vagy eseményeket meghatározott számú után befejeződött. Ön vagy egy másik globális rendszergazda leállításához az adatsorozat létrehozása után a dátum a beállítások módosítása, hogy az adott dátumon végződik.
+7.  Az ismétlődő hozzáférés felülvizsgálati adatsorozat 3 módon fejezheti: folyamatosan elindításához értékelést határozatlan ideig, amíg egy adott dátumot, vagy egy megadott előfordulások száma befejezése után futtatja. Ön vagy egy másik globális rendszergazda leállításához az adatsorozat létrehozása után a dátum a beállítások módosítása, hogy az adott dátumon végződik.
 
 8. Hozzáférés értékelést lehet egy csoport tagjai számára, vagy a felhasználók számára egy alkalmazás lettek társítva. További hatókörét megadhatja a hozzáférés csak tekintse át a tekintse át a Vendég számára tagok (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy minden olyan felhasználó, akik tagjai áttekintése vagy rendelkező felhasználók hozzáférni az alkalmazáshoz.
 
@@ -46,11 +48,11 @@ Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem
 
 ### <a name="configuring-an-access-review-with-auto-apply"></a>Egy áttekintése auto-apply konfigurálása
 
-1.  Bontsa ki a menü, végrehajtási beállítások esetén andsettings és automatikus engedélyezése alkalmazni eredmények erőforrás. 
+1.  Bontsa ki a menü, befejezett beállításokat, majd engedélyezze automatikus alkalmazni eredmények erőforrás. 
 
-2.  Azokban az esetekben, ahol felhasználók nem elvégezték a véleményező a felülvizsgálati időtartamon belül, akkor a áttekintése végrehajtása a elutasítása/jóváhagyása a felhasználó is folyamatos hozzáférést, a rendszer ajánlást (Ha engedélyezve van), vagy hagyja változatlanul hozzáférését, vagy távolítsa el a a hozzáférés. Ez hatással lesz a nem lett tekintse át a többi felhasználó által manuálisan – felhasználók esetén a végső felülvizsgáló döntési megtagadás, a felhasználó hozzáférése törlődni fog.
+2.  Azokban az esetekben, ahol felhasználók nem elvégezték a véleményező a felülvizsgálati időtartamon belül, akkor a áttekintése (Ha engedélyezve van), csatlakoztassa le a rendszer a javaslat a elutasítása/jóváhagyása is folyamatos hozzáférést biztosíthasson a felhasználó, a hozzáférésüket változatlanul hagyja, vagy távolítsa el a a hozzáférés. Ez hatással lesz a nem lett tekintse át a többi felhasználó által manuálisan – felhasználók esetén a végső felülvizsgáló döntési megtagadás, a felhasználó hozzáférése törlődni fog.
 
-3.  Ahhoz, hogy az a lehetőség ajánlásokat kell felülvizsgálók nem válaszol, megjelenítése a javaslatok a Speciális beállításoknál engedélyezni kell.
+3.  Ahhoz, hogy az a lehetőség ajánlásokat kell felülvizsgálók nem válaszol, bontsa ki a speciális beállításokat, és engedélyezze a javaslatok megjelenítése.
  
 4.  Végezetül kattintson **Start**.
 
@@ -74,5 +76,3 @@ Egy áttekintése indításakor az Azure AD nekik hozzáférést kérő e-mailt 
 Ha ez egy egyszeri tekintse át, majd miután a hozzáférés felülvizsgálati időszak keresztül, vagy a rendszergazda leállítja a áttekintése, kövesse a lépéseket a [végrehajtani egy áttekintése](active-directory-azure-ad-controls-complete-access-review.md) megtekintéséhez és alkalmazásához az eredményeket.  
 
 Ha ez tekintse át azokat, majd lépjen **tekintse át az előzmények** hozzáférés felülvizsgálati adatsorozat lapján jelölje be a befejezett áttekintése.  Közelgő felülvizsgálat alatt helyezkednek el **felülvizsgálati ütemezett**, ahol meg az időtartam, szerkesztése és hozzáadhat és eltávolíthat egyéni felülvizsgálati felülvizsgálók.
-
-

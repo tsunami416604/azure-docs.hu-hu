@@ -1,31 +1,36 @@
 ---
-title: "Hozzon létre és P2S RADIUS kapcsolatok VPN ügyfél konfigurációs fájljainak telepítése: PowerShell: Azure |} Microsoft Docs"
-description: "Windows, Mac OS X és Linux VPN-ügyfél konfigurációs fájlok RADIUS-hitelesítést használó kapcsolatok létrehozása."
+title: 'Hozzon létre és P2S RADIUS kapcsolatok VPN ügyfél konfigurációs fájljainak telepítése: PowerShell: Azure |} Microsoft Docs'
+description: Windows, Mac OS X és Linux VPN-ügyfél konfigurációs fájlok RADIUS-hitelesítést használó kapcsolatok létrehozása.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1d57537428f5ac1085b6cbae93be6f77c71b12e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 19b1090a37ae1f97537fcabe128e7958fc26a96a
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235889"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájlok P2S RADIUS-hitelesítés
 
 Pont-pont (P2S) keresztül kapcsolódik a virtuális hálózat, szüksége konfigurálásához az ügyféleszközön a csatlakozó lesz. A Windows, Mac OS X és Linux rendszerű ügyféleszközök P2S VPN-kapcsolatokat hozhat létre. 
 
 Ha a RADIUS-hitelesítést használ, több hitelesítési lehetőség áll rendelkezésre: felhasználónév/jelszó-hitelesítés, tanúsítvány hitelesítése és más hitelesítési típusok. A VPN-ügyfél konfigurációja nem azonos az egyes hitelesítési. A VPN-ügyfél konfigurálásához használja a szükséges beállításokat tartalmazó ügyfél-konfigurációs fájlok. Ez a cikk segítséget nyújt a létrehozása és telepítése a RADIUS hitelesítési típushoz, amely a használni kívánt VPN-konfiguráció.
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 A konfigurációs munkafolyamat P2S RADIUS-hitelesítés a következőképpen történik:
 
@@ -153,6 +158,10 @@ Az alábbi utasításokat a Ubuntu 17.0.4 5.5.1 strongSwan keresztül lettek lé
  
 VPN-ügyfél konfigurációs fájlokat a RADIUS-alapú hitelesítéséhez EAP-TLS protokollt használó hozhat létre. Általában egy vállalati által kiállított tanúsítvány VPN-felhasználó hitelesítéséhez használatos. Győződjön meg arról, hogy az összes csatlakozó felhasználók rendelkeznek-e az eszközökön telepített tanúsítvány, és, hogy a RADIUS-kiszolgáló képes-e a tanúsítvány érvényesítéséhez.
 
+>[!NOTE]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
+
 A parancsokban `-AuthenticationMethod` van `EapTls`. Tanúsítvány a hitelesítés során az ügyfél ellenőrzi a RADIUS-kiszolgáló a tanúsítvány érvényesítésével. `-RadiusRootCert` a .cer fájlt, amely tartalmazza a legfelső szintű tanúsítvány, amely ellenőrzi a RADIUS-kiszolgáló van.
 
 Minden egyes VPN-ügyfél eszköz egy telepített ügyfél-tanúsítványt igényel. A Windows-eszközön kapott több ügyféltanúsítványt. A hitelesítés során ez egy felugró párbeszédpanel a tanúsítványokat felsoroló eredményezhet. A felhasználó, majd ki kell választania a használni kívánt tanúsítványt. A megfelelő tanúsítványt a főtanúsítvány, amelyek az ügyfél-tanúsítványt kell hozzákapcsolva megadásával is kiszűri. 
@@ -210,7 +219,7 @@ Az alábbi lépések segítségével a natív VPN-ügyfél konfigurálása a tan
 
    ![RadiusServerRoot tanúsítványának felvétele](./media/point-to-site-vpn-client-configuration-radius/radiusrootcert.png)
 2. Minden ügyfél ügyféltanúsítványt igényel a hitelesítéshez. Telepíti az ügyféltanúsítványt az ügyféleszközön.
-3. Nyissa meg a **hálózati** párbeszédpanel **hálózati beállítások**. Válassza ki  **+**  egy új VPN-ügyfél kapcsolati profil a P2S kapcsolat az Azure virtuális hálózat létrehozásához.
+3. Nyissa meg a **hálózati** párbeszédpanel **hálózati beállítások**. Válassza ki **+** egy új VPN-ügyfél kapcsolati profil a P2S kapcsolat az Azure virtuális hálózat létrehozásához.
 
    A **felület** értéke **VPN**, és a **VPN-típus** értéke **IKEv2**. Adja meg a profil nevét a **szolgáltatásnév** mezőbe, majd válassza ki **létrehozása** a VPN-ügyfél-csatlakozási profil létrehozásához.
 

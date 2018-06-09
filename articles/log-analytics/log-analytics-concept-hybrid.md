@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235940"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Adatgyűjtés a Naplóelemzési a környezetében lévő számítógépek
 
@@ -40,12 +41,9 @@ Az ügynök a Linux és a Windows 443-as TCP-porton keresztül kommunikál a Log
 
 Ha a System Center 2016 - Operations Manager, illetve az Operations Manager 2012 R2-ben futtató számítógép többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással lehet [Operations Manager ](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Naplóelemzési által figyelt Linux rendszerű számítógépek nem kapják konfigurálás adatforrások és a felügyeleti csoporton keresztül továbbítandó összegyűjtött adatokat. A Windows-ügynök is tud jelentéseket legfeljebb négy munkaterületek, míg a Linux-ügynök csak támogatja egyetlen munkaterület jelentéskészítés.  
 
-Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, Azure Automation állomás a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése is támogatja.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md).
+Az ügynök a Linux és a Windows nem csak a Log Analyticshez való kapcsolódás, Azure Automation állomás a hibrid forgatókönyv-feldolgozói szerepkör és felügyeleti megoldások, például a változások követése és a frissítések kezelése is támogatja.  A hibrid forgatókönyv-feldolgozói szerepkör kapcsolatos további információkért lásd: [Azure Automation hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md).  
 
-## <a name="prerequisites"></a>Előfeltételek
-Megkezdése előtt tekintse át a következő adatok ellenőrzése a minimális követelményeknek.
-
-### <a name="windows-operating-system"></a>A Windows operációs rendszer
+## <a name="supported-windows-operating-systems"></a>Támogatott Windows operációs rendszerek
 A Windows operációs rendszer következő verzióiban hivatalosan támogatja a Windows-ügynök:
 
 * Windows Server 2008 Service Pack 1 (SP1) vagy újabb verzió
@@ -54,17 +52,7 @@ A Windows operációs rendszer következő verzióiban hivatalosan támogatja a 
 > [!NOTE]
 > Az ügynök a Windows csak a Transport Layer Security (TLS) 1.0 és 1.1 támogatja.  
 
-#### <a name="network-configuration"></a>Hálózati konfiguráció
-Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Windows-ügynök Naplóelemzési folytatott kommunikációhoz szükséges információt. Akkor kimenő forgalomról beszélünk a hálózatról a Log Analytics szolgáltatásba. 
-
-| Ügynök erőforrása | Portok | HTTPS-ellenőrzés kihagyása|
-|----------------|-------|------------------------|
-|*.ods.opinsights.azure.com |443 | Igen |
-|*.oms.opinsights.azure.com | 443 | Igen | 
-|*.blob.core.windows.net | 443 | Igen | 
-|*.azure-automation.net | 443 | Igen | 
-
-### <a name="linux-operating-systems"></a>A Linux operációs rendszert
+## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
 A következő Linux terjesztésekről hivatalosan támogatottak.  A Linux-ügynök azonban más listán nem szereplő terjesztéseket is működni.  Hacsak máshogy nincs jelezve, minden kisebb kiadásokban minden felsorolt főverzió támogatottak.  
 
 * Amazon Linux 2012.09 való 2015.09 (x86/x64)
@@ -75,19 +63,22 @@ A következő Linux terjesztésekről hivatalosan támogatottak.  A Linux-ügyn�
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 és 12 (x86/x64)
 
-#### <a name="network-configuration"></a>Hálózati konfiguráció
-Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Linux-ügynök Naplóelemzési folytatott kommunikációhoz szükséges információt.  
+## <a name="network-firewall-requirements"></a>Hálózati tűzfal követelmények
+Az alábbi lista a proxy és tűzfal konfigurációs adatokat, a Linux és Windows ügynök kommunikáljon a Naplóelemzési szükséges információt.  
 
-|Ügynök erőforrása| Portok | Irány |  
-|------|---------|--------|  
-|*.ods.opinsights.azure.com | 443-as port | Bejövő és kimenő|  
-|*.oms.opinsights.azure.com | 443-as port | Bejövő és kimenő|  
-|*.blob.core.windows.net | 443-as port | Bejövő és kimenő|  
-|*.azure-automation.net | 443-as port | Bejövő és kimenő|  
+|Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
+|------|---------|--------|--------|   
+|*.ods.opinsights.azure.com |443-as port |Bejövő és kimenő|Igen |  
+|*.oms.opinsights.azure.com |443-as port |Bejövő és kimenő|Igen |  
+|*.blob.core.windows.net |443-as port |Bejövő és kimenő|Igen |  
+|*.azure-automation.net |443-as port |Bejövő és kimenő|Igen |  
 
-A Linux-ügynök támogatja a proxykiszolgáló vagy a HTTPS protokollon keresztül Naplóelemzés szolgáltatás OMS-átjáró keresztül kommunikál.  A névtelen és alapszintű hitelesítés (felhasználónév/jelszó) támogatottak.  A proxy kiszolgáló telepítése során vagy a telepítés után a proxy.conf konfigurációs fájl módosításával adható meg.  
 
-A proxy konfigurációs érték szintaxisa a következő:
+Ha azt tervezi, az Azure Automation hibrid forgatókönyv-feldolgozók segítségével csatlakozhat, és regisztrálja az Automation szolgáltatás runbookok használata a környezetben, azt hozzá kell férnie a port számát és az URL-címeket a [a hálózat beállítása a Hibrid forgatókönyv-feldolgozó](../automation/automation-hybrid-runbook-worker.md#network-planning). 
+
+A Windows és Linux-ügynök támogatja a proxykiszolgáló vagy a HTTPS protokollon keresztül Naplóelemzés szolgáltatás OMS-átjáró keresztül kommunikál.  A névtelen és alapszintű hitelesítés (felhasználónév/jelszó) támogatottak.  A proxykonfigurációt a Windows-ügynök közvetlenül kapcsolódik a szolgáltatáshoz, a telepítés során megadott vagy [a telepítés utáni](log-analytics-agent-manage.md#update-proxy-settings) a Vezérlőpultot vagy a PowerShell használatával.  
+
+A proxykiszolgáló a Linux-ügynök, a telepítés során megadott vagy [telepítése után](/log-analytics-agent-manage.md#update-proxy-settings) az proxy.conf konfigurációs fájlban.  A Linux-ügynök proxy konfigurációs érték szintaxisa a következő:
 
 `[protocol://][user:password@]proxyhost[:port]`
 

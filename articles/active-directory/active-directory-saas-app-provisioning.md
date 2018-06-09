@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2017
+ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6189038a338a9151b23dbdad11d86e43709a96a0
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247944"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
 Azure Active Directory (Azure AD) lehetővé teszi, hogy automatizálja a létrehozását, a karbantartási és a felhő a felhasználói identitások eltávolítása ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) például a Dropbox, Salesforce, a ServiceNow és más alkalmazások.
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
 **Az alábbiakban néhány példa arra, Mi ez a funkció lehetővé teszi:**
 
@@ -44,7 +47,7 @@ Néhány gyakori összefüggések Ez a funkció használatához a következők:
 * A költségek, a hatékonyság hiánya és a manuális üzembe helyezési folyamatok társított emberi tévedések elkerülése.
 * Üzemeltetési és üzembe helyezési megoldások egyéni által fejlesztett és parancsfájlok fenntartása társított költségek elkerülése
 * A szervezet biztonságos azonnal feloldhatja a felhasználói identitások kulcs Szolgáltatottszoftver-alkalmazásoknál, ha elhagyják a szervezet.
-* Könnyen rendszerbe való importálás nagyszámú felhasználó egy adott SaaS-alkalmazáshoz vagy a rendszer.
+* Könnyen rendszerbe való importálás érdekében számos felhasználók egy adott SaaS-alkalmazáshoz vagy a rendszer.
 * Lehetővé teszik, hogy házirendek annak eldöntéséhez, akik ki van építve, és akik való bejelentkezés egy alkalmazás egyetlen csoportja.
 
 
@@ -77,6 +80,8 @@ Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kér
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hogyan állíthatom be az alkalmazás automatikus kiépítés?
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 Az Azure AD szolgáltatás kiépítését, az indítja el a kiválasztott alkalmazás konfigurációja a  **[Azure-portálon](https://portal.azure.com)**. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban jelölje be **Hozzáadás**, majd **összes**, majd adja hozzá a forgatókönyvtől függően az alábbiak valamelyikét:
 
@@ -170,31 +175,50 @@ A karanténba helyezett, növekményes szinkronizálás gyakoriságának naponta
 A létesítési feladat összes meghatároznak a hibát okozó hibák után törlődnek a karanténba helyezett, és a következő szinkronizálási ciklusban elindul. Ha a kiosztási feladatának karantén négy hétnél tovább marad, a létesítési feladat le van tiltva.
 
 
+## <a name="how-long-will-it-take-to-provision-users"></a>Mennyi ideig tart a konfigurálta a felhasználókat?
+
+Teljesítmény attól függ, hogy a kiosztási feladatának működik-e egy kezdeti szinkronizálást vagy egy növekményes szinkronizálás az előző szakaszban leírtak szerint.
+
+A **kezdeti szinkronizálás**, a feladat idő számos tényezőtől, beleértve a felhasználók és csoportok hatókörében kialakítási száma és a felhasználók és csoportok a forrásrendszerben száma függ. A kezdeti szinkronizálás teljesítményét befolyásoló tényezők átfogó listáját ebben a szakaszban később foglalja össze.
+
+A **növekményes szinkronizálás**, a feladat idő függ, hogy szinkronizálási ciklust észlelt módosítások számát. Ha kevesebb mint 5000 felhasználó vagy a csoporttagsági változások, a feladat befejezéséhez belül egy növekményes szinkronizálási ciklust. 
+
+A következő táblázat összefoglalja a szinkronizálás időpontjait létesítési szabhatják. Ezekben az esetekben a forrásrendszerben az Azure AD és a célrendszeren egy SaaS-alkalmazáshoz. A szinkronizálási idő a ServiceNow, a munkahelyi, a Salesforce és a Google Apps SaaS-alkalmazásokhoz tartozó szinkronizálási feladatokat statisztikai elemzésének származik.
+
+
+| Hatókör konfigurációjának | Felhasználók, csoportok és tagok hatókörében | Kezdeti szinkronizálás ideje | Növekményes szinkronizálás ideje |
+| -------- | -------- | -------- | -------- |
+| Felhasználók és csoportok csak szinkronizálás |  < 1000 |  < 30 perc | < 30 perc |
+| Felhasználók és csoportok csak szinkronizálás |  1000–10 000 | 142 - 708 perc | < 30 perc |
+| Felhasználók és csoportok csak szinkronizálás |   10 000 - 100 000 | 1,170 - 2,340 perc | < 30 perc |
+| Összes felhasználók és csoportok szinkronizálása az Azure ad-ben |  < 1000 | < 30 perc  | < 30 perc |
+| Összes felhasználók és csoportok szinkronizálása az Azure ad-ben |  1000–10 000 | < 30-120 perc | < 30 perc |
+| Összes felhasználók és csoportok szinkronizálása az Azure ad-ben |  10 000 - 100 000  | 713 - 1,425 perc | < 30 perc |
+| Összes felhasználók szinkronizálása az Azure ad-ben|  < 1000  | < 30 perc | < 30 perc |
+| Összes felhasználók szinkronizálása az Azure ad-ben | 1000–10 000  | 43 - 86 perc | < 30 perc |
+
+
+A konfiguráció **szinkronizálási hozzárendelt felhasználók és csoportok csak**, a következő képlet segítségével meghatározhatja a hozzávetőleges minimális és maximális várt **kezdeti szinkronizálás** alkalommal:
+
+    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
+    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
+    
+Befejezéséhez szükséges idő befolyásoló tényezők összefoglalását egy **kezdeti szinkronizálás**:
+
+* A felhasználók és csoportok hatókörében kialakítási teljes száma
+
+* A felhasználók, csoportok és a forrás rendszerben (az Azure AD) csoport tagjai teljes száma
+
+* Kialakítási hatókör felhasználói-e a meglévő felhasználók számára a célalkalmazás teljesül, vagy kell létrehozni, először. Szinkronizálási feladatokat, amelynek minden felhasználó jönnek létre az első alkalommal eltarthat körülbelül *kétszer mindaddig, amíg* , feladatok, amelynek minden felhasználó egyeztetését meglévő felhasználók szinkronizálása.
+
+* A hibák száma a [naplók](active-directory-saas-provisioning-reporting.md). Teljesítmény akkor lassabb, ha sok hiba van, és a létesítési szolgáltatás távozott karantén állapotba helyezése   
+
+* A kérelem sebességhatárok és sávszélesség-szabályozás valósítják meg a célrendszeren. Néhány célrendszereket valósítja meg a kérelem sebességhatárok és a szabályozás, amely befolyásolhatja a teljesítményt nagy szinkronizálási műveletek során. Ilyen körülmények egy alkalmazást, amely megkapja a túl sok kérelem túl gyors lehet, hogy a válasz sebességét lassú vagy zárja le a kapcsolatot. A teljesítmény javítása érdekében az összekötő úgy, hogy nem küldött gyorsabb, mint az alkalmazás segítségével dolgozza fel őket a az alkalmazás kérésekkel kell. Microsoft beépített létesítési összekötők ellenőrizze ezt a módosítást. 
+
+* A szám és a csoportjaikon belül méretét. Szinkronizálása a csoportok hozzárendelve felhasználók szinkronizálása hosszabb időbe telik. Mind a szám és a hozzárendelt csoportok hatással a teljesítményre. Ha egy alkalmazás [csoport objektum szinkronizálási szolgáltatás engedélyezve hozzárendelések](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), a csoport tulajdonságai, például a csoportneveket és a csoporttagságokat szinkronizált felhasználók mellett. A további szinkronizálások mint csak felhasználói objektumok hosszabb ideig tart.
+ 
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-**Mennyi ideig tart a felhasználók létrehozásához?**
-
-Teljesítmény attól függően, hogy a kiosztási feladatának működik-e egy kezdeti szinkronizálást, vagy egy növekményes szinkronizálás eltérőek lesznek.
-
-A kezdeti szinkronizálás végrehajtásához szükséges idő közvetlenül függ hány felhasználók, csoportok és csoporttagok szerepelnek a forrásrendszerben lesz. Nagyon kicsi forrásrendszerek objektumok száz percek a kezdeti szinkronizálás hajthatja végre. Több ezer vagy kombinált objektumok millióit száz forrásrendszerek azonban hosszabb ideig tart.
-
-Növekményes szinkronizálás szükséges idő az adott szinkronizálási ciklust észlelt megváltozása függ. Ha kevesebb mint 5000 felhasználó vagy csoport tagsági változása észlelhető, ezek is gyakran szinkronizálva egy 40 perces cikluson belül. 
-
-Vegye figyelembe, hogy mind a forrás-és a függő, hogy általános teljesítményét. Néhány célrendszereket valósítja meg a kérelem sebességhatárok és a szabályozás, hogy is nagy szinkronizálási műveletek során a hatás teljesítményét, és ezekhez a rendszerekhez az összekötők kiépítés az előre elkészített Azure AD figyelembe ezt.
-
-Teljesítmény egyben lassabb, ha sok hiba van (tárolja, amely a [naplók](active-directory-saas-provisioning-reporting.md)) és a létesítési szolgáltatás állapotba került egy "karantén" állapotba kerül.
-
-**Hogyan javítható a teljesítmény a szinkronizálás?**
-
-A legtöbb teljesítményproblémákat fordulhat elő, csoportok és a csoporttagok sok rendszerek kezdeti szinkronizálás során.
-
-Ha nincs szükség a szinkronizálási csoportok és a csoporttagságokat, szinkronizálási teljesítmény nagy mértékben növelhető a szerint:
-
-1. Beállítás a **kiépítési > Beállítások > hatókör** menü **összes**, hozzárendelt felhasználók és csoportok szinkronizálásakor helyett.
-2. Használjon [helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md) kiosztása a felhasználók listájának szűrése hozzárendelések helyett.
-
-> [!NOTE]
-> A csoport nevét és a csoport tulajdonságai (például a ServiceNow és a Google Apps) a létesítést támogató alkalmazások letiltása, ez is csökkenti egy kezdeti szinkronizáláshoz befejezéséhez szükséges időt. Ha nem szeretné, hogy csoporthoz tartozó nevek és a csoporttagságokat, az alkalmazás telepítéséhez, letilthatja ezt a a [attribútum-hozzárendelések](active-directory-saas-customizing-attribute-mappings.md) az üzembe helyezési konfigurációját.
 
 **Hogyan követheti nyomon az aktuális üzembe helyezési feladat előrehaladásának?**
 

@@ -6,14 +6,14 @@ author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/24/2017
+ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: f7b69e2558234159075161be7d58cc3695dfbbaf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dff27d8ef7357e5af3635cc39fb52963689e7bb
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606052"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247965"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 Akkor készítsen biztonsági másolatot egy SharePoint-farm Microsoft Azure hasonlóan, amely a biztonsági mentést más adatforrások a Microsoft Azure Backup Server (MABS) használatával. Azure biztonsági mentés naponta létrehozásához a biztonsági mentés ütemezése rugalmasságot biztosít, heti, havi vagy éves biztonsági mentést mutat, és lehetővé teszi az adatmegőrzési házirend-beállítások a különféle biztonsági mentési pontok. Helyi lemez másolat gyors helyreállítási idő célkitűzés (RTO) tárolására és gazdaságos, hosszú távú megőrzési Azure másolat tárolására is tartalmazza.
@@ -32,13 +32,13 @@ Néhány dolgot győződjön meg arról, előtt készítsen biztonsági másolat
 Mielőtt továbblépne, győződjön meg arról, hogy rendelkezik [telepítve, és az Azure Backup Server előkészített](backup-azure-microsoft-azure-backup.md) munkaterhelések védelme érdekében.
 
 ### <a name="protection-agent"></a>Védelmi ügynök
-A védelmi ügynököt telepíteni kell a SharePoint, az SQL Server rendszert futtató kiszolgálók és más a SharePoint-farm részét képező kiszolgálók futtató kiszolgálón. A védelmi ügynök beállítása kapcsolatos további információkért lásd: [telepítő védelmi ügynök](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Az egyetlen kivétel ez alól, hogy az ügynököt telepít csak egy egyetlen (WFE) előtér-webkiszolgálóján. DPM-nek az ügynök egy ELŐTÉR-webkiszolgálón csak a védelem belépési pontként szolgál.
+Az Azure Backup szolgáltatás ügynökének telepítenie kell a SharePoint, az SQL Server rendszert futtató kiszolgálók és más a SharePoint-farm részét képező kiszolgálók futtató kiszolgálón. A védelmi ügynök beállítása kapcsolatos további információkért lásd: [telepítő védelmi ügynök](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Az egyetlen kivétel ez alól, hogy az ügynököt telepít csak egy egyetlen (WFE) előtér-webkiszolgálóján. Az Azure Backup Server kell az ügynököt egy ELŐTÉR-webkiszolgálón csak a védelem belépési pontként szolgál.
 
 ### <a name="sharepoint-farm"></a>SharePoint-farm
 A farm minden 10 millió eleme, a legalább 2 GB lemezterületet a köteten, ahol a MABS mappában kell lennie. Ez a terület szükség a katalógus előállításához. Katalógus-előállítás MABS elemeket (webhelycsoportok, webhelyek, listák, dokumentumtárak, mappák, egyes dokumentumok és listaelemek) helyreállítása, létrehoz az egyes tartalom-adatbázisokban tárolt URL-címek listáját. A helyreállítható elemek ablaktáblán lévő URL-címek listáját megtekintheti a **helyreállítási** MABS felügyeleti konzol feladatterületén.
 
 ### <a name="sql-server"></a>SQL Server
-MABS rendszerfiókként fut. SQL Server-adatbázisok biztonsági mentéséhez MABS kell, hogy a fiók rendszergazdai jogosultságokkal az SQL Servert futtató kiszolgáló. NT AUTHORITY\SYSTEM beállítása *sysadmin* a kiszolgálón, amelyen SQL Server előtt készítsen biztonsági másolatot.
+Az Azure Backup Server fut, a LocalSystem fiókra. SQL Server-adatbázisok biztonsági mentéséhez MABS kell, hogy a fiók rendszergazdai jogosultságokkal az SQL Servert futtató kiszolgáló. NT AUTHORITY\SYSTEM beállítása *sysadmin* a kiszolgálón, amelyen SQL Server előtt készítsen biztonsági másolatot.
 
 Ha a SharePoint-farm SQL Server-aliasokkal használt konfigurált SQL Server-adatbázisok, telepítse az SQL Server ügyfél összetevőit MABS által védendő előtér-webkiszolgáló.
 
@@ -232,4 +232,6 @@ K: helyreállíthatók a SharePoint-adatbázist az eredeti helyre, ha a SharePoi
 V:, mert a SharePoint-adatbázisok vannak konfigurálva az SQL AlwaysOn, ezeket nem lehet módosítani kivéve, ha a rendelkezésre állási csoport eltávolítása. Ennek eredményeképpen az MABS nem tudja visszaállítani az adatbázis az eredeti helyre. Helyreállíthatja az SQL Server-adatbázis egy másik SQL Server-példányhoz.
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók a SharePoint védelme MABS – lásd [videó sorozat - a SharePoint védelme a DPM](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+
+Tekintse meg a [biztonsági mentése az Exchange server](backup-azure-exchange-mabs.md) cikk.
+Tekintse meg a [biztonsági mentése SQL Server](backup-azure-sql-mabs.md) cikk.

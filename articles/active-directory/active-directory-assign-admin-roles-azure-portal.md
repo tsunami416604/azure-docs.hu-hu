@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 94062c69a1de32d061b97bbaae0d7028b0424feb
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 4dddc4c4e4bd34f5e9d7054f1311e13113fce52d
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757672"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234613"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -42,15 +42,15 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
   > [!NOTE]
   > Az Azure-ban az Exchange ActiveSync feltételes hozzáférési házirend telepítése, a felhasználó is globális rendszergazdának kell lennie.
   
-* **Dynamics 365 rendszergazdai**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek-e a Microsoft Dynamics 365, ha a szolgáltatás jelenlegi globális engedéllyel, valamint a támogatási jegyek kezelése és figyelése a szolgáltatás állapotát. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
-
-* **Eszközrendszergazdák**: Ezzel a szerepkörrel rendelkező felhasználók válnak a helyi számítógép rendszergazdák az összes Azure Active Directory tartományhoz csatlakoztatott Windows 10-eszközökön. Nem rendelkeznek képes kezelni az eszközöket objektumok Azure Active Directoryban.
+* **Eszközrendszergazdák**: Ez a szerepkör érhető el a csak egy további helyi rendszergazdaként a hozzárendelés [eszközbeállítások](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Az ehhez a szerepkörhöz tartozó felhasználók a helyi gépek rendszergazdái lesznek az Azure Active Directoryval összekapcsolt összes Windows 10-eszközön. Nem rendelkeznek képes kezelni az eszközöket objektumok Azure Active Directoryban.
 
 * **Directory olvasók**: egy örökölt szerepkör, amely hozzá kell rendelni, amelyek nem támogatják az alkalmazások a [hozzájárulás keretrendszer](active-directory-integrating-applications.md). Azt nem rendelhető hozzá azokat a felhasználókat.
 
 * **Címtár-szinkronizálás fiókok**: ne használja. Ez a szerepkör lesz automatikusan hozzárendelve az Azure AD Connect szolgáltatást, és nem szánt vagy bármely más használata támogatott.
 
 * **Directory írók**: egy örökölt szerepkör, amely hozzá kell rendelni, amelyek nem támogatják az alkalmazások a [hozzájárulás keretrendszer](active-directory-integrating-applications.md). Azt nem rendelhető hozzá azokat a felhasználókat.
+
+* **Dynamics 365 rendszergazdai**: Ezzel a szerepkörrel rendelkező felhasználók rendelkeznek-e a Microsoft Dynamics 365, ha a szolgáltatás jelenlegi globális engedéllyel, valamint a támogatási jegyek kezelése és figyelése a szolgáltatás állapotát. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Exchange szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók engedélye globális belül a Microsoft Exchange online-hoz, ha a szolgáltatás jelen. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 

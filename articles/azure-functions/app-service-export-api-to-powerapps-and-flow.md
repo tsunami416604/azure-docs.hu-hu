@@ -1,24 +1,26 @@
 ---
-title: "Az Azure által üzemeltetett API-k exportálása a PowerApps és Microsoft Flow |} Microsoft Docs"
-description: "Hogyan teszi közzé a PowerApps és Microsoft Flow App Service-ben üzemeltetett API"
+title: Az Azure által üzemeltetett API-k exportálása a PowerApps és Microsoft Flow |} Microsoft Docs
+description: Hogyan teszi közzé a PowerApps és Microsoft Flow App Service-ben üzemeltetett API
 services: app-service
-documentationcenter: 
-author: mattchenderson
-manager: erikre
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ggailey777
+manager: cfowler
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: mahender; mblythe
-ms.openlocfilehash: 2d7ef0d4b2669b774b1d218d244052083e883517
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: glenga
+ms.reviewer: sunayv
+ms.openlocfilehash: ef3fe5002a28c66478a10909a7e9556449cd9712
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234767"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Az Azure által üzemeltetett API-k PowerApps és Microsoft Flow exportálása
 
@@ -150,7 +152,7 @@ Exportálás során, amelyek lehetővé teszik a felhasználók hitelesítésér
 
 Ez a fejezet a hitelesítési típus által támogatott **Express** mód: API key, az Azure Active Directory és a általános OAuth 2.0-s. PowerApps és Microsoft Flow is támogatja az egyszerű hitelesítés és az OAuth 2.0 adott szolgáltatások, például a dropbox-ba, a Facebook-on és a SalesForce.
 
-### <a name="api-key"></a>Az API-kulcs
+### <a name="api-key"></a>API-kulcs
 API-kulcs használata esetén a rendszer kéri a felhasználókat az összekötő a kulcs megadására, amikor azok a kapcsolat létrehozása. Megadhatja az API-kulcsnév felhasználóinál megérteni, hogy melyik kulcs szükséges. A korábbi példában használjuk a neve `API Key (contact meganb@contoso.com)` , személyek tudja, honnan szerezhetők be az API-kulccsal kapcsolatos információkat. Az Azure Functions a kulcs egyike általában az állomások kulcsait, a függvény alkalmazásban több funkciók lefedik.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)

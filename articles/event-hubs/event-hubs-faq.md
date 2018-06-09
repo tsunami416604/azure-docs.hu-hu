@@ -5,20 +5,16 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/07/2018
 ms.author: sethm
-ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235311"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs gyakran ismételt kérdések
 
@@ -30,7 +26,7 @@ Azure Event Hubs a Standard szint az alapszintű rétegben elérhető mértéket
 * Esemény hosszabb megőrzési
 * További közvetített kapcsolatok, a több része egy keretét díjat
 * Több mint egy egyetlen felhasználói csoport
-* [Rögzítése](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [Rögzítése](event-hubs-capture-overview.md)
 
 További információ a tarifacsomagok, beleértve az Event Hubs dedikált, tekintse meg a [díjszabása Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -58,9 +54,10 @@ Használja a [automatikus megnöveli](event-hubs-auto-inflate.md) szolgáltatás
 Igen, mindaddig, amíg az event hubs szerepelnek ugyanazt a névteret.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Mi az az események maximális megőrzési időtartama?
-Event Hubs Standard csomagra jelenleg támogatja a maximális megőrzési időtartam 7 nap. Fontos mindazonáltal megjegyezni, hogy az eseményközpontok nem permanens adattárolásra vannak kialakítva. 24 óránál hosszabb megőrzési időtartamú szánt forgatókönyvek, amelyben célszerű a visszajátszani az eseménystream azonos rendszerekbe; például betanítása, vagy a meglévő adatok új gépi tanulási modell ellenőrzése. Megőrzési 7 napon túl kell hibaüzenet, amely lehetővé teszi [Event Hubs rögzítése](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) az esemény hub az eseményközpont a tárfiókhoz vagy Azure Data Lake szolgáltatásfiók a adatait kéri le. Rögzítési engedélyezése azt eredményezi, a megvásárolt átviteli egység alapján díj azok háromszorosa.
+Event Hubs Standard csomagra jelenleg támogatja a maximális megőrzési időtartam 7 nap. Fontos mindazonáltal megjegyezni, hogy az eseményközpontok nem permanens adattárolásra vannak kialakítva. 24 óránál hosszabb megőrzési időtartamú szánt forgatókönyvek, amelyben célszerű a visszajátszani az eseménystream azonos rendszerekbe; például betanítása, vagy a meglévő adatok új gépi tanulási modell ellenőrzése. Megőrzési 7 napon túl kell hibaüzenet, amely lehetővé teszi [Event Hubs rögzítése](event-hubs-capture-overview.md) az esemény hub az eseményközpont a tárfiókhoz vagy Azure Data Lake szolgáltatásfiók a adatait kéri le. Rögzítési engedélyezése azt eredményezi, a megvásárolt átviteli egységek alapján díj azok háromszorosa.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Ahol lehetőség van az Azure Event Hubs?
+
 Az Azure Event Hubs minden támogatott Azure-régió nem áll rendelkezésre. A listáját, és látogasson el a [Azure-régiók](https://azure.microsoft.com/regions/) lap.  
 
 ## <a name="best-practices"></a>Ajánlott eljárások
@@ -101,22 +98,27 @@ Rögzítési megadnia, ha az eseményközpontok a storage-fiókot használ. Mive
 ## <a name="quotas"></a>Kvóták
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Minden Event Hubs társított kvóták vannak?
+
 Minden Event Hubs kvóták listájáért lásd: [kvóták](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Melyek azok a kivételeket, az Event Hubs és a javasolt lépések által generált?
+
 A lehetséges az Event Hubs kivételek listájáért lásd: [kivételek áttekintése](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+
 Az Event Hubs támogatja a két típusú [diagnosztikai naplók](event-hubs-diagnostic-logs.md) -rögzítse a hibanaplókat és a műveleti naplókat - mindkettőnek jelennek meg a JSON-ban, és is be kell kapcsolni az Azure portálon keresztül.
 
 ### <a name="support-and-sla"></a>Támogatás és szolgáltatásszintek
+
 Az Event Hubs számára a technikai támogatási szolgálathoz keresztül érhető el a [közösségi fórumok](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). A számlázás és az előfizetések kezelésének támogatása díjmentesen igénybe vehető.
 
 Az SLA-t kapcsolatos további tudnivalókért tekintse meg a [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) lap.
 
 ## <a name="next-steps"></a>További lépések
+
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)

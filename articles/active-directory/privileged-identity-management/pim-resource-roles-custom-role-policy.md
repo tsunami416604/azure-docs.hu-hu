@@ -3,20 +3,22 @@ title: Egyéni szerepkörök tárolóbeállítások Privileged Identity Manageme
 description: Egyéni szerepkörök az Azure-erőforrások a PIM használatát ismerteti.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 03/30/2018
-ms.author: billmath
-ms.openlocfilehash: e3df34e761f17aa3c1949af390e57360d84a304f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: rolyon
+ms.openlocfilehash: 03904990d54db0dd39ed7059f57a0a13efe0aaca
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233379"
 ---
 # <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>A Privileged Identity Management tárolóbeállítások egyéni szerepkörök használatával
 

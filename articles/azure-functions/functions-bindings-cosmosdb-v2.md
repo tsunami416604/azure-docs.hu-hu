@@ -3,7 +3,7 @@ title: Az Azure Cosmos DB kötéseket a következő funkciók 2.x (előzetes ver
 description: Az Azure Functions Azure Cosmos DB eseményindítók és kötések használatának megismerése.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: 0367f1fc942cf8fa43e2b4b6b0b21bc0ec9f377c
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: tdykstra
+ms.openlocfilehash: e40ba6bcfa1b6247f62849626d4a7803a76362a1
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796910"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234869"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Az Azure Functions kötései Azure Cosmos DB 2.x (előzetes verzió)
 

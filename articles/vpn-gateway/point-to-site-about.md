@@ -1,25 +1,26 @@
 ---
-title: "Azure pont – hely típusú VPN-kapcsolatok |} Microsoft Docs"
-description: "Ez a cikk segít megérteni a pont – hely kapcsolatok, és segít eldönteni, melyik P2S VPN-átjáró hitelesítési típus használata."
+title: Azure pont – hely típusú VPN-kapcsolatok |} Microsoft Docs
+description: Ez a cikk segít megérteni a pont – hely kapcsolatok, és segít eldönteni, melyik P2S VPN-átjáró hitelesítési típus használata.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 06/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 708027b6cea8ac6a2fe7f713f5c6639fc6f8258a
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 2668d92b5b933f7ccf8ebcccbe7ea77ea6ea1e86
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236433"
 ---
 # <a name="about-point-to-site-vpn"></a>Pont – hely típusú VPN kapcsolatos
 
@@ -47,19 +48,23 @@ Azure P2S VPN-kapcsolatot fogad el, mielőtt a felhasználó rendelkezik, elősz
 
 A natív Azure tanúsítvány hitelesítése során egy ügyfél az eszközön található tanúsítvánnyal hitelesíti a csatlakozó felhasználó. Ügyféltanúsítványok által létrehozott egy megbízható legfelső szintű tanúsítványt, és települ ügyfélszámítógépekre. Egy legfelső szintű tanúsítvány lett létrehozva, vállalati megoldás is használható, vagy létrehozhat egy önaláírt tanúsítványt.
 
-Az ügyféltanúsítvány érvényesítése VPN-átjáró által végzett, és a P2S VPN-kapcsolat létrehozása során történik. A legfelső szintű tanúsítvány szükséges az ellenőrzést, és fel kell tölteni, az Azure-bA. 
+Az ügyféltanúsítvány érvényesítése VPN-átjáró által végzett, és a P2S VPN-kapcsolat létrehozása során történik. A legfelső szintű tanúsítvány szükséges az ellenőrzést, és fel kell tölteni, az Azure-bA.
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Hitelesítés Active Directory (AD) tartományhoz kiszolgáló használatával
 
 Active Directory-tartománynak hitelesítés lehetővé teszi a felhasználók az Azure-ba való a szervezet tartományi hitelesítő adataik használatával. Egy RADIUS-kiszolgáló, amely integrálható az Active server igényel. A szervezetek is kihasználhatja a meglévő RADIUS-telepítésekhez.   
- A RADIUS-kiszolgáló lehet a telepített helyszíni vagy az Azure virtuális hálózat. A hitelesítés során az Azure VPN Gateway funkcionál továbbítása és továbbítást hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos átjáró reachability a RADIUS-kiszolgálónak. Ha a RADIUS-kiszolgáló nem szerepel a helyszíni VPN S2S csatlakozni az Azure-ból a helyszíni hely reachability szükség.  
- A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal integrálhatja. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány telepítési P2S tanúsítvány hitelesítéshez használandó ahelyett, hogy az Azure-tanúsítvány hitelesítése. Ennek előnye, hogy nem kell legfelső szintű tanúsítványok és a visszavont tanúsítványok feltöltése az Azure-bA.
+  A RADIUS-kiszolgáló lehet a telepített helyszíni vagy az Azure virtuális hálózat. A hitelesítés során az Azure VPN Gateway funkcionál továbbítása és továbbítást hitelesítési üzeneteket a RADIUS-kiszolgáló és a csatlakozó eszköz között. Ezért fontos átjáró reachability a RADIUS-kiszolgálónak. Ha a RADIUS-kiszolgáló nem szerepel a helyszíni VPN S2S csatlakozni az Azure-ból a helyszíni hely reachability szükség.  
+  A RADIUS-kiszolgáló az AD tanúsítványszolgáltatásokkal integrálhatja. Ez lehetővé teszi a RADIUS-kiszolgáló és a vállalati tanúsítvány telepítési P2S tanúsítvány hitelesítéshez használandó ahelyett, hogy az Azure-tanúsítvány hitelesítése. Ennek előnye, hogy nem kell legfelső szintű tanúsítványok és a visszavont tanúsítványok feltöltése az Azure-bA.
 
 Egy RADIUS-kiszolgáló integrálhatja más külső identitáskezelő rendszerekkel. Ekkor megnyílik a bőven hitelesítési beállítások P2S VPN, beleértve a multi-factor Authentication beállításainak mentése.
 
 ! [pont-pont]] (./media/point-to-site-about/p2s.png "Pont-pont")
 
-### <a name="configuration-requirements-for-client-devices"></a>Ügyféleszközök konfigurációs követelményei
+## <a name="what-are-the-client-configuration-requirements"></a>Mik az ügyfél-konfigurációs követelmények?
+
+>[!NOTE]
+>A Windows-ügyfelek esetében meg rendszergazdai jogosultságokkal kell rendelkeznie az ügyfél-eszközön ahhoz, hogy az Azure-bA az ügyféleszköz VPN-kapcsolatot kezdeményez.
+>
 
 Felhasználók használni a natív VPN-ügyfelek Windows és Mac rendszerű eszközökön P2S. Azure biztosít a VPN-ügyfél konfigurációs zip ezen natív ügyfelek által Azure való kapcsolódáshoz szükséges beállításokat tartalmazó fájl.
 
@@ -69,10 +74,10 @@ Felhasználók használni a natív VPN-ügyfelek Windows és Mac rendszerű eszk
 A zip-fájl néhány fontos beállítás értékének is biztosít, amelyek ezen eszközök saját profil létrehozása az Azure oldalán. Az értékek közé tartoznak a VPN-átjáró címét, konfigurált típusról, útvonalak és a legfelső szintű tanúsítvány átjáró érvényesítéshez.
 
 >[!NOTE]
->A Windows-ügyfelek esetében meg rendszergazdai jogosultságokkal kell rendelkeznie az ügyfél-eszközön ahhoz, hogy az Azure-bA az ügyféleszköz VPN-kapcsolatot kezdeményez.
+>[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-### <a name="gwsku"></a>Mely Gateway SKU támogatási P2S VPN?
+## <a name="gwsku"></a>Mely Gateway SKU támogatási P2S VPN?
 
 [!INCLUDE [p2s-skus](../../includes/vpn-gateway-table-point-to-site-skus-include.md)]
 
@@ -81,7 +86,7 @@ A zip-fájl néhány fontos beállítás értékének is biztosít, amelyek ezen
 * SLA (szolgáltatásiszint-megállapodások) adatai a szolgáltatásiszint-szerződés lapon található.
 
 >[!NOTE]
->Az alapszintű Termékváltozat nem támogatja az IKEv2 vagy RADIUS-hitelesítés.
+>Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
 >
 
 ## <a name="configure"></a>Hogyan konfigurálhatom P2S kapcsolatot?

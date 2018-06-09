@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/12/2018
+ms.date: 6/08/2018
 ms.author: johnkem
-ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20f148988191c130d8e10f1776f3bbe1612a8c17
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248176"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, sémákkal és az Azure diagnosztikai naplók kategóriák
 
@@ -29,30 +30,34 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 
 | Szolgáltatás | Séma & Docs |
 | --- | --- |
-| Analysis Services | A séma nem érhető el. |
+| Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management diagnosztikai naplók](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway átjárók |[Az Alkalmazásátjáró diagnosztikai naplózás](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Az Azure Automation szolgáltatáshoz](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch diagnosztikai naplózás](../batch/batch-diagnostics.md) |
-| Customer Insights | A séma nem érhető el. |
-| Content Delivery Network | A séma nem érhető el. |
+| Content Delivery Network | [Az Azure CDN diagnosztikai naplókat](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Az Azure Cosmos DB naplózás](../cosmos-db/logging.md) |
+| Data Factory | [Azure-figyelővel adat-előállítók figyelése](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Diagnosztikai naplók az Azure Data Lake Store elérése](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| PostgreSQL DB |  A séma nem érhető el. |
 | Event Hubs |[Az Azure Event Hubs diagnosztikai naplók](../event-hubs/event-hubs-diagnostic-logs.md) |
+| Express Route | A séma nem érhető el. |
 | IoT Hub | [Az IoT-központ műveletek](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Az Azure Key Vault naplózása](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Naplóelemzés az Azure Load Balancerhez](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B egyéni követési séma](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Hálózati biztonsági csoportok) |[Naplóelemzés hálózati biztonsági csoportokhoz](../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS elleni védelem | A séma nem érhető el. |
+| DDoS Protection | [Az Azure DDoS védelem Standard kezelése](../virtual-network/manage-ddos-protection.md) |
+| Dedikált Power BI | A séma nem érhető el. |
 | Recovery Services | [Adatmodell az Azure Backup szolgáltatásra](../backup/backup-azure-reports-data-model.md)|
 | Keresés |[Engedélyezése és a keresési forgalom Analytics használata](../search/search-traffic-analytics.md) |
-| Kiszolgálófelügyelet | A séma nem érhető el. |
 | Service Bus |[Az Azure Service Bus diagnosztikai naplók](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Az Azure SQL Database diagnosztikai naplózás](../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Diagnosztikai naplók feladat](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Traffic Manager | A séma nem érhető el. |
 | Virtuális hálózatok | A séma nem érhető el. |
+| Virtuális hálózati átjárók | A séma nem érhető el. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott erőforrástípus napló kategóriát
 |Erőforrás típusa|Kategória|Kategória megjelenített neve|
@@ -74,6 +79,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.DataLakeStore/accounts|Naplózás|Naplók|
 |Microsoft.DataLakeStore/accounts|Kérelmek|Naplók kérése|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-kiszolgáló naplói|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL biztonsági mentési események|
 |Microsoft.Devices/IotHubs|Kapcsolatok|Kapcsolatok|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Telemetriát|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D parancsok|
@@ -90,6 +96,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Devices/provisioningServices|ServiceOperations|Szolgáltatási műveletek|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
+|Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archív naplók|
 |Microsoft.EventHub/namespaces|OperationalLogs|Műveleti naplókat|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatikus méretezési naplók|
@@ -112,6 +119,7 @@ A sémában az erőforrás diagnosztikai naplókat a resource és a naplófájlo
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S diagnosztikai naplók|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|A TRAFFIC Manager mintavételi eredmények Állapotesemény|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tábla GWM számlálók|
+|Microsoft.PowerBIDedicated/capacities|Motor|Motor|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Jelentési adatok Azure biztonsági mentés|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Az Azure Site Recovery-feladatok|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Az Azure Site Recovery-események|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: ad2faabbab74ba343328b6fe30e09c87520e7019
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809794"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236120"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Rendszeres biztonsági mentése és visszaállítása az Azure Service Fabric (előzetes verzió)
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ Bemutatjuk, keresztül történő engedélyezéséről a megbízható állapotal
 
 Első lépés, ha a biztonsági mentési házirend ütemezett biztonsági mentés, a célként megadott biztonsági mentési adatokat, a házirend nevét és a maximális növekményes biztonsági mentések teljes biztonsági mentés elindítása előtt engedélyezett leíró. 
 
-Biztonságimásolat-tároláshoz az Azure Storage a fenti létrehozott fiókot használja. Ez a példa azt feltételezi, hogy az Azure Storage-fiók nevű `sfbackupstore`. Tároló `backup-container` van konfigurálva. biztonsági másolatok tárolására, tároló ezen a néven jön létre, ha még nincs letöltve, biztonsági mentési feltöltés közben. Feltöltése `ConnectionString` az Azure Storage-fiók érvényes kapcsolati karakterlánccal.
+Biztonságimásolat-tároláshoz az Azure Storage a fenti létrehozott fiókot használja. Tároló `backup-container` biztonsági mentések tárolására van beállítva. Egy tároló ezen a néven jön létre, ha még nem létezik, biztonsági mentési feltöltés közben. Feltöltése `ConnectionString` az Azure Storage-fiók érvényes kapcsolati karakterláncot a cseréje `account-name` rendelkező a tárfiók nevére, és `account-key` rendelkező a tárfiók kulcsára.
 
 Hajtsa végre a következő PowerShell-parancsfájl az új házirend létrehozásához szükséges REST API meghívása. Cserélje le `account-name` rendelkező a tárfiók nevére, és `account-key` rendelkező a tárfiók kulcsára.
 

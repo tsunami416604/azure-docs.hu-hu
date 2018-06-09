@@ -1,5 +1,5 @@
 ---
-title: A WebJobs SDK - Azure az első lépései
+title: Ismerkedés az Azure WebJobs SDK-val
 description: 'A WebJobs SDK eseményvezérelt háttérben történő feldolgozás bemutatása. Útmutató: Azure-szolgáltatások és harmadik féltől származó szolgáltatással lévő adatok eléréséhez.'
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234519"
 ---
-# <a name="get-started-with-the-webjobs-sdk"></a>Ismerkedés a WebJobs SDK-val
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Ismerkedés az Azure WebJobs SDK eseményvezérelt háttérben történő feldolgozás
 
-Ez a cikk bemutatja, hogyan WebJobs SDK-projekt létrehozása, futtassa helyileg, és telepítheti az Azure.
+Ez a cikk bemutatja, hogyan hozzon létre egy Azure WebJobs SDK-projektet, futtassa helyileg és központilag telepítenie kell az Azure App Service szolgáltatásban.
 
 Az utasítások alapján [Visual Studio 2017](https://www.visualstudio.com/vs/), de ugyanazokhoz a feladatokhoz, mint más eszközökkel is elvégezhető [Visual Studio Code](https://code.visualstudio.com/).
 
-## <a name="what-is-the-webjobs-sdk"></a>Mi az a WebJobs SDK
+## <a name="what-is-the-azure-webjobs-sdk"></a>Mi az Azure WebJobs SDK?
 
 Az Azure WebJobs SDK egy keretrendszer, amely leegyszerűsíti a programozás háttérben történő feldolgozás, aki hozzáfér az adatokat az Azure-szolgáltatásokhoz. Az SDK-t egy deklaratív szintaxisa válthat ki egy funkciót, például egy új üzenet a várólistában hozzá események funkciókat. Meghatározza, hogy hasonló deklaratív szintaxisán olvasását és írását, miután egy függvény lett elindítva. A rendszer az eseményindítók és kötések gondoskodik a társított el az Azure és a harmadik féltől származó szolgáltatással alacsony szintű kódolási feladatok nagy részét.
 
@@ -68,7 +69,7 @@ Ez a cikk feltételezi, hogy rendelkezik [az Azure-fiók](https://azure.microsof
 
 3. Nevet a projektnek *WebJobsSDKSample*, majd válassza ki **OK**.
 
-   ![Új projekt párbeszédpanelje](./media/webjobs-sdk-get-started/new-project.png)
+   ![New Project (Új projekt) párbeszédpanel](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="add-webjobs-nuget-package"></a>Webjobs-feladatok NuGet-csomag hozzáadása
 

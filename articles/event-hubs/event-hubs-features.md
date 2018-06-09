@@ -1,28 +1,27 @@
 ---
-title: "Az Azure Event Hubs-szolgáltatások áttekintése |} Microsoft Docs"
-description: "Áttekintés és az Azure Event Hubs szolgáltatások részleteit"
+title: Az Azure Event Hubs-szolgáltatások áttekintése |} Microsoft Docs
+description: Áttekintés és az Azure Event Hubs szolgáltatások részleteit
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/02/2018
+ms.date: 06/08/2018
 ms.author: sethm
-ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248741"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs szolgáltatások – áttekintés
 
-Az Azure Event Hubs egy méretezhető Eseményfeldolgozási szolgáltatás, amely ingests és dolgozza fel az eseményeket és adatok, nagy mennyiségű, alacsony késéssel és nagy megbízhatósággal. Lásd: [Mi az az Event Hubs?](event-hubs-what-is-event-hubs.md) a szolgáltatás magas szintű áttekintését.
+Az Azure Event Hubs egy méretezhető Eseményfeldolgozási szolgáltatás, amely ingests és dolgozza fel az eseményeket és adatok, nagy mennyiségű, alacsony késéssel és nagy megbízhatósággal. Lásd: [Mi az az Event Hubs?](event-hubs-what-is-event-hubs.md) a magas szintű áttekintését.
 
 Ebben a cikkben szereplő információk épül a [a cikk áttekintése](event-hubs-what-is-event-hubs.md), és részletesen bemutatja a műszaki és megvalósítási Event Hubs-összetevők és szolgáltatásokkal kapcsolatban.
 
@@ -44,7 +43,7 @@ Az Event Hubs biztosítja, hogy az egyazon partíciókulcs-értékkel rendelkez�
 
 Az Event Hubs lehetővé teszi az esemény-közzétevők részletes szabályozását a *közzétevői házirendek* révén. A közzétevői házirendek olyan futásidejű szolgáltatások, amelyek célja, hogy nagy számú független esemény-közzétevőt tegyen lehetővé. A közzétevői házirendek használatával mindegyik közzétevő a saját egyedi azonosítóját használja, amikor eseményeket tesz közzé egy eseményközpontban az alábbi mechanizmust használva:
 
-```
+```http
 //[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
 ```
 
@@ -123,7 +122,7 @@ Minden Event Hubs-felhasználó keresztül egy AMQP 1.0-munkamenet, egy állapot
 
 #### <a name="connect-to-a-partition"></a>Csatlakozás partícióhoz
 
-Partíciókhoz való kapcsolódás esetén általános gyakorlat a bérlési mechanizmus használata az adott partíciók olvasói kapcsolatainak koordinálására. Így lehetséges, hogy az egyes felhasználói csoportokban minden partíció csak egyetlen aktív olvasóval rendelkezzen. Az ellenőrzőpontok használata, a bérlés, valamint az olvasók kezelése az [EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) osztály használatával egyszerűsíthető .NET-ügyfelek esetén. Az Event Processor Host egy intelligens felhasználóügynök.
+Partíciókhoz való kapcsolódás esetén általános gyakorlat a bérlési mechanizmus használata az adott partíciók olvasói kapcsolatainak koordinálására. Így lehetséges, hogy az egyes felhasználói csoportokban minden partíció csak egyetlen aktív olvasóval rendelkezzen. Az ellenőrzőpontok használata, a bérlés, valamint az olvasók kezelése az [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) osztály használatával egyszerűsíthető .NET-ügyfelek esetén. Az Event Processor Host egy intelligens felhasználóügynök.
 
 #### <a name="read-events"></a>Események olvasása
 
@@ -149,11 +148,11 @@ Az Event Hubs átviteli kapacitásának szabályozása *átviteli egységek* ré
 * Bemenő forgalom: másodpercenként legfeljebb 1 MB vagy 1000 esemény (amelyik előbb teljesül)
 * Kimenő forgalom: másodpercenként legfeljebb 2 MB
 
-A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelheti a **méretezési** panel a névterek a [Azure-portálon](https://portal.azure.com). Átviteli egységek programozott módon is kezelhetők a [Event Hubs API-k](event-hubs-api-overview.md).
+A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelheti a **méretezési** panel a névterek a [Azure-portálon](https://portal.azure.com). Átviteli egységek programozott módon is kezelhetők a [Event Hubs API-k](event-hubs-api-overview.md).
 
-Az átviteli egységek óraalapú díjszabással rendelkeznek, és előre kell megvásárolni őket. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Az Event Hubs-névterekhez legfeljebb 20 átviteli egység vásárolható, és azok a névtér összes Event Hubs-központján megoszthatók.
+Átviteli egységek előre megvásárolt és óraalapú díjszabással rendelkeznek. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Legfeljebb 20 átviteli egység az Event Hubs névtér megvásárolható, és adott névtér összes eseményközpontjában érvényesülnek.
 
-További átviteli egységek vásárlásához vegye fel a kapcsolatot az Azure támogatási szolgálatával, ahol 20-as csomagokban vásárolhat átviteli egységeket 100 egységig. Efölött 100-as csomagokban vásárolhat átviteli egységeket.
+További átviteli egységek vásárlásához vegye fel a kapcsolatot az Azure támogatási szolgálatával, ahol 20-as csomagokban vásárolhat átviteli egységeket 100 egységig. Túl 100 átviteli egységek blokkok vásárolhat.
 
 Azt javasoljuk, hogy optimális mértékben átviteli egységek és partíciók elosztása. Egy partíció legfeljebb egy átviteli egységgel rendelkezhet. Az egyes eseményközpontokban az átviteli egységek száma nem haladhatja meg a partíciók számát.
 

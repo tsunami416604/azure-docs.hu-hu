@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/21/2018
+ms.date: 06/08/2018
 ms.author: alkohli
-ms.openlocfilehash: bbcb598d075868a6c6aab27d108e91afa90b62b1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 299029e10ac8f0235bb11876aa00c98a21183c0f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651083"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248792"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Előfizetések és a StorSimple Device Manager szolgáltatással kapcsolatos storage-fiókok áttelepítése
 
@@ -29,8 +29,8 @@ Helyezze át a StorSimple szolgáltatás egy új regisztrációs vagy egy új el
 
 | Áthelyezheti...| Támogatott| Állásidő| Az Azure támogatási folyamat| Módszer|
 |-----|-----|-----|-----|-----|
-| Egy teljes előfizetés (tartalmazza a StorSimple szolgáltatás és a tárolási fiók) egy másik regisztráció? | Igen       | Nem       | **Beléptetési átvitel**<br>Használata:<li>Ha vásárol egy új Azure-előfizetési új szerződések alapján.</li><li>Minden fiókjaihoz és előfizetéseihez át a régi regisztrációtól az új szeretné. Ez magában foglalja az összes Azure-szolgáltatás a régi előfizetésen belül.</li> | **1. lépés: Az Azure vállalati művelet támogatási jegy megnyitása.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEnt](http://aka.ms/AzureEnt).</li><li> Válassza ki **beléptetési felügyeleti** , és válassza **átvitele egy beléptetési egy új regisztrációs**.<br>**2. lépés: A kért adatok megadása**<br>A következők:<li>Forrás száma</li><li> cél száma</li><li>átviteli életbelépési dátum|
-| A StorSimple szolgáltatás a meglévő fiók egy új regisztrációs?    | Igen       | Nem       | **Fiók átvitel**<br>Használata:<li>Ha nem szeretné, hogy a teljes beléptetési átvitel.</li><li>Szeretné egyedi fiókokat új beléptetési helyezze át.</li>| **1. lépés: Az Azure vállalati művelet támogatási jegy megnyitása.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEnt](http://aka.ms/AzureEnt).</li><li>Válassza ki **beléptetési felügyeleti** majd **EA fiók átvitele egy új regisztrációs**.<br>**2. lépés: A kért adatok megadása**<br>A következők:<li>Forrás száma</li><li> cél száma</li><li>átviteli életbelépési dátum|
+| Egy teljes előfizetés (tartalmazza a StorSimple szolgáltatás és a tárolási fiók) egy másik regisztráció? | Igen       | Nem       | **Beléptetési átvitel**<br>Használata:<li>Ha vásárol egy új Azure-előfizetési új szerződések alapján.</li><li>Minden fiókjaihoz és előfizetéseihez át a régi regisztrációtól az új szeretné. Ez magában foglalja az összes Azure-szolgáltatás a régi előfizetésen belül.</li> | **1. lépés: Az Azure vállalati művelet támogatási jegy megnyitása.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li> Válassza ki **beléptetési felügyeleti** , és válassza **átvitele egy beléptetési egy új regisztrációs**.<br>**2. lépés: A kért adatok megadása**<br>A következők:<li>Forrás száma</li><li> cél száma</li><li>átviteli életbelépési dátum|
+| A StorSimple szolgáltatás a meglévő fiók egy új regisztrációs?    | Igen       | Nem       | **Fiók átvitel**<br>Használata:<li>Ha nem szeretné, hogy a teljes beléptetési átvitel.</li><li>Szeretné egyedi fiókokat új beléptetési helyezze át.</li>| **1. lépés: Az Azure vállalati művelet támogatási jegy megnyitása.**<li>Nyissa meg a következőt: [http://aka.ms/AzureEntSupport](http://aka.ms/AzureEntSupport).</li><li>Válassza ki **beléptetési felügyeleti** majd **EA fiók átvitele egy új regisztrációs**.<br>**2. lépés: A kért adatok megadása**<br>A következők:<li>Forrás száma</li><li> cél száma</li><li>átviteli életbelépési dátum|
 | A StorSimple szolgáltatás egy előfizetés másik előfizetést?      | Nem        |    Igen         | Nincs, a manuális eljáráshoz|<li>Telepítse át a StorSimple eszköz adatokat.</li><li>Hajtsa végre az eszköz gyári beállításainak visszaállítását, ez a művelet törli az eszköz helyi adatokat.</li><li>Az eszközt regisztrálni kell az új előfizetés, a StorSimple Device Manager szolgáltatás.</li><li>Az adatok áttelepítését vissza az eszközt.|
   |Azure-előfizetés tulajdonjogának átvihető egy másik címtárhoz? | Igen       | Nem       | Az Azure AD-címtár egy meglévő előfizetés társítása | Tekintse meg a [rendelje hozzá a az Azure AD-címtár egy meglévő előfizetés](../active-directory/active-directory-how-subscriptions-associated-directory.md). Akár 10 percig is eltarthat, amíg minden megfelelően megjelenik.|
 | A StorSimple eszköz egy StorSimple Device Manager szolgáltatásból egy másik régióban egy másik szolgáltatásra?      | Nem        | Igen            | Nincs, a manuális eljáráshoz |Ugyanaz, mint a fentiek közül.|

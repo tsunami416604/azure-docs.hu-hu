@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: e587edeef1cfa080a81f523f63678a645b514c57
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849491"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233844"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Folyamatos üzembe helyezés az Azure App Service
 Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos üzembe [Azure App Service](app-service-web-overview.md). App Service lehetővé teszi, hogy a folyamatos üzembe helyezést bitbucket szolgáltatásokhoz, a github webhelyen, és [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) modulba húzza a legújabb frissítéseket a meglévő tárházból valamelyik ezeket a szolgáltatásokat.
@@ -134,6 +134,8 @@ Folyamatos üzembe helyezés letiltása, az App Service alkalmazás oldalra lép
 A bal oldali menüben kattintson **Telepítőközpontot** > **GitHub** vagy **VSTS** vagy **BitBucket**  >  **Leválasztása**.
 
 ![](media/app-service-continuous-deployment/disable.png)
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="additional-resources"></a>További források
 

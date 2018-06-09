@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823849"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234841"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure verem nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -30,7 +30,7 @@ Azure verem van egy nyilvános infrastruktúra-hálózaton kívülről hozzáfé
 - A folyamat az i alapprofil megfelelő tanúsítványok beszerzése
 - Hogyan lehet előkészíteni, érvényesítése és azok a tanúsítványok központi telepítése során használja
 
-> [!NOTE]
+> [!Note]  
 > Központi telepítése során a telepítési mappát, amely megfelel az identitásszolgáltató (az Azure AD vagy AD FS) ellen telepít tanúsítványokat kell másolnia. Végpontjai használja a rendszer egy tanúsítványt, ha minden központi telepítési mappába, az alábbi táblázatban leírt módon, hogy a tanúsítványfájl kell másolnia. A mappastruktúra a központi telepítés virtuális gépen előre épül, és helyen találhatók: C:\CloudDeployment\Setup\Certificates. 
 
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
@@ -47,12 +47,12 @@ Az alábbi lista a tanúsítvány Azure verem telepítéséhez szükséges köve
 - A tanúsítvány "kiállítva a következőnek:" mező nem lehet ugyanaz, mint a "kiállító:" mező.
 - Minden tanúsítvány pfx-fájlok a jelszavakat, meg kell egyeznie a központi telepítés során
 - Jelszó a tanúsítvány PFX-nak kell lennie egy összetett jelszót.
-- Győződjön meg arról, hogy a tulajdonos nevét és minden tanúsítványok tulajdonosának alternatív nevét egyezik-e a sikertelen központi telepítéssel elkerülése érdekében ebben a cikkben leírt előírásoknak.
+- Ellenőrizze, hogy a tulajdonos neve és a tulajdonos alternatív nevének bővítmény (x509v3_config) egyeznie kell az alternatív tulajdonosnevekkel. A tulajdonos alternatív neve mezőnek további állomásnév (webhelyek, IP-címek, köznapi nevek) védelemmel egyetlen SSL-tanúsítvány megadását teszi lehetővé.
 
-> [!NOTE]
+> [!NOTE]  
 > Aláírt önaláírt tanúsítványok használata nem támogatott.
 
-> [!NOTE]
+> [!NOTE]  
 > A köztes hitelesítésszolgáltatókat egy tanúsítvány lánc-az-Megbízhatóságok IS jelenlétét támogatott. 
 
 ## <a name="mandatory-certificates"></a>Kötelező tanúsítványok

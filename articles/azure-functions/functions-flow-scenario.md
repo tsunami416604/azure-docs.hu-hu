@@ -1,26 +1,28 @@
 ---
-title: "Egy Azure függvény hívása a Microsoft Flow |} Microsoft Docs"
-description: "Hozzon létre egy egyéni összekötőt, akkor ezt az összekötőt használó függvény."
+title: Egy Azure függvény hívása a Microsoft Flow |} Microsoft Docs
+description: Hozzon létre egy egyéni összekötőt, akkor ezt az összekötőt használó függvény.
 services: functions
-keywords: "a felhőalapú alkalmazások, szolgáltatások, a Microsoft Flow, üzleti folyamatok, a felhő üzleti alkalmazás"
-documentationcenter: 
-author: mgblythe
+keywords: a felhőalapú alkalmazások, szolgáltatások, a Microsoft Flow, üzleti folyamatok, a felhő üzleti alkalmazás
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 38d2e3f2f2aa057b50ba12138cafc512ac110f9b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 57d80ad836a16b8821ba0cce42c822728c654dfd
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234801"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Függvény meghívása a Microsoft Flow-ból
 
@@ -62,7 +64,7 @@ A folyamat az adatforrásként használt lista létrehozásával kiindulásképp
 
 2. Adja meg a nevét `Turbines`, majd kattintson vagy koppintson **létrehozása**.
 
-    ![Adjon nevet az új lista](./media/functions-flow-scenario/create-list.png)
+    ![Új lista nevének megadása](./media/functions-flow-scenario/create-list.png)
 
     A **turbinák** lista alapértelmezett jön létre, a **cím** mező.
 
@@ -153,7 +155,7 @@ Először a folyamat az üres (sablon) nélkül, és ad hozzá egy *eseményind�
 
 A listában a létrehozott elemeket, a folyamat ellenőrzi, hogy a **ServiceRequired** mező értéke `Yes`, megnyitja a **Ha Igen** ág vagy a **Ha nincs** fiókirodai a megfelelő. Időmegtakarítás ebben a témakörben, csak adja meg a műveleteket a **Ha Igen** ág.
 
-### <a name="add-the-custom-connector"></a>Adja hozzá az egyéni összekötő
+### <a name="add-the-custom-connector"></a>Az egyéni összekötő hozzáadása
 
 Most adja hozzá az egyéni összekötő, amely behívja a függvény az Azure-ban. Csakúgy, mint a standard összekötők folyamat hozzáadja az egyéni összekötő. 
 
@@ -163,7 +165,7 @@ Most adja hozzá az egyéni összekötő, amely behívja a függvény az Azure-b
 
 2. Az a **művelet kiválasztását** párbeszédpanelen keresse meg `Turbine Repair`, majd válassza ki a **turbinás javítás - kiszámítja a költségek**.
 
-    ![Válasszon egy műveletet](media/functions-flow-scenario/choose-turbine-repair.png)
+    ![Válasszon műveletet](media/functions-flow-scenario/choose-turbine-repair.png)
 
     Az alábbi ábrán az a folyamat hozzáadott kártya. A mezők és leírások határozza meg az összekötő OpenAPI definíciója.
 
@@ -173,7 +175,7 @@ Most adja hozzá az egyéni összekötő, amely behívja a függvény az Azure-b
 
     A **óra**, jelölje be **EstimatedEffort**, és a **kapacitás**, jelölje be **MaxOutput**.
 
-    ![Válasszon egy műveletet](media/functions-flow-scenario/calculates-costs-fields.png)
+    ![Válasszon műveletet](media/functions-flow-scenario/calculates-costs-fields.png)
 
      Most adja hozzá a kimeneti függvény alapján egy másik feltételt.
 
@@ -237,7 +239,7 @@ Most, hogy a folyamat befejeződött, adhat hozzá új sort a SharePoint-listát
 
 3. Kattintson a **Done** (Kész) gombra.
 
-    ![Kész gyors szerkesztése](media/functions-flow-scenario/quick-edit-done.png)
+    ![Gyorsszerkesztés kész](media/functions-flow-scenario/quick-edit-done.png)
 
     Ha az elem hozzáadásához elindítja a folyamatot, amely akkor tekintse meg a Tovább.
 
@@ -247,7 +249,7 @@ Most, hogy a folyamat befejeződött, adhat hozzá új sort a SharePoint-listát
 
 5. A **futtatása előzmények**, kattintson a folyamatot futtatni.
 
-    ![futtatási előzményei](media/functions-flow-scenario/run-history.png)
+    ![Előzmények](media/functions-flow-scenario/run-history.png)
 
     Ha a Futtatás sikeres volt, a folyamat műveletek a következő lapon tekintheti meg. Ha a Futtatás bármilyen okból meghiúsult, a következő oldalon elhárításával kapcsolatban biztosít információkat.
 

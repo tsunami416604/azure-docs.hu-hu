@@ -3,21 +3,23 @@ title: Az Azure-erőforrások biztonsági riasztások kezelése a Privileged Ide
 description: A PIM biztonsági riasztások ismerteti.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c6c057541b3e3067de6331bab6ca9cccfa092710
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5d65201c8940e63e3ba514ae0a2dc8a247d7b859
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233512"
 ---
 # <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Az Azure-erőforrások biztonsági riasztások kezelése a Privileged Identity Management használatával
 Privileged Identity Management (PIM) az Azure-erőforrások riasztásokat állít elő, ha nem biztonságos vagy gyanús tevékenységek a környezetben. Riasztást vált ki, ha azt mutatja a riasztások lapon. 
@@ -30,14 +32,14 @@ Válasszon ki egy riasztást, a felhasználók vagy szerepkörök szervizelési 
 ![Riasztásjelentés](media/azure-pim-resource-rbac/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Riasztások
-| Riasztás | Súlyosság | Eseményindító | Ajánlás |
+| Riasztás | Severity | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
 | **Az erőforráshoz rendelt túl sok tulajdonosai** |Közepes |Túl sok felhasználó rendelkezik a tulajdonosi szerepkört. |Tekintse át a felhasználók a listán, és újbóli hozzárendelése a korlátozott engedélyekkel rendelkező szerepkörökhöz néhány. |
 | **Az erőforráshoz rendelt túl sok állandó tulajdonosai** |Közepes |Túl sok felhasználó véglegesen egy szerepkörhöz vannak hozzárendelve. |Tekintse át a felhasználók a listán, és rendelje hozzá az egyes aktiválási szerepkör használata szükséges. |
 | **Ismétlődő szerepkör létrehozása** |Közepes |Több szerepkör ugyanazok a feltételek rendelkezik. |Ezek a szerepkörök csak egyikét használhatja. |
 
 
-### <a name="severity"></a>Súlyosság
+### <a name="severity"></a>Severity
 * **Magas**: azonnali beavatkozást igényel a szabályzat megsértése miatt. 
 * **Közepes**: nem igényelnek azonnali beavatkozást, de egy lehetséges szabályzat megsértése jelzi.
 * **Alacsony**: nem igényelnek azonnali beavatkozást, de a kívánt házirend módosítását javasol.

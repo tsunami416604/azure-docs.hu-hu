@@ -1,24 +1,25 @@
 ---
 title: Az Azure - Cortana Intelligence megoldás műszaki útmutató űrtechnikai a prediktív karbantartási |} Microsoft Docs
 description: Egy technikai útmutató a Microsoft Cortana Intelligence a megoldás sablon űrtechnikai, segédprogramok vagy szállítására prediktív karbantartás.
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
-ms.service: cortana-analytics
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3e9b27784a1c0671ca3c87f9a7c55a288362299
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248384"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablont űrtechnikai és más vállalatok számára a prediktív karbantartási műszaki útmutatója
 
@@ -57,7 +58,7 @@ Található útmutatást követve töltse le és telepítse az alkalmazást, jel
 
 Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+### <a name="azure-event-hub"></a>Azure-eseményközpont
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása címzettje a szintetikus adatforrás által megadott bemenetet.
 
 ## <a name="data-preparation-and-analysis"></a>Adatok előkészítése és elemzése
@@ -85,7 +86,7 @@ Nem valószínű, hogy az adatkészlet által használt adatkészlet megegyezik-
 
 Az alábbi szakaszok ismertetik a szükséges módosítani, ha új adatkészlet megjelent a sablon részeit.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+### <a name="azure-event-hub"></a>Azure-eseményközpont
 Az Azure Event Hubs az általános; a központ JSON vagy CSV formátumú adatokat is közzé lehet tenni. Az Azure Event Hubs különleges feldolgozás nem történik, de fontos, hogy tudomásul veszi be táplált adatokat.
 
 Ez a dokumentum nem ismerteti az adatok, de használatával egyszerűen küldhet eseményeket vagy adatokat az Azure-Eseményközpontok felé az Event Hub API-k használatával.

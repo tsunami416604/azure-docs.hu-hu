@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 6/1/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: f48cbdb41f8ad7a3bad4546fa5cb77cf66780bed
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808502"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235413"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Az Azure SQL Server-adatbázis biztonsági mentése
 
@@ -103,6 +103,10 @@ Mielőtt készíthet biztonsági másolatot az SQL Server adatbázis, ellenőriz
 - Azonosításához vagy [Recovery Services-tároló létrehozása](backup-azure-sql-database.md#create-a-recovery-services-vault) azonos régióban, vagy területi beállítás, mint a virtuális gépet üzemeltető SQL Server.
 - [Ellenőrizze az engedélyeit a virtuális gépen](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) SQL-adatbázisok biztonsági mentése szükséges.
 - [SQL virtuális gép rendelkezik hálózati kapcsolattal](backup-azure-sql-database.md#establish-network-connectivity).
+
+> [!NOTE]
+> A biztonsági mentés SQL Server-adatbázisok egyszerre csak egy biztonsági mentési megoldás lehet. Más SQL biztonsági másolat a szolgáltatás használata előtt tiltsa le, más biztonsági mentések fog zavaró és sikertelen lesz. Engedélyezheti Azure biztonsági mentés az infrastruktúra-szolgáltatási virtuális együtt SQL biztonsági mentési bármely konfliktus nélkül 
+>
 
 Ha ezek a feltételek vannak jelen a környezetében, folytassa a szakasz [konfigurálása a tároló SQL-adatbázis védelme](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database). Ha az Előfeltételek bármelyike nem léteznek, továbbra is a fejezet elolvasása.
 
@@ -253,7 +257,13 @@ Ha a **adatbázisok felderítése** eszköz, az Azure Backup szolgáltatás a h�
 
 ## <a name="configure-backup-for-sql-server-database"></a>SQL Server-adatbázis biztonsági mentés konfigurálása
 
-Azure biztonsági mentés az SQL Server-adatbázisok védelme és kezelése a biztonsági mentési feladatok-felügyeleti szolgáltatásokat biztosít. A felügyeleti és megfigyelési lehetőségek függ a Recovery Services-tároló. Az SQL-adatbázis védelmének konfigurálásához:
+Azure biztonsági mentés az SQL Server-adatbázisok védelme és kezelése a biztonsági mentési feladatok-felügyeleti szolgáltatásokat biztosít. A felügyeleti és megfigyelési lehetőségek függ a Recovery Services-tároló. 
+
+> [!NOTE]
+> A biztonsági mentés SQL Server-adatbázisok egyszerre csak egy biztonsági mentési megoldás lehet. Más SQL biztonsági másolat a szolgáltatás használata előtt tiltsa le, más biztonsági mentések fog zavaró és sikertelen lesz. Engedélyezheti Azure biztonsági mentés az infrastruktúra-szolgáltatási virtuális együtt SQL biztonsági mentési bármely konfliktus nélkül 
+>
+
+Az SQL-adatbázis védelmének konfigurálásához:
 
 1. Nyissa meg a Recovery Services-tároló regisztrált az SQL-virtuális gép.
 

@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 6d0109b9043b48fbbbeeaccea6c798eaa547a056
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0a624d850b8c3260acb24cb17566090e8ad0043e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839867"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233937"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Engedélyezze a frissítéskezelés, a változások követése és a készlet megoldások a több virtuális gépeken
 
@@ -63,7 +63,7 @@ Amikor bevezetési több számítógépen, előfordulhat, hogy megjelenítése g
 
 **OK**: Ez a hiba azt mutatja, hogy a virtuális Gépet, amely egy másik munkaterületet beépített jelentések kívánt.
 
-**Megoldás**: módosítsa a munkaterület beágyazott hivatkozást, vagy kattintson a gombra kattintva megcélzott **módosítása**. Az alábbi parancsfájlok segítségével módosítsa a munkaterület az egyes gépek tervezett azt.
+**Megoldás**: kattintson a **konfigurációs használt** módosítása a célzott Automation-fiók és a Naplóelemzési munkaterület.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Virtuális gép jelent, amely nem érhető el ebben az előfizetésben munkaterület
 

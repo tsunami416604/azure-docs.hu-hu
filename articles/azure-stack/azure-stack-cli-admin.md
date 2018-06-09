@@ -1,24 +1,25 @@
 ---
-title: "Az Azure parancssori felület engedélyezése a felhasználók Azure verem |} Microsoft Docs"
-description: "A platformfüggetlen parancssori felület (CLI) használatával kezelheti és telepítheti az Azure-veremben erőforrások használata"
+title: Az Azure parancssori felület engedélyezése a felhasználók Azure verem |} Microsoft Docs
+description: A platformfüggetlen parancssori felület (CLI) használatával kezelheti és telepítheti az Azure-veremben erőforrások használata
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 06/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: e2483bda5a0c6a6b270759946f146c37c5dad5b1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d0103d211608514848da7d789d32d37d8385f33f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247856"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure CLI Azure verem felhasználók engedélyezése
 
@@ -58,19 +59,17 @@ certutil -encode root.cer root.pem
 Az Azure verem operátorok egy nyilvánosan elérhető végponton, amelyen a virtuálisgép-alias fájlt kell beállítani. A virtuális gép alias fájl nem egy JSON-fájlt, amely rendszerképek köznapi neve. Ilyen nevű ezt követően van megadva, a virtuális gép telepítésekor az Azure parancssori felület paraméterként.  
 
 Mielőtt alias fájlt adjon hozzá egy bejegyzést, győződjön meg arról, hogy akkor [töltse le a lemezképet az Azure piactérről](azure-stack-download-azure-marketplace-item.md), vagy [közzé a saját egyéni rendszerképét](azure-stack-add-vm-image.md). Ha egyéni lemezkép tesz közzé, jegyezze fel a közzétevő, az ajánlat, SKU és verzió adatok közzététele során megadott. Ha a piactérről származó lemezkép, az információk használatával megtekintheti a ```Get-AzureVMImage``` parancsmag.  
-   
+
 A [alias mintafájl](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) számos gyakori lemezképpel aliasok érhető el. Amely használhatja kiindulási pontként. A gazdagép egy helyet, ahol a CLI ügyfelek csatlakozni tud hozzá a fájlhoz. Egyik módja a blob storage-fiók a fájlt, majd az URL-cím megosztása a felhasználókkal:
 
 1. Töltse le a [mintafájl](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) a Githubról.
-2. Új tárfiók létrehozása Azure-készletben. Amely befejeződése után hozzon létre egy új blob-tároló. Állítsa be a hozzáférési házirendet "nyilvános".  
-3. A JSON-fájl feltöltése az új tárolóhoz. Amely befejeződése után megtekintheti a blob URL-CÍMÉT blob nevére kattint, és jelölje be az URL-címet a blob tulajdonságai közül.
+2. Új tárfiók létrehozása Azure-készletben. Ha ezt hozzon létre egy új blob-tároló. Állítsa be a hozzáférési házirendet "nyilvános".  
+3. A JSON-fájl feltöltése az új tárolóhoz. Ha ezt megtekintheti a blob URL-CÍMÉT a blob nevének kiválasztásával, és jelölje be az URL-címet a blob tulajdonságai közül.
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
+- [Sablonok az Azure parancssori felület telepítése](azure-stack-deploy-template-command-line.md)
 
-[Sablonok az Azure parancssori felület telepítése](azure-stack-deploy-template-command-line.md)
+- [Kapcsolódás a PowerShell-lel](azure-stack-connect-powershell.md)
 
-[Kapcsolódás a PowerShell-lel](azure-stack-connect-powershell.md)
-
-[Felhasználói engedélyek kezelése](azure-stack-manage-permissions.md)
-
+- [Felhasználói engedélyek kezelése](azure-stack-manage-permissions.md)

@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: b141adc9025f2f40acdfbd1f2d7f378173463956
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34804909"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248469"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob Storage-életciklus (előzetes verzió) kezelése
 
@@ -70,7 +70,7 @@ Ha a szolgáltatás jóváhagyott és megfelelően regisztrálva, a "Regisztrál
 
 ## <a name="add-or-remove-policies"></a>Szabályok hozzáadása vagy eltávolítása 
 
-Hozzáadása, szerkesztése, vagy távolítsa el a házirendet az Azure portálon, a PowerShell, a REST API-k vagy az ügyfél eszközök a következő nyelveken: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Hozzáadásához, szerkesztéséhez, vagy távolítsa el a szabályzatot, az Azure-portált használja, [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), REST API-k vagy az ügyfél eszközök a következő nyelveken: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [ NODE.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -121,13 +121,13 @@ A házirendben a két paraméter szükség:
 | Paraméter neve | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
 | verzió:        | Egy karakterlánc-értékben `x.x` | A kép verziószáma 0,5 |
-| szabályok          | Egy szabály objektumokból álló tömb | Minden házirendben szükséges legalább egy szabályt. Előzetes megadhatja a házirend legfeljebb 10 szabálynál. |
+| szabályok          | Egy szabály objektumokból álló tömb | Minden házirendben szükséges legalább egy szabályt. Előzetes megadhatja a házirend legfeljebb 4 szabálynál. |
 
 A szabályban szükséges paraméterek a következők:
 
 | Paraméter neve | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
-| Name (Név)           | Karakterlánc | A szabály neve tetszőleges kombinációját alfanumerikus karaktereket tartalmazhat. Szabályának neve, a kis-és nagybetűket. Egy házirend belül egyedinek kell lennie. |
+| Name (Név)           | Sztring | A szabály neve tetszőleges kombinációját alfanumerikus karaktereket tartalmazhat. Szabályának neve, a kis-és nagybetűket. Egy házirend belül egyedinek kell lennie. |
 | type           | Enum érték | Az érvényes érték az előzetes `Lifecycle` |
 | definíció     | Egy objektum, amely meghatározza az életciklus-szabály | Minden egyes definition egy szűrési és egy művelet készletre a épül fel. |
 
@@ -169,7 +169,7 @@ Minden egyes szabályát leíró definíció beolvasása tartalmaz egy szűrési
 
 ```
 
-## <a name="rule-filters"></a>A szabály szűrők
+### <a name="rule-filters"></a>A szabály szűrők
 
 Szűrők korlátozzák a szabály műveletek részhalmazára blobok a tárfiókon belül. Ha több szűrőt vannak meghatározva, a logikai `AND` összes szűrőt hajtja végre.
 
@@ -191,6 +191,9 @@ A képen életciklus-felügyeletének támogatja, és adatdeduplikációval blob
 | tierToCool    | Támogatja a blob jelenleg a gyakran használt adatok réteg         | Nem támogatott |
 | tierToArchive | Támogatja a blob jelenleg a gyakran használt adatok vagy a ritkán használt adatok réteg | Nem támogatott |
 | törlés        | Támogatott                                   | Támogatott     |
+
+>[!NOTE] 
+Ha egynél több művelet van definiálva azonos blobot, életciklus-felügyeletének vonatkozik a legkisebb költségű művelet a blob. (pl. művelet `delete` művelet olcsóbbak `tierToArchive`. A művelet `tierToArchive` művelet olcsóbbak `tierToCool`.)
 
 A képen a művelet végrehajtási feltételek kora alapulnak. Alap blob használ utolsó módosítás időpontja nyomon követhető a korszűrő és blob-pillanatképek használ pillanatkép létrehozásának ideje korszűrő követésére.
 

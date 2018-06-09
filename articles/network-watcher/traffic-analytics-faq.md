@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: f7e456c76dcf67a40777e32b100b900b859e210e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736796"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236399"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
@@ -30,14 +30,14 @@ ms.locfileid: "34736796"
     - NSG folyamata naplók a figyelni kívánt NSG-k engedélyezve
     - Egy Azure Storage-fiók tárolására nyers flog naplók
     - Az olvasási és írási hozzáférés egy Naplóelemzés (OMS) munkaterületen
-    - A fiókjához társítva kell lenni az előfizetés szintjén az alábbi engedélyek egyikét:
+    - Felhasználói kell rendelni, amelyben a következő szerepkörök előfizetés szintjén egyikét:
     
             All permissions *
             All Read permissions */read
             All network permissions Microsoft.Network/*
             All network read permissions Microsoft.Network/*/read
 
-    Vagy az Ön fiókjához társítva kell lennie az előfizetés szintjén minden művelet a következő: 
+    Vagy a felhasználónak kell rendelni, amelyben minden szerepkört az előfizetés szintjén a következő: 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
@@ -49,6 +49,19 @@ ms.locfileid: "34736796"
         - Microsoft.Network/routeTables/read
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
+        
+A felhasználó az előfizetéshez rendelt szerepkörök ellenőrzéséhez kövesse a lépéseket alatti:
+
+Jelentkezzen be Azure-ban Login-AzureRmAccount 
+
+Válassza ki a kötelező előfizetést Select-AzureRmSubscription használatával 
+
+Most az adott felhasználóhoz rendelt összes szerepkörök listájában, használja a Get-AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators 
+
+Ha nem Ön kimenetet elismerésben részesíti végrehajtása után majd lépjen kapcsolatba megfelelő előfizetési rendszergazda, a parancsok eléréséhez.  
+
+A részletekért tekintse meg [szerepköralapú hozzáférés-vezérlés az Azure PowerShell kezelése](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+
 
 2.  Mely Azure-régiók találhatók forgalom analytics?
 
@@ -114,11 +127,11 @@ ms.locfileid: "34736796"
 
 14. Konfigurálhatja a PowerShell vagy az Azure Resource Manager sablon forgalom analytics?
 
-    Nem, forgalom analytics csak konfigurálható az Azure portál használatával.
+Igen, a windows powershell támogatott verziója 6.2.1 forgalom konfigurációja és újabb verziók esetében, azonban Azure Resource Manager sablon funkció nem érhető el jelent-e. Megtudhatja, hogyan PowerShell segítségével konfigurálhatja a forgalom analytics tekintse meg a következő [dokumentáció](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Hogyan áron a forgalom analytics?
 
-        Forgalom analytics forgalmi díjas csökkentett naplók növelésére és a továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület. A képen forgalom analytics nem számlázása történik a csökkentett naplók lehetőségeinek azonban munkaterület az adatok tárolási közzétett ütemben számlázási vonatkoznak. Ez a válasz frissíti az forgalom analytics díjszabása elérhetővé válik.
+Forgalom analytics folyamat naplóadatait a szolgáltatás által feldolgozott, és a resulted továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület a forgalmi díjas. Kérjük, több vonatkozó terv tudni [kattintson ide](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  Hogyan navigálhatnak meg, hogy a földrajzi nézet a billentyűzet használata-e?
 

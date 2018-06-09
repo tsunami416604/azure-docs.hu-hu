@@ -1,26 +1,28 @@
 ---
-title: "Egy függvény hívása a PowerApps |} Microsoft Docs"
-description: "Hozzon létre egy egyéni összekötőt, akkor ezt az összekötőt használó függvény."
+title: Egy függvény hívása a PowerApps |} Microsoft Docs
+description: Hozzon létre egy egyéni összekötőt, akkor ezt az összekötőt használó függvény.
 services: functions
-keywords: "a felhőalapú alkalmazások, szolgáltatások, PowerApps, üzleti folyamatok, a felhő üzleti alkalmazás"
-documentationcenter: 
-author: mgblythe
+keywords: a felhőalapú alkalmazások, szolgáltatások, PowerApps, üzleti folyamatok, a felhő üzleti alkalmazás
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 02cd491be5336abe708cce0f6e268b38514d4e88
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234954"
 ---
 # <a name="call-a-function-from-powerapps"></a>Függvény hívása a PowerAppsből
 A [PowerApps](https://powerapps.microsoft.com) platform készült üzleti szakértők nélkül hagyományos alkalmazáskód alkalmazásokat lehet készíteni. Professzionális fejlesztők számára az Azure Functions segítségével PowerApps, képességekkel bővíthetik a technikai részleteket a PowerApps app rendszerépítők védelme során.
@@ -71,7 +73,7 @@ Az egyéni API-t (más néven egyéni összekötő) a powerapps segítségével 
 ## <a name="create-an-app-and-add-data-sources"></a>Hozzon létre egy alkalmazást, és adja hozzá az adatforrások
 Most már készen áll az alkalmazás a powerapps segítségével, és adja hozzá az alkalmazáshoz tartozó adatforrások az Excel-adatok és az egyéni API-t.
 
-1. A [web.powerapps.com](https://web.powerapps.com), válassza a **üres elindítását** > ![telefonos alkalmazás ikon](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **ellenőrizze az alkalmazás**.
+1. A [web.powerapps.com](https://web.powerapps.com) helyen válassza a **Kiindulás üres alkalmazásból** > ![Telefonos alkalmazás ikonja](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **Alkalmazás létrehozása** lehetőséget.
 
     ![Indítson el az üres – telefonalkalmazás](media/functions-powerapps-scenario/create-phone-app.png)
 
@@ -97,7 +99,7 @@ Most már készen áll az alkalmazás a powerapps segítségével, és adja hozz
 
     ![Excel-adatok importálása](media/functions-powerapps-scenario/excel-table.png)
 
-    1. Alkalmazás vászonra válasszon **adatokhoz**.
+    1. Az alkalmazásvásznon válassza a **Csatlakozás adatokhoz** lehetőséget.
 
     1. Az a **adatok** panelen, kattintson a **statikus adatok hozzáadása az alkalmazáshoz**.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8e9781f97c7d605a5249fcc1684dc2f72cb1e3ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824431"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235807"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>A megoldás listaelem típusának meghatározása  
 A kirakatokkal sok közzétételi beállítások támogatja: típusok listázása és típusok kínálnak. Válassza ki az ajánlat típusa, amely a legjobban jelképezi a megoldás és a szolgáltatás adatait. Minden közzétételi beállítások segítségével férhet hozzá megosztása vezethet.   
@@ -209,10 +209,11 @@ A Microsoft jelenleg szabad és bring your-saját-licencet (BYOL) licencelési m
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-| Számlázási és annak mérésére | Támogatja a vagy az ingyenes vagy BYOL számlázási modellt. |  
-|Kép összeállítása a Dockerfile    |   Tároló képek a Docker kép specifikáció alapján kell, és az egy Dockerfile kell kialakítani. További tudnivalók [itt] docker lemezképek összeállításakor. (https://docs.docker.com/engine/reference/builder/#usage) |
-|Az ACR üzemeltetéséhez    |   Egy Azure tároló beállításjegyzék (ACR) tárház tároló képek kell futnia. További tudnivalókat az ACR [itt]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)   |
-|Lemezkép-címkézés    |   Tároló képek tartalmaznia kell legalább 1 címke (maximális címkék: 16). További információ a címkézés [itt] kép. (https://docs.docker.com/engine/reference/commandline/tag/)    |
+|Számlázási és annak mérésére  |  A tároló támogatnia kell a vagy ingyenes vagy saját licenc számlázási modellt.       |  
+|Kép összeállítása a Dockerfile   |   Tároló képek a Docker kép specifikáció alapján kell, és az egy Dockerfile kell kialakítani. További tudnivalók [itt] docker lemezképek összeállításakor. (https://docs.docker.com/engine/reference/builder/#usage)
+|Az ACR üzemeltetéséhez   |   Egy Azure tároló beállításjegyzék (ACR) tárház tároló képek kell futnia. További tudnivalókat az ACR [itt]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     
+|Lemezkép-címkézés   |   Tároló képek tartalmaznia kell legalább 1 címke (maximális címkék: 16). További információ a címkézés [itt] kép. (https://docs.docker.com/engine/reference/commandline/tag/)     | 
+
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Követelmények: Az Azure piactér: Transact: SaaS-alkalmazás  
@@ -224,10 +225,11 @@ A Microsoft a commerce tranzakciót futtat. A Microsoft az Ön nevében ügyfél
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-| Számlázási és annak mérésére | Az ajánlat árképzéséről havi simán sebességgel. Használatalapú tarifacsomag és használat alapú *true felfelé* beállítások jelenleg nem támogatottak. |  
-| Visszavonás | Az ajánlat bármikor törölhető az ügyfél. |  
-|Tranzakció kezdőlapja     |   Egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és kezelése a Szolgáltatottszoftver-szolgáltatásfiók működteti.      |    Tranzakció     |
-|Előfizetés API    |   Egy szolgáltatás, amely a Szolgáltatottszoftver-előfizetés létrehozása, frissítése és a felhasználói fiók és a service-csomag törlése hatással lehet teszi ki. Kritikus API módosítások 24 órán belül támogatnia kell. A nem kritikus API módosítások kiadjuk rendszeres időközönként.      |     Tranzakció    |
+|Számlázási és annak mérésére   |   Az ajánlat árképzéséről havi simán sebességgel. Jelenleg nem támogatottak a használatalapú árképzési és a használat alapú "true felfelé" képességeket.      |  
+|Visszavonás  |   Az ajánlat bármikor törölhető az ügyfél.      |  
+|Tranzakció kezdőlapja   |   Egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és kezelése a Szolgáltatottszoftver-szolgáltatásfiók működteti.      |   
+|Előfizetés API    |   Egy szolgáltatás, amely a Szolgáltatottszoftver-előfizetés létrehozása, frissítése és a felhasználói fiók és a service-csomag törlése hatással lehet teszi ki. Kritikus API módosítások 24 órán belül támogatnia kell. A nem kritikus API módosítások kiadjuk rendszeres időközönként.      | 
+
 
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Követelmények: Az Azure piactér: Transact: virtuális gép  
