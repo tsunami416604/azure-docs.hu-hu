@@ -17,6 +17,10 @@
           href: stream-files-tutorial-with-api.md
         - name: A REST-tel
           href: stream-files-tutorial-with-rest.md
+    - name: Élő stream
+      items:
+        - name: .NET Core-ral
+          href: stream-live-tutorial-with-api.md
     - name: Videó elemzése
       items:
         - name: .NET-tel
@@ -37,6 +41,8 @@
           href: encoding-concept.md
         - name: Adaptív sávszélességi skála automatikus létrehozása
           href: autogen-bitrate-ladder.md
+    - name: Live streaming (Élő adatfolyam)
+      href: live-streaming-overview.md
     - name: Médiaintelligencia
       href: intelligence-concept.md
     - name: Reagálás az eseményekre
