@@ -7,14 +7,6 @@
       href: asdk-what-is.md
     - name: ASDK kibocsátási megjegyzései
       href: asdk-release-notes.md
-- name: Oktatóanyagok
-  items:
-    - name: Előfizetés egy ajánlatra
-      href: asdk-subscribe-services.md
-    - name: Frissítés ajánlatok és tervek
-      href: asdk-update-offers.md
-    - name: A virtuális gép létrehozása sablonból
-      href: asdk-create-vm-template.md
 - name: Alapelvek
   items:
     - name: Központi telepítés tervezési szempontok

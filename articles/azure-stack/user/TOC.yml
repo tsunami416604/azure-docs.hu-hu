@@ -27,6 +27,10 @@
       href: azure-stack-solution-hybrid-identity.md
     - name: Hibrid felhő kapcsolat konfigurálása
       href: azure-stack-solution-hybrid-connectivity.md
+    - name: Előfizetés egy ajánlatra
+      href: azure-stack-subscribe-services.md
+    - name: A virtuális gép létrehozása sablonból
+      href: azure-stack-create-vm-template.md
 - name: Útmutatók
   items:
     - name: Az Azure Stack Portal használata
@@ -93,7 +97,7 @@
               href: azure-stack-kv-push-secret-into-vm.md
             - name: KeyVault-mintaalkalmazás
               href: azure-stack-kv-sample-app.md
-        - name: Megoldás sablonok
+        - name: Megoldássablonok
           items:
             - name: A Service Fabric-fürt telepítése
               href: azure-stack-solution-template-service-fabric-cluster.md
