@@ -1,11 +1,11 @@
 ---
-title: "Webalkalmazások konfigurálása az Azure App Service-ben"
-description: "A webes alkalmazás beállítása az Azure App Service szolgáltatások"
+title: Webalkalmazások konfigurálása az Azure App Service-ben
+description: A webes alkalmazás beállítása az Azure App Service szolgáltatások
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234521"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
@@ -67,7 +68,9 @@ Ez a szakasz olyan név/érték párok, amelyek a webalkalmazás a kezdőlapon t
 * .NET-alkalmazások esetén ezek a beállítások vannak be a nézetmodellbe, a .NET-konfiguráció `AppSettings` futásidőben, felülírva a meglévő beállításokat. 
 * A PHP, Python, Java és csomópont alkalmazások férhetnek hozzá ezeket a beállításokat a környezeti változók futásidőben. Minden egyes alkalmazás-beállítás két környezeti változók jönnek létre; egy alkalmazás beállítási bejegyzésre, és egy másik APPSETTING_ előtaggal rendelkező által a megadott néven. Is tartalmaznak ugyanarra az értékre.
 
-### <a name="connection-strings"></a>Kapcsolati karakterláncok
+Alkalmazásbeállítások mindig titkosíthatók tárolt (titkosított nyugalmi).
+
+### <a name="connection-strings"></a>Kapcsolati sztringek
 Kapcsolati karakterláncok kapcsolt erőforrásokban. 
 
 .NET-alkalmazások esetén a kapcsolati karakterláncok vannak be a nézetmodellbe, a .NET-konfiguráció `connectionStrings` beállításokat futásidőben, felülírva a meglévő bejegyzéseket, ahol a kulcs értéke a hivatkozott adatbázis neve. 
@@ -80,6 +83,8 @@ A PHP, Python, Java és csomópont alkalmazások ezek a beállítások használh
 * Egyéni: `CUSTOMCONNSTR_`
 
 Például, ha a MySql-kapcsolati karakterlánc lett nevű `connectionstring1`, akkor elérhetőek a környezeti változó `MYSQLCONNSTR_connectionString1`.
+
+Kapcsolati karakterláncok mindig titkosíthatók tárolt (titkosított nyugalmi).
 
 ### <a name="default-documents"></a>Alapértelmezett dokumentumok
 Az alapértelmezett dokumentum egy a weblap, akkor jelenik meg, a webhely a gyökér URL-címen.  A listán szereplő első egyező fájlok szolgál. 
@@ -140,7 +145,7 @@ A tartománynevek megtekintéséhez kattintson **összes beállítás** > **egy�
 
 ### <a name="deployments"></a>Központi telepítés
 * Folyamatos üzembe helyezést beállítani. Lásd: [Git használatával is telepíthet webalkalmazásokat az Azure App Service](app-service-deploy-local-git.md).
-* Üzembe helyezési pontok. Lásd: [előkészítési környezetek telepítése az Azure App Service Web Apps].
+* Üzembe helyezési pontok. Lásd: [Az Azure App Service Web Apps előkészítési környezetek telepítése].
 
 Az üzembe helyezési megtekintéséhez kattintson **összes beállítás** > **üzembe helyezési**.
 
@@ -150,7 +155,7 @@ Basic vagy Standard módban tesztelheti a HTTP vagy HTTPS-végpontokkal, legfelj
 További információkért lásd: [Útmutató: webes végpont állapotának figyelése].
 
 > [!NOTE]
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása] oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az App Service kipróbálása] oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
 > 
 > 
 
@@ -165,13 +170,13 @@ További információkért lásd: [Útmutató: webes végpont állapotának figy
 [ASP.NET SignalR]: http://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
-[előkészítési környezetek telepítése az Azure App Service Web Apps]: ./web-sites-staged-publishing.md
+[Az Azure App Service Web Apps előkészítési környezetek telepítése]: ./web-sites-staged-publishing.md
 [HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben]: ./app-service-web-tutorial-custom-ssl.md
 [Útmutató: webes végpont állapotának figyelése]: http://go.microsoft.com/fwLink/?LinkID=279906
 [Az Azure App Service Web Apps figyelési alapjai]: ./web-sites-monitor.md
 [folyamatkezelési mód]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [A webalkalmazás skálázása az Azure App Service-ben]: ./web-sites-scale.md
-[Az Azure App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
+[Az App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->
 

@@ -10,19 +10,20 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: f1e997b9e7f948f29cce940574fe7db34a503dc6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.openlocfilehash: 5aee9a96270b4bcafb4ee696c0cbf6a424515cb1
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825540"
 ---
-## <a name="well-done"></a>szép munka!
-Befejezte az első lépésekről szóló útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="well-done"></a>Remek!
+Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Kubernetes-alapú környezetben fejlesztésére optimalizált Azure-ban.
-> * Visual STUDIO Code és a parancssor használatával tárolókban lévő kód ismételt fejlesztéséhez.
-> * Egymástól függetlenül fejlesztése két külön szolgáltatást, és a használt Kubernetes DNS szolgáltatás felderítése a híváshoz egy másik szolgáltatásra.
-> * Megtartják fejlesztése és csoportos környezetben tesztelheti a kódját.
+> * Fejlesztésre optimalizált Kubernetes-alapú környezet, vagyis egy _Dev Spaces-tér_ létrehozása az Azure-ban.
+> * Iteratív kódfejlesztés tárolókban a VS Code és a parancssor használatával.
+> * Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
+> * A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
-Most, hogy Azure fejlesztői szóközt tartalmaz, hogy megismerte [a fejlesztői környezet megosztása a csoport tagjainak](../how-to/share-dev-spaces.md) és azokat meg, milyen egyszerűen dolgozhatnak együtt.
+Most, hogy megismerte az Azure Dev Spacest, [megoszthatja a létrehozott Dev Spaces-teret egy csapattaggal](../how-to/share-dev-spaces.md), és megmutathatja neki, milyen egyszerű az együttműködés.
