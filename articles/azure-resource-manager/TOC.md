@@ -89,8 +89,7 @@
 ### [Logikai függvények](resource-group-template-functions-logical.md)
 ### [Numerikus függvények](resource-group-template-functions-numeric.md)
 ### [Erőforrásfüggvények](resource-group-template-functions-resource.md)
-### 
-  [Sztringfüggvények](resource-group-template-functions-string.md)
+### [Sztringfüggvények](resource-group-template-functions-string.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
 ## [Azure CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
