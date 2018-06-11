@@ -116,6 +116,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: Fájltömörítés
           href: cdn-troubleshoot-compression.md
+        - name: Engedélyezett hitelesítésszolgáltatók
+          href: cdn-troubleshoot-allowed-ca.md
 - name: Referencia
   items:
     - name: Szabálymotor-referencia

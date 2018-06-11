@@ -14,7 +14,7 @@
       href: concepts-collector.md
     - name: Értékelési számítások
       href: concepts-assessment-calculation.md
-    - name: Függőségek vizualizációja
+    - name: A függőségek vizualizációjának ismertetése
       href: concepts-dependency-visualization.md
 - name: Útmutatók
   items:
@@ -30,6 +30,8 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre
           href: contoso-migration-rehost-vm.md
+        - name: 6. Contoso – alkalmazás áthelyezése Azure-beli virtuális gépekre és az Azure SQL AlwaysOnra
+          href: contoso-migration-rehost-vm-sql-ag.md
     - name: Nagy méretű környezet felderítése és értékelése
       href: how-to-scale-assessment.md
     - name: Gépek csoportosítása

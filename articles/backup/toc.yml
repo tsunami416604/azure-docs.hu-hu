@@ -63,8 +63,6 @@
           items:
             - name: Az Azure Backup Server számítási feladatainak előkészítése az Azure Portalon
               href: backup-azure-microsoft-azure-backup.md
-            - name: Azure Backup Server telepítése az Azure Stacken
-              href: backup-mabs-install-azure-stack.md
             - name: Tárterület hozzáadása az Azure Backup Serverhez
               href: backup-mabs-add-storage.md
             - name: Az Azure Backup Server frissítése a 2-es verzióra
@@ -83,10 +81,18 @@
               href: backup-azure-sql-mabs.md
             - name: A rendszer állapotának védelme és operációs rendszer nélküli helyreállítás
               href: backup-mabs-system-state-and-bmr.md
-            - name: Fájlok és alkalmazások az Azure Stackben
-              href: backup-mabs-files-applications-azure-stack.md
         - name: Adatok helyreállítása az Azure Backup Serverről
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure Backup Server az Azure Stacken
+      items:
+        - name: Azure Backup Server telepítése
+          href: backup-mabs-install-azure-stack.md
+        - name: Fájlok és alkalmazások védelme
+          href: backup-mabs-files-applications-azure-stack.md
+        - name: A SharePoint-farm védelme
+          href: backup-mabs-sharepoint-azure-stack.md
+        - name: Az SQL Server-adatbázis védelme
+          href: backup-mabs-sql-azure-stack.md
     - name: Azure-fájlmegosztások
       items:
         - name: Azure-fájlmegosztások biztonsági mentése

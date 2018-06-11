@@ -8,6 +8,7 @@
 ### [Ajánlott hálózati biztonsági eljárások](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Magas rendelkezésre állású virtuális hálózati készülékek](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [Többféle terheléselosztási módszer használata](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel](disaster-recovery-dns-traffic-manager.md)
 ## Tervezés és kialakítás
 ### [Virtuális hálózatok](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Létesítmények közötti kapcsolatok – VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)

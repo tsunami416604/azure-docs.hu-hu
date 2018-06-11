@@ -29,6 +29,8 @@
   items:
     - name: Előkészítés
       items:
+        - name: Több virtuális gép előkészítése a portálról
+          href: automation-onboard-solutions-from-browse.md
         - name: Előkészítés Azure-beli virtuális gépről
           href: automation-onboard-solutions-from-vm.md
         - name: Előkészítés Automation-fiókból
@@ -159,14 +161,12 @@
       items:
         - name: Runbook-katalógus
           href: automation-runbook-gallery.md
-        - name: Runbookok monitorozása tevékenységnaplókkal
-          href: automation-alert-activity-log.md
+        - name: Runbookok monitorozása metrikariasztásokkal
+          href: automation-alert-metric.md
         - name: Runbook indítása Azure-riasztásokból
           href: automation-create-alert-triggered-runbook.md
         - name: Amazon-webszolgáltatásbeli virtuális gép létrehozása
           href: automation-scenario-aws-deployment.md
-        - name: Azure VM-riasztás szervizelése
-          href: automation-azure-vm-alert-integration.md
         - name: Virtuális gépek indítása és leállítása munkaidőn kívül
           href: automation-solution-vm-management.md
         - name: Erőforráscsoport eltávolítása
@@ -215,16 +215,12 @@
   items:
     - name: Automation bevezető videója
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
-    - name: Azure Automation-képzés
-      href: 'https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382'
     - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: Képzési terv
-      href: 'https://azure.microsoft.com/documentation/learning-paths/automation/'
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
     - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/automation/)'
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Kibocsátási megjegyzések

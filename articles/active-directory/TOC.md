@@ -125,7 +125,7 @@
 #### [Értesítések](active-directory-reporting-notifications.md)
 #### [Naplózott tevékenységekre vonatkozó referencia](active-directory-reporting-activity-audit-reference.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md
+#### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
 
@@ -326,6 +326,7 @@
 #### [Feltételek](active-directory-conditional-access-conditions.md)
 #### [Helyfeltételek](active-directory-conditional-access-locations.md)
 #### [Vezérlők](active-directory-conditional-access-controls.md)
+#### [Alapvető védelem](active-directory-conditional-access-baseline-protection.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
 #### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)

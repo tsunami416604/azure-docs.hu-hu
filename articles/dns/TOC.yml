@@ -40,6 +40,8 @@
       href: dns-alerts-metrics.md
     - name: Fordított DNS
       href: dns-reverse-dns-overview.md
+    - name: Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Útmutató
   items:
     - name: Egyéni DNS-zónák és -rekordok létrehozása – Azure CLI

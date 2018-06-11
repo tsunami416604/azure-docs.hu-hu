@@ -11,6 +11,10 @@
       href: quickstart-cli.md
     - name: Betanítási feladat – Python
       href: quickstart-python.md
+- name: Útmutatók
+  items:
+    - name: Migrálás frissített API-ra
+      href: migrate-to-new-api.md
 - name: Referencia
   items:
     - name: Azure CLI
