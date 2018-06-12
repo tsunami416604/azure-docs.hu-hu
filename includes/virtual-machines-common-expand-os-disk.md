@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: virtual-machines
+author: sdwheeler
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 04/18/2018
+ms.author: kirpas;iainfou;sewhee
+ms.custom: include file
+ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323799"
+---
 ## <a name="overview"></a>Áttekintés
 Amikor hoz létre egy új virtuális gép (VM) erőforráscsoportban lemezképek [Azure piactér](https://azure.microsoft.com/marketplace/), az alapértelmezett operációsrendszer-meghajtón gyakran 127 GB (néhány képet, operációsrendszer-lemez kisebb méretű alapértelmezés szerint rendelkezik). Bár hozzáadhat adatlemezeket a virtuális géphez (ezeknek száma a választott termékváltozattól függ), és ajánlott ezekre a kiegészítő lemezekre telepíteni az alkalmazásokat és a processzorigényes számítási feladatokat, az ügyfeleknek gyakran bővíteniük kell az operációs rendszer meghajtóját bizonyos forgatókönyvek támogatásához, mint például a következők:
 
@@ -13,7 +30,7 @@ Amikor hoz létre egy új virtuális gép (VM) erőforráscsoportban lemezképek
 >
 
 ## <a name="resize-the-os-drive"></a>Az operációs rendszer meghajtójának átméretezése
-Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powershell/azureps-cmdlets-docs) erőforrás-kezelő moduljaival történő átméretezését ismerteti. Bemutatjuk az operációs rendszer meghajtó Unamanged és a felügyelt lemezek átméretezése, mivel mindkét lemeztípusok eltérnek a lemezek átméretezése módja.
+Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powershell/azureps-cmdlets-docs) erőforrás-kezelő moduljaival történő átméretezését ismerteti. Bemutatjuk az operációs rendszer meghajtóját mind a nem kezelt, mind a kezelt átméretezése, mert mindkét lemeztípusok eltérnek a lemezek átméretezése megközelítése.
 
 ### <a name="for-resizing-unmanaged-disks"></a>Nem felügyelt lemezek átméretezéséhez:
 
@@ -106,7 +123,7 @@ Készen is van. Csatlakozzon RDP-kapcsolaton keresztül a virtuális géphez, ny
 ## <a name="summary"></a>Összegzés
 Ebben a cikkben a Powershell Azure Resource Manager-moduljaival bővítettük egy IaaS-beli virtuális gép operációsrendszer-meghajtóját. Mind a nem kezelt, mind a kezelt referenciaként a teljes parancsfájl másolható alatt van:
 
-Unamanged lemezek:
+Nem felügyelt lemezek:
 
 ```Powershell
 Connect-AzureRmAccount
@@ -134,10 +151,10 @@ Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="next-steps"></a>További lépések
-Bár ebben a cikkben azt összpontosított elsősorban az Unamanged/felügyelt operációsrendszer-lemezképet a virtuális gép bővíteni, a fejlett parancsfájlt is felhasználhatók a bővített a adatlemezt csatolni a virtuális géphez. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a ```StorageProfile``` ```OSDisk``` objektumát a ```DataDisks``` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
+## <a name="for-resizing-data-disks"></a>Az adatlemezek átméretezéséhez
+Bár ebben a cikkben azt összpontosított elsősorban a nem kezelt/felügyelt operációsrendszer-lemez a virtuális gép kiterjesztését, a fejlett parancsfájl is felhasználhatók a bővített a adatlemezt csatolni a virtuális géphez. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a ```StorageProfile``` ```OSDisk``` objektumát a ```DataDisks``` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
 
-Unamanged lemez:
+Nem felügyelt lemezt:
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
@@ -149,11 +166,11 @@ $disk.DiskSizeGB = 1023
 
 Hasonlóképpen hivatkozhat más, a virtuális géphez csatolt adatlemezekre is, akár a fent látható módon egy index használatával, akár a lemez ```Name``` tulajdonságával, az alább látható módon:
 
-Unamanged lemez:
+Nem felügyelt lemezt:
 ```Powershell
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
-Hierarchiája lemez:
+Felügyelt lemezes:
 ```Powershell
 (Get-AzureRmDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
