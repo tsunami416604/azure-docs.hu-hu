@@ -6,15 +6,16 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b142d08379f8a8fde20178668a4c1343f08aedbc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1bb60a1d6f14f0dc81047a2ffdd514724954fb14
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266057"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Létrehozása és kezelése az Azure-adatbázis a MySQL tűzfalszabályok az Azure parancssori felület használatával
 Kiszolgálószintű tűzfal-szabályokat a rendszergazdák hozzáférésének kezelése az Azure-adatbázis MySQL-kiszolgáló egy adott IP-cím vagy egy adott IP-címeket. Tetszés szerinti Azure parancssori felület parancsait használva hozhat létre, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Az áttekintést az Azure-adatbázis MySQL tűzfalak, lásd: [a MySQL-kiszolgáló tűzfalszabályainak Azure-adatbázis](./concepts-firewall-rules.md)
@@ -42,7 +43,7 @@ az login
 ```
 Ez a parancs kimenete a következő lépésben használandó kódot.
 
-2. Nyissa meg a lap egy webböngésző segítségével [https://aka.ms/devicelogin](https://aka.ms/devicelogin), és írja be a kódját.
+2. Nyissa meg a lap egy webböngésző segítségével [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin), és írja be a kódját.
 
 3. Amikor a rendszer felkéri, jelentkezzen be az Azure-beli hitelesítő adataival.
 

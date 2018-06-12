@@ -1,22 +1,19 @@
 ---
-title: Az Azure műveletnapló esemény séma |} Microsoft Docs
+title: Azure tevékenységnapló esemény séma
 description: Az esemény-sémát a tevékenység naplóba kibocsátott adatokról ismertetése
 author: johnkemnetz
-manager: robb
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
-ms.openlocfilehash: 4264bfd733f586dcdabdee8f29494bfffd9a7a76
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: activitylog
+ms.openlocfilehash: f6f6c59195fdc79959a1964c1f2770c3b6a68b22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264551"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure tevékenységnapló esemény séma
 A **Azure tevékenységnapló** , amely bármely történt az Azure-előfizetés szintű események betekintést biztosít a naplót. Ez a cikk ismerteti az adatok kategóriánként esemény séma.
@@ -482,6 +479,88 @@ Ez a kategória tartalmazza azt a bejegyzést, az Azure Security Center által e
 | eventTimestamp |Az esemény az esemény megfelelő a kérés feldolgozása az Azure-szolgáltatás által kiváltott idejét jelző időbélyegző. |
 | submissionTimestamp |Az esemény váltak elérhetővé lekérdezése idejét jelző időbélyegző. |
 | subscriptionId |Az Azure előfizetés-azonosító. |
+
+## <a name="recommendation"></a>Ajánlás
+Ez a kategória bármely új ajánlást kapott, amelyek akkor jönnek létre, a szolgáltatások adatait tartalmazza. Erre példa ajánlás lehet "használata rendelkezésre állási készletek továbbfejlesztett hibatűréshez." 4 különböző típusú javaslat események létrehozható: magas rendelkezésre állás, a teljesítmény, a biztonsági és a költségek optimalizálás. 
+
+### <a name="sample-event"></a>Mintaesemény
+```json
+{
+    "channels": "Operation",
+    "correlationId": "92481dfd-c5bf-4752-b0d6-0ecddaa64776",
+    "description": "The action was successful.",
+    "eventDataId": "06cb0e44-111b-47c7-a4f2-aa3ee320c9c5",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Recommendation",
+        "localizedValue": "Recommendation"
+    },
+    "eventTimestamp": "2018-06-07T21:30:42.976919Z",
+    "id": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MYVM/events/06cb0e44-111b-47c7-a4f2-aa3ee320c9c5/ticks/636640038429769190",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Advisor/generateRecommendations/action",
+        "localizedValue": "Microsoft.Advisor/generateRecommendations/action"
+    },
+    "resourceGroupName": "MYRESOURCEGROUP",
+    "resourceProviderName": {
+        "value": "MICROSOFT.COMPUTE",
+        "localizedValue": "MICROSOFT.COMPUTE"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.COMPUTE/virtualmachines",
+        "localizedValue": "MICROSOFT.COMPUTE/virtualmachines"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<Subscription ID>/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/MYVM",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-06-07T21:30:42.976919Z",
+    "subscriptionId": "<Subscription ID>",
+    "properties": {
+        "recommendationSchemaVersion": "1.0",
+        "recommendationCategory": "Security",
+        "recommendationImpact": "High",
+        "recommendationRisk": "None"
+    },
+    "relatedEvents": []
+}
+
+```
+### <a name="property-descriptions"></a>Tulajdonság leírása
+| Elem neve | Leírás |
+| --- | --- |
+| csatornák | Mindig "művelet" |
+| correlationId | A karakterlánc-formátum GUID azonosítója. |
+| leírás |A javaslat esemény statikus szöveges leírása |
+| eventDataId | A javaslat esemény egyedi azonosítója. |
+| category | Mindig "ajánlás" |
+| id |A javaslat esemény egyedi erőforrás-azonosítója. |
+| szint |Az esemény szintje. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés", "Tájékoztató" vagy a "Részletes" |
+| operationName |A művelet neve.  Mindig "Microsoft.Advisor/generateRecommendations/action"|
+| resourceGroupName |Az erőforrás az erőforráscsoport neve. |
+| resourceProviderName |Az erőforrás, amelyekre ez a javaslat vonatkozik, például a "MICROSOFT.COMPUTE" az erőforrás-szolgáltató neve |
+| resourceType |Az erőforrástípus neve, amelyre ez a javaslat vonatkozik, például a "MICROSOFT.COMPUTE/virtualmachines" erőforrás |
+| resourceId |Az erőforrás érvényes a javaslat erőforrás-azonosító |
+| status | Mindig "aktív" |
+| submissionTimestamp |Az esemény váltak elérhetővé lekérdezése idejét jelző időbélyegző. |
+| subscriptionId |Az Azure előfizetés-azonosító. |
+| properties |Állítsa be a `<Key, Value>` az ajánlás részleteit leíró párok (Ez azt jelenti, hogy szótárában).|
+| properties.recommendationSchemaVersion| A javaslat tulajdonságainak sémaverzió közzétett tevékenységnapló bejegyzésben |
+| properties.recommendationCategory | A javaslat kategóriáját. Lehetséges értékek: "Magas rendelkezésre állású", "Teljesítmény", "Biztonság" és "Költség" |
+| properties.recommendationImpact| A javaslat hatását. Lehetséges értékek: "Magas", "Közepes", "Alacsony" |
+| properties.recommendationRisk| A javaslat kockázatát. A lehetséges értékek: "Error", "Figyelmeztetés", "None" |
+
+
 
 ## <a name="next-steps"></a>További lépések
 * [További információ a tevékenységnapló (korábbi nevén naplók)](monitoring-overview-activity-logs.md)

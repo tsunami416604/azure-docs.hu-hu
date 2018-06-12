@@ -1,6 +1,6 @@
 ---
 title: Azure-SSIS integrációs futásidejű csatlakoztatása egy virtuális hálózati |} Microsoft Docs
-description: 'Útmutató: Azure-SSIS integrációs futásidejű csatlakoztatása az Azure virtuális hálózat.'
+description: Ismerje meg, hogyan lehet Azure virtuális hálózat az Azure-SSIS-integrációs futásidejű csatlakoztatni.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: douglasl
-ms.openlocfilehash: b998b47cdc65be91f62543369f5c3f18e4f270c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 344bd9beff03f423d3dc3431dec56334e721d811
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619643"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298066"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS-integrációs futásidejű csatlakoztatása egy virtuális hálózatot
 Az Azure-SSIS-integrációs futásidejű (IR) csatlakoztassa egy Azure virtuális hálózatra, a következő esetekben: 
 
-- Az SQL Server Integration Services (SSIS) katalógus adatbázis, az Azure SQL Database felügyelt-példányt (előzetes verzió) virtuális hálózatban üzemeltet.
 - Az Azure SSIS integrációs modulon futó SSIS-csomagokkal helyszíni adattárakhoz szeretne csatlakozni.
+
+- Az SQL Server Integration Services (SSIS) katalógus adatbázis, az Azure SQL Database felügyelt-példányt (előzetes verzió) virtuális hálózatban üzemeltet.
 
  Az Azure Data Factory (előzetes verzió) 2-es lehetővé teszi az Azure-SSIS-integrációs futásidejű csatlakoztatása a klasszikus üzembe helyezési modellt vagy az Azure Resource Manager telepítési modell használatával létrehozott virtuális hálózatban. 
 
@@ -52,7 +53,7 @@ Az alábbi szakaszokban további részleteket.
 
 ## <a name="requirements-for-virtual-network-configuration"></a>Virtuális hálózati konfigurációs követelményei
 
--   Győződjön meg arról, hogy `Microsoft.Batch` egy regisztrált szolgáltató az előfizetést, amely az Azure-SSIS infravörös hálózatok alhálózat alapján Klasszikus virtuális hálózatot használ, ha is csatlakozás `MicrosoftAzureBatch` a klasszikus virtuális gép közreműködő szerepkört az adott virtuális hálózati.
+-   Győződjön meg arról, hogy `Microsoft.Batch` az előfizetésben a virtuális hálózati alhálózat az Azure-SSIS infravörös futtató regisztrált szolgáltató Klasszikus virtuális hálózatot használ, ha is csatlakozás `MicrosoftAzureBatch` a klasszikus virtuális gép közreműködő szerepkört az adott virtuális hálózati.
 
 -   Válassza ki a megfelelő alhálózati az Azure-SSIS infravörös üzemeltetéséhez Lásd: [jelölje ki az alhálózatot](#subnet).
 
@@ -78,7 +79,7 @@ A következő lépéseket javasoljuk:
 
 -   Egyéni DNS az Azure DNS-kérések továbbítására konfigurálása. Feloldatlan Azure rekurzív feloldókat (168.63.129.16) IP-címének DNS-rekordokat továbbíthatja a saját DNS-kiszolgálón.
 
--   Az elsődleges egyéni DNS és az Azure DNS-ben, mint a másodlagos beállítása a virtuális hálózat. Regisztrálja a másodlagos DNS-kiszolgáló Azure rekurzív feloldókat (168.63.129.16) IP-címét, abban az esetben a saját DNS-kiszolgáló nem érhető el.
+-   Állítsa be az elsődleges egyéni DNS és az Azure DNS-ben, mint a másodlagos virtuális hálózat. Regisztrálja a másodlagos DNS-kiszolgáló Azure rekurzív feloldókat (168.63.129.16) IP-címét, abban az esetben a saját DNS-kiszolgáló nem érhető el.
 
 További információk: [névfeloldás a saját DNS-kiszolgálót használó](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
@@ -96,7 +97,7 @@ Ha kell megvalósítani a hálózati biztonsági csoport (NSG) segítségével a
 
 A Kapcsolódás egy [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) kapcsolat a virtuális hálózati infrastruktúra, a helyszíni hálózat kiterjesztése az Azure-bA. 
 
-A közös konfigurálás az, hogy a kényszerített bújtatás használata (BGP-útvonal, a virtuális hálózatba 0.0.0.0/0 hirdetési) amely kényszeríti kimenő internetforgalom a virtuális hálózat az adatfolyamban a helyszíni hálózati berendezések vizsgálat és naplózás. A forgalom áramlását az Azure-SSIS infravörös függő Azure Data Factory szolgáltatással a vnetben közötti kapcsolat megszakad. A megoldás, hogy egy (vagy több) megadása [felhasználó által definiált útvonalak (udr-EK)](../virtual-network/virtual-networks-udr-overview.md) , amely tartalmazza az Azure-SSIS infravörös az alhálózaton Egy UDR határozza meg az alhálózat-specifikus útvonalakat, amelyek figyelembe véve a BGP-útvonal helyett.
+A közös konfigurálás az, hogy a kényszerített bújtatás használata (BGP-útvonal, a virtuális hálózathoz 0.0.0.0/0 hirdetési) amely kényszeríti kimenő internetes forgalmat a virtuális hálózat az adatfolyamban a helyszíni hálózati berendezések vizsgálat és naplózás. A forgalom áramlását az Azure-SSIS infravörös függő Azure Data Factory szolgáltatással a virtuális hálózat közötti kapcsolat megszakad. A megoldás, hogy egy (vagy több) megadása [felhasználó által definiált útvonalak (udr-EK)](../virtual-network/virtual-networks-udr-overview.md) , amely tartalmazza az Azure-SSIS infravörös az alhálózaton Egy UDR határozza meg az alhálózat-specifikus útvonalakat, amelyek figyelembe véve a BGP-útvonal helyett.
 
 Vagy a felhasználó által definiált útvonalak (udr-EK) kimenő internetforgalom kényszerítheti az alhálózatból az Azure-SSIS infravörös egy másik alhálózatnak, a virtuális hálózati berendezések üzemeltet egy tűzfal vagy egy Szegélyhálózaton állomás futtató vizsgálati és naplózási adhat meg.
 
@@ -109,7 +110,7 @@ Ha aggódik való vizsgálja meg az adott alhálózat kimenő internetforgalom, 
 Lásd: [a PowerShell parancsfájl](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) példát. Akkor kell futtatnia a parancsfájl hetente és naprakész állapotban tarthatja az Azure data center IP-címek listájából.
 
 ### <a name="resource-group"></a> Az erőforráscsoport követelmények
-Az Azure-SSIS infravörös bizonyos hálózati erőforrásokhoz ugyanabban az erőforráscsoportban, a virtuális hálózat, például egy Azure load balancer, az Azure nyilvános IP-cím és munkahelyi hálózati biztonsági csoport létrehozásához szükséges.
+Az Azure-SSIS-IR kell létrehoznia a virtuális hálózatnak, beleértve az Azure terheléselosztó, az Azure nyilvános IP-cím és munkahelyi hálózati biztonsági csoport ugyanabban az erőforráscsoportban bizonyos hálózati erőforrásokhoz.
 
 -   Győződjön meg arról, hogy nincs-e bármilyen erőforrás zárolását az erőforráscsoportba vagy előfizetést, amelyhez a virtuális hálózat tartozik. Ha konfigurál egy olvasási zárolás vagy a delete zárolja, indítása és leállítása az infravörös is sikertelen, vagy lefagy.
 
@@ -228,7 +229,7 @@ Virtuális hálózat konfigurálása előtt egy Azure-SSIS-IR csatlakozhat hozz�
 
 ```powershell
 # Register to the Azure Batch resource provider
-# Make sure to run this script against the subscription to which the VNet belongs.
+# Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
@@ -282,7 +283,7 @@ Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNam
 
 ```powershell
 # Register to the Azure Batch resource provider
-# Make sure to run this script against the subscription to which the VNet belongs.
+# Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName "MicrosoftAzureBatch").Id

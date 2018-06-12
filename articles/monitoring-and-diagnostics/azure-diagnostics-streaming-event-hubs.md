@@ -1,24 +1,20 @@
 ---
-title: "Adatfolyam-Azure diagnosztikai adatokat a gyakran használt adatok elérési útja az Event Hubs használatával |} Microsoft Docs"
-description: "Azure Diagnostics konfigurálása az Event Hubs végpontok közötti, beleértve a közös forgatókönyvre vonatkozó útmutatást."
-services: event-hubs
-documentationcenter: na
+title: Az adatfolyam Azure diagnosztikai adatokat az Event Hubs
+description: Azure Diagnostics konfigurálása az Event Hubs végpontok közötti, beleértve a közös forgatókönyvre vonatkozó útmutatást.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: edeebaac-1c47-4b43-9687-f28e7e1e446a
-ms.service: monitoring-and-diagnostics
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: diagnostic-extension
+ms.openlocfilehash: 98e788d87b0ce03eece35868391aadd5233217b0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267713"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Adatfolyam-Azure diagnosztikai adatokat a gyakran használt adatok elérési útja az Event Hubs használatával
 Az Azure Diagnostics metrikák és a naplók összegyűjtésére felhőalapú szolgáltatások virtuális gépek (VM) és az eredmények átvitele az Azure Storage rugalmas módszereket biztosítja. A 2016. március (SDK 2.9) időkereten belül-től kezdődően diagnosztika küldése egyéni adatforrások, működés közbeni elérési adatok átviteléhez az másodpercben használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -27,9 +23,9 @@ Támogatott adattípusok a következők:
 
 * A Windows esemény-nyomkövetés (ETW) eseményei
 * Teljesítményszámlálók
-* Windows-Eseménynapló
+* Windows-eseménynaplók,
 * Alkalmazásnaplók
-* Az Azure Diagnostics infrastruktúra naplók
+* Azure Diagnostics-infrastruktúranaplók,
 
 Ez a cikk bemutatja, hogyan Azure Diagnostics konfigurálása az Event Hubs végpontok közötti. Útmutató a következő gyakori forgatókönyvek esetén is ismerteti:
 
@@ -322,7 +318,7 @@ namespace EventHubListener
 
     Nézzük meg az Azure Storage táblázatban maga Azure diagnosztikai naplók és a hibákat tartalmazó: **WADDiagnosticInfrastructureLogsTable**. Egy elem egy eszközzel, mint [Azure Tártallózó](http://www.storageexplorer.com) csatlakozni ehhez a tárfiókhoz, ebben a táblázatban megtekintheti, és adja hozzá a lekérdezés az időbélyegzési az elmúlt 24 órában. Az eszköz segítségével exportálja egy CSV-fájlt, majd nyissa meg például a Microsoft Excel alkalmazásban. Excel segítségével egyszerűen-kártya karakterláncokat, például keresni **EventHubs**, hogy milyen hibát jelez.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 • [További információ az Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
 ## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>A függelék: Végezze el az Azure Diagnostics konfigurációs fájl (.wadcfgx) – Példa
@@ -504,7 +500,7 @@ A virtuális gépek egyenértékű alapú Json-beállítások a következőképp
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md)
