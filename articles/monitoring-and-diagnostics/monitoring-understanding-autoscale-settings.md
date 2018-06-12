@@ -1,24 +1,19 @@
 ---
-title: "Az Azure-ban automatikus skálázás beállításainak ismertetése |} Microsoft Docs"
-description: "Részletes információkat a automatikus skálázási beállításokat, és hogyan működnek."
+title: Az Azure a figyelő automatikus skálázás beállításainak ismertetése
+description: Részletes információkat a automatikus skálázási beállításokat, és hogyan működnek. Virtuális gépek, a Felhőszolgáltatásokat, a webalkalmazások vonatkozik
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: 73c79ec4ee1beb5220e088421c78ffffd932eef1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.component: autoscale
+ms.openlocfilehash: 982bc43fd86a808da07833d77bde17e17789b2d6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264996"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
 Automatikus skálázási beállításokat biztosíthatja, hogy rendelkezik-e a megfelelő mennyiségű erőforrást fut az alkalmazás változó terhelés kezelésére. Konfigurálhatja az automatikus skálázási beállításokat ütemezett dátum és idő alapján, amelyek jelzik a load vagy a teljesítmény metrikák vagy kiváltott aktiválására. Ez a cikk részletes tekintse meg az automatikus skálázási beállítás leírása vesz igénybe. A cikk a séma- és a beállítás tulajdonságait kezdődik, és majd végigvezeti a másik profil típusokat, amelyek konfigurálhatók. Végül a cikk azt ismerteti, hogyan értékeli ki az automatikus skálázási funkciót, az Azure-ban a melyik profil egy adott időpontban végrehajtásához.
@@ -101,11 +96,11 @@ Az automatikus skálázási beállítás séma mutatja be, a következő automat
 | Beállítás | location | Az automatikus skálázási beállítás helye. Ezen a helyen méretezve, hogy az erőforrás helye eltérő lehet. |
 | properties | targetResourceUri | Az erőforrás-azonosító az erőforrás méretezése folyamatban. Csak akkor is erőforrásonként egy automatikus skálázási beállítás. |
 | properties | Profilok | Az automatikus skálázási beállítás egy vagy több profilok tevődik össze. Minden egyes futásakor az automatikus skálázás motor egy profil végrehajtja. |
-| Profil | név | A profil nevét. Lehetősége van a neve, amely segít a profil azonosításához. |
-| Profil | Capacity.maximum | Az engedélyezett maximális kapacitását. Ez biztosítja, hogy automatikus skálázás, ehhez a profilhoz végrehajtásakor nem méretezhető fent ezt a számot az erőforrás. |
-| Profil | Capacity.minimum | Az engedélyezett minimális kapacitást. Ez biztosítja, hogy az automatikus skálázás, ehhez a profilhoz végrehajtásakor nem méretezhető e szám alá az erőforrás. |
-| Profil | Capacity.default | Ha az erőforrás metrika (esetünkben a "vmss1" CPU) olvasása, és a jelenlegi kapacitásnál nem éri el az alapértelmezett, automatikus skálázási ki az alapértelmezett arányosan. Ez az erőforráscsoport rendelkezésre állásának biztosításához. Ha a jelenlegi kapacitásnál már nagyobb, mint az alapértelmezett kapacitásértéket, az automatikus skálázás nem méretezhető a. |
-| Profil | szabályok | Automatikus skálázás automatikusan méretezi a maximális és minimális kapacitás, a szabályok segítségével a profil között. A profil több szabály is lehet. Általában két szabály van: egy, hogy ki és mikor érdemes méretezni a meghatározására. |
+| profil | név | A profil nevét. Lehetősége van a neve, amely segít a profil azonosításához. |
+| profil | Capacity.maximum | Az engedélyezett maximális kapacitását. Ez biztosítja, hogy automatikus skálázás, ehhez a profilhoz végrehajtásakor nem méretezhető fent ezt a számot az erőforrás. |
+| profil | Capacity.minimum | Az engedélyezett minimális kapacitást. Ez biztosítja, hogy az automatikus skálázás, ehhez a profilhoz végrehajtásakor nem méretezhető e szám alá az erőforrás. |
+| profil | Capacity.default | Ha az erőforrás metrika (esetünkben a "vmss1" CPU) olvasása, és a jelenlegi kapacitásnál nem éri el az alapértelmezett, automatikus skálázási ki az alapértelmezett arányosan. Ez az erőforráscsoport rendelkezésre állásának biztosításához. Ha a jelenlegi kapacitásnál már nagyobb, mint az alapértelmezett kapacitásértéket, az automatikus skálázás nem méretezhető a. |
+| profil | szabályok | Automatikus skálázás automatikusan méretezi a maximális és minimális kapacitás, a szabályok segítségével a profil között. A profil több szabály is lehet. Általában két szabály van: egy, hogy ki és mikor érdemes méretezni a meghatározására. |
 | szabály | metricTrigger | A metrika a szabály állapota határozza meg. |
 | metricTrigger | metricName | A mérték neve. |
 | metricTrigger |  metricResourceUri | Az erőforrás-azonosító bocsát ki a metrika erőforrás. A legtöbb esetben ez megegyezik az erőforrás méretezése folyamatban. Néhány esetben ez eltérő lehet. Például méretezhető egy virtuálisgép-méretezési csoport egy tárolási várólistában lévő üzenetek száma alapján. |

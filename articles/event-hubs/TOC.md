@@ -33,6 +33,8 @@
 ### [A Kafka-kompatibilis Event Hubs létrehozása](event-hubs-create-kafka-enabled.md) 
 ### [Streamelés az Azure Event Hubs Kafkához készült ökoszisztémájában](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 ### [A Kafka MirrorMaker használata az Azure Event Hubs Kafkához készült ökoszisztémájával](event-hubs-kafka-mirror-maker-tutorial.md)
+### [Az Apache Flink használata a Kafkához készült Event Hubs ökoszisztémájával](event-hubs-kafka-flink-tutorial.md)
+### [Az Akka Streams használata a Kafkához készült Event Hubs ökoszisztémájával](event-hubs-kafka-akka-streams-tutorial.md)
 ## Fejlesztés
 ### [Események küldése a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Események fogadása a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)

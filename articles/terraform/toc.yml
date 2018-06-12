@@ -15,6 +15,8 @@
       maintainContext: true
 - name: Oktatóanyagok
   items:
+    - name: Kubernetes-fürt létrehozása az AKS és a Terraform használatával
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
     - name: Terraform- és Azure-szolgáltatók üzembe helyezési pontjai
       href: terraform-slot-walkthru.md
     - name: Engedélyezett MSI-vel rendelkező Terraform virtuális gép létrehozása

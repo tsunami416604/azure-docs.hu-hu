@@ -43,6 +43,8 @@
       href: storage-accounts.md
     - name: A Cost Management jelentéseinek használata
       href: use-reports.md
+    - name: Irányítópultok használata
+      href: dashboards.md
 - name: További források
   items:
     - name: Költségkezelési videók

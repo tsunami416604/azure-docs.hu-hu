@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – SSIS csomagok üzembe helyezése az Azure-ban
+    - name: 1 – Azure SSIS integrációs modul létrehozása
       items:
         - name: Felhasználói felület (UI)
           href: tutorial-deploy-ssis-packages-azure.md
@@ -362,7 +362,7 @@
           href: monitor-integration-runtime.md
         - name: Az Azure SSIS integrációs modul monitorozása
           href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
-        - name: Az Azure SSIS integrációs modul kezelése
+        - name: Az Azure SSIS integrációs modul újrakonfigurálása
           href: manage-azure-ssis-integration-runtime.md
     - name: Integrációs modul létrehozása
       items:
@@ -374,7 +374,7 @@
           href: create-azure-ssis-integration-runtime.md
     - name: SSIS-csomagok futtatása az Azure-ban
       items:
-        - name: Az Azure-SSIS IR csatlakoztatása virtuális hálózathoz
+        - name: Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: Az Azure AD-hitelesítés engedélyezése az Azure SSIS IR-hez
           href: enable-aad-authentication-azure-ssis-ir.md
