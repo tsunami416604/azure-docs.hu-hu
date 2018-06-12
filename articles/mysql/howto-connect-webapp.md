@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: d8b130876e5fa0f2b2322dff82013a409ff7d30e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: ff4a28e2f9a0149016d0e47c24e4665ab2e0500d
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265503"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Egy meglévő Azure App Service csatlakozzon az Azure Database MySQL-kiszolgáló
 Ez a témakör azt ismerteti, hogyan adatbázishoz való csatlakozáshoz egy meglévő Azure App Service szolgáltatásban az Azure MySQL-kiszolgáló.
@@ -57,7 +58,7 @@ A kimenő IP az Azure App Service explicit módon adhat hozzá.
 
 Bár az Azure App service megpróbálja adott idő alatt tartani az IP-címek állandó, vannak esetek, ahol az IP-címek megváltozhatnak. Például ez akkor fordulhat elő, amikor az alkalmazás újrahasznosítja azt vagy a méretezési művelet történik, vagy amikor új számítógépek hozzáadása a következő Azure regionális adatok adatközpontok növelhető a kapacitása. Ha az IP-címek módosítása, az alkalmazás sikerült leállásra abban az esetben, ha már nem tud kapcsolódni az a MySQL-kiszolgálóhoz. Az előző megoldásoknak a valamelyikét kiválasztásakor tartsa szem előtt a figyelmet.
 
-## <a name="ssl-configuration"></a>SSL configuration
+## <a name="ssl-configuration"></a>SSL-beállítása
 Azure MySQL-adatbázis SSL alapértelmezés szerint engedélyezve van. Ha az alkalmazás nem használ SSL az adatbázishoz való kapcsolódáshoz, majd szeretné az SSL letiltásához a MySQL-kiszolgálón. További SSL konfigurálásával kapcsolatos további információkért lásd: [SSL használatával MySQL az Azure-adatbázissal](howto-configure-ssl.md).
 
 ## <a name="next-steps"></a>További lépések

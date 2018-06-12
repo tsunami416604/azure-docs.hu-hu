@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 66102836b954bf4fafc4379cf573658d89e0d409
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 10517f5684774c47ccc96c773287476c2614613f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292507"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Az Azure Active Directory-üzleti alkalmazások fejlesztéséhez
 Ez az útmutató áttekintést fejlesztése az üzletági (LoB) alkalmazások az Azure Active Directory (AD). A célközönség Active Directory vagy Office 365 globális rendszergazdák.
@@ -79,5 +80,5 @@ További információ a felhasználói hozzájárulás és a hozzájárulásukat
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure AD alkalmazásproxy a helyszíni alkalmazások biztonságos távoli hozzáférés engedélyezése](manage-apps/application-proxy.md)
 * [Azure feltételes hozzáférés előzetes verziója SaaS-alkalmazásokhoz](active-directory-conditional-access-azure-portal-get-started.md)
-* [Az Azure ad-val alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md)
+* [Az Azure ad-val alkalmazásokhoz való hozzáférés kezelése](manage-apps/what-is-access-management.md)
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](active-directory-apps-index.md)

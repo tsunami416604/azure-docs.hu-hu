@@ -1,11 +1,11 @@
 ---
-title: "Logic Apps B2B edifact dekódolása megoldásához UNH2.5 - Azure Logic Apps |} Microsoft Docs"
-description: "Az Azure Logic Apps B2B edifact dekódolása UNH2.5 feloldása"
+title: Logic Apps B2B edifact dekódolása megoldásához UNH2.5 - Azure Logic Apps |} Microsoft Docs
+description: Az Azure Logic Apps B2B edifact dekódolása UNH2.5 feloldása
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e04e7515a8ddfe512ba2efbbd45c3d1b571c1fd
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297947"
 ---
 # <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>EDIFACT dokumentumokon UNH2.5 szegmens kezelésének módját
 UNH2.5 megtalálható-e a EDIFACT dokumentumot, ha használatban van séma kereséshez. 
@@ -50,5 +51,5 @@ A bejövő üzenet kódolására, konfigurálja a séma EDIFACT megállapodás k
 3. Jelöljön ki EDIFACT szerződést, majd **módosítsa a JSON**.  A Küldés szerződés UNH2.5 előnyei **schemaReferences**
 ![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [További információ az integrációs fiók megállapodások](../logic-apps/logic-apps-enterprise-integration-agreements.md "vállalati integrációs megállapodások ismertetése")  

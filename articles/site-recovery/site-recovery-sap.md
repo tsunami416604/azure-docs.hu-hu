@@ -3,7 +3,7 @@ title: A többrétegű SAP NetWeaver alkalmazástelepítést Azure Site Recovery
 description: A cikkből megtudhatja, hogyan védheti SAP NetWeaver alkalmazástelepítések Azure Site Recovery segítségével.
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: asgang
 manager: rochakm
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,14 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
-ms.author: manayar
-ms.openlocfilehash: e2107177663163259d1f731717c4910bc986fc1f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.date: 06/04/2018
+ms.author: asgang
+ms.openlocfilehash: 27dfdec4e833a2f30963157ba2f4d95232e21270
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267332"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Egy többrétegű SAP NetWeaver alkalmazástelepítést védeni a Site Recovery segítségével
 
@@ -48,7 +49,7 @@ A Site Recovery segítségével valósítja meg a vész-helyreállítási megold
 * A VMware rendszerben (vagy fizikai) SAP rendszerekre kiszolgálók helyszíni, hogy a replikálás egy katasztrófa utáni helyreállítás helyéhez egy Azure-adatközpontban (VMware-Azure katasztrófa utáni helyreállítás). Ez a forgatókönyv néhány további összetevők igényel. További információkért lásd: [VMware-Azure replikációs architektúra](https://aka.ms/asr-v2a-architecture).
 * SAP rendszereken futó Hyper-V a helyszínen, a vész helyreállítási hely egy Azure-adatközpontban (Hyper-V-az-Azure-bA vész-helyreállítási) replikációját. Ez a forgatókönyv néhány további összetevők igényel. További információkért lásd: [Hyper-V--Azure-beli replikációs architektúra](https://aka.ms/asr-h2a-architecture).
 
-Ez a cikk egy Azure-Azure vész-helyreállítási forgatókönyv használjuk a Site Recovery SAP vész helyreállítási funkcióinak bemutatása. Mivel a Site Recovery replikációs nem az alkalmazás-specifikus, ismertetett eljárás várt is alkalmazhat a többi olyan forgatókönyvet.
+Ebben a cikkben használjuk egy **Azure-Azure** katasztrófa utáni helyreállítása a Site Recovery SAP vész helyreállítási funkcióinak bemutatása. Mivel a Site Recovery replikációs nem az alkalmazás-specifikus, ismertetett eljárás várt is alkalmazhat a többi olyan forgatókönyvet.
 
 ### <a name="required-foundation-services"></a>Szükséges foundation szolgáltatások
 A forgatókönyvben a cikkben arról lesz szó a következő foundation szolgáltatások vannak telepítve:
@@ -57,43 +58,97 @@ A forgatókönyvben a cikkben arról lesz szó a következő foundation szolgál
 
 Azt javasoljuk, hogy kapcsolatot hoz létre az infrastruktúra a Site Recovery telepítése előtt.
 
-## <a name="typical-sap-application-deployment"></a>Tipikus SAP-alkalmazás telepítése
-Nagy számú SAP-ügyfelek általában telepíteni 6 – 20 egyedi SAP alkalmazások között. Ezeket az alkalmazásokat a legtöbb SAP NetWeaver ABAP vagy Java motorok alapulnak. Sok kisebb, adott nem - NetWeaver SAP önálló motorok, és általában nem SAP alkalmazásmódjai, támogatja az alapvető NetWeaver alkalmazásokat.  
+## <a name="reference-sap-application-deployment"></a>Hivatkozás SAP alkalmazás központi telepítése
 
-Nagyon fontos a készlet összes a SAP-alkalmazást, hogy a környezetében. Verziók, javítások, méretét, forgalom sebességét és adatmegőrzési lemezkövetelmények telepítési módban (kétrétegű és háromrétegű), majd meghatározásához.
+A referencia-architektúrában látható SAP NetWeaver környezetben futó Windows Azure magas rendelkezésre állású.  Ez az architektúra van szükség az adott virtuális gép (VM), amelyek módosíthatók a szervezet igényeinek megfelelően van telepítve.
 
-![Egy tipikus SAP telepítési minta ábrája](./media/site-recovery-sap/sap-typical-deployment.png)
+![Egy tipikus SAP telepítési minta ábrája](./media/site-recovery-sap/reference_sap.png)
 
-Natív adatbázis-kezelő eszközök, például az SQL Server AlwaysOn, Oracle Data Guard vagy SAP HANA replikációs használatával védi az SAP adatbázis adatmegőrző réteget. Az SAP adatbázisrétegben, például az ügyfél réteg a Site Recovery által nem védett. Fontos figyelembe venni azon tényezőket, ez a réteg érintő. Tényezők közé tartozik a DNS-propagálás késleltetés, a biztonsági és a távelérés a vész-helyreállítási adatközpontra.
+## <a name="disaster-recovery-considerations"></a>Vész-helyreállítási szempontok
 
-A Site Recovery-e az alkalmazási rétegre, beleértve az SAP SCS és az ASC az ajánlott megoldás. Más alkalmazások, például NetWeaver SAP-alkalmazásokból és nem SAP-alkalmazásokból, a SAP telepítési környezetben részét képezik. Azokat a Site Recovery szolgáltatással kell védeni.
+A vészhelyreállítás (DR) egy másodlagos régióba történő feladatátvételt képesnek kell lennie. Minden egyes réteg más stratégiával biztosít vészhelyreállítási (DR) védelmet.
 
-## <a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
+#### <a name="vms-running-sap-web-dispatcher-pool"></a>SAP webes kézbesítő készlet futó virtuális gépeket 
+A webes kézbesítő összetevő SAP forgalom között az SAP alkalmazáskiszolgálók terheléselosztó használható. A webes kézbesítő összetevő magas rendelkezésre állásának eléréséhez, az Azure Load Balancer a párhuzamos webes kézbesítő telepítő megvalósítását a HTTP (S)-forgalom elosztását a rendelkezésre álló webes elosztás a terheléselosztó-készlet ciklikus multiplexelési konfigurációjának szolgál. Ez a rendszer replikálja Azure hely Recovery(ASR) használatával, és automatizálási parancsfájlokat terheléselosztó konfigurálásához a vész-helyreállítási régió fog történni. 
+
+####<a name="vms-running-application-servers-pool"></a>Alkalmazáskészlet-kiszolgálókon futó virtuális gépeket
+Bejelentkezési csoportok ABAP alkalmazáskiszolgálók kezeléséhez, a SMLG tranzakció szolgál. A terheléselosztási függvény központi szolgáltatások üzenet-kiszolgálón belül használja SAPGUIs és RFC oszthatja meg a munkaterhelést SAP alkalmazáskészlet-kiszolgálók közötti forgalmat. Ez a rendszer replikálja Azure Site Recovery segítségével 
+
+####<a name="vms-running-sap-central-services-cluster"></a>SAP központi szolgáltatások fürt futó virtuális gépeket
+A referencia-architektúrában központi szolgáltatások virtuális gépeken futtatja az alkalmazáshoz tartozó. A központi szolgáltatások egy potenciális hibaérzékeny pontot (SPOF) egy virtuális központi telepítési – tipikus telepítése esetén magas rendelkezésre állás nem követelmény.<br>
+
+Egy magas rendelkezésre állású megoldás bevezetésére, vagy egy megosztott lemezfürt, vagy egy fájlkiszolgáló-megosztás fürt használható. Virtuális gépek megosztott lemezfürt konfigurálásához használja a Windows Server feladatátvételi fürtben. A kvórum tanúsítóját felhő tanúsító ajánlott. 
+ > [!NOTE]
+ > Az Azure Site Recovery nem replikálja a felhő tanúsító ezért javasoljuk, hogy a felhő tanúsító a vész-helyreállítási régióban telepítése.
+
+A feladatátvevő fürt környezet támogatásához [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) által a fürtcsomópontok által birtokolt független lemezek replikálásához a fürt megosztott kötet funkciót hajt végre. Azure natív módon nem támogatja a megosztott lemezeket, és ezért a SIOS által biztosított megoldások szükségesek. 
+
+Fürtszolgáltatás kezelésére úgy, hogy egy fájlkiszolgáló-megosztás fürt alkalmazza. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a szolgáltatásokhoz központi telepítési minta a /sapmnt globális könyvtárak keresztül UNC elérési út elérésére. Ez a változás eltávolítja SIOS kapcsolatos követelmények vagy más megosztott lemez megoldás, a központi szolgáltatások virtuális gépeken. Győződjön meg arról, hogy a /sapmnt UNC-megosztásnevet magas rendelkezésre állású továbbra is ajánlott. Ezt megteheti a központi Services-példányon méretezési kimenő fájlkiszolgálóval (sofs-sel) és a tárolóhelyek közvetlen (S2D) szolgáltatás a Windows Server 2016 Windows Server feladatátvevő fürt segítségével. 
+ > [!NOTE]
+ > Jelenleg Azure Site Recovery-támogatás csak összeomlás tárolóhelyek – közvetlen használó virtuális gépek alkalmazáskonzisztens replikálása 
+
+
+## <a name="disaster-recovery-considerations"></a>Vészhelyreállítási szempontok
+
+Azure Site Recovery segítségével levezényelni a nem keresztül, teljes SAP üzemelő Azure-régiók között.
+A vész-helyreállítási beállításának lépései a következők 
+
+1. Virtuális gépek replikálása 
+2. Egy helyreállítási hálózathoz. terv
+3.  A tartományvezérlő replikálja.
+4.  Alap adatrétegbeli replikálása 
+5.  Végezzen feladatátvételi tesztet 
+6.  Feladatátvétellel 
+
+Alább a javaslat a példában szereplő minden egyes réteg vész-helyreállítási van. 
+
+ **SAP rétegek** | **A javaslat**
+ --- | ---
+**SAP webes kézbesítő készlet** |  Replikálásához a Site recovery segítségével 
+**SAP alkalmazáskészlet-kiszolgáló** |  Replikálásához a Site recovery segítségével 
+**SAP szolgáltatásokhoz központi fürtre** |  Replikálásához a Site recovery segítségével 
+**Az Active directory virtuális gépek** |  Active directory-replikáció 
+**SQL adatbázis-kiszolgálók** |  Mindig a replikációs SQL
+
+##<a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
+
 SAP alkalmazás virtuális gépeire replikálása az Azure vész-helyreállítási datacenter elindításához kövessék [a virtuális gépek replikálása Azure-bA](azure-to-azure-walkthrough-enable-replication.md).
+
+
+* Active Directory és a DNS védelméről útmutatásért tekintse meg [Active Directory védelmére és a DNS-](site-recovery-active-directory.md) dokumentum.
+
+* Működő SQL server adatbázis-rétegből ellátásáról útmutatásért tekintse meg [SQL Server védelme](site-recovery-active-directory.md) dokumentum.
+
+## <a name="networking-configuration"></a>Hálózati konfigurációja
 
 Ha egy statikus IP-címet használja, az IP-cím, amelyet a virtuális gépen ahhoz, hogy is megadhat. Az IP-cím megadásához keresse fel **számítási és hálózati beállításai** > **hálózati kártya**.
 
 ![Egy privát IP-címének beállítása a Site Recovery hálózati illesztő kártya ablaktáblán képernyőkép](./media/site-recovery-sap/sap-static-ip.png)
 
-## <a name="create-a-recovery-plan"></a>Helyreállítási terv létrehozása
+
+## <a name="creating-a-recovery-plan"></a>Helyreállítási terv létrehozása
 A helyreállítási terv támogatja a különböző rétegek alkalmazás-előkészítés során egy többrétegű alkalmazást egy feladatátvétel során. Alkalmazás-előkészítés segítségével biztosítja az egységességet alkalmazás. A helyreállítási terv többrétegű webalkalmazás létrehozásakor teljes lépéseit ismerteti [helyreállítási terv létrehozása a Site Recovery segítségével](site-recovery-create-recovery-plans.md).
+
+### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuális gépek feladatátvételi csoportok hozzáadása
+
+1.  A helyreállítási terv létrehozásához adja meg a kiszolgáló, webes kézbesítő és SAP központi szolgáltatások virtuális gépeken.
+2.  Kattintson a "Testreszabás" a virtuális gépek csoportosításához. Alapértelmezés szerint az összes virtuális gép "Csoport 1" részét képezik.
+
+
 
 ### <a name="add-scripts-to-the-recovery-plan"></a>A helyreállítási terv parancsprogramokat hozzáadása
 Az alkalmazások megfelelő működéséhez szükség lehet néhány a műveleteket az Azure virtuális gépeken a feladatátvétel után, vagy egy feladatátvételi tesztje közben. Néhány feladatátvételt követően művelet automatizálható. Például a DNS-bejegyzés frissítéséhez, és módosítsa a kötések és kapcsolatok megfelelő parancsfájlokat ad hozzá a helyreállítási terv.
 
-### <a name="dns-update"></a>DNS-frissítési
-Ha a DNS dinamikus DNS-frissítési konfigurált, virtuális gépek általában frissítse a DNS-az új IP-címmel indításakor. Ha hozzá szeretne adni egy explicit lépés DNS frissítése a virtuális gépeket az új IP-címekkel rendelkező, adja hozzá a [parancsfájl a DNS-ben az IP-címének frissítése](https://aka.ms/asr-dns-update) a feladatátvételt követően műveletek a helyreállítási terv csoportok.  
 
-## <a name="example-azure-to-azure-deployment"></a>Azure-Azure központi telepítésre példát
-Az alábbi ábrán látható, a Site Recovery Azure Azure vész-helyreállítási forgatókönyv:
+A leggyakrabban használt Azure Site Recovery-parancsfájlok telepítheti be az alábbi "Az Azure telepítéséhez" gombra kattintva Automation-fiók. Ha bármely közzétett parancsfájl használ, győződjön meg arról, akkor kövesse az útmutató a parancsfájlt.
 
-![Egy Azure-Azure replikációs forgatókönyvének ábrája](./media/site-recovery-sap/sap-replication-scenario.png)
+[![Üzembe helyezés az Azure-ban](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-* Az elsődleges adatközpont szingapúri (Azure Délkelet-Ázsia) van. A vész-helyreállítási datacenter Hongkong (Azure Kelet-Ázsia) van. Ebben a forgatókönyvben két virtuális gépeken futó SQL Server AlwaysOn szingapúri szinkron módban helyi magas rendelkezésre állást biztosítja.
-* A fájlmegosztás SAP ASC az SAP egyetlen ponton felmerülő hibákat magas rendelkezésre állást biztosít. A fájlmegosztás ASC egy fürt megosztott lemez nem igényel. Alkalmazások, például SIOS nem lesz szükség.
-* A DBMS réteg vész-helyreállítási védelem aszinkron replikáció használatával érhető el.
-* A forgatókönyv bemutatja, "szimmetrikus vész-helyreállítási." Ez a kifejezés egy vész-helyreállítási megoldást, amely az üzemi pontos replikájának ismerteti. A vész-helyreállítási megoldás az SQL Server helyi magas rendelkezésre állású rendelkezik. Szimmetrikus vész-helyreállítási nem kötelező, az adatbázis réteg. Sok ügyfél felhőalapú telepítések gyorsan elkészítse vész-helyreállítási esemény után a helyi magas rendelkezésre állású csomópont rugalmasan előnyeit.
-* Az ábra mutatja be, a SAP NetWeaver ASC és a Site Recovery által replikált kiszolgáló alkalmazásréteg.
+1. Előtti parancsfájlművelet hozzáadása csoporthoz "% 1" SQL rendelkezésre állási csoport feladatai. A parancsfájllal "ASR-SQL-FailoverAG" a minta parancsfájlokat tesznek közzé. Győződjön meg arról, kövesse az útmutató a parancsfájlt, és végrehajtják a szükséges módosításokat a parancsfájl megfelelően.
+2. Post művelet parancsfájl csatolni a feladatait egy terheléselosztó hozzáadása a virtuális gépeket webes réteg (1. csoport). A parancsfájllal "ASR-AddSingleLoadBalancer" a minta parancsfájlokat tesznek közzé. Győződjön meg arról, kövesse az útmutató a parancsfájlt, és végrehajtják a szükséges módosításokat a parancsfájl megfelelően.
+
+![SAP helyreállítási terv](./media/site-recovery-sap/sap_recovery_plan.png)
+
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 

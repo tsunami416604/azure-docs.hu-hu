@@ -14,11 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: b97ec4ffacead7630c267284f79f954ef03eff61
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1bdc7a4d50b81c615d9aca651c897796d9f60c00
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292276"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure ad szolgáltatással
 ## <a name="overview"></a>Áttekintés
@@ -46,7 +47,7 @@ Felhasználói bejelentkezés egyszer a szervezeti fiókjukkal. Ez a fiók megeg
 
 Megosztott fiókok csak nem növeli a felügyeletet, valamint javítja a használhatóság, akkor is a megfelelő biztonság érdekében. A hitelesítő adatok használatát a felhasználók a megosztott jelszó nem látható, de ahelyett, hogy kérjen engedélyt azokhoz, a jelszó használatát egy hitelesítési vezénylését folyamat részeként. További egyes jelszó SSO alkalmazások az Azure AD-be rendszeresen váltása (frissítés) jelszavak használata lehetőséget ad. A rendszer használja nagy, összetett jelszót, amely növeli a fiók biztonságát. A rendszergazda könnyen megadni vagy visszavonni a hozzáférést egy alkalmazást, tudni fogja, kik férhetnek hozzá a fiókot, és ki fért hozzá azt a múltban.
 
-Az Azure AD a nagyvállalati mobilitási csomag (EMS), prémium vagy alapszintű kiadásra esetén támogatja a megosztott fiókokat licenccel rendelkező felhasználók, minden típusú jelszó egyszeri bejelentkezés alkalmazások között. Bármely több ezer előre integrált alkalmazások, az alkalmazás katalógusában fiókok megoszthatja, és hozzáadhatja a saját jelszó hitelesítése alkalmazás [egyéni SSO alkalmazások](active-directory-enterprise-apps-manage-sso.md).
+Az Azure AD a nagyvállalati mobilitási csomag (EMS), prémium vagy alapszintű kiadásra esetén támogatja a megosztott fiókokat licenccel rendelkező felhasználók, minden típusú jelszó egyszeri bejelentkezés alkalmazások között. Bármely több ezer előre integrált alkalmazások, az alkalmazás katalógusában fiókok megoszthatja, és hozzáadhatja a saját jelszó hitelesítése alkalmazás [egyéni SSO alkalmazások](manage-apps/configure-single-sign-on-portal.md).
 
 Az Azure AD-funkciókat, amelyek lehetővé teszik a fiók megosztása a következők:
 

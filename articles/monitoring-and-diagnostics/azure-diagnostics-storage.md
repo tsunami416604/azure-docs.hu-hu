@@ -1,24 +1,19 @@
 ---
-title: Az Azure Storage diagnosztikai adatokat tároló és a nézet |} Microsoft Docs
+title: Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
 description: Az Azure diagnosztikai adatokat az Azure Storage és az megtekintése
-services: cloud-services
-documentationcenter: .net
+services: azure-monitor
 author: thraka
-manager: timlt
-editor: tysonn
-ms.assetid: 18e0780d-43e7-41e4-b8e9-f1fb9a36eb03
-ms.service: cloud-services
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: adegeo
-ms.openlocfilehash: 248e1c87ec244649a296233bf2aaa323d3475a79
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: diagnostic-extension
+ms.openlocfilehash: 6590e6991f07b7315c09a995152879c991fafcef
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267662"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Az Azure Storage diagnosztikai adatok tárolása és nézet
 Diagnosztikai adatok nem tárolódik véglegesen, kivéve, ha azt át a Microsoft Azure storage emulator vagy az Azure storage. Egyszer, megőrzés is megtekinthető számos elérhető eszköz egyike.
@@ -42,7 +37,7 @@ Gyűjtött diagnosztikai adatok típusától függően az Azure Diagnostics hasz
 | Az IIS 7.0-naplók |Blob |
 | Azure Diagnostics-infrastruktúranaplók, |Tábla |
 | Sikertelen kérelmek nyomkövetési naplóit |Blob |
-| Windows-Eseménynapló |Tábla |
+| Windows-eseménynaplók |Tábla |
 | Teljesítményszámlálók |Tábla |
 | összeomlási memóriaképek, |Blob |
 | egyéni hibanaplók, |Blob |

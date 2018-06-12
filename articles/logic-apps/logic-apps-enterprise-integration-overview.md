@@ -1,10 +1,10 @@
 ---
-title: "Vállalati B2B - Azure Logic Apps-integráció |} Microsoft Docs"
-description: "B2B munkafolyamatok építhetők fel, és vállalati integrációs feladatokhoz a logic apps a vállalati integrációs csomaggal támogatás"
+title: Vállalati B2B - Azure Logic Apps-integráció |} Microsoft Docs
+description: B2B munkafolyamatok építhetők fel, és vállalati integrációs feladatokhoz a logic apps a vállalati integrációs csomaggal támogatás
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 9462707db03ecfcc3d5186ce7ded8655ad3bdcc9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 25349d48d88b64568fef0f5a6bac5950da15196b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298637"
 ---
 # <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Áttekintés: B2B forgatókönyvek és a vállalati integrációs csomag kommunikáció
 
@@ -61,7 +62,7 @@ Vállalati integrációs ezeket az ipari szabványok támogatja:
 
 ## <a name="learn-more"></a>Részletek
 * [Szerződések](../logic-apps/logic-apps-enterprise-integration-agreements.md "vállalati integrációs megállapodások ismertetése")
-* [A vállalatok (B2B) környezetek](../logic-apps/logic-apps-enterprise-integration-b2b.md "megtudhatja, hogyan hozzon létre a Logic apps B2B szolgáltatások")  
+* [A vállalatok (B2B) környezetek](../logic-apps/logic-apps-enterprise-integration-b2b.md "megtudhatja, hogyan hozzon létre a Logic apps B2B szolgáltatások ")  
 * [Tanúsítványok](logic-apps-enterprise-integration-certificates.md "vállalati integrációs tanúsítványokkal kapcsolatos további információ")
 * [Fájl kódolás/dekódolás lapos](logic-apps-enterprise-integration-flatfile.md "útmutató kódolni és dekódolási egybesimított fájl tartalma")  
 * [Integrációs fiókok](../logic-apps/logic-apps-enterprise-integration-accounts.md "integrációs fiókok ismertetése")

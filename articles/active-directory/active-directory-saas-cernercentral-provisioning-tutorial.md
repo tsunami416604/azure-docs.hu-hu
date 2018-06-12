@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 060686089634eda5d15345da9668ff294d350012
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5440f9e747957a017eac109cddc4881244e506eb
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292687"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Cerner központi konfigurálása
 
@@ -41,7 +42,7 @@ Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" haszná
 
 A létesítési szolgáltatás engedélyezése és konfigurálása, előtt meg kell határoznia, mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik Cerner központi elérésére. Ha úgy döntött, itt utasításokat követve hozzárendelheti ezek a felhasználók Cerner központi:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Felhasználók hozzárendelése Cerner központi fontos tippek
 
@@ -129,7 +130,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 * [Cerner központi: Az Azure AD identity adatok közzététele](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Oktatóanyag: Cerner központi konfigurálása egyszeri bejelentkezéshez az Azure Active Directoryval](active-directory-saas-cernercentral-tutorial.md)
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések

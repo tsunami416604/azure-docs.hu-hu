@@ -1,29 +1,25 @@
 ---
-title: "Feltételes utasítások - feltétel – Azure Logic Apps Futtatás lépéseket |} Microsoft Docs"
-description: "Futtassa a Logic Apps alkalmazást csak egy feltétel teljesítése után szükséges lépések. Hozzon létre a megadott feltételek alapján munkafolyamatokat futtató döntési fák."
+title: Adja hozzá a feltételes utasításokat a munkafolyamatokat – Azure Logic Apps |} Microsoft Docs
+description: Az Azure Logic Apps-munkafolyamatok műveleteket szabályzó feltételek létrehozása
 services: logic-apps
-keywords: "feltételes utasítások, döntési fák"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 486c1053f42ed3becc2c4b60accc993db7f24baa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298168"
 ---
-# <a name="conditional-statements-run-steps-based-on-a-condition-in-logic-apps"></a>Feltételes utasítások: futtassa a logic apps egy feltétel alapján
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-műveleteket szabályzó feltételes utasítások létrehozása
 
-Csak a megadott feltétel sikeres után hajtsa végre a lépéseket, használja a *feltételes utasítás*. Ez a struktúra összehasonlítja az adatokat a munkafolyamat jellemző vagy mezők ellen. Alapján futhat-e az adatok megfelel-e a feltétel más lépéseket is definiálhatók. Feltételek belül egymással ágyazhatja be.
+A Logic Apps alkalmazást az adott műveletek futtatása csak a megadott feltétel sikeres után, vegye fel a *feltételes utasítás*. Ez a struktúra összehasonlítja az adatokat a munkafolyamat jellemző vagy mezők ellen. Majd megadhatja a különféle műveletek alapján a futó-e az adatok megfelel a feltételnek. Feltételek belül egymással ágyazhatja be.
 
 Tegyük fel például, hogy túl sok e-mailt küld, amikor új elemek jelennek meg a webhely RSS-hírcsatorna logikai alkalmazás. Az e-mail üzenetek küldéséhez, csak akkor, ha az új elem egy adott karakterláncot tartalmaz feltételes utasítás adhat hozzá. 
 

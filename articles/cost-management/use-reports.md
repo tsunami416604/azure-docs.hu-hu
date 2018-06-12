@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: db7663623ada5d7799c46018be9e3b66afd004ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1a2067228629b04f1ef2cc407a28f379acc75f60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297515"
 ---
 # <a name="use-cost-management-reports"></a>A Cost Management jelentéseinek használata
 
@@ -23,6 +24,8 @@ Ez a cikk ismerteti a különböző költség hálózatkezelési jelentések has
 ## <a name="cost-analysis-reports"></a>Költség elemzési jelentések
 
 Költség elemzési jelentések a szolgáltatók számlázási adatait fogja megjeleníteni. A jelentések használata, csoportnak, és elemezze a számlázási fájlban részletezett különböző adatszegmensek. A jelentések részletes költség navigációs engedélyezése a felhőalapú szállítók nyers számlázási adatok között.
+
+Ha tekinthetők meg egy grafikonon, problémaelemző jelentések van-e egy y tengely *költség* és egy x tengelye egy *kategóriát vagy a címke* az Ön által. Bár a grafikonon egy tartományt, az elmúlt 30 napban például a tartomány lesz szűrőt. Elemzési jelentések ideálisak kategóriák összehasonlítani. Például minden előfizetés az elmúlt 30 napban a költségét. Vagy a szolgáltatásokat, mint a tároló vagy egy adott időszakban számítási költségét.
 
 Költség elemzési jelentések nem csoportos költségek címkék alapján. Címke-alapú jelentés érhető csak a költség jelentések beállítása költség-modellben költség foglalási 360 létrehozása után.
 
@@ -50,6 +53,8 @@ Kattintson a jobb egérgombbal jelentés eredményeit azokat kínál, illetve to
 ### <a name="actual-cost-over-time"></a>Tényleges költség adott idő alatt
 
 A tényleges költség keresztül idő a jelentés egy szabványos elemző jelentés költség terjesztése felett a meghatározott idő felbontása. A jelentés megjeleníti az adott idő alatt is láthatja a trendek és észlelje a költségkeret szabálytalanságok kiadásokat. Ez a jelentés tartalmazza a fő közreműködők, beleértve a folyamatban lévő költségeket és a kijelölt időtartományban fordított egyszeri fenntartott példány díjakat.
+
+Mint egy grafikonon megtekintve költséget idő jelentések keresztül kell-e egy y tengely *költség* és az x tengely *időszak*. Ezek a jelentések költség alakulásáról megjelenítése egy meghatározott időtartamra vonatkozóan.
 
 A tényleges költség keresztül idő jelentésben használja:
 
@@ -162,4 +167,4 @@ Ez a jelentés egy példát.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem fejezte első oktatóanyaga, amely költség-kezelésre, olvassa el a [tekintse át a használati és költségek](tutorial-review-usage.md).
+- Ha még nem végezte el a Cost Management első oktatóanyagát, itt megtekintheti: [Használat és költségek áttekintése](tutorial-review-usage.md).

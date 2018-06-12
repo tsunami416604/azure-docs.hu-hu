@@ -4,7 +4,7 @@ description: Hiba és a Logic Apps kivételkezelés kombinációját.
 services: logic-apps
 documentationcenter: ''
 author: dereklee
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee2c4f1408dcb6527220cd3870ab00d83987f471
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300062"
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Hibákat és kivételeket a Logic Apps alkalmazásokat kezeléséhez
 
@@ -70,7 +71,7 @@ Ha **retryPolicy** való **nincs**, ez a házirend nem próbálja meg újra a si
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| type | Igen | Karakterlánc | **none** | 
+| type | Igen | Sztring | **none** | 
 ||||| 
 
 ### <a name="fixed-interval"></a>Rögzített távolság
@@ -79,9 +80,9 @@ Ha **retryPolicy** való **rögzített**, ez a házirend egy sikertelen kérelme
 
 | Elem neve | Szükséges | Típus | Leírás |
 | ------------ | -------- | ---- | ----------- |
-| type | Igen | Karakterlánc | **fixed** |
+| type | Igen | Sztring | **Rögzített** |
 | darab | Igen | Egész szám | 1 és 90 közé kell esnie újrapróbálkozások száma | 
-| interval | Igen | Karakterlánc | Az újrapróbálkozási időköz [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amely PT5S és PT1D között kell lennie | 
+| interval | Igen | Sztring | Az újrapróbálkozási időköz [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amely PT5S és PT1D között kell lennie | 
 ||||| 
 
 <a name="exponential-interval"></a>
@@ -92,11 +93,11 @@ Ha **retryPolicy** való **exponenciális**, ez a házirend újrapróbálkozik a
 
 | Elem neve | Szükséges | Típus | Leírás |
 | ------------ | -------- | ---- | ----------- |
-| type | Igen | Karakterlánc | **exponential** |
+| type | Igen | Sztring | **Az exponenciális** |
 | darab | Igen | Egész szám | 1 és 90 közé kell esnie újrapróbálkozások száma  |
-| interval | Igen | Karakterlánc | Az újrapróbálkozási időköz [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amely PT5S és PT1D közé kell esnie. |
-| minimumInterval | Nem | Karakterlánc | A minimális újrapróbálkozási időközének [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amely PT5S között kell lennie, és **időköz** |
-| maximumInterval | Nem | Karakterlánc | A minimális újrapróbálkozási időközének [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amelyek közé kell esnie **időköz** és PT1D | 
+| interval | Igen | Sztring | Az újrapróbálkozási időköz [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amely PT5S és PT1D közé kell esnie. |
+| minimumInterval | Nem | Sztring | A minimális újrapróbálkozási időközének [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amely PT5S között kell lennie, és **időköz** |
+| maximumInterval | Nem | Sztring | A minimális újrapróbálkozási időközének [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations), amelyek közé kell esnie **időköz** és PT1D | 
 ||||| 
 
 Az alábbi táblázatban a megadott tartomány egységes véletlen változó előállítási módszerének minden újrapróbálkozásra bezárólag **száma**:

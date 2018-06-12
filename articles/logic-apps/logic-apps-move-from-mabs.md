@@ -4,7 +4,7 @@ description: Helyezze át vagy Azure BizTalk szolgáltatások (MABS) Azure Logic
 services: logic-apps
 documentationcenter: ''
 author: jonfancey
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 846386172c0221c217430e62c8560484f799fa7f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299545"
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Az Azure Logic Apps BizTalk szolgáltatások áthelyezése
 
@@ -67,9 +68,9 @@ Alapértelmezés szerint minden híd HTTP-végponttal, amely van konfigurálva, 
 BizTalk szolgáltatások a híd olyan hasonló egy feldolgozási folyamat. Hidat is igénybe vehet egy összekötő érkező adatokat, az egyes az adatokat, és az eredményt elküldik egy másik rendszer. A Logic Apps BizTalk szolgáltatásként azonos csővezeték-alapú kommunikáció mintázatokat támogatásával, és más integrációs minták biztosítanak szerepe ugyanaz. A [XML-kérelem-válasz híd](https://msdn.microsoft.com/library/azure/hh689781.aspx) BizTalk szolgáltatásokban is ismert, egy VETER folyamat, amely ezen feladatok végrehajtásával szakaszból áll:
 
 * (V) érvényesítése
-* (E) Enrich
+* E kiegészítése
 * (T) átalakítás
-* (E) Enrich
+* E kiegészítése
 * (R) útvonal
 
 Ez a kép bemutatja, hogyan feldolgozási helykérelemmel és válasszal, amelyek segítségével szabályozhatja, a kérelem elosztva, és a válasz elérési utak külön-külön, például a különböző leképezéseinek mindegyik elérési út:

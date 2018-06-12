@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 209b476e21a3a9ba08eb907a279c7c5f8faa1c17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb811e3dba7be87c83b9893db682475351ada1c1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660951"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266999"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>A Linux virtuális gép található parancsfájlok futtatásának
 
@@ -31,14 +31,14 @@ A [egyéni parancsprogramok futtatására szolgáló bővítmény](../extensions
 
 ## <a name="run-command"></a>A parancs futtatása
 
-A [parancs futtatása](run-command.md) szolgáltatás lehetővé teszi a virtuális gép és az alkalmazások kezelése és a hibaelhárítás parancsfájlok segítségével, és van elérhető, akkor is, ha a gép ne a hálózatról csatlakoztatva.
+A [parancs futtatása](run-command.md) a szolgáltatás lehetővé teszi, hogy a virtuális gép és az alkalmazások kezelése és a hibaelhárítás parancsfájlok segítségével, és elérhető még ha a gép nem érhető el, például ha a Vendég tűzfal nem rendelkezik az RDP és az SSH-port Nyissa meg.
 
 * Azure virtuális gépeken található parancsfájlok futtatásának.
 * Segítségével [Azure-portálon](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)
 * Gyorsan futtatni egy parancsfájlt, és tekintse meg a kimeneti, és az Azure portálon szükség szerint ismételje meg.
 * Parancsfájl közvetlenül írható, vagy a beépített parancsfájlok futtatása.
 * Windows-alapú gépek PowerShell-parancsprogrammal, és a Linux-gépek parancsfájl Bash.
-* Akkor hasznos, a virtuális gépek és a felügyelet és a parancsfájlok futtatásához a virtuális gépek, amelyek nincsenek csatlakoztatva a hálózathoz.
+* Akkor hasznos, a virtuális gépek és a felügyelet és a parancsfájlok futtatásához a virtuális gépek, amelyek nem érhető el.
 
 ## <a name="hybrid-runbook-worker"></a>hibrid runbook-feldolgozó
 

@@ -5,25 +5,25 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/02/2018
+ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6f21452ddc6c8a48392d24615e8dbcbba8b996c8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a7e828aa79d3a7fba53c0ef9f683ed16afc9a3e6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660950"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267458"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Futtassa a Linux virtuális gép PowerShell parancsfájloknál ad-parancs futtatása
 
-Futtatási parancs lehetővé teszi, hogy az Azure Linux virtuális gép hálózati kapcsolat függetlenül belül rendszerhéj-parancsfájlok futtatását. Ezek a parancsfájlok vagy általános számítógép-felügyelet használható, és gyorsan diagnosztizálhatja és virtuális gép hozzáférés és a hálózati problémák megoldásához és a virtuális gép egy jó állapotra is használható.
+Futtassa a parancsot használja a Virtuálisgép-ügynök az Azure Linux virtuális gép belül rendszerhéj-parancsfájlok futtatása. Ezek a parancsfájlok vagy általános számítógép-felügyelet használható, és gyorsan diagnosztizálhatja és virtuális gép hozzáférés és a hálózati problémák megoldásához és a virtuális gép egy jó állapotra is használható.
 
 ## <a name="benefits"></a>Előnyök
 
-A virtuális gépek eléréséhez használható több lehetőség áll rendelkezésre. Futtatási parancs parancsfájlok futtathatók a virtuális gépeken, függetlenül a hálózati kapcsolatot, és (nem kötelező telepítés) alapértelmezés szerint mindig elérhető. Futtatási parancs is használható az Azure portálon keresztül [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+A virtuális gépek eléréséhez használható több lehetőség áll rendelkezésre. A parancs futtatása távolról használata az ügynököt a virtuális gépek parancsfájlok is futtathatók. Futtatási parancs is használható az Azure portálon keresztül [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ez a funkció akkor hasznos, az összes olyan esetek, amikor szeretné futtatni a parancsprogram witin a virtuális gépek, így egyik hibaelhárítása, és javíthatja a virtuális gép, amely nem csatlakozik a hálózat nem megfelelő hálózati vagy a rendszergazda felhasználó miatt egyetlen módja konfiguráció.
+Ez a lehetőség akkor hasznos, ha szeretné, hogy egy parancsfájl witin egy virtuális gép futtatásához, és egyik hibaelhárítása, és javíthatja az RDP nem rendelkező virtuális gép egyetlen módja vagy SSH-port nyissa meg a nem megfelelő hálózati vagy a rendszergazda felhasználó miatt az összes forgatókönyv konfiguráció.
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -31,7 +31,7 @@ Az alábbiakban található parancs futtatása használatakor korlátozásainak 
 
 * Kimeneti korlátozódik utolsó 4096 bájtos
 * A parancsfájl futtatása körülbelül 20 másodperc minimális időtartam
-* Emelt szintű felhasználói parancsfájlok futtatása Linux rendszeren
+* Parancsfájlok futtatása alapértelmezés szerint emelt szintű felhasználói Linux rendszeren
 * Egyszerre csak egy parancsprogram futtathatnak.
 * Nem lehet megszakítani a parancsfájl futtatását
 * A maximális egy parancsfájlt ideje 90 perc, azt követően a rendszer túllépi az időkorlátot
@@ -44,13 +44,16 @@ Az alábbiakban egy példa segítségével a [az vm Futtatás-parancs](/cli/azur
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "sudo apt-get update && sudo apt-get install -y nginx"
 ```
 
+> [!NOTE]
+> Egy másik felhasználóként parancsok futtatásához használhatja `sudo -u` használandó felhasználói fiókot szeretne megadni.
+
 ## <a name="azure-portal"></a>Azure Portal
 
 Keresse meg a virtuális gép [Azure](https://portal.azure.com) válassza **paranccsal** alatt **műveletek**. A virtuális Gépen futtatandó elérhető parancsok listája jelenik meg.
 
 ![A parancs futtatásához](./media/run-command/run-command-list.png)
 
-Válassza ki a futtatni kívánt parancs. A parancsok némelyike rendelkezhet opcionális vagy kötelező bemeneti paraméter. Ezeknek a parancsoknak a paraméterek ahhoz, hogy adja meg a bemeneti szöveg mezői jelenjenek meg. Minden egyes parancsnál megtekintheti a kibontásával futtatott parancsfájl **parancsfájl megtekintése**. **RunPowerShellScript** eltér a más parancsok, lehetővé teszi a saját egyéni parancsfájl. 
+Válassza ki a futtatni kívánt parancs. A parancsok némelyike rendelkezhet opcionális vagy kötelező bemeneti paraméter. Ezeknek a parancsoknak a paraméterek ahhoz, hogy adja meg a bemeneti szöveg mezői jelenjenek meg. Minden egyes parancsnál megtekintheti a kibontásával futtatott parancsfájl **parancsfájl megtekintése**. **RunShellScript** eltér a más parancsok, lehetővé teszi a saját egyéni parancsfájl. 
 
 > [!NOTE]
 > A beépített parancsok, amelyek nem szerkeszthető.

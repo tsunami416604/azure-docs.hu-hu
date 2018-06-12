@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 897121e0dcaaf417430b892c501a243303ae9b6e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7037ad45680b56e26a05352416148432e053423a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292524"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Slackhez konfigurálása
 
@@ -42,7 +43,7 @@ Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" haszná
 
 A létesítési szolgáltatás engedélyezése és konfigurálása, előtt kell döntenie, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik az Slack alkalmazásához való hozzáférést. Ha úgy döntött, itt cikk utasításait követve ezek a felhasználók rendelhet a Slack-alkalmazásba:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-slack"></a>Felhasználók hozzárendelése a Slackhez fontos tippek
 
@@ -114,5 +115,5 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)

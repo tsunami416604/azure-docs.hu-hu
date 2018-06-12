@@ -1,25 +1,19 @@
 ---
-title: Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel |} Microsoft Docs
+title: Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
 description: Ismerje meg, hogyan használható az Azure figyelő beépített szerepköröket és engedélyeket figyelési erőforrásokhoz való hozzáférés korlátozása.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 01a785eab1b31b2943184267a3c6496fefaf44cf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: ''
+ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639078"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264602"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Ismerkedés a szerepkörök, engedélyek és biztonságának és az Azure-figyelő
 Sok csapatok kell szigorúan szabályozzák, figyelési adatok és beállítások. Például ha vannak olyan dolgozó kizárólag figyelése (a támogatási szakértők, devops mérnökök) csoport tagjai, vagy ha egy felügyelt szolgáltató használja, érdemes lehet hozzáférést azokat csak figyelési adatok korlátozásával létrehozása, módosítása, vagy törli az erőforrást. Ez a cikk bemutatja, hogyan gyorsan figyelési beépített RBAC szerepkör alkalmazni a felhasználók az Azure-ban vagy a saját egyéni szerepkör a felhasználókat, akiknek korlátozott felügyeleti engedélyekkel. A cikk ismerteti az Azure-figyelő kapcsolódó erőforrások és hogyan korlátozhatja az adatok tartalmazzák a hozzáférést a biztonsági szempontok majd.

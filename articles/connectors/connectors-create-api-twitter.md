@@ -1,11 +1,11 @@
 ---
-title: "A Twitter-összekötő használata a logic apps |} Microsoft Docs"
-description: "A REST API paraméterekkel Twitter-összekötő áttekintése"
-services: 
-documentationcenter: 
+title: A Twitter-összekötő használata a logic apps |} Microsoft Docs
+description: A REST API paraméterekkel Twitter-összekötő áttekintése
+services: ''
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.service: multiple
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: eb953ee7701d407b9b75a0699f53b9b64828a0e5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b44a973a94043f71f2fd9803abca47652363d8a1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296543"
 ---
 # <a name="get-started-with-the-twitter-connector"></a>A Twitter-összekötő az első lépései
 A Twitter-összekötő segítségével:

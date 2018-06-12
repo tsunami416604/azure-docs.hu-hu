@@ -1,11 +1,11 @@
 ---
-title: "Tartalomtípus - Azure Logic Apps alkalmazásokat kezeléséhez |} Microsoft Docs"
-description: "Hogy az Azure Logic Apps hogyan kezelje a tervezési és futásidejű tartalomtípusok"
+title: Tartalomtípus - Azure Logic Apps alkalmazásokat kezeléséhez |} Microsoft Docs
+description: Hogy az Azure Logic Apps hogyan kezelje a tervezési és futásidejű tartalomtípusok
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297121"
 ---
 # <a name="handle-content-types-in-logic-apps"></a>A logic apps leíró tartalomtípusok
 
@@ -72,15 +73,15 @@ Ha a következő művelet küldi el a kérelmet egy másik kérelem törzsében 
 
 A Logic Apps motor mindig megőrzi a `Content-Type` , amelyek a HTTP-kérés vagy válasz érkezett. Igen, ha a motor megkapja a tartalmat a `Content-Type` a `application/octet-stream`, és megadja, hogy tartalom nélkül adattípusokról későbbi művelettel, a kimenő kérelem rendelkezik `Content-Type`: `application/octet-stream`. Ezzel a módszerrel a motor is garantálja az adatok nem vesznek el a munkafolyamaton keresztül áthelyezés közben. Azonban a műveletállapot (bemenetekhez és kimenetekhez) van tárolva egy JSON-objektum állapotát a munkafolyamaton keresztül helyezi át. Így egyes adattípusok megőrzéséhez a motor konvertálja a tartalmat egy bináris a base64 kódolású karakterlánc, amely megőrzi az mindkét megfelelő metaadatok `$content` és `$content-type`, amelyeket automatikusan alakítható. 
 
-* `@json()`-adatok kerül`application/json`
-* `@xml()`-adatok kerül`application/xml`
-* `@binary()`-adatok kerül`application/octet-stream`
-* `@string()`-adatok kerül`text/plain`
-* `@base64()`-tartalom konvertálja a Base64 kódolású karakterlánc
-* `@base64toString()`-a base64 kódolású karakterlánc konvertálása`text/plain`
-* `@base64toBinary()`-a base64 kódolású karakterlánc konvertálása`application/octet-stream`
-* `@encodeDataUri()`-dataUri bájt tömbként karakterlánc kódolja
-* `@decodeDataUri()`-a dataUri visszafejti azokat egy bájttömbben.
+* `@json()` -adatok kerül `application/json`
+* `@xml()` -adatok kerül `application/xml`
+* `@binary()` -adatok kerül `application/octet-stream`
+* `@string()` -adatok kerül `text/plain`
+* `@base64()` -tartalom konvertálja a Base64 kódolású karakterlánc
+* `@base64toString()` -a base64 kódolású karakterlánc konvertálása `text/plain`
+* `@base64toBinary()` -a base64 kódolású karakterlánc konvertálása `application/octet-stream`
+* `@encodeDataUri()` -dataUri bájt tömbként karakterlánc kódolja
+* `@decodeDataUri()` -a dataUri visszafejti azokat egy bájttömbben.
 
 Például, ha HTTP kérést fogadott `Content-Type`: `application/xml`:
 

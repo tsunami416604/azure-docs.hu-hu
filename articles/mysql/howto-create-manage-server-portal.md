@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 4b52cb9e42e582d42424c2814e2e30f764a8679b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265584"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Létrehozása és kezelése az Azure-adatbázis MySQL-kiszolgáló Azure-portál használatával
 Ez a témakör ismerteti, hogyan gyorsan létrehozhat egy új Azure-adatbázis MySQL-kiszolgáló. A kiszolgáló kezelése az Azure portál használatával kapcsolatos adatokat is tartalmaz. Kiszolgáló kezelése tartalmazza a kiszolgáló adatait, és az adatbázisok, a jelszó alaphelyzetbe állításával erőforrások méretezés és a kiszolgáló törlésével megtekintése.
@@ -64,7 +65,7 @@ Után az új kiszolgáló van megadva, a felhasználó rendelkezik-e a meglévő
 
 2. Adjon meg egy új jelszót, és az jelszót az ablakban látható módon:
 
-   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
+   ![Jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kattintson a **OK** mentse az új jelszót.
 
@@ -74,7 +75,7 @@ Után az új kiszolgáló van megadva, a felhasználó rendelkezik-e a meglévő
 
 2. Módosítsa a **vCore** beállítását a csúszkát a kívánt értéket.
 
-    ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
+    ![skála-számítási](./media/howto-create-manage-server-portal/scale-compute.png)
 
 3. Kattintson az **OK** gombra a módosítások mentéséhez.
 

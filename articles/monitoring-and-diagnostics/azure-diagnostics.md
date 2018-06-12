@@ -1,24 +1,20 @@
 ---
-title: Azure Diagnostics-bővítmény áttekintése |} Microsoft Docs
+title: Az Azure Diagnostics-bővítmény áttekintése
 description: Az Azure diagnostics használjon hibakeresés, méri a teljesítményt, figyelés, a forgalom elemzése a felhőszolgáltatások, virtuális gépek és a service fabric
-services: multiple
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: ''
-editor: ''
-ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: robb
-ms.openlocfilehash: daeaddefa461e71fcc62af4efc4fb7084b237cf9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4ec82112ea0defcea4f687abaad7d96627cb902
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267679"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítményt
 Az Azure Diagnostics-bővítmény egy olyan ügynök, amely lehetővé teszi a telepített alkalmazás diagnosztikai adatok gyűjtésére Azure-ban. Számos különböző forrásokból származó használja a diagnosztika bővítményét. Azure Cloud Service (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek esetében támogatott vannak, és a Service Fabric virtuálisgép-méretezési készlet. Más Azure-szolgáltatásokkal rendelkezik különböző diagnosztika módszerek. Lásd: [figyelőeszközök az Azure-ban](monitoring-overview.md). 
@@ -33,9 +29,9 @@ Az Azure Diagnostics bővítmény össze tudják gyűjteni a következő típus�
 | --- | --- |
 | Teljesítményszámlálók |Operációs rendszer és az egyéni teljesítményszámlálói |
 | Alkalmazás-naplók |Az alkalmazás nyomkövetési üzenetek |
-| Windows-Eseménynapló |A Windows-esemény naplózása rendszerben küldött információk |
+| Windows-eseménynaplók |A Windows-esemény naplózása rendszerben küldött információk |
 | .NET eseményforrás |Kód írása a .NET használatával események [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) osztály |
-| IIS-napló |IIS-webhelyek kapcsolatos információk |
+| IIS-naplók |IIS-webhelyek kapcsolatos információk |
 | Jegyzékfájl alapú ETW |A folyamat által generált Windows nyomkövetési eseményeinek |
 | összeomlási memóriaképek, |Egy alkalmazás összeomlása esetén a folyamat állapotával kapcsolatos információk |
 | egyéni hibanaplók, |Az alkalmazás vagy szolgáltatás által létrehozott naplók |

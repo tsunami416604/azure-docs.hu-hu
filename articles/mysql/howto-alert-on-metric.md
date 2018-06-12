@@ -6,14 +6,15 @@ author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265179"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Riasztásokat állíthat be metrikák Azure-adatbázis a MySQL az Azure-portál használatával 
 
@@ -54,7 +55,7 @@ Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvas�
    | Erőforráscsoport | Ez a mező a erőforráscsoporttal, az Azure-adatbázis a MySQL előre feltöltve a rendszer. |
    | Erőforrás | Ebben a mezőben az Azure-adatbázis neve a MySQL előre feltöltve a rendszer. |
    | Metrika | Válassza ki a cél, hogy szeretne kiadni egy riasztást. Például **tárolási százalékos**. |
-   | Feltétel | Válassza ki a metrika az összehasonlítandó feltételét. Például **nagyobb, mint**. |
+   | Állapot | Válassza ki a metrika az összehasonlítandó feltételét. Például **nagyobb, mint**. |
    | Küszöbérték | Küszöbérték a metrika, például 85 (százalék). |
    | Időszak | Az időtartam alatt a metrika szabály a riasztási eseményindítók előtt teljesülniük kell. Például **az elmúlt 30 perc**. |
 

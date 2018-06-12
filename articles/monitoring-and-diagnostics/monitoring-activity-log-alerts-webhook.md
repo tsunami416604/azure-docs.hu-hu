@@ -1,22 +1,19 @@
 ---
-title: A webhook séma napló tevékenységriasztásokat használt megértése |} Microsoft Docs
+title: A webhook séma napló tevékenységriasztásokat használt ismertetése
 description: További tudnivalók az fel az a webhook URL-CÍMÉT egy figyelmeztetés a napló aktiválja JSON-séma.
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: f71714774d7ad54d7eb2132e8c20c87f972157ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 3935da72cb747a642ee1f360dc5318fc2d34e763
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263238"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Az Azure tevékenység napló riasztásokhoz Webhookok
 Egy művelet csoport definíciójának részeként tevékenység napló riasztási értesítések fogadásának webhook végpontok is konfigurálhat. A webhook a más rendszerekkel utófeldolgozási vagy egyéni műveletek irányíthatja a ezek az értesítések. Ez a cikk bemutatja, mi a hasznos a HTTP POST egy webhook a következőhöz hasonló.
@@ -140,7 +137,7 @@ Más tevékenység napló minden riasztásról adott séma részletekért lásd:
 | név |A riasztási szabály neve. |
 | id |A riasztás erőforrás-azonosító. |
 | leírás |Riasztás leírása állítható be, ha a riasztást hoz létre. |
-| subscriptionId |Azure subscription ID. |
+| subscriptionId |Az Azure előfizetés-azonosító. |
 | időbélyeg |Az idő, amelyen az esemény váltotta az Azure-szolgáltatás, amely a kérelem feldolgozása. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
 | resourceGroupName |Az érintett erőforrás az erőforráscsoport neve. |

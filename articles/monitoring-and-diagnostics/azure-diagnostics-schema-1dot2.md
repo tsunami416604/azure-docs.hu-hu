@@ -1,24 +1,20 @@
 ---
-title: Az Azure Diagnostics 1.2-es konfigurációs séma |} Microsoft Docs
+title: Az Azure Diagnostics bővítmény 1.2-es konfigurációs séma
 description: CSAK akkor érvényes, ha Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a Service Fabric vagy a Cloud Services Azure SDK 2.5 használ.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 1e9cc6d0950945df8c4fba74d8e1f6196be224f0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: diagnostic-extension
+ms.openlocfilehash: 32fcd3171f1adcfd565c38ca1191342e7afaf5a9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267696"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Az Azure Diagnostics 1.2-es konfigurációs séma
 > [!NOTE]
@@ -120,7 +116,7 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 |**performanceCounters**|Lehetővé teszi, hogy a teljesítményszámlálók gyűjteményét. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|Lehetővé teszi a gyűjteményt, a Windows eseménynaplóiban keresse meg. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
 
-## <a name="crashdumps-element"></a>CrashDumps Element  
+## <a name="crashdumps-element"></a>CrashDumps elem  
  Lehetővé teszi, hogy összeomlási memóriaképek gyűjteménye. A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -191,7 +187,7 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 |------------------|-----------------|  
 |**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> -                     **counterSpecifier** -teljesítményszámláló nevét. Például: `\Processor(_Total)\% Processor Time`. Teljesítmény listájának beolvasása a gazdagépen futó számlálók futtassa a parancsot `typeperf`.<br /><br /> -                     **sampleRate** -gyakoriságát. a számláló mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** -számláló mértékegysége.|  
 
-## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
+## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration elem  
  A következő táblázat a gyermekelemek:  
 
 |Elem neve|Leírás|  
@@ -203,4 +199,4 @@ A telemetriai adatok összegyűjtésére konfigurációs beállításokat határ
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**DataSource**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Minden eseményt gyűjt, adja meg a "*".|
+|**Adatforrás**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Minden eseményt gyűjt, adja meg a "*".|

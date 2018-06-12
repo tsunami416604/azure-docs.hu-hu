@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Logic Apps az Azure Functions egyéni kód |} Microsoft Docs"
-description: "Hozzon létre és futtasson egyéni kód az Azure Logic Apps az Azure Functions"
+title: Az Azure Logic Apps az Azure Functions egyéni kód |} Microsoft Docs
+description: Hozzon létre és futtasson egyéni kód az Azure Logic Apps az Azure Functions
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 18442c87b049200fac5ed41cc7034ba7a848b8d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297869"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Adja hozzá, és egyéni kódot a logic Apps alkalmazásokat futtasson Azure Functions használatával
 

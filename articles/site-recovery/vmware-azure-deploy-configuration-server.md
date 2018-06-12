@@ -2,17 +2,18 @@
 title: A konfigurációs kiszolgáló VMware vész-helyreállítási az Azure Site Recovery üzembe |} Microsoft Docs
 description: Ez a cikk ismerteti, hogyan VMware vész-helyreállítási az Azure Site Recovery konfigurációs kiszolgálók központi telepítéséhez
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/06/2018
+ms.author: raynew
+ms.openlocfilehash: 3e7a9196d928fb8a5d12647e1916b046ebedd261
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267509"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -20,11 +21,19 @@ Telepít egy a helyszíni konfigurációs kiszolgáló használatakor [Azure Sit
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azt javasoljuk, hogy telepít egy magas rendelkezésre állású VMware virtuális gépként a konfigurációs kiszolgáló. Minimális hardverkövetelmények a következő táblázat foglalja össze.
+Azt javasoljuk, hogy telepít egy magas rendelkezésre állású VMware virtuális gépként a konfigurációs kiszolgáló. Konfigurációs kiszolgáló követelményei az alábbi táblázat foglalja össze.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+
+### <a name="prepare-for-mysql-installation"></a>MySQL-telepítés előkészítése
+
+MySQL a konfigurációs kiszolgálón telepítve kell lennie. Ehhez a következő módszerek valamelyikével:
+
+- Töltse le és telepítse azt a Site Recovery segítségével amikor a kiszolgáló konfigurációs varázsló futtatásakor. Nem kell semmilyen adott művelet végrehajtására.
+- Manuálisan MySQL letöltése, és naplózza azt a mappát C:\Temp\ASRSetup. Majd futtassa a telepítőt. A Site Recovery észleli a telepíti a rendszer a varázsló a futtatása.
+- Manuálisan MySQL letöltése, és naplózza azt a mappát C:\Temp\ASRSetup. A varázsló a futtatása azt fogja a telepítőfájl, és telepítse a következő helyről. 
 
 
 ## <a name="capacity-planning"></a>Kapacitástervezés
@@ -100,7 +109,7 @@ Ha meg szeretne adni egy további hálózati Adapterre a konfigurációs kiszolg
 
 1. A konfigurációs kiszolgáló kezelése varázslóban válassza **kapcsolat beállítása**. Válassza ki a replikációs forgalom fogadására, és jelölje ki a hálózati adapter **mentése**. Ez a beállítás a konfigurációt követően nem módosítható.
 2. A **Helyreállítási tár kiválasztása** területen válassza ki az Azure-előfizetést, valamint a megfelelő erőforráscsoportot és tárolót.
-3. A **Független gyártótól származó szoftver telepítése** területen fogadja el a licencszerződést. Kattintson a **Letöltés és telepítés** gombra a MySQL-kiszolgáló telepítéséhez.
+3. A **Független gyártótól származó szoftver telepítése** területen fogadja el a licencszerződést. MySQL megfelelően telepíteni a [telepítéséhez a MySQL használata metódus](#prepare-for-mysql-installation).
 4. Válassza ki **telepíteni a VMware PowerLCI**. Győződjön meg arról, hogy az összes böngészőablakot be van zárva, ez a lépés végrehajtása előtt. Ezután válassza a **Folytatás** elemet.
 5. A **Berendezés konfigurációjának ellenőrzése** területen a rendszer ellenőrzi az előfeltételeket, mielőtt továbblépne.
 6. A **VCenter-kiszolgáló vagy vSphere ESXi-kiszolgáló hitelesítő adatainak konfigurálása** területen adja meg azon vCenter-kiszolgáló vagy VSphere-gazdagép teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. A portot adja meg a kiszolgáló figyel és egy rövid nevet a VMware-kiszolgáló újraregisztrálásával a felhőben.

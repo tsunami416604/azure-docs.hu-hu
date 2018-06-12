@@ -1,26 +1,19 @@
 ---
-title: Az újabb Azure metrika riasztások erőforrások támogatott |} Microsoft Docs
+title: Az újabb Azure metrika riasztások támogatott erőforrások
 description: A támogatási metrikák és a naplókat a közel valós idejű metrika riasztásokat az újabb Azure hivatkozás.
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: snmuvva, vinagara
-ms.custom: ''
-ms.openlocfilehash: e09cc1a91daf2e6a043d73ef1f41aa265334dec2
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: snmuvva
+ms.component: alerts
+ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809828"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264510"
 ---
 # <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Új mérték riasztások támogatott metrikák és a létrehozási módszerei
 Azure figyelő most már támogatja a [új metrika riasztástípus](monitoring-overview-unified-alerts.md) jelentős előnyt tartalmaz a régebbi keresztül [klasszikus metrika riasztások](insights-alerts-portal.md). A régebbi riasztások támogatja a [metrikák nagy listája](monitoring-supported-metrics.md). Az újabb riasztások nagyobb listában (növekvő) részhalmazának támogatja. Ez a cikk részhalmaz sorolja fel. 

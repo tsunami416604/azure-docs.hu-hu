@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 8fa98ff4cee206894c35f84cca3f3b4c43e2e5ce
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4d483f045a8e778953ddb578dd7bb81fdb05fdf2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292408"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Pingboard konfigurálása
 
@@ -42,7 +43,7 @@ Az Azure AD egy fogalom, más néven "hozzárendeléseket" alapján határozza m
 
 Konfigurálását megelőzően, illetve a létesítési szolgáltatás engedélyezése, el kell döntenie, mely felhasználóknak az Azure AD hozzá kell férniük a Pingboard alkalmazásba. Ezután ezek a felhasználók itt utasításokat követve hozzárendelheti a Pingboard alkalmazás:
 
-[Felhasználó hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+[Felhasználó hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-pingboard"></a>Felhasználók hozzárendelése Pingboard fontos tippek
 
@@ -99,6 +100,6 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-pingboard-tutorial.md)

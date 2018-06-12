@@ -1,24 +1,19 @@
 ---
-title: Az Azure figyelő metrika - erőforrás típusonkénti támogatott metrikák |} Microsoft Docs
+title: Az Azure figyelő támogatott metrikák erőforrástípusok szerint
 description: Minden erőforrás típusból Azure megfigyelővel metrikák listája.
 author: anirudhcavale
-manager: ashwink
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 63d4ac65-1688-40d1-85c8-7cd408285b0f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: reference
 ms.date: 03/30/2018
 ms.author: ancav
-ms.openlocfilehash: a5c0d529357d8ab92cf63ca4a0293753d55801d6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.component: metrics
+ms.openlocfilehash: d7d51a7c037e109c730dd79005a2c75eeb0697c0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266891"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure-figyelő támogatott metrikák
 Azure figyelő többféleképpen is kommunikál a metrikákat, többek között a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül, vagy a őket lekérdezése a PowerShell vagy a parancssori felület. Alatt érhető el teljes listáját és az összes metrikák jelenleg Azure figyelő metrika folyamat. Más metrikákkal portálon vagy az örökölt API-k használatával érhetők el. Ez a lista alatt csak tartalmazza a metrikák érhető el a összevont Azure-figyelő metrika-feldolgozási folyamat használatával. A metrikák kereshet és eléréséhez kérjük, használja a [2018-01-01 api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -129,7 +124,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|connectedclients|Csatlakoztatott ügyfélszámítógépek|Darabszám|Maximum||Nincs dimenzió|
+|connectedclients|Csatlakoztatott ügyfélrendszerek|Darabszám|Maximum||Nincs dimenzió|
 |totalcommandsprocessed|Műveletek összesen|Darabszám|Összes||Nincs dimenzió|
 |cachehits|Gyorsítótárbeli találatok|Darabszám|Összes||Nincs dimenzió|
 |cachemisses|Gyorsítótárbeli tévesztések|Darabszám|Összes||Nincs dimenzió|
@@ -345,7 +340,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Késés|Késés|Ideje ezredmásodpercben|Átlag|A késés másodpercben.|Nincs dimenzió|
 |CharactersTranslated|Lefordított karakterek|Darabszám|Összes|A bejövő szöveges kérelem karakterszáma.|Nincs dimenzió|
 |SpeechSessionDuration|Beszédfelismerési munkamenet időtartama|másodperc|Összes|A beszédfelismerési munkamenet teljes időtartama.|Nincs dimenzió|
-|TotalTransactions|Teljes tranzakció|Darabszám|Összes|Tranzakciók száma összesen|Nincs dimenzió|
+|TotalTransactions|Tranzakciók száma|Darabszám|Összes|Tranzakciók száma összesen|Nincs dimenzió|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -360,16 +355,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek|Nincs dimenzió|
 |Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Darabszám|Átlag|Adatlökethez rendelkezésre álló kreditek száma összesen|Nincs dimenzió|
 |Felhasznált processzorkreditek|Felhasznált processzorkreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
-|Lemez sebessége olvasott bájtok másodpercenkénti száma|Adatok lemez sebessége olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|Figyelési időszak során egyetlen lemez olvasási összes bájt/mp|Helyet|
-|Egy lemezre írt bájt/mp|Adatok írási bájt/mp (előzetes verzió)|Egység/s|Átlag|Összes bájt/mp egyetlen lemezre írni figyelése időszak során|Helyet|
-|Lemezolvasási műveletek másodpercenkénti száma|Adatok lemezolvasási műveletek másodpercenkénti (előzetes verzió)|Egység/s|Átlag|Teljes IOPS olvasásakor egyetlen lemez figyelése időszak során|Helyet|
-|Lemez írási műveletek másodpercenkénti száma|Adatok írási műveletek/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS időszak ellenőrzése során egyetlen lemezen való írás során.|Helyet|
-|Lemezenként QD|Adatlemez QD (előzetes verzió)|Darabszám|Átlag|Adatok lemez várólistamélység (vagy várólista hossza)|Helyet|
-|Operációsrendszer-lemez olvasási bájtok másodpercenkénti száma|Az operációsrendszer-lemez olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|Az operációsrendszer-lemez időszak ellenőrzése során egyetlen lemez olvasási összes bájt/mp|Nincs dimenzió|
-|OS lemezenként írási bájtok/s|Az operációsrendszer-lemez írt bájt/mp (előzetes verzió)|Egység/s|Átlag|Összes bájt/mp egyetlen lemezre írni figyelése operációsrendszer-lemez élettartama során|Nincs dimenzió|
-|Operációsrendszer-lemez olvasási műveletek másodpercenkénti száma|Az operációsrendszer-lemez olvasási művelet/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS olvasásakor egyetlen lemez operációsrendszer-lemez időszak ellenőrzése során|Nincs dimenzió|
-|Lemezenként OS írási műveletek másodpercenkénti száma|Az operációsrendszer-lemez írási művelet/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS figyelése operációsrendszer-lemez élettartama során egyetlen lemezen való írás során.|Nincs dimenzió|
-|OS lemezenként QD|Az operációsrendszer-lemez QD (előzetes verzió)|Darabszám|Átlag|Az operációsrendszer-lemez várólistamélység (vagy várólista hossza)|Nincs dimenzió|
+|Lemezenkénti olvasási sebesség (bájt/mp)|Adatok lemez sebessége olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen lemezről beolvasott adatok mennyisége (bájt/s)|Tárolóhely azonosítója|
+|Lemezenkénti írási sebesség (bájt/mp)|Adatok írási bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen lemezre írt adatok mennyisége (bájt/s)|Tárolóhely azonosítója|
+|Lemezenkénti olvasások száma (művelet/s)|Adatok lemezolvasási műveletek másodpercenkénti (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen lemez olvasásakor|Tárolóhely azonosítója|
+|Lemezenkénti írások száma (művelet/s)|Adatok írási műveletek/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen lemez írásakor|Tárolóhely azonosítója|
+|Várólista lemezenkénti mélysége|Adatlemez QD (előzetes verzió)|Darabszám|Átlag|Adatlemez várólistájának mélysége (vagy hossza)|Tárolóhely azonosítója|
+|Lemezolvasás operációs rendszerenkénti sebessége (bájt/s)|Az operációsrendszer-lemez olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen operációsrendszer-lemezről beolvasott adatok mennyisége (bájt/s)|Nincs dimenzió|
+|Lemezírás operációs rendszerenkénti sebessége (bájt/s)|Az operációsrendszer-lemez írt bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen operációsrendszer-lemezre írt adatok mennyisége (bájt/s)|Nincs dimenzió|
+|Lemezolvasások operációs rendszerenkénti száma (művelet/s)|Az operációsrendszer-lemez olvasási művelet/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen operációsrendszer-lemez olvasásakor|Nincs dimenzió|
+|Lemezírások operációs rendszerenkénti száma (művelet/s)|Az operációsrendszer-lemez írási művelet/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen operációsrendszer-lemez írásakor|Nincs dimenzió|
+|Lemez várólistájának operációs rendszerenkénti mélysége|Az operációsrendszer-lemez QD (előzetes verzió)|Darabszám|Átlag|Az operációsrendszer-lemez várólistájának mélysége (vagy hossza)|Nincs dimenzió|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
@@ -384,16 +379,16 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek|Nincs dimenzió|
 |Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Darabszám|Átlag|Adatlökethez rendelkezésre álló kreditek száma összesen|Nincs dimenzió|
 |Felhasznált processzorkreditek|Felhasznált processzorkreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
-|Lemez sebessége olvasott bájtok másodpercenkénti száma|Adatok lemez sebessége olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|Figyelési időszak során egyetlen lemez olvasási összes bájt/mp|Helyet|
-|Egy lemezre írt bájt/mp|Adatok írási bájt/mp (előzetes verzió)|Egység/s|Átlag|Összes bájt/mp egyetlen lemezre írni figyelése időszak során|Helyet|
-|Lemezolvasási műveletek másodpercenkénti száma|Adatok lemezolvasási műveletek másodpercenkénti (előzetes verzió)|Egység/s|Átlag|Teljes IOPS olvasásakor egyetlen lemez figyelése időszak során|Helyet|
-|Lemez írási műveletek másodpercenkénti száma|Adatok írási műveletek/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS időszak ellenőrzése során egyetlen lemezen való írás során.|Helyet|
-|Lemezenként QD|Adatlemez QD (előzetes verzió)|Darabszám|Átlag|Adatok lemez várólistamélység (vagy várólista hossza)|Helyet|
-|Operációsrendszer-lemez olvasási bájtok másodpercenkénti száma|Az operációsrendszer-lemez olvasott bájt/mp|Egység/s|Átlag|Az operációsrendszer-lemez időszak ellenőrzése során egyetlen lemez olvasási összes bájt/mp|Nincs dimenzió|
-|OS lemezenként írási bájtok/s|Az operációsrendszer-lemez írt bájt/mp (előzetes verzió)|Egység/s|Átlag|Összes bájt/mp egyetlen lemezre írni figyelése operációsrendszer-lemez élettartama során|Nincs dimenzió|
-|Operációsrendszer-lemez olvasási műveletek másodpercenkénti száma|Az operációsrendszer-lemez olvasási művelet/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS olvasásakor egyetlen lemez operációsrendszer-lemez időszak ellenőrzése során|Nincs dimenzió|
-|Lemezenként OS írási műveletek másodpercenkénti száma|Az operációsrendszer-lemez írási művelet/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS figyelése operációsrendszer-lemez élettartama során egyetlen lemezen való írás során.|Nincs dimenzió|
-|OS lemezenként QD|Az operációsrendszer-lemez QD (előzetes verzió)|Darabszám|Átlag|Az operációsrendszer-lemez várólistamélység (vagy várólista hossza)|Nincs dimenzió|
+|Lemezenkénti olvasási sebesség (bájt/mp)|Adatok lemez sebessége olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen lemezről beolvasott adatok mennyisége (bájt/s)|Tárolóhely azonosítója|
+|Lemezenkénti írási sebesség (bájt/mp)|Adatok írási bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen lemezre írt adatok mennyisége (bájt/s)|Tárolóhely azonosítója|
+|Lemezenkénti olvasások száma (művelet/s)|Adatok lemezolvasási műveletek másodpercenkénti (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen lemez olvasásakor|Tárolóhely azonosítója|
+|Lemezenkénti írások száma (művelet/s)|Adatok írási műveletek/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen lemez írásakor|Tárolóhely azonosítója|
+|Várólista lemezenkénti mélysége|Adatlemez QD (előzetes verzió)|Darabszám|Átlag|Adatlemez várólistájának mélysége (vagy hossza)|Tárolóhely azonosítója|
+|Lemezolvasás operációs rendszerenkénti sebessége (bájt/s)|Operációsrendszer-lemez olvasásának sebessége (bájt/s)|Egység/s|Átlag|A figyelési időszak során egyetlen operációsrendszer-lemezről beolvasott adatok mennyisége (bájt/s)|Nincs dimenzió|
+|Lemezírás operációs rendszerenkénti sebessége (bájt/s)|Az operációsrendszer-lemez írt bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen operációsrendszer-lemezre írt adatok mennyisége (bájt/s)|Nincs dimenzió|
+|Lemezolvasások operációs rendszerenkénti száma (művelet/s)|Az operációsrendszer-lemez olvasási művelet/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen operációsrendszer-lemez olvasásakor|Nincs dimenzió|
+|Lemezírások operációs rendszerenkénti száma (művelet/s)|Az operációsrendszer-lemez írási művelet/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen operációsrendszer-lemez írásakor|Nincs dimenzió|
+|Lemez várólistájának operációs rendszerenkénti mélysége|Az operációsrendszer-lemez QD (előzetes verzió)|Darabszám|Átlag|Az operációsrendszer-lemez várólistájának mélysége (vagy hossza)|Nincs dimenzió|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -408,23 +403,23 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Lemezre írási művelet/s|Lemezre írási művelet/s|Egység/s|Átlag|Lemezre írási I/O-műveletek|Nincs dimenzió|
 |Fennmaradó processzorkreditek|Fennmaradó processzorkreditek|Darabszám|Átlag|Adatlökethez rendelkezésre álló kreditek száma összesen|Nincs dimenzió|
 |Felhasznált processzorkreditek|Felhasznált processzorkreditek|Darabszám|Átlag|A virtuális gép által felhasznált kreditek száma összesen|Nincs dimenzió|
-|Lemez sebessége olvasott bájtok másodpercenkénti száma|Adatok lemez sebessége olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|Figyelési időszak során egyetlen lemez olvasási összes bájt/mp|Helyet|
-|Egy lemezre írt bájt/mp|Adatok írási bájt/mp (előzetes verzió)|Egység/s|Átlag|Összes bájt/mp egyetlen lemezre írni figyelése időszak során|Helyet|
-|Lemezolvasási műveletek másodpercenkénti száma|Adatok lemezolvasási műveletek másodpercenkénti (előzetes verzió)|Egység/s|Átlag|Teljes IOPS olvasásakor egyetlen lemez figyelése időszak során|Helyet|
-|Lemez írási műveletek másodpercenkénti száma|Adatok írási műveletek/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS időszak ellenőrzése során egyetlen lemezen való írás során.|Helyet|
-|Lemezenként QD|Adatlemez QD (előzetes verzió)|Darabszám|Átlag|Adatok lemez várólistamélység (vagy várólista hossza)|Helyet|
-|Operációsrendszer-lemez olvasási bájtok másodpercenkénti száma|Az operációsrendszer-lemez olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|Az operációsrendszer-lemez időszak ellenőrzése során egyetlen lemez olvasási összes bájt/mp|Nincs dimenzió|
-|OS lemezenként írási bájtok/s|Az operációsrendszer-lemez írt bájt/mp (előzetes verzió)|Egység/s|Átlag|Összes bájt/mp egyetlen lemezre írni figyelése operációsrendszer-lemez élettartama során|Nincs dimenzió|
-|Operációsrendszer-lemez olvasási műveletek másodpercenkénti száma|Az operációsrendszer-lemez olvasási művelet/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS olvasásakor egyetlen lemez operációsrendszer-lemez időszak ellenőrzése során|Nincs dimenzió|
-|Lemezenként OS írási műveletek másodpercenkénti száma|Az operációsrendszer-lemez írási művelet/mp (előzetes verzió)|Egység/s|Átlag|Teljes IOPS figyelése operációsrendszer-lemez élettartama során egyetlen lemezen való írás során.|Nincs dimenzió|
-|OS lemezenként QD|Az operációsrendszer-lemez QD (előzetes verzió)|Darabszám|Átlag|Az operációsrendszer-lemez várólistamélység (vagy várólista hossza)|Nincs dimenzió|
+|Lemezenkénti olvasási sebesség (bájt/mp)|Adatok lemez sebessége olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen lemezről beolvasott adatok mennyisége (bájt/s)|Tárolóhely azonosítója|
+|Lemezenkénti írási sebesség (bájt/mp)|Adatok írási bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen lemezre írt adatok mennyisége (bájt/s)|Tárolóhely azonosítója|
+|Lemezenkénti olvasások száma (művelet/s)|Adatok lemezolvasási műveletek másodpercenkénti (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen lemez olvasásakor|Tárolóhely azonosítója|
+|Lemezenkénti írások száma (művelet/s)|Adatok írási műveletek/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen lemez írásakor|Tárolóhely azonosítója|
+|Várólista lemezenkénti mélysége|Adatlemez QD (előzetes verzió)|Darabszám|Átlag|Adatlemez várólistájának mélysége (vagy hossza)|Tárolóhely azonosítója|
+|Lemezolvasás operációs rendszerenkénti sebessége (bájt/s)|Az operációsrendszer-lemez olvasott bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen operációsrendszer-lemezről beolvasott adatok mennyisége (bájt/s)|Nincs dimenzió|
+|Lemezírás operációs rendszerenkénti sebessége (bájt/s)|Az operációsrendszer-lemez írt bájt/mp (előzetes verzió)|Egység/s|Átlag|A figyelési időszak során egyetlen operációsrendszer-lemezre írt adatok mennyisége (bájt/s)|Nincs dimenzió|
+|Lemezolvasások operációs rendszerenkénti száma (művelet/s)|Az operációsrendszer-lemez olvasási művelet/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen operációsrendszer-lemez olvasásakor|Nincs dimenzió|
+|Lemezírások operációs rendszerenkénti száma (művelet/s)|Az operációsrendszer-lemez írási művelet/mp (előzetes verzió)|Egység/s|Átlag|Az I/O-műveletek száma másodpercenként a figyelési időszakban, egyetlen operációsrendszer-lemez írásakor|Nincs dimenzió|
+|Lemez várólistájának operációs rendszerenkénti mélysége|Az operációsrendszer-lemez QD (előzetes verzió)|Darabszám|Átlag|Az operációsrendszer-lemez várólistájának mélysége (vagy hossza)|Nincs dimenzió|
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|CpuUsage|CPU-használat|Darabszám|Átlag|CPU-használat a millicores az összes mag.|ContainerName|
-|MemoryUsage|Memóriahasználat|Bájt|Átlag|Teljes memóriahasználatát bájt.|ContainerName|
+|CpuUsage|CPU-használat|Darabszám|Átlag|Processzorhasználat az összes magon millicore-ban.|ContainerName|
+|MemoryUsage|Memóriahasználat|Bájt|Átlag|A teljes memóriahasználat bájtban.|ContainerName|
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
@@ -467,7 +462,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |DCIProfilesCount|Profil példányok száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIInteractionsPerMonthCount|Kapcsolati hónap száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIKpisCount|KPI száma|Darabszám|Vezetéknév||Nincs dimenzió|
-|DCISegmentsCount|Szegmens száma|Darabszám|Vezetéknév||Nincs dimenzió|
+|DCISegmentsCount|Szegmensek száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIPredictiveMatchPoliciesCount|A prediktív egyezés száma|Darabszám|Vezetéknév||Nincs dimenzió|
 |DCIPredictionsCount|Előrejelzés száma|Darabszám|Vezetéknév||Nincs dimenzió|
 
@@ -553,7 +548,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |c2d.commands.egress.complete.success|A parancsok befejeződött|Darabszám|Összes|Az eszköz által végrehajtott felhő eszközre parancsok száma|Nincs dimenzió|
 |c2d.commands.egress.abandon.success|Elhagyott parancsok|Darabszám|Összes|Az eszköz által félbe hagyott felhő eszközre parancsok száma|Nincs dimenzió|
 |c2d.commands.egress.reject.success|Elutasított parancsok|Darabszám|Összes|Az eszköz által elutasított felhő eszközre parancsok száma|Nincs dimenzió|
-|devices.totalDevices|Eszközök teljes száma|Darabszám|Összes|Az IoT hub regisztrált eszközök száma|Nincs dimenzió|
+|devices.totalDevices|Összes eszköz|Darabszám|Összes|Az IoT hub regisztrált eszközök száma|Nincs dimenzió|
 |devices.connectedDevices.allProtocol|Csatlakoztatott eszközök|Darabszám|Összes|Az IoT hub csatlakoztatott eszközök száma|Nincs dimenzió|
 |d2c.telemetry.egress.success|Telemetria kézbesített üzenetek|Darabszám|Összes|Ennyiszer üzenetek írása sikeres volt végpontok (összesen)|Nincs dimenzió|
 |d2c.telemetry.egress.dropped|Az eldobott üzenetek|Darabszám|Összes|Dobva, mert a kézbesítési végpont lett elhalt üzenetek száma|Nincs dimenzió|
@@ -623,7 +618,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |MongoRequestCharge|Mongo kérelem kell fizetni|Darabszám|Összes|Felhasznált mongo kérelemegység|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, CommandName, hibakód|
 |MongoRequests|Mongo kérelmek|Darabszám|Darabszám|Mongo kérelmek száma|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, CommandName, hibakód|
 |TotalRequestUnits|Teljes kérelemegység|Darabszám|Összes|Egységek felhasznált kérése|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, StatusCode|
-|TotalRequests|Összes kérelem|Darabszám|Darabszám|Kérelmek száma|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, StatusCode|
+|TotalRequests|Kérelmek összesen|Darabszám|Darabszám|Kérelmek száma|GlobalDatabaseAccountName, DatabaseName, CollectionName, régió, StatusCode|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
@@ -646,10 +641,10 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |CaptureBacklog|Hátralék rögzítése. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub hátralékának rögzítése. (Előzetes verzió)|entityName|
 |CapturedMessages|Rögzített üzenetek száma. (Előzetes verzió)|Darabszám|Összes|A Microsoft.EventHub rögzített üzeneteinek száma. (Előzetes verzió)|entityName|
 |CapturedBytes|Rögzített bájtok száma. (Előzetes verzió)|Bájt|Összes|A Microsoft.EventHub rögzített bájtjainak száma. (Előzetes verzió)|entityName|
-|Méret|Méret (előzetes verzió)|Bájt|Átlag|Az EventHub bájtban kifejezett mérete. (Előzetes verzió)|entityName|
+|Méret|Méret (előzetes verzió)|Bájt|Átlag|Az eseményközpont mérete (bájt). (Előzetes verzió)|entityName|
 |INREQS|Bejövő kérések|Darabszám|Összes|Egy névtér bejövő küldési kérelmei összesen|Nincs dimenzió|
 |SUCCREQ|Sikeres kérések|Darabszám|Összes|A névtér összes sikeres kérelme|Nincs dimenzió|
-|FAILREQ|Sikertelen kérések|Darabszám|Összes|A névtérhez kapcsolódó összes sikertelen kérelem|Nincs dimenzió|
+|FAILREQ|Sikertelen kérelmek|Darabszám|Összes|A névtérhez kapcsolódó összes sikertelen kérelem|Nincs dimenzió|
 |SVRBSY|Kiszolgáló foglaltsága miatti hibák|Darabszám|Összes|A névtér összes, kiszolgáló foglaltsága miatti hibája|Nincs dimenzió|
 |INTERR|Belső kiszolgálóhibák|Darabszám|Összes|A névtér összes belső kiszolgálóhibája|Nincs dimenzió|
 |MISCERR|Egyéb hibák|Darabszám|Összes|A névtérhez kapcsolódó összes sikertelen kérelem|Nincs dimenzió|
@@ -787,8 +782,8 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |Teljesítmény|Teljesítmény|Bájt/s|Összes|Az Alkalmazásátjáró rendelkezik kiszolgált másodpercenként bájtok száma|Nincs dimenzió|
 |UnhealthyHostCount|A nem megfelelő gazdagép száma|Darabszám|Átlag|A nem megfelelő háttér gazdagépek száma. Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.|BackendSettingsPool|
 |HealthyHostCount|Kifogástalan állapotú gazdagép száma|Darabszám|Átlag|Kifogástalan háttér gazdagépek száma. Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.|BackendSettingsPool. |
-|TotalRequests|Összes kérelem|Darabszám|Összes|Alkalmazásátjáró rendelkezik szolgáltatott sikeres kérelmek száma|BackendSettingsPool|
-|FailedRequests|Sikertelen kérések|Darabszám|Összes|Alkalmazásátjáró szolgáltatott rendelkezik a sikertelen kérelmek száma|BackendSettingsPool|
+|TotalRequests|Kérelmek összesen|Darabszám|Összes|Alkalmazásátjáró rendelkezik szolgáltatott sikeres kérelmek száma|BackendSettingsPool|
+|FailedRequests|Sikertelen kérelmek|Darabszám|Összes|Alkalmazásátjáró szolgáltatott rendelkezik a sikertelen kérelmek száma|BackendSettingsPool|
 |ResponseStatus|Válaszállapot|Darabszám|Összes|Alkalmazásátjáró által visszaadott a HTTP-válasz állapota. A válasz állapot kód terjesztési további 2xx, 3xx, 4xx és 5xx kategóriák válaszok megjelenítendő categoized lehet.|HttpStatusGroup|
 |CurrentConnections|Jelenlegi kapcsolatok száma|Darabszám|Összes|Alkalmazásátjáró létesített jelenlegi kapcsolatok száma|Nincs dimenzió|
 
@@ -1016,9 +1011,9 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |IncomingMessages|A bejövő üzenetek (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus bejövő üzeneteinek száma. (Előzetes verzió)|entityName|
 |OutgoingMessages|Kimenő üzenetek (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus kimenő üzeneteinek száma. (Előzetes verzió)|entityName|
 |AktívKapcsolatok|ActiveConnections (előzetes verzió)|Darabszám|Összes|A Microsoft.ServiceBus aktív kapcsolatainak száma összesen. (Előzetes verzió)|Nincs dimenzió|
-|Méret|Méret (előzetes verzió)|Bájt|Átlag|Egy várólista/témakör bájtban kifejezett mérete. (Előzetes verzió)|entityName|
-|Üzenetek|A várólista témakör lévő üzenetek száma. (Előzetes verzió)|Darabszám|Átlag|A várólista témakör lévő üzenetek száma. (Előzetes verzió)|entityName|
-|ActiveMessages|A várólista témakör lévő aktív üzenetek száma. (Előzetes verzió)|Darabszám|Átlag|A várólista témakör lévő aktív üzenetek száma. (Előzetes verzió)|entityName|
+|Méret|Méret (előzetes verzió)|Bájt|Átlag|Az üzenetsor vagy témakör mérete (bájt). (Előzetes verzió)|entityName|
+|Üzenetek|Az üzenetsor vagy témakör üzeneteinek száma. (Előzetes verzió)|Darabszám|Átlag|Az üzenetsor vagy témakör üzeneteinek száma. (Előzetes verzió)|entityName|
+|ActiveMessages|Az üzenetsor vagy témakör aktív üzeneteinek száma. (Előzetes verzió)|Darabszám|Átlag|Az üzenetsor vagy témakör aktív üzeneteinek száma. (Előzetes verzió)|entityName|
 |CPUXNS|Processzorhasználat névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér CPU-használati metrikája|Nincs dimenzió|
 |WSXNS|Felhasznál memória mérete névterenként|Százalék|Maximum|Prémium szintű Service Bus-névtér memóriahasználati metrikája|Nincs dimenzió|
 
@@ -1046,9 +1041,9 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|Nincs dimenzió|
 |tárterület|Adatbázis teljes mérete|Bájt|Maximum|Adatbázis teljes mérete|Nincs dimenzió|
 |connection_successful|Sikeres kapcsolatok|Darabszám|Összes|Sikeres kapcsolatok|Nincs dimenzió|
-|connection_failed|Nem sikerült kapcsolatok|Darabszám|Összes|Nem sikerült kapcsolatok|Nincs dimenzió|
+|connection_failed|Sikertelen kapcsolatok|Darabszám|Összes|Sikertelen kapcsolatok|Nincs dimenzió|
 |blocked_by_firewall|Tiltsa le tűzfal|Darabszám|Összes|Tiltsa le tűzfal|Nincs dimenzió|
-|Holtpont|Holtpont|Darabszám|Összes|Holtpont|Nincs dimenzió|
+|Holtpont|Holtpontok|Darabszám|Összes|Holtpontok|Nincs dimenzió|
 |storage_percent|Adatbázis méretének kihasználtsága|Százalék|Maximum|Adatbázis méretének kihasználtsága|Nincs dimenzió|
 |xtp_storage_percent|A memórián belüli online Tranzakciófeldolgozási tárolási százaléka|Százalék|Átlag|A memórián belüli online Tranzakciófeldolgozási tárolási százaléka|Nincs dimenzió|
 |workers_percent|Feldolgozók százalékos aránya|Százalék|Átlag|Feldolgozók százalékos aránya|Nincs dimenzió|
@@ -1169,7 +1164,7 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AMLCalloutFailedRequests|Sikertelen függvénykérések|Darabszám|Összes|Sikertelen függvénykérések|Nincs dimenzió|
 |AMLCalloutInputEvents|Függvényesemények|Darabszám|Összes|Függvényesemények|Nincs dimenzió|
 |DeserializationError|A deszerializálás bemeneti hibái|Darabszám|Összes|A deszerializálás bemeneti hibái|Nincs dimenzió|
-|EarlyInputEvents|Események, amelyeknél az alkalmazásbeli pontos idő korábbi, mint az érkezési idejük.|Darabszám|Összes|Események, amelyeknél az alkalmazásbeli pontos idő korábbi, mint az érkezési idejük.|Nincs dimenzió|
+|EarlyInputEvents|Amelyek alkalmazás ideje korábbi, mint a érkezésének ideje eseményeket.|Darabszám|Összes|Amelyek alkalmazás ideje korábbi, mint a érkezésének ideje eseményeket.|Nincs dimenzió|
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
@@ -1229,19 +1224,19 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AppConnections|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 |Leírók|Leírók száma|Darabszám|Átlag|Leírók száma|Példány|
 |Szálak|Szálak száma|Darabszám|Átlag|Szálak száma|Példány|
-|IoReadBytesPerSecond|IO olvasott bájtok száma másodpercenként|Bájt/s|Összes|IO olvasott bájtok száma másodpercenként|Példány|
-|IoWriteBytesPerSecond|I/O írási bájt / mp|Bájt/s|Összes|I/O írási bájt / mp|Példány|
-|IoOtherBytesPerSecond|IO más bájt / mp|Bájt/s|Összes|IO más bájt / mp|Példány|
-|IoReadOperationsPerSecond|I/O olvasási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O olvasási műveletek másodpercenkénti száma|Példány|
-|IoWriteOperationsPerSecond|I/O írási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O írási műveletek másodpercenkénti száma|Példány|
-|IoOtherOperationsPerSecond|IO más műveletek másodpercenkénti száma|Bájt/s|Összes|IO más műveletek másodpercenkénti száma|Példány|
-|RequestsInApplicationQueue|Az alkalmazás várólista kérelmek|Darabszám|Átlag|Az alkalmazás várólista kérelmek|Példány|
+|IoReadBytesPerSecond|I/O – olvasás (bájt/másodperc)|Bájt/s|Összes|I/O – olvasás (bájt/másodperc)|Példány|
+|IoWriteBytesPerSecond|I/O – írás (bájt/másodperc)|Bájt/s|Összes|I/O – írás (bájt/másodperc)|Példány|
+|IoOtherBytesPerSecond|I/O – egyéb (bájt/másodperc)|Bájt/s|Összes|I/O – egyéb (bájt/másodperc)|Példány|
+|IoReadOperationsPerSecond|I/O – olvasás (művelet/másodperc)|Bájt/s|Összes|I/O – olvasás (művelet/másodperc)|Példány|
+|IoWriteOperationsPerSecond|I/O – írás (művelet/másodperc)|Bájt/s|Összes|I/O – írás (művelet/másodperc)|Példány|
+|IoOtherOperationsPerSecond|I/O – egyéb (művelet/másodperc)|Bájt/s|Összes|I/O – egyéb (művelet/másodperc)|Példány|
+|RequestsInApplicationQueue|Alkalmazás-várólistán lévő kérelmek|Darabszám|Átlag|Alkalmazás-várólistán lévő kérelmek|Példány|
 |CurrentAssemblies|Szerelvények pillanatnyi száma|Darabszám|Átlag|Szerelvények pillanatnyi száma|Példány|
-|TotalAppDomains|Teljes alkalmazás tartományok|Darabszám|Átlag|Teljes alkalmazás tartományok|Példány|
-|TotalAppDomainsUnloaded|Teljes alkalmazás tartományok eltávolítása|Darabszám|Átlag|Teljes alkalmazás tartományok eltávolítása|Példány|
-|Gen0Collections|0. generációs szemétgyűjtések|Darabszám|Összes|0. generációs szemétgyűjtések|Példány|
-|Gen1Collections|1. generációs szemétgyűjtések|Darabszám|Összes|1. generációs szemétgyűjtések|Példány|
-|Gen2Collections|2. generációs szemétgyűjtések|Darabszám|Összes|2. generációs szemétgyűjtések|Példány|
+|TotalAppDomains|Alkalmazástartományok összesen|Darabszám|Átlag|Alkalmazástartományok összesen|Példány|
+|TotalAppDomainsUnloaded|Memóriából eltávolított alkalmazástartományok összesen|Darabszám|Átlag|Memóriából eltávolított alkalmazástartományok összesen|Példány|
+|Gen0Collections|0. generációs szemétgyűjtések száma|Darabszám|Összes|0. generációs szemétgyűjtések száma|Példány|
+|Gen1Collections|1. generációs szemétgyűjtések száma|Darabszám|Összes|1. generációs szemétgyűjtések száma|Példány|
+|Gen2Collections|2. generációs szemétgyűjtések száma|Darabszám|Összes|2. generációs szemétgyűjtések száma|Példány|
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkciók)
 
@@ -1254,19 +1249,19 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AverageMemoryWorkingSet|Átlagos memória-munkakészlet|Bájt|Átlag|Átlagos memória-munkakészlet|Példány|
 |FunctionExecutionUnits|Függvény-végrehajtási egység|Darabszám|Összes|Függvény-végrehajtási egység|Példány|
 |FunctionExecutionCount|Függvény végrehajtásainak száma|Darabszám|Összes|Függvény végrehajtásainak száma|Példány|
-|IoReadBytesPerSecond|IO olvasott bájtok száma másodpercenként|Bájt/s|Összes|IO olvasott bájtok száma másodpercenként|Példány|
-|IoWriteBytesPerSecond|I/O írási bájt / mp|Bájt/s|Összes|I/O írási bájt / mp|Példány|
-|IoOtherBytesPerSecond|IO más bájt / mp|Bájt/s|Összes|IO más bájt / mp|Példány|
-|IoReadOperationsPerSecond|I/O olvasási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O olvasási műveletek másodpercenkénti száma|Példány|
-|IoWriteOperationsPerSecond|I/O írási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O írási műveletek másodpercenkénti száma|Példány|
-|IoOtherOperationsPerSecond|IO más műveletek másodpercenkénti száma|Bájt/s|Összes|IO más műveletek másodpercenkénti száma|Példány|
-|RequestsInApplicationQueue|Az alkalmazás várólista kérelmek|Darabszám|Átlag|Az alkalmazás várólista kérelmek|Példány|
+|IoReadBytesPerSecond|I/O – olvasás (bájt/másodperc)|Bájt/s|Összes|I/O – olvasás (bájt/másodperc)|Példány|
+|IoWriteBytesPerSecond|I/O – írás (bájt/másodperc)|Bájt/s|Összes|I/O – írás (bájt/másodperc)|Példány|
+|IoOtherBytesPerSecond|I/O – egyéb (bájt/másodperc)|Bájt/s|Összes|I/O – egyéb (bájt/másodperc)|Példány|
+|IoReadOperationsPerSecond|I/O – olvasás (művelet/másodperc)|Bájt/s|Összes|I/O – olvasás (művelet/másodperc)|Példány|
+|IoWriteOperationsPerSecond|I/O – írás (művelet/másodperc)|Bájt/s|Összes|I/O – írás (művelet/másodperc)|Példány|
+|IoOtherOperationsPerSecond|I/O – egyéb (művelet/másodperc)|Bájt/s|Összes|I/O – egyéb (művelet/másodperc)|Példány|
+|RequestsInApplicationQueue|Alkalmazás-várólistán lévő kérelmek|Darabszám|Átlag|Alkalmazás-várólistán lévő kérelmek|Példány|
 |CurrentAssemblies|Szerelvények pillanatnyi száma|Darabszám|Átlag|Szerelvények pillanatnyi száma|Példány|
-|TotalAppDomains|Teljes alkalmazás tartományok|Darabszám|Átlag|Teljes alkalmazás tartományok|Példány|
-|TotalAppDomainsUnloaded|Teljes alkalmazás tartományok eltávolítása|Darabszám|Átlag|Teljes alkalmazás tartományok eltávolítása|Példány|
-|Gen0Collections|0. generációs szemétgyűjtések|Darabszám|Összes|0. generációs szemétgyűjtések|Példány|
-|Gen1Collections|1. generációs szemétgyűjtések|Darabszám|Összes|1. generációs szemétgyűjtések|Példány|
-|Gen2Collections|2. generációs szemétgyűjtések|Darabszám|Összes|2. generációs szemétgyűjtések|Példány|
+|TotalAppDomains|Alkalmazástartományok összesen|Darabszám|Átlag|Alkalmazástartományok összesen|Példány|
+|TotalAppDomainsUnloaded|Memóriából eltávolított alkalmazástartományok összesen|Darabszám|Átlag|Memóriából eltávolított alkalmazástartományok összesen|Példány|
+|Gen0Collections|0. generációs szemétgyűjtések száma|Darabszám|Összes|0. generációs szemétgyűjtések száma|Példány|
+|Gen1Collections|1. generációs szemétgyűjtések száma|Darabszám|Összes|1. generációs szemétgyűjtések száma|Példány|
+|Gen2Collections|2. generációs szemétgyűjtések száma|Darabszám|Összes|2. generációs szemétgyűjtések száma|Példány|
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
@@ -1293,19 +1288,19 @@ Azure figyelő többféleképpen is kommunikál a metrikákat, többek között 
 |AppConnections|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 |Leírók|Leírók száma|Darabszám|Átlag|Leírók száma|Példány|
 |Szálak|Szálak száma|Darabszám|Átlag|Szálak száma|Példány|
-|IoReadBytesPerSecond|IO olvasott bájtok száma másodpercenként|Bájt/s|Összes|IO olvasott bájtok száma másodpercenként|Példány|
-|IoWriteBytesPerSecond|I/O írási bájt / mp|Bájt/s|Összes|I/O írási bájt / mp|Példány|
-|IoOtherBytesPerSecond|IO más bájt / mp|Bájt/s|Összes|IO más bájt / mp|Példány|
-|IoReadOperationsPerSecond|I/O olvasási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O olvasási műveletek másodpercenkénti száma|Példány|
-|IoWriteOperationsPerSecond|I/O írási műveletek másodpercenkénti száma|Bájt/s|Összes|I/O írási műveletek másodpercenkénti száma|Példány|
-|IoOtherOperationsPerSecond|IO más műveletek másodpercenkénti száma|Bájt/s|Összes|IO más műveletek másodpercenkénti száma|Példány|
-|RequestsInApplicationQueue|Az alkalmazás várólista kérelmek|Darabszám|Átlag|Az alkalmazás várólista kérelmek|Példány|
+|IoReadBytesPerSecond|I/O – olvasás (bájt/másodperc)|Bájt/s|Összes|I/O – olvasás (bájt/másodperc)|Példány|
+|IoWriteBytesPerSecond|I/O – írás (bájt/másodperc)|Bájt/s|Összes|I/O – írás (bájt/másodperc)|Példány|
+|IoOtherBytesPerSecond|I/O – egyéb (bájt/másodperc)|Bájt/s|Összes|I/O – egyéb (bájt/másodperc)|Példány|
+|IoReadOperationsPerSecond|I/O – olvasás (művelet/másodperc)|Bájt/s|Összes|I/O – olvasás (művelet/másodperc)|Példány|
+|IoWriteOperationsPerSecond|I/O – írás (művelet/másodperc)|Bájt/s|Összes|I/O – írás (művelet/másodperc)|Példány|
+|IoOtherOperationsPerSecond|I/O – egyéb (művelet/másodperc)|Bájt/s|Összes|I/O – egyéb (művelet/másodperc)|Példány|
+|RequestsInApplicationQueue|Alkalmazás-várólistán lévő kérelmek|Darabszám|Átlag|Alkalmazás-várólistán lévő kérelmek|Példány|
 |CurrentAssemblies|Szerelvények pillanatnyi száma|Darabszám|Átlag|Szerelvények pillanatnyi száma|Példány|
-|TotalAppDomains|Teljes alkalmazás tartományok|Darabszám|Átlag|Teljes alkalmazás tartományok|Példány|
-|TotalAppDomainsUnloaded|Teljes alkalmazás tartományok eltávolítása|Darabszám|Átlag|Teljes alkalmazás tartományok eltávolítása|Példány|
-|Gen0Collections|0. generációs szemétgyűjtések|Darabszám|Összes|0. generációs szemétgyűjtések|Példány|
-|Gen1Collections|1. generációs szemétgyűjtések|Darabszám|Összes|1. generációs szemétgyűjtések|Példány|
-|Gen2Collections|2. generációs szemétgyűjtések|Darabszám|Összes|2. generációs szemétgyűjtések|Példány|
+|TotalAppDomains|Alkalmazástartományok összesen|Darabszám|Átlag|Alkalmazástartományok összesen|Példány|
+|TotalAppDomainsUnloaded|Memóriából eltávolított alkalmazástartományok összesen|Darabszám|Átlag|Memóriából eltávolított alkalmazástartományok összesen|Példány|
+|Gen0Collections|0. generációs szemétgyűjtések száma|Darabszám|Összes|0. generációs szemétgyűjtések száma|Példány|
+|Gen1Collections|1. generációs szemétgyűjtések száma|Darabszám|Összes|1. generációs szemétgyűjtések száma|Példány|
+|Gen2Collections|2. generációs szemétgyűjtések száma|Darabszám|Összes|2. generációs szemétgyűjtések száma|Példány|
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
 

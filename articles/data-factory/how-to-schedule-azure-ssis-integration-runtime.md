@@ -1,5 +1,5 @@
 ---
-title: Azure SSIS integrációs futásidejű ütemezéséről |} Microsoft Docs
+title: Az Azure SSIS-integrációs futásidejű ütemezéséről |} Microsoft Docs
 description: Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet Azure Automation és a Data Factory használatával.
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: douglasl
-ms.openlocfilehash: 8eeed91da3942d00bbab17a2dffc4b4e888a6f70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7bffc7aed0c06267a39e2b0a2ee178806c071ab8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725108"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297794"
 ---
-# <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet ütemezése 
-Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva járnak. Ezért futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtathatja az Azure-ban, és állítsa le, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)).
+# <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Indítása és leállítása a Azure SSIS-integrációs futásidejű ütemezés szerint
+Ez a cikk ismerteti, hogyan ütemezése indítása és leállítása egy Azure SSIS-integráció futtatókörnyezetet (IR) Azure Automation és az Azure Data Factory használatával. Egy Azure SSIS (SQL Server Integration Services) integrációs futásidejű fut (IR) van társítva költségekkel. Ezért általában futtatni kívánt az infravörös csak akkor, ha SSIS-csomagok futtatásához az Azure-ban, és állítsa le az infravörös, ha már nincs szükség van szüksége. A Data Factory felhasználói felületén vagy az Azure PowerShell [manuálisan indítsa el, vagy állítsa le az Azure SSIS-IR](manage-azure-ssis-integration-runtime.md)).
 
 Például hozzon létre egy Azure Automation PowerShell runbook webhookok webes tevékenységek, és a közöttük hajtható végre SSIS-csomag tevékenység láncolt. A webes tevékenységek elindíthatók és leállíthatók az Azure-SSIS-IR JIT előtt, és a csomag futtatása után. SSIS-csomag hajtható végre tevékenységével kapcsolatos további információk: [futtassa egy SSIS-csomagot a SSIS-tevékenység használata az Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md).
 

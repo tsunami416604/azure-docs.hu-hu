@@ -7,16 +7,18 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 06/11/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 1c069e8b09f71ac46017974dfd94945c404b16ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 80c479aa23da2a8471af3fd83879a2dbfc5d6195
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300571"
 ---
 # <a name="delete-a-site-recovery-vault"></a>A Site Recovery-tároló törlése
-Függőségek megakadályozzák az az Azure Site Recovery-tároló törlése. A Site Recovery forgatókönyvön függően változnak, milyen lépéseket kell tennie: az Azure-ba, a Hyper-V (a és a System Center Virtual Machine Manager nélkül) Azure és az Azure Backup VMware. Törli a tárolót, az Azure Backup szolgáltatáshoz használt, lásd: [az Azure biztonsági mentési tároló törlése](../backup/backup-azure-delete-vault.md).
+
+Függőségek megakadályozzák az az Azure Site Recovery-tároló törlése. Milyen lépéseket kell tennie a Site Recovery forgatókönyv függően változhat. Törli a tárolót, az Azure Backup szolgáltatáshoz használt, lásd: [az Azure biztonsági mentési tároló törlése](../backup/backup-azure-delete-vault.md).
 
 
 
@@ -36,12 +38,12 @@ Törli a tárolót, hajtsa végre a javasolt lépéseket a forgatókönyvéhez.
 5. Törli a tárolót.
 
 
-### <a name="hyper-v-vms-with-virtual-machine-manager-to-azure"></a>A Hyper-V virtuális gépek (a Virtual Machine Managerrel) az Azure-bA
-1. Töröljön minden védett virtuális gépek a megfelelő lépéseket követve[letilthatja a védelmet a Hyper-V virtuális gépek replikálása Azure-bA a System Center VMM-forgatókönyvet az Azure használatával](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
+### <a name="hyper-v-vms-with-vmm-to-azure"></a>Hyper-V virtuális gépek (VMM-mel) az Azure-ba
+1. Töröljön minden védett virtuális gépek a megfelelő lépéseket követve[tiltsa le a védelmet a Hyper-V virtuális gépek (a VMM-mel)](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario).
 
 2. Szüntesse meg, és törölje az összes replikációs házirendek keresse meg azt a tárolóba -> **Site Recovery-infrastruktúra** -> **System Center VMM** -> **replikáció Házirendek**
 
-3.  A Virtual Machine Manager-kiszolgálók hivatkoznak törlése lépéseit követve [csatlakoztatott VMM-kiszolgáló regisztrációját](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server).
+3.  Törölje a VMM-kiszolgálók hivatkoznak lépéseit követve [csatlakoztatott VMM-kiszolgáló regisztrációját](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server).
 
 4.  Törli a tárolót.
 
@@ -50,7 +52,7 @@ Törli a tárolót, hajtsa végre a javasolt lépéseket a forgatókönyvéhez.
 
 2. Szüntesse meg, és törölje az összes replikációs házirendek keresse meg azt a tárolóba -> **Site Recovery-infrastruktúra** -> **a Hyper-V helyek** -> **replikációs házirendhez**
 
-3. Hyper-V kiszolgálók mutató hivatkozások törlése a lépések [regisztrációjának törlése a Hyper-V gazdagépek](/site-recovery-manage-registration-and-protection.md##unregister-a-hyper-v-host-in-a-hyper-v-site).
+3. Hyper-V kiszolgálók mutató hivatkozások törlése a lépések [regisztrációjának törlése a Hyper-V gazdagépek](/site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site).
 
 4. A Hyper-V hely törlése.
 

@@ -3,7 +3,7 @@ title: Árképzési & számlázási - Azure Logic Apps |} Microsoft Docs
 description: Ismerje meg, az Azure Logic Apps árak és számlázás működése
 services: logic-apps
 author: kevinlam1
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: klam
-ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299256"
 ---
 # <a name="logic-apps-pricing-model"></a>Logic Apps díjszabási modell
 
@@ -30,7 +31,7 @@ A újonnan létrehozott logikai alkalmazások kell fizetnie csak akkor használj
 
 <a name="triggers"></a>
 
-## <a name="triggers"></a>Triggerek
+## <a name="triggers"></a>Eseményindítók
 
 Eseményindítók olyan speciális művelet, hozzon létre egy logic app-példány, ha egy adott esemény történik. Eseményindítók különböző módokon, amelyek befolyásolják, hogyan a logic app forgalmi díjas jár el.
 

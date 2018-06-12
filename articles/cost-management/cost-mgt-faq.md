@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298409"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure költség Management
 
@@ -28,23 +29,23 @@ Ha először a Cloudyn portál, az alábbi üzenetek láthatja, ha egy vállalat
 - "Közvetlen regisztráció – nem" jelenik meg a nagyvállalati szerződés portálon.
 - "A nem használati adatok az elmúlt 30 napban található. Lépjen kapcsolatba a terjesztőt, hogy ellenőrizze, hogy engedélyezték a jelölés során az Azure-fiókjával"jelenik meg a Cloudyn portálon.
 
-Az előző üzenetekből kiderül, hogy őnála Azure nagyvállalati szerződéssel vagy CSP vásárolt. Engedélyeznie kell a viszonteladóhoz vagy a CSP _markup_ az az Azure fiók, hogy az adatok megtekintheti a Cloudyn.
+Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. Engedélyeznie kell a viszonteladóhoz vagy a CSP _markup_ az az Azure fiók, hogy az adatok megtekintheti a Cloudyn.
 
-A problémák megoldásával kapcsolatban itt található:
+A problémák megoldása:
 
-1. Engedélyeznie kell a viszonteladó tud _markup_ a fiókjához. Útmutatásért lásd: a [közvetett ügyfél bevezetési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+1. A viszonteladónak engedélyeznie kell a _korrektúrát_ a fiókjában. Útmutatás: [Közvetett ügyfeleknek szóló előkészítési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
 2. Létrehozhat az Azure nagyvállalati szerződéssel kulcs Cloudyn való használatra. Útmutatásért lásd: [hozzáadása az Azure EA](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA) vagy [található a EA regisztrációs azonosítója és API-kulcs](https://youtu.be/u_phLs_udig).
 
-Csak egy Azure szolgáltatás-rendszergazda engedélyezheti költség felügyeletet. Közös rendszergazdai engedélyek nem elegendők.
+A Cost Management szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő.
 
 Mielőtt Cloudyn beállítása Azure nagyvállalati szerződés API-kulcsot is létrehozhat, engedélyeznie kell az Azure számlázási API által megadott utasítások:
 
-- [A vállalati ügyfelek a Reporting API-k – áttekintés](../billing/billing-enterprise-api.md)
-- [A Microsoft Azure enterprise portal Reporting API](https://ea.azure.com/helpdocs/reportingAPI) alatt **adataihoz a API-val való hozzáférés engedélyezése**
+- [Jelentéskészítő API-k Enterprise-ügyfeleknek – áttekintés](../billing/billing-enterprise-api.md)
+- [Microsoft Azure Enterprise Portal jelentéskészítő API](https://ea.azure.com/helpdocs/reportingAPI) **Az adatok az API-hoz való hozzáférésének engedélyezése** területen
 
 
-Is szükség lehet ahhoz, hogy megkapja a részleg, a fiókhoz tulajdonosainak és a vállalati rendszergazdák engedélyeket _díjak megtekintése_ számlázási API-val.
+Előfordulhat, hogy a részlegek rendszergazdáinak, a fióktulajdonosoknak és a nagyvállalati rendszergazdáknak is engedélyt kell adnia a _díjak megtekintéséhez_ a számlázási API segítségével.
 
 ## <a name="why-dont-i-see-optimizer-recommendations"></a>Miért nem látom az optimalizáló javaslatok?
 
@@ -71,16 +72,20 @@ A fenti lépések végrehajtása után megtekintheti a optimalizáló ajánláso
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Hogyan engedélyezhető felfüggesztett vagy zárolt felhasználók?
 
+Első lépésként nézzük legfeljebb gyakori forgatókönyv, amelyek hatására az beszerzése a felhasználói fiókok *initiallySuspended*.
+
+> Rendszergazda1 előfordulhat, hogy a Microsoft Cloud Solution Provider vagy a nagyvállalati szerződés felhasználó. A szervezet készen áll a költség felügyeleti használatának megkezdéséhez.  Ezután regisztrálja az Azure portálon keresztül, és aláírja a Cloudyn portált. Regisztrálja a költség felügyeleti szolgáltatás és bejelentkezhet a Cloudyn portált személynek, ő lesz a *elsődleges rendszergazda*. Rendszergazda1 nem hoz létre egyetlen felhasználói fiókot. Azonban a Cloudyn portál használatával, ezután létrehozása az Azure-fiókra, és állít be egy entitás hierarchiához. Rendszergazda1 tájékoztatja Admin2, a bérlői rendszergazda, amelyet ezután regisztrálja a felügyeleti költségek, és jelentkezzen be a Cloudyn portálra.
+
+> Admin2 regisztrálja az Azure portálon keresztül. Azonban ha úgy próbál jelentkezzen be a Cloudyn portálra, akkor hibaüzenetet kap arról, hogy a fiók **felfüggesztve**. A fiók felfüggesztését a fő rendszergazdai rendszergazda1, értesítést kap. Rendszergazda1 kell aktiválniuk mobilalkalmazásukat Admin2 meg, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés és aktív felhasználói fiók.
+
+
 Ha engedélyezi a hozzáférést egy felhasználó kéri figyelmeztetést kap, a felhasználói fiók aktiválása szeretné.
 
 A felhasználói fiók aktiválása:
 
 1. Jelentkezzen be az Azure rendszergazdai felhasználói fiókkal, amellyel Cloudyn beállítása Cloudyn. Vagy be kell jelentkezniük egy felhasználói fiókot, amely rendszergazdai hozzáféréssel kapott.
-
 2. A fogaskerék szimbólum a jobb felső részén válassza ki és **felhasználókezelés**.
-
 3. Keresse meg azt a felhasználót, jelölje ki a Ceruza szimbólumot, és módosítsa a felhasználó.
-
 4. A **felhasználói állapot**, módosítani az állapotát **felfüggesztett** való **aktív**.
 
 Felhasználói fiókok Cloudyn csatlakozhat az egyszeri bejelentkezés az Azure-ból. Ha egy felhasználó mistypes a jelszavát, akkor előfordulhat, hogy ártatlan tévedéssel Cloudyn, annak ellenére, hogy továbbra is hozzáférjenek Azure.

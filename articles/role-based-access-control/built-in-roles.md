@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/18/2018
+ms.date: 06/06/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 365959a588dc48e7991efea239ba823c3ca65e7a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640540"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267373"
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Beépített szerepkörök az Azure szerepköralapú hozzáférés-vezérléshez
 [Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és szolgáltatásnevekről számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések, amelyek az Ön Azure-ban erőforrásokhoz való hozzáférés szabályozása. Ha a beépített szerepkörök nem felelnek meg a szervezet igényeinek, létrehozhat saját [egyéni szerepkörök](custom-roles.md).
@@ -133,6 +133,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.Authorization/*/Delete | Szerepkörök és szerepkör-hozzárendelések nem lehet törölni |
 > | Microsoft.Authorization/*/Write | Nem hozható létre, szerepkörök és szerepkör-hozzárendelések |
 > | Microsoft.Authorization/elevateAccess/Action | Felhasználói hozzáférés rendszergazdai szerepkörének megadása a hívónak a bérlői hatókörben |
+> | Microsoft.Blueprint/blueprintAssignments/write |  |
+> | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
 ## <a name="reader"></a>Olvasó
 > [!div class="mx-tableFixed"]
@@ -709,7 +711,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | **Azonosító** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Műveletek** |  |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Insights/components/purge/action |  |
+> | Microsoft.Insights/components/purge/action | Adatok végleges törlése az Application Insightsból |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Megadott adatok törléséhez a munkaterület |
 

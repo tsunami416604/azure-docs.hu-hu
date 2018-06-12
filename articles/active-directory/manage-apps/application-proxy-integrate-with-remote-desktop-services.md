@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 06/11/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ff91709b52f7378bbc320524781dca7faf2204
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 5c6d6b9580b123dafb03af2acc885d2416ca2a56
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248877"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292541"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Az Azure AD alkalmazásproxy távoli asztal közzététele
 
@@ -51,7 +51,7 @@ Egy távoli asztali szolgáltatások telepítése esetén a távoli asztali webe
 
 - Ez a forgatókönyv azt feltételezi, hogy a végfelhasználók nyissa meg az Internet Explorer keresztül a Windows 7 vagy Windows 10 asztali gépek, a távoli asztali weblap keresztül csatlakozó. Ha más operációs rendszerek támogatásához van szüksége, tekintse meg [támogatja az egyéb ügyfél-konfiguráció](#support-for-other-client-configurations).
 
-- A távoli asztali webes közzétételekor célszerű az azonos belső és külső teljes Tartománynevet használja. Ha belső és külső FQDN-nevei eltérőek majd le kell tiltania fejléc-fordítási kérelmek parancshoz érvénytelen hivatkozásokat. 
+- Amikor a távoli asztali webes közzététel, javasoljuk, hogy az azonos belső és külső teljes Tartománynevet használja. Ha a belső és külső teljes tartománynevek eltér majd le kell tiltania fejléc-fordítási kérelmek az ügyfél érvénytelen kapcsolatok fogadása. 
 
 - Az Internet Explorer a távoli asztali szolgáltatások ActiveX-bővítmény engedélyezéséhez.
 

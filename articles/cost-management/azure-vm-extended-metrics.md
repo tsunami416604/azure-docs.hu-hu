@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4b00baba44a4724ce8f6a45a80692f7f566a35ed
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 58245478cf49c030c435b487e233bbc893a2b9a3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296356"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Az Azure virtuális gépek kiterjesztett metrikák hozzáadása
 
@@ -31,7 +32,7 @@ Például érdemes figyelni a CPU és memória % Azure virtuális gépeken. Az A
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Győződjön meg arról, hogy metrikák engedélyezve vannak-e a virtuális gépeken
 
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 2. A **virtuális gépek**, jelöljön ki egy virtuális Gépet majd a **figyelés**, jelölje be **metrikák**. Elérhető listája látható.
 3. Válassza ki az egyes metrikákat, és egy grafikonon jeleníti meg a számukra.  
     ![Példa a Metrika – állomás százalékos Processzor](./media/azure-vm-extended-metrics/metric01.png)

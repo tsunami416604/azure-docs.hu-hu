@@ -1,24 +1,19 @@
 ---
-title: "Az Azure figyelő partner Integrációk |} Microsoft Docs"
-description: "Tudnivalók Azure figyelő partnerek, és hogyan férhet hozzá a velük a termék dokumentációját."
+title: -Partnereknek, amelyek intergrate Azure megfigyelővel
+description: Tudnivalók Azure figyelő partnerek, és hogyan férhet hozzá a velük a termék dokumentációját.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 01ee13ac-66fc-4edc-8b0c-32f69b986a26
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
-ms.openlocfilehash: 44315b88d55d370c8200952dc2ff9d64d64cf524
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: ''
+ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265283"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure figyelő partner integrációja
 | Partnerek |  |  |
@@ -146,7 +141,7 @@ Sumo logika egy olyan biztonságos, a felhő-natív, gép adatok analytics szolg
 [tudj meg többet.][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
-Turbonomic munkaterhelés automatizálását a hibrid felhő nyújt a teljesítmény, a költségek és a valós idejű megfelelőségi egyidejűleg optimalizálásával. Turbonomic segítséget nyújt a szervezetek lennie rugalmas az Azure erőforrások biztosításához az alkalmazások folyamatosan beolvasása az erőforrásokat az SLA-t és semmi további között van szükségük a erőforrások folyamatosan optimalizálásával számítási, tárolási és hálózati IaaS és PaaS réteg. A szervezetek is szimulálása áttelepítések, megfelelően méretezhető munkaterhelések és kivonására osztott át Azure időben, belül költségvetést, teljesítmény és a megfelelőségi biztosítva adatközpont-erőforrásaikat. Turbonomic API-vezérelt, és az ügynök nélküli virtuális gépként Azure-ban és a helyszíni futtatja.
+Turbonomic munkaterhelés automatizálását a hibrid felhő nyújt a teljesítmény, a költségek és a valós idejű megfelelőségi egyidejűleg optimalizálásával. Turbonomic segítséget nyújt a szervezetek lennie rugalmas az Azure erőforrások biztosításához az alkalmazások folyamatosan beolvasása az erőforrásokat az SLA-t és semmi további között van szükségük a erőforrások folyamatosan optimalizálásával számítási, tárolási és hálózati IaaS és PaaS réteg. A szervezetek is szimulálása áttelepítések, megfelelően méretezhető munkaterhelések és kivonására osztott át Azure időben, belül költségvetést, teljesítmény és a megfelelőségi biztosítva adatközpont-erőforrásaikat. A Turbonomic API-vezérelt, és ügynök nélküli virtuális gépként fut az Azure-ban vagy a helyszínen.
 
 [tudj meg többet.][turbonomic-doc]
 

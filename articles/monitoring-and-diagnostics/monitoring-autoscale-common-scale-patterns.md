@@ -1,24 +1,19 @@
 ---
-title: "Közös automatikus skálázás minták áttekintése |} Microsoft Docs"
-description: "Ismerje meg a közös minták automatikus méretezési némelyike az erőforrás az Azure-ban."
+title: Közös automatikus skálázás minták áttekintése
+description: Ismerje meg a közös minták automatikus méretezési némelyike az erőforrás az Azure-ban.
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
-ms.openlocfilehash: fce51546e041c8989d813c3935e058c52b38ba77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 84727ec3694f64d40ad002a248a255df9074d7f4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263261"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Közös automatikus skálázás minták áttekintése
 Ez a cikk ismerteti az egyes közös mintázatokat az erőforrás méretezése az Azure-ban.

@@ -1,6 +1,6 @@
 ---
-title: SSIS-csomag tevékenység végrehajtása az Azure Data Factory használatával SSIS-csomag futtatása |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan egy SQL Server Integration Services (SSIS) csomag egy Azure Data Factory-folyamat az SSIS-csomag hajtható végre tevékenység-ről futtatva.
+title: SSIS-csomag futtatás végrehajtása SSIS csomag tevékenység - Azure |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan egy SQL Server Integration Services (SSIS) csomag futtatásához egy Azure Data Factory-folyamathoz SSIS-csomag hajtható végre tevékenységgel.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,14 +12,14 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: fed4e10fcaaa5282c37b175f355b94522c3b2b46
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ce041813d52e645c336869ef04c9522962c80cf5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700485"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297155"
 ---
-# <a name="run-an-ssis-package-using-the-execute-ssis-package-activity-in-azure-data-factory"></a>Egy SSIS-csomag SSIS-csomag hajtható végre tevékenység az Azure Data Factory használatával futtassa
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Futtassa a végrehajtás SSIS csomag tevékenység Azure Data Factory egy SSIS-csomagot
 Ez a cikk ismerteti, hogyan egy SSIS-csomag futtatása az Azure Data Factory-folyamat a tevékenység végrehajtása SSIS-csomag használatával. 
 
 > [!NOTE]

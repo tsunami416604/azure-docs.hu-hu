@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 203bc0934b8db15478e78cbc64e463eafdf83fa9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8ad2baef4534c3457fc30bb9589c6fdd99fde8d9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292820"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés legfontosabb feladatai közé tartoznak OnDemand konfigurálása
 
@@ -74,7 +75,7 @@ Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" haszná
 
 Automatikus felhasználó-kiépítés engedélyezése és konfigurálása, mielőtt meg kell határoznia, melyik felhasználói és/vagy az Azure AD-csoportok legfontosabb feladatai közé tartoznak OnDemand hozzáférésre van szükségük. Ha úgy döntött, hozzárendelheti a felhasználók és/vagy csoportok legfontosabb feladatai közé tartoznak OnDemand itt cikk utasításait követve:
 
-*   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+*   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Felhasználók hozzárendelése legfontosabb feladatai közé tartoznak OnDemand fontos tippek
 
@@ -155,7 +156,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
     
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 

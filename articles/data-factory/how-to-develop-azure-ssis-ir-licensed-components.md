@@ -1,5 +1,5 @@
 ---
-title: Telepítse a fizetős, vagy az Azure-SSIS-integrációs futásidejű összetevők licence |} Microsoft Docs
+title: Az Azure-SSIS-integrációs futásidejű licencelt összetevők telepítése |} Microsoft Docs
 description: Megtudhatja, hogyan fejleszthet független, és telepítse a fizetős, vagy az Azure-SSIS-integrációs futásidejű egyéni összetevők licence
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: e2e000df2933b8fa08bf98ef55b12f90de6a5e51
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6351381e525d256ef5e9693ea1fb5e3a6f4e5ea3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830843"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298576"
 ---
-# <a name="develop-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS-integrációs futásidejű fizetett vagy licencelt egyéni összetevők fejlesztése
+# <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS-integrációs futásidejű fizetett vagy licencelt egyéni összetevők telepítéséhez
 
 Ez a cikk ismerteti, hogyan független fejlesztése és az Azure-SSIS-integrációs futásidejű az Azure-ban futó SQL Server Integration Services (SSIS) csomagok fizetett vagy licencelt egyéni összetevők telepítéséhez.
 

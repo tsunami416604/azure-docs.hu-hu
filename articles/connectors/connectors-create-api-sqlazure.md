@@ -2,7 +2,7 @@
 title: Csatlakozás az SQL Server vagy az Azure SQL adatbázis - Azure Logic Apps |} Microsoft Docs
 description: Eléréséről és a helyszíni vagy felhőalapú SQL-adatbázisok kezelése az Azure Logic Apps munkafolyamatok automatizálásával
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 05/15/2018
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 73dadb85f3608f863a7fa0227d8e051fc77bb918
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756950"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296288"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Csatlakozás SQL Server vagy az Azure SQL Database a Azure Logic Apps alkalmazásokból
 

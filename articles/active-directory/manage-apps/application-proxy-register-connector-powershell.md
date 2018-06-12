@@ -15,11 +15,12 @@ ms.date: 05/17/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 93036b3b473de8bb0026ec0759691c20ec38401a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7cc51a3e16c476385fc360ea7f40826e21daaebc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292602"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Létrehozhat egy felügyelet nélküli telepítési parancsfájlt, az Azure AD alkalmazásproxy-összekötő
 
@@ -180,6 +181,6 @@ Az összekötő regisztrálása segítségével két módszer áll rendelkezésr
 ## <a name="next-steps"></a>További lépések 
 * [Alkalmazások közzététele saját tartománynév használatával](application-proxy-configure-custom-domain.md)
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Az alkalmazásproxy problémák elhárítása](../active-directory-application-proxy-troubleshoot.md)
+* [Az alkalmazásproxy problémák elhárítása](application-proxy-troubleshoot.md)
 
 

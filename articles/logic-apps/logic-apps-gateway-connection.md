@@ -4,7 +4,7 @@ description: A helyszíni adatátjáró beállítása, a helyszíni adatforráso
 keywords: adatok, a helyszíni, az adatok átvitele, a titkosítás és a adatforrások eléréséhez
 services: logic-apps
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 6cb4449d-e6b8-4c35-9862-15110ae73e6a
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 5160913b2f08a04f0a985d8ddadd6641a664b258
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0bf51f22e41ec78ef1dca7cba7bd5e26cbe1d969
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300006"
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>A helyszíni adatforrások csatlakozni a logic Apps alkalmazásokból, a helyszíni adatok átjáróval
 

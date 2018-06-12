@@ -1,6 +1,6 @@
 ---
-title: Egyéni telepítés az az Azure-SSIS-integrációs futásidejű |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan használható az Azure-SSIS-integrációs futásidejű az egyéni telepítés felület
+title: Az Azure-SSIS-integrációs futásidejű telepítőjének testreszabása |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan használható az egyéni telepítés kezelőfelület az Azure-SSIS-integrációs futásidejű további összetevők telepítéséhez, vagy módosítsa a beállításokat
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: cce41a7529367d2e26b89a40593f9564d7e539b6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7b6cae9eaa4674e60edfae13c571d89153c9b498
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619587"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298392"
 ---
-# <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS-integrációs futásidejű egyéni beállítása
+# <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS-integráció futási időben testreszabása
 
-Az Azure-SSIS-integrációs futásidejű az egyéni telepítés kezelőfelület lehetővé teszi az alapértelmezett konfiguráció vagy a környezetben (például további Windows szolgáltatások indítása) működő alter vagy további összetevők (például a szerelvények, az illesztőprogramokat, vagy bővítmények) az Azure-SSIS infravörös minden egyes csomópontjára Általában a saját telepítő lépések hozzáadása a kiépítés vagy az Azure-SSIS infravörös újrakonfigurálása során felületet biztosít
+Az Azure-SSIS-integrációs futásidejű egyéni telepítés felülete egy felülete, adja hozzá a saját telepítési lépéseinek kiépítés vagy az Azure-SSIS infravörös újrakonfigurálása során Egyéni telepítés lehetővé teszi az alapértelmezett konfiguráció vagy a környezetben (például további Windows szolgáltatások indítása) működő alter vagy további összetevőket (például szerelvényeket, illesztőprogramok vagy bővítmények) telepítse az Azure-SSIS infravörös minden csomópontján
 
 Az egyéni telepítés előkészítése a parancsfájl és az ahhoz tartozó fájlokat, és feltöltheti az Azure Storage-fiók egy blob tárolóba konfigurálásához. Egy közös hozzáférésű Jogosultságkód (SAS) egységes erőforrás-azonosító (URI) a tároló megadnia, amikor kiépítése, vagy konfigurálja újra az Azure-SSIS infravörös Az Azure-SSIS-IR minden egyes csomópontjára majd tölti le a parancsfájlt és a hozzá kapcsolódó fájlok a tárolóból, és futtatja az egyéni telepítés emelt szintű jogosultságokkal. Ha egyéni telepítés befejeződött, minden csomópont feltölti a normál a kimenetbe végrehajtása és a többi naplófájlt a tárolóba.
 
@@ -32,7 +32,7 @@ Az ingyenes vagy a nem licencelt, és fizetett vagy licencelt összetevői is te
 
 -   Ha a használni kívánt `gacutil.exe` szerelvényeket a globális szerelvény gyorsítótárban (GAC) a telepítéséhez adja meg az egyéni telepítés részeként, vagy a nyilvános előzetes verzió-tárolóban megadott másolási szüksége.
 
--   Ha egy Vnetet az Azure-SSIS-IR egyéni telepítés csatlakoztatni kell, csak az Azure Resource Manager hálózatok esetén támogatott. Klasszikus virtuális hálózat nem támogatott.
+-   Ha az Azure-SSIS-IR egyéni telepítés csatlakoztatása egy virtuális hálózathoz van szüksége, csak Azure Resource Manager virtuális hálózat esetén támogatott. Klasszikus virtuális hálózathoz nem támogatott.
 
 -   Rendszergazdai megosztás jelenleg nem támogatott az Azure-SSIS infravörös
 

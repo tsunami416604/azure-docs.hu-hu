@@ -1,25 +1,19 @@
 ---
-title: Az Azure tevékenységnapló áttekintése |} Microsoft Docs
+title: Az Azure tevékenységnapló áttekintése
 description: Megtudhatja, mi az Azure tevékenységnapló és hogyan használhatja az Azure-előfizetése belül bekövetkező események megértéséhez.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c274782f-039d-4c28-9ddb-f89ce21052c7
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: 060f91e4bdd1dd2690a3e1f148f7c5e5e13d13ef
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.component: activitylog
+ms.openlocfilehash: 6fc4fefe6eaaf48061ea05bdbc087288ada35838
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235664"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264568"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure tevékenységnapló figyelő előfizetés tevékenység
 

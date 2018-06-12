@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 76a9fc586a1932b8b5e664b6c964f0c7d3eac4d4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297835"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>Storage-fiókok konfigurálása a költség Management szolgáltatáshoz
 
@@ -34,12 +35,12 @@ Ha még nem rendelkezik az AWS egyszerű tárolási szolgáltatás (S3) gyűjtő
 
 Konfigurálása, hogy az Azure storage költség felügyeleti által használható egy egyszerű. Gyűjtse össze a tárfiók adatait, és másolja a fájlokat a Cloudyn portálon.
 
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 2. Kattintson a **minden szolgáltatás**, jelölje be **tárfiókok**, keresse meg a storage-fiók, amelyet szeretne használni, és válassza ki a fiókot.
 3. A tárolási fiók lapon alatt **beállítások**, kattintson a **hívóbetűk**.
 4. Másolás a **tárfióknév** és **kapcsolati karakterlánc** key1 alatt.  
 ![Az Azure storage elérési kulcsok](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a https://azure.cloudyn.com webhelyre, és jelentkezzen be.
+5. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra https://azure.cloudyn.com , jelentkezzen be.
 6. Válassza a fogaskerékre szimbólum **jelentések tárolókezelési**.
 7. Kattintson a **új hozzáadása +** , és győződjön meg arról, hogy a Microsoft Azure van kiválasztva. Illessze be a az Azure storage-fiók nevére, a a **neve** területen. Beillesztés a **kapcsolati karakterlánc** a megfelelő területen. Adja meg a tároló nevét, és kattintson a **mentése**.  
 ![Cloudyn tárolási kapacitással, az Azure-bA](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +148,7 @@ Jelentéseket hozhat létre, a gyűjtő házirend segítségével S3 gyűjtő jo
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>Cloudyn AWS jelentés tároló hozzáadása
 
-1. Nyissa meg a Cloudyn portált az Azure Portalról, vagy lépjen a https://azure.cloudyn.com webhelyre, és jelentkezzen be.
+1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra https://azure.cloudyn.com , jelentkezzen be.
 2. Válassza a fogaskerékre szimbólum **jelentések tárolókezelési**.
 3. Kattintson a **új hozzáadása +** , és győződjön meg arról, hogy AWS van kiválasztva.
 4. Válasszon egy fiókot és a tárolási időszakot. Az AWS tárolási gyűjtő neve automatikusan kitöltött-a.  

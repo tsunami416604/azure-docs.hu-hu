@@ -1,22 +1,19 @@
 ---
-title: Az Azure szolgáltatáshoz értesítést tevékenység napló riasztásokat fogadhat |} Microsoft Docs
+title: Az Azure szolgáltatáshoz értesítést tevékenység napló riasztásokat fogadhat.
 description: Értesítés SMS, e-mailben vagy webhook Azure-szolgáltatás esetén.
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/09/2018
 ms.author: johnkem
-ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: alerts
+ms.openlocfilehash: 01dc3a3c6489b694af26c78ae3b4756f3e8f00b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263116"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>A szolgáltatás értesítések napló riasztások tevékenység létrehozása
 ## <a name="overview"></a>Áttekintés
@@ -51,17 +48,22 @@ Művelet csoportokkal kapcsolatos további tudnivalókért lásd: [létrehozása
 
     ![A "Create service állapotriasztás" parancs](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Írjon be egy nevet a **tevékenység napló riasztás neve** mezőben, és adjon meg egy **leírás**.
+4. Válassza ki a **előfizetés**, **szolgáltatások**, és **régiók** a kapni kívánt.
 
-    ![A "Napló figyelmeztetés hozzáadása" párbeszédpanel](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-service-notification-new-action-group-sh.png)
+    ![A "Napló figyelmeztetés hozzáadása" párbeszédpanel](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
-5. A **előfizetés** a jelenlegi előfizetés autofills mezőben. Ez az előfizetés tevékenységgel menthetők a napló figyelmeztetés. A riasztási erőforrás ebbe az előfizetésbe telepítve van, és az események a műveletnaplóban figyeli.
+> [!NOTE]
+> Ez az előfizetés tevékenységgel menthetők a napló figyelmeztetés. A riasztási erőforrás ebbe az előfizetésbe telepítve van, és az események a műveletnaplóban figyeli.
 
-6. Válassza ki a **erőforráscsoport** a riasztási erőforrás létrehozása. Ez az erőforráscsoport, amelyet a riasztás nem található. Ehelyett az erőforráscsoportot, ahol a riasztás erőforrás.
+5. Válassza ki a **eseménytípusok** a kapni kívánt: *probléma szolgáltatás*, *a tervezett karbantartások*, és *állapotfigyelő tanácsadók* 
 
-7. A **eseménykategória** beállítás automatikusan be lesz **szolgáltatásának állapota**. Bejelölheti a **szolgáltatás**, **régió**, és **típus** a szeretne kapni, a szolgáltatás állapotával kapcsolatos értesítésekre.
+6. Adja meg a riasztás részleteinek megadásával egy **riasztásiszabály-névnek** és **leírás**.
 
-8. A **keresztül riasztási**, jelölje be a **új** művelet csoport gombra. Adjon meg egy nevet a a **művelet csoportnév** mezőbe, majd írjon be egy nevet a **rövid nevét** mezőbe. A rövid nevét a riasztás aktiválódásakor közreműködésével küldött értesítő hivatkozik.
+7. Válassza ki a **erőforráscsoport** , amelyben szeretné menteni a riasztást.
+
+8. Hozzon létre egy új művelet csoportot kiválasztásával **új művelet csoport**. Adjon meg egy nevet a a **művelet csoportnév** mezőbe, majd írjon be egy nevet a **rövid nevét** mezőbe. A rövid nevét a riasztás aktiválódásakor közreműködésével küldött értesítő hivatkozik.
+
+    ![A művelet új csoport létrehozása](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
 9. Adja meg a fogadók listáját a fogadó megadásával:
 
@@ -71,7 +73,7 @@ Művelet csoportokkal kapcsolatos további tudnivalókért lásd: [létrehozása
 
     c. **Részletek**: a kiválasztott művelet típusa alapján, adjon meg egy telefonszámot, e-mail címét, webhook URI, stb.
 
-10. Válassza ki **OK** a riasztás létrehozása.
+10. Válassza ki **OK** művelet csoport létrehozásához, majd **riasztási szabály létrehozása** a riasztás befejezéséhez.
 
 Néhány percen belül a riasztás aktív, és elkezdi való létrehozása során a megadott feltételek alapján.
 
@@ -86,9 +88,9 @@ Megtudhatja, hogyan [meglévő probléma felügyeleti rendszerekhez webhook ért
 
 1. Végezze el az 1-7 hozhat létre a szolgáltatás állapotának értesítési az előző szakaszban. 
 
-2. A **keresztül riasztási**, jelölje be a **meglévő** művelet csoport gombra. Válassza ki a megfelelő műveletet.
+2. A **Define művelet csoport**, kattintson a **kijelölési művelet csoport** gombra. Válassza ki a megfelelő műveletet.
 
-3. Válassza ki **OK** a riasztás létrehozása.
+3. Válassza ki **Hozzáadás** hozzá a műveleti csoportot, majd **riasztási szabály létrehozása** a riasztás befejezéséhez.
 
 Néhány percen belül a riasztás aktív, és elkezdi való létrehozása során a megadott feltételek alapján.
 

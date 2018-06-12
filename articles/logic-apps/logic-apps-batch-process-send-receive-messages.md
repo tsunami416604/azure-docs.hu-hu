@@ -1,13 +1,13 @@
 ---
-title: "A Batch-folyamat üzenetek egy csoport vagy a gyűjtemény - Azure Logic Apps |} Microsoft Docs"
-description: "A kötegelt feldolgozáson a logic apps üzeneteket küldjön és fogadjon"
-keywords: "kötegelt, kötegelt folyamat"
+title: A Batch-folyamat üzenetek egy csoport vagy a gyűjtemény - Azure Logic Apps |} Microsoft Docs
+description: A kötegelt feldolgozáson a logic apps üzeneteket küldjön és fogadjon
+keywords: kötegelt, kötegelt folyamat
 author: jonfancey
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: de519084a4f172ad984c78727123835eeb9deaef
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2815ce7fe0e10aadb60eaa77b58e5395fb5c98d8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298015"
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Küldése, fogadására és a batch-folyamat üzenetek a logic Apps alkalmazások
 
@@ -77,7 +78,7 @@ Küldő logic Apps alkalmazásokat kell tudja, hova küldje a elemek, amíg a fo
 
    1. Válassza ki a kötegelt eseményindító **+ új lépés** > **művelet hozzáadása**.
 
-   2. A keresési mezőbe írja be az "e-mail" szűrőként.
+   2. A keresőmezőbe írja be szűrőként az „e-mail” kifejezést.
    Az e-mailt provider alapján, válassza ki az e-mailek csatlakozó.
    
       Például, ha munkahelyi vagy iskolai fiókkal rendelkezik, jelölje be az Office 365 Outlook-összekötő. 
@@ -131,7 +132,7 @@ Küldő logic Apps alkalmazásokat kell tudja, hova küldje a elemek, amíg a fo
 1. Egy másik logikai alkalmazás létrehozása ezen a néven: "BatchSender"
 
    1. A keresési mezőbe írja be a "ismétlődési" szűrőként. 
-   Válassza ki az ehhez az eseményindítóhoz: **ütemezés - ismétlődési**
+   Válassza ki a következő eseményindítót: **Ütemezés – Ismétlődés**
 
       ![A "Ismétlődés ütemezése" eseményindító hozzáadása](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-receiver.png)
 
@@ -187,7 +188,7 @@ Küldő logic Apps alkalmazásokat kell tudja, hova küldje a elemek, amíg a fo
    * **Üzenet azonosítója**: nem kötelező azonosítót és egy előállított GUID Azonosítóhoz, ha üres. 
    Ehhez a példához hagyja üresen a mezőt.
 
-5. Mentse a Logic Apps alkalmazást. A küldő logikai alkalmazás most hasonlít-e ebben a példában:
+5. Mentse a logikai alkalmazást. A küldő logikai alkalmazás most hasonlít-e ebben a példában:
 
    ![Mentse a küldő Logic Apps alkalmazást](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details-finished.png)
 

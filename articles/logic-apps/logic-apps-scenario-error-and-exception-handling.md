@@ -1,12 +1,12 @@
 ---
-title: "Kivételkezelés & hiba naplózási forgatókönyv – Azure Logic Apps |} Microsoft Docs"
-description: "Speciális kivétel- és az Azure Logic Apps hibanaplózás valódi használati eset ismerteti"
-keywords: 
+title: Kivételkezelés & hiba naplózási forgatókönyv – Azure Logic Apps |} Microsoft Docs
+description: Speciális kivétel- és az Azure Logic Apps hibanaplózás valódi használati eset ismerteti
+keywords: ''
 services: logic-apps
 author: hedidin
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: cb80423266d3e9c0b3cac31821965ad92c0420d9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299358"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Forgatókönyv: Kivételkezelést és a hibanaplózás a logic Apps alkalmazások
 
@@ -119,7 +120,7 @@ A forrás (kérelem) a beteg rekord azt kell jelentkeznie a Dynamics CRM Online 
 
    **Ellenőrizze a rekord hiba létrehozása**
 
-   ![Feltétel](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Állapot](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Logic app forráskód
 
@@ -412,7 +413,7 @@ Meg a hibákat, létrehozhat egy MVC webalkalmazás Cosmos DB hiba rekordját me
 Az alábbiakban az MVC-alkalmazás adatait, a korábban ismertetett módszert létrehozott példát.
 
 #### <a name="error-management-list"></a>Hiba a felügyeleti lista
-![Hiba](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
+![Hibalista](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
 
 #### <a name="error-management-detail-view"></a>Hiba felügyeleti részletes nézet
 ![A hiba adatai](media/logic-apps-scenario-error-and-exception-handling/errordetails.png)
@@ -476,7 +477,7 @@ Az API-t a logikai alkalmazás, a következő szintaxissal nevezzük:
 
 Az előző példakódban kifejezést keresi a *Create_NewPatientRecord* állapotának **sikertelen**.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 * Naplózás és a logikai alkalmazás hibakezelési könnyedén alkalmazni.
 * Azure Cosmos DB a tárház védelemként is alkalmazhatják a napló és a hiba a rekordok (dokumentumok).
@@ -486,7 +487,7 @@ Az előző példakódban kifejezést keresi a *Create_NewPatientRecord* állapot
 
 A Logic Apps kivétel felügyeleti API-alkalmazás forráskódja érhető el ezen [GitHub-tárházban](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic App kivétel felügyeleti API").
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További logic app példák és forgatókönyvek megtekintése](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [További információk a logic Apps alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)

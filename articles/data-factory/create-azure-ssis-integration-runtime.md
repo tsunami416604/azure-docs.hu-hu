@@ -1,6 +1,6 @@
 ---
 title: Azure-SSIS integrációs futásidejű létrehozása az Azure Data Factory |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Azure-SSIS-integráció futtatókörnyezetet, így Azure felhőben SSIS-csomag is futtathatja.
+description: Megtudhatja, hogyan hozzon létre egy Azure-SSIS-integrációs futásidejű az Azure Data Factoryben, telepítheti és SSIS-csomagok futtassa az Azure-ban.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: ae906712b6169f2d352013bf2b786c5cc772aa9a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb5cd00701c6d86af588353119c8e0d189fefa62
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618555"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297240"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Egy Azure-SSIS-integrációs futásidejű létrehozása az Azure Data Factory
-Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban.
+Ez a cikk lépéseit egy Azure-SSIS-integráció futtatókörnyezetet, az Azure Data Factory történő üzembe helyezéséhez. Ezután használhatja SQL Server Data Tools (SSDT) vagy SQL Server Management Studio (SSMS) telepítéséhez és futtatásához az SQL Server Integration Services (SSIS) csomag az Azure-ban a futtatókörnyezetben.
 
-Az oktatóanyag: [oktatóanyag: központilag telepíteni az SQL Server Integration Services (SSIS) Azure](tutorial-create-azure-ssis-runtime-portal.md) bemutatta, hogyan hozhat létre egy Azure-SSIS integrációs futásidejű (IR) használatával az Azure SQL Database a tároló SSIS-katalógus. Ez a cikk kibővíti az oktatóanyag, és bemutatja, hogyan tegye a következőket: 
+Az oktatóanyag [oktatóanyag: központilag telepíteni az SQL Server Integration Services (SSIS) Azure](tutorial-create-azure-ssis-runtime-portal.md) bemutatja, hogyan hozzon létre egy Azure-SSIS integrációs futásidejű (IR) Azure SQL Database segítségével a SSIS-katalógust. Ez a cikk kibővíti az oktatóanyag, és bemutatja, hogyan tegye a következőket: 
 
 - Azure SQL felügyelt példány (előzetes verzió) használata egy SSIS katalógust (SSISDB adatbázis).
-- Azure-SSIS-IR csatlakoztassa egy Azure virtuális hálózatot (VNet). Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot és egy virtuális hálózat konfigurálása az Azure-portálon kapcsolatos információkat lásd: [Azure-SSIS-IR csatlakoztassa a virtuális hálózatba](join-azure-ssis-integration-runtime-virtual-network.md). 
+- Azure-SSIS-IR csatlakoztatása az Azure virtuális hálózat. Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózatot és egy virtuális hálózat konfigurálása Azure-portálon kapcsolatos információkat lásd: [Azure-SSIS IR csatlakoztassa a virtuális hálózati](join-azure-ssis-integration-runtime-virtual-network.md). 
 
 > [!NOTE]
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory szolgáltatás általánosan elérhető 1. verzióját használja, lásd [a Data Factory 1. verziójának dokumentációját](v1/data-factory-introduction.md).
@@ -38,7 +38,7 @@ Ez a cikk egy Azure-SSIS-IR-kiépítés különböző módokat ismerteti:
 - [Azure PowerShell](#azure-powershell)
 - [Azure Resource Manager-sablon](#azure-resource-manager-template)
 
-Egy Azure-SSIS-IR létrehozásakor adat-előállító kapcsolódik az Azure SQL-adatbázis előkészítése a SSIS-katalógus-adatbázis (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
+Egy Azure-SSIS-IR létrehozásakor adat-előállító kapcsolódik az Azure SQL-adatbázis előkészítése a SSIS-katalógus-adatbázis (SSISDB). A parancsfájl is engedélyek és a virtuális hálózatra vonatkozó beállításainak konfigurálása, ha meg van adva, és csatlakoztatja a virtuális hálózat az Azure-SSIS integrációs futásidejű új példányát.
 
 Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Ezenkívül további összetevőket is telepíthet. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
 
@@ -48,8 +48,8 @@ Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack 
 - **Azure SQL adatbázis-kiszolgáló** vagy **SQL Server-felügyelt példány (előzetes verzió)**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. Jegyezze fel az Azure SQL-kiszolgáló tarifacsomagját. Az Azure SQL Database támogatott tarifacsomagok listáját lásd: [SQL-adatbázis erőforrás korlátok](../sql-database/sql-database-resource-limits.md).
 
     Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóhoz vagy az SQL Server-felügyelt példány (előzetes verzió) nem rendelkezik egy SSIS-katalógus (SSIDB adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát.
-- **Klasszikus Azure Resource Manager virtuális Network(VNet) (nem kötelező), vagy**. Legalább egy Azure virtuális hálózat (VNet) szükséges, ha a következő feltételek bármelyike igaz:
-    - A SSIS-katalógus-adatbázis SQL-példányon a kiszolgáló által felügyelt (előzetes verzió) egy virtuális hálózat részét képező üzemeltet.
+- **Klasszikus Azure Resource Manager Virtual Network (nem kötelező), vagy**. Egy Azure virtuális hálózatot kell rendelkeznie, ha a következő feltételek valamelyike teljesül:
+    - Az SQL-példányon a kiszolgáló által felügyelt (előzetes verzió), amely része a virtuális hálózati SSIS-katalógus adatbázist üzemeltet.
     - Az Azure SSIS integrációs modulon futó SSIS-csomagokkal helyszíni adattárakhoz szeretne csatlakozni.
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Egy PowerShell-lel futtatott szkripttel üzembe helyez egy Azure SSIS integrációs modult, amely a felhőben futtat SSIS-csomagokat. 
 
@@ -73,7 +73,7 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
  
    Az Azure data factory nevének **globálisan egyedinek** kell lennie. Ha a következő hibaüzenetet kapja, változtassa meg az adat-előállító nevét (például sajátneveMyAzureSsisDataFactoryra), majd próbálkozzon újra a létrehozással. A Data Factory-összetevők elnevezésére vonatkozó részleteket a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
   
-       `Data factory name �MyAzureSsisDataFactory� is not available`
+       `Data factory name "MyAzureSsisDataFactory" is not available`
 
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
@@ -121,19 +121,19 @@ Ebben a szakaszban használhatja az Azure-portálon, kifejezetten a Data Factory
 1.  A **Speciális beállítások** oldalon válassza ki, hogy mennyi legyen a **maximális párhuzamos végrehajtások száma csomópontonként**.   
 
     ![Speciális beállítások](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)    
-5. Ez a lépés **nem kötelező**. Ha egy virtuális hálózat (klasszikus vagy Azure Resource Manager), amelyet a integrációs futásidejű való csatlakozáshoz válassza ki a **válasszon egy Vnetet az Azure-SSIS-integráció futási időben való csatlakozáshoz, és a virtuális hálózat engedélyek/beállításokAzure-szolgáltatásokengedélyezése**lehetőséget, majd hajtsa végre a következő lépéseket: 
+5. Ez a lépés **nem kötelező**. Ha egy virtuális hálózathoz (klasszikus vagy Azure Resource Manager), amelyet a integrációs futásidejű való csatlakozáshoz válassza ki a **válasszon egy Vnetet az Azure-SSIS-integráció futási időben való csatlakozáshoz és a virtuális hálózat engedélybeállítások konfigurálása Azure-szolgáltatások engedélyezése**  lehetőséget, majd hajtsa végre a következő lépéseket: 
 
-    ![Virtuális hálózatra vonatkozó speciális beállítások](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)    
+    ![Virtuális hálózat a Speciális beállítások](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)    
 
-    1. A **előfizetés**, adja meg a **előfizetés** , amelyhez a virtuális hálózat. 
-    2. Típus, adja meg a **típus** a vnet (klasszikus virtuális hálózat vagy az Azure Resource Manager Virtual Network). 
-    3. A **VNet neve**, válassza ki a nevét a **VNet**. 
-    4. A **alhálózati név**, válassza ki a nevét a **alhálózati** a Vneten belül.
+    1. A **előfizetés**, adja meg a **előfizetés** , amely rendelkezik a virtuális hálózat. 
+    2. Típus, adja meg a **típus** a virtuális hálózat (klasszikus virtuális hálózat vagy az Azure Resource Manager Virtual Network). 
+    3. A **VNet neve**, válassza ki a virtuális hálózat nevét. 
+    4. A **alhálózati név**, jelölje ki a virtuális hálózati alhálózat a nevét.
 1. Az Azure-SSIS integrációs modul létrehozásának elindításához kattintson a **Befejezés** gombra. 
 
     > [!IMPORTANT]
     > - A folyamat elvégzése hozzávetőleg 20 percet vesz igénybe.
-    > - A Data Factory szolgáltatás csatlakozik az Azure SQL Database-hez, és előkészíti az SSIS-katalógusadatbázist (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
+    > - A Data Factory szolgáltatás csatlakozik az Azure SQL Database-hez, és előkészíti az SSIS-katalógusadatbázist (SSISDB). A parancsfájl is engedélyek és a virtuális hálózatra vonatkozó beállításainak konfigurálása, ha meg van adva, és csatlakoztatja a virtuális hálózat az Azure-SSIS integrációs futásidejű új példányát.
 7. A **Kapcsolatok** ablakban váltson az **Integrációs modulok** lapra, ha szükséges. Az állapot frissítéséhez kattintson a **Frissítés** elemre. 
 
     ![Létrehozás állapota](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
@@ -196,9 +196,9 @@ $SSISDBServerAdminPassword = "[your server admin password]"
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "[your Azure SQL Database pricing tier. Examples: Basic, S0, S1, S2, S3, etc.]"
 
-## These two parameters apply if you are using a VNet and an Azure SQL Managed Instance (Preview) 
-# Specify information about your classic or Azure Resource Manager virtual network (VNet). 
-$VnetId = "[your VNet resource ID or leave it empty]" 
+## These two parameters apply if you are using a virtual network and an Azure SQL Managed Instance (Preview) 
+# Specify information about your classic or Azure Resource Manager virtual network. 
+$VnetId = "[your virtual network resource ID or leave it empty]" 
 $SubnetName = "[your subnet name or leave it empty]" 
 
 ```
@@ -317,7 +317,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupNam
                                             -Subnet $SubnetName
 ```
 
-Azure SQL felügyelt példánnyal (előzetes verzió), amelyhez csatlakozik egy Vnetet VnetId és alhálózati paraméterek értékeit továbbítani kell. A CatalogPricingTier paraméter nem érvényes az Azure SQL felügyelt példány (előzetes verzió). 
+Azure SQL felügyelt példánnyal (előzetes verzió), amelyhez csatlakozik egy virtuális hálózati VnetId és alhálózati paraméterek értékeit továbbítani kell. A CatalogPricingTier paraméter nem érvényes az Azure SQL felügyelt példány (előzetes verzió). 
 
 ### <a name="start-integration-runtime"></a>Integrációs modul indítása
 Futtassa a következő parancsot az Azure SSIS integrációs modul indításához: 
@@ -336,7 +336,7 @@ A parancs végrehajtása **20–30 percig** is eltarthat.
 
 
 ### <a name="full-script"></a>Teljes szkript
-Ez a teljes parancsfájl, amely létrehoz egy Azure-SSIS-IR, és azt csatlakoztatja a virtuális hálózat. A parancsfájl feltételezi, hogy az Azure SQL felügyelt példány (előzetes verzió) segítségével a SSIS-katalógust. 
+Ez a teljes parancsfájl, amely létrehoz egy Azure-SSIS-IR, és csatlakoztatja a virtuális hálózathoz. A parancsfájl feltételezi, hogy az Azure SQL felügyelt példány (előzetes verzió) segítségével a SSIS-katalógust. 
 
 ```powershell
 # Azure Data Factory version 2 information 
@@ -497,4 +497,4 @@ A jelen dokumentációban lévő más Azure-SSIS-IR témakörökben talál:
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
-- [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz (VNethez) való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a VNet oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson a virtuális hálózathoz. 
+- [Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózati](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk tájékoztatást egy Azure-SSIS-IR csatlakoztatása az Azure virtuális hálózat. Emellett biztosítja, hogy az Azure-SSIS-IR csatlakozhat a virtuális hálózat virtuális hálózat konfigurálása az Azure-portálon használandó lépéseket. 

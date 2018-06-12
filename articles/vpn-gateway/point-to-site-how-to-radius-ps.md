@@ -1,13 +1,13 @@
 ---
-title: "Számítógép csatlakoztatása egy virtuális hálózatot, pont-pont és a RADIUS-hitelesítés használatával: PowerShell |} Azure"
-description: "Biztonságos kapcsolódás egy virtuális hálózatot P2S és RADIUS-hitelesítést használó Windows- és Mac OS X-ügyfelek."
+title: 'Számítógép csatlakoztatása egy virtuális hálózatot, pont-pont és a RADIUS-hitelesítés használatával: PowerShell |} Azure'
+description: Biztonságos kapcsolódás egy virtuális hálózatot P2S és RADIUS-hitelesítést használó Windows- és Mac OS X-ügyfelek.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: anzaman
-ms.openlocfilehash: 3b7315aaa57d1387e3cea31e8b306131a59a7006
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: df7afe9324831ffb8e79d7320f2c716ed18a7b4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267349"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Egy RADIUS-hitelesítés használatával VNet pont – hely kapcsolat konfigurálva: PowerShell
 
@@ -134,7 +135,7 @@ Mielőtt létrehozna, és konfigurálja a virtuális hálózati átjárót, a RA
 
 1. Ha nem rendelkezik telepített RADIUS-kiszolgáló, központi telepítése. A központi telepítés lépéseit tekintse meg a telepítés útmutatóját a RADIUS gyártója által biztosított.  
 2. A VPN-átjáró konfigurálása a RADIUS a RADIUS-ügyfélként. A RADIUS-ügyfél hozzáadásakor adja meg a virtuális hálózatot GatewaySubnet létrehozott. 
-3. Ha a RADIUS való működésre van beállítva, a RADIUS-kiszolgáló IP-cím és a közös titkos kulcsot, amely a RADIUS-ügyfelek által használandó kérdezze meg a RADIUS-kiszolgáló beolvasása. Ha a RADIUS-kiszolgáló az Azure virtuális hálózat, a CA IP-címét a RADIUS-kiszolgáló virtuális gép.
+3. Ha a RADIUS-kiszolgáló be van állítva, a RADIUS-kiszolgáló IP-cím és a közös titkos kulcsot, amely a RADIUS-ügyfelek által használandó kérdezze meg a RADIUS-kiszolgáló beolvasása. Ha a RADIUS-kiszolgáló az Azure virtuális hálózat, a CA IP-címét a RADIUS-kiszolgáló virtuális gép.
 
 A [hálózati házirend-kiszolgáló (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) a cikk útmutatást nyújt a viturális AD tartományi hitelesítéshez egy Windows RADIUS-kiszolgáló (NPS) konfigurálása.
 

@@ -2,7 +2,7 @@
 title: Az Azure Log Analytics - Azure Logic Apps B2B üzenetek nyomon követése |} Microsoft Docs
 description: Az integráció fiók és a logikai alkalmazások az Azure Naplóelemzés B2B kommunikációs nyomon követése
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299977"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Naplóelemzés B2B kommunikáció
 
@@ -150,7 +151,7 @@ Az alábbiakban a tulajdonságleírások minden egyes AS2-üzenet esetében.
 | Tulajdonság | Leírás |
 | --- | --- |
 | Feladó | A megadott Vendég partner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** AS2 megállapodás |
-| Fogadó | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** AS2 megállapodás |
+| Címzett | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** AS2 megállapodás |
 | Logikai alkalmazás | A logikai alkalmazást, ahol az AS2 műveletek beállítása |
 | status | Az AS2 üzenet állapota <br>Sikeres = fogadott, vagy egy érvényes AS2 üzenetet küldött. Nincs MDN be van állítva. <br>Sikeres = fogadott, vagy egy érvényes AS2 üzenetet küldött. MDN beállítása és kapott, vagy MDN zajlik. <br>Nem sikerült = érvénytelen AS2 üzenetet kapott. Nincs MDN be van állítva. <br>Függőben lévő = fogadott, vagy egy érvényes AS2 üzenetet küldött. MDN be van állítva, és MDN várt. |
 | Nyugtázási | A MDN Messaging-állapot <br>Elfogadható = fogadott vagy elküldött egy pozitív MDN. <br>Függőben lévő egy MDN küld és fogad váró =. <br>Elutasított = fogadott vagy elküldött egy negatív MDN. <br>Nem szükséges = MDN nincs beállítva a szerződésben. |
@@ -181,7 +182,7 @@ Az alábbiakban a tulajdonság leírásainak minden X12 üzenet.
 | Tulajdonság | Leírás |
 | --- | --- |
 | Feladó | A megadott Vendég partner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** egy X12 a megállapodás |
-| Fogadó | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** egy X12 a megállapodás |
+| Címzett | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** egy X12 a megállapodás |
 | Logikai alkalmazás | A logikai alkalmazás ahol a X12 műveletek be vannak állítva. |
 | status | A X12 üzenet állapot <br>Sikeres = fogadott, vagy egy érvényes X12 küldött üzenetet. Egyetlen működési nyugtázási be van állítva. <br>Sikeres = fogadott, vagy egy érvényes X12 küldött üzenetet. Működési nyugtázási beállítása és kapott, illetve funkcionális nyugtázási elküldésekor történik. <br>Nem sikerült = fogadott vagy elküldött egy érvénytelen X12 üzenet. <br>Függőben lévő = fogadott, vagy egy érvényes X12 küldött üzenetet. Funkcionális nyugtázási be van állítva, és működési nyugtázási várt. |
 | Nyugtázási | Funkcionális nyugtázási (997) állapota <br>Elfogadható = fogadott, vagy egy pozitív működési nyugtát küldött <br>Elutasított = fogadott, vagy egy negatív működési nyugtát küldött <br>Függőben lévő = működési nyugtázási várt, de nem érkezett meg. <br>Függőben lévő = előállított működési nyugtázási, de nem lehet elküldeni a partnernek. <br>Nem szükséges funkcionális = nyugtázási nincs beállítva. |
@@ -214,7 +215,7 @@ Az alábbiakban a tulajdonságleírások minden egyes EDIFACT-üzenet esetében.
 | Tulajdonság | Leírás |
 | --- | --- |
 | Feladó | A megadott Vendég partner **fogadási beállítások**, vagy a fogadó partner megadott **küldési beállítások** EDIFACT megállapodás |
-| Fogadó | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** EDIFACT megállapodás |
+| Címzett | A megadott fogadó partner **fogadási beállítások**, vagy a Vendég partner megadott **küldési beállítások** EDIFACT megállapodás |
 | Logikai alkalmazás | A logikai alkalmazást, ahol a EDIFACT műveletek beállítása |
 | status | A EDIFACT Messaging-állapot <br>Sikeres = fogadott, vagy egy érvényes EDIFACT üzenetet küldött. Egyetlen működési nyugtázási be van állítva. <br>Sikeres = fogadott, vagy egy érvényes EDIFACT üzenetet küldött. Működési nyugtázási beállítása és kapott, illetve funkcionális nyugtázási elküldésekor történik. <br>Nem sikerült fogadott = vagy EDIFACT érvénytelen üzenetet küldött <br>Függőben lévő = fogadott, vagy egy érvényes EDIFACT üzenetet küldött. Funkcionális nyugtázási be van állítva, és működési nyugtázási várt. |
 | Nyugtázási | Funkcionális nyugtázási (997) állapota <br>Elfogadható = fogadott, vagy egy pozitív működési nyugtát küldött <br>Elutasított = fogadott, vagy egy negatív működési nyugtát küldött <br>Függőben lévő = működési nyugtázási várt, de nem érkezett meg. <br>Függőben lévő = előállított működési nyugtázási, de nem lehet elküldeni a partnernek. <br>Nem szükséges = működési nyugtázási nincs beállítva. |

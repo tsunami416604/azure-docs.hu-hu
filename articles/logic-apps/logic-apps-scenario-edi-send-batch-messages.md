@@ -1,13 +1,13 @@
 ---
-title: "A Batch-folyamat EDI üzenetek egy csoport vagy a gyűjtemény - Azure Logic Apps |} Microsoft Docs"
-description: "A kötegelt feldolgozáson a logic apps EDI üzenetek küldése"
-keywords: "kötegelt, kötegelt feldolgozni, kötegelt kódolása"
+title: A Batch-folyamat EDI üzenetek egy csoport vagy a gyűjtemény - Azure Logic Apps |} Microsoft Docs
+description: A kötegelt feldolgozáson a logic apps EDI üzenetek küldése
+keywords: kötegelt, kötegelt feldolgozni, kötegelt kódolása
 author: divswa
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: 837cb0d9595da5b5bd4f01fb4576f75e98ab8912
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 6340d1fc409b64c5e681f9f69e4e2d0895ede61f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299290"
 ---
 # <a name="send-x12-messages-in-batch-to-trading-partners"></a>X12 üzenetküldés kötegben kereskedelmi partnerek
 
@@ -159,7 +160,7 @@ A logic apps küldő hova küldje a elemek, amíg a fogadó logic Apps alkalmaz�
    
    ![Kötegelt tulajdonságainak beállítása](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-properties.png)
 
-6. Mentse a Logic Apps alkalmazást. A küldő logikai alkalmazás most hasonlít-e ebben a példában:
+6. Mentse a logikai alkalmazást. A küldő logikai alkalmazás most hasonlít-e ebben a példában:
 
    ![Mentse a küldő Logic Apps alkalmazást](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-finished.png)
 
@@ -167,7 +168,7 @@ A logic apps küldő hova küldje a elemek, amíg a fogadó logic Apps alkalmaz�
 
 A kötegelési megoldás teszteléséhez post X12 részére küldött üzenetek a küldő Logic Apps alkalmazást az [Postman](https://www.getpostman.com/postman) vagy hasonló eszköz. Hamarosan, el kell indítania az első X12 az üzeneteket, vagy kötegelt öt elemek vagy 10 percenként a kérés van – minden ugyanazzal a partíciókulccsal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Folyamat üzenetek kötegek](logic-apps-batch-process-send-receive-messages.md) 
 * [Egy kiszolgáló nélküli alkalmazást a Visual Studio és az Azure Logic Apps és függvények létrehozása](../logic-apps/logic-apps-serverless-get-started-vs.md)

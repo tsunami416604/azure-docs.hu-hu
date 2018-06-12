@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 763b13849470079e24aac6aff45584bac33403f0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 956bd89a993a019d7a5a4dd28efec4116b174334
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620537"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297257"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factoryben az integrációs futásidejű figyelése  
 **Integrációs futásidejű** a számítási infrastruktúrától által használt Azure Data Factory adatok integrációs szolgáltatásainak különböző hálózati környezetek között. Integráció futtatókörnyezetek adat-előállító által kínált három típusa van:
@@ -167,7 +167,7 @@ Azure-SSIS integrációs futásidejű rendszere egy teljes körűen felügyelt f
 | CatalogAdminUserName | A rendszergazda felhasználóneve a meglévő Azure SQL adatbázis/felügyelt példány (előzetes verzió) kiszolgáló. Data Factory szolgáltatásnak kell előkészíteni és az Ön nevében SSISDB kezelni ezt az információt használja. |
 | CatalogAdminPassword | A meglévő Azure SQL adatbázis/felügyelt példány (előzetes verzió) kiszolgáló rendszergazdai jelszavát. |
 | CatalogPricingTier | A meglévő Azure SQL Database-kiszolgáló által üzemeltetett SSISDB tarifacsomag.  Azure által felügyelt tartalmazó SQL-példány (előzetes verzió) SSISDB nem alkalmazható. |
-| VNetId | A virtuális hálózathoz (VNet) erőforrás-azonosító az Azure-SSIS-integráció futási időben való csatlakozáshoz. |
+| VNetId | A virtuális hálózati erőforrás-azonosító az Azure-SSIS-integráció futási időben való csatlakozáshoz. |
 | Alhálózat | Az Azure-SSIS integrációs futásidejű csatlakozni alhálózat neve. |
 | ID (Azonosító) | Az Azure-SSIS-integrációs futásidejű erőforrás-azonosító. |
 | Típus | A típusa (felügyelt vagy önálló-Hosted) az Azure-SSIS-integrációs futásidejű. |
@@ -200,9 +200,9 @@ További Azure-SSIS integrációs futásidejű információt a következő cikke
 
 - [Azure-SSIS integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást általában többek között az Azure-SSIS infravörös integrációs futtatókörnyezetek 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál az Azure SQL felügyelt példányának (előzetes verzió) használatához, illetve az integrációs modul virtuális hálózathoz történő csatlakoztatásához. 
+- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk kibővíti az oktatóanyag, és utasításokkal szolgál az Azure SQL felügyelt példány (előzetes verzió) használatával, és az infravörös csatlakoztatása egy virtuális hálózatot. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
-- [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz (VNethez) való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a VNet oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson a virtuális hálózathoz. 
+- [Egy Azure-SSIS-IR csatlakoztatása egy virtuális hálózati](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk tájékoztatást egy Azure-SSIS-IR csatlakoztatása az Azure virtuális hálózat. A virtuális hálózat konfigurálása, hogy az Azure-SSIS infravörös csatlakozhat a virtuális hálózat az Azure-portálon használandó lépéseket is tartalmaz. 
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a különböző módon folyamatok figyeléséhez a következő cikkeket: 

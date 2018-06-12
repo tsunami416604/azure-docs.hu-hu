@@ -4,7 +4,7 @@ description: Exchange X12 üzenetek B2B vállalati integráció az Azure Logic A
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b269a5171dcb8867f7ea40215d6b8a75d5d918bc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299079"
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>A logic apps vállalati integrációs Exchange X12 állapotüzenete
 
@@ -235,7 +236,7 @@ Most már a szerződés készen áll a kimenő üzenetek, amelyek megfelelnek a 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Vezérlő verziószáma (ISA12) |Válassza ki a szabványos X12 verzióját |
+| Ellenőrző-verziószám (ISA12) |Válassza ki a szabványos X12 verzióját |
 | Használati mutató (ISA15) |Válassza ki a cseréje kontextusában.  Az értékeket információk, termelési adatok, és vizsgálati adatok |
 | Séma |Létrehoz egy X12 kódolású tévő, a Küldés csővezeték küld GS és ST szegmensek |
 | GS1 |Nem kötelező, válassza ki a megfelelő értéket a legördülő listából a működési kód |

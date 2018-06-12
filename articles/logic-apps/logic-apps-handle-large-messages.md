@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan kezelje a logic apps adattömbösítő a nagy m
 services: logic-apps
 documentationcenter: ''
 author: shae-hurst
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: a99fbdd7c9beb32f640d5ca623f8bcda3cb9aba4
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 6064db5455d92d15dca0e2a4a78285f0aeade904
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299045"
 ---
 # <a name="handle-large-messages-with-chunking-in-logic-apps"></a>A Logic Apps adattömbösítő a nagy méretű üzenetek kezeléséhez
 
@@ -118,7 +119,7 @@ Ezeket a lépéseket a Logic Apps használ a végpont a Logic Apps alkalmazást 
 
    | A Logic Apps fejlécmező kérése | Érték | Típus | Leírás |
    |---------------------------------|-------|------|-------------|
-   | **x-ms-átviteli-mód** | darabolásos | Karakterlánc | Azt jelzi, hogy a tartalmat az adattömbök feltöltése |
+   | **x-ms-átviteli-mód** | darabolásos | Sztring | Azt jelzi, hogy a tartalmat az adattömbök feltöltése |
    | **x-ms-content-length** | <*tartalom hosszúságú*> | Egész szám | A teljes tartalom mérete bájtban adattömbösítő előtt |
    ||||
 
@@ -126,8 +127,8 @@ Ezeket a lépéseket a Logic Apps használ a végpont a Logic Apps alkalmazást 
 
    | Végpont válasz fejlécmező | Típus | Szükséges | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **x-ms-adatrészletméretnek** | Egész szám | Nincs | A javasolt adatrészlet mérete bájtban |
-   | **Hely** | Karakterlánc | Nincs | URL-címét hova küldje a HTTP-javítás üzenetek |
+   | **x-ms-adatrészletméretnek** | Egész szám | Nem | A javasolt adatrészlet mérete bájtban |
+   | **Hely** | Sztring | Nem | URL-címét hova küldje a HTTP-javítás üzenetek |
    ||||
 
 3. A Logic Apps alkalmazást hoz létre, és elküldi követő HTTP javítás üzenetek - az ezeket az információkat:
@@ -138,9 +139,9 @@ Ezeket a lépéseket a Logic Apps használ a végpont a Logic Apps alkalmazást 
 
      | A Logic Apps fejlécmező kérése | Érték | Típus | Leírás |
      |---------------------------------|-------|------|-------------|
-     | **Content-Range** | <*tartomány*> | Karakterlánc | Az aktuális tartalom adatrészlet, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom mérete, például a bájttartomány: "bájt = 0-1023/10100" |
-     | **Tartalomtípus** | <*tartalomtípus*> | Karakterlánc | A darabolt tartalomtípushoz |
-     | **Content-Length** | <*tartalom hosszúságú*> | Karakterlánc | A jelenlegi adattömegen száma bájtban hossza |
+     | **Content-Range** | <*tartomány*> | Sztring | Az aktuális tartalom adatrészlet, beleértve a kezdő érték, a befejezési értéket, és a teljes tartalom mérete, például a bájttartomány: "bájt = 0-1023/10100" |
+     | **Tartalomtípus** | <*tartalomtípus*> | Sztring | A darabolt tartalomtípushoz |
+     | **Content-Length** | <*tartalom hosszúságú*> | Sztring | A jelenlegi adattömegen száma bájtban hossza |
      |||||
 
 4. Minden javítás kérelem után a végpont megerősíti, hogy az egyes adattömbök fogadását által, a "200" állapotkód válaszol.

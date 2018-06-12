@@ -1,24 +1,19 @@
 ---
-title: "Automatikus skálázási a Microsoft Azure virtuális gépek, a Cloud Services és a webalkalmazások áttekintése |} Microsoft Docs"
-description: "A Microsoft Azure-ban automatikus skálázás áttekintése. Virtuális gépek, a Felhőszolgáltatások és a webalkalmazások vonatkozik."
+title: A virtuális gépek, a Cloud Services és a Web Apps automatikus skálázás áttekintése
+description: Automatikus skálázási a Microsoft Azure-ban. Virtuális gépek, a virtuálisgép-skálázási készletekben, a Cloud Services és a Web Apps vonatkozik.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 74bf03be-e658-4239-a214-c12424b53e4c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.component: autoscale
+ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264670"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>A Microsoft Azure virtuális gépek, a Cloud Services és a Web Apps automatikus skálázás áttekintése
 Ez a cikk ismerteti, milyen Microsoft Azure automatikus skálázás, előnye, valamint Ismerkedés használja azt.  
@@ -33,7 +28,7 @@ Az Azure a figyelő automatikus skálázás vonatkozik csak a [virtuálisgép-m�
 ## <a name="what-is-autoscale"></a>Mi az az automatikus skálázás?
 Automatikus skálázás lehetővé teszi, hogy rendelkezik a megfelelő mennyiségű erőforrást fut az alkalmazás a terhelés kezelésére. Lehetővé teszi a terhelés növekszik, és is költségtakarékosabb munkavégzésben erőforrásokat, amelyek ül eltávolításával erőforrások hozzáadása tétlen. A minimális és maximális mennyiségű példánnyal futtatásához, és vegye fel vagy távolítsa el a virtuális gépek meghatározott szabályok alapján automatikusan megadja. A minimális elérhetővé válnak meg arról, hogy az alkalmazás mindig fut még nincs terhelés alatt. A legfeljebb korlátozza a teljes lehetséges óránkénti költsége. Automatikus méretezése hoz létre szabályokkal e két érték között.
 
- ![Automatikus skálázás ismertetése. Hozzá és távolíthat el a virtuális gépek](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
+ ![Automatikus skálázás ismertetése. Virtuális gépek hozzáadása és eltávolítása](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
 Ha a szabály feltételek teljesülnek, egy vagy több automatikus skálázási művelet aktiválódnak. Hozzáadása és eltávolítása a virtuális gépek vagy egyéb műveleteket hajthat végre. A következő fogalmi diagramja jeleníti meg ezt a folyamatot.  
 
@@ -116,7 +111,7 @@ Automatikus skálázás keresztül állíthat be
 | Virtuális gépek: Linux-skálázási készletekben |[A Linux virtuálisgép-méretezési skálázás beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | Virtuális gépek: Windows – példa |[Speciális automatikus skálázás konfigurációs Resource Manager sablonok Virtuálisgép-méretezési készlet használata](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Automatikus méretezéssel kapcsolatos további tudnivalókért használja az automatikus skálázás forgatókönyvek, előzőleg felsorolt, vagy tekintse meg a következőket:
 
 * [Az Azure a figyelő automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md)

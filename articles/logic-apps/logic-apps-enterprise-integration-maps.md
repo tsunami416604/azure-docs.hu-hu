@@ -4,7 +4,7 @@ description: XSLT van leképezve az Azure Logic Apps és a vállalati integráci
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4b4d626028eed09e9ce6a45fa8fa69859c082da7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0a8e5dfd42d447b4e049574b346c41fe0067c9f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299137"
 ---
 # <a name="add-maps-for-xml-data-transform"></a>Az XML-adatok átalakító maps hozzáadása
 
@@ -72,7 +73,7 @@ Ha szeretne feltölteni a szerelvény integrációs-fiók megnyitása.
 
 1. Válassza ki a **szerelvények** csempére.
 
-    ![integrationaccount-assembly-tile](./media/logic-apps-enterprise-integration-maps/assemblytile.png)
+    ![integrationaccount-szerelvény-csempe](./media/logic-apps-enterprise-integration-maps/assemblytile.png)
 
 2. Miután a szerelvények lap megnyitásakor, válassza ki azt **Hozzáadás**. Adjon meg egy **neve** a szerelvényhez. A szerelvény fájl feltöltéséhez válassza ki a mappára a jobb oldalon a **szerelvény** szövegmezőben. A feltöltési folyamat befejezése után válassza ki a **OK**.
 

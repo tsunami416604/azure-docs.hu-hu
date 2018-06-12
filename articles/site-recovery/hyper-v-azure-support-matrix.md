@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: c818ff0df5cb1f1b3d20c726b20b30c418f53061
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266961"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>A Hyper-V replikáció az Azure támogatási mátrix
 
@@ -44,7 +45,7 @@ A következő táblázat összefoglalja a VM-támogatási szolgálathoz. A Site 
  **Összetevő** | **Részletek**
 --- | ---
 Virtuálisgép-konfiguráció | Virtuális gépek replikálása Azure-ba, meg kell felelnie [Azure-követelményeknek](#failed-over-azure-vm-requirements).
-Vendég operációs rendszer | A vendég operációs rendszer [használható az Azure-](https://technet.microsoft.com/library/cc794868.aspx).<br/><br/> Windows Server 2016 Nano Server nem támogatott.
+Vendég operációs rendszer | A Vendég-Operációsrendszert az Azure által támogatott.<br/><br/> Windows Server 2016 Nano Server nem támogatott.
 
 
 
