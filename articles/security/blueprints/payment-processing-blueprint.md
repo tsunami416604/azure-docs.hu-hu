@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 06151b211a03a971e549e88817770ef096f3f603
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839426"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301371"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 
@@ -169,8 +169,6 @@ A hálózati réteg mindegyikén dedikált hálózati biztonsági csoport (NSG):
 - A tűzfal és az alkalmazás átjáró WAF DMZ hálózati biztonsági csoport
 - Egy NSG-t felügyeleti jumpbox (megerősített gazdagép)
 - Egy NSG-t az app service Environment-környezet
-
-Az NSG-k, amelyek mindegyikének adott portok és protokollok a biztonságos és a megfelelő műveletet, a megoldás számára. További információkért lásd: [PCI útmutatást - hálózati biztonsági csoportok](#network-security-groups).
 
 Az NSG-k, amelyek mindegyikének adott portokról és protokollokról megnyitott a megoldás a biztonságos és helyes működéséhez. Ezenkívül a következő konfigurációk engedélyezve vannak az egyes NSG:
 - Engedélyezett [diagnosztikai naplók és események](/azure/virtual-network/virtual-network-nsg-manage-log) storage-fiókban tárolt 

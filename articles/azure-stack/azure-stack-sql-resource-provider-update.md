@@ -1,6 +1,6 @@
 ---
-title: SQL-adatbázisok használata Azure veremben |} Microsoft Docs
-description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként.
+title: A verem SQL Azure erőforrás-szolgáltató frissítése |} Microsoft Docs
+description: Ismerje meg, hogy miként frissítheti az Azure verem SQL erőforrás-szolgáltató.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fd1c2241fe22dc35ceb09e0ba3650fa0000a77b1
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603616"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294860"
 ---
-# <a name="update-the-sql-resource-provider-adapter"></a>Az SQL-erőforrás-szolgáltató adapter frissítése
-Új SQL-erőforrás szolgáltató adapter előfordulhat, hogy mikorra várható, Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. Ahhoz telepíteni kell a frissítéseket: verziók nem hagyható ki (a verziók listáját lásd: [telepíteni az erőforrás-szolgáltató Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
+# <a name="update-the-sql-resource-provider"></a>Frissítés az SQL erőforrás-szolgáltató
+Új SQL erőforrás-szolgáltató lehet, hogy mikorra várható, Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. Ahhoz telepíteni kell a frissítéseket: verziók nem hagyható ki (a verziók listáját lásd: [telepíteni az erőforrás-szolgáltató Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
 
 Az erőforrás-szolgáltató használata frissíteni a *UpdateSQLProvider.ps1* parancsfájl. A folyamat hasonlít a folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a [telepíteni az erőforrás-szolgáltató](.\azure-stack-sql-resource-provider-deploy.md) cikk. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi.
 

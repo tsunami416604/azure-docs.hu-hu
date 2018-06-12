@@ -14,11 +14,12 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b185f53f8f13ebbe1efc57a99b7d65269f5559c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292891"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes szolgáltatásbeli hitelesítéshez szükséges nélkül kell alkalmazást (például adjon meg egy jelszót) még egyszer.
@@ -58,7 +59,7 @@ Ebben a forgatókönyvben már kijelentkezett az Azure AD-be, és egy külső Sa
 
 Az Azure AD is támogatja az összevont egyszeri bejelentkezést a WS-Federation, SAML 2.0-t támogató alkalmazásokkal, vagy az OpenID connect protokollok.
 
-További információ: [tartozó tanúsítványok összevont egyszeri bejelentkezést.](../active-directory-sso-certs.md)
+További információ: [tartozó tanúsítványok összevont egyszeri bejelentkezést.](manage-certificates-for-federated-single-sign-on.md)
 
 ### <a name="password-based-single-sign-on"></a>Jelszóalapú egyszeri bejelentkezés
 Jelszó-alapú egyszeri bejelentkezés beállítása lehetővé teszi, hogy a felhasználók a szervezet számára automatikusan megtörténik a külső SaaS-alkalmazás használatával a felhasználói fiók adatait a harmadik fél SaaS-alkalmazás az Azure ad. Ha engedélyezi ezt a szolgáltatást, az Azure AD gyűjt, és biztonságos helyen tárolja a felhasználói fiók adatait, és a kapcsolódó jelszót.
@@ -193,7 +194,7 @@ Ezek a hivatkozások a hozzáférési panel és az Office 365 access control ugy
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](../active-directory-saas-tutorial-list.md)
 * [A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](cloud-app-discovery.md)
-* [Bevezetés az alkalmazásokhoz való hozzáférés kezelése](../active-directory-managing-access-to-apps.md)
+* [Bevezetés az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
 * [Az Azure AD külső identitások kezelésére szolgáló képességeket összehasonlítása](../active-directory-b2b-compare-b2c.md)
 
 

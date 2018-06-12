@@ -6,14 +6,14 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 6/08/2018
 ms.author: nepeters
-ms.openlocfilehash: ca8d883add04d623c17390a0b5031aaf08be0429
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596497"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260795"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések kapcsolatos Azure Kubernetes szolgáltatás (AKS)
 
@@ -49,7 +49,7 @@ AKS preview marad, de javasolt az ACS-Kubernetes üzemi-fürtök létrehozása v
 
 ## <a name="when-will-acs-be-deprecated"></a>Ha ACS elavulttá válik?
 
-ACS AKS válik GA környékén elavulttá válik Fürtök áttelepítéséhez AKS 12 hónapon lesz. 12 hónap során az összes ACS-műveleteket is futtathatja.
+ACS GA váló AKS környékén elavulttá válik Fürtök áttelepítéséhez AKS 12 hónapon lesz. 12 hónap során az összes ACS-műveleteket is futtathatja.
 
 ## <a name="does-aks-support-node-autoscaling"></a>Támogatja a AKS csomópont automatikus skálázás?
 
@@ -76,6 +76,10 @@ Futtassa a Windows Server-tárolók, Windows Server-alapú csomópontok futtatni
 Minden egyes AKS központi telepítés két erőforráscsoport is. Az első hozta létre, és csak a AKS erőforrást tartalmaz. A AKS erőforrás-szolgáltató automatikusan hoz létre központi telepítése során a második érték egy nevet, például a *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport az összes az infrastruktúrához kapcsolódó erőforrások a fürt, például a virtuális gépekhez társított tartalmazza a hálózati és adattárolási. Erőforrás-karbantartása leegyszerűsítése érdekében a rendszer létrehozza.
 
 A AKS-fürthöz, például a storage-fiókok vagy fenntartott nyilvános IP-cím használható erőforrások létrehozásakor meg kell helyezze el őket az automatikusan létrehozott erőforráscsoportot.
+
+## <a name="does-aks-offer-a-service-level-agreement"></a>AKS nyújtja a szolgáltatásiszint-szerződések?
+
+A szolgáltatásiszint-szerződések (SLA) a szolgáltató vállalja, hogy úgy az ügyfél a szolgáltatás költségét kell a közzétett szolgáltatási szint nem teljesíthető. Mivel maga AKS szabad, nincs elérhető úgy költség nélkül, és így nem hivatalos SLA-t. Azonban azt pozícionálni legalább 99,5 %-a Kubernetes API-kiszolgáló rendelkezésre állását fenntartásához.
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

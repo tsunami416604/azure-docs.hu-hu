@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: msangapu
-ms.openlocfilehash: c1dbcf83927da23ceab652f8bc4dbe8d6343c1a8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598402"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294011"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux – gyakori kérdések az Azure App Service
 
@@ -36,7 +36,7 @@ Minden Docker-fájl található [GitHub](https://github.com/azure-app-service). 
 
 **Amikor konfigurálni a futásidejű verem Mik a várt értékeket az indítási fájl szakaszra?**
 
-A Node.js adja meg a PM2 konfigurációs fájl vagy a parancsfájl. A .NET Core írja be a lefordított dll-fájl nevét. A Ruby a Ruby inicializálja az alkalmazás a parancsfájl adhat meg.
+A Node.js adja meg a PM2 konfigurációs fájl vagy a parancsfájl. A .NET Core, írja be a lefordított dll-fájl nevét, `dotnet <myapp>.dll`. A Ruby a Ruby inicializálja az alkalmazás a parancsfájl adhat meg.
 
 ## <a name="management"></a>Kezelés
 

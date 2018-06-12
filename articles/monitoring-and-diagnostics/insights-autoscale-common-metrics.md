@@ -1,24 +1,19 @@
 ---
-title: "Az Azure a figyelő automatikus skálázás közös metrikák |} Microsoft Docs"
-description: "Ismerje meg, melyik metrikák gyakran használják az automatikus skálázást a Felhőszolgáltatásokat, a virtuális gépek és a Web Apps."
+title: Automatikus skálázás közös metrikák
+description: Ismerje meg, melyik metrikák gyakran használják az automatikus skálázást a Felhőszolgáltatásokat, a virtuális gépek és a Web Apps.
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 189b2a13-01c8-4aca-afd5-90711903ca59
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262239"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Az Azure a figyelő automatikus skálázás közös metrikák
 Azure figyelő automatikus skálázás lehetővé teszi futó példányok méretezési felfelé vagy lefelé, telemetriai adatokat (metrikák) alapján. Ez a dokumentum ismerteti a gyakori metrikákat, amelyeket érdemes használni. Az Azure-portál a felhőalapú szolgáltatások és a kiszolgálófarmok válassza a metrika bővítse az erőforrás. Bővítse a különböző erőforrás közül azonban bármely metrika is választhat.
@@ -63,21 +58,21 @@ A következő mérőszámokat riasztást hozhat létre:
 | \Process (_Total) \Thread száma |Darabszám |
 | \Process (_Total) \Handle száma |Darabszám |
 | \Memory\% előjegyzett memória |Százalék |
-| \Memory\Available Bytes |Bájtok |
-| \Memory\Committed bájt |Bájtok |
-| \Memory\Commit korlátot |Bájtok |
-| Lapozható \Memory\Pool bájt |Bájtok |
-| \Memory\Pool nem lapozható készlet mérete |Bájtok |
+| \Memory\Available Bytes |Bájt |
+| \Memory\Committed bájt |Bájt |
+| \Memory\Commit korlátot |Bájt |
+| Lapozható \Memory\Pool bájt |Bájt |
+| \Memory\Pool nem lapozható készlet mérete |Bájt |
 | \PhysicalDisk(_Total)\% lemez idő |Százalék |
 | \PhysicalDisk(_Total)\% lemez olvasási idő |Százalék |
 | \PhysicalDisk(_Total)\% lemezre írási ideje |Százalék |
-| \PhysicalDisk (_Total) \Disk átvitel/mp |CountPerSecond |
-| Lemezolvasások/mp (%) (_Total) \PhysicalDisk \Disk |CountPerSecond |
-| \PhysicalDisk (_Total) \Disk/mp |CountPerSecond |
-| \PhysicalDisk (_Total) \Disk bájtok/s |BytesPerSecond |
-| Olvasott bájt/mp (%) (_Total) \PhysicalDisk \Disk |BytesPerSecond |
-| \PhysicalDisk (_Total) \Disk írt bájt/mp |BytesPerSecond |
-| \PhysicalDisk (_Total) \Avg. Lemezvárólista hossza |Mennyiség |
+| \PhysicalDisk(_Total)\Disk Transfers/sec |Egység/s |
+| Lemezolvasások/mp (%) (_Total) \PhysicalDisk \Disk |Egység/s |
+| \PhysicalDisk (_Total) \Disk/mp |Egység/s |
+| \PhysicalDisk (_Total) \Disk bájtok/s |Bájt/s |
+| Olvasott bájt/mp (%) (_Total) \PhysicalDisk \Disk |Bájt/s |
+| \PhysicalDisk (_Total) \Disk írt bájt/mp |Bájt/s |
+| \PhysicalDisk (_Total) \Avg. Lemezvárólista hossza |Darabszám |
 | \PhysicalDisk (_Total) \Avg. Olvasási Lemezvárólista hossza |Darabszám |
 | \PhysicalDisk (_Total) \Avg. Írási Lemezvárólista hossza |Darabszám |
 | \LogicalDisk(_Total)\% szabad területe |Százalék |
@@ -96,17 +91,17 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 | Metrika neve | Unit (Egység) |
 | --- | --- |
-| \Memory\AvailableMemory |Bájtok |
+| \Memory\AvailableMemory |Bájt |
 | \Memory\PercentAvailableMemory |Százalék |
-| \Memory\UsedMemory |Bájtok |
+| \Memory\UsedMemory |Bájt |
 | \Memory\PercentUsedMemory |Százalék |
 | \Memory\PercentUsedByCache |Százalék |
-| \Memory\PagesPerSec |CountPerSecond |
-| \Memory\PagesReadPerSec |CountPerSecond |
-| \Memory\PagesWrittenPerSec |CountPerSecond |
-| \Memory\AvailableSwap |Bájtok |
+| \Memory\PagesPerSec |Egység/s |
+| \Memory\PagesReadPerSec |Egység/s |
+| \Memory\PagesWrittenPerSec |Egység/s |
+| \Memory\AvailableSwap |Bájt |
 | \Memory\PercentAvailableSwap |Százalék |
-| \Memory\UsedSwap |Bájtok |
+| \Memory\UsedSwap |Bájt |
 | \Memory\PercentUsedSwap |Százalék |
 | \Processor\PercentIdleTime |Százalék |
 | \Processor\PercentUserTime |Százalék |
@@ -116,24 +111,24 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \Processor\PercentDPCTime |Százalék |
 | \Processor\PercentProcessorTime |Százalék |
 | \Processor\PercentIOWaitTime |Százalék |
-| \PhysicalDisk\BytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\ReadBytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\WriteBytesPerSecond |BytesPerSecond |
-| \PhysicalDisk\TransfersPerSecond |CountPerSecond |
-| \PhysicalDisk\ReadsPerSecond |CountPerSecond |
-| \PhysicalDisk\WritesPerSecond |CountPerSecond |
+| \PhysicalDisk\BytesPerSecond |Bájt/s |
+| \PhysicalDisk\ReadBytesPerSecond |Bájt/s |
+| \PhysicalDisk\WriteBytesPerSecond |Bájt/s |
+| \PhysicalDisk\TransfersPerSecond |Egység/s |
+| \PhysicalDisk\ReadsPerSecond |Egység/s |
+| \PhysicalDisk\WritesPerSecond |Egység/s |
 | \PhysicalDisk\AverageReadTime |másodperc |
 | \PhysicalDisk\AverageWriteTime |másodperc |
 | \PhysicalDisk\AverageTransferTime |másodperc |
 | \PhysicalDisk\AverageDiskQueueLength |Darabszám |
-| \NetworkInterface\BytesTransmitted |Bájtok |
-| \NetworkInterface\BytesReceived |Bájtok |
+| \NetworkInterface\BytesTransmitted |Bájt |
+| \NetworkInterface\BytesReceived |Bájt |
 | \NetworkInterface\PacketsTransmitted |Darabszám |
 | \NetworkInterface\PacketsReceived |Darabszám |
-| \NetworkInterface\BytesTotal |Bájtok |
-| \NetworkInterface\TotalRxErrors |Mennyiség |
+| \NetworkInterface\BytesTotal |Bájt |
+| \NetworkInterface\TotalRxErrors |Darabszám |
 | \NetworkInterface\TotalTxErrors |Darabszám |
-| \NetworkInterface\TotalCollisions |Mennyiség |
+| \NetworkInterface\TotalCollisions |Darabszám |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>A gyakran használt (kiszolgálófarm) webes metrikák
 Például a Http-várólista hossza közös web server mérőszámok alapján automatikus skálázás is elvégezheti. Az metrika neve **HttpQueueLength**.  A következő szakasz elérhető server farm (webalkalmazások) metrikákat.
@@ -152,9 +147,9 @@ Riasztás, vagy skálázhatja által metrikákat.
 | CpuPercentage |Százalék |
 | MemoryPercentage |Százalék |
 | DiskQueueLength |Darabszám |
-| HttpQueueLength |Mennyiség |
-| BytesReceived |Bájtok |
-| BytesSent |Bájtok |
+| HttpQueueLength |Darabszám |
+| BytesReceived |Bájt |
+| BytesSent |Bájt |
 
 ## <a name="commonly-used-storage-metrics"></a>Tárolási általánosan használt mérőszámait
 Méretezhető tárolás várólista hossza, amely a tárolási várólistában lévő üzenetek száma szerint. Tároló várólista hossza különleges metrika, és a küszöbérték példányonként üzenetek száma. Például ha két példányt, és ha a küszöb értéke 100, skálázás esetén a várólistán lévő üzenetek száma 200. Amely lehet egy példány 100 üzenetek, 120 és 80 vagy bármely más kombinációja, amely legfeljebb 200 vagy több ad hozzá.

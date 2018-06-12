@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 5/9/2018
+ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: c6fdd51bd522b08b33e6cac852ef313475682550
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 21681a1af64754ef569f2ad4ff92f85a598007ac
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723143"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323782"
 ---
 # <a name="write-accelerator"></a>Gyorsító írása
 Az írási gyorsító egy lemez képesség az M sorozatú virtuális gépek (VM) a prémium szintű Storage Azure felügyelt lemezzel kizárólag. Állapota a neve, mint a funkció célja a prémium szintű Azure Storage elleni írások késleltetéséről javítása érdekében. Az írási gyorsító akkor ajánlott, ahol napló fájl frissítések magas performant módon modern adatbázisok lemezre megőrzéséhez szükséges.
@@ -49,17 +49,13 @@ Nincsenek Azure prémium szintű Storage a VHD-k egy virtuális Gépet, amely t�
 
 | VIRTUÁLIS GÉP TERMÉKVÁLTOZAT | Írási gyorsító lemezek számát | Írható gyorsító lemez IOPS virtuális gépenként |
 | --- | --- | --- |
-| M128ms | 16 | 8000 |
-| M128s | 16 | 8000 |
-| M64ms | 8 | 4000 |
-| M64s | 8 | 4000 | 
-| M32ms | 4 | 2000 | 
-| M32s | 4 | 2000 | 
-| M16ms | 2 | 1000 | 
-| M16s | 2 | 1000 | 
-| M8ms | 1 | 500 | 
-| M8s | 1 | 500 | 
+| M128ms, 128s | 16 | 8000 |
+| M64ms, M64ls, M64s | 8 | 4000 |
+| M32ms, M32ls, M32ts, M32s | 4 | 2000 | 
+| M16ms, M16s | 2 | 1000 | 
+| M8ms, M8s | 1 | 500 | 
 
+Virtuális gépenként vannak az IOPS-korlátok vonatkoznak, és *nem* lemezenként. Az összes írható gyorsító lemez megosztása a azonos IOPS felső határ az egyes virtuális gép.
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>Adott lemezre írás gyorsító engedélyezése
 A következő néhány szakasz ismerteti, hogyan engedélyezhető írási gyorsító Azure Premium Storage virtuális merevlemezeket.
 

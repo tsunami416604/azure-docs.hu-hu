@@ -1,23 +1,24 @@
 ---
-title: "Adatok importálása az Azure Application Insights Analytics |} Microsoft Docs"
-description: "Alkalmazás telemetriai kapcsolódása statikus adatok importálása, illetve importálhat egy külön adatfolyam Analytics lekérdezésre."
+title: Adatok importálása az Azure Application Insights Analytics |} Microsoft Docs
+description: Alkalmazás telemetriai kapcsolódása statikus adatok importálása, illetve importálhat egy külön adatfolyam Analytics lekérdezésre.
 services: application-insights
-keywords: "Nyissa meg a séma, az adatok importálása"
-documentationcenter: 
+keywords: Nyissa meg a séma, az adatok importálása
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293621"
 ---
 # <a name="import-data-into-analytics"></a>Adatok importálása elemzés
 
@@ -144,7 +145,7 @@ Hajtsa végre a következő folyamat manuálisan, vagy állítsa be az automatik
 2. [Hozzon létre egy közös hozzáférésű Jogosultságkód-kulcsot a BLOB](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). A kulcs kell egy olyan lejárati időt egy nap van, és olvasási hozzáférést biztosítanak.
 3. Az Application Insights adatok váró értesíteni REST hívás.
 
- * Végpont:`https://dc.services.visualstudio.com/v2/track`
+ * Végpont: `https://dc.services.visualstudio.com/v2/track`
  * HTTP-metódus: POST
  * Hasznos:
 
@@ -172,7 +173,7 @@ A helyőrzőket a következők:
 * `Blob URI with Shared Access Key`: Kap ezt az eljárást a kulcs létrehozásához. A blob jellemző.
 * `Schema ID`: A megadott séma létrehozott a séma azonosító. A blob adatainak kell megfeleljen a sémának.
 * `DateTime`: Az idő, ahol a küldés, UTC. Ezek a formátumok fogadunk: ISO8601 (például "2016-01-01 13:45:01"); RFC822 ("Sze, 14 Dec 16 14:57:01 + 0000"); RFC850 ("szerda, 14-Dec-16 14:57:00 UTC"); RFC1123 ("Sze, 14 Dec 2016 14:57:00 + 0000").
-* `Instrumentation key`az Application Insights-erőforrás.
+* `Instrumentation key` az Application Insights-erőforrás.
 
 A érhetők el az adatok Analytics néhány perc múlva.
 

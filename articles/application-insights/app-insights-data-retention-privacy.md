@@ -1,8 +1,8 @@
 ---
-title: "Az adatok megőrzése és a tárolás Azure Application Insights |} Microsoft Docs"
-description: "Megőrzési és adatvédelme házirendutasítás"
+title: Az adatok megőrzése és a tárolás Azure Application Insights |} Microsoft Docs
+description: Megőrzési és adatvédelme házirendutasítás
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294066"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -158,13 +159,13 @@ Az SDK-k platformok változhat, és több összetevőből is telepítheti. (Hiva
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>A különböző alkalmazási helyzetek küldött adatok osztályok
 | A művelet | Adatosztályok gyűjtött (lásd a következő táblázatban) |
 | --- | --- |
-| [Application Insights SDK hozzáadása egy .NET webes projekt][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálói<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
-| [Állapotmonitor telepítése az IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálói |
+| [Application Insights SDK hozzáadása egy .NET webes projekt][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
+| [Állapotmonitor telepítése az IIS-kiszolgálón][redfield] |Függőségek<br/>ServerContext<br/>Következtetni<br/>Teljesítményszámlálók |
 | [Application Insights SDK hozzáadása a Java-webalkalmazás][java] |ServerContext<br/>Következtetni<br/>Kérés<br/>Munkamenet<br/>felhasználók |
-| [JavaScript SDK weblap hozzáadása][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>Ajax |
+| [JavaScript SDK weblap hozzáadása][client] |ClientContext <br/>Következtetni<br/>Oldal<br/>ClientPerf<br/>AJAX |
 | [Alapértelmezett tulajdonságok meghatározása][apiproperties] |**Tulajdonságok** összes szabványos és az egyéni esemény |
 | [Hívás TrackMetric][api] |Numerikus értékek<br/>**Tulajdonságok** |
-| [Hívás követése *][api] |esemény neve<br/>**Tulajdonságok** |
+| [Hívás követése *][api] |Esemény neve<br/>**Tulajdonságok** |
 | [Hívás TrackException][api] |**Kivételek**<br/>Veremkiíratás<br/>**Tulajdonságok** |
 | SDK nem gyűjt adatokat. Példa: <br/> -teljesítményszámlálói nem érhető el.<br/> -Kivétel fordult elő a telemetriai adatok inicializáló |SDK-diagnosztika |
 
@@ -183,20 +184,20 @@ A [más platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat
 | Események |Az esemény neve és értéke |
 | PageViews |URL-cím és a lap neve vagy a képernyő neve |
 | Ügyfél-teljesítmény |URL-cím vagy a lap neve, a böngésző lapbetöltési ideje |
-| Ajax |HTTP-hívások weblapról kiszolgálóra |
+| AJAX |HTTP-hívások weblapról kiszolgálóra |
 | Kérelmek |URL-címe, időtartama, válaszkód |
 | Függőségek |Típus (SQL, HTTP,...), a kapcsolati karakterlánc vagy a URI, szinkronizálási vagy aszinkron, időtartama, sikeres, SQL-utasítás (az állapotfigyelő) |
 | **Kivételek** |Típus, **üzenet**, verem hívja, a forrás-fájl és a sor száma, Szálazonosító |
-| Összeomlások (crash) |Folyamatazonosító, szülő folyamatazonosító, összeomlási szálazonosító; alkalmazás-javítás, a-azonosító, a build;  Kivétel típusa, a cím, a reason; rejtjelezett szimbólumok és regiszterekben, bináris kezdő és záró címek, bináris nevek és elérési útja, a processzor típusa |
+| Összeomlások |Folyamatazonosító, szülő folyamatazonosító, összeomlási szálazonosító; alkalmazás-javítás, a-azonosító, a build;  Kivétel típusa, a cím, a reason; rejtjelezett szimbólumok és regiszterekben, bináris kezdő és záró címek, bináris nevek és elérési útja, a processzor típusa |
 | Nyomkövetés |**Üzenet** és súlyossági szint |
-| Teljesítményszámlálói |Processzor kihasználtsága, rendelkezésre álló memória, lekérdezési gyakorisága, kivétel sebessége, folyamat saját bájtok, IO sebessége, kérelem időtartama, kérelem-várólista hossza |
+| Teljesítményszámlálók |Processzor kihasználtsága, rendelkezésre álló memória, lekérdezési gyakorisága, kivétel sebessége, folyamat saját bájtok, IO sebessége, kérelem időtartama, kérelem-várólista hossza |
 | Rendelkezésre állás |Webalkalmazás-teszt válaszkód, időtartama minden teszt lépés, teszt neve, timestamp, sikeres, válaszideje, teszt helye |
 | SDK-diagnosztika |Nyomkövetési üzenet vagy kivétel |
 
 Is [kapcsolja ki az adatok egy részét ApplicationInsights.config szerkesztésével][config]
 
-## <a name="credits"></a>Kreditek
-A termék MaxMind, elérhető által létrehozott GeoLite2 adatokat tartalmaz [http://www.maxmind.com](http://www.maxmind.com).
+## <a name="credits"></a>Stáblisták
+A termék MaxMind, elérhető által létrehozott GeoLite2 adatokat tartalmaz [ http://www.maxmind.com ](http://www.maxmind.com).
 
 
 

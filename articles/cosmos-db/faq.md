@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34735164"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261559"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -159,8 +159,9 @@ A .NET egyidejű hozzáférések optimista használatához a [AccessCondition](h
 Az SQL API támogatja a nyelvintegrált tranzakciókat JavaScript-tárolt eljárások és eseményindítók keresztül. A parancsfájlban az összes művelet pillanatkép-elkülönítés lesz végrehajtva. Ha egy egypartíciós gyűjtemény, a végrehajtási a gyűjtemény hatókörét. Ha a gyűjtemény particionálva van, a végrehajtási a gyűjteményen belül azonos partíciókulcs értékkel rendelkező dokumentumok hatókörét. A tranzakció kezdetekor pillanatkép készül a dokumentumverziókról (ETag-ek), és csak akkor lesznek véglegesítve, ha a parancsfájl sikeres. Ha a JavaScript hibát jelez, a tranzakció vissza lesz állítva. További információkért lásd: [Azure Cosmos DB kiszolgálóoldali JavaScript programozás](programming.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Hogyan képes vagyok tömeges beszúrási dokumentumok Cosmos DB be?
-Akkor is tömeges beszúrási dokumentumokat az Azure Cosmos DB két módon:
+Akkor is tömeges beszúrási dokumentumok Azure Cosmos DB be a következő módszerek valamelyikével:
 
+* A tömeges végrehajtó eszköz, a [Using tömeges végrehajtó .NET kódtár](bulk-executor-dot-net.md) és [Using tömeges végrehajtó Java kódtár](bulk-executor-java.md)
 * Az adatáttelepítés eszközzel, a [adatbázis áttelepítési eszköz az Azure Cosmos DB](import-data.md).
 * Tárolt eljárások, a [Azure Cosmos DB kiszolgálóoldali JavaScript programozás](programming.md).
 

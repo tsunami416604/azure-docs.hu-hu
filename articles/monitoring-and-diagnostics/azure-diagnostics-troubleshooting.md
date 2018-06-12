@@ -1,24 +1,20 @@
 ---
-title: Hibaelhárítás az Azure Diagnostics |} Microsoft Docs
+title: Hibaelhárítási Azure Diagnostics-bővítmény
 description: Kapcsolatos problémák elhárítása az Azure diagnostics Azure virtuális gépek, a Service Fabric vagy a Cloud Services használata esetén.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: e194c2898616d5a19782039d38592c59f6b0c576
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.component: diagnostic-extension
+ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263846"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás az Azure Diagnostics
 Ez a cikk ismerteti az Azure Diagnostics használatára vonatkozó hibaelhárítási információ. Az Azure diagnostics kapcsolatos további információkért lásd: [Azure Diagnostics áttekintése](azure-diagnostics.md).
@@ -69,11 +65,11 @@ Ha az adott metrika nincsenek adatok, **diagnosztikai konfigurációja** > **Per
 - \ASP.NET alkalmazások (__teljes__) \Requests/Sec
 - \ASP.NET alkalmazások (__teljes__) \Errors száma/s
 - A várólistára \ASP.NET\Requests
-- \ASP.NET\Requests Rejected
+- Elutasított \ASP.NET\Requests
 - \Processor(w3wp)\% processzoridő
 - \Process(w3wp)\Private Bytes
 - \Process(WaIISHost)\% processzoridő
-- \Process(WaIISHost)\Private Bytes
+- \Process (WaIISHost) \Private bájt
 - \Process(WaWorkerHost)\% Processor Time
 - \Process(WaWorkerHost)\Private Bytes
 - \Memory\Page hiba/mp
@@ -122,7 +118,7 @@ A diagnosztikai konfigurációja egy bizonyos típusú adatok összegyűjtésér
 #### <a name="is-the-host-generating-data"></a>A gazdagép előállító adatokat?
 - **Teljesítményszámlálók**: Nyissa meg a Teljesítményfigyelőben, és ellenőrizze a számlálót.
 
-- **Nyomkövetési naplók**: távoli majd a virtuális Gépet, majd adja hozzá a értékének a TextWriterTraceListener figyelőre az alkalmazás konfigurációs fájljában.  Tekintse meg a szöveg figyelő beállítása http://msdn.microsoft.com/library/sk36c28t.aspx.  Győződjön meg arról, hogy a `<trace>` elem `<trace autoflush="true">`.<br />
+- **Nyomkövetési naplók**: távoli majd a virtuális Gépet, majd adja hozzá a értékének a TextWriterTraceListener figyelőre az alkalmazás konfigurációs fájljában.  Lásd: http://msdn.microsoft.com/library/sk36c28t.aspx állíthatja be a szöveget figyelő.  Győződjön meg arról, hogy a `<trace>` elem `<trace autoflush="true">`.<br />
 Ha nem látja a nyomkövetési naplók létrehozása folyamatban, lásd: [további információk a nyomkövetési naplók hiányzó](#more-about-trace-logs-missing).
 
 - **ETW-nyomkövetési**: a távelérés a virtuális gép és a telepítés PerfView.  A PerfView, futtassa az **fájl** > **felhasználói parancs** > **etwprovder1 figyelésére** > **etwprovider2**, és így tovább. A **figyelésére** parancs kis-és nagybetűket, és nem lehetnek szóközök közötti ETW-szolgáltató vesszővel elválasztott listája. Ha a parancs nem fut, válassza a **napló** gombra a jobb alsó sarkában, mi próbált meg futtatni, és milyen az eredmény a Perfview eszköz.  Ha az adatok helyesek, egy új ablakban jelenik meg. Néhány másodpercen belül megkezdheti a ETW-nyomkövetési jelent.

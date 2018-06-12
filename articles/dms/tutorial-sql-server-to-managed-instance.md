@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 05/07/2018
-ms.openlocfilehash: bb7cc17c36809975e26c8da8beda004a0b0cfd9e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86af0101d84fe9cd44211a931567a85d7b5166e0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261610"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Azure SQL adatbázis felügyelt példányhoz DMS használatával SQL-kiszolgáló áttelepítése
 Az Azure-adatbázis áttelepítési szolgáltatás segítségével az adatbázisok át egy helyi SQL Server-példány, egy [Azure SQL adatbázis felügyelt példány](../sql-database/sql-database-managed-instance.md). Más módszerekkel is szükség lehet néhány manuális adatfrissítésre című cikk [Azure SQL adatbázis felügyelt példány SQL Server példány áttelepítés](../sql-database/sql-database-managed-instance-migrate.md).
@@ -118,7 +119,7 @@ A szolgáltatás létrehozása után keresse meg azt az Azure portálon, nyissa 
     Ha nincs telepítve megbízható tanúsítvány, a SQL Server önaláírt tanúsítványt hoz létre a példány indításakor. Ez a tanúsítvány az ügyfél-kommunikációhoz hitelesítő adatok titkosításához használható.
 
     > [!CAUTION]
-    > SSL-kapcsolatokat, amelyek egy önaláírt tanúsítványt használ encyopted nem nyújt erős biztonságot. Azok ki vannak téve a átjárójának. Ne hagyatkozzon kizárólag éles környezetben az önaláírt tanúsítványok használatát az SSL vagy az internethez csatlakozó kiszolgálókon.
+    > Egy önaláírt tanúsítvánnyal titkosított SSL-kapcsolatoknál nem nyújt erős biztonságot. Azok ki vannak téve a átjárójának. Ne hagyatkozzon kizárólag éles környezetben az önaláírt tanúsítványok használatát az SSL vagy az internethez csatlakozó kiszolgálókon.
 
    ![Adatforrás részletei](media\tutorial-sql-server-to-managed-instance\dms-source-details1.png)
 

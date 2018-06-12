@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 6189038a338a9151b23dbdad11d86e43709a96a0
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247944"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293296"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
@@ -71,7 +71,7 @@ Az Azure AD-funkciókat előre integrált számos népszerű SaaS-alkalmazásokh
 
 Az összes olyan Azure AD támogatja az előzetesen beépített létesítési összekötő listájáért lásd: a [felhasználói kialakítási alkalmazás bemutatók felsorolása](active-directory-saas-tutorial-list.md).
 
-Támogatás az Azure AD a felhasználók átadása alkalmazáshoz való hozzáadásáról további információkért lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](active-directory-scim-provisioning.md).
+Támogatás az Azure AD a felhasználók átadása alkalmazáshoz való hozzáadásáról további információkért lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](manage-apps/use-scim-to-provision-users-and-groups.md).
 
 Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kéréséhez forduljon az Azure AD egy üzenet keresztül nyújt a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
 
@@ -106,7 +106,7 @@ Az alkalmazás felügyeleti képernyőn kiépítés konfigurálva van a **kiép�
 
     * **Szűrő attribútumértékek** -a "Forrás objektum hatóköre" menüjében a attribútum-leképezésekhez meghatározott attribútumértékek szűrését teszi lehetővé. Megadhatja például, hogy csak az "Értékesítési" a "Részleg" attribútummal rendelkező felhasználók kialakítási hatókörében kell lennie. További információkért lásd: [tartalmazó szűrőkkel](active-directory-saas-scoping-filters.md).
 
-    * **Szűrő hozzárendelések** -létesítése "Hatókör" menüjére > beállítások a portál területen adhatja meg, hogy csak "hozzárendelt" felhasználók és csoportok kell hatókörében történő üzembe helyezéséhez, vagy kell-e az Azure AD-címtár összes felhasználója üzembe helyezve. "Hozzárendelésével" felhasználók és csoportok információkért lásd: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](active-directory-coreapps-assign-user-azure-portal.md).
+    * **Szűrő hozzárendelések** -létesítése "Hatókör" menüjére > beállítások a portál területen adhatja meg, hogy csak "hozzárendelt" felhasználók és csoportok kell hatókörében történő üzembe helyezéséhez, vagy kell-e az Azure AD-címtár összes felhasználója üzembe helyezve. "Hozzárendelésével" felhasználók és csoportok információkért lásd: [egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](manage-apps/assign-user-or-group-access-portal.md).
     
 * **Beállítások** az alkalmazáshoz, beleértve, hogy fut-e a létesítési szolgáltatás működését.
 
@@ -126,7 +126,7 @@ Ha az Azure AD a forrásrendszerben, a létesítési szolgáltatás használ a [
 A létesítési szolgáltatás indításakor fogja az első szinkronizálás legalább egyszer végre:
 
 1. Összes felhasználók és csoportok a forrásrendszerből lekérése során meghatározott összes attribútum lekérdezni a [attribútum-hozzárendelések](active-directory-saas-customizing-attribute-mappings.md).
-2. A felhasználók és csoportok lett visszaadva, akkor e konfigurált szűrése [hozzárendelések](active-directory-coreapps-assign-user-azure-portal.md) vagy [Attribútumalapú helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md).
+2. A felhasználók és csoportok lett visszaadva, akkor e konfigurált szűrése [hozzárendelések](manage-apps/assign-user-or-group-access-portal.md) vagy [Attribútumalapú helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md).
 3. Amikor egy felhasználó található hozzá kell rendelni vagy hatókör történő üzembe helyezéséhez, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [attribútumok megfelelő](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Példa: Ha a forrásrendszerben userPrincipal nevét a megfelelő attribútum, és van leképezve a felhasználónév a célrendszeren, majd a létesítési szolgáltatás lekérdezi a célrendszeren, amelyek megfelelnek a userPrincipal értékeket a forrásrendszerben felhasználónevek.
 4. Ha egyező felhasználó nem található a célrendszeren, létrejön a forrás rendszer által visszaadott attribútumai használatával.
 5. Ha egyező felhasználó megtalálható, frissül a forrásrendszerben által biztosított attribútumai használatával.
@@ -139,7 +139,7 @@ Egyes alkalmazások, például a ServiceNow, Google Apps, és be nem csak a felh
 A kezdeti szinkronizálás után minden ezt követő szinkronizálások lesz:
 
 1. A forrásrendszerben, felhasználók és csoportok, mert az utolsó vízjel tárolta frissített lekérdezése.
-2. A felhasználók és csoportok lett visszaadva, akkor e konfigurált szűrése [hozzárendelések](active-directory-coreapps-assign-user-azure-portal.md) vagy [Attribútumalapú helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md).
+2. A felhasználók és csoportok lett visszaadva, akkor e konfigurált szűrése [hozzárendelések](manage-apps/assign-user-or-group-access-portal.md) vagy [Attribútumalapú helyezése hatókörszűrőkkel](active-directory-saas-scoping-filters.md).
 3. Amikor egy felhasználó található hozzá kell rendelni vagy hatókör történő üzembe helyezéséhez, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [attribútumok megfelelő](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
 4. Ha egyező felhasználó nem található a célrendszeren, létrejön a forrás rendszer által visszaadott attribútumai használatával.
 5. Ha egyező felhasználó megtalálható, frissül a forrásrendszerben által biztosított attribútumai használatával.
@@ -242,7 +242,7 @@ Kapcsolatfelvétel keresztül a [Azure Active Directory-visszajelzési fórumon]
 * [A felhasználók átadása attribútum-leképezésekhez testreszabása](active-directory-saas-customizing-attribute-mappings.md)
 * [Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](active-directory-saas-scoping-filters.md)
-* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](active-directory-scim-provisioning.md)
+* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Az Azure AD szinkronizálási API – áttekintés](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 * [Részletes üzembe helyezés kimenő a felhasználók átadása, az alkalmazások tervezése](https://aka.ms/userprovisioningdeploymentplan)
 

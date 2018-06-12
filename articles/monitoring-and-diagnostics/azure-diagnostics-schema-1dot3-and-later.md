@@ -1,24 +1,20 @@
 ---
-title: Az Azure Diagnostics bővítmény 1.3 és későbbi konfigurációs séma |} Microsoft Docs
+title: Az Azure Diagnostics bővítmény 1.3 és későbbi konfigurációs séma
 description: 1.3 sémaverzió és az újabb Azure diagnostics szállított részeként a Microsoft Azure SDK 2.4, később.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4fba492a57471df737896956e0b37e3da772cce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262375"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és későbbi konfigurációs séma
 > [!NOTE]
@@ -429,7 +425,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="crashdumps-element"></a>CrashDumps Element  
+## <a name="crashdumps-element"></a>CrashDumps elem  
  *Fa: A gyökérkönyvtár - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
  
  Összeomlási memóriaképek gyűjtésének engedélyezése.  
@@ -557,7 +553,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermekelem|Leírás|  
 |-------------------|-----------------|  
-|**DataSource**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Minden eseményt gyűjt, adja meg a "*"|  
+|**Adatforrás**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Minden eseményt gyűjt, adja meg a "*"|  
 
 
 
@@ -603,12 +599,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|karakterlánc|A sinkname azonosító karakterláncot.|  
+|**name**|sztring|A sinkname azonosító karakterláncot.|  
 
 |Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
-|**Application Insights**|karakterlánc|Csak akkor, amikor adatokat küld az Application Insights használt. Aktív Application Insights-fiók, amely rendelkezik hozzáféréssel a Instrumentation kulcsot tartalmaz.|  
-|**csatornák**|karakterlánc|Minden további szűréséhez, hogy adatfolyamként küldje el, amikor egy|  
+|**Application Insights**|sztring|Csak akkor, amikor adatokat küld az Application Insights használt. Aktív Application Insights-fiók, amely rendelkezik hozzáféréssel a Instrumentation kulcsot tartalmaz.|  
+|**csatornák**|sztring|Minden további szűréséhez, hogy adatfolyamként küldje el, amikor egy|  
 
 ## <a name="channels-element"></a>Csatornák elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák*
@@ -619,7 +615,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
-|**Channel**|karakterlánc|Ezen az oldalon máshol lásd a leírást.|  
+|**Csatorna**|sztring|Ezen az oldalon máshol lásd a leírást.|  
 
 ## <a name="channel-element"></a>Csatorna elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - fogadó - csatornák - csatorna*

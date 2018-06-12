@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd1b52dd32976ce65458e1dfe1b50d228fbd6d0e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850525"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261083"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partíció és a skála Azure Cosmos DB
 
@@ -47,7 +47,7 @@ Röviden itt található particionálási hogyan működik az Azure Cosmos DB:
 
 * Azure Cosmos DB tárolók készlete kiépítése **T** RU/mp (kérelmek / másodperc) átviteli sebesség.
 * A háttérben Azure Cosmos DB kiépítését kiszolgálásához szükséges fizikai partíciók **T** kérések száma másodpercenként. Ha **T** magasabb, mint a maximális átviteli sebesség fizikai partíciónként **t**, majd az Azure Cosmos DB rendelkezések **N = T/t** fizikai partíciókat. Maximális átviteli sebesség / partition(t) értékének Azure Cosmos DB szerint van konfigurálva, ez az érték hozzá van rendelve, a teljes kiosztott átviteli sebesség és a használt hardverkonfiguráció alapján. 
-* Azure Cosmos DB foglal le a kulcsfontosságú terület partíció kulcs kivonatok egyenlő vízszintes a **N** fizikai partíciókat. Igen, minden egyes fizikai partíció állomások **1/N** partícióazonosító kulcsértékei (logikai partíciót).
+* Azure Cosmos DB foglal le a kulcsfontosságú terület partíció kulcs kivonatok egyenlő vízszintes a **N** fizikai partíciókat. Így minden fizikai partíció üzemeltetett logikai partíciók száma **1/N** * partíciókulcs-értékek száma.
 * Ha egy fizikai partíció **p** eléri a tárolási korlátját, Azure Cosmos DB zökkenőmentesen felosztja **p** két új fizikai partíciókra **p1** és **p2**. A kulcsok minden olyan fizikai új partíció nagyjából felének megfelelő értékeket továbbítja. Ez a művelet vágási láthatatlan, hogy az alkalmazást. Ha egy fizikai partíció eléri a tárolási korlátját, és az összes adat a fizikai partíción az azonos logikai partíciós kulcs tartozik, a felosztás művelet nem történik meg. Ennek az az oka az ugyanazon fizikai partícióján kell lennie, egyetlen logikai partíciókulcs tartozó összes adatot. Ebben az esetben egy másik partíció kulcs stratégia kell alkalmazni.
 * Ha nagyobb átviteli sebesség kiépítése **t * N**, Azure Cosmos DB felosztja a nagyobb átviteli sebesség támogatásához a fizikai partíciók közül legalább egyet.
 
@@ -61,6 +61,8 @@ A partíciós kulcsok szemantikája némileg eltérő minden API szemantikáját
 | Tábla | `PartitionKey` kijavítva | `RowKey` kijavítva | 
 
 Azure Cosmos-adatbázis használja a particionálás kivonat-alapú. Egy cikk írásakor Azure Cosmos DB csak a partíciós kulcs értékét, és a kivonatolt eredménye alapján határozza meg a mely partíció-elem tárolására. Azure Cosmos-adatbázis ugyanazon fizikai partícióján azonos partíciókulcsú minden elem tárolja. 
+
+## <a name="best-practices-when-choosing-a-partition-key"></a>Gyakorlati tanácsok a partíciós kulcs kiválasztásakor
 
 A partíciós kulcs választott egy fontos döntés, hogy módosítania kell a tervezés során nem. Válassza ki az egyik tulajdonságnév, amely számos különböző értékeket tartalmaz, és nem is memóriahozzáférési mintáitól. Ajánlott eljárás, számos különböző értékeket (például több száz vagy ezer) tartalmazó partíció kulcsa. Lehetővé teszi a számítási feladatok egyenletes szét ezeket az értékeket. Az ideális partíciós kulcs egy, a lekérdezéseket szűrőként gyakran megjelenik, és annak biztosítása érdekében, a megoldás méretezhető elegendő számossága.
 

@@ -1,6 +1,6 @@
 ---
-title: SQL-adatbázisok használata Azure veremben |} Microsoft Docs
-description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként.
+title: Az SQL Azure veremben erőforrás-szolgáltató karbantartása |} Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az SQL erőforrás-szolgáltató szolgáltatás Azure veremben.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 53436d131672622ae1a72a1bb84d5aa83fdbdc0c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e7ddbe1235b3957a1e0cb7693ee728bfdbf9db6b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295659"
 ---
 # <a name="maintenance-operations"></a>A karbantartási műveleteket 
 Az SQL erőforrás-szolgáltató nem egy zárolt a virtuális gép működik. Az erőforrás szolgáltató virtuális gép biztonsági frissítése végezhető el a PowerShell csak elég adminisztrációs (JEA) végpont _DBAdapterMaintenance_. A parancsfájl az e műveletek megkönnyítése érdekében a RP-telepítési csomaggal valósul meg.
@@ -39,19 +40,87 @@ A beállítások módosításához kattintson **Tallózás** &gt; **felügyeleti
 
 ![Frissítés a rendszergazdai jelszó](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
+## <a name="secrets-rotation"></a>Titkos kulcsok Elforgatás 
+*Ezek az utasítások csak Azure verem integrált rendszerek verzió 1804 és később vonatkoznak. Ne kísérelje meg titkos elforgatás előtti-1804 Azure verem verzióin.*
+
+Az SQL és a MySQL-szolgáltatók használata Azure vermet be integrálva rendszerek, a következő infrastruktúra (telepítés) titkok forgathatók:
+- Külső SSL-tanúsítvány [központi telepítés során megadott](azure-stack-pki-certs.md).
+- Az erőforrás szolgáltató virtuális gép helyi rendszergazdai fiók jelszava központi telepítés során megadott.
+- Erőforrás-szolgáltató diagnosztikai felhasználói (dbadapterdiag) jelszavát.
+
+### <a name="powershell-examples-for-rotating-secrets"></a>PowerShell-példák a titkos kulcsok elforgatása
+
+**Módosítsa az összes titkos kulcsot egyszerre**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    –DiagnosticsUserPassword $passwd `
+    -DependencyFilesLocalPath $certPath `
+    -DefaultSSLCertificatePassword $certPasswd  `
+    -VMLocalCredential $localCreds
+```
+
+**Felhasználói jelszó módosítása csak**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    –DiagnosticsUserPassword  $passwd 
+```
+
+**Virtuális gép helyi rendszergazdai fiók jelszavának módosítása**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -VMLocalCredential $localCreds
+```
+
+**SSL-tanúsítvány módosítása**
+```powershell
+.\SecretRotationSQLProvider.ps1 `
+    -Privilegedendpoint $Privilegedendpoint `
+    -CloudAdminCredential $cloudCreds `
+    -AzCredential $adminCreds `
+    -DependencyFilesLocalPath $certPath `
+    -DefaultSSLCertificatePassword $certPasswd 
+```
+
+### <a name="secretrotationsqlproviderps1-parameters"></a>SecretRotationSQLProvider.ps1 paraméterek
+
+|Paraméter|Leírás|
+|-----|-----|
+|AzCredential|Az Azure verem Szolgáltatásadminisztrátori fiók hitelesítő adatait.|
+|CloudAdminCredential|Az Azure verem felhőalapú rendszergazdai tartományi fiók hitelesítő adatait.|
+|PrivilegedEndpoint|Kiemelt végponton keresztül biztosít hozzáférést a Get-AzureStackStampInformation.|
+|DiagnosticsUserPassword|Diagnosztika felhasználói jelszavát.|
+|VMLocalCredential|A helyi rendszergazdai fiók a MySQLAdapter a virtuális gépet.|
+|DefaultSSLCertificatePassword|Alapértelmezett SSL-tanúsítvány (* pfx) jelszavát.|
+|DependencyFilesLocalPath|A függőségi fájlok helyi elérési útja.|
+|     |     |
+
+### <a name="known-issues"></a>Ismert problémák
+**A probléma**: A titkos kulcsok Elforgatás naplókat gyűjtött nem automatikusan, ha a titkos Elforgatás egyéni parancsfájl sikertelen futtatásakor.
+
+**Megkerülő megoldás**: használja a Get-AzsDBAdapterLogs parancsmagot gyűjtött összes erőforrás szolgáltató naplók, többek között a AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log C:\Logs alatt.
+
 ## <a name="update-the-virtual-machine-operating-system"></a>A virtuális gép operációs rendszerének frissítése
 Többféleképpen is lehet frissíteni a Windows Server virtuális Gépet:
-* Telepítse a legújabb szolgáltató erőforráscsomag jelenleg javított Windows Server 2016 Core lemezkép használatával
-* A telepítés vagy a függő Entitás frissítése során a Windows Update csomag telepítése
+- Telepítse a legújabb szolgáltató erőforráscsomag jelenleg javított Windows Server 2016 Core lemezkép használatával
+- A telepítés vagy a függő Entitás frissítése során a Windows Update csomag telepítése
 
 ## <a name="update-the-virtual-machine-windows-defender-definitions"></a>A virtuális gép Windows Defender-definíciók frissítése
 Kövesse az alábbi lépéseket a Defender definícióinak frissítéséhez:
 
-1. A Windows Defender-definíciók frissítéséhez letöltési [Windows Defender definíciós](https://www.microsoft.com/en-us/wdsi/definitions)
+1. A Windows Defender-definíciók frissítéséhez letöltési [Windows Defender definíciós](https://www.microsoft.com/en-us/wdsi/definitions).
 
     Ez az oldal "Manuálisan töltse le és telepítse a definíciók" le "Windows Defender víruskereső Windows 10 és Windows 8.1" 64 bites fájlrendszer. 
     
-    Közvetlen kapcsolat: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+    A közvetlen hivatkozás: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64.
 
 2. Hozzon létre egy PowerShell-munkamenetben virtuális gép SQL RP adapter karbantartási végponthoz
 3. A definíciók frissítési fájlok másolása a DB adapter a gépet, a karbantartási végpont munkamenet használatával
@@ -62,42 +131,43 @@ Kövesse az alábbi lépéseket a Defender definícióinak frissítéséhez:
 Íme egy minta parancsfájlt Defender definíciófrissítését a (helyettesítse be a címet, vagy a tényleges értékkel a virtuális gép neve):
 
 ```powershell
-# Set credentials for the diagnostic user
-$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$diagCreds = New-Object System.Management.Automation.PSCredential `
-    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+# Set credentials for the RP VM local admin user
+$vmLocalAdminPass = ConvertTo-SecureString "<local admin user password>" -AsPlainText -Force
+$vmLocalAdminUser = "<local admin user name>"
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential `
+    ($vmLocalAdminUser, $vmLocalAdminPass)
 
 # Public IP Address of the DB adapter machine
-$databaseRPMachine  = "XX.XX.XX.XX"
+$databaseRPMachine  = "<RP VM IP address>"
 $localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
- 
+
 # Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
-Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64' `
     -Outfile $localPathToDefenderUpdate 
 
 # Create session to the maintenance endpoint
 $session = New-PSSession -ComputerName $databaseRPMachine `
-    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+    -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
 # Copy defender update file to the db adapter machine
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
-     -Destination "User:\mpam-fe.exe"
+     -Destination "User:\"
 # Install the update file
 Invoke-Command -Session $session -ScriptBlock `
-    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+    {Update-AzSDBAdapterWindowsDefenderDefinition -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
 # Cleanup the definitions package file and session
 Invoke-Command -Session $session -ScriptBlock `
     {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
-$session | Remove-PSSession
+$session | Remove-PSSession 
 ```
 
 
 ## <a name="collect-diagnostic-logs"></a>Diagnosztikai naplók gyűjtésére
 Az SQL erőforrás-szolgáltató nem egy zárolt a virtuális gép működik. Ha szükségessé válik a virtuális gép, egy PowerShell csak elég adminisztrációs (JEA) végpont gyűjteni _DBAdapterDiagnostics_ valósul meg erre a célra. Nincsenek elérhető ezen a végponton keresztül két parancsot:
 
-* Get-AzsDBAdapterLog - előkészíti a függő Entitás diagnosztikai naplók tartalmazó zip-csomagját, és hozzáadja a munkamenet felhasználói meghajtón. A parancs paraméter nélküli hívható, és összegyűjti a naplók utolsó négy óra.
-* Remove-AzsDBAdapterLog - megtisztítja a meglévő napló-csomagokat a VM erőforrás-szolgáltató
+- **Get-AzsDBAdapterLog**. Előkészíti a függő Entitás diagnosztikai naplók tartalmazó zip-csomagját, és hozzáadja a munkamenet felhasználói meghajtón. A parancs paraméter nélküli hívható, és összegyűjti a naplók utolsó négy óra.
+- **Remove-AzsDBAdapterLog**. A szükségtelenné vált meglévő napló-csomagokat a VM erőforrás-szolgáltató
 
-Egy felhasználói fiókot _dbadapterdiag_ RP központi telepítés vagy frissítés a diagnosztika végpont RP naplók kibontott való csatlakozás során jön létre. A fiókhoz tartozó jelszó megegyezik a telepítés/frissítés közben a helyi rendszergazdai fiókhoz megadott jelszóval.
+Egy felhasználói fiókot **dbadapterdiag** RP központi telepítés vagy frissítés a diagnosztika végpont RP naplók kibontott való csatlakozás során jön létre. A fiókhoz tartozó jelszó megegyezik a telepítés/frissítés közben a helyi rendszergazdai fiókhoz megadott jelszóval.
 
 Ezek a parancsok használatához szüksége lesz az erőforrás-szolgáltató virtuális géphez a távoli PowerShell-munkamenetet létrehozni, és meghívja a parancsot. FromDate és ToDate paraméterekkel is megadhat. Egyik vagy mindkét esetben nem adja meg, ha a FromDate lesz az aktuális időpont előtt négy óra, és a ToDate lesz az aktuális idővel.
 
@@ -105,12 +175,12 @@ Ez a parancsfájlpélda bemutatja, hogy ezek a parancsok:
 
 ```powershell
 # Create a new diagnostics endpoint session.
-$databaseRPMachineIP = '<RP VM IP>'
+$databaseRPMachineIP = '<RP VM IP address>'
 $diagnosticsUserName = 'dbadapterdiag'
-$diagnosticsUserPassword = '<see above>'
+$diagnosticsUserPassword = '<Enter Diagnostic password>'
 
 $diagCreds = New-Object System.Management.Automation.PSCredential `
-        ($diagnosticsUserName, $diagnosticsUserPassword)
+        ($diagnosticsUserName, (ConvertTo-SecureString -String $diagnosticsUserPassword -AsPlainText -Force))
 $session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
         -ConfigurationName DBAdapterDiagnostics
 

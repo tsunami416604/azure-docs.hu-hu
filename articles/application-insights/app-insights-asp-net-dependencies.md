@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: ee628f137761445be8871cf4df44e48231342f50
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234596"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293639"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Az Application Insights beállítása: függőségi nyomon követése
 A *függőségi* az alkalmazás által külső összetevője. Általában le egy HTTP, vagy egy adatbázist vagy egy fájlrendszer nevű szolgáltatás. [Az Application Insights](app-insights-overview.md) méri, hogy az alkalmazás meddig függőségek, és milyen gyakran függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívások, és összekapcsolhatja őket a kéréseket, és kivételeket.

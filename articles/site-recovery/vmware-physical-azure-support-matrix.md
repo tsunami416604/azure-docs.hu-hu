@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5db7d57045acea3ded82e880169ebf02f4151ec5
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d78980b69e6598dff349c75527fc27d8a04dfa18
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824727"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301184"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -40,7 +40,7 @@ A konfigurációs kiszolgálón a helyi számítógépen, a Site Recovery össze
 **Összetevő** | **Követelmények**
 --- |---
 Processzormagok | 8
-RAM | 12 GB
+RAM | 16 GB
 Lemezek száma | 3 lemezek<br/><br/> Lemezek tartalmazza az operációs rendszer lemez, a folyamat kiszolgáló gyorsítótár lemez és a feladat-visszavételi adatmegőrzési meghajtó.
 Szabad lemezterület | 600 GB lemezterület, a folyamat gyorsítótár-kiszolgáló szükséges.
 Szabad lemezterület | 600 GB lemezterület az adatmegőrzési meghajtó szükséges.
@@ -205,7 +205,7 @@ A helyszíni virtuális gépek replikálása Azure-ba, meg kell felelnie Azure v
 
 **Összetevő** | **Követelmények** | **Részletek**
 --- | --- | ---
-Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated-machines). | Ellenőrzés sikertelen lesz, ha nem támogatott.
+Vendég operációs rendszer | Győződjön meg arról [támogatott operációs rendszerek](#replicated-machines) a gépek replikálása. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Vendég operációs rendszer architektúrája | 64 bites. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Operációs rendszert tároló lemez mérete | Legfeljebb 2048 GB. | Ellenőrzés sikertelen lesz, ha nem támogatott.
 Operációs rendszer lemez száma | 1 | Ellenőrzés sikertelen lesz, ha nem támogatott.  

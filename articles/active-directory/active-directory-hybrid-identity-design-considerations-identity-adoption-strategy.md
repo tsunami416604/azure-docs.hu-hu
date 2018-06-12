@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 4b1fefafb34dcbfdced5c978aa235e56cb7fa513
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 9107464acefe75141950c0d07298c8ad946e0ddc
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801796"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260362"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>A hibrid identitás bevezetési stratégia meghatározása
 Ebben a feladatban a hibrid identitás bevezetési stratégia a hibrid identitáskezelési megoldás a tárgyalt üzleti követelményeinek megfelelően határozza meg:
@@ -67,7 +67,7 @@ A használt stratégia szabja meg, a felhasználói bejelentkezési élmény.  A
 | Webböngészők |Űrlapalapú hitelesítés |egyszeri bejelentkezés, egyes esetekben szükséges adja meg a szervezet azonosítója |
 | Outlook |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
 | Skype vállalati (Lync). |Hitelesítő adatok kérése |egyszeri bejelentkezés Lync, felszólítja a hitelesítő adatok Exchange-hez |
-| SkyDrive Pro |Hitelesítő adatok kérése |Egyszeri bejelentkezés |
+| OneDrive Vállalati verzió |Hitelesítő adatok kérése |Egyszeri bejelentkezés |
 | Office Pro Plus előfizetés |Hitelesítő adatok kérése |Egyszeri bejelentkezés |
 
 **Külső vagy nem megbízható forrásból**:
@@ -75,7 +75,7 @@ A használt stratégia szabja meg, a felhasználói bejelentkezési élmény.  A
 |  | Szinkronizált identitás | Federated Identity |
 | --- | --- | --- |
 | Webböngészők |Űrlapalapú hitelesítés |Űrlapalapú hitelesítés |
-| Az Outlook, a Skype vállalati (Lync) Skydrive Pro, Office-előfizetés |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
+| Az Outlook, a Skype vállalati (Lync), a onedrive vállalati verzió, Office-előfizetés |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
 | Exchange ActiveSync |Hitelesítő adatok kérése |egyszeri bejelentkezés Lync, felszólítja a hitelesítő adatok Exchange-hez |
 | Mobilalkalmazások |Hitelesítő adatok kérése |Hitelesítő adatok kérése |
 

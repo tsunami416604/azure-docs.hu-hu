@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: f4071f2555607b6035352a2aec38c986941c41a9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bbeceb868466de42cfdffa3991983ac906cb98aa
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826531"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323731"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
@@ -68,6 +68,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Terheléselosztók | 100 | 1000 |
+| Háttér-erőforrások / Load Balancer * | 50 | 150 |
 | Basic erőforrásonként szabályok | 150 | 250 |
 | Standard erőforrásonként szabályok | 1250 | 1500 |
 | IP-konfiguráció / szabályok | 299 |299 |
@@ -76,6 +77,8 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | A háttérkészlet, Basic | 100, egy rendelkezésre állási csoport | 100, egy rendelkezésre állási csoport |
 | Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | 1000, egyetlen virtuális hálózat |
 | Magas rendelkezésre ÁLLÁSÚ portok, a Standard | belső előtér / 1 | belső előtér / 1 |
+
+* Legfeljebb 150 erőforrások, az önálló virtuális gépek, a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok tetszőleges kombinációját.
 
 Ha meg szeretné növelni a korlátozások alapértelmezett értékeit, [lépjen kapcsolatba az ügyfélszolgálattal](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

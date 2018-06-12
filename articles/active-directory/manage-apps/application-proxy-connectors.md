@@ -15,11 +15,12 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 16f008c6a6f97a791122a3b441c4c09eaf7eadde
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293007"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy összekötők ismertetése
 
@@ -72,7 +73,7 @@ A bérlők számára a több összekötők az automatikus frissítések célkén
 
 Összekötők lesz automatikusan terheléselosztásához összekötő csoporton belül, amíg fontos is győződjön meg arról, hogy elegendő kapacitással a várt forgalom mennyisége kezelésére összekötők közötti tervezett. Általában a több felhasználó van, a nagyobb gép szüksége lesz. Az alábbiakban egy táblázatot, amely megadja a kötet vázlat különböző gépek kezelheti. Ne feledje, az összes alapul a várt tranzakciók másodpercenkénti második (TP-k) helyett felhasználó óta használati minták eltérőek, ezért nem használható, terhelés előrejelzése céljából.  Ne feledje, hogy néhány különbség a visszajelzések és a háttérkiszolgáló alkalmazás válaszideje mérete alapján lesz - válasz nagyobb méretek és a lassabb válaszidejét eredményezi egy alacsonyabb maximális TP-k.
 
-|Magok|RAM|Késés (MS) várt-P99|Maximális TP-k|
+|Processzormagok|RAM|Késés (MS) várt-P99|Maximális TP-k|
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
@@ -164,6 +165,6 @@ A szolgáltatás a szolgáltatások ablakban ellenőrizheti. Az összekötő tar
 
 * [Külön hálózatok és helyek összekötő csoportokat használnak az alkalmazások közzététele](application-proxy-connector-groups.md)
 * [A meglévő helyszíni proxykiszolgálókkal működik](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Proxy és összekötő hibák elhárítása](../active-directory-application-proxy-troubleshoot.md)
+* [Proxy és összekötő hibák elhárítása](application-proxy-troubleshoot.md)
 * [Csendes telepítése az Azure AD alkalmazásproxy-összekötő](application-proxy-register-connector-powershell.md)
 

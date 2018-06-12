@@ -1,24 +1,19 @@
 ---
-title: "A Microsoft Azure-ban mérőszámok áttekintése |} Microsoft Docs"
-description: "Ismerje meg, hogyan szabhatja testre a figyelési diagramokat az Azure-ban."
+title: Az Azure a figyelő a metrikák áttekintése
+description: Ismerje meg, hogyan szabhatja testre a figyelési diagramokat az Azure-ban.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c36031eb-4df5-4cd5-9479-311d493a40d2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: robb
-ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: 878ba004e7572ad78f574c15fd76c8868b281117
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262256"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>A Microsoft Azure-ban mérőszámok áttekintése
 Az összes Azure-szolgáltatások nyomon követéséhez alapvető metrikákat, amelyek lehetővé teszik a állapotának, teljesítmény, rendelkezésre állási és a szolgáltatások használatának figyelése. Megtekintheti a következő metrikák tekintetében az Azure portálon, és használhatja a [REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx) vagy [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) metrikák teljes készletét programozott módon eléréséhez.
@@ -60,7 +55,7 @@ A kvóták erőforrások panelen használati kvóták is látható:
 
 Például a metrikákat, használhatja a [REST API](https://msdn.microsoft.com/library/azure/dn931963.aspx) vagy [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) használati kvóták teljes készletét programozott módon eléréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Riasztási értesítéseket](insights-receive-alert-notifications.md) amikor metrika keverve használ a küszöbértéket.
 * [Figyelés engedélyezésekor és diagnosztikai](insights-how-to-use-diagnostics.md) nagyon gyakori gyűjtéséhez részletes a a szolgáltatásban.
 * [Automatikus méretezése a példányok száma](insights-how-to-scale.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.

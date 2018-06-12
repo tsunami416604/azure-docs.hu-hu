@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af5cfc2f598893328bc8d4acc979f6d777114f99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d7b92359e8875c281fd460f1f5307a7941c11c1f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628793"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261576"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Csatlakoztasson egy MXChip IoT DevKit eszközt az Azure IoT központi alkalmazás
 
@@ -28,7 +28,9 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz egy **MXChip** eszköz sablon a következő jellemzőkkel:
 
-### <a name="telemetry-measurements"></a>Telemetria mérések
+### <a name="measurements"></a>Mérések
+
+#### <a name="telemetry"></a>Telemetria 
 
 | Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
@@ -44,6 +46,20 @@ A létrehozott alkalmazást, a **minta Devkits** alkalmazás sablon tartalmaz eg
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
+
+#### <a name="states"></a>Állapotok 
+
+| Name (Név)          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | VESZÉLYE | 
+| ------------- | -------------- | ------ | ------- | ------ | 
+| DeviceState   | Az eszköz állapotát   | Zöld  | Narancssárga  | Piros    | 
+
+#### <a name="events"></a>Események 
+
+| Name (Név)             | Megjelenített név      | 
+| ---------------- | ----------------- | 
+| ButtonBPressed   | B gomb megnyomott állapota  | 
+
+
 
 ### <a name="settings"></a>Beállítások
 
@@ -68,17 +84,6 @@ A beállítások ki-/ bekapcsolása
 | Eszköz tulajdonság | Die száma   | dieNumber  | szám    |
 | Szöveg            | Hely     | location   | –       |
 
-### <a name="states"></a>állapotok 
-
-| Name (Név)          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | VESZÉLYE | 
-| ------------- | -------------- | ------ | ------- | ------ | 
-| DeviceState   | Az eszköz állapotát   | Zöld  | Narancssárga  | Piros    | 
-
-### <a name="events"></a>Események 
-
-| Name (Név)             | Megjelenített név      | 
-| ---------------- | ----------------- | 
-| ButtonBPressed   | B gomb megnyomott állapota  | 
 
 ### <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 

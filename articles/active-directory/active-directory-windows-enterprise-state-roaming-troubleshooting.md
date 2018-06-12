@@ -17,11 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261151"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A vállalati Állapothordozás hibaelhárítási beállítások, az Azure Active Directoryban
 
@@ -79,7 +80,7 @@ Bizonyos körülmények között a vállalati Állapothordozás is tudni szinkro
 **Lehetséges probléma**: szinkronizálása sikertelen lehet, ha a rendszergazda konfigurálja az Active Directory összevonási szolgáltatások multi-factor Authentication feltételes hozzáférési szabályzatot, és az eszközön a hozzáférési jogkivonat lejár. Győződjön meg arról, hogy jelentkezzen be, és jelentkezzen ki, a Microsoft Passport for Work PIN KÓDJÁNAK használatával, vagy végezze el a multi-factor Authentication Office 365-höz hasonló más Azure-szolgáltatások elérése közben.
 
 ### <a name="event-viewer"></a>Eseménynapló
-Speciális hibaelhárítás Eseménynapló segítségével bizonyos hibákat található. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync** és az identitás-hibák a szinkronizálási **Microsoft** > **Windows** > **az Azure AD**.
+Speciális hibaelhárítás Eseménynapló segítségével bizonyos hibákat található. Ezek az alábbi táblázat ismerteti. Az eseményeket az Eseménynapló található > alkalmazások és szolgáltatásnaplók > **Microsoft** > **Windows** > **SettingSync** és a identitás-hibák a szinkronizálási **Microsoft** > **Windows** > **AAD**.
 
 
 ## <a name="known-issues"></a>Ismert problémák

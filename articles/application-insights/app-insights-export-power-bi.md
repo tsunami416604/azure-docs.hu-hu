@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dee3313082fbe75d76bf27105979cf7e869fafad
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294122"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights hírcsatorna a Power bi-ban
 [A Power BI](http://www.powerbi.com/) üzleti eszközök szükséges, amely segít az adatok elemezheti és megoszthatja az elemzések csomagja. Gazdag az irányítópultok olyan rendelkezésre álljanak minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések adatok kombinálhatja [Azure Application Insights](app-insights-overview.md).

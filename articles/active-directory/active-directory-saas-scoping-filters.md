@@ -1,8 +1,8 @@
 ---
-title: "Alkalmazások helyezése hatókörszűrőkkel kiépítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan objektumok alkalmazások automatizált felhasználókiépítése létre, ha az objektum nem elégíti ki az üzleti igényeknek a támogató hatókörének meghatározásához szűrők használata."
+title: Alkalmazások helyezése hatókörszűrőkkel kiépítése |} Microsoft Docs
+description: Megtudhatja, hogyan objektumok alkalmazások automatizált felhasználókiépítése létre, ha az objektum nem elégíti ki az üzleti igényeknek a támogató hatókörének meghatározásához szűrők használata.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7a2322239945a529a544054c2273e37a3d65abf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293075"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Alkalmazások Attribútumalapú üzembe helyezése hatókörszűrőkkel
 Ez a cikk célja tartalmazó szűrők használatát, amelyek meghatározzák, hogy mely felhasználók egy alkalmazás kiépített Attribútumalapú szabályok meghatározásához.
@@ -29,7 +30,7 @@ A hatókört szűrő segítségével az Azure Active Directory (Azure AD) szolg�
 
 Helyezése hatókörszűrőkkel használható másképp létesítési összekötő típusától függően:
 
-* **Kimenő kiépítése az Azure AD SaaS-alkalmazásokhoz való**. Ha az Azure AD a forrásrendszerben [felhasználó és csoport-hozzárendelések](active-directory-coreapps-assign-user-azure-portal.md) a leggyakrabban használt módszer meghatározásához, hogy mely felhasználók vannak üzembe helyezéséhez hatókörében van. A hozzárendelések is engedélyezése egyszeri bejelentkezéshez használt, és kezelheti a hozzáférést és üzembe helyezését egy módszert biztosít. Helyezése hatókörszűrőkkel segítségével szükség esetén hozzárendelések mellett vagy helyett, szűrhetők a felhasználók attribútumértékei alapján.
+* **Kimenő kiépítése az Azure AD SaaS-alkalmazásokhoz való**. Ha az Azure AD a forrásrendszerben [felhasználó és csoport-hozzárendelések](manage-apps/assign-user-or-group-access-portal.md) a leggyakrabban használt módszer meghatározásához, hogy mely felhasználók vannak üzembe helyezéséhez hatókörében van. A hozzárendelések is engedélyezése egyszeri bejelentkezéshez használt, és kezelheti a hozzáférést és üzembe helyezését egy módszert biztosít. Helyezése hatókörszűrőkkel segítségével szükség esetén hozzárendelések mellett vagy helyett, szűrhetők a felhasználók attribútumértékei alapján.
 
     >[!TIP]
     > Kiépítés beállításait egy vállalati alkalmazás-hozzárendelései alapján bármikor letilthatja a [hatókör](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) a telepítési beállítások menüt **minden felhasználó és csoport szinkronizálása**. Ez a beállítást és tartalmazó szűrők Attribútumalapú biztonságicsoport-alapú hozzárendelések használnak, mint gyorsabb teljesítményt nyújt.  
@@ -113,8 +114,8 @@ Hatókörként szűrőit, minden Azure AD-felhasználó összekötő kiépítés
 * [Alkalmazások kezelése az Azure Active Directoryban cikk indexe](active-directory-apps-index.md)
 * [Kiépítés és megszüntetés SaaS-alkalmazásokhoz való felhasználói automatizálásához](active-directory-saas-app-provisioning.md)
 * [Testre szabhatja a felhasználók átadása attribútum-leképezésekhez](active-directory-saas-customizing-attribute-mappings.md)
-* [Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+* [Kifejezések írása attribútumleképezésekhez](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Alkalmazás-kiépítési értesítések](active-directory-saas-account-provisioning-notifications.md)
-* [SCIM használata a felhasználók és csoportok az Azure Active Directory alkalmazások automatikus kiépítés engedélyezése](active-directory-scim-provisioning.md)
+* [SCIM használata a felhasználók és csoportok az Azure Active Directory alkalmazások automatikus kiépítés engedélyezése](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 

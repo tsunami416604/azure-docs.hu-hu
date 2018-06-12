@@ -1,24 +1,19 @@
 ---
-title: "Az Azure figyelő Metrikaböngésző |} Microsoft Docs"
-description: "A figyelő Metrikaböngészőben Azure új szolgáltatásainak megismerése"
+title: Az Azure figyelő metrikaböngésző
+description: A figyelő Metrikaböngészőben Azure új szolgáltatásainak megismerése
 author: vgorbenko
-manager: Victor.Mushkatin
-editor: mrbullwinkle
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2397596a-071f-4d49-8893-bec5f735bd7b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264088"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure figyelő Metrikaböngésző
 
@@ -43,7 +38,7 @@ Az alábbi példában látható módon a "Hálózati átviteli" nevű elméleti 
 ### <a name="network-throughput"></a>Hálózati teljesítmény
 (Ez a metrika rendelkezik nincs dimenzió)
 
- |időbélyeg        | Metrika értékét | 
+ |Időbélyeg        | Metrika értékét | 
    | ------------- |:-------------| 
    | 8/9/2017 8:14 | 1,331.8 kbit/s | 
    | 8/9/2017 8:15 | 1,141.4 kbit/s |
@@ -53,7 +48,7 @@ Ez a metrika nem egydimenziós is csak egy alapszintű kérdésre adott válasz,
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Hálózati teljesítmény + két dimenzió ("IP-címe" és "Irány")
 
-| időbélyeg          | "IP-címe" dimenzió | "Irány" dimenzió | Metrika értékét| 
+| Időbélyeg          | "IP-címe" dimenzió | "Irány" dimenzió | Metrika értékét| 
    | ------------- |:-----------------|:------------------- |:-----------|  
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Irány "Send" =    | 646.5 kbit/s |
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Irány "Kap" = | 420.1 kbit/s |
@@ -156,6 +151,6 @@ Miután a diagram, kattintson a a **diagram műveletek** menüben jobb felső sa
 
    ![metrika kép](./media/monitoring-metric-charts/013.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
   Olvasási [egyéni KPI-irányítópult létrehozása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) további információt az ajánlott eljárások a metrikák végrehajthatóként irányítópultok létrehozásához.

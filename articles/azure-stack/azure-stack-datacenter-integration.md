@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261219"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integrált Azure verem rendszerek Datacenter integrációs szempontjai
 Ha érdekli, egy integrált Azure verem rendszerben, tisztában kell lennie egy központi telepítés, és hogy a rendszer hogyan illeszkedik az Adatközpont a fő szempontokat. Ez a cikk a magas szintű áttekintést nyújt az ezeket a szempontokat segítséget nyújtanak az Azure-verem többcsomópontos rendszer fontos infrastruktúra döntéseket. Ezeket a szempontokat megértését megkönnyíti módon működik-e az OEM hardver gyártójánál azok telepítése Azure verem az Adatközpont.  
@@ -134,9 +135,9 @@ A következő táblázat összefoglalja a hibrid kapcsolat forgatókönyveket, a
 
 | Forgatókönyv | Csatlakozási módszer | Informatikai szakemberek | Hátrányok | A jó |
 | -- | -- | --| -- | --|
-| Az egyszeri bérlői Azure verem, intranet központi telepítés | Kimenő forgalmat kezelő NAT | Gyorsabb átvitelt jobb sávszélességet. Egyszerű megvalósítani; nem szükséges átjárók. | A forgalom nem titkosított; Nincs elkülönítés vagy a titkosítási túl a TOR. | Nagyvállalati környezetben, ahol egyetlen bérlő számára egyaránt megbízhatónak számítanak.<br><br>A vállalatok, amelyek az Azure-bA Azure ExpressRoute-kapcsolatcsoportot. |
+| Az egyszeri bérlői Azure verem, intranet központi telepítés | Kimenő forgalmat kezelő NAT | Gyorsabb átvitelt jobb sávszélességet. Egyszerű megvalósítani; nem szükséges átjárók. | A forgalom nem titkosított; Nincs elkülönítés vagy a halmazon kívül a titkosítás. | Nagyvállalati környezetben, ahol egyetlen bérlő számára egyaránt megbízhatónak számítanak.<br><br>A vállalatok, amelyek az Azure-bA Azure ExpressRoute-kapcsolatcsoportot. |
 | Több-bérlős Azure verem intranetes központi telepítés | Telephelyek közötti VPN | A bérlői hálózatok érkező forgalom cél biztonságos. | Pont-pont VPN-alagúton korlátozza a sávszélesség.<br><br>A virtuális hálózat és a VPN-eszköz a cél hálózati átjáró szükséges. | Nagyvállalati környezetben, ahol az egyes bérlői forgalom védetté kell tennie a többi bérlőtől. |
-| Az egyszeri bérlői Azure verem, internet-telepítés | Kimenő forgalmat kezelő NAT | Gyorsabb átvitelt jobb sávszélességet. | A forgalom nem titkosított; Nincs elkülönítés vagy a titkosítási túl a TOR. | Ha a bérlő lekérdezi a saját Azure Alkalmazásveremben üzembe és az Azure-verem környezetbe dedikált expressroute-kapcsolatcsoporthoz szolgáltatókörnyezetekben. Például az ExpressRoute és Multiprotocol címke váltás (MPLS).
+| Az egyszeri bérlői Azure verem, internet-telepítés | Kimenő forgalmat kezelő NAT | Gyorsabb átvitelt jobb sávszélességet. | A forgalom nem titkosított; Nincs elkülönítés vagy a halmazon kívül a titkosítás. | Ha a bérlő lekérdezi a saját Azure Alkalmazásveremben üzembe és az Azure-verem környezetbe dedikált expressroute-kapcsolatcsoporthoz szolgáltatókörnyezetekben. Például az ExpressRoute és Multiprotocol címke váltás (MPLS).
 | Több-bérlős Azure verem, internet-telepítés | Telephelyek közötti VPN | A bérlői hálózatok érkező forgalom cél biztonságos. | Pont-pont VPN-alagúton korlátozza a sávszélesség.<br><br>A virtuális hálózat és a VPN-eszköz a cél hálózati átjáró szükséges. | Szolgáltatási forgatókönyvek esetében, ahol a szolgáltató egy több-bérlős felhőalapú ajánlat szeretne, ahol a bérlők számára nem megbízható egymással és a forgalom titkosítani kell.
 |  |  |  |  |  |
 

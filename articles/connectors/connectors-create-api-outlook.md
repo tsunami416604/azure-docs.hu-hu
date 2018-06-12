@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Logic Apps Outlook.com-os összekötő |} Microsoft Docs"
-description: "Az Azure App service Logic Apps alkalmazások létrehozása Outlook.com-os összekötő lehetővé teszi a levelezés, a naptárak és a partnerek kezelését. Például a levél küldése különféle műveleteket hajtson végre, értekezletek ütemezését, adja hozzá az ügyfelek, stb."
+title: Az Azure Logic Apps Outlook.com-os összekötő |} Microsoft Docs
+description: Az Azure App service Logic Apps alkalmazások létrehozása Outlook.com-os összekötő lehetővé teszi a levelezés, a naptárak és a partnerek kezelését. Például a levél küldése különféle műveleteket hajtson végre, értekezletek ütemezését, adja hozzá az ügyfelek, stb.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 87113c85-d158-4dd5-9ed5-5748130003d6
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 9fc0cfd39197bcc834aca600238853a712ebf297
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1338b7ce8f72a57cb65f9389e630fd7ebd0417b1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295584"
 ---
 # <a name="get-started-with-the-outlookcom-connector"></a>Az Outlook.com-összekötő az első lépései
 Outlook.com-os összekötő lehetővé teszi a levelezés, a naptárak és a partnerek kezelését. Például a levél küldése különféle műveleteket hajtson végre, értekezletek ütemezését, adja hozzá az ügyfelek, stb.

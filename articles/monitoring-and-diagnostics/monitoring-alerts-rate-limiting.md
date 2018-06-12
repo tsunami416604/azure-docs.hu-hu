@@ -1,24 +1,19 @@
 ---
-title: Értékelje az SMS, e-mailek, Azure-alkalmazások leküldéses értesítései és webhookokkal korlátozása |} Microsoft Docs
+title: Értékelje az SMS, e-mailek, Azure-alkalmazások leküldéses értesítései és webhookokkal korlátozása
 description: Ismerje meg, hogyan Azure lehetséges SMS, az e-mailek, az Azure App leküldéses vagy webhook értesítéseket művelet csoportból számának korlátozása.
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/12/2018
 ms.author: dukek
-ms.openlocfilehash: 9216a64dbd8201ff09ea5c9283b4db465682a3bd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 1acea47638c75971bad62f28dcd7e96823d84c1d
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262956"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Értékelje a bejegyzéseket a hang, SMS, e-mailek, Azure-alkalmazások leküldéses értesítései és webhook korlátozása
 Az értesítések, amelyek akkor fordul elő, ha túl sok küld egy adott telefonszám, az e-mail cím vagy az eszköz felfüggesztés sebességkorlátozást. Sebességkorlátozást biztosítja, hogy riasztások kezelhető és hajtható végre.

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c7e33a46940c9bf0cda5e48c07d42db9f0c7cd96
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 84fa3c5bd57e1f9f5b3eddf872307829f6c9c509
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292966"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Asana konfigurálása
 
@@ -42,7 +43,7 @@ Az Azure AD egy fogalom, más néven "hozzárendeléseket" alapján határozza m
 
 Konfigurálását megelőzően, illetve a létesítési szolgáltatás engedélyezése, el kell döntenie, mely felhasználóknak az Azure AD hozzá kell férniük a Asana alkalmazásba. Ezután ezek a felhasználók itt utasításokat követve hozzárendelheti a Asana alkalmazás:
 
-[Felhasználó hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+[Felhasználó hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-asana"></a>Felhasználók hozzárendelése Asana fontos tippek
 
@@ -99,6 +100,6 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 * [Egyszeri bejelentkezés konfigurálása](active-directory-saas-asana-tutorial.md)

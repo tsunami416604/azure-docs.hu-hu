@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 1a3f517221c7e22d87dec5d0fc6f11c1bed16505
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b733468d41afacb616c95f0628e7bad6b0c837f0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264163"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Alkalmazások fejlesztése MySQL az Azure-adatbázis – áttekintés 
 A cikk ismerteti, hogy a fejlesztő kell követnie, MySQL Azure adatbázishoz való kapcsolódáshoz alkalmazáskód írásakor tervezési szempontokat. 
@@ -38,7 +39,7 @@ Azure MySQL-adatbázis korlátozó hozzáférési, védelmet nyújtó adatok, ko
 ## <a name="authentication"></a>Hitelesítés
 Azure MySQL-adatbázis támogatja a kiszolgáló hitelesítése a felhasználók és bejelentkezések.
 
-## <a name="resiliency"></a>Resiliency
+## <a name="resiliency"></a>Rugalmasság
 Amikor egy átmeneti hiba akkor fordul elő, amikor kapcsolódni próbált MySQL-adatbázis, a kódot kell próbálja meg újra a hívást. Javasoljuk, hogy a az újrapróbálkozási logika leállás logika használjon, így azt nem ne terhelje tovább az SQL-adatbázis az újrapróbálkozás egyszerre több ügyfélnek.
 
 - Kódminták: mintakódok, mely újrapróbálkozási logika, lásd: a következő nyelvű-példák: [MySQL Azure adatbázishoz való kapcsolódáshoz használt kapcsolódási függvénytárak](concepts-connection-libraries.md)

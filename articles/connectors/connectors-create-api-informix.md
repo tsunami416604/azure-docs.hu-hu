@@ -2,7 +2,7 @@
 title: IBM Informix-adatbázishoz – Azure Logic Apps csatlakozni |} Microsoft Docs
 description: Az IBM Informix REST API-k és az Azure Logic Apps-erőforrások kezelése
 author: gplarsen
-manager: cfowler
+manager: jeconnoc
 ms.author: plarsen
 ms.date: 09/26/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: c78c6bb669e0945ba1cbacc3ca808a364f3099a5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609388"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296036"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Ismerkedjen meg az Informix-összekötő
 Microsoft-összekötő Informix a Logic Apps csatlakozik IBM Informix-adatbázisban tárolt erőforrások. Az Informix-összekötő tartalmazza a Microsoft az Informix-kiszolgáló távoli számítógépeken egy TCP/IP-hálózaton keresztül kommunikálnak. Ez magában foglalja a felhőalapú adatbázisok, például a Windows Azure virtualizálási futó IBM Informix és a helyszíni adatbázisokat az helyszíni átjáró használatával. Tekintse meg a [lista támogatott](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix-platformok és-verziói (Ez a témakör).

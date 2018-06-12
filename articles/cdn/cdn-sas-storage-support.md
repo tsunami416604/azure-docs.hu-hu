@@ -4,7 +4,7 @@ description: Az Azure CDN a közös hozzáférésű Jogosultságkód (SAS) korl�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ea779f4f809e51b57d36cd44f9c6674340d665a2
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261168"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Az Azure CDN használatával a SAS használatával
 
@@ -70,7 +71,7 @@ Ez a beállítás a legegyszerűbb, és egyetlen SAS tokent, az eredeti kiszolg�
  
 Ez a beállítás csak akkor **verizon Azure CDN Premium** profilok. Ezzel a beállítással biztosíthatja a blob-tárolóból a(z) az eredeti kiszolgálóra. Érdemes lehet használja ezt a beállítást, ha nincs szükség speciális hozzáférési korlátozásokat a fájl, de szeretné akadályozni, hogy a felhasználók közvetlenül az Azure CDN kiszervezési alkalommal javítása érdekében a tárolási forrás eléréséhez. A SAS-jogkivonat, amely a felhasználó számára ismeretlen, bárki, aki a fájlokat az eredeti kiszolgálóra tárolócsoportbeli blobtároló eléréséhez szükség. Azonban az URL-újraíró szabály miatt a SAS-jogkivonat nem szükséges a CDN-végpontot.
  
-1. Használja a [szabálymotor](cdn-rules-engine.md) URL-újraíró szabály létrehozásához. Új szabályok való terjesztése körülbelül 90 percig tarthat.
+1. Használja a [szabálymotor](cdn-rules-engine.md) URL-újraíró szabály létrehozásához. Új szabályok körülbelül 10 percig propagálása igénybe vehet.
 
    ![CDN kezelése gomb](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
@@ -112,7 +113,7 @@ Azure CDN biztonsági tokent használó hitelesítés használatához rendelkezn
        
    Egy biztonsági tokent használó hitelesítés paraméter beállításai eltérnek a paraméter egy SAS-jogkivonat-beállításait. Ha szeretne használni, amikor létrehoz egy biztonsági jogkivonatot lejárati időt, akkor kell beállítania a SAS-jogkivonat lejárati idejének értékét. Ezzel biztosítja, hogy a lejárati idő előre jelezhető. 
  
-2. Használja a [szabálymotor](cdn-rules-engine.md) újraeléréséhez SAS-token összes BLOB a tárolóban levő URL-újraíró szabály létrehozásához. Új szabályok való terjesztése körülbelül 90 percig tarthat.
+2. Használja a [szabálymotor](cdn-rules-engine.md) újraeléréséhez SAS-token összes BLOB a tárolóban levő URL-újraíró szabály létrehozásához. Új szabályok körülbelül 10 percig propagálása igénybe vehet.
 
    Az alábbi minta URL-újraíró szabály egy reguláris kifejezési minta használ rögzítésével csoport és egy végpontot, nevű *storagedemo*:
    

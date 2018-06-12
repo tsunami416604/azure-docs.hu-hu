@@ -1,13 +1,14 @@
 ---
-title: "Állítsa be az Azure Active Directoryhoz csatlakoztatott eszközök |} Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be Azure Active Directoryhoz csatlakoztatott eszközök."
+title: Állítsa be az Azure Active Directoryhoz csatlakoztatott eszközök |} Microsoft Docs
+description: Ismerje meg, hogyan állíthat be Azure Active Directoryhoz csatlakoztatott eszközök.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ac6c9224925e5bfd3cb056c6c8d9cf2a96b0eb2b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 791181f11af38e4b78743ddb372207bd21893a6b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260929"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Állítsa be az Azure Active Directoryhoz csatlakoztatott eszközök
 
@@ -45,14 +47,18 @@ Egy Windows 10 rendszerű eszköz csatlakozni az eszközregisztrációs szolgál
 
 - Ha egy felügyelt felhasználók Windows végigvezeti Önt az asztalhoz az automatikus bejelentkezés.
 
-- Ha egy összevont felhasználó, akkor jelentkezzen be a hitelesítő adatok használatával.
+- Ha egy összevont felhasználó, hogy jelentkezzen be a hitelesítő adatok használatával.
+
+- Ha meg van összevonva, az identitásszolgáltató támogatnia kell a WS-Fed és a WS-Trust felhasználónév/jelszó végpont. Ez lehet 1.3 vagy 2005 verzióra. A protokoll támogatására szükség az eszköz csatlakoztatása az Azure AD és az eszköz jelszóval bejelentkezni. 
+
+
 
 
 ## <a name="joining-a-device"></a>Eszköz csatlakoztatása
 
-A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatása az Azure AD. Ha sikeresen csatlakozott az eszközt az Azure AD a **hozzáférés munkahelyi vagy iskolai** párbeszédpanel jelzi ezt egy **csatlakoztatott \<az Azure AD\>**  bejegyzés.
+A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatása az Azure AD. Megjelenik egy sikeresen csatlakoztatású eszközt **csatlakoztatott \<az Azure AD\>**.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/13.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/13.png)
 
 
 **A Windows 10-eszköz csatlakozni:**
@@ -87,7 +93,7 @@ A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatá
 
 6. Az a **jelszó megadni** párbeszédpanelen írja be a jelszót, és kattintson **bejelentkezés**.
 
-    ![Jelszó megadása](./media/device-management-azuread-joined-devices-setup/05.png)
+    ![Írja be a jelszót](./media/device-management-azuread-joined-devices-setup/05.png)
 
 
 7. Az a **győződjön meg arról, hogy ez a szervezet** párbeszédpanel, kattintson a **csatlakozás**.
@@ -103,16 +109,16 @@ A szakasz ismerteti a lépéseket a Windows 10 rendszerű eszköz csatlakoztatá
 
 Győződjön meg arról, hogy egy eszköz csatlakozik-e az Azure AD, tekintse át a **hozzáférés munkahelyi vagy iskolai** párbeszédpanel az eszközön.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/13.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/13.png)
 
-Alternatív megoldásként futtathatja a következő parancsot:`dsregcmd /status`  
+Alternatív megoldásként futtathatja a következő parancsot: `dsregcmd /status`  
 Sikeresen csatlakoztatva eszközön **AzureAdJoined** van **Igen**.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/14.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/14.png)
 
 Emellett áttekintheti az Azure AD portálon Eszközbeállítások.
 
-![Csatlakoztatva](./media/device-management-azuread-joined-devices-setup/15.png)
+![Csatlakozva](./media/device-management-azuread-joined-devices-setup/15.png)
 
 További információkért lásd: [keresse meg az eszközök](device-management-azure-portal.md#locate-devices).
 

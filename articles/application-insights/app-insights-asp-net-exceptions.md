@@ -1,6 +1,6 @@
 ---
-title: "Diagnosztizálja a hibákat és kivételeket a webalkalmazásokban az Azure Application insights szolgáltatással |} Microsoft Docs"
-description: "ASP.NET alkalmazások együtt – kéréstelemetria kivételei rögzíti."
+title: Diagnosztizálja a hibákat és kivételeket a webalkalmazásokban az Azure Application insights szolgáltatással |} Microsoft Docs
+description: ASP.NET alkalmazások együtt – kéréstelemetria kivételei rögzíti.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3dcf4211df5d40c4b174fd9a818d3268ffaa3a0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295710"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Kivételek az Application insights szolgáltatással a webalkalmazások diagnosztizálásához
 Az élő webalkalmazását kivételek által jelentett [Application Insights](app-insights-overview.md). Sikertelen kérelmek hozhatók kivételeket és az ügyfél és a kiszolgáló, az eseményeket, így gyorsan felderítheti az az oka.

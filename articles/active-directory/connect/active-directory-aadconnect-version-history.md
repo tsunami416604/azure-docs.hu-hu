@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c2eb59024e0e1ef773901b3f91ae7221c95d4414
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: c2a830fa873f7277440d1baa9049a9c8eafcbf55
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802000"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261780"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden kiegészítéseket célrendszerekhez vonatkoznak.
 
 
-Ez a cikk úgy van kialakítva, segítséget nyújtanak a kiadott verziók nyomon követheti, és tudni, hogy szükséges-e vagy nem a legújabb verzióra frissíteni.
+Ez a cikk célja, hogy segítséget nyújtanak a kiadott verziók nyomon követheti, és megismeréséhez a módosításokat a legújabb verzió.
 
 Ez a táblázat kapcsolódó témakörök listáját:
 

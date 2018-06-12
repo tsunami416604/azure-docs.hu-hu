@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 56060d11373f767b023b092cf01ceb894f70efed
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a330396c1c7f2033725ff4ef44ed467f5eee34de
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292786"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LinkedIn értékesítési Navigator konfigurálása
 
@@ -42,7 +43,7 @@ Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" haszná
 
 A létesítési szolgáltatás engedélyezése és konfigurálása, előtt kell döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik LinkedIn értékesítési Navigator elérésére. Ha úgy döntött, itt utasításokat követve hozzárendelheti ezek a felhasználók LinkedIn értékesítési Navigator:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-sales-navigator"></a>Felhasználók hozzárendelése LinkedIn értékesítési Navigator fontos tippek
 
@@ -124,5 +125,5 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)

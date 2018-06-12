@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 53eaef775647795acf3e8e6fcd127181414b1c0e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: e521ef29a338d0c7d80493f92acff4758a091359
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234495"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261287"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Az Azure Functions C# fejlesztői leírás
 
@@ -311,6 +311,8 @@ public static class EnvironmentVariablesExample
     }
 }
 ```
+
+Alkalmazásbeállítások a környezeti változók olvashatók, helyileg fejlesztésekor, mind az Azure-ban való futtatásakor. Helyileg fejlesztésekor Alkalmazásbeállítások származik a `Values` gyűjtemény a *local.settings.json* fájlt. Mindkét környezetben helyi és az Azure, `GetEnvironmentVariable("<app setting name>")` az elnevezett Alkalmazásbeállítás értékét kérdezi le. Például, amikor helyileg futtatja, "A hely neve" vissza: Ha a *local.settings.json* fájl tartalmaz `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
 
 A [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) tulajdonság egy alternatív API app beállításértékek kapcsolódnak, de azt javasoljuk, hogy használjon `GetEnvironmentVariable` itt látható módon.
 

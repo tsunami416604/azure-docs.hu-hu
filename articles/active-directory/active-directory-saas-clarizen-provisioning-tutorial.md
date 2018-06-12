@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant-msft
-ms.openlocfilehash: 779fa09781b5ea6e13450d609703bec0c08e38e4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ee0d5248e3e53db8b7475dca1d51658ade25f81
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293262"
 ---
 # <a name="tutorial-configure-clarizen-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Clarizen konfigurálása
 
@@ -71,7 +72,7 @@ Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" haszná
 
 Automatikus felhasználó-kiépítés engedélyezése és konfigurálása, előtt meg kell határoznia, melyik felhasználói és/vagy az Azure AD-csoportok Clarizen hozzáférésre van szükségük. Ha úgy döntött, hozzárendelheti a felhasználók és/vagy csoportok Clarizen itt cikk utasításait követve:
 
-*   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+*   [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-clarizen"></a>Felhasználók hozzárendelése Clarizen fontos tippek
 
@@ -161,7 +162,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések

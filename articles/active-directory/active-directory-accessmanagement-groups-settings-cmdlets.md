@@ -14,11 +14,12 @@ ms.date: 02/20/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
-ms.openlocfilehash: d61907ddbd6eaecc8aeae8d2f1cea204f287daea
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 5da5bd920becdc86e133cb1b4e67fb3125c2638e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260532"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával történő létrehozásához és frissítési csoportokká utasításokat tartalmaz. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -72,7 +73,8 @@ Ezeket a lépéseket beállítások létrehozása könyvtár szinten, amelyek vo
 4. Ezután frissítse a használati iránymutatás értéket:
   
   ```
-  $setting["UsageGuidelinesUrl"] = "https://guideline.com"
+  $setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
+
   ```  
 5. Végezetül a beállítások alkalmazásához:
   
@@ -92,18 +94,18 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállításoknak. Elt
 | **Beállítás** | **Leírás** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>Típus: logikai<li>Alapértelmezett: igaz |A jelzőt, amely azt jelzi, hogy Office 365-csoport létrehozása a könyvtárban által engedélyezett nem rendszergazda felhasználóknak. Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
-|  <ul><li>UsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |A csoport használatára vonatkozó irányelvek mutató hivatkozást. |
-|  <ul><li>ClassificationDescriptions<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. |
-|  <ul><li>DefaultClassification<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A besorolás, amely használható a alapértelmezett besorolást egy csoportra, ha nincs megadva.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Legfeljebb 64 karakter hosszúságú lehet, amely meghatározza az Office 365-csoportok beállítása elnevezési karakterlánc. További információkért lásd: [elnevezési vonatkozó szabályzat alkalmazása az Office 365-csoportok (előzetes verzió)](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | Vesszővel elválasztott karakterlánc, amely a felhasználók nem engedélyezhető a felügyeleticsoport-nevek és aliasok használandó kifejezések közül. További információkért lásd: [elnevezési vonatkozó szabályzat alkalmazása az Office 365-csoportok (előzetes verzió)](groups-naming-policy.md). |
+|  <ul><li>GroupCreationAllowedGroupId<li>Típus: Sztring<li>Alapértelmezett érték: "" |A biztonsági csoport, amelynek a tagjai hozhatnak létre az Office 365-csoportok GUID akkor is, ha EnableGroupCreation == false. |
+|  <ul><li>UsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett érték: "" |A csoport használatára vonatkozó irányelvek mutató hivatkozást. |
+|  <ul><li>ClassificationDescriptions<li>Típus: Sztring<li>Alapértelmezett érték: "" | Besorolási leírások vesszővel tagolt listája. |
+|  <ul><li>DefaultClassification<li>Típus: Sztring<li>Alapértelmezett érték: "" | A besorolás, amely használható a alapértelmezett besorolást egy csoportra, ha nincs megadva.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Típus: Sztring<li>Alapértelmezett érték: "" | Legfeljebb 64 karakter hosszúságú lehet, amely meghatározza az Office 365-csoportok beállítása elnevezési karakterlánc. További információkért lásd: [elnevezési vonatkozó szabályzat alkalmazása az Office 365-csoportok (előzetes verzió)](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Típus: Sztring<li>Alapértelmezett érték: "" | Vesszővel elválasztott karakterlánc, amely a felhasználók nem engedélyezhető a felügyeleticsoport-nevek és aliasok használandó kifejezések közül. További információkért lásd: [elnevezési vonatkozó szabályzat alkalmazása az Office 365-csoportok (előzetes verzió)](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Típus: logikai<li>Alapértelmezett érték: "False" | Ne használja
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: logikai<li>Alapértelmezett: hamis | Logikai érték-e a Vendég felhasználói csoportok tulajdonosa lehet jelző. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Típus: logikai<li>Alapértelmezett: igaz | Jelző logikai érték beolvasása-e a Vendég felhasználó rendelkezhet Office 365 csoportok tartalomhoz való hozzáférést.  Ez a beállítás nem szükséges egy Azure Active Directory Premium P1 licencet.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" | A Vendég használatára vonatkozó irányelvek mutató hivatkozás URL-címét. |
+|  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett érték: "" | A Vendég használatára vonatkozó irányelvek mutató hivatkozás URL-címét. |
 |  <ul><li>AllowToAddGuests<li>Típus: logikai<li>Alapértelmezett: igaz | Egy logikai jelző Vendégek hozzáadása a következő könyvtár számára engedélyezett-e.|
-|  <ul><li>ClassificationList<li>Típus: Karakterlánc<li>Alapértelmezett érték: "" |Office 365-csoportok alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
+|  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett érték: "" |Office 365-csoportok alkalmazható érvényes osztályozási értékeket vesszővel tagolt listája. |
 
 ## <a name="read-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások beolvasása
 Ezeket a lépéseket a címtár összes Office-csoport könyvtár szintjén beállítások olvasása.
@@ -141,7 +143,7 @@ Ezeket a lépéseket a címtár összes Office-csoport könyvtár szintjén beá
   GuestUsageGuidelinesUrl
   GroupCreationAllowedGroupId
   AllowToAddGuests              True
-  UsageGuidelinesUrl            https://guideline.com
+  UsageGuidelinesUrl            https://guideline.example.com
   ClassificationList
   EnableGroupCreation           True
   ```

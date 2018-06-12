@@ -14,11 +14,12 @@ ms.date: 05/17/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 38f65804e9166a77278a11d545374461e6f6c38f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261117"
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Dinamikus csoporttagság Attribútumalapú szabályok létrehozása az Azure Active Directoryban
 Az Azure Active Directory (Azure AD) összetett Attribútumalapú dinamikus csoporttagságok csoportok engedélyezése speciális szabályokat hozhat létre. Ez a cikk részletezi az attribútumokat és a felhasználók vagy eszközök dinamikus tagsági szabályok létrehozásához szintaxist. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
@@ -74,7 +75,7 @@ A speciális szabály törzsét teljes hossza legfeljebb 2048 karakter hosszú l
 ## <a name="supported-expression-rule-operators"></a>Támogatott kifejezés szabály operátorok
 Az alábbi táblázat a támogatott kifejezés szabályoperátorokat és szintaxisát a speciális szabály törzsét használhatók:
 
-| Operátor | Szintaxis |
+| Művelet | Szintaxis |
 | --- | --- |
 | Nem egyenlő |-ne |
 | Egyenlő |-eq |
@@ -110,7 +111,7 @@ az egyenértékű:
 
 Ha számos különböző értéket elleni felhasználói attribútum értékének összehasonlítandó használhatja az - a vagy - notIn operátorokat. Példa használja a - operátorban:
 ```
-    user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
+   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
 Vegye figyelembe a használatát a "[" és "]" elején és értékek listájának végét. Ez a feltétel eredménye IGAZ érték felhasználó.részleg egyenlő a listában szereplő értékek közül.
 
@@ -163,7 +164,7 @@ Engedélyezett operátorok
 | facsimileTelephoneNumber |A karakterlánc értéke vagy *null értékű* |(user.facsimileTelephoneNumber - eq "érték") |
 | givenName |A karakterlánc értéke vagy *null értékű* |(user.givenName - eq "érték") |
 | Beosztás |A karakterlánc értéke vagy *null értékű* |(user.jobTitle - eq "érték") |
-| mail |A karakterlánc értéke vagy *null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
+| levelezés |A karakterlánc értéke vagy *null* (SMTP-cím felhasználó) |(user.mail - eq "érték") |
 | mailNickName |Bármilyen karakterlánc típusú értéket (mail alias a felhasználó) |(user.mailNickName - eq "érték") |
 | Mobileszköz |A karakterlánc értéke vagy *null értékű* |(user.mobile - eq "érték") |
 | objectId |A user objektum GUID-azonosítója |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |

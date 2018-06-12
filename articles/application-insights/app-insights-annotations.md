@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807798"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293435"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Az Application Insightsban metrika diagramok jegyzetek
 A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelyen rendszerbe van állítva egy új buildverziót, vagy más jelentős esemény történt. Akkor könnyen látható, hogy a módosítások volt-e az alkalmazás teljesítményére hatással. Ezek automatikusan létrehozhatók a [Visual Studio Team Services rendszer build](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Jegyzeteket, tetszés szerint mindenképpen jelzőt is létrehozhat [hozza létre őket a Powershellből](#create-annotations-from-powershell).

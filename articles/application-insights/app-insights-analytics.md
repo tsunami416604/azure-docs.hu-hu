@@ -1,8 +1,8 @@
 ---
-title: "Elemzés - a hatékony keresési és a lekérdezés eszközt az Azure Application Insights |} Microsoft Docs"
-description: "Elemzés, a hatékony diagnosztikai eszköz az Application Insights áttekintése. "
+title: Elemzés - a hatékony keresési és a lekérdezés eszközt az Azure Application Insights |} Microsoft Docs
+description: 'Elemzés, a hatékony diagnosztikai eszköz az Application Insights áttekintése. '
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 0a2f6011-5bcf-47b7-8450-40f284274b24
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5f324051a2eeedd35a22f77c771793af9c90c434
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294200"
 ---
 # <a name="analytics-in-application-insights"></a>Az Application Insightsban elemzés
 Elemzés a hatékony keresési és lekérdezés eszköz [Application Insights](app-insights-overview.md). Analytics egy webes eszköz, így nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatainak elemezheti a alkalmazás Analytics megnyitásával [áttekintése panel](app-insights-dashboards.md).

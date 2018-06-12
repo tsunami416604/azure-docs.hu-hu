@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: aa8f5e3b78a65c42840bbe831f5a4f2984a4a357
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 18177e0671ddf36d0e02e6b943467d703f78ffd0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650400"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301048"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
 
@@ -82,6 +82,8 @@ Mivel adatszinkronizálás eseményindító-alapú, a tranzakciós konzisztencia
 
 #### <a name="performance-impact"></a>Teljesítményre gyakorolt hatás
 Adatok szinkronizálása által beszúrási, frissítési és törlési eseményindítók követni a változásokat. Ügyféloldali táblák létrehozza a változáskövetési felhasználói adatbázisban. E módosítás követési tevékenységek hatással vannak az adatbázisban munkaterhelés. A szolgáltatási rétegben felmérése, és ha szükséges.
+
+Kiépítés és megszüntetés szinkronizálási csoport létrehozása során, frissítés és törlés is hatással lehet az adatbázis teljesítménye. 
 
 ### <a name="general-requirements"></a>Általános követelmények
 

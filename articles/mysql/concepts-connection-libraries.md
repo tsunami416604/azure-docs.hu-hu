@@ -6,14 +6,15 @@ author: mswutao
 ms.author: wutao
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: c22bb9b31e7623daa635f82256e28ed466070481
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c826bf1cf17230563b608e764c443b6166f13924
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264003"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Adatkapcsolattárak MySQL az Azure-adatbázis
 Ez a cikk sorolja fel, minden könyvtár vagy illesztőprogram, ügyfélprogramok MySQL az Azure-adatbázishoz való csatlakozáshoz használhat.
@@ -30,7 +31,7 @@ MySQL adatbázis standard illesztőprogram kapcsolódási MySQL ipari szabványo
 | Node.js | Windows, Linux, Mac OS X | [sidorares/node-mysql2](https://github.com/sidorares/node-mysql2/tree/master/documentation) | [Letöltés](https://github.com/sidorares/node-mysql2) |
 | Python | Windows, Linux, Mac OS X | [MySQL összekötő/Python fejlesztői útmutató](https://dev.mysql.com/doc/connector-python/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/python/) |
 | C++ | Windows, Linux, Mac OS X | [MySQL összekötő/C++ – útmutató fejlesztőknek](https://dev.mysql.com/doc/connector-cpp/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/python/) |
-| C# | Windows, Linux, Mac OS X | [MySQL összekötő/C – útmutató fejlesztőknek](https://dev.mysql.com/doc/connector-c/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/c/)
+| C | Windows, Linux, Mac OS X | [MySQL összekötő/C – útmutató fejlesztőknek](https://dev.mysql.com/doc/connector-c/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/c/)
 | Perl | Windows, Linux, Mac OS X és Unix rendszereken | [DBD::MySQL](https://metacpan.org/pod/DBD::mysql) | [Letöltés](https://metacpan.org/pod/DBD::mysql) |
 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: 35b4343bac033708a0912f1e129cdfef146e0603
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 933a5c8a9cde9134071a12dd0aed684358cc8696
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698781"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292854"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Kerberos által korlátozott delegálás konfigurációi alkalmazásproxy hibaelhárítása
 
@@ -70,9 +70,9 @@ Mindkét ezeket a lemezképeket megjelenítése a azonos jelenség: egyszeri bej
 
 Hogyan háríthatóak attól függ, a problémát és az erőforrásigények tapasztalhatja. Mielőtt továbblépne a távolabb, megismerkedhet a következő cikkekben talál. Ezek nyújtanak hasznos információkat:
 
--   [Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása](active-directory-application-proxy-troubleshoot.md)
+-   [Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása](manage-apps/application-proxy-troubleshoot.md)
 
--   [Kerberos-hibákhoz, és a jelenség](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
+-   [Kerberos-hibákhoz, és a jelenség](manage-apps/application-proxy-troubleshoot.md#kerberos-errors)
 
 -   [Egyszeri bejelentkezési modellel működik. Ha a helyszíni és felhőalapú Identitások nem azonos](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 

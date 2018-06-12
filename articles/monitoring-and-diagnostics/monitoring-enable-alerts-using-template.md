@@ -1,24 +1,19 @@
 ---
-title: Riasztás létrehozása a klasszikus metrika az Azure Resource Manager sablonnal |} Microsoft Docs
+title: Riasztás létrehozása a klasszikus metrika az Azure Resource Manager sablonnal
 description: Útmutató Resource Manager sablon segítségével riasztás létrehozása a klasszikus metrika értesítéseket e-mailben vagy webhook.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.openlocfilehash: c83eeaf6c26aca3acdd43a767aa11357fa502544
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: metric
+ms.openlocfilehash: 67dac4f8d9b66f4b5f2654ffb16d9829387fc060
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263296"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) Azure metrika riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások annak érdekében, hogy helyesen legyen-e figyelve erőforrások létrehozásakor.

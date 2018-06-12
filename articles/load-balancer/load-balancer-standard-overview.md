@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 20897137c617ddf9a33a8f4966bcd7e30ac7c60c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261933"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer szabványos áttekintése
 
@@ -32,7 +33,7 @@ Standard terheléselosztó egy új terheléselosztó termék összes TCP és UDP
 
 Standard terheléselosztó nyilvános vagy belső terheléselosztó használható. És egy virtuális gépet egy nyilvános és egy belső terheléselosztó erőforrás lehet csatlakoztatni.
 
-A Load Balancer erőforrás funkciók mindig egész időtúllépést, egy szabályt, a állapotmintáihoz és a háttér-készlet definíciójának beolvasása.  Egy erőforrás több szabály is tartalmazhat. A háttérkészlet virtuális gépek elhelyezheti a háttérkészlet, a virtuális gép hálózati erőforrás megadásával.  A virtuálisgép-méretezési csoport esetén ez a paraméter továbbítja a hálózati profil, és kibontva.
+A Load Balancer erőforrás funkciók mindig egész időtúllépést, egy szabályt, a állapotmintáihoz és a háttér-készlet definíciójának beolvasása.  Egy erőforrás több szabály is tartalmazhat. A háttérkészlet virtuális gépek elhelyezheti a háttérkészlet, a virtuális gép hálózati erőforrás megadásával.  Ez a paraméter továbbítja a hálózati profil, és a virtuálisgép-méretezési csoportok használatakor kibontva.
 
 Egyik legfőbb szempontja a virtuális hálózat a az erőforrás.  Közben alapvető terheléselosztó létezik rendelkezésre állási csoportok hatókörében, szabványos terheléselosztó teljesen integrálva van a virtuális hálózat a hatókörét, és minden virtuális hálózati fogalmak alkalmazni.
 
@@ -43,7 +44,7 @@ Load Balancer erőforrások objektumai belül, amely akkor is express hogyan Azu
 
 ## <a name="why-use-standard-load-balancer"></a>Standard terheléselosztó miért érdemes használni?
 
-Standard terheléselosztó lehetővé teszi az alkalmazások és a magas rendelkezésre állás biztosítása kis méretű telepítések, a nagy és összetett több zóna architektúrák létrehozásához.
+A Standard Load Balancer használatával skálázhatók az alkalmazások, és magas rendelkezésre állás érhető el akár kis méretű üzemelő példányoknál, akár nagy és összetett, többzónás architektúrák esetében.
 
 Tekintse át az alábbi táblázatban a szabványos terheléselosztó és alapvető terheléselosztó közötti különbséget áttekintése:
 
@@ -71,7 +72,7 @@ Felülvizsgálati [szolgáltatási korlátait terheléselosztóhoz](https://aka.
 
 Standard terheléselosztó háttérkészletek bővíti a virtuális hálózatban lévő virtuális gép erőforrásokhoz.  Legfeljebb 1000 háttér példányokat tartalmazhat.  A háttér-példány IP-konfigurációt, amely a hálózati erőforrás-tulajdonság.
 
-A háttérkészlet önálló virtuális gépek, a rendelkezésre állási készletek vagy a virtuálisgép-méretezési csoportok tartalmazhatnak.  Akkor is keverése háttérkészlethez erőforrásokat, és ezeket az erőforrásokat, akár 150 teljes kombinációja tartalmazhat.
+A háttérkészlet önálló virtuális gépek, a rendelkezésre állási készletek vagy a virtuálisgép-méretezési csoportok tartalmazhatnak.  Is is keverése háttérkészlethez erőforrásokat. A Load Balancer erőforrásonként háttérkészlet legfeljebb 150 erőforrások kombinálhatja.
 
 Annak eldöntéséhez, hogy a háttérkészlet megtervezésére, megtervezheti a legkevésbé egyedi háttér címkészletet erőforrásokat tovább optimalizálhatja a kezelési műveletek időtartama száma.  Nincs különbség az adatok vezérlősík teljesítményt és a skála.
 
@@ -89,7 +90,7 @@ Felülvizsgálati [részletes leírást a rendelkezésre állási zónák kapcso
 
 ### <a name="diagnostics"></a> diagnosztika
 
-Standard terheléselosztó többdimenziós metrikák Azure figyelő keresztül biztosít.  A metrikák lehet szűrni, csoportosítva, és betekintést aktuális és előzménynaplók teljesítmény és a szolgáltatás állapotát.  Erőforrás állapota is támogatott.  Az alábbiakban olvashat rövid áttekintést támogatott diagnosztika:
+Standard terheléselosztó többdimenziós metrikák Azure figyelő keresztül biztosít.  A metrikák szűrve, csoportosítva és egy adott dimenzió kiemeltünk.  Teljesítmény és a szolgáltatás jelenlegi és előzménynaplók betekintést nyújtanak.  Erőforrás állapota is támogatott.  Az alábbiakban olvashat rövid áttekintést támogatott diagnosztika:
 
 | Metrika | Leírás |
 | --- | --- |
@@ -108,7 +109,7 @@ Standard Load Balancer egy új típusú szabály támogatja.
 
 Terheléselosztási szabályok az alkalmazás méretezési és magas megbízható konfigurálhatja. Amikor az egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály, szabványos terheléselosztó folyamata terheléselosztási minden rövid élettartamú port egy belső szabványos terheléselosztó tartozó előtérbeli IP-cím / biztosít.  A szolgáltatás akkor hasznos, az egyéb forgatókönyvek, ahol nem praktikus, vagy megadhat egyéni portokat a nemkívánatos.
 
-Egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály lehetővé teszi, hogy aktív-passzív vagy aktív-aktív n + 1 esetek létrehozása hálózati virtuális gépek és az összes alkalmazást, amely nagy adattartományokat vizsgálnak át bejövő portra van szükség.  Egy állapotmintáihoz segítségével határozza meg, melyik háttérkiszolgálókon kell kapnia új folyamatok.  A hálózati biztonsági csoportok segítségével egy port tartomány forgatókönyv emulálni.
+Egy magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabály lehetővé teszi, hogy aktív-passzív vagy aktív-aktív n + 1 esetek létrehozása hálózati virtuális gépek és az összes alkalmazásról, így nagy adattartományokat vizsgálnak át bejövő portra van szükség.  Egy állapotmintáihoz segítségével határozza meg, melyik háttérkiszolgálókon kell kapnia új folyamatok.  A hálózati biztonsági csoportok segítségével egy port tartomány forgatókönyv emulálni.
 
 >[!IMPORTANT]
 > Ha azt tervezi, hogy a hálózati virtuális készülék használja, ellenőrizze az gyártójánál, hogy tesztelték a terméket a magas rendelkezésre ÁLLÁSÚ portok útmutatót, és kövesse a végrehajtására vonatkozó konkrét útmutatást. 
@@ -117,7 +118,7 @@ Felülvizsgálati [részletes leírását a magas rendelkezésre ÁLLÁSÚ porto
 
 ### <a name="securebydefault"></a>Alapértelmezés szerint biztonságos
 
-Standard terheléselosztó teljesen előkészítve a virtuális hálózathoz.  A virtuális hálózat egy saját, lezárt hálózati.  Szabványos Terheléselosztókról, illetve a szabványos nyilvános IP-címeket úgy tervezték, hogy engedélyezze a virtuális hálózaton kívülről is hozzáférhetnek a virtuális hálózat, mert ezekhez az erőforrásokhoz alapértelmezés szerinti zárva, kivéve, ha megnyitja őket. Ez azt jelenti, hogy hálózati biztonsági csoportokkal (NSG-k) használnak az explicit módon engedélyezi, és a engedélyezett forgalmat.  A teljes virtuális adatközpont létrehozhat és NSG keresztül döntse el, mi, és ha annak elérhetőnek kell lennie.  Ha az alhálózat egy NSG-t vagy a virtuálisgép-erőforrás hálózati adapter nem rendelkezik, azt nem ad engedélyt forgalom az erőforrás elérésére.
+Standard terheléselosztó teljesen előkészítve a virtuális hálózathoz.  A virtuális hálózat egy saját, lezárt hálózati.  Szabványos Terheléselosztókról, illetve a szabványos nyilvános IP-címeket úgy tervezték, hogy engedélyezze a virtuális hálózaton kívülről is hozzáférhetnek a virtuális hálózat, mert ezekhez az erőforrásokhoz alapértelmezés szerinti zárva, kivéve, ha megnyitja őket. Ez azt jelenti, hogy hálózati biztonsági csoportokkal (NSG-k) használnak az explicit módon engedélyezi, és a engedélyezett forgalmat.  A teljes virtuális adatközpont létrehozhat és NSG keresztül döntse el, mi, és ha annak elérhetőnek kell lennie.  Ha egy NSG-t egy alhálózaton lévő vagy a virtuálisgép-erőforrás hálózati adapter nem rendelkezik, a forgalom nem engedélyezett az erőforrás elérésére.
 
 Az NSG-k és hogyan kell alkalmazni a forgatókönyvnek kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 
@@ -202,7 +203,7 @@ Termékváltozat nem változtatható. Kövesse az ebben a szakaszban található
 >
 >Basic és Standard Termékváltozat egyaránt rendelkezik különbségek számos ebben a cikkben leírt módon.  Győződjön meg arról, hogy tudomásul veszi, és készítse elő azokat a.
 >
->Megfelelő termékváltozatok terheléselosztó és a nyilvános IP-erőforrások kell használni. Alapszintű Termékváltozat Standard Termékváltozat erőforrásokat és vegyesen tartalmazhat. Nem lehet csatolni a önálló virtuális gépek, virtuális gépek egy rendelkezésre állási készlet erőforrás vagy egy virtuálisgép-méretezési állítsa erőforrások mindkét termékváltozatok egyidejűleg.
+>Megfelelő termékváltozatok terheléselosztó és a nyilvános IP-erőforrások kell használni. Alapszintű Termékváltozat Standard Termékváltozat erőforrásokat és vegyesen tartalmazhat. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 

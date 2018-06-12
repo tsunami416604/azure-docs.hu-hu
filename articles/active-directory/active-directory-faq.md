@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 09d7bfc8fc0fed5360936fbcb6a3accb791989f2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 46a636f32cb5bbfcadf9e6ca165c8dd4349d3083
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713711"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293143"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -164,7 +164,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 További információkért lásd:
 
 * [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](active-directory-scim-provisioning.md)
+* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
 **K: Hogyan jelentkeznek be a felhasználók az alkalmazásokba az Azure AD-vel?**

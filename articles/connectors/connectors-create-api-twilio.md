@@ -1,11 +1,11 @@
 ---
-title: "Adja hozzá a Twilio-összekötő az Azure Logic apps |} Microsoft Docs"
-description: "A REST API-paraméterekkel rendelkező Twilio-összekötő áttekintése"
+title: Adja hozzá a Twilio-összekötő az Azure Logic apps |} Microsoft Docs
+description: A REST API-paraméterekkel rendelkező Twilio-összekötő áttekintése
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/19/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 2bb7961c850fc8a35f3e114d9497941b188cf51b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8bcf69a7c8e04cb45d795fd0d6f20d477c15865d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296135"
 ---
 # <a name="get-started-with-the-twilio-connector"></a>A Twilio-összekötő az első lépései
 A globális SMS, MMS és IP-üzeneteket küldjön és fogadjon Twilio csatlakozni. A Twilio a következőket teheti:

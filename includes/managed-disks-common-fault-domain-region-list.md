@@ -10,7 +10,7 @@
 | USA északi középső régiója    | 3                       |
 | USA déli középső régiója    | 3                       |
 | USA nyugati középső régiója     | 2                       |
-| Közép-Kanada      | 2                       |
+| Közép-Kanada      | 3                      |
 | Kelet-Kanada         | 2                       |
 |                     |                         |
 | Észak-Európa        | 3                       |

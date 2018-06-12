@@ -1,6 +1,6 @@
 ---
-title: SQL-adatbázisok használata Azure veremben |} Microsoft Docs
-description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként.
+title: Az SQL Azure veremben erőforrás-szolgáltató eltávolítása |} Microsoft Docs
+description: Ismerje meg, hogyan eltávolíthatja az SQL erőforrás-szolgáltató az Azure Alkalmazásveremben üzembe.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,32 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c2686a2d5241af46e70263d1827028aa7e9b2138
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9f90201cad0f74923460c2f25eff4de98dc6690a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294780"
 ---
-# <a name="remove-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató eltávolítása
+# <a name="removing-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató eltávolítása  
+Mielőtt eltávolítaná a SQL erőforrás-szolgáltató, létfontosságú, először távolítsa el a függőségeket.
 
-Az erőforrás-szolgáltató SQL eltávolításához elengedhetetlen, először távolítsa el az összes függőséget:
+## <a name="remove-the-mysql-resource-provider"></a>A MySQL erőforrás-szolgáltató eltávolítása 
 
-1. Győződjön meg arról, hogy rendelkezik-e az eredeti központi telepítési csomag ezen verzióját az SQL erőforrás-szolgáltató adapter letöltött.
+1. Győződjön meg arról, hogy eltávolította a meglévő SQL erőforrás-szolgáltató függőségek.
 
-2. Összes felhasználói adatbázis törölni kell az erőforrás-szolgáltató. (A felhasználói adatbázis törlése nem törli az adatokat.) Ez a feladat a felhasználók maguk kell elvégezni.
+  > [!NOTE]
+  > Az SQL erőforrás-szolgáltató eltávolítása folytatódik, még akkor is, ha a tőle függő erőforrások jelenleg használ az erőforrás-szolgáltató. 
+  
+2. Győződjön meg arról, hogy rendelkezik-e az eredeti központi telepítési csomag ezen verzióját az SQL erőforrás-szolgáltató adapter letöltött.
+3. Futtassa újra a telepítési parancsfájl a következő paraméterekkel:
+    - Használja a - paraméter eltávolítása
+    - Az IP-cím vagy a kiemelt végpont DNS-nevét.
+    - A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait.
+    - Az Azure-verem szolgáltatás rendszergazdai fiók hitelesítő adatait. Azure verem telepítéséhez használt használja ugyanazokat a hitelesítő adatokat.
 
-3. A rendszergazda az üzemeltetési kiszolgáló törölni kell az SQL erőforrás-szolgáltató adapter.
-
-4. A rendszergazda törölnie kell az SQL erőforrás-szolgáltató adapter hivatkozó bármely tervek.
-
-5. A rendszergazda minden termékváltozatok és az SQL erőforrás-szolgáltató adapter társított kvóták kell törölnie.
-
-6. Futtassa újra a telepítési parancsprogram a következő elemeket:
-    - A - paraméter eltávolítása
-    - Az Azure Resource Manager-végpontok
-    - A DirectoryTenantID
-    - A szolgáltatás-rendszergazdai fiók hitelesítő adatait
-
+## <a name="next-steps"></a>További lépések
+[Mint Platformszolgáltatási ajánlat App Service szolgáltatások](azure-stack-app-service-overview.md)

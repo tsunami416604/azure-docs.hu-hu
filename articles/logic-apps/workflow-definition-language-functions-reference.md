@@ -3,7 +3,7 @@ title: Munkafolyamat Definition Language funkciók - Azure Logic Apps |} Microso
 description: További információk a logic apps Munkafolyamatdefiníciós nyelve a való létrehozásának funkciók
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f1871e1e135ecb9e7cb37c0bedff3737d3febb7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301388"
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Munkafolyamat definícióját nyelvi funkciók dokumentáció az Azure Logic Apps
 
@@ -46,12 +47,12 @@ action().outputs.body.<property>
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Tulajdonság*> | Nem | Karakterlánc | A műveleti objektum tulajdonság használni kívánt nevét: **neve**, **startTime**, **endTime**, **bemenetek**,  **kimeneti**, **állapot**, **kód**, **trackingId**, és **clientTrackingId**. Az Azure portálon található ezeket a tulajdonságokat egy adott futtatási előzményei részletek megtekintésével. További információkért lásd: [REST API - munkafolyamat futtatásához műveletek](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
+| <*Tulajdonság*> | Nem | Sztring | A műveleti objektum tulajdonság használni kívánt nevét: **neve**, **startTime**, **endTime**, **bemenetek**,  **kimeneti**, **állapot**, **kód**, **trackingId**, és **clientTrackingId**. Az Azure portálon található ezeket a tulajdonságokat egy adott futtatási előzményei részletek megtekintésével. További információkért lásd: [REST API - munkafolyamat futtatásához műveletek](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | -----| ----------- | 
-| <*o-művelet*> | Karakterlánc | Az aktuális művelet vagy a tulajdonság a kimenetét | 
+| <*o-művelet*> | Sztring | Az aktuális művelet vagy a tulajdonság a kimenetét | 
 |||| 
 
 <a name="actionBody"></a>
@@ -66,12 +67,12 @@ actionBody('<actionName>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A művelet neve `body` kívánt kimeneti | 
+| <*Műveletnév*> | Igen | Sztring | A művelet neve `body` kívánt kimeneti | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | -----| ----------- | 
-| <*o-művelet-szervezet*> | Karakterlánc | A `body` kimenetét a megadott művelet | 
+| <*o-művelet-szervezet*> | Sztring | A `body` kimenetét a megadott művelet | 
 |||| 
 
 *Példa*
@@ -111,12 +112,12 @@ actionOutputs('<actionName>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A művelet a nevét, amelyet kimenetének | 
+| <*Műveletnév*> | Igen | Sztring | A művelet a nevét, amelyet kimenetének | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | -----| ----------- | 
-| <*Kimeneti*> | Karakterlánc | A megadott művelet kimenetében | 
+| <*Kimeneti*> | Sztring | A megadott művelet kimenetében | 
 |||| 
 
 *Példa*
@@ -178,13 +179,13 @@ actions('<actionName>').outputs.body.<property>
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A művelet azt szeretné, amelynek kimenete objektum nevét  | 
-| <*Tulajdonság*> | Nem | Karakterlánc | A műveleti objektum tulajdonság használni kívánt nevét: **neve**, **startTime**, **endTime**, **bemenetek**,  **kimeneti**, **állapot**, **kód**, **trackingId**, és **clientTrackingId**. Az Azure portálon található ezeket a tulajdonságokat egy adott futtatási előzményei részletek megtekintésével. További információkért lásd: [REST API - munkafolyamat futtatásához műveletek](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
+| <*Műveletnév*> | Igen | Sztring | A művelet azt szeretné, amelynek kimenete objektum nevét  | 
+| <*Tulajdonság*> | Nem | Sztring | A műveleti objektum tulajdonság használni kívánt nevét: **neve**, **startTime**, **endTime**, **bemenetek**,  **kimeneti**, **állapot**, **kód**, **trackingId**, és **clientTrackingId**. Az Azure portálon található ezeket a tulajdonságokat egy adott futtatási előzményei részletek megtekintésével. További információkért lásd: [REST API - munkafolyamat futtatásához műveletek](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | -----| ----------- | 
-| <*o-művelet*> | Karakterlánc | A megadott művelet vagy tulajdonság kimenete | 
+| <*o-művelet*> | Sztring | A megadott művelet vagy tulajdonság kimenete | 
 |||| 
 
 *Példa*
@@ -239,14 +240,14 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 | <*nap*> | Igen | Egész szám | A napok hozzáadása pozitív vagy negatív szám | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | Az időbélyeg és a megadott napok száma alapján  | 
+| <*frissített időbélyeg*> | Sztring | Az időbélyeg és a megadott napok száma alapján  | 
 |||| 
 
 *1. példa*
@@ -281,14 +282,14 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 | <*Üzemideje (óra)*> | Igen | Egész szám | Az órát adja hozzá a pozitív vagy negatív szám | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | Az időbélyeg és a megadott számú üzemideje (óra)  | 
+| <*frissített időbélyeg*> | Sztring | Az időbélyeg és a megadott számú üzemideje (óra)  | 
 |||| 
 
 *1. példa*
@@ -323,14 +324,14 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 | <*perc*> | Igen | Egész szám | A hozzáadandó perc pozitív vagy negatív szám | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | Az időbélyeg és a megadott számú perc | 
+| <*frissített időbélyeg*> | Sztring | Az időbélyeg és a megadott számú perc | 
 |||| 
 
 *1. példa*
@@ -366,7 +367,7 @@ addProperty(<object>, '<property>', <value>)
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*Objektum*> | Igen | Objektum | A JSON-objektumból, ahová tulajdonság hozzáadása | 
-| <*Tulajdonság*> | Igen | Karakterlánc | A tulajdonság nevét | 
+| <*Tulajdonság*> | Igen | Sztring | A tulajdonság nevét | 
 | <*Érték*> | Igen | Bármelyik | A tulajdonság értéke |
 ||||| 
 
@@ -395,14 +396,14 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 | <*Másodpercben*> | Igen | Egész szám | A hozzáadandó másodpercben pozitív vagy negatív szám | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | Az időbélyeg és a megadott számú másodpercnél tovább  | 
+| <*frissített időbélyeg*> | Sztring | Az időbélyeg és a megadott számú másodpercnél tovább  | 
 |||| 
 
 *1. példa*
@@ -437,15 +438,15 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 | <*időköz*> | Igen | Egész szám | Adja hozzá a megadott idő egységek száma | 
-| <*timeUnit*> | Igen | Karakterlánc | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*timeUnit*> | Igen | Sztring | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | Az időbélyeget és az időegységek megadott száma  | 
+| <*frissített időbélyeg*> | Sztring | Az időbélyeget és az időegységek megadott száma  | 
 |||| 
 
 *1. példa*
@@ -532,7 +533,7 @@ array('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A karakterlánc egy tömb létrehozásához | 
+| <*Érték*> | Igen | Sztring | A karakterlánc egy tömb létrehozásához | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -562,12 +563,12 @@ base64('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A bemeneti karakterlánc | 
+| <*Érték*> | Igen | Sztring | A bemeneti karakterlánc | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*a Base64-karakterlánc*> | Karakterlánc | A bemeneti karakterlánc base64-kódolású verzióját | 
+| <*a Base64-karakterlánc*> | Sztring | A bemeneti karakterlánc base64-kódolású verzióját | 
 |||| 
 
 *Példa*
@@ -592,12 +593,12 @@ base64ToBinary('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A base64 kódolású karakterlánc konvertálni | 
+| <*Érték*> | Igen | Sztring | A base64 kódolású karakterlánc konvertálni | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*bináris a Base64 kódolású karakterlánc*> | Karakterlánc | A base64 kódolású karakterlánc bináris verzió | 
+| <*bináris a Base64 kódolású karakterlánc*> | Sztring | A base64 kódolású karakterlánc bináris verzió | 
 |||| 
 
 *Példa*
@@ -624,12 +625,12 @@ base64ToString('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A base64 kódolású karakterlánc dekódolás | 
+| <*Érték*> | Igen | Sztring | A base64 kódolású karakterlánc dekódolás | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*dekódolni base64-karakterlánc*> | Karakterlánc | A karakterlánc-verzió a base64 kódolású karakterlánc | 
+| <*dekódolni base64-karakterlánc*> | Sztring | A karakterlánc-verzió a base64 kódolású karakterlánc | 
 |||| 
 
 *Példa*
@@ -654,12 +655,12 @@ binary('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Alakítandó karakterláncot | 
+| <*Érték*> | Igen | Sztring | Alakítandó karakterláncot | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*bináris a bemeneti érték*> | Karakterlánc | A bináris verzióra a megadott karakterlánc | 
+| <*bináris a bemeneti érték*> | Sztring | A bináris verzióra a megadott karakterlánc | 
 |||| 
 
 *Példa*
@@ -686,12 +687,12 @@ body('<actionName>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A művelet neve `body` kívánt kimeneti | 
+| <*Műveletnév*> | Igen | Sztring | A művelet neve `body` kívánt kimeneti | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | -----| ----------- | 
-| <*o-művelet-szervezet*> | Karakterlánc | A `body` kimenetét a megadott művelet | 
+| <*o-művelet-szervezet*> | Sztring | A `body` kimenetét a megadott művelet | 
 |||| 
 
 *Példa*
@@ -801,12 +802,12 @@ concat('<text1>', '<text2>', ...)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg1*>, <*szöveg2*>,... | Igen | Karakterlánc | Legalább két karakterlánc egyesítése | 
+| <*Szöveg1*>, <*szöveg2*>,... | Igen | Sztring | Legalább két karakterlánc egyesítése | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*text1text2...*> | Karakterlánc | A kombinált bemeneti karakterláncok alapján létrehozott karakterlánc | 
+| <*text1text2...*> | Sztring | A kombinált bemeneti karakterláncok alapján létrehozott karakterlánc | 
 |||| 
 
 *Példa*
@@ -875,14 +876,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*destinationTimeZone*> | Igen | Karakterlánc | A célként megadott időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*destinationTimeZone*> | Igen | Sztring | A célként megadott időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*konvertálja időbélyeg*> | Karakterlánc | Az időbélyeg alakítja át a cél időzóna | 
+| <*konvertálja időbélyeg*> | Sztring | Az időbélyeg alakítja át a cél időzóna | 
 |||| 
 
 *1. példa*
@@ -917,15 +918,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*sourceTimeZone*> | Igen | Karakterlánc | A forrás időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*destinationTimeZone*> | Igen | Karakterlánc | A célként megadott időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*destinationTimeZone*> | Igen | Sztring | A célként megadott időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*konvertálja időbélyeg*> | Karakterlánc | Az időbélyeg alakítja át a cél időzóna | 
+| <*konvertálja időbélyeg*> | Sztring | Az időbélyeg alakítja át a cél időzóna | 
 |||| 
 
 *1. példa*
@@ -960,14 +961,14 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*sourceTimeZone*> | Igen | Karakterlánc | A forrás időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. További információkért lásd: [időzóna azonosítók](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80)). | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*konvertálja időbélyeg*> | Karakterlánc | Az UTC szerint konvertálja időbélyeg | 
+| <*konvertálja időbélyeg*> | Sztring | Az UTC szerint konvertálja időbélyeg | 
 |||| 
 
 *1. példa*
@@ -1032,12 +1033,12 @@ dataUri('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Alakítandó karakterláncot | 
+| <*Érték*> | Igen | Sztring | Alakítandó karakterláncot | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*adat-URI-azonosítót*> | Karakterlánc | Az adat-URI azonosító a bemeneti karakterlánc | 
+| <*adat-URI-azonosítót*> | Sztring | Az adat-URI azonosító a bemeneti karakterlánc | 
 |||| 
 
 *Példa*
@@ -1062,12 +1063,12 @@ dataUriToBinary('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az adat-URI azonosító konvertálni | 
+| <*Érték*> | Igen | Sztring | Az adat-URI azonosító konvertálni | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*bináris az adatok uri*> | Karakterlánc | Az adat-URI azonosító bináris verzióját | 
+| <*bináris az adatok uri*> | Sztring | Az adat-URI azonosító bináris verzióját | 
 |||| 
 
 *Példa*
@@ -1097,12 +1098,12 @@ dataUriToString('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az adat-URI azonosító konvertálni | 
+| <*Érték*> | Igen | Sztring | Az adat-URI azonosító konvertálni | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*karakterlánc az adatok uri*> | Karakterlánc | Az adat-URI azonosító karakterlánc verzióját | 
+| <*karakterlánc az adatok uri*> | Sztring | Az adat-URI azonosító karakterlánc verzióját | 
 |||| 
 
 *Példa*
@@ -1127,7 +1128,7 @@ dayOfMonth('<timestamp>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1157,7 +1158,7 @@ dayOfWeek('<timestamp>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1187,7 +1188,7 @@ dayOfYear('<timestamp>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1217,12 +1218,12 @@ decodeBase64('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A base64 kódolású karakterlánc dekódolás | 
+| <*Érték*> | Igen | Sztring | A base64 kódolású karakterlánc dekódolás | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*dekódolni base64-karakterlánc*> | Karakterlánc | A karakterlánc-verzió a base64 kódolású karakterlánc | 
+| <*dekódolni base64-karakterlánc*> | Sztring | A karakterlánc-verzió a base64 kódolású karakterlánc | 
 |||| 
 
 *Példa*
@@ -1247,12 +1248,12 @@ decodeDataUri('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az adatok dekódolására a URI karakterlánc | 
+| <*Érték*> | Igen | Sztring | Az adatok dekódolására a URI karakterlánc | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*bináris az adatok uri*> | Karakterlánc | A bináris verzió a URI karakterlánc adatok | 
+| <*bináris az adatok uri*> | Sztring | A bináris verzió a URI karakterlánc adatok | 
 |||| 
 
 *Példa*
@@ -1282,12 +1283,12 @@ decodeUriComponent('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A karakterlánc a escape-karakterekkel dekódolás | 
+| <*Érték*> | Igen | Sztring | A karakterlánc a escape-karakterekkel dekódolás | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*dekódolni uri*> | Karakterlánc | A dekódolt escape-karakterekkel frissített karakterlánc | 
+| <*dekódolni uri*> | Sztring | A dekódolt escape-karakterekkel frissített karakterlánc | 
 |||| 
 
 *Példa*
@@ -1344,12 +1345,12 @@ encodeUriComponent('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az URI-ként kódolt formában alakítandó karakterláncot | 
+| <*Érték*> | Igen | Sztring | Az URI-ként kódolt formában alakítandó karakterláncot | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*uri-kódolása*> | Karakterlánc | Az escape-karakterekkel URI-kódolású karakterlánc | 
+| <*uri-kódolása*> | Sztring | Az escape-karakterekkel URI-kódolású karakterlánc | 
 |||| 
 
 *Példa*
@@ -1409,8 +1410,8 @@ endsWith('<text>', '<searchText>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc | 
-| <*keresettszöveg amelyben*> | Igen | Karakterlánc | A befejezési karakterláncrész keresése | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc | 
+| <*keresettszöveg amelyben*> | Igen | Sztring | A befejezési karakterláncrész keresése | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1450,7 +1451,7 @@ equals('<object1>', '<object2>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Object1*>, <*object2*> | Igen | Különböző | A értékek, kifejezések vagy az összehasonlítandó objektumok | 
+| <*Object1*>, <*object2*> | Igen | különböző | A értékek, kifejezések vagy az összehasonlítandó objektumok | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1509,7 +1510,7 @@ first([0, 1, 2])
 
 <a name="float"></a>
 
-## <a name="float"></a>Lebegőpontos
+## <a name="float"></a>lebegőpontos
 
 A karakterlánc verziójú konvertálni a lebegőpontos szám egy tényleges lebegőpontos szám. E funkció használata csak akkor, ha egyéni paraméterek átadása alkalmazások, például a logikai alkalmazás számára.
 
@@ -1519,7 +1520,7 @@ float('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A karakterlánc, amely rendelkezik alakítható át érvényes lebegőpontos szám |
+| <*Érték*> | Igen | Sztring | A karakterlánc, amely rendelkezik alakítható át érvényes lebegőpontos szám |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1549,13 +1550,13 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*újraformázza időbélyeg*> | Karakterlánc | A frissített időbélyeg formátuma | 
+| <*újraformázza időbélyeg*> | Sztring | A frissített időbélyeg formátuma | 
 |||| 
 
 *Példa*
@@ -1580,8 +1581,8 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A műveletet, amelynek kimenete van a kulcs értéke | 
-| <*Kulcs*> | Igen | Karakterlánc | A használni kívánt kulcs nevét | 
+| <*Műveletnév*> | Igen | Sztring | A műveletet, amelynek kimenete van a kulcs értéke | 
+| <*Kulcs*> | Igen | Sztring | A használni kívánt kulcs nevét | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1611,13 +1612,13 @@ formDataValue('<actionName>', '<key>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A műveletet, amelynek kimenete van a kulcs értéke | 
-| <*Kulcs*> | Igen | Karakterlánc | A használni kívánt kulcs nevét |
+| <*Műveletnév*> | Igen | Sztring | A műveletet, amelynek kimenete van a kulcs értéke | 
+| <*Kulcs*> | Igen | Sztring | A használni kívánt kulcs nevét |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*kulcs-érték*> | Karakterlánc | A megadott kulcs értéke  | 
+| <*kulcs-érték*> | Sztring | A megadott kulcs értéke  | 
 |||| 
 
 *Példa* 
@@ -1643,13 +1644,13 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*időköz*> | Igen | Egész szám | A kivonandó időnél megadott idő egységek száma | 
-| <*timeUnit*> | Igen | Karakterlánc | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
+| <*timeUnit*> | Igen | Sztring | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | Az aktuális időbélyeg és a megadott számú időegység | 
+| <*frissített időbélyeg*> | Sztring | Az aktuális időbélyeg és a megadott számú időegység | 
 |||| 
 
 *1. példa*
@@ -1685,13 +1686,13 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*időköz*> | Igen | Egész szám | A kivonandó időnél megadott idő egységek száma | 
-| <*timeUnit*> | Igen | Karakterlánc | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
+| <*timeUnit*> | Igen | Sztring | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | A megadott számú időegységek mínusz aktuális időbélyeg | 
+| <*frissített időbélyeg*> | Sztring | A megadott számú időegységek mínusz aktuális időbélyeg | 
 |||| 
 
 *1. példa*
@@ -1805,12 +1806,12 @@ guid('<format>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Formátumban*> | Nem | Karakterlánc | Egyetlen [megadása formázása](https://msdn.microsoft.com/library/97af8hh4) visszaadott GUID. Alapértelmezés szerint a formátum: "D", de használhatja a "N", "D", "B", "P" vagy "X". | 
+| <*Formátumban*> | Nem | Sztring | Egyetlen [megadása formázása](https://msdn.microsoft.com/library/97af8hh4) visszaadott GUID. Alapértelmezés szerint a formátum: "D", de használhatja a "N", "D", "B", "P" vagy "X". | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*GUID-érték*> | Karakterlánc | Egy véletlenszerűen előállított GUID Azonosítóhoz | 
+| <*GUID-érték*> | Sztring | Egy véletlenszerűen előállított GUID Azonosítóhoz | 
 |||| 
 
 *Példa* 
@@ -1865,8 +1866,8 @@ indexOf('<text>', '<searchText>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc, amely rendelkezik a karakterláncrész keresése | 
-| <*keresettszöveg amelyben*> | Igen | Karakterlánc | A karakterláncrész keresése | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc, amely rendelkezik a karakterláncrész keresése | 
+| <*keresettszöveg amelyben*> | Igen | Sztring | A karakterláncrész keresése | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1896,7 +1897,7 @@ int('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Alakítandó karakterláncot | 
+| <*Érték*> | Igen | Sztring | Alakítandó karakterláncot | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1949,7 +1950,7 @@ items('<loopName>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*loopName*> | Igen | Karakterlánc | A nevet a-each ciklus | 
+| <*loopName*> | Igen | Sztring | A nevet a-each ciklus | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -1967,7 +1968,7 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-## <a name="json"></a>JSON-ban
+## <a name="json"></a>JSON
 
 A JavaScript Object Notation (JSON) típusú érték, vagy egy karakterlánc- vagy XML-objektumot vissza.
 
@@ -2078,12 +2079,12 @@ join([<collection>], '<delimiter>')
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*Gyűjtemény*> | Igen | Tömb | A tömb a elemekkel való csatlakozáshoz |  
-| <*Elválasztó*> | Igen | Karakterlánc | Az elválasztó, amely akkor jelenik meg a létrehozott karakterláncban szereplő karakterek közé | 
+| <*Elválasztó*> | Igen | Sztring | Az elválasztó, amely akkor jelenik meg a létrehozott karakterláncban szereplő karakterek közé | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*char1*><*elválasztó*><*char2*><*elválasztó*>... | Karakterlánc | A megadott tömb elemeinek alapján létrehozott az eredményül kapott karakterláncot |
+| <*char1*><*elválasztó*><*char2*><*elválasztó*>... | Sztring | A megadott tömb elemeinek alapján létrehozott az eredményül kapott karakterláncot |
 |||| 
 
 *Példa* 
@@ -2143,8 +2144,8 @@ lastIndexOf('<text>', '<searchText>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc, amely rendelkezik a karakterláncrész keresése | 
-| <*keresettszöveg amelyben*> | Igen | Karakterlánc | A karakterláncrész keresése | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc, amely rendelkezik a karakterláncrész keresése | 
+| <*keresettszöveg amelyben*> | Igen | Sztring | A karakterláncrész keresése | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -2280,7 +2281,7 @@ listCallbackUrl()
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*a visszahívás-URL-címe*> | Karakterlánc | A visszahívási URL-cím egy eseményindító vagy művelet |  
+| <*a visszahívás-URL-címe*> | Sztring | A visszahívási URL-cím egy eseményindító vagy művelet |  
 |||| 
 
 *Példa*
@@ -2433,13 +2434,13 @@ multipartBody('<actionName>', <index>)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Műveletnév*> | Igen | Karakterlánc | A művelet, amely több alkotórészek rendelkezik kimeneti a nevét | 
+| <*Műveletnév*> | Igen | Sztring | A művelet, amely több alkotórészek rendelkezik kimeneti a nevét | 
 | <*Index*> | Igen | Egész szám | Az értéket, amelyet a részére | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*Törzs*> | Karakterlánc | A szervezet a megadott részére | 
+| <*Törzs*> | Sztring | A szervezet a megadott részére | 
 |||| 
 
 <a name="not"></a>
@@ -2550,7 +2551,7 @@ parameters('<parameterName>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*parameterName*> | Igen | Karakterlánc | A használni kívánt paraméterének neve | 
+| <*parameterName*> | Igen | Sztring | A használni kívánt paraméterének neve | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -2650,14 +2651,14 @@ replace('<text>', '<oldText>', '<newText>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc, amely rendelkezik a lecserélendő karakterláncrészletet | 
-| <*oldText*> | Igen | Karakterlánc | A lecserélendő karakterláncrészletet | 
-| <*newText*> | Igen | Karakterlánc | A behelyettesítendő karakterláncot | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc, amely rendelkezik a lecserélendő karakterláncrészletet | 
+| <*oldText*> | Igen | Sztring | A lecserélendő karakterláncrészletet | 
+| <*newText*> | Igen | Sztring | A behelyettesítendő karakterláncot | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített szöveg*> | Karakterlánc | A substring cseréje után a frissített karakterlánc <p>Ha a substring nem található, az eredeti karakterláncot adja vissza. | 
+| <*frissített szöveg*> | Sztring | A substring cseréje után a frissített karakterlánc <p>Ha a substring nem található, az eredeti karakterláncot adja vissza. | 
 |||| 
 
 *Példa* 
@@ -2683,7 +2684,7 @@ removeProperty(<object>, '<property>')
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*Objektum*> | Igen | Objektum | A JSON-objektumból, ahol el szeretné távolítani egy tulajdonságot | 
-| <*Tulajdonság*> | Igen | Karakterlánc | Az eltávolítandó tulajdonság neve | 
+| <*Tulajdonság*> | Igen | Sztring | Az eltávolítandó tulajdonság neve | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -2712,7 +2713,7 @@ setProperty(<object>, '<property>', <value>)
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*Objektum*> | Igen | Objektum | A JSON-objektum, amelynek tulajdonsága be szeretné állítani | 
-| <*Tulajdonság*> | Igen | Karakterlánc | A meglévő vagy új tulajdonság beállításához a nevét | 
+| <*Tulajdonság*> | Igen | Sztring | A meglévő vagy új tulajdonság beállításához a nevét | 
 | <*Érték*> | Igen | Bármelyik | Az érték a megadott tulajdonság beállítása |
 ||||| 
 
@@ -2772,8 +2773,8 @@ split('<text>', '<separator>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterláncot, amely a leíró karaktereket tartalmaz |  
-| <*Elválasztó*> | Igen | Karakterlánc | Az elválasztó, amely akkor jelenik meg, a karakterek eredményül kapott tömbben között | 
+| <*Szöveg*> | Igen | Sztring | A karakterláncot, amely a leíró karaktereket tartalmaz |  
+| <*Elválasztó*> | Igen | Sztring | Az elválasztó, amely akkor jelenik meg, a karakterek eredményül kapott tömbben között | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -2803,13 +2804,13 @@ startOfDay('<timestamp>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | A megadott időbélyeg, de a nulla órás kezdődő jelölje napjára | 
+| <*frissített időbélyeg*> | Sztring | A megadott időbélyeg, de a nulla órás kezdődő jelölje napjára | 
 |||| 
 
 *Példa* 
@@ -2834,13 +2835,13 @@ startOfHour('<timestamp>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | A megadott időbélyeg, de a nulla perces kezdődő jelölje meg az egy óra | 
+| <*frissített időbélyeg*> | Sztring | A megadott időbélyeg, de a nulla perces kezdődő jelölje meg az egy óra | 
 |||| 
 
 *Példa* 
@@ -2865,13 +2866,13 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | A megadott időbélyeg, de a nulla órás be van jelölve, a hónap első napján indítása | 
+| <*frissített időbélyeg*> | Sztring | A megadott időbélyeg, de a nulla órás be van jelölve, a hónap első napján indítása | 
 |||| 
 
 *Példa* 
@@ -2896,8 +2897,8 @@ startsWith('<text>', '<searchText>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc | 
-| <*keresettszöveg amelyben*> | Igen | Karakterlánc | A kezdő karakterlánc kereséséhez | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc | 
+| <*keresettszöveg amelyben*> | Igen | Sztring | A kezdő karakterlánc kereséséhez | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -2927,7 +2928,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-## <a name="string"></a>karakterlánc
+## <a name="string"></a>sztring
 
 Visszatérési érték karakterlánc verzióját.
 
@@ -2942,7 +2943,7 @@ string(<value>)
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*karakterlánc-érték*> | Karakterlánc | A megadott érték karakterlánc verzióját | 
+| <*karakterlánc-érték*> | Sztring | A megadott érték karakterlánc verzióját | 
 |||| 
 
 *1. példa* 
@@ -3008,14 +3009,14 @@ substring('<text>', <startIndex>, <length>)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterláncot, amelynek kívánt karakterek | 
+| <*Szöveg*> | Igen | Sztring | A karakterláncot, amelynek kívánt karakterek | 
 | <*startIndex*> | Igen | Egész szám | A kezdő helyzete, vagy súgóindex-értéket egy pozitív számot | 
 | <*Hossza*> | Igen | Egész szám | A pozitív számú karaktert, a substring kívánt | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*Substring-eredménye*> | Karakterlánc | A megadott számú karaktert, a forrás-karakterláncban megadott pozíciótól kezdődően a karakterláncrész | 
+| <*Substring-eredménye*> | Sztring | A megadott számú karaktert, a forrás-karakterláncban megadott pozíciótól kezdődően a karakterláncrész | 
 |||| 
 
 *Példa* 
@@ -3040,15 +3041,15 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | A karakterlánc, amely tartalmazza az időbélyeget | 
+| <*időbélyeg*> | Igen | Sztring | A karakterlánc, amely tartalmazza az időbélyeget | 
 | <*időköz*> | Igen | Egész szám | A kivonandó időnél megadott idő egységek száma | 
-| <*timeUnit*> | Igen | Karakterlánc | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
+| <*timeUnit*> | Igen | Sztring | A használandó egysége *időköz*: "Második", "Minute", "Hour", "Day", "Hetente", "Honap", "EV" | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*frissített időbélyeg*> | Karakterlánc | A megadott számú időegységek mínusz időbélyeg | 
+| <*frissített időbélyeg*> | Sztring | A megadott számú időegységek mínusz időbélyeg | 
 |||| 
 
 *1. példa*
@@ -3109,7 +3110,7 @@ take([0, 1, 2, 3, 4], 3)
 
 <a name="ticks"></a>
 
-## <a name="ticks"></a>Ticks
+## <a name="ticks"></a>órajel
 
 Térjen vissza a `ticks` megadott időbélyeg-tulajdonság értéke. A *osztásjelek* egy 100 nanoszekundumos időszakban van.
 
@@ -3119,7 +3120,7 @@ ticks('<timestamp>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*időbélyeg*> | Igen | Karakterlánc | Az időbélyeg karakterlánc | 
+| <*időbélyeg*> | Igen | Sztring | Az időbélyeg karakterlánc | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -3139,12 +3140,12 @@ toLower('<text>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc kis formátumban vissza | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc kis formátumban vissza | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*kisbetűk-szöveg*> | Karakterlánc | Az eredeti karakterláncot kisbetűssé formátumban | 
+| <*kisbetűk-szöveg*> | Sztring | Az eredeti karakterláncot kisbetűssé formátumban | 
 |||| 
 
 *Példa* 
@@ -3169,12 +3170,12 @@ toUpper('<text>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc nagybetűssé formátumban vissza | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc nagybetűssé formátumban vissza | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*nagybetűk szöveg*> | Karakterlánc | Az eredeti karakterláncot nagybetűssé formátumban | 
+| <*nagybetűk szöveg*> | Sztring | Az eredeti karakterláncot nagybetűssé formátumban | 
 |||| 
 
 *Példa* 
@@ -3205,7 +3206,7 @@ trigger()
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*eseményindító-kimenet*> | Karakterlánc | Egy eseményindító futásidőben kimenete | 
+| <*eseményindító-kimenet*> | Sztring | Egy eseményindító futásidőben kimenete | 
 |||| 
 
 <a name="triggerBody"></a>
@@ -3220,7 +3221,7 @@ triggerBody()
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*o-eseményindító-szervezet*> | Karakterlánc | A `body` az eseményindító kimenetét | 
+| <*o-eseményindító-szervezet*> | Sztring | A `body` az eseményindító kimenetét | 
 |||| 
 
 <a name="triggerFormDataMultiValues"></a>
@@ -3235,7 +3236,7 @@ triggerFormDataMultiValues('<key>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Kulcs*> | Igen | Karakterlánc | A használni kívánt kulcs nevét | 
+| <*Kulcs*> | Igen | Sztring | A használni kívánt kulcs nevét | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -3265,12 +3266,12 @@ triggerFormDataValue('<key>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Kulcs*> | Igen | Karakterlánc | A használni kívánt kulcs nevét |
+| <*Kulcs*> | Igen | Sztring | A használni kívánt kulcs nevét |
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*kulcs-érték*> | Karakterlánc | A megadott kulcs értéke | 
+| <*kulcs-érték*> | Sztring | A megadott kulcs értéke | 
 |||| 
 
 *Példa* 
@@ -3298,7 +3299,7 @@ triggerMultipartBody(<index>)
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*Törzs*> | Karakterlánc | A szervezet a trigger elem több részből álló kimenet megadott rész | 
+| <*Törzs*> | Sztring | A szervezet a trigger elem több részből álló kimenet megadott rész | 
 |||| 
 
 <a name="triggerOutputs"></a>
@@ -3313,7 +3314,7 @@ triggerOutputs()
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*eseményindító-kimenet*> | Karakterlánc | Egy eseményindító futásidőben kimenete  | 
+| <*eseményindító-kimenet*> | Sztring | Egy eseményindító futásidőben kimenete  | 
 |||| 
 
 <a name="trim"></a>
@@ -3328,12 +3329,12 @@ trim('<text>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Karakterlánc | A karakterlánc, amely rendelkezik a kezdő és záró szóközök eltávolítása | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc, amely rendelkezik a kezdő és záró szóközök eltávolítása | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*updatedText*> | Karakterlánc | Frissítse az eredeti karakterlánc szerepel bevezető vagy záró szóközök nélkül | 
+| <*updatedText*> | Sztring | Frissítse az eredeti karakterlánc szerepel bevezető vagy záró szóközök nélkül | 
 |||| 
 
 *Példa* 
@@ -3389,12 +3390,12 @@ uriComponent('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az URI-ként kódolt formában alakítandó karakterláncot | 
+| <*Érték*> | Igen | Sztring | Az URI-ként kódolt formában alakítandó karakterláncot | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*uri-kódolása*> | Karakterlánc | Az escape-karakterekkel URI-kódolású karakterlánc | 
+| <*uri-kódolása*> | Sztring | Az escape-karakterekkel URI-kódolású karakterlánc | 
 |||| 
 
 *Példa*
@@ -3419,12 +3420,12 @@ uriComponentToBinary('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az átalakítandó URI-kódolású karakterlánc | 
+| <*Érték*> | Igen | Sztring | Az átalakítandó URI-kódolású karakterlánc | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*bináris-az-kódolású-uri*> | Karakterlánc | Az URI-kódolású karakterlánc bináris verzióját. A bináris tartalma base64-kódolású és által képviselt `$content`. | 
+| <*bináris-az-kódolású-uri*> | Sztring | Az URI-kódolású karakterlánc bináris verzióját. A bináris tartalma base64-kódolású és által képviselt `$content`. | 
 |||| 
 
 *Példa*
@@ -3454,12 +3455,12 @@ uriComponentToString('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | Az URI-kódolású karakterlánc dekódolás | 
+| <*Érték*> | Igen | Sztring | Az URI-kódolású karakterlánc dekódolás | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*dekódolni uri*> | Karakterlánc | Az URI-kódolású karakterlánc dekódolt verzióját | 
+| <*dekódolni uri*> | Sztring | Az URI-kódolású karakterlánc dekódolt verzióját | 
 |||| 
 
 *Példa*
@@ -3484,12 +3485,12 @@ uriHost('<uri>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*URI*> | Igen | Karakterlánc | Az URI amelynek `host` kívánt érték | 
+| <*URI*> | Igen | Sztring | Az URI amelynek `host` kívánt érték | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*gazdagép-értékét*> | Karakterlánc | A `host` értéket a megadott URI-hoz | 
+| <*gazdagép-értékét*> | Sztring | A `host` értéket a megadott URI-hoz | 
 |||| 
 
 *Példa*
@@ -3514,12 +3515,12 @@ uriPath('<uri>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*URI*> | Igen | Karakterlánc | Az URI amelynek `path` kívánt érték | 
+| <*URI*> | Igen | Sztring | Az URI amelynek `path` kívánt érték | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*elérési út-értéke*> | Karakterlánc | A `path` értéket a megadott URI-hoz. Ha `path` nem rendelkezik értékkel, a "/" karaktert adja vissza. | 
+| <*elérési út-értéke*> | Sztring | A `path` értéket a megadott URI-hoz. Ha `path` nem rendelkezik értékkel, a "/" karaktert adja vissza. | 
 |||| 
 
 *Példa*
@@ -3544,12 +3545,12 @@ uriPathAndQuery('<uri>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*URI*> | Igen | Karakterlánc | Az URI amelynek `path` és `query` kívánt értékek | 
+| <*URI*> | Igen | Sztring | Az URI amelynek `path` és `query` kívánt értékek | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*elérési út – lekérdezés-értéke*> | Karakterlánc | A `path` és `query` értékeket a megadott URI-hoz. Ha `path` nem adja meg egy értéket, a "/" karaktert adja vissza. | 
+| <*elérési út – lekérdezés-értéke*> | Sztring | A `path` és `query` értékeket a megadott URI-hoz. Ha `path` nem adja meg egy értéket, a "/" karaktert adja vissza. | 
 |||| 
 
 *Példa*
@@ -3574,7 +3575,7 @@ uriPort('<uri>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*URI*> | Igen | Karakterlánc | Az URI amelynek `port` kívánt érték | 
+| <*URI*> | Igen | Sztring | Az URI amelynek `port` kívánt érték | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -3604,12 +3605,12 @@ uriQuery('<uri>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*URI*> | Igen | Karakterlánc | Az URI amelynek `query` kívánt érték | 
+| <*URI*> | Igen | Sztring | Az URI amelynek `query` kívánt érték | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*lekérdezés-érték*> | Karakterlánc | A `query` értéket a megadott URI-hoz | 
+| <*lekérdezés-érték*> | Sztring | A `query` értéket a megadott URI-hoz | 
 |||| 
 
 *Példa*
@@ -3634,12 +3635,12 @@ uriScheme('<uri>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*URI*> | Igen | Karakterlánc | Az URI amelynek `scheme` kívánt érték | 
+| <*URI*> | Igen | Sztring | Az URI amelynek `scheme` kívánt érték | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*rendszer-érték*> | Karakterlánc | A `scheme` értéket a megadott URI-hoz | 
+| <*rendszer-érték*> | Sztring | A `scheme` értéket a megadott URI-hoz | 
 |||| 
 
 *Példa*
@@ -3667,12 +3668,12 @@ Másik lehetőségként megadhat egy másik formátummal a <*formátum*> paramé
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Formátumban*> | Nem | Karakterlánc | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
+| <*Formátumban*> | Nem | Sztring | Vagy egy [egyetlen formátummegadó](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy egy [egyéni formátum mintát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Az alapértelmezett az időbélyeg formátuma ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-ddT:mm:ss:fffffffK), amely megfelel [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) és megőrzi az időzóna-információk. | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| <*aktuális-időbélyeg*> | Karakterlánc | Az aktuális dátum és idő | 
+| <*aktuális-időbélyeg*> | Sztring | Az aktuális dátum és idő | 
 |||| 
 
 *1. példa*
@@ -3707,7 +3708,7 @@ variables('<variableName>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*variableName*> | Igen | Karakterlánc | A használni kívánt változó nevét | 
+| <*variableName*> | Igen | Sztring | A használni kívánt változó nevét | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 
@@ -3737,7 +3738,7 @@ workflow().<property>
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Tulajdonság*> | Nem | Karakterlánc | A munkafolyamat tulajdonság használni kívánt nevét <p>Egy munkafolyamat-objektumnak van, ezek a tulajdonságok: **neve**, **típus**, **azonosító**, **hely**, és **futtatása**. A **futtatása** tulajdonság értéke is olyan objektum, amely rendelkezik ezekkel a tulajdonságokkal: **neve**, **típus**, és **azonosító**. | 
+| <*Tulajdonság*> | Nem | Sztring | A munkafolyamat tulajdonság használni kívánt nevét <p>Egy munkafolyamat-objektumnak van, ezek a tulajdonságok: **neve**, **típus**, **azonosító**, **hely**, és **futtatása**. A **futtatása** tulajdonság értéke is olyan objektum, amely rendelkezik ezekkel a tulajdonságokkal: **neve**, **típus**, és **azonosító**. | 
 ||||| 
 
 *Példa*
@@ -3760,7 +3761,7 @@ xml('<value>')
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Érték*> | Igen | Karakterlánc | A karakterlánc alakítható át JSON-objektum <p>A JSON-objektum csak egyetlen legfelső szintű tulajdonsággal kell rendelkeznie. <br>Használja a fordított perjel karaktert (\\) a dupla idézőjel (") helyettesítő karakterek. | 
+| <*Érték*> | Igen | Sztring | A karakterlánc alakítható át JSON-objektum <p>A JSON-objektum csak egyetlen legfelső szintű tulajdonsággal kell rendelkeznie. <br>Használja a fordított perjel karaktert (\\) a dupla idézőjel (") helyettesítő karakterek. | 
 ||||| 
 
 | Visszatérési érték | Típus | Leírás | 

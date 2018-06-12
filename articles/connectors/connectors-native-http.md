@@ -3,7 +3,7 @@ title: A tetszőleges végpontot HTTP - Azure Logic Apps protokollt használó k
 description: Hozzon létre a logic apps, amely képes kommunikálni a tetszőleges végpontot HTTP Protokollon keresztül
 services: logic-apps
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 tags: connectors
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 355d1e02ef8195bcee469b77976f1a5834f192d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 452af4facd03ce2b4f010a29acc0122241df63c1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296424"
 ---
 # <a name="get-started-with-the-http-action"></a>Ismerkedjen meg a HTTP-művelet
 
@@ -193,7 +194,7 @@ A következő hitelesítési objektum Azure AD OAuth-hitelesítés szükséges. 
 | --- | --- | --- |
 | Típus * |type |A hitelesítés típusát (kell `ActiveDirectoryOAuth` az Azure AD OAuth) |
 | Bérlői * |bérlő |A bérlő azonosítóját az Azure AD-bérlő |
-| A célközönség * |Célközönség |Az engedélyezési használatára a kért erőforrás. Például:`https://management.core.windows.net/` |
+| A célközönség * |Célközönség |Az erőforrás, melynek használatához engedélyt kér. Például:`https://management.core.windows.net/` |
 | Ügyfél-azonosító * |clientId |Az ügyfél az Azure AD-alkalmazás azonosítója |
 | Titkos kulcs * |titkos kód |A titkos kulcsot a jogkivonatot kérő ügyfél |
 

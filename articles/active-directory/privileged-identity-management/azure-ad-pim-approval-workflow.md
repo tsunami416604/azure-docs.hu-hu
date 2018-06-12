@@ -1,26 +1,27 @@
 ---
-title: "Azure Privileged Identity Management jóváhagyási munkafolyamatok |} Microsoft Docs"
-description: "További tudnivalók a jóváhagyási munkafolyamatok Privileged Identity Management (PIM)"
+title: Azure Privileged Identity Management jóváhagyási munkafolyamatok |} Microsoft Docs
+description: További tudnivalók a jóváhagyási munkafolyamatok Privileged Identity Management (PIM)
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
-ms.author: barclayn
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f30dd06417d9ce4d71c88ba170a4f3169b5fccd7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6e14d91eae367ef62d1ff2e4cb6ddeb47c9fbbea
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261015"
 ---
-# <a name="approvals"></a>Engedélyek
+# <a name="approvals"></a>Approvals
 
 ## <a name="overview"></a>Áttekintés
 
@@ -39,29 +40,29 @@ A private Preview verziójára a következő szituációkat ismerteti:
 
 **A kiemelt szerepkör rendszergazda (PRA), a következőket teheti:**
 
--   [egyes szerepkörök jóváhagyás engedélyezése](#enable-approval-for-specific-roles)
+-   [Egyes szerepkörök jóváhagyás engedélyezése](#enable-approval-for-specific-roles)
 
 -   [Adja meg a jóváhagyó felhasználók és/vagy a csoportok kérelmek jóváhagyása](#specify-approver-users-and/or-groups-to-approve-requests)
 
--   [minden kiemelt szerepkört a kérelem és a jóváhagyási előzményeinek megtekintése](#view-request-and-approval-history-for-all-privileged-roles)
+-   [Minden kiemelt szerepkört a kérelem és a jóváhagyási előzményeinek megtekintése](#view-request-and-approval-history-for-all-privileged-roles)
 
 **Egy kijelölt jóváhagyó, mint a következő műveletek végezhetők el:**
 
--   [függőben lévő jóváhagyások (kérelmek) megtekintése](#view-pending-approvals-requests)
+-   [Függőben lévő jóváhagyások (kérelmek) megtekintése](#view-pending-approvals-requests)
 
--   [jóváhagyhatja vagy elutasíthatja az (egyetlen és tömeges) szerepkör jogosultságszint-emelési kérések](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
+-   [Jóváhagyhatja vagy elutasíthatja az (egyetlen és tömeges) szerepkör jogosultságszint-emelési kérések](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
 
 -   [Adja meg a jóváhagyási elutasítási indokát](#provide-justification-for-my-approval/rejection) 
 
 **Jogosult szerepkör felhasználóként a következő műveletek végezhetők el:**
 
--   [a jóváhagyást igénylő szerepkört aktiválási kérelmeinek megadása](#request-activation-of-a-role-that-requires-approval)
+-   [A jóváhagyást igénylő szerepkört aktiválási kérelmeinek megadása](#request-activation-of-a-role-that-requires-approval)
 
--   [aktiválja a kérelem állapotának megtekintése](#view-the-status-of-your-request-to-activate)
+-   [Aktiválja a kérelem állapotának megtekintése](#view-the-status-of-your-request-to-activate)
 
--   [a feladat befejezése az Azure AD, ha az aktiválás jóváhagyva](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [A feladat befejezése az Azure AD, ha az aktiválás jóváhagyva](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
-### <a name="navigation"></a>Navigációs
+### <a name="navigation"></a>Navigálás
 
 Frissítettük a navigációs jóváhagyások támogatásához
 
@@ -187,6 +188,6 @@ Ha elfogadja a kérelmet, a szerepkör aktív, és folytathatja a munkát az ehh
 
 ![](media/azure-ad-pim-approval-workflow/image043.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Visszajelzése fontos számunkra. Küldje el nyugodtan megosztása megjegyzések vagy visszajelzést szeretne küldeni nekünk Itt!

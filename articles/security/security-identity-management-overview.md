@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 22b233e23c5c4609990bb6ba6148fe24d3d82c4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8763f1dca110a43586619c09f5d25c340c177b09
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641349"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300657"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure-identitás biztonsági – áttekintés
 Microsoft identitások és hozzáférések felügyeleti megoldások Súgó informatikai védelme alkalmazásokhoz és erőforrásokhoz való hozzáférést, az vállalati adatközpontban és a felhőben. Ez a védelem lehetővé teszi, hogy a gazdakép, például többtényezős hitelesítés és a feltételes hozzáférési házirendek további szinteket. Gyanús tevékenységek figyelése keresztül speciális biztonsági jelentés, naplózásához és riasztási segít mérsékelni a potenciális biztonsági problémákat. [Az Azure Active Directory Premium](../active-directory/active-directory-editions.md) webalkalmazások hozzáférését, amikor a helyi és egyszeri bejelentkezés (SSO) egy szolgáltatott szoftverként (SaaS) alkalmazások, a felhő szoftver több ezer biztosít.
@@ -58,7 +58,7 @@ További információ:
 
 * [Az egyszeri bejelentkezés – áttekintés](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Azure Active Directoryval az egyszeri bejelentkezés integrálása SaaS-alkalmazásokhoz](../active-directory/active-directory-enterprise-apps-manage-sso.md)
+* [Azure Active Directoryval az egyszeri bejelentkezés integrálása SaaS-alkalmazásokhoz](../active-directory/manage-apps/configure-single-sign-on-portal.md)
 
 ## <a name="reverse-proxy"></a>Fordított proxy
 Az Azure AD-alkalmazásproxy lehetővé teszi, hogy a helyszíni alkalmazások, például közzététele [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) helyek, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), és [IIS](http://www.iis.net/)-alapú alkalmazások a magánhálózaton belül és biztonságos hozzáférést biztosít a felhasználók a hálózaton kívülről. Alkalmazásproxy távoli hozzáférést biztosít, és számos különböző típusú helyszíni az SSO webalkalmazásokat a több ezer, amely támogatja az Azure AD SaaS-alkalmazásokhoz. Az alkalmazottak jelentkezhetnek be az alkalmazásokat a saját eszközükön otthoni és a felhő alapú proxyn keresztül történő hitelesítéséhez.

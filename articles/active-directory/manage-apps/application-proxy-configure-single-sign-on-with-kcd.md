@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: ae79d081cc171fe904bf50b2341d7abd8f58e4f5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e3cc261576e38cc304dc740f89582f7fd857e1a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594499"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293034"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba a Proxy
 
@@ -141,7 +141,7 @@ Azonban bizonyos esetekben a kérelem sikeresen továbbítódik a háttéralkalm
 ## <a name="next-steps"></a>További lépések
 
 * [Az alkalmazásproxy alkalmazás Kerberos által korlátozott delegálás konfigurálása](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Az alkalmazásproxy problémák elhárítása](../active-directory-application-proxy-troubleshoot.md)
+* [Az alkalmazásproxy problémák elhárítása](application-proxy-troubleshoot.md)
 
 
 A legújabb híreket és frissítéseket itt találja: [Alkalmazásproxy blog](http://blogs.technet.com/b/applicationproxyblog/).

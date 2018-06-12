@@ -16,11 +16,12 @@ ms.date: 07/18/2016
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 02d7cb28411e0baec20d334994b385dcd3b06451
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293381"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directoryban kulcsváltás aláírása
 A cikk ismerteti, mit kell tudnia a nyilvános kulcsok biztonsági jogkivonatok aláírásához használt Azure Active Directory (Azure AD). Fontos megjegyezni, hogy rendszeres időközönként, és vészhelyzet esetén a kulcsok helyettesítő volt állítva azonnal. Minden alkalmazás, amely használhatja az Azure Active Directory kell tudni programozott módon a kulcsváltás folyamat, vagy a rendszeres manuális helyettesítő-folyamatot. Olvasási megértése, hogyan működnek a kulcsokat, továbbra is az alkalmazás a Váltás hatásának értékelése és az alkalmazás frissítésére, vagy kezelje a kulcsváltás, szükség esetén rendszeres manuális váltása folyamatot.
@@ -50,7 +51,7 @@ Az alkalmazás kezelésének kulcsváltás attól függ, hogy változók, péld�
 
 Ez az útmutató **nem** alkalmazható:
 
-* Az Azure AD Application Gallery (beleértve az egyéni) hozzáadott alkalmazások rendelkeznek jelenítik aláírókulcsok külön útmutatást. [További információt.](../active-directory-sso-certs.md)
+* Az Azure AD Application Gallery (beleértve az egyéni) hozzáadott alkalmazások rendelkeznek jelenítik aláírókulcsok külön útmutatást. [További információt.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 * A helyszíni alkalmazásproxy keresztül közzétett alkalmazás nem kell foglalkoznia az aláírási kulcsokat.
 
 ### <a name="nativeclient"></a>Natív ügyfélalkalmazások erőforrások elérése

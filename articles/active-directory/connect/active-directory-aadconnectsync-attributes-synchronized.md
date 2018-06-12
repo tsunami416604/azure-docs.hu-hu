@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4009a35226473cd3ecc68929e53d70f7fb749156
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 973b11cd7bcb46bfb113998ff4a4e0b9c6317042
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593435"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261763"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect szinkronizálása: az Azure Active Directoryval szinkronizált attribútumok
 Ez a témakör az Azure AD Connect szinkronizálási szolgáltatás által szinkronizált attribútumok listája.  
@@ -419,6 +419,7 @@ Ezeknek az attribútumoknak **felhasználói** mellett kiválasztott az egyéb a
 | --- |:---:| --- |
 | domainFQDN |X |Más néven tartománynév. Például: contoso.com. |
 | domainNetBios |X |Más néven netBiosName. Például: CONTOSO. |
+| msDS-KeyCredentialLink |X |Miután a felhasználó a vállalati Windows Hello regisztrálva. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange hibrid visszaírásához.
 Ezek az attribútumok kerüljenek vissza az Azure AD a helyi Active Directory engedélyezése kiválasztásakor **Exchange hibrid**. Az Exchange verziójától függően kevesebb attribútumok szinkronizálása.

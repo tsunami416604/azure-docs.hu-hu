@@ -1,25 +1,19 @@
 ---
-title: Az Azure diagnosztikai naplók áttekintése |} Microsoft Docs
+title: Az Azure diagnosztikai naplók áttekintése
 description: Ismerje meg az Azure diagnosztikai naplók és hogyan használhatja őket egy Azure-erőforrás belül bekövetkező események megértéséhez.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: fe8887df-b0e6-46f8-b2c0-11994d28e44f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: johnkem; magoedte
-ms.openlocfilehash: 6017052db3e6c3f0cfc22b18263727e997944483
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.author: johnkem
+ms.component: logs
+ms.openlocfilehash: e361259bc5ce2dd946d3ea8bc1e69f743a40c6df
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236416"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264401"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása az Azure-erőforrások naplóadatait
 

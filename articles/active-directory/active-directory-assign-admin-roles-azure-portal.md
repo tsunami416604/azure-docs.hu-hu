@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 4dddc4c4e4bd34f5e9d7054f1311e13113fce52d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234613"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260413"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -54,7 +54,7 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 * **Exchange szolgáltatás-rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók engedélye globális belül a Microsoft Exchange online-hoz, ha a szolgáltatás jelen. További információ: [Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **Globális rendszergazda / vállalati rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók férhetnek hozzá az Azure Active Directoryval, valamint a szolgáltatásokról, amelyek összevonni az Azure Active Directory Exchange Online, SharePoint online-hoz, például az összes felügyeleti funkcióhoz és Skype vállalati Online verzióhoz. A személy, aki az Azure Active Directory-bérlő előfizet egy globális rendszergazdája lesz. Csak a globális rendszergazdák egyéb rendszergazdai szerepköröket rendelhet. A vállalat a egynél több globális rendszergazda is lehet. Globális rendszergazda alaphelyzetbe állíthatja a jelszavát, minden olyan felhasználó, és más rendszergazdák számára.
+* **Globális rendszergazda / vállalati rendszergazda vagy a bérlői rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók férhetnek hozzá az Azure Active Directoryval, valamint a szolgáltatások, például az Exchange Online Azure Active Directoryba való összevonásához az összes felügyeleti funkcióhoz SharePoint Online és Skype vállalati Online verzióhoz. A személy, aki az Azure Active Directory-bérlő előfizet egy globális rendszergazdája lesz. Csak a globális rendszergazdák egyéb rendszergazdai szerepköröket rendelhet. A vállalat a egynél több globális rendszergazda is lehet. Globális rendszergazda alaphelyzetbe állíthatja a jelszavát, minden olyan felhasználó, és más rendszergazdák számára.
 
   > [!NOTE]
   > A Microsoft Graph API-val, a Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja "Vállalati rendszergazda". Az "Globális rendszergazda" a [Azure-portálon](https://portal.azure.com).

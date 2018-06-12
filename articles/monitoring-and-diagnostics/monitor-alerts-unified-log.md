@@ -1,25 +1,19 @@
 ---
-title: Riasztások jelentkezzen be Azure Monitor - riasztás |} Microsoft Docs
+title: Napló riasztásait az Azure-figyelő
 description: Eseményindító e-mailek, értesítések, a webhely URL-címek (webhookok), vagy az automation Azure riasztások megadott elemzési lekérdezés feltételek teljesülése esetén hívható.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 175e512d0bdaa84d5251f4bbdb09aed3aed436f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: alerts
+ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638721"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264374"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Napló riasztásait az Azure Monitor - riasztás 
 Ez a cikk ismerteti a napló riasztások részleteit is támogatott belül az új riasztások típusú [Azure riasztások](monitoring-overview-unified-alerts.md) és a felhasználók Azure analytics platform használni alapjául riasztások... A naplók segítségével metrika riasztások leírását, [közel valós idejű metrika riasztások](monitoring-near-real-time-metric-alerts.md)

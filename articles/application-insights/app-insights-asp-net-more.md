@@ -1,6 +1,6 @@
 ---
-title: "Még több előny az Azure Application Insights |} Microsoft Docs"
-description: "Első lépések az Application insights szolgáltatással, miután ez ismerje meg a szolgáltatások összegzését."
+title: Még több előny az Azure Application Insights |} Microsoft Docs
+description: Első lépések az Application insights szolgáltatással, miután ez ismerje meg a szolgáltatások összegzését.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 167f0175b2c5de804a4251307a7b16e5e40a516a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 2f03083367de4e818bdc953ab76c28ff687f0a48
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294336"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Az Application Insights további telemetria
 Miután [Application Insights hozzá az ASP.NET-kódban](app-insights-asp-net.md), néhány dolgot még több telemetriai adatokat is van. 

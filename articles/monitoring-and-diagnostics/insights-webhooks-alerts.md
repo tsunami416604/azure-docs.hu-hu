@@ -1,24 +1,19 @@
 ---
-title: "Azure metrika riasztások konfigurálása webhookokkal |} Microsoft Docs"
-description: "Útmutató: Azure riasztásokat az egyéb, az-Azure rendszerek átirányítása."
+title: A klasszikus metrika riasztások értesítik a nem Azure rendszerbe olyan webhook rendelkezik
+description: 'Útmutató: Azure metrika riasztásokat az egyéb, az-Azure rendszerek átirányítása.'
 author: johnkemnetz
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 8b3ae540-1d19-4f3d-a635-376042f8a5bb
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 049803e7701c68559103d9b1fa5dfacf820d0548
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: 9cc017aad7fbdc740ab3fa3af5603223e5b844ce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262351"
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>A webhook Azure metrika riasztás konfigurálása
 Webhook használhatja az Azure riasztási értesítések továbbításához a más rendszerekkel utófeldolgozási vagy egyéni műveletek. A riasztás olyan webhook segítségével szolgáltatások által küldött SMS-üzenetek, bejelentkezési hibák értesíteni a Csevegés vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csoport irányítja. 

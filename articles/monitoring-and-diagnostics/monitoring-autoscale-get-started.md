@@ -1,24 +1,19 @@
 ---
-title: "Ismerkedés az Azure-ban automatikus skálázás |} Microsoft Docs"
-description: "Ismerje meg, hogy az erőforrás méretezése az Azure-ban."
+title: Ismerkedés az Azure-ban automatikus skálázás
+description: 'Útmutató: az erőforrás a webalkalmazás skálázása, a felhőalapú szolgáltatás, a virtuális gép vagy virtuálisgép-méretezési beállítása az Azure-ban.'
 author: rajram
-manager: rboucher
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263646"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-ban automatikus skálázás
 A cikkből megtudhatja, hogyan állíthat be az automatikus skálázási beállításai a Microsoft Azure-portálon az erőforrás.
@@ -93,7 +88,7 @@ Skála alapján a CPU, mellett adhatja meg a skála másképp konkrét dátumoka
 ### <a name="view-the-scale-history-of-your-resource"></a>Az erőforrás méretezési előzményeinek megtekintése
 Amikor az erőforrás méretezése felfelé vagy lefelé, eseményt naplózott, a műveletnaplóban. Megtekintheti az erőforrás méretezési előzményeinek vonatkozóan az elmúlt 24 óra átvált a **futtatási előzményei** fülre.
 
-![futtatási előzményei][11]
+![Előzmények][11]
 
 Ha szeretné megtekinteni a teljes méretezési előzmények (90 nap), jelölje be **Ide kattintva további részleteket**. A műveletnapló nyílik meg, előre kiválasztott erőforrás és kategória automatikus skálázási.
 
@@ -119,7 +114,7 @@ Beállíthatja, hogy manuálisan méretezésére példányok száma.
 
 Kattintva mindig visszatérhet automatikus skálázás **engedélyezze az automatikus skálázás** , majd **mentése**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Hozzon létre egy tevékenység napló riasztási előfizetés minden automatikus skálázási motor műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Hozzon létre egy tevékenység napló a riasztást az előfizetés az összes sikertelen automatikus skálázás méretezési-a/kibővített műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301065"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager gyakori kérdések (GYIK)
 
@@ -85,10 +86,18 @@ Ha egy DNS-lekérdezést a Traffic Manager fájljai, a válaszban idő-Élettart
 
 Beállíthatja, egy profil szintek, a DNS-élettartam kell lennie az engedélyezett minimumérték megegyezik 0 másodperc és 2 147 483 647 másodpercig magas (a tartomány maximális megfelelő [RFC-1035 szabványnak megfelelően](https://www.ietf.org/rfc/rfc1035.txt )). A 0 azt jelenti, hogy alárendelt DNS-feloldókat nem gyorsítótárazzák a válaszokban, és az összes lekérdezés várhatóan elérni a Traffic Manager DNS kiszolgálók a névfeloldás TTL.
 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Hogyan tudja értelmezni a kötet saját profil érkező lekérdezések? 
+A metrikák egyikét a megadott Traffic Manager által az lekérdezés száma válaszolt a által. Ezt az információt kaphat a profil szintű összesítő, vagy feloszthatja azt tovább lásd: a kötetet a lekérdezések, ahol meghatározott végpontokhoz adott vissza. Emellett beállíthatja riasztás értesíti, ha a lekérdezési válasz kötet keverve használ a feltételek van beállítva. További részletekért [Traffic Manager metrikák és a riasztások](traffic-manager-metrics-alerts.md).
+
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>A TRAFFIC Manager Geographic forgalom-útválasztási módszert
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Néhány alkalmazási helyzetét, ahol földrajzi útválasztási akkor hasznos, melyek? 
 Amikor az ügyfél egy Azure kell különbséget tenni a felhasználóknak a földrajzi régiók alapján földrajzi útválasztási típus használható egyik szituációban. Például a földrajzi forgalom-útválasztási módszert használ, engedélyezheti a felhasználók számára az adott régióban el más régiókból mint egy másik felhasználói élményt. Egy másik példa megfelel a helyi adatok közös joghatóság alá megbízás szükséges, hogy a felhasználók egy adott régióban tudja megjeleníteni csak az adott régióban végpontok.
+
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Hogyan döntenie, hogy teljesítmény útválasztási módszer vagy földrajzi útválasztási módszer használni kell? 
+Között két népszerű útválasztási módszer közül a legfontosabb különbség, hogy a teljesítmény-útválasztási módszerrel elsődleges célja, hogy a forgalmat küldeni a végpontot, amely a legkisebb mértékű késleltetést a hívónak nyújt, mivel a Geographic útválasztási elsődleges célja, hogy egy földrajzi kényszerítése időkorlát a hívók számára, hogy szándékosan irányíthatja őket egy meghatározott végpontra. Az átfedés óta földrajzi egyezés és kisebb késést biztosít, közötti összefüggés történik, ez azonban nem mindig igaz. Lehetséges, hogy nem a végpont egy eltérő földrajzi helyeken, amely a hívónak jobb késés élményt nyújt, és ebben az esetben teljesítmény útválasztási küld a felhasználó az adott végpontra, de földrajzi útválasztási mindig elküldi őket a végpontnak a leképezett azok a földrajzi régióban. További, törölje a jelet, fontolja meg a következő példa - tartalmazó Geographic útválasztáshoz is bizonyosodjon Ázsia összes forgalom küldése az Amerikai Egyesült Államokban és minden USA felé irányuló forgalom Ázsiában végpontok végpontok például ritka leképezéseket. Ebben az esetben földrajzi útválasztási szándékosan műveleteket el pontosan mit konfigurált rá, és teljesítményoptimalizálás rendszer nem veszi figyelembe. 
+>[!NOTE]
+>Előfordulhatnak olyan esetek, amikor mindkét teljesítményét szükség lehet így földrajzi útválasztási képességei, a forgatókönyvek beágyazott profilok kiváló választás lehet. Például földrajzi útválasztási ahol küldött összes forgalom az Észak-Amerika egy beágyazott profilt, amely rendelkezik az Amerikai Egyesült Államokban végpontok szülő profil beállítása, és ezek adatforgalom küldését az adott belül a legjobb végpont útválasztási teljesítményű. 
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Mik a Traffic Manager által támogatott földrajzi irányításához régiók? 
 A Traffic Manager által használt ország vagy régió hierarchiában található [Itt](traffic-manager-geographic-regions.md). Ezen a lapon módosításai naprakészen szerepeljenek tartják, amíg szoftveresen is olvashatók be ugyanazokat az információkat használja a [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
@@ -330,6 +339,9 @@ Kattintson a [Itt](https://azuretrafficmanagerdata.blob.core.windows.net/probes/
 A Traffic Manager-állapot számát ellenőrzi, hogy a végpont elérése függ a következő:
 - az értéket, amelyet a figyelési időköz beállítása (kisebb időköz azt jelenti, hogy a végpont a megadott időtartamon üzenetsorokra további kérelmeket).
 - Ha állapotát ellenőrzi a helyek számánál (az IP-címeket is várt ezen ellenőrzések szerepel az előző – gyakori kérdések) származnak.
+
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hogyan lehet I értesítés Ha leáll a végpont közül? 
+A Traffic Manager által biztosított metrikákat egyik profilban végpontok állapotát. Erre úgy tekinthet, egy profil belüli összes végpontok aggregátum (például 75 %-a végpontokat a rendszer kifogástalan), vagy, a végpont szintenként. A TRAFFIC Manager metrikák Azure figyelő keresztül közzétett és használhatja a [riasztási képességek](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) értesítések beolvasni végpontot állapotának változása esetén. További részletekért lásd: [Traffic Manager metrikák és a riasztások](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>A TRAFFIC Manager beágyazott profilok
 

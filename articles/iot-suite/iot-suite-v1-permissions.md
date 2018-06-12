@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Suite és az Azure Active Directory |} Microsoft Docs"
-description: "Ismerteti, hogyan Azure IoT Suite az Azure Active Directory használatával kezeli az engedélyeket."
-services: 
+title: Az Azure IoT Suite és az Azure Active Directory |} Microsoft Docs
+description: Ismerteti, hogyan Azure IoT Suite az Azure Active Directory használatával kezeli az engedélyeket.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: a032fc4332c697748e658ad2615ed5b0915c56c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4d0c7aff54ee20cf9ae4e6cdf2fc0718cd0b2f2a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35303721"
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Engedélyek az azureiotsuite.com webhelyen
 
@@ -92,7 +93,7 @@ Az alábbi eljárás segítségével végezze el a felhasználó az Active Direc
 Egy felhasználó szerepköreinek módosítása egy aad-ben globális rendszergazdának kell lennie:
 
 1. Nyissa meg az [Azure Portalt][lnk-portal].
-2. Válassza ki **az Azure Active Directory**.
+2. Válassza az **Azure Active Directory** elemet.
 3. Ellenőrizze, hogy használ a könyvtárat úgy döntött, hogy a azureiotsuite.com létesített a megoldás. Ha az Ön előfizetéséhez rendelve több címtárral rendelkezik, válthat őket, ha a fiók nevére, a portál felső – jobb kattint.
 4. Kattintson a **vállalati alkalmazások**, majd **összes alkalmazás**.
 4. Megjelenítése **összes alkalmazás** rendelkező **bármely** állapotát. Majd keresse meg az előkonfigurált megoldás nevű kérelmet.
@@ -116,7 +117,7 @@ Kérje meg a globális rendszergazdák is képesek adja meg az AAD-bérlőt a gl
 A felhő üzembe helyezése a futtatása <https://github.com/Azure/azure-iot-remote-monitoring> és telepítse újra az újonnan létrehozott AAD-bérlőt. Mert, alapértelmezés szerint egy globális rendszergazda, amikor létrehoz egy AAD-bérlőt Ön jogosult felhasználók hozzáadásához és szerepkörök hozzárendelése azoknak a felhasználóknak.
 
 1. Hozzon létre egy AAD-címtárában lévő a [Azure-portálon][lnk-portal].
-2. Ugrás a <https://github.com/Azure/azure-iot-remote-monitoring>.
+2. Nyissa meg a következőt: <https://github.com/Azure/azure-iot-remote-monitoring>.
 3. Futtatás `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` (például `build.cmd cloud debug myRMSolution`)
 4. Amikor a rendszer kéri, állítsa be a **tenantid** kell lennie az újonnan létrehozott bérlő az előző bérlő helyett.
 
@@ -149,7 +150,7 @@ Ha bizonyos Azure-előfizetéssel rendelkezik, a bérlő hozzárendelése az el�
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
-[lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md
+[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs

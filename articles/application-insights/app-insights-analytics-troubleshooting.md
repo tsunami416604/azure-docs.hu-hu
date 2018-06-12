@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Application Insightsban Analytics hibaelhárítása |} Microsoft Docs"
-description: "Problémák az Application Insights analytics? Itt érdemes kezdenie. "
+title: Az Azure Application Insightsban Analytics hibaelhárítása |} Microsoft Docs
+description: 'Problémák az Application Insights analytics? Itt érdemes kezdenie. '
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9bbd5859-3584-4d80-9b6d-d5910fa48baa
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3ef9150cad62e9f9fc43f7afcbbbc01d89884a12
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294159"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights Analytics](app-insights-analytics.md)? Itt érdemes kezdenie. Elemzés a hatékony keresési eszköz az Azure Application Insights.
@@ -31,7 +32,7 @@ Problémák [Application Insights Analytics](app-insights-analytics.md)? Itt ér
 
 A bővítmény letiltása, vagy használjon egy másik böngészőben.
 
-## <a name="e-a"></a>"Nem várt hiba"
+## <a name="e-a"></a> "Nem várt hiba"
 ![Váratlan hiba képernyő](./media/app-insights-analytics-troubleshooting/010.png)
 
 Belső hiba történt a portál futásidőben – nem kezelt kivétel.
@@ -46,7 +47,7 @@ Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáfér�
 * Győződjön meg arról [külső cookie-k engedélyezettek](#cookies) a böngészőben. 
 
 ## <a name="authentication"></a>403... Ellenőrizze a biztonsági zóna
-![403 ...verify biztonsági zóna](./media/app-insights-analytics-troubleshooting/030.png)
+![403.. .verify biztonsági zóna](./media/app-insights-analytics-troubleshooting/030.png)
 
 Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáférési jogkivonat létrehozása közben). Előfordulhat, hogy a portál nem tudja helyreállítani a böngésző beállításainak módosítása nélkül.
 
@@ -54,7 +55,7 @@ Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáfér�
 2. Kedvenc, könyvjelző vagy mentett hivatkozás használatával próbált hozzáférni az Analytics portálhoz? Más hitelesítő adatokkal jelentkezett be, mint amikor mentette a hivatkozást?
 3. Próbáljon privát/inkognitó módban lévő böngészőablakot használni (a többi hasonló ablak bezárása után). Meg kell adnia hitelesítő adatait. 
 4. Nyisson meg egy másik (normál) böngészőablakot, és navigáljon a [Azure](https://portal.azure.com). Jelentkezzen ki. Ezután nyissa meg a hivatkozást, és jelentkezzen be a helyes hitelesítő adatokkal.
-5. Az Edge és az Internet Explorer felhasználói akkor is láthatják ezt a hibát, ha a rendszer nem támogatja a megbízható zóna beállításait.
+5. Az Microsoft Edge és az Internet Explorer felhasználói akkor is láthatják ezt a hibát, ha a rendszer nem támogatja a megbízható zóna beállításait.
    
     Győződjön meg arról is [Analytics portál](https://analytics.applicationinsights.io) és [Azure Active Directory portálon](https://portal.azure.com) a ugyanazt biztonsági szintű zónában lévő:
    

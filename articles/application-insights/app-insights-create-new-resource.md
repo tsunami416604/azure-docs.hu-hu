@@ -1,8 +1,8 @@
 ---
-title: "Hozzon létre egy új Azure Application Insights-erőforrást |} Microsoft Docs"
-description: "Manuálisan állítsa be az Application Insights egy új élő alkalmazás figyelését."
+title: Hozzon létre egy új Azure Application Insights-erőforrást |} Microsoft Docs
+description: Manuálisan állítsa be az Application Insights egy új élő alkalmazás figyelését.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9023f3d9ae3ddd4d75b5853a08177cba7718cec1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294717"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Azure Application Insights az alkalmazással kapcsolatos adatokat jeleníti meg a Microsoft Azure *erőforrás*. Új erőforrás létrehozása része ezért [Application Insights beállítása egy új alkalmazás figyelésére][start]. Sok esetben erőforrás létrehozása automatikusan úgy teheti az IDE. De néhány esetben hoz létre egy erőforrás manuálisan - például számára elkülönített erőforrások fejlesztési és éles az alkalmazás létrehozza.
@@ -29,7 +30,7 @@ Ha még nem kapott egy [Microsoft fiókot, egy letöltése](http://live.com). (P
 
 Emellett szükség van egy előfizetés [Microsoft Azure](http://azure.com). Ha a csapat vagy szervezet Azure-előfizetéssel, a tulajdonos adhat hozzá, a Windows Live ID azonosítójával. Most csak felszámított a valóban használt funkciókért. Az alapértelmezett alapszintű csomag lehetővé teszi a kísérleti díjmentesen használható bizonyos mennyiségű.
 
-Előfizetés hozzáférést van, amikor jelentkezzen be az Application Insights részére, [http://portal.azure.com](https://portal.azure.com), és a Live ID bejelentkezési használja.
+Előfizetés hozzáférést van, amikor jelentkezzen be az Application Insights részére, [ http://portal.azure.com ](https://portal.azure.com), és a Live ID bejelentkezési használja.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az a [portal.azure.com](https://portal.azure.com), vegyen fel egy Application Insights-erőforrást:
@@ -68,7 +69,7 @@ Ha több adatot várt, kattintson a **frissítése** néhány másodperc múlva.
 ## <a name="creating-a-resource-automatically"></a>Erőforrás automatikus létrehozása
 Írhat egy [PowerShell-parancsfájl](app-insights-powershell.md) erőforrás automatikus létrehozása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Irányítópult létrehozása](app-insights-dashboards.md)
 * [Diagnosztikai keresés](app-insights-diagnostic-search.md)
 * [Metrikák böngészése](app-insights-metrics-explorer.md)

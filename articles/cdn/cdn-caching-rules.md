@@ -4,20 +4,21 @@ description: Gyorsítótárazás szabályok CDN vagy módosíthatja a gyorsító
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: 09705893c50e56cce5d888db097d7b810624b5d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4095ed763de378a673908d033d87b2aa6d72f13c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260006"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának működése
 
@@ -26,11 +27,11 @@ ms.lasthandoff: 05/07/2018
  
 Az Azure Content Delivery Network (CDN) kétféleképpen szabályozhatja, hogy a gyorsítótárba: 
 
-- Szabályok gyorsítótárazása: Ez a cikk ismerteti, hogyan használható tartalomkézbesítési hálózat (CDN) gyorsítótárazás szabályok beállítása vagy módosítása a gyorsítótár lejárati alapértelmezés globálisan és egyéni feltételeknek, például az egy URL-cím elérési út és fájlnév kiterjesztése. Az Azure CDN kétféle típusú szabályok gyorsítótárazás biztosítja:
+- Szabályok gyorsítótárazása: Ez a cikk ismerteti, hogyan használható tartalomkézbesítési hálózat (CDN) gyorsítótárazás szabályok beállítása vagy módosítása a gyorsítótár lejárati alapértelmezés globálisan és egyéni feltételeknek, például az egy URL-cím elérési út és fájlnév kiterjesztése. Az Azure CDN két gyorsítótárazási szabálytípust biztosít:
 
-   - Globális szabályok gyorsítótárazása: a profilban, amely hatással van a végpont összes kérelmet, beállíthatja a végpontok egy globális gyorsítótárszabályt. A globális gyorsítótárszabály felülbírálja a gyorsítótár-irányelv HTTP-fejlécek, ha beállítása.
+   - Globális gyorsítótárazási szabályok: Beállíthat egy globális gyorsítótárazási szabályt mindegyik végponthoz a profiljában, amely a végpontra küldött összes kérelmet érinti. A globális gyorsítótárazási szabály felülbírálja az összes HTTP-gyorsítótárazási irányelv fejlécét, ha be van állítva.
 
-   - Egyéni gyorsítótárazási szabályok: beállíthat egy vagy több egyéni szabályra érvényesek minden egyes végpont a profilban. Egyéni szabályok egyezés egyedi elérési utak fájlkiterjesztéseket, feldolgozása sorrendben történik, és globális gyorsítótárazási szabály felülbírálása gyorsítótárazást, ha be. 
+   - Egyéni gyorsítótárazási szabályok: Beállíthat egy vagy több globális gyorsítótárazási szabályt minden egyes végponthoz a profiljában. Az egyéni gyorsítótárazási szabályok meghatározott elérési utaknak és fájlkiterjesztéseknek felelnek meg, a feldolgozásuk sorrendben történik, és felülbírálják a globális gyorsítótárazási szabályt, ha az be van állítva. 
 
 - Lekérdezési karakterláncok gyorsítótárazása: beállíthatja, hogyan kezeli az Azure CDN a lekérdezési karakterláncokat tartalmazó kérelmek gyorsítótárazását. További információ: [vezérlő Azure CDN a lekérdezési karakterláncok gyorsítótárazásának](cdn-query-string.md). Ha a fájl nem gyorsítótárazható, a lekérdezési karakterlánc gyorsítótárazása nincs hatása, gyorsítótárazás szabályok és a CDN alapértelmezett viselkedés alapján.
 
@@ -41,13 +42,13 @@ További információ az alapértelmezett viselkedést és a gyorsítótárazás
 
 1. Nyissa meg az Azure-portálon, válassza ki a CDN-profilt, majd válasszon ki egy végpontot.
 
-2. A beállítások a bal oldali ablaktáblában jelölje ki a **szabályok gyorsítótárazás**.
+2. A bal oldali ablaktáblán, a Beállítások alatt válassza a **Gyorsítótárszabályok** lehetőséget.
 
-   ![CDN-gyorsítótárazás szabályok gomb](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
+   ![CDN-gyorsítótárszabályok gomb](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
 
-   A **szabályok gyorsítótárazás** lap jelenik meg.
+   Megjelenik a **Gyorsítótárszabályok** lap.
 
-   ![CDN-gyorsítótár szabályok lap](./media/cdn-caching-rules/cdn-caching-rules-page.png)
+   ![CDN-gyorsítótárazási szabályok lap](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
 
 ## <a name="caching-behavior-settings"></a>Viselkedés beállítások gyorsítótárazása
@@ -105,9 +106,14 @@ A globális és egyéni gyorsítótárazási szabályok feldolgozása a követke
 Ha ezek a szabályok vannak beállítva, a kérelem  _&lt;végpont állomásnevéhez&gt;_.azureedge.net/home/index.html eseményindítók egyéni gyorsítótárazás szabály #2, melynek értéke: **állítja be, ha a hiányzó** és 3 nap. Ezért ha a *index.html* fájl `Cache-Control` vagy `Expires` HTTP-fejlécek, figyelembe venni azok; ellenkező esetben ezek a fejlécek nincsenek beállítva, ha a fájlt a rendszer gyorsítótárazza a 3 nap.
 
 > [!NOTE] 
-> A szabály módosítása előtt gyorsítótárba helyezett fájlok karbantartása az eredeti gyorsítótár időtartama beállítás. A gyorsítótár időtartamok alaphelyzetbe állításához kell [a fájl törlése](cdn-purge-endpoint.md). A **Azure CDN Verizon** végpontok, az akár 90 percig is tarthat új gyorsítótárazási szabályok érvénybe léptetéséhez.
+> A szabály módosítása előtt gyorsítótárba helyezett fájlok karbantartása az eredeti gyorsítótár időtartama beállítás. A gyorsítótár időtartamok alaphelyzetbe állításához kell [a fájl törlése](cdn-purge-endpoint.md). 
+>
+> Az Azure CDN konfigurációs módosítások eltarthat egy ideig, a hálózaton belüli propagálásához: 
+> - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+> - A **Azure CDN Standard verizon** -profilok propagálása általában befejezi 10 perc múlva.  
+>
 
 ## <a name="see-also"></a>Lásd még
 
 - [A gyorsítótárazás működése](cdn-how-caching-works.md)
-- [Oktatóanyag: Set Azure CDN gyorsítótárazás szabályok](cdn-caching-rules-tutorial.md)
+- [Oktatóanyag: Azure CDN gyorsítótárazási szabályainak beállítása](cdn-caching-rules-tutorial.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1800db8cd25aa37bffb76adf00901e11c75d49fe
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604080"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294487"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>A sablonok Azure verem egyeztetni a sablon ellenőrzése eszköz
 
@@ -32,8 +32,8 @@ A sablon ellenőrzése eszköz segítségével ellenőrizze, hogy az Azure Resou
 
 Ellenőrizze a sablont, be kell összeállítása a felhőalapú képességek első fájlt, és futtassa az ellenőrzési eszközt. A következő PowerShell-moduljai a Azure verem eszközök használhatja:
 
-- Az a **TemplateValidator** mappába:<br>         AzureRM.CloudCapabilities.psm1 létrehoz egy felhőalapú képességek JSON szolgáltatások és egy Azure verem felhőben verziók jelölő.
-- Az a **CloudCapabilities** mappába:<br>
+- Az a **CloudCapabilities** mappába:<br>         AzureRM.CloudCapabilities.psm1 létrehoz egy felhőalapú képességek JSON szolgáltatások és egy Azure verem felhőben verziók jelölő.
+- Az a **TemplateValidator** mappába:<br>
 AzureRM.TemplateValidator.psm1 sablonok központi telepítés tesztelése az Azure-verem felhőalapú képességek JSON-fájlt használ.
 
 ## <a name="build-the-cloud-capabilities-file"></a>A felhő capabilities-fájl létrehozása

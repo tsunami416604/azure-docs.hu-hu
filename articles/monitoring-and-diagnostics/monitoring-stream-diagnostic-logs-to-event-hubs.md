@@ -1,24 +1,19 @@
 ---
-title: Adatfolyam-Azure diagnosztikai naplók az eseményközpontba |} Microsoft Docs
+title: Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
 description: Útmutató az Azure diagnosztikai naplók az eseményközpontba adatfolyamként történő küldéséhez.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 42bc4845-c564-4568-b72d-0614591ebd80
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 1f5a97f5af47a3c5731d5c5d4d5e8cf17097ae60
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: ''
+ms.openlocfilehash: 18b385edc7efed20d940be96670b8c40ce66ddfd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264323"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Az adatfolyam Azure diagnosztikai naplók az eseményközpontba
 **[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós idejű bármely alkalmazás a beépített "Exportálás az Event Hubs" beállítás használatával, a portálon, vagy a központi engedélyezési szabály eseményazonosító keresztül az Azure diagnosztikai beállítás engedélyezésével PowerShell-parancsmagok vagy Azure CLI 2.0.
@@ -54,9 +49,9 @@ Adatfolyamként való küldése a diagnosztikai naplók programozott módon, a p
 Az Event Hubs névtér nem kell lennie a naplók kibocsátó mindaddig, amíg a beállítás konfigurálása felhasználó hozzáfér megfelelő RBAC mindkét előfizetéshez erőforrás ugyanahhoz az előfizetéshez.
 
 > [!NOTE]
-> Diagnosztikai beállítások keresztül többdimenziós metrikák küldése jelenleg nem támogatott. Metrikák többdimenziósak, egybesimított egyetlen dimenzionális metrika, dimenzióértékek gyűjtődnek exportálja.
+> A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.
 >
-> *Például*: A "Bejövő üzenetek" metrika eseményközpontban felfedezte, és a forrásadatok egy várólista szintenként. Azonban a metrika fog megjelenni minden bejövő üzenet összes diagnosztikai beállítások keresztül exportálásakor várólisták a központ.
+> *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 >
 

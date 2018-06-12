@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293160"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Attribútum-leképezésekhez kifejezések írása az Azure Active Directoryban
 Egy SaaS-alkalmazáshoz történő konfigurálásakor megadhatja attribútum-leképezésekhez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi a felhasználók adatok átalakítása több biztosítható a SaaS-alkalmazás formátumokba kell írnia.
@@ -48,8 +49,8 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az adatforrás-objektum az az attribútum neve |
-| **suffix** |Szükséges |Karakterlánc |A karakterlánc, amely szeretne hozzáfűzni, az érték végén. |
+| **source** |Szükséges |Sztring |Általában az adatforrás-objektum az az attribútum neve |
+| **suffix** |Szükséges |Sztring |A karakterlánc, amely szeretne hozzáfűzni, az érték végén. |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -61,9 +62,9 @@ Attribútum-leképezésekhez kifejezések szintaxisa a Visual Basic Applications
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
-| **inputFormat** |Szükséges |Karakterlánc |Az érték formátumúak. A támogatott formátumok, lásd: [ http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **outputFormat** |Szükséges |Karakterlánc |A kimeneti dátum formátumát. |
+| **source** |Szükséges |Sztring |Általában az attribútum neve a forrás-objektumból. |
+| **inputFormat** |Szükséges |Sztring |Az érték formátumúak. A támogatott formátumok, lásd: [ http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **outputFormat** |Szükséges |Sztring |A kimeneti dátum formátumát. |
 
 - - -
 ### <a name="join"></a>Csatlakozás
@@ -77,8 +78,8 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **separator** |Szükséges |Karakterlánc |A karakterlánc elválasztó forrás értékek, amikor azok a halmaz zónanevének egyetlen karakterlánccá egyesít. Lehet "" Ha nem elválasztó szükség. |
-| ** source1... sourceN ** |Szükség esetén a változó-szám, ahányszor |Karakterlánc |A karakterlánc-értékek együtt tartományhoz. |
+| **separator** |Szükséges |Sztring |A karakterlánc elválasztó forrás értékek, amikor azok a halmaz zónanevének egyetlen karakterlánccá egyesít. Lehet "" Ha nem elválasztó szükség. |
+| ** source1... sourceN ** |Szükség esetén a változó-szám, ahányszor |Sztring |A karakterlánc-értékek együtt tartományhoz. |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -90,7 +91,7 @@ Ha a forrás-értékeket egy többértékű attribútum, akkor minden értékét
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum neve. |
+| **source** |Szükséges |Sztring |Általában az attribútum neve. |
 | **start** |Szükséges |egész szám |Az index a **forrás** karakterlánc, ahol a substring kell kezdődnie. A karakterlánc első karaktere az 1 indexe lesz, a második karakter 2 mutatója, és így tovább. |
 | **Hossza** |Szükséges |egész szám |A substring hosszát. Hossza kívül lejártát a **forrás** karakterlánc, a függvény karakterláncrészletet ad vissza **start** végét indextől **forrás** karakterlánc. |
 
@@ -131,13 +132,13 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |Általában az attribútum neve a forrás-objektumból. |
-| **oldValue** |Optional |Karakterlánc |A cserélni kívánt érték **forrás** vagy **sablon**. |
-| **regexPattern** |Optional |Karakterlánc |Le kell cserélni az érték reguláris kifejezéssel mintát **forrás**. Vagy a replacementPropertyName használatakor helyettesítő tulajdonság értékének kinyerése mintát. |
-| **regexGroupName** |Optional |Karakterlánc |A csoport nevét **regexPattern**. Csak akkor, ha replacementPropertyName használata esetén azt ki a csoport értékét, helyettesítő helyettesítő tulajdonság értéke. |
-| **replacementValue** |Optional |Karakterlánc |Új értéket lecseréli a régi kiszolgálóéval. |
-| **replacementAttributeName** |Optional |Karakterlánc |Az attribútum értékét, kell használni, ha a forrás értéke nincs neve. |
-| **Sablon** |Optional |Karakterlánc |Ha **sablon** érték van megadva, fog keresni **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
+| **source** |Szükséges |Sztring |Általában az attribútum neve a forrás-objektumból. |
+| **oldValue** |Optional |Sztring |A cserélni kívánt érték **forrás** vagy **sablon**. |
+| **regexPattern** |Optional |Sztring |Le kell cserélni az érték reguláris kifejezéssel mintát **forrás**. Vagy a replacementPropertyName használatakor helyettesítő tulajdonság értékének kinyerése mintát. |
+| **regexGroupName** |Optional |Sztring |A csoport nevét **regexPattern**. Csak akkor, ha replacementPropertyName használata esetén azt ki a csoport értékét, helyettesítő helyettesítő tulajdonság értéke. |
+| **replacementValue** |Optional |Sztring |Új értéket lecseréli a régi kiszolgálóéval. |
+| **replacementAttributeName** |Optional |Sztring |Az attribútum értékét, kell használni, ha a forrás értéke nincs neve. |
+| **Sablon** |Optional |Sztring |Ha **sablon** érték van megadva, fog keresni **oldValue** belül a sablont, és cserélje le az adatforrás-értéke. |
 
 - - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
@@ -149,7 +150,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Szükséges |Karakterlánc |**[appRoleAssignments]**  objektum. |
+| **[appRoleAssignments]** |Szükséges |Sztring |**[appRoleAssignments]**  objektum. |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -161,7 +162,7 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |**Forrás** érték frissítéséhez. |
+| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
 
 - - -
 ### <a name="switch"></a>Kapcsoló
@@ -173,10 +174,10 @@ Lecseréli az értékeket karakterláncként. Attól függően, hogy a megadott 
 
 | Name (Név) | Kötelező / ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **source** |Szükséges |Karakterlánc |**Forrás** érték frissítéséhez. |
-| **defaultValue** |Optional |Karakterlánc |Alapértelmezett érték használható, ha a forrás nem felel meg a kulcsokat. Üres karakterlánc lehet (""). |
-| **Kulcs** |Szükséges |Karakterlánc |**Kulcs** összehasonlítandó **forrás** az értéket. |
-| **value** |Szükséges |Karakterlánc |Csere értéke a **forrás** megadott kulccsal. |
+| **source** |Szükséges |Sztring |**Forrás** érték frissítéséhez. |
+| **defaultValue** |Optional |Sztring |Alapértelmezett érték használható, ha a forrás nem felel meg a kulcsokat. Üres karakterlánc lehet (""). |
+| **key** |Szükséges |Sztring |**Kulcs** összehasonlítandó **forrás** az értéket. |
+| **value** |Szükséges |Sztring |Csere értéke a **forrás** megadott kulccsal. |
 
 ## <a name="examples"></a>Példák
 ### <a name="strip-known-domain-name"></a>Sáv ismert tartománynév
@@ -256,7 +257,7 @@ Ha az állapot kód nem egyezik az előre definiált beállításokat, használj
 * [Felhasználói létesítési vagy megszüntetési SaaS-alkalmazásokhoz való automatizálásához](active-directory-saas-app-provisioning.md)
 * [A felhasználók átadása attribútum-leképezésekhez testreszabása](active-directory-saas-customizing-attribute-mappings.md)
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](active-directory-saas-scoping-filters.md)
-* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](active-directory-scim-provisioning.md)
+* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Alkalmazás-kiépítési értesítések](active-directory-saas-account-provisioning-notifications.md)
 * [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 

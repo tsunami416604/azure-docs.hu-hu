@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 728eb81d360af0d62d22cd6168b9e16edceefd56
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714391"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261185"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása
 
@@ -57,7 +57,8 @@ Ez a cikk olvashatóságának leírásait, használja a következő kifejezés:
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- A régebbi Windows-eszközök regisztrálását **van** keresztül zökkenőmentes egyszeri bejelentkezés nem összevont környezetekben támogatott [Azure Active Directory zökkenőmentes egyszeri bejelentkezést](https://aka.ms/hybrid/sso).
+- A régebbi Windows-eszközök regisztrálását **van** keresztül zökkenőmentes egyszeri bejelentkezés nem összevont környezetekben támogatott [Azure Active Directory zökkenőmentes egyszeri bejelentkezést](https://aka.ms/hybrid/sso). 
+- A régebbi Windows-eszközök regisztrálását **nem** Azure AD áteresztő hitelesítés használata esetén támogatott.
 - A régebbi Windows-eszközök regisztrálását **nem** eszközök központi profilok használata támogatott. Ha a központi profilok vagy a beállítások, Windows 10 használata biztosítja.
 
 
@@ -81,8 +82,7 @@ Győződjön meg arról, hogy a következő URL-címekkel érhető el az Azure A
 
 - https://enterpriseregistration.windows.net
 
-- https://login.microsoftonline.com
-
+- https://login.microsoftonline.com Engedélyezése
 - https://device.login.microsoftonline.com
 
 - A szervezet STS (összevont tartományt)
@@ -95,7 +95,7 @@ A szervezet tervezi, hogy zökkenőmentes SSO használata, ha a szervezeten bel�
 
 - https://aadg.windows.net.nsatc.net
 
-- Emellett a következő beállítást engedélyezni kell a felhasználó intranet zóna: "Beállítható a frissítések állapotsor parancsfájl használatával."
+- Emellett a következő beállítást engedélyezni kell a felhasználó intranet zóna: "Állapot parancsfájllal történő frissítésének engedélyezése."
 
 Ha a szervezet használja a felügyelt (nem összevont) telepítése a helyszíni AD, és nem használja az AD FS összevonásához az Azure ad-vel, majd a Windows 10 csatlakoztatása az Azure AD hibrid támaszkodik a számítógép-objektumokat kell lennie az Azure AD sync'ed AD-ben. Győződjön meg arról, hogy bármely szervezeti egység (OU), amelyek tartalmazzák a számítógép-objektumok, csak az Azure AD-tartományhoz hibrid engedélyezve vannak-e az Azure AD Connect szinkronizálási konfigurációban szinkronizáláshoz.
 

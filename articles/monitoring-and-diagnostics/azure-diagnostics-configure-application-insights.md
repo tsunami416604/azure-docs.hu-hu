@@ -1,24 +1,19 @@
 ---
-title: "Konfigurálja az Azure diagnosztikai adatokat küldeni a Application Insights |} Microsoft Docs"
-description: "Frissítse a Azure diagnosztikai adatokat küldeni a Application Insights nyilvános konfigurációt."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Azure diagnosztikai adatokat küldeni a Application Insights konfigurálása
+description: Frissítse a Azure diagnosztikai adatokat küldeni a Application Insights nyilvános konfigurációt.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: f9e12c3e-c307-435e-a149-ef0fef20513a
-ms.service: monitoring-and-diagnostics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: b4f1f8900637f23220f9a89adbb321707c49e2d3
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: diagnostic-extension
+ms.openlocfilehash: 3e1f4076c7a90cbb348f31b7b92e745fff79a04f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262137"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatok küldése az Application insights szolgáltatással
 Felhőszolgáltatások, virtuális gép, virtuálisgép-méretezési csoportok és a Service Fabric összes adatok összegyűjtéséhez használja az Azure Diagnostics-bővítmény.  Az Azure diagnosztikai adatokat küld az Azure Storage-táblákat.  Azonban is minden cső vagy más helyekre Azure Diagnostics kiterjesztéssel 1.5-ös vagy újabb adatok egy részét.

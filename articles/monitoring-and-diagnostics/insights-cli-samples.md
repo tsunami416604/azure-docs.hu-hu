@@ -1,31 +1,26 @@
 ---
-title: Az Azure CLI 2.0 figyelő gyors üzembe helyezési minták. | Microsoft Docs
+title: Figyelő CLI Azure gyors üzembe helyezési-minták
 description: Parancssori felület 2.0 Példaparancsok Azure figyelő szolgáltatások. Az Azure figyelőjének értéke a Microsoft Azure szolgáltatást, amely lehetővé teszi a riasztási értesítéseket küldeni, hívja webes URL-címek, a konfigurált telemetriai adatokat, és az automatikus skálázás Cloud Services, a virtuális gépek és a Web Apps értékek alapján.
-author: kamathashwin
-manager: ''
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1653aa81-0ee6-4622-9c65-d4801ed9006f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
-ms.author: ashwink
-ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+author: rboucher
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: robb
+ms.component: ''
+ms.openlocfilehash: 0b98cc29325310cfc0c7a62de693c309b6731447
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262402"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Az Azure CLI 2.0 figyelő gyors üzembe helyezési minták
 Ez a cikk bemutatja, minta segítséget nyújtanak a figyelő az Azure-szolgáltatások elérésének parancsok parancssori felület (CLI). Az Azure figyelő lehetővé teszi az automatikus skálázás Felhőszolgáltatásokat, a virtuális gépek és a Web Apps és riasztási értesítések küldését, vagy hívja a webes URL-címek, a konfigurált telemetriai adatok értékek alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem telepítette az Azure parancssori felület, kövesse az utasításokat [az Azure CLI 2.0-s verzióját](/cli/azure/install-azure-cli). Is [Azure Cloud rendszerhéj](/azure/cloud-shell) való futtatásra a parancssori felület egy interaktív felhasználói élmény a böngészőben. 
+Ha még nem telepítette az Azure parancssori felület, kövesse az utasításokat [az Azure CLI 2.0-s verzióját](/cli/azure/install-azure-cli). Is [Azure Cloud rendszerhéj](/azure/cloud-shell) való futtatásra a parancssori felület egy interaktív felhasználói élmény a böngészőben. Az összes rendelkezésre álló elérhető parancs a teljes körű referenciáért lásd: a [Azure CLI-figyelő referencia](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Az első lépés jelentkezzen be az Azure-fiókjával.
@@ -90,7 +85,8 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="work-with-alerts"></a>A riasztások kezelése 
-[!NOTE] (Klasszikus) csak riasztások jelenleg CLI használata támogatott. 
+> [!NOTE]
+> (Klasszikus) csak riasztások jelenleg CLI használata támogatott. 
 
 ### <a name="get-alert-classic-rules-in-a-resource-group"></a>Riasztási (klasszikus) szabályok lekérése egy erőforráscsoportban található
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/30/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 11b5e2a408d3ba514753f3510b36fce02470c6e9
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 13b36398afdf8eb4db3adeee4ebb821411d813f5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825161"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300786"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso áttelepítése: az Azure virtuális gépek a helyszíni alkalmazások áthelyezési
 
@@ -26,13 +26,14 @@ Ez a dokumentum az egyik egy sorozat része, amelyek megjelenítik a hogyan fikt
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-A következő cikket: 1: áttekintés | Contoso-áttelepítési stratégia, a cikk adatsorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
-2. cikk: Az Azure-infrastruktúra telepítése | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Ugyanabban az infrastruktúrában található összes Contoso áttelepítési forgatókönyvek szolgál. | Elérhető
-3. cikk: A helyszíni erőforrások felmérése  | Bemutatja, hogyan Contoso fut-e a helyszíni kétrétegű SmartHotel alkalmazásuk VMware futó értékelését. Ezek értékeléséhez app virtuális gépek a [Azure áttelepítése](migrate-overview.md) szolgáltatás, és az alkalmazás SQL Server-adatbázis a [Azure adatbázis áttelepítési Segéd](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
-4. cikk: Azonosítóterületen (növekedési-és-shift) Azure virtuális gépek és egy SQL felügyelt példány (Ez a cikk) | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Áttelepítés után az alkalmazás előtér VM használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás adatbázis használata a [Azure-adatbázis áttelepítése](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás kezelt SQL-példány át. | Elérhető
-5. cikk: Azonosítóterületen (növekedési-és-shift) az Azure virtuális gépen (Ez a cikk) | Bemutatja, hogyan Contoso át SmartHotel alkalmazásuk csak a Site Recovery segítségével virtuális gépeket.
-Cikk 6: Azonosítóterületen (növekedési-és-shift) és az Azure virtuális gépeken futó SQL Server rendelkezésre állási csoportok | Bemutatja, hogyan Contoso áttelepíti a SmartHotel alkalmazást. Azok a Site Recovery segítségével telepíti át az alkalmazás virtuális gépek és az adatbázis áttelepítési szolgáltatás áttelepítése az app-adatbázis egy SQL Server rendelkezésre állási csoporthoz. | Elérhető
-7. cikk: Azonosítóterületen (növekedési-és-shift) Azure virtuális gépek és az Azure-beli MySQL kiszolgáló | Bemutatja, hogyan Contoso áttelepíti a SmartHotel app virtuális gépek áttelepítéséhez a Site Recovery és MySQL munkaterület használatával (biztonsági mentése és visszaállítása) Azure-beli MySQL Server-példány. | Elérhető
+[A következő cikket: 1: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk adatsorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
+[2. cikk: Az Azure-infrastruktúra telepítése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Ugyanabban az infrastruktúrában található összes Contoso áttelepítési forgatókönyvek szolgál. | Elérhető
+[3. cikk: A helyszíni erőforrások felmérése](contoso-migration-assessment.md)  | Bemutatja, hogyan Contoso fut-e a helyszíni kétrétegű SmartHotel alkalmazásuk VMware futó értékelését. Ezek értékeléséhez app virtuális gépek a [Azure áttelepítése](migrate-overview.md) szolgáltatás, és az alkalmazás SQL Server-adatbázis a [Azure adatbázis áttelepítési Segéd](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
+[4. cikk: Áthelyezési Azure virtuális gépek és a felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Áttelepítés után az alkalmazás előtér VM használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás adatbázis használata a [Azure-adatbázis áttelepítése](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás kezelt SQL-példány át. | Elérhető
+Cikk 5: Az Azure virtuális gépen (Ez a cikk) áthelyezési | Bemutatja, hogyan Contoso át SmartHotel alkalmazásuk csak a Site Recovery segítségével virtuális gépeket.
+[Cikk 6: Azure virtuális gépek és az SQL Server rendelkezésre állási csoportok áthelyezési](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan Contoso áttelepíti a SmartHotel alkalmazást. Azok a Site Recovery segítségével telepíti át az alkalmazás virtuális gépek és az adatbázis áttelepítési szolgáltatás áttelepítése az app-adatbázis egy SQL Server rendelkezésre állási csoporthoz. | Elérhető
+[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépeken](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso áttelepíti a Linux osTicket app virtuális gépek Azure Site Recovery. | Elérhető
+[8. cikk: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépek és az Azure MySQL-kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso Azure virtuális gépeken futó Site Recovery segítségével a Linux osTicket alkalmazást áttelepíti, és az alkalmazás adatbázis áttelepítése egy Azure-beli MySQL Server-példányhoz MySQL munkaterület használatával. | Elérhető
 
 Ebben a cikkben a Contoso a kétrétegű Windows kell áttelepítenie. NET SmartHotel alkalmazást futtató VMware virtuális gépeken, az Azure-bA. Ha az alkalmazás használatához, való nyílt forráskódú, és letöltheti a [github](https://github.com/Microsoft/SmartHotel360).
 
@@ -40,7 +41,7 @@ Ebben a cikkben a Contoso a kétrétegű Windows kell áttelepítenie. NET Smart
 
 ## <a name="business-drivers"></a>A stratégiai célok
 
-Az informatikai vezetőségi tagja szorosan együttműködik az üzleti partnerek megértéséhez válasszon ezek közül az áttelepítés számára:
+Az informatikai vezetőségi tagja szorosan együttműködik üzleti partnerek megértéséhez válasszon ezek közül az áttelepítés számára:
 
 - **Üzleti növekedési cím**: Contoso egyre, és ennek eredményeképpen nincs nyomás a helyszíni rendszer és a infrastruktúra.
 - **Kockázatának**: A SmartHotel app fontos a Contoso vállalati. Helyezze át Azure nulla kockázattal szeretnék.
@@ -224,7 +225,7 @@ A folytatáshoz azok győződjön meg arról, hogy elvégezték-üzembe helyezé
 
 ### <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-Contoso be kell állítania a forrás környezetében. Ehhez az szükséges, azok az OVF-sablon letöltése és helyezzen vele üzembe a Site Recovery konfigurációs kiszolgáló magas rendelkezésre állásúként, helyszíni VMware virtuális gép. Miután a konfigurációs kiszolgáló fut, akkor regisztrálja azt ezzel tárolóban.
+Contoso be kell állítania a forrás környezetében. Ehhez az szükséges, azok az OVF-sablon letöltése és helyezzen vele üzembe a Site Recovery konfigurációs kiszolgáló magas rendelkezésre állásúként, helyszíni VMware virtuális gép. Miután a konfigurációs kiszolgáló fut, akkor regisztrálja a tárolóban lévő állapottal.
 
 A konfigurációs kiszolgáló futtatja összetevők száma:
 

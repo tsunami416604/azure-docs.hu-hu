@@ -1,12 +1,12 @@
 ---
-title: "A helyszíni - Azure Logic Apps fájlrendszerek csatlakozni |} Microsoft Docs"
-description: "A helyszíni fájlrendszer csatlakozni erről a logic app munkafolyamatainak a helyszíni az átjáró és a fájlrendszer-összekötő"
-keywords: "fájl telephelyükön található rendszerekhez"
+title: A helyszíni - Azure Logic Apps fájlrendszerek csatlakozni |} Microsoft Docs
+description: A helyszíni fájlrendszer csatlakozni erről a logic app munkafolyamatainak a helyszíni az átjáró és a fájlrendszer-összekötő
+keywords: fájl telephelyükön található rendszerekhez
 services: logic-apps
 author: derek1ee
-manager: anneta
-documentationcenter: 
-ms.assetid: 
+manager: jeconnoc
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: LADocs; deli
-ms.openlocfilehash: 32ab5be41a8dee3b1f2c0b1bde076c0d1a844bdd
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 019b5fcd218ddd471c5f02d0332b8f5b5bf0edb3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300820"
 ---
 # <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Csatlakozás helyszíni fájlrendszer a logic Apps alkalmazásokból, a fájlrendszer-összekötőn keresztül
 
@@ -73,7 +74,7 @@ Adatok kezelése és biztonságos hozzáférés a helyszíni erőforrásokhoz, a
 
    ![Küldjön e-mailek művelet](media/logic-apps-using-file-connector/send-email.png)
 
-9. Mentse a Logic Apps alkalmazást. Tesztelje az alkalmazás feltölteni a fájlt a dropbox alkalmazásba. A helyszíni fájlmegosztáshoz beolvasása átmásolhatja a fájlt, és a műveletekre vonatkozó e-mailt kell kapnia.
+9. Mentse a logikai alkalmazást. Tesztelje az alkalmazás feltölteni a fájlt a dropbox alkalmazásba. A helyszíni fájlmegosztáshoz beolvasása átmásolhatja a fájlt, és a műveletekre vonatkozó e-mailt kell kapnia.
 
 Gratulálunk, most már rendelkezik egy működő logikai alkalmazás, amely képes csatlakozni a helyszíni fájlrendszer. 
 

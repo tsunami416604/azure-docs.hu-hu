@@ -3,8 +3,8 @@ title: Azure CDN-tartalom ország korlátozása |} Microsoft Docs
 description: Útmutató az Azure CDN-tartalom a földrajzi-szűrés szolgáltatás használatával korlátozza a hozzáférést.
 services: cdn
 documentationcenter: ''
-author: lichard
-manager: akucer
+author: dksimpson
+manager: cfowler
 editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: rli
-ms.openlocfilehash: bb757ab115d03ab04dac4468d23f446696a971a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: 93321c4c8a7f8d79835d702ca07132eed94f6493
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260752"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Ország Azure CDN-tartalom korlátozása
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/07/2018
 Amikor egy felhasználó alapértelmezés szerint a tartalmat igényel, függetlenül attól, ahol a felhasználó kérelmet ezt a kiszolgált a tartalmat. Bizonyos esetekben érdemes lehet a tartalmat az ország való hozzáférésének korlátozásához. Ez a cikk ismerteti, hogyan a *földrajzi-szűrés* szolgáltatás a szolgáltatás engedélyezi vagy letiltja a hozzáférést, ország konfigurálásához.
 
 > [!IMPORTANT]
-> Az Azure CDN termék összes funkcionalitása azonos földrajzi-szűrés, de egy kis értékkülönbségeket te országhívó számokat támogatják-e. Tekintse meg a 3. lépés a különbségek mutató hivatkozást.
+> Az Azure CDN termék összes funkcionalitása azonos földrajzi-szűrés, de egy kis értékkülönbségeket te országhívó számokat támogatják-e. További információkért lásd: [Azure CDN országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx).
 
 
 Az ilyen korlátozásokat konfigurálására vonatkozó megfontolások kapcsolatos információkért lásd: [szempontok](cdn-restrict-access-by-country.md#considerations).  
@@ -65,14 +66,17 @@ A szabály az blokkolás /Photos/Strasbourgban/például fájlok például szűr
 
 
 ### <a name="country-codes"></a>Országkódok
-A földrajzi-szűrés szolgáltatás országhívó számokat használ, amelyből a kérelem fogja engedélyezett vagy letiltott biztonságos könyvtár országok meghatározására. Bár az összes Azure CDN termék funkcionalitása azonos földrajzi-szűrés, nincs az országhívószámok támogatják-e kis eltérőek lesznek. További információ: [Azure CDN országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx). 
+A földrajzi-szűrés szolgáltatás országhívó számokat használ, amelyből a kérelem fogja engedélyezett vagy letiltott biztonságos könyvtár országok meghatározására. Bár az összes Azure CDN termék funkcionalitása azonos földrajzi-szűrés, nincs az országhívószámok támogatják-e kis eltérőek lesznek. További információkért lásd: [Azure CDN országhívószámok](https://msdn.microsoft.com/library/mt761717.aspx). 
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 * Közvetlenül a ország szűrési konfigurációjának módosításai nem lépnek érvénybe:
-   * A **Azure CDN Standard Microsoft** -profilok propagálása általában befejezi tíz perc múlva. 
-   * A **Azure CDN Standard Akamai** -profilok propagálása általában befejezi egy percen belül. 
-   * A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 90 percen belül.  
+   * A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+   * Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+   * A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 10 perc múlva. 
+ 
 * Ez a funkció nem támogatja a helyettesítő karakterek (például "*").
+
 * A földrajzi-szűrés konfigurációs társított a következő relatív elérési út rekurzív módon alkalmazza lesz.
-* Csak egy szabály alkalmazhatja a azonos relatív elérési (nem hozható létre több ország szűrőket, amelyek ugyanazt az relatív elérési utat. Azonban a mappa több országban szűrő állhat. Ez az ország szűrők rekurzív jellemzői miatt. Más szóval a korábban konfigurált mappa almappája más országban szűrő rendelhetők.
+
+* Csak egy szabály ugyanazt az relatív elérési utat is alkalmazható. Ez azt jelenti, hogy nem hozható létre több ország szűrőket, amelyek ugyanazt az relatív elérési utat. Van azonban, az a mappa több országban szűrők, ország szűrők rekurzív jellemzői miatt. Más szóval a korábban konfigurált mappa almappája más országban szűrő rendelhetők.
 

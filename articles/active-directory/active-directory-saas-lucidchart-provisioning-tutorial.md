@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: ccc876b2421641271e73ad72ec0c00a10792f8b3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3a77393f01fd5b6e2d2280b52bd45c6b6f61f7d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293058"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés LucidChart konfigurálása
 
@@ -39,7 +40,7 @@ Az Azure Active Directory egy fogalom, más néven "hozzárendeléseket" haszná
 
 A létesítési szolgáltatás engedélyezése és konfigurálása, mielőtt szüksége döntse el, hogy mely felhasználók és/vagy az Azure AD-csoportok határoz meg a felhasználók, akik az LucidChart alkalmazásához való hozzáférést. Ha úgy döntött, itt cikk utasításait követve hozzárendelheti ezeket a felhasználókat az LucidChart alkalmazás:
 
-[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](active-directory-coreapps-assign-user-azure-portal.md)
+[Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Felhasználók hozzárendelése LucidChart fontos tippek
 
@@ -94,7 +95,7 @@ Olvassa el az Azure AD-naplók kiépítés módjáról további információkér
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](active-directory-enterprise-apps-manage-provisioning.md)
+* [Felhasználói fiók kiépítése vállalati alkalmazások kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések

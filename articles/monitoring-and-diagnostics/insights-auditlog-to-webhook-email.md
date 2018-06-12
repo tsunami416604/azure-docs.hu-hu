@@ -1,24 +1,19 @@
 ---
-title: "A webhook hívható meg egy Azure napló figyelmeztetés |} Microsoft Docs"
-description: "Útmutató a tevékenység naplóeseményeket irányításához az egyéni műveletek más szolgáltatásokkal. Például SMS üzeneteket küldeni, jelentkezzen hibák, vagy egy csoport csevegés vagy üzenetküldési szolgáltatás keresztül értesíti."
+title: A webhook hívható meg egy Azure napló figyelmeztetés (klasszikus)
+description: Útmutató a tevékenység naplóeseményeket irányításához az egyéni műveletek más szolgáltatásokkal. Például SMS üzeneteket küldeni, jelentkezzen hibák, vagy egy csoport csevegés vagy üzenetküldési szolgáltatás keresztül értesíti.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 64d333d1-7f37-4a00-9d16-dda6e69a113b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: e825d0f2487c20c8c7f3d210d7180b07742d7173
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262460"
 ---
 # <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>A webhook hívható meg egy Azure napló figyelmeztetés
 Webhook használhatja az Azure riasztási értesítések továbbításához a más rendszerekkel utófeldolgozás vagy egyéni műveletek. A riasztás olyan webhook segítségével szolgáltatások által küldött SMS-üzenetek, bejelentkezési hibák értesíteni a Csevegés vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csoport irányítja. Is állíthatja be egy figyelmeztetés a napló az e-mailek küldése, ha egy riasztás aktiválva van.
@@ -111,7 +106,7 @@ A POST műveletet tartalmaz, a következő JSON-adattartalmat és az összes tev
 | activityLog | A napló az esemény tulajdonságait.|
 | Engedélyezési |Az esemény szerepköralapú hozzáférés-vezérlés (RBAC) tulajdonságait. Ezek a Tulajdonságok általában például **művelet**, **szerepkör**, és **hatókör**. |
 | művelet | A művelet rögzíti a riasztást. |
-| Hatókör | A riasztás (Ez azt jelenti, hogy az erőforrás) hatókörében.|
+| scope | A riasztás (Ez azt jelenti, hogy az erőforrás) hatókörében.|
 | csatornák | A műveletet. |
 | Jogcímek | Egy gyűjtemény, mert az információk a jogcímek vonatkozik. |
 | hívó |A GUID Azonosítóját vagy a művelet, a jogcím vagy a rendelkezésre állás alapján SPN jogcím végző felhasználó felhasználóneve. Bizonyos rendszerhívások null értékű lehet. |

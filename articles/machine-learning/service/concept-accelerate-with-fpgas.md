@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/31/2018
-ms.openlocfilehash: 18b0ee143443ecf128bdfe57adb61cc22f95db87
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5ed94c3b750c927ec48959c12388bd22de3d3df4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832584"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261950"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Mi az az FPGA és a projekt Brainwave?
 
@@ -62,7 +62,7 @@ A következő esetekben használja a FPGA projekt Brainwave-architektúra:
 - Automatikus optikai hálózatvizsgáló rendszer. Lásd: [valós idejű AI: Microsoft időről előzetes verziója projekt Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/).
 - Föld borítóján leképezés. Lásd: [használata a mély tanulási megállapítás FPGAs föld lefedi a terabájt Légifelvételes képek leképezésekor végrehajtásához](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/).
 
-## <a name="how-to-create-an-fpga-service"></a>Hogyan FPGA szolgáltatás létrehozása?
+## <a name="how-to-deploy-a-web-service-to-an-fpga"></a>Hogyan lehet egy webszolgáltatás-bővítmény telepítése egy FPGA?
 
 A magas szintű folyamata egy kép felismerési szolgáltatás létrehozása az Azure-ban ResNet50 egy featurizer, a következőképpen történik:
 
@@ -70,7 +70,8 @@ A magas szintű folyamata egy kép felismerési szolgáltatás létrehozása az 
 2. Regisztrálja a modell Azure ML Nyelvimodell-API használata a zip-fájl, a Blob Storage tárolóban.
 3. A szolgáltatás üzembe helyezése az Azure ML Nyelvimodell-API használatával regisztrált modellt.
 
-Az oktatóanyagok esetén lásd: [Azure ML hardver gyorsított modellek gyors üzembe helyezés](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/resnet50/00_QuickStart.ipynb).
+További információ a folyamat a következő cikket [a modell rendszerbe állítása az Azure Machine Learning segítségével egy FPGA webszolgáltatásként](how-to-deploy-fpga-web-service.md).
+
 
 ## <a name="start-using-fpga"></a>Ismerkedés a FPGA
 

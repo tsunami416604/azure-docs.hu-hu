@@ -1,8 +1,8 @@
 ---
-title: "Keresés használata az Azure Application Insightsban |} Microsoft Docs"
-description: "Keresés és szűrés nyers telemetriaadatok küldött a webes alkalmazást."
+title: Keresés használata az Azure Application Insightsban |} Microsoft Docs
+description: Keresés és szűrés nyers telemetriaadatok küldött a webes alkalmazást.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce2fd9ed1ce796762cc15622cb1c59a316c1909d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294384"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insightsban keresés használata
 Keresés csak a [Application Insights](app-insights-overview.md) található és egyéni telemetriai elemek, például Lapmegtekintések, kivételek, így megismerkedhet vagy kérelmek használható. És naplókivonatokat és eseményeket, amelyek rendelkeznek a kódolt megtekintéséhez.
@@ -113,9 +114,9 @@ Előfordulhat, hogy be szeretné állítani a tartományon, mint rövidebb tarto
 
 Teljes szavak, nem karakterláncrész keresése. Tegye idézőjelek közé tegye a speciális karaktereket.
 
-| Karakterlánc | van *nem* által talált | Ezek találja |
+| sztring | van *nem* által talált | Ezek találja |
 | --- | --- | --- |
-| HomeController.About |otthoni<br/>Tartományvezérlő<br/>Kimenő | homecontroller<br/>tudnivalók<br/>"homecontroller.about"|
+| HomeController.About |kezdőlap<br/>Tartományvezérlő<br/>Kimenő | homecontroller<br/>névjegy<br/>"homecontroller.about"|
 |Egyesült Államok|UNI<br/>TED|Egyesült<br/>állapotok<br/>Egyesült Államok és<br/>"az Amerikai Egyesült Államok"
 
 Az alábbiakban a keresési kifejezésre:

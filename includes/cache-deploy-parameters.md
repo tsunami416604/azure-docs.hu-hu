@@ -53,5 +53,5 @@ Az új Azure Redis Cache példány mérete.
     }
 
 
-A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (0, 1, 2, 3, 4, 5 vagy 6), és hozzárendeli az alapértelmezett értéket (1), ha nincs érték megadva. A számok felel meg a következő gyorsítótár méretének: 0 = 250 MB, 1 = 1 GB-os, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
+A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (0, 1, 2, 3, 4, 5 vagy 6), és hozzárendeli az alapértelmezett értéket (0), ha nincs érték megadva. A számok felel meg a következő gyorsítótár méretének: 0 = 250 MB, 1 = 1 GB-os, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 

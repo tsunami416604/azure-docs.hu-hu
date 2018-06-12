@@ -2,7 +2,7 @@
 title: GitHub - Azure Logic Apps csatlakozni |} Microsoft Docs
 description: A GitHub REST API-k és az Azure Logic Apps GitHub-események figyelésére
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 03/02/2018
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: c6bd21626c1934f40520b0ddc2d78eeb97eee9a9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ce567dc631c3a147b795eb2355a4961faa8881d6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609912"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295812"
 ---
 # <a name="connect-to-github"></a>Kapcsolódás a Githubon
 

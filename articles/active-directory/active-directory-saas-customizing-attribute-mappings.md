@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD-attribútum-leképezésekhez testreszabása |} Microsoft Docs"
-description: "Ismerje meg, milyen attribútum-leképezésekhez SaaS-alkalmazásokhoz az Azure Active Directoryban, hogyan módosíthatja azokat az üzleti igények kielégítéséhez."
+title: Az Azure AD-attribútum-leképezésekhez testreszabása |} Microsoft Docs
+description: Ismerje meg, milyen attribútum-leképezésekhez SaaS-alkalmazásokhoz az Azure Active Directoryban, hogyan módosíthatja azokat az üzleti igények kielégítéséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 549e0b8c-87ce-4c9b-b487-b7bf0155dc77
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78d971b47ffceb8d845f21a731176834f004f12c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295625"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Attribútum-leképezésekhez kiépítés az SaaS-alkalmazásokhoz az Azure Active Directory felhasználói testreszabása
 Microsoft Azure AD támogatást nyújt a felhasználók átadása, például a Salesforce, a Google Apps és a többi külső SaaS-alkalmazásokban. Ha egy külső SaaS-alkalmazáshoz engedélyezett kiépítés felhasználó, az Azure-portálon szabályozza az űrlap konfiguráció "címtárattribútum-leképezésben." nevű attribútum értékei
@@ -83,7 +84,7 @@ Csoport kiépítés is opcionálisan engedélyezhető vagy letiltható az eszkö
 Az objektumok részeként kiépített attribútumok testre szabható a felhasználói objektumok, a fentiekben ismertetett azonos módon. 
 
 >[!TIP]
->Objektumok (tulajdonságait és tagok) egy különböző fogalom a [csoportok hozzárendelése](active-directory-coreapps-assign-user-azure-portal.md) egy alkalmazáshoz. Egy csoport hozzárendelése egy alkalmazás, de csak kiépíteni a felhasználói objektumok a csoportban lévő lehetőség. A teljes csoport objektumok kiépítése nem használatához szükséges csoportok hozzárendelésekben.
+>Objektumok (tulajdonságait és tagok) egy különböző fogalom a [csoportok hozzárendelése](manage-apps/assign-user-or-group-access-portal.md) egy alkalmazáshoz. Egy csoport hozzárendelése egy alkalmazás, de csak kiépíteni a felhasználói objektumok a csoportban lévő lehetőség. A teljes csoport objektumok kiépítése nem használatához szükséges csoportok hozzárendelésekben.
 
 
 ## <a name="editing-the-list-of-supported-attributes"></a>Támogatott attribútumok listáját szerkesztése
@@ -149,7 +150,7 @@ Ezzel a beállítással hatékonyan kényszerítheti a felhasználók újra be k
 * [Felhasználói létesítési vagy megszüntetési SaaS-alkalmazásokhoz való automatizálásához](active-directory-saas-app-provisioning.md)
 * [Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](active-directory-saas-scoping-filters.md)
-* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](active-directory-scim-provisioning.md)
+* [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->

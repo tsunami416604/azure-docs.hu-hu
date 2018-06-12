@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b7141d028c496b75b061c17aa19ad6c73c0588c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d4b906bd966da66659d23b935f7dbbd44b33899a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296441"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Csatlakozás a Google Cloud Platform fiók
 
@@ -59,7 +60,7 @@ Használati és eszköz céghez, a költség felügyeleti követelményeket a k�
 
 ## <a name="add-a-google-cloud-account-to-cost-management"></a>Google Cloud-fiók hozzáadása költség-felügyelet
 
-1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) , és jelentkezzen be.
+1. Nyissa meg a Cloudyn portált Azure-portálról, vagy navigáljon arra [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) , jelentkezzen be.
 2. Kattintson a **beállítások** (fogaskerék ikonjára symbol), és válassza **felhő fiókok**.
 3. A **fiókok kezelése**, jelölje be a **Google-fiókot** fülre, majd **új hozzáadása +**.
 4. A **Google-fiók neve**, adja meg a számlázási fiók e-mail címét, majd kattintson az **következő**.

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293092"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Article Index for Application Management in Azure Active Directory (Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke)
 Ezen a lapon minden egyes dokumentum írása az alkalmazással kapcsolatos szolgáltatásokra vonatkozó az Azure Active Directory (Azure AD) átfogó listáját tartalmazza.
@@ -32,7 +33,7 @@ Az alábbi cikkek jó kezdőpont rendelkező egyszerűen szeretné az Azure AD a
 |:---:| --- |
 | Az alkalmazás felügyelettel kapcsolatos problémák, amelyek az Azure AD megoldja bemutatása |[Alkalmazások kezelése az Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Kik férhetnek hozzá az alkalmazásokhoz, és hogyan indítsa el a felhasználók az alkalmazások engedélyezése egyszeri bejelentkezéshez, kapcsolódik az Azure AD a különféle funkcióinak áttekintése |[Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban](manage-apps/what-is-single-sign-on.md) |
-| A különböző szükséges lépések során alkalmazások integrálása az Azure AD meg |[Az Azure Active Directory integrálása alkalmazások](manage-apps/plan-an-application-integration.md)<br /><br />[Egyszeri bejelentkezés az SaaS-alkalmazások engedélyezése](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Az alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md) |
+| A különböző szükséges lépések során alkalmazások integrálása az Azure AD meg |[Az Azure Active Directory integrálása alkalmazások](manage-apps/plan-an-application-integration.md)<br /><br />[Egyszeri bejelentkezés az SaaS-alkalmazások engedélyezése](manage-apps/configure-single-sign-on-portal.md)<br /><br />[Az alkalmazásokhoz való hozzáférés kezelése](manage-apps/what-is-access-management.md) |
 | Hogyan vannak megadva az alkalmazások az Azure AD technikai magyarázata |[Miért és hogyan lehet az Azure AD-alkalmazások felvétele](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Hibaelhárítási cikkek
@@ -42,7 +43,7 @@ Ez a szakasz vonatkozó hibaelhárítási útmutatók gyors hozzáférést bizto
 |:---:| --- |
 | Összevont egyszeri bejelentkezést. |[Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md) |
 | Jelszó-alapú egyszeri bejelentkezést. |[A hozzáférési Panel bővítményét az Internet Explorer hibaelhárítása](active-directory-saas-ie-troubleshooting.md) |
-| Alkalmazásproxy |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
+| Alkalmazásproxy |[Alkalmazás Proxy hibaelhárítási útmutatója](manage-apps/application-proxy-troubleshoot.md) |
 | Egyszeri bejelentkezés közötti helyszíni AD és az Azure AD |[Hibaelhárítási Jelszókivonat-szinkronizálást](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[A Jelszóvisszaírás hibaelhárítása](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dinamikus csoporttagság |[Dinamikus csoporttagság hibaelhárítása](active-directory-accessmanagement-troubleshooting.md) |
 
@@ -57,7 +58,7 @@ Egyszeri bejelentkezés lehetővé teszi a különböző alkalmazások és szolg
 | Több mint 150 app oktatóanyagok konfigurálásával egyszeri bejelentkezés alkalmazásokhoz, mint [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md), és sok más |[Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md) |
 | Manuálisan állítsa be, és az egyszeri bejelentkezés konfigurációs testreszabása |[Hogyan való konfigurálása összevont egyszeri bejelentkezést az alkalmazásokat, amelyek nem találhatók az Azure Active Directory Alkalmazáskatalógusában](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[A SAML-jogkivonat előzetesen beépített alkalmazások számára kiállított jogcímek testreszabása](active-directory-saml-claims-customization.md) |
 | A összevont alkalmazásokat, az SAML-protokollt használó hibaelhárítási útmutatója |[Hibaelhárítási SAML-alapú egyszeri bejelentkezést.](active-directory-saml-debugging.md) |
-| Az alkalmazás tanúsítvány lejárati dátuma konfigurálása és a tanúsítványok megújítása |[Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](active-directory-sso-certs.md) |
+| Az alkalmazás tanúsítvány lejárati dátuma konfigurálása és a tanúsítványok megújítása |[Tanúsítványok kezelése az összevont egyszeri bejelentkezés az Azure Active Directoryban](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Összevont egyszeri bejelentkezést érhető el minden kiadása felhasználónként legfeljebb tíz alkalmazások Azure ad-val. [Prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [Azure AD alapvető](https://azure.microsoft.com/pricing/details/active-directory/) vagy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), akkor [csoportoknak a segítségével összevont alkalmazásokhoz történő hozzáférés hozzárendelése](#managing-access-to-applications).
 
@@ -82,7 +83,7 @@ Ha vannak olyan alkalmazások, a magánhálózaton, amely a felhasználók és e
 | A szolgáltatásalkalmazás-Proxy konfigurálása és közzététele az első alkalmazás oktatóprogramok |[Az Azure AD alkalmazás Proxy beállítása](manage-apps/application-proxy-enable.md)<br /><br />[Az alkalmazás alkalmazásproxy-összekötő csendes telepítése](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Alkalmazás Proxy használó alkalmazások közzétételének módját](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Saját tartománynév használatával](manage-apps/application-proxy-configure-custom-domain.md) |
 | Alkalmazás Proxy közzétett alkalmazások egyszeri bejelentkezés és a feltételes hozzáférés engedélyezése |[Single-sign-on a Proxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Feltételes hozzáférés és a Proxy](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Alkalmazásproxy használata a következő forgatókönyvek esetén útmutatást |[Natív ügyfél-alkalmazások támogatásának módja](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Hogyan támogatja a jogcímbarát alkalmazásokhoz](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Külön hálózatok és helyek közzétett alkalmazások támogatása](manage-apps/application-proxy-connector-groups.md) |
-| Alkalmazásproxy hibaelhárítási útmutatója |[Alkalmazás Proxy hibaelhárítási útmutatója](active-directory-application-proxy-troubleshoot.md) |
+| Alkalmazásproxy hibaelhárítási útmutatója |[Alkalmazás Proxy hibaelhárítási útmutatója](manage-apps/application-proxy-troubleshoot.md) |
 
 Minden kiadása felhasználónként legfeljebb tíz alkalmazásokhoz az Azure AD alkalmazásproxy érhető el. [Prémium szintű Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) korlátlan alkalmazásokat támogatja. Ha a szervezete [Azure AD alapvető](https://azure.microsoft.com/pricing/details/active-directory/) vagy [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), akkor [csoportoknak a segítségével hozzáférés hozzárendelése alkalmazásokhoz](#managing-access-to-applications).
 
@@ -136,7 +137,7 @@ A létrehozási, karbantartási és SaaS-alkalmazásokhoz, például a Dropbox, 
 |:---:| --- |
 | További tudnivalók: hogyan működik, és a gyakori kérdésekre adott válaszok |[Kiépítés és megszüntetés SaaS-alkalmazásokhoz való felhasználói automatizálásához](active-directory-saas-app-provisioning.md) |
 | Hogyan van rendelve az információk között az Azure AD konfigurálása és az SaaS-alkalmazás |[Attribútum-leképezésekhez testreszabása](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
-| Bármely alkalmazás, amely támogatja a SCIM protokoll automatikus kiépítés engedélyezése |[Automatizált Felhasználókiépítése bármely SCIM-Enabled alkalmazás beállítása](active-directory-scim-provisioning.md) |
+| Bármely alkalmazás, amely támogatja a SCIM protokoll automatikus kiépítés engedélyezése |[Automatizált Felhasználókiépítése bármely SCIM-Enabled alkalmazás beállítása](manage-apps/use-scim-to-provision-users-and-groups.md) |
 | Jelentés és a felhasználók átadása hibaelhárítása |[A felhasználók automatikus átadása jelentések](active-directory-saas-provisioning-reporting.md)<br><br>[Hibaelhárítás a felhasználók átadása](active-directory-application-provisioning-content-map.md) |
 | Korlát, akik lekérdezi létrehozni, hogy az alkalmazást a saját attribútumértékek alapján |[Helyezése Hatókörszűrőkkel](active-directory-saas-scoping-filters.md) |
 
@@ -159,7 +160,7 @@ Segítséget a kezelése, akik hozzáférhetnek a erőforrásokat, Azure Active 
 
 | Útmutató a következő cikket: |  |
 |:---:| --- |
-| Az Azure AD hozzáférési felügyeleti funkciókat áttekintése |[Bevezetés az alkalmazásokhoz való hozzáférés kezelése](active-directory-managing-access-to-apps.md)<br /><br />[Hozzáférés-kezelés az Azure AD működése](active-directory-manage-groups.md)<br /><br />[Csoportok használata az SaaS-alkalmazásokhoz való hozzáférés kezelése](active-directory-accessmanagement-group-saasapps.md) |
+| Az Azure AD hozzáférési felügyeleti funkciókat áttekintése |[Bevezetés az alkalmazásokhoz való hozzáférés kezelése](manage-apps/what-is-access-management.md)<br /><br />[Hozzáférés-kezelés az Azure AD működése](active-directory-manage-groups.md)<br /><br />[Csoportok használata az SaaS-alkalmazásokhoz való hozzáférés kezelése](active-directory-accessmanagement-group-saasapps.md) |
 | Alkalmazások és a csoportok a önkiszolgáló felügyeletének lehetővé tételéhez |[Önkiszolgáló alkalmazások kezelése](active-directory-self-service-application-access.md)<br /><br />[Önkiszolgáló csoportkezelés](active-directory-accessmanagement-self-service-group-management.md) |
 | Az Azure ad-ben a csoportok beállításával kapcsolatos útmutatás |[Biztonsági csoportok létrehozása](active-directory-groups-create-azure-portal.md)<br /><br />[Egy csoport tulajdonosainak kijelölése](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[A "Minden felhasználók" csoport használata](active-directory-accessmanagement-dedicated-groups.md) |
 | Dinamikus csoportok segítségével automatikusan az attribútumalapú tagsági szabályokkal csoporttagság feltöltéséhez |[Dinamikus csoporttagság: Speciális szabályok](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[Dinamikus csoporttagság hibaelhárítása](active-directory-accessmanagement-troubleshooting.md) |

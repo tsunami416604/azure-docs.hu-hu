@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 5fc13ef07b61feb9e9fdd73123a09daa61f6aaf3
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a133ccdd0b40f9a878ba627e6c093787316aea35
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264119"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök
 Ez a cikk ismerteti az illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök.
@@ -21,7 +22,7 @@ Ez a cikk ismerteti az illesztőprogramok és MySQL az Azure-adatbázis kompatib
 ## <a name="mysql-drivers"></a>MySQL-illesztőprogram
 Azure MySQL-adatbázis használja a világ legnépszerűbb community edition MySQL-adatbázis. Ezért összeegyeztethető számos programozási nyelveket és illesztőprogramokat. A cél három legújabb verzióját a MySQL-illesztőprogramok támogatása, és folytatni a szerzők nyílt forráskódú közösségi azon törekvéseit, hogy folyamatosan a a funkciókat és a MySQL-illesztőprogramok használhatóságuk javításában. A tesztelni és való kompatibilitás érdekében a MySQL 5.6 és 5.7 Azure-adatbázis található illesztőprogramok listája a következő táblázatban:
 
-| **Driver** | **Hivatkozások** | **Kompatibilis verziója** | **Kompatibilis a következő verziók** | **Megjegyzések** |
+| **Illesztőprogram** | **Hivatkozások** | **Kompatibilis verziója** | **Kompatibilis a következő verziók** | **Megjegyzések** |
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
 | PHP | http://php.net/downloads.php | 5.5 5.6 7.x | 5.3 | Adja hozzá MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT SSL MySQLi PHP 7.0 kapcsolatot, a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` beállítást false értékre.|
 | .Net | [A Githubon MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [A Nugetből telepítési csomag](https://www.nuget.org/packages/MySqlConnector/) | 0.27 és után | 0.26.5 és előtt | |

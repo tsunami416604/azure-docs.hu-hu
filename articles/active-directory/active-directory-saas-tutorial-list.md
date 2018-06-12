@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/11/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: f8db3284d0fb0da6d0091c021581a5275642a42b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1e25b3721aeed42f271e38c1d777bec57a978b05
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293126"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -46,7 +47,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-absorblms-tutorial.png)| [LMS felvegye](active-directory-saas-absorblms-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-accredible-tutorial.png)| [Accredible](active-directory-saas-accredible-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-achieve3000-tutorial.png)| [Achieve3000](active-directory-saas-achieve3000-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adaptivesuite-tutorial.png)| [Adaptív csomag](active-directory-saas-adaptivesuite-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adaptivesuite-tutorial.png)| [Adaptív Insights](active-directory-saas-adaptivesuite-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adobecaptivateprime-tutorial.png)| [Az Adobe Captivate Prime](active-directory-saas-adobecaptivateprime-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adobe-creative-cloud-tutorial.png)| [Az Adobe kreatív felhő](active-directory-saas-adobe-creative-cloud-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-adobeexperiencemanager-tutorial.png)| [Az Adobe élmény Manager](active-directory-saas-adobeexperiencemanager-tutorial.md)|
@@ -115,6 +116,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-cezannehrsoftware-tutorial.png)| [Cezanne HR szoftver](active-directory-saas-cezannehrsoftware-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-cherwell-tutorial.png)| [Cherwell](active-directory-saas-cherwell-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-chromeriver-tutorial.png)| [Chromeriver](active-directory-saas-chromeriver-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-chronicx-tutorial.png)| [ChronicXÂ®](active-directory-saas-chronicx-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-cimpl-tutorial.png)| [Cimpl](active-directory-saas-cimpl-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco felhő](active-directory-saas-ciscocloud-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](active-directory-saas-ciscocloudlock-tutorial.md)|
@@ -183,9 +185,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-fiscalnote-tutorial.png)| [FiscalNote](active-directory-saas-fiscalnote-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-five9-tutorial.png)| [Five9 Plus Adapter (CTI, forduljon Center-ügynökökkel)](active-directory-saas-five9-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-flatter-files-tutorial.png)| [Laposabb fájlok](active-directory-saas-flatter-files-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-flock-tutorial.png)| [Állomány](active-directory-saas-flock-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-floqast-tutorial.png)| [FloQast](active-directory-saas-floqast-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-fluxxlabs-tutorial.png)| [Fluxx Labs](active-directory-saas-fluxxlabs-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-fm-systems-tutorial.png)| [FM:Systems](active-directory-saas-fm-systems-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-foreseecxsuite-tutorial.png)| [Várható CX csomag](active-directory-saas-foreseecxsuite-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-formcom-tutorial.png)| [Form.com](active-directory-saas-formcom-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-freshdesk-tutorial.png)| [FreshDesk](active-directory-saas-freshdesk-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-freshgrade-tutorial.png)| [FreshGrade](active-directory-saas-freshgrade-tutorial.md)|
@@ -193,11 +197,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-front-tutorial.png)| [Első](active-directory-saas-front-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-fuse-tutorial.png)| [biztosító](active-directory-saas-fuse-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-fuze-tutorial.png)| [Fuze](active-directory-saas-fuze-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G csomag](active-directory-saas-google-apps-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G csomag](active-directory-saas-google-apps-tutorial.md)|[G Suite – a felhasználók átadása](active-directory-saas-google-apps-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-gaggleamp-tutorial.png)| [GaggleAMP](active-directory-saas-gaggleamp-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-getabstract-tutorial.png)| [Getabstract](active-directory-saas-getabstract-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-gigya-tutorial.png)| [Gigya](active-directory-saas-gigya-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-github-tutorial.png)| [GitHub](active-directory-saas-github-tutorial.md)|[GitHub - a felhasználók átadása](active-directory-saas-github-provisioning-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-github-tutorial.png)| [GitHubon](active-directory-saas-github-tutorial.md)|[GitHub - a felhasználók átadása](active-directory-saas-github-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-citrix-gotomeeting-tutorial.png)| [GoToMeeting](active-directory-saas-citrix-gotomeeting-tutorial.md)|[GoToMeeting – a felhasználók átadása](active-directory-saas-citrixgotomeeting-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-greenhouse-tutorial.png)| [Üvegházhatást](active-directory-saas-greenhouse-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-grovo-tutorial.png)| [Grovo](active-directory-saas-grovo-tutorial.md)|
@@ -240,7 +244,10 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-iriusrisk-tutorial.png)| [IriusRisk](active-directory-saas-iriusrisk-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-itrp-tutorial.png)| [ITRP](active-directory-saas-itrp-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-itslearning-tutorial.png)| [itslearning](active-directory-saas-itslearning-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-iwellnessnow-tutorial.png)| [iWellnessNow](active-directory-saas-iwellnessnow-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](active-directory-saas-jamfprosamlconnector-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [JIRA SAML SSO Microsoft](active-directory-saas-jiramicrosoft-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [JIRA SAML SSO Microsoft (V5.2)](active-directory-saas-jira52microsoft-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jitbit-helpdesk-tutorial.png)| [Jitbit segélyszolgálat](active-directory-saas-jitbit-helpdesk-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jive-tutorial.png)| [Jive](active-directory-saas-jive-tutorial.md)|[Jive – a felhasználók átadása](active-directory-saas-jive-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jobbadmin-tutorial.png)| [Jobbadmin](active-directory-saas-jobbadmin-tutorial.md)|
@@ -292,8 +299,6 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mercell-tutorial.png)| [Mercell](active-directory-saas-mercell-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mercerhrs-tutorial.png)| [Mercer BenefitsCentral (MBC)](active-directory-saas-mercerhrs-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-merchlogix-tutorial.png)| [Merchlogix](active-directory-saas-merchlogix-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [A Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA](active-directory-saas-jiramicrosoft-tutorial.md)|
-| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [A Microsoft Azure Active Directory egyszeri bejelentkezésre vonatkozó JIRA 5.2](active-directory-saas-jira52microsoft-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mimecast-admin-console-tutorial.png)| [Mimecast felügyeleti konzol](active-directory-saas-mimecast-admin-console-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mimecast-personal-portal-tutorial.png)| [Mimecast személyes portál](active-directory-saas-mimecast-personal-portal-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mindflash-tutorial.png)| [Mindflash](active-directory-saas-mindflash-tutorial.md)|
@@ -302,6 +307,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mobi-tutorial.png)| [MOBI](active-directory-saas-mobi-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mobilexpense-tutorial.png)| [Mobil Xpense](active-directory-saas-mobilexpense-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-mobileiron-tutorial.png)| [MobileIron](active-directory-saas-mobileiron-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-moconavi-tutorial.png)| [moconavi](active-directory-saas-moconavi-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-montageonline-tutorial.png)| [Online Montázs](active-directory-saas-montageonline-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-moveittransfer-tutorial.png)| [MOVEit átadás - Azure AD-integrációs](active-directory-saas-moveittransfer-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-moxiengage-tutorial.png)| [Vállalhat Moxi](active-directory-saas-moxiengage-tutorial.md)|
@@ -359,6 +365,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-projectplace-tutorial.png)| [Projectplace](active-directory-saas-projectplace-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-promapp-tutorial.png)| [Promapp](active-directory-saas-promapp-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-proofpoint-ondemand-tutorial.png)| [Az igény szerinti Proofpoint](active-directory-saas-proofpoint-ondemand-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-proxyclick-tutorial.png)| [Proxyclick](active-directory-saas-proxyclick-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](active-directory-saas-purelyhr-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-qliksense-enterprise-tutorial.png)| [Qlik logika Enterprise](active-directory-saas-qliksense-enterprise-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-qprism-tutorial.png)| [QPrism](active-directory-saas-qprism-tutorial.md)|
@@ -373,10 +380,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-redvector-tutorial.png)| [RedVector](active-directory-saas-redvector-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-reflektive-tutorial.png)| [Reflektive](active-directory-saas-reflektive-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-replicon-tutorial.png)| [Replicon](active-directory-saas-replicon-tutorial.md)|[Replicon – a felhasználók átadása](active-directory-saas-replicon-provisioning-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-reviewsnap-tutorial.png)| [Reviewsnap](active-directory-saas-reviewsnap-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-reward-gateway-tutorial.png)| [Ellenszolgáltatás átjáró](active-directory-saas-reward-gateway-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-rfpio-tutorial.png)| [RFPIO](active-directory-saas-rfpio-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-rightanswers-tutorial.png)| [RightAnswers](active-directory-saas-rightanswers-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-rightscale-tutorial.png)| [Rightscale](active-directory-saas-rightscale-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-riskware-tutorial.png)| [Riskware](active-directory-saas-riskware-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-rolepoint-tutorial.png)| [RolePoint](active-directory-saas-rolepoint-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-rollbar-tutorial.png)| [BUKÓÍV](active-directory-saas-rollbar-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-runmyprocess-tutorial.png)| [RunMyProcess](active-directory-saas-runmyprocess-tutorial.md)|
@@ -410,6 +419,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-sequr-tutorial.png)| [Sequr](active-directory-saas-sequr-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-servicechannel-tutorial.png)| [ServiceChannel](active-directory-saas-servicechannel-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](active-directory-saas-servicenow-tutorial.md)|[A ServiceNow – a felhasználók átadása](active-directory-saas-servicenow-provisioning-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-sharepoint-on-premises-tutorial.png)| [A helyi](active-directory-saas-sharepoint-on-premises-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-shmoopforschools-tutorial.png)| [A iskolákat Shmoop](active-directory-saas-shmoopforschools-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-showpad-tutorial.png)| [Showpad](active-directory-saas-showpad-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-signalfx-tutorial.png)| [SignalFx](active-directory-saas-signalfx-tutorial.md)|
@@ -419,6 +429,8 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-skillport-tutorial.png)| [Skillport](active-directory-saas-skillport-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-skillsmanager-tutorial.png)| [Skills Manager](active-directory-saas-skillsmanager-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-skydeskemail-tutorial.png)| [SkyDesk E-mail](active-directory-saas-skydeskemail-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-skyhighnetworks-tutorial.png)| [Skyhigh hálózatok](active-directory-saas-skyhighnetworks-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-skytap-tutorial.png)| [Skytap](active-directory-saas-skytap-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](active-directory-saas-slack-tutorial.md)|[Slackhez – a felhasználók átadása](active-directory-saas-slack-provisioning-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-smallimprovements-tutorial.png)| [Kis fejlesztései](active-directory-saas-smallimprovements-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-smarteru-tutorial.png)| [SmarterU](active-directory-saas-smarteru-tutorial.md)|
@@ -461,6 +473,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-timeoffmanager-tutorial.png)| [TimeOffManager](active-directory-saas-timeoffmanager-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-tinfoil-security-tutorial.png)| [A TINFOIL SECURITY](active-directory-saas-tinfoil-security-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-tivitz-tutorial.png)| [TiViTz](active-directory-saas-tivitz-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-tonicdm-tutorial.png)| [TonicDM](active-directory-saas-tonicdm-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-topdesk-public-tutorial.png)| [TOPdesk - nyilvános](active-directory-saas-topdesk-public-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-topdesk-secure-tutorial.png)| [TOPdesk - biztonságos](active-directory-saas-topdesk-secure-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-trackvia-tutorial.png)| [TrackVia](active-directory-saas-trackvia-tutorial.md)|
@@ -477,6 +490,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-veracode-tutorial.png)| [Veracode](active-directory-saas-veracode-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-veritas-tutorial.png)| [VERITAS vállalati Vault.cloud egyszeri bejelentkezés](active-directory-saas-veritas-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-versal-tutorial.png)| [Bejárás](active-directory-saas-versal-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-vidyard-tutorial.png)| [Vidyard](active-directory-saas-vidyard-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-vodeclic-tutorial.png)| [Vodeclic](active-directory-saas-vodeclic-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-voyance-tutorial.png)| [Voyance](active-directory-saas-voyance-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-vxmaintain-tutorial.png)| [vxMaintain](active-directory-saas-vxmaintain-tutorial.md)|
@@ -503,6 +517,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-ziflow-tutorial.png)| [Ziflow](active-directory-saas-ziflow-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-zivver-tutorial.png)| [ZIVVER](active-directory-saas-zivver-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-zoho-mail-tutorial.png)| [Zoho](active-directory-saas-zoho-mail-tutorial.md)|
+| ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-zohoone-tutorial.png)| [Egy Zoho](active-directory-saas-zohoone-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-zoom-tutorial.png)| [Nagyítás](active-directory-saas-zoom-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-zscaler-tutorial.png)| [Zscaler](active-directory-saas-zscaler-tutorial.md)|
 | ![embléma](./media/active-directory-saas-tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler béta](active-directory-saas-zscaler-beta-tutorial.md)|

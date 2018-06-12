@@ -5,22 +5,22 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 05/22/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: d3e0f2680cbe703edc553ddff310fba2d1ddf77f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323816"
 ---
 A memóriaoptimalizált VM-méretek ajánlat egy nagy memória-CPU arányú, amelyek kiváló relációs adatbázis-kiszolgálók, közepes vagy nagyméretű gyorsítótárak és memórián belüli elemzés. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
 * A M-sorozat kínál a legmagasabb vCPU száma (legfeljebb 128 Vcpu) és a legnagyobb memória (akár 3.8 TiB) a virtuális gép a felhőben.  Ideális a rendkívül nagy méretű adatbázisokhoz vagy olyan egyéb alkalmazásokhoz, amelyek ki tudják használni a nagy vCPU-számot és a nagy memóriamennyiséget.
 
-* A Dv2-, a D- és a G-sorozat, valamint ezek DS/GS megfelelői gyorsabb virtuális processzort (vCPU), jobb ideiglenes tárteljesítményt vagy több memóriát igényló alkalmazásokhoz ideálisak.  Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
+* Dv2-sorozat, G-sorozat, és a DSv2/GS megfelelők esetében, amelyek az alkalmazások, amelyeknek gyorsabb Vcpu, ideiglenes tárolási jobb teljesítmény érdekében igény, vagy magasabb memória iránti igények kielégítése érdekében ideális.  Nagyon hatékony kombinációt kínálnak számos nagyvállalati szintű alkalmazáshoz.
 
-* A D-sorozat virtuális gépei nagyobb számítási teljesítményt és ideiglenes lemezteljesítményt igénylő alkalmazások futtatására lettek kialakítva. A D-sorozat virtuális gépei gyorsabb processzorokat, nagyobb memória–vCPU arányt, valamint az ideiglenes tároláshoz SSD meghajtókat kínálnak. Részletekért lásd az Azure blogon megjelent bejelentést [a D-sorozat új virtuális gépméreteit](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/) ismertető bejegyzésben.
 
 * A Dv2-sorozat az eredeti D-sorozat újabb verziója, amely nagyobb teljesítményű processzorokat kínál. A Dv2-sorozathoz használt processzor mintegy 35%-kal gyorsabb, mint a D-sorozathoz használt processzorok. A legújabb generációját alapul 2,4 GHz-es Intel Xeon® E5-2673 v3 2,4 GHz (Haswell) vagy E5-2673 v4 2.3 GHz (Broadwell) processzort, és az Intel Turbo program technológia 2.0 folytathatja legfeljebb 3.1-es GHz-es. A Dv2-sorozat ugyanolyan memória- és lemezkonfigurációkban érhető el, mint a D-sorozat.
 
@@ -86,7 +86,7 @@ ACU: 160-180 <sup>1</sup>
 | Standard_M64s  | 64   | 1024        | 2048           | 64             | 80,000 / 800 (6348)       | 40,000 / 1,000                            | 8 / 16000          |
 | Standard_M64ms  | 64   | 1792        | 2048           | 64             | 80,000 / 800 (6348)       | 40,000 / 1,000                            | 8 / 16000          |
 | Standard_M128s&nbsp;<sup>2,&nbsp;3</sup> | 128  | 2048        | 4096           | 64             | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30000          |
-| Standard_M128ms&nbsp;<sup>2,&nbsp;3&nbsp;4</sup> | 128  | 3800        | 4096           | 64             | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30000          |
+| Standard_M128ms&nbsp;<sup>2,&nbsp;3&nbsp;4</sup> | 128  | 3892        | 4096           | 64             | 160,000 / 1,600 (12,696) | 80,000 / 2,000                            | 8 / 30000          |
 
 <sup>1</sup> M-sorozat VM szolgáltatás Intel® Hyper-Threading technológia
 
@@ -176,31 +176,5 @@ ACU: 210–250
 
 <br>
 
-## <a name="ds-series"></a>DS-sorozat 
 
-ACU: 160 <sup>1</sup>
-
-| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11 |2 |14 |28 |8 |8,000 / 64 (72) |6,400 / 64 |2 / 1000 |
-| Standard_DS12 |4 |28 |56 |16 |16,000 / 128 (144) |12,800 / 128 |4 / 2000 |
-| Standard_DS13 |8 |56 |112 |32 |32,000 / 256 (288) |25,600 / 256 |8 / 4000 |
-| Standard_DS14 |16 |112 |224 |64 |64,000 / 512 (576) |51,200 / 512 |8 / 8000 |
-
-<sup>1</sup> a maximális átviteli sebesség (IOPS vagy MB/s) lehetséges DS több virtuális gép korlátozhatja a száma, mérete és a csatlakoztatott lemezek az csíkozást.  Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket.
-
-
-
-## <a name="d-series"></a>D-sorozat
-
-ACU: 160
-
-| Méret         | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | A maximális hálózati adapterek / várható a hálózati sávszélesség (MB/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D11 | 2         | 14          | 100            | 6000 / 93 / 46                                           | 8 / 8x500                         | 2 / 1000                     |
-| Standard_D12 | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16x500                         | 4 / 2000                     |
-| Standard_D13 | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32x500                       | 8 / 4000                     |
-| Standard_D14 | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64 / 64x500                       | 8 / 8000                |
-
-<br>
 

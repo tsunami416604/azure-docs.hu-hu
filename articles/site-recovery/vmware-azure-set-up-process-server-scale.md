@@ -2,44 +2,99 @@
 title: Állítsa be a folyamatkiszolgáló az Azure-ban a VMware virtuális és fizikai kiszolgálók feladat-visszavétel az Azure Site Recovery |} Microsoft Docs
 description: A cikkből megtudhatja, hogyan állíthat be a folyamatkiszolgáló, Azure, a feladat-visszavételi Azure virtuális gépek VMware.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 7bbe690e749680edde08facadf6d5910d7896f7e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 06/10/2018
+ms.author: raynew
+ms.openlocfilehash: 3e53954341136a293052f9af755515a5552432fe
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300847"
 ---
-# <a name="set-up-a-process-server-in-azure-for-failback"></a>A feladat-visszavételre az Azure-ban folyamat kiszolgáló beállítása
+# <a name="set-up-additional-process-servers-for-scalability"></a>A méretezhetőség érdekében további folyamat kiszolgálók beállítása
 
-Miután a rendszer átadja a VMware virtuális gépek vagy fizikai kiszolgálók Azure használatával [Site Recovery](site-recovery-overview.md), akkor is feladatátvétel céljaként a helyszíni hely esetén újra működik. Ahhoz, hogy a feladat-visszavételt, akkor be kell állítania egy ideiglenes folyamatkiszolgáló az Azure az Azure-ból a helyszíni replikáció kezelésére. Ez a virtuális gép feladat-visszavétel befejezése után törölheti.
+Alapértelmezés szerint amikor replikál, VMware virtuális gépek vagy fizikai kiszolgálók Azure használatával [Site Recovery](site-recovery-overview.md), a folyamatkiszolgáló a konfigurációs kiszolgáló gépre van telepítve, és koordinálja a Site Recovery közötti adatátvitelt és a helyszíni infrastruktúrával. Kapacitás és a replikációtelepítés kibővítési növelése érdekében további önálló folyamatot kiszolgálót is hozzáadhat. Ez a cikk ismerteti, hogyan ehhez.
 
 ## <a name="before-you-start"></a>Előkészületek
 
-További információ a [ismételt védelem](vmware-azure-reprotect.md) és [feladat-visszavétel](vmware-azure-failback.md) folyamat.
+### <a name="capacity-planning"></a>Kapacitástervezés
 
-[!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
+Győződjön meg arról, hogy végre [kapacitástervezés](site-recovery-plan-capacity-vmware.md) a VMware-replikáció. Ezzel a megoldással azonosításához hogyan és mikor telepítsen további folyamat kiszolgálók.
 
-## <a name="deploy-a-process-server-in-azure"></a>Az Azure-ban folyamat-kiszolgáló központi telepítése
+### <a name="sizing-requirements"></a>Méretezési követelmények 
 
-1. A tárolóban lévő > **Site Recovery-infrastruktúra**> **kezelése** > **konfigurációs kiszolgálók**, válassza ki a konfigurációs kiszolgálót.
-2. A kiszolgálói oldalon kattintson **+ folyamatkiszolgáló**
-3. A **Hozzáadás folyamatkiszolgáló** lap, és válassza a folyamatkiszolgáló az Azure-ban telepítéséhez.
-4. Adja meg az Azure beállításai, többek között a feladatátvétel, egy erőforráscsoport, a feladatátvételi és a virtuális hálózatot, amelyben az Azure virtuális gépek találhatók használható az Azure-régió használt előfizetés. Ha több Azure-hálózatok, a folyamatkiszolgáló egyes szüksége.
-5. A **kiszolgálónév**, **felhasználónév**, és **jelszó**, adjon meg egy nevet a folyamatkiszolgáló és a hitelesítő adatokat, amelyek a kiszolgálón rendszergazdai jogosultságokkal hozzá lesz rendelve.
-6. Adjon meg egy tárfiókot, a kiszolgáló virtuális gépek lemezei, amelyben a folyamatkiszolgáló VM található az alhálózat és a kiszolgáló IP-címe, amely hozzá lesz rendelve a virtuális gép indításakor használandó.
-7. Kattintson a **OK** gombra kattintva indítsa el a folyamatkiszolgáló VM telepítése.
+Ellenőrizze a méretezési követelmények a táblázat tartalmazza. Általánosságban elmondható Ha több mint 200 forrás gépekre a telepítés méretezésére, vagy naponta kavarog egyidejűleg több, mint 2 TB-os aránya teljes, van szüksége további folyamat kiszolgálók kezeléséhez a forgalom mennyisége.
 
->
+| **További folyamatkiszolgáló** | **Gyorsítótár-lemez mérete** | **Adatváltozási sebesség** | **Védett gépek** |
+| --- | --- | --- | --- |
+|4 Vcpu (2 sockets * @ 2,5 GHz-es 2 mag), 8 GB-os memória |300 GB |250 GB vagy kevesebb |Kisebb vagy 85 gépek replikálása. |
+|8 Vcpu (2 sockets * @ 2,5 GHz, 4 mag), 12-GB memória |600 GB |250 GB és 1 TB |Replikálja a 85-150 gépek között. |
+|12 Vcpu (2 sockets * @ 2,5 GHz-es 6 mag) 24-GB memória |1 TB |1 TB-os és 2 TB |150-225 gépek közti replikálásához. |
 
-## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>(Az Azure-ban futó) a folyamatkiszolgáló a konfigurációs kiszolgálóhoz (a helyszínen fut) regisztrálása
+### <a name="prerequisites"></a>Előfeltételek
 
-Miután a folyamatkiszolgáló virtuális gép fut, kell való regisztrálása a helyszíni konfigurációs kiszolgáló, az alábbiak szerint:
+További folyamatkiszolgáló előfeltételeit az alábbi táblázat foglalja össze.
 
-[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+## <a name="download-installation-file"></a>Telepítőfájljának letöltése
+
+Töltse le a folyamatkiszolgáló telepítőfájlja az alábbiak szerint:
+
+1. Jelentkezzen be az Azure-portálon, és keresse meg a Recovery Services-tároló.
+2. Nyissa meg **Site Recovery-infrastruktúra** > **VMWare és fizikai gépek** > **konfigurációs kiszolgálók** (a VMware és fizikai Gépek).
+3. Válassza ki a konfigurációs kiszolgálót részletekbe menően tárhatják fel a kiszolgáló adatait. Kattintson a **+ Folyamatkiszolgáló**.
+4. A **hozzáadása folyamatkiszolgáló** >  **válassza ki, hol szeretné üzembe helyezni a folyamatkiszolgálót**, jelölje be **helyszíni telepítés kibővített Folyamatkiszolgáló**.
+
+  ![Kiszolgálók lap hozzáadása](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+1. Kattintson a **töltse le a Microsoft Azure Site Recovery az egységes telepítő**. Ezzel letölti a legújabb verzióját a telepítőfájlt.
+
+  > [!WARNING]
+  A konfigurációs kiszolgáló verziója telepítve fut, a telepítési folyamat verziója ugyanaz legyen, mint, vagy a korábbi, mint. Egyszerűen verziókompatibilitás ellenőrzése érdekében gondoskodjon arról, hogy telepíteni vagy frissíteni a konfigurációs kiszolgáló legutóbb használt azonos telepítőn használja.
+
+## <a name="install-from-the-ui"></a>Telepítse a felhasználói felületen
+
+Telepítse az alábbiak szerint. A kiszolgáló beállítása után telepít át forrásgépek rá.
+
+[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-add-process-server.md)]
+
+
+## <a name="install-from-the-command-line"></a>Telepítse a parancssorból
+
+Telepítse a következő parancs futtatásával:
+
+```
+UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+```
+
+Ha parancssori kapcsolók a következők:
+
+[!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
+
+Példa:
+
+```
+MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /xC:\Temp\Extracted
+cd C:\Temp\Extracted
+UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "PS" /InstallLocation "D:\" /EnvType "VMWare" /CSIP "10.150.24.119" /PassphraseFilePath "C:\Users\Administrator\Desktop\Passphrase.txt" /DataTransferSecurePort 443
+```
+### <a name="create-a-proxy-settings-file"></a>Hozzon létre egy proxy
+
+Ha a proxy beállítása van szüksége, a ProxySettingsFilePath paraméter egy fájl fogadja bemeneti adatként. Az alábbiak szerint hozza létre a fájlt, és adja át bemeneti ProxySettingsFilePath paraméterként.
+
+```
+* [ProxySettings]
+* ProxyAuthentication = "Yes/No"
+* Proxy IP = "IP Address"
+* ProxyPort = "Port"
+* ProxyUserName="UserName"
+* ProxyPassword="Password"
+```
+
+## <a name="next-steps"></a>További lépések
+További tudnivalók [kiszolgálóbeállítások kezeléséhez feldolgozni.](vmware-azure-manage-process-server.md)

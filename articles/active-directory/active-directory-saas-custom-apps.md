@@ -15,12 +15,12 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96f6e2cc9b137de48a1d186739a8c76e2f1d18c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590120"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293194"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés alkalmazásokhoz, amelyek nincsenek rajta az Azure Active Directory alkalmazáskatalógusában konfigurálása
 
@@ -32,7 +32,7 @@ Az ügyfelek [Azure Active Directory Premium](active-directory-whatis.md) licenc
 
 * Önkiszolgáló integrációs bármely alkalmazás, amely támogatja az SAML 2.0 identitás-szolgáltatóktól (a Szolgáltató által kezdeményezett vagy a kiállító terjesztési hely által kezdeményezett)
 * A webes alkalmazás, amelynek használatával egy bejelentkezési lap HTML-alapú önkiszolgáló integrációs [jelszó-alapú egyszeri bejelentkezés](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
-* Kapcsolat az önkiszolgáló felhasználó történő üzembe helyezéséhez a SCIM protokollt használó alkalmazások ([itt leírt](active-directory-scim-provisioning.md))
+* Kapcsolat az önkiszolgáló felhasználó történő üzembe helyezéséhez a SCIM protokollt használó alkalmazások ([itt leírt](manage-apps/use-scim-to-provision-users-and-groups.md))
 * Hivatkozások a bármely alkalmazás hozzáadása a [Office 365 alkalmazás indító](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
 
 Ez magában foglalhatja nem csak a SaaS-alkalmazásokhoz, amelyek használják, de rendelkezik nem még nincs előre telepített az Azure AD alkalmazás gyűjteményébe, de külső webes alkalmazásokhoz, amelyek azt szabályozzák, vagy a felhőben, vagy a helyszíni kiszolgálók alkalmazva van a szervezet.
@@ -123,7 +123,7 @@ Ellenőrizze a tanúsítvány rendelkezik-e:
 - Aktív állapotának. Ha az állapot inaktív, állapotúra, aktív. Ellenőrizze az állapot módosításához **aktív** , és mentse a konfigurációt. 
 - A megfelelő értesítő e-mailt. Ha az aktív tanúsítvány lejárati dátuma, az Azure AD az ebben a mezőben beállított e-mail cím egy értesítést küld.  
 
-További információkért lásd: [összevont egyszeri bejelentkezés az Azure Active Directoryban tanúsítványainak kezelése](active-directory-sso-certs.md).
+További információkért lásd: [összevont egyszeri bejelentkezés az Azure Active Directoryban tanúsítványainak kezelése](manage-apps/manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="set-up-target-application"></a>Célalkalmazás beállítása
 

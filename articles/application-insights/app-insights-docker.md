@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 53ade76b9dbdc27df90da1f7e197464816529d1d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295761"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Az Application Insightsban Docker-alkalmazások figyelése
 A teljesítményszámlálók életciklus-események és a teljesítmény [Docker](https://www.docker.com/) tárolók is forrásadatok az Application insights szolgáltatással. Telepítse a [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) lemezkép a gazdagép és a tároló teljesítményszámlálók megjeleníti a gazdagép, valamint a többi képet.

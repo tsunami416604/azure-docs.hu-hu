@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d27e687acf62e4a1e96f1bb49607618dff45512b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628504"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261678"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
@@ -86,10 +86,40 @@ Miután létrehozta az eszköz-csoportosítóra, konfigurálhatja a **irányít�
 
     > [!NOTE]
     > Több lemezképek, a hivatkozások és a rácsok is hozzáadhat.
-
-1. Kapcsolja ki a **tervezési módba**.
+  
+    1. Kapcsolja ki a **tervezési módba**.
 
     ![Tervező mód kikapcsolása](media/howto-use-device-sets/image10.png)
+
+
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Irányítópult helyének hozzárendelése konfigurálása az eszköz a állítja be. 
+Egy hely leképezés jelenítheti meg az eszközök helyét a térképen beállítja adhat hozzá. 
+
+Egy hely térképet, eszköz irányítópult rendelkeznie kell beállított hely tulajdonság beállítása az eszköz sablonban hozzáadásához lásd: [hozzon létre egy Azure Maps technológiával helyet jelölő tulajdonsághoz](howto-set-up-template.md).
+
+
+1. Az eszköz beállítása irányítópultot válassza ki a térkép a könyvtárból. 
+
+    ![Eszköz irányítópult Maps állítja be.](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. Olyan címet adjon, és válassza ki a helyet jelölő tulajdonsághoz vannak konfigurálva a Eszköztulajdonságon részeként.
+
+    ![Irányítópult-leképezések konfigurálása](media/howto-use-device-sets/LocationMaps2.png)
+
+3. Mentés, és megjelenik a térkép csempén megjelenő helyét, az eszközök a beállítva.
+
+    ![Irányítópult-leképezések mentése](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. Most operátor megtekinti az eszköz beállítása irányítópultot, amikor áttekinthetők a csempék konfigurálta, beleértve a leképezés egy pillantással eszközök hely megjelenítése!
+
+    ![A Maps operátor irányítópult-nézet](media/howto-use-device-sets/LocationMaps4.png)
+
+    A kívánt méretet a térképen átméretezése lehet.
+
+
+
 
 ## <a name="configure-the-list-for-your-device-set"></a>Az eszköz készlet listájának konfigurálása
 

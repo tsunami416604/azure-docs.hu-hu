@@ -13,15 +13,15 @@ ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 150f994aedfc8d2847a0741792c32114e1b520fe
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: efbfcdd1a50069a943fc57da9d402e4cc7c408ed
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233546"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260559"
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Adjon hozzáférést a Azure AD Privileged Identity Management kezelésére
-A globális rendszergazda Azure AD Privileged Identity Management (PIM) egy olyan szervezet automatikusan lehetővé teszi, hogy le a szerepkör-hozzárendelések és a PIM elérésére. Más írási hozzáféréssel alapértelmezés szerint kap, azonban más globális rendszergazdákat is. Más globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik az Azure AD PIM olvasási hozzáférést. A hozzáférésének PIM, az első felhasználó rendelhet másoknak a **kiemelt szerepkörű rendszergazda** szerepkör. Ehhez a hozzárendeléshez maga PIM belül kell végrehajtani, és a PowerShell vagy más portálokon keresztül nem módosítható.
+A globális rendszergazda Azure AD Privileged Identity Management (PIM) egy olyan szervezet automatikusan lehetővé teszi, hogy le a szerepkör-hozzárendelések és a PIM elérésére. Más írási hozzáféréssel alapértelmezés szerint kap, azonban más globális rendszergazdákat is. Más globális rendszergazdák, biztonsági rendszergazdák és biztonsági olvasók rendelkezik az Azure AD PIM olvasási hozzáférést. A hozzáférésének PIM, az első felhasználó rendelhet másoknak a **kiemelt szerepkörű rendszergazda** szerepkör.
 
 > [!NOTE]
 > Az Azure MFA kezelése az Azure AD PIM van szükség. Microsoft-fiókok az Azure MFA nem regisztrálható, mert a Microsoft-fiókkal jelentkezik be egy felhasználó nem fér hozzá a Azure AD PIM.

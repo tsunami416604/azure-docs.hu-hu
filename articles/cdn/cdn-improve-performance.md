@@ -4,7 +4,7 @@ description: Útmutató a fájl átviteli sebesség növelése és az Azure CDN 
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
@@ -12,27 +12,28 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
-ms.author: mazha
-ms.openlocfilehash: 41e40c7e740e06654e7660c208db52fc2617d4b5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: bdff57275cf123079004ada732fe782d98399d71
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260396"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>A jobb teljesítmény érdekében az Azure CDN fájlok tömörítése
 Fájl tömörítése a fájl adatátviteli sebesség növelése és a fájlméret csökkentésével, mielőtt a kiszolgáló-betöltési teljesítményének javítása egyszerű és hatékony módszer. A fájltömörítés sávszélesség-költségek csökkentése, és gyorsabban környezetet biztosítson a felhasználók számára.
 
 Ahhoz, hogy fájltömörítés két módja van:
 
-- A forrás kiszolgálón tömörítésének engedélyezéséhez. Ebben az esetben a CDN a tömörített fájlok mentén továbbítja, és azokat kérő ügyfeleknek továbbítja azokat.
-- A engedélyezni a tömörítést közvetlenül a CDN POP-kiszolgálók ("tömörítési menet közben"). Ebben az esetben a CDN tömöríti a fájlokat, és a végfelhasználók számára, akkor is, ha azok nem az eredeti kiszolgálóra tömörített szolgál.
+- A forrás kiszolgálón tömörítésének engedélyezéséhez. Azure CDN ebben az esetben a tömörített fájlok mentén továbbítja, és azokat kérő ügyfeleknek továbbítja azokat.
+- A CDN POP-kiszolgálók közvetlenül a engedélyezni a tömörítést (*parancsprogramok tömörítési*). Ebben az esetben a CDN tömöríti a fájlokat, és a végfelhasználók számára, akkor is, ha azok nem az eredeti kiszolgálóra tömörített szolgál.
 
 > [!IMPORTANT]
-> CDN-konfigurációs módosítások eltarthat egy ideig, a hálózaton belüli propagálásához: 
-- A **Azure CDN Standard Microsoft** -profilok propagálása általában befejezi tíz perc múlva. 
-- A **Azure CDN Standard Akamai** -profilok propagálása általában befejezi egy percen belül. 
-- A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 90 percen belül. 
+> Az Azure CDN konfigurációs módosítások eltarthat egy ideig, a hálózaton belüli propagálásához: 
+- A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+- Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+- A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 10 perc múlva. 
 >
 > Ha először a CDN-végpont tömörítési beállítása, várja meg, 1 – 2 óra, mielőtt a tömörítési beállítások propagálása a POP való biztosításához.
 > 
@@ -75,7 +76,7 @@ A standard és prémium szintű CDN rétegek funkcionalitása azonos tömörít�
 
 1. A CDN-profil lapon válassza ki a **kezelése**.
    
-    ![CDN kezelése kiválasztása](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![Válassza ki a CDN-kezelése](./media/cdn-file-compression/cdn-manage-btn.png)
    
     Megnyitja a CDN-felügyeleti portálon.
 2. Vigye a **HTTP nagy** lapra, és vigye a **gyorsítótár beállításainak** menü. Válassza ki **tömörítés**.

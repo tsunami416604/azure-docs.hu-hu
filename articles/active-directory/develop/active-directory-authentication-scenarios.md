@@ -17,11 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0f535e8a74822319d472c62fe1b65e5145e58a74
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261644"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Az Azure Active Directory hitelesítési forgatókönyvei
 
@@ -63,9 +64,9 @@ Most, hogy az alapok, olvassa el az alábbiakban megtudhatja, hogy hogyan létes
 
 Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azure AD által kiadott jogcímeket vagy helyességi feltételek hitelesítése tulajdonos információinak tartalmaz. Ezeket a jogcímeket a különböző feladatokhoz használhatják az alkalmazást. Például alkalmazások jogcímek használata ellenőrzése a jogkivonat, a tulajdonos directory-bérlő azonosíthatja, felhasználói információk megjelenítése, megállapítása a tulajdonos, és így tovább. A jogcímeket bármely adott biztonsági jogkivonat szerepel token, a felhasználó és az alkalmazás konfigurációját hitelesítéséhez használt hitelesítő adat típusának típusától függenek. Minden Azure AD által kibocsátott jogcím típusú rövid leírása az alábbi táblázatban találhatók. További információkért tekintse meg [támogatott jogkivonatok és jogcímtípusok](active-directory-token-and-claims.md).
 
-| Igénylés | Leírás |
+| Jogcím | Leírás |
 | --- | --- |
-| Alkalmazás azonosítója | Azonosítja az alkalmazást, amely a token-t használja. |
+| Alkalmazásazonosító | Azonosítja az alkalmazást, amely a token-t használja. |
 | Célközönség | A jogkivonat az célja, hogy a címzett erőforrás azonosítja. |
 | Alkalmazás hitelesítési környezeti osztályait ismertető dokumentációban | Azt jelzi, hogy az ügyfél volt hitelesített (nyilvános ügyfél és a bizalmas ügyfél). |
 | Azonnali hitelesítés | A dátum és idő, amikor a hitelesítési történt rögzíti. |
@@ -76,12 +77,12 @@ Biztonsági jogkivonatok (hozzáférési és azonosító-jogkivonatokat), az Azu
 | Ki: | Amellyel a token adta ki, gyakran használt token frissesség idejét rögzíti. |
 | Kiállító | Az STS, amely a token, valamint az Azure AD-bérlő kibocsátott azonosítja. |
 | Vezetéknév | Az Azure AD-készlet biztosít a felhasználó vezetékneve. |
-| Név | Emberi olvasható érték, amely azonosítja a token tárgya biztosít. |
+| Name (Név) | Emberi olvasható érték, amely azonosítja a token tárgya biztosít. |
 | Objektumazonosító | Az Azure ad-ben a tulajdonos nem módosítható, egyedi azonosítót tartalmaz. |
 | Szerepkörök | Az Azure AD alkalmazás-szerepkörök, amelyek a felhasználó számára engedélyezett rövid nevét tartalmazza. |
 | Hatókör | Azt jelzi, hogy az ügyfélalkalmazás számára megadott engedélyeket. |
 | Tárgy | Azt jelzi, hogy a rendszerbiztonsági tag, amelyekről a token állításokat információkat. |
-| Bérlő azonosítója | A directory-bérlő a jogkivonat kiállító nem módosítható, egyedi azonosítót tartalmaz. |
+| Bérlőazonosító | A directory-bérlő a jogkivonat kiállító nem módosítható, egyedi azonosítót tartalmaz. |
 | A jogkivonatok élettartama | Meghatározza a időtartam alatt, amelyen belül a lexikális elem érvénytelen. |
 | Egyszerű felhasználónév | A felhasználó egyszerű felhasználóneve, a tulajdonos tartalmazza. |
 | Verzió | A token a verziószámát tartalmazza. |
@@ -137,7 +138,7 @@ Ez a szakasz olyan alkalmazás, amely hitelesíti a felhasználót egy böngész
 1. Amikor a felhasználó felkeresi a alkalmazást, és jelentkezzen be, a rendszer visszairányítja a hitelesítési végpont bejelentkezési kérelem keresztül az Azure ad-ben.
 1. A felhasználó bejelentkezik a bejelentkezési oldalon.
 1. Sikeres hitelesítés esetén az Azure AD egy hitelesítési jogkivonatot hoz létre, és a bejelentkezési választ küld az alkalmazás válasz URL-címet adott meg az Azure portálon. Termelési alkalmazások esetében a válasz URL-CÍMEN HTTPS kell lennie. A visszaküldött jogkivonat felhasználói és az Azure AD szükséges jogcímeket, az alkalmazás ellenőrzése a jogkivonat tartalmazza.
-1. Az alkalmazás használatával egy nyilvános aláírási kulcs és a kiállítói információk érhetők el az összevonási metaadatok dokumentum az Azure AD érvényesíti a jogkivonatot. Után az alkalmazás érvényesíti a jogkivonatot, az Azure AD egy új munkamenet a felhasználó indul. A munkamenet a felhasználó az alkalmazás eléréséhez, amíg le nem jár.
+1. Az alkalmazás használatával egy nyilvános aláírási kulcs és a kiállítói információk érhetők el az összevonási metaadatok dokumentum az Azure AD érvényesíti a jogkivonatot. Miután az alkalmazás érvényesíti a jogkivonatot, a felhasználó egy új munkamenet kezdődik. A munkamenet a felhasználó az alkalmazás eléréséhez, amíg le nem jár.
 
 #### <a name="code-samples"></a>Kódminták
 

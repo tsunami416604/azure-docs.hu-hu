@@ -1,18 +1,19 @@
 ---
-title: "Állítsa be a folyamatkiszolgáló az Azure-ban a VMware virtuális és fizikai kiszolgálók feladat-visszavétel az Azure Site Recovery |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan állíthat be a folyamatkiszolgáló, Azure, a feladat-visszavételi Azure virtuális gépek VMware."
+title: Állítsa be a folyamatkiszolgáló az Azure-ban a VMware virtuális és fizikai kiszolgálók feladat-visszavétel az Azure Site Recovery |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan állíthat be a folyamatkiszolgáló, Azure, a feladat-visszavételi Azure virtuális gépek VMware.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: c6ef0ae663727c519f9b6a8a56027a3dd8a9503d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 06/10/2018
+ms.author: raynew
+ms.openlocfilehash: 1a6a1276d1a63971fba68dc868aa56ce687a6cc2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300922"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>A feladat-visszavételre az Azure-ban folyamat kiszolgáló beállítása
 
@@ -26,7 +27,7 @@ További információ a [ismételt védelem](vmware-azure-reprotect.md) és [fel
 
 ## <a name="deploy-a-process-server-in-azure"></a>Az Azure-ban folyamat-kiszolgáló központi telepítése
 
-1. A tárolóban lévő > **Site Recovery-infrastruktúra**> **Mnaage** > **konfigurációs kiszolgálók**, válassza ki a konfigurációs kiszolgálót.
+1. A tárolóban lévő > **Site Recovery-infrastruktúra**> **kezelése** > **konfigurációs kiszolgálók**, válassza ki a konfigurációs kiszolgálót.
 2. A kiszolgálói oldalon kattintson **+ folyamatkiszolgáló**
 3. A **Hozzáadás folyamatkiszolgáló** lap, és válassza a folyamatkiszolgáló az Azure-ban telepítéséhez.
 4. Adja meg az Azure beállításai, többek között a feladatátvétel, egy erőforráscsoport, a feladatátvételi és a virtuális hálózatot, amelyben az Azure virtuális gépek találhatók használható az Azure-régió használt előfizetés. Ha több Azure-hálózatok, a folyamatkiszolgáló egyes szüksége.

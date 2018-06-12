@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261204"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>A jogcímek hozzárendelése az Azure Active Directoryban (nyilvános előzetes verzió)
 
@@ -61,13 +62,13 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |actortoken|
 |aio|
 |altsecid|
-|amr|
+|AMR|
 |app_chain|
 |app_displayname|
 |app_res|
 |appctx|
 |appctxsender|
-|appid|
+|alkalmazásazonosító|
 |appidacr|
 |assertion|
 |at_hash|
@@ -95,7 +96,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|e-mail|
+|e-mailben|
 |endpoint|
 |enfpolids|
 |Exp|
@@ -118,7 +119,7 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |identityprovider|
 |IDP|
 |in_corp|
-|Példány|
+|példány|
 |IPADDR|
 |isbrowserhostedapp|
 |iss|
@@ -132,10 +133,10 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |mdm_enrollment_url|
 |mdm_terms_of_use_url|
 |nameid|
-|nbf|
+|NBF|
 |netbios_name|
 |Nonce|
-|oid|
+|OID|
 |on_prem_id|
 |onprem_sam_account_name|
 |onprem_sid|
@@ -157,8 +158,8 @@ Korlátozott jogcímek házirend használatával nem módosítható. Az adatforr
 |erőforrás|
 |szerepkör|
 |roles|
-|Hatókör|
-|scp|
+|scope|
+|Szolgáltatáskapcsolódási pont|
 |biztonsági azonosító|
 |Aláírás|
 |signin_state|
@@ -283,22 +284,22 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
 |Felhasználó|Vezetéknév|Család neve|
-|Felhasználó|givenname|utónév;|
+|Felhasználó|givenName|utónév;|
 |Felhasználó|DisplayName|Megjelenítendő név|
 |Felhasználó|objektumazonosító|ObjectID|
-|Felhasználó|mail|E-mail cím|
+|Felhasználó|levelezés|E-mail-cím|
 |Felhasználó|userPrincipalName|Egyszerű felhasználónév|
-|Felhasználó|Szervezeti egység|Részleg|
+|Felhasználó|részleg|Részleg|
 |Felhasználó|onpremisessamaccountname|A helyi Sam-fiók neve|
 |Felhasználó|netbiosname|NetBIOS-név|
-|Felhasználó|dnsdomainname|Dns Domain Name|
+|Felhasználó|dnsdomainname|DNS-tartománynév|
 |Felhasználó|onpremisesecurityidentifier|a helyi biztonsági azonosítója|
 |Felhasználó|Cégnév|Szervezet neve|
 |Felhasználó|streetAddress|Utca, házszám|
-|Felhasználó|Irányítószám|Postai irányítószám|
-|Felhasználó|preferredlanguange|Választott nyelv|
+|Felhasználó|Irányítószám|Irányítószám|
+|Felhasználó|preferredlanguange|Elsődleges nyelv|
 |Felhasználó|onpremisesuserprincipalname|a helyszíni egyszerű Felhasználónévvel|
-|Felhasználó|mailnickname|Mail becenév|
+|Felhasználó|mailnickname|Levelezési becenév|
 |Felhasználó|extensionAttribute1|Mellék attribútum 1|
 |Felhasználó|extensionattribute2|Mellék attribútum 2|
 |Felhasználó|extensionattribute3|Mellék attribútum 3|
@@ -318,7 +319,7 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 |Felhasználó|Ország|Ország|
 |Felhasználó|city|Város|
 |Felhasználó|state|Állapot|
-|Felhasználó|jobtitle|Beosztás|
+|Felhasználó|Beosztás|Beosztás|
 |Felhasználó|EmployeeID|Alkalmazott azonosítója|
 |Felhasználó|facsimiletelephonenumber|Fax Telefonszám|
 |alkalmazás, erőforrás, a célközönség|DisplayName|Megjelenítendő név|
@@ -338,7 +339,7 @@ Az "ID" elem. azonosítja, hogy melyik tulajdonság a forrás az értéket ad me
 >[!NOTE]
 >A jogcím típusa elemek nevét és a korlátozott jogcímek készletében lévő jogcímek URI-azonosítók nem használható. További információkért lásd: a "Kivételek és korlátozások" című szakaszban található ebben a cikkben.
 
-### <a name="claims-transformation"></a>Claims transformation
+### <a name="claims-transformation"></a>Jogcím átalakítása
 
 **Karakterlánc:** ClaimsTransformation
 
@@ -356,7 +357,7 @@ Alapján kiválasztott módszert, amelynek bemenetekhez és kimenetekhez várt. 
 |TransformationMethod|Várt bemeneti|Várt kimenet|Leírás|
 |-----|-----|-----|-----|
 |Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Illesztések karakterláncok adjon meg egy elválasztó bejelentkezve használatával. Például: karakterlánc1: "foo@bar.com", karakterlánc2: "védőfal", az elválasztó: "." outputClaim eredményez: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|Kibontja a helyi részét egy e-mail címet. Például: mail: "foo@bar.com" outputClaim eredményez: "foo". Ha @ nem bejelentkezési jelen, majd a orignal bemeneti karakterláncot ad vissza.|
+|ExtractMailPrefix|levelezés|outputClaim|Kibontja a helyi részét egy e-mail címet. Például: mail: "foo@bar.com" outputClaim eredményez: "foo". Ha @ nem bejelentkezési jelen, majd a orignal bemeneti karakterláncot ad vissza.|
 
 **InputClaims:** InputClaims elemet használja az adatok egy jogcím séma bejegyzésből átadása átalakítás. Két attribútumot tartalmaz: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
@@ -380,7 +381,7 @@ Alapján kiválasztott módszert, amelynek bemenetekhez és kimenetekhez várt. 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: Attribútumok SAML NameID adatforrásként engedélyezett
 |Forrás|ID (Azonosító)|Leírás|
 |-----|-----|-----|
-|Felhasználó|mail|E-mail cím|
+|Felhasználó|levelezés|E-mail-cím|
 |Felhasználó|userPrincipalName|Egyszerű felhasználónév|
 |Felhasználó|onpremisessamaccountname|A helyi Sam-fiók neve|
 |Felhasználó|EmployeeID|Alkalmazott azonosítója|
@@ -467,7 +468,7 @@ Ebben a példában egy házirendet, amely hozzáadja a EmployeeID és TenantCoun
     1. A házirend létrehozásához futtassa a parancsot:  
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
     ```
     
     2. Az új házirend megtekintéséhez, és hogy beszerezze a szabályzatot ObjectId, futtassa a következő parancsot:

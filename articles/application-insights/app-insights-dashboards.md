@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5ec0412dc91a7e5c28ee9ee820df9584ffa80cd8
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 72859f68fc1bb76a6c71bbd7b98cd713f1f0fe02
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296400"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigációs és az Application Insights portálon irányítópultok
 Miután [Application Insights beállítása a projekten](app-insights-overview.md), az alkalmazás teljesítmény- és használati telemetriai adatokat fog megjelenni az Application Insights-erőforrás a projekt a [Azure-portálon](https://portal.azure.com).
@@ -115,7 +116,7 @@ Az Áttekintés panel az alkalmazással kapcsolatos további információkat az 
 * **Időtartománynak** -állítsa be a a panelen a diagramok szerint jelenik meg.
 * **Törlés** -törli az Application Insights-erőforrást az alkalmazáshoz. Meg kell is távolítsa el az Application Insights csomagokat az alkalmazás kódját, vagy szerkesztheti a [instrumentation kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) át tudja irányítani a telemetria bekapcsolásával egy másik Application Insights-erőforrást az alkalmazásban.
 
-### <a name="essentials-tab"></a>Essentials tab
+### <a name="essentials-tab"></a>Alapvető erőforrások lapon
 * [Instrumentation kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
 
 ### <a name="app-navigation-bar"></a>Alkalmazás navigációs sáv
