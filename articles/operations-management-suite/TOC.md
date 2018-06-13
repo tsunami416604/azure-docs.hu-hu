@@ -45,7 +45,6 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-elemzés](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Szolgáltatástérkép
-##### [Útmutatás](../monitoring/monitoring-walkthrough-servicemap.md)
 ##### [Használat](../monitoring/monitoring-service-map.md)
 ##### [Konfigurálás](../monitoring/monitoring-service-map-configure.md)
 ##### [Integrálás az Operations Managerrel](../monitoring/monitoring-service-map-scom.md)
