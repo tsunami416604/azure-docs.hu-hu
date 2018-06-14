@@ -1,11 +1,11 @@
 ---
-title: "Figyelés és az Azure Security Center biztonsági események feldolgozását |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja a Security Center események irányítópult biztonsági eseményeket az Azure virtuális gépek és az-Azure számítógépek."
+title: Figyelés és az Azure Security Center biztonsági események feldolgozását |} Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Security Center események irányítópult biztonsági eseményeket az Azure virtuális gépek és az-Azure számítógépek.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926528"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Figyelés és az Azure Security Center biztonsági események feldolgozása
 Az események irányítópult áttekintést összegyűjtött idő és a figyelmet a jelentősebb események figyelmet igénylő biztonsági események száma.  

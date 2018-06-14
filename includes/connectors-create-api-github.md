@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: logic-apps
 author: MandiOhlinger
 ms.service: logic-apps
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29764177"
 ---
 1. Az a [Azure-portálon](https://portal.azure.com), egy üres logikai alkalmazás létrehozása. 
 

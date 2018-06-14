@@ -1,11 +1,11 @@
 ---
-title: "Linux virtuális gépek az Azure-felhő inicializálás támogatását áttekintése |} Microsoft Docs"
-description: "A Microsoft Azure felhőbe inicializálás funkcióiról"
+title: Linux virtuális gépek az Azure-felhő inicializálás támogatását áttekintése |} Microsoft Docs
+description: A Microsoft Azure felhőbe inicializálás funkcióiról
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29763145"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Virtuális gépek Azure cloud inicializálás támogatása
 Ez a cikk ismerteti, hogy létezik a támogatási [felhő inicializálás](https://cloudinit.readthedocs.io) konfigurálhat egy virtuális gép (VM) vagy a virtuális gép méretezési beállítja (VMSS) kiépítési idő az Azure-ban. Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített.  

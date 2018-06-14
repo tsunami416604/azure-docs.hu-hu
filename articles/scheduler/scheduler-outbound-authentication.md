@@ -1,11 +1,11 @@
 ---
-title: "A Feladatütemező kimenő hitelesítésre"
-description: "A Feladatütemező kimenő hitelesítésre"
+title: A Feladatütemező kimenő hitelesítésre
+description: A Feladatütemező kimenő hitelesítésre
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926507"
 ---
 # <a name="scheduler-outbound-authentication"></a>A Feladatütemező kimenő hitelesítésre
 A Feladatütemező szolgáltatás kell hitelesítést igénylő szolgáltatások hívásához. Ezzel a módszerrel a hívott szolgáltatás is meghatározhatja, ha az ütemezési feladat az erőforrások eléréséhez. Ezek a szolgáltatások többek között más Azure-szolgáltatások, a Salesforce.com, a Facebook-on és a biztonságos egyéni webhelyeket.

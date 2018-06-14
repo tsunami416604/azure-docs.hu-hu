@@ -1,6 +1,6 @@
 ---
-title: "A vizsgálati és naplózási - modellezési eszköz Microsoft fenyegetés - Azure |} Microsoft Docs"
-description: "a fenyegetések modellezése eszköz felfedett fenyegetések megoldást"
+title: A vizsgálati és naplózási - modellezési eszköz Microsoft fenyegetés - Azure |} Microsoft Docs
+description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926745"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Biztonsági keret: A vizsgálati és naplózási |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |

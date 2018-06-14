@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23928887"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>1 – például egy egyszerű DMZ NSG-k használata a klasszikus PowerShell összeállítása
 [A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]

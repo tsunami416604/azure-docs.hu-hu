@@ -1,6 +1,6 @@
 ---
-title: "Az Azure PowerShell-parancsfájl minták – kezelt alkalmazás telepítéséhez |} Microsoft Docs"
-description: "Az Azure PowerShell-parancsfájl minták – a felügyelt alkalmazási definíció telepítése"
+title: Az Azure PowerShell-parancsfájl minták – kezelt alkalmazás telepítéséhez |} Microsoft Docs
+description: Az Azure PowerShell-parancsfájl minták – a felügyelt alkalmazási definíció telepítése
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -14,9 +14,10 @@ ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 2429d561beffed5bc171b9dbc2c2c9c88eba3313
 ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23941249"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>A szolgáltatáskatalógus a PowerShell segítségével a kezelt alkalmazás központi telepítése
 

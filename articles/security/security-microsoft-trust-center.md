@@ -1,6 +1,6 @@
 ---
-title: "A Microsoft Trust Center és az Azure biztonsági információk |} Microsoft Docs"
-description: "A Microsoft Trust központ kell lennie abban, hogy az Azure platformon, amelyen futtatja a szolgáltatások biztonságos adatokat tartalmazza."
+title: A Microsoft Trust Center és az Azure biztonsági információk |} Microsoft Docs
+description: A Microsoft Trust központ kell lennie abban, hogy az Azure platformon, amelyen futtatja a szolgáltatások biztonságos adatokat tartalmazza.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25541570"
 ---
 # <a name="microsoft-trust-center"></a>Microsoft adatvédelmi központ
 Az Azure biztonsági adatokat hely az Azure.com-on lehetővé teszi a szükséges információkat, tervezése, kialakítása, telepítése, konfigurálása, és a felhőalapú megoldások biztonságosan kezelése. A Microsoft Trust központ is kell lennie abban, hogy az Azure platformon, amelyen futtatja a szolgáltatások biztonságos adatokat.

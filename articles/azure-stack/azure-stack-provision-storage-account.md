@@ -1,8 +1,8 @@
 ---
-title: "Storage-fiókok Azure verem |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Azure verem tárfiókot."
+title: Storage-fiókok Azure verem |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Azure verem tárfiókot.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733723"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Tárfiókok az Azure Stack szolgáltatásban
 A tárfiókok tartalmazzák a Blob és a Table szolgáltatásokat és az egyedi névteret a tároló adatobjektumaihoz. Alapértelmezés szerint a fiókban tárolt adatok csak Ön, azaz a tárfiók tulajdonosa számára érhetők el.
