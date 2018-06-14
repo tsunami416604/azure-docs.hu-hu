@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute-kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra | Microsoft Docs"
-description: "Ez az oldal a klasszikus és a Resource Manager-alapú üzemi modellek áthidalásához szükséges ismeretek áttekintését tartalmazza."
+title: ExpressRoute-kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra | Microsoft Docs
+description: Ez az oldal a klasszikus és a Resource Manager-alapú üzemi modellek áthidalásához szükséges ismeretek áttekintését tartalmazza.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710065"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-kapcsolatcsoportok áthelyezése a klasszikusból a Resource Manager-alapú üzemi modellbe
 Ez a cikk azt tekinti át, hogy az Azure ExpressRoute-kapcsolatcsoportok hogyan helyezhetők át a klasszikusból az Azure Resource Manager-alapú üzemi modellbe.
