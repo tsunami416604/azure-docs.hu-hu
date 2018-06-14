@@ -1,6 +1,6 @@
 ---
 title: Docker az Azure rendszeren
-description: "A Docker üzembe helyezése és integrálása az Azure használatával"
+description: A Docker üzembe helyezése és integrálása az Azure használatával
 services: multiple
 author: czeumault
 manager: carolz
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23069103"
 ---
 <div class="content">
    <h1>Docker az Azure rendszeren</h1>   

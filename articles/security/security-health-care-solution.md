@@ -1,5 +1,5 @@
 ---
-title: "Az Azure-ban biztonságos egészségügyi megoldások gyakorlati útmutatóban |} Microsoft Docs"
+title: Az Azure-ban biztonságos egészségügyi megoldások gyakorlati útmutatóban |} Microsoft Docs
 description: " Ez a cikk segítségével megismerheti, hogyan lehet fokozni a egészségügyi megoldások biztonságát az Azure-szolgáltatások és a konfigurált szolgáltatások használatával. "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540975"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Az Azure-ban biztonságos egészségügyi megoldások gyakorlati útmutatóban
 Állapotfigyelő iparági indítások, rendszerintegrátorok (SIs), független szoftvergyártók (ISV-k) és annak eldöntéséhez, hogy az Azure-bA áthelyezésre útmutatást, amely segít keres egészségügyi intézmények átfogó biztonsági vezérlők a megfelelőségi kötelezettségek teljesítése érdekében.

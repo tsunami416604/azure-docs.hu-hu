@@ -2,9 +2,9 @@
 documentType: LandingData
 title: A Container Service dokumentációja
 metadata:
-  document_id: null
+  document_id: 
   title: Az Azure Container Service dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
   services: container-service
   author: czeumault
   manager: carolz
@@ -14,22 +14,28 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
+  ms.openlocfilehash: 7625fbb02a1ede91c01c35cddd286f4c26ad77be
+  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/11/2017
+  ms.locfileid: "23068372"
 abstract:
-  description: 'Az Azure Container Service lehetővé teszi egy üzemkész Kubernetes-, DC/OS- vagy Docker Swarm-fürt gyors üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service használatával.'
+  description: Az Azure Container Service lehetővé teszi egy üzemkész Kubernetes-, DC/OS- vagy Docker Swarm-fürt gyors üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service használatával.
 sections:
-  - title: null
+- title: 
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: A Kubernetes-fürtök használatának első lépései
-            href: /azure/container-service/kubernetes
-            image:
-              src: media/index/get-started.svg
-              href: /azure/container-service/kubernetes
-          - title: A DC/OS- és Docker Swarm-fürtök használatának első lépései
-            href: /azure/container-service/dcos-swarm
-            image:
-              src: media/index/get-started.svg
-              href: /azure/container-service/dcos-swarm
+    - title: A Kubernetes-fürtök használatának első lépései
+      href: /azure/container-service/kubernetes
+      image:
+        src: media/index/get-started.svg
+        href: /azure/container-service/kubernetes
+    - title: A DC/OS- és Docker Swarm-fürtök használatának első lépései
+      href: /azure/container-service/dcos-swarm
+      image:
+        src: media/index/get-started.svg
+        href: /azure/container-service/dcos-swarm

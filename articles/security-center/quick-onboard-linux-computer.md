@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center rövid útmutató – Linux rendszerű számítógépek felvétele a Security Centerbe | Microsoft Docs"
-description: "Ez a rövid útmutató bemutatja, hogyan vehet fel Linux rendszerű számítógépeket a Security Centerbe."
+title: Azure Security Center rövid útmutató – Linux rendszerű számítógépek felvétele a Security Centerbe | Microsoft Docs
+description: Ez a rövid útmutató bemutatja, hogyan vehet fel Linux rendszerű számítógépeket a Security Centerbe.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29530166"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rövid útmutató: Linux rendszerű számítógépek felvétele a Security Centerbe
 Az Azure-előfizetései felvétele után a Linux-ügynök kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások számára.
