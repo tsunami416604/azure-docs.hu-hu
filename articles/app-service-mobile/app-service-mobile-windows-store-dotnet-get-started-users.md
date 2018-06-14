@@ -1,11 +1,11 @@
 ---
-title: "Hitelesítés hozzáadása az univerzális Windows Platform (UWP-) alkalmazás |} Microsoft Docs"
-description: "Azure App Service Mobile Apps használata az univerzális Windows Platform (UWP-) alkalmazás Identitásszolgáltatók, beleértve a különböző felhasználók hitelesítésére: aad-ben, a Google, a Facebook, a Twitter és a Microsoft."
+title: Hitelesítés hozzáadása az univerzális Windows Platform (UWP-) alkalmazás |} Microsoft Docs
+description: 'Azure App Service Mobile Apps használata az univerzális Windows Platform (UWP-) alkalmazás Identitásszolgáltatók, beleértve a különböző felhasználók hitelesítésére: aad-ben, a Google, a Facebook, a Twitter és a Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
 manager: panarasi
-editor: 
+editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592144"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Hitelesítés hozzáadása a Windows-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

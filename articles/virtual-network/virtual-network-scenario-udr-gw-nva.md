@@ -1,6 +1,6 @@
 ---
-title: "A hibrid kapcsolat 2 szintű alkalmazással |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítheti a virtuális készülékek és UDR környezetet hozhat létre, egy többrétegű alkalmazást az Azure-ban"
+title: A hibrid kapcsolat 2 szintű alkalmazással |} Microsoft Docs
+description: Megtudhatja, hogyan telepítheti a virtuális készülékek és UDR környezetet hozhat létre, egy többrétegű alkalmazást az Azure-ban
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23943223"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális készülék forgatókönyv
 Egy általános forgatókönyv nagyobb Azure felhasználói között szükség egy kétszintű alkalmazás kommunikál az internettel, miközben egy helyszíni adatközpontját a hátsó réteg hozzáférést biztosítanak. Ez a dokumentum végigvezeti felhasználó definiált útvonalakat (UDR), a VPN-átjáró és a virtuális hálózati berendezések használatát központi telepítése egy kétrétegű környezet, amely megfelel az alábbi követelményeknek:

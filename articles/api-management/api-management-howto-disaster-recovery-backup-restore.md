@@ -1,11 +1,11 @@
 ---
-title: "Megvalósítása vész-helyreállítási használatával biztonsági mentése és visszaállítása az Azure API Management |} Microsoft Docs"
-description: "Útmutató: biztonsági mentése és visszaállítása az Azure API Management katasztrófa utáni helyreállítás végrehajtásához."
+title: Megvalósítása vész-helyreállítási használatával biztonsági mentése és visszaállítása az Azure API Management |} Microsoft Docs
+description: 'Útmutató: biztonsági mentése és visszaállítása az Azure API Management katasztrófa utáni helyreállítás végrehajtásához.'
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019279"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vész-helyreállítási szolgáltatás biztonsági mentéssel implementálja, és az Azure API Management visszaállítása
 

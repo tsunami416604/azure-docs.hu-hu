@@ -1,13 +1,13 @@
 ---
-title: "Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz |} Microsoft Docs"
-description: "Azure átalakítása felügyelt lemezek tárolási standard prémium, és ez fordítva is igaz, az Azure parancssori felület használatával."
+title: Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz |} Microsoft Docs
+description: Azure átalakítása felügyelt lemezek tárolási standard prémium, és ez fordítva is igaz, az Azure parancssori felület használatával.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ramankum
 manager: kavithag
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23950510"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Alakítsa át az Azure szabványos lemezek tárolási kezelik, prémium, és ez fordítva is igaz
 

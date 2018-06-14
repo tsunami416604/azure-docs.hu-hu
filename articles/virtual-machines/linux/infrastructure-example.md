@@ -1,11 +1,11 @@
 ---
-title: "Példa az Azure infrastruktúra forgatókönyv |} Microsoft Docs"
-description: "További tudnivalók a főbb tervezési és megvalósítási irányelveket az Azure-ban egy példa infrastruktúra üzembe helyezéséhez."
-documentationcenter: 
+title: Példa az Azure infrastruktúra forgatókönyv |} Microsoft Docs
+description: További tudnivalók a főbb tervezési és megvalósítási irányelveket az Azure-ban egy példa infrastruktúra üzembe helyezéséhez.
+documentationcenter: ''
 services: virtual-machines-linux
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745775"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Linux virtuális gépek Azure-infrastruktúra bemutató példa
 Ez a cikk végigvezeti egy példa infrastruktúrát létrehozására. A Microsoft részletességi összegyűjti az összes irányelvek és elnevezési konvenciókat, a rendelkezésre állási csoportok, a virtuális hálózatok és terheléselosztók döntések egyszerű online tároló-infrastruktúrák tervezése, és ténylegesen telepítése az a virtuális gépek (VM).
@@ -53,7 +54,7 @@ Minden a fenti kövesse az alábbi elnevezési konvenciókat:
 
 * Adventure Works Cycles használ **[informatikai munkaterhelés]-[hely]-[Azure-erőforrás]** előtagjaként
   * Ebben a példában a "**azos**" (Azure online áruház) a az IT-munkaterhelést neve és a "**használja**" (USA keleti régiója 2) az a hely
-* Virtuális hálózatok használata AZOS-használat-VN**[szám]**
+* Virtuális hálózatok használata AZOS-használat-VN **[szám]**
 * Rendelkezésre állási készletek használata azos-használata-,-**[szerepkör]**
 * Virtuális gép nevét használja azos-használata-vm -**[vmname]**
 

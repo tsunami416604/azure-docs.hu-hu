@@ -1,7 +1,7 @@
 ---
-title: "Értesítések küldése az Azure Application Insights |} Microsoft Docs"
-description: "Az oktatóanyag segítséget nyújt küld riasztást, az alkalmazás használatával Azure Application Insights hibáinak válaszként."
-keywords: 
+title: Értesítések küldése az Azure Application Insights |} Microsoft Docs
+description: Az oktatóanyag segítséget nyújt küld riasztást, az alkalmazás használatával Azure Application Insights hibáinak válaszként.
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
@@ -11,9 +11,10 @@ ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 39e2f136e30ebb6dcfc003c435382f3384af1052
 ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23947227"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>A figyelő és riasztás az alkalmazás állapotát az Azure Application insights szolgáltatással
 

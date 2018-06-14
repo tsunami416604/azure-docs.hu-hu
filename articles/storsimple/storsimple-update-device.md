@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple eszköz frissítése |} Microsoft Docs"
-description: "Ismerteti a StorSimple update szolgáltatás használatával normál és a karbantartási mód frissítéseket és gyorsjavításokat telepíti."
+title: A StorSimple eszköz frissítése |} Microsoft Docs
+description: Ismerteti a StorSimple update szolgáltatás használatával normál és a karbantartási mód frissítéseket és gyorsjavításokat telepíti.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103608"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz frissítése
 > [!NOTE]

@@ -1,11 +1,11 @@
 ---
-title: "A Microsoft Azure StorSimple virtuális tömb rendszerkövetelmények |} Microsoft Docs"
-description: "Ismerje meg, a szoftverekről és a StorSimple virtuális tömb hálózati követelményei"
+title: A Microsoft Azure StorSimple virtuális tömb rendszerkövetelmények |} Microsoft Docs
+description: Ismerje meg, a szoftverekről és a StorSimple virtuális tömb hálózati követelményei
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24815228"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 ## <a name="overview"></a>Áttekintés

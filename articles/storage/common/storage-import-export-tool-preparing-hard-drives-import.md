@@ -1,12 +1,12 @@
 ---
-title: "Merevlemez-meghajtók előkészítése az Azure Import/Export importálási feladat |} Microsoft Docs"
-description: "Ismerje meg, hogyan készíti elő az Azure Import/Export szolgáltatás importálási feladat létrehozása a WAImportExport eszközzel merevlemez-meghajtókat."
+title: Merevlemez-meghajtók előkészítése az Azure Import/Export importálási feladat |} Microsoft Docs
+description: Ismerje meg, hogyan készíti elő az Azure Import/Export szolgáltatás importálási feladat létrehozása a WAImportExport eszközzel merevlemez-meghajtókat.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23931722"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemez-meghajtók előkészítése az importálási feladat
 
