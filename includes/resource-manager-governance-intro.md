@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 2c16e82ccf259a4cc5ae8fcf35b2dd6b5d50ee2d
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29528342"
 ---
 Erőforrások az Azure-ba való telepítésekor, hogy rengeteg rugalmasságot Amikor eldönti, milyen típusú erőforrásokkal telepíteni, hol és állítsa be őket. Azonban, hogy rugalmasan lehet, hogy nyissa meg a további beállítások, mint a szervezet lehetővé szeretné. Az Azure-bA erőforrásokat üzembe helyezi meghatározásához vegye figyelembe, talán kíváncsi:
 

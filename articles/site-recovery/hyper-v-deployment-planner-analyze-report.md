@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery Deployment Planner a Hyper-V – Azure-hoz | Microsoft Docs"
-description: "Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó jelentés elemzését ismerteti."
+title: Azure Site Recovery Deployment Planner a Hyper-V – Azure-hoz | Microsoft Docs
+description: Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó jelentés elemzését ismerteti.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467211"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner-jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.

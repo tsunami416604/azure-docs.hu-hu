@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068070"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Központi telepítés – gyakori kérdések az Azure Web Apps
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Redis Cache prémium szintjének bemutatása |} Microsoft Docs"
-description: "Útmutató: létrehozása és kezelése a Redis-adatmegőrzés, Redis a fürtszolgáltatás, és a Premium szint Azure Redis Cache példány hálózatok támogatása"
+title: Az Azure Redis Cache prémium szintjének bemutatása |} Microsoft Docs
+description: 'Útmutató: létrehozása és kezelése a Redis-adatmegőrzés, Redis a fürtszolgáltatás, és a Premium szint Azure Redis Cache példány hálózatok támogatása'
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911203"
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Az Azure Redis Cache Prémium szintjének bemutatása
 Azure Redis Cache egy elosztott, felügyelt gyorsítótár, amely segít az adatok felső szinten gyors elérhetőségének biztosításával jól méretezhető és rugalmas alkalmazásait. 

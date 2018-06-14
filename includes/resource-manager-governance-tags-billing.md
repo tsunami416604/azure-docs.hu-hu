@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 7843410043b726526380b2a916d96f414a2decda
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29532323"
 ---
 Címkék alkalmazása az erőforrásokat, után megtekintheti a címkék erőforrás költségeket. Költség elemzéshez megjelenítése a legutóbbi használati, ezért még nem láthatók a költségek igénybe vesz igénybe. A költségek érhetők el, tekintheti költségek erőforrások erőforráscsoportok közötti az előfizetésben. Felhasználónak rendelkeznie kell [szintű hozzáféréssel előfizetés számlázási adatokat](../articles/billing/billing-manage-access.md) költségeket megjelenítéséhez.
 

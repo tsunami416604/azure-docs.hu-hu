@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services Azure diagnostics (.NET) használata |} Microsoft Docs"
-description: "Az Azure diagnostics használatával az adatok gyűjtését a hibakeresést, méri a teljesítményt, figyelés, forgalom elemzése és további Azure Felhőszolgáltatások."
+title: Cloud Services Azure diagnostics (.NET) használata |} Microsoft Docs
+description: Az Azure diagnostics használatával az adatok gyűjtését a hibakeresést, méri a teljesítményt, figyelés, forgalom elemzése és további Azure Felhőszolgáltatások.
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460899"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services Azure Diagnostics engedélyezése
 Lásd: [Azure Diagnostics áttekintése](../azure-diagnostics.md) az Azure Diagnostics háttérként.

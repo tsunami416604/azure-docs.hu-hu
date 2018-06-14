@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204891"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>A Microsoft Azure-hoz kapcsolódó számlák magyarázata
 Az Azure számlázásának ismertetése, hasonlítsa össze a számla a részletes napi használati fájl és a költségek jelentések az Azure portálon.

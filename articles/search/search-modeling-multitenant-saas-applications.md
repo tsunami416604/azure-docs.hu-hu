@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797175"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>A kialakítási minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Search
 Egy több-bérlős alkalmazás egyike, amellyel a bérlők számára nem látható, vagy semmilyen más bérlővel adatok megosztására tetszőleges számú szolgáltatások és képességei azonosak. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák több-bérlős alkalmazásokhoz az Azure Search beépített.

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management, az Event Hubs és Runscope API-k figyelése |} Microsoft Docs"
-description: "A mintaalkalmazás, amely tartalmazza a kapcsolódó Azure API Management, az Azure Event Hubs és a HTTP-naplózás és figyelés Runscope napló eventhub házirend"
+title: Az Azure API Management, az Event Hubs és Runscope API-k figyelése |} Microsoft Docs
+description: A mintaalkalmazás, amely tartalmazza a kapcsolódó Azure API Management, az Azure Event Hubs és a HTTP-naplózás és figyelés Runscope napló eventhub házirend
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: darrelmiller
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c528cf6f-5f16-4a06-beea-fa1207541a47
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117068"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Az API-kat az Azure API Management, az Event Hubs és Runscope figyelése
 A [API-kezelés szolgáltatás](api-management-key-concepts.md) javítása érdekében a HTTP API küldött HTTP-kérelmek feldolgozási sok képességeket biztosít. Azonban a kérések és válaszok megléte átmeneti. A kérelem, és azt a háttér-API számára az API Management szolgáltatáson keresztül zajlik. Az API-feldolgozza a kérést, és választ áthaladó vissza az API-fogyasztó számára. Az API Management szolgáltatás végleg néhány fontos statisztikai adat kapcsolatos való megjelenítéshez. az API-kat a az Azure portál Irányítópultjára, de túl eltűnnek róla, hogy a részletek.

@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33943695"
 abstract:
   description: Az Azure Linux virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Red Hat, Ubuntu vagy bármely tetszőleges Linux disztribúció használatával. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti, hogyan hozhat létre, konfigurálhat, felügyelhet, frissíthet és méretezhet Linux virtuális gépeket.
   aside:

@@ -1,9 +1,9 @@
 ---
-title: "Az Azure AD: A jelszó alaphelyzetbe állítása |} Microsoft Docs"
-description: "Az önkiszolgáló jelszó-változtatási újra hozzáférést nyerni a munkahelyi vagy iskolai fiókkal való használata"
+title: 'Az Azure AD: A jelszó alaphelyzetbe állítása |} Microsoft Docs'
+description: Az önkiszolgáló jelszó-változtatási újra hozzáférést nyerni a munkahelyi vagy iskolai fiókkal való használata
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29463778"
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó alaphelyzetbe állítása
 

@@ -17,9 +17,10 @@ ms.date: 11/03/2017
 ms.author: cjiang
 ms.openlocfilehash: dfb39b809f9a1082682d269d8bd4c180c8a264ce
 ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204564"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Előfizetés az Azure-előfizetéssel az Office 365-fiókkal
 Ha olyan Office 365-előfizetéssel rendelkezik, az Office 365-fiók segítségével hozzon létre egy Azure-előfizetés. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) Office 365-felhasználónevét és jelszavát használva. Ha szeretné beállítani a virtuális gépek, vagy használjon más Azure-szolgáltatásokkal, kell regisztrál az Azure-előfizetésre. Az Azure-előfizetéshez megoszthatja másokkal és [az Azure-előfizetés és az erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
