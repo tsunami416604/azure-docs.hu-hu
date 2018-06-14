@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Bus message böngészés |} Microsoft Docs"
-description: "Tallózással keresse meg és betekintés a Service Bus-üzenetek"
+title: Az Azure Service Bus message böngészés |} Microsoft Docs
+description: Tallózással keresse meg és betekintés a Service Bus-üzenetek
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196620"
 ---
 # <a name="message-browsing"></a>Üzenet tallózása
 

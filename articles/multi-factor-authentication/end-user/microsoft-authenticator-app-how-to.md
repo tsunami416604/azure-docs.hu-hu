@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Authenticator alkalmazást a mobiltelefonok |} Microsoft Docs"
-description: "Útmutató az Azure Authenticator legújabb verziójára történő frissítéshez."
+title: Microsoft Authenticator alkalmazást a mobiltelefonok |} Microsoft Docs
+description: Útmutató az Azure Authenticator legújabb verziójára történő frissítéshez.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200997"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Ismerkedés a Microsoft Authenticator alkalmazással
 A Microsoft Authenticator alkalmazást egy további szintű be a munkahelyi vagy iskolai fiókjával biztonságot nyújt (például bsimon@contoso.com) vagy a Microsoft-fiókját (például bsimon@outlook.com).

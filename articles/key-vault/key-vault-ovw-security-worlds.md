@@ -1,6 +1,6 @@
 ---
-ms.assetid: 
-title: "Az Azure Key Vault biztonsági világot |} Microsoft Docs"
+ms.assetid: ''
+title: Az Azure Key Vault biztonsági világot |} Microsoft Docs
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27928100"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Az Azure Key Vault biztonsági világot és földrajzi határok
 

@@ -1,8 +1,8 @@
 ---
-title: "Az egyéni mezők Azure Naplóelemzés |} Microsoft Docs"
-description: "Naplóelemzési egyéni mezők jellemzője hozhat létre a saját kereshető mezők összegyűjtött rekord tulajdonságainak hozzáadni a Naplóelemzési rekordból.  Ez a cikk ismerteti a folyamat létrehoz egy egyéni mezőt és részletes útmutató egy minta eseményhez."
+title: Az egyéni mezők Azure Naplóelemzés |} Microsoft Docs
+description: Naplóelemzési egyéni mezők jellemzője hozhat létre a saját kereshető mezők összegyűjtött rekord tulajdonságainak hozzáadni a Naplóelemzési rekordból.  Ez a cikk ismerteti a folyamat létrehoz egy egyéni mezőt és részletes útmutató egy minta eseményhez.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030701"
 ---
 # <a name="custom-fields-in-log-analytics"></a>A Naplóelemzési egyéni mezők
 A **egyéni mezők** Naplóelemzési funkciója lehetővé teszi, hogy a saját kereshető mezők hozzáadásával meglévő rekordjainak Naplóelemzési bővítése.  Egyéni mezők automatikusan tölti be más tulajdonságok ugyanabban a rekordban a kivonatolt adatokon.

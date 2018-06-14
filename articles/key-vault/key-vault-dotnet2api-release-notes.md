@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "27909754"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Az Azure Key Vault .NET 2.0 – kibocsátási megjegyzések és az áttelepítési útmutató
 Az alábbi információk segítségével történő az Azure Key Vault kódtár 2.0-s verzióját, a C# és a .NET.  Korábbi verzióira írt kell támogatja a legújabb verzióra frissíti.  Ezek a változások szükségesek, teljes körű támogatásához, mint az új és továbbfejlesztett szolgáltatásaival, **Key Vault tanúsítványok**.

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Security Centerben (előzetes verzió) operációsrendszer-biztonsági beállítások testreszabása |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan kell biztonsági center értékelések testreszabása"
+title: Az Azure Security Centerben (előzetes verzió) operációsrendszer-biztonsági beállítások testreszabása |} Microsoft Docs
+description: Ez a cikk bemutatja, hogyan kell biztonsági center értékelések testreszabása
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200010"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Az Azure Security Centerben (előzetes verzió) operációsrendszer-biztonsági beállítások testreszabása
 
