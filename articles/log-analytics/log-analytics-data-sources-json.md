@@ -1,8 +1,8 @@
 ---
-title: "A Naplóelemzési OMS egyéni JSON-adatok gyűjtése |} Microsoft Docs"
-description: "Egyéni JSON-adatforrások az OMS-ügynök használatával Linux Log Analyticshez gyűjthetők össze.  Az egyéni adatforrások egyszerű parancsfájlok JSON vissza például a curl vagy FluentD tartozó 300 + beépülő modulok egyike lehet. Ez a cikk ismerteti az adatgyűjtés szükséges beállításokat."
+title: A Naplóelemzési OMS egyéni JSON-adatok gyűjtése |} Microsoft Docs
+description: Egyéni JSON-adatforrások az OMS-ügynök használatával Linux Log Analyticshez gyűjthetők össze.  Az egyéni adatforrások egyszerű parancsfájlok JSON vissza például a curl vagy FluentD tartozó 300 + beépülő modulok egyike lehet. Ez a cikk ismerteti az adatgyűjtés szükséges beállításokat.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855221"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Linux Log Analyticshez az egyéni OMS-ügynökkel rendelkező JSON-adatforrások gyűjtése
 Egyéni JSON-adatforrások az OMS-ügynök használatával Linux Log Analyticshez gyűjthetők össze.  Az egyéni adatforrások lehet egyszerű parancsfájlok JSON például visszaadó [curl](https://curl.haxx.se/) vagy az egyik [FluentD tartozó 300 + beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti az adatgyűjtés szükséges beállításokat.

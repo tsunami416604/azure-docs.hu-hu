@@ -1,8 +1,8 @@
 ---
-title: "Az objektum tulajdonságai és az Azure Storage metaadatok beolvasása és beállítása |} Microsoft Docs"
-description: "Egyéni metaadat tárolásához az Azure Storage-objektumokhoz, és állítsa be, és Rendszertulajdonságok lekéréséhez."
+title: Az objektum tulajdonságai és az Azure Storage metaadatok beolvasása és beállítása |} Microsoft Docs
+description: Egyéni metaadat tárolásához az Azure Storage-objektumokhoz, és állítsa be, és Rendszertulajdonságok lekéréséhez.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873029"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Tulajdonságok és metaadatok beállítása és lekérése
 

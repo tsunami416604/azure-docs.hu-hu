@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage-erőforrások a Storage ügyféloldali kódtára a C++ listázása |} Microsoft Docs"
-description: "Ismerje meg, a listaelem API-k használata a Microsoft Azure Storage ügyféloldali kódtára a C++ tárolók, blobok, várólisták, táblákat és entitásokat enumerálása."
+title: Azure Storage-erőforrások a Storage ügyféloldali kódtára a C++ listázása |} Microsoft Docs
+description: Ismerje meg, a listaelem API-k használata a Microsoft Azure Storage ügyféloldali kódtára a C++ tárolók, blobok, várólisták, táblákat és entitásokat enumerálása.
 documentationcenter: .net
 services: storage
 author: dineshmurthy
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873869"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>A c++ Azure Storage-erőforrások felsorolása
 Listaelem műveletek kulcsot az Azure Storage számos fejlesztési forgatókönyvek esetében. Ez a cikk ismerteti a leghatékonyabban az Azure Storage az átjáróra a listában megadott a Microsoft Azure Storage ügyféloldali kódtára a C++ API-k használata az objektumok számbavétele.

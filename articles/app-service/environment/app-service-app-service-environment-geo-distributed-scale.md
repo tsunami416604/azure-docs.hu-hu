@@ -1,11 +1,11 @@
 ---
-title: "Földrajzi alapú méretezés App Service-környezetekkel"
-description: "Megtudhatja, hogyan vízszintesen skálázása a Traffic Manager és az App Service Environment-környezetek földrajzi terjesztési használó alkalmazásokat."
+title: Földrajzi alapú méretezés App Service-környezetekkel
+description: Megtudhatja, hogyan vízszintesen skálázása a Traffic Manager és az App Service Environment-környezetek földrajzi terjesztési használó alkalmazásokat.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836832"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
 ## <a name="overview"></a>Áttekintés

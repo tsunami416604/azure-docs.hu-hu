@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb hozzáférés-vezérlési rekordokat kezelése |} Microsoft Docs"
-description: "Annak meghatározásához, hogy mely gazdagépek csatlakozhat a StorSimple virtuális tömb kötetein hozzáférés-vezérlési rekordokat (ACRs) kezelését ismerteti."
+title: A StorSimple virtuális tömb hozzáférés-vezérlési rekordokat kezelése |} Microsoft Docs
+description: Annak meghatározásához, hogy mely gazdagépek csatlakozhat a StorSimple virtuális tömb kötetein hozzáférés-vezérlési rekordokat (ACRs) kezelését ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875941"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Hozzáférés-vezérlési rekordokat kezelheti a StorSimple virtuális tömb StorSimple Eszközkezelő
 

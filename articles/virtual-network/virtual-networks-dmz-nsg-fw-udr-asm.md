@@ -1,11 +1,11 @@
 ---
-title: "DMZ példa – Build hálózatokat és a tűzfalon, UDR és NSG védelméhez DMZ |} Microsoft Docs"
-description: "Build tűzfallal DMZ, felhasználó által definiált útválasztási (UDR) és a hálózati biztonsági csoportokkal (NSG)"
+title: DMZ példa – Build hálózatokat és a tűzfalon, UDR és NSG védelméhez DMZ |} Microsoft Docs
+description: Build tűzfallal DMZ, felhasználó által definiált útválasztási (UDR) és a hálózati biztonsági csoportokkal (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: dc01ccfb-27b0-4887-8f0b-2792f770ffff
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885244"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>3 – példa hálózatokat és a tűzfalon, UDR és NSG védelméhez DMZ összeállítása
 [A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]

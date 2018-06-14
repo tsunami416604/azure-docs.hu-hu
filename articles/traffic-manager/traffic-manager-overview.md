@@ -1,11 +1,11 @@
 ---
 title: Mi az a Traffic Manager |} Microsoft Docs
-description: "Ez a cikk segít megérteni a Traffic Manager van, és hogy-e az alkalmazás megfelelő forgalom útválasztási kiválasztása"
+description: Ez a cikk segít megérteni a Traffic Manager van, és hogy-e az alkalmazás megfelelő forgalom útválasztási kiválasztása
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877054"
 ---
 # <a name="overview-of-traffic-manager"></a>A Traffic Manager áttekintése
 

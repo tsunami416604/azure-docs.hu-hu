@@ -1,11 +1,11 @@
 ---
-title: "Módosítsa a helyi hálózati átjáró IP-cím előtagokat és a VPN-átjáró IP-címe |} Azure |} PowerShell |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a PowerShell használatával helyi hálózati átjáró IP-cím előtagokat módosítása"
+title: Módosítsa a helyi hálózati átjáró IP-cím előtagokat és a VPN-átjáró IP-címe |} Azure |} PowerShell |} Microsoft Docs
+description: Ez a cikk végigvezeti a PowerShell használatával helyi hálózati átjáró IP-cím előtagokat módosítása
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 8c7db48f-d09a-44e7-836f-1fb6930389df
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23885104"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Helyi hálózati átjáró beállításainak módosítása a PowerShell-lel
 
