@@ -1,11 +1,11 @@
 ---
-title: "Az App Service Environment-környezetek hálózati architektúrájának áttekintése"
-description: "Hálózati topológia ofApp Service-környezetek architektúra áttekintése."
+title: Az App Service Environment-környezetek hálózati architektúrájának áttekintése
+description: Hálózati topológia ofApp Service-környezetek architektúra áttekintése.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836825"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Az App Service Environment-környezetek hálózati architektúrájának áttekintése
 ## <a name="introduction"></a>Bevezetés

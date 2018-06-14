@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CDN szabályok motor feltételes kifejezések |} Microsoft Docs"
-description: "Az Azure CDN referenciadokumentációt szabályok motor egyezés feltételek és a szolgáltatások."
+title: Az Azure CDN szabályok motor feltételes kifejezések |} Microsoft Docs
+description: Az Azure CDN referenciadokumentációt szabályok motor egyezés feltételek és a szolgáltatások.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842929"
 ---
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Az Azure CDN-szabályok a feltételes kifejezések motor
 Ez a témakör részletes leírását tartalmazza a feltételes kifejezések az Azure Content Delivery Network (CDN) [szabálymotor](cdn-rules-engine.md).

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Functions futásidejű verziók bemutatásához"
-description: "Az Azure Functions a futtatókörnyezet több verzióit támogatja. Megtudhatja, hogyan adja meg egy Azure-ban üzemeltetett függvény app futásidejű verzióját."
+title: Az Azure Functions futásidejű verziók bemutatásához
+description: Az Azure Functions a futtatókörnyezet több verzióit támogatja. Megtudhatja, hogyan adja meg egy Azure-ban üzemeltetett függvény app futásidejű verzióját.
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843391"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Az Azure Functions futásidejű verziók bemutatásához
 
