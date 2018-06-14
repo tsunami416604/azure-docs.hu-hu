@@ -1,12 +1,12 @@
 ---
-title: "StorSimple-köteteket (Update 3) kezelése |} Microsoft Docs"
-description: "Elmagyarázza, hozzáadása, módosítása, figyeléséhez, és törölje a StorSimple-köteteket, és hogyan offline állapotba rájuk szükség."
+title: StorSimple-köteteket (Update 3) kezelése |} Microsoft Docs
+description: Elmagyarázza, hozzáadása, módosítása, figyeléséhez, és törölje a StorSimple-köteteket, és hogyan offline állapotba rájuk szükség.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26578873"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A StorSimple Device Manager szolgáltatás segítségével kezelheti a kötetek (Update 3-as vagy újabb)
 

@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb vész helyreállítási és eszköz feladatátvételi |} Microsoft Docs"
-description: "További tudnivalókat a feladatátvétel a StorSimple virtuális tömbjét."
+title: A StorSimple virtuális tömb vész helyreállítási és eszköz feladatátvételi |} Microsoft Docs
+description: További tudnivalókat a feladatátvétel a StorSimple virtuális tömbjét.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927767"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Katasztrófa utáni helyreállítás és eszköz feladatátvevő a StorSimple virtuális tömb Azure-portálon
 

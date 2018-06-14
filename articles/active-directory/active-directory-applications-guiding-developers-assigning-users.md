@@ -1,11 +1,11 @@
 ---
-title: "Az Azure AD és az alkalmazások: az alkalmazás felhasználók hozzárendelése |} Microsoft Docs"
-description: "Útmutató az Azure-alkalmazások felhasználó-hozzárendelés végrehajtásához."
+title: 'Az Azure AD és az alkalmazások: az alkalmazás felhasználók hozzárendelése |} Microsoft Docs'
+description: Útmutató az Azure-alkalmazások felhasználó-hozzárendelés végrehajtásához.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 97ce69c1-4034-4e38-bd82-8caf984f6b98
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598624"
 ---
 # <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Az Azure AD és az alkalmazások: az alkalmazás felhasználók hozzárendelése
 Mielőtt a felhasználók és csoportok rendelhet egy alkalmazás, felhasználó-hozzárendelés követelheti meg.  Igénylése felhasználói kiosztása elsajátításához lásd: a [igénylő felhasználó hozzárendelés](active-directory-applications-guiding-developers-requiring-user-assignment.md) cikk.

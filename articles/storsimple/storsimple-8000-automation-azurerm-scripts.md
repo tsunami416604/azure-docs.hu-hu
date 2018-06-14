@@ -1,12 +1,12 @@
 ---
-title: "Azure Resource Manager parancsfájlok segítségével kezelheti a StorSimple eszközökhöz |} Microsoft Docs"
-description: "Azure Resource Manager-parancsfájlok használata a StorSimple feladatok automatizálásához"
+title: Azure Resource Manager parancsfájlok segítségével kezelheti a StorSimple eszközökhöz |} Microsoft Docs
+description: Azure Resource Manager-parancsfájlok használata a StorSimple feladatok automatizálásához
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26373941"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsprogramok segítségével kezelheti a StorSimple eszközökhöz
 

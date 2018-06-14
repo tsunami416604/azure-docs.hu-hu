@@ -1,6 +1,6 @@
 ---
-title: "A Python a Queue storage használata |} Microsoft Docs"
-description: "Útmutató: az Azure Queue szolgáltatás Python segítségével hozza létre, és törli az üzenetsorok, és helyezze, beolvasása, és törli az üzenetet."
+title: A Python a Queue storage használata |} Microsoft Docs
+description: 'Útmutató: az Azure Queue szolgáltatás Python segítségével hozza létre, és törli az üzenetsorok, és helyezze, beolvasása, és törli az üzenetet.'
 services: storage
 documentationcenter: python
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25986749"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>How to use Queue storage from Python (A Queue Storage használata Pythonnal)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

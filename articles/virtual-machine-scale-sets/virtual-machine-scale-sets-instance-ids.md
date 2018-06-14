@@ -1,11 +1,11 @@
 ---
-title: "Példány azonosítók megismerése az Azure Virtuálisgép-méretezési készlet virtuális gépek |} Microsoft Docs"
-description: "Azure Virtuálisgép-méretezési példány azonosítóinak állítsa be a virtuális gépek ismertetése"
+title: Példány azonosítók megismerése az Azure Virtuálisgép-méretezési készlet virtuális gépek |} Microsoft Docs
+description: Azure Virtuálisgép-méretezési példány azonosítóinak állítsa be a virtuális gépek ismertetése
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742775"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure Virtuálisgép-méretezési példány azonosítóinak állítsa be a virtuális gépek ismertetése
 Ez a cikk ismerteti a méretezési készlet és a különböző módszereket azok surface példány azonosítóit.

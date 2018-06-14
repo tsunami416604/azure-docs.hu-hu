@@ -1,10 +1,10 @@
 ---
-title: "Az univerzális Windows Platform (UWP-) alkalmazás, a Mobile Apps kapcsolat nélküli szinkronizálásának engedélyezése |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a kapcsolat nélküli adatok gyorsítótár és a szinkronizálási Azure Mobile Apps az univerzális Windows Platform (UWP) alkalmazásban."
+title: Az univerzális Windows Platform (UWP-) alkalmazás, a Mobile Apps kapcsolat nélküli szinkronizálásának engedélyezése |} Microsoft Docs
+description: Megtudhatja, hogyan használja a kapcsolat nélküli adatok gyorsítótár és a szinkronizálási Azure Mobile Apps az univerzális Windows Platform (UWP) alkalmazásban.
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594479"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows-alkalmazás kapcsolat nélküli szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

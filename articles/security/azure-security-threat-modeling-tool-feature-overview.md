@@ -1,6 +1,6 @@
 ---
-title: "Eszköz - Azure modellezési Microsoft fenyegetés |} Microsoft Docs"
-description: "További tudnivalók a fenyegetések modellezése eszköz elérhető összes szolgáltatást"
+title: Eszköz - Azure modellezési Microsoft fenyegetés |} Microsoft Docs
+description: További tudnivalók a fenyegetések modellezése eszköz elérhető összes szolgáltatást
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754745"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Fenyegetések modellezése eszköz funkcióinak áttekintése
 

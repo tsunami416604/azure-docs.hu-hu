@@ -1,11 +1,11 @@
 ---
-title: "Cloud service általános felügyeleti feladatai |} Microsoft Docs"
-description: "Útmutató a Felhőszolgáltatások kezelése az Azure portálon. Ezekben a példákban az Azure-portálon."
+title: Cloud service általános felügyeleti feladatai |} Microsoft Docs
+description: Útmutató a Felhőszolgáltatások kezelése az Azure portálon. Ezekben a példákban az Azure-portálon.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121195"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services kezelése az Azure-portálon
 Az a **Felhőszolgáltatások** is az Azure-portál területen:
