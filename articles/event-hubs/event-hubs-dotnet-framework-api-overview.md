@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Event Hubs .NET-keretrendszer API-k áttekintése |} Microsoft Docs"
-description: "A kulcs Event Hubs .NET-keretrendszer ügyfél API-k részének összefoglalása."
+title: Az Azure Event Hubs .NET-keretrendszer API-k áttekintése |} Microsoft Docs
+description: A kulcs Event Hubs .NET-keretrendszer ügyfél API-k részének összefoglalása.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781894"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET-keretrendszer API – áttekintés
 

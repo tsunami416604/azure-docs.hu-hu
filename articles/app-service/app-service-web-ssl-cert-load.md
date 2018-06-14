@@ -1,11 +1,11 @@
 ---
-title: "Egy feltöltött SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service szolgáltatásban |} Microsoft Docs"
-description: 
+title: Egy feltöltött SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service szolgáltatásban |} Microsoft Docs
+description: ''
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26047699"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Egy SSL-tanúsítvány használható az alkalmazás kódjában, az Azure App Service-ben
 

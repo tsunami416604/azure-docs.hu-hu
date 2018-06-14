@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure-továbbítási WCF továbbítja a .NET |} Microsoft Docs"
-description: "Megtudhatja, hogyan használhatja az Azure továbbítási WCF továbbítók két különböző helyen üzemeltetett alkalmazások kapcsolódáshoz."
+title: Ismerkedés az Azure-továbbítási WCF továbbítja a .NET |} Microsoft Docs
+description: Megtudhatja, hogyan használhatja az Azure továbbítási WCF továbbítók két különböző helyen üzemeltetett alkalmazások kapcsolódáshoz.
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
 ms.service: service-bus-relay
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26856082"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>A .NET szegélyhálózatába, az Azure-továbbítási WCF használata
 Ez a cikk ismerteti, hogyan használhatja az Azure-továbbítási szolgáltatást. A kódminták C# nyelven íródtak, és a Windows Communication Foundation (WCF) API-t használják a Service Bus-összeállításban található bővítményekkel. Az Azure relayjel kapcsolatos további információkért lásd: a [Azure továbbítási áttekintése](relay-what-is-it.md).

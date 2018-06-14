@@ -1,8 +1,8 @@
 ---
-title: "A forrás (fizikai kiszolgálók Azure-bA) környezet beállítása |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan állíthat be a helyszíni környezet az Azure Windows vagy Linux operációs rendszert futtató fizikai kiszolgálók replikálást indítani."
+title: A forrás (fizikai kiszolgálók Azure-bA) környezet beállítása |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan állíthat be a helyszíni környezet az Azure Windows vagy Linux operációs rendszert futtató fizikai kiszolgálók replikálást indítani.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812690"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Állítsa be a forrás-környezetet (az Azure-bA a fizikai kiszolgáló)
 

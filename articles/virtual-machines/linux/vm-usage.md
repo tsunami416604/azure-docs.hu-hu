@@ -1,15 +1,15 @@
 ---
-title: "Az Azure virtuális gépek használatának megértése |} Microsoft Docs"
-description: "Virtuális gép használat részleteiről ismertetése"
+title: Az Azure virtuális gépek használatának megértése |} Microsoft Docs
+description: Virtuális gép használat részleteiről ismertetése
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-virtual-machine
-ms.assetid: 
-ms.service: 
-ms.devlang: 
+ms.assetid: ''
+ms.service: ''
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345452"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gépek használatának ismertetése
 Az Azure használati adatok elemzésével, hatékony felhasználása insights is szerzett – elemzések, engedélyezhet jobban költségeket, felügyeleti és kiosztását a szervezetben. Ez a dokumentum egy részletes bemutatója a fogyasztás Azure számítási részleteinek nyújt. Általános Azure használati olvashat, navigáljon a [ismertetése a számlázási](/billing/billing-understand-your-bill.md).

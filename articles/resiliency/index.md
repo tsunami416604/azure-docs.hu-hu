@@ -1,11 +1,11 @@
 ---
-title: "Bejegyzés hamarosan | Microsoft Azure"
-description: "Bejegyzés hamarosan."
-services: 
-documentationcenter: 
+title: Bejegyzés hamarosan | Microsoft Azure
+description: Bejegyzés hamarosan.
+services: ''
+documentationcenter: ''
 author: czeumault
 manager: carolz
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 0ff41bee-1606-4adc-94e6-92fd80dc286b
 ms.service: value
@@ -20,5 +20,6 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071262"
 ---
 # <a name="to-be-submitted"></a>Bejegyzés hamarosan.

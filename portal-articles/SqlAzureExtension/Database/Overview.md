@@ -1,6 +1,6 @@
 ---
-title: "Az SQL Database áttekintése | Microsoft Docs"
-description: "Az SQL Database áttekintő súgótartalmai az Azure Portalon"
+title: Az SQL Database áttekintése | Microsoft Docs
+description: Az SQL Database áttekintő súgótartalmai az Azure Portalon
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073928"
 ---
 # <a name="sql-database-documentation"></a>SQL Database-dokumentáció
 

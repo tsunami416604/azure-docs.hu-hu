@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "A Microsoft Genomics dokumentációja"
+title: A Microsoft Genomics dokumentációja
 metadata:
-  title: "A Microsoft Genomics dokumentációja"
+  title: A Microsoft Genomics dokumentációja
   meta.description: Learn how to use the Microsoft Genomics service.
   services: microsoft-genomics
   author: grhuynh
@@ -18,17 +18,18 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 12/13/2017
+  ms.locfileid: "26684585"
 abstract:
-  description: "Megismerheti, hogyan végezhető a Microsoft Genomics segítségével genomszekvenálás a Burrows-Wheeler Aligner (BWA) és a másodlagos elemzéshez használható Genome Analysis Toolkit (GATK) felhőalapú implementálása révén."
+  description: Megismerheti, hogyan végezhető a Microsoft Genomics segítségével genomszekvenálás a Burrows-Wheeler Aligner (BWA) és a másodlagos elemzéshez használható Genome Analysis Toolkit (GATK) felhőalapú implementálása révén.
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "Munkafolyamat elküldése a Microsoft Genomics szolgáltatással."
+    text: Munkafolyamat elküldése a Microsoft Genomics szolgáltatással.
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/helix-blue-orange.svg
-      text: "Munkafolyamat elküldése"
+      text: Munkafolyamat elküldése
       href: quickstart-run-genomics-workflow-portal
