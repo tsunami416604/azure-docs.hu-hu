@@ -1,11 +1,11 @@
 ---
-title: "A referencia-útmutató az Azure Naplóelemzés Az adatforrásnézet-tervezőből mozaikok |} Microsoft Docs"
-description: "Naplóelemzési adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, amelyeknél a Naplóelemzési munkaterület különböző adatmegjelenítési. Ez a cikk egy referencia-útmutató a csempéket, az egyéni nézetek elérhető beállításai."
+title: A referencia-útmutató az Azure Naplóelemzés Az adatforrásnézet-tervezőből mozaikok |} Microsoft Docs
+description: Naplóelemzési adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, amelyeknél a Naplóelemzési munkaterület különböző adatmegjelenítési. Ez a cikk egy referencia-útmutató a csempéket, az egyéni nézetek elérhető beállításai.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947316"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempéket a Naplóelemzési használati útmutató
 Azure Naplóelemzés adatforrásnézet-tervezőből használatával egyéni nézeteket hozhat létre az Azure portálon, hogy az adatmegjelenítéseket a Naplóelemzési munkaterület különböző. Ez a cikk egy referencia-útmutató a csempéket, az egyéni nézetek elérhető beállításai.

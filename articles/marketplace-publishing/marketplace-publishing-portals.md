@@ -1,11 +1,11 @@
 ---
-title: "A Piactéri ajánlat létrehozásához szükséges a különböző portálok áttekintése |} Microsoft Docs"
-description: "A különböző portálok a Piactéri ajánlat létrehozásához szükséges áttekintése"
+title: A Piactéri ajánlat létrehozásához szükséges a különböző portálok áttekintése |} Microsoft Docs
+description: A különböző portálok a Piactéri ajánlat létrehozásához szükséges áttekintése
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 89ce82b3-c28a-4b0d-b37a-db3112160a4e
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29938644"
 ---
 # <a name="portals-you-will-need"></a>Szüksége lesz portálok
 Az ajánlat közzétételének folyamat megkezdése előtt jelentkezzen be jelenik meg a különböző portálok, amelyre szüksége lesz. Az alábbiakban van a portálok--fejlesztői központ, az Azure közzétételi Portáljára és az Azure portál – az ahhoz, hogy fog komunikálhassanak velük rövid ismertetése.                                                                            

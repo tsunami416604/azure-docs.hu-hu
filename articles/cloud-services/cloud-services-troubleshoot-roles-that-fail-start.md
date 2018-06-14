@@ -1,11 +1,11 @@
 ---
-title: "Szerepkörök, amelyek nem indulnak el hibaelhárítása |} Microsoft Docs"
-description: "Az alábbiakban néhány gyakori okáról, miért a felhőalapú szolgáltatás szerepkör esetleg nem indulnak el. Ezek a problémák megoldások is rendelkezésre állnak."
+title: Szerepkörök, amelyek nem indulnak el hibaelhárítása |} Microsoft Docs
+description: Az alábbiakban néhány gyakori okáról, miért a felhőalapú szolgáltatás szerepkör esetleg nem indulnak el. Ezek a problémák megoldások is rendelkezésre állnak.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875334"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>A felhőalapú szolgáltatás nem indult el szerepkörtől hibaelhárítása
 Az alábbiakban néhány gyakori problémát és Azure felhőszolgáltatások kapcsolatos megoldások szerepköröket, amelyek nem indulnak el.

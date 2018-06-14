@@ -1,11 +1,11 @@
 ---
-title: "Szolgáltató Erőforrás kihasználtsága API |} Microsoft Docs"
-description: "Az erőforrás-felhasználás API, amely Azure verem használati adatainak beolvasása referenciája"
+title: Szolgáltató Erőforrás kihasználtsága API |} Microsoft Docs
+description: Az erőforrás-felhasználás API, amely Azure verem használati adatainak beolvasása referenciája
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877279"
 ---
 # <a name="provider-resource-usage-api"></a>Szolgáltatói erőforrás-használati API
 A kifejezés *szolgáltató* minden vonatkozik, a szolgáltatás-rendszergazda vagy olyan meghatalmazott szolgáltatót. Azure verem operátorok és delegált szolgáltatók használatával a szolgáltató használati API tekintse meg a közvetlen bérlőiknek. Például ahogy az ábrán is látható, P0 hívhatják meg a szolgáltató a P1 tartozó használati adatainak megszerzése API, és P2 tartozó közvetlen használatát, és P1 P3 és P4 használati információt kérjen.

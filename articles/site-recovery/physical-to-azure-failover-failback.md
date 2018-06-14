@@ -1,6 +1,6 @@
 ---
-title: "A feladatátvétel, és nem vissza fizikai kiszolgálók replikálása az Azure Site Recovery szolgáltatással |} Microsoft Docs"
-description: "Feladatok átadása a fizikai kiszolgálók Azure-ba, és visszaadják feladataikat a helyszíni hely, az Azure Site Recovery útmutató"
+title: A feladatátvétel, és nem vissza fizikai kiszolgálók replikálása az Azure Site Recovery szolgáltatással |} Microsoft Docs
+description: Feladatok átadása a fizikai kiszolgálók Azure-ba, és visszaadják feladataikat a helyszíni hely, az Azure Site Recovery útmutató
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876010"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>A feladatátvétel, és vissza fizikai kiszolgálók Azure-felhőbe replikált sikertelen
 

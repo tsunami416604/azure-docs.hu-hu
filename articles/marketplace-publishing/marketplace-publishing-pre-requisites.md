@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy ajánlatot az Azure piactéren nem technikai jellegű előfeltételei |} Microsoft Docs"
-description: "A létrehozása és telepítése egy ajánlatot az Azure piactéren mások beszerzési vonatkozó követelmények megértése érdekében."
+title: Hozzon létre egy ajánlatot az Azure piactéren nem technikai jellegű előfeltételei |} Microsoft Docs
+description: A létrehozása és telepítése egy ajánlatot az Azure piactéren mások beszerzési vonatkozó követelmények megértése érdekében.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3dae463b-8f48-4f52-8fa8-4e3975f09f43
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29940041"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Hozzon létre egy ajánlatot az Azure piactéren általános előfeltételei
 Az ajánlat létrehozási folyamat során eljutni szükséges általános, üzleti folyamat-központú Előfeltételek megismerésében.

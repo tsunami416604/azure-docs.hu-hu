@@ -1,11 +1,11 @@
 ---
-title: "A MongoDB a Linux virtuális gép és az Azure parancssori felület telepítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan telepítheti és konfigurálhatja a Linux virtuális gép iusing az Azure CLI 2.0 MongoDB"
+title: A MongoDB a Linux virtuális gép és az Azure parancssori felület telepítése |} Microsoft Docs
+description: Megtudhatja, hogyan telepítheti és konfigurálhatja a Linux virtuális gép iusing az Azure CLI 2.0 MongoDB
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852234"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Hogyan kell telepíteni, és konfigurálja a MongoDB a Linux virtuális gép
 [MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítse és konfigurálja a MongoDB a Linux virtuális gép az Azure CLI 2.0. Az [Azure CLI 1.0-s](install-mongodb-nodejs.md) verziójával is elvégezheti ezeket a lépéseket. Példák, amelyek részletesen hogyan számára:

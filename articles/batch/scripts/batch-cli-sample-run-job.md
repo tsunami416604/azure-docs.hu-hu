@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI-példaszkript – Batch-feladat futtatása | Microsoft Docs"
-description: "Azure CLI-példaszkript – Feladat futtatása a Batch szolgáltatással"
+title: Azure CLI-példaszkript – Batch-feladat futtatása | Microsoft Docs
+description: Azure CLI-példaszkript – Feladat futtatása a Batch szolgáltatással
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843612"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Parancssori felületi példa: Feladatok és tevékenységek futtatása az Azure Batch segítségével
 

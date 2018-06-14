@@ -1,6 +1,6 @@
 ---
-title: "A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek replikálása az Azure Site Recovery szolgáltatással |} Microsoft Docs"
-description: "Útmutató az Azure-bA Hyper-V virtuális gépek a feladatátvétel, és visszaadják feladataikat a helyszíni hely Azure Site Recovery szolgáltatással"
+title: A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek replikálása az Azure Site Recovery szolgáltatással |} Microsoft Docs
+description: Útmutató az Azure-bA Hyper-V virtuális gépek a feladatátvétel, és visszaadják feladataikat a helyszíni hely Azure Site Recovery szolgáltatással
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852897"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>A feladatátvétel és a sikertelen biztonsági Hyper-V virtuális gépek Azure-felhőbe replikált
 

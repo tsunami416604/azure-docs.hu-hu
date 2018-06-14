@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services PowerShell használatával a szerepkör távoli asztali kapcsolat engedélyezése"
-description: "Konfigurálása az azure cloud service alkalmazás távoli asztali kapcsolatok engedélyezése a PowerShell használatával"
+title: Azure Cloud Services PowerShell használatával a szerepkör távoli asztali kapcsolat engedélyezése
+description: Konfigurálása az azure cloud service alkalmazás távoli asztali kapcsolatok engedélyezése a PowerShell használatával
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf2f70a4-20dc-4302-a91a-38cd7a2baa62
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874140"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Azure Cloud Services PowerShell használatával a szerepkör távoli asztali kapcsolat engedélyezése
 

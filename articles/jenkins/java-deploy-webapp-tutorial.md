@@ -1,10 +1,10 @@
 ---
-title: "A webalkalmazások Azure telepítéséhez használható Jenkins |} Microsoft Docs"
-description: "Beállíthat folyamatos integrációt a Githubról az Azure App Service a Jenkins és Docker használó Java-webalkalmazások számára."
+title: A webalkalmazások Azure telepítéséhez használható Jenkins |} Microsoft Docs
+description: Beállíthat folyamatos integrációt a Githubról az Azure App Service a Jenkins és Docker használó Java-webalkalmazások számára.
 author: rloutlaw
 manager: douge
 ms.service: jenkins
-ms.search.scope: 
+ms.search.scope: ''
 ms.devlang: java
 ms.topic: article
 ms.workload: web
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852999"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Folyamatos integrációt és az Azure App Service Jenkins az üzembe helyezés beállítása
 

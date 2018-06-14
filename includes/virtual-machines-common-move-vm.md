@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958707"
 ---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>A portál használatával egy virtuális gép áthelyezése egy másik előfizetésben található
 Áthelyezheti egy virtuális Gépet, és a hozzá társított erőforrásokat egy másik előfizetést, a portál használatával.

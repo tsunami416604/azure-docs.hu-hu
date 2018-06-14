@@ -1,12 +1,12 @@
 ---
-title: "Azure Naplóelemzés Analytics Linux-ügynök hibáinak elhárítása |} Microsoft Docs"
-description: "A jelenség okok és a leggyakoribb problémák megoldási napló Analytics Linux-ügynökkel rendelkező leírása"
+title: Azure Naplóelemzés Analytics Linux-ügynök hibáinak elhárítása |} Microsoft Docs
+description: A jelenség okok és a leggyakoribb problémák megoldási napló Analytics Linux-ügynökkel rendelkező leírása
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936475"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>A Naplóelemzési Linux-ügynökkel rendelkező kapcsolatos problémák elhárítása
 

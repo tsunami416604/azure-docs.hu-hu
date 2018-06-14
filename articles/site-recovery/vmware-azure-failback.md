@@ -1,6 +1,6 @@
 ---
-title: "Sikertelen az Azure-ból az Azure Site Recovery VMware |} Microsoft Docs"
-description: "Az Azure virtuális gépek feladatátvétel után megkezdheti a feladat-visszavétel vissza a helyszíni virtuális gépek érdekében. Ismerje meg a szükséges lépéseket a feladat-visszavételt."
+title: Sikertelen az Azure-ból az Azure Site Recovery VMware |} Microsoft Docs
+description: Az Azure virtuális gépek feladatátvétel után megkezdheti a feladat-visszavétel vissza a helyszíni virtuális gépek érdekében. Ismerje meg a szükséges lépéseket a feladat-visszavételt.
 services: site-recovery
 author: nsoneji
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944007"
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Az Azure-ból a helyszíni helyhez sikertelen
 

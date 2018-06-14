@@ -1,11 +1,11 @@
 ---
-title: "Az Azure felhőalapú szolgáltatások szerepkör távoli asztali kapcsolat engedélyezése |} Microsoft Docs"
-description: "Az azure cloud service alkalmazás távoli asztali kapcsolatok lehetővé tételéhez konfigurálása"
+title: Az Azure felhőalapú szolgáltatások szerepkör távoli asztali kapcsolat engedélyezése |} Microsoft Docs
+description: Az azure cloud service alkalmazás távoli asztali kapcsolatok lehetővé tételéhez konfigurálása
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 73ea1d64-1529-4d72-b58e-f6c10499e6bb
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877364"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Engedélyezze a távoli asztali kapcsolat egy szerepkör esetén az Azure Cloud Services csomag
 

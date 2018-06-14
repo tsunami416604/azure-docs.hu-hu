@@ -13,5 +13,6 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29953852"
 ---
 Az [erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md#terminology) olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat (például webalkalmazásokat, adatbázisokat és tárfiókokat). Dönthet úgy is például, hogy később egyetlen egyszerű lépésben törli a teljes erőforráscsoportot.

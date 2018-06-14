@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197669"
 ---
 | **Termékváltozat** | **P2S-kapcsolatok**| **Összesített teljesítményteszt** | **Radius-hitelesítés** | **IKEv2 P2S VPN** |
 |---|---|---|---| --- |

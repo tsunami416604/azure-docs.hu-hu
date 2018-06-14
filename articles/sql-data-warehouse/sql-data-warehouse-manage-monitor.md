@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31522472"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 A cikkből megtudhatja, hogyan lehet a számítási feladat figyeléséhez dinamikus felügyeleti nézetek (dinamikus felügyeleti nézetek) segítségével. Ez magában foglalja az Azure SQL Data Warehouse lekérdezés-végrehajtás vizsgálja.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30242438"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux virtuális gépek kapcsolatos gyakran ismételt kérdések
 Ez a cikk foglalkozik az Azure-ban a Resource Manager üzembe helyezési modellel létrehozott Linux virtuális gépek kapcsolatos gyakori kérdésekre. Ez a témakör a Windows verziója: [gyakran feltett kérdés kapcsolatban a Windows virtuális gépek](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

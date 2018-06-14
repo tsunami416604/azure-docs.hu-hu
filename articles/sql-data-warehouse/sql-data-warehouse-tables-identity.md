@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526984"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse helyettesítő kulcsok létrehozásához AZONOSÍTÓJÁNAK használatával
 Javaslatok és Példák helyettesítő kulcsok létrehozása az Azure SQL Data Warehouse táblákon azonosító tulajdonsággal.
