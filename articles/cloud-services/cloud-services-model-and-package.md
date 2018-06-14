@@ -1,11 +1,11 @@
 ---
-title: "Egy felhőalapú szolgáltatás modell és a csomag |} Microsoft Docs"
-description: "Ismerteti a felhő szolgáltatásmodell (.csdef, .cscfg) és a csomagba (.cspkg) az Azure-ban"
+title: Egy felhőalapú szolgáltatás modell és a csomag |} Microsoft Docs
+description: Ismerteti a felhő szolgáltatásmodell (.csdef, .cscfg) és a csomagba (.cspkg) az Azure-ban
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876559"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a felhőalapú szolgáltatás modell, és hogyan tegye csomag azt?
 Egy felhőalapú szolgáltatás létrehozása az három összetevővel, a szolgáltatás definíciós *(.csdef)*, a szolgáltatás konfigurációs *(.cscfg)*, és a szolgáltatáscsomagot *(.cspkg)*. Mindkét a **ServiceDefinition.csdef** és **ServiceConfig.cscfg** fájlok XML-alapú, és ismerteti a felhőalapú szolgáltatás, és hogyan van konfigurálva; szerkezete együttesen: a modell. A **ServicePackage.cspkg** egy zip-fájl, amely jönnek létre a **ServiceDefinition.csdef** , és többek között tartalmazza az összes szükséges bináris alapú függőség. Az Azure létrehoz egy felhőalapú szolgáltatás is a **ServicePackage.cspkg** és a **ServiceConfig.cscfg**.

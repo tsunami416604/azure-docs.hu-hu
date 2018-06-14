@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949803"
 ---
 #  <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Oktatóanyag: Helyi Service Fabric-fürtön üzembe helyezett Java-alkalmazás hibakeresése 
 Ez az oktatóanyag egy sorozat második része. Megtudhatja, hogyan csatolhat egy távoli hibakeresőt az Eclipse használatával a Service Fabric-alkalmazáshoz. Azzal is megismerkedhet, hogyan irányíthat át naplókat a futó alkalmazásokból egy olyan helyre, amelyhez a fejlesztő kényelmesen hozzáfér.

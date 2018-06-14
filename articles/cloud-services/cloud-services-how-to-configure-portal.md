@@ -1,11 +1,11 @@
 ---
-title: "A felhőszolgáltatás (portál) konfigurálása |} Microsoft Docs"
-description: "Útmutató az Azure felhőszolgáltatások konfigurálása. Ismerje meg, a felhőalapú szolgáltatás konfigurációja frissítése, és konfigurálja a távelérést a szerepkörpéldányok. Ezekben a példákban az Azure-portálon."
+title: A felhőszolgáltatás (portál) konfigurálása |} Microsoft Docs
+description: Útmutató az Azure felhőszolgáltatások konfigurálása. Ismerje meg, a felhőalapú szolgáltatás konfigurációja frissítése, és konfigurálja a távelérést a szerepkörpéldányok. Ezekben a példákban az Azure-portálon.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7308f3c0-825e-499d-bfa5-c60f86371921
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874321"
 ---
 # <a name="how-to-configure-cloud-services"></a>Felhőszolgáltatás konfigurálása
 

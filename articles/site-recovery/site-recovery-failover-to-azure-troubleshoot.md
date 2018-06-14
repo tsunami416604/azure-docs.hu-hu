@@ -1,12 +1,12 @@
 ---
-title: "Feladatátvétel az Azure hibák elhárítása |} Microsoft Docs"
-description: "A cikk ismerteti az Azure-bA feladatátvételét gyakori hibáinak elhárítása"
+title: Feladatátvétel az Azure hibák elhárítása |} Microsoft Docs
+description: A cikk ismerteti az Azure-bA feladatátvételét gyakori hibáinak elhárítása
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874359"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Ha az Azure virtuális gép feladatátvétele hibák elhárítása
 Hibák a következők egyike jelenhet meg közben a virtuális gép az Azure-bA. Hibaelhárítás, az ismertetett lépésekkel az egyes.

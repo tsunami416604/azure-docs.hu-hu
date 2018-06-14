@@ -1,11 +1,11 @@
 ---
-title: "Automatikus javítás az SQL Server VMs (klasszikus) |} Microsoft Docs"
-description: "Az SQL Server rendszeren futó virtuális gépek az Azure-ban a klasszikus üzembe helyezési mód azt ismerteti, az automatikus javítás funkció."
+title: Automatikus javítás az SQL Server VMs (klasszikus) |} Microsoft Docs
+description: Az SQL Server rendszeren futó virtuális gépek az Azure-ban a klasszikus üzembe helyezési mód azt ismerteti, az automatikus javítás funkció.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 737b2f65-08b9-4f54-b867-e987730265a8
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852710"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatikus javítás az SQL Server Azure virtuális gépekben (klasszikus)
 > [!div class="op_single_selector"]

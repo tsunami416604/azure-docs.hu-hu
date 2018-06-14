@@ -1,11 +1,11 @@
 ---
-title: "Az Azure CLI parancsfájl-mintában – hozzon létre egy Azure Redis Cache |} Microsoft Docs"
-description: "Az Azure CLI parancsfájl-mintában – az Azure Redis gyorsítótár létrehozása"
+title: Az Azure CLI parancsfájl-mintában – hozzon létre egy Azure Redis Cache |} Microsoft Docs
+description: Az Azure CLI parancsfájl-mintában – az Azure Redis gyorsítótár létrehozása
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: afd7f6e0-9297-4c98-a95e-597be939cef7
 ms.service: cache-redis
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29849395"
 ---
 # <a name="create-an-azure-redis-cache"></a>Azure Redis Cache létrehozása
 

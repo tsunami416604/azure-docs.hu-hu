@@ -1,11 +1,11 @@
 ---
-title: "Virtuális merevlemez létrehozása során kapcsolatos gyakori hibák elhárítása |} Microsoft Docs"
-description: "A gyakori hibaelhárítási kérdésekre adott válaszok és a virtuális merevlemez létrehozása során."
+title: Virtuális merevlemez létrehozása során kapcsolatos gyakori hibák elhárítása |} Microsoft Docs
+description: A gyakori hibaelhárítási kérdésekre adott válaszok és a virtuális merevlemez létrehozása során.
 services: Azure Marketplace
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e39563d8-8646-4cb7-b078-8b10ac35b494
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941601"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>Virtuális merevlemez létrehozása során észlelt közös kapcsolatos problémák elhárítása
 Ez a cikk az Azure piactér közzétevő vagy a közös rendszergazda problémát tapasztal vagy közös kérdése van a közzététel vagy a virtuális gép solution(s) kezelése közben segítségével valósul meg.

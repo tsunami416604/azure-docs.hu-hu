@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban | Microsoft Docs"
-description: "Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban"
+title: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban | Microsoft Docs
+description: Azure CLI-példaszkript – Alkalmazás hozzáadása a Batch szolgáltatásban
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843102"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>Parancssori felületi példa: Alkalmazás hozzáadása egy Azure Batch-fiókhoz
 

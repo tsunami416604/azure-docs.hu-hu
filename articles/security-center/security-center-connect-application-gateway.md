@@ -1,11 +1,11 @@
 ---
-title: "Csatlakozás az Azure Security Center a Microsoft Azure Alkalmazásátjáró |} Microsoft Docs"
-description: "Megtudhatja, hogyan integrálják Application Gateway és az Azure Security Center az erőforrások összesített biztonságának növeléséhez."
+title: Csatlakozás az Azure Security Center a Microsoft Azure Alkalmazásátjáró |} Microsoft Docs
+description: Megtudhatja, hogyan integrálják Application Gateway és az Azure Security Center az erőforrások összesített biztonságának növeléséhez.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854492"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Csatlakozás az Azure Security Center a Microsoft Azure Alkalmazásátjáró
 Ez a dokumentum segít az integráció konfigurálása a webalkalmazási tűzfal Application Gateway (WAF) és a Security Center.

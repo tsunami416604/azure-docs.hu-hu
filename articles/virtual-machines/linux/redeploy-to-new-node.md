@@ -1,6 +1,6 @@
 ---
-title: "Telepítse újra a Linux virtuális gépek Azure-ban |} Microsoft Docs"
-description: "Hogyan újratelepíteni a Linux virtuális gépek SSH-kapcsolati problémák elhárítása érdekében az Azure-ban."
+title: Telepítse újra a Linux virtuális gépek Azure-ban |} Microsoft Docs
+description: Hogyan újratelepíteni a Linux virtuális gépek SSH-kapcsolati problémák elhárítása érdekében az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29849307"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Telepítse újra a Linux virtuális gép új Azure csomópont
 Ha Ön szembesülhetnek SSH hibaelhárítási problémák vagy segíthet a Linux virtuális gép (VM) Azure, a virtuális gép újbóli alkalmazás eléréséhez. A virtuális gép újbóli telepítésének, a virtuális gép áthelyezése az Azure-infrastruktúra belül egy másik csomópontra, és majd bekapcsolja azt vissza. A konfigurációs beállításokat és a kapcsolódó erőforrások jelennek meg. Ez a cikk bemutatja, hogyan telepítse újra a virtuális gépek Azure CLI vagy az Azure-portál használatával.

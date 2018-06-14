@@ -1,12 +1,12 @@
 ---
-title: "Első előzetesen jóváhagyott a hivatalos Microsoft Azure programon keresztül |} Microsoft Docs"
-description: "További tudnivalók a Microsoft Azure hitelesített partner program és a virtuálisgép-lemezkép, megoldássablonban, fejlesztői szolgáltatás vagy az Azure piactéren adatszolgáltatás eladásra elérése"
+title: Első előzetesen jóváhagyott a hivatalos Microsoft Azure programon keresztül |} Microsoft Docs
+description: További tudnivalók a Microsoft Azure hitelesített partner program és a virtuálisgép-lemezkép, megoldássablonban, fejlesztői szolgáltatás vagy az Azure piactéren adatszolgáltatás eladásra elérése
 services: marketplace-publishing
 documentationcenter: na
 author: msmbaldwin
 manager: mbaldwin
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 7e9ebf17-07a1-4796-921f-d1d62046892d
 ms.service: marketplace
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939008"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Első előzetesen jóváhagyott a hivatalos Microsoft Azure programon keresztül
 Ez a cikk útmutatás válik a hivatalos Microsoft Azure, hogy a megoldás közzététele az Azure piactéren, és érvényes marketing előnyeit. Részletes áttekintést nyújt a Microsoft Azure hitelesített program és előnyeit, a Microsoft [ http://azure.com/certified ](http://azure.com/certified).

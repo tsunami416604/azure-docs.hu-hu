@@ -1,11 +1,11 @@
 ---
-title: "Adatok elemzése az Azure Naplóelemzés nézetek létrehozása |} Microsoft Docs"
-description: "Naplóelemzési adatforrásnézet-tervezőből használatával és az Azure-portálon jelenik meg az adatmegjelenítéseket a Naplóelemzési munkaterület különböző egyéni nézeteket is létrehozhat. Ez a cikk adatforrásnézet-tervezőből áttekintését tartalmazza, és eljárások létrehozásának és szerkesztésének egyéni nézetek mutatja be."
+title: Adatok elemzése az Azure Naplóelemzés nézetek létrehozása |} Microsoft Docs
+description: Naplóelemzési adatforrásnézet-tervezőből használatával és az Azure-portálon jelenik meg az adatmegjelenítéseket a Naplóelemzési munkaterület különböző egyéni nézeteket is létrehozhat. Ez a cikk adatforrásnézet-tervezőből áttekintését tartalmazza, és eljárások létrehozásának és szerkesztésének egyéni nézetek mutatja be.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939869"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Naplóelemzési adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre
 Az adatforrásnézet-tervezőből használatával [Azure Naplóelemzés](log-analytics-overview.md), az Azure portálon, amelyik segíthet a Naplóelemzési munkaterület az adatok megjelenítése egyéni nézetek számos hozhat létre. Ez a cikk áttekintést nyújt adatforrásnézet-tervezőből és eljárások létrehozásának és szerkesztésének egyéni nézetek.

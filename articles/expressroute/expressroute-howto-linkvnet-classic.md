@@ -1,11 +1,11 @@
 ---
-title: "Virtuális hálózat csatolása ExpressRoute-kapcsolatcsoportot: PowerShell: klasszikus: Azure |} Microsoft Docs"
-description: "Ez a dokumentum áttekintést csatolása a virtuális hálózatokon (Vnetek) az ExpressRoute-Kapcsolatcsoportok a klasszikus telepítési modell és a PowerShell használatával."
+title: 'Virtuális hálózat csatolása ExpressRoute-kapcsolatcsoportot: PowerShell: klasszikus: Azure |} Microsoft Docs'
+description: Ez a dokumentum áttekintést csatolása a virtuális hálózatokon (Vnetek) az ExpressRoute-Kapcsolatcsoportok a klasszikus telepítési modell és a PowerShell használatával.
 services: expressroute
 documentationcenter: na
 author: ganesr
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874997"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Egy virtuális hálózathoz csatlakozni powershellel (klasszikus) ExpressRoute-kapcsolatcsoportot
 > [!div class="op_single_selector"]

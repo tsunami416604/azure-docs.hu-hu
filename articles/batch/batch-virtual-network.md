@@ -1,6 +1,6 @@
 ---
-title: "Azure Batch-készlet része virtuális hálózatnak kiépítése |} Microsoft Docs"
-description: "A Batch-készlet létrehozhat egy virtuális hálózatot, hogy a számítási csomópontok is biztonságos kommunikáció valósítható meg a többi virtuális gép a hálózaton, például egy fájlkiszolgálón."
+title: Azure Batch-készlet része virtuális hálózatnak kiépítése |} Microsoft Docs
+description: A Batch-készlet létrehozhat egy virtuális hálózatot, hogy a számítási csomópontok is biztonságos kommunikáció valósítható meg a többi virtuális gép a hálózaton, például egy fájlkiszolgálón.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846808"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása a virtuális hálózat
 

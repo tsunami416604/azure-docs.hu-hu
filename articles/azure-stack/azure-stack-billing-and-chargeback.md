@@ -1,11 +1,11 @@
 ---
-title: "Ügyfél számlázási és az Azure-készletben jóváírási |} Microsoft Docs"
-description: "Ismerje meg, hogyan lehet lekérni az erőforrás-használati adatait az Azure oszlopból."
+title: Ügyfél számlázási és az Azure-készletben jóváírási |} Microsoft Docs
+description: Ismerje meg, hogyan lehet lekérni az erőforrás-használati adatait az Azure oszlopból.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877483"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Használati és számlázási Azure verem
 

@@ -1,11 +1,11 @@
 ---
-title: "Becsült replikációs kapacitás az Azure-ban |} Microsoft Docs"
-description: "Ez a cikk kapacitása becsléséhez Azure Site Recovery segítségével a replikált használata"
+title: Becsült replikációs kapacitás az Azure-ban |} Microsoft Docs
+description: Ez a cikk kapacitása becsléséhez Azure Site Recovery segítségével a replikált használata
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875905"
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>A Site Recovery szolgáltatással a Hyper-V virtuális gépek védelméhez kapacitásának megtervezése
 

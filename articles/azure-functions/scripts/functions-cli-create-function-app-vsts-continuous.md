@@ -1,8 +1,8 @@
 ---
-title: "Visual Studio Team Servicesből üzembe helyezett függvény létrehozása az Azure-ban | Microsoft Docs"
-description: "Függvényalkalmazás létrehozása és függvénykód üzembe helyezése a Visual Studio Team Servicesből"
+title: Visual Studio Team Servicesből üzembe helyezett függvény létrehozása az Azure-ban | Microsoft Docs
+description: Függvényalkalmazás létrehozása és függvénykód üzembe helyezése a Visual Studio Team Servicesből
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 01/09/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842347"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>Függvényalkalmazás létrehozása és függvénykód üzembe helyezése a Visual Studio Team Servicesből
 

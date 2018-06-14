@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy Linux-környezet az Azure CLI 2.0 |} Microsoft Docs"
-description: "Tárolási, Linux virtuális gép, egy virtuális hálózati és alhálózati, egy adott terheléselosztóhoz, egy olyan hálózati adapter, egy nyilvános IP-cím és a hálózati biztonsági csoport, az Azure CLI 2.0 használatával alapoktól összes létrehozása."
+title: Hozzon létre egy Linux-környezet az Azure CLI 2.0 |} Microsoft Docs
+description: Tárolási, Linux virtuális gép, egy virtuális hálózati és alhálózati, egy adott terheléselosztóhoz, egy olyan hálózati adapter, egy nyilvános IP-cím és a hálózati biztonsági csoport, az Azure CLI 2.0 használatával alapoktól összes létrehozása.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852132"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes Linux virtuális gép létrehozása az Azure parancssori felülettel
 Gyorsan létrehozhat egy virtuális gép (VM) az Azure-ban, egy Azure CLI parancs, amely az alapértelmezett értékeket használja, minden szükséges támogató erőforrások létrehozására használhatja. Erőforrások, például a virtuális hálózat, a nyilvános IP-cím és a hálózati biztonsági csoportszabályok automatikusan jönnek létre. Nagyobb mértékben vezérelheti a az éles környezetben használja, előfordulhat, hogy ezeket az erőforrásokat előre létrehozni, majd a virtuális gépek hozzá őket. Ez a cikk végigvezeti egy virtuális Gépet, és mindegyik egyenként támogató erőforrás létrehozása.

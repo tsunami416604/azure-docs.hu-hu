@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Bus preview Szolgáltatásidentitás felügyelt |} Microsoft Docs"
-description: "Az Azure Service Bus felügyelt szolgáltatás-identitások használata"
+title: Az Azure Service Bus preview Szolgáltatásidentitás felügyelt |} Microsoft Docs
+description: Az Azure Service Bus felügyelt szolgáltatás-identitások használata
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874652"
 ---
 # <a name="managed-service-identity-preview"></a>Felügyelt Szolgáltatásidentitás (előzetes verzió)
 

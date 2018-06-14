@@ -1,6 +1,6 @@
 ---
-title: "Csak olvasható pillanatkép létrehozása a blob az Azure Storage |} Microsoft Docs"
-description: "Útmutató: a pillanatkép létrehozása a blob adatainak biztonsági mentése blob idő az adott pillanatban. Ismerje meg, hogyan számlázása a pillanatképek és a használatukat kapacitás költségek minimalizálása érdekében."
+title: Csak olvasható pillanatkép létrehozása a blob az Azure Storage |} Microsoft Docs
+description: 'Útmutató: a pillanatkép létrehozása a blob adatainak biztonsági mentése blob idő az adott pillanatban. Ismerje meg, hogyan számlázása a pillanatképek és a használatukat kapacitás költségek minimalizálása érdekében.'
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852931"
 ---
 # <a name="create-a-blob-snapshot"></a>Blob-pillanatkép létrehozása
 

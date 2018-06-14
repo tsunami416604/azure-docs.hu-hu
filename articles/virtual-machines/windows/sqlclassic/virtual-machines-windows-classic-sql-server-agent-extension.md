@@ -1,11 +1,11 @@
 ---
-title: "SQL virtuális gépeken (klasszikus) felügyeleti feladatok automatizálására |} Microsoft Docs"
-description: "Ez a témakör az SQL Server agent-kiterjesztés, automatizálja az adott SQL Server felügyeleti feladatok kezelését ismerteti. Ezek közé tartoznak az automatikus biztonsági mentés, automatikus javítás és az Azure Key Vault-integráció. Ez a témakör a klasszikus üzembe helyezési módot használ."
+title: SQL virtuális gépeken (klasszikus) felügyeleti feladatok automatizálására |} Microsoft Docs
+description: Ez a témakör az SQL Server agent-kiterjesztés, automatizálja az adott SQL Server felügyeleti feladatok kezelését ismerteti. Ezek közé tartoznak az automatikus biztonsági mentés, automatikus javítás és az Azure Key Vault-integráció. Ez a témakör a klasszikus üzembe helyezési módot használ.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a9bda2e7-cdba-427c-bc30-77cde4376f3a
 ms.service: virtual-machines-sql
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29851758"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Azure virtuális gépeken kiterjesztésű SQL Server Agent (klasszikus) felügyeleti feladatok automatizálásához
 > [!div class="op_single_selector"]

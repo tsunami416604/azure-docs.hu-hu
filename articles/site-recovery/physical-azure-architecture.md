@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Site Recovery Azure replikációs architektúrát a fizikai kiszolgáló |} Microsoft Docs"
-description: "Ez a cikk áttekintést összetevők és használható, ha a helyszíni fizikai kiszolgálók replikálása Azure-bA az Azure Site Recovery szolgáltatással architektúra"
+title: Az Azure Site Recovery Azure replikációs architektúrát a fizikai kiszolgáló |} Microsoft Docs
+description: Ez a cikk áttekintést összetevők és használható, ha a helyszíni fizikai kiszolgálók replikálása Azure-bA az Azure Site Recovery szolgáltatással architektúra
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
@@ -11,6 +11,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874892"
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Fizikai kiszolgálók Azure replikációs-architektúra
 
