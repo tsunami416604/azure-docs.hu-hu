@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Import/Export jegyzékfájl formátuma |} Microsoft Docs"
-description: "További tudnivalók a meghajtó jegyzékfájlt használ, amely ismerteti az Azure Blob Storage tárolóban lévő blobok és meghajtón van egy importálási közötti leképezést formátumát, vagy exportálja az Import/Export szolgáltatás feladat."
+title: Az Azure Import/Export jegyzékfájl formátuma |} Microsoft Docs
+description: További tudnivalók a meghajtó jegyzékfájlt használ, amely ismerteti az Azure Blob Storage tárolóban lévő blobok és meghajtón van egy importálási közötti leképezést formátumát, vagy exportálja az Import/Export szolgáltatás feladat.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f3119e1c-2c25-48ad-8752-a6ed4adadbb0
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873904"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure Import/Export service manifest-fájl formátuma
 A meghajtó jegyzékfájl Azure Blob Storage tárolóban lévő blobok és egy importálási vagy exportálási feladat magában foglaló meghajtón lévő fájlok között hozzárendelését ismerteti. Az importálási művelet az Alkalmazásjegyzék-fájl jön létre a előkészítési folyamat része, és tárolt a meghajtót a meghajtó az Azure-adatközpontba történő elküldése előtt. Az exportálási művelet során a jegyzékfájl létrehozása és az Azure Import/Export szolgáltatás a meghajtón tárolja.  

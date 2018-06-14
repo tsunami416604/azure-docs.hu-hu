@@ -1,12 +1,12 @@
 ---
-title: "Gyakori kérdések a Microsoft Azure StorSimple és a felhőalapú megoldások Provider programot azokra a partnerekre vonatkozó |} Microsoft Docs"
-description: "StorSimple és a CSP kapcsolatban leggyakrabban feltett kérdésekre adott válaszok található partnerek számára."
+title: Gyakori kérdések a Microsoft Azure StorSimple és a felhőalapú megoldások Provider programot azokra a partnerekre vonatkozó |} Microsoft Docs
+description: StorSimple és a CSP kapcsolatban leggyakrabban feltett kérdésekre adott válaszok található partnerek számára.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875353"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>A felhőalapú megoldások Provider programot StorSimple: gyakran ismételt kérdések
 

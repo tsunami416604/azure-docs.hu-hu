@@ -1,8 +1,8 @@
 ---
-title: "Hogyan telefonhívás a Twilio (PHP) |} Microsoft Docs"
-description: "Útmutató a telefonhívás, és a Twilio API szolgáltatás SMS üzenet küldése az Azure-on. A mintákat a PHP-alkalmazás."
+title: Hogyan telefonhívás a Twilio (PHP) |} Microsoft Docs
+description: Útmutató a telefonhívás, és a Twilio API szolgáltatás SMS üzenet küldése az Azure-on. A mintákat a PHP-alkalmazás.
 documentationcenter: php
-services: 
+services: ''
 author: devinrader
 manager: twilio
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865756"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Hogyan telefonhívás Twilio használatát a PHP-alkalmazások az Azure-on
 A következő példa bemutatja, hogyan használható fel a Twilio weblapról PHP Azure-ban üzemeltetett hívást. Az eredményül kapott alkalmazás fogja kérni a felhasználót a telefonhívás-értékeket, az az alábbi képernyőfelvételen látható módon.

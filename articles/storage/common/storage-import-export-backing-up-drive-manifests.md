@@ -1,11 +1,11 @@
 ---
-title: "Biztonsági mentése Azure Import/Export meghajtó jegyzékfájlokban |} Microsoft Docs"
-description: "Útmutató a Microsoft Azure Import/Export szolgáltatás automatikusan biztonsági másolat a meghajtó jegyzékfájlokban."
+title: Biztonsági mentése Azure Import/Export meghajtó jegyzékfájlokban |} Microsoft Docs
+description: Útmutató a Microsoft Azure Import/Export szolgáltatás automatikusan biztonsági másolat a meghajtó jegyzékfájlokban.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 594abd80-b834-4077-a474-d8a0f4b7928a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873666"
 ---
 # <a name="backing-up-drive-manifests-for-azure-importexport-jobs"></a>Meghajtó biztonsági másolatának akkor jelentkezik, az Azure importálási/exportálási feladatok
 

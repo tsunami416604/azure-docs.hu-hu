@@ -1,13 +1,13 @@
 ---
-title: "Az Azure virtuális gépeken futó helyi Linux-jelszó alaphelyzetbe állítása |} Microsoft Docs"
-description: "A lépéseket az Azure virtuális gépen helyi Linux-jelszó alaphelyzetbe állítása bevezetése"
+title: Az Azure virtuális gépeken futó helyi Linux-jelszó alaphelyzetbe állítása |} Microsoft Docs
+description: A lépéseket az Azure virtuális gépen helyi Linux-jelszó alaphelyzetbe állítása bevezetése
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: cshepard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27578362"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Az Azure virtuális gépeken futó helyi Linux-jelszó alaphelyzetbe állítása
 

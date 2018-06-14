@@ -1,13 +1,13 @@
 ---
-title: "Az Azure PowerShell-parancsfájl minta - frissítés a Service Fabric-alkalmazás |} Microsoft Docs"
-description: "Az Azure PowerShell-parancsfájl minta - frissítés a Service Fabric-alkalmazás."
+title: Az Azure PowerShell-parancsfájl minta - frissítés a Service Fabric-alkalmazás |} Microsoft Docs
+description: Az Azure PowerShell-parancsfájl minta - frissítés a Service Fabric-alkalmazás.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -17,9 +17,10 @@ ms.author: ryanwi
 ms.custom: mvc
 ms.openlocfilehash: 889e1bbb71f6eaa1871556b3b9a7da1c28cf16ee
 ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927913"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>A Service Fabric-alkalmazás frissítése
 

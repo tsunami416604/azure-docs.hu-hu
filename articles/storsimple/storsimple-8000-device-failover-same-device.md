@@ -1,12 +1,12 @@
 ---
-title: "A feladatátvétel a StorSimple 8000 sorozat eszközeire vész-helyreállítási |} Microsoft Docs"
-description: "Útmutató: a StorSimple eszköz ugyanarra az eszközre a feladatátvétel."
+title: A feladatátvétel a StorSimple 8000 sorozat eszközeire vész-helyreállítási |} Microsoft Docs
+description: 'Útmutató: a StorSimple eszköz ugyanarra az eszközre a feladatátvétel.'
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874821"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>A StorSimple fizikai eszköz ugyanarra az eszközre történő feladatátvételt
 

@@ -1,15 +1,15 @@
 ---
-title: "Egy Windows Azure VM csatlakoztatási Azure file storage |} Microsoft Docs"
-description: "Fájl tárolása a felhőben az Azure file storage szolgáltatással, és a felhőalapú fájlmegosztást csatlakoztathatja egy Azure virtuális gép (VM)."
-documentationcenter: 
+title: Egy Windows Azure VM csatlakoztatási Azure file storage |} Microsoft Docs
+description: Fájl tárolása a felhőben az Azure file storage szolgáltatással, és a felhőalapú fájlmegosztást csatlakoztathatja egy Azure virtuális gép (VM).
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577551"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Azure fájlmegosztásokat Windows virtuális gépek használata 
 
