@@ -1,8 +1,8 @@
 ---
-title: "Létrehozhat és használhat egy közös hozzáférésű jogosultságkód (SAS) az Azure Blob storage szolgáltatással |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan használható közös hozzáférésű jogosultságkód létrehozása a Blob-tároló, és hogyan kell felhasználni azokat az ügyfél alkalmazásokban."
+title: Létrehozhat és használhat egy közös hozzáférésű jogosultságkód (SAS) az Azure Blob storage szolgáltatással |} Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan használható közös hozzáférésű jogosultságkód létrehozása a Blob-tároló, és hogyan kell felhasználni azokat az ügyfél alkalmazásokban.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -16,9 +16,10 @@ ms.date: 05/15/2017
 ms.author: tamram
 ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873211"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Közös hozzáférésű Jogosultságkód, 2. rész: Létrehozása és SAS-kód használata a Blob-tároló
 
@@ -112,7 +113,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-Adja hozzá a következő sorokat alján a **Main()** metódus hívása előtt **Console.ReadLine()**meghívására **GetContainerSasUri()** és az aláírás URI írni a konzolablakban:
+Adja hozzá a következő sorokat alján a **Main()** metódus hívása előtt **Console.ReadLine()** meghívására **GetContainerSasUri()** és az aláírás URI írni a konzolablakban:
 
 ```csharp
 //Generate a SAS URI for the container, without a stored access policy.
@@ -205,7 +206,7 @@ static void CreateSharedAccessPolicy(CloudBlobClient blobClient, CloudBlobContai
 }
 ```
 
-Alján a **Main()** metódus hívása előtt **Console.ReadLine()**adja hozzá a következő sorokat első törölje a meglévő hozzáférési házirendeket, és, majd hívja a **CreateSharedAccessPolicy()** módszert:
+Alján a **Main()** metódus hívása előtt **Console.ReadLine()** adja hozzá a következő sorokat első törölje a meglévő hozzáférési házirendeket, és, majd hívja a **CreateSharedAccessPolicy()** módszert:
 
 ```csharp
 //Clear any existing access policies on container.

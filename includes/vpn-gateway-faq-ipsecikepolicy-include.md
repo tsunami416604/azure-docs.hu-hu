@@ -10,9 +10,10 @@ ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
 ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30198230"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az egyéni IPsec/IKE-házirendet az Azure **VpnGw1, VpnGw2, VpnGw3, Standard** és a **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU **nem** támogatott.

@@ -1,12 +1,12 @@
 ---
-title: "Cserélje le a StorSimple 8000 series eszközén PCM |} Microsoft Docs"
-description: "Ismerteti, hogyan eltávolítja és pótolja az energia- és hűtési modul (PCM) a StorSimple eszköz"
+title: Cserélje le a StorSimple 8000 series eszközén PCM |} Microsoft Docs
+description: Ismerteti, hogyan eltávolítja és pótolja az energia- és hűtési modul (PCM) a StorSimple eszköz
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875059"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Cserélje le a energia- és hűtési modul a StorSimple eszköz
 ## <a name="overview"></a>Áttekintés

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409550"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine learning és az adatok tudományos eszközök
 Az adatok tudományos virtuális gép (DSVM) rendelkezik széles választékának eszközök és a könyvtárak a machine Learning szolgáltatáshoz hasonlóan a Python, R, Ágnes népszerű nyelveken érhető el. 

@@ -1,17 +1,17 @@
 ---
-title: "Az Azure CLI-parancsfájlt minta - hálózat a többrétegű alkalmazások létrehozása |} Microsoft Docs"
-description: "Az Azure CLI-parancsfájlt minta - Többrétegű alkalmazások virtuális hálózat létrehozása."
+title: Az Azure CLI-parancsfájlt minta - hálózat a többrétegű alkalmazások létrehozása |} Microsoft Docs
+description: Az Azure CLI-parancsfájlt minta - Többrétegű alkalmazások virtuális hálózat létrehozása.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846638"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>A többrétegű alkalmazások hálózat létrehozása
 

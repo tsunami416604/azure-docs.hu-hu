@@ -1,6 +1,6 @@
 ---
-title: "Azure-beli virtuális hálózat – gyakori kérdések |} Microsoft Docs"
-description: "A Microsoft Azure virtuális hálózatokról leggyakrabban feltett kérdésekre adott válaszokat."
+title: Azure-beli virtuális hálózat – gyakori kérdések |} Microsoft Docs
+description: A Microsoft Azure virtuális hálózatokról leggyakrabban feltett kérdésekre adott válaszokat.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854189"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure-beli virtuális hálózat gyakori kérdések (GYIK)
 

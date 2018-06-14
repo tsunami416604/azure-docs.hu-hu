@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb eszköz összefoglaló panel |} Microsoft Docs"
-description: "Az eszköz összefoglaló panel StorSimple Device Manager és a StorSimple virtuális tömb állapotának figyelésére segítségével ismerteti."
+title: A StorSimple virtuális tömb eszköz összefoglaló panel |} Microsoft Docs
+description: Az eszköz összefoglaló panel StorSimple Device Manager és a StorSimple virtuális tömb állapotának figyelésére segítségével ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: a13c1ea7-6428-4234-84a6-0ebf51670a85
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875682"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Használja az eszköz összefoglaló panel StorSimple Device Manager kapcsolódik a StorSimple virtuális tömb
 

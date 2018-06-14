@@ -12,6 +12,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31392901"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC) való hozzáférési jogosultságainak vezérlése létrehozásához és kezeléséhez a támogatási kérelmek
 

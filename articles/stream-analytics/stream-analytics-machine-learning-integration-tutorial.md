@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527912"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics és az Azure Machine Learning segítségével véleményeket elemzések végrehajtását
 Ez a cikk ismerteti, hogyan gyorsan beállíthat egy egyszerű Azure Stream Analytics-feladat, amely az Azure Machine Learning. Akkor használhatja Machine Learning véleményeket analytics a Cortana Intelligence Gallery a streamadatok szöveg elemzésére és valós időben a céggel kapcsolatos véleményeket pontszám meghatározásához. A Cortana Intelligence Suite használata lehetővé teszi ennek a feladatnak anélkül, hogy a menő a céggel kapcsolatos véleményeket elemzési modell létrehozásának bemutatása.

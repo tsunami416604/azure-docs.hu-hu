@@ -1,12 +1,12 @@
 ---
-title: "Telepítse a frissítéseket a StorSimple virtuális tömb |} Microsoft Docs"
-description: "A StorSimple virtuális tömb webes felhasználói felület használata az Azure portál és a gyorsjavítások metódussal frissítés alkalmazása"
+title: Telepítse a frissítéseket a StorSimple virtuális tömb |} Microsoft Docs
+description: A StorSimple virtuális tömb webes felhasználói felület használata az Azure portál és a gyorsjavítások metódussal frissítés alkalmazása
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875780"
 ---
 # <a name="install-update-04-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömb 0,4 frissítés telepítése
 

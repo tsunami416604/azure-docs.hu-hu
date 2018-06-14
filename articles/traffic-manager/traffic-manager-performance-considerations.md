@@ -1,11 +1,11 @@
 ---
-title: "Teljesítménnyel kapcsolatos szempontok az Azure Traffic Managerben |} Microsoft Docs"
-description: "A Traffic Manager és a webhelye teljesítményét tesztelése a Traffic Manager használata esetén a teljesítmény ismertetése"
+title: Teljesítménnyel kapcsolatos szempontok az Azure Traffic Managerben |} Microsoft Docs
+description: A Traffic Manager és a webhelye teljesítményét tesztelése a Traffic Manager használata esetén a teljesítmény ismertetése
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3ba5dfa1-2922-43f1-9a23-d06969c4a516
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876389"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 

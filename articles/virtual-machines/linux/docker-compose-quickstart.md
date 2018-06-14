@@ -1,11 +1,11 @@
 ---
-title: "Használjon Docker Compose a Linux virtuális gép az Azure-ban |} Microsoft Docs"
-description: "Docker és Compose használata az Azure parancssori Felülettel rendelkező Linux virtuális gépeken"
+title: Használjon Docker Compose a Linux virtuális gép az Azure-ban |} Microsoft Docs
+description: Docker és Compose használata az Azure parancssori Felülettel rendelkező Linux virtuális gépeken
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29848406"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a Compose határozza meg, és futtassa a több tároló alkalmazást az Azure-ban
 A [Compose](http://github.com/docker/compose), egy egyszerű szöveges fájl használatával definiálja az alkalmazást, amely több Docker-tároló. Majd lépett fel az alkalmazást egy parancs, amelyet az adott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan be lehessen állítani egy WordPress-bloghoz az Ubuntu virtuális gép MariaDB SQL database-fájlok. Használhatja a Compose összetettebb alkalmazásokat beállítása.

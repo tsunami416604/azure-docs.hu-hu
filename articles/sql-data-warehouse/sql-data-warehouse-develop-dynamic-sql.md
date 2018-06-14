@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523166"
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>Az SQL Data Warehouse dinamikus SQL
 Tippek az Azure SQL Data Warehouse adattárházzal történő, megoldások dinamikus SQL használatát.

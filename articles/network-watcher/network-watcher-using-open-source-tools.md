@@ -1,11 +1,11 @@
 ---
-title: "Hálózati forgalmának mintáit nyílt forráskódú eszközök és az Azure hálózati figyelőt megjelenítése |} Microsoft Docs"
-description: "Ez a lap ismerteti Capanalysis megjelenítéséhez a virtuális gépek érkező vagy oda irányuló forgalmat hálózati figyelőt csomagrögzítéssel használata."
+title: Hálózati forgalmának mintáit nyílt forráskódú eszközök és az Azure hálózati figyelőt megjelenítése |} Microsoft Docs
+description: Ez a lap ismerteti Capanalysis megjelenítéséhez a virtuális gépek érkező vagy oda irányuló forgalmat hálózati figyelőt csomagrögzítéssel használata.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23864013"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Hálózati forgalmának mintáit felé és felől a virtuális gépek nyílt forráskódú eszközökkel megjelenítése
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23873988"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan küldhet e-mailek SendGrid Node.js-ből
 Ez az útmutató bemutatja, hogyan Azure a SendGrid e-mail szolgáltatás közös programozási feladatok elvégzéséhez. A minták íródtak, a Node.js API használatával. Az ismertetett forgatókönyvek **hozhat létre, e-mailek**, **e-mailek küldéséhez**, **mellékletek hozzáadása**, **szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és e-mailek küldéséhez további információkért lásd: a [lépések](#next-steps) szakasz.
