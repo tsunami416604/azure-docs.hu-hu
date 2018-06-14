@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31522707"
 ---
 # <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Az SQL Data Warehouse felhasználói sémák használata
 Tippek a T-SQL-felhasználó által definiált sémák használata az Azure SQL Data Warehouse adattárházzal történő, megoldások.

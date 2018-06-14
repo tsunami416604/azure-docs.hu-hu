@@ -1,8 +1,8 @@
 ---
-title: "Az Azure számítási lehetőségek - Azure Felhőszolgáltatások |} Microsoft Docs"
-description: "További tudnivalók az Azure compute beállítások és a Leírás: az App Service, Azure Felhőszolgáltatások és virtuális gépek"
+title: Az Azure számítási lehetőségek - Azure Felhőszolgáltatások |} Microsoft Docs
+description: 'További tudnivalók az Azure compute beállítások és a Leírás: az App Service, Azure Felhőszolgáltatások és virtuális gépek'
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120284"
 ---
 # <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Azure Cloud Services szolgáltatásokból vagy valami más kell választanom?
 Az Azure Felhőszolgáltatások a választott meg? Azure biztosít a különböző üzemeltetési modell-alkalmazások futtatására. Mindegyik számos különböző szolgáltatások. Azt, amelyiket úgy dönt, attól függ, pontosan milyen próbál tegye.

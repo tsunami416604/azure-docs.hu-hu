@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31518756"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Az Azure Redis Cache ASP.NET munkamenetállapot-szolgáltatója
 Azure Redis Cache biztosít a munkamenetállapot-szolgáltatóját, melyekkel a munkamenet állapota a memóriában Redis Cache segítségével helyett egy SQL Server-adatbázis tárolásához. A gyorsítótárazási munkamenetállapot-szolgáltatóját használatához először konfigurálja a gyorsítótárhoz, és konfigurálja az ASP.NET-alkalmazás a Redis gyorsítótár munkamenet állapota NuGet csomag segítségével gyorsítótár.

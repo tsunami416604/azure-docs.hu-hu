@@ -1,25 +1,26 @@
 ---
-title: "Központi telepítése az Azure-ban OpenShift származási |} Microsoft Docs"
-description: "Központi telepítése az Azure-ban OpenShift forrása."
+title: Központi telepítése az Azure-ban OpenShift származási |} Microsoft Docs
+description: Központi telepítése az Azure-ban OpenShift forrása.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
 manager: najoshi
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 
+ms.date: ''
 ms.author: haroldw
 ms.openlocfilehash: f7a668f30d7acb1ea14fe9fd8921066d40a6669b
 ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29123119"
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>Az Azure-ban OpenShift származási telepítése
 

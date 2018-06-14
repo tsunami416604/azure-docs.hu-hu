@@ -1,12 +1,12 @@
 ---
-title: "Az Azure verem Development Kit architektúrája |} Microsoft Docs"
-description: "Az Azure verem Development Kit (ASDK) architektúráját ismerteti."
+title: Az Azure verem Development Kit architektúrája |} Microsoft Docs
+description: Az Azure verem Development Kit (ASDK) architektúráját ismerteti.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29975866"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>A Microsoft Azure verem szoftverfejlesztői készlet architektúrája
 Az Azure verem Development Kit (ASDK) az Azure verem egycsomópontos központi telepítését. Az összetevők, egy önálló gazdagépen futó virtuális gépek vannak telepítve. 

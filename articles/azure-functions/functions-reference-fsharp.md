@@ -21,6 +21,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31515594"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F # fejlesztői leírás
 
