@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Bus üzenetkezelés kivételek |} Microsoft Docs"
-description: "A Service Bus üzenetküldési kivételeket és a javasolt műveletek listáját."
+title: Az Azure Service Bus üzenetkezelés kivételek |} Microsoft Docs
+description: A Service Bus üzenetküldési kivételeket és a javasolt műveletek listáját.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28930150"
 ---
 # <a name="service-bus-messaging-exceptions"></a>A Service Bus-alapú üzenetkezelés kivételei
 Ez a cikk a Microsoft Azure Service Bus üzenetküldési API-k által létrehozott kivételek sorolja fel. Ez a hivatkozás változhat, így biztonsági frissítések keresése.
