@@ -1,6 +1,6 @@
 ---
-title: "Azure DC/OS tároló alkalmazás hozzáférésének engedélyezése"
-description: "How Azure Tárolószolgáltatási DC/OS tárolók elérésének engedélyezéséhez."
+title: Azure DC/OS tároló alkalmazás hozzáférésének engedélyezése
+description: How Azure Tárolószolgáltatási DC/OS tárolók elérésének engedélyezéséhez.
 services: container-service
 author: sauryadas
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26332279"
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Azure Tárolószolgáltatás alkalmazáshoz való nyilvános hozzáférés engedélyezésére
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Virtual Machines dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg a Windows és Linux virtuális gépek létrehozását, üzembe helyezését és kezelését. Oktatóanyagok, API-referenciák, és egyéb dokumentációk."
+title: Az Azure Virtual Machines dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Ismerje meg a Windows és Linux virtuális gépek létrehozását, üzembe helyezését és kezelését. Oktatóanyagok, API-referenciák, és egyéb dokumentációk.
 services: virtual-machines
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23072860"
 ---
 # <a name="virtual-machines-documentation"></a>Virtual Machines-dokumentáció
 

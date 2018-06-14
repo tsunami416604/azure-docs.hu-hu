@@ -1,13 +1,13 @@
 ---
-title: "Az Azure-ban hibrid HPC Pack fürt beállítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan használja a Microsoft HPC Pack és az Azure kis, hibrid nagy teljesítményű számítástechnikai (HPC) fürt beállítása"
+title: Az Azure-ban hibrid HPC Pack fürt beállítása |} Microsoft Docs
+description: Megtudhatja, hogyan használja a Microsoft HPC Pack és az Azure kis, hibrid nagy teljesítményű számítástechnikai (HPC) fürt beállítása
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: hpc-pack
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23985306"
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>A hibrid nagy teljesítményű számítástechnikai igény Azure számítási csomópontok és a Microsoft HPC Pack (HPC) fürt beállítása
 A Microsoft HPC Pack 2012 R2 és az Azure használatával állítson be egy kisméretű, hibrid nagyteljesítményű számítástechnikai (HPC) fürt. A fürt látható az ebben a cikkben egy helyszíni HPC Pack átjárócsomópont tartalmaz, és néhány számítási csomópont telepítése egy Azure-ban igény a felhőalapú szolgáltatás. Ezt követően futtathatja a számítási feladatok, a hibrid fürtön.

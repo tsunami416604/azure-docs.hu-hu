@@ -1,11 +1,11 @@
 ---
-title: "A Felhőszolgáltatások szerepkörök közötti kommunikáció |} Microsoft Docs"
-description: "Cloud Services szerepkör példánya lehet meghatározva a végpontjai (http, https, a tcp, udp) számukra, hogy a külső vagy egyéb szerepkör-példányok közötti kommunikáció."
+title: A Felhőszolgáltatások szerepkörök közötti kommunikáció |} Microsoft Docs
+description: Cloud Services szerepkör példánya lehet meghatározva a végpontjai (http, https, a tcp, udp) számukra, hogy a külső vagy egyéb szerepkör-példányok közötti kommunikáció.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27701890"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Az azure-ban a szerepkörpéldányokért kommunikáció engedélyezése
 Felhőszolgáltatás szerepköreit belső és külső kapcsolatokon keresztül kommunikálnak. Külső kapcsolatot más néven **bemeneti végpontok** közben belső kapcsolatok nevezzük **belső végpont**. Ez a témakör ismerteti, hogyan lehet módosítani a [webszolgáltatás](cloud-services-model-and-package.md#csdef) végpontok létrehozásához.
