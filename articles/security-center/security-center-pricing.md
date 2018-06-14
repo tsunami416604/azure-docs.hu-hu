@@ -1,11 +1,11 @@
 ---
-title: "Frissítés a Security Center Standard szint a fokozott biztonság |} Microsoft Docs"
-description: "Ez a cikk tájékoztatást nyújt az Azure Security Center díjszabása."
+title: Frissítés a Security Center Standard szint a fokozott biztonság |} Microsoft Docs
+description: Ez a cikk tájékoztatást nyújt az Azure Security Center díjszabása.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/20/2017
+ms.locfileid: "23931918"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Váltson Standard csomagra Security Center az a fokozott biztonság
 Az Azure Security Center egységes biztonsági kezelése és az advanced threat protection az Azure, a helyszíni és a többi felhőből futó számítási feladatok biztosít. Hibrid felhő-munkaterhelések, aktív védelmet, amely csökkenti a fenyegetéseket, és intelligens észlelési segítséget nyújtanak a gyorsan fejlődő számítógépes támadások tartani át és szabályozhatja biztosítja.

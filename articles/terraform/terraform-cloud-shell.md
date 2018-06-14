@@ -1,7 +1,7 @@
 ---
-title: "Azure-felhőbe rendszerhéj Terraform használata"
-description: "Az Azure felhőalapú rendszerhéj Terraform használatával egyszerűsíthető a hitelesítés és a konfigurációt."
-keywords: "terraform, devops, állítsa be, a virtuális gép, hálózati, tárolási, modulok méretezése"
+title: Azure-felhőbe rendszerhéj Terraform használata
+description: Az Azure felhőalapú rendszerhéj Terraform használatával egyszerűsíthető a hitelesítés és a konfigurációt.
+keywords: terraform, devops, állítsa be, a virtuális gép, hálózati, tárolási, modulok méretezése
 ms.service: virtual-machines-linux
 author: dcaro
 ms.author: dcaro
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121525"
 ---
 # <a name="terraform-cloud-shell-development"></a>Fejlesztési Terraform felhő rendszerhéj 
 
