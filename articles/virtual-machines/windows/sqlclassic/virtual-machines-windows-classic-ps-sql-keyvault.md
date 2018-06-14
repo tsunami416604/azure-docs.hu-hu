@@ -1,11 +1,11 @@
 ---
-title: "Kulcstároló integrálható az SQL Server rendszerhez a Windows-alapú virtuális gépek (klasszikus) Azure-ban |} Microsoft Docs"
-description: "Megtudhatja, hogyan használható az Azure Key Vault SQL Server titkosítási konfigurálásának automatizálásához. Ez a témakör ismerteti az Azure Key Vault-integráció használata az SQL Server virtuális gépek létrehozása a klasszikus üzembe helyezési modellben."
+title: Kulcstároló integrálható az SQL Server rendszerhez a Windows-alapú virtuális gépek (klasszikus) Azure-ban |} Microsoft Docs
+description: Megtudhatja, hogyan használható az Azure Key Vault SQL Server titkosítási konfigurálásának automatizálásához. Ez a témakör ismerteti az Azure Key Vault-integráció használata az SQL Server virtuális gépek létrehozása a klasszikus üzembe helyezési modellben.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: ab8d41a7-1971-4032-ab71-eb435c455dc1
 ms.service: virtual-machines-sql
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399729"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>SQL Server az Azure Key Vault-integráció konfigurálása az Azure virtuális gépeken (klasszikus)
 > [!div class="op_single_selector"]

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31405364"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portál használatával
 
@@ -82,7 +83,7 @@ A fürt távoli asztali kapcsolat segítségével egyéni szoftver telepítése 
 
    * A menü testreszabásához kattintson a jobb gombbal a menüt, és kattintson **Testreszabás**.
    * **Beállítások** és **összes beállítás**: Megjeleníti a **beállítások** panel a fürt, amely lehetővé teszi, hogy a fürt részletes konfigurációs adatok eléréséhez.
-   * **Irányítópult**, **fürt irányítópult** és **URL-címe: a következő összes eszközökkel, a fürt irányítópult, amely Ambari Web Linux-alapú fürtök eléréséhez. -**Biztonságos rendszerhéj **: A fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni utasításokat tartalmazza.
+   * **Irányítópult**, **fürt irányítópult** és **URL-címe: a következő összes eszközökkel, a fürt irányítópult, amely Ambari Web Linux-alapú fürtök eléréséhez. -** Biztonságos rendszerhéj **: A fürtjét Secure Shell (SSH) kapcsolaton keresztül csatlakozni utasításokat tartalmazza.
    * **Fürt méretezése**: lehetővé teszi a fürt feldolgozó csomópontok számának megváltoztatására.
    * **Törlés**: törli a fürtöt.
    * **Gyors üzembe helyezés**: információit jeleníti meg, amelyek segítségével a HDInsight használatának megkezdésében.
