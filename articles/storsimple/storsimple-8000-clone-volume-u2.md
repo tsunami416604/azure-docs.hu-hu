@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 Series kötet klónozása |} Microsoft Docs"
-description: "Ismerteti a különböző Klónozás típusok és a használati, és elmagyarázza, hogyan használhatja a biztonságimásolat-készletet úgy klónozni egy egyéni köteten a StorSimple 8000 series eszközön."
+title: A StorSimple 8000 Series kötet klónozása |} Microsoft Docs
+description: Ismerteti a különböző Klónozás típusok és a használati, és elmagyarázza, hogyan használhatja a biztonságimásolat-készletet úgy klónozni egy egyéni köteten a StorSimple 8000 series eszközön.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26333202"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>A StorSimple Device Manager szolgáltatás segítségével az Azure portál egy kötet klónozása
 

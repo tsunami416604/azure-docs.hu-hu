@@ -1,11 +1,11 @@
 ---
-title: "A felhasználó által hozzárendelt MSI konfigurálása az Azure virtuális gép Azure-sablon alapján"
-description: "Lépés lépés útmutatást, a felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálása az Azure virtuális gép, egy Azure Resource Manager-sablon használatával."
+title: A felhasználó által hozzárendelt MSI konfigurálása az Azure virtuális gép Azure-sablon alapján
+description: Lépés lépés útmutatást, a felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálása az Azure virtuális gép, egy Azure Resource Manager-sablon használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984039"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>A felhasználó által hozzárendelt felügyelt szolgáltatás Identity (MSI) konfigurálja a virtuális gépek Azure-sablon alapján
 

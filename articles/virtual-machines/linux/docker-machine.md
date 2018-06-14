@@ -1,8 +1,8 @@
 ---
-title: "Docker gép használata a Linux-állomások létrehozása az Azure-ban |} Microsoft Docs"
-description: "Docker-gazdagépekből létrehozása az Azure-ban Docker gép használatát ismerteti."
+title: Docker gép használata a Linux-állomások létrehozása az Azure-ban |} Microsoft Docs
+description: Docker-gazdagépekből létrehozása az Azure-ban Docker gép használatát ismerteti.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29125503"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker-számítógép segítségével gazdagépek létrehozása az Azure-ban
 Ez a cikk részletesen használata [Docker gép](https://docs.docker.com/machine/) gazdagépek létrehozása az Azure-ban. A `docker-machine` parancs létrehoz egy Linux virtuális gép (VM) az Azure-ban, majd telepíti a Docker. Az Azure-ban, a helyi eszközök és a munkafolyamatok a Docker-gazdagépekből kezelhetők. A Windows 10-es docker-gép használatához a Linux bash eszközt kell használnia.

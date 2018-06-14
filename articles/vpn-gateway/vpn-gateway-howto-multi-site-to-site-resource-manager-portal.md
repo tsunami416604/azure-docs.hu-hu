@@ -1,11 +1,11 @@
 ---
-title: "Több VPN-átjáró webhelyek kapcsolatot hozzáadni a virtuális hálózat: Azure-portálon: erőforrás-kezelő |} Microsoft Docs"
-description: "Többhelyes S2S-kapcsolatok hozzáadása, amely rendelkezik egy létező kapcsolat VPN-átjáró"
+title: 'Több VPN-átjáró webhelyek kapcsolatot hozzáadni a virtuális hálózat: Azure-portálon: erőforrás-kezelő |} Microsoft Docs'
+description: Többhelyes S2S-kapcsolatok hozzáadása, amely rendelkezik egy létező kapcsolat VPN-átjáró
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398607"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Pont-pont kapcsolat hozzáadása a virtuális hálózatot egy meglévő VPN-átjáró kapcsolattal
 

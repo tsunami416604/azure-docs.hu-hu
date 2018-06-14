@@ -1,12 +1,12 @@
 ---
-title: "Események küldése az Azure Event Hubsba a .NET Standard használatával | Microsoft Docs"
-description: "Események küldése az Event Hubsba a .NET Standardban – első lépések"
+title: Események küldése az Azure Event Hubsba a .NET Standard használatával | Microsoft Docs
+description: Események küldése az Event Hubsba a .NET Standardban – első lépések
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28985204"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Üzenetek küldése az Azure Event Hubsba a .NET Standardban – első lépések
 

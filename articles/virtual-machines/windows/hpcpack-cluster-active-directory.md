@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Active Directoryval HPC Pack fürt |} Microsoft Docs"
-description: "Megtudhatja, hogyan integrálhatja a Microsoft HPC Pack 2016 fürt az Azure-ban az Azure Active Directoryval"
+title: Az Azure Active Directoryval HPC Pack fürt |} Microsoft Docs
+description: Megtudhatja, hogyan integrálhatja a Microsoft HPC Pack 2016 fürt az Azure-ban az Azure Active Directoryval
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
 ms.assetid: 9edf9559-db02-438b-8268-a6cba7b5c8b7
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2017
+ms.locfileid: "25452572"
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>Az Azure-ban az Azure Active Directory egy HPC Pack fürt kezelése
 [A Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) való integráció támogatja [Azure Active Directory](../../active-directory/index.md) (az Azure AD) a rendszergazdák, akik HPC Pack-fürt üzembe helyezése az Azure-ban.

@@ -1,11 +1,11 @@
 ---
-title: "Felhasználó hozzáadása a Linux virtuális gépek Azure-felhő inicializálás használatával |} Microsoft Docs"
-description: "Felhő inicializálás használata a Linux virtuális gép létrehozása az Azure CLI 2.0 során a felhasználó hozzáadása"
+title: Felhasználó hozzáadása a Linux virtuális gépek Azure-felhő inicializálás használatával |} Microsoft Docs
+description: Felhő inicializálás használata a Linux virtuális gép létrehozása az Azure CLI 2.0 során a felhasználó hozzáadása
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29123463"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Használja a felhő inicializálás hozzáadni egy felhasználót egy Linux virtuális Gépet az Azure-ban
 Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) felhasználó hozzáadása a virtuális gép (VM) vagy virtuális gép méretezési beállítja (VMSS) kiépítési idő az Azure-ban. A felhő inicializálás parancsprogram lefut a első indítása, ha az erőforrások az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md).

@@ -1,12 +1,12 @@
 ---
-title: "Az Azure App Service-csomagot kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti az App Service-csomag különböző feladatok végrehajtására."
-keywords: "App service, a azure app service, a méretezés, a app service-csomag módosítása, létrehozása, kezelése, felügyeleti"
+title: Az Azure App Service-csomagot kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti az App Service-csomag különböző feladatok végrehajtására.
+keywords: App service, a azure app service, a méretezés, a app service-csomag módosítása, létrehozása, kezelése, felügyeleti
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117680"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomagot kezelése
 

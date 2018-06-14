@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: machine-learning
 author: j-martens
 ms.service: machine-learning
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29574972"
 ---
 Ha nem használja tovább az alkalmazást, akkor a következő lépésekkel a mintaalkalmazás által létrehozott összes erőforrást törölheti a költségek elkerülése érdekében:
 

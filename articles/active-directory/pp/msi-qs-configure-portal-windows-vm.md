@@ -1,11 +1,11 @@
 ---
-title: "MSI konfigurálása az Azure virtuális gép az Azure portál használatával"
-description: "Lépés által felügyelt szolgáltatás identitásának (MSI) konfigurálásához egy Azure virtuális gépen, az Azure portál használatával részletes utasításokat."
+title: MSI konfigurálása az Azure virtuális gép az Azure portál használatával
+description: Lépés által felügyelt szolgáltatás identitásának (MSI) konfigurálásához egy Azure virtuális gépen, az Azure portál használatával részletes utasításokat.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28979173"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-the-azure-portal"></a>Konfigurálja a virtuális gép felügyelt szolgáltatás identitásának (MSI) az Azure portál használatával
 

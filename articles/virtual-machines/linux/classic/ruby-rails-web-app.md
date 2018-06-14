@@ -1,11 +1,11 @@
 ---
-title: "Egy Ruby sínek webhelyen a Linux virtuális gép üzemeltetésére |} Microsoft Docs"
-description: "Állítsa be, és egy Ruby webhelyen sínek-alapú Azure-ban a Linux virtuális gépek üzemeltetéséhez."
+title: Egy Ruby sínek webhelyen a Linux virtuális gép üzemeltetésére |} Microsoft Docs
+description: Állítsa be, és egy Ruby webhelyen sínek-alapú Azure-ban a Linux virtuális gépek üzemeltetéséhez.
 services: virtual-machines-linux
 documentationcenter: ruby
 author: rmcmurray
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: aad32685-3550-4bff-9c73-beb8d70b3291
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397597"
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>A Ruby on Rails webalkalmazás használata Azure-beli virtuális gépen
 Ez az oktatóanyag bemutatja, hogyan sínek webhelyen Azure fonetikus üzemeltetésére Linux virtuális gépek használata.  
