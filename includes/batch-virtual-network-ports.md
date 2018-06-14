@@ -1,4 +1,4 @@
-- A virtuális hálózatnak a Batch-fiókkal megegyező Azure**-régióban** és **-előfizetésben** kell lennie.
+- A virtuális hálózatnak a Batch-fiókkal megegyező Azure **-régióban** és **-előfizetésben** kell lennie.
 
 - A virtuális hálózati konfigurációval létrehozott készletek esetében csak az Azure Resource Manager-alapú virtuális hálózatok támogatottak. A felhőszolgáltatás-konfigurációval létrehozott készletek esetében csak a klasszikus virtuális hálózatok támogatottak. 
   

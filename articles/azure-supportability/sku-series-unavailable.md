@@ -1,11 +1,11 @@
 ---
-title: "Termékváltozat-sorozat nem érhető el |} Microsoft Docs"
-description: "Néhány SKU adatsorozat nem állnak rendelkezésre a kiválasztott előfizetés ehhez a régióhoz."
+title: Termékváltozat-sorozat nem érhető el |} Microsoft Docs
+description: Néhány SKU adatsorozat nem állnak rendelkezésre a kiválasztott előfizetés ehhez a régióhoz.
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: stevendotwang
 manager: rajatk
-editor: 
+editor: ''
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24870578"
 ---
 # <a name="region-or-sku-unavailable"></a>A régióban vagy Termékváltozat nem érhető el
 Ez a cikk ismerteti, hogyan szeretné megoldani az Azure-előfizetés nem rendelkezik olyan régióban vagy egy virtuális gép SKU elérésére.

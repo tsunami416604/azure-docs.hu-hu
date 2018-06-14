@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "A PostgreSQL-hez készült Azure Database dokumentációja"
+title: A PostgreSQL-hez készült Azure Database dokumentációja
 metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: "Az Azure PostgreSQL dokumentációja – oktatóanyagok és API-referencia"
-  description: "A PostgreSQL-hez készült Azure Database egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapszik."
+  title: Az Azure PostgreSQL dokumentációja – oktatóanyagok és API-referencia
+  description: A PostgreSQL-hez készült Azure Database egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapszik.
   services: postgresql
   author: czeumault
   manager: carolz
@@ -19,13 +19,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27784826"
 abstract:
-  description: "A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik.  A teljes körűen felügyelt, szolgáltatásként nyújtott adatbázis kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat.  A PostgreSQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot.  Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát."
+  description: A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik.  A teljes körűen felügyelt, szolgáltatásként nyújtott adatbázis kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat.  A PostgreSQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot.  Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "További információ a PostgreSQL-adatbázisok a következőkkel való létrehozásáról:"
+    text: 'További információ a PostgreSQL-adatbázisok a következőkkel való létrehozásáról:'
   - type: list
     style: icon48
     items:
@@ -37,25 +38,25 @@ sections:
         src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
       text: Azure CLI
       href: /azure/postgresql/quickstart-create-server-database-azure-cli
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: "Az alábbiak végrehajtásának módját ismerheti meg:"
+    text: 'Az alábbiak végrehajtásának módját ismerheti meg:'
   - type: list
     style: ordered
     items:
-    - html: "Adatbázis tervezése: <a href=\"/azure/postgresql/tutorial-design-database-using-azure-portal\">Azure Portal</a> | <a href=\"/azure/postgresql/tutorial-design-database-using-azure-cli\">Azure CLI</a>"
-    - html: "<a href=\"/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json\">Webalkalmazás készítése a Python és a CLI használatával</a>"
-- title: "Példák"
+    - html: 'Adatbázis tervezése: <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Webalkalmazás készítése a Python és a CLI használatával</a>
+- title: Példák
   items:
   - type: paragraph
-    text: "Szkriptek keresése a gyakori feladatok kezeléséhez."
+    text: Szkriptek keresése a gyakori feladatok kezeléséhez.
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-- title: "Hivatkozás"
+- title: Hivatkozás
   items:
   - type: list
     style: cards

@@ -1,12 +1,12 @@
 ---
-title: "Az alapértelmezett blob útvonal módosítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Azure függvény nevezze át a blob-fájl elérési útja"
+title: Az alapértelmezett blob útvonal módosítása |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Azure függvény nevezze át a blob-fájl elérési útja
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862400"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Egy blob elérési utat módosítsa az alapértelmezett elérési útjáról
 

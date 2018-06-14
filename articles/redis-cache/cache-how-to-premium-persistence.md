@@ -1,11 +1,11 @@
 ---
-title: "A prémium szintű Azure Redis Cache adatmegőrzés konfigurálásáról"
-description: "Megtudhatja, hogyan konfigurálhatja és kezelheti az adatmegőrzés a Premium szint Azure Redis Cache példányt"
+title: A prémium szintű Azure Redis Cache adatmegőrzés konfigurálásáról
+description: Megtudhatja, hogyan konfigurálhatja és kezelheti az adatmegőrzés a Premium szint Azure Redis Cache példányt
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910848"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>A prémium szintű Azure Redis Cache adatmegőrzés konfigurálásáról
 Azure Redis Cache-gyorsítótár mérete és a szolgáltatások, például a fürtszolgáltatás, az adatmegőrzésre és a virtuális hálózat támogatásának Premium szint szolgáltatásainak rugalmasság biztosító másik gyorsítótármappa ajánlatok rendelkezik. Ez a cikk ismerteti, hogyan adatmegőrzés konfigurálása prémium szintű Azure Redis Cache példányt.

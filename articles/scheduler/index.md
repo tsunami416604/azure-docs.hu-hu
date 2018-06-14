@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Scheduler dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg, hogyan ütemezhet és hívhat meg feladatokat a Scheduler használatával, például az alkalmazásműveleteket és a rutinkarbantartási feladatokat. Oktatóanyagok, API-referenciák és egyebek."
+title: Az Azure Scheduler dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Ismerje meg, hogyan ütemezhet és hívhat meg feladatokat a Scheduler használatával, például az alkalmazásműveleteket és a rutinkarbantartási feladatokat. Oktatóanyagok, API-referenciák és egyebek.
 services: scheduler
 author: carolz
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: scheduler
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071347"
 ---
 # <a name="scheduler-documentation"></a>A Scheduler dokumentációja
 

@@ -1,9 +1,9 @@
 ---
-title: "Kétlépéses ellenőrzést, a munkahelyi vagy iskolai fiók beállítása |} Microsoft Docs"
-description: "Amikor a vállalat konfigurálja az Azure multi-factor Authentication, kérni fogja a kétlépéses ellenőrzéshez regisztrálni. Megtudhatja, hogyan állítsa be. "
+title: Kétlépéses ellenőrzést, a munkahelyi vagy iskolai fiók beállítása |} Microsoft Docs
+description: 'Amikor a vállalat konfigurálja az Azure multi-factor Authentication, kérni fogja a kétlépéses ellenőrzéshez regisztrálni. Megtudhatja, hogyan állítsa be. '
 services: multi-factor-authentication
-keywords: "az azure directory, a felhőben, az active directory-oktatóanyag az active directory használatáról"
-documentationcenter: 
+keywords: az azure directory, a felhőben, az active directory-oktatóanyag az active directory használatáról
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198355"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 Kétlépéses ellenőrzés egy további biztonsági lépés, amely segít megvédeni a fiókját úgy, hogy elkészíti a nehezebben más feltörhessék. Ha a cikk elolvasása valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda többtényezős hitelesítéssel kapcsolatos. Vagy próbált bejelentkezni, és lehet, hogy a további biztonsági ellenőrzés beállítása kérő üzenetet kapott. Ebben az esetben, ha **nem tud bejelentkezni, az automatikus igénylés folyamat befejezése után**.

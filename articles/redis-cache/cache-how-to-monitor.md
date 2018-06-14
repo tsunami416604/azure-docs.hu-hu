@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache figyelése |} Microsoft Docs"
-description: "Ismerje meg, állapotának és teljesítményének figyelése az Azure Redis Cache példányt"
+title: Azure Redis Cache figyelése |} Microsoft Docs
+description: Ismerje meg, állapotának és teljesítményének figyelése az Azure Redis Cache példányt
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910649"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Az Azure Redis Cache figyelése
 Használja az Azure Redis Cache [Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) arra, hogy a gyorsítótár-példányok számos lehetőség közül választhat. Is megtekinthető metrikákat, rögzítheti a kezdőpulton metrikák diagramok, testre szabhatja a dátum és idő tartomány diagramok figyelési, hozzáadása és metrikák eltávolítása a diagramok, és állítson be riasztásokat, bizonyos feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure Redis Cache példány állapotának figyelésére, és a gyorsítótárazási alkalmazásokat kezeléséhez nyújt segítséget.

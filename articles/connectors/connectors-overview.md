@@ -1,11 +1,11 @@
 ---
-title: "Logic Apps-összekötők áttekintése |} Microsoft Docs"
-description: "A logikai alkalmazás használható összekötők áttekintése"
-services: 
-documentationcenter: 
+title: Logic Apps-összekötők áttekintése |} Microsoft Docs
+description: A logikai alkalmazás használható összekötők áttekintése
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: ca8dab2e-9b69-4b1e-865d-1facd9f0cdac
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27961652"
 ---
 # <a name="using-connectors-in-a-logic-app"></a>A logikai alkalmazás összekötők használata
 Összekötők különböző szolgáltatások, a protokollok és a platformok események, az adatok és a műveletek gyors hozzáférést biztosítanak.  Az összekötők Logic Apps alkalmazásokat támogató teljes listáját is [itt található](apis-list.md).  Összekötők változtatás nélkül használhatók egy eseményindító vagy a logikai alkalmazás egy műveletet, és előfordulhat, hogy a konfigurált *kapcsolat* használni (például: eléréséhez, vagy az Ön nevében utáni Twitter-fiók engedélyezése).

@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190012"
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>HPC Pack 2016-fürt üzembe helyezése az Azure-ban
 
