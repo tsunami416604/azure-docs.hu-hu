@@ -1,12 +1,12 @@
 ---
-title: "ExpressRoute kapcsolati modellek: Csatlakozás a Microsoft Azure-hoz hálózati szolgáltatókon, adatcserélőkön és Ethernet-szolgáltatókon keresztül | Microsoft Docs"
-description: "Ez a cikk a különböző típusú kapcsolatokat ismerteti az ügyfél hálózata és a Microsoft Azure, az Office 365 és a Dynamics 365 szolgáltatás között. Az ügyfelek használhatnak MPLS-szolgáltatókat, felhőbeli adatcserélőket vagy Ethernet-szolgáltatókat."
+title: 'ExpressRoute kapcsolati modellek: Csatlakozás a Microsoft Azure-hoz hálózati szolgáltatókon, adatcserélőkön és Ethernet-szolgáltatókon keresztül | Microsoft Docs'
+description: Ez a cikk a különböző típusú kapcsolatokat ismerteti az ügyfél hálózata és a Microsoft Azure, az Office 365 és a Dynamics 365 szolgáltatás között. Az ügyfelek használhatnak MPLS-szolgáltatókat, felhőbeli adatcserélőket vagy Ethernet-szolgáltatókat.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709895"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute kapcsolati modellek
 A helyszíni hálózata és a Microsoft-felhő között háromféleképpen hozhat létre kapcsolatot: [Cloud Exchange közös elhelyezés](#CloudExchange), [pontok közötti Ethernet-kapcsolat](#Ethernet) és [bármely elemek közötti (IPVPN) kapcsolat](#IPVPN). A kapcsolatszolgáltatók egy vagy több kapcsolódási modellt kínálhatnak. Kapcsolatszolgáltatójával együttműködve választhatja ki az Ön számára optimális modellt.
