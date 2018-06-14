@@ -1,11 +1,11 @@
 ---
-title: "Új Azure verem bérlői fiók hozzáadása az Azure Active Directoryban |} Microsoft Docs"
-description: "Microsoft Azure verem szoftverfejlesztői készlet való telepítése után kell legalább egy bérlői felhasználói fiók létrehozása, így megismerheti, hogy a bérlői portált."
+title: Új Azure verem bérlői fiók hozzáadása az Azure Active Directoryban |} Microsoft Docs
+description: Microsoft Azure verem szoftverfejlesztői készlet való telepítése után kell legalább egy bérlői felhasználói fiók létrehozása, így megismerheti, hogy a bérlői portált.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
 ms.service: azure-stack
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29553205"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Új Azure verem bérlői fiók hozzáadása az Azure Active Directoryban
 Miután [üzembe helyezése az Azure verem szoftverfejlesztői készlet](azure-stack-run-powershell-script.md), szüksége lesz egy bérlői felhasználói fiókkal, így megismerkedhet a bérlői portált, és tesztelje a ajánlatok és tervek. Létrehozhat egy bérlői fiókot által [az Azure portál használatával](#create-an-azure-stack-tenant-account-using-the-azure-portal) vagy [PowerShell-lel](#create-an-azure-stack-tenant-account-using-powershell).

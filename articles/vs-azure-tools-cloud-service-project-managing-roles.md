@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793970"
 ---
 # <a name="managing-roles-in-azure-cloud-services-with-visual-studio"></a>Az Azure felhőszolgáltatások Visual Studio szerepkörök kezelése
 Miután létrehozta az Azure-felhőszolgáltatás, új szerepkörök hozzáadása, vagy meglévő szerepkörök eltávolításához. Egy létező projekt importálása is, majd átalakíthatja a szerepkör. Például egy ASP.NET-webalkalmazás importálhatja és kijelöl egy webes szerepkörben.

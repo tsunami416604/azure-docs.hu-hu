@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center rövid útmutató – Azure-előfizetés felvétele a Security Center Standard verziójába | Microsoft Docs"
-description: "Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében."
+title: Azure Security Center rövid útmutató – Azure-előfizetés felvétele a Security Center Standard verziójába | Microsoft Docs
+description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29531672"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját.

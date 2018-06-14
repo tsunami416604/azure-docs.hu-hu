@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958724"
 ---
 Tárolási optimalizált Virtuálisgép-méretek nagy átviteli sebesség és IO, és alkalmasak Big Data típusú adatok, az SQL és a NoSQL-adatbázisok. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 

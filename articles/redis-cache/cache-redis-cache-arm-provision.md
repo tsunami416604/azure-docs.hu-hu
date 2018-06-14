@@ -1,11 +1,11 @@
 ---
-title: "Egy Redis gyorsítótárhoz Azure Resource Manager használatával kiépítése |} Microsoft Docs"
-description: "Az Azure Redis Cache telepítéséhez használható Azure Resource Manager-sablon."
+title: Egy Redis gyorsítótárhoz Azure Resource Manager használatával kiépítése |} Microsoft Docs
+description: Az Azure Redis Cache telepítéséhez használható Azure Resource Manager-sablon.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910741"
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>Redis Cache létrehozása sablon használatával
 Ebben a témakörben elsajátíthatja, hogyan hozzon létre egy Azure Resource Manager-sablon, amely egy Azure Redis Cache telepít. A gyorsítótár segítségével a meglévő tárfiók diagnosztikai adatok megőrzéséhez. Azt is megtudhatja, hogyan határozza meg, mely erőforrásokat központilag telepíti, és hogyan adhat meg a paramétereket, amelyek megadott, amikor a központi telepítés végrehajtása. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.

@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache-minták |} Microsoft Docs"
-description: "Azure Redis Cache használata"
+title: Azure Redis Cache-minták |} Microsoft Docs
+description: Azure Redis Cache használata
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909696"
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis Cache-minták
 Ez a témakör az Azure Redis Cache mintavételt, például a Kapcsolódás a gyorsítótár, olvasási és számára, és az adatok írásakor a gyorsítótárból, és az ASP.NET Redis Cache-szolgáltatókat használ forgatókönyvek listája. A minták között letölthető projektek, és néhány részletes útmutatást és kódtöredékek tartalmazza, de ne csatolja a letölthető projekt.

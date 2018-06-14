@@ -1,11 +1,11 @@
 ---
-title: "Felhasználók hozzáadása az Azure verem ADFS |} Microsoft Docs"
-description: "Útmutató: az AD FS-telepítések Azure verem felhasználók hozzáadása"
+title: Felhasználók hozzáadása az Azure verem ADFS |} Microsoft Docs
+description: 'Útmutató: az AD FS-telepítések Azure verem felhasználók hozzáadása'
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29554578"
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>Felhasználók felvétele az Azure verem szoftverfejlesztői készlet
 
