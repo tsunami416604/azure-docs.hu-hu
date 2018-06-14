@@ -1,12 +1,12 @@
 ---
-title: "Azure-beli árakról felhő rendszerhéj |} Microsoft Docs"
-description: "Azure Cloud rendszerhéj árképzési áttekintése"
-services: 
-documentationcenter: 
+title: Azure-beli árakról felhő rendszerhéj |} Microsoft Docs
+description: Azure Cloud rendszerhéj árképzési áttekintése
+services: ''
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "24809866"
 ---
 # <a name="pricing"></a>Díjszabás
 A felhő rendszerhéj bash és PowerShell használatával a felhő rendszerhéj (előzetes verzió) alá az alábbi részleteket.

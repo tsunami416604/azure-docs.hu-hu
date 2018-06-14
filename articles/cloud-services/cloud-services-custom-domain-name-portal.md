@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "25946774"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása
 Amikor létrehoz egy felhőalapú szolgáltatás, Azure rendeli altartománya **cloudapp.net**. Például, ha a Felhőszolgáltatás neve "contoso", a felhasználók fog tudni hozzáférni az alkalmazáshoz egy URL-címen, például a http://contoso.cloudapp.net. Azure is hozzárendel egy virtuális IP-címet.
