@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687866"
 ---
 # <a name="configure-server-parameters-in-azure-portal"></a>Kiszolgáló paramétereinek a konfigurálása Azure-portálon
 Listáról, megjelenítése és konfigurációs paraméterek az Azure-adatbázis az Azure portálon keresztül PostgreSQL-kiszolgáló frissítése.

@@ -1,6 +1,6 @@
 ---
-title: "A tárolók és blobok az Azure Blob storage nyilvános olvasási hozzáférés engedélyezése |} Microsoft Docs"
-description: "Útmutató: elérhetővé tárolók és blobok névtelen hozzáféréshez, és hogyan programokon keresztül férhet hozzá."
+title: A tárolók és blobok az Azure Blob storage nyilvános olvasási hozzáférés engedélyezése |} Microsoft Docs
+description: 'Útmutató: elérhetővé tárolók és blobok névtelen hozzáféréshez, és hogyan programokon keresztül férhet hozzá.'
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29557063"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
 Engedélyezheti a névtelen, nyilvános olvasási hozzáférés egy tároló és a benne található blobokat az Azure Blob Storage tárolóban. Ezzel a módszerrel csak olvasható hozzáférést biztosíthat ezeken az erőforrásokon a fiókkulcs megosztása nélkül, és anélkül, hogy a közös hozzáférésű jogosultságkód (SAS).

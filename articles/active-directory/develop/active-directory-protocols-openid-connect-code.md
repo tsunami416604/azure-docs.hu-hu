@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157327"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Az OpenID Connect és az Azure Active Directory használatával webes alkalmazásokhoz való hozzáférés engedélyezésére
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) egy egyszerű identitásrétegének az OAuth 2.0 protokollt platformra épül. OAuth 2.0 meghatározása mechanizmusok az beszerzése és használata **hozzáférési jogkivonatok** hozzáférni védett erőforrásokhoz, de azok nem határoznak meg szabványos módszerek azonosító adatok megadása. Hitelesítési OpenID Connect valósítja meg az OAuth 2.0 hitelesítési folyamat részeként. Információt ad a végfelhasználónak formájában egy `id_token` , amely ellenőrzi a felhasználó és a felhasználó alapvető profiladataihoz tájékoztatást.

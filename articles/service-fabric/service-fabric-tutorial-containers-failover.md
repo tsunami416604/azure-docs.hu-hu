@@ -1,14 +1,14 @@
 ---
-title: "Azure Service Fabric-tárolóalkalmazás feladatátvétele és méretezése | Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja a feladatátvételek kezelését egy Azure Service Fabric-tárolóalkalmazásban.  Emellett megismerheti a fürtben futó tárolók és szolgáltatások méretezésének módját."
+title: Azure Service Fabric-tárolóalkalmazás feladatátvétele és méretezése | Microsoft Docs
+description: Ez az oktatóanyag bemutatja a feladatátvételek kezelését egy Azure Service Fabric-tárolóalkalmazásban.  Emellett megismerheti a fürtben futó tárolók és szolgáltatások méretezésének módját.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, tárolók, mikroszolgáltatások, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29555484"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Oktatóanyag: Tárolószolgáltatások Service Fabrickel történő feladatátvételének és méretezésének bemutatása
 
