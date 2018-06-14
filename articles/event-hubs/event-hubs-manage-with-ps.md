@@ -1,12 +1,12 @@
 ---
-title: "Azure Event Hubs-erőforrások kezelése a PowerShell használatával |} Microsoft Docs"
-description: "PowerShell-modul segítségével létrehozása és kezelése az Event Hubs"
+title: Azure Event Hubs-erőforrások kezelése a PowerShell használatával |} Microsoft Docs
+description: PowerShell-modul segítségével létrehozása és kezelése az Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782217"
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>Az Event Hubs-erőforrások kezelése a PowerShell használatával
 

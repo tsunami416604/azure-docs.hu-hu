@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Storage eszközei |} Microsoft Docs"
-description: "Eszközök, amelyek lehetővé teszik a nézet vagy használhatják az Azure Storage adatokat listáját."
+title: Az Azure Storage eszközei |} Microsoft Docs
+description: Eszközök, amelyek lehetővé teszik a nézet vagy használhatják az Azure Storage adatokat listáját.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: dineshmurthy
 manager: jahogg
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/21/2017
+ms.locfileid: "23933388"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-ügyféleszközök
 Az Azure Storage felhasználók gyakran érdemes megtekintése/kezelhetik az adatokat egy Azure Storage ügyfél eszközzel. Az alábbi táblázatban látható eszközöket tartalmazza, amelyek lehetővé teszik a számnak. A Microsoft helyezze el az "X" valamennyi blokkja Ha felsorolni és/vagy a hozzáférési adatok kivételére lehetőséget biztosít. A táblázatban is látható, ha az eszközök szabad-e vagy sem. "Próba" azt jelzi, hogy van egy ingyenes próbaverziót, de a teljes termék nincs szabad. "I/N" azt jelzi, hogy egy újabb verziója érhető szabad, miközben egy másik verzió.

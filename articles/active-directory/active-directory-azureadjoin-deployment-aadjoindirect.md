@@ -1,11 +1,11 @@
 ---
-title: "Használati forgatókönyvek és az Azure AD-csatlakozás telepítési szempontjai |} Microsoft Docs"
-description: "Ismerteti, hogyan rendszergazdák állíthat be az Azure AD Join a saját végfelhasználóik számára (az alkalmazottak, a diákok, más felhasználókat). A cikk ismerteti az Azure AD Joint a különböző valós forgatókönyv is."
+title: Használati forgatókönyvek és az Azure AD-csatlakozás telepítési szempontjai |} Microsoft Docs
+description: Ismerteti, hogyan rendszergazdák állíthat be az Azure AD Join a saját végfelhasználóik számára (az alkalmazottak, a diákok, más felhasználókat). A cikk ismerteti az Azure AD Joint a különböző valós forgatókönyv is.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26602432"
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Használati forgatókönyvek és az Azure AD-csatlakozás telepítési szempontjai
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Az Azure AD Join használati forgatókönyvek

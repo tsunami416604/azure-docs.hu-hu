@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Multi-Factor Authentication dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Ismerje meg, hogyan helyezhet üzembe olyan, ellenőrzési módszerek sorát felvonultató többtényezős hitelesítést (Multi-Factor Authentication), amely mégis egyszerű bejelentkezést biztosít. Oktatóanyagok, SDK és további anyagok."
+title: Az Azure Multi-Factor Authentication dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Ismerje meg, hogyan helyezhet üzembe olyan, ellenőrzési módszerek sorát felvonultató többtényezős hitelesítést (Multi-Factor Authentication), amely mégis egyszerű bejelentkezést biztosít. Oktatóanyagok, SDK és további anyagok.
 services: multi-factor-authentication
 author: czeumault
 manager: mtillman
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26630818"
 ---
 # <a name="multi-factor-authentication-documentation"></a>Multi-Factor Authentication – dokumentáció
 

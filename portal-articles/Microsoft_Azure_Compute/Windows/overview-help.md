@@ -1,6 +1,6 @@
 ---
-title: "Windows virtuális gépek súgódokumentációja | Microsoft Docs"
-description: "A Windows rendszerű virtuális gépek áttekintő súgótartalmai az Azure Portalon"
+title: Windows virtuális gépek súgódokumentációja | Microsoft Docs
+description: A Windows rendszerű virtuális gépek áttekintő súgótartalmai az Azure Portalon
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057688"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows rendszerű virtuális gépek – dokumentáció
 

@@ -1,11 +1,11 @@
 ---
-title: "A Windows ügyfél képeket használ az Azure-ban |} Microsoft Docs"
-description: "Visual Studio előfizetés előnyöket használatáról központi telepítése a Windows 7, Windows 8 vagy Windows 10 Azure-ban fejlesztési/Tesztelési forgatókönyvek"
+title: A Windows ügyfél képeket használ az Azure-ban |} Microsoft Docs
+description: Visual Studio előfizetés előnyöket használatáról központi telepítése a Windows 7, Windows 8 vagy Windows 10 Azure-ban fejlesztési/Tesztelési forgatókönyvek
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103676"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/Tesztelési forgatókönyvek
 Használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) fejlesztési és tesztelési célú forgatókönyvek az Azure-ban biztosított megfelelő (korábbi nevén MSDN) Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti a Windows 7, Windows 8.1, Windows 10 Enterprise rendszerű Azure-ban és a következő Azure-katalógus képek használatát jogosultsági követelményei.

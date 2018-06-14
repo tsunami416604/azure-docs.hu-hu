@@ -1,12 +1,12 @@
 ---
-title: "Azure Automation szolgáltatásbeli integrálása esemény rács |} Microsoft Docs"
-description: "Megtudhatja, hogyan automatikusan címke hozzáadása egy új virtuális gép létrehozásakor, és értesítést küldeni a Microsoft Teams."
-keywords: "automatizálás, runbook, csoportok, esemény rács, virtuális gépek, virtuális gép"
+title: Azure Automation szolgáltatásbeli integrálása esemény rács |} Microsoft Docs
+description: Megtudhatja, hogyan automatikusan címke hozzáadása egy új virtuális gép létrehozásakor, és értesítést küldeni a Microsoft Teams.
+keywords: automatizálás, runbook, csoportok, esemény rács, virtuális gépek, virtuális gép
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: eamonoreilly
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: automation
 ms.devlang: na
 ms.topic: tutorial
@@ -16,9 +16,10 @@ ms.date: 12/06/2017
 ms.author: eamono
 ms.openlocfilehash: 9a4d6ecf19fc96a9c7b92cf246effbf3948fb478
 ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26349069"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Azure Automation szolgáltatásbeli integrálható a esemény rács és a Microsoft csapatai
 

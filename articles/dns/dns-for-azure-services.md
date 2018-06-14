@@ -1,11 +1,11 @@
 ---
-title: "Azure DNS-sel más Azure-szolgáltatásokkal |} Microsoft Docs"
-description: "Azure DNS használatával oldja meg a nevet az egyéb Azure-szolgáltatások ismertetése"
+title: Azure DNS-sel más Azure-szolgáltatásokkal |} Microsoft Docs
+description: Azure DNS használatával oldja meg a nevet az egyéb Azure-szolgáltatások ismertetése
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
@@ -21,6 +21,7 @@ ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/30/2017
+ms.locfileid: "25989843"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS működése más Azure-szolgáltatásokkal
 

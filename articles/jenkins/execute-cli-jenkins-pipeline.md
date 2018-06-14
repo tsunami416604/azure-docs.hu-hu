@@ -1,12 +1,12 @@
 ---
-title: "Hajtsa végre az Azure parancssori felület a Jenkins |} Microsoft Docs"
-description: "Azure CLI használata Java-webalkalmazás telepítése az Azure-bA Jenkins folyamat"
+title: Hajtsa végre az Azure parancssori felület a Jenkins |} Microsoft Docs
+description: Azure CLI használata Java-webalkalmazás telepítése az Azure-bA Jenkins folyamat
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: jenkins
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28926930"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Az Azure App Service Jenkins és az Azure parancssori felület telepítése
 Java-webalkalmazás telepítése az Azure-ba, használja az Azure CLI [Jenkins csővezeték](https://jenkins.io/doc/book/pipeline/). Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:

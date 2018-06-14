@@ -1,12 +1,12 @@
 ---
-title: "Azure Automation-forgatókönyv segítségével kezelheti a StorSimple eszközökhöz |} Microsoft Docs"
-description: "Azure Automation-forgatókönyv használata StorSimple feladatok automatizálásához"
+title: Azure Automation-forgatókönyv segítségével kezelheti a StorSimple eszközökhöz |} Microsoft Docs
+description: Azure Automation-forgatókönyv használata StorSimple feladatok automatizálásához
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/24/2017
+ms.locfileid: "23934830"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation-forgatókönyv használatával StorSimple eszközök kezelése
 

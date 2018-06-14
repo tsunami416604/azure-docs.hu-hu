@@ -1,9 +1,9 @@
 ---
-title: "Házirend- és MDM-beállítások |} Microsoft Docs"
-description: "Tájékoztatást ad azokról csoportházirend és a mobileszköz-felügyelet (MDM) beállításait a vállalat által birtokolt eszközök használni. Ezek a házirendek a felhasználó-eszköz teljes is vonatkozik."
+title: Házirend- és MDM-beállítások |} Microsoft Docs
+description: Tájékoztatást ad azokról csoportházirend és a mobileszköz-felügyelet (MDM) beállításait a vállalat által birtokolt eszközök használni. Ezek a házirendek a felhasználó-eszköz teljes is vonatkozik.
 services: active-directory
-keywords: "Mik azok a csoport házirend és a vállalati Állapothordozás, a vállalati Állapothordozás, a windows felhőalapú MDM beállításait"
-documentationcenter: 
+keywords: Mik azok a csoport házirend és a vállalati Állapothordozás, a vállalati Állapothordozás, a windows felhőalapú MDM beállításait
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614908"
 ---
 # <a name="group-policy-and-mdm-settings"></a>A csoportházirend és a mobileszköz-kezelési beállítások
 Használja a csoportházirend és a mobileszközök felügyeletének (MDM) beállításai csak a vállalat által birtokolt eszközök mivel ezek a házirendek a felhasználó-eszköz teljes vonatkoznak. Személyes beállítások szinkronizálásának letiltása az MDM-házirend alkalmazását, felhasználó által birtokolt eszköz lesz negatív hatással az adott eszköz használatát. Ezenfelül más felhasználói fiókokat az eszközön is befolyásolják a házirend.

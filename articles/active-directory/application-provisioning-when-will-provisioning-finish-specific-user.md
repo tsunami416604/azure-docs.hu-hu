@@ -1,11 +1,11 @@
 ---
-title: "Megtudhatja, ha egy adott felhasználó tudnak csatlakozni egy alkalmazáshoz |} Microsoft Docs"
-description: "Ha egy különösen fontos felhasználói tudnak csatlakozni egy alkalmazáshoz, a felhasználók átadása az Azure ad szolgáltatással konfigurált megállapítása"
+title: Megtudhatja, ha egy adott felhasználó tudnak csatlakozni egy alkalmazáshoz |} Microsoft Docs
+description: Ha egy különösen fontos felhasználói tudnak csatlakozni egy alkalmazáshoz, a felhasználók átadása az Azure ad szolgáltatással konfigurált megállapítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26613623"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Annak megállapítása, ha egy adott felhasználó tudnak csatlakozni egy alkalmazáshoz
 Ha automatikus felhasználólétesítés alkalmazással, az Azure AD létesítése és a frissítés felhasználói fiókokat az alkalmazáson belüli alapján automatikusan többek között a [felhasználók és csoportok hozzárendelése](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) időközönként rendszeresen ütemezett, általában 10 percenként.

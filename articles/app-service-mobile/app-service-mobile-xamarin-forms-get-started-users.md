@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés a Mobile Apps a Xamarin Forms app hitelesítéssel |} Microsoft Docs"
-description: "Megtudhatja, hogyan hitelesíti a felhasználókat a Xamarin Forms alkalmazás Identitásszolgáltatók, beleértve az aad-ben, a Google, a Facebook, a Twitter és a Microsoft számos, a Mobile Apps segítségével."
+title: Ismerkedés a Mobile Apps a Xamarin Forms app hitelesítéssel |} Microsoft Docs
+description: Megtudhatja, hogyan hitelesíti a felhasználókat a Xamarin Forms alkalmazás Identitásszolgáltatók, beleértve az aad-ben, a Google, a Facebook, a Twitter és a Microsoft számos, a Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: xamarin
 author: panarasi
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593398"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hitelesítés hozzáadása a Xamarin Forms alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

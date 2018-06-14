@@ -1,11 +1,11 @@
 ---
-title: "Az Azure automatikus skálázási használata Linux méretezési készlet sablonban Vendég metrikák |} Microsoft Docs"
-description: "Megtudhatja, hogyan automatikus skálázás Vendég mérőszámok használatát a Linux virtuális gépek méretezési csoportján sablon"
+title: Az Azure automatikus skálázási használata Linux méretezési készlet sablonban Vendég metrikák |} Microsoft Docs
+description: Megtudhatja, hogyan automatikus skálázás Vendég mérőszámok használatát a Linux virtuális gépek méretezési csoportján sablon
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: na
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781428"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Sablon Vendég mérőszámok használatát a Linux méretezési automatikus skálázás beállítása
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure BizTalk Services dokumentációja – oktatóanyagok | Microsoft Docs"
-description: "Ismerje meg, hogy a BizTalk Services segítségével hogyan valósítható meg az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó kulcsfontosságú alkalmazások felhő és helyszíni környezetek közötti integrációja."
+title: Az Azure BizTalk Services dokumentációja – oktatóanyagok | Microsoft Docs
+description: Ismerje meg, hogy a BizTalk Services segítségével hogyan valósítható meg az SAP, az Oracle EBS, az SQL Server és a PeopleSoft rendszereken futó kulcsfontosságú alkalmazások felhő és helyszíni környezetek közötti integrációja.
 services: biztalk-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: biztalk-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26625096"
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services – dokumentáció
 

@@ -1,11 +1,11 @@
 ---
-title: "A felhőalapú szolgáltatás szerepkörök újrahasznosítása általános okok |} Microsoft Docs"
-description: "A felhőalapú szolgáltatás egyik szerepköre, hirtelen újraindul jelentős állásidőt okozhat. Az alábbiakban néhány gyakori problémákat, melyek a szerepkörök újrahasznosítását, amelyek segítségével csökkentheti az állásidőt."
+title: A felhőalapú szolgáltatás szerepkörök újrahasznosítása általános okok |} Microsoft Docs
+description: A felhőalapú szolgáltatás egyik szerepköre, hirtelen újraindul jelentős állásidőt okozhat. Az alábbiakban néhány gyakori problémákat, melyek a szerepkörök újrahasznosítását, amelyek segítségével csökkentheti az állásidőt.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984286"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
 Ez a cikk ismerteti az alkalmazástelepítéssel kapcsolatos problémák gyakori okai és hibaelhárítási tippek a problémák elhárításához. Arra utal, hogy probléma van az alkalmazás akkor, ha a szerepkör példánya nem indul el, vagy azt a inicializálása, foglalt és leállítása állapotok közötti ciklusok.

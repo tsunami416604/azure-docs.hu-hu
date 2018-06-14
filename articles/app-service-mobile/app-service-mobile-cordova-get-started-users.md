@@ -1,11 +1,11 @@
 ---
-title: "Hitelesítés hozzáadása az Apache Cordova Mobile alkalmazásokkal |} Microsoft Docs"
-description: "Útmutató az Azure App Service Mobile Apps segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve a Google, a Facebook, a Twitter és a Microsoft számos az Apache Cordova-alkalmazás."
+title: Hitelesítés hozzáadása az Apache Cordova Mobile alkalmazásokkal |} Microsoft Docs
+description: Útmutató az Azure App Service Mobile Apps segítségével hitelesíti a felhasználókat identitás-szolgáltatóktól, beleértve a Google, a Facebook, a Twitter és a Microsoft számos az Apache Cordova-alkalmazás.
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.service: app-service-mobile
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27591946"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hitelesítés hozzáadása az Apache Cordova-alkalmazás
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
