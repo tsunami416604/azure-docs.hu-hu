@@ -3,7 +3,7 @@ documentType: LandingData
 title: Az Azure Monitor dokumentációja
 metadata:
   title: Az Azure Monitor dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Az Azure Monitor a Microsoft Azure átfogó figyelési megoldásának része. Az Azure Monitor segítséget nyújt a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan naplózhat, hozhat létre riasztásokat és archiválhat adatokat.'
+  description: Az Azure Monitor a Microsoft Azure átfogó figyelési megoldásának része. Az Azure Monitor segítséget nyújt a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan naplózhat, hozhat létre riasztásokat és archiválhat adatokat.
   services: monitoring-and-diagnostics
   author: czeumault
   manager: carolz
@@ -13,60 +13,66 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/18/2017
   ms.author: carolz
+  ms.openlocfilehash: 44a32aae5b2e98e1f29ee56631e50c84dfe18902
+  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/11/2017
+  ms.locfileid: "23070735"
 abstract:
-  description: 'Az Azure Monitor a Microsoft Azure átfogó figyelési megoldásának része. Az Azure Monitor segítséget nyújt a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan naplózhat, hozhat létre riasztásokat és archiválhat adatokat.'
+  description: Az Azure Monitor a Microsoft Azure átfogó figyelési megoldásának része. Az Azure Monitor segítséget nyújt a teljesítmény figyelésére, a biztonság fenntartására és a trendek azonosítására. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan naplózhat, hozhat létre riasztásokat és archiválhat adatokat.
 sections:
-  - title: 5 perces gyors útmutatók
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: Ismerje meg, hogyan fogadhat értesítéseket, amikor megadott események történnek az Azure-alkalmazásában.
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan fogadhat értesítéseket, amikor megadott események történnek az Azure-alkalmazásában.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/Chart.svg'
-            text: Megfigyelési mérőszámok
-            href: monitor-quick-resource-metric-alert-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
-            text: Előfizetés-naplózás és riasztások
-            href: monitor-quick-audit-notify-action-in-subscription
-  - title: Részletes útmutatók
+    - image:
+        src: https://docs.microsoft.com/media/common/Chart.svg
+      text: Megfigyelési mérőszámok
+      href: monitor-quick-resource-metric-alert-portal
+    - image:
+        src: https://docs.microsoft.com/media/common/i_alert.svg
+      text: Előfizetés-naplózás és riasztások
+      href: monitor-quick-audit-notify-action-in-subscription
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Ismerje meg, hogyan skálázhatja automatikusan megfigyelési adatait, és hogyan archiválhatja azokat.
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Ismerje meg, hogyan skálázhatja automatikusan megfigyelési adatait, és hogyan archiválhatja azokat.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="monitor-tutorial-autoscale-performance-schedule">Automatikus méretezés az ütemezés vagy az alkalmazásteljesítmény alapján</a>
-          - html: <a href="monitor-tutorial-archive-monitoring-data">Megfigyelési adatok archiválása</a>
-  - title: Ingyenes Pluralsight videós képzés
+    - html: <a href="monitor-tutorial-autoscale-performance-schedule">Automatikus méretezés az ütemezés vagy az alkalmazásteljesítmény alapján</a>
+    - html: <a href="monitor-tutorial-archive-monitoring-data">Megfigyelési adatok archiválása</a>
+- title: Ingyenes Pluralsight videós képzés
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Az IaaS Monitoring használatának első lépései
-            href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents'
-          - title: Infrastruktúra kezelése a Microsoft Azure-on
-            href: 'https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started'
-  - title: Referencia
+    - title: Az IaaS Monitoring használatának első lépései
+      href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
+    - title: Infrastruktúra kezelése a Microsoft Azure-on
+      href: https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started
+      image:
+        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
+        href: https://app.pluralsight.com/library/courses/managing-infrastructure-microsoft-azure-getting-started
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/cli/azure/monitor?view=azure-cli-latest">Azure CLI</a></p><p><a href="/powershell/module/azurerm.insights">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/monitor/">REST</a></p>
-          - title: Figyelés
-            html: '<p><a href="monitoring-supported-metrics">Támogatott mérőszámok</a></p><p><a href="monitoring-diagnostic-logs-schema">Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák</a></p><p><a href="monitoring-activity-log-schema">Tevékenységnapló eseménysémája</a></p>'
-          - title: Diagnosztika
-            html: <p><a href="azure-diagnostics-schema">Azure Diagnostics-bővítményséma</a></p>
+    - title: Parancssor
+      html: <p><a href="/cli/azure/monitor?view=azure-cli-latest">Azure CLI</a></p><p><a href="/powershell/module/azurerm.insights">Azure PowerShell</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/monitor/">REST</a></p>
+    - title: Figyelés
+      html: <p><a href="monitoring-supported-metrics">Támogatott mérőszámok</a></p><p><a href="monitoring-diagnostic-logs-schema">Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák</a></p><p><a href="monitoring-activity-log-schema">Tevékenységnapló eseménysémája</a></p>
+    - title: Diagnosztika
+      html: <p><a href="azure-diagnostics-schema">Azure Diagnostics-bővítményséma</a></p>

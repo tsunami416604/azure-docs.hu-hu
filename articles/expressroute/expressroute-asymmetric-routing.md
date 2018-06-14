@@ -1,11 +1,11 @@
 ---
-title: "Aszimmetrikus útválasztás | Microsoft Docs"
-description: "Ez a cikk végigvezeti Önt azokon a problémákon, amelyekkel az ügyfeleknek szembe kell nézniük, amikor aszimmetrikus útválasztást állítanak be olyan hálózatokon, amelyek több kapcsolattal is rendelkeznek a célhoz."
+title: Aszimmetrikus útválasztás | Microsoft Docs
+description: Ez a cikk végigvezeti Önt azokon a problémákon, amelyekkel az ügyfeleknek szembe kell nézniük, amikor aszimmetrikus útválasztást állítanak be olyan hálózatokon, amelyek több kapcsolattal is rendelkeznek a célhoz.
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710014"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Aszimmetrikus útválasztás több hálózati elérési úttal
 A cikk leírja, hogy hogyan követhet a kimenő és a bejövő hálózati forgalom különböző utakat, amikor a hálózati forrás és cél között több elérési út is rendelkezésre áll.
