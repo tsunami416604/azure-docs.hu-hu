@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Database for MySQL áttekintése | Microsoft Docs"
-description: "Az Azure Database for MySQL áttekintő súgótartalmai az Azure Portalon"
+title: Az Azure Database for MySQL áttekintése | Microsoft Docs
+description: Az Azure Database for MySQL áttekintő súgótartalmai az Azure Portalon
 services: mysql
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073894"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>A MySQL-hez készült Azure Database dokumentációja
 
