@@ -1,11 +1,11 @@
 ---
-title: "Always On rendelkezésre állási csoportok helyszíni kiterjesztése az Azure-bA |} Microsoft Docs"
-description: "Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és az SQL Server Management Studio (SSMS) a replika hozzáadása varázsló használata egy Always On rendelkezésre állási csoportnak replika hozzáadása az Azure-ban."
+title: Always On rendelkezésre állási csoportok helyszíni kiterjesztése az Azure-bA |} Microsoft Docs
+description: Ez az oktatóanyag a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és az SQL Server Management Studio (SSMS) a replika hozzáadása varázsló használata egy Always On rendelkezésre állási csoportnak replika hozzáadása az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400477"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Always On rendelkezésre állási csoportok helyszíni kiterjesztése az Azure-bA
 Always On rendelkezésre állási csoportokat magas rendelkezésre állási adatbázis csoportjai számára másodlagos replikák hozzáadásával adja meg. Ezekre a replikákra engedélyezése feladatátvétele adatbázisok meghibásodása esetén. Ezenkívül ezek segítségével olvasási munkaterhelések vagy a biztonsági mentési feladatok kiszervezése.

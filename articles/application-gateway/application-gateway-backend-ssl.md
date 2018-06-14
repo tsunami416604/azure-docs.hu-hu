@@ -1,6 +1,6 @@
 ---
-title: "Teljes körű SSL engedélyezése az Azure Application Gatewayen | Microsoft Docs"
-description: "Ez az oldal az Application Gateway teljes körű SSL-támogatásról nyújt áttekintést."
+title: Teljes körű SSL engedélyezése az Azure Application Gatewayen | Microsoft Docs
+description: Ez az oldal az Application Gateway teljes körű SSL-támogatásról nyújt áttekintést.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704710"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Az Application Gatewayen engedélyezett teljes körű SSL áttekintése
 

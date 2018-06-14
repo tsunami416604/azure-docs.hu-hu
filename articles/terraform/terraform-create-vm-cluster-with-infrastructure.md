@@ -1,7 +1,7 @@
 ---
-title: "Hozzon létre egy Virtuálisgép-fürt Terraform és Hardverkompatibilitási"
-description: "Terraform és HashiCorp konfigurációs nyelvi (Hardverkompatibilitási) segítségével hozzon létre egy Linux virtuális gép fürtöt egy terhelés-kiegyenlítő az Azure-ban"
-keywords: "terraform, a devops, a virtuális gépet, a hálózati, a modulok"
+title: Hozzon létre egy Virtuálisgép-fürt Terraform és Hardverkompatibilitási
+description: Terraform és HashiCorp konfigurációs nyelvi (Hardverkompatibilitási) segítségével hozzon létre egy Linux virtuális gép fürtöt egy terhelés-kiegyenlítő az Azure-ban
+keywords: terraform, a devops, a virtuális gépet, a hálózati, a modulok
 author: tomarcher
 manager: routlaw
 ms.service: virtual-machines-linux
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518800"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Hozzon létre egy Virtuálisgép-fürt Terraform és Hardverkompatibilitási
 

@@ -1,8 +1,8 @@
 ---
-title: "Az ASP.NET-webalkalmazás monitorozása az Azure Application Insights segítségével | Microsoft Docs"
-description: "Az ASP.NET-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz"
+title: Az ASP.NET-webalkalmazás monitorozása az Azure Application Insights segítségével | Microsoft Docs
+description: Az ASP.NET-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/14/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23947675"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 

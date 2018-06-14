@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "29378156"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Az Azure API Management sablon modell hivatkozás
 Ez a témakör ismerteti az adatok modellek használata a fejlesztői portál sablonok az Azure API Management for közös elemek entitás és típus felelősséget.  

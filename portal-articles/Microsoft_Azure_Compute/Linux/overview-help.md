@@ -1,6 +1,6 @@
 ---
-title: "Linux virtuális gépek súgódokumentációja | Microsoft Docs"
-description: "A Linux rendszerű virtuális gépek áttekintő súgótartalmai az Azure Portalon"
+title: Linux virtuális gépek súgódokumentációja | Microsoft Docs
+description: A Linux rendszerű virtuális gépek áttekintő súgótartalmai az Azure Portalon
 services: virtual-machines-linux
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057654"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux rendszerű virtuális gépek dokumentációja
 

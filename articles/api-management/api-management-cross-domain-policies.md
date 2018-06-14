@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management tartományközi házirendjei |} Microsoft Docs"
-description: "További tudnivalók a tartományok közötti házirendek az Azure API Management használható."
+title: Az Azure API Management tartományközi házirendjei |} Microsoft Docs
+description: További tudnivalók a tartományok közötti házirendek az Azure API Management használható.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129034"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

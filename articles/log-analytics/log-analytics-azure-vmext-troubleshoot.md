@@ -1,12 +1,12 @@
 ---
-title: "Azure Naplóelemzés Analytics Virtuálisgép-bővítmény hibaelhárítása |} Microsoft Docs"
-description: "A jelenség okok és a napló Analytics Virtuálisgép-bővítménnyel a leggyakoribb problémák megoldási írják le a Windows és Linux Azure virtuális gépeken."
+title: Azure Naplóelemzés Analytics Virtuálisgép-bővítmény hibaelhárítása |} Microsoft Docs
+description: A jelenség okok és a napló Analytics Virtuálisgép-bővítménnyel a leggyakoribb problémák megoldási írják le a Windows és Linux Azure virtuális gépeken.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394986"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Hibaelhárítás a napló Analytics Virtuálisgép-bővítmény
 Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a napló Analytics VM kiterjesztésű Windows és Linux rendszerű virtuális gépek Microsoft Azure-on futó, és elhárításának lehetséges megoldások javasolja.

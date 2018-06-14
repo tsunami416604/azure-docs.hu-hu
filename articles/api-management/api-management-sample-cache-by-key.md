@@ -1,11 +1,11 @@
 ---
-title: "Egyéni gyorsítótárazása az Azure API Management"
-description: "Megtudhatja, hogyan gyorsítótárazza a cikkek gombot az Azure API Management"
+title: Egyéni gyorsítótárazása az Azure API Management
+description: Megtudhatja, hogyan gyorsítótárazza a cikkek gombot az Azure API Management
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
 ms.service: api-management
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29376031"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazása az Azure API Management
 Az Azure API Management szolgáltatás rendelkezik beépített támogatása [HTTP-válasz gyorsítótár](api-management-howto-cache.md) kulcsa a forrás URL-cím használatával. A kulcs használatával kérelemfejléc módosíthatják a `vary-by` tulajdonságok. Ez akkor hasznos, a teljes HTTP-válaszok (más néven felelősséget) gyorsítótárazáshoz, de egyes esetekben célszerű csak gyorsítótár létrehozása egy részét. Az új [gyorsítótár-keresési-érték](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) és [gyorsítótár-tároló-érték](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) -szabályzatok lehetőséget biztosítanak tárolásához és lekéréséhez belül a házirend-definíciók adatait tetszőleges darabjait képes. Ez a lehetőség is értéket ad hozzá a korábban bevezetett [küldési-kérelmek](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) házirend mivel most gyorsítótárazhatja a válaszok külső szolgáltatásokból.

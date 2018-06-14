@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 Series Update 5 kibocsátási megjegyzései |} Microsoft Docs"
-description: "Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 5."
+title: A StorSimple 8000 Series Update 5 kibocsátási megjegyzései |} Microsoft Docs
+description: Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 5.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518919"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>A StorSimple 8000 Series Update 5 kibocsátási megjegyzései
 

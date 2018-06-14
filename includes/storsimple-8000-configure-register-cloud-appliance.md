@@ -7,7 +7,7 @@
     
     1. A rendelkezésre álló helyen adja meg a **szolgáltatásadat-titkosítási kulcsot**. Ez a kulcs akkor jött létre, amikor az első fizikai eszközt regisztrálta a StorSimple-eszközkezelő szolgáltatásban.
 
-    2. Adja meg a szükséges hosszúságú és beállítású **eszközrendszergazdai** és **Snapshot Manager-**jelszót.
+    2. Adja meg a szükséges hosszúságú és beállítású **eszközrendszergazdai** és **Snapshot Manager-** jelszót.
 
     3. Kattintson az **OK** gombra a felhőalapú berendezés kezdeti konfigurálásának és regisztrációjának befejezéséhez.
     

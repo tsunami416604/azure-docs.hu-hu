@@ -1,5 +1,5 @@
 ---
-title: "Biztonsági integrálása az Azure architekturális tervek |} Microsoft Docs"
+title: Biztonsági integrálása az Azure architekturális tervek |} Microsoft Docs
 description: " Ez a cikk segít a az alkalmazás- és architektúra az Azure biztonsági integrálja a tervezési és megvalósítási könnyebb megérteni. "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/23/2017
+ms.locfileid: "25549430"
 ---
 # <a name="application-architecture-on-azure"></a>Alkalmazásarchitektúra az Azure-on
 Biztonságossá a felhőalapú megoldások a Microsoft Azure-ban egy erős architekturális foundation fontos. Mérnökök, tervezők és implementers minden alkalmazás- és architektúra erős ismerete kihasználhassa. A legalapvetőbb Tudásbázis segít megérteni a felhőalapú megoldások összetevőit, és könnyebben biztonsági integrálja a tervezési és megvalósítási minden szempontját.
