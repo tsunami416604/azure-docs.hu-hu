@@ -1,8 +1,8 @@
 ---
-title: "Standard szintű tárolót a Windows virtuális gépek lemezei Azure |} Microsoft Docs"
-description: "Standard költséghatékony tárolás és a nem felügyelt és a felügyelt Windows virtuális gépek lemezei ismertetik."
+title: Standard szintű tárolót a Windows virtuális gépek lemezei Azure |} Microsoft Docs
+description: Standard költséghatékony tárolás és a nem felügyelt és a felügyelt Windows virtuális gépek lemezei ismertetik.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: yuemlu
 manager: aungoo-msft
 editor: tysonn
@@ -20,5 +20,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23950517"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

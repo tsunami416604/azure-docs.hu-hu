@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Redis Cache adatok importálása és exportálása |} Microsoft Docs"
-description: "Ismerje meg, hogyan importálhatja és exportálhatja az adatokat a blob storage a premium Azure Redis Cache osztályt érkező vagy oda irányuló"
+title: Az Azure Redis Cache adatok importálása és exportálása |} Microsoft Docs
+description: Ismerje meg, hogyan importálhatja és exportálhatja az adatokat a blob storage a premium Azure Redis Cache osztályt érkező vagy oda irányuló
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910087"
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Az Azure Redis Cache adatok importálása és exportálása
 Importálási/exportálási egy Azure Redis Cache adatok felügyeleti művelet, amely lehetővé teszi, hogy adatokat importáljon belőlük az Azure Redis Cache vagy exportál adatokat az Azure Redis Cache importálni és Redis gyorsítótár-adatbázis (Rekordadatbázis) pillanatkép exportálása egy prémium szintű gyorsítótár az Azure-Tárfiók a blob. 

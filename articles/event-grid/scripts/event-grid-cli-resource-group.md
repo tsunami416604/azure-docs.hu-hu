@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425895"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Feliratkozás egy erőforráscsoport eseményeire az Azure CLI-vel
 

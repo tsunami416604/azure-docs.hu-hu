@@ -1,12 +1,12 @@
 ---
-title: "Az Azure továbbítási hitelesítési és engedélyezési |} Microsoft Docs"
-description: "Az Azure-továbbítási közös hozzáférésű Jogosultságkód (SAS) hitelesítési áttekintése"
+title: Az Azure továbbítási hitelesítési és engedélyezési |} Microsoft Docs
+description: Az Azure-továbbítási közös hozzáférésű Jogosultságkód (SAS) hitelesítési áttekintése
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28018117"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Az Azure továbbítási hitelesítés és engedélyezés
 

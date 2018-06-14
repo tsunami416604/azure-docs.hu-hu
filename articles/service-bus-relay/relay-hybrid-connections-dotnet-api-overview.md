@@ -1,11 +1,11 @@
 ---
-title: "Az Azure-továbbító .NET-szabvány API-k áttekintése |} Microsoft Docs"
-description: "Azure továbbítási .NET-szabvány API – áttekintés"
+title: Az Azure-továbbító .NET-szabvány API-k áttekintése |} Microsoft Docs
+description: Azure továbbítási .NET-szabvány API – áttekintés
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016433"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay a hibrid kapcsolatok .NET Standard API – áttekintés
 
