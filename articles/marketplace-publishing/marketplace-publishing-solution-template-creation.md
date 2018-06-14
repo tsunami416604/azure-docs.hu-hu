@@ -1,11 +1,11 @@
 ---
-title: "A megoldássablon az a piactér létrehozását bemutató útmutatónak |} Microsoft Docs"
-description: "Hozzon létre, hitelesíthet és központi telepítése virtuális Gépre kiterjedő kép megoldás sablonját részletes utasításokat vásárolja meg az Azure piactéren."
+title: A megoldássablon az a piactér létrehozását bemutató útmutatónak |} Microsoft Docs
+description: Hozzon létre, hitelesíthet és központi telepítése virtuális Gépre kiterjedő kép megoldás sablonját részletes utasításokat vásárolja meg az Azure piactéren.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937308"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Az útmutató megoldást sablon létrehozása az Azure piactéren
 1. lépésben befejezése után [fióklétrehozás és a regisztrációs][link-acct-creation], azt interaktív, egy Azure-kompatibilis megoldás sablon létrehozásakor [műszaki Előfeltételek létrehozásához egy megoldás sablon](marketplace-publishing-solution-template-creation-prerequisites.md). Most végigvezetjük, a megoldás sablonok létrehozásának több virtuális gépek a lépéseket a [közzétételi Portáljára] [ link-pubportal] az Azure piactérről.

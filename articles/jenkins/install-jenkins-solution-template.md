@@ -1,6 +1,6 @@
 ---
-title: "Jenkins-kiszolgáló létrehozása az Azure-on"
-description: "Jenkins-kiszolgáló telepítése egy Azure-beli linuxos virtuális gépen a Jenkins-megoldássablonból és egy Java-mintaalkalmazás létrehozása."
+title: Jenkins-kiszolgáló létrehozása az Azure-on
+description: Jenkins-kiszolgáló telepítése egy Azure-beli linuxos virtuális gépen a Jenkins-megoldássablonból és egy Java-mintaalkalmazás létrehozása.
 author: tomarcher
 manager: rloutlaw
 ms.service: multiple
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936577"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 

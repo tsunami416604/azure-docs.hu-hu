@@ -17,6 +17,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29931471"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Docker-/Go-webalkalmazás üzembe helyezése az Azure Web App for Containersben
 
