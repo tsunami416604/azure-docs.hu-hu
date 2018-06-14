@@ -1,13 +1,13 @@
 ---
-title: "Webalkalmazás az Azure CLI 2.0 használatával tárolókat kezelése |} Microsoft Docs"
-description: "Webalkalmazás az Azure parancssori felület használatával tárolókat kezelni."
-keywords: "az Azure app service, webalkalmazás, cli, linux, oss"
+title: Webalkalmazás az Azure CLI 2.0 használatával tárolókat kezelése |} Microsoft Docs
+description: Webalkalmazás az Azure parancssori felület használatával tárolókat kezelni.
+keywords: az Azure app service, webalkalmazás, cli, linux, oss
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24105389"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Webalkalmazás az Azure parancssori felület használatával tárolók kezelése
 

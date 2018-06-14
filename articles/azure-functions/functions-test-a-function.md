@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions tesztelése |} Microsoft Docs"
-description: "Az Azure functions tesztelése Postman, a cURL és a Node.js segítségével."
+title: Az Azure Functions tesztelése |} Microsoft Docs
+description: Az Azure functions tesztelése Postman, a cURL és a Node.js segítségével.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkciók, Funkciók, esemény feldolgozása, webhookokkal, dinamikus számítási, kiszolgáló nélküli architektúra tesztelése"
+editor: ''
+tags: ''
+keywords: Azure funkciók, Funkciók, esemény feldolgozása, webhookokkal, dinamikus számítási, kiszolgáló nélküli architektúra tesztelése
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23838953"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>A kód az Azure Functions tesztelése kapcsolatos olyan stratégiák
 

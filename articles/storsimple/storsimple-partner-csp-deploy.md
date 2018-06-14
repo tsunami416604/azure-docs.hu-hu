@@ -1,12 +1,12 @@
 ---
-title: "A Microsoft Azure StorSimple és szolgáltatón Program áttekintése |} Microsoft Docs"
-description: "Áttekintése a StorSimple és a CSP a StorSimple-partnerek számára."
+title: A Microsoft Azure StorSimple és szolgáltatón Program áttekintése |} Microsoft Docs
+description: Áttekintése a StorSimple és a CSP a StorSimple-partnerek számára.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875654"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Cloud Solution Provider programot a StorSimple virtuális tömb telepíteni
 
