@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157328"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Hatókörök, engedélyek és az Azure Active Directory v2.0-végponttól jóváhagyása
 Alkalmazásokat, amelyekbe beépül az Azure Active Directory (Azure AD) hajtsa végre az olyan engedélyezési modell, amely lehetőséget ad a felhasználók szabályozhatják, hogyan az alkalmazások is hozzáférjenek az adataikhoz. A használt engedélyezési modellt v2.0 végrehajtásának már frissítve van, és módosítja, hogy kapcsolatba kell lépnie egy alkalmazást az Azure AD. Ez a cikk ismerteti a engedélyezési modell, beleértve a hatókörök, engedélyek és beleegyezése főbb fogalmait és kifejezéseit.

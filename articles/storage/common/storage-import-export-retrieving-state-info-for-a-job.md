@@ -1,11 +1,11 @@
 ---
-title: "Azure importálási/exportálási feladatok állapot adatainak lekérése során |} Microsoft Docs"
-description: "Ismerje meg az beszerzése a Microsoft Azure Import/Export szolgáltatás feladatok állapotadatait."
+title: Azure importálási/exportálási feladatok állapot adatainak lekérése során |} Microsoft Docs
+description: Ismerje meg az beszerzése a Microsoft Azure Import/Export szolgáltatás feladatok állapotadatait.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874009"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Importálási/exportálási feladatok állapot adatainak lekérése során
 Hívása a [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) műveletet is adatainak lekérésére importálni és exportálni a feladatokat. A visszaadott adatok tartalmazzák:

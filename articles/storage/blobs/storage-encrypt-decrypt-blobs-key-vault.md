@@ -1,6 +1,6 @@
 ---
-title: "Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával Azure Storage blobs is |} Microsoft Docs"
-description: "Hogyan titkosításához és visszafejtéséhez az Azure Key Vault a Microsoft Azure Storage ügyféloldali titkosítással blob."
+title: 'Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával Azure Storage blobs is |} Microsoft Docs'
+description: Hogyan titkosításához és visszafejtéséhez az Azure Key Vault a Microsoft Azure Storage ügyféloldali titkosítással blob.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "27815813"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Oktatóanyag: Titkosításához és visszafejtéséhez az Azure Key Vault használatával a Microsoft Azure Storage blobs
 ## <a name="introduction"></a>Bevezetés

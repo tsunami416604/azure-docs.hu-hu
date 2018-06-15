@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194046"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Módosítsa a virtuálisgép-méretezési csoport
 Az alkalmazások életciklusa során szükség lehet módosítani, vagy a virtuálisgép-méretezési csoport frissítése. Ezeket a frissítéseket is venni, hogyan lehet frissíteni a beállításait, a méretezési, vagy módosítsa az alkalmazás konfigurációját. A cikkből megtudhatja, hogyan lehet módosítani egy meglévő méretezési a REST API-k, az Azure PowerShell vagy Azure CLI 2.0 készletben.

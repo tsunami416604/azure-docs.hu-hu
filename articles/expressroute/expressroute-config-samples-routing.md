@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute ügyfél útválasztó konfigurációs minták |} Microsoft Docs"
-description: "Ezen a lapon útválasztó config minták biztosít a Cisco és a Juniper útválasztó."
+title: ExpressRoute ügyfél útválasztó konfigurációs minták |} Microsoft Docs
+description: Ezen a lapon útválasztó config minták biztosít a Cisco és a Juniper útválasztó.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 564826bc-017a-4683-a385-37c9fa814948
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850769"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Útválasztó beállítása és kezelése az útválasztási konfigurációs minták
 Ezen a lapon Cisco IOS-XE és a Juniper MX adatsorozat útválasztók felületet és útválasztási konfigurációs minták biztosít. Ezek a minták csak útmutatót kell, és nem kell használni, mert a. A gyártó, így kapja meg a hálózat megfelelő konfigurációi dolgozhat. 

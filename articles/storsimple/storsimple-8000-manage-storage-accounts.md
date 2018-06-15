@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple tárfiók hitelesítő adatait a Microsoft Azure StorSimple 8000 sorozat eszközeire kezelése |} Microsoft Docs"
-description: "Azt ismerteti, hogyan a StorSimple Device Manager konfigurálása lap segítségével hozzáadása, szerkesztése, törlése, vagy forgassa el a biztonsági kulcsok egy tárfiókot."
+title: A StorSimple tárfiók hitelesítő adatait a Microsoft Azure StorSimple 8000 sorozat eszközeire kezelése |} Microsoft Docs
+description: Azt ismerteti, hogyan a StorSimple Device Manager konfigurálása lap segítségével hozzáadása, szerkesztése, törlése, vagy forgassa el a biztonsági kulcsok egy tárfiókot.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875129"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>A StorSimple Device Manager szolgáltatás segítségével a tárfiók hitelesítő adatainak kezelése
 

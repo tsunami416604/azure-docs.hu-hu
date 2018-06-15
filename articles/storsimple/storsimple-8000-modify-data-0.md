@@ -1,12 +1,12 @@
 ---
-title: "DATA 0 módosítása a StorSimple 8000 series eszközön található beállítások |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható Windows PowerShell-lel konfigurálja újra a StorSimple eszköz DATA 0 hálózati adapterén."
+title: DATA 0 módosítása a StorSimple 8000 series eszközön található beállítások |} Microsoft Docs
+description: Ismerje meg, hogyan használható Windows PowerShell-lel konfigurálja újra a StorSimple eszköz DATA 0 hálózati adapterén.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927585"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>A DATA 0 hálózati kapcsolati beállítások a StorSimple 8000 series eszközön módosítása
 

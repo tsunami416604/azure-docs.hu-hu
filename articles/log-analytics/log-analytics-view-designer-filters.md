@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "23945883"
 ---
 # <a name="filters-in-log-analytics-views"></a>A Naplóelemzési nézetekben szűrők
 A **szűrő** a egy [Naplóelemzési megtekintése](log-analytics-view-designer.md) lehetővé teszi a felhasználóknak a nézetben szereplő adatok szűrését által egy adott tulajdonság értéke maga a nézet módosítása nélkül.  Így például csak egy adott számítógépről származó adatok a nézet szűréséhez a nézet felhasználók vagy számítógépek csoportja.  Létrehozhat több szűrő a felhasználók több tulajdonságra szűrés egyetlen nézetben.  Ez a cikk ismerteti, hogyan szűrőt, és vegyen fel egyet a egyéni nézetekben.

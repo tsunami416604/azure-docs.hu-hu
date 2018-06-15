@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32185359"
 ---
 # <a name="azure-technical-content-contributors-guide-index"></a>Az Azure műszaki tartalom közreműködőinek szóló útmutató indexe
 

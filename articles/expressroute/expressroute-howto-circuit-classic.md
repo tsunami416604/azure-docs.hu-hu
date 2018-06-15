@@ -1,11 +1,11 @@
 ---
-title: "Módosítsa az ExpressRoute-kapcsolatcsoportot: PowerShell: klasszikus Azure portál |} Microsoft Docs"
-description: "Ez a cikk végigvezeti a ellenőrizze az állapot, update vagy delete és az ExpressRoute-klasszikus telepítési modell kapcsolatcsoportot kiosztásának megszüntetése."
+title: 'Módosítsa az ExpressRoute-kapcsolatcsoportot: PowerShell: klasszikus Azure portál |} Microsoft Docs'
+description: Ez a cikk végigvezeti a ellenőrizze az állapot, update vagy delete és az ExpressRoute-klasszikus telepítési modell kapcsolatcsoportot kiosztásának megszüntetése.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "24102834"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Módosítsa a powershellel (klasszikus) ExpressRoute-kapcsolatcsoportot
 

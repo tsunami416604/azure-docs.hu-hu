@@ -1,11 +1,11 @@
 ---
-title: "Adja meg biztonsági kapcsolattartási adatait az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum bemutatja, hogyan adja meg az Azure Security Centerben a biztonsági kapcsolattartási adatait."
+title: Adja meg biztonsági kapcsolattartási adatait az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum bemutatja, hogyan adja meg az Azure Security Centerben a biztonsági kapcsolattartási adatait.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866526"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Adja meg az Azure Security Centerben a biztonsági kapcsolattartási adatait
 Azure Security Center javasolni fogja adni biztonsági kapcsolattartási adatait az Azure-előfizetéssel, ha még nem tette meg. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. MSRC hajt végre, válassza ki a biztonság ellenőrzése az Azure-hálózatot és az infrastruktúra, és fenyegetést eszközintelligencia és visszaélés panaszokat kapott harmadik felek számára.

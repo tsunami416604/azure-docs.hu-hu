@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157368"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Bármely a több-bérlős alkalmazásminta használó Azure Active Directory felhasználói bejelentkezés
 Ha egy szoftver számos szervezet hasonló szolgáltatás alkalmazásként, konfigurálhatja az alkalmazás Azure Active Directory (AD) a panelhez bejelentkezések fogadására. Ez a konfiguráció elnevezése, így az alkalmazás több-bérlős. Bármely Azure AD-bérlő felhasználók fog tudni bejelentkezni az alkalmazás után hozzájárul ahhoz, hogy a fiókot használja az alkalmazással. 

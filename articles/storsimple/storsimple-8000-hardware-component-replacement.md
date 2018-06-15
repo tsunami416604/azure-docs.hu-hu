@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series hardver összetevő cseréje |} Microsoft Docs"
-description: "Biztonságosan cserélje le a PCMs, akkumulátor, vezérlő modulok, EBOD vezérlők, meghajtók és a StorSimple eszköz váz ismerteti."
+title: A StorSimple 8000 series hardver összetevő cseréje |} Microsoft Docs
+description: Biztonságosan cserélje le a PCMs, akkumulátor, vezérlő modulok, EBOD vezérlők, meghajtók és a StorSimple eszköz váz ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: 6de50c5031db59176bdf17ecc69b934559220f6a
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927606"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Cserélje le a StorSimple 8000 series eszközön egy hardverösszetevő
 

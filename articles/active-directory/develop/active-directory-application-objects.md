@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155619"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directory (Azure AD)
 Egyes esetekben "alkalmazás" szerinti is böngésző használata az Azure AD a környezetben. Ez a cikk célja az, hogy értelmezését elméleti és konkrét alkalmazások integrálása az Azure AD, a regisztráció olyan bemutatásáért, és hozzájárulás az egy [több-bérlős alkalmazás](active-directory-dev-glossary.md#multi-tenant-application).

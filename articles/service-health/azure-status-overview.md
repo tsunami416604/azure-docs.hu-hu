@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181820"
 ---
 # <a name="azure-status"></a>Az Azure állapota
 [Az Azure állapot](https://azure.microsoft.com/status/) tesz lehetővé az Azure-szolgáltatások állapotának globális nézetét. Azure állapotú szolgáltatás rendelkezésre állása friss információkat kaphat. Mindenki hozzáfér az Azure állapot, valamint a nézet az összes szolgáltatás, amely jelenthetik-e a szolgáltatás állapotát. 

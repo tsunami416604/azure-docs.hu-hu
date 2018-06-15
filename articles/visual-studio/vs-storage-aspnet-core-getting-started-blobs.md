@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure Blob storage és a Visual Studio kapcsolódó szolgáltatások (az ASP.NET Core) |} Microsoft Docs"
-description: "Első lépések a Visual Studióban, az ASP.NET Core projektben Azure Blob storage használatával csatlakoztassa egy tárfiókot a Visual Studio használatával kapcsolódó szolgáltatások"
+title: Ismerkedés az Azure Blob storage és a Visual Studio kapcsolódó szolgáltatások (az ASP.NET Core) |} Microsoft Docs
+description: Első lépések a Visual Studióban, az ASP.NET Core projektben Azure Blob storage használatával csatlakoztassa egy tárfiókot a Visual Studio használatával kapcsolódó szolgáltatások
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: camsoper
 manager: wpickett
-editor: 
+editor: ''
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621223"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés az Azure Blob storage és a Visual Studio kapcsolódó szolgáltatások (ASP.NET mag)
 

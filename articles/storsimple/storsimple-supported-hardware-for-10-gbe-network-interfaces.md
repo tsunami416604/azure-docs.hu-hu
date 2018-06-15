@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple 10 GbE hardver felületeihez |} Microsoft Docs"
-description: "A támogatott kis méretet moduláris (SFP) adó, kábelek és kapcsolók 10 GbE hálózati adaptereihez ismerteti a StorSimple eszköz."
+title: A StorSimple 10 GbE hardver felületeihez |} Microsoft Docs
+description: A támogatott kis méretet moduláris (SFP) adó, kábelek és kapcsolók 10 GbE hálózati adaptereihez ismerteti a StorSimple eszköz.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: df8d40c7-f5ad-4f84-93eb-779fbd5f7243
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927753"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Támogatott hardveres a 10 GbE hálózati adapterek a StorSimple eszköz
 ## <a name="overview"></a>Áttekintés

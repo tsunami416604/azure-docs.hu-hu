@@ -1,11 +1,11 @@
 ---
-title: "Engedélyezze a Virtuálisgép-ügynök az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése VM ügynök **."
+title: Engedélyezze a Virtuálisgép-ügynök az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése VM ügynök **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5b431c25-4241-45b7-9556-cf2a1956f3da
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866309"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Az Azure Security Centerben Virtuálisgép-ügynök engedélyezése
 A virtuális gép ügynököt telepíteni kell a virtuális gépek (VM) annak érdekében, hogy [az adatgyűjtést](security-center-enable-data-collection.md).  Az Azure Security Center köszönhetően láthatja mely virtuális gépek a Virtuálisgép-ügynök igényelnek, és azt javasolja, hogy engedélyezi-e a Virtuálisgép-ügynököt a virtuális gépek.

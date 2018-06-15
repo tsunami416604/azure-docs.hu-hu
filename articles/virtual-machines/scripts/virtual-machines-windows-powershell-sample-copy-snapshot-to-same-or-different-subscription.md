@@ -1,13 +1,13 @@
 ---
-title: "Az Azure PowerShell-parancsfájl minta - ugyanazon vagy másik előfizetésbe felügyelt lemezes pillanatképet másolása (áthelyezése) |} Microsoft Docs"
-description: "Az Azure PowerShell-parancsfájl minta - ugyanazon vagy másik előfizetésbe felügyelt lemezes pillanatképet másolása (áthelyezése)"
+title: Az Azure PowerShell-parancsfájl minta - ugyanazon vagy másik előfizetésbe felügyelt lemezes pillanatképet másolása (áthelyezése) |} Microsoft Docs
+description: Az Azure PowerShell-parancsfájl minta - ugyanazon vagy másik előfizetésbe felügyelt lemezes pillanatképet másolása (áthelyezése)
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,9 +17,10 @@ ms.date: 06/06/2017
 ms.author: ramankum
 ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23879658"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Másolja át a felügyelt lemezes pillanatképet ugyanahhoz az előfizetéshez vagy másik előfizetést, a PowerShell használatával
 

@@ -16,9 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.openlocfilehash: 67fd5ba9be2de1f79511c806ffaa0ae3001bfdcf
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33760289"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Mi az az Azure Active Directory önkiszolgáló regisztráció?
 Ez a cikk azt ismerteti, önkiszolgáló regisztrációt, és hogyan támogatják a forgatókönyvet az Azure Active Directory (Azure AD). Ha azt szeretné, hogy átvehesse a tartománynév egy nem felügyelt Azure ad-bérlői című [rendszergazdaként egy nem felügyelt directory átveszi](domains-admin-takeover.md).

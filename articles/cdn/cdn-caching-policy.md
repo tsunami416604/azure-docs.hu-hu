@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765285"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure CDN gyorsítótárazási házirend Azure Media Services kezelése
 Azure Media Services biztosította HTTP alapú adaptív Streameléshez és progresszív letöltés. A HTTP-alapú adatfolyam magas szinten méretezhető előnyt proxy és a CDN rétegek gyorsítótárazás, valamint a ügyféloldali gyorsítótárazás. Adatfolyam-végpontok nyújt általános adatfolyam képességek, valamint a gyorsítótár HTTP-fejlécek konfigurációját. Adatfolyam-végpontok állítja be a HTTP-Cache-Control: maximális-kor és Expires fejléc. További részleteket a HTTP-gyorsítótár fejléceket [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).

@@ -1,11 +1,11 @@
 ---
-title: "A Java Service Bus API AMQP 1.0 használata |} Microsoft Docs"
-description: "Megtudhatja, hogyan használható a Java üzenet szolgáltatás (JMS) Azure Service Bus és speciális Message Queuing Protodol (AMQP) 1.0-s."
+title: A Java Service Bus API AMQP 1.0 használata |} Microsoft Docs
+description: Megtudhatja, hogyan használható a Java üzenet szolgáltatás (JMS) Azure Service Bus és speciális Message Queuing Protodol (AMQP) 1.0-s.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868381"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Java üzenet szolgáltatás (JMS) API használata a Service Bus és AMQP 1.0
 A speciális Message Queuing protokoll (AMQP) 1.0 egy egy hatékony, megbízható, vezetékes szintű üzenetkezelési protokoll, amely segítségével hatékony, platformok közötti üzenetküldő alkalmazások létrehozását.

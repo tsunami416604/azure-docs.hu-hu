@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182660"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>Gazdagépnév, portok és hozzáférési kulcsok lekérése az Azure CLI-vel
 A gazdagépnév és a portok Azure CLI 2.0-val való lekéréséhez hívja meg az [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show), a kulcsok lekéréséhez pedig az [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) parancsot. A következő szkript meghívja ezt a két parancsot, majd továbbítja a gazdagépnevet, a portokat és a kulcsokat a konzolnak.

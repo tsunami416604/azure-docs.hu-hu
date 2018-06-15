@@ -1,8 +1,8 @@
 ---
 title: Az Operations Management Suite (OMS) SDK |} Microsoft Docs
-description: "Ez a cikk a dokumentációs és egyéb erőforrásai az OMS és az Azure portálon kívül OMS-szolgáltatások eléréséhez szükséges sorolja fel.  Ez REST API magában foglalja a hozzáférést a különböző alkalmazásprogramozási felületek és például a PowerShell parancsfájl-végrehajtók"
+description: Ez a cikk a dokumentációs és egyéb erőforrásai az OMS és az Azure portálon kívül OMS-szolgáltatások eléréséhez szükséges sorolja fel.  Ez REST API magában foglalja a hozzáférést a különböző alkalmazásprogramozási felületek és például a PowerShell parancsfájl-végrehajtók
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865623"
 ---
 # <a name="operations-management-suite-oms-sdk"></a>Az Operations Management Suite (OMS) SDK
 [Az Operations Management Suite (OMS)](operations-management-suite-overview.md) a Microsoft felhőalapú informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúra.  Ez a cikk a dokumentációs és egyéb erőforrásai az OMS és az Azure portálon kívül OMS-szolgáltatások eléréséhez szükséges sorolja fel.  Ez magában foglalja REST API különböző alkalmazásprogramozási felületek és például a PowerShell parancsfájl-végrehajtók való hozzáférést. 

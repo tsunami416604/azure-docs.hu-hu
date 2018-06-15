@@ -1,6 +1,6 @@
 ---
-title: "Az MPIO konfigurálása a StorSimple Linux gazdagépen |} Microsoft Docs"
-description: "A CentOS 6.6 futó Linux-állomáshoz csatlakoztatott StorSimple az MPIO konfigurálása"
+title: Az MPIO konfigurálása a StorSimple Linux gazdagépen |} Microsoft Docs
+description: A CentOS 6.6 futó Linux-állomáshoz csatlakoztatott StorSimple az MPIO konfigurálása
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27779091"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a StorSimple gazdagépen fut a CentOS
 Ez a cikk ismerteti a Centos 6.6 gazdakiszolgáló többutas I/O (MPIO) konfigurálásához szükséges lépéseket. A kiszolgáló csatlakozik-e a Microsoft Azure StorSimple eszközt a magas rendelkezésre álláshoz az iSCSI-kezdeményezők keresztül. Ismerteti részletesen a automatikus felderítés többutas eszközről és beállításai csak a StorSimple-köteteket.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311369"
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs hitelesítés és a biztonsági modell – áttekintés
 

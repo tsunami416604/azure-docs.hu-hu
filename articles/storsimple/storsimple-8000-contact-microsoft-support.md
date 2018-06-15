@@ -1,12 +1,12 @@
 ---
-title: "Támogatási jegy vagy a StorSimple 8000 Series eset létrehozása |} Microsoft Docs"
-description: "Megtudhatja, hogyan jelentkezzen támogatási kérelmet, és a StorSimple 8000 series eszközön támogatási munkamenet indításához."
+title: Támogatási jegy vagy a StorSimple 8000 Series eset létrehozása |} Microsoft Docs
+description: Megtudhatja, hogyan jelentkezzen támogatási kérelmet, és a StorSimple 8000 series eszközön támogatási munkamenet indításához.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743048"
 ---
 # <a name="contact-microsoft-support"></a>Forduljon a Microsoft támogatási szolgálatához.
 

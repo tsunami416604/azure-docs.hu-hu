@@ -1,14 +1,14 @@
 ---
-title: "Strukturálatlan adatok tárolása az Azure Cosmos DB és az Azure Functions használatával | Microsoft Docs"
-description: "Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával"
+title: Strukturálatlan adatok tárolása az Azure Cosmos DB és az Azure Functions használatával | Microsoft Docs
+description: Strukturálatlan adatok tárolása az Azure Functions és a Cosmos DB használatával
 services: functions
 documentationcenter: functions
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure functions, függvények, eseményfeldolgozás, Cosmos DB, dinamikus számítás, kiszolgáló nélküli architektúra"
-ms.assetid: 
+editor: ''
+tags: ''
+keywords: azure functions, függvények, eseményfeldolgozás, Cosmos DB, dinamikus számítás, kiszolgáló nélküli architektúra
+ms.assetid: ''
 ms.service: functions
 ms.devlang: csharp
 ms.topic: quickstart
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/11/2018
+ms.locfileid: "27767553"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Strukturálatlan adatok tárolása az Azure Functions és az Azure Cosmos DB használatával
 

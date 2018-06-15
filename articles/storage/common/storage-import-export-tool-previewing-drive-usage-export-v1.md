@@ -1,11 +1,11 @@
 ---
-title: "Előnézet-meghajtó használata az Azure Import/Export exportálási feladat - 1-es verzió |} Microsoft Docs"
-description: "Útmutató az Azure Import/Export szolgáltatás exportálási feladat kiválasztott BLOB listáját."
+title: Előnézet-meghajtó használata az Azure Import/Export exportálási feladat - 1-es verzió |} Microsoft Docs
+description: Útmutató az Azure Import/Export szolgáltatás exportálási feladat kiválasztott BLOB listáját.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873645"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Meghajtóhasználat előnézete exportálási feladatokhoz
 Exportálási feladat létrehozása előtt válasszon olyan blobok exportálni szeretné. A Microsoft Azure Import/Export szolgáltatás lehetővé teszi egy blob elérési utak listája használja, vagy a blob-előtagok a választott blobok képviseli.  

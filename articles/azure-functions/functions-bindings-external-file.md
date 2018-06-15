@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Functions (kísérleti) külső fájl kötései"
-description: "Külső fájl kötések az Azure Functions használatával"
+title: Az Azure Functions (kísérleti) külső fájl kötései
+description: Külső fájl kötések az Azure Functions használatával
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27607921"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions külső fájl kötések (kísérleti)
 Ez a cikk bemutatja, hogyan kezelheti az Azure Functions különböző Szolgáltatottszoftver-szolgáltatók (például a Dropbox vagy a Google-meghajtó) fájlok. Azure Functions támogatja indítás, bemeneti és kimeneti külső fájlokat kötései. Ilyen kötést Szolgáltatottszoftver-szolgáltatókkal API kapcsolatok létrehozása vagy meglévő, a függvény App erőforráscsoportból API-kapcsolat használata.

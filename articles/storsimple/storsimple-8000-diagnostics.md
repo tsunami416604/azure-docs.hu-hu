@@ -1,12 +1,12 @@
 ---
-title: "Diagnosztikai eszköz, a StorSimple 8000 eszköz hibáinak elhárítása |} Microsoft Docs"
-description: "A StorSimple eszköz módok és használatához a Windows PowerShell-lel módosíthatja eszköz módját ismerteti."
+title: Diagnosztikai eszköz, a StorSimple 8000 eszköz hibáinak elhárítása |} Microsoft Docs
+description: A StorSimple eszköz módok és használatához a Windows PowerShell-lel módosíthatja eszköz módját ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27744112"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>A StorSimple diagnosztikai eszköz segítségével 8000 sorozat eszközök kapcsolatos problémák elhárítása
 

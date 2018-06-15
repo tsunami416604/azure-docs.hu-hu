@@ -1,6 +1,6 @@
 ---
-title: "A Ruby a Queue storage használata |} Microsoft Docs"
-description: "Útmutató az Azure Queue szolgáltatás segítségével hozza létre, és törli az üzenetsorok, és helyezze, get, és törli az üzenetet. Ruby írt minták."
+title: A Ruby a Queue storage használata |} Microsoft Docs
+description: Útmutató az Azure Queue szolgáltatás segítségével hozza létre, és törli az üzenetsorok, és helyezze, get, és törli az üzenetet. Ruby írt minták.
 services: storage
 documentationcenter: ruby
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993636"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>How to use Queue storage from Ruby (A Queue Storage használata Rubyval)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
