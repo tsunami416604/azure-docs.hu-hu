@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213180"
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 Az Azure Service Fabric leegyszerűsíti az írást, és az állapotmentes és állapotalapú Reliable Services kezelése. Ez a témakör ismerteti:

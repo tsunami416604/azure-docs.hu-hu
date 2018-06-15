@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365627"
 ---
 # <a name="azure-network-security-overview"></a>Az Azure biztonsági áttekintése
 Azure tartalmaz egy robusztus hálózati infrastruktúra, az alkalmazás és szolgáltatás hálózati kapcsolati követelményeinek támogatására. Helyszíni között, az Azure-ban lévő erőforrások közötti hálózati kapcsolatot, és Azure üzemeltetett erőforrásokhoz, és hogy, és az internetről és az Azure.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206713"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Szolgáltatás futtatása csoportosan felügyelt szolgáltatásfiókként
 Egy Windows Server önálló fürtön a szolgáltatás csoportos felügyelt szolgáltatásfiókok (gMSA) futtató házirend segítségével is futtathatja.  Alapértelmezés szerint a Service Fabric alkalmazások futnak, a fiók, amely alatt futó a Fabric.exe folyamatban. Futó alkalmazások eltérő fiókkal, még akkor is, a megosztott üzemeltetési környezetben révén azokat egymástól biztonságosabb. Vegye figyelembe, hogy ez az Active Directory helyszíni belül a tartomány és a nem Azure Active Directory (Azure AD) használ. A csoportosan felügyelt szolgáltatásfiókot használ, nincs jelszót vagy az alkalmazás jegyzékében tárolt titkosított jelszót.  A szolgáltatás is futtathatja egy [Active Directory-felhasználó vagy csoport](service-fabric-run-service-as-ad-user-or-group.md).

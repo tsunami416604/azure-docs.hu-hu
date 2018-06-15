@@ -13,6 +13,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161141"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>A feladatátvétel, és sikertelen lesz a másodlagos helyszíni helyre replikált Hyper-V virtuális gépek biztonsági
 

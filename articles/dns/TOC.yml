@@ -6,7 +6,7 @@
       href: dns-overview.md
 - name: Gyors útmutatók
   items:
-    - name: DNS-zónák és -rekordok létrehozása – portál
+    - name: Névfeloldás – portál
       href: dns-getstarted-portal.md
     - name: DNS-zónák és -rekordok létrehozása – PowerShell
       href: dns-getstarted-powershell.md
@@ -14,12 +14,12 @@
       href: dns-getstarted-cli.md
 - name: Oktatóanyagok
   items:
-    - name: Privát DNS-zónák és -rekordok létrehozása
-      href: private-dns-getstarted-powershell.md
-    - name: Tartomány delegálása az Azure DNS-be
+    - name: Üzemeltessen saját tartományt az Azure DNS-ben
       href: dns-delegate-domain-azure-dns.md
     - name: Webalkalmazások egyéni DNS-rekordjainak létrehozása
       href: dns-web-sites-custom-domain.md
+    - name: Privát DNS-zónák és -rekordok létrehozása
+      href: private-dns-getstarted-powershell.md
 - name: Példák
   items:
     - name: Azure CLI

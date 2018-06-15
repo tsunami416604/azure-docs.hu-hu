@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204923"
 ---
 # <a name="service-movement-cost"></a>A mozgás költsége szolgáltatás
 A Service Fabric fürt erőforrás-kezelő úgy ítéli meg, amikor megpróbálja megállapítani, hogy milyen módosítások, hogy a fürt tényezővel a költségét és ezeket a módosításokat. A "költség" fogalmát ellen, hogy mekkora a fürt növelhető a forog ki. Költség Beleszámítja a terheléselosztás, töredezettségmentesítés és egyéb követelmények szolgáltatások áthelyezésekor. A cél, hogy legalább zavaró vagy drága módon követelményeinek. 

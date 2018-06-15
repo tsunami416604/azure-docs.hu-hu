@@ -47,6 +47,8 @@
           href: cdn-dynamic-site-acceleration.md
     - name: Kezelés
       items:
+        - name: Végpont létrehozása
+          href: cdn-create-endpoint-how-to.md
         - name: Kezelés az Azure PowerShell-lel
           href: cdn-manage-powershell.md
         - name: Elérés korlátozása ország szerint

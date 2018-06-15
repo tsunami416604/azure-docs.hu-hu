@@ -1,26 +1,21 @@
 ---
-title: "Biztonsági másolat készítése a Windows Serverről az Azure-ba | Microsoft Docs"
-description: "Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését."
+title: Windows Server biztonsági mentése az Azure-ba
+description: Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését.
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
-keywords: "windows server biztonsági másolat; windows server biztonsági mentése; biztonsági mentés és vészhelyreállítás"
-ms.assetid: 
+keywords: windows server biztonsági másolat; windows server biztonsági mentése; biztonsági mentés és vészhelyreállítás
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 2/14/2018
-ms.author: saurabhsensharma;markgal;
+ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: de0398b7f295894a3cac7c67b68cef237c3ac2c2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609018"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
@@ -36,7 +31,7 @@ Az Azure Backuppal megvédheti a Windows Servert a sérülésektől, támadások
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 

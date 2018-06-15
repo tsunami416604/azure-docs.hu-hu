@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212527"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric-állapotjelentések hozzáadása
 Az Azure Service Fabric vezet be a [állapotmodell](service-fabric-health-introduction.md) úgy tervezték, hogy sérült fürt és az alkalmazás feltételeket az adott entitások jelzőt. A health modellje **állapotfigyelő jelentéskészítők** (rendszer összetevőit és watchdogs). Könnyű és gyors diagnosztikai és javítási célja. Szolgáltatás írók szükség az társaságuk vonatkozó állapotát. Minden olyan esetben, kedvezőtlen hatással lehet az egészségügyi kell kiválasztását, különösen akkor, ha segíthet megközelíti a legfelső szintű jelző problémák. Az állapotadatok is mentheti időt és erőfeszítést Hibakeresés és a vizsgálat. Támogató különösen akkor törölje a jelet, ha a szolgáltatás megfelelően működik, és a felhőben léptékű (magán- vagy Azure).

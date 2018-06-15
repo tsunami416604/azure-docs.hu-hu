@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267445"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Élőhely segítségével az Azure alkalmazás telepítése
 [Élőhely](https://www.habitat.sh/) egy első a kind nyílt forráskódú projekt, amely egy teljesen új Alkalmazáskezelés módjáról nyújt. Élőhely lehetővé teszi az alkalmazás és az automatizálás a telepítési egység, amely. Alkalmazások vannak egy egyszerűsített "élőhely" csomagolni, amikor a futásidejű környezetre, hogy a tároló, operációs rendszer nélküli vagy PaaS,-e már nincs a fókusz, és nem korlátozhatják az alkalmazás. 

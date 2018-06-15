@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206079"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
 Ez a cikk bemutatja, hogyan csomagot, és több Vendég végrehajtható fájlok telepítése Azure Service Fabric. Kialakításához, és egyetlen Service Fabric-csomag telepítése olvasási hogyan való [központi telepítése egy Vendég végrehajtható Service Fabric](service-fabric-deploy-existing-app.md).

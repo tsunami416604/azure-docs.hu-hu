@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366613"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Hogyan kell beállítani egy statikus belső magánhálózati IP-cím (klasszikus) PowerShell használatával
 A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet megadni. A virtuális hálózat virtuális gépek automatikusan fog kapni a belső IP-címnek megadott tartomány. Azonban bizonyos esetekben egy statikus IP-címet ad meg egy adott virtuális gép teljesen logikus. Ha például a virtuális Gépet DNS futtatni fogja vagy egy tartományvezérlő. Egy statikus belső IP-címet a virtuális gép akár keresztül stop/deprovision állapotban marad. 

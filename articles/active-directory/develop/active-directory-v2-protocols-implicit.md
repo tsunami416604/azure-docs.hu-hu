@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158387"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoll - gyógyfürdők a implicit engedélyezési folyamat használata
 A v2.0-végponttal is jelentkezzen be arra a egylapos alkalmazások a Microsoft a személyes és munkahelyi vagy iskolai fiókkal rendelkező felhasználók. Egyetlen lap, és más JavaScript alkalmazásokkal szerepkört futtató elsősorban egy böngésző arc érdekes néhány felkéri, amikor a hitelesítés:

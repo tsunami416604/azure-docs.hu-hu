@@ -632,6 +632,10 @@
           href: service-fabric-troubleshoot-local-cluster-setup.md
         - name: Gyakori forgatókönyvek diagnosztizálása
           href: service-fabric-diagnostics-common-scenarios.md
+    - name: Ajánlott eljárások
+      items:
+        - name: Termelési készenlét ellenőrzőlistája
+          href: service-fabric-production-readiness-checklist.md
 - name: Referencia
   items:
     - name: Azure PowerShell

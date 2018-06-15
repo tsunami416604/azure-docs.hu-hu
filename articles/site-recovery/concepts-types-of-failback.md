@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Site Recovery feladatátvételi |} Microsoft Docs"
-description: "Ez a cikk feladat-visszavétel és figyelmeztetések vissza a helyszíni az Azure Site Recovery szolgáltatásban a megfelelő működése során figyelembe kell venni a különböző típusainak áttekintése."
+title: Az Azure Site Recovery feladatátvételi |} Microsoft Docs
+description: Ez a cikk feladat-visszavétel és figyelmeztetések vissza a helyszíni az Azure Site Recovery szolgáltatásban a megfelelő működése során figyelembe kell venni a különböző típusainak áttekintése.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29803552"
 ---
 # <a name="overview-of-failback"></a>Feladat-visszavétel áttekintése
 

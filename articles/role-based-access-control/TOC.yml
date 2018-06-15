@@ -15,11 +15,13 @@
           href: tutorial-role-assignments-user-powershell.md
         - name: Hozzáférés biztosítása csoport számára – PowerShell
           href: tutorial-role-assignments-group-powershell.md
+        - name: Egyéni szerepkör létrehozása – PowerShell
+          href: tutorial-custom-role-powershell.md
+        - name: Egyéni szerepkör létrehozása – parancssori felület
+          href: tutorial-custom-role-cli.md
     - name: Szerepkör-hozzárendelések kezelése
       items:
-        - name: Felhasználó
-          href: role-assignments-users.md
-        - name: Erőforrás
+        - name: Portál
           href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
         - name: Azure CLI
           href: role-assignments-cli.md

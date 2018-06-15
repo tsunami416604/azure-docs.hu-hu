@@ -2,13 +2,13 @@
 
 # Áttekintés
 ## [Mi az az Azure Active Directory?](active-directory-whatis.md)
-## [Tudnivalók az Azure-identitáskezelésről](identity-fundamentals.md)
-## [Az Azure identitáskezelési megoldásainak ismertetése](understand-azure-identity-solutions.md)
+## [Tudnivalók az Azure-identitáskezelésről](fundamentals/identity-fundamentals.md)
+## [Az Azure identitáskezelési megoldásainak ismertetése](fundamentals/understand-azure-identity-solutions.md)
 ## [Hibrid identitáskezelési megoldás](choose-hybrid-identity-solution.md)
 ## [Azure-előfizetések társítása](active-directory-how-subscriptions-associated-directory.md)
-## [Lakhely és adatkezelési szempontok](active-directory-data-storage-eu.md)
-## [Gyakori kérdések](active-directory-faq.md)
-## [Újdonságok](whats-new.md)
+## [Lakhely és adatkezelési szempontok](fundamentals/active-directory-data-storage-eu.md)
+## [Gyakori kérdések](fundamentals/active-directory-faq.md)
+## [Újdonságok](fundamentals/whats-new.md)
 
 
 # Bevezetés
@@ -17,14 +17,14 @@
 ## [Egyéni tartománynév hozzáadása](add-custom-domain.md)
 ## [Vállalati arculat konfigurálása](customize-branding.md)
 ## [Felhasználók hozzáadása az Azure AD-hez](add-users-azure-active-directory.md)
-## [Licencek hozzárendelése felhasználókhoz](license-users-groups.md)
+## [Licencek hozzárendelése felhasználókhoz](fundamentals/license-users-groups.md)
 ## [Új jelszó önkiszolgáló kérésének konfigurálása](authentication/quickstart-sspr.md)
 ## [Vállalat adatvédelmi információinak hozzáadása az Azure AD-ben](active-directory-properties-area.md)
 
 
 # Útmutató
 ## Tervezés és kialakítás
-### [Az Azure AD architektúrájának ismertetése](active-directory-architecture.md)
+### [Az Azure AD architektúrájának ismertetése](fundamentals/active-directory-architecture.md)
 ### [Jogcímtársítások az Azure Active Directoryban](active-directory-claims-mapping.md)
 ### [Hibrid identitáskezelési megoldás üzembe helyezése](active-directory-hybrid-identity-design-considerations-overview.md)
 #### Követelmények meghatározása
@@ -87,7 +87,7 @@
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](active-directory-accessmanagement-managing-group-owners.md)
-### [Csoporttagság kezelése](active-directory-groups-membership-azure-portal.md)
+### [Csoporttagság kezelése](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [Licencek hozzárendelése csoportok használatával](active-directory-licensing-whatis-azure-portal.md)
 #### [Licencek hozzárendelése egy csoporthoz](active-directory-licensing-group-assignment-azure-portal.md)
 #### [A csoportok licencproblémáinak azonosítása és megoldása](active-directory-licensing-group-problem-resolution-azure-portal.md)
@@ -100,7 +100,7 @@
 ### [A csoportokra vonatkozó elnevezési szabályzat kényszerítése](groups-naming-policy.md)
 ### [Az összes csoport megtekintése](active-directory-groups-view-azure-portal.md)
 ### [Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz](active-directory-accessmanagement-group-saasapps.md)
-### [Törölt Office 365-csoport visszaállítása](active-directory-groups-restore-azure-portal.md)
+### [Törölt Office 365-csoport visszaállítása](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Csoportbeállítások kezelése](active-directory-groups-settings-azure-portal.md) 
 ### Speciális szabályok létrehozása
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
@@ -134,8 +134,6 @@
 #### [Hiányzó adatok a letöltésekben](active-directory-reporting-troubleshoot-missing-data-download.md)
 #### [Az Azure Active Directory-tevékenységnaplók tartalomcsomag-hibái](active-directory-reporting-troubleshoot-content-pack.md)
 ### [Szoftveres hozzáférés](active-directory-reporting-api-getting-started-azure-portal.md)
-#### [Naplózási referencia](active-directory-reporting-api-audit-reference.md)
-#### [Bejelentkezési referencia](active-directory-reporting-api-sign-in-activity-reference.md)
 #### [Előfeltételek](active-directory-reporting-api-prerequisites-azure-portal.md)
 #### [Naplózási minták](active-directory-reporting-api-audit-samples.md)
 #### [Bejelentkezési minták](active-directory-reporting-api-sign-in-activity-samples.md)
@@ -281,7 +279,8 @@
 ### Egyéni tartománynevek
 #### [Gyors útmutató](add-custom-domain.md)
 #### [Egyéni tartománynevek hozzáadása](active-directory-domains-manage-azure-portal.md)
-### [A címtár felügyelete](active-directory-administer.md)
+### [A címtár felügyelete](fundamentals/active-directory-administer.md)
+### [Könyvtár törlése](directory-delete-howto.md)
 ### [Több címtár](active-directory-licensing-directory-independence.md)
 ### [Önkiszolgáló regisztráció](active-directory-self-service-signup.md)
 ### [Nem felügyelt könyvtár átvétele](domains-admin-takeover.md)
@@ -300,12 +299,12 @@
 ## Erőforrások hozzáférésének delegálása
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
 #### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](active-directory-users-assign-role-azure-portal.md) 
-#### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](users-default-permissions.md) 
+#### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](fundamentals/users-default-permissions.md) 
 ### [Emelt szintű hozzáférés biztonsága](admin-roles-best-practices.md)  
 ### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](active-directory-admin-manage-emergency-access-accounts.md) 
 
 
-#### [Alapértelmezett felhasználói engedélyek](users-default-permissions.md)
+#### [Alapértelmezett felhasználói engedélyek](fundamentals/users-default-permissions.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 ### [Kiemelt szerepkörök védelme](admin-roles-best-practices.md)
@@ -323,27 +322,29 @@
 
 ## Identitások védelme
 ### [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md)
-#### [Feltételek](active-directory-conditional-access-conditions.md)
-#### [Helyfeltételek](active-directory-conditional-access-locations.md)
-#### [Vezérlők](active-directory-conditional-access-controls.md)
 #### [Első lépések](active-directory-conditional-access-azure-portal-get-started.md)
-#### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
-#### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
-#### [Klasszikus szabályzatok migrálása](active-directory-conditional-access-migration.md)
-#### [Lehetőségelemzési eszköz](active-directory-conditional-access-whatif.md)
-#### Első lépések
+#### Gyors útmutatók
 ##### [Felhőalkalmazásonkénti MFA konfigurálása](active-directory-conditional-access-app-based-mfa.md)
-#### Feladatok
+#### Oktatóanyagok
 ##### [Klasszikus MFA-szabályzat migrálása](active-directory-conditional-access-migration-mfa.md)
+#### Alapelvek
+##### [Feltételek](active-directory-conditional-access-conditions.md)
+##### [Helyfeltételek](active-directory-conditional-access-locations.md)
+##### [Vezérlők](active-directory-conditional-access-controls.md)
+##### [Lehetőségelemzési eszköz](active-directory-conditional-access-whatif.md)
+##### [Az Office 365-szolgáltatások eszközszabályzatainak ismertetése](active-directory-conditional-access-device-policies.md)
+#### Útmutatók
+##### [Ajánlott eljárások](active-directory-conditional-access-best-practices.md)
+##### [Feltételes hozzáférési szabályzatok konfigurálása a nem megbízható hálózatokból indított hozzáférési kísérletekre vonatkozóan](active-directory-conditional-access-untrusted-networks.md)
 ##### [Eszközalapú feltételes hozzáférés beállítása](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Alkalmazásalapú feltételes hozzáférés beállítása](active-directory-conditional-access-mam.md)
 ##### [A felhasználókra és az alkalmazásra vonatkozó használati feltételek biztosítása](active-directory-tou.md)
+##### [Klasszikus szabályzatok migrálása](active-directory-conditional-access-migration.md)
 ##### [VPN-kapcsolat beállítása](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [A SharePoint és az Exchange Online beállítása](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Kijavítás](active-directory-conditional-access-device-remediation.md)
 #### [Technikai útmutató](active-directory-conditional-access-technical-reference.md)
 #### [Gyakori kérdések](active-directory-conditional-faqs.md)
-
 
 ### Tanúsítványalapú hitelesítés
 #### [Android](active-directory-certificate-based-authentication-android.md)

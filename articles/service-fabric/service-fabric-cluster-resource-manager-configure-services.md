@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210579"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>A Service Fabric-szolgáltatások fürt resource manager beállításainak konfigurálása
 A Service Fabric fürt erőforrás-kezelő lehetővé teszi, hogy a minden részletre kiterjedő szabályozhatják a minden személy nevű szolgáltatás meghatározó szabályok. Minden elnevezett szolgáltatás hogyan azt kell kiosztani a fürt szabályokat adhat meg. Minden elnevezett szolgáltatás is meghatározhatók szeretnének metrikák készletét a jelentéshez, beleértve a fontos hogyan vannak az adott szolgáltatáshoz. A három különböző feladatok szolgáltatások konfigurálása megszakad:

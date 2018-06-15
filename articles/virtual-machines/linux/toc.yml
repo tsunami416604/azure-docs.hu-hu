@@ -222,6 +222,8 @@
           href: scheduled-events.md
         - name: Metaadatok monitorozása
           href: instance-metadata-service.md
+        - name: Használati metrikák lekérése a REST használatával
+          href: metrics-vm-usage-rest.md
     - name: Rendszerképek használata
       items:
         - name: Rendszerképek keresése és használata

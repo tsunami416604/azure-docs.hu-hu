@@ -2,24 +2,21 @@
 title: 'Azure Cosmos DB: Flask webalkalmazás létrehozása Pythonnal és az Azure Cosmos DB MongoDB API-val | Microsoft Docs'
 description: Egy Python Flask kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB MongoDB API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
-documentationcenter: ''
 author: heatherbshapiro
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 024ca836e4d2c58c4c942d6f7376608e40248316
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885102"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795720"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Flask alkalmazás létrehozása a MongoDB API-val
 
@@ -41,7 +38,7 @@ Ez a rövid útmutató a következő [Flask példát](https://github.com/Azure-S
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy Flask-MongoDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, majd futtatni fogjuk az alkalmazást. Ilyen egyszerű az adatokkal programozott módon dolgozni.
+Most pedig klónozunk egy Flask-MongoDB API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Ilyen egyszerű az adatokkal programozott módon dolgozni.
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
@@ -71,7 +68,7 @@ Most pedig klónozunk egy Flask-MongoDB API-alkalmazást a GitHubról, beállít
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben áttérhet [A webalkalmazás futtatása](#run-the-web-app) című szakaszra. 
 
-Az alábbi kódrészletek mind az app.py fájlból származnak, és a helyi Azure Cosmos DB Emulator kapcsolati karakterláncát használják. A jelszót az alább látható módon kell felosztani a máshogy nem elemezhető perjelek befogadásához.
+Az alábbi kódrészletek mind az app.py fájlból származnak, és a helyi Azure Cosmos DB Emulator kapcsolati sztringjét használják. A jelszót az alább látható módon kell felosztani a máshogy nem elemezhető perjelek befogadásához.
 
 * Inicializálja a MongoDB-ügyfelet, kérje le az adatbázist, és hitelesítsen.
 
@@ -111,17 +108,17 @@ Az alábbi kódrészletek mind az app.py fájlból származnak, és a helyi Azur
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
+## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Ha tesztelni szeretné a kódot egy élő Azure Cosmos DB-fiókban, lépjen az Azure Portalra egy fiók létrehozásához, és kérje le a kapcsolati karakterlánc adatait. Ezután másolja azokat az alkalmazásba.
+Ha tesztelni szeretné a kódot egy élő Azure Cosmos DB-fiókban, lépjen az Azure Portalra egy fiók létrehozásához, és kérje le a kapcsolati sztring adatait. Ezután másolja azokat az alkalmazásba.
 
-1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kapcsolati karakterlánc** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben használja a képernyő jobb oldalán lévő másolási gombokat a felhasználónév, a jelszó és a gazdagép másolásához a Dal.cs fájlba.
+1. Az [Azure Portalon](http://portal.azure.com/) az Azure Cosmos DB-fiókban a bal oldalsávon kattintson a **Kapcsolati sztring** elemre, majd kattintson az **írási/olvasási kulcsok** lehetőségre. A következő lépésben használja a képernyő jobb oldalán lévő másolási gombokat a felhasználónév, a jelszó és a gazdagép másolásához a Dal.cs fájlba.
 
 2. Nyissa meg a gyökérkönyvtárban lévő **app.py** fájlt.
 
 3. A másolási gomb használatával másolja ki a **username** érteket a Portalból, és azt adja meg a **name** értékeként az **app.py** fájlban.
 
-4. Ezután másolja ki a **kapcsolati karakterlánc** értékét a Portalból, és azt adja meg a MongoClient értékeként az **app.py** fájlban.
+4. Ezután másolja ki a **kapcsolati sztring** értékét a Portalból, és azt adja meg a MongoClient értékeként az **app.py** fájlban.
 
 5. Végül másolja ki a **jelszó** értékét a Portalból, és azt adja meg a **password** értékeként az **app.py** fájlban.
 
@@ -148,7 +145,7 @@ Ha nem szeretne létrehozni elágazást ehhez az adattárhoz, az alul találhat�
 </a>
 
 > [!NOTE]
-> Ha a Githubon vagy más forrásvezérlő helyen szeretné tárolni a kódot, távolítsa el a kapcsolati karakterláncokat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
+> Ha a Githubon vagy más forrásvezérlő helyen szeretné tárolni a kódot, távolítsa el a kapcsolati sztringekat a kódból. Ehelyett a webalkalmazás alkalmazásbeállításaival állíthatók be.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
 

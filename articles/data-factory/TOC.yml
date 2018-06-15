@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Azure SSIS integrációs modul létrehozása
+    - name: 1 – Azure SSIS integrációs modul üzembe helyezése
       items:
         - name: Felhasználói felület (UI)
           href: tutorial-deploy-ssis-packages-azure.md

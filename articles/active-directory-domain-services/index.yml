@@ -68,7 +68,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: </a>Az Azure AD-alkalmazásproxy üzembe helyezése<a href="active-directory-ds-deploy-azure-app-proxy.md">
+    - html: <a href="active-directory-ds-deploy-azure-app-proxy.md">Az Azure AD-alkalmazásproxy üzembe helyezése</a>
     - html: <a href="active-directory-ds-enable-sharepoint-profile-sync.md">Profilszinkronizálás a SharePoint-kiszolgálóhoz</a>
     - html: <a href="active-directory-ds-enable-kcd.md">A Kerberos által korlátozott delegálás konfigurálása</a>
 - title: Útmutatók

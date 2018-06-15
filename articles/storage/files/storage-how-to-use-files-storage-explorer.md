@@ -4,8 +4,8 @@ description: Megismerheti, hogyan kezelheti az Azure Files szolgáltatást az Az
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
-ms.openlocfilehash: 1953ee18fe878c33a1a0965937f64056278875cf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f628f393f1ff5922d9d2c82b30d4fdbf4b5caf23
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738173"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Azure-fájlmegosztások felügyelete az Azure Storage Explorerrel 
 Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Ez a cikk az Azure-fájlmegosztások az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) való használatának alapvető lépéseit mutatja be. A Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
@@ -46,7 +47,8 @@ A Storage Explorer nem használható új erőforrások létrehozására. A bemut
 A Storage Explorer első indításakor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz: 
 
 - **Bejelentkezés az Azure-fiókon keresztül**: Bejelentkezhet a vállalata vagy Microsoft-fiókja felhasználói hitelesítő adataival. 
-- **Csatlakozás adott tárfiókhoz kapcsolati karakterlánc vagy SAS-jogkivonat használatával**: A kapcsolati karakterlánc egy speciális karakterlánc, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati karakterláncokról: [Az Azure Storage kapcsolati karakterláncok konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- 
+  **Csatlakozás adott tárfiókhoz kapcsolati sztring vagy SAS-jogkivonat használatával**: A kapcsolati sztring egy speciális sztring, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 - **Csatlakozás adott tárfiókhoz a tárfiók nevének és kulcsának használatával**: A tárfiók nevével és kulcsával csatlakozhat az Azure Storage-hoz.
 
 Ebben a rövid útmutatóban az Azure-fiókjával jelentkezzen be. Válassza az **Azure-fiók hozzáadása**, majd a **Bejelentkezés** elemet. Az utasításokat követve jelentkezzen be Azure-fiókjába.

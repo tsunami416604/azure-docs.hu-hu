@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209970"
 ---
 # <a name="service-fabric-architecture"></a>A Service Fabric-architektúra
 A Service Fabric-t a réteges alrendszereket. Alrendszereket lehetővé teszik a alkalmazások, amelyek írni:

@@ -1,10 +1,10 @@
 ---
-title: "Az Azure SDK for .NET 2.7 és .NET 2.7.1-es kibocsátási megjegyzések"
-description: "Az Azure SDK for .NET 2.7 és .NET 2.7.1-es kibocsátási megjegyzések"
+title: Az Azure SDK for .NET 2.7 és .NET 2.7.1-es kibocsátási megjegyzések
+description: Az Azure SDK for .NET 2.7 és .NET 2.7.1-es kibocsátási megjegyzések
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: 877d070a-9bd5-49b3-8fac-6bb5f65c3554
 ms.service: app-service
 ms.devlang: multiple
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836720"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Az Azure SDK for .NET 2.7 és .NET 2.7.1-es kibocsátási megjegyzések
 ## <a name="overview"></a>Áttekintés

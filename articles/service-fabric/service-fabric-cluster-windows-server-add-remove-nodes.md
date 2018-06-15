@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212544"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló Service Fabric-fürt a csomópontok hozzáadásához és eltávolításához
 Miután [a különálló Service Fabric-fürt létrehozása a Windows Server gépeken](service-fabric-cluster-creation-for-windows-server.md), () igényeinek lehet módosítani, ezért szüksége lesz a fürthöz való csomópontok hozzáadásához és eltávolításához. Ez a cikk részletes lépéseit ennek érdekében. Vegye figyelembe, hogy hozzáadása csomópont funkció nem támogatott a helyi fejlesztési fürtök.

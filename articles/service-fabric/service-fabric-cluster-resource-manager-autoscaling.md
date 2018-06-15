@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213197"
 ---
 # <a name="introduction-to-auto-scaling"></a>Az automatikus skálázás bemutatása
 Automatikus skálázás be a Service Fabric egy további lehetőség a szolgáltatások alapján be, hogy a szolgáltatások jelentik, vagy az erőforrás-használata alapján dinamikusan méretezése. Automatikus skálázással biztosít kiváló a rugalmasság, és lehetővé teszi, hogy további példányok vagy a szolgáltatást az igény szerinti partíciók kiépítését. A teljes automatikus skálázás folyamat automatizált és átlátható, és a szolgáltatás-házirendek beállítása után nincs szükség kézi skálázási műveletek a szolgáltatás szintjén. Automatikus skálázással is be kell kapcsolni vagy a szolgáltatás-létrehozás időpontjában, vagy bármikor a szolgáltatás frissítésével.

@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 64f15095bd260cd5f83e0e834607cd64bb3a47ee
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267434"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Naplózási és jelentéskészítési B2B együttműködés felhasználó
 Vendégfelhasználók az informatikai részleg vizsgálati lehetőségekre hasonló tag felhasználókkal. Íme egy példa a meghívott Sam Oogle meghívó és érvényesítési előzményeit:

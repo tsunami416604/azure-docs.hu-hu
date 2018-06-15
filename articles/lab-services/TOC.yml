@@ -79,6 +79,8 @@
               href: devtest-lab-resize-vm.md
             - name: Virtuális gép ismételt üzembe helyezése
               href: devtest-lab-redeploy-vm.md
+            - name: Virtuális gép importálása
+              href: devtest-lab-import-vm.md
         - name: Környezetek használata tesztkörnyezetben
           items:
             - name: Környezet létrehozása

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206747"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Hozzáférés, mentse, és távolítsa el a Reliable Actors állapota
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) egyszálas objektum, amely megbízhatóan-állapot karbantartásához és beágyazására egyaránt programot, és állapotát. Minden szereplő példány rendelkezik saját [állapotkezelője](service-fabric-reliable-actors-state-management.md): a szótár-szerű adatszerkezet, amely megbízhatóan tárolja az kulcs/érték párok. Az állapotkezelő a állapotszolgáltató csomagolásának. Függetlenül attól, amely adatok tárolására használható [adatmegőrzési beállítás](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) szolgál.

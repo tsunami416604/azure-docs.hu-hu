@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359016"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services Definition séma (.csdef fájl)
 A szolgáltatásdefiníciós fájl határozza meg a szolgáltatásmodellt az alkalmazáshoz. A fájl egy felhőalapú szolgáltatás számára elérhetők lesznek a szerepkörök definícióit tartalmazza, adja meg a végpontok, és megállapítja a szolgáltatás konfigurációs beállításait. Konfigurációs beállítás értéke a konfigurációs fájlban, szerint a [Felhőszolgáltatás (klasszikus) konfigurációs séma](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).

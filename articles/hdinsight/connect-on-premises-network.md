@@ -16,6 +16,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361920"
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>HDInsight csatlakozni a helyi hálózatra
 

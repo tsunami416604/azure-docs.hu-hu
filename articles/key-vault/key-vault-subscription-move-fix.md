@@ -1,8 +1,8 @@
 ---
-title: "Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után | Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan módosíthatja a kulcstartó bérlőazonosítóját, miután egy előfizetést másik bérlőhöz helyezett át."
+title: Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után | Microsoft Docs
+description: A cikkből megtudhatja, hogyan módosíthatja a kulcstartó bérlőazonosítóját, miután egy előfizetést másik bérlőhöz helyezett át.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 2f007dd4f877b48003cddcefa5f4321049853361
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91c042ebda9e7a2eba4835abc079568e1ed2e537
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725506"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
 ### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Kérdés: Az előfizetésem átkerült A bérlőtől B bérlőhöz. Hogyan módosíthatom a meglévő kulcstartó bérlőazonosítóját, és hogyan állíthatok be helyes ACL-eket a B bérlő rendszerbiztonsági tagjai számára?
@@ -31,7 +32,7 @@ Amikor új kulcstartót hoz létre egy előfizetésben, az automatikusan annak a
 Ha például a „kucstarto” kulcstartót használja egy olyan előfizetésben, amelyet áthelyezett az A bérlőtől a B bérlőhöz, a következőképpen módosíthatja a kulcs bérlőazonosítóját, és törölheti a régi hozzáférési szabályzatokat.
 
 <pre>
-$Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
+Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
 $vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
 $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
 $vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
@@ -43,6 +44,6 @@ Ez a kulcstartó az áthelyezést megelőzően az A bérlőhöz tartozott, ezér
 
 A kulcstartó most már a helyes bérlőazonosítóhoz van társítva, a régi hozzáférésiszabályzat-bejegyzések pedig törölve vannak, tehát beállíthatja az új hozzáférésiszabályzat-bejegyzéseket a [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx) parancsmaggal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Amennyiben az Azure Key Vaulttal kapcsolatban kérdése merülne fel, tekintse meg az [Azure Key Vault fórumait](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

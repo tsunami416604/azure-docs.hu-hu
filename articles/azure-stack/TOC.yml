@@ -128,6 +128,8 @@
           href: azure-stack-monitor-health.md
         - name: Hálózati erőforrások kezelése
           href: azure-stack-viewing-public-ip-address-consumption.md
+        - name: Felhasználói előfizetési tulajdonos módosítása
+          href: azure-stack-change-subscription-owner.md
         - name: A Microsoft Azure Pack virtuális gépeinek kezelése
           href: azure-stack-manage-windows-azure-pack.md
         - name: Elindítása és leállítása Azure verem
@@ -189,6 +191,8 @@
               href: azure-stack-enable-multitenancy.md
         - name: Forgassa el a titkos kulcsok
           href: azure-stack-rotate-secrets.md
+        - name: Víruskereső frissítése
+          href: azure-stack-security-av.md
     - name: Szolgáltatások ajánlása
       items:
         - name: Szolgáltatásajánlások áttekintése
@@ -216,7 +220,7 @@
           items:
             - name: Az erőforrás-szolgáltató SQL Server telepítése
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: Üzemeltetési kiszolgáló hozzáadása
+            - name: Az SQL futtató kiszolgálók hozzáadása
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: SQL-adatbázis létrehozása
               href: azure-stack-sql-resource-provider-databases.md
@@ -227,7 +231,20 @@
             - name: Az SQL Server erőforrás-szolgáltató eltávolítása
               href: azure-stack-sql-resource-provider-remove.md
         - name: Az ajánlat MySQL PaaS
-          href: azure-stack-mysql-resource-provider-deploy.md
+          href: azure-stack-mysql-resource-provider.md
+          items:
+            - name: A MySQL Server erőforrás-szolgáltató telepítése
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: A MySQL üzemeltető kiszolgálók hozzáadása
+              href: azure-stack-mysql-resource-provider-hosting-servers.md
+            - name: MySQL-adatbázis létrehozása
+              href: azure-stack-mysql-resource-provider-databases.md
+            - name: Frissítés a MySQL Server erőforrás-szolgáltató
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: Erőforrás-szolgáltató MySQL kiszolgáló karbantartása
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: A MySQL Server erőforrás-szolgáltató eltávolítása
+              href: azure-stack-mysql-resource-provider-remove.md
         - name: App Service ajánlása PaaS-ként
           items:
             - name: Az Azure Stack App Service szolgáltatásának áttekintése

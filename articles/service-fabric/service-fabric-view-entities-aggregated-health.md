@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211857"
 ---
 # <a name="view-service-fabric-health-reports"></a>A Service Fabric rendszerállapot-jelentések megtekintése
 Az Azure Service Fabric vezet be a [állapotmodell](service-fabric-health-introduction.md) figyelés az állapotfigyelő entitások mely rendszerösszetevők és watchdogs a hajthatja végre helyi feltételek, amelyek jelentés. A [a health Store adatbázisban](service-fabric-health-introduction.md#health-store) összesíti az összes állapotadatok kifogástalan állapotú entitások megállapításához.

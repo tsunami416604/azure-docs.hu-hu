@@ -59,16 +59,16 @@
       href: create-account-cli-how-to.md
     - name: Adatelérési API-k – parancssori felület
       href: access-api-cli-how-to.md
-    - name: Feladatállapot-események – parancssori felület
+    - name: Feladatállapot-események monitorozása – parancssori felület
       href: job-state-events-cli-how-to.md
+    - name: Előzetes átalakítási beállítások testreszabása – .NET Core
+      href: customize-encoder-presets-how-to.md
     - name: Tartalom feltöltése
       items:
         - name: HTTP-forrásból – .NET
           href: job-input-from-http-how-to.md
         - name: Egy helyi fájlból – .NET
           href: job-input-from-local-file-how-to.md
-    - name: Előzetes átalakítási beállítások testreszabása – .NET Core
-      href: customize-encoder-presets-how-to.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)
