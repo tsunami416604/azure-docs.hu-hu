@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31422011"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>A HDInsight Hadoop határozza meg a munkafolyamatok és feladatok időalapú Oozie-koordinátor használata
 Ebből a cikkből megtudhatja, hogyan adhat meg a munkafolyamatok és a koordinátor, és hogyan indítható el, a koordinátor feladatok, ideje alapján. Hasznos lehet, hogy a [és a HDInsight együttes használata Oozie] [ hdinsight-use-oozie] Ez a cikk olvasása előtt. Oozie, mellett is ütemezheti az Azure Data Factory használatával feladatok. Azure Data Factory kapcsolatban [használja a Pig és a Data Factory Hive](../data-factory/transform-data.md).

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30291282"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>A Linux virtuális gép és az Azure parancssori felület virtuális merevlemezek kibontása
 Az alapértelmezett virtuális merevlemezt az operációs rendszer mérete általában 30 GB Linux virtuális gépre (VM) az Azure-ban. Is [adatok lemezek hozzáadása a](add-disk.md) további tárhelyet, de így is célszerű bontsa ki a meglévő adatok lemez. Ez a cikk a Linux virtuális gépek az Azure CLI 2.0-s verziójával kezelt lemezek kibontása részletezi. A nem felügyelt operációsrendszer-lemez kibontva a [Azure CLI 1.0](expand-disks-nodejs.md).

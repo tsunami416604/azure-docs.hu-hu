@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30240748"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-ban
 > [!div class="op_single_selector"]

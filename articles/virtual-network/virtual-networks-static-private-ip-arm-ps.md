@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424057"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>PowerShell használatával virtuális gépek magánhálózati IP-címek konfigurálása
 

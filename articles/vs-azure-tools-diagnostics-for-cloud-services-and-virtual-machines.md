@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292540"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure Cloud Services és a virtuális gépek diagnosztika beállítása
 Egy Azure-felhőszolgáltatásban és a virtuális gép van szüksége, amikor a Visual Studio segítségével könnyebben beállítása az Azure diagnosztikai. Diagnosztika rendszeradatok és a virtuális gépek és a virtuálisgép-példánya, amely a felhőalapú szolgáltatás futtatásához a naplózási adatokat rögzíti. Diagnosztikai adatok átvitele történik meg a választott tárfiók. Diagnosztika további információ az Azure-naplózás: [az Azure App Service Web Apps diagnosztikai naplózás engedélyezése](app-service/web-sites-enable-diagnostic-log.md).

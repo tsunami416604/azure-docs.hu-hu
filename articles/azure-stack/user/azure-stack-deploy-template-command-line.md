@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30316195"
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Üzembe helyezheti a sablonokat az Azure-készletben a parancssor használatával
 

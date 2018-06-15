@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30240908"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Hozzon létre egy Docker-környezetet az Azure-ban a Docker Virtuálisgép-bővítmény
 Docker egy népszerű tárolóinak kezelése és a lemezkép-készítési platform, amely lehetővé teszi, hogy gyorsan alkalmazásában tárolók Linux rendszeren. Az Azure különböző módja van Docker igény szerint telepítheti. Ez a cikk foglalkozik a a Docker Virtuálisgép-bővítmény és az Azure Resource Manager-sablonok az Azure CLI 2.0-s verziójával. Az [Azure CLI 1.0-s](dockerextension-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.

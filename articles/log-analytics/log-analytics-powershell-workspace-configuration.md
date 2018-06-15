@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30179089"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>A Log Analytics felügyelete PowerShell használatával
 Használhatja a [napló Analytics PowerShell-parancsmagok](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) végzik el a különböző funkciókat a Naplóelemzési parancssori vagy parancsfájl részeként.  A PowerShell használatával végezheti el a feladatok közé:

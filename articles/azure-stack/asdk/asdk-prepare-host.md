@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30165670"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>A ASDK számítógép előkészítése
 A ASDK az állomáson telepítése előtt a ASDK környezet telepítési kell készíteni. Ha a development kit gazdaszámítógép készült, akkor a CloudBuilder.vhdx virtuális gép merevlemez-meghajtóról ASDK telepítésének megkezdéséhez fog indulni.

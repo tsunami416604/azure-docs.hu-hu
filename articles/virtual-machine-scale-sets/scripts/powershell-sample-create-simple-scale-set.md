@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246287"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Alapszintű virtuálisgép-méretezési csoport létrehozása a PowerShell-lel
 Ez a szkript létrehoz egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot. A szkript futtatása után a virtuálisgép-példányokat RDP-kapcsolaton keresztül érheti el.

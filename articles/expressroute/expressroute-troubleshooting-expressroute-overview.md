@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30185984"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 ExpressRoute, egy a helyszíni hálózat kibővítve a Microsoft felhőbe, amely a kapcsolat szolgáltatójánál megkönnyíthető titkos kapcsolaton keresztül, a következő három különböző hálózati zónák foglal magában:

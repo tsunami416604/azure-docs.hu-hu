@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30245447"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>A Microsoft Azure Storage ügyféloldali titkosítás és az Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -65,7 +66,7 @@ Titkosítás során az ügyféloldali kódtár létre egy véletlenszerű inicia
 > 
 > 
 
-Egy titkosított blob letöltése magában foglalja a teljes blob használatával a tartalom lekérése a **DownloadTo x /**BlobReadStream ** módszerek kényelmét szolgálja. A burkolt CEK kicsomagolják, és ha a felhasználók számára a visszafejtett adatokat a IV (tárolt blob metaadatai ebben az esetben) együtt használja.
+Egy titkosított blob letöltése magában foglalja a teljes blob használatával a tartalom lekérése a **DownloadTo x /** BlobReadStream ** módszerek kényelmét szolgálja. A burkolt CEK kicsomagolják, és ha a felhasználók számára a visszafejtett adatokat a IV (tárolt blob metaadatai ebben az esetben) együtt használja.
 
 Egy tetszőleges tartomány letöltése (**DownloadRange*** módszerek) a titkosított BLOB magában foglalja a kis mennyiségű sikeresen visszafejtése a kért tartomány használható további adatokat kíván gyűjteni a felhasználók által biztosított tartományon hangolását.
 

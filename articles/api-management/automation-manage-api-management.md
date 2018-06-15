@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30161846"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Azure API Management használata az Azure Automation kezelése
 Ez az útmutató bemutatja, hogyan használható az Azure API Management felügyeleti leegyszerűsítése érdekében, és az Azure Automation szolgáltatás.

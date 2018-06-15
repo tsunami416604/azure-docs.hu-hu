@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30196774"
 ---
 * **PolicyBased:** PolicyBased VPN korábban megnevezése statikus útválasztó átjáró volt a klasszikus üzembe helyezési modellben. Házirendalapú VPN titkosításához, és irányítják a csomagokat a helyszíni hálózat és az Azure VNet közötti címelőtag-kombinációkkal konfigurált IPsec-házirendek alapján IPsec-alagutakon keresztül. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában. Egy szabályalapú VPN-típus értéke *PolicyBased*. Ha egy szabályalapú VPN-kapcsolattal, vegye figyelembe a következő korlátozások vonatkoznak:
   

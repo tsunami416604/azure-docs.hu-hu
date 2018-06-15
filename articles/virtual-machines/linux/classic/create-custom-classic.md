@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841435"
 ---
 # <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Klasszikus Linux virtuális gép létrehozása az Azure parancssori felület 1.0
 > [!IMPORTANT] 

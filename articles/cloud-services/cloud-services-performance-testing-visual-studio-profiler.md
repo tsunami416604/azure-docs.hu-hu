@@ -20,6 +20,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30284557"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Az Azure Compute Emulator használatával a Visual Studio Profilkészítő helyileg egy felhőalapú szolgáltatás teljesítményének tesztelése
 Számos különféle eszközöket és technikákat tesztelési felhőalapú szolgáltatások érhetők el.

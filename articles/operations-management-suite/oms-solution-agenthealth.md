@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30182728"
 ---
 #  <a name="agent-health-solution-in-oms"></a>Ügynökállapot megoldás
 Az ügynökállapot megoldás segít átlátni, hogy az OMS munkaterület vagy egy OMS-hez csatlakozó System Center Operations Manager-felügyeleticsoport felé jelentő ügynökök közül melyik nem válaszol, és melyik küld működési adatokat.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246406"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-powershell"></a>Alkalmazások telepítése virtuálisgép-méretezési csoportokban PowerShell használatával
 Ez a szkript egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot hoz létre, és az egyéni szkriptbővítmény használatával telepít alapszintű webalkalmazásokat. A szkript futtatása után hozzáférhet a webalkalmazáshoz egy webböngészőn keresztül.

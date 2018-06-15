@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323253"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Keresse meg és nem csatolt Azure kezelt és nem kezelt lemezek törlése
 Ha töröl egy virtuális gép (VM), az Azure-ban alapértelmezés szerint a rendszer nem törli a virtuális géphez csatlakoztatott lemezzel. Ez a szolgáltatás segít megelőzni a véletlen törlés virtuális gépek okozta adatvesztés. A virtuális gép törlését követően továbbra is által nem csatlakoztatott lemezek díj ellenében. Ez a cikk bemutatja, hogyan található és a felesleges költségek csökkentéséhez és nem csatlakoztatott lemezek törlése. 

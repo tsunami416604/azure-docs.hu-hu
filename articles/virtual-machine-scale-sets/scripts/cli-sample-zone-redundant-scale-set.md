@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246423"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>Zónaredundáns virtuálisgép-méretezési csoport létrehozása PowerShell segítségével
 Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre több rendelkezésre állási zónában. A szkript futtatása után a virtuális gépet RDP-kapcsolaton keresztül érheti el.
