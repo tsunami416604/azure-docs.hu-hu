@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363689"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Új generációs tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja új generációs tűzfal (NGFW) hozzáadása egy Microsoft-partner növelje a biztonsági védelmet. Ez a dokumentum útmutatást nyújt a példa bemutatja, hogyan ehhez.

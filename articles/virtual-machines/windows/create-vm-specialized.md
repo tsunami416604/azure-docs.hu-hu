@@ -20,6 +20,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012784"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>Windows virtuális gép létrehozása a PowerShell segítségével egy speciális lemezről
 

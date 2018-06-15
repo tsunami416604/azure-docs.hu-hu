@@ -13,6 +13,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203093"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Partíciók és replikák kiosztani a lekérdezés és a munkaterhelések az Azure Search indexelő
 Miután [válasszon egy tarifacsomagot](search-sku-tier.md) és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), a következő lépésre szükség növelje a replikák és a szolgáltatás által használt partíciók számát. Minden egyes kínál, számlázási egységek rögzített száma. Ez a cikk azt ismerteti, hogyan azokat az egységeket, hogy a lekérdezés-végrehajtás indexelő és tárolási követelményeinek optimális konfigurálása során eléréséhez lefoglalni.

@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156126"
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
 Azure Active Directory (Azure AD) tesz közzé egy összevonási metaadat-dokumentum számára, amely konfigurálva van a biztonsági jogkivonatokat, amelyek az Azure AD kibocsát fogadására. Az összevonási metaadatok dokumentum formátuma leírtak a [Web Services összevonási Language (WS-Federation) 1.2-es verziója](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), amely kiterjeszti [a OASIS Security Assertion Markup Language (SAML) 2.0 metaadatok](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).

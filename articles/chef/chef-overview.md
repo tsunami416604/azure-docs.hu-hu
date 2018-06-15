@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260071"
 ---
 # <a name="using-chef-with-azure"></a>Az Azure-ral Chef használatával
 [Chef](http://www.chef.io) egy hatékony automatizálási platform, amely átalakítja az Azure-beli virtuális gép infrastruktúra a kódra. Chef automatizálja hogyan infrastruktúra van konfigurálva, telepítheti és kezelheti a hálózaton, függetlenül attól, annak méretét.

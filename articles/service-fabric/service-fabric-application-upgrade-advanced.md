@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212323"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>A Service Fabric az alkalmazásfrissítés: speciális kapcsolatos témakörök
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Hozzáadásával vagy eltávolításával szolgáltatástípusok alkalmazás frissítéskor

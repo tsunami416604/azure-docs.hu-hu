@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212925"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Az Azure Service Fabric állapotalapú szolgáltatások megbízható gyűjteményeinek bemutatása
 Megbízható gyűjtemények lehetővé teszik a magas rendelkezésre álló, méretezhető és alacsony késésű felhőalapú alkalmazások írását, mintha egyetlen számítógép alkalmazások írása. Az osztályok a **Microsoft.ServiceFabric.Data.Collections** névtér kínálnak gyűjteményeket, amelyek automatikusan a állapot magas rendelkezésre állású legyen. A fejlesztők csak a megbízható gyűjtemény API-k programot, és lehetővé teszik a replikált és helyi állapot kezelése megbízható gyűjteményeket kell.

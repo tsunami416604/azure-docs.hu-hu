@@ -3,16 +3,19 @@ title: Azure Active Directory B2C-mintakódok | Microsoft Docs
 description: Kódminták mobil, asztali, webes és egyoldalas Active Directory B2C-alkalmazásokhoz.
 services: active-directory-b2c
 author: davidmu1
+manager: mtillman
 ms.author: davidmu
 ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 42a9ce6f8a5a04f641ccf9471151334632c9b11e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 13615ac8ccfc15cc6675fafd09b8936870310e8c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709665"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -20,7 +23,7 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 
 ## <a name="mobile-and-desktop-apps"></a>Mobil- és asztali alkalmazások
 
-| Minta | Leírás |
+| Sample | Leírás |
 |--------| ----------- |
 | [ios-swift-native-msal](https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal) | Swift nyelvű iOS-minta, amely az Azure AD B2C-felhasználókat hitelesíti, és meghív egy API-t az OAuth 2.0 használatával. |
 | [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | Egy egyszerű Android-alkalmazás, amely azt mutatja be, hogyan használható az MSAL felhasználók hitelesítéséhez az Azure Active Directory B2C segítségével, és hogyan lehet hozzáférni egy webes API-hoz az eredményül kapott jogkivonatokkal. |
@@ -31,7 +34,7 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 
 ## <a name="web-apps-and-apis"></a>Webalkalmazások és API-k
 
-| Minta | Leírás |
+| Sample | Leírás |
 |--------| ----------- |
 | [dotnet-webapp-and-webapi](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) | Összetett minta egy .NET-webalkalmazáshoz, amely egy .NET-es webes API-t hív meg, és mindkettő védelméről az Azure AD B2C gondoskodik. |
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Egy ASP.NET Core-webalkalmazás, amely felhasználókat jelentkeztethet be az Azure AD B2C-vel, hozzáférési jogkivonatot szerez be az MSAL.NET használatával, és meghív egy API-t. |

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203522"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Webalkalmazási tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja, hogy a webes alkalmazás tűzfalat (WAF) hozzáadása egy Microsoft-partner biztonságossá tételéhez a webes alkalmazások. Ez a dokumentum útmutatást nyújt a példa bemutatja, hogyan Ez a javaslat alkalmazása.

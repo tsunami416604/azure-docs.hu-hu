@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260068"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef ügyfél telepítése az Azure-portálon
 Létrehozásakor, vagy egy Linux vagy a Windows virtuális gép az Azure-portálon módosítja, a Chef bővítményt a virtuális gép is hozzáadhat. Ez a cikk bemutatja, hogyan adott folyamatot használja egy új Linux virtuális gépet.

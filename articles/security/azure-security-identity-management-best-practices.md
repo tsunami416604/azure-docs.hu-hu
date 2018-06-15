@@ -16,9 +16,10 @@ ms.date: 04/26/2018
 ms.author: barclayn
 ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
 ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365780"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure Identitáskezelés és hozzáférés szabályozása ajánlott biztonsági eljárások
 

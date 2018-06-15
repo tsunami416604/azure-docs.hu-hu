@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31593049"
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Napló Analytics szolgáltatások szolgáltatók
 A Naplóelemzési segítségével felügyelt szolgáltató (MSPs), a nagyobb vállalatok, független szoftvergyártók (ISV-k) és üzemeltetési szolgáltatók kezelni és megfigyelni a kiszolgálók az ügyfél helyszíni vagy felhőalapú infrastruktúrában. 

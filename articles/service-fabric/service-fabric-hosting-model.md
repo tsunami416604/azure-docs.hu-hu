@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206320"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Az Azure Service Fabric üzemeltetési modell
 Ez a cikk egy áttekintést nyújt az Azure Service Fabric által biztosított modellek futtató alkalmazás, és közötti különbségeket mutatja a **megosztott folyamat** és **kizárólagos folyamat** modellek. Leírja, hogyan egy telepített alkalmazás néz ki egy Service Fabric-csomópont, és a replikák (vagy példányok) szolgáltatás és folyamata közötti kapcsolat.

@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/17/2018
+  ms.locfileid: "34259175"
 abstract:
   description: A Chef szoftver egy Linux és Windows rendszerhez készült DevOps automatizálási platformot biztosít, amely lehetővé teszi a fizikai és a virtuális kiszolgálók konfigurációjának kezelését. A rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan használhatók a Chef szoftvertermékek az infrastruktúra kódként való használatára vonatkozó receptek automatizálására, illetve a virtuális gépek kezelésére és üzembe helyezésére az Azure-ban.
   aside:

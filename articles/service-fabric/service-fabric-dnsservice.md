@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204994"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Az Azure Service Fabric DNS-szolgáltatás
 A DNS szolgáltatás nem egy választható-szolgáltatás, amely a fürt felderíteni a más szolgáltatásokkal, DNS protokoll használatával engedélyezheti. 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208811"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürt erőforrás-kezelő biztosít több fürt leíró mechanizmusok. Futásidőben a fürt erőforrás-kezelő ezt az információt használja a fürtben futó szolgáltatások magas rendelkezésre állásának biztosításához. Miközben a fontos szabályok, is megkísérli a fürtön belül a hálózatierőforrás-fogyasztás optimalizálása.

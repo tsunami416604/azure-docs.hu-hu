@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158237"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 protokoll - OAuth 2.0 Hitelesítésikód-folyamata
 Az OAuth 2.0 hitelesítésengedélyezési kód a védett erőforrások, például webes API-k eléréséhez az eszköz a telepített alkalmazások is használható. Az app model v2.0 megvalósítással OAuth 2.0 hozzáadhat bejelentkezhet, és a mobil- és asztali alkalmazásokhoz való hozzáférés API. Ez az Útmutató nyelvtől független, és ismerteti, hogyan lehet üzeneteket küldjön és fogadjon HTTP nélkül használja a [Azure nyílt forráskódú hitelesítési tárakat](active-directory-authentication-libraries.md).

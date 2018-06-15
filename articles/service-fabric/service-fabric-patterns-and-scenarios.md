@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206140"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>A Service Fabric mintákat és forgatókönyvek
 Ha felépítése az Azure Service Fabric használatával a nagyméretű mikroszolgáltatások tartózkodik, ismerje meg, a szakértők, akik erre a platformra beépített szolgáltatásként (PaaS), és a. Ismerkedés a megfelelő architektúra, és majd megtudhatja, hogyan optimalizálható az erőforrások az alkalmazáshoz. A [Service Fabric minták és gyakorlatok](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) működés során a leggyakrabban ismételt valós ügyfelek Service Fabric forgatókönyvek és alkalmazási területek kérdésekre.

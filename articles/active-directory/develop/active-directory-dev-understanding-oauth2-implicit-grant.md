@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155779"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Az OAuth2 implicit grant flow az Azure Active Directory (AD) ismertetése
 Az OAuth2 implicit grant ahhoz, hogy a támogatás a leghosszabb listáját az OAuth2-specifikációt a biztonsági aggályokon meg notorious. És még, amely az ADAL JS és az ajánlott SPA alkalmazások írásához által megvalósított módszerrel. Mi ad? Mellékhatásokkal összes kérdése:, és akkor kapcsolja, mert a implicit grant böngészőből egy webes API a JavaScript keresztül használó alkalmazások is végezze el a legjobb módszer.

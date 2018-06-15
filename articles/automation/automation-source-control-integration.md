@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194485"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 Verziókövetés integrálása lehetővé teszi az Automation-fiók egy GitHub verziókövetési tárházat a runbookok hozzárendelni. A verziókövetési rendszerrel lehetővé teszi, hogy egyszerűen együttműködni a csapatával, követni a változásokat, és visszaállíthatja a runbookok korábbi verzióiban. Például verziókezelő lehetővé teszi a fejlesztői, tesztelési vagy éles Automation-fiók, így könnyen kódot, amely a fejlesztési környezetet az éles tárhely Automation tesztelését elősegítő forrás vezérlőelemet ággal szinkronizálása fiók.

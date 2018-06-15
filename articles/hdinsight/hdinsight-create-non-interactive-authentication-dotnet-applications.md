@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34199700"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>A nem interaktív hitelesítés .NET HDInsight-alkalmazások létrehozása
 A Microsoft .NET Azure HDInsight-alkalmazásokat, az alkalmazás saját identitással (nem interaktív) vagy a bejelentkezett felhasználó az alkalmazás (interaktív) alapján is futtathatja. Ez a cikk bemutatja, hogyan hozzon létre egy nem interaktív hitelesítés az Azure-bA csatlakoztatni és kezelni a HDInsight .NET-alkalmazásokat. Interaktív alkalmazás mintát, lásd: [csatlakozás az Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 

@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/14/2018
+  ms.locfileid: "34166495"
 abstract:
   description: Az Azure Windows virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak Windows Server használatával. Ismerje meg, hogyan hozhat létre, konfigurálhat, felügyelhet és méretezhet Windows virtuális gépeket a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:

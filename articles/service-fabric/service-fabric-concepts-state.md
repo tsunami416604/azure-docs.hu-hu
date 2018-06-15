@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213095"
 ---
 # <a name="service-state"></a>Szolgáltatás állapota
 **Szolgáltatás állapota** a memóriában vagy lemez-adatokat a szolgáltatás működéséhez szükséges. Ez magában foglalja, például adatstruktúrák és tagváltozók, amely a szolgáltatás olvas és ír működnek. Attól függően, hogy a szolgáltatás tervezett azt is tartalmazhatnak fájlokat vagy más erőforrásokat, amelyek tárolása a lemezen. Például a fájlok egy adatbázis használna adatok és a tranzakciós naplók tárolásához.

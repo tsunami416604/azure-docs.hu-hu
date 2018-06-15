@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160750"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatok tudományos virtuális gép](http://aka.ms/dsvm) (DSVM) és a [mély tanulási VM](http://aka.ms/dsvm/deeplearning) mély tanulási keretrendszerek mesterséges intelligencia (AI) alkalmazások a prediktív elemzés érdekében számos támogat, és kognitív képességei többek között a lemezkép és a nyelvi ismertetése. 

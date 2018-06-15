@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164839"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Oktatóanyag: DevOps és az Azure portál
 Az Azure platform számos rugalmas DevOps-munkafolyamatot tartalmaz. Ebben az oktatóanyagban elsajátíthatja, hogyan használhatók ki a képességek az Azure portálról történő fejlesztéséhez, teszteléséhez, telepítése, hibaelhárítása, figyeléséhez és futó alkalmazások kezelése. Ez az oktatóanyag a következő témákkal foglalkozik:

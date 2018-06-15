@@ -21,6 +21,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164721"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Mik azok a rendelkezésre állási zónák az Azure-ban?
 Rendelkezésre állási zónák magas rendelkezésre állású ajánlat, amely megakadályozza az alkalmazások és adatok datacenter hiba. Rendelkezésre állási zónák egyedi fizikai helyen belül egy Azure-régióban. Az egyes zónák felszerelt független power hűtési, és a hálózat egy vagy több adatközpontok épül fel. Rugalmasság biztosítása érdekében legalább három különálló zónákra minden engedélyezett régióban van. A fizikailag szét van választva a rendelkezésre állási zónák régión belül alkalmazások és adatok datacenter hibák védelmet nyújt. Zónaredundáns szolgáltatások rendelkezésre állásának zónák nyújt védelmet a single-pontok-az-szemben az alkalmazások és adatok replikálásához. A rendelkezésre állási zónák Azure iparág ajánlott 99,99 % VM hasznos üzemidő SLA-t kínál. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.

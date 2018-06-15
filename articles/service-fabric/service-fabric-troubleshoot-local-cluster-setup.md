@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212017"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>A helyi fejlesztési fürtöt való beállításának hibaelhárítása
 Ha problémát tapasztal az Azure Service Fabric helyi fejlesztési fürtök való interakció során, tekintse át a következő javaslatok a lehetséges megoldásokról.

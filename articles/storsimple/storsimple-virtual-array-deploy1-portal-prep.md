@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb portál prep |} Microsoft Docs"
-description: "A StorSimple virtuális tömb telepítendő első oktatóanyaga, amely magában foglalja a előkészítése az Azure-portálon"
+title: A StorSimple virtuális tömb portál prep |} Microsoft Docs
+description: A StorSimple virtuális tömb telepítendő első oktatóanyaga, amely magában foglalja a előkészítése az Azure-portálon
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24526553"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>A StorSimple virtuális tömb telepítése – előkészítése az Azure-portálon
 

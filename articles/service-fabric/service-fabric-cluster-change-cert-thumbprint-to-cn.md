@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210341"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Tanúsítvány-ujjlenyomat fürt váltson köznapi név
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltást vagy felügyeleti rendelkezhet. Több tanúsítvány azonban rendelkezhet ugyanazzal a névvel vagy tulajdonos.  Váltás a tanúsítvány köznapi nevek használatával tanúsítvány-ujjlenyomatok használatával telepített fürt teszi jóval egyszerűbb Tanúsítványkezelő. Ez a cikk ismerteti, hogyan kell használni a tanúsítvány egyszerű neve helyett a tanúsítvány ujjlenyomata futó Service Fabric-fürt frissítéséhez.

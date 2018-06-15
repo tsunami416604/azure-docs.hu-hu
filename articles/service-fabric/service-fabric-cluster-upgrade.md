@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207699"
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Az Azure Service Fabric-fürt frissítése
 > [!div class="op_single_selector"]

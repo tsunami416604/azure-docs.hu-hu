@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211269"
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Az Azure és az erőforrásokat, ezzel felhasznál egy Service Fabric-fürt törlése
 A Service Fabric-fürt sok más Azure-erőforrások mellett magát fürterőforrás épül fel. A Service Fabric-fürtök teljes törléséhez ezért az összes őket alkotó erőforrást is törölni kell.

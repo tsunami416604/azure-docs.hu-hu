@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210494"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
 A Service Fabric-szolgáltatás végrehajtható indítása előtt lehet néhány konfigurációs vagy a telepítő feladat futtatásához szükséges.  Például konfigurálása környezeti változókat. Megadhatja, hogy a parancsfájl futtatása előtt a szolgáltatás jegyzékben a szolgáltatás indítása a szolgáltatás végrehajtható. A szolgáltatás beállítása belépési pont módosíthatja, hogy melyik fiók RunAs házirend konfigurálásával futtatható a telepítés alatt fut.  Egy külön telepítő belépési pont lehetővé teszi egy rövid ideig magas-privilged konfigurációs futtatását, így a végrehajtható szolgáltatásgazda huzamosabb ideig magas jogosultsággal rendelkező futtatásához nem kell.

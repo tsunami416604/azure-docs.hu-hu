@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34162175"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center-preview"></a>A fájl sértetlenségének ellenőrzése az Azure Security Center (előzetes verzió)
 Útmutató a fájl sértetlenségének ellenőrzése (FIM) konfigurálása az Azure Security Centerben használja ezt a forgatókönyvet.

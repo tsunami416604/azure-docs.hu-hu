@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208896"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Hibák szimulálása a szolgáltatások számítási feladatai közben
 Azure Service Fabric tesztelhetőségi forgatókönyvei a fejlesztők nem foglalkoznia az egyéni hibák foglalkozik. Nincsenek forgatókönyvek, azonban ha explicit kihagyásos ügyfél munkaterhelési és sikertelen lehet szükség. Az ügyfél munkaterhelési és hibák kihagyásos biztosítja, hogy a szolgáltatás van ténylegesen néhány művelet végrehajtása során hiba történik. Megadott tesztelhetőségi biztosító felügyeleti, ezek lehetnek a munkaterhelés végrehajtásának pontos pontokon. A hibák, az alkalmazás különböző állapotok indukciós megkeresheti a hibák és minőségének javítása.

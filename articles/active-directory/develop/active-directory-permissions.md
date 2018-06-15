@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156891"
 ---
 # <a name="permissions-in-azure-ad"></a>Engedélyek az Azure AD-ben
 Az Azure Active Directory (Azure AD) jelentősen igénybe veszi az OAuth és az OpenID Connect (OIDC) folyamatok engedélyeit is. Amikor az alkalmazás hozzáférési jogkivonatot szerez az Azure AD-tól, olyan jogcímeket foglal bele, amelyek leírják az alkalmazás által adott erőforrással kapcsolatban használt engedélyeket (más néven hatóköröket). Ez megkönnyíti az engedélyezést az erőforrás számára, mert csak ellenőriznie kell, hogy a jogkivonat tartalmazza-e a hívott API megfelelő engedélyét. 

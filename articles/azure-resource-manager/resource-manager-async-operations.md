@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358710"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Az Azure aszinkron műveletek nyomon követése
 Néhány Azure REST művelet aszinkron módon futtatható, mert a művelet nem fejezhető be gyorsan. Ez a témakör ismerteti a válaszban visszaadott értékek keresztül aszinkron műveletek állapotának nyomon követését.  

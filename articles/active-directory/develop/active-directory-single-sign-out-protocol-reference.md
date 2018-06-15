@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155497"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egyetlen kijelentkezési SAML protokoll
 Az Azure Active Directory (Azure AD) támogatja a SAML 2.0-s webes böngésző egyetlen kijelentkezési profil. Egyetlen kijelentkezés, megfelelő működéséhez a **LogoutURL** a az alkalmazás explicit módon regisztrálni kell az Azure AD-alkalmazás regisztrációja során. Az Azure AD felhasználók átirányítása után a rendszer kijelentkezteti a LogoutURL használja.

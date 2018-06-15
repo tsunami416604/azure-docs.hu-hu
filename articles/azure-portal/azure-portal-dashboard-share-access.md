@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165128"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Azure irányítópultok megosztása a szerepköralapú hozzáférés-vezérlés használatával
 Miután egy irányítópultot, tegye közzé, és megoszthatják más felhasználókkal a szervezetében. Engedélyezi a többi Azure használatával az irányítópult megtekintéséhez [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Egy felhasználó vagy csoport számára hozzárendelése egy szerepkörhöz, és ez a szerepkör határozza meg, hogy ezek a felhasználók megtekintheti és módosíthatja a közzétett irányítópulton. 

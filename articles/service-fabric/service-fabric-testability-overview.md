@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209684"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A tartalék Analysis Service bemutatása
 A tartalék elemzési szolgáltatás végzi a Microsoft Azure Service Fabric épülő szolgáltatások tesztelése. A tartalék Analysis Service idéz elő a jelentéssel bíró hibák, és a teljes teszt forgatókönyvek az alkalmazások futtatásához. Ezeket a hibákat és forgatókönyvek gyakorolja, és érvényesítse a számos állapotok és átmenetek, amelyeknek a szolgáltatás teljes élettartamuk összes ellenőrzött, biztonságos és egységes módon.

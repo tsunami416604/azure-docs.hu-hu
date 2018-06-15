@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207665"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható gyűjtemény objektum szerializálása
 Megbízható gyűjtemények replikálja, és a gép hibák és áramkimaradások tartós szempontjából elemek megmaradnak.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207010"
 ---
 # <a name="reliable-services-notifications"></a>Megbízható szolgáltatások értesítések
 Értesítések engedélyezése az ügyfelek nyomon követni a kíváncsiak vagyunk objektum végrehajtott módosításokat. Kétféle típusú objektumok támogatja értesítéseket: *megbízható állapotkezelője* és *megbízható szótár*.

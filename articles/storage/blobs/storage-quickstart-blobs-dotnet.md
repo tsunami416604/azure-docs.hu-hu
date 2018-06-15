@@ -7,13 +7,14 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 7607643698cddb0cf5a113191ef638d36ab176bc
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0074e0a66ae842d798d6fd8cd2f4392644d873fa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650757"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a .NET használatával
 
@@ -60,11 +61,11 @@ Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megol
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
-## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati karakterlánc konfigurálása
+## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsolati karakterláncot. A mintaalkalmazás beolvassa a kapcsolati karakterláncot egy környezeti változóból, és annak használatával hitelesíti az Azure Storage számára küldött kéréseket.
+Az alkalmazás futtatásához meg kell adnia a tárfiókjához tartozó kapcsolati sztringet. A mintaalkalmazás beolvassa a kapcsolati sztringet egy környezeti változóból, és annak használatával hitelesíti az Azure Storage számára küldött kéréseket.
 
-A kapcsolati karakterlánc másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a `<yourconnectionstring>` kifejezést a tényleges kapcsolati karakterláncra:
+A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a `<yourconnectionstring>` kifejezést a tényleges kapcsolati sztringre:
 
 # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
@@ -152,9 +153,9 @@ A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befej
 
 A következőkben áttekintjük a mintakódot, és értelmezzük, hogyan működik.
 
-### <a name="try-parsing-the-connection-string"></a>Kapcsolati karakterlánc elemzése
+### <a name="try-parsing-the-connection-string"></a>Kapcsolati sztring elemzése
 
-A minta az első lépésben ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolati karakterláncot, amelynek elemzésével létrehozható egy, a tárfiókra mutató [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) objektum. A kapcsolati karakterlánc érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) metódust. Ha a **TryParse** sikeres, a minta inicializálja a *storageAccount* változót, és **igaz** értéket ad vissza.
+A minta az első lépésben ellenőrzi, hogy a környezeti változó tartalmaz-e egy olyan kapcsolati sztringet, amelynek elemzésével létrehozható egy, a tárfiókra mutató [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) objektum. A kapcsolati sztring érvényességének ellenőrzéséhez alkalmazza a [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) metódust. Ha a **TryParse** sikeres, a minta inicializálja a *storageAccount* változót, és **igaz** értéket ad vissza.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored

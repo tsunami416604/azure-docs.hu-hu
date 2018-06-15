@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212993"
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazáscsoportok bemutatása
 A Service Fabric-fürt erőforrás-kezelő általában kezeli a fürterőforrások úgy, hogy a terhelés terjednek (keresztül képviselt [metrikák](service-fabric-cluster-resource-manager-metrics.md)) egyenletesen oszlanak meg a fürtön. A fürt és a fürt csomópontjai keresztül egy teljes kapacitásának kezeli a Service Fabric [kapacitás](service-fabric-cluster-resource-manager-cluster-description.md). Metrikák és a kapacitás működik nagy számos különféle munkaterheléshez azonban néha további követelmények is betöltheti különböző háló alkalmazáspéldányok használó mintákat. Például előfordulhat, hogy szeretné:

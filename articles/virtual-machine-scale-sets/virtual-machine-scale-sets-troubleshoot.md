@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161022"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok automatikusan skálázva hibaelhárítása
 **A probléma** – létrehozta az automatikus skálázás infrastruktúra az Azure Resource Manager használatával virtuálisgép-méretezési csoportok – például egy sablont ehhez hasonló telepítésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – a skálázási szabályok definiálva van, és nagy, kivéve, hogy nem működik a virtuális gépeken mennyi terhelésváltozást számít, automatikus skálázás nem.

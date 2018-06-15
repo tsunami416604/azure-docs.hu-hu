@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205365"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>A különálló Windows-fürt konfigurációs beállítások
 Ez a cikk ismerteti, hogyan önálló Azure Service Fabric-fürt konfigurálása a művelet fájl használatával. Ez a fájl használandó adjon meg információt a fürtcsomópontokon, biztonsági beállításokkal, valamint a hálózati topológia hiba és a frissítési tartományok tekintetében.

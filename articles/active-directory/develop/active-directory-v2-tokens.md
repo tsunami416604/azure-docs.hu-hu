@@ -22,6 +22,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164458"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Az Azure Active Directory v2.0 jogkivonatok referenciái
 Az Azure Active Directory (Azure AD) v2.0-végponttól számos különböző típusú minden biztonsági jogkivonatokat bocsát ki [hitelesítési folyamat](active-directory-v2-flows.md). Ezt a hivatkozást a formátuma, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát ismerteti.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212619"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
 Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. A paraméternek számít a nevét és az alkalmazás verziója. Az időtúllépések és állapot-ellenőrzést, a frissítés során alkalmazott szabályozó forgatógombját, és azok adja meg a házirendekben, amelyek kell alkalmazni, ha egy frissítés sikertelen lesz.

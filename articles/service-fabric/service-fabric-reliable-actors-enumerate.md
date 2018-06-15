@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207267"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors számbavétele
 A Reliable Actors szolgáltatás lehetővé teszi, hogy egy ügyfél a szereplője, amelyen a szolgáltatás metaadatainak számbavétele. Mivel a szereplő szolgáltatás egy particionált állapotalapú szolgáltatásból, a számbavételi partíciónként történik. Mindegyik partíció sok szereplője tartalmazhat, mert a számbavétel adja vissza a rendszer lapozható eredmények készlete. A lapok visszacsatolódnak keresztül, amíg az összes olvassa el. A következő példa bemutatja, hogyan szereplő szolgáltatási egy partíció összes aktív szereplő álló lista létrehozása:
