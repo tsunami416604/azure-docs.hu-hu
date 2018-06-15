@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771167"
 ---
 # <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Spark-adatok elemzése Power BI használatával a HDInsightban 
 

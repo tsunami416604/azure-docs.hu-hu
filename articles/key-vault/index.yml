@@ -20,6 +20,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/28/2018
+  ms.locfileid: "32180793"
 abstract:
   description: Ismerje meg, hogyan védheti és felügyelheti a Key Vault használatával a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsokat és titkos kulcsokat. Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan hozhatja létre és tarthatja karban a kulcsokat, amelyekkel elérheti és titkosíthatja erőforrásait és megoldásait.
 sections:

@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c04514218c7ed8dfd72b94345d2deb88e663fda1
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529977"
 ---
 [Az Azure házirendek](/azure/azure-policy/) biztosíthatja összes erőforrás előfizetés súgó felel meg a vállalati szabványoknak. A házirendekkel korlátozza, hogy a központi telepítési beállítások csak erőforrástípusok és jóváhagyott termékváltozatok a költségek csökkentése érdekében. Szabályok és a műveletek megadhatja az erőforrásokhoz, és ezeket a szabályokat automatikus központi telepítés során lépnek érvénybe. Például a telepített erőforrások esetén típusú szabályozhatja. Vagy az engedélyezett helyek erőforrások korlátozhatja. Egyes szabályzatokat művelet megtagadása, és néhány házirend beállítása művelet naplózását.
 

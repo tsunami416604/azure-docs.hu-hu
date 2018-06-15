@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32165878"
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>A megoldássablon létrehozása az Azure piactéren műszaki előfeltételei
 A folyamat megkezdése előtt alaposan és megértettem, hogy hol és miért minden egyes lépést. Amennyire csak lehetséges, meg kell készítse elő a vállalati adatok és egyéb adatokat, töltse le a szükséges eszközök, és/vagy technikai összetevő létrehozása az ajánlat létrehozási folyamat megkezdése előtt.  

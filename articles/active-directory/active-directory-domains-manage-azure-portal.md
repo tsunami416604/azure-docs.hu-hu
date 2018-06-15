@@ -15,9 +15,10 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.openlocfilehash: 81c2371d5dbb17399071c80ff4e8b81813ed014c
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762394"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 A tartománynév sok címtárerőforrásokkal azonosítója fontos része: felhasználói név vagy e-mail cím egy felhasználó, a cím egy csoport része, és hozzájárulhat az alkalmazás az alkalmazás URI azonosítója. Az Azure Active Directory (Azure AD) erőforrás lehetnek egy tartomány nevét, amely már ellenőrizve, a könyvtárban, amely tartalmazza az erőforrás tulajdonosa. Csak egy globális rendszergazda Azure AD-ben végrehajthat tartomány feladatokat.
