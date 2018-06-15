@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31512510"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Támogatási kérések létrehozása az Azure-hoz
 ## <a name="summary"></a>Összegzés

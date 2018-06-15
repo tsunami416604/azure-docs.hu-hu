@@ -1,11 +1,11 @@
 ---
-title: "Védi az alkalmazások az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait az Azure-alkalmazások védelmét, és maradnak meg a biztonsági házirendeknek megfelelően."
+title: Védi az alkalmazások az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait az Azure-alkalmazások védelmét, és maradnak meg a biztonsági házirendeknek megfelelően.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: b5fc7a9e-24b1-415f-b3b5-62a53f5dd424
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866267"
 ---
 # <a name="protecting-your-applications-in-azure-security-center"></a>Az alkalmazások az Azure Security Centerben védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a Security Center a potenciális biztonsági hiányosságokat azonosít, ajánlásokat, amely végigvezeti Önt a szükséges szabályozási folyamatán hoz létre.  Javaslat alkalmazható azonban az Azure erőforrás típusa: virtuális gépek (VM), hálózati, SQL és alkalmazások.

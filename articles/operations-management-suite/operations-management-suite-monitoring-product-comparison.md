@@ -1,8 +1,8 @@
 ---
-title: "A Microsoft monitoring termék összehasonlítása |} Microsoft Docs"
-description: "A Microsoft Operations Management Suite (OMS), a Microsoft felhő alapú informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúra.  Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
+title: A Microsoft monitoring termék összehasonlítása |} Microsoft Docs
+description: A Microsoft Operations Management Suite (OMS), a Microsoft felhő alapú informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúra.  Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866316"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>A Microsoft figyelési termék összehasonlítása
 Ez a cikk ismerteti a System Center Operations Manager (SCOM) és az Operations Management Suite (OMS) szolgáltatáshoz összehasonlítása architektúráját, logikája hogyan azok megfigyelje az erőforrásokat, és hogyan működnek a gyűjtött adatok elemzése .  Ez az Önnek egy alapvető ismeretekkel rendelkezik a relatív szintjeiről és különbségeket.  

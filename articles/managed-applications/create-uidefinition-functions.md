@@ -18,6 +18,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34304504"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition funkciók
 Ez a szakasz az összes támogatott funkcióit egy CreateUiDefinition aláírásai.

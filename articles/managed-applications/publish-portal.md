@@ -15,6 +15,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34305123"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Az Azure portálon keresztül szolgáltatás katalógus alkalmazás közzététele
 

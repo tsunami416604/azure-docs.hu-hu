@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager és a kötetek |} Microsoft Docs"
-description: "Ismerteti, hogyan megtekintéséhez és kezeléséhez kötetek és a biztonsági mentések konfigurálása a StorSimple Snapshot Manager MMC beépülő modul segítségével."
+title: StorSimple Snapshot Manager és a kötetek |} Microsoft Docs
+description: Ismerteti, hogyan megtekintéséhez és kezeléséhez kötetek és a biztonsági mentések konfigurálása a StorSimple Snapshot Manager MMC beépülő modul segítségével.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876991"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>StorSimple Snapshot Manager segítségével megtekintheti, és a kötetek kezelése
 ## <a name="overview"></a>Áttekintés

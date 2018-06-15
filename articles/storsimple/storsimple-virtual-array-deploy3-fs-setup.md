@@ -1,11 +1,11 @@
 ---
-title: "Állítsa be a StorSimple virtuális tömb fájlkiszolgálóként |} Microsoft Docs"
-description: "A StorSimple virtuális tömb telepítési harmadik oktatóanyag arra utasítja, hogy a fájlkiszolgáló virtuális eszköz beállítása."
+title: Állítsa be a StorSimple virtuális tömb fájlkiszolgálóként |} Microsoft Docs
+description: A StorSimple virtuális tömb telepítési harmadik oktatóanyag arra utasítja, hogy a fájlkiszolgáló virtuális eszköz beállítása.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f609f6ff-0927-48bb-a68a-6d8985d2fe34
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927823"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Központi telepítése a StorSimple virtuális tömb - beállítva fel fájlkiszolgálóként Azure-portálon
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)

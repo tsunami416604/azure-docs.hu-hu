@@ -1,6 +1,6 @@
 ---
-title: "A Blob storage Hudson használata |} Microsoft Docs"
-description: "Ismerteti, hogyan használandó Hudson az Azure Blob storage szolgáltatással a tárházat az összeállítási összetevők."
+title: A Blob storage Hudson használata |} Microsoft Docs
+description: Ismerteti, hogyan használandó Hudson az Azure Blob storage szolgáltatással a tárházat az összeállítási összetevők.
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874163"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés

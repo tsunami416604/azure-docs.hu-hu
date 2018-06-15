@@ -1,12 +1,12 @@
 ---
-title: "Az Azure VPN Gatewayek magas rendelkezésre állású konfiguráció áttekintése |} Microsoft Docs"
-description: "Ez a cikk áttekintést nyújt a magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával."
+title: Az Azure VPN Gatewayek magas rendelkezésre állású konfiguráció áttekintése |} Microsoft Docs
+description: Ez a cikk áttekintést nyújt a magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23928943"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Magas rendelkezésre állású kapcsolatok létesítmények, illetve virtuális hálózatok között
 Ez a cikk áttekintést nyújt a létesítmények közötti és a virtuális hálózatok közötti kapcsolatokra vonatkozó magas rendelkezésre állású konfigurációs lehetőségekről az Azure-alapú VPN-átjárók használatával.

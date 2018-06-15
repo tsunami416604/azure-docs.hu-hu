@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213044"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>A Service Fabric Reliable Actors bemutatása
 Reliable Actors a Service Fabric alkalmazási keretrendszer alapján a [virtuális szereplő](http://research.microsoft.com/en-us/projects/orleans/) mintát. A megbízható Actors API a Service Fabric skálázhatóságát és megbízhatóságát garanciák épülő programozási egyszálas modellt biztosít.

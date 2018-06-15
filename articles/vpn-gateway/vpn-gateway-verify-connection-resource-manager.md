@@ -1,11 +1,11 @@
 ---
-title: "A VPN-átjáró kapcsolat ellenőrzése |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan ellenőrizheti egy virtuális hálózat VPN Gateway-kapcsolatot."
+title: A VPN-átjáró kapcsolat ellenőrzése |} Microsoft Docs
+description: Ez a cikk bemutatja, hogyan ellenőrizheti egy virtuális hálózat VPN Gateway-kapcsolatot.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 7e3d1043-caa9-4472-96d3-832f4e2c91ee
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884131"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>A VPN-átjáró kapcsolat ellenőrzése
 

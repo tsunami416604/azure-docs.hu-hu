@@ -1,11 +1,11 @@
 ---
-title: "A blob storage használata az Azure Naplóelemzés eseményeket az IIS és a tábla tárolási |} Microsoft Docs"
-description: "A Naplóelemzési olvashatja a naplók az Azure-szolgáltatásokat, hogy az írási diagnostics meg tudja a table storage vagy a blob-tároló írni az IIS-naplókba."
+title: A blob storage használata az Azure Naplóelemzés eseményeket az IIS és a tábla tárolási |} Microsoft Docs
+description: A Naplóelemzési olvashatja a naplók az Azure-szolgáltatásokat, hogy az írási diagnostics meg tudja a table storage vagy a blob-tároló írni az IIS-naplókba.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855445"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az IIS és az Azure Naplóelemzés eseményeit a table storage Azure blob storage használata
 

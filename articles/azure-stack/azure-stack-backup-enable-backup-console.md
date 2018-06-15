@@ -19,6 +19,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34302256"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése Azure verem a felügyeleti portálon
 Az infrastruktúra biztonsági másolat szolgáltatás a felügyeleti portálon keresztül, hogy az Azure-verem hozhat létre a biztonsági mentés engedélyezése Ezek a biztonsági mentések használatával állítsa vissza a környezetben, a felhő helyreállítással [végzetes hiba](.\azure-stack-backup-recover-data.md). Felhőbeli helyreállítási célja annak érdekében, hogy az operátorok és a felhasználók is jelentkezzen be a portál helyreállítást követően. Az előfizetések, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti tervek, ajánlatokat, és a korábban meghatározott számítási, tárolási és hálózati kvóták vissza a felhasználóknak kell.

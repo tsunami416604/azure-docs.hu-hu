@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb frissítések kibocsátási megjegyzései |} Microsoft Docs"
-description: "A StorSimple virtuális tömb 0,3 Update futtatása kritikus megnyitott problémák és megoldásuk ismertetése"
+title: A StorSimple virtuális tömb frissítések kibocsátási megjegyzései |} Microsoft Docs
+description: A StorSimple virtuális tömb 0,3 Update futtatása kritikus megnyitott problémák és megoldásuk ismertetése
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: b197651a-3c40-4185-b23d-4c8f22cfa8f4
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875514"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>A StorSimple virtuális tömb frissítés 0,3 kibocsátási megjegyzései
 ## <a name="overview"></a>Áttekintés

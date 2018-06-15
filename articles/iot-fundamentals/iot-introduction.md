@@ -1,24 +1,19 @@
 ---
 title: Azure eszközök internetes hálózata (IoT, Internet of Things) – bevezetés
 description: Az Azure IoT és a kapcsolódó szolgáltatások és technológiák áttekintése.
-services: iot-hub
-documentationcenter: ''
 author: BryanLa
 manager: timlt
-editor: bryanla
-ms.service: iot
-ms.devlang: na
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/30/2018
-ms.author: bryanla; v-clay
-layout: LandingPage
-ms.openlocfilehash: 183925324c404b412b5d12c3a9bff93ccd842535
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/18/2018
+ms.author: bryanla
+ms.openlocfilehash: 685de6a3cfe0e3f5a2ea82da831247d7b4144fea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636205"
 ---
 # <a name="introduction-to-azure-and-the-internet-of-things"></a>Az Azure és az eszközök internetes hálózatának bemutatása
 
@@ -83,17 +78,6 @@ Egy prediktív karbantartási forgatókönyvben például a felhő háttérrends
 
 A megjelenítési és üzleti kapcsolati réteg lehetővé teszi a végfelhasználók számára, hogy kapcsolatba lépjenek az IoT-megoldással és az eszközökkel. Segítségével a felhasználók megtekinthetik és elemezhetik az eszközeikről összegyűjtött adatokat. Ezek irányítópultokon vagy BI-jelentések formájában is megtekinthetők, amelyek az előzmény- és a közel valós idejű adatokat egyaránt megjelenítik. A kezelő például ellenőrizheti egy adott szivattyútelep állapotát, és megtekintheti a rendszer által kiadott riasztásokat. Ez a réteg emellett lehetővé teszi az IoT-megoldás háttérrendszerének integrációját egy létező üzleti alkalmazással, hogy be lehessen vonni az üzleti vagy munkafolyamatokba. A prediktív karbantartási megoldás például integrálható egy ütemezési rendszerbe, amely kihív egy mérnököt a szivattyútelephez, ha megállapítja, hogy valamelyik szivattyú karbantartásra szorul.
 
-[img-solution-architecture]: ./media/iot-introduction/iot-reference-architecture.png
-[img-dashboard]: ./media/iot-introduction/iot-suite.png
-
-[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-suite/iot-suite-overview.md
-[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
-[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
-[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-
-
 ## <a name="why-azure-iot"></a>Milyen előnyöket kínál az Azure IoT?
 
 Az Azure IoT csökkenti az IoT-projektek összetettségét, továbbá megoldásokat kínál a különféle kihívásokra, például a biztonság, az infrastruktúra-kompatibilitás vagy az IoT-megoldás méretezése terén. Ezt az alábbiak révén éri el:
@@ -141,7 +125,7 @@ Fedezze fel a technológiák és megoldások következő területeit, vagy tekin
                 <div class="card">
                     <div class="cardText">
                         <h3>Megoldások</h3>
-                        <a href="/azure/iot-suite">IoT Suite</a><br/>
+                        <a href="/azure/iot-suite">IoT-megoldásgyorsítók</a><br/>
                         <a href="/azure/iot-central">IoT-központ</a>
                     </div>
                 </div>
@@ -179,14 +163,22 @@ Fedezze fel a technológiák és megoldások következő területeit, vagy tekin
 </ul>
 
 [img-paas-saas-technologies-solutions]: media/index/paas-saas-technologies-solutions.png
+[img-solution-architecture]: ./media/iot-introduction/iot-reference-architecture.png
+[img-dashboard]: ./media/iot-introduction/iot-suite.png
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-iot-central-land]: https://docs.microsoft.com/microsoft-iot-central/
 [lnk-iot-dps-land]: /azure/iot-dps/index.yml
 [lnk-iot-edge-land]: /azure/iot-edge/index.yml
 [lnk-iot-hub-land]: /azure/iot-hub/index.md
-[lnk-iot-maps-land]: /azure/azure-maps/index.yml
-[lnk-iot-suite-land]: /azure/iot-suite/index.md
+[lnk-iot-maps-land]: /azure/maps/index.yml
+[lnk-iot-sa-land]: ../iot-accelerators/index.md
 [lnk-iot-tsi-land]: /azure/time-series-insights/index.yml
+
+[lnk-iot-hub]: ../iot-hub/about-iot-hub.md
+[lnk-iot-sa]: ../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
+[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
+[lnk-protocol-gateway]:  ../iot-hub/iot-hub-protocol-gateway.md
+[lnk-refarch]: https://aka.ms/iotrefarchitecture
 
 

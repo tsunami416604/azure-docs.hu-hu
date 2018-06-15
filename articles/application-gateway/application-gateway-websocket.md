@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway WebSocket támogatást |} Microsoft Docs"
-description: "Ezen a lapon a kérelem átjáró WebSocket támogatási áttekintést nyújt."
+title: Azure Application Gateway WebSocket támogatást |} Microsoft Docs
+description: Ezen a lapon a kérelem átjáró WebSocket támogatási áttekintést nyújt.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836797"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Alkalmazásátjáró WebSocket támogatást áttekintése
 

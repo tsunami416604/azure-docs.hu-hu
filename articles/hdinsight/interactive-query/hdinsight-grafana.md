@@ -17,6 +17,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34305428"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Az Azure hdinsight hozzáférést Grafana
 

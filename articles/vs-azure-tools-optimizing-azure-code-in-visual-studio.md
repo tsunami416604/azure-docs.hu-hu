@@ -1,11 +1,11 @@
 ---
-title: "A Visual Studio Azure kód optimalizálása |} Microsoft Docs"
-description: "Ismerje meg, az Azure kód optimalizálási eszközök Visual Studio érdekében a kód megbízhatóbb és jobban végrehajtása."
+title: A Visual Studio Azure kód optimalizálása |} Microsoft Docs
+description: Ismerje meg, az Azure kód optimalizálási eszközök Visual Studio érdekében a kód megbízhatóbb és jobban végrehajtása.
 services: visual-studio-online
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: ed48ee06-e2d2-4322-af22-07200fb16987
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23890837"
 ---
 # <a name="optimizing-your-azure-code"></a>Az Azure kód optimalizálása
 Ha a Microsoft Azure használó alkalmazások által programozási, van néhány alkalmazás méretezhetőséget, viselkedését, egy felhőalapú környezetben a teljesítményt és a problémák elkerülése érdekében ajánlott eljárásit. A Microsoft biztosít egy Azure kód elemző eszköz, amely ismeri fel és azonosítja a leggyakrabban észlelt problémák számos, és segítséget nyújt a megoldásukkal együtt. Az eszköz a Visual Studio NuGet útján lehet letölteni.

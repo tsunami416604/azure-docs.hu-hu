@@ -1,11 +1,11 @@
 ---
-title: "Hálózati biztonság Azure hálózati figyelő biztonsági csoport láthassák - Azure CLI 1.0 elemzése |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan Azure CLI 1.0 használatával elemezheti a virtuális gépek biztonsági a biztonsági csoport megtekintése."
+title: Hálózati biztonság Azure hálózati figyelő biztonsági csoport láthassák - Azure CLI 1.0 elemzése |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan Azure CLI 1.0 használatával elemezheti a virtuális gépek biztonsági a biztonsági csoport megtekintése.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23862830"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-10"></a>A virtuális gép biztonsági a biztonsági csoport nézet segítségével az Azure CLI 1.0 elemzése
 

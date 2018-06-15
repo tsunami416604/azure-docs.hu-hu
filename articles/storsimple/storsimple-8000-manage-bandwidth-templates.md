@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series sávszélesség sablonok kezelése |} Microsoft Docs"
-description: "Ismerteti a StorSimple sávszélesség sablonokat, amelyek lehetővé teszik a sávszélesség-használat szabályozása."
+title: A StorSimple 8000 series sávszélesség sablonok kezelése |} Microsoft Docs
+description: Ismerteti a StorSimple sávszélesség sablonokat, amelyek lehetővé teszik a sávszélesség-használat szabályozása.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875073"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>A StorSimple Device Manager szolgáltatással a StorSimple sávszélesség sablonok kezelése
 
