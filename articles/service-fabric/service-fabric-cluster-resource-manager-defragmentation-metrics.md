@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205076"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>A metrikák és a Service Fabric terheléselosztási töredezettségmentesítését
 A Service Fabric fürt Resource Manager alapértelmezett stratégia terhelési metrika a fürt felügyeletéhez, hogy a terhelés elosztása. Győződjön meg arról, hogy a csomópontok egyenletesen felhasználtuk elkerülhető és meleg tesztüzeméhez, amely a versengés és feleslegesen erőforrásokat is vezethet. A fürt munkaterhelések terjesztése egyben tekintetében a még működő sikertelen, mert biztosítja, hogy a hibát az egy adott munkaterhelés nagy része, nem veszi a legbiztonságosabb. 

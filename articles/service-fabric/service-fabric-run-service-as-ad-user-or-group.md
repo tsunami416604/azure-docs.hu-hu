@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206992"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>A szolgáltatás futtatásához egy Active Directory-felhasználó vagy csoport
 Egy Windows Server önálló fürtön a szolgáltatás az Active Directory-felhasználó vagy csoport RunAs házirend segítségével is futtathatja.  Alapértelmezés szerint a Service Fabric alkalmazások futnak, a fiók, amely alatt futó a Fabric.exe folyamatban. Futó alkalmazások eltérő fiókkal, még akkor is, a megosztott üzemeltetési környezetben révén azokat egymástól biztonságosabb. Vegye figyelembe, hogy ez az Active Directory helyszíni belül a tartomány és a nem Azure Active Directory (Azure AD) használ.  A szolgáltatás is futtathatja egy [csoportos felügyelt szolgáltatásfiók (gMSA)](service-fabric-run-service-as-gmsa.md).

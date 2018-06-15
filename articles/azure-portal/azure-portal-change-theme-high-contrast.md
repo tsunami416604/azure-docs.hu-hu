@@ -15,6 +15,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165400"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Kontrasztos, vagy módosítsa a téma az Azure-portálon
 További megjelenítés vagy az Azure portálon színsémáját módosítani kívánja, nyissa meg a változtatások portál beállításait. 

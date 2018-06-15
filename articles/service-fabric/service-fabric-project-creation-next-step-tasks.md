@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206465"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>A Service Fabric-alkalmazás és a következő lépések
 Az Azure Service Fabric-alkalmazás létrehozása. Ez a cikk ismerteti a próbálhatja ki az oktatóprogramok találhatók, a projekt, néhány további információt a érdekelheti és esetleges további lépések makeup.

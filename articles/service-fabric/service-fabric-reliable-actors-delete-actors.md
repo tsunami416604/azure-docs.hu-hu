@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208335"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Törli a Reliable Actors és azok állapota
 A deaktivált szereplője szemétgyűjtés csak a szükségtelenné vált az aktor objektum, de nem távolítja el egy szereplő állapotkezelője tárolt adatokat. Egy szereplő újraaktiválásakor adataik újra szeretné elérhetővé tenni azt az állapotkezelő segítségével. Olyan esetekben, ahol szereplője adat tárolása állapotkezelője és inaktiválása, de soha nem újra aktiválni lehet szükség az adatok törlése.

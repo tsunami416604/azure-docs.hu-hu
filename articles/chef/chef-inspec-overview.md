@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260070"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>A megfelelőségi automatizálásához az Azure infrastruktúra InSpec használata
 [InSpec](https://www.chef.io/inspec/) szabad és nyílt forráskódú keretrendszere, amely a vizsgálat és naplózás az alkalmazásaikat és infrastruktúrájukat. A rendszer a kívánt állapot, amely kifejezi könnyen olvasási és írási könnyen InSpec kódban az aktuális állapotával összehasonlításával inSpec működik. InSpec megsértésének felismeri és megállapítások jelentés formájában megjeleníti, de helyezi, szervizelés irányítását. InSpec használhatja az Azure-ban futó virtuális gépek állapotának ellenőrzése. InSpec segítségével is vizsgálati és erőforrások és erőforráscsoportok belül előfizetés állapotát ellenőrzi.
