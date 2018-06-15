@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208029"
 ---
 # <a name="scaling-service-fabric-clusters"></a>Méretezési Service Fabric-fürtök
 A Service Fabric-fürt olyan hálózathoz csatlakozó virtuális vagy fizikai gépek, amelybe a mikroszolgáltatások telepíteni és felügyelni. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy csomópont neve. Fürtök esetlegesen több ezer is tartalmazhat. Miután létrehozta a Service Fabric-fürt, a fürt horizontálisan méretezhető (csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrások módosításához).  Méretezheti a fürt bármikor, még akkor is, ha munkaterhelések fut a fürtön.  Méretezi a fürtön, mivel az alkalmazások automatikus méretezése is.

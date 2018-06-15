@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212561"
 ---
 # <a name="service-fabric-application-lifecycle"></a>A Service Fabric-alkalmazás életciklusa
 És egyéb platformok, az alkalmazás Azure Service Fabric általában végig kell vinnie a következő fázisok: tervezési, fejlesztési, tesztelési, telepítési, frissítésére, karbantartási és eltávolítása. A Service Fabric első osztályú támogatást nyújt a teljes alkalmazás életciklusa a felhőalapú alkalmazások, a fejlesztését a telepítés, a napi felügyeleti és a karbantartás végleges leszerelése. A modell lehetővé teszi, hogy az alkalmazás-életciklus egymástól függetlenül részt számos különböző szerepkörrel. Ez a cikk áttekintést nyújt az API-k és azok használata során a Service Fabric-alkalmazás életciklusa fázisai a különböző szerepkörökhöz.

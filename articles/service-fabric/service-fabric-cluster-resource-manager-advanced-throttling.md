@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205127"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürt erőforrás-kezelő szabályozása
 Akkor is, ha megfelelően konfigurálta a erőforrás-kezelőt, a fürt képes lekérni megszakad. Például lehet egyidejű csomópont és a tartalék tartomány hibák - mi történne, a frissítés során történt? A fürt erőforrás-kezelő mindig megpróbálja mindent, javítsa ki próbálta átrendezéséhez, és hárítsa el a fürt a fürt erőforrásait fel. Szabályozások biztosítható a backstop, hogy a fürt használhassa erőforrások stabilizálásához – térjen vissza a csomópontokat, a hálózati partíciók javítandó, javított bits telepítve.

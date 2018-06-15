@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208420"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatások problémája, válaszol, és oldja meg az incidensek és a leállások arra a képességére, a problémák gyorsan észlelése arra a képességére, függ. Ha készít jelentést az problémák és hibák az Azure Service Fabric-kezelő szolgáltatás programkódból, szabványos állapotfigyelési, amely a rendszerállapot állapotának biztosít a Service Fabric eszközök is használhatja.

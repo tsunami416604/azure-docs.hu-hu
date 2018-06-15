@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165417"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Az Azure portálon használható billentyűparancsok
 Ez a cikk bemutatja a billentyűparancsok, amelyek az Azure-portálon egészében meghiúsulhatnak. Előfordulhat, hogy az egyes szolgáltatások saját billentyűparanccsal.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207536"
 ---
 # <a name="service-fabric-application-scenarios"></a>A Service Fabric-alkalmazás-forgatókönyvek
 Az Azure Service Fabric biztosít a megbízható és rugalmas platform, amely lehetővé teszi, és számos üzleti alkalmazások és szolgáltatások futtatásához. Ezek az alkalmazások és mikroszolgáltatások létrehozására lehet állapot nélküli és állapotalapú, és erőforrás terhelésű hatékonyságának maximalizálása a virtuális gépek között. A Service Fabric egyedi architektúra lehetővé teszi a közel valós idejű adatelemzés, a memórián belüli számítási, a párhuzamos tranzakciókat és a esemény feldolgozását az alkalmazásokban. Könnyedén méretezhető az alkalmazások felfelé vagy lefelé (valóban bejövő vagy kimenő), a változó erőforrás követelményeitől függően.

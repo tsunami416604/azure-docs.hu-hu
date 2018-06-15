@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211065"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>A Service Fabric-fürt által használt tanúsítvány egyszerű neve helyett ujjlenyomat telepítése
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltást vagy felügyeleti rendelkezhet. Több tanúsítvány azonban rendelkezhet ugyanazzal a névvel vagy tulajdonos.  A tanúsítvány köznapi nevek fürt teszi Tanúsítványkezelő jóval egyszerűbbé válik. Ez a cikk ismerteti, hogyan kell használni a tanúsítvány egyszerű neve helyett a tanúsítvány ujjlenyomatát a Service Fabric-fürt központi telepítése.

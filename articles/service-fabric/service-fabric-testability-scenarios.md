@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208753"
 ---
 # <a name="testability-scenarios"></a>Tesztelhetőségi forgatókönyvek
 Nagy méretű elosztott rendszerek hasonlóan a felhőalapú infrastruktúrák nem eredendően megbízhatóak. Azure Service Fabric lehetővé teszi a fejlesztők szolgáltatások futtatásához fölött megbízhatatlan infrastruktúrák írni. Írási magas színvonalú szolgáltatásokat, a fejlesztők kell tudni idéz elő az ilyen megbízhatatlan infrastruktúra a szolgáltatások stabilitásának teszteléséhez.

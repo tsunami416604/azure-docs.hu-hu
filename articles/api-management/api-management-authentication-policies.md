@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management hitelesítési házirendek |} Microsoft Docs"
-description: "Ismerje meg a hitelesítési házirendek az Azure API Management használható."
+title: Az Azure API Management hitelesítési házirendek |} Microsoft Docs
+description: Ismerje meg a hitelesítési házirendek az Azure API Management használható.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26127759"
 ---
 # <a name="api-management-authentication-policies"></a>Az API Management hitelesítési házirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

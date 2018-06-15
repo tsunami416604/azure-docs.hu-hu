@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258714"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 Ebben a cikkben megválaszolunk kérdések merülhetnek fel, a rendszergazdák beállításait, valamint az alkalmazás adatszinkronizálás rendelkezhet.

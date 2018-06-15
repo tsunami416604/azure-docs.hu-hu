@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205972"
 ---
 # <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modell áttekintése
 A Service Fabric és a szolgáltatások kezeléséhez több lehetőséget is kínál. Szolgáltatások használhat a Service Fabric API-k a platform szolgáltatásai és alkalmazás-keretrendszerek számára teljes körű kihasználása érdekében. Szolgáltatások bármilyen nyelven vagy a Service Fabric fürt által futtatott tárolóban futó lefordított végrehajtható programok is lehet.

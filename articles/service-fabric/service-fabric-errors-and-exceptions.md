@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212500"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Közös kivételeket és hibák, amikor a FabricClient API-k használata
 A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API-k lehetővé teszik a felügyeleti feladatokat hajthat végre a Service Fabric-alkalmazás, szolgáltatás vagy fürt a fürt- és rendszergazdák. Például alkalmazás központi telepítése, frissítése és eltávolítása, a fürt ellenőrzése, vagy egy szolgáltatás tesztelése. Alkalmazásfejlesztők és a fürt rendszergazdák a FabricClient API-k használhatja a Service Fabric-fürt és az alkalmazások kezelésére szolgáló eszközök fejlesztéséhez.

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Naplóelemzés változások? | Microsoft Docs"
-description: "Ez a cikk ismerteti a frissítés vonatkozó gyakran ismételt kérdések új lekérdezés nyelvének a Naplóelemzési."
+title: Az Azure Naplóelemzés változások? | Microsoft Docs
+description: Ez a cikk ismerteti a frissítés vonatkozó gyakran ismételt kérdések új lekérdezés nyelvének a Naplóelemzési.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26039859"
 ---
 # <a name="whats-changed-in-azure-log-analytics"></a>Az Azure Naplóelemzés változások?
 A lekérdezési nyelv magát, kívül több fejlesztései és változtatásokat, hogy meg kell ügyelnie, ha van a Naplóelemzési munkaterület [frissítve az új lekérdezési nyelv](log-analytics-log-search-new.md).  Ez a cikk röviden között az egyes részletes tartalomra mutató hivatkozásokat tartalmazó örökölt és frissített munkaterület változásait ismerteti. 

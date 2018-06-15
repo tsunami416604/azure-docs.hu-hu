@@ -13,6 +13,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012814"
 ---
 1. Kattintson a **Connect** gombra a virtuális gép tulajdonságok lapján. 
 2. Az a **kapcsolódás a virtuális gép** lapon hagyja válassza ki a megfelelő beállításokat, majd kattintson **letöltése RDP-fájl**.

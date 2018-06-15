@@ -19,6 +19,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057842"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>A StorSimple 8000 Series Update 2.2 kibocsátási megjegyzései
 

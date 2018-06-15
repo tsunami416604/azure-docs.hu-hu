@@ -15,6 +15,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072092"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>A fájlrendszer blobfuse a Blob-tároló csatlakoztatásáról
 

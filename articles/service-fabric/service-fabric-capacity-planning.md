@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212857"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Kapacitástervezés a Service Fabric-alkalmazások
 Ez a dokumentum útmutatást ad az Azure Service Fabric-alkalmazások futtatásához szükséges erőforrások (CPU-k, memória, lemezes tárolás) becslésére módjáról. Gyakori, hogy az erőforrás-követelményei változnak az idők is. Túl sok erőforrás általában a szolgáltatás fejlesztés/tesztelés, és ezután ugyan több erőforrást, éles környezetben módba, és az alkalmazás növekszik időben népszerűvé vált a szükséges. Az alkalmazás tervezésekor gondolja, hogy a hosszú távú követelmények keresztül, és lehetőségeket, amelyek lehetővé teszik a szolgáltatás méretezhető, nagy felhasználói igényeknek.

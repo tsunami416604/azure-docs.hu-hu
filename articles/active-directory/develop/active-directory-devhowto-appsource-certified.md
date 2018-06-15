@@ -22,6 +22,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257531"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Hogyan kérhet a AppSource hitelesített az Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) egy cél üzleti felhasználók számára, próbálja meg, valamint (önálló SaaS és a meglévő Microsoft SaaS-termékekben bővítmény) sor üzleti SaaS-alkalmazások kezelésében.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206436"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Az Azure Service Fabric katasztrófa utáni helyreállítás
 A magas rendelkezésre állású kézbesítéséhez kritikus része annak ellenőrzése, hogy a szolgáltatások hibatűrését összes különböző típusú hibák. Ez különösen fontos a nem tervezett hibák és a vezérlőn kívül. Ez a cikk ismerteti az egyes közös függően katasztrófák lehet, ha nem modellezve, és a megfelelő felügyelt. Megoldást és a teendő, ha egy olyan vészhelyzet esetén történt ennek ellenére is ismertetik. A cél, hogy korlátozható vagy kiküszöbölése állásidő vagy adatvesztés kockázatát, amikor jelentkeznek a hibák, a tervezett, vagy ellenkező esetben fordulhat elő.
