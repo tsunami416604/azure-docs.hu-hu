@@ -1,12 +1,12 @@
 ---
-title: "A telephelyek közötti VPN konfigurálása az Azure ExpressRoute-társviszony létesítése – Microsoft keresztül |} Microsoft Docs"
-description: "A webhelyek közötti VPN átjáró használatával egy ExpressRoute Microsoft társviszony-létesítési expressroute keresztül IPsec/IKE Azure kapcsolat konfigurálása."
+title: A telephelyek közötti VPN konfigurálása az Azure ExpressRoute-társviszony létesítése – Microsoft keresztül |} Microsoft Docs
+description: A webhelyek közötti VPN átjáró használatával egy ExpressRoute Microsoft társviszony-létesítési expressroute keresztül IPsec/IKE Azure kapcsolat konfigurálása.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26357733"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>A telephelyek közötti VPN konfigurálása a ExpressRoute Microsoft-társviszony létesítése – keresztül
 

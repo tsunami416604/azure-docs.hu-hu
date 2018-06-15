@@ -1,11 +1,11 @@
 ---
-title: "Biztonságos ügyfél API-k az API Management - Azure API Management tanúsítványhitelesítés |} Microsoft Docs"
-description: "Megtudhatja, hogyan biztosíthat biztonságos hozzáférést a az ügyféltanúsítványok API-k"
+title: Biztonságos ügyfél API-k az API Management - Azure API Management tanúsítványhitelesítés |} Microsoft Docs
+description: Megtudhatja, hogyan biztosíthat biztonságos hozzáférést a az ügyféltanúsítványok API-k
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26406743"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Az API Management tanúsítványhitelesítés biztonságossá tétele a ügyfél API-k
 

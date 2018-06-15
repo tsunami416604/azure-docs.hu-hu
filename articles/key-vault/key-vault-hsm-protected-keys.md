@@ -1,8 +1,8 @@
 ---
-title: "Generate and transfer HSM által védett kulcsok Azure Key vault és hogyan |} Microsoft Docs"
-description: "Ez a cikk használatával alakítsa ki tervezése, létrehozása és a saját HSM által védett kulcsok használata az Azure Key Vault majd át. Más néven BYOK vagy a saját kulcs."
+title: Generate and transfer HSM által védett kulcsok Azure Key vault és hogyan |} Microsoft Docs
+description: Ez a cikk használatával alakítsa ki tervezése, létrehozása és a saját HSM által védett kulcsok használata az Azure Key Vault majd át. Más néven BYOK vagy a saját kulcs.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345111"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM által védett és hogyan kulcsok Azure Key vault
 ## <a name="introduction"></a>Bevezetés
