@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917499"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Útmutató a Windows rendszerű virtuális gép címke az Azure-ban
 Ez a cikk ismerteti a Windows rendszerű virtuális gép címke az Azure-ban a Resource Manager üzembe helyezési modellel keresztül különböző módjai. Címke található a felhasználó által definiált kulcs/érték párok, amely lehet tenni közvetlenül egy erőforrás vagy egy erőforráscsoportot. Azure jelenleg legfeljebb 15 címkék erőforrás pedig erőforráscsoportban. Címkék erőforrás létrehozása idején helyezni vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, hogy csak a Resource Manager üzembe helyezési modellel létrehozott erőforrások címkék használhatók. Ha szeretne egy Linux virtuális gép címkét, lásd: [hogyan Linux virtuális gépek címke az Azure-ban](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

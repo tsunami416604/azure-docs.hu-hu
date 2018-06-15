@@ -1,8 +1,8 @@
 ---
-title: "Webhook riasztási műveleti minta az OMS szolgáltatáshoz |} Microsoft Docs"
-description: "A műveletek futtatása a Log Analytics-riasztások válaszul egyik egy * webhook *, amely lehetővé teszi egyetlen HTTP-kérelem keresztül külső folyamat meghívni. Ez a cikk végigvezeti a Slackhez használatával Naplóelemzési figyelmeztető egy webhook művelet létrehozására láthat példát."
+title: Webhook riasztási műveleti minta az OMS szolgáltatáshoz |} Microsoft Docs
+description: A műveletek futtatása a Log Analytics-riasztások válaszul egyik egy * webhook *, amely lehetővé teszi egyetlen HTTP-kérelem keresztül külső folyamat meghívni. Ez a cikk végigvezeti a Slackhez használatával Naplóelemzési figyelmeztető egy webhook művelet létrehozására láthat példát.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855172"
 ---
 # <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>Az OMS szolgáltatáshoz üzenetet küldeni a Slackhez riasztási webhook művelet létrehozása
 Egy művelet futtatása válaszul egy [Naplóelemzési riasztás](log-analytics-alerts.md) van egy *webhook*, amely lehetővé teszi, hogy egyetlen HTTP-kérelem keresztül külső folyamat meghívni.  Riasztások és webhookokkal, a részleteket olvashat [Naplóelemzési riasztások](log-analytics-alerts.md)

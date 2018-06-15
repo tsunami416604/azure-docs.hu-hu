@@ -1,11 +1,11 @@
 ---
-title: "Node.js modulok használata"
-description: "Útmutató az Azure App Service és a Felhőszolgáltatások használata a Node.js modulok használata."
-services: 
+title: Node.js modulok használata
+description: Útmutató az Azure App Service és a Felhőszolgáltatások használata a Node.js modulok használata.
+services: ''
 documentationcenter: nodejs
 author: TomArcher
 manager: routlaw
-editor: 
+editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23864055"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>A Node.js modulok használata az Azure alkalmazásokkal
 Ez a dokumentum útmutatást nyújt a Node.js modulok használata az Azure-platformon futó alkalmazások. beleértve annak biztosítását, hogy az alkalmazás a modul egy adott verzióját használja, továbbá a natív modulok az Azure-ral való használatát.

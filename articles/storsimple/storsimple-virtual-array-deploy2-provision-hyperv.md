@@ -1,11 +1,11 @@
 ---
-title: "A Hyper-v-ben a StorSimple virtuális tömb kiépítése |} Microsoft Docs"
-description: "A StorSimple virtuális tömb telepítési második oktatóanyag magában foglalja a kiépítés a Hyper-V egy virtuális tömb."
+title: A Hyper-v-ben a StorSimple virtuális tömb kiépítése |} Microsoft Docs
+description: A StorSimple virtuális tömb telepítési második oktatóanyag magában foglalja a kiépítés a Hyper-V egy virtuális tömb.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876592"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>A StorSimple virtuális tömb - Provision a Hyper-V telepítése
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)

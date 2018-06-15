@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915107"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Igény szerinti "kapacitásnövelés" csomópontok hozzáadása a HPC Pack fürthöz az Azure-ban
 Ha úgy konfigurálja a [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) fürt Azure, érdemes egy módszerre, amellyel gyorsan méretezni a fürt kapacitás felfelé vagy lefelé, előre konfigurált számítási csomópont virtuális gépek halmaza fenntartása nélkül. Ez a cikk bemutatja, hogyan igény szerinti "kapacitásnövelés" csomópontokat (feldolgozói szerepkör példányok felhőszolgáltatásban fut), egy átjárócsomópont Azure számítási erőforrásokat. 

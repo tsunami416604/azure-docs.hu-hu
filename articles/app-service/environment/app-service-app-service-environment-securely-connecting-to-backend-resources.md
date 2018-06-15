@@ -1,11 +1,11 @@
 ---
-title: "Biztonságos kapcsolódás háttér erőforrásokhoz az App Service-környezet"
-description: "További tudnivalók a biztonságos kapcsolódás App Service-környezetből származó."
+title: Biztonságos kapcsolódás háttér erőforrásokhoz az App Service-környezet
+description: További tudnivalók a biztonságos kapcsolódás App Service-környezetből származó.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836524"
 ---
 # <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Biztonságos kapcsolódás háttér erőforrásokhoz az App Service-környezet
 ## <a name="overview"></a>Áttekintés

@@ -1,11 +1,11 @@
 ---
-title: "StorSimple fájlmegosztási vész-Helyreállítási az Azure Site Recovery szolgáltatással automatizálhatja |} Microsoft Docs"
-description: "Ismerteti a lépéseket és ajánlott eljárások a vész-helyreállítási megoldást az üzemeltetett Microsoft Azure StorSimple tároló fájlmegosztások létrehozásához."
+title: StorSimple fájlmegosztási vész-Helyreállítási az Azure Site Recovery szolgáltatással automatizálhatja |} Microsoft Docs
+description: Ismerteti a lépéseket és ajánlott eljárások a vész-helyreállítási megoldást az üzemeltetett Microsoft Azure StorSimple tároló fájlmegosztások létrehozásához.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23890879"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Azure Site Recovery segítségével StorSimple üzemeltetett fájlmegosztások automatizált vész-helyreállítási megoldás
 ## <a name="overview"></a>Áttekintés

@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series telepítési problémák elhárításához |} Microsoft Docs"
-description: "Ismerteti, hogyan diagnosztizálhatja és javíthatja ki a StorSimple első telepítésekor előforduló hibákat."
+title: A StorSimple 8000 series telepítési problémák elhárításához |} Microsoft Docs
+description: Ismerteti, hogyan diagnosztizálhatja és javíthatja ki a StorSimple első telepítésekor előforduló hibákat.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927858"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>A StorSimple eszköz telepítési problémák elhárításához
 ## <a name="overview"></a>Áttekintés

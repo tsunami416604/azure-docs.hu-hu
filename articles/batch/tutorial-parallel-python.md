@@ -10,11 +10,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c42f67197b10769a49ce61095e1d5d22c9012340
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 916cedfb91f0711f136ff8ad679be94c68964619
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608933"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a Python API használatával
 
@@ -64,7 +65,7 @@ A Python-környezetében telepítse a szükséges csomagokat a `pip` segítség�
 pip install -r requirements.txt
 ```
 
-Nyissa meg a `batch_python_tutorial_ffmpeg.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési karakterláncát a fiókjaira jellemző egyedi értékekkel. Például:
+Nyissa meg a `batch_python_tutorial_ffmpeg.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókjaira jellemző egyedi értékekkel. Például:
 
 
 ```Python
@@ -178,7 +179,7 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04.0-LTS",
+            sku="16.04-LTS",
             version="latest"
             ),
         node_agent_sku_id="batch.node.ubuntu 16.04"),

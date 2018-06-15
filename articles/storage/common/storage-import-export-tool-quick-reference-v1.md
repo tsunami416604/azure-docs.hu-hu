@@ -1,12 +1,12 @@
 ---
-title: "Gyors referenciaként a Microsoft Azure Import/Export eszköz importálási feladat parancsok - 1-es verzió |} Microsoft Docs"
-description: "Az Azure Import/Export eszköz parancsreferencia a gyakran használt importálási feladat parancsok. A v1 az Import/Export eszköz vonatkozik."
+title: Gyors referenciaként a Microsoft Azure Import/Export eszköz importálási feladat parancsok - 1-es verzió |} Microsoft Docs
+description: Az Azure Import/Export eszköz parancsreferencia a gyakran használt importálási feladat parancsok. A v1 az Import/Export eszköz vonatkozik.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873680"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Az importálási feladatokhoz használt gyakori parancsok rövid áttekintése
 Ez a témakör egy rövid összefoglaló néhány gyakran használt parancsok. Tekintse meg a részletes használati [előkészítése merevlemezek hogy az importálás](../storage-import-export-tool-preparing-hard-drives-import-v1.md).  

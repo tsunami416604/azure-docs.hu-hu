@@ -8,11 +8,12 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0ae4e196c81e767b2bbee4340f5d99b9f803df3b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653654"
 ---
 # <a name="introduction-to-azure-storage"></a>A Microsoft Azure Storage bemutatása
 
@@ -31,7 +32,7 @@ Az Azure Storage ezeket az adatszolgáltatásokat tartalmazza:
 - [Azure Blobs](../blobs/storage-blobs-introduction.md): Nagymértékben skálázható objektumtároló szöveges és bináris adatokhoz.
 - [Azure Files](../files/storage-files-introduction.md): Felügyelt fájlmegosztások felhőalapú vagy helyszíni üzemelő példányokhoz.
 - [Azure Queues](../queues/storage-queues-introduction.md): Az alkalmazások összetevői között megbízható üzenetkezelést biztosító üzenettároló. 
-- [Azure Tables](../../cosmos-db/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
+- [Azure Tables](../tables/table-storage-overview.md): A strukturált adatok séma nélküli tárolására szolgáló NoSQL-tároló.
 
 Mindegyik szolgáltatás tárfiókon keresztül érhető el. Első lépésként lásd: [Tárfiók létrehozása](storage-quickstart-create-account.md).
 
@@ -78,13 +79,13 @@ További információ az Azure Queuesról: [Bevezetés az Azure Queues használa
 
 ## <a name="table-storage"></a>Table Storage
 
-Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../../cosmos-db/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB Table API](https://aka.ms/premiumtables)-t ismertető cikket.
+Az Azure Table Storage mostantól az Azure Cosmos DB része. Az Azure Table Storage dokumentációját lásd: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md). A meglévő Azure Table Storage-szolgáltatáson kívül elérhető egy új Azure Cosmos DB Table API-ajánlat, amely teljesítményoptimalizált táblákat, globális elosztást és automatikus másodlagos indexeket is biztosít. Ha további információra van szüksége, vagy szeretné kipróbálni az új prémium ajánlatot, tekintse meg az [Azure Cosmos DB Table API](https://aka.ms/premiumtables)-t ismertető cikket.
 
-További információ a Table Storage-ról: [Az Azure Table Storage áttekintése](../../cosmos-db/table-storage-overview.md).
+További információ a Table Storage-ról: [Az Azure Table Storage áttekintése](../tables/table-storage-overview.md).
 
 ## <a name="disk-storage"></a>Lemezes tárolás
 
-Az Azure Storage emellett a virtuális gépek által használt felügyelt és nem felügyelt lemez képességeket is tartalmazza. További információkért ezekkel a szolgáltatásokkal kapcsolatban lásd a [Számítási szolgáltatások dokumentációját](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
+Az Azure Storage emellett a virtuális gépek által használt felügyelt és nem felügyelt lemez képességeket is tartalmazza. További információkért ezekkel a szolgáltatásokkal kapcsolatban lásd a [Számítási szolgáltatások dokumentációját](https://docs.microsoft.com/en-gb/azure/#pivot=products&panel=Compute).
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
@@ -125,7 +126,7 @@ A tároló adataihoz való hozzáférés biztonságossá tételének egyik módj
 
 ### <a name="securing-access-using-shared-access-signatures"></a>Hozzáférés biztonságossá tétele közös hozzáférésű jogosultságkódok használatával
 
-A közös hozzáférésű jogosultságkódok és a tárolt hozzáférési szabályzatok használatával gondoskodhat az adatobjektumok védelméről. A közös hozzáférésű jogosultságkód (SAS) egy biztonsági jogkivonatot tartalmazó karakterlánc, amelyet egy adategység URI azonosítójához csatolva hozzáférés adható adott tárolóobjektumokhoz, valamint korlátozások határozhatók meg, például engedélyek vagy a hozzáférés dátum-/időtartománya. Ez a szolgáltatás kiterjedt képességeket biztosít. Részletes információkért lásd: [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS) használata).
+A közös hozzáférésű jogosultságkódok és a tárolt hozzáférési szabályzatok használatával gondoskodhat az adatobjektumok védelméről. A közös hozzáférésű jogosultságkód (SAS) egy biztonsági jogkivonatot tartalmazó sztring, amelyet egy adategység URI azonosítójához csatolva hozzáférés adható adott tárolóobjektumokhoz, valamint korlátozások határozhatók meg, például engedélyek vagy a hozzáférés dátum-/időtartománya. Ez a szolgáltatás kiterjedt képességeket biztosít. Részletes információkért lásd: [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Közös hozzáférésű jogosultságkódok (SAS) használata).
 
 ### <a name="public-access-to-blobs"></a>Nyilvános hozzáférés a blobokhoz
 

@@ -3,7 +3,7 @@ title: Munkafolyamat-eseményindítók és műveletek - Azure Logic Apps |} Micr
 description: Eseményindítók és műveletek a munkafolyamat-definícióhoz tartozó Azure Logic Apps megismerése
 services: logic-apps
 author: kevinlam1
-manager: SyntaxC4
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f44de1a316a8375618cfef2e4a98d40c2b21e019
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886782"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300147"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Eseményindítók és az Azure Logic Apps a munkafolyamat-definícióhoz műveletei
 
@@ -55,10 +55,10 @@ Indítók rendelkezik a legfelső szintű ezeket az elemeket, annak ellenére, h
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | <*Eseményindító_neve*> | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | Az eseményindító adja meg, például: "Http" vagy "ApiConnection" | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| type | Sztring | Az eseményindító adja meg, például: "Http" vagy "ApiConnection" | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
 | recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
-| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| frequency | Sztring | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
 | interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
 |||| 
 
@@ -67,8 +67,8 @@ Indítók rendelkezik a legfelső szintű ezeket az elemeket, annak ellenére, h
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | [Feltételek](#trigger-conditions) | Tömb | Egy vagy több olyan feltételeket, amelyek meghatározzák, hogy a munkafolyamat futtatásához | 
-| [splitOn](#split-on-debatch) | Karakterlánc | Egy kifejezés, amely felosztja a, vagy *debatches*, tömb elemeinek történő feldolgozásra több munkafolyamat-példányok. Ez a beállítás nem érhető el, hogy olyan tömböt adjon vissza eseményindítók és egyetlen, ha közvetlenül a kód nézetre. | 
-| [operationOptions](#trigger-operation-options) | Karakterlánc | Néhány eseményindítók lehetővé teszik, hogy az alapértelmezett eseményindító megváltozzon kiegészítő lehetőségeket biztosítanak. | 
+| [splitOn](#split-on-debatch) | Sztring | Egy kifejezés, amely felosztja a, vagy *debatches*, tömb elemeinek történő feldolgozásra több munkafolyamat-példányok. Ez a beállítás nem érhető el, hogy olyan tömböt adjon vissza eseményindítók és egyetlen, ha közvetlenül a kód nézetre. | 
+| [operationOptions](#trigger-operation-options) | Sztring | Néhány eseményindítók lehetővé teszik, hogy az alapértelmezett eseményindító megváltozzon kiegészítő lehetőségeket biztosítanak. | 
 ||||| 
 
 ## <a name="trigger-types-and-details"></a>Eseményindítók típusai és részletek  
@@ -123,10 +123,10 @@ Az eseményindító definícióját a következő:
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | Ismétlődés | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | Eseményindító-típus, amely "Ismétlődési" | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| type | Sztring | Eseményindító-típus, amely "Ismétlődési" | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
 | recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
-| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| frequency | Sztring | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
 | interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
 |||| 
 
@@ -134,13 +134,13 @@ Az eseményindító definícióját a következő:
 
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| startTime | Karakterlánc | A kezdő dátum és idő formátuma: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha megad egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-SSz, ha nem adja meg a időzóna <p>Így például, ha 2017. szeptember 18., 2:00 PM, majd adja meg "2017-09-18T14:00:00", és adja meg például a "Csendes-óceáni téli idő" időzóna, vagy adjon meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** hajtsa végre a kezdési ideje a [ISO 8601 dátuma a megadott időpont](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Időzóna nem adja meg, ha hozzá kell adnia a levél "Z" szóközt nélkül végén. A "Z" hivatkozik a egyenértékű [navigációs idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezés, a kezdési idő nem az első olyan, az összetett ütemezéseket, az eseményindító a kezdési időpontnál bármilyen hamarabb nem érvényesítést. További információ a kezdő dátum és idő: [létrehozása és rendszeresen futó feladatok ütemezése](../connectors/connectors-native-recurrence.md). | 
-| timeZone | Karakterlánc | Vonatkozik, csak ha a kezdési időpontot, mert az eseményindító nem fogadja el [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Adja meg az alkalmazni kívánt időzónáját. | 
+| startTime | Sztring | A kezdő dátum és idő formátuma: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha megad egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-SSz, ha nem adja meg a időzóna <p>Így például, ha 2017. szeptember 18., 2:00 PM, majd adja meg "2017-09-18T14:00:00", és adja meg például a "Csendes-óceáni téli idő" időzóna, vagy adjon meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** hajtsa végre a kezdési ideje a [ISO 8601 dátuma a megadott időpont](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Időzóna nem adja meg, ha hozzá kell adnia a levél "Z" szóközt nélkül végén. A "Z" hivatkozik a egyenértékű [navigációs idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezés, a kezdési idő nem az első olyan, az összetett ütemezéseket, az eseményindító a kezdési időpontnál bármilyen hamarabb nem érvényesítést. További információ a kezdő dátum és idő: [létrehozása és rendszeresen futó feladatok ütemezése](../connectors/connectors-native-recurrence.md). | 
+| timeZone | Sztring | Vonatkozik, csak ha a kezdési időpontot, mert az eseményindító nem fogadja el [UTC eltolás](https://en.wikipedia.org/wiki/UTC_offset). Adja meg az alkalmazni kívánt időzónáját. | 
 | hours | Egész szám vagy az egész tömb | Ha adja meg a "Day" vagy "Hetente" `frequency`, megadhat egy vagy több egész számok 0 és 23, a nap, ha azt szeretné, a munkafolyamat futtatási órára vesszővel elválasztva. <p>Például ha megadja a "10", "12" és "14", kapott 2 PM, az óra közötti, de 10, 12 PM. | 
 | minutes | Egész szám vagy az egész tömb | Ha adja meg a "Day" vagy "Hetente" `frequency`, megadhat egy vagy több egész számok 0 és 59 elválasztva, ha a munkafolyamatot futtatni szeretné az óra perc. <p>Például megadhatja a perc megjelölés "30", és elérhetővé az előző példa óra, nap, 10:30 AM, 12:30 PM és 2:30 PM. | 
 | weekDays | Karakterlánc vagy karakterlánctömb | Ha adja meg a "Hét" `frequency`, megadhat egy vagy több napot, egymástól vesszővel elválasztva, ha azt szeretné, a munkafolyamat futtatásához: "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat" és "Vasárnap" | 
 | Egyidejűségi | JSON-objektum | Ismétlődő és jelenség eseményindítók esetén ezt az objektumot határozza meg, egyidejűleg futtatható munkafolyamat-példányok maximális száma. Ez az érték segítségével korlátozhatja a kérelmeket, amelyek megkapják a háttérrendszerek. <p>Például ez az érték 10 példányokhoz a feldolgozási korlátot állít be: `"concurrency": { "runs": 10 }` | 
-| operationOptions | Karakterlánc | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
+| operationOptions | Sztring | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
 |||| 
 
 *1. példa*
@@ -226,20 +226,20 @@ Ehhez az eseményindítóhoz lehetővé teszi a Logic Apps alkalmazást hívhat�
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | Manuális | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | Eseményindító-típus, amely "Kérelmek" | 
-| típusa | Karakterlánc | A kérelem, amely "Http" típusa | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| type | Sztring | Eseményindító-típus, amely "Kérelmek" | 
+| típusa | Sztring | A kérelem, amely "Http" típusa | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
 |||| 
 
 *Nem kötelező*
 
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| method | Karakterlánc | A metódus azon kérelmek használatával kell hívható meg az eseményindító: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" |
-| RelativePath | Karakterlánc | A paraméter, amely fogadja a HTTP-végpont URL-cím relatív elérési útja | 
+| method | Sztring | A metódus azon kérelmek használatával kell hívható meg az eseményindító: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" |
+| RelativePath | Sztring | A paraméter, amely fogadja a HTTP-végpont URL-cím relatív elérési útja | 
 | Séma | JSON-objektum | A JSON-séma, amely ismerteti, és ellenőrzi a tartalom, vagy az eseményindító kap a bejövő kérelem felhasználandó. A séma segítségével tudja a Tulajdonságok hivatkozhasson rá az ezt követő munkafolyamat-műveleteket. | 
 | properties | JSON-objektum | A JSON-séma, amely leírja a tartalom egy vagy több tulajdonságának | 
-| Szükséges | Tömb | Egy vagy több tulajdonságának értékeket igénylő | 
+| szükséges | Tömb | Egy vagy több tulajdonságának értékeket igénylő | 
 |||| 
 
 *Példa*
@@ -315,12 +315,12 @@ Ehhez az eseményindítóhoz lekérdezi a megadott végpontot, és ellenőrzi a 
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | HTTP | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | A "http" indítási típus | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
-| method | Igen | Karakterlánc | A megadott végpontot a lekérdezés a HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
-| uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPS végpont URL-címet, amely az eseményindító ellenőrző vagy kérdezze le az <p>Maximális méret: 2 KB | 
+| type | Sztring | A "http" indítási típus | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| method | Igen | Sztring | A megadott végpontot a lekérdezés a HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| uri azonosító | Igen| Sztring | A HTTP vagy HTTPS végpont URL-címet, amely az eseményindító ellenőrző vagy kérdezze le az <p>Maximális méret: 2 KB | 
 | recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
-| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| frequency | Sztring | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
 | interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
 |||| 
 
@@ -334,7 +334,7 @@ Ehhez az eseményindítóhoz lekérdezi a megadott végpontot, és ellenőrzi a 
 | hitelesítés | JSON-objektum | A módszert, amelyet a bejövő kérelem hitelesítést kell használnia. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). Ütemező túl a `authority` tulajdonság támogatott. Ha nincs megadva, az alapértelmezett érték: `https://login.windows.net`, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
 | retryPolicy | JSON-objektum | Ez az objektum testreszabása az időszakos hibák, amelyek 4xx vagy 5xx állapotkódok újrapróbálási viselkedése. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | Egyidejűségi | JSON-objektum | Ismétlődő és jelenség eseményindítók esetén ezt az objektumot határozza meg, egyidejűleg futtatható munkafolyamat-példányok maximális száma. Ez az érték segítségével korlátozhatja a kérelmeket, amelyek megkapják a háttérrendszerek. <p>Például ez az érték 10 példányokhoz a feldolgozási korlátot állít be: <p>`"concurrency": { "runs": 10 }` | 
-| operationOptions | Karakterlánc | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
+| operationOptions | Sztring | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
 |||| 
 
 Ahhoz, hogy működnek jól a Logic Apps alkalmazást, a HTTP-eseményindítóval van szükség, hogy megfelelnek-e a HTTP API egy adott mintával. A HTTP-eseményindítóval ismeri fel ezeket a tulajdonságokat:  
@@ -414,14 +414,14 @@ Itt az eseményindító definícióját, annak ellenére, hogy sok szakaszt köt
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | *APIConnectionTriggerName* | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | Eseményindító-típus, amely "ApiConnection" | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| type | Sztring | Eseményindító-típus, amely "ApiConnection" | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
 | gazdagép | JSON-objektum | A JSON-objektumból, amely leírja a gazdagép átjáró és az Azonosítóját a felügyelt API-hoz. <p>A `host` JSON objektumnak ezeket az elemeket: `api` és `connection` | 
 | api-t | JSON-objektum | A végpont URL-címe a felügyelt API-val: <p>`"runtimeUrl": "<managed-API-endpoint-URL>"` | 
 | kapcsolat | JSON-objektum | A nevet a felügyelt API-kapcsolat a munkafolyamat által használt, amelynek tartalmaznia kell egy hivatkozást nevű paraméter `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>'].name"` | 
-| method | Karakterlánc | A felügyelt API-val való kommunikációhoz HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| method | Sztring | A felügyelt API-val való kommunikációhoz HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
 | recurrence | JSON-objektum | A gyakoriság és az időközt, amely leírja, milyen gyakran az eseményindító akkor következik be |  
-| frequency | Karakterlánc | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
+| frequency | Sztring | Időegység, amely leírja, milyen gyakran az eseményindító következik be: "Second", "Minute", "Hour", "Day", "Hét" vagy "Honap" | 
 | interval | Egész szám | Egy pozitív egész szám, amely leírja, milyen gyakran az eseményindító akkor következik be, a gyakoriság alapján. <p>Az alábbiakban a minimális és maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>– Óra: 1-12 000 üzemideje (óra) </br>-Perc: 1-72,000 perc </br>-Második: 1-9,999,999 másodpercben<p>Például ha az intervallum értéke 6, és a gyakoriság "honap", akkor az ismétlődés értéke minden hatodik hónapban. | 
 |||| 
 
@@ -435,7 +435,7 @@ Itt az eseményindító definícióját, annak ellenére, hogy sok szakaszt köt
 | hitelesítés | JSON-objektum | A módszert, amelyet olyan bejövő kérelemre hitelesítést kell használnia. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 | retryPolicy | JSON-objektum | Ez az objektum testreszabása az újrapróbálási viselkedése időszakos hibák, amelyek 4xx vagy 5xx állapotkódok: <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
 | Egyidejűségi | JSON-objektum | Ismétlődő és jelenség eseményindítók esetén ezt az objektumot határozza meg, egyidejűleg futtatható munkafolyamat-példányok maximális száma. Ez az érték segítségével korlátozhatja a kérelmeket, amelyek megkapják a háttérrendszerek. <p>Például ez az érték 10 példányokhoz a feldolgozási korlátot állít be: `"concurrency": { "runs": 10 }` | 
-| operationOptions | Karakterlánc | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
+| operationOptions | Sztring | A `singleInstance` beállítás megadja, hogy az eseményindító akkor következik be, csak az összes aktív futtatása után is. Lásd: [eseményindítók: csak aktív futtatása befejezés után érvényesítést](#single-instance). | 
 ||||
 
 *Példa*
@@ -515,11 +515,11 @@ Itt eseményindító definícióját, ha sok szakaszt nem kötelező, és az ese
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | HTTP_Webhook | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | Eseményindító-típus, amely "HttpWebhook" | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| type | Sztring | Eseményindító-típus, amely "HttpWebhook" | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
 | előfizetés | JSON-objektum| A kimenő kérelem és a kezdeti regisztráció elvégzéséhez az eseményindító létrehozásakor. Ez a hívás akkor történik meg, hogy az eseményindító elindíthatja az események a végpont figyel. További információkért lásd: [szolgáltatásra, és leiratkozhat](#subscribe-unsubscribe). | 
-| method | Karakterlánc | Az előfizetés a kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
-| uri azonosító | Karakterlánc | A végponti URL-Címének hova küldje a előfizetés kérelem | 
+| method | Sztring | Az előfizetés a kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| uri azonosító | Sztring | A végponti URL-Címének hova küldje a előfizetés kérelem | 
 |||| 
 
 *Nem kötelező*
@@ -527,8 +527,8 @@ Itt eseményindító definícióját, ha sok szakaszt nem kötelező, és az ese
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | előfizetés lemondása | JSON-objektum | A kimenő kérelem automatikusan és az előfizetés megszüntetése, ha egy olyan műveletet hajt végre az eseményindító érvénytelen. További információkért lásd: [szolgáltatásra, és leiratkozhat](#subscribe-unsubscribe). | 
-| method | Karakterlánc | A lemondási kérelmet használandó HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
-| uri azonosító | Karakterlánc | Hova küldje a lemondási kérelmet a végponti URL-címe | 
+| method | Sztring | A lemondási kérelmet használandó HTTP-metódus: "GET", "PUT", "POST", "Javítás", "DELETE" vagy "HEAD" | 
+| uri azonosító | Sztring | Hova küldje a lemondási kérelmet a végponti URL-címe | 
 | törzs | JSON-objektum | A JSON-objektumból, amely leírja a forgalma (adatok) az előfizetés vagy a megszakítási kérés | 
 | hitelesítés | JSON-objektum | A módszert, amelyet olyan bejövő kérelemre hitelesítést kell használnia. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 | retryPolicy | JSON-objektum | Ez az objektum testreszabása az újrapróbálási viselkedése időszakos hibák, amelyek 4xx vagy 5xx állapotkódok: <p>`"retryPolicy": { "type": "<retry-policy-type>", "interval": "<retry-interval>", "count": <number-retry-attempts> }` <p>További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
@@ -615,12 +615,12 @@ Az eseményindító definícióját a következő:
 | Elem neve | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | <*ApiConnectionWebhookTriggerName*> | JSON-objektum | A Javascript Object Notation (JSON) formátumban leírt objektum eseményindító nevét  | 
-| type | Karakterlánc | Eseményindító-típus, amely "ApiConnectionWebhook" | 
-| Bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
+| type | Sztring | Eseményindító-típus, amely "ApiConnectionWebhook" | 
+| bemenetek | JSON-objektum | Az eseményindító bemeneti adatokat, amelyek meghatározzák az eseményindító viselkedése | 
 | gazdagép | JSON-objektum | A JSON-objektumból, amely leírja a gazdagép átjáró és az Azonosítóját a felügyelt API-hoz. <p>A `host` JSON objektumnak ezeket az elemeket: `api` és `connection` | 
 | kapcsolat | JSON-objektum | A nevet a felügyelt API-kapcsolat a munkafolyamat által használt, amelynek tartalmaznia kell egy hivatkozást nevű paraméter `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>']['connectionId']"` | 
 | törzs | JSON-objektum | A JSON-objektum, amely leírja a forgalma (adatok) küldése a felügyelt API-val | 
-| NotificationUrl | Karakterlánc | Visszaadja egy egyedi "visszahívási URL-címe" az eseményindító a felügyelt API-t használó | 
+| NotificationUrl | Sztring | Visszaadja egy egyedi "visszahívási URL-címe" az eseményindító a felügyelt API-t használó | 
 |||| 
 
 *Nem kötelező*
@@ -820,13 +820,13 @@ Itt a `inputs` objektum e egy HTTP-hívás megalkotásához szükséges paramét
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
-| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| uri azonosító | Igen| Karakterlánc | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
+| method | Igen | Sztring | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| uri azonosító | Igen| Sztring | A HTTP vagy HTTPs végpont az eseményindító-kereső. Maximális méret: 2 KB | 
 | lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | JSON-objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
+| operationsOptions | Nem | Sztring | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
 | hitelesítés | Nem | JSON-objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). <p>Ütemező túl van egy több támogatott tulajdonságot: `authority`. Alapértelmezés szerint ez az érték van `https://login.windows.net` Ha nincs megadva, de használhat például egy másik értéket`https://login.windows\-ppe.net`. | 
 ||||| 
 
@@ -924,13 +924,13 @@ Ez a művelet egy Microsoft által felügyelt összekötő, egy hivatkozást egy
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
 | gazdagép | Igen | JSON-objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
-| method | Igen | Karakterlánc | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
-| elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
+| method | Igen | Sztring | A HTTP-metódus egyikét használja: "GET", "POST", "PUT", "DELETE", "Javítás" vagy "HEAD" | 
+| elérési út | Igen | Sztring | Az API-művelet elérési útja | 
 | lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | JSON-objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
+| operationsOptions | Nem | Sztring | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
 | hitelesítés | Nem | JSON-objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
@@ -978,12 +978,12 @@ A APIConnectionWebhook művelet a Microsoft által felügyelt összekötők hiva
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
 | gazdagép | Igen | JSON-objektum | Az összekötő adatait jelöli, mint a `runtimeUrl` és a kapcsolat objektum hivatkozását. | 
-| elérési út | Igen | Karakterlánc | Az API-művelet elérési útja | 
+| elérési út | Igen | Sztring | Az API-művelet elérési útja | 
 | lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
 | retryPolicy | Nem | JSON-objektum | Ez az objektum használata a újrapróbálkozásra 4xx vagy 5xx hiba testreszabása. További információkért lásd: [ismételje meg a házirendek](../logic-apps/logic-apps-exception-handling.md). | 
-| operationsOptions | Nem | Karakterlánc | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
+| operationsOptions | Nem | Sztring | A speciális viselkedés felülbírálásához csoportját határozza meg. | 
 | hitelesítés | Nem | JSON-objektum | A módszert, amelyet a kérés a hitelesítéshez használandó jelöli. További információkért lásd: [Feladatütemező kimenő hitelesítési](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
@@ -1066,8 +1066,8 @@ Ez a művelet lehetővé teszi, hogy jelentik és hívás egy [Azure függvény]
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- |  
-| függvény azonosítója | Igen | Karakterlánc | Az Azure függvény hívása kívánt erőforrás-azonosító. | 
-| method | Nem | Karakterlánc | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
+| függvény azonosítója | Igen | Sztring | Az Azure függvény hívása kívánt erőforrás-azonosító. | 
+| method | Nem | Sztring | A függvény használt HTTP-metódus. Ha nincs megadva, a "POST" az alapértelmezett mód. | 
 | lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
@@ -1126,10 +1126,10 @@ Ahhoz például, hogy állítsa le, amely rendelkezik futtató `Failed` állapot
 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| runStatus | Igen | Karakterlánc | Futtatási tartozó állapotát, amely vagy `Failed` vagy `Cancelled` |
+| runStatus | Igen | Sztring | Futtatási tartozó állapotát, amely vagy `Failed` vagy `Cancelled` |
 | runError | Nem | JSON-objektum | A hiba részletes adatait. Támogatott csak akkor, ha `runStatus` értéke `Failed`. |
-| runError kód | Nem | Karakterlánc | A Futtatás hibakód: |
-| runError üzenet | Nem | Karakterlánc | A Futtatás hibaüzenet | 
+| runError kód | Nem | Sztring | A Futtatás hibakód: |
+| runError üzenet | Nem | Sztring | A Futtatás hibaüzenet | 
 ||||| 
 
 ## <a name="query-action"></a>Lekérdezési művelet
@@ -1154,7 +1154,7 @@ Ha például 2-nél nagyobb számot kiválasztásához:
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | forrás: | Igen | Tömb | A forrástömb |
-| Ha | Igen | Karakterlánc | A feltétellel, hogy a forrás tömb egyes elemei vonatkozik. Ha nincs érték felel meg a `where` , az eredmény feltétele egy üres tömb. |
+| Ha | Igen | Sztring | A feltétellel, hogy a forrás tömb egyes elemei vonatkozik. Ha nincs érték felel meg a `where` , az eredmény feltétele egy üres tömb. |
 ||||| 
 
 A kimenet a `query` művelete olyan tömb, amely rendelkezik, amelyek megfelelnek a következő feltételt: a bemeneti tömb elemei.
@@ -1176,10 +1176,10 @@ Ez a művelet lehetővé teszi egy tömb konvertálása a CSV és HTML táblát.
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | forrás: | Igen | Tömb | A forrástömb. Ha a `from` tulajdonság értéke üres tömb, a program üres táblát kimenete. | 
-| Formátumban | Igen | Karakterlánc | A tábla kívánt formátum, "CSV" vagy "HTML" | 
+| Formátumban | Igen | Sztring | A tábla kívánt formátum, "CSV" vagy "HTML" | 
 | oszlopok | Nem | Tömb | A kívánt tábla oszlopait. Használja az alapértelmezett tábla alakzat felülbírálására. | 
-| Oszlopfejléc | Nem | Karakterlánc | Az oszlop fejlécére | 
-| oszlop értéke | Igen | Karakterlánc | Az oszlop értéke | 
+| Oszlopfejléc | Nem | Sztring | Az oszlop fejlécére | 
+| oszlop értéke | Igen | Sztring | Az oszlop értéke | 
 ||||| 
 
 Tegyük fel, hogy adhat meg ebben a példában például egy táblázat műveletet:
@@ -1265,9 +1265,9 @@ Azt is megteheti várakozási idő az adott néhány percet, használhatja a pé
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- | 
 | lejárati idő: | Nem | JSON-objektum | A pontok alapján időben várakozási időtartama | 
-| amíg időbélyeg | Igen | Karakterlánc | Az az időpont [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) várakozási lejáratának | 
+| amíg időbélyeg | Igen | Sztring | Az az időpont [UTC dátum időformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) várakozási lejáratának | 
 | interval | Nem | JSON-objektum | A várakozási időtartama időköze és száma alapján | 
-| időköze | Igen | Karakterlánc | Az idő egységét. Csak az egyik ezeket az értékeket használja: "második", "perc", "hour", "day", "hét" vagy "honap" | 
+| időköze | Igen | Sztring | Az idő egységét. Csak az egyik ezeket az értékeket használja: "második", "perc", "hour", "day", "hét" vagy "honap" | 
 | időköz száma | Igen | Egész szám | A várakozási időtartamot időintervallum-egység szám, amely pozitív egész szám | 
 ||||| 
 
@@ -1301,8 +1301,8 @@ Ez a művelet lehetővé teszi a munkafolyamat ágyazhatók be. A Logic Apps mot
 
 | Elem neve | Szükséges | Típus | Leírás | 
 | ------------ | -------- | ---- | ----------- |  
-| állomás azonosítója | Igen | Karakterlánc| Az erőforrás-azonosítója a hívni kívánt munkafolyamat | 
-| állomás Eseményindító_neve | Igen | Karakterlánc | A meghívni kívánt eseményindító nevét | 
+| állomás azonosítója | Igen | Sztring| Az erőforrás-azonosítója a hívni kívánt munkafolyamat | 
+| állomás Eseményindító_neve | Igen | Sztring | A meghívni kívánt eseményindító nevét | 
 | lekérdezés | Nem | JSON-objektum | Lekérdezési paramétereket, hogy az URL-címben felvenni kívánt jelöli. <p>Például `"queries": { "api-version": "2015-02-01" }` hozzáadja `?api-version=2015-02-01` URL-címét. | 
 | fejlécek | Nem | JSON-objektum | Minden egyes fejlécet tartalmazta, amely a kérelemben küldött jelöli. <p>Ha például a nyelv, és írja be a kérelem: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | törzs | Nem | JSON-objektum | A tartalom a végpontnak küldött jelöli. | 
@@ -1351,7 +1351,7 @@ További információ [feltételes utasítások a logic apps](../logic-apps/logi
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | műveletek | Igen | JSON-objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye `true` | 
-| kifejezés | Igen | Karakterlánc | A kiértékelendő kifejezés |
+| kifejezés | Igen | Sztring | A kiértékelendő kifejezés |
 | más | Nem | JSON-objektum | A belső műveletek futtatása mikor `expression` kiértékelésének eredménye `false` |
 ||||| 
 
@@ -1431,11 +1431,11 @@ Ez a művelet, amely egy switch utasításban, egy objektum, kifejezés vagy tok
 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
-| kifejezés | Igen | Karakterlánc | Az objektum, a kifejezés vagy a token által kiértékelése | 
+| kifejezés | Igen | Sztring | Az objektum, a kifejezés vagy a token által kiértékelése | 
 | esetek | Igen | JSON-objektum | A kifejezés eredménye alapján futtatnak belső műveleteket tartalmaznak. | 
-| Eset | Igen | Karakterlánc | A eredményeképpen teljesüléséhez szükséges értéke | 
+| Eset | Igen | Sztring | A eredményeképpen teljesüléséhez szükséges értéke | 
 | műveletek | Igen | JSON-objektum | A belső végrehajtandó műveleteket, az a kifejezés eredményének megfelelő eset futtatása | 
-| alapérték | Nem | JSON-objektum | A belső végrehajtandó futtatását, amikor egyetlen eset megfelelő eredménye | 
+| alapértelmezett | Nem | JSON-objektum | A belső végrehajtandó futtatását, amikor egyetlen eset megfelelő eredménye | 
 ||||| 
 
 Példa:
@@ -1494,8 +1494,8 @@ Ez a ismétlési művelet tömb telepítéseket, és minden tömb elemen belső 
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | műveletek | Igen | JSON-objektum | A belső műveletek futtatása a hurkon belül | 
-| foreach | Igen | Karakterlánc | A tömböt az iterációt | 
-| operationOptions | Nem | Karakterlánc | Adja meg a műveletet lehetőségeket viselkedés testreszabása. Jelenleg csak `Sequential` ahol párhuzamos-e az alapértelmezett viselkedés egymás után futtatási ismétlési. |
+| foreach | Igen | Sztring | A tömböt az iterációt | 
+| operationOptions | Nem | Sztring | Adja meg a műveletet lehetőségeket viselkedés testreszabása. Jelenleg csak `Sequential` ahol párhuzamos-e az alapértelmezett viselkedés egymás után futtatási ismétlési. |
 ||||| 
 
 Példa:
@@ -1554,10 +1554,10 @@ A ismétlési művelet a futás belső műveletek, amíg a feltétel igaz. Tová
 | Name (Név) | Szükséges | Típus | Leírás | 
 | ---- | -------- | ---- | ----------- | 
 | műveletek | Igen | JSON-objektum | A belső műveletek futtatása a hurkon belül | 
-| kifejezés | Igen | Karakterlánc | A kifejezés kiértékelése mindegyik iteráció után | 
+| kifejezés | Igen | Sztring | A kifejezés kiértékelése mindegyik iteráció után | 
 | Korlát | Igen | JSON-objektum | A hurok korlátok. Legalább egy korlátot kell definiálnia. | 
 | darab | Nem | Egész szám | Az ismétlések végrehajtásához számára vonatkozó korlátozást | 
-| timeout | Nem | Karakterlánc | Az időkorlátot a [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601) , amely megadja, hogy mennyi ideig kell futtatnia a hurok |
+| timeout | Nem | Sztring | Az időkorlátot a [ISO 8601 formátum](https://en.wikipedia.org/wiki/ISO_8601) , amely megadja, hogy mennyi ideig kell futtatnia a hurok |
 ||||| 
 
 Példa:

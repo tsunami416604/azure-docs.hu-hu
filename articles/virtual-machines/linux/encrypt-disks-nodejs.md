@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911682"
 ---
 # <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>A Linux virtuális gépet az Azure CLI 1.0 lemezeket titkosítása
 A bővített virtuális gép (VM) biztonsági és megfelelőségi az Azure-ban virtuális lemezek aktívan titkosíthatók. Lemezek titkosítása egy Azure Key Vault a titkosított titkosítási kulcsok használatával. Szabályozhatja a titkosítási kulcsokat, és a használatukat naplózhatók. Ez a cikk részletesen titkosítása a Linux virtuális gépet az Azure CLI 1.0 és a Resource Manager üzembe helyezési modellel virtuális lemezzel.

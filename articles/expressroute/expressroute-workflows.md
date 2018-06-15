@@ -1,11 +1,11 @@
 ---
-title: "Munkafolyamatok konfigurálásához ExpressRoute-kapcsolatcsoportot |} Microsoft Docs"
-description: "Ezen a lapon végigvezeti a munkafolyamatokat a ExpressRoute-kapcsolatcsoportot és társviszony konfigurálása"
+title: Munkafolyamatok konfigurálásához ExpressRoute-kapcsolatcsoportot |} Microsoft Docs
+description: Ezen a lapon végigvezeti a munkafolyamatokat a ExpressRoute-kapcsolatcsoportot és társviszony konfigurálása
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850776"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
 Ezen a lapon végigvezeti a szolgáltatás üzembe helyezési és konfigurációs munkafolyamatok útválasztási magas szinten.

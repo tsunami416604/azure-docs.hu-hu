@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363247"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás exportálási feladat létrehozása
 A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása a következő lépésekből áll:

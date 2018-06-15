@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager biztonsági mentési feladatok |} Microsoft Docs"
-description: "A StorSimple Snapshot Manager beépülő MMC-modulban történő megtekintését és kezelését ütemezett, folyamatban levő és befejezett biztonsági mentési feladatok használatát ismerteti."
+title: StorSimple Snapshot Manager biztonsági mentési feladatok |} Microsoft Docs
+description: A StorSimple Snapshot Manager beépülő MMC-modulban történő megtekintését és kezelését ütemezett, folyamatban levő és befejezett biztonsági mentési feladatok használatát ismerteti.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875815"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>StorSimple Snapshot Manager segítségével megtekintheti és kezelheti a biztonsági mentési feladatok
 

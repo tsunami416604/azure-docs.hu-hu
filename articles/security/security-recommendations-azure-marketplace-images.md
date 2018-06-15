@@ -1,11 +1,11 @@
 ---
-title: "Biztonsági javaslatok az Azure piactéren elérhető rendszerkép |} Microsoft Docs"
-description: "Ez a cikk piacon rendszerképeket vonatkozó javaslatokkal szolgál."
+title: Biztonsági javaslatok az Azure piactéren elérhető rendszerkép |} Microsoft Docs
+description: Ez a cikk piacon rendszerképeket vonatkozó javaslatokkal szolgál.
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23931134"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Az Azure piactéren elérhető rendszerkép biztonsági javaslatok
 

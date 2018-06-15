@@ -1,22 +1,20 @@
 ---
 title: Keresés az Azure Maps használatával | Microsoft Docs
 description: Közeli hasznos hely keresése az Azure Maps használatával
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a4479ceebd4c8aad477b5f13a5bcc06d24c1202d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4a414b5b865d31dd99b54ef9693abafb5490a50f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601785"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -111,9 +109,9 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
 
     </html>
     ``` 
-    Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure térképkezelési kódtárban található CSS- és JavaScript-erőforrásfájlokat. Figyelje meg a HTML-fájl *törzséhez* adott *szkript* szakaszt is. Ez a szakasz tartalmazza az Azure Maps API-k elérésére szolgáló beágyazott JavaScript-kódot.
+    Figyelje meg, hogy a HTML-fejléc tartalmazza az Azure Térkép vezérlőelem-kódtárban található CSS- és JavaScript-erőforrásfájlokat. Figyelje meg a HTML-fájl *törzséhez* adott *szkript* szakaszt is. Ez a szakasz tartalmazza az Azure Maps API-k elérésére szolgáló beágyazott JavaScript-kódot.
  
-3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** karakterláncot cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
+3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** sztringet cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
@@ -254,7 +252,7 @@ A létrehozott térkép ezen a ponton még csak a szélességi/hosszúsági adat
 
 4. Mentse a fájlt, és frissítse a böngészőt. A térkép most felugró információs ablakokat jelenít meg böngészőben, ha az egérmutatót valamelyik gombostű fölé viszi. 
 
-    ![Azure térképkezelés és Search Service](./media/tutorial-search-location/popup-map.png)
+    ![Azure Térkép vezérlőelem és Search Service](./media/tutorial-search-location/popup-map.png)
 
 
 ## <a name="next-steps"></a>További lépések
@@ -263,7 +261,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
 > * Azure Maps-fiók létrehozása
 > * A fiók elsődleges kulcsának lekérése
-> * Új weblap létrehozása a térképkezelési API használatával
+> * Új weblap létrehozása a Térkép vezérlőelem API használatával
 > * A Search Service használata egy közeli hasznos hely kereséséhez
 
 A következő oktatóanyag bemutatja, hogyan lehet megjeleníteni egy útvonalat két hely között. 

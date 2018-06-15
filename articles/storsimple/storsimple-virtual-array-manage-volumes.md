@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb kötetek kezelése |} Microsoft Docs"
-description: "A StorSimple Device Manager és ismerteti a StorSimple virtuális tömb kötetek kezelése segítségével."
+title: A StorSimple virtuális tömb kötetek kezelése |} Microsoft Docs
+description: A StorSimple Device Manager és ismerteti a StorSimple virtuális tömb kötetek kezelése segítségével.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: caa6a26b-b7ba-4a05-b092-1a79450225cf
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876053"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>StorSimple az Eszközkezelő szolgáltatást a StorSimple virtuális tömbben kötetek kezelése
 

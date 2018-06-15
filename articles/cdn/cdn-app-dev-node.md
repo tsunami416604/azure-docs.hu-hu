@@ -1,11 +1,11 @@
 ---
-title: "A Node.js Ismerkedés az Azure CDN SDK-val |} Microsoft Docs"
-description: "Node.js-alkalmazások kezelése az Azure CDN írásának ismertetése."
+title: A Node.js Ismerkedés az Azure CDN SDK-val |} Microsoft Docs
+description: Node.js-alkalmazások kezelése az Azure CDN írásának ismertetése.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c4bb6a61-de3d-4f0c-9dca-202554c43dfa
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23843195"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]

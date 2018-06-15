@@ -1,6 +1,6 @@
 ---
-title: "Azure-végpont hozzáférés-vezérlési listák kezelése |} PowerShell |} Klasszikus |} Microsoft Docs"
-description: "Megtudhatja, hogyan kezelheti a hozzáférés-vezérlési listákat a PowerShell használatával"
+title: Azure-végpont hozzáférés-vezérlési listák kezelése |} PowerShell |} Klasszikus |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a hozzáférés-vezérlési listákat a PowerShell használatával
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23928852"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>A klasszikus üzembe helyezési modellel powershellel végpont hozzáférés-vezérlési listák kezelése
 Hozzon létre, és kezelheti a hálózati hozzáférés-vezérlési listák (ACL) végpontok Azure PowerShell használatával vagy a felügyeleti portálon. Ebben a témakörben található eljárások a hozzáférés-vezérlési lista leggyakoribb feladatokat, amelyek a PowerShell segítségével hajthatja végre. A listán szereplő Azure PowerShell parancsmagok lásd [Azure parancsmagokat](http://go.microsoft.com/fwlink/?LinkId=317721). Hozzáférés-vezérlési listák kapcsolatos további információkért lásd: [Mi az a hálózati hozzáférés-vezérlési lista (ACL)?](virtual-networks-acl.md). Ha azt szeretné, hogy az ACL-ek kezelése a felügyeleti portál használatával kapcsolatos tudnivalókat lásd: [hogyan állítsa be végpontok egy virtuális géphez](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

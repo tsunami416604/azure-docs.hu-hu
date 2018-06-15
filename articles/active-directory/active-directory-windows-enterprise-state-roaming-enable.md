@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257971"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 A vállalati Állapothordozás érhető el a szervezet az Azure AD Premium vagy Enterprise Mobility + Security (EMS) licencet. Egy Azure AD-előfizetés beszerzésére további információkért lásd: a [az Azure AD, termékoldala](https://azure.microsoft.com/services/active-directory).

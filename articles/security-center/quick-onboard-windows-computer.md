@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30922773"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
 Az Azure-előfizetései felvétele után a Microsoft Monitoring Agent kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrások számára.

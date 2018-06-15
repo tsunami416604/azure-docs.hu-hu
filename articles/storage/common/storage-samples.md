@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Storage-Kódminták |} Microsoft Docs"
-description: "Megtekintése, töltse le és futtassa a mintakódot és az alkalmazások az Azure Storage. Felderíteni a bevezetés minták BLOB, üzenetsorok, táblák és fájlok, a .NET, Java, Node.js és C++ storage ügyfélkódtáraival használatával."
+title: Az Azure Storage-Kódminták |} Microsoft Docs
+description: Megtekintése, töltse le és futtassa a mintakódot és az alkalmazások az Azure Storage. Felderíteni a bevezetés minták BLOB, üzenetsorok, táblák és fájlok, a .NET, Java, Node.js és C++ storage ügyfélkódtáraival használatával.
 services: storage
 documentationcenter: na
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927452"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
