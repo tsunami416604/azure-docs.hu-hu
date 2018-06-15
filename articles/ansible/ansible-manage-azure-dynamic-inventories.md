@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153109"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Azure a dinamikus készletek kezelését Ansible használatával
 Ansible használható lekéréses Hardverleltár-információk (beleértve a felhő adatforrások, például az Azure) különböző forrásokból történő egy *dinamikus készlet*. A cikkben, használja a [Azure Cloud rendszerhéj](./ansible-run-playbook-in-cloudshell.md) Ansible Azure dinamikus készlet két olyan virtuális gépet hoz létre konfigurálásához azon virtuális gépek egyik címkét, és Nginx telepítse a virtuális gép címkézett.

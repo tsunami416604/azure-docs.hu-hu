@@ -1,6 +1,6 @@
 ---
-title: "Azure biztonsági áttekintése |} Microsoft Docs"
-description: "A Microsoft Azure biztonsági adatokat hely az Azure.com-on műszaki a kérdésekre adott válaszok az Azure biztonsági az a hely."
+title: Azure biztonsági áttekintése |} Microsoft Docs
+description: A Microsoft Azure biztonsági adatokat hely az Azure.com-on műszaki a kérdésekre adott válaszok az Azure biztonsági az a hely.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25542146"
 ---
 # <a name="azure-security-overview"></a>Az Azure biztonsági szolgáltatásainak áttekintése
 A Microsoft Azure biztonsági adatokat hely az Azure.com-on műszaki a kérdésekre adott válaszok az Azure biztonsági az a hely. Ha Ön Azure megfelelőségét, és hogyan Azure biztosítja a saját infrastruktúra iránt érdeklődik, keresse fel a [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).

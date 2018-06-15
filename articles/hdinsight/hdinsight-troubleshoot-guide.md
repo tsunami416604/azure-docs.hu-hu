@@ -1,11 +1,11 @@
 ---
-title: "Hibaelhárítási útmutatók az Azure HDInsight |} Microsoft Docs"
-description: "Végezzen hibaelhárítást a Hadoop-munkaterhelések Azure HDInsight használatával. Részletes dokumentációja bemutatja, hogyan használja a HDInsight Hive, a Spark, a YARN, a HBase, a HDFS és a Storm gyakori problémák megoldására."
+title: Hibaelhárítási útmutatók az Azure HDInsight |} Microsoft Docs
+description: Végezzen hibaelhárítást a Hadoop-munkaterhelések Azure HDInsight használatával. Részletes dokumentációja bemutatja, hogyan használja a HDInsight Hive, a Spark, a YARN, a HBase, a HDFS és a Storm gyakori problémák megoldására.
 services: hdinsight
 author: arijitt
 manager: arijitt
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984722"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Hibaelhárítás Azure HDInsight segítségével
 

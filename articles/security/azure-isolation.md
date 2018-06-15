@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010880"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Az Azure nyilvános Felhőjében elszigeteléséről
 ##  <a name="introduction"></a>Bevezetés

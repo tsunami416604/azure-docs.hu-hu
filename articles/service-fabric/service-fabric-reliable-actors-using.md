@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212891"
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>Az aktor szolgáltatásban végrehajtási szolgáltatásiszint-funkciók
 A [szolgáltatás réteges](service-fabric-reliable-actors-platform.md#service-layering), maga a szereplő szolgáltatás egy olyan megbízható szolgáltatás.  A saját szolgáltatás abból származó írhat `ActorService` és valósít meg szolgáltatási szint funkciókat a módon történő örökléskor StatefulService, például:

@@ -1,11 +1,11 @@
 ---
-title: "Azure Relay használatával REST-oktatóanyaga |} Microsoft Docs"
-description: "Hozzon létre egy egyszerű Azure Service Bus Relay gazdaalkalmazást REST-alapú felületet."
+title: Azure Relay használatával REST-oktatóanyaga |} Microsoft Docs
+description: Hozzon létre egy egyszerű Azure Service Bus Relay gazdaalkalmazást REST-alapú felületet.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24008036"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Az Azure WCF Relay REST-oktatóanyaga
 

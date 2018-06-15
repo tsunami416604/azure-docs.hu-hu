@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186817"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása
 Azure-adatbázis PostgreSQL inkább csatlakozás az ügyfél alkalmazásait, és a Secure Sockets Layer (SSL) használatával PostgreSQL-szolgáltatás. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.

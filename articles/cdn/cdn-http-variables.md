@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011458"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabálymotor HTTP változói
 HTTP-változók adja meg az azt jelenti, amelyen keresztül a HTTP-kérelem-válasz metaadatok kérheti le. A metaadatok majd segítségével dinamikusan módosítható a kérés vagy válasz. A HTTP-változók használata a következő szabályok motor szolgáltatásai korlátozva:

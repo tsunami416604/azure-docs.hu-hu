@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797763"
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Az Azure Search teljesítmény- és optimalizálási kapcsolatos szempontok
 Egy remek keresési élményt biztosít az a kulcs sikeres sok Mobile és webes alkalmazásokhoz. Ingatlan, a car Piacterek online katalógusok használni gyors keresés és a vonatkozó eredményeket hatással lesz a felhasználói élmény. Ez a dokumentum azt tapasztalja, ajánlott eljárások a legtöbbet hozhatja ki Azure Search, különösen ha speciális célú méretezhetőségi kifinomult követelményeit beszélő hogyan támogatja a súgót, vagy egyéni rangsorolási készült.  Emellett ez a dokumentum belső ismerteti, és ismerteti a különböző módszer valós felhasználói alkalmazásokban hatékonyan működjön.

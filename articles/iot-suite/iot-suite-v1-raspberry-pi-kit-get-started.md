@@ -1,12 +1,12 @@
 ---
-title: "Csatlakozás az Azure IoT Suite Raspberry Pi |} Microsoft Docs"
-description: "Az oktatóanyag segítséget nyújtanak a málna Pi 3 és az IoT Suite távoli felügyeleti megoldás a Microsoft Azure IoT Starter Kit használata Node.js vagy a C használatával. A következőképpen választhatja ki egy oktatóanyag, amely szimulálja telemetriai adatokat használó valós érzékelők vagy, amely lehetővé teszi, hogy a távoli belső vezérlőprogram-frissítésekre."
-services: 
+title: Csatlakozás az Azure IoT Suite Raspberry Pi |} Microsoft Docs
+description: Az oktatóanyag segítséget nyújtanak a málna Pi 3 és az IoT Suite távoli felügyeleti megoldás a Microsoft Azure IoT Starter Kit használata Node.js vagy a C használatával. A következőképpen választhatja ki egy oktatóanyag, amely szimulálja telemetriai adatokat használó valós érzékelők vagy, amely lehetővé teszi, hogy a távoli belső vezérlőprogram-frissítésekre.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24011790"
 ---
 # <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>A Microsoft Azure IoT málna Pi 3 Starter Kit kapcsolódni a távoli felügyeleti megoldás
 

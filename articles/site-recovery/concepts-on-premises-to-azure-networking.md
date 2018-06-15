@@ -14,6 +14,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071637"
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Az IP-címzést, az Azure-bA a feladatátvételt követően kapcsolódni
 

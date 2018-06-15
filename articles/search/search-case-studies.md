@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790270"
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Azure Search használó: esettanulmányok és felhasználói szövegek
 Ismerje meg, hogyan áthelyezése a következő szervezetek egy gazdag Azure Search integrálásával előre kisvállalatoknak tapasztalnak online alkalmazásokba.

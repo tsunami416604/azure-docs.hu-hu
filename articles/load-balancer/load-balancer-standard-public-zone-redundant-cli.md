@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34273966"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Terheléselosztás virtuális gépek közötti összes rendelkezésre állási zóna Azure parancssori felület használatával
 

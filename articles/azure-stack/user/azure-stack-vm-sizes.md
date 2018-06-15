@@ -19,6 +19,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258630"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure-készletben támogatott virtuálisgép-méretek
 

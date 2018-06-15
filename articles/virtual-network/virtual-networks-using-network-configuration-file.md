@@ -21,6 +21,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793861"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>A hálózati konfigurációs fájl segítségével virtuális hálózat (klasszikus) konfigurálása
 > [!IMPORTANT]

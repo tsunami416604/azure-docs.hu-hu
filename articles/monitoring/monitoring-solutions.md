@@ -16,9 +16,10 @@ ms.date: 04/20/2018
 ms.author: bwren
 ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885268"
 ---
 # <a name="management-solutions-in-azure"></a>Az Azure-ban megoldások
 Megoldások kihasználhatja az Azure arra, hogy egy adott alkalmazás vagy szolgáltatás működésének nyújt további betekintést. Ez a cikk megoldások Azure-ban és részletek rövid áttekintést nyújt a használatával, és telepíteni kell őket.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211650"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>A Service Fabric-alkalmazás frissítését a Visual Studio konfigurálása
 A Visual Studio eszközök Azure Service Fabric frissítési támogatást nyújt a helyi vagy távoli fürtök közzétételt. Háromféle esetben kívánja frissíteni az alkalmazást tesztelés és hibakeresés során az alkalmazás felülírása helyett egy újabb verzióra van:

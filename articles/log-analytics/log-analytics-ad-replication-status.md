@@ -1,11 +1,11 @@
 ---
-title: "Az Active Directory replikációs állapotát az Azure Naplóelemzés figyelése |} Microsoft Docs"
-description: "Az Active Directory replikációs állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák."
+title: Az Active Directory replikációs állapotát az Azure Naplóelemzés figyelése |} Microsoft Docs
+description: Az Active Directory replikációs állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29179334"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Naplóelemzési Active Directory replikációs állapot figyelése
 

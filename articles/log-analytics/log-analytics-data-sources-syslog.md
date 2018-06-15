@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011094"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>A Naplóelemzési Syslog adatforrások
 A Syslog egy esemény naplózása protokoll, amely Linux közös.  Alkalmazások, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtőhöz kézbesíteni üzenetet szeretne küldeni.  A Linux OMS-ügynök telepítve van, amikor konfigurálja az üzenetek továbbítására az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenet Naplóelemzési, ahol az OMS-tárházban létrejön egy megfelelő bejegyzés.  
