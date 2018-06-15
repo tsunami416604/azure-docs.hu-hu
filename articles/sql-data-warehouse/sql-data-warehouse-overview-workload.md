@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794609"
 ---
 # <a name="data-warehouse-workload"></a>Adatraktár-számítási feladat
 Az adatraktár-számítási feladat minden olyan műveletre utal, amelyet egy adatraktárral végeznek. Az adatraktár-számítási feladat magában foglalja az adatok betöltését az adatraktárba, az elemzések végrehajtását, a jelentések készítését az adatraktárról, az adatraktárban lévő adatok kezelését és az adatok adatraktárból történő exportálását. Az összetevők terjedelme és mélysége gyakran arányos az adatraktár érettségi szintjével.

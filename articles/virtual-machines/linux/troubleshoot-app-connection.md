@@ -21,6 +21,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072283"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-a-linux-virtual-machine-in-azure"></a>Alkalmazás csatlakozási problémák Linux virtuális gépre az Azure-ban
 [!INCLUDE [virtual-machines-common-troubleshoot-app-connection](../../../includes/virtual-machines-common-troubleshoot-app-connection.md)]

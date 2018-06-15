@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158193"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Ügyfél-hitelesítő (közös titkos kulcs vagy tanúsítvány) hívásokról szolgáltatás
 Az OAuth 2.0 ügyfél hitelesítő adatok Grant Flow lehetővé teszi egy webszolgáltatás-bővítmény (*bizalmas ügyfél*) a saját hitelesítő adatok használata helyett a felhasználó megszemélyesítésekor, hitelesítésére, miközben egy másik webes szolgáltatás hívása. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegbeli webes szolgáltatás, a démon szolgáltatás vagy a webhely. A magasabb szintű megbízhatóság az Azure AD is lehetővé teszi a hívó szolgáltatás (és nem a közös titkos kulcs) tanúsítványt használják a hitelesítő adatokat.

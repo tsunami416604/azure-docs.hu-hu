@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157843"
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Alkalmazás regisztrálása a v2.0-végponttal
 Hozza létre az alkalmazását, amely fogadja a személyes Microsoft-fiók (msa-t) & munkahelyi vagy iskolai fiókja (az Azure AD) bejelentkezés, hogy először regisztrálja az alkalmazást a Microsoft számára. Most, akkor használhatja a meglévő alkalmazásokat, előfordulhat, hogy az Azure ad-vel vagy MSA - szüksége lesz egy teljesen új létrehozásához.

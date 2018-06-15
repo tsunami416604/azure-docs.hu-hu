@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196780"
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Az Azure Data Lake Store és az Azure Blob Storage összehasonlítása
 Ebben a cikkben a táblázat összefoglalja, az Azure Data Lake Store és az Azure Blob Storage néhány kulcsfontosságú elemeit, az adatfeldolgozás nagy mentén. Az Azure Blob Storage egy általános célú, méretezhető objektum tároló, amely a tárolási forgatókönyvek széles szolgál. Azure Data Lake Store tárháza kapacitású, amely a big data elemzés munkaterhelések van optimalizálva.

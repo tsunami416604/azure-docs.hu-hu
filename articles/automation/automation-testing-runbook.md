@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192098"
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Runbook tesztelése az Azure Automationben
 Egy runbook tesztelésekor a [vázlatként megjelölt verziót](automation-creating-importing-runbook.md#publishing-a-runbook) végrehajtása és minden elvégzett műveletet végrehajt befejezését. Nincs feladatelőzményekben jön létre, de a [kimeneti](automation-runbook-output-and-messages.md#output-stream) és [figyelmeztetés és hiba](automation-runbook-output-and-messages.md#message-streams) adatfolyamok megjelennek a vizsgálat kimeneti ablaktáblában. Az üzenetek a [részletes adatfolyam](automation-runbook-output-and-messages.md#message-streams) megjelennek a Tesztkimenet ablaktáblán csak akkor, ha a [$VerbosePreference változó](automation-runbook-output-and-messages.md#preference-variables) Folytatás értékre van állítva.

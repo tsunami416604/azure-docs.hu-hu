@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: eb7576c48d3836eec8051d849cefe4c5ec6658c9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699206"
 ---
-# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Gyakori kérdések az Azure Active Directory-alapú Egyszeri beépülő modul 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Gyakori kérdések az Azure Active Directory-alapú Egyszeri beépülő modul
+
+Tekintse meg alább gyakran ismételt kérdéseket, ha ez vonatkozó lekérdezés beépülő modult.
 
 ## <a name="what-does-the-plug-in-do"></a>A beépülő modul ne funkciója?
 
@@ -38,13 +41,13 @@ Nem. A beépülő modul támogatja csak a helyszíni Jira és való összefolyá
 
 A beépülő modul alábbi verzióit támogatja:
 
-* Jira Core és a szoftver: 6.0 való 7.2.2. 
-* Jira ügyfélszolgálatához: 3.0 3.2 
+* Jira Core és a szoftver: 6.0 való 7,8
+* Jira ügyfélszolgálatához: 3.0 3.2
 * Való összefolyás felett: 5.0 5.10
 
 ## <a name="is-the-plug-in-free-or-paid"></a>A beépülő modult szabad vagy fizetős?
 
-Egy ingyenes bővítmény. Telepítheti a Atlassian piactérről.
+Egy ingyenes bővítmény.
 
 ## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Kell Jira vagy való összefolyás felett történik meg a beépülő modul telepítése után indítsa újra?
 
@@ -52,7 +55,7 @@ Nincs szükség újraindításra. A beépülő modult használó azonnal elindí
 
 ## <a name="how-do-i-get-support-for-the-plug-in"></a>Hogyan kérhet támogatást a beépülő modul?
 
-Kapcsolatfelvétel a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). A csapat változásokhoz 24-48 üzleti órában. 
+Akkor is elérhetők a [Azure AD SSO integrációs csoport](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) bármely támogatásához szükséges a beépülő modult. A csapat változásokhoz 24-48 üzleti órában.
 
 Az Azure portál csatornán keresztül a Microsoft támogatási jegy is is növelheti.
 

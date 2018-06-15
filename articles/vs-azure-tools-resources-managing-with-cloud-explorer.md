@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794072"
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>A Visual Studio Cloud Explorer Azure fiókokhoz tartozó erőforrások kezelése
 Cloud Explorer lehetővé teszi az Azure-erőforrások és csoportok megtekintése, vizsgálja meg a tulajdonságaikról és műveleteket kulcs fejlesztői diagnosztika a Visual studióban. 

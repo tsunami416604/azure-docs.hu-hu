@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796003"
 ---
 # <a name="migrate-your-data"></a>Adatok áttelepítése
 Adatok az SQL Data Warehouse egy különböző eszközeivel mozgathatók különböző forrásokból származó.  ADF másolás, SSIS és bcp összes használható e cél eléréséhez. Azonban adatok növeli a összegként gondolja bontásához, az áttelepítési folyamat azokat a lépéseket. Ez számára biztosítja azt a lehetőséget, hogy az egyes lépések a teljesítmény- és a zökkenőmentes adatok áttelepítéshez hibatűrőnek optimalizálása.

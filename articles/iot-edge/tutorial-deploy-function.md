@@ -1,20 +1,20 @@
 ---
 title: Azure-függvény üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
 description: Azure-függvény üzembe helyezése modulként Edge-eszközre
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-edge
+services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f1c6b5cd07752c6b29234a365b3298d76b639b3a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6102a28ec92f841fe32652e4dac36848d69e389c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631700"
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure-függvény üzembe helyezése IoT Edge-modulként
 Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure-függvény létrehozásán és üzembe helyezésén, amely érzékelőadatokat szűr az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win]vagy [Linux][lnk-tutorial1-lin] rendszeren című oktatóanyagban létrehozott szimulált IoT Edge-eszközön. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
@@ -192,11 +192,11 @@ Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő ad
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
 Az IoT Edge-eszközről az IoT hubra küldött, az eszközről a felhőbe irányuló üzenetek monitorozása:
-1. Az Azure IoT-eszközkészlet bővítmény konfigurálása kapcsolati karakterlánccal az IoT hubhoz: 
+1. Az Azure IoT-eszközkészlet bővítmény konfigurálása kapcsolati sztringgel az IoT hubhoz: 
     1. Az Azure Portalon keresse meg az IoT hubot, és válassza a **Megosztott elérési szabályzatok** elemet. 
-    2. Válassza az **iothubowner** elemet, majd másolja a **Kapcsolati karakterlánc – elsődleges kulcs** értékét.
+    2. Válassza az **iothubowner** elemet, majd másolja a **Kapcsolati sztring – elsődleges kulcs** értékét.
     3. A VS Code Explorerben kattintson az **IOT HUB-ESZKÖZÖK** elemre, majd kattintson a **...** elemre. 
-    4. Válassza az **IoT Hub kapcsolati karakterlánc beállítása** elemet, és írja be az IoT Hub kapcsolati karakterláncát az előugró ablakba. 
+    4. Válassza az **IoT Hub kapcsolati sztring beállítása** elemet, és írja be az IoT Hub kapcsolati sztringjét az előugró ablakba. 
 
 2. Az IoT Hubra érkező adatok monitorozásához válassza a **Nézet** > **Parancskatalógus...**  elemet, és keressen rá az **IoT: D2C üzenet monitorozásának megkezdése** kifejezésre. 
 3. Az adatok monitorozásának leállításához használja a Parancskatalógus **IoT: D2C üzenet monitorozásának leállítása** parancsát. 

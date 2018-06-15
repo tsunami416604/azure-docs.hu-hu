@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156221"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll - OAuth 2.0-s & OpenID Connect
 A v2.0-végpontra használhatja az Azure AD identity,--szolgáltatás az iparági szabványos protokollok, OpenID Connectet és az OAuth 2.0-s. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések vannak ezek a protokollok minden két közötti lehet. Az adatok itt akkor lehet hasznos, ha úgy dönt, hogy a kód írása útján tájékoztatjuk & kezelése HTTP-kérelmek vagy a 3. fél nyílt forráskódú szalagtár helyett egyikével a [nyissa meg a forrás szalagtárak](active-directory-v2-libraries.md).

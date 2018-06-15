@@ -18,6 +18,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797314"
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>A HDInsight Hadoop-szolgáltatás által használt portok
 

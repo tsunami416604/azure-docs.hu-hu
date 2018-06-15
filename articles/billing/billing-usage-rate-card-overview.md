@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164975"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure számlázás API-k segítségével az Azure használatának programozott módon webhelynaplókat
 Azure számlázás API-k segítségével lekéréses használati és erőforrás adatokat be a kívánt adatok elemzésére szolgáló eszközöket. Az Azure erőforrás-használat és RateCard API-k segítségével pontosan előre jelezni, és a költségek kezelésére. Az API-kat használják, mint a egy erőforrás-szolgáltató és az Azure Resource Manager által közzétett API-kban család része.  

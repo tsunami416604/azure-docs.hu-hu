@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156391"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>A v2.0-végpontra érdemes használni?
 Alkalmazások, amelyekbe beépül az Azure Active Directory összeállításakor kell döntse el, hogy a v2.0-végpont és a hitelesítési protokollokat megfelel-e az igényeinek. Az Azure Active Directory eredeti végpont továbbra is teljes mértékben támogatja, és néhány tekintetben a v2.0-nál több szolgáltatás gazdag. Azonban a v2.0-végpontra [vezet be, jelentős előnyt](active-directory-v2-compare.md) a fejlesztők számára.

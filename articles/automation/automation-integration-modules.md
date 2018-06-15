@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195862"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation integrációs modulok
 Az Azure Automation mögötti alapvető technológia a PowerShell. Minthogy az Azure Automation a PowerShellre épül, a PowerShell-modulok kulcsfontosságúak az Azure Automation bővíthetősége szempontjából. Ez a cikk a Microsoft végigvezeti Önt a mintaadatokról "Integrációs modulok", és ajánlott eljárások a saját PowerShell-modulok létrehozásához használhatók az Azure integrációs modulok biztosítania kell a PowerShell-modulok használata Azure Automation Automatizálási. 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071390"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure tárterület-áttelepítés kapcsolatos gyakori kérdések
 

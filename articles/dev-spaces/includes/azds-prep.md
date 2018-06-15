@@ -15,6 +15,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198826"
 ---
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód Docker és Kubernetes fejlesztés előkészítése
 Eddig hogy egy egyszerű webalkalmazást helyileg futtathat. Akkor lesz most containerize az eszközök, amelyek meghatározzák az alkalmazás tárolót, és hogyan telepíti a Kubernetes létrehozásával. Ez az Azure fejlesztői szóközöket csupán: 

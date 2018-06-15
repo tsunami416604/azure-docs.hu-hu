@@ -16,6 +16,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34159927"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>Hozzon létre egy feladat bemeneti az URL-címének http (s)
 

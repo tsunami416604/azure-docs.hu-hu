@@ -13,6 +13,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076214"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 

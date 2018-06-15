@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937817"
 ---
 # <a name="azure-stack-validation-report"></a>Az Azure verem ellenőrzési jelentés
 A Azure verem készültségi-ellenőrző eszközt futtatja, amely támogatja a központi telepítési és karbantartási egy Azure verem környezet érvényesítést. Az eszköz ellenőrzési eredmények jelentés .JSON kiterjesztésű fájlba írja. A jelentés adatait jeleníti meg részletes és összesített Azure verem telepítésének előfeltételei állapotát és a titkos kulcsok Elforgatás Azure verem telepítéseit.  

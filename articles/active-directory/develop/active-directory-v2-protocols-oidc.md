@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157717"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory v2.0 és az OpenID Connect protokoll
 OpenID Connect hitelesítési protokoll segítségével biztonságosan jelentkezzen be a felhasználót, hogy egy webes alkalmazás OAuth 2.0-s épülő. A v2.0-végpontra végrehajtása az OpenID Connect használatakor adhat hozzá bejelentkezési és API-hozzáférés a webalapú alkalmazások. Ebben a cikkben azt mutatja be a független nyelv tegye. Azt ismerteti, hogyan küldésére és fogadására a HTTP-üzenetek a Microsoft nyílt forráskódú kódtárai használata nélkül.

@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156517"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Az Azure Active Directory hitelesítési protokolljai
 Azure Active Directory (Azure AD) támogatja a legelterjedtebb hitelesítési és engedélyezési protokollokat számos. Ez a szakasz témakörei ismertetik a támogatott protokollok és a végrehajtása az Azure ad-ben. A témakörök támogatott jogcímtípusok, bevezetést használatát az összevonási metaadatok áttekintését tartalmazza, részletes OAuth 2.0-s. SAML 2.0 protokoll referenciadokumentációt és a hibaelhárítási szakaszt.

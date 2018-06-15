@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197035"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store-ban tárolt adatok védelme
 Adatok védelme az Azure Data Lake Store egy három lépéses megközelítés.  Mindkét szerepköralapú hozzáférés-vezérlés (RBAC), és hozzáférés-vezérlési listák (ACL) kell beállítani, hogy használhassa a felhasználók és biztonsági csoportok adatokhoz való hozzáférés.

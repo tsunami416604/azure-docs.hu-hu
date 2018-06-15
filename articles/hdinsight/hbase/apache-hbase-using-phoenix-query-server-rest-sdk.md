@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164584"
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix lekérdezés Server REST-SDK
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796020"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Példány nyilvános IP (klasszikus) áttekintése
 Egy szint nyilvános IP (ILPIP) példány nyilvános IP-címnek, amelyeket hozzárendelhet közvetlenül egy virtuális gép vagy Felhőszolgáltatás szerepkörpéldányt, nem pedig a felhőszolgáltatásba, amelyek tárolása a virtuális gép vagy szerepkör példányát. Egy ILPIP az a virtuális IP-cím (VIP) a felhőalapú szolgáltatáshoz hozzárendelt hely nem veszi. Ehelyett olyan további IP-cím segítségével csatlakozzon közvetlenül a virtuális gép vagy szerepkör-példányához.

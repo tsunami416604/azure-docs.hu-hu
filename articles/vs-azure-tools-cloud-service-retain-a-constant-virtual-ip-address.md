@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795092"
 ---
 # <a name="retain-a-constant-virtual-ip-address-for-an-azure-cloud-service"></a>Tartsa meg az Azure-felhőszolgáltatás állandó virtuális IP-cím
 Amikor frissíti egy felhőszolgáltatás, amely az Azure szolgáltatásban üzemeltetett, szükség lehet győződjön meg arról, hogy a virtuális IP-cím (VIP) a szolgáltatás nem változik. Sok tartományi szolgáltatások a tartománynévrendszer (DNS) tartománynevek a regisztrációhoz használja. DNS működését csak akkor, ha a VIP változatlan marad. Használhatja a **közzététele varázsló** Azure eszközök annak érdekében, hogy a felhőszolgáltatás VIP nem változik mikor végezzen frissítést. A felhőszolgáltatások DNS-tartományok használatával kapcsolatos további információkért lásd: [egy egyéni tartománynevet, az Azure-felhőszolgáltatás konfigurálása](cloud-services/cloud-services-custom-domain-name-portal.md).

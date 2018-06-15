@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894749"
 ---
 # <a name="azure-operational-security-checklist"></a>Az Azure operational biztonsági ellenőrzőlista
 Gyors, egyszerű és költséghatékony Azure-alkalmazás központi telepítése. Felhő alkalmazás hasznos lehet egy ellenőrzőlista éles környezetben az alkalmazást egy listát az alapvető és ajánlott a működési biztonság műveletek figyelembe kell venni kiértékelésekor segít üzembe helyezése előtt.

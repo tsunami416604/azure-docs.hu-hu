@@ -17,6 +17,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069066"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Az erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Ezekben a tárolókban felépítését egy eredményesebbé és hatékonyabbá teszi a használható létrehozása [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepkör alapú hozzáférés-vezérlést](../role-based-access-control/overview.md). A felügyeleti csoportok további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md). 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792647"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>A virtuális gép (klasszikus) vagy a Cloud Services szerepkör példány áthelyezése egy másik alhálózat PowerShell használatával
 PowerShell használatával helyezze át a virtuális gépek (klasszikus) egy alhálózatból másik ugyanazt a virtuális hálózatot (VNet). Szerepkörpéldányokat helyezheti át a szolgáltatáskonfigurációs SÉMA fájl szerkesztése, hanem a PowerShell használatával.

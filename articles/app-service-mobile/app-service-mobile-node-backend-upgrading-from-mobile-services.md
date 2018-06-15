@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32154545"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Frissítse a meglévő Node.js Azure Mobile szolgáltatást az App Service
 App Service Mobile új módja a Microsoft Azure használatával mobil alkalmazásokat hozhatnak létre. További tudnivalókért lásd: [Mik azok a Mobile Apps?].

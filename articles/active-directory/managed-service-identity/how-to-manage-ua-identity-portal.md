@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929352"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Lista létrehozása vagy törlése a felhasználó által felügyelt szolgáltatás Identity (MSI) az Azure portál használatával
 

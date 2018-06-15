@@ -1,22 +1,21 @@
 ---
 title: Szimulált X.509-eszköz kiépítése Azure IoT Hubra Java és regisztrációs csoportok használatával | Microsoft Docs
 description: Azure-oktatóanyag – Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Java eszköz- és szolgáltatásspecifikus SDK-kal és regisztrációs csoportokkal
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-masebo
+ms.author: bryanla
 ms.date: 01/04/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 0d325e71125e875590b54b84700b6ec9e0fe7dd7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 02cc3f861864d3bfa878be6501b8563715f88dac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631139"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Java eszköz- és szolgáltatásspecifikus SDK-kal és csoportos regisztrációkkal
 
@@ -82,11 +81,11 @@ A folytatás előtt végezze el az [IoT Hub Device Provisioning Service beállí
 
         1. Nyissa meg a **Megosztott elérési szabályzatok** panelt, és válasszon ki egy szabályzatot, amely rendelkezik az *EnrollmentWrite* engedéllyel.
     
-        1. Másolja ki az **elsődleges kulcs kapcsolati karakterláncát**. 
+        1. Másolja ki az **elsődleges kulcs kapcsolati sztringjét**. 
 
-            ![A kiépítési kapcsolati karakterlánc lekérése a portálról](./media/tutorial-group-enrollments/provisioning-string.png)  
+            ![A kiépítési kapcsolati sztring lekérése a portálról](./media/tutorial-group-enrollments/provisioning-string.png)  
 
-        1. A **_ServiceEnrollmentGroupSample.java_** mintakódfájlban cserélje le a `[Provisioning Connection String]` karakterláncot az **elsődleges kulcs kapcsolati karakterláncára**.
+        1. A **_ServiceEnrollmentGroupSample.java_** mintakódfájlban cserélje le a `[Provisioning Connection String]` sztringet az **elsődleges kulcs kapcsolati sztringjére**.
 
             ```java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";

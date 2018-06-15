@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155340"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Jelentkezzen be a Microsoft Account és az Azure Active Directory felhasználók egy adott alkalmazásban
 A múltban az alkalmazásfejlesztők számára személyes Microsoft-fiókot is támogatja, és a munkahelyi fiókok az Azure Active Directory kellett két külön rendszer integrálása. Az Azure Active Directory (Azure AD) v2.0-végponttól bevezet egy új hitelesítési API-verziót, amely leegyszerűsíti ezt a folyamatot. Az Azure AD v2.0-végponttól lehetővé teszi, hogy bejelentkezés mindkét típusú fiókok egyetlen integrációs használatával. Az Azure AD v2.0-végponttól használó alkalmazások is igénybe vehet, a REST API-kat a [Microsoft Graph API](https://graph.microsoft.io) bármely típusú fiókot használva.
