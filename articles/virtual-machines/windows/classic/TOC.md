@@ -33,7 +33,6 @@
 ### [Virtuális gépek kezelése az Azure PowerShell-lel](manage-psh-classic.md)
 ### [További információk a virtuálisgép-ügynökről és -bővítményekről](agents-and-extensions-classic.md)
 ### [Virtuálisgép-bővítmények kezelése](manage-extensions-classic.md)
-### [Egyéni parancsfájl-bővítmény virtuális gépek számára](extensions-customscript-classic.md)
 
 ## Számítási feladatok kezelése
 ### [Nagy teljesítményű feldolgozás (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
@@ -53,7 +52,7 @@
 ### [RDP-jelszó visszaállítása](reset-rdp.md)
 ### [Virtuális merevlemez csatlakoztatása a hibaelhárító virtuális géphez](troubleshoot-recovery-disks-portal.md)
 
-# Hivatkozás
+# Referencia
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)

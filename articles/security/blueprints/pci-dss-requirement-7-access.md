@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895038"
 ---
 # <a name="access-requirements-for-pci-dss-compliant-environments"></a>Hozzáférési követelmények PCI DSS-kompatibilis környezetben 
 ## <a name="pci-dss-requirement-7"></a>PCI DSS követelmény 7

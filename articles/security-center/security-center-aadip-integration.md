@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774182"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Csatlakozás az Azure Active Directory azonosító adatok védelmét az Azure Security Center
 Ez a dokumentum segítséget nyújt az Azure Active Directory (AD) identitás védelmét és az Azure Security Center közötti integráció konfigurálásához.

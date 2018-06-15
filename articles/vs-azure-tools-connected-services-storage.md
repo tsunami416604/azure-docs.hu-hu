@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793596"
 ---
 # <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Az Azure storage hozzáadása a Visual Studio kapcsolódó szolgáltatások használatával
 A Visual Studio kapcsolódás a következő Azure Storage használatával a **kapcsolódó szolgáltatások hozzáadása** párbeszédpanel:

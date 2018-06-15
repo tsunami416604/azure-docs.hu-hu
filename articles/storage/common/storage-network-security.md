@@ -18,6 +18,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192876"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage tűzfalak és a virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé téve a storage-fiókok egy meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha hálózati szabályok úgy vannak konfigurálva, csak az engedélyezett hálózatokhoz alkalmazások férhet hozzá a tárfiók.  Egy engedélyezett hálózatból meghívásakor az alkalmazások továbbra is szükséges megfelelő jogosultságokkal (egy érvényes tárelérési kulccsal vagy SAS-token) a tárfiók eléréséhez szükséges.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895663"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Az Azure Service Fabric biztonsági áttekintése
 [Az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) egy elosztott rendszerek platform, amely megkönnyíti a csomag, telepítése és kezelése, méretezhető és megbízható mikroszolgáltatások létrehozására. A Service Fabric fejlesztése és a felhőalapú alkalmazások kezelésének jelentős kihívásaira megoldást. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak.

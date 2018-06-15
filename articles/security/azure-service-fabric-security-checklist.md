@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895873"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Az Azure Service Fabric biztonsági ellenőrzőlista
 Ez a cikk egy könnyen használható ellenőrzőlistát, amely segít az Azure Service Fabric-környezet biztonságának tartalmazza.

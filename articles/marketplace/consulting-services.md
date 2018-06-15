@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312083"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Az Azure piactér Consulting Services tanácsadó szolgálat
 Microsoft-partnerek tanácsadás Azure piactéren biztosít a csatlakozó ügyfelek szolgáltatások támogatása és az Azure használatát kiterjesztése célját. Az Azure piactéren támogatja a Microsoft partnerei rendszert integráló (SI) tanácsadás szolgáltatásajánlatok listája. 

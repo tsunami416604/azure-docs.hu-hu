@@ -14,6 +14,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893648"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>A Stream Analytics Ablakozó függvény bemutatása
 Forgatókönyvek idejű adatfolyamos műveletet hajt végre a historikus windows szereplő adatokat a megszokott mintát követi. A Stream Analytics Ablakozó függvény, natív támogatása rendelkezik, így a fejlesztők csatlakozhatnak Szerző összetett adatfolyam jelentésfeldolgozó feladatok.

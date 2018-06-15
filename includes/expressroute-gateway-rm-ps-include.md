@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31613619"
 ---
 Ez a feladat lépéseit a következő konfigurációs hivatkozás listában található értékek alapján a VNet használja. További beállításokat és a nevek azt is ezen a listán. Nem használjuk a lista összes lépést, közvetlenül a Bár jelenleg felvenni a listában szereplő értékek alapján a változók. A listában referenciaként, az értékeket cserélje le a saját másolhatja.
 

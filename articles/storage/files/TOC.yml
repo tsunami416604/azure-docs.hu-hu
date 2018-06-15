@@ -16,7 +16,7 @@
       href: storage-how-to-use-files-windows.md
     - name: Csatlakoztatás Linuxon
       href: storage-how-to-use-files-linux.md
-    - name: Csatlakoztatás Macen
+    - name: Csatlakoztatás macOS rendszeren
       href: storage-how-to-use-files-mac.md
     - name: Kezelés az Azure Portalon
       href: storage-how-to-use-files-portal.md
@@ -103,7 +103,7 @@
         - name: Biztonságos átvitel megkövetelése
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Megosztott kulcsos hitelesítés
-          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
+          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
         - name: Közös hozzáférésű jogosultságkódok (SAS)
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Figyelés és hibaelhárítás

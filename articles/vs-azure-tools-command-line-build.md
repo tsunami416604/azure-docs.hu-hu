@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31791426"
 ---
 # <a name="building-azure-projects-from-the-command-line"></a>A parancssorból Azure projektek felépítése
 A Microsoft Build motor (MSBuild) használata, amelyen nincs telepítve a Visual Studio build-laborkörnyezetekben termékek hozhat létre. MSBuild bővíthető és teljes mértékben támogatja a Microsoft project fájlok XML formátumot használ. Az MSBuild formátumát használva leírhatja elemeket kell egy vagy több platformon, és konfigurációk készült.

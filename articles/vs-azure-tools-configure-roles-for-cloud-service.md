@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798726"
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>A Visual Studio Azure cloud service szerepkörök konfigurálása
 Azure-felhőszolgáltatás rendelkezhet egy vagy több munkavégző vagy a webes szerepkörök. Az egyes szerepkörökhöz szükség határozza meg, akkor az a szerepkör beállítására és is konfigurálhatja, hogyan fut a szerepkörhöz. A felhőszolgáltatások szerepkörök kapcsolatos további információkért lásd: a videó [Bevezetés az Azure Felhőszolgáltatások](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). 
