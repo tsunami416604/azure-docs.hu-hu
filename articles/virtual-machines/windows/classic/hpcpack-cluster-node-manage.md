@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914935"
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Az Azure-beli HPC Pack-fürtökben lévő számítási csomópontok számának és elérhetőségének kezelése
 Ha létrehozott egy HPC Pack 2012 R2-fürt az Azure virtuális gépeken, érdemes lehet könnyen hozzáadása, eltávolítása, (kiépíteni) indítása vagy leállítása (deprovision) módjai néhány számítási csomópont virtuális gépek a fürt. Ezek a feladatok elvégzéséhez az átjárócsomóponthoz VM telepített Azure PowerShell-parancsfájlok futtatása. Ezek a parancsfájlok segítségével szabályozhatja, számát és a HPC Pack fürterőforrások rendelkezésre állását, szabályozhatja költségeit.

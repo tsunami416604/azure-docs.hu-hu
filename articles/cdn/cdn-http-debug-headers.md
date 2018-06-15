@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31517435"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotor X-EK-Debug HTTP-fejlécek
 A hibakeresési gyorsítótár kérelemfejlécet `X-EC-Debug`, a gyorsítótár-házirend hatálya alá a kért objektum további információkkal szolgál. Ezek a fejlécek csak az adott **verizon Azure CDN Premium** termékek.

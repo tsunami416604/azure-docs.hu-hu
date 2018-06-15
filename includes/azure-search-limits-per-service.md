@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844072"
 ---
 Tárolási korlátozza szabad lemezterület, vagy rögzített korlátját a a *maximális* indexek, dokumentum vagy más magas szintű erőforrások, amelyik előbb következik be. A következő táblázat a tárolási korlátokat dokumentumokat. Indexek, dokumentumok és egyéb objektumok felső határai, lásd: [korlátok erőforrás](../articles/search/search-limits-quotas-capacity.md#index-limits).
 

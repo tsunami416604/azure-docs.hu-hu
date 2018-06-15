@@ -1,7 +1,7 @@
 ---
-title: "Verziókiadások |} Microsoft Docs"
+title: Verziókiadások |} Microsoft Docs
 titleSuffix: Azure
-description: "A Microsoft Genomics rendszeresen frissíti a Microsoft Genomics Python-ügyfél a javítások és új funkciók."
+description: A Microsoft Genomics rendszeresen frissíti a Microsoft Genomics Python-ügyfél a javítások és új funkciók.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802927"
 ---
 # <a name="version-release-history"></a>Verziókiadások előzményei
 A Microsoft Genomics csapata a javítások és új funkciók Microsoft Genomics Python-ügyfél rendszeresen frissíti. 

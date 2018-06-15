@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844077"
 ---
 Előfizetés, üzembe helyezve egy konkrét csomagot kiválasztani, csak az egyes rétegek engedélyezett szolgáltatások száma korlátozza mindegyiknél belül több szolgáltatáshoz is létrehozhat. Például létrehozhat legfeljebb 12-szolgáltatásokat az alapszintű rétegben, és egy másik 12: a S1 rétegben egyazon előfizetésen belül. Rétegek kapcsolatos további információkért lásd: [válasszon egy SKU vagy a réteg az Azure Search](../articles/search/search-sku-tier.md).
 

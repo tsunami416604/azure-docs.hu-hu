@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915310"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Töltse fel, és az egyéni lemezképet Linux virtuális gép létrehozása az Azure CLI 1.0
 Ez a cikk bemutatja, hogyan egy virtuális merevlemez (VHD) feltöltése az Azure Resource Manager telepítési modellel, és a Linux virtuális gépek létrehozása az egyéni lemezképet. Ez a funkció lehetővé teszi telepítése és konfigurálása a Linux distro az igényeinek megfelelően, valamint, hogy a virtuális merevlemez használatával gyorsan hozzon létre az Azure virtuális gépek (VM).

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31393871"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Management
 Az Azure API Management támaszkodik a átruházásához hozzáférés-vezérlés (RBAC) engedélyezéséhez a részletes hozzáféréskezelést az API Management-szolgáltatások és entitások (például API-k és házirendek). Ez a cikk áttekintést nyújt a beépített és egyéni szerepkörök az API Management. További információ a hozzáférés-kezelés az Azure-portálon: [Ismerkedés az Azure-portálon kezelési](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
