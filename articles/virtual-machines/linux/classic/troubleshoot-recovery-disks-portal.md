@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072215"
 ---
 # <a name="troubleshoot-a-linux-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>Klasszikus Linux virtuális gép hibaelhárításáról az operációsrendszer-lemez csatolása a helyreállítási virtuális Gépet
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bf0853b137e65ddd6ad40483c50fc8debb62f920
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826548"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414569"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gép és a kezelt és kezeletlen premium lemezek kapcsolatos gyakori kérdések
 
@@ -45,13 +45,9 @@ A felügyelt premium lemezek árképzési megegyezik a nem felügyelt premium le
 
 Igen. Az Azure-portálon, a PowerShell vagy az Azure parancssori felület használatával módosíthatja a tárfiók típusa a felügyelt lemezek.
 
-**Van mód, hogy lehet másolni, vagy egy felügyelt lemezes exportálása a titkos storage-fiók?**
-
-Igen. A felügyelt lemezek exportálhatja az Azure-portálon, a PowerShell vagy az Azure parancssori felület használatával.
-
 **Az Azure-tárfiók VHD-fájl használatával hozzon létre egy felügyelt lemezes egy másik előfizetést?**
 
-Nem.
+Igen.
 
 **Az Azure-tárfiók VHD-fájl használatával hozzon létre egy felügyelt lemezes egy másik régióban?**
 
@@ -59,7 +55,7 @@ Nem.
 
 **Vannak-e a felügyelt lemezeket használó ügyfelek skálázási korlátozások?**
 
-Kezelt lemezek megszünteti a társított tárfiókok korlátok. A maximális száma, valamint az alapértelmezett határérték 10 000 felügyelt lemezek régiónként és lemez típusonkénti az előfizetéshez.
+Kezelt lemezek megszünteti a társított tárfiókok korlátok. Azonban a maximálisan megengedettet 50 000 felügyelt lemezek régiónként és lemez típusonkénti az előfizetéshez.
 
 **Eltarthat egy kezelt lemez növekményes pillanatképet?**
 
@@ -95,7 +91,7 @@ Felügyelt lemezek által támogatott három fő alapértelmezett szerepkörök:
 
 **Van mód, hogy lehet másolni, vagy egy felügyelt lemezes exportálása a titkos storage-fiók?**
 
-A csak olvasható közös hozzáférésű jogosultságkód URI lekérése a felügyelt lemezes és a segítségével a saját tárolási fiók vagy a helyszíni tárolási másolja.
+A csak olvasható közös hozzáférésű jogosultságkód (SAS) URI a kezelt lemez létrehozása, és segítségével a saját tárolási fiók vagy a helyszíni tárolási másolja. Használhatja a SAS URI-t az Azure portál, Azure PowerShell, az Azure parancssori felület használatával vagy [AzCopy](../articles/storage/common/storage-use-azcopy.md)
 
 **A felügyelt lemezes másolatát hozhat létre?**
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30289260"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Alakítsa át a Linux virtuális gépek nem felügyelt lemezekből felügyelt
 

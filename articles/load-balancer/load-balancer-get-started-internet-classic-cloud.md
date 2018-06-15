@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067486"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>Hozzon létre egy internetkapcsolattal rendelkező terheléselosztót felhőszolgáltatásokhoz
 

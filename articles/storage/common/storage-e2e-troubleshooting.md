@@ -18,6 +18,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323304"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Végpontok közötti hibaelhárítás, Azure Storage mérőszámainak és a naplózást, az AzCopy és a Message Analyzer segítségével
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]

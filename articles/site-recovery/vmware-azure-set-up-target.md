@@ -1,6 +1,6 @@
 ---
-title: "A VMware-replikáció az Azure a célkörnyezet előkészítése |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan készíti elő a cél Azure-alapú környezetben az Azure VMware virtuális gép replikációját."
+title: A VMware-replikáció az Azure a célkörnyezet előkészítése |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan készíti elő a cél Azure-alapú környezetben az Azure VMware virtuális gép replikációját.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812634"
 ---
 # <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>A VMware-replikáció Azure cél környezet előkészítése
 

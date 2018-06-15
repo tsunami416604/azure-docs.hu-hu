@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208437"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktor életciklusát, automatikus szemétgyűjtés és manuális törlése
 Egy szereplő először egy kezdeményezték bármelyik metódusa aktiválva. Egy szereplő az inaktív (szemétgyűjtési a szereplője futtatókörnyezet által összegyűjtött), ha a konfigurált időtartamon nem használható. Egy szereplő és annak állapotát is törölhetők manuálisan bármikor.

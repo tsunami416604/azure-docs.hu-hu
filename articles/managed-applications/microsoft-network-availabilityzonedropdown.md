@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261071"
 ---
 # <a name="microsoftnetworkavailabilityzonedropdown-ui-element"></a>Microsoft.Network.AvailabilityZoneDropdown felhasználói felületi elem
 Jelölje ki a rendelkezésre állási zónát szolgáló vezérlő.

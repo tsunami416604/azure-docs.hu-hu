@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246508"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Virtuálisgép-méretezési csoport létrehozása egy egyéni virtuálisgép-rendszerképből PowerShell használatával
 Ez a szkript létrehoz egy virtuálisgép-méretezési csoportot, amely egy egyéni virtuálisgép-rendszerképet használ a virtuális gépek példányainak forrásaként.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207077"
 ---
 # <a name="actor-events"></a>Szereplő események
 Szereplő események teszik lehetővé a szereplő lehető legjobb értesítések küldése az ügyfelek számára. Szereplő események szereplő ügyfél kommunikációhoz, és a használatuk kerülendő szereplő szereplő kommunikációhoz.

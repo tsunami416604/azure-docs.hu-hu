@@ -1,6 +1,6 @@
 ---
-title: "Egy többszintes Azure Site Recovery segítségével az IIS-alapú webes alkalmazás replikálása |} Microsoft Docs"
-description: "Útmutató: az IIS webkiszolgáló farm virtuális gépek Azure Site Recovery segítségével replikálni."
+title: Egy többszintes Azure Site Recovery segítségével az IIS-alapú webes alkalmazás replikálása |} Microsoft Docs
+description: 'Útmutató: az IIS webkiszolgáló farm virtuális gépek Azure Site Recovery segítségével replikálni.'
 services: site-recovery
 author: nsoneji
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809420"
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application"></a>Egy többszintes IIS-alapú webes alkalmazás replikálása
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management-szabályozás Speciális kérelem"
-description: "Megtudhatja, hogyan hozhat létre és alkalmazhat a rugalmas kvóta és korlátozza az Azure API-felügyeleti szabályzatok alapján."
+title: Az Azure API Management-szabályozás Speciális kérelem
+description: Megtudhatja, hogyan hozhat létre és alkalmazhat a rugalmas kvóta és korlátozza az Azure API-felügyeleti szabályzatok alapján.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
 ms.service: api-management
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800023"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Az Azure API Management-szabályozás Speciális kérelem
 Az Azure API Management kulcsfontosságú szerepet igényt bejövő kérelmek szabályozás. Lehet, hogy a kéréseket, és a teljes kérelmek/átvitt adatok mértékű vezérlése, API-kezelés lehetővé teszi a API-szolgáltatókat az API-való visszaélés elleni védelmében, és hozzon létre külön API termék rétegekhez értékét.

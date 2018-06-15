@@ -18,6 +18,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053353"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Felhasználók hozzárendelése alkalmazásokhoz
 

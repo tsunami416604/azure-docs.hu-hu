@@ -21,6 +21,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012709"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Olyan virtuális merevlemezről speciális tárfiók a virtuális gép létrehozása
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34159290"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-webalkalmazások alkalmazásteljesítmény – gyakori kérdések
 

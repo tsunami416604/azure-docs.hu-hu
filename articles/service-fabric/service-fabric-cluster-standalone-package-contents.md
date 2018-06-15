@@ -18,6 +18,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209355"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server a Service Fabric önálló csomag tartalma
 Az a [letöltött](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric önálló csomag található a következő fájlokat:

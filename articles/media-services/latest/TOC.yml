@@ -61,16 +61,14 @@
       href: access-api-cli-how-to.md
     - name: Feladatállapot-események – parancssori felület
       href: job-state-events-cli-how-to.md
-    - name: Tartalom feltöltése – .NET
+    - name: Tartalom feltöltése
       items:
-        - name: HTTP-forrásból
+        - name: HTTP-forrásból – .NET
           href: job-input-from-http-how-to.md
-        - name: Egy helyi fájlból
+        - name: Egy helyi fájlból – .NET
           href: job-input-from-local-file-how-to.md
-    - name: Előzetes átalakítási beállítások testreszabása
-      items:
-        - name: .NET Core-ral
-          href: customize-encoder-presets-how-to.md
+    - name: Előzetes átalakítási beállítások testreszabása – .NET Core
+      href: customize-encoder-presets-how-to.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)

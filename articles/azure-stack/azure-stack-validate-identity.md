@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937828"
 ---
 # <a name="validate-azure-identity"></a>Azure-identitás ellenőrzése 
 Az Azure verem készültségi-ellenőrző eszközzel (AzsReadinessChecker) ellenőrizze, hogy az Azure Active Directory (Azure AD), az Azure veremnek megfelelő használatra kész. Ellenőrizze az Azure-identitás megoldás az Azure-verem központi telepítésének megkezdése előtt.  

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30317772"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Töltse le a VPN-eszköz konfigurációs parancsfájlokat S2S VPN-kapcsolatokhoz
 

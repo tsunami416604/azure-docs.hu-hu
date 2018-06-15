@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165349"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Hozzon létre és osszon irányítópultok az Azure-portálon
 Több irányítópultot létrehozni, és megoszthatja őket másokkal, akik hozzáférhetnek a Azure-előfizetését.  Ez a cikk végighalad létrehozására, szerkesztésére, közzétételének és irányítópultokhoz való hozzáférés kezelése a alapjait.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30283996"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Adatforrások csatlakoztatása a Configuration Manager szolgáltatáshoz
 A System Center Configuration Manager környezet az Azure Naplóelemzés szolgáltatáshoz csatlakozhat szinkronizálási eszköz gyűjtemény adatait, és ezeket a gyűjteményeket, Naplóelemzés és az Azure Automation hivatkozik.  

@@ -21,6 +21,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30322896"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Always On rendelkezésre állási csoportok létrehozása az Azure virtuális gépeken előfeltételeit teljesítenie
 

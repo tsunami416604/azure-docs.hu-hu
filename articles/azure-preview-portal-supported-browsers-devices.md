@@ -21,6 +21,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165111"
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Támogatott böngészők és az eszközöknek az Azure-portálon
 Futtathatja a [Azure-portálon](https://portal.azure.com) minden modern asztalon, tábla-eszközöket, és a böngészők.

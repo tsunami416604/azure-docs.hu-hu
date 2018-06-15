@@ -14,6 +14,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33933831"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS) szolgáltatásban
 

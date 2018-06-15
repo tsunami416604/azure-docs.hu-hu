@@ -20,6 +20,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198473"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>A legfontosabb jellemzők és Azure verem fogalmak
 Ha most ismerkedik a Microsoft Azure-vermet, ezeket a feltételeket és a szolgáltatások leírása hasznos lehet.

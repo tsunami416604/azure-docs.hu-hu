@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208260"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors--KVSActorStateProvider konfigurálása
 Módosíthatja a KVSActorStateProvider használható alapértelmezett konfigurációt a settings.xml fájl, amelyet a Microsoft Visual Studio csomag legfelső szintű konfigurációs mappában lévő megadott szereplő módosításával.

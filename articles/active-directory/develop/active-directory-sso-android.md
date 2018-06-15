@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157670"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Az adal-t használó Android alkalmazások közötti SSO engedélyezése
 Megadása, hogy a felhasználók csak egyszer adja meg a hitelesítő adataikat, és ezen hitelesítő adatok automatikusan rendelkezésére kell közötti használathoz egyszeri bejelentkezés (SSO) alkalmazások már várt ügyfelek. Nehézsége kis képernyőjű, gyakran alkalommal együtt egy további tényezőt (2FA) például telefonhívást vagy egy fogva kódot, a felhasználónév és jelszó megadása ehhez a termékhez egynél többször van gyors kapcsolatos, ha a felhasználó eredményez.

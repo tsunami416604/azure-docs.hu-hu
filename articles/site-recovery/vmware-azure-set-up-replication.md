@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálhatja és kezelheti a VMware-replikáció az Azure Site Recovery replikációs házirendeket |} Microsoft Docs"
-description: "Ismerteti, hogyan lehet VMware-replikáció Azure replikációs beállításainak konfigurálása az Azure Site Recovery szolgáltatással."
+title: Konfigurálhatja és kezelheti a VMware-replikáció az Azure Site Recovery replikációs házirendeket |} Microsoft Docs
+description: Ismerteti, hogyan lehet VMware-replikáció Azure replikációs beállításainak konfigurálása az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812669"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>Konfigurálhatja és kezelheti a replikációs házirendeket a VMware-replikáció
 Ez a cikk ismerteti a replikációs házirend konfigurálása az Azure-ba, hogy a VMware virtuális gépek replikált használatával [Azure Site Recovery](site-recovery-overview.md).

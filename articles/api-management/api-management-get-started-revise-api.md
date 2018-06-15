@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935164"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
 Amikor az API készen áll, és a fejlesztők elkezdik a használatát, általában ügyelni kell arra, hogy amikor módosításokat végez az API-n, ne akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).

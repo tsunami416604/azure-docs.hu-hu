@@ -56,8 +56,6 @@
     - name: IaaS-biztonság
       href: security-virtual-machines-overview.md
       items:
-        - name: Ajánlott eljárások Azure-beli virtuális gépekhez
-          href: azure-security-best-practices-vms.md
         - name: Ajánlott eljárások IaaS-beli számítási feladatokhoz
           href: azure-security-iaas.md
         - name: Azure Marketplace-rendszerképek

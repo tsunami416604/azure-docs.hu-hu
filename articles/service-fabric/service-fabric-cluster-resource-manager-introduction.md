@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210596"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürt erőforrás-kezelő bemutatása
 Hagyományosan az informatikai rendszerek vagy online szolgáltatások kezelése azt jelentette, hogy ezeket a meghatározott szolgáltatásokat vagy rendszerek adott fizikai vagy virtuális gépek dedikálni. Szolgáltatások volt tervezett rétegek szerint. A "web" réteghez és egy "data" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési réteget, ahol a kérelmek növelésére és csökkentésére, valamint a gyorsítótárazás dedikált gépek halmazát jelenti érkezett. Minden egyes réteg vagy típusú volt kijelölve, a konkrét gépek: az adatbázis lett kijelölve, a webkiszolgálók, a kevés néhány gépek. Ha egy munkaterhelés bizonyos típusú be volt a gépek futtatása túl gyakran használt adatok, majd további gépeket, hogy azonos konfigurációval hozzá adott réteg sablonbeállításait. Azonban nem minden munkaterhelések így könnyen sikerült terjeszthető ki – különösen az adatréteg rendelkező cserélje általában a gépek, a nagyobb gépek. Egyszerű. Ha egy gép sikertelen volt, a teljes alkalmazás a része alacsonyabb kapacitással futott, mindaddig, amíg a gép lehetett visszaállítani. Továbbra is meglehetősen egyszerű (Ha ez nem szükségszerűen szórakoztató).

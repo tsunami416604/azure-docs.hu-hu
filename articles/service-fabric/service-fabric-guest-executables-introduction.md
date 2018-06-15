@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212840"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>A Service Fabric egy létező végrehajtható fájl központi telepítése
 Az Azure Service Fabric szolgáltatásként futtatható kódok, például a Node.js, Java vagy C++ bármilyen típusú. A Service Fabric Vendég végrehajtható fájlok szolgáltatások az ilyen típusú néven hivatkozik.
