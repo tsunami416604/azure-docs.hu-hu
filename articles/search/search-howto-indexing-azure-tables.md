@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182072"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search index Azure Table storage
 Ez a cikk bemutatja, hogyan használható az Azure Search Azure Table storage-ban tárolt adatok indexeléséhez.

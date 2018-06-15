@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190090"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Lucene lekérdezési szintaxis példák az Azure Search lekérdezések létrehozása
 Lekérdezések létrehozása az Azure Search, használhatja az alapértelmezett vagy [egyszerű lekérdezés szintaxisát](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) vagy a tulajdonos alternatív [Lucene Lekérdezéselemzőben az Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). A Lucene Lekérdezéselemzőben összetett lekérdezési szerkezeteket, például mező hatókörű lekérdezések intelligens egyeztetésű keresési, közelségi kapcsolat keresési, kifejezés kiemelése vagy reguláris kifejezést keresési támogatja.

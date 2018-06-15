@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32176575"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>A Hadoop Oozie segítségével határozza meg, és futtatnak egy munkafolyamatot a Hdinsightban
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]

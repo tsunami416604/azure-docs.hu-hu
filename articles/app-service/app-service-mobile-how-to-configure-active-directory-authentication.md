@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32155296"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-login"></a>App Service-alkalmazás Azure Active Directory bejelentkezési használandó konfigurálása
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]

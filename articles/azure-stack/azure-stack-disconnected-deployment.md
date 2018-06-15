@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151127"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure-kapcsolat nélküli telepítés tervezési megfontolások Azure verem integrált rendszerek
 Után úgy döntött, [hogyan fogja integrálja Azure verem a hibrid felhőkörnyezet](azure-stack-connection-models.md), majd véglegesítése is az Azure-verem telepítési döntések meghozatalában.

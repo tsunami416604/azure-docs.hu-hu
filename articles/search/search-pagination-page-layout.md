@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186878"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>A keresési eredmények oldalakra tördelése az Azure Search-ben
 Ez a cikk az Azure Search szolgáltatás REST API használatával valósítja meg a keresési eredmények oldalának, például az érintett teljes, a dokumentum beolvasása, a rendezési sorrend és a navigációs szokásos megoldások szabványos elemeit nyújt útmutatást.

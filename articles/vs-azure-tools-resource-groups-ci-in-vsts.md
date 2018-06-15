@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192944"
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>A Visual Studio Team Services használatával Azure erőforráscsoport-telepítési projektek folyamatos integrációt
 Központi telepítése egy Azure-sablon alapján, hogy feladatokat különböző szakaszaiban: Build, tesztelési, másolása az Azure-ba (más néven "Tesztelés"), és a sablon telepítéséhez. Sablonok telepíteni a Visual Studio Team Services (Visual STUDIO Team Services) két különböző módja van. Mindkét módszer adja meg ugyanazokat az eredményeket, tehát azt, amelyik a legjobban megfelel a munkafolyamat.
