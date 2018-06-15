@@ -1,11 +1,11 @@
 ---
-title: "Felhőalapú szolgáltatás telepítésével kapcsolatos problémák elhárítása |} Microsoft Docs"
-description: "Előfordulhat, hogy futtatja az Azure felhőalapú szolgáltatás telepítése néhány gyakori problémák vannak. Ez a cikk némelyikük megoldásokat tartalmazza."
+title: Felhőalapú szolgáltatás telepítésével kapcsolatos problémák elhárítása |} Microsoft Docs
+description: Előfordulhat, hogy futtatja az Azure felhőalapú szolgáltatás telepítése néhány gyakori problémák vannak. Ez a cikk némelyikük megoldásokat tartalmazza.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408179"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Felhőalapú szolgáltatás telepítésével kapcsolatos problémák elhárítása
 Amikor telepít egy felhőalapú szolgáltatás alkalmazáscsomagot az Azure-ba, ezt úgy szerezheti be a telepítéssel kapcsolatos információk a **tulajdonságok** ablaktáblán az Azure portálon. Használhatja a részletek panelen segítséget nyújtanak a felhőalapú szolgáltatással kapcsolatos hibák elhárítása, és megadhatja ezt az információt Azure támogatásához új támogatási kérelem megnyitásakor.

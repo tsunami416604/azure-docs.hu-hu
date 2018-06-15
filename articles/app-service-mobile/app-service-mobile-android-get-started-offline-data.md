@@ -1,6 +1,6 @@
 ---
-title: "Kapcsolat nélküli szinkronizálásának engedélyezése az Azure Mobile alkalmazások (Android)"
-description: "App Service Mobile Apps az Android-alkalmazás gyorsítótárába, a szinkronizálási kapcsolat nélküli adatainak használata"
+title: Kapcsolat nélküli szinkronizálásának engedélyezése az Azure Mobile alkalmazások (Android)
+description: App Service Mobile Apps az Android-alkalmazás gyorsítótárába, a szinkronizálási kapcsolat nélküli adatainak használata
 documentationcenter: android
 author: conceptdev
 manager: crdun
@@ -18,6 +18,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594191"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Androidos mobilalkalmazás kapcsolat nélküli szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

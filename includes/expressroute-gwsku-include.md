@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30197533"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Ha egy átjáró magasabb szintű termékváltozatát választja, a rendszer több processzort és hálózati sávszélességet foglal le a számára, ezért az átjáró nagyobb hálózati átviteli sebesség támogatására képes a virtuális hálózaton. 
 

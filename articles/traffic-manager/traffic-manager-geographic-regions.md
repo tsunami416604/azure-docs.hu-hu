@@ -1,12 +1,12 @@
 ---
-title: "Ország vagy régió hierarchia Azure Traffic Manager földrajzi útválasztási típus által használt |} Microsoft Docs"
-description: "Ez a cikk felsorolja az ország vagy régió hierarchia használják az Azure Traffic Manager földrajzi útválasztási típus"
+title: Ország vagy régió hierarchia Azure Traffic Manager földrajzi útválasztási típus által használt |} Microsoft Docs
+description: Ez a cikk felsorolja az ország vagy régió hierarchia használják az Azure Traffic Manager földrajzi útválasztási típus
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28201496"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Ország vagy régió hierarchia Azure Traffic Manager által használt földrajzi forgalom-útválasztási módszert
 

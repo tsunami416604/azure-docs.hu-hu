@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790481"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine-licenc sablon – áttekintés
 Azure Media Services segítségével konfigurálhatja és a Google Widevine-licencek kérelmekre. Amikor a Windows Media player számára, hogy a Widevine-védelemmel ellátott tartalomhoz, a licenc beszerzésével kérelmet küldött a licenctovábbítási szolgáltatásra. Ha a szolgáltatás a kérelem jóváhagyása, a szolgáltatás a licencet ad ki. Az ügyfélnek küldött, és a megadott tartalom lejátszása és visszafejtésére szolgál.

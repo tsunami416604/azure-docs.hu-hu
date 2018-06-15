@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: ce2bc8cc8d9b149b16aee9c5e601d9872621e277
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f486ce5c058286289873d87767f02bf92f91459e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701442"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása szolgáltatásjegyzékben
 ## <a name="overview"></a>Áttekintés
@@ -105,7 +106,10 @@ A HTTPS protokollt biztosít a kiszolgáló hitelesítése és ügyfél – kisz
 > [!NOTE]
 > A szolgáltatás protokoll nem módosítható az alkalmazásfrissítés során. Amennyiben a frissítés során megváltoztak, akkor használhatatlanná tévő változást.
 > 
-> 
+
+> [!WARNING] 
+> HTTPS használata esetén ne használja az azonos port és telepített ugyanahhoz a csomóponthoz tartozó különböző szolgáltatáspéldány (amely független az alkalmazás) tanúsítvány. Két különböző szolgáltatások ugyanazt a portot más alkalmazás példányát használja a frissítés frissítési hibát eredményez. További információkért lásd: [frissítés, a HTTPS-végpontnak több alkalmazások ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+>
 
 Íme egy példa, hogy be kell állítani a HTTPS-hez applicationmanifest jegyzékben. Meg kell adni a tanúsítvány ujjlenyomatát. A EndpointRef EndpointResource ServiceManifest, amelynek beállítása a HTTPS protokollt a hivatkozás. Egynél több EndpointCertificate adhat hozzá.  
 
@@ -154,11 +158,11 @@ Linux-fürtök esetén a **MY** tárolja a mappát az alapértelmezett **/var/li
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Végpontok ServiceManifest.xml felülbírálása
 
-Adja hozzá egy testvér ConfigOverrides szakaszra használandó ResourceOverrides szakaszt az applicationmanifest jegyzékben. Ebben a szakaszban adja meg a felülbírálás a végpontok szakasz a szolgáltatás jegyzékben megadott erőforrások szakaszában. Futásidejű végpontok felülbírálása támogatott 5.7.217/SDK 2.7.217 és magasabb.
+Adja hozzá az applicationmanifest jegyzékben ResourceOverrides szakasz, ez az egy testvér ConfigOverrides részt. Ebben a szakaszban adja meg a felülbírálás a végpontok szakasz a szolgáltatás jegyzékben megadott erőforrások szakaszában. Futásidejű végpontok felülbírálása támogatott 5.7.217/SDK 2.7.217 és magasabb.
 
 Ahhoz, hogy a végpont a következő ApplicationParameters módosítása az applicationmanifest jegyzékben használatával ServiceManifest felülbírálása:
 
-A ServiceManifestImport szakaszban a "ResourceOverrides" új szakasz hozzáadása
+ServiceManifestImport területen adja hozzá egy új szakaszt "ResourceOverrides".
 
 ```xml
 <ServiceManifestImport>
@@ -188,13 +192,13 @@ A Paraméterek hozzáadása alatt:
   </Parameters>
 ```
 
-Most már az alkalmazás telepítése közben átadhatók ezeket az értékeket a ApplicationParameters, például:
+Az alkalmazás telepítése közben átadhatók a ezeket az értékeket, ApplicationParameters.  Példa:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Megjegyzés: Ha az értékek biztosít a ApplicationParameters üres érték azt vissza a megfelelő EndPointName a ServiceManifest a megadott alapértelmezett érték.
+Megjegyzés: Ha az értékek biztosít a ApplicationParameters érték üres, azt vissza a megfelelő EndPointName a ServiceManifest a megadott alapértelmezett érték.
 
 Példa:
 

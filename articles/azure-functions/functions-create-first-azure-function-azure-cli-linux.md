@@ -1,8 +1,8 @@
 ---
-title: "Az első függvény létrehozása Linux rendszerben az Azure CLI-vel (előzetes verzió) | Microsoft Docs"
-description: "Megismerkedhet vele, hogyan hozhatja létre első, alapértelmezett Linux-rendszerképen futó Azure-függvényét az Azure CLI használatával."
+title: Az első függvény létrehozása Linux rendszerben az Azure CLI-vel (előzetes verzió) | Microsoft Docs
+description: Megismerkedhet vele, hogyan hozhatja létre első, alapértelmezett Linux-rendszerképen futó Azure-függvényét az Azure CLI használatával.
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919389"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Az első függvény létrehozása Linux rendszerben az Azure CLI használatával (előzetes verzió)
 

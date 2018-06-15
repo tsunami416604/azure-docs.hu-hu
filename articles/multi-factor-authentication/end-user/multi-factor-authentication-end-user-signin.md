@@ -1,9 +1,9 @@
 ---
-title: "Az Azure MFA-bejelentkezés a kétlépéses ellenőrzéshez használttal |} Microsoft Docs"
-description: "Ezen a lapon megtudhatja, miként, hol kell a különböző bejelentkezési módszer áll rendelkezésre az Azure MFA megjelenítéséhez."
-keywords: "felhasználó hitelesítése, a bejelentkezés során tapasztal élmény, jelentkezzen be a mobiltelefon, bejelentkezés az irodai telefon"
+title: Az Azure MFA-bejelentkezés a kétlépéses ellenőrzéshez használttal |} Microsoft Docs
+description: Ezen a lapon megtudhatja, miként, hol kell a különböző bejelentkezési módszer áll rendelkezésre az Azure MFA megjelenítéséhez.
+keywords: felhasználó hitelesítése, a bejelentkezés során tapasztal élmény, jelentkezzen be a mobiltelefon, bejelentkezés az irodai telefon
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628414"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>A bejelentkezés során tapasztal élmény Azure többtényezős hitelesítéssel
 > [!NOTE]

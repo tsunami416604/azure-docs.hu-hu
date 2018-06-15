@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric-alkalmazások az Azure portál használatával Naplóelemzési értékeléséhez |} Microsoft Docs"
-description: "A Service Fabric-megoldás az Azure portál használata a kockázat és a Service Fabric alkalmazások, a micro-szolgáltatások, az csomópontokat és fürtöket állapotának felmérésére Naplóelemzési használható."
+title: Service Fabric-alkalmazások az Azure portál használatával Naplóelemzési értékeléséhez |} Microsoft Docs
+description: A Service Fabric-megoldás az Azure portál használata a kockázat és a Service Fabric alkalmazások, a micro-szolgáltatások, az csomópontokat és fürtöket állapotának felmérésére Naplóelemzési használható.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: niniikhena
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 9c91aacb-c48e-466c-b792-261f25940c0c
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932681"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Mérje fel a Service Fabric-alkalmazások és micro-szolgáltatások és az Azure portál
 

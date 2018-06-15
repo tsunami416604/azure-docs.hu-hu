@@ -1,12 +1,12 @@
 ---
-title: "Azure Event Hubs Role-Based hozzáférés-vezérlés (RBAC) előzetes verzió |} Microsoft Docs"
-description: "Az Azure Event Hubs szerepköralapú hozzáférés-vezérlés"
+title: Azure Event Hubs Role-Based hozzáférés-vezérlés (RBAC) előzetes verzió |} Microsoft Docs
+description: Az Azure Event Hubs szerepköralapú hozzáférés-vezérlés
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783447"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 

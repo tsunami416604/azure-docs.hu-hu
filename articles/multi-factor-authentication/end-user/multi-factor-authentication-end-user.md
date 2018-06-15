@@ -1,8 +1,8 @@
 ---
-title: "Ismerkedés a kétlépéses ellenőrzést |} Microsoft Docs"
-description: "Ez az a Azure multi-factor Authentication hitelesítés lap, amely segítséget nyújt a végfelhasználók számára a kezdeti is Azure multi-factor Authentication szolgáltatással."
+title: Ismerkedés a kétlépéses ellenőrzést |} Microsoft Docs
+description: Ez az a Azure multi-factor Authentication hitelesítés lap, amely segítséget nyújt a végfelhasználók számára a kezdeti is Azure multi-factor Authentication szolgáltatással.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198105"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Mit Azure multi-factor Authentication jelent a számomra?
 Igen, rendelkezik igazoló egy e-mailt feladótól informatikai vagy a agy arról, hogy hányszor adtak hozzá további biztonsági ellenőrzés a fiókjához.  Ezért ez mit jelent?

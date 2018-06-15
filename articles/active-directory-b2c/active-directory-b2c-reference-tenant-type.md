@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Régió rendelkezésre állási & adatok rezidens |} Microsoft Docs'
-description: 'Az Azure Active Directory B2C-bérlők típusú témakör:'
+title: Az Azure Active Directory B2C rendelkezésre állási & adatok rezidens régió |} Microsoft Docs
+description: A témakör az Azure Active Directory B2C-bérlők típusú.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: davidmu
-ms.openlocfilehash: b982a6b6e0068370ef7b5cb30ea689829e90d494
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: add7c49d8efaec0fddf057c454b4f01aec5df1ce
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709597"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Az Azure Active Directory B2C: Régió rendelkezésre állási & adatok rezidens
 Régiónkénti elérhetőség és adatok rezidens olyan Azure többi részétől eltérően az Azure AD B2C vonatkozó két nagyon különböző fogalom. Ez a cikk fog szemléltetik az eltéréseket, ezek két fogalom között, és hasonlítsa össze, ezek hogyan vonatkoznak az Azure és az Azure AD B2C.

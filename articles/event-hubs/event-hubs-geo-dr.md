@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Event Hubs földrajzi-vész-helyreállítási |} Microsoft Docs"
-description: "Feladatátvételi földrajzi régió használatáról, és hajtsa végre az Azure Event Hubs katasztrófa utáni helyreállítás"
+title: Az Azure Event Hubs földrajzi-vész-helyreállítási |} Microsoft Docs
+description: Feladatátvételi földrajzi régió használatáról, és hajtsa végre az Azure Event Hubs katasztrófa utáni helyreállítás
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745894"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Az Azure Event Hubs földrajzi-vész-helyreállítási
 

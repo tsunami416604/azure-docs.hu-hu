@@ -1,12 +1,12 @@
 ---
-title: "Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel | Microsoft Docs"
-description: "Ebből a dokumentumból megtanulhatja, hogyan helyezze üzembe az AD FS szolgáltatást az Azure-ban, és biztosítson ezzel magas fokú rendelkezésre állást."
-keywords: "Ad FS és Azure Traffic Manager, adfs és Azure Traffic Manager, földrajzi, több adatközpont, földrajzi adatközpontok, több földrajzi adatközpont, AD FS telepítése az azure-ban, azure adfs telepítése, azure adfs, azure ad fs, adfs telepítése, ad fs telepítése, adfs az azure-ban, adfs telepítése az azure-ban, AD FS telepítése az azure-ban, adfs azure, AD FS bemutatása, Azure, AD FS az Azure-ban, iaas, ADFS, adfs áthelyezése az azure-ba"
+title: Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel | Microsoft Docs
+description: Ebből a dokumentumból megtanulhatja, hogyan helyezze üzembe az AD FS szolgáltatást az Azure-ban, és biztosítson ezzel magas fokú rendelkezésre állást.
+keywords: Ad FS és Azure Traffic Manager, adfs és Azure Traffic Manager, földrajzi, több adatközpont, földrajzi adatközpontok, több földrajzi adatközpont, AD FS telepítése az azure-ban, azure adfs telepítése, azure adfs, azure ad fs, adfs telepítése, ad fs telepítése, adfs az azure-ban, adfs telepítése az azure-ban, AD FS telepítése az azure-ban, adfs azure, AD FS bemutatása, Azure, AD FS az Azure-ban, iaas, ADFS, adfs áthelyezése az azure-ba
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a14bc870-9fad-45ed-acd5-a90ccd432e54
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26604779"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Magas rendelkezésre állású AD FS telepítése az Azure-ban Azure Traffic Managerrel
 Az [AD FS telepítése az Azure-ban](active-directory-aadconnect-azure-adfs.md) című cikk részletesen ismerteti egy egyszerű AD FS-infrastruktúra telepítésének lépéseit az Azure-ban a szervezete számára. A cikk bemutatja az AD FS az Azure-ba történő, földrajzi határokon átívelő telepítésének további lépéseit az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) használatával. Az Azure Traffic Managerrel egy földrajzilag kiterjedt, magas rendelkezésre állású és nagy teljesítményű AD FS-infrastruktúrát hozhat létre szervezete számára, amelyhez számos útválasztási módszer áll rendelkezésre a különböző igények infrastruktúrából történő kielégítésére.
@@ -39,7 +40,7 @@ Az alapvető tervezési alapelvek megegyeznek az AD FS telepítése az Azure-ban
 * **Tárfiókok:** A tárfiókok egy adott régióhoz tartoznak. Mivel egy új földrajzi régióba telepít gépeket, az adott régióban használható, új tárfiókokat is létre kell hoznia.  
 * **Hálózati biztonsági csoportok:** A tárfiókokhoz hasonlóan az egy adott régióban létrehozott hálózati biztonsági csoportok sem használhatók egy másik földrajzi régióban. Ezért az első földrajzi régióban lévőkhöz hasonló, új hálózati biztonsági csoportokat kell létrehoznia az INT és DMZ alhálózatokhoz az új földrajzi régióban.
 * **DNS-címkék a nyilvános IP-címekhez:** Az Azure Traffic Manager KIZÁRÓLAG DNS-címkéken keresztül tud végpontokra hivatkozni. Ezért DNS-címkéket kell létrehoznia a külső terheléselosztók nyilvános IP-címeihez.
-* **Azure Traffic Manager:**A Microsoft Azure Traffic Managerrel szabályozható a világ különböző pontjain található adatközpontokban futó szolgáltatásvégpontokra érkező felhasználói forgalom elosztása. Az Azure Traffic Manager a DNS szintjén működik. DNS-válaszok használatával irányítja a végfelhasználói forgalmat a globálisan elosztott végpontok felé. Ezután az ügyfelek közvetlenül a végpontokhoz csatlakoznak. A különböző útválasztási beállításoknak (teljesítménycentrikus, súlyozott, prioritásos) köszönhetően könnyedén kiválaszthatja a szervezete igényeinek leginkább megfelelő megoldást. 
+* **Azure Traffic Manager:** A Microsoft Azure Traffic Managerrel szabályozható a világ különböző pontjain található adatközpontokban futó szolgáltatásvégpontokra érkező felhasználói forgalom elosztása. Az Azure Traffic Manager a DNS szintjén működik. DNS-válaszok használatával irányítja a végfelhasználói forgalmat a globálisan elosztott végpontok felé. Ezután az ügyfelek közvetlenül a végpontokhoz csatlakoznak. A különböző útválasztási beállításoknak (teljesítménycentrikus, súlyozott, prioritásos) köszönhetően könnyedén kiválaszthatja a szervezete igényeinek leginkább megfelelő megoldást. 
 * **Virtuális hálózatok közötti kapcsolat két régió között:** A virtuális hálózatoknak nem kell kapcsolatban lenniük. Mivel minden virtuális hálózat hozzáfér a tartományvezérlőkhöz, valamint AD FS- és WAP-kiszolgálót is tartalmaz, a különböző régiókban található virtuális hálózatok egymással kialakított kapcsolat nélkül is működhetnek. 
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>Az Azure Traffic Manager integrálásának lépései

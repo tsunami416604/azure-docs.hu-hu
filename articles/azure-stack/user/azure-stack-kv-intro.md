@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Key Vault verem bemutatása |} Microsoft Docs"
-description: "Ismerje meg, hogyan kezeli az Azure verem Key Vault a kulcsok és titkos kulcsok"
+title: Az Azure Key Vault verem bemutatása |} Microsoft Docs
+description: Ismerje meg, hogyan kezeli az Azure verem Key Vault a kulcsok és titkos kulcsok
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 70f1684a-3fbb-4cd1-bf29-9f9882e98fe9
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26636726"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Bevezetés az Azure-készletben kulcstároló
 

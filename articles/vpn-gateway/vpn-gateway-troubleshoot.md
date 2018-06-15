@@ -1,13 +1,13 @@
 ---
-title: "VPN-átjáró konfigurációk és kapcsolatok hibáinak elhárítása |} Microsoft Docs"
-description: "Ez a cikk segít kapcsolódik, a VPN-átjáró konfigurációját, a kapcsolat, hibaelhárításához és átviteli érvényesítéséhez."
+title: VPN-átjáró konfigurációk és kapcsolatok hibáinak elhárítása |} Microsoft Docs
+description: Ez a cikk segít kapcsolódik, a VPN-átjáró konfigurációját, a kapcsolat, hibaelhárításához és átviteli érvényesítéséhez.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28934770"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN-átjáró hibaelhárítása
 

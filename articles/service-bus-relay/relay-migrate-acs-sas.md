@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory hozzáférés-vezérlési szolgáltatásban át közös hozzáférésű Jogosultságkód engedélyezési |} Microsoft Docs"
-description: "Hozzáférés-vezérlési szolgáltatásban alkalmazásokat SAS-át"
+title: Azure Active Directory hozzáférés-vezérlési szolgáltatásban át közös hozzáférésű Jogosultságkód engedélyezési |} Microsoft Docs
+description: Hozzáférés-vezérlési szolgáltatásban alkalmazásokat SAS-át
 services: service-bus-relay
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855382"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Az Azure Active Directory hozzáférés-vezérlési szolgáltatásban közös hozzáférésű Jogosultságkód engedélyezési áttelepítése
 

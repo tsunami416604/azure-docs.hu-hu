@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Event Hubs Capture engedélyezése a portálon keresztül | Microsoft Docs"
-description: "Engedélyezze az Event Hubs Capture funkciót az Azure Portal használatával."
+title: Az Azure Event Hubs Capture engedélyezése a portálon keresztül | Microsoft Docs
+description: Engedélyezze az Event Hubs Capture funkciót az Azure Portal használatával.
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855011"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Az Event Hubs Capture engedélyezése az Azure Portal használatával
 

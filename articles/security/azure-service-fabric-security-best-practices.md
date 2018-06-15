@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894129"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárások
 Gyors, egyszerű és költséghatékony Azure-alkalmazás központi telepítése. Mielőtt éles környezetben a felhő alkalmazást telepít központilag, tekintse át az alapvető és ajánlott gyakorlati tanácsok a biztonságos fürtök megvalósítása az alkalmazásban listáját.

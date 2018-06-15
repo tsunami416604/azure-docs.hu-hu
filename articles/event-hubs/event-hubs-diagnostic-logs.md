@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Event Hubs diagnosztikai naplók |} Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be a diagnosztikai naplók az Azure event hubs számára."
-keywords: 
-documentationcenter: 
+title: Az Azure Event Hubs diagnosztikai naplók |} Microsoft Docs
+description: Ismerje meg, hogyan állíthat be a diagnosztikai naplók az Azure event hubs számára.
+keywords: ''
+documentationcenter: ''
 services: event-hubs
 author: banisadr
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932715"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs diagnosztikai naplók
 

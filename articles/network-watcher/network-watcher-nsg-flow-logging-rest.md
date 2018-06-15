@@ -1,11 +1,11 @@
 ---
-title: "Hálózati biztonsági csoport kezelése folyamata naplók Azure hálózati figyelőt - REST API-t és |} Microsoft Docs"
-description: "Ez a lap ismerteti, hogyan Azure hálózati figyelőt REST API-t a hálózati biztonsági csoport folyamata kezelése"
+title: Hálózati biztonsági csoport kezelése folyamata naplók Azure hálózati figyelőt - REST API-t és |} Microsoft Docs
+description: Ez a lap ismerteti, hogyan Azure hálózati figyelőt REST API-t a hálózati biztonsági csoport folyamata kezelése
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26774371"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Hálózati biztonsági csoport konfigurálásával folyamata naplók REST API használatával
 

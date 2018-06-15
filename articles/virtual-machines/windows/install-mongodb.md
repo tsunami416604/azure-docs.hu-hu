@@ -1,11 +1,11 @@
 ---
-title: "A MongoDB telepítése a Windows Azure-ban |} Microsoft Docs"
-description: "Útmutató a MongoDB telepítése egy Azure virtuális gépen futó Windows Server 2012 R2 a Resource Manager üzembe helyezési modellel létrehozott."
+title: A MongoDB telepítése a Windows Azure-ban |} Microsoft Docs
+description: Útmutató a MongoDB telepítése egy Azure virtuális gépen futó Windows Server 2012 R2 a Resource Manager üzembe helyezési modellel létrehozott.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745979"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Telepítse és konfigurálja a Windows Azure-ban mongodb-Protokolltámogatással
 [MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk végigvezeti telepítése és konfigurálása a MongoDB a Windows Server 2016-os virtuális gépen (VM) az Azure-ban. Emellett [a MongoDB telepítése egy Linux virtuális gépre az Azure-ban](../linux/install-mongodb.md).

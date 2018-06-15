@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30196907"
 ---
 1. A portál **Minden erőforrás** területén kattintson a **+Hozzáadás** gombra.
 2. Az a **mindent** lap keresési mezőbe, írja be **helyi hálózati átjáró**, majd kattintson az erőforrások listájához való visszatéréshez. Kattintson a **Helyi hálózati átjáró** elemre a lap megnyitásához, majd kattintson a **Létrehozás** elemre a **Helyi hálózati átjáró létrehozása** lap megnyitásához.

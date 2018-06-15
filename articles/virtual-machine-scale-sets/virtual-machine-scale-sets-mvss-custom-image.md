@@ -1,11 +1,11 @@
 ---
-title: "Egyéni lemezképként az Azure méretezési készlet sablonná hivatkozhat |} Microsoft Docs"
-description: "Útmutató egyéni lemezkép hozzáadása egy meglévő Azure virtuálisgép-méretezési csoport sablon"
+title: Egyéni lemezképként az Azure méretezési készlet sablonná hivatkozhat |} Microsoft Docs
+description: Útmutató egyéni lemezkép hozzáadása egy meglévő Azure virtuálisgép-méretezési csoport sablon
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26780918"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Az Azure méretezési készlet sablont egyéni lemezkép hozzáadása
 

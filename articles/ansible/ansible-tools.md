@@ -1,8 +1,8 @@
 ---
-title: "Az Azure-ral Ansible az eszközök"
-description: "Telepítheti és használhatja az egyes eszközök a Ansible az Azure-ral"
+title: Az Azure-ral Ansible az eszközök
+description: Telepítheti és használhatja az egyes eszközök a Ansible az Azure-ral
 ms.service: ansible
-keywords: "ansible, azure, devops, eszközök, és a visual studio országkódot, a bővítmény"
+keywords: ansible, azure, devops, eszközök, és a visual studio országkódot, a bővítmény
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
@@ -13,6 +13,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28212049"
 ---
 # <a name="tools-for-using-ansible-with-azure"></a>Az Azure-ral Ansible az eszközök
 

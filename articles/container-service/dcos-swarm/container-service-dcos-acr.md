@@ -1,6 +1,6 @@
 ---
-title: "Az ACR használata Azure DC/OS-fürtökkel"
-description: "Azure Container Registry használata DC/OS-fürttel az Azure Container Service szolgáltatásban"
+title: Az ACR használata Azure DC/OS-fürtökkel
+description: Azure Container Registry használata DC/OS-fürttel az Azure Container Service szolgáltatásban
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28922892"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Alkalmazások üzembe helyezése ACR és egy DC/OS-fürt használatával
 

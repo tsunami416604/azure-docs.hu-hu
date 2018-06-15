@@ -1,11 +1,11 @@
 ---
-title: "Tulajdonságok használata az Azure API-felügyeleti házirendek"
-description: "További tulajdonságok használata az Azure API-felügyeleti házirendek."
+title: Tulajdonságok használata az Azure API-felügyeleti házirendek
+description: További tulajdonságok használata az Azure API-felügyeleti házirendek.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197112"
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>Tulajdonságok használata az Azure API-felügyeleti házirendek
 API-felügyeleti házirendek, amelyek lehetővé teszik az Azure-portálon keresztül konfigurációs API működésének módosításához a rendszer hatékony képesség. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasításoknál szövegkonstans értékek, a házirend-kifejezések és a tulajdonságok használatával lehet létrehozni. 

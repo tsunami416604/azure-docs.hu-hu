@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33951504"
 ---
 Az alábbiakban az Azure Maps szolgáltatás használati korlátait. A költségek kapcsolatos információkért lásd: [díjszabása Azure Maps](https://azure.microsoft.com/pricing/details/azure-maps/). [Kapcsolatfelvétel](https://azure.microsoft.com/overview/sales-number/) maximális kérelmek aránya az előfizetéshez tartozó növelése érdekében.
 

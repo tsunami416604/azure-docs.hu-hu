@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Az Azure Event Grid dokumentációja"
+title: Az Azure Event Grid dokumentációja
 metadata:
-  title: "Az Azure Event Grid dokumentációja – oktatóanyagok és API-referencia"
-  description: "Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is."
+  title: Az Azure Event Grid dokumentációja – oktatóanyagok és API-referencia
+  description: Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is.
   services: event-grid
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 02/01/2018
+  ms.locfileid: "28921769"
 abstract:
-  description: "A teljeskörűen felügyelt Azure Event Grid intelligens esemény-útválasztó szolgáltatás közzétételi-feliratkozási modell alkalmazásával teszi lehetővé az egységesített eseményfelhasználást. Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is. Gyors útmutatóink, oktatóanyagaink és vonatkozó példáink segítenek az Azure Event Grid használatának megismerésében."
+  description: A teljeskörűen felügyelt Azure Event Grid intelligens esemény-útválasztó szolgáltatás közzétételi-feliratkozási modell alkalmazásával teszi lehetővé az egységesített eseményfelhasználást. Az Azure Event Grid használatával szinte azonnal válaszolhat az Azure-beli és az azon kívüli eseményekre is. Gyors útmutatóink, oktatóanyagaink és vonatkozó példáink segítenek az Azure Event Grid használatának megismerésében.
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "További információk egyéni események létrehozásáról és közzétételéről."
+    text: További információk egyéni események létrehozásáról és közzétételéről.
   - type: list
     style: icon48
     items:
@@ -41,7 +42,7 @@ sections:
       text: Azure Portal
       href: /azure/event-grid/custom-event-quickstart-portal
   - type: paragraph
-    text: "Útmutató a Blob Storage-események útválasztásának megadásához."
+    text: Útmutató a Blob Storage-események útválasztásának megadásához.
   - type: list
     style: icon48
     items:
@@ -53,16 +54,16 @@ sections:
         src: /azure/event-grid/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: "További információk az eseményekre reagáló alkalmazások fejlesztéséről."
+    text: További információk az eseményekre reagáló alkalmazások fejlesztéséről.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">Virtuális gépek változásainak monitorozása logikai alkalmazásokkal</a>"
-    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">A feltöltött képek átméretezése</a>"
-    - html: "<a href=\"/azure/event-grid/ensure-tags-exists-on-new-virtual-machines\">Az Azure Automation integrálása az Event Griddel</a>"
+    - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Virtuális gépek változásainak monitorozása logikai alkalmazásokkal</a>
+    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">A feltöltött képek átméretezése</a>
+    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Az Azure Automation integrálása az Event Griddel</a>
 - title: Referencia
   items:
   - type: list
@@ -73,5 +74,5 @@ sections:
       html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
     - title: REST API-k
       html: <p><a href="/rest/api/eventgrid">REST</a></p>
-    - title: "Sémák"
-      html: "<p><a href=\"/azure/event-grid/subscription-creation-schema \">Előfizetési séma</a></p><p><a href=\"/azure/event-grid/event-schema\">Eseményséma</a></p>"
+    - title: Sémák
+      html: <p><a href="/azure/event-grid/subscription-creation-schema ">Előfizetési séma</a></p><p><a href="/azure/event-grid/event-schema">Eseményséma</a></p>
