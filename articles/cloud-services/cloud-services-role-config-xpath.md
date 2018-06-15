@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services szerepkör konfigurációs XPath Adatlap |} Microsoft Docs"
-description: "A különböző XPath-beállítások segítségével a felhőalapú szolgáltatás szerepkör config teszi közzé a beállítások, egy környezeti változó."
+title: Cloud Services szerepkör konfigurációs XPath Adatlap |} Microsoft Docs
+description: A különböző XPath-beállítások segítségével a felhőalapú szolgáltatás szerepkör config teszi közzé a beállítások, egy környezeti változó.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24860371"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath környezeti változó, teszi közzé a szerepkör konfigurációs beállításai
 A felhőalapú szolgáltatás munkavégző vagy a webes szerepkör szolgáltatásdefiníciós fájl teszi környezeti változóként futásidejű konfigurációs értékeket. A következő XPath értékek (amely API értékek) használata támogatott.

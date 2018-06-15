@@ -1,11 +1,11 @@
 ---
-title: "Az SSL konfigurálása egy felhőalapú szolgáltatás |} Microsoft Docs"
-description: "Útmutató: a webes szerepkör HTTPS-végpontnak megadása és az alkalmazás biztonságos SSL-tanúsítvány feltöltése. Ezekben a példákban az Azure-portálon."
+title: Az SSL konfigurálása egy felhőalapú szolgáltatás |} Microsoft Docs
+description: 'Útmutató: a webes szerepkör HTTPS-végpontnak megadása és az alkalmazás biztonságos SSL-tanúsítvány feltöltése. Ezekben a példákban az Azure-portálon.'
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 371ba204-48b6-41af-ab9f-ed1d64efe704
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24859776"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>SSL konfigurálása az alkalmazás az Azure-ban
 

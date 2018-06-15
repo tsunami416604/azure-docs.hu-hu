@@ -1,11 +1,11 @@
 ---
-title: "Engedélyezett állapotot váltani vagy a BizTalk szolgáltatások állapotok feladatok |} Microsoft Docs"
-description: "A különböző MABS állapotú engedélyezett műveletek/műveletek: állítsa le, indítsa el, indítsa újra, felfüggesztése, folytatása, törlése, méretezhető, frissítheti a konfigurációs és biztonsági mentése"
+title: Engedélyezett állapotot váltani vagy a BizTalk szolgáltatások állapotok feladatok |} Microsoft Docs
+description: 'A különböző MABS állapotú engedélyezett műveletek/műveletek: állítsa le, indítsa el, indítsa újra, felfüggesztése, folytatása, törlése, méretezhető, frissítheti a konfigurációs és biztonsági mentése'
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: aea738f3-ec76-4099-a41b-e17fea9e252f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102742"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Lehet, illetve mit nem használja a BizTalk szolgáltatás állapota
 

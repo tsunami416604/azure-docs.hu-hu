@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/06/2018
+  ms.locfileid: "30922382"
 abstract:
   description: Az Azure SQL Database a Microsoft SQL Server motoron alapuló, szolgáltatásként nyújtott relációs adatbázis. Az SQL Database egy nagy teljesítményű, megbízható és biztonságos adatbázis, amely segítségével adatvezérelt alkalmazásokat és webhelyeket hozhat létre egy tetszőleges programozási nyelven, infrastruktúrakezelés nélkül. Ismerje meg, hogyan használhatja az Azure SQL Database szolgáltatást a gyors útmutatóink, oktatóanyagaink és példáink segítségével.
   aside:

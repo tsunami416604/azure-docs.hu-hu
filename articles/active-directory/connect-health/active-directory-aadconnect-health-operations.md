@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31389712"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health üzemeltetése
 Ez a témakör ismerteti a különböző műveletek Azure Active Directory (Azure AD) Connect Health használatával végezheti el.
