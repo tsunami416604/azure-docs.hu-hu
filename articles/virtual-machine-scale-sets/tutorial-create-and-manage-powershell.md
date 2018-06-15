@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 91174f14cb6a49e560504e01ba47e7121f869080
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7531ddce37b2f6d140cb277727d6168d8d98ba1e
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366256"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802384"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure PowerShell használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -146,7 +146,7 @@ A virtuálisgép-példányba történő bejelentkezést követően szükség sze
 
 
 ## <a name="understand-vm-instance-images"></a>A virtuálisgép-példányok rendszerképeinek ismertetése
-Amikor egy korábbi lépésben megadott egy méretezésicsoport-konfigurációt a [Set-AzureRmVmssStorageProfile](/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile) paranccsal, egy Windows Server 2016 Datacenter rendszerképet használt. Az Azure Marketplace-en számos rendszerkép található, amelyekkel új virtuálisgép-példányokat lehet létrehozni. Az elérhető közzétevők listájának megtekintéséhez használja a [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) parancsot.
+Az Azure Marketplace-en számos rendszerkép található, amelyekkel új virtuálisgép-példányokat lehet létrehozni. Az elérhető közzétevők listájának megtekintéséhez használja a [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) parancsot.
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "EastUS"

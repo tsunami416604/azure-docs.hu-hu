@@ -2,29 +2,26 @@
 title: HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel | Microsoft Docs
 description: Ismerje meg, hogyan használhatja az Azure Functionst HTTP-triggerekkel az Azure Cosmos DB lekérdezéséhez.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ea102d56df1e47fd1d1c35bd23a3e987fa45145
+ms.sourcegitcommit: 00e875607372517b4b93ca4b6baa915cbbad8064
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818899"
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel
 
 Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis, amely séma- és kiszolgálómentes. Az Azure Functions egy kiszolgáló nélküli számítási szolgáltatás, amellyel igény szerint futtathat kódokat. Ez a két Azure-szolgáltatás együtt egy olyan kiszolgáló nélküli architektúra alapját képezi, amellyel a nagyszerű alkalmazások létrehozására összpontosíthat, és nem kell foglalkoznia a számítási és adatbázisigényeinek megfelelő kiszolgálók üzembe helyezésével és karbantartásával.
 
-Ez az oktatóanyag a [Graph API .NET-es gyors útmutatójában](create-graph-dotnet.md) létrehozott kódot használja fel. Ez az oktatóanyag hozzáad egy Azure-függvényt, amely egy [HTTP-triggert](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger) tartalmaz. A HTTP-trigger egy Azure Cosmos DB [bemeneti kötést](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md) használ a gyors útmutatóban létrehozott Graph-adatbázis adatainak lekérésére. Ez az adott HTTP-trigger csak lekérdezi az Azure Cosmos DB adatait, de az Azure Cosmos DB bemeneti kötéseivel bármilyen adatbemeneti értékeket lekérhet a függvényeihez.
+Ez az oktatóanyag a [Graph API .NET-es gyors útmutatójában](create-graph-dotnet.md) létrehozott kódot használja fel. Ez az oktatóanyag hozzáad egy Azure-függvényt, amely egy [HTTP-triggert](../azure-functions/functions-bindings-http-webhook.md) tartalmaz. A HTTP-trigger egy Azure Cosmos DB [bemeneti kötést](../azure-functions/functions-triggers-bindings.md) használ a gyors útmutatóban létrehozott Graph-adatbázis adatainak lekérésére. Ez az adott HTTP-trigger csak lekérdezi az Azure Cosmos DB adatait, de az Azure Cosmos DB bemeneti kötéseivel bármilyen adatbemeneti értékeket lekérhet a függvényeihez.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -98,7 +95,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
    using System.Threading.Tasks;
    ```
 
-6. Ezután cserélje le az Azure-függvény osztálykódját az alábbi kódra. A kód a Graph API használatával megkeresi az összes személyt vagy a `name` lekérdezési karakterlánc paraméter által azonosított adott személyt az Azure Cosmos DB-adatbázisban.
+6. Ezután cserélje le az Azure-függvény osztálykódját az alábbi kódra. A kód a Graph API használatával megkeresi az összes személyt vagy a `name` lekérdezési sztring paraméter által azonosított adott személyt az Azure Cosmos DB-adatbázisban.
 
    ```csharp
    public static class Search
@@ -205,7 +202,7 @@ Most, hogy elkészült a kód, az Azure Functions helyi hibakeresési eszközeiv
 
    ![REST-válasz](./media/tutorial-functions-http-trigger/10-general-results.png)
 
-5. Most jelölje ki a kód második sorát, majd válassza a **Kérelem küldése** lehetőséget. Ha hozzáadja a `name` lekérdezésikarakterlánc-paramétert egy olyan értékkel, amelyről tudja, hogy szerepel az adatbázisban, szűrheti az Azure-függvény által visszaadott eredményeket.
+5. Most jelölje ki a kód második sorát, majd válassza a **Kérelem küldése** lehetőséget. Ha hozzáadja a `name` lekérdezésisztring-paramétert egy olyan értékkel, amelyről tudja, hogy szerepel az adatbázisban, szűrheti az Azure-függvény által visszaadott eredményeket.
 
    ![Az Azure-függvény eredményeinek szűrése](./media/tutorial-functions-http-trigger/11-search-for-ben.png)
 

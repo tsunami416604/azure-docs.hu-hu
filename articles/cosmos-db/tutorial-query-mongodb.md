@@ -2,23 +2,21 @@
 title: 'Azure Cosmos DB: Hogyan végezhető lekérdezés a MongoDB API használatával? | Microsoft Docs'
 description: Megtanulhatja, hogyan végezhet lekérdezést az Azure Cosmos DB-hez készült MongoDB API-val
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
+ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 03/29/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d8d524038d6483ff5da195648ee763f8faa1dad4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 539e41dbd4d9e115c2d8daf90405d7683bcaa462
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763187"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a MongoDB API használatával
 
