@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937839"
 ---
 # <a name="validate-azure-registration"></a>Az Azure regisztráció érvényesítése 
 Az Azure verem készültségi-ellenőrző eszközzel (AzsReadinessChecker) ellenőrizheti, hogy az Azure-előfizetéshez az Azure veremnek megfelelő használatra kész. Egy Azure verem központi telepítésének megkezdése előtt a regisztráció érvényesítése. A készenléti-ellenőrző ellenőrzi:

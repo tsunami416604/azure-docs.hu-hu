@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885961"
 ---
 # <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes szolgáltatás használata a HDInsight Kafka
 

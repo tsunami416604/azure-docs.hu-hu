@@ -1,11 +1,11 @@
 ---
-title: "Mobile Apps-t használó Univerzális Windows-platform (UWP) létrehozása | Microsoft Docs"
-description: "Az útmutató bevezeti Önt az Azure-alapú, az Univerzális Windows-platformra (UWP) C#, Visual Basic vagy JavaScript nyelven történő alkalmazásfejlesztésre szolgáló mobil-háttéralkalmazások használatába."
+title: Mobile Apps-t használó Univerzális Windows-platform (UWP) létrehozása | Microsoft Docs
+description: Az útmutató bevezeti Önt az Azure-alapú, az Univerzális Windows-platformra (UWP) C#, Visual Basic vagy JavaScript nyelven történő alkalmazásfejlesztésre szolgáló mobil-háttéralkalmazások használatába.
 services: app-service\mobile
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 47124296-2908-4d92-85e0-05c4aa6db916
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594953"
 ---
 # <a name="create-a-windows-app"></a>Windows-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

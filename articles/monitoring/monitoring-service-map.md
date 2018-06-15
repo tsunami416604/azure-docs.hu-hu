@@ -16,9 +16,10 @@ ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
 ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887908"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Szolgáltatástérkép megoldást használni az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.

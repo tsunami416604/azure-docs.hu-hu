@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777627"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Használja ki az Azure Stream Analytics lekérdezési párhuzamos folyamatkezelést biztosítja
 Ez a cikk bemutatja, hogyan Azure Stream Analytics párhuzamos folyamatkezelést biztosítja előnyeit. Megismerheti a Stream Analytics-feladatok méretezése bemeneti partíciók beállításával, és az elemzés Lekérdezésdefiníció hangolása.

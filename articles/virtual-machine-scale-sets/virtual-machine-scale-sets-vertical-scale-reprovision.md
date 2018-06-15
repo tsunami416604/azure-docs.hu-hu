@@ -1,11 +1,11 @@
 ---
-title: "Függőleges skálázása az Azure virtuálisgép-méretezési csoportok |} Microsoft Docs"
-description: "Függőleges méretezése a figyelési riasztásokhoz adható az Azure Automation szolgáltatásban válaszul egy virtuális gép"
+title: Függőleges skálázása az Azure virtuálisgép-méretezési csoportok |} Microsoft Docs
+description: Függőleges méretezése a figyelési riasztásokhoz adható az Azure Automation szolgáltatásban válaszul egy virtuális gép
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781819"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>A virtuálisgép-méretezési függőleges automatikus skálázás beállítása
 Ez a cikk ismerteti, hogyan függőleges méretezési Azure [virtuálisgép-méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/) vagy reprovisioning nélkül. Virtuális gépek, amelyek nem szerepelnek a méretezési készlet függőleges méretezését, tekintse meg [függőleges skálázása az Azure virtuális gép az Azure Automation szolgáltatásban](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

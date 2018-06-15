@@ -1,9 +1,9 @@
 ---
-title: "Alakítsa át az Azure Resource Manager méretezési készlet használt sablon felügyelt lemezes |} Microsoft Docs"
-description: "A méretezési készlet sablon átalakítása felügyelt lemezes méretezési készlet sablont."
-keywords: "Virtuálisgép-méretezési csoportok"
+title: Alakítsa át az Azure Resource Manager méretezési készlet használt sablon felügyelt lemezes |} Microsoft Docs
+description: A méretezési készlet sablon átalakítása felügyelt lemezes méretezési készlet sablont.
+keywords: Virtuálisgép-méretezési csoportok
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781071"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>A méretezési készlet sablon átalakítása felügyelt lemezes méretezési sablon beállítása
 

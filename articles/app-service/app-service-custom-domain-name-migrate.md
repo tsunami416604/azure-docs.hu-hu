@@ -1,8 +1,8 @@
 ---
-title: "Egy aktív DNS-név áttelepítése az Azure App Service |} Microsoft Docs"
-description: "Ismerje meg, hogyan telepíthet át egy egyéni DNS-tartománynév, amely már hozzá van rendelve egy élő webhelyet az Azure App Service állásidő nélkül."
+title: Egy aktív DNS-név áttelepítése az Azure App Service |} Microsoft Docs
+description: Ismerje meg, hogyan telepíthet át egy egyéni DNS-tartománynév, amely már hozzá van rendelve egy élő webhelyet az Azure App Service állásidő nélkül.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27566491"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Egy aktív DNS-név áttelepítése az Azure App Service
 

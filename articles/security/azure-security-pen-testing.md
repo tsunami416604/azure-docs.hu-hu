@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893367"
 ---
 # <a name="pen-testing"></a>Toll tesztelése
 Az Azure alkalmazás tesztelése és üzembe helyezés előnyei egyik is gyorsan ki, hogy létre környezetekben.  Nem kell aggódnia requisitioning, beszerzése, és "lefejtési és halmozott" a saját helyszíni hardverre.

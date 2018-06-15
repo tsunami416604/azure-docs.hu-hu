@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33938692"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>És az Azure portál egy Azure Naplóelemzési munkaterület törlése
 Ez a cikk bemutatja, hogyan használható az Azure-portálon lehetséges, hogy már nem szükséges a Naplóelemzési munkaterület törlése. 

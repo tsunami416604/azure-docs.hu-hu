@@ -16,9 +16,10 @@ ms.date: 04/27/2017
 ms.author: bwren
 ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887845"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Az Azure (előzetes verzió) célcsoport-kezelési megoldások
 Ha olyan felügyeleti megoldást hozzáadása az előfizetéshez, automatikusan telepíti a Naplóelemzési munkaterület csatlakozó Windows és Linux ügynökök alapértelmezés szerint.  Érdemes lehet a költségek kezelésére, és egy meghatározott ügynökök korlátozásával megoldás gyűjtött adatok mennyiségét.  Ez a cikk ismerteti, hogyan használható **célcsoport-kezelési megoldás** Ez lehetővé teszi, hogy a hatókör alkalmazhat a megoldásokat.

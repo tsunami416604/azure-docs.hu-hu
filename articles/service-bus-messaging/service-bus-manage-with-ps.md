@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Bus-erőforrások kezelése a PowerShell használatával |} Microsoft Docs"
-description: "PowerShell-modul segítségével hozza létre, és a Service Bus-erőforrások kezelése"
+title: Azure Service Bus-erőforrások kezelése a PowerShell használatával |} Microsoft Docs
+description: PowerShell-modul segítségével hozza létre, és a Service Bus-erőforrások kezelése
 services: service-bus-messaging
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27159738"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>A Service Bus-erőforrások kezelése a PowerShell használatával
 

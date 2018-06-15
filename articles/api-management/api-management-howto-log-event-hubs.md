@@ -1,11 +1,11 @@
 ---
-title: "Hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management |} Microsoft Docs"
-description: "Megtudhatja, hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management."
+title: Hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management |} Microsoft Docs
+description: Megtudhatja, hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969597"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtón" egy eseményfolyamat számára, és amennyiben az eseményközpontnak összegyűjtött adatok átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.

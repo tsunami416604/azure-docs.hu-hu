@@ -1,8 +1,8 @@
 ---
-title: "FQDN létrehozni a Linux virtuális gépek az Azure portálon |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy teljesen minősített tartománynevét, vagy teljes tartománynév, az erőforrás-kezelő alapú virtuális gépet az Azure portálon."
+title: FQDN létrehozni a Linux virtuális gépek az Azure portálon |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy teljesen minősített tartománynevét, vagy teljes tartománynév, az erőforrás-kezelő alapú virtuális gépet az Azure portálon.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26707288"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Hozzon létre egy teljesen minősített tartománynevét a Linux virtuális gépek Azure-portálon
 

@@ -1,8 +1,8 @@
 ---
-title: "Összegyűjti és elemzi a Windows eseménynaplóiban keresse meg az Azure Naplóelemzés |} Microsoft Docs"
-description: "Windows-eseménynaplók a Naplóelemzési által használt leggyakrabban használt adatforrások közül.  Ez a cikk ismerteti a Windows-eseménynaplók gyűjteménye és a részletek a rekordok hoznak létre a Naplóelemzési munkaterület konfigurálása."
+title: Összegyűjti és elemzi a Windows eseménynaplóiban keresse meg az Azure Naplóelemzés |} Microsoft Docs
+description: Windows-eseménynaplók a Naplóelemzési által használt leggyakrabban használt adatforrások közül.  Ez a cikk ismerteti a Windows-eseménynaplók gyűjteménye és a részletek a rekordok hoznak létre a Naplóelemzési munkaterület konfigurálása.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782030"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>A Windows Eseménynapló adatforrások Naplóelemzési
 Windows-eseménynaplók olyan egyik leggyakoribb [adatforrások](log-analytics-data-sources.md) adatgyűjtéshez Windows ügynököt használ, mivel számos alkalmazás a Windows eseménynaplójába írhatja.  Események például a rendszer- és standard naplókból mellett adja meg a figyelni kívánt alkalmazások által létrehozott egyéni naplók összegyűjtésére.
