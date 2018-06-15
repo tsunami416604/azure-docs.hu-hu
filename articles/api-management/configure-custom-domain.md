@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management-példány egyéni tartománynév beállítása |} Microsoft Docs"
-description: "Ez a témakör ismerteti az Azure API Management-példány egyéni tartománynév beállítása."
+title: Az Azure API Management-példány egyéni tartománynév beállítása |} Microsoft Docs
+description: Ez a témakör ismerteti az Azure API Management-példány egyéni tartománynév beállítása.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: anneta
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29345370"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása 
 

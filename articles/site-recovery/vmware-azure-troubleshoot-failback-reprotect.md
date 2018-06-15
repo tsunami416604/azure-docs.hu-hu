@@ -1,8 +1,8 @@
 ---
-title: "Azure virtuális gépek és az Azure Site Recovery a helyszíni VMware közötti feladat-visszavétel során hibák elhárítása |} Microsoft Docs"
-description: "Ez a cikk ismerteti azokat a módszereket hibaelhárítás általános feladat-visszavétel és ismételt védelem feladat-visszavétel során VMware az Azure-ból Azure Site Recovery segítségével."
+title: Azure virtuális gépek és az Azure Site Recovery a helyszíni VMware közötti feladat-visszavétel során hibák elhárítása |} Microsoft Docs
+description: Ez a cikk ismerteti azokat a módszereket hibaelhárítás általános feladat-visszavétel és ismételt védelem feladat-visszavétel során VMware az Azure-ból Azure Site Recovery segítségével.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941033"
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>A feladat-visszavétel az Azure-ból VMware hibaelhárítása
 

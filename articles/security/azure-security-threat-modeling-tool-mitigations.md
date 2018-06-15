@@ -1,6 +1,6 @@
 ---
-title: "-Microsoft fenyegetés modellezési eszköz - megoldást Azure |} Microsoft Docs"
-description: "A Microsoft fenyegetés modellezési eszköz Kiemelés a leginkább kitett lehetséges megoldás megoldást lap fenyegetések jönnek létre."
+title: -Microsoft fenyegetés modellezési eszköz - megoldást Azure |} Microsoft Docs
+description: A Microsoft fenyegetés modellezési eszköz Kiemelés a leginkább kitett lehetséges megoldás megoldást lap fenyegetések jönnek létre.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867982"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft fenyegetések modellezése eszköz megoldást
 

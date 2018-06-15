@@ -1,12 +1,12 @@
 ---
-title: "Az Azure VPN Gatewayek BGP áttekintése |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan használható a BGP az Azure VPN Gateway megoldással együtt."
+title: Az Azure VPN Gatewayek BGP áttekintése |} Microsoft Docs
+description: Ez a cikk bemutatja, hogyan használható a BGP az Azure VPN Gateway megoldással együtt.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: f8c3985c-c128-4f34-835c-0e88742bf36e
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23883508"
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>A BGP és az Azure VPN Gateway együttműködésének áttekintése
 Ez a cikk ismerteti az Azure VPN Gateway megoldásban a BGP (Border Gateway Protocol) támogatását.

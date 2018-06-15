@@ -16,6 +16,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/28/2018
+  ms.locfileid: "32160256"
 abstract:
   description: Ismerje meg, hogyan helyezheti üzembe szolgáltatásként az Application Gateway alkalmazáskézbesítési vezérlőt (ADC). Oktatóanyagok, API-referenciák, és egyéb dokumentációk, amelyek bemutatják, hogyan állíthat be alkalmazásszintű útválasztást és terheléselosztási szolgáltatásokat, amelyek lehetővé teszik méretezhető és magas rendelkezésre állású webes kezelőfelületek létrehozását.
 sections:

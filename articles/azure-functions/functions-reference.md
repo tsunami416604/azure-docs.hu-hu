@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Functions kidolgozásához |} Microsoft Docs"
-description: "További tudnivalók az Azure Functions fogalmakat és módszereket is, hogy funkciók Azure, az összes programozási nyelveket és kötések kifejlesztésére lesz szükség."
+title: Az Azure Functions kidolgozásához |} Microsoft Docs
+description: További tudnivalók az Azure Functions fogalmakat és módszereket is, hogy funkciók Azure, az összes programozási nyelveket és kötések kifejlesztésére lesz szükség.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Fejlesztői útmutató, azure funkciók, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúrája"
+editor: ''
+tags: ''
+keywords: Fejlesztői útmutató, azure funkciók, Funkciók, Eseményfeldolgozási, webhookokkal, a dinamikus számítási, a kiszolgáló nélküli architektúrája
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: functions
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121746"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions adott funkciókhoz ossza meg néhány alapvető technikai kulcsfogalmak és összetevők, függetlenül a nyelvet, vagy a kötés használja. Ahhoz, hogy belevágjon tanulási egy adott nyelven vagy a kötési adatait, mindenképpen olvassa végig az áttekintés, amely az összes vonatkozik.

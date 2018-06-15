@@ -1,11 +1,11 @@
 ---
-title: "Az Azure mintaalkalmazás DMZ-k való használatra |} Microsoft Docs"
-description: "Telepíti az egyszerű webes alkalmazást DMZ létrehozása után forgalom folyamata forgatókönyvek tesztelése"
+title: Az Azure mintaalkalmazás DMZ-k való használatra |} Microsoft Docs
+description: Telepíti az egyszerű webes alkalmazást DMZ létrehozása után forgalom folyamata forgatókönyvek tesztelése
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: 60340ab7-b82b-40e0-bd87-83e41fe4519c
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23883795"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Mintaalkalmazás DMZ-k való használatra
 [A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599832"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatásokkal integrálható az SQL Data Warehouse szolgáltatással
 Az alapvető funkciók mellett az SQL Data Warehouse lehetővé teszi a felhasználók integrálása számos egyéb szolgáltatásokat az Azure-ban. Ezek a szolgáltatások többek között:

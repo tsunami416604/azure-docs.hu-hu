@@ -1,11 +1,11 @@
 ---
-title: "A Virtuálisgép-ajánlat a piactér tesztelése |} Microsoft Docs"
-description: "A Virtuálisgép-lemezkép tesztelése az Azure piactéren ismertetése."
+title: A Virtuálisgép-ajánlat a piactér tesztelése |} Microsoft Docs
+description: A Virtuálisgép-lemezkép tesztelése az Azure piactéren ismertetése.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936939"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>A tesztelési virtuális gép az Azure piactéren ajánlatát tesztelése
 Átmeneti azt jelenti, hogy a SKU "védőfal", ahol tesztelése és érvényesítése funkciókat, mielőtt telepítené őket a piactér privát telepítése. A Termékváltozat volna egy felhasználói, akik már telepítették az átmeneti jelenik meg. A Virtuálisgép-lemezkép igazolja a kell előkészítésre továbbít.

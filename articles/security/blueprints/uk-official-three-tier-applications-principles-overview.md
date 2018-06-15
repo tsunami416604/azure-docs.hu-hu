@@ -1,6 +1,6 @@
 ---
-title: "Egyesült Királyság hivatalos háromrétegű webes alkalmazások Automation - áttekintés"
-description: "Egyesült Királyság hivatalos háromrétegű webes alkalmazások Automation - áttekintés"
+title: Egyesült Királyság hivatalos háromrétegű webes alkalmazások Automation - áttekintés
+description: Egyesült Királyság hivatalos háromrétegű webes alkalmazások Automation - áttekintés
 services: security
 documentationcenter: na
 author: jomolesk
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151378"
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>Nemzeti számítógépes biztonsági központ biztonsági alapelvei áttekintése
 

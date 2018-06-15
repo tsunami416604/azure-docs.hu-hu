@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939042"
 ---
 # <a name="what-is-azure-log-analytics"></a>Mi az Azure Log Analytics?
 A Log Analytics központi szerepet tölt be az Azure felügyeletében: telemetriai és egyéb adatokat gyűjt különböző forrásokból, valamint lekérdezési nyelvet és elemzési motort biztosít, amellyel betekintést nyerhet az alkalmazások és erőforrások működésébe.  A Log Analytics adataival közvetlenül is dolgozhat a naplókereséseken és nézeteken keresztül, vagy használhatja olyan Azure-szolgáltatások elemzőeszközeit, amelyek az adataikat a Log Analyticsben tárolják (például: Application Insights vagy Azure Security Center).  

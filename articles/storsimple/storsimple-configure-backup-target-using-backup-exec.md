@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23877222"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>A biztonsági mentési Exec biztonsági mentési cél StorSimple
 

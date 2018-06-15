@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services közös indítási feladatok |} Microsoft Docs"
-description: "Érdemes lehet a felhőalapú szolgáltatások webes szerepkör vagy a feldolgozói szerepkör végrehajtására közös indítási feladatok néhány példát biztosít."
+title: Cloud Services közös indítási feladatok |} Microsoft Docs
+description: Érdemes lehet a felhőalapú szolgáltatások webes szerepkör vagy a feldolgozói szerepkör végrehajtására közös indítási feladatok néhány példát biztosít.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843699"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>A felhőalapú szolgáltatás indítási gyakori feladatok
 A cikkben néhány olyan gyakori indítási feladatok érdemes lehet végrehajtania a felhőalapú szolgáltatás. Használhatja az indítási feladatok műveletek végrehajtásához, a szerepkör indítása előtt. Végrehajtani kívánt műveletek közé tartozik egy összetevő telepítésével, COM-összetevők regisztrálása, beállításkulcsok vagy hosszú ideig futó folyamat elindítása. 

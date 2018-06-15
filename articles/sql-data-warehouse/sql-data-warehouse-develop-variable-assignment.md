@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598744"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse változók hozzárendelése
 Tippek a T-SQL változókat az Azure SQL Data Warehouse adattárházzal történő, megoldások hozzárendelése.

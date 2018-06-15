@@ -1,11 +1,11 @@
 ---
-title: "Használati statisztikák elemezheti Azure CDN speciális HTTP-jelentések |} Microsoft Docs"
-description: "Ismerje meg, speciális HTTP-jelentések létrehozása a Microsoft Azure CDN szolgáltatás használata. Ezek a jelentések részletes információkkal CDN tevékenység."
+title: Használati statisztikák elemezheti Azure CDN speciális HTTP-jelentések |} Microsoft Docs
+description: Ismerje meg, speciális HTTP-jelentések létrehozása a Microsoft Azure CDN szolgáltatás használata. Ezek a jelentések részletes információkkal CDN tevékenység.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ef90adc1-580e-4955-8ff1-bde3f3cafc5d
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843615"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Használati statisztikák elemezheti Azure CDN speciális HTTP-jelentések
 ## <a name="overview"></a>Áttekintés

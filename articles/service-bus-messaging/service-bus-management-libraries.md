@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Service Bus-kezelési kódtárakat |} Microsoft Docs"
-description: "A Service Bus-névterek és az üzenetküldési entitások, a .NET-kezelése."
+title: Az Azure Service Bus-kezelési kódtárakat |} Microsoft Docs
+description: A Service Bus-névterek és az üzenetküldési entitások, a .NET-kezelése.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120896"
 ---
 # <a name="service-bus-management-libraries"></a>A Service Bus kezelési kódtárakat
 

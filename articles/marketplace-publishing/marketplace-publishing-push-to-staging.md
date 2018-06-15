@@ -1,11 +1,11 @@
 ---
-title: "Készítse elő, az ajánlatot az Azure piactérről való központi telepítésének tesztelése |} Microsoft Docs"
-description: "Részletes útmutatást nyújtó tartalom marketing, árképzési tervek konfigurálása és tesztelt az ajánlatot, mielőtt telepítené az Azure piactérről."
+title: Készítse elő, az ajánlatot az Azure piactérről való központi telepítésének tesztelése |} Microsoft Docs
+description: Részletes útmutatást nyújtó tartalom marketing, árképzési tervek konfigurálása és tesztelt az ajánlatot, mielőtt telepítené az Azure piactérről.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947270"
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Marketing tartalmú ajánlat létrehozásának befejezéséhez
 Ebben a lépésben a közzétételi folyamat meg kell adnia bizonyos marketing tartalom és a ajánlat és/vagy az Azure piactéren termékváltozatok részleteit. Például fog adja meg a termékhez, vállalati emblémát, ár tervek, tervek részleteit és más szükséges az ajánlat és/vagy SKU leküldése átmeneti adatok leírását. Ezt az információt használja az Azure portálon marketing tartalmat. Ez a folyamat kezdve látni fogja a [közzétételi portáljára][link-pubportal].

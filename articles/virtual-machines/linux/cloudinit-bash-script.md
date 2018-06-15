@@ -1,11 +1,11 @@
 ---
-title: "Használja a felhő inicializálás bash parancsfájl futtatása a Linux virtuális Gépet az Azure-on |} Microsoft Docs"
-description: "Felhő inicializálás bash parancsfájlok futtatására a Linux virtuális gép létrehozása az Azure CLI 2.0 használatával"
+title: Használja a felhő inicializálás bash parancsfájl futtatása a Linux virtuális Gépet az Azure-on |} Microsoft Docs
+description: Felhő inicializálás bash parancsfájlok futtatására a Linux virtuális gép létrehozása az Azure CLI 2.0 használatával
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29123718"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Használja a felhő inicializálás bash parancsfájlok futtatására egy Linux virtuális gépre az Azure-ban
 Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) futtatásához egy meglévő bash parancsfájl egy Linux virtuális gép (VM) vagy virtuálisgép-méretezési (VMSS) beállítja kiépítés idő az Azure-ban. Ezen felhő inicializálás parancsfájlok futtatása az első betöltés után az erőforrásokat az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)

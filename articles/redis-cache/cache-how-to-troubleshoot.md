@@ -1,11 +1,11 @@
 ---
-title: "Azure Redis Cache hibaelhárítása |} Microsoft Docs"
-description: "Útmutató az Azure Redis Cache gyakori problémák megoldásában."
+title: Azure Redis Cache hibaelhárítása |} Microsoft Docs
+description: Útmutató az Azure Redis Cache gyakori problémák megoldásában.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984571"
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Azure Redis Cache hibaelhárítása
 Ez a cikk a következő kategóriákba tartozó Azure Redis Cache problémák iránymutatásokat tartalmaz.

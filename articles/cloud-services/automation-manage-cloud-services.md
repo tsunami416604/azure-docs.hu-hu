@@ -1,11 +1,11 @@
 ---
-title: "Azure Automation használatával Azure Cloud Services kezelése |} Microsoft Docs"
-description: "További tudnivalók hogyan az Azure Automation szolgáltatás léptékű Azure felhőszolgáltatások kezelésére használható."
+title: Azure Automation használatával Azure Cloud Services kezelése |} Microsoft Docs
+description: További tudnivalók hogyan az Azure Automation szolgáltatás léptékű Azure felhőszolgáltatások kezelésére használható.
 services: cloud-services, automation
-documentationcenter: 
+documentationcenter: ''
 author: jodoglevy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842936"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Automation használata Azure Cloud Services kezelése
 Az útmutatóból megismerheti az Azure Automation szolgáltatás, és hogyan használható az Azure felhőalapú szolgáltatások felügyelete leegyszerűsítése érdekében.

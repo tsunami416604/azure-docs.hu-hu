@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple eszköz biztonsági |} Microsoft Docs"
-description: "Biztonsági egyezmények, irányelvek és szempontokat, és biztonságosan telepítéséhez, és a StorSimple eszköz üzemeltetéséhez ismerteti."
+title: A StorSimple eszköz biztonsági |} Microsoft Docs
+description: Biztonsági egyezmények, irányelvek és szempontokat, és biztonságosan telepítéséhez, és a StorSimple eszköz üzemeltetéséhez ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875101"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Biztonságosan telepítéséhez, és a StorSimple eszköz üzemeltetéséhez
 ![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)

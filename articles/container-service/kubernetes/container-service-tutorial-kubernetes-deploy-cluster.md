@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32163078"
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Kubernetes-fürt üzembe helyezése az Azure Container Service-ben
 

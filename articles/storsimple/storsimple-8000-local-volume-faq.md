@@ -1,12 +1,12 @@
 ---
-title: "StorSimple helyileg rögzített kötetek – gyakori kérdések |} Microsoft Docs"
-description: "A StorSimple helyileg rögzített kötetek gyakran feltett kérdésekre adott válaszok biztosít."
+title: StorSimple helyileg rögzített kötetek – gyakori kérdések |} Microsoft Docs
+description: A StorSimple helyileg rögzített kötetek gyakran feltett kérdésekre adott válaszok biztosít.
 services: storsimple
 documentationcenter: NA
 author: manuaery
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875591"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple helyileg rögzített kötetek: gyakori kérdések (GYIK)
 ## <a name="overview"></a>Áttekintés
@@ -161,7 +162,7 @@ További tájékoztatást [rétegzett kötet konvertálása egy helyileg rögzí
 
 **K.** Módosítható visszaállítás során egy kötet?
 
-**A.**nem, nem módosíthatja a kötet típusa visszaállítás során.
+**A.** nem, nem módosíthatja a kötet típusa visszaállítás során.
 
 * Törölt kötetek visszaállítását végzi el a pillanatkép tárolt típusát.
 * Meglévő kötetek visszaállítása az aktuális típusa, függetlenül a pillanatkép tárolt típus alapján (lásd az előző két kérdések).

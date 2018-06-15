@@ -1,12 +1,12 @@
 ---
-title: "Virtuális gép hálózati teljesítmény optimalizálása |} Microsoft Docs"
-description: "Útmutató: Azure virtuális gép hálózati teljesítmény optimalizálása érdekében."
+title: Virtuális gép hálózati teljesítmény optimalizálása |} Microsoft Docs
+description: 'Útmutató: Azure virtuális gép hálózati teljesítmény optimalizálása érdekében.'
 services: virtual-network
 documentationcenter: na
 author: steveesp
 manager: Gerald DeGrace
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29132891"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure virtuális gépek hálózati teljesítmény optimalizálása
 

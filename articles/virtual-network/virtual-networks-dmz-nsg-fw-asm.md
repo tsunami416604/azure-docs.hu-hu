@@ -1,11 +1,11 @@
 ---
-title: "DMZ példa – összeállítása a tűzfal és az NSG-alkalmazások védelmét DMZ |} Microsoft Docs"
-description: "A tűzfal és a hálózati biztonsági csoportokkal (NSG) DMZ összeállítása"
+title: DMZ példa – összeállítása a tűzfal és az NSG-alkalmazások védelmét DMZ |} Microsoft Docs
+description: A tűzfal és a hálózati biztonsági csoportokkal (NSG) DMZ összeállítása
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: c78491c7-54ac-4469-851c-b35bfed0f528
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885125"
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>2 – példa egy tűzfal és az NSG-alkalmazások védelmét DMZ összeállítása
 [A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]

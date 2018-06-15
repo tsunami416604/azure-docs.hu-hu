@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "29949021"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>A virtuális gép ajánlatok az Azure piactéren utáni éles útmutató
 Ez a cikk azt ismerteti, hogyan frissítheti az olyan élő virtuális gép ajánlat az Azure piactéren. Végigvezeti egy vagy több új termékváltozatok hozzáadása egy meglévő ajánlatra. Azt is végigvezeti Önt egy élő virtuális gép ajánlat vagy SKU eltávolítása a piactér folyamata.

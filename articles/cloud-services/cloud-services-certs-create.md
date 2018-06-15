@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services és a felügyeleti tanúsítványok |} Microsoft Docs"
-description: "Megtudhatja, hogyan történő létrehozásáról és használatáról a tanúsítványokat a Microsoft Azure"
+title: Cloud Services és a felügyeleti tanúsítványok |} Microsoft Docs
+description: Megtudhatja, hogyan történő létrehozásáról és használatáról a tanúsítványokat a Microsoft Azure
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969202"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services tanúsítványok áttekintése
 Rendszer tanúsítványokat használ az Azure felhőszolgáltatások ([tanúsítványok szolgáltatás](#what-are-service-certificates)) és a felügyeleti API hitelesítéséhez ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [telepítése](#deploy) őket az Azure-bA.

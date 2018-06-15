@@ -1,8 +1,8 @@
 ---
-title: "Konfigurálja a használatával a Git - Azure API Management szolgáltatást |} Microsoft Docs"
-description: "Ismerje meg, mentse, és a Git használatával az API Management-konfigurációjának beállítása."
+title: Konfigurálja a használatával a Git - Azure API Management szolgáltatást |} Microsoft Docs
+description: Ismerje meg, mentse, és a Git használatával az API Management-konfigurációjának beállítása.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
 editor: mattfarm
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117537"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-konfigurációjának beállítása
 

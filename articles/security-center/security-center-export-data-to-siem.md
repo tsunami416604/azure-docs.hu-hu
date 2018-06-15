@@ -1,12 +1,12 @@
 ---
-title: "Az Azure biztonsági adatok exportálása a SIEM - feldolgozási folyamat konfigurációs [előzetes verzió] |} Microsoft Docs"
-description: "Ez a cikk dokumentálja a termék az első Azure biztonsági központ naplói a siem-rendszerébe"
+title: Az Azure biztonsági adatok exportálása a SIEM - feldolgozási folyamat konfigurációs [előzetes verzió] |} Microsoft Docs
+description: Ez a cikk dokumentálja a termék az első Azure biztonsági központ naplói a siem-rendszerébe
 services: security-center
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124833"
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Az Azure biztonsági adatok exportálása a SIEM - feldolgozási folyamat konfigurációs [előzetes verzió]
 

@@ -1,11 +1,11 @@
 ---
-title: "A helyszíni virtuális gép lemezkép létrehozása a Azure piactérről |} Microsoft Docs"
-description: "Ismerje meg, és hajtsa végre a lépéseket a helyszíni Virtuálisgép-lemezkép létrehozása és telepítése az Azure piactéren mások megvásárlásához."
+title: A helyszíni virtuális gép lemezkép létrehozása a Azure piactérről |} Microsoft Docs
+description: Ismerje meg, és hajtsa végre a lépéseket a helyszíni Virtuálisgép-lemezkép létrehozása és telepítése az Azure piactéren mások megvásárlásához.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944431"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>A helyszíni virtuálisgép-lemezkép kialakított az Azure piactéren
 Határozottan javasoljuk, hogy a távoli asztal protokoll használatával fejlesztése az Azure virtuális merevlemezeket (VHD) közvetlenül a felhőben. Azonban ha kell, akkor lehet töltse le a virtuális Merevlemezt és fejleszthetők a helyszíni infrastruktúra használatával.  

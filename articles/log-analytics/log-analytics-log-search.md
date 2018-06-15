@@ -1,11 +1,11 @@
 ---
-title: "A keresések jelentkezzen be Azure Naplóelemzés |} Microsoft Docs"
-description: "A napló keresési adatokat lekérdezni a Naplóelemzési van szüksége.  Ez a cikk ismerteti a keresések Naplóelemzési használt új naplófájl és alapfogalmakat, amelyeket meg kell ismernie előtt hozzon létre egyet."
+title: A keresések jelentkezzen be Azure Naplóelemzés |} Microsoft Docs
+description: A napló keresési adatokat lekérdezni a Naplóelemzési van szüksége.  Ez a cikk ismerteti a keresések Naplóelemzési használt új naplófájl és alapfogalmakat, amelyeket meg kell ismernie előtt hozzon létre egyet.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29953314"
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>A Naplóelemzési keres ismertetése napló
 

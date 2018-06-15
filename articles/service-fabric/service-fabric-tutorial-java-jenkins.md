@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949837"
 ---
 # <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>Oktatóanyag: Jenkins-környezet beállítása a Service Fabric segítségével
 Ez az oktatóanyag egy sorozat ötödik része. Azt mutatja be, hogy a Jenkins segítségével hogyan helyezheti üzembe egy alkalmazás frissítéseit. Ebben az oktatóanyagban a Service Fabric Jenkins beépülő moduljával és a szavazóalkalmazást üzemeltető GitHub-adattárral helyezi üzembe az alkalmazást a fürtön. 

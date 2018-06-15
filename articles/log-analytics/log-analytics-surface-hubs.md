@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Naplóelemzés hubok figyelése |} Microsoft Docs"
-description: "A Surface Hub megoldást használni a Surface hub állapotának nyomon követése és megérteni, hogyan kívánják felhasználni."
+title: Az Azure Naplóelemzés hubok figyelése |} Microsoft Docs
+description: A Surface Hub megoldást használni a Surface hub állapotának nyomon követése és megérteni, hogyan kívánják felhasználni.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29179225"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>A Naplóelemzési nyomon követéséhez az állapotukat Surface hub figyelése
 

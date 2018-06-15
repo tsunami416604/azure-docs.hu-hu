@@ -1,12 +1,12 @@
 ---
-title: "Azure-Felhőszolgáltatás figyelése |} Microsoft Docs"
-description: "Ismerteti, mi az Azure-Felhőszolgáltatásban figyelése magában foglalja, és milyen beállítások egy része a rendszer."
+title: Azure-Felhőszolgáltatás figyelése |} Microsoft Docs
+description: Ismerteti, mi az Azure-Felhőszolgáltatásban figyelése magában foglalja, és milyen beállítások egy része a rendszer.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149906"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a felhőalapú szolgáltatás figyelése
 

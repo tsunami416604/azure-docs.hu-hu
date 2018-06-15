@@ -1,11 +1,11 @@
 ---
-title: "Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz |} Microsoft Docs"
-description: "Azure App Service és az Azure Notification Hubs használata leküldéses értesítések küldésére a Xamarin.Android-alkalmazás"
+title: Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz |} Microsoft Docs
+description: Azure App Service és az Azure Notification Hubs használata leküldéses értesítések küldésére a Xamarin.Android-alkalmazás
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 6f7e8517-e532-4559-9b07-874115f4c65b
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118275"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31600903"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Figyelheti és kezelheti a Stream Analytics-feladatok Azure PowerShell-parancsmagokkal
 Megtudhatja, hogyan figyelheti és kezelheti a Stream Analytics erőforrásokat az Azure PowerShell-parancsmagok és a powershell-parancsprogramokról alapvető Stream Analytics-feladatok végrehajtása.

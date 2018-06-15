@@ -1,8 +1,8 @@
 ---
-title: "Nagy mennyiségű adat áthelyezését, onnan felhőalapú tárolás az Azure-ban |} Microsoft Docs"
-description: "A különböző módszereket a megköveteli az adatok és az Azure Storage áttekintése."
+title: Nagy mennyiségű adat áthelyezését, onnan felhőalapú tárolás az Azure-ban |} Microsoft Docs
+description: A különböző módszereket a megköveteli az adatok és az Azure Storage áttekintése.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: JarrettRenshaw
 manager: msmets
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984595"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
 Ha azt szeretné, hogy helyezze át a helyszíni adatok Azure Storage (vagy fordítva), nincsenek többféleképpen ehhez. A megközelítés, amely a legjobban a forgatókönyvtől függ. Ez a cikk különböző alkalmazási helyzetek és minden egyes megfelelő ajánlatok gyors áttekintést biztosít.

@@ -1,11 +1,11 @@
 ---
-title: "Ismerkedés az Azure CDN könyvtár a .NET-hez |} Microsoft Docs"
-description: "Ismerje meg, hogyan írhat .NET-alkalmazások kezelése az Azure CDN Visual Studio használatával."
+title: Ismerkedés az Azure CDN könyvtár a .NET-hez |} Microsoft Docs
+description: Ismerje meg, hogyan írhat .NET-alkalmazások kezelése az Azure CDN Visual Studio használatával.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23843048"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
