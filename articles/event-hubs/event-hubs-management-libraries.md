@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Event Hubs kezelési kódtárakat |} Microsoft Docs"
-description: "Az Event Hubs-névterek és az entitásokat a .NET-kezelése"
+title: Az Azure Event Hubs kezelési kódtárakat |} Microsoft Docs
+description: Az Event Hubs-névterek és az entitásokat a .NET-kezelése
 services: event-hubs
 cloud: na
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,9 +16,10 @@ ms.date: 12/19/2017
 ms.author: sethm
 ms.openlocfilehash: 2ae2f8f2006507284338fb4fa62e4942476cf2bc
 ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26780973"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs kezelési kódtárakat
 

@@ -1,23 +1,24 @@
 ---
-title: "Egy Azure hibrid identitáskezelési megoldás kiválasztása |} Microsoft Docs"
-description: "Ismerkedjen meg a rendelkezésre álló hibrid identitáskezelési megoldások és javaslatok csak akkor lehet a legjobb identitás irányítás döntés a szervezete."
-keywords: 
+title: Egy Azure hibrid identitáskezelési megoldás kiválasztása |} Microsoft Docs
+description: Ismerkedjen meg a rendelkezésre álló hibrid identitáskezelési megoldások és javaslatok csak akkor lehet a legjobb identitás irányítás döntés a szervezete.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
 ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
 ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800737"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hibrid identitáskezelési megoldások
 [A Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hibrid identitáskezelési megoldások lehetővé teszik a helyszíni címtár objektumainak szinkronizálása az Azure ad szolgáltatással, miközben továbbra is a felhasználók a helyszínen. Az első azt kell eldöntenie, ha a helyszíni Windows Server Active Directory szinkronizálása és az Azure AD tervezési szeretné használni identitás szinkronizált vagy összevont identitás. Szinkronizált identitások, és szükség esetén jelszókivonatait, lehetővé teszi a felhasználók, mind a helyszíni és felhőalapú szervezeti erőforrások eléréséhez használható ugyanazt a jelszót. A speciális forgatókönyv-követelményeinek, például egyszeri bejelentkezéses (SSO) vagy a helyi multi-factor Authentication szolgáltatás használatakor is telepíteni kell az Active Directory összevonási szolgáltatások (AD FS) összevont identitások. 
