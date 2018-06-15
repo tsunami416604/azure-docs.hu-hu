@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30839144"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Az Azure parancssori felület parancsait erőforrás-kezelő módban
 Ez a cikk ismerteti a szintaxis és a beállítások létrehozását és kezelését az Azure Resource Manager üzembe helyezési modellel Azure-erőforrások használata általában az Azure parancssori felület (CLI) parancsok. Ezek a parancsok a parancssori felület futtatásával Resource Manager (arm) módban érhető el. Ez nem teljes, és CLI-verziónak előfordulhat, hogy megjelenítése némileg eltérő parancsok vagy paraméterek. Azure-erőforrások és csoportok általános áttekintést, lásd: [Azure Resource Manager áttekintése](../azure-resource-manager/resource-group-overview.md).  

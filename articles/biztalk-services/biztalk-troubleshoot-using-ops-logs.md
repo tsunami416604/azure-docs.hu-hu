@@ -1,11 +1,11 @@
 ---
-title: "BizTalk szolgáltatások használatával műveletnaplók hibaelhárítása |} Microsoft Docs"
-description: "Végezzen hibaelhárítást a BizTalk szolgáltatások műveletnaplók használatával. MABS, WABS"
+title: BizTalk szolgáltatások használatával műveletnaplók hibaelhárítása |} Microsoft Docs
+description: Végezzen hibaelhárítást a BizTalk szolgáltatások műveletnaplók használatával. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 1081a9c6-58cc-4a76-8ac8-11e5e7a6ea27
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102018"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk szolgáltatások: Műveletnaplók használata – hibaelhárítás
 

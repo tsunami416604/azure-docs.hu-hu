@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841487"
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Futtassa a csillag-CCM + Microsoft HPC Pack egy Linux RDMA a fürt az Azure-ban
 Ez a cikk bemutatja, hogyan Azure, és futtassa a Microsoft HPC Pack fürt központi telepítése egy [CD-adapco csillag-CCM +](http://www.cd-adapco.com/products/star-ccm%C2%AE) feladat több Linux számítási csomópontokra, amelyeket kötik össze, az InfiniBand.

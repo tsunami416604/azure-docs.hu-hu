@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30909751"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure parancssori felület használatával
 Ezeket a lépéseket mutatja be az Azure parancssori felület (CLI) parancsok használatával telepítse át az infrastruktúra erőforrásként egy szolgáltatási (IaaS) a klasszikus telepítési modellből az Azure Resource Manager telepítési modellhez. A cikk igényel a [Azure CLI 1.0](../../cli-install-nodejs.md). Mivel Azure CLI 2.0 csak az Azure Resource Manager erőforrások alkalmazható, akkor az áttelepítés nem használható.

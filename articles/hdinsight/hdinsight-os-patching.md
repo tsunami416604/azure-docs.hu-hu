@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409755"
 ---
 # <a name="os-patching-for-hdinsight"></a>Az operációs rendszer a HDInsight javítását 
 A Hadoop felügyelt szolgáltatásként HDInsight gondoskodik az operációs rendszer alapjául szolgáló virtuális gépek a HDInsight-fürtök által használt javítását. 2016. augusztus 1. a vendég operációs rendszer javítási házirend Linux-alapú HDInsight-fürtök (3.4 vagy újabb verziója) módosítottuk. Az új házirend célja jelentősen csökkentheti a javítás miatt újraindítások számát. Az új házirend minden hétfőn vagy bármely adott fürt csomópontjai között 12 óra UTC lépcsőzetes módon kezdődő csütörtök Linux fürtökön továbbra is javítás virtuális gépek (VM). A megadott virtuális gép azonban csak újraindul, legfeljebb 30 naponta egyszer miatt a vendég operációs rendszer javítását. Továbbá az első újraindítás, újonnan létrehozott fürt nem történik meg gyakoribb 30 napon a fürt létrehozását. Javítások hatékony lesz, ha a virtuális gép újraindítása van.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30907497"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux virtuális gép áthelyezése egy másik előfizetés vagy az erőforrás-csoport
 Ez a cikk végigvezeti a Linux virtuális gépek áthelyezése erőforráscsoportok vagy előfizetések között. A virtuális gépek áthelyezése másik előfizetések lehet hasznos, ha egy virtuális Gépet egy személyes előfizetésben hozott létre, és most szeretné helyezze át a vállalat előfizetés.

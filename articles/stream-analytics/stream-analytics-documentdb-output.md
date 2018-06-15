@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30907116"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Stream Analytics kimeneti az Azure Cosmos-Adatbázishoz  
 A Stream Analytics célba [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenetét, engedélyezi az archiválási és alacsony késésű kérelmek strukturálatlan JSON-adatokat. Ez a dokumentum ismertet néhány gyakorlati tanácsok a konfiguráció alkalmazásához.

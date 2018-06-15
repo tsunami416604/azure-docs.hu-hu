@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911201"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>A Stream Analytics tanulási integrációs számítógép
 A Stream Analytics támogatja a felhasználó által definiált függvények, amelyek az Azure Machine Learning-végpont hívásához. Ez a szolgáltatás REST API-támogatása részleteit a a [Stream Analytics REST API-könyvtár](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ez a cikk ezt a képességet a Stream Analytics sikeres végrehajtásához szükség kiegészítő információkat tartalmazza. Oktatóanyag is közzé lett, és elérhető [Itt](stream-analytics-machine-learning-integration-tutorial.md).

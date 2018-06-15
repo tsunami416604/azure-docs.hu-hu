@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30903475"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Mi az a Batch AI az Azure-ban?
 A Batch AI egy felügyelt szolgáltatás, amely lehetővé teszi az adatelemzők és AI-kutatók számára, hogy betanítsanak mesterséges intelligenciákat és egyéb gépi tanulási modelleket az Azure virtuális gépek fürtjein, beleértve a GPU-támogatással rendelkező virtuális gépeket. Csak adja meg a feladata követelményeit, valamint a bemeneti és kimeneti adatok tárolási helyét, a Batch AI pedig elvégzi a többit.  

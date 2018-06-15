@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30910764"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Hozzon létre egy teljes körű Linux környezetet az Azure CLI 1.0
 Ebben a cikkben azt a terheléselosztó és a virtuális gépek, amelyek hasznosak a fejlesztési és egyszerű számítástechnikai két egyszerű hálózat felépítéséhez. Azt ismerteti a folyamatot, a parancs által parancs, amíg a két üzemel, biztonságos Linux virtuális gép, amelyre lehet csatlakoztatni bárhol az interneten. Majd továbbléphet összetettebb hálózatokhoz és a környezetben.

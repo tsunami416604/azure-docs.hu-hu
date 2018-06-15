@@ -14,53 +14,59 @@ metadata:
   ms.date: 11/01/2017
   ms.author: routlaw
   ms.custom: Jenkins
+  ms.openlocfilehash: 0925fb5cda7bdfde1a97d0725bd23a8f79882366
+  ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/08/2017
+  ms.locfileid: "24052157"
 abstract:
-  description: 'A nyílt forráskódú Jenkins-kiszolgálóval alkalmazásokat hozhat létre a felhőben, és üzembe helyezheti őket az Azure-ban. Rövid útmutatóink, oktatóanyagaink és mintafolyamataink segítségével megismerheti a Jenkins Azure-on történő telepítését, konfigurálását és skálázását, illetve a folyamatos integráció (CI) beállítását az alkalmazások számára.'
+  description: A nyílt forráskódú Jenkins-kiszolgálóval alkalmazásokat hozhat létre a felhőben, és üzembe helyezheti őket az Azure-ban. Rövid útmutatóink, oktatóanyagaink és mintafolyamataink segítségével megismerheti a Jenkins Azure-on történő telepítését, konfigurálását és skálázását, illetve a folyamatos integráció (CI) beállítását az alkalmazások számára.
   aside:
     image:
       alt: Jenkins logo
       height: 133
       width: 110
       src: media/Jenkins.png
-    title: null
+    title: 
 sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: Jenkins rendszer létrehozása az Azure-ban és alkalmazás létrehozása.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template'
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: 'Folyamatos integráció beállítása az alkalmazások számára, ügynökök futtatása a felhőben és Azure-szolgáltatások használata a feladatokban.'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Folyamatos integráció beállítása az <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>, a <a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> vagy <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Linux rendszerű virtuális gép</a> számára.'
-          - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">Erőforrások kiosztása egy folyamat feladatában</a>.
-          - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Skálázás Azure virtuálisgép-ügynökökkel</a>.
-  - title: Példák
-    items:
-      - type: paragraph
-        text: Mintaszkriptek és -szakaszok a folyamatokhoz.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Jenkinsfile-szakaszok és -kódrészletek</a>'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Beépülő modulok
-            html: '<p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure virtuálisgép-ügynökök</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure-tárolóügynökök</a><p><a href="https://plugins.jenkins.io/azure-function">Az Azure-függvények beépülő modulja</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service beépülő modul</a>'
+- title: 5 perces gyors útmutatók
+  items:
   - type: paragraph
-    text: '<h4>A Jenkins® a Software in the Public Interest, Inc. bejegyzett védjegye. A [Jenkins® embléma](https://wiki.jenkins.io/display/JENKINS/Logo) licencelése a [Jenkins projektből](https://jenkins.io) a [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) alapján történik.</h4>'
+    text: Jenkins rendszer létrehozása az Azure-ban és alkalmazás létrehozása.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Folyamatos integráció beállítása az alkalmazások számára, ügynökök futtatása a felhőben és Azure-szolgáltatások használata a feladatokban.
+  - type: list
+    style: ordered
+    items:
+    - html: Folyamatos integráció beállítása az <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>, a <a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> vagy <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Linux rendszerű virtuális gép</a> számára.
+    - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">Erőforrások kiosztása egy folyamat feladatában</a>.
+    - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Skálázás Azure virtuálisgép-ügynökökkel</a>.
+- title: Példák
+  items:
+  - type: paragraph
+    text: Mintaszkriptek és -szakaszok a folyamatokhoz.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Jenkinsfile-szakaszok és -kódrészletek</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Beépülő modulok
+      html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure virtuálisgép-ügynökök</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure-tárolóügynökök</a><p><a href="https://plugins.jenkins.io/azure-function">Az Azure-függvények beépülő modulja</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service beépülő modul</a>
+- type: paragraph
+  text: <h4>A Jenkins® a Software in the Public Interest, Inc. bejegyzett védjegye. A [Jenkins® embléma](https://wiki.jenkins.io/display/JENKINS/Logo) licencelése a [Jenkins projektből](https://jenkins.io) a [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) alapján történik.</h4>

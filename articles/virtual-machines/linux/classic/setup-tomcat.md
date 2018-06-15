@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841615"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>A Linux virtuális gépek Azure-ral Tomcat7 beállítása
 Apache Tomcat (vagy egyszerűen Tomcat is korábban Dzsakarta Tomcat) egy nyílt forráskódú webkiszolgáló és a servlet tároló fejlesztett az Apache szoftver Foundation (ASP). Tomcat valósítja meg, a Java Servlet és a Sun Microsystems JavaServer lapok (JSP) előírásoknak. Tomcat Java kód futtatására tiszta Java HTTP-web server környezetet biztosít. A legegyszerűbb konfiguráció, a Tomcat egyetlen operációs rendszer folyamatban fut. Ez a folyamat fut, a Java virtuális gép (JVM). Minden HTTP-kérelem böngészőből Tomcat végzi a rendszer a Tomcat folyamat külön szálban.  

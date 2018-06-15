@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30842013"
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Az NAMD futtatása a Microsoft HPC Packkal Azure-beli linuxos számítási csomópontokon
 Ez a cikk az Azure virtuális gépeken a Linux nagy teljesítményű számítástechnikai rendszerek (HPC) munkaterhelések futtatásához egy módszert mutat. Itt, állítsa be a [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) -fürtöt az Azure-on Linux számítási csomópontokat, majd futtassa egy [NAMD](http://www.ks.uiuc.edu/Research/namd/) szimuláció alapján számítja ki és jelenítheti meg a nagy biomolekuláris rendszer szerkezetének.  

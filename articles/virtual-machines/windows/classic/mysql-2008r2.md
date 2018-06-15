@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918115"
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>MySQL telepíthető a Windows Server 2016 rendszerű klasszikus üzembe helyezési modellel létrehozott virtuális gépek
 [MySQL](https://www.mysql.com) egy népszerű nyílt forráskódú, akkor az SQL-adatbázis. Ez az oktatóanyag bemutatja, hogyan telepítheti és futtathatja a **MySQL 5.7.18 közösségi változata** egy futó virtuális géphez MySQL-kiszolgálóként **Windows Server 2016**. Lehet, hogy a felhasználói élmény némileg eltérő MySQL vagy Windows Server más verzióiban.

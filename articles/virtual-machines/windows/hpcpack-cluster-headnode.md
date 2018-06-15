@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915259"
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>HPC Pack-fürt fő csomópontjának létrehozása piactéri lemezképet használó Azure-beli virtuális gépen
 Használja a [Microsoft HPC Pack 2012 R2 virtuálisgép-lemezkép](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) átjárócsomópontjához HPC-fürt létrehozása az Azure piactéren és az Azure-portálon. A HPC Pack Virtuálisgép-lemezkép a Windows Server 2012 R2 Datacenter HPC Pack 2012 R2 Update 3 előtelepített alapul. Az átjárócsomópont használata az Azure-ban HPC csomag koncepció telepítését igazolása. Számítási csomópontok ezután hozzáadása a fürt HPC munkaterhelések futtatásához.

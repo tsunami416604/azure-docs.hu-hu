@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Cloud Services dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
-description: "Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan használhatja a felhőszolgáltatásokat nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására."
+title: Az Azure Cloud Services dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+description: Oktatóanyagok, API-referenciák és egyéb dokumentációk, amelyekből megtudhatja, hogyan használhatja a felhőszolgáltatásokat nagy rendelkezésre állású és skálázható felhőalkalmazások és API-k futtatására.
 services: cloud-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24101882"
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services – dokumentáció
 
