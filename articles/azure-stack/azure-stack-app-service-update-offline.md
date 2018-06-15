@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359033"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Az Azure App Service Azure veremben offline frissítése
 

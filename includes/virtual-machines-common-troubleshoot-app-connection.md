@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371269"
 ---
 Nincsenek különböző okokból nem kezdődhet vagy egy Azure virtuális gépen (VM) futó alkalmazás csatlakozzon. Okai az alkalmazás nem fut, vagy a várt porton figyel, a figyelő portja, blokkolva vagy a hálózat szabályok nem megfelelő az alkalmazás sikeres forgalmat. Ez a cikk ismerteti a módszeres megközelítés található, és kijavítja a hibát.
 

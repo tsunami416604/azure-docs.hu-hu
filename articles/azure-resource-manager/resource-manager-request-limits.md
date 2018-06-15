@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358863"
 ---
 # <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő szabályozás
 Minden egyes előfizetésekhez és bérlői erőforrás-kezelő korlátok óránként 15 000 kérelmek és olvasási kérések 1200 óránként. Ezek a korlátozások vonatkoznak az Azure Resource Manager feltünteti. Több példánya van minden Azure-régiót, és az Azure Resource Manager a rendszer minden Azure-régió.  Így a, a gyakorlatban korlátok hatékonyan sokkal nagyobb, mint a működés felső korlátjának, felhasználóként kérelmek általában által kiszolgált számos különböző példányai.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211429"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Fürt resource manager architektúrájának áttekintése
 A Service Fabric fürt erőforrás-kezelő központi szolgáltatás, amely a fürt. Kezeli a kívánt azon szolgáltatások állapotát, a fürtben, különös tekintettel az erőforrás-felhasználás és elhelyezési szabályokat. 

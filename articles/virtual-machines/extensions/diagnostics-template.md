@@ -21,6 +21,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942794"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata egy Windows virtuális gép és az Azure Resource Manager sablonok
 Az Azure Diagnostics bővítmény a figyelési és diagnosztikai képességeket biztosít a Windows-alapú Azure virtuális gépen. A kiterjesztéssel együtt az Azure Resource Manager sablon részeként engedélyezheti ezeket a képességeket a virtuális gépen. Lásd: [Azure Resource Manager sablonok készítése a Virtuálisgép-bővítmények](../windows/template-description.md#extensions) további információ a virtuálisgép-sablon részeként bármely kiterjesztéssel együtt. Ez a cikk ismerteti, hogyan adhat hozzá az Azure Diagnostics-bővítmény egy windows virtuális gépre vonatkozó sablont.  

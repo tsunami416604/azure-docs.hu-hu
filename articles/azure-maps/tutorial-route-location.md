@@ -1,22 +1,20 @@
 ---
 title: Útvonalkeresés az Azure Mapsszel | Microsoft Docs
 description: Útvonal keresése egy hasznos helyhez az Azure Mapsszel
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 73ca61140f05a65ca75cd703ed226773b9a43dfa
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fc5dfafec303a439d8a1092771fd2247ab305172
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601343"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 
@@ -76,7 +74,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
     ```
     A HTML-fejléc beágyazza a CSS- és a JavaScript-fájlok erőforráshelyeit az Azure Maps-kódtárba. A HTML törzsében lévő *szkript* szakasz tartalmazza az Azure Maps API-jainak elérésére szolgáló beágyazott JavaScript-kódot.
 
-3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** karakterláncot cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
+3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** sztringet cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
 
     ```JavaScript
     // Instantiate map to the div with id "map"

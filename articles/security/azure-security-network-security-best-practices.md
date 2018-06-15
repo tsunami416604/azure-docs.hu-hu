@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367324"
 ---
 # <a name="azure-network-security-best-practices"></a>Azure-hálózat ajánlott biztonsági eljárások
 A Microsoft Azure lehetővé teszi, hogy csatlakozhat a virtuális gépek és készülékek más hálózati eszközök párt Azure virtuális hálózatot. Egy Azure virtuális hálózatra olyan konstrukció, amely lehetővé teszi a virtuális hálózati kártyák engedélyezett hálózati eszközök közötti TCP/IP-alapú kommunikáció engedélyezése a virtuális hálózathoz csatlakozni. Egy Azure virtuális hálózatra csatlakozik az Azure virtuális gépek a azonos Azure virtuális hálózaton, különböző Azure virtuális hálózatok, az interneten, vagy még akkor is, a saját helyszíni hálózatokon is elérheti.

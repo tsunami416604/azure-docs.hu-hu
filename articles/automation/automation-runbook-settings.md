@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194196"
 ---
 # <a name="runbook-settings"></a>Runbook beállításai
 Azure Automation minden egyes runbookja több beállítással, amelyek segítenek azonosítani és módosítani annak naplózási viselkedését rendelkezik. Egyes beállítások alábbiakban módosításukhoz szükséges eljárások leírását.

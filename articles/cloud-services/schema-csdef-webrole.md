@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360342"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services – Definition webrole típusról séma
 Az Azure webes szerepkör a rendszer egy testreszabott alkalmazásprogramozási web IIS 7, például az ASP.NET, PHP, a Windows Communication Foundation és a FastCGI támogatja.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364233"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
 Azure virtuális gépek segítségével számos különféle számítógépes megoldások üzembe egy gyors módja. A szolgáltatás támogatja a Microsoft Windows, Linux, a Microsoft SQL Server, Oracle, IBM, SAP, és Azure BizTalk szolgáltatások. Ezért bármilyen munkaterhelést és szinte bármilyen operációs rendszeren bármilyen nyelvet is telepíthet.

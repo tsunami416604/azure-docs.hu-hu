@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364369"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure biztonsági kezelési és figyelési áttekintés
 Azure biztonsági mechanizmusai a felügyeleti és figyelési Azure felhőszolgáltatások és virtuális gépek (VM). Ez a cikk áttekintése ezeket az alapvető biztonsági funkciókat és szolgáltatásokat. Adja meg az egyes az adatait, így további cikkek hivatkozásokkal.

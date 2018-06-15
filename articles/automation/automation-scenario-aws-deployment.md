@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193481"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation forgatókönyv - kiépítés az AWS virtuális gép
 Ebből a cikkből megismerheti, hogyan használhatják az Azure Automation-rendszerű virtuális gép az Amazon Web Service (AWS) előfizetésben, és nevezze el ezt a virtuális Gépet egy adott – ami AWS utal, mint a "címkézés" a virtuális gép.

@@ -1,11 +1,11 @@
 ---
-title: "Alaphelyzetbe állítja az Azure VPN gateway IPsec-alagutak közti |} Microsoft Docs"
-description: "Ez a cikk végigvezeti az Azure VPN Gateway IPsec-alagutak közti alaphelyzetbe állítását. A cikk a klasszikus, és a Resource Manager üzembe helyezési modellel a VPN-átjárók vonatkozik."
+title: Alaphelyzetbe állítja az Azure VPN gateway IPsec-alagutak közti |} Microsoft Docs
+description: Ez a cikk végigvezeti az Azure VPN Gateway IPsec-alagutak közti alaphelyzetbe állítását. A cikk a klasszikus, és a Resource Manager üzembe helyezési modellel a VPN-átjárók vonatkozik.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884551"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 

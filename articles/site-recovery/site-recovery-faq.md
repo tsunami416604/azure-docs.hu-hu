@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312678"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 A cikk az Azure Site Recovery kapcsolatos gyakran ismételt kérdések tartalmaz. Ha kérdése van a cikk elolvasása után, az fel őket a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).

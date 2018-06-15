@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30173321"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotor feltételek egyeznek 
 Ez a cikk a rendelkezésre álló egyezés feltételek esetében az Azure Content Delivery Network (CDN) részletes leírását tartalmazza [szabálymotor](cdn-rules-engine.md).

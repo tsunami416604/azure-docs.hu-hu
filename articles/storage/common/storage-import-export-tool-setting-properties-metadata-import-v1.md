@@ -1,11 +1,11 @@
 ---
-title: "Tulajdonságok és a metaadatok Azure Import/Export - 1-es verzió beállítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan adhatja meg az tulajdonságait és a metaadatok állítható be a cél BLOB az Azure Import/Export eszköz futtatásakor a meghajtók előkészítéséhez. A v1 az Import/Export eszköz vonatkozik."
+title: Tulajdonságok és a metaadatok Azure Import/Export - 1-es verzió beállítása |} Microsoft Docs
+description: Megtudhatja, hogyan adhatja meg az tulajdonságait és a metaadatok állítható be a cél BLOB az Azure Import/Export eszköz futtatásakor a meghajtók előkészítéséhez. A v1 az Import/Export eszköz vonatkozik.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: e8541695-bcfb-4bf0-84d9-72c9de32a0a8
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873736"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>Tulajdonságok és metaadatok beállítása az importálási folyamat során
 A meghajtók előkészítése a Microsoft Azure Import/Export eszköz futtatásakor tulajdonságok és állítható be a cél BLOB metaadatait is megadhat. Kövesse az alábbi lépéseket:  

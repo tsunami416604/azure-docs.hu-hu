@@ -1,21 +1,22 @@
 ---
-title: "Csatlakozás az Azure Database for MySQL-hez a Ruby használatával"
-description: "Ez a rövid útmutató számos Ruby-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla."
+title: Csatlakozás az Azure Database for MySQL-hez a Ruby használatával
+description: Ez a rövid útmutató számos Ruby-mintakódot biztosít, amelyekkel csatlakozhat a MySQL-hez készült Azure-adatbázishoz, illetve adatokat kérdezhet le róla.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 84898a5bc3afd21aa6b922b4074fd09b4315dd6e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: cbd60be37dc7021ecbb961027dca40d048ed84cb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265078"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>A MySQL-hez készült Azure-adatbázis: Csatlakozás és adatlekérdezés a Ruby használatával
 Ez a rövid útmutató ismerteti, hogyan használható egy [Ruby](https://www.ruby-lang.org)-alkalmazás és a [mysql2](https://rubygems.org/gems/mysql2) gem a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz Windows, Ubuntu Linux és Mac platformról. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a Ruby használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
@@ -71,7 +72,7 @@ A következő kód használatával csatlakozhat, és létrehozhat egy táblát a
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután többször meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a DROP, a CREATE TABLE és az INSERT INTO parancs futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
-Cserélje le a `host`, `database`, `username`, és `password` karakterláncokat a saját értékekre. 
+Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre. 
 ```ruby
 require 'mysql2'
 
@@ -116,7 +117,7 @@ A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQ
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class.new() metódust használja az Azure Database for MySQL-hez való csatlakozáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a SELECT parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
-Cserélje le a `host`, `database`, `username`, és `password` karakterláncokat a saját értékekre. 
+Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre. 
 
 ```ruby
 require 'mysql2'
@@ -155,7 +156,7 @@ Az alábbi kód használatával csatlakozhat és végezheti el az adatok módos�
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust az UPDATE parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
-Cserélje le a `host`, `database`, `username`, és `password` karakterláncokat a saját értékekre. 
+Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre. 
 
 ```ruby
 require 'mysql2'
@@ -192,7 +193,7 @@ A következő kóddal csatlakozhat, és beolvashatja az adatokat a **DELETE** SQ
 
 A kód a [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) class .new() metódust használja a MySQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Ezután meghívja a [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) metódust a DELETE parancsok futtatásához. Végül pedig a [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) metódus meghívásával bontja a kapcsolatot, mielőtt kilép.
 
-Cserélje le a `host`, `database`, `username`, és `password` karakterláncokat a saját értékekre. 
+Cserélje le a `host`, `database`, `username`, és `password` sztringeket a saját értékekre. 
 
 ```ruby
 require 'mysql2'

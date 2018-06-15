@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32787416"
 ---
 ## <a name="prepare-for-akv-integration"></a>Készítse elő a AKV-integráció
 Azure Key Vault-integráció segítségével konfigurálja az SQL Server virtuális gép, van néhány Előfeltételek: 

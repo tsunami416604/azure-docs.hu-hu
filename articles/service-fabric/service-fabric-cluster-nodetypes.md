@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212364"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric csomóponttípusok és a virtuális gép skálázása beállítása
 [Virtuálisgép-méretezési csoportok](/azure/virtual-machine-scale-sets) az Azure számítási erőforrás. Méretezési csoportok segítségével telepíthetnek és kezelhetnek olyan virtuális gépek gyűjteménye. Az egyes csomóponttípusok, megadhat egy Azure Service Fabric-fürt állít be egy külön skála.  Állítsa be a Service Fabric-futtatókörnyezet, a rendszer minden egyes virtuális gépen telepítve. Lehet egymástól függetlenül az egyes csomóponttípusok méretezése felfelé vagy lefelé, módosítsa az operációs rendszer Termékváltozata minden fürtcsomóponton futó, eltérő számú portok nyitva, és használni különböző teljesítmény-mérőszámait.

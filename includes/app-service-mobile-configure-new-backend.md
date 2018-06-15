@@ -1,4 +1,20 @@
-
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: app-service\mobile
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 05/25/2018
+ms.author: crdun
+ms.custom: include file
+ms.openlocfilehash: 4da469ac31c3ee50d601c87b4d7487ae5bb7bc3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34664008"
+---
 1. Kattintson az **App Services** gombra, válassza a Mobile Apps-háttéralkalmazást, majd a **Gyorsindítás** lehetőséget, végül pedig válassza ki az ügyfélplatformot (iOS, Android, Xamarin, Cordova).
 
     ![Azure Portal a kiemelt Mobile Apps Quickstarttal][quickstart]
@@ -19,10 +35,10 @@
 
     ![Az Azure Portal értesítése: „Már van adatkapcsolata”][already-connection]
 
-3. A **2. Tábla API létrehozása** elemnél a **Háttérrendszer nyelveként** válassza a Node.js-t. 
- 
-4. Fogadja el a nyugtázást, majd válassza a **TodoItem tábla létrehozása** elemet.  
-    Ez a művelet létrehoz egy új teendőtáblát az adatbázisban. 
+3. A **2. Tábla API létrehozása** elemnél a **Háttérrendszer nyelveként** válassza a Node.js-t.
+
+4. Fogadja el a nyugtázást, majd válassza a **TodoItem tábla létrehozása** elemet.
+    Ez a művelet létrehoz egy új teendőtáblát az adatbázisban.
 
     >[!IMPORTANT]
     > A létező háttérrendszerek Node.js nyelvűre történő átállítása minden tartalmat felülír. Ehelyett egy .NET-háttérrendszer létrehozásához lásd: [A Mobile Appshez készült .NET háttérkiszolgálói SDK használata][instructions].

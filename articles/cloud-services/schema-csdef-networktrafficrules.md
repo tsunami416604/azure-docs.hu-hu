@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360036"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services – Definition NetworkTrafficRules séma
 A `NetworkTrafficRules` csomópont egy választható elem, amely meghatározza, hogyan szerepkörök kommunikálnak egymással a szolgáltatásdefiníciós fájlban. Mely szerepkörök férhetnek hozzá az adott szerepkör a belső végpontok korlátozza. A `NetworkTrafficRules` van nem egy önálló elem; kombinálva van két vagy több szerepkört a szolgáltatásdefiníciós fájlban.

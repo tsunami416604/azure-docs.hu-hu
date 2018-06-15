@@ -2,25 +2,23 @@
 title: Hogyan kérdezhetők le táblaadatok az Azure Cosmos DB-ben? | Microsoft Docs
 description: Megismerheti, hogyan kérdezhetők le táblaadatok az Azure Cosmos DB-ben
 services: cosmos-db
-documentationcenter: ''
 author: kanshiG
 manager: kfile
 editor: ''
 tags: ''
-ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: d3b46169f7cc175d1959ecaa7184faa0fd81590c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a629a7b1340547f43919a1e88abbda53e9e2ae0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763391"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Oktatóanyag: Az Azure Cosmos DB lekérdezése a Tábla API használatával
 
@@ -61,14 +59,14 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
-A `$filter` lehetőség részeként is meghatározhatja ezeket a tulajdonságokat, a következő szakaszban látható módon. Vegye figyelembe, hogy a kulcstulajdonság nevei és az állandó értékek megkülönböztetik a kis- és nagybetűket. A PartitionKey és a RowKey tulajdonság típusa egyaránt karakterlánc. 
+A `$filter` lehetőség részeként is meghatározhatja ezeket a tulajdonságokat, a következő szakaszban látható módon. Vegye figyelembe, hogy a kulcstulajdonság nevei és az állandó értékek megkülönböztetik a kis- és nagybetűket. A PartitionKey és a RowKey tulajdonság típusa egyaránt sztring. 
 
 ## <a name="query-by-using-an-odata-filter"></a>Lekérdezés OData-szűrővel
-Szűrő karakterláncának felépítésekor ne feledje ezeket a szabályokat: 
+Szűrő sztringjének felépítésekor ne feledje ezeket a szabályokat: 
 
 * Az OData-protokollspecifikáció által definiált logikai operátorokat használja a tulajdonságok és az értékek összehasonlítására. Vegye figyelembe, hogy nem hasonlíthat össze tulajdonságot dinamikus értékkel. A kifejezés egyik oldalának állandónak kell lennie. 
 * A tulajdonság nevét, az operátort és az állandó értéket URL-kódolású szóközzel kell elválasztani. A szóköz URL-kódolása `%20`. 
-* A szűrési karakterlánc minden része megkülönbözteti a kis- és nagybetűket. 
+* A szűrési sztring minden része megkülönbözteti a kis- és nagybetűket. 
 * Az állandó érték adattípusának meg kell egyeznie a tulajdonságéval ahhoz, hogy a szűrő érvényes eredményeket adjon vissza. További információ a támogatott tulajdonságtípusokról: [A Table szolgáltatás adatmodelljének ismertetése](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
 
 A következő példalekérdezés bemutatja, hogyan szűrhet a PartitionKey és az E-mail tulajdonságok alapján OData `$filter` használatával.

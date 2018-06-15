@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Site Recovery hibaelhárítási VMware az Azure-bA |} Microsoft Docs"
-description: "Hibaelhárítás a replikált Azure virtuális gépeken."
+title: Az Azure Site Recovery hibaelhárítási VMware az Azure-bA |} Microsoft Docs
+description: Hibaelhárítás a replikált Azure virtuális gépeken.
 services: site-recovery
 author: anoopkv
 manager: gauravd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812893"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Mobilitási szolgáltatás leküldéses telepítési problémák elhárításához
 

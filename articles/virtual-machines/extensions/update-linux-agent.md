@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942801"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>A virtuális gép az Azure Linux ügynök frissítése
 

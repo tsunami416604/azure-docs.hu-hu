@@ -16,9 +16,10 @@ ms.date: 04/26/2018
 ms.author: barclayn
 ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
 ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366273"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások az Azure IaaS munkaterhelések
 

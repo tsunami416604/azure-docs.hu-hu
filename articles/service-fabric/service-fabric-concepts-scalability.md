@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209372"
 ---
 # <a name="scaling-in-service-fabric"></a>A Service Fabric skálázás
 Az Azure Service Fabric megkönnyíti a méretezhető alkalmazások hozhat létre a szolgáltatások, partíciók és a fürt csomópontjait a replikák kezelése. Számos különféle munkaterheléshez fut ugyanazon a hardveren lehetővé teszi, hogy a maximális erőforrás-használat, de rugalmas hogyan úgy dönt, hogy a munkaterhelés vertikális is biztosít. A Channel 9 videó ismerteti, hogyan hozhat létre méretezhető mikroszolgáltatások alkalmazások:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205987"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Csomag és a Service Fabric egy létező végrehajtható fájl központi telepítése
 Csomagolására egy létező végrehajtható fájl, amikor egy [Vendég végrehajtható](service-fabric-guest-executables-introduction.md), a Visual Studio-projektsablont használja válasszon vagy [hozzon létre manuálisan az alkalmazáscsomag](#manually). Visual Studio használatával, az alkalmazás csomag struktúra és a jegyzékfájlt jön létre az új projekt sablonban.

@@ -16,6 +16,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160240"
 ---
 # <a name="manage-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakozó HDInsight-fürtök kezelése
 Ismerje meg, a felhasználók és a szerepköröket, a tartományhoz, és a tartományhoz a HDInsight-fürtök kezelése.

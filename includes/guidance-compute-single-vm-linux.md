@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367135"
 ---
 Ez a cikk bevált gyakorlatokat mutat be egy Linux virtuális gép (VM) Azure-on való futtatására, figyelembe véve a méretezési, a rendelkezésre állási, a felügyeleti és a biztonsági szempontokat. Az Azure támogatja különböző népszerű Linux-disztribúciók, például a CentOS, a Debian, a Red Hat Enterprise, az Ubuntu és a FreeBSD futtatását. További információk: [Az Azure és a Linux][azure-linux].
 

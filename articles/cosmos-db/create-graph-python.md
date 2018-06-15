@@ -2,23 +2,21 @@
 title: 'Rövid útmutató: Graph API a Pythonnal – Azure Cosmos DB | Microsoft Docs'
 description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Graph API konzolalkalmazások létrehozására az Azure Portal és a Python használatával
 services: cosmos-db
-documentationcenter: python
 author: luisbosquez
 manager: kfile
-ms.assetid: 383a51c5-7857-440d-ab54-1efb1c0c7079
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: f668b233cd2bb44012c6132fee55626ddc3597e0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a29a27ec633f5f67bb8cac4b9a4823c5f0966f8e
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795788"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Gráfadatbázis létrehozása a Python és az Azure Portal használatával
 
@@ -73,13 +71,13 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-python-getting-started\ mappában található connect.py fájlból származnak. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-information) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a C:\git-samples\azure-cosmos-db-graph-python-getting-started\ mappában található connect.py fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-information) szakaszra. 
 
 * A Gremlin `client` inicializálása a `connect.py` 104. sorában történik:
 
     ```python
     ...
-    client = client.Client('wss://<YOUR_ENDPOINT>.graphs.azure.com:443/','g', 
+    client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ...
@@ -104,7 +102,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 2. Nyissa meg a connect.py fájlt, és a 104. sorba illessze be az URI értéket itt a `<YOUR_ENDPOINT>` helyére:
 
     ```python
-    client = client.Client('wss://<YOUR_ENDPOINT>.graphs.azure.com:443/','g', 
+    client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ```
@@ -112,14 +110,12 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
     Az ügyfélobjektum URI részének most a következőhöz hasonlóan kell kinéznie:
 
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ```
 
-3. Az ügyfél nevében módosítsa a `graphs.azure.com` értéket a következőre: `gremlin.cosmosdb.azure.com`. (Ha a gráfadatbázis-fiókot 2017. december 20. előtt hozta létre, ne módosítson semmit, és folytassa a következő lépéssel.)
-
-4. Módosítsa a `client` objektum második paraméterét a `<YOUR_DATABASE>` és `<YOUR_COLLECTION_OR_GRAPH>` karakterláncok lecseréléséhez. Ha a javasolt értékeket használta, a paraméternek ehhez a kódhoz hasonlóan kell kinéznie:
+3. Módosítsa a `client` objektum második paraméterét a `<YOUR_DATABASE>` és `<YOUR_COLLECTION_OR_GRAPH>` sztringek lecseréléséhez. Ha a javasolt értékeket használta, a paraméternek ehhez a kódhoz hasonlóan kell kinéznie:
 
     `username="/dbs/sample-database/colls/sample-graph"`
 
@@ -131,7 +127,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
         password="<YOUR_PASSWORD>")
     ```
 
-5. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `<YOUR_PASSWORD>` helyére a `password=<YOUR_PASSWORD>` paraméterben.
+4. Az Azure Portalon a másolás gombbal másolja az ELSŐDLEGES KULCSOT, és illessze a `<YOUR_PASSWORD>` helyére a `password=<YOUR_PASSWORD>` paraméterben.
 
     A teljes `client` objektumdefiníciónak ehhez a kódhoz hasonlóan kell kinéznie:
     ```python

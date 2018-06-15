@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360257"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services – Definition WorkerRole séma
 Az Azure feldolgozói szerepkör a rendszer, amely hasznos általánosított fejlesztési és hajthat végre a háttérben történő feldolgozás a webes szerepkör.

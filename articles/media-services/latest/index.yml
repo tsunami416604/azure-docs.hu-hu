@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33940710"
 abstract:
   description: Ismerje meg, hogyan streamelhet videókat igény szerint, hogyan közvetíthet élőben és hogyan elemezheti videóit a Media Services használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 sections:

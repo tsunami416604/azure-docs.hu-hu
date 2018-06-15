@@ -1,11 +1,11 @@
 ---
-title: "Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel | Microsoft Docs"
-description: "Itt megismerkedhet azzal, hogyan fejleszthet az Azure Files szolgáltatást használó .NET-alkalmazásokat és -szolgáltatásokat a fájladatok tárolásához."
+title: Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel | Microsoft Docs
+description: Itt megismerkedhet azzal, hogyan fejleszthet az Azure Files szolgáltatást használó .NET-alkalmazásokat és -szolgáltatásokat a fájladatok tárolásához.
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 11bc2418e439f86a228ff7d5c845caef683d9018
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 95f890ccbe03fc734b54ac8c5edee2ec7b56d9c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737629"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
 
@@ -63,7 +64,8 @@ Az Azure Storage ügyféloldali kódtárat bármilyen típusú .NET-alkalmazásb
 Két csomagra kell hivatkoznia a projektben az oktatóanyag teljesítéséhez:
 
 * [A Microsoft Azure Storage ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/WindowsAzure.Storage/): Ez a csomag programozott hozzáférést biztosít a tárfiókja adatforrásaihoz.
-* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati karakterlánc elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
+* 
+  [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati sztring elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
 A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 
@@ -87,7 +89,7 @@ Mentse el a hitelesítő adatokat a projekt app.config fájljába. Szerkessze az
 ```
 
 > [!NOTE]
-> Az Azure Storage Emulator legújabb verziója nem támogatja az Azure Filest. A kapcsolati karakterláncnak egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
+> Az Azure Storage Emulator legújabb verziója nem támogatja az Azure Filest. A kapcsolati sztringnek egy Azure Storage-fiókot kell megcéloznia a felhőben, hogy használni lehessen az Azure Files szolgáltatással.
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 Nyissa meg a `Program.cs` fájlt a Solution Explorer (Megoldáskezelő) felületén, és irányelvekkel adja hozzá az alábbiakat a fájl elejéhez.
@@ -102,7 +104,7 @@ using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure Files
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="access-the-file-share-programmatically"></a>A fájlmegosztás szoftveres elérése
-Adja hozzá az alábbi kódot a `Main()` módszerhez (a fent látható kód után) a kapcsolati karakterlánc lekéréséhez. Ez a kód lekér egy hivatkozást a korábban létrehozott fájlra, és eredményül megjeleníti annak tartalmát a konzolablakban.
+Adja hozzá az alábbi kódot a `Main()` módszerhez (a fent látható kód után) a kapcsolati sztring lekéréséhez. Ez a kód lekér egy hivatkozást a korábban létrehozott fájlra, és eredményül megjeleníti annak tartalmát a konzolablakban.
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -461,7 +463,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Emellett olvassa el az [Azure-fájlok hibaelhárításáról szóló cikk](storage-troubleshoot-windows-file-connection-problems.md) átfogó hibaelhárítási útmutatóját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról.
 
 ### <a name="conceptual-articles-and-videos"></a>Elméleti cikkek és videók

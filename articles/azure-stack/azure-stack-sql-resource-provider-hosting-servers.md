@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359424"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az SQL erőforrás-szolgáltató az üzemeltetési kiszolgáló hozzáadása
 A virtuális gépeken belül az SQL Server-példányok is használhatja a [Azure verem](azure-stack-poc.md), vagy kívül az Azure verem környezet, az erőforrás-szolgáltató példánya tud hozzá csatlakozni. Az általános követelmények a következők:

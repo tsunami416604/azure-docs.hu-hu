@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371337"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrásokra a klasszikus Azure Resource Manager platform által támogatott áttelepítése
 Ez a cikk azt ismerteti hogyan azt még engedélyezése erőforrásként egy szolgáltatási (IaaS) klasszikus Resource Manager üzembe helyezési modelljeire infrastruktúra áttelepítését. További tudnivalók [Azure erőforrás-kezelő szolgáltatásait és előnyeit](../articles/azure-resource-manager/resource-group-overview.md). A két üzembe helyezési modellel, az előfizetés virtuális hálózati helyek átjáró használatával elért párhuzamosan az erőforrások összekapcsolása részletességi azt.

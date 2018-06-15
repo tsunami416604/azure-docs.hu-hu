@@ -1,21 +1,22 @@
 ---
-title: "Azure CLI-szkript – Azure Database for MySQL létrehozása"
-description: "Ez a CLI-mintaszkript létrehoz egy Azure Database for MySQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt."
+title: Azure CLI-szkript – Azure Database for MySQL létrehozása
+description: Ez a CLI-mintaszkript létrehoz egy Azure Database for MySQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt.
 services: mysql
 author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 547c0e89faf4eed3f24d9b6710df030ac743cd68
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ea00ad1742089bf53c79d5c3d17d3e7ba8477a38
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265972"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>MySQL-kiszolgáló létrehozása és tűzfalszabály konfigurálása az Azure CLI-vel
 Ez a CLI-mintaszkript létrehoz egy Azure Database for MySQL-kiszolgálót, és konfigurál egy kiszolgálószintű tűzfalszabályt. A szkript sikeres futtatása után a MySQL-kiszolgáló elérhetővé válik a konfigurált IP-címről és az összes Azure-szolgáltatás számára.

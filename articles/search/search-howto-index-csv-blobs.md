@@ -14,6 +14,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363036"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob CSV blobok indexelő
 Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-azure-blob-storage.md) elemez szöveg blobok szöveg egyetlen adattömb jelölik. Azonban a CSV-adatokat tartalmazó BLOB, gyakran szeretné kezelni a blob, különálló dokumentumként soronként. Például a következő tagolt szöveges megadott, érdemes elemzéséhez be két dokumentumot, minden egyes "id", "datePublished" és "címkék" mezőket tartalmazó: 

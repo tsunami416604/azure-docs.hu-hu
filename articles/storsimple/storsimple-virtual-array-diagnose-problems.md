@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb hibaelhárítása |} Microsoft Docs"
-description: "Ismerteti a StorSimple Device Manager funkció felderítésére, és ismerteti a StorSimple virtuális tömb hibaelhárítás céljából."
+title: A StorSimple virtuális tömb hibaelhárítása |} Microsoft Docs
+description: Ismerteti a StorSimple Device Manager funkció felderítésére, és ismerteti a StorSimple virtuális tömb hibaelhárítás céljából.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875255"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple Device Manager szolgáltatással a StorSimple virtuális tömb hibaelhárítása
 ## <a name="overview"></a>Áttekintés
