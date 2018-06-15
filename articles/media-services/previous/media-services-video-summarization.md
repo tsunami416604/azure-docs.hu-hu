@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790474"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Az Azure Media videó miniatűrök segítségével egy videó összegzésének létrehozása
 ## <a name="overview"></a>Áttekintés

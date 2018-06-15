@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937232"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Hogyan szeretné engedélyekkel felruházni fejlesztői fiókok OAuth 2.0 használatával az Azure API Management
 Számos API támogatja [OAuth 2.0](http://oauth.net/2/) biztosításához az API-t, és győződjön meg arról, hogy csak akkor érvényes, ha a felhasználók rendelkezhetnek hozzáféréssel, és csak, amely jogosult most erőforrások eléréséhez. Ahhoz, hogy Azure API Management interaktív Developer Console ilyen API-khoz, a szolgáltatás lehetővé teszi a szolgáltatáspéldány dolgozni az OAuth 2.0-s engedélyezett API konfigurálása.

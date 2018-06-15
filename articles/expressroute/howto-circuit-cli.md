@@ -1,13 +1,13 @@
 ---
-title: "Létrehozása és módosítása az Azure ExpressRoute-kapcsolatcsoportot: CLI |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan hozzon létre, kiépítéséhez, győződjön meg arról, frissítése, törlése és kiosztásának megszüntetése parancssori felület használatával ExpressRoute-kapcsolatcsoportot."
+title: 'Létrehozása és módosítása az Azure ExpressRoute-kapcsolatcsoportot: CLI |} Microsoft Docs'
+description: Ez a cikk ismerteti, hogyan hozzon létre, kiépítéséhez, győződjön meg arról, frissítése, törlése és kiosztásának megszüntetése parancssori felület használatával ExpressRoute-kapcsolatcsoportot.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23933248"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Létrehozásához és módosításához az ExpressRoute-kapcsolatcsoportot parancssori felület használatával
 

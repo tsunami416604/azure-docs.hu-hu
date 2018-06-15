@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788969"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Ügyféloldali ads beszúrása
 Ez a cikk beszúrása ügyféloldali ads különböző típusú információkat tartalmaz.

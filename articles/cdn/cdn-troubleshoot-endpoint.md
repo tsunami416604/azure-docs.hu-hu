@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33766104"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404-es állapotkód visszaadó Azure CDN-végpontok hibaelhárítása
 Ez a cikk elhárítása az Azure Content Delivery Network (CDN) végpontok 404-es HTTP-állapotkódok visszaadó teszi lehetővé.

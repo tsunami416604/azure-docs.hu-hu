@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31603844"
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automatikusan növelhető, vagy az Azure-ban a HPC Pack fürterőforrások csökkenthető a fürtmunkaterhelés szerint
 Ha az Azure "kapacitásnövelés" csomópontok HPC Pack fürt központi telepítését, vagy a HPC Pack-fürtöt hoz létre az Azure virtuális gépeken, érdemes lehet egy módszerre, amellyel automatikusan nő, és a fürt erőforrásait, például a csomópontok vagy a fürtön a munkaterhelés szerint magok csökkenhet. Ily módon a fürterőforrásokat skálázás lehetővé teszi az Azure-erőforrások hatékonyabban használja, és azok kapcsolatos költségek szabályozását.

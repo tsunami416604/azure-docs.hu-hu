@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599611"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Partner VPN eszközkonfigurációk áttekintése
 Ez a cikk áttekintést konfigurálása a helyszíni VPN-eszközök Azure VPN gatewayek való kapcsolódáshoz. A minta Azure-beli virtuális hálózat és a VPN-átjáró telepítési használt bemutatják a különböző helyszíni VPN eszközkonfigurációk ugyanazokkal a paraméterekkel használatával csatlakoznak.

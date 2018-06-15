@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: MT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/23/2018
+  ms.locfileid: "31786723"
 abstract:
   description: Az Azure verem Development Kit (ASDK), töltse le, és használja az ingyenes Azure-verem egycsomópontos központi telepítését. A ASDK célja, hogy olyan környezetet, amelyben Azure verem kiértékelheti és API-k és tooling eszköz nem éles környezetben Azure konzisztens modern alkalmazások fejlesztése biztosítson. <br/><br/>Ha egy Azure verem operátort, akik az integrált rendszerek infrastruktúrával kezeli és szolgáltatásokat biztosít, tekintse meg a <a href="/azure/azure-stack/">operátor dokumentáció</a>.<br/><br/>Ha olyan szolgáltatásokat használ, vagy hozza létre az alkalmazások Azure verem Azure verem felhasználó, tekintse meg a <a href="/azure/azure-stack/user">felhasználói dokumentáció</a>.
 sections:

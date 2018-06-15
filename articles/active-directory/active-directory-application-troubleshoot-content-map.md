@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927933"
 ---
 # <a name="troubleshoot-azure-active-directory-application-management-and-development"></a>Az Azure Active Directory-alkalmazás kezelési és fejlesztési hibaelhárítása
 Ez a cikk segítséget nyújt az kapcsolatos hibaelhárítás felügyeletével kapcsolatos leggyakoribb problémák némelyikéről hasznos dokumentumokat **vállalati alkalmazások** és új alkalmazások fejlesztése a **alkalmazás Beállításjegyzék**.

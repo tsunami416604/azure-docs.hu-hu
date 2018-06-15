@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599706"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>PowerShell-parancsmagok és a REST API-k, az SQL Data Warehouse
 Az SQL Data Warehouse számos feladat Azure PowerShell-parancsmagokkal vagy a REST API-k kezelhetők.  Az alábbiakban néhány olyan PowerShell-parancsok használata az SQL Data Warehouse a gyakori feladatok automatizálására.  Egyes jó REST, tekintse meg a cikk [kezelése a REST-méretezhetőség][Manage scalability with REST].

@@ -14,75 +14,81 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/05/2017
   ms.author: cfowler
+  ms.openlocfilehash: 561595cbed34fd105b9461ee34a9c270699450e3
+  ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/03/2017
+  ms.locfileid: "23956446"
 sections:
-  - title: 5 perces gyors útmutatók
+- title: 5 perces gyors útmutatók
+  items:
+  - type: list
+    style: icon48
     items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg'
-            text: .NET Core
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-dotnetcore'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg'
-            text: Node.js
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-nodejs'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg'
-            text: PHP
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-php'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg'
-            text: Java
-            href: 'https://docs.microsoft.com/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=/azure/app-service/containers/toc.json'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_ruby.svg'
-            text: Ruby
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-            text: Docker
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
-      - type: paragraph
-        text: 'Megtudhatja, hogyan végezhet folyamatos üzembe helyezést:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg'
-            text: VSTS
-            href: 'https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-docker-webapp??toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
-  - title: Részletes útmutatók
+    - image:
+        src: https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg
+      text: .NET Core
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-dotnetcore
+    - image:
+        src: https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg
+      text: Node.js
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-nodejs
+    - image:
+        src: https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg
+      text: PHP
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-php
+    - image:
+        src: https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg
+      text: Java
+      href: https://docs.microsoft.com/azure/azure-toolkit-for-intellij-hello-world-web-app-linux?toc=/azure/app-service/containers/toc.json
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_ruby.svg
+      text: Ruby
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_docker.svg
+      text: Docker
+      href: https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image
+  - type: paragraph
+    text: 'Megtudhatja, hogyan végezhet folyamatos üzembe helyezést:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkalmazásokat a Linux rendszeren futó App Service-ben'
-      - type: list
-        style: ordered
-        items:
-          - html: Hozzon létre egy alkalmazást a <a href="azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core és az Azure SQL Database</a> vagy a <a href="azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával
-          - html: <a href="/azure/app-service-web/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány kapcsolása az alkalmazáshoz </a>
-          - html: <a href="/azure/app-service-web/app-service-web-tutorial-custom-SSL">Meglévő SSL-tanúsítvány kötése az alkalmazáshoz</a>
-          - html: <a href="/azure/app-service-web/app-service-web-tutorial-content-delivery-network">CDN hozzáadása az alkalmazáshoz</a>
-  - title: Példák
+    - image:
+        src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
+      text: VSTS
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-docker-webapp??toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkalmazásokat a Linux rendszeren futó App Service-ben
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: Szkriptek keresése a gyakori feladatok kezeléséhez.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-          - html: <a href="/cli/azure/appservice">Azure CLI</a>
-  - title: Referencia
+    - html: Hozzon létre egy alkalmazást a <a href="azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core és az Azure SQL Database</a> vagy a <a href="azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js és a MongoDB</a> használatával
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-custom-domain">Meglévő egyéni tartomány kapcsolása az alkalmazáshoz </a>
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-custom-SSL">Meglévő SSL-tanúsítvány kötése az alkalmazáshoz</a>
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-content-delivery-network">CDN hozzáadása az alkalmazáshoz</a>
+- title: Példák
+  items:
+  - type: paragraph
+    text: Szkriptek keresése a gyakori feladatok kezeléséhez.
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI 2.0</a></p>
-          - title: Nyelvek
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/appservice">REST API-referencia</a></p>
+    - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
+    - html: <a href="/cli/azure/appservice">Azure CLI</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI 2.0</a></p>
+    - title: Nyelvek
+      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/appservice">REST API-referencia</a></p>

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894265"
 ---
 # <a name="visual-studio-images-on-azure"></a>A Visual Studio képek az Azure-on
 Visual Studio egy előre konfigurált Azure virtuális gépen (VM) használata egy gyors és egyszerű módot eljusson semmi sem egy összesítő és futó fejlesztői környezetben. A Visual Studio különböző konfigurációival rendszerkép érhetők el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).

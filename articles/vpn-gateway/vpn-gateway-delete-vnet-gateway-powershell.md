@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31603640"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>A PowerShell használatával virtuális hálózati átjáró törlése
 > [!div class="op_single_selector"]

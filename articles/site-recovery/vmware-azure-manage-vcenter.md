@@ -1,6 +1,6 @@
 ---
 title: " VMware vCenter Server az Azure Site Recovery kezelése |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan hozzáadása és kezelése az Azure Site Recovery a VMware vcenter programban."
+description: Ez a cikk ismerteti, hogyan hozzáadása és kezelése az Azure Site Recovery a VMware vcenter programban.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852302"
 ---
 # <a name="manage-vmware-vcenter-servers"></a>VMware vCenter-kiszolgálók kezelése 
 

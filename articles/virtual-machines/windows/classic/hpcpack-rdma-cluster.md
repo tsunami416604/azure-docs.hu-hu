@@ -1,11 +1,11 @@
 ---
-title: "MPI-alkalmazások futtatásához Windows RDMA fürt beállítása |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozzon létre egy Windows HPC Pack fürtöt H16r, H16mr, A8 vagy A9 virtuális gépeket az Azure RDMA hálózati MPI alkalmazások futtatásához használandó méretét."
+title: MPI-alkalmazások futtatásához Windows RDMA fürt beállítása |} Microsoft Docs
+description: Megtudhatja, hogyan hozzon létre egy Windows HPC Pack fürtöt H16r, H16mr, A8 vagy A9 virtuális gépeket az Azure RDMA hálózati MPI alkalmazások futtatásához használandó méretét.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 7d9f5bc8-012f-48dd-b290-db81c7592215
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852540"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>MPI-alkalmazások futtatására HPC Pack Windows RDMA fürt beállítása
 Az Azure-ban Windows RDMA fürt beállítása [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) és [RDMA-kompatibilis HPC Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. Az RDMA-kompatibilis, a Windows Server-alapú HPC Pack-fürtben lévő csomópontok beállításakor MPI alkalmazások hatékonyan kis késéssel, a távoli közvetlen memória-hozzáférés (RDMA) technológia alapuló Azure magas teljesítmény hálózati protokollt használó kommunikációra.

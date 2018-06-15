@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31592428"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>A PowerShell segítségével az Azure CDN kezelése
 PowerShell biztosítja a leginkább rugalmas módszer kezeli az Azure CDN-profil és a végpontok.  Használhatja PowerShell interaktív módon vagy parancsfájlok írásával felügyeleti feladatok automatizálására.  Ez az oktatóanyag azt mutatja be, több leggyakoribb feladatokat is elérheti a PowerShell használatával kezeli az Azure CDN-profil és a végpontok.

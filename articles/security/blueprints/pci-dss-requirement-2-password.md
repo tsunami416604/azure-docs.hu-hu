@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894160"
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>PCI DSS-kompatibilis környezetben jelszavakra vonatkozó követelmények 
 ## <a name="pci-dss-requirement-2"></a>PCI DSS követelmény 2

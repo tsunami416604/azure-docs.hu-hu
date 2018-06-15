@@ -16,9 +16,10 @@ ms.reviewer: bpham
 ms.custom: it-pro
 ms.openlocfilehash: 8cdf30ed09601a31529073eaedd4ab53780157d5
 ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077549"
 ---
 # <a name="how-to-add-your-organizations-privacy-info-in-azure-active-directory"></a>Útmutató: Azure Active Directoryban adja hozzá a szervezet adatvédelmi információ
 Ez a cikk azt ismerteti, hogyan egy Bérlői rendszergazda adhat hozzá adatvédelemmel kapcsolatos információ egy szervezet Azure Active Directory (Azure AD) bérlői, az Azure portálon keresztül.

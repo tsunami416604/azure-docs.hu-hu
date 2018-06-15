@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33934284"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban
 API-kezelés lehetővé teszi bizonyos események értesítéseinek konfigurálásához, és konfigurálhatja az e-mail-sablonokkal a rendszergazdák és fejlesztők számára az API Management-példány folytatott kommunikációhoz használt. Ez a cikk bemutatja, hogyan használható eseményt az értesítések konfigurálása, és ezeket az eseményeket az e-mail-sablonokat konfigurálásának áttekintése.

@@ -1,6 +1,6 @@
 ---
-title: "Prémium szintű Storage: Windows virtuális gépek teljesítményének kialakítása |} Microsoft Docs"
-description: "Prémium szintű Azure Storage használatával nagy teljesítményű alkalmazások tervezése. Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása az Azure virtuális gépeken futó I/O-igényes munkaterhelések kínál."
+title: 'Prémium szintű Storage: Windows virtuális gépek teljesítményének kialakítása |} Microsoft Docs'
+description: Prémium szintű Azure Storage használatával nagy teljesítményű alkalmazások tervezése. Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása az Azure virtuális gépeken futó I/O-igényes munkaterhelések kínál.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23949481"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
