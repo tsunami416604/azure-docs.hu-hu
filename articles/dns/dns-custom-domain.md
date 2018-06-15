@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS integrálása az Azure-erőforrások |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható az Azure DNS mentén DNS biztosít az Azure-erőforrások."
+title: Azure DNS integrálása az Azure-erőforrások |} Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure DNS mentén DNS biztosít az Azure-erőforrások.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27994382"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Adja meg az egyéni tartomány beállításait az Azure-szolgáltatások az Azure DNS használatával
 

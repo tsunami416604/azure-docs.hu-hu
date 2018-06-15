@@ -1,6 +1,6 @@
 ---
-title: "-Microsoft fenyegetés modellezési eszköz - hitelesítési Azure |} Microsoft Docs"
-description: "a fenyegetések modellezése eszköz felfedett fenyegetések megoldást"
+title: -Microsoft fenyegetés modellezési eszköz - hitelesítési Azure |} Microsoft Docs
+description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019670"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítési |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |

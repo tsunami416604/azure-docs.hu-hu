@@ -1,11 +1,11 @@
 ---
-title: "Tekintse át az Azure Import/Export feladatállapot - 1-es verzió |} Microsoft Docs"
-description: "Útmutató a naplófájlokban jön létre, amikor az importálási vagy exportálási feladat futtatása az importálási/exportálási feladat állapotának megtekintéséhez."
+title: Tekintse át az Azure Import/Export feladatállapot - 1-es verzió |} Microsoft Docs
+description: Útmutató a naplófájlokban jön létre, amikor az importálási vagy exportálási feladat futtatása az importálási/exportálási feladat állapotának megtekintéséhez.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c69d1d69-6403-4eee-9949-0185faeecfa1
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873708"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>A másolási naplófájlok Azure Import/Export feladat állapota áttekintése
 Amikor a Microsoft Azure Import/Export szolgáltatás dolgoz fel egy importálása vagy exportálása feladattal társított meghajtók, ír másolása a tárfiók naplófájljait, vagy amelyen importálunk vagy bináris objektumok exportálása. A naplófájl minden olyan fájlról, amely lett importálva, illetve nem exportálható részletes állapotát tartalmazza. Minden példány naplófájl URL-érték érkezett vissza egy befejezett feladat állapotának lekérdezése Lásd: [Get Job](/rest/api/storageservices/Get-Job3) további információt.  

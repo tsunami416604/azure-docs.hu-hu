@@ -1,6 +1,6 @@
 ---
-title: "Lemezek kizárása a védelem alól Azure Site Recovery használatával | Microsoft Docs"
-description: "Ez a cikk azt ismerteti, miért és hogyan zárhat ki virtuálisgép-lemezeket a Hyper-V–Azure replikációkból."
+title: Lemezek kizárása a védelem alól Azure Site Recovery használatával | Microsoft Docs
+description: Ez a cikk azt ismerteti, miért és hogyan zárhat ki virtuálisgép-lemezeket a Hyper-V–Azure replikációkból.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467183"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 Ez a cikk azt mutatja be, hogyan zárhatóak ki lemezek a replikációból. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások.

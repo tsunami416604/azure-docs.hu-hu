@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774573"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Fenyegetések felderítése az Azure Security Centerben
 Ez a cikk segít az Azure Security Center fenyegetésfelderítésének a biztonsággal kapcsolatos problémák kezeléséhez történő használatában.

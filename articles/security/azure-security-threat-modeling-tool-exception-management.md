@@ -1,6 +1,6 @@
 ---
-title: "Kivétel kezelése – Microsoft fenyegetés modellezési eszköz - Azure |} Microsoft Docs"
-description: "a fenyegetések modellezése eszköz felfedett fenyegetések megoldást"
+title: Kivétel kezelése – Microsoft fenyegetés modellezési eszköz - Azure |} Microsoft Docs
+description: a fenyegetések modellezése eszköz felfedett fenyegetések megoldást
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019585"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Biztonsági keret: Kivételek kezelése |} Megoldást 
 | A termék vagy szolgáltatás | Cikk |

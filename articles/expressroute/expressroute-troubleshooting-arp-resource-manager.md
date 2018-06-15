@@ -1,6 +1,6 @@
 ---
-title: "ARP-tábla beolvasása: erőforrás-kezelő: Azure ExpressRoute-hibaelhárítási |} Microsoft Docs"
-description: "Ezen a lapon utasításokkal szolgál az ExpressRoute-kapcsolatcsoportot az ARP tábla beolvasása"
+title: 'ARP-tábla beolvasása: erőforrás-kezelő: Azure ExpressRoute-hibaelhárítási |} Microsoft Docs'
+description: Ezen a lapon utasításokkal szolgál az ExpressRoute-kapcsolatcsoportot az ARP tábla beolvasása
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850783"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>A Resource Manager üzembe helyezési modellel tábla ARP beolvasása
 > [!div class="op_single_selector"]

@@ -1,11 +1,11 @@
 ---
-title: "A felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs"
-description: "Gazdag felhasználói fiók kiépítésének és megszüntetésének biztosítása már szerepel az Azure AD Application Gallery alkalmazások gyors konfigurálásához"
+title: A felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása |} Microsoft Docs
+description: Gazdag felhasználói fiók kiépítésének és megszüntetésének biztosítása már szerepel az Azure AD Application Gallery alkalmazások gyors konfigurálásához
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464425"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>A felhasználók átadása egy Azure AD-katalógusában alkalmazás konfigurálása
 

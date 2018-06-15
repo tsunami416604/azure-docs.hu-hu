@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Application Gateway SSL-házirend áttekintése |} Microsoft Docs"
-description: "További tudnivalók: hogyan Azure Application Gateway teszi lehetővé az SSL-házirend konfigurálása"
+title: Az Azure Application Gateway SSL-házirend áttekintése |} Microsoft Docs
+description: 'További tudnivalók: hogyan Azure Application Gateway teszi lehetővé az SSL-házirend konfigurálása'
 services: application gateway
 documentationcenter: na
 author: amsriva
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure resource manager
 ms.service: application gateway
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836951"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Alkalmazás átjáró SSL házirendek – áttekintés
 

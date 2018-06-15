@@ -1,12 +1,12 @@
 ---
-title: "Cserélje le a StorSimple 8000 sorozatú eszköz vezérlő |} Microsoft Docs"
-description: "Távolítsa el, és cserélje le a StorSimple 8000 series eszközön legalább az egyik vezérlő modulok ismerteti."
+title: Cserélje le a StorSimple 8000 sorozatú eszköz vezérlő |} Microsoft Docs
+description: Távolítsa el, és cserélje le a StorSimple 8000 series eszközön legalább az egyik vezérlő modulok ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875388"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Cserélje le a StorSimple eszköz vezérlő modul
 ## <a name="overview"></a>Áttekintés

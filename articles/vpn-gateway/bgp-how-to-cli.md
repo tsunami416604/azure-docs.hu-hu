@@ -1,13 +1,13 @@
 ---
-title: "Az Azure VPN gateway a BGP konfigurálása: erőforrás-kezelő és a parancssori Felülettel |} Microsoft Docs"
-description: "Ez a cikk végigvezeti az Azure VPN gateway a BGP konfigurálása Azure Resource Manager és a parancssori felület használatával."
+title: 'Az Azure VPN gateway a BGP konfigurálása: erőforrás-kezelő és a parancssori Felülettel |} Microsoft Docs'
+description: Ez a cikk végigvezeti az Azure VPN gateway a BGP konfigurálása Azure Resource Manager és a parancssori felület használatával.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884040"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Az Azure VPN gateway a BGP konfigurálása parancssori felület használatával
 

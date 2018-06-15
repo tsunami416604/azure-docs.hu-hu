@@ -1,11 +1,11 @@
 ---
-title: "Nem megfelelő felhasználók csoportja alatt kiépített egy Azure AD-katalógusában alkalmazás |} Microsoft Docs"
-description: "Ha szeretné tudni, miért kiépített egy alkalmazás a várt, mint a felhasználók különböző szabálykészleteket útmutató"
+title: Nem megfelelő felhasználók csoportja alatt kiépített egy Azure AD-katalógusában alkalmazás |} Microsoft Docs
+description: Ha szeretné tudni, miért kiépített egy alkalmazás a várt, mint a felhasználók különböző szabálykészleteket útmutató
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383137"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Nem megfelelő felhasználók csoportja folyamatban kiépített egy Azure AD-katalógusában alkalmazáshoz
 

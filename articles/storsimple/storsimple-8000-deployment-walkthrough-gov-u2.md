@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series eszköz kormányzati portálon üzembe helyezése |} Microsoft Docs"
-description: "A StorSimple 8000 series eszköz Update 3 és újabb verziók, és a szolgáltatás fut az Azure Government portálon központi telepítésének ajánlott eljárásai és lépéseket ismerteti."
+title: A StorSimple 8000 series eszköz kormányzati portálon üzembe helyezése |} Microsoft Docs
+description: A StorSimple 8000 series eszköz Update 3 és újabb verziók, és a szolgáltatás fut az Azure Government portálon központi telepítésének ajánlott eljárásai és lépéseket ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875150"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>A kormányzati portálon a helyszíni StorSimple eszköz üzembe helyezése
 

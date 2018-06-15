@@ -1,11 +1,11 @@
 ---
-title: "Docker-gazdagépekből létrehozása az Azure-ban Docker gép |} Microsoft Docs"
-description: "Docker gép docker-gazdagépekből létrehozása az Azure-ban való használatát ismerteti."
+title: Docker-gazdagépekből létrehozása az Azure-ban Docker gép |} Microsoft Docs
+description: Docker gép docker-gazdagépekből létrehozása az Azure-ban való használatát ismerteti.
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 7a3ff6e1-fa93-4a62-b524-ab182d2fea08
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23883879"
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Docker gazdagépek létrehozása az Azure-ban a docker-machine segítségével
 Futó [Docker](https://www.docker.com/) tárolók egy gazdagépet a docker démon futtató virtuális igényel.
