@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213146"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>A service fabric-fürt terheléselosztás
 A Service Fabric fürt erőforrás-kezelő támogatja a dinamikus terheléselosztó módosítások reagál a hozzáadást, illetve a csomópontok vagy szolgáltatások eltávolítására. Azt is automatikusan javítja a megkötés megsértésének, és proaktív újra egyensúlyba hozza a fürt. De gyakoriságát. Ezek a műveletek készít, és mi váltja ki őket?

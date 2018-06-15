@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212224"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-alapú kommunikációs verem a Reliable Services
 A Reliable Services keretrendszer lehetővé teszi, hogy a szolgáltatás szerzők kiválasztása a kommunikációs verem, amelyeket be szeretne használni a szolgáltatáshoz. Azok a kommunikációs verem az általuk választott keresztül is csatlakoztathatja a **ICommunicationListener** által visszaadott a [CreateServiceReplicaListeners vagy CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) módszerek. A keretrendszer a kommunikációs verem, a Windows Communication Foundation (WCF) szolgáltatást szeretné használni a WCF-alapú kommunikációt szerzőknek alapú megvalósítását.

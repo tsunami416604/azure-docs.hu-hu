@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211140"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure Service Fabric megbízható gyűjtemények
 Ez a szakasz útmutatást nyújt a megbízható állapotkezelője és megbízható gyűjtemények használatával. A cél, hogy a felhasználók közös nehézségek elkerülése érdekében.

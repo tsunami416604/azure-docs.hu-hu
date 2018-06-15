@@ -10,9 +10,10 @@ ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 655f0b625d9f1b7c7ad216e9276da62d8454380f
 ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30929427"
 ---
 1. A portálon a bal oldalon kattintson a **+** gombra, és írja be a „Virtuális hálózati átjáró” kifejezést a keresőmezőbe. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. A **Virtuális hálózati átjáró** lap alsó részén kattintson a **Létrehozás** gombra a **Virtuális hálózati átjáró létrehozása** lap megnyitásához.
 2. A **Virtuális hálózati átjáró létrehozása** lapon töltse ki a virtuális hálózati átjáró értékeit.

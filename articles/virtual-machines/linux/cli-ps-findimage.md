@@ -1,11 +1,11 @@
 ---
-title: "Válassza ki a Linux rendszerű virtuális lemezképeket az Azure parancssori felülettel |} Microsoft Docs"
-description: "Útmutató az Azure CLI segítségével határozhatja meg, a közzétevő, az ajánlat, SKU és verziója a piactér Virtuálisgép-lemezképek."
+title: Válassza ki a Linux rendszerű virtuális lemezképeket az Azure parancssori felülettel |} Microsoft Docs
+description: Útmutató az Azure CLI segítségével határozhatja meg, a közzétevő, az ajánlat, SKU és verziója a piactér Virtuálisgép-lemezképek.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 7a858e38-4f17-4e8e-a28a-c7f801101721
 ms.service: virtual-machines-linux
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29740883"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux virtuális gép lemezképek megkeresése az Azure piactéren az Azure parancssori felülettel
 Ez a témakör ismerteti, hogyan használható az Azure CLI 2.0 Virtuálisgép-lemezképek megkeresése az Azure piactéren. Ezen információk használatával adja meg a Piactéri rendszerkép létrehozásakor a virtuális gépek programozott módon a CLI használata esetén a Resource Manager-sablonok vagy más eszközökkel.

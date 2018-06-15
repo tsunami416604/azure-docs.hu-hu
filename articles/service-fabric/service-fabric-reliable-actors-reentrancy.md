@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207094"
 ---
 # <a name="reliable-actors-reentrancy"></a>Megbízható szereplője rögzítve
 A Reliable Actors futásidejű alapértelmezés szerint lehetővé teszi, hogy logikai hívás környezetfüggő rögzítve. Ez lehetővé teszi a szereplőket ismételten belépő, ha azok hívás környezetben ugyanabba a láncba kell. Például A Aktor üzenetet küld szereplő B, egy üzenet küld Aktor a c kiszolgálóra. Az üzenet feldolgozása részeként szereplő C Aktor A, ha az üzenet ismételten belépő, amelynek engedélyezni. Bármely más üzeneteket, amelyek egy másik hívás környezetet részei le lesz tiltva a Aktor A feldolgozás befejezéséig.

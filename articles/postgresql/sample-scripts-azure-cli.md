@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz"
-description: "Ez a cikk az Azure Database for PostgreSQL-kiszolgálókkal folytatott kommunikációhoz elérhető számos Azure CLI-példakódot sorolja fel."
+title: Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz
+description: Ez a cikk az Azure Database for PostgreSQL-kiszolgálókkal folytatott kommunikációhoz elérhető számos Azure CLI-példakódot sorolja fel.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29688122"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz 
 A következő táblázat hivatkozásokat tartalmaz az Azure Database for PostgreSQL-hez elérhető Azure CLI-példaszkriptekre.

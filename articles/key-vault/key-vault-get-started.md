@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070351"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével történő használatának a megismerésében, és az alábbi tevékenységeken vezeti végig:

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Operations Management Suite (OMS) dokumentációja – oktatóanyagok | Microsoft Docs"
-description: "A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében. Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz."
+title: Az Azure Operations Management Suite (OMS) dokumentációja – oktatóanyagok | Microsoft Docs
+description: A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében. Ez a cikk azonosítja az OMS különböző szolgáltatásait, és a részletes tartalmukra mutató hivatkozásokat tartalmaz.
 services: operations-management-suite
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071211"
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Mi az az Operations Management Suite (OMS)?
 A Microsoft Operations Management Suite (OMS) a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a felhőalapú infrastruktúra kezelésében és védelmében.  Mivel az OMS felhőalapú szolgáltatás, gyorsan és az infrastruktúra-szolgáltatásokra fordított minimális mértékű befektetéssel üzembe helyezhető.  Az új funkciók bevezetése automatikus, így csökkenthetők a folyamatos karbantartás és frissítés költségei.

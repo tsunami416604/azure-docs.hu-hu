@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209338"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>A Reliable Actors keretrendszer a polimorfizmus
 A Reliable Actors keretrendszer használatával szeretné használni a kialakítás objektumorientált ugyanazok a módszerek számos szereplője build teszi lehetővé. Ezek a módszerek egyike polimorf, amely lehetővé teszi, hogy a típusok és felületek több öröklik az általános a szülők. Öröklődés Reliable Actors keretében általában modelljébe .NET néhány további korlátozásokkal. Java/Linux, esetén ez azt jelenti a Java-modell.

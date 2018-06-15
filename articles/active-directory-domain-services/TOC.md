@@ -59,7 +59,7 @@
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Kapcsolódó témakörök
-## [Azure Active Directory](../active-directory/active-directory-whatis.md)
+## [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [Többtényezős hitelesítés](../active-directory/authentication/multi-factor-authentication.md)
 

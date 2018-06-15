@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás az Azure Database for PostgreSQL-hez a Python használatával"
-description: "Ez a rövid útmutató egy olyan Python-kódmintát biztosít, amellyel csatlakozhat egy PostgreSQL-hez készült Azure-adatbázishoz, és adatokat kérdezhet le arról."
+title: Csatlakozás az Azure Database for PostgreSQL-hez a Python használatával
+description: Ez a rövid útmutató egy olyan Python-kódmintát biztosít, amellyel csatlakozhat egy PostgreSQL-hez készült Azure-adatbázishoz, és adatokat kérdezhet le arról.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687319"
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Python használatával
 Ez a rövid útmutató ismerteti, hogyan használható a [Python](https://python.org) a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz. Azt is bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatbázisban található adatok macOS, Ubuntu Linux és Windows platformon. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Python használatával kapcsolatosan, a PostgreSQL-hez készült Azure Database használatában pedig még járatlan.

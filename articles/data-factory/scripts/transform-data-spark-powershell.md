@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30165790"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell parancsfájl - átalakítási adatok a felhőben Azure Data Factory használatával
 

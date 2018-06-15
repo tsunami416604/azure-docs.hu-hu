@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás az Azure Database for PostgreSQL-hez a Node.js segítségével"
-description: "Ebben a rövid útmutatóban biztosítjuk a PostgreSQL-hez készült Azure Database-ről csatlakozásra és adatlekérdezésre használható Node.js-kódmintát."
+title: Csatlakozás az Azure Database for PostgreSQL-hez a Node.js segítségével
+description: Ebben a rövid útmutatóban biztosítjuk a PostgreSQL-hez készült Azure Database-ről csatlakozásra és adatlekérdezésre használható Node.js-kódmintát.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691943"
 ---
 # <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>A PostgreSQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a Node.js használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for PostgreSQL-hez egy [Node.js](https://nodejs.org/)-alkalmazással. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.

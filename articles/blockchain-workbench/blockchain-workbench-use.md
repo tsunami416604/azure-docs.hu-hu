@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/26/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8732d1b87acaa6673ae92b3302fb257dcb134217
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258039"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Alkalmazások használata az Azure Blockchain munkaterület
 
@@ -33,7 +34,7 @@ Jelentkezzen be a Blockchain munkaterület tagjaként kell. Ha nincsenek a felso
 
 ## <a name="create-new-contract"></a>Hozzon létre új szerződés 
 
-Létre kell hoznia egy új szerződést, tagjának lennie kell a **AllowedInstanceRoles** szerepkör. 
+Létre kell hoznia egy új szerződést, meg kell lennie a szerződés, egy megadott tag **kezdeményező**. Alkalmazási szerepköröknek és kezdeményezők a Szerződés meghatározása információkért lásd: [munkafolyamatok konfigurációs áttekintésében](blockchain-workbench-configuration-overview.md#workflows). A tagok hozzárendelése szerepkörökhöz információkért lásd: [tag hozzáadása alkalmazás](blockchain-workbench-manage-users.md#add-member-to-application).
 
 1. Blockchain munkaterület alkalmazás területen válassza ki az alkalmazás csempe, amely tartalmazza a szerződés szeretne létrehozni. Egy aktív adategyezmények listáján jelennek meg.
 
@@ -50,6 +51,8 @@ Létre kell hoznia egy új szerződést, tagjának lennie kell a **AllowedInstan
     ![Aktív szerződések listája](media/blockchain-workbench-use/active-contracts.png)
 
 ## <a name="take-action-on-contract"></a>Művelet végrehajtása a szerződés
+
+Állapotától függően a szerződést, akkor tagok való áttéréssel műveletek hajthatók végre a következő az egyezmény állapotba. Műveletek is meg van adva [átmenetek](blockchain-workbench-configuration-overview.md#transitions) belül egy [állapot](blockchain-workbench-configuration-overview.md#states). Az átmenet engedélyezett alkalmazás vagy a példány szerepkörhöz tartozó tagok is hajtsa végre a műveletet. 
 
 1. Blockchain munkaterület alkalmazás területen válassza ki az alkalmazás csempe, amely tartalmazza a szerződés hajtsa végre a műveletet.
 2. A listában válassza ki a szerződést. A szerződés adatait különböző szakaszokat jelennek meg. 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29689887"
 ---
 # <a name="azure-database-for-postgresql-server-firewall-rules"></a>Azure-adatbázis PostgreSQL-kiszolgáló tűzfalszabályainak
 Azure-adatbázis PostgreSQL-kiszolgáló tűzfal megakadályozza a összes az adatbázis-kiszolgáló csak akkor adja meg, mely számítógépek rendelkeznek engedéllyel. A tűzfal engedélyezi a hozzáférést a kiszolgálóhoz, az egyes kérelmek az eredeti IP-címe alapján.

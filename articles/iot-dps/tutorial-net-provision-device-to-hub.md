@@ -1,22 +1,21 @@
 ---
 title: Eszköz kiépítése az Azure IoT Hub Device Provisioning Service (.NET) segítségével | Microsoft Docs
 description: Eszköz kiépítése egyetlen IoT Hubra az Azure IoT Hub Device Provisioning Service (.NET) használatával
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-masebo
+ms.author: bryanla
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: c02835e8712c79ea540d7560da111f54abbeed23
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e31c06268245946bd80e1328f4d7176f1e9a660f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629881"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Az eszköz regisztrálása IoT Hubra az Azure IoT Hub Provisioning Service ügyfél (.NET) használatával
 
@@ -71,7 +70,7 @@ A következő két módon regisztrálható az eszköz a Device Provisioning Serv
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban feljegyzett DPS kapcsolati karakterláncra.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban feljegyzett DPS kapcsolati sztringre.
    
     ```csharp
     static readonly string ServiceConnectionString = "{DPS connection string}";

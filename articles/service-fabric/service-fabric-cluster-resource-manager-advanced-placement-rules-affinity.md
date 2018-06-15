@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204855"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurálásával és a Service Fabric szolgáltatás affinitás használatával
 Kapcsolat az biztosított főként a vezérlőelem megkönnyítik az átmenet nagyobb egységes alkalmazások be a felhő- és mikroszolgáltatások világ segítségével. Azt is szolgál az optimalizálás szolgáltatások teljesítményének növelése, így bár mellékhatásokkal is.

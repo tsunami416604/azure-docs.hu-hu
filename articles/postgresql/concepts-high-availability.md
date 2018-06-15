@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687082"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Magas rendelkezésre állású fogalmak PostgreSQL Azure-adatbázisban
 Az Azure-adatbázishoz PostgreSQL-szolgáltatáshoz biztosít garantált magas szintű rendelkezésre állási. A pénzügyi biztonsági szolgáltatásiszint-szerződéssel (SLA) alapján általánosan rendelkezésre álló 99,99 %. Nincs állásidő alkalmazás gyakorlatilag a szolgáltatás használatakor.

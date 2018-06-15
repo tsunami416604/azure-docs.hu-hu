@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206655"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Korábbi Java Service Fabric-alkalmazások frissítése a Java-kódtárak a Mavenből történő lekérésére
 Nemrégiben áthelyeztük a Service Fabric Java bináris fájlokat a Service Fabric Java SDK-ból a Mavenen futó tárakba. A **mavencentral** paranccsal mostantól lekérheti a legújabb Service Fabric Java-függőségeket. Ennek a gyors üzembehelyezési útmutatónak a segítségével Yeoman-sablonok vagy az Eclipse használatával frissítheti a korábban a Service Fabric Java SDK-val való használatra létrehozott meglévő Java-alkalmazásait, hogy a Maven-alapú build kompatibilis legyen azokkal.

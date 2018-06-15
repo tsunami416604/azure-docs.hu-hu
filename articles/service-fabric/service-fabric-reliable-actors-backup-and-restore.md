@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206866"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Alkalmazzon Reliable Actors biztonsági mentése és visszaállítása
 A következő példa egy egyéni szereplő szolgáltatás adatok biztonsági mentésének szereplő már szerepel a távoli eljáráshívás-figyelő kihasználásával metódus közzététele `ActorService`:

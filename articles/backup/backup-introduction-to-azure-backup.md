@@ -1,26 +1,21 @@
 ---
-title: Mi az az Azure Backup? | Microsoft Docs
+title: Mi az az Azure Backup?
 description: Az Azure Backup használatával biztonsági mentést végezhet, és visszaállíthatja az adatokat Windows Serverekről, Windows-munkaállomásokról, System Center DPM-kiszolgálókról, valamint az Azure-beli virtuális gépekről.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: biztonsági mentés és visszaállítás; recovery services; biztonsági mentési megoldások
-ms.assetid: 0d2a7f08-8ade-443a-93af-440cbf7c36c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;anuragm
+ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: b6701cdc4dd25c0a46193a73d1edd022388bc5ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607099"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -118,7 +113,7 @@ Az Azure Backup lehetővé teszi teljes, felügyelt lemezes virtuális gépek vi
 ## <a name="what-are-the-features-of-each-backup-component"></a>Milyen funkciókat nyújtanak az egyes Backup-összetevők?
 A következő szakaszok táblázatai az egyes Azure Backup-összetevők különböző funkcióinak elérhetőségét vagy támogatottságát foglalják össze. A további támogatásra vagy részletekre vonatkozó információkat a táblázatok alatt találja.
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 | Szolgáltatás | Az Azure Backup ügynöke | System Center DPM | Azure Backup Server | Azure IaaS virtuális gép biztonsági mentése |
 | --- | --- | --- | --- | --- |
 | Recovery Services-tároló |![Igen][green] |![Igen][green] |![Igen][green] |![Igen][green] |
@@ -230,7 +225,7 @@ Az Azure Backup biztosítja a helyszíni és a felhőben tárolt adatok védelm�
 
 A következő fogalmak segíthetnek a fontos döntések meghozatalában a biztonsági mentéssel és a vészhelyreállítással kapcsolatban.
 
-| Fogalom | Részletek | Biztonsági mentés | Vészhelyreállítás (DR) |
+| Fogalom | Részletek | Backup | Vészhelyreállítás (DR) |
 | --- | --- | --- | --- |
 | Helyreállítási időkorlát (RPO) |Az elfogadható adatveszteség mennyisége, ha helyreállítást kell végezni. |A biztonsági mentési megoldások elfogadható RPO-ja nagyon változó. Virtuális gépek biztonsági mentései esetén általában egy nap az RPO, míg adatbázisok biztonsági mentései esetén akár 15 perc is lehet. |A vészhelyreállítási megoldások alacsony RPO-kkal rendelkeznek. A DR másolat néhány másodperccel vagy néhány perccel késhet. |
 | Helyreállítási időre vonatkozó célkitűzés (RTO) |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. |A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről. |A vészhelyreállítási megoldások RTO-i sokkal rövidebbek, mert jobban szinkronban vannak a forrással. Kevesebb módosítást kell feldolgozni. |

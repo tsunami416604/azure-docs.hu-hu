@@ -1,11 +1,11 @@
 ---
 layout: LandingPage
-description: "Megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet klasszikus üzembe helyezéssel."
-title: "A Linuxhoz készült Azure Virtual Machines (klasszikus üzembe helyezés) dokumentációja | Microsoft Docs"
+description: Megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet klasszikus üzembe helyezéssel.
+title: A Linuxhoz készült Azure Virtual Machines (klasszikus üzembe helyezés) dokumentációja | Microsoft Docs
 services: virtual-machines-linux
 author: czeumault
 manager: carolz
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,4 +17,5 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23072843"
 ---

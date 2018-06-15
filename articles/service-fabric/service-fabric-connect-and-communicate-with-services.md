@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205586"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Csatlakozás és a Service Fabric szolgáltatásokkal kommunikálni
 A Service Fabric szolgáltatás fut. valahol a Service Fabric-fürt, általában pontjain több virtuális géphez Akkor helyezheti át egyetlen helyről a másikra, a szolgáltatás tulajdonosa, vagy automatikusan a Service Fabric. Szolgáltatások statikusan nem kötődnek, egy adott számítógép vagy a címet.

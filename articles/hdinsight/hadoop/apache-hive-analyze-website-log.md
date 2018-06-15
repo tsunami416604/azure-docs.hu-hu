@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31398157"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>A Hive használata a Windows-alapú hdinsight eszközzel webhelyek naplóinak elemzése
 Útmutató a HDInsight HiveQL ezen webhelyek naplóinak elemzése. A webhelynapló elemzése is használható, szegmentálhatja a célközönséget, hasonló tevékenységek alapján, a látogatók demográfiai szerinti kategóriák, valamint tudja meg a tartalom azokat nézet, a webhelyek származnak, és így tovább.

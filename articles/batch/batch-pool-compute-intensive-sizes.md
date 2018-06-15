@@ -1,12 +1,12 @@
 ---
-title: "Számítási igényű Azure virtuális gépek használata a kötegelt |} Microsoft Docs"
-description: "How Azure Batch készletek RDMA-kompatibilisek-e vagy GPU-engedélyezve van a Virtuálisgép-méretek előnyeit"
+title: Számítási igényű Azure virtuális gépek használata a kötegelt |} Microsoft Docs
+description: How Azure Batch készletek RDMA-kompatibilisek-e vagy GPU-engedélyezve van a Virtuálisgép-méretek előnyeit
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29762441"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Használja az RDMA-kompatibilisek-e vagy GPU-kompatibilis példány kötegelt készletek
 

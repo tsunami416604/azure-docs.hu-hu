@@ -163,6 +163,13 @@
           href: service-fabric-application-model.md
         - name: Alkalmazás- és szolgáltatásjegyzékek
           href: service-fabric-application-and-service-manifests.md
+        - name: Példák alkalmazások és szolgáltatások jegyzékeire
+          href: service-fabric-manifest-examples.md
+          items:
+            - name: Példák Reliable Services-alkalmazások és szolgáltatások jegyzékeire
+              href: service-fabric-manifest-example-reliable-services-app.md
+            - name: Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
+              href: service-fabric-manifest-example-container-app.md
         - name: Futtatási modell
           href: service-fabric-hosting-model.md
         - name: Alkalmazások biztonsága
@@ -399,6 +406,8 @@
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: ASP.NET Core-szolgáltatás összeállítása
           href: service-fabric-add-a-web-frontend.md
+        - name: Apache Tomcat-kiszolgálótároló összeállítása Linuxon.
+          href: service-fabric-get-started-tomcat.md
         - name: Biztonság konfigurálása
           items:
             - name: Titkos alkalmazáskulcsok kezelése

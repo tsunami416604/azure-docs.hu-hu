@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779468"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése
 A Security Center a számítási feladatokhoz tartozó kívánt konfigurációk biztonsági szabályzatokkal történő meghatározásával segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Az Azure-előfizetésekre vonatkozó szabályzatok meghatározása és azoknak a számítási feladat típusához vagy az adatok érzékenységéhez történő igazítása után a Security Center biztonsági javaslatokat kínál a számítási, hálózati, SQL- és tárolási, illetve az alkalmazásokra vonatkozó erőforrásokhoz. Az oktatóanyag során a következőket fogja elsajátítani:

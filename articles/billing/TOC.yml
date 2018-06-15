@@ -41,6 +41,12 @@
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Fenntartott példányok felügyelete
           href: billing-manage-reserved-vm-instance.md
+    - name: REST-példák
+      items:
+        - name: A vállalati költségek áttekintése
+          href: billing-review-enterprise-billing.md
+        - name: Az előfizetés használatának áttekintése
+          href: billing-review-subscription-billing.md
 - name: Fiók kezelése
   items:
     - name: Ingyenes fiók

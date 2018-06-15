@@ -1,6 +1,6 @@
 ---
-title: "A queue storage (C++) használatával |} Microsoft Docs"
-description: "Ismerje meg, hogyan használható a queue storage szolgáltatás az Azure-ban. A c++ minták írja."
+title: A queue storage (C++) használatával |} Microsoft Docs
+description: Ismerje meg, hogyan használható a queue storage szolgáltatás az Azure-ban. A c++ minták írja.
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874051"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A C++ Queue Storage használata
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

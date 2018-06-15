@@ -1,12 +1,12 @@
 ---
-title: "Állítsa vissza egy kötetet biztonsági másolatból a StorSimple 8000 Series |} Microsoft Docs"
-description: "A StorSimple Device Manager szolgáltatás biztonságimásolat-katalógus a StorSimple-kötet visszaállítása egy biztonságimásolat-készlet használatát ismerteti."
+title: Állítsa vissza egy kötetet biztonsági másolatból a StorSimple 8000 Series |} Microsoft Docs
+description: A StorSimple Device Manager szolgáltatás biztonságimásolat-katalógus a StorSimple-kötet visszaállítása egy biztonságimásolat-készlet használatát ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875458"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>A StorSimple-kötet visszaállítása egy biztonságimásolat-készlet
 

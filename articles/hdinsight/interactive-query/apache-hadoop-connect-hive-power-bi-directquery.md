@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31407962"
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>A Microsoft Power BI közvetlen lekérdezéssel Azure hdinsight Hive lekérdezés interaktív adatok megjelenítése
 

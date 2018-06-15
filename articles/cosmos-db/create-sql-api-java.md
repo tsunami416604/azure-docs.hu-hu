@@ -2,23 +2,21 @@
 title: Azure Cosmos DB dokumentum-adatbázis létrehozása Javával | Microsoft Docs | Microsoft Docs'
 description: Egy Java-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
 ms.service: cosmos-db
+ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 5be05ebd201796707934eac665793dd2c1dc8f2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0535f956e0a7a981bee441c0eb4ae103ca5d0cec
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797346"
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Dokumentum-adatbázis létrehozása a Java és az Azure Portal használatával
 
@@ -62,7 +60,7 @@ A dokumentum-adatbázis létrehozásához először létre kell hoznia egy SQL A
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmazást a GitHubról, beállítjuk a kapcsolati karakterláncot, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, és futtatjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
 
 1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
 
@@ -84,7 +82,7 @@ Most pedig váltsunk át kódok használatára. Klónozunk egy SQL API-alkalmaz�
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
 
 A következő kódrészletek mind a C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted\Program.java fájlból származnak.
 
@@ -148,9 +146,9 @@ A következő kódrészletek mind a C:\git-samples\azure-cosmos-db-documentdb-ja
     }
     ```    
 
-## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
+## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
+Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
 1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kulcsok** lehetőségre. 
 
