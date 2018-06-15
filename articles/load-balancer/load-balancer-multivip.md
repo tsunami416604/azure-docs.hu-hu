@@ -1,6 +1,6 @@
 ---
-title: "Mutiple virtuális IP-címek a felhőalapú szolgáltatáshoz"
-description: "Több virtuális és egy felhőalapú szolgáltatás több virtuális IP-címek beállítása – áttekintés"
+title: Mutiple virtuális IP-címek a felhőalapú szolgáltatáshoz
+description: Több virtuális és egy felhőalapú szolgáltatás több virtuális IP-címek beállítása – áttekintés
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855200"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>Több virtuális IP-címek egy felhőalapú szolgáltatás konfigurálása
 

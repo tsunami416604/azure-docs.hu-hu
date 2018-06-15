@@ -1,11 +1,11 @@
 ---
-title: "Tervezési és kialakítási létesítmények közötti kapcsolatok: Azure VPN Gateway |} Microsoft Docs"
-description: "További tudnivalók a VPN-átjáró tervezése és kialakítása létesítmények közötti, hibrid és VNet – VNet kapcsolatokhoz"
+title: 'Tervezési és kialakítási létesítmények közötti kapcsolatok: Azure VPN Gateway |} Microsoft Docs'
+description: További tudnivalók a VPN-átjáró tervezése és kialakítása létesítmények közötti, hibrid és VNet – VNet kapcsolatokhoz
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884383"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>A VPN Gateway tervezése és kialakítása
 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/14/2018
+ms.locfileid: "29383463"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Bejelentkezés egy összevont egyszeri bejelentkezés beállítása nem galéria alkalmazás problémák
 

@@ -1,8 +1,8 @@
 ---
-title: "Az Operations Management Suite (OMS) integrálása |} Microsoft Docs"
-description: "A szabványos OMS olyan szolgáltatását használja, mellett integrálva más felügyeleti alkalmazások és szolgáltatások egy hibrid környezetben, így a környezet egyedi egyéni felügyeleti lehetőségeket, vagy adjon meg egy egyéni felügyeleti az ügyfelek élmény.  Ez a cikk áttekintést OMS és részletes technikai információkat biztosító cikkek hivatkozásainak integrálása a különböző lehetőségek közül."
+title: Az Operations Management Suite (OMS) integrálása |} Microsoft Docs
+description: A szabványos OMS olyan szolgáltatását használja, mellett integrálva más felügyeleti alkalmazások és szolgáltatások egy hibrid környezetben, így a környezet egyedi egyéni felügyeleti lehetőségeket, vagy adjon meg egy egyéni felügyeleti az ügyfelek élmény.  Ez a cikk áttekintést OMS és részletes technikai információkat biztosító cikkek hivatkozásainak integrálása a különböző lehetőségek közül.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865861"
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Az Operations Management Suite (OMS) integrálása
 Az Operations Management Suite a Microsoft felhőalapú informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúra.  A szabványos OMS olyan szolgáltatását használja, mellett integrálva más felügyeleti alkalmazások és szolgáltatások egy hibrid környezetben, így a környezet egyedi egyéni felügyeleti lehetőségeket, vagy adjon meg egy egyéni felügyeleti az ügyfelek élmény.  Ez a cikk áttekintést OMS-szolgáltatások és részletes technikai információkat biztosító cikkek hivatkozásainak integrálása a különböző lehetőségek közül. 

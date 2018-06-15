@@ -1,11 +1,11 @@
 ---
-title: "Az App Service-környezetek bejövő forgalom vezérlése"
-description: "További tudnivalók az App Service-környezetek bejövő forgalmat hálózati biztonsági szabályok konfigurálása."
+title: Az App Service-környezetek bejövő forgalom vezérlése
+description: További tudnivalók az App Service-környezetek bejövő forgalmat hálózati biztonsági szabályok konfigurálása.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836923"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Az App Service-környezetek bejövő forgalom vezérlése
 ## <a name="overview"></a>Áttekintés

@@ -1,11 +1,11 @@
 ---
-title: "Alkalmazza az adatok titkosítása az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** lemez titkosítási ** alkalmazni."
+title: Alkalmazza az adatok titkosítása az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** lemez titkosítási ** alkalmazni.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866260"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Az Azure Security Centerben lemeztitkosítás alkalmazása
 Az Azure Security Center azt javasolja, hogy a lemez titkosítása alkalmazni, ha a Windows vagy Linux rendszerű virtuális lemezek nem titkosított Azure Disk Encryption használatával. Adatok titkosítása lehetővé teszi a Windows és Linux rendszerű infrastruktúra-szolgáltatási virtuális lemezek titkosításához.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.

@@ -1,8 +1,8 @@
 ---
-title: "Kiosztását és telepítését mikroszolgáltatások kiszámítható módon tudja az Azure-ban"
-description: "Útmutató az Azure App Service egy egységként és kiszámítható módon JSON erőforrás csoport sablonok és a PowerShell-parancsprogramok használatával mikroszolgáltatások álló alkalmazás központi telepítése."
+title: Kiosztását és telepítését mikroszolgáltatások kiszámítható módon tudja az Azure-ban
+description: Útmutató az Azure App Service egy egységként és kiszámítható módon JSON erőforrás csoport sablonok és a PowerShell-parancsprogramok használatával mikroszolgáltatások álló alkalmazás központi telepítése.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23837098"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Kiosztását és telepítését mikroszolgáltatások kiszámítható módon tudja az Azure-ban
 Ez az oktatóanyag bemutatja, hogyan kiosztását és telepítését, az alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](/services/app-service/) egyetlen egységként és kiszámítható módon JSON erőforrás csoport sablonok és a PowerShell-parancsfájlok használatával. 

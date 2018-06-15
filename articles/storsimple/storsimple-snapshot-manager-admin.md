@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Snapshot Manager adminisztrációs |} Microsoft Docs"
-description: "Áttekintés és a StorSimple Snapshot Manager megoldás felügyeleti feladatokkal és munkafolyamatok kapcsolatos további információkra mutató hivatkozásokat biztosít."
+title: StorSimple Snapshot Manager adminisztrációs |} Microsoft Docs
+description: Áttekintés és a StorSimple Snapshot Manager megoldás felügyeleti feladatokkal és munkafolyamatok kapcsolatos további információkra mutató hivatkozásokat biztosít.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875430"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Használja a StorSimple Snapshot Manager felügyelete a StorSimple megoldásban
 

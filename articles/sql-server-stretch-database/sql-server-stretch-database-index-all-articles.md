@@ -1,8 +1,8 @@
 ---
-title: "SQL Server Stretch Database szolgáltatás összes témakörök |} Microsoft Docs"
-description: "Az Azure-szolgáltatás az összes témakörök tábla nevű SQL Server Stretch Database a http://azure.microsoft.com/documentation/articles/, címét és leírását."
+title: SQL Server Stretch Database szolgáltatás összes témakörök |} Microsoft Docs
+description: Az Azure-szolgáltatás az összes témakörök tábla nevű SQL Server Stretch Database a http://azure.microsoft.com/documentation/articles/, címét és leírását.
 services: sql-server-stretch-database
-documentationcenter: 
+documentationcenter: ''
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23872945"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Azure SQL Server Stretch Database szolgáltatás összes kapcsolatos témakörök
 Ez a témakör felsorolja minden témakörnek a közvetlenül a **SQL Server Stretch Database** Azure szolgáltatást. A weblap kulcsszavak használatával kereshet **Ctrl + F**, az aktuális érdeklő témakörök kereséséhez.
