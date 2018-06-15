@@ -2,25 +2,23 @@
 title: 'Azure Cosmos DB: Fejlesztés a Cassandra API-val Java nyelven | Microsoft Docs'
 description: Arra vonatkozó ismeretek, hogyan lehet fejlesztési műveleteket végrehajtani az Azure Cosmos DB Cassandra API-jával Java nyelven
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
 tags: ''
-ms.assetid: 6732d883-835c-481f-98e1-287893530948
 ms.service: cosmos-db
-ms.devlang: dotnet
+ms.component: cosmosdb-cassandra
+ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 11/15/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 8a4b26227b162268afd965f89ab2806b530e75be
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 379f1a369bd94f22736abfb766ba239c3f93acee
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798093"
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Fejlesztés a Cassandra API-val Java nyelven
 
@@ -77,9 +75,9 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben áttérhet [A kapcsolati karakterlánc frissítése](#update-your-connection-string) szakaszra. Ezek a kódrészletek a src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java fájlból származnak.  
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. Ezek a kódrészletek a src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java fájlból származnak.  
 
-* A Cassandra gazdagép-, port-, felhasználónév-, jelszó- és SSL-beállításai meg vannak adva. A kapcsolati karakterlánc adatai az Azure Portal kapcsolati karakterlánc oldaláról származnak.
+* A Cassandra gazdagép-, port-, felhasználónév-, jelszó- és SSL-beállításai meg vannak adva. A kapcsolati sztring adatai az Azure Portal kapcsolati sztring oldaláról származnak.
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -151,13 +149,13 @@ A következő kódrészletek a src/main/java/com/azure/cosmosdb/cassandra/reposi
     }
     ```
 
-## <a name="update-your-connection-string"></a>A kapcsolati karakterlánc frissítése
+## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati karakterlánc adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
+Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati karakterlánc** elemre. 
+1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
 
-    ![Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati karakterlánc oldaláról](./media/tutorial-develop-cassandra-java/keys.png)
+    ![Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati sztring oldaláról](./media/tutorial-develop-cassandra-java/keys.png)
 
 2. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/tutorial-develop-cassandra-java/copy.png) a CONTACT POINT érték másolásához.
 
