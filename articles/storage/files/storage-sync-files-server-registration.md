@@ -4,24 +4,25 @@ description: Megtudhatja, hogyan regisztrálásához és a Windows Server egy Az
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 9367b2bdb1bb77725356d2be41d5e44d900cb927
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738292"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Regisztrált kiszolgáló kezelése a Azure fájlszinkronizálás (előzetes verzió)
-Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ezt úgy éri el, hogy átalakítja a Windows-kiszolgálókat az Azure-fájlmegosztás gyors gyorsítótáraivá. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
+Az Azure File Sync (előzetes verzió) lehetővé teszi a szervezet Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ennek érdekében a Windows-kiszolgálók átalakítása a Azure fájlmegosztás gyors gyorsítótárába. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
 A következő cikk bemutatja, hogyan regisztrálja, és a kiszolgáló egy tároló szinkronizálási szolgáltatás kezelése. Lásd: [Azure fájlszinkronizálás (előzetes verzió) telepítése](storage-sync-files-deployment-guide.md) fájlszinkronizálás Azure-végpontok telepítéséről információk.
 
@@ -113,14 +114,15 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Szüntesse meg a kiszolgáló, a tároló szinkronizálási szolgáltatás
 Nincsenek számos lépést, a kiszolgáló regisztrációját az egy tároló szinkronizálási szolgáltatás szükséges. Vessen egy pillantást hogyan megfelelően az a kiszolgáló regisztrációját.
 
-#### <a name="optional-recall-all-tiered-data"></a>(Választható) Rétegzett adatainak visszaírásához
-Ha engedélyezve van a kiszolgáló végpont, a felhő rétegezési lesz *réteg* fájlok az Azure fájlmegosztások. Ez lehetővé teszi a helyszíni fájlmegosztások a gyorsítótár ahelyett, hogy az adatkészlet, teljes másolata ügyfélgépként hatékonyan használhatják a területet a fájlkiszolgálón. Azonban ha egy kiszolgáló végpont rétegzett fájlok a kiszolgálón továbbra is helyben távolítja el, azokat a fájlokat válnak lehet. Ezért továbbra is fájl hozzáférésre van szükség, ha kell Emlékezzen vissza Azure-fájlokból rétegzett bővítményi regisztráció törléséhez folytatása előtt. 
+> [!Warning]  
+> Ne kísérelje meg a regisztráció megszüntetését és a kiszolgáló regisztrálása vagy eltávolításával és újbóli létrehozása a kiszolgáló végpontok, kivéve, ha a Microsoft mérnöke explicit módon utasításainak szinkronizálási, rétegezéséhez felhő vagy bármely más szempontja, hogy Azure fájlszinkronizálás elhárítása. A kiszolgáló regisztrációjának törlése és eltávolítása a kiszolgáló végpontok egy felülíró műveletet, és rétegzett fájlok server-végpontokat tartalmazó kötetek nem "újra létrehozza" az Azure fájlmegosztás helyükre után a regisztrált kiszolgáló és a kiszolgáló-végpontok létre újból, és emiatt szinkronban hibák. Vegye figyelembe azt is, lehet, hogy a kiszolgáló-végpont névtér kívül megtalálható rétegzett fájlok végleg elvesznek. Rétegzett fájlok előfordulhat, hogy létezik-kiszolgálón belüli végpontok, még akkor is, ha a felhő rétegezéséhez sohasem volt engedélyezve.
 
-Ezt megteheti a PowerShell-parancsmaggal alább látható módon:
+#### <a name="optional-recall-all-tiered-data"></a>(Választható) Rétegzett adatainak visszaírásához
+Ha szeretné, hogy a fájlokat, a rendszer jelenleg rétegzett (azaz azt a termelési, nem a tesztelési, környezet) Azure fájlszinkronizálás eltávolítása után elérhető legyen, visszahívása minden server-végpontokat tartalmazó köteten lévő összes fájlt. Tiltsa le az összes server-végpontokat tárolótömbökhöz felhő, és futtassa a következő PowerShell-parancsmagot:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  

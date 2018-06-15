@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163846"
 ---
 # <a name="azure-portal-documentation"></a>Azure Portal-dokumentáció
 Ismerje meg azokat a funkciókat, amelyekkel erőforrásokat helyezhet üzembe az Azure Portalon. Oktatóanyagok, API-referenciák és egyéb dokumentáció, amelyekből megtudhatja, hogyan helyezheti üzembe, kezelheti és monitorozhatja Azure-erőforrásait.

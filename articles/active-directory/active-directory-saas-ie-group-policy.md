@@ -20,6 +20,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34341006"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>A hozzáférési Panel bővítmény telepítése az Internet Explorer csoportházirend használatával
 Ez az oktatóanyag bemutatja, hogyan távoli telepítése a felhasználók gépeken az Internet Explorer a hozzáférési Panel bővítmény a csoportházirend segítségével. A bővítmény szükség az Internet Explorer felhasználók ki kell jelentkeznie az alkalmazásokat, amelyek használatával vannak konfigurálva [jelszó-alapú egyszeri bejelentkezést](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).

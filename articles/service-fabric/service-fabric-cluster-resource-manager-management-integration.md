@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208284"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Fürt resource manager integrálása a Service Fabric-fürt felügyeleti
 A Service Fabric fürt erőforrás-kezelő nem meghajtója frissítések Service Fabric azonban részt vesz. Az első, amelyek a fürt erőforrás-kezelő segítségével felügyeleti módja a kívánt állapot, a fürt és a benne lévő szolgáltatások nyomon követése révén. A fürt erőforrás-kezelő elküldi állapotjelentések száma, amikor azt a fürt nem állítható be a kívánt konfigurációs. Például ha nincs elég kapacitás a fürt erőforrás-kezelő elküldi állapotfigyelő figyelmeztetésekről és hibákról, amely jelzi, a probléma. Integráció más adat frissítések működése az rendelkezik. A fürt erőforrás-kezelő működése némileg megváltoztatja frissítéskor.  

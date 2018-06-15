@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206482"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Cloud Services és a Service Fabric közötti különbségekről áttelepítése előtt ismerje meg alkalmazások.
 A Microsoft Azure Service Fabric a következő generációs alkalmazás felhőplatform jól skálázható, nagymértékben megbízható elosztott alkalmazásokhoz. Számos új szolgáltatást csomagolása, telepítése, frissítése és elosztott felhőalapú alkalmazások kezelése okozna. 

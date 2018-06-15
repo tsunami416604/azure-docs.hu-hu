@@ -16,11 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: b3fb3ba0757744ba9f84280778be7e274d4ac5a2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 64914a1b3efe81a152f5463f74c70c22f01ec0c1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724044"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Functions az Azure Event Hubs kötései
 
@@ -28,13 +29,20 @@ Ez a cikk azt ismerteti, hogyan használható [Azure Event Hubs](../event-hubs/e
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Csomagok
+## <a name="packages---functions-1x"></a>Csomagok - 1.x működik
 
-Az Azure Functions verziójához 1.x, az Event Hubs kötések találhatók: a [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet-csomagot. A funkciók 2.x, használja a [Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) csomag. A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/) GitHub-tárházban.
+Az Azure Functions verziójához 1.x, az Event Hubs kötések találhatók: a [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet-csomag verziója 2.x.
+A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub-tárházban.
+
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Csomagok - 2.x működik
+
+A funkciók 2.x, használja a [Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) csomag, a verzió 3.x.
+A csomag forráskódja van a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub-tárházban.
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Eseményindító
 
@@ -124,7 +132,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény az üzenettörzs az event hub eseményindító naplózza.
 
-Itt az kötés adatai a *function.json* fájlt:
+A következő példák azt szemléltetik, az Event Hubs kötés adatokat a *function.json* fájlt. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
@@ -135,6 +143,16 @@ Itt az kötés adatai a *function.json* fájlt:
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+
 A C# parancsfájl kód itt látható:
 
 ```cs
@@ -188,7 +206,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [F # függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény az üzenettörzs az event hub eseményindító naplózza.
 
-Itt az kötés adatai a *function.json* fájlt:
+A következő példák azt szemléltetik, az Event Hubs kötés adatokat a *function.json* fájlt. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
@@ -196,6 +214,15 @@ Itt az kötés adatai a *function.json* fájlt:
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -211,7 +238,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény beolvassa [esemény metaadatok](#trigger---event-metadata) és naplózza az üzenetet.
 
-Itt az kötés adatai a *function.json* fájlt:
+A következő példák azt szemléltetik, az Event Hubs kötés adatokat a *function.json* fájlt. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
@@ -219,6 +246,15 @@ Itt az kötés adatai a *function.json* fájlt:
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -236,8 +272,7 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-Egy kötegben események fogadásához állítsa `cardinality` való `many` a a *function.json* fájlt:
-
+Egy kötegben események fogadásához állítsa `cardinality` való `many` a a *function.json* fájl, a következő példákban látható módon. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
@@ -245,6 +280,16 @@ Egy kötegben események fogadásához állítsa `cardinality` való `many` a a 
   "name": "eventHubMessages",
   "direction": "in",
   "path": "MyEventHub",
+  "cardinality": "many",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "eventHubMessages",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -289,7 +334,8 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**type** | n/a | meg kell `eventHubTrigger`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon.|
 |**direction** | n/a | meg kell `in`. Ez a tulajdonság rendszer automatikusan beállítja az eseményindítót hoz létre az Azure portálon. |
 |**name** | n/a | Esemény-elem funkciókódot jelölő neve. | 
-|**path** |**EventHubName** | Az event hubs neve. | 
+|**path** |**EventHubName** | Csak 1.x működik. Az event hubs neve.  | 
+|**EventHubName** |**EventHubName** | Csak 2.x működik. Az event hubs neve.  |
 |**ConsumerGroup** |**ConsumerGroup** | Egy nem kötelező tulajdonság, amely beállítja a [fogyasztói csoportot](../event-hubs/event-hubs-features.md#event-consumers) használt események központban előfizetni. Ha nincs megadva, a `$Default` fogyasztói csoportot használja. | 
 |**Kardinalitása** | n/a | A Javascript. Beállítása `many` kötegelés engedélyezéséhez.  Ha nincs megadva vagy `one`, függvénynek átadott egyetlen üzenetben. | 
 |**Kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a [névtér](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nem magát az eseményközpontba. Ez a kapcsolati karakterlánc kell rendelkeznie legalább olvasási engedéllyel az eseményindítót.|
@@ -349,13 +395,22 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [C# parancsfájl függvény](functions-reference-csharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-Itt az kötés adatai a *function.json* fájlt:
+A következő példák azt szemléltetik, az Event Hubs kötés adatokat a *function.json* fájlt. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -390,13 +445,22 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [F # függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-Itt az kötés adatai a *function.json* fájlt:
+A következő példák azt szemléltetik, az Event Hubs kötés adatokat a *function.json* fájlt. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -415,13 +479,22 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 A következő példa bemutatja a kötelező központi eseményindító egy *function.json* fájlt és egy [JavaScript függvény](functions-reference-node.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-Itt az kötés adatai a *function.json* fájlt:
+A következő példák azt szemléltetik, az Event Hubs kötés adatokat a *function.json* fájlt. Az első példa 1.x működik, és a második érték függvények 2.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -479,7 +552,8 @@ Az alábbi táblázat ismerteti a beállított kötés konfigurációs tulajdons
 |**type** | n/a | "Az eventHub" értékre kell állítani. |
 |**direction** | n/a | "Ki" értékre kell állítani. Ez a paraméter értéke automatikusan kötésének létrehozásakor az Azure portálon. |
 |**name** | n/a | A változó nevét, amely jelöli az esemény függvény kódban használt. | 
-|**path** |**EventHubName** | Az event hubs neve. | 
+|**path** |**EventHubName** | Csak 1.x működik. Az event hubs neve.  | 
+|**EventHubName** |**EventHubName** | Csak 2.x működik. Az event hubs neve.  |
 |**Kapcsolat** |**Kapcsolat** | A kapcsolati karakterlánc az event hubs névtérhez tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot kattintva a **kapcsolatadatok** gombra kattint, az a *névtér*, nem magát az eseményközpontba. Ez a kapcsolati karakterlánc az üzenetet küldeni az eseménystream küldési engedéllyel kell rendelkeznie.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

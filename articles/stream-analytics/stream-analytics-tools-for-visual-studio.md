@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bcb4302c3a237ec75ff670b322c9d068d8700de9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738513"
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>A Visual Studio Azure Stream Analytics-eszközök használata
 A Visual Studio Azure Stream Analytics-eszközökkel is általánosan elérhető. Ezek az eszközök a Stream Analytics-felhasználók a hibaelhárítás, valamint összetett lekérdezéseket írhat gazdagabb élmény engedélyezése, és akár a helyi lekérdezéseket írhat. A Stream Analytics-feladat a Visual Studio-projekt is exportálhatja.
@@ -30,18 +31,17 @@ Ez az oktatóanyag befejezése után fogja tudni:
 * Projektek exportálni a meglévő feladatokat.
 
 >[!IMPORTANT]
+> A Microsoft javasolja, hogy a frissítés az Azure Data Lake Tools 2.3.3000.4 Visual Studio-verzió vagy újabb. A korábbi verziók már nincs elérhető letöltésre és mára elavult. 
 >
->Előkészítésekor a az új általános adatok védelmi szabályozás (GDPR) életbe előfordulhat, hogy 25, 2018, melyek javasoljuk, hogy a felhasználók az Azure Stream Analytics Tools for Visual Studio 2.3.3000.5 verzióra frissítésével vagy újabb. Ebben a verzióban a legfrissebb adatvédelmi követelmények alapján módosításait tartalmazza. Vegye figyelembe, hogy a korábbi verziók nem érhetők el a töltse le, és elavulttá váltak. 
->
->**Mit kell tennem?**
+>**Mi a teendőm?**
 >
 >1. Ellenőrizze, hogy ha a Visual Studio egy korábbi, mint az Azure Stream Analytics eszközök 2.3.3000.5 használja. 
 >   
->   ![Ellenőrizze az eszköz, verziószám:](./media/stream-analytics-tools-for-vs/about-data-lake.png)
+>   ![Az eszköz verziószámának ellenőrzése](./media/stream-analytics-tools-for-vs/about-data-lake.png)
 > 
 >2. Ha 2.3.3000.5 egy korábbi verziója, frissítse az Azure Data Lake Tools Visual Studio a letöltőközpontból érhetők el: 
->    - [A Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
->    - [A Visual Studio 2013 és 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
+>    - [Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Visual Studio 2013 és 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő előfeltételek teljesülését, az oktatóanyag teljesítéséhez szüksége:

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2018
+ms.date: 6/1/2018
 ms.author: raiye
-ms.openlocfilehash: e97b5535ac635fb5982b4dc6fb384414e3a2cfc7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 73771aaff59c3db46907ffd9f74c03f0ac0830cb
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736779"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrix
 Itt való naprakész információkat a legújabb Azure vendég operációs rendszer feloldja a Felhőszolgáltatásai számára. Ez az információ segít a frissítési lépések megtervezéséről, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissíti a [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], nem elengedhetetlen, hogy olvassa el ezen a lapon.
@@ -39,9 +40,12 @@ Itt való naprakész információkat a legújabb Azure vendég operációs rends
 >
 >
 
-Nem tudja, hogy milyen a vendég operációs rendszer, vagy hogyan a vendég operációs rendszer feloldja a munkát? Olvasási [ez](#how-it-works) szakasz.
+Nem ismeri a vendég operációs rendszer frissítését? Ellenőrizze [ez] [ cloud updates] ki.
 
 ## <a name="news-updates"></a>Hírek
+###### <a name="june-1-2018"></a>**2018. június 1.**
+A lehetséges, hogy Vendég operációs rendszer adott ki.
+
 ###### <a name="may-4-2018"></a>**2018. május 4.**
 A április vendég operációs rendszer adott ki.
 
@@ -69,9 +73,6 @@ Október vendég operációs rendszer adott ki.
 ###### <a name="october-6-2017"></a>**2017. október 6.**
 Szeptembertől vendég operációs rendszer adott ki. A Windows Server 2016. szeptemberi kiadás netfx3 alapértelmezés szerint engedélyezve van. Az ügyfelek hozzá kell adnia "dism / online Feature /featurename:netfx3" a saját OnStart, ha a munkafolyamat megköveteli őket egy 4.x futtatási idő mellett .NET 2.x alkalmazás futtatására, vagy ha a .NET-2.x alkalmazás futtatásakor kezelését a hiba, és majd futtatta a .NET-4.x-es alkalmazás.
 
-###### <a name="september-14-2017"></a>**2017. szeptember 14.**
-Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és a tervezett kiadását. október 9 rendelkezik.
-
 
 
 ## <a name="releases"></a>Kiadások
@@ -88,8 +89,9 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.19_201805-01 |2018. június 1. |POST 5.21 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.18_201804-01 |2018. május 4. |POST 5.20 |TBD |
-| WA-GUEST-OS-5.17_201803-01 |2018. április 6. |POST 5.19 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.17_201803-01~~ |2018. április 6. |2018. június 1.|TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.16_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-5.15_201801-01~~ |2018. január 4. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-5.14_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
@@ -97,10 +99,6 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 |~~WA-GUEST-OS-5.12_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-5.11_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-GUEST-OS-5.10_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
-|~~WA-GUEST-OS-5.9_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
-|~~WA-GUEST-OS-5.8_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
-|~~WA-GUEST-OS-5.7_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
-|~~WA-GUEST-OS-5.6_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 
 
 ## <a name="family-4-releases"></a>Feloldja a családja 4
@@ -115,8 +113,9 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.54_201805-01 |2018. június 1. |POST 4.56 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.53_201804-01 |2018. május 4. |POST 4.55 |TBD |
-| WA-GUEST-OS-4.52_201803-01 |2018. április 6. |POST 4.54 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.52_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.51_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-4.50_201801-01~~ |2018. január 4. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-4.49_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
@@ -124,10 +123,7 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 |~~WA-GUEST-OS-4.47_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-4.46_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-GUEST-OS-4.45_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
-|~~WA-GUEST-OS-4.44_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
-|~~WA-GUEST-OS-4.43_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
-|~~WA-GUEST-OS-4.42_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
-|~~WA-GUEST-OS-4.41_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
+
 
 
 ## <a name="family-3-releases"></a>Feloldja a családja 3
@@ -142,8 +138,9 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.61_201805-01 |2018. június 1. |POST 3.63 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.60_201804-01 |2018. május 4. |POST 3.62 |TBD |
-| WA-GUEST-OS-3.59_201803-01 |2018. április 6. |POST 3.61 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.59_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.58_201802-01~~ |2018. március 19. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-3.57_201801-01~~ |2018. január 29. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-3.56_201712-01~~ |2018. január 4. |2018. március 19. |TBD |
@@ -151,10 +148,6 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 |~~WA-GUEST-OS-3.54_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-3.53_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-GUEST-OS-3.52_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
-|~~WA-GUEST-OS-3.51_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
-|~~WA-GUEST-OS-3.50_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
-|~~WA-GUEST-OS-3.49_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
-|~~WA-GUEST-OS-3.48_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
 
 
 ## <a name="family-2-releases"></a>Feloldja a családja 2
@@ -169,8 +162,9 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum | Lejárt dátum |
 | --- | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.74_201805-01 |2018. június 1. |POST 2.76 |TBD |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.73_201804-01 |2018. május 4. |POST 2.75 |TBD |
-| WA-GUEST-OS-2.72_201803-01 |2018. április 6. |POST 2.74 |TBD |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.72_201803-01~~ |2018. április 6. |2018. június 1. |TBD |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.71_201802-01~~ |2018. március 12. |2018. május 4. |TBD |
 |~~WA-GUEST-OS-2.70_201801-01~~ |2018. január 29. |2018. április 6. |TBD |
 |~~WA-GUEST-OS-2.69_201712-01~~ |2018. január 4. |2018. március 12. |TBD |
@@ -178,11 +172,6 @@ Szeptembertől vendég operációs rendszer bevezetés szeptember 14 indul, és 
 |~~WA-GUEST-OS-2.67_201710-02~~ |2017. november 8. |2018. január 4. |TBD |
 |~~WA-GUEST-OS-2.66_201709-01~~ |2017. október 6. |2017. december 14. |TBD |
 |~~WA-GUEST-OS-2.65_201708-01~~ |2017. augusztus 24. |2017. december 14. |TBD |
-|~~WA-GUEST-OS-2.64_201707-01~~ |2017. augusztus 3. |2017. november 8. |TBD |
-|~~WA-GUEST-OS-2.63_201706-01~~ |2017. július 7. |2017. október 6. |TBD |
-|~~WA-GUEST-OS-2.62_201705-01~~ |2017. június 5. |2017. augusztus 24. |TBD |
-|~~WA-GUEST-OS-2.61_201704-01~~ |2017. május 9. |2017. augusztus 3. |TBD |
-|~~WA-GUEST-OS-2.60_201703-01~~ |2017. április 10. |2017. július 7. |TBD |
 
 
 ## <a name="msrc-patch-updates"></a>MSRC javítás frissítések
@@ -240,7 +229,8 @@ Ha manuálisan módosítja a vendég operációs rendszer, tekintse meg a [vend�
 ## <a name="guest-os-supportability-and-retirement-policy"></a>Vendég operációs rendszer támogatásának és a használatból való kivonást házirend
 A vendég operációs rendszer támogatásának és a használatból való kivonást házirend kifejtett [Itt][retirepolicy].
 
-[vendég operációs rendszer frissítési RSS-hírcsatorna]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
+[cloud updates]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-update-azure-service
+[Vendég operációs rendszer frissítési RSS-hírcsatorna]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/

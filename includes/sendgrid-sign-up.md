@@ -61,9 +61,9 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a havi 25 0
 
 Az e-mailek kézbesítési eredményessége beállításainak kezeléséhez kattintson a **Kezelés gombra**. Ez a átirányítja a SendGrid-irányítópultot.
 
-    ![manage][manage]
+![kezelés][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+További információ a SendGrid keresztül e-mailek küldéséhez, látogasson el a [E-mail API – áttekintés][Email API Overview].
 
 <!--images-->
 

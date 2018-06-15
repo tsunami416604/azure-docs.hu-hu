@@ -16,6 +16,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195165"
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Az Azure Automationben kapcsolatos gyakori hibák elhárítása 
 Ez a cikk ismerteti a hibaelhárítást előforduló hibákat tapasztalhat az Azure Automationben és azok megoldását lehetséges megoldások javasolja.

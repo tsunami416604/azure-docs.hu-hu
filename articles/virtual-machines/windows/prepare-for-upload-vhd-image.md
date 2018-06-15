@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072249"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Az Azure-bA feltöltendő Windows VHD vagy VHDX előkészítése
 A Windows virtuális gépek (VM) a helyszíni Microsoft Azure feltöltés előtt elő kell készítenie a virtuális merevlemez (VHD- vagy VHDX-). Azure csak 1. generációs virtuális gépek, amelyek a VHD formátumban és a rögzített méretű lemez támogatja. A VHD számára engedélyezett maximális mérete 1,023 GB. 1 virtuális gép a vhdx-fájl a fájlrendszerben VHD-t és a rögzített méretű dinamikusan bővülő lemezek generáció válthat. De nem módosíthatja a virtuális gép generációját. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

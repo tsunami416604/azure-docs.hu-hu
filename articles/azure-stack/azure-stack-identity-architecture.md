@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257488"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure verem identitás-architektúra
 Mielőtt az identitásszolgáltató Azure verem használata mellett dönt, a beállításokat az Azure Active Directory (Azure AD) és Active Directory összevonási szolgáltatások (AD FS) közötti fontos különbségek megismeréséhez. 

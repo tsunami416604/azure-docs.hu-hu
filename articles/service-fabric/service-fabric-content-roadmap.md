@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212823"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Ezért kívánt további információt a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy felületet biztosít, és sok további.  Ez a cikk a Service Fabric kivonatát biztosít, és ismerteti az alapvető fogalmakat, programozási modellek, alkalmazás-életciklus, fürtök és a állapotfigyeléssel teszteléséhez. Olvassa el a [áttekintése](service-fabric-overview.md) és [mikroszolgáltatások Mik?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk átfogó tartalom listája nem tartalmaz, de csatolás áttekintése és a Service Fabric minden területéhez elindított cikkek beolvasása. 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010251"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Az gyűjtemény adatait a felügyeleti megoldások Azure-ban
 Ez a cikk felsorolja a [megoldások](monitoring-solutions.md) a Microsoft által kínált mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A metódus és a Log Analyticshez való használatra vonatkozó adatok gyűjtésének gyakorisága információkat is biztosít.  Ez a cikk a információt elérhető különböző megoldások azonosítására és a különböző felügyeleti megoldások adatok megismeréséhez és kapcsolat követelmények megértése érdekében használhatja. 
