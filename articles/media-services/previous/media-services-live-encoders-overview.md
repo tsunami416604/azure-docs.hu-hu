@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788171"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Hogyan konfigurálása a helyszíni kódolókkal az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása
 Ez a témakör felsorolja a helyszíni élő kódolók, amelyek segítségével az élő események rögzítése és egy egyféle sávszélességű élő adatfolyamot AMS csatornákat (élő kódolás engedélyezve) küldése további feldolgozásra. A témakör hivatkozásokat is tartalmaz, amelyek bemutatják, hogyan konfigurálhatja a felsorolt kódolók oktatóanyagok.

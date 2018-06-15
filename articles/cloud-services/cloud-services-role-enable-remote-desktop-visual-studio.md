@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31788466"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Engedélyezze a távoli asztali kapcsolat egy szerepkör esetén az Azure Felhőszolgáltatások Visual Studio használatával
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793477"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Az Azure Search .NET SDK 3 verzió frissítése
 Ha szeretne megtudni a 2.0-preview vagy a régebbi verzióját a [Azure Search .NET SDK](https://aka.ms/search-sdk), ez a cikk segít frissíteni az alkalmazást a 3-as verzió használatára.

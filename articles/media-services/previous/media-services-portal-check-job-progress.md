@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788290"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Az Azure portálon kódolási feladatok előrehaladásának figyelése
 > [!div class="op_single_selector"]

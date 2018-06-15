@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787667"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Azure DevTest Labs integrálja a VSTS folyamatos integrációt és a szállítási folyamat
 Használhatja a *Azure DevTest Labs feladatok* bővítményt, amely könnyen települ a Visual Studio Team Services (VSTS) számára a CI/CD build és kiadás folyamat integrálása Azure DevTest Labs szolgáltatásban. A bővítmény telepítését három feladatok: 

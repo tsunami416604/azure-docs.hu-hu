@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31791562"
 ---
 # <a name="creating-an-azure-cloud-service-project-with-visual-studio"></a>Egy Azure-felhőszolgáltatás-projekt létrehozása a Visual Studio
 Az Azure Tools for Visual Studio biztosít a projekt sablont, amely lehetővé teszi, hogy hozzon létre egy Azure felhőszolgáltatást. A projekt létrehozása után a Visual Studio lehetővé teszi konfigurálásához, hibakeresését és a felhőalapú szolgáltatás üzembe helyezése az Azure-bA.

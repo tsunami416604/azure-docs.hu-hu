@@ -13,6 +13,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33206969"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure biztonsági és megfelelőségi tervezetének: FedRAMP az elemzés
 

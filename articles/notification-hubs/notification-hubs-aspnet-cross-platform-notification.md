@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777953"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Platformok közötti értesítések küldése a felhasználóknak a Notification hubs használatával
 Egy korábbi oktatóanyagban [értesítse a felhasználókat a Notification hubs használatával], megtudta, hogyan leküldéses értesítések az összes, egy adott hitelesített felhasználó számára regisztrált eszközre. Hogy az oktatóanyag több kérés kellett minden támogatott ügyfélplatform értesítést küldeni. Az Azure Notification Hubs támogatja a sablonok, amellyel megadhatja, hogyan egy adott eszköz azt szeretné, ha értesítést szeretne kapni. Ez a módszer egyszerűbbé teszi a platformok közötti értesítések küldése. 

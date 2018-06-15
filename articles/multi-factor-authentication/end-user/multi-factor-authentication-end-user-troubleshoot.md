@@ -21,6 +21,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792259"
 ---
 # <a name="get-help-with-two-step-verification"></a>Segítség a kétlépcsős ellenőrzéshez
 Ebben a cikkben megválaszolunk személyek kérje meg a kétlépéses ellenőrzést kapcsolatos leggyakoribb kérdésekre.

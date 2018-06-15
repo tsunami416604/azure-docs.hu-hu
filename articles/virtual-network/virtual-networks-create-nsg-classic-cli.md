@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31792477"
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Hálózati biztonsági csoport létrehozása (klasszikus) használata az Azure CLI 1.0
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

@@ -15,6 +15,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942257"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse memória és a feldolgozási korlátok
 Tekintse meg a különböző teljesítményszintet és az Azure SQL Data Warehouse erőforrás osztályok számára lefoglalt memória és a feldolgozási korlátok. További információ az alkalmazások és szolgáltatások felügyeleti csomag ezen képességek alkalmazandó talál, [erőforrás-osztályok a munkaterhelés felügyeleti](resource-classes-for-workload-management.md). 

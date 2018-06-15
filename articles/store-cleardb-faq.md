@@ -1,11 +1,11 @@
 ---
-title: "A ClearDB MySql-adatbázisok – gyakori kérdések az Azure App Service |} Microsoft Docs"
-description: "Az Azure App Service ClearDB MySQL-adatbázisok használatával kapcsolatos gyakori kérdésekre adott válaszok."
+title: A ClearDB MySql-adatbázisok – gyakori kérdések az Azure App Service |} Microsoft Docs
+description: Az Azure App Service ClearDB MySQL-adatbázisok használatával kapcsolatos gyakori kérdésekre adott válaszok.
 documentationcenter: php
-services: 
+services: ''
 author: sunbuild
 manager: yochayk
-editor: 
+editor: ''
 tags: mysql
 ms.assetid: c2ed5e78-6d7d-4d0c-b7ee-a52ae41ceab8
 ms.service: multiple
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28948036"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK kapcsolatos kérdésekre ad közös használatával, és az Azure Web Apps adatbázisok beszerzési a ClearDB MySQL.

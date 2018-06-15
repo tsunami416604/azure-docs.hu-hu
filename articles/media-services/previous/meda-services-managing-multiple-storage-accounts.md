@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788556"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Eszközök kezelése a Media Services több Tárfiókok között
 A Microsoft Azure Media Services 2.2-es verziótól kezdődően csatolhat több tárfiókot egy Media Services-fiók. Egy Media Services-fiókhoz való csatolására a több tárfiókot a következő előnyöket nyújtja:

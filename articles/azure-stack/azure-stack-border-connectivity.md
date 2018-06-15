@@ -1,12 +1,12 @@
 ---
-title: "Kapcsolódási hálózati integráció szempontjai integrált Azure verem rendszerek szegély |} Microsoft Docs"
-description: "Ismerje meg, mi mindent datacenter szegély hálózati kapcsolattal többcsomópontos Azure verem tervezését."
+title: Kapcsolódási hálózati integráció szempontjai integrált Azure verem rendszerek szegély |} Microsoft Docs
+description: Ismerje meg, mi mindent datacenter szegély hálózati kapcsolattal többcsomópontos Azure verem tervezését.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919434"
 ---
 # <a name="border-connectivity"></a>Szegély kapcsolat 
 Egy fontos előfeltétel sikeres integrált Azure verem rendszerek üzembe helyezését, a művelet és a felügyeleti hálózati integráció tervezésre is. Szegély kapcsolat tervezési kezdődik-e használni a dinamikus útválasztási peremátjáró protokollal (BGP) kiválasztásával. Egy 16 bites BGP az autonóm rendszer számának (nyilvános vagy magán) hozzárendelése ehhez, vagy használja a statikus útválasztás, ahol alapértelmezett statikus útvonal hozzá van rendelve a szegély eszközök.

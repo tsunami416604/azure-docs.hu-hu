@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796852"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Az Azure Search indexelők mező hozzárendelések
 Azure keresési indexelő használatához alkalmanként található saját kezűleg olyan esetekben, ahol a bemeneti adatok nem teljesen felel meg a sémának a cél index. Ezekben az esetekben használható **hozzárendelések mezőben** az adatok átalakítására be a kívánt alakot.

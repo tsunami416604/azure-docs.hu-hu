@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798070"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adattudomány rendelkező Linux adatok tudományos virtuális gépek Azure-on
 Ez a forgatókönyv bemutatja, hogyan végezhető több közös adatok tudományos a Linux adatok tudományos virtuális gép. A Linux adatok tudományos virtuális gép (DSVM) érhető el, amely adatelemzés és a gépi tanulás általánosan használt eszközöket együtt telepített Azure virtuálisgép-lemezkép. A kulcs szoftverösszetevőket van felsorolva a [a Linux adatok tudományos virtuális gép kiépítéséhez](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések során adattudomány (percben), anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Könnyedén növelheti a virtuális gép, ha szükséges, és állítsa le, ha nincsenek használatban. Ehhez az erőforráshoz, mind a rugalmas és költséghatékony.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31789207"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure virtuális hálózat
 Ez a dokumentum az Azure App Service virtuális hálózati integráció funkció használatát ismerteti és bemutatja, hogyan állíthatja be az alkalmazásokkal [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ha ismeri az Azure virtuális hálózatokról (Vnetekről), ez az a képesség, amely lehetővé teszi egy nem internetes routeable hálózat elérését Ön szabályozza az Azure-erőforrások számos helyezendő. Ezek a hálózatok csatlakozhat a helyszíni VPN technológiáin különböző hálózatokhoz. Többet szeretne megtudni az Azure Virtual Network, indítsa el az adatok itt: [Azure virtuális hálózat áttekintése][VNETOverview]. 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794524"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>DNS-beállítások megadása a virtuális hálózati konfigurációs fájlban
 A hálózati konfigurációs fájl van két olyan elemet, a tartománynévrendszer (DNS) beállítások megadására használható: **DnsServers** és **DnsServerRef**. Adja hozzá a DNS-kiszolgálók listáját az IP-címek megadásával, és hivatkozzon a neveket a **DnsServers** elemet. Ezután egy **DnsServerRef** elemet adja meg, melyik DNS-kiszolgálóbejegyzéseik az DnsServers elemből különböző hálózati helyek, virtuális hálózaton belül használják.

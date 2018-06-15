@@ -16,6 +16,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33207391"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Hozzon létre egy alkalmazást az Azure portál használatával webalkalmazási tűzfal
 

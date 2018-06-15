@@ -17,6 +17,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31788432"
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Docker Python- és PostgreSQL-webalkalmazás létrehozása az Azure-ban
 

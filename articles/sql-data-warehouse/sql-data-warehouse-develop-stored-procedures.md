@@ -15,6 +15,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774658"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Az SQL Data Warehouse tárolt eljárások használatával
 Tippek a tárolt eljárások végrehajtása az Azure SQL Data Warehouse adattárházzal történő, megoldások.

@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777730"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Hibaelhárítás "csökkentett teljesítményű" állapota az Azure Traffic Manager
 

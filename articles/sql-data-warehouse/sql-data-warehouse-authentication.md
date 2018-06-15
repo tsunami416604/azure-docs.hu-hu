@@ -12,9 +12,10 @@ ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: 173bc797cb6436decddb68aaf1599ea7a6dd597e
 ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793579"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse-hitelesítéshez
 Ismerje meg, hogyan hitelesítheti az Azure SQL Data Warehouse Azure Active Directory (AAD) vagy SQL Server-hitelesítés használatával.

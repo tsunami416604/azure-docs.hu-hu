@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787590"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Csatolása vagy leválasztása adatlemezt a Azure DevTest Labs szolgáltatásban virtuális géphez
 [Azure-lemezeket felügyelt](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) kezeli a virtuális gép adatlemezek társított tárfiókokat. Egy felhasználó nevű új lemezre egy virtuális géphez, típusa és szükséges lemez méretét adja meg, és az Azure hoz létre, és automatikusan kezeli a lemezt. Az adatlemez majd a virtuális gép választható le, és vagy később az azonos virtuális géphez, vagy egy másik virtuális géphez, amely ugyanahhoz a felhasználóhoz tartozik csatolt objektumkörnyezetben.

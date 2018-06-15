@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798206"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím típusok és elosztási módszert (klasszikus) Azure-ban
 IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: nyilvános és titkos.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787443"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Az egyéni lemezképek és a DevTest Labs szolgáltatásban képletek összehasonlítása
 Mindkét [egyéni lemezképek](devtest-lab-create-template.md) és [képletek](devtest-lab-manage-formulas.md) alapjait használható [létrehozott új virtuális gépek](devtest-lab-add-vm.md). Azonban a fő különbség a között egyéni lemezképek és a formulák az, hogy egy egyéni lemezképet egyszerűen csak egy virtuális merevlemez alapján, amíg egy képlete virtuális merevlemez alapuló rendszerképet kép *kívül* előre konfigurált beállítások – például a Virtuálisgép-méretet, a virtuális hálózati, a alhálózati és az összetevők. Ezek előre konfigurált beállítások vannak beállítva, hogy a virtuális gép létrehozásakor felülbírálhatja az alapértelmezett értékekkel. Ez a cikk ismerteti, néhány (szakemberek számára) előnyeit és hátrányait (hátrányait) használatával egyéni lemezképek és képletek alapján.

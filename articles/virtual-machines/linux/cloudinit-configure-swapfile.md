@@ -1,11 +1,11 @@
 ---
-title: "A lapozófájl konfigurálása a Linux virtuális gép felhőalapú inicializálás segítségével |} Microsoft Docs"
-description: "A lapozófájl konfigurálása a Linux virtuális gép létrehozása az Azure CLI 2.0 felhő inicializálás használata"
+title: A lapozófájl konfigurálása a Linux virtuális gép felhőalapú inicializálás segítségével |} Microsoft Docs
+description: A lapozófájl konfigurálása a Linux virtuális gép létrehozása az Azure CLI 2.0 felhő inicializálás használata
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952598"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>A lapozófájl konfigurálása a Linux virtuális gép felhőalapú inicializálás segítségével
 Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) konfigurálása a lapozófájl különböző Linux terjesztéseket. A lapozófájl hagyományosan konfigurálása által a Linux ügynök (WALA) alapján mely azokat a terjesztéseket egy szükséges.  Ez a dokumentum fog szerkezeti üzembe helyezési időt felhő inicializálás közben a lapozófájl kiépítése során.  Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md)
