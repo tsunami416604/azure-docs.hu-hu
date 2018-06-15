@@ -1,8 +1,8 @@
 ---
-title: "TLS kölcsönös hitelesítés beállítása webalkalmazáshoz"
-description: "Útmutató: a webalkalmazás a TLS ügyfél Tanúsítványalapú hitelesítés használatára konfigurálja."
+title: TLS kölcsönös hitelesítés beállítása webalkalmazáshoz
+description: 'Útmutató: a webalkalmazás a TLS ügyfél Tanúsítványalapú hitelesítés használatára konfigurálja.'
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836307"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>TLS kölcsönös hitelesítés beállítása webalkalmazáshoz
 ## <a name="overview"></a>Áttekintés

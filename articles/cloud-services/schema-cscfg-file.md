@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358217"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services – Config séma (.cscfg fájl)
 A szolgáltatás konfigurációs fájl határozza meg, az egyes szerepkörökhöz, a szolgáltatás telepítéséhez a szerepkörpéldányok számát, a megadott konfigurációs beállításokat, és a szerepkörhöz társított összes tanúsítványok ujjlenyomatait. A szolgáltatás nem kapcsolódik virtuális hálózathoz, ha a hálózati konfigurációs adatait meg kell adni a szolgáltatás konfigurációs fájlja, valamint a virtuális hálózati konfigurációs fájlban. A szolgáltatás konfigurációs fájlja alapértelmezett kiterjesztése .cscfg.

@@ -21,6 +21,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337758"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>A hozzáférési Panel bővítményét az Internet Explorer hibaelhárítása
 Ez a cikk a következő problémák megoldásához nyújt segítséget:

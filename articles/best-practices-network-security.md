@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360472"
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>A Microsoft cloud services és a hálózati biztonság
 A Microsoft cloud services csomag kézbesítése kapacitású szolgáltatások és az infrastruktúra, a vállalati szintű képességet és a számos választhat való hibrid kapcsolathoz. Az ügyfelek ezeket a szolgáltatásokat, vagy az interneten keresztül, vagy Azure ExpressRoute, amely kapcsolattal rendelkező eléréséhez választhat. A Microsoft Azure platform lehetővé teszi, hogy az ügyfelek zökkenőmentesen bővítheti az infrastruktúrát kiterjeszti a felhőbe, és hozhat létre többrétegű architektúrák számára. Emellett harmadik felek engedélyezéséhez bővített szolgáltatásokat nyújtó biztonsági szolgáltatásait és a virtuális készülékek. Ez a dokumentum áttekintést nyújt biztonsági és architekturális problémák, az ügyfelek figyelembe kell venni a Microsoft más felhőszolgáltatásaival ExpressRoute keresztül elért használatakor. Azt is magában foglalja biztonságosabb szolgáltatások létrehozása az Azure virtuális hálózatot.

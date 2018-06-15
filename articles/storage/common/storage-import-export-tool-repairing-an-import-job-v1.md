@@ -1,11 +1,11 @@
 ---
-title: "Egy Azure Import/Export importálási feladat - v1 javítására |} Microsoft Docs"
-description: "Megtudhatja, hogyan javítsa az importálási feladat létrehozott és az Azure Import/Export szolgáltatás használatával fusson."
+title: Egy Azure Import/Export importálási feladat - v1 javítására |} Microsoft Docs
+description: Megtudhatja, hogyan javítsa az importálási feladat létrehozott és az Azure Import/Export szolgáltatás használatával fusson.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927466"
 ---
 # <a name="repairing-an-import-job"></a>Importálási feladat javítása
 A Microsoft Azure Import/Export szolgáltatás lehetséges, hogy nem másolja a fájlok vagy a fájl tartalmát egy része a Windows Azure Blob szolgáltatásban. Néhány ok, amiért hibák a következők:  

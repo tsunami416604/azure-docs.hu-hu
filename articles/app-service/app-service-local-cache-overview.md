@@ -1,13 +1,13 @@
 ---
-title: "Az Azure App Service helyi gyorsítótár áttekintése |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan engedélyezze, méretezze át és az Azure App Service helyi gyorsítótár-szolgáltatás állapotának lekérdezése"
+title: Az Azure App Service helyi gyorsítótár áttekintése |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan engedélyezze, méretezze át és az Azure App Service helyi gyorsítótár-szolgáltatás állapotának lekérdezése
 services: app-service
 documentationcenter: app-service
 author: SyntaxC4
 manager: yochayk
-editor: 
+editor: ''
 tags: optional
-keywords: 
+keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.service: app-service
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836384"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Az Azure App Service helyi gyorsítótár áttekintése
 Az Azure web app tartalom Azure Storage tárolja, és tartósan tartalom megosztásnak illesztett be van. Ez a kialakítás célja, hogy az alkalmazások különböző dolgozni, és a következő attribútumokkal rendelkezik:  

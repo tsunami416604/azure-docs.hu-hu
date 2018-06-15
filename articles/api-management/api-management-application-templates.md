@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management alkalmazássablonok |} Microsoft Docs"
-description: "Ismerje meg, hogyan szabhatja testre a fejlesztői portálra az Azure API Management az alkalmazás lapok tartalmát."
+title: Az Azure API Management alkalmazássablonok |} Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre a fejlesztői portálra az Azure API Management az alkalmazás lapok tartalmát.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23834900"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Alkalmazássablonok az Azure API Management
 Az Azure API Management lehetővé teszi a tartalom developer portálon lapok használatával konfigurálhatja a tartalom-sablonok testreszabása. Használatával [DotLiquid](http://dotliquidmarkup.org/) szintaxisát és az Ön által választott szerkesztőben, mint [tervezőknek DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), és a megadott készlete honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), [betűkép-erőforrások](api-management-template-resources.md#glyphs), és [vezérlők lapon](api-management-page-controls.md), konfigurálja a tartalmat, a lapok, ahogyan szeretné ezeket a sablonokat használ nagy rugalmasságot biztosítanak.  

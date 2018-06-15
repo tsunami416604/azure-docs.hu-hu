@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365712"
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure operational biztonsági áttekintése
 [Az Azure operational biztonsági](https://docs.microsoft.com/azure/security/azure-operational-security) védelmére az adatok, alkalmazások és egyéb eszközök a Microsoft Azure-ban a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások hivatkozik. Egy keretrendszer, amely magában foglalja a tapasztalatok teszik a különböző képességeket, amelyeket a Microsoft egyedi keresztül. Ezek a képességek közé tartoznak a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program és a részletes tájékoztatást nyújthatnak a számítógépes veszélyforrásainak tükrében megfigyelhető a.

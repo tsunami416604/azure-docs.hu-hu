@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371252"
 ---
 A virtuális hálózat egy NSG-t legalább egy további virtuális gépek (VM), szerepkörpéldányok, hálózati adapterek (NIC), vagy alhálózat forgalmának ellenőrzésére használhatja. A hálózati biztonsági csoport olyan hozzáférés-vezérlési szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják a forgalmat a forgalom iránya, a protokoll, a forrás címe és portja, illetve a cél címe és portja alapján. Az NSG szabályainak bármikor módosíthatók, és a módosításai érvényesek lesznek minden példányok kapcsolódnak.
 
