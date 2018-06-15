@@ -1,22 +1,20 @@
 ---
 title: Több útvonal az Azure Maps használatával | Microsoft Docs
 description: Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b45394cedcb7bbcb46b9730b7e445b04c8cf4f18
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ea68c70befde1922fc30d06386a2ae326460c722
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601411"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
 
@@ -75,7 +73,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
     </html>
     ```
     A HTML-fejléc beágyazza a CSS- és a JavaScript-fájlok erőforráshelyeit az Azure Maps-kódtárba. A HTML törzsében lévő *script* szakasz tartalmazza a térképhez tartozó beágyazott JavaScript-kódot.
-3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** karakterláncot cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
+3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** sztringet cserélje le a Maps-fiókból kimásolt elsődleges kulcsra.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
@@ -84,7 +82,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
         "subscription-key": MapsAccountKey
     });
     ```
-    Az Azure térképkezelési API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
+    Az Azure Térkép vezérlőelem API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
 
 4. Mentse a fájlt, és nyissa meg a böngészőben. Ekkor már rendelkezik egy egyszerű, fejleszthető térképpel. 
 
@@ -112,7 +110,7 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
         flow: "relative"
     });
     ```
-    Ez a kód `relative` forgalmat állít be, amely az üres úton elérhető sebességhez viszonyított értéket jeleníti meg. Az út `absolute` sebességére is állíthatja ezt, vagy a `relative-delay` sebességre, amely a relatív sebességet jeleníti meg, ha eltér az üres úton elérhető sebességtől. 
+    Ez a kód beállítja `relative` adatforgalmat állít be, amely az üres úton elérhető sebességhez viszonyított érték. Az út `absolute` sebességére is állíthatja ezt, vagy a `relative-delay` sebességre, amely a relatív sebességet jeleníti meg, ha eltér az üres úton elérhető sebességtől. 
 
 2. Mentse a **MapTruckRoute.html** fájlt, és frissítse a lapot a böngészőben. Most Los Angeles utcáit kell látnia az aktuális forgalmi adatokkal.
 
@@ -162,7 +160,7 @@ A jelen oktatóanyag esetében állítson be indulási pontnak egy Fabrikam nev�
         textOffset: [0, -20]
     });
     ``` 
-    A **map.setCameraBounds** hívás a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a térkép vezérlőelemhez.
+    A **map.setCameraBounds** hívás a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a Térkép vezérlőelemhez.
 
 3. Mentse a fájlt, majd frissítse a böngészőt, hogy a gombostűk megjelenjenek a térképen. Bár Los Angelest adta meg a térkép középpontjaként, a **map.setCameraBounds** úgy igazította a nézetet, hogy a kiindulási és végpontok jelenjenek meg. 
 
@@ -171,7 +169,7 @@ A jelen oktatóanyag esetében állítson be indulási pontnak egy Fabrikam nev�
 
 <a id="multipleroutes"></a>
 
-## <a name="render-routes-prioritized-by-mode-of-travel"></a>Útvonalak megjelenítése utazási mód alapján rendezve
+## <a name="render-routes-prioritized-by-mode-of-travel"></a>útvonalak megjelenítése utazási mód alapján rendezve.
 
 Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között több útvonalat az utazás módja alapján a Maps útvonal-szolgáltatás API-jával. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez, az aktuális forgalmi viszonyokat figyelembe véve. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
 

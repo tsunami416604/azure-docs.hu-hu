@@ -15,9 +15,10 @@ ms.date: 04/26/2018
 ms.author: jeedes
 ms.openlocfilehash: c3b7e7178ef68475f331edf058ca0f23661af3ea
 ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Oktatóanyag: Azure Active Directory-integráció Adobe bejelentkezési
 

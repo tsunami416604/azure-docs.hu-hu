@@ -10,11 +10,12 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8730cb61ac598a547c58e473bcd26589bd1b2a52
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 85be7763535b8b067c5a52729fb2be855ffa4b77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608457"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
 
@@ -30,7 +31,7 @@ Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch Pyth
 
 * [pip](https://pip.pypa.io/en/stable/installing/) csomagkezelő
 
-* Azure Batch-fiók és társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat. 
+* Egy Azure Batch-fiók és egy társított Azure Storage-fiók. A fiókok létrehozásához tekintse meg a Batch az [Azure Portallal](quick-create-portal.md) vagy az [Azure CLI-vel](quick-create-cli.md) történő használatát ismertető rövid útmutatókat. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -54,7 +55,7 @@ A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip
 pip install -r requirements.txt
 ```
 
-Nyissa meg a `python_quickstart_client.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési karakterláncát a fiókokhoz beszerzett értékekkel. Például:
+Nyissa meg a `python_quickstart_client.py` fájlt. Frissítse a Batch- és Storage-fiók hitelesítési sztringjét a fiókokhoz beszerzett értékekkel. Például:
 
 
 ```Python
@@ -162,7 +163,7 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04.0-LTS",
+            sku="16.04-LTS",
             version="latest"
             ),
         node_agent_sku_id="batch.node.ubuntu 16.04"),

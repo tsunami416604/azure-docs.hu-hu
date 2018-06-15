@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777259"
 ---
 # <a name="what-is-search-traffic-analytics"></a>Mi az a keresési forgalom analytics
 Keresési forgalom analytics egy minta megvalósításához a keresési szolgáltatáshoz visszajelzés hurok. Ebben a mintában a szükséges adatokat és az Application Insights, több platformon szolgáltatások figyelésre egy iparágban vezető használatával gyűjtéséről ismerteti.

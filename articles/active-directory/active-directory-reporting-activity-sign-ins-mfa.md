@@ -3,7 +3,7 @@ title: Azure Portal-beli többtényezős hitelesítés jelentéskészítési ref
 description: Azure Portal-beli többtényezős hitelesítés jelentéskészítésével kapcsolatos referenciainformációk
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 03/16/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e92d1383f3179f03194b460e0467314c137fd9e2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ac24b5dcf1aa5b8c616e14bcbb696c9e99b6cecf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589066"
 ---
 # <a name="reference-for-multi-factor-authentication-reporting-in-the-azure-portal"></a>Azure Portal-beli többtényezős hitelesítés jelentéskészítési referenciája
 
@@ -76,13 +78,13 @@ Az MFA bejelentkezési tevékenységeinek jelentéseiben a következő adatokhoz
 
 - Az MFA megtagadása esetén az oszlop a megtagadás okát tartalmazza. A lehetséges értékek: `Satisfied` és `Denied`. 
 
-Az alábbi szakasz az MFA-eredménymező lehetséges karakterláncértékeit sorolja fel.
+Az alábbi szakasz az MFA-eredménymező lehetséges sztringértékeit sorolja fel.
 
-## <a name="status-strings"></a>Állapot-karakterláncok
+## <a name="status-strings"></a>Állapot-sztringek
 
-Jelen szakasz az MFA-eredményt jelző állapot-karakterlánc lehetséges értékeit sorolja fel.
+Jelen szakasz az MFA-eredményt jelző állapotsztring lehetséges értékeit sorolja fel.
 
-### <a name="satisfied-status-strings"></a>Teljesítési állapotok karakterláncai
+### <a name="satisfied-status-strings"></a>Teljesítési állapotok sztringjei
 
 
 - Azure Multi-Factor Authentication
@@ -114,7 +116,7 @@ Jelen szakasz az MFA-eredményt jelző állapot-karakterlánc lehetséges érté
 - Átirányítva külső szolgáltatóhoz többtényezős hitelesítésre 
 
  
-### <a name="denied-status-strings"></a>Megtagadási állapot karakterláncai
+### <a name="denied-status-strings"></a>Megtagadási állapot sztringjei
 
 Azure Multi-Factor Authentication megtagadva; 
 

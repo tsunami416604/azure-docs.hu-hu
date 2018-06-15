@@ -1,22 +1,20 @@
 ---
 title: A Device Provisioning Service üzembe helyezése Azure Resource Manager-sablonnal | Microsoft Docs
 description: Azure rövid útmutató – Az Azure IoT Hub Device Provisioning Service üzembe helyezése
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr
+ms.author: bryanla
 ms.date: 02/26/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8bb27cca9e976ff8433793ef378cc6a43449d4bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4ce906e903b4825e698d02cbf8cb2d18581df468
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630289"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Az IoT Hub Device Provisioning Service üzembe helyezése Azure Resource Manager-sablonnal
 
@@ -105,7 +103,7 @@ JSON-sablon használatával létrehozhat egy regisztrációs szolgáltatást és
 
    ```
 
-3. Cserélje le a **variables** szakaszt a következő tartalomra. Ez a szakasz az IoT Hub kapcsolati karakterláncának későbbi létrehozásához szükséges értékeket határozza meg, amely a regisztrációs szolgáltatás és az IoT Hub összekapcsolásához szükséges. 
+3. Cserélje le a **variables** szakaszt a következő tartalomra. Ez a szakasz az IoT Hub kapcsolati sztringjének későbbi létrehozásához szükséges értékeket határozza meg, amely a regisztrációs szolgáltatás és az IoT Hub összekapcsolásához szükséges. 
  
    ```json
     "variables": {        
@@ -138,7 +136,7 @@ JSON-sablon használatával létrehozhat egy regisztrációs szolgáltatást és
 
 5. A regisztrációs szolgáltatás létrehozásához adja hozzá a következő sorokat a **resources** gyűjteményben az IoT Hub specifikációja után. A regisztrációs szolgáltatás **name** és **location** tulajdonságát paraméterekben adja át a rendszer. Az **iotHubs** gyűjteményben adja meg azokat az IoT Hubokat, amelyeket a regisztrációs szolgáltatáshoz szeretne kapcsolni. Meg kell adnia legalább az összekapcsolni kívánt IoT Hubok **connectionString** és **location** tulajdonságát. Ezenkívül az egyes IoT Hubokon beállíthat olyan tulajdonságokat, mint az **allocationWeight** és az **applyAllocationPolicy**, a regisztrációs szolgáltatáson pedig olyan tulajdonságokat, mint az **allocationPolicy** vagy az **authorizationPolicies**. További tudnivalókért lásd a [Microsoft.Devices/provisioningServices sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices).
 
-   A **dependsOn** tulajdonsággal biztosítható, hogy a Resource Manager a regisztrációs szolgáltatás létrehozása előtt hozza létre az IoT Hubot. A sablonhoz az IoT Hub kapcsolati karakterláncában meg kell adni a regisztrációs szolgáltatással való kapcsolatot, ezért elsőként a hubot és annak kulcsait kell létrehozni. A sablon a kapcsolati karakterlánc létrehozásához olyan függvényeket használ, mint a **concat** és a **listKeys**. További tudnivalókért tekintse meg [az Azure Resource Manager-sablonok függvényeiről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) szóló cikket.
+   A **dependsOn** tulajdonsággal biztosítható, hogy a Resource Manager a regisztrációs szolgáltatás létrehozása előtt hozza létre az IoT Hubot. A sablonhoz az IoT Hub kapcsolati sztringjében meg kell adni a regisztrációs szolgáltatással való kapcsolatot, ezért elsőként a hubot és annak kulcsait kell létrehozni. A sablon a kapcsolati sztring létrehozásához olyan függvényeket használ, mint a **concat** és a **listKeys**. További tudnivalókért tekintse meg [az Azure Resource Manager-sablonok függvényeiről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions) szóló cikket.
 
    ```json
         {

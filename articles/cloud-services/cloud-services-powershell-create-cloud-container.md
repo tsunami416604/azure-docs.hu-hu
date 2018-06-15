@@ -1,11 +1,11 @@
 ---
-title: "Egy felhőalapú szolgáltatás tárolójának létrehozása a PowerShell használatával |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan egy felhőalapú szolgáltatás tárolójának létrehozása a PowerShell használatával. A tároló webes és feldolgozói szerepköröket futtat."
+title: Egy felhőalapú szolgáltatás tárolójának létrehozása a PowerShell használatával |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan egy felhőalapú szolgáltatás tárolójának létrehozása a PowerShell használatával. A tároló webes és feldolgozói szerepköröket futtat.
 services: cloud-services
 documentationcenter: .net
 author: cawaMS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c8f32469-610e-4f37-a3aa-4fac5c714e13
 ms.service: cloud-services
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29376133"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Az Azure PowerShell-parancs segítségével hozzon létre egy üres felhőalapú szolgáltatás tárolójának
 Ez a cikk azt ismerteti, hogyan hozhat létre gyorsan egy Azure PowerShell-parancsmagok használatával Felhőszolgáltatások tároló. Kérjük, kövesse az alábbi lépéseket:

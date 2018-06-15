@@ -1,13 +1,14 @@
 ---
-title: "Az Azure Active Directory-Identity Protection-szószedet |} Microsoft Docs"
+title: Az Azure Active Directory-Identity Protection-szószedet |} Microsoft Docs
 description: Azure Active Directory Identity Protection Glossary
 services: active-directory
-keywords: "az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend, szószedet kezelése"
-documentationcenter: 
+keywords: az Azure active directory azonosító adatok védelmét, a cloud app discovery, alkalmazások, biztonság, kockázati, kockázati szint, biztonsági rést, biztonsági házirend, szószedet kezelése
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a9cc4a914091c91f4b2ae1c152644fe8e01747e8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713391"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection Glossary
 ### <a name="at-risk-user"></a>Fennáll a veszélye (felhasználó)
@@ -32,7 +34,7 @@ A bejelentkezés, amely nincs az adott felhasználó, hasonló felhasználók va
 A biztonsági modul az Azure Active Directoryban, amely a kockázati eseményekről és egy szervezet identitásait érintő lehetséges biztonsági rések egyesített nézetét biztosítja.
 
 ### <a name="conditional-access"></a>Feltételes hozzáférés
-Egy házirend erőforrásokhoz való hozzáférés biztosítása érdekében. Feltételes hozzáférési szabályai tárolódnak az Azure Active Directory és az erőforráshoz való hozzáférés megadása előtt az Azure AD értékeli ki.  Például a szabályok a következők történő hozzáférés a felhasználó helye alapján eszköz állapotát, vagy a felhasználó a hitelesítési módszert.
+Egy házirend erőforrásokhoz való hozzáférés biztosítása érdekében. Feltételes hozzáférési szabályai tárolódnak az Azure Active Directory és az erőforráshoz való hozzáférés megadása előtt az Azure AD értékeli ki.  Például a szabályok a következők korlátozza a hozzáférést a felhasználó helye, a Eszközállapot vagy a felhasználó hitelesítési módszer alapján.
 
 ### <a name="credentials"></a>Hitelesítő adatok
 Azonosításra és igazolása helyi való hozzáférés és a hálózati erőforrásokhoz való használt azonosító adatokat. A hitelesítő adatok többek között a felhasználónevek és jelszavak, az intelligens kártyák és a tanúsítványok.
@@ -80,7 +82,7 @@ Egy olyan biztonsági házirendet, amely leírja a körülmények között, ind�
 Ahhoz, hogy a sérülés visszaélés identitás vagy eszköz a szervezet a művelet gyanús, vagy tudja, hogy utaló jeleket. Egy megelőzési művelet nem biztonságos, az eszköz vagy az identitás, és nem oldja meg az előző kockázati eseményekről.
 
 ### <a name="privileged-user"></a>Kiemelt (felhasználó)
-Egy olyan felhasználó, a kockázat esemény időpontjában volt egy vagy több erőforrás állandó vagy ideiglenes rendszergazdai engedélyekkel az Azure Active Directoryban, például egy globális rendszergazda számlázási rendszergazda, a szolgáltatás-rendszergazdát, a felhasználó rendszergazda és a jelszókezelő. 
+Egy olyan felhasználó, a kockázat esemény időpontjában volt egy vagy több erőforrásokra állandó vagy ideiglenes rendszergazda engedélyeit az Azure Active Directoryban, például egy globális rendszergazda számlázási rendszergazda, a szolgáltatás-rendszergazdát, a felhasználó rendszergazda és a jelszókezelő. 
 
 ### <a name="real-time"></a>Valós idejű
 Tekintse meg a valós idejű észlelése.
@@ -127,16 +129,16 @@ A hitelesítés az identitás, az Azure Active Directoryban.
 ### <a name="sign-in-n"></a>Bejelentkezés (n)
 A folyamat vagy egy Azure Active Directory és az esemény, amely a művelet rögzíti a személyazonossága hitelesítésének művelettel.
 
-### <a name="sign-in-from-anonymous-ip-address"></a>Bejelentkezés a névtelen IP-cím
+### <a name="sign-in-from-anonymous-ip-address"></a>Jelentkezzen be a névtelen IP-cím
 A kockázat esemény után egy sikeres bejelentkezés névtelen proxy IP-címként azonosított IP-címről következik be.
 
-### <a name="sign-in-from-infected-device"></a>Bejelentkezés a fertőzött eszköz
-A kockázat a bejelentkezés egy IP-címet, amelyről ismert, hogy az egy vagy több feltört eszközök, amelyek aktívan próbál kommunikálni egy botnetes kiszolgálóhoz használható származik által elindított esemény.
+### <a name="sign-in-from-infected-device"></a>Jelentkezzen be a fertőzött eszköz
+A kockázat bejelentkezne származási IP-címet, amelyről ismert, hogy az egy vagy több feltört eszközök, amelyek aktívan próbál kommunikálni egy botnetes kiszolgálóhoz használható által elindított esemény.
 
 ### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Jelentkezzen be a következő IP-gyanús tevékenység
 A kockázat az esemény akkor váltódik ki, miután egy sikeres bejelentkezés IP cím nagyszámú sikertelen bejelentkezési kísérlet között több felhasználói fiókot egy rövid időtartamra vonatkozóan.
 
-### <a name="sign-in-from-unfamiliar-location"></a>Bejelentkezés ismeretlen helyről
+### <a name="sign-in-from-unfamiliar-location"></a>Jelentkezzen be az ismeretlen helyről
 A kockázat felhasználó sikeresen jelentkezik be egy új helyről (IP, szélesség/hosszúsági és ASN) által elindított esemény.
 
 ### <a name="sign-in-risk"></a>Bejelentkezési kockázat
@@ -158,7 +160,7 @@ Feltételes hozzáférési szabályzatot, amely úgy ítéli meg, a bejelentkez�
 Kockázati eseményekről, amelyek aktív vagy szervizelt rendelkező felhasználók
 
 ### <a name="vulnerability"></a>Biztonsági rés
-Egy konfigurációs vagy az Azure Active Directoryban, így ki vannak téve a biztonsági rések a könyvtár feltétel vagy fenyegetéseket.
+A konfiguráció vagy a feltétel az Azure Active Directoryban, ami lehetővé teszi a könyvtár ki vannak téve a biztonsági rések vagy fenyegetéseket.
 
 ## <a name="see-also"></a>Lásd még
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

@@ -1,13 +1,13 @@
 ---
-title: "A DC/OS parancssori felület telepítése | Microsoft Docs"
-description: "A DC/OS parancssori felület telepítése."
+title: A DC/OS parancssori felület telepítése | Microsoft Docs
+description: A DC/OS parancssori felület telepítése.
 services: container-service
-documentationcenter: 
+documentationcenter: ''
 author: rgardler
 manager: timlt
-editor: 
+editor: ''
 tags: acs, azure-container-service
-keywords: "Tárolók, mikroszolgáltatások, DC/OS, Azure"
+keywords: Tárolók, mikroszolgáltatások, DC/OS, Azure
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23761967"
 ---
 > [!NOTE]
 > Erre a DC/OS-alapú ACS-fürtökkel végzett munka esetén van szükség. A Swarm-alapú ACS-fürtök esetén erre a lépésre nincs szükség.

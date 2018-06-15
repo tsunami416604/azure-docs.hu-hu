@@ -1,23 +1,20 @@
 ---
 title: Az Azure Maps áttekintése | Microsoft Docs
 description: Az Azure Maps bemutatása
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: overview
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9eb6039a10cbdac004ab25f8295f5659c246a743
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193951"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600061"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Az Azure Maps bemutatása
 Az Azure Maps olyan térinformatikai szolgáltatások portfóliója, amelyek elérhetővé teszik a térképek, a keresés, az útválasztás, a forgalom és az időzónák API-jainak elérését. A szolgáltatásportfólió lehetővé teszi, hogy ismerős eszközökkel gyorsan fejlesszen és skálázzon olyan megoldásokat, amelyek helyadatokat biztosítanak az Azure-megoldásokban. Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához szükséges, friss térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy REST API-készlet, amely webalapú JavaScript-vezérlővel rendelkezik az egyszerű, rugalmas és különböző médiumokon elérhető fejlesztés érdekében. 
