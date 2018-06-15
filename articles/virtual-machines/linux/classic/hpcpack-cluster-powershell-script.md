@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841843"
 ---
 # <a name="create-a-linux-high-performance-computing-hpc-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Hozzon létre egy Linux-fürt nagy teljesítményű számítástechnikai rendszerek (HPC) a HPC Pack IaaS telepítési parancsfájl
 A HPC Pack IaaS központi telepítés központi telepítése az Azure virtuális gépeken Linux munkaterhelések teljes HPC Pack 2012 R2 fürt PowerShell-parancsfájl futtatása. A fürt egy Active Directory-tartományhoz átjárócsomópont Windows Server és a Microsoft HPC Pack fut, és a Linux terjesztéseket HPC Pack által támogatott valamelyikét futtató számítási csomópontok áll. Ha szeretné HPC Pack-fürt üzembe helyezése a Azure Windows-munkaterhelések, lásd: [hozzon létre egy Windows HPC-fürtöt a HPC Pack IaaS telepítési parancsfájl](../../windows/classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

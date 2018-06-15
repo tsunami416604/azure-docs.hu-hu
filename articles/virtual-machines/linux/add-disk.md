@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30837006"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan csatolni egy állandó lemezt a virtuális Gépet, hogy az adatok - megőrizhető akkor is, ha a virtuális gép van újra kiépíteni karbantartás vagy átméretezése miatt. 

@@ -1,11 +1,11 @@
 ---
-title: "Vegyen fel egy virtuális hálózat virtuális hálózati átjáró ExpressRoute: PowerShell: Azure |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan ExpressRoute egy már létrehozott erőforrás-kezelő virtuális hálózatot a virtuális hálózat átjárót ad hozzá."
+title: 'Vegyen fel egy virtuális hálózat virtuális hálózati átjáró ExpressRoute: PowerShell: Azure |} Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan ExpressRoute egy már létrehozott erőforrás-kezelő virtuális hálózatot a virtuális hálózat átjárót ad hozzá.
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 63e0bd60-abad-4963-8e27-3aa973e0d968
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850622"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Az ExpressRoute virtuális hálózati átjáróinak konfigurálása a PowerShell-lel
 > [!div class="op_single_selector"]

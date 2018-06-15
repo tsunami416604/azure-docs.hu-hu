@@ -1,7 +1,7 @@
 ---
-title: "Egyéni irányítópultok létrehozása az Azure Application Insightsban | Microsoft Docs"
-description: "Oktatóanyag egyéni KPI-irányítópultok Azure Application Insights használatával való létrehozásához."
-keywords: 
+title: Egyéni irányítópultok létrehozása az Azure Application Insightsban | Microsoft Docs
+description: Oktatóanyag egyéni KPI-irányítópultok Azure Application Insights használatával való létrehozásához.
+keywords: ''
 services: application-insights
 author: mrbullwinkle
 ms.author: mbullwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29178196"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 

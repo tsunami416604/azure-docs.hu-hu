@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917404"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Ismerkedés az Excel és a SOA munkaterhelések egy HPC Pack fürtben futó Azure-ban
 Ez a cikk bemutatja, hogyan Azure virtuális gépeken futó Microsoft HPC Pack 2012 R2 fürt központi telepítése egy Azure gyors üzembe helyezés sablont, vagy opcionálisan egy Azure PowerShell telepítési parancsfájlt. A fürt úgy tervezték, hogy a Microsoft Excel alkalmazást vagy szolgáltatásorientált architektúra (SOA) munkaterhelések futtatása HPC Pack Azure piactér Virtuálisgép-rendszerképekről használja. A fürt használhatja a helyszíni ügyfél-számítógépről Excel HPC és SOA szolgáltatások futtatásához. Excel-munkafüzet kiürítéséhez és a felhasználó által definiált függvények Excel vagy a felhasználó által megadott függvények közé tartoznak az Excelhez készült HPC-szolgáltatások

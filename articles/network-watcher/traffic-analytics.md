@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f7603d56a56e45771fa170c05ec62a0725ba367a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715822"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -56,7 +57,7 @@ Forgalom analytics előzetes verzió érhető el. Az előzetes funkciók nem ren
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="enable-network-watcher"></a>Engedélyezze a hálózati figyelőt 
+### <a name="enable-network-watcher"></a>A Network Watcher engedélyezése 
 
 Elemezze az adatforgalmat, hogy szüksége van egy meglévő hálózati figyelőt, vagy [engedélyezéséhez egy hálózati figyelőt](network-watcher-create.md) minden régióban, hogy rendelkezik-e az elemezni kívánt NSG-ket forgalmi a. Forgalom analytics engedélyezhető az NSG-ket egyikében sem található a [támogató régiók](#supported-regions).
 
@@ -70,7 +71,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
 
 ### <a name="select-a-network-security-group"></a>Válassza ki a hálózati biztonsági csoport 
 
-Ahhoz, hogy a naplózás NSG folyamatot, rendelkeznie kell a hálózati biztonsági csoport az adatfolyamok bejelentkezni. Ha a hálózati biztonsági csoport nem rendelkezik, tekintse meg a [hálózati biztonsági csoport létrehozása](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) kattintva létrehozhat egyet.
+Ahhoz, hogy a naplózás NSG folyamatot, rendelkeznie kell a hálózati biztonsági csoport az adatfolyamok bejelentkezni. Ha a hálózati biztonsági csoport nem rendelkezik, tekintse meg a [hálózati biztonsági csoport létrehozása](../virtual-network/manage-network-security-group.md#create-a-network-security-group) kattintva létrehozhat egyet.
 
 Az Azure portál bal oldalán válassza ki a **figyelő**, majd **hálózati figyelőt**, majd válassza ki **NSG folyamata naplók**. Válassza ki a hálózati biztonsági csoportot, hogy engedélyezni szeretné egy NSG folyamata naplóban, az alábbi ábrán látható módon:
 
