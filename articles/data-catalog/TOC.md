@@ -37,7 +37,7 @@
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Kiadási megjegyzések](data-catalog-whats-new.md)
+## [Kiadási megjegyzések](../active-directory/fundamentals/whats-new.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [Terminológia](data-catalog-terminology.md)

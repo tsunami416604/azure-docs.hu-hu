@@ -1,6 +1,6 @@
 ---
-title: "Az Azure biztonsági videók a Channel 9 |} Microsoft Docs"
-description: "Ez a cikk a Channel 9 Azure biztonsági bemutatók válogatott listáját tartalmazza. 9-es csatorna a személyek termékeink mögött termékeink személyekkel csatlakoztató közösségi."
+title: Az Azure biztonsági videók a Channel 9 |} Microsoft Docs
+description: Ez a cikk a Channel 9 Azure biztonsági bemutatók válogatott listáját tartalmazza. 9-es csatorna a személyek termékeink mögött termékeink személyekkel csatlakoztató közösségi.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540135"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Az Azure biztonsági videók a Channel 9
 [A Channel 9](https://channel9.msdn.com/) egy Közösség, amely előre számos lehetőséget kínál a személyek mögött termékeink és kapcsolódó ügyfelekkel.

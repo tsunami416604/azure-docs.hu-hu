@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788941"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok
 A kódolási feladat vagy társítva egy bemeneti eszköz (eszközök) a kívánja kódolási feladatok elvégzésére.  Létrehozása után egy feladatot kimeneti eszközként hozott létre.  A kimeneti adategységen tartalmazza a videó hang, miniatűröket, jegyzék, stb. A kimeneti adategységen is tartalmaz a bemeneti eszköz metaadatait tartalmazó fájl. A metaadatok XML-fájl nevének formátuma a következő: &lt;asset_id&gt;_metadata.xml (például 41114ad3 eb5e - 4 - c 57-8d 92-5354e2b7d4a4_metadata.xml), ahol &lt;asset_id&gt; AssetId értéke a bemeneti eszköz.  

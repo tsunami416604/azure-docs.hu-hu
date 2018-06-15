@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788682"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Egy eszköz kódolása a Media Encoder Standard .NET használatával
 A kódolási feladat a Media Services egyik leggyakrabban használt művelete. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Amikor a kódolására, a Media Services beépített Media Encoder is használhatja. Egy Media Services partner; által biztosított kódoló is használható külső kódolókkal az Azure piactéren keresztül érhetők el. 

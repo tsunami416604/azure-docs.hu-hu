@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788227"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Útmutató: egy eszköz letöltés biztosításához
 A cikk ismerteti a Media Services feltöltött adathordozó eszközök kézbesítéséhez beállítások. Számos alkalmazás-forgatókönyveket a Media Services tartalom biztosíthat. Kódolás, töltse le a generált adathordozó eszközök vagy a streamelési lokátor segítségével elérhet. Jobb teljesítmény és méretezhetőség is biztosíthat tartalmat egy Content Delivery Network (CDN) használatával.

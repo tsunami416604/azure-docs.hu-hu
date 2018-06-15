@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788990"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard séma
 Ez a cikk ismerteti, egyes elemek és az XML-séma típusú amelyen [Media Encoder Standard készletek](media-services-mes-presets-overview.md) alapulnak. A cikk nyújt elemek és az érvényes értékekre ismertetése.  

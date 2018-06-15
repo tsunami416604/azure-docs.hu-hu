@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions futásidejű áttekintése |} Microsoft Docs"
-description: "Az Azure Functions futásidejű előzetes áttekintése"
+title: Azure Functions futásidejű áttekintése |} Microsoft Docs
+description: Az Azure Functions futásidejű előzetes áttekintése
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/05/2017
+ms.locfileid: "26290225"
 ---
 # <a name="azure-functions-runtime-overview"></a>Az Azure Functions futásidejű áttekintése
 

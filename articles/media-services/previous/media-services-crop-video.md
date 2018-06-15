@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788332"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Videók körülvágása a Media Encoder Standarddel
 Media Encoder Standard (MES) segítségével a bemeneti videó levágása. A folyamat kiválasztása a videó kerethez téglalap alakú ablak, és csak az adott időszakban képpont kódolás vágás. A következő diagram segít ábrázolni a folyamatot.

@@ -1,11 +1,11 @@
 ---
-title: "Hiba történt az Azure API-felügyeleti házirendek kezelése |} Microsoft Docs"
-description: "Ismerje meg, hogyan válaszol az Azure API Management-kérelem feldolgozása közben fellépő hibaállapotokat."
+title: Hiba történt az Azure API-felügyeleti házirendek kezelése |} Microsoft Docs
+description: Ismerje meg, hogyan válaszol az Azure API Management-kérelem feldolgozása közben fellépő hibaállapotokat.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128226"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hiba történt az API-felügyeleti házirendek kezelése
 Az Azure API Management lehetővé teszi, hogy válaszoljanak a hibaállapotokat, amely jelentkezhet a kérelem feldolgozása során a proxy, adja meg a közzétevők egy `ProxyError` objektum. A `ProxyError` objektum keresztül érhető el a [környezetben. Hiba](api-management-policy-expressions.md#ContextVariables) tulajdonság, és a házirendek által használható a `on-error` házirend szakaszban. Ez a témakör egy hivatkozást a hiba kezelési képességeket biztosít az Azure API Management.  

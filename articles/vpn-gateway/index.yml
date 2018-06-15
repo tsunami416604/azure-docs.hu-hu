@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32779492"
 abstract:
   description: Ismerkedjen meg az Azure VPN-átjáró beállításával, létrehozásával és kezelésével. Titkosított, helyek közötti kapcsolatokat hozhat létre virtuális hálózaton helyszíni helyekről, illetve virtuális hálózatok közötti, titkosított kapcsolatokat is létrehozhat.
 sections:
