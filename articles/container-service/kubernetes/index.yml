@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/16/2018
+  ms.locfileid: "31394577"
 abstract:
   description: Az Azure Container Service lehetővé teszi egy üzemkész Kubernetes-fürt gyors üzembe helyezését. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet az Azure Container Service és a Kubernetes együttes használatával.
 sections:

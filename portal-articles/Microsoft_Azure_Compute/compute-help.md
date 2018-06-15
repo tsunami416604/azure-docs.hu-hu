@@ -1,6 +1,6 @@
 ---
-title: "Virtuális gépek súgódokumentációja | Microsoft Docs"
-description: "A virtuális gépek áttekintő súgótartalmai az Azure Portalon"
+title: Virtuális gépek súgódokumentációja | Microsoft Docs
+description: A virtuális gépek áttekintő súgótartalmai az Azure Portalon
 services: virtual-machines
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057671"
 ---
 # <a name="virtual-machines-documentation"></a>Virtuális gépek dokumentációja
 Az Azure virtuális gépek igény szerinti, nagy léptékben méretezhető, biztonságos virtualizált infrastruktúrát biztosítanak. Windows rendszerű virtuális gépeket vagy Red Hat, Ubuntu vagy bármely tetszőleges Linux disztribúciót futtató Linux rendszerű virtuális gépeket hozhat létre. További információ:

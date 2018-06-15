@@ -1,6 +1,6 @@
 ---
-title: "Lemezek kizárni a védelem Azure Site Recovery segítségével |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, miért és hogyan zárhat ki virtuálisgép-lemezeket a VMware–Azure replikációkból."
+title: Lemezek kizárni a védelem Azure Site Recovery segítségével |} Microsoft Docs
+description: Ez a cikk azt ismerteti, miért és hogyan zárhat ki virtuálisgép-lemezeket a VMware–Azure replikációkból.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812935"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Lemezek kizárása a VMware–Azure replikációs forgatókönyvből
 

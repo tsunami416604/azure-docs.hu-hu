@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31418220"
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>PaaS webes és mobilalkalmazások Azure Storage használatával biztonságossá tétele
 Ez a cikk arról lesz szó Azure Storage ajánlott biztonsági eljárások az PaaS webes és mobilalkalmazások védelme gyűjteménye. Az alábbi gyakorlati tanácsok az Azure-ral tapasztalatunk és az ügyfelek, például a saját kezűleg feladatait származik.

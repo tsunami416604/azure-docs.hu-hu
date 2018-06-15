@@ -1,6 +1,6 @@
 ---
-title: "Cél (az Azure-bA fizikai) előkészítése |} Microsoft Docs"
-description: "A cikkből megtudhatja, hogyan készíti elő az elindítani a Windows vagy Linux rendszerű Azure fizikai kiszolgálók replikálása az Azure környezetben."
+title: Cél (az Azure-bA fizikai) előkészítése |} Microsoft Docs
+description: A cikkből megtudhatja, hogyan készíti elő az elindítani a Windows vagy Linux rendszerű Azure fizikai kiszolgálók replikálása az Azure környezetben.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812627"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Készítse elő a cél (az Azure-bA VMware)
 

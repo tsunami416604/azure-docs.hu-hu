@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31417036"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák
 

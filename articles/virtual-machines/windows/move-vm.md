@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918149"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>A Windows virtuális gépek áthelyezése egy másik Azure-előfizetés vagy az erőforrás-csoportok
 Ez a cikk végigvezeti a Windows virtuális gépek áthelyezése erőforráscsoportok vagy előfizetések között. Az előfizetések közötti áthelyezés lehet hasznos, ha az eredetileg létrehozott virtuális gép személyes előfizetés, és most szeretné helyezze át a vállalat előfizetésének a munka folytatásához.

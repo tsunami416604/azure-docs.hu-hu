@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425180"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure virtuális gépek használatának ismertetése
 Az Azure használati adatok elemzésével, hatékony felhasználása insights is szerzett – elemzések, engedélyezhet jobban költségeket, felügyeleti és kiosztását a szervezetben. Ez a dokumentum egy részletes bemutatója a fogyasztás Azure számítási részleteinek nyújt. Általános Azure használati olvashat, navigáljon a [ismertetése a számlázási](../../billing/billing-understand-your-bill.md).

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913991"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Részletes technikai útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról
 A következőkben a részletesen az Azure klasszikus telepítési modellből az Azure Resource Manager telepítési modell való áttelepítéssel. Úgy tekintünk, amelyekkel jobban megértheti, hogyan az Azure platformon áttelepíti a két üzembe helyezési modellek közötti erőforrások erőforrás és a szolgáltatás szintű erőforrások. További információkért olvassa el a szolgáltatás közlemény cikk: [Platform által támogatott áttelepítési IaaS erőforrások a klasszikus Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

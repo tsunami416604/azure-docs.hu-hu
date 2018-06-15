@@ -1,12 +1,12 @@
 ---
-title: "A frissítés 1.0 a StorSimple virtuális tömb |} Microsoft Docs"
-description: "A StorSimple virtuális tömb webes felhasználói felület használata az Azure portál és a gyorsjavítások metódussal frissítés alkalmazása"
+title: A frissítés 1.0 a StorSimple virtuális tömb |} Microsoft Docs
+description: A StorSimple virtuális tömb webes felhasználói felület használata az Azure portál és a gyorsjavítások metódussal frissítés alkalmazása
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24012077"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömb 1.0 frissítés telepítése
 

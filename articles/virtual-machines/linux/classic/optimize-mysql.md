@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841503"
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Az Azure Linux virtuális gépeken futó MySQL teljesítményének optimalizálása
 Nincsenek számos tényező befolyásolja az Azure, mind a virtuális hardver kiválasztása és szoftverkonfigurációt MySQL teljesítményére. Ez a cikk foglalkozik, a tárolás, a rendszer és a Helyadatbázis-konfigurációk keresztül optimalizálás teljesítményét.

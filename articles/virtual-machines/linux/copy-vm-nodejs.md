@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30906939"
 ---
 # <a name="create-a-copy-of-a-linux-virtual-machine-running-on-azure-with-the-azure-cli-10"></a>Az Azure CLI 1.0 az Azure-on futó Linux virtuális gépek másolatának létrehozása
 Ez a cikk bemutatja, hogyan hozzon létre egy másolatot Linux a Resource Manager üzembe helyezési modellel rendszert futtató Azure virtuális gép (VM). Először másolja át az operációs rendszer és az adatlemezek új tárolót, majd állítsa be a hálózati erőforrások, majd az új virtuális gép létrehozása.

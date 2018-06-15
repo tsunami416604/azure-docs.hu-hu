@@ -1,6 +1,6 @@
 ---
-title: "A Microsoft Virtual Academy Azure biztonsági tanfolyamokat |} Microsoft Docs"
-description: "Ez a cikk az Azure biztonsági válogatott gyűjteményét tartalmazza a Microsoft Virtual Academy tanfolyamokat kapcsolatos.  A Microsoft Virtual Academy biztosít szabad, online képzési segítségével a fejlesztők, informatikai és adatok szakemberek számára, és a diákok a legújabb technológiák további, a képességek elkészítéséhez és azok előmeneteli előzetes."
+title: A Microsoft Virtual Academy Azure biztonsági tanfolyamokat |} Microsoft Docs
+description: Ez a cikk az Azure biztonsági válogatott gyűjteményét tartalmazza a Microsoft Virtual Academy tanfolyamokat kapcsolatos.  A Microsoft Virtual Academy biztosít szabad, online képzési segítségével a fejlesztők, informatikai és adatok szakemberek számára, és a diákok a legújabb technológiák további, a képességek elkészítéséhez és azok előmeneteli előzetes.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540048"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>A Microsoft Virtual Academy Azure biztonsági tanfolyamokat
 A Microsoft Virtual Academy biztosít szabad, online képzési segítségével a fejlesztők, informatikai és adatok szakemberek számára, és a diákok a legújabb technológiák további, a képességek elkészítéséhez és azok előmeneteli előzetes.

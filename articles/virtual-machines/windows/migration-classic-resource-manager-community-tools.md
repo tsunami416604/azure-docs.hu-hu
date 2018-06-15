@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913936"
 ---
 # <a name="community-tools-to-migrate-iaas-resources-from-classic-to-azure-resource-manager"></a>Közösségi eszközök az IaaS-erőforrások migrálásához a klasszikusból az Azure Resource Manager-alapú üzemi modellbe
 Ez a cikk katalogizálása a IaaS-erőforrások az Azure Resource Manager telepítési modell a klasszikus áttelepítéssel segít a Közösség által biztosított eszközöket.

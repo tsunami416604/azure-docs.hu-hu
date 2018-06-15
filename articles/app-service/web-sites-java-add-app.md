@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31513635"
 ---
 # <a name="add-a-java-application-to-azure-app-service-web-apps"></a>Az Azure App Service Web Apps Java-alkalmazás hozzáadása
 Amennyiben Ön inicializálta a Java-webalkalmazás a [Azure App Service] [ Azure App Service] dokumentált [Java-webalkalmazás létrehozása az Azure App Service](app-service-web-get-started-java.md), feltöltheti az alkalmazást úgy, hogy az a WAR a **webapps** mappa.

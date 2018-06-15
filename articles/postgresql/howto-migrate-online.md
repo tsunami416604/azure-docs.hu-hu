@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692089"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Az Azure Database-áttelepítés minimális állásidővel PostgreSQL
 Áttelepítheti a meglévő PostgreSQL-adatbázisban az Azure Database-PostgreSQL az Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30910986"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.

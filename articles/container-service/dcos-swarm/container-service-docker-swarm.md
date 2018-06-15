@@ -1,6 +1,6 @@
 ---
-title: "Docker API-t Azure Swarm-fürt kezeléséhez"
-description: "A Docker Swarm-fürt az Azure Tárolószolgáltatás – tárolók üzembe helyezése"
+title: Docker API-t Azure Swarm-fürt kezeléséhez
+description: A Docker Swarm-fürt az Azure Tárolószolgáltatás – tárolók üzembe helyezése
 services: container-service
 author: rgardler
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26331545"
 ---
 # <a name="container-management-with-docker-swarm"></a>Tárolókezelés a Docker Swarmmal
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914918"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure virtuális gépeken MATLAB elosztott számítási fürtök létrehozása
 A Microsoft Azure virtuális gépek segítségével hozzon létre egy vagy több MATLAB elosztott számítási fürtök a számítási igényű párhuzamos MATLAB munkaterhelések futtatásához. A MATLAB elosztott számítástechnikai kiszolgáló szoftver telepítése egy virtuális Gépre alapjául szolgáló lemezképhez és egy Azure gyors üzembe helyezés-sablon vagy az Azure PowerShell-parancsfájl használata (érhető el a [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) telepítése és a fürt kezelése. A központi telepítést követően csatlakozzon a fürthöz, a munkaterhelések futtatásához.

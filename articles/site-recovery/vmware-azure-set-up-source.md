@@ -1,6 +1,6 @@
 ---
-title: "A forrás környezet beállítása a VMware Azure replikáció az Azure Site Recovery szolgáltatással |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan állíthat be a helyszíni környezetben VMware virtuális gépek replikálása az Azure-bA az Azure Site Recovery."
+title: A forrás környezet beállítása a VMware Azure replikáció az Azure Site Recovery szolgáltatással |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan állíthat be a helyszíni környezetben VMware virtuális gépek replikálása az Azure-bA az Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812655"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás környezet beállítása a VMware Azure replikáció
 

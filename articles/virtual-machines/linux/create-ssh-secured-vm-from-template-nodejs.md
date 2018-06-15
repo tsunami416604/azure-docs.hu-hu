@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905551"
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Linux virtuális gépet az Azure CLI 1.0 Azure Resource Manager-sablon létrehozása
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépek az Azure CLI 1.0 és az Azure Resource Manager-sablon használatával. A cikkben foglaltak végrehajtásához szükség van:

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841911"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Az OpenFoam futtatása a Microsoft HPC Packkal Azure-beli linuxos RDMA-fürtön
 Ez a cikk az Azure virtuális gépeken OpenFoam futtatásához egy módszert mutat. Itt, a Microsoft HPC Pack-fürt Linux számítási csomópontok az Azure és a Futtatás telepít egy [OpenFoam](http://openfoam.com/) Intel MPI feladatot. Az RDMA-kompatibilis Azure virtuális gépeken használhatja a számítási csomópontok, hogy a számítási csomópontok Azure RDMA hálózati kommunikációra. Más OpenFoam Azure rendszerben való futtatásra a választható lehetőségek teljesen konfigurált kereskedelmi képek elérhető a piactéren, például a UberCloud tartozó [OpenFoam 2.3 a CentOS 6](https://azure.microsoft.com/marketplace/partners/ubercloud/openfoam-v2dot3-centos-v6/), és futtatja a [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 

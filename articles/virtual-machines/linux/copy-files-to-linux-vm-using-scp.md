@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30904505"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Helyezze át a fájlokat, és onnan Linux virtuális gépet a szolgáltatáskapcsolódási pont
 

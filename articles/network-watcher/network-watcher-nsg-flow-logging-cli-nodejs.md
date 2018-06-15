@@ -1,11 +1,11 @@
 ---
-title: "Hálózati biztonsági csoport Flow naplók és Azure hálózati figyelőt - Azure CLI 1.0 kezelése |} Microsoft Docs"
-description: "Ezen a lapon ismerteti, hogyan kezelheti a hálózati biztonsági csoport Flow-naplók az Azure CLI 1.0 Azure hálózati figyelőt"
+title: Hálózati biztonsági csoport Flow naplók és Azure hálózati figyelőt - Azure CLI 1.0 kezelése |} Microsoft Docs
+description: Ezen a lapon ismerteti, hogyan kezelheti a hálózati biztonsági csoport Flow-naplók az Azure CLI 1.0 Azure hálózati figyelőt
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26774488"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli-10"></a>Hálózati biztonsági csoport Flow naplók konfigurálása az Azure CLI 1.0
 

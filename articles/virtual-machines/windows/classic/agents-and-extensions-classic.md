@@ -22,6 +22,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917632"
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-windows-vms"></a>A virtuális gép ügynökének és a Windows virtuális gépek-bővítmények
 

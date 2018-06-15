@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre, és a biztonsági másolat visszaállításával a BizTalk szolgáltatások |} Microsoft Docs"
-description: "BizTalk szolgáltatások részét képező, biztonsági mentését és helyreállítását. Megtudhatja, hogyan hozzon létre, és a biztonsági másolat visszaállításával, és határozza meg, mi lekérdezi a biztonsági mentés. MABS, WABS"
+title: Hozzon létre, és a biztonsági másolat visszaállításával a BizTalk szolgáltatások |} Microsoft Docs
+description: BizTalk szolgáltatások részét képező, biztonsági mentését és helyreállítását. Megtudhatja, hogyan hozzon létre, és a biztonsági másolat visszaállításával, és határozza meg, mi lekérdezi a biztonsági mentés. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 59f91173-4683-48df-abd5-41262bfce6df
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102341"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Biztonsági mentés és visszaállítás
 

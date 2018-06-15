@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905333"
 ---
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Bontsa ki a Linux virtuális gép az Azure CLI használata az Azure CLI 1.0 operációsrendszer-lemez
 Az alapértelmezett virtuális merevlemezt az operációs rendszer mérete általában 30 GB Linux virtuális gépre (VM) az Azure-ban. Is [adatok lemezek hozzáadása a](add-disk.md) további tárhelyet, de így is célszerű bontsa ki az operációsrendszer-lemezképet. Ez a cikk részletesen bontsa ki az operációsrendszer-lemezképet a Linux virtuális gépek nem felügyelt lemezek használata az Azure CLI 1.0 módjáról.

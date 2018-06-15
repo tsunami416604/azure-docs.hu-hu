@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31414925"
 ---
 # <a name="manage-r-server-cluster-on-azure-hdinsight"></a>Az Azure HDInsight R Server-fürt kezeléséhez
 

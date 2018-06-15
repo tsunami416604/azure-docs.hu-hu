@@ -1,11 +1,11 @@
 ---
-title: "Egy helyi Docker-tároló alkalmazások hibakeresés |} Microsoft Docs"
-description: "Megtudhatja, hogyan módosíthat egy alkalmazást, amely futtatja a helyi Docker-tároló, a tároló keresztül szerkesztési és frissítési frissítse és adja meg a töréspontokat hibakeresés"
+title: Egy helyi Docker-tároló alkalmazások hibakeresés |} Microsoft Docs
+description: Megtudhatja, hogyan módosíthat egy alkalmazást, amely futtatja a helyi Docker-tároló, a tároló keresztül szerkesztési és frissítési frissítse és adja meg a töréspontokat hibakeresés
 services: azure-container-service
 documentationcenter: na
 author: mlearned
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
 ms.service: multiple
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781394"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Alkalmazások hibakeresése a helyi Docker-tárolóban
 ## <a name="overview"></a>Áttekintés

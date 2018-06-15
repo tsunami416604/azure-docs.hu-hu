@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30838223"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure virtuális gépek méretezési automatikus az operációs rendszer frissítései
 

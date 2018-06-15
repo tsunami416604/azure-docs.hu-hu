@@ -13,6 +13,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30325327"
 ---
 >[!NOTE]
 >A kezdeti eszköz ikerállapot-konfigurációja csak az IoT Hub standard szintű csomagjában érhető el. Az alapszintű és standard csomagokról [a megfelelő IoT Hub-csomag kiválasztását](../articles/iot-hub/iot-hub-scaling.md) ismertető cikkben talál további információt.

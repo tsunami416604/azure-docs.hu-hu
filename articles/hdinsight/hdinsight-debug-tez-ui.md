@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406507"
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>A Tez felhasználói felület használata a Windows-alapú HDInsight-on Tez feladatokhoz
 A Tez felhasználói felület segítségével használja a-végrehajtó motor Tez Hive-feladatok hibakeresését. A Tez felhasználói felület visualizes a feladatot, egy grafikont a csatlakoztatott elemek egyes elemek elemezze, és statisztika és naplózási információk lekérdezéséhez.
