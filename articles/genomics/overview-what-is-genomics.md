@@ -1,7 +1,7 @@
 ---
 title: Mi az a Microsoft Genomics? | Microsoft Docs
 titleSuffix: Azure
-description: "Ismerje meg, hogyan Microsoft Genomics is power genom az alkalmazás-Előkészítés most kínál a másodlagos elemzéshez BWA-GATK felhőalapú megvalósítása."
+description: Ismerje meg, hogyan Microsoft Genomics is power genom az alkalmazás-Előkészítés most kínál a másodlagos elemzéshez BWA-GATK felhőalapú megvalósítása.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684794"
 ---
 # <a name="what-is-microsoft-genomics"></a>Mi az a Microsoft Genomics?
 Microsoft Genomics nyújt egy felhőalapú megvalósítása a Burrows-Wheeler Aligner (BWA) és a genom elemzés Toolkit (GATK) másodlagos elemzés céljából. A szolgáltatás ISO hitelesített és megfelel a HIPAA szabályokkal, és az alkalmazás-előkészítés genom igényeinek ár kiszámíthatóságot kínál. Megtudhatja, hogyan használhatja a Microsoft Genomics szolgáltatást, és integrálhatja az API felületen a quickstarts, oktatóanyagok és dokumentáció olvasása.

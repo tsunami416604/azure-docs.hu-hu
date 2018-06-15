@@ -1,11 +1,11 @@
 ---
-title: "Alkalmazás és a delegált engedélyek közötti különbségek felismerése |} Microsoft Docs"
-description: "További tudnivalók az alkalmazás és a delegált engedélyek, hogyan azok az ügyfelek által használt vagy jelennek meg, ha az alkalmazások az Azure ad-val fejlesztői erőforrások"
+title: Alkalmazás és a delegált engedélyek közötti különbségek felismerése |} Microsoft Docs
+description: További tudnivalók az alkalmazás és a delegált engedélyek, hogyan azok az ügyfelek által használt vagy jelennek meg, ha az alkalmazások az Azure ad-val fejlesztői erőforrások
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26612887"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Hogyan ismeri fel az alkalmazás és a delegált engedélyek közötti különbségek
 

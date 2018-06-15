@@ -1,11 +1,11 @@
 ---
-title: "A d meghajtó, a virtuális gépek adatlemezt |} Microsoft Docs"
-description: "Ismerteti, hogyan módosíthat meghajtóbetűjelet egy Windows virtuális gép számára, hogy a d meghajtó használhatja egy adatmeghajtó."
+title: A d meghajtó, a virtuális gépek adatlemezt |} Microsoft Docs
+description: Ismerteti, hogyan módosíthat meghajtóbetűjelet egy Windows virtuális gép számára, hogy a d meghajtó használhatja egy adatmeghajtó.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577445"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A d meghajtó használata a Windows virtuális gép egy adatmeghajtó
 Ha az alkalmazást kell használni, a D meghajtó adatainak tárolásához, a következő lépések követésével más meghajtóbetűt használ az ideiglenes lemez. Soha ne használja az ideiglenes lemezt, akkor szükség adatok tárolására.

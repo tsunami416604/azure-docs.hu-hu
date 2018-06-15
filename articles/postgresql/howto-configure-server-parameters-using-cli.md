@@ -15,6 +15,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691393"
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Testre szabhatja a kiszolgáló konfigurációs paraméterek Azure parancssori felület használatával
 Listában, megjelenítése, és frissíti a parancssori felület (Azure CLI) használatával Azure PostgreSQL-kiszolgáló konfigurációs paramétereket. Egy részhalmazát motor konfigurációk kiszolgálói szinten van közzétéve, és módosíthatja. 

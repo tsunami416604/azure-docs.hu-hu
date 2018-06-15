@@ -1,12 +1,12 @@
 ---
-title: "A Microsoft Azure StorSimple és a felhőalapú megoldások Program áttekintése |} Microsoft Docs"
-description: "Áttekintése a StorSimple és a CSP a StorSimple-partnerek számára."
+title: A Microsoft Azure StorSimple és a felhőalapú megoldások Program áttekintése |} Microsoft Docs
+description: Áttekintése a StorSimple és a CSP a StorSimple-partnerek számára.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26367675"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Mi az a felhőalapú megoldások szolgáltatók program StorSimple?
 

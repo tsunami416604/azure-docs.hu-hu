@@ -1,13 +1,13 @@
 ---
-title: "Az Azure hálózati biztonsági csoport folyamata naplóinak - Graylog elemzése |} Microsoft Docs"
-description: "Ismerje meg, hogyan kezelheti és elemezni a hálózati biztonsági csoport folyamata naplók az Azure-ban a hálózati figyelőt és Graylog."
+title: Az Azure hálózati biztonsági csoport folyamata naplóinak - Graylog elemzése |} Microsoft Docs
+description: Ismerje meg, hogyan kezelheti és elemezni a hálózati biztonsági csoport folyamata naplók az Azure-ban a hálózati figyelőt és Graylog.
 services: network-watcher
 documentationcenter: na
 author: mareat
 manager: vitinnan
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26639285"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Kezelése és hálózati biztonsági csoport folyamata naplók az Azure-ban a hálózati figyelőt és Graylog elemzése
 

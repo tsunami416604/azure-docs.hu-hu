@@ -1,8 +1,8 @@
 ---
-title: "Az Azure AD Connect Health használata az AD DS szolgáltatással | Microsoft Docs"
-description: "Ez az Azure AD Connect Health-oldal ismerteti az AD DS figyelésének módját."
+title: Az Azure AD Connect Health használata az AD DS szolgáltatással | Microsoft Docs
+description: Ez az Azure AD Connect Health-oldal ismerteti az AD DS figyelésének módját.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: arluca
 manager: mtillman
 editor: curtand
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614413"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Az Azure AD Connect Health használata az AD DS szolgáltatással
 Az alábbi dokumentáció az Active Directory tartományi szolgáltatások Azure AD Connect Health használatával történő figyelésére vonatkozik. Az AD DS támogatott verziói: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016.

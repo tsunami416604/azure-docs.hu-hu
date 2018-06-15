@@ -1,8 +1,8 @@
 ---
-title: "Az Azure-ral Terraform használatával"
-description: "Terraform segítségével vesion bemutatása és központi telepítése az Azure-infrastruktúra."
+title: Az Azure-ral Terraform használatával
+description: Terraform segítségével vesion bemutatása és központi telepítése az Azure-infrastruktúra.
 ms.service: virtual-machines-linux
-keywords: "terraform, devops, áttekintése, tervezze meg, alkalmazhatja és automatizálásához"
+keywords: terraform, devops, áttekintése, tervezze meg, alkalmazhatja és automatizálásához
 author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
@@ -12,6 +12,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26364470"
 ---
 # <a name="terraform-with-azure"></a>Az Azure-ral Terraform
 

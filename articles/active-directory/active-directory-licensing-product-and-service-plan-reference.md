@@ -1,13 +1,13 @@
 ---
-title: "Termék neve és a szolgáltatás tervezze meg az Azure Active Directory licencelése azonosítóinak |} Microsoft Docs"
-description: "Az Azure-portálon, az Office 365 portálra, a PowerShell vagy a Microsoft Graph a licencelés az Azure AD azonosítója térkép"
+title: Termék neve és a szolgáltatás tervezze meg az Azure Active Directory licencelése azonosítóinak |} Microsoft Docs
+description: Az Azure-portálon, az Office 365 portálra, a PowerShell vagy a Microsoft Graph a licencelés az Azure AD azonosítója térkép
 services: active-directory
-keywords: "Az Azure Active Directory licencelése service-csomagokról"
-documentationcenter: 
+keywords: Az Azure Active Directory licencelése service-csomagokról
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26609328"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Termékek neveit és a licencelési szolgáltatás terv azonosítók
 

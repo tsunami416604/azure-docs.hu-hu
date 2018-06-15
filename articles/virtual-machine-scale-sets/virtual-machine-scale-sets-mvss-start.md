@@ -1,11 +1,11 @@
 ---
-title: "Virtuálisgép-méretezési készlet sablonok megismerése |} Microsoft Docs"
-description: "Ismerje meg a virtuálisgép-méretezési csoportok minimális életképes méretezési készlet sablon létrehozása"
+title: Virtuálisgép-méretezési készlet sablonok megismerése |} Microsoft Docs
+description: Ismerje meg a virtuálisgép-méretezési csoportok minimális életképes méretezési készlet sablon létrehozása
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781255"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>További tudnivalók a virtuálisgép-méretezési készlet sablonok
 Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag adatsorozat egy minimális életképes méretezési készlet sablon létrehozása és a különböző forgatókönyvekben megfelelően sablon módosításával jeleníti meg. Minden példában ez származhat [GitHub-tárházban](https://github.com/gatneil/mvss). 

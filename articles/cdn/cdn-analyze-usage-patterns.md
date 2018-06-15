@@ -1,11 +1,11 @@
 ---
-title: "Verizon jelentések alapvető |} Microsoft Docs"
-description: "Megtekintheti használati minták a CDN a következő jelentések segítségével: sávszélesség, adatokat továbbít, a találatok, gyorsítótár állapotok, gyorsítótári találati aránya, IPV4/IPV6 adatokat továbbít."
+title: Verizon jelentések alapvető |} Microsoft Docs
+description: 'Megtekintheti használati minták a CDN a következő jelentések segítségével: sávszélesség, adatokat továbbít, a találatok, gyorsítótár állapotok, gyorsítótári találati aránya, IPV4/IPV6 adatokat továbbít.'
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5a0d9018-8bdb-48ff-84df-23648ebcf763
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345247"
 ---
 # <a name="core-reports-from-verizon"></a>Verizon Core jelentések
 

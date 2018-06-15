@@ -1,9 +1,9 @@
 ---
-title: "A kétlépéses ellenőrzés beállításait kezelése |} Microsoft Docs"
-description: "Kezelése, beleértve a kapcsolattartási adatok módosítása vagy az eszközök konfigurálása Azure multi-factor Authentication használatát."
+title: A kétlépéses ellenőrzés beállításait kezelése |} Microsoft Docs
+description: Kezelése, beleértve a kapcsolattartási adatok módosítása vagy az eszközök konfigurálása Azure multi-factor Authentication használatát.
 services: multi-factor-authentication
-keywords: "többtényezős hitelesítés ügyfél, hitelesítési probléma korrelációs azonosító"
-documentationcenter: 
+keywords: többtényezős hitelesítés ügyfél, hitelesítési probléma korrelációs azonosító
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626658"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>A kétlépéses ellenőrzést beállításainak kezelése
 Ez a cikk a kétlépéses ellenőrzés vagy többtényezős hitelesítési beállításainak frissítése kapcsolatos kérdésekre. Ha a fiókkal történő bejelentkezés problémát tapasztal, tekintse meg a [problémák adódtak a kétlépéses ellenőrzéshez használttal](multi-factor-authentication-end-user-troubleshoot.md) hibaelhárítási segítséget.

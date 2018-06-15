@@ -1,12 +1,12 @@
 ---
-title: "Az Azure Active Directory koncepció alkalmazástervezési bemutatása |} Microsoft Docs"
-description: "Vizsgálatát, és gyorsan végrehajthatja az identitás- és kezelési helyzetek"
+title: Az Azure Active Directory koncepció alkalmazástervezési bemutatása |} Microsoft Docs
+description: Vizsgálatát, és gyorsan végrehajthatja az identitás- és kezelési helyzetek
 services: active-directory
-keywords: "az Azure active directory, a forgatókönyv, a koncepció igazolása, PoC"
-documentationcenter: 
+keywords: az Azure active directory, a forgatókönyv, a koncepció igazolása, PoC
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26601209"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-introduction"></a>Az Azure Active Directory igazolása koncepció forgatókönyv: bemutatása
 

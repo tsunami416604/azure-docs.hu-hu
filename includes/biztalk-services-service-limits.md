@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "29765917"
 ---
 | ERŐFORRÁS | INGYENES (ELŐZETES VERZIÓ) | FEJLESZTŐI | ALAPSZINTŰ | STANDARD | PRÉMIUM SZINTŰ |
 | --- | --- | --- | --- | --- | --- |

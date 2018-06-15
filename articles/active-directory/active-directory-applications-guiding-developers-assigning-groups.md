@@ -1,11 +1,11 @@
 ---
-title: "Csoportok hozzárendelése az Azure AD alkalmazásaiban |} Microsoft Docs"
-description: "How Azure-alkalmazások csoport-hozzárendelés végrehajtásához."
+title: Csoportok hozzárendelése az Azure AD alkalmazásaiban |} Microsoft Docs
+description: How Azure-alkalmazások csoport-hozzárendelés végrehajtásához.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 29b5ba89-a1c7-4f1f-a294-248a40106617
 ms.service: active-directory
 ms.workload: identity
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26597144"
 ---
 # <a name="assign-azure-active-directory-groups-to-an-application"></a>Az alkalmazás Azure Active Directory-csoportok hozzárendelése
 Mielőtt a felhasználók és csoportok rendelhet egy alkalmazás, felhasználó-hozzárendelés követelheti meg. Kötelező felhasználói kiosztása, lásd: a [igénylő felhasználó hozzárendelés](active-directory-applications-guiding-developers-requiring-user-assignment.md) cikk.

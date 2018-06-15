@@ -1,12 +1,12 @@
 ---
-title: "Az Azure PowerShell-parancsfájl minták – a teljes számlázási méretének blob-tároló kiszámítása |} Microsoft Docs"
-description: "A teljes mérete az Azure Blob storage-tároló kiszámítása számlázási célokra."
+title: Az Azure PowerShell-parancsfájl minták – a teljes számlázási méretének blob-tároló kiszámítása |} Microsoft Docs
+description: A teljes mérete az Azure Blob storage-tároló kiszámítása számlázási célokra.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: cbrooks
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 11/07/2017
 ms.author: fryu
 ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
 ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26368544"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>A teljes számlázási méretének blob-tároló kiszámítása
 

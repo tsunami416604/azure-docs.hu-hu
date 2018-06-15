@@ -1,11 +1,11 @@
 ---
-title: "Azure BizTalk Services létrehozása az Azure Portalon | Microsoft Docs"
-description: "Megtudhatja, hogyan építheti ki vagy hozhatja létre az Azure BizTalk Servicest az Azure Portalon: MABS, WABS"
+title: Azure BizTalk Services létrehozása az Azure Portalon | Microsoft Docs
+description: 'Megtudhatja, hogyan építheti ki vagy hozhatja létre az Azure BizTalk Servicest az Azure Portalon: MABS, WABS'
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 3ad18876-a649-40d6-9aa0-1509c1d62c43
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26632720"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
 

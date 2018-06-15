@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 04/19/2018
+  ms.locfileid: "31590785"
 abstract:
   description: Az adatelemzési és a mélytanulási virtuális gépek testre szabott Azure VM-rendszerképek, rengeteg beépített adatelemzési eszközzel, amelyek fejlett elemzésre tervezett, intelligens alkalmazások létrehozására használhatók.
 sections:

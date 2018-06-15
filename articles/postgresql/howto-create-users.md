@@ -1,6 +1,6 @@
 ---
-title: "Felhasználók létrehozása az Azure Database PostgreSQL-kiszolgáló"
-description: "Ez a cikk ismerteti, hogyan hozhat létre új felhasználói fiókokat egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis kommunikál."
+title: Felhasználók létrehozása az Azure Database PostgreSQL-kiszolgáló
+description: Ez a cikk ismerteti, hogyan hozhat létre új felhasználói fiókokat egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis kommunikál.
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29575638"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Felhasználók létrehozása az Azure Database PostgreSQL-kiszolgáló 
 Ez a cikk ismerteti, hogyan hozhat létre felhasználók PostgreSQL-kiszolgáló egy Azure-adatbázis.

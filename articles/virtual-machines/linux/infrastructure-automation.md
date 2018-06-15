@@ -1,13 +1,13 @@
 ---
-title: "Infrastruktúra automatizálási eszközeivel Linux virtuális gépek Azure-ban |} Microsoft Docs"
-description: "Infrastruktúra automatizálási eszközökkel, például a Ansible, Chef, Puppet, Terraform és csomagoló használata létrehozása és kezelése a Linux virtuális gépek Azure-ban"
+title: Infrastruktúra automatizálási eszközeivel Linux virtuális gépek Azure-ban |} Microsoft Docs
+description: Infrastruktúra automatizálási eszközökkel, például a Ansible, Chef, Puppet, Terraform és csomagoló használata létrehozása és kezelése a Linux virtuális gépek Azure-ban
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -20,5 +20,6 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26692860"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

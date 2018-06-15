@@ -1,11 +1,11 @@
 ---
-title: "Egy adott API engedélyeinek kiválasztása |} Microsoft Docs"
-description: "További tudnivalók a kérelmet az ügyfél- és erőforrás alkalmazások fejlesztői alkalmazások működése"
+title: Egy adott API engedélyeinek kiválasztása |} Microsoft Docs
+description: További tudnivalók a kérelmet az ügyfél- és erőforrás alkalmazások fejlesztői alkalmazások működése
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614167"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Egy adott API-engedélyek kiválasztása 
 

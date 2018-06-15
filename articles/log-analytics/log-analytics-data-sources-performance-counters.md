@@ -1,8 +1,8 @@
 ---
-title: "Összegyűjti és elemzi az Azure Naplóelemzés teljesítményszámlálók |} Microsoft Docs"
-description: "Log Analytics teljesítménye a Windows és Linux-ügynökök elemzését által gyűjtött teljesítményszámlálók.  Ez a cikk mindkét Windows teljesítményszámlálók gyűjteményét beállításának módját ismerteti, és a Linux-ügynököt, azok adatait tárolja a munkaterületet, és elemezheti őket az Azure portálon."
+title: Összegyűjti és elemzi az Azure Naplóelemzés teljesítményszámlálók |} Microsoft Docs
+description: Log Analytics teljesítménye a Windows és Linux-ügynökök elemzését által gyűjtött teljesítményszámlálók.  Ez a cikk mindkét Windows teljesítményszámlálók gyűjteményét beállításának módját ismerteti, és a Linux-ügynököt, azok adatait tárolja a munkaterületet, és elemezheti őket az Azure portálon.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783162"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Naplóelemzési Windows és Linux teljesítmény adatforrások
 A Windows és Linux teljesítményszámlálók Észreveheti az olyan hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A Naplóelemzési össze tudják gyűjteni a teljesítményszámlálók gyakori elemzésre közel valós idejű (NRT) hosszabb távú elemzés teljesítményadatait összesítése és jelentéskészítési mellett.
