@@ -1,12 +1,12 @@
 ---
-title: "Traffic Manager-profil létrehozása az Azure-ban |} Microsoft Docs"
-description: "Ez a cikk ismerteti a Traffic Manager-profil létrehozása"
+title: Traffic Manager-profil létrehozása az Azure-ban |} Microsoft Docs
+description: Ez a cikk ismerteti a Traffic Manager-profil létrehozása
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397570"
 ---
 # <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 

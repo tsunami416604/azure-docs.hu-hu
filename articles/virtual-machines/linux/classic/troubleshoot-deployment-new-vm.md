@@ -1,11 +1,11 @@
 ---
-title: "Linux virtuális gép telepítési klasszikus hibaelhárítása |} Microsoft Docs"
-description: "Klasszikus telepítési problémák elhárításához, amikor egy új Linux virtuális gép létrehozása az Azure-ban"
+title: Linux virtuális gép telepítési klasszikus hibaelhárítása |} Microsoft Docs
+description: Klasszikus telepítési problémák elhárításához, amikor egy új Linux virtuális gép létrehozása az Azure-ban
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: JiangChen79
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: c8a963fa-6b2a-4c7a-a1f4-7793adb02b19
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27965968"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Egy új Linux virtuális gép létrehozása az Azure klasszikus üzembe helyezési problémáinak elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-selectors-include.md)]

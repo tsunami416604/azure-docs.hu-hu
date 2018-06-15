@@ -1,11 +1,11 @@
 ---
-title: "A Mobile Services hozzáadása a kapcsolódó szolgáltatások a Visual Studio használatával |} Microsoft Docs"
-description: "A Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen adja hozzá a Mobile Services"
+title: A Mobile Services hozzáadása a kapcsolódó szolgáltatások a Visual Studio használatával |} Microsoft Docs
+description: A Visual Studio kapcsolódó szolgáltatások hozzáadása párbeszédpanelen adja hozzá a Mobile Services
 services: visual-studio-online
 documentationcenter: na
 author: mlhoop
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 75c3cb93-88e1-476d-a416-f34caa3608e3
 ms.service: visual-studio-online
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884215"
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>A Mobile Services hozzáadása a Visual Studio kapcsolódó szolgáltatások használatával
 A Visual Studio 2015-öt, Azure Mobile Services használatával csatlakozhat a **kapcsolódó szolgáltatás hozzáadása** párbeszédpanel. Bármely C# ügyfélalkalmazás, bármely JavaScript-alkalmazást, illetve a platformok közötti Cordova-alkalmazás lehet csatlakoztatni. Miután csatlakozott, létrehozása és adatok eléréséhez, hozzon létre egyéni API-k és ütemezett feladatok, vagy a leküldéses értesítések támogatását.  A kapcsolódó szolgáltatások művelet hozzáadja a megfelelő hivatkozások és a kapcsolat kódot. Is kihasználhatja a hitelesítés népszerű identitáskezelési rendszerek, például Azure AD számos beépített támogatása Facebook, a Twitter és a Microsoft Accounts.

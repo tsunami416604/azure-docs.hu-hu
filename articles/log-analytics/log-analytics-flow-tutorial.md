@@ -1,8 +1,8 @@
 ---
-title: "A Microsoft Flow Azure Log Analytics-folyamatok automatizálása"
-description: "Ismerje meg, hogyan használhatja a Microsoft Flow gyorsan automatizálása ismételhető az Azure Log Analytics-összekötő használatával."
+title: A Microsoft Flow Azure Log Analytics-folyamatok automatizálása
+description: Ismerje meg, hogyan használhatja a Microsoft Flow gyorsan automatizálása ismételhető az Azure Log Analytics-összekötő használatával.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: CFreemanwa
 manager: carmonm
 ms.service: log-analytics
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2017
+ms.locfileid: "23889507"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Összekötő Log Analytics-folyamatok automatizálása a Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi automatizált munkafolyamatok műveletek több száz segítségével különböző szolgáltatások létrehozásához. Egy művelet kimenetében használható bemenetként a másikra, hogy lehetővé teszi különböző szolgáltatások közötti integrációt.  Az Azure Log Analytics-összekötő Microsoft Flow engedélyezi, hogy a napló megkeresi a Naplóelemzési által beolvasott adatokat tartalmazó munkafolyamatok építhetők fel.

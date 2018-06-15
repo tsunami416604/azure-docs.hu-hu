@@ -1,6 +1,6 @@
 ---
-title: "Az Azure Blob storage endpoint az egyéni tartománynév beállítása |} Microsoft Docs"
-description: "Az Azure portál segítségével a saját kanonikus név (CNAME) van leképezve a Blob storage endpoint az Azure Storage-fiók."
+title: Az Azure Blob storage endpoint az egyéni tartománynév beállítása |} Microsoft Docs
+description: Az Azure portál segítségével a saját kanonikus név (CNAME) van leképezve a Blob storage endpoint az Azure Storage-fiók.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559927"
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Egyéni tartományév konfigurálása a Blob Storage-végponthoz
 

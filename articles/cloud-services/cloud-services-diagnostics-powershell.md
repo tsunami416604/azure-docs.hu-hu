@@ -1,11 +1,11 @@
 ---
-title: "A PowerShell használata Azure Cloud Services diagnosztika engedélyezése |} Microsoft Docs"
-description: "Útmutató: a PowerShell használatával felhőszolgáltatások diagnosztika engedélyezése"
+title: A PowerShell használata Azure Cloud Services diagnosztika engedélyezése |} Microsoft Docs
+description: 'Útmutató: a PowerShell használatával felhőszolgáltatások diagnosztika engedélyezése'
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 66e08754-8639-4022-ae18-4237749ba17d
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843426"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>A PowerShell használata Azure Cloud Services diagnosztika engedélyezése
 Diagnosztikai adatok alkalmazásnaplók, például begyűjtheti a teljesítményszámlálók stb az egy Felhőszolgáltatás, az Azure Diagnostics kiterjesztés használatával. Ez a cikk ismerteti az Azure Diagnostics-bővítmény engedélyezése egy felhőalapú szolgáltatás PowerShell használatával.  Lásd: [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) esetében ez a cikk szükséges előfeltételeket.

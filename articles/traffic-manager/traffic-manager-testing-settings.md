@@ -1,11 +1,11 @@
 ---
-title: "Ellenőrizze az Azure Traffic Manager-beállítások |} Microsoft Docs"
-description: "Ez a cikk segít a Traffic Manager beállításainak ellenőrzése"
+title: Ellenőrizze az Azure Traffic Manager-beállítások |} Microsoft Docs
+description: Ez a cikk segít a Traffic Manager beállításainak ellenőrzése
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2180b640-596e-4fb2-be59-23a38d606d12
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876354"
 ---
 # <a name="verify-traffic-manager-settings"></a>A Traffic Manager beállításainak ellenőrzése
 

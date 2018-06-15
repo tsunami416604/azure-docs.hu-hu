@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb eszköz rendszergazdai jelszó módosítása |} Microsoft Docs"
-description: "Ismerteti az Azure portálon vagy a StorSimple virtuális tömb webes felhasználói felület segítségével módosíthatja az eszköz rendszergazdai jelszava."
+title: A StorSimple virtuális tömb eszköz rendszergazdai jelszó módosítása |} Microsoft Docs
+description: Ismerteti az Azure portálon vagy a StorSimple virtuális tömb webes felhasználói felület segítségével módosíthatja az eszköz rendszergazdai jelszava.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875570"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>A StorSimple virtuális tömb eszköz rendszergazdai jelszava keresztül StorSimple Device Manager módosítása
 

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Security Centerben a virtuális gépek védelme |} Microsoft Docs"
-description: "Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait a virtuális gépet véd, és maradnak meg a biztonsági házirendeknek megfelelően."
+title: Az Azure Security Centerben a virtuális gépek védelme |} Microsoft Docs
+description: Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait a virtuális gépet véd, és maradnak meg a biztonsági házirendeknek megfelelően.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -16,9 +16,10 @@ ms.date: 01/04/2018
 ms.author: terrylan
 ms.openlocfilehash: 54375f6f98b4989a7af8bcde649d967f77c6c862
 ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27623498"
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Az Azure Security Centerben a virtuális gépek védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a Security Center a potenciális biztonsági hiányosságokat azonosít, ajánlásokat, amely végigvezeti Önt a szükséges szabályozási folyamatán hoz létre.  Javaslat alkalmazható azonban az Azure erőforrás típusa: virtuális gépek (VM), hálózati, SQL és alkalmazások.

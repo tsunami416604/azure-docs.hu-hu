@@ -1,12 +1,12 @@
 ---
-title: "Az Azure továbbítási portbeállítások |} Microsoft Docs"
-description: "Azure-továbbítási portértékeket adatait."
+title: Az Azure továbbítási portbeállítások |} Microsoft Docs
+description: Azure-továbbítási portértékeket adatait.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28017375"
 ---
 # <a name="azure-relay-port-settings"></a>Az Azure továbbítási port beállításai
 

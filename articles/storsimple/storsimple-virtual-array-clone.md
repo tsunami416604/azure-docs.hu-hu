@@ -1,11 +1,11 @@
 ---
-title: "Klónozza a StorSimple virtuális tömb biztonsági |} Microsoft Docs"
-description: "Megtudhatja, hogyan klónozza a biztonsági mentés és a fájl helyreállítása a StorSimple virtuális tömbjét."
+title: Klónozza a StorSimple virtuális tömb biztonsági |} Microsoft Docs
+description: Megtudhatja, hogyan klónozza a biztonsági mentés és a fájl helyreállítása a StorSimple virtuális tömbjét.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875990"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>A StorSimple virtuális tömb biztonsági másolatából klónozása
 

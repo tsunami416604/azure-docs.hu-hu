@@ -1,11 +1,11 @@
 ---
-title: "Vendég operációsrendszer-család 1 használatból való kivonást figyelje meg |} Microsoft Docs"
-description: "Ha az Azure vendég operációs rendszer családja 1 használatból való kivonást történt és annak megállapítása, hogy hatással nyújt információkat"
+title: Vendég operációsrendszer-család 1 használatból való kivonást figyelje meg |} Microsoft Docs
+description: Ha az Azure vendég operációs rendszer családja 1 használatból való kivonást történt és annak megállapítása, hogy hatással nyújt információkat
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843132"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Vendég operációsrendszer-család 1 használatból való kivonást értesítés
 Az operációsrendszer-család 1 kivonása 2013. június 1 bejelentése volt.

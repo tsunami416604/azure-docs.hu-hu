@@ -1,12 +1,12 @@
 ---
-title: "Az Azure App Service-csomag áttekintése |} Microsoft Docs"
-description: "Ismerje meg, hogyan App Service-csomagok Azure App Service munka, és hogyan azok előnyeit, a kezelhetőséget."
-keywords: "az App service, az azure app service, a méretezési, méretezhető, méretezhetőség, az app service-csomag, az app service költség"
+title: Az Azure App Service-csomag áttekintése |} Microsoft Docs
+description: Ismerje meg, hogyan App Service-csomagok Azure App Service munka, és hogyan azok előnyeit, a kezelhetőséget.
+keywords: az App service, az azure app service, a méretezési, méretezhető, méretezhetőség, az app service-csomag, az app service költség
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862359"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomag áttekintése
 

@@ -1,8 +1,8 @@
 ---
-title: "Futásidejű kivételek diagnosztizálása az Azure Application Insights használatával | Microsoft Docs"
-description: "Oktatóanyag az alkalmazásában előforduló futásidejű kivételek észleléséhez és diagnosztizálásához az Azure Application Insights használatával."
+title: Futásidejű kivételek diagnosztizálása az Azure Application Insights használatával | Microsoft Docs
+description: Oktatóanyag az alkalmazásában előforduló futásidejű kivételek észleléséhez és diagnosztizálásához az Azure Application Insights használatával.
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2018
+ms.locfileid: "27998049"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 

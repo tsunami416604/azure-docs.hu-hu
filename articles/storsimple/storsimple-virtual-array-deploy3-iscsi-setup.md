@@ -1,11 +1,11 @@
 ---
-title: "Az iSCSI-kiszolgáló telepítése a Microsoft Azure StorSimple virtuális tömb |} Microsoft Docs"
-description: "Ismerteti, hogyan hajtsa végre a kezdeti beállítás, a StorSimple iSCSI kiszolgáló regisztrálásához és eszköz beállításának befejezése."
+title: Az iSCSI-kiszolgáló telepítése a Microsoft Azure StorSimple virtuális tömb |} Microsoft Docs
+description: Ismerteti, hogyan hajtsa végre a kezdeti beállítás, a StorSimple iSCSI kiszolgáló regisztrálásához és eszköz beállításának befejezése.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 4db116d1-978b-48e8-b572-a719a8425dbc
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877306"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Központi telepítése a StorSimple virtuális tömb – állítsa be Azure-portálon az iSCSI-kiszolgálóként
 

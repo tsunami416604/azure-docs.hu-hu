@@ -1,11 +1,11 @@
 ---
-title: "Engedélyezze az átlátható adattitkosítást az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése átlátszó adatok titkosítás **."
+title: Engedélyezze az átlátható adattitkosítást az Azure Security Centerben |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése átlátszó adatok titkosítás **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: e4be8a0e-2118-4ee9-a266-69e52d9f7f8e
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866295"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Engedélyezze az átlátható adattitkosítást az Azure Security Centerben
 Azure Security Center javasolni fogja engedélyezése átlátszó Data Encryption (TDE) az SQL-adatbázisok, ha a TDE nincs engedélyezve. TDE védi az adatokat, és segítséget nyújt a megfelelőségi követelményeknek való megfelelést az adatbázis, a társított biztonsági másolatok és a tranzakciós naplófájlok nyugalmi, anélkül, hogy az alkalmazást módosítani kellene történő. További részletek további [átlátható adattitkosítást az Azure SQL Database](https://msdn.microsoft.com/library/dn948096).

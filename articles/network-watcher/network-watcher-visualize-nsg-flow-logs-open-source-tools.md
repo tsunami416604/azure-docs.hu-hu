@@ -1,11 +1,11 @@
 ---
-title: "Azure hálózati figyelő NSG folyamata naplók nyílt forráskódú eszközökkel megjelenítése |} Microsoft Docs"
-description: "Ezen a lapon NSG folyamata naplók megjelenítése nyílt forráskódú eszközök használatával ismerteti."
+title: Azure hálózati figyelő NSG folyamata naplók nyílt forráskódú eszközökkel megjelenítése |} Microsoft Docs
+description: Ezen a lapon NSG folyamata naplók megjelenítése nyílt forráskódú eszközök használatával ismerteti.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e9b2dcad-4da4-4d6b-aee2-6d0afade0cb8
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394170"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure hálózati figyelő NSG folyamata naplók nyílt forráskódú eszközökkel megjelenítése
 

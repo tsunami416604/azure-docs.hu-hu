@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "A Site Recovery dokumentációja"
+title: A Site Recovery dokumentációja
 metadata:
-  title: "Az Azure Site Recovery dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs"
+  title: Az Azure Site Recovery dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
   author: czeumault
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 01/10/2018
+  ms.locfileid: "27740084"
 abstract:
-  description: "Az Azure Site Recovery az Azure-beli virtuális gépek, illetve a helyszíni virtuális gépek és fizikai kiszolgálók vészhelyreállítását irányítja és felügyeli. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan végezhet replikálást, feladatátadást és feladatátvételt."
+  description: Az Azure Site Recovery az Azure-beli virtuális gépek, illetve a helyszíni virtuális gépek és fizikai kiszolgálók vészhelyreállítását irányítja és felügyeli. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan végezhet replikálást, feladatátadást és feladatátvételt.
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "Vészhelyreállítás gyors beállítása Azure-beli virtuális gép számára"
+    text: Vészhelyreállítás gyors beállítása Azure-beli virtuális gép számára
   - type: list
     style: icon48
     items:
@@ -32,47 +33,47 @@ sections:
         src: /azure/site-recovery/media/index/portal.svg
       text: Azure Portal
       href: /azure/site-recovery/azure-to-azure-quickstart
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: "Ismerje meg, hogyan állíthat be vészhelyreállítást virtuális gépekhez és fizikai kiszolgálókhoz."
+    text: Ismerje meg, hogyan állíthat be vészhelyreállítást virtuális gépekhez és fizikai kiszolgálókhoz.
   - type: text
-    html: "<h3>Azure – Azure</h3>"
+    html: <h3>Azure – Azure</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"azure-to-azure-tutorial-enable-replication\">Vészhelyreállítás beállítása</a>"
-    - html: "<a href=\"azure-to-azure-tutorial-dr-drill\">Vészhelyreállítási próba végrehajtása</a>"
-    - html: "<a href=\"azure-to-azure-tutorial-failover-failback\">Feladatátvétel és feladat-visszavétel futtatása</a>"
+    - html: <a href="azure-to-azure-tutorial-enable-replication">Vészhelyreállítás beállítása</a>
+    - html: <a href="azure-to-azure-tutorial-dr-drill">Vészhelyreállítási próba végrehajtása</a>
+    - html: <a href="azure-to-azure-tutorial-failover-failback">Feladatátvétel és feladat-visszavétel futtatása</a>
   - type: text
     html: <h3>VMware</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-prepare-azure\">Az Azure előkészítése</a>"
-    - html: "<a href=\"tutorial-prepare-on-premises-vmware\">Helyszíni VMware előkészítése</a>"
-    - html: "<a href=\"tutorial-vmware-to-azure\">Vészhelyreállítás beállítása</a>"
-    - html: "<a href=\"tutorial-dr-drill-azure\">Vészhelyreállítási próba végrehajtása</a>"
-    - html: "<a href=\"tutorial-vmware-to-azure-failover-failback\">Feladatátvétel és feladat-visszavétel futtatása</a>"
+    - html: <a href="tutorial-prepare-azure">Az Azure előkészítése</a>
+    - html: <a href="tutorial-prepare-on-premises-vmware">Helyszíni VMware előkészítése</a>
+    - html: <a href="tutorial-vmware-to-azure">Vészhelyreállítás beállítása</a>
+    - html: <a href="tutorial-dr-drill-azure">Vészhelyreállítási próba végrehajtása</a>
+    - html: <a href="tutorial-vmware-to-azure-failover-failback">Feladatátvétel és feladat-visszavétel futtatása</a>
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-prepare-azure\">Az Azure előkészítése</a>"
-    - html: "<a href=\"tutorial-prepare-on-premises-hyper-v\">Helyszíni Hyper-V előkészítése</a>"
-    - html: "<a href=\"tutorial-hyper-v-to-azure\">Vészhelyreállítás beállítása Hyper-V virtuális gépekhez</a>"
-    - html: "<a href=\"tutorial-hyper-v-vmm-to-azure\">Vészhelyreállítás beállítása a System Center VMM által felügyelt Hyper-V virtuális gépekhez</a>"
-    - html: "<a href=\"tutorial-dr-drill-azure\">Vészhelyreállítási próba végrehajtása</a>"
-    - html: "<a href=\"tutorial-hyper-v-to-azure-failover-failback\">Feladatátvétel és feladat-visszavétel futtatása</a>"
+    - html: <a href="tutorial-prepare-azure">Az Azure előkészítése</a>
+    - html: <a href="tutorial-prepare-on-premises-hyper-v">Helyszíni Hyper-V előkészítése</a>
+    - html: <a href="tutorial-hyper-v-to-azure">Vészhelyreállítás beállítása Hyper-V virtuális gépekhez</a>
+    - html: <a href="tutorial-hyper-v-vmm-to-azure">Vészhelyreállítás beállítása a System Center VMM által felügyelt Hyper-V virtuális gépekhez</a>
+    - html: <a href="tutorial-dr-drill-azure">Vészhelyreállítási próba végrehajtása</a>
+    - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Feladatátvétel és feladat-visszavétel futtatása</a>
   - type: text
-    html: "<h3>Áttelepítés az Azure-ba</h3>"
+    html: <h3>Áttelepítés az Azure-ba</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-prepare-azure\">Az Azure előkészítése</a>"
-    - html: "<a href=\"tutorial-migrate-on-premises-to-azure\">Helyszíni gépek</a> vagy <a href=\"tutorial-migrate-aws-to-azure\">AWS-példányok áttelepítése az Azure-ba</a>"
-- title: "Hivatkozás"
+    - html: <a href="tutorial-prepare-azure">Az Azure előkészítése</a>
+    - html: <a href="tutorial-migrate-on-premises-to-azure">Helyszíni gépek</a> vagy <a href="tutorial-migrate-aws-to-azure">AWS-példányok áttelepítése az Azure-ba</a>
+- title: Hivatkozás
   items:
   - type: list
     style: cards

@@ -1,8 +1,8 @@
 ---
-title: "Hogyan Alkalmazásjelszók használható az Azure MFA? | Microsoft Docs"
-description: "Ezen a lapon segít megérteni az alkalmazásjelszók és azok szerepét a az Azure MFA figyelembe véve a felhasználóknak."
+title: Hogyan Alkalmazásjelszók használható az Azure MFA? | Microsoft Docs
+description: Ezen a lapon segít megérteni az alkalmazásjelszók és azok szerepét a az Azure MFA figyelembe véve a felhasználóknak.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27700350"
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Mik a Azure multi-factor Authentication Alkalmazásjelszókat?
 Bizonyos böngészőn kívüli alkalmazások, például az Apple natív e-mail-ügyfélprogram, amely használja az Exchange Active Sync jelenleg nem támogatják a multi-factor authentication. Többtényezős hitelesítést felhasználónként kell engedélyezni. Ez azt jelenti, hogy ha a felhasználó a többtényezős hitelesítés engedélyezve van, és böngészőn kívüli alkalmazások használatához megpróbálnak, fogják tudni megnyitni. Az alkalmazásjelszó lehetővé teszi, hogy ez megtörténik. Ha a feltételes hozzáférési házirendek és felhasználói MFA révén nem kényszeríti a multi-factor Authentication, nem hozható létre alkalmazásjelszókat. Hozzáférés-vezérlésének feltételes hozzáférési házirendeket használó alkalmazásokat nem kell alkalmazásjelszókat.

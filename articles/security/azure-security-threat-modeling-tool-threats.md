@@ -1,6 +1,6 @@
 ---
-title: "-Microsoft fenyegetések modellezése eszköz - Azure fenyegetések |} Microsoft Docs"
-description: "A Microsoft fenyegetések modellezése eszköz fenyegetés kategória lapján kategóriák tartalmazó összes elérhetővé tett jönnek létre, fenyegetéseket."
+title: -Microsoft fenyegetések modellezése eszköz - Azure fenyegetések |} Microsoft Docs
+description: A Microsoft fenyegetések modellezése eszköz fenyegetés kategória lapján kategóriák tartalmazó összes elérhetővé tett jönnek létre, fenyegetéseket.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867898"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft fenyegetések modellezése eszköz fenyegetések
 

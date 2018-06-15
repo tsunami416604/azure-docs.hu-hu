@@ -1,6 +1,6 @@
 ---
-title: "VPN Gateway klasszikus – erőforrás-kezelő áttelepítésének |} Microsoft Docs"
-description: "Ezen a lapon a VPN Gateway hagyományos erőforrás-kezelő áttelepítése áttekintést nyújt."
+title: VPN Gateway klasszikus – erőforrás-kezelő áttelepítésének |} Microsoft Docs
+description: Ezen a lapon a VPN Gateway hagyományos erőforrás-kezelő áttelepítése áttekintést nyújt.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885216"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN-átjáró klasszikus – erőforrás-kezelő áttelepítése
 VPN-átjáróként is áttelepíthetők a klasszikus a Resource Manager üzembe helyezési modellben. További tudnivalók Azure Resource Manager [szolgáltatásait és előnyeit](../azure-resource-manager/resource-group-overview.md). Ez a cikk azt hogyan kell áttelepíteni a klasszikus üzembe helyezés újabb alapú Resource Manager modellt adatok találhatók. 

@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series eszköz riasztások megtekintése és kezelése |} Microsoft Docs"
-description: "Ismerteti a StorSimple riasztási feltételek és a súlyosság, a riasztási értesítések konfigurálása és a riasztások kezeléséről a StorSimple Device Manager szolgáltatás használata."
+title: A StorSimple 8000 series eszköz riasztások megtekintése és kezelése |} Microsoft Docs
+description: Ismerteti a StorSimple riasztási feltételek és a súlyosság, a riasztási értesítések konfigurálása és a riasztások kezeléséről a StorSimple Device Manager szolgáltatás használata.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27745778"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple Device Manager szolgáltatással a StorSimple-riasztások megtekintése és kezelése
 

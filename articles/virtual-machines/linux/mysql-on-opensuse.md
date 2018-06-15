@@ -1,11 +1,11 @@
 ---
-title: "MySQL telepíthető egy OpenSUSE Azure-ban |} Microsoft Docs"
-description: "Ismerje meg, MySQL telepítsen egy OpenSUSE Linux VMirtual gépet az Azure-ban."
+title: MySQL telepíthető egy OpenSUSE Azure-ban |} Microsoft Docs
+description: Ismerje meg, MySQL telepítsen egy OpenSUSE Linux VMirtual gépet az Azure-ban.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2018
+ms.locfileid: "28001177"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 

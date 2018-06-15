@@ -1,12 +1,12 @@
 ---
-title: "A megfelelő biztonság érdekében használata Azure Security Center javaslatait |} Microsoft Docs"
+title: A megfelelő biztonság érdekében használata Azure Security Center javaslatait |} Microsoft Docs
 description: " Útmutató biztonsági szabályzatok és javaslatok az Azure Security Centerben a biztonsági támadások csökkentése érdekében. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866666"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>A megfelelő biztonság érdekében használja az Azure Security Center javaslatok
 Jelentős biztonsági esemény esélyét csökkentheti a biztonsági házirend konfigurálása, majd az Azure Security Center által nyújtott ajánlások végrehajtási. Ez a cikk bemutatja, hogyan biztonsági szabályzatok és javaslatok a Security Center használatához segítséget nyújtanak az olyan biztonsági támadások.

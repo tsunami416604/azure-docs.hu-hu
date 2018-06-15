@@ -1,6 +1,6 @@
 ---
-title: "Hozzon létre egy SQL Server rendelkezésre állási csoport figyelőjének az Azure virtuális gépeken |} Microsoft Docs"
-description: "Részletes útmutatást ad a figyelő egy Always On rendelkezésre állási csoport létrehozása az SQL Server Azure virtuális gépeken"
+title: Hozzon létre egy SQL Server rendelkezésre állási csoport figyelőjének az Azure virtuális gépeken |} Microsoft Docs
+description: Részletes útmutatást ad a figyelő egy Always On rendelkezésre állási csoport létrehozása az SQL Server Azure virtuális gépeken
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400630"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>A terheléselosztó egy Always On rendelkezésre állási csoport konfigurálása az Azure-ban
 Ez a cikk azt ismerteti, hogyan egy terheléselosztót egy SQL Server Always On rendelkezésre állási csoport létrehozása az Azure Resource Manager rendszert futtató Azure virtuális gépekben. Rendelkezésre állási csoport szükséges egy adott terheléselosztóhoz, ha az SQL Server-példányok áll az Azure virtuális gépeken. A terheléselosztó a rendelkezésre állási csoport figyelője az IP-cím tárolja. Rendelkezésre állási csoport több régióba is, ha minden egyes régió egy terhelés-kiegyenlítő van szüksége.

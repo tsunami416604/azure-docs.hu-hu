@@ -1,6 +1,6 @@
 ---
-title: "A feladat-visszavétel futtassa a hely egy helyszíni Hyper-v virtuális gépek |} Microsoft Docs"
-description: "Az Azure Site Recovery koordinálja a replikálása, feladatátvétele és helyreállítási virtuális gépek és fizikai kiszolgálók. Ismerje meg a feladat-visszavétel az Azure-ból a helyszíni adatközpontban."
+title: A feladat-visszavétel futtassa a hely egy helyszíni Hyper-v virtuális gépek |} Microsoft Docs
+description: Az Azure Site Recovery koordinálja a replikálása, feladatátvétele és helyreállítási virtuális gépek és fizikai kiszolgálók. Ismerje meg a feladat-visszavétel az Azure-ból a helyszíni adatközpontban.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467120"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>A feladat-visszavételi fut a Hyper-V virtuális gépek
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Bus-üzenetsorok használata Java |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatók a Service Bus-üzenetsorok az Azure-ban. A Kódminták Java nyelven."
+title: Azure Service Bus-üzenetsorok használata Java |} Microsoft Docs
+description: Ismerje meg, hogyan használhatók a Service Bus-üzenetsorok az Azure-ban. A Kódminták Java nyelven.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868430"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Service Bus-üzenetsorok használata Java
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

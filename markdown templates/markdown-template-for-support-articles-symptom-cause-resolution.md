@@ -1,11 +1,11 @@
 ---
-title: "A böngésző lapon és a keresési eredményeket megjelenítő lap címe"
-description: "A cikk leírása, amely érkezési oldalak és a legtöbb keresési eredmények között megjelenik"
+title: A böngésző lapon és a keresési eredményeket megjelenítő lap címe
+description: A cikk leírása, amely érkezési oldalak és a legtöbb keresési eredmények között megjelenik
 services: service-name
 documentationcenter: dev-center-name
 author: GitHub-alias-of-only-one-author
 manager: manager-alias
-editor: 
+editor: ''
 tags: comma-separates-additional-tags-if-required
 ms.service: required
 ms.devlang: may be required
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "23886259"
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Cím (legfeljebb 120 karakter, célként megadott elsődleges kulcsszó)
 *A leírás másodlagos kulcsszavak 2-3 használható.*

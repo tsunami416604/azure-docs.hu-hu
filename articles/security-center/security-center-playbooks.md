@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779277"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Biztonsági forgatókönyvek az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti, hogyan használhatók az Azure Security Center biztonsági forgatókönyvei a biztonsággal kapcsolatos problémákra való válaszadásra.

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure importálási/exportálási feladatok diagnosztika és a hiba helyreállítási |} Microsoft Docs"
-description: "Megtudhatja, hogyan engedélyezi a részletes naplózás a Microsoft Azure Import/Export szolgáltatás feladatok."
+title: Az Azure importálási/exportálási feladatok diagnosztika és a hiba helyreállítási |} Microsoft Docs
+description: Megtudhatja, hogyan engedélyezi a részletes naplózás a Microsoft Azure Import/Export szolgáltatás feladatok.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 096cc795-9af6-4335-9fe8-fffa9f239a17
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873638"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnosztika és a hiba helyreállítási az Azure importálási/exportálási feladatok
 Minden meghajtó feldolgozott az Azure Import/Export szolgáltatás hibanaplót a kapcsolódó tárfiók hoz létre. Részletes naplózás engedélyezése úgy, hogy a `LogLevel` tulajdonságot `Verbose` meghívásakor a [Put feladat](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) vagy [frissítés Feladattulajdonság](/rest/api/storageimportexport/jobs#Jobs_Update) műveletek.

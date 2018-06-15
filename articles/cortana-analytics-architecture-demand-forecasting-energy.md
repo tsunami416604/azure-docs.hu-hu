@@ -1,9 +1,9 @@
 ---
-title: "Az igény szerinti előrejelzési energia Cortana Intelligence Megoldássablonban architektúra |} Microsoft Docs"
-description: "A Microsoft a Cortana Intelligence Megoldássablonban, amelyek segítségével igény szerint egy energia segédprogram vállalat előrejelzési architektúrája."
-keywords: "megoldásgyorsító; cortana analytics; energia előrejelzés"
+title: Az igény szerinti előrejelzési energia Cortana Intelligence Megoldássablonban architektúra |} Microsoft Docs
+description: A Microsoft a Cortana Intelligence Megoldássablonban, amelyek segítségével igény szerint egy energia segédprogram vállalat előrejelzési architektúrája.
+keywords: megoldásgyorsító; cortana analytics; energia előrejelzés
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23845659"
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>Az igény szerinti előrejelzési energia Cortana Intelligence Megoldássablonban architektúrája
 Az alábbi ábrán architekturális áttekintést nyújt a [Cortana Intelligence Megoldássablon az igény szerinti előrejelzési energia](cortana-analytics-playbook-demand-forecasting-energy.md).

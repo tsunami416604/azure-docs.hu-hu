@@ -1,11 +1,11 @@
 ---
-title: "StorSimple Device Manager szolgáltatás üzembe helyezése |} Microsoft Docs"
-description: "Azt ismerteti, hogyan hozhat létre, és törölje a StorSimple Device Manager szolgáltatást, az Azure portálon, és a szolgáltatás regisztrációs kulcsának kezelését ismerteti."
+title: StorSimple Device Manager szolgáltatás üzembe helyezése |} Microsoft Docs
+description: Azt ismerteti, hogyan hozhat létre, és törölje a StorSimple Device Manager szolgáltatást, az Azure portálon, és a szolgáltatás regisztrációs kulcsának kezelését ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 28499494-8c4d-4a7f-9d44-94b2b8a93c93
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876102"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>A StorSimple Device Manager szolgáltatás a StorSimple virtuális tömb üzembe helyezése
 ## <a name="overview"></a>Áttekintés

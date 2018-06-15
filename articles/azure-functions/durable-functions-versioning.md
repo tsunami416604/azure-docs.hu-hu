@@ -1,12 +1,12 @@
 ---
-title: "A tartós funkciók - Azure Versioning"
-description: "Útmutató az Azure Functions a tartós funkciók bővítmény versioning valósít meg."
+title: A tartós funkciók - Azure Versioning
+description: Útmutató az Azure Functions a tartós funkciók bővítmény versioning valósít meg.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23838554"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>A tartós függvények (az Azure Functions) Versioning
 

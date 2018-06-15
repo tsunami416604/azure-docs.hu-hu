@@ -1,11 +1,11 @@
 ---
-title: "Webes alkalmazás Klónozás PowerShell használatával"
-description: "Útmutató a webalkalmazások a PowerShell használatával új webalkalmazások klónozását."
+title: Webes alkalmazás Klónozás PowerShell használatával
+description: Útmutató a webalkalmazások a PowerShell használatával új webalkalmazások klónozását.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: ahmedelnably
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.service: app-service-web
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27867470"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Azure App Service alkalmazás klónozása a PowerShell használatával
 A Microsoft Azure PowerShell verziója 1.1.0-ás kiadása egy új beállítás lett elérhető a `New-AzureRMWebApp` , amely lehetővé teszi a klón egy meglévő webes alkalmazást egy újonnan létrehozott alkalmazás egy másik régióban vagy ugyanabban a régióban. Ez a beállítás lehetővé teszi az ügyfelek központi telepítése a alkalmazások számos különböző régiókban teljes gyorsan és egyszerűen.

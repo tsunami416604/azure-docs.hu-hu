@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series eszköz webproxy beállítása |} Microsoft Docs"
-description: "Ismerje meg, hogyan használhatja a Windows PowerShell-lel webes proxykiszolgáló beállításait a StorSimple eszköz."
+title: A StorSimple 8000 series eszköz webproxy beállítása |} Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Windows PowerShell-lel webes proxykiszolgáló beállításait a StorSimple eszköz.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874996"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>A StorSimple eszköz webalkalmazás-proxy konfigurálása
 

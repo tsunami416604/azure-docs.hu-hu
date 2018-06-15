@@ -1,6 +1,6 @@
 ---
-title: "Konfigurálja a Load Balancer TCP időtúllépést |} Microsoft Docs"
-description: "Konfigurálja a Load Balancer TCP üresjárati időtúllépés"
+title: Konfigurálja a Load Balancer TCP időtúllépést |} Microsoft Docs
+description: Konfigurálja a Load Balancer TCP üresjárati időtúllépés
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855228"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer TCP üresjárati időtúllépés beállításainak konfigurálása
 

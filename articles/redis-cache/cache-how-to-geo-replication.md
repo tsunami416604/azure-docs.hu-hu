@@ -1,11 +1,11 @@
 ---
-title: "A georeplikáció konfigurálása az Azure Redis Cache |} Microsoft Docs"
-description: "Útmutató az Azure Redis Cache példány földrajzi régiók közötti replikáció."
+title: A georeplikáció konfigurálása az Azure Redis Cache |} Microsoft Docs
+description: Útmutató az Azure Redis Cache példány földrajzi régiók közötti replikáció.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911370"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Azure Redis Cache georeplikáció konfigurálása
 

@@ -1,11 +1,11 @@
 ---
-title: "Frissítés az operációs rendszer verziója, az Azure Security Centerben |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan valósítja meg az Azure Security Center ajánlás ** frissítés operációs rendszer verziója **."
+title: Frissítés az operációs rendszer verziója, az Azure Security Centerben |} Microsoft Docs
+description: Ez a cikk bemutatja, hogyan valósítja meg az Azure Security Center ajánlás ** frissítés operációs rendszer verziója **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866512"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Frissítse az operációs rendszer verziója, az Azure Security Centerben
 A virtuális gépek (VM), a felhőalapú szolgáltatások Azure Security Center javasolni fogja, hogy az operációs rendszer frissíteni kell, ha van újabb verzió.  Csak felhőalapú szolgáltatások üzembe helyezési ponti figyelt éles környezetben futó webes és feldolgozói szerepköröket.

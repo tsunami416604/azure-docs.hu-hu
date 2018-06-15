@@ -1,11 +1,11 @@
 ---
-title: "Hiba történt a bejelentkezés után az alkalmazás oldalon |} Microsoft Docs"
-description: "Ha magának az alkalmazásnak megfelelően kibocsát egy hiba történt az Azure AD bejelentkezési problémák megoldásához"
+title: Hiba történt a bejelentkezés után az alkalmazás oldalon |} Microsoft Docs
+description: Ha magának az alkalmazásnak megfelelően kibocsát egy hiba történt az Azure AD bejelentkezési problémák megoldásához
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384905"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Hiba történt a bejelentkezés után az alkalmazás az oldalon
 

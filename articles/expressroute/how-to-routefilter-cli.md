@@ -1,13 +1,13 @@
 ---
-title: "Be annak az Azure ExpressRoute Microsoft társviszony-létesítés: CLI |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan útvonal szűrők konfigurálása az Azure parancssori felület használatával Microsoft Peering"
+title: 'Be annak az Azure ExpressRoute Microsoft társviszony-létesítés: CLI |} Microsoft Docs'
+description: Ez a cikk ismerteti, hogyan útvonal szűrők konfigurálása az Azure parancssori felület használatával Microsoft Peering
 documentationcenter: na
 services: expressroute
 author: anzaman
 manager: ganesr
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850818"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Be annak a Microsoft társviszony-létesítéshez: Azure parancssori felület
 

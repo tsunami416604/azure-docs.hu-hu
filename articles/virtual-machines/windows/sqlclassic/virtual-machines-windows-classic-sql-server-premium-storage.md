@@ -1,8 +1,8 @@
 ---
-title: "Prémium szintű Azure Storage használata az SQL Server |} Microsoft Docs"
-description: "Ez a cikk a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és a prémium szintű Azure Storage használata az Azure virtuális gépeken futó SQL Server útmutatást ad."
+title: Prémium szintű Azure Storage használata az SQL Server |} Microsoft Docs
+description: Ez a cikk a klasszikus üzembe helyezési modellel létrehozott erőforrást használ, és a prémium szintű Azure Storage használata az Azure virtuális gépeken futó SQL Server útmutatást ad.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: craigg
 editor: monicar
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400613"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 ## <a name="overview"></a>Áttekintés

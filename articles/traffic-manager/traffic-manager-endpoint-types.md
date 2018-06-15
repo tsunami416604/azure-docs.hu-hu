@@ -1,11 +1,11 @@
 ---
-title: "A TRAFFIC Manager-végpont típusú |} Microsoft Docs"
-description: "Ez a cikk ismerteti a különböző használható az Azure Traffic Manager-végpontok"
+title: A TRAFFIC Manager-végpont típusú |} Microsoft Docs
+description: Ez a cikk ismerteti a különböző használható az Azure Traffic Manager-végpontok
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4e506986-f78d-41d1-becf-56c8516e4d21
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877516"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 A Microsoft Azure Traffic Manager lehetővé teszi, hogy hogyan a hálózati forgalom különböző adatközpontokban futó alkalmazások telepítése esetén elosztott vezérlését. Minden alkalmazás központi telepítésének egy végpontként a Traffic Manager konfigurálása. Ha a Traffic Manager DNS-kérelmet kap, térjen vissza a DNS-válasz egy elérhető végpontot úgy dönt. A TRAFFIC manager végpont aktuális állapota és a forgalom-útválasztási módszer választása alapjait. További információkért lásd: [Traffic Manager működése](traffic-manager-how-traffic-manager-works.md).

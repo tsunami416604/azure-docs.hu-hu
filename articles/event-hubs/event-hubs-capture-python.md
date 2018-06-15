@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Event Hubs rögzítése forgatókönyv |} Microsoft Docs"
-description: "Az Event Hubs rögzítése funkció használata bemutatása az Azure Python SDK-t használó mintaalkalmazás."
+title: Az Azure Event Hubs rögzítése forgatókönyv |} Microsoft Docs
+description: Az Event Hubs rögzítése funkció használata bemutatása az Azure Python SDK-t használó mintaalkalmazás.
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016457"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs rögzítése forgatókönyv: Python
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32767951"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Folyamatok konfigurálható küszöbérték-alapú szabályok az Azure Stream Analytics
 Ez a cikk ismerteti a referenciaadatok használata egy riasztási megoldást az Azure Stream Analytics konfigurálható küszöbérték-alapú szabályok használó eléréséhez.

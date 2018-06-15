@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series eszközvezérlők kezelése |} Microsoft Docs"
-description: "Megtudhatja, hogyan leállítása, újraindítása, állítsa le vagy alaphelyzetbe állítja a StorSimple eszköz tartományvezérlőket."
+title: A StorSimple 8000 series eszközvezérlők kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan leállítása, újraindítása, állítsa le vagy alaphelyzetbe állítja a StorSimple eszköz tartományvezérlőket.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875115"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>A StorSimple eszköz tartományvezérlők kezelése
 

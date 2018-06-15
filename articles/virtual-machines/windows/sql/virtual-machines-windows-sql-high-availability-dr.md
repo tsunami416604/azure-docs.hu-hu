@@ -1,11 +1,11 @@
 ---
-title: "Magas rendelkezésre álláshoz és Vészhelyreállításhoz az SQL Server |} Microsoft Docs"
-description: "A különböző Azure virtuális gépeken futó SQL Server HADR stratégiák tárgyalja."
+title: Magas rendelkezésre álláshoz és Vészhelyreállításhoz az SQL Server |} Microsoft Docs
+description: A különböző Azure virtuális gépeken futó SQL Server HADR stratégiák tárgyalja.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401259"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
 

@@ -1,12 +1,12 @@
 ---
-title: "Távoli csatlakozás a StorSimple eszköz |} Microsoft Docs"
-description: "Távoli kezelésére szolgál az eszköz konfigurálása és a StorSimple HTTP vagy HTTPS PROTOKOLLON keresztül és a Windows PowerShell összekapcsolása mutatja be."
+title: Távoli csatlakozás a StorSimple eszköz |} Microsoft Docs
+description: Távoli kezelésére szolgál az eszköz konfigurálása és a StorSimple HTTP vagy HTTPS PROTOKOLLON keresztül és a Windows PowerShell összekapcsolása mutatja be.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103955"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli csatlakozás a StorSimple 8000 series eszköz
 

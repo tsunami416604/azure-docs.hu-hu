@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203476"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>A telepítés előkészítéséhez Azure verem PKI-tanúsítványok
 A tanúsítványfájlokat [választott a hitelesítésszolgáltatótól kapott](azure-stack-get-pki-certs.md) kell importálni és exportált Azure verem szemben támasztott követelményeknek megfelelő tulajdonságokkal.

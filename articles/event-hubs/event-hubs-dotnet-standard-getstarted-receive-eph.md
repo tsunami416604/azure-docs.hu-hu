@@ -1,12 +1,12 @@
 ---
-title: "Események fogadása az Azure Event Hubsról a .NET Standard kódtár használatával | Microsoft Docs"
-description: "Üzenetek fogadása az EventProcessorHosttal .NET Standardban – első lépések"
+title: Események fogadása az Azure Event Hubsról a .NET Standard kódtár használatával | Microsoft Docs
+description: Üzenetek fogadása az EventProcessorHosttal .NET Standardban – első lépések
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29389835"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Üzenetek fogadása az Event Processor Hosttal .NET Standardban – első lépések
 

@@ -1,8 +1,8 @@
 ---
-title: "Riasztás kezelése a Microsoft-termékek figyelése |} Microsoft Docs"
-description: "Riasztás néhány problémát jelöl, amely a rendszergazda figyelmet igényel.  Ez a cikk különbségeket mutatja be, hogyan riasztások létrehozása és kezelése a System Center Operations Manager (SCOM) és a Naplóelemzési, és a két termék egy hibrid riasztáskezelési stratégia kihasználva a gyakorlati tanácsokat."
+title: Riasztás kezelése a Microsoft-termékek figyelése |} Microsoft Docs
+description: Riasztás néhány problémát jelöl, amely a rendszergazda figyelmet igényel.  Ez a cikk különbségeket mutatja be, hogyan riasztások létrehozása és kezelése a System Center Operations Manager (SCOM) és a Naplóelemzési, és a két termék egy hibrid riasztáskezelési stratégia kihasználva a gyakorlati tanácsokat.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865770"
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>A Microsoft figyelési riasztások kezelése
 Riasztás néhány problémát jelöl, amely a rendszergazda figyelmet igényel.  Nincsenek a köztük lévő különbségeket System Center Operations Manager (SCOM) és a Naplóelemzési Operations Management Suite (OMS) riasztások létrehozását, hogyan kezeli, és elemezni, és hogyan értesítés jelenik meg, hogy egy kritikus problémát észlelt.

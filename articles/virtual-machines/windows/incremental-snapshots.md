@@ -1,6 +1,6 @@
 ---
-title: "Növekményes pillanatképek használja biztonsági másolat és helyreállítás a nem felügyelt Azure Windows virtuális lemezek |} Microsoft Docs"
-description: "Hozzon létre egy egyéni megoldás biztonsági mentés és helyreállítás a Azure Windows virtuálisgép-lemezek növekményes pillanatképek használata."
+title: Növekményes pillanatképek használja biztonsági másolat és helyreállítás a nem felügyelt Azure Windows virtuális lemezek |} Microsoft Docs
+description: Hozzon létre egy egyéni megoldás biztonsági mentés és helyreállítás a Azure Windows virtuálisgép-lemezek növekményes pillanatképek használata.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23879889"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

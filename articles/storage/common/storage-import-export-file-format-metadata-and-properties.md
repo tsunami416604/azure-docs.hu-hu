@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Import/Export metaadatok és a Tulajdonságok fájlformátum |} Microsoft Docs"
-description: "Megtudhatja, hogyan adhatja meg a metaadatok és egy vagy több blobot, az importálás során vagy exportálja a feladat tulajdonságait."
+title: Az Azure Import/Export metaadatok és a Tulajdonságok fájlformátum |} Microsoft Docs
+description: Megtudhatja, hogyan adhatja meg a metaadatok és egy vagy több blobot, az importálás során vagy exportálja a feladat tulajdonságait.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 840364c6-d9a8-4b43-a9f3-f7441c625069
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873652"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Az Azure Import/Export szolgáltatás metaadatok és a Tulajdonságok fájlformátum
 Megadhat egy vagy több blobot tulajdonságai és metaadatok egy importálási feladat vagy exportálási feladat részeként. Metaadatok és az importálási feladat részeként létrehozott BLOB tulajdonságainak beállításához adja meg az importálandó adatokat tartalmazó merevlemez-meghajtóról metaadatok vagy tulajdonságok fájlba. Exportálási feladat metaadatok és a Tulajdonságok írja metaadatok vagy tulajdonságok fájlba, amely tartalmazza a visszaküldött merevlemez-meghajtóra.  

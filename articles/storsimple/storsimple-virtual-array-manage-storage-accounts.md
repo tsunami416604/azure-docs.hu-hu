@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple virtuális tömb tárfiók hitelesítő adatainak kezelése |} Microsoft Docs"
-description: "Ismerteti, hogyan használhatja a StorSimple Device Manager konfigurálás lapról való hozzáadása, szerkesztése, törlése vagy a tárfiók hitelesítő adatainak a StorSimple virtuális tömb társított biztonsági kulcsok elforgatása."
+title: A StorSimple virtuális tömb tárfiók hitelesítő adatainak kezelése |} Microsoft Docs
+description: Ismerteti, hogyan használhatja a StorSimple Device Manager konfigurálás lapról való hozzáadása, szerkesztése, törlése vagy a tárfiók hitelesítő adatainak a StorSimple virtuális tömb társított biztonsági kulcsok elforgatása.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876984"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple az Eszközkezelő a StorSimple virtuális tömb tárfiók hitelesítő adatainak kezelése
 

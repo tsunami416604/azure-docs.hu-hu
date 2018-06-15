@@ -1,11 +1,11 @@
 ---
-title: "Terheléselosztás szolgáltatások használata az Azure-ban |} Microsoft Docs"
-description: "Ez az oktatóanyag bemutatja, hogyan hozzon létre egy olyan forgatókönyvet az Azure terheléselosztó portfóliót: Traffic Manager, az alkalmazás átjárót és a terheléselosztó."
+title: Terheléselosztás szolgáltatások használata az Azure-ban |} Microsoft Docs
+description: 'Ez az oktatóanyag bemutatja, hogyan hozzon létre egy olyan forgatókönyvet az Azure terheléselosztó portfóliót: Traffic Manager, az alkalmazás átjárót és a terheléselosztó.'
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: liumichelle
 manager: vitinnan
-editor: 
+editor: ''
 ms.assetid: f89be3be-a16f-4d47-bcae-db2ab72ade17
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401106"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztás szolgáltatások használata az Azure-ban
 

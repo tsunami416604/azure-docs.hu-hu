@@ -1,11 +1,11 @@
 ---
-title: "Telepítse a Microsoft Azure StorSimple 8600-as eszközön |} Microsoft Docs"
-description: "Kicsomagolása, állványra szerelése és központi telepítése és a szoftver konfigurálása előtt a StorSimple 8600 bekábelezésére ismerteti."
+title: Telepítse a Microsoft Azure StorSimple 8600-as eszközön |} Microsoft Docs
+description: Kicsomagolása, állványra szerelése és központi telepítése és a szoftver konfigurálása előtt a StorSimple 8600 bekábelezésére ismerteti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743716"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Kicsomagolása, állványra-csatlakoztatási, és a StorSimple 8600 bekábelezése
 ## <a name="overview"></a>Áttekintés

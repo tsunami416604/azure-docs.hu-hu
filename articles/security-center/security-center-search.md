@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Security Center keresési |} Microsoft Docs"
-description: "Ismerje meg, hogyan az Azure Security Center segítségével Naplóelemzési keresési beolvasása és a biztonsági adatok elemzése."
+title: Az Azure Security Center keresési |} Microsoft Docs
+description: Ismerje meg, hogyan az Azure Security Center segítségével Naplóelemzési keresési beolvasása és a biztonsági adatok elemzése.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866400"
 ---
 # <a name="azure-security-center-search"></a>Az Azure Security Center keresése
 Az Azure Security Center által használt [Naplóelemzési keresési](../log-analytics/log-analytics-log-searches.md) lekérdezéséhez és elemezheti a biztonsági adatokat. A Naplóelemzési lekérdezésnyelvet gyorsan lekérdezéséhez és összevonni az adatokat tartalmazza. A Security Centerből kihasználhatja Naplóelemzési keresési lekérdezések összeállításához, és a gyűjtött adatok elemzésére.

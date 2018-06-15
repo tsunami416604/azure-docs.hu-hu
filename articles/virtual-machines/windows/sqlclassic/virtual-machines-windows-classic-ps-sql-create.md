@@ -1,6 +1,6 @@
 ---
-title: "SQL Server virtuális gép létrehozása az Azure PowerShell (klasszikus) |} Microsoft Docs"
-description: "Lépéseket és a PowerShell-parancsfájlok biztosít az Azure virtuális gép létrehozása az SQL Server virtuális gép a gyűjtemény lemezképei. Ez a témakör a klasszikus üzembe helyezési módot használ."
+title: SQL Server virtuális gép létrehozása az Azure PowerShell (klasszikus) |} Microsoft Docs
+description: Lépéseket és a PowerShell-parancsfájlok biztosít az Azure virtuális gép létrehozása az SQL Server virtuális gép a gyűjtemény lemezképei. Ez a témakör a klasszikus üzembe helyezési módot használ.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399661"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Egy SQL Server rendszerű virtuális gép (klasszikus) Azure PowerShell használatával
 
