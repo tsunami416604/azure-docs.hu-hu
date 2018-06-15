@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33779038"
 abstract:
   description: Ismerje meg, hogyan küldhet gyorsan akár több millió üzenetet a Notification Hubs többplatformos, méretezhető, leküldéses értesítési motor használatával különböző típusú eszközökön (Android, iOS, Windows, Windows Phone, Baidu, Kindle) futó alkalmazásoknak. <p>Az oktatóanyagok, API-referenciák és az egyéb dokumentáció bemutatják, hogyan állíthat be és küldhet leküldéses értesítéseket akármilyen háttérrendszerből bármely mobileszközre.</p>
   aside:

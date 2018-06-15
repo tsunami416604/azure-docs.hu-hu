@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788829"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady licenc sablon – áttekintés
 Az Azure Media Services a mostantól egy szolgáltatás, amelynek a PlayReady-licencek segítségével. Amikor a Windows Media player (például Silverlight) számára, hogy a PlayReady-védelemmel ellátott tartalomhoz, a licenc beszerzésével kérelmet küldött a licenctovábbítási szolgáltatásra. Ha a szolgáltatás a kérelem jóváhagyása, a licenc, amely az ügyfélnek küldött és a megadott tartalom lejátszása és visszafejtésére használt ad ki.

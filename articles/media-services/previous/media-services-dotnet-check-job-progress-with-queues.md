@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788661"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladat értesítések küldése .NET a figyelheti az Azure Queue storage segítségével
 Kódolási feladatok futtatásakor gyakran van szüksége egy módszerre, amellyel nyomon követheti a feladat előrehaladását. Konfigurálhatja az értesítéseket a Media Services [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Értesítések lekérése a várólista-tároló által figyelheti a feladat előrehaladását. 

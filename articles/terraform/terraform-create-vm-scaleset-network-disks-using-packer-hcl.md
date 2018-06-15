@@ -1,7 +1,7 @@
 ---
-title: "Egy Azure virtuálisgép-méretezési létrehozásához használjon Terraform csomagoló egyéni lemezkép állítható be"
-description: "Terraform konfigurálása és Azure virtuálisgép-méretezési csomagoló (kész, de a virtuális hálózat és a felügyelt csatlakoztatott lemezek) által létrehozott egyéni lemezképéről verzióját használja."
-keywords: "terraform, devops, állítsa be, a virtuális gép, hálózati, tárolási, modulok, egyéni lemezképek, csomagoló méretezése"
+title: Egy Azure virtuálisgép-méretezési létrehozásához használjon Terraform csomagoló egyéni lemezkép állítható be
+description: Terraform konfigurálása és Azure virtuálisgép-méretezési csomagoló (kész, de a virtuális hálózat és a felügyelt csatlakoztatott lemezek) által létrehozott egyéni lemezképéről verzióját használja.
+keywords: terraform, devops, állítsa be, a virtuális gép, hálózati, tárolási, modulok, egyéni lemezképek, csomagoló méretezése
 author: VaijanathB
 ms.author: tarcher
 ms.date: 10/29/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23945855"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Egy Azure virtuálisgép-méretezési létrehozásához használjon Terraform csomagoló egyéni lemezkép állítható be
 

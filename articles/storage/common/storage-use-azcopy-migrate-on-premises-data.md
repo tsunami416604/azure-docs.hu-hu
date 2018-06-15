@@ -10,11 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267442"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Helyszíni adatok migrálása felhőtárhelybe az AzCopyval
 
@@ -22,8 +23,8 @@ Az AzCopy egy olyan parancssori eszköz, amely lehetővé teszi, hogy egyszerű 
 
 Az AzCopynak két verziója tölthető le:
 
-* Az [AzCopy Linuxon](storage-use-azcopy.md) futó verziója a .NET Core-keretrendszerrel lett felépítve. POSIX stílusú parancssori lehetőségeket kínál Linux platformokra. 
-* Az [AzCopy Windowson](../storage-use-azcopy.md) futó verziója a .NET-keretrendszerrel készült. Windows stílusú parancssori lehetőségeket kínál. 
+* Az [AzCopy Linuxon](storage-use-azcopy-linux.md) futó verziója a .NET Core-keretrendszerrel lett felépítve. POSIX stílusú parancssori lehetőségeket kínál Linux platformokra. 
+* Az [AzCopy Windowson](storage-use-azcopy.md) futó verziója a .NET-keretrendszerrel készült. Windows stílusú parancssori lehetőségeket kínál. 
  
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

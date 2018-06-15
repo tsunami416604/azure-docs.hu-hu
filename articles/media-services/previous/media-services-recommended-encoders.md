@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790271"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott a helyszíni kódolókkal
 Amikor élő adatfolyam-az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti adatfolyam fogadására. Ha egy helyszíni kódoló egy élő kódolás Channel használatát választja, a kódoló leküldéses egy kiváló minőségű egyféle sávszélességű adatfolyamokat output típusúként. Ha a csatorna továbbítása helyszíni kódoló használatát választja, a kódoló leküldéses többféle sávszélességűvé minden kívánt kimeneti minőségű kimenetként. További információkért lásd: [élő Stream továbbítása helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).

@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788220"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása a portálon
 Azure Media Webmontázskészítő a portálon hozhat létre videóklipeket eszközökből, a media services partnerek. A kezdéshez navigáljon a portálon a media services-fiókhoz. Ezután válassza ki a **Subclip** fülre.

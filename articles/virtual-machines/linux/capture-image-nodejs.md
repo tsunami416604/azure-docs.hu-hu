@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942234"
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Azure-on futó Linux virtuális gép rögzítése
 Kövesse a cikk generalize és rögzítheti az Azure Linux virtuális gép (VM) a Resource Manager üzembe helyezési modellben. Generalize a virtuális Géphez, amikor eltávolítja a személyes fiók adatait, és készítse elő a virtuális gép képként használni. Ekkor egy általánosított virtuális merevlemezt (VHD) az operációs rendszer, a virtuális merevlemezek, a mellékelt adatok lemez, a lemezkép rögzítése és egy [Resource Manager-sablon](../../azure-resource-manager/resource-group-overview.md) új virtuális gép központi telepítéséhez. Ez a cikk részletezi az Azure CLI 1.0 rendelkező Virtuálisgép-lemezkép rögzítése a virtuális gépek nem felügyelt lemezekkel. Emellett [rögzíteni a virtuális gépek Azure felügyelt lemezt az Azure CLI 2.0](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Felügyelt lemezek kezeli az Azure platformon, és nem igényelnek azokról az előkészítő vagy helyen tárolja azokat. További információ: [Azure Managed Disks – áttekintés](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 

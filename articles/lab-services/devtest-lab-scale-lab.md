@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787478"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skála kvótái és korlátai a DevTest Labs szolgáltatásban
 Munka a DevTest Labs szolgáltatásban, Észreveheti, hogy nincsenek-e bizonyos bizonyos Azure-erőforrások, ami kihathat a DevTest Labs szolgáltatás alapértelmezett korlátozások. Ezek a korlátozások nevezzük **kvóták**.

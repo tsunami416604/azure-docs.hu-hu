@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788976"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Az Azure Media Services töredezett MP4 élő betöltési meghatározása
 Ez az előírás protokoll és töredezett MP4-alapú élő adatfolyam-továbbítási adatfeldolgozást Azure Media Services formátumát mutatja be. A Media Services egy élő adatfolyam-szolgáltatás, amellyel az ügyfelek adatfolyam-élő eseményeket, és a felhő platform Azure segítségével valós idejű tartalom szórási nyújt. Ez a dokumentum is ismerteti, ajánlott eljárások a magas redundáns és robusztus működés közbeni felépítése betöltési mechanizmusokat.

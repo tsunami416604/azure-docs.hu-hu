@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788640"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Egy Media Services objektumba meglévő BLOB másolása
 Ez a cikk bemutatja, hogyan blobok átmásolni a storage-fiók egy új Azure Media Services (AMS) eszköz használatával [Azure Media Services .NET SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/).

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788479"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A meglévő játékosokkal tartalom lejátszása
 Az Azure Media Services számos népszerű formátumban, például a Smooth Streaming, HTTP Live Streaming és MPEG-Dash támogatja. Ez a témakör mutat meglévő játékosok fogadhassák teszteléséhez használható.

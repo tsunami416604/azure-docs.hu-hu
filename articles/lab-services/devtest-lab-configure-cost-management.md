@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787632"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Tekintse meg a labor becsült havi költségtrend Azure DevTest Labs szolgáltatásban
 A DevTest Labs költség felügyeleti funkciója segítségével nyomon követheti a labor költségét. Ez a cikk bemutatja, hogyan használja a **becsült havi Költségtrend** diagram megjelenítése az aktuális naptári hónapra az aktuális naptári hónapra becsült költség-date és a várható befejezési hónap költsége. Ez a cikk is bemutatja, hogyan jobb kezelése érdekében úgy, hogy költségkeret célozza meg, és küszöbértékeket, hogy a elérésekor, eseményindító jelentik az eredményeket a DevTest Labs labor költségeket.
