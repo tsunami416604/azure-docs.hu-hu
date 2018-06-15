@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424304"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Hozzon létre és OpenBSD lemez lemezkép feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre, és töltse fel a virtuális merevlemez (VHD), amely tartalmazza a OpenBSD operációs rendszer. Miután a feltöltés, segítségével azt saját képként (VM) virtuális gép létrehozása az Azure parancssori felületen keresztül Azure-ban.
