@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911502"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager-with-the-azure-cli-10"></a>A virtuális gépek az Azure Resource Manager az Azure CLI 1.0 a Key Vault beállítása
 Az Azure Resource Manager-készletben, a titkos kulcsokat vagy tanúsítványokat van modellezve a Key Vault erőforrás-szolgáltató által biztosított erőforrásokhoz. Az Azure Key Vault kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md) Ahhoz, hogy az Azure Resource Manager virtuális gépekkel, használandó kulcstároló a *EnabledForDeployment* be kell állítani a Key Vault tulajdonságot igaz értékre. Ehhez a különböző ügyfelek részére. Ez a cikk bemutatja, hogyan használható az Azure virtuális gépek Key Vault beállítása.
