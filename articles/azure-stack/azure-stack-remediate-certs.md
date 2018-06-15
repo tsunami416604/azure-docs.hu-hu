@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937850"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Gyakori problémák megoldásához Azure verem PKI-tanúsítványok
 A cikkben szereplő információk segítségével megértéséhez, valamint az Azure verem PKI-tanúsítványok gyakori problémák megoldásában. Problémákat is felderítheti, ha az Azure verem készültségi ellenőrző eszköz [Azure verem PKI-tanúsítványok ellenőrzése](azure-stack-validate-pki-certs.md). Az eszköz ellenőrzi, hogy győződjön meg arról, hogy a tanúsítvány nyilvános kulcsokra épülő infrastruktúra követelményeinek teljesítése érdekében az Azure Alkalmazásveremben üzembe és Azure verem titkos elforgatási, és naplózza az eredményeket egy [report.json fájl](azure-stack-validation-report.md).  

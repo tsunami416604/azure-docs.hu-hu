@@ -5,14 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 03/22/2018
+ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36f48e4cc321b534c0fd2e896bf3f43623c540bb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6e0d2b881e00acc6b1fccd3196187309fc36cba2
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568143"
 ---
 #### <a name="expressroute-limits"></a>Az ExpressRoute-korlátok
 A következő korlátozások vonatkoznak az ExpressRoute-erőforrások előfizetésenként.
@@ -27,6 +28,7 @@ A következő korlátozások vonatkoznak az ExpressRoute-erőforrások előfizet
 | Az Azure nyilvános társviszony-létesítés ExpressRoute prémium szintű bővítmény útvonalakat maximális száma |200 |
 | A Azure Microsoft ExpressRoute standard társviszony-létesítés útvonalait maximális száma |200 |
 | A prémium szintű bővítmény ExpressRoute-társviszony létesítése – Azure Microsoft útvonalait maximális száma |200 |
+| Különböző társviszony-létesítési helyeken ugyanahhoz a virtuális hálózathoz csatolt ExpressRoute-Kapcsolatcsoportok maximális száma |4 |
 | Egy ExpressRoute-kapcsolatcsoportot lehet virtuális hálózati kapcsolatok száma |Az alábbi táblázatban találja |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Virtuális hálózatok száma ExpressRoute-kapcsolatcsoportot

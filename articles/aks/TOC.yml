@@ -31,6 +31,8 @@
   items:
     - name: Kvóták és regionális korlátok
       href: container-service-quotas.md
+    - name: Migrálás ACS-ről AKS rendszerre
+      href: acs-aks-migration.md
 - name: Útmutatók
   items:
     - name: Fürtműveletek
@@ -43,6 +45,13 @@
           href: upgrade-cluster.md
         - name: AKS-fürt törlése
           href: delete-cluster.md
+        - name: Azure AD-kompatibilis AKS
+          href: aad-integration.md
+        - name: A Virtual Kubelet használata
+          href: virtual-kubelet.md
+        - name: Az AKS üzembe helyezése Terraform használatával
+          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          maintainContext: true
     - name: Adatkötetek konfigurálása
       items:
         - name: Azure-lemez – Dinamikus
@@ -77,18 +86,26 @@
       items:
         - name: Alkalmazások futtatása a Helm használatával
           href: kubernetes-helm.md
+        - name: Fejlesztés a Dev Spaces használatával
+          href: ../dev-spaces/azure-dev-spaces.md
+          maintainContext: true
         - name: Alkalmazások fejlesztése a Draft használatával
           href: kubernetes-draft.md
         - name: Open Service Broker for Azure
           href: integrate-azure.md
-        - name: Folyamatos üzembe helyezés a Jenkinsben
-          href: jenkins-continuous-deployment.md
         - name: OpenFaaS használata AKS-sel
           href: openfaas.md
         - name: Spark-feladatok futtatása AKS-en
           href: spark-job.md
         - name: GPU-k használata az AKS-en
           href: gpu-cluster.md
+    - name: DevOps az AKS-en
+      items:
+        - name: Folyamatos üzembe helyezés a Jenkinsben
+          href: jenkins-continuous-deployment.md
+        - name: Azure DevOps-projekt az AKS-hez
+          href: 'https://docs.microsoft.com/en-us/vsts/pipelines/actions/azure-devops-project-aks'
+          maintainContext: true
     - name: A Kubernetes alapjai
       items:
         - name: A Kubernetes-irányítópult használata
@@ -105,6 +122,14 @@
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks
+    - name: Python
+      href: /python/api/overview/azure/containerservice
+    - name: Java
+      href: /java/api/overview/azure/containerservice
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-service
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.containerservice/managedclusters
 - name: További források
   items:
     - name: Régiónkénti elérhetőség

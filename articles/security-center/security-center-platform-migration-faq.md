@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527025"
 ---
 # <a name="security-center-platform-migration-faq"></a>A Security Center platform áttelepítési – gyakori kérdések
 Korai. június 2017 az Azure Security Center megkezdte a Microsoft Monitoring Agent használatával gyűjt, és adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési](security-center-platform-migration.md). Ez a GYIK a platform áttelepítésével kapcsolatos kérdésekre ad választ.

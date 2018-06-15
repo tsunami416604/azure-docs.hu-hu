@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31591619"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Az Azure DNS-metrikák és riasztások
 Az Azure DNS egy olyan üzemeltetési szolgáltatás DNS-tartományok, amely a névfeloldáshoz a Microsoft Azure infrastruktúra biztosít. Ez a cikk ismerteti a metrikák és a riasztások az Azure DNS-szolgáltatás.

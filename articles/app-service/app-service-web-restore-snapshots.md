@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33767300"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Az alkalmazások az Azure-ban visszaállítás egy pillanatképből
 A cikkből megtudhatja, hogyan lehet visszaállítani az alkalmazásban [Azure App Service](../app-service/app-service-web-overview.md) egy pillanatképből. Az alkalmazás visszaállíthatja egy korábbi állapotára, az alkalmazás pillanatképeket valamelyike alapján. Nem kell ahhoz, hogy a pillanatképek biztonsági mentés, a platform automatikusan menti a helyreállítási célokra minden alkalmazás pillanatképet.

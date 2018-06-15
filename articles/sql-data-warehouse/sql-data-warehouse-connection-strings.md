@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31597149"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse-kapcsolati karakterláncok
 Kapcsolódás az SQL Data Warehouse számos különböző alkalmazás-protokollokra, többek között a [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] és [JDBC][JDBC]. Az alábbiakban néhány példa a kapcsolatok karakterláncok minden protokollhoz.  A kapcsolati karakterlánc létrehozásához használhatja az Azure-portálon.  A kapcsolati karakterláncot az Azure-portálon létrehozásához keresse meg az adatbázis paneljének a *Essentials* kattintson a *adatbázis-kapcsolati karakterláncok megjelenítése*.

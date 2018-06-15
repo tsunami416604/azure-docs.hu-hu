@@ -157,6 +157,8 @@
       href: /rest/api/appservice/
 - name: További források
   items:
+    - name: App Service Linuxon – gyakori kérdések
+      href: app-service-linux-faq.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Díjszabás

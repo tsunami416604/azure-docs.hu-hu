@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927780"
 ---
 # <a name="troubleshoot-azure-active-directory-application-management"></a>Az Azure Active Directory Alkalmazáskezelés hibaelhárítása
 Az alábbi hivatkozásokkal egy tartalomtérkép érhető el, amely segít a **Vállalati alkalmazások** Azure Active Directoryban való felügyeletekor fellépő leggyakoribb problémák megoldásában.

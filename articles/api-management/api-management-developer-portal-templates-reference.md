@@ -1,11 +1,11 @@
 ---
-title: "Az Azure API Management fejlesztői portál sablonok |} Microsoft Docs"
-description: "Ismerje meg, hogyan szabhatja testre a sablonok használatával az Azure API Management portál lapjai fejlesztői tartalmát."
+title: Az Azure API Management fejlesztői portál sablonok |} Microsoft Docs
+description: Ismerje meg, hogyan szabhatja testre a sablonok használatával az Azure API Management portál lapjai fejlesztői tartalmát.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128749"
 ---
 # <a name="developer-portal-templates"></a>Fejlesztői portál sablonok
 

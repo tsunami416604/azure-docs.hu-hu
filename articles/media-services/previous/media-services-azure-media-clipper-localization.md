@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788143"
 ---
 # <a name="configure-localization"></a>Honosítási konfigurálása
 Az Azure Media Webmontázskészítő 18 nyelveken érhető el. A widget nyelvi beállításához meg kell adnia a `language` paraméter inicializálása során. A kívánt nyelvet kód karakterláncban át az alábbi listából:

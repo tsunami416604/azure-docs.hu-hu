@@ -469,6 +469,9 @@
     - name: Rugalmasság
       tocHref: /azure/resiliency/
       topicHref: /azure/resiliency/
+    - name: Szerepköralapú hozzáférés-vezérlés
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/role-based-access-control/
     - name: Service Health
       tocHref: /azure/service-health/
       topicHref: /azure/service-health/

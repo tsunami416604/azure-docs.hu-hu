@@ -5,5 +5,7 @@
 ``dc.services.visualstudio.com`` -Telemetria használatos. <br>
 ``time.nist.gov`` és ``time.windows.com``. A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
 <br/><br/>
-URL-címek Azure Government felhő:<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>- https://login-us.microsoftonline.com<br/>- https://login.microsoftonline.us<br/>- https://login.microsoftonline.com<br/>
+URL-címek Azure Government felhő:<br/>- .ugv.hypervrecoverymanager.windowsazure.us<br/>- .ugv.backup.windowsazure.us<br/>- .ugi.hypervrecoverymanager.windowsazure.us<br/>- .ugi.backup.windowsazure.us<br/>-
+https://login.microsoftonline.us<br/>-
+https://login.microsoftonline.com<br/>
 

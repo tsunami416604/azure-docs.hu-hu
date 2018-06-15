@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31529484"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok ellenőrzőpont- és a visszajátszás jellemzői
 Ez a cikk ismerteti a belső ellenőrzőpont- és a visszajátszás fogalmakat Azure Stream Analytics és a hatás azokat a helyreállítási feladat rendelkezik. Minden alkalommal, amikor egy Stream Analytics-feladat fut, állapot tárolt adatok belső. Állapot adatokat rendszeres időközönként menti a egy ellenőrzőpontot. Bizonyos esetekben az ellenőrzőpont adatok feladat helyreállítás a feladat hibáját vagy a frissítés esetén. Más esetekben az ellenőrzőpont nem használható a helyreállításhoz, és a visszajátszás szükség.

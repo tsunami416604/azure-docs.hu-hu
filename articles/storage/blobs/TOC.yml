@@ -97,7 +97,7 @@
                 - name: Azure AD-identitás használata parancssori felülettel vagy PowerShell-lel
                   href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Engedélyezés megosztott kulccsal
-              href: /rest/api/storageservices/authenticate-with-shared-key
+              href: /rest/api/storageservices/authorize-with-shared-key
             - name: Engedélyezés megosztott SAS-sel
               href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Névtelen hozzáférés a blobokhoz

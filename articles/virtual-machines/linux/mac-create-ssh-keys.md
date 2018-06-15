@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31602630"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyorsműveletek: létrehozhat és használhat egy SSH nyilvános-titkos kulcsból álló kulcspárt Linux virtuális gépek Azure-ban
 Egy SSH-kulcspárral létrehozhat olyan virtuális gépeket az Azure-ban, amelyek SSH-kulcsokat használnak a hitelesítéshez, így nincs szükség jelszavakra a bejelentkezéshez. Ez a cikk bemutatja, hogyan gyorsan hozhat létre, és az SSH nyilvános-titkos kulcsot tartalmazó fájlt pár használhat Linux virtuális gépekhez. Ezeket a lépéseket az Azure-felhő rendszerhéj, egy macOS vagy Linux gazdagép, a Linux Windows alrendszere, és egyéb eszközöket, amely támogatja a protokoll OpenSSH hajthatja végre. 

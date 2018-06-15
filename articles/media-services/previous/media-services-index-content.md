@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788906"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Az Azure Media Indexer médiafájlok indexelő
 Az Azure Media Indexer lehetővé teszi, hogy a médiafájlok tartalmának kereshető és a teljes szöveges Beszélgetés szövegének lezárt feliratok és kulcsszavak készítése. Feldolgozható egyetlen médiafájl is, vagy egy kötegben több médiafájl is.  

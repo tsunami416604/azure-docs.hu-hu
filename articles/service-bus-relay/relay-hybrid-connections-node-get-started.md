@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893393"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Ismerkedés a hibrid Relay-kapcsolatok websocketjeivel a Node-ban
 

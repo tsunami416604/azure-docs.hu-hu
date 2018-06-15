@@ -1,6 +1,6 @@
 ---
-title: "How Azure támogatási jegy biztonsági esemény - bejelentkezni |} Microsoft Docs"
-description: "Egy értékesítő az Azure piactéren, hogy azonosítani a potenciális biztonsági események esetén, tudja, hogyan kell egy megfelelő jegy naplózni kell."
+title: How Azure támogatási jegy biztonsági esemény - bejelentkezni |} Microsoft Docs
+description: Egy értékesítő az Azure piactéren, hogy azonosítani a potenciális biztonsági események esetén, tudja, hogyan kell egy megfelelő jegy naplózni kell.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129940"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Napló biztonsági esemény támogatási jegy hogyan
 

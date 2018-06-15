@@ -13,6 +13,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33901329"
 ---
 Hozzon létre egy virtuális gépet (VM), indítsa újra a leállított (felszabadított) virtuális gépek vagy átméretezni egy virtuális Gépet, a Microsoft Azure előfizetéshez számítási erőforrásokat foglal le. Azt is folyamatosan terhelésnél további infrastruktúrával, és győződjön meg arról, hogy mindig minden virtuális gép esetében keresletének támogató szolgáltatások. Egyedülálló növekszik az Azure meghatározott régióiba-szolgáltatások igény miatt azonban erőforrás pufferallokációs hibák alkalmanként tapasztalhatja. Ez a probléma akkor fordulhat elő, létrehozásához, vagy indítsa el a virtuális gépek régióban közben a virtuális gépek a következő hibakód és üzenet megjelenítése közben:
 

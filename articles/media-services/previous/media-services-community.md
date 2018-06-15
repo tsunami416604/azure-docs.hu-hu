@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788157"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-közösség
 Az Azure Media Services (AMS)-Közösség oldalára, kaphat frissítéseire vonatkozó AMS különböző módját tárgyalja. Is megtekintheti új videók és podcastok, kérdéseit és visszajelzés küldése.   

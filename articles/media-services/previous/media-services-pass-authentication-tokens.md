@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788451"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogyan ügyfelek átadása jogkivonatok az Azure Media Services kulcs kézbesítési szolgáltatás
 Az ügyfelek gyakran kérje meg, hogyan egy player képes továbbadni jogkivonatok az Azure Media Services kulcs kézbesítési szolgáltatás ellenőrzésre, a Windows Media player szerezheti be a kulcsot. Media Services támogatja a egyszerű webes jogkivonat (SWT), és JSON webes jogkivonat (JWT) formátumú. Jogkivonat hitelesítési kulcs, függetlenül attól, hogy használ-e általános titkosítás vagy a boríték titkosítás Advanced Encryption Standard (AES) a rendszer bármilyen típusú vonatkozik.

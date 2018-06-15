@@ -33,7 +33,8 @@ A következő lépések bemutatják, hogyan állíthat be egy PowerShell haszná
    * **{Jelszó}:** az alkalmazás hitelesítéséhez használt jelszót.
      
      ```powershell
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
+     $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
+     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. Jegyezze fel a **ApplicationId** létrehozott alkalmazás. Később szüksége.
 5. A következő parancsot, hogy új szolgáltatásnevet létrehozni **{MyApplicationId}** rendelkező a **ApplicationId** az előző lépésben:

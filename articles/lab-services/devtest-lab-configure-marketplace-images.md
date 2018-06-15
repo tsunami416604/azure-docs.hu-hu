@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787394"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Az Azure DevTest Labs Azure piactér kép beállításainak konfigurálása
 DevTest Labs létrehozása virtuális gépek Azure piactéren elérhető rendszerkép attól függően, hogy hogyan konfigurálta az Azure piactéren elérhető rendszerkép alapján használhatók a labor támogatja. Ez a cikk bemutatja, hogyan határozhatja meg, ha bármely, az Azure piactéren elérhető rendszerkép lehet egy, amikor a virtuális gépek létrehozásakor használt. Ez biztosítja, hogy a csoport csak fér hozzá a piactéren elérhető rendszerkép van szükségük. 
