@@ -1,11 +1,11 @@
 ---
-title: "A felhőalapú szolgáltatás életciklus-események kezelésére |} Microsoft Docs"
-description: "Ismerje meg, hogyan életciklusának egy felhőalapú szolgáltatás szerepkör is használható a .NET"
+title: A felhőalapú szolgáltatás életciklus-események kezelésére |} Microsoft Docs
+description: Ismerje meg, hogyan életciklusának egy felhőalapú szolgáltatás szerepkör is használható a .NET
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 39b30acd-57b9-48b7-a7c4-40ea3430e451
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843447"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes és feldolgozói szerepkörök életciklusának testreszabása a .NET-ben
 A feldolgozói szerepkör létrehozásakor kiterjeszti a [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) osztály, amely felülbírálhatja használatos metódusok biztosítása, amelyek lehetővé teszik az életciklus-események válaszolni. A webes szerepkörök Ez az osztály nem kötelező, így életciklus-események válaszolni kell használni.

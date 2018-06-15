@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute ügyfél útválasztó konfigurációs minták |} Microsoft Docs"
-description: "Ezen a lapon útválasztó-konfiguráció minták biztosít a Cisco és a Juniper útválasztó."
+title: ExpressRoute ügyfél útválasztó konfigurációs minták |} Microsoft Docs
+description: Ezen a lapon útválasztó-konfiguráció minták biztosít a Cisco és a Juniper útválasztó.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: d6ea716f-d5ee-4a61-92b0-640d6e7d6974
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850685"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Útválasztó beállítása és kezelése NAT konfigurációs minták
 Ezen a lapon NAT konfigurációs minták biztosít a Cisco ASA és a Juniper SRX adatsorozat útválasztó. Ezek a minták csak útmutatót kell, és nem kell használni, mert a. A gyártó, így kapja meg a hálózat megfelelő konfigurációi dolgozhat. 

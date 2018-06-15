@@ -1,11 +1,11 @@
 ---
-title: "SQL-adatbázisok az Azure Security Centerben a naplózás és a fenyegetések észlelésére engedélyezése |} Microsoft Docs"
-description: "Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése az SQL adatbázisok ** naplózás és a fenyegetések észlelésére."
+title: SQL-adatbázisok az Azure Security Centerben a naplózás és a fenyegetések észlelésére engedélyezése |} Microsoft Docs
+description: Ez a dokumentum azt ismerteti, hogyan valósítja meg az Azure Security Center ajánlás ** engedélyezése az SQL adatbázisok ** naplózás és a fenyegetések észlelésére.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 224b6755-2b36-4ecd-9af8-139a198e0df1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866204"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>SQL-adatbázisok az Azure Security Centerben a naplózás és a fenyegetések észlelésére engedélyezése
 Az Azure Security Center azt javasolja, hogy bekapcsolja a naplózást, és a fenyegetések észlelésére az összes SQL-adatbázisok ha naplózás és fenyegetésészlelés nincs engedélyezve. Naplózás és a fenyegetések észlelése segítségével törvényi megfelelőség fenntartásában, ismerje meg adatbázis-tevékenység, és betekintést azok az eltérések és rendellenességek, amelyek üzleti problémát jelenthetnek, vagy a biztonság megsértésére.

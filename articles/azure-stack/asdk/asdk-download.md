@@ -1,12 +1,12 @@
 ---
-title: "Töltse le, és bontsa ki az Azure verem Development Kit (ASDK) |} Microsoft Docs"
-description: "Ismerteti, hogyan letöltéséhez és kibontásához a Azure verem Development Kit (ASDK)."
+title: Töltse le, és bontsa ki az Azure verem Development Kit (ASDK) |} Microsoft Docs
+description: Ismerteti, hogyan letöltéséhez és kibontásához a Azure verem Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29975880"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Töltse le, és bontsa ki az Azure verem Development Kit (ASDK)
 Győződjön meg arról, hogy a development kit fogadó számítógép megfelel-e a ASDK telepítésének alapvető követelményeit, a következő lépésre letöltéséhez és kibontásához a ASDK központi telepítési csomag a Cloudbuilder.vhdx eléréséhez.

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Naplóelemzés a System Center Operations Manager-környezettel optimalizálása |} Microsoft Docs"
-description: "A System Center Operations Manager állapotának ellenőrzése megoldás segítségével rendszeres időközönkénti kockázat és a környezetek állapotának megállapítása."
+title: Az Azure Naplóelemzés a System Center Operations Manager-környezettel optimalizálása |} Microsoft Docs
+description: A System Center Operations Manager állapotának ellenőrzése megoldás segítségével rendszeres időközönkénti kockázat és a környezetek állapotának megállapítása.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29180036"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezetben a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás optimalizálása
 

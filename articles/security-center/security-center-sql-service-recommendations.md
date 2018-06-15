@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL-szolgáltatás és az Azure Security Centerben adatok védelme |} Microsoft Docs"
-description: "Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait védeni kell az adatok és az Azure SQL-szolgáltatás, és maradnak meg a biztonsági házirendeknek megfelelően."
+title: Azure SQL-szolgáltatás és az Azure Security Centerben adatok védelme |} Microsoft Docs
+description: Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait védeni kell az adatok és az Azure SQL-szolgáltatás, és maradnak meg a biztonsági házirendeknek megfelelően.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866274"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Azure SQL-szolgáltatás és az Azure Security Center adatainak védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a Security Center a potenciális biztonsági hiányosságokat azonosít, ajánlásokat, amely végigvezeti Önt a szükséges szabályozási folyamatán hoz létre.  Javaslat alkalmazható azonban az Azure erőforrás típusa: virtuális gépek (VM), hálózati, SQL és az adatokhoz és alkalmazásokhoz.

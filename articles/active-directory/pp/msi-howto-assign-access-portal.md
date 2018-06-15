@@ -1,11 +1,11 @@
 ---
-title: "Az MSI-hozzáférés hozzárendelése egy Azure-erőforrás, az Azure portál használatával"
-description: "Részletes útmutatást ad egy olyan MSI Csomaghoz, egy erőforrás-hozzáférés hozzárendelése egy másik erőforrás, az Azure portál használatával."
+title: Az MSI-hozzáférés hozzárendelése egy Azure-erőforrás, az Azure portál használatával
+description: Részletes útmutatást ad egy olyan MSI Csomaghoz, egy erőforrás-hozzáférés hozzárendelése egy másik erőforrás, az Azure portál használatával.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28978837"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Egy felügyelt Szolgáltatásidentitás hozzáférés hozzárendelése egy erőforrást az Azure portál használatával
 

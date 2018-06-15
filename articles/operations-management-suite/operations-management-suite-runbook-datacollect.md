@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31597367"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Egy Azure Automation-runbook Naplóelemzési az adatok gyűjtése
 Jelentős mennyiségű Naplóelemzési adatokat gyűjteni különböző forrásokból, beleértve a [adatforrások](../log-analytics/log-analytics-data-sources.md) az ügynökökre és is [adatgyűjtés az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Nincsenek olyan forgatókönyvek, ha az adatok gyűjtéséhez kell, amely nem érhető el a szabványos forrásokon keresztül.  Ebben az esetben is használhatja a [HTTP adatait gyűjtője API](../log-analytics/log-analytics-data-collector-api.md) Naplóelemzési bármely REST API-ügyfél adatokat írni.  Az adatgyűjtés elvégzéséhez gyakran használják az Azure Automationben egy runbook használ.   

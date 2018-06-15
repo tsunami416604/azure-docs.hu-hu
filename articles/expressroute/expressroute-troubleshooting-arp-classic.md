@@ -1,6 +1,6 @@
 ---
-title: "ARP-tábla beolvasása: klasszikus: Azure ExpressRoute-hibaelhárítási |} Microsoft Docs"
-description: "Ezen a lapon a ARP tábla beolvasása az ExpressRoute-kapcsolatcsoportot ismerteti."
+title: 'ARP-tábla beolvasása: klasszikus: Azure ExpressRoute-hibaelhárítási |} Microsoft Docs'
+description: Ezen a lapon a ARP tábla beolvasása az ExpressRoute-kapcsolatcsoportot ismerteti.
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850797"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>A klasszikus üzembe helyezési modellel tábla ARP beolvasása
 > [!div class="op_single_selector"]

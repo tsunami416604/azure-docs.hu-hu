@@ -1,8 +1,8 @@
 ---
-title: "Azure Storage eléréséhez használja a Windows virtuális gép MSI"
-description: "Ez az oktatóanyag végigvezeti az Azure Storage eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI)."
+title: Azure Storage eléréséhez használja a Windows virtuális gép MSI
+description: Ez az oktatóanyag végigvezeti az Azure Storage eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984833"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Egy Windows virtuális gép felügyelt szolgáltatás identitás használatával Azure Storage érhetnek el a hozzáférési kulcsot
 

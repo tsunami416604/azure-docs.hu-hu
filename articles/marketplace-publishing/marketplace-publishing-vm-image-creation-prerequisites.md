@@ -1,11 +1,11 @@
 ---
-title: "Hozzon létre egy virtuálisgép-lemezkép az Azure piactéren műszaki előfeltételei |} Microsoft Docs"
-description: "A létrehozása és telepítése a virtuálisgép-lemezkép megvásárlásához mások az Azure piactéren vonatkozó követelmények megértése érdekében."
+title: Hozzon létre egy virtuálisgép-lemezkép az Azure piactéren műszaki előfeltételei |} Microsoft Docs
+description: A létrehozása és telepítése a virtuálisgép-lemezkép megvásárlásához mások az Azure piactéren vonatkozó követelmények megértése érdekében.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936655"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Hozzon létre egy virtuálisgép-lemezkép az Azure piactéren műszaki előfeltételei
 A folyamat megkezdése előtt alaposan és megértettem, hogy hol és miért minden egyes lépést. Amennyire csak lehetséges, meg kell készítse elő a vállalati adatok és egyéb adatokat, töltse le a szükséges eszközök, és/vagy technikai összetevő létrehozása az ajánlat létrehozási folyamat megkezdése előtt. Ezek az elemek egyértelműen kiderül, hogy ez a cikk áttekintése kell lennie.  

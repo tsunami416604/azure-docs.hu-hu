@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527453"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Az SQL Data Warehouse az SQL-kódot áttelepítése
 Ez a cikk azt ismerteti, valószínűleg szüksége lesz, ha a kódot egy másik adatbázis áttelepítése az SQL Data Warehouse kódmódosításokat. Néhány SQL Data Warehouse funkció jelentősen fejleszti a teljesítményt, úgy vannak kialakítva, hogy elosztott módon működnek. Azonban fenntartása a teljesítmény és méretezhetőség érdekében egyes szolgáltatások nem érhetők el is.

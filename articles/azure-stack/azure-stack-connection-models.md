@@ -1,12 +1,12 @@
 ---
-title: "Az Azure verem integrált rendszerek kapcsolat modellek |} Microsoft Docs"
-description: "Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem."
+title: Az Azure verem integrált rendszerek kapcsolat modellek |} Microsoft Docs
+description: Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118788"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Az Azure verem integrált rendszerek kapcsolat modellek
 Ha érdekli az integrált Azure verem rendszer, kell megérteni [datacenter integráció számos szempontot](azure-stack-datacenter-integration.md) határozza meg, hogyan a rendszer az Adatközpont elfér Azure verem telepítéshez. Továbbá szüksége döntse el, hogy pontosan hogyan integrálja Azure verem hibrid felhő környezetébe. Ez a cikk áttekintést nyújt a fő szempontokat Azure kapcsolat, identitás tárolására, beleértve, és a számlázási modell döntéseket.

@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Security Centerben a hálózat védelme |} Microsoft Docs"
-description: "Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait az Azure-hálózat védelme és maradnak meg a biztonsági házirendeknek megfelelően."
+title: Az Azure Security Centerben a hálózat védelme |} Microsoft Docs
+description: Ez a dokumentum címek, amelyek segítenek az Azure Security Center javaslatait az Azure-hálózat védelme és maradnak meg a biztonsági házirendeknek megfelelően.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866477"
 ---
 # <a name="protecting-your-network-in-azure-security-center"></a>Az Azure Security Centerben a hálózat védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Amikor a Security Center a potenciális biztonsági hiányosságokat azonosít, ajánlásokat, amely végigvezeti Önt a szükséges szabályozási folyamatán hoz létre.  Javaslat alkalmazható azonban az Azure erőforrás típusa: virtuális gépek (VM), hálózati, SQL és alkalmazások.

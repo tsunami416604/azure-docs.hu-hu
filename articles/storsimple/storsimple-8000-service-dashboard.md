@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series eszköz használata összefoglaló |} Microsoft Docs"
-description: "Ismerteti a StorSimple szolgáltatás összefoglaló panelre, és ismerteti a StorSimple megoldásban állapotának figyelése céljából."
+title: A StorSimple 8000 series eszköz használata összefoglaló |} Microsoft Docs
+description: Ismerteti a StorSimple szolgáltatás összefoglaló panelre, és ismerteti a StorSimple megoldásban állapotának figyelése céljából.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874828"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>A szolgáltatás összefoglaló panelre a StorSimple 8000 series eszköz használata
 

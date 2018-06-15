@@ -1,12 +1,12 @@
 ---
-title: "Az Azure csatlakoztatott telepítési döntések Azure verem integrált rendszerek |} Microsoft Docs"
-description: "Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem Azure kapcsolódó központi telepítések."
+title: Az Azure csatlakoztatott telepítési döntések Azure verem integrált rendszerek |} Microsoft Docs
+description: Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem Azure kapcsolódó központi telepítések.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120386"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure-csatlakoztatott telepítés tervezési megfontolások Azure verem integrált rendszerek
 Után úgy döntött, [hogyan fogja integrálja Azure verem a hibrid felhőkörnyezet](azure-stack-connection-models.md), majd véglegesítése is az Azure-verem telepítési döntések meghozatalában.

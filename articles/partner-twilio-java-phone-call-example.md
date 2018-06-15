@@ -1,7 +1,7 @@
 ---
-title: "Hogyan Twilio (Java) a telefonhívás |} Microsoft Docs"
-description: "Útmutató: Azure Java-alkalmazások használatával Twilio weblapról telefonhívás."
-services: 
+title: Hogyan Twilio (Java) a telefonhívás |} Microsoft Docs
+description: 'Útmutató: Azure Java-alkalmazások használatával Twilio weblapról telefonhívás.'
+services: ''
 documentationcenter: java
 author: devinrader
 manager: twilio
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865938"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Hogyan telefonhívás Twilio Azure Java-alkalmazások használata
 A következő példa bemutatja, hogyan használható fel a Twilio Azure-ban üzemeltetett weblapok hívást. Az eredményül kapott alkalmazás fogja kérni a felhasználót a telefonhívás-értékeket, az az alábbi képernyőfelvételen látható módon.
