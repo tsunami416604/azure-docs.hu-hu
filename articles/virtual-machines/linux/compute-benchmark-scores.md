@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425595"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Teljesítményteszt pontszámok számítási Linux virtuális gépekhez
 A következő CoreMark teljesítményteszt eredmények megjelenítése Azure nagy teljesítményű virtuális gép következőhöz Ubuntu rendszert futtató számítási teljesítményt. Számítási teljesítményteszt pontszámok is elérhető [Windows virtuális gépek](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

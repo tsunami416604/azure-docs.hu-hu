@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-példaszkript – Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával | Microsoft Docs"
-description: "Egy Azure Storage-fiókban található blobok másolása egy másik fiókba az AzCopy használatával."
+title: Azure PowerShell-példaszkript – Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával | Microsoft Docs
+description: Egy Azure Storage-fiókban található blobok másolása egy másik fiókba az AzCopy használatával.
 services: storage
 documentationcenter: na
 author: roygara
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "29360717"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával
 

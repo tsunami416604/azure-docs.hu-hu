@@ -1,11 +1,11 @@
 ---
-title: "Virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: Azure CLI | Microsoft Docs"
-description: "Virtuális hálózatokat csatlakoztathat egymáshoz virtuális hálózatok közötti kapcsolat és az Azure CLI használatával."
+title: 'Virtuális hálózat csatlakoztatása másik virtuális hálózathoz virtuális hálózatok közötti kapcsolattal: Azure CLI | Microsoft Docs'
+description: Virtuális hálózatokat csatlakoztathat egymáshoz virtuális hálózatok közötti kapcsolat és az Azure CLI használatával.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400317"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása az Azure CLI használatával
 

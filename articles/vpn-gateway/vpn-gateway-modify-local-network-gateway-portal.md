@@ -1,13 +1,13 @@
 ---
-title: "Módosítsa a helyi hálózati átjáró IP-cím előtagokat és a VPN-átjáró IP-címe |} Azure |} Portál |} Microsoft Docs"
-description: "Ez a cikk végigvezeti az Azure portál használatával helyi hálózati átjáró IP-cím előtagokat módosítása."
+title: Módosítsa a helyi hálózati átjáró IP-cím előtagokat és a VPN-átjáró IP-címe |} Azure |} Portál |} Microsoft Docs
+description: Ez a cikk végigvezeti az Azure portál használatával helyi hálózati átjáró IP-cím előtagokat módosítása.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23883823"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Az Azure portál használatával a helyi hálózati átjáró beállításainak módosítása
 

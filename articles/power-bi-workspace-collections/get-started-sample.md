@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31414881"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Bevezetés a Power BI munkaterület gyűjtemények minta használatába
 

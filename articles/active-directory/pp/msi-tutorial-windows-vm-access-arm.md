@@ -1,8 +1,8 @@
 ---
-title: "A Windows virtuális gép MSI Azure Resource Manager eléréséhez használja"
-description: "Ez az oktatóanyag végigvezeti az Azure Resource Manager eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI)."
+title: A Windows virtuális gép MSI Azure Resource Manager eléréséhez használja
+description: Ez az oktatóanyag végigvezeti az Azure Resource Manager eléréséhez használt egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI).
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29382559"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Erőforrás-kezelő eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI)
 

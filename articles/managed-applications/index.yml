@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Az Azure felügyelt alkalmazások dokumentációja"
+title: Az Azure felügyelt alkalmazások dokumentációja
 metadata:
-  title: "Az Azure felügyelt alkalmazások dokumentációja – oktatóanyagok, API-referencia"
-  description: "Az Azure felügyelt alkalmazások használatával az ügyfelek által egyszerűbben fenntartható felhőalapú megoldásokat tehet közzé."
+  title: Az Azure felügyelt alkalmazások dokumentációja – oktatóanyagok, API-referencia
+  description: Az Azure felügyelt alkalmazások használatával az ügyfelek által egyszerűbben fenntartható felhőalapú megoldásokat tehet közzé.
   services: managed-applications
   author: tfitzmac
   manager: timlt
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27779567"
 abstract:
-  description: "Az Azure felügyelt alkalmazásokkal belső és külső ügyfeleinek is kínálhat felhőalapú megoldásokat. Meghatározhatja a megoldás infrastruktúráját és folyamatos felügyelet feltételeit. Megoldásának számlázása az Azure-számlázáson keresztül kezelhető."
+  description: Az Azure felügyelt alkalmazásokkal belső és külső ügyfeleinek is kínálhat felhőalapú megoldásokat. Meghatározhatja a megoldás infrastruktúráját és folyamatos felügyelet feltételeit. Megoldásának számlázása az Azure-számlázáson keresztül kezelhető.
 sections:
-- title: "5 perces gyors útmutatók"
+- title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: "Ismerje meg, hogyan tehet közzé és telepíthet egy felügyelt alkalmazást."
+    text: Ismerje meg, hogyan tehet közzé és telepíthet egy felügyelt alkalmazást.
   - type: list
     style: icon48
     items:
@@ -32,16 +33,16 @@ sections:
         src: /azure/managed-applications/media/index/cli.svg
       text: Azure CLI
       href: /azure/managed-applications/managed-apps-quickstart-cli
-- title: "Részletes útmutatók"
+- title: Részletes útmutatók
   items:
   - type: paragraph
-    text: "Ismerje meg, hogyan fejleszthet felügyelt alkalmazásokat, illetve hogyan kínálhatja azokat az Azure Marketplace-en keresztül."
+    text: Ismerje meg, hogyan fejleszthet felügyelt alkalmazásokat, illetve hogyan kínálhatja azokat az Azure Marketplace-en keresztül.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/managed-applications/publish-service-catalog-app\">Felügyelt alkalmazás közzététele belső felhasználók számára</a>"
-    - html: "<a href=\"/azure/managed-applications/publish-marketplace-app\">Felügyelt alkalmazás közzététele külső felhasználók számára</a>"
-- title: "Hivatkozás"
+    - html: <a href="/azure/managed-applications/publish-service-catalog-app">Felügyelt alkalmazás közzététele belső felhasználók számára</a>
+    - html: <a href="/azure/managed-applications/publish-marketplace-app">Felügyelt alkalmazás közzététele külső felhasználók számára</a>
+- title: Hivatkozás
   items:
   - type: list
     style: cards
@@ -51,5 +52,5 @@ sections:
       html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
     - title: REST API-k
       html: <p><a href="/rest/api/resources/">REST</a></p>
-    - title: "Felhasználói felület"
-      html: "<p><a href=\"/azure/managed-applications/create-uidefinition-elements\">Felhasználói felület elemei</a></p><p><a href=\"/azure/managed-applications/create-uidefinition-functions\">Felhasználói felület funkciói</a></p>"
+    - title: Felhasználói felület
+      html: <p><a href="/azure/managed-applications/create-uidefinition-elements">Felhasználói felület elemei</a></p><p><a href="/azure/managed-applications/create-uidefinition-functions">Felhasználói felület funkciói</a></p>

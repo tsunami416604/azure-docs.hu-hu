@@ -1,11 +1,11 @@
 ---
-title: "Always On rendelkezésre állási csoportok konfigurálása egy külső figyelő |} Microsoft Docs"
-description: "Az oktatóanyag bemutatja, hogyan hozzon létre egy mindig a rendelkezésre állási csoport figyelőjével, amely kívülről elérhető a nyilvános virtuális IP-cím a hozzárendelt felhő szolgáltatás használatával az Azure-ban."
+title: Always On rendelkezésre állási csoportok konfigurálása egy külső figyelő |} Microsoft Docs
+description: Az oktatóanyag bemutatja, hogyan hozzon létre egy mindig a rendelkezésre állási csoport figyelőjével, amely kívülről elérhető a nyilvános virtuális IP-cím a hozzárendelt felhő szolgáltatás használatával az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a2453032-94ab-4775-b976-c74d24716728
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29398862"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Egy külső figyelőt a Always On rendelkezésre állási csoportok konfigurálása az Azure-ban
 > [!div class="op_single_selector"]

@@ -1,6 +1,6 @@
 ---
-title: "Az SQL Server rendelkezésre állási csoportok – az Azure virtuális gépek – áttekintés |} Microsoft Docs"
-description: "Ez a cikk Azure virtuális gépeken futó SQL Server rendelkezésre állási csoportok be."
+title: Az SQL Server rendelkezésre állási csoportok – az Azure virtuális gépek – áttekintés |} Microsoft Docs
+description: Ez a cikk Azure virtuális gépeken futó SQL Server rendelkezésre állási csoportok be.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29396431"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server Always On rendelkezésre állási csoportok az Azure virtuális gépeken bemutatása #
 

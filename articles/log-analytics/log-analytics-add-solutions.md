@@ -1,11 +1,11 @@
 ---
-title: "Adja hozzá az Azure Naplóelemzés megoldások |} Microsoft Docs"
-description: "Az Azure-ban megoldások programot, a képi megjelenítés és az adatokat, amelyek egy adott probléma terület körül átalakítani metrikák biztosítanak beszerzési szabályok gyűjteménye."
+title: Adja hozzá az Azure Naplóelemzés megoldások |} Microsoft Docs
+description: Az Azure-ban megoldások programot, a képi megjelenítés és az adatokat, amelyek egy adott probléma terület körül átalakítani metrikák biztosítanak beszerzési szabályok gyűjteménye.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29395462"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>A munkaterület Azure Log Analytics-kezelési megoldások hozzáadása
 

@@ -1,8 +1,8 @@
 ---
-title: "Az Azure Key Vault eléréséhez használja a Windows virtuális gép MSI"
-description: "Ez az oktatóanyag bemutatja, hogyan a folyamatot, amely egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Key Vault eléréséhez."
+title: Az Azure Key Vault eléréséhez használja a Windows virtuális gép MSI
+description: Ez az oktatóanyag bemutatja, hogyan a folyamatot, amely egy Windows virtuális gép felügyelt szolgáltatás identitás (MSI) használata az Azure Key Vault eléréséhez.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383783"
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Az Azure Key Vault eléréséhez használja a Windows virtuális gép felügyelt szolgáltatás identitásának (MSI) 
 

@@ -1,11 +1,11 @@
 ---
-title: "Bevezetés az alkalmazás szolgáltatási környezet 1-es verzió"
-description: "További tudnivalók az App Service Environment-környezet v1 szolgáltatás, hogy a biztonságos, virtuális hálózatot csatlakoztatott, dedikált méretezési egységek összes, az alkalmazások futtatásához."
+title: Bevezetés az alkalmazás szolgáltatási környezet 1-es verzió
+description: További tudnivalók az App Service Environment-környezet v1 szolgáltatás, hogy a biztonságos, virtuális hálózatot csatlakoztatott, dedikált méretezési egységek összes, az alkalmazások futtatásához.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836783"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az alkalmazás szolgáltatási környezet 1-es verzió
 

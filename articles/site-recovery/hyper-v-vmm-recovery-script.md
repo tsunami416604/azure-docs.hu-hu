@@ -1,11 +1,11 @@
 ---
-title: "Parancsfájl hozzáadása az Azure Site Recovery helyreállítási terv |} Microsoft Docs"
-description: "További információk a System Center Virtual Machine Manager (VMM) új parancsfájl hozzáadása az Azure-ban a helyreállítási terv előfeltételeinek."
+title: Parancsfájl hozzáadása az Azure Site Recovery helyreállítási terv |} Microsoft Docs
+description: További információk a System Center Virtual Machine Manager (VMM) új parancsfájl hozzáadása az Azure-ban a helyreállítási terv előfeltételeinek.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: shons
-editor: 
+editor: ''
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402432"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>A VMM-parancsfájl hozzáadása egy helyreállítási terv
 

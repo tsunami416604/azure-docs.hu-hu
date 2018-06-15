@@ -1,8 +1,8 @@
 ---
-title: "Adatgyűjtés a CollectD az OMS szolgáltatáshoz |} Microsoft Docs"
-description: "CollectD egy nyílt forráskódú Linux-démon, amely rendszeres időközönként gyűjti az adatokat az alkalmazások és a rendszer a szintre vonatkozó információ.  Ez a cikk tájékoztatást nyújt a Naplóelemzési CollectD adatainak begyűjtése."
+title: Adatgyűjtés a CollectD az OMS szolgáltatáshoz |} Microsoft Docs
+description: CollectD egy nyílt forráskódú Linux-démon, amely rendszeres időközönként gyűjti az adatokat az alkalmazások és a rendszer a szintre vonatkozó információ.  Ez a cikk tájékoztatást nyújt a Naplóelemzési CollectD adatainak begyűjtése.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855207"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Gyűjti az adatokat a CollectD Naplóelemzési Linux-ügynökök
 [CollectD](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeresen teljesítménymutatók az összegyűjtő alkalmazások és a rendszer a szintre vonatkozó információ. Példa alkalmazások közé tartoznak a Java virtuális gép (JVM), a MySQL-kiszolgáló és a Nginx. Ez a cikk tájékoztatást nyújt teljesítményadatok összegyűjtése a Naplóelemzési CollectD.

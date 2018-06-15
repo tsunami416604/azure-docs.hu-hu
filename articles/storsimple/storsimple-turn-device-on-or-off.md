@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple 8000 series eszköz be- és kikapcsolása |} Microsoft Docs"
-description: "Egy új StorSimple eszközön beállítás bekapcsolását, leállt vagy megszakadt power eszköz bekapcsolása és tiltsa le a futó eszközt ismerteti."
+title: A StorSimple 8000 series eszköz be- és kikapcsolása |} Microsoft Docs
+description: Egy új StorSimple eszközön beállítás bekapcsolását, leállt vagy megszakadt power eszköz bekapcsolása és tiltsa le a futó eszközt ismerteti.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27779448"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Kapcsolja be, vagy kapcsolja ki a StorSimple 8000 series eszköz
 

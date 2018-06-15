@@ -1,11 +1,11 @@
 ---
-title: "Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panel |} Microsoft Docs"
-description: "Ezért az alkalmazás nem jelenik meg a hozzáférési Panel hibaelhárítása"
+title: Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panel |} Microsoft Docs
+description: Ezért az alkalmazás nem jelenik meg a hozzáférési Panel hibaelhárítása
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384116"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Egy hozzárendelt alkalmazás nem jelenik meg a hozzáférési panel
 

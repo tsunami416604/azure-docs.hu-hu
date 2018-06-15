@@ -1,6 +1,6 @@
 ---
-title: "SQL Server VMs-tárolási konfigurációját |} Microsoft Docs"
-description: "Ez a témakör ismerteti, hogyan Azure storage tartozó konfigurálása SQL Server virtuális gépen (Resource Manager üzembe helyezési modellben) kiépítése során. Azt is bemutatja, hogyan konfigurálhatja a tárolási a meglévő SQL Server virtuális géphez."
+title: SQL Server VMs-tárolási konfigurációját |} Microsoft Docs
+description: Ez a témakör ismerteti, hogyan Azure storage tartozó konfigurálása SQL Server virtuális gépen (Resource Manager üzembe helyezési modellben) kiépítése során. Azt is bemutatja, hogyan konfigurálhatja a tárolási a meglévő SQL Server virtuális géphez.
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399083"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Tárolási konfigurációt az SQL Server virtuális gépen
 Amikor konfigurál egy SQL Server virtuálisgép-lemezkép az Azure-ban, a portál segítségével automatizálhatja a tárolási konfigurációt. Ez magában foglalja a tárolási csatolása a virtuális gépek, így tárolási elérhető SQL-kiszolgáló számára, és konfigurálja úgy a optimalizálása ki az adott igények szerint.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31416489"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center szabványos a fokozott biztonság
 Frissítse a Security Center szabványos biztonságosabb kezelés és a hibrid felhő munkaterhelések veszélyforrások elleni védelem előnyeinek kihasználása érdekében.  Standard szabad 60 napig próbálkozhat. Tekintse meg a Security Center [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/security-center/) további információt.

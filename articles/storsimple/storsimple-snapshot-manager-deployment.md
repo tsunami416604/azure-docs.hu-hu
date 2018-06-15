@@ -1,11 +1,11 @@
 ---
-title: "A StorSimple Snapshot Manager központi telepítése |} Microsoft Docs"
-description: "Megtudhatja, hogyan töltse le és telepítse a StorSimple Snapshot Manager MMC beépülő modulként StorSimple adatok védelmét és biztonsági mentését szolgáltatások kezeléséhez."
+title: A StorSimple Snapshot Manager központi telepítése |} Microsoft Docs
+description: Megtudhatja, hogyan töltse le és telepítse a StorSimple Snapshot Manager MMC beépülő modulként StorSimple adatok védelmét és biztonsági mentését szolgáltatások kezeléséhez.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876319"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>A StorSimple Snapshot Manager MMC beépülő modul telepítése
 

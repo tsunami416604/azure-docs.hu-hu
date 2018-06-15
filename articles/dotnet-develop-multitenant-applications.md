@@ -1,11 +1,11 @@
 ---
-title: "Több-Bérlős webes Alkalmazásminta |} Microsoft Docs"
-description: "Az architektúra áttekintése és -kialakítási minta, azt ismertetik, hogyan megvalósításához egy több-bérlős webalkalmazást az Azure-on található."
-services: 
+title: Több-Bérlős webes Alkalmazásminta |} Microsoft Docs
+description: Az architektúra áttekintése és -kialakítási minta, azt ismertetik, hogyan megvalósításához egy több-bérlős webalkalmazást az Azure-on található.
+services: ''
 documentationcenter: .net
 author: wadepickett
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 4f0281d2-1555-42b0-a99d-1222fade0b0f
 ms.service: active-directory
 ms.workload: identity
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850713"
 ---
 # <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazásokhoz az Azure-ban
 Egy több-bérlős alkalmazás, amely lehetővé teszi a különböző felhasználók vagy "bérlők," az alkalmazás megtekintéséhez, mintha az volt a saját megosztott erőforrás. A jellemző forgatókönyv, amely egy több-bérlős alkalmazás adatmodelljeinek egyike, amelyben az alkalmazás minden felhasználó kíván a felhasználói élmény testreszabásáról, de egyébként külön az ugyanazon alapvető üzleti követelmények. A nagy több-bérlős alkalmazások többek között az Office 365, az Outlook.com-os és a visualstudio.com webhelyre.

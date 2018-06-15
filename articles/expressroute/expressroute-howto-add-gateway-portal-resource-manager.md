@@ -1,13 +1,13 @@
 ---
-title: "Vegyen fel egy virtuális hálózat virtuális hálózati átjáró ExpressRoute: Portal: Azure |} Microsoft Docs"
-description: "Ez a cikk bemutatja, hogyan ExpressRoute egy már létrehozott erőforrás-kezelő virtuális hálózatot a virtuális hálózati átjárót ad hozzá."
+title: 'Vegyen fel egy virtuális hálózat virtuális hálózati átjáró ExpressRoute: Portal: Azure |} Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan ExpressRoute egy már létrehozott erőforrás-kezelő virtuális hálózatot a virtuális hálózati átjárót ad hozzá.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850867"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>A virtuális hálózati átjáró konfigurálása az Azure portál használatával ExpressRoute
 > [!div class="op_single_selector"]

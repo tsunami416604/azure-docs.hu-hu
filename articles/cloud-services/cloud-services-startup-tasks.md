@@ -1,11 +1,11 @@
 ---
-title: "Indítási feladatok futtatása az Azure Felhőszolgáltatások |} Microsoft Docs"
-description: "Indítási feladatok segítségével, az alkalmazás a cloud service-környezet előkészítéséhez. Ez útmutatást ad, hogy indítási feladatok működése, és hogyan végezheti el őket"
+title: Indítási feladatok futtatása az Azure Felhőszolgáltatások |} Microsoft Docs
+description: Indítási feladatok segítségével, az alkalmazás a cloud service-környezet előkészítéséhez. Ez útmutatást ad, hogy indítási feladatok működése, és hogyan végezheti el őket
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 886939be-4b5b-49cc-9a6e-2172e3c133e9
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843678"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Hogyan lehet konfigurálni és egy felhőalapú szolgáltatás indítási feladatok futtatása
 Használhatja az indítási feladatok műveletek végrehajtásához, a szerepkör indítása előtt. Végrehajtani kívánt műveletek közé tartozik egy összetevő telepítésével, COM-összetevők regisztrálása, beállításkulcsok vagy hosszú ideig futó folyamat elindítása.
