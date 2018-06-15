@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292557"
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>A közzétett Azure-felhőszolgáltatásban a Visual Studio és az IntelliTrace-hibakeresés
 Intellitrace bejelentkezhet a szerepkör példánya nagy mennyiségű hibakeresési adatok az Azure-ban futtatott. Ha a probléma okát van szüksége, az IntelliTrace-naplók segítségével végighaladhat a kódot a Visual Studio eszközből, mintha csak az Azure-ban futna. Gyakorlatilag IntelliTrace kulccsal rekordok programkód és környezeti adatok az Azure alkalmazás az Azure-ban felhőszolgáltatásként fut, és beállíthatja, a Visual Studio eszközből a rögzített adatokat. 

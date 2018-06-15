@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30836095"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>A DNS-névfeloldás beállítások a Linux virtuális gépek Azure-ban
 Azure alapértelmezés szerint a DNS-névfeloldás biztosít egy virtuális hálózaton lévő összes virtuális gépekhez. Valósíthatja meg a saját DNS-név feloldása megoldást a saját DNS-szolgáltatások konfigurálása a virtuális gépeken, amely az Azure futtatja. A következő forgatókönyvek segítséget válassza azt, amelyik a helyzetnek működik.

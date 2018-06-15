@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30316817"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>A feladat függőségek más feladatok függő feladatok futtatásához létrehozása
 
