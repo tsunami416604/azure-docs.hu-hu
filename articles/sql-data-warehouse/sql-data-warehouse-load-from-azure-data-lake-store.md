@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188378"
 ---
 # <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Adatok betöltése az Azure Data Lake Store az SQL Data Warehouse
 A PolyBase külső táblák segítségével az adatok betöltése az Azure Data Lake Store az Azure SQL Data warehouse-bA. Bár az adatok tárolva ADLS ad hoc lekérdezéseket is futtathat, azt javasoljuk az adatok importálása az SQL Data Warehouse a legjobb teljesítmény érdekében.

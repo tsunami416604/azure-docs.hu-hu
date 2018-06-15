@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192220"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Oktatóanyag: Hozzon létre egy folyamatos integrációt folyamat Visual Studio Team Services és az IIS
 A build, a vizsgálati és a telepítési fázisai alkalmazásfejlesztés automatizálását, használhatja a folyamatos integrációt és a központi telepítés (CI/CD) folyamat. Ebben az oktatóanyagban létrehoz egy Visual Studio Team Services és a Windows rendszerű virtuális gép (VM) használata az IIS-t futtató Azure CI/CD folyamat. Az alábbiak végrehajtásának módját ismerheti meg:

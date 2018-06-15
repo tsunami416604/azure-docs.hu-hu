@@ -18,6 +18,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150957"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
 

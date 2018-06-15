@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32185385"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-10"></a>Csomag rögzíti kezelése az Azure CLI 1.0 használata Azure hálózati figyelőt
 

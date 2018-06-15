@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181970"
 ---
 # <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>A legújabb Azure Search szolgáltatás REST API-verzióra való frissítést
 Előző verziójának használata a [Azure Search szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/), ez a cikk segít frissíteni az alkalmazást a legújabb használandó általánosan elérhető API-verzió, 2017-11 – 11.

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182764"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Több nyelven is az Azure Search-dokumentumok index létrehozása
 > [!div class="op_single_selector"]

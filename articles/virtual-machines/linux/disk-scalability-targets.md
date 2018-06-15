@@ -1,6 +1,6 @@
 ---
-title: "A Linux - Microsoft Azure virtuális gépek lemezei méretezhetőségi és Teljesítménycélok |} Microsoft Docs"
-description: "További tudnivalók a Linuxot futtató virtuális gépekhez csatlakoztatott virtuális gépek lemezeit a méretezhetőségi és Teljesítménycélok."
+title: A Linux - Microsoft Azure virtuális gépek lemezei méretezhetőségi és Teljesítménycélok |} Microsoft Docs
+description: További tudnivalók a Linuxot futtató virtuális gépekhez csatlakoztatott virtuális gépek lemezeit a méretezhetőségi és Teljesítménycélok.
 services: virtual-machines
 author: tamram
 manager: jeconnoc
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24872329"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>A Linux virtuális gépek lemezei méretezhetőségi és Teljesítménycélok
 

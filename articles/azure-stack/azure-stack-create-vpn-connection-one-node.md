@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159851"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Különböző Azure verem szoftverfejlesztői készlet környezetekben két virtuális hálózat közötti pont-pont VPN-kapcsolat létrehozása
 ## <a name="overview"></a>Áttekintés

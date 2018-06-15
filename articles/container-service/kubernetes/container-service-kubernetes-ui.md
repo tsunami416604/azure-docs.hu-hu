@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32163248"
 ---
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Azure Tárolószolgáltatás a Kubernetes webes felhasználói felület használatával
 

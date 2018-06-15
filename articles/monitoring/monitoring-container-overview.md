@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33207527"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Az Azure-ban tárolók figyelése áttekintése
 Az Azure-ral hatékonyan figyelheti és kezelheti a az Azure-tárolókon Kubernetes vagy Docker üzembe helyezett munkaterhelések tekintetében. Fontos tudni, hogyan működnek tárolók mikroszolgáltatási több alkalmazással rendelkező ahhoz, hogy egy megbízható szolgáltatás biztosításához léptékű, és támogatja a felügyeleti csomag. Ez a cikk röviden áttekinti a felügyeleti és figyelési képességek segítségével az Azure-ban minden egyes ismernie és megfelelő ezek a követelmények alapján.

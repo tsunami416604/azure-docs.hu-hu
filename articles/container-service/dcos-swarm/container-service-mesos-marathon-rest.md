@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32165605"
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>A Marathon REST API-t a DC/OS-tárolók kezelése
 

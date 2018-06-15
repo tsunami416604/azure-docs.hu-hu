@@ -12,9 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187599"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 Ismerje meg, az Azure SQL Data Warehouse biztonsági mentési és visszaállítási működése. Az adatraktár visszaállítása az elsődleges régióban visszaállítási pontot a biztonsági adatraktár mentések. Georedundáns biztonsági mentések használatával állítsa vissza egy másik földrajzi régióban. 

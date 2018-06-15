@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162262"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Azure Tárolószolgáltatási DC/OS-ügynök készleteket
 Azure Tárolószolgáltatási DC/OS fürtök ügynök csomópontok két rendelkezik, egy nyilvános készlet és egy személyes készletet tartalmaz. Egy alkalmazás vagy a készletbe, a tárolószolgáltatás gépek közötti kisegítő érintő is telepíthető. A gépek kommunikál az internettel (nyilvános), vagy belső (magánhálózati) tartani. Ez a cikk rövid áttekintést nyújt, ezért azonban nyilvános és titkos.

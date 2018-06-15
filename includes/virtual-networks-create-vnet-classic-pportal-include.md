@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805301"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>A klasszikus virtuális hálózat létrehozása az Azure-portálon
 A fenti forgatókönyv alapján VNet klasszikus létrehozásához kövesse az alábbi lépéseket.

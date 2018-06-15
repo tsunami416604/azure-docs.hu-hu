@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31805060"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>PowerShell a hálózati konfigurációs fájl használatával egy virtuális hálózat létrehozása
 Azure előfizetés az összes rendelkezésre álló virtuális hálózatok megadása egy XML-fájlt használja. Letölteni a fájlt, módosítása vagy törlése a meglévő virtuális hálózatok szerkesztheti, majd hozzon létre új virtuális hálózatok. Ebből az oktatóanyagból megtudhatja, hogyan letölteni a fájlt, a hálózati konfiguráció (vagy netcfg) fájl, a továbbiakban, és új virtuális hálózat létrehozása szerkesztésére. A hálózati konfigurációs fájl kapcsolatos további tudnivalókért tekintse meg a [Azure-beli virtuális hálózat konfigurációs séma](https://msdn.microsoft.com/library/azure/jj157100.aspx).

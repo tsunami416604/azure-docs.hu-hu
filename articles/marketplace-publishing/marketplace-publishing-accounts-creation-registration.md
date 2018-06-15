@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179333"
 ---
 # <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 Ez a cikk végigvezeti a szükséges fiókok létrehozása és a regisztrációs folyamat egy engedélyezett Microsoft Developer legyen, az Azure piactérről.

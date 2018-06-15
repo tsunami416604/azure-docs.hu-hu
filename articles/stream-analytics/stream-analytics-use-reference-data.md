@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192043"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referenciaadatok használja a Stream Analytics keresések
 Referenciaadatok (más néven keresési tábla), amely statikus véges adatkészlet vagy lelassulnak, ami módosítása ideiglenesek, keresés végrehajtásához, vagy az adatfolyam függ. Annak hivatkozás adatok az Azure Stream Analytics-feladat, általában fogja használni a [hivatkozás adatok csatlakozás](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. A Stream Analytics használ a tárolási réteg a Referenciaadatoknál Azure Blob Storage tárolót, és az Azure Data Factory hivatkozás adatokat át legyenek-e vagy átmásolva az Azure Blob storage referenciaadatok, használni [tetszőleges számú felhőalapú és a helyszíni adattárolókhoz](../data-factory/copy-activity-overview.md). Referenciaadatok növekvő sorrendben az a dátum/idő, a blob neve (a bemeneti konfigurációs meghatározott) blobok sorozataként van modellezve. Az **csak** támogatja a sorozat végére hozzáadása egy dátum/idő használatával **nagyobb** a sorban utolsó blob a megadottól.

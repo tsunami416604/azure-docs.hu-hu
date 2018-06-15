@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187368"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Az SQL Data Warehouse-adatok felügyeleti partnerek
 A data warehouse megoldás létrehozásához válassza a iparágvezető eszközök széles. Ez a cikk a Microsoft partnervállalatokban adatkezelési eszközök és az Azure SQL Data Warehouse támogató megoldások mutatja be.

@@ -1,11 +1,11 @@
 ---
-title: "Egy új több-bérlős alkalmazás konfigurálása |} Microsoft Docs"
-description: "Hogyan konfigurálhatja az egyszeri bejelentkezés fejlesztés és regisztrálása az Azure ad-val egyéni alkalmazások."
+title: Egy új több-bérlős alkalmazás konfigurálása |} Microsoft Docs
+description: Hogyan konfigurálhatja az egyszeri bejelentkezés fejlesztés és regisztrálása az Azure ad-val egyéni alkalmazások.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26612915"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Egy új több-bérlős alkalmazás konfigurálása
 

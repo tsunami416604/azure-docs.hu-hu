@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151229"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózat az Azure API Management szolgáltatással
 Azure virtuális hálózatok, az Azure API Management kezelheti API-k nem érhető el, az interneten. A kapcsolat VPN technológiáin számos érhetők el. Az API Management olyan virtuális hálózaton belül két fő módban telepíthető:

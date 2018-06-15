@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192203"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>Oktatóanyag – Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI 2.0 használatával
 

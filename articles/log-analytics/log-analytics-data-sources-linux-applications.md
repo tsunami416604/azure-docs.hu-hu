@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168282"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux Log Analytics-alkalmazások a teljesítményszámlálók adatainak összegyűjtése 
 Ez a cikk részletesen konfigurálásához a [Linux OMS-ügynököt](https://github.com/Microsoft/OMS-Agent-for-Linux) adott alkalmazásokra vonatkozó teljesítményszámlálók adatainak összegyűjtése.  A cikk tartalmazza azokat a következők:  
