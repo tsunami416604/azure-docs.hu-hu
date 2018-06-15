@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795911"
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>(A Windows PowerShell-parancsfájl) közzététele-WebApplicationVM
 A webalkalmazások egy virtuális gépet telepít. A parancsfájl a szükséges erőforrásokat az Azure-előfizetése hoz létre, ha azok még nem léteznek.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31427144"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Hogyan keresse meg és törölje a leválasztott hálózati illesztőt kártyák (NIC) Azure virtuális gépekhez
 Ha töröl egy virtuális gép (VM) az Azure-ban, a hálózati adapterek (NIC) alapértelmezés szerint nem törlődnek. Hoz létre, és több virtuális gép törlése, ha a nem használt hálózati adaptert a belső IP-címbérletek használatával továbbra is. Más virtuális gép hálózati adaptert létrehozni, mert nem sikerült beolvasnia a címterületen belülre az alhálózat egy IP-címbérletet lehetnek. Ez a cikk bemutatja, hogyan keresse meg és törölje a nem csatlakoztatott hálózati adapterrel.

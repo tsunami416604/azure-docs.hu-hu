@@ -1,6 +1,6 @@
 ---
-title: "fájl belefoglalása"
-description: "fájl belefoglalása"
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 4f5dbbd1da8a221fb5f8b9641e016829987db538
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529960"
 ---
 Mielőtt létrehozna elemeket, tekintsük át, a hatókör fogalmát. Azure biztosít négy szintű felügyeleti: felügyeleti csoportok, előfizetés, erőforráscsoport és erőforrások. [Felügyeleti csoportok](../articles/billing/billing-enterprise-mgmt-group-overview.md) előzetes kiadás szerepelnek. Az alábbi ábrán egy példa a rétegek.
 

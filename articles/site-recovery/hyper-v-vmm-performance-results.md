@@ -1,6 +1,6 @@
 ---
-title: "Teszteredmények Hyper-V virtuális gépek replikálása egy másodlagos helyre, az Azure Site Recovery VMM-felhőkben |} Microsoft Docs"
-description: "Ez a cikk a Hyper-V virtuális gépek VMM-felhőkben egy másodlagos helyre Azure Site Recovery segítségével replikáció teljesítménytesztelési információkat biztosít."
+title: Teszteredmények Hyper-V virtuális gépek replikálása egy másodlagos helyre, az Azure Site Recovery VMM-felhőkben |} Microsoft Docs
+description: Ez a cikk a Hyper-V virtuális gépek VMM-felhőkben egy másodlagos helyre Azure Site Recovery segítségével replikáció teljesítménytesztelési információkat biztosít.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378896"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A vizsgálati eredmények, a Hyper-V replikáció egy másodlagos helyre
 

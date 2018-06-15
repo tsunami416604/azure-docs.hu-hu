@@ -1,6 +1,6 @@
 ---
-title: "Csatlakozás az SQL Server virtuális géphez (Resource Manager) |} Microsoft Docs"
-description: "Útmutató az Azure virtuális gépen futó SQL-kiszolgálóhoz való csatlakozáshoz. Ez a témakör a klasszikus üzembe helyezési modellt használ. A forgatókönyvek eltérőek lehetnek attól függően, hogy a hálózati konfiguráció és az ügyfél helye."
+title: Csatlakozás az SQL Server virtuális géphez (Resource Manager) |} Microsoft Docs
+description: Útmutató az Azure virtuális gépen futó SQL-kiszolgálóhoz való csatlakozáshoz. Ez a témakör a klasszikus üzembe helyezési modellt használ. A forgatókönyvek eltérőek lehetnek attól függően, hogy a hálózati konfiguráció és az ügyfél helye.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400239"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Csatlakozás az Azure SQL Server virtuális géphez
 

@@ -1,11 +1,11 @@
 ---
-title: "Létrehozásával és a belső Terheléselosztók használatával az App Service-környezetek |} Microsoft Docs"
-description: "Létrehozása és egy ASE használata egy ILB"
+title: Létrehozásával és a belső Terheléselosztók használatával az App Service-környezetek |} Microsoft Docs
+description: Létrehozása és egy ASE használata egy ILB
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388815"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>A belső Terheléselosztók használatával az App Service-környezet
 

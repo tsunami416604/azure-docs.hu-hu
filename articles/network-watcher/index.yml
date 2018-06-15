@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32777179"
 abstract:
   description: Ismerje meg az Azure Network Watcher használatát. A rövid útmutatók, oktatóanyagok és egyéb dokumentumok bemutatják, hogyan elemezheti az Azure Virtual Network-hálózatát olyan eszközökkel, mint a csomagrögzítés és NSG-forgalomnaplók, amelyekkel diagnosztizálhatja a forgalomszűrési és -irányítási problémákat, valamint monitorozhatja a kapcsolatokat.
 sections:

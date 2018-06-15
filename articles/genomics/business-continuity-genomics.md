@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31427041"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>A Microsoft Genomics üzleti folytonosság – áttekintés
 Ez az Áttekintés a Microsoft Genomics biztosít az üzletmenet folytonossága és vészhelyreállítás képességeit ismerteti. Ismerje meg a helyreállítás zavaró események, például az adatok elvesztését okozhatja az Azure-régió kimaradás beállítások. 

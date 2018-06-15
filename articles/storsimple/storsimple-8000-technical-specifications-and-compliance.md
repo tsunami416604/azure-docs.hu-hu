@@ -1,12 +1,12 @@
 ---
-title: "StorSimple műszaki specifikációk |} Microsoft Docs"
-description: "Műszaki adatok és a StorSimple hardverösszetevők szabályozó szabványok megfelelőségi információit mutatja be."
+title: StorSimple műszaki specifikációk |} Microsoft Docs
+description: Műszaki adatok és a StorSimple hardverösszetevők szabályozó szabványok megfelelőségi információit mutatja be.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27785526"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Műszaki adatok és a StorSimple eszköz megfelelőségét
 

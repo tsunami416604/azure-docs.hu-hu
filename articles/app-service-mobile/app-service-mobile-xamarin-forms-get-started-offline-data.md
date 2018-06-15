@@ -1,10 +1,10 @@
 ---
-title: "A Azure Mobile Apps (Xamarin.Forms) kapcsolat nélküli szinkronizálásának engedélyezése |} Microsoft Docs"
-description: "App Service Mobile Apps a Xamarin.Forms-alkalmazás gyorsítótárába, a szinkronizálási kapcsolat nélküli adatainak használata"
+title: A Azure Mobile Apps (Xamarin.Forms) kapcsolat nélküli szinkronizálásának engedélyezése |} Microsoft Docs
+description: App Service Mobile Apps a Xamarin.Forms-alkalmazás gyorsítótárába, a szinkronizálási kapcsolat nélküli adatainak használata
 documentationcenter: xamarin
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: acf0f874-3ea5-4410-bd22-b0e72140f3b5
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594717"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Xamarin.Forms-mobilalkalmazás offline szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

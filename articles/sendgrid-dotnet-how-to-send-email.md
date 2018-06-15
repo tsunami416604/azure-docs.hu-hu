@@ -1,11 +1,11 @@
 ---
-title: "A SendGrid e-mail szolgáltatás (.NET) használatával |} Microsoft Docs"
-description: "Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták C# nyelven íródtak, és a .NET API-t használja."
-services: 
+title: A SendGrid e-mail szolgáltatás (.NET) használatával |} Microsoft Docs
+description: Megtudhatja, hogyan küldjön e-maileket a SendGrid e-mail szolgáltatás az Azure-on. A Kódminták C# nyelven íródtak, és a .NET API-t használja.
+services: ''
 documentationcenter: .net
 author: thinkingserious
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 21bf4028-9046-476b-9799-3d3082a0f84c
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 12/23/2017
+ms.locfileid: "27534855"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Hogyan e-mailek küldése SendGrid az Azure-ral
 ## <a name="overview"></a>Áttekintés

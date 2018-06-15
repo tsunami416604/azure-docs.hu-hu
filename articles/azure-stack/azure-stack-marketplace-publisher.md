@@ -1,12 +1,12 @@
 ---
-title: "A piactér eszközkészlet segítségével létrehozása és közzététele a Piactéri elemek |} Microsoft Docs"
-description: "Útmutató: a közzétételi eszközkészlet létrehozhat Piactéri elemek"
+title: A piactér eszközkészlet segítségével létrehozása és közzététele a Piactéri elemek |} Microsoft Docs
+description: 'Útmutató: a közzétételi eszközkészlet létrehozhat Piactéri elemek'
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386877"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Adja hozzá a közzétételi eszközzel Piactéri elemek
 Tartalom hozzáadása a [Azure verem piactér](azure-stack-marketplace.md) elérhetővé teszi a megoldás az Ön és a központi telepítés a bérlők számára.  A piactér eszközkészlet Azure piactér csomagok (.azpkg) fájlok, az infrastruktúra-szolgáltatási Azure Resource Manager-sablonok vagy Virtuálisgép-bővítmények alapján hoz létre.  Használhatja a piactér eszközkészlet .azpkg fájlok, akár a eszközzel létrehozott segítségével közzétételét [manuális](azure-stack-create-and-publish-marketplace-item.md) lépéseket.  Ez a témakör végigvezeti Önt az eszköz letöltése, a Virtuálisgép-sablonok alapján piactér elem létrehozása és közzététele majd, hogy az elem a veremben Azure piactér.     

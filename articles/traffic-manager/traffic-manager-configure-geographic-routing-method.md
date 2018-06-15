@@ -1,12 +1,12 @@
 ---
-title: "Földrajzi forgalom-útválasztási módszert használja az Azure Traffic Manager konfigurálása |} Microsoft Docs"
-description: "Ez a cikk azt ismerteti, hogyan konfigurálhatja a földrajzi forgalom-útválasztási módszert használja az Azure Traffic Manager"
+title: Földrajzi forgalom-útválasztási módszert használja az Azure Traffic Manager konfigurálása |} Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a földrajzi forgalom-útválasztási módszert használja az Azure Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397803"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>A földrajzi forgalom-útválasztási módszert használja a Traffic Manager konfigurálása
 

@@ -1,12 +1,12 @@
 ---
-title: "A StorSimple 8000 series támogatási csomag létrehozása |} Microsoft Docs"
-description: "Megtudhatja, hogyan létrehozása és szerkesztése a StorSimple 8000 series eszköz támogatási csomag visszafejtésére."
+title: A StorSimple 8000 series támogatási csomag létrehozása |} Microsoft Docs
+description: Megtudhatja, hogyan létrehozása és szerkesztése a StorSimple 8000 series eszköz támogatási csomag visszafejtésére.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743578"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Hozzon létre és kezelheti a StorSimple 8000 Series támogatási csomag
 

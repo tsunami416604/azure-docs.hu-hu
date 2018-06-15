@@ -1,11 +1,11 @@
 ---
-title: "Az Azure Service Bus-végpont nyomkövetés és diagnosztikai |} Microsoft Docs"
-description: "A Service Bus ügyfél-diagnosztika és végpont nyomkövetés áttekintése"
+title: Az Azure Service Bus-végpont nyomkövetés és diagnosztikai |} Microsoft Docs
+description: A Service Bus ügyfél-diagnosztika és végpont nyomkövetés áttekintése
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: lmolkova
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27741334"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetés és a Service Bus üzenetkezelés korrelációs
 

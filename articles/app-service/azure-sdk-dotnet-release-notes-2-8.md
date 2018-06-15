@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23836391"
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>2.8, 2.8.1-es verziójának és 2.8.2 .NET-keretrendszerhez készült Azure SDK
 ## <a name="overview"></a>Áttekintés

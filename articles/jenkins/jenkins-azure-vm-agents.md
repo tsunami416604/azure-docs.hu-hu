@@ -1,8 +1,8 @@
 ---
-title: "Bővítse a Jenkins telepítéseit Azure virtuális gép ügynökkel."
-description: "Adja hozzá az Azure virtuális gépek használata a Jenkins Azure Virtuálisgép-ügynök beépülő modul Jenkins folyamatok további kapacitást."
+title: Bővítse a Jenkins telepítéseit Azure virtuális gép ügynökkel.
+description: Adja hozzá az Azure virtuális gépek használata a Jenkins Azure Virtuálisgép-ügynök beépülő modul Jenkins folyamatok további kapacitást.
 services: multiple
-documentationcenter: 
+documentationcenter: ''
 author: rloutlaw
 manager: justhe
 ms.service: multiple
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29392640"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Bővítse a Jenkins telepítéseit igényeknek Azure virtuális gép ügynökkel
 

@@ -1,8 +1,8 @@
 ---
-title: "Telepítheti az Azure-felhőbe rendszerhéj Bash Terraform |} Microsoft Docs"
-description: "Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez"
+title: Telepítheti az Azure-felhőbe rendszerhéj Bash Terraform |} Microsoft Docs
+description: Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: tomarcher
 manager: routlaw
 tags: azure-cloud-shell
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386520"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Az Azure-felhőbe rendszerhéj Bash Terraform üzembe helyezéséhez
 Ez a cikk bemutatja, hogyan nevű erőforráscsoport létrehozása a [Terraform AzureRM szolgáltató](https://www.terraform.io/docs/providers/azurerm/index.html). 

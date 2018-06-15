@@ -1,13 +1,13 @@
 ---
-title: "Be annak az Azure ExpressRoute Microsoft társviszony-létesítés: portál |} Microsoft Docs"
-description: "Ez a cikk ismerteti az Azure portál használatával a Microsoft Peering útvonal szűrők konfigurálása"
+title: 'Be annak az Azure ExpressRoute Microsoft társviszony-létesítés: portál |} Microsoft Docs'
+description: Ez a cikk ismerteti az Azure portál használatával a Microsoft Peering útvonal szűrők konfigurálása
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29387727"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Be annak a Microsoft társviszony-létesítéshez: Azure-portálon
 > [!div class="op_single_selector"]

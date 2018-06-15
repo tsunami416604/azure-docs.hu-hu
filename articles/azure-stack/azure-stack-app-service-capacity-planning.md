@@ -1,12 +1,12 @@
 ---
-title: "Kapacitásának tervezése az Azure App Service kiszolgálói szerepkörök Azure verem |} Microsoft Docs"
-description: "Kapacitástervezési Azure verem Azure App Service kiszolgálói szerepköre tekintetében"
+title: Kapacitásának tervezése az Azure App Service kiszolgálói szerepkörök Azure verem |} Microsoft Docs
+description: Kapacitástervezési Azure verem Azure App Service kiszolgálói szerepköre tekintetében
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388583"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapacitástervezési Azure verem Azure App Service kiszolgálói szerepköre tekintetében
 *A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*

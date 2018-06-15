@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31433249"
 ---
 Azt szeretné, győződjön meg róla a szervezethez tartozó felhasználók a megfelelő szintű ezekhez az erőforrásokhoz való hozzáférés. Nem kívánja korlátlan hozzáférést a felhasználók számára, de azt is meg kell győződnie arról tehetik munkájukat. Szerepköralapú hozzáférés-vezérlést (RBAC) lehetővé teszi kezelését a jogosult felhasználók hatókörre konkrét műveletek elvégzéséhez. Egy szerepkör engedélyezett műveletek egy csoportját határozza meg. A szerepkör hozzárendelése egy hatókört, és adja meg, hogy mely felhasználók a hatókör szerepkörhöz tartozik.
 

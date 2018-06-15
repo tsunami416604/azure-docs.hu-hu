@@ -1,11 +1,11 @@
 ---
-title: "Hogyan hozhat létre és telepíthet egy felhőalapú szolgáltatás |} Microsoft Docs"
-description: "Megtudhatja, hogyan hozhat létre és telepíthet egy felhőalapú szolgáltatás, az Azure portál használatával."
+title: Hogyan hozhat létre és telepíthet egy felhőalapú szolgáltatás |} Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és telepíthet egy felhőalapú szolgáltatás, az Azure portál használatával.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 56ea2f14-34a2-4ed9-857c-82be4c9d0579
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388084"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Hogyan hozhat létre és telepíthet egy felhőalapú szolgáltatás
 Az Azure portálon két módot biztosít hozhat létre és telepíthet egy felhőalapú szolgáltatás: *Gyorslétrehozás* és *egyéni létrehozás*.

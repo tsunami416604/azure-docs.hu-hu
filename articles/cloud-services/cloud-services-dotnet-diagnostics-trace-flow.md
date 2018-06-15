@@ -1,11 +1,11 @@
 ---
-title: "A folyamat a egy felhőalapú szolgáltatások alkalmazást az Azure diagnosztikai nyomkövetési |} Microsoft Docs"
-description: "Nyomkövetési üzenet hozzáadása érdekében a hibakeresés méri a teljesítményt, figyelés, forgalom elemzése és további Azure-alkalmazásfejlesztő."
+title: A folyamat a egy felhőalapú szolgáltatások alkalmazást az Azure diagnosztikai nyomkövetési |} Microsoft Docs
+description: Nyomkövetési üzenet hozzáadása érdekében a hibakeresés méri a teljesítményt, figyelés, forgalom elemzése és további Azure-alkalmazásfejlesztő.
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 09934772-cc07-4fd2-ba88-b224ca192f8e
 ms.service: cloud-services
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461244"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>A folyamatot az Azure Diagnostics Felhőszolgáltatások alkalmazás nyomkövetési
 Nyomkövetés módja a figyelheti a végrehajtása az alkalmazás futtatása során. Használhatja a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), és [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) hibák adatainak rögzítésére osztályok és alkalmazás végrehajtási naplók, szövegfájlok vagy más eszközök későbbi elemzés céljából. További információ a nyomkövetési: [nyomkövetés és tagolása alkalmazások](https://msdn.microsoft.com/library/zs6s4h68.aspx).

@@ -1,8 +1,8 @@
 ---
-title: "A Cortana Intelligence megoldás sablon alkalmazástervezési az igény szerinti előrejelzési energia |} Microsoft Docs"
-description: "A Microsoft a Cortana Intelligence, amelyek segítségével igény szerint egy energia segédprogram vállalat előrejelzési megoldás sablon."
+title: A Cortana Intelligence megoldás sablon alkalmazástervezési az igény szerinti előrejelzési energia |} Microsoft Docs
+description: A Microsoft a Cortana Intelligence, amelyek segítségével igény szerint egy energia segédprogram vállalat előrejelzési megoldás sablon.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: ilanr9
 manager: ilanr9
 editor: yijichen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23846429"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>A Cortana Intelligence megoldás sablon alkalmazástervezési energia előrejelzési igény szerint
 ## <a name="executive-summary"></a>Vezetői összefoglaló

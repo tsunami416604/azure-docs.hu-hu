@@ -1,12 +1,12 @@
 ---
-title: "Azure Automation Runbook műveletet a Naplóelemzési felhasználó által kezdeményezett |} Microsoft Docs"
-description: "Ez a cikk ismerteti, hogyan egy Naplóelemzési keresési eredmény igény egy Automation-runbook futtatását."
+title: Azure Automation Runbook műveletet a Naplóelemzési felhasználó által kezdeményezett |} Microsoft Docs
+description: Ez a cikk ismerteti, hogyan egy Naplóelemzési keresési eredmény igény egy Automation-runbook futtatását.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394615"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>A Naplóelemzési napló keresési eredmény egy Automation-Runbook a művelet végrehajtása
 
