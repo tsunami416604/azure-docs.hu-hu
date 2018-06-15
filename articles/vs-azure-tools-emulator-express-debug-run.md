@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292200"
 ---
 # <a name="using-emulator-express-to-run-and-debug-an-azure-cloud-service-on-a-local-machine"></a>Emulator Express használatával futtatásához és az Azure-felhőszolgáltatás a helyi számítógépen hibakeresése
 Emulator Express használatával tesztelése, és egy felhőalapú szolgáltatás hibakeresése a Visual Studio futtatása rendszergazdaként nélkül. Beállíthatja a projektbeállításokat Emulator Express vagy a felhőalapú szolgáltatás követelményeitől függően a teljes emulátor használatára. A teljes emulátor kapcsolatos további információkért lásd: [egy Azure-alkalmazást futtat a Compute Emulator](storage/common/storage-use-emulator.md).

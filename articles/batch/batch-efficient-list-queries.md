@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30315048"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Létrehozhat olyan lekérdezéseket, a lista kötegelt erőforrásokhoz hatékonyan
 

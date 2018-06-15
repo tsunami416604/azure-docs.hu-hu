@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31528494"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse számítási kezelése
 További tudnivalók az Azure SQL Data Warehouse számítási erőforrások kezelése. Az adatraktár felfüggesztésével csökkenthetők a költségek, vagy skálázhatja azt az adatraktár a teljesítményigények kielégítése érdekében. 

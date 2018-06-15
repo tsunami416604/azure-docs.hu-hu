@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292421"
 ---
 # <a name="learn-the-various-ways-to-debug-an-azure-cloud-service"></a>Ismerje meg a különböző módszereket hibakeresése az Azure-felhőszolgáltatás
 Ez a cikk az Azure-felhőszolgáltatás hibakeresését különböző módokon mutató hivatkozásokat tartalmaz. 

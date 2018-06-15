@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31423592"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure metaadat-szolgáltatás: Windows virtuális gépek ütemezett eseménye
 
