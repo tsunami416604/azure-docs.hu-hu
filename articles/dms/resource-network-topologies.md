@@ -16,6 +16,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30235400"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Az Azure SQL DB felügyelt példány áttelepítéshez az Azure-adatbázis áttelepítése szolgáltatással hálózati topológiák
 Ebből a cikkből megtudhatja, hogyan különböző hálózati topológiákat, amely az Azure-adatbázis áttelepítési szolgáltatás zökkenőmentes áttelepítés felületet tudjon biztosítani a helyszíni SQL Server-kiszolgálók az Azure SQL adatbázis felügyelt példányra való használható.

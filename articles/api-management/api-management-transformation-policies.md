@@ -15,9 +15,10 @@ ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: 3eb9d6851c30f11980d47d4e48b158217e41995d
 ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30233785"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management-átalakítási csoportházirendek
 Ez a témakör egy hivatkozást a következő API-felügyeleti házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [házirendek az API Management](http://go.microsoft.com/fwlink/?LinkID=398186).

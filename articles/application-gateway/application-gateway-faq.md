@@ -7,13 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/29/2018
+ms.date: 5/21/2018
 ms.author: victorh
-ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699903"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
@@ -82,6 +83,11 @@ Nem, az Alkalmazásátjáró nem támogatja a statikus nyilvános IP-címek, de 
 **Q. Alkalmazásátjáró támogatja a több nyilvános IP-cím az átjárón?**
 
 Csak egy nyilvános IP-cím egy Application Gateway esetén támogatott.
+
+**Q. Hogy mekkorának kell még a alhálózati Alkalmazásátjáró?**
+
+Alkalmazásátjáró példányonként egy magánhálózati IP-címet, valamint egy másik privát IP-címet használ fel, ha a magánhálózati front-end IP-konfiguráció úgy van beállítva. Emellett Azure fenntartja az első négy és az utolsó IP-cím az egyes alhálózatokon, belső használatra.
+Például, ha az Application Gateway beállítása három alkalmazáspéldányra és nem magánhálózati front-end IP, majd egy /29 alhálózati vagy azoknál nagyobb méretűek van szükség. Ebben az esetben az Application Gateway három IP-címeket használ. Ha rendelkezik három alkalmazáspéldányra és a magánhálózati front-end IP-konfigurációhoz, majd egy /28 IP-cím alhálózati vagy azoknál nagyobb méretűek van szükség, mivel négy IP-címek szükség.
 
 **Q. Támogatja az Alkalmazásátjáró x-továbbított-a fejlécek?**
 
@@ -183,6 +189,21 @@ Nem, de Alkalmazásátjáró riasztást küldjön, amikor a küszöbérték elé
 
 Igen. Beállíthatja, hogy a kapcsolat megszakítása nélkül háttérkészletbeli tagok módosítása kiürítését. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy konfigurálható időkorlátja lejár. Vegye figyelembe, hogy a kapcsolat befejeződik az aktuális üzenetsoroktól kapcsolatok csak vár kiürítését. Alkalmazásátjáró nem tehát tudatában alkalmazás munkamenet-állapot.
 
+**Q. Mik azok a alkalmazás átjáró mérete?**
+
+Az Application Gateway jelenleg három méretben érhető el: **Kicsi**, **Közepes** és **Nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+
+Előfizetésenként 50 alkalmazásátjárót hozhat létre, egyenként 10 példánnyal. Egy alkalmazásátjáró 20 HTTP-figyelőből állhat. Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+Az alábbi táblázatban az egyes SSL-alapú kiszervezéshez engedélyezett alkalmazásátjárókhoz tartozó átlagos átviteli sebességek szerepelnek:
+
+| Átlagos háttér-lap válasza mérete | Kicsi | Közepes | Nagy |
+| --- | --- | --- | --- |
+| 6KB |7,5 Mbps |13 Mbps |50 Mbps |
+| 100KB |35 Mbps |100 Mbps |200 Mbps |
+
+> [!NOTE]
+> Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
 
 **Q. Módosítható példányméretének a közepes vagy nagyméretű megszakítása nélkül?**
 

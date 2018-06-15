@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 06/12/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: bbeceb868466de42cfdffa3991983ac906cb98aa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323731"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568126"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
@@ -68,7 +68,6 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | Terheléselosztók | 100 | 1000 |
-| Háttér-erőforrások / Load Balancer * | 50 | 150 |
 | Basic erőforrásonként szabályok | 150 | 250 |
 | Standard erőforrásonként szabályok | 1250 | 1500 |
 | IP-konfiguráció / szabályok | 299 |299 |
@@ -76,9 +75,10 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Előtérbeli IP-konfigurációk, a Standard | 10 | 600 |
 | A háttérkészlet, Basic | 100, egy rendelkezésre állási csoport | 100, egy rendelkezésre állási csoport |
 | Háttérkészlet, a Standard | 1000, egyetlen virtuális hálózat | 1000, egyetlen virtuális hálózat |
+| Terheléselosztó Standard / háttér erőforrások &ast; | 50 | 150 |
 | Magas rendelkezésre ÁLLÁSÚ portok, a Standard | belső előtér / 1 | belső előtér / 1 |
 
-* Legfeljebb 150 erőforrások, az önálló virtuális gépek, a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok tetszőleges kombinációját.
+&ast; Legfeljebb 150 erőforrások, az önálló virtuális gépek, a rendelkezésre állási készletek és a virtuálisgép-méretezési csoportok tetszőleges kombinációját.
 
 Ha meg szeretné növelni a korlátozások alapértelmezett értékeit, [lépjen kapcsolatba az ügyfélszolgálattal](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 

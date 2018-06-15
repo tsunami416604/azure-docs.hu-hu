@@ -19,6 +19,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30261412"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurálja a meglévő probléma felügyeleti rendszerekhez használatával olyan webhook állapotával kapcsolatos értesítésekre
 

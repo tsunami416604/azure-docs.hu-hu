@@ -11,6 +11,7 @@
 ### [Konfigurálás a ServiceNow segítségével](service-health-alert-webhook-servicenow.md)
 ### [Konfigurálás a PagerDuty segítségével](service-health-alert-webhook-pagerduty.md)
 ### [Konfigurálás az OpsGenie segítségével](service-health-alert-webhook-opsgenie.md)
+### [Állapotesemények lekérése a REST használatával](service-health-rest.md)
 # További források
 ## [Gyakori kérdések](resource-health-faq.md)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)

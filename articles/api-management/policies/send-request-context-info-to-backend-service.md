@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33933084"
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>Kérelem környezeti információkat küldeni a háttérszolgáltatáshoz
 

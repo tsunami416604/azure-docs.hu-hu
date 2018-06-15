@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30196790"
 ---
 > [!NOTE]
 > A VPN-átjárók új termékváltozatai (VpnGw1, VpnGw2 és VpnGw3) kizárólag a Resource Manager-alapú üzemi modell esetében támogatottak. Klasszikus virtuális hálózatok továbbra is a régi (örökölt) termékváltozatok használja.

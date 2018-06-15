@@ -1,34 +1,36 @@
 ---
-title: "Azure Active Directory tartományi szolgáltatások: A felügyelt tartományok szinkronizálás |} Microsoft Docs"
-description: "Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz szinkronizációja ismertetése"
+title: 'Azure Active Directory tartományi szolgáltatások: A felügyelt tartományok szinkronizálás |} Microsoft Docs'
+description: Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz szinkronizációja ismertetése
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 5c324ea5e268d97134202eff6e96764bedc6ca75
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2449c8178f726eacad089debeae6cf1db56cc67a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698441"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Szinkronizálás az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 A következő ábra bemutatja, hogyan szinkronizálási működik az Azure AD tartományi szolgáltatások felügyelt tartományok.
 
-![Az Azure AD tartományi szolgáltatásokra szinkronizált topológiákkal](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![Szinkronizálás az Azure AD tartományi szolgáltatásokban](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
 ## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>Szinkronizálás a helyszíni címtárból az Azure AD-bérlő
 Az Azure AD Connect szinkronizálási szolgáltatás felhasználói fiókok szinkronizálása, csoporttagságok használatával, és a hitelesítő adatok csak az Azure AD-bérlő. Attribútumok a felhasználói fiókok például az egyszerű Felhasználónevet és a helyszíni biztonsági azonosító (security Identifier azonosítót) szinkronizálja a rendszer. Ha az Azure AD tartományi szolgáltatásokat használja, az NTLM és Kerberos hitelesítéshez szükséges a hagyományos hitelesítő kivonatokat is szinkronizálódnak az Azure AD-bérlő.
 
-Késleltetve visszaírt állítja be, ha az Azure AD-címtár változásokat szinkronizálódnak a helyszíni Active Directoryban. Például, ha módosítja a jelszavát, az Azure AD önkiszolgáló jelszó-módosítási funkciókat használ, a módosított jelszó frissül a helyszíni Active Directory-tartománynak.
+Késleltetve visszaírt állítja be, ha az Azure AD-címtár változásokat szinkronizálódnak a helyszíni Active Directoryban. Például, ha módosítja a jelszavát, az Azure AD, önkiszolgáló jelszókezelés használatával, a módosított jelszó frissül a helyszíni Active Directory-tartománynak.
 
 > [!NOTE]
 > Mindig az Azure AD Connect legújabb verziójának segítségével ellenőrizze, hogy az összes ismert hibákat tartalmaz.
@@ -36,21 +38,21 @@ Késleltetve visszaírt állítja be, ha az Azure AD-címtár változásokat szi
 >
 
 ## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Az Azure AD-bérlő szinkronizálását a felügyelt tartományra
-Felhasználói fiókok, csoporttagságot és hitelesítő kivonatokat alapján szinkronizálja az Azure AD-bérlő az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. A szinkronizálási folyamat be nem automatikus. Nem kell konfigurálni, figyelheti vagy a szinkronizálási folyamat kezeléséhez. A könyvtár egyszeri kezdeti szinkronizálás befejezése után, általában a felügyelt tartományok megjelennek az Azure ad-ben végzett módosítások körülbelül 20 percet vesz igénybe. A szinkronizálás időköze jelszómódosítások vonatkozik, vagy attribútumok az Azure ad-ben végrehajtott módosításokat.
+Felhasználói fiókok, csoporttagságot és hitelesítő kivonatokat alapján szinkronizálja az Azure AD-bérlő az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz. A szinkronizálási folyamat be nem automatikus. Nem kell konfigurálni, figyelheti vagy a szinkronizálási folyamat kezeléséhez. Kezdeti szinkronizálás az Azure AD-címtárban található objektumok száma függően néhány néhány órát is tarthat. Kezdeti szinkronizálás befejeződése után frissítenie kell a felügyelt tartományok az Azure AD-ben végzett módosításokat körülbelül 20-30 percet vesz igénybe. A szinkronizálás időköze jelszómódosítások vonatkozik, vagy attribútumok az Azure ad-ben végrehajtott módosításokat.
 
 A szinkronizálási folyamat akkor is egy-way/egyirányú jellegűek. A felügyelt tartományok írásvédett nagymértékben kivételével minden egyéni szervezeti egységek hoz létre. Ezért nem módosíthatja felhasználói attribútumok, a felhasználói jelszavakat és a csoporttagságot a felügyelt tartományon belül. Ennek eredményeképpen nincs nincs fordított szinkronizálás módosításait a felügyelt tartomány vissza az Azure AD-bérlő.
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Egy helyszíni Többerdős környezetben való szinkronizálásra
 Számos szervezet rendelkezik több fiókerdővel álló elég bonyolult a helyszíni identitás-infrastruktúra. Az Azure AD Connect szinkronizálási felhasználók, csoportok és hitelesítő kivonatokat a többerdős környezetben, az Azure AD-bérlő támogatja.
 
-Ezzel szemben az Azure AD-bérlő egy sokkal egyszerűbb, és strukturálatlan névtér. Ahhoz, hogy a felhasználók számára az Azure AD által védett alkalmazások megbízható hozzáférése, UPN-ütközések feloldása különböző erdőkben találhatók a felhasználói fiókok között. Az Azure AD tartományi szolgáltatások által kezelt tartomány aránylik zárja be az Azure AD-bérlő hasonlóságot. Ezért a felügyelt tartományok látható egy egyszerű Szervezetiegység-struktúrája. Összes felhasználók és csoportok a "AADDC felhasználók" tárolóban, függetlenül a helyszíni tartományban vagy erdőben, ahol azok lettek szinkronizálva a tárolják. Előfordulhat, hogy konfigurálta a hierarchikus OU helyszíni struktúra. A felügyelt tartományok azonban továbbra is rendelkezik egy egyszerű strukturálatlan Szervezetiegység-struktúrájától.
+Ezzel szemben az Azure AD-bérlő egy sokkal egyszerűbb, és strukturálatlan névtér. Ahhoz, hogy a felhasználók számára az Azure AD által védett alkalmazások megbízható hozzáférése, UPN-ütközések feloldása különböző erdőkben találhatók a felhasználói fiókok között. Az Azure AD tartományi szolgáltatások által kezelt tartomány aránylik zárja be az Azure AD-bérlő hasonlóságot. A felügyelt tartományok látható egy egyszerű Szervezetiegység-struktúrája. Minden felhasználói fiókokat és csoportokat a "AADDC felhasználók" tárolóban, annak ellenére, hogy a különböző helyszíni tartományok és erdők szinkronizált tárolják. Előfordulhat, hogy konfigurálta a hierarchikus OU helyszíni struktúra. A felügyelt tartományok még egy egyszerű strukturálatlan Szervezetiegység-struktúrájától.
 
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>Kizárások - mi nincs szinkronizálva a felügyelt tartományra
 A következő objektumok és attribútumok szinkronizálása nem Azure AD-bérlőn vagy a felügyelt tartományok:
 
 * **Kizárt attribútumok:** dönthet, ha szeretne kizárni a bizonyos attribútumok szinkronizálása az Azure AD-bérlő az Azure AD Connect használatával a helyszíni tartományból. Ezek az attribútumok kizárt nem érhetők el a kezelt tartományban.
 * **Csoportházirendek:** konfigurálva abban a tartományban, a helyszíni csoportházirendek nincsenek szinkronizálva. a felügyelt tartományra.
-* **SYSVOL-megosztás:** hasonlóan a tartalmát a helyi tartomány, a SYSVOL-megosztás nincsenek szinkronizálva. a felügyelt tartományra.
+* **SYSVOL-megosztás:** hasonlóan a tartalmát a helyi tartomány, a Sysvol-megosztás nincsenek szinkronizálva. a felügyelt tartományra.
 * **Számítógép-objektumok:** számítógép-objektumok esetében a helyi tartományhoz csatlakozó számítógépek nincsenek szinkronizálva a felügyelt tartományra. Ezeket a számítógépeket a felügyelt tartományok bizalmi kapcsolattal rendelkezik, és nem csak a helyi tartományhoz tartozik. A felügyelt tartományok, a számítógép-objektumok csak olyan számítógépeken, explicit módon tartomány-csatlakozott a felügyelt tartományra található.
 * **A felhasználók és csoportok SidHistory attribútumok:** az elsődleges felhasználója és elsődleges csoport biztonsági azonosítói a helyi tartomány szinkronizálva van a felügyelt tartományra. Azonban a felhasználók és csoportok meglévő SidHistory attribútumok nincsenek szinkronizálva a helyszíni tartományból a felügyelt tartományra.
 * **Szervezeti egység (OU) struktúrák:** a helyszíni tartományi megadott szervezeti egységek ne szinkronizáljon a felügyelt tartományra. A felügyelt tartományok nincsenek két beépített szervezeti egységekhez. Alapértelmezés szerint a felügyelt tartományok rendelkezik egy egyszerű Szervezetiegység-struktúrája. De ki is [hozzon létre egy egyéni szervezeti Egységet a felügyelt tartományok](active-directory-ds-admin-guide-create-ou.md).
@@ -77,14 +79,14 @@ A következő táblázat bemutatja, hogyan adott attribútumok a felhasználói 
 | Az Azure AD-bérlő felhasználói attribútum | A felügyelt tartományok felhasználói attribútum |
 |:--- |:--- |
 | AccountEnabled |userAccountControl (beállítása vagy a bit ACCOUNT_DISABLED törlése) |
-| city |l csomag |
+| city |l |
 | Ország |CO |
-| Szervezeti egység |Szervezeti egység |
+| részleg |részleg |
 | displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
-| Beosztás |Cím |
-| mail |mail |
+| Beosztás |cím |
+| levelezés |levelezés |
 | mailNickname |Az msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName (néha lehet automatikusan generált) |
 | Mobileszköz |Mobileszköz |
@@ -107,11 +109,20 @@ A következő táblázat bemutatja, hogyan adott attribútumok csoport az Azure 
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName (néha lehet automatikusan generált) |
-| mail |mail |
+| levelezés |levelezés |
 | mailNickname |Az msDS-AzureADMailNickname |
 | objektumazonosító |Az msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
-| SecurityEnabled |GroupType |
+| securityEnabled |GroupType |
+
+## <a name="password-hash-synchronization-and-security-considerations"></a>Jelszó kivonatát szinkronizálási és biztonsági szempontok
+Ha engedélyezi az Azure AD tartományi szolgáltatások, az Azure AD-címtár hoz létre, és azok kivonatai NTLM és Kerberos kompatibilis formátumban tárolja. 
+
+A meglévő felhőalapú felhasználói fiókokhoz mivel az Azure AD soha nem tárolja a tiszta szöveges jelszavak, ezek a kivonatok nem automatikusan generált. Ezért a Microsoft megköveteli [felhő-felhasználók a jelszavuk alaphelyzetbe állítása/módosítás](active-directory-ds-getting-started-password-sync.md) ahhoz, hogy azok kivonatai jön létre, és az Azure ad-ben tárolt. Az Azure AD tartományi szolgáltatások engedélyezése után az Azure AD-ben létrehozott felhő felhasználói fiókok azok kivonatai jön létre, és az NTLM és Kerberos kompatibilis formátumban tárolja. 
+
+A felhasználói fiókok szinkronizálása a helyszíni AD használata az Azure AD Connect szinkronizálása, kell [konfigurálása az Azure AD Connect szinkronizálása az NTLM és Kerberos kompatibilis formátumban jelszókivonatait](active-directory-ds-getting-started-password-sync-synced-tenant.md).
+
+Az NTLM és Kerberos kompatibilis jelszókivonatait a titkosított módon mindig tárolja a Azure AD-ben. Ezek a kivonatok úgy, hogy csak az Azure AD tartományi szolgáltatások hozzáfér a visszafejtési kulcs titkosított. Más szolgáltatás vagy az Azure AD-összetevő nem a visszafejtési kulcs esetében hozzáfér. A titkosítási kulcsai egyedi / Azure AD-bérlő. Azure AD tartományi szolgáltatások szinkronizálja azokat a tartományvezérlők, a felügyelt tartományok azok kivonatai. Ezek a kivonatok jelszó tárolása és védett tartományvezérlőkön ezek hogyan jelszavak tárolása és a Windows Server AD tartományvezérlőkön védett hasonló. A lemezek, a felügyelt tartományvezérlőkön vannak titkosítása.
 
 ## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>Az Azure AD-bérlő a felügyelt tartomány nem szinkronizált objektumok
 Ez a cikk az előző szakaszban leírtak nincs a felügyelt tartományok vissza az Azure AD-bérlő a Nincs szinkronizálás. Előfordulhat, hogy [hozzon létre egy egyéni szervezeti egységet (OU)](active-directory-ds-admin-guide-create-ou.md) a kezelt tartományban. Létrehozhat további, az egyéb szervezeti egységek, felhasználók, csoportok vagy ezeket egyéni szervezeti egységek belül szolgáltatásfiókok. Nincs egyéni szervezeti egységek belül létrehozott objektumok lettek szinkronizálva vissza az Azure AD-bérlő. Ezek az objektumok csak a felügyelt tartományon belüli használatra érhetők el. Ezért ezek az objektumok ne legyenek láthatók, Azure AD Graph API-t, az Azure AD PowerShell-parancsmagok használatával, vagy használja az Azure AD felügyeleti felhasználói Felületét.

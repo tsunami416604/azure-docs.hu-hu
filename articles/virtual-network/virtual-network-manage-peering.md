@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 9a8e4e95f2f4de6475243de196519d94e87a9297
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85919ccdc13ab363b32e593159abe54498ca98c9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702033"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy törlése a virtuális hálózati társviszony-létesítés
 
@@ -31,7 +32,7 @@ Ez a cikk bármely szakaszának lépéseit befejezése előtt hajtsa végre a k�
 
 - Ha még nem rendelkezik Azure-fiókja, regisztráljon egy [ingyenes próbafiók](https://azure.microsoft.com/free).
 - A portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) esetében használható.
-- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ebben az oktatóanyagban az Azure PowerShell modul verziója 5.7.0 szükséges vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtat PowerShell, is futtatásához szükséges `Connect-AzureRmAccount` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszony-létesítést, használható az Azure VPN-kapcsolat létrehozásához.
+- Ha a PowerShell-parancsokkal ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/powershell), vagy a PowerShell futtatásával a számítógépről. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtat PowerShell, is futtatásához szükséges `Connect-AzureRmAccount` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszony-létesítést, használható az Azure VPN-kapcsolat létrehozásához.
 - Azure parancssori felület (CLI) parancsok használata ebben a cikkben a feladatokat, vagy futtassa a parancsokat a [Azure Cloud rendszerhéj](https://shell.azure.com/bash), vagy a CLI-t a számítógépen való futtatásával. Ez az oktatóanyag az Azure parancssori felület 2.0.31 verziója szükséges, vagy később. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure parancssori felület, is futtatásához szükséges `az login` egy olyan fiókkal, amely rendelkezik a [szükséges engedélyek](#permissions) társviszony-létesítést, használható az Azure VPN-kapcsolat létrehozásához.
 
 Hozzá kell rendelni a fiókot, jelentkezzen be, vagy csatlakozzon az Azure-ba, a [hálózat közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
@@ -115,6 +116,7 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációra, de nem m
     - A virtuális hálózatok bármely Azure nyilvános felhőjében régióban, de nem Azure nemzeti felhők létezhet.
     - Egy virtuális hálózatán lévő erőforrásokat nem lehet kommunikálni az Azure belső terheléselosztót a peered virtuális hálózat IP-címét. A terheléselosztó és az erőforrásokat, amelyek kommunikálni az azonos virtuális hálózatban kell lennie.
     - Nem lehet távoli átjárók használatára, vagy átjáró átvitel engedélyezése. Távoli átjárók használatára, vagy engedélyezze az átjáró átvitel során, a társviszony-létesítés mindkét virtuális hálózat ugyanabban a régióban léteznie kell. 
+    - Kommunikáció globálisan társítottak, virtuális hálózatok használatával a következő virtuális gép esetében nem támogatott: [nagy teljesítményű számítási](../virtual-machines/windows/sizes-hpc.md) és [GPU](../virtual-machines/windows/sizes-gpu.md). Ez magában foglalja, H, NC, portok HV, NCv2, NCv3 és ND adatsorozat virtuális gépek.
 - A virtuális hálózatok az ugyanazon vagy másik előfizetést is lehet. Ha a virtuális hálózatok különböző előfizetésekhez, mindkét előfizetéshez kell tartoznia, az azonos Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Használhatja a [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) két virtuális hálózatokat különböző előfizetésekhez tartozó másik Active Directory-bérlők kapcsolódni.
 - A virtuális hálózatok partnert, rendelkeznie kell egymást nem átfedő IP-címterületeken.
 - Nem adja hozzá a címtartományt, vagy nem címtartomány törlése egy virtuális hálózat címtartományán, ha egy virtuális hálózathoz nincsenek társviszonyban, egy másik virtuális hálózathoz. Vegye fel vagy távolítsa el a címtartomány, törli, hozzáadásához vagy távolítsa el a-címtartományokat, majd hozza újra létre a társviszony-létesítést. -Címtartományokat adja hozzá, vagy távolítsa el a címtartomány a virtuális hálózatok, lásd: [virtuális hálózatok kezeléséhez](manage-virtual-network.md).
@@ -161,6 +163,6 @@ Ha a fiók nincs hozzárendelve egyik korábbi szerepkör, akkor hozzá kell ren
     |Egy Resource Manager, egy klasszikus  |[Ugyanaz](create-peering-different-deployment-models.md)|
     |                                   |[Különböző](create-peering-different-deployment-models-subscriptions.md)|
 
-* További információ a [küllős hálózati topológiák](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering) létrehozásáról
+* További információ a [küllős hálózati topológiák](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json) létrehozásáról
 * Hozzon létre egy virtuális hálózati társviszony-létesítés használatával [PowerShell](powershell-samples.md) vagy [Azure CLI](cli-samples.md) parancsfájlok, vagy az Azure használatával [Resource Manager-sablonok](template-samples.md)
 * Létrehozása és alkalmazása [Azure házirend](policy-samples.md) virtuális hálózatok

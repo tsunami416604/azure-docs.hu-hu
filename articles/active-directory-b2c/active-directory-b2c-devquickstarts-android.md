@@ -1,26 +1,25 @@
 ---
-title: 'Az Azure Active Directory B2C: Tokenbeolvasás Android alkalmazással |} Microsoft Docs'
+title: Egy Android-alkalmazás használatával az Azure Active Directory B2C tokenbeolvasás |} Microsoft Docs
 description: Ez a cikk bemutatja, hogyan, amely Azure Active Directory B2C AppAuth használ a felhasználói identitások kezelésére, és hitelesíti a felhasználókat, Android-alkalmazás létrehozásához.
 services: active-directory-b2c
-documentationcenter: android
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: mobile-android
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: davidmu
-ms.openlocfilehash: 6c4c9359571882fbbea4e7701305e30e0f49f460
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 7c0a72e03eaa8d12c26b1bbbf6a05b4d94e72358
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709906"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Az Azure AD B2C: Bejelentkezés Android alkalmazás segítségével
 
-A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Így a fejlesztők bármilyen típusú kódtárat integrálhatnak szolgáltatásainkkal. A fejlesztők támogatási be más könyvtárakkal a platformot, azt korábban írt bemutatják, hogyan lehet kapcsolódni a Microsoft identity platform 3. fél szalagtárak konfigurálása a jelen szoftverhez hasonló néhány forgatókönyvek. Az [RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) használó legtöbb kódtár képes lesz kapcsolódni a Microsoft identitásplatformjához.
+A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Ezeknek a szabványoknak lehetővé teszi, hogy kihasználja az Azure Active Directory B2C-vel integrálni kívánt függvénytárat. Használatához nyújtanak segítséget más szalagtárak, a jelen szoftverhez hasonló a forgatókönyv segítségével bemutatják, hogyan lehet kapcsolódni a Microsoft identity platform 3. fél szalagtárak konfigurálása. A legtöbb tárak, amelyek megvalósítják az [a RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) csatlakozni tud-e a Microsoft Identity platform.
 
 > [!WARNING]
 > A Microsoft nem biztosít azoknak a 3. fél szalagtárak, és nem végrehajtva a tárak áttekintése. Ez a minta, amely tesztelték AppAuth nevű alapszintű forgatókönyvekben kompatibilisek-e az Azure AD B2C 3. fél szalagtárat használ. A könyvtár nyílt forráskódú projekt problémákat és funkciókra vonatkozó kérések legyenek irányítva. Ellenőrizze a [Ez a cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) további információt.  
@@ -116,7 +115,7 @@ AuthorizationServiceConfiguration config =
 // perform the auth request...
 ```
 
-### <a name="authorizing"></a>Engedélyezés folyamatban
+### <a name="authorizing"></a>Engedélyezése
 
 Konfigurálja, vagy egy engedélyezési szolgáltatás konfigurációjának beolvasása után egy engedélyezési-kérelem lehet létrehozni. A kérelem létrehozásához szüksége lesz a következő információkat:
 
@@ -136,5 +135,5 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 
 Tekintse meg a [AppAuth útmutató](https://openid.github.io/AppAuth-Android/) való fejezze be a folyamatot. Ha egy működő alkalmazást gyorsan megismerkedhet van szüksége, tekintse meg [a minta](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Kövesse a [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) a saját Azure AD B2C konfigurációs megadását.
 
-Azt mindig nyitva a visszajelzések és tanácsok! Ha bármilyen nehézségbe ütközik az ebben a témakörben, vagy az ehhez a tartalomhoz javítására állnak, azt fogadjuk visszajelzéseit az oldal alján. A szolgáltatás kéréseket, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Azt mindig nyitva a visszajelzések és tanácsok! Ha bármilyen nehézségbe ütközik a cikket, vagy az ehhez a tartalomhoz javítására állnak, azt fogadjuk visszajelzéseit az oldal alján. A szolgáltatás kéréseket, hozzáadhatja őket a [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

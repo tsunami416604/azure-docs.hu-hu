@@ -1,10 +1,10 @@
 ---
-title: "Az Azure Site Recovery folyamat kiszolgáló kezelése |} Microsoft Docs"
-description: "Ez a cikk ismerteti a VMware virtuális és fizikai kiszolgálók replikálása az Azure Site Recovery beállítása folyamat kiszolgáló kezeléséhez."
+title: Az Azure Site Recovery folyamat kiszolgáló kezelése |} Microsoft Docs
+description: Ez a cikk ismerteti a VMware virtuális és fizikai kiszolgálók replikálása az Azure Site Recovery beállítása folyamat kiszolgáló kezeléséhez.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
-editor: 
+editor: ''
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812739"
 ---
 # <a name="manage-process-servers"></a>Folyamat-kiszolgálók kezelése
 

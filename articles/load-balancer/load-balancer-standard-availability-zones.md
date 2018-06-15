@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30322794"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard terheléselosztó és a rendelkezésre állási zónák
 

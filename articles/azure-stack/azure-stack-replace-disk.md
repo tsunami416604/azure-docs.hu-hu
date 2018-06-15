@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30311321"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Egy Azure verem fizikai lemezének cseréje
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076615"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Red Hat-alapú virtuális gép előkészítése Azure verem
 Ebben a cikkben, megtudhatja, hogyan készíti elő a Red Hat Enterprise Linux (RHEL) virtuális gépek Azure-verem használható. Ebben a cikkben ismertetett RHEL verziók az alábbiak 7.1 +. A hipervizorok előkészítése az ebben a cikkben ismertetett a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware.

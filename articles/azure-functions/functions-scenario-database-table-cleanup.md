@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30231276"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Használja az Azure Functions egy Azure SQL adatbázishoz való kapcsolódáshoz
 Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely egy Azure SQL-adatbázis egy tábla sorainak a szükségtelenné vált az Azure Functions használatával. Az új C# parancsfájl függvény az Azure-portálon előre definiált időzítő eseményindító sablon alapján jön létre. Ez a forgatókönyv támogatása érdekében is meg kell adni egy adatbázis-kapcsolati karakterláncot, a függvény alkalmazás Alkalmazásbeállítás. Ez a forgatókönyv használ egy tömeges művelet az adatbázison. 

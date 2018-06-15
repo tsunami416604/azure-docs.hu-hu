@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246355"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Virtuálisgép-méretezési csoport automatikus méretezése a PowerShell-lel
 Ez a szkript egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot hoz létre, illetve gazdagépalapú mérőszámok használatával automatikusan elvégzi a méretezést, amely a CPU terhelésének változásaihoz igazodik.

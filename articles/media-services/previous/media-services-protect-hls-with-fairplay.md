@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790684"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>A tartalom Apple FairPlay vagy a Microsoft PlayReady HLS védelme
 Az Azure Media Services lehetővé teszi, hogy dinamikusan titkosítani a HTTP-Live Streaming (HLS) a következő formátum használatával:  

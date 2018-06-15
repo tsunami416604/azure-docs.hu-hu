@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713694"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection által észlelt biztonsági rések
 Biztonsági rések a környezetben, amely is kihasználható egy támadó gyengeségei miatt. Azt javasoljuk, hogy a szervezet meghatározott biztonsági előírások javítása érdekében a biztonsági rések cím, és hogy a támadók kihasználva őket.
@@ -34,20 +36,20 @@ A következő szakaszokban Identity Protection által jelentett biztonsági rés
 ## <a name="multi-factor-authentication-registration-not-configured"></a>Nincs konfigurálva a többtényezős hitelesítésre való regisztráció
 A biztonsági rés segít a szervezet Azure multi-factor Authentication központi telepítésére. 
 
-Az Azure multi-factor Authentication hitelesítést biztosít egy második biztonsági szintként, felhasználói hitelesítés. Az segítségével megakadályozhatja a adatokhoz és alkalmazásokhoz való hozzáférés mellett egyszerű bejelentkezési folyamatot a felhasználó igény szerint. Erős hitelesítés, könnyen ellenőrzési lehetőségek széles keresztül biztosítja – a telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítés vagy ellenőrző kód és a 3. fél OATH-tokeneket.
+Az Azure multi-factor Authentication hitelesítést biztosít egy második biztonsági szintként, felhasználói hitelesítés. Az segítségével megakadályozhatja a adatokhoz és alkalmazásokhoz való hozzáférés mellett egyszerű bejelentkezési folyamatot a felhasználó igény szerint. Erős hitelesítés, könnyen ellenőrzési lehetőségek széles keresztül biztosítja – a telefonhívás, szöveges üzenet vagy mobilalkalmazás értesítés vagy ellenőrző kód és a harmadik féltől származó OATH-tokeneket.
 
 Azt javasoljuk, hogy a felhasználói bejelentkezések Azure multi-factor Authentication hitelesítés szükséges. A multi-factor authentication kulcsfontosságú szerepet játszik a kockázat-alapú feltételes hozzáférési házirendek Identity Protection keresztül érhető el.
 
-További részletekért lásd: [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md)
+További információkért lásd: [Mi az Azure multi-factor Authentication?](authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>Nem kezelt felhőalkalmazások
 A biztonsági rés segít azonosítani a szervezet nem felügyelt felhőalkalmazások.
 
 A modern vállalatok számára az informatikai részleg gyakran nem tudnak a a szervezethez tartozó felhasználók használnak végezhesse a munkáját a felhőalapú alkalmazásokhoz. Legyen könnyen látható, hogy miért a rendszergazdák jogosulatlan hozzáférés a vállalati adatokat, lehetséges adatszivárgás és egyéb biztonsági kockázatok kétségei vannak. 
 
-Azt javasoljuk, hogy a szervezet üzembe a Cloud App Discovery nem felügyelt felhőalapú alkalmazások felderítésére, valamint hogyan kezelhetők ezek az alkalmazások az Azure Active Directoryval.
+Azt javasoljuk, központi telepítéséhez a Cloud App Discovery nem felügyelt felhőalapú alkalmazások felderítésére, valamint hogyan kezelhetők ezek az alkalmazások az Azure Active Directoryval.
 
-További részletekért lásd: [keresése a nem felügyelt felhőalapú alkalmazásokhoz, a Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+További információkért lásd: [keresése a nem felügyelt felhőalapú alkalmazásokhoz, a Cloud App Discovery](manage-apps/cloud-app-discovery.md).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>A Privileged Identity Management biztonsági riasztásai
 A biztonsági rés segít felderíteni, és oldja meg a szervezet a kiemelt jogosultságú identitások kapcsolatos riasztások.  
@@ -56,7 +58,7 @@ Ahhoz, hogy a felhasználók a jogosultságokhoz kötött műveletek végrehajt�
 
 Azt javasoljuk, hogy a szervezet Azure AD Privileged Identity Management használ kezelése, szabályozása és figyelése emelt szintű identitások és az Azure AD-erőforrások elérését, valamint más Microsoft online szolgáltatások, például az Office 365-öt vagy a Microsoft Intune.
 
-További részletekért lásd: [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
+További információkért lásd: [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 ## <a name="see-also"></a>Lásd még
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

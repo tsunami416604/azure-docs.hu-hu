@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34307437"
 ---
 A B sorozatnak VM termékcsalád lehetővé teszi annak meghatározását, mely Virtuálisgép-méretet a megfelelő alap szint teljesítmény a munkaterhelés a lehetőséget nyújt a CPU-teljesítmény az Intel® Broadwell E5-2673 v4 legfeljebb 100 %-os kapacitásnövelés 2.3 GHz-es, vagy egy Intel® Haswell 2.4 GHz -es E5-2673 v3 processzor vCPU.
 

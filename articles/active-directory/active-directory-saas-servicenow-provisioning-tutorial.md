@@ -14,23 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 88505126389f51f59cf0538da8b72139f86e58d5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e64cc232aa01a5619a55290f9b07421165a6d5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698730"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Oktatóanyag: ServiceNow konfigurálása az automatikus felhasználó-átadási az Azure Active Directoryval
 
 Ez az oktatóanyag célja a lépéseket kell elvégeznie a ServiceNow és az Azure AD automatikus kiépítése és leépíti a felhasználói fiókok Azure ad-ServiceNow mutatjuk be.
 
+> [!NOTE]
+> Ez az oktatóanyag leírja egy összekötőt, az Azure AD-felhasználó kiépítési Service platformra épül. Ez a szolgáltatás funkciója, hogyan működik, és gyakran ismételt kérdések fontos tudnivalókat tartalmaz [felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](./active-directory-saas-app-provisioning.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban leírt forgatókönyv feltételezi, hogy már rendelkezik a következő elemek:
+Az Azure AD-integráció konfigurálása a ServiceNow, a következőkre van szükség:
 
-*   Az Azure Active directory-bérlő.
-*   A munkahelyén vagy oktatási célokra ServiceNow ServiceNow egy érvényes bérlőt kell rendelkeznie. Egy ingyenes próbafiók vagy a szolgáltatás segítségével.
-*   Egy felhasználói fiókot a ServiceNow Team rendszergazdai engedélyekkel.
+- Az Azure AD szolgáltatásra
+- A ServiceNow, egy példány vagy bérlő ServiceNow, Calgary verzió vagy újabb
+- A ServiceNow expressz, ServiceNow kifejezett, Helsinki verzió példányának vagy újabb
+
+> [!NOTE]
+> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+
+Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+
+- Ne használja az éles környezetben, nem szükséges.
+- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+
 
 ## <a name="assigning-users-to-servicenow"></a>A ServiceNow felhasználók hozzárendelése
 

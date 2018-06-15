@@ -3,9 +3,17 @@ Az Azure virtuális gépek több adatlemez csatolását támogatták. Ez a cikk 
 > [!IMPORTANT]
 > Az optimális teljesítmény érdekében korlátozza a erősen túlterhelt lehetséges szabályozás elkerülése érdekében a virtuális géphez csatolt lemezek számát. A csatlakoztatott lemezek magas nem használhatók egyszerre, ha a virtuális gép lemezek nagyobb számú is támogatja.
 
-* **Az Azure Managed lemezek:** a lemez felügyelt lemezek határa régiónként, valamint minden lemez típusa. A maximális száma, valamint az alapértelmezett határérték 10 000 felügyelt lemezek régiónként és lemez típusonkénti az előfizetéshez. Például létrehozhat legfeljebb 10 000 standard szintű felügyelt lemez és a is 10 000 prémium által kezelt lemezeken régióban, előfizetésenként.
+* **Az Azure által kezelt lemezeken:** 
 
-    Felügyelt pillanatfelvételek és lemezképeket, csökkenti a felügyelt lemezek korlátot.
+> | Erőforrás | Alapértelmezett korlát | Felső korlát |
+> | --- | --- | --- |
+> | Standard Managed Disks | 10,000 | 50,000 |
+> | Standard SSD Managed Disks | 10,000 | 50,000 |
+> | Premium Managed Disks | 10,000 | 50,000 |
+> | Standard_LRS pillanatképek | 10,000 | 50,000 |
+> | Standard_ZRS pillanatképek | 10,000 | 50,000 |
+> | Premium_LRS pillanatképek | 10,000 | 50,000 |
+> | Felügyelt képre | 10,000 | 50,000 |
 
 * **Standard szintű tárfiókok esetén:** A Standard szintű tárfiókok összesen legfeljebb 20 000 IOPS kérelemaránnyal rendelkeznek. A Standard szintű tárfiókokon az összes virtuálisgép-lemezen lévő teljes IOPS nem léphet túl ezen a korláton.
   

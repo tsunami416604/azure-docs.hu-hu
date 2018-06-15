@@ -1,13 +1,13 @@
 ---
-title: "Alakítsa át a Windows rendszerű virtuális gép nem felügyelt lemezekből felügyelt - Azure felügyelt lemezek |} Microsoft Docs"
-description: "A Windows virtuális gépek átalakítása nem felügyelt lemezekről történő által kezelt lemezeken a Resource Manager üzembe helyezési modellben a PowerShell használatával"
+title: Alakítsa át a Windows rendszerű virtuális gép nem felügyelt lemezekből felügyelt - Azure felügyelt lemezek |} Microsoft Docs
+description: A Windows virtuális gépek átalakítása nem felügyelt lemezekről történő által kezelt lemezeken a Resource Manager üzembe helyezési modellben a PowerShell használatával
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29804215"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Alakítsa át a Windows rendszerű virtuális gép nem felügyelt lemezekből felügyelt
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30264030"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Hozzon létre egy nyilvános terheléselosztó IPv6 az Azure Resource Manager Azure parancssori felület használatával
 

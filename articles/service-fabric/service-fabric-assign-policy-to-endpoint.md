@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: f9de8d213d11a8ccb3ffff484a67560d9e2abe77
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 33d6d83d4dcd0ec9bebf8d4197684e0e52c48ac5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701318"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Rendelje hozzá a biztonsági házirend HTTP és HTTPS-végpontok
 Ha egy futtató házirend alkalmazása, és a szolgáltatás jegyzékfájl deklarálja a HTTP-végpont erőforrást, meg kell adnia egy **SecurityAccessPolicy**.  **SecurityAccessPolicy** biztosítja, hogy ezeket a végpontokat rendelt portok megfelelően korlátozódik, amely a szolgáltatás fut, a felhasználói fiók. Ellenkező esetben **http.sys** nem rendelkezik hozzáféréssel a szolgáltatáshoz, és sikertelen hívások kapott az ügyféltől. A következő példa a Customer1 fiók vonatkozik nevű végpont **EndpointName**, amely azt teszi teljes körű hozzáférési jogosultságokat.
@@ -42,6 +43,10 @@ Egy HTTPS-végpont is utalhat vissza az ügyfélnek a tanúsítvány neve. A tan
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
 ```
+
+> [!WARNING] 
+> HTTPS használata esetén ne használja az azonos port és telepített ugyanahhoz a csomóponthoz tartozó különböző szolgáltatáspéldány (amely független az alkalmazás) tanúsítvány. Két különböző szolgáltatások ugyanazt a portot más alkalmazás példányát használja a frissítés frissítési hibát eredményez. További információkért lásd: [frissítés, a HTTPS-végpontnak több alkalmazások ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 A következő lépésekkel olvassa el a következő cikkeket:

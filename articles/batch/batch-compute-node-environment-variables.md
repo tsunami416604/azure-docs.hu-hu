@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312701"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch számítási csomópont környezeti változók
 A [Azure Batch szolgáltatás](https://azure.microsoft.com/services/batch/) állítja be az alábbi környezeti változókat a számítási csomópontok. Ezek a feladat parancssori parancsokat, és a Programok telepítése és a környezeti változók is hivatkozni, és parancsfájlok futtatásához a parancssorok.

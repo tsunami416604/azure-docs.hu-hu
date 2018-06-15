@@ -1,11 +1,11 @@
 ---
-title: "SQL Server-adatbázis áttelepítése SQL Server a virtuális gép |} Microsoft Docs"
-description: "Ismerje meg az SQL Server egy helyi felhasználói adatbázis áttelepítése egy Azure virtuális gépen."
+title: SQL Server-adatbázis áttelepítése SQL Server a virtuális gép |} Microsoft Docs
+description: Ismerje meg az SQL Server egy helyi felhasználói adatbázis áttelepítése egy Azure virtuális gépen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 00fd08c6-98fa-4d62-a3b8-ca20aa5246b1
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809437"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>SQL Server-adatbázis áttelepítése Azure-beli virtuális gépen futó SQL Serverre
 

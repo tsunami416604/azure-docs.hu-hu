@@ -19,6 +19,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29714671"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Az Azure API Management szolgáltatás a külső services használatával
 Az Azure API Management szolgáltatásban elérhető házirendek alapján csak a bejövő kérelem, a kimenő válasz és alapvető konfigurációs adatai hasznos munkahelyi számos teheti meg. Azonban tudnak kommunikálni az API Management külső szolgáltatások számos további lehetőségek megnyílik házirendek.

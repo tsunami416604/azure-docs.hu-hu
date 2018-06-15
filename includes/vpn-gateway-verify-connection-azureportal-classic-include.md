@@ -10,9 +10,10 @@ ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: cfdf7c723416471d733e2bc9c71e0f519020fbe6
 ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30196897"
 ---
 Az Azure Portalon a kapcsolatra lépve tekintheti meg a klasszikus virtuális hálózat VPN-átjárójának kapcsolati állapotát. Az alábbi lépések a kapcsolat megkeresését és ellenőrzését mutatják be.
 

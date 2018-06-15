@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204634"
 ---
 # <a name="model-an-application-in-service-fabric"></a>A Service Fabric alkalmazás minta
 Ez a cikk áttekintést nyújt az Azure Service Fabric alkalmazásmodell és hogyan adhat meg a kérelem és a service manifest-fájlok segítségével.

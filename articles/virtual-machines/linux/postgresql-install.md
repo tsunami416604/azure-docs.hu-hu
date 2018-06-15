@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30241011"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL szerepel egy speciális nyílt forráskódú adatbázis Oracle és DB2 hasonló. Ez magában foglalja a vállalati szolgáltatások, mint a teljes ACID megfelelőségi megbízható tranzakciós feldolgozást és több verzió egyidejűség-vezérlési. Például az ANSI SQL és az SQL/MED (beleértve a külső adatokat burkolók Oracle, MySQL, MongoDB és sok más) szabványokat is támogatja. Széles körben bővíthető támogatja a több mint 12 eljárási nyelveket, GIN és GiST indexek, térbeli adatokat, és több NoSQL-hasonló szolgáltatásokat JSON vagy kulcs-érték-alapú alkalmazások is.

@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2018
+ms.topic: conceptual
+ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 52b6489d14c016ce2efdd06614102a40651b94c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 525ad1c83a1982ae5b954b900c5a6c7086544c66
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700536"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>A Spark-tevékenység használata az Azure Data Factory adatok átalakítása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +51,6 @@ Ez a minta egy Spark tevékenység JSON-definícióból:
         },
         "rootPath": "adfspark\\pyFiles",
         "entryFilePath": "test.py",
-        "arguments": [ "arg1", "arg2" ],
         "sparkConfig": {
             "ConfigItem1": "Value"
         },
@@ -72,7 +72,7 @@ A következő táblázat a JSON-definícióból használt JSON-tulajdonságok:
 | linkedServiceName     | A HDInsight Spark csatolt szolgáltatás a Spark program fut. neve. A csatolt szolgáltatással kapcsolatos további tudnivalókért lásd: [összekapcsolt szolgáltatások számítási](compute-linked-services.md) cikk. | Igen      |
 | SparkJobLinkedService | Az Azure Storage társított szolgáltatás, amely tárolja a Spark feladat fájl, a függőségeket és a naplókat.  Ha nem ad meg egy értéket ehhez a tulajdonsághoz, a HDInsight-fürthöz társított tárolót használja a rendszer. Ez a tulajdonság csak lehet az Azure tárolás társított szolgáltatása. | Nem       |
 | rootPath              | Az Azure Blob-tároló és a Spark-fájlt tartalmazó mappát. A fájlnév pedig kis-és nagybetűket. Tekintse meg a gyökérmappa-szerkezetében (a következő szakaszban) szakasz ebben a mappában szerkezete vonatkozó további információért. | Igen      |
-| entryFilePath         | A gyökérmappában található azon a Spark kódcsomag relatív elérési útja. | Igen      |
+| entryFilePath         | A gyökérmappában található azon a Spark kódcsomag relatív elérési útja. A bejegyzés fájlnak kell lennie, vagy egy Python-fájl, vagy egy .jar fájlt. | Igen      |
 | Osztálynév             | Az alkalmazás Java/Spark fő osztály      | Nem       |
 | Argumentumok             | A Spark program parancssori argumentumokat listáját. | Nem       |
 | proxyUser             | A Spark program végrehajtásának megszemélyesíteni a felhasználói fiók | Nem       |

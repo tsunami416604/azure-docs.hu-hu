@@ -20,6 +20,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076921"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>A verem Azure storage-fiókok kezelése
 Útmutató: Azure-készletben található, helyreállítására és az üzleti igények alapján tárolási kapacitás visszaigényléséhez storage-fiókok kezelése.

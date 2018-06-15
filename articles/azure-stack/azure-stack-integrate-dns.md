@@ -1,6 +1,6 @@
 ---
-title: "Az Azure verem datacenter integrációs - DNS"
-description: "Útmutató: Azure verem DNS integrálása a DNS adatközpontot"
+title: Az Azure verem datacenter integrációs - DNS
+description: 'Útmutató: Azure verem DNS integrálása a DNS adatközpontot'
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733859"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Az Azure verem datacenter integrációs - DNS
 Az Azure verem végpontok hozzáférhetnek (`portal`, `adminportal`, `management`, `adminmanagement`stb.)  Azure külső-veremből a DNS-zónák Azure verem használni kívánt futtató DNS-kiszolgálók az Azure verem DNS-szolgáltatások integrálni kell.

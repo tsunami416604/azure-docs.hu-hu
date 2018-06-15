@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156908"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>A SAML-jogkivonat a vállalati alkalmazások az Azure Active Directoryban kiállított jogcímek testreszabása
 Ma az Azure Active Directory a legtöbb vállalati alkalmazás, így mindkét az Azure AD-alkalmazásgyűjtemény, valamint egyéni alkalmazások előre integrált alkalmazás támogatja a egyszeri bejelentkezéshez. Amikor egy felhasználó hitelesíti magát egy alkalmazást a Azure AD a SAML 2.0 protokoll segítségével, az Azure AD egy token küld az alkalmazás (HTTP POST). És ezt követően az alkalmazás ellenőrzi és használja a jogkivonatot a felhasználót a nem kér felhasználónevet és jelszót. Ezeket a SAML-jogkivonatokat a "jogcímek" néven ismert felhasználóval kapcsolatos információt tartalmazza.

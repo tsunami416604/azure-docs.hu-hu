@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33865935"
 ---
 # <a name="how-azure-multi-factor-authentication-works"></a>Azure multi-factor Authentication működése
 A kétlépéses ellenőrzést biztonságát a réteges megközelítésének rejlik. Jelentős kihívás a támadók számára a több hitelesítési tényezők veszélyeztetése mutatja be. Akkor is, ha egy támadó kezeli, és ismerje meg a jelszót, akkor nem használható a megbízható eszköz a birtokában nélkül is. 

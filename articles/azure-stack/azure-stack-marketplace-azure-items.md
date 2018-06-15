@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165247"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure verem használható az Azure piactéren elemek
 

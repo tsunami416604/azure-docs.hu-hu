@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790243"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Az Azure Media Indexer 2 előzetes verziójú médiafájlok indexelő
 ## <a name="overview"></a>Áttekintés

@@ -15,6 +15,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30235527"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban Azure parancssori felület használatával
 A parancssori felület (CLI) használatával lehet letölteni a PostgreSQL server hibanaplójában talál. Azonban tranzakciós naplók elérése nem támogatott. 
