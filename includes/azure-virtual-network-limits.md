@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.openlocfilehash: 7c7540a650d8726fb0a376788073968af6b48834
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568126"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35683032"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
@@ -50,7 +50,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Hálózati biztonsági csoportok (NSG) |100 |5000 |
 | NSG-ben szereplő NSG-szabályok |1000 ** |1000 |
 | IP-címek és egy biztonsági csoportot a cél- és a megadott tartományok |2000 |4000 |
-| Alkalmazásbiztonsági csoportok |200 |500 |
+| Alkalmazásbiztonsági csoportok |500 |3000 |
 | Biztonsági csoportok / IP-konfiguráció, egy hálózati adapter |10 |20 |
 | IP-konfigurációk alkalmazás biztonsági csoportonként |1000 |4000 |
 | Biztonsági csoportok belül a hálózati biztonsági csoport összes biztonsági szabály adható meg |50 |100 |

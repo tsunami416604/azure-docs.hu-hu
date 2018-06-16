@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 8e710bebf979b60f61552593ae550e95a8340d2b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
+ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307566"
+ms.lasthandoff: 06/16/2018
+ms.locfileid: "35683049"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>A virtuális gépek Azure fenntartott virtuális gép osztályt előre fizetés
 
@@ -16,7 +16,14 @@ Megvásárolhatja Azure fenntartott példányok a [Azure-portálon](https://port
 -   A vállalati előfizetések fenntartott példány vásárlás engedélyezni kell a [EA portal](https://ea.azure.com).
 -   A Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatnak a fenntartott példányok.
 
-## <a name="buy-a-reserved-instance"></a>Vásároljon egy fenntartott példány
+[!IMPORTANT]
+A azonosításához az alább ismertetett módszerek egyikét kell használnia a megfelelő Virtuálisgép-méretet a Foglalás vásárolni.
+
+## <a name="determine-the-right-vm-size-before-purchase"></a>Határozza meg a megfelelő Virtuálisgép-méretet beszerzési előtt
+1. Tekintse meg a használati fájl vagy a használati API használatával határozza meg a megfelelő Virtuálisgép-méretet a Foglalás beszerzési additionalinfo részben mezője. Ne használja az értékek mérési alkategória vagy termék mezők óta a mezők nem tesznek különbséget a virtuális gépek és a nem-S verziói között.
+2. Virtuálisgép-méret pontos adatok Powershell, Azure Resource Manager használatával is megkapható, vagy a virtuális gép részletezi az Azure portálon.
+
+## <a name="buy-a-reserved-virtual-machine-instance"></a>A fenntartott virtuális gépet példánya megvásárlása
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** > **foglalások**.
 3. Válassza ki **Hozzáadás** beszerzési új fenntartott példányt.
