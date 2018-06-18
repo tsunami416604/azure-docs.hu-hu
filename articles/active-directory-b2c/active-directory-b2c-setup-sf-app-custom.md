@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Salesforce SAML-szolgáltató hozzáadása a egyéni házirendek használatával |} Microsoft Docs'
+title: A Salesforce SAML-szolgáltató hozzáadása az Azure Active Directory B2C egyéni házirendek használatával |} Microsoft Docs
 description: További tudnivalók az Azure Active Directory B2C egyéni szabályzatok létrehozása és kezelése.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 06/11/2017
 ms.author: davidmu
-ms.openlocfilehash: 1ccf5c58eab9df9016224a91ddda952a05457e2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: f4399730755c15fe5e171bf7fd5826c2b7ffea0a
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709648"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Az Azure Active Directory B2C: Salesforce-fiókok keresztül SAML használatával írja alá
 

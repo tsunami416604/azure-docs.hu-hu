@@ -13,7 +13,7 @@
 
 # Bevezetés
 ## [Bevezetés az Azure AD használatába](fundamentals/get-started-azure-ad.md)
-## [Azure AD Premium-fiók regisztrálása](active-directory-get-started-premium.md)
+## [Azure AD Premium-fiók regisztrálása](fundamentals/active-directory-get-started-premium.md)
 ## [Egyéni tartománynév hozzáadása](fundamentals/add-custom-domain.md)
 ## [Vállalati arculat konfigurálása](fundamentals/customize-branding.md)
 ## [Felhasználók hozzáadása az Azure AD-hez](fundamentals/add-users-azure-active-directory.md)
@@ -82,10 +82,10 @@
 
 ## [Csoportok és tagok kezelése](fundamentals/active-directory-manage-groups.md)
 ### Csoportok kezelése
-#### [Azure Portal](active-directory-groups-create-azure-portal.md)
+#### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
-### [Csoporttagok kezelése](active-directory-groups-members-azure-portal.md)
+### [Csoporttagok kezelése](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Csoporttulajdonosok kezelése](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Csoporttagság kezelése](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [Licencek hozzárendelése csoportok használatával](fundamentals/active-directory-licensing-whatis-azure-portal.md)

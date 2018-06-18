@@ -1,30 +1,27 @@
 ---
-title: Egyéni házirendek – Azure Active Directory B2C használatával több-bérlős az Azure AD identity szolgáltató hozzáadása |} Microsoft Docs
-description: Adja hozzá az egyéni házirendekkel – Azure Active Directory B2C egy több-bérlős az Azure AD-identitásszolgáltató
+title: Egyéni házirendek az Azure Active Directory B2C segítségével több-bérlős az Azure AD identity szolgáltató hozzáadása |} Microsoft Docs
+description: Egyéni házirendek – Azure Active Directory B2C használatával több-bérlős az Azure AD identity szolgáltató hozzáadása.
 services: active-directory-b2c
-documentationcenter: ''
-author: parakhj
-manager: alexsi
-editor: parakhj
-ms.assetid: 33c64001-5261-4ed9-8f46-b09839165250
-ms.service: active-directory-b2c
+author: davidmu1
+manager: mtillman
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/14/2018
-ms.author: parakhj
-ms.openlocfilehash: cff5c1eed374683ad3e2c1f1a69f6f172f36c536
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 83a2ce5d885a446713470c92fc3a638d37d4517d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709223"
 ---
 # <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Engedélyezése a felhasználók számára, hogy jelentkezzen be egy egyéni házirendekkel több-bérlős az Azure AD-identitásszolgáltató
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan bejelentkezés használatával a közös végpontot az Azure Active Directory (Azure AD) révén a felhasználók engedélyezése [egyéni házirendek](active-directory-b2c-overview-custom.md).
+Ez a cikk bemutatja, hogyan bejelentkezhet a több-bérlős végpont használatával az Azure Active Directory (Azure AD) segítségével a felhasználók engedélyezése [egyéni házirendek](active-directory-b2c-overview-custom.md). Így a felhasználók több Azure AD-bérlő bejelentkezni az Azure AD B2C az egyes bérlők műszaki szolgáltató konfigurálása nélkül. Azonban Vendég tagok a bérlők valamelyikében **sem fog** tudnak bejelentkezni. Az adott, akkor kell [külön-külön konfigurálása mindegyik bérlő](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
 > A szervezeti a használjuk a "contoso.com" Azure AD-bérlő és a "fabrikamb2c.onmicrosoft.com" az Azure AD B2C bérlő az alábbi utasításokat.
@@ -36,25 +33,22 @@ Hajtsa végre a a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-
 Ezek a lépések az alábbiak:
      
 1. Egy Azure Active Directory B2C létrehozása (Azure AD B2C) bérlő.
-2. Az Azure AD B2C-alkalmazás létrehozása.    
-3. Két házirendmotor alkalmazás regisztrálásakor.  
-4. Kulcsok beállítása. 
-5. Az alapszintű csomag beállítása.
+1. Az Azure AD B2C-alkalmazás létrehozása.    
+1. Két házirendmotor alkalmazás regisztrálásakor.  
+1. Kulcsok beállítása. 
+1. Az alapszintű csomag beállítása.
 
 ## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>1. lépés Több-bérlős az Azure AD-alkalmazás létrehozása
 
-Bejelentkezés a felhasználók számára a több-bérlős az Azure AD-végpont használatával engedélyezéséhez szeretné egy több-bérlős alkalmazást az Azure AD-bérlő regisztrálva. Ebben a témakörben bemutatjuk, egy több-bérlős az Azure AD-alkalmazás létrehozása az Azure AD B2C-bérlőben. Bejelentkezés a felhasználók számára, hogy több-bérlős az Azure AD alkalmazás segítségével engedélyezze.
-
->[!NOTE]
-> Ha azt szeretné, hogy az Azure Active Directory-felhasználók **és a Microsoft-fiókkal rendelkező felhasználók** való bejelentkezéshez, hagyja ki ezt a szakaszt, és ehelyett az alkalmazás regisztrálása a [Microsoft developer portálon](https://apps.dev.microsoft.com).
+Bejelentkezés a felhasználók számára a több-bérlős az Azure AD-végpont használatával engedélyezéséhez kell regisztrálni az egyik az Azure AD-bérlő több-bérlős alkalmazás. Ebben a témakörben bemutatjuk, egy több-bérlős az Azure AD-alkalmazás létrehozása az Azure AD B2C-bérlőben. Bejelentkezés a felhasználók számára, hogy több-bérlős az Azure AD alkalmazás segítségével engedélyezze.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját. Az a **Directory** menüben válassza ki az Azure AD B2C-bérlő regisztrálása az Azure AD-alkalmazás (fabrikamb2c.onmicrosoft.com).
-2. Válassza ki **további szolgáltatások** a bal oldali ablaktáblán, és keresse meg az "App regisztráció."
-3. Válassza az **Új alkalmazás regisztrálása** elemet.
-4. Adjon meg egy nevet az alkalmazáshoz (például `Azure AD B2C App`).
-5. Válassza a **Webalkalmazás/API** lehetőséget az alkalmazás típusaként.
-6. A **bejelentkezési URL-cím**, adja meg a következő URL-cím, ahol `yourtenant` cseréli le az Azure AD B2C bérlő neve (`fabrikamb2c.onmicrosoft.com`):
+1. Válassza ki **további szolgáltatások** a bal oldali ablaktáblán, és keresse meg az "App regisztráció."
+1. Válassza az **Új alkalmazás regisztrálása** elemet.
+1. Adjon meg egy nevet az alkalmazáshoz (például `Azure AD B2C App`).
+1. Válassza a **Webalkalmazás/API** lehetőséget az alkalmazás típusaként.
+1. A **bejelentkezési URL-cím**, adja meg a következő URL-cím, ahol `yourtenant` cseréli le az Azure AD B2C bérlő neve (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
     >A "yourtenant" értékének kell lennie a kisbetűket a **bejelentkezési URL-cím**.
@@ -82,8 +76,8 @@ Az alkalmazás kulcsot az Azure AD B2C beállítások regisztrálnia kell. Ehhez
    * A **neve**, válasszon egy nevet, amely megfelel az Azure AD-bérlő nevét (például `AADAppSecret`).  Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
    * Illessze be az alkalmazás kulcs a **titkos** mezőbe.
    * Válassza ki **aláírás**.
-5. Kattintson a **Létrehozás** gombra.
-6. Győződjön meg arról, hogy létrehozta a kulcs `B2C_1A_AADAppSecret`.
+1. Kattintson a **Létrehozás** gombra.
+1. Győződjön meg arról, hogy létrehozta a kulcs `B2C_1A_AADAppSecret`.
 
 ## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>3. lépés A jogcím-szolgáltató hozzáadása a kiinduló házirend
 
@@ -114,11 +108,12 @@ Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-be való 
         <Item Key="HttpBinding">POST</Item>
         <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
         
-        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. If you would like only specific tenants to be able to sign in, uncomment the line below and update the GUIDs. -->
-        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item> -->
+        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
+        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
-        <!-- The commented key below specifies that users from any tenant can sign-in. Comment or remove the line below if using the line above. -->
-        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item>
+        <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
+        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+
       </Metadata>
       <CryptographicKeys>
       <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
@@ -150,14 +145,15 @@ Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-be való 
 1. Frissítse az értéket a `<Description>`.
 1. Állítsa be `<Item Key="client_id">` az alkalmazás azonosító az Azure AD bérlői mulity app vételét.
 
-### <a name="step-31-optional-restrict-access-to-specific-list-of-azure-ad-tenants"></a>3.1-es [opcionális] hozzáférés korlátozása a lépéseket az Azure AD-bérlő adott listája
-Érdemes lehet a érvényes jogkivonat kiállítók listájának frissítése és a hozzáférés korlátozása adott listára a felhasználók is bejelentkezhet az Azure AD-bérlő. Beszerzése az értékeket, szüksége lesz a metaadatok az adott mindegyikének tekintse meg a bejelentkezés felhasználói kívánt Azure AD-bérlő. Az adatok formátumának a következőhöz hasonló: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, ahol `yourAzureADtenant` a Azure AD-bérlő neve (contoso.com vagy bármely más Azure AD-bérlő).
+### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>3.1 lépés a hozzáférés korlátozása az Azure AD-bérlő adott listájára
+
+> [!NOTE]
+> Használatával `https://sts.windows.net` értéke **ValidTokenIssuerPrefixes** lehetővé teszi, hogy minden Azure AD-felhasználó bejelentkezni az alkalmazásba.
+
+A jogkivonat érvényes kiállítók listájának frissítése és a hozzáférés korlátozása adott listára a felhasználók is bejelentkezhet az Azure AD-bérlő kell. Beszerzése az értékeket, szüksége lesz a metaadatok az adott mindegyikének tekintse meg a bejelentkezés felhasználói kívánt Azure AD-bérlő. Az adatok formátumának a következőhöz hasonló: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, ahol `yourAzureADtenant` a Azure AD-bérlő neve (contoso.com vagy bármely más Azure AD-bérlő).
 1. Nyissa meg a böngészőt, és navigáljon a metaadatainak URL-CÍMÉT.
 1. A böngészőben keresse meg a "kiállító" objektum, és másolja az értékét. A következő formában: `https://sts.windows.net/{tenantId}/`.
 1. Illessze be az értéket a `ValidTokenIssuerPrefixes` kulcs. Több, vesszővel elválasztva adhat hozzá. Ilyen például a fenti XML minta megjegyzésként.
-
-> [!NOTE]
-> Használatával `https://sts.windows.net` , előtag érték lehetővé teszi minden Azure AD-felhasználó bejelentkezni az alkalmazásba.
 
 ## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>4. lépés Az Azure AD fiók jogcím-szolgáltató regisztrálása
 
@@ -212,11 +208,11 @@ Most frissíteni kell a függő entitásonkénti (RP) fájl, amely indít el az 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>6. lépés: Töltse fel a házirend a bérlő
 
 1. A a [Azure-portálon](https://portal.azure.com), váltson a [az Azure AD B2C-bérlő kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd válassza ki **az Azure AD B2C**.
-2. Válassza ki **identitás élmény keretrendszer**.
-3. Válassza ki **házirend**.
-4. Válassza ki **házirend feltöltése**.
-5. Válassza ki a **felülírja a házirendet, ha létezik** jelölőnégyzetet.
-6. Töltse fel a `TrustFrameworkExtensions.xml` és a függő Entitás fájl (pl. `SignUpOrSignInWithAAD.xml`), és győződjön meg arról, hogy teljesíti az ellenőrző.
+1. Válassza ki **identitás élmény keretrendszer**.
+1. Válassza ki **házirend**.
+1. Válassza ki **házirend feltöltése**.
+1. Válassza ki a **felülírja a házirendet, ha létezik** jelölőnégyzetet.
+1. Töltse fel a `TrustFrameworkExtensions.xml` és a függő Entitás fájl (pl. `SignUpOrSignInWithAAD.xml`), és győződjön meg arról, hogy teljesíti az ellenőrző.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7. lépés: Az egyéni házirend tesztelése Futtatás most használatával
 

@@ -343,7 +343,7 @@
         - name: Adatok betöltése a BCP használatával
           href: sql-database-load-from-csv-with-bcp.md
         - name: Adatok betöltése az ADF használatával
-          href: ../data-factory/connector-azure-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: Adatok szinkronizálása
           href: sql-database-get-started-sql-data-sync.md
     - name: Monitorozás és hangolás

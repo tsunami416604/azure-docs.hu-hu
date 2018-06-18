@@ -1,5 +1,5 @@
 ---
-title: A SAML-jogkivonat a vállalati alkalmazások az Azure Active Directory által kiadott konfigurálása szerepkör jogcím |} Microsoft Docs
+title: A szerepkör jogcím a SAML-jogkivonat a vállalati alkalmazások az Azure Active Directory által kiadott konfigurálása |} Microsoft Docs
 description: A szerepkör jogcím által kiadott a SAML-jogkivonat a vállalati alkalmazások az Azure Active Directory konfigurálása
 services: active-directory
 documentationcenter: ''
@@ -12,248 +12,249 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/30/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 43a4db9114cd47da5bef98ed634847b547589b47
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5aa716f91a3155e81ef8dc7c436b4a9a5811238b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34723252"
 ---
-# <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>A SAML-jogkivonat a vállalati alkalmazások az Azure Active Directory által kiadott szerepkör jogcím konfigurálása
+# <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>A szerepkör jogcím által kiadott a SAML-jogkivonat a vállalati alkalmazások az Azure Active Directory konfigurálása
 
-Ez a funkció lehetővé teszi, hogy a felhasználók testreszabása az Azure AD alkalmazás engedélyezése után kapott válasz jogkivonatba "szerepkörök" jogcímet a jogcím típusa.
+Azure Active Directory (Azure AD) segítségével testre szabhatja a jogcímtípus az a szerepkör jogcím a válasz jogkivonat után megjelenő is engedélyezni szeretné az alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az Azure AD szolgáltatásra directory telepítés
-- Egyszeri bejelentkezés engedélyezve van az előfizetés
-- Az alkalmazás az SSO kell konfigurálni
+- Egy könyvtár telepítés az Azure AD-előfizetés.
+- Olyan előfizetést, amelyet az egyszeri bejelentkezés (SSO) engedélyezve van. Az alkalmazás az SSO kell konfigurálni.
 
 ## <a name="when-to-use-this-feature"></a>Ha a szolgáltatás használatához
 
-Ha az alkalmazás SAML-válasz átadni egyéni szerepkörök vár, akkor használja ezt a szolgáltatást. Ez a funkció lehetővé teszi átadását az Azure AD vissza az alkalmazás az igények szerinti annyi szerepköröket hozhat létre.
+Ha az alkalmazás egy SAML-válasz átadni egyéni szerepkörök vár, akkor használja ezt a szolgáltatást. Létrehozhat annyi szerepkörök szükség van az alkalmazás átadandó az Azure AD vissza.
 
-## <a name="steps-to-use-this-feature"></a>Ez a szolgáltatás használatának lépéseit
+## <a name="create-roles-for-an-application"></a>Szerepkörök az alkalmazás létrehozása
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a [Azure-portálon](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory** ikonra. 
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory ikonra][1]
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Válassza ki **vállalati alkalmazások**. Válassza ki **összes alkalmazás**.
 
-    ![A vállalati alkalmazások panel][2]
+    ![Vállalati alkalmazások ablaktábla][2]
     
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+3. Egy új alkalmazást szeretne telepíteni, válassza ki a **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    !["Az új alkalmazás" gomb][3]
 
-4. A keresőmezőbe írja be az alkalmazás nevét, az eredmény panelen válassza ki az alkalmazását, majd kattintson az **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresési mezőbe írja be az alkalmazás nevét, és válassza ki az alkalmazást, az eredmény panelen. Válassza ki a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
     ![Az eredménylistában alkalmazás](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
-5. Az alkalmazás hozzáadása után Ugrás **tulajdonságok** lapjáról, és másolja a **Objektumazonosító**.
+5. Lépjen az alkalmazás hozzáadása után a **tulajdonságok** lapjáról, és másolja az objektum azonosítójával.
 
-<!-- ![Properties Page](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png) Note: Image is missing. -->
+    ![Tulajdonságok lap](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Nyissa meg [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
+6. Nyissa meg [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban és a következő lépéseket:
 
-    a. Jelentkezzen be a grafikon Explorer webhelyre, a bérlő globális rendszergazdai vagy társadminisztrátori hitelesítő adataival.
+    a. Jelentkezzen be a grafikon Explorer hely a bérlő globális rendszergazda vagy társfelügyeletű hitelesítő adataival.
 
-    b. Kell rendelkeznie a szerepkörök létrehozásához szükséges engedélyekkel. Kattintson a **módosítsa az engedélyeket** lekérni a szükséges engedélyekkel. 
+    b. A szerepkörök létrehozása elegendő jogosultság szükséges. Válassza ki **módosítsa az engedélyeket** a jogosultságok megszerzéséhez. 
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
+      ![A "engedélyek módosítása" gombra](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
-    c. Jelölje be a következő engedélyeket a listáról (ha ezek már nem rendelkezik) "Engedélyek módosítása" gombra 
+    c. Válassza ki a következő engedélyeket a lista (ha ezek a már nincs), és válasszon **módosítási engedélyekkel**. 
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+      ![Engedélyek és a "Engedélyek módosítása" gombra](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
-    d. Ez ekkor megkérdezi, hogy újból bejelentkezni, és fogadja el a hozzájárulásukat adják. A hozzájárulási elfogadása, miután bejelentkezett a rendszer újra.
+    d. Fogadja el a hozzájárulásukat adják. Jelentkezett be a rendszer újra.
 
-    e. Módosítsa a verzióra **beta** szolgáltatás résztvevők listájának beolvasása a következő lekérdezés a bérlőt és:
+    e. Módosíthatja a telepített verziója **beta**, és a szolgáltatás résztvevők listájának beolvasása a bérlő a használatával a következő lekérdezést:
     
      `https://graph.microsoft.com/beta/servicePrincipals`
         
-    Ha több címtárral használ, majd kövesse ezt a mintát `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Ha több címtárral használata esetén kövesse az ebben a mintában: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
+      ![Graph Explorer párbeszédpanelen, a lekérdezés való beolvasásához használt szolgáltatásnevekről](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-    f. Lehívott szolgáltatás rendszerbiztonsági tagok közül módosítani kell egy beolvasása. A Ctrl + F segítségével is keresni a felsorolt ServicePrincipals az alkalmazást. Keresse meg a **objektumazonosító**, amely tulajdonságai lapon másolta, és használja a következő lekérdezés a megfelelő szolgáltatásnevet eléréséhez.
+    f. Lehívott szolgáltatás rendszerbiztonsági tagok közül beolvasása, amely módosítani kell. Ctrl + F használhatja az alkalmazás az összes felsorolt szolgáltatásnevekről kereséséhez. Keresse meg a másolt Objektumazonosító a **tulajdonságok** lapon, és az egyszerű szolgáltatás eléréséhez használja a következő lekérdezést:
     
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+      `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
+      ![Az első, hogy módosítania kell a szolgáltatás egyszerű lekérdezés](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    g. Bontsa ki a appRoles tulajdonság a szolgáltatás egyszerű objektumból. 
+    g. Bontsa ki a **appRoles** tulajdonság a szolgáltatás egyszerű objektumból. 
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
+      ![A appRoles tulajdonság részleteit](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
+
+      > [!Note]
+      > Ha az egyéni alkalmazás (nem az Azure piactér-alkalmazás) használ, két alapértelmezett szerepkör látja: felhasználó- és msiam_access. A piactér alkalmazás msiam_access olyan csak alapértelmezett szerepkör. Nem kell módosítani az alapértelmezett szerepkör.
+
+    h. Az alkalmazás új szerepkörök létrehozása. 
+
+      A következő JSON-ja példát a **appRoles** objektum. Hozzon létre egy hasonló objektumot adja hozzá a szerepkört, amelyet az alkalmazáshoz. 
+
+      ```
+      {
+         "appRoles": [
+          {
+              "allowedMemberTypes": [
+                  "User"
+              ],
+              "description": "msiam_access",
+              "displayName": "msiam_access",
+              "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
+              "isEnabled": true,
+              "origin": "Application",
+              "value": null
+          },
+          {
+              "allowedMemberTypes": [
+                  "User"
+              ],
+              "description": "Administrators Only",
+              "displayName": "Admin",
+              "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
+              "isEnabled": true,
+              "origin": "ServicePrincipal",
+              "value": "Administrator"
+          }
+      ]
+      }
+      ```
+      
+      > [!Note]
+      > Új szerepkörök csak a javítási művelet msiam_access után is hozzáadhat. Annyi szerepkörök is, a szervezet igényei szerint is felvehet. Az Azure AD el fogja küldeni ezeket a szerepköröket értékének SAML-válasz a jogcím értéke. Készítése a GUID-azonosítóhoz új szerepkörök értéket használjuk a webes eszközök, például a [Ez](https://www.guidgenerator.com/)
+    
+    i. Vissza a diagramon Explorer és a módszer váltása **beolvasása** való **javítás**. A szolgáltatás egyszerű objektum kell rendelkeznie a kívánt szerepkörök frissítésével javítás a **appRoles** tulajdonság hasonló az előző példában látható módon. Válassza ki **lekérdezés futtatása** a javítás művelet végrehajtásához. A sikerről szóló üzenetet megerősíti, hogy a szerepkör létrehozása.
+
+      ![Javítási műveletet a sikerről szóló üzenetet](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
+
+7. Után az egyszerű szolgáltatás van telepítve a további szerepkörök, felhasználók rendelhet szerepét. Ugrás a portálon, és keresse meg az alkalmazás a felhasználók rendelhet. Válassza ki a **felhasználók és csoportok** fülre. Ezen a lapon felsorolja az összes felhasználókat és csoportokat, amelyek az alkalmazás már hozzá van rendelve. Új szerepkörök új felhasználókat adhat hozzá. Is válasszon egy meglévő felhasználót, és válassza ki **szerkesztése** a szerepkör módosítása.
+
+    !["Felhasználók és csoportok" lapon](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
+
+    A szerepkör hozzárendelése minden felhasználóhoz, válassza ki az új szerepkör, és válassza ki a **hozzárendelése** gombra az oldal alján.
+
+    !["Hozzárendelés módosítása" és "Szerepkör kiválasztása" ablaktábla](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     > [!Note]
-    > Ha az egyéni (nem galéria) alkalmazást használ, a két alapértelmezett szerepkör - felhasználói és msiam_access látható. Gyűjteményelem alkalmazás esetén msiam_access olyan csak alapértelmezett szerepkör. Nem kell módosítani az alapértelmezett szerepkör.
+    > Akkor kell frissítenie a munkamenetet, hogy új szerepkörök az Azure portálon.
 
-    h. Most szeretne létrehozni az alkalmazás új szerepköröket. 
+8. Frissítés a **attribútumok** tábla testreszabott leképezéseket a szerepkör jogcím meghatározásához.
 
-    i. Alább JSON példája appRoles objektum. Hozzon létre egy hasonló objektumot a kívánt alkalmazás szerepkörök hozzáadásához. 
-
-    ```
-    {
-       "appRoles": [
-        {
-            "allowedMemberTypes": [
-                "User"
-            ],
-            "description": "msiam_access",
-            "displayName": "msiam_access",
-            "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
-            "isEnabled": true,
-            "origin": "Application",
-            "value": null
-        },
-        {
-            "allowedMemberTypes": [
-                "User"
-            ],
-            "description": "Administrators Only",
-            "displayName": "Admin",
-            "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
-            "isEnabled": true,
-            "origin": "ServicePrincipal",
-            "value": "Administrator"
-        }
-    ]
-    }
-    ```
-    > [!Note]
-    > Csak akkor adhat hozzá új szerepkörök után a **msiam_access** a javítás művelet. Is ahányat csak szeretne, a szervezet kell egy tetszőleges számú szerepkörök is hozzáadhat. Az Azure AD fog küldeni a **érték** a fenti két szerepkör SAML-válasz a jogcím értéke.
+9. Az a **felhasználói attribútumok** szakasza a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket.
     
-    j. Lépjen vissza a diagramon Explorer és a módszer váltása **beolvasása** való **javítás**. A szolgáltatás egyszerű objektum rendelkezik szükségeskonfiguráció-szerepkörök által a fenti példában látható módon a hasonló appRoles tulajdonság frissítése javítás. Kattintson a **lekérdezés futtatása** a javítás művelet végrehajtásához. A sikerről szóló üzenetet megerősíti, hogy a szerepkör létrehozása.
-
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
-
-7. Után az egyszerű szolgáltatás van telepítve a további szerepkörök, felhasználók rendelhet szerepét. Ezt megteheti portal fog, és navigáljon a megfelelő alkalmazás. Kattintson a **felhasználók és csoportok** lapon látható. A parancs megjeleníti az összes a felhasználókat és csoportokat, amelyek az alkalmazás már hozzá van rendelve. Új felhasználók hozzáadása az új szerepkör és is is válassza ki a meglévő felhasználót, és kattintson a **szerkesztése** a szerepkör módosítása.
-
-    ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
-
-     A szerepkör hozzárendelése minden felhasználóhoz, válassza ki az új szerepkör, és kattintson a **hozzárendelése** gombra az oldal alján.
-
-    ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
-
-    > [!Note]
-    > Vegye figyelembe, hogy szeretné-e a munkamenet során az Azure portálhoz, és új szerepkörök frissítése.
-
-8. Szerepkörök hozzárendelése a felhasználókhoz, után frissíteni kell **attribútumok** táblázat segítségével határozza meg a testreszabott leképezését **szerepkör** jogcímek.
-
-9. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre a következő lépéseket:
-    
-    | Attribútum neve | Attribútum értéke |
+    | Attribútum neve | Attribútum-érték |
     | -------------- | ----------------|    
     | Szerepkör neve      | User.assignedrole |
 
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    a. Válassza ki **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** ablaktáblán.
 
-    ![Egyszeri bejelentkezés konfigurálása hozzáadása](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
+      !["Attribútum hozzáadása" gombra](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
-    ![Egyszeri bejelentkezés attribútum konfigurálása](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
+      !["Attribútum hozzáadása" ablak](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. Az a **neve** szövegmező, írja be az attribútumnak a nevét, igény szerint. Ebben a példában a használtuk rendelkezik **szerepkörnév** módon a jogcím neve.
+    b. Az a **neve** mezőbe írja be az attribútumnak a nevét, igény szerint. Ez a példa **szerepkörnév** jogcím neveként.
 
     c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
 
-    d. Hagyja a **Namespace** üres.
+    d. Hagyja a **Namespace** mező üres.
     
-    e. Kattintson az **OK** gombra.
+    e. Válassza ki **Ok**.
 
-10. Az alkalmazás teszteléséhez a kiállító terjesztési hely által kezdeményezett egyszeri bejelentkezéshez a napló a hozzáférési panelre (https://myapps.microsoft.com) , majd kattintson az alkalmazás csempe a. A SAML-jogkivonat meg kell jelennie a hozzárendelt szerepköröket a felhasználó az adott jogcím neve.
+10. Tesztelje az alkalmazás egy egyszeri bejelentkezést az identitásszolgáltató által kezdeményezett, jelentkezzen be a [hozzáférési Panel](https://myapps.microsoft.com) és az alkalmazás csempe kiválasztása. A SAML-jogkivonat meg kell jelennie a hozzárendelt szerepkörök a jogcím neve, amely az adott felhasználó számára.
 
-## <a name="update-existing-role"></a>Meglévő szerepkör frissítése
+## <a name="update-an-existing-role"></a>Egy meglévő szerepkör frissítése
 
-Egy meglévő szerepkör frissítése, hajtsa végre a következő lépéseket-
+Egy meglévő szerepkör frissítéséhez hajtsa végre az alábbi lépéseket:
 
 1. Nyissa meg [az Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
-2. Jelentkezzen be a grafikon Explorer webhelyre, a bérlő globális rendszergazdai vagy társadminisztrátori hitelesítő adataival.
+2. Jelentkezzen be a grafikon Explorer hely a bérlő globális rendszergazda vagy társfelügyeletű hitelesítő adataival.
     
-3. Módosítsa a verzióra **beta** szolgáltatás résztvevők listájának beolvasása a következő lekérdezés a bérlőt és:
+3. Módosíthatja a telepített verziója **beta**, és a szolgáltatás résztvevők listájának beolvasása a bérlő a használatával a következő lekérdezést:
     
     `https://graph.microsoft.com/beta/servicePrincipals`
     
-    Ha több címtárral használ, majd kövesse ezt a mintát `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több címtárral használata esetén kövesse az ebben a mintában: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
+    ![Graph Explorer párbeszédpanelen, a lekérdezés való beolvasásához használt szolgáltatásnevekről](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-4. Lehívott szolgáltatás rendszerbiztonsági tagok közül módosítani kell egy beolvasása. A Ctrl + F segítségével is keresni a felsorolt ServicePrincipals az alkalmazást. Keresse meg a **objektumazonosító**, amely tulajdonságai lapon másolta, és használja a következő lekérdezés a megfelelő szolgáltatásnevet eléréséhez.
+4. Lehívott szolgáltatás rendszerbiztonsági tagok közül beolvasása, amely módosítani kell. Ctrl + F használhatja az alkalmazás az összes felsorolt szolgáltatásnevekről kereséséhez. Keresse meg a másolt Objektumazonosító a **tulajdonságok** lapon, és az egyszerű szolgáltatás eléréséhez használja a következő lekérdezést:
     
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
+    ![Az első, hogy módosítania kell a szolgáltatás egyszerű lekérdezés](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-5. Bontsa ki a appRoles tulajdonság a szolgáltatás egyszerű objektumból.
+5. Bontsa ki a **appRoles** tulajdonság a szolgáltatás egyszerű objektumból.
     
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
+    ![A appRoles tulajdonság részleteit](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
     
-6. A meglévő szerepkör frissítéséhez hajtsa végre következő lépések:
+6. A meglévő szerepkör frissítéséhez az alábbi lépésekkel.
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
+    ![Szervezet a "Javítás", "description" és "displayname" kiemelt igénylése](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
     
-    * A módszer váltása **beolvasása** való **javítás**.
+    a. A módszer váltása **beolvasása** való **javítás**.
 
-    * A meglévő szerepek másolja és illessze be őket a a **kérelem törzse**.
+    b. A meglévő szerepek másolja és illessze be őket a **kérelem törzse**.
 
-    * Frissítse az értéket, a szerepkör frissítésével a **szerepkör leírása**, **szerepkör értéke** vagy **szerepkör displayname** igény szerint.
+    c. Frissítse az értéket, a szerepkör frissítésével a szerepkör leírása, a szerepkör értéke vagy a szerepkör megjelenítési név igény szerint.
 
-    * Miután frissítette a szükséges szerepkörök, kattintson a **lekérdezés futtatása**.
+    d. Miután frissítette a szükséges szerepkörök, válassza ki a **lekérdezés futtatása**.
         
-## <a name="delete-existing-role"></a>Meglévő szerepkör törlése
+## <a name="delete-an-existing-role"></a>Egy meglévő szerepkör törlése
 
-Egy meglévő szerepkör törléséhez hajtsa végre a következő lépéseket:
+Egy meglévő szerepkör törléséhez a következő lépésekkel:
 
 1. Nyissa meg [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) egy másik ablakban.
 
-2. Jelentkezzen be a grafikon Explorer webhelyre, a bérlő globális rendszergazdai vagy társadminisztrátori hitelesítő adataival.
+2. Jelentkezzen be a grafikon Explorer hely a bérlő globális rendszergazda vagy társfelügyeletű hitelesítő adataival.
 
-3. Módosítsa a verzióra **beta** szolgáltatás résztvevők listájának beolvasása a következő lekérdezés a bérlőt és:
+3. Módosíthatja a telepített verziója **beta**, és a szolgáltatás résztvevők listájának beolvasása a bérlő a használatával a következő lekérdezést:
     
     `https://graph.microsoft.com/beta/servicePrincipals`
     
-    Ha több címtárral használ, majd kövesse ezt a mintát `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Ha több címtárral használata esetén kövesse az ebben a mintában: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
+    ![Graph Explorer párbeszédpanelen, a lekérdezés a szolgáltatás résztvevők listájának beolvasása](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-4. Lehívott szolgáltatás rendszerbiztonsági tagok közül módosítani kell egy beolvasása. A Ctrl + F segítségével is keresni a felsorolt ServicePrincipals az alkalmazást. Keresse meg a **objektumazonosító**, amely tulajdonságai lapon másolta, és használja a következő lekérdezés a megfelelő szolgáltatásnevet eléréséhez.
+4. Lehívott szolgáltatás rendszerbiztonsági tagok közül beolvasása, amely módosítani kell. Ctrl + F használhatja az alkalmazás az összes felsorolt szolgáltatásnevekről kereséséhez. Keresse meg a másolt Objektumazonosító a **tulajdonságok** lapon, és az egyszerű szolgáltatás eléréséhez használja a következő lekérdezést:
      
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
+    ![Az első, hogy módosítania kell a szolgáltatás egyszerű lekérdezés](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-5. Bontsa ki a appRoles tulajdonság a szolgáltatás egyszerű objektumból.
+5. Bontsa ki a **appRoles** tulajdonság a szolgáltatás egyszerű objektumból.
     
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
+    ![A szolgáltatás egyszerű objektumból appRoles tulajdonságának részletei](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
 
-6. Törölje a meglévő szerepkört, adjon kövesse az alábbi lépéseket:
+6. A meglévő szerepkör törléséhez használja a következő lépéseket.
 
-    ![Graph explorer párbeszédpanel](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
+    ![Törzs IsEnabled állítsa hamis értékre a "Javítás" igénylése](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    * A módszer váltása **beolvasása** való **javítás**.
+    a. A módszer váltása **beolvasása** való **javítás**.
 
-    * A meglévő szerepkörök másolása az alkalmazást, majd illessze be a a **kérelem törzse**.
+    b. A meglévő szerepkörök másolása az alkalmazást, majd illessze be a **kérelem törzse**.
         
-    * Állítsa be a **IsEnabled** egy érték **hamis** a szerepkör, amely a törölni kívánt
+    c. Állítsa be a **IsEnabled** egy érték **hamis** a törölni kívánt szerepkör esetében.
 
-    * Kattintson a **lekérdezés**.
+    d. Válassza ki **lekérdezés**.
     
     > [!NOTE] 
-    > Győződjön meg arról, hogy rendelkezik **msiam_access** létrehozott szerepkör felhasználói szerepkör, és az azonosító van megfelelő.
+    > Győződjön meg arról, hogy msiam_access szerepkörrel rendelkeznek, és az Azonosítóját a generált szerepkörben van megfelelő.
     
-7. A szerepkör le van tiltva, ha a szerepkör blokk appRoles szakasz törlése, tartsa a módszert az **javítás** kattintson **lekérdezés futtatása**.
+7. Után a szerepkör le van tiltva, törölje az adott szerepkör kitiltják a **appRoles** szakasz. Tartsa a módszert az **javítás**, és válassza ki **lekérdezés futtatása**.
     
-8. A lekérdezés futtatása után a szerepkör törlődni fog.
+8. A lekérdezés futtatása után a rendszer törli a szerepkört.
     
     > [!NOTE]
-    > A szerepkör kell előtt le kell tiltani először el kell távolítani. 
+    > A szerepkörnek szükséges gazdagépcsoport(ok) eltávolítása előtt le kell tiltani. 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [alkalmazás dokumentációjának ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) a további lépéseket.
+A további lépéseket, tekintse meg a [alkalmazás dokumentációjának](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
 <!--Image references-->
 <!--Image references-->

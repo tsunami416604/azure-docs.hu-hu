@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Hozzáadása Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel'
-description: Google + identitás-szolgáltatóként OAuth2 protokollt használó mintákkal
+title: Adja hozzá Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel az Azure Active Directory B2C |} Microsoft Docs
+description: A minta használata Google + OAuth2 protokollt használó identitás-szolgáltatóként.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: f12bbc2472aa2d83088c7d4d7b8f173744fb36b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 3be17ca815910b7472a8760529971bd6c2016792
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709274"
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Hozzáadása Google + identitás-szolgáltatóként OAuth2 egyéni házirendekkel
 
