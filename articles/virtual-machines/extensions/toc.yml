@@ -30,6 +30,8 @@
           href: custom-script-linuxOstc.md
         - name: Windows
           href: custom-script-windows.md
+        - name: Azure-szolgáltatásfelügyelet (klasszikus)
+          href: custom-script-classic.md
     - name: Virtuális gépekhez való hozzáférés
       href: vmaccess.md
     - name: Operations Management Suite

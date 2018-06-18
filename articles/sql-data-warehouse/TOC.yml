@@ -63,6 +63,8 @@
           href: sql-data-warehouse-overview-manage-security.md
         - name: Hitelesítés
           href: sql-data-warehouse-authentication.md
+        - name: Oszlopszintű biztonság
+          href: column-level-security.md
     - name: Migrálás az SQL Data Warehouse-ba
       items:
         - name: Áttekintés

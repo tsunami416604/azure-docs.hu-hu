@@ -4,12 +4,14 @@
   items:
     - name: A Power BI Embedded bemutatása
       href: what-is-power-bi-embedded.md
-- name: Bevezetés
+- name: Oktatóanyagok
+  items:
+    - name: Tartalom beágyazása az ügyfeleknek – minta
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+- name: Alapelvek
   items:
     - name: Ismerkedés a Power BI Embedded szolgáltatással
       href: get-started.md
-    - name: Ismerkedés egy minta segítségével
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
 - name: Útmutató
   items:
     - name: Kapacitás kezelése
