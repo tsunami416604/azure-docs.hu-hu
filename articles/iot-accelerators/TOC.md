@@ -1,4 +1,4 @@
-# [Azure IoT – alapok](../iot-fundamentals/index.yml)
+# [Azure IoT – alapok](/azure/iot-fundamentals)
 # [Az IoT-megoldásgyorsítók dokumentációja](index.md)
 
 # Áttekintés
@@ -94,10 +94,10 @@
 # Referencia
 ## [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [Biztonsági architektúra](iot-security-architecture.md)
-## [Ajánlott biztonsági eljárások](iot-security-best-practices.md)
-## [Az IoT-környezet biztonságossá tétele](iot-accelerators-security-deployment.md)
-## [Biztonság az alapoktól](securing-iot-ground-up.md)
+## [Biztonság az alapoktól](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc)
+## [Ajánlott biztonsági eljárások](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc)
+## [Biztonsági architektúra](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc)
+## [Az IoT-környezet biztonságossá tétele](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc)
 
 # Kapcsolódó témakörök
 ## Megoldások 

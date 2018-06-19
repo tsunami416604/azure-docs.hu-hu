@@ -17,6 +17,7 @@
 ### [Sablon szakaszai](resource-group-authoring-templates.md)
 #### [Paraméterek](resource-manager-templates-parameters.md)
 #### [Változók](resource-manager-templates-variables.md)
+#### [Functions](resource-group-authoring-templates.md#functions)
 #### [Erőforrások](resource-manager-templates-resources.md)
 #### [Kimenetek](resource-manager-templates-outputs.md)
 ### [Kapcsolt és beágyazott sablonok](resource-group-linked-templates.md)

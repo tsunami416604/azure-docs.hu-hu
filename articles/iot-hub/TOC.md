@@ -1,4 +1,4 @@
-# [Azure IoT – alapok](../iot-fundamentals/index.yml)
+# [Azure IoT – alapok](/azure/iot-fundamentals)
 # [Az IoT Hub dokumentációja](index.yml)
 
 # Áttekintés
@@ -84,10 +84,10 @@
 ### [Az IoTHubClient használata](iot-hub-device-sdk-c-iothubclient.md)
 ### [A szerializáló használata](iot-hub-device-sdk-c-serializer.md)
 
-## [Biztonság az alapoktól](iot-hub-security-ground-up.md)
-## [Ajánlott biztonsági eljárások](iot-hub-security-best-practices.md)
-## [Biztonsági architektúra](iot-hub-security-architecture.md)
-## [Az IoT-környezet biztonságossá tétele](iot-hub-security-deployment.md)
+## [Biztonság az alapoktól](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
+## [Ajánlott biztonsági eljárások](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
+## [Biztonsági architektúra](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
+## [Az IoT-környezet biztonságossá tétele](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 ## Biztonságossá tétel X.509-es hitelesítésszolgáltatói tanúsítványokkal
 ### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](iot-hub-x509ca-overview.md)
 #### [X.509-es hitelesítésszolgáltatói tanúsítványok biztonsági alapfogalmai](iot-hub-x509ca-concept.md)

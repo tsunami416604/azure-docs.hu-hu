@@ -51,12 +51,12 @@
 ## [DBMS üzembehelyezési útmutató](dbms-guide.md)
 ## [Azure Site Recovery az SAP-vészhelyreállításhoz](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD SAP-identitásintegráció és egyszeri bejelentkezés
-## [Integráció az SAP-felhővel](../../../active-directory/active-directory-saas-sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD-integráció az SAP-felhőplatform identitáshitelesítésével](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [Egyszeri bejelentkezés beállítása az SAP-felhőplatformmal](../../../active-directory/active-directory-saas-sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD-integráció az SAP NetWeaverrel](../../../active-directory/active-directory-saas-sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD-integráció az SAP Business ByDesignnal](../../../active-directory/active-directory-saas-sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-## [AAD-integráció az SAP HANA DBMS-sel](../../../active-directory/active-directory-saas-saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Integráció az SAP-felhővel](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD-integráció az SAP-felhőplatform identitáshitelesítésével](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [Egyszeri bejelentkezés beállítása az SAP-felhőplatformmal](../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD-integráció az SAP NetWeaverrel](../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD-integráció az SAP Business ByDesignnal](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+## [AAD-integráció az SAP HANA DBMS-sel](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[SAML egyszeri bejelentkezés az SAP Fiori-kezdőpanelen az Azure AD-val](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
