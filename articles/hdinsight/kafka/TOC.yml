@@ -223,13 +223,10 @@
         - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
           href: ../connect-on-premises-network.md
           maintainContext: true
-    - name: Monitorozás az OMS-szel
+    - name: Monitorozás a Log Analytics használatával
       items:
         - name: Az Azure Log Analytics használata
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Fürtre jellemző irányítópultok
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Lekérdezések használata a Log Analytics szolgáltatással
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

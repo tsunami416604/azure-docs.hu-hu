@@ -29,13 +29,13 @@
       items:
         - name: .NET Core és SQL-adatbázis
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: Ruby és MySQL
-          href: tutorial-ruby-mysql-app.md
+        - name: Ruby és Postgres
+          href: tutorial-ruby-postgres-app.md
         - name: PHP és MySQL
           href: tutorial-php-mysql-app.md
         - name: Node.js és MongoDB
           href: tutorial-nodejs-mongodb-app.md
-        - name: Python egyéni tároló és PostgreSQL
+        - name: Python egyéni tároló és Postgres
           href: tutorial-docker-python-postgresql-app.md
     - name: Többtárolós alkalmazás
       href: tutorial-multi-container-app.md

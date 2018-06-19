@@ -184,7 +184,19 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: Videók
-      href: videos.md
+      items:
+        - name: Termékvideók
+          href: videos.md
+        - name: Útmutató videósorozat
+          items:
+            - name: Ismerje meg a termékek jellemzőit és előnyeit
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: MySQL-alkalmazások migrálása az Azure-ba
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: Web Apps létrehozása és üzembe helyezése
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: Tárolók csatlakoztatása az OSBA használatával
+              href: 'https://aka.ms/mysql-osba-vid'
     - name: Szolgáltatás igénylése
       href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
     - name: Régiónkénti elérhetőség

@@ -30,3 +30,13 @@
       href: /azure/iot-edge
     - name: IoT eszközoldali SDK-k
       href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Biztonság
+  items:
+    - name: Biztonsági architektúra
+      href: iot-security-architecture.md
+    - name: Ajánlott biztonsági eljárások
+      href: iot-security-best-practices.md
+    - name: Biztonságos üzembe helyezés
+      href: iot-security-deployment.md
+    - name: Biztonság az alapoktól
+      href: iot-security-ground-up.md

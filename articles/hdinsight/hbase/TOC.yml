@@ -249,15 +249,10 @@
           href: apache-hbase-replication.md
         - name: A HBase és a Phoenix biztonsági mentésének és replikációjának beállítása
           href: apache-hbase-backup-replication.md
-    - name: Monitorozás az OMS-szel
+    - name: Monitorozás a Log Analytics használatával
       items:
         - name: Az Azure Log Analytics használata
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: A HBase monitorozása az OMS-szel
-          href: apache-hbase-monitor-with-oms.md
-        - name: Fürtre jellemző irányítópultok
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Lekérdezések használata a Log Analytics szolgáltatással
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

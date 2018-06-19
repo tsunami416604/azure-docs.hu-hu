@@ -122,7 +122,6 @@
 ### Referencia
 #### [Megőrzés](active-directory-reporting-retention.md)
 #### [Késések](active-directory-reporting-latencies-azure-portal.md)
-#### [Értesítések](active-directory-reporting-notifications.md)
 #### [Naplózott tevékenységekre vonatkozó referencia](active-directory-reporting-activity-audit-reference.md)
 #### [Bejelentkezési tevékenységek hibakódjai](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Többtényezős hitelesítés](active-directory-reporting-activity-sign-ins-mfa.md)
@@ -152,6 +151,12 @@
 ### [SSPR-testreszabás](authentication/concept-sspr-customization.md)
 ### [SSPR-adatkövetelmények](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR-jelentéskészítés](authentication/howto-sspr-reporting.md)
+### [A gyenge jelszavak megszüntetése](authentication/concept-password-ban-bad.md)
+### [A tiltott jelszavak listájának konfigurálása](authentication/howto-password-ban-bad.md)
+### [Helyszíni integráció](authentication/concept-password-ban-bad-on-premises.md)
+### [Azure AD jelszóvédelem üzembe helyezése](authentication/howto-password-ban-bad-on-premises.md)
+### [Azure AD jelszóvédelem konfigurálása](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [Azure AD jelszóvédelem monitorozása](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### Informatikai rendszergazdák: Új jelszavak kérése
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [SSPR licenc](authentication/concept-sspr-licensing.md)
@@ -178,14 +183,14 @@
 ## Alkalmazások kezelése
 ### [Áttekintés](manage-apps/what-is-application-management.md)
 ### [Bevezetés](manage-apps/plan-an-application-integration.md)
-### [SaaS-alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md)
+### [SaaS-alkalmazások integrációjának oktatóanyagai](saas-apps/tutorial-list.md)
 ### [Felhőalkalmazások felderítése](manage-apps/cloud-app-discovery.md)
 #### [Pillanatkép-jelentések létrehozása](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Egyéni naplóelemző használata](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 ### [Felhasználók átadása és az átadás megszüntetése SaaS-alkalmazásokban](active-directory-saas-app-provisioning.md) 
-#### [Alkalmazások integrációjának oktatóanyagai](active-directory-saas-tutorial-list.md) 
+#### [Alkalmazások integrációjának oktatóanyagai](saas-apps/tutorial-list.md) 
 #### [Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz](manage-apps/use-scim-to-provision-users-and-groups.md) 
 #### [Attribútumleképezések testreszabása](active-directory-saas-customizing-attribute-mappings.md) 
 #### [Kifejezések írása attribútumleképezésekhez](active-directory-saas-writing-expressions-for-attribute-mappings.md) 

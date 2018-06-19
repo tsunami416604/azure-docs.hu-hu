@@ -69,6 +69,8 @@
       href: post-to-custom-topic.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
+    - name: Eseménykézbesítés kezelése
+      href: manage-event-delivery.md
     - name: Eseménykézbesítés figyelése
       href: monitor-event-delivery.md
     - name: Esemény-előfizetések lekérdezése

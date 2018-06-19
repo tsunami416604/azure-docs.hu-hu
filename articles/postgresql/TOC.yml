@@ -146,7 +146,21 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: Videók
-      href: videos.md
+      items:
+        - name: Termékvideók
+          href: videos.md
+        - name: Útmutató videósorozat
+          items:
+            - name: Ismerje meg a termékek jellemzőit és előnyeit
+              href: 'https://aka.ms/postg-intro-vid'
+            - name: PostgreSQL-alkalmazások migrálása az Azure-ba
+              href: 'https://aka.ms/postg-migrate-vid'
+            - name: Intelligens alkalmazások létrehozása a Cognitive Services szolgáltatással
+              href: 'https://aka.ms/postg-cogsvs-vid'
+            - name: Tárolók csatlakoztatása az OSBA használatával
+              href: 'https://aka.ms/postg-osba-vid'
+            - name: Az alkalmazások adatainak csatlakoztatása a Power BI-hoz
+              href: 'https://aka.ms/postg-powerbi-vid'
     - name: Visszajelzési fórum
       href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
     - name: Régiónkénti elérhetőség

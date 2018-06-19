@@ -1,5 +1,5 @@
-- name: Hozzáférés kezelésének áttekintése
-  href: manage-access-to-azure-resources.md
+- name: Szerepköralapú hozzáférés-vezérlés dokumentációja
+  href: index.yml
   items: null
 - name: Áttekintés
   items:
@@ -36,6 +36,7 @@
     - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
       href: conditional-access-azure-management.md
 - name: Útmutatók
+  expanded: true
   items:
     - name: Hozzáférés kezelése
       items:

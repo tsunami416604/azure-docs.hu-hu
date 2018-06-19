@@ -16,6 +16,8 @@
   items:
     - name: Az Azure CDN hozzáadása webalkalmazáshoz
       href: cdn-add-to-web-app.md
+    - name: Blobok elérése egyéni tartomány használatával HTTPS-kapcsolaton keresztül
+      href: cdn-storage-custom-domain-https.md
     - name: Egyéni tartomány hozzáadása
       href: cdn-map-content-to-custom-domain.md
     - name: HTTPS konfigurálása egyéni tartományon

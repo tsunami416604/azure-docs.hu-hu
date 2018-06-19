@@ -97,6 +97,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: Kölcsönös tanúsítványhitelesítés
           href: api-management-howto-mutual-certificates.md
+        - name: Protokollok és titkosítások kezelése
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: A fejlesztői élmény testreszabása
       items:
         - name: Lap tartalmának és elrendezésének módosítása
