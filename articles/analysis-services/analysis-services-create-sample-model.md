@@ -1,68 +1,79 @@
 ---
-title: Adja hozzá az Azure Analysis Services-kiszolgáló egy minta táblázatos modell |} Microsoft Docs
-description: 'Útmutató: a minta modell hozzáadása az Azure Analysis Servicesben.'
+title: Oktatóanyag – Egyszerű mintamodell hozzáadása Azure Analysis Services-kiszolgálóhoz a portál használatával | Microsoft Docs
+description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ismerteti az Azure Analysis Servicesben.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
-ms.topic: conceptual
-ms.date: 04/12/2018
+ms.service: azure-analysis-services
+ms.topic: tutorial
+ms.date: 05/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 27353ff8c05f44b76304279e09a8a8d817041d78
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: f44e33d2b735b6743b2b74760f816442c2cd17fe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596787"
 ---
-# <a name="tutorial-add-a-sample-model"></a>Oktatóanyag: A minta modell hozzáadása
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
 
-Ebben az oktatóanyagban ad hozzá egy minta Adventure Works modell a kiszolgálóhoz. A minta modell modellezési oktatóanyag az Adventure Works Internet értékesítési (1200-as) adatok befejezett verziója telepítve. Egy minta modell akkor hasznos, a modell kezelése teszteléshez, eszközök és az ügyfélalkalmazások csatlakoznak, és a modell-adatok lekérdezése.
+Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modelladatbázist adhat hozzá kiszolgálójához. A mintamodell az Adventure Works Internet Sales (1200) minta-adatmodell kiegészített változata. A mintamodellek a modellkezelés, az eszközökhöz és ügyfélalkalmazásokhoz való kapcsolódás és a modelladatok lekérdezése tesztelésekor hasznosak. Ez az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) használja a következőkhöz: 
+
+> [!div class="checklist"]
+> * Kiegészített táblázatos adatmodell-minta hozzáadása kiszolgálóhoz 
+> * Csatlakozás a modellhez az SSMS használatával
+
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-- Egy Azure Analysis Services-kiszolgálóhoz
+- Egy Azure Analysis Services-kiszolgáló. További tudnivalók: [Kiszolgáló létrehozása – Portal](analysis-services-create-server.md).
 - Kiszolgáló-rendszergazdai engedélyek
+- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be a [portálra](https://portal.azure.com/).
 
-## <a name="create-a-sample-model"></a>A minta modell létrehozása
+## <a name="add-a-sample-model"></a>Mintamodell hozzáadása
 
-1. A kiszolgáló **áttekintése**, kattintson a **új modell**.
+1. A kiszolgáló **Áttekintés** lapján kattintson az **Új modell** lehetőségre.
 
-    ![A minta modell létrehozása](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
+    ![Mintamodell létrehozása](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. A **új modell** > **válassza ki a datasource**, győződjön meg arról **az adatokat** van kiválasztva, és kattintson **Hozzáadás**.
+2. Győződjön meg arról, hogy az **Új modell** > **Adatforrás kiválasztása** alatt a **Mintaadatok** van kijelölve, és kattintson a **Hozzáadás** gombra.
 
-    ![Válassza ki a mintaadatokat](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
+    ![Mintaadatok kijelölése](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
-3. A **áttekintése**, ellenőrizze a `adventureworks` minta jön létre.
+3. Az **Áttekintés** lapon ellenőrizheti, hogy az `adventureworks` mintamodell hozzáadása megtörtént.
 
-    ![Válassza ki a mintaadatokat](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
+    ![Mintaadatok kijelölése](./media/analysis-services-create-sample-model/aas-create-sample-verify.png)
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A minta modell által használt a gyorsítótár-memória-erőforrások. Ha nem használ a minta modell teszteléséhez, a kiszolgáló kell eltávolítani.
+A mintamodell gyorsítótár-memória erőforrásokat használ. Ha a mintamodellt nem használja teszteléshez, akkor ajánlott eltávolítani a kiszolgálóról.
 
-> [!NOTE]
-> A lépések azt ismertetik, hogyan modell törlése egy kiszolgálóról szolgáltatáshoz az SSMS használatával. A modell a Tervező webszolgáltatáshoz előzetes is törölheti.
+Egy modell a következő lépések alapján törölhető egy kiszolgálóról az SSMS használatával. A modellek az előzetes verziójú Web designer funkció használatával is törölhetők.
 
-1. Az SSMS > **Object Explorer**, kattintson a **Connect** > **Analysis Services**.
+1. Az SSMS > **Object Explorerben** kattintson a **Csatlakozás** > **Analysis Services** lehetőségre.
 
-2. A **kapcsolódás a kiszolgálóhoz**, illessze be a kiszolgáló nevét, majd a **hitelesítési**, válassza a **Active Directory - MFA-támogatással rendelkező univerzális**, megadja a felhasználónevét, és kattintson **Csatlakozás**.
+2. A **Csatlakozás kiszolgálóhoz** panelen illessze be a kiszolgáló nevét, majd a **Hitelesítés** módjaként válassza az **Active Directory – univerzális, MFA-támogatással** lehetőséget, adja meg felhasználónevét, végül kattintson a **Csatlakozás** gombra.
 
     ![Bejelentkezés](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. A **Object Explorer**, kattintson a jobb gombbal a `adventureworks` adatbázis mintát, és kattintson a **törlése**.
+3. Az **Object Explorerben** kattintson a jobb gombbal az `adventureworks` mintaadatbázisra, majd kattintson a **Törlés** elemre.
 
-    ![A minta-adatbázis törlése](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
+    ![Mintaadatbázis törlése](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
 ## <a name="next-steps"></a>További lépések 
 
-[Csatlakozás a Power BI Desktop](analysis-services-connect-pbi.md)   
-[Adatbázis-szerepkörök és a felhasználók kezelése](analysis-services-database-users.md)
+Ebben az oktatóanyagban azt tanulhatta meg, hogyan adhat hozzá egyszerű mintamodellt kiszolgálójához. Most, hogy már rendelkezik modelladatbázissal, csatlakozhat hozzá az SQL Server Management Studióból, és hozzáadhat felhasználói szerepköröket. További tudnivalókat talál a következő oktatóanyagban.
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása](analysis-services-database-users.md)
 
 

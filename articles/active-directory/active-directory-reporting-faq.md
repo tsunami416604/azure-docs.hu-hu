@@ -3,24 +3,24 @@ title: Azure Active Directory jelentéskészítés – gyakori kérdések |} Mic
 description: Az Azure Active Directory reporting gyakran ismételt kérdések.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf253e0b8451b3798360a657485289f089239c70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588590"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232362"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory jelentéskészítés – gyakori kérdések
 
@@ -72,7 +72,7 @@ Ez a cikk reporting Azure Active Directory (Azure AD) kapcsolatos gyakran feltet
 
 **K: hogyan sok rekord letölthető Azure-portálon?**
 
-**V:** legfeljebb 120 K rekordok tölthet le az Azure-portálon. A rekordok alapján vannak rendezve *legutóbbi* és alapértelmezés szerint le a legfrissebb 120 K rögzíti. 
+**V:** legfeljebb 5000 rekordok tölthet le az Azure-portálon. A rekordok alapján vannak rendezve *legutóbbi* és alapértelmezés szerint le a legfrissebb 5000 rögzíti. Rekord mérete nagyobb, mint 5000, adja meg a szűrési feltételeket, majd kattintson a *parancsfájl* gomb az Azure portálon. Ez letölti egy PowerShell-parancsfájlt, amely futtathatja a szűrési feltételeknek megfelelő összes rekordot egy CSV-fájl létrehozásához. PowerShell-parancsprogram futtatásához szükséges *felügyeleti üzemmód*. További információkért lásd: [töltse le a bejelentkezési tevékenységek](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
 
 ---
 
@@ -84,7 +84,7 @@ Ez a cikk reporting Azure Active Directory (Azure AD) kapcsolatos gyakran feltet
 
 **K: Hogyan tudom működtetni premium licenc?**
 
-**V:** lásd [Ismerkedés az Azure Active Directory Premium](active-directory-get-started-premium.md) a választ a kérdésére.
+**V:** lásd [Ismerkedés az Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md) a választ a kérdésére.
 
 ---
 

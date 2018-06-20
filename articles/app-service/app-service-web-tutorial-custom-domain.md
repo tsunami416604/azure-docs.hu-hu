@@ -16,11 +16,12 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 431268082b24d23289188f5422cd596dc5f37d30
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a9f1e66a4c55d866d9f174528eb4912c3b9391c0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714515"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni DNS-név leképezése az Azure Web Appsra
 
@@ -81,19 +82,19 @@ Az alkalmazás lapjának bal oldali navigációs sávján görgessen a **Beáll�
 
 ![Vertikális felskálázás menü](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem az **Ingyenes** szinten van. Az egyéni DNS nem támogatott az **Ingyenes** szinten. 
+Az alkalmazás jelenlegi tarifacsomagja kék szegéllyel van kiemelve. Győződjön meg arról, hogy az alkalmazás nem az **F1** szinten van. Az egyéni DNS nem támogatott az **F1** szinten. 
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Ha az App Service-csomag **Ingyenes**, zárja be a **Tarifacsomag kiválasztása** oldalt, és folytassa a [CNAME rekord leképezése](#cname) szakasszal.
+Ha az App Service-csomag nem az **F1** szinten van, zárja be a **Vertikális felskálázás** oldalt és folytassa a [CNAME rekord leképezése](#cname) lépéssel.
 
 <a name="scaleup"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 
-Válasszon ki egy nem ingyenes szintet (**Közös**, **Alapszintű**, **Standard** vagy **Prémium**). 
+Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
 
-Kattintson a **Kiválasztás** gombra.
+Kattintson az **Alkalmaz** gombra.
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

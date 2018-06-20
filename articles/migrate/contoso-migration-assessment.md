@@ -3,17 +3,16 @@ title: Contoso áttelepítése az Azure-bA helyszíni munkaterhelések értékel
 description: Ismerje meg, hogyan Contoso értékelésére azok a helyszíni gépeket az Azure-bA az Azure-áttelepítést és az adatbázis működő áttelepítéshez
 services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 8568668032a97e574a85758080818311839a9caa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fb987c95afc0f77386f4f78c44f3c6825f86ee43
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301133"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232499"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: a helyszíni munkaterhelések Azure áttelepítés ellenőrzéséhez
 
@@ -23,15 +22,15 @@ Ez a dokumentum a dokumentum hogyan fiktív cég Contoso áttelepíti a Microsof
 
 **Cikk** | **Részletek** | **Állapot**
 --- | --- | ---
-A következő cikket: 1: áttekintés | Contoso-áttelepítési stratégia, a cikk adatsorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
-2. cikk: Az Azure-infrastruktúra telepítése | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Ugyanabban az infrastruktúrában található összes Contoso áttelepítési forgatókönyvek szolgál. | Elérhető
-3. cikk: Felmérheti a helyszíni erőforrások (Ez a cikk) | Bemutatja, hogyan Contoso fut-e a helyszíni kétrétegű SmartHotel alkalmazásuk VMware futó értékelését. Ezek értékeléséhez app virtuális gépek a [Azure áttelepítése](migrate-overview.md) szolgáltatás, és az alkalmazás SQL Server-adatbázis a [Azure adatbázis áttelepítési Segéd](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
-4. cikk: Azonosítóterületen (növekedési-és-shift) Azure virtuális gépek és a kezelt SQL-példány | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Áttelepítés után az alkalmazás előtér VM használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás adatbázis használata a [Azure-adatbázis áttelepítése](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás kezelt SQL-példány át. | Elérhető
-5. cikk: Azonosítóterületen (növekedési-és-shift) az Azure virtuális gépen | Bemutatja, hogyan Contoso át SmartHotel alkalmazásuk csak a Site Recovery segítségével virtuális gépeket.
-Cikk 6: Azonosítóterületen (növekedési-és-shift) és az Azure virtuális gépeken futó SQL Server rendelkezésre állási csoportok | Bemutatja, hogyan Contoso áttelepíti a SmartHotel alkalmazást. Azok a Site Recovery segítségével telepíti át az alkalmazás virtuális gépek és az adatbázis áttelepítési szolgáltatás áttelepítése az app-adatbázis egy SQL Server rendelkezésre állási csoporthoz. | Elérhető
-7. cikk: Azonosítóterületen (növekedési-és-shift) Azure virtuális gépek és az Azure-beli MySQL kiszolgáló | Bemutatja, hogyan Contoso áttelepíti a SmartHotel app virtuális gépek áttelepítéséhez a Site Recovery és MySQL munkaterület használatával (biztonsági mentése és visszaállítása) Azure-beli MySQL Server-példány. | Elérhető
+[A következő cikket: 1: áttekintés](contoso-migration-overview.md) | Contoso-áttelepítési stratégia, a cikk adatsorozat és a mintaalkalmazások használjuk áttekintést nyújt. | Elérhető
+[2. cikk: Az Azure-infrastruktúra telepítése](contoso-migration-infrastructure.md) | Ismerteti, hogyan Contoso előkészíti a helyszíni és az Azure-infrastruktúra az áttelepítéshez. Ugyanabban az infrastruktúrában található összes Contoso áttelepítési forgatókönyvek szolgál. | Elérhető
+3. cikk: Felmérheti a helyszíni erőforrások (Ez a cikk)  | Bemutatja, hogyan Contoso fut-e a helyszíni kétrétegű SmartHotel alkalmazásuk VMware futó értékelését. Ezek értékeléséhez app virtuális gépek a [Azure áttelepítése](migrate-overview.md) szolgáltatás, és az alkalmazás SQL Server-adatbázis a [Azure adatbázis áttelepítési Segéd](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Elérhető
+[4. cikk: Áthelyezési Azure virtuális gépek és a felügyelt SQL-példány](contoso-migration-rehost-vm-sql-managed-instance.md) | Bemutatja, hogyan Contoso áttelepíti az Azure-bA a SmartHotel alkalmazást. Áttelepítés után az alkalmazás előtér VM használatával [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), és az alkalmazás adatbázis használata a [Azure-adatbázis áttelepítése](https://docs.microsoft.com/azure/dms/dms-overview) szolgáltatás kezelt SQL-példány át. | Elérhető
+[Cikk 5: Az Azure virtuális gépek áthelyezési](contoso-migration-rehost-vm.md) | Bemutatja, hogyan Contoso át SmartHotel alkalmazásuk csak a Site Recovery segítségével virtuális gépeket.
+[Cikk 6: Azure virtuális gépek és az SQL Server rendelkezésre állási csoportok áthelyezési](contoso-migration-rehost-vm-sql-ag.md) | Bemutatja, hogyan Contoso áttelepíti a SmartHotel alkalmazást. Azok a Site Recovery segítségével telepíti át az alkalmazás virtuális gépek és az adatbázis áttelepítési szolgáltatás áttelepítése az app-adatbázis egy SQL Server rendelkezésre állási csoporthoz. | Elérhető
+[7. cikk: Áthelyezési egy Linux-alkalmazást az Azure virtuális gépen](contoso-migration-rehost-linux-vm.md) | Bemutatja, hogyan Contoso áttelepíti a osService Linux-alkalmazásokhoz az Azure Site Recovery használatával.
+[8. cikk: Áthelyezési egy Linux alkalmazást az Azure virtuális gépek és az Azure-beli MySQL kiszolgáló](contoso-migration-rehost-linux-vm-mysql.md) | Bemutatja, hogyan Contoso áttelepíti az osService Linux-alkalmazást, a virtuális gép áttelepítése a Site Recovery és MySQL munkaterület használatával történő áttelepítésének (Azure MySQL Server-példány. | Elérhető
 
-Ha szeretné használni a mintaalkalmazást a cikk ezt használja, való nyílt forráskódú, és letöltheti a [github](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -41,7 +40,7 @@ A láb Nyugat-európai és jobb megértése érdekében az érintett, akkor fog 
 
 **Alkalmazás neve** | **Platform** | **Alkalmazás rétegek** | **Részletek**
 --- | --- | --- | ---
-SmartHotel<br/><br/> Kezeli a Contoso utazás követelmények | Windows fut az SQL Server-adatbázis | Egy virtuális gép (WEBVM), és az SQL Server fut, a másik virtuális gép (SQLVM) rendszeren futó előtér ASP.NET-webhely alkalmazás kétféle | Virtuális gépek a VMware vCenter-kiszolgáló által kezelt ESXi-állomáson futó.<br/><br/> A mintaalkalmazás letölthető [github](https://github.com/Microsoft/SmartHotel360).
+SmartHotel<br/><br/> Kezeli a Contoso utazás követelmények | Windows fut az SQL Server-adatbázis | Egy virtuális gép (WEBVM), és az SQL Server fut, a másik virtuális gép (SQLVM) rendszeren futó előtér ASP.NET-webhely alkalmazás kétféle | Virtuális gépek a VMware vCenter-kiszolgáló által kezelt ESXi-állomáson futó.<br/><br/> A mintaalkalmazás letölthető [GitHub](https://github.com/Microsoft/SmartHotel360).
 OSTicket<br/><br/> Contoso szolgáltatás ügyfélszolgálati alkalmazás | Futó Linux/Apache, a egy MySQL PHP (LÁMPA). | Egy virtuális gép (OSTICKETWEB), és a MySQL-adatbázis, a másik virtuális gép (OSTICKETMYSQL) futó előtér PHP-webhely alkalmazás kétféle | Az app service alkalmazások vevői által nyomon követésére szolgál problémák belső az alkalmazottak és a külső ügyfeleket.<br/><br/> A mintaalkalmazás letölthető [GitHub](https://github.com/osTicket/osTicket).
 
 ## <a name="current-architecture"></a>Aktuális architektúrája
@@ -545,7 +544,7 @@ Ez a nézet a virtuális gépeknek az Azure-ban való futtatásával kapcsolatos
 - Az értékelés befejezése után a Contoso megőrzi a jövőbeli értékelésének Azure áttelepítési a készülék.
 - A virtuális gép VMware kikapcsolása. Akkor lesz indítsa el újra további virtuális gépek értékelésekor.
 - Az Azure-ban a Contoso áttelepítési projekt fogja vezetnek.  Az ContosoFailoverRG erőforráscsoport keleti Velünk Azure régióban jelenleg telepítették.
--  A gyűjtő VM 180 napos próbaverziója licenccel rendelkezik. Ha ezt a határt lejár azok kell letölteni, és állítsa be a gyűjtő újra.
+-  A gyűjtő VM 180 napos próbaverziója licenccel rendelkezik. Ha ezt a határt lejár, akkor kell letölteni, és állítsa be a gyűjtő újra.
 
 
 ## <a name="conclusion"></a>Összegzés

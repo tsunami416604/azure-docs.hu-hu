@@ -3,17 +3,18 @@ title: Hozzon létre egy skillset kognitív keresési folyamat (Azure Search) |}
 description: Adja meg az adatok kinyerése, feldolgozás, a természetes nyelvű, vagy kép elemzése lépéseket kiegészítése és strukturált információk kinyerése a adatait az Azure Search használja.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 816951ac128fb76d748262cfbc5f064a44e6376c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640926"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268233"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Egy skillset dúsító-feldolgozási folyamat létrehozása
 
@@ -106,11 +107,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -210,11 +211,11 @@ Az egyéni Bing entitás keresési enricher szerkezete visszahívása:
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       }
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -228,9 +229,9 @@ Az egyéni Bing entitás keresési enricher szerkezete visszahívása:
 
 Ez a definíció egyéni szakértelem, amely behívja a webes API-k a dúsító folyamatban. Minden egyes szervezet névvel rendelkező entitás felismerés által azonosított szakértelem hívja a webes API-k, hogy a szervezet leírása található. A vezénylés a hívás a webes API-t és a kapott információkat flow belsőleg kezeli a dúsító motor. Azonban az inicializálás szükséges az egyéni API felület meghívásakor kell megadni (például uri, httpHeaders és a bemenetek várt) JSON-ban. Egyéni webes API-k a dúsító adatcsatorna létrehozásakor útmutatóért lásd: [hogyan adhat meg egy egyéni felületet](cognitive-search-custom-skill-interface.md).
 
-Figyelje meg, hogy a "context" mező értéke ```"/document/content/organizations/*"``` csillaggal, azaz a dúsító lépés nevezik *minden* a szervezet ```"/document/content/organizations"```. 
+Figyelje meg, hogy a "context" mező értéke ```"/document/organizations/*"``` csillaggal, azaz a dúsító lépés nevezik *minden* a szervezet ```"/document/organizations"```. 
 
-Kimeneti, ebben az esetben vállalati leírását, létrejön egy szervezet azonosított. A Leírás (például a kulcs kifejezés kibontási) egy alárendelt lépésben kontextusban való megnevezésekor szeretné használni az elérési út ```"/document/content/organizations/*/description"``` ehhez. 
+Kimeneti, ebben az esetben vállalati leírását, létrejön egy szervezet azonosított. A Leírás (például a kulcs kifejezés kibontási) egy alárendelt lépésben kontextusban való megnevezésekor szeretné használni az elérési út ```"/document/organizations/*/description"``` ehhez. 
 
 ## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Fokozatokká kívüli strukturálatlan adatok struktúra létrehozása
 

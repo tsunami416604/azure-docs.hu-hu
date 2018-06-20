@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/4/2017
 ms.author: saurse
-ms.openlocfilehash: aee0a3044ea4d1b9b867e795e94a37f8835ad212
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 89a39f6189367f91248b3868b1e1cb9f6abf0407
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605756"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228390"
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>Azure Backup szolgáltatás ügynöke konfigurációs és regisztrációs problémák elhárítása
 ## <a name="recommended-steps"></a>Javasolt lépések
@@ -36,13 +36,19 @@ Tekintse meg a javasolt művelet a következő táblázatok hárítsa el a konfi
 
 | Hiba részletei | Lehetséges okok | Javasolt teendők |
 | ---     | ---     | ---    |      
-| **Hiba történt** </br>*Nem sikerült beállítani a titkosítási kulcs biztonságos biztonsági mentés. Belső szolgáltatási hiba "érvénytelen bemeneti hiba miatt" az aktuális művelet nem sikerült. Próbálkozzon újra a művelettel valamivel később. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási*. |Kiszolgáló már regisztrálva van egy másik tárolóban.| Szüntesse meg a kiszolgáló a tárolóból, és regisztrálja újra.
+| **Hiba történt** </br>*Nem sikerült beállítani a titkosítási kulcs biztonságos biztonsági másolatok aktiválás nem sikerült teljesen, de a titkosítási jelszót a rendszer mentette a következő fájl*. |<li>Kiszolgáló már regisztrálva van egy másik tárolóban.<li>Konfigurálása során a hozzáférési kód sérült| Szüntesse meg a kiszolgáló a tárolóból, és regisztrálja újra az új jelszót.
 
 ## <a name="the-activation-did-not-complete-successfully-the-current-operation-failed-due-to-an-internal-service-error-0x1fc07"></a>Az aktiválás sikertelen volt. Az aktuális művelet sikertelen volt, mert belső szolgáltatási hiba [0x1FC07]
 
 | Hiba részletei | Lehetséges okok | Javasolt teendők |
 | ---     | ---     | ---    |          
-| **Hiba történt** </br><ol><li>*Az aktiválás sikertelenül zárult. Az aktuális művelet [0x1FC07] belső szolgáltatási hiba miatt sikertelen volt. Próbálkozzon újra a művelettel valamivel később. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához* <li>*Hiba történt a 34506. Ezen a számítógépen tárolt titkosítási jelszó nem megfelelően van beállítva*. | <li> Az ideiglenes mappa nincs elegendő lemezterület a köteten. <li> Az ideiglenes mappa helytelenül került át egy másik helyre. <li> A OnlineBackup.KEK fájl hiányzik. | <li>Helyezze át az ideiglenes mappa vagy a gyorsítótár helye olyan kötetet, amelyen a biztonsági mentési adatok teljes mérete 5 – 10 %-ának megfelelő szabad lemezterület. A gyorsítótár helye áthelyezni, tekintse meg a lépéseket [az Azure Backup szolgáltatás ügynökének kapcsolatos kérdéseket](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Gondoskodjon arról, hogy a OnlineBackup.KEK fájlt. <br>*Az alapértelmezett hely az ideiglenes mappa vagy a gyorsítótár elérési útjának: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+| **Hiba történt** </br><ol><li>*Az aktiválás sikertelenül zárult. Az aktuális művelet [0x1FC07] belső szolgáltatási hiba miatt sikertelen volt. Próbálkozzon újra a művelettel valamivel később. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához*| <li> Az ideiglenes mappa nincs elegendő lemezterület a köteten. <li> Az ideiglenes mappa helytelenül került át egy másik helyre. <li> A OnlineBackup.KEK fájl hiányzik. | <li>Frissítés a [legújabb verziójára](http://aka.ms/azurebackup_agent) a MARS Agent.<li>Helyezze át az ideiglenes mappa vagy a gyorsítótár helye olyan kötetet, amelyen a biztonsági mentési adatok teljes mérete 5 – 10 %-ának megfelelő szabad lemezterület. A gyorsítótár helye áthelyezni, tekintse meg a lépéseket [az Azure Backup szolgáltatás ügynökének kapcsolatos kérdéseket](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Gondoskodjon arról, hogy a OnlineBackup.KEK fájlt. <br>*Az alapértelmezett hely az ideiglenes mappa vagy a gyorsítótár elérési útjának: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+  
+## <a name="error-34506-the-encryption-passphrase-stored-on-this-computer-is-not-correctly-configured"></a>Hiba történt a 34506. Ezen a számítógépen tárolt titkosítási jelszó nem megfelelően van beállítva
+
+| Hiba részletei | Lehetséges okok | Javasolt teendők |
+| ---     | ---     | ---    |          
+| **Hiba történt** </br><ol><li>*Hiba történt a 34506. Ezen a számítógépen tárolt titkosítási jelszó nem megfelelően van beállítva*. | <li> Az ideiglenes mappa nincs elegendő lemezterület a köteten. <li> Az ideiglenes mappa helytelenül került át egy másik helyre. <li> A OnlineBackup.KEK fájl hiányzik. | <li>Frissítés a [legújabb verziójára](http://aka.ms/azurebackup_agent) a MARS Agent.<li>Helyezze át az ideiglenes mappa vagy a gyorsítótár helye olyan kötetet, amelyen a biztonsági mentési adatok teljes mérete 5 – 10 %-ának megfelelő szabad lemezterület. A gyorsítótár helye áthelyezni, tekintse meg a lépéseket [az Azure Backup szolgáltatás ügynökének kapcsolatos kérdéseket](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Gondoskodjon arról, hogy a OnlineBackup.KEK fájlt. <br>*Az alapértelmezett hely az ideiglenes mappa vagy a gyorsítótár elérési útjának: C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.  
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.

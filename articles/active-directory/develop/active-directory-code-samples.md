@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 299e0d4fa53f9b8a2aef2fc881b136aa41aacfe4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5d7f0d1fc32f18991be6614bb7661b63570a8700
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157775"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264922"
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Az Azure Active Directory-Kódminták (V1 végpont)
 
@@ -70,7 +70,7 @@ PHP | | [php-graphapi-webalkalmazás](https://github.com/Azure-Samples/active-di
 
 A következő minták bemutatják, hogyan szerepköralapú hozzáférés-vezérlés, amely korlátozni a hozzáférést a webes alkalmazás bizonyos felhasználókra bizonyos funkciók végrehajtásához. A felhasználók jogosultak a attól függően, hogy az Azure AD-csoport vagy szerepkör tartozik.
 
-Platform | Minta | Leírás
+Platform | Sample | Leírás
  -------- | ------------------- | ---------------------
 ASP.NET 4.5 | [DotNet-webalkalmazás-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) | A .NET 4.5 MVC webalkalmazás az Azure AD használó **csoportok** a hitelesítéshez
 ASP.NET 4.5 | [DotNet-webalkalmazás-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | A .NET 4.5 MVC webalkalmazás az Azure AD használó **szerepkörök** a hitelesítéshez
@@ -92,7 +92,7 @@ ASP.NET-webalkalmazás  | .NET / C# | Ügyfél-hitelesítő adatok |    | [DotNe
 
 A következő minta bemutatja, hogyan védi meg egy node.js webes API-t az Azure AD.
 
-Platform | Minta | Leírás
+Platform | Sample | Leírás
  -------- | ------------------- | ---------------------
 Node.js | [csomópont-webapi](https://github.com/Azure-Samples/active-directory-node-webapi) |  NodeJS webes API-t, amely az Azure AD használatával lett biztonságossá téve és OAuth 2.0 hozzáférési jogkivonatok.
 
@@ -109,9 +109,11 @@ ASP.NET 4.5 | [DotNet-webapi-onbehalfof-Kanada](https://github.com/azure-samples
 
 Ez a példa bemutatja, hogyan az Azure ad-vel védett egylapos alkalmazások írásával.
 
- Platform |  A Microsoft Graph hívások | A saját API-t
- -------- |  --------------------- | -------------------------
-A JavaScript (szögben kifejezett) vagy az ASP.NET 4.x |  | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)
+ Platform |  A Microsoft Graph hívások | A saját API-t | Egy másik webes API-t
+ -------- |  --------------------- | ------------------ | ----------------
+JavaScript vagy az ASP.NET 4.x |  | [JavaScript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+JavaScript (AngularJS) vagy az ASP.NET 4.x |  | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) |
+JavaScript (AngularJS) vagy az ASP.NET 4.x |  |  | [a cors singlepageapp angularjs](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
 ## <a name="other-microsoft-graph-samples"></a>Más Microsoft Graph-minták
 

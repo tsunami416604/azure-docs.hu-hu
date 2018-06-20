@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés-szabályozási az Azure Active Directory feltételes hozzáférés |} Microsoft Docs
+title: Mik azok a hozzáférés-vezérlést az Azure Active Directory feltételes hozzáférés? | Microsoft Docs
 description: Ismerje meg, hogyan hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés munkálatok.
 services: active-directory
 keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 85c91ee7a03df221b2bf591aca6bf937c98313c7
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723643"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232383"
 ---
-# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Hozzáférés-vezérlést az Azure Active Directory feltételes hozzáférés 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik azok a hozzáférés-vezérlést az Azure Active Directory feltételes hozzáférés? 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot a válasz ("Ehhez") okának indítására, a házirend ("Amikor ez történik,") megadása. 
 
@@ -173,6 +173,6 @@ A SharePoint korlátozott hozzáférést igényelnek kapcsolatos további tudniv
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
+- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [többtényezős hitelesítés megkövetelése adott alkalmazásokhoz az Azure Active Directory feltételes hozzáférésű](active-directory-conditional-access-app-based-mfa.md).
 
 - Ha készen áll a környezet feltételes hozzáférési házirend-beállításokkal, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md). 

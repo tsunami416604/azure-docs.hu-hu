@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: be8ff16b5383be19c1a8dc85f7afdf7506bfd4ce
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bb69c217c1038a66333e65629023357e5854d242
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587943"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265043"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD tartományi szolgáltatások hálózati szempontjai
 ## <a name="how-to-select-an-azure-virtual-network"></a>Egy Azure virtuális hálózat kiválasztása
@@ -69,7 +69,7 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 | --- | --- | --- |
 | 443 | Kötelező |Az Azure AD-bérlő-szinkronizálás |
 | 5986 | Kötelező | A tartomány kezelése |
-| 3389 | Optional | A tartomány kezelése |
+| 3389 | Kötelező | A tartomány kezelése |
 | 636 | Optional | Biztonságos LDAP (LDAPS) hozzáféréssel a felügyelt tartományhoz |
 
 **Port 443-as (szinkronizálási Azure AD-val)**
@@ -80,12 +80,13 @@ A következő portokat Azure AD tartományi szolgáltatások szolgáltatáshoz s
 **Port 5986-os (PowerShell-távelérés)**
 * PowerShell távoli eljáráshívás segítségével a felügyelt tartományok felügyeleti feladatok elvégzésére szolgál.
 * Kötelező a az NSG-t a porton keresztüli hozzáférést is. Ehhez a porthoz való hozzáférés, nélkül a felügyelt tartományok frissített, konfigurált, a biztonsági mentésben vagy figyelt nem lehet.
-* Ezt a portot, a következő forrás IP-címek befelé korlátozhatja: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161
+* Új tartományok és tartományok egy ARM virtuális hálózattal, korlátozhatja befelé ezt a portot, a következő forrás IP-címek: 52.180.179.108, 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212, 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141, 52.138.70.93, 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
+* A klasszikus virtuális hálózatot rendelkező tartományokhoz, korlátozhatja befelé ezt a portot, a következő forrás IP-címek: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161
 * A tartományvezérlők, a felügyelt tartományok általában figyelni a porton. A szolgáltatás megnyitja ezt a portot, a felügyelt tartományvezérlőkön, csak akkor, ha egy felügyeleti vagy karbantartási művelet kell végezhető el a felügyelt tartományra. Amint a művelet befejeződik, a szolgáltatás leáll ezt a portot, a felügyelt tartományvezérlőkön.
 
 **3389-es (távoli asztali verziók)**
 * A távoli asztali kapcsolatokat a felügyelt tartományok tartományvezérlők szolgál.
-* Ezen keresztül a NSG port megnyitása nem kötelező megadni.
+* Bejövő hozzáférés korlátozása a következő forrás IP-címek: 207.68.190.32/27, 13.106.78.32/27, 13.106.174.32/27, 13.106.4.96/27
 * Ez a port is nagy mértékben ki van kapcsolva a felügyelt tartomány marad. A módszer nem használata folyamatos, mivel a kezelési és figyelési feladatok végrehajtása használatával történik PowerShell távoli eljáráshívás. Csak az esemény ritkán fordul elő, amelyet a Microsoft számára a felügyelt tartományok speciális hibaelhárítás távolról történő csatlakozást ezt a portot használja. A port zárva van, amint a hibaelhárítási művelet be nem fejeződött.
 
 **Port a 636 (biztonságos LDAP)**

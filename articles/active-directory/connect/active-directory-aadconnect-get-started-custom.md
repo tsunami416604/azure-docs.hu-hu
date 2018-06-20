@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849991"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](active-directory-aadconnect-get-started-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -214,12 +216,11 @@ Egy számítógépen, amelyen telepítve vannak a csoportházirend-kezelési esz
 1.  Nyissa meg a csoportházirend-kezelési eszközöket.
 2.  Módosítsa azt a csoportházirendet, amelyik minden felhasználóra vonatkozni fog. Ilyen lehet például az alapértelmezett tartományi házirend.
 3.  Lépjen a **Felhasználói konfiguráció\Felügyeleti sablonok\Windows-összetevők\Internet Explorer\Internet vezérlőpult\Biztonság lapra**, és válassza ki a **Helyek zónákhoz való társításának listáját** az alábbi ábra szerint.
-4.  Engedélyezze a házirendet, és adja meg a következő két elemet a párbeszédpanelen.
+4.  Engedélyezze a szabályzatot, és adja meg a következő elemet a párbeszédpanelen.
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+    
 
 5.  Ennek a következőképpen kell kinéznie:  
 ![Intranet zónák](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
@@ -227,7 +228,7 @@ Egy számítógépen, amelyen telepítve vannak a csoportházirend-kezelési esz
 6.  Kattintson kétszer az **OK** gombra.
 
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS-összevonás konfigurálása
-Az AD FS konfigurálása az Azure AD Connecttel egyszerű feladat, amely mindössze néhány kattintást igényel. A konfigurálás előtt a következőkre van szükség.
+Az AD FS konfigurálása az Azure AD Connecttel egyszerű feladat, és mindössze néhány kattintást igényel. A konfigurálás előtt a következőkre van szükség.
 
 * Egy Windows Server 2012 R2 vagy újabb verziójú kiszolgálóra az összevonási kiszolgálóhoz, amelyen a távoli felügyelet engedélyezve van
 * Egy Windows Server 2012 R2 vagy újabb verziójú kiszolgálóra a webalkalmazás-proxyhoz, amelyen a távoli felügyelet engedélyezve van
@@ -303,7 +304,7 @@ Amikor kiválasztja az összevonandó tartományt, az Azure AD Connect megadja a
 >
 
 ## <a name="configuring-federation-with-pingfederate"></a>PingFederate-összevonás konfigurálása
-A PingFederate konfigurálása az Azure AD Connecttel egyszerű feladat, amely mindössze néhány kattintást igényel. A konfigurálás előtt a következőkre van szükség.  Azonban a következő előfeltételek megléte szükséges.
+A PingFederate konfigurálása az Azure AD Connecttel egyszerű feladat, és mindössze néhány kattintást igényel. Azonban a következő előfeltételek megléte szükséges.
 - PingFederate 8.4 vagy újabb verzió.  További információk: [PingFederate-integráció az Azure Active Directory és az Office 365 szolgáltatásokkal](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html).
 - Egy SSL-tanúsítványra az összevonási szolgáltatás használni kívánt nevéhez (például sts.contoso.com)
 

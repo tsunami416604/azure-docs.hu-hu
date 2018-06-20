@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: de8b354cf0199d36d5e0b1410a9f79d4a9e3e05c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359781"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608389"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Azure CDN hozzáadása egy Azure App Service-webalkalmazáshoz
 
@@ -35,7 +35,7 @@ Ismertetett témák:
 > [!div class="checklist"]
 > * CDN-végpont létrehozása.
 > * Gyorsítótárazott objektumok frissítése.
-> * Gyorsítótárazott verziók felügyelete lekérdezési karakterláncok használatával.
+> * Gyorsítótárazott verziók felügyelete lekérdezési sztringek használatával.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -55,6 +55,9 @@ A használni kívánt webalkalmazás létrehozásához kövesse a [statikus HTML
 
 Nyisson meg egy böngészőt, és keresse fel az [Azure Portalt](https://portal.azure.com).
 
+### <a name="dynamic-site-acceleration-optimization"></a>Dinamikus helygyorsítás optimalizálása
+Ha optimalizálni szeretné a CDN-végpontot a dinamikus helygyorsításhoz (DSA), akkor a [CDN-portál](cdn-create-new-endpoint.md) használatával kell létrehoznia a profilját és a végpontot. A [DSA-optimalizálásnak](cdn-dynamic-site-acceleration.md) köszönhetően a dinamikus tartalmakkal rendelkező weboldalak teljesítménye jelentősen javul. A CDN-végpont dinamikus helygyorsításhoz való optimalizálásával kapcsolatos további útmutatást a [CDN-végpontok konfigurálása a dinamikus fájlok kézbesítésének felgyorsításához](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files) című cikkben talál. Ha nem kívánja optimalizálni az új végpontot, akkor a webalkalmazás-portál használatával is létrehozhatja azt a következő szakaszban leírtak alapján. Fontos, hogy a **Verizon Azure CDN** típusú profilok esetén nem módosíthatja a CDN-végpont optimalizálását a végpont létrehozása után.
+
 ## <a name="create-a-cdn-profile-and-endpoint"></a>CDN-profil és -végpont létrehozása
 
 A bal oldali navigációs felületen válassza az **App Services** lehetőséget, majd válassza ki a [statikus HTML gyorsútmutató](../app-service/app-service-web-get-started-html.md) segítségével létrehozott alkalmazást.
@@ -64,9 +67,6 @@ A bal oldali navigációs felületen válassza az **App Services** lehetőséget
 Az **App Service** lap **Beállítások** területén válassza a **Hálózatkezelés > Az Azure CDN konfigurálása az alkalmazáshoz** lehetőséget.
 
 ![A CDN kiválasztása a portálon](media/cdn-add-to-web-app/portal-select-cdn.png)
-
-### <a name="dynamic-site-acceleration-optimization"></a>Dinamikus helygyorsítás optimalizálása
-Ha optimalizálni szeretné a CDN-végpontot a dinamikus helygyorsításhoz (DSA), akkor a CDN-portál használatával hozza létre közvetlenül a végpontot. A [DSA-optimalizálásnak](cdn-dynamic-site-acceleration.md) köszönhetően a dinamikus tartalmakkal rendelkező weboldalak teljesítménye jelentősen javul. A CDN-végpont dinamikus helygyorsításhoz való optimalizálásával kapcsolatos további információért lásd a [CD-végpontok a dinamikus fájlok kézbesítésének felgyorsításához való konfigurálásáról szóló részt](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). A **Verizon Azure CDN** típusú profilok esetén nem módosíthatja a CDN-végpont optimalizálását a végpont létrehozása után.
 
 Az **Azure Content Delivery Network** lapon adja meg az **Új végpont** beállításait az alábbi táblának megfelelően.
 
@@ -192,15 +192,15 @@ http://<endpointname>.azureedge.net/index.html
 
 További információkért lásd az [Azure CDN-végpontok végleges törléséről](../cdn/cdn-purge-endpoint.md) szóló cikket. 
 
-## <a name="use-query-strings-to-version-content"></a>Tartalmak verziószámozása lekérdezési karakterláncok használatával
+## <a name="use-query-strings-to-version-content"></a>Tartalmak verziószámozása lekérdezési sztringek használatával
 
 Az Azure CDN az alábbi gyorsítótárazási lehetőségeket kínálja:
 
-* Lekérdezési karakterláncok figyelmen kívül hagyása
-* Lekérdezési karakterláncok gyorsítótárazásának megkerülése
+* Lekérdezési sztringek figyelmen kívül hagyása
+* Lekérdezési sztringek gyorsítótárazásának megkerülése
 * Minden egyedi URL gyorsítótárazása 
 
-Az első az alapértelmezett beállítás, amely azt jelenti, hogy minden objektumnak csak egy gyorsítótárazott verziója van, függetlenül az URL-címben lévő lekérdezési karakterlánctól. 
+Az első az alapértelmezett beállítás, amely azt jelenti, hogy minden objektumnak csak egy gyorsítótárazott verziója van, függetlenül az URL-címben lévő lekérdezési sztringtől. 
 
 Az oktatóanyag ezen szakaszában a gyorsítótárazás működésének módosításával minden egyedi URL-címet gyorsítótárazni fog.
 
@@ -208,15 +208,15 @@ Az oktatóanyag ezen szakaszában a gyorsítótárazás működésének módosí
 
 Az Azure Portal **CDN-végpont** lapján válassza a **Gyorsítótár** lehetőséget.
 
-Válassza a **Minden egyedi URL-cím gyorsítótárazása** lehetőséget a **Lekérdezési karakterláncok gyorsítótárazásának működése** legördülő menüben.
+Válassza a **Minden egyedi URL-cím gyorsítótárazása** lehetőséget a **Lekérdezési sztringek gyorsítótárazásának működése** legördülő menüben.
 
 Kattintson a **Mentés** gombra.
 
-![Lekérdezési karakterláncok gyorsítótárazási működésének kiválasztása](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
+![Lekérdezési sztringek gyorsítótárazási működésének kiválasztása](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
 ### <a name="verify-that-unique-urls-are-cached-separately"></a>Az egyedi URL-címek külön gyorsítótárazásának ellenőrzése
 
-Nyissa meg a böngészőben a kezdőlapot a CDN-végpont címén úgy, hogy egy lekérdezési karakterláncot is hozzáad a címhez: 
+Nyissa meg a böngészőben a kezdőlapot a CDN-végpont címén úgy, hogy egy lekérdezési sztringet is hozzáad a címhez: 
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=1
@@ -233,26 +233,26 @@ git commit -am "version 3"
 git push azure master
 ```
 
-Böngészőben nyissa meg a CDN-végponti URL-címet egy új lekérdezési karakterlánccal, például a következővel: `q=2`. Az Azure CDN ekkor lekéri az aktuális *index.html* fájlt, és megjelenik a *V3* utótag. Ha azonban a `q=1` lekérdezési karakterlánccal nyitja meg a CDN-végpontot, a *V2* utótag látható.
+Böngészőben nyissa meg a CDN-végponti URL-címet egy új lekérdezési sztringgel, például a következővel: `q=2`. Az Azure CDN ekkor lekéri az aktuális *index.html* fájlt, és megjelenik a *V3* utótag. Ha azonban a `q=1` lekérdezési sztringgel nyitja meg a CDN-végpontot, a *V2* utótag látható.
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2
 ```
 
-![V3 a CDN-beli címben, 2. lekérdezési karakterlánc](media/cdn-add-to-web-app/v3-in-cdn-title-qs2.png)
+![V3 a CDN-beli címben, 2. lekérdezési sztring](media/cdn-add-to-web-app/v3-in-cdn-title-qs2.png)
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=1
 ```
 
-![V2 a CDN-beli címben, 1. lekérdezési karakterlánc](media/cdn-add-to-web-app/v2-in-cdn-title-qs1.png)
+![V2 a CDN-beli címben, 1. lekérdezési sztring](media/cdn-add-to-web-app/v2-in-cdn-title-qs1.png)
 
-Ez a kimenet mutatja, hogy a rendszer minden lekérdezési karakterláncot máshogy kezel:
+Ez a kimenet mutatja, hogy a rendszer minden lekérdezési sztringet máshogy kezel:
 
 * Korábban a q=1 volt használatban, amely a gyorsítótárazott tartalmakat adja vissza (V2).
 * A q=2 viszont új, ezért a webalkalmazás legfrissebb tartalmait kéri le és adja vissza (V3).
 
-További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal](../cdn/cdn-query-string.md).
+További információkért lásd: [Az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési sztringekkel](../cdn/cdn-query-string.md).
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -263,7 +263,7 @@ Az alábbiak elvégzését ismerte meg:
 > [!div class="checklist"]
 > * CDN-végpont létrehozása.
 > * Gyorsítótárazott objektumok frissítése.
-> * Gyorsítótárazott verziók felügyelete lekérdezési karakterláncok használatával.
+> * Gyorsítótárazott verziók felügyelete lekérdezési sztringek használatával.
 
 A CDN teljesítményének optimalizálását a következő cikkekben sajátíthatja el:
 

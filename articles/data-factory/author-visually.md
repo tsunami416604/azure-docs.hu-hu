@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725142"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265288"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factory Visual készítése
 Az Azure Data Factory felhasználói felület élmény (UX) lehetővé teszi vizuálisan hozhatnak létre és telepítését erőforrások az a data factory kód írása nélkül. Húzzon tevékenységeket a feldolgozási sor vásznon, hajtsa végre a teszt futtatása, debug ismételt, és telepítheti és figyelheti a folyamat futtatása. Kétféleképpen használatához a UX visual szerzői műveletek végrehajtásához:
@@ -63,11 +63,11 @@ A ablaktábla megjeleníti azokat a következő VSTS-kód tárház beállításo
 |:--- |:--- |:--- |
 | **Tárház típusa** | A VSTS kód tárház típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Visual Studio Team Services Git |
 | **Azure Active Directory** | Az Azure AD bérlő neve. | <your tenant name> |
-| **Visual Studio Team Services Account** | A VSTS-fiók nevét. Megkeresheti a VSTS-fiók nevére, `https://{account name}.visualstudio.com`. Is [jelentkezzen be a VSTS-fiókba](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil és a tárolóhelyekkel és a projektek. | \<a fiók neve > |
-| **ProjectName** | A VSTS-projekt nevét. Megkeresheti a VSTS projektnévre, `https://{account name}.visualstudio.com/{project name}`. | \<a VSTS-projekt neve > |
-| **RepositoryName** | A VSTS kód tárház nevét. VSTS-projektek Git tárhelyek kezelése a forráskódot, a projekt növekedésével tartalmaz. Hozzon létre egy új tárházat, vagy egy meglévő tárházon, amely már a projekthez. | \<a VSTS tárház neve > |
-| **Együttműködés ág** | A VSTS együttműködés fiókirodai, amely jelzi a közzététel. Alapértelmezés szerint van `master`. Abban az esetben, ha a másik fiókiroda erőforrásaihoz közzé szeretné tenni, módosítsa az. | \<az együttműködés ág neve > |
-| **Gyökérmappa** | A legfelső szintű mappa az VSTS együttműködés ágában. | \<a mappa neve > |
+| **Visual Studio Team Services Account** | A VSTS-fiók nevét. Megkeresheti a VSTS-fiók nevére, `https://{account name}.visualstudio.com`. Is [jelentkezzen be a VSTS-fiókba](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil és a tárolóhelyekkel és a projektek. | <your account name> |
+| **ProjectName** | A VSTS-projekt nevét. Megkeresheti a VSTS projektnévre, `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
+| **RepositoryName** | A VSTS kód tárház nevét. VSTS-projektek Git tárhelyek kezelése a forráskódot, a projekt növekedésével tartalmaz. Hozzon létre egy új tárházat, vagy egy meglévő tárházon, amely már a projekthez. | <your VSTS code repository name> |
+| **Együttműködés ág** | A VSTS együttműködés fiókirodai, amely jelzi a közzététel. Alapértelmezés szerint van `master`. Abban az esetben, ha a másik fiókiroda erőforrásaihoz közzé szeretné tenni, módosítsa az. | <your collaboration branch name> |
+| **Gyökérmappa** | A legfelső szintű mappa az VSTS együttműködés ágában. | <your root folder name> |
 | **Importálja a meglévő adat-előállító erőforrások tárházba** | Megadja, hogy a meglévő data factory erőforrások importálása a UX **vászonra szerzői** be egy VSTS Git-tárházat. Jelölje be a jelölőnégyzetet annak a data factory erőforrások importálnia kell a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (Ez azt jelenti, hogy a társított szolgáltatások és az adatkészletek exportálása külön JSONs be). Ha ez a mező nincs bejelölve, a nem importált a meglévő erőforrásokat. | Kijelölt (alapértelmezett) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurációs 2. módszer: UX szerzői vászonra

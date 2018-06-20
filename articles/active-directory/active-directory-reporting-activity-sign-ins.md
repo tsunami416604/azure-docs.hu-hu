@@ -3,25 +3,25 @@ title: Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Di
 description: A bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon – bevezetés
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588607"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232358"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -153,7 +153,7 @@ Letöltheti a bejelentkezési tevékenységek adatait, ha az Azure Portalon kív
 
 ![Letöltés](./media/active-directory-reporting-activity-sign-ins/71.png "Letöltés")
 
-A **Letöltés** gombra kattintva létrejön egy CSV-fájl a legutóbbi 5 ezer rekordból. Ha nagyobb rugalmasságra van szüksége, használhat szkriptet. Ha a **Szkript** elemre kattint, létrejön egy szkript, amely az összes beállított szűrőt tartalmazza. A technikai megvalósítás mellett a letölthető rekordok számát az [Azure Active Directory jelentésmegőrzési szabályzata](active-directory-reporting-retention.md) is korlátozza.  
+A **Letöltés** gombra kattintva létrejön egy CSV-fájl a legutóbbi 5 ezer rekordból. Ha nagyobb rugalmasságra van szüksége, használhat szkriptet. Kattintson a **parancsfájl** létrehoz egy PowerShell-parancsfájlt, amely tartalmazza az összes beállított szűrők. Töltse le és futtassa a parancsfájlt **felügyeleti üzemmód** a CSV-fájl létrehozásához. A technikai megvalósítás mellett a letölthető rekordok számát az [Azure Active Directory jelentésmegőrzési szabályzata](active-directory-reporting-retention.md) is korlátozza.  
 
 
 

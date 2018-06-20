@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory feltételes hozzáférési feltételek |} Microsoft Docs
-description: Tudnivalók a hozzárendelések használata a Azure Active Directory feltételes hozzáférési házirend indításához.
+title: Mik azok a feltételek Azure Active Directory feltételes hozzáférés? | Microsoft Docs
+description: Ismerje meg, hogyan feltételek használatával az Azure Active Directory feltételes hozzáférési házirend indít.
 services: active-directory
 keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34735141"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232379"
 ---
-# <a name="conditions-in-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférési feltételek 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Mik azok a feltételek Azure Active Directory feltételes hozzáférés? 
 
 A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory-conditional-access-azure-portal.md), szabályozhatja a hogyan engedéllyel rendelkező felhasználók hozzáférést a felhőalapú alkalmazásokat. A feltételes hozzáférési szabályzatot a válasz ("Ehhez") okának indítására, a házirend ("Amikor ez történik,") megadása. 
 
@@ -140,7 +140,7 @@ Ez a feltétel gyakori alkalmazási esetei házirendek, amelyek:
 
 - A szolgáltatás elérésével adott országokból vagy régiókból felhasználók hozzáférésének blokkolása. 
 
-További információkért lásd: [Azure Active Directory feltételes hozzáférési feltételek hely](active-directory-conditional-access-locations.md).
+További információkért lásd: [Mi az a hely feltétel az Azure Active Directory feltételes hozzáférés?](active-directory-conditional-access-locations.md)
 
 
 ## <a name="client-apps"></a>Ügyfélalkalmazások
@@ -241,7 +241,7 @@ Nem. Nincs az alapértelmezett házirend működésében nincs változás. A há
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
+- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [többtényezős hitelesítés megkövetelése adott alkalmazásokhoz az Azure Active Directory feltételes hozzáférésű](active-directory-conditional-access-app-based-mfa.md).
 
 - Ha készen áll a környezet feltételes hozzáférési házirend-beállításokkal, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md). 
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b9adae07bc95e385e9932250f7eb91115396f275
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193454"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714578"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
 
@@ -84,17 +84,17 @@ A webalkalmazás lapjának bal oldali navigációs sávján görgessen a **Beál
 
 ![Vertikális felskálázás menü](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-Ellenőrizze, hogy a webalkalmazás nem az **Ingyenes** vagy a **Megosztott** szinten van-e. A webalkalmazás aktuális tarifacsomagja sötétkék kerettel van kiemelve.
+Ellenőrizze, hogy a webalkalmazás nem az **F1** vagy a **D1** szinten van-e. A webalkalmazás aktuális tarifacsomagja sötétkék kerettel van kiemelve.
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-Az egyéni SSL nem támogatott az **Ingyenes** és a **Megosztott** szinten. Ha vertikális felskálázásra van szüksége, kövesse az alábbi szakaszban található lépéseket. Egyébként zárja be a **Tarifacsomag kiválasztása** oldalt, és folytassa [Az SSL-tanúsítvány feltöltése és kötése](#upload) című szakasszal.
+Az egyéni SSL nem támogatott az **F1** és a **D1** szinten. Ha vertikális felskálázásra van szüksége, kövesse az alábbi szakaszban található lépéseket. Egyébként zárja be a **Vertikális felskálázás** oldalt, és folytassa [Az SSL-tanúsítvány feltöltése és kötése](#upload) című szakasszal.
 
 ### <a name="scale-up-your-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 
-Válassza az **Alapszintű**, a **Standard** vagy a **Prémium** szintet.
+Válassza ki bármelyik nem ingyenes szintet (**B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
 
-Kattintson a **Kiválasztás** gombra.
+Kattintson az **Alkalmaz** gombra.
 
 ![Tarifacsomag kiválasztása](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 

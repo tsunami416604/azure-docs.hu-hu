@@ -14,53 +14,70 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ac5073d1abc32b7598a869750f9c5a801559e9e6
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294860"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264077"
 ---
 # <a name="update-the-sql-resource-provider"></a>Frissítés az SQL erőforrás-szolgáltató
-Új SQL erőforrás-szolgáltató lehet, hogy mikorra várható, Azure verem buildek frissítésekor. A meglévő adapter továbbra is működik, de javasolt frissítésére a legújabb buildjével a lehető leghamarabb. Ahhoz telepíteni kell a frissítéseket: verziók nem hagyható ki (a verziók listáját lásd: [telepíteni az erőforrás-szolgáltató Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
 
-Az erőforrás-szolgáltató használata frissíteni a *UpdateSQLProvider.ps1* parancsfájl. A folyamat hasonlít a folyamat egy erőforrás-szolgáltató telepítéséhez használt leírtak szerint a [telepíteni az erőforrás-szolgáltató](.\azure-stack-sql-resource-provider-deploy.md) cikk. A parancsfájl az erőforrás-szolgáltató a letöltés részét képezi.
+*A következőkre vonatkozik: Azure verem integrált rendszerek.*
 
-A *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális Gépet a legújabb erőforrás-szolgáltató kódot, és a beállítások áttelepítése a régi virtuális gépről az új virtuális Gépet. Telepítse át a beállításokat adatbázis és a helyet adó kiszolgáló adatait, és a szükséges DNS-rekordja.
+Új SQL erőforrás-szolgáltató lehet, hogy mikorra várható, Azure verem új buildverziót frissítésekor. Bár a meglévő adapter folytatja a működést, javasoljuk, minél hamarabb frissítése a legújabb buildjével.
 
-A parancsfájl a DeploySqlProvider.ps1 parancsfájl ugyanazokkal az argumentumokkal ismertetett használatát igényli. Adja meg itt tanúsítványt is. 
+>[!IMPORTANT]
+>Ahhoz, azok által kiadott frissítéseket kell telepíteni. Verziók nem hagyható ki. Tekintse meg a verziók listájában [telepíteni az erőforrás-szolgáltató Előfeltételek](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-Azt javasoljuk, hogy töltse le a legújabb Windows Server 2016 Core kép a piactér felügyelet alól. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy. A helyi függőségi elérési MSU-csomagot. Ha egynél több. MSU fájl található, a parancsfájl futtatása sikertelen lesz.
+## <a name="overview"></a>Áttekintés
 
-Az alábbiakban látható egy példa a *UpdateSQLProvider.ps1* parancsfájlt, amely a PowerShell-parancssorból futtatható. Győződjön meg arról, a fiók- és igény szerint módosíthatja: 
+Az erőforrás-szolgáltató frissítéséhez használja a *UpdateSQLProvider.ps1* parancsfájl. Ezt a parancsfájlt az új SQL erőforrás-szolgáltató a letöltés részét képezi. A frissítési folyamat hasonlít a folyamat, amellyel [telepíteni az erőforrás-szolgáltató](.\azure-stack-sql-resource-provider-deploy.md). A frissítés parancsfájl ugyanazokkal az argumentumokkal használja, mint a DeploySqlProvider.ps1 parancsfájl, és a tanúsítvány információk megadására lesz szüksége.
+
+### <a name="update-script-processes"></a>Frissítési parancsprogram folyamatok
+
+A *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális gép (VM) az erőforrás-szolgáltató legújabb kódját.
+
+>[!NOTE]
+>Azt javasoljuk, hogy töltse le a legújabb Windows Server 2016 Core kép a piactér felügyelet alól. Ha egy frissítés telepítésére van szüksége, elhelyezhet egy **egyetlen** MSU csomagot a helyi függőségi elérési úton. A parancsfájl futtatása sikertelen lesz, ha egynél több MSU fájl ezen a helyen.
+
+Miután a *UpdateSQLProvider.ps1* parancsfájlt hoz létre egy új virtuális Gépet, a parancsfájl a következő beállításokat áttelepíti a virtuális gép régi szolgáltató:
+
+* Adatbázis-információ
+* üzemeltetési kiszolgáló adatait
+* szükséges DNS-rekord
+
+### <a name="update-script-powershell-example"></a>PowerShell-mintaparancsfájl frissítése
+
+Szerkesztheti, és futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE. Ne felejtse el módosítani a fiók- és a saját környezetéhez szükséges módon.
 
 > [!NOTE]
-> A frissítési folyamat csak az integrált rendszerekre vonatkozik.
+> A frissítési folyamat csak az integrált Azure verem rendszerekre vonatkozik.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but this might have been changed at installation.
 $domain = "AzureStack"
 
-# For integrated systems, use the IP address of one of the ERCS virtual machines
+# For integrated systems, use the IP address of one of the ERCS virtual machines.
 $privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
 
-# The service admin account (can be Azure AD or AD FS).
+# The service administrator account (this can be Azure AD or AD FS).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new Resource Provider VM.
+# Set the credentials for the new resource provider VM.
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
-# And the cloudadmin credential required for privileged endpoint access.
+# Add the cloudadmin credential required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
@@ -74,25 +91,26 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -CloudAdminCredential $cloudAdminCreds `
   -PrivilegedEndpoint $privilegedEndpoint `
   -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+  -DependencyFilesLocalPath $tempDir\cert `
+
  ```
 
 ## <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 parameters
-Ezeket a paramétereket is megadhat a parancssorban. Ha nem, vagy bármely paraméter érvényesítése sikertelen, a szükséges paraméterek megadását kéri.
+
+A parancssorból a következő paramétereket is megadhat, a parancsfájl futtatásakor. Ha ezt elmulasztja, vagy bármely paraméter-ellenőrzés sikertelen, a program kéri, a szükséges paraméterek megadásához.
 
 | Paraméter neve | Leírás | Megjegyzés vagy az alapértelmezett érték |
 | --- | --- | --- |
 | **CloudAdminCredential** | A felhő rendszergazdájával, a kiemelt végpont eléréséhez szükséges hitelesítő adatait. | _Szükséges_ |
-| **AzCredential** | Az Azure-verem szolgáltatás rendszergazdai fiók hitelesítő adatait. Az Azure-verem telepítéséhez használt hitelesítő használja. | _Szükséges_ |
+| **AzCredential** | A verem Azure szolgáltatás-rendszergazdai fiók hitelesítő adatait. Az Azure-verem telepítéséhez használt hitelesítő használja. | _Szükséges_ |
 | **VMLocalCredential** | Az SQL erőforrás-szolgáltató VM a helyi rendszergazdai fiók hitelesítő adatait. | _Szükséges_ |
 | **PrivilegedEndpoint** | Az IP-cím vagy a kiemelt végpont DNS-nevét. |  _Szükséges_ |
-| **DependencyFilesLocalPath** | A .pfx fájl a könyvtárban kell elhelyezni. | _Nem kötelező_ (_kötelező_ több csomópont) |
+| **DependencyFilesLocalPath** | A tanúsítvány .pfx fájlját is ebben a könyvtárban kell helyezni. | _Egyetlen csomópont azonban kötelező több csomópontos a nem kötelező_ |
 | **DefaultSSLCertificatePassword** | A .pfx tanúsítvány jelszava. | _Szükséges_ |
 | **MaxRetryCount** | Ennyiszer azt szeretné, majd ismételje meg minden egyes művelet, ha hiba történik.| 2 |
 | **RetryDuration** |Az időkorlát másodpercben az újrapróbálkozások között. | 120 |
-| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrások (lásd az alábbi megjegyzések). | Nem |
+| **Eltávolítás** | Eltávolítja az erőforrás-szolgáltató és minden kapcsolódó erőforrásokat. | Nem |
 | **DebugMode** | Megakadályozza az automatikus tisztítás hiba esetén. | Nem |
-
 
 ## <a name="next-steps"></a>További lépések
 

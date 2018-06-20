@@ -11,11 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261321"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával (előzetes verzió)
 
@@ -43,7 +44,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * [Git](https://git-scm.com/downloads)
 * Aktív [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/get-started/#setup)
+* [Docker](https://docs.docker.com/install/)
 * Egy [Docker Hub-fiók](https://docs.docker.com/docker-id/)
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
@@ -193,9 +194,9 @@ A _deployment-container-image-name_ paraméter jelöli a Docker Hubon tárolt re
 
 ## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
 
-A függvénynek a kapcsolati karakterláncra az alapértelmezett tárfiókhoz való kapcsolódáshoz van szüksége. Ha az egyéni rendszerképet egy privát tárolófiókon teszi közzé, ehelyett ezeket az alkalmazásbeállításokat környezeti változókként kell megadnia a Dockerfile-ban az [ENV utasítás](https://docs.docker.com/engine/reference/builder/#env) vagy egy azzal egyenértékű utasítás használatával. 
+A függvénynek a kapcsolati sztringre az alapértelmezett tárfiókhoz való kapcsolódáshoz van szüksége. Ha az egyéni rendszerképet egy privát tárolófiókon teszi közzé, ehelyett ezeket az alkalmazásbeállításokat környezeti változókként kell megadnia a Dockerfile-ban az [ENV utasítás](https://docs.docker.com/engine/reference/builder/#env) vagy egy azzal egyenértékű utasítás használatával. 
 
-Ebben az esetben a `<storage_account>` a létrehozott tárfiók neve. Kérje le a kapcsolati karakterláncot az [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) paranccsal. Adja hozzá ezeket az alkalmazásbeállításokat a függvényalkalmazáshoz az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) paranccsal.
+Ebben az esetben a `<storage_account>` a létrehozott tárfiók neve. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) paranccsal. Adja hozzá ezeket az alkalmazásbeállításokat a függvényalkalmazáshoz az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) paranccsal.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \
@@ -226,7 +227,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Függvényalkalmazás üzembe helyezése a Docker Hubból.
 > * Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz.
 
-További információ az Azure Functions helyi fejlesztéséről az Azure Functions Core Tools használatával.
+Az alap App Service-platformba beépített folyamatos integrációs funkció engedélyezési módjának elsajátítása. Függvényalkalmazását úgy is konfigurálhatja, hogy a tároló a rendszerkép Docker Hubban történő frissítésekor újra legyen telepítve.
 
 > [!div class="nextstepaction"] 
-> [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
+> [Folyamatos üzembe helyezés a Web App for Containers használatával](../app-service/containers/app-service-linux-ci-cd.md)

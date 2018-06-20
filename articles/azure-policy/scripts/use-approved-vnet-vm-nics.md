@@ -15,15 +15,16 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 34b849a8df6fc1a7d16dd28890402ea748b9407d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2e6170ca81deeab7a692e1588c6975e8a6812b5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602346"
 ---
 # <a name="use-approved-vnet-for-vm-network-interfaces"></a>Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
 
-Ez a szabályzat megköveteli egy jóváhagyott virtuális hálózat használatát a hálózati adaptereken. Meg kell adnia a jóváhagyott virtuális hálózat azonosítóját.
+Ez a szabályzat megköveteli egy jóváhagyott virtuális hálózat használatát a hálózati adaptereken. A jóváhagyott virtuális hálózat azonosítóját Ön határozza meg.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -56,7 +57,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,7 +67,7 @@ az policy definition create --name 'vm-creation-in-approved-vnet' --display-name
 az policy assignment create --name <assignmentname> --scope <scope> --policy "vm-creation-in-approved-vnet"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.
+- További példák [Az Azure Policy sablonjai](../json-samples.md) oldalon.

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory, mi történik, ha eszköz feltételes hozzáférés – előzetes verzió |} Microsoft Docs
-description: Ismerje meg, hogyan tesztelheti az Azure Active Directory feltételes hozzáférési házirendek konfigurációját.
+title: Az Azure Active Directory feltételes hozzáférés újdonságai a mi Ha eszköze? – előzetes verzió |} Microsoft Docs
+description: Ismerje meg, hogyan tudja értelmezni a feltételes hozzáférési házirendek hatását a saját környezete.
 services: active-directory
 keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2c4ca3685d15ddd2446590e1ef297362f9aa52ee
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723830"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232341"
 ---
-# <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Az Azure Active Directory, mi történik, ha eszköz feltételes hozzáférés – előzetes
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Az Azure Active Directory feltételes hozzáférés újdonságai a mi Ha eszköze? – előzetes
 
 [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) egy Azure Active Directory (Azure AD), amelyek segítségével szabályozhatja, hogy hogyan funkció engedélyezett a felhasználók hozzáférést a felhőalapú alkalmazásokat. Honnan tudhatja mi történik az űrlap a feltételes hozzáférési szabályzatokat a környezetében? Ez a kérdés megválaszolásához használhatja a **feltételes hozzáférés mi történik, ha eszköz**.
 
@@ -121,7 +121,7 @@ A házirendekben, amelyek nem érvényesek a felhasználói listájában el, és
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
+- Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [többtényezős hitelesítés megkövetelése adott alkalmazásokhoz az Azure Active Directory feltételes hozzáférésű](active-directory-conditional-access-app-based-mfa.md).
 
 - Ha készen áll a környezet feltételes hozzáférési házirend-beállításokkal, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md). 
 

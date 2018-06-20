@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 729f510de59fe27761389fb1f6edb4025021565a
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: f68e05ba40827375fbd76448e38916c682075228
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35350063"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264009"
 ---
 # <a name="best-practices"></a>Ajánlott eljárások
 Az alkalmazás szerzői folyamat segítségével hozza létre a LUIS alkalmazását. 
@@ -114,4 +114,5 @@ Vegye fel a 10-es vagy 15 utterances képzési és a közzététel előtt. Amely
 ## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan [tervezze meg az alkalmazás](plan-your-app.md) az LUIS alkalmazásban.
-[LUIS]: luis-referencia-regions.md #luis-webhely
+
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c155e18ddc4f1713aa9c62a991f4e849e024c5da
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 88e6b1a64d4ceff64c1ee74a297e7af0c5a27379
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723660"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232506"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Gyakorlati tanácsok a feltételes hozzáférés az Azure Active Directoryban
 
@@ -31,7 +31,7 @@ A [Azure Active Directory (Azure AD) feltételes hozzáférés](active-directory
 - Amit érdemes tudnia 
 - Mi az ne funkciójára, amikor a feltételes hozzáférési szabályzatok konfigurálása. 
 
-Ez a cikk feltételezi, hogy Ön ismeri a fogalmakat és terminológiával leírt [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md)
+Ez a cikk feltételezi, hogy Ön ismeri a fogalmakat és terminológiával leírt [Mi az, hogy a feltételes hozzáférés az Azure Active Directoryban?](active-directory-conditional-access-azure-portal.md)
 
 
 
@@ -154,4 +154,4 @@ További információkért lásd: [klasszikus szabályzatokkal az Azure portálo
 
 ## <a name="next-steps"></a>További lépések
 
-Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [Ismerkedés a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal-get-started.md).
+Ha meg szeretné ismerni a feltételes hozzáférési házirend konfigurálása tudnivalókat [többtényezős hitelesítés megkövetelése adott alkalmazásokhoz az Azure Active Directory feltételes hozzáférésű](active-directory-conditional-access-app-based-mfa.md).

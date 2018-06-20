@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Azure CDN-gyorsítótárazási szabályok beállítása | Microsoft Docs
-description: Ebben az oktatóanyagban egy globális Azure CDN és egy egyéni gyorsítótárszabály beállítását ismertetjük.
+description: Ez az oktatóanyag egy globális Azure CDN-gyorsítótárszabály és egy egyéni gyorsítótárszabály beállítását ismerteti.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 4f586c47552c9c2bfa807120f99eb6cf170b5788
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4b5a6a44fe9271f6ff9627c1c5623f0031f23ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608967"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Oktatóanyag: Azure CDN-gyorsítótárazási szabályok beállítása
 
@@ -60,7 +61,7 @@ Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell h
 
 Hozzon létre egy globális gyorsítótárszabályt a következők szerint:
 
-1. A **Globális gyorsítótárszabályok** alatt a **Lekérdezési karakterláncok gyorsítótárazása** beállításaként adja meg a **Lekérdezési karakterláncok kihagyása** értéket.
+1. A **Globális gyorsítótárszabályok** alatt a **Lekérdezési sztringek gyorsítótárazása** beállításaként adja meg a **Lekérdezési sztringek kihagyása** értéket.
 
 2. Adja meg a **Gyorsítótárazás működése** beállításaként a **Beállítás hiányzó érték esetén** lehetőséget.
        

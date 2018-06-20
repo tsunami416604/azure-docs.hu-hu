@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d49cd0096eb173c0f483a7b7ab1f3def745f56a6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248809"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231610"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -39,7 +39,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | [Az automatikus biztonsági mentés](sql-database-automated-backups.md) | Igen | Igen |
 | [Automatikus hangolása (kényszerített)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| [Igen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatikus hangolása (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| Nem |
-| [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL adatbázis exportálása](sql-database-export.md) | Igen |
+| [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL adatbázis exportálása](sql-database-export.md) | Nem |
 | [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL adatbázis importálása](sql-database-import.md) | Nem |
 | [Biztonsági MENTÉSI parancs](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nem, csak rendszer által kezdeményezett automatikus biztonsági mentés - látható [automatikus biztonsági mentés](sql-database-automated-backups.md) | Rendszer által kezdeményezett automatikus biztonsági mentés és a felhasználó által kezdeményezett csak másolatot biztonsági mentések – lásd [különbségek biztonsági mentése](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Beépített funkciók](https://docs.microsoft.com/sql/t-sql/functions/functions) | Most – tekintse meg az egyes funkciók | Igen – lásd: [a tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

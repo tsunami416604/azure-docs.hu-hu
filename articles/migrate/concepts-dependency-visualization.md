@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure áttelepítése szolgáltatás
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 2b6b3e78436a215e64894b1102c4e109f72c896d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 94d4db078175309444db5113506020eae54dda70
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203067"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218404"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -30,7 +30,7 @@ Az Azure áttelepítése használja a [Szolgáltatástérkép](../operations-man
 - A Naplóelemzési munkaterület navigáljon a **Essentials** projekt **áttekintése** lap.
 - A létrehozott munkaterület van megjelölve, a kulccsal **MigrateProject**, és értéket **projektnevet**. Ezek használhatja a Keresés az Azure-portálon.  
 
-    ![Log Analytics-munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
+    ![Azure-beli monitorozási munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
 
 Függőség képi megjelenítés használata esetén meg kell töltse le és telepítse az ügynököt minden a helyszíni gépen, amely az elemezni kívánt.  
 
