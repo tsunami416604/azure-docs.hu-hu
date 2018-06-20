@@ -184,6 +184,8 @@
 ### [Áttekintés](manage-apps/what-is-application-management.md)
 ### [Bevezetés](manage-apps/plan-an-application-integration.md)
 ### [SaaS-alkalmazások integrációjának oktatóanyagai](saas-apps/tutorial-list.md)
+
+
 ### [Felhőalkalmazások felderítése](manage-apps/cloud-app-discovery.md)
 #### [Pillanatkép-jelentések létrehozása](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Folyamatos jelentéskészítés konfigurálása](https://docs.microsoft.com/cloud-app-security/discovery-docker)
@@ -255,27 +257,110 @@
 #### [Bérlőkorlátozások](manage-apps/tenant-restrictions.md)
 #### [SCIM használata a felhasználók átadására](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Hibaelhárítás](active-directory-application-troubleshoot-content-map.md)
-#### [Alkalmazásfejlesztés](active-directory-application-dev-troubleshoot-content-map.md)
-##### [Konfigurálás és regisztráció](active-directory-application-dev-config-content-map.md)
-##### [Fejlesztés](active-directory-application-dev-development-content-map.md)
-#### [Alkalmazáskezelés](active-directory-application-management-troubleshoot-content-map.md)
-##### [Konfigurálás](active-directory-application-config-content-map.md)
-##### [Bejelentkezés](active-directory-application-sign-in-content-map.md)
-##### [Kiépítés](active-directory-application-provisioning-content-map.md)
 
-###### [Felhasználó létrehozásának ellenőrzése](application-provisioning-when-will-provisioning-finish-specific-user.md) 
-###### [A létrehozás hosszú ideig tart](application-provisioning-when-will-provisioning-finish.md) 
-###### [Felhasználók létrehozásának konfigurálása](application-provisioning-config-how-to.md) 
-###### [Probléma merül fel a létrehozás konfigurálása során](application-provisioning-config-problem.md) 
-###### [Probléma merül fel a rendszergazdai hitelesítő adatok mentése során](application-provisioning-config-problem-storage-limit.md) 
-###### [Egyetlen felhasználó létrehozása sem történt meg](application-provisioning-config-problem-no-users-provisioned.md) 
-###### [Helytelen felhasználók lettek létrehozva](application-provisioning-config-problem-wrong-users-provisioned.md) 
+### Hibaelhárítás
 
-##### [Hozzáférés-kezelés](active-directory-application-access-content-map.md)
-##### [Hozzáférési panel](active-directory-application-access-panel-content-map.md)
-##### [Alkalmazásproxy](active-directory-application-proxy-content-map.md)
-##### [Feltételes hozzáférés](active-directory-application-conditional-access-content-map.md)
+
+
+#### Hozzáférési panel
+##### [Az alkalmazás nem jelenik meg](application-access-panel-unexpected-application-not-appearing.md)
+##### [Váratlan alkalmazás jelenik meg](application-access-panel-unexpected-application-appears.md)
+##### [Nem lehet bejelentkezni](application-access-panel-web-sign-in-problem.md)
+##### [Hiba a böngészőbővítmény telepítése közben](application-access-panel-extension-problem-installing.md)
+##### [Az önkiszolgáló alkalmazás-hozzáférés használata](application-access-panel-self-service-applications-how-to.md)
+##### [Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben](application-access-panel-self-service-applications-problem.md)
+
+#### Alkalmazás hozzáadása
+##### [Alkalmazás típusának kiválasztása](application-config-add-app-problem-how-to-choose-application-type.md)
+##### [Gyakori problémák – katalógusbeli alkalmazások](application-config-add-app-problem-problem-adding-gallery-app.md)
+##### [Gyakori problémák – nem katalógusbeli alkalmazások](application-config-add-app-problem-problem-adding-non-gallery-app.md)
+
+#### Alkalmazásproxy
+##### [Probléma az alkalmazáslap megjelenítésekor](application-proxy-page-appearance-broken-problem.md)
+##### [Az alkalmazás betöltési ideje túl hosszú](application-proxy-page-load-speed-problem.md)
+##### [Az alkalmazáslap hivatkozásai nem működnek](application-proxy-page-links-broken-problem.md)
+##### [Milyen portokat nyissak meg az alkalmazáshoz](application-proxy-connectivity-ports-how-to.md)
+##### [Az alkalmazás összekötőcsoportjában nem volt működő összekötő](application-proxy-connectivity-no-working-connector.md)
+##### [Konfigurálás a felügyeleti portálon](application-proxy-config-how-to.md)
+##### [Egyszeri bejelentkezés beállítása az alkalmazáshoz](application-proxy-config-sso-how-to.md)
+##### [Probléma egy alkalmazás felügyeleti portálon való létrehozásakor](application-proxy-config-problem.md)
+##### [A Kerberos által korlátozott delegálás konfigurálása](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+##### [Konfigurálás a PingAccess segítségével](application-proxy-back-end-ping-access-how-to.md)
+##### [„Can't Access this Corporate Application” (Nem lehet hozzáférni ehhez a céges alkalmazáshoz) hibaüzenet](application-proxy-sign-in-bad-gateway-timeout-error.md)
+##### [Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor](application-proxy-connector-installation-problem.md)
+
+
+#### Alkalmazásregisztráció
+##### [Az alkalmazásobjektum mezőinek megadása](application-dev-registration-config-specific-application-property-how-to.md)
+##### [A jogkivonatok alapértelmezett élettartamának módosítása](application-dev-registration-config-change-token-lifetime-how-to.md)
+
+#### Hitelesítés
+##### [Végpontok konfigurálása](application-dev-registration-config-how-to.md)
+
+#### Feltételes hozzáférés
+##### [Az ügyfél nem felelt meg az eszközregisztrációs előfeltételeknek](active-directory-conditional-access.md)
+##### [A bérlőt letiltja a rendszer, mert a feltételes hozzáférés szabályzatát nem megfelelően állították be](active-directory-conditional-access-device-remediation.md)
+##### [Hogyan és mikor lépnek életbe a vállalati hálózaton kívüli szabályok?](https://aka.ms/calocation)
+##### [Hogyan lehet növelni azon eszközök számát, amelyeket a felhasználó az Azure AD-ben regisztrálhat?](active-directory-azureadjoin-setup.md)
+##### [Hogyan kell beállítani a feltételes hozzáférést az Exchange Online-ban?](https://aka.ms/csforexchange)
+##### [Hogyan kell beállítani a feltételes hozzáférést Windows 7 eszközökön?](active-directory-conditional-access.md#device-based-conditional-access)
+##### [Mely alkalmazásokban támogatott a feltételes hozzáférés?](active-directory-conditional-access-supported-apps.md)
+
+#### API keresése
+##### [API keresése](application-dev-api-find-an-api-how-to.md)
+
+#### Hozzáférés-kezelés
+##### [Felhasználók és csoportok hozzárendelése az alkalmazáshoz](application-access-assignment-how-to-add-assignment.md)
+##### [Felhasználó alkalmazás-hozzáférésének eltávolítása](application-access-assignment-how-to-remove-assignment.md)
+##### [Új önkiszolgáló alkalmazás-hozzárendelés konfigurálása](application-access-self-service-how-to.md)
+##### [Váratlan felhasználó hozzárendelve](application-access-unexpected-user-assignment.md)
+##### [Váratlan alkalmazás az alkalmazáslistában](application-access-unexpected-application.md)
+
+#### Több-bérlős alkalmazások
+##### [Új alkalmazás konfigurálása](application-dev-setup-multi-tenant-app.md)
+##### [Hozzáadás az alkalmazáskatalógushoz](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+
+#### Engedélyek
+##### [API engedélyeinek kiválasztása](application-dev-perms-for-given-api.md)
+##### [Engedélyek megadása az alkalmazásnak](application-dev-registration-config-grant-permissions-how-to.md)
+##### [Delegált és alkalmazásengedélyek](application-dev-delegated-and-app-perms.md)
+##### [Alkalmazás jóváhagyása](application-dev-consent-framework.md)
+
+#### Kiépítés
+##### [Mennyi időt vesz igénybe](application-provisioning-when-will-provisioning-finish-specific-user.md)
+##### [Órákat vesz igénybe – katalógusbeli alkalmazás](application-provisioning-when-will-provisioning-finish.md)
+##### [Felhasználók átadásának konfigurálása – katalógusbeli alkalmazás](application-provisioning-config-how-to.md)
+##### [Probléma a felhasználók átadásának konfigurálásakor – katalógusbeli alkalmazás](application-provisioning-config-problem.md)
+##### [Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben](application-provisioning-config-problem-storage-limit.md)
+##### [A felhasználók átadása nem történik meg – katalógusbeli alkalmazás](application-provisioning-config-problem-no-users-provisioned.md)
+##### [Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás](application-provisioning-config-problem-wrong-users-provisioned.md)
+
+#### Egyszeri bejelentkezés
+##### [Válasszon módszert](application-config-sso-how-to-choose-sign-on-method.md)
+##### [Konfigurálás](application-dev-registration-config-sso-how-to.md)
+##### [Összevontak konfigurálása – katalógusbeli alkalmazások](application-config-sso-how-to-configure-federated-sso-gallery.md)
+##### [Gyakori problémák az összevontak konfigurálásakor – katalógusbeli alkalmazások](application-config-sso-problem-configure-federated-sso-gallery.md)
+##### [Összevontak konfigurálása – nem katalógusbeli alkalmazások](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+##### [Gyakori problémák az összevontak konfigurálásakor – nem katalógusbeli alkalmazások](application-config-sso-problem-configure-federated-sso-non-gallery.md)
+##### [Jelszó konfigurálása – katalógusbeli alkalmazások](application-config-sso-how-to-configure-password-sso-gallery.md)
+##### [Gyakori problémák jelszó konfigurálásakor – katalógusbeli alkalmazások](application-config-sso-problem-configure-password-sso-gallery.md)
+##### [Jelszó konfigurálása – nem katalógusbeli alkalmazások](application-config-sso-how-to-configure-password-sso-non-gallery.md)
+##### [Gyakori problémák jelszó konfigurálásakor – nem katalógusbeli alkalmazások](application-config-sso-problem-configure-password-sso-non-gallery.md)
+
+#### Problémák a felhasználói bejelentkezéssel
+##### [Váratlan jóváhagyási kérés](application-sign-in-unexpected-user-consent-prompt.md)
+##### [Hiba a felhasználói jóváhagyással](application-sign-in-unexpected-user-consent-error.md)
+##### [Probléma egyéni portálról való bejelentkezésnél](application-sign-in-other-problem-deeplink.md)
+##### [Probléma a hozzáférési panelről való bejelentkezésnél](application-sign-in-other-problem-access-panel.md)
+##### [Hiba az alkalmazás bejelentkezési oldalán](application-sign-in-problem-application-error.md)
+##### [Hiba az egyszeri bejelentkezési jelszóval – nem katalógusbeli alkalmazás](application-sign-in-problem-password-sso-non-gallery.md)
+##### [Hiba az egyszeri bejelentkezési jelszóval – katalógusbeli alkalmazás](application-sign-in-problem-password-sso-gallery.md)
+##### [Probléma egy Microsoft-alkalmazásba való bejelentkezéskor](application-sign-in-problem-first-party-microsoft.md)
+##### [Probléma az összevont egyszeri bejelentkezéskor – nem katalógusbeli alkalmazás](application-sign-in-problem-federated-sso-non-gallery.md)
+##### [Probléma az összevont egyszeri bejelentkezéskor – katalógusbeli alkalmazás](application-sign-in-problem-federated-sso-gallery.md)
+##### [Probléma egy egyénileg fejlesztett alkalmazásban](application-sign-in-problem-custom-dev.md)
+##### [Probléma egy helyszíni alkalmazásban – Alkalmazásproxy](application-sign-in-problem-on-premises-application-proxy.md)
+
 ### [Alkalmazásfejlesztés](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [Dokumentumtár](active-directory-apps-index.md)
 

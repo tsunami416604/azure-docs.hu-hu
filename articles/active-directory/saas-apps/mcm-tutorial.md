@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 7f00799d-e3e9-4ba9-ae4a-fbca843ac5db
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 935b63bfdd7cd00382edce452a9f76f1e41f8489
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 877d6be3dc1d978f2ec12da58f0d1f6da65fd144
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35925330"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Oktatóanyag: Azure Active Directoryval integrált MCM
 
@@ -60,7 +61,7 @@ Az Azure AD integrálása a MCM konfigurálásához kell hozzáadnia MCM a gyűj
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
-    ![Active Directory][1]
+    ![Az Active Directory][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
@@ -111,7 +112,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/mcm-tutorial/tutorial_mcm_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://myaba.co.uk/client-access/<companyname>/saml.php`
+    egy. Az a **bejelentkezési URL-cím** szövegmező, adja meg a következő minta használatával URL-címe: `https://myaba.co.uk/client-access/<companyname>/saml.php`
 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://myaba.co.uk/<companyname>`
 
@@ -155,13 +156,13 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
  
     ![Az Azure AD tesztfelhasználó létrehozása](./media/mcm-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    egy. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
 
     b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
 
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **létrehozása**.
  
 ### <a name="creating-a-mcm-test-user"></a>MCM tesztfelhasználó létrehozása
 

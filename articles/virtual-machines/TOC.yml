@@ -1,0 +1,26 @@
+- name: Virtual Machines-dokumentáció
+  href: index.md
+- name: Linux rendszerű virtuális gépek az Azure-ban
+  href: linux/overview.md
+- name: Windows rendszerű virtuális gépek az Azure-ban
+  href: windows/overview.md
+- name: Virtuálisgép-bővítmények dokumentációja
+  href: extensions/overview.md
+- name: Számítási feladatok
+  items:
+    - name: Oracle
+      href: workloads/oracle/oracle-considerations.md
+    - name: SAP
+      href: workloads/sap/get-started.md
+- name: Klasszikus üzembe helyezések
+  items:
+    - name: Linux rendszerű virtuális gépek klasszikus üzembe helyezéssel
+      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+    - name: Windows rendszerű virtuális gépek klasszikus üzembe helyezéssel
+      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'

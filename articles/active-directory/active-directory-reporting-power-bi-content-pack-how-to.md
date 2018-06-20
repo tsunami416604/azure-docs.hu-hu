@@ -2,24 +2,24 @@
 title: Az Azure Active Directory Power BI-tartalomcsomag használata | Microsoft Docs
 description: Útmutató az Azure Active Directory Power BI-tartalomcsomag használatához | Microsoft Docs
 services: active-directory
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: ''
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 12/06/2017
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fd52f8a31d0fe54cce9b39d7de7eb45336efeb7c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 531d192bf024def1a90d9e5034645b6ec6e0c0e1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588324"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225422"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
 

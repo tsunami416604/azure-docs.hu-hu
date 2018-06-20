@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 5cf217de4973fd06935d88381de86520df604c29
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e27bc853db6236165d77f2fb3418bab1170400b2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35926182"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227703"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Oktatóanyag: Azure Active Directory-integráció várható CX csomaggal
 
@@ -108,7 +109,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Várható CX Suite tartomány és az URL-címek egyetlen bejelentkezés információk](./media/foreseecxsuite-tutorial/upload.png)
 
-    a. Kattintson a **feltöltés metaadatfájl**.
+    egy. Kattintson a **feltöltés metaadatfájl**.
 
     ![Várható CX Suite tartomány és az URL-címek egyetlen bejelentkezés információk](./media/foreseecxsuite-tutorial/tutorial_foreseen_uploadconfig.png)
 
@@ -122,7 +123,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Várható CX Suite tartomány és az URL-címek egyetlen bejelentkezés információk](./media/foreseecxsuite-tutorial/tutorial_foreseecxsuite_url.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://cxsuite.foresee.com/`
+    egy. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://cxsuite.foresee.com/`
 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.okta.com/saml2/service-provider/<UniqueID>`
 
@@ -163,13 +164,13 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
     ![A felhasználó párbeszédpanel](./media/foreseecxsuite-tutorial/create_aaduser_04.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    egy. Az a **neve** mezőbe írja be **BrittaSimon**.
 
     b. Az a **felhasználónév** mezőbe írja be a felhasználó e-mail címe az Britta Simon.
 
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **létrehozása**.
 
 ### <a name="create-a-foresee-cx-suite-test-user"></a>Várható CX Suite tesztfelhasználó létrehozása
 
@@ -205,7 +206,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 

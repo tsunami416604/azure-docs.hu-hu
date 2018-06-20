@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 0c4acf6e8e236d46a9db2b4ab730b8333e4f6ca6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648125"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215524"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Mi az a felügyelt példánya (előzetes verzió)?
 
@@ -39,7 +39,7 @@ A következő táblázat a körvonal különbségek kulcsát, és envisioned has
 
 | | Használati eset | 
 | --- | --- | 
-|SQL Database felügyelt példány |Szeretnék nagyszámú alkalmazások áttelepítése a helyszíni vagy a IaaS, önálló beépített, vagy a megadott ISV ügyfelek számára a lehető alacsony áttelepítési beavatkozást, javaslatot felügyelt példány. Használja a teljesen automatikus [adatok áttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview) Azure, az ügyfelek növekedési és a helyszíni SQL Server shift felügyelt példányához, amely kompatibilis a helyszíni SQL Server és a teljes elkülönítési felhasználói példányok natív VNET támogatását.  A frissítési garancia, továbbíthatja az kedvezményes díjszabás egy SQL-adatbázis felügyelt példány használatával a meglévő licencét a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  SQL adatbázis felügyelt-példány a legjobb áttelepítés célja a fokozott biztonságot és a gazdag programozhatóság felület igénylő SQL Server-példányok a felhőben. |
+|SQL Database felügyelt példány |Szeretnék nagyszámú alkalmazások áttelepítése a helyszíni vagy a IaaS, önálló beépített, vagy a megadott ISV ügyfelek számára a lehető alacsony áttelepítési beavatkozást, javaslatot felügyelt példány. Használja a teljesen automatikus [adatok áttelepítési szolgáltatás (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) Azure, az ügyfelek növekedési és a helyszíni SQL Server shift felügyelt példányához, amely kompatibilis a helyszíni SQL Server és a teljes elkülönítési felhasználói példányok natív VNET támogatását.  A frissítési garancia, továbbíthatja az kedvezményes díjszabás egy SQL-adatbázis felügyelt példány használatával a meglévő licencét a [Azure hibrid használja az SQL Server juttatása](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  SQL adatbázis felügyelt-példány a legjobb áttelepítés célja a fokozott biztonságot és a gazdag programozhatóság felület igénylő SQL Server-példányok a felhőben. |
 |Az Azure SQL Database (egyetlen vagy tárolókészlet) |**Rugalmas készletek**: az új több-bérlős SaaS-alkalmazások fejlesztéséhez vagy szándékosan átalakítása a meglévő ügyfelek a helyszíni alkalmazások be egy több-bérlős SaaS-alkalmazás rugalmas készletek javaslatot. Ez a modell előnyei a következők: <br><ul><li>Licencét kínál az előfizetés (az ISV-k) a kínál az üzleti modell átalakítás</li></ul><ul><li>Egyszerű és listajele távra bérlők elszigetelésére</li></ul><ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul><ul><li>Így anélkül, hogy elérte-e a rögzített felső határ kiterjesztése</li></ul>**Az egyszeri adatbázisok**: az új alkalmazásfejlesztés eltérő SaaS több-bérlős, amelynek munkaterhelés stabillá és kiszámíthatóvá, az ügyfelek javaslatot önálló adatbázisok. Ez a modell előnyei a következők:<ul><li>Adatbázis-központú egyszerűsített programozási modellt</li></ul>  <ul><li>Az egyes adatbázisok kiszámítható teljesítmény</li></ul>|
 |SQL IaaS virtuális gépként|Az ügyfelek, melynek segítségével testre szabhatja az operációs rendszer vagy az adatbázis-kiszolgáló, valamint szempontjából külső alkalmazások mellett az SQL Server (futtató ugyanabból virtuális), a specifikus követelményekkel rendelkező javaslatot SQL virtuális gépek / IaaS az optimális megoldás|
 |||
@@ -186,11 +186,10 @@ Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen fel
 
 Az áttelepítési módszer SQL biztonsági mentés az Azure blob storage kihasználja. Azure storage-blob tárolt biztonsági is állítható helyre közvetlenül kezelt példány. A felügyelt példánya egy meglévő SQL-adatbázis visszaállításához a következőket teheti:
 
-- Használjon [adatok áttelepítési szolgáltatás (DMS)](/sql/dma/dma-overview). Az oktatóanyagok esetén lásd: [áttelepítése az Azure adatbázis áttelepítési szolgáltatás (DMS) használatával felügyelt példányra](../dms/tutorial-sql-server-to-managed-instance.md) adatbázis biztonsági másolatból való visszaállítása
+- Használjon [adatok áttelepítési szolgáltatás (DMS)](../dms/dms-overview.md). Az oktatóanyagok esetén lásd: [áttelepítése az Azure adatbázis áttelepítési szolgáltatás (DMS) használatával felügyelt példányra](../dms/tutorial-sql-server-to-managed-instance.md) adatbázis biztonsági másolatból való visszaállítása
 - Használja a [T-SQL RESTORE parancs](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Az oktatóanyag bemutatja, hogyan állítsa vissza a Wide World Importers - szabványos adatbázis biztonságimásolat-fájlt, tekintse meg a [állítsa vissza biztonsági másolatból egy felügyelt példányon](sql-database-managed-instance-restore-from-backup-tutorial.md). Ez az oktatóanyag bemutatja, hogy biztonságimásolat-fájl feltöltése Azure blog tárolási és biztonságos közös hozzáférési jogosultságkód (SAS) kulccsal.
   - URL-címről visszaállítási kapcsolatos információkért lásd: [URL-címről natív VISSZAÁLLÍTÁSA](sql-database-managed-instance-migrate.md#native-restore-from-url).
-- [BACPAC-fájlból való importálása](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Támogatott SQL-szolgáltatások 
 

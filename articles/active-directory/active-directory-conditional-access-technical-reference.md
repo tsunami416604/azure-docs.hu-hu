@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0be34d3a0e9bccd6658b5285ddfe6da1e96ef19a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 239ece0f126e1c92c2e94206baa7026ac04d604f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724924"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227989"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférési beállításainak ismertetése
 
@@ -237,7 +237,7 @@ Ez a beállítás a következő ügyfél alkalmazásokra vonatkoznak:
 
 ## <a name="next-steps"></a>További lépések
 
-- A feltételes hozzáférés áttekintéséért lásd: [feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-azure-portal.md).
+- A feltételes hozzáférés áttekintéséért lásd: [Mi az, hogy a feltételes hozzáférés az Azure Active Directoryban?](active-directory-conditional-access-azure-portal.md)
 - Ha készen áll a konfigurálhat feltételes hozzáférési szabályzatokat a környezetben, tekintse meg a [ajánlott eljárások a feltételes hozzáférés az Azure Active Directoryban](active-directory-conditional-access-best-practices.md).
 
 

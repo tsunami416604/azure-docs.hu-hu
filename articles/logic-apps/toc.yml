@@ -290,6 +290,13 @@
           href: logic-apps-enterprise-integration-b2b.md
 - name: Referencia
   items:
+    - name: Architektúraminták
+      href: logic-apps-architectures-simple-enterprise-integration.md
+      items:
+        - name: Egyszerű vállalati integráció
+          href: logic-apps-architectures-simple-enterprise-integration.md
+        - name: Vállalati integráció üzenetsorokkal és eseményekkel
+          href: logic-apps-architectures-enterprise-integration-with-queues-events.md
     - name: Összekötők – Részletes információk
       href: 'https://docs.microsoft.com/connectors/'
     - name: Határértékek és konfiguráció

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f7c2f41f60123c8f99503e0a5977a9d137ca27dd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9f0d7b2a46cf99c6e1f772a91ed07f7ca91d77a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35927691"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Oktatóanyag: Azure Active Directoryval integrált LinkedIn jogosultságszint-emelés
 
@@ -61,7 +62,7 @@ Az Azure AD integrálása a LinkedIn jogosultságszint-emelés konfigurálásáh
 
 1. Az a  **[Azure felügyeleti portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Active Directory][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
@@ -118,7 +119,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_01.png)
 
-    a. A a **azonosító** szövegmező, adja meg a **Entitásazonosító** másolt LinkedIn portálról 
+    egy. A a **azonosító** szövegmező, adja meg a **Entitásazonosító** másolt LinkedIn portálról 
 
     b. A a **válasz URL-CÍMEN** szövegmező, adja meg a **helyességi feltétel felhasználói hozzáférést (ACS) URL-cím** másolt LinkedIn portálról
 
@@ -134,13 +135,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 9. A **felhasználói attribútumok** kattintson **nézet és egyéb felhasználói attribútumok szerkesztése** és attribútumainak beállítása. Hozzá kell adnia egy másik jogcím nevű **részleg** és az értéket meg kell feleltetni a **felhasználó.részleg**.
 
-    | Attribútum neve | Attribútum értéke |
+    | Attribútum neve | Attribútum-érték |
     | --- | --- |
-    | részleg| felhasználó.részleg |
+    | Szervezeti egység| felhasználó.részleg |
 
       ![Az Azure AD tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/userattribute.png)
 
-      a. Kattintson a Hozzáadás attribútum attribútum részletek lapjának megnyitásához adja hozzá a részleg attribútumot, ahogy az alábbi-
+      egy. Kattintson a Hozzáadás attribútum attribútum részletek lapjának megnyitásához adja hozzá a részleg attribútumot, ahogy az alábbi-
 
       ![Az Azure AD tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/adduserattribute.png)
 
@@ -152,7 +153,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial-linkedinElevate_certificate.png) 
 
-11. Kattintson a **Save** (Mentés) gombra.
+11. Kattintson a **mentése**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_general_400.png)
 
@@ -187,13 +188,13 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure felügyeleti por
 
     ![Az Azure AD tesztfelhasználó létrehozása](./media/linkedinelevate-tutorial/create_aaduser_04.png) 
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+    egy. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
 
     b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
 
     c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **létrehozása**.
 
 ### <a name="creating-a-linkedin-elevate-test-user"></a>Jogosultságszint-emelés LinkedIn tesztfelhasználó létrehozása
 

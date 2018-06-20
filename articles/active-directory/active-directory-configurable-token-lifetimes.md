@@ -16,12 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 086a2fde5905321da7d5689b6f1ee2f5139209ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 95a3c1d3effe6d4b73354fb3ef871aeb7767bfb4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588862"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228569"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurálható jogkivonat élettartamát az Azure Active Directoryban (nyilvános előzetes verzió)
 Megadhat egy Azure Active Directory (Azure AD) által kiállított jogkivonat élettartamát. A szervezet jogkivonat élettartamát a szervezet összes alkalmazást, egy több-bérlős (több szervezet) alkalmazáshoz, vagy egy adott szolgáltatás egyszerű állíthatja be.
@@ -335,7 +335,7 @@ Ebben a példában néhány házirendek, megtudhatja, hogyan működik, a priori
 
     Most hogy egy házirendet az egész szervezetre érvényes. Előfordulhat, hogy szeretné megőrizni a 30 napos házirend az egy adott szolgáltatás egyszerű, de a szervezet alapértelmezett házirend módosítsa a felső korlátja "amíg visszavont."
 
-    1.  A szervezet összes szolgáltatás rendszerbiztonsági tagok megtekintéséhez, lekérdezheti vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Emellett tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
+    1.  A szervezet összes szolgáltatás rendszerbiztonsági tagok megtekintéséhez, lekérdezheti vagy a [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) vagy a [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Emellett tesztelheti ezt a a [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/), és a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) az Azure AD-fiók használatával.
 
     2.  Ha rendelkezik a **ObjectId** , a szolgáltatás egyszerű, a következő parancsot:
 

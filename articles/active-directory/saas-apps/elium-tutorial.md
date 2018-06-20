@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 9cd607e3c35ae0769c3959e8cf30a4a466f7e3c5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1ce186978d910cfdae068e68b5f86a8ebd5fa712
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35927717"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227421"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Oktatóanyag: Azure Active Directoryval integrált Elium
 
@@ -131,13 +132,13 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | e-mailben   |user.mail |
     | first_name| User.givenName |
     | last_name| User.surname|
-    | job_title| user.jobtitle|
+    | Munkakör számára| user.jobtitle|
     | Vállalati| User.CompanyName|
     
     > [!NOTE]
     > Ezek azok az alapértelmezett jogcímeket. **Csak e-mail jogcím szükség**. Jogcím kiépítése is csak az e-mailek JIT megadása kötelező. Egy másik felhasználói platformra más egyéni jogcím egy ügyfél platform változhat.
 
-    a. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
+    egy. Kattintson a **Hozzáadás attribútum** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/elium-tutorial/tutorial_attribute_04.png)
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836375"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227240"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Bevezető oktatóprogram az Azure Machine Learning rendszerrel használt R programozási nyelvbe
 
@@ -41,7 +41,7 @@ Adatsorozat időadatok az adatai, amelyben az értékek rendelkezik idő indexsz
 
 Az első lépések útmutató rendszer kell kaliforniai tejtermelésre használata és díjszabási adatok. Ezek az adatok több tejtermékek és az ár tejzsír, egy teljesítményteszt hagyományos havi információt tartalmaz.
 
-A cikkben, és az R parancsfájlokat használt adatok [itt letöltött][download]. Ezeket az adatokat eredetileg synthesized volt, a Wisconsin egyetemi elérhető információk http://future.aae.wisc.edu/tab/production.html.
+A cikkben, és az R parancsfájlokat használt adatok [itt letöltött](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Ezeket az adatokat eredetileg synthesized volt, a Wisconsin egyetemi elérhető információk https://dairymarkets.com.
 
 ### <a name="organization"></a>Szervezet
 Megismerheti, hogyan hozhat létre, tesztelheti és elemzés és az adatok R adatkezelési kód végrehajtása az Azure Machine Learning környezetben, azt fogja előrehaladás számos lépésen.  
@@ -123,7 +123,7 @@ Az Azure Machine Learning több mint 350 előre telepített R nyelvi csomagokat 
 Ha ez a kód utolsó sora jelenleg nem világos, olvassa el a. Ez a dokumentum többi része nagymértékben ismertetik az Azure Machine Learning-környezet az R nyelv használatát.
 
 ### <a name="introduction-to-rstudio"></a>Rstudióból bemutatása
-Rstudióból egy széles körben használt IDE az R. A Szerkesztés, a tesztelés és a hibakereséshez az R-kód gyors üzembe helyezési útmutatóban használt egyes használom Rstudióból. Ha tesztelt, és készen áll, az R-kód egyszerűen kimásolni, majd a Rstudióból szerkesztő illessze be a Machine Learning Studio [R-parancsfájl végrehajtása] [ execute-r-script] modul.  
+Rstudióból egy széles körben használt IDE az R. A Szerkesztés, a tesztelés és a hibakereséshez az R-kód gyors üzembe helyezési útmutatóban használt egyes használom Rstudióból. Ha az R-kód tesztelt, és készen áll, is egyszerűen kimásolni, majd a Rstudióból szerkesztő illessze be a Machine Learning Studio [R-parancsfájl végrehajtása] [ execute-r-script] modul.  
 
 Ha nem rendelkezik az R programozási nyelv, a asztali gépen telepítve van, akkor tegye meg most javasolt. Szabad nyílt forráskódú R nyelv érhető el, az átfogó R archív hálózati (CRAN), [ http://www.r-project.org/ ](http://www.r-project.org/). Nincsenek elérhető a Windows, Mac OS és Linux/UNIX letöltések. Válassza ki a közeli tükrözött, és kövesse a letöltési utasításokat. Ezenkívül a CRAN számos hasznos elemzés és az adatok adatkezelési csomagok olyan tartalmazza.
 
@@ -837,7 +837,7 @@ Ezt a kódot futtató hoz létre a naplófájl látható a 18.
 
 *18. ábra. FTB listája a páros korrelációs elemzés a következő helyről objektumokat.*
 
-Minden egyes lag korrelációs értéke van. A következő korrelációs értékek nincs elég nagy ahhoz, hogy jelentős. Azt ezért be, hogy azt az egyes minta egymástól függetlenül is.
+Minden egyes lag korrelációs értéke van. Korrelációs értékeiről se legyen elég nagy ahhoz, hogy jelentős. Azt ezért be, hogy azt az egyes minta egymástól függetlenül is.
 
 ### <a name="output-a-dataframe"></a>Egy dataframe kimeneti
 A páros korrelációk számított azt rendelkezik, az R FTB objektumok listájának. Ez megadja bit típust a probléma, az eredmény adathalmaz kimeneti portjával valóban egy dataframe van szüksége. További a FTB objektum pedig egy lista, és azt szeretné, hogy csak az értékeket a lista első elemében, a különböző késedelmes jelentések korrelációk.

@@ -18,6 +18,7 @@
 ### [Frissítés korábbi verzióról](active-directory-aadconnect-upgrade-previous-version.md)
 ### [Telepítés meglévő ADSync-adatbázis használatával](active-directory-aadconnect-existing-database.md)
 ### [Telepítés SQL-lel delegált rendszergazdai engedélyekkel](active-directory-aadconnect-sql-delegation.md)
+### [Az Azure AD Connect-adatbázis áthelyezése egy távoli SQL Server-kiszolgálóra](active-directory-aadconnect-move-db.md)
 
 # Útmutató
 ## Tervezés és kialakítás
