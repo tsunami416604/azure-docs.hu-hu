@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 760434253a3ece14352154a22cc68142ec2b0531
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fb4c3bb117d1ea60c9cc28d2b193ee3c01f6c945
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35760226"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221631"
 ---
 # <a name="test-your-luis-app"></a>A LUIS alkalmazás tesztelése
 <a name="train-your-app"></a>
@@ -92,18 +92,23 @@ Ha több LUIS végpontok, használja a **további beállításokat** hivatkozás
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Bing helyesírás-ellenőrző javításokat teszt panelen megtekintése
-Megtekintheti a helyesírás javításokat által biztosított [Bing helyesírás-ellenőrzés v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) API JSON nézetében a **közzétett** panelje a ablaktáblán. 
+A helyesírás javításokat megtekintéséhez követelmények: 
 
-A szolgáltatás használatához, akkor közzé kell tennie az alkalmazást, és a Bing helyesírás-ellenőrzés [szolgáltatás kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). A szolgáltatás kulcs nem tárolja, és minden böngésző-munkamenet alaphelyzetbe kell állítani. 
+* Közzétett alkalmazás
+* Bing helyesírás-ellenőrzés [szolgáltatás kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). A szolgáltatás kulcs nem tárolja, és minden böngésző-munkamenet alaphelyzetbe kell állítani. 
 
-A következő segítségével billentyűvel a Bing helyesírás-ellenőrzés v7 szolgáltatás a ablaktáblán. 
+Tartalmazza az alábbi eljárással a [Bing helyesírás-ellenőrzés v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) szolgáltatás a teszteredmények ablaktáblán. 
 
-1. A teszt panelen a a **közzétett** ablaktáblán válassza előbb **további beállításokat**.
+1. Az a **teszt** panelen adjon meg egy utterance. Amikor a utterance várhatóan, válassza ki a **[vizsgálat](#inspect-score)** megadott utterance alatt. 
 
-2. Az előugró párbeszédpanelen adja meg a **Bing helyesírás-ellenőrzés** szolgáltatásának kulcsát. 
+2. Ha a **vizsgálat** panel nyílik, jelölje be  **[közzétett összehasonlításra](#compare-with-published-version)**. 
+
+3. Ha a **közzétett** panel nyílik, jelölje be  **[további beállításokat](#additional-settings-in-test-panel)**.
+
+4. Az előugró párbeszédpanelen adja meg a **Bing helyesírás-ellenőrzés** szolgáltatásának kulcsát. 
     ![Bing helyesírás-ellenőrzés szolgáltatási kulcs megadása](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
-3. Adjon meg egy lekérdezést egy helytelen helyesírás, mint a `book flite to seattle` , és válassza ki, írja be. A helytelen helyesen adta-e szó `flite` váltja fel a lekérdezésben LUIS küldött és az eredményül kapott JSON jeleníti meg mindkét az eredeti lekérdezés, mint `query`, és a javított helyesen adta-e a lekérdezés, mint `alteredQuery`.
+5. Adjon meg egy lekérdezést egy helytelen helyesírás, mint a `book flite to seattle` , és válassza ki, írja be. A helytelen helyesen adta-e szó `flite` váltja fel a lekérdezésben LUIS küldött és az eredményül kapott JSON jeleníti meg mindkét az eredeti lekérdezés, mint `query`, és a javított helyesen adta-e a lekérdezés, mint `alteredQuery`.
 
     ![Helyesírás-ellenőrző JSON javítani](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
 

@@ -3,15 +3,15 @@ title: Telepítse át az Azure - gyakran ismételt kérdések (GYIK) |} Microsof
 description: Gyakori kérdések az Azure áttelepítése címek
 author: snehaamicrosoft
 ms.service: azure-migrate
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: snehaa
-ms.openlocfilehash: b18d2cecfd7556ad3f05d0f63435d16bc29ebab1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: a18cab73a019039bf5e5829ad1faa4b8f1a70391
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825164"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209945"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Telepítse át az Azure - gyakran ismételt kérdések (GYIK)
 

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/27/2017
+ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 7b3cb869f3c220c20db53216c96449d01c16eaf6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97eca81a8ddc2726bf5de0f4ad7ba0bdf1df1d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263177"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220084"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Figyelési adatokat az Azure-ból
 
@@ -40,7 +40,7 @@ A Azure platformon azt is összegyűjtésével figyelési adatokat az Azure-megf
 | Az Azure metrika riasztások | Értesítések | [Itt listája](monitoring-supported-metrics.md) | <ul><li>**Webhook:** [Azure metrika riasztások](insights-webhooks-alerts.md)</li></ul> |
 | Azure tevékenységnapló figyelő riasztások | Értesítések | Az összes Azure-szolgáltatások | <ul><li>**Webhook:** Azure tevékenységnapló riasztások</li></ul> |
 | Automatikus skálázás értesítések | Értesítések | [Itt listája](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [automatikus skálázás értesítési webhook hasznos séma](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Keresési lekérdezés figyelmeztetések naplózása | Értesítések | Log Analytics | <ul><li>**Webhook:** [Naplóelemzési riasztások](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Keresési lekérdezés figyelmeztetések naplózása | Értesítések | Log Analytics | <ul><li>**Webhook:** [Webhook műveleti napló riasztási szabályok](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)</li></ul> |
 | Application Insights-metrika riasztások | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../application-insights/app-insights-alerts.md)</li></ul> |
 | Application Insights webes tesztjeinek használatát | Értesítések | Application Insights | <ul><li>**Webhook:** [Application Insights-riasztások](../application-insights/app-insights-alerts.md)</li></ul> |
 

@@ -7,14 +7,14 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/12/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266880"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210924"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -39,7 +39,7 @@ Meg kell ismernie a réteghez kijelölést fogalmak kapacitás definíciókat, a
 Kapacitás épül *replikák* és *partíciók*. Replikák a keresési szolgáltatás példánya, ahol minden egyes replikának üzemeltet egy elosztott terhelésű példányt az index. Például egy szolgáltatás 6 replikával rendelkezik minden szolgáltatási betöltött index 6 másolatát. Partíciók indexek tárolja, és automatikusan osztani a kereshető adatokat: két partíció ossza fel a index fele, három partíciók hajtogatja, és így tovább. Tekintetében kapacitás *mérete partícióazonosító* egy, az elsődleges ezeknek funkció rétegek között.
 
 > [!NOTE]
-> Minden **szabványos** támogatási tiers [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) , hogy [a rendszert a sebesség, vagy tárolási súlyozási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** be három replikák kínál a magas rendelkezésre állású azonban csak a partíció van. **Szabad** rétegek nem adja meg a dedikált erőforrások: számítástechnikai több szabad szolgáltatás által megosztott erőforrások.
+> Minden **szabványos** támogatási tiers [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) , hogy [a rendszert a sebesség, vagy tárolási súlyozási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** be három replikák kínál a magas rendelkezésre állású azonban csak egy partíció van. **Szabad** rétegek nem adja meg a dedikált erőforrások: számítástechnikai több szabad szolgáltatás által megosztott erőforrások.
 
 ### <a name="limits"></a>Korlátok
 

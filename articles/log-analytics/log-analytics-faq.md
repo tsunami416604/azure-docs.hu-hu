@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637174"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221543"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Naplóelemzés gyakran feltett kérdésekre listáját. Amennyiben a Naplóelemzési kapcsolatos további kérdése van, a [vitafóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és kérdéseit. Ha kérdése van gyakori, azt adja hozzá a cikkben, hogy gyorsan és könnyen megtalálhatók.
@@ -75,18 +75,21 @@ A Naplóelemzési UTC időt használja, és minden nap UTC idő szerint éjfélk
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. Hogyan tudom értesítést kaphat leállítja az adatok gyűjtését?
 
-A: a leírt lépésekkel [riasztási szabályt létrehozni](log-analytics-alerts-creating.md#create-an-alert-rule) értesítést leállítja az adatgyűjtést.
+A: a leírt lépésekkel [hozzon létre egy új naplófájl riasztás](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) értesítést leállítja az adatgyűjtést.
 
 Amikor leállítja az adatgyűjtést kapcsolatos riasztás létrehozása, ha a:
-- **Név** való *adatgyűjtés leállítása*
-- A **Súlyosság** legyen *Figyelmeztetés*
-- A **Keresési lekérdezés** legyen a következő: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-- **Időablak** való *30 perc*.
-- **Riasztási gyakoriságot** minden *tíz* perc.
-- A **Riasztások létrehozása a következő alapján:** értéke legyen az *eredmények száma*
-- Az **Eredmények száma** legyen *Nagyobb, mint 0*
 
-Ez a riasztás fog érvényesítést, ha a lekérdezési eredményeket ad vissza, csak akkor, ha több mint 15 percig hiányzó szívverés rendelkezik.  A [műveletek a riasztási szabályokhoz adásával kapcsolatos](log-analytics-alerts-actions.md) részben leírt lépéseket követve konfigurálhat e-mailt, webhookot, vagy runbook-műveletet a riasztási szabályhoz.
+- **Adja meg a riasztási feltétel** adja meg a Naplóelemzési munkaterület erőforrás céljaként.
+- **Riasztási feltételek** adja meg a következőket:
+   - **A jelzés neve** válasszon **egyéni napló keresés**.
+   - A **Keresési lekérdezés** legyen a következő: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Riasztási logika** van **alapján** *eredmények száma* és **feltétel** van *nagyobb, mint* egy **küszöbérték**  a *0*
+   - **Adott időszakban** a *30* perc és **riasztási gyakoriságot** minden *10* perc
+- **Adja meg a riasztás részleteinek** adja meg a következőket:
+   - **Név** való *adatgyűjtés leállítása*
+   - A **Súlyosság** legyen *Figyelmeztetés*
+
+Adjon meg egy meglévő, vagy hozzon létre egy új [művelet csoport](../monitoring-and-diagnostics/monitoring-action-groups.md) , hogy amikor a napló riasztás feltételeinek felel meg, ha több mint 15 percig hiányzó szívverés értesítést.
 
 ## <a name="configuration"></a>Konfiguráció
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Módosítható az az Azure Diagnostics (ÜVEGVATTA) olvasásához használt tábla/blob-tároló neve?

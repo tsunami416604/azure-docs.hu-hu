@@ -7,20 +7,21 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 08c0c52b-76d9-4250-936a-6bec0edb8816
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/15/2018
+ms.date: 06/18/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 626ba625f6206dd1ea8a5be95f9bd902c8be01c3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9aa060c6f28adb8361fcb9267ea658fda27b442c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35927700"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223450"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -30,9 +31,7 @@ Ha tudunk felhasználói üzembe helyezési útmutató, egy felhasználó üzemb
 
 Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazásoknál átfogó listáját lásd: a [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
 
-## <a name="saas-tutorials"></a>SaaS oktatóprogramok
-
-
+## <a name="non-alphabetic"></a>Nem alfanumerikus
 
 | Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
 | :---: | :--- | :--- |
@@ -43,6 +42,10 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-23video-tutorial.png)| [23 videó](23video-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-360online-tutorial.png)| [360 Online](360online-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-8x8virtualoffice-tutorial.png)| [8 x 8 virtuális Office](8x8virtualoffice-tutorial.md)|
+
+## <a name="a"></a>A
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-abintegro-tutorial.png)| [Abintegro](abintegro-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-absorblms-tutorial.png)| [LMS felvegye](absorblms-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-accredible-tutorial.png)| [Accredible](accredible-tutorial.md)|
@@ -83,6 +86,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-autotaskendpointbackup-tutorial.png)| [Autotask végpont biztonsági mentése](autotaskendpointbackup-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-autotaskworkplace-tutorial.png)| [Autotask munkahelyi](autotaskworkplace-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-awardspring-tutorial.png)| [AwardSpring](awardspring-tutorial.md)|
+
+
+## <a name="b"></a>B
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-bamboo-hr-tutorial.png)| [BambooHR](bamboo-hr-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bambubysproutsocial-tutorial.png)| [Bambu esetében társadalombiztosítási által](bambubysproutsocial-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bcinthecloud-tutorial.png)| [A felhőben BC](bcinthecloud-tutorial.md)|
@@ -107,6 +116,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-bridge-tutorial.png)| [Bridge](bridge-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-brightspace-desire2learn-tutorial.png)| [Brightspace Desire2Learn által](brightspace-desire2learn-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-bynder-tutorial.png)| [Bynder](bynder-tutorial.md)|
+
+## <a name="c"></a>C
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-cappm-tutorial.png)| [HITELESÍTÉSSZOLGÁLTATÓ PPM](cappm-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-canvas-lms-tutorial.png)| [Vászonra Lms](canvas-lms-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-capriza-tutorial.png)| [Capriza Platform](capriza-tutorial.md)|
@@ -145,6 +159,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-coupa-tutorial.png)| [Coupa](coupa-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-cs-stars-tutorial.png)| [CS csillag](cs-stars-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-cylanceprotect-tutorial.png)| [CylancePROTECT](cylanceprotect-tutorial.md)|
+
+
+## <a name="d---e"></a>D - E
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-databasics-tutorial.png)| [DATABASICS](databasics-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-datahug-tutorial.png)| [Datahug](datahug-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-dealpath-tutorial.png)| [Dealpath](dealpath-tutorial.md)|
@@ -178,6 +198,13 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-evernote-tutorial.png)| [Evernote](evernote-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-evidence-tutorial.png)| [Evidence.com](evidence-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-expensify-tutorial.png)| [Expensify](expensify-tutorial.md)|
+
+
+
+## <a name="f---g"></a>F - G
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-factset-tutorial.png)| [FactSet](factset-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-fidelitynetbenefits-tutorial.png)| [Rögzített NetBenefits](fidelitynetbenefits-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-fieldglass-tutorial.png)| [Fieldglass](fieldglass-tutorial.md)|
@@ -207,6 +234,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-citrix-gotomeeting-tutorial.png)| [GoToMeeting](citrix-gotomeeting-tutorial.md)|[GoToMeeting – a felhasználók átadása](citrixgotomeeting-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-greenhouse-tutorial.png)| [Üvegházhatást](greenhouse-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-grovo-tutorial.png)| [Grovo](grovo-tutorial.md)|
+
+
+## <a name="h---i"></a>H - I
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-hackerone-tutorial.png)| [Hackerone](hackerone-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-halogen-software-tutorial.png)| [Halogén szoftver](halogen-software-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-halosys-tutorial.png)| [Halosys](halosys-tutorial.md)|
@@ -247,6 +280,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-itrp-tutorial.png)| [ITRP](itrp-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-itslearning-tutorial.png)| [itslearning](itslearning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-iwellnessnow-tutorial.png)| [iWellnessNow](iwellnessnow-tutorial.md)|
+
+
+## <a name="j---k"></a>J - K
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [JIRA SAML SSO Microsoft](jiramicrosoft-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [JIRA SAML SSO Microsoft (V5.2)](jira52microsoft-tutorial.md)|
@@ -271,6 +310,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-kontiki-tutorial.png)| [Kontiki](kontiki-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-kronos-tutorial.png)| [Kronos](kronos-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-kudos-tutorial.png)| [Kudos](kudos-tutorial.md)|
+
+
+## <a name="l---m"></a>L - M
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-landgorilla-tutorial.png)| [Föld Gorilla ügyfél](landgorilla-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-launchdarkly-tutorial.png)| [LaunchDarkly](launchdarkly-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-lcvista-tutorial.png)| [LCVista](lcvista-tutorial.md)|
@@ -316,6 +360,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-moxtra-tutorial.png)| [Moxtra](moxtra-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-mozy-enterprise-tutorial.png)| [Mozy Enterprise](mozy-enterprise-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-mypolicies-tutorial.png)| [myPolicies](mypolicies-tutorial.md)|
+
+
+## <a name="n---o"></a>N - K
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-namely-tutorial.png)| [Kulcstartó](namely-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-neotalogicstudio-tutorial.png)| [Neota logika Studio](neotalogicstudio-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-netdocuments-tutorial.png)| [NetDocuments](netdocuments-tutorial.md)|
@@ -338,6 +388,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-orgchartnow-tutorial.png)| [Szervezeti diagram most](orgchartnow-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-origami-tutorial.png)| [Origami](origami-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-overdrive-books-tutorial.png)| [Gyorsmeneti](overdrive-books-tutorial.md)|
+
+## <a name="p"></a>P
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-pacific-timesheet-tutorial.png)| [Csendes-óceáni időrendben](pacific-timesheet-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-pagerduty-tutorial.png)| [PagerDuty](pagerduty-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-paloaltonetworks-aperture-tutorial.png)| [Palo Alto hálózatok - nyílás](paloaltonetworks-aperture-tutorial.md)|
@@ -369,6 +424,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-proofpoint-ondemand-tutorial.png)| [Az igény szerinti Proofpoint](proofpoint-ondemand-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-proxyclick-tutorial.png)| [Proxyclick](proxyclick-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|
+
+## <a name="q---r"></a>A KÉRDÉSEK - R
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-qliksense-enterprise-tutorial.png)| [Qlik logika Enterprise](qliksense-enterprise-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-qprism-tutorial.png)| [QPrism](qprism-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-qualtrics-tutorial.png)| [Qualtrics](qualtrics-tutorial.md)|
@@ -391,6 +451,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-rolepoint-tutorial.png)| [RolePoint](rolepoint-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-rollbar-tutorial.png)| [BUKÓÍV](rollbar-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-runmyprocess-tutorial.png)| [RunMyProcess](runmyprocess-tutorial.md)|
+
+
+## <a name="s"></a>S
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-safetynet-tutorial.png)| [SafetyNet](safetynet-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|[Salesforce - a felhasználók átadása](salesforce-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-salesforce-sandbox-tutorial.png)| [Salesforce Sandbox](salesforce-sandbox-tutorial.md)|[Salesforce védőfal – a felhasználók átadása](salesforce-sandbox-provisioning-tutorial.md)|
@@ -456,6 +522,11 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-symantec-tutorial.png)| [Symantec webes biztonsági szolgáltatás (VSS)](symantec-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-syncplicity-tutorial.png)| [Syncplicity](syncplicity-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-synergi-tutorial.png)| [Synergi](synergi-tutorial.md)|
+
+## <a name="t"></a>T
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-tyeexpress-tutorial.png)| [T & E Express](tyeexpress-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-tableauonline-tutorial.png)| [Tableau Online](tableauonline-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-tableauserver-tutorial.png)| [Tableau Server](tableauserver-tutorial.md)|
@@ -499,6 +570,12 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-vodeclic-tutorial.png)| [Vodeclic](vodeclic-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-voyance-tutorial.png)| [Voyance](voyance-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-vxmaintain-tutorial.png)| [vxMaintain](vxmaintain-tutorial.md)|
+
+
+## <a name="w---z"></a>W - Z
+
+| Embléma | Az egyszeri bejelentkezésre vonatkozó oktatóanyag | A felhasználók átadása vonatkozó oktatóanyag |
+| :---: | :--- | :--- |
 | ![embléma](./media/tutorial-list/active-directory-saas-wdesk-tutorial.png)| [Wdesk](wdesk-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-weekdone-tutorial.png)| [Weekdone](weekdone-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-wikispaces-tutorial.png)| [Wikispaces](wikispaces-tutorial.md)|
@@ -534,9 +611,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-zwayam-tutorial.png)| [Zwayam](zwayam-tutorial.md)|
 
 
-
-
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
-* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
+[Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
+
