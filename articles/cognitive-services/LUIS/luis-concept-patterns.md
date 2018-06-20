@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7ccc8353c91c354c745d52f9fc9663131f2b1c4e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f45a9dfaf2863b81083fbfb647f420d9a4baed5a
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35350090"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264663"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Minták pontosság növeléséhez, ha több utterances nagyon hasonló készültek. A minta biztosítva a utterance, LUIS lehet a magas megbízhatósági előrejelzését. 
@@ -119,4 +119,4 @@ Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).
 > [!div class="nextstepaction"]
 > [Megtudhatja, hogyan minták megvalósítását az oktatóanyag a](luis-tutorial-pattern.md)
 
-[LUIS]: luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

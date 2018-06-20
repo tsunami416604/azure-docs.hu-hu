@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: ad9eaa966aafc4a9fc526d44d57c68cdaee3a5e0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35349955"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265252"
 ---
 # <a name="data-extraction"></a>Adatok kinyerése
 LUIS lehetővé teszi az adatok lehívása egy felhasználó természetes nyelvű utterances. Az adatokat oly módon, hogy azt használhatja a program, alkalmazás vagy chatbot cselekedhetnek. ki kell olvasni.
@@ -711,4 +711,4 @@ A LUIS végpont fel tud deríteni a különféle entitásokat ugyanazokat az ada
 
 Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) entitások felvétele a LUIS app tájékozódhat.
 
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

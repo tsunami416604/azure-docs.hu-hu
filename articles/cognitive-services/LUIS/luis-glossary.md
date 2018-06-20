@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 420f268090dbcfcc4f2fa7383b8b8892952030ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349791"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265387"
 ---
 # <a name="glossary"></a>Szószedet
 
@@ -179,7 +179,7 @@ Az Előfizetés kulcs a kulcs LUIS-szolgáltatáshoz társított [az Azure-ban l
 
 ## <a name="test"></a>Teszt
 
-[Tesztelési](train-test.md#test-your-app) egy LUIS alkalmazást azt jelenti, hogy egy utterance átadni LUIS, és tekintse meg a JSON annak az eredménye.
+[Tesztelési](interactive-test.md#test-your-app) egy LUIS alkalmazást azt jelenti, hogy egy utterance átadni LUIS, és tekintse meg a JSON annak az eredménye.
 
 ## <a name="timezoneoffset"></a>Időzóna-eltolás
 
@@ -210,4 +210,4 @@ Egy utterance például a "könyv 2 jegyek Budapest következő kedd" természet
 
 Egy LUIS [verzió](luis-how-to-manage-versions.md) egy adott adatmodell egy LUIS app ID és a közzétett végponthoz társított. Minden LUIS alkalmazás legalább egy verziója van.
 
-[batch-testing]: train-test.md#batch-testing
+[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

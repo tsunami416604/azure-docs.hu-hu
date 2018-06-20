@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618589"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268163"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integrációt és üzembe helyezés az Azure Data Factory
 
@@ -89,42 +89,9 @@ Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy e
 
 4.  Adja meg a környezet nevét.
 
-5.  A Git-összetevő hozzáadása, és válassza ki az egyazon adattárban konfigurálva a Data Factory. Válasszon `adf\_publish` , az alapértelmezett ág legújabb alapértelmezett verziójával.
+5.  A Git-összetevő hozzáadása, és válassza ki az egyazon adattárban konfigurálva a Data Factory. Válasszon `adf_publish` , az alapértelmezett ág legújabb alapértelmezett verziójával.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
-
-6.  A titkos kulcsok Azure Key Vault beolvasása sikertelen. A titkos kulcsok kezeléséhez két módja van:
-
-    a.  Vegye fel a titkos kulcsok paraméterfájl:
-
-       -   Másolatot készít a paraméterfájlban a közzététel fiókirodai feltöltött, és adja meg a paraméterek le szeretné kérdezni a kulcstároló, az alábbi formátumban:
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " < secret - name > "
-                    }
-                }
-            }
-        }
-        ```
-
-       -   Ha ezt a módszert használja, a titkos kulcs van lekért a key vault automatikusan.
-
-       -   A paraméterek fájlnak kell lennie a közzététel ágában is.
-
-    b.  Adja hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault):
-
-       -   Válassza ki a **feladatok** lapra, hozzon létre egy új feladatot, keressen **Azure Key Vault** , és adja hozzá.
-
-       -   A Key Vault tevékenységhez, válassza ki az előfizetést, amelyben a kulcstartót létrehozó, adjon meg hitelesítő adatokat, ha szükséges, és válassza a a key vault.
-
-       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Adja hozzá az Azure Resource Manager központi telepítési feladatot:
 
@@ -134,7 +101,7 @@ Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy e
 
     c.  Válassza ki a **létrehozás vagy frissítés erőforráscsoport** művelet.
 
-    d.  Válassza ki **...** az a "**sablon**" mező. Tallózással keresse meg a Resource Manager-sablon (*ARMTemplateForFactory.json*), amely a portál a közzététel művelet hozta létre. Keresse meg a fájl a gyökérmappában található azon a `adf\_publish` ág.
+    d.  Válassza ki **...** az a **sablon** mező. Tallózással keresse meg a Resource Manager-sablon (*ARMTemplateForFactory.json*), amely a portál a közzététel művelet hozta létre. Ez a fájl a mappában keres `<FactoryName>` , a `adf_publish` ág.
 
     e.  Hajtsa végre ugyanezt a paraméterfájlban. Válassza ki a megfelelő fájlt, attól függően, hogy létrehozott egy másolatot, vagy az alapértelmezett fájl használata *ARMTemplateParametersForFactory.json*.
 
@@ -147,6 +114,43 @@ Az alábbiakban egy VSTS-Feloldás beállítása, úgy automatizálható, hogy e
 9.  Ebben a kiadásban definícióból új verziót kell létrehoznia.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Nem kötelező – a titkos kulcsok lekérése az Azure Key Vault
+
+Ha titkos kulcsok Azure Resource Manager sablon továbbítani, azt javasoljuk, az Azure Key Vault VSTS számára készült kiadásával.
+
+A titkos kulcsok kezeléséhez két módja van:
+
+1.  Adja hozzá a titkos kulcsok paraméterek fájlba. További információk: [használja az Azure Key Vault üzembe helyezése során biztonságos paraméterérték átadni](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+
+    -   Másolatot készít a paraméterfájlban a közzététel fiókirodai feltöltött, és adja meg a paraméterek le szeretné kérdezni a kulcstároló, az alábbi formátumban:
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   Ha ezt a módszert használja, a titkos kulcs van lekért a key vault automatikusan.
+
+    -   A paraméterek fájlnak kell lennie a közzététel ágában is.
+
+2.  Adja hozzá egy [Azure Key Vault feladat](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) előtt az előző szakaszban leírt Azure Resource Manager üzembe helyezéséhez:
+
+    -   Válassza ki a **feladatok** lapra, hozzon létre egy új feladatot, keressen **Azure Key Vault** , és adja hozzá.
+
+    -   A Key Vault tevékenységhez, válassza ki az előfizetést, amelyben a kulcstartót létrehozó, adjon meg hitelesítő adatokat, ha szükséges, és válassza a a key vault.
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-vsts-agent"></a>A hozzáférési jogot a VSTS-ügynökök
 Az Azure Key Vault feladat megtagadta a hozzáférést az első alkalommal sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájl engedélyeket adhat a VSTS-ügynökök paranccsal. A parancs futtatható közvetlenül, vagy az egyszerű azonosító átmásolni a fájlt, és adja hozzá manuálisan a hozzáférési házirendben az Azure-portálon. (*Beolvasása* és *lista* rendszer szükséges minimális engedélyeket).
@@ -161,14 +165,9 @@ Központi telepítés sikertelen lehet, ha aktív eseményindítók frissíti. A
 3.  Válasszon **beágyazott parancsfájlja** a parancsfájlként írja be, és adja meg a kódot. A következő példakód leállítja az eseményindítók:
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a3b14bd8409226772d210f60dadd525960f7890
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0094362ee083511b05027f22b37ed62d56d68d41
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192662"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217133"
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Azure Automation-runbook hívása Log Analytics-riasztásból
 
@@ -33,7 +33,7 @@ A riasztás konfigurálásakor a runbookok meghívásának következő két alte
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Runbook meghívása webhook használatával
 
-Egy webhook használatával egyetlen HTTP-kérés kiadásával indíthat adott runbookokat az Azure Automationben. Mielőtt beállíthatná, hogy a [Log Analytics-riasztás](../log-analytics/log-analytics-alerts.md#alert-rules) a runbookot egy webhook használatával hívja meg a riasztási művelet keretében, előbb [létre kell hoznia egy webhookot](automation-webhooks.md#creating-a-webhook) az ezzel a módszerrel meghívni kívánt runbookhoz. Jegyezze fel a webhook URL-címét, hogy a riasztási szabály konfigurálása során hivatkozhasson rá.   
+Egy webhook használatával egyetlen HTTP-kérés kiadásával indíthat adott runbookokat az Azure Automationben. Konfigurálása előtt a [Webhook műveleti napló riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md) hívására a runbook egy webhook riasztási műveletet, meg kell [a webhook létrehozása](automation-webhooks.md#creating-a-webhook) a runbookhoz nevezett ezzel a módszerrel. Jegyezze fel a webhook URL-címét, hogy a riasztási szabály konfigurálása során hivatkozhasson rá.   
 
 ## <a name="calling-a-runbook-directly"></a>Runbookok közvetlen meghívása
 
@@ -83,7 +83,7 @@ Ebben a példában két egyéni mezőt hoztunk létre a Log Analyticsben: **SvcD
 
 Ez lehet bármely számunkra fontos szolgáltatás. Ebben a példában egy olyan már meglévő szolgáltatást választottunk, amely része a Windows operációs rendszernek. A riasztási művelet a konfigurációja szerint végrehajtja a példában használt runbookot a hibrid runbook-feldolgozón futva, amely engedélyezve van a célrendszeren.   
 
-A runbookkódban lévő **Szolgáltatásnév lekérése a Log Analyticsből** tevékenység a JSON-formátumú karakterláncot objektumtípussá alakítja, és a **SvcDisplayName_CF** elemre szűr. Kinyeri a Windows-szolgáltatás megjelenített nevét, majd továbbítja azt a következő tevékenységnek, amely ellenőrzi, hogy a szolgáltatás le van-e állítva, mielőtt megkísérelné újraindítani. Az **SvcDisplayName_CF** [egyéni mezőt](../log-analytics/log-analytics-custom-fields.md) a példa szemléltetéséhez hoztuk létre a Log Analyticsben.
+A runbookkódban lévő **Szolgáltatásnév lekérése a Log Analyticsből** tevékenység a JSON-formátumú sztringet objektumtípussá alakítja, és a **SvcDisplayName_CF** elemre szűr. Kinyeri a Windows-szolgáltatás megjelenített nevét, majd továbbítja azt a következő tevékenységnek, amely ellenőrzi, hogy a szolgáltatás le van-e állítva, mielőtt megkísérelné újraindítani. Az **SvcDisplayName_CF** [egyéni mezőt](../log-analytics/log-analytics-custom-fields.md) a példa szemléltetéséhez hoztuk létre a Log Analyticsben.
 
 ```powershell
 $SearchResult = (ConvertFrom-Json $WebhookData.RequestBody).SearchResult.value
@@ -92,13 +92,13 @@ $SearchResult.SvcDisplayName_CF
 
 Ha a szolgáltatás leáll, a Log Analyticsben lévő riasztási szabály egyezést észlel, aktiválja a runbookot, és továbbítja neki a riasztás környezetét. A runbook megkísérli ellenőrizni, hogy a szolgáltatás valóban leállt-e. Ha leállt, megkísérli újraindítani a szolgáltatást, ellenőrzi, hogy megfelelően elindult-e, és megjeleníti az eredményeket.     
 
-Azt is megteheti a Naplóelemzési munkaterület csatolva az Automation-fiók nem rendelkezik, a riasztási szabály a webhook művelettel is konfigurálnia. A webhook aktiválja a runbookot. Továbbá konfigurálja a runbookot, hogy az konvertálja a JSON-formátumú karakterláncot, és a **SearchResult** tömbre szűrjön a fenti útmutatásoknak megfelelően.    
+Azt is megteheti a Naplóelemzési munkaterület csatolva az Automation-fiók nem rendelkezik, a riasztási szabály a webhook művelettel is konfigurálnia. A webhook aktiválja a runbookot. Továbbá konfigurálja a runbookot, hogy az konvertálja a JSON-formátumú sztringet, és a **SearchResult** tömbre szűrjön a fenti útmutatásoknak megfelelően.    
 
 >[!NOTE]
 > Ha a munkaterülete frissítve lett az [új Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-log-search-upgrade.md), akkor a webhook hasznos adatai módosultak. A formátum részletei: [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse).
 
 ## <a name="next-steps"></a>További lépések
 
-* A Log Analytics-riasztásokkal és létrehozásukkal kapcsolatos további információkért lásd: [Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md).
+* Egy Azure riasztási naplófájl-keresési létrehozásával kapcsolatos további tudnivalókért lásd: [riasztások jelentkezzen be Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
 
 * A runbookok webhookkal való aktiválásával kapcsolatos további információkért lásd: [Azure Automation-webhookok](automation-webhooks.md).

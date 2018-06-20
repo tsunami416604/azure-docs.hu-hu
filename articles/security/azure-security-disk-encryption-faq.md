@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aa2278e7d32147d75b8ca0241a39a9fed6df41c8
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187691"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266882"
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -49,11 +49,13 @@ Az Azure Disk Encryption támogatott a következő Linux server disztribúciók 
 | --- | --- |--- |
 | Ubuntu | 16.04-NAPI-ES LTS VERZIÓ | Operációs rendszer és az adatok lemezre |
 | Ubuntu | 14.04.5-DAILY-LTS | Operációs rendszer és az adatok lemezre |
+| RHEL | 7.5 | Adatok lemez * |
 | RHEL | 7.4 | Adatok lemez * |
 | RHEL | 7.3 | Adatok lemez * |
 | RHEL | 7.2 | Adatok lemez * |
 | RHEL | 6.8 | Adatok lemez * |
 | RHEL | 6.7 | Adatok lemez * |
+| CentOS | 7.4 | Operációs rendszer és az adatok lemezre |
 | CentOS | 7.3 | Operációs rendszer és az adatok lemezre |
 | CentOS | 7.2n | Operációs rendszer és az adatok lemezre |
 | CentOS | 6.8 | Operációs rendszer és az adatok lemezre |

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: dde7012dee0eb5ea3ac2e1257cb8d2fca5843d4b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1f501981dd4b45f4d36188ef4c2aaa6cb11881a2
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35350111"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263753"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Vállalati stratégiák LUIS alkalmazások
 Tekintse át a Tervező stratégiák a vállalati alkalmazás.
@@ -58,10 +58,13 @@ A chatbot megkapja a utterance, majd elküldi a szülő LUIS app előrejelzés. 
 
 Megérteni, hogyan ezt a hierarchiát a hívások a Botot jelentéskészítő v4 érkezett [kézbesítő-alkalmazás-oktatóanyag][dispatcher-application-tutorial].  
 
+### <a name="intent-limits-in-dispatch-model"></a>A küldő modell leképezési korlátok
+A küldő alkalmazás maximális 500 feladó adatforrások, 500 leképezések egyenértékű rendelkezik. 
+
 ## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan [egy kötegelt tesztelése](luis-how-to-batch-test.md)
 
-[LUIS]:luis-reference-regions.md
-[dispatcher-application-tutorial]:https://aka.ms/bot-dispatch
-[dispatch-tool]:https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
+[dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch

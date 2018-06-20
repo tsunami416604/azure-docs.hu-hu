@@ -3,17 +3,16 @@ title: Contoso-áttelepítési-infrastruktúra beállítása |} Microsoft Docs
 description: Ismerje meg, hogyan a Contoso beállítja az Azure-infrastruktúrák áttelepítése az Azure-bA.
 services: azure-migrate
 author: rayne-wiselman
-manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 8b7f0675c1bbf378d02eb52843caf27a1dce2fb8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: bf861dc6317a8cc3a3ed862dfd6c133a1dcbe685
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301201"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232370"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - telepítsen egy áttelepítés
 
@@ -42,11 +41,12 @@ A Contoso beállítása az infrastruktúra-elemek cikkben szükségük az szitu�
 
 Ahhoz, azok áttelepítheti az Azure-ba, rendkívül fontos, hogy a Contoso az infrastruktúra előkészítése.  Általában öt területek kell gondolniuk van:
 
-1. **Azure-előfizetések**: hogyan fogja azokat vásárláshoz, és működjön együtt az Azure platformon és a szolgáltatások?
-2. **Hibrid identitás**: hogyan azok kezeli és a helyszíni és az Azure-erőforrások való hozzáférés szabályozása áttelepítése után? Hogyan azok kiterjesztése, vagy helyezze át az Identitáskezelés a felhőben?
-3. **Vész-helyreállítási és rugalmasság**: hogyan fogja azok ellenőrizze, hogy az alkalmazások és infrastruktúrájukat rugalmas Ha valamilyen okból kimaradás és katasztrófa történik?
-4. **Hálózati**: hogyan kell azokat a hálózati infrastruktúra megtervezésére, és a helyszíni adatközpontját és az Azure közötti kapcsolatot létrehozni?
-5. **Biztonsági és irányítási**: hogyan fogja azokat a hibrid vagy az Azure üzembe, és legyen összhangban a biztonsági és a cégirányítási követelmények?
+**1. lépés: Azure-előfizetések**: hogyan fogja azokat vásárláshoz, és működjön együtt az Azure platformon és a szolgáltatások?  
+**2. lépés: Hibrid identitás**: hogyan azok kezeli és a helyszíni és az Azure-erőforrások való hozzáférés szabályozása áttelepítése után? Hogyan azok kiterjesztése, vagy helyezze át az Identitáskezelés a felhőben?  
+**3. lépés: Vész-helyreállítási és rugalmasság**: hogyan fogja azok ellenőrizze, hogy az alkalmazások és infrastruktúrájukat rugalmas Ha valamilyen okból kimaradás és katasztrófa történik?  
+**4. lépés: Hálózati**: hogyan kell azokat a hálózati infrastruktúra megtervezésére, és a helyszíni adatközpontját és az Azure közötti kapcsolatot létrehozni?  
+**5. lépés: Biztonsági**: hogyan fogja azokat biztonságos a hibrid vagy az Azure-telepítés?  
+**6. lépés: Irányítás**: hogyan azok közli a telepítése összhangban a biztonsági és a cégirányítási követelmények?
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -575,7 +575,7 @@ Hálózati beállítások frissítése után Contoso készen áll az Azure-ban a
 
      ![Új kötet varázsló](./media/contoso-migration-infrastructure/volume-wizard.png)
 
-7. A Kiszolgálókezelő megnövelik a **Active Directory tartományi szolgáltatások** szerepkör. Ezt követően azok a virtuális gép konfigurálása tartományvezérlőként működik.
+7. A Kiszolgálókezelőben megnövelik a **Active Directory tartományi szolgáltatások** szerepkör. Ezt követően azok a virtuális gép konfigurálása tartományvezérlőként működik.
 
       ![Kiszolgálói szerepkör](./media/contoso-migration-infrastructure/server-role.png)  
 
@@ -780,4 +780,4 @@ Az infrastruktúrával, és azok készen lépés, és próbálja ki az áttelep�
 
 ## <a name="next-steps"></a>További lépések
 
-Egy első áttelepítési forgatókönyv szerint Contoso is szeretné áttelepíteni a helyszíni SmartHotel kétféle alkalmazásuk Azure VMware virtuális gépeken futó. Az alkalmazás virtuális gépeket az Azure virtuális gépen, és az alkalmazás adatbázis egy Azure SQL-felügyelt példányon fogja át.
+Egy első áttelepítési forgatókönyv szerint Contoso fog [helyszíni SmartHotel kétféle alkalmazásuk Azure áttelepítés értékeléséhez](contoso-migration-assessment.md). 

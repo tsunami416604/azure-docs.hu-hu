@@ -1,34 +1,28 @@
 ---
-title: "Az Azure biztonsági mentési PowerShell-példák |} Microsoft Docs"
-description: "Az Azure biztonsági mentési PowerShell-példák"
+title: Azure Backup PowerShell-minták
+description: Azure Backup PowerShell-minták
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
 ms.service: backup
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 09/07/2017
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: f0ab7f5c397637a7d2c4d423edd29bc6edeb3841
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
-ms.translationtype: MT
+ms.openlocfilehash: 841e8df146610de636a2f58c02c8ac2633ba2328
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607481"
 ---
-# <a name="azure-backup-powershell-samples"></a>Azure biztonsági mentés PowerShell-minták
+# <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell-minták
 
-Az alábbi táblázatban hivatkozások az Azure Backup használatával biztonsági mentése és visszaállítása adatok PowerShell-parancsfájl példák.
+Az alábbi táblázat az Azure Backupot adatok biztonsági mentésére és helyreállítására használó PowerShell-mintaszkriptekre mutató hivatkozásokat tartalmaz.
 
 | | |
 |---|---|
-|**Készítsen biztonsági másolatot a virtuális gépek**||
-| [Azure biztonsági mentés egy titkosított virtuális gép](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | Készítsen biztonsági másolatot minden adatot a titkosított virtuális gépen.|
+|**Virtuális gépek biztonsági mentése**||
+| [Titkosított virtuális gépek biztonsági mentése az Azure-ba](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | A titkosított virtuális gép összes adatának biztonsági mentése.|
 | | |
 

@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 6f7c0372ec53157d42a229feddb5b3fce92ff4cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587902"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263975"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Azure Active Directory tartományi szolgáltatások az Azure portál használatával
 
@@ -72,6 +72,9 @@ A felügyelt tartományok kiépítési folyamat egy óráig is eltarthat.
 4. Ha a felügyelt tartományra teljesen ki van építve, a **áttekintése** lapon láthatók a tartomány állapotának **futtató**.
 
     ![Tartományi szolgáltatások – Áttekintés lap a teljes kiépítés után](./media/getting-started/domain-services-provisioned.png)
+    >[!NOTE]
+    >A telepítési folyamat során az Azure AD tartományi szolgáltatások vállalati alkalmazások a címtáron belül "Tartományvezérlő szolgáltatásokhoz" és "AzureActiveDirectoryDomainControllerServices" nevű hoz létre. A vállalati alkalmazások a felügyelt tartományok kiszolgálásához szükséges. Rendkívül fontos, hogy ezek nem törlődnek bármikor.
+    >
 
 5. Az a **tulajdonságok** lapon látni tartományi vezérlők érhetők el a virtuális hálózat két IP-címet.
 

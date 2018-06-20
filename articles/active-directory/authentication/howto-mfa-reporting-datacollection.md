@@ -10,12 +10,12 @@ ms.service: multi-factor-authentication
 ms.workload: identity
 ms.topic: article
 ms.date: 05/01/2018
-ms.openlocfilehash: d28bb4b8e171ef6189f81acc337088b3c5499ccf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655037"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264368"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Az Azure multi-factor Authentication felhasználói adatok gyűjtése
 
@@ -151,39 +151,39 @@ A parancssorból az MFA-kiszolgáló, a következő parancsot a telepítés megf
 
 ## <a name="gather-data-from-nps-extension"></a>Gyűjt adatokat a hálózati házirend-kiszolgáló bővítmény
 
-Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) használatával indítson egy lekérdezést az exportált.
+Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) használatával indítson egy lekérdezést az exportált.
 
 - Többtényezős hitelesítés adatai megjelennek az exportálást, ami eltarthat órák vagy napok befejezéséhez.
 - A felhasználónév a AzureMfa/AuthN/AuthNOptCh, AzureMfa/engedélyezési/AuthZAdminCh és AzureMfa/engedélyezési/AuthZOptCh eseménynaplók előfordulását működési és az exportált közölt információkban ismétlődő minősülnek.
 
 ## <a name="delete-data-from-nps-extension"></a>Adatok törléséhez a hálózati házirend-kiszolgáló bővítmény
 
-Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) használatával indítson egy lekérdezést a fiók bezárása összes MFA felhőalapú szolgáltatás összegyűjtött adatokat a felhasználó törlése.
+Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) használatával indítson egy lekérdezést a fiók bezárása összes MFA felhőalapú szolgáltatás összegyűjtött adatokat a felhasználó törlése.
 
 - Az adatok teljesen eltávolítani kívánt akár 30 napig is eltarthat.
 
 ## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Gyűjt adatokat a Windows Server 2016 Azure MFA AD FS-Adapter
 
-Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) használatával indítson egy lekérdezést az exportált. 
+Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) használatával indítson egy lekérdezést az exportált. 
 
 - Többtényezős hitelesítés adatai megjelennek az exportálást, ami eltarthat órák vagy napok befejezéséhez.
 - Az AD FS nyomkövetés/Debug eseménynaplókban (Ha engedélyezve van), a felhasználónév előfordulását működési és az exportált közölt információkban ismétlődő minősülnek.
 
 ## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Adatok törléséhez a Windows Server 2016 Azure MFA AD FS-Adapter
 
-Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) használatával indítson egy lekérdezést a fiók bezárása összes MFA felhőalapú szolgáltatás összegyűjtött adatokat a felhasználó törlése.
+Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) használatával indítson egy lekérdezést a fiók bezárása összes MFA felhőalapú szolgáltatás összegyűjtött adatokat a felhasználó törlése.
 
 - Az adatok teljesen eltávolítani kívánt akár 30 napig is eltarthat.
 
 ## <a name="gather-data-for-azure-mfa"></a>Adatgyűjtés az Azure MFA számára
 
-Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) használatával indítson egy lekérdezést az exportált.
+Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) használatával indítson egy lekérdezést az exportált.
 
 - Többtényezős hitelesítés adatai megjelennek az exportálást, ami eltarthat órák vagy napok befejezéséhez.
 
 ## <a name="delete-data-for-azure-mfa"></a>Adatok törlése az Azure MFA használatára
 
-Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) használatával indítson egy lekérdezést a fiók bezárása összes MFA felhőalapú szolgáltatás összegyűjtött adatokat a felhasználó törlése.
+Használja a [Microsoft adatvédelmi Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) használatával indítson egy lekérdezést a fiók bezárása összes MFA felhőalapú szolgáltatás összegyűjtött adatokat a felhasználó törlése.
 
 - Az adatok teljesen eltávolítani kívánt akár 30 napig is eltarthat.
 

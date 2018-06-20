@@ -1,26 +1,27 @@
 ---
-title: "Azure-beli virtuális gépek nagy léptékű biztonsági mentése | Microsoft Docs"
-description: "Egyszerre több virtuális gép biztonsági mentése az Azure-ba"
+title: Azure-beli virtuális gépek nagy léptékű biztonsági mentése
+description: Egyszerre több virtuális gép biztonsági mentése az Azure-ba
 services: backup
-keywords: "virtuális gép biztonsági mentése; vm biztonsági mentése; Azure-beli virtuális gép biztonsági mentése; biztonsági mentés és vészhelyreállítás"
+keywords: virtuális gép biztonsági mentése; vm biztonsági mentése; Azure-beli virtuális gép biztonsági mentése; biztonsági mentés és vészhelyreállítás
 author: markgalioto
 ms.author: markgal
 ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecbf583a9b64868004b246bb01e7f174a21496b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607464"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
 Amikor adatok biztonsági mentését végzi az Azure-ban, egy Recovery Services-tároló nevű Azure-erőforrásban tárolja a másolatokat. A helyreállításitár-erőforrás a legtöbb Azure-szolgáltatás Beállítások menüjéből elérhető. Az Azure-szolgáltatások Beállítások menüjébe integrált helyreállítási tár előnye, hogy könnyen lehet biztonsági másolatot készíteni az adatokról. A cég vagy intézmény adatbázisainak vagy virtuális gépeinek egyenkénti kezelése azonban fárasztó feladat. Mi történik, ha egy részleg vagy egy helyszín összes virtuális gépének adatairól szeretne biztonsági mentést készíteni? Könnyedén elvégezheti egyszerre több virtuális gép biztonsági mentését, ha létrehoz egy, az érintett virtuális gépekre vonatkozó biztonsági mentési szabályzatot. Ez az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Helyreállítási tár létrehozása
+> * Recovery Services-tároló létrehozása
 > * Biztonsági mentési szabályzat meghatározása
 > * A biztonsági mentési szabályzat alkalmazása több virtuális gép védelme érdekében
 > * A védett virtuális gépek biztonsági mentési feladatának manuális aktiválása
@@ -29,7 +30,7 @@ Amikor adatok biztonsági mentését végzi az Azure-ban, egy Recovery Services-
 
 Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a védett virtuális gépekre vonatkozó biztonsági mentési szabályzatot. A virtuális gépek biztonsági mentése egy helyi folyamat. Nem lehet biztonsági mentést készíteni egy adott helyen található virtuális gépről egy másik helyen található helyreállítási tárba. Ezért minden olyan Azure-helyen, ahol biztonsági mentésre szoruló virtuális gépek vannak, legalább egy helyreállítási tárnak kell lennie.
 
@@ -51,7 +52,7 @@ A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a véde
 
 A helyreállítási tárnak ugyanazon a helyen kell lennie, mint a virtuális gépeknek, amelyeknek védelmet biztosít. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy helyreállítási tárat. Ebben az oktatóanyagban *Nyugat-Európában* hozzuk létre a helyreállítási tárat, mert itt jött létre a *myVM* (a rövid útmutatóban létrehozott virtuális gép).
 
-A helyreállítási tár létrehozása több percet is igénybe vehet. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tár létrejött, megjelenik a helyreállítási tárak listájában.
+A Recovery Services-tároló létrehozása több percet is igénybe vehet. Figyelje az állapotértesítéseket a portál jobb felső területén. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában.
 
 A létrehozott helyreállítási tárak alapértelmezés szerint georedundáns tárolással rendelkeznek. Az adatok rugalmassága érdekében a georedundáns tárolás többször replikálja az adatokat két Azure-régió között.
 
@@ -111,11 +112,11 @@ Biztonsági mentési feladat manuális futtatása:
 
     ![Beállítások ikon](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
 
-    Megnyílik a **Biztonsági másolati elemek** listája.
+    Megnyílik a **Biztonsági mentési elemek** listája.
 
     ![Biztonsági mentési feladat elindul](./media/tutorial-backup-vm-at-scale/initial-backup-context-menu.png)
 
-3. A **Biztonsági másolati elemek** listában kattintson a három pontra **...** a helyi menü megnyitásához.
+3. A **Biztonsági mentési elemek** listában kattintson a három pontra **...** a helyi menü megnyitásához.
 
 4. A helyi menüben válassza a **Biztonsági mentés** elemet.
 
@@ -176,7 +177,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 
 > [!div class="checklist"]
-> * Helyreállítási tár létrehozása
+> * Recovery Services-tároló létrehozása
 > * A tároló beállítása a virtuális gépek védelméhez
 > * Egyéni biztonsági mentési és adatmegőrzési szabályzat létrehozása
 > * A szabályzat hozzárendelése több védendő virtuális géphez

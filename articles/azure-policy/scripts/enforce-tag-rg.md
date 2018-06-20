@@ -15,15 +15,16 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 39f07ff2b24f0fcc7e0bb418319dd83c8f2b2c89
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2bf315a856d2254e895eed1b9cc8d6c3d2f8ba92
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602006"
 ---
 # <a name="enforce-tag-and-its-value-on-resource-groups"></a>Címke és címkeérték kényszerített használata erőforráscsoportokra
 
-Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Meg kell adnia a kényszerítendő címkenevet és -értéket.
+Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Ön adja meg a kötelező címkenevet és -értéket.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -56,7 +57,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,7 +67,7 @@ az policy definition create --name 'enforce-resourceGroup-tags' --display-name '
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-resourceGroup-tags"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További Azure Policy-példasablonokért lásd az [Azure Policy-sablonok](../json-samples.md) témakörét.
+- További példák [Az Azure Policy sablonjai](../json-samples.md) oldalon.

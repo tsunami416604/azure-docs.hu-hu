@@ -11,13 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/27/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 10774e7ca1168a58e8c8d47e6a7295ff727fa1cd
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801449"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hibrid identitás: a címtár-integrációs eszközök összehasonlítása
 Az évek során a címtár-integrációs eszközök bővültek és továbbfejlődtek.  Ez a dokumentum ezen eszközök egyesített nézetét is elérhetővé teszi, valamint az egyes eszközökben elérhető funkciók összehasonlíthatóságát biztosítja.
@@ -38,7 +40,7 @@ JK = Jövőbeli kiadás
 NyE = Nyilvános előzetes verzió  
 
 ## <a name="on-premises-to-cloud-synchronization"></a>Helyszínről felhőbe végzett szinkronizálás
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services (AAD Sync) | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services (AAD Sync) – TÁMOGATÁSA MEGSZŰNT | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Csatlakozás egyetlen helyszíni AD-erdőhöz |● |● |● |● |● |
 | Csatlakozás több helyszíni AD-erdőhöz |● |● | |● |● |
@@ -53,7 +55,7 @@ NyE = Nyilvános előzetes verzió
 
 
 ## <a name="cloud-to-on-premises-synchronization"></a>Felhőről helyszínre végzett szinkronizálás
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Eszközök visszaírása |● | |● | | |
 | Attribútum visszaírása (hibrid Exchange-környezethez) |● |● |● |● |● |
@@ -61,15 +63,17 @@ NyE = Nyilvános előzetes verzió
 | Jelszavak visszaírása (önkiszolgáló jelszó-visszaállításból (SSPR) és jelszómódosításból) |● |● | | | |
 
 ## <a name="authentication-feature-support"></a>Hitelesítési funkciók támogatása
-| Funkció | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Funkció | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-| Jelszó-szinkronizálás egyetlen helyszíni AD-erdőhöz |● |● |● | | |
-| Jelszó-szinkronizálás több helyszíni AD-erdőhöz |● |● | | | |
+| Jelszókivonat szinkronizálása egyetlen helyszíni AD-erdőhöz |●|●|● | | |
+| Jelszókivonat szinkronizálása több helyszíni AD-erdőhöz |●|● | | | |
+| Átmenő hitelesítés egyetlen helyszíni AD-erdőhöz |●| | | | |
 | Egyszeri bejelentkezés összevonással |● |● |● |● |● |
+| Közvetlen egyszeri bejelentkezés|● |||||
 | Jelszavak visszaírása (SSPR-ből és jelszómódosításból) |● |● | | | |
 
 ## <a name="set-up-and-installation"></a>Beállítás és telepítés
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Microsoft Identity Manager 2016 (MIM) |
+| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|
 | Támogatja a tartományvezérlőre történő telepítést |● |● |● | |
 | Támogatja az SQL Express használatát |● |● |● | |
@@ -80,7 +84,7 @@ NyE = Nyilvános előzetes verzió
 | A Windows Server 2012 és a Windows Server 2012 R2 támogatása |● |● |● |● |
 
 ## <a name="filtering-and-configuration"></a>Szűrés és konfigurálás
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services | Azure Active Directory Synchronization Tool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
+| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 | Szűrés a tartományokon és szervezeti egységeken |● |● |● |● |● |
 | Szűrés az objektumok attribútumértékein |● |● |● |● |● |

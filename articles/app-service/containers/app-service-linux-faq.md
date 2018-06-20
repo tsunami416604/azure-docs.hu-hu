@@ -13,20 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/18/2018
 ms.author: msangapu
-ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294011"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222977"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux – gyakori kérdések az Azure App Service
 
 App Service Linux kiadása fejlesztjük szolgáltatások hozzáadására és fejlesztjük a portált a platformon. Ez a cikk ismerteti, hogy ügyfeleink kérésére velünk nemrég a kérdésekre adott válaszok.
 
-Ha a cikk a Megjegyzés kérdése van, és azt fogja fogadja a hívást a lehető leghamarabb.
+Ha kérdése van, ez a cikk fűzni.
 
 ## <a name="built-in-images"></a>Beépített lemezképek
 
@@ -54,13 +54,13 @@ Igen, akkor teheti meg a forrás-vezérlő (SCM) felügyeleti webhelyen kereszt�
 
 **Hogyan hozható létre egy Linux App Service-csomag az SDK vagy az Azure Resource Manager-sablon használatával?**
 
-Meg kell adnia a **fenntartott** mezőjét, az app service-nek *igaz*.
+Állítsa be a **fenntartott** mezőjét, az app service-nek *igaz*.
 
 ## <a name="continuous-integration-and-deployment"></a>Folyamatos integráció és üzembe helyezés
 
 **A webes alkalmazás továbbra is használ egy Docker-tároló régi lemezképet, után a kép Docker központ frissítése már megtörtént. Támogatják a folyamatos integrációt és telepítést egyéni tároló?**
 
-Az Azure-tároló beállításjegyzék vagy DockerHub képek ellenőrzése a következő cikk folyamatos integráció vagy üzembe helyező beállítása [tárolók webalkalmazást a folyamatos üzembe helyezés](./app-service-linux-ci-cd.md). Titkos nyilvántartó, a tároló leállításával és indítsa el a webes alkalmazás is frissítheti. Vagy módosít, vagy adja hozzá a tároló frissítésének kényszerítése dummy Alkalmazásbeállítás.
+Igen, a folyamatos integrációs/üzembe helyezés beállítása az Azure-tároló beállításjegyzék vagy DockerHub, a következő [tárolók webalkalmazást a folyamatos üzembe helyezés](./app-service-linux-ci-cd.md). Titkos nyilvántartó, a tároló leállításával és indítsa el a webes alkalmazás is frissítheti. Vagy módosít, vagy adja hozzá a tároló frissítésének kényszerítése dummy Alkalmazásbeállítás.
 
 **Átmeneti környezetek támogatására?**
 
@@ -70,15 +70,15 @@ Igen.
 
 Igen, be kell állítani az alkalmazások nevű beállítása `WEBSITE_WEBDEPLOY_USE_SCM` való *hamis*.
 
-**Saját-alkalmazás Git-telepítés sikertelen lesz, amikor Linux web app használatával. Milyen lehetőségeket megoldás a probléma?**
+**Saját-alkalmazás Git-telepítés sikertelen lesz, amikor Linux web app használatával. Hogyan használhatom a probléma?**
 
-A Linux-webalkalmazás Git-telepítés nem sikerül, ha az alkalmazás kódjában telepítéséhez a következő alternatív beállításokat lehet választani:
+A Linux-webalkalmazás Git-telepítés nem sikerül, ha az alkalmazás kódjában telepítéséhez az alábbi lehetőségek közül választhat:
 
-- A folyamatos kézbesítési (előzetes verzió) szolgáltatással: az alkalmazás forráskódjának tárolása egy Team Services Git-tárház vagy a GitHub-tárház Azure folyamatos kézbesítési használatára. További részletekért lásd: [folyamatos kézbesítési konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- A folyamatos kézbesítési (előzetes verzió) szolgáltatással: az alkalmazás forráskódjának tárolása egy Team Services Git-tárház vagy a GitHub-tárház Azure folyamatos kézbesítési használatára. További információkért lásd: [folyamatos kézbesítési konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Használja a [ZIP telepítése API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatához [SSH-ból a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) és nyissa meg azt a mappát, ahová a kód telepítésére. Futtassa a következőt:
+- Használja a [ZIP telepítése API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatához [SSH-ból a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) és nyissa meg azt a mappát, ahová a kód telepítésére. Futtassa a következő kódot:
 
-   ```
+   ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
@@ -86,10 +86,11 @@ A Linux-webalkalmazás Git-telepítés nem sikerül, ha az alkalmazás kódjába
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-**Használni kívánt szoftvercsatornák használatával a Node.js-alkalmazás, speciális beállítást vagy konfigurációk beállításához?**
+**Használni kívánt webes szoftvercsatornák a Node.js-alkalmazás, bármely speciális beállítások és konfigurációk beállításához?**
 
-Igen, tiltsa le a `perMessageDeflate` a kiszolgáló oldalán Node.js kódban. Például ha a socket.io használ, tegye a következőket:
-```
+Igen, tiltsa le a `perMessageDeflate` a kiszolgálóoldali Node.js-kódban. Például ha socket.io használ, használja a következő kódot:
+
+```nodejs
 var io = require('socket.io')(server,{
   perMessageDeflate :false
 });
@@ -101,16 +102,16 @@ Igen.
 
 **Támogatják a szerkesztő függőségi vezető PHP-alkalmazásokhoz?**
 
-Igen. A Git telepítés során Kudu kell észleli, hogy a PHP-alkalmazások (környezetnek köszönhetően composer.lock fájl jelenléte) telepít, a Kudu akkor indul el, majd a szerkesztő telepítése meg.
+Igen, a Git telepítés során a Kudu kell észleli, hogy a PHP-alkalmazások (környezetnek köszönhetően composer.lock fájl jelenléte) telepít, a Kudu akkor indul el, majd a szerkesztő telepítése.
 
 ## <a name="custom-containers"></a>Egyéni tárolók
 
 **Saját egyéni tároló használata. A platform, az SMB-megosztáson csatlakoztatni kívánt a `/home/` könyvtár.**
 
-Azt teheti úgy, hogy a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeállítás *igaz* vagy eltávolítja az alkalmazást teljesen. Ne feledje, hogy ennek hatására a tároló újraindítások során a platform tárolási végighalad a módosítása. 
+Azt teheti úgy, hogy a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` Alkalmazásbeállítás *igaz*. Ne feledje, hogy ennek hatására tároló újraindítások során a platform tárolási végighalad a módosítása.
 
 >[!NOTE]
->Ha a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítás *hamis*, a `/home/` könyvtárat nem lehet megosztva méretezési példányok között, és nem írt fájlok nem maradnak újraindításainál.
+>Ha a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` beállítás nincs megadva, vagy állítsa *hamis*, a `/home/` könyvtárat nem lehet megosztva méretezési példányok között, és nem írt fájlok nem maradnak újraindításainál.
 
 **A saját egyéni tároló elindításához hosszú ideig tart, és a platform újraindul a tárolóhoz, mielőtt befejezné indítása.**
 
@@ -162,6 +163,6 @@ A képet, elküldheti a [webalkalmazások visszajelzési fórumon](https://aka.m
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az Azure App Service Linux?](app-service-linux-intro.md)
-* [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [A tárolók a webes alkalmazás folyamatos üzembe helyezés](./app-service-linux-ci-cd.md)
+- [Mi az Azure App Service Linux?](app-service-linux-intro.md)
+- [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [A tárolók a webes alkalmazás folyamatos üzembe helyezés](./app-service-linux-ci-cd.md)

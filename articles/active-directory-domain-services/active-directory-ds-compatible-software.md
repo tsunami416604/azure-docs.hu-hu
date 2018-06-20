@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: d44420505ebf08e199ee482d78baa8fdb5654c14
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77453d05667e0520b4da550803902f01631aa5e1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587159"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232343"
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Harmadik felek szoftvereivel, kompatibilis az Azure AD tartományi szolgáltatások
 
@@ -35,10 +35,10 @@ Egy identitás-hitelesítési szolgáltatások lehetővé teszi, hogy a Mac OS X
 [A Tudásbázis következő cikkét - hitelesítési szolgáltatások használatára egy identitás, az Azure AD tartományi szolgáltatások](https://support.quest.com/authentication-services/kb/208427)
 
 
-## <a name="redhat-enterprise-linux"></a>RedHat Enterprise Linux
+## <a name="red-hat-enterprise-linux"></a>Red Hat Enterprise Linux
 
-![RedHat](./media/compatible-software-icons/RedHat.png)
+![Red Hat](./media/compatible-software-icons/RedHat.png)
 
 Red Hat Enterprise Linux a világ vezető enterprise Linux platformon beépített mai modern vállalati igényeinek. Red Hat Enterprise Linux esetén a Microsoft Azure enterprise Linux virtuális gép (VM) munkaterhelését előnyben részesített választani. Red Hat Enterprise Linux egy nyitott, megbízható és biztonságos platform telepítési rugalmasságot biztosít az üzleti szempontból kritikus fontosságú munkaterhelésekhez – az adatközpontból az Azure felhőbe - szorosan által támogatott ügyfelek készült integrált, a vállalati szintű támogatás Red Hat és a Microsoft.
 
-[Csatlakozás RedHat Enterprise Linux 7.2 rendszerű virtuális gép az Azure AD tartományi szolgáltatásokra](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+[Csatlakozás a Red Hat Enterprise Linux 7.2 rendszerű virtuális gép az Azure AD tartományi szolgáltatásokra](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

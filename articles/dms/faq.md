@@ -10,25 +10,25 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 06/19/2018
+ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850072"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214103"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Az Azure-adatbázis áttelepítése szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk felsorolja a Azure adatbázis áttelepítési szolgáltatás és a kapcsolódó válaszok együttes használatával kapcsolatos gyakori kérdésekre.
 
 ### <a name="q-what-is-azure-database-migration-service"></a>Q. Mi az Azure-adatbázis áttelepítése szolgáltatás?
-Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen felügyelt szolgáltatás lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés. A szolgáltatás a fejlesztéshez arra irányul, hogy a jelenleg a Public Preview:
+Az Azure-adatbázis áttelepítési szolgáltatás egy olyan teljes körűen felügyelt szolgáltatás lehetővé minimális állásidővel adatok Azure platformon több adatbázis forrásból zökkenőmentes áttelepítés. A szolgáltatás jelenleg általánosan elérhető, az arra irányul, hogy a folyamatban lévő fejlesztéshez:
 - Megbízhatóságát és teljesítményét.
 - Forrás-cél párok iteratív hozzáadását.
 - Folyamatos beruházást súrlódás szabad áttelepítéseket.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>Q. Milyen forrás-cél párok az Azure-adatbázis áttelepítési szolgáltatás jelenleg támogatja?
-A szolgáltatás a nyilvános előzetes verzió jelenleg áttelepítése az SQL Serverről az Azure SQL Database, és az Azure-portálon most ehhez a forgatókönyvhöz az Azure-adatbázis áttelepítési szolgáltatás használatának megkezdéséhez lépjen. Más, a forrás-cél párok, például az Azure SQL adatbázis felügyelt példány SQL Server és Oracle az Azure SQL Database egy korlátozott Private Preview verziójára keresztül érhetők el. Ezekkel az esetekkel korlátozott Private Preview verziójára részt lehetőség, iratkozzon fel [Itt](https://sqldatabase-migrationpreview.azurewebsites.net/).
+A szolgáltatás jelenleg áttelepítése az SQL Serverről az Azure SQL Database, és az Azure-portálon most ehhez a forgatókönyvhöz az Azure-adatbázis áttelepítési szolgáltatás használatának megkezdéséhez lépjen. Más, a forrás-cél párok, például az Azure SQL Database Oracle egy korlátozott Private Preview verziójára keresztül érhetők el. Ezekkel az esetekkel korlátozott Private Preview verziójára részt lehetőség, iratkozzon fel [Itt](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>Q. Hogyan hasonlítsa össze az Azure-adatbázis áttelepítési szolgáltatás más Microsoft adatbázis áttelepítési eszközök például az adatbázis áttelepítési Segéd (DMA-) vagy az SQL Server áttelepítés Segéd (SSMA)?
 Az Azure-adatbázis áttelepítési szolgáltatás legyen az előnyben részesített módszere léptékű adatbázis a Microsoft Azure áttelepítés. További részleteket az Azure-adatbázis áttelepítési szolgáltatás hogyan összehasonlítja más Microsoft-adatbázis-áttelepítési eszközök, és több, különböző esetekre szolgáltatással kapcsolatos javaslatok, lásd: a blog könyvelés [lehetővé tevő Microsoft adatbázis Áttelepítési eszközök és szolgáltatások](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
@@ -93,4 +93,4 @@ Ha a felhasználónak explicit módon leállítja az Azure adatbázis áttelepí
 Azt szeretnénk, a véleményét. Küldjön egy olyan visszajelzést és ötleteket rendelkezik a Azure-adatbázis áttelepítési keresztül User Voice szolgáltatással kapcsolatos / [Itt](https://feedback.azure.com/forums/906100-azure-database-migration-service).
 
 ## <a name="next-steps"></a>További lépések
-Az Azure-adatbázis áttelepítése szolgáltatás és a nyilvános előzetes regionális rendelkezésre állási áttekintését lásd: a cikk [Mi az az Azure adatbázis áttelepítési szolgáltatás előzetes](dms-overview.md). 
+Az Azure-adatbázis áttelepítése szolgáltatás és a regionális rendelkezésre állási áttekintését lásd: a cikk [Mi az az Azure-adatbázis áttelepítési szolgáltatás](dms-overview.md). 

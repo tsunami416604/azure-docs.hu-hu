@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 8670d25e10b58c40b9d0807de1db88c3296b193d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: d3a59c2d9b62bdbde75c54347ce9117fc9114cd6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164384"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220016"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programozott módon az Azure-irányítópultot létrehozni
 
@@ -26,7 +26,7 @@ Ebből a dokumentumból a folyamatot, amely programozott módon létrehozása é
 
 ![a minta-irányítópult](./media/azure-portal-dashboards-create-programmatically/sample-dashboard.png)
 
-## <a name="overview"></a>Áttekintés (klasszikus)
+## <a name="overview"></a>Áttekintés
 
 Irányítópultok Azure azok a megosztott [erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) hasonlóan a virtuális gépek és tárfiókok.  Ezért ezek kezelhetők programozott módon keresztül a [Azure Resource Manager REST API-k](/rest/api/), a [Azure CLI](https://docs.microsoft.com/cli/azure), [Azure PowerShell-parancsok](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0), és sok [ Azure-portálon](https://portal.azure.com) szolgáltatások felett erőforrást kezelésének megkönnyítése ezen API-k létrehozása.  
 
@@ -89,11 +89,11 @@ Azure lehetővé teszi annak kell levezényelni a több erőforrás központi te
 Ha ez az útvonal fog, majd (egyszerű) paraméterezéssel el kell végezni a sablon paraméter szintaxis használatával.  Lecseréli az erőforrás-azonosító észleltünk a korábbi, ahogy az itt látható az összes példányát.
 
 ### <a name="example-json-property-with-hard-coded-resource-id"></a>Példa JSON tulajdonság a kódolt erőforrás-azonosítót
-`id: “/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1”`
+`id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
 
 ### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>Példa JSON tulajdonság konvertálva a paraméteres verziót sablon paraméterek alapján
 
-`id: "[resourceId(parameters('virtualMachineResourceGroup'), ‘Microsoft.Compute/virtualMachines’, parameters('virtualMachineName'))]"`
+`id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
 
 Is kell deklarálni, néhány szükséges sablont metaadatok és a felső részén a json-sablon a Paraméterek:
 
@@ -122,7 +122,7 @@ __Ez a dokumentum végén a teljes, működő sablon tekintheti meg.__
 
 Ha Ön rendelkezik kialakított a sablon használatával telepítheti a [REST API-k](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), a [Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create), vagy a [portál telepítési sablonlap ](https://portal.azure.com/#create/Microsoft.Template).
 
-Az alábbiakban a példa irányítópult JSON két verziója van. Az első verziója, amely azt a portálról, amely olyan erőforráshoz kötött már lett exportálva. A második pedig az, hogy minden virtuális gép szoftveresen kötött és az Azure Resource Manager használatával telepített verziójának.
+Az alábbiakban a példa irányítópult JSON két verziója. Az első verziója, amely azt a portálról, amely olyan erőforráshoz kötött már lett exportálva. A második pedig az, hogy minden virtuális gép szoftveresen kötött és az Azure Resource Manager használatával telepített verziójának.
 
 ## <a name="json-representation-of-our-example-dashboard-before-templating"></a>A példa irányítópult (előtt templating) JSON-megjelenítés
 

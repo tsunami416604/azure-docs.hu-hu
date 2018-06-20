@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3fcbcbe5d5f8dab956f40cde112f3536e1ae668c
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34356171"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263992"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy alkalmazás elérési útja-alapú útválasztási szabályokat az Azure portál használatával
 
@@ -141,8 +141,8 @@ Ebben a példában az Alkalmazásátjáró háttér-kiszolgálóként használan
 
 1. Kattintson a **szabályok** majd **elérési alapú**.
 2. Adja meg *rule2* nevét.
-3. Adja meg *képek* az első elérési út neveként. Adja meg */images/** az elérési utat. Válassza ki **imagesBackendPool** a háttérkészlet.
-4. Adja meg *videó* a második elérési út neveként. Adja meg */video/** az elérési utat. Válassza ki **videoBackendPool** a háttérkészlet.
+3. Adja meg *képek* az első elérési út neveként. Adja meg */images/* \* az elérési utat. Válassza ki **imagesBackendPool** a háttérkészlet.
+4. Adja meg *videó* a második elérési út neveként. Adja meg */video/* \* az elérési utat. Válassza ki **videoBackendPool** a háttérkészlet.
 
     ![Elérési út alapú szabály létrehozása](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 

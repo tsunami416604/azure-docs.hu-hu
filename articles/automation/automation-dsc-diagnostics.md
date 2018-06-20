@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d01042a02f2339f039f23d4f6e021de503dc3815
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195964"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218955"
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Azure Automation DSC Log Analyticshez való jelentéskészítéshez szükséges adatok továbbítása
 
@@ -86,14 +86,14 @@ A művelet neve is szűkítheti a lekérdezést. For example: `Type=AzureDiagnos
 
 A felső ügyfelek kéréseire egyik arra, hogy a szöveg vagy egy e-mailt küldeni, ha probléma merül fel a DSC-konfiguráció.   
 
-A riasztási szabályt létrehozni, akkor először hozzon létre egy napló keressen rá a DSC jelentés azt jelzi, hogy a riasztás kell meghívnia.  Kattintson a **riasztás** gombra kattintva hozza létre és konfigurálja a riasztási szabályt.
+A riasztási szabályt létrehozni, akkor először hozzon létre egy napló keressen rá a DSC jelentés azt jelzi, hogy a riasztás kell meghívnia.  Kattintson a **+ új riasztást szabály** gombra kattintva hozza létre és konfigurálja a riasztási szabályt.
 
 1. A napló elemzés áttekintése lapon kattintson **naplófájl-keresési**.
 1. A riasztás napló keresési lekérdezés létrehozásához írja be a következő keresést a lekérdezés mezőbe:  `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   Ha állított be naplók egynél több Automation-fiók vagy előfizetés a munkaterületet, csoportosíthatók a a riasztások előfizetés és az Automation-fiók.  
   Automation-fiók nevét a DscNodeStatusData keresése erőforrás mezője származtatható.  
-1. Lehetőségre a **riasztási szabály hozzáadása** kattintson **riasztási** az oldal tetején. A riasztás konfigurálása lehetőségekről további információkért lásd: [Naplóelemzési riasztások](../log-analytics/log-analytics-alerts.md#alert-rules).
+1. Lehetőségre a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A riasztás konfigurálása lehetőségekről további információkért lásd: [hozzon létre egy riasztási rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Sikertelen a DSC-erőforrások található összes csomópont
 

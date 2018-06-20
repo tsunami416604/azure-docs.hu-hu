@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 25989d07b7d879ac68283ee56a7ccb0c07e09623
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
-ms.translationtype: HT
+ms.openlocfilehash: 76300b307c8e87a3dd108fc53d3b30a53d3276dd
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35349936"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263924"
 ---
 # <a name="manage-your-luis-account"></a>A LUIS fiók kezelése
 A két kulcsfontosságú adatokat LUIS fiók olyan felhasználói fiók és a szerzői műveletekhez kulcs. A bejelentkezési adatok felügyelt [account.microsoft.com](https://account.microsoft.com). A szerzői műveletekhez kulcs felügyelete a [LUIS][LUIS] webhely **beállítások** lap. 
@@ -50,8 +50,12 @@ A bérlői rendszergazda nem fog bejelentkezni LUIS, ha a rendszergazda hozzáf�
 
 Ha a bérlői rendszergazda csak bizonyos felhasználók LUIS használni fájlvédelemre, tekintse meg a [identitás blogja](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 
+### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>Több e-maileket közreműködők rendelkező felhasználói fiókok
+Közreműködők LUIS alkalmazásokhoz való hozzáadásakor meg a pontos e-mail címet, közreműködő, közreműködő LUIS használatára van szüksége. Azure Active Directory (Azure AD) lehetővé teszi, hogy egy felhasználó felcserélhetők egynél több e-mail fiókot, amíg LUIS a felhasználónak a közreműködő listában megadott e-mail cím bejelentkezni. 
+
+
 ## <a name="next-steps"></a>További lépések
 
 További információ a [kulcs szerzői](luis-concept-keys.md#authoring-key). 
 
-[LUIS]: luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

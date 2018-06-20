@@ -1,23 +1,25 @@
 ---
-title: "Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs"
-description: "Ismerje meg az Azure Active Directory portál kockázatosként megjelölt felhasználókról szóló biztonsági jelentését"
+title: Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs
+description: Ismerje meg az Azure Active Directory portál kockázatosként megjelölt felhasználókról szóló biztonsági jelentését
 services: active-directory
-author: MarkusVi
-manager: femila
+author: rolyon
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
-ms.author: markvi
+ms.component: compliance-reports
+ms.date: 05/23/2018
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ed6201e9edcef39b14b948b6b2f6e0b5da01ec60
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 030a45335f06c4f15a5136842a7f6477bac8253b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588709"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
 
@@ -29,12 +31,20 @@ A Microsoft elkötelezte magát az Ön környezeteinek védelmére. Ezen kötele
 Ha a rendszer olyan szokatlan tevékenységeket észlel, amelyek például az egyes felhasználói fiókok jogosulatlan hozzáférésére utalnak, értesítéseket küld Önnek, hogy megtehesse a szükséges lépéseket. Az értesítés nem jelenti azt, hogy a Microsoft saját rendszereinek biztonsága sérült volna.
  
 
-## <a name="azure-active-directory-report-access"></a>Azure Active Directory-jelentések elérése
+## <a name="access-the-users-flagged-for-risk-report"></a>A kockázatosként megjelölt felhasználókról szóló jelentés elérése
 
-A kockázatosként megjelölt felhasználókat egy online Azure Active Directory-jelentésben tekintheti meg. Ha nem Azure-előfizető, ingyen elvégezheti az előfizetés folyamatát a [http://aka.ms/AccessAAD](http://aka.ms/AccessAAD) címen.  
-Miután végzett, az Office 365 hitelesítő adataival érheti el az Azure Admin Centert. Vegye figyelembe, hogy az alapszintű előfizetési szinten korlátozott a biztosított adatok mennyisége. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el. További információkat a [Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon](active-directory-reporting-security-user-at-risk.md) című szakaszban talál.
+A kockázatosként megjelölt felhasználókat a vonatkozó [jelentésben](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) tekintheti meg az Azure Active Directoryban. Ha nem Azure AD-előfizető, ingyen végrehajthatja az egyszeri előfizetési folyamatot a [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) címen. Ezen a jelentésen különböző műveletek hajthatók végre. Például:
 
-Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az [Azure AD portáljára](https://portal.azure.com). Ha közvetlenül a jelentést szeretné megtekinteni, keresse fel a következő URL-címet: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk).
+- Ideiglenes jelszó létrehozása
+- Biztonságos jelszóváltoztatás megkövetelése a felhasználótól a következő bejelentkezéskor
+- A felhasználó kockázatos voltának figyelmen kívül hagyása szervizelési művelet nélkül.
+
+További információkat a [Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon](active-directory-reporting-security-user-at-risk.md) című szakaszban talál.
+
+### <a name="azure-ad-subscription-for-office-365-customers"></a>Azure AD-előfizetés Office 365-ügyfelek számára
+
+Miután végzett, az Office 365 hitelesítő adataival érheti el az Azure Admin Centert. Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
+
 
 **A kockázatosként megjelölt felhasználókról szóló jelentések elérése az Office 365 felügyeleti központjában:**
 
@@ -45,7 +55,7 @@ Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az [Azur
 4.  A bal oldali navigációs menüben kattintson az **Azure Active Directory** elemre. 
 5.  A navigációs ablak **Biztonság** területén kattintson a **Kockázatosként megjelölt felhasználók** elemre.
 
-Tekintse át az itt megjelenő információkat. Vissza kell állítania az itt szereplő összes fiók jelszavát. 
+Tekintse át az itt megjelenő információkat. Vissza kell állítania az összes itt szereplő fiók jelszavát. 
 
 ## <a name="remediation-actions"></a>Szervizelési műveletek
 

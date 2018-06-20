@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12cc84942c139d3c5e981aec902557201c9c8092
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9b78977457f818b964adb16ebb5e9e5872aa2c
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349798"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264973"
 ---
 # <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>A Botot jelentéskészítő SDK for Node.js használatával bot LUIS integrálása
 
@@ -235,15 +235,14 @@ Az Azure portálon, válassza ki a **webes Csevegés tesztelése** a botot teszt
    ![Webes Csevegés HomeAutomation botot tesztelése](./media/luis-tutorial-node-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Ha talál meg, hogy a botot nem mindig ismeri fel a helyes leképezés vagy entitásokat, a LUIS app a jobb teljesítmény érdekében adjon neki további példa utterances betanítása azt. A LUIS app a botot kód módosítás nélkül is működik. Lásd: [adja hozzá például utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [betanítása és a alkalmazás tesztelése a LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/train-test).
+> Ha talál meg, hogy a botot nem mindig ismeri fel a helyes leképezés vagy entitásokat, a LUIS app a jobb teljesítmény érdekében adjon neki további példa utterances betanítása azt. A LUIS app a botot kód módosítás nélkül is működik. Lásd: [adja hozzá például utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [betanítása és a alkalmazás tesztelése a LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test).
 
 ## <a name="learn-more-about-bot-framework"></a>További tudnivalók Botot keretrendszer
 További információ [Botot keretrendszer](https://dev.botframework.com/) és a [3.x](https://github.com/Microsoft/BotBuilder) és [4.x](https://github.com/Microsoft/botbuilder-js) SDK-k.
 
 ## <a name="next-steps"></a>További lépések
 
-<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.-->
-Próbálkozzon más leképezések súgó, a Mégse gombra és a üdvözlés, például hozzáadása a LUIS alkalmazáshoz. Majd adja hozzá az új leképezések a párbeszédpanelek, és tesztelje azokat a botot használatával. 
+<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.--> Próbálkozzon más leképezések súgó, a Mégse gombra és a üdvözlés, például hozzáadása a LUIS alkalmazáshoz. Majd adja hozzá az új leképezések a párbeszédpanelek, és tesztelje azokat a botot használatával. 
 
 <!-- 
 > [!NOTE] 
@@ -298,10 +297,10 @@ Próbálkozzon más leképezések súgó, a Mégse gombra és a üdvözlés, pé
 <!-- Old Links -->
 [Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
 [Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[Github-LUIS-Samples-node-hotel-bot]:https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
+[Github-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
 [NodeJs]: https://nodejs.org/
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 

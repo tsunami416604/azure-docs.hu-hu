@@ -3,21 +3,22 @@ title: Az Azure-SSIS-integrációs futásidejű telepítőjének testreszabása 
 description: Ez a cikk ismerteti, hogyan használható az egyéni telepítés kezelőfelület az Azure-SSIS-integrációs futásidejű további összetevők telepítéséhez, vagy módosítsa a beállításokat
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: douglasl
-ms.openlocfilehash: 7b6cae9eaa4674e60edfae13c571d89153c9b498
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298392"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268128"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS-integráció futási időben testreszabása
 
@@ -30,13 +31,13 @@ Az ingyenes vagy a nem licencelt, és fizetett vagy licencelt összetevői is te
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
--   Ha a használni kívánt `gacutil.exe` szerelvényeket a globális szerelvény gyorsítótárban (GAC) a telepítéséhez adja meg az egyéni telepítés részeként, vagy a nyilvános előzetes verzió-tárolóban megadott másolási szüksége.
+-   Ha a használni kívánt `gacutil.exe` szerelvényeket a globális szerelvény gyorsítótárban (GAC) a telepítéséhez meg kell adnia `gacutil.exe` az egyéni telepítő, vagy használja a nyilvános előzetes tárolóban biztosított másolat részeként.
+
+-   Ha egy almappát a parancsfájlt a hivatkozni kívánt `msiexec.exe` nem támogatja a `.\` kell hivatkoznia, amely a gyökérmappában található notation. A paranccsal például `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` helyett `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`.
 
 -   Ha az Azure-SSIS-IR egyéni telepítés csatlakoztatása egy virtuális hálózathoz van szüksége, csak Azure Resource Manager virtuális hálózat esetén támogatott. Klasszikus virtuális hálózathoz nem támogatott.
 
 -   Rendszergazdai megosztás jelenleg nem támogatott az Azure-SSIS infravörös
-
--   Ha azt szeretné, hogy egy fájlmegosztás hozzárendelése az egyéni beállítás, a meghajtó a `net use` parancs jelenleg nem támogatott. Ennek eredményeképpen, például a parancs nem használható `net use d: \\fileshareserver\sharename`. Ehelyett használja a `cmdkey` paranccsal – például `cmdkey /add:fileshareserver /user:yyy /pass:zzz` - hozzáférés a `\\fileshareserver\folder` közvetlenül a csomagokban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,8 +59,7 @@ Az Azure-SSIS-IR testreszabásához kell a következőket:
 
     1.  Rendelkeznie kell egy parancsfájlt nevű `main.cmd`, amely a belépési pont az egyéni beállítás.
 
-    2.  Ha azt szeretné, hogy egyéb eszközök által létrehozott további naplók (például `msiexec.exe`) lehet feltölteni a tárolóba, adja meg az előre definiált környezeti változó `CUSTOM_SETUP_SCRIPT_LOG_DIR` a parancsfájlokat a napló-mappaként (például `msiexec /i xxx.msi /quiet
-        /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
+    2.  Ha azt szeretné, hogy egyéb eszközök által létrehozott további naplók (például `msiexec.exe`) lehet feltölteni a tárolóba, adja meg az előre definiált környezeti változó `CUSTOM_SETUP_SCRIPT_LOG_DIR` a parancsfájlokat a napló-mappaként (például `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
 
 4.  Letöltése, telepítése és elindítása [Azure Tártallózó](http://storageexplorer.com/).
 

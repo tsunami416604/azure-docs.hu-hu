@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 4ced7bcec87a9edde2e3ded8c8c61abe96003572
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: feb8acb674fd2dc62b62c26da6a6b42515f30242
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35349942"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265971"
 ---
 # <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Oktatóanyag: Hozzáadása kifejezéslista előrejelzéseket javítása érdekében
 Ebben az oktatóanyagban leképezési eredmények pontosságának javítása és entitásokat szavak, amely jelentéssel bír (szinonimák) rendelkezik egy cserélhető hozzáadásával azonosítása [kifejezés lista szolgáltatás](./luis-concept-feature.md).
@@ -33,7 +33,7 @@ Ez a cikk van szüksége egy szabad [LUIS] [ LUIS] fiók ahhoz, hogy a LUIS alka
 
 2. A [hozzon létre egy alkalmazást](Create-new-app.md#import-new-app), importálja a fájlt a letöltött a [LUIS] [ LUIS] webhely új alkalmazásként. Az alkalmazás nevére az "A kifejezéslista oktatóanyaga." Leképezések, entitások és utterances rendelkezik. 
 
-3. [Vonat](luis-how-to-train.md) az alkalmazást. Be van tanítva, amíg nem [párbeszédes formában történő teszteléséhez](Train-Test.md#interactive-testing) legyen a [LUIS] [ LUIS] webhelyet. 
+3. [Vonat](luis-how-to-train.md) az alkalmazást. Be van tanítva, amíg nem [párbeszédes formában történő teszteléséhez](interactive-test.md#interactive-testing) legyen a [LUIS] [ LUIS] webhelyet. 
 
 4. A a [közzététel](PublishApp.md) lapon jelölje be a **Include minden előre jelezni leképezési pontszámok** jelölőnégyzetet. Ha a jelölőnégyzet be van jelölve, adja vissza az összes leképezések. Ha a jelölőnégyzet nincs bejelölve, a felső célt adja vissza. 
 
@@ -174,7 +174,7 @@ Amely LUIS kell tanítása *szeretné* és *szükséges* az alkalmazástartomán
 5. Válassza ki a felső navigációs sáv **betanítása** betanítása az alkalmazást, de nem közzéteendő. Most már rendelkezik két modell. A két modell értékek összehasonlításával.
 
 ## <a name="compare-the-phrase-list-model-to-the-published-model"></a>A kifejezés lista modellt a közzétett modell összehasonlítása
-Az alkalmazásban a közzétett modell nem betanítása a szinonimák a. Csak a jelenleg szerkesztett modellt szinonimák kifejezés listáját tartalmazza. A modellek összehasonlítása, használja a [interaktív tesztelés](Train-Test.md#interactive-testing). 
+Az alkalmazásban a közzétett modell nem betanítása a szinonimák a. Csak a jelenleg szerkesztett modellt szinonimák kifejezés listáját tartalmazza. A modellek összehasonlítása, használja a [interaktív tesztelés](interactive-test.md#interactive-testing). 
 
 1. Nyissa meg a **teszt** ablaktáblán, és írja be a következő utterance:
 
@@ -196,7 +196,7 @@ Miután hozzáadta a kifejezéslista, a utterance nagyobb pontosságát, és a *
 | A jelenleg szerkesztett |✔| 0.92 | Hardver entitás azonosított |
 
 > [!TIP]
-> * A [interaktív tesztelés](Train-Test.md#interactive-testing), összehasonlíthatja a közzétett modell bármely képzett közzététele után végzett módosításokat. 
+> * A [interaktív tesztelés](interactive-test.md#interactive-testing), összehasonlíthatja a közzétett modell bármely képzett közzététele után végzett módosításokat. 
 > * A [végpont tesztelés](PublishApp.md#test-your-published-endpoint-in-a-browser), megtekintheti a tényleges LUIS válasz JSON. 
 
 ## <a name="get-the-entity-score-with-the-endpoint-test"></a>Az entitás pontszám lekérdezni a végpont teszt
@@ -261,8 +261,6 @@ Ha már nincs szükség, a LUIS alkalmazás törlése. Ehhez az szükséges, vá
 > [!div class="nextstepaction"]
 > [Végpont lekérdezéssel utterance előrejelzés beolvasása](luis-get-started-cs-get-intent.md)
 
-[LUIS]: luis-reference-regions.md
-
-  [LUIS]:luis-reference-regions.md
-  [LuisFeatures]: luis-concept-feature.md
-  [LuisSampleApp]:https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/phrase_list/interchangeable/luis-app-before-phrase-list.json
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LuisFeatures]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature
+[LuisSampleApp]: https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/phrase_list/interchangeable/luis-app-before-phrase-list.json

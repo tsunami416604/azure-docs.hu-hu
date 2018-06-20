@@ -1,5 +1,5 @@
 ---
-title: Azure Files biztonsági mentésének hibaelhárítása
+title: Az Azure-fájlmegosztások biztonsági mentésének hibaelhárítása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 services: backup
 ms.service: backup
@@ -7,22 +7,26 @@ author: markgalioto
 ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
-ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 225d11c8609c81ed7877283e8dc0fd920b14d838
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdb35cf47b339ff2089b3849283a71aa9d8fbc3d
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807414"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-files"></a>Az Azure Files biztonsági mentésével kapcsolatos problémák elhárítása
-Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure Files biztonsági mentése közben fellépő problémákat és hibákat.
+# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
+Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure-fájlmegosztások biztonsági mentése közben fellépő problémákat és hibákat.
 
 ## <a name="preview-boundaries"></a>Előzetes verzió határai
-Az Azure Files biztonsági mentése jelenleg előzetes verzióként érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
-- Tárfiókokban lévő Azure-fájlmegosztások védelme [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) vagy [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval.
-- Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
+Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
+- Tárfiókokban lévő Azure-fájlmegosztások védelme [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval*.
+- Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
 - Azure-fájlmegosztások biztonsági mentése PowerShell vagy parancssori felület használatával.
+
+\*A tárfiókokban lévő Azure-fájlmegosztások [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikáció esetén GRS-ként működnek és GRS-díjszabás szerint lesznek számlázva
+
+A [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációjú tárfiókokban lévő Azure-fájlmegosztások jelenleg csak az USA középső régiójában (CUS) és USA 2. keleti régiójában (EUS2) elérhetők
 
 ### <a name="limitations"></a>Korlátozások
 - Maximális #ütemezett biztonsági mentés naponta: 1.
@@ -40,7 +44,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | A kiválasztott tárfiók érvényesítése vagy regisztrációja sikertelen.| Próbálkozzon újra a művelettel. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.|
 | A kiválasztott tárfiókban nem listázható vagy nem található fájlmegosztás. | <ul><li> Győződjön meg arról, hogy a tárfiók létezik az erőforráscsoportban (és nem törölték vagy helyezték át a tárolóban az utolsó ellenőrzés/regisztráció után).<li>Ellenőrizze, hogy a védeni kívánt fájlmegosztás nem lett-e törölve. <li>Ellenőrizze, hogy a tárfiók támogatott-e fájlmegosztásokról való biztonsági másolat készítéséhez.<li>Ellenőrizze, hogy a fájlmegosztás már védve van-e ugyanabban a helyreállítási tárban.|
 | A fájlmegosztás biztonsági mentésének konfigurációja (vagy a védelmi szabályzat konfigurálása) sikertelen. | <ul><li>Próbálja megismételni a műveletet annak ellenőrzéséhez, hogy a probléma továbbra is fennáll-e. <li> Győződjön meg arról, hogy a védeni kívánt fájlmegosztás nem lett törölve. <li> Ha több fájlmegosztást kíván egyszerre védeni, és a fájlmegosztások némelyike nem működik, ismételje meg a sikertelen fájlmegosztások biztonsági mentésének konfigurálását. |
-| Nem sikerült törölni a helyreállítási tárat a fájlmegosztás védelmének feloldása után. | Nyissa meg az Azure Portalon a **Biztonsági mentési infrastruktúra** > **Tárfiókok** elemet, és kattintson a **Regisztráció törlése** lehetőségre a tárfiók helyreállítási tárból történő eltávolításához.|
+| Nem sikerült törölni a helyreállítási tárat a fájlmegosztás védelmének feloldása után. | Nyissa meg az Azure Portalon a saját Tár > **Biztonsági mentési infrastruktúra** > **Tárfiókok** elemet, és kattintson a **Regisztráció törlése** lehetőségre a tárfiók helyreállítási tárból történő eltávolításához.|
 
 
 ## <a name="error-messages-for-backup-or-restore-job-failures"></a>A feladatok biztonsági mentése vagy helyreállítása során jelentkező hibák üzenetei
@@ -52,7 +56,7 @@ Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához
 | Elérte a fájlmegosztás pillanatképekre vonatkozó maximális korlátját. Akkor fog tudni továbbiakat készíteni, ha a régebbiek érvényessége lejár. | <ul><li> Ez a hiba akkor fordulhat elő, ha több igény szerinti biztonsági mentést hoz létre egy fájlhoz. <li> Egy fájlmegosztásról legfeljebb 200 pillanatkép készíthető, beleértve az Azure Backup által készítetteket is. A régebbi ütemezett biztonsági mentések (vagy pillanatképek) automatikusan törlődnek. Törölni kell az igény szerinti biztonsági mentést (vagy pillanatképeket), ha elérik a maximális korlátot.<li> Törölje az igény szerinti biztonsági mentéseket (az Azure fájlmegosztási pillanatképeket) az Azure Files portálról. **Megjegyzés:**: A helyreállítási pontok elvesznek, ha törli az Azure Backuppal létrehozott pillanatképeket. |
 | A fájlmegosztás biztonsági mentése vagy visszaállítása a társzolgáltatás szabályozása miatt meghiúsult. Ez azért történhet, mert a társzolgáltatás a megadott tárfiók más kérelmeinek feldolgozásával van elfoglalva.| Próbálja meg újra a műveletet később. |
 | A visszaállítás sikertelen, mert a célként megadott fájlmegosztás nem található. | <ul><li>Győződjön meg arról, hogy a kiválasztott tárfiók létezik, a célfájlmegosztás pedig nincs törölve. <li> Ellenőrizze, hogy a tárfiók támogatott-e fájlmegosztásokról való biztonsági másolat készítéséhez. |
-| Az Azure Backup jelenleg nem támogatja az olyan tárfiókokban elhelyezett Azure-fájlokat, amelyek esetében engedélyezve vannak a virtuális hálózatok. | Tiltsa le a virtuális hálózatokat a tárfiókon a sikeres biztonsági mentések vagy visszaállítási műveletek biztosításához. |
+| Az Azure Backup jelenleg nem támogatott olyan tárfiókokban lévő Azure-fájlmegosztásokhoz, amelyeknél a virtuális hálózatok engedélyezve vannak. | Tiltsa le a virtuális hálózatokat a tárfiókon a sikeres biztonsági mentések vagy visszaállítási műveletek biztosításához. |
 | A biztonsági mentési vagy visszaállítási feladat sikertelen volt a tárfiók zárolt állapota miatt. | Távolítsa el a zárolást a tárfiókról, vagy használjon törlési zárolást az olvasási zárolás helyett, majd ismételje meg a műveletet. |
 | A helyreállítás sikertelen volt, mert a hibás fájlok száma meghaladja a küszöbértéket. | <ul><li> A helyreállítási hibák okainak listája egy fájlban található (a feladat részletei tartalmazzák az elérési utat). Kérjük, oldja meg a hibákat, és ismételje meg visszaállítási műveletet csak a hibás fájlokra vonatkozóan. <li> A fájlvisszaállítási hibák gyakori okai: <br/> – győződjön meg arról, hogy a hibás fájlok jelenleg nincsenek használatban, <br/> – a hibás fájllal megegyező nevű könyvtár található a szülőkönyvtárban. |
 | A helyreállítás sikertelen volt, mert egyetlen fájl sem állítható helyre. | <ul><li> A helyreállítási hibák okainak listája egy fájlban található (a feladat részletei tartalmazzák az elérési utat). Oldja meg a hibákat, majd ismételje meg a visszaállítási műveleteket csak a hibás fájlokra vonatkozóan. <li> A sikertelen fájlvisszaállítás gyakori okai: <br/> – Győződjön meg arról, hogy a hibás fájlok jelenleg nincsenek használatban. <br/> – A hibás fájllal megegyező nevű könyvtár található a szülőkönyvtárban. |

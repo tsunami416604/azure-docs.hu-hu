@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3db2588edefa2f07d22609d7c454367d5572d5e0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35349954"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263880"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Webes alkalmazás Botot a C# LUIS sablonnal
 
@@ -80,7 +80,7 @@ Nyissa meg **Alkalmazásbeállítások** és szerkesztése a **LuisAppId** magá
 > Ha nincs LUIS alkalmazás Azonosítóját a [Home Automation app](luis-get-started-create-app.md), jelentkezzen be a [LUIS](luis-reference-regions.md) webhely ugyanazzal a fiókkal jelentkezzen be az Azure használatával. 
 > 1. Kattintson a **alkalmazásaimat**. 
 > 2. A korábban létrehozott LUIS alkalmazás, amely tartalmazza a leképezések és entitásokat a HomeAutomation tartományból megkereséséhez.
-> 3. Az a **beállítások** LUIS alkalmazás lapon található, és másolja az alkalmazás azonosítóját. Ellenőrizze, hogy az [képzett](Train-Test.md) és [közzétett](PublishApp.md). 
+> 3. Az a **beállítások** LUIS alkalmazás lapon található, és másolja az alkalmazás azonosítóját. Ellenőrizze, hogy az [képzett](interactive-test.md) és [közzétett](PublishApp.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ Az Azure-portálon kattintson a **webes Csevegés tesztelése** a botot tesztel�
    ![Webes Csevegés HomeAutomation botot tesztelése](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> A LUIS app a botot kód módosítás nélkül is működik. Lásd: [adja hozzá például utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [betanítása és a alkalmazás tesztelése a LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/train-test). 
+> A LUIS app a botot kód módosítás nélkül is működik. Lásd: [adja hozzá például utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) és [betanítása és a alkalmazás tesztelése a LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Töltse le a botot hibakeresése
 Ha a botot nem működik, a projekt letöltése a helyi számítógépen, és továbbra is [hibakeresés](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
@@ -160,6 +160,8 @@ Adja hozzá a LUIS leképezések és Botot szolgáltatás párbeszédpanelek cé
 > [!div class="nextstepaction"]
 > [Adja hozzá a leképezések](./luis-how-to-add-intents.md)
 > [beszéd betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
+
+
 <!-- Links -->
 [Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
 [Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
@@ -168,7 +170,7 @@ Adja hozzá a LUIS leképezések és Botot szolgáltatás párbeszédpanelek cé
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]:https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
+[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 <!-- tested on Win10 -->

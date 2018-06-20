@@ -7,16 +7,16 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/19/2018
 ms.author: juliako
-ms.openlocfilehash: 1834fa9f1dd7db618850ab897a85a1bcfdaa89ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8b336f2818769af8372320cadc20e3a152e51de2
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349871"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265580"
 ---
-# <a name="create-video-insights-from-existing-videos"></a>Videó elemzések készítése meglévő videók
+# <a name="create-highlights-from-existing-videos"></a>Hozzon létre emeli ki a meglévő videók
 
 Ez a témakör bemutatja, hogyan hozzon létre, és néhány egyéb videó alapján videó insights közzététele.
 

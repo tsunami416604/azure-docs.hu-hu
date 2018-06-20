@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 791871fc3da98b380da9dbe32333a55f670c22e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 541a8e83029fe1dc0ba386d1906b366e63041882
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638279"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268240"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -36,17 +36,17 @@ A következő táblázat az eszköz tulajdonságok láthatók, és lehetőséget
 
 |Name (Név)|Típus|Leírás|
 |---|---|---|
-|Azonosító|karakterlánc|Az erőforrás teljes erőforrás-azonosító.|
-|név|karakterlánc|Az erőforrás neve.|
-|properties.alternateId |karakterlánc|Az eszköz a másik azonosító.|
-|properties.assetId |karakterlánc|Az eszköz azonosítója.|
-|Properties.Container |karakterlánc|Az eszköz blob tároló nevét.|
-|Properties.created |karakterlánc|Az eszköz létrehozásának dátuma.|
-|properties.description |karakterlánc|Az eszköz leírása.|
-|properties.lastModified |karakterlánc|Az utolsó módosításának dátuma vagy az eszköz.|
-|properties.storageAccountName |karakterlánc|A tárfiók neve.|
+|Azonosító|sztring|Az erőforrás teljes erőforrás-azonosító.|
+|név|sztring|Az erőforrás neve.|
+|properties.alternateId |sztring|Az eszköz a másik azonosító.|
+|properties.assetId |sztring|Az eszköz azonosítója.|
+|Properties.Container |sztring|Az eszköz blob tároló nevét.|
+|Properties.created |sztring|Az eszköz létrehozásának dátuma.|
+|properties.description |sztring|Az eszköz leírása.|
+|properties.lastModified |sztring|Az utolsó módosításának dátuma vagy az eszköz.|
+|properties.storageAccountName |sztring|A tárfiók neve.|
 |properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Az eszköz titkosítási formátumban. Nincs egyikét vagy MediaStorageEncryption.|
-|type|karakterlánc|Az erőforrás típusa.|
+|type|sztring|Az erőforrás típusa.|
 
 A teljes meghatározása: [eszközök](https://docs.microsoft.com/rest/api/media/assets).
 
@@ -88,7 +88,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 A négy engedélyezve van a rendezési sorrend mindegyikének tördelési támogatott. 
 
-Ha a lekérdezési válasz tartalmaz számos (jelenleg keresztül 1000) elem, a szolgáltatás adja vissza egy "@odata.nextLink" tulajdonság használatával beolvassa a következő oldalra. Ez használható a teljes eredménykészlet keresztül lapra. Az oldalméret nincs a felhasználó által konfigurálható. 
+Ha a lekérdezési válasz tartalmaz számos (jelenleg keresztül 1000) elem, a szolgáltatás adja vissza egy "\@odata.nextLink" tulajdonság használatával beolvassa a következő oldalra. Ez használható a teljes eredménykészlet keresztül lapra. Az oldalméret nincs a felhasználó által konfigurálható. 
 
 Ha az eszközök létrehozása vagy törlése során a gyűjtemény lapozást, a módosítások megjelennek a visszaadott eredmények (ha ezeket a módosításokat a részében a gyűjteményt, amely nem töltődött le.) 
 
@@ -105,6 +105,21 @@ while (currentPage.NextPageLink != null)
 ```
 
 További példákért lásd [eszközök – lista](https://docs.microsoft.com/rest/api/media/assets/list)
+
+
+### <a name="storage-side-encryption"></a>Tárolási kiszolgálóoldali titkosítás
+
+Az inaktív eszközök védelme érdekében az eszközöket a storage ügyféloldali titkosítása titkosítani kell. Az alábbi táblázat a storage ügyféloldali titkosítás a Media Services működése:
+
+|a titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|---|---|---|---|
+|Media Services-tárolás titkosítása|AES-256 titkosítás, kulcs Media Services által felügyelt|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
+|[Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Kiszolgálóoldali titkosítás Azure Storage által kínált kulcsát kezeli az Azure-ban vagy az ügyfél által|Támogatott|Támogatott|
+|[Storage ügyféloldali titkosítása](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure-tárolót, a Key Vault ügyfél által felügyelt kulcs által kínált ügyféloldali titkosítás|Nem támogatott|Nem támogatott|
+
+<sup>1</sup> közben a Media Services kezelni a tartalom szövegként/bármilyen titkosítás nélkül, ez nem ajánlott.
+
+<sup>2</sup> v3 a Media Services, storage encryption (az AES-256 titkosítás) van csak a visszamenőleges kompatibilitás létrehozásakor támogatott az eszközök volt a Media Services v2. Tehát a meglévő tárhely v3 együttműködik eszközök titkosítottak, de nem teszi lehetővé a újakat.
 
 ## <a name="next-steps"></a>További lépések
 

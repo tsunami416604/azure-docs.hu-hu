@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: ab053e9b132630c19b6966286035d38c71c6b4d9
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158149"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268135"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -45,7 +45,7 @@ A szolgáltatás által biztosított a [Azure-portálon][AZURE-portal], az ident
 ## <a name="application-object"></a>alkalmazásobjektum
 Ha Ön regisztrálása vagy frissítéséhez az alkalmazás a [Azure-portálon][AZURE-portal], a portál létrehoz frissítések alkalmazásobjektum és a hozzá tartozó [szolgáltatás egyszerű objektum](#service-principal-object) a bérlő. Az application objektum *meghatározása* az alkalmazás egy sablon, amelynek a megfelelő szolgáltatás egyszerű objektumok elő biztosító identitáskonfigurációs globálisan (ahol hozzáféréssel rendelkezik az összes bérlőre), között  *származtatott* helyileg történő futtatása (az egy adott bérlő) használható.
 
-Lásd: [alkalmazás és szolgáltatás egyszerű objektumok] [ AAD-App-SP-Objects] további információt.
+További információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok][AAD-App-SP-Objects].
 
 ## <a name="application-registration"></a>alkalmazás regisztrálása
 Annak érdekében, hogy egy alkalmazás integrálása, és delegálása az Azure AD-identitás- és hozzáférés-kezelési funkciók, regisztrálnia kell azt az Azure AD-val [bérlői](#tenant). Regisztrálnia az alkalmazást az Azure AD, ha meg van adva egy identitás-konfigurációt az alkalmazáshoz, lehetővé téve az Azure AD integrálása és használatát, mint:
@@ -132,7 +132,7 @@ Például [hatókörök](#scopes), szerepkörök teszik lehetővé az egy [erőf
 
 Szerepkörök olyan erőforrás-definiált karakterláncok (például "költség jóváhagyó", "Csak Olvasás", "Directory.ReadWrite.All"), a felügyelt a [Azure-portálon] [ AZURE-portal] keresztül az erőforrás [alkalmazás manifest](#application-manifest), és az erőforrás tárolt [appRoles tulajdonság][AAD-Graph-Sp-Entity]. Az Azure-portálon is szolgál a "user" szerepkörökhöz rendeljen hozzá a felhasználókat, és -ügyfél konfigurálása [Alkalmazásengedélyek](#permissions) "alkalmazás" szerepet eléréséhez.
 
-Az Azure AD Graph API által elérhetővé tett alkalmazás-szerepkörök részletes tárgyalását lásd: [Graph API-Engedélyhatókörök][AAD-Graph-Perm-Scopes]. A részletes megvalósítási példa, lásd: [szerepköralapú hozzáférés-vezérlés az Azure AD felhőalapú alkalmazások][Duyshant-Role-Blog].
+Az Azure AD Graph API által elérhetővé tett alkalmazás-szerepkörök részletes tárgyalását lásd: [Graph API-Engedélyhatókörök][AAD-Graph-Perm-Scopes]. A részletes megvalósítási példa, lásd: [RBAC és az Azure-portálon-hozzáférés kezelése][AAD-RBAC].
 
 ## <a name="scopes"></a>Hatókörök
 Például [szerepkörök](#roles), hatókörök teszik lehetővé az egy [erőforrás-kiszolgáló](#resource-server) a védett erőforrásokhoz való hozzáférés szabályozása érdekében. Hatókörök végrehajtásához használt [hatókör-alapú] [ OAuth2-Access-Token-Scopes] a hozzáférés-vezérlést, egy [ügyfélalkalmazás](#client-application) , amelyek adott delegált hozzáférést az erőforráshoz a tulajdonosa.
@@ -147,15 +147,15 @@ Jogcímek, például egy OAuth2 token vagy a SAML 2.0 helyességi feltételt tar
 ## <a name="service-principal-object"></a>szolgáltatás egyszerű objektum
 Ha Ön regisztrálása vagy frissítéséhez az alkalmazás a [Azure-portálon][AZURE-portal], a portál létrehoz frissítések is egy [alkalmazásobjektum](#application-object) és egy megfelelő szolgáltatás egyszerű objektum a bérlő. Az application objektum *meghatározása* az identitás alkalmazást globálisan (ahol egy társított alkalmazásban hozzáférést kapott minden bérlők), között, és a sablon, amelynek a megfelelő egyszerű szolgáltatásnév objektumok vannak *származtatott* helyileg történő futtatása (az egy adott bérlő) használható.
 
-Lásd: [alkalmazás és szolgáltatás egyszerű objektumok] [ AAD-App-SP-Objects] további információt.
+További információkért lásd: [alkalmazás és szolgáltatás egyszerű objektumok][AAD-App-SP-Objects].
 
 ## <a name="sign-in"></a>bejelentkezés
-Folyamat egy [ügyfélalkalmazás](#client-application) kapcsolódó állapot céljából az beszerzése a felhasználói hitelesítést kezdeményező, és rögzítése egy [biztonsági jogkivonat](#security-token) és az alkalmazás munkamenet arra az állapotra hatókörének. Összetevők, például a felhasználói profillal kapcsolatos információk is tartalmazhat, és információt származó jogkivonat jogcímek állapotban.
+A folyamatot egy [ügyfélalkalmazás](#client-application) végfelhasználói hitelesítést kezdeményező és rögzítésével kapcsolatos állapot, abból a célból egy [biztonsági jogkivonat](#security-token) és az alkalmazás munkamenet arra az állapotra hatókörének. Összetevők, például a felhasználói profillal kapcsolatos információk is tartalmazhat, és információt származó jogkivonat jogcímek állapotban.
 
 Egy alkalmazás bejelentkezési funkciójának általában egyszeri bejelentkezéses (SSO) végrehajtásához használatos. Azt is előz "előfizetés" függvény, mint a belépési pont, a felhasználó hozzáfér egy alkalmazás (után első bejelentkezés). A regisztrációs függvény segítségével gyűjtse össze és egyes felhasználók további állapotban maradnak, és előfordulhat, hogy [felhasználói hozzájárulás](#consent).
 
 ## <a name="sign-out"></a>kijelentkezés
-A folyamatot nem hitelesítő felhasználó, a felhasználói állapot leválasztása társított a [ügyfélalkalmazás](#client-application) munkamenet során [bejelentkezés](#sign-in)
+A folyamatot a felhasználó a felhasználói állapot leválasztása unauthenticating társított a [ügyfélalkalmazás](#client-application) munkamenet során [-bejelentkezés](#sign-in)
 
 ## <a name="tenant"></a>bérlő
 Az Azure AD-címtár egy példányát az Azure AD-bérlő nevezzük. Több funkciót, beleértve a tartalmazza:
@@ -170,18 +170,18 @@ Az Azure AD-bérlő Office 365 és az Azure-előfizetések létrehozása vagy t�
 A végpont által megvalósított közül a [engedélyezési server](#authorization-server) támogatásához OAuth2 [engedélyezési biztosít](#authorization-grant). Attól függően, hogy a grant használható szerezni egy [hozzáférési jogkivonat](#access-token) (és a kapcsolódó "frissítés" token) a egy [ügyfél](#client-application), vagy [azonosító token](#ID-token) használata esetén a [OpenID Csatlakozás] [ OpenIDConnect] protokoll.
 
 ## <a name="user-agent-based-client"></a>Felhasználói ügynök-alapú ügyfél
-Olyan típusú [ügyfélalkalmazás](#client-application) , amely kód webkiszolgálókról és hajtanak végre belül egy felhasználói ügynök (például egy webes böngésző), például egy egyetlen oldal alkalmazás (SPA) fogunk. Összes kódot az eszközön végrehajtása, mert egy "nyilvános" ügyfél hitelesítő adatok közvetlenül a Microsoftnak/bizalmasan tárolására, mert minősül. Lásd: [OAuth2-ügyfél meg kell adnia, és profilok] [ OAuth2-Client-Types] további részleteket.
+Olyan típusú [ügyfélalkalmazás](#client-application) , amely kód webkiszolgálókról és hajtanak végre belül egy felhasználói ügynök (például egy webes böngésző), például egy egyetlen oldal alkalmazás (SPA) fogunk. Összes kódot az eszközön végrehajtása, mert egy "nyilvános" ügyfél hitelesítő adatok közvetlenül a Microsoftnak/bizalmasan tárolására, mert minősül. További információkért lásd: [OAuth2-ügyfél meg kell adnia, és profilok][OAuth2-Client-Types].
 
 ## <a name="user-principal"></a>egyszerű felhasználónév
 Hasonló ahhoz, ahogy a szolgáltatás egyszerű objektum egy alkalmazáspéldányt megjelenítésére szolgál, a felhasználó elsődleges objektumot egy rendszerbiztonsági tagot, amely képviseli a felhasználót egy másik típusú. Az Azure AD Graph [felhasználói entitás] [ AAD-Graph-User-Entity] határozza meg a sémában az olyan felhasználói objektum, beleértve a felhasználóval kapcsolatos tulajdonságait, például utónév és Vezetéknév, felhasználó egyszerű felhasználóneve, directory szerepköri tagság, stb. Ez lehetővé teszi a felhasználó identitása konfigurációja az Azure AD egy egyszerű futásidőben létrehozásához. Egyszerű felhasználónév az egyszeri bejelentkezést, hitelesített felhasználók megjelenítésére szolgál rögzítése [hozzájárulás](#consent) delegálás, így a hozzáférés-vezérlési döntéseket stb.
 
 ## <a name="web-client"></a>webes ügyfél
-Olyan típusú [ügyfélalkalmazás](#client-application) , amely végrehajtja az összes kód egy webkiszolgálón, és képes biztonságosan tárolja a hitelesítő adatok a kiszolgálón egy "bizalmas" ügyfél működhet. Lásd: [OAuth2-ügyfél meg kell adnia, és profilok] [ OAuth2-Client-Types] további részleteket.
+Olyan típusú [ügyfélalkalmazás](#client-application) , amely végrehajtja az összes kód egy webkiszolgálón, és képes biztonságosan tárolja a hitelesítő adatok a kiszolgálón egy "bizalmas" ügyfél működhet. További információkért lásd: [OAuth2-ügyfél meg kell adnia, és profilok][OAuth2-Client-Types].
 
 ## <a name="next-steps"></a>További lépések
-A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] van minden Azure AD-fejlesztési célra kezdőlapja kapcsolódó témakörök, valamint áttekintést [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios]. Is található mintakódok és oktatóprogramok, akinek gyorsan üzembe az beszerzése [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+A [Azure AD fejlesztői útmutató] [ AAD-Dev-Guide] van minden Azure AD fejlesztéssel kapcsolatos témaköröket, valamint áttekintést használandó kezdőlapja [alkalmazásintegráció] [ AAD-How-To-Integrate] és alapjait [az Azure AD-alapú hitelesítés és a támogatott hitelesítési forgatókönyvek][AAD-Auth-Scenarios]. Is található mintakódok és oktatóprogramok, akinek gyorsan üzembe az beszerzése [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
-Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen pontosítsa és a tartalom, például a kérelmekről új definíciók vagy meglévőket frissítése!
+Az alábbi Megjegyzések szakasz segítségével visszajelzést és pontosítsa és a tartalom, például a kérelmekről új definíciók vagy meglévőket frissítése!
 
 <!--Image references-->
 
@@ -194,7 +194,7 @@ Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen p
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
-[AAD-How-Subscriptions-Assoc]: ../active-directory-how-subscriptions-associated-directory.md
+[AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]: active-directory-howto-tenant.md
 [AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
@@ -202,7 +202,7 @@ Az alábbi Megjegyzések szakasz segítségével visszajelzést, és segítsen p
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
 [AZURE-portal]: https://portal.azure.com
-[Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
+[AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
