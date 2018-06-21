@@ -4,17 +4,17 @@ description: Ez a cikk részletesen ismerteti a lépéseket, amelyekkel létreho
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9b1cfd762d6f050994688d1cd6afd91f0e43bfc3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43f069fbd8f4fcc13bbc4d9e75763fa98aec1065
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195777"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601462"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Szabályzat-hozzárendelés létrehozása Azure környezetben a nem megfelelő erőforrások azonosításához
 
@@ -49,7 +49,7 @@ Ebben a rövid útmutatóban egy szabályzat-hozzárendelést hoz létre, és ho
    - Címke és a hozzá tartozó érték alkalmazása
    - Az SQL Server 12.0-ás verziójának megkövetelése
 
-    Az elérhető beépített szabályzatok teljes listájáért tekintse meg a [Szabályzatsablonok](json-samples.md) szakaszt.
+    Az elérhető beépített szabályzatok teljes listájáért tekintse át a [Policy-mintákat](json-samples.md) ismertető témakört.
 
 7. Keresse meg a *Felügyelt lemezeket nem használó virtuális gépek naplózása* definíciót a szabályzatdefiníciók listájában. Kattintson a szabályzatra, majd kattintson a **Kiválasztás** elemre.
 

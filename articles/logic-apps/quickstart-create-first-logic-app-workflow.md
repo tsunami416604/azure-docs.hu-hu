@@ -1,30 +1,26 @@
 ---
-title: Az első automatizált munkafolyamat létrehozása – Azure Logic Apps | Microsoft Docs
-description: Ez a rövid útmutató azt ismerteti, hogyan automatizálhatja első munkafolyamatát az Azure Logic Apps használatával a rendszereket és felhőszolgáltatásokat integráló rendszer-integrációs és vállalati alkalmazásintegrációs (enterprise application integration, EAI) forgatókönyvekhez.
-author: ecfan
-manager: anneta
-editor: ''
+title: Az első munkafolyamat létrehozása és automatizálása – Azure Logic Apps | Microsoft Docs
+description: Rövid útmutató a feladatokat, folyamatokat és munkafolyamatokat automatizáló első logikai alkalmazás létrehozásához az Azure Logic Apps használatával. Logikai alkalmazások létrehozása rendszerei és felhőszolgáltatásai rendszer-integrációs és vállalati alkalmazásintegrációs (EAI) megoldásaihoz
 services: logic-apps
-keywords: munkafolyamatok, felhőszolgáltatások, rendszer-integráció, vállalati alkalmazásintegráció, EAI
-documentationcenter: ''
-ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 1/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300939"
 ---
-# <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Rövid útmutató: Az első logikaialkalmazás-munkafolyamat összeállítása – Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rövid útmutató: Az első automatizált munkafolyamat létrehozása az Azure Logic Apps használatával – Azure Portal
 
-Ez a rövid útmutató bemutatja, hogyan hozhatja létre első automatizált munkafolyamatát az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) segítségével. Ebben a cikkben egy olyan logikai alkalmazást fog létrehozni, amely rendszeresen ellenőrzi egy webhely RSS-hírcsatornájában lévő új elemeket. Ha új elemeket talál, a logikai alkalmazás mindegyikről e-mailt küld. Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz hasonlít:
+Ez a rövid útmutató bemutatja, hogyan állíthatja össze első automatizált munkafolyamatát az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) segítségével. Ebben a cikkben egy olyan logikai alkalmazást fog létrehozni, amely rendszeresen ellenőrzi egy webhely RSS-hírcsatornájában lévő új elemeket. Ha új elemeket talál, a logikai alkalmazás mindegyikről e-mailt küld. Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz hasonlít:
 
 ![Áttekintés – példa logikai alkalmazás](./media/quickstart-create-first-logic-app-workflow/overview.png)
 

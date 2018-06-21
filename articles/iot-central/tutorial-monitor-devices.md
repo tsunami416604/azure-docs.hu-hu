@@ -1,21 +1,22 @@
 ---
 title: Az eszközök monitorozása az Azure IoT Centralban | Microsoft Docs
 description: Operátorként az Azure IoT Central alkalmazással monitorozza az eszközöket.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a07c9e3c28fadaead8bfaaebe4d1ee06ac66a99e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201387"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235481"
 ---
-# <a name="use-azure-iot-central-to-monitor-your-devices"></a>Az eszközök monitorozása az Azure IoT Central használatával
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Oktatóanyag: Az eszközök monitorozása az Azure IoT Central használatával
 
 Ez az oktatóanyag bemutatja, hogy operátorként hogyan használhatja a Microsoft Azure IoT Central alkalmazást az eszközök monitorozására és a beállítások módosítására.
 
@@ -50,11 +51,11 @@ Megnyílik a böngészőben az előző oktatóanyagokban létrehozott szimulált
 
 Operátorként megtekintheti az eszközzel kapcsolatos információkat a **Mérések**, a **Beállítások**, a **Tulajdonságok**, a **Szabályok** és az **Irányítópult** oldalakon. A szerkesztő testre szabta az **Irányítópultot**, hogy megjelenítse a csatlakoztatott légkondicionáló eszközzel kapcsolatos fontos információkat.
 
-* Válassza az **Irányítópult** lehetőséget az eszközzel kapcsolatos információk megtekintéséhez:
+Válassza az **Irányítópult** lehetőséget az eszközzel kapcsolatos információk megtekintéséhez.
 
-    ![Az eszköz irányítópultja](media/tutorial-monitor-devices/initial_screen.png)
+![Az eszköz irányítópultja](media/tutorial-monitor-devices/initial_screen.png)
 
-    Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. A **Megadott célhőmérséklet** csempén az eszköz aktuális célhőmérsékletét is láthatja. Úgy dönt, hogy a célhőmérséklet túl magas.
+Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. A **Megadott célhőmérséklet** csempén az eszköz aktuális célhőmérsékletét is láthatja. Úgy dönt, hogy a célhőmérséklet túl magas.
 
 ## <a name="remediate-an-issue"></a>Probléma elhárítása
 
@@ -64,7 +65,7 @@ Az eszköz célhőmérsékletének módosításához használja a **Beállítás
 
     ![Beállítások frissítése](media/tutorial-monitor-devices/change_settings.png)
 
-1. Válassza az **Irányítópult** lehetőséget, és ellenőrizze az új beállítás értékét:
+2. Válassza az **Irányítópult** lehetőséget, és ellenőrizze az új beállítás értékét:
 
     ![Az eszköz frissített irányítópultja](media/tutorial-monitor-devices/new_settings.png)
 
@@ -77,4 +78,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Probléma vizsgálata
 > * Probléma elhárítása
 
-Most, hogy monitorozta az eszközt, a következő javasolt lépés [egy eszköz hozzáadása](tutorial-add-device.md).
+Most, hogy megismerte az eszközök monitorozásának módját, a következő javasolt lépés [egy eszköz hozzáadása](tutorial-add-device.md).

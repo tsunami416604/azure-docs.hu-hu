@@ -1,24 +1,22 @@
 ---
-title: A Node.js-webalkalmazás létrehozása az Azure Cosmos DB |} Microsoft Docs
-description: A Node.js-oktatóanyag Azure Websitesban tárolt Node.js Express-webalkalmazások használata a Microsoft Azure Cosmos DB tárolására és a hozzáférési adatok ismerteti.
-keywords: Alkalmazásfejlesztés, adatbázis-oktatóanyag, node.js, a node.js-oktatóanyag megismerése
+title: Node.js-webalkalmazás létrehozása az Azure Cosmos DB-hez | Microsoft Docs
+description: Ez a Node.js-oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure Websitesban tárolt Node.js Express-webalkalmazások adatait a Microsoft Azure Cosmos DB segítségével.
+keywords: Alkalmazásfejlesztés, adatbázis-oktatóanyag, a node.js megismerése, node.js-oktatóanyag
 services: cosmos-db
-documentationcenter: nodejs
 author: SnehaGunda
 manager: kfile
-ms.assetid: 9da9e63b-e76a-434e-96dd-195ce2699ef3
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: nodejs
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 6a7d1b961245a47015bdb96fd8653d04586238b3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d18e6dd9464ef103157a8532215fa797ab282437
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797481"
 ---
 # <a name="_Toc395783175"></a>Node.js-webalkalmazás létrehozása az Azure Cosmos DB használatával
 > [!div class="op_single_selector"]
@@ -29,7 +27,7 @@ ms.lasthandoff: 04/16/2018
 > 
 > 
 
-A Node.js-oktatóanyag bemutatja, hogyan Azure Cosmos DB és az SQL API segítségével történő tárolására és a hozzáférési adatok az Azure Websitesban tárolt Node.js Express-alkalmazás. Olyan egyszerű webalapú teendőkezelő alkalmazást, todo appot fog létrehozni, amellyel feladatokat készíthet, kérhet le, és végezhet el. A feladatokat JSON-dokumentumok formájában tárolja az Azure Cosmos DB. Ez az oktatóanyag bemutatja az alkalmazás létrehozásának és üzembe helyezésének lépéseit, valamint hogy mi történik az egyes kódrészletekben.
+Ez a Node.js-oktatóanyag bemutatja, miként tárolhatja és érheti el az Azure Websitesban tárolt Node.js Express-alkalmazás adatait az Azure Cosmos DB és az SQL API segítségével. Olyan egyszerű webalapú teendőkezelő alkalmazást, todo appot fog létrehozni, amellyel feladatokat készíthet, kérhet le, és végezhet el. A feladatokat JSON-dokumentumok formájában tárolja az Azure Cosmos DB. Ez az oktatóanyag bemutatja az alkalmazás létrehozásának és üzembe helyezésének lépéseit, valamint hogy mi történik az egyes kódrészletekben.
 
 ![Képernyőfelvétel a jelen Node.js oktatóanyag során készített My Todo List (Saját teendőlista) alkalmazásról](./media/sql-api-nodejs-application/cosmos-db-node-js-mytodo.png)
 
@@ -47,7 +45,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node.js][Node.js]-verzió: 0.10.29-es vagy újabb. Azt javasoljuk, hogy a Node.js 6.10 vagy újabb verzióját.
+* [Node.js][Node.js]-verzió: 0.10.29-es vagy újabb. A Node.js 6.10 vagy újabb verzióját javasoljuk.
 * [Express generátor](http://www.expressjs.com/starter/generator.html) (az `npm install express-generator -g` segítségével telepítheti)
 * [Git][Git].
 
@@ -73,19 +71,19 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
 5. Futtassa az új alkalmazást.
    
         npm start
-6. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a [ http://localhost:3000 ](http://localhost:3000).
+6. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a következő címre: [http://localhost:3000](http://localhost:3000).
    
     ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
-    Ezt követően állítsa le az alkalmazást, a terminálablakot a CTRL + C billentyű megnyomása csak windowsos gépekre, kattintson az **y** a kötegelt leáll.
+    Ezt követően az alkalmazás leállításához nyomja le a CTRL+C billentyűkombinációt a terminálablakban, majd Windows rendszerű gépek esetén a kötegelt feladat leállításához kattintson az **y** elemre.
 
 ## <a name="_Toc395783179"></a>3. lépés: További modulok telepítése
-A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Később amikor az alkalmazás az Azure Websitesra telepíti, a fájllal határozza meg, melyik modulokat kell az Azure támogatásához az alkalmazás telepítésére. A jelen oktatóanyag befejezéséhez még két csomag telepítésére van szükség.
+A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Később, amikor az Azure Websitesra telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyag befejezéséhez még két csomag telepítésére van szükség.
 
 1. A terminálban telepítse az **async** modult az npm segítségével.
    
         npm install async --save
-2. Telepítse a **DocumentDB** modult az npm segítségével. Ez az, hogy a modul, ahol az összes Azure Cosmos DB magic történik.
+2. Telepítse a **DocumentDB** modult az npm segítségével. Ez az a modul, amelyben az Azure Cosmos DB-vel kapcsolatos csodák történnek.
    
         npm install documentdb --save
 
@@ -94,9 +92,9 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 
 ### <a name="create-the-model"></a>A modell létrehozása
 1. A projektkönyvtáron belül hozzon létre egy új könyvtárat **models** (modellek) néven, a package.json fájllal egy könyvtárban.
-2. Az a **modellek** könyvtár, hozzon létre egy új fájlt **feladat-model.js**. Ez a fájl tartalmazza majd a modellt az alkalmazás által létrehozott feladatok számára.
-3. Ugyanazon **modellek** könyvtár, hozzon létre egy másik új fájlt **cosmosdb-manager.js**. Ez a fájl néhány hasznos, újrafelhasználható, az alkalmazás minden területén használt kódot tartalmaz majd. 
-4. Másolja az alábbi kódot a **cosmosdb-manager.js**
+2. A **models** könyvtárban hozzon létre egy új fájlt **task-model.js** néven. Ez a fájl tartalmazza majd a modellt az alkalmazás által létrehozott feladatok számára.
+3. Ugyanabban a **models** könyvtárban hozzon létre egy másik új fájlt **cosmosdb-manager.js** néven. Ez a fájl néhány hasznos, újrafelhasználható, az alkalmazás minden területén használt kódot tartalmaz majd. 
+4. Másolja be az alábbi kódot a **cosmosdb-manager.js** fájlba
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
 
@@ -147,7 +145,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
     };
     ```
 5. Mentse és zárja be a **cosmosdb-manager.js** fájlt.
-6. Elején a **feladat-model.js** fájlt, adja hozzá a következő kódot való hivatkozáshoz a **DocumentDBClient** és a **cosmosdb-manager.js** a fenti létrehozott: 
+6. A **task-model.js** fájl elejéhez adja hozzá a következő kódot a **DocumentDBClient**-ügyfélre és a fentiekben létrehozott **cosmosdb-manager.js** fájlra való hivatkozáshoz: 
 
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
@@ -268,7 +266,7 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
 
     module.exports = TaskModel;
     ```
-9. Mentse és zárja be a **feladat-model.js** fájlt. 
+9. Mentse és zárja be a **task-model.js** fájlt. 
 
 ### <a name="create-the-controller"></a>A vezérlő létrehozása
 1. A projekt **routes** könyvtárában hozzon létre egy új fájlt **tasklist.js** néven. 
@@ -368,12 +366,12 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
    
     module.exports = config;
     ```
-3. Az a **config.js** fájl, módosítsa a HOST és AUTH_KEY értékeket az Azure Cosmos DB fiókja kulcsok lapján megtalálható a [Microsoft Azure-portálon](https://portal.azure.com).
+3. A **config.js** fájlban frissítse a HOST és az AUTH_KEY értékeket azokkal az értékekkel, amelyeket a [Microsoft Azure Portalon](https://portal.azure.com) lévő Azure Cosmos DB-fiókjának Kulcsok oldalán talál.
 4. Mentse és zárja be a **config.js** fájlt.
 
 ### <a name="modify-appjs"></a>Az app.js fájl módosítása
 1. A projekt könyvtárában nyissa meg az **app.js** fájlt. Ez a fájl korábban, az Express-webalkalmazás létrehozásakor jött létre.
-2. Adja hozzá a következő kódot a felső részén **app.js**:
+2. Adja hozzá a következő kódot az **app.js** fájl elejéhez:
    
     ```nodejs
     var DocumentDBClient = require('documentdb').DocumentClient;
@@ -404,11 +402,11 @@ Ezzel a kezdeti beállítás és konfiguráció készen is van. Ideje elkezdeni 
     app.post('/completetask', taskList.completeTask.bind(taskList));
     app.set('view engine', 'jade');
     ```
-5. Ezek a sorok meghatározzák egy új példányt a **művelet céljának** objektum, egy új Azure Cosmos DB kapcsolattal rendelkező (beolvasni az értékek a **config.js**) inicializálják a feladatobjektumot, majd társítanak a módszerek a **TaskList** vezérlő. 
+5. Ezek a sorok meghatározzák a **TaskModel** objektum egy új példányát, amely egy új (a **config.js** fájlból kiolvasott értékek felhasználásával létesített) kapcsolattal csatlakozik az Azure Cosmos DB-adatbázishoz. Továbbá ezek inicializálják a feladatobjektumot, majd társítanak űrlapműveleteket a metódusokhoz a **TaskList**-vezérlőn. 
 6. Végül mentse és zárja be az **app.js** fájlt. És már majdnem készen is van.
 
 ## <a name="_Toc395783181"></a>5. lépés: Felhasználói felület létrehozása
-Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. További információ a Jade tekintse meg [ http://jade-lang.com/ ](http://jade-lang.com/).
+Most térjünk át a felhasználói felület létrehozására, hogy a felhasználók ténylegesen használatba vehessék az alkalmazást. A létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja. A Jade motorral kapcsolatos további információkért lásd: [http://jade-lang.com/](http://jade-lang.com/).
 
 1. A rendszer a **views** (nézetek) könyvtárban található **layout.jade** fájlt használja a többi **.jade** fájl globális sablonjaként. Ebben a lépésben ezt a sablont a [Twitter Bootstrap](https://github.com/twbs/bootstrap) eszközkészletre módosítja majd, amellyel könnyen tervezhet tetszetős webhelyeket. 
 2. Nyissa meg a **views** (nézetek) mappában található **layout.jade** fájlt, és cserélje ki annak tartalmát a következőre:
@@ -486,7 +484,7 @@ A második űrlap két beviteli mezőt és egy gombot tartalmaz, amely lehetőv�
 Az alkalmazás működéséhez csak ennyire van szükség.
 
 ## <a name="_Toc395783181"></a>6. lépés: Az alkalmazás helyileg történő futtatása
-1. A helyi gépen lévő alkalmazás teszteléséhez futtassa `npm start` a terminálban az alkalmazás indításához, majd frissítse a [ http://localhost:3000 ](http://localhost:3000) webböngészőben. Az oldalnak most úgy kell kinéznie, ahogy az alábbi képen látható:
+1. Ha a helyi gépén szeretné tesztelni az alkalmazást, futtassa az `npm start` parancsot a terminálon az alkalmazás elindításához, majd frissítse a [http://localhost:3000](http://localhost:3000) böngészőoldalt. Az oldalnak most úgy kell kinéznie, ahogy az alábbi képen látható:
    
     ![Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 
@@ -497,7 +495,7 @@ Az alkalmazás működéséhez csak ennyire van szükség.
 3. Az oldal ekkor frissül, és megjeleníti az újonnan létrehozott elemet a teendőlistában.
    
     ![Képernyőfelvétel az alkalmazásról és a teendőlista új eleméről](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
-4. A feladatok elvégzéséhez egyszerűen jelölje be a jelölőnégyzetet a Complete (Elvégezve) oszlopban, majd kattintson az **Update tasks** (Feladatok frissítése) lehetőségre. Ekkor frissül, a dokumentum már létrehozott és eltávolítja azt a nézetből.
+4. A feladatok elvégzéséhez egyszerűen jelölje be a jelölőnégyzetet a Complete (Elvégezve) oszlopban, majd kattintson az **Update tasks** (Feladatok frissítése) lehetőségre. Ez frissíti a már létrehozott dokumentumot, és eltávolítja azt a nézetből.
 
 5. Az alkalmazás leállításához nyomja le a CTRL+C billentyűkombinációt a terminálablakban, majd a kötegelt feladat leállításához kattintson az **Y** elemre.
 
@@ -509,7 +507,7 @@ Az alkalmazás működéséhez csak ennyire van szükség.
 3. Helyezze üzembe a tárházat a távoli mappához küldéssel.
    
         git push azure master
-4. Néhány másodpercen belül git befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure-beli handiwork!
+4. Néhány másodpercen belül a Git befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure-on futó munkáját!
 
     Gratulálunk! Létrehozta az első Node.js Express-webalkalmazását az Azure Cosmos DB használatával, és közzétette azt az Azure Websitesban.
 

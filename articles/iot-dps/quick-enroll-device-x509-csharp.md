@@ -1,22 +1,21 @@
 ---
 title: X.509-eszköz regisztrációja az Azure Device Provisioning Service-be a C# használatával | Microsoft Docs
 description: Azure rövid útmutató – X.509-eszköz regisztrációja az Azure IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr
+ms.author: bryanla
 ms.date: 01/21/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: ef00191e524e93d1ed578193d37fb6002c15a0b8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 444b59da487aa88d42ca6713bba86cabc620a0c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630197"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>X.509-eszközök regisztrációja az IoT Hub Device Provisioning Service-be a C# szolgáltatásoldali SDK-val
 
@@ -35,13 +34,13 @@ Ezek a lépések bemutatják, hogyan hozhat létre programozott módon regisztr�
   > [!IMPORTANT]
   > Az SDK-eszközkészlettel létrehozott tanúsítványokat csak fejlesztési célokra tervezték. Az éles kódnak megfelelő tanúsítványok beszerzésével kapcsolatos további információt az [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részben, az Azure IoT Hub dokumentációjában talál.
 
-## <a name="get-the-connection-string-for-your-provisioning-service"></a>A kiépítési szolgáltatás kapcsolati karakterláncának lekérése
+## <a name="get-the-connection-string-for-your-provisioning-service"></a>A kiépítési szolgáltatás kapcsolati sztringjének lekérése
 
-A rövid útmutatóban lévő mintához szüksége lesz a kiépítési szolgáltatás kapcsolati karakterláncára.
+A rövid útmutatóban lévő mintához szüksége lesz a kiépítési szolgáltatás kapcsolati sztringjére.
 1. Jelentkezzen be az Azure Portalra, a bal oldali menüben kattintson az **Összes erőforrás** gombra, és nyissa meg az eszközkiépítési szolgáltatást. 
-2. Kattintson a **Megosztott elérési szabályzatok** elemre, majd a használni kívánt hozzáférési szabályzatra a tulajdonságainak megnyitásához. A **Hozzáférési szabályzat** ablakban másolja és jegyezze fel az elsődleges kulcs kapcsolati karakterláncát. 
+2. Kattintson a **Megosztott elérési szabályzatok** elemre, majd a használni kívánt hozzáférési szabályzatra a tulajdonságainak megnyitásához. A **Hozzáférési szabályzat** ablakban másolja és jegyezze fel az elsődleges kulcs kapcsolati sztringjét. 
 
-    ![A kiépítési szolgáltatás kapcsolati karakterláncának lekérése a portálról](media/quick-enroll-device-x509-csharp/get-service-connection-string.png)
+    ![A kiépítési szolgáltatás kapcsolati sztringjének lekérése a portálról](media/quick-enroll-device-x509-csharp/get-service-connection-string.png)
 
 ## <a name="create-the-enrollment-group-sample"></a>A regisztrációs csoport mintájának létrehozása 
 
@@ -64,14 +63,14 @@ A jelen szakaszban szereplő lépések bemutatják, hogyan lehet létrehozni egy
    ```
     
 5. Adja hozzá a **Program** osztályhoz a következő mezőket:  
-   - A **ProvisioningConnectionString** helyőrző értéket cserélje le annak a kiépítési szolgáltatásnak a kapcsolati karakterláncára, amelyhez létre szeretné hozni a regisztrációt.
+   - A **ProvisioningConnectionString** helyőrző értéket cserélje le annak a kiépítési szolgáltatásnak a kapcsolati sztringjére, amelyhez létre szeretné hozni a regisztrációt.
    - Az **X509RootCertPath** helyőrző értéket cserélje le a .pem vagy .cer fájl elérési útjára, amely egy olyan köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítvány nyilvános részét jelöli, amely korábban fel lett töltve és hitelesítve lett a kiépítési szolgáltatás által.
-   - Igény szerint módosíthatja az **EnrollmentGroupId** értékét. A karakterlánc csak kisbetűs karaktereket és kötőjelet tartalmazhat. 
+   - Igény szerint módosíthatja az **EnrollmentGroupId** értékét. A sztring csak kisbetűs karaktereket és kötőjelet tartalmazhat. 
 
    > [!IMPORTANT]
    > Az éles kódban vegye figyelembe a következő biztonsági szempontokat:
    >
-   > - A kapcsolati karakterlánc fix kódolása a kiépítési szolgáltatás rendszergazdája esetében nem felel meg az ajánlott biztonsági eljárásoknak. Ehelyett biztonságosan kell tárolni a karakterláncot, például egy biztonságos konfigurációs fájlban vagy a beállításjegyzékben.
+   > - A kapcsolati sztring fix kódolása a kiépítési szolgáltatás rendszergazdája esetében nem felel meg az ajánlott biztonsági eljárásoknak. Ehelyett biztonságosan kell tárolni a sztringet, például egy biztonságos konfigurációs fájlban vagy a beállításjegyzékben.
    > - Ügyeljen arra, hogy az aláíró tanúsítványnak csak a nyilvános részét töltse fel. Soha ne töltse fel a kiépítési szolgáltatás titkos kulcsait tartalmazó .pfx (PKCS12) vagy .pem fájlt.
         
    ```csharp

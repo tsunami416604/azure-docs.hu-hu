@@ -10,41 +10,42 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 404e238e51b7ac8b799f413965560a8d42ccc5df
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.openlocfilehash: 41418cb908f2bf149a3d0087728652b44cd6b19e
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825531"
 ---
-Eddig meg már fut az alkalmazás kódjában, mintha a csak az alkalmazás dolgozó fejlesztők. Ebben a szakaszban megtudhatja, hogyan Azure fejlesztői szóközöket leegyszerűsíti a fejlesztési csapat:
-* Fejlesztői célokat azonos fejlesztői környezetben csapata engedélyezése.
-* Minden egyes a elkülönítési és mások számára megtörje való nélkül kódra léptetés fejlesztői támogatja.
-* Kód-végpontok, kód véglegesítés előtt tesztelje mocks létrehozása vagy szimulálása függőségek nélkül.
+Eddig úgy futtatta alkalmazása kódját, mintha csak Ön dolgozna fejlesztőként az alkalmazáson. Ebben a szakaszban megismerheti, hogyan teszi zökkenőmentessé az Azure Dev Spaces a csapatban végzett fejlesztést:
+* Lehetővé teszi, hogy egy fejlesztőcsapat ugyanabban a környezetben dolgozhasson. Ez lehet egy megosztott Dev Spaces-tér, vagy igény szerint több különálló Dev Spaces-tér.
+* Támogatja, hogy minden fejlesztő elszigetelten iterálhassa a saját kódját, miközben nem kell tartani attól, hogy mindeközben mások kódja működésképtelenné válik.
+* Végpontok között lehet tesztelni a kódot a kód véglegesítése előtt, és nem szükséges utánzatokat létrehozni vagy függőségeket szimulálni.
 
-## <a name="challenges-with-developing-microservices"></a>Mikroszolgáltatások fejlődő kihívásai
-A mintaalkalmazás pillanatnyilag nem nagyon összetett. De a valós fejlesztési kihívást hamarosan merülnek fel, hozzáadhat további szolgáltatásokat, és a fejlesztői csapat növekszik.
+### <a name="challenges-with-developing-microservices"></a>A mikroszolgáltatások fejlesztésének kihívásai
+A mintaalkalmazása jelenleg nem túl összetett. A valóságban a fejlesztés során folyamatosan merülnek fel kihívások, ahogy egyre több szolgáltatást vesz fel, illetve ahogy nő a fejlesztői csapat.
 
-Kép magát egy szolgáltatás, amely együttműködik az egyéb szolgáltatások több tucatnyi dolgozik.
+Képzelje el, hogy egy olyan szolgáltatáson dolgozik, amely több tucat más szolgáltatással van kapcsolatban.
 
-- Mindent helyi fejlesztési futtatásához irreális válhat. A fejlesztői gépen nincs elegendő erőforrás a teljes alkalmazás. Vagy lehet, hogy az alkalmazás rendelkezik, csak a nyilvánosan elérhető végpontot (például az alkalmazás válaszol-e a webhook egy SaaS-alkalmazás).
+- Hamar életszerűtlenné válhat, hogy mindent helyileg futtasson a fejlesztéshez. Elképzelhető, hogy a fejlesztői gépen nincs elég erőforrás a teljes alkalmazás futtatásához. Az is lehetséges, hogy az alkalmazása olyan végpontokkal rendelkezik, amelyeknek nyilvánosan elérhetőnek kell lenniük (pl. az alkalmazása egy SaaS-alkalmazás webhookjának ad választ).
 
-- Csak az Ön e szolgáltatástól függő szolgáltatások futtatásához próbálkozhat, de ez azt jelenti, hogy meg kell tudhatja, hogy a teljes megszüntetésre függőségi (például a függőségek függőségek). Vagy nem könnyen ismerete, hogyan állíthatja össze és a függőségek futtatható, mivel azok nem dolgozik kérdése.
-- Néhány fejlesztők szimulálva, vagy fel, a szolgáltatásfüggőségek számos mocking igénybe. Ez a megközelítés néha segítséget, de ezek mocks kezelése hamarosan átvehetik a saját fejlesztési elérhető. És ezt a megközelítést vezet a fejlesztői környezet keresése nagyon különböző üzemi környezetben, és finom hibák is kötés.
-- Ez azt jelenti, hogy nehéz bármilyen típusú végpontok-tesztelés során válik. Integráció tesztelése csak reálisan fordulhat elő, utáni véglegesítési, ami azt jelenti, hogy látható problémákat később a fejlesztési ciklus.
+- Megpróbálhatja csak azokat a szolgáltatásokat futtatni, amelyektől függ az alkalmazás, de ehhez ismernie kell a függőségek teljes körét (például a függőségek függőségeit). Az is problémát jelenthet, hogy nehéznek bizonyul a függőségek felépítése és futtatása, mert korábban nem dolgozott rajtuk.
+- Néhány fejlesztő ilyenkor szimulációba kezd, vagy utánzatokat készít a szolgáltatás függőségeiről. Ez a módszer néha segíthet, de az utánzatok kezelése hamarosan önmagában is saját fejlesztői erőforrásokat köthet le. Ez a megközelítés ahhoz vezethet, hogy a Dev Spaces-tér nagyon sokban eltér az éles üzemtől, és apró hibák jelenhetnek meg.
+- Ebből következik, hogy mindenféle végpontok közötti tesztelés nehézkessé válik. Az integráció tesztelése a valóságban csak a véglegesítés után történhet meg, ami azt jelenti, hogy a fejlesztési ciklus későbbi szakaszaiban problémákat tapasztalhat.
 
 ![](../media/common/microservices-challenges.png)
 
 
-## <a name="work-in-a-shared-development-environment"></a>Megosztott fejlesztői környezetben működik
-Azure fejlesztői szóközök, beállíthat egy *megosztott* fejlesztési környezetet az Azure-ban. Minden egyes fejlesztői összpontosíthatnak, az alkalmazás a része, és ismételt fejleszthet *előre véglegesítése a határidő kód* olyan környezetben, amely már tartalmazza az összes egyéb szolgáltatások és felhőbeli erőforrásokat, amelyek a forgatókönyvek függenek. Függőségek mindig naprakészek legyenek, és a fejlesztők úgy, hogy az üzemi tükrözi dolgozik.
+### <a name="work-in-a-shared-dev-space"></a>Munka egy megosztott Dev Spaces-térben
+Az Azure Dev Spaces segítségével beállíthat egy *megosztott* Dev Spaces-teret az Azure-ban. Minden fejlesztőnek csak az alkalmazásból rá eső részre kell koncentrálnia, és iterációs módszerrel fejlesztheti a *véglegesítés előtti kódot* egy olyan Dev Spaces-térben, amely már tartalmaz minden olyan szolgáltatást és felhőerőforrást, amelyektől az egyes forgatókönyvek függhetnek. A függőségek mindig naprakészek, a fejlesztők pedig mindig az éles környezetet tükröző módon dolgozhatnak.
 
-## <a name="work-in-your-own-space"></a>Munka a saját munkaterületen
-Most kialakított kód a szolgáltatás, és készen áll, hogy a, mielőtt kód gyakran nem lehet jó állapotban. Meg van még mindig ismételt kialakításában, tesztelés és kísérletezés megoldásokkal. Azure fejlesztői szóközöket biztosítja a **terület**, amely lehetővé teszi, hogy munkahelyi elkülönítve, és a csapattagok számára megtörje való nélkül.
+### <a name="work-in-your-own-space"></a>Munkavégzés a saját térben
+A szolgáltatás kódjának fejlesztése során, de még leadás előtt a kód sokszor nincs optimális állapotban. Az iteratív módszerrel újra és újra kell formálni, tesztelni kell, megoldásokkal kísérletezni. Az Azure Dev Spaces biztosítja a **tér** fogalmát, amely lehetővé teszi, hogy elszigetelten dolgozhasson, anélkül, hogy a többi csapattag munkájára kihatással lennének a fejlesztési munkálatok.
 
 > [!Note]
-> Mielőtt a folytatáshoz, zárjon be minden Visual STUDIO Code mindkét szolgáltatás esetében, és futtassa `azds up -d` minden, a szolgáltatás legfelső szintű mappák. (Ez az előzetes kizárólagosan.)
+> A folytatás előtt zárja be az összes VS Code-ablakot mindkét szolgáltatásban, majd futtassa az `azds up -d` parancsot a szolgáltatások gyökérmappájában. (Ez egy előzetes verziójú korlátozás.)
 
-Megtudhatja, hogy ha a futó szolgáltatások részletes bemutatása. Futtassa a `azds list` parancsot, és megjelenik a kimenet az alábbihoz hasonló:
+Tekintsük meg, hogy hol futnak jelenleg a szolgáltatások. Futtassa az `azds list` parancsot. A következőhöz hasonló kimenet fog megjelenni:
 
 ```
 Name         Space     Chart              Ports   Updated     Access Points
@@ -53,15 +54,15 @@ mywebapi     default  mywebapi-0.1.0     80/TCP  2m ago     <not attached>
 webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-contosodev.1234abcdef.eastus.aksapp.io
 ```
 
-A terület az oszlopban látható, hogy mindkét szolgáltatás fut-e a neve szóközt `default`. Bárki, aki az URL-címe megnyílik, és a web app navigál meghívják a korábban megírt kód elérési, amelyen keresztül mindkét szolgáltatás. Most tegyük fel, hogy folytatja a fejlesztés `mywebapi`. Hogyan lehet kód módosításokat és tesztelését és nem szakítják meg a fejlesztői környezet használó más fejlesztők? Ehhez a saját területet kell beállítani.
+A Tér oszlop azt mutatja, hogy a szolgáltatások a `default` nevű térben futnak. Bárki, aki megnyitja a nyilvános URL-címet, és felkeresi a webalkalmazást, meghívja az Ön által korábban megírt kódútvonalat, amely mindkét szolgáltatást futtatja. Tegyük fel, hogy folytatni szeretné a `mywebapi` fejlesztését. Hogyan módosíthatja a kódokat, és tesztelheti őket úgy, hogy nem akadályozza a fejlesztői környezetet használó többi fejlesztőt? Ehhez be kell állítania a saját terét.
 
-## <a name="create-a-space"></a>Hozzon létre egy tárolóhelyet
-A saját verziójának futtatásához `mywebapi` nem adható a `default`, létrehozhat saját lemezterület a következő paranccsal:
+### <a name="create-a-space"></a>Tér létrehozása
+Ha a `mywebapi` saját verzióját nem a `default` térben szeretné futtatni, létrehozhat egy saját teret a következő paranccsal:
 
 ``` 
 azds space create --name scott
 ```
 
-A fenti példában, hogy az azonosítható a társaknak, hogy ez a terület a munka eddig használt a név az új tárhely, de hívása azt semmit, például és rugalmas arról, hogy mit jelent, mint a "sprint4" vagy "bemutató."
+A fenti példában a saját nevemet használtam az új térhez, így a munkatársaim is könnyen be tudják azonosítani, hogy ebben a térben dolgozom, de bárhogyan elnevezheti, és rugalmasan kezelheti a név jelentését (lehet például „sprint4” vagy „demo”).
 
-Futtassa a `azds space list` parancsot a fejlesztői környezetben csak szóközökből listájának megtekintéséhez. Egy csillag (*) jelenik meg a jelenleg kijelölt terület mellett. Abban az esetben a "scott" nevű hely automatikusan kiválasztott hozták létre. Választhat egy másik helyet a bármikor a `azds space select` parancsot.
+Futtassa az `azds space list` parancsot a fejlesztői környezetben lévő terek listájának megtekintéséhez. A jelenleg kiválasztott tér mellett egy csillag (*) jelenik meg. Az Ön esetében a rendszer automatikusan kiválasztotta a „scott” nevű teret, amikor létrejött. Az `azds space select` paranccsal bármikor kiválaszthat egy másik teret.

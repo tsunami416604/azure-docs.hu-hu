@@ -3,7 +3,7 @@ title: Biztonsági szabályzatok beállítása az Azure Security Centerben | Mic
 description: Ebből a cikkből megismerheti az Azure Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/05/2018
+ms.author: terrylan
+ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364386"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756991"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Biztonsági szabályzatok beállítása az Azure Security Centerben
 Ebből a cikkből megismerheti a Security Center biztonsági szabályzatainak konfigurálásához szükséges lépéseket.
@@ -28,7 +28,7 @@ Ebből a cikkből megismerheti a Security Center biztonsági szabályzatainak ko
 A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szabályzatot minden egyes Azure-előfizetéséhez. A Security Centerben szerkesztheti a szabályzatokat, és felügyelheti az azoknak való megfelelőséget.
 
 > [!NOTE]
-> A korlátozott előzetes verzióban elérhető Azure Policy használatával most kiterjesztheti a Security Center szabályzatait. Ha csatlakozni szeretne az előzetes verzióhoz, lépjen [az Azure Policyre való regisztrálással](https://aka.ms/getpolicy) kapcsolatos részhez. További információ: [A Security Center biztonsági szabályzatainak integrálása az Azure Policyvel](security-center-azure-policy.md).
+> Az [Azure Policy](../azure-policy/azure-policy-introduction.md) használatával most kiterjesztheti a Security Center szabályzatait. További információ: [A Security Center biztonsági szabályzatainak integrálása az Azure Policyvel](security-center-azure-policy.md).
 
 A fejlesztésben vagy tesztelésben, illetve az éles környezetben használt erőforrásokra vonatkozó biztonsági követelmények eltérhetnek egymástól. A szabályozott adatokat, például személyazonosításra alkalmas adatokat használó alkalmazások magasabb szintű biztonságot követelhetnek meg. Az Azure Security Centerben engedélyezett biztonsági szabályzatok biztonsági javaslatokkal szolgálnak, és figyelést biztosítanak, így segítenek Önnek felismerni a potenciális biztonsági réseket és elhárítani a fenyegetéseket. Az [Azure Security Center tervezéséhez és működtetéséhez készült útmutatóból](security-center-planning-and-operations-guide.md) további segítséget nyújt az önnek legalkalmasabb lehetőség azonosításában.
 
@@ -75,3 +75,5 @@ Ebből a cikkből megismerhette a Security Center biztonsági szabályzatainak k
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+
+További információk az Azure Policyról: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)

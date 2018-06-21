@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés egyéni tesztkörnyezethez az Azure DevTest Labs szolgáltatásban | Microsoft Docs
+title: Tesztkörnyezet elérése az Azure DevTest Labs szolgáltatásban | Microsoft Docs
 description: Ebben az oktatóanyagban megtanul hozzáférni az Azure DevTest Labs szolgáltatással létrehozott tesztkörnyezethez, továbbá megtudhatja, hogyan foglalhatja le és használhatja a virtuális gépeket, illetve hogyan oldhatja fel a lefoglalást.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361838"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638024"
 ---
-# <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>Oktatóanyag: Hozzáférés egy egyéni tesztkörnyezethez az Azure DevTest Labs szolgáltatásban
-Ebben az oktatóanyagban az [Oktatóanyag: Egyéni tesztkörnyezet létrehozása](tutorial-create-custom-lab.md) című szakaszban létrehozott egyéni tesztkörnyezetet használatát ismerheti meg.
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése az Azure DevTest Labs szolgáltatásban
+Ebben az oktatóanyagban az [Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatásban](tutorial-create-custom-lab.md) című szakaszban létrehozott tesztkörnyezetet használatát ismerheti meg.
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Virtuális gép (VM) lefoglalása az egyéni tesztkörnyezetben
+> * Virtuális gép (VM) lefoglalása a tesztkörnyezetben
 > * Kapcsolódás a virtuális géphez
 > * A virtuális gép lefoglalásának feloldása
 
@@ -70,8 +70,8 @@ Ha már nem használja a virtuális gépet, az alábbi lépéseket követve oldj
 1. Miután a feloldási művelet befejeződött, a virtuális gép megjelenik a **Lefoglalható virtuális gépek** lista alján. 
     
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megismerkedett az Azure DevTest Labs használatával létrehozott egyéni tesztkörnyezet elérésének és használatának módjával. Az egyéni tesztkörnyezetben lévő virtuális gépekhez való hozzáféréssel és azok használatával kapcsolatos további információért tekintse meg a következőt: 
+Ebben az oktatóanyagban megismerkedett az Azure DevTest Labs használatával létrehozott tesztkörnyezet elérésének és használatának módjával. A tesztkörnyezetben lévő virtuális gépekhez való hozzáféréssel és azok használatával kapcsolatos további információkért tekintse meg a következőt: 
 
 > [!div class="nextstepaction"]
-> [Útmutató: Virtuális gépek használata egyéni tesztkörnyezetben](devtest-lab-add-vm.md)
+> [Útmutató: Virtuális gépek használata tesztkörnyezetben](devtest-lab-add-vm.md)
 

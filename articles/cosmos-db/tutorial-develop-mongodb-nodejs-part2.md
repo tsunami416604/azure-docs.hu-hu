@@ -2,24 +2,22 @@
 title: MongoDB, Angular és Node oktatóanyag az Azure-hoz – 2. rész | Microsoft Docs
 description: A MongoDB-alkalmazások Azure Cosmos DB adatbázison Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 2. része.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 9d3c3209807a201f11d4d0a4ddd905f332a3951f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b35f003c18e19eafd3dfa9988409ceacb44e3bc4
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798066"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 2. rész: Node.js Express alkalmazás létrehozása az Angular CLI parancssori felülettel 
 
@@ -65,10 +63,10 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
 
 ## <a name="use-the-angular-cli-to-create-a-new-project"></a>Az Angular CLI használata új projekt létrehozásához
 
-1. A parancssorban váltson arra a mappára, ahol az új projektet létre szeretné hozni, majd futtassa az alábbi parancsot. A parancs létrehoz egy új mappát és egy angular-cosmosdb elnevezésű projektet, és telepíti az új alkalmazáshoz szükséges Angular-összetevőket. Emellett a forráskódot is telepíti az src/client mappába (-sd src/client), a minimális beállítást alkalmazza (--minimal), és meghatározza, hogy a projekt az Sass nyelvet használja (egy CSS-szerű szintaxist, a --style scss jelölővel).
+1. A parancssorban váltson arra a mappára, ahol az új projektet létre szeretné hozni, majd futtassa az alábbi parancsot. A parancs létrehoz egy új mappát és egy angular-cosmosdb elnevezésű projektet, és telepíti az új alkalmazáshoz szükséges Angular-összetevőket. A minimális beállítást alkalmazza (--minimal), és meghatározza, hogy a projekt a Sass nyelvet használja (egy CSS-szerű szintaxist, a --style scss jelölővel).
 
     ```bash
-    ng new angular-cosmosdb -sd src/client --minimal --style scss
+    ng new angular-cosmosdb --minimal --style scss
     ```
 
 2. Miután a parancs végrehajtása befejeződött, váltson a src/client mappára.
@@ -151,11 +149,9 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
 
 7. Menti az összes módosított fájlt. 
 
-8. A Visual Studio Code-ban kattintson a **Debug** (Hibakeresés) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), kattintson a fogaskerék gombra ![Fogaskerék gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png), majd válassza a **Node.js** elemet egy konfiguráció létrehozásához.
+8. A Visual Studio Code-ban kattintson a **Debug** (Hibakeresés) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), majd kattintson a fogaskerék gombra ![Fogaskerék gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Az új launch.json fájl megnyílik a Visual Studio Code-ban.
 
-   Az új launch.json fájl megnyílik a Visual Studio Code-ban.
-
-8. A launch.json fájl 11. sorában módosítsa a `"program": "${file}"` részt a `"program": "${workspaceRoot}/src/server/index.js"` kódra, és mentse a fájlt.
+8. A launch.json fájl 11. sorában módosítsa a `"${workspaceFolder}\\server"` részt a `"program": "${workspaceRoot}/src/server/index.js"` kódra, és mentse a fájlt.
 
 9. Kattintson a **Start Debugging** (Hibakeresés indítása) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) az alkalmazás futtatásához.
 

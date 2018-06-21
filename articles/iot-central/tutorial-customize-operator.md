@@ -1,21 +1,22 @@
 ---
 title: Az operátori nézetek testreszabása az Azure IoT Centralban | Microsoft Docs
 description: Szerkesztőként testreszabhatja az operátori nézeteket az Azure IoT Central-alkalmazásban.
-services: iot-central
 author: sandeeppujar
 ms.author: sadeepu
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 3e0dfab05fc7972a055853af45f0d1b13d52c0a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: ddb6e6d7859227b8eec7f13b95fab06b333dacda
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202322"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235368"
 ---
-# <a name="3---customize-the-azure-iot-central-operators-view"></a>3 – Az Azure IoT Central operátori nézeteinek testreszabása
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátori nézeteinek testreszabása
 
 Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan szabhatja testre az alkalmazás operátori nézeteit. Amikor szerkesztőként módosítja az alkalmazást, megtekintheti az operátori nézetek előnézetét a Microsoft Azure IoT Central-alkalmazásban.
 
@@ -35,8 +36,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elkezdése előtt el kell végeznie a két előző oktatóanyagot:
 
-1. [Új eszköztípus definiálása az Azure IoT Central-alkalmazásban](tutorial-define-device-type.md).
-1. [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md).
+* [Új eszköztípus definiálása az Azure IoT Central-alkalmazásban](tutorial-define-device-type.md).
+* [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md).
 
 ## <a name="configure-your-device-dashboard"></a>Az eszköz irányítópultjának konfigurálása
 
@@ -46,17 +47,17 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![Kereső oldal](media/tutorial-customize-operator/explorer.png)
 
-1. A csatlakoztatott légkondicionáló eszköz irányítópultjának testreszabásához válassza ki a **Csatlakoztatott légkondicionáló (1.0.0)** eszközsablont. Válassza ki az [új eszköztípus az alkalmazásban történő definiálását](tutorial-define-device-type.md) ismertető oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló-1** eszközt:
+2. A csatlakoztatott légkondicionáló eszköz irányítópultjának testreszabásához válassza ki a **Csatlakoztatott légkondicionáló (1.0.0)** eszközsablont. Válassza ki az [új eszköztípus az alkalmazásban történő definiálását](tutorial-define-device-type.md) ismertető oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló-1** eszközt:
 
     ![A csatlakoztatott légkondicionáló eszköz kiválasztása](media/tutorial-customize-operator/selectdevice.png)
 
     Amikor módosít egy eszközt, például a **Csatlakoztatott légkondicionáló-1** eszközt, módosítja az alapul szolgáló sablont is. További információkért lásd az [új eszközsablon-verzió létrehozását](howto-version-devicetemplate.md) ismertető szakaszt.
 
-1. Az irányítópult szerkesztéséhez válassza az **Irányítópult** lehetőséget:
+3. Az irányítópult szerkesztéséhez válassza az **Irányítópult** lehetőséget:
 
     ![Eszközsablon irányítópultja oldal](media/tutorial-customize-operator/dashboard.png)
 
-1. KPI-csempe irányítópulthoz adásához válassza a **KPI** lehetőséget:
+4. KPI-csempe irányítópulthoz adásához válassza a **KPI** lehetőséget:
 
     ![KPI hozzáadása](media/tutorial-customize-operator/addkpi.png)
 
@@ -69,11 +70,11 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
     | Összesítés | Maximum |
     | Időtartomány  | Előző 1 hét |
 
-1. Válassza a **Mentés** elemet. Most láthatja a KPI-csempét az irányítópulton:
+5. Válassza a **Mentés** elemet. Most láthatja a KPI-csempét az irányítópulton:
 
     ![KPI-csempe](media/tutorial-customize-operator/temperaturekpi.png)
 
-1. Az irányítópulton lévő csempék áthelyezéséhez vagy átméretezéséhez helyezze az egérmutatót a csempe fölé. Új helyre húzhatja vagy átméretezheti a csempét:
+6. Az irányítópulton lévő csempék áthelyezéséhez vagy átméretezéséhez helyezze az egérmutatót a csempe fölé. Új helyre húzhatja vagy átméretezheti a csempét:
 
     ![Irányítópult elrendezésének szerkesztése](media/tutorial-customize-operator/dashboardlayout.png)
 
@@ -85,7 +86,7 @@ Szerkesztőként az eszközbeállítások operátori nézetét is konfigurálhat
 
     ![Beállítások lap](media/tutorial-customize-operator/settings.png)
 
-1. Áthelyezheti és átméretezheti a beállítások csempéket:
+2. Áthelyezheti és átméretezheti a beállítások csempéket:
 
     ![A beállítások elrendezésének szerkesztése](media/tutorial-customize-operator/settingslayout.png)
 
@@ -100,7 +101,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
     ![Tulajdonságok lap](media/tutorial-customize-operator/properties.png)
 
-1. Áthelyezheti és átméretezheti a tulajdonságok mezőit:
+2. Áthelyezheti és átméretezheti a tulajdonságok mezőit:
 
     ![A tulajdonságok elrendezésének szerkesztése](media/tutorial-customize-operator/propertieslayout.png)
 
@@ -113,17 +114,17 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
 1. Ha operátorként szeretné megtekinteni a csatlakoztatott légkondicionáló eszközt, ki kell kapcsolnia a **Tervezési módot**. A **Tervezési mód** kikapcsolásához kapcsolja ki az oldal jobb felső részén lévő **Tervezési mód** kapcsolót.
 
-1. Az eszköz sorozatszámának frissítéséhez szerkessze a sorozatszámcsempén lévő értéket, és válassza a **Mentés** lehetőséget:
+2. Az eszköz sorozatszámának frissítéséhez szerkessze a sorozatszámcsempén lévő értéket, és válassza a **Mentés** lehetőséget:
 
     ![Tulajdonságérték szerkesztése](media/tutorial-customize-operator/editproperty.png)
 
-1. Ha egy beállítást szeretne küldeni a csatlakoztatott légkondicionálóhoz, válassza a **Beállítások** lehetőséget, módosítsa egy csempe beállításértékét, és válassza a **Frissítés** lehetőséget:
+3. Ha egy beállítást szeretne küldeni a csatlakoztatott légkondicionálóhoz, válassza a **Beállítások** lehetőséget, módosítsa egy csempe beállításértékét, és válassza a **Frissítés** lehetőséget:
 
     ![Beállítás küldése az eszközre](media/tutorial-customize-operator/sendsetting.png)
 
     Amikor az eszköz elfogadja az új beállításértéket, a beállítás **szinkronizálva** értékkel jelenik meg a csempén.
 
-1. Operátorként a szerkesztő által konfigurált módon tekintheti meg az eszköz irányítópultját:
+4. Operátorként a szerkesztő által konfigurált módon tekintheti meg az eszköz irányítópultját:
 
     ![Az eszköz irányítópultjának operátori nézete](media/tutorial-customize-operator/operatordashboard.png)
 
@@ -135,14 +136,14 @@ Amikor egy szerkesztő vagy operátor bejelentkezik az Azure IoT Central-alkalma
 
     ![Alkalmazásszerkesztő oldal](media/tutorial-customize-operator/builderhome.png)
 
-1. A kezdőlap testreszabásához adjon hozzá csempéket a **Könyvtárból**. Válassza a **Hivatkozás** lehetőséget, és adja hozzá a cég webhelyének részleteit. Ezután válassza a **Mentés** lehetőséget:
+2. A kezdőlap testreszabásához adjon hozzá csempéket a **Könyvtárból**. Válassza a **Hivatkozás** lehetőséget, és adja hozzá a cég webhelyének részleteit. Ezután válassza a **Mentés** lehetőséget:
 
     ![Hivatkozás hozzáadása a kezdőlaphoz](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Az Azure IoT Central-alkalmazásban lévő oldalakhoz hivatkozásokat is adhat. Hozzáadhatja például egy eszköz irányítópultjának vagy a beállítások oldalának a hivatkozását.
 
-1. A **Kép** lehetőséget is választhatja, és feltölthet egy megjelenítendő képet a kezdőlapra. A képek olyan URL-címmel rendelkezhetnek, amelyeket rájuk kattintva megnyithat:
+3. A **Kép** lehetőséget is választhatja, és feltölthet egy megjelenítendő képet a kezdőlapra. A képek olyan URL-címmel rendelkezhetnek, amelyeket rájuk kattintva megnyithat:
 
     ![Kép hozzáadása a kezdőlaphoz](media/tutorial-customize-operator/addimage.png)
 

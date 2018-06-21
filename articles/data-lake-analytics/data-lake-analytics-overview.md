@@ -1,26 +1,23 @@
 ---
-title: A Microsoft Azure Data Lake Analytics áttekintése | Microsoft Docs
-description: A Data Lake Analytics segítségével javíthatja üzletvitelt a felhőbeli adatokból nyert információk révén, függetlenül az adatok méretétől.
+title: Az Azure Data Lake Analytics áttekintése
+description: A Data Lake Analytics lehetővé teszi, hogy a felhőbeli adatokból kinyert információkat vállalkozása hasznára fordíthassa, bármennyi adatról legyen is szó.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
-manager: saveenr
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: overview
 ms.date: 06/23/2017
-ms.author: saveenr
-ms.openlocfilehash: 8a70311825d0ef548660f8ce4d12b5100b530170
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: f5425abc484d30f07ce29d6b7b6ec36dad79b651
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623621"
 ---
-# <a name="welcome-to-azure-data-lake-analytics"></a>Üdvözli az Azure Data Lake Analytics
+# <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
 
 Az Azure Data Lake Analytics egy igény szerinti elemzési feladatokat végző szolgáltatás, amely leegyszerűsíti a big data-elemzéseket. Az üzembe helyezés, a konfigurálás és a hardver beállítása helyett lekérdezéseket írhat az adatátalakítás és az értékes információk kinyerése érdekében. Az elemző szolgáltatás bármekkora munkát képes elvégezni, csak be kell állítania, hogy mekkora teljesítményre van szüksége. Költséghatékony megoldás, hiszen csak az elvégzett munkáért kell fizetni. 
 

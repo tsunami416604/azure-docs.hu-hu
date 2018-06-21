@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802051"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely források küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics-használat** irányítópult segítségével áttekintheti és elemezheti az adathasználatot. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
@@ -116,7 +117,7 @@ A következő képernyőképen az látható, hogy a *Log Management / Perf* adat
 
 Ezután lépjen vissza a *Használat* irányítópultra, és tekintse meg az *Adatmennyiség megoldásonként* diagramot. Azon a számítógépek megtekintéséhez, amelyek a legtöbb adatot küldik egy megoldás esetében, kattintson a listában szereplő megoldás nevére. Kattintson a listában szereplő első megoldás nevére. 
 
-A következő képernyőkép megerősíti, hogy az *acmetomcat* számítógép küldi a legtöbb adatot a naplókezelési megoldás esetében.<br><br> ![adatmennyiség egy megoldás esetében](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+A következő képernyőkép megerősíti, hogy a *mycon* számítógép küldi a legtöbb adatot a naplókezelési megoldás esetében.<br><br> ![adatmennyiség egy megoldás esetében](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 Szükség esetén végezzen további elemzést a megoldásokban vagy adattípusokban található nagy mennyiségek azonosításához. Példák a lekérdezésekre:
 

@@ -1,24 +1,21 @@
 ---
-title: Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel | Microsoft Docs
-description: 'Az Azure PowerShell használata egy Data Lake Analytics-fiók létrehozásához, egy Data Lake Analytics-feladat létrehozására U-SQL használatával, valamint a feladat elküldésére. '
+title: Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel
+description: Az Azure PowerShell-lel létrehozhat egy Azure Data Lake Analytics-fiókot, és beküldhet egy U-SQL feladatot.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: saveenr
-editor: cgronlun
-ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/04/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 332b6c90ea51d16a439bfb21222bb753e93a02b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
+ms.topic: get-started-article
+ms.date: 05/04/2017
+ms.openlocfilehash: 70534b050577e749310d81b50c300c7d98e416af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623087"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics használatának első lépései az Azure PowerShell-lel
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -99,7 +96,7 @@ OUTPUT @a
 Küldje el a szkript szövegét a `Submit-AdlJob` parancsmaggal és a `-Script` paraméterrel.
 
 ```
-$job = Submit-AdlJob -Account $adla -Name "My Job" –Script $script
+$job = Submit-AdlJob -Account $adla -Name "My Job" �Script $script
 ```
 
 Másik lehetőségként elküldhet egy szkriptfájlt a `-ScriptPath` paraméterrel:
@@ -107,7 +104,7 @@ Másik lehetőségként elküldhet egy szkriptfájlt a `-ScriptPath` paraméterr
 ```
 $filename = "d:\test.usql"
 $script | out-File $filename
-$job = Submit-AdlJob -Account $adla -Name "My Job" –ScriptPath $filename
+$job = Submit-AdlJob -Account $adla -Name "My Job" �ScriptPath $filename
 ```
 
 A feladatok állapotát a `Get-AdlJob` parancsmaggal kérheti le. 

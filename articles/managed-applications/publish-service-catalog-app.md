@@ -8,18 +8,18 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305310"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247880"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Felügyelt alkalmazás közzététele belső használatra
 
-Létrehozhat és közzétehet a vállalat tagjainak szánt Azure-beli [felügyelt alkalmazásokat](overview.md). Az informatikai részleg közzétehet például olyan felügyelt alkalmazásokat, amelyek biztosítják a vállalati szabványoknak való megfelelést. Ezeket a felügyelt alkalmazásokat a szolgáltatáskatalóguson keresztül lehet elérni az Azure Marketplace helyett.
+Létrehozhat és közzétehet a vállalat tagjainak szánt Azure-beli [felügyelt alkalmazásokat](overview.md). Az informatikai részleg közzétehet például olyan felügyelt alkalmazásokat, amelyek megfelelnek a vállalati szabványoknak. Ezeket a felügyelt alkalmazásokat a szolgáltatáskatalóguson keresztül lehet elérni az Azure Marketplace helyett.
 
 A felügyelt alkalmazás szolgáltatáskatalógusban való közzétételéhez a következőket kell tennie:
 
@@ -29,11 +29,13 @@ A felügyelt alkalmazás szolgáltatáskatalógusban való közzétételéhez a 
 * El kell döntenie, hogy melyik felhasználónak, csoportnak vagy alkalmazásnak kell hozzáférést biztosítani a felhasználó előfizetésében található erőforráscsoporthoz.
 * Létre kell hoznia a felügyelt alkalmazás definícióját, amely a .zip csomagra mutat, és hozzáférést kér az identitás számára.
 
-A jelen cikk esetén a felügyelt alkalmazás csak egy tárfiókot tartalmaz. Az a célja, hogy bemutassa a felügyelt alkalmazások közzétételéhez szükséges lépéseket. Átfogó példákat az [Azure-beli felügyelt alkalmazások mintaprojektjeit](sample-projects.md) ismertető témakörben talál.
+A jelen cikk esetében a felügyelt alkalmazás csak egy tárfiókot tartalmaz. Az a célja, hogy bemutassa a felügyelt alkalmazások közzétételéhez szükséges lépéseket. Átfogó példákat az [Azure-beli felügyelt alkalmazások mintaprojektjeit](sample-projects.md) ismertető témakörben talál.
+
+A cikkben szereplő PowerShell példák használatához az Azure PowerShell 6.2-es vagy újabb verziója szükséges. Ha szükséges, [frissítse a verziót](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-the-resource-template"></a>Az erőforrássablon létrehozása
 
-Minden felügyelt alkalmazás definíciója tartalmaz egy **mainTemplate.json** nevű fájlt. Ebben lehet meghatározni a kiépítendő Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon.
+Minden felügyelt alkalmazás definíciója tartalmaz egy **mainTemplate.json** nevű fájlt. Ebben lehet meghatározni a telepítendő Azure-erőforrásokat. A sablon pont olyan, mint egy átlagos Resource Manager-sablon.
 
 Hozzon létre egy **mainTemplate.json** nevű fájlt. A név megkülönbözteti a kis- és nagybetűket.
 
@@ -209,6 +211,10 @@ New-AzureRmManagedApplicationDefinition `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
+### <a name="make-sure-users-can-see-your-definition"></a>Győződjön meg arról, hogy a definíció a felhasználók számára látható
+
+Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. A definíció elérésének ellenőrzésével, valamint további felhasználók és csoportok hozzáadásával kapcsolatban lásd: [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../role-based-access-control/role-assignments-portal.md).
+
 ## <a name="create-the-managed-application"></a>A felügyelt alkalmazás létrehozása
 
 A felügyelt alkalmazást a portálon, a PowerShellen vagy az Azure CLI-n keresztül helyezheti üzembe.
@@ -256,6 +262,16 @@ Most pedig helyezzük üzembe a felügyelt alkalmazást a portál segítségéve
 1. Keresse meg a létrehozni kívánt felügyelt alkalmazást az elérhető megoldások listájában, és válassza ki. Kattintson a **Létrehozás** gombra.
 
    ![A felügyelt alkalmazás megkeresése](./media/publish-service-catalog-app/find-application.png)
+
+   Amennyiben nem látja a felügyelt alkalmazás definícióját a portálon, esetleg módosítania kell a portál beállításait. Válassza ki a **könyvtár és az előfizetés szűrő** elemet.
+
+   ![Az előfizetés szűrő kiválasztása](./media/publish-service-catalog-app/select-filter.png)
+
+   Ellenőrizze, hogy a globális előfizetés szűrő tartalmazza-e a felügyelt alkalmazás definícióját tartalmazó előfizetést.
+
+   ![Az előfizetés szűrő ellenőrzése](./media/publish-service-catalog-app/check-global-filter.png)
+
+   Az előfizetés kiválasztását követően végezze el újra a szolgáltatáskatalógusbeli felügyelt alkalmazás létrehozását. Most már láthatónak kell lennie.
 
 1. Adja meg a felügyelt alkalmazáshoz szükséges alapvető adatokat. Adja meg azt az előfizetést és új erőforráscsoportot, amely a felügyelt alkalmazást fogja tartalmazni. A hely mezőnél válassza az **USA nyugati középső régiója** lehetőséget. Ha elkészült, kattintson az **OK** gombra.
 

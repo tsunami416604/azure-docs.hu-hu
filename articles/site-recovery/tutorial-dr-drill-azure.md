@@ -5,41 +5,42 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/16/2018
+ms.date: 06/04/2018
 ms.author: raynew
-ms.openlocfilehash: 724144e8f2f2f76c4ad98b4c5cad84e69dadadbb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d1b6dec122672e4f6260105f7b50af2cd7369947
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209725"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737106"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
-Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre egy helyszíni gépről az Azure-ba irányuló vészhelyreállítási próbát egy feladatátvételi teszt segítségével. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az [Azure Site Recovery](site-recovery-overview.md) működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
+
+- Ez az oktatóanyag a negyedik rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez. Az oktatóanyag feltételezi, hogy elvégezte az első két oktatóanyagot:
+    - Az [első oktatóanyagban](tutorial-prepare-azure.md) konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket.
+    - A [második oktatóanyagban](vmware-azure-tutorial-prepare-on-premises.md) helyszíni összetevőket készítettünk elő egy vészhelyreállításhoz, és áttekintettük az előfeltételeket.
+    - A [harmadik oktatóanyagban](vmware-azure-tutorial.md) beállítottuk és engedélyeztük a replikációt a helyszíni VMware virtuális gépünkhöz.
+- Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. 
+
+
+Ebben a cikkben bemutatjuk, hogyan futtathat egy helyszíni gépről az Azure-ba irányuló vészhelyreállítási próbát egy feladatátvételi teszt segítségével. A próba adatveszteség nélkül ellenőrzi a replikációs stratégiát. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Elkülönített hálózat beállítása a feladatátvételi teszthez
 > * Felkészülés az Azure-beli virtuális géphez való kapcsolódásra a feladatátvételt követően
 > * Feladatátvételi teszt futtatása egyetlen gép esetén
 
-Ez az oktatóanyag egy sorozat negyedik része. Ez az oktatóanyag feltételezi, hogy elvégezte az előző oktatóanyagok feladatait.
-
-1. [Az Azure előkészítése](tutorial-prepare-azure.md)
-2. [Helyszíni VMware előkészítése](tutorial-prepare-on-premises-vmware.md)
-3. [Vészhelyreállítás beállítása](tutorial-vmware-to-azure.md)
+Ez az oktatóanyag a legegyszerűbb beállításokkal konfigurálja az Azure-ba irányuló VMware-vészhelyreállítást. Ha további információt szeretne a feladatátvételi teszt lépéseiről, olvassa el az [útmutatót](site-recovery-test-failover-to-azure.md).
 
 ## <a name="verify-vm-properties"></a>A virtuális gép tulajdonságainak ellenőrzése
 
-A feladatátvételi teszt futtatása előtt ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hogy a Hyper-V virtuális gép [hyper-v-azure-support-matrix.md#replicated-vms], a [VMware virtuális gép vagy a fizikai kiszolgáló](vmware-physical-azure-support-matrix.md#replicated-machines) megfelel az Azure követelményeinek.
+A feladatátvételi teszt futtatása előtt ellenőrizze a VMware virtuális gép tulajdonságait, és győződjön meg arról, hogy a Hyper-V virtuális gép [hyper-v-azure-support-matrix.md#replicated-vms], a [VMware virtuális gép vagy a fizikai kiszolgáló](vmware-physical-azure-support-matrix.md#replicated-machines) megfelel az Azure követelményeinek.
 
 1. A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetőségre.
 2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
-3. A **Számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, a [rendelkezésre állási csoportot](../virtual-machines/windows/tutorial-availability-sets.md) és a felügyelt lemez beállításait.
-   
-      >[!NOTE]
-      A felügyelt lemezekkel rendelkező Azure-beli virtuális gépekről jelenleg nem támogatott a helyszíni Hyper-V-gépekre történő feladat-visszavétel. Csak akkor használja a felügyelt lemezek lehetőséget a feladatátvételhez, ha át szeretné migrálni a helyszíni virtuális gépeket az Azure-ba, feladat-visszavétel nélkül.
-   
+3. A **Számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célméretet, a rendelkezésre állási csoportot és a felügyelt lemez beállításait.
 4. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
 5. A **Lemezek** résznél láthatja a virtuális gépen lévő operációsrendszer- és adatlemezekkel kapcsolatos információkat.
 

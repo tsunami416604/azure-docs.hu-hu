@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric parancssori felületi minták
-description: Azure Service Fabric parancssori felületi minták
+title: Az Azure parancssori felület (az) és az Azure Service Fabric parancssori felület (sfctl) példái
+description: Az Azure parancssori felület (az) és az Azure Service Fabric parancssori felület (sfctl) példái
 services: service-fabric
 documentationcenter: service-fabric
 author: Thraka
@@ -16,23 +16,24 @@ ms.workload: service-fabric
 ms.date: 04/09/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: c7f6ce7cea62bd4bf9baca6119f204fc43cf4d45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e37bbd5e12608c5acbd19d5c57667d9e34c74b3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641849"
 ---
-# <a name="azure-service-fabric-cli-samples"></a>Azure Service Fabric parancssori felületi minták
+# <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Az Azure parancssori felület (az) és az Azure Service Fabric parancssori felület (sfctl) példái
 
-A következő táblázat olyan hivatkozásokat tartalmaz, amelyek a [Service Fabric parancssori felület](service-fabric-cli.md) a Service Fabric-fürtöket, -alkalmazásokat és -szolgáltatásokat kezelő mintaszkriptjeire mutatnak.
+A következő táblázat olyan hivatkozásokat tartalmaz, amelyek a Service Fabric-fürtök, -alkalmazások és -szolgáltatások használatát bemutató példákra mutatnak.
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
 | | |
 |-|-|
-| **Fürt létrehozása** ||
-| [Biztonságos Linux-fürt létrehozása (Azure)](./scripts/cli-create-cluster.md)| Létrehoz egy Azure Service Fabric-fürtöt. |
-| **Alkalmazások kezelése** ||
+| **Fürt létrehozása** (az Azure parancssori felülettel)||
+| [Biztonságos Linux-fürt létrehozása](./scripts/cli-create-cluster.md)| Létrehoz egy Azure Service Fabric-fürtöt. |
+| **Alkalmazások kezelése** (a Service Fabric parancssori felülettel)||
 | [Alkalmazások listázása](./scripts/sfctl-list-applications.md)| Egy fürtön kiépített alkalmazások listázása.|
 | [Alkalmazás üzembe helyezése](./scripts/cli-deploy-application.md)| Alkalmazás üzembe helyezése egy fürtön.|
 | [Alkalmazás eltávolítása](./scripts/cli-remove-application.md)| Alkalmazás eltávolítása egy fürtről.|

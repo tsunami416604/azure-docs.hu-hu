@@ -1,13 +1,13 @@
 ---
-title: "Az Azure Service Fabric CLI parancsfájl eltávolítása minta"
-description: "Alkalmazások eltávolítása egy Azure Service Fabric-fürt, az Azure Service Fabric parancssori felület használatával"
+title: Azure Service Fabric parancssori felület (sfctl) eltávolítási példaszkriptje
+description: Alkalmazás eltávolítása az Azure Service Fabric fürtből az Azure Service Fabric parancssori felület használatával
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -15,24 +15,25 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 95a6bac7ee79e3490584305e78d410104363b780
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 83f2fc52debd24afd97a391466cb5a0b1a8cd93c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642716"
 ---
-# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Alkalmazások eltávolítása a Service Fabric-fürt
+# <a name="remove-an-application-from-a-service-fabric-cluster"></a>Alkalmazás eltávolítása egy Service Fabric fürtről
 
-Ez a parancsfájlpélda futó Service Fabric-alkalmazás példány törlése, regisztrációjának törlése az alkalmazástípus és -verzió a fürtből.  Az alkalmazáspéldány törlésekor is törlődnek a futó szolgáltatás az adott alkalmazáshoz tartozó példányok. Ezt követően az alkalmazásfájlokat az image store törlődnek. 
+Ez a példaszkript törli a Service Fabric-alkalmazás egy éppen futó példányát, majd törli egy alkalmazástípus- és verzió regisztrációját a fürtről.  Az alkalmazáspéldány törlésével az adott alkalmazáshoz kapcsolódó összes éppen futó szolgáltatáspéldányt is törli. Ezt követően az alkalmazásfájlok is törlődnek a rendszerképtárolóból. 
 
-Szükség esetén telepítse a [Service Fabric CLI](../service-fabric-cli.md).
+Amennyiben szükséges, telepítse a [Service Fabric parancssori felületet](../service-fabric-cli.md).
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-sh[main](../../../cli_scripts/service-fabric/remove-application/remove-application.sh "Remove an application from a cluster")]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információkért lásd: a [Service Fabric CLI dokumentáció](../service-fabric-cli.md).
+További információ: [A Service Fabric parancssori felületének dokumentációja](../service-fabric-cli.md).
 
-Azure Service Fabric további Service Fabric CLI-példák találhatók a [Service Fabric CLI minták](../samples-cli.md).
+A [Service Fabric parancssori felület példái](../samples-cli.md) között további Service Fabric parancssori felületi példákat talál az Azure Service Fabrichez.

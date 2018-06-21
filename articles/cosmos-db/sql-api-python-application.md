@@ -3,23 +3,21 @@ title: Python Flask-webalkalmazási oktatóanyag az Azure Cosmos DB-hez | Micros
 description: Egy adatbázis-oktatóanyag áttekintésével megtudhatja, hogyan tárolhatja és érheti el az Azure-ban tárolt Python Flask-webalkalmazások adatait az Azure Cosmos DB használatával. Alkalmazásfejlesztési megoldások keresése.
 keywords: Alkalmazásfejlesztés, python flask, python-webalkalmazás, python-webfejlesztés
 services: cosmos-db
-documentationcenter: python
 author: SnehaGunda
 manager: kfile
-ms.assetid: 20ebec18-67c2-4988-a760-be7c30cfb745
 ms.service: cosmos-db
-ms.workload: data-management
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: python
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3746a8f3d565d06dd81077efe84c8a9173a68dd7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 9a1a6ef61934c765eced259ddc535c018acf52fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824217"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Python Flask-webalkalmazás létrehozása az Azure Cosmos DB használatával
 > [!div class="op_single_selector"]
@@ -30,18 +28,18 @@ ms.lasthandoff: 04/16/2018
 > 
 > 
 
-Az oktatóanyag bemutatja, hogyan használható az Azure Cosmos DB tárolására és érheti el egy Azure App Service szolgáltatásban tárolt Python Flask-webalkalmazások adatait. Ez az oktatóanyag feltételezi, hogy rendelkezik némi tapasztalattal a Python és az Azure-webhelyek használatát.
+Ez az oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure App Service-ben tárolt Python Flask-webalkalmazás adatait az Azure Cosmos DB segítségével. Az oktatóanyag feltételezi, hogy rendelkezik némi tapasztalattal a Python és az Azure Websites használatában.
 
 Az adatbázis-oktatóanyag az alábbiakat ismerteti:
 
-1. Létrehozása, és üzembe helyezése Azure Cosmos DB fiókkal.
-2. A Python Flask-alkalmazás létrehozása.
-3. Csatlakozik, és a webalkalmazás Azure Cosmos DB használatával.
-4. Az Azure App Service web alkalmazás központi telepítését.
+1. Azure Cosmos DB-fiók létrehozása és üzembe helyezése.
+2. Python Flask-alkalmazás létrehozása.
+3. Az Azure Cosmos DB a webalkalmazásból történő használata, valamint az ahhoz való csatlakozás.
+4. A webalkalmazás üzembe helyezése az Azure App Service-ben.
 
 Az oktatóanyag utasításait követve egy egyszerű szavazóalkalmazást fog létrehozni, amely lehetővé teszi, hogy leadja a voksát egy szavazáson.
 
-![Az adatbázis-oktatóprogram során létrehozott szavazóalkalmazást képernyőfelvétele](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
+![A jelen adatbázis-oktatóprogram során létrehozott szavazóalkalmazás képernyőképe](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
 
 ## <a name="database-tutorial-prerequisites"></a>Az adatbázis-oktatóanyag előfeltételei
 A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a következőkkel:
@@ -50,18 +48,18 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [A Visual Studio 2017](https://www.visualstudio.com/downloads/) rendelkező **Azure fejlesztési** és **Python fejlesztői** engedélyezve van. Ellenőrizheti, hogy az Előfeltételek telepítve vannak-e, és a telepítést, megnyitása **Visual Studio telepítő** helyileg.   
-* [Python 2.7-hez készült Microsoft Azure SDK](https://azure.microsoft.com/downloads/). 
-* [Python 2.7](https://www.python.org/downloads/windows/). A 32 bites vagy 64 bites telepítési használhatók.
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) engedélyezett **Azure-fejlesztéssel** és **Python-fejlesztéssel**. A **Visual Studio telepítőjének** helyi megnyitásával ellenőrizheti, hogy telepítve vannak-e az előfeltételek, és telepítheti is őket.   
+* [Microsoft Azure SDK for Python 2.7](https://azure.microsoft.com/downloads/). 
+* [Python 2.7](https://www.python.org/downloads/windows/). A 32 vagy 64 bites telepítést is használhatja.
 
 > [!IMPORTANT]
-> Ha először telepíti a Python 2.7, győződjön meg arról, hogy testreszabása Python 2.7.13 képernyőjén választja **python.exe hozzáadása az elérési út**.
+> Ha először telepíti a Python 2.7-es verzióját, győződjön meg arról, hogy a Customize Python 2.7.13 (A Python 2.7.13 testreszabása) képernyőn kiválasztotta az **Add python.exe to Path** (Python.exe hozzáadása az útvonalhoz) lehetőséget.
 > 
 > ![Képernyőfelvétel a Customize Python 2.7.11 (Python 2.7.11 testreszabása) képernyőről, ahol be az Add python.exe to Path (Python.exe hozzáadása az útvonalhoz) lehetőséget ki kell választania.](./media/sql-api-python-application/cosmos-db-python-install.png)
 > 
 > 
 
-* [A Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).
+* [Microsoft Visual C++ Compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266).
 
 ## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
 Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Python Flask-webalkalmazás létrehozása](#step-2-create-a-new-python-flask-web-application) című lépésre.
@@ -69,7 +67,7 @@ Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókka
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <br/>
-Most már azon, hogyan hozhat létre egy új Python Flask-webalkalmazást az alapoktól be bemutatjuk.
+Most végigvezetjük azon, hogyan hozhat létre új Python Flask-webalkalmazást az alapoktól kezdve.
 
 ## <a name="step-2-create-a-new-python-flask-web-application"></a>2. lépés: Új Python Flask-webalkalmazás létrehozása
 1. A Visual Studio programban, a **File** (Fájl) menüben mutasson a **New** (Új) elemre, majd kattintson a **Project** (Projekt) elemre.
@@ -84,7 +82,7 @@ Most már azon, hogyan hozhat létre egy új Python Flask-webalkalmazást az ala
 4. A **Python Tools for Visual Studio** ablakban kattintson az **Install into a virtual environment** (Telepítés virtuális környezetbe) lehetőségre. 
    
     ![Képernyőfelvétel az adatbázisról-oktatóanyagról – Python Tools for Visual Studio](./media/sql-api-python-application/python-install-virtual-environment.png)
-5. Az a **virtuális környezet hozzáadása** ablakban válassza ki, Python 2.7-es vagy Python 3.5 jelöljön ki egy parancsértelmező mezőben fogadja el az alapértelmezett beállításokat, és kattintson **létrehozása**. Ezzel beállítja a projekthez szükséges Python virtuális környezetet.
+5. Az **Add Virtual Environment** (Virtuális környezet hozzáadása) ablak Select an interpreter (Értelmező kiválasztása) mezőjében válassza a Python 2.7-et vagy a Python 3.5-öt, fogadja el a többi alapértelmezett értéket, majd kattintson a **Create** (Létrehozás) gombra. Ezzel beállítja a projekthez szükséges Python virtuális környezetet.
    
     ![Képernyőfelvétel az adatbázisról-oktatóanyagról – Python Tools for Visual Studio](./media/sql-api-python-application/image10_A.png)
    
@@ -92,7 +90,7 @@ Most már azon, hogyan hozhat létre egy új Python Flask-webalkalmazást az ala
 
 ## <a name="step-3-modify-the-python-flask-web-application"></a>3. lépés: A Python Flask-webalkalmazás módosítása
 ### <a name="add-the-python-flask-packages-to-your-project"></a>A Python Flask-csomagok hozzáadása a projekthez
-A projekt telepítése után, szüksége lesz a szükséges Flask-csomagok hozzáadása a projekthez, beleértve a pydocumentdb, a Python-csomag az Azure Cosmos DB SQL API-hoz.
+A projekt beállítása után hozzá kell adnia a szükséges Flask-csomagokat a projekthez, beleértve a pydocumentdb csomagot is, amely az Azure Cosmos DB SQL API-hoz szükséges Python-csomag.
 
 1. A Solution Explorer (Megoldáskezelő) nézetben nyissa meg a **requirements.txt** fájlt, majd cserélje ki annak tartalmát a következőre:
    
@@ -117,7 +115,7 @@ A projekt telepítése után, szüksége lesz a szükséges Flask-csomagok hozz�
         Successfully installed Babel-2.3.2 Tempita-0.5.2 WTForms-2.1 Whoosh-2.7.4 blinker-1.4 decorator-4.0.9 flask-0.9 flask-babel-0.8 flask-mail-0.7.6 flask-sqlalchemy-0.16 flask-whooshalchemy-0.55a0 flask-wtf-0.8.4 flup-1.0.2 pydocumentdb-1.6.1 pytz-2013b0 speaklater-1.3 sqlalchemy-0.7.9 sqlalchemy-migrate-0.7.2
    
    > [!NOTE]
-   > Ritka esetekben előfordulhat, hogy egy hibaüzenet jelenik meg a kimeneti ablakban. Ha ez történik, ellenőrizze, ha a hiba kapcsolódó tisztítása. Egyes esetekben az eltávolítási meghiúsul, de a telepítés is sikeres (görgetési be ehhez a kimeneti ablakban). A telepítés állapotát a [virtuális környezet ellenőrzésével](#verify-the-virtual-environment) vizsgálhatja meg. Ha a telepítés sikertelen volt, de a megerősítés sikeres, akkor továbbléphet.
+   > Ritka esetekben előfordulhat, hogy egy hibaüzenet jelenik meg a kimeneti ablakban. Ebben az esetben ellenőrizze, hogy a hiba a tisztítással kapcsolatos-e. Előfordulhat, hogy a tisztítás sikertelen, de a telepítés sikeres (ennek ellenőrzéséhez görgessen felfelé a kimeneti ablakban). A telepítés állapotát a [virtuális környezet ellenőrzésével](#verify-the-virtual-environment) vizsgálhatja meg. Ha a telepítés sikertelen volt, de a megerősítés sikeres, akkor továbbléphet.
    > 
    > 
 
@@ -150,7 +148,7 @@ class VoteForm(Form):
 
 ### <a name="add-the-required-imports-to-viewspy"></a>A szükséges importálások hozzáadása a views.py fájlhoz
 1. A Solution Explorer (Megoldáskezelő) nézetben bontsa ki a **tutorial** mappát, majd nyissa meg a **views.py** fájlt. 
-2. Adja hozzá a következő importálási utasításokat a **views.py** fájl elejéhez, majd mentse a fájlt. Ezek importálják Azure Cosmos DB Python SDK-IT és a Flask-csomagokat.
+2. Adja hozzá a következő importálási utasításokat a **views.py** fájl elejéhez, majd mentse a fájlt. Ezek importálják az Azure Cosmos DB Python SDK-it és a Flask-csomagokat.
    
     ```python
     from forms import VoteForm
@@ -249,7 +247,7 @@ def vote():
 
 
 ### <a name="create-the-html-files"></a>A HTML-fájlok létrehozása
-1. A Megoldáskezelőben a a **oktatóanyag** mappát, kattintson a jobb gombbal a **sablonok** mappát, kattintson a **Hozzáadás**, és kattintson a **új elem**. 
+1. A Solution Explorer (Megoldáskezelő) nézetben, a **tutorial** mappában kattintson a jobb gombbal a **Templates** (Sablonok) mappára, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) elemre. 
 2. Válassza ki a **HTML Page** (HTML-oldal) lehetőséget, majd a Name (Név) mezőbe írja be a **create.html** nevet. 
 3. Ismételje meg az 1. és 2. lépést, és adjon hozzá további kettő HTML-fájlt: ezek a results.html és a vote.html.
 4. Adja hozzá a következő kódot a **create.html** fájl `<body>` szakaszához. Ez megjelenít egy üzenetet, miszerint sikeresen létrehozott egy új adatbázist, gyűjteményt és dokumentumot.
@@ -287,7 +285,7 @@ def vote():
     <a class="btn btn-primary" href="{{ url_for('vote') }}">Vote again?</a>
     {% endblock %}
     ```
-6. Adja hozzá a következő kódot a **vote.html** fájl `<body`> szakaszához. Ez megjeleníti a szavazást, és fogadja a szavazatokat. A szavazatok regisztrálása, a vezérlő kerülnek views.py, ahol Azure Cosmos DB felismeri a leadott, és ennek megfelelően fűzi hozzá a dokumentumhoz.
+6. Adja hozzá a következő kódot a **vote.html** fájl `<body`> szakaszához. Ez megjeleníti a szavazást, és fogadja a szavazatokat. A szavazatok regisztrálása után a vezérlést a views.py fájl veszi át, ahol az Azure Cosmos DB feldolgozza a leadott szavazatot, és annak megfelelően hozzáfűzi a szükséges dokumentumot.
    
     ```html
     {% extends "layout.html" %}
@@ -313,8 +311,8 @@ def vote():
     ```
 
 ### <a name="add-a-configuration-file-and-change-the-initpy"></a>Konfigurációs fájl hozzáadása és az \_\_init\_\_.py fájl módosítása
-1. A Megoldáskezelőben kattintson a jobb gombbal a **oktatóanyag** projektre, kattintson **Hozzáadás**, kattintson a **új elem**, jelölje be **üres Python-fájl**, és nevet a fájl **config_cosmos.py**. A Flask űrlapjainak szüksége van erre a konfigurációs fájlra. Ezzel a fájllal egy titkos kulcsot is megadhat. A jelen oktatóanyaghoz azonban nincs szükség ilyen kulcsra.
-2. Adja hozzá a következő kódot config_cosmos.py, módosítsa a kell **COSMOSDB\_állomás** és **COSMOSDB\_kulcs** a következő lépésben.
+1. A Solution Explorer (Megoldáskezelő) nézetben kattintson a jobb gombbal a **tutorial** nevű projektre, kattintson az **Add** (Hozzáadás), majd a **New Item** (Új elem) gombra, válassza az **Empty Python File** (Üres Python-fájl) lehetőséget, és a fájlnak adja a **config_cosmos.py** nevet. A Flask űrlapjainak szüksége van erre a konfigurációs fájlra. Ezzel a fájllal egy titkos kulcsot is megadhat. A jelen oktatóanyaghoz azonban nincs szükség ilyen kulcsra.
+2. Adja hozzá a következő kódot a config_cosmos.py fájlhoz, és a következő lépésben módosítsa a **COSMOSDB\_HOST** és **COSMOSDB\_KEY** paraméterek értékét.
    
     ```python
     CSRF_ENABLED = True
@@ -327,9 +325,9 @@ def vote():
     COSMOSDB_COLLECTION = 'voting collection'
     COSMOSDB_DOCUMENT = 'voting document'
     ```
-3. Az a [Azure-portálon](https://portal.azure.com/), keresse meg a **kulcsok** lap **Tallózás**, **Azure Cosmos DB fiókok**, kattintson duplán a nevére a fiók használatára, és kattintson a **kulcsok** gombra a **Essentials** területen. Az a **kulcsok** lapon, másolja a **URI** értékét, és illessze be azt a **config.py** fájl értéke a **COSMOSDB\_állomás**tulajdonság. 
-4. Az Azure portálon, a biztonsági másolatot a **kulcsok** lapján értékének másolása a **elsődleges kulcs** vagy a **másodlagos kulcs**, és illessze be azt a **config_cosmos.py** fájl értéke a **COSMOSDB\_kulcs** tulajdonság.
-5. Az a  **\_ \_init\_\_.py** fájlt, adja hozzá a következő sorokat a többek között a konfigurációs fájl olvasási és alapvető naplózással: 
+3. Az [Azure Portalon](https://portal.azure.com/) navigáljon a **Kulcsok** oldalra. Ehhez kattintson a **Tallózás**, majd az **Azure Cosmos DB-fiókok** lehetőségre, kattintson duplán a használni kívánt fiók nevére, és végül kattintson a **Kulcsok** gombra az **Alapvető erőforrások** területen. A **Kulcsok** oldalon másolja ki az **URI** mező értékét, és illessze be a **config.py** fájlba a **COSMOSDB\_HOST** paraméter értéke helyére. 
+4. Ismét az Azure Portalon, a **Kulcsok** oldalon másolja ki az **Elsődleges kulcs** vagy a **Másodlagos kulcs** mező értékét, és illessze be a **config_cosmos.py** fájlba a **COSMOSDB\_KEY** paraméter értéke helyére.
+5. Adja hozzá a következő sorokat az **\_\_init\_\_.py** fájlhoz, hogy belefoglalja a konfigurációs fájl olvasását és az alapszintű naplózást: 
    
         app.config.from_object('config_cosmos')
         logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -367,12 +365,12 @@ def vote():
     ![Képernyőfelvétel a szavazás oldalának Results (Eredmények) lapjáról](./media/sql-api-python-application/cosmos-db-voting-results.png)
 6. A projekt hibakeresésének leállításához nyomja le a Shift+F5 billentyűkombinációt.
 
-## <a name="step-5-deploy-the-web-application-to-azure"></a>5. lépés: A webalkalmazás az Azure-bA telepítése
-Most, hogy a teljes alkalmazás megfelelően működik-e szemben Azure Cosmos DB helyileg, lesz, hozzon létre egy web.config fájlt, a kiszolgálón a helyi környezet egyező fájlok frissítéséhez, és nézze meg a kész alkalmazásról az Azure-on. Ez az eljárás csak a Visual Studio 2017. Visual Studio egy másik verziója használatakor lásd [közzététele az Azure App Service](/visualstudio/python/publishing-to-azure.md).
+## <a name="step-5-deploy-the-web-application-to-azure"></a>5. lépés: A webalkalmazás telepítése az Azure-ra
+Most, hogy helyben a teljes alkalmazás megfelelően működik az Azure Cosmos DB-vel, létrehozunk egy web.config fájlt, frissítjük a kiszolgálón található fájlokat, hogy megfeleljenek a helyi környezetnek, majd megtekintjük a kész alkalmazást az Azure-on. Ez az eljárás a Visual Studio 2017-re vonatkozik. Ha a Visual Studio más verzióját használja, tekintse meg a [Közzététel az Azure App Service-ben](/visualstudio/python/publishing-to-azure) című cikket.
 
-1. A Visual Studio **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **Hozzáadás > Új elem...** . A párbeszédpanelen megjelenő választ a **Azure web.config (Folyamatkészlet)** sablont, és válassza **OK**. Ezzel létrehoz egy `web.config` fájlt a projekt gyökérkönyvtárában. 
+1. A Visual Studio **Megoldáskezelőjében** kattintson a jobb gombbal a projektre, és válassza a **Hozzáadás > Új elem...** lehetőséget. A megjelenő párbeszédablakban válassza az **Azure web.config (Fast CGI)** sablont, és kattintson az **OK** gombra. Ez létrehoz egy `web.config` fájlt a projekt gyökérkönyvtárában. 
 
-2. Módosítsa a `<system.webServer>` szakasz `web.config` , hogy az elérési út megegyezik a Python-telepítés. Például a Python 2.7 x64 a bejegyzés meg kell jelennie az alábbiak szerint:
+2. Módosítsa a `<system.webServer>` szakaszt a `web.config` fájlban, hogy az elérési út megegyezzen a Python-telepítéssel. Például a Python 2.7 x64 esetén a bejegyzésnek a következőképpen kell megjelennie:
     
     ```xml
     <system.webServer>
@@ -382,47 +380,47 @@ Most, hogy a teljes alkalmazás megfelelően működik-e szemben Azure Cosmos DB
     </system.webServer>
     ```
 
-3. Állítsa be a `WSGI_HANDLER` bejegyzést `web.config` , hogy `tutorial.app` egyeznie kell a projekt nevével. 
+3. Állítsa a `web.config` fájl `WSGI_HANDLER` bejegyzését `tutorial.app` értékre, hogy megegyezzen a projekt nevével. 
 
     ```xml
     <!-- Flask apps only: change the project name to match your app -->
     <add key="WSGI_HANDLER" value="tutorial.app"/>
     ```
 
-4. A Visual Studio **Megoldáskezelőben**, bontsa ki a **oktatóanyag** mappát, kattintson a jobb gombbal a `static` mappára, válassza **Hozzáadás > Új elem...** , válassza ki az "Azure statikus fájlok web.config" sablont, és válassza ki **OK**. Ez a művelet létrehoz egy másik `web.config` a a `static` mappa, amely letiltja a Python, hogy a mappa számára történő feldolgozásakor. Ez a konfiguráció a statikus fájlok kérelmek küldése a Python-alkalmazások használata helyett az alapértelmezett webkiszolgáló.
+4. A Visual Studio **Megoldáskezelőjében** bontsa ki a **tutorial** mappát, kattintson a jobb gombbal a `static` mappára, válassza a **Hozzáadás > Új elem...** lehetőséget, válassza ki az „Azure static files web.config” sablont, majd kattintson az **OK** gombra. Ez a művelet létrehoz egy másik `web.config` fájlt a `static` mappában, amely letiltja a Python-feldolgozást az adott mappában. Ez a konfiguráció statikus fájlkérelmeket küld az alapértelmezett webkiszolgálónak a Python-alkalmazás használata helyett.
 
-5. A fájlok mentéséhez, majd kattintson a jobb gombbal a projektre a Solution Explorer (Győződjön meg arról, hogy Ön nem továbbra is helyben fut), és válassza ki **közzététel**.  
+5. Mentse a fájlokat, kattintson a jobb gombbal a projektre a Megoldáskezelőben (győződjön meg arról, hogy helyileg már nem fut), és válassza a **Közzététel** lehetőséget.  
    
      ![Képernyőfelvétel a kiválasztott „tutorial” projektről a Solution Explorer (Megoldáskezelő) nézetben, a kiemelt Publish (Közzététel) lehetőséggel](./media/sql-api-python-application/image20.png)
-6. Az a **közzététel** párbeszédpanelen jelölje ki **Microsoft Azure App Service**, jelölje be **hozzon létre új**, és kattintson a **közzététel**.
+6. A **Közzététel** párbeszédpanelen válassza a **Microsoft Azure App Service** elemet, válassza az **Új létrehozása** elemet, majd kattintson a **Közzététel** parancsra.
    
-    ![Képernyőfelvétel a Microsoft Azure App Service a kijelölt webhely közzététele ablak](./media/sql-api-python-application/cosmos-db-python-publish.png)
-7. Az a **App Service létrehozása** párbeszédpanel mezőben adja meg a nevet a webalkalmazás, valamint a **előfizetés**, **erőforráscsoport**, és **App Service-csomag**, majd kattintson a **létrehozása**.
+    ![Képernyőkép a Webes közzététel ablakról és a kiemelt Microsoft Azure App Service elemről](./media/sql-api-python-application/cosmos-db-python-publish.png)
+7. Az **App Service létrehozása** párbeszédpanelen adja meg a webalkalmazás nevét, az **előfizetést**, az **erőforráscsoportot** és az **App Service-csomagot**, majd kattintson a **Létrehozás** gombra.
    
     ![Képernyőfelvétel a Microsoft Azure Web Apps (Microsoft Azure-webalkalmazások) ablakról](./media/sql-api-python-application/cosmos-db-python-create-app-service.png)
-8. Néhány másodpercen belül a Visual Studio befejezi a fájlok másolását a kiszolgálóra, és megjeleníti a "a lap nem jeleníthető meg, mert egy belső kiszolgálóhiba történt." az a `http://<your app service>.azurewebsites.net/` lap.
+8. Néhány másodpercen belül a Visual Studio befejezi a fájlok kiszolgálóra való másolását, és megjeleníti „A lap belső kiszolgálóhiba miatt nem jeleníthető meg.” üzenetet a `http://<your app service>.azurewebsites.net/` oldalon.
 
-9. Az Azure portálon, nyissa meg az új App Service-fiókjába, majd a navigációs menü, görgessen le a a **Fejlesztőeszközök** szakaszban jelölje be **bővítmények**, majd kattintson a **+ Hozzáadás**.
+9. Az Azure Portalon nyissa meg az új App Service-fiókját, majd a navigációs menüben görgessen le a **Fejlesztőeszközök** szakaszhoz, válassza ki a **Bővítmények** elemet, és kattintson a **+ Hozzáadás** gombra.
 
-10. Az a **válasszon kiterjesztést** lapon görgessen le a legutóbbi Python 2.7-es telepítés, és jelölje ki a x86 vagy x64 bit lehetőséget, majd kattintson **OK** a jogi feltételek elfogadásának.  
+10. A **Bővítmény kiválasztása** oldalon görgessen le a legutóbbi Python 2.7-telepítéshez, válassza ki az x86 vagy az x64 bites lehetőséget, majd kattintson az **OK** gombra a jogi feltételek elfogadásához.  
    
-11. A Kudu konzollal, amely tallózással is kikeresheti azt a `https://<your app service name>.scm.azurewebsites.net/DebugConsole`, hogy az alkalmazás felsorolt csomagok telepítését `requirements.txt` fájlt. Ehhez a Kudu diagnosztikai konzolon keresse meg a Python mappát `D:\home\Python27` leírtak szerint, futtassa a következő parancsot a [Kudu konzol](/visual-studio/python/managing-python-on-azure-app-service.md#azure-app-service-kudu-console) szakasz:
+11. Az alkalmazás `https://<your app service name>.scm.azurewebsites.net/DebugConsole` fájljában felsorolt csomagok telepítéséhez használja a Kudu konzolt, amelyet a `requirements.txt` címen érhet el. Ehhez a Kudu diagnosztikai konzolon keresse meg a Python mappáját `D:\home\Python27`, majd futtassa az alábbi parancsot a [Kudu konzol](/visualstudio/python/managing-python-on-azure-app-service#azure-app-service-kudu-console) szakaszban leírt módon:
 
     ```
     D:\home\Python27>python -m pip install --upgrade -r /home/site/wwwroot/requirements.txt
     ```          
 
-12. Az App Service az Azure portálon billentyűkombináció lenyomásával az új csomagok telepítése után indítsa újra a **indítsa újra a** gombra. 
+12. Az új csomagok telepítése után indítsa újra az App Service-t az Azure Portalon az **Újraindítás** gombbal. 
 
     > [!Tip] 
-    > Ha módosítja az alkalmazáshoz `requirements.txt` fájlt, ügyeljen arra, hogy újra a Kudu konzol segítségével egyetlen most, hogy a fájlban felsorolt csomagok telepítése. 
+    > Ha módosítja az alkalmazás `requirements.txt` fájlját, ügyeljen arra, hogy ismét a Kudu konzolt használja a fájlban felsorolt csomagok telepítéséhez. 
 
-13. A kiszolgálói környezet teljes konfigurálása, után frissítse a lapot a böngészőben, és a webes alkalmazás meg kell jelennie.
+13. Ha befejezte a kiszolgálókörnyezet konfigurálását, frissítse az oldalt a böngészőben, és megjelenik a webalkalmazás.
 
-    ![Az App Service Bottle, a Flask és a Django-alkalmazások közzététele eredményei](./media/sql-api-python-application/python-published-app-services.png)
+    ![A Bottle-, Flask- és a Django-alkalmazások App Service-beli közzétételének eredményei](./media/sql-api-python-application/python-published-app-services.png)
 
     > [!Tip] 
-    > Ha a weblap jelenik meg, vagy továbbra is megjelenik a "a lap nem jeleníthető meg, mert egy belső kiszolgálóhiba történt." üzenet, nyissa meg a web.config fájlt Kudo, és adja hozzá ` <httpErrors errorMode="Detailed"></httpErrors>` a system.webServer részt, majd frissítse a lapot. Ezzel a hibával kapcsolatos részletes kimenet a böngészőben megadott. 
+    > Ha nem jelenik meg a webhely, vagy továbbra is megkapja „A lap belső kiszolgálóhiba miatt nem jeleníthető meg.” üzenetet, nyissa meg a web.config fájlt a Kudóban, adja hozzá a ` <httpErrors errorMode="Detailed"></httpErrors>` kifejezést a system.webServer szakaszhoz, majd frissítse a lapot. Ez megjeleníti a böngészőhöz tartozó részletes hibakimenetet. 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 Ha ez az első Python-alkalmazás, amelyet számítógépén futtat, győződjön meg arról, hogy a következő mappák (vagy az azokkal egyenértékű telepítési helyek) szerepelnek a PATH változóban:
@@ -432,16 +430,10 @@ Ha ez az első Python-alkalmazás, amelyet számítógépén futtat, győződjö
 Ha hibába ütközik a szavazási lapon, és a projektet nem **tutorial** néven hozta létre, győződjön meg arról, hogy az **\_\_init\_\_.py** fájl a megfelelő projektnévre hivatkozik a következő sorban: `import tutorial.view`.
 
 ## <a name="next-steps"></a>További lépések
-Gratulálunk! Az első Python webes alkalmazás Azure Cosmos DB használatával befejeződött, és közzétette azt Azure-bA.
+Gratulálunk! Elkészítette első Python-webalkalmazását az Azure Cosmos DB használatával, és közzétette az Azure-ban.
 
-További funkciókat szeretne az alkalmazáshoz adni, tekintse át az elérhető API-kat a [Azure Cosmos DB Python SDK](sql-api-sdk-python.md).
+Ha további funkciókat szeretne a webalkalmazáshoz adni, tekintse át az [Azure Cosmos DB Python SDK](sql-api-sdk-python.md)-ban elérhető API-kat.
 
 Az Azure-ra, a Visual Studióval és a Pythonnal kapcsolatos további információkért lásd: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/). 
 
 További Python Flask-oktatóanyagok: [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) (A Flask óriási oktatóanyaga – 1. rész: Hello, World!) 
-
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[2]: https://www.python.org/downloads/windows/
-[3]: https://www.microsoft.com/download/details.aspx?id=44266
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Azure portal]: http://portal.azure.com

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: c72f513c7134c556afa5fa5d0b94c17b1142be54
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ed90e50167f7e86c464b1571b91dc27435437e9b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627416"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: Scala Maven-alkalmazás létrehozása a Spark in HDInsight számára, az IntelliJ használatával
 
@@ -46,6 +47,41 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
 * Oracle Java fejlesztői készlet. A készletet [innen](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítheti.
 * Java IDE. Ez a cikk az IntelliJ IDEA 18.1.1-es verzióját használja. A készletet [innen](https://www.jetbrains.com/idea/download/) telepítheti.
+
+## <a name="use-intellij-to-create-application"></a>Alkalmazás létrehozása az IntelliJ használatával
+
+1. Indítsa el az IntelliJ IDEA-t, majd hozzon létre egy projektet. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket: 
+
+   a. Válassza ki a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
+
+   b. A **Build tool** (Létrehozási eszköz) listában válassza ki az alábbiak közül az igényeinek megfelelőt:
+
+      * **Maven**, a Scala projektlétrehozási varázsló támogatásához
+      * **SBT**, a függőségek kezeléséhez és a Scala-projekt létrehozásához
+
+   ![A New project (Új projekt) párbeszédablak.](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+
+2. Kattintson a **Tovább** gombra.
+
+3. A Scala projektlétrehozási varázsló automatikusan észleli, hogy telepítette-e a Scala beépülő modulját. Válassza az **Install** (Telepítés) lehetőséget.
+
+   ![A Scala beépülő moduljának ellenőrzése](./media/apache-spark-create-standalone-application/Scala-Plugin-check-Reminder.PNG) 
+
+4. Az Scala beépülő moduljának letöltéséhez válassza az **OK** elemet. Az IntelliJ újraindításához kövesse az utasításokat. 
+
+   ![A Scala beépülő moduljának telepítési párbeszédablaka](./media/apache-spark-create-standalone-application/Choose-Scala-Plugin.PNG)
+
+5. A **New Project** (Új projekt) ablakban hajtsa végre az alábbi lépéseket:  
+
+    ![A Spark SDK kiválasztása](./media/apache-spark-create-standalone-application/hdi-new-project.png)
+
+   a. Adja meg a projekt nevét és helyét.
+
+   b. A **Project SDK** (Projekt SDK) legördülő listából Spark 2.x-fürt esetében válassza a **Java 1.8**, Spark 1.x-fürt esetében pedig a **Java 1.7** lehetőséget.
+
+   c. A **Spark version** (Spark-verzió) legördülő listában a Scala projektlétrehozási varázsló integrálja a Spark SDK-hoz és Scala SDK-hoz megfelelő verziót. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)**.
+
+6. Válassza a **Finish** (Befejezés) elemet.
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Scala beépülő modul az IntelliJ IDEA-hoz
 A Scala beépülő modul telepítésének lépesei:

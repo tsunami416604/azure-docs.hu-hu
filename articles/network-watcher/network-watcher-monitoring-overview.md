@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639343"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
@@ -48,11 +49,11 @@ A kép szerkeszthető változata letölthető svg formátumban. További inform�
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Virtuális gépek be- és kimenő hálózatiforgalom-szűrési problémáinak diagnosztizálása
 
-Egy virtuális gép üzembe helyezésekor az Azure számos alapértelmezett biztonsági szabályt alkalmaz a virtuális gépen, amelyek engedélyezik vagy letiltják a virtuális gép be- és kimenő forgalmát. Lehetősége van az Azure alapértelmezett szabályainak felülírására, vagy további szabályok létrehozására. Előfordulhat, hogy egy virtuális gép egy biztonsági szabály miatt képtelenné válik a más erőforrásokkal való kommunikációra. Az *IP-forgalom ellenőrzése* funkció lehetővé teszi egy forrás és cél IPv4-cím, port, protokoll (TCP vagy UDP), illetve a forgalom irányának (bejövő vagy kimenő) megadását. Az IP-forgalom ellenőrzése funkció ezután teszteli a kommunikációt, és értesíti Önt, hogy a kapcsolat sikeres vagy sikertelen volt-e. Ha a kapcsolat sikertelen, a probléma megoldásának elősegítése érdekében az IP-forgalom ellenőrzése funkció megmutatja, melyik biztonsági szabály engedélyezte vagy tiltotta le a kommunikációt. További információ az [IP-forgalom ellenőrzése](network-watcher-ip-flow-verify-overview.md) funkcióról.
+Egy virtuális gép üzembe helyezésekor az Azure számos alapértelmezett biztonsági szabályt alkalmaz a virtuális gépen, amelyek engedélyezik vagy letiltják a virtuális gép be- és kimenő forgalmát. Lehetősége van az Azure alapértelmezett szabályainak felülírására, vagy további szabályok létrehozására. Előfordulhat, hogy egy virtuális gép egy biztonsági szabály miatt képtelenné válik a más erőforrásokkal való kommunikációra. Az *IP-forgalom ellenőrzése* funkció lehetővé teszi egy forrás és cél IPv4-cím, port, protokoll (TCP vagy UDP), illetve a forgalom irányának (bejövő vagy kimenő) megadását. Az IP-forgalom ellenőrzése funkció ezután teszteli a kommunikációt, és értesíti Önt, hogy a kapcsolat sikeres vagy sikertelen volt-e. Ha a kapcsolat sikertelen, a probléma megoldásának elősegítése érdekében az IP-forgalom ellenőrzése funkció megmutatja, melyik biztonsági szabály engedélyezte vagy tiltotta le a kommunikációt. Az IP-forgalom ellenőrzésével kapcsolatos további információkért végezze el a [virtuális gépek hálózatiforgalom-szűrési problémájának diagnosztizálását](diagnose-vm-network-traffic-filtering-problem.md) ismertető oktatóanyagot.
 
 ### <a name="diagnose-network-routing-problems-from-a-vm"></a>Hálózati útválasztási problémák diagnosztizálása egy virtuális gépről
 
-Virtuális hálózat létrehozása esetén az Azure számos alapértelmezett kimenő útvonalat hoz létre a hálózati forgalom számára. Az összes erőforrásból (pl. a virtuális hálózatokon üzembe helyezett virtuális gépekről) származó kimenő forgalom átirányítása az Azure alapértelmezett útvonalai alapján történik. Lehetősége van az Azure alapértelmezett útvonalainak felülírására, vagy további útvonalak létrehozására. Előfordulhat, hogy egy bizonyos útvonal miatt egy virtuális gép képtelenné válik a más erőforrásokkal való kommunikációra. A *következő ugrás* funkció lehetővé teszi egy forrás és cél IPv4-cím megadását. A következő ugrás funkció ezután teszteli a kommunikációt, és értesíti Önt, hogy milyen típusú következő ugrást használt a rendszer a forgalom átirányításához. Ezt követően Ön megoldhatja az útválasztási problémát egy útvonal eltávolításával, módosításával vagy hozzáadásával. További információ a [következő ugrás](network-watcher-next-hop-overview.md?) funkcióról.
+Virtuális hálózat létrehozása esetén az Azure számos alapértelmezett kimenő útvonalat hoz létre a hálózati forgalom számára. Az összes erőforrásból (pl. a virtuális hálózatokon üzembe helyezett virtuális gépekről) származó kimenő forgalom átirányítása az Azure alapértelmezett útvonalai alapján történik. Lehetősége van az Azure alapértelmezett útvonalainak felülírására, vagy további útvonalak létrehozására. Előfordulhat, hogy egy bizonyos útvonal miatt egy virtuális gép képtelenné válik a más erőforrásokkal való kommunikációra. A *következő ugrás* funkció lehetővé teszi egy forrás és cél IPv4-cím megadását. A következő ugrás funkció ezután teszteli a kommunikációt, és értesíti Önt, hogy milyen típusú következő ugrást használt a rendszer a forgalom átirányításához. Ezt követően Ön megoldhatja az útválasztási problémát egy útvonal eltávolításával, módosításával vagy hozzáadásával. További információ a [következő ugrás](diagnose-vm-network-routing-problem.md) funkcióról.
 
 ### <a name="connection-troubleshoot"></a>Virtuális gépekről származó kimenő kapcsolati problémák diagnosztizálása
 
@@ -64,7 +65,7 @@ A fejlett szűrési lehetőségek és finomhangolt vezérlők, mint például az
 
 ### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Az Azure virtuális hálózati átjárók és a kapcsolatok problémáinak diagnosztizálása
 
-A virtuális hálózati átjárók biztosítják a helyszíni erőforrások és az Azure virtuális hálózatok közötti kapcsolatot. Az átjárók és azok kapcsolatainak monitorozása kritikus fontosságú a kommunikáció megfelelő működésének biztosításában. A *VPN-diagnosztika* funkció segítségével diagnosztizálhatja az átjárókat és a kapcsolatokat. A VPN-diagnosztika diagnosztizálja az átjáró vagy az átjárókapcsolat állapotát, és értesíti Önt, hogy az átjáró vagy az átjárókapcsolat elérhető-e. Ha az átjáró vagy a kapcsolat nem érhető el, a VPN-diagnosztika megmutatja, miért, így Ön megoldhatja a problémát. További információ a [VPN-diagnosztikával](network-watcher-troubleshoot-overview.md) kapcsolatban.
+A virtuális hálózati átjárók biztosítják a helyszíni erőforrások és az Azure virtuális hálózatok közötti kapcsolatot. Az átjárók és azok kapcsolatainak monitorozása kritikus fontosságú a kommunikáció megfelelő működésének biztosításában. A *VPN-diagnosztika* funkció segítségével diagnosztizálhatja az átjárókat és a kapcsolatokat. A VPN-diagnosztika diagnosztizálja az átjáró vagy az átjárókapcsolat állapotát, és értesíti Önt, hogy az átjáró vagy az átjárókapcsolat elérhető-e. Ha az átjáró vagy a kapcsolat nem érhető el, a VPN-diagnosztika megmutatja, miért, így Ön megoldhatja a problémát. A VPN-diagnosztikával kapcsolatos további információkért végezze el a [hálózatok közötti kommunikációs probléma diagnosztizálását](diagnose-communication-problem-between-networks.md) ismertető oktatóanyagot.
 
 ### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Az Azure-régiók és az internetszolgáltatók közötti relatív késés meghatározása
 
@@ -90,7 +91,7 @@ A hálózati biztonsági csoportok (NSG-k) engedélyezik vagy elutasítják a vi
 
 ![Traffic Analytics](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-További információ az [NSG-forgalom naplóival](network-watcher-nsg-flow-logging-overview.md) és a [Traffic Analytics](traffic-analytics.md) funkcióval kapcsolatban.
+Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [virtuális gép bejövő és kimenő hálózati forgalmának naplózását](network-watcher-nsg-flow-logging-portal.md) és a [Traffic Analytics megvalósítását](traffic-analytics.md) ismertető oktatóanyagot.
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Hálózati erőforrások diagnosztikai naplóinak megtekintése
 

@@ -1,27 +1,26 @@
 ---
-title: Az SQL API-t Azure Cosmos DB a node.js-oktatóanyag |} Microsoft Docs
-description: A Node.js-oktatóanyag, amely egy Cosmos DB SQL API-val.
+title: Node.js-oktatóanyag az Azure Cosmos DB-hez készült SQL API-hoz | Microsoft Docs
+description: Ez a Node.js-oktatóanyag létrehoz egy Cosmos DB-t az SQL API-val.
 keywords: node.js-oktatóanyag, node-adatbázis
 services: cosmos-db
-documentationcenter: node.js
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 editor: monicar
-ms.assetid: 14d52110-1dce-4ac0-9dd9-f936afccd550
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: node
-ms.topic: article
+ms.component: cosmosdb-sql
+ms.devlang: nodejs
+ms.topic: tutorial
 ms.date: 08/14/2017
-ms.author: anhoh
-ms.openlocfilehash: d8e5ef9da0d884d3120f71b7b06b079b2bdfbded
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.author: sngun
+ms.openlocfilehash: 70bedfc26c900521dba8c6b211a4d4e4eda24e9c
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823690"
 ---
-# <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>NODE.js-oktatóanyag: Azure Cosmos adatbázis az SQL API használatával egy Node.js-Konzolalkalmazás létrehozása
+# <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js-oktatóanyag: Node.js-konzolalkalmazás létrehozása az Azure Cosmos DB-hez készült SQL API-val
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -29,8 +28,6 @@ ms.lasthandoff: 04/16/2018
 > * [Node.js](sql-api-nodejs-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [C++](sql-api-cpp-get-started.md)
->  
-> 
 
 Üdvözöljük az Azure Cosmos DB Node.js SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
 
@@ -53,6 +50,7 @@ A Node.js-oktatóanyag befejezése után a lap tetején vagy alján található 
 Most pedig lássunk neki!
 
 ## <a name="prerequisites-for-the-nodejs-tutorial"></a>A Node.js-oktatóanyag előfeltételei
+
 Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/). 
@@ -62,11 +60,13 @@ Győződjön meg róla, hogy rendelkezik az alábbiakkal:
 * [Node.js](https://nodejs.org/)-verzió: 0.10.29-s vagy újabb.
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
-Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha az Azure Cosmos DB Emulator használ, adja kövesse a [Azure Cosmos DB emulátor](local-emulator.md) kell beállítania az emulátor, és ugorjon előre [a Node.js-alkalmazás beállítása](#SetupNode).
+
+Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni kívánt fiókkal, folytassa [A Node.js-alkalmazás beállítása](#SetupNode) című lépéssel. Ha az Azure Cosmos DB Emulatort használja, kövesse az [Azure Cosmos DB Emulatornál](local-emulator.md) leírt lépéseket az emulátor telepítéséhez, majd ugorjon előre [A Node.js-alkalmazás beállítása](#SetupNode) című lépésre.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupNode"></a>2. lépés: A Node.js-alkalmazás beállítása
+
 1. Nyissa meg kedvenc terminálját.
 2. Keresse meg azt a mappát vagy könyvtárat, ahova a Node.js-alkalmazást menteni szeretné.
 3. Hozzon létre két üres JavaScript-fájlt az alábbi parancsokkal:
@@ -82,11 +82,12 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 Remek! A beállítás befejeztével nekiláthat a kód írásának.
 
 ## <a id="Config"></a>3. lépés: Az alkalmazás konfigurációnak megadása
+
 Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
 
-Ezután, másolás és beillesztés az alábbi kódrészlet, illetve tulajdonságainak beállítása ```config.endpoint``` és ```config.primaryKey``` az Azure Cosmos DB végpont uri és elsődleges kulcs. Mindkettő konfiguráció megtalálható a [Azure-portálon](https://portal.azure.com).
+Ezután másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot a saját Azure Cosmos DB-végpontjának URI és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure Portalon](https://portal.azure.com).
 
-![NODE.js-oktatóanyag – képernyőfelvétel az Azure-portálon az Azure Cosmos DB fiókhoz, amely az ACTIVE központ megjelenítő jelölve, a Azure Cosmos DB-fiók panelen, és a kulcsok panelen - lévő URI, elsődleges és másodlagos kulcsot értékek KEYS gomb NODE-adatbázis][keys]
+![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg az ACTIVE (AKTÍV) központ, az Azure Cosmos DB-fiók panelén lévő KEYS (KULCSOK) gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY (ELSŐDLEGES KULCS) és SECONDARY KEY (MÁSODLAGOS KULCS) értékek kiemelésével – Node-adatbázis][keys]
 
     // ADD THIS PART TO YOUR CODE
     var config = {}
@@ -165,8 +166,7 @@ Másolja és illessze be a ```database id```, ```collection id``` és ```JSON do
         }
     };
 
-
-Az adatbázis, gyűjtemény és dokumentum-definíciók fog működni a Azure Cosmos DB ```database id```, ```collection id```, és dokumentumadataiként.
+Ebben az esetben az adatbázis-, gyűjtemény- és dokumentumdefiníciók szolgálnak majd az Azure Cosmos DB ```database id```, ```collection id``` és dokumentumadataiként.
 
 Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app.js``` fájlban.
 
@@ -179,50 +179,49 @@ Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app
     module.exports = config;
 
 ## <a id="Connect"></a> 4. lépés: Csatlakozás Azure Cosmos DB-fiókhoz
+
 Nyissa meg az üres ```app.js``` fájlt a szövegszerkesztőben. Másolja és illessze be az alábbi kódot a ```documentdb```, valamint az újonnan létrehozott ```config``` modul importálásához.
 
     // ADD THIS PART TO YOUR CODE
     "use strict";
 
     var documentClient = require("documentdb").DocumentClient;
+    const uriFactory = require('documentdb').UriFactory;
     var config = require("./config");
-    var url = require('url');
 
 Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.primaryKey``` használatával szeretne létrehozni egy új DocumentClient-ügyfelet.
 
     var config = require("./config");
-    var url = require('url');
 
     // ADD THIS PART TO YOUR CODE
     var client = new documentClient(config.endpoint, { "masterKey": config.primaryKey });
 
-Most, hogy az Azure Cosmos DB ügyfél kóddal, vessen egy pillantást a Azure Cosmos DB erőforrásokat.
+Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges kóddal, vessünk egy pillantást az Azure Cosmos DB-erőforrások használatára.
 
 ## <a name="step-5-create-a-node-database"></a>5. lépés: Node-adatbázis létrehozása
-Másolja és illessze be az alábbi kódot, hogy megadja a Not Found (Nem található) HTTP-állapotot, az adatbázis URL-címét, valamint a gyűjtemény URL-címét. Ezen URL-címei, hogyan az Azure Cosmos DB ügyfél megtalálja a megfelelő adatbázis és gyűjtemény.
+
+Másolja és illessze be az alábbi kódot, hogy megadja a Not Found (Nem található) HTTP-állapotot, az adatbázis azonosítóját, valamint a gyűjtemény azonosítóját. Az Azure Cosmos DB-ügyfél ezen azonosítók alapján találja meg a megfelelő adatbázist és gyűjteményt.
 
     var client = new documentClient(config.endpoint, { "masterKey": config.primaryKey });
 
     // ADD THIS PART TO YOUR CODE
     var HttpStatusCodes = { NOTFOUND: 404 };
-    var databaseUrl = `dbs/${config.database.id}`;
-    var collectionUrl = `${databaseUrl}/colls/${config.collection.id}`;
+    var databaseId = config.database.id;
+    var collectionId = config.collection.id;
 
-Az [adatbázis](sql-api-resources.md#databases) a **DocumentClient** osztály [createDatabase](https://azure.github.io/azure-documentdb-node/DocumentClient.html) függvényének használatával hozható létre. Az adatbázis a dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Az [adatbázis](sql-api-resources.md#databases) a **DocumentClient** osztály [createDatabase](/javascript/api/documentdb/documentclient) függvényének használatával hozható létre. Az adatbázis a dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
-Másolja és illessze be a **getDatabase** függvényt az adatbázis az app.js fájlban az ```id``` objektum ```config``` azonosítójával történő létrehozásához. A függvény ellenőrzi, hogy létezik-e már adatbázis ugyanazzal a ```FamilyRegistry```-azonosítóval. Ha már létezik, a rendszer új adatbázis létrehozása helyett visszaadja a már létezőt.
-
-    var collectionUrl = `${databaseUrl}/colls/${config.collection.id}`;
+Másolja és illessze be a **getDatabase** függvényt az adatbázis az app.js fájlban az ```databaseId``` objektum ```config``` azonosítójával történő létrehozásához. A függvény ellenőrzi, hogy létezik-e már adatbázis ugyanazzal a ```FamilyRegistry```-azonosítóval. Ha már létezik, a rendszer új adatbázis létrehozása helyett visszaadja a már létezőt.
 
     // ADD THIS PART TO YOUR CODE
     function getDatabase() {
-        console.log(`Getting database:\n${config.database.id}\n`);
-
+        console.log(`Getting database:\n${databaseId}\n`);
+        let databaseUrl = uriFactory.createDatabaseUri(databaseId);
         return new Promise((resolve, reject) => {
             client.readDatabase(databaseUrl, (err, result) => {
                 if (err) {
                     if (err.code == HttpStatusCodes.NOTFOUND) {
-                        client.createDatabase(config.database, (err, created) => {
+                        client.createDatabase({ id: databaseId }, (err, created) => {
                             if (err) reject(err)
                             else resolve(created);
                         });
@@ -234,7 +233,7 @@ Másolja és illessze be a **getDatabase** függvényt az adatbázis az app.js f
                 }
             });
         });
-    }
+    };
 
 Másolja és illessze be az alábbi kódot oda, ahol megadta a **getDatabase** függvényt. Ezzel hozzáadhatja az **exit** (kilépés) segédfüggvényt, amely megjeleníti a kilépési üzenetet, valamint a **getDatabase** függvény hívását.
 
@@ -252,7 +251,7 @@ Másolja és illessze be az alábbi kódot oda, ahol megadta a **getDatabase** f
         process.stdin.setRawMode(true);
         process.stdin.resume();
         process.stdin.on('data', process.exit.bind(process, 0));
-    }
+    };
 
     getDatabase()
     .then(() => { exit(`Completed successfully`); })
@@ -263,31 +262,31 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 
 ## <a id="CreateColl"></a>6. lépés: Gyűjtemény létrehozása
+
 > [!WARNING]
-> **createCollection** hoz létre egy új gyűjteményt, amely. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
-> 
-> 
+> A **createCollection** létrehoz egy új gyűjteményt, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-[Gyűjteményt](sql-api-resources.md#collections) a **DocumentClient** osztály [createCollection](https://azure.github.io/azure-documentdb-node/DocumentClient.html) függvényével hozhat létre. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
+[Gyűjteményt](sql-api-resources.md#collections) a **DocumentClient** osztály [createCollection](/javascript/api/documentdb/documentclient) függvényével hozhat létre. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
 
-Másolja és illessze be a **getCollection** függvényt a **getDatabase** függvény alá a app.js fájlban az új gyűjtemény az ```config``` objektum ```id``` azonosítójával történő létrehozásához. A rendszer ismét ellenőrzi, hogy létezik-e már gyűjtemény ugyanazzal a ```FamilyCollection```-azonosítóval. Ha már létezik, a rendszer új gyűjtemény létrehozása helyett visszaadja a már létezőt.
+Másolja és illessze be a **getCollection** függvényt a **getDatabase** függvény alá az app.js fájlban az új gyűjtemény az ```config``` objektum ```collectionId``` azonosítójával történő létrehozásához. A rendszer ismét ellenőrzi, hogy létezik-e már gyűjtemény ugyanazzal a ```FamilyCollection```-azonosítóval. Ha már létezik, a rendszer új gyűjtemény létrehozása helyett visszaadja a már létezőt.
 
                 } else {
                     resolve(result);
                 }
             });
         });
-    }
+    };
 
     // ADD THIS PART TO YOUR CODE
     function getCollection() {
-        console.log(`Getting collection:\n${config.collection.id}\n`);
-
+        console.log(`Getting collection:\n${collectionId}\n`);
+        let collectionUrl = uriFactory.createDocumentCollectionUri(databaseId, collectionId);
         return new Promise((resolve, reject) => {
             client.readCollection(collectionUrl, (err, result) => {
                 if (err) {
                     if (err.code == HttpStatusCodes.NOTFOUND) {
-                        client.createCollection(databaseUrl, config.collection, { offerThroughput: 400 }, (err, created) => {
+                        let databaseUrl = uriFactory.createDatabaseUri(databaseId);
+                        client.createCollection(databaseUrl, { id: collectionId }, { offerThroughput: 400 }, (err, created) => {
                             if (err) reject(err)
                             else resolve(created);
                         });
@@ -299,7 +298,7 @@ Másolja és illessze be a **getCollection** függvényt a **getDatabase** függ
                 }
             });
         });
-    }
+    };
 
 Másolja és illessze be az alábbi kódot a **getDatabase** függvény meghívásához, valamint a **getCollection** függvény végrehajtásához.
 
@@ -314,10 +313,11 @@ Másolja és illessze be az alábbi kódot a **getDatabase** függvény meghív�
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```
 
-Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB gyűjteményt.
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-gyűjteményt.
 
 ## <a id="CreateDoc"></a>7. lépés: Dokumentum létrehozása
-[Dokumentumot](sql-api-resources.md#documents) a **DocumentClient** osztály [createDocument](https://azure.github.io/azure-documentdb-node/DocumentClient.html) függvényével hozhat létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beszúrhat egy dokumentumot az Azure Cosmos DB-be.
+
+[Dokumentumot](sql-api-resources.md#documents) a **DocumentClient** osztály [createDocument](/javascript/api/documentdb/documentclient) függvényével hozhat létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beszúrhat egy dokumentumot az Azure Cosmos DB-be.
 
 Másolja és illessze be a **getFamilyDocument** függvényt a **getCollection** függvény alá a ```config``` objektumban mentett JSON-adatokat tartalmazó dokumentumok létrehozásához. A rendszer ismét ellenőrzi, hogy létezik-e már dokumentum ugyanazzal az azonosítóval.
 
@@ -326,17 +326,17 @@ Másolja és illessze be a **getFamilyDocument** függvényt a **getCollection**
                 }
             });
         });
-    }
+    };
 
     // ADD THIS PART TO YOUR CODE
     function getFamilyDocument(document) {
-        let documentUrl = `${collectionUrl}/docs/${document.id}`;
         console.log(`Getting document:\n${document.id}\n`);
-
+        let documentUrl = uriFactory.createDocumentUri(databaseId, collectionId, document.id);
         return new Promise((resolve, reject) => {
             client.readDocument(documentUrl, (err, result) => {
                 if (err) {
                     if (err.code == HttpStatusCodes.NOTFOUND) {
+                        let collectionUrl = uriFactory.createDocumentCollectionUri(databaseId, collectionId);
                         client.createDocument(collectionUrl, document, (err, created) => {
                             if (err) reject(err)
                             else resolve(created);
@@ -366,26 +366,26 @@ Másolja és illessze be az alábbi kódot a **getCollection** függvény meghí
 
 A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```
 
-Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB dokumentumot.
+Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-dokumentumot.
 
 ![Node.js-oktatóanyag – A fiók, az adatbázis, a gyűjtemény és a dokumentumok hierarchikus kapcsolatát ábrázoló diagram – Node-adatbázis](./media/sql-api-nodejs-get-started/node-js-tutorial-cosmos-db-account.png)
 
 ## <a id="Query"></a>8. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
 Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a gyűjteményben található dokumentumokra vonatkozóan futtathat le.
 
-Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument** függvény alá az app.js fájlban. Azure Cosmos-adatbázis SQL-szerű lekérdezéseket támogatja az alább látható módon. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](sql-api-sql-query.md).
+Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument** függvény alá az app.js fájlban. Az Azure Cosmos DB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](sql-api-sql-query.md).
 
                 } else {
                     resolve(result);
                 }
             });
         });
-    }
+    };
 
     // ADD THIS PART TO YOUR CODE
     function queryCollection() {
-        console.log(`Querying collection through index:\n${config.collection.id}`);
-
+        console.log(`Querying collection through index:\n${collectionId}`);
+        let collectionUrl = uriFactory.createDocumentCollectionUri(databaseId, collectionId);
         return new Promise((resolve, reject) => {
             client.queryDocuments(
                 collectionUrl,
@@ -404,12 +404,11 @@ Másolja és illessze be a **queryCollection** függvényt a **getFamilyDocument
         });
     };
 
-
-A következő ábra bemutatja, hogyan az Azure Cosmos adatbázis SQL-lekérdezés szintaxisa hívást a gyűjtemény meg létrehozni.
+Az alábbi diagram bemutatja, hogyan indít hívást az Azure Cosmos DB SQL-lekérdezés szintaxisa a létrehozott gyűjteményre.
 
 ![Node.js-oktatóanyag – A lekérdezés hatókörét és jelentését ábrázoló diagram – Node-adatbázis](./media/sql-api-nodejs-get-started/node-js-tutorial-collection-documents.png)
 
-A [FROM](sql-api-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből mert Azure Cosmos adatbázis-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. Azure Cosmos DB fogja következtethető ki, hogy a Families, legfelső szintű vagy a változó nevét a kiválasztott, alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
+A [FROM](sql-api-sql-query.md#FromClause) kulcsszó kihagyható a lekérdezésből, mivel az Azure Cosmos DB-lekérdezések hatóköre eleve egyetlen gyűjtemény. Ezért a „FROM Families f” lecserélhető a „FROM root r” vagy bármilyen tetszőleges változónévre. Az Azure Cosmos DB úgy tekinti, hogy a Families, a root vagy a választott változónév alapértelmezés szerint az aktuális gyűjteményre hivatkozik.
 
 Másolja és illessze be az alábbi kódot a **getFamilyDocument** függvény meghívásához, valamint a **queryCollection** függvény végrehajtásához.
 
@@ -438,14 +437,13 @@ Másolja és illessze be a **replaceFamilyDocument** függvényt a **queryCollec
                 }
             });
         });
-    }
+    };
 
     // ADD THIS PART TO YOUR CODE
     function replaceFamilyDocument(document) {
-        let documentUrl = `${collectionUrl}/docs/${document.id}`;
         console.log(`Replacing document:\n${document.id}\n`);
+        let documentUrl = uriFactory.createDocumentUri(databaseId, collectionId, document.id);
         document.children[0].grade = 6;
-
         return new Promise((resolve, reject) => {
             client.replaceDocument(documentUrl, document, (err, result) => {
                 if (err) reject(err);
@@ -475,6 +473,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-dokumentumot.
 
 ## <a id="DeleteDocument"></a>10. lépés: Dokumentum törlése
+
 Az Azure Cosmos DB támogatja a JSON-dokumentumok törlését.
 
 Másolja és illessze be a **deleteFamilyDocument** függvényt a **replaceFamilyDocument** függvény alá.
@@ -488,9 +487,8 @@ Másolja és illessze be a **deleteFamilyDocument** függvényt a **replaceFamil
 
     // ADD THIS PART TO YOUR CODE
     function deleteFamilyDocument(document) {
-        let documentUrl = `${collectionUrl}/docs/${document.id}`;
         console.log(`Deleting document:\n${document.id}\n`);
-
+        let documentUrl = uriFactory.createDocumentUri(databaseId, collectionId, document.id);
         return new Promise((resolve, reject) => {
             client.deleteDocument(documentUrl, (err, result) => {
                 if (err) reject(err);
@@ -519,6 +517,7 @@ A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi paran
 Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-dokumentumot.
 
 ## <a id="DeleteDatabase"></a>11. lépés: A Node-adatbázis törlése
+
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (gyűjtemények, dokumentumok stb.) is törlődik.
 
 Másolja és illessze be a **cleanup** függvényt a **deleteFamilyDocument** függvény alá az adatbázis, valamint minden gyermekerőforrásának törléséhez.
@@ -532,15 +531,15 @@ Másolja és illessze be a **cleanup** függvényt a **deleteFamilyDocument** f�
 
     // ADD THIS PART TO YOUR CODE
     function cleanup() {
-        console.log(`Cleaning up by deleting database ${config.database.id}`);
-
+        console.log(`Cleaning up by deleting database ${databaseId}`);
+        let databaseUrl = uriFactory.createDatabaseUri(databaseId);
         return new Promise((resolve, reject) => {
             client.deleteDatabase(databaseUrl, (err) => {
                 if (err) reject(err)
                 else resolve(null);
             });
         });
-    }
+    };
 
 Másolja és illessze be az alábbi kódot a **deleteFamilyDocument** függvény meghívásához, valamint a **cleanup** függvény végrehajtásához.
 
@@ -554,6 +553,7 @@ Másolja és illessze be az alábbi kódot a **deleteFamilyDocument** függvény
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
 
 ## <a id="Run"></a>12. lépés: A teljes Node.js-alkalmazás futtatása
+
 A függvényeket meghívó teljes sorozatnak így kell kinéznie:
 
     getDatabase()
@@ -605,6 +605,7 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
 Gratulálunk! Ezzel befejezte a Node.js-oktatóanyagot, és létrehozta első saját Azure Cosmos DB-konzolalkalmazását.
 
 ## <a id="GetSolution"></a>A Node. js-oktatóanyagban szereplő teljes megoldás beszerzése
+
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a kódot, a [GitHubon](https://github.com/Azure-Samples/documentdb-node-getting-started) beszerezheti azt.
 
 A cikkben szereplő összes mintát tartalmazó GetStarted-megoldás futtatásához az alábbiakra lesz szüksége:
@@ -616,7 +617,7 @@ Telepítse a **DocumentDB** modult az npm segítségével. Használja az alábbi
 
 * ```npm install documentdb --save```
 
-Ezután a ```config.js``` fájl, frissítse a config.endpoint és config.primaryKey értékeket, a [3. lépés: állítsa be az alkalmazás konfigurációnak](#Config). 
+Ezután a ```config.js``` fájlban frissítse a config.endpoint és config.primaryKey értékeket a [3. lépés: Az alkalmazás konfigurációnak megadásában](#Config) leírtak alapján. 
 
 Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: ```node app.js```.
 

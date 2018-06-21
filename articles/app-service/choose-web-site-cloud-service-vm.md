@@ -15,17 +15,18 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597926"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 ## <a name="overview"></a>Áttekintés
 Az Azure számos lehetőséget nyújt a webhelyek üzemeltetéséhez: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] és [Cloud Services][Cloud Services]. Ez a cikk segít Önnek megérteni a különbségeket az egyes lehetőségek között, így a webalkalmazása számára leginkább megfelelő döntést hozhatja meg.
 
-A legtöbb webalkalmazás esetében az Azure App Service a legjobb választás. Az üzembe helyezés és a kezelés integrálva van a platformba, a webhelyek gyorsan méretezhetők a nagyobb adatforgalom kezeléséhez, a beépített terheléselosztás és az adatforgalom-kezelő pedig biztosítja a magas rendelkezésre állást. Egyszerűen áthelyezheti a meglévő helyeket az Azure App Service szolgáltatásba egy [online migrálási eszköz](https://www.migratetoazure.net/) segítségével, nyílt forráskódú alkalmazásokat használhat a Web Application Gallery-ből, vagy akár létrehozhat egy új webhelyet is tetszőleges keretrendszer és eszközök használatával. A [WebJobs][WebJobs] funkció megkönnyíti a háttérfeladatok feldolgozását az App Service webalkalmazásba.
+A legtöbb webalkalmazás esetében az Azure App Service a legjobb választás. Az üzembe helyezés és a kezelés integrálva van a platformba, a webhelyek gyorsan méretezhetők a nagyobb adatforgalom kezeléséhez, a beépített terheléselosztás és az adatforgalom-kezelő pedig biztosítja a magas rendelkezésre állást. Egyszerűen áthelyezheti a meglévő helyeket az Azure App Service-be egy [online migrálási eszköz][migrate-tool] segítségével, nyílt forráskódú alkalmazásokat használhat a Web Application Galleryből, vagy akár egy új webhelyet is létrehozhat egy tetszőleges keretrendszer és eszközök használatával. A [WebJobs][WebJobs] funkció megkönnyíti a háttérfeladatok feldolgozását az App Service webalkalmazásba.
 
 A Service Fabric jó választás, ha új alkalmazást hoz létre, vagy egy meglévő alkalmazást ír át mikroszolgáltatási architektúra használatára. A számítógépek egy megosztott készletén futó alkalmazások kis méretben indíthatóak el, és igény szerint nagy léptékűre skálázhatók akár több száz vagy több ezer géppel. Az állapotalapú szolgáltatások megkönnyítik az alkalmazás állapotának következetes és megbízható tárolását, a Service Fabric pedig automatikusan kezeli a szolgáltatások particionálását, méretezését és rendelkezésre állását.  A Service Fabric támogatja a WebAPI, valamint az Open Web Interface for .NET (OWIN) és az ASP.NET Core együttes használatát.  Az App Service szolgáltatáshoz képest a Service Fabric nagyobb mértékben teszi lehetővé az alapul szolgáló infrastruktúra felügyeletét, illetve közvetlen hozzáférést biztosít hozzá. Távolról is bejelentkezhet kiszolgálóiba, vagy konfigurálhatja azok indítási folyamatait. A Cloud Services a Service Fabric szolgáltatáshoz hasonlóan a könnyű használat mellett magas fokú felügyeletet tesz lehetővé, azonban most már örökölt szolgáltatásnak számít, ezért az új fejlesztések esetében a Service Fabric javasolt.
 
@@ -97,7 +98,7 @@ Az Azure App Service remek megoldás vállalati webhelyek üzemeltetésére. Leh
 * Az integrációt az Active Directoryval.
 
 ### <a id="iis6"></a> Windows Server 2003 alatt futó IIS6 alkalmazással rendelkezem.
-Az Azure App Service egyszerűvé teszi az IIS6 alkalmazások migrálásával társított infrastrukturális költségek elkerülését. A Microsoft [könnyen használható migrálási eszközöket és útmutatást](https://www.migratetoazure.net/) hozott létre, lehetővé téve a kompatibilitás ellenőrzését és az elvégzendő változtatások felismerését. A Visual Studio-val, TFS-el és a gyakori CMS-eszközökkel történő integráció egyszerűvé teszi az IIS6 alkalmazások üzembe helyezését a felhőben. Az üzembe helyezést követően az Azure Portal robusztus felügyeleti eszközöket biztosít, amelyek lehetővé teszik az igény szerinti vertikális leskálázást a költségek felügyelete, illetve a vertikális felskálázást az igényeknek való megfelelés érdekében. A migrálási eszközzel a következőket teheti:
+Az Azure App Service egyszerűvé teszi az IIS6 alkalmazások migrálásával társított infrastrukturális költségek elkerülését. A Microsoft által létrehozott, [könnyen használható migrálási eszközök és a részletes útmutató][migrate-tool] lehetővé teszi a kompatibilitás ellenőrzését és a szükséges változtatások felismerését. A Visual Studio-val, TFS-el és a gyakori CMS-eszközökkel történő integráció egyszerűvé teszi az IIS6 alkalmazások üzembe helyezését a felhőben. Az üzembe helyezést követően az Azure Portal robusztus felügyeleti eszközöket biztosít, amelyek lehetővé teszik az igény szerinti vertikális leskálázást a költségek felügyelete, illetve a vertikális felskálázást az igényeknek való megfelelés érdekében. A migrálási eszközzel a következőket teheti:
 
 * Az örökölt Windows Server 2003 webalkalmazásának gyors és könnyű felhőre migrálását.
 * Az összekapcsolt SQL-adatbázis helyszínen hagyását hibrid alkalmazások készítéséhez.
@@ -191,3 +192,4 @@ Az első lépések megtételét az alkalmazása számára kiválasztott lehetős
 <!-- IMG List -->
 
 [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
+[migrate-tool]: https://www.movemetothecloud.net/

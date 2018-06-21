@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 309bd35eabe1d5c4af9a35d5f2b879bce225a402
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 714afa1da5d2c8c5695dfe33edd0257f69af149d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604369"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287704"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>A virtuálisgép-lemezkép elérhetővé Azure verem
 
@@ -207,7 +207,7 @@ Ha már nincs szüksége a virtuális gép lemezképére, feltöltött, törölh
     Például:`1.0.0`  
     A felhasználók használni, amikor azok a Virtuálisgép-lemezkép központi telepítése Virtuálisgép-lemezkép verziója. Ebben a formátumban van  *\#.\#. \#*. Példa: **1.0.0**. Nem tartalmaz szóközt vagy speciális karaktereket ebben a mezőben.  
     
-    TheRemove-AzsPlatformImage parancsmaggal kapcsolatban további információért tekintse meg a Microsoft PowerShell [Azure verem operátor modul dokumentáció](https://docs.microsoft.com/powershell/module/).
+    A Remove-AzsPlatformImage parancsmaggal kapcsolatban további információért tekintse meg a Microsoft PowerShell [Azure verem operátor modul dokumentáció](https://docs.microsoft.com/powershell/module/).
 
 ## <a name="next-steps"></a>További lépések
 

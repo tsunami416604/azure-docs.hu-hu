@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 618ed0f72886fff1c2de11e2fd856f6cc065a7b3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657587"
 ---
 # <a name="network-security"></a>Hálózati biztonság
 
@@ -138,7 +139,7 @@ Az alapértelmezett szabályok nem távolíthatók el, azonban magasabb priorit�
 
 Az alkalmazásbiztonsági csoportokkal az alkalmazás struktúrájának természetes bővítményeként konfigurálhatja a hálózati biztonságot, így csoportosíthatja a virtuális gépeket, és ezen csoportok alapján meghatározhatja a hálózati biztonsági szabályokat. Ezzel a szolgáltatással újra felhasználhatja a biztonsági szabályokat nagy léptékben is a konkrét IP-címek manuális karbantartása nélkül. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
 
-Az alkalmazásbiztonsági csoportokat megadhatja forrásként és célként is a biztonsági szabályokban. A biztonsági szabály meghatározása után létrehozhat virtuális gépeket, és hozzárendelheti az adott virtuális gépekben lévő hálózati adaptereket egy alkalmazásbiztonsági csoporthoz. A szabály a virtuális gépben lévő egyes hálózati adapterek alkalmazásbiztonsági csoporttagsága alapján lesz alkalmazva. Az alábbi példa bemutatja, hogyan használhat egy alkalmazásbiztonsági csoportot az előfizetésében lévő összes webkiszolgálóhoz:
+A biztonsági szabályokban forrásként és célként egy biztonsági csoportot adhat meg. Nem adhat meg több alkalmazásbiztonsági csoportot a forrásban és a célban. A biztonsági szabály meghatározása után létrehozhat virtuális gépeket, és hozzárendelheti az adott virtuális gépekben lévő hálózati adaptereket egy alkalmazásbiztonsági csoporthoz. A szabály a virtuális gépben lévő egyes hálózati adapterek alkalmazásbiztonsági csoporttagsága alapján lesz alkalmazva. Az alábbi példa bemutatja, hogyan használhat egy alkalmazásbiztonsági csoportot az előfizetésében lévő összes webkiszolgálóhoz:
 
 1. Hozzon létre egy *WebServers* nevű alkalmazásbiztonsági csoportot.
 2. Hozzon létre egy *MyNSG* nevű hálózati biztonsági csoportot.
@@ -152,7 +153,7 @@ Az alkalmazásbiztonsági csoportok létrehozására és a biztonsági szabályo
 Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek:
 
 -   Egy alkalmazásbiztonsági csoporthoz rendelt összes hálózati adapternek ugyanazon a virtuális hálózaton kell lennie, amelyben az alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter is található. Például ha az *ASG1* nevű alkalmazásbiztonsági csoporthoz rendelt első hálózati adapter a *VNet1* virtuális hálózaton található, úgy az *ASG1* csoporthoz rendelt összes következő hálózati adapternek is a *VNet1* hálózaton kell lennie. Nem adhat különböző virtuális hálózatokról származó hálózati adaptereket ugyanahhoz az alkalmazásbiztonsági csoporthoz.
-- Ha biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az ABCS1 a VNet1 hálózatról tartalmaz hálózati adaptereket, az ABCS2 pedig a VNet2 hálózatról, nem rendelheti hozzá az ABCS1 csoportot forrásként és az ABCS2 csoportot célként egy szabályban. Minden hálózati adapternek a VNet1 hálózaton kell lennie.
+- Ha egy biztonsági szabály forrásaként és céljaként határoz meg alkalmazásbiztonsági csoportokat, mindkét alkalmazásbiztonsági csoport hálózati adaptereinek ugyanazon a virtuális hálózaton kell lenniük. Ha például az ASG1 a VNet1 hálózatról tartalmaz hálózati adaptereket, az ASG2 pedig a VNet2 hálózatról, nem rendelheti hozzá az ASG1 csoportot forrásként és az ASG2 csoportot célként egy szabályban. Minden hálózati adapternek a VNet1 hálózaton kell lennie.
 
 ## <a name="azure-platform-considerations"></a>Tudnivalók az Azure platformhoz
 

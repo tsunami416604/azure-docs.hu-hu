@@ -1,10 +1,10 @@
 ---
 title: Rövid útmutató – Azure CDN-profil és -végpont létrehozása | Microsoft Docs
-description: Ez a gyors útmutató egy új CDN-profil és -végpont létrehozásán keresztül ismerteti az Azure CDN aktiválását.
+description: Ez a rövid útmutató egy új CDN-profil és -végpont létrehozásán keresztül ismerteti az Azure CDN aktiválását.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 4ca51224-5423-419b-98cf-89860ef516d2
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/13/2018
-ms.author: mazha
+ms.date: 05/24/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cf0a0b10d8df3b119f5abbd8060f8821d54172bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198707"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607871"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
 Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán keresztül engedélyezi az Azure Content Delivery Network (CDN) aktiválását. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek felé.
@@ -28,7 +28,7 @@ Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán ker
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ehhez a gyors útmutatóhoz rendelkeznie kell egy már létrehozott *mystorageacct123* nevű tárfiókkal, amelyet a forrásgazdanévként használ. További információért lásd az [Azure Storage-fiók integrálása az Azure CDN-nel](cdn-create-a-storage-account-with-cdn.md) című cikket.
+Ehhez a gyors útmutatóhoz rendelkeznie kell egy már létrehozott *mystorageacct123* nevű tárfiókkal, amelyet a forrásgazdanévként használ. További információért lásd az [Azure Storage-fiók és az Azure CDN integrálásával](cdn-create-a-storage-account-with-cdn.md) foglalkozó cikket.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
@@ -47,23 +47,23 @@ A CDN-profil létrehozását követően használhatja azt egy végpont létrehoz
    
     ![CDN-profil](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
-    Megjelenik a **Végpont hozzáadása** oldal.
+    Megjelenik a **Végpont hozzáadása** panel.
 
-    Ezután használja a képet követő táblázatban megadott beállításokat.
-   
-    ![Végpont hozzáadása panel](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+3. A végpont beállításaihoz a következő táblázatban megadott értékeket használja:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | **Name (Név)** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másikat. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_.azureedge.net tartományban.|
+    | **Név** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_.azureedge.net tartományban.|
     | **Forrás típusa** | Válassza a **Storage** lehetőséget. | 
-    | **Forrás gazdaneve** | Adja meg a *mystorageacct123.blob.core.windows.net* nevet gazdanévként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másikat. |
+    | **Forrás gazdaneve** | Adja meg a *mystorageacct123.blob.core.windows.net* nevet gazdanévként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. |
     | **Forrás elérési útvonala** | Hagyja üresen. |
     | **Forrás állomásfejléce** | Hagyja meg az alapértelmezetten létrehozott értéket. |  
-    | **Protocol (Protokoll)** | Hagyja bejelölve az alapértelmezett **HTTP-** és **HTTPS-** beállításokat. |
+    | **Protokoll** | Hagyja bejelölve az alapértelmezett **HTTP-** és **HTTPS-** beállításokat. |
     | **Forrásport** | Hagyja meg az alapértelmezett portértéket. | 
     | **Optimalizálva a következőre:** | Hagyja meg az alapértelmezett kijelölést, az **Általános webes kézbesítést**. |
-    
+
+    ![Végpont hozzáadása panel](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
+
 3. Új végpont létrehozásához kattintson a **Hozzáadás** gombra.
    
    A végpont a létrehozás után megjelenik a profil végpontjainak listájában.

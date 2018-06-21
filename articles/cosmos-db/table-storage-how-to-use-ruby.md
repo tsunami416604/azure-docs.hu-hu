@@ -1,73 +1,71 @@
 ---
-title: Azure Table Storage és Azure Cosmos DB tábla API használata Ruby |} Microsoft Docs
-description: Az Azure Table Storage, amely egy NoSQL-adattár, a strukturált adatok felhőben való tárolásához használható.
+title: Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel | Microsoft Docs
+description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 services: cosmos-db
-documentationcenter: ruby
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: ruby
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19ffdab40b3032421612ef4ba1b840eeb0d2e62b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798270"
 ---
-# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-ruby"></a>Ruby Azure Table Storage és Azure Cosmos DB tábla API használata
+# <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A minták írt Ruby és használni a [Azure Storage tábla ügyféloldali kódtára a Rubyhoz](https://github.com/azure/azure-storage-ruby/tree/master/table). Az ismertetett forgatókönyvek **létrehozása és egy tábla törlésével és a tábla az entitások lekérdezése**.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Table szolgáltatás és az Azure Cosmos DB Table API használatával. A kódminták Ruby nyelven íródtak, és az [Azure Storage Table Ruby programnyelvhez készült ügyféloldali kódtárát](https://github.com/azure/azure-storage-ruby/tree/master/table) használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével, valamint a táblaentitások beszúrásával és lekérdezésével** foglalkoznak.
 
-## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
+## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB tábla API-fiók létrehozása
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
-## <a name="add-access-to-storage-or-azure-cosmos-db"></a>Tároló vagy Azure Cosmos DB hozzáférés hozzáadása
-Azure Storage- vagy Azure Cosmos DB használni, töltse le, és a Ruby Azure-csomag, amely tartalmaz, a felhasználók kényelme érdekében szalagtár szerepel, amely a táblázat többi szolgáltatásokkal kommunikálni.
+## <a name="add-access-to-storage-or-azure-cosmos-db"></a>Hozzáférés hozzáadása egy Storage- vagy Azure Cosmos DB-fiókhoz
+Az Azure Storage vagy az Azure Cosmos DB használatához töltse le és használja a Ruby Azure-csomagot, amelyben a Table REST-szolgáltatásokkal kommunikáló egyszerűsített kódtárak találhatók.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems használja a csomag beszerzése
-1. Használjon például egy parancssori felületet **PowerShell** (Windows), **Terminálszolgáltatások** (Mac), vagy **Bash** (Unix).
-2. Típus **gem telepítése azure-storage-tábla** a gem és függőségeinek telepítésére a parancsablakban.
+### <a name="use-rubygems-to-obtain-the-package"></a>A csomag beszerzése a RubyGems használatával
+1. Használjon egy parancssori felületet, mint például a **PowerShell** (Windows), a **Terminal** (Mac), vagy a **Bash** (Unix).
+2. Gépelje be a parancssorba a **gem install azure-storage-table** parancsot a Gem és a függőségek telepítéséhez.
 
 ### <a name="import-the-package"></a>A csomag importálása
-Kedvenc szövegszerkesztőjével használja, a Ruby, ahol tárolására használni kívánt fájl elejéhez adja hozzá a következőket:
+Egy szabadon választott szövegszerkesztővel adja hozzá a következőket a Ruby fájl elejéhez, azon a helyen, ahol a Storage-et használni kívánja:
 
 ```ruby
 require "azure/storage/table"
 ```
 
-## <a name="add-an-azure-storage-connection"></a>Az Azure Storage-kapcsolat hozzáadása
-Az Azure Storage modul olvassa be a környezeti változók **AZURE_STORAGE_ACCOUNT** és **AZURE_STORAGE_ACCESS_KEY** az Azure Storage-fiók eléréséhez szükséges információkat. Ha ezek a környezeti változók nem, meg kell adnia a fiók használata előtt **Azure::Storage::Table::TableService** az alábbi kódra:
+## <a name="add-an-azure-storage-connection"></a>Azure Storage-kapcsolat hozzáadása
+Az Azure Storage-modul az **AZURE_STORAGE_ACCOUNT** és **AZURE_STORAGE_ACCESS_KEY** környezeti változókat olvassa az Azure Storage-fiókhoz való csatlakozáshoz szükséges információkért. Ha ezek a környezeti változók nincsenek beállítva, meg kell adnia a fiókadatokat a **Azure::Storage::Table::TableService** használatát megelőzően a következő kóddal:
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
 Azure.config.storage_access_key = "<your Azure Storage access key>"
 ```
 
-Ezek az értékek beolvasása klasszikus vagy erőforrás-kezelő storage-fiókot az Azure-portálon:
+Ezeket az értékeket a következőképp kérheti le egy klasszikus vagy Resource Manager-tárfiókból az Azure Portalon:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Nyissa meg a használni kívánt tárfiókot.
-3. Kattintson a beállítások panelen kattintson a jobb **hívóbetűk**.
-4. A elérési kulcsok paneljén megjelenő láthatja, a hozzáférési kulcs 1 és 2 elérési kulcsot. Ezek bármelyikét használhatja.
-5. A Másolás ikonra a kulcs másolása a vágólapra.
+2. Lépjen a használni kívánt tárfiókra.
+3. A jobb oldali Beállítások panelen kattintson az **Hozzáférési kulcsok** lehetőségre.
+4. A megjelenő Hozzáférési kulcsok panelen láthatja az 1. és a 2. hozzáférési kulcsot. Ezek bármelyikét használhatja.
+5. Kattintson a másolás gombra, hogy a kulcsot a vágólapra másolja.
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Egy Azure Cosmos adatbázis-kapcsolat hozzáadása
-A Azure Cosmos DB, másolja az elsődleges kapcsolati karakterláncot az Azure-portálon, és hozzon létre egy **ügyfél** objektumba a másolt kapcsolati karakterláncot. Átadhatók a **ügyfél** objektum létrehozásakor egy **TableService** objektum:
+## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
+Az Azure Cosmos DB-hez való csatlakozáshoz másolja a kapcsolati sztringet az Azure Portalról, és hozzon létre egy **Client** objektumot a másolt kapcsolati sztringgel: A **Client** objektumot továbbadhatja, amikor létrehozza a **TableService** objektumot:
 
 ```ruby
 common_client = Azure::Storage::Common::Client.create(storage_account_name:'myaccount', storage_access_key:'mykey', storage_table_host:'mycosmosdb_endpoint')
@@ -75,7 +73,7 @@ table_client = Azure::Storage::Table::TableService.new(client: common_client)
 ```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-A **Azure::Storage::Table::TableService** objektum lehetővé teszi, hogy a táblákat és entitásokat. A tábla létrehozásához használja a **create_table()** metódust. Az alábbi példa létrehoz egy táblát, vagy kiírja a hiba, ha van ilyen.
+Az **Azure::Storage::Table::TableService** objektum lehetővé teszi a táblákkal és entitásokkal való műveletvégzést. Egy tábla létrehozásához használja a **create_table()** metódust. Az alábbi példa létrehoz egy táblát vagy kinyomtatja a hibát, ha van.
 
 ```ruby
 azure_table_service = Azure::Storage::Table::TableService.new
@@ -87,7 +85,7 @@ end
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Egy entitás hozzáadásához először létre kell hoznia egy ujjlenyomat-objektumot, amely meghatározza az entitás tulajdonságait. Vegye figyelembe, hogy minden entitás meg kell adnia egy **PartitionKey** és **RowKey**. Ezek az entitások egyedi azonosítói, és sokkal gyorsabb, mint a többi tulajdonság lekérdezett érték. Használja az Azure Storage **PartitionKey** automatikusan terjesztené a táblaentitásokat számos tárolási csomópont feladatait. Entitások azonos **PartitionKey** ugyanazon a csomóponton találhatók. A **RowKey** tartozik, a partíción belül entitás egyedi azonosítója.
+Entitás hozzáadásához először hozzon létre egy kivonatobjektumot, amely meghatározza az entitástulajdonságokat. Vegye figyelembe, hogy minden entitáshoz meg kell adnia egy **PartitionKey** és egy **RowKey** tulajdonságot. Ezek az entitások egyedi azonosítói, és az értékeik sokkal gyorsabban lekérdezhetők, mint a többi tulajdonság. Az Azure Storage a **PartitionKey** tulajdonságot használja a táblaentitások automatikus elosztására számos tárolási csomópont között. Az ugyanazzal a **PartitionKey** tulajdonsággal rendelkező entitások tárolása ugyanazon a csomóponton történik. A **RowKey** tulajdonság az entitás egyedi azonosítója azon a partíción belül, amelyikbe az entitás tartozik.
 
 ```ruby
 entity = { "content" => "test entity",
@@ -95,15 +93,15 @@ entity = { "content" => "test entity",
 azure_table_service.insert_entity("testtable", entity)
 ```
 
-## <a name="update-an-entity"></a>Egy entitás frissítése
-Több módszer érhető el frissíteni a meglévő entitás áll rendelkezésre:
+## <a name="update-an-entity"></a>Entitás frissítése
+Több metódus is rendelkezésre áll a meglévő entitások frissítéséhez:
 
-* **update_entity():** cserélje ki egy meglévő entitás frissítése.
-* **merge_entity():** meglévő entitás frissíti a meglévő entitás új tulajdonságértékek egyesíti.
-* **insert_or_merge_entity():** cserélje ki egy meglévő entitás frissíti. Ha nem entitás létezik, egy új szúrja be:
-* **insert_or_replace_entity():** meglévő entitás frissíti a meglévő entitás új tulajdonságértékek egyesíti. Ha nem entitás létezik, a program beszúrja egy újat.
+* **update_entity():** Egy meglévő entitást frissít azáltal, hogy másikra cseréli.
+* **merge_entity():** – Egy meglévő entitást frissít azáltal, hogy új tulajdonságértékeket kapcsol hozzá.
+* **insert_or_merge_entity():** Egy meglévő entitást frissít azáltal, hogy másikra cseréli. Ha még nincsen entitás, beszúr egy újat:
+* **insert_or_replace_entity():** Egy meglévő entitást frissít azáltal, hogy új tulajdonságértékeket kapcsol hozzá. Ha még nincsen entitás, beszúr egy újat.
 
-A következő példa bemutatja, hogy egy entitás használatával frissítése **update_entity()**:
+Az alábbi példa azt mutatja be, hogyan frissítheti az entitásokat az **update_entity()** használatával:
 
 ```ruby
 entity = { "content" => "test entity with updated content",
@@ -111,10 +109,10 @@ entity = { "content" => "test entity with updated content",
 azure_table_service.update_entity("testtable", entity)
 ```
 
-A **update_entity()** és **merge_entity()**, ha a frissítendő entitás nem létezik, akkor a frissítési művelet sikertelen lesz. Ezért, ha egy entitás, függetlenül attól, hogy létezik-e tárolni szeretné, Ehelyett használjon **insert_or_replace_entity()** vagy **insert_or_merge_entity()**.
+Ha az **update_entity()** és a **merge_entity()** használatakor a frissítendő entitás nem létezik, akkor a frissítési művelet sikertelen lesz. Ezért, ha tárolni szeretne egy entitást függetlenül attól, hogy már létezik-e, használja az **insert_or_replace_entity()** vagy **insert_or_merge_entity()** metódusokat.
 
-## <a name="work-with-groups-of-entities"></a>Az entitások csoportok használata
-Egyes esetekben érdemes elküldeni a több műveletei együtt egy kötegelt atomi feldolgozása a kiszolgáló biztosításához. Hajthatja végre, hogy, először létre kell hoznia egy **kötegelt** objektumot, majd a **execute_batch()** metódusa **TableService**. A következő példa bemutatja, hogy két olyan entitásra RowKey 2 és 3 kötegben elküldése. Figyelje meg, hogy csak az azonos PartitionKey rendelkező entitások működik.
+## <a name="work-with-groups-of-entities"></a>Entitáscsoportok használata
+Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez először hozzon létre egy **Batch**-objektumot, majd használja az **execute_batch()** metódust a **TableService**-en. Az alábbi példa két entitás egy kötegben való elküldését mutatja be (az entitások RowKey tulajdonságának értéke 2 és 3). Vegye figyelembe, hogy ez csak az azonos PartitionKey tulajdonsággal rendelkező entitások esetén működik.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -126,16 +124,16 @@ end
 results = azure_table_service.execute_batch(batch)
 ```
 
-## <a name="query-for-an-entity"></a>Egy entitás lekérdezése
-Egy tábla egy entitás lekérdezéséhez használja a **get_entity()** metódus úgy, hogy a táblázat neve **PartitionKey** és **RowKey**.
+## <a name="query-for-an-entity"></a>Entitás lekérdezése
+Egy táblában szereplő entitás lekérdezéséhez használja a **get_entity** metódust a tábla nevének, valamint a **PartitionKey** és **RowKey** tulajdonságok átadásával.
 
 ```ruby
 result = azure_table_service.get_entity("testtable", "test-partition-key",
     "1")
 ```
 
-## <a name="query-a-set-of-entities"></a>Az entitások készletének lekérdezése
-Az egy tábla entitások készletének lekérdezéséhez létrehozni lekérdezés kivonat objektumot, és használja a **query_entities()** metódust. A következő példa bemutatja, hogy ugyanarra a entitások első **PartitionKey**:
+## <a name="query-a-set-of-entities"></a>Több entitás lekérdezése
+Egy táblában szereplő több entitás lekérdezéséhez hozzon létre egy lekérdezési kivonatobjektumot, majd használja a **query_entities()** metódust. A következő példa bemutatja, hogyan kérhető le az összes olyan entitás, amelynek ugyanaz a **PartitionKey** tulajdonsága:
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'" }
@@ -143,12 +141,12 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 > [!NOTE]
-> Az eredménykészlet nem egy egyetlen lekérdezés vissza, ha a folytatási kód ad vissza, használhatja a következő lapjain beolvasása.
+> Ha az eredménykészlet túl nagy ahhoz, hogy egyetlen lekérdezés vissza tudja adni, a további oldalak lekéréséhez a lekérdezés egy folytatási tokent ad vissza.
 >
 >
 
 ## <a name="query-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérdezése
-A lekérdezés egy táblához pár tulajdonságok kérhetnek le egy entitás. Ez a módszer, "leképezés," nevű csökkenti a sávszélesség, és javíthatja a lekérdezési teljesítményt, különösen olyan nagyméretű entitásokat. A select záradékban használható, és adja át a tulajdonságok az ügyfél kerüljön szeretné a nevét.
+Egy táblalekérdezéssel egy entitásnak csak bizonyos tulajdonságait is lekérdezheti. Ez a „leképezésnek” hívott technika csökkenti a sávszélesség felhasználását, és javítja a lekérdezési teljesítményt, főleg a nagy entitások esetében. Használja a select záradékot, és adja át azon tulajdonságok nevét, amelyeket továbbítani kíván az ügyfélnek.
 
 ```ruby
 query = { :filter => "PartitionKey eq 'test-partition-key'",
@@ -157,14 +155,14 @@ result, token = azure_table_service.query_entities("testtable", query)
 ```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
-Egy entitás törléséhez használja a **delete_entity()** metódust. Továbbítsa az entitás, a PartitionKey és az entitás RowKey tartalmazó tábla nevében.
+Egy entitás törléséhez használja a **delete_entity()** metódust. Adja át az entitást tartalmazó tábla nevét, valamint az entitás PartitionKey és RowKey tulajdonságait.
 
 ```ruby
 azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 ```
 
 ## <a name="delete-a-table"></a>Tábla törlése
-Egy tábla törléséhez használja a **delete_table()** metódus és pass a törölni kívánt tábla nevében.
+Egy entitás törléséhez használja a **delete_table()** metódust, majd adja át a törölni kívánt tábla nevét.
 
 ```ruby
 azure_table_service.delete_table("testtable")
@@ -174,5 +172,5 @@ azure_table_service.delete_table("testtable")
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [Ruby fejlesztői központ](https://azure.microsoft.com/develop/ruby/)
-* [A Microsoft Azure Storage tábla ügyféloldali kódtára a Rubyhoz](https://github.com/azure/azure-storage-ruby/tree/master/table) 
+* [A Microsoft Azure Storage Table ügyféloldali kódtára a Rubyhoz](https://github.com/azure/azure-storage-ruby/tree/master/table) 
 

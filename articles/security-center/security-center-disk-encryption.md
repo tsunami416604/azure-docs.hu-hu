@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: bde17a47e0e3e70daf52f4c460118c054b7c1152
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 29d843e2752046e8ab66a4f46fcbb212f6fb57c6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824397"
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure virtuális gép titkosítása
 Az Azure Security Center riasztást küld Önnek, ha azt észleli, hogy egyes virtuális gépek nincsenek titkosítva. Ezek a riasztások magas súlyossági szinttel jelennek meg. A rendszer ilyenkor javasolja, hogy titkosítsa az érintett virtuális gépeket.
@@ -61,7 +62,7 @@ Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram beállítj
 
 Most, hogy mentette a parancsprogram tartalmát, nyissa meg azt a PowerShell ISE-ben:
 
-1. Kattintson a Start menü **Cortana** elemére. Kérje meg **Cortanát** a „PowerShell” megkeresésére: ehhez írja be a **PowerShell** szót Cortana keresőmezőjébe.
+1. A Windows PowerShell ISE elindítása
 2. Kattintson jobb gombbal a **Windows PowerShell ISE** elemre, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
 3. Az **Administrator: Windows PowerShell ISE** ablakban kattintson a **View** (Megtekintés) elemre, majd a **Show Script Pane** (Parancsprogramablak megjelenítése) lehetőségre.
 4. Ha az ablak jobb oldalán megjelenik a **Commands** (Parancsok) panel, kattintson a jobb felső sarokban található **„x”** gombra a bezárásához. Ha a szöveg túl kicsi, ezért nehezen olvasható, használja a **CTRL+Plusz** billentyűkombinációt (a „Plusz” a „+” jel). Ha a szöveg túl nagy, használja a **CTRL+Mínusz** billentyűkombinációt (a „Mínusz” a „-” jel).
@@ -74,8 +75,8 @@ Az alábbi képhez hasonlóan kell megjelennie a programnak.
 
 A felső panel a „parancsprogrampanel”, az alsó a „konzol”. A cikk későbbi részeiben mi is használni fogjuk ezeket az elnevezéseket.
 
-## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Az Azure Disk Encryption előfeltétel-konfigurációs PowerShell-parancs futtatása
-Az Azure Disk Encryption előfeltétel-konfigurációs parancsprogram a következő információkat kéri az elindítását követően:
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-script"></a>Az Azure Disk Encryption előfeltétel-konfigurációs PowerShell-szkript futtatása
+Az Azure Disk Encryption előfeltétel-konfigurációs szkript a következő paramétereket fogadja el: 
 
 * **Resource Group Name** (Erőforráscsoport neve) – Annak az erőforráscsoportnak a neve, amelyben el szeretné helyezni a kulcstárolót.  Ha a megadott néven még nem található erőforráscsoport, a rendszer létrehoz egyet a beírt néven. Ha már van az előfizetésben olyan erőforráscsoport, amelyet erre a célra kíván használni, adja meg ennek az erőforráscsoportnak a nevét.
 * **Key Vault Name** (Kulcstároló neve) – Annak a kulcstárolónak a neve, amelyben el kívánja helyezni a titkosítási kulcsokat. Ha a megadott néven még nem található kulcstároló, a rendszer létrehoz egyet a beírt néven. Ha már létezik a kulcstároló, amelyet erre a célra kíván használni, adja meg ennek a kulcstárolónak a nevét.
@@ -92,18 +93,18 @@ Az Azure virtuális gép titkosításához végezze el az alábbi lépéseket:
 1. Ha korábban bezárta a PowerShell ISE-t, indítsa el a PowerShell ISE-t magas jogosultsági szinten. Ha a PowerShell ISE még nincs megnyitva, kövesse a cikk korábbi szakaszaiban ismertetett utasításokat. Ha korábban bezárta a parancsprogramot, nyissa meg az **ADEPrereqScript.ps1** fájlt. Ehhez kattintson a **Fájl** menüre, majd a **Megnyitás** gombra, és válassza ki a parancsprogramot a **c:\AzureADEScript** könyvtárból. Ha a cikkben eddig szereplő összes utasítást elvégezte, egyszerűen folytassa a következő lépéssel.
 2. A PowerShell ISE konzoljában (azaz az alsó panelen) váltsa át a fókuszt a parancsprogram helyére. Ehhez írja be: **cd c:\AzureADEScript**, majd nyomja le az **ENTER** billentyűt.
 3. Állítsa át a gépén úgy a végrehajtási szabályzatot, hogy le tudja futtatni a parancsprogramot. Írja be a konzolba a **Set-ExecutionPolicy Unrestricted** parancsot, majd nyomja le az ENTER billentyűt. Ha megjelenik a végrehajtási szabályzat módosításának hatásaira figyelmeztető párbeszédpanel, kattintson a **Yes to all** (Igen mindegyikre) vagy a **Yes** (Igen) lehetőségre (Ha megjelenik a **Yes to all** lehetőség, válassza ezt, ha nem jelenik meg a **Yes to all** lehetőség, válassza egyszerűen a **Yes** elemet).
-4. Jelentkezzen be Azure-fiókjába. Írja be a konzolba a **Connect-AzureRmAccount** parancsot, majd nyomja le az **ENTER** billentyűt. Megjelenik egy párbeszédpanel, ahol megadhatja bejelentkezési adatait. (A virtuális gépeket csak akkor tudja titkosítani, ha rendelkezik a módosításukhoz szükséges jogokkal. Ha nem biztos a dolgában, forduljon az előfizetés tulajdonosához vagy a rendszergazdához). Megjelennek a következő információk: **Environment**, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**. Másolja a Jegyzettömbbe a **SubscriptionId** tartalmát. Erre a 6. lépésnél lesz szükség.
+4. Jelentkezzen be Azure-fiókjába. Írja be a konzolba a **Login-AzureRmAccount** parancsot, majd nyomja le az **ENTER** billentyűt. Megjelenik egy párbeszédpanel, ahol megadhatja bejelentkezési adatait. (A virtuális gépeket csak akkor tudja titkosítani, ha rendelkezik a módosításukhoz szükséges jogokkal. Ha nem biztos a dolgában, forduljon az előfizetés tulajdonosához vagy a rendszergazdához). Megjelennek a következő információk: **Environment**, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**. Másolja a Jegyzettömbbe a **SubscriptionId** tartalmát. Erre a 6. lépésnél lesz szükség.
 5. Tudja meg, hogy milyen előfizetéshez tartozik a virtuális gép, illetve tudja meg a virtuális gép helyét. Lépjen a [https://portal.azure.com](ttps://portal.azure.com) webhelyre, és jelentkezzen be.  Kattintson a lap bal oldalán található **Virtuális gépek** elemre. A listában megtekintheti a virtuális gépeit, és hogy milyen előfizetéshez tartoznak.
 
    ![Virtuális gépek](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Térjen vissza a PowerShell ISE-hez. Állítsa be az előfizetési kontextust, amelyben a parancsprogram futni fog. Írja be a konzolba a **Select-AzureRmSubscription –SubscriptionId <Ön_előfizetés-azonosítója>** parancsot (az **<Ön_előfizetés-azonosítója >** helyére írja be tényleges előfizetés-azonosítóját), majd nyomja le az **ENTER** billentyűt. Megjelennek a következő információk: Environment, **Account**, **TenantId**, **SubscriptionId** és **CurrentStorageAccount**.
-7. Most készen áll a parancsprogram futtatására. Kattintson a **Run Script** (Parancsprogram futtatása) gombra, vagy nyomja le a billentyűzet **F5** billentyűjét.
+7. A parancsablakban hajtsa végre a szkriptparancsot, amely a következőket adja át paraméterekként: 
 
    ![A PowerShell-parancsprogram futtatása](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. A parancsprogram kéri a **resourceGroupName:** megadását. Adja meg a használni kívánt *erőforráscsoport* nevét, majd nyomja le az **ENTER** billentyűt. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik az *erőforráscsoport*, amelyet használni kíván (például az, amelyhez a virtuális gép is tartozik), adja meg ennek a meglévő erőforráscsoportnak a nevét.
-9. A parancsprogram kéri a **keyVaultName:** megadását. Adja meg a használni kívánt *kulcstároló* nevét, majd nyomja meg az ENTER billentyűt. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik a kulcstároló, amelyet erre a célra kíván használni, adja meg ennek a *kulcstárolónak* a nevét.
+8. **-resourceGroupName:** – Adja meg a használni kívánt *erőforráscsoport* nevét. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik az *erőforráscsoport*, amelyet használni kíván (például az, amelyhez a virtuális gép is tartozik), adja meg ennek a meglévő erőforráscsoportnak a nevét.
+9. **-keyVaultName:** – Adja meg a használni kívánt *Key Vault* nevét. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik a kulcstároló, amelyet erre a célra kíván használni, adja meg ennek a *kulcstárolónak* a nevét.
 10. A parancsprogram kéri a **location:** megadását. Adja meg annak a helynek a nevét, ahol a titkosítani kívánt virtuális gép található, majd nyomja le az **ENTER** billentyűt. Ha nem emlékszik a helyre, végezze el ismét az 5. lépést.
-11. A parancsprogram kéri az **aadAppName:** megadását. Adja meg a használni kívánt *Azure Active Directory*-alkalmazás nevét, majd nyomja le az **ENTER** billentyűt. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik az *Azure Active Directory-alkalmazás*, amelyet erre a célra kíván használni, adja meg a meglévő *Azure Active Directory-alkalmazásnak* a nevét.
+11. **-aadAppName:** – Adja meg a használni kívánt *Azure Active Directory*-alkalmazás nevét. Ha még nem rendelkezik ilyennel, írja be az újonnan létrehozandó elem nevét. Ha már létezik az *Azure Active Directory-alkalmazás*, amelyet erre a célra kíván használni, adja meg a meglévő *Azure Active Directory-alkalmazásnak* a nevét.
 12. Megjelenik egy párbeszédpanel. Adja meg a bejelentkezési adatait (igen, egyszer már bejelentkezett, de erre most ismét szükség van).
 13. Lefut a parancsprogram. Ha a futtatás befejeződött, a parancsprogram felszólítja az **aadClientID**, az **aadClientSecret**, a **diskEncryptionKeyVaultUrl** és a **keyVaultResourceId** értékeinek másolására. Másolja a vágólapra, majd illessze be a Jegyzettömbbe ezeket az értékeket.
 14. Térjen vissza a PowerShell ISE-be, vigye a kurzort az utolsó sor végére, majd nyomja le az **ENTER** billentyűt.

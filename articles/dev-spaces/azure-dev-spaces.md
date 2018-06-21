@@ -5,30 +5,35 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 06/01/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 344947b7906d15e819e372e0affe4af3c34ba69b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 93440b8a1c9fd1b386931e5998c70133071a079e
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198758"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823044"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
-Az Azure Dev Spaces segíti felgyorsítani a Kubernetesen végzett fejlesztést. Az Azure Dev Spaces használatával teljes fejlesztési képességeket, például hibakeresést is hozzáad az Azure Kubernetes tárolókhoz, és iteratívan fejleszthet tárolókat a felhőben a már ismerős eszközök, például a VS Code, a Visual Studio vagy a parancssor használatával. Az Azure Dev Spaces különösen hasznos a csapatban való fejlesztéshez, ahol az egyéni kódágak elkülönítése a saját terükön kritikus részét képezi a fejlesztés életciklusának.
+Az Azure Dev Spaces gyors, iteratív Kubernetes-fejlesztési élményt biztosít a csapatok számára. A fejlesztői gép minimális szintű beállítása mellett iteratív módon futtathat tárolókat és végezhet azokon hibakeresést közvetlenül az Azure Kubernetes Service-ben (AKS). Fejleszthet Windows, Mac vagy Linux rendszereken is, olyan közismert eszközökkel, mint a Visual Studio, a Visual Studio Code vagy a parancssor.
+
+[!INCLUDE[](includes/dev-spaces-preview.md)]
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Hogyan egyszerűsíti le az Azure Dev Spaces a Kubernetes fejlesztést 
 
-Ez a megközelítés számos előnnyel jár:
-
-* Az éles környezeteknek megfelelő, infrastruktúrát nem tartalmazó fejlesztési környezet, amely teljes hozzáférést biztosít a felhőalapú erőforrásokhoz.
-* A Node.js és a .NET Core tárolók közvetlen hibaelhárítása a Kubernetesben a VS Code vagy a Visual Studio használatával. Minden más nyelv fejleszthető a parancssori felületen.
-* Kubernetes-példány megosztása a fejlesztői csapatban a költségek csökkentése és az új csapattagok helyi gépi beállításainak minimalizálása érdekében.
-* A kód elkülönített fejlesztése, illetve végpontok közötti tesztelés más összetevőkkel a függőségek replikálása vagy utánzása nélkül.
+Az Azure Dev Spaces a következő módokon segíti hatékonyabbá tenni a fejlesztőcsoportok Kubernetesen végzett munkáját:
+- Minimalizálja az egyes csapattagok által a helyi fejlesztői gépen elvégzendő beállítások mértékét, és lehetővé teszi a munkavégzést közvetlenül az AKS-ben, amely egy felügyelt Kubernetes-fürt az Azure-ban.
+- Gyorsan elvégzi a kódok iterációját és hibakeresését közvetlenül a Kubernetesen a Visual Studio 2017 vagy a Visual Studio Code használatával.
+- A Dockerhez és a Kuberneteshez kóddal való konfigurálási objektumokat hoz létre, amelyek a fejlesztéstől egészen az éles környezetig használhatók. 
+- Megoszt egy felügyelt Kubernetes-fürtöt a csapat tagjai között a közös munka értekében. A kód elkülönített fejlesztése, illetve végpontok közötti tesztelés más összetevőkkel a függőségek replikálása vagy utánzása nélkül.
 
 [!INCLUDE[](includes/get-started.md)]
 
 ![](media/azure-dev-spaces/vscode-overview.png)
+
+## <a name="see-also"></a>Lásd még:
+
+[Azure Kubernetes Service](/azure/aks)

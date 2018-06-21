@@ -12,13 +12,14 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2018
+ms.date: 05/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 8baafd69e45210b74db8b0bf41b765067b1251a8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626290"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Storm használata a Kafka on HDInsighttal
 
@@ -59,7 +60,7 @@ Az alábbi környezeti változók állíthatók be a Java és a JDK fejlesztői 
     * A Maven telepítési könyvtára.
 
 > [!IMPORTANT]
-> A dokumentum lépéseihez egy olyan Azure-erőforráscsoport szükséges, amely Storm on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
+> A dokumentum lépéseihez egy olyan Azure-erőforráscsoport szükséges, amely Storm on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Storm-fürt közvetlenül kommunikálhat a Kafka-fürttel.
 > 
 > A kényelmes használat érdekében ez a dokumentum tartalmaz egy hivatkozást egy olyan sablonra, amellyel az összes szükséges Azure-erőforrás létrehozható. 
 >
@@ -79,7 +80,8 @@ Az Apache Storm több összetevőt is biztosít a Kafka használatához. Ebben a
 
     * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: Leírja a témakört, amelybe a rendszer ír.
 
-    * `org.apache.kafka.common.serialization.StringSerializer`: Arra konfigurálja a boltot, hogy az adatokat karakterláncértékekként szerializálja.
+    * 
+  `org.apache.kafka.common.serialization.StringSerializer`: Arra konfigurálja a boltot, hogy sztringértékekként szerializálja az adatokat.
 
     * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Leképezi a Storm-topológiában használt rekord-adatstruktúrát a Kafkában tárolt mezőkre.
 
@@ -153,7 +155,7 @@ A Flux-topológiákkal kapcsolatos további információkért lásd: [https://st
 
 ### <a name="kafka-writer"></a>Kafka-író
 
-A Kafka-író topológiában a Kafka bolt összetevő két karakterláncértéket vesz fel paraméterként. Ezek a paraméterek jelzik, hogy a rekordok melyik mezőit küldi a bolt a Kafkába __kulcs__ és __üzenet__ értékként. A kulcs az adatok particionálására használatos a Kafkában. Az üzenet maga az eltárolt adat.
+A Kafka-író topológiában a Kafka bolt összetevő két sztringértéket vesz fel paraméterként. Ezek a paraméterek jelzik, hogy a rekordok melyik mezőit küldi a bolt a Kafkába __kulcs__ és __üzenet__ értékként. A kulcs az adatok particionálására használatos a Kafkában. Az üzenet maga az eltárolt adat.
 
 Példánkban a `com.microsoft.example.SentenceSpout` összetevő egy két mezőt, a `key` és a `message` mezőket tartalmazó rekordot bocsát ki. A Kafka bolt kibontja ezeket a mezőket, és elküldi a bennük foglalt adatokat a Kafkába.
 
@@ -242,7 +244,7 @@ streams:
 
 ### <a name="kafka-reader"></a>Kafka-olvasó
 
-A Kafka-olvasó topológiában a spout összetevő az adatokat karakterláncértékekként olvassa be a Kafkából. Az adatokat ezután a naplózási összetevő a Storm-naplóba, a HDFS-bolt összetevő pedig a Storm-fürt HDFS-kompatibilis fájlrendszerébe írja.
+A Kafka-olvasó topológiában a spout összetevő sztringértékekként olvassa be a Kafkából az adatokat. Az adatokat ezután a naplózási összetevő a Storm-naplóba, a HDFS-bolt összetevő pedig a Storm-fürt HDFS-kompatibilis fájlrendszerébe írja.
 
 ```yaml
 # kafka-reader

@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824686"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -31,6 +32,7 @@ Ez a szolgáltatás a következő Azure-szolgáltatásokhoz és -régiókhoz ér
 - **Azure SQL Database**: Az összes Azure-régióban általánosan elérhető
 - **Azure Cosmos DB**: Az összes nyilvános Azure-felhőrégióban általánosan elérhető 
 - **Azure SQL Data Warehouse**: Előzetes verzióban az összes nyilvános Azure-felhőrégióban elérhető
+- **Azure adatbázis-szolgáltatások a PostgreSQL-hez és a MySQL-hez**: Előzetes verzióban, azokban az Azure-régiókban, ahol az adatbázis-szolgáltatás elérhető.
 
 A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálózatok frissítéseinek](https://azure.microsoft.com/updates/?product=virtual-network) oldalát.
 
@@ -98,7 +100,7 @@ Ha konfigurálta a szolgáltatásvégpontokat egy adott szolgáltatáshoz, a kö
   - Azt jelzi, hogy a szolgáltatáshoz egy közvetlenebb kapcsolat vezet, szemben bármilyen kényszerített bújtatású útvonallal.
 
 >[!NOTE]
-> Azure-szolgáltatás használata esetén a szolgáltatásvégpont útvonalai felülbírálják a megfelelő címelőtag BGP- vagy UDR-útvonalait. További tudnivalók az [érvényes útvonalak hibaelhárításáról.](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow)
+> Azure-szolgáltatás használata esetén a szolgáltatásvégpont útvonalai felülbírálják a megfelelő címelőtag BGP- vagy UDR-útvonalait. További tudnivalók az [érvényes útvonalak hibaelhárításáról.](diagnose-network-routing-problem.md)
 
 ## <a name="provisioning"></a>Kiépítés
 

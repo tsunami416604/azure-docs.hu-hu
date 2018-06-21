@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/27/2018
+ms.date: 06/01/2018
 ms.author: babanisa
-ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303977"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725241"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Az Azure Event Grid bemutatása
 
@@ -71,8 +71,6 @@ Jelenleg az alábbi Azure-szolgáltatások támogatják az Event Gridből szárm
 * Queue Storage
 * Webhookok
 
-Ha az Azure Functionst használja kezelőként, használja az Event Grid-triggereket az általános HTTP-triggerek helyett. Az Event Grid automatikusan érvényesíti az Event Grid függvény eseményindítóit. Általános HTTP-eseményindítók esetén meg kell valósítani az [érvényesítési választ](security-authentication.md#webhook-event-delivery).
-
 Az egyes eseménykezelők használatát bemutató cikkekre mutató hivatkozásokat itt találja: [Eseménykezelők az Azure Event Gridben](event-handlers.md).
 
 ## <a name="concepts"></a>Alapelvek
@@ -80,7 +78,7 @@ Az egyes eseménykezelők használatát bemutató cikkekre mutató hivatkozások
 Az Azure Event Grid öt fontos alapfogalma:
 
 * **Események** – Mi történt.
-* **Eseményforrások / közzétevők** – Ahol az esemény történt.
+* **Eseményforrások** – Ahol az esemény történt.
 * **Témakörök** – A végpont, amelyre a közzétevők az eseményeket küldik.
 * **Esemény-előfizetések** – Végpont vagy beépített mechanizmus az események – néha több kezelőre történő – átirányításához. Az előfizetéseket a kezelők is használják a bejövő események intelligens szűrésére.
 * **Eseménykezelők** – Az eseményre reagáló alkalmazás vagy szolgáltatás.
@@ -126,7 +124,7 @@ Az Event Grid más szolgáltatásokkal kapcsolja össze alkalmazását. Létreho
 
 ## <a name="how-much-does-event-grid-cost"></a>Mennyibe kerül az Event Grid?
 
-Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fizetés a használat alapján történik. A havi első 100 000 művelet ingyenes. A műveletek a következőképpen vannak meghatározva: események bejövő forgalma, összetett párosítás, kézbesítési kísérlet, kezelési hívások. A részleteket lásd az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/event-grid/).
+Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fizetés a használat alapján történik. A havi első 100 000 művelet ingyenes. A műveletek a következőképpen vannak meghatározva: események bejövő forgalma, előfizetési kézbesítési kísérletek, kezelési hívások és tárgyutótag szerinti szűrés. A részleteket lásd az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="next-steps"></a>További lépések
 

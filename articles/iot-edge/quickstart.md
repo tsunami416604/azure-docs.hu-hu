@@ -1,135 +1,136 @@
 ---
-title: Gyors üzembe helyezés Azure IoT peremhálózati + Windows |} Microsoft Docs
-description: Próbálja ki Azure IoT peremhálózati analytics egy szimulált peremhálózati eszköz futtatásával
-services: iot-edge
-keywords: ''
+title: Az Azure IoT Edge + Windows rövid útmutatója | Microsoft Docs
+description: Az Azure IoT Edge kipróbálása elemzés futtatásával egy szimulált Edge-eszközön
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 05/03/2018
-ms.topic: article
+ms.topic: quickstart
 ms.service: iot-edge
-ms.openlocfilehash: 888f74d215956f4ad38605ca247f681da700a787
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: MT
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 2fd16ab4ade61b1a08f93294051f4246e47839b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631734"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Gyors üzembe helyezés: Az első IoT peremhálózati modul az Azure-portálon a Windows rendszerű eszközre központi telepítése – előzetes
+# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése az Azure Portal segítségével egy Windows-eszközön – előzetes verzió
 
-A gyors üzembe helyezés, az előre elkészített kód távolról telepíteni az IoT-peremhálózati eszköz Azure IoT peremhálózati felhő felületet használ. Ennek a feladatnak először használja a Windows-eszköz szimulálása IoT peremhálózati eszköz, akkor a modul telepítene.
+Ebben a rövid útmutatóban előre összeállított kódokat fog távolról üzembe helyezni egy IoT Edge-eszközön az Azure IoT Edge felhőalapú interfészével. A feladat teljesítése érdekében először a Windows-eszközzel szimulálni fogja az IoT Edge-eszközt, amelyen aztán üzembe fog helyezni egy modult.
 
-Ha nincs egy aktív Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot] [ lnk-account] megkezdése előtt.
+Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot][lnk-account].
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy használ egy számítógépet vagy a Windows rendszerű virtuális gép az eszközök internetes hálózatát eszközök szimulálására. Ha a Windows virtuális gépként fut, engedélyezni [beágyazott virtualizálási] [ lnk-nested] és legalább 2 GB memóriát lefoglalni. 
+Ez az oktatóanyag feltételezi, hogy Windows rendszerű számítógépet vagy virtuális gépet használ az eszközök internetes hálózatához csatlakozó eszköz szimulálására. Ha a Windows virtuális gépen fut, engedélyezze a [beágyazott virtualizálást][lnk-nested], és foglaljon le legalább 2 GB memóriát. 
 
-1. Ellenőrizze, hogy egy támogatott Windows-verzió használata:
+1. Győződjön meg arról, hogy a Windows támogatott verzióját használja:
    * Windows 10 
    * Windows Server
-2. Telepítés [Docker for Windows] [ lnk-docker] , és győződjön meg arról, hogy fut-e.
-3. Telepítés [Windows Python] [ lnk-python] , és győződjön meg arról, hogy a pip paranccsal. A gyors üzembe helyezés teszteltük Python verzióival > = 2.7.9 és > = 3.5.4.  
-4. A következő parancsot a IoT peremhálózati vezérlő parancsprogram letöltése.
+2. Telepítse a [Windowshoz készült Dockert][lnk-docker], és ellenőrizze, hogy fut-e.
+3. Telepítse a [Pythont a Windowsra][lnk-python], és ellenőrizze, hogy tudja-e használni a pip parancsot. A rövid útmutató tesztelése a Python >=2.7.9-es és >=3.5.4-es verzióival történt.  
+4. Az IoT Edge-vezérlőszkript letöltéséhez futtassa a következő parancsot.
 
    ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
 > [!NOTE]
-> Azure IoT peremhálózati futtathat Windows tárolók vagy a Linux-tárolók. Windows-tárolók használatára, akkor kell futtatnia:
->    * Windows 10 alá esik Creators frissítéséhez vagy
->    * Windows Server 1709 (Build 16299), vagy
->    * Windows IoT mag (Build 16299) x64-alapú eszköz
+> Az Azure IoT Edge Windows- és Linux-tárolókat is tud futtatni. Windows-tárolók használatához a következő rendszerek valamelyikét kell futtatnia:
+>    * Windows 10 Fall Creators Update vagy
+>    * Windows Server 1709 (16299-es build) vagy
+>    * Windows IoT Core (16299-es build) egy x64-alapú eszközön
 >
-> A Windows az IoT-Core, kövesse az utasításokat a [az IoT-Edge futásidejű telepíthető Windows IoT Core][lnk-install-iotcore]. Ellenkező esetben egyszerűen [konfigurálása a Windows-tárolók használatára Docker][lnk-docker-containers], és opcionálisan ellenőrzi az előfeltételeket a következő powershell-paranccsal:
+> Windows IoT Core esetén kövesse az [IoT Edge-futtatókörnyezet Windows IoT Core-on történő telepítésével][lnk-install-iotcore] foglalkozó témakörben leírt utasításokat. A többi esetben egyszerűen [konfigurálja a Dockert Windows-tárolók használatához][lnk-docker-containers], és ha szükséges, ellenőrizze az előfeltételeket a következő PowerShell-paranccsal:
 >    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
-## <a name="create-an-iot-hub-with-azure-cli"></a>IoT hub létrehozása az Azure parancssori felülettel
+## <a name="create-an-iot-hub-with-azure-cli"></a>IoT-központ létrehozása az Azure CLI-vel
 
-IoT hub létrehozása az Azure-előfizetésben. Az IoT-központ szabad szintjét a gyors üzembe helyezés esetén használható. Ha korábban már használt IoT-központot, és már rendelkezik egy szabad hub létrehozása, hagyja ki ezt a szakaszt, és lépjen a [IoT peremhálózati eszköz regisztrálása][anchor-register]. Minden előfizetés csak egy ingyenes IoT-központ van. 
+Hozzon létre egy IoT-központot Azure-előfizetésében. Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta az IoT Hubot, és már létrehozott egy ingyenes központot, kihagyhatja ezt a szakaszt, és továbbléphet az [IoT Edge-eszköz regisztrálása][anchor-register] részhez. Mindegyik előfizetés csak egy ingyenes IoT-központtal rendelkezhet. 
 
 1. Jelentkezzen be az [Azure Portalra][lnk-portal]. 
-1. Válassza ki a **felhő rendszerhéj** gombra. 
+1. Válassza ki a **Cloud Shell** gombot. 
 
-   ![Felhő rendszerhéj gomb][1]
+   ![Cloud Shell gomb][1]
 
-1. Hozzon létre egy erőforráscsoportot. Az alábbi kód létrehoz nevű erőforráscsoport **IoTEdge** a a **USA nyugati régiója** régió:
+1. Hozzon létre egy erőforráscsoportot. A következő kód egy **IoTEdge** nevű erőforráscsoportot hoz létre az **USA nyugati régiójában**:
 
    ```azurecli
    az group create --name IoTEdge --location westus
    ```
 
-1. Az IoT-központ az új erőforráscsoport létrehozása. Az alábbi kód létrehoz egy szabad **F1** nevű hub **MyIotHub** erőforráscsoportban **IoTEdge**:
+1. Hozzon létre egy IoT-központot az új erőforráscsoportban. A következő kód egy **MyIotHub** nevű ingyenes **F1** központot hoz létre az **IoTEdge** erőforráscsoportban:
 
    ```azurecli
    az iot hub create --resource-group IoTEdge --name MyIotHub --sku F1 
    ```
 
-## <a name="register-an-iot-edge-device"></a>Az IoT-peremhálózati eszköz regisztrálása
+## <a name="register-an-iot-edge-device"></a>IoT Edge-eszköz regisztrálása
 
 [!INCLUDE [iot-edge-register-device](../../includes/iot-edge-register-device.md)]
 
-## <a name="configure-the-iot-edge-runtime"></a>Az IoT-Edge futásidejű konfigurálása
+## <a name="configure-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet konfigurálása
 
-Az IoT-Edge futásidejű minden IoT peremhálózati eszközön van telepítve. Ez magában foglalja a két modulok. Először az IoT-Edge ügynök elősegíti a központi telepítési és figyelési modulokat az IoT-peremhálózati eszközön. Második a peremhálózati IoT hub kezeli a kommunikációt az IoT-peremhálózati eszközön modulokat, valamint az eszköz és az IoT-központ között. 
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Két modulból áll. Az első, az IoT Edge-ügynök, modulok üzembe helyezését és monitorozását teszi lehetővé az IoT Edge-eszközön. A második, az IoT Edge-központ, az IoT Edge-eszközön lévő modulok, valamint az eszköz és az IoT Hub közötti kommunikációt kezeli. 
 
-A futtatókörnyezet konfigurálása az IoT-peremhálózati eszköz kapcsolati karakterlánccal előző szakaszából.
+Konfigurálja a futtatókörnyezetet IoT Edge-eszköz előző szakaszban megadott kapcsolati sztringjével.
 
 ```cmd
 iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
-Indítsa el a futtatókörnyezetben.
+Indítsa el a futtatókörnyezetet.
 
 ```cmd
 iotedgectl start
 ```
 
-Ellenőrizze, hogy az IoT-Edge-ügynök fut-e modulként Docker.
+Ellenőrizze a Dockerben, hogy az IoT Edge-ügynök modulként fut-e.
 
 ```cmd
 docker ps
 ```
 
-![A Docker edgeAgent lásd:](./media/tutorial-simulate-device-windows/docker-ps.png)
+![Lásd a Docker edgeAgent paraméterét](./media/tutorial-simulate-device-windows/docker-ps.png)
 
-## <a name="deploy-a-module"></a>A modulok telepítése
+## <a name="deploy-a-module"></a>Modul üzembe helyezése
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-A gyors üzembe helyezés létrehozott egy új IoT peremhálózati eszköz, és telepítve van-e az IoT-Edge futásidejű. Az Azure-portálon, majd leküldéses egy IoT peremhálózati modul futtatható az eszközön anélkül, hogy a módosításokat az magához az eszközhöz használt. A modult, amely akkor leküldött ebben az esetben is használhatja az oktatóanyagok a környezeti adatokat hoz létre. 
+Ebben a rövid útmutatóban létrehozott egy új IoT Edge-eszközt, és telepítette rajta az IoT Edge-futtatókörnyezetet. Ezután az Azure Portal segítségével úgy futtatta az IoT Edge-modult az eszközön, hogy magát az eszközt nem kellett módosítania. Ebben az esetben az Ön által továbbított modul az oktatóanyagokhoz használható környezeti adatokat hoz létre. 
 
-Nyissa meg a parancssort a szimulált eszköz újra futtatni a számítógépen. Győződjön meg arról, hogy fut-e a modul telepítve a felhőben az IoT-peremhálózati eszközön. 
+Nyissa meg újra a parancssort a szimulált eszközt futtató számítógépen. Győződjön meg arról, hogy a felhőből üzembe helyezett modul fut az IoT Edge-eszközön. 
 
 ```cmd
 docker ps
 ```
 
-![Három modulok megtekintése az eszközön](./media/tutorial-simulate-device-windows/docker-ps2.png)
+![Három modul megtekintése az eszközön](./media/tutorial-simulate-device-windows/docker-ps2.png)
 
-A tempSensor modulból a felhőbe küldött üzenetek megjelenítése. 
+Tekintse meg a tempSensor modul által a felhőbe küldött üzeneteket. 
 
 ```cmd
 docker logs -f tempSensor
 ```
 
-![A modul az adatok megtekintése](./media/tutorial-simulate-device-windows/docker-logs.png)
+![A modulból származó adatok megtekintése](./media/tutorial-simulate-device-windows/docker-logs.png)
 
-A telemetriai adatokat küld az eszköz segítségével is megtekintheti a [IoT-központ explorer eszköz][lnk-iothub-explorer]. 
+Az eszköz által küldött telemetriát is megtekintheti az [IoT Hub Explorer eszközzel][lnk-iothub-explorer]. 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha el szeretné távolítani a szimulált eszköz létrehozott, és minden modulhoz indított Docker tárolók használja a következő parancsot: 
+Ha el szeretné távolítani a létrehozott szimulált eszközt a modulonként elindított Docker-tárolókkal együtt, használja a következő parancsot: 
 
 ```cmd
 iotedgectl uninstall
 ```
 
-Ha már nincs szüksége az IoT Hub létrehozott, használhatja a [az iot hub delete] [ lnk-delete] parancs beírásával távolítsa el az erőforrás és a vele társított eszközök:
+Ha már nincs szüksége a létrehozott IoT-központra, az [az iot hub delete][lnk-delete] paranccsal eltávolíthatja az erőforrást és a vele társított eszközöket:
 
 ```azurecli
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
@@ -137,11 +138,11 @@ az iot hub delete --name {your iot hub name} --resource-group {your resource gro
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudta, hogyan IoT peremhálózati eszköz egy IoT-Edge-modul telepítéséhez. Próbálja meg különböző modulok, az Azure szolgáltatások üzembe helyezése, hogy elemezheti az adatokat a peremhálózaton. 
+Ismertettük, hogyan helyezhet üzembe egy IoT Edge-modult egy IoT Edge-eszközön. Következő lépésként megpróbálkozhat különböző típusú Azure-szolgáltatások modulként történő üzembe helyezésével, hogy elemezhesse az adatokat a peremhálózaton. 
 
-* [Azure-függvény modul telepítése](tutorial-deploy-function.md)
+* [Az Azure Function üzembe helyezése modulként](tutorial-deploy-function.md)
 * [Az Azure Stream Analytics üzembe helyezése modulként](tutorial-deploy-stream-analytics.md)
-* [Telepítse a saját kódját modulként](tutorial-csharp-module.md)
+* [Saját kód üzembe helyezése modulként](tutorial-csharp-module.md)
 
 
 <!-- Images -->

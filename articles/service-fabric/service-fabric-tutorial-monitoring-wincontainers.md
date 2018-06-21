@@ -12,14 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248241"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabricen található Windows-tárolók monitorozása a Log Analytics használatával
 
@@ -212,18 +213,14 @@ Ha az ablaktáblák közül bármelyikre rákattint, A rendszer átirányítja a
 
 ## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Az OMS-ügynök konfigurálása teljesítményszámlálók felvételéhez
 
-Az OMS-ügynök használatának egy másik előnye, hogy anélkül módosíthatók az OMS felhasználói élményén keresztül a felvenni kívánt teljesítményszámlálók, hogy konfigurálni kellene az Azure Diagnostics-ügynököt, és minden alkalommal Resource Manager-sablonalapú frissítést kellene elvégeznie. Ehhez a tárolómonitorozási (vagy Service Fabric-) megoldás kezdőlapján kattintson az **OMS-portálra**.
+Az OMS-ügynök használatának egy másik előnye, hogy anélkül módosíthatók az OMS felhasználói élményén keresztül a felvenni kívánt teljesítményszámlálók, hogy konfigurálni kellene az Azure Diagnostics-ügynököt, és minden alkalommal Resource Manager-sablonalapú frissítést kellene elvégeznie. Ehhez a tárolómonitorozási (vagy Service Fabric-) megoldás kezdőlapján kattintson az **OMS-munkaterület** lehetőségre.
 
-![OMS-portál](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
-
-Ekkor a munkaterületéhez kerül az OMS-portálon, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat és konfigurálhatja az OMS-ügynököt. 
-* Kattintson a képernyő jobb felső sarkában található **fogaskerékre** a *Beállítások* menü megnyitásához.
+Ekkor megnyílik a munkaterület, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat, és konfigurálhatja az OMS-ügynököt. 
+* Kattintson a **Speciális beállítások** elemre a Speciális beállítások menü megnyitásához.
 * Kattintson a **Csatlakoztatott források** > **Windows-kiszolgálók** elemre annak ellenőrzéséhez, hogy *5 Windows rendszerű számítógép van-e csatlakoztatva*.
-* Kattintson az **Adatok** > **Windows-teljesítményszámlálók** elemre a teljesítményszámlálók kereséséhez és új teljesítményszámlálók hozzáadásához. Itt megjelenik a Log Analytics gyűjthető teljesítményszámlálókra vonatkozó javaslatainak listája, valamint egyéb számlálók keresésének lehetősége. Kattintson **A kijelölt teljesítményszámlálók felvétele** elemre a javasolt metrikák gyűjtésének megkezdéséhez.
+* Kattintson az **Adatok** > **Windows-teljesítményszámlálók** elemre a teljesítményszámlálók kereséséhez és új teljesítményszámlálók hozzáadásához. Itt megjelenik a Log Analytics gyűjthető teljesítményszámlálókra vonatkozó javaslatainak listája, valamint az egyéb számlálók keresésének lehetősége. Ellenőrizze, hogy **Processzor(_Total)\% A processzor kihasználtsága** és a **Memória(*)\Rendelkezésre álló memória (megabájt)** számlálók össze vannak-e gyűjtve.
 
-    ![Teljesítményszámlálók](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
-
-Térjen vissza az Azure Portalra, néhány perc múlva **frissítse** a Tárolómonitorozási megoldást, és ezután látnia kell, ahogy érkeznek a *Számítógép teljesítményére* vonatkozó adatok. Ez segít megérteni, hogyan használja a rendszer az erőforrásokat. Ezeket a metrikákat a fürt méretezésére vonatkozó, megfelelő döntések meghozásához is használhatja, vagy annak megerősítéséhez, hogy a fürt a vártnak megfelelően osztja el a terhelést.
+Néhány perc múlva **frissítse** a Tárolómonitorozási megoldást, és ezután látnia kell, ahogy érkeznek a *Számítógép teljesítményére* vonatkozó adatok. Ez segít megérteni, hogyan használja a rendszer az erőforrásokat. Ezeket a metrikákat a fürt méretezésére vonatkozó, megfelelő döntések meghozásához is használhatja, vagy annak megerősítéséhez, hogy a fürt a vártnak megfelelően osztja el a terhelést.
 
 *Megjegyzés: A metrikák felhasználásához győződjön meg arról, hogy az idő szűrői megfelelően vannak beállítva.* 
 

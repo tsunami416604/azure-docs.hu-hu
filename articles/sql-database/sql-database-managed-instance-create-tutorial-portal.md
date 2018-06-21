@@ -11,11 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850610"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Felügyelt Azure SQL Database-példány létrehozása az Azure Portalon
 
@@ -161,16 +162,16 @@ A következő lépések azt mutatják be, hogyan hozhatja létre a felügyelt p�
 
    ![felügyelt példány létrehozása](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
-3. Válassza ki előfizetését, és ellenőrizze, hogy az előzetes verzió feltételeinél az **Elfogadva** állapot látható-e.
+4. Válassza ki előfizetését, és ellenőrizze, hogy az előzetes verzió feltételeinél az **Elfogadva** állapot látható-e.
 
    ![felügyelt példány előzetes verziójának feltételei elfogadva](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
 
-4. Adja meg a kért adatokat a felügyelt példány űrlapján az alábbi táblázatban szereplő információk segítségével:
+5. Adja meg a kért adatokat a felügyelt példány űrlapján az alábbi táblázatban szereplő információk segítségével:
 
    | Beállítás| Ajánlott érték | Leírás |
    | ------ | --------------- | ----------- |
    |**Felügyelt példány neve**|Bármely érvényes név|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
-   |**Felügyelt példány rendszergazdai bejelentkezési neve**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.| 
+   |**Felügyelt példány rendszergazdai bejelentkezési neve**|Bármely érvényes felhasználónév|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a „serveradmin” szerepkört, mert ez egy lefoglalt, kiszolgáló szintű szerepkör.| 
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Erőforráscsoport**|A korábban létrehozott erőforráscsoport||
    |**Hely**|Az előzőleg kiválasztott hely|A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket.|
@@ -178,17 +179,17 @@ A következő lépések azt mutatják be, hogyan hozhatja létre a felügyelt p�
 
    ![felügyelt példány létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
 
-5. Kattintson a **Tarifacsomag** elemre a számítási és tárolási erőforrások méretezéséhez, valamint a lehetséges tarifacsomagok áttekintéséhez. Alapértelmezés szerint a példány 32 GB ingyenes tárterülettel rendelkezik, amely nem feltétlenül elegendő alkalmazásai számára.
-6. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát. 
-   ![felügyelt példány létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+6. Kattintson a **Tarifacsomag** elemre a számítási és tárolási erőforrások méretezéséhez, valamint a lehetséges tarifacsomagok áttekintéséhez. Alapértelmezés szerint a példány 32 GB ingyenes tárterülettel rendelkezik, amely nem feltétlenül elegendő alkalmazásai számára.
+7. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát. 
+   ![felügyelt példány tarifacsomagja](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
 
-7. Ha végzett, a beállítások mentéséhez kattintson az **Alkalmaz** gombra.  
-8. Kattintson a **Létrehozás** elemre a felügyelt példány üzembe helyezéséhez.
-9. Kattintson az **Értesítések** ikonra az üzembe helyezés állapotának megtekintéséhez.
+8. Ha végzett, a beállítások mentéséhez kattintson az **Alkalmaz** gombra.  
+9. Kattintson a **Létrehozás** elemre a felügyelt példány üzembe helyezéséhez.
+10. Kattintson az **Értesítések** ikonra az üzembe helyezés állapotának megtekintéséhez.
  
    ![üzembe helyezés folyamatban](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
 
-9. Kattintson az **Üzembe helyezés folyamatban** értesítésre a felügyelt példány ablakának megnyitásához, amelyben részletesebben nyomon követheti az üzembehelyezési folyamatot.
+11. Kattintson az **Üzembe helyezés folyamatban** értesítésre a felügyelt példány ablakának megnyitásához, amelyben részletesebben nyomon követheti az üzembehelyezési folyamatot.
  
    ![üzembe helyezés folyamatban 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
@@ -248,18 +249,18 @@ A következő lépések bemutatják, hogyan hozhat létre virtuális gépet ugya
 
    ![virtuális gép létrehozásának űrlapja](./media/sql-database-managed-instance-tutorial/virtual-machine-create-form.png)
 
-3. Kattintson az **OK** gombra.
-4. Válasszon méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. Ebben az oktatóanyagban csak egy kisméretű virtuális gépre lesz szüksége.
+4. Kattintson az **OK** gombra.
+5. Válasszon méretet a virtuális gép számára. További méretek megjelenítéséhez válassza **Az összes megtekintése** lehetőséget, vagy módosítsa a **Támogatott lemeztípus** szűrőt. Ebben az oktatóanyagban csak egy kisméretű virtuális gépre lesz szüksége.
 
     ![A virtuális gépek mérete](./media/sql-database-managed-instance-tutorial/virtual-machine-size.png)  
 
-5. Kattintson a **Kiválasztás** gombra.
-6. A **Beállítások** űrlapon kattintson az **Alhálózat** menüpontra, majd válassza a **vm_subnet** elemet. Ne válassza azt az alhálózatot, amelyben a felügyelt példány üzembe van helyezve. Válasszon inkább egy másik alhálózatot ugyanabban a VNetben.
+6. Kattintson a **Kiválasztás** gombra.
+7. A **Beállítások** űrlapon kattintson az **Alhálózat** menüpontra, majd válassza a **vm_subnet** elemet. Ne válassza azt az alhálózatot, amelyben a felügyelt példány üzembe van helyezve. Válasszon inkább egy másik alhálózatot ugyanabban a VNetben.
 
     ![Virtuális gép beállításai](./media/sql-database-managed-instance-tutorial/virtual-machine-settings.png)  
 
-7. Kattintson az **OK** gombra.
-8. Az összefoglalási lapon tekintse át az ajánlat részleteit, majd a virtuális gép üzembe helyezésének megkezdéséhez kattintson a **Létrehozás** gombra.
+8. Kattintson az **OK** gombra.
+9. Az összefoglalási lapon tekintse át az ajánlat részleteit, majd a virtuális gép üzembe helyezésének megkezdéséhez kattintson a **Létrehozás** gombra.
  
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 

@@ -11,23 +11,24 @@ ms.date: 05/11/2018
 ms.topic: include
 manager: douge
 ms.openlocfilehash: a6ca5c389079e2c1c960f4f9322f0da1d98890ca
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825392"
 ---
-## <a name="get-started-on-azure-dev-spaces"></a>Ismerkedés az Azure fejlesztői szóközöket
+## <a name="get-started-on-azure-dev-spaces"></a>Bevezetés az Azure Dev Spaces használatába
 
-Válasszon ki egy **nyelvspecifikus útmutató** első lépések:
-
-> [!div class="nextstepaction"]
-> [A .NET core (Visual STUDIO Code & CLI)](../quickstart-netcore.md)
+A kezdéshez válasszon egy **nyelvspecifikus útmutatót**:
 
 > [!div class="nextstepaction"]
-> [A .NET core (Visual Studio 2017)](../quickstart-netcore-visualstudio.md)
+> [.NET Core (VS Code & CLI)](../quickstart-netcore.md)
 
 > [!div class="nextstepaction"]
-> [NODE.js (Visual STUDIO Code & CLI)](../quickstart-nodejs.md)
+> [.NET Core (Visual Studio 2017)](../quickstart-netcore-visualstudio.md)
+
+> [!div class="nextstepaction"]
+> [Node.js (VS Code & CLI)](../quickstart-nodejs.md)
 
 
 

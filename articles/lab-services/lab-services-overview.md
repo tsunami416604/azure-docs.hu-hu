@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: spelluru
-ms.openlocfilehash: b42183369b9ad88c77a05a91fdba8fe0efca2a8c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f8de53f03cc1378e8aaafa9a2f486eadc23fe14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637853"
 ---
-# <a name="an-introduction-to-azure-lab-services-formerly-azure-devtest-labs"></a>Az Azure Lab Services (korábban Azure DevTest Labs) bemutatása
+# <a name="an-introduction-to-azure-lab-services"></a>Az Azure Lab Services bemutatása
 Az Azure Lab Services lehetővé teszi egy környezet (például: fejlesztési környezet, tesztelési környezet, osztályterem-tesztkörnyezet) beállítását a csapat számára a felhőben. A tesztkörnyezet tulajdonosa létrehoz egy tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket, és elérhetővé teszi azokat a tesztkörnyezet felhasználói számára. A tesztkörnyezet felhasználói a tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a mindennapos munkájukhoz, rövidtávú projektekhez vagy osztálytermi gyakorlatokhoz használják azokat. Miután a felhasználók megkezdik az erőforrások használatát a tesztkörnyezetben, a tesztkörnyezet egy rendszergazdája több tesztkörnyezetre kiterjedően elemezheti a költségeket és a használatot, és átfogó szabályzatokat állíthat be a vállalat vagy csapat költségeinek optimalizálásához.
 
 > [!IMPORTANT]
-> Az Azure DevTest Labs új tesztkörnyezettípusokkal bővült (Azure Lab Services). 
+> Az **Azure DevTest Labs** új tesztkörnyezettípusokkal bővült (Azure Lab Services). 
 > 
 > Az Azure Lab Services lehetővé teszi felügyelt tesztkörnyezetek, például osztályterem-tesztkörnyezetek létrehozását. A szolgáltatás maga gondoskodik a felügyelt tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra méretezéséig. A felügyelt tesztkörnyezetek jelenleg előzetes verzióban érhetők el. Az előzetes verziót követően az új tesztkörnyezettípusok és a meglévő DevTest Labs-környezetek az Azure Lab Services gyűjtőnéven ismert új közös szolgáltatásban egyesülnek, amelyben tovább folyik a tesztkörnyezettípusok fejlesztése. 
 
@@ -31,7 +32,7 @@ Az Azure Lab Services lehetővé teszi egy környezet (például: fejlesztési k
 Az Azure Lab Services az alábbi fő képességeket/funkciókat támogatja: 
 
 - **A tesztkörnyezetek gyors és rugalmas beállítása**. A tesztkörnyezetek tulajdonosai az Azure Lab Services használatával gyorsan állíthatnak be az igényeinek megfelelő tesztkörnyezetet. A szolgáltatás gondoskodik a felügyelt tesztkörnyezetek Azure-infrastruktúrájához kapcsolódó feladatok mindegyikének elvégzéséről, vagy pedig lehetővé teszi, hogy a tesztkörnyezet-tulajdonosok saját maguk kezeljék és szabják testre az infrastruktúrát a tesztkörnyezet-tulajdonos előfizetésében. A szolgáltatás biztosítja az infrastruktúra beépített méretezését és rugalmasságát azon tesztkörnyezetek esetén, amelyeket a tulajdonos helyett kezel. 
-- **Egyszerű használat a tesztkörnyezetek felhasználói számára**. A felügyelt tesztkörnyezetekben, például az osztályterem-tesztkörnyezetekben a felhasználók regisztrációs kóddal regisztrálhatnak a tesztkörnyezetekre, és bármikor elérhetik a tesztkörnyezetet a tesztkörnyezet erőforrásainak használatához. A DevTest Labs szolgáltatásban létrehozott egyéni tesztkörnyezetekben a tesztkörnyezet tulajdonosa engedélyt adhat a tesztkörnyezet felhasználóinak a virtuális gépek létrehozásához és eléréséhez, az adatlemezek felügyeletéhez és újbóli használatához, valamint többször használható titkos kulcsok beállításához.  
+- **Egyszerű használat a tesztkörnyezetek felhasználói számára**. A felügyelt tesztkörnyezetekben, például az osztályterem-tesztkörnyezetekben a felhasználók regisztrációs kóddal regisztrálhatnak a tesztkörnyezetekre, és bármikor elérhetik a tesztkörnyezetet a tesztkörnyezet erőforrásainak használatához. A DevTest Labs szolgáltatásban létrehozott tesztkörnyezetekben a tesztkörnyezet tulajdonosa engedélyt adhat a tesztkörnyezet felhasználóinak a virtuális gépek létrehozásához és eléréséhez, az adatlemezek felügyeletéhez és újbóli használatához, valamint többször használható titkos kulcsok beállításához.  
 - **Költségoptimalizálás és elemzés**. A tesztkörnyezet tulajdonosa ütemezéseket állíthat be a tesztkörnyezetben a virtuális gépek automatikus leállításához és elindításához. A tesztkörnyezet tulajdonosa beállíthat egy ütemezést azon időtartamok meghatározásához, amikor a tesztkörnyezet virtuális gépei elérhetők a felhasználók számára, és felhasználóalapú vagy tesztkörnyezet-alapú használati szabályzatokat állíthat be a költségek optimalizálása, továbbá a tesztkörnyezetben jelentkező használati és tevékenységi trendek elemzése érdekében. Felügyelt tesztkörnyezetek, például osztályterem-tesztkörnyezetek esetén a költségoptimalizálási és elemzési lehetőségeknek jelenleg csak egy kisebb része érhető el. 
 - **Beágyazott biztonság**. A tesztkörnyezet tulajdonosa beállíthat egy virtuális magánhálózatot és alhálózatot a tesztkörnyezet számára, és engedélyezheti a megosztott nyilvános IP-címeket. A tesztkörnyezetek felhasználói biztonságosan érhetik el az erőforrásokat az ExpressRoute vagy helyek közötti VPN használatával konfigurált virtuális hálózattal. (Jelenleg csak a DevTest Labs szolgáltatásban érhető el.)
 - **Integrálás a munkafolyamatokba és az eszközökbe**. Az Azure Lab Services lehetővé teszi a tesztkörnyezetek integrálását a vállalat webhelyébe és felügyeleti rendszereibe. Automatikusan építhet ki környezeteket a folyamatos integrációs/folyamatos üzembehelyezési (CI/CD) eszközökből. (Jelenleg csak a DevTest Labs szolgáltatásban érhető el.)
@@ -93,5 +94,5 @@ A tesztkörnyezet felhasználója az alábbi feladatokat hajthatja végre:
 ## <a name="next-steps"></a>További lépések
 Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:
 
-- [Osztályterem-tesztkörnyezet beállítása](tutorial-setup-classroom-lab.md)
-- [Egyéni tesztkörnyezet beállítása](tutorial-create-custom-lab.md)
+- [Osztályterem-tesztkörnyezet beállítása](classroom-labs/tutorial-setup-classroom-lab.md)
+- [Tesztkörnyezet beállítása](tutorial-create-custom-lab.md)

@@ -1,67 +1,65 @@
 ---
-title: Cassandra adatok importálása az Azure Cosmos DB |} Microsoft Docs
-description: 'Útmutató: Azure Cosmos DB Cassandra adatait átmásolja a CQL Másolás parancs segítségével.'
+title: Cassandra-adatok importálása az Azure Cosmos DB-be | Microsoft Docs
+description: Ismerje meg, hogyan importálhat Cassandra-adatokat az Azure Cosmos DB-be a CQL másolás paranccsal.
 services: cosmos-db
 author: govindk
 manager: kfile
-documentationcenter: ''
-ms.assetid: eced5f6a-3f56-417a-b544-18cf000af33a
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.component: cosmosdb-cassandra
+ms.devlang: dotnet
+ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 64f60e6beb5451d8f5acd382ca8e5672a2d096f6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 26731d80f5917f9d21aacafb5f8a79cfb02855af
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795074"
 ---
-# <a name="azure-cosmos-db-import-cassandra-data"></a>Az Azure Cosmos DB: Import Cassandra adatok
+# <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: Cassandra-adatok importálása
 
-Ez az oktatóanyag útmutatás Azure Cosmos DB Cassandra adatok importálása a Cassandra Query Language (CQL) másolás parancs használatával. 
+Ez az oktatóanyag bemutatja, hogyan importálhat Cassandra-adatokat az Azure Cosmos DB-be a Cassandra Query Language (CQL) COPY parancsával. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * A kapcsolati karakterlánc beolvasása
-> * Adatok importálása a cqlsh Másolás parancs használatával
-> * A Spark-összekötővel importálása 
+> * A kapcsolati sztring lekérése
+> * Adatok importálása a CQLSH COPY parancsával
+> * Importálás a Spark-összekötővel 
 
 # <a name="prerequisites"></a>Előfeltételek
 
-* Telepítés [Apache Cassandra](http://cassandra.apache.org/download/) és biztosítják *cqlsh* található.
-* Átviteli sebesség növelése: az adatok áttelepítése időtartamát határozza meg a táblák létesített átviteli. Győződjön meg arról, növelheti a teljesítményt nagyobb adatok áttelepítésre. Az áttelepítés befejezése után csökkenti az átviteli sebesség költségek csökkentése érdekében. További információ az átviteli sebesség növelése a [Azure-portálon](https://portal.azure.com), lásd: [Set átviteli az Azure Cosmos DB tárolókat](set-throughput.md).
-* SSL engedélyezése: Azure Cosmos-adatbázis a szigorú biztonsági követelmények és szabványok tartoznak. Ne aktiválja az SSL-fiókja folytatott kommunikáció során. Ha SSH CQL használ, lehetősége van SSL információk megadására. 
+* Telepítse az [Apache Cassandra](http://cassandra.apache.org/download/) szolgáltatást, és győződjön meg arról, hogy a *cqlsh* elérhető.
+* Átviteli sebesség növelése: az adatok migrálásának időtartama a táblákhoz kiépített átviteli sebességtől függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információ az átviteli sebesség [Azure Portalon](https://portal.azure.com) való növeléséről: [Átviteli sebesség beállítása Azure Cosmos DB-tárolókhoz](set-throughput.md).
+* Az SSL engedélyezése: az Azure Cosmos DB szigorú biztonsági feltételekkel és szabványokkal rendelkezik. A fiókja használatakor mindig engedélyezze az SSL-t. Ha az SSH-val használja a CQL-t, akkor megadhat SSL-információkat. 
 
-## <a name="find-your-connection-string"></a>Keresse meg a kapcsolati karakterláncot
+## <a name="find-your-connection-string"></a>A kapcsolati sztring megkeresése
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a bal, a **Azure Cosmos DB**.
+1. Az [Azure Portalon](https://portal.azure.com) a bal szélen válassza az **Azure Cosmos DB** lehetőséget.
 
-2. Az a **előfizetések** ablaktáblán válassza ki a fiók nevét.
+2. Az **Előfizetések** panelen válassza ki a fióknevét.
 
-3. Kattintson a **kapcsolati karakterlánc**. A jobb oldali ablaktáblán a fiók sikeresen csatlakozni kell az összes információt tartalmazza.
+3. Kattintson a **Kapcsolati sztring** elemre. A jobb oldali panel tartalmazza a fiókhoz való kapcsolódáshoz szükséges összes információt.
 
-    ![Csatlakozási karakterlánc oldal](./media/cassandra-import-data/keys.png)
+    ![Kapcsolati sztring lap](./media/cassandra-import-data/keys.png)
 
-## <a name="use-cqlsh-copy"></a>Másolás cqlsh használata
+## <a name="use-cqlsh-copy"></a>A cqlsh COPY parancsának használata
 
-Cassandra adatokat importáljon Azure Cosmos DB Cassandra API-val használható, használja a következő útmutatást:
+Ha Cassandra-adatokat szeretne importálni az Azure Cosmos DB-be a Cassandra API-val való használathoz, használja az alábbi útmutatót:
 
-1. Jelentkezzen be a portálról kapcsolati információk használatával cqhsh.
-2. Használja a [CQL Másolás parancs](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) helyi adatok másolása az Apache Cassandra API-végpontot. Biztosítsa, hogy a forrás és cél ugyanabban az adatközpontban a késési problémák minimalizálása érdekében.
+1. Jelentkezzen be a cqhsh-ba a portál kapcsolati információival.
+2. Használja a [CQL COPY parancsát](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) a helyi adatok Apache Cassandra API-végpontra való másolásához. A késés minimalizálása érdekében győződjön meg arról, hogy a forrás és a cél ugyanabban az adatközpontban található.
 
-### <a name="guide-for-moving-data-with-cqlsh"></a>Útmutató a cqlsh az adatok áthelyezése
+### <a name="guide-for-moving-data-with-cqlsh"></a>Útmutató az adatok cqlsh-val történő áthelyezéséhez
 
-1. Előre létrehozni, illetve a tábla skálázni:
-    * Alapértelmezés szerint az Azure Cosmos DB rendelkezések egy új Cassandra API 1000 kérelemegység (RU/mp) (CQL-alapú létrehozása ki van építve 400 RU/mp) másodpercenként a tábla. Az áttelepítés előtt cqlsh használatával, előre létrehozni az összes tábla a [Azure-portálon](https://portal.azure.com) vagy cqlsh. 
+1. Táblák előzetes létrehozása és skálázása:
+    * Az Azure Cosmos DB alapértelmezés szerint másodpercenként 1000 kérelemegységgel (RU/s) hoz létre egy új Cassandra API-táblát (a CQL-alapú létrehozás másodpercenként 400 kérelemegységgel történik). A cqlsh-val végzett migrálás indítása előtt hozza létre előre az összes táblát az [Azure Portalról](https://portal.azure.com) vagy a cqlsh-ból. 
 
-    * Az a [Azure-portálon](https://portal.azure.com), növelhető a táblák az alapértelmezett átviteli sebesség (1000 vagy 400 RU/mp) a 10000 RU/mp az áttelepítés időtartama. A nagyobb átviteli sebességgel elkerülheti a sávszélesség-szabályozás, és kevesebb idő alatt át. Óránkénti számlázási Azure Cosmos DB, csökkentheti az átviteli sebesség közvetlenül a költségek csökkentése érdekében az áttelepítés után.
+    * Az [Azure Portalon](https://portal.azure.com) növelje a táblák átviteli sebességét a migrálás időtartamára az alapértelmezett átviteli sebességről (400 vagy 1000 RU/s) 10000 RU/s-re. Nagyobb átviteli sebesség beállításakor nincs szükség szabályozásra, és gyorsabban végezhet a migrálással. Mivel az Azure Cosmos DB-ben órás egységekben történik a számlázás, költségtakarékossági okokból a migrálás után érdemes azonnal csökkentenie az átviteli sebességet.
 
-2. Határozza meg a művelet a RU kell fizetni. Ehhez az Azure Cosmos DB Cassandra API SDK a kiválasztott használatával. Ez a példa első RU díjak .NET verzióját jeleníti meg. 
+2. Állapítsa meg a művelethez tartozó kérelemegységek díját. Ezt tetszőleges Azure Cosmos DB Cassandra API SDK-val megteheti. Ez a példa a kérelemegység-díjak .NET-tel való beszerzését mutatja be. 
 
     ```csharp
     var tableInsertStatement = table.Insert(sampleEntity);
@@ -76,30 +74,30 @@ Cassandra adatokat importáljon Azure Cosmos DB Cassandra API-val használható,
  
     ``` 
 
-3. Határozza meg, hogy a gép az Azure Cosmos DB szolgáltatás várakozási ideje. Ha az Azure adatközponton belül, a késés alacsony egyetlen számjegy ezredmásodperces számnak kell lennie. Ha az Azure Adatközponton kívülről, majd használhatja a psping vagy azurespeed.com hozzávetőleges késését lekérése a tartózkodási helyét.   
+3. Állapítsa meg a gépe és az Azure Cosmos DB szolgáltatás közötti késést. Ha Azure-adatközpontban van, a késésnek egy kicsi, egyjegyű, ezredmásodpercet jelentő számnak kell lennie. Ha az Azure-adatközponton kívül van, használja a pspinget vagy az azurespeed.com-ot az adatközpont és a tartózkodási helye közötti hozzávetőleges késés megállapításához.   
 
-4. Paraméterek (NUMPROCESS, INGESTRATE, MAXBATCHSIZE vagy MINBATCHSIZE), amely elegendő teljesítményt nyújtanak a megfelelő értékek kiszámítása. 
+4. Számítsa ki a paraméterek (NUMPROCESS, INGESTRATE, MAXBATCHSIZE, vagy MINBATCHSIZE) megfelelő értékeit, amelyek jó teljesítményt biztosítanak. 
 
-5. A végső áttelepítési parancsot. A parancs futtatása azt feltételezi, hogy a kapcsolati karakterlánc adatainak felhasználásával cqlsh indította.
+5. Futtassa a végső migrálási parancsot. A parancs futtatása azt feltételezi, hogy elindította a cqlsh szolgáltatást a kapcsolati sztring információival.
 
    ```
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="use-spark-to-import-data"></a>Adatok importálása a Spark segítségével
+## <a name="use-spark-to-import-data"></a>A Spark használata adatok importálására
 
-Egy meglévő fürthöz az Azure virtuális gépeken tárolt adatok, a rendszer adatok importálása Spark használatával is megoldható. Ehhez a Spark egy alkalommal vagy rendszeres adatfeldolgozást a pénznemként beállítása. 
+A meglévő fürtökben, Azure-beli virtuális gépeken található adatok esetében a Sparkkal való importálás is reális lehetőség. Ehhez a Sparkot közvetítőként kell beállítani egyszeri vagy rendszeres betöltéshez. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban már megismerte a következő feladatok elvégzéséhez:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi feladatokat:
 
 > [!div class="checklist"]
-> * A kapcsolat-karakterlánc beolvasása
-> * Adatokat importálhat cql Másolás parancs használatával
-> * A Spark-összekötővel importálása 
+> * A kapcsolati sztring lekérése
+> * Adatok importálása a cql copy paranccsal
+> * Importálás a Spark-összekötővel 
 
-Most már folytathatja a fogalmakat részt Azure Cosmos DB további információt. 
+Az Azure Cosmos DB-vel kapcsolatos további információért folytassa az Alapfogalmak szakasz áttekintésével. 
 
 > [!div class="nextstepaction"]
->[Az Azure Cosmos Adatbázisba hangolható konzisztencia szintek](../cosmos-db/consistency-levels.md)
+>[Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](../cosmos-db/consistency-levels.md)

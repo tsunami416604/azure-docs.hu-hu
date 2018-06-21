@@ -1,6 +1,6 @@
 ---
-title: Egyéni tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatásban | Microsoft Docs
-description: Ebben a rövid útmutatóban egyéni tesztkörnyezetet hoz létre az Azure DevTest Labs szolgáltatással.
+title: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással | Microsoft Docs
+description: Ebben a rövid útmutatóban tesztkörnyezetet hoz létre az Azure DevTest Labs szolgáltatással.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,26 +14,26 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362243"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636987"
 ---
-# <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Egyéni tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
-Ebben az oktatóanyagban létrehoz egy egyéni tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
+Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Egyéni tesztkörnyezet létrehozása
+> * Labor létrehozása
 > * Virtuális gépek hozzáadása a tesztkörnyezethez
 > * Felhasználó hozzáadása a tesztkörnyezet-felhasználó szerepkörhöz
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-custom-lab"></a>Egyéni tesztkörnyezet létrehozása
+## <a name="create-a-lab"></a>Labor létrehozása
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor létrehozására az Azure DevTest Labs szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -97,8 +97,8 @@ A következő oktatóanyag azt mutatja be, hogyan foglalhatják le a tesztkörny
 4. Ismételje meg ezeket a lépéseket a `<your resource group name><random numbers>` nevű, az Ön számára létrehozott további erőforráscsoport esetében. Például: `splab3988722144001`. A virtuális gépek ebben az erőforráscsoportban jönnek létre, és nem abban, amelyben a tesztkörnyezet található. 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban létrehozott egy egyéni tesztkörnyezetet egy virtuális géppel, és egy felhasználónak hozzáférést biztosított a tesztkörnyezethez. Ha meg szeretné tudni, tesztkörnyezet-felhasználóként hogyan érheti el a tesztkörnyezetet, folytassa a következő oktatóanyaggal:
+Ebben az oktatóanyagban létrehozott egy tesztkörnyezetet egy virtuális géppel, és egy felhasználónak hozzáférést biztosított a tesztkörnyezethez. Ha meg szeretné tudni, tesztkörnyezet-felhasználóként hogyan érheti el a tesztkörnyezetet, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Hozzáférés az egyéni tesztkörnyezethez](tutorial-use-custom-lab.md)
+> [Oktatóanyag: Hozzáférés a tesztkörnyezethez](tutorial-use-custom-lab.md)
 

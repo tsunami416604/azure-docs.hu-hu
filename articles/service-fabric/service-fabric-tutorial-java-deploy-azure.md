@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 92445ffa7954d42ec1a864264fbfc7555986ad58
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 370cb367a90c8c1a4f8051e79d3858d78c8c3b75
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644042"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
 Ez az oktatóanyag egy sorozat harmadik része, és azt mutatja be, hogyan kell üzembe helyezni egy Service Fabric-alkalmazást egy Azure-fürtön.
@@ -198,7 +199,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     </Certificates>
     ```
 
-2. Ahhoz, hogy üzembe helyezhesse az alkalmazást a fürtön, az SFCTL segítségével kapcsolatot kell létesítenie a fürttel. Az SFCTL csak a PEM-fájl, valamint a nyilvános és a privát kulcs birtokában tud kapcsolódni a fürthöz, ezért a következő parancsot kell futtatnia, hogy egy nyilvános és privát kulccsal is rendelkező PEM-fájlt állítson elő. 
+2. Ahhoz, hogy üzembe helyezhesse az alkalmazást a fürtön, az SFCTL segítségével kapcsolatot kell létesítenie a fürttel. Az SFCTL csak a PEM-fájl, valamint a nyilvános és a privát kulcs birtokában tud kapcsolódni a fürthöz. Ezért a következő parancsot kell futtatnia, hogy egy nyilvános és privát kulccsal is rendelkező PEM-fájlt állítson elő. 
 
     ```bash
     openssl pkcs12 -in testservicefabric.westus.cloudapp.azure.com.pfx -out sfctlconnection.pem -nodes -passin pass:<password>

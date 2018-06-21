@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: b9b9e08676228ddbdea8be91253b41dac8ef8fb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211735"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248435"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
 
@@ -69,7 +69,7 @@ A kapcsolati sztring frissítése után ne felejtse el létrehozni a mappát.  E
 mkdir \\172.31.27.1\c$\DiagnosticsStore
 ```
 
-Végül a `nodeTypes` szakaszban adjon hozzá egy új szakaszt a Windows által használt rövid élettartamú portok leképezéséhez.  A konfigurációs fájlnak a következőképpen kell kinéznie:
+Végül a konfiguráció `nodeTypes` szakaszában adjon hozzá egy új szakaszt a Windows által használt rövid élettartamú portok leképezéséhez.  A konfigurációs fájlnak a következőképpen kell kinéznie:
 
 ```json
 "applicationPorts": {
@@ -146,7 +146,7 @@ Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontok
 A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
 
 > [!div class="checklist"]
-> * Kapcsolati karakterlánc konfigurálása
+> * Kapcsolati sztring konfigurálása
 > * Az alkalmazás létrehozása
 > * Az alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése

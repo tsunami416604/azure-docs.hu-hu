@@ -1,36 +1,37 @@
 ---
-title: "Töltse fel egy általánosított virtuális Merevlemezt a Azure PowerShell parancsfájl minta |} Microsoft Docs"
-description: "PowerShell-mintaparancsfájl egy általánosított virtuális Merevlemezt feltöltése az Azure-ba, és új virtuális gép létrehozása a resource manager üzembe helyezési modellben és a felügyelt lemezek."
+title: Általános VHD feltöltése az Azure PowerShellbe – példaszkript | Microsoft Docs
+description: PowerShell-példaszkript egy általános VHD Azure-ba történő feltöltéséhez, valamint új virtuális gép létrehozásához a Resource Manager-alapú üzemi modell és a Managed Disks használatával.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/02/2017
+ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9534ce2a32ac57a441535cfa26f2981b804182d1
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: fc3017000f6c6417a3c3f1765907a77f2562b113
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295169"
 ---
-# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Virtuális merevlemez feltöltése az Azure-ba, és hozzon létre egy új virtuális Gépet parancsfájlpéldát
+# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Példaszkript egy VHD Azure-ba történő feltöltéséhez és új virtuális gép létrehozásához
 
-Ez a parancsfájl telik el egy általánosított virtuális Gépet a helyi .vhd-fájllá és feltölti azt az Azure-ba, felügyelt lemezképét létrehozott és használt az új virtuális gép létrehozásához.
+A szkript egy helyi .vhd fájlt tölt fel egy általános virtuális gépről az Azure-ba, létrehoz egy Managed Disks-rendszerképet, és létrehoz egy új virtuális gépet.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 ```powershell
 # Provide values for the variables
@@ -81,13 +82,13 @@ $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGr
     -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
 $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $resourceGroup -Location $location `
     -AllocationMethod Dynamic
-$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
-    -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
 $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name $ruleName -Description 'Allow RDP' -Access Allow `
     -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
 $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
     -Name $nsgName -SecurityRules $rdpRule
+$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroup -Location $location `
+    -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Name $vnetName
 
 # Start building the VM configuration
@@ -118,41 +119,41 @@ $vmList.Name
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A következő parancsot az erőforráscsoport, virtuális gép és az összes kapcsolódó erőforrások eltávolítása.
+Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="script-explanation"></a>Parancsfájl ismertetése
+## <a name="script-explanation"></a>Szkript ismertetése
 
-A parancsfájl a következő parancsokat a központi telepítés létrehozásához. A parancs adott dokumentáció tábla mutató összes elemére.
+A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs                                                                                                             | Megjegyzések                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Új-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Az összes erőforrás tároló erőforrás csoportot hoz létre.                                                                                                                          |
-| [Új-AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Tárfiók létrehozása.                                                                                                                                                           |
-| [Adja hozzá AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | A virtuális merevlemez a helyszíni virtuális gépről a felhőalapú társzolgáltatás fiókja az Azure-ban lévő blob feltöltése.                                                                       |
-| [Új AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | A konfigurálható lemezkép-objektumot hoz létre.                                                                                                                                                 |
-| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Az operációs rendszer lemez tulajdonságainak megadása egy kép objektum.                                                                                                                        |
-| [Új AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Létrehoz egy új lemezképet.                                                                                                                                                                 |
-| [Új AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Létrehoz egy alhálózati konfigurációt. Ezt a konfigurációt használja a virtuális hálózat létrehozásának folyamatát.                                                                                |
-| [Új-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Virtuális hálózat létrehozása.                                                                                                                                                           |
-| [Új AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Létrehoz egy nyilvános IP-címet.                                                                                                                                                         |
-| [Új AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Létrehoz egy adott hálózati csatoló.                                                                                                                                                         |
-| [Új AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Létrehoz egy hálózati biztonsági csoport szabály konfigurációt. Ez a konfiguráció segítségével egy NSG-szabály létrehozása az NSG létrehozásakor.                                                       |
-| [Új AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Hálózati biztonsági csoportot hoz létre.                                                                                                                                                    |
-| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | Lekérdezi a virtuális hálózat erőforráscsoportban.                                                                                                                                          |
-| [Új AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Létrehoz egy Virtuálisgép-konfiguráció. Ez a konfiguráció tartoznak a virtuális gép nevét, az operációs rendszer és a rendszergazdai hitelesítő adatokkal. A konfiguráció a Virtuálisgép-létrehozása során használatos. |
-| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Adja meg a virtuális gép kép.                                                                                                                                            |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Az operációs rendszer lemez tulajdonságainak megadása a virtuális gép.                                                                                                                      |
-| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Az operációs rendszer lemez tulajdonságainak megadása a virtuális gép.                                                                                                                      |
-| [Adja hozzá AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Egy adott hálózati csatoló ad hozzá egy virtuális gépet.                                                                                                                                       |
-| [Új AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Hozzon létre egy virtuális gépet.                                                                                                                                                            |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Eltávolítja az erőforráscsoportot és belül található összes erőforrást.                                                                                                                         |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja.                                                                                                                          |
+| [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Létrehoz egy tárfiókot.                                                                                                                                                           |
+| [Add-AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Feltölt egy virtuális merevlemezt egy helyi virtuális gépről egy Azure-beli felhőalapú tárfiókban található blobba.                                                                       |
+| [New-AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | Konfigurálható rendszerkép-objektumot hoz létre.                                                                                                                                                 |
+| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Beállítja egy operációsrendszer-lemez tulajdonságait egy rendszerkép-objektumon.                                                                                                                        |
+| [New-AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Új rendszerképet hoz létre.                                                                                                                                                                 |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Alhálózati konfigurációt hoz létre. Ez a konfiguráció a virtuális hálózat létrehozására szolgál.                                                                                |
+| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Virtuális hálózatot hoz létre.                                                                                                                                                           |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Egy nyilvános IP-címet hoz létre.                                                                                                                                                         |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Hálózati adaptert hoz létre.                                                                                                                                                         |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Egy hálózati biztonsági csoport (NSG) szabálykonfigurációját hozza létre. Ez a konfiguráció az NSG-re vonatkozó szabály létrehozására szolgál az NSG létrehozásakor.                                                       |
+| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Egy hálózati biztonsági csoportot hoz létre.                                                                                                                                                    |
+| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | Lekér egy virtuális hálózatot egy erőforráscsoportban.                                                                                                                                          |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Egy virtuálisgép-konfigurációt hoz létre. Ebben a konfigurációban olyan információk szerepelnek, mint a virtuális gép neve, az operációs rendszer és a rendszergazdai hitelesítő adatok. A rendszer a virtuális gépek létrehozása során használja ezt a konfigurációt. |
+| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Meghatározza egy virtuális gép rendszerképét.                                                                                                                                            |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Beállítja egy operációsrendszer-lemez tulajdonságait egy virtuális gépen.                                                                                                                      |
+| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Beállítja egy operációsrendszer-lemez tulajdonságait egy virtuális gépen.                                                                                                                      |
+| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Hálózati adaptert ad egy virtuális géphez.                                                                                                                                       |
+| [New-AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Virtuális gépet hoz létre.                                                                                                                                                            |
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást.                                                                                                                         |
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modul további információkért lásd: [Azure PowerShell dokumentációs](/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
-További virtuális gép PowerShell-parancsfájl példák találhatók a [Azure Windows virtuális dokumentációját](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A virtuális gépekhez kapcsolódó további PowerShell-példaszkripteket az [Azure Windows rendszerű virtuális gépekre vonatkozó dokumentációjában](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) találhat.

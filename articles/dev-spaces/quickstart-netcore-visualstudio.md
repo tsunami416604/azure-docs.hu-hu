@@ -1,56 +1,59 @@
 ---
-title: Kubernetes fejlesztői környezet létrehozása a felhőben | Microsoft Docs
+title: Kubernetes Dev Spaces-tér létrehozása a felhőben | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 author: ghogen
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 06/06/2018
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 9bee5677aecb235872f50eea75ddc98bc453f426
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 16ec493708f85e9b3819943e131b9f9c3649f27e
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361715"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824638"
 ---
-# <a name="quickstart-create-a-kubernetes-development-environment-with-azure-dev-spaces-net-core-and-visual-studio"></a>Rövid útmutató: Kubernetes fejlesztői környezet létrehozása az Azure Dev Spaces segítségével (.NET Core és Visual Studio)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Rövid útmutató: Kubernetes Dev Spaces-tér létrehozása az Azure Dev Spaces segítségével (.NET Core és Visual Studio)
 
 Ebből az útmutatóból a következőket tudhatja meg:
 
-- Fejlesztésre optimalizált, Kubernetes-alapú környezet létrehozása az Azure-ban.
+- Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
 - Iteratív kódfejlesztés tárolókban a Visual Studio használatával.
+- A fürtben futó kód hibakeresése.
 
-[!INCLUDE[](includes/see-troubleshooting.md)]
+> [!Note]
+> **Ha bármikor elakad**, tekintse meg a [Hibaelhárítás](troubleshooting.md) szakaszt, vagy írjon egy hozzászólást erre a lapra. A részletesebb [oktatóanyagot](get-started-netcore-visualstudio.md) is kipróbálhatja.
 
-[!INCLUDE[](includes/portal-aks-cluster.md)]
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="get-the-visual-studio-tools"></a>A Visual Studio eszközeinek beszerzése 
-1. A [Visual Studio 2017](https://www.visualstudio.com/vs/) legújabb verziójának telepítése
-1. Győződjön meg róla, hogy a Visual Studio telepítőjében a következő számítási feladat van kiválasztva:
-    * ASP.NET és webfejlesztés
-1. Telepítse az [Azure Dev Spaceshez készült Visual Studio-bővítményt](https://aka.ms/get-azds-visualstudio)
+- Az EastUS, WestEurope vagy CanadaEast régióban lévő, a Kubernetes 1.9.6 verziót futtató Kubernetes-fürt a HTTP-alkalmazások engedélyezett útválasztásával.
 
-Most már készen áll egy ASP.NET-webalkalmazás létrehozására a Visual Studio használatával.
+  ![Ne felejtse el engedélyezni a HTTP-alkalmazások útválasztását.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
-## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
+- Visual Studio 2017 telepített webfejlesztési számítási feladattal. Ha nincs telepítve, [innen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) letöltheti.
 
-Hozzon létre egy új projektet a Visual Studio 2017-ben. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Adja a projektnek a „**webfrontend**” nevet.
+## <a name="set-up-azure-dev-spaces"></a>Az Azure Dev Spaces beállítása
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+Telepítse az [Azure Dev Spaceshez készült Visual Studio-bővítményt](https://aka.ms/get-azds-visualstudio).
 
-Válassza ki a **Webalkalmazás (Model-View-Controller)** sablont, és ellenőrizze, hogy a párbeszédpanel tetején a két legördülő listában a **.NET Core** és az **ASP.NET Core 2.0** van-e kijelölve. A projekt létrehozásához kattintson az **OK** gombra.
+## <a name="connect-to-a-cluster"></a>Csatlakozás fürthöz
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+Ezután létrehozni és konfigurál egy projektet az Azure Dev Spaceshez.
 
+### <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
 
-## <a name="create-a-dev-environment-in-azure"></a>Fejlesztői környezet létrehozása az Azure-ban
+Hozzon létre egy új projektet a Visual Studio 2017-ben. Jelenleg a projektnek egy **ASP.NET Core-webalkalmazásnak** kell lennie. Adja a projektnek a **webfrontend** nevet.
 
-Az Azure Dev Spaces segítségével fejlesztésre optimalizált, Kubernetes-alapú környezetet hozhat létre, amelyet teljes egészében az Azure kezel. Nyissa meg az imént létrehozott projektet, és válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő menüjéből, ahogy az az alábbi képen látható.
+Válassza ki a **Webalkalmazás (Model-View-Controller)** sablont, és ellenőrizze, hogy a **.NET Core** és az **ASP.NET Core 2.0** van-e kijelölve.
+
+### <a name="create-a-dev-space-in-azure"></a>Dev Spaces-tér létrehozása az Azure-ban
+
+Nyissa meg az imént létrehozott projektet, és válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő menüjéből, ahogy az az alábbi képen látható.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
@@ -58,7 +61,7 @@ Az ezt követően megjelenő párbeszédpanelen ellenőrizze, hogy a megfelelő 
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-A **Tér** legördülő menüt egyelőre hagyja a `default` alapértelmezett értéken. Erről a beállításról a későbbiekben kaphat további információt. Jelölje be a **Nyilvánosan hozzáférhető** jelölőnégyzetet, hogy a webalkalmazás nyilvános végpontról is elérhető legyen. Ez a beállítás nem szükséges, de hasznos lehet néhány fogalom bemutatásához az útmutató későbbi szakaszában. De ne aggódjon, mindkét esetben végezhet a webhelyen hibakeresést a Visual Studio segítségével.
+A **Tér** legördülő menüt egyelőre hagyja a `default` értéken. Jelölje be a **Nyilvánosan hozzáférhető** jelölőnégyzetet, hogy a webalkalmazás nyilvános végpontról is elérhető legyen.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
@@ -68,32 +71,23 @@ Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-Válassza az **OK** gombot. 
+Kattintson az **OK** gombra. 
 
-Egy háttérművelet fogja végrehajtani a konfigurálást. Ez eltarthat néhány percig. Ha meg szeretné nézni, hogy tart-e még a folyamat, vigye az egérmutatót az állapotsor bal alsó sarkában lévő **Háttérfolyamatok** ikon fölé, az alábbi ábrán látható módon.
+### <a name="look-at-the-files-added-to-project"></a>A projekthez adott fájlok ellenőrzése
+Amíg a Dev Spaces-tér létrehozására vár, tekintse meg, milyen fájlokat rendelt a projekthez a rendszer, amikor az Azure Dev Spaces használatát választotta.
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.png)
-
-> [!Note]
-Amíg a fejlesztői környezet létrehozása sikeresen le nem zárul, nem tud hibakeresést végezni az alkalmazáson.
-
-## <a name="look-at-the-files-added-to-project"></a>A projekthez adott fájlok ellenőrzése
-Amíg a fejlesztői környezet létrehozására vár, tekintse meg, milyen fájlokat rendelt a projekthez a rendszer, amikor fejlesztői környezet használatát választotta.
-
-Először is láthatja, hogy a rendszer hozzáadott egy `charts` nevű mappát, amelyben előállított egy [Helm-diagramot](https://docs.helm.sh) az alkalmazásához. Ezek a fájlok szükségesek az alkalmazás üzembe helyezéséhez a fejlesztői környezetben.
-
-A rendszer hozzáadott egy `Dockerfile` nevű fájlt is. Ez a fájl olyan információt tartalmaz, amely az alkalmazás szabványos Docker-formátumba való csomagolásához szükséges. Egy `HeaderPropagation.cs` fájl is létre lett hozva. Erre az oktatóanyag későbbi részében térünk ki. 
-
-Végül látni fog egy `azds.yaml` nevű fájlt, amely a fejlesztői környezethez szükséges konfigurációs adatokat tartalmaz (pl. elérhető legyen-e az alkalmazás nyilvános végpontról).
+- A rendszer hozzáadott egy `charts` nevű mappát, amelyben előállított egy [Helm-diagramot](https://docs.helm.sh) az alkalmazásához. Ezek a fájlok szükségesek az alkalmazás Dev Spaces-térben való üzembe helyezéséhez.
+- A `Dockerfile` olyan információt tartalmaz, amely az alkalmazás szabványos Docker-formátumba való csomagolásához szükséges.
+- Az `azds.yaml` a Dev Spaces-térhez szükséges konfigurációs adatokat tartalmazza (pl. elérhető legyen-e az alkalmazás nyilvános végpontról).
 
 ![](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Tároló hibakeresése a Kubernetesben
-Amint a fejlesztői környezet létrehozása sikeresen lezárul, végezhet hibakeresést az alkalmazáson. Állítson be egy töréspontot a kódban, például a `HomeController.cs` fájl 20. sorában, ahol a `Message` változó van beállítva. Nyomja le az **F5** billentyűt a hibakeresés indításához. 
+Amint a Dev Spaces-tér létrehozása sikeresen lezárul, hibakeresést végezhet az alkalmazáson. Állítson be egy töréspontot a kódban, például a `HomeController.cs` fájl 20. sorában, ahol a `Message` változó van beállítva. Nyomja le az **F5** billentyűt a hibakeresés indításához. 
 
-A Visual Studio kommunikál a fejlesztői környezettel, hogy az hozza létre és helyezze üzembe az alkalmazást, majd nyisson meg egy böngészőt a futó webalkalmazással. Úgy tűnhet, hogy a tároló futtatása helyileg történik, de valójában az Azure fejlesztői környezetében fut. A localhost cím oka az, hogy az Azure Dev Spaces egy ideiglenes SSH-alagutat hoz létre az Azure-ban futó tárolóhoz.
+A Visual Studio kommunikál a Dev Spaces-térrel, hogy az hozza létre és helyezze üzembe az alkalmazást, majd nyisson meg egy böngészőt a futó webalkalmazással. Úgy tűnhet, hogy a tároló futtatása helyileg történik, de valójában a Dev Spaces-térben fut az Azure-ban. A localhost cím oka az, hogy az Azure Dev Spaces egy ideiglenes SSH-alagutat hoz létre az Azure-ban futó tárolóhoz.
 
-Kattintson az oldal tetején lévő **Információ** hivatkozásra a töréspont aktiválásához. Ugyanúgy teljes körű hozzáférése van a hibakeresési információkhoz, mintha helyileg futna a kód (pl. hívási verem, helyi változók, kivételek adatai stb.).
+Kattintson az oldal tetején lévő **About** (Információ) hivatkozásra a töréspont aktiválásához. Ugyanúgy teljes körű hozzáférése van a hibakeresési információkhoz, mintha helyileg futna a kód (pl. hívási verem, helyi változók, kivételek adatai stb.).
 
 ## <a name="next-steps"></a>További lépések
 

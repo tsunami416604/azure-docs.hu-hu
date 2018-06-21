@@ -1,31 +1,26 @@
 ---
 title: Üzenetek útválasztásának konfigurálása az Azure IoT Hub (.NET) használatával | Microsoft Docs
 description: Üzenetek útválasztásának konfigurálása az Azure IoT Hub (.NET) használatával
-services: iot-hub
-documentationcenter: .net
 author: robinsh
 manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 0674ed033f77d7d2eca319d0b1e82171dfa4256d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ab354410ba3b0b37ae630a2b68daec63a9051555
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700825"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Üzenetek útválasztásának konfigurálása az IoT Hub használatával
 
 Az üzenetek útválasztása lehetővé teszi telemetriaadatok küldését az IoT-eszközökről a beépített, Event Hub-kompatibilis végpontokra vagy olyan egyéni végpontokra, mint például a Blob Storage, a Service Bus-üzenetsorok, a Service Bus-témakörök és az eseményközpontok. Az üzenetek útválasztásának konfigurálásakor létrehozhat útválasztási szabályokat, amelyekkel megadható egy adott szabálynak megfelelő útvonal. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. 
 
-Ez az oktatóanyag bemutatja, hogyan állíthat be és használhat útválasztási szabályokat az IoT Hubbal. Az üzeneteket egy IoT-eszközről egy másik szolgáltatásra, például a Blob Storage-ra és egy Service Bus-üzenetsorra fogja átirányítani. A Service Bus-üzenetsorhoz küldött üzeneteket egy logikai alkalmazás veszi át, és a rendszer e-mailben küldi el őket. Azokat az üzeneteket, amelyekhez nincs külön útválasztás beállítva, a rendszer az alapértelmezett végpontra küldi, és a Power BI-vizualizációban tekinthetők meg.
+Ez az oktatóanyag bemutatja, hogyan állíthat be és használhat útválasztási szabályokat az IoT Hubbal. Az üzeneteket egy IoT-eszközről egy másik szolgáltatásra, például a Blob Storage-ra és egy Service Bus-üzenetsorra fogja átirányítani. A Service Bus-üzenetsorhoz küldött üzeneteket egy logikai alkalmazás veszi át, és a rendszer e-mailben küldi el őket. Azokat az üzeneteket, amelyekhez nincs külön útválasztás beállítva, a rendszer az alapértelmezett végpontra küldi, és egy Power BI-vizualizációban tekinthetők meg.
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
@@ -46,7 +41,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 - Telepítse [a Windowshoz készült Visual Studio programot](https://www.visualstudio.com/). 
 
-- Power BI-fiók az alapértelmezett végpont Stream Analytics-elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web))
+- Power BI-fiók az alapértelmezett végpont Stream Analytics-elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
 
 - Office 365-fiók értesítési e-mailek küldéséhez. 
 
@@ -104,24 +99,24 @@ A szkript használatának legegyszerűbb módja a szkript másolása és beilles
 # You need it to create the device identity. 
 az extension add --name azure-cli-iot-ext
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
 iotHubConsumerGroup=ContosoConsumers
 containerName=contosoresults
 iotDeviceName=Contoso-Test-Device 
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-iotHubName=ContosoTestHub 
-storageAccountName=contosoresultsstorage 
-sbNameSpace=ContosoSBNamespace 
-sbQueueName=ContosoSBQueue
-
 # Create the resource group to be used
 #   for all the resources for this tutorial.
 az group create --name $resourceGroup \
     --location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+iotHubName=ContosoTestHub$RANDOM
+echo "IoT hub name = " $iotHubName
 
 # Create the IoT hub.
 az iot hub create --name $iotHubName \
@@ -131,6 +126,10 @@ az iot hub create --name $iotHubName \
 # Add a consumer group to the IoT hub.
 az iot hub consumer-group create --hub-name $iotHubName \
     --name $iotHubConsumerGroup
+
+# The storage account name must be globally unique, so add a random number to the end.
+storageAccountName=contosostorage$RANDOM
+echo "Storage account name = " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 az storage account create --name $storageAccountName \
@@ -154,11 +153,19 @@ az storage container create --name $containerName \
     --account-key $storageAccountKey \
     --public-access off 
 
+# The Service Bus namespace must be globally unique, so add a random number to the end.
+sbNameSpace=ContosoSBNamespace$RANDOM
+echo "Service Bus namespace = " $sbNameSpace
+
 # Create the Service Bus namespace.
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
     
+# The Service Bus queue name must be globally unique, so add a random number to the end.
+sbQueueName=ContosoSBQueue$RANDOM
+echo "Service Bus queue name = " $sbQueueName
+
 # Create the Service Bus queue to be used as a routing destination.
 az servicebus queue create --name $sbQueueName \
     --namespace-name $sbNameSpace \
@@ -183,23 +190,23 @@ A szkript használatának legegyszerűbb módja a [PowerShell ISE](/powershell/s
 # Log into Azure account.
 Login-AzureRMAccount
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 $location = "West US"
 $resourceGroup = "ContosoResources"
 $iotHubConsumerGroup = "ContosoConsumers"
 $containerName = "contosoresults"
 $iotDeviceName = "Contoso-Test-Device"
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-$iotHubName = "ContosoTestHub"
-$storageAccountName = "contosoresultsstorage"
-$serviceBusNamespace = "ContosoSBNamespace"
-$serviceBusQueueName  = "ContosoSBQueue"
-
-# Create the resource group to be used  
+# Create the resource group to be used 
 #   for all resources for this tutorial.
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+$iotHubName = "ContosoTestHub$(Get-Random)"
+Write-Host "IoT hub name is " $iotHubName
 
 # Create the IoT hub.
 New-AzureRmIotHub -ResourceGroupName $resourceGroup `
@@ -213,6 +220,10 @@ Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
   -EventHubConsumerGroupName $iotHubConsumerGroup `
   -EventHubEndpointName "events"
+
+# The storage account name must be globally unique, so add a random number to the end.
+$storageAccountName = "contosostorage$(Get-Random)"
+Write-Host "storage account name is " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 # Save the context for the storage account 
@@ -228,10 +239,20 @@ $storageContext = $storageAccount.Context
 New-AzureStorageContainer -Name $containerName `
     -Context $storageContext
 
+# The Service Bus namespace must be globally unique,
+#   so add a random number to the end.
+$serviceBusNamespace = "ContosoSBNamespace$(Get-Random)"
+Write-Host "Service Bus namespace is " $serviceBusNamespace
+
 # Create the Service Bus namespace.
 New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroup `
     -Location $location `
     -Name $serviceBusNamespace 
+
+# The Service Bus queue name must be globally unique,
+#  so add a random number to the end.
+$serviceBusQueueName  = "ContosoSBQueue$(Get-Random)"
+Write-Host "Service Bus queue name is " $serviceBusQueueName 
 
 # Create the Service Bus queue to be used as a routing destination.
 New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
@@ -256,8 +277,6 @@ Következő lépésként hozzon létre egy eszközidentitást, és mentse a hozz
 
    ![Képernyőkép az eszköz részleteiről, többek között a kulcsokról.](./media/tutorial-routing/device-details.png)
 
-
-
 ## <a name="set-up-message-routing"></a>Üzenetek útválasztásának beállítása
 
 Az üzeneteket különböző forrásokhoz fogja irányítani azon tulajdonságok alapján, amelyeket a szimulált eszköz csatolt az üzenethez. Azokat az üzeneteket, amelyekhez nincs egyéni útválasztás beállítva, az alapértelmezett végpontra (üzenetek/események) küldi a rendszer. 
@@ -278,7 +297,7 @@ Most beállíthatja az útválasztást a tárfiókhoz. Adjon meg egy végpontot,
    
    **Végpont típusa**: A legördülő listából válassza ki az **Azure Storage-tárolót**.
 
-   Kattintson a **Tároló kiválasztása** elemre a tárfiókok listájának megtekintéséhez. Válassza ki a tárfiókot. Ez az oktatóanyag a **contosoresultsstorage** fiókot használja. Ezután válassza ki a tárolót. Ez az oktatóanyag a **contosoresults** tárolót használja. Kattintson a **Kiválasztás** gombra, ezzel visszatér a Végpont hozzáadása panelhez. 
+   Kattintson a **Tároló kiválasztása** elemre a tárfiókok listájának megtekintéséhez. Válassza ki a tárfiókot. Ez az oktatóanyag a **contosostorage** tárfiókot használja. Ezután válassza ki a tárolót. Ez az oktatóanyag a **contosoresults** tárolót használja. Kattintson a **Kiválasztás** gombra, ezzel visszatér a **Végpont hozzáadása** ablaktáblához. 
    
    ![A végpont hozzáadását bemutató képernyőkép.](./media/tutorial-routing/add-endpoint-storage-account.png)
    
@@ -292,7 +311,8 @@ Most beállíthatja az útválasztást a tárfiókhoz. Adjon meg egy végpontot,
 
    **Végpont**: Válassza ki az imént beállított végpontot. Ez az oktatóanyag a **StorageContainer** nevet használja. 
    
-   **Lekérdezési karakterlánc**: Lekérdezési karakterláncként írja be a következőt: `level="storage"`. 
+   
+  **Lekérdezési sztring**: Lekérdezési sztringként írja be a következőt: `level="storage"`. 
 
    ![A tárfiók útválasztási szabályának létrehozását bemutató képernyőkép.](./media/tutorial-routing/create-a-new-routing-rule-storage.png)
    
@@ -324,7 +344,8 @@ Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Adjon meg egy 
 
    **Végpont**: Válassza ki az imént beállított **CriticalQueue** végpontot.
 
-   **Lekérdezési karakterlánc**: Lekérdezési karakterláncként írja be a következőt: `level="critical"`. 
+   
+  **Lekérdezési sztring**: Lekérdezési sztringként írja be a következőt: `level="critical"`. 
 
    ![Útválasztási szabály Service Bus-üzenetsorhoz való létrehozását bemutató képernyőkép.](./media/tutorial-routing/create-a-new-routing-rule-sbqueue.png)
    
@@ -406,6 +427,8 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-create-job.png)
 
+3. A feladat létrehozásához kattintson a **Létrehozás** elemre. A feladathoz való visszatéréshez kattintson az **Erőforráscsoportok** elemre. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki az erőforráscsoportot, majd kattintson a Stream Analytics-feladatra az erőforrások listájában. 
+
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
 1. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
@@ -462,7 +485,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 4. Kattintson a **Save** (Mentés) gombra.
 
-5. Zárja be a Lekérdezés panelt.
+5. Zárja be a Lekérdezés panelt. Ezzel visszatér az erőforrások nézetére az Erőforráscsoportban. Kattintson a Stream Analytics-feladatra. Ebben az oktatóanyagban a neve: **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
@@ -474,7 +497,7 @@ A Power BI-jelentés beállításához adatokra van szükség, ezért a Power BI
 
 Korábban, a szkript telepítési szakaszában beállított egy eszközt az IoT-eszköz használatának szimulálására. Ebben a szakaszban egy .NET-konzolalkalmazást tölt le, amely egy, az eszközről a felhőbe irányuló üzeneteket egy IoT Hubra küldő eszközt szimulál. Ez az alkalmazás mindegyik útválasztási módszerrel küld üzeneteket. 
 
-Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez letölt egy olyan adattárat, amelyben számos alkalmazás található. A keresett megoldás a Tutorials/Routing/SimulatedDevice/ mappában található.
+Az [IoT-eszköz szimulációjára](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) szolgáló megoldás letöltése. Ez letölt egy olyan adattárat, amelyben számos alkalmazás található. A keresett megoldás az iot-hub/Tutorials/Routing/SimulatedDevice/ mappában található.
 
 Kattintson duplán a megoldásfájlra (SimulatedDevice.sln), a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs fájlt. Az `{iot hub hostname}` értéket cserélje le az IoT Hub gazdagépnevére. Az IoT Hub gazdagépnevének formátuma: **{iot-hub-name}.azure-devices.net**. Ebben az oktatóanyagban a központ gazdagépneve: **ContosoTestHub.azure-devices.net**. Ezután a `{device key}` értéket cserélje le az eszközkulcsra, amelyet korábban, a szimulált eszköz beállítása során mentett. 
 
@@ -514,7 +537,7 @@ Ez a következőt jelenti:
 
 Most, hogy az alkalmazás fut, állítsa be a Power BI-vizualizációt az alapértelmezett útválasztáson keresztül érkező üzenetek megtekintéséhez. 
 
-## <a name="set-up-the-powerbi-visualizations"></a>Power BI-vizualizációk beállítása
+## <a name="set-up-the-power-bi-visualizations"></a>A Power BI-vizualizációk beállítása
 
 1. Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába.
 
@@ -560,9 +583,9 @@ A Power BI-ablak tetején található Frissítés gombra kattintva frissítheti 
 
 Ha az összes létrehozott erőforrást el kívánja távolítani, törölje az erőforráscsoportot. Ez a művelet törli a csoportban lévő összes erőforrást. Ebben az esetben eltávolítja az IoT Hubot, a Service Bus-névteret és -üzenetsort, a logikai alkalmazást, a tárfiókot és magát az erőforráscsoportot is. 
 
-### <a name="clean-up-resources-in-the-powerbi-visualization"></a>Erőforrások eltávolítása a Power BI-vizualizációban
+### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Erőforrások eltávolítása a Power BI-vizualizációban
 
-Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába. Lépjen a munkaterülethez. Ez az oktatóanyag a **My Workspace** nevű munkaterületet használja. A Power BI-vizualizáció eltávolításához lépjen az Adatkészletek területre, és törölje az adatkészletet a kuka ikonra kattintva. Ez az oktatóanyag a **contosodataset** nevet használja. Az adatkészlet eltávolításakor a jelentés is törlődik.
+Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába. Lépjen a munkaterülethez. Ez az oktatóanyag a **My Workspace** nevű munkaterületet használja. A Power BI-vizualizáció eltávolításához lépjen az Adathalmazok területre, és törölje az adathalmazt a kuka ikonra kattintva. Ez az oktatóanyag a **contosodataset** nevet használja. Az adatkészlet eltávolításakor a jelentés is törlődik.
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Az erőforrások eltávolítása az Azure CLI használatával
 
@@ -598,6 +621,6 @@ Ez az oktatóanyag bemutatta, hogyan használhatja az üzenetek útvonalválaszt
 A következő oktatóanyag az IoT-eszközök állapotának kezelését mutatja be. 
 
 > [!div class="nextstepaction"]
-[Ismerkedés az Azure IoT Hub-ikereszközökkel](iot-hub-node-node-twin-getstarted.md)
+[Eszközök konfigurálása háttérszolgáltatásból](tutorial-device-twins.md)
 
  <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

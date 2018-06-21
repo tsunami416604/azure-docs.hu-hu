@@ -1,42 +1,43 @@
 ---
-title: "Az Azure Service Fabric CLI parancsfájl mintaalkalmazás telepítését."
-description: "Alkalmazás üzembe helyezése az Azure Service Fabric-fürt, az Azure Service Fabric parancssori felület használatával"
+title: Azure Service Fabric parancssori felület (sfctl) szkript-üzembehelyezési minta
+description: Alkalmazás üzembe helyezése egy Azure Service Fabric-fürtön az Azure Service Fabric parancssori felület használatával
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 12/06/2017
+ms.date: 04/16/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: a9b7b2e3a8355aa0da0069bd27d2f61d8b5b8028
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 7e2bd212e88b3efcf7f3aad3ef1555b3fc48ef1b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641730"
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>A Service Fabric-fürt alkalmazás központi telepítése
+# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Alkalmazás üzembe helyezése egy Service Fabric-fürtön
 
-Ez a parancsfájlpélda másolja egy alkalmazáscsomagot a fürt lemezképtárolóhoz, az alkalmazástípus regisztrálása a fürtben, és létrehoz egy alkalmazáspéldányt az alkalmazástípus. Alapértelmezett szolgáltatások is létrejön, most.
+Ez a példaszkript egy alkalmazáscsomagot másol a fürt lemezképtárolójába, regisztrálja az alkalmazás típusát a fürtben, és létrehozza az alkalmazás egy példányát az alkalmazástípusból. Ekkor jönnek létre az alapértelmezett szolgáltatások is.
 
-Szükség esetén telepítse a [Service Fabric CLI](../service-fabric-cli.md).
+Amennyiben szükséges, telepítse a [Service Fabric parancssori felületet](../service-fabric-cli.md).
 
-## <a name="sample-script"></a>Mintaparancsfájl
+## <a name="sample-script"></a>Példaszkript
 
 [!code-sh[main](../../../cli_scripts/service-fabric/deploy-application/deploy-application.sh "Deploy an application to a cluster")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-Ha elkészült, a [eltávolítása](cli-remove-application.md) parancsfájl segítségével távolítsa el az alkalmazást. A remove-parancsfájl törli az alkalmazáspéldány, az alkalmazástípus regisztrációjának törlése, és az alkalmazáscsomag törlése az image store.
+Ha ezzel elkészült, a [remove](cli-remove-application.md) szkripttel eltávolíthatja az alkalmazást. A remove szkript eltávolítja az alkalmazáspéldányt, törli az alkalmazástípus regisztrációját, és eltávolítja az alkalmazáscsomagot a lemezképtárolóból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információkért lásd: a [Service Fabric CLI dokumentáció](../service-fabric-cli.md).
+További információ: [A Service Fabric parancssori felületének dokumentációja](../service-fabric-cli.md).
 
-Azure Service Fabric további Service Fabric CLI-példák találhatók a [Service Fabric CLI minták](../samples-cli.md).
+A [Service Fabric parancssori felület példái](../samples-cli.md) között további Service Fabric parancssori felületi példákat talál az Azure Service Fabrichez.

@@ -1,26 +1,24 @@
 ---
-title: 'NoSQL-oktatóanyag: Azure Cosmos DB Java SDK-t az SQL API |} Microsoft Docs'
-description: NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és az SQL API-val az Azure Cosmos DB Java konzolalkalmazást. Az Azure SQL egy NoSQL-adatbázis a JSON Formátumhoz.
+title: 'NoSQL-oktatóanyag: Azure Cosmos DB SQL API Java SDK | Microsoft Docs'
+description: NoSQL-oktatóanyag, amely létrehoz egy online adatbázist és egy Java-konzolalkalmazást az Azure Cosmos DB SQL API használatával. Az Azure SQL egy NoSQL-alapú adatbázis a JSON formátumhoz.
 keywords: nosql-oktatóanyag, online adatbázis, java konzolalkalmazás
 services: cosmos-db
-documentationcenter: Java
 author: SnehaGunda
 manager: kfile
-ms.assetid: 75a9efa1-7edd-4fed-9882-c0177274cbb2
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: java
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 8405894451c60f0661922584d9927960e3d0f611
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 36d65d7755b45f0da02776a90b09df3c6a3bcf02
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796978"
 ---
-# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: egy SQL API Java-Konzolalkalmazás létrehozása
+# <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-oktatóanyag: SQL API Java-konzolalkalmazás létrehozása
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -31,7 +29,7 @@ ms.lasthandoff: 04/16/2018
 >  
 > 
 
-Üdvözöljük a NoSQL-oktatóanyag az SQL API Azure Cosmos DB Java SDK-t! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
+Üdvözli az Azure Cosmos DB SQL API Java SDK-jához készült NoSQL-oktatóanyag! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -72,7 +70,7 @@ A GitHub-adattár klónozásával kezdheti meg [az Azure Cosmos DB és a Java ha
 
     cd azure-cosmos-db-documentdb-java-getting-started
 
-A könyvtár neve tartalmazza a `pom.xml` a projekt és egy `src` Java forrás kód beleértve tartalmazó mappa `Program.java` mely bemutatja hogyan Azure Cosmos DB például a dokumentumok létrehozása és egy gyűjteményben lévő adatok lekérdezése az egyszerű műveleteket hajtanak végre. A `pom.xml` a függőséget tartalmaz a [Azure Cosmos DB Java SDK Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+A könyvtár tartalmazza a projekt `pom.xml` fájlját és egy `src` mappát, amelyben megtalálható a Java-forráskód, valamint a `Program.java` fájl, amely bemutatja, hogyan hajthat végre egyszerű műveleteket az Azure Cosmos DB-vel, például dokumentumok létrehozását vagy adatlekérdezést egy gyűjteményen belül. A `pom.xml` fájl tartalmaz egy [Maven Azure Cosmos DB Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)-függőséget.
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -120,7 +118,7 @@ Egy [gyűjtemény](sql-api-resources.md#collections) a **DocumentClient** osztá
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>6. lépés: JSON-dokumentumok létrehozása
-A [dokumentumok](sql-api-resources.md#documents) a **DocumentClient** osztály [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) metódusával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha már rendelkezik az adatbázisban tárolni kívánt adatokat, használhatja az Azure Cosmos DB [adatáttelepítési eszközét](import-data.md) az adatok importálása az adatbázisba.
+A [dokumentumok](sql-api-resources.md#documents) a **DocumentClient** osztály [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) metódusával hozhatók létre. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, az Azure Cosmos DB [adatmigrálási eszközével](import-data.md) adatokat importálhat az adatbázisba.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -177,7 +175,7 @@ A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerő
     this.client.deleteDatabase("/dbs/familydb", null);
 
 ## <a id="Run"></a>11. lépés: Futtassa a teljes Java konzolalkalmazást!
-Az alkalmazás futtatásához a konzolról, keresse meg a projekt mappát, és fordítási Maven használatával:
+Az alkalmazás konzolról való futtatásához lépjen a projektmappába, és fordítsa le az alkalmazást Mavennel:
     
     mvn package
 

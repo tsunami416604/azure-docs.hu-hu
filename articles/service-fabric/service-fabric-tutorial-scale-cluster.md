@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: e80fad4d0bddff89ff4dda7feed90fc622369ee9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642699"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt skálázása
 
@@ -85,7 +86,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Miután csatlakozott, egy parancs használatával lekérheti a fürt egyes csomópontjainak állapotát. A PowerShell esetében használja a `Get-ServiceFabricClusterHealth`, az **sfctl** esetében pedig az `sfctl cluster select` parancsot.
+Miután csatlakozott, egy parancs használatával lekérheti a fürt egyes csomópontjainak állapotát. A **PowerShell** esetében használja a `Get-ServiceFabricClusterHealth`, az **sfctl** esetében pedig az `sfctl cluster select` parancsot.
 
 ## <a name="scale-out"></a>Horizontális felskálázás
 
@@ -131,15 +132,15 @@ A Service Fabric-fürtnek értesülnie kell róla, hogy ez a csomópont el lesz 
 
 1. Tiltsa le a csomópontot, hogy ezentúl ne replikálja az adatokat.  
 PowerShell: `Disable-ServiceFabricNode`  
-sfcli: `sfctl node disable`
+sfctl: `sfctl node disable`
 
 2. Állítsa le a csomópontot, hogy a Service Fabric-futtatókörnyezet szabályszerűen álljon le, és az alkalmazás kapjon egy megszakítási kérelmet.  
 PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfcli: `sfctl node transition --node-transition-type Stop`
+sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. Távolítsa el a csomópontot a fürtről.  
 PowerShell: `Remove-ServiceFabricNodeState`  
-sfcli: `sfctl node remove-state`
+sfctl: `sfctl node remove-state`
 
 A fenti három lépés alkalmazása után a csomópont eltávolítható a méretezési csoportból. A [Bronzon][durability] kívül bármely más tartóssági szint használata esetén a rendszer automatikusan végrehajtja ezeket a lépéseket a méretezési csoport adott példányának eltávolításakor.
 

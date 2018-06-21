@@ -1,33 +1,31 @@
 ---
-title: Hogyan használható az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB tábla API php-ből |} Microsoft Docs
-description: Használata php-ből a Table szolgáltatás API létrehozása, és törölni kívánja a táblázatot, és helyezze, törlése, és a tábla lekérdezése.
+title: Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével | Microsoft Docs
+description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 services: cosmos-db
-documentationcenter: php
 author: SnehaGunda
 manager: kfile
-ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: php
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 19d475c16b672b960b417391b4c3a6efe27f6cd6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797940"
 ---
-# <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Hogyan használható az Azure Storage Table szolgáltatás vagy Cosmos DB tábla API php-ből
+# <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az Azure Storage Table szolgáltatás és az Azure Cosmos DB tábla API használatával. A mintákat a PHP és -felhasználási nyelven íródtak a [Azure Storage tábla PHP ügyféloldali kódtár][download]. Az ismertetett forgatókönyvek **létrehozása és egy tábla törlése**, és **beszúrását, törlését és entitások egy tábla lekérdezése**. Az Azure Table szolgáltatás további információkért tekintse meg a [további lépések](#next-steps) szakasz.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Storage Table szolgáltatás és az Azure Cosmos DB Table API használatával. A kódminták PHP nyelven íródtak, és az [Azure Storage Table PHP-hoz készült ügyféloldali kódtárát][download] használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével**, valamint a **táblaentitások beszúrásával, törlésével és lekérdezésével** foglalkoznak. Az Azure Table Service szolgáltatással kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
 
 
-## <a name="create-an-azure-service-account"></a>Az Azure szolgáltatás-fiók létrehozása
+## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
@@ -35,19 +33,19 @@ Ez az útmutató bemutatja, hogyan hajthat végre a gyakori forgatókönyvek az 
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB tábla API-fiók létrehozása
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>PHP-alkalmazás létrehozása
 
-A csak a Storage Table szolgáltatás vagy az Azure Cosmos DB tábla API eléréséhez PHP-alkalmazás létrehozásának mérete az azure-storage-tábla SDK osztályok hivatkozni a php a kód. A fejlesztői eszközök hozhat létre az alkalmazás, például a Jegyzettömbbel.
+A Storage Table szolgáltatáshoz vagy az Azure Cosmos DB Table API-hoz való hozzáférés céljából létrehozott PHP-alkalmazásokra vonatkozó egyetlen követelmény, hogy a kódból a PHP-hoz készült Azure Storage Table SDK-ban szereplő osztályokra hivatkozzon. Az alkalmazás létrehozásához bármilyen fejlesztői eszközt (pl. Jegyzettömböt) használhat.
 
-Ebben az útmutatóban használja a Storage Table szolgáltatás vagy Azure Cosmos DB hívható a PHP-alkalmazás helyileg, vagy egy Azure webes szerepkörről, a feldolgozói szerepkör vagy a webhely belül futó szolgáltatásokat.
+Ebben az útmutatóban olyan Storage Table szolgáltatási vagy Azure Cosmos DB-funkciókat használunk, amelyek egy PHP-alkalmazásból helyileg hívhatóak meg, vagy egy Azure-beli webes szerepkörben, feldolgozói szerepkörben, vagy weboldalon futó kódban.
 
-## <a name="get-the-client-library"></a>Az ügyfél-függvénytár
+## <a name="get-the-client-library"></a>Az ügyfélkönyvtár lekérése
 
-1. Hozzon létre egy fájlt a projekt gyökérkönyvtárában található composer.json, és az alábbi kód hozzáadása:
+1. Hozzon létre egy composer.json nevű fájlt a projekt gyökérkönyvtárában, és adja hozzá az alábbi kódot:
 ```json
 {
   "require": {
@@ -55,58 +53,58 @@ Ebben az útmutatóban használja a Storage Table szolgáltatás vagy Azure Cosm
   }
 }
 ```
-2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) a gyökérkönyvtárba. 
-3. Nyisson meg egy parancssort, és hajtsa végre a következő parancsot a projekt gyökérkönyvtárában:
+2. Töltse le a [composer.phar](http://getcomposer.org/composer.phar) fájlt a gyökérkönyvtárba. 
+3. Nyissa meg a parancssort, és hajtsa végre az alábbi parancsot a projekt gyökérkönyvtárában:
 ```
 php composer.phar install
 ```
-Azt is megteheti, lépjen a [Azure Storage tábla PHP ügyféloldali kódtár](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) a Githubon a forráskód klónozását.
+Másik megoldásként navigáljon az [Azure Storage Table PHP ügyféloldali kódtárához](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) a GitHubon, és klónozza a forráskódot.
 
 
-## <a name="add-required-references"></a>Adja hozzá a szükséges hivatkozások
-A Storage Table szolgáltatás vagy Azure Cosmos DB API-kat használ, a következőket kell tennie:
+## <a name="add-required-references"></a>Szükséges referenciák hozzáadása
+A Storage Table szolgáltatás vagy az Azure Cosmos DB API-k használatához a következőket kell tennie:
 
-* A robotot fájl használatával hivatkozik a [require_once] [ require_once] utasítást, és
-* Bármely osztályok használata hivatkozik.
+* Hivatkozzon az automatikus betöltő fájlra a [require_once][require_once] utasítás használatával, és
+* hivatkozzon bármely felhasznált osztályra.
 
-A következő példa bemutatja, hogyan a robotot fájl és a hivatkozás a **TableRestProxy** osztály.
+A következő példa bemutatja, hogyan használható az automatikus betöltő fájl és hogyan lehet a **TableRestProxy** osztályra hivatkozni.
 
 ```php
 require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Table\TableRestProxy;
 ```
 
-Az alábbi példákban a `require_once` utasítás mindig megjelenik, de csak a szükséges végrehajtandó például osztályok hivatkozott.
+Az alábbi példákban a `require_once` utasítás mindig látható, de csak a példa által végrehajtandó osztályokra hivatkozik.
 
-## <a name="add-a-storage-table-service-connection"></a>Adja hozzá a tárolási tábla szolgáltatáskapcsolódási
-A tárolási Table szolgáltatásügyfél példányt létrehozni, először rendelkeznie kell érvényes kapcsolati karakterláncot. A Storage szolgáltatás kapcsolati karakterlánc formátuma:
+## <a name="add-a-storage-table-service-connection"></a>Storage Table szolgáltatási kapcsolat hozzáadása
+Storage Table szolgáltatási ügyfél példányosításához először is rendelkeznie kell egy érvényes kapcsolati sztringgel. A Storage szolgáltatás kapcsolati sztringjének formátuma:
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Egy Azure Cosmos adatbázis-kapcsolat hozzáadása
-Egy Azure Cosmos Adatbázistáblájából ügyfél példányt létrehozni, először egy érvényes kapcsolati karakterláncot kell rendelkeznie. Az Azure Cosmos DB kapcsolati karakterlánc formátuma:
+## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
+Azure Cosmos DB Table-ügyfél példányosításához először is rendelkeznie kell egy érvényes kapcsolati sztringgel. Az Azure Cosmos DB kapcsolati sztringjének formátuma:
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-## <a name="add-a-storage-emulator-connection"></a>A Storage emulator kapcsolat hozzáadása
-Az emulátor tároló elérésére:
+## <a name="add-a-storage-emulator-connection"></a>Storage Emulator-kapcsolat hozzáadása
+Az emulátor tárolójának elérése:
 
 ```php
 UseDevelopmentStorage = true
 ```
 
-Az Azure Table szolgáltatásügyfél vagy Azure Cosmos DB ügyfél létrehozásához kell használnia a **TableRestProxy** osztály. A következőket teheti:
+Azure Table Service-ügyfél vagy Azure Cosmos DB-ügyfél létrehozásához a **TableRestProxy** osztályt kell használnia. A következőket teheti:
 
-* a kapcsolati karakterláncot adja át a közvetlenül vagy
-* Használja a **CloudConfigurationManager (CCM)** ellenőrizze a kapcsolati karakterlánc több külső forrás:
-  * Alapértelmezés szerint az tartalmaz egy külső adatforrás - környezeti változók támogatása.
-  * Új forrásból történő kiterjesztésével adhat hozzá a `ConnectionStringSource` osztály.
+* A kapcsolati sztringet továbbíthatja közvetlenül, vagy
+* használhatja a **CloudConfigurationManager (CCM)** eszközt, ha több külső forrást szeretne ellenőrizni a kapcsolati sztringhez:
+  * Alapértelmezés szerint csak egy külső forrást támogat: a környezeti változókat.
+  * Új forrásokat a `ConnectionStringSource` osztály kiterjesztésével adhat hozzá.
 
-Az itt leírt példák a kapcsolati karakterlánc közvetlenül át.
+Az itt ismertetett példák esetében a kapcsolati sztringet közvetlenül továbbítjuk.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -117,7 +115,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-A **TableRestProxy** objektum lehetővé teszi, hogy a tábla létrehozása a **createTable** metódust. Ha a táblázatok létrehozásáról, beállíthatja a Table szolgáltatás időtúllépés. (A Table szolgáltatás időtúllépési kapcsolatos további információkért lásd: [időtúllépések beállítása a szolgáltatási műveletek tábla][table-service-timeouts].)
+A **TableRestProxy** objektum lehetővé teszi egy tábla létrehozását a **createTable** metódussal. Tábla létrehozásakor beállíthatja a Table Service időkorlátját. (További információkat a Table Service időkorlátjáról [a Table Service-műveletek időkorlátjának beállításával][table-service-timeouts] kapcsolatos cikkben olvashat.)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -141,10 +139,10 @@ catch(ServiceException $e){
 }
 ```
 
-Táblanevek vonatkozó megkötésekkel kapcsolatos információkért lásd: [ismertetése a Table szolgáltatás adatmodell][table-data-model].
+További információt a táblák nevére vonatkozó korlátozásokról a [Table Service adatmodelljét ismertető][table-data-model] témakörben talál.
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Egy entitás felvételére egy táblához, hozzon létre egy új **entitás** objektumot, és adja át a **TableRestProxy -> insertEntity**. Vegye figyelembe, hogy egy entitás létrehozásakor meg kell adnia egy `PartitionKey` és `RowKey`. Egy entitás egyedi azonosítói azok és értékek, amelyek sokkal gyorsabb, mint más entitás tulajdonságai kérdezhetők le. A rendszer használja `PartitionKey` automatikusan terjesztené a táblaentitásokat számos tárolási csomópont feladatait. Entitások azonos `PartitionKey` ugyanazon a csomóponton találhatók. (Ugyanazon a csomóponton tárolt entitásokat műveletek végrehajtása jobb, mint a más csomópontjai között tárolt entitásokat.) A `RowKey` egy partíció egy entitás egyedi azonosítója.
+Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új **Entity** objektumot, és továbbítsa a **TableRestProxy->insertEntity** metódushoz. Vegye figyelembe, hogy entitás létrehozásakor meg kell adnia egy `PartitionKey` és egy `RowKey` értéket. Ezek az entitás egyedi azonosítói, és az értékeik sokkal gyorsabban lekérdezhetők, mint a többi entitástulajdonság. A rendszer a `PartitionKey` használatával automatikusan elosztja a tábla entitásait számos tárcsomópont között. Az ugyanazzal a `PartitionKey` tulajdonsággal rendelkező entitások tárolása ugyanazon a csomóponton történik. (Az azonos csomóponton tárolt entitásokon végrehajtott műveletek teljesítménye jobb, mint az eltérő csomópontokon tároltak esetében.) A `RowKey` az entitás egyedi azonosítója egy partíción belül.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -178,9 +176,9 @@ catch(ServiceException $e){
 }
 ```
 
-További információ a táblázat tulajdonságai és típusok: [ismertetése a Table szolgáltatás adatmodell][table-data-model].
+További információt a táblatulajdonságokról és -típusokról a [Table Service adatmodelljét ismertető][table-data-model] témakörben talál.
 
-A **TableRestProxy** osztály entitások beszúrására szolgáló két alternatív módszert kínál: **insertOrMergeEntity** és **insertOrReplaceEntity**. Ezeket a módszereket használja, hozzon létre egy új **entitás** , és adja át paraméterként mindkét módszer. Az egyes módszerek szúrnak az entitás, ha nem létezik. Ha már létezik az entitás, **insertOrMergeEntity** tulajdonságértékek frissíti, ha a tulajdonságai már léteznek, és hozzáadja az új tulajdonságok ha azok nem léteznek, miközben **insertOrReplaceEntity** teljesen lecseréli a meglévő entitás. A következő példa bemutatja, hogyan használható **insertOrMergeEntity**. Ha az entitás `PartitionKey` "tasksSeattle" és `RowKey` "1" már nem létezik, szúrja be. Azonban ha azt korábban beszúrt (a fenti példa szerint), a `DueDate` tulajdonság frissül, és a `Status` tulajdonság hozzá lett adva. A `Description` és `Location` tulajdonságok is frissülnek, de értékekkel, amely hatékonyan hagyja őket változatlan marad. Ha ez utóbbi a tulajdonság a volt nem szerepel a példában látható módon, de a célentitás már létezett, meglévő értékeik változatlan marad.
+A **TableRestProxy** osztály két alternatív metódust kínál az entitások beszúrásához: az **insertOrMergeEntity** és az **insertOrReplaceEntity** metódust. A két metódus használatához hozzon létre egy új **entitást**, és továbbítsa azt valamelyik metódusnak paraméterként. Mindkét metódus beszúrja az entitást, ha az nem létezik. Ha az entitás már létezik, az **insertOrMergeEntity** frissíti a tulajdonságértékeket, ha a tulajdonságok már léteznek, és új tulajdonságokat ad hozzá, ha még nem, míg az **insertOrReplaceEntity** teljesen lecseréli a meglévő entitást. A következő példa az **insertOrMergeEntity** használatát mutatja be. Ha a „taskSeattle” `PartitionKey`-értékkel, és az „1” `RowKey`-értékkel rendelkező entitás még nem létezik, akkor beszúrja. Ha azonban azt korábban már beszúrták (ahogyan a fenti példa mutatja), akkor frissíti a `DueDate` tulajdonságot, a `Status` tulajdonságot pedig hozzáadja. A `Description` és `Location` tulajdonságok is frissülnek, de olyan értékekkel, amelyek révén lényegében nem változnak. Ha a két utóbbi érték a példától eltérő módon nem lenne hozzáadva, de létezne a célentitáson, akkor meglévő értékeik változatlanok maradtak volna.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -223,7 +221,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
-A **TableRestProxy -> getEntity** módszer lehetővé teszi egyetlen entitás lekérdezése által végzett lekérdezés a `PartitionKey` és `RowKey`. A partíciós kulcs az alábbi példában a `tasksSeattle` és sorkulcsa `1` kerülnek átadásra a **getEntity** metódust.
+A **TableRestProxy->getEntity** metódus lehetővé teszi egyetlen entitás lekérését a `PartitionKey` és a `RowKey` tulajdonsága lekérdezésével. Az alábbi példában a `tasksSeattle` partíciókulcsot és az `1` sorkulcsot továbbítjuk a **getEntity** metódushoz.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +250,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
-Entitás lekérdezések össze szűrők használata (további információkért lásd: [lekérdezése táblákat és entitásokat][filters]). A partíció összes entitásának lekérése, a szűrő használata "PartitionKey eq *partíció_neve*". A következő példa bemutatja, hogyan összes entitásának lekérése a `tasksSeattle` partíció úgy, hogy egy szűrőt, amely a **queryEntities** metódust.
+Az entitáslekérdezések szűrők használatával jönnek létre (további információt a [táblák és entitások lekérdezésével][filters] kapcsolatos témakörben olvashat). Ha egy partíció minden entitását le szeretné kérdezni, használja a "PartitionKey eq *partíció_neve*" szűrőt. Az alábbi példa bemutatja, hogyan kérheti le a `tasksSeattle` partíció minden entitását úgy, hogy egy szűrőt továbbít a **queryEntities** metódusnak.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -284,8 +282,8 @@ foreach($entities as $entity){
 }
 ```
 
-## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Partíció entitástartományának részhalmazát
-Az előző példában használt ugyanilyen mintájú segítségével bármely részét partíció entitástartományának lekérése. Az entitások lekérése részhalmazát határozza meg a szűrő használata (további információkért lásd: [lekérdezése táblákat és entitásokat][filters]). A következő példa bemutatja, hogyan szűrő segítségével egy adott összes entitásának lekérése `Location` és egy `DueDate` kisebb, mint a megadott dátum.
+## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Entitások egy részének lekérése egy partíción belül
+Az előző példában használt minta felhasználható entitások bármilyen részhalmazának lekérésére egy partíción belül. Az entitások részhalmazát a felhasznált szűrő határozza meg (további információt a [táblák és entitások lekérdezésével][filters] kapcsolatos témakörben olvashat). Az alábbi példa bemutatja, hogyan kérhet le egy szűrő segítségével minden olyan entitást, amely adott `Location` és a meghatározottnál korábbi `DueDate` értékkel rendelkezik.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -317,8 +315,8 @@ foreach($entities as $entity){
 }
 ```
 
-## <a name="retrieve-a-subset-of-entity-properties"></a>Entitás tulajdonságai részhalmazát
-A lekérdezés Entitástulajdonságok egy részének kérheti le. Ezzel a módszerrel nevű *leképezése*, csökkenti a sávszélesség, és javíthatja a lekérdezési teljesítményt, különösen olyan nagyméretű entitásokat. Egy tulajdonság beolvasása megadásához adja át a tulajdonság nevét a **-> addSelectField** metódust. Ön a metódus hívása többször fel további tulajdonságokat. Végrehajtása után **TableRestProxy -> queryEntities**, a visszaadott entitások csak van a megadott tulajdonságokat. (Ha táblaentitásokat részhalmazát adja vissza, használjon szűrőt a lekérdezések a fenti ábrán.)
+## <a name="retrieve-a-subset-of-entity-properties"></a>Az entitástulajdonságok egy részének lekérése
+Egy lekérdezéssel lekérhető az entitástulajdonságok egy része. Ez a *leképezésnek* hívott technika csökkenti a sávszélesség felhasználását, és javíthatja a lekérdezési teljesítményt, főleg a nagy entitások esetén. Ha szeretne megadni egy lekérendő tulajdonságot, továbbítsa a tulajdonság nevét a **Query->addSelectField** metódusnak. Ezt a metódust többször is meghívhatja, ha több tulajdonságot szeretne hozzáadni. A **TableRestProxy->queryEntities** metódus végrehajtását követően a visszaadott entitások csak a kiválasztott tulajdonságokkal fognak rendelkezni. (Ha táblaentitások egy részét szeretné visszakapni, használjon a fenti lekérdezésekben szereplőhöz hasonló szűrőt).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -356,8 +354,8 @@ foreach($entities as $entity){
 }
 ```
 
-## <a name="update-an-entity"></a>Egy entitás frissítése
-Használatával frissítheti a meglévő entitás a **entitás -> setProperty** és **entitás -> addProperty** entitást, és ezután hívása módszerek **TableRestProxy updateEntity->**. A következő példa egy entitás lekéri, módosítja egy tulajdonságot, egy másik tulajdonságának eltávolítja és új tulajdonsággal. Vegye figyelembe, hogy eltávolításához a tulajdonság érték beállítása **null**.
+## <a name="update-an-entity"></a>Entitás frissítése
+Meglévő entitás frissítéséhez használja az **Entity->setProperty** és az **Entity->addProperty** metódusokat az entitáson, majd hívja meg a **TableRestProxy->updateEntity** metódust. A következő példa visszaad egy entitást, módosít egy tulajdonságot, eltávolít egy másik tulajdonságot, és hozzáad egy újat. Ne feledje, hogy egy tulajdonságot úgy is eltávolíthat, ha **null**értéket ad meg hozzá.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -391,7 +389,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
-Entitás törlése, adja át a táblázat nevét, és az entitás `PartitionKey` és `RowKey` számára a **TableRestProxy -> deleteEntity** metódus.
+Entitás törléséhez továbbítsa a tábla nevét, valamint az entitás `PartitionKey` és `RowKey` tulajdonságait a **TableRestProxy->deleteEntity** metódusnak.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -416,19 +414,19 @@ catch(ServiceException $e){
 }
 ```
 
-Párhuzamossági ellenőrzésére, az Etag entitás használatával a törlendő állíthatja be a **DeleteEntityOptions -> setEtag** metódus és a sikeres a **DeleteEntityOptions** objektum  **deleteEntity** negyedik paraméterként.
+Egyidejűségi ellenőrzések esetén beállíthatja az entitás ETagjének törlését a **DeleteEntityOptions->setEtag** metódus használatával és a **DeleteEntityOptions** objektum negyedik paraméterként való továbbításával a **deleteEntity** számára.
 
-## <a name="batch-table-operations"></a>Kötegelt tábla műveletek
-A **TableRestProxy -> kötegelt** módszer lehetővé teszi egyetlen kérelem több műveletek végrehajtása. A mintát itt magában foglalja a műveletek hozzáadása **BatchRequest** objektumot, és ezután átadja a **BatchRequest** az objektum a **TableRestProxy -> kötegelt** metódust. A művelet hozzáadása egy **BatchRequest** objektum többször hívása a következő módszerek egyikét:
+## <a name="batch-table-operations"></a>Kötegelt táblaműveletek
+A **TableRestProxy->batch** metódus lehetővé teszi több művelet végrehajtását egyetlen kéréssel. A mintázat részét képezi műveletek hozzáadása a **BatchRequest** objektumhoz, majd a **BatchRequest** objektum továbbítása a **TableRestProxy->batch** metódusnak. Ha egy műveletet szeretne hozzáadni a **BatchRequest** objektumhoz, az alábbi metódusok bármelyikét többször is meghívhatja:
 
-* **addInsertEntity** (hozzáad egy insertEntity művelet)
-* **addUpdateEntity** (hozzáad egy updateEntity művelet)
-* **addMergeEntity** (hozzáad egy mergeEntity művelet)
-* **addInsertOrReplaceEntity** (hozzáad egy insertOrReplaceEntity művelet)
-* **addInsertOrMergeEntity** (hozzáad egy insertOrMergeEntity művelet)
-* **addDeleteEntity** (hozzáad egy deleteEntity művelet)
+* **addInsertEntity** (hozzáad egy insertEntity műveletet)
+* **addUpdateEntity** (hozzáad egy updateEntity műveletet)
+* **addMergeEntity** (hozzáad egy mergeEntity műveletet)
+* **addInsertOrReplaceEntity** (hozzáad egy insertOrReplaceEntity műveletet)
+* **addInsertOrMergeEntity** (hozzáad egy insertOrMergeEntity műveletet)
+* **addDeleteEntity** (hozzáad egy deleteEntity műveletet)
 
-A következő példa bemutatja, hogyan hajthat végre **insertEntity** és **deleteEntity** egyetlen kérelem műveletei. 
+A következő példa az **insertEntity** és a **deleteEntity** művelet egy kérésben történő végrehajtásának módját mutatja be. 
 
 ```php
 require_once 'vendor/autoload.php';
@@ -476,10 +474,10 @@ catch(ServiceException $e){
 }
 ```
 
-Tábla műveletek kötegelése kapcsolatos további információkért lásd: [entitás csoport tranzakciók végrehajtása][entity-group-transactions].
+További információk a táblaműveletek kötegeléséről: [Entitáscsoport-tranzakciók végrehajtása][entity-group-transactions].
 
 ## <a name="delete-a-table"></a>Tábla törlése
-Végezetül törölni kívánja a táblázatot, adja át a táblázat nevét, hogy a **TableRestProxy -> deleteTable** metódust.
+Végül tábla törléséhez továbbítsa a tábla nevét a **TableRestProxy->deleteTable** metódusnak.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -505,11 +503,11 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte az Azure Table szolgáltatás és az Azure Cosmos DB alapjait, az alábbi hivatkozásokból további.
+Most, hogy megismerte az Azure Table Service és az Azure Cosmos DB alapjait, az alábbi hivatkozásokra kattintva tudhat meg többet.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
-* [A PHP fejlesztői központ](/develop/php/).
+* [PHP fejlesztői központ](/develop/php/).
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: http://php.net/require_once

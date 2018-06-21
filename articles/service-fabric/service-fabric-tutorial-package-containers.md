@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b98c1995aa9051029049711ece18aeb23c444f1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365382"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642794"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Oktatóanyag: tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként
 
@@ -237,7 +237,7 @@ További információk saját fürtök létrehozásáról: [Service Fabric-fürt
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Az alkalmazás felépítése és üzembe helyezése a fürtön
 A Service Fabric parancssori felületével helyezheti üzembe az alkalmazást az Azure-fürtben. Ha a Service Fabric parancssori felülete nincs telepítve a gépre, kövesse az [itt](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) található utasításokat a telepítéséhez. 
 
-Csatlakozzon az Azure Service Fabric-fürthöz. Cserélje le a helyőrző végpontot a sajátjára. A végpontnak az alábbihoz hasonló teljes URL-címnek kell lennie.
+Csatlakozzon az Azure Service Fabric-fürthöz. Cserélje le a példában szereplő végpontot a sajátjára. A végpontnak az alábbihoz hasonló teljes URL-címnek kell lennie.
 
 ```bash
 sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify

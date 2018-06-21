@@ -6,21 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d52691dbec932a3515c90e757863be01ade086cc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208838"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715955"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure-beli virtuális gép replikálása másik Azure-régióba
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
-Ez a rövid útmutató egy Azure-beli virtuális gép másik Azure-régióba való replikálását ismerteti. Az Azure-ról Azure-ba történő replikáció engedélyezése jelenleg előzetes verzióban érhető el.
+Ez a rövid útmutató egy Azure-beli virtuális gép másik Azure-régióba való replikálását ismerteti. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -47,7 +47,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 A replikálási feladat befejeződése után ellenőrizheti a replikálás állapotát, módosíthatja a replikációs beállításokat, és tesztelheti az üzemelő példányt.
 
-1. A Virtuális gép menüben kattintson a **Vészhelyreállítás (előzetes verzió)** lehetőségre.
+1. A Virtuális gép menüben kattintson a **Vészhelyreállítás** elemre.
 2. Ellenőrizheti a replikálás állapotát, a létrehozott helyreállítási pontokat és a forrás és cél régiókat a térképen.
 
    ![A replikálás állapota](media/azure-to-azure-quickstart/replication-status.png)

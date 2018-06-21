@@ -1,98 +1,96 @@
 ---
-title: Az Azure Cosmos DB Cassandra API bemutatása |} Microsoft Docs
-description: Ismerje meg, hogyan "növekedési-és-shift" meglévő alkalmazások Azure Cosmos Adatbázist kíván használni, és új alkalmazások Cassandra illesztőprogramok és CQL már ismeri a Cassandra API használatával.
+title: Bevezetés az Azure Cosmos DB Cassandra API használatába | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB meglévő alkalmazások áthelyezésére és új alkalmazások létrehozására a Cassandra API segítségével a már ismert Cassandra-illesztőprogramok és CQL használatával.
 services: cosmos-db
 author: govindk
-manager: ''
-documentationcenter: ''
-ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
+manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-cassandra
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 65ab01031ed0fe554ef162f0115bdda39fd1c80b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: edc8ba7f8dd52a5facbfeb930a8660b082d72877
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795271"
 ---
-# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Bevezetés az Azure Cosmos DB: Apache Cassandra API
+# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Bevezetés az Azure Cosmos DB használatába: az Apache Cassandra API
 
-Azure Cosmos DB biztosít írt alkalmazások az Apache Cassandra, hogy kell prémium képességei, például a Cassandra API (előzetes verzió):
+Az Azure Cosmos DB a Cassandra API-t (előzetes verzió) biztosítja az Apache Cassandrához írt olyan alkalmazások számára, amelyekhez a következő prémium képességek szükségesek:
 
-* [Méretezhető tárolás méretét és az átvitel](partition-data.md).
-* [Kulcsrakész globális terjesztési](distribute-data-globally.md)
+* [Skálázható tárhelyméret és teljesítmény](partition-data.md).
+* [Kulcsrakész globális disztribúció](distribute-data-globally.md)
 * Az esetek 99%-ában egyszámjegyű ezredmásodperces késés.
-* [Öt jól meghatározott konzisztenciaszintek](consistency-levels.md)
-* [Az adatok automatikus indexeléshez](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a séma- és index felügyeleti foglalkozik. 
-* Magas rendelkezésre állás érdekében minden biztonsági mentés által garantált [iparágvezető SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
+* [Öt jól definiált konzisztenciaszint](consistency-levels.md)
+* [Az adatok automatikus indexelése](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. 
+* [Az iparág legjobb szolgáltatásiszint-szerződései](https://azure.microsoft.com/support/legal/sla/cosmos-db/) által biztosított garantáltan magas szintű rendelkezésre állás
 
-## <a name="what-is-the-azure-cosmos-db-apache-cassandra-api"></a>Mi az az Azure Cosmos DB Apache Cassandra API-t?
+## <a name="what-is-the-azure-cosmos-db-apache-cassandra-api"></a>Mi az Azure Cosmos DB Apache Cassandra API?
 
-Azure Cosmos-adatbázis is használható adattárként írt [Apache Cassandra](https://cassandra.apache.org/), az Apache Cassandra API használatával. Ez azt jelenti, hogy a meglévő [Apache licencelt CQLv4 kompatibilis illesztőprogramok](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver), az írt Cassandra most már képes kommunikálni az Azure Cosmos DB Cassandra API alkalmazás. Sok esetben megváltoztathatja az Apache Cassandra segítségével Azure Cosmos DB Apache Cassandra API használatával egyszerűen módosítja a kapcsolati karakterláncot. Ezzel a funkcióval könnyedén építhet és futtatási Cassandra API adatbázis-alkalmazások az Azure felhőalapú Azure Cosmos DB globális eloszláshoz és [átfogó iparágvezető SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db), miközben továbbra is használja a megszokott ismeretei és eszközei Cassandra API-hoz.
+Az Apache Cassandra API használatával az Azure Cosmos DB használható adattárként az [Apache Cassandrára](https://cassandra.apache.org/) írt alkalmazásokhoz. Ez azt jelenti, hogy a meglévő [Apache-licencelt, CQLv4-kompatibilis illesztők](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) segítségével a Cassandrára írt alkalmazások mostantól kommunikálhatnak az Azure Cosmos DB Cassandra API-val. Sok esetben egy kapcsolati sztring egyszerű módosításával válthat az Apache Cassandra használatáról az Azure Cosmos DB Apache Cassandra API-jának használatára. A funkció használatával könnyedén hozhat létre és futtathat Cassandra API adatbázis-alkalmazásokat az Azure felhőben az Azure Cosmos DB globális elosztási képességeivel és [iparágvezető átfogó szolgáltatói szerződéseivel](https://azure.microsoft.com/support/legal/sla/cosmos-db), miközben továbbra is alkalmazhatja a Cassandra API használata során megszerzett ismereteit és megszokott eszközeit.
 
 ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-A Cassandra API lehetővé teszi a Azure Cosmos DB Cassandra Query Language-alapú eszközök (például CQLSH) segítségével tárolt adatok kezeléséhez, és Cassandra ügyfél illesztőprogramok ismeri már. További információ a Microsoft Mechanics videó az egyszerű mérnöki Manager Kirill Gavrylyuk.
+A Cassandra API segítségével a már ismert Cassandra Query Language-alapú eszközök (például a CQLSH) és Cassandra-ügyfél illesztőprogramok segítségével kezelheti az Azure Cosmos DB-ben tárolt adatokat. További információkat ezzel kapcsolatban a Kirill Gavrylyuk főmérnökkel készített Microsoft Mechanics-videóban talál.
 
 > [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
 >
 
-## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Mi az az előnye, hogy az Azure Cosmos DB Apache Cassandra API használatával?
+## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Milyen előnyökkel jár az Azure Cosmos DB az Apache Cassandra API-n keresztüli használata?
 
-**Nincs az operations management**: igaz értékű teljes körűen felügyelt szolgáltatás, mivel Azure Cosmos DB biztosítja, hogy Cassandra API-rendszergazdák nem kezelése és az operációs rendszer, a JVM-et és a yam fájlokat és azok együttműködés átívelő figyelésére is alkalmas a tárfiókokhoz beállítások foglalkoznia. Az Azure Cosmos DB átviteli, késés, tárolási és rendelkezésre állását és konfigurálható riasztások figyelést biztosít. 
+**Nincs szükség üzemeltetésre**: Valóban teljesen felügyelt szolgáltatásként az Azure Cosmos DB biztosítja, hogy a Cassandra API-rendszergazdáknak nem kell aggódniuk az operációs rendszerben, a JVM-ben és a yaml-fájlokban lévő számtalan beállítás és azok összjátékának felügyeletét és monitorozását illetően. Az Azure Cosmos DB biztosítja a teljesítmény, a késés, a tárolás és a rendelkezésre állás, valamint a konfigurálható riasztások monitorozását. 
 
-**Teljesítménykezelés**: Azure Cosmos DB SLA biztonsági kis késleltetésű olvasások biztosít, és beírja a 99th PERCENTILIS visszaadása. Felhasználók nem kell foglalkoznia a működési munkaterhelés adja meg a helyes olvasási és írási SLA-k számos. Ezek rendszerint ütemezés tömörítés, törlendő elemek, a virágzó szűrők beállítását, és a replika késedelmes jelentések kezelése. Az Azure Cosmos DB vesz számítógépnél kezelését ezek aggódjon állít ki, és lehetővé teszi, hogy az alkalmazás termékek összpontosítanak.
+**Teljesítménykezelés**: Az Azure Cosmos DB az SLA által garantált alacsony késésű olvasási és írási teljesítményt biztosít az esetek 99%-ában. A felhasználóknak nem kell aggódniuk a magas szintű olvasási és írási teljesítmény biztosításához szükséges végeláthatatlan felügyeleti tevékenységek miatt. Ezek rendszerint a tömörítés ütemezését, a törlendő elemek kezelését, a Bloom-szűrők beállítását és a replikakésések kezelését jelentik. Az Azure Cosmos DB segítségével ezekkel a problémákkal nem kell törődnie, és így az alkalmazás megvalósítására összpontosíthat.
 
-**Az automatikus indexeléshez**: Azure Cosmos DB automatikusan elvégzi a Cassandra API-adatbázis táblája az összes oszlopot. Azure Cosmos-adatbázis nem kell lekérdezéseket felgyorsítása érdekében másodlagos indexek létrehozását. Ez biztosítja a kis késleltetésű olvasási és írási állást konzisztens indexelő ennek során. 
+**Automatikus indexelés**: Az Azure Cosmos DB automatikusan indexeli a Cassandra API-adatbázisban lévő táblák összes oszlopát. Az Azure Cosmos DB-ben nem szükséges másodlagos indexeket létrehozni a lekérdezések meggyorsítására. Alacsony késleltetésű olvasási és írási teljesítményt, valamint automatikus konzisztens indexelést biztosít. 
 
-**Használhatja a meglévő kódot és az eszközök**: Azure Cosmos DB szolgáltatás átviteli protokoll szintű kompatibilis a meglévő SDK-k és eszközök. Ez a kompatibilitási biztosítja, használhatja a meglévő kódbázisra és Cassandra API az Azure Cosmos DB trivial módosításokkal.
+**A meglévő kódok és eszközök használata**: Az Azure Cosmos DB protokollszintű kompatibilitást biztosít a meglévő SDK-kkal és eszközökkel. A kompatibilitásnak köszönhetően meglévő kódbázisát minimális változtatásokkal használhatja az Azure Cosmos DB Cassandra API-jával.
 
-**Átviteli sebesség és tárterület a rugalmasság**: Azure Cosmos platform garantált átviteli rugalmassága lehetővé teszi az egyszerű portálon PowerShell, régiók vagy a CLI műveletek. Rugalmasan méretezhető Azure Cosmos DB táblák és a kiszámítható teljesítmény zökkenőmentesen pedig az alkalmazás forgalmához igazítható. Azure Cosmos DB Cassandra API-táblázatot, amely méretezhető, gyakorlatilag korlátlan tárterület mérete támogatja. 
+**Rugalmas teljesítmény és tárolás**: Az Azure Cosmos platform rugalmas garantált átviteli teljesítményt biztosít a régiók között egyszerű portál-, PowerShell- és CLI-műveletek segítségével. Ahogy az alkalmazás növekszik, kiszámítható teljesítmény mellett, rugalmasan és zökkenőmentesen méretezheti az Azure Cosmos DB tábláit. Az Azure Cosmos DB támogatja a Cassandra API-táblákat, amelyek szinte korlátlanul méretezhető tárterületet biztosítanak. 
 
-**Globális terjesztési és rendelkezésre állás**: Azure Cosmos DB lehetővé teszi a teljes Azure-régiók jogosultak egy kis késleltetésű nyújthassunk során a rendelkezésre állási adatok terjesztése. Azure Cosmos-adatbázis rendelkezésre állás 99,99 % régión belül biztosít, és 99.999 % olvassa el a rendelkezésre állási nem műveletek terhelést a régiók között. Az Azure Cosmos DB érhető el a 30 + [Azure-régiókat](https://azure.microsoft.com/regions/services/). További információ: [adatok globálisan terjesztése](distribute-data-globally.md). 
+**Globális elosztás és rendelkezésre állás**: Az Azure Cosmos DB segítségével az adatokat eloszthatja a különböző Azure-régiókba, így a felhasználók alacsony késéssel és nagy rendelkezésre állás mellett férhetnek azokhoz. Az Azure Cosmos DB a régión belül 99,99%-os, a régiók között 99,999%-os rendelkezésre állást biztosít felügyeleti kötelezettségek nélkül. Az Azure Cosmos DB több mint 30 [Azure-régióban](https://azure.microsoft.com/regions/services/) érhető el. További információ: [Globális adatterjesztés](distribute-data-globally.md). 
 
-**Konzisztencia választott**: Azure Cosmos DB biztosít a választott öt jól meghatározott konzisztenciaszintek konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. Ezek konzisztenciaszintek erős, kötött elavulás, munkamenet, egységes előtag, és végleges. Ezek részletes, jól meghatározott konzisztenciaszintek lehetővé teszik a fejlesztői, hogy ésszerű kompromisszumot konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md). 
+**Megválasztható konzisztenciaszint**: Az Azure Cosmos DB-vel öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A konzisztenciaszintek: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik a fejlesztő számára, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [A rendelkezésre állás és a teljesítmény maximalizálása a konzisztenciaszintek használatával](consistency-levels.md). 
 
-**Enterprise osztályú**: biztonságosságának és alapértelmezetten – DB biztosít az Azure cosmos [megfelelőségi minősítései közül](https://www.microsoft.com/trustcenter) annak érdekében, hogy a felhasználók használhatják a platform anélkül, hogy megfelelőségi problémákat. Azure Cosmos-adatbázis is biztosít a titkosítás aktívan és a mozgási, IP-tűzfal és tartozó vezérlőelem vezérlősík tevékenységeit naplókat.  
+**Nagyvállalati szint**: Az Azure Cosmos DB [megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter) köszönhetően a felhasználók biztosak lehetnek benne, hogy a platform használata biztonságos. Az Azure Cosmos DB emellett biztosítja az adatok titkosítását a továbbítás és a tárolás során, valamint egy IP-tűzfalat is tartalmaz, illetve auditnaplókat a vezérlősík tevékenységeinek felügyelete érdekében.  
 
 <a id="sign-up-now"></a>
 ## <a name="sign-up-now"></a>Regisztráljon most 
 
-Ha már rendelkezik Azure-előfizetéssel, regisztrálhat a Cassandra API (előzetes verzió) program csatlakozni a [Azure-portálon](https://aka.ms/cosmosdb-cassandra-signup).  Ha most ismerkedik az Azure-ba, regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/free) hol szerezheti Azure Cosmos DB szabad hozzáférési 12 hónapig. Kövesse az alábbi lépéseket, hogy hozzáférést igényelhessen a Cassandra API (előzetes verzió) program.
+Ha már van Azure-előfizetése, a Cassandra API (előzetes verzió) programhoz való csatlakozásra az [Azure Portalon](https://aka.ms/cosmosdb-cassandra-signup) regisztrálhat.  Ha még csak most ismerkedik az Azure-ral, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/free), amelynek keretében 12 hónapig ingyen használhatja az Azure Cosmos DB-t. Az alábbi lépések végrehajtásával regisztrálhat a Cassandra API (előzetes verzió) programra.
 
-1. Az a [Azure-portálon](https://portal.azure.com), kattintson a **hozzon létre egy erőforrást** > **adatbázisok** > **Azure Cosmos DB**. 
+1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása** > **Adatbázisok** > **Azure Cosmos DB** elemre. 
 
-2. Válassza ki az új fiók lap **Cassandra** a API mezőbe. 
+2. Az Új fiók lapon válassza a **Cassandra** lehetőséget az API mezőben. 
 
-3. Az a **előfizetés** jelölje ki az ehhez a fiókhoz használni kívánt Azure-előfizetéshez.
+3. Az **Előfizetés** mezőben válassza ki a fiókhoz használni kívánt Azure-előfizetést.
 
-4. Kattintson a **regisztráljon az előzetes verzióra még ma**.
+4. Kattintson az **Iratkozzon fel az előzetes verzióra még ma** elemre.
 
     ![Azure Cosmos DB Cassandra API](./media/cassandra-introduction/cassandra-sign-up.png)
 
-3. A regisztrációs a kattintva megtekintheti a ma ablaktábla **OK**. 
+3. Az Iratkozzon fel az előzetes verzióra még ma panelen kattintson az **OK** gombra. 
 
-    Miután a kérelmet, az állapota **jóváhagyásra váró** az új fiók panelen. 
+    Miután beküldte a kérelmet, a **Jóváhagyás függőben** állapotúra vált az Új fiók panelen. 
 
-A kérelem elküldése után várja meg, hogy a kérelem jóváhagyását e-mailben értesítést. A nagy mennyiségű kérést, mert egy héten belül értesítést kell kapnia. Nem kell a kérés teljesítéséhez el egy támogatási jegy létrehozását. Kérelem érkezett volt sorrendben felül kell vizsgálni. 
+Miután beküldte a kérelmet, várja meg, amíg e-mailben értesítést kap kérelme jóváhagyásáról. A kérelmek nagy mennyisége miatt egy hét is eltelhet, amíg az e-mail megérkezik. Ezekhez a kérelmekhez nem kell támogatási jegyet leadnia. A kérelmeket azok beérkezési sorrendjében bíráljuk el. 
 
 ## <a name="how-to-get-started"></a>Első lépések
-Egyszer csatlakozott a programot, hajtsa végre a Cassandra API quickstarts hozhat létre egy alkalmazást a Cassandra API használatával:
+Miután csatlakozott az előzetes verziót tesztelő programhoz, a Cassandra API gyors útmutatóit követve hozzon létre egy alkalmazást az API használatával:
 
-* [Gyors üzembe helyezés: Build a Cassandra a Node.js és Azure Cosmos DB webalkalmazás](create-cassandra-nodejs.md)
-* [Gyors üzembe helyezés: Build a Cassandra Java és Azure Cosmos DB webalkalmazás](create-cassandra-java.md)
-* [Gyors üzembe helyezés: Build a Cassandra .NET és Azure Cosmos DB webalkalmazás](create-cassandra-dotnet.md)
-* [Gyors üzembe helyezés: Build a Cassandra Azure Cosmos DB és Python webalkalmazás](create-cassandra-python.md)
+* [Gyors útmutató: Cassandra webalkalmazás felépítése a Node.js és az Azure Cosmos DB használatával](create-cassandra-nodejs.md)
+* [Gyors útmutató: Cassandra webalkalmazás felépítése a Java és az Azure Cosmos DB használatával](create-cassandra-java.md)
+* [Gyors útmutató: Cassandra webalkalmazás felépítése a .NET és az Azure Cosmos DB használatával](create-cassandra-dotnet.md)
+* [Gyors útmutató: Cassandra webalkalmazás felépítése a Python és az Azure Cosmos DB használatával](create-cassandra-python.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Cosmos DB Cassandra API információ integrálva van a teljes Azure Cosmos DB dokumentációt, de az alábbiakban néhány mutatók az első lépésekhez:
+Az Azure Cosmos DB Cassandra API-val kapcsolatos információk az Azure Cosmos DB általános dokumentáció részét képezik, azonban íme néhány hivatkozás az első lépések megtételéhez:
 
-* Kövesse a [Quickstarts](create-cassandra-nodejs.md) Git minta segítségével egy fiókot és egy új alkalmazás létrehozásához
-* Kövesse a [oktatóanyag](tutorial-develop-cassandra-java.md) programozott módon létrehozhat egy új alkalmazást.
-* Kövesse a [importálása Cassandra adatok oktatóanyag](cassandra-import-data.md) a meglévő adatok importálása az Azure Cosmos DB.
-* Olvassa el a [gyakran ismételt kérdések](faq.md#cassandra).
+* A [Gyors útmutatók](create-cassandra-nodejs.md) utasításait követve hozzon létre egy új fiókot és egy új alkalmazást egy Git minta használatával
+* Az [Oktatóanyag](tutorial-develop-cassandra-java.md) utasításait követve hozzon létre programozott módon egy új alkalmazást.
+* A [Cassandra-adatok importálását bemutató oktatóanyagot](cassandra-import-data.md) követve importálja meglévő adatait az Azure Cosmos DB-be.
+* Tekintse át a [gyakori kérdéseket](faq.md#cassandra).

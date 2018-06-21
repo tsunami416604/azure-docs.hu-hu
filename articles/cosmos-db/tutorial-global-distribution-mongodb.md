@@ -3,25 +3,23 @@ title: Az Azure Cosmos DB globális terjesztési oktatóanyaga a MongoDB API-hoz
 description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális terjesztését a MongoDB API használatával.
 services: cosmos-db
 keywords: globális terjesztés, MongoDB
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 8bd86c5e66fdf2431e3db12a43e953b022a3770a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1885c979fe2532d26b2e7b59111675bebee8ec05
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763000"
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a MongoDB API használatával
+# <a name="set-up-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a MongoDB API használatával
 
 Ebben a cikkben bemutatjuk, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az Azure Portallal, és hogyan csatlakozhat a MongoDB API használatával.
 

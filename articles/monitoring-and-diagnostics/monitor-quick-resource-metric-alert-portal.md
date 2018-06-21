@@ -1,20 +1,20 @@
 ---
-title: Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek | Microsoft Docs
+title: Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek
 description: Rövid útmutató, amely segítségével a felhasználók metrikát hozhatnak létre egy logikai alkalmazáshoz
 author: anirudhcavale
-manager: orenr
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
+services: azure-monitor
+ms.service: azure-monitor
 ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 01955ba7a61b3eb46be6bad72c7243c4918add12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263048"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Értesítés kérése, ha egy metrikaérték megfelel egy feltételnek
 
@@ -69,7 +69,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Kattintson a **Metrikák** lapra, majd adja meg a logikai alkalmazás **Előfizetés**, **Erőforráscsoport**, **Erőforrástípus** és **Erőforrás** értékét.
 
-3. A metrikák listájából válassza az **Elindított futtatások** lehetőséget.
+3. A metrikák listájából válassza a **Sikertelen futtatások** lehetőséget.
 
 4. Módosítsa a diagram **Időtartomány** értékét úgy, hogy az az elmúlt órára vonatkozó adatokat tartalmazza.
 

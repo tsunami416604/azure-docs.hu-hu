@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 4cf20dacf66ee334dcd455ce1770609c175d3b88
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48dbd89216d27e9495a9129c6b873f86a9a23338
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763255"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Gyors útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései Resource Manager-sablonnal
 
@@ -77,6 +78,110 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy Azure Re
 > Egyéb fürtlétrehozási módszerekhez és az oktatóanyagban használt tulajdonságok megértéséhez tekintse meg a [Create HDInsight clusters](../hdinsight-hadoop-provision-linux-clusters.md) (HDInsight-fürtök létrehozása) című témakört.       
 > 
 >
+
+## <a name="use-vscode-to-run-hive-queries"></a>Hive-lekérdezések futtatása a VSCode használatával
+
+A HDInsight Tools használata VSCode-ban: [Azure HDInsight Tools használata a Visual Studio Code-hoz](../hdinsight-for-vscode.md).
+
+### <a name="submit-interactive-hive-queries"></a>Interaktív Hive-lekérdezések küldése
+
+A HDInsight Tools for VSCode segítségével küldhet interaktív Hive-lekérdezéseket HDInsight interaktív lekérdezési fürtökre.
+
+1. Ha még nem tette, hozzon létre egy új munkamappát és egy új Hive-szkriptfájlt.
+
+2. Csatlakozzon az Azure-fiókhoz, majd konfigurálja az alapértelmezett fürtöt, ha még nem tette.
+
+3. Másolja ki és illessze be az alábbi kódot a Hive-fájlba, majd mentse el.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Kattintson jobb gombbal a szkriptszerkesztőre, majd válassza a **HDInsight: Hive Interactive (Interaktív Hive)** lehetőséget a lekérdezés küldéséhez. Az eszközök segítségével a helyi menüt használva egy kódblokkot is beküldhet az egész szkriptfájl helyett. A lekérdezés eredményei hamarosan megjelennek egy új lapon.
+
+   ![Az interaktív Hive eredményei](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
+
+    - **RESULTS** (EREDMÉNYEK) panel: A teljes eredményt elmentheti CSV-, JSON- vagy Excel-fájlban a helyi útvonalon, de kijelölhet csupán pár sort is.
+
+    - **MESSAGES** (ÜZENETEK) panel: A **sor** számának kiválasztásakor a futó szkript első sorához ugrik.
+
+Az interaktív lekérdezés futtatása lényegesen kevesebb időt vesz igénybe, mint [egy Hive-os kötegelt feladat futtatása](#submit-hive-batch-scripts).
+
+### <a name="submit-hive-batch-scripts"></a>Hive-os kötegelt szkriptek küldése
+
+1. Ha még nem tette, hozzon létre egy új munkamappát és egy új Hive-szkriptfájlt.
+
+2. Csatlakozzon az Azure-fiókhoz, majd konfigurálja az alapértelmezett fürtöt, ha még nem tette.
+
+3. Másolja ki és illessze be az alábbi kódot a Hive-fájlba, majd mentse el.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Kattintson jobb gombbal a szkriptszerkesztőre, majd válassza a **HDInsight: Hive Batch (Kötegelt Hive)** lehetőséget egy Hive-feladat küldéséhez. 
+
+5. Válassza ki a küldés célpontjául szolgáló fürtöt.  
+
+    Egy Hive-feladat elküldése után a küldés sikerességére vonatkozó információk és a feladatazonosító megjelenik az **OUTPUT** (KIMENET) panelen. A Hive-feladat megnyitja a **WEB BROWSER** (WEBBÖNGÉSZŐ) felületet is, itt jelennek a valós idejű feladatnaplók és a feladat állapota.
+
+   ![Hive-feladat küldésének eredménye](./media/apache-hadoop-linux-tutorial-get-started/submit-Hivejob-result.png)
+
+Az [interaktív Hive-lekérdezés küldése](#submit-interactive-hive-queries) lényegesen kevesebb időt vesz igénybe, mint egy kötegelt feladat küldése.
+
+## <a name="use-visualstudio-to-run-hive-queries"></a>Hive-lekérdezések futtatása a Visual Studio használatával
+
+A HDInsight Tools Visual Studióban való használatáról [a Data Lake Tools for Visual Studio használatát ismertető cikkben olvashat](./apache-hadoop-visual-studio-tools-get-started.md).
+
+### <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
+
+Hive-lekérdezések létrehozására és futtatására két lehetősége van:
+
+* Alkalmi lekérdezések létrehozása
+* Hive alkalmazás létrehozása
+
+Alkalmi lekérdezések létrehozása és futtatása:
+
+1. A **Server Explorerben** válassza az **Azure** > **HDInsight-fürtök** elemet.
+
+2. Kattintson a jobb gombbal a fürtre, ahol futtatni szeretné a lekérdezést, majd kattintson a **Write a Hive Query** (Hive-lekérdezés írása) parancsra.  
+
+3. Adja meg a Hive-lekérdezéseket. 
+
+    A Hive szerkesztője támogatja az IntelliSense-t. A Data Lake Tools for Visual Studio támogatja a távoli metaadatok betöltését a Hive-szkript szerkesztésekor. Amikor például a **SELECT * FROM** parancsot írja be, az IntelliSense listázza az összes javasolt táblanevet. Amikor megad egy táblanevet, az IntelliSense listázza az oszlopneveket. Az eszközök a legtöbb Hive DML-utasítást, -segédlekérdezést és beépített UDF-et támogatják.
+   
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 1. példájáról](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![Képernyőkép a HDInsight Visual Studio Tools IntelliSense 2. példájáról](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-column-name.png "U-SQL IntelliSense")
+   
+   > [!NOTE]
+   > Az IntelliSense csak a HDInsight eszköztáron kijelölt fürt metaadatait javasolja.
+   > 
+   
+4. Kattintson a **Submit** (Küldés) vagy a **Submit (Advanced)** (Küldés (Speciális)) elemre. 
+   
+    ![Képernyőkép Hive-lekérdezés futtatásáról](./media/apache-hadoop-linux-tutorial-get-started/vs-batch-query.png)
+
+   A speciális küldési lehetőséggel konfigurálja a szkript **Job Name** (Feladat neve), **Arguments** (Argumentumok), **Additional Configurations** (További konfigurációk) és **Status Directory** (Állapot könyvtár) elemeit:
+
+    ![Képernyőkép egy HDInsight Hadoop Hive-lekérdezésről](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Lekérdezések küldése")
+
+   Interaktív Hive-lekérdezések futtatása
+
+   * Az **interaktív** beállítás kiválasztásához kattintson a lefelé mutató nyílra. 
+   
+   * Kattintson az **Execute** (Végrehajtás) parancsra.
+
+   ![Képernyőkép az interaktív Hive-lekérdezések végrehajtásáról](./media/apache-hadoop-linux-tutorial-get-started/vs-execute-hive-query.png)
+
+Hive-megoldás létrehozása és futtatása:
+
+1. A **File** (Fájl) menüben válassza a **New** (Új), majd a **Project** (Projekt) parancsot.
+2. A bal oldali panelen válassza ki a **HDInsight** elemet. A középső panelen válassza a **Hive Application** (Hive-alkalmazás) elemet. Adja meg a tulajdonságokat, majd kattintson az **OK** gombra.
+   
+    ![Képernyőkép a HDInsight Visual Studio Toolsban az új Hive-projekt létrehozásáról](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "Hive-alkalmazások létrehozása a Visual Studióból")
+3. A **Solution Explorerben** (Megoldáskezelőben) kattintson duplán a **Script.hql** fájlra a szkript megnyitásához.
+4. Adja meg a Hive-lekérdezéseket, és küldje be azokat. (Tekintse meg a fenti 3. és 4. lépést)  
+
+
 
 ## <a name="run-hive-queries"></a>Hive-lekérdezések futtatása
 
@@ -158,7 +263,7 @@ A HDInsight használatával történő adatelemzésről az alábbi cikkekben tal
 * További információ az adatok átalakítására szolgáló Pig nyelvről: [A Pig használata a HDInsighttal](hdinsight-use-pig.md).
 * További információ a Hadoopon adatokat feldolgozó programok írására szolgáló MapReduce módszerről: [A MapReduce használata a HDInsighttal](hdinsight-use-mapreduce.md).
 * A HDInsight-adatok elemzésére szolgáló HDInsight Tools for Visual Studio szolgáltatással kapcsolatos további információkért lásd: [Get started using Visual Studio Hadoop tools for HDInsight](apache-hadoop-visual-studio-tools-get-started.md) (A HDInsight Visual Studio Hadoop-eszközeinek használatára vonatkozó első lépések).
-
+* A HDInsight-adatok elemzésére szolgáló HDInsight Tools for VSCode szolgáltatással kapcsolatos további információkat [az Azure HDInsight Tools for Visual Studio Code használatát ismertető cikkben találja](../hdinsight-for-vscode.md).
 
 
 A HDInsight-fürtök létréhozásával vagy kezelésével kapcsolatos további információkért lásd a következő cikkeket:

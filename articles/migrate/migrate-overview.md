@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5c63d74158087d2011478d038d41fc1bae44190e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202847"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236365"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -48,8 +48,8 @@ Az értékelés segítségével azonosíthatja a helyszíni virtuális gépek Az
 **Tulajdonság** | **Részletek**
 --- | ---
 **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg 30 régiót támogat, beleértve a következőket: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Közép-Németország, Északkelet-Németország, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Korea déli régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA-beli államigazgatás – Arizona, USA-beli államigazgatás – Texas, USA-beli államigazgatás – Virginia, USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és USA 2. nyugati régiója. Az alapértelmezetten beállított hely az USA 2. nyugati régiója.
-**Tárhely-redundancia** | A [tárhely-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy) azon típusa, amelyet az Azure-beli virtuális gépek a migrálás után használni fognak. Az alapértelmezett típus a helyileg redundáns tárolás (Locally Redundant Storage, LRS). Vegye figyelembe, hogy az Azure Migrate csak a felügyelt lemezeken alapuló értékeléseket támogatja, és a felügyelt lemezek csak az LRS-t támogatják, ezért a tulajdonság beállítása jelenleg csak LRS lehet.
-**Méretezési feltétel** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. A méretezést a helyszíni virtuális gépek *teljesítményelőzményei* alapján végezheti el, vagy méretezheti a virtuális gépeket az Azure-hoz *helyszíniként* is, a teljesítményelőzmények figyelembe vétele nélkül. Az alapértelmezett érték a teljesítményalapú méretezés.
+**Tárolás típusa** | Megadhatja az Azure-ban lefoglalni kívánt lemezek típusát. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel a helyszíni méretezés. A céllemez típusa prémium vagy standard szintű felügyelt lemez lehet. Az alapértelmezett érték a prémium szintű felügyelt lemez. Teljesítményalapú méretezés esetén a lemezre vonatkozó javaslatot a rendszer automatikusan adja meg a virtuális gépek teljesítményadatinak figyelembe vételével. Vegye figyelembe, hogy az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
+**Méretezési feltétel** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. A méretezést a helyszíni virtuális gépek *teljesítményelőzményei* alapján végezheti el, vagy méretezheti a virtuális gépeket az Azure-hoz *helyszíniként* is, a teljesítményelőzmények figyelembe vétele nélkül. Az alapértelmezett érték a helyszíni méretezés.
 **Díjszabások** | A költségszámításokhoz az értékelés figyelembe veszi, hogy rendelkezik-e szoftvergaranciával, és jogosult-e az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) juttatásra. Emellett azokat az [Azure-ajánlatokat](https://azure.microsoft.com/support/legal/offer-details/) is figyelembe veszi, amelyekre esetleg regisztrált, és lehetővé teszi, hogy előfizetés-specifikus kedvezményeket (%) adjon meg az ajánlaton felül.
 **Tarifacsomag** | Megadhatja a cél Azure-beli virtuális gépek [tarifacsomagját (alapszintű/standard)](../virtual-machines/windows/sizes-general.md). Például ha azt tervezi, hogy éles környezetet migrál, érdemes a Standard csomagot választani, amely kis késleltetésű virtuális gépeket biztosít, de többe kerülhet. Másrészről ha egy fejlesztői/tesztkörnyezetet használ, érdemes lehet az Alapszintű csomag mellett dönteni, amely nagyobb késleltetésű virtuális gépeket biztosít, alacsonyabb költségek mellett. Alapértelmezés szerint a rendszer a [Standard](../virtual-machines/windows/sizes-general.md) csomagot használja.
 **Teljesítményelőzmények** | Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét az utolsó nap teljesítményelőzményei alapján, 95%-os százalékértékkel értékeli ki. Ezeket az értékeket az értékelés tulajdonságaiban módosíthatja.
@@ -100,4 +100,6 @@ Miután értékelte a helyszíni gépeket az Azure Migrate szolgáltatással tö
 
 
 ## <a name="next-steps"></a>További lépések
-[Kövesse az oktatóanyag](tutorial-assessment-vmware.md) lépéseit értékelés létrehozásához egy helyszíni VMware virtuális gép számára.
+
+- [Kövesse az oktatóanyag](tutorial-assessment-vmware.md) lépéseit értékelés létrehozásához egy helyszíni VMware virtuális gép számára.
+- [További információ](resources-faq.md) az Azure Migrate használatára vonatkozó gyakori kérdésekről

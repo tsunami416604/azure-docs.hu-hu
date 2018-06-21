@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776618"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639027"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
 
@@ -142,7 +142,7 @@ Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt k
 
 5. Mivel a kapcsolatfigyelő 60 másodpercenként vesz mintát, várjon néhány percet, és a portál bal oldalán válassza a **Network Watcher**, majd a **Kapcsolatfigyelő** elemet, és válassza ki ismét a **myVm1-myVm2(22)** figyelőt. Az eredmények most eltérőek lesznek, ahogyan az a következő képen látható:
 
-    ![Monitor details fault](./media/connection-monitor/vm-monitor-fault .png)
+    ![Részletek monitorozásával kapcsolatos hiba](./media/connection-monitor/vm-monitor-fault.png)
 
     Egy piros felkiáltójel ikon látható a **myvm2529** hálózati adapter állapotoszlopában.
 

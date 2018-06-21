@@ -3,23 +3,21 @@ title: 'ASP.NET MVC oktatóprogram az Azure Cosmos DB szolgáltatáshoz: webalka
 description: ASP.NET MVC oktatóprogram MVC webalkalmazás létrehozásához az Azure Cosmos DB szolgáltatással. A JSON-fájlok tárolása és az adatok elérése az Azure-webhelyeken tárolt teendőkezelő alkalmazásból történik – ASP NET MVC oktatóprogram lépésről lépésre.
 keywords: asp.net mvc oktatóanyag, webalkalmazás fejlesztése, mvc-webalkalmazás, asp net mvc lépésről lépésre haladó oktatóanyag
 services: cosmos-db
-documentationcenter: .net
 author: SnehaGunda
 manager: kfile
-ms.assetid: 52532d89-a40e-4fdf-9b38-aadb3a4cccbc
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter
-ms.openlocfilehash: 1193ef84f8edf701f98e50d92a67426e36c40218
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 193f0f74d7a8ebaee72105698c646b55a8159a3b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796995"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: webalkalmazás fejlesztése az Azure Cosmos DB szolgáltatással
 > [!div class="op_single_selector"]
@@ -34,7 +32,7 @@ Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazás
 
 ![Az oktatóprogram során létrehozott teendőlista-kezelő MVC webalkalmazás képernyőfelvétele – ASP NET MVC oktatóprogram lépésről lépésre](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
-Ez az útmutató bemutatja, hogyan tárolja az Azure Cosmos DB szolgáltatás használatára és Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazás érheti el adatait. Ha olyan oktatóprogramot keres, amely csak az Azure Cosmos DB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [Azure Cosmos DB C# konzolalkalmazás felépítése](sql-api-get-started.md).
+Ez az útmutató bemutatja, hogyan használhatja az Azure Cosmos DB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak az Azure Cosmos DB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [Azure Cosmos DB C# konzolalkalmazás felépítése](sql-api-get-started.md).
 
 > [!TIP]
 > Ez az oktatóprogram feltételezi, hogy van korábbi tapasztalata az ASP.NET MVC és az Azure webhelyek használatában. Ha nem ismeri az ASP.NET rendszert vagy az [előfeltételt jelentő eszközöket](#_Toc395637760), érdemes letöltenie a teljes mintaprojektet a [GitHubról][GitHub], és követni a mintában lévő utasításokat. Ha felépítette, ezen cikk áttekintésével betekintést nyerhet a kódba a projekt környezetében.
@@ -49,12 +47,12 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]  
-* A Microsoft Azure SDK for .NET for Visual Studio 2017, a Visual Studio telepítő keresztül érhető el.
+* Microsoft Azure SDK for .NET a Visual Studio 2017-hez – a Visual Studio telepítőjén keresztül érhető el.
 
-Ez a cikk összes képernyőfelvétele használatával a Microsoft Visual Studio Community 2017 került sor. Ha a rendszer a lehetséges, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek ebben a megoldásban kell működnie egy másik verzió van konfigurálva.
+A jelen cikk összes képernyőfelvétele a Microsoft Visual Studio Community 2017 programmal készült. Ha a rendszere más verzióval van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
 ## <a name="_Toc395637761"></a>1. lépés: Azure Cosmos DB-adatbázisfiók létrehozása
-Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik az SQL-fiókkal az Azure Cosmos DB, vagy ha az oktatóanyag az Azure Cosmos DB Emulator használ, továbbléphet a [hozzon létre egy új ASP.NET MVC alkalmazást](#_Toc395637762).
+Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik SQL-fiókkal az Azure Cosmos DB-hez, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -74,9 +72,9 @@ Most végigvezetjük azon, hogyan hozhat létre új ASP.NET MVC alkalmazást az 
 3. A **Name** (Név) szövegmezőbe írja be a projekt nevét. Ez az oktatóprogram a „todo” (teendők) nevet használja. Ha más nevet választ, akkor amikor az oktatóprogram a „todo” (teendők) névteréről beszél, akkor a megadott kódmintákat úgy kell módosítania, hogy az alkalmazás tényleges nevét használja. 
 4. Kattintson a **Browse** (Böngészés) gombra azon mappa megkereséséhez, ahol létre szeretné hozni a projektet, majd kattintson az **OK** gombra.
    
-      A **új ASP.NET-webalkalmazás** párbeszédpanel jelenik meg.
+      Megjelenik a **Új ASP.NET-webalkalmazás** párbeszédpanel.
    
-    ![Az MVC alkalmazássablon van kiemelve az új ASP.NET Webalkalmazásként való kezelése párbeszédpanel képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
+    ![Képernyőfelvétel az Új ASP.NET-webalkalmazás párbeszédpanelről, ahol az MVC alkalmazássablon van kiemelve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
 5. A sablonok panelén válassza az **MVC** elemet.
 
 6. Kattintson az **OK** gombra, és várja meg, hogy a Visual Studio kialakítsa a szerkezetet az üres ASP.NET MVC sablonban. 
@@ -89,16 +87,16 @@ Most végigvezetjük azon, hogyan hozhat létre új ASP.NET MVC alkalmazást az 
 ## <a name="_Toc395637767"></a>3. lépés: Azure Cosmos DB hozzáadása az MVC webalkalmazás projekthez
 Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy részével, folytassuk az oktatóprogram valódi céljával, amely az Azure Cosmos DB MVC webalkalmazáshoz adása.
 
-1. Az Azure Cosmos DB .NET SDK csomagolt és a NuGet-csomag terjesztése. A Visual Studióban a NuGet-csomag beszerzéséhez használja a Visual Studio NuGet-csomagkezelőjét. Ehhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
+1. Az Azure Cosmos DB .NET SDK NuGet-csomagként van csomagolva és elosztva. A Visual Studióban a NuGet-csomag beszerzéséhez használja a Visual Studio NuGet-csomagkezelőjét. Ehhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
    
     ![A Megoldáskezelőben a webalkalmazás projekt helyi menüjének képernyőfelvétele, ahol a Manage NuGet Packages (NuGet-csomagok kezelése) parancs van kiemelve.](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
     Megjelenik a **Manage NuGet Packages** (NuGet-csomagok kezelése) párbeszédpanel.
-2. A NuGet **Browse** (Tallózás) mezőjébe írja be az ***Azure DocumentDB*** szöveget. (A csomag neve nem frissült az Azure Cosmos-Adatbázishoz.)
+2. A NuGet **Browse** (Tallózás) mezőjébe írja be az ***Azure DocumentDB*** szöveget. (A csomag neve nem lett Azure Cosmos DB-re frissítve).
    
-    Az eredmények közül telepítse a **Microsoft Microsoft.Azure.DocumentDB** csomag. Ez letölti és telepíti az Azure Cosmos DB csomagot, valamint az összes függőségét, például a newtonsoft.JSON elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
+    Az eredmények közül telepítse a **Microsoft.Azure.DocumentDB by Microsoft** csomagot. Ez letölti és telepíti az Azure Cosmos DB-csomagot, valamint az összes függőségét, például a Newtonsoft.Json elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
    
-    ![A NuGet-csomagok kezelése ablakban, a Microsoft Azure Cosmos DB Client Library elem van kiemelve képernyőfelvétele](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
+    ![A NuGet-csomagok kezelése ablak képernyőfelvétele, ahol a Microsoft Azure Cosmos DB Client Library elem van kiemelve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
    
       A Csomagkezelő konzollal is telepítheti a csomagot. Ehhez a **Tools** (Eszközök) menüben kattintson a **NuGet Package Manager** (NuGet-csomagkezelő) elemre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre. A parancssorba írja be a következőt.
    
@@ -313,7 +311,7 @@ Itt először hozzá kell adni egy osztályt, amely tartalmazza az Azure Cosmos 
         <add key="collection" value="Items"/>
 4. Most frissítse az *endpoint* (végpont) és az *authKey* (hitelesítési kulcs) értékeit az Azure-portál Keys (Kulcsok) panelén. A Keys (Kulcsok) panel **URI-címét** használja a végpontbeállítás értékeként, és a Keys (Kulcsok) panel **PRIMARY KEY** (ELSŐDLEGES KULCS) vagy **SECONDARY KEY** (MÁSODLAGOS KULCS) értékét használja az authKey beállítás értékeként.
 
-    Hogy vesz gondot elvégeztük a Azure Cosmos DB-tárházban, most adjuk hozzá az alkalmazás logikáját.
+    Ezzel elvégeztük az Azure Cosmos DB-adattár csatlakoztatását, most adjuk hozzá az alkalmazás logikáját.
 
 1. Először is meg szeretnénk tudni jeleníteni a hiányos elemeket a teendőlista alkalmazással.  Másolja és illessze be a következő kódrészletet bárhová a **DocumentDBRepository** osztályban.
    
@@ -388,7 +386,7 @@ Adjunk néhány kódot az Azure Cosmos DBRepository és az ItemController elemhe
            return await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
        }
    
-   Ez a metódus egyszerűen vesz igénybe egy neki küldött objektumot, és továbbra is fennáll az Azure Cosmos-Adatbázisba.
+   Ez a metódus egyszerűen vesz egy neki küldött objektumot, és megőrzi azt az Azure Cosmos DB-adatbázisban.
 2. Nyissa meg az ItemController.cs fájlt, és adja hozzá a következő kódrészletet az osztályon belül. Az ASP.NET MVC így tudja, hogy mit tegyen a **Create** (Létrehozás) művelethez. Ebben az esetben csak jelenítse meg a korábban létrehozott társított Create.cshtml nézetet.
    
         [ActionName("Create")]
@@ -518,33 +516,33 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
     ![Képernyőfelvétel az Index nézetről, bejelölt Completed (Befejezve) jelölőnégyzettel](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
-## <a name="_Toc395637774"></a>7. lépés: Az Azure App Service-alkalmazás központi telepítése 
-Most, hogy a teljes alkalmazás megfelelően működik-e az Azure Cosmos DB programot fogjuk a webalkalmazás telepítése az Azure App Service szolgáltatásban.  
+## <a name="_Toc395637774"></a>7. lépés: Az alkalmazás üzembe helyezése az Azure App Service-ben 
+Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatbázissal, az Azure App Service-be fogjuk telepíteni ezt a webalkalmazást.  
 
 1. Az alkalmazás közzétételéhez egyszerűen a jobb gombbal a projektre kell kattintania a **Megoldáskezelőben**, majd a **Publish** (Közzététel) parancsot választania.
    
     ![Képernyőfelvétel a Közzététel lehetőségről a Megoldáskezelőben](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
 
-2. A a **közzététel** párbeszédpanel, kattintson a **Microsoft Azure App Service**, majd jelölje be **hozzon létre új** hozzon létre egy App Service-profilt, vagy kattintson **meglévő** egy meglévő profilt kell használnia.
+2. A **Közzététel** párbeszédpanelen kattintson a **Microsoft Azure App Service** lehetőségre, majd válassza az **Új létrehozása** elemet egy App Service-profil létrehozásához, vagy kattintson a **Meglévő kiválasztása** elemre egy meglévő profil használatához.
 
-    ![A Visual Studio párbeszédpanel közzététele](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
+    ![A Visual Studio Közzététel párbeszédpanelje](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
 
-3. Ha egy meglévő Azure App Service-profilt, adja meg az előfizetés nevét. Használja a **nézet** erőforráscsoportba vagy erőforrástípus rendezés szűréséhez, majd válassza ki az Azure App Service. 
+3. Ha már rendelkezik Azure App Service-profillal, adja meg az előfizetése nevét. Használja a **Nézet** szűrőt az erőforráscsoport vagy erőforrástípus szerinti rendezéshez, majd válassza ki az Azure App Service-t. 
    
-    ![A Visual Studio App Service párbeszédpanelen](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
+    ![A Visual Studio App Service párbeszédpanelje](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-4. Új Azure App Service-profil létrehozásához kattintson a **hozzon létre új** a a **közzététel** párbeszédpanel megnyitásához. Az a **létrehozása az App Service** párbeszédpanelen adja meg a webes alkalmazás neve és a megfelelő előfizetés, az erőforráscsoport és az App Service-csomag, majd kattintson a **létrehozása**.
+4. Új Azure App Service-profil létrehozásához kattintson az **Új létrehozása** lehetőségre a **Közzététel** párbeszédpanelen. Az **App Service létrehozása** párbeszédpanelen adja meg a webalkalmazás nevét és a megfelelő előfizetést, erőforráscsoportot és App Service-csomagot, majd kattintson a **Létrehozás** gombra.
 
-    ![App Service párbeszédpanelen létrehozása a Visual Studióban](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
+    ![A Visual Studio App Service létrehozása párbeszédpanelje](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 
-Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure-beli handiwork!
+Néhány másodpercen belül a Visual Studio befejezi a webalkalmazás közzétételét, és elindít egy böngészőt, ahol láthatja az Azure rendszeren futó munkáját.
 
 
 
 ## <a name="_Toc395637775"></a>Következő lépések
-Gratulálunk! Ebben az esetben a beépített az első ASP.NET MVC webalkalmazását az Azure Cosmos DB használatával, és közzétette azt Azure-bA. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHubról][GitHub]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
+Gratulálunk! Megépítette az első ASP.NET MVC webalkalmazását az Azure Cosmos DB eszközzel, és közzétette az Azure-ban. A teljes alkalmazás forráskódja, beleértve az oktatóprogramban nem szereplő részletezési és törlési funkciót, letölthető vagy klónozható a [GitHubról][GitHub]. Így ha továbbra is érdekli ezen funkcióknak az alkalmazáshoz adása, a kóddal ezt megteheti.
 
-További funkciókat szeretne az alkalmazáshoz adni, tekintse át az elérhető API-kat a [Azure Cosmos .NET kódtárban](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) és nyugodtan az Azure Cosmos .NET kódtárban hozzájárulnak a [GitHub][GitHub]. 
+Ha további funkciókat szeretne az alkalmazáshoz adni, tekintse át az [Azure Cosmos DB .NET kódtárban](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) lévő API-kat, és nyugodtan járuljon hozzá az Azure Cosmos DB .NET kódtárhoz a [GitHubon][GitHub]. 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx

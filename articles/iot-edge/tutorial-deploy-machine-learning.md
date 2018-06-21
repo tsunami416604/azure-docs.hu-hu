@@ -1,74 +1,75 @@
 ---
-title: Az Azure Machine Learning Azure IoT oldala telepítése |} Microsoft Docs
-description: Azure Machine Learning peremhálózati eszköz egy modul telepítése
-services: iot-edge
-keywords: ''
+title: Az Azure Machine Learning üzembe helyezése az Azure IoT Edge használatával | Microsoft Docs
+description: Az Azure Machine Learning üzembe helyezése modulként Edge-eszközre
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/12/2018
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: 6062d8193ce8cf7edaff3187f5c0f7dd9968658b
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: MT
+services: iot-edge
+ms.custom: mvc
+ms.openlocfilehash: 248bc97c214c013d10f1839201ce2f572cb854ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631173"
 ---
-# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning egy IoT peremhálózati modulként telepítése – előzetes
+# <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Az Azure Machine Learning üzembe helyezése IoT Edge-modulként – előzetes verzió
 
-Az IoT-Edge modulok, amely megvalósítja az üzleti logikát, közvetlenül az IoT peremhálózati eszköz a kód telepítésére használhatja. Ez az oktatóanyag bemutatja, hogyan üzembe helyezése az Azure Machine Learning modulban, ha egy eszköz sikertelen a szimulált IoT peremhálózati eszközön létrehozott érzékelőadatait alapján előrejelzi a [telepítése Azure IoT Edge a szimulált eszköz Windows] [ lnk-tutorial1-win] vagy [Linux] [ lnk-tutorial1-lin] oktatóanyagok.
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását az [Azure IoT Edge üzembe helyezése szimulált eszközön Windows][lnk-tutorial1-win] vagy [Linux][lnk-tutorial1-lin] rendszeren című oktatóanyagban létrehozott szimulált IoT Edge-eszközök érzékelőadatai alapján.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy Azure Machine Learning-modul
-> * A modul tároló leküldése egy Azure-tárolót beállításjegyzék
-> * Az IoT-peremhálózati eszköz egy Azure Machine Learning-modul telepítése
+> * Azure Machine Learning-modul létrehozása
+> * Modultároló leküldése egy Azure-beli tárolóregisztrációs adatbázisba
+> * Azure Machine Learning-modul üzembe helyezése az IoT Edge-eszközön
 > * A létrejött adatok megtekintése
 
-Az Azure Machine Learning modul, amely ebben az oktatóanyagban létrehozhat az eszköz állítja elő a környezeti adatokat olvas, és a feliratok rendellenes tevékenységként ismeri az üzeneteket, vagy nem.
+Az ebben az oktatóanyagban létrehozott Azure Machine Learning-modul kiolvassa az eszköz által előállított környezeti adatokat, illetve rendellenesként vagy nem rendellenesként jelöli meg az üzeneteket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure IoT peremhálózati eszköz, a gyors üzembe helyezés vagy első oktatóanyaga, amely létrehozta.
-* Az IoT hub, amely az IoT-peremhálózati eszköz csatlakozik az IoT-központ kapcsolati karakterláncát.
-* Egy Azure Machine Learning-fiók. Fiók létrehozásához kövesse a [létrehozása az Azure Machine Learning fiókok, és telepítse az Azure Machine Learning-munkaterület](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts). Nem kell telepíteni a munkaterületet üzemeltető alkalmazás ehhez az oktatóanyaghoz. 
-* Modul kezelése az Azure ML a számítógépen. Állítsa be a környezetet, és hozzon létre egy fiókot, kövesse az utasításokat a [modell kezelésének beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md).
+* A rövid útmutatóban vagy az első oktatóanyagban létrehozott Azure IoT Edge-eszköz.
+* Az IoT Hubhoz tartozó IoT Hub kapcsolati sztring, amelyhez az IoT Edge-eszköz csatlakozik.
+* Egy Azure Machine Learning-fiók. Fiók létrehozásához kövesse az [Azure Machine Learning-fiókok létrehozása és az Azure Machine Learning Workbench telepítése](../machine-learning/service/quickstart-installation.md#create-azure-machine-learning-services-accounts) szakaszban megadott utasításokat. Az oktatóanyag elvégzéséhez nincs szükség a Workbench alkalmazás telepítésére. 
+* Az Azure ML moduljainak kezelése a gépén. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat.
 
-Az Azure Machine Learning modul nem támogatja a ARM processzor.
+Az Azure Machine Learning-modul nem támogatja az ARM processzorokat.
 
-## <a name="create-the-azure-ml-container"></a>Az Azure ML-tároló létrehozása
-Ebben a szakaszban a betanított modell fájlok letöltéséhez, és alakíthatja át őket az Azure ML-tárolóba.
+## <a name="create-the-azure-ml-container"></a>Azure ML-tároló létrehozása
+Ebben a szakaszban letölti a betanított modell fájljait, és Azure ML-tárolóvá konvertálja azokat.
 
-Azon a számítógépen, amelyen a modul kezelése az Azure ML, töltse le és mentse [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) az az Azure ML IoT eszközkészlet a Githubon. Ezek a fájlok határozza meg azt a betanított gépi tanulási modellt az Iot-peremhálózati eszközön telepíteni.
+Az Azure ML modulkezelési alkalmazását futtató számítógépen töltse le és mentse a GitHub Azure ML IoT-eszközkészletéből származó [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és a [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) fájlokat. Ezek a fájlok határozzák meg azt a betanított Machine Learning-modellt, amelyet az IoT Edge-eszközön üzembe fog helyezni.
 
-A betanított modell segítségével hozzon létre olyan tároló, amely IoT peremeszközök telepíthetők. Az alábbi parancsot használja:
+A betanított modell használatával hozzon létre egy, az IoT Edge-eszközökön üzembe helyezhető tárolót. Az alábbi paranccsal végezze el a következőket:
 
-   * A modell regisztrálni.
+   * Regisztrálja a modellt.
    * Hozzon létre egy jegyzéket.
-   * Hozzon létre egy Docker-tároló nevű kép *machinelearningmodule*.
-   * A lemezkép központi telepítését az Azure Kubernetes szolgáltatás (AKS) fürthöz.
+   * Hozzon létre egy Docker-tárolórendszerképet *machinelearningmodule* néven.
+   * Helyezze üzembe a rendszerképet az Azure Kubernetes Service- (AKS-) fürtön.
 
 ```cmd
 az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
 ```
 
-### <a name="view-the-container-repository"></a>A tároló tárház megtekintése
+### <a name="view-the-container-repository"></a>A tárolóadattár megtekintése
 
-Ellenőrizze, hogy a tároló lemezkép sikeresen létrejött, de a machine learning környezet társított Azure-tárolót összetevőtárházat tárolja.
+Ellenőrizze, hogy a tárolórendszerkép sikeresen létrejött-e és a Machine Learning-környezethez tartozó Azure-tárolóadattárba lett-e mentve.
 
-1. A a [Azure-portálon](https://portal.azure.com), és **minden szolgáltatás** válassza **tároló nyilvántartó**.
-2. Válassza ki a beállításjegyzékben. A névnek kell kezdődnie **mlcr** és az erőforráscsoport, a helyre, és a modul kezelő használt előfizetés tartozik.
-3. Válassza ki **hívóbetűk**
-4. Másolás a **bejelentkezési kiszolgáló**, **felhasználónév**, és **jelszó**.  Szükség van ezekre a peremhálózati eszköz a beállításjegyzék eléréséhez.
-5. Válassza ki **adattárak**
-6. Válassza ki **machinelearningmodule**
-7. Most már rendelkezik a teljes lemezképet a tároló elérési útját. Jegyezze fel a következő szakasz kép elérési út. Akkor kell kinéznie: **< registry_name >.azureacr.io/machinelearningmodule:1**
+1. Az [Azure Portalon](https://portal.azure.com) lépjen **Az összes szolgáltatás** elemre, és válassza a **Tárolóregisztrációs adatbázisok** lehetőséget.
+2. Válassza ki a saját beállításjegyzékét. A névnek az **mlcr** karakterekkel kell kezdődnie, továbbá a modulkezelési alkalmazás beállításakor megadott erőforráscsoporthoz, helyhez és előfizetéshez kell tartoznia.
+3. Válassza a **Hozzáférési kulcsok** elemet
+4. Másolja a **Bejelentkezési kiszolgáló**, a **Felhasználónév** és a **Jelszó** mezők értékeit.  Ezek az adatok ahhoz kellenek, hogy az Edge-eszközeiről is hozzá tudjon férni a beállításjegyzékhez.
+5. Válassza az **Adattárak** elemet
+6. Válassza a **machinelearningmodule** elemet
+7. Most már rendelkezésére áll a tároló rendszerképének teljes elérési útja. Jegyezze fel a rendszerkép elérési útját, mert szüksége lesz rá a következő szakaszban. Az elérési útnak a következőképpen kell kinéznie: **<registry_name>.azureacr.io/machinelearningmodule:1**
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>Beállításjegyzékhez tartozó hitelesítő adatok hozzáadása az Edge-eszközhöz
 
-Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő adatait azon a számítógépen, amelyen az Edge-eszközt futtatja. Ez a parancs hozzáférést a futásidejű való lekérésére a tárolót.
+Adja hozzá az Edge-futtatókörnyezethez a beállításjegyzék hitelesítő adatait azon a számítógépen, amelyen az Edge-eszközt futtatja. Ez a parancs hozzáférést nyújt a futtatókörnyezetnek a tároló lekéréséhez.
 
 Linux:
    ```cmd
@@ -82,21 +83,21 @@ Windows:
 
 ## <a name="run-the-solution"></a>A megoldás futtatása
 
-1. Az a [Azure-portálon](https://portal.azure.com), keresse meg az IoT hub.
+1. Az [Azure Portalon](https://portal.azure.com) keresse meg az IoT-központot.
 1. Lépjen az **IoT Edge (előzetes verzió)** részhez, és válassza ki az IoT Edge-eszközt.
 1. Válassza a **Set modules** (Modulok beállítása) lehetőséget.
-1. Ha korábban már telepítette a tempSensor modul az IoT-peremhálózati eszközön, akkor előfordulhat, hogy adatokkal való automatikus feltöltés. Ha még nem szerepel a modulok listáján, adja hozzá.
+1. Ha már üzembe helyezte a tempSensor modult az IoT Edge-eszközön, akkor lehet, hogy automatikusan ki van töltve. Ha a modul még nem szerepel a listában, akkor vegye fel.
     1. Válassza az **IoT Edge-modul hozzáadása** lehetőséget.
     2. A **Név** mezőbe írja a következőt: `tempSensor`.
     3. A **Rendszerkép URI** mezőbe írja be a következőt: `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
     4. Kattintson a **Mentés** gombra.
-1. Adja hozzá a gépi tanulási modul, amely létrehozta.
+1. Adja hozzá az Ön által létrehozott Machine Learning-modult.
     1. Válassza az **IoT Edge-modul hozzáadása** lehetőséget.
-    1. Az a **neve** mezőbe írja be `machinelearningmodule`
-    1. Az a **kép** mezőbe írja be a kép címét, például `<registry_name>.azurecr.io/machinelearningmodule:1`.
+    1. A **Név** mezőbe írja a következőt: `machinelearningmodule`
+    1. A **Rendszerkép** mezőbe írja be a rendszerkép címét, például a következőt: `<registry_name>.azurecr.io/machinelearningmodule:1`.
     1. Kattintson a **Mentés** gombra.
 1. Az **Add Modules** (Modulok hozzáadása) lépésben kattintson a **Next** (Tovább) gombra.
-1. Az **Útvonalak megadása** lépésben másolja az alábbi JSON-t a szövegmezőbe. Az első útvonal szállításokkal a hőmérséklet-érzékelő üzeneteit a machine learning modulra "amlInput" végpont keresztül ez az a végpont, amelyek az összes Azure Machine Learning modulok használják. A második útvonal szállításokkal üzenetek IoT-központ a machine learning modulban. Ez az útvonal "amlOutput". a végpont, amelyek az összes Azure Machine Learning modulok kimeneti adatai, és "előtt$" jelöli az IoT-központ.
+1. Az **Útvonalak megadása** lépésben másolja az alábbi JSON-t a szövegmezőbe. Az első útvonal a hőmérséklet-érzékelőből a Machine Learning-modulba szállítja az üzeneteket az összes Azure Machine Learning-modul által használt „amlInput” végponton keresztül. A második útvonal a Machine Learning-modulból az IoT Hubra szállítja az üzeneteket. Ebben az útvonalban az „amlOutput” az a végpont, amelyet az összes Azure Machine Learning-modul használ az adatok kimenetének küldéséhez, az „$upstream” pedig az IoT Hubot jelöli.
 
     ```json
     {
@@ -109,29 +110,29 @@ Windows:
 
 1. Kattintson a **Tovább** gombra.
 1. A **Sablon áttekintése** lépésben válassza a **Küldés** lehetőséget.
-1. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre.  Láthatja, hogy az új **machinelearningmodule** fut, valamint a **tempSensor** modul és a IoT peremhálózati futásidejű modult.
+1. Térjen vissza az eszköz részleteit tartalmazó oldalra, és kattintson a **Frissítés** elemre.  Látható, hogy az új **machinelearningmodule** modul fut a **tempSensor** modullal és az IoT Edge-futtatókörnyezeti modulokkal együtt.
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-Megtekintheti az eszközről a felhőbe üzeneteket, amelyek az IoT-peremhálózati eszköz használatával küld a [IoT-központ explorer](https://github.com/azure/iothub-explorer) vagy a Visual Studio Code Azure IoT eszközkészlet kiterjesztését.
+Az IoT Edge-eszköz által az eszközről a felhőbe küldött üzeneteket az [IoT Hub Explorer](https://github.com/azure/iothub-explorer) eszközzel vagy a Visual Studio Code Azure IoT-eszközkészlet bővítményével tekintheti meg.
 
-1. A Visual Studio Code, válassza ki **IoT Hub-eszközöknek**.
-2. Válassza ki **...**  válassza **IoT Hub kapcsolati karakterlánc beállítása** a menüből.
+1. A Visual Studio Code-ban válassza az **IoT Hub-eszközök** elemet.
+2. Ezt követően válassza a **...**, majd az **IoT Hub kapcsolati sztring beállítása** lehetőséget a menüben.
 
-   ![Az IoT Hub-eszközöknek további menü](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![IoT Hub-eszközök – Továbbiak menü](./media/tutorial-deploy-machine-learning/set-connection.png)
 
-3. A lap tetején megjelenik a szövegmezőben adjon meg az IoT Hub a iothubowner kapcsolati karakterláncot. Az IoT-peremhálózati eszköz meg kell jelennie az IoT Hub-eszközöknek listájában.
-4. Válassza ki **...**  újra, majd válassza ki **D2C üzenet figyelni**.
-5. Vizsgálja meg az üzeneteket, ötpercenként tempSensor érkező. Az üzenettörzs tartalmazza a tulajdonságot, **anomáliadetektálási** a machinelearningmodule biztosító igaz vagy hamis értékű. A **AzureMLResponse** tulajdonsága tartalmazza az "OK" értéket, ha a modell már sikeresen futott.
+3. Az oldal tetején megnyíló szövegmezőben adja meg a saját IoT Hubjához tartozó iothubowner kapcsolati sztringet. IoT Edge-eszközének ekkor meg kell jelennie az IoT Hub-eszközök listájában.
+4. Ezt követően ismét válassza a **...**, majd a **D2C üzenet monitorozásának megkezdése** lehetőséget.
+5. Figyelje meg a tempSensor felől öt másodpercenként érkező üzeneteket. Az üzenettörzs tartalmaz egy **anomaly** nevű tulajdonságot, amelyhez a machinelearningmodule igaz vagy hamis értéket rendel. Az **AzureMLResponse** tulajdonság „OK” értéket tartalmaz, ha a modell sikeresen lefutott.
 
-   ![Az üzenet törzse Azure ML válasz](./media/tutorial-deploy-machine-learning/ml-output.png)
+   ![Azure ML-válasz az üzenettörzsben](./media/tutorial-deploy-machine-learning/ml-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure Machine Learning technológiával IoT peremhálózati modul telepítette. Bármely más módszereket, amelyek segítségével Azure IoT peremhálózati tájékozódhat az adatok az üzleti elemzések készítése a peremhálózaton kapcsolja be az egyéb oktatóanyagok be tovább.
+Ebben az oktatóanyagban üzembe helyezett egy, az Azure Machine Learning által működtetett IoT Edge-modult. Továbbléphet bármely másik oktatóanyagra, és megtudhatja, milyen más módokon alakíthatja jelentőséggel bíró üzleti információkká ezeket az adatokat a peremhálózaton az Azure IoT Edge segítségével.
 
 > [!div class="nextstepaction"]
-> [Egy Azure-függvény modul telepítése](tutorial-deploy-function.md)
+> [Azure-függvény üzembe helyezése modulként](tutorial-deploy-function.md)
 
 <!--Links-->
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md

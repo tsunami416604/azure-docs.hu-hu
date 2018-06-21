@@ -7,11 +7,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 278fbd5d7f5925b802303910222c5a13379bfad6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640261"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rövid útmutató: Kognitív keresési folyamat létrehozása képességek és mintaadatok használatával
 
@@ -95,6 +96,8 @@ Az **adatimportálási** varázsló használatának egyik előnye, hogy az az in
 ### <a name="step-2-add-cognitive-skills"></a>2. lépés: Kognitív képességek hozzáadása
 
 Ezután adja hozzá a bővítési lépéseket az indexelési folyamathoz. A portál előre meghatározott kognitív képességeket biztosít a kép- és szövegelemzéshez. A portálon egy képességcsoport egyetlen forrásmezőn végez műveleteket. Ez kis célnak tűnhet, de az Azure-blobok esetében a blobdokumentum (például egy Word-dokumentum vagy egy PowerPoint-bemutató) legnagyobb részét a `content` mező tartalmazza. Ez a mező tehát nem ideális bemenet, mert egy blob összes tartalma szerepel benne.
+
+Előfordulnak olyan esetek, amikor ki szeretné nyerni a szöveges tartalmat olyan fájlokból, amelyek főleg beolvasott képekből állnak. Ilyenek például a lapolvasók által létrehozott PDF-fájlok. Az Azure Search automatikusan ki tudja nyerni a dokumentum beágyazott képeinek tartalmát. Ehhez jelölje be az **OCR engedélyezése és az összes szöveg egyesítése a merged_content mezőben** elem melletti jelölőnégyzetet. Ez a művelet automatikusan létre fog hozni egy `merged_content` mezőt, amely tartalmazza a dokumentumból kinyert szöveget, valamint a dokumentum beágyazott képeinek szöveges alakját. Ha megadja ezt a beállítást, a `Source data field` értéke `merged_content` lesz.
 
 A **Kognitív képességek hozzáadása** résznél válasszon ki olyan képességeket, amelyek a természetes nyelvek feldolgozását végzik. Ebben a rövid útmutatóban válassza az entitások felismerése lehetőséget a személyekhez, szervezetekhez és helyekhez.
 

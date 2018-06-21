@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 407268299e77d771a53c49c11995dce1ada65112
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 375e0171f1a131ad95a9c6594cc0e05926e4dcc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642835"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése
 
@@ -97,7 +98,7 @@ Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 > [!IMPORTANT]
 > A fürt futtatókörnyezetének frissítése hosszú időt vehet igénybe. A PowerShell le van tiltva, amíg a frissítés folyamatban van. A frissítés állapotát egy másik PowerShell-munkamenetből ellenőrizheti.
 
-A frissítés állapota a PowerShell-lel vagy az `sfctl` CLI-vel monitorozható.
+A frissítés állapota a PowerShell használatával vagy az Azure Service Fabric parancssori felületen (sfctl) monitorozható.
 
 Először csatlakozzon az oktatóanyag első részében létrehozott, SSL-tanúsítvánnyal rendelkező fürthöz. Használja a `Connect-ServiceFabricCluster` parancsmagot vagy az `sfctl cluster upgrade-status` parancsot.
 

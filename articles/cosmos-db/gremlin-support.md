@@ -1,95 +1,93 @@
 ---
-title: Azure Cosmos DB Gremlin-támogatás |} Microsoft Docs
-description: További tudnivalók az Apache TinkerPop Gremlin nyelvet. Ismerje meg, mely szolgáltatásait és lépéseket érhetők el az Azure Cosmos-Adatbázisba
+title: Az Azure Cosmos DB Gremlin-támogatása | Microsoft Docs
+description: Tudnivalók az Apache TinkerPop Gremlin nyelvéről. Megismerheti, milyen funkciók és lépések érhetők el az Azure Cosmos DB-ben.
 services: cosmos-db
-documentationcenter: ''
 author: LuisBosquez
 manager: kfile
-ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: ''
+ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797617"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph-támogatás
-Azure Cosmos-adatbázis támogatja [Apache Tinkerpop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagyis egy grafikonon API graph entitások létrehozására és a graph lekérdezés műveletet hajt végre. A Gremlin nyelv segítségével (csúcsban és szélek) graph entitásokat hozhatnak létre, belül entitásokból tulajdonságainak módosítása, hajtsa végre a lekérdezéseket és traversals és entitások törlésére. 
+# <a name="azure-cosmos-db-gremlin-graph-support"></a>A Gremlin-gráfok Azure Cosmos DB általi támogatása
+Az Azure Cosmos DB támogatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvét, a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), amely egy Graph API gráfentitások létrehozásához és gráflekérdezési műveletetek végrehajtásához. A Gremlin nyelv segítségével létrehozhat gráfentitásokat (csúcspontokat és éleket), módosíthatja ezen entitások tulajdonságait, végrehajthat lekérdezéseket és bejárásokat, és törölhet entitásokat. 
 
-Azure Cosmos DB vállalati használatra kész szolgáltatások során az graph-adatbázishoz. Ez magában foglalja a globális terjesztési, független méretezése tárolási és átviteli, előre jelezhető egyjegyű ezredmásodperces késések fordulnak elő, az automatikus indexeléshez SLA-k, olvassa el a rendelkezésre állási adatbázis fiókok két vagy több Azure-régiók átfedés. Mivel az Azure Cosmos DB TinkerPop/Gremlin támogatja, egyszerűen áttelepítheti egy másik graph-adatbázis segítségével anélkül, hogy a kód módosítások írt alkalmazások. Emellett Gremlin támogatási címtár Azure Cosmos DB zökkenőmentesen integrálható a TinkerPop-kompatibilis analytics keretrendszerek, például a [Apache Spark GraphX](http://spark.apache.org/graphx/). 
+Az Azure Cosmos DB nagyvállalati szintű funkciókat biztosít a gráfadatbázisokhoz. Ezek közé tartozik a globális terjesztési, a tárolási és átviteli megoldások független méretezése, az előre jelezhető, egyjegyű ezredmásodperces késések, az automatikus indexelés, az SLA-k, és az olvasási rendelkezésre állás a két vagy több Azure-régióra kiterjedő adatbázisfiókokhoz. Mivel az Azure Cosmos DB támogatja a TinkerPop/Gremlin nyelvet, egyszerűen, a kód módosításának szükségessége nélkül migrálhatók a más gráfadatbázisokkal írt alkalmazások. Emellett a Gremlin-támogatásnak köszönhetően az Azure Cosmos DB zökkenőmentesen integrálható a TinkerPop-kompatibilis elemzési keretrendszerekkel, például az [Apache Spark GraphX](http://spark.apache.org/graphx/)-szel. 
 
-Ebben a cikkben azt ismertetik a gyors Gremlin, és a Gremlin szolgáltatások és a Graph API által támogatott lépéseket számbavétele.
+Ez a cikk gyors útmutatót nyújt a Gremlin használatához, valamint bemutatja a Gremlin azon funkcióit és lépéseit, amelyeket a Graph API támogat.
 
-## <a name="gremlin-by-example"></a>Példa alapján gremlin
-Egy minta graph használatával megérteni, hogyan lekérdezések Gremlin lehet megadni. Az alábbi ábrán egy üzleti alkalmazás, amely felügyeli a felhasználók, érdeklődési és egy grafikonon formájában eszközök adatait.  
+## <a name="gremlin-by-example"></a>Példa a Gremlin használatára
+Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekérdezések a Gremlinben. Az alábbi ábrán egy üzleti alkalmazás látható, amely felhasználókkal, érdeklődési körökkel és eszközökkel kapcsolatos adatokat kezel egy gráf formájában.  
 
-![Személyek, eszközök és érdeklődési mintaadatbázis](./media/gremlin-support/sample-graph.png) 
+![Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis](./media/gremlin-support/sample-graph.png) 
 
-Ehhez a diagramhoz tartozik a következő csúcspont ("címke" elnevezésű Gremlin):
+A gráfban a következő csúcsponttípusok találhatók (ezeket a Gremlinben „címkéknek” nevezzük):
 
-- Személyek: A diagramnak van három személyek, multiplexelés Thomas és Ben
-- Érdeklődési: Az érdeklődési, ebben a példában bemutatjuk a játék
-- Eszközök: Az eszközöket, amelyek személyek használata
-- Operációs rendszerek esetén: Az operációs rendszerek, amelyek az eszközök futnak
+- Személyek: a gráfban három személy található: Robin, Thomas és Ben.
+- Érdeklődési körök: a személyek érdeklődési köre, amely ebben a példában a labdarúgás.
+- Eszközök: a személyek által használt eszközök.
+- Operációs rendszerek: az eszközökön futó operációs rendszerek.
 
-Ezen keresztül a következő biztonsági típusok és címkéket entitások közötti kapcsolatok azt mutatják be:
+Ezen entitások kapcsolatait a következő éltípusok/címkék jelzik:
 
-- Tudja: például "Thomas tudja multiplexelés"
-- Érdekelt: Annak a személynek a Graph érdekében képviseli, például "Ben olyan iránt érdeklődik bemutatjuk"
-- RunsOS: Hordozható számítógépen futtatja a Windows operációs rendszer
-- Felhasználás: Képviselő eszköz egy személy használja. Például multiplexelés használ sorozatszámú 77 Motorola telefon
+- Knows (Ismeri): Például „Thomas ismeri Robint”.
+- Interested (Érdekli): A gráfban szereplő személyek érdeklődési körét jelzi, például „Bent érdekli a labdarúgás”.
+- RunsOS (Futó operációs rendszer): A laptopon Windows operációs rendszer fut.
+- Uses (Használ): A személyek által használt eszközt képviseli. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
 
-Most futtassa bizonyos műveleteket a graph használatával a [Gremlin konzol](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console). Ezeket a műveleteket az Ön által választott (Java, Node.js, Python vagy .NET) platform Gremlin illesztőprogramokkal is elvégezheti.  Mielőtt úgy tekintünk, mi az Azure Cosmos Adatbázisba támogatott vizsgáljuk meg néhány példa, hogy megismerkedjen a szintaxist.
+Most futtassunk néhány műveletet a gráfra vonatkozóan a [Gremlin Console](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) segítségével. Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával.  Mielőtt áttekintenénk, hogy az Azure Cosmos DB mit támogat, lássunk néhány példát, amelyek segítségével megismerkedhetünk a szintaxissal.
 
-Első CRUD vizsgáljuk meg. A következő Gremlin utasítás a "Thomas" csúcspont szúr be a grafikon:
+Először is lássuk a CRUD-feladatokat. A következő Gremlin-utasítás beszúrja a „Thomas” csúcspontot a gráfba:
 
 ```
 :> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
 ```
 
-Ezt követően a következő Gremlin utasítás szúr be egy "tudja" peremhálózati Thomas és multiplexelés között.
+A következő Gremlin-utasítás beszúr egy „knows” (ismeri) élt Thomas és Robin közé.
 
 ```
 :> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
 ```
 
-A következő lekérdezés adja vissza a "személy" csúcsban csökkenő sorrendben első neveik:
+Az alábbi lekérdezés visszaadja a „személy” csúcspontokat, az utóneveik fordított ABC-sorrendjében:
 ```
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-Ha diagramokat izzólámpákhoz esetén meg kell válaszolnia kérdések például a "milyen operációs rendszerek Thomas barátok használnak?". Ez az információ lekérése a diagramon az egyszerű Gremlin átjárás futtathatja:
+A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszolnunk, mint például: „Milyen operációs rendszereket használnak Thomas barátai?”. Ez az információ a következő egyszerű Gremlin-bejárás futtatásával nyerhető ki a gráfból:
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
-Most nézzük Azure Cosmos DB tartalma Gremlin fejlesztők számára.
+Most pedig tekintsük át, mit kínál az Azure Cosmos DB a Gremlin-fejlesztők számára.
 
-## <a name="gremlin-features"></a>Gremlin szolgáltatások
-TinkerPop olyan szabvány, amely számos különböző graph technológiák lefedi. Ezért ismertetésében leírására, hogy funkciók egy grafikonon szolgáltató által biztosított rendelkezik. Azure Cosmos-adatbázis egy állandó, nagy feldolgozási, írható graph-adatbázis, amely több kiszolgálók vagy fürt lehet particionálni biztosít. 
+## <a name="gremlin-features"></a>Gremlin-funkciók
+A TinkerPop egy olyan szabvány, amely számos különböző gráftechnológiára kiterjed. Ebből adódóan szabványos kifejezésekkel írja le, hogy az egyes gráfszolgáltatók milyen funkciókat nyújtanak. Az Azure Cosmos DB egy állandó, magas egyidejűségű, írható gráfadatbázis, amely egyszerre több kiszolgálóra vagy fürtre is particionálható. 
 
-A következő táblázat, amelyeket a rendszer Azure Cosmos DB TinkerPop szolgáltatásokat sorolja fel: 
+Az alábbi táblázat a TinkerPop azon funkcióit sorolja fel, amelyeket az Azure Cosmos DB megvalósít: 
 
-| Kategória | Az Azure Cosmos DB végrehajtása |  Megjegyzések | 
+| Kategória | Azure Cosmos DB-megvalósítás |  Megjegyzések | 
 | --- | --- | --- |
-| Graph-funkciók | Adatmegőrzési és ConcurrentAccess biztosít. Hogy a tranzakciók támogatása | Számítógép-módszereket a Spark-összekötőn keresztül valósítható meg. |
-| Változó szolgáltatások | Támogatja a logikai, egész, bájt, duplán, lebegőpontos, egész, hosszú, karakterlánc | Támogatja az egyszerű típusok, kompatibilis adatmodellt összetett típus |
-| Csúcspont szolgáltatások | Támogatja a RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty  | Támogatja a létrehozása, módosítása és törlése csúcsban |
-| Csúcspont tulajdonság szolgáltatások | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Támogatja a létrehozása, módosítása és törlése csúcspont tulajdonságai |
-| Biztonsági szolgáltatások | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Támogatja a létrehozása, módosítása és törlése élei számára |
-| Edge tulajdonság szolgáltatások | Tulajdonságok, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Támogatja a létrehozása, módosítása és törlése peremhálózati tulajdonságai |
+| Gráffunkciók | Állandóságot és egyidejű hozzáférést biztosít. A tranzakciók támogatására lett tervezve. | A számítógépes módszerek a Spark-összekötőn keresztül valósíthatók meg. |
+| Változófunkciók | A logikai, egész számú, bájt-, dupla, lebegőpontos, hosszú és sztringértékeket támogatja. | Támogatja az egyszerű típusokat, és kompatibilis az összetett típusokkal adatmodellek révén. |
+| Csúcspontfunkciók | A következőket támogatja: RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty.  | Lehetővé teszi csúcspontok létrehozását, módosítását és törlését. |
+| Csúcsponttulajdonság-funkciók | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Lehetővé teszi csúcsponttulajdonságok létrehozását, módosítását és törlését. |
+| Élfunkciók | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Lehetővé teszi élek létrehozását, módosítását és törlését. |
+| Éltulajdonság-funkciók | Tulajdonságok, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Lehetővé teszi éltulajdonságok létrehozását, módosítását és törlését. |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin egybeírt: GraphSON
+## <a name="gremlin-wire-format-graphson"></a>A Gremlin átviteli formátuma: GraphSON
 
-Azure Cosmos-adatbázis használja a [GraphSON formátum](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format) Gremlin származó eredmények visszaadásakor. GraphSON Gremlin szabványos formátuma csúcsban, szélek és tulajdonságok (egy- és többértékű tulajdonságai) használatával JSON. 
+Az Azure Cosmos DB a [GraphSON formátum](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format) használatával adja vissza a Gremlin-műveletek eredményeit. A GraphSON a Gremlin szabványos formátuma a csúcspontok, élek és tulajdonságok (egy- és többértékű tulajdonságok) jelöléséhez a JSON használatával. 
 
-Például az alábbi kódrészletben láthatja a csúcspont GraphSON megjelenítése *küld vissza az ügyfélnek* a Azure Cosmos-Adatbázisból. 
+Az alábbi kódrészletben például az Azure Cosmos DB-ből *az ügyfél számára visszaadott* csúcspont GraphSON-jelölése látható. 
 
 ```json
   {
@@ -128,74 +126,74 @@ Például az alábbi kódrészletben láthatja a csúcspont GraphSON megjelenít
   }
 ```
 
-A csúcsban GraphSON által használt tulajdonságok a következők:
+A GraphSON az alábbi tulajdonságokat használja a csúcspontokhoz:
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| id | Az a csomópont azonosítója. (A kombinációja értékű _partition, ha van ilyen) egyedinek kell lennie |
-| Címke | A csúcspont címke. Ez egy nem kötelező, és használt leírására, entity Type típusként. |
-| type | Használatával megkülönböztethetők csúcsban nem graph dokumentumból |
-| properties | A csúcspont társított felhasználó által definiált tulajdonságok összessége. Minden egyes tulajdonsága több értékeket veheti fel. |
-| _partition (konfigurálható) | A csúcspont partíciókulcs. Használható több kiszolgálón diagramjait bővíteni |
-| outE | Ez a csúcspont szélek kimenő listáját tartalmazza. A csomópont Simuló információk tárolása lehetővé teszi a traversals gyors végrehajtása. Szegély a címkék alapján vannak csoportosítva. |
+| id | A csúcspont azonosítója. Egyedinek kell lennie (adott esetben a _partition értékével kombinálva). |
+| label | A csúcspont címkéje. Nem kötelező megadni, és az entitás típusának leírására használható. |
+| type | A használatával megkülönböztethetők a csúcspontok a nem gráfdokumentumoktól. |
+| properties | A csúcsponthoz tartozó, felhasználó által megadott tulajdonságok összessége. Minden tulajdonságnak több értéke is lehet. |
+| _partition (konfigurálható) | A csúcspont partíciókulcsa. Használatával a gráfok horizontálisan felskálázhatók több kiszolgálóra. |
+| outE | Egy csúcspont külső éleinek listáját tartalmazza. A csúcspontok szomszédsági adatainak tárolása lehetővé teszi a bejárások gyors végrehajtását. Az élek a címkéik alapján vannak csoportosítva. |
 
-És a peremhálózati más részekkel gráf navigációs számára a következő információkat tartalmazza.
-
-| Tulajdonság | Leírás |
-| --- | --- |
-| id | Az él azonosítója. (A kombinációja értékű _partition, ha van ilyen) egyedinek kell lennie |
-| Címke | Az él címke. Ez a tulajdonság nem kötelező, de a kapcsolattípus leírására használt. |
-| inV | Az él csúcsban lévő listáját tartalmazza. A peremhálózati rendelkező Simuló információk tárolása lehetővé teszi a traversals gyors végrehajtása. Csúcsban a címkék alapján vannak csoportosítva. |
-| properties | Az él társított felhasználó által definiált tulajdonságok összessége. Minden egyes tulajdonsága több értékeket veheti fel. |
-
-Minden egyes tulajdonság szerepel egy tömbben több érték is tárolható. 
+Az él pedig a következő információkat tartalmazza, ezzel segítve a gráf többi részéhez való navigációt.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| érték | A tulajdonság értéke
+| id | Az él azonosítója. Egyedinek kell lennie (adott esetben a _partition értékével kombinálva). |
+| label | Az él címkéje. Ezt a tulajdonságot nem kötelező megadni, és a kapcsolat típusának leírására használható. |
+| inV | Egy él belső csúcspontjainak listáját tartalmazza. Az élek szomszédsági adatainak tárolása lehetővé teszi a bejárások gyors végrehajtását. A csúcspontok a címkéik alapján vannak csoportosítva. |
+| properties | Az élhez tartozó, felhasználó által megadott tulajdonságok összessége. Minden tulajdonságnak több értéke is lehet. |
 
-## <a name="gremlin-steps"></a>Gremlin lépéseket
-Mostantól az Azure Cosmos DB által támogatott Gremlin lépéseket vizsgáljuk meg. A Gremlin teljes referenciáért lásd: [TinkerPop hivatkozás](http://tinkerpop.apache.org/docs/current/reference).
+Az egyes tulajdonságok több értéket is tárolhatnak egy tömbben. 
 
-| Lépés | Leírás | TinkerPop 3.2 dokumentáció |
+| Tulajdonság | Leírás |
+| --- | --- |
+| érték | A tulajdonság értéke.
+
+## <a name="gremlin-steps"></a>Gremlin-lépések
+Most pedig tekintsük át az Azure Cosmos DB által támogatott Gremlin-lépéseket. A Gremlin teljes körű ismertetését a [TinkerPop referenciaanyaga](http://tinkerpop.apache.org/docs/current/reference) tartalmazza.
+
+| lépés | Leírás | TinkerPop 3.2-dokumentáció |
 | --- | --- | --- |
-| `addE` | Két csúcsban közötti él hozzáadása | [addE lépés](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
-| `addV` | Egy csúcsának hozzáadja a diagramhoz | [addV lépés](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
-| `and` | Biztosítja, hogy a traversals ad vissza értéket | [lépés](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
-| `as` | A lépés modulátor változó hozzárendelése a kimenet egy lépés | [lépéseként](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | A lépés modulátor használt `group` és `order` | [lépés](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
-| `coalesce` | Az első átjárás, amely visszaadja az eredményt adja vissza | [a Coalesce lépés](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | Konstans értéket ad vissza. Együtt `coalesce`| [állandó lépés](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
-| `count` | A count ad vissza a átjárás | [Count lépés](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
-| `dedup` | Az értékeket ad vissza, amelyben az ismétlődő értékek eltávolításával | [a deduplikáció lépés](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
-| `drop` | Elutasítja azokat az értékeket (csúcspont/oldal) | [közvetlen lépés](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
-| `fold` | A korlát, amely kiszámítja a összesítés eredmények sújtó| [modellrészek lépés](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
-| `group` | Csoportok az értékeket a megadott címkék alapján| [a csoport lépés](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
-| `has` | Tulajdonságok csúcsban és szélek szűrésére használatos. Támogatja a `hasLabel`, `hasId`, `hasNot`, és `has` Variant adattípusban. | [lépés rendelkezik](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
-| `inject` | Értékek behelyezése adatfolyam| [lépés beszúrása](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
-| `is` | Egy logikai kifejezés használatával szűrő végrehajtásához használt | [lépés](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
-| `limit` | Használható korlátozására a átjárás elemek száma| [korlát lépés](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
-| `local` | Helyi becsomagolja a segédlekérdezés hasonló átjárás szakasza | [helyi lépés](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
-| `not` | A negálás egy szűrő létrehozásához használt | [nem lépés](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | A megadott átjárás eredményét adja vissza, ha az eredményt adja eredményül ellenkező esetben a hívó elemet adja vissza | [nem kötelező lépés](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
-| `or` | Biztosítja a traversals közül legalább egy értéket ad vissza | [vagy lépés](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
-| `order` | A megadott rendezési sorrend eredményez értéket ad vissza | [rendelés lépés](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
-| `path` | A átjárás elérési útját adja vissza | [elérési út lépés](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
-| `project` | A tulajdonságokat a térkép projektek | [Projekt lépés](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
-| `properties` | A megadott címkék tulajdonságainak beolvasása | [Tulajdonságok lépés](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
-| `range` | Úgy, hogy az adott értéktartományhoz| [tartomány lépés](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
-| `repeat` | A megadott számú alkalommal megismétel egy a lépést. Ismétlési használt | [Ismételje meg a](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
-| `sample` | A átjárás való minta eredmények használt | [a minta lépés](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | A átjárás el a projekt használt |  [Válassza ki a lépés](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
-| `store` | Összesítések nem blokkoló a átjárás a használt | [tároló lépés](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
-| `tree` | Egy fába csúcspont összesített görbék | [fa lépés](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
-| `unfold` | Az iterátor unroll lépésként| [unfold lépés](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
-| `union` | Több traversals eredményeinek egyesítése| [a UNION lépés](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
-| `V` | A csúcsban és szélek közötti traversals szükséges lépéseket `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV` , `bothV`, és `otherV` számára | [csúcspont lépései](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
-| `where` | A átjárás származó eredmények szűrésére használatos. Támogatja a `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, és `between` operátorok  | [Ha a lépés](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
+| `addE` | Hozzáad egy élt két csúcspont között. | [addE lépés](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Hozzáad egy csúcspontot a gráfhoz. | [addV lépés](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Biztosítja, hogy minden bejárás visszaadjon egy értéket. | [and lépés](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Egy lépésmodulátor, amely egy változót rendel a lépés kimenetéhez. | [as lépés](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | A `group` és az `order` lépéssel használt lépésmodulátor. | [by lépés](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Visszaadja az első olyan bejárást, amely értéket ad vissza. | [coalesce lépés](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Egy állandó értéket ad vissza. A `coalesce` lépéssel használható.| [constant lépés](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Visszaadja a darabszámot a bejárásból. | [count lépés](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Visszaadja az értékeket, eltávolítva az ismétlődéseket. | [dedup lépés](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Elveti az értékeket (csúcspont/él). | [drop lépés](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `fold` | Korlátként funkcionál, amely kiszámítja az eredmények összesítését.| [fold lépés](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Csoportosítja az értékeket a megadott címkék alapján.| [group lépés](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Tulajdonságok, csúcspontok és élek szűrésére szolgál. A következő változatokat támogatja: `hasLabel`, `hasId`, `hasNot` és `has`. | [has lépés](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Értékeket szúr be egy streambe.| [inject lépés](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Szűrés végrehajtására használható egy logikai kifejezés használatával. | [is lépés](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | A bejárásban található elemek számának korlátozására szolgál.| [limit lépés](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Helyileg becsomagolja egy bejárás egy szakaszát, egy segédlekérdezéshez hasonlóan. | [local lépés](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Egy szűrő eltávolítására szolgál. | [not lépés](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | A megadott bejárás eredményét adja vissza, ha az ad eredményt, ha nem, akkor a hívó elemet adja vissza. | [optional lépés](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Biztosítja, hogy legalább az egyik bejárás visszaadjon egy értéket. | [or lépés](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | A megadott rendezési sorrendben adja vissza az eredményeket. | [order lépés](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Visszaadja a bejárás teljes útvonalát. | [path lépés](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Leképezésként jeleníti meg a tulajdonságokat. | [project lépés](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Visszaadja a megadott címkék tulajdonságait. | [properties lépés](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | A megadott értéktartományra szűr.| [range lépés](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | Megismétli a lépést a megadott számú alkalommal. Ismétlődések beállítására szolgál. | [repeat lépés](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Mintát vesz a bejárás eredményeiből. | [sample lépés](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
+| `select` | Megjeleníti a bejárás eredményeit. |  [select lépés](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `store` | Nem blokkoló összesítéseket hajt végre a bejárásból. | [store lépés](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Egy fában összesíti a csúcspontból induló útvonalakat. | [tree lépés](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Visszaalakít egy iterátort egy lépésként.| [unfold lépés](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Egyesíti több bejárás eredményeit.| [union lépés](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | A csúcspontok és élek közötti bejárásokhoz szükséges lépéseket foglalja magában: `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV` és `otherV`. | [vertex lépések](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | A bejárás eredményeinek szűrésére szolgál. A következő operátorokat támogatja: `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, `between`.  | [where lépés](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
-Azure Cosmos DB által biztosított írási optimalizált motor támogatja az automatikus indexeléshez levő összes tulajdonság belül és a csúcsban alapértelmezés szerint. Ezért lekérdezi tartománnyal lekérdezések rendezésére, szűrők, vagy bármely tulajdonság összesíti az index a feldolgozott és hatékony és kiszolgálása között. További információ a hogyan indexelési működéséről az Azure Cosmos Adatbázisba, lásd a dokumentum [séma-független indexelő](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+Az Azure Cosmos DB által biztosított, írásra optimalizált motor alapértelmezés szerint támogatja a csúcspontokon és éleken belüli összes tulajdonság automatikus indexelését. Ezért a szűrővel rendelkező lekérdezéseket, a tartománylekérdezéseket, a rendezéseket és a tulajdonságösszesítések mindegyikét a rendszer közvetlenül az indexből dolgozza fel a hatékony kiszolgálás érdekében. Az indexelésnek az Azure Cosmos DB-ben való működésével kapcsolatban a [sémafüggetlen indexelésről](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) szóló tanulmányunkban tekinthet meg további információt.
 
 ## <a name="next-steps"></a>További lépések
-* Első lépések egy grafikonon alkalmazás felépítése [az SDK-k használatával](create-graph-dotnet.md) 
-* További információ [támogatási diagramot](graph-introduction.md) az Azure Cosmos-Adatbázisba
+* Bevezetés egy gráfalkalmazás létrehozásába [az SDK-k használatával](create-graph-dotnet.md) 
+* További információk a [gráfok támogatásáról](graph-introduction.md) az Azure Cosmos DB-ben

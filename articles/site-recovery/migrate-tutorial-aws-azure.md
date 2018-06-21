@@ -9,20 +9,21 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3ad4f46585be9cf61e3ef8343b5cb05308c972d6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0474ce532831e15738ec882dfdf451bc35d09cf
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737612"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
-Az oktatóanyag bemutatja, hogyan telepítheti át az Amazon Web Services-beli (AWS) virtuális gépeket (VM-eket) Azure-beli virtuális gépekre a Site Recovery használatával. Az EC2-példányok az Azure-ba való áttelepítésekor a rendszer a virtuális gépeket úgy kezeli, mintha azok fizikai, helyszíni számítógépek lennének. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag bemutatja, hogyan migrálhatja az Amazon Web Services-beli (AWS) virtuális gépeket (VM-eket) Azure-beli virtuális gépekre az Azure Site Recovery használatával. AWS EC2-példányok Azure-ba való migrálásakor a rendszer a virtuális gépeket úgy kezeli, mintha azok fizikai, helyszíni számítógépek lennének. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek ellenőrzése
 > * Azure-erőforrások előkészítése
-> * Az AWS EC2-példányok előkészítése az áttelepítésre
+> * Az AWS EC2-példányok előkészítése a migrálásra
 > * Konfigurációs kiszolgáló üzembe helyezése
 > * Virtuális gépek replikálásának engedélyezése
 > * A feladatátvétel tesztelése annak ellenőrzésére, hogy minden működik-e
@@ -31,156 +32,155 @@ Az oktatóanyag bemutatja, hogyan telepítheti át az Amazon Web Services-beli (
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e, amelyek a következők: 
-    - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója, 
-    - Windows Server 2012,
-    - Windows Server 2012 R2, 
+- Ellenőrizze, hogy a migrálni kívánt virtuális gépek támogatott operációsrendszer-verziót futtatnak-e. Támogatott verziók többek között: 
     - Windows Server 2016
-    - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), és csak Citrix PV- vagy AWS PV-illesztőkkel rendelkezhet. A RedHat PV-illesztőket futtató példányok **nem** támogatottak.
+    - Windows Server 2012 R2
+    - Windows Server 2012
+    - A Windows Server 2008 R2 SP1 vagy újabb 64 bites verziója
+    - Red Hat Enterprise Linux 6.7 (csak HVM virtualizált példányok), paravirtualizált Citrix vagy AWS illesztővel. A paravirtualizált Red Hat illesztőprogramokat futtató példányok *nem* támogatottak.
 
 - A mobilitási szolgáltatásnak az összes replikálni kívánt virtuális gépen telepítve kell lennie. 
 
-> [!IMPORTANT]
-> A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálását. Az automatikus telepítéshez elő kell készíteni egy fiókot az EC2-példányokon, amelynek használatával a Site Recovery eléri a virtuális gépet. Tartományi vagy helyi fiókot egyaránt használhat. 
-> - Linux virtuális gépek esetében a fióknak rendszergazdai fióknak kell lennie a Linux-forráskiszolgálón. 
-> - Windowsos virtuális gépek esetében, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen: Adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést a beállításjegyzékben a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** elemhez, és állítsa az értékét 1-re.
+    > [!IMPORTANT]
+    > A Site Recovery automatikusan telepíti ezt a szolgáltatást, ha engedélyezi a virtuális gép replikálását. Az automatikus telepítéshez elő kell készíteni egy fiókot az EC2-példányokon, amelynek használatával a Site Recovery eléri a virtuális gépet. Tartományi vagy helyi fiókot egyaránt használhat. 
+    > - Linux virtuális gépek esetében a fióknak rendszergazdai fióknak kell lennie a Linux-forráskiszolgálón. 
+    > - Windows virtuális gépek esetében, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen:
+    >
+    >      Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést **1** értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**       helyen található beállításjegyzékhez.
 
-- Egy külön EC2-példányra lesz szükség, amelyet Site Recovery konfigurációs kiszolgálóként használhat. A példányon Windows Server 2012 R2 operációs rendszernek kell futnia.
+- Egy külön EC2-példány, amelyet Site Recovery konfigurációs kiszolgálóként használhat. A példányon Windows Server 2012 R2 operációs rendszernek kell futnia.
 
 ## <a name="prepare-azure-resources"></a>Azure-erőforrások előkészítése
 
-Az Azure-ban rendelkezésre kell állnia néhány erőforrásnak, amelyeket az áttelepített EC2-példányok használhatnak. Egy tárfiók, egy kulcstároló és egy virtuális hálózat szükséges.
+Az Azure-ban rendelkezésre kell állnia néhány erőforrásnak, amelyeket a migrált EC2-példányok használhatnak. Egy tárfiók, egy kulcstároló és egy virtuális hálózat szükséges.
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
 A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során.
 
-1. Az [Azure Portal](https://portal.azure.com) menüjében kattintson az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók** elemre.
-2. Adja meg a tárfiók nevét. Ezekben az oktatóanyagokban az **awsmigrated2017** nevet használjuk. A névnek egyedinek kell lennie az Azure-ban, 3–24 karakter közé kell esnie, továbbá csak számokat és kisbetűket tartalmazhat.
+1. Az [Azure Portal](https://portal.azure.com) bal oldali menüjében válassza az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók** lehetőséget.
+2. Adja meg a tárfiók nevét. Ezekben az oktatóanyagokban az **awsmigrated2017** nevet használjuk. A névre vonatkozó feltételek:
+    - Egyedinek kell lennie az Azure-ban
+    - 3 és 24 karakter között lehet a hosszúsága
+    - Csak számokat és kisbetűket tartalmazhat
 3. Tartsa meg az **Üzemi modell**, a **Fiók altípusa**, a **Teljesítmény** és **Biztonságos átvitelre van szükség** mezők alapértelmezett értékeit.
-5. Válassza az alapértelmezett **RA-GRS** értéket a **Replikáció** mezőben.
+5. A **Replikáció** mezőben válassza az alapértelmezett **RA-GRS** értéket.
 6. Válassza ki az oktatóanyaghoz használni kívánt előfizetést.
-7. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget. A jelen példában a **migrationRG** nevet használjuk.
-8. A helynél válassza a **Nyugat-Európa** beállítást.
-9. Kattintson a **Létrehozás** parancsra a tárfiók létrehozásához.
+7. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget. A jelen példában a **migrationRG** erőforráscsoportot használjuk.
+8. A **Hely** mezőnél válassza a **Nyugat-Európa** lehetőséget.
+9. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
 ### <a name="create-a-vault"></a>Tároló létrehozása
 
-1. Az [Azure Portal](https://portal.azure.com) bal oldali navigációs menüjében kattintson a **Minden szolgáltatás** lehetőségre, majd keresse meg és válassza a **Recovery Services-tárolók** lehetőséget.
-2. A Recovery Services-tárolók oldalon kattintson **+ Hozzáadás** gombra a lap bal felső sarkában.
-3. A **Név** mezőbe írja be a *myVault* nevet.
-4. Az **Előfizetés** mezőben válassza ki a megfelelő előfizetést.
-4. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a *migrationRG* lehetőséget.
-5. A **Hely** mezőben válassza a *Nyugat-Európa* lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. Keresse meg és válassza ki a **Recovery Services-tárolók** elemet.
+2. Az Azure Recovery Services.tárolók oldalon válassza a **Hozzáadás** lehetőséget.
+3. A **Név** mezőbe írja be a **myVault** nevet.
+4. Az **Előfizetés** mezőben válassza ki a használni kívánt előfizetést.
+4. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a **migrationRG** lehetőséget.
+5. A **Hely** mezőnél válassza a **Nyugat-Európa** lehetőséget.
 5. Ha szeretne gyorsan hozzáférni az új tárolóhoz az irányítópultról, kattintson a **Rögzítés az irányítópulton** elemre.
-7. Ha végzett, kattintson a **Létrehozás** gombra.
+7. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-Az új tároló megjelenik az **Irányítópult** > **Minden erőforrás** menüben, illetve a központi **Recovery Services-tárolók** lapon.
+Az új tároló megtekintéséhez lépjen az **Irányítópult** > **Minden erőforrás** elemhez. Az új tároló a fő **Recovery Services-tárolók** lapon is megjelenik.
 
 ### <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
-Amikor az áttelepítés (feladatátvétel) után létrejönnek az Azure-beli virtuális gépek, azok ehhez a hálózathoz csatlakoznak.
+Amikor a migrálás (feladatátvétel) után Azure-beli virtuális gépek jönnek létre, ehhez az Azure-hálózathoz csatlakoznak.
 
-1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** >
-   **Virtuális hálózat** gombra.
-3. A **Név** mezőbe írja be a *myMigrationNetwork* nevet.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása**>**Hálózatkezelés**>
+   **Virtuális hálózat** lehetőséget.
+3. A **Név** mezőbe írja be a **myMigrationNetwork** nevet.
 4. Ne módosítsa a **Címtér** alapértelmezett értékét.
-5. Az **Előfizetés** mezőben válassza ki a megfelelő előfizetést.
-6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata** lehetőséget, majd a *migrationRG* lehetőséget a legördülő menüből.
+5. Az **Előfizetés** mezőben válassza ki a használni kívánt előfizetést.
+6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a **migrationRG** lehetőséget.
 7. A **Hely** mezőnél válassza a **Nyugat-Európa** lehetőséget.
-8. Ne módosítsa az **Alhálózat** alapértelmezett értékeit, sem a **Név**, sem az **IP-címtartomány** mezőben.
+8. Az **Alhálózat** területen hagyja meg az alapértelmezett beállításokat a **Név** és az **IP-címtartomány** alatt.
 9. A **Szolgáltatásvégpontok** beállítást hagyja letiltva.
-10. Ha végzett, kattintson a **Létrehozás** gombra.
-
+10. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="prepare-the-infrastructure"></a>Az infrastruktúra előkészítése
 
-A tároló portáloldalán válassza a **Site Recovery** lehetőséget a **Bevezetés** szakaszban, és kattintson az **Infrastruktúra előkészítése** gombra.
+Az Azure Portalon lévő tárolóoldal **Bevezetés** szakaszában válassza a **Site Recovery**, majd az **Infrastruktúra előkészítése** lehetőséget. Hajtsa végre a következő lépéseket.
 
 ### <a name="1-protection-goal"></a>1. Védelmi cél
 
-Válassza a következő értékeket a **Védelmi cél** lapon:
+A **Védelmi cél** oldalon válassza a következő értékeket:
 
 |    |  |
 |---------|-----------|
-| Hol találhatók a gépek? | **A helyszínen**|
-| Hová szeretné replikálni a gépeket? |**Az Azure-ba**|
-| Virtualizálva vannak a gépek? | **Nincsenek virtualizálva / Egyéb**|
+| Hol találhatók a gépek? |Válassza a **Helyszíni** lehetőséget.|
+| Hová szeretné replikálni a gépeket? |Válassza **Az Azure-ba** lehetőséget.|
+| Virtualizálva vannak a gépek? |Válassza a **Nincsenek virtualizálva / Egyéb** lehetőséget.|
 
-Ha végzett, kattintson az **OK** gombra a következő szakaszra való továbblépéshez.
+Ha végzett, válassza az **OK** gombot a következő szakaszra való továbblépéshez.
 
-### <a name="2-source-prepare"></a>2. Forrás előkészítése
+### <a name="2-prepare-source"></a>2. Forrás előkészítése
 
-A **Forrás előkészítése** lapon kattintson **+ Konfigurációs kiszolgáló** gombra.
+A **Forrás előkészítése** lapon válassza a **+ Konfigurációs kiszolgáló** gombra.
 
 1. Használjon egy Windows Server 2012 R2 rendszert futtató EC2-példányt a konfigurációs kiszolgáló létrehozásához és a helyreállítási tárolóban való regisztrálásához.
-
 2. Konfigurálja a konfigurációs kiszolgálóként használt EC2-példány virtuális gépén lévő proxyt, hogy elérje a [szolgáltatás URL-címeit](site-recovery-support-matrix-to-azure.md).
-
 3. Töltse le a [Microsoft Azure Site Recovery egyesített telepítő](http://aka.ms/unifiedinstaller_wus) programot. A programot letöltheti a helyi gépére, majd onnan átmásolhatja a konfigurációs kiszolgálóként használt virtuális gépre.
+4. Válassza a **Letöltés** gombot a tárolóregisztrációs kulcs letöltéséhez. Másolja át a letöltött fájlt a konfigurációs kiszolgálóként használt virtuális gépre.
+5. A virtuális gépen kattintson a jobb gombbal a letöltött Microsoft Azure Site Recovery egyesített telepítőre, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
 
-4. Kattintson a **Letöltés** gombra a tárolóregisztrációs kulcs letöltéséhez. Másolja át a letöltött fájlt a konfigurációs kiszolgálóként használt virtuális gépre.
+    1. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget, majd válassza a **Tovább** lehetőséget.
+    2. A **Független gyártótól származó szoftverlicenc** területen jelölje be az **Elfogadom a független gyártó licencszerződését** lehetőséget, majd válassza a **Tovább** lehetőséget.
+    3. A **Regisztráció** területen válassza a **Tallózás** lehetőséget, és navigáljon arra a helyre, ahová a tárolóregisztrációs kulcsfájlt mentette. Kattintson a **Tovább** gombra.
+    4. Az **Internetbeállítások** területen válassza a **Közvetlen csatlakozás az Azure Site Recoveryhez proxykiszolgáló nélkül**, majd a **Tovább** lehetőséget.
+    5. Az **Előfeltételek ellenőrzése** lapon több elem ellenőrzése is lefut. Ha befejeződött, válassza a **Tovább** lehetőséget.
+    6. A **MySQL-konfiguráció** területen adja meg a szükséges jelszavakat, majd válassza a **Tovább** lehetőséget.
+    7. A **Környezet részletei** területen jelölje be a **Nem** lehetőséget. A VMware gépeket nem szükséges védeni. Ezután válassza a **Tovább** lehetőséget.
+    8. A **Telepítés helye** területen válassza a **Tovább** lehetőséget az alapértelmezett érték elfogadásához.
+    9. A **Hálózatválasztás** területen válassza a **Tovább** lehetőséget az alapértelmezett érték elfogadásához.
+    10. Az **Összegzés** területen válassza a **Telepítés** lehetőséget.
+    11. A **Telepítési folyamat** a telepítési folyamattal kapcsolatos információkat jelenít meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra. Ezután egy ablakban megjelenik egy üzenet a konfigurációs kiszolgáló kapcsolati jelszavával. Másolja a jelszót a vágólapra, majd mentse egy biztonságos helyre.
+6. A virtuális gépen a cspsconfigtool.exe programot futtatva hozzon létre egy vagy több felügyeleti fiókot a konfigurációs kiszolgálón. Gondoskodjon arról, hogy a felügyeleti fiókok rendelkezzenek rendszergazdai jogosultságokkal a migrálni kívánt EC2-példányokon.
 
-5. A virtuális gépen kattintson a jobb gombbal a letöltött **Microsoft Azure Site Recovery egyesített telepítőre**, majd válassza **Futtatás rendszergazdaként** lehetőséget.
+Ha végzett a konfigurációs kiszolgáló beállításával, lépjen vissza a portálra, és válassza ki az imént létrehozott kiszolgálót a **Konfigurációs kiszolgáló** területen. Az **OK** lehetőséget választva lépjen a 3. A cél előkészítése szakaszhoz.
 
-    1. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget, majd kattintson a **Tovább** gombra.
-    2. A **Független gyártótól származó szoftverlicenc** területen jelölje be az **Elfogadom a független gyártó licencszerződését** lehetőséget, majd kattintson a **Tovább** gombra.
-    3. A **Regisztráció** területen kattintson a Tallózás gombra, és navigáljon arra a helyre, ahová a tárolóregisztrációs kulcsot mentette, majd kattintson a **Tovább** gombra.
-    4. Az **Internetbeállítások** területen válassza a **Közvetlen csatlakozás az Azure Site Recoveryhez proxykiszolgáló nélkül** lehetőséget. majd kattintson a **Tovább** gombra.
-    5. Az **Előfeltételek ellenőrzése** lapon több elem ellenőrzése is lefut. Ha befejeződött, kattintson a **Tovább** gombra.
-    6. A **MySQL-konfiguráció** területen adja meg a szükséges jelszavakat, majd kattintson a **Tovább** gombra.
-    7. A **Környezet részletei** területen jelölje be a **Nem** lehetőséget (a VMware gépeket nem szükséges védeni), majd kattintson a **Tovább** gombra.
-    8. A **Telepítés helye** területen kattintson a **Tovább** gombra az alapértelmezett érték elfogadásához.
-    9. A **Hálózatválasztás** területen kattintson a **Tovább** gombra az alapértelmezett érték elfogadásához.
-    10. Az **Összefoglalás** területen kattintson a **Telepítés** parancsra.
-    11. A **Telepítési folyamat** a telepítési folyamat állapotával kapcsolatos információkat mutatja. Ha befejeződött, kattintson a **Befejezés** gombra. Egy előugró ablak jelenik meg, amely egy esetleges újraindításra szólítja fel. Kattintson az **OK** gombra. A konfigurációs kiszolgálói kapcsolat hozzáférési kódjára vonatkozóan is megjelenik egy előugró ablak. Másolja a jelszót a vágólapra, majd mentse egy biztonságos helyre.
+### <a name="3-prepare-target"></a>3. A cél előkészítése
 
-6. A virtuális gépen a **cspsconfigtool.exe** programot futtatva hozzon létre egy vagy több felügyeleti fiókot a konfigurációs kiszolgálón. Gondoskodjon róla, hogy a felügyeleti fiókok rendelkezzenek rendszergazdai jogosultságokkal az áttelepíteni kívánt EC2-példányokon.
-
-Ha végzett a konfigurációs kiszolgáló beállításával, lépjen vissza a portálra, válassza ki az imént létrehozott kiszolgálót a **Konfigurációs kiszolgáló** területen, majd az *OK** gombra kattintva lépjen tovább a 3. lépésre (Cél előkészítése).
-
-### <a name="3-target-prepare"></a>3. Cél előkészítése
-
-Ebben a szakaszban adhatja meg a korábban, az oktatóanyag [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszának végrehajtása során létrehozott erőforrások adatait.
+Ebben a szakaszban adhatja meg a korábban, az oktatóanyag [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszában létrehozott erőforrások adatait.
 
 1. Az **Előfizetés** mezőben válassza ki [Az Azure előkészítése](tutorial-prepare-azure.md) oktatóanyagban használt Azure-előfizetést.
 2. Válassza a **Resource Manager** lehetőséget üzemi modellként.
-3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal. Ezeknek a korábban, az oktatóanyag [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszának végrehajtása során létrehozott erőforrásoknak kell lenniük.
-4. Ha elkészült, kattintson az **OK** gombra.
+3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal. Ezek azok az erőforrások, amelyeket korábban, az oktatóanyag [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszában hozott létre.
+4. Amikor elkészült, válassza az **OK** lehetőséget.
 
 
-### <a name="4-replication-settings-prepare"></a>4. Replikációs beállítások – előkészítés
+### <a name="4-prepare-replication-settings"></a>4. Replikációs beállítások előkészítése
 
 A replikáció engedélyezése előtt létre kell hoznia egy replikációs szabályzatot.
 
-1. Kattintson a **+ Replikálás és társítás** gombra.
-2. A **Név** mezőbe írja be a **myReplicationPolicy** nevet.
-3. Hagyja meg a többi alapértelmezett beállítást, és kattintson az **OK** gombra a szabályzat létrehozásához. Az új szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
+1. Válassza a **Replikálás és társítás** lehetőséget.
+2. A **Név** mezőben adja meg a **myReplicationPolicy** nevet.
+3. Hagyja meg a többi alapértelmezett beállítást, és válassza az **OK** gombot a szabályzat létrehozásához. Az új szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 
-### <a name="5-deployment-planning-select"></a>5. Üzembe helyezés tervezése – kiválasztás
+### <a name="5-select-deployment-planning"></a>5. Az üzembe helyezés tervezésének kiválasztása
 
-A **Végzett az üzembe helyezés tervezésével?** területen válassza a **Később végzem el** lehetőséget a legördülő menüből, majd kattintson az **OK** gombra.
+A **Végzett az üzembe helyezés tervezésével?** területen válassza a **Később végzem el** lehetőséget, majd válassza az **OK** lehetőséget.
 
-Ha az **Infrastruktúra előkészítése** folyamat mind az 5 szakaszával végzett, kattintson az **OK** gombra.
+Ha az **Infrastruktúra előkészítése** szakasz mind az öt lépését elvégezte, válassza az **OK** lehetőséget.
 
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-Engedélyezze a replikálást mindegyik áttelepíteni kívánt virtuális gép esetében. Ha a replikáció engedélyezve van, a Site Recovery automatikusan telepíti a mobilitási szolgáltatást.
+Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép esetében. Ha a replikáció engedélyezve van, a Site Recovery automatikusan telepíti a mobilitási szolgáltatást.
 
-1. Nyissa meg az [Azure portált](htts://portal.azure.com).
-1. A tároló oldalán a **Bevezetés** szakaszban kattintson a **Site Recovery** gombra.
-2. A **Helyszíni gépek és Azure-beli virtuális gépek esetében** területen kattintson az **1. lépés: Az alkalmazás replikálása** elemre. Töltse ki a varázsló lapjait az alábbi adatokkal, és ha végzett, kattintson minden lapon az **OK** gombra:
-    - 1. Forrás konfigurálása:
+1. Nyissa meg az [Azure Portal](htts://portal.azure.com).
+1. A tároló oldalán, a **Bevezetés** szakaszban válassza a **Site Recovery** lehetőséget.
+2. A **Helyszíni gépek és Azure-beli virtuális gépek esetében** területen válassza az **1. lépés: Az alkalmazás replikálása** elemet. Töltse ki a varázsló lapjait az alábbi adatokkal. Minden oldalon válassza az **OK** lehetőséget, ha elkészült:
+    - 1. A forrás konfigurálása
 
     |  |  |
     |-----|-----|
-    | Forrás: | **Helyszíni**|
-    | Forrás helye:| A konfigurációs kiszolgáló EC2-példányának neve.|
-    |Gép típusa: | **Fizikai gépek**|
+    | Forrás: | Válassza a **Helyszíni** lehetőséget.|
+    | Forrás helye:| Adja meg a konfigurációs kiszolgáló EC2-példányának nevét.|
+    |Gép típusa: | Válassza a **Fizikai gépek** lehetőséget.|
     | Folyamatkiszolgáló: | Válassza ki a konfigurációs kiszolgálót a legördülő listában.|
 
-    - 2. Cél konfigurálása
+    - 2. A cél konfigurálása
 
     |  |  |
     |-----|-----|
@@ -188,77 +188,72 @@ Engedélyezze a replikálást mindegyik áttelepíteni kívánt virtuális gép 
     | Előfizetés: | Válassza ki a használt előfizetést.|
     | Feladatátvétel utáni erőforráscsoport:| Használja az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott erőforráscsoportot.|
     | Feladatátvétel utáni üzemi modell: | Válassza a **Resource Manager** lehetőséget.|
-    | Tárfiók: | Válassza az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott tárfiókot.|
+    | Tárfiók: | Válassza ki az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott tárfiókot.|
     | Azure-hálózat: | Válassza a **Beállítás most a kijelölt gépekhez** lehetőséget.|
     | Feladatátvétel utáni Azure-hálózat: | Válassza az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott hálózatot.|
     | Alhálózat: | Válassza az **alapértelmezett** lehetőséget a legördülő listában.|
 
-    - 3. Fizikai gépek kiválasztása
+    - 3. A fizikai gépek kiválasztása
 
-        Kattintson a **+ Fizikai gép** gombra, és adja meg az áttelepíteni kívánt EC2-példány **Nevét**, **IP-címét** és **Operációsrendszer-típusát**, majd kattintson az **OK** gombra.
+      Válassza a **Fizikai gép** lehetőséget, és adja meg a migrálni kívánt EC2-példány **Nevét**, **IP-címét** és **Operációsrendszer-típusát**. Kattintson az **OK** gombra.
 
-    - 4. Tulajdonságok – tulajdonságok konfigurálása
+    - 4. A tulajdonságok konfigurálása
 
-        Válassza ki a konfigurációs kiszolgálón létrehozott fiókot a legördülő listából, és kattintson az **OK** gombra.
+      Válassza ki a konfigurációs kiszolgálón létrehozott fiókot, és válassza az **OK** lehetőséget.
 
-    - 5 Replikációs beállítások – replikációs beállítások konfigurálása
+    - 5. A replikációs beállítások konfigurálása
 
-        Győződjön meg róla, hogy a legördülő listában a **myReplicationPolicy** replikációs szabályzat van kiválasztva, majd kattintson az **OK** gombra.
+      Győződjön meg arról, hogy a legördülő listában kiválasztott replikációs szabályzat a **myReplicationPolicy**, majd válassza az **OK** lehetőséget.
 
-3. A varázsló befejezésekor kattintson a **Replikáció engedélyezése** lehetőségre.
+3. Ha a varázsló befejeződött, válassza a **Replikáció engedélyezése** lehetőséget.
 
-
-A **Védelem engedélyezése** feladat előrehaladását a **Figyelés és jelentéskészítés** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.        
+A **Védelem engedélyezése** feladat állapotának nyomon követéséhez lépjen a **Figyelés és jelentéskészítés** > **Feladatok** > **Site Recovery-feladatok** menüpontra. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.        
 
 Miután engedélyezte egy virtuális gép replikálását, 15 vagy több percet is igénybe vehet, hogy a módosítások életbe lépjenek és megjelenjenek a portálon.
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
-Feladatátvételi teszt futtatásakor a következő történik:
+Feladatátvételi teszt futtatásakor a következő események történnek:
 
-1. A rendszer lefuttatja az előfeltételek ellenőrzését, hogy a feladatátvételhez szükséges feltételek biztosan teljesüljenek.
-2. A feladatátvétel feldolgozza az adatokat, hogy az Azure-beli virtuális gép létrehozható legyen. Ha a legutóbbi helyreállítási pont van kiválasztva, a rendszer egy helyreállítási pontot hoz létre az adatokból.
-3. A rendszer létrehoz egy Azure-beli virtuális gépet az előző lépésben feldolgozott adatok használatával.
+- A rendszer lefuttatja az előfeltételek ellenőrzését, hogy a feladatátvételhez szükséges feltételek biztosan teljesüljenek.
+- A feladatátvétel feldolgozza az adatokat, hogy az Azure-beli virtuális gép létrehozható legyen. Ha a legutóbbi helyreállítási pont van kiválasztva, a rendszer egy helyreállítási pontot hoz létre az adatokból.
+- A rendszer létrehoz egy Azure-beli virtuális gépet az előző lépésben feldolgozott adatok használatával.
 
-A portálon futtassa a feladatátvételi tesztet az alábbiak szerint:
+A portálon futtassa a feladatátvételi tesztet:
 
-1. A tároló oldalán lépjen a **Védett elemek** > **Replikált elemek** pontra, és kattintson a virtuális gépre, majd a **+ Feladatátvétel tesztelése** gombra.
-
+1. A tároló oldalán lépjen a **Védett elemek** > **Replikált elemek** pontra. Válassza ki a virtuális gépet, majd válassza a **Feladatátvételi teszt** lehetőséget.
 2. Válasszon ki egy helyreállítási pontot a feladatátvétel végrehajtásához:
     - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
     - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
     - **Egyéni**: Bármelyik helyreállítási pontot kiválaszthatja.
+
 3. A **Feladatátvételi teszt** területen válassza ki, hogy az Azure virtuális gépek mely cél Azure-hálózathoz csatlakozzanak majd a feladatátvételt követően. Ennek az [Azure-erőforrások előkészítése](#prepare-azure-resources) szakaszban létrehozott hálózatnak kell lennie.
-4. A feladatátvételi művelet elindításához kattintson az **OK** gombra. A folyamat előrehaladásának megtekintéséhez kattintson a virtuális gépre, és nyissa meg a tulajdonságait. Vagy kattintson a **Feladatátvételi teszt** feladatra a tároló oldalán a **Figyelés és jelentéskészítés** > **Feladatok** >
-   **Site Recovery-feladatok** menüpontban.
-5. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portal > **Virtuális gépek** területen. Ellenőrizze, hogy a virtuális gép mérete megfelelő-e, hogy a gép a megfelelő hálózathoz csatlakozik-e, illetve, hogy fut-e.
+4. A feladatátvételi művelet elindításához válassza az **OK** lehetőséget. Az állapot nyomon követéséhez a virtuális gépet kiválasztva jelenítse meg a tulajdonságait. Vagy kiválaszthatja a tár oldalán lévő **Feladatátvételi teszt** feladatot. Ehhez válassza a **Figyelés és jelentéskészítés** > **Feladatok** >  **Site Recovery-feladatok** lehetőséget.
+5. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portalon. A virtuális gép megtekintéséhez válassza a **Virtuális gépek** lehetőséget. Ellenőrizze, hogy a virtuális gép mérete megfelelő-e, hogy a gép a megfelelő hálózathoz csatlakozik-e, illetve, hogy fut-e.
 6. Így már tudnia kell csatlakozni a replikált virtuális géphez az Azure-ban.
-7. A feladatátvételi teszt során létrehozott Azure-beli virtuális gépek törléséhez kattintson a **Feladatátvételi teszt eltávolítása** elemre a helyreállítási terven. A **Jegyzetek** területen jegyezheti fel és mentheti a feladatátvételi teszttel kapcsolatos megfigyeléseket.
+7. A feladatátvételi teszt során létrehozott Azure-beli virtuális gépek törléséhez válassza a **Feladatátvételi teszt eltávolítása** elemet a helyreállítási terven. A **Jegyzetek** területen jegyezheti fel és mentheti a feladatátvételi teszttel kapcsolatos megfigyeléseket.
 
-Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe.
-
+Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges. A feldolgozás befejezése 8–10 percet is igénybe vehet.
 
 ## <a name="migrate-to-azure"></a>Áttelepítés az Azure-ba
 
-Futtasson egy tényleges feladatátvételt az EC2-példányokon az Azure-beli virtuális gépekre való áttelepítésükhöz.
+Futtasson egy tényleges feladatátvételt az EC2-példányokon az Azure-beli virtuális gépekre való migrálásukhoz:
 
-1. A **Védett elemek** > **Replikált elemek** területen kattintson az AWS-példányok > **Feladatátvétel** gombra.
-2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
+1. A **Védett elemek** > **Replikált elemek** területen válassza az AWS-példányokat, majd a **Feladatátvétel** lehetőséget.
+2. A **Feladatátvétel** területen válassza ki a **helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget, ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
-4. Ellenőrizze, hogy a virtuális gép megjelenik-e a **Replikált elemek** között.
-5. Kattintson a jobb gombbal az egyes virtuális gépekre, majd válassza **Az áttelepítés befejezése** lehetőséget. Ez befejezi az áttelepítési folyamatot, valamint leállítja az AWS virtuális gép replikálását és a gép Site Recovery-számlázását.
+4. Győződjön meg arról, hogy a virtuális gép megjelenik a **replikált elemek** között.
+5. Kattintson a jobb gombbal az egyes virtuális gépekre, majd válassza a **Migrálás befejezése** lehetőséget. Ez befejezi az áttelepítési folyamatot, valamint leállítja az AWS virtuális gép replikálását és a gép Site Recovery-számlázását.
 
     ![Az áttelepítés befejezése](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A feladatátvétel indítása előtt a virtuális gép replikációja leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.  
-
-
+> *Ne szakítsa meg a folyamatban lévő feladatátvételt*. A feladatátvétel indítása előtt a virtuális gép replikációja leáll. Ha megszakítja a folyamatban lévő feladatátvételt, az leáll, a virtuális gép replikációja azonban nem folytatódik.  
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a témakörben az AWS EC2-példányok az Azure-beli virtuális gépekre való áttelepítésével ismerkedett meg. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagokra.
+Ebben a cikkben az AWS EC2-példányok Azure-beli virtuális gépekre való migrálásával ismerkedett meg. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Windows rendszerű virtuális gépekről szóló oktatóanyagokra.
 
 > [!div class="nextstepaction"]
 > [Windowsos virtuális gépek az Azure-ban – oktatóanyagok](../virtual-machines/windows/tutorial-manage-vm.md)

@@ -1,29 +1,26 @@
 ---
-title: Feladatok és folyamatok automatizálása a Visual Studio és az Azure Logic Apps használatával | Microsoft Docs
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre feladatokat és folyamatokat automatizáló munkafolyamatokat az Azure Logic Apps segítségével a Visual Studióban
-author: ecfan
-manager: SyntaxC4
-editor: ''
+title: Logikai alkalmazások létrehozása munkafolyamatok automatizálására a Visual Studio – Azure Logic Apps használatával | Microsoft Docs
+description: Rövid útmutató a feladatok, folyamatok és munkafolyamatok automatizálásához az Azure Logic Apps használatával a Visual Studióban
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 03/15/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 02e19de97654d751dc0cd557791a61a863a9a4e0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300752"
 ---
-# <a name="quickstart-automate-tasks-and-processes-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Feladatok és folyamatok automatizálása az Azure Logic Apps és a Visual Studio használatával
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rövid útmutató: Feladatok, folyamatok és munkafolyamatok létrehozása és automatizálása az Azure Logic Apps – Visual Studio használatával
 
-Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) segítségével olyan munkafolyamatokat hozhat létre, amelyek automatizálják az alkalmazások, adatok, rendszerek és szolgáltatások integrálásának feladatait és folyamatait egy-egy vállalaton vagy intézményen belül. Ez a rövid útmutató bemutatja, hogyan tervezheti meg és építheti fel ezeket a munkafolyamatokat logikai alkalmazások létrehozásával a Visual Studióban, és hogyan helyezheti üzembe a létrehozott alkalmazásokat az <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure-ban</a> a felhőben. Bár ezeket a feladatokat az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a> is elvégezheti, a Visual Studio lehetővé teszi, hogy logikai alkalmazásokat adjon meg a források vezérléséhez, a különböző verziók közzétételéhez, valamint különböző üzembe helyezési környezetekhez való Azure Resource Manager-sablonok létrehozásához. 
+Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Visual Studio segítségével munkafolyamatokat hozhat létre olyan feladatok és folyamatok automatizálására, amelyek alkalmazásokat, adatokat, rendszereket és szolgáltatásokat integrálnak vállalatok és intézmények között. Ez a rövid útmutató bemutatja, hogyan tervezheti meg és építheti fel ezeket a munkafolyamatokat logikai alkalmazások létrehozásával a Visual Studióban, és hogyan helyezheti üzembe a létrehozott alkalmazásokat az <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure-ban</a> a felhőben. Bár ezeket a feladatokat az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a> is elvégezheti, a Visual Studio lehetővé teszi, hogy logikai alkalmazásokat adjon meg a források vezérléséhez, a különböző verziók közzétételéhez, valamint különböző üzembe helyezési környezetekhez való Azure Resource Manager-sablonok létrehozásához. 
 
 Ha még nem használta az Azure Logic Apps alkalmazást, és csak az alapvető fogalmakat szeretné megismerni, próbálja ki ehelyett [a logikai alkalmazások Azure Portalon történő létrehozásáról szóló rövid útmutatót](../logic-apps/quickstart-create-first-logic-app-workflow.md). A Logikaialkalmazás-tervező hasonlóan működik az Azure Portalon és a Visual Studióban. 
 
@@ -108,7 +105,7 @@ Az Azure erőforráscsoport-projekt létrehozása után hozza létre és állít
 
 ## <a name="build-logic-app-workflow"></a>A logikai alkalmazás munkafolyamatának felépítése
 
-Ezután adjon hozzá egy [triggert](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely egy új RSS-hírcsatornaelem megjelenésekor aktiválódik. Mindegyik logikai alkalmazást egy trigger indít el, amelyet adott feltételek teljesülése aktivál. A Logic Apps-motor a trigger minden aktiválásakor létrehoz egy logikaialkalmazás-példányt, amely futtatja a munkafolyamatot.
+Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely egy új RSS-hírcsatornaelem megjelenésekor aktiválódik. Mindegyik logikai alkalmazást egy trigger indít el, amelyet adott feltételek teljesülése aktivál. A Logic Apps-motor a trigger minden aktiválásakor létrehoz egy logikaialkalmazás-példányt, amely futtatja a munkafolyamatot.
 
 1. A Logikaialkalmazás-tervezőben írja be az „rss” kifejezést a keresőmezőbe. Válassza ki a következő eseményindítót: **RSS – Művelet hírcsatornaelem közzétételekor**.
 
@@ -187,4 +184,5 @@ Ha már nincs rá szükség, törölje a logikai alkalmazást és a kapcsolódó
 Ebben a cikkben egy logikai alkalmazást állított össze, helyezett üzembe és futtatott a Visual Studióval. A logikai alkalmazások Visual Studióval végzett kezelésére és speciális üzembe helyezésére vonatkozó további információkat ezekben a cikkekben talál:
 
 > [!div class="nextstepaction"]
-> [Logikai alkalmazások kezelése a Visual Studióval](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Logikai alkalmazások kezelése a Visual Studióval](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Üzembehelyezési sablonok létrehozása logikai alkalmazásokhoz a Visual Studióval](../logic-apps/logic-apps-create-deploy-template.md)

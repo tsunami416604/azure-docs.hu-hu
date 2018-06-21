@@ -1,22 +1,20 @@
 ---
 title: Interaktív térképes keresés az Azure Mapsszel | Microsoft Docs
 description: Azure rövid útmutató – Bemutató interaktív térképes keresés indítása az Azure Mapsszel
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8dedaf95289d9637f5f3d1e80a763b5fb400c617
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8765b634b81742acf9fb4d40be8864800025351d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599762"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Interaktív térképes keresés indítása az Azure Mapsszel
 
@@ -50,7 +48,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html) fájl tartalmát.
 2. Mentse a fájl tartalmát helyileg **AzureMapDemo.html** néven, és nyissa meg egy szövegszerkesztőben.
-3. Keresse meg benne az `<insert-key>` karakterláncot, és cserélje le az előző szakaszban kimásolt **Elsődleges kulcs** értékére. 
+3. Keresse meg benne az `<insert-key>` sztringet, és cserélje le az előző szakaszban kimásolt **Elsődleges kulcs** értékére. 
 
 
 ## <a name="launch-the-application"></a>Az alkalmazás indítása
@@ -77,3 +75,11 @@ Ebben a rövid útmutatóban létrehozta a saját Maps-fiókját, és elindítot
 
 > [!div class="nextstepaction"]
 > [Hasznos helyek keresése a Maps szolgáltatással](./tutorial-search-location.md)
+
+További példakódokért és az interaktív kódolási élmény bemutatásáért tekintse át az alábbi útmutatókat.
+
+> [!div class="nextstepaction"]
+> [Címek keresése az Azure Maps REST API-k használatával](./how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [Az Azure Maps térkép vezérlőelemek használata](./how-to-use-map-control.md)

@@ -1,34 +1,29 @@
 ---
-title: Az Azure Data Lake Analytics használatának első lépései a Visual Studióval | Microsoft Docs
+title: Az Azure Data Lake Analytics használatának első lépései a Visual Studióval
 description: Ismerje meg, hogyan telepítheti a Data Lake Tools for Visual Studio eszközt, valamint hogyan fejleszthet és tesztelhet U-SQL-parancsfájlokat.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
-ms.devlang: na
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/02/2018
-ms.author: saveenr, yanacai
-ms.openlocfilehash: d0974e3258e0def09fe12d348180dcedf216401c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735793"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data Lake Analytics-fiókok létrehozásához, feladatok definiálásához [U-SQL](data-lake-analytics-u-sql-get-started.md) segítségével, valamint feladatok Data Lake Analytics-szolgáltatásokba való elküldéséhez. További információk a Data Lake Analyticsről: [Azure Data Lake Analytics overview](data-lake-analytics-overview.md) (Az Azure Data Lake Analytics áttekintése).
 
 >[!IMPORTANT]
->
->Az új általános adatvédelmi rendelet (GDPR) 2018. május 25-én lép életbe. Az erre való felkészülés jegyében arra kérjük az Azure Data Lake Tools for Visual Studio felhasználóit, hogy frissítsenek a 2.3.3000.4-es vagy újabb verzióra. Ez a verzió tartalmazza a legújabb adatvédelmi követelményeknek megfelelő módosításokat. Fontos: A korábbi verziók már nem tölthetők le, és elavultnak számítanak. 
+> A Microsoft javasolja, hogy frissítsen az Azure Data Lake Tools for Visual Studio 2.3.3000.4-es vagy újabb verziójára. A korábbi verziók már nem tölthetők le, és mostantól elavultnak számítanak. 
 >
 >**Mi a teendőm?**
 >
@@ -52,19 +47,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studiót Azure Data
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Az Azure Data Lake Tools for Visual Studio telepítése
 
-### <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Az Azure Data Lake Tools for Visual Studio 2017 telepítése
-
-Az Azure Data Lake Tools for Visual Studiot a Visual Studio 2017 15.3-as vagy újabb verziói támogatják. Az eszköz az **Adattárolási és -feldolgozási** és az **Azure-fejlesztési** számítási feladat része a Visual Studio telepítőjében. A Visual Studio telepítésének részeként engedélyezze a két számítási feladat egyikét.  
-
-Engedélyezze az **Adattárolási és -feldolgozási** számítási feladatot az itt látható módon: ![Az adattárolási és -feldolgozási számítási feladat engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
-
-Engedélyezze az **Azure-fejlesztési** számítási feladatot az itt látható módon: ![Az Azure-fejlesztési számítási feladat engedélyezése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
-
-### <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Az Azure Data Lake Tools for Visual Studio 2013 és 2015 telepítése
-
-Töltse le és telepítse az Azure Data Lake Tools for Visual Studio eszközt [a letöltőközpontból](http://aka.ms/adltoolsvs). A telepítést követően vegye figyelembe a következőket:
-* A **Kiszolgálókezelő** > **Azure** csomópont tartalmaz egy **Data Lake Analytics** csomópontot. 
-* Az **Eszközök** menü tartalmaz egy **Data Lake** elemet.
+Ehhez az oktatóanyaghoz feltétel, hogy telepítve legyen a Data Lake Tools for Visual Studio. Kövesse a [telepítési utasításokat](data-lake-analytics-data-lake-tools-install.md).
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Csatlakozás Azure Data Lake Data Lake Analytics-fiókhoz
 

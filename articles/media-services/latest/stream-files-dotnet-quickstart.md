@@ -13,18 +13,19 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: 40759fc65caa181651de68756f4374f879fd9c9c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701038"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rövid útmutató: Videofájlok streamelése – .NET
 
 > [!NOTE]
 > Az Azure Media Services legújabb verziója előzetes verzió, és v3 néven is ismert. A v3 API-k használatának megkezdéséhez létre kell hoznia egy új Media Services-fiókot a jelen rövid útmutatóban leírt módon. 
 
-Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. 
+Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. 
 
 A rövid útmutató végére képes lesz videók streamelésére.  
 
@@ -43,6 +44,18 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
+
+A minta az [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) mappában található.
+
+A minta a következő műveleteket hajtja végre:
+
+1. Létrehoz egy átalakítást (először ellenőrzi, hogy létezik-e a megadott átalakítás). 
+2. Létrehoz egy kimeneti objektumot, ami a kódolási feladat bemenete lesz.
+3. A feladat bemenetét egy HTTPS URL-cím alapján hozza létre.
+4. Elküldi a kódolási feladatot a korábban létrehozott bemenet és kimenet használatával.
+5. Ellenőrzi a feladat állapotát.
+6. Létrehoz egy StreamingLocatort.
+7. Streamelési URL-címeket épít fel.
 
 A minta egyes funkcióinak leírásáért vizsgálja meg a kódot, és tekintse meg az [ebben a forrásfájlban](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) található megjegyzéseket.
 

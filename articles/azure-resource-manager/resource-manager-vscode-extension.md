@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/06/2017
+ms.date: 05/22/2018
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: f05b0baee3f11f498976377c69c38b3118f3c922
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 190d4713f5c84281bc2637fc0d8323a2dabf6f21
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358659"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603763"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Azure Resource Manager-sablon létrehozása Visual Studio Code-bővítménnyel
 Ez a cikk az Azure Resource Manager Tools-bővítmények telepítésének és használatának előnyeit mutatja be a Visual Studio Code-ban. Resource Manager-sablonokat a VS Code-ban a bővítmény nélkül is létrehozhat, a bővítmény azonban rendelkezik olyan automatikus kiegészítés szolgáltatásokkal, amelyek megkönnyítik a sablonok fejlesztését. A bővítmény a sablonban rendelkezésre álló sablonfüggvényekre, -paraméterekre és -változókra tesz javaslatot.
@@ -171,7 +171,18 @@ Ez a cikk [Az első Azure Resource Manager-sablon létrehozása ás üzembe hely
 
    ![A változók megjelenítése](./media/resource-manager-vscode-extension/show-variables.png) 
 
-10. Válassza ki a **storageName** változót. Tegye ki a jobb oldali zárójelet. Az alábbi példában a kimeneti szakasz szerepel:
+10. Válassza ki a **storageName** változót. A kód most a következőképpen néz ki:
+
+   ```json
+   "storageUri": {
+      "type": "string",
+      "value": "[reference(variables('storageName'))"
+   }
+   ```
+   
+11. Az előző kód nem fog működni, mert a `reference` visszaad egy objektumot, a kimeneti érték azonban *sztringre* van állítva. Meg kell adnia az objektum egyik értékét. A hivatkozási függvény bármely erőforrástípussal használható, ezért a VS Code nem javasol tulajdonságokat az objektumhoz. Ehelyett előfordulhat, hogy a [tárfiókhoz visszaadott egyik érték](/rest/api/storagerp/storageaccounts/getproperties) a `.primaryEndpoints.blob`. 
+
+   Adja hozzá azt a tulajdonságot az utolsó zárójel után. Tegye ki a jobb oldali zárójelet. Az alábbi példában a kimeneti szakasz szerepel:
 
    ```json
    "outputs": { 
@@ -181,7 +192,7 @@ Ez a cikk [Az első Azure Resource Manager-sablon létrehozása ás üzembe hely
        },
        "storageUri": {
          "type": "string",
-         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+         "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
        }
    }
    ```
@@ -249,7 +260,7 @@ A végső sablon a következő:
     },
     "storageUri": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+      "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
     }
   }
 }
@@ -257,7 +268,7 @@ A végső sablon a következő:
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
-Készen áll a sablon üzembe helyezésére. A PowerShell vagy az Azure CLI használatával hozzon létre egy erőforráscsoportot. Ezután helyezze üzembe a tárfiókot az adott erőforráscsoporton.
+Most már készen áll a sablon üzembe helyezésére. A PowerShell vagy az Azure CLI használatával hozzon létre egy erőforráscsoportot. Ezután helyezze üzembe a tárfiókot az adott erőforráscsoporton.
 
 * A PowerShell esetében használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
 

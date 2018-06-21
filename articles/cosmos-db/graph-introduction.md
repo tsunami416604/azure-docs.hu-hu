@@ -1,143 +1,141 @@
 ---
-title: Bevezetés az Azure Cosmos DB Graph API-k |} Microsoft Docs
-description: Ismerje meg, hogyan használhatja Azure Cosmos DB vannak tárolva, a lekérdezés, és nagy diagramjait és kis késésű Apache TinkerPop Gremlin graph lekérdezés nyelvének segítségével haladnak át.
+title: Bevezetés az Azure Cosmos DB Graph API-k használatába | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogy miként használható az Azure Cosmos DB közel valós idejű adateléréssel nagy méretű gráfok tárolására, lekérdezésére és bejárására az Apache TinkerPop gráflekérdezési nyelve, a Gremlin használatával.
 services: cosmos-db
 author: LuisBosquez
-documentationcenter: ''
 manager: kfile
-ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: article
+ms.component: cosmosdb-graph
+ms.devlang: na
+ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 6deaf57b6314ed4077369beb3195e97281d918e6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 6fcd6389e3ff23c1cb2b2f0e5183ea43bae9f313
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796138"
 ---
-# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB: Graph API
+# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Bevezetés az Azure Cosmos DB használatába: a Graph API
 
-[Az Azure Cosmos DB](introduction.md) a globálisan elosztott, multimodel adatbázis-szolgáltatás a Microsoft a kritikus fontosságú alkalmazások. Azure Cosmos-adatbázis a következő szolgáltatásokat, az összes által támogatott biztosítja [iparágvezető SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/):
+Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Az Azure Cosmos DB az alábbi funkciókat biztosítja [az iparág legjobb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) szolgáltatásiszint-szerződéseivel támogatva:
 
 * [Kulcsrakész globális terjesztés](distribute-data-globally.md)
-* [Átviteli sebesség és tárterület a rugalmas méretezést](partition-data.md) világszerte
-* Egyjegyű ezredmásodperces késések fordulnak elő az 99th aránya:
-* [Öt jól meghatározott konzisztenciaszintek](consistency-levels.md)
-* Magas rendelkezésre állású garantált 
+* [A teljesítmény és a tárterület rugalmas méretezése](partition-data.md) világszerte
+* Az esetek 99%-ában egyszámjegyű ezredmásodperces késés
+* [Öt jól definiált konzisztenciaszint](consistency-levels.md)
+* Garantáltan magas rendelkezésre állás 
 
-Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Multimodel, és támogatja a dokumentum, a kulcs-érték, a graph és a oszlopos adatmodellekben.
+Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcsértékeket, a diagramokat és az oszlopos adatmodelleket.
 
-Azt javasoljuk, hogy a következő videó, ahol Kirill Gavrylyuk ismerteti az Azure-Cosmos adatbázis diagramjait használatába megtekintése:
+Javasoljuk, hogy tekintse meg a következő videót, amelyben Kirill Gavrylyuk a gráfok Azure Cosmos DB-ben való használatának első lépéseit ismerteti:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
 > 
 > 
 
-Az Azure Cosmos DB Graph API biztosítja:
+Az Azure Cosmos DB Graph API a következőket biztosítja:
 
-- Modellezési diagramot.
-- Könyvtármegkerülési API-k.
-- Kulcsrakész globális terjesztési.
-- A rugalmas méretezést tárolási és átviteli, legfeljebb 10 ms késések olvasása és a 99th PERCENTILIS, kevesebb mint 15 ms.
-- Automatikus indexelés azonnali lekérdezés rendelkezésre állással.
-- Aprólékosan beállítható konzisztenciaszintek.
-- Átfogó SLA-k, beleértve a rendelkezésre állás 99,99 % SLA fiókokhoz egyetlen régión és fiókokhoz több területi laza konzisztencia- és 99.999 % olvassa el az összes fiókot a több területi adatbázis rendelkezésre állási.
+- Gráfmodellezés.
+- Bejárási API-k.
+- Kulcsrakész globális terjesztés.
+- Rugalmasan méretezhető tárhely és teljesítmény 10 ms vagy a 99. percentilisben 15 ms alatti olvasási késéssel.
+- Automatikus indexelés azonnali rendelkezésre állással a lekérdezésekhez.
+- Beállítható konzisztenciaszintek.
+- Átfogó SLA-k, beleértve egy 99,99%-os rendelkezésre állási SLA-t minden enyhén korlátozott konzisztenciájú egyrégiós és többrégiós fiókhoz, valamint 99,999%-os olvasási rendelkezésre állást minden többrégiós adatbázisfiókhoz.
 
-Azure Cosmos DB lekérdezéséhez használja a [Apache TinkerPop](http://tinkerpop.apache.org) átjárás nyelvi diagramot [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), vagy más kompatibilis TinkerPop graph rendszerek, például [Apache Spark GraphX](spark-connector-graph.md).
+Az Azure Cosmos DB lekérdezéséhez használhatja a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), azaz az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvét, vagy más TinkerPop-kompatibilis gráfrendszereket, például az [Apache Spark GraphX](spark-connector-graph.md) rendszert.
 
-Ez a cikk áttekintést az Azure Cosmos DB Graph API-t, és ismerteti, hogyan használható az nagy diagramok és a csúcsban milliárd tárolására. A diagramokon lekérdezéseket az ezredmásodperces késési, és a graph struktúra és a séma könnyen fejleszteni.
+A cikk áttekintést nyújt az Azure Cosmos DB Graph API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját.
 
-## <a name="graph-database"></a>Graph-adatbázis
-A valós életben megjelenő természetes kapcsolódnak. Hagyományos modellezési entitások összpontosít. Több alkalmazás is szükség van a következő modellre vagy entitásokat és a kapcsolatok modellezésére természetes.
+## <a name="graph-database"></a>Gráfadatbázis
+Az adatok a való világban természetes módon kapcsolódnak egymáshoz. A hagyományos adatmodellezés az entitásokra fókuszál. Számos alkalmazás esetében szükséges az entitások és a kapcsolatok természetes modellezése is.
 
-A [graph](http://mathworld.wolfram.com/Graph.html) áll egy struktúra [csúcsban](http://mathworld.wolfram.com/GraphVertex.html) és [szélek](http://mathworld.wolfram.com/GraphEdge.html). Mind a csúcsban, és a szélek tulajdonságok tetszőleges számú tartozhat. Csúcsban jelöl diszkrét objektumok, például egy személy, egy helyen vagy egy eseményt. Szegélyek csúcsban közötti kapcsolatok jelöl. Például egy személy előfordulhat, hogy tudja, egy másik személyre kell részt az esemény és egy helyen nemrég átállították. Tulajdonságok az csúcsban és a vonatkozó információk express. Példa tulajdonságai közé tartozik, amelyen a neve, a kora, és a peremhálózati, amelynek időbélyegzőt és/vagy az egyik súlya csúcspont. Ez a modell több hivatalosan is ismert, egy [tulajdonság graph](http://tinkerpop.apache.org/docs/current/reference/#intro). Azure Cosmos-adatbázis a tulajdonság graph modellt támogatja.
+A [gráf](http://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. A csúcsok diszkrét objektumokat jelölnek, például személyeket, helyeket vagy eseményeket. Az élek a csúcsok közötti kapcsolatokat jelölik. Például egy adott személy ismerhet egy másik személyt, részt vehet egy eseményen, vagy nemrégiben meglátogathatott egy helyszínt. A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat fejeznek ki. Ilyen tulajdonságok lehetnek például a csúcsok neve vagy kora és az élek időbélyege és/vagy súlya. Formálisabban ezt a modellt [tulajdonsággráfnak](http://tinkerpop.apache.org/docs/current/reference/#intro) is nevezik. Az Azure Cosmos DB támogatja a tulajdonsággráf modellt.
 
-Például a következő minta grafikon azt ábrázolja, felhasználók, mobileszközök, érdeklődési és operációs rendszerek közötti kapcsolatok szerepelnek:
+Például az alábbi mintagráf személyek, mobileszközök, érdeklődési körök és operációs rendszerek közti kapcsolatokat ábrázol:
 
-![Személyek, eszközök és érdeklődési mintaadatbázis](./media/graph-introduction/sample-graph.png)
+![Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis](./media/graph-introduction/sample-graph.png)
 
-Diagramokat tudományos, technológia és üzleti adatkészletek számos működésének megértése. Graph adatbázisok lehetővé teszik, hogy a modell és az áruházbeli diagramjait természetesen és hatékonyan, ami hasznos, ha több forgatókönyv. Graph adatbázisok jellemzően NoSQL-adatbázisok, mert ezek használatát is gyakran esetekben a szükséges sémák rugalmasságát és gyors iterációs.
+A gráfok a legkülönfélébb adatkészletek ábrázolására alkalmasak a tudományok, a technológiák és az üzlet területén. A gráfadatbázisok segítségével a gráfok természetesen és hatékonyan modellezhetők és tárolhatók, így számos forgatókönyvben hasznosnak bizonyulnak. A gráfadatbázisok jellemzően NoSQL-adatbázisok, mivel az ilyen esetekben gyakran van szükség rugalmas sémákra és gyors iterációra.
 
-Diagramokat egy új és a hatékony módszer modellezési adatok kínálnak. De a tény önmagában nem elegendő miért egy grafikonon adatbázis használata. Számos használati esetek és minták graph traversals érintő diagramjait outperform hagyományos SQL és a NoSQL-adatbázisok által nagyságrenddel. A teljesítménybeli eltérést az további bővíteni, amikor egynél több kapcsolattal, például a "Friend"-az-a-barát áthaladó.
+A gráfok újszerű és hatékony adatmodellezési technikát kínálnak. Ez a tény magában azonban nem elegendő a gráfadatbázis használatához. A gráfbejárásokat tartalmazó alkalmazási esetek és minták esetében a gráfok nagyságrendekkel jobban teljesítenek a hagyományos SQL- és NoSQL-adatbázisoknál. A teljesítménybeli különbség további nő, amikor több kapcsolatot kell bejárni, például „egy barát barátja” esetében.
 
-A gyors traversals graph adatbázisok biztosító kombinálhatja graph algoritmusok, például mélysége-első keresési, körének-első keresési vagy Dijkstra tartozó algoritmus, közösségi webhelyek, a tartalom kezelésére, a földrajzi, például különböző tartományokban problémák megoldására és javaslatok.
+A gráfadatbázisok által lehetővé tett gyors bejárások kombinálhatók különféle gráfalgoritmusokkal, például mélységi (DFS) és szélességi (BFS) keresésekkel vagy Dijkstra-algoritmusokkal, a legkülönfélébb területekre (például közösségi hálózatok, tartalomkezelés, térinformatika vagy javaslatok kialakítása) tartozó problémák megoldása érdekében.
 
-## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Az Azure Cosmos DB bolygónk méretű diagramjait
-Azure Cosmos-adatbázis egy teljes körűen felügyelt graph-adatbázist, amely globális terjesztési, rugalmas tárolási és átviteli, automatikus indexeléshez lekérdezés, konzisztenciaszinteket és a TinkerPop szabvány támogatása skálázás kínál.
+## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Globális gráfok az Azure Cosmos DB-ben
+Az Azure Cosmos DB egy teljes körűen felügyelt gráfadatbázis, amely globális elosztási, rugalmas tárhely- és teljesítményméretezési, automatikus indexelési és lekérdezési képességeket biztosít, valamint beállítható konzisztenciaszinteket és a TinkerPop szabvány támogatását.
 
-![Azure Cosmos DB graph-architektúra](./media/graph-introduction/cosmosdb-graph-architecture.png)
+![Az Azure Cosmos DB gráfarchitektúrája](./media/graph-introduction/cosmosdb-graph-architecture.png)
 
-Azure Cosmos-adatbázis a következő differenciált szolgáltatásokat a többi graph-adatbázis, a piacon képest biztosítja:
+Az Azure Cosmos DB a következő megkülönböztetett képességeket biztosítja a piacon elérhető többi gráfadatbázishoz képest:
 
 * Rugalmasan méretezhető átviteli sebesség és tárterület
 
- A valós életben diagramjait egyetlen kiszolgáló kapacitásának felüli kell. Az Azure Cosmos DB méretezheti a diagramok zökkenőmentesen több kiszolgáló között. Az átviteli sebessége a graph-egymástól függetlenül a hozzáférési minták alapján is méretezheti. Azure Cosmos-adatbázis, amely méretezhető, gyakorlatilag korlátlan tárterület mérete és a létesített átviteli sebesség graph-adatbázisokat támogatja.
+ A valós életben a gráfokat egyetlen kiszolgáló kapacitásán felül kell tudni méretezni. Az Azure Cosmos DB segítségével a gráfok zökkenőmentesen méretezhetők akár több kiszolgálóra is. Emellett a gráfok teljesítménye függetlenül méretezhető a hozzáférési mintáknak megfelelően. Az Azure Cosmos DB által támogatott gráfadatbázisok szinte korlátlanul méretezhető tárterületet és átviteli sebességet biztosítanak.
 
-* Több területi replikáció
+* Többrégiós replikáció
 
- Azure Cosmos DB transzparens módon replikálja a Diagramadatok, amely a fiókjához tartozó minden régióban. Replikáció lehetővé teszi a globális adatok elérését igénylő alkalmazások fejlesztéséhez. Nincsenek mellékhatásokkal konzisztencia, a rendelkezésre állás, és a teljesítmény és a megfelelő garanciák területéhez. Azure Cosmos DB többhelyű API-khoz transzparens regionális feladatátvétel biztosít. Rugalmasan méretezhető átviteli sebesség és tárterület világszerte.
+ Az Azure Cosmos DB transzparensen replikálja a gráfadatokat a fiókhoz társított összes régióba. A replikáció lehetővé teszi a globális adathozzáférést igénylő alkalmazások fejlesztését. Vannak azonban hátrányai a konzisztencia, a rendelkezésre állás és a teljesítmény, valamint a megfelelő garanciák terén. Az Azure Cosmos DB transzparens regionális feladatátvételt kínál többkiszolgálós API-k segítségével. A teljesítmény és a tárterület globális szinten rugalmasan méretezhető.
 
-* Gyors lekérdezéseket és ismerős Gremlin szintaxissal traversals
+* Gyors lekérdezések és bejárások a már ismert Gremlin-szintaxissal
 
- Heterogén csúcsban és szélek tárolja, és ezeket a dokumentumokat a megszokott Gremlin szintaxis keresztül lekérdezése. Azure Cosmos-adatbázis egy minden tartalom indexeléséhez magas egyidejű, zárolás ingyenes, naplószerkezetű indexelési technológiát használja. Ez a funkció lehetővé teszi, hogy részletes valós idejű lekérdezéseket és traversals sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információ: [diagramjait lekérdezése Gremlin használatával](gremlin-support.md).
+ Heterogén csúcsokat és éleket tárolhat, és a már ismerős Gremlin-szintaxis használatával kérdezheti le ezeket a dokumentumokat. Az Azure Cosmos DB az egyidejűséget támogató, zárolásmentes, naplószerkezetű indexelési technológiát alkalmaz a teljes tartalom indexeléséhez. Ez a képesség részletes, valós idejű lekérdezéseket és bejárásokat tesz lehetővé sémamutatók, másodlagos indexek vagy nézetek megadása nélkül. További információk: [Gráfok lekérdezése a Gremlin használatával](gremlin-support.md).
 
 * Teljes körű felügyelet
 
- Az Azure Cosmos DB szükségtelenné adatbázis és a gép erőforrásainak kezelésére. Teljes körűen felügyelt Microsoft Azure szolgáltatásként akkor nem kell virtuális gépeket, a központi telepítése és a szoftver konfigurálása, a méretezés kezelésére, vagy az összetett adatrétegek frissítésére kezelésére. Minden graph automatikusan biztonsági másolat és védve legyenek a regionális meghibásodásokkal szemben. Egyszerűen Azure Cosmos DB fiók hozzáadása és mértékben kapacitást kell azt, hogy az alkalmazás üzemeltetése és kezelése az adatbázis helyett összpontosíthat.
+ Az Azure Cosmos DB használatával nincs szükség az adatbázis és a gép erőforrásainak kezelésére. Teljes körűen felügyelt Microsoft Azure szolgáltatásként nincs szükség virtuális gépek kezelésére, szoftverek telepítésére és konfigurálására, a méretezés kezelésére vagy az összetett adatrétegek frissítésére. Minden gráfról automatikus biztonsági mentés készül, és védelmet élveznek a regionális meghibásodásokkal szemben. Könnyedén elvégezheti egy Azure Cosmos DB-fiók hozzáadását és a kapacitás szükség szerinti kiosztását, így az adatbázis üzemeltetése és kezelése helyett az alkalmazásra összpontosíthat.
 
-* Az automatikus indexeléshez
+* Automatikus indexelés
 
- Alapértelmezés szerint Azure Cosmos DB automatikusan indexeli a csomópontok és a Graph szélek belül található összes tulajdonság, és nem várt vagy igényel semmilyen sémát, illetve másodlagos indexek létrehozását.
+ Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli a gráf csúcsain és élein található összes tulajdonságot, és nem vár vagy igényel semmilyen sémát, valamint nem szükséges másodlagos indexek létrehozása sem.
 
-* Apache TinkerPop való kompatibilitás érdekében
+* Kompatibilitás az Apache TinkerPoppal
 
- Azure Cosmos-adatbázis natív módon támogatja a nyílt forráskódú Apache TinkerPop szabványt, és más diagramhoz TinkerPop-kompatibilis rendszerek integrálható. Igen, egyszerűen telepítse át egy másik graph-adatbázisból, például Titan vagy Neo4j, vagy Azure Cosmos-Adatbázist kíván használni a graph analytics keretrendszerek, például a [Apache Spark GraphX](spark-connector-graph.md).
+ Az Azure Cosmos DB natív módon támogatja a nyílt forráskódú Apache TinkerPop szabványt, és integrálható más TinkerPop-kompatibilis rendszerekkel. Így egyszerűen válthat más gráfadatbázisokról (például Titan vagy Neo4j), vagy használhatja az Azure Cosmos DB-t különféle gráfelemző keretrendszerekkel (például [Apache Spark GraphX](spark-connector-graph.md)).
 
-* Aprólékosan beállítható konzisztenciaszintek
+* Beállítható konzisztenciaszintek
 
- Válassza ki a öt jól meghatározott konzisztenciaszintek konzisztencia és a teljesítmény közötti optimális kompromisszumot eléréséhez. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. A részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy a hang mellékhatásokkal konzisztencia, a rendelkezésre állás és a késleltetés között. További információ: [konzisztenciaszintek hangolható adatokat az Adatbázisba az Azure Cosmos](consistency-levels.md).
+ Öt jól meghatározott konzisztenciaszint közül választhat a konzisztencia és a teljesítmény közötti optimális kompromisszum elérése érdekében. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](consistency-levels.md).
 
-Azure Cosmos-adatbázis is használhat, több modellek, például a dokumentum és a graph belül az azonos tárolók adatbázisokat. Egy dokumentum gyűjtemény segítségével Diagramadatok és dokumentumok tárolására. SQL-lekérdezések JSON keresztül és a Gremlin lekérdezések segítségével egy grafikonon ugyanazokat az adatokat lekérdezni.
+Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat és gráfokat) alkalmazni egyazon tárolón/adatbázison belül. Dokumentumgyűjtemények használatával a gráfadatokat a dokumentumokkal együtt tárolhatja. JSON-alapú SQL-lekérdezések és Gremlin-lekérdezések használatával egyaránt lekérdezheti a gráffal egyező adatokat.
 
 ## <a name="get-started"></a>Bevezetés
-Használhatja az Azure parancssori felület (CLI), Azure PowerShell vagy az Azure-portál támogatással rendelkező Graph API Azure Cosmos DB fiókokat létrehozni. Miután létrehozta a fiókok, az Azure-portál például biztosít-e egy végpontot, `https://<youraccount>.gremlin.cosmosdb.azure.com`, biztosít egy WebSocket előtér Gremlin számára. Konfigurálhatja a TinkerPop-kompatibilis eszközök, például a [Gremlin konzol](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console), hogy ehhez a végponthoz kapcsolódni, és a Java, Node.js vagy bármely Gremlin ügyfél-illesztőprogram alkalmazások.
+Azure Cosmos DB-fiókokat a Graph API-t támogató Azure parancssori felület (CLI), Azure PowerShell vagy Azure Portal használatával hozhat létre. A fiókok létrehozását követően az Azure Portal szolgáltatásvégpontot biztosít (például `https://<youraccount>.gremlin.cosmosdb.azure.com`), amely egy WebSocket-előtér a Gremlin számára. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
 
-Az alábbi táblázat a népszerű Gremlin illesztőprogramok szemben Azure Cosmos DB használható:
+Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-illesztőprogramokat foglalja össze:
 
 | Letöltés | Dokumentáció | Első lépések |
 | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [A Githubon Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Hozzon létre Graph .NET használatával](create-graph-dotnet.md) |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Hozzon létre Graph javás környezetekben](create-graph-java.md) |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a Githubon](https://github.com/jbmusso/gremlin-javascript) | [Node.js segítségével Graph létrehozása](create-graph-nodejs.md) |
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a Githubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Hozzon létre Graph pythonos környezetekben](create-graph-python.md) |
-| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a Githubon](https://github.com/PommeVerte/gremlin-php) | [A Graph használatával PHP létrehozása](create-graph-php.md) |
-| [Gremlin konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop docs](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Hozzon létre Graph Gremlin konzol használata](create-graph-gremlin-console.md) |
+| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Gráf létrehozása a .NET használatával](create-graph-dotnet.md) |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Gráf létrehozása a Java használatával](create-graph-java.md) |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript a GitHubon](https://github.com/jbmusso/gremlin-javascript) | [Gráf létrehozása a Node.js használatával](create-graph-nodejs.md) |
+| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python a GitHubon](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Gráf létrehozása a Python használatával](create-graph-python.md) |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a GitHubon](https://github.com/PommeVerte/gremlin-php) | [Gráf létrehozása a PHP használatával](create-graph-php.md) |
+| [Gremlin-konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentumok](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gráf létrehozása a Gremlin-konzol használatával](create-graph-gremlin-console.md) |
 
-## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Azure Cosmos DB graph-támogatása forgatókönyvei
-Az alábbiakban néhány forgatókönyv graph támogatási Azure Cosmos-adatbázis helyének:
+## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Az Azure Cosmos DB gráftámogatásával kapcsolatos forgatókönyvek
+Íme néhány forgatókönyv, amelyben az Azure Cosmos DB gráftámogatása hasznosítható:
 
-* Közösségi hálózatokkal
+* Közösségi hálózatok
 
- Az ügyfelek és azok interakciók más felhasználókkal kapcsolatos adatok kombinálásával személyre szabott élmény fejlesztése, felhasználói viselkedés előrejelzése vagy személyek csatlakozás másokkal hasonló érdekében. Azure Cosmos-adatbázis segítségével kezelheti a közösségi hálózatokkal és nyomon követheti a felhasználói beállítások és adatok.
+ Az ügyfeleivel és ügyfeleinek más személyekkel való interakcióival kapcsolatos adatok kombinálásával személyre szabott élményeket dolgozhat ki, előre jelezheti az ügyfelek viselkedését, vagy összekötheti a hasonló érdeklődési körű személyeket. Az Azure Cosmos DB használatával felügyelhetők a közösségi hálózatok, és nyomon követhetők az ügyfelek preferenciái és adatai.
 
 * Javaslati motorok
 
- Ebben a forgatókönyvben a kiskereskedelmi iparági gyakran használják. Termékek és felhasználók, felhasználói interakció megvásárlásáról, keresse meg vagy egy elem értékelése kombinálásával hozhat létre testreszabott javaslatok. A kis késleltetésű, rugalmasan méretezhető és natív Azure Cosmos DB graph-támogatása ezen kapcsolati modellezési ideális.
+ Ezt a forgatókönyvet gyakran alkalmazzák a kiskereskedelemben. A termékekkel, a felhasználókkal és a felhasználók interakcióival (például vásárlások, böngészés vagy az egyes cikkek értékelése) kapcsolatos információk kombinálásával testre szabott javaslatokat állíthat össze. Az Azure Cosmos DB kis késleltetésű, rugalmasan méretezhető és natív gráftámogatása ideális ezeknek az interakcióknak a modellezéséhez.
 
 * Térinformatikai
 
- Számos alkalmazás távközlési, logisztikai és utazás megtervezése kell érdeklő hely keresése területen, vagy keresse meg a legrövidebb/optimális útvonal két hely között. Azure Cosmos-adatbázis a problémák természetes alkalmasnak.
+ Számos távközlési, logisztikai és utazástervezési alkalmazásban van szükség az egyes helyszínek egy területen belül való megkeresésére, vagy a két helyszín közötti legrövidebb/optimális útvonal megállapítására. Az Azure Cosmos DB természetes választás az ilyen problémákhoz.
 
 * Eszközök internetes hálózata
 
- A hálózati és egy grafikonon modellezve az IoT-eszközök közötti kapcsolatokat az eszközök és az eszközök állapotának jobb megértése hozhat létre. Is is megismerheti, hogyan a hálózat egy részét a módosítások hatással lehet egy másik.
+ Ha a hálózatot és az IoT-eszközök közötti kapcsolatot gráfként modellezi, jobban megértheti az eszközök és adategységek állapotát. Azt is megértheti, hogy a hálózat egyes részeinek módosítása milyen potenciális hatással lehet a többi részre.
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Cosmos Adatbázisba graph-támogatással kapcsolatos további tudnivalókért lásd:
+A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 
-* Az első lépései a [Azure Cosmos DB graph oktatóanyag](create-graph-dotnet.md).
-* További tudnivalók [lekérdezése az Azure Cosmos Adatbázisba diagramjait Gremlin használatával](gremlin-support.md).
+* Első lépésként kezdje [az Azure Cosmos DB-gráfokkal kapcsolatos oktatóanyaggal](create-graph-dotnet.md).
+* Ismerje meg [az Azure Cosmos DB-ben kezelt gráfok Gremlinnel való lekérdésének](gremlin-support.md) módját.

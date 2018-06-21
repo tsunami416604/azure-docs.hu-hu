@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 695298be6cb9f56de26b8682c556285aba22d4a6
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e8d4380087e826a4f1332c0a39670c2309a10861
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272063"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236144"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -118,29 +118,6 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    Az OVA 1.0.8.59-es verziója esetén
-
-    **Algoritmus** | **Kivonat értéke**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    Az OVA 1.0.8.49-es verziója esetében
-    **Algoritmus** | **Kivonat értéke**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    Az OVA 1.0.8.40-es verziója esetében:
-
-    **Algoritmus** | **Kivonat értéke**
-    --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>A gyűjtő virtuális gép létrehozása
 
 Importálja a letöltött fájlt a vCenter Serverre.
@@ -162,7 +139,8 @@ Importálja a letöltött fájlt a vCenter Serverre.
 1. A vSphere Client-konzolon kattintson a jobb gombbal a virtuális gépre, majd kattintson az **Open Console** (Konzol megnyitása) elemre.
 2. Adja meg a berendezés nyelv-, időzóna- és jelszóbeállításait.
 3. Az asztalon kattintson a **Gyűjtő futtatása** parancsikonra.
-4. Az Azure Migrate Collectorban nyissa meg a **Set up prerequisites** (Előfeltételek megadása) felületet.
+4. Kattintson a **Frissítések keresése** lehetőségre a gyűjtő felhasználói felületének felső sávján, és ellenőrizze, hogy a gyűjtő legújabb verzióban fut-e. Ha nem, a hivatkozás használatával töltse le a legújabb frissítési csomagot, és frissítse a gyűjtőt.
+5. Az Azure Migrate Collectorban nyissa meg a **Set up prerequisites** (Előfeltételek megadása) felületet.
     - Fogadja el a licencfeltételeket, és olvassa el a külső szolgáltatóval kapcsolatos információkat.
     - A gyűjtő ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel.
     - Ha a virtuális gép proxykiszolgálón keresztül éri el az internetet, kattintson a **Proxy settings** (Proxybeállítások) gombra, és adja meg a proxykiszolgáló címét és a figyelőportot. Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel. [Itt tekinthet meg további információkat](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) az internetes csatlakozási követelményekkel és a gyűjtő által elért URL-címek listájával kapcsolatban.
@@ -173,13 +151,13 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - A gyűjtő ellenőrzi, hogy fut-e a gyűjtőszolgáltatás. A szolgáltatás alapértelmezés szerint telepítve van a gyűjtő virtuális gépen.
     - Töltse le és telepítse a VMware PowerCLI-t.
 
-5. A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
+6. A **Specify vCenter Server details** (vCenter Server adatainak megadása) területen tegye a következőket:
     - Adja meg a vCenter-kiszolgáló nevét (FQDN, teljes tartománynév) vagy IP-címét.
     - A **User name** (Felhasználónév) és a **Password** (Jelszó) mezőben adja meg a csak olvasási jogokkal rendelkező fiók hitelesítő adatait, amelyet a gyűjtő a virtuális gépek felderítéséhez használ majd a vCenter-kiszolgálón.
     - A **Collection scope** (Gyűjtés hatóköre) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. [Itt tekinthet meg további információkat](how-to-scale-assessment.md) azzal kapcsolatban, hogyan fedezheti fel a nagyméretű környezeteket.
 
-6. A **Specify migration project** (Migrálási projekt megadása) területen adja meg az Azure Migrate projekt a portálról kimásolt azonosítóját és kulcsát. Ha nem másolta ki őket, nyissa meg az Azure Portalt a gyűjtő virtuális gépről. A projekt **Áttekintés** lapján kattintson a **Gépek felderítése** elemre, és másolja ki az értékeket.  
-7. A **View collection progress** (Gyűjtési folyamat megtekintése) területen monitorozhatja a felderítési folyamatot, és győződhet meg róla, hogy a virtuális gépekről gyűjtött metaadatok a hatókörbe tartoznak-e. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate-gyűjtő által gyűjtött adatokról.
+7. A **Specify migration project** (Migrálási projekt megadása) területen adja meg az Azure Migrate projekt a portálról kimásolt azonosítóját és kulcsát. Ha nem másolta ki őket, nyissa meg az Azure Portalt a gyűjtő virtuális gépről. A projekt **Áttekintés** lapján kattintson a **Gépek felderítése** elemre, és másolja ki az értékeket.  
+8. A **View collection progress** (Gyűjtési folyamat megtekintése) területen monitorozhatja a felderítési folyamatot, és győződhet meg róla, hogy a virtuális gépekről gyűjtött metaadatok a hatókörbe tartoznak-e. Az adatgyűjtő mutatja a felderítés hozzávetőleges időtartamát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate-gyűjtő által gyűjtött adatokról.
 
 > [!NOTE]
 > Az adatgyűjtő csak az „Angol (Egyesült Államok)” nyelvet támogatja az operációs rendszer és az adatgyűjtő felület nyelveként. A támogatás további nyelveken is hamarosan elérhetővé válik.
@@ -219,7 +197,7 @@ Az értékelésben az Azure használatához szükséges állapotnézet az egyes 
 - Nem áll készen az Azure-beli használatra
 - A kompatibilitás ismeretlen
 
-A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban. Az Azure Migrate által tett méretjavaslat az értékelési tulajdonságokban meghatározott méretezési feltételektől függ. Ha a méretezési feltétel teljesítményalapú méretezés, a méretjavaslat a virtuális gépek teljesítményelőzményeinek figyelembe vételével jön létre. Ha a méretezési feltétel „helyszíni”, az Azure-beli virtuális gépek méretére vonatkozó javaslat a helyszíni virtuális gépek méretének ellenőrzésével jön létre (jelenlegi méretezés). A processzor és a memória kihasználtsági adatait a rendszer nem veszi figyelembe a virtuális gépek méretezéséhez. A lemezek méretezését azonban a helyszíni méretezés esetében a rendszer a teljesítményadatok alapján végzi.  [További információ](concepts-assessment-calculation.md) az Azure Migrate-beli méretezés módjáról.
+A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban. Az Azure Migrate által tett méretjavaslat az értékelési tulajdonságokban meghatározott méretezési feltételektől függ. Ha a méretezési feltétel teljesítményalapú méretezés, a méretre vonatkozó javaslat a virtuális gépek (processzor és memória) és lemezek (IOPS-érték és adatátvitel) teljesítményelőzményeit veszi figyelembe. Ha a méretezési feltétel „helyszíni”, az Azure Migrate nem veszi figyelembe a virtuális gépek és lemezek teljesítményadatait. Az Azure-beli virtuális gépre vonatkozó méretezési javaslat a helyszíni virtuális gép méretét veszi figyelembe, a lemez méretezése pedig az értékelési tulajdonságok között megadott tárolótípus (alapértelmezés szerint prémium szintű lemez) alapján történik. [További információ](concepts-assessment-calculation.md) az Azure Migrate-beli méretezés módjáról.
 
 Az Azure-hoz nem készen álló vagy feltételesen készen álló virtuális gépek esetén az Azure Migrate ismerteti a készenléttel kapcsolatos problémákat, és javítási lépésekre tesz javaslatot.
 
@@ -244,7 +222,7 @@ A becsült havi számítási és tárolási költségek a csoportban lévő virt
 
 Az Azure Migrate minden értékelése olyan megbízhatósági minősítéssel van társítva, amely 1 csillagtól az 5 csillagig terjed (az 1 csillag a legalacsonyabb, az 5 csillag pedig a legmagasabb). A megbízhatósági minősítés az értékelések kiszámításához szükséges adatpontok rendelkezésre állása alapján vannak az értékelésekhez rendelve. Az értékelés megbízhatósági minősítése segít megbecsülni az Azure Migrate által nyújtott méretjavaslatok megbízhatóságát.
 
-A virtuális gép teljesítményalapú méretezéséhez az Azure Migrate-nek szüksége van a processzor és a memória kihasználtsági adataira. A virtuális géphez csatlakoztatott egyes lemezek méretezéséhez emellett szüksége van az olvasási/írási IOPS-értékre és az adatátviteli teljesítményre is. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapter esetén szüksége van a hálózati bejövő és kimenő forgalom mértékére a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
+A megbízhatósági minősítés különösen olyan értékelések esetében hasznos, ahol a méretezési feltétel a teljesítményalapú méretezés. A teljesítményalapú méretezéshez az Azure Migrate-nek szüksége van a virtuális gép processzorának és memóriájának kihasználtsági adataira. Emellett szükség van a lemez IOPS-értékére és az adatátviteli teljesítményre is a virtuális géphez csatlakoztatott minden lemezre vonatkozóan. Ugyanígy az Azure Migrate-nek a virtuális géphez csatlakoztatott összes hálózati adapterre vonatkozóan szüksége van a bejövő és kimenő hálózati forgalom adataira a teljesítményalapú méretezés elvégzéséhez. Ha a fenti kihasználtsági számok valamelyike nem érhető el a vCenter Serveren, lehet, hogy az Azure Migrate által adott méretjavaslat nem megbízható. Az elérhető adatpontok százalékától függően meg van adva a megbízhatósági minősítés az értékeléshez az alábbiak szerint:
 
    **Az adatpontok rendelkezésre állása** | **Megbízhatósági minősítés**
    --- | ---
@@ -269,3 +247,4 @@ Az értékelésekben a következő okok miatt nem lehet elérhető az összes ad
 - Ismerje meg, hogyan hozhat létre megbízható értékelési csoportokat [gépfüggőségi leképezések](how-to-create-group-machine-dependencies.md) használatával
 - [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.
 - [Ismerje meg](how-to-scale-assessment.md), hogyan deríthetők fel és értékelhetők a nagyobb VMware-környezetek.
+- [További információ](resources-faq.md) az Azure Migrate használatára vonatkozó gyakori kérdésekről

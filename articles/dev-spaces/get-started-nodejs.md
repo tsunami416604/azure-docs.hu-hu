@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: deb651170b0fd58f8c89b591f3e42b5b629f4095
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361472"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823911"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure Dev Spaces Node.js segítségével történő használatába
 
@@ -32,7 +32,7 @@ Most már készen áll a Kubernetes-alapú fejlesztői környezetek Azure-ban t�
 Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A fejlesztési környezet konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet.
 
 > [!IMPORTANT]
-> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.32-es vagy újabb verziót használja.
+> Ha az Azure CLI már telepítve van, győződjön meg arról, hogy a 2.0.33-as vagy újabb verziót használja.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -185,25 +185,25 @@ Most írjunk olyan kódot a `webfrontend` szolgáltatásban, amely kérést ind�
 1. Adja hozzá ezeket a kódsorokat a `server.js` fájl elejéhez:
     ```javascript
     var request = require('request');
-    var propagateHeaders = require('./propagateHeaders');
     ```
 
 3. *Cserélje le* a `/api` GET-kezelőhöz tartozó kódot. Kérés kezelésekor hívást indít a `mywebapi` felé, majd visszaadja az eredményeket mindkét szolgáltatásból.
 
     ```javascript
     app.get('/api', function (req, res) {
-        request({
-            uri: 'http://mywebapi',
-            headers: propagateHeaders.from(req) // propagate headers to outgoing requests
-        }, function (error, response, body) {
-            res.send('Hello from webfrontend and ' + body);
-        });
+       request({
+          uri: 'http://mywebapi',
+          headers: {
+             /* propagate the dev space routing header */
+             'azds-route-as': req.headers['azds-route-as']
+          }
+       }, function (error, response, body) {
+           res.send('Hello from webfrontend and ' + body);
+       });
     });
     ```
 
-Figyelje meg, hogy a Kubernetes DNS-szolgáltatásészlelése a következőként hivatkozik a szolgáltatásra: `http://mywebapi`. **A kód ugyanúgy fut a fejlesztési környezetben, mint ahogy éles környezetben is fog**.
-
-A fenti kódpélda a `propagateHeaders` nevű segítőmodult használja. Ez a segítő az `azds prep` futtatása során lett hozzáadva a kódmappához. A `propagateHeaders.from()` függvény egy meglévő http.IncomingMessage objektumból adott fejléceket propagál a kimenő kéréshez tartozó fejlécobjektumba. Később látni fogja, hogy ez miként segíti a csapatot az együttműködésen alapuló fejlesztésben.
+Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kérelemből a kimenő kérelemhez. Később látni fogja, hogy ez miként segíti a csapatot az együttműködésen alapuló fejlesztésben.
 
 ### <a name="debug-across-multiple-services"></a>Hibakeresés több szolgáltatásban
 1. Ezen a ponton a `mywebapi` elvileg még mindig fut a hozzácsatolt hibakeresővel. Ha nem fut, nyomja le az F5 billentyűt a `mywebapi` projektben.

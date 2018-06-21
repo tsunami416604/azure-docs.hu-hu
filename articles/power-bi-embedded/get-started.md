@@ -15,13 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 692edc9a685ce7d1906f13f08c763909a2513b03
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7a860742192227e92a14d9bb5622dc9b61f6cb99
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716023"
 ---
-# <a name="get-started-with-microsoft-power-bi-embedded"></a>A Microsoft Power BI Embedded bemutatása
+# <a name="get-started-with-microsoft-power-bi-embedded"></a>A Mcirosoft Power BI Embedded bemutatása
 
 A **Power BI Embedded** egy gyors módszert kínál a független szoftverszállítók (ISV-k) és fejlesztők számára a látványos vizualizációk, jelentések és irányítópultok hozzáadására az alkalmazásokhoz egy kapacitásalapú, óradíjas modellben.
 
@@ -33,7 +34,7 @@ A fejlesztők idejüket az alkalmazás fő képességeinek kialakítására ford
 
 ## <a name="register-an-application-within-azure-active-directory"></a>Alkalmazás regisztrálása az Azure Active Directory szolgáltatásban
 
-Az egyéni alkalmazásokba történő beágyazáshoz egy, az Azure Active Directory (AAD) szolgáltatásban regisztrált alkalmazásra van szükség. A regisztrált alkalmazás használatához a bérlőnek Power BI-bérlőnek kell lennie. A Power BI-bérlő azt jelenti, hogy a cég vagy szervezet legalább egy felhasználója előfizetett a Power BI használatára. Ha egy felhasználó előfizetett a Power BI használatára, a Power BI API-k megjelennek a regisztrált alkalmazásban.
+Az egyéni alkalmazásokba történő beágyazáshoz az Azure Active Directory (AAD) szolgáltatásban regisztrált alkalmazásra van szükség. A regisztrált alkalmazás használatához a bérlőnek Power BI-bérlőnek kell lennie. A Power BI-bérlő azt jelenti, hogy a cég vagy szervezet legalább egy felhasználója előfizetett a Power BI használatára. Ha egy felhasználó regisztrált a Power BI-ra, a Power BI API-k megjelennek a regisztrált alkalmazásban.
 
 Az alkalmazások AAD-regisztrálásával kapcsolatos további információkért lásd az [Azure AD alkalmazás Power BI-tartalmak beágyazásához történő regisztrálásával](https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/) foglalkozó cikket.
 
@@ -48,14 +49,14 @@ Az első lépések megtételét különböző minták segítik, lásd az [irány
 Hozzon létre Power BI Embedded-kapacitásokat a Microsoft Azure-ban, hogy az alkalmazást áthelyezhesse az éles környezetbe. A kapacitások létrehozásával kapcsolatos információkért lásd a [Power BI Embedded-kapacitások Azure Portalon történő létrehozásával](create-capacity.md) foglalkozó témakört.
 
 > [!IMPORTANT]
-> Mivel a beágyazási jogkivonatok csak fejlesztési tesztelésre vannak szánva, a Power BI-főfiókok által létrehozható beágyazási jogkivonatok száma korlátozott. Beágyazási forgatókönyvek létrehozásához [kapacitást kell vásárolni](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Ha vásárol kapacitást, semmi nem korlátozza a beágyazási jogkivonatok létrehozását. Lépjen az [Elérhető szolgáltatások lekérése](https://msdn.microsoft.com/en-us/library/mt846473.aspx) részhez az aktuális beágyazott használat százalékos értékének megtekintéséhez.
+> Mivel a beágyazási jogkivonatok csak fejlesztői tesztelésre szolgálnak, a Power BI-főfiókok által létrehozható beágyazási jogkivonatok száma korlátozott. Beágyazási forgatókönyvek létrehozásához [kapacitást kell vásárolni](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Ha dedikált kapacitást vásárol, semmi nem korlátozza a beágyazási jogkivonatok létrehozását. Lépjen az [Elérhető szolgáltatások lekérése](https://msdn.microsoft.com/en-us/library/mt846473.aspx) részhez az aktuális beágyazott használat százalékos értékének megtekintéséhez.
 
-A kapacitásokat a Power BI felügyeleti portálján kezelheti. Nevezzen ki egy munkaterület-kijelölőt, aki segít az alkalmazás munkaterületeinek kezelésében. További információkért lásd: [Kapacitások kezelése a Power BI Premium és a Power BI Embedded szolgáltatásban](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
+A kapacitásokat a Power BI felügyeleti portálján kezelheti. Nevezzen ki egy munkaterületi rendszergazdát, aki segít az alkalmazás munkaterületeinek kezelésében. További információkért lásd: [Kapacitások kezelése a Power BI Premium és a Power BI Embedded szolgáltatásban](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 
 ## <a name="next-steps"></a>További lépések
 
 Ha kész létrehozni a Power BI Embedded-kapacitásokat, lásd: [Power BI Embedded-kapacitások létrehozása az Azure Portalon](create-capacity.md).
 
-Ha egy egyszerű útmutatót szeretne megtekinteni, lásd: [Irányítópult, csempe vagy jelentés beágyazása az alkalmazásba](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/).
+Ha egyszerű útmutatóra van szüksége, tekintse meg az [Irányítópult, csempe vagy jelentés beágyazása az alkalmazásba](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/) című szakaszt.
 
 További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)

@@ -1,25 +1,24 @@
 ---
 title: Rövid útmutató – Telemetria küldése az Azure IoT Hubra | Microsoft Docs
 description: Ebben a rövid útmutatóban egy iOS-mintaalkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria olvasásához az IoT Hubról, a felhőben történő feldolgozás érdekében.
-services: iot-hub
 author: kgremban
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: ''
+services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/20//2018
+ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 0f1d3a5f714a2202836f477e78a30aa080947239
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7b7f8e1805850861b30eb2a54991e5ab7fa96335
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808179"
 ---
-# <a name="send-telemetry-from-a-device-to-an-iot-hub-swift"></a>Telemetria küldése egy eszközről IoT Hubra (Swift)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra (iOS)
+
+[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését egy IoT-eszközről a felhőbe tárolás vagy feldolgozás céljából. Ebben a cikkben telemetriát küld egy szimulált eszközalkalmazástól az IoT Hubra. Ezután megtekintheti az adatokat egy háttéralkalmazásból. 
 
@@ -42,32 +41,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Első lépésként az Azure Portal használatával hozzon létre IoT Hubot az előfizetésében. Az IoT Hub lehetővé teszi nagy mennyiségű telemetria betöltését számos eszközről a felhőbe. A Hub ezután engedélyt ad egy vagy több, a felhőben futó háttérszolgáltatásnak a telemetria olvasására és feldolgozására.
+[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
-
-1. Válassza az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **IoT Hub** elemet. 
-
-   ![Az IoT Hub telepítésének kiválasztása](media/quickstart-send-telemetry-ios/selectiothub.png)
-
-1. Az IoT Hub létrehozásához használja az alábbi táblázatban látható értékeket:
-
-    | Beállítás | Érték |
-    | ------- | ----- |
-    | Name (Név) | A Hub egyedi neve |
-    | Tarifacsomag és méret | F1 – Ingyenes |
-    | IoT Hub-egységek | 1 |
-    | Eszközről a felhőbe típusú partíciók | 2 partíció |
-    | Előfizetés | Az Azure-előfizetése. |
-    | Erőforráscsoport | Hozzon létre újat. Adja meg az erőforráscsoport nevét. |
-    | Hely | A legközelebbi hely. |
-    | Rögzítés az irányítópulton | Igen |
-
-1. Kattintson a **Create** (Létrehozás) gombra.  
-
-   ![A Hub beállításai](media/quickstart-send-telemetry-ios/hubdefinition.png)
-
-1. Jegyezze fel az IoT Hub és az erőforráscsoport nevét. A rövid útmutató későbbi szakaszában fogja használni ezeket az értékeket.
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
@@ -82,21 +57,21 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ha úgy dönt, hogy eszközének egy másik nevet választ, a mintaalkalmazások futtatása előtt frissítse az eszköznevet bennük.
 
-1. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati karakterláncának_ lekéréséhez:
+1. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
    ```
 
-   Jegyezze fel az eszköz kapcsolati karakterláncát, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket a cikk későbbi részében fogja használni.
+   Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket a cikk későbbi részében fogja használni.
 
-1. Szüksége van egy _szolgáltatáskapcsolati karakterláncra_ is azért, hogy a háttéralkalmazások csatlakozhassanak az IoT Hubhoz és az eszközről a felhőbe irányuló üzeneteket kérhessenek le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati karakterláncát:
+1. Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazások csatlakozhassanak az IoT Hubhoz és az eszközről a felhőbe irányuló üzeneteket kérhessenek le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
    ```azurecli-interactive
    az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
    ```
 
-   Jegyezze fel a szolgáltatás-kapcsolati karakterláncot, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket a cikk későbbi részében fogja használni.
+   Jegyezze fel a szolgáltatás-kapcsolati sztringet, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket a cikk későbbi részében fogja használni.
 
 ## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
 
@@ -130,7 +105,7 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
 
 2. Bontsa ki az **MQTT-ügyfélminta** projektet majd bontsa ki az azonos nevű mappát is.  
 3. Nyissa meg **ViewController.swift** fájlt az XCode-ban való szerkesztéshez. 
-4. Keresse meg a **connectionString** változót, és frissítse az értéket az eszköz korábban lejegyzett kapcsolati karakterláncával.
+4. Keresse meg a **connectionString** változót, és frissítse az értéket az eszköz korábban lejegyzett kapcsolati sztringjével.
 5. Mentse a módosításokat. 
 6. Futtassa a projektet az eszközemulátorban a **Létrehozás és futtatás** gombbal vagy a **command + r** billentyűkombinációval. 
 
@@ -146,7 +121,7 @@ A következő képernyőképen az a példakimenet látható, amikor az alkalmaz�
 
 Az XCode-emulátorban futtatott mintaalkalmazás megjeleníti az eszközről küldött üzenetek adatait. Az IoT Hub segítségével is megtekintheti az adatokat a kapott formában. Az `iothub-explorer` CLI-segédprogram a szolgáltatásoldali **Események** végponthoz csatlakozik az IoT Hubon. 
 
-Nyisson meg egy új terminálablakot. A {your hub service connection string} elemet cserélje le a cikk elején lekért szolgáltatáskapcsolati karakterláncra, majd futtassa az alábbi parancsot:
+Nyisson meg egy új terminálablakot. A {your hub service connection string} elemet cserélje le a cikk elején lekért szolgáltatáskapcsolati sztringre, majd futtassa az alábbi parancsot:
 
 ```sh
 iothub-explorer monitor-events myiOSdevice --login "{your hub service connection string}"
@@ -156,7 +131,7 @@ Az alábbi képernyőképen a terminálablakban megjelenő telemetriatípus lát
 
 ![Telemetria megtekintése](media/quickstart-send-telemetry-ios/view-telemetry.png)
 
-Ha az iothub-explorer parancs futtatásakor hiba lép fel, ellenőrizze, hogy az IoT Hub *szolgáltatáskapcsolati karakterláncát* használja, nem pedig az IoT-eszköz *eszközkapcsolati karakterláncát*. Mindkét kapcsolati karakterlánc a **Hostname={iothubname}** értékkel kezdődik, de a szolgáltatáskapcsolati karakterlánc a **SharedAccessKeyName** tulajdonságot, az eszközkapcsolati karakterlánc pedig a **DeviceID** tulajdonságot tartalmazza. 
+Ha az iothub-explorer parancs futtatásakor hiba lép fel, ellenőrizze, hogy az IoT Hub *szolgáltatáskapcsolati sztringjét* használja, nem pedig az IoT-eszköz *eszközkapcsolati sztringjét*. Mindkét kapcsolati sztring a **Hostname={iothubname}** értékkel kezdődik, de a szolgáltatáskapcsolati sztring a **SharedAccessKeyName** tulajdonságot, az eszközkapcsolati sztring pedig a **DeviceID** tulajdonságot tartalmazza. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -168,10 +143,13 @@ Ha már nincs szüksége az IoT Hubra, az erőforráscsoporttal együtt törölj
 
 Ebben a cikkben beállított egy IoT Hubot, regisztrált egy eszközt, szimulált telemetriát küldött a Hubra egy iOS-eszközről, és beolvasta a telemetriát a Hubról. 
 
-Ha többet szeretne megtudni az iOS-eszközök IoT Hubbal való használatáról, tekintse meg az [üzenetküldés felhőből az eszközre iOS rendszerrel (Swift)](iot-hub-ios-swift-c2d.md) témakörrel foglalkozó cikket.
+Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
+
+> [!div class="nextstepaction"]
+> [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-node.md)
 
 <!-- Links -->
-[lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-process-d2c-tutorial]: tutorial-routing.md
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/

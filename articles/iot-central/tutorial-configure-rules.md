@@ -1,21 +1,22 @@
 ---
 title: Szabályok és műveletek konfigurálása az Azure IoT Centralban | Microsoft Docs
 description: Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan konfigurálhat telemetria-alapú szabályokat és műveleteket az Azure IoT Central alkalmazásban.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 5ac19e0e25ea3e25ede4d87776c01f8bcaea4655
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202237"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236331"
 ---
-# <a name="2---configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>2 – Az eszközre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Centralban
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Oktatóanyag: Az eszközre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Centralban
 
 Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan konfigurálhat telemetria-alapú szabályokat és műveleteket a Microsoft Azure IoT Central-alkalmazásban.
 
@@ -39,17 +40,17 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
     Láthatja a **Csatlakoztatott légkondicionáló (1.0.0)** eszközsablont és az előző oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló-1** eszközt.
 
-1. A csatlakoztatott légkondicionáló eszköz testreszabásának megkezdéséhez válassza ki az előző oktatóanyagban létrehozott eszközt:
+2. A csatlakoztatott légkondicionáló eszköz testreszabásának megkezdéséhez válassza ki az előző oktatóanyagban létrehozott eszközt:
 
     ![Csatlakoztatott légkondicionáló oldal](media/tutorial-configure-rules/builderdevicelist.png)
 
-1. Ha szabályt szeretne hozzáadni a **Szabályok** nézethez, válassza a **Szabályok** lehetőséget:
+3. Ha szabályt szeretne hozzáadni a **Szabályok** nézethez, válassza a **Szabályok** lehetőséget:
 
     ![Szabályok nézet](media/tutorial-configure-rules/builderrulesview.png)
 
-1. Ebben az oktatóanyagban küszöbérték-alapú telemetria-szabályt ad hozzá. Küszöbérték-alapú szabály létrehozásához válassza az **Új szabály** lehetőséget, majd a **Telemetria** elemet.
+4. Küszöbérték-alapú telemetriaszabály létrehozásához válassza az **Új szabály** lehetőséget, majd a **Telemetria** elemet.
 
-1. A szabály meghatározásához használja a következő táblázatban lévő információkat:
+5. A szabály meghatározásához használja a következő táblázatban lévő információkat:
 
     | Beállítás     | Érték                          |
     | ----------- | ------------------------------ |
@@ -67,7 +68,7 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
     ![Hőmérsékleti szabályművelet](media/tutorial-configure-rules/builderaddaction.png)
 
-1. A művelet meghatározásához használja a következő táblázatban lévő információkat:
+2. A művelet meghatározásához használja a következő táblázatban lévő információkat:
 
     | Beállítás   | Érték                          |
     | --------- | ------------------------------ |
@@ -79,7 +80,7 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
     ![Alkalmazásszerkesztői hőmérsékleti művelet](media/tutorial-configure-rules/buildertemperatureaction.png)
 
-1. Válassza a **Mentés** elemet. A szabály a **Szabályok** oldalon szerepel:
+3. Válassza a **Mentés** elemet. A szabály a **Szabályok** oldalon szerepel:
 
     ![Alkalmazásszerkesztő szabályok](media/tutorial-configure-rules/builderrules.png)
 

@@ -2,24 +2,22 @@
 title: MongoDB, Angular és Node oktatóanyag az Azure-hoz – 3. rész | Microsoft Docs
 description: A MongoDB-alkalmazások Azure Cosmos DB-n Angular és Node használatával, a MongoDB-hez használt API-kkal való létrehozását ismertető oktatóanyag-sorozat 3. része.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: de645f46a889ba05fc54b1c5d2b9da64393d348e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eba96be567094a3e2e3977f505d4e4a67f0b5cea
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798304"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 3. rész: A felhasználói felület létrehozása az Angular segítségével
 
@@ -55,56 +53,20 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
     Az új összetevők létrehozásának megerősítése a terminálablakban látható.
 
-    ```bash
-    installing component
-      create src\client\app\heroes.component.ts
-      update src\client\app\app.module.ts 
-    ```
+    ![A hero összetevő telepítése](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
 
     Vessünk egy pillantást a létrehozott és frissített fájlokra. 
 
-3. A Visual Studio Code-ban az **Explorer** panelen lépjen az új **src\client\app** mappára, és nyissa meg a 2. lépésben létrehozott új **heroes.component.ts** fájlt. Ezt a TypeScript-összetevőfájlt az előző paranccsal hoztuk létre.
+3. A Visual Studio Code-ban az **Explorer** panelen lépjen az új **src\app** mappába, és nyissa meg az abban létrejött **heroes.component.ts** fájlt. Ezt a TypeScript-összetevőfájlt az előző paranccsal hoztuk létre.
 
     > [!TIP]
     > Ha az alkalmazás mappája nem jelenik meg a Visual Studio Code-ban, nyomja le Mac gépen a CMD + SHIFT + P vagy Windows gépen a Ctrl + Shift + P billentyűkombinációt a parancskatalógus megnyitásához, majd írja be a *Reload Window* parancsot a rendszer módosításának életbe léptetéséhez.
-
-    ![A heroes.component.ts fájl megnyitása](./media/tutorial-develop-mongodb-nodejs-part3/open-folder.png)
 
 4. Ugyanebben a mappában nyissa meg az **app.module.ts** fájlt, és láthatja, hogy a rendszer felvette a `HeroesComponent` összetevőt a deklarációk közé az 5. sorban, valamint a 10. sorba is importálta.
 
     ![Az app-module.ts fájl megnyitása](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
 
-    Miután létrejött a főképösszetevő, hozzon létre egy új fájlt a főképösszetevő HTML-kódja számára. Mivel most csak egy minimális alkalmazást hoztunk létre, a HTML-kódot ugyanabba a fájlba szántuk, mint a TypeScript fájlt, most azonban mégis kiemelnénk onnan, és létrehoznánk egy külön fájlt.
-
-5. Az **Explorer** panelen kattintson jobb gombbal az **app** mappára, majd a **New File** (Új fájl) gombra, és adja a *heroes.component.html* nevet az új fájlnak.
-
-6. A **heroes.component.ts** fájlban törölje az 5–9. sorokat, 
-
-    ```ts
-    template: `
-        <p>
-          heroes Works!
-        </p>
-      `,
-      ```
-      és cserélje le ezt a részt a következőre:
-  
-    ```ts
-    templateUrl: './heroes.component.html',
-    ```
-
-    amely az új HTML-fájlra hivatkozik.
- 
-    > [!TIP]
-    > John Papa Visual Studio Code-hoz készült Angular Essentials bővítményei és kódtöredékei segítségével felgyorsíthatja a fejlesztést. 
-    > 1. Kattintson az **Extensions** (Bővítmények) gombra ![Visual Studio Code Bővítmények gomb](./media/tutorial-develop-mongodb-nodejs-part3/extensions-button.png).
-    > 2. A keresőmezőbe írja be az *angular essentials* kifejezést.
-    > 3. Kattintson az **Install** (Telepítés) gombra. 
-    > 4. Az új bővítmények alkalmazásához kattintson a **Reload** (Újbóli betöltés) gombra,
-    > vagy töltse le a [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials) helyről. 
-    > ![Angular Essentials bővítmény](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
-
-7. Lépjen vissza a **heroes.component.html** fájlra, és másolja be ezt a kódot. A `<div>` tároló tárolja a teljes oldalt. A tárolóban a fő képek egy listája található, amelyeket létre kell hoznia, hogy amikor majd azokra kattint, akkor a felhasználói felületen kijelölhesse és szerkeszthesse, illetve törölhesse azokat. Ezután a HTML-ben némi stíluskezelést hajtunk végre, amely azt mutatja majd, hogy melyik elem lett kijelölve. Emellett van egy szerkesztési terület, ahol felvehetők az új fő képek vagy szerkeszthetők a meglévők. 
+5. Lépjen vissza a **heroes.component.html** fájlra, és másolja be ezt a kódot. A `<div>` tároló tárolja a teljes oldalt. A tárolóban a fő képek egy listája található, amelyeket létre kell hoznia, hogy amikor majd azokra kattint, akkor a felhasználói felületen kijelölhesse és szerkeszthesse, illetve törölhesse azokat. Ezután a HTML-ben némi stíluskezelést hajtunk végre, amely azt mutatja majd, hogy melyik elem lett kijelölve. Emellett van egy szerkesztési terület, ahol felvehetők az új fő képek vagy szerkeszthetők a meglévők. 
 
     ```html
     <div>
@@ -143,7 +105,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
     </div>
     ```
 
-8. Most, hogy elkészültünk a HTML-lel, hozzá kell adnunk a **heroes.component.ts** fájlhoz, hogy használhassuk a sablont. A **heroes.component.ts** fájlhoz hozzáadott alábbi új kód felveszi a sablont az összetevőfájlba. Ez hozzáad egy konstruktort, amely lekér néhány fő képet, majd inicializálja a főszolgáltatás-összetevőt az összes adat lekéréséhez. Ez a kódrészlet emellett hozzáadja az események kezeléséhez szükséges összes metódust a felhasználói felületen. Ön pedig bemásolhatja az alábbi kódot a meglévő kód helyére a **heroes.component.ts** fájlban. 
+7. Most, hogy elkészültünk a HTML-lel, hozzá kell adnunk a **heroes.component.ts** fájlhoz, hogy használhassuk a sablont. Az alábbi kód adja hozzá a sablont az összetevőfájlhoz. Ez hozzáad egy konstruktort, amely lekér néhány fő képet, majd inicializálja a főszolgáltatás-összetevőt az összes adat lekéréséhez. Ez a kódrészlet emellett hozzáadja az események kezeléséhez szükséges összes metódust a felhasználói felületen. Ön pedig bemásolhatja az alábbi kódot a meglévő kód helyére a **heroes.component.ts** fájlban. A kiemelt Hero és HeroService területeken várhatóan hibaüzenetek jelennek meg, mivel a vonatkozó összetevők még nincsenek importálva. Ezeket a hibákat a következő szakaszban orvosoljuk. 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -151,6 +113,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
     @Component({
       selector: 'app-heroes',
       templateUrl: './heroes.component.html'
+        styleUrls: ['./heroes.component.scss']
     })
     export class HeroesComponent implements OnInit {
       addingHero = false;
@@ -210,7 +173,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
     }
     ```
 
-9. Az **Explorerben** nyissa meg az **app/app.module.ts** fájlt, és frissítse a 13. sort (egy vessző hozzáadásával) és a 14. sort egy `FormsModule` importálásának a hozzáadásával. Az importálási szakasznak most így kell kinéznie:
+8. Az **Explorerben** nyissa meg az **app/app.module.ts** fájlt, és frissítse az importálási szakaszt egy `FormsModule` importálásának a hozzáadásával. Az importálási szakasznak most így kell kinéznie:
 
     ```
     imports: [
@@ -219,7 +182,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
     ],
     ```
 
-10. Adja hozzá az új FormsModule modul importálását a 3. sorban. 
+9. Az **app/app.module.ts** fájlban adja hozzá az új FormsModule modul importálását a 3. sorban. 
 
     ```
     import { BrowserModule } from '@angular/platform-browser';
@@ -229,7 +192,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
 ## <a name="use-css-to-set-the-look-and-feel"></a>A megjelenés beállítása a CSS segítségével
 
-1. Az Explorer panelen nyissa meg a **src/client/styles.scss** fájlt.
+1. Az Explorer panelen nyissa meg az **src/styles.scss** fájlt.
 
 2. Másolja be az alábbi kódot a **styles.scss** fájlba a fájl meglévő tartalmának a helyére.
 
@@ -392,34 +355,34 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
 Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn? Módosítsuk az alapértelmezett összetevőket az **app.component.ts** fájlban.
 
-1. Az Explorer panelen nyissa meg a **client/app/app.component.ts** fájlt.
-
-2. A 6–8. sorokban módosítsa a címet a Heroes címre, majd illessze be a **heroes.components.ts** fájlban létrehozott összetevő nevét (app-heroes), hogy az az új összetevőre hivatkozzon. A sablonszakasznak most az alábbihoz hasonlóan kell kinéznie: 
+1. Az Explorer panelen nyissa meg az **/app/app.component.ts** fájlt, módosítsa a címet a Heroes címre, majd illessze be a **heroes.components.ts** fájlban létrehozott összetevő nevét (app-heroes), hogy az az új összetevőre hivatkozzon. A fájl tartalmának most így kell kinéznie: 
 
     ```ts
-    template: `
+    import { Component } from '@angular/core';
+
+    @Component({
+      selector: 'app-root',
+      templateUrl: './app.component.html',
+      styleUrls: ['./app.component.scss'],
+      template: `
       <h1>Heroes</h1>
       <div class="header-bar"></div>
       <app-heroes></app-heroes>
-    `,
+    `
+    })
+    export class AppComponent {
+      title = 'app';
+    }
+
     ```
 
-3. Vannak további összetevők is a **heroes.components.ts** fájlban, amelyekre hivatkozunk, például a Hero összetevő, így azt is létre kell hoznunk. Az Angular CLI parancssorában az alábbi paranccsal létrehozunk egy főképmodellt és egy **hero.ts** nevű fájlt. A g a létrehozás, a cl az osztály és a hero az osztály neve.
+2. Vannak további összetevők is a **heroes.components.ts** fájlban, amelyekre hivatkozunk, például a Hero összetevő, így azt is létre kell hoznunk. Az Angular CLI parancssorában az alábbi paranccsal létrehozunk egy főképmodellt és egy **hero.ts** nevű fájlt. A g a létrehozás, a cl az osztály és a hero az osztály neve.
 
     ```bash
     ng g cl hero
     ```
 
-    Az új osztály létrehozásának megerősítése a terminálablakon látható.
-
-    ```bash
-    installing class
-    create src\client\app\hero.ts
-    ```
-
-4. Az Explorer panelen nyissa meg az **src\client\app\hero.ts** fájlt.
-
-5. A **hero.ts** fájlban cserélje le a fájl tartalmát az alábbi kódra, amely egy Hero osztályt ad hozzá egy azonosítóval, egy névvel és egy üzenettel. 
+3. Az Explorer panelen nyissa meg az **src\app\hero.ts** fájlt. A **hero.ts** fájlban cserélje le a fájl tartalmát az alábbi kódra, amely egy Hero osztályt ad hozzá egy azonosítóval, egy névvel és egy üzenettel.
 
     ```ts
       export class Hero {
@@ -429,15 +392,15 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
     }
     ```
 
-6. Lépjen vissza a **heroes.components.ts** fájlra, és láthatja, hogy a `selectedHero: Hero;` sorban (10. sor), a `Hero` egy piros vonallal alá van húzva. 
+4. Lépjen vissza a **heroes.components.ts** fájlra, és láthatja, hogy a `selectedHero: Hero;` sorban (10. sor), a `Hero` egy piros vonallal alá van húzva. 
 
-7. Kattintson a `Hero` kifejezésre, és a Visual Studio egy villanykörte ikont jelenít meg a kódblokk bal oldalán. 
+5. Kattintson a `Hero` kifejezésre, és a Visual Studio egy villanykörte ikont jelenít meg a kódblokk bal oldalán. 
 
     ![Villanykörte a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-8. Kattintson a villanykörtére, majd a **Import Hero from "client/app/hero"** (Fő kép importálása a „client/app/hero” fájlból** vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
+6. Kattintson a villanykörtére, majd a **Fő kép importálása az „/app/hero” fájlból** vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
 
-    Egy új kódsor jelenik meg a 2. sorban. Ha a 2. sor egy ügyfélre/alkalmazásra/fő képre hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero). A 2. sornak így kell kinéznie:
+    Egy új kódsor jelenik meg a 2. sorban. Ha a 2. sor az /app/hero mappára hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero). A 2. sornak így kell kinéznie:
 
    ```
    import { Hero } from "./hero";
@@ -453,23 +416,15 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
     ng g s hero -m app.module
     ```
 
-    A kimenet arról ad tájékoztatást, hogy a **hero.service.ts** létrejött, és az **app.module.ts** frissítve lett.
-  
-    ```bash
-    installing service
-      create src\client\app\hero.service.ts
-      update src\client\app\app.module.ts
-    ```
+2. A Visual Studio Code-ban váltson vissza a **heroes.components.ts** fájlra. Láthatja, hogy a `constructor(private heroService: HeroService) {}` sorban (13. sor), a `HeroService` egy piros vonallal alá van húzva. Kattintson a `HeroService` elemre, és a kódblokk bal oldalán megjelenik a villanykörte ikon. Kattintson a villanykörtére, majd a **HeroService importálása a „./hero.service” fájlból** vagy a **HeroService importálása az „app/hero.service” fájlból** lehetőségre.
+
+    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sor az /app/hero.service mappára hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero.service). A 2. sornak így kell kinéznie:
     
-    Az app.module.ts fájlban az alábbi kódsorok lettek hozzáadva (6. és 17. sor):
-    
-    ```typescript
-    import { HeroService } from './hero.service';
-    ...
-        providers: [HeroService],
+    ```javascript
+    import { HeroService } from "./hero.service"
     ```
 
-2. A Visual Studio Code-ban nyissa meg a **hero.service.ts** fájlt, és másolja be a következő kódot a fájl tartalma helyére.
+3. A Visual Studio Code-ban nyissa meg a **hero.service.ts** fájlt, és másolja be a következő kódot a fájl tartalma helyére.
 
     ```ts
     import { Injectable } from '@angular/core';
@@ -503,7 +458,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
     A kód a HttpClient az Angular által kínált legújabb verzióját használja, amely egy olyan modul, amelyet meg kell adni, ezért most ezt is fogjuk tenni.
 
-3. A Visual Studio Code-ban nyissa meg az **app.module.ts** fájlt, és az importálás szakaszba vegye fel a HttpClientModule modult annak importálásához.
+4. A Visual Studio Code-ban nyissa meg az **app.module.ts** fájlt, és az importálás szakaszba vegye fel a HttpClientModule modult annak importálásához.
 
     ```ts
     imports: [
@@ -513,18 +468,10 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
     ],
     ```
 
-4. Az **app.module.ts** fájlban vegye fel a HttpClientModule importálási utasítást az importálandó elemek listájára.
+5. Az **app.module.ts** fájlban vegye fel a HttpClientModule importálási utasítást az importálandó elemek listájára.
 
     ```ts
     import { HttpClientModule } from '@angular/common/http';
-    ```
-
-5. A Visual Studio Code-ban váltson vissza a **heroes.components.ts** fájlra. Láthatja, hogy a `constructor(private heroService: HeroService) {}` sorban (13. sor), a `HeroService` egy piros vonallal alá van húzva. Kattintson a `HeroService` elemre, és a kódblokk bal oldalán megjelenik a villanykörte ikon. Kattintson a villanykörtére, majd a **HeroService importálása a „./hero.service” fájlból** vagy a **HeroService importálása a „client/app/hero.service” fájlból** lehetőségre.
-
-    A villanykörtére kattintva a rendszer beilleszt egy új kódsort a 2. sorba. Ha a 2. sor egy ügyfél/alkalmazás/hero.service mappára hivatkozik, módosítsa, hogy a helyi mappában lévő főképfájlra hivatkozzon (./hero.service). A 2. sornak így kell kinéznie:
-    
-    ```javascript
-    import { HeroService } from "./hero.service"
     ```
 
 6. Mentse az összes módosítást a Visual Studio Code-ban.
@@ -539,7 +486,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
     Ha problémák merülnének fel, a terminálablakban megjelennek a javítandó fájlokkal kapcsolatos információk. Amikor az alkalmazás létrehozása befejeződik, az új fájlok a **dist** mappába kerülnek. Az új fájlokat a **dist** mappában tekintheti meg, amennyiben szeretné.
 
-    Most futtassuk az alkalmazást.
+    Most pedig futtassuk az alkalmazást.
 
 2. A Visual Studio Code-ban kattintson a **Debug** (Hibakeresés) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) a bal oldalon, majd a **Start Debugging** (Hibakeresés indítása) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
 

@@ -1,18 +1,19 @@
 ---
-title: "Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez (VMM nélkül) az Azure-ba az Azure Site Recovery használatával  | Microsoft Docs"
-description: "Ismerje meg, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni Hyper-V virtuális gépekhez az Azure Site Recovery szolgáltatással."
+title: Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez (VMM nélkül) az Azure-ba az Azure Site Recovery használatával  | Microsoft Docs
+description: Ismerje meg, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni Hyper-V virtuális gépekhez az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/14/2018
+ms.date: 05/21/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 9ee5478412b02615efec983dd0b99c12fc2d9213
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643583"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -40,19 +41,31 @@ Mielőtt elkezdené, érdemes [áttekinteni az architektúrát](concepts-hyper-v
 2. Az **Első lépések** területen kattintson a **Site Recovery** elemre. Ezt követően kattintson **Az infrastruktúra előkészítése** elemre.
 3. A **Védelmi cél** > **Hol találhatók a gépek?** területen válassza a **Helyszíni** lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
-5. A **Virtualizáltak a gépek?** területen válassza a **Nem** lehetőséget. Ezután kattintson az **OK** gombra.
+5. Azon a területen, amely rákérdez, hogy **System Center VMM segítségével kezeli-e a Hyper-V-gazdagépeket**, válassza a **Nem** lehetőséget. Ezután kattintson az **OK** gombra.
 
     ![Replikációs cél](./media/hyper-v-azure-tutorial/replication-goal.png)
 
+## <a name="confirm-deployment-planning"></a>Az üzembe helyezés megtervezésének megerősítése
+
+Ha nagy léptékű üzembe helyezésre készül, győződjön meg róla, hogy [az üzembe helyezést mindenre kiterjedően megtervezte a Hyper-V-replikációhoz](hyper-v-deployment-planner-overview.md). Ebben az oktatóanyagban a **Végzett az üzembe helyezés tervezésével?** területen válassza a **Később végzem el** lehetőséget a legördülő listából.
+
+![Az üzembe helyezés megtervezése](./media/hyper-v-azure-tutorial/deployment-planning.png)
+
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
-A forráskörnyezet beállításához adja hozzá a Hyper-V gazdagépeket egy Hyper-V helyhez, töltse le és telepítse az Azure Site Recovery szolgáltatót és az Azure Recovery Services ügynököt, végül regisztrálja a Hyper-V helyet a tárolóban. 
+A forráskörnyezet beállításához hozzon létre egy Hyper-V-helyet, és adja hozzá a Hyper-V-gazdagépeket. Ezután töltse le és telepítse az Azure Site Recovery Providert és az Azure Recovery Services-ügynököt minden gazdagépen, majd regisztrálja a Hyper-V-helyet a tárolóban. 
 
 1. **Az infrastruktúra előkészítése** területen kattintson a **Forrás** lehetőségre.
 2. Kattintson a **+Hyper-V hely** elemre, majd adja meg az előző oktatóanyagban létrehozott hely nevét (**ContosoHyperVSite**).
-3. Kattintson a **+Hyper-V Server** elemre.
+
+    ![Hyper-V-hely](./media/hyper-v-azure-tutorial/hyperv-site.png)
+
+3. A hely létrehozása után kattintson a **+Hyper-V-kiszolgáló** elemre.
+
+    ![Hyper-V-kiszolgáló](./media/hyper-v-azure-tutorial/hyperv-server.png)
+
 4. Töltse le a szolgáltató telepítőfájlját.
-5. Töltse le a tároló regisztrációs kulcsát. Erre a kulcsra szüksége lesz a szolgáltató telepítésének futtatásakor. A kulcs a generálásától számított öt napig érvényes.
+6. Töltse le a tároló regisztrációs kulcsát. Erre a kulcsra szüksége lesz a szolgáltató telepítésének futtatásakor. A kulcs a generálásától számított öt napig érvényes.
 
     ![Szolgáltató letöltése](./media/hyper-v-azure-tutorial/download.png)
     

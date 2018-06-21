@@ -14,11 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724098"
 ---
 #  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Mi az Azure-erőforrásokhoz készült felügyeltszolgáltatás-identitás (MSI)?
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/10/2018
 
 A felhőalapú alkalmazások készítésének általános kihívását jelenti azon hitelesítő adatok a kódban történő kezelése, amelyekkel az alkalmazás hitelesíti magát a felhőalapú szolgáltatásokban. A hitelesítő adatok biztonságának megőrzése fontos feladat. Ideális esetben ezek soha nem jelennek meg a fejlesztői munkaállomásokon, és a verziókövetési rendszerbe sem kerülnek be. Az Azure Key Vault módot kínál a hitelesítő adatok, valamint egyéb kulcsok és titkos kódok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
 
+A felügyeltszolgáltatás-identitások ingyenesen használhatók az Azure Active Directoryval, amely alapértelmezés szerint az Azure-előfizetések részét képezi. A felügyeltszolgáltatás-identitások használata nem jár többletköltséggel.
+
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
 Két típusú felügyeltszolgáltatás-identitás létezik: **rendszerhez hozzárendelt** és **felhasználóhoz hozzárendelt**.
 
 - A **rendszerhez hozzárendelt identitás** közvetlenül egy Azure-beli szolgáltatáspéldányon van engedélyezve. Az engedélyezésekor az Azure létrehoz egy identitást a szolgáltatáspéldány számára a szolgáltatáspéldány előfizetése által megbízhatónak tekintett Azure AD-bérlőn. Az identitás létrehozása után a rendszer hozzárendeli a hitelesítő adatokat a szolgáltatáspéldányon. A rendszerhez hozzárendelt identitás életciklusa közvetlenül kötődik ahhoz az Azure-beli szolgáltatáspéldányhoz, amelyen engedélyezve van. A szolgáltatáspéldány törlésekor az Azure automatikusan törli a hitelesítő adatokat és az identitást az Azure AD-ben.
-- A **felhasználóhoz hozzárendelt identitás** (nyilvános előzetes verzió) különálló Azure-erőforrásként jön létre. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz. A felhasználóhoz hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányoktól, amelyekhez hozzá lettek rendelve.
+- A **felhasználóhoz hozzárendelt identitás** különálló Azure-erőforrásként jön létre. Egy létrehozási folyamaton keresztül az Azure létrehoz egy identitást a használt előfizetés által megbízhatónak tekintett Azure AD-bérlőn. Az identitás a létrehozását követően hozzárendelhető egy vagy több Azure-beli szolgáltatáspéldányhoz. A felhasználóhoz hozzárendelt identitások életciklusa külön van kezelve azon Azure-beli szolgáltatáspéldányoktól, amelyekhez hozzá lettek rendelve.
 
 Ennek eredményeképpen a kód használhat egy rendszerhez vagy egy felhasználóhoz hozzárendelt identitást is az Azure AD-hitelesítést támogató szolgáltatások hozzáférési jogkivonatainak igényléséhez. Mindeközben az Azure gondoskodik a szolgáltatáspéldány által használt hitelesítő adatok alkalmazásáról.
 
@@ -103,17 +106,6 @@ A felügyeltszolgáltatás-identitásokkal (MSI) foglalkozó különféle oktat�
 
 A felügyelt identitások használatával hitelesítést végezhet az Azure AD-hitelesítést támogató szolgáltatásokban. A felügyeltszolgáltatás-identitásokat támogató szolgáltatások listájáért lásd a következő cikket:
 - [A Managed Service Identityt (MSI) támogató szolgáltatások](services-support-msi.md)
-
-## <a name="how-much-does-managed-service-identity-cost"></a>Mennyibe kerül a felügyeltszolgáltatás-identitás használata?
-
-A felügyeltszolgáltatás-identitások az Azure Active Directoryval ingyenesen használhatók, ami alapértelmezés szerint az Azure-előfizetések részét képezi. A felügyeltszolgáltatás-identitások használata nem jár többletköltséggel.
-
-## <a name="support-and-feedback"></a>Támogatás és visszajelzés
-
-Szívesen meghallgatnánk a véleményét!
-
-* Tegye fel a használatra vonatkozó kérdéseit a Stack Overflow oldalon az [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi) címke használatával.
-* Az új funkciókra vonatkozó kéréseit vagy visszajelzéseit az [Azure AD fejlesztői visszajelzésekkel kapcsolatos fórumán](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences) küldheti be.
 
 ## <a name="next-steps"></a>További lépések
 

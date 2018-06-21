@@ -1,24 +1,20 @@
 ---
-title: "Az Azure Service Bus alapjainak áttekintése | Microsoft Docs"
-description: "Bevezetés a Service Bus használatába az Azure-alkalmazások más szoftverekhez való csatlakoztatásához."
+title: Az Azure Service Bus alapjainak áttekintése | Microsoft Docs
+description: Bevezetés a Service Bus használatába az Azure-alkalmazások más szoftverekhez való csatlakoztatásához.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/31/2018
+ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: fab765480a2f480e8c54035d903d24843490ee38
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641322"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -37,14 +33,14 @@ A Service Bus egy több-bérlős felhőszolgáltatás, ami azt jelenti, hogy a s
 Egy adott névtéren belül a négy különböző kommunikációs mechanizmus egy vagy több példányát használhatja, amelyek mindegyike különböző módokon kapcsol össze alkalmazásokat. Az alábbiak közül választhat:
 
 * *Üzenetsorok*, amelyek egyirányú kommunikációt tesznek lehetővé. Az egyes üzenetsorok *közvetítőként* működnek, amely az üzeneteket tárolja a fogadásukig. Mindegyik üzenetet egyetlen fogadó fogadja.
-* *Témakörök*, amelyek egyirányú kommunikációt tesznek lehetővé *előfizetések* segítségével – egy témakör több előfizetéssel is rendelkezhet. Az üzenetsorokhoz hasonlóan a témakörök is közvetítőként szolgálnak, azonban az egyes előfizetések szűrőt használhatnak, amelynek révén csak az adott feltételeknek megfelelő üzenetek fogadása történik meg.
+* *Témakörök*, amelyek egyirányú kommunikációt tesznek lehetővé *előfizetések* segítségével. Egy témakör több előfizetéssel is rendelkezhet. Az üzenetsorokhoz hasonlóan a témakörök is közvetítőként szolgálnak, azonban az egyes előfizetések szűrőt használhatnak, amelynek révén csak az adott feltételeknek megfelelő üzenetek fogadása történik meg.
 * *Továbbítók*, amelyek kétirányú kommunikációt tesznek lehetővé. Az üzenetsoroktól és témaköröktől eltérően a továbbító nem tárolja átvitel közben az üzeneteket, azaz nem működik közvetítőként. Ehelyett egyszerűen továbbítja azokat a célalkalmazás számára.
 
 Amikor létrehoz egy üzenetsort, témakört vagy továbbítót, el kell neveznie azt. A névtér nevével kombinálva így egyedi azonosítót hoz létre az objektum számára. Az alkalmazások megadhatják ezt a nevet a Service Bus számára, majd az adott üzenetsor, témakör vagy továbbító használatával kommunikálhatnak egymással. 
 
 Ezen objektumok valamelyikének a Relay forgatókönyvben történő használatához a Windows-alkalmazások a Windows Communication Foundation (WCF) szolgáltatást használhatják. Ez a szolgáltatás a [WCF Relay](../service-bus-relay/relay-what-is-it.md). Az üzenetsorok és a témakörök esetében a Windows-alkalmazások a Service Bus által definiált üzenettovábbítási API-kat használhatják. Az objektumok nem Windows-alkalmazásokból való használatának egyszerűbbé tétele érdekében a Microsoft SDK-kat biztosít a Java, Node.js és egyéb nyelvekhez. Az üzenetsorokat és a témaköröket [REST API-k](/rest/api/servicebus/) használatával is elérheti HTTP(s)-en keresztül. 
 
-Fontos megérteni, hogy jóllehet a Service Bus maga a felhőben fut (azaz a Microsoft Azure adatközpontjaiban), a szolgáltatást igénybe vevő alkalmazások bárhol futhatnak. A Service Bus használatával összekapcsolhat például az Azure-ban vagy a saját adatközpontjában futó alkalmazásokat. A szolgáltatással összekapcsolhat az Azure-ban vagy más felhőplatformon futó alkalmazást egy helyszíni alkalmazással vagy táblagépekkel és telefonokkal is. Akár háztartási készülékeket, érzékelőket és egyéb eszközöket is csatlakoztathat egy központi alkalmazáshoz vagy egymáshoz. A Service Bus egy olyan kommunikációs mechanizmus a felhőben, amely lényegében bárhonnan elérhető. A használatának módja attól függ, hogy milyen célt szolgálnak az alkalmazások.
+Fontos megérteni, hogy bár a Service Bus maga a felhőben fut (azaz a Microsoft Azure adatközpontjaiban), a szolgáltatást igénybe vevő alkalmazások bárhol futhatnak. A Service Bus használatával összekapcsolhat például az Azure-ban vagy a saját adatközpontjában futó alkalmazásokat. A szolgáltatással összekapcsolhat az Azure-ban vagy más felhőplatformon futó alkalmazást egy helyszíni alkalmazással vagy táblagépekkel és telefonokkal is. A Service Bus egy olyan kommunikációs mechanizmus a felhőben, amely lényegében bárhonnan elérhető. A használatának módja attól függ, hogy milyen célt szolgálnak az alkalmazások.
 
 ## <a name="queues"></a>Üzenetsorok
 
@@ -56,7 +52,7 @@ Tegyük fel, hogy két alkalmazás egy Service Bus-üzenetsorral való csatlakoz
 
 A küldő egy üzenetet küld a Service Bus-üzenetsorba, a fogadó pedig egy későbbi időpontban fogadja az üzenetet. Az egyes üzenetsorok rendelkezhetnek egyetlen fogadóval, amint az a 2. ábrán látható. Esetleg több alkalmazás is olvashat ugyanabból az üzenetsorból. Az utóbbi esetben az egyes üzeneteket csak egyetlen fogadó olvassa. A csoportos küldési szolgáltatáshoz inkább témakört használjon.
 
-Mindegyik üzenet két részből áll: egy sor tulajdonságból, amelyek mindegyike egy kulcs/érték pár, valamint az üzenet hasznos adattartalmából. A hasznos adattartalom lehet bináris, szöveges vagy akár XML formátumú is. A használatuk módja attól függ, hogy mire szolgál az alkalmazás. A legutóbbi értékesítésről üzenetet küldő alkalmazás például az **Értékesítő="Ava"** és az **Összeg=10000** tulajdonságot tartalmazhatja. Az üzenettörzs tartalmazhatja az aláírt értékesítési szerződés beolvasott képét, vagy ha nincs ilyen, üres is lehet.
+Mindegyik üzenet két részből áll: egy tulajdonságkészletből, amely kulcs/érték párokat tartalmaz, valamint az üzenet hasznos adattartalmából. A hasznos adattartalom lehet bináris, szöveges vagy akár XML formátumú is. A használatuk módja attól függ, hogy mire szolgál az alkalmazás. A legutóbbi értékesítésről üzenetet küldő alkalmazás például az **Értékesítő="Ava"** és az **Összeg=10000** tulajdonságot tartalmazhatja. Az üzenettörzs tartalmazhatja az aláírt értékesítési szerződés beolvasott képét, vagy ha nincs ilyen, üres is lehet.
 
 A fogadó kétféleképpen olvashatja az üzeneteket a Service Bus-üzenetsorból. A *[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)* nevű első lehetőség üzenetet kap a sorból, és azonnal törli. Ez a lehetőség egyszerű, ha azonban a fogadó összeomlik, mielőtt végzett az üzenet feldolgozásával, az üzenet elveszik. Mivel már el lett távolítva az üzenetsorból, más fogadó nem férhet hozzá. 
 
@@ -78,11 +74,11 @@ Bármennyire hasznosak is, az üzenetsorok nem minden esetben bizonyulnak a megf
 
 **3. ábra: Az előfizető alkalmazás az általa megadott szűrő alapján a Service Bus-témakörbe küldött üzenetek közül csak néhányat vagy mindegyiket is fogadhatja.**
 
-A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugyanúgy küldik az üzeneteket a témakörökbe, ahogy az üzenetsorokba, és az üzenetek is ugyanúgy néznek ki, mint az üzenetsorok esetén. A különbség az, hogy a témakörök használatával mindegyik fogadó alkalmazás létrehozhatja saját *előfizetését*, valamint definiálhat egy *szűrőt*. Az előfizető csak azokat az üzeneteket látja majd, amelyek megfelelnek a szűrőnek. A 3. ábrán például egy küldő és egy 3 előfizetővel rendelkező témakör látható, mely előfizetők mindegyike saját szűrővel rendelkezik:
+A *témakörök* sok szempontból hasonlóak az üzenetsorokhoz. A küldők ugyanúgy küldik az üzeneteket a témakörökbe, ahogy az üzenetsorokba, és az üzenetek is ugyanúgy néznek ki, mint az üzenetsorok esetén. A különbség az, hogy a témakörök használatával mindegyik fogadó alkalmazás létrehozhatja saját *előfizetését*, valamint definiálhat egy *szűrőt*. Az előfizető megkapja a témakör összes üzenetének a másolatát, azonban ha szűrőt használ, csak az adott szűrőnek megfelelő üzeneteket kaphatja meg. A 3. ábrán például egy küldő és egy 3 előfizetővel rendelkező témakör látható, mely előfizetők mindegyike saját szűrővel rendelkezik:
 
-* Az 1. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ava"* tulajdonságot.
-* Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az *Értékesítő="Ruby"* tulajdonságot és/vagy tartalmaznak egy *Összeg* tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
-* A 3. előfizető a szűrőt *Igaz* értékűre állította, ami azt jelenti, hogy minden üzenetet megkap. Ez az alkalmazás például a naplózásért lehet felelős, és ezért minden üzenetet meg kell kapnia.
+* Az 1. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az **Értékesítő="Ava"** tulajdonságot.
+* Az 2. előfizető csak azokat az üzeneteket fogadja, amelyek tartalmazzák az **Értékesítő="Ruby"** tulajdonságot és/vagy tartalmaznak egy **Összeg** tulajdonságot, amelynek az értéke nagyobb mint 100 000. Lehet, hogy Ruby az értékesítési igazgató, és szeretné látni a saját értékesítéseit, valamint minden nagy értékű értékesítést az értékesítő személyétől függetlenül.
+* A 3. előfizető a szűrőt **Igaz** értékűre állította, ami azt jelenti, hogy minden üzenetet megkap. Ez az alkalmazás például a naplózásért lehet felelős; ezért minden üzenetet meg kell kapnia.
 
 Ahogy az üzenetsorok esetében is, az üzenetek olvasásakor a témakörök előfizetői is választhatnak a [ReceiveAndDelete és a PeekLock mód](/dotnet/api/microsoft.azure.servicebus.receivemode) között. Az üzenetsoroktól eltérően azonban a témakörökbe küldött egyes üzeneteket több előfizetés is fogadhatja. Ez a gyakran *közzététel és előfizetés* (vagy *pub/sub*) néven ismert megközelítés hasznos, ha több alkalmazás is érdeklődik ugyanazon üzenetek iránt. A megfelelő szűrő meghatározásával mindegyik előfizető az üzenetfolyamnak csak azon részét látja, amelyet látnia kell.
 

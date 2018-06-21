@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 80ce7337717376b05dc9539abaf49b1a933a78f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271670"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637531"
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -98,7 +98,7 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
 | Műveletek                                                          | Azure-engedélyek szükségesek | Megjegyzések |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Felügyeleti megoldások hozzáadása és eltávolítása                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| Felügyeleti megoldások hozzáadása és eltávolítása                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Az engedélyeknek az erőforráscsoport vagy előfizetés szinteken kell megadva lenniük. |
 | Tarifacsomag módosítása                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Adatok megtekintése a *Backup* és a *Site Recovery* megoldások csempéin | Rendszergazda / Társadminisztrátor | A klasszikus üzemi modellel üzembe helyezett erőforrásokhoz fér hozzá |
 | Munkaterület létrehozása az Azure Portalon                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -125,11 +125,14 @@ A *Log Analytics olvasó* szerepkör tagjai a következőket végezhetik el:
 
 
 A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
-- Az összes monitorozási adat olvasása 
-- Automation-fiókok létrehozása és konfigurálása
-- Felügyeleti megoldások hozzáadása és eltávolítása
-- A tárfiókkulcsok olvasása 
-- Az Azure Storage-naplók gyűjtésének konfigurálása
+- Az összes monitorozási adat olvasása  
+- Automation-fiókok létrehozása és konfigurálása  
+- Felügyeleti megoldások hozzáadása és eltávolítása    
+    > [!NOTE] 
+    > E két művelet sikeres végrehajtásához ennek az engedélynek az erőforráscsoport vagy az előfizetés szintjén kell megadva lennie.  
+
+- A tárfiókkulcsok olvasása   
+- Az Azure Storage-naplók gyűjtésének konfigurálása  
 - Azure-erőforrások monitorozási beállításainak szerkesztése, beleértve a következőket:
   - Virtuális gépi bővítmények hozzáadása a virtuális gépekhez
   - Az Azure Diagnostics konfigurálása az összes Azure-erőforráson
@@ -157,7 +160,7 @@ Ezen szerepkörökkel különféle hatókörökben biztosíthat hozzáférést a
 - Erőforráscsoport – Hozzáférés az erőforráscsoportban lévő összes munkaterülethez
 - Erőforrás – Hozzáférés kizárólag az adott erőforráshoz
 
-Az [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
+Azt javasoljuk, hogy a pontos hozzáférés-vezérlés biztosítása érdekében az erőforrás szintjén (munkaterület) végezze el a hozzárendeléseket.  Az [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Az Azure felhasználói szerepkörei és a Log Analytics-portál felhasználói szerepkörei
 Ha legalább olvasási Azure-engedéllyel rendelkezik a Log Analytics-munkaterületen, az **OMS-portál** feladatra kattintva nyithatja meg a Log Analytics-portált a Log Analytics-munkaterület megtekintésekor.
