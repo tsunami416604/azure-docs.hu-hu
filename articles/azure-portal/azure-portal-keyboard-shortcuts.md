@@ -3,7 +3,7 @@ title: Az Azure portál billentyűparancsok |} Microsoft Docs
 description: További tudnivalók a billentyűparancsok, amelyek az Azure portálon működnek.
 services: azure-portal
 documentationcenter: ''
-author: flanakin
+author: adamabmsft
 manager: lwelicki
 editor: ''
 ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/24/2017
-ms.author: micflan
+ms.author: adamab
 ms.custom: accessibility
-ms.openlocfilehash: 17d6c5ecfa3964c03f62e981a4619e02f3d59543
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 4744a752230cfd1f6012d9fe0a502b2653ef8061
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165417"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295227"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Az Azure portálon használható billentyűparancsok
 Ez a cikk bemutatja a billentyűparancsok, amelyek az Azure-portálon egészében meghiúsulhatnak. Előfordulhat, hogy az egyes szolgáltatások saját billentyűparanccsal.
@@ -41,10 +41,10 @@ Ez a cikk bemutatja a billentyűparancsok, amelyek az Azure-portálon egészébe
 |Fókusz áthelyezése a parancssávra |G+, |
 |Fókuszváltás a felső és az oldalsó sáv között | G+. |
 
-## <a name="go-to"></a>Megnyitás
+## <a name="go-to"></a>Látogasson el ide
 |Ehhez |Nyomja le az |
 | --- | --- |
-|Ugrás az irányítópultra |G+D |
+|Az irányítópult megnyitása |G+D |
 |Minden erőforrás megnyitása|G+A |
 |Erőforráscsoportok megnyitása|G + R |
 |Nyissa meg a bal oldali ablaktáblán elem ezen a helyen |G+szám|

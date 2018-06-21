@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a7e828aa79d3a7fba53c0ef9f683ed16afc9a3e6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267458"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285756"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Futtassa a Linux virtuális gép PowerShell parancsfájloknál ad-parancs futtatása
 
@@ -33,6 +33,7 @@ Az alábbiakban található parancs futtatása használatakor korlátozásainak 
 * A parancsfájl futtatása körülbelül 20 másodperc minimális időtartam
 * Parancsfájlok futtatása alapértelmezés szerint emelt szintű felhasználói Linux rendszeren
 * Egyszerre csak egy parancsprogram futtathatnak.
+* Parancsfájlok (interaktív módban) információt kérő nem támogatottak.
 * Nem lehet megszakítani a parancsfájl futtatását
 * A maximális egy parancsfájlt ideje 90 perc, azt követően a rendszer túllépi az időkorlátot
 

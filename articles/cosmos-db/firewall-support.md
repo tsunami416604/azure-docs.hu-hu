@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: f0cbbe147386aa5d50e207fdd9c86fd9571ec144
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0407d3c58fa63a11c8391f069039f7c35a15ceb7
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611738"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294737"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
 Egy Azure Cosmos-adatbázis adatbázis-fiókban tárolt adatok védelme érdekében Azure Cosmos DB nyújtott támogatás a titkos kulcs alapú [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely erős kivonat-alapú üzenethitelesítő kódot (HMAC) használja. Most a titkos alapú engedélyezési modell mellett Azure Cosmos DB bejövő tűzfaltámogatás IP-alapú hozzáférés-vezérléssel vezérelt házirend támogatja. Ebben a modellben a hagyományos adatbázis rendszer tűzfalszabályok hasonló, és egy további Azure Cosmos DB adatbázis fiókhoz biztonsági szintet. Ez a modell segítségével mostantól beállíthatja egy Azure Cosmos DB adatbázisfiók csak egy jóváhagyott gépek halmazát jelenti érhetők el, illetve a felhőalapú szolgáltatások. A jóváhagyott halmazok gépek és szolgáltatások Azure Cosmos DB erőforrásokhoz való hozzáférés továbbra is szükség van egy érvényes hitelesítési jogkivonatot a hívó.
@@ -32,7 +32,7 @@ Az Azure Cosmos DB-adatbázisfiókok alapértelmezés szerint elérhetők a nyil
 ## <a id="configure-ip-policy"></a> Az IP-hozzáférés-vezérlési házirend beállítása
 Az IP-hozzáférés-vezérlési szabályzat állítható be az Azure portálon vagy programozottan a [Azure CLI](cli-samples.md), [Azure Powershell](powershell-samples.md), vagy a [REST API](/rest/api/cosmos-db/) a frissítésével**ipRangeFilter** tulajdonság. 
 
-Az IP-hozzáférés-vezérlési házirend beállítása az Azure portálon, nyissa meg az Azure Cosmos DB fiók lapot, kattintson a **tűzfal** a navigációs menü, majd módosítsa a **engedélyezzék** egy érték  **Hálózatok kijelölt**, és kattintson a **mentése**. 
+Az IP-hozzáférés-vezérlési házirend beállítása az Azure portálon, nyissa meg az Azure Cosmos DB fiók lapot, kattintson a **tűzfal és a virtuális hálózatok** a navigációs menü, majd módosítsa a **engedélyezzék** érték a **hálózatok kijelölt**, és kattintson a **mentése**. 
 
 ![Képernyőfelvétel: a tűzfal lap megnyitása a az Azure-portálon](./media/firewall-support/azure-portal-firewall.png)
 
@@ -56,10 +56,10 @@ Az Azure-portálon való hozzáférés alapértelmezés szerint engedélyezve va
 
 ![Képernyőfelvétel: az Azure portál hozzáférés engedélyezése](./media/firewall-support/enable-azure-portal.png)
 
-## <a name="connections-from-other-azure-paas-services"></a>A többitől Azure PaaS kapcsolatok 
+## <a name="connections-from-public-azure-datacenters-or-azure-paas-services"></a>A nyilvános Azure adatközpontjaiban vagy Azure PaaS szolgáltatásokból kapcsolatok
 Az Azure PaaS-szolgáltatásokat, mint az Azure Stream analytics, az Azure Functions és Azure App Service szolgáltatásban használt Azure Cosmos DB együtt. Azure Cosmos DB való hozzáférésének engedélyezésére ezeket a szolgáltatásokat, amelyek IP-címei nem azonnal elérhetők legyenek az adatbázis-fiók vegye fel a 0.0.0.0 programozott módon a Azure Cosmos DB adatbázis fiókjához társított IP-címek az engedélyezett bővítmények listájához. 
 
-Az egyéb Azure-szolgáltatásokhoz való hozzáférés alapértelmezés szerint engedélyezve van, ha a tűzfal-beállításokat, hogy megváltoztatja **kijelölt hálózatok** az Azure portálon. 
+Nyilvános Azure adatközpontjaiban belül közötti kapcsolatok elérésére alapértelmezés szerint engedélyezve van, ha a tűzfal-beállításokat, hogy megváltoztatja **kijelölt hálózatok** az Azure portálon. 
 
 ![Képernyőfelvétel: a tűzfal lap megnyitása a az Azure-portálon](./media/firewall-support/enable-azure-services.png)
 
@@ -91,8 +91,6 @@ Amikor egy Azure Cosmos DB adatbázisfiók fér hozzá egy számítógépről az
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Hibaelhárítás az IP-hozzáférés-vezérlési házirend
 ### <a name="portal-operations"></a>Portál műveletek
 Azáltal, hogy IP hozzáférés-vezérlési szabályzatok Azure Cosmos DB adatbázis fiókjához, minden Azure Cosmos DB adatbázis fiókja gépekről kívül a beállított elérését az IP-címtartományok listájának le vannak tiltva. Ezért ha portál adatok vezérlősík műveletek tartoznak, mint a gyűjtemények és dokumentumok lekérdezés tallózása engedélyezni szeretné, akkor kell explicit módon az Azure portál hozzáférés engedélyezése a **tűzfal** oldal a portálon. 
-
-![A bemutató Képernyőkép az Azure-portálon való hozzáférés engedélyezése](./media/firewall-support/azure-portal-firewall.png)
 
 ### <a name="sdk--rest-api"></a>SDK & Rest API
 A biztonsági okokból nem található az engedélyezési listához gépek SDK vagy a REST API-n keresztül hozzáférést egy általános 404-es nem található response további részletek nem ad vissza. Ellenőrizze a megfelelő házirend-konfiguráció alkalmazásának Azure Cosmos DB adatbázis fiókjába engedélyezettek listájához, a Azure Cosmos DB adatbázis fiókjához beállított IP.

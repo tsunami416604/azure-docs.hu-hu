@@ -12,20 +12,20 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/9/2017
+ms.date: 06/19/2018
 ms.author: LADocs; divswa
-ms.openlocfilehash: 493d82f59600d83a083bb13cdd0a21b872d77a43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299943"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294574"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Logikai alkalmazás figyelése és a get észrevételeket Naplóelemzési fut
 
 Figyelési és gazdagabb hibakeresési információ bekapcsolása Naplóelemzési logikai alkalmazás létrehozásakor egy időben. A Naplóelemzési biztosít naplózásának és figyelésének a logikai alkalmazásnak diagnosztika futtatása az Azure portálon keresztül. A Logic Apps-kezelési megoldás hozzáadásakor összesített állapotának beolvasása a logic app futtatása és a kívánt részletes adatok, például állapot, a végrehajtási idő, a ismételt továbbítása során állapot és a korrelációs azonosító.
 
-Ez a témakör azt ismerteti, hogyan bekapcsolása Naplóelemzési futásidejű események és a logikai alkalmazásnak adatok futtassa.
+Ez a cikk bemutatja, hogyan bekapcsolása Naplóelemzési futásidejű események és a logikai alkalmazásnak adatok futtassa.
 
  > [!TIP]
  > A meglévő logic Apps alkalmazások figyeléséhez, az alábbi lépéseket követve [diagnosztikai naplózás bekapcsolásához és a logic app futásidejű adatokat küldeni a Naplóelemzési](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
@@ -67,17 +67,17 @@ Ha Ön már engedélyezve van a Naplóelemzési a logikai alkalmazás létrehoz�
 
    ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. A **felügyeleti**, válassza a **OMS-portálon**.
+3. A **felügyeleti**, válassza a **áttekintése**.
 
-   ![Válassza ki a "OMS-portálon"](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
+   ![Válassza ki a "OMS-portálon"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
-4. A **minden megoldás**, található, és válassza ki a csempe a **Logic Apps felügyeleti** megoldás.
+4. – Áttekintés lapon válassza a **Hozzáadás** a megoldások csempe megnyitásához. 
 
-   ![Válassza ki a "Logic Apps kezelése"](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
+   ![Válassza ki a "Logic Apps kezelése"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
-5. A Naplóelemzési munkaterület a megoldás telepítéséhez válassza **Hozzáadás**.
+5. Görgessen végig a listáját **megoldások**, válassza ki **Logic Apps felügyeleti** megoldás, és válassza a **létrehozása** telepíti a – áttekintés oldalra.
 
-   ![Válassza a "Hozzáadás" a "Logic Apps kezelése"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
+   ![Válassza a "Hozzáadás" a "Logic Apps kezelése"](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 

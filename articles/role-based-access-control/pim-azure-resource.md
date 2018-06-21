@@ -1,6 +1,6 @@
 ---
 title: Azure-erőforrások a Privileged Identity Management (PIM) való hozzáférés kezelése
-description: Ismerje meg a szerepköralapú hozzáférés-kezelés a PIM Azure-erőforrások eléréséhez használt.
+description: További tudnivalók az Azure Privileged Identity Management (PIM) és a szerepköralapú hozzáférés-vezérlést (RBAC) használata erőforrásokhoz való hozzáférés kezelése.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: fb0a1ff3821efd7114b509b72e143d5240b61b4c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 838c889f2dc099b4a4c5d84521871c64eb989163
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204209"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293750"
 ---
 # <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>Azure Privileged Identity Management erőforrásokhoz való hozzáférés kezelése
 
 Kiemelt jogosultságú fiókok védelmét a rosszindulatú számítógépes-támadások ellen, Azure Active Directory Privileged Identity Management (PIM) segítségével alacsonyabb jogosultságokat a kitettség idő, és növelje a jelentések és értesítések használatukat láthatósága. A PIM ennek érdekében, hogy csak a jogosultságait az "igény szerint" felhasználók (JIT), vagy egy rövidített időtartam elteltével jogosultságokkal vissza lenne vonva, automatikusan jogosultságok hozzárendelésével. 
 
-Használhatja a PIM rendelkező átruházásához hozzáférés-vezérlés (RBAC) kezelése, szabályozása és figyelése az Azure-erőforrások eléréséhez. A PIM beépített és egyéni szerepkör tagsága segítségével képes kezelni: 
+Használhatja a PIM Azure szerepköralapú hozzáférés-vezérléssel (RBAC) kezelése, szabályozása és figyelése az Azure-erőforrások eléréséhez. A PIM beépített és egyéni szerepkör tagsága segítségével képes kezelni: 
 
 - Igény szerinti, "igény szerint" az Azure erőforrások hozzáférésének engedélyezése
 - Erőforrás-hozzáférés automatikusan a hozzárendelt felhasználók és csoportok lejár
 - Ideiglenes hozzáférés hozzárendelése az Azure-erőforrások gyors tevékenységek és a készenléti ütemezése
 - Riasztásokat kaphat, ha új felhasználók vagy csoportok vannak hozzárendelve az erőforrás-hozzáférés, illetve ha az általuk aktivált jogosult hozzárendelések
 
-További információkért lásd: [Overview of Role-Based hozzáférés-vezérlés az Azure PIM](../active-directory/privileged-identity-management/azure-pim-resource-rbac.md).
+További információkért lásd: [Azure PIM szerepköralapú hozzáférés-vezérlés áttekintése](../active-directory/privileged-identity-management/azure-pim-resource-rbac.md).

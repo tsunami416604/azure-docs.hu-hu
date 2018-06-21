@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f52861411a34d1fbff577fbbc37cf926151a97d8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643209"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294812"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 > [!div class="op_single_selector"]
@@ -40,17 +40,17 @@ A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban
   
   Tárolók van szüksége a fürt Windows Server verziójának, futtassa a `ver` a fejlesztési számítógépén Windows parancssori parancsot:
 
-  * Ha a verziót tartalmaz *x.x.14323.x*, majd [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) alatt válassza az *WindowsServer 2016-adatközpont-az-tárolók* az operációs rendszerhez vagy [Service Fabric szabad próbálja](https://aka.ms/tryservicefabric) egy entitás fürttel.
-  * Ha a verziót tartalmaz *x.x.16299.x*, majd [hozzon létre egy fürtöt](service-fabric-cluster-creation-via-portal.md) alatt válassza az *WindowsServerSemiAnnual Datacenter-Core-1709-az-tárolók* a a operációs rendszer. Egy entitás fürt nem használhatja.
+  * Ha a verziót tartalmaz *x.x.14323.x*, majd jelölje be *WindowsServer 2016-adatközpont-az-tárolók* az operációs rendszer amikor [fürt létrehozása](service-fabric-cluster-creation-via-portal.md). Emellett [Service Fabric szabad próbálja](https://aka.ms/tryservicefabric) egy entitás fürttel.
+  * Ha a verziót tartalmaz *x.x.16299.x*, majd jelölje be *WindowsServerSemiAnnual Datacenter-Core-1709-az-tárolók* az operációs rendszer amikor [fürtlétrehozása](service-fabric-cluster-creation-via-portal.md). Egy entitás fürt azonban nem használható.
 
 * Egy Azure Container Registry-beállításjegyzék – ehhez [hozzon létre egy tároló-beállításjegyzéket](../container-registry/container-registry-get-started-portal.md) Azure-előfizetésében.
 
 > [!NOTE]
-> A tárolók üzembe helyezése Service Fabric-fürtökön a Windows 10-ben vagy Docker CE-t futtató fürtökön nem támogatott. Ez az útmutató helyi ellenőrzéseket végez a Docker-motor használatával a Windows 10 rendszeren, majd végül egy Azure-beli, a Docker CE-t futtató Windows Server-fürtön helyezi üzembe a tárolószolgáltatásokat. 
+> A Service Fabric-fürt fut a Windows 10 tárolók telepítése esetén támogatott.  Lásd: [Ez a cikk](service-fabric-how-to-debug-windows-containers.md) Windows tárolók futtatásához Windows 10-es konfigurálásával kapcsolatos információkat.
 >   
 
 > [!NOTE]
-> A Service Fabric 6.1-es verziója előzetes verzióban támogatja a Windows Server 1709-es verzióját. A nyílt hálózatkezelés és a Service Fabric DNS-szolgáltatás nem működik a Windows Server 1709-es verziójával. 
+> A Service Fabric verziói 6.2-es és újabb verziók támogatják az telepítését tárolók 1709 verziójú Windows Server rendszert futtató fürtöket.  
 > 
 
 ## <a name="define-the-docker-container"></a>A Docker-tároló definiálása

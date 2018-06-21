@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure áttelepítése szolgáltatás
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: ec8e026fc9bab192f6944e590fa703dbbd5772c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221359"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287888"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -132,7 +132,7 @@ Az értékelésekben a következő okok miatt nem lehet elérhető az összes ad
 
 Méretezési javaslatok befejezését követően a Azure áttelepítése az áttelepítés utáni számítási és tárolási költségek számítja ki.
 
-- **Költség számítási**: a javasolt Azure Virtuálisgép-méretet használó, Azure telepítse át a számlázási API-t használja havi költségének kiszámítására, a virtuális gép számára. A számítási az operációs rendszer, frissítési garancia, helyét és pénznem beállítások figyelembe vesz igénybe. A költségeket von gépeire, teljes havi számítási költségének kiszámítására.
+- **Költség számítási**: a javasolt Azure Virtuálisgép-méretet használó, Azure telepítse át a számlázási API-t használja havi költségének kiszámítására, a virtuális gép számára. A számítási operációs rendszer, frissítési garancia, fenntartott példányok, virtuális gép üzemidőt, helyének és pénznem beállítások figyelembe vesz igénybe. A költségeket von gépeire, teljes havi számítási költségének kiszámítására.
 - **Tárolási költségek**: A havi tárolási költség, a gép összes lemeze havi költségét összesítésével számítható a géphez csatlakozik. Az Azure áttelepítése a teljes havi tárolási költségek a tárolási költségeket az összes gépet összesítésével számítja ki. A számítási jelenleg nem veszi figyelembe assessment beállításaiban megadott ajánlatokat.
 
 Az értékelés beállításaiban megadott pénznemben költségek jelennek meg.

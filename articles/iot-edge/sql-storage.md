@@ -9,12 +9,12 @@ ms.date: 02/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c90cc28956e4dd7730cc7ba09a173f505f056fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 30dc833edabfe3d13769bafc9fa0eb6bdd51bb23
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632400"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287207"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server-adatbázisok a peremhálózaton adatok tárolásához
 
@@ -33,7 +33,7 @@ A következő cikkekben sikeresen az oktatóanyag elvégzéséhez nem szüksége
 * [Visual Studio Code segítségével fejlesztésekor és telepítésekor az Azure Functions Azure IoT szegélyhez](how-to-vscode-develop-azure-function.md)
 
 A szükséges oktatóanyagok elvégzése után készen áll az összes szükséges előfeltételeket kell a számítógépre: 
-* Egy aktív Azure IoT-központot.
+* Egy aktív Azure IoT hubot legalább egy IoT peremhálózati eszköz.
 * Legalább 2 GB RAM és a 2 GB-os meghajtó IoT peremhálózati eszköz.
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * [Azure IoT Edge-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge). 
@@ -43,7 +43,6 @@ A szükséges oktatóanyagok elvégzése után készen áll az összes szükség
 * [Python 2.7](https://www.python.org/downloads/)
 * [Az IoT-Edge vezérlő parancsfájl](https://pypi.python.org/pypi/azure-iot-edge-runtime-ctl)
 * AzureIoTEdgeFunction sablon (`dotnet new -i Microsoft.Azure.IoT.Edge.Function`)
-* Egy aktív IoT hubot legalább egy IoT peremhálózati eszköz.
 
 Az oktatóanyag működjön processzorarchitektúrák x64 Windows és Linux tárolók. SQL Server nem támogatja az ARM-processzort.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 160f01c3094548277e1f68e0002954ae63c79ce6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738333"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296175"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -145,6 +145,9 @@ Az Azure fájlszinkronizálás és DFS-R egymás melletti működéséhez:
 
 További információkért lásd: [Elosztott fájlrendszer replikációs szolgáltatása áttekintése](https://technet.microsoft.com/library/jj127250).
 
+### <a name="windows-search"></a>A Windows Search
+Ha felhőalapú rétegezéséhez engedélyezve van a kiszolgáló végponton, a fájlokat, amelyek Unja már kihagyva, és nem indexelik a Windows Search. A fájlok nem rétegű indexelt megfelelően.
+
 ### <a name="antivirus-solutions"></a>Víruskereső megoldások
 A víruskereső vizsgálja a fájlokat az ismert rosszindulatú kódot úgy működik, mert egy víruskereső szoftver a rétegzett fájlok visszahívása okozhatja. Mivel rétegzett fájlokat a "kapcsolat nélküli" attribútummal rendelkezik, ajánlott a szoftver gyártójához annak megismerése, hogyan konfigurálhatja a kapcsolat nélküli fájlok olvasásának kihagyását megoldás egyeztetett. 
 
@@ -158,6 +161,11 @@ A következő megoldásokat ismert, hogy támogatja a rendszer kihagyja a kapcso
 
 ### <a name="backup-solutions"></a>Biztonsági mentési megoldás
 Víruskereső megoldások, például a biztonsági mentési megoldás a rétegzett fájlok visszahívása okozhat. Azt javasoljuk, hogy a felhő biztonsági mentési megoldás segítségével készítsen biztonsági másolatot az Azure-fájlmegosztáshoz egy helyszíni biztonsági mentési termék helyett.
+
+Ha egy helyszíni biztonsági mentési megoldás használata esetén biztonsági mentések felhő rétegezéséhez letiltott a szinkronizálási csoportba a kiszolgálón kell elvégezni. Fájlok belül a kiszolgáló végponthelyét visszaállításakor szintű visszaállítási beállítást használja. A szinkronizálás csoportban található összes végpontok visszaállított fájlok lesznek szinkronizálva, és meglévő fájlok váltja fel a biztonsági másolatból történt visszaállítása verziót.
+
+> [!Note]  
+> Alkalmazás-kompatibilis, kötetszintű és az operációs rendszer nélküli (BMR) visszaállítási lehetőségek várt következményekhez vezethet, és jelenleg nem támogatottak. A visszaállítási lehetőségek egy későbbi kiadásban támogatott.
 
 ### <a name="encryption-solutions"></a>Titkosítási megoldások
 Titkosítási megoldások támogatása attól függ, hogyan használják azokat. Az Azure fájlszinkronizálás ismert használható:
@@ -180,6 +188,7 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 | Régió | Adatközpont helye |
 |--------|---------------------|
 | Kelet-Ausztrália | Új-Dél-Wales |
+| Délkelet-Ausztrália | Victoria |
 | Közép-Kanada | Toronto |
 | Kelet-Kanada | Quebec City |
 | USA középső régiója | Iowa |
@@ -189,6 +198,7 @@ Az Azure fájlszinkronizálás csak a következő régiókban Preview érhető e
 | Észak-Európa | Írország |
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
+| Az Egyesült Királyság nyugati régiója | Cardiff |
 | Nyugat-Európa | Hollandia |
 | USA nyugati régiója | Kalifornia |
 

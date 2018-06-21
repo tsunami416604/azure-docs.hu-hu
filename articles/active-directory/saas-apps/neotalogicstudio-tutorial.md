@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 5eb56460356267d3676361797ed8eeff7aa57b80
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 01987f3a5f2a37d7cf2b16202310b7d442c9d7a8
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210292"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>Oktatóanyag: Azure Active Directoryval integrált Neota logika Studio
 
@@ -204,9 +204,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Kattintson a hozzáférési panelen Neota logika Studio csempére, a szervezete bejelentkezési oldalára irányítja. Sikeres bejelentkezés után meg fog kell bejelentkezett a Neota logika Studio alkalmazásba. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
-
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586). 
+Kattintson a hozzáférési panelen Neota logika Studio csempére, a szervezete bejelentkezési oldalára irányítja. Sikeres bejelentkezés után meg fog kell bejelentkezett a Neota logika Studio alkalmazásba. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

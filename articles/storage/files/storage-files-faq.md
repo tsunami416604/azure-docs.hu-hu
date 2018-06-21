@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 9121726cc8500da87cf71cb1ca3035e6cc5a303b
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737809"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294090"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -91,7 +91,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 
 * <a id="afs-region-availability"></a>
 **Milyen régiókban támogatott Azure fájlszinkronizálás (előzetes verzió)?**  
-    Azure fájlszinkronizálás jelenleg Kelet-Ausztrália Kanada központi, USA keleti régiója, Délkelet-Ázsiában, Egyesült Királyság déli régiója, Nyugat-Európa, USA nyugati régiója érhető el. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
+    Jelenleg Azure fájlszinkronizálás Kelet-Ausztrália, Ausztrália délkeleti, Kanada központi, Kanada keleti régiója, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti régiója, kelet-US2, Észak-Európa, Délkelet-Ázsiában, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Nyugat-Európa és érhető USA nyugati régiója. További régiókhoz fogja támogatni, általánosan rendelkezésre álló felé dolgozunk. További információkért lásd: [régiónkénti elérhetőség](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>
 **Szinkronizálási ugyanabban a csoportban is rendelkezem tartományhoz csatlakoztatott és a nem tartományhoz csatlakoztatott?**  

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59bc6652a61e0c61188bbfd09251161411923628
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594227"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287576"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 Szűrés segítségével szabályozhatja mely objektumok jelennek meg az Azure Active Directory (Azure AD) a helyi címtárban lévő. Az alapértelmezett konfiguráció összes objektumok minden tartományban a konfigurált erdők vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók Office 365-munkaterhelések, például az Exchange Online és Skype vállalati verzióra, a kihasználhassa a teljes globális címlista, hogy e-mailek küldése és mindenki hívja. Az alapértelmezett konfigurációnál akkor ugyanazt a felhasználói élményt, hogy azok az Exchange vagy a Lync egy helyszíni példánnyal.
@@ -40,7 +40,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a különböző szűrési módszere
 ## <a name="basics-and-important-notes"></a>Alapvető tudnivalók és fontos megjegyzések
 Az Azure AD Connect szinkronizálási szolgáltatás engedélyezheti a bármikor szűrést. Indítsa el a címtár-szinkronizálás alapértelmezett konfigurációja, és a szűrés konfigurálása, ha a program kiszűri az objektumok már nem szinkronizálódnak az Azure AD. Ez a változás miatt objektumokat az Azure ad-ben korábban szinkronizált, de majd szűrve voltak törlődnek az Azure ad-ben.
 
-Szűrésének módosítása előtt győződjön meg arról, hogy Ön [tiltsa le az ütemezett feladatot](#disable-scheduled-task) , akkor véletlenül ne exportálja a módosításokat, amelyek még nem még ellenőrizve csak akkor lehet helyes.
+Szűrésének módosítása előtt győződjön meg arról, hogy Ön [tiltsa le az ütemezett feladatot](#disable-the-scheduled-task) , akkor véletlenül ne exportálja a módosításokat, amelyek még nem még ellenőrizve csak akkor lehet helyes.
 
 Szűrés eltávolíthatja egyszerre sok objektumot, mert kívánt győződjön meg arról, hogy az új szűrőket helyesen-e a módosításokat az Azure AD-exportálás megkezdése előtt. Miután megadta a konfigurációs lépések, Határozottan javasoljuk, hogy kövesse a [ellenőrzési lépések](#apply-and-verify-changes) exportálása és az Azure AD-módosítások előtt.
 

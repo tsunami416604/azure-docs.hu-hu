@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/15/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1764f4ed9dfe73763c288844be85d4805401887e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185220"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285967"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – Azure replikációs VMware
 
@@ -29,7 +29,7 @@ Replikálás során adatait az Azure storage replikálja a rendszer, és nem a v
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Milyen feladatokat lehet elvégezni a VMware Azure replikációs?
 - **Vész-helyreállítási**: teljes vész-helyreállítási állíthat be. Ebben a forgatókönyvben a helyszíni VMware virtuális gépek az Azure storage replikálja. Ezt követően a helyszíni infrastruktúra nem érhető el, ha átveheti az Azure-bA. Történő feladatátadást követően, Azure virtuális gépek jönnek létre, a replikált adatok használatával. Alkalmazások és munkaterhelések az Azure virtuális gépeken, amíg a helyszíni adatközpontját újra elérhetővé érheti el. Ezt követően, sikertelen lehet az Azure-ból a helyszíni helyre.
-- **Áttelepítési**: a Site Recovery segítségével helyszíni VMware virtuális gépek áttelepítése az Azure-bA. Ebben a forgatókönyvben a helyszíni VMware virtuális gépek az Azure storage replikálja. Majd hogy átadja a helyszíni Azure. A feladatátvétel után még alkalmazások és munkafolyamatok rendelkezésre állnak és futó Azure virtuális gépeken.
+- **Áttelepítési**: a Site Recovery segítségével helyszíni VMware virtuális gépek áttelepítése az Azure-bA. Ebben a forgatókönyvben a helyszíni VMware virtuális gépek az Azure storage replikálja. Majd hogy átadja a helyszíni Azure. A feladatátvétel után az alkalmazások és munkaterhelések rendelkezésre állnak és futó Azure virtuális gépeken.
 
 
 
@@ -41,7 +41,7 @@ Azure-előfizetéssel, Recovery Services-tároló, a tárfiók és egy virtuáli
 Az LRS- vagy GRS-tárfiók van szüksége. Mi a GRS használatát javasoljuk, mivel ez akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében gondoskodik az adatok hibatűréséről. Prémium szintű storage használata támogatott.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Nem a saját Azure-fiók létrehozása a virtuális gépek engedélyekre van szükség?
-Ha egy előfizetés adminsztrátori, a replikáció szükséges engedélyekkel rendelkezik. Ha nem, az erőforráscsoport és a virtuális hálózati hely Reocvery konfigurálásakor adjon meg egy Azure virtuális gép létrehozásához szükséges engedélyek, és szükséges a kiválasztott tárolási accout írási engedélyekkel. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+Ha egy előfizetési rendszergazda, a replikáció szükséges engedélyekkel rendelkezik. Ha nem, a erőforráscsoport és a virtuális hálózati Site Recovery konfigurálásakor adja meg az Azure virtuális gép létrehozásához szükséges engedélyek, és szükséges engedélyek a kiválasztott tárolási fiók írásához. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 
 
@@ -98,7 +98,7 @@ A dinamikus lemezek replikálható. Az operációsrendszer-lemez alaplemeznek ke
 ### <a name="can-i-add-a-new-vm-to-an-existing-replication-group"></a>Hozzáadható egy új virtuális gép egy meglévő replikációs csoporthoz?
 Igen.
 
-## <a name="configuration-server"></a>Configuration server
+## <a name="configuration-server"></a>Konfigurációs kiszolgáló
 
 ### <a name="what-does-the-configuration-server-do"></a>Hogyan működik a konfigurációs kiszolgáló?
 A konfigurációs kiszolgáló futtatja a helyszíni Site Recovery-összetevőket, például: 

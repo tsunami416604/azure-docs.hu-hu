@@ -1,6 +1,6 @@
 ---
-title: A külső felhasználók számára az Azure-ban szerepkör-hozzárendelések kezelése |} Microsoft Docs
-description: Az Azure-ban, a szervezeten kívüli felhasználók kezelése szerepköralapú hozzáférés-vezérlést (RBAC)
+title: A külső felhasználók számára az RBAC használata az Azure-hozzáférés kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a szerepköralapú hozzáférés-vezérlést (RBAC) használata az Azure-ban szervezeten kívüli felhasználók hozzáférését.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,13 +16,14 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296217"
 ---
-# <a name="manage-role-assignments-for-external-users"></a>Külső felhasználók szerepkör-hozzárendeléseinek kezelése
+# <a name="manage-access-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használata hozzáférés kezelése
 
 Szerepköralapú hozzáférés-vezérlést (RBAC) lehetővé teszi, hogy jobban biztonságkezelés nagy méretű szervezeteknek, és az SMB-khez külső közreműködő, a szállítók vagy az adott környezetben meghatározott erőforrás azonban nem feltétlenül a teljes hozzáférést igénylő freelancers használata infrastruktúra vagy bármely számlázással kapcsolatos hatókör. Az RBAC lehetővé teszi, hogy egy Azure-előfizetéssel rendelkező rugalmasan kezeli a rendszergazdai fiókot (szolgáltatás-rendszergazda szerepkörrel egy előfizetés szintjén), és több felhasználók meghívást az azonos előfizetésben, de bármilyen rendszergazdai jogosultságok nélkül működik az .
 
@@ -43,10 +44,10 @@ Az RBAC-szerepkörök csak akkor adhatók **tulajdonosok** az előfizetés. Ezé
 Az Azure-portálon után jelentkezzen be rendszergazdaként, válassza ki "Előfizetések", és válassza a kívánt egy.
 ![előfizetés panel az Azure-portálon](./media/role-assignments-external-users/0.png) alapértelmezés szerint a rendszergazdai jogú felhasználó rendelkezik vásárolt Azure-előfizetést, ha a felhasználó fog megjelenni **Fiókadminisztrátor**, ez az előfizetés szerepkör alatt. Azure-előfizetés szerepkörökkel kapcsolatos további információkért lásd: [hozzáadása vagy módosítása, hogy az előfizetés vagy a szolgáltatások kezelése az Azure rendszergazdai szerepkörök](../billing/billing-add-change-azure-subscription-administrator.md).
 
-Ebben a példában a felhasználó a "alflanigan@outlook.com" van a **tulajdonos** az "Ingyenes" az aad-ben az előfizetéshez bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó hozta létre a kezdeti Microsoft Account "Outlook" az Azure-előfizetés (Microsoft Account = Outlook, a működés közbeni stb.) az alapértelmezett tartomány nevét ennél a bérlőnél a hozzáadott összes többi felhasználó számára lesz **"@alflaniganuoutlook.onmicrosoft.com"**. Úgy lett kialakítva, a szintaxist, az új tartomány formátuma kiépítésekor a bérlő létrehozó felhasználó felhasználónevét és tartományát nevét, és vegye fel a bővítmény **". onmicrosoft.com"**.
+Ebben a példában a felhasználó a "alflanigan@outlook.com" van a **tulajdonos** az "Ingyenes" az aad-ben az előfizetéshez bérlői "Alapértelmezett bérlőt Azure". Mivel ez a felhasználó hozta létre a kezdeti Microsoft Account "Outlook" az Azure-előfizetés (Microsoft Account = Outlook, a működés közbeni stb.) az alapértelmezett tartomány nevét ennél a bérlőnél a hozzáadott összes többi felhasználó számára lesz **"\@ alflaniganuoutlook.onmicrosoft.com"**. Úgy lett kialakítva, a szintaxist, az új tartomány formátuma kiépítésekor a bérlő létrehozó felhasználó felhasználónevét és tartományát nevét, és vegye fel a bővítmény **". onmicrosoft.com"**.
 Ezenkívül felhasználók bejelentkezhetnek a bérlő az egyéni tartománynév hozzáadása, és azt az új bérlő ellenőrzése után. Az Azure Active Directory-bérlő egyéni tartománynév ellenőrzése További információkért lásd: [egyéni tartománynév hozzáadása a címtárhoz](/active-directory/active-directory-add-domain).
 
-Ebben a példában a "Alapértelmezett bérlőt Azure" könyvtárban található csak azokat a felhasználókat, a tartomány nevét "@alflanigan.onmicrosoft.com".
+Ebben a példában a "Alapértelmezett bérlőt Azure" könyvtárban található csak azokat a felhasználókat, a tartomány nevét "\@alflanigan.onmicrosoft.com".
 
 Az előfizetés kiválasztása után a rendszergazda felhasználó kattintson kell **hozzáférés-vezérlés (IAM)** , majd **új szerepkör hozzáadása**.
 
@@ -54,7 +55,7 @@ Az előfizetés kiválasztása után a rendszergazda felhasználó kattintson ke
 
 ![Új felhasználó hozzáadása a hozzáférés-vezérlési IAM funkciója Azure-portálon](./media/role-assignments-external-users/2.png)
 
-A következő lépés, hogy válassza ki hozzá kell rendelni a szerepkört és a felhasználó, akinek a Szerepalapú szerepkör rendeli hozzá. Az a **szerepkör** legördülő menüre, a rendszergazda felhasználó számára megjelenített csak a beépített RBAC szerepkörök az Azure-ban rendelkezésre álló. Részletesebb ismereteket szeretnének elsajátítani a minden egyes szerepkör és a hozzárendelhető hatókörök, lásd: [átruházásához hozzáférés-vezérlés beépített szerepkörök](built-in-roles.md).
+A következő lépés, hogy válassza ki hozzá kell rendelni a szerepkört és a felhasználó, akinek a Szerepalapú szerepkör rendeli hozzá. Az a **szerepkör** legördülő menüre, a rendszergazda felhasználó számára megjelenített csak a beépített RBAC szerepkörök az Azure-ban rendelkezésre álló. Részletesebb ismereteket szeretnének elsajátítani a minden egyes szerepkör és a hozzárendelhető hatókörök, lásd: [beépített szerepkörök](built-in-roles.md).
 
 A rendszergazdai jogú felhasználó majd hozzá kell a külső felhasználó e-mail címe. A várt működése a külső felhasználó számára nem jelenik meg a meglévő bérlő. Után a külső felhasználó kérték, ő lesz látható a **előfizetések > hozzáférés-vezérlés (IAM)** már hozzá vannak rendelve egy Szerepalapú szerepkört az előfizetés hatókörből aktuális felhasználókkal.
 

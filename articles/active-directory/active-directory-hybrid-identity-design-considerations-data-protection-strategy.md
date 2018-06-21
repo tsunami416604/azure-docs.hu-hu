@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
-ms.translationtype: HT
+ms.openlocfilehash: f0def105997213ae5d356de89e6189b6441facbd
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824168"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295574"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás az adatok védelme stratégia meghatározása
 Ebben a feladatban fogja definiálni, a data protection stratégiája a hibrid identitáskezelési megoldás az üzleti követelményeinek megfelelően, amelyet a megadott:
@@ -57,7 +57,7 @@ Attól függően, hogy hogyan válaszolt kérdéseit [adatvédelmi követelmény
 >
 
 ## <a name="define-content-management-options"></a>A Tartalomkezelés beállítások megadása
-Egy hibrid identitás-infrastruktúra kezelése az Azure AD segítségével előnye, hogy a folyamat teljesen átlátható a végfelhasználó szempontjából. A felhasználó megpróbál hozzáférni egy megosztott erőforráson, az erőforrás-hitelesítés szükséges, a felhasználó rendelkezik-e a hitelesítési kérelem küldése az Azure AD ahhoz, hogy a jogkivonat beszerzése és az erőforrás elérésére. A teljes folyamat a háttérben, felhasználói beavatkozás nélkül történik. Akkor is engedélyt szeretne megadni egy [csoport](active-directory-manage-groups.md#getting-started-with-access-management) a felhasználók annak érdekében, hogy azok bizonyos általános műveletek elvégzéséhez.
+Egy hibrid identitás-infrastruktúra kezelése az Azure AD segítségével előnye, hogy a folyamat teljesen átlátható a végfelhasználó szempontjából. A felhasználó megpróbál hozzáférni egy megosztott erőforráson, az erőforrás-hitelesítés szükséges, a felhasználó rendelkezik-e a hitelesítési kérelem küldése az Azure AD ahhoz, hogy a jogkivonat beszerzése és az erőforrás elérésére. A teljes folyamat a háttérben, felhasználói beavatkozás nélkül történik. Akkor is engedélyt szeretne megadni egy [csoport](fundamentals/active-directory-manage-groups.md#getting-started-with-access-management) a felhasználók annak érdekében, hogy azok bizonyos általános műveletek elvégzéséhez.
 
 Kapcsolatos adatvédelmi probléma, amely általában azok a szervezetek, a megoldás az adatok besorolásával szükséges. A jelenlegi helyszíni infrastruktúrával már használja az adatok besorolásával, akkor az Azure AD, a fő tárház a felhasználói identitás használatát. Egy közös eszközt, hogy a rendszer használt a helyszíni az adatok besorolását nevezik [adatbesorolási eszközkészlet](https://msdn.microsoft.com/library/Hh204743.aspx) a Windows Server 2012 R2 rendszerben. Ez az eszköz azonosítására, besorolásában és védelmében fájlkiszolgálókon a magánfelhőben található adatok segítséget. Akkor is lehet használni a [automatikus Fájlbesorolás](https://technet.microsoft.com/library/hh831672.aspx) a Windows Server 2012 ennek a feladatnak.
 
@@ -131,12 +131,12 @@ A diagramban. ábra x. bemutatta minden interakció egy esetén elegendő az Azu
 
   3. Feltételes hozzáférés az Office 365-alkalmazások Microsoft Intune-nal: IT-rendszergazdák hozhat létre feltételes hozzáférési szabályzatok, lehetővé téve az információkkal dolgozó szakemberek a szolgáltatásokat a feltételeknek megfelelő eszközökön a vállalati erőforrások biztonságossá tételére. További információ: [Feltételes hozzáférés eszközházirendjei Office 365-szolgáltatásokhoz](active-directory-conditional-access-device-policies.md).
 
-  4. Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál: [Ez a szolgáltatás](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) lehetővé teszi a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton a felhasználók hozzáférésének blokkolása konfigurálását. A multi-factor Authentication hitelesítés szabályokat alkalmazhat az alkalmazáshoz, vagy csak a felhasználók számára megadott biztonsági csoportokban rendelt összes felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás egy IP-címről, amelyek a szervezeten belüli hálózati érik el.
+  4. Feltételes hozzáférés a Szolgáltatottszoftver-alkalmazásoknál: [Ez a szolgáltatás](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) lehetővé teszi a multi-factor authentication alkalmazás hozzáférési szabályok és a nem megbízható hálózaton a felhasználók hozzáférésének blokkolása konfigurálását. A multi-factor Authentication hitelesítés szabályokat alkalmazhat az alkalmazáshoz, vagy csak a felhasználók számára megadott biztonsági csoportokban rendelt összes felhasználó. Felhasználók kizárhatók a multi-factor authentication követelményeinek, ha az alkalmazás egy IP-címről, amelyek a szervezeten belüli hálózati érik el.
 
 A hozzáférés-vezérlési beállításokat egy többrétegű módszert használja, mivel ezek a lehetőségek összehasonlítása nem vonatkoznak a feladathoz. Győződjön meg arról, hogy minden beállítás érhető el az egyes forgatókönyvek esetében, amelyhez engedélyeznie kell az erőforrásokhoz való hozzáférés szabályozása hasznosítja ki.
 
 ## <a name="define-incident-response-options"></a>Incidensválasz-beállítások megadása
-Az Azure AD segít informatikai biztonsági kockázatok identitás felhasználói tevékenységeinek figyelése által a környezetben. Informatikai használhatja az Azure AD hozzáférési és használati jelentések címinfrastruktúra megjelenítési lehetőségeinek az integritásra és a munkahely címtárában biztonságát. Ezt az információt egy informatikai rendszergazda is jobban meghatározhatja, ahol lehetséges biztonsági kockázatokat a vizsgálandó, hogy azok megfelelően megtervezheti kockázatok csökkentésének lehetőségeit.  [Az Azure AD Premium előfizetéssel](active-directory-get-started-premium.md) tartozik egy engedélyezheti a biztonsági jelentések informatikai beszerezni ezeket az adatokat. [Az Azure AD-jelentések](active-directory-view-access-usage-reports.md) kategóriái a következők:
+Az Azure AD segít informatikai biztonsági kockázatok identitás felhasználói tevékenységeinek figyelése által a környezetben. Informatikai használhatja az Azure AD hozzáférési és használati jelentések címinfrastruktúra megjelenítési lehetőségeinek az integritásra és a munkahely címtárában biztonságát. Ezt az információt egy informatikai rendszergazda is jobban meghatározhatja, ahol lehetséges biztonsági kockázatokat a vizsgálandó, hogy azok megfelelően megtervezheti kockázatok csökkentésének lehetőségeit.  [Az Azure AD Premium előfizetéssel](fundamentals/active-directory-get-started-premium.md) tartozik egy engedélyezheti a biztonsági jelentések informatikai beszerezni ezeket az adatokat. [Az Azure AD-jelentések](active-directory-view-access-usage-reports.md) kategóriái a következők:
 
 * **Az anomáliadetektálási jelentések**: bejelentkezési események bizonyultak rendellenes tartalmaz. A cél, hogy ellenőrizze, hogy tisztában legyen ilyen tevékenység, és lehetővé teszik a győződjön meg arról, hogy az esemény gyanúsnak meghatározása.
 * **Integrált alkalmazás jelentés**: hogyan használja a szervezet a felhőalapú alkalmazások betekintést nyújt. Az Azure Active Directory integrálható a felhőalapú alkalmazások ezer.
@@ -145,9 +145,9 @@ Az Azure AD segít informatikai biztonsági kockázatok identitás felhasználó
 * **Tevékenységi naplóit**: belül utolsó 24 órában, legutóbbi 7 nap vagy 30 napnál, valamint csoport tevékenység módosításainak és jelszó alaphelyzetbe állítása és nyilvántartási tevékenység feljegyzés az összes naplózott eseményeket tartalmazza.
 
 > [!TIP]
-> Egy másik olyan jelentést, amely segíthet az Incidensmegoldási csapat az esetek is van a [kiszivárgott hitelesítő adatokkal rendelkező felhasználó](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx) jelentés. Ez a jelentés egyezéseket felfedi a kiszivárgott hitelesítő adatok lista és a bérlői között.
+> Egy másik olyan jelentést, amely segíthet az Incidensmegoldási csapat az esetek is van a [kiszivárgott hitelesítő adatokkal rendelkező felhasználó](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) jelentés. Ez a jelentés egyezéseket felfedi a kiszivárgott hitelesítő adatok lista és a bérlői között.
 >
->
+
 
 Egyéb fontos beépített jelentések az Azure AD-az incidensekre adott reakciók vizsgálat során is használható, amelyek:
 

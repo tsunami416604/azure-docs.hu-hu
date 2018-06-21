@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: c2b28d4f5d29855bf438f0e411bfb7c2fe82a6be
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5accb676c7fb732c9b59dbbbeda944a3a3015d50
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224990"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Oktatóanyag: Azure Active Directoryval integrált BenefitHub
 
@@ -227,7 +227,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
 Ha a hozzáférési panelen BenefitHub csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az BenefitHub alkalmazására.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
@@ -247,4 +247,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/benefithub-tutorial/tutorial_general_201.png
 [202]: ./media/benefithub-tutorial/tutorial_general_202.png
 [203]: ./media/benefithub-tutorial/tutorial_general_203.png
-

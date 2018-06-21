@@ -3,32 +3,37 @@ title: Egyéni riasztási szabályok az Azure Security Centerben | Microsoft Doc
 description: Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási szabályainak létrehozásához szükséges lépéseket.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: e43d925317e32d2fcbdeb75eff71de0cc5a91378
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 06/19/2018
+ms.author: terrylan
+ms.openlocfilehash: f950b6fef575e9dc2d637c17ba40b6f504d1f227
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32775802"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284777"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Egyéni riasztási szabályok az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti az Azure Security Center egyéni riasztási szabályainak létrehozásához szükséges lépéseket.
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Mire szolgálnak a Security Center egyéni riasztási szabályai?
 
-A Security Center előre definiált [biztonsági riasztások](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) készletével rendelkezik, amelyeket a rendszer a fenyegetések vagy gyanús tevékenységek bekövetkeztekor aktivál. Egyes forgatókönyvekben előfordulhat, hogy szeretne egyéni, a környezet speciális igényeinek megfelelő riasztásokat létrehozni. 
+A Security Center előre definiált [biztonsági riasztások](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) készletével rendelkezik, amelyeket a rendszer a fenyegetések vagy gyanús tevékenységek bekövetkeztekor aktivál. Egyes forgatókönyvekben előfordulhat, hogy szeretne egyéni, a környezet speciális igényeinek megfelelő riasztásokat létrehozni.
 
-A Security Center egyéni riasztási szabályaival új biztonsági riasztásokat definiálhat a környezetből már begyűjtött adatok alapján. Létrehozhat lekérdezéseket, amelyek eredményeit használhatja az egyéni szabály kritériumaiként, és amint ezek teljesülnek, a rendszer végrehajtja a szabályt. Az egyéni lekérdezések létrehozásához használhatja a számítógépek biztonsági eseményeit, a partnerek biztonsági megoldásainak naplóit vagy az API-kon keresztül feldolgozott adatokat. 
+A Security Center egyéni riasztási szabályaival új biztonsági riasztásokat definiálhat a környezetből már begyűjtött adatok alapján. Létrehozhat lekérdezéseket, amelyek eredményeit használhatja az egyéni szabály kritériumaiként, és amint ezek teljesülnek, a rendszer végrehajtja a szabályt. Az egyéni lekérdezések létrehozásához használhatja a számítógépek biztonsági eseményeit, a partnerek biztonsági megoldásainak naplóit vagy az API-kon keresztül feldolgozott adatokat.
+
+> [!NOTE]
+> A munkaterületen a egyéni riasztás tárolásához kiválasztott kell írási engedélye.
+>
+>
 
 ## <a name="how-to-create-a-custom-alert-rule-in-security-center"></a>Egyéni riasztási szabály létrehozása a Security Centerben
 
@@ -38,16 +43,16 @@ Egyéni riasztási szabály létrehozásához nyissa meg a **Security Center** i
 2.  A **Security Center – Egyéni riasztási szabályok (előzetes verzió)** oldalon kattintson az **Új egyéni riasztási szabály** gombra.
 
     ![Egyéni riasztás](./media/security-center-custom-alert/security-center-custom-alert-fig1.png)
-    
+
 3.  Megjelenik az Egyéni riasztási szabály létrehozása lap a következő beállításokkal:
-    
+
     ![Létrehozás](./media/security-center-custom-alert/security-center-custom-alert-fig2.png)
 
 4.  A **Név** mezőben adja meg az egyéni szabály nevét.
 5.  A **Leírás** mezőben adjon meg egy rövid leírást, amely ismerteti a szabály célját.
 6.  A **Súlyosság** mezőben igény szerint válassza ki a súlyossági szintet (Magas, Közepes, Alacsony).
 7.  Az **Előfizetés** mezőben válassza ki az előfizetést, amelyre a szabály vonatkozik.
-8.  A **Munkaterület** mezőben válassza ki a munkaterületet, amelyet a szabállyal monitorozni szeretne, a **Keresési lekérdezés** mezőben pedig az eredmények lekéréséhez használni kívánt lekérdezést. A lekérdezés eredménye aktiválja a riasztást. Figyelje meg, hogy ha egy érvényes lekérdezést ír be, megjelenik a zöld pipa a mező jobb sarkában:
+8.  Válassza ki az ezzel a szabállyal a figyelni kívánt munkaterület a **munkaterület** mezőben, majd a a **keresési lekérdezés** mezőben, az eredmények használni kívánt lekérdezést. A munkaterületen a egyéni riasztás tárolásához kiválasztott kell írási engedélye. A lekérdezés eredménye aktiválja a riasztást. Figyelje meg, hogy ha egy érvényes lekérdezést ír be, megjelenik a zöld pipa a mező jobb sarkában:
 
     ![Lekérdezés](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 
@@ -73,7 +78,6 @@ Ebben a dokumentumban megismerkedhetett az Azure Security Center egyéni riaszt�
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.
 * [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md). Az Azure-erőforrások állapotának figyelését ismertető útmutató.
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
-* [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti. 
+* [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
 * [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
-

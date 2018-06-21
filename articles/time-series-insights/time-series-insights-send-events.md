@@ -3,7 +3,7 @@ title: Események küldése az Azure idő adatsorozat Insights környezetre |} M
 description: Ez az oktatóanyag azt ismerteti, hogyan létrehozása és konfigurálása az event hubs, és futtassa a mintaalkalmazást, leküldéses események jelennek meg Azure idő adatsorozat Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: venkatgct
+author: ashannon7
 ms.author: venkatja
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: db528f5a02d90e7e1e2e2cd3da30f04755575777
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb550942debf26691a0deac2a1ad8093128e4e63
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657788"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294513"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Események küldése Time Series Insights-környezetbe eseményközponton keresztül
 Ez a cikk ismerteti, hogyan hozza létre és konfigurálja az eseményközpont, és futtassa a mintaalkalmazást leküldéses eseményekre. Ha egy meglévő event hubs eseményközpontot, az események JSON formátumban, ez az oktatóanyag kihagyhatja, és megtekintheti a környezet [idő adatsorozat Insights](https://insights.timeseries.azure.com).

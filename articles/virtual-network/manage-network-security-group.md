@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: f2fe02a6e7e696fa2c0ab301e7469060d6bd4ab6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658672"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295672"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy a hálózati biztonsági csoport törlése
 
@@ -39,7 +39,7 @@ Hozzá kell rendelni a fiókot, jelentkezzen be, vagy csatlakozzon az Azure-bA a
 
 ## <a name="work-with-network-security-groups"></a>Hálózati biztonsági csoportok használata
 
-Létrehozhat, [összes](#view-all-network-security-groups), [részleteinek megtekintése](#view-details-of-a-network-security-group), [módosítása](#change-a-network-security-group), és [törlése](#delete-a-network-security-group) hálózati biztonsági csoport. Emellett [hozzárendelése vagy leválasztani](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) alhálózati vagy hálózati illesztő hálózati biztonsági csoport.
+Létrehozhat, [összes](#view-all-network-security-groups), [részleteinek megtekintése](#view-details-of-a-network-security-group), [módosítása](#change-a-network-security-group), és [törlése](#delete-a-network-security-group) hálózati biztonsági csoport. Emellett [hozzárendelése vagy leválasztani](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface) alhálózati vagy hálózati illesztő hálózati biztonsági csoport.
 
 ### <a name="create-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
@@ -121,9 +121,9 @@ A hálózati biztonsági csoport hány szabálynál hozhat létre egy Azure-beli
     
     |Beállítás  |Érték  |Részletek  |
     |---------|---------|---------|
-    |Forrás     | Válassza ki **bármely**, **IP-címek**, vagy **címke szolgáltatás**.        | Ha **IP-címek**, meg kell majd adnia **forrás IP-címek/CIDR tartományok**. Egy egyetlen érték vagy vesszővel elválasztva több értéket is megadhat. Több érték például 10.0.0.0/16, 192.188.1.1. Nincsenek korlátozások megadható értékek száma. Lásd: [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) részleteiről. Ha **szolgáltatás címke**, majd ki kell választania egy szolgáltatás címke. A szolgáltatás címke egy előre meghatározott IP-címek egy kategóriáját azonosítója. Rendelkezésre álló szolgáltatás címkéket, és minden címke jelöli kapcsolatos további információkért lásd: [címkék szolgáltatás](security-overview.md#service-tags)        |
+    |Forrás     | Válassza ki **bármely**, **IP-címek**, vagy **címke szolgáltatás**.        | Ha **IP-címek**, meg kell majd adnia **forrás IP-címek/CIDR tartományok**. Egy egyetlen érték vagy vesszővel elválasztva több értéket is megadhat. Több érték például 10.0.0.0/16, 192.188.1.1. Nincsenek korlátozások megadható értékek száma. Lásd: [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) részleteiről. Ha **szolgáltatás címke**, majd ki kell választania egy szolgáltatás címke. A szolgáltatás címke egy előre meghatározott IP-címek egy kategóriáját azonosítója. Rendelkezésre álló szolgáltatás címkéket, és minden címke jelöli kapcsolatos további információkért lásd: [címkék szolgáltatás](security-overview.md#service-tags). A megadott IP-cím van hozzárendelve egy Azure virtuális gépen, győződjön meg arról, hogy megadja a magánhálózati IP-cím, nem a nyilvános IP-cím, egy nyilvános IP-cím van hozzárendelve, a virtuális gép. Biztonsági szabályok feldolgozása után Azure lefordítja a nyilvános IP-cím egy privát IP-címre bejövő biztonsági szabályait, és mielőtt Azure lefordítja a magánhálózati IP-cím, egy nyilvános IP-cím kimenő szabályok. Az Azure nyilvános és magánhálózati IP-címeivel kapcsolatos további információkért lásd: [IP-cím típusú](virtual-network-ip-addresses-overview-arm.md).        |
     |Forrásporttartományok     | Adjon meg egyetlen port, pl. 80-as, egy porttartomány, pl. 1024-65535, vagy egyetlen portok és/vagy porttartományok, például a 80-as, vesszővel elválasztott listája 1024-65535. Írjon be csillag forgalom a portokon engedélyezéséhez. | A portok és címtartományok adja meg, mely portok forgalom engedélyezett vagy megtagadott a szabály által. Nincsenek korlátozások is megadhat portok száma. Lásd: [Azure korlátozza](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) részleteiről.  |
-    |Cél     | Válassza ki **bármely**, **IP-címek**, vagy **virtuális hálózati**.        | Ha **IP-címek**, meg kell majd adnia **cél IP-címek/CIDR tartományok**. Hasonló **forrás** és **forrás IP-címek/CIDR tartományok**, egyetlen vagy több címet vagy tartományt is megadhat, és korlátozott számát is megadhat. Kiválasztása **virtuális hálózati**, ez a szolgáltatás címkével, azt jelenti, hogy a forgalom számára engedélyezett a virtuális hálózat a címtér összes IP-címet.        |
+    |Cél     | Válassza ki **bármely**, **IP-címek**, vagy **virtuális hálózati**.        | Ha **IP-címek**, meg kell majd adnia **cél IP-címek/CIDR tartományok**. Hasonló **forrás** és **forrás IP-címek/CIDR tartományok**, egyetlen vagy több címet vagy tartományt is megadhat, és korlátozott számát is megadhat. Kiválasztása **virtuális hálózati**, ez a szolgáltatás címkével, azt jelenti, hogy a forgalom számára engedélyezett a virtuális hálózat a címtér összes IP-címet. A megadott IP-cím van hozzárendelve egy Azure virtuális gépen, győződjön meg arról, hogy megadja a magánhálózati IP-cím, nem a nyilvános IP-cím, egy nyilvános IP-cím van hozzárendelve, a virtuális gép. Biztonsági szabályok feldolgozása után Azure lefordítja a nyilvános IP-cím egy privát IP-címre bejövő biztonsági szabályait, és mielőtt Azure lefordítja a magánhálózati IP-cím, egy nyilvános IP-cím kimenő szabályok. Az Azure nyilvános és magánhálózati IP-címeivel kapcsolatos további információkért lásd: [IP-cím típusú](virtual-network-ip-addresses-overview-arm.md).        |
     |Célporttartományok     | Adjon meg egyetlen értéket, vagy értékek vesszővel tagolt listája. | Hasonló **porttartományok forrás**, egyetlen vagy több portok és címtartományok is megadhat, és korlátozott számát is megadhat. |
     |Protokoll     | Válassza ki **bármely**, **TCP**, vagy **UDP**.        |         |
     |Műveletek     | Válassza ki **engedélyezése** vagy **megtagadása**.        |         |

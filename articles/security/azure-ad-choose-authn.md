@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 7e2eb9bad8c95e61d5b750cacd0724fc2536f2c5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809260"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294109"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -41,6 +41,8 @@ Egy meglévő helyszíni címtár erőforrásigényét nem rendelkező szervezet
 Ha az Azure AD hibrid identitáskezelési megoldás az új vezérlő vezérlősík, hitelesítési az alapja a felhő-hozzáférést. Az Azure AD hibrid identitáskezelési megoldás létrehozása a kritikus fontosságú első döntés a megfelelő hitelesítési módszer kiválasztása. A hitelesítési módszer, amelynek van konfigurálva, amely is látja el a felhőbeli felhasználók az Azure AD Connect használatával valósítja meg.
 
 Válassza ki a hitelesítési módszert, fontolja meg az időt, meglévő infrastruktúra, összetettségét, és a választott végrehajtási költséget kell. Ezek a tényezők esetében minden egyes szervezet különböző, és idővel változhatnak. 
+
+>[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Az Azure AD hibrid identitáskezelési megoldások a következő hitelesítési módszereket támogatja.
 

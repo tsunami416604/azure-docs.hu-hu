@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 7c7540a650d8726fb0a376788073968af6b48834
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35683032"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297966"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Megtudhatja, hogyan [megtekintheti az aktuális erőforrás-használata az előfizetés korlátozások](../articles/networking/check-usage-against-limits.md).
 
@@ -25,7 +25,7 @@ ms.locfileid: "35683032"
 | Magánhálózati IP-címek száma virtuális hálózatonként |4096 |4096 |
 | Egyidejű TCP vagy UDP-forgalmat egy hálózati Adapterének virtuális gép vagy szerepkörpéldány |500 000 |500 000 |
 | Hálózati biztonsági csoportok (NSG) |100 |200 |
-| NSG-ben szereplő NSG-szabályok |200 |400 |
+| NSG-ben szereplő NSG-szabályok |200 |1000 |
 | Felhasználó által megadott útvonaltáblák |100 |200 |
 | Felhasználó által megadott útvonalak száma útvonaltáblánként |100 |400 |
 | Nyilvános IP-címek (dinamikus) |5 |kapcsolatfelvétel az ügyfélszolgálattal |
@@ -64,6 +64,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 ** A alapértelmezett korlátozások vonatkoznak-előfizetések, amelyek korábban nem volt a működés felső korlátjának támogatási növelése
 
 #### <a name="load-balancer"></a>Korlátozza a terheléselosztó
+Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése régiónként és előfizetésenként, az Azure Resource Managerrel történik. Megtudhatja, hogyan [megtekintése az előfizetés-korlátozások az aktuális erőforrás-használat](../articles/networking/check-usage-against-limits.md)
 
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |

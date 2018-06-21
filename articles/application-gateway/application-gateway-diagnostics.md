@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/2/2018
+ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314048"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293621"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttér-állapot, a diagnosztikai naplók és a metrikák az Alkalmazásátjáró
 
@@ -36,7 +36,7 @@ Alkalmazásátjáró lehetővé teszi az egyes tagok a háttér-készletek a por
 A háttér-állapotjelentés tükrözi az Alkalmazásátjáró állapotmintáihoz a háttér-példányokhoz kimenetét. Ha az ellenőrzés sikeres és a hátteret forgalom fogadására, akkor tekinthető kifogástalan. Ellenkező esetben azt nem megfelelő állapotúnak számít.
 
 > [!IMPORTANT]
-> Ha egy alkalmazás átjáró-alhálózatot a hálózati biztonsági csoport (NSG), nyissa meg az alkalmazás átjáróalhálózatot, a bejövő forgalom 65503-65534 porttartományok. Ezeket a portokat a háttér-állapotfigyelő API működéséhez szükségesek.
+> Ha egy alkalmazás átjáró-alhálózatot a hálózati biztonsági csoport (NSG), nyissa meg az alkalmazás átjáróalhálózatot, a bejövő forgalom 65503-65534 porttartományok. A porttartomány szükség az Azure infrastruktúra-kommunikációhoz. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül külső entitások, beleértve az e-átjárók, az ügyfelek nem tudnak kezdeményezése ezekre a végpontokra végzett módosításokat.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Háttér-állapotának megtekintése a portálon keresztül
@@ -175,7 +175,7 @@ A hozzáférési napló jön létre, csak akkor, ha engedélyezte az összes App
 |httpMethod     | A kérelem által használt HTTP-metódus.       |
 |requestUri     | URI-címe, a kérelem érkezett.        |
 |RequestQuery     | **Kiszolgáló irányított**: háttér-készlet-példányt, a kérelem lett elküldve.</br>**X-AzureApplicationGateway-napló-ID**: a kérelemhez használt korrelációs azonosítója. A háttér-kiszolgálókon forgalom problémák hibaelhárításához használható. </br>**KISZOLGÁLÓ-állapota**: Application Gateway kapott a háttér HTTP válaszkódot.       |
-|UserAgent     | Felhasználói ügynök a HTTP-kérelem fejléc.        |
+|Felhasználói ügynök     | Felhasználói ügynök a HTTP-kérelem fejléc.        |
 |httpStatus     | HTTP-állapotkód küld vissza az ügyfélnek az Alkalmazásátjáró.       |
 |httpVersion     | A kérelem HTTP-verzió.        |
 |receivedBytes     | Csomag érkezett, bájtban kifejezett mérete.        |
@@ -216,7 +216,7 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte az összes App
 |instanceId     |  Átjáró alkalmazáspéldányt amelyek esetében az adatok létrehozása. Az egy több-példány Alkalmazásátjáró soronként egy példány van.        |
 |healthyHostCount     | A háttér-készletben található megfelelő gazdagép száma.        |
 |unHealthyHostCount     | A háttér-készlet nem megfelelő állapotú gazdagépek száma.        |
-|requestCount     | Kiszolgált kérelmek száma.        |
+|RequestCount     | Kiszolgált kérelmek száma.        |
 |késés | A háttérben, a kérelmek látja, hogy a példány érkező kéréseket késése (ezredmásodpercben). |
 |failedRequestCount| Sikertelen kérelmek száma.|
 |Átviteli sebesség| Átlagos átviteli sebessége a legutóbbi naplóban másodpercenként bájtban mért óta.|
@@ -257,11 +257,11 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az egyes Alkalmazás�
 |ruleSetType     | A szabály típusának beállítása. A rendelkezésre álló értéke OWASP.        |
 |ruleSetVersion     | A szabálykészlet használt verzió. Lehetséges értékek a következők: program 2.2.9-es és 3.0-s.     |
 |ruleId     | A kiváltó eseményt Szabályazonosító.        |
-|üzenet     | A kiváltó eseményt felhasználóbarát üzenetet. További részletek a részletes adatait tartalmazó részben szerepelnek.        |
+|message     | A kiváltó eseményt felhasználóbarát üzenetet. További részletek a részletes adatait tartalmazó részben szerepelnek.        |
 |művelet     |  A kérésre végrehajtott műveletet. Lehetséges értékek a következők: letiltott és engedélyezett.      |
 |hely     | A hely, amelynek a napló jött létre. Jelenleg csak globális mert szabályok globális szerepel.|
 |részletek     | Az eseményindító esemény részleteit.        |
-|details.message     | A szabály leírása.        |
+|details.Message     | A szabály leírása.        |
 |details.data     | A szabály kérelemhez található meghatározott adatok.         |
 |details.file     | A szabályt tartalmazó konfigurációs fájlt.        |
 |details.line     | A konfigurációs fájlban, az eseményt kiváltó sorszámot.       |

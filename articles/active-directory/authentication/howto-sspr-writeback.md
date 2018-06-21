@@ -10,16 +10,16 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 164760355077e2b905aa0e0f03e1efaf28941e55
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868825"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296161"
 ---
 # <a name="password-writeback-overview"></a>Jelszó visszaírási áttekintése
 
-A jelszóvisszaírás, az Azure Active Directory (Azure AD) a jelszavakat írhasson vissza a helyszíni Active Directory konfigurálható. A jelszóvisszaírás beállítása és kezelése bonyolult helyszíni önkiszolgáló jelszó-visszaállításból (SSPR) megoldást kell, és a felhasználók visszaállíthassák a helyszíni jelszavukat, bárhol legyenek is kényelmes felhőalapú megoldást biztosít. A jelszóvisszaírás összetevő [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) , hogy engedélyezve van, és támogatás az aktuális előfizetők által használt [Azure Active Directory-kiadások](../active-directory-whatis.md).
+A jelszóvisszaírás, az Azure Active Directory (Azure AD) a jelszavakat írhasson vissza a helyszíni Active Directory konfigurálható. A jelszóvisszaírás beállítása és kezelése bonyolult helyszíni önkiszolgáló jelszó-visszaállításból (SSPR) megoldást kell, és a felhasználók visszaállíthassák a helyszíni jelszavukat, bárhol legyenek is kényelmes felhőalapú megoldást biztosít. A jelszóvisszaírás összetevő [Azure Active Directory Connect](./../connect/active-directory-aadconnect.md) , hogy engedélyezve van, és támogatás az aktuális előfizetők által használt [Azure Active Directory-kiadások](../fundamentals/active-directory-whatis.md).
 
 A jelszóvisszaírás a következő szolgáltatásokat biztosítja:
 
@@ -129,7 +129,7 @@ A jelszóvisszaírás megtörténik a megfelelő engedélyek beállítása, vég
 
 ## <a name="licensing-requirements-for-password-writeback"></a>A jelszóvisszaírás licencelési követelményei
 
-Licenceléssel kapcsolatos információkért lásd: [jelszóvisszaírás szükséges licencek](concept-sspr-licensing.md#licenses-required-for-password-writeback) vagy a következő helyeken:
+Licenceléssel kapcsolatos információkért lásd: [jelszóvisszaírás szükséges licencek](concept-sspr-licensing.md) vagy a következő helyeken:
 
 * [Az Azure Active Directory-hely díjszabása](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)

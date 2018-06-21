@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 061269050ad598e1877c3b7bc6745d4095816020
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f11db2009328118dda036057918ba853f5032200
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301218"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293523"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapotának figyelésére, diagnosztikai naplózás beállítása és az Azure Logic Apps riasztás bekapcsolása
 
@@ -118,19 +118,11 @@ Található, és tekintse meg az eseményeket a Logic Apps alkalmazást, példá
 
    ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. A **felügyeleti**, válassza a **OMS-portálon**.
+3. A **felügyeleti**, válassza a **naplófájl-keresési**.
 
-   ![Válassza ki a "OMS-portálon"](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![Válassza ki a "Naplófájl-keresési"](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. Válassza ki a kezdőlapon **naplófájl-keresési**.
-
-   ![A kezdőlapon válassza a "Naplófájl-keresési"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   – vagy –
-
-   ![A menüben válassza a "Naplófájl-keresési"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. A keresési mezőbe, adjon meg egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, látni lehetséges találatok és a műveletek közül választhat. 
+4. A keresési mezőbe, adjon meg egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, látni lehetséges találatok és a műveletek közül választhat. 
 
    Például az első 10 eseményeket, amelyek történtek található, adja meg, és válassza a keresési lekérdezés: **kategóriában keresse == "WorkflowRuntime" |} 10 korlátozása**
 
@@ -138,27 +130,27 @@ Található, és tekintse meg az eseményeket a Logic Apps alkalmazást, példá
 
    További információ [adatok megkeresése a Naplóelemzési](../log-analytics/log-analytics-log-searches.md).
 
-6. Az eredmények lapon bal oldali sávon, válassza ki a megtekinteni kívánt időkeretet.
+5. Az eredmények lapon bal oldali sávon, válassza ki a megtekinteni kívánt időkeretet.
 Pontosítsa a lekérdezést egy szűrő hozzáadásával, válassza a **+ Hozzáadás**.
 
    ![Válassza ki a lekérdezési eredmények időkeretre](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. A **szűrők hozzáadása**, így megtalálja a kívánt szűrőt, adja meg a szűrő nevét. Válassza ki a szűrőt, és válassza a **+ Hozzáadás**.
+6. A **szűrők hozzáadása**, így megtalálja a kívánt szűrőt, adja meg a szűrő nevét. Válassza ki a szűrőt, és válassza a **+ Hozzáadás**.
 
    A példában a "status" szó a sikertelen események kereséséhez **AzureDiagnostics**.
    Itt a szűrő a **status_s** már be van jelölve.
 
    ![Válassza ki a szűrő](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. A bal oldali sávon, válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
+7. A bal oldali sávon, válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
 
    ![Adja meg a szűrő értéket, válassza az "Alkalmaz"](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. Térjen vissza a lekérdezést, amely éppen összeállításakor. A lekérdezés frissül a kijelölt szűrő és az értéke. Az előző eredmények most túl szűrve.
+8. Térjen vissza a lekérdezést, amely éppen összeállításakor. A lekérdezés frissül a kijelölt szűrő és az értéke. Az előző eredmények most túl szűrve.
 
    ![Térjen vissza a lekérdezés szűrt eredményekkel](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. Jövőbeli használatra a lekérdezés mentéséhez válassza **mentése**. Ismerje meg, [a lekérdezés mentése](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
+9. Jövőbeli használatra a lekérdezés mentéséhez válassza **mentése**. Ismerje meg, [a lekérdezés mentése](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
 
 <a name="extend-diagnostic-data"></a>
 

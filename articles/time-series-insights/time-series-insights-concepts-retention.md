@@ -3,19 +3,19 @@ title: Az adatmegőrzés Azure idő adatsorozat Insights környezetében megért
 description: Ez a cikk ismerteti az adatmegőrzés Azure idő adatsorozat Insights környezetében szabályozó két beállításokat.
 ms.service: time-series-insights
 services: time-series-insights
-author: anshan
+author: ashannon7
 ms.author: anshan
 manager: kfile
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: ad0cbf38a1a32632869c490c5a46796eaa3884f4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c8fad0d626fc0b9754f7f04c8000f48976eb766b
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652450"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293095"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Adatok megőrzési idő adatsorozat insightsban ismertetése
 Ez a cikk ismerteti a két beállítás, amely hatással van az adatok megőrzési idő adatsorozat Insights (ÁME) környezetében.

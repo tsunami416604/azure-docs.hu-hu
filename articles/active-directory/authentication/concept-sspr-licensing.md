@@ -10,30 +10,32 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 78d4d721f2821a8365185c0bad6d795c67a75292
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1cfb76c7e196441ebad3bcfcd1d788bd544ab74
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33864662"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292559"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Licencelési követelmények az Azure AD az önkiszolgáló jelszó alaphelyzetbe állítása
 
-Ahhoz, hogy az Azure Active Directory (Azure AD) jelszó-változtatási függvény akkor *rendelkeznie kell legalább egy licenc nélküli a szervezet*. Jelenleg nem kényszerítenek felhasználónkénti a jelszó alaphelyzetbe állítása során szerzett licencelési. A megfelelő licencre van szükség, ha a felhasználó akár közvetlen, akár közvetett módon egy adott licenchez tartozó funkció előnyeihez jut.
+Ahhoz, hogy az Azure Active Directory (Azure AD) jelszó-változtatási függvény akkor *rendelkeznie kell legalább egy licenc nélküli a szervezet* az adott felhasználó. A megfelelő licencre van szükség, ha a felhasználó akár közvetlen, akár közvetett módon egy adott licenchez tartozó funkció előnyeihez jut.
 
 * **Csak felhőalapú felhasználók**: Office 365 bármely fizetett SKU vagy Azure AD alapvető
 * **Felhő** vagy **helyszíni felhasználók**: Azure AD Premium P1 vagy P2, Enterprise Mobility + Security (EMS) vagy Microsoft 365
 
-## <a name="licenses-required-for-password-writeback"></a>A jelszóvisszaírás szükséges engedélyek
+## <a name="licensing-requirements-for-password-writeback"></a>A jelszóvisszaírás licencelési követelményei
+
+**Az önkiszolgáló jelszó alaphelyzetbe állítása/módosítás/feloldás a helyszíni visszaírási egy Azure ad premium-funkció**. Licenceléssel kapcsolatos további információkért lásd: a [Azure Active Directory-hely árképzési](https://azure.microsoft.com/pricing/details/active-directory/).
 
 Jelszóvisszaírás használatához rendelkeznie kell a következő licenccel a tenant egyikét:
 
 * Prémium szintű Azure AD P1
 * Prémium szintű Azure AD P2
-* Enterprise Mobility + Security E3
-* Enterprise Mobility + Security E5
-* Microsoft 365 E3 csomag
-* Microsoft 365 E5
+* Nagyvállalati mobilitási + biztonsági E3 vagy a3 csomag
+* Nagyvállalati mobilitási + biztonsági E5 vagy a5 csomag
+* Microsoft 365 E3 vagy a3 csomag
+* Microsoft 365 E5 vagy a5 csomag
 * Microsoft 365 F1
 
 > [!WARNING]

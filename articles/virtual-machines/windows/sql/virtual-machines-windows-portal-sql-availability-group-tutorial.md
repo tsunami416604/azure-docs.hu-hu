@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716720"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287803"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálás mindig a rendelkezésre állási csoport az Azure virtuális gép manuálisan
 
@@ -56,7 +56,7 @@ Az oktatóanyag elkezdéséhez kell [végezze el az Azure virtuális gépek lét
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
-## A fürt létrehozása
+## <a name="create-the-cluster"></a>A fürt létrehozása
 
 Az Előfeltételek elvégzése után az első lépés a Windows Server feladatátvevő fürt, amely tartalmazza a két SQL-kiszolgálója és egy tanúsító kiszolgáló létrehozásához.
 
@@ -413,8 +413,8 @@ A terheléselosztó konfigurálásához szüksége a háttérkészlet, a mintav�
    | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointListener |
    | **Előtérbeli IP-cím** | Válasszon címet |A load balancer létrehozásakor létrehozott címet használja. |
    | **Protocol (Protokoll)** | Válassza ki a TCP |TCP |
-   | **Port** | A port az SQL Server-példány használata | 1433 |
-   | **Háttér-Port** | Ha a fix IP-Címek értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 1433 |
+   | **Port** | A portot használja az elérhetőségi csoport figyelője | 1435 |
+   | **Háttér-Port** | Ha a fix IP-Címek értéke a közvetlen kiszolgálói visszatérési nem használja ezt a mezőt | 1435 |
    | **Hálózatfigyelő** |A mintavétel a megadott név | SQLAlwaysOnEndPointProbe |
    | **Munkamenet megőrzését** | Legördülő lista | **Egyik sem** |
    | **Üresjárati időtúllépés** | Tartsa nyitva, a TCP-kapcsolat perc | 4 |

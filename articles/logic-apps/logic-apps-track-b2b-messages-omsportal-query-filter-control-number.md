@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 520a1212eaccc48f8b8b423f7dede9c16409220b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300327"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294309"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Az AS2, X 12 és EDIFACT üzenetek Naplóelemzési lekérdezés
 
@@ -53,41 +53,33 @@ Ez a példa bemutatja, hogyan található üzenetek az adatcsere ellenőrző sz�
 
    ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. A **felügyeleti**, válassza a **OMS-portálon**.
+3. A **felügyeleti**, válassza a **naplófájl-keresési**.
 
-   ![Válassza ki az OMS-portálon](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![Válasszon helye keresése](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
 
-4. Válassza ki a kezdőlapon **naplófájl-keresési**.
-
-   ![A kezdőlapon válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
-
-   – vagy –
-
-   ![A menüben válassza a "Naplófájl-keresési"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
-
-5. A keresési mezőbe, írja be egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, Log Analyticshez megjeleníti a lehetséges találatok és műveletek közül választhat. További információ [adatok megkeresése a Naplóelemzési](../log-analytics/log-analytics-log-searches.md).
+4. A keresési mezőbe, írja be egy mező található, és nyomja le az ENTER kívánt **Enter**. Amikor elkezdi beírni, Log Analyticshez megjeleníti a lehetséges találatok és műveletek közül választhat. További információ [adatok megkeresése a Naplóelemzési](../log-analytics/log-analytics-log-searches.md).
 
    Ez a példa eseményeket keres **típus = AzureDiagnostics**.
 
    ![Kezdje beírni a lekérdezési karakterlánc](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
 
-6. A bal oldali sávon válassza ki a megtekinteni kívánt időkeretet. Adjon hozzá egy szűrőt a lekérdezést, válassza a **+ Hozzáadás**.
+5. A bal oldali sávon válassza ki a megtekinteni kívánt időkeretet. Adjon hozzá egy szűrőt a lekérdezést, válassza a **+ Hozzáadás**.
 
    ![Szűrő felvétele lekérdezés](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-7. A **szűrők hozzáadása**, így megtalálja a kívánt szűrőt, adja meg a szűrő nevét. Válassza ki a szűrőt, és válassza a **+ Hozzáadás**.
+6. A **szűrők hozzáadása**, így megtalálja a kívánt szűrőt, adja meg a szűrő nevét. Válassza ki a szűrőt, és válassza a **+ Hozzáadás**.
 
    Interchange ellenőrző szám megkereséséhez ebben a példában keres rá a "csomópont" szót, majd kiválasztja **event_record_messageProperties_interchangeControlNumber_s** a szűrőként.
 
    ![Válassza ki a szűrő](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
 
-9. A bal oldali sávon, válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
+7. A bal oldali sávon, válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
 
    Ez a példa azt szeretnénk, ha üzenetekhez interchange ellenőrző szám választja ki.
 
    ![Adja meg a szűrő értéket](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
 
-10. Térjen vissza a lekérdezést, amely éppen összeállításakor. A lekérdezés a kijelölt szűrő esemény és értékű frissítve lett. Az előző eredmények most túl szűrve.
+8. Térjen vissza a lekérdezést, amely éppen összeállításakor. A lekérdezés a kijelölt szűrő esemény és értékű frissítve lett. Az előző eredmények most túl szűrve.
 
     ![Térjen vissza a lekérdezés szűrt eredményekkel](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
 

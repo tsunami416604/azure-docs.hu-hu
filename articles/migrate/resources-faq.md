@@ -4,14 +4,14 @@ description: Gyakori kérdések az Azure áttelepítése címek
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/20/2018
 ms.author: snehaa
-ms.openlocfilehash: a18cab73a019039bf5e5829ad1faa4b8f1a70391
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209945"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285705"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Telepítse át az Azure - gyakran ismételt kérdések (GYIK)
 
@@ -21,7 +21,7 @@ A cikk tartalmaz Azure áttelepítése kapcsolatos gyakori kérdésekre. Ha ez a
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Miben különbözik Azure át Azure Site Recovery?
 
-Az Azure áttelepítése egy értékelési szolgáltatás, amely segít a helyszíni munkaterhelések tervezze az áttelepítést, az Azure-ba, valamint. [Az Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), éppen egy vész-helyreállítási megoldást, valamint segít a helyszíni munkaterheléseket telepít át IaaS virtuális gépeket az Azure-ban. 
+Az Azure áttelepítése egy értékelési szolgáltatás, amely segít a helyszíni munkaterhelések tervezze az áttelepítést, az Azure-ba, valamint. [Az Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), éppen egy vész-helyreállítási megoldást, valamint segít a helyszíni munkaterheléseket telepít át IaaS virtuális gépeket az Azure-ban.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Miben különbözik Azure át Azure Site Recovery telepítési Planner?
 
@@ -36,6 +36,10 @@ Azure áttelepítése egy áttelepítési eszköz tervezése és Azure Site Reco
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Nem kell Azure telepítse át a vCenter-kiszolgáló számára az egy VMware-környezetben?
 
 Igen, Azure áttelepítéséhez szükséges vCenter-kiszolgáló számára az egy VMware-környezetben. Nem támogatja az ESXi-gazdagépek, amelyeket nem felügyel egy vCenter-kiszolgáló felderítése.
+
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Mely Azure-régiók támogat az Azure át?
+
+Az Azure áttelepítése támogatja USA keleti régiója és nyugati középső Régiójában jelenleg projekt helyként. Vegye figyelembe, hogy annak ellenére, hogy csak nyugati középső Régiójában, és az USA keleti régiója áttelepítési projekteket hozhat létre, továbbra is felmérheti a gépek [több célhelyeket](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). A projekt helyére a felderített adatainak tárolására használható.
 
 ## <a name="discovery"></a>Detektálás
 

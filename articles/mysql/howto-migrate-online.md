@@ -1,6 +1,6 @@
 ---
 title: MySQL az Azure Database-áttelepítés minimális állásidő érdekében
-description: Ez a cikk ismerteti, hogyan hajthat végre az Azure Database-MySQL-adatbázis minimális állásidővel áttelepítését a MySQL és beállítása a terhelési kezdeti és folyamatos adatszinkronizálás forrásadatbázis céladatbázist Attunity megfelel a Microsoft Áttelepítés.
+description: A cikkből megtudhatja, hogyan hajthat végre az Azure Database-MySQL-adatbázis minimális állásidővel áttelepítését a MySQL az Azure-adatbázis áttelepítése szolgáltatás használatával.
 services: mysql
 author: HJToland3
 ms.author: jtoland
@@ -8,32 +8,24 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 99add55188615debdc96b6cfc8b21e34552fd9d4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: ecbd35bd45bd11292bbe4a032329d704858d4c77
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267254"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293921"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>MySQL az Azure Database-áttelepítés minimális állásidő érdekében
-Áttelepítheti a meglévő MySQL-adatbázis Azure-adatbázishoz a MySQL Attunity megfelel a Microsoft Migrations. Attunity megfelel egy közös ajánlat Attunity és a Microsoft. Azure-adatbázis áttelepítése szolgáltatás megfelelően szerepel a Microsoft ügyfelei további költségek nélkül. 
+Áttelepítés végrehajtható, így MySQL az Azure Database a MySQL minimális állásidővel újonnan bevezetett használatával **folyamatos szinkronizálási funkció** a a [Azure adatbázis áttelepítési szolgáltatás](https://aka.ms/get-dms) (DMS). Ez a funkció, amely az alkalmazás keletkezett állásidő korlátozza.
 
-Attunity megfelel segít, hogy minimalizálják az állásidőt adatbázis áttelepítések során, és a folyamat során működési tartja a forráshely adatbázisára.
+## <a name="overview"></a>Áttekintés
+DMS elvégzi a helyszíni Azure-adatbázishoz egy kezdeti terhelése MySQL, és majd az alkalmazás futása közben folyamatosan szinkronizál az Azure-bA új tranzakciók. Miután az adatok ki, a cél Azure oldalán, állítsa le az alkalmazást egy rövid pillanatra (minimális állásidő), várja meg az utolsó kötegben adatainak (az idő, amíg az alkalmazás nem érhető el gyakorlatilag bármely új forgalom érvénybe állítsa le az alkalmazást) van szüksége akár a célkiszolgálón, és frissítse az Azure mutasson a kapcsolati karakterláncot. Ha elkészült, az alkalmazás lesz élő Azure!
 
-Attunity megfelel egy replikációs eszköz, amely lehetővé teszi a különböző forrásokból és tárolók közötti adatszinkronizálás. Azt a létrehozási parancsprogrammal és az adatbázis kapcsolódó adatok propagálása zajlik. Attunity replikálás nem propagál minden egyéb összetevők (például SP, eseményindítók, Funkciók, és így tovább) vagy convert, például, a PL/SQL-kódot, amely az ilyen összetevők T-SQL.
+![Az Azure-adatbázis áttelepítése szolgáltatással folyamatos szinkronizálása](./media/howto-migrate-online/ContinuousSync.png)
 
-> [!NOTE]
-> Bár Attunity replikálás áttelepítési forgatókönyvek széles körét támogatja, egy adott részének forrás célgazdagép, célfelhő párokból támogatása összpontosít.
+A MySQL források DMS áttelepítési jelenleg előzetes verzió. Ha szeretné áttelepíteni a MySQL számítási feladatait a szolgáltatás kipróbálásához, regisztráljon az Azure DMS keresztül [villámnézeti lap](https://aka.ms/dms-preview) érdeklődését Express. Visszajelzése hasznos információt a további javítsák a szolgáltatást.
 
-A folyamat minimális állásidővel áttelepítés áttekintését tartalmazza:
-
-* **A MySQL-forrás séma áttelepítése** egy Azure-adatbázishoz a MySQL adatbázis-szolgáltatás használatával kezelt [MySQL munkaterület](https://www.mysql.com/products/workbench/).
-
-* **Kezdeti betöltés és az adatok folyamatos szinkronizálásához a forrás-adatbázisból történő beállítása a céladatbázis** Attunity megfelel a Microsoft Migrations. Ezzel minimálisra csökkenti a forrásadatbázis be kell állítania csak olvashatóként Azure váltani az alkalmazásait, és a cél MySQL-adatbázis előkészítése az idejét.
-
-A Attunity megfelel az ajánlat Microsoft Migrations kapcsolatos további információkért lásd a következőket:
- - Lépjen a [Attunity megfelel a Microsoft Migrations](https://aka.ms/attunity-replicate) weblap.
- - Töltse le [Attunity megfelel a Microsoft áttelepítések](http://discover.attunity.com/download-replicate-microsoft-lp6657.html).
- - Lépjen a [Attunity replikálása közösségi](https://aka.ms/attunity-community) első lépések útmutatója, oktatóanyagok és támogatási szolgálathoz.
- - A MySQL-adatbázis áttelepítése az Azure Database-MySQL az Attunity megfelel az lépésenkénti útmutatásért lásd: a [adatbázis áttelepítési útmutató](https://datamigration.microsoft.com/scenario/mysql-to-azuremysql).
+## <a name="next-steps"></a>További lépések
+- Tekintse meg a videót [könnyen áttelepítése MySQL/PostgreSQL a felügyelt alkalmazások az Azure-bA](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), amely tartalmaz egy bemutató bemutatja, hogyan MySQL alkalmazások áttelepítése az Azure Database a MySQL.
+- Feliratkozás a korlátozott előzetes verzióját a MySQL az Azure DMS keresztül MySQL az Azure Database minimális állásidővel áttelepítéséhez [villámnézeti lap](https://aka.ms/dms-preview).

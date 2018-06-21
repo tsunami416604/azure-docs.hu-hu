@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL adatszinkronizálás (előzetes verzió) |} Microsoft Docs
-description: Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás (előzetes verzió)
+title: Az Azure SQL adatszinkronizálás |} Microsoft Docs
+description: Ez az áttekintés bemutatja az Azure SQL adatszinkronizálás
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 18177e0671ddf36d0e02e6b943467d703f78ffd0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c31735719e559a25b53acf0bfcf1efff0cee4d5e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301048"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296182"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Szinkronizálja az adatokat több felhőalapú és helyszíni adatbázisok az SQL adatszinkronizálás (előzetes verzió)
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL adatszinkronizálás több felhőalapú és helyszíni az adatbázisok közötti szinkronizálja az adatokat
 
 SQL adatszinkronizálás egy olyan szolgáltatás, az Azure SQL Database, amely lehetővé teszi, hogy szinkronizálja az adatokat több SQL-adatbázisok és SQL Server-példányok kiválasztása kétirányúan épül.
 
@@ -53,15 +53,15 @@ Adatszinkronizálás hasznos olyan esetekben, amikor adatokat kell több Azure S
 
 -   **Globálisan elosztott alkalmazások:** számos vállalat több régióban, illetve akár több ország kiterjedhetnek. Hálózati késés minimalizálása érdekében célszerű előkészítheti az adatait az Önhöz legközelebb eső régiót. Az adatszinkronizálás hogy könnyedén képes tárolni adatbázisok szinkronizálása a világ különböző régiókban.
 
-Adatszinkronizálás nincs megfelelő, az alábbi helyzetekben:
+Adatszinkronizálás egy nem a legjobb megoldás az alábbi helyzetekben:
 
--   Vészhelyreállítás
-
--   Olvassa el a skála
-
--   ETL (OLTP való OLAP)
-
--   A helyszíni SQL Server az Azure SQL Database-áttelepítés
+| Forgatókönyv | Néhány ajánlott megoldásokat |
+|----------|----------------------------|
+| Vészhelyreállítás | [Azure georedundáns biztonsági mentések](sql-database-automated-backups.md) |
+| Olvassa el a skála | [Csak olvasható replikákat használ a csak olvasható elosztásában (előzetes verzió) betöltése](sql-database-read-scale-out.md) |
+| ETL (OLTP való OLAP) | [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) vagy [az SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| A helyszíni SQL Server az Azure SQL Database-áttelepítés | [Azure-adatbázis áttelepítése szolgáltatás](https://azure.microsoft.com/services/database-migration/) |
+|||
 
 ## <a name="how-does-data-sync-work"></a>Hogyan működik az adatszinkronizálás? 
 
@@ -83,7 +83,7 @@ Mivel adatszinkronizálás eseményindító-alapú, a tranzakciós konzisztencia
 #### <a name="performance-impact"></a>Teljesítményre gyakorolt hatás
 Adatok szinkronizálása által beszúrási, frissítési és törlési eseményindítók követni a változásokat. Ügyféloldali táblák létrehozza a változáskövetési felhasználói adatbázisban. E módosítás követési tevékenységek hatással vannak az adatbázisban munkaterhelés. A szolgáltatási rétegben felmérése, és ha szükséges.
 
-Kiépítés és megszüntetés szinkronizálási csoport létrehozása során, frissítés és törlés is hatással lehet az adatbázis teljesítménye. 
+Kiépítés és megszüntetés során szinkronizálási csoport létrehozását, frissítés és törlés is hatással lehet az adatbázis teljesítménye. 
 
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -127,13 +127,13 @@ Kiépítés és megszüntetés szinkronizálási csoport létrehozása során, f
 
 ## <a name="faq-about-sql-data-sync"></a>SQL adatszinkronizálás gyakori kérdések
 
-### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>Milyen mértékű nem költségeket, az SQL adatszinkronizálás (előzetes verzió) szolgáltatás?
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Milyen mértékű nem költségeket, az SQL Data szinkronizálási szolgáltatás?
 
-Az előzetes használata az SQL adatszinkronizálás (előzetes verzió) szolgáltatás díjmentes.  Azonban Ön továbbra is keletkeznek adatok adatátviteli díjakkal az adatmozgás mindkét az SQL Database-példányt. További információk: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
+Nincs a SQL adatszinkronizálás szolgáltatás díjmentes.  Azonban Ön továbbra is keletkeznek adatok adatátviteli díjakkal az adatmozgás mindkét az SQL Database-példányt. További információk: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ### <a name="what-regions-support-data-sync"></a>Mely régiókat támogatják az adatszinkronizálás?
 
-Nyilvános felhő minden egyes SQL adatszinkronizálás (előzetes verzió) érhető el.
+Nyilvános felhő minden egyes SQL adatszinkronizálás nem áll rendelkezésre.
 
 ### <a name="is-a-sql-database-account-required"></a>Az egy SQL-adatbázis-fiókra van szükség? 
 
@@ -152,7 +152,7 @@ Igen. A séma manuális létrehozása az új adatbázis alkalmazott parancsprogr
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Használjak SQL adatszinkronizálás biztonsági mentése és visszaállítása a adatbázisok?
 
-Nem ajánlott SQL adatszinkronizálás (előzetes verzió) segítségével készítsen biztonsági másolatot az adatokat. Nem biztonsági mentése és visszaállítása egy adott időben mivel SQL adatszinkronizálás (előzetes verzió) szinkronizálások nincsenek verzióval ellátva. SQL adatszinkronizálás (előzetes verzió) nem készít biztonsági másolatot más SQL-objektumok, például a tárolt eljárások, továbbá nem végez el gyorsan az egyenértékű a visszaállítási művelet.
+Nem ajánlott SQL adatszinkronizálás segítségével készítsen biztonsági másolatot az adatokat. Nem biztonsági mentése és visszaállítása egy adott időben mivel SQL adatszinkronizálás szinkronizálások nincsenek verzióval ellátva. SQL adatszinkronizálás nem készít biztonsági másolatot más SQL-objektumok, például a tárolt eljárások, továbbá nem végez el gyorsan az egyenértékű a visszaállítási művelet.
 
 Biztonsági mentési módszer javasolt egy, a következő témakörben: [Azure SQL-adatbázis másolása](sql-database-copy.md).
 
@@ -172,7 +172,7 @@ Igen. SQL adatszinkronizálás támogatja a rendezést a következő esetekben:
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Összevonási SQL adatszinkronizálás támogatott?
 
-Összevonási gyökér adatbázis az SQL adatszinkronizálás (előzetes verzió) szolgáltatásban bármilyen korlátozás nélkül használható. Az összevont adatbázisban végpont nem tudja felvenni SQL adatszinkronizálás (előzetes verzió) aktuális verzióját.
+Összevonási gyökér adatbázis az SQL szinkronizálási szolgáltatás bármely korlátozás nélkül használható. Az összevont adatbázisban végpont SQL adatszinkronizálás jelenlegi verziója nem tudja felvenni.
 
 ## <a name="next-steps"></a>További lépések
 

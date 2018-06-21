@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: aee99add093a6da14a4d146ed29e48604eabfb1f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 96608c491fe4d62b6b4bdb48ee5386c9a72212cf
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229070"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286245"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Oktatóanyag: Azure Active Directoryval integrált tanulási ülések LMS
 
@@ -207,7 +207,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése. 
 
-A Learning ülések LMS csempe a hozzáférési panelen kattintson, akkor lesz lehet automatikusan bejelentkezett a tanulási ülések LMS alkalmazásba. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+A Learning ülések LMS csempe a hozzáférési panelen kattintson, akkor lesz lehet automatikusan bejelentkezett a tanulási ülések LMS alkalmazásba. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

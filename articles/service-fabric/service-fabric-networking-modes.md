@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: f831c046bcf8f633841f9dc4a0fce6d1e419e6c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205654"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287628"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tároló hálózati módok
 
@@ -231,7 +231,23 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
      </Endpoints>
    </Resources>
    ```
+   
+6. A Windows a virtuális gép újraindítása miatt a nyitott hálózati újból létre kell hozni. Ez az alapul szolgáló problémát a hálózati verem mérsékelni. Az alapértelmezett viselkedést, hogy hozza létre újra a hálózaton. Ha ezt a viselkedést ki van kapcsolva, a következő konfigurációs használható a konfiguráció frissítése követi.
 
+```json
+"fabricSettings": [
+                {
+                    "name": "Setup",
+                    "parameters": [
+                    {
+                            "name": "SkipContainerNetworkResetOnReboot",
+                            "value": "true"
+                    }
+                    ]
+                }
+            ],          
+ ``` 
+ 
 ## <a name="next-steps"></a>További lépések
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
 * [További tudnivalók a Service Fabric service manifest erőforrások](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)

@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265751"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294421"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>A MySQL-adatok a replikáció Azure-adatbázis konfigurálása
 
-Ebből a cikkből megtudhatja, hogyan állíthat be az Azure-adatbázishoz a MySQL-szolgáltatás által az adatok a replikáció beállítása elsődleges és a replikakiszolgáló.
+Ebben a cikkben, megtudhatja, hogyan állíthatja be az Azure-adatbázishoz a MySQL-szolgáltatás az adatok a replikáció az elsődleges és a replika kiszolgálók konfigurálásával. Adatok a replikáció szinkronizálja az adatokat a helyszíni futó virtuális gépek vagy adatbázis-szolgáltatások üzemeltetője más szolgáltatók, az Azure-adatbázishoz a MySQL-szolgáltatás egy replika az elsődleges MySQL kiszolgálóról teszi lehetővé. 
 
 Ez a cikk feltételezi, hogy rendelkezik-e legalább némi tapasztalattal a MySQL-kiszolgálók és adatbázisok.
 
@@ -29,7 +29,7 @@ Ez a cikk feltételezi, hogy rendelkezik-e legalább némi tapasztalattal a MySQ
    Hozzon létre egy új MySQL-kiszolgálót (például) "replica.mysql.database.azure.com"). Tekintse meg [egy MySQL-kiszolgálóhoz tartozó Azure-adatbázis létrehozása az Azure-portál használatával](quickstart-create-mysql-server-database-using-azure-portal.md) a kiszolgáló létrehozásához. Ez a kiszolgáló az a "replika" kiszolgáló adatok a replikáció.
 
    > [!IMPORTANT]
-   > Az általános célú vagy Memóriaoptimalizált tarifacsomagok ezen a kiszolgálón kell létrehozni.
+   > A MySQL-kiszolgálóhoz tartozó Azure-adatbázis az általános célú vagy Memóriaoptimalizált tarifacsomagok kell létrehozni.
    > 
 
 2. Azonos felhasználói fiókok és a megfelelő jogosultságok létrehozása
@@ -37,6 +37,7 @@ Ez a cikk feltételezi, hogy rendelkezik-e legalább némi tapasztalattal a MySQ
    Felhasználói fiókok nem replikálódnak az elsődleges kiszolgálóról a replikakiszolgálóra. Ha tervezi az adatbázisreplika-kiszolgálón való hozzáférés biztosítása a felhasználóknak, kell manuálisan létrehoznia fiókok és a megfelelő jogosultságokkal az újonnan létrehozott MySQL-kiszolgáló Azure-adatbázis.
 
 ## <a name="configure-the-primary-server"></a>Az elsődleges kiszolgáló konfigurálása
+Az alábbi lépéseket előkészítése és a MySQL üzemeltetett server helyszíni, konfigurálja a virtuális gépet, vagy egyéb adatok a replikáció szolgáltatók által üzemeltetett adatbázis-szolgáltatás. A kiszolgáló nem az "elsődleges" adatok a replikáció. 
 
 1. Bináris naplózás bekapcsolása
 
@@ -226,3 +227,6 @@ Egy replikációs hiba kihagyásához és a replikáció folytatja, a következ�
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+## <a name="next-steps"></a>További lépések
+- További információ [adatok a replikáció](concepts-data-in-replication.md) MySQL az Azure-adatbázishoz. 

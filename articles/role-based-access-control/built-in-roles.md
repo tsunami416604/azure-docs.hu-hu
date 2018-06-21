@@ -1,6 +1,6 @@
 ---
-title: Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) beépített szerepkörök |} Microsoft Docs
-description: A beépített szerepkörök az Azure szerepköralapú hozzáférés-vezérlés (RBAC) ismerteti. Műveletek és notActions sorolja fel.
+title: Beépített szerepkörök az Azure-ban |} Microsoft Docs
+description: A beépített szerepkörök az Azure szerepköralapú hozzáférés-vezérlés (RBAC) ismerteti. A műveletek, notActions, dataActions és notDataActions sorolja fel.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 06/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267373"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294496"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Beépített szerepkörök az Azure szerepköralapú hozzáférés-vezérléshez
+# <a name="built-in-roles-in-azure"></a>Beépített szerepkörök az Azure-ban
 [Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és szolgáltatásnevekről számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések, amelyek az Ön Azure-ban erőforrásokhoz való hozzáférés szabályozása. Ha a beépített szerepkörök nem felelnek meg a szervezet igényeinek, létrehozhat saját [egyéni szerepkörök](custom-roles.md).
 
 A beépített szerepkörök mindig fejlesztik vannak. A legújabb szerepkör-definíciók használatához [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) vagy [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list).
@@ -39,7 +39,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 | [AcrImageSigner](#acrimagesigner) | ACR-lemezképaláíró |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR-karanténadatolvasó |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR-karanténadatíró |
-| [API Management szolgáltatás közreműködő](#api-management-service-contributor) | Kezelheti a szolgáltatást és az API-kat |
+| [API Management szolgáltatás közreműködő](#api-management-service-contributor) | Szolgáltatás és az API-k kezelhetők |
 | [API Management szolgáltatást üzemeltető szerepkör](#api-management-service-operator-role) | Szolgáltatásokat kezelhet, de API-kat nem |
 | [API Management szolgáltatás olvasó szerepkört](#api-management-service-reader-role) | Írásvédett hozzáférés a szolgáltatáshoz és az API-khoz |
 | [Application Insights-összetevővel kapcsolatos közreműködői](#application-insights-component-contributor) | Kezelhet Application Insights-összetevőket |
@@ -51,7 +51,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 | [Biztonsági mentési közreműködő](#backup-contributor) | Lehetővé teszi a biztonsági mentési szolgáltatás felügyeletét, de nem hozhat létre tárolókat, és nem adhat hozzáférést másoknak |
 | [Biztonságimásolat-felelős](#backup-operator) | Lehetővé teszi a biztonsági mentési szolgáltatások felügyeletét, kivéve a biztonsági másolatok eltávolítását, tárolók létrehozását és a másoknak való hozzáférés megadását |
 | [Biztonsági mentési olvasó](#backup-reader) | Megtekintheti a biztonsági mentési szolgáltatásokat, de nem végezhet módosításokat |
-| [Számlázási olvasó](#billing-reader) | Olvasási hozzáférést biztosít a számlázási adatokhoz |
+| [Számlázási olvasó](#billing-reader) | Olvasási hozzáférést biztosít a számlázási adatokat |
 | [BizTalk közreműködő](#biztalk-contributor) | Lehetővé teszi a BizTalk-szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
 | [CDN-végpont közreműködő](#cdn-endpoint-contributor) | Kezelhet CDN-végpontokat, de nem tud hozzáférést adni más felhasználóknak. |
 | [CDN-végpont olvasó](#cdn-endpoint-reader) | Megtekintheti a CDN-végpontokat, de nem végezhet módosításokat. |
@@ -63,10 +63,10 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 | [Klasszikus virtuális gép közreműködő](#classic-virtual-machine-contributor) | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
 | [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) | Lehetővé teszi a ClearDB MySQL-adatbázisok kezelését, az azokhoz való hozzáférés nélkül. |
 | [A cosmos DB fiók olvasó szerepkört](#cosmos-db-account-reader-role) | Azure Cosmos DB fiókadatokhoz el tud olvasni. Lásd: [DocumentDB-fiók közreműködői](#documentdb-account-contributor) Azure Cosmos DB kezelésére. |
-| [Data Factory közreműködő](#data-factory-contributor) | Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gyermekerőforrásokat. |
+| [Data Factory közreműködő](#data-factory-contributor) | Létrehozása és kezelése az adat-előállítók, valamint a gyermekszintű erőforrása rajtuk. |
 | [Data Lake Analytics-fejlesztőknek](#data-lake-analytics-developer) | Lehetővé teszi a saját feladatok elküldését, figyelését és kezelését, de nem tud létrehozni vagy törölni Data Lake Analytics-fiókokat. |
-| [Adatok Purger](#data-purger) | Törölheti analitikai adatok |
-| [DevTest Labs felhasználó](#devtest-labs-user) | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
+| [Adatok Purger](#data-purger) | Véglegesen törölheti az elemzési adatokat |
+| [DevTest Labs felhasználó](#devtest-labs-user) | Csatlakozás esetén megadható, hogy kezdő, újraindítása és leállítása a virtuális gépek az Azure DevTest Labs szolgáltatásban. |
 | [DNS-zóna közreműködő](#dns-zone-contributor) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [A DocumentDB-fiók közreműködői](#documentdb-account-contributor) | Felügyelheti az Azure Cosmos DB fiókjait. Azure Cosmos-adatbázis a DocumentDB nevén. |
 | [Intelligens rendszerek fiók közreműködői](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
@@ -178,7 +178,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Kezelheti a szolgáltatást és az API-kat |
+> | **Leírás** | Szolgáltatás és az API-k kezelhetők |
 > | **Azonosító** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Műveletek** |  |
 > | Microsoft.ApiManagement/service/* | Hozzon létre és API-kezelés szolgáltatás kezelése |
@@ -472,7 +472,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Olvasási hozzáférést biztosít a számlázási adatokhoz |
+> | **Leírás** | Olvasási hozzáférést biztosít a számlázási adatokat |
 > | **Azonosító** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és szerepkör-hozzárendelések |
@@ -660,7 +660,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Létrehozhat és kezelhet adat-előállítókat, valamint azokban található gyermekerőforrásokat. |
+> | **Leírás** | Létrehozása és kezelése az adat-előállítók, valamint a gyermekszintű erőforrása rajtuk. |
 > | **Azonosító** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
@@ -703,11 +703,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | Hozzon létre, vagy egy számítási házirend frissítése. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | Számítás-házirend törlése. |
 
-## <a name="data-purger"></a>Adatok Purger
+## <a name="data-purger"></a>Adattörlő
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Törölheti analitikai adatok |
+> | **Leírás** | Véglegesen törölheti az elemzési adatokat |
 > | **Azonosító** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Műveletek** |  |
 > | Microsoft.Insights/components/*/read |  |
@@ -719,7 +719,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
+> | **Leírás** | Csatlakozás esetén megadható, hogy kezdő, újraindítása és leállítása a virtuális gépek az Azure DevTest Labs szolgáltatásban. |
 > | **Azonosító** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvassa el szerepköröket és hozzárendelések szerepkör |
@@ -1110,7 +1110,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. Kattintso
 > | Microsoft.Security/policies/write | A biztonsági házirend frissítése |
 > | Microsoft.Support/* | Hozzon létre és támogatási jegyek kezelése |
 
-## <a name="security-manager-legacy"></a>Biztonságkezelő (örökölt)
+## <a name="security-manager-legacy"></a>A biztonságkezelő (örökölt)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

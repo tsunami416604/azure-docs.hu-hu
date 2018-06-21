@@ -1,6 +1,6 @@
 ---
 title: Az Azure storage emulator használata a fejlesztéshez és teszteléshez |} Microsoft Docs
-description: Az Azure storage emulator egy szabad helyi fejlesztési környezetet biztosít az fejlesztés és tesztelés az Azure Storage-alkalmazások. Ismerje meg, hogyan kérések hitelesítése az emulátor csatlakoztatása az alkalmazásról és a parancssori eszköz használatával.
+description: Az Azure storage emulator egy szabad helyi fejlesztési környezetet biztosít az fejlesztés és tesztelés az Azure Storage-alkalmazások. Ismerje meg, hogyan történik a kérések hitelesítése, hogyan csatlakozhat az emulátor az alkalmazásról és a parancssori eszköz használatával.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305106"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295588"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztéshez és teszteléshez
 
@@ -81,14 +81,14 @@ Ezek a parancsok kapcsolatos további információkért lásd: [Storage emulator
 > Használhatja a [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) kezelheti az SQL Server-példányokat, beleértve a LocalDB telepítését. A SMSS a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg `(localdb)\MSSQLLocalDb` a a **kiszolgálónév:** mező a LocalDB példányához való kapcsolódáshoz.
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>A storage emulatorban kérések hitelesítése
-Miután telepített, és a storage emulator elindult, tesztelheti rajta a kódot. Az Azure Storage a felhőben, minden kérelemnél elvégezte a storage emulatorban hitelesíteni kell, kivéve, ha egy névtelen kérelem. A storage emulatorban megosztott kulcsos hitelesítést használ, vagy a közös hozzáférésű jogosultságkód (SAS) kérelmek hitelesítheti.
+Miután telepített, és a storage emulator elindult, tesztelheti rajta a kódot. Azure Storage a felhőben, az elvégezte a storage emulatorban kérelmek engedéllyel kell rendelkeznie, kivéve, ha egy névtelen kérelem. A storage emulatorban megosztott kulcsos hitelesítést használ, vagy a közös hozzáférésű jogosultságkód (SAS) kérelmek engedélyezhető.
 
-### <a name="authenticate-with-shared-key-credentials"></a>Hitelesítés megosztott kulcsos hitelesítő adatokkal
+### <a name="authorize-with-shared-key-credentials"></a>Megosztott kulcsos hitelesítő adatokkal rendelkező engedélyezése
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 A kapcsolati karakterláncok további információkért lásd: [konfigurálása Azure Storage kapcsolati karakterláncok](../storage-configure-connection-string.md).
 
-### <a name="authenticate-with-a-shared-access-signature"></a>A közös hozzáférésű jogosultságkód hitelesítéshez
+### <a name="authorize-with-a-shared-access-signature"></a>Az a közös hozzáférésű jogosultságkód engedélyezése
 Egy Azure storage ügyfélkódtáraival, például a Xamarin-függvénytárat, csak egy közös hozzáférésű jogosultságkód (SAS) jogkivonattal hitelesítés támogatására. A SAS-jogkivonat hasonló eszköz használatával hozhat létre a [Tártallózó](http://storageexplorer.com/) vagy egy másik alkalmazás, amely támogatja a megosztott kulcsos hitelesítést.
 
 Azure PowerShell használatával is létrehozhat egy SAS-jogkivonatot. Az alábbi példa létrehoz egy SAS jogkivonatot teljes körű jogosultsága legyen a blob-tároló:
@@ -204,12 +204,23 @@ A Table storage az emulátorban alkalmazása a következő eltérésekkel:
 Nincsenek a Queue storage az emulátorban jellemző különbségek.
 
 ## <a name="storage-emulator-release-notes"></a>Storage emulator kibocsátási megjegyzései
+
+### <a name="version-55"></a>5.5-ös verzió
+* A storage emulator a tárolási szolgáltatások 2017-11-09 verziója mostantól támogatja a Blob, Queue és Table szolgáltatási végpont.
+* Már támogatja a BLOB **Created** tulajdonságot, amelynek a blob létrehozásának idejét adja vissza.
+
+### <a name="version-54"></a>5.4-es verzió
+Telepítési stabilabbá teheti növeléséhez az emulátor nem próbál tovább telepítésekor portot lefoglalni. Port foglalások igény szerint használja a *- reserveports* lehetőségét a **init** parancs használatával adja meg azokat.
+
+### <a name="version-53"></a>5.3-as verzió
+A storage emulator a tárolási szolgáltatások 2017-07-29 verziója mostantól támogatja a Blob, Queue és Table szolgáltatási végpont.
+
 ### <a name="version-52"></a>5.2-es verzió
 * A storage emulator a tárolási szolgáltatások 2017-04-17 verziója mostantól támogatja a Blob, Queue és Table szolgáltatási végpont.
 * Rögzített programhiba, ahol tábla tulajdonságértékek volt folyamatban kódolása nem megfelelő.
 
 ### <a name="version-51"></a>5.1-es verzió
-* Rögzített programhiba, ahol a storage emulator vissza lett a `DataServiceVersion` fejléc a következő néhány válaszokat, ahol a szolgáltatás nem volt.
+Rögzített programhiba, ahol a storage emulator vissza lett a `DataServiceVersion` fejléc a következő néhány válaszokat, ahol a szolgáltatás nem volt.
 
 ### <a name="version-50"></a>5.0-s verziója
 * A storage emulator telepítő már nem létező MSSQL keres, és telepíti a .NET-keretrendszer.

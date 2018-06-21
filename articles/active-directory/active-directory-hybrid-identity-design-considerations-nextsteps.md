@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e63df0832431ddc1502ab7b07c60c8d4abf59ac4
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4ac8e517e68f7cbba3019fa27065468b387c1b65
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801490"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284670"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Az Azure Active Directory hibrid identitáskezelési kialakítási szempontok-következő lépések
 Most, hogy befejezte a követelmények meghatározását és megvizsgálta az összes lehetséges mobileszköz-kezelési megoldást, készen áll a következő lépésekre jogot az Ön és szervezete támogató infrastruktúra üzembe helyezéséhez.
@@ -42,7 +42,7 @@ Az elméleti és eljárástervezési, telepítési és felügyeleti tartalmak ha
 ## <a name="hybrid-identity-resources"></a>Hibrid identitás erőforrások
 A következő források követésével gyakran a legújabb híreket biztosít, és frissíti a mobileszköz-kezelési megoldások:
 
-* [A Microsoft nagyvállalati mobilitási blog](http://blogs.technet.com/b/enterprisemobility/)
+* [A Microsoft nagyvállalati mobilitási blog](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
 * [A Felhőhöz a Microsoft blog](http://blogs.technet.com/b/in_the_cloud/)
 * [A Microsoft Intune blogja](http://blogs.technet.com/b/microsoftintune/)
 * [Microsoft System Center Configuration Manager blog](http://blogs.technet.com/b/configurationmgr/)

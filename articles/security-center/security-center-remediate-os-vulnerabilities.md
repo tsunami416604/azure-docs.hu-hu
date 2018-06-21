@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103931"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285916"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Center biztonsági beállításokkal javítása
 Az Azure Security Center naponta elemzi az operációs rendszer (operációs rendszer) a virtuális gépek (VM) és a konfiguráció esetén, hogy a virtuális gépek és a számítógépek támadásokkal szemben. A Security Center azt javasolja, hogy a biztonsági rések feloldása, amikor az operációs rendszer konfigurációja nem egyezik meg a javasolt biztonsági konfigurációs szabályokat, és azt javasolja, hogy konfigurációmódosításokat javasol, a biztonsági rések.
@@ -51,7 +51,7 @@ Ez a példa tartalmazza a "Biztonsági beállításokkal szervizelése" javaslat
 
   - **CCEID**: A CCE a szabály egyedi azonosítója. A Security Center egyedi azonosítók hozzárendelése a konfigurációs szabályok Common Configuration Enumeration (CCE) használja.
   - **Név**: sikertelen a szabály nevét.
-  - **Szabály típusa**: A *beállításkulcs*, *biztonsági házirend*, vagy *naplórend* szabály típusa.
+  - **Szabály típusa**: A *beállításkulcs*, *biztonsági házirend*, *naplórend*, vagy *IIS* szabály típusa.
   - **nem. a virtuális gépek és a számítógépek**: A virtuális gépek és a sikertelen szabályt alkalmazó számítógépek teljes száma.
   - **Súlyossági szabály**: A CCE érték *kritikus*, *fontos*, vagy *figyelmeztetés*.
   - **Állapot**: a javaslat aktuális állapota:
@@ -100,10 +100,10 @@ Figyelt konfigurációkkal ellenőrzéséhez tekintse meg [ajánlott konfigurác
 
 Security Centerrel kapcsolatos további tudnivalókért lásd a következőket:
 
-* Támogatott Windows és Linux virtuális gépek listáját lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md). 
-* Az Azure-előfizetések és az erőforráscsoportok biztonsági szabályzatok konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md). 
-* Hogyan javaslatok segítenek az Azure-erőforrások védelme, lásd: [biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md). 
-* Az Azure-erőforrások állapotának figyeléséről további tudnivalókért lásd: [biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md). 
+* Támogatott Windows és Linux virtuális gépek listáját lásd: [az Azure Security Center által támogatott platformok](security-center-os-coverage.md).
+* Az Azure-előfizetések és az erőforráscsoportok biztonsági szabályzatok konfigurálásával kapcsolatban lásd: [biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md).
+* Hogyan javaslatok segítenek az Azure-erőforrások védelme, lásd: [biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md).
+* Az Azure-erőforrások állapotának figyeléséről további tudnivalókért lásd: [biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md).
 * Kezelése és válaszadás a biztonsági riasztásokra kapcsolatban [kezelése és az Azure Security Centerben a biztonsági riasztásokra való reagálásról](security-center-managing-and-responding-alerts.md).
 * Figyelheti a partnermegoldások biztonsági állapotát, lásd: [partnermegoldások figyelése az Azure Security Center](security-center-partner-solutions.md).
 * A szolgáltatás használatával kapcsolatban gyakran feltett kérdésekre adott válaszokat, lásd: [Azure Security Center: GYIK](security-center-faq.md).

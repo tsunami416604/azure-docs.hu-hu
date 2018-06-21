@@ -3,19 +3,19 @@ title: Az Azure Time Series Insights egyéni nézeteinek megosztása paramétere
 description: Ez a cikk bemutatja, hogyan lehet paraméteres URL-címeket fejleszteni az Azure Time Series Insightsban az ügyfélnézetek egyszerű megosztásához.
 ms.service: time-series-insights
 services: time-series-insights
-author: MarkMcGeeAtAquent
+author: ashannon7
 ms.author: MarkMcGeeAtAquent
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: 7ac3267412163f402813024f490c11579b8fdf8e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f201d3773188d49ee83b13ca3109ea788761121
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656754"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295111"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 

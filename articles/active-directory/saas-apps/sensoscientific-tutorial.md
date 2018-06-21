@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: bb0952fe5b78b0a9933cf7e9f20787150bdbcc3b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ad3eed8886754c5785b7dfd19b36c9e18f1623ea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231508"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Oktatóanyag: Azure Active Directory-integráció rendszerrel SensoScientific vezeték nélküli hőmérséklet figyelése
 
@@ -214,7 +214,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése. Kattintson a hozzáférési panelen SensoScientific vezeték nélküli hőmérséklet-figyelő rendszer csempére, akkor lesz lehet automatikusan bejelentkezett az SensoScientific vezeték nélküli hőmérséklet-figyelő rendszer alkalmazására. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése. Kattintson a hozzáférési panelen SensoScientific vezeték nélküli hőmérséklet-figyelő rendszer csempére, akkor lesz lehet automatikusan bejelentkezett az SensoScientific vezeték nélküli hőmérséklet-figyelő rendszer alkalmazására. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

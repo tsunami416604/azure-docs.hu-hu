@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: 89b3f1184254964a32073c63de3fe69d8a51e292
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e614c78ca4e8ed7afbce0d3f2423ce137c5225b5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652957"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294975"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure egyéni parancsfájl kiterjesztése 2-es verzió használata a Linux virtuális gépek
 A Custom Script bővítmény 2-es verzió tölti le, és futtatja a parancsfájlokat, az Azure virtuális gépeken. A bővítmény akkor hasznos, a telepítés utáni konfigurációjának, a szoftver telepítése vagy a bármely egyéb konfigurációs /-felügyeleti feladatot. Azure Storage vagy más elérhető internetes helyről töltheti parancsfájlok, vagy megadhatja azokat a bővítmény futásidejű. 
@@ -110,16 +110,16 @@ Legyen bizalmas adatokat a rendszer ezeket az elemeket, és a bővítmények vé
 | Name (Név) | Érték / – példa | Adattípus | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Compute.Extensions | karakterlánc |
-| type | CustomScript | karakterlánc |
+| publisher | Microsoft.Compute.Extensions | sztring |
+| type | CustomScript | sztring |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
-| commandToExecute (például) | Python MyPythonScript.py < saját paraméter1 > | karakterlánc |
-| Parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | karakterlánc |
+| commandToExecute (például) | Python MyPythonScript.py < saját paraméter1 > | sztring |
+| Parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
 | skipDos2Unix (például) | false | logikai |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
-| storageAccountName (például) | examplestorageacct | karakterlánc |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | karakterlánc |
+| storageAccountName (például) | examplestorageacct | sztring |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 ### <a name="property-value-details"></a>A tulajdonság értékének részletei
 * `skipDos2Unix`: (nem kötelező, logikai) kihagyja a parancsprogram-alapú fájl URL-címek vagy parancsfájl dos2unix átalakítás.
@@ -154,7 +154,7 @@ A dos2unix átalakítás figyelmen kívül hagyja a skipDos2Unix true értékre 
 ```json
 {
   "fileUris": ["<url>"],
-  "commandToExecute": "<command-to-execute>"
+  "commandToExecute": "<command-to-execute>",
   "skipDos2Unix": true
 }
 ```

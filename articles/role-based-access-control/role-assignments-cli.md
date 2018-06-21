@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI szerepköralapú hozzáférés-vezérlés (RBAC) kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti a szerepköralapú hozzáférés-vezérlést (RBAC) az Azure parancssori felületével, szerepkörök és a szerepkör műveletek listázása és szerepkörök hozzárendelése az előfizetés és az alkalmazás hatókörhöz.
+title: Az RBAC és az Azure CLI-hozzáférés kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, szerepkörön alapuló hozzáférés-vezérlést (RBAC) és az Azure parancssori felület használatával. Ez magában foglalja a hozzáférési listázása, hozzáférés biztosítása és eltávolítása a hozzáférés.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,30 +14,24 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b50d04bcbd067059bf4816468585e5d56a63d41
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266737"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294404"
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Szerepköralapú hozzáférés-vezérlés az Azure parancssori felületével kezelése
+# <a name="manage-access-using-rbac-and-azure-cli"></a>Az RBAC és az Azure CLI-hozzáférés kezelése
 
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
-
-
-Szerepköralapú hozzáférés-vezérléssel (RBAC) a felhasználók, csoportok és szolgáltatásnevekről hozzáférési által egy adott hatókörhöz szerepkörök hozzárendelése definiálni. A cikkből megtudhatja, hogyan kezelheti a szerepkör-hozzárendelések az Azure parancssori felület (CLI) használatával.
+[Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) kezelése az Azure-ban az erőforrásokhoz való hozzáférés módja. Ez a cikk ismerteti, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások RBAC és az Azure parancssori felület használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure parancssori felület használatával felügyeli a szerepkör-hozzárendelések, rendelkeznie kell a következő előfeltételek teljesülését:
 
-* [Azure CLI 2.0](/cli/azure). Használhatja a böngészőjében az [Azure Cloud Shell-lel](../cloud-shell/overview.md), vagy [telepítheti](/cli/azure/install-azure-cli) macOS, Linux és Windows rendszeren, és futtathatja a parancssorból.
+* [Azure parancssori felület (CLI)](/cli/azure). Használhatja a böngészőjében az [Azure Cloud Shell-lel](../cloud-shell/overview.md), vagy [telepítheti](/cli/azure/install-azure-cli) macOS, Linux és Windows rendszeren, és futtathatja a parancssorból.
 
-## <a name="list-role-definitions"></a>Szerepkör-definíciók listája
+## <a name="list-roles"></a>Lista szerepkörök
 
 Kilistázhatja az összes rendelkezésre álló szerepkör-definíciók [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list):
 
@@ -94,7 +88,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role-definition"></a>Egy szerepkör-definíció lista műveletek
+### <a name="list-actions-of-a-role"></a>Egy szerepkör lista műveletek
 
 Egy szerepkör-definíció műveleteit kilistázhatja [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list):
 
@@ -182,7 +176,9 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-role-assignments"></a>Szerepkör-hozzárendelések listáját
+## <a name="list-access"></a>A hozzáférési lista
+
+Az RBAC lista eléréséhez felsorolja a szerepkör-hozzárendeléseket.
 
 ### <a name="list-role-assignments-for-a-user"></a>Szerepkör-hozzárendelések listáját egy felhasználó számára
 
@@ -240,7 +236,9 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="create-role-assignments"></a>Szerepkör-hozzárendelések létrehozása
+## <a name="grant-access"></a>Hozzáférés biztosítása
+
+Az RBAC hozzáférést, létrehoz egy szerepkör-hozzárendelés.
 
 ### <a name="create-a-role-assignment-for-a-user"></a>A felhasználói szerepkör-hozzárendelés létrehozása
 
@@ -290,9 +288,9 @@ Az alábbi példa a *virtuális gép közreműködő* alkalmazást objektum azon
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-a-role-assignment"></a>Távolítsa el a szerepkör-hozzárendelés
+## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-Szerepkör-hozzárendelés eltávolításához használja [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az-role-assignment-delete):
+Az RBAC, elérését, eltávolított szerepkör-hozzárendelés használatával [az szerepkör-hozzárendelés törlése](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>

@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/19/2018
+ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: a2f664525235fa97b0694362d7dc82086e31f71d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229335"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295528"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Alkalmazásátjáró gyakori kérdések
 
@@ -115,7 +115,7 @@ Nem, de telepítheti az alhálózat más alkalmazásátjárót.
 
 Hálózati biztonsági csoportok az Alkalmazásátjáró alhálózat, a következő korlátozásokkal támogatottak:
 
-* Kivételek kell elhelyezni, a bejövő forgalmat portokon 65503-65534 az háttér health megfelelő működéséhez.
+* Kivételek kell elhelyezni, a bejövő forgalom a portokon 65503-65534. A porttartomány szükség az Azure infrastruktúra-kommunikációhoz. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül külső entitások, beleértve az e-átjárók, az ügyfelek nem tudnak kezdeményezése ezekre a végpontokra végzett módosításokat.
 
 * Kimenő internetkapcsolat nem tiltható le.
 
@@ -159,7 +159,7 @@ Ebben a forgatókönyvben végezhető Alkalmazásátjáró alhálózaton NSG-ket
 
 * Engedélyezi a bejövő forgalom forrás IP-/ IP-címtartomány.
 
-* Bejövő kérelmek forrásokból származó 65503-65534 portok engedélyezése [háttér állapotfigyelő kommunikációja](application-gateway-diagnostics.md).
+* Bejövő kérelmek forrásokból származó 65503-65534 portok engedélyezése [háttér állapotfigyelő kommunikációja](application-gateway-diagnostics.md). A porttartomány szükség az Azure infrastruktúra-kommunikációhoz. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül külső entitások, beleértve az e-átjárók, az ügyfelek nem tudnak kezdeményezése ezekre a végpontokra végzett módosításokat.
 
 * Bejövő Azure Load Balancer mintavételt (AzureLoadBalancer címke) és a bejövő virtuális hálózati forgalmat (VirtualNetwork címke) engedélyezése a [NSG](../virtual-network/security-overview.md).
 

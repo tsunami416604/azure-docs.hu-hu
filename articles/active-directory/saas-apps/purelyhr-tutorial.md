@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: b85a92e60bb897bfd5f1b1c7af6f724a6afd3340
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220243"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Oktatóanyag: Azure Active Directoryval integrált PurelyHR
 
@@ -228,7 +228,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáf�
 
 A felvegye LMS csempe a hozzáférési panelen kattintson, akkor beolvasása automatikusan bejelentkezett az felvegye LMS alkalmazására.
 
-A hozzáférési Panel kapcsolatos további információkért tekintse meg. [A hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+A hozzáférési Panel kapcsolatos további információkért tekintse meg. [A hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

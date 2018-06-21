@@ -14,15 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4555bc85489f557cf6b6b744df7063fc14b0602a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7147b282d9bcbf48391d60466c77d28eca396832
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590378"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294275"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja a kiadott szolgáltatások és verziókat.
+
+## <a name="june-2018"></a>2018. június 
+**Új előzetes verziójú funkciók:** 
+* Az Azure AD Connect Health for Sync - diagnosztizálásához és elhárításához duplikált attribútum szinkronizálási hibák a portálról 
+
+**Ügynök frissítése:** 
+*   Az Azure AD Connect Health-ügynök az AD FS (3.1.2.0 verzió)  
+   1. Hibajavításokat tartalmaz, és a riasztások fokozása 
+
 
 ## <a name="may-2018"></a>2018. május
 **Ügynök frissítése:**
@@ -35,7 +44,7 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
  2. Ügynök adatvédelmi fokozása  
  3. Hibajavításokat tartalmaz, és általános fejlesztések
 
-* Azure AD Connect Health-ügynök (verzió: 3.0.244.0) szinkronizáláshoz
+* Az Azure AD Connect Health-ügynök (verzió: 3.0.164.0)-szinkronizáláshoz az Azure AD Connect 1.1.819.0 verziója, amely a
  1. Ügynök adatvédelmi fokozása  
  2. Hibajavításokat tartalmaz, és általános fejlesztések
 
@@ -98,7 +107,7 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
 ## <a name="october-2016"></a>2016. október
 **Ügynök frissítése:**
 
-* Az Azure AD Connect Health-ügynök az AD FS \(2.6.408.0 verziója\)
+* Az Azure AD Connect Health-ügynök az AD FS (2.6.408.0 verzió)
 1. A hitelesítési kérések ügyfél IP-címek kimutatására fejlesztései
 2. Hibajavítások kapcsolatos riasztások
 * Az Azure AD Connect Health-ügynök az AD DS (2.6.408.0 verzió)

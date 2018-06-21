@@ -15,23 +15,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
-ms.openlocfilehash: 885ee10bc63b65d936f5b433a18c4435b2503720
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 269d1392e00d02a79a360e3528fdde174563f2cf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313443"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295210"
 ---
 # <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Az Azure piactéren az Azure PowerShell Windows Virtuálisgép-lemezképek megkeresése
 
 A cikkből megtudhatja, hogyan használható az Azure PowerShell található Virtuálisgép-rendszerképek az Azure piactéren. Ezen információk használatával adja meg a Piactéri rendszerkép létrehozásakor a virtuális gépek programozott módon PowerShell, a Resource Manager-sablonok vagy más eszközökkel.
+
+Is tekintse át az elérhető rendszerkép és ajánlatok használata a [Azure piactér](https://azuremarketplace.microsoft.com/) kirakat, a [Azure-portálon](https://portal.azure.com), vagy a [Azure CLI](../linux/cli-ps-findimage.md). 
 
 Győződjön meg arról, hogy telepített és konfigurált legújabb [Azure PowerShell modul](/powershell/azure/install-azurerm-ps).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
 ## <a name="table-of-commonly-used-windows-images"></a>A gyakran használt Windows-lemezképek tábla
-| Kiadó | Ajánlat | Termékváltozat |
+| Közzétevő | Ajánlat | SKU |
 |:--- |:--- |:--- |:--- |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
@@ -41,7 +43,7 @@ Győződjön meg arról, hogy telepített és konfigurált legújabb [Azure Powe
 | MicrosoftWindowsServer |WindowsServer |2008-R2-SP1 |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2016 |
-| MicrosoftSQLServer |SQL2014SP2-WS2012R2 |Vállalati |
+| MicrosoftSQLServer |SQL2014SP2-WS2012R2 |Enterprise |
 | MicrosoftWindowsServerHPCPack |WindowsServerHPCPack |2012R2 |
 | MicrosoftWindowsServerEssentials |WindowsServerEssentials |WindowsServerEssentials |
 

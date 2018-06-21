@@ -1,20 +1,18 @@
 ---
 title: " VMware vCenter Server az Azure Site Recovery kezelése |} Microsoft Docs"
 description: Ez a cikk ismerteti, hogyan hozzáadása és kezelése az Azure Site Recovery a VMware vcenter programban.
-services: site-recovery
 author: AnoopVasudavan
-manager: gauravd
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: anoopkv
-ms.openlocfilehash: be415340da09043eccd361b0168bb304d8904bef
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48b6cf9b90b429520df435aee00f57ea7b588748
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852302"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284998"
 ---
 # <a name="manage-vmware-vcenter-servers"></a>VMware vCenter-kiszolgálók kezelése 
 
@@ -29,7 +27,7 @@ A Site Recovery VMware hozzáférésre van szüksége, a folyamatkiszolgálót a
 2. Nyissa meg az indítási a cspsconfigtool.exe használatával az asztali parancsikonra.
 3. Kattintson a **fiók hozzáadása** a a **fiók kezelése** fülre.
 
-  ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
+  ![fiók hozzáadása](./media/vmware-azure-manage-vcenter/addaccount.png)
 1. Adja meg a fiók adatait, majd kattintson a **OK** veheti fel.  A fióknak rendelkeznie kell a jogosultságokat az alábbi táblázat foglalja össze. 
 
 A számítógépfiók adatai szinkronizálva a Site Recovery szolgáltatásban körülbelül 15 percet vesz igénybe.
@@ -57,14 +55,14 @@ Módosítsa a hitelesítő adatokat, csatlakozhat a vCenter-kiszolgáló vagy ES
 1. Jelentkezzen be a konfigurációs kiszolgáló, és indítsa el a cspsconfigtool.exe az asztalról.
 2. Kattintson a **fiók hozzáadása** a a **fiók kezelése** fülre.
 
-  ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
+  ![fiók hozzáadása](./media/vmware-azure-manage-vcenter/addaccount.png)
 3. Adja meg az új fiók adatait, majd kattintson a **OK** veheti fel. A fióknak rendelkeznie kell a felsorolt jogosultságok [fent](#account-permissions).
 4. Az Azure-portálon, nyissa meg a tároló > **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálója**, és nyissa meg a konfigurációs kiszolgáló.
 5. Az a **részletek** kattintson **kiszolgáló frissítését**.
 6. A kiszolgáló frissítését feladat befejezése után válassza ki a vCenter-kiszolgálót, nyissa meg a vCenter **összegzés** lap.
 7. Válassza ki az újonnan hozzáadott fiókot a **vCenter kiszolgáló vagy vSphere-gazdagép fiókja** mezőben, majd kattintson a **mentése**.
 
-    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
+    ![-fiók módosítása](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>Törli a vCenter-kiszolgáló
 

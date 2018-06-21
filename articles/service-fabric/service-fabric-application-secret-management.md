@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: fa79d50d6ef2899dcaf4116dcfe8ac7fae077959
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 85eb1cd40986bd6fb83c80a274046bbae3756b7e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212687"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295453"
 ---
 # <a name="manage-secrets-in-service-fabric-applications"></a>A Service Fabric-alkalmazások titkos kulcsok kezelése
 Ez az útmutató végigvezeti a Service Fabric-alkalmazás a titkos kulcsok kezelése. Titkos kulcsok lehet bármely bizalmas adatokat, például a tárolási kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek nem egyszerű szöveges kezelje.
@@ -43,7 +43,7 @@ Adatok rejtjelezése tanúsítvány szigorúan titkosítást használja és konf
 Ez a tanúsítvány a fürt minden csomópontján telepítenie kell. Ez használható futásidőben visszafejteni a szolgáltatás Settings.xml tárolt értékek. Lásd: [hogyan hozhat létre egy fürtöt, Azure Resource Manager használatával] [ service-fabric-cluster-creation-via-arm] a telepítési utasításokat. 
 
 ## <a name="encrypt-application-secrets"></a>Alkalmazás titkos kulcsok titkosítása
-Alkalmazások telepítésekor a tanúsítvány titkos értékek titkosításához, és azokat behelyezése egy szolgáltatás Settings.xml konfigurációs fájlja. A Service Fabric SDK beépített titkos titkosítási és visszafejtési funkciókkal rendelkezik. Titkos értékek is kell beépített időpontban titkosított visszafejti és programozott módon olvassa el a szolgáltatáskód hibáit. 
+Alkalmazások telepítésekor a tanúsítvány titkos értékek titkosításához, és azokat behelyezése egy szolgáltatás Settings.xml konfigurációs fájlja. A Service Fabric SDK beépített titkos titkosítási és visszafejtési funkciókkal rendelkezik. Titkos értékeket kell felépítés során titkosítása és visszafejtése, majd programozott módon olvassa el a szolgáltatáskód hibáit. 
 
 A következő PowerShell-parancsot a titkos kulcs titkosítására szolgál. Ez a parancs csak titkosítja a érték; létezik **nem** a titkosított szöveg aláírásához. Titkosított szöveg titkos értékek létrehozásához a fürtben telepített azonos rejtjelezése tanúsítványt kell használnia:
 

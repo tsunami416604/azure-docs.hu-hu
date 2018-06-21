@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: a57337acadafe40839e16d6a31861ff7c892c071
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9cfdd6828a6d7ec699501a485519f843c59d0422
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602501"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295581"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Telepítse át IaaS-erőforrásokra a klasszikus Azure Resource Manager Azure PowerShell használatával
 Ezeket a lépéseket mutatja be Azure PowerShell-parancsok használatával telepítse át az infrastruktúra erőforrásként egy szolgáltatási (IaaS) a klasszikus telepítési modellből az Azure Resource Manager telepítési modellhez.
@@ -46,8 +46,6 @@ Az alábbiakban néhány gyakorlati tanácsok, azt javasoljuk, áttelepítése I
 > Alkalmazásátjárót jelenleg nem támogatottak az áttelepítéshez a klasszikus az erőforrás-kezelő. A klasszikus virtuális hálózatot az Alkalmazásátjáró át, a hálózati áthelyezése egy előkészítési művelet futtatása előtt távolítsa el az átjáró. Az áttelepítés befejezése után csatlakoztassa újra az átjárót az Azure Resource Manager.
 >
 >Kapcsolódás egy másik előfizetésben található ExpressRoute-Kapcsolatcsoportok ExpressRoute-átjárók nem telepíthetők át automatikusan. Ebben az esetben távolítsa el az ExpressRoute-átjárót, telepítse át a virtuális hálózaton, és hozza létre újra az átjárót. Ellenőrizze a [áttelepítése ExpressRoute áramkörök, és a Resource Manager üzembe helyezési modellel klasszikus virtuális hálózatok társított](../../expressroute/expressroute-migration-classic-resource-manager.md) további információt.
->
->
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>2. lépés: Az Azure PowerShell legújabb verziójának telepítése
 Azure PowerShell telepítése két fő lehetőség: [PowerShell-galériában](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [Webplatform-telepítővel (WebPI)](http://aka.ms/webpi-azps). WebPI havi frissítések kap. PowerShell-galériában folyamatosan frissítések kap. Ez a cikk az Azure PowerShell verzió 2.1.0 alapul.
@@ -90,8 +88,6 @@ Az elérhető előfizetések beolvasása a következő paranccsal:
 > Regisztrációs egy egyszeri lépést, de egyszer a migrálás megkezdése előtt kell tennie. Ha nem regisztrálja, a következő hibaüzenet jelenik meg:
 >
 > *BadRequest: Az előfizetés nincs regisztrálva az áttelepítéshez.*
->
->
 
 Az áttelepítés erőforrás-szolgáltató regisztrálása a következő paranccsal:
 
@@ -137,12 +133,15 @@ Get-AzureRmVMUsage -Location "West US"
 ```
 
 ## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>6. lépés: Futtassa a parancsokat az IaaS-erőforrások áttelepítése
+* [(Nem a virtuális hálózat) felhőszolgáltatás a virtuális gépek áttelepítése](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [A virtuális hálózat virtuális gépek áttelepítése](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Telepítse át a Storage-fiók](#step-62-migrate-a-storage-account)
+
 > [!NOTE]
 > Itt leírt műveletek idempotent. Ha a probléma nem támogatott szolgáltatása vagy konfigurációs hiba, azt javasoljuk, hogy a prepare újra, vagy megszakításra műveletet. A platform majd próbálja megismételni a műveletet.
->
->
 
-## <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>6.1. lépés: 1. lehetőség – (nem része virtuális hálózatnak) felhőszolgáltatás a virtuális gépek áttelepítése
+
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>6.1. lépés: 1. lehetőség – (nem része virtuális hálózatnak) felhőszolgáltatás a virtuális gépek áttelepítése
 A felhőszolgáltatások listájának lekérdezése a következő paranccsal, és ezután válassza ki a felhőalapú szolgáltatás, amely az áttelepíteni kívánt. Ha a felhőszolgáltatás a virtuális gépek egy virtuális hálózatot, vagy ha webes vagy feldolgozói szerepköröket, a parancs hibaüzenetet ad vissza.
 
 ```powershell
@@ -169,7 +168,7 @@ Készítse elő a virtuális gépek áttelepítése a felhőalapú szolgáltatá
     $validate.ValidationMessages
     ```
 
-    Az előző parancs megjeleníti a figyelmeztetések és hibák, amelyek blokkolják az áttelepítés. Ha az ellenőrzés nem jelez hibát, majd áthelyezheti a a **Prepare** . lépés:
+    A következő parancsot a figyelmeztetések és hibák, amelyek blokkolják az áttelepítési jeleníti meg. Ha az ellenőrzés nem jelez hibát, majd áthelyezheti a a **Prepare** . lépés:
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -193,7 +192,7 @@ Készítse elő a virtuális gépek áttelepítése a felhőalapú szolgáltatá
     $validate.ValidationMessages
     ```
 
-    Az előző parancs megjeleníti a figyelmeztetések és hibák, amelyek blokkolják az áttelepítés. Ha az ellenőrzés nem jelez hibát, majd folytathatja a következő előkészítési lépés:
+    A következő parancsot a figyelmeztetések és hibák, amelyek blokkolják az áttelepítési jeleníti meg. Ha az ellenőrzés nem jelez hibát, majd folytathatja a következő előkészítési lépés:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -223,7 +222,7 @@ Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és végleges
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-## <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>6.1. lépés: 2. lehetőség – a virtuális hálózatban lévő virtuális gépek áttelepítése
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>6.1. lépés: 2. lehetőség – a virtuális hálózatban lévő virtuális gépek áttelepítése
 
 A virtuális hálózatban lévő virtuális gépek áttelepítéséhez telepítse át a virtuális hálózat. A virtuális gépek automatikusan áttelepíti a virtuális hálózathoz. Válassza ki az áttelepíteni kívánt virtuális hálózat.
 > [!NOTE]
@@ -241,8 +240,6 @@ Ebben a példában a virtuális hálózat nevének beállítása **myVnet**. Cse
 
 > [!NOTE]
 > Ha a virtuális hálózat nem támogatott konfigurációjú webes vagy feldolgozói szerepköröket, vagy a virtuális gépeket tartalmaz, egy érvényesítési hibaüzenet kap.
->
->
 
 Először ellenőrzi, hogy a virtuális hálózati telepíthet át a következő paranccsal:
 
@@ -250,7 +247,7 @@ Először ellenőrzi, hogy a virtuális hálózati telepíthet át a következő
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-Az előző parancs megjeleníti a figyelmeztetések és hibák, amelyek blokkolják az áttelepítés. Ha az ellenőrzés nem jelez hibát, majd folytathatja a következő előkészítési lépés:
+A következő parancsot a figyelmeztetések és hibák, amelyek blokkolják az áttelepítési jeleníti meg. Ha az ellenőrzés nem jelez hibát, majd folytathatja a következő előkészítési lépés:
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
@@ -268,82 +265,85 @@ Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és végleges
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-## <a name="step-62-migrate-a-storage-account"></a>A tárfiók lépés 6.2 áttelepítése
-Miután befejezte a virtuális gépek áttelepítéséhez, azt javasoljuk, telepíti át, hogy a storage-fiókok.
+### <a name="step-62-migrate-a-storage-account"></a>A tárfiók lépés 6.2 áttelepítése
+Miután befejezte a virtuális gépek áttelepítéséhez, azt javasoljuk, a storage-fiókok áttelepítése előtt hajtsa végre a következő előfeltételek ellenőrzése.
 
-A tárfiók az áttelepítés előtt hajtson végre megelőző előfeltétel-ellenőrzések:
+> [!NOTE]
+> Ha a tárfiók nem társított lemezekkel vagy a virtuális gép adatait, akkor ugorjon a **Tárfiók érvényesítése és a Start áttelepítési** szakasz.
 
-* **Klasszikus, amelynek lemezek a storage-fiókban tárolt virtuális gépek áttelepítése**
+* **Az Előfeltételek ellenőrzése, ha a virtuális gépeket telepített át, vagy a tárfiók lemezerőforrásokat rendelkezik**
+    * **Klasszikus, amelynek lemezek a storage-fiókban tárolt virtuális gépek áttelepítése**
 
-    A tárfiók a klasszikus virtuális gép lemezeivel RoleName és DiskName tulajdonságainak parancs megelőző adja vissza. RoleName esetén a virtuális gép, amely a lemez csatolva van. Ha az előző parancs visszaadja lemezek majd győződjön meg arról, hogy, amelyhez ezeket a lemezek vannak csatolva hozzá virtuális gépek áttelepítése a tárfiók áttelepítése előtt.
+        A következő parancsot a tárfiók a klasszikus virtuális gép lemezeivel RoleName és DiskName tulajdonságait adja vissza. RoleName esetén a virtuális gép, amely a lemez csatolva van. Ha ez a parancs visszaadja lemezek majd győződjön meg arról, hogy, amelyhez ezeket a lemezek vannak csatolva hozzá virtuális gépek áttelepítése a tárfiók áttelepítése előtt.
+        ```powershell
+         $storageAccountName = 'yourStorageAccountName'
+          Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+          DiskName | Format-List -Property RoleName, DiskName
+
+        ```
+    * **A storage-fiókban tárolt választani klasszikus virtuális gépek lemezei törlése**
+
+        Keresse meg a tárolóban nem csatolt klasszikus virtuális gépek lemezei fiók használatával a következő parancsot:
+
+        ```powershell
+            $storageAccountName = 'yourStorageAccountName'
+            Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
+
+        ```
+        Ha a fenti parancs beolvasása lemezek törölje ezeket a következő parancs használatával lemezeket:
+
+        ```powershell
+           Remove-AzureDisk -DiskName 'yourDiskName'
+        ```
+    * **A storage-fiókban tárolt Virtuálisgép-rendszerképek törlése**
+
+        A következő parancsot a Virtuálisgép-lemezképeket tárolja a tárfiók operációsrendszer-lemezzel adja vissza.
+         ```powershell
+            Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                    } | Select-Object -Property ImageName, ImageLabel
+         ```
+         A következő parancsot a Virtuálisgép-lemezképeket a storage-fiókban tárolt adatlemezt ad vissza.
+         ```powershell
+
+            Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                             -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                            } | Select-Object -Property ImageName, ImageLabel
+         ```
+        Törölje az ezzel a paranccsal parancsok fent által visszaadott összes virtuális gép lemezképet:
+        ```powershell
+        Remove-AzureVMImage -ImageName 'yourImageName'
+        ```
+* **Ellenőrizze a tárolási fiókját, és az áttelepítés indítása**
+
+    Áttelepítés minden tárfiók érvényesítése a következő parancs használatával. Ebben a példában a tárfiók neve van **myStorageAccount**. A példa neve cserélje le a saját storage-fiók nevét.
+
     ```powershell
-     $storageAccountName = 'yourStorageAccountName'
-      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
-      DiskName | Format-List -Property RoleName, DiskName
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
     ```
-* **A storage-fiókban tárolt választani klasszikus virtuális gépek lemezei törlése**
 
-    Keresse meg a tárolóban nem csatolt klasszikus virtuális gépek lemezei fiók használatával a következő parancsot:
+    Következő lépés az, hogy a tárfiók Felkészülés az áttelepítésre
 
     ```powershell
-        $storageAccountName = 'yourStorageAccountName'
-        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
     ```
-    Ha a fenti parancs beolvasása lemezek törölje ezeket a következő parancs használatával lemezeket:
+
+    Ellenőrizze az előkészített tárfiók konfigurációját az Azure PowerShell vagy az Azure portál segítségével. Ha nem az áttelepítéshez, és térjen vissza a régi állapot szeretne, használja a következő parancsot:
 
     ```powershell
-       Remove-AzureDisk -DiskName 'yourDiskName'
+        Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
     ```
-* **A storage-fiókban tárolt Virtuálisgép-rendszerképek törlése**
 
-    A Virtuálisgép-lemezképek parancs megelőző adja vissza a storage-fiókban tárolt operációsrendszer-lemezzel.
-     ```powershell
-        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
-                                } | Select-Object -Property ImageName, ImageLabel
-     ```
-     A storage-fiókban tárolt adatok lemezzel parancs megelőző adja vissza a Virtuálisgép-lemezképeket.
-     ```powershell
+    Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és véglegesíti az erőforrásokat a következő paranccsal:
 
-        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
-                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
-                                        } | Select-Object -Property ImageName, ImageLabel
-     ```
-    Törölje az előző parancs használata parancsok fent által visszaadott összes virtuális gép lemezképet:
     ```powershell
-    Remove-AzureVMImage -ImageName 'yourImageName'
+        Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
-
-Áttelepítés minden tárfiók érvényesítése a következő parancs használatával. Ebben a példában a tárfiók neve van **myStorageAccount**. A példa neve cserélje le a saját storage-fiók nevét.
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
-```
-
-Következő lépés az, hogy a tárfiók Felkészülés az áttelepítésre
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
-```
-
-Ellenőrizze az előkészített tárfiók konfigurációját az Azure PowerShell vagy az Azure portál segítségével. Ha nem az áttelepítéshez, és térjen vissza a régi állapot szeretne, használja a következő parancsot:
-
-```powershell
-    Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
-```
-
-Az előkészített konfiguráció megfelelőnek tűnik, ha előre, és véglegesíti az erőforrásokat a következő paranccsal:
-
-```powershell
-    Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
-```
 
 ## <a name="next-steps"></a>További lépések
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager platform által támogatott áttelepítésének áttekintése](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Műszaki részletes bemutatója a platform által támogatott áttelepítési a klasszikus Azure Resource Managerbe](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [IaaS-erőforrások áttelepítése a klasszikus Azure Resource Manager parancssori felület használatával](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [IaaS-erőforrásokra a klasszikus Azure Resource Manager áttelepítésének védelmével kapcsolatos közösségi eszközök](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

@@ -1,19 +1,18 @@
 ---
-title: Engedélyezze a replikálást az Azure VMware virtuális gépek az Azure Site Recovery szolgáltatással |} Microsoft Docs
+title: Az Azure-bA az Azure Site Recovery VMware virtuális gép replikációs engedélyezése |} Microsoft Docs
 description: A cikkből megtudhatja, hogyan állíthat be az Azure-bA az Azure Site Recovery VMware virtuális gépek replikációját.
 services: site-recovery
 author: asgang
-manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: asgang
-ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5a4f184d0edf42732f1671d123f885749ae188d9
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30243335"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287388"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware virtuális gépek Azure-bA replikáció engedélyezése
 

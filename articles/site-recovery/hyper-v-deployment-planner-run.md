@@ -1,24 +1,22 @@
 ---
 title: Azure Site Recovery Deployment Planner Hyper-V és Azure közötti áthelyezéshez | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan kell futtatni az Azure Site Recovery Deployment Plannert, amikor Hyper-V-ről Azure-ra végez áthelyezést.
-services: site-recovery
+description: Ez a cikk útmutatást ad a Site Recovery telepítési planner foro Hyper-V Azure replikációs szolgáltatására való futtatásának módját.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 49243eaa4d3413509e569a88e1d7a2f6359d7876
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0293ace13dbcd30988ce571c60f2d7c6a338e779
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236229"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287490"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Az Azure Site Recovery Deployment Planner futtatása a Hyper-V – Azure-hoz
 
-## <a name="modes-of-running-the-deployment-planner"></a>A Deployment Planner futtatásának módjai
-A parancssori eszköz (ASRDeploymentPlanner.exe) a következő négy mód bármelyikében futtatható: 
+Futtathatja a Site Recovery telepítési planner parancssori eszköz (ASRDeploymentPlanner.exe) ezek négy módok valamelyikén: 
 -   [A virtuálisgép-lista lekérdezése](#get-vm-list-for-profiling-hyper-v-vms)
 -   [Profil](#profile-hyper-v-vms)
 -   [Jelentés létrehozása](#generate-report)
@@ -40,14 +38,14 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 |---|---|
 | -Művelet | GetVMList |
 | -Felhasználó | A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie.|
-|-ServerListFile | Azon kiszolgálók listáját tartalmazó fájl, amelyek a profillal ellátni kívánt virtuális gépeket tartalmazzák. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorának tartalmazza a következők egyikét:<ul><li>Hyper-V-gazdagép neve vagy IP-címe</li><li>Hyper-V-fürt neve vagy IP-címe</li></ul><br>**Például:** A ServerList.txt az alábbi kiszolgálókat tartalmazza:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
+| -ServerListFile | Azon kiszolgálók listáját tartalmazó fájl, amelyek a profillal ellátni kívánt virtuális gépeket tartalmazzák. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorának tartalmazza a következők egyikét:<ul><li>Hyper-V-gazdagép neve vagy IP-címe</li><li>Hyper-V-fürt neve vagy IP-címe</li></ul><br>**Például:** A ServerList.txt az alábbi kiszolgálókat tartalmazza:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(Nem kötelező) Az univerzális elnevezési konvenciónak (UNC) megfelelő elérési út vagy azon helyi könyvtár elérési útja, ahol a művelet során létrehozott adatokat tárolni kívánja. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
-|-OutputFile| (Nem kötelező) A Hyper-V-kiszolgálókról lekért virtuális gépek listáját tartalmazó fájl. Ha nincs megemlítve név, a részleteket a VMList.txt fájl tartalmazza.  A fájl használatával kezdje meg a profilkészítést, miután eltávolította azokat a virtuális gépeket, amelyekhez nem kíván profilt készíteni.|
+|-OutputFile| (Választható) A fájl a listájával, virtuális gépek a Hyper-V kiszolgálók lehívásra kerül. Ha nincs megemlítve név, a részleteket a VMList.txt fájl tartalmazza.  A fájl használatával kezdje meg a profilkészítést, miután eltávolította azokat a virtuális gépeket, amelyekhez nem kíván profilt készíteni.|
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
 
 ### <a name="getvmlist-discovery"></a>GetVMList-felderítés
-**Hyper-V-fürt**: A Hyper-V-fürt nevének a kiszolgálólista fájljában történő megadásakor az eszköz megkeresi a fürt összes Hyper-V-csomópontját, és megszerzi az egyes Hyper-V-gazdagépeken található virtuális gépeket.
 
+- **Hyper-V-fürt**: A Hyper-V-fürt nevének a kiszolgálólista fájljában történő megadásakor az eszköz megkeresi a fürt összes Hyper-V-csomópontját, és megszerzi az egyes Hyper-V-gazdagépeken található virtuális gépeket.
 **Hyper-V-gazdagép**: A Hyper-V-gazdagép nevének megadásakor az eszköz ellenőrzi, hogy az fürthöz tartozik-e. Ha igen, az eszköz lekérdezi a fürthöz tartozó csomópontokat. Ezután lekéri a virtuális gépeket minden Hyper-V-gazdagéptől. 
 
 Egy fájlba is listázhatja azon virtuális gépek rövid nevét vagy IP-címét, amelyeket manuálisan szeretne profillal ellátni.
@@ -154,7 +152,7 @@ Ha a kiszolgáló, amelyen az eszköz fut, újraindul vagy összeomlik, vagy ha 
 
 Ha megadja a tárfióknevet és -kulcsot, az eszköz a profilkészítés utolsó lépéseként megméri az átviteli sebességet. Ha bezárja az eszközt, mielőtt a profilkészítés befejeződött volna, a rendszer nem számítja ki az átviteli sebességet. Az átviteli sebesség a jelentés létrehozása előtti lekérdezéséhez futtassa a GetThroughput műveletet a parancssori konzolból. Ellenkező esetben a létrehozott jelentés nem tartalmazza majd az átviteli sebességgel kapcsolatos információkat.
 
-Az Azure Site Recovery nem támogatja az iSCSI- és csatlakoztatott lemezekkel rendelkező virtuális gépeket. Az eszköz nem képes észlelni és profilt készíteni a virtuális gépekhez csatolt iSCSI- és csatlakoztatott lemezekről.
+Az Azure Site Recovery nem támogatja a virtuális gépek, amelyek az iSCSI és a csatlakoztatott lemezekkel rendelkeznek. Az eszköz nem észleli profil és a virtuális gépekhez csatlakozó iSCSI és a csatlakoztatott lemezek.
 
 ## <a name="generate-a-report"></a>Jelentés létrehozása
 Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként. Ez az üzembehelyezési javaslatokat foglalja össze. A jelentés neve DeploymentPlannerReport_*egyéni numerikus azonosító*.xlsm, és a megadott könyvtárban lesz elérhető.
