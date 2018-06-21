@@ -3,25 +3,25 @@ title: Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azu
 description: Bejelentkezési tevékenységekre vonatkozó jelentések hibakódjainak referenciája.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb636db4e6e2097f494fcbc7a6584f0172514b95
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698509"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232355"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -65,13 +65,13 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |40008|Probléma lépett fel az összevont identitásszolgáltatóval kapcsolatban. A probléma megoldásához lépjen kapcsolatba az identitásszolgáltatójával.|
 |40009|Probléma lépett fel az összevont identitásszolgáltatóval kapcsolatban. A probléma megoldásához lépjen kapcsolatba az identitásszolgáltatójával.|
 |40014|Probléma lépett fel az összevont identitásszolgáltatóval kapcsolatban. A probléma megoldásához lépjen kapcsolatba az identitásszolgáltatójával.|
-|50000|Probléma lépett fel a bejelentkezési szolgáltatással kapcsolatban. [Hozzon létre támogatási jegyet](active-directory-troubleshooting-support-howto.md) a probléma megoldásához.|
+|50000|Probléma lépett fel a bejelentkezési szolgáltatással kapcsolatban. [Hozzon létre támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a probléma megoldásához.|
 |50001|A szolgáltatásnév nem található ebben a bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette. Vagy az egyszerű erőforrás nem található a címtárban, vagy érvénytelen.|
 |50002|A bejelentkezés a bérlő korlátozott proxyhozzáférése miatt nem sikerült. Ha ez a saját bérlőszabályzata, módosíthatja a korlátozott bérlő beállításait a probléma elhárításához|
 |50003|A bejelentkezés hiányzó aláírókulcs vagy tanúsítvány miatt nem sikerült. Ez akkor fordulhat elő, ha az alkalmazásban nem volt konfigurálva aláírókulcs. Tekintse meg a következő helyen ismertetett megoldásokat: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy rendszergazdájával|
 |50005|A felhasználó olyan platformról próbált meg bejelentkezni az eszközre, amelyet a feltételes hozzáférési szabályzat nem támogat|
 |50006| Az aláírás ellenőrzése érvénytelen aláírás miatt sikertelen volt. Tekintse meg a következő helyen ismertetett megoldást: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy rendszergazdájával|
-|50007|Ehhez az alkalmazáshoz nem található partnertitkosítási tanúsítvány. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a Microsofttal ennek javításához|
+|50007|Ehhez az alkalmazáshoz nem található partnertitkosítási tanúsítvány. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a Microsofttal ennek javításához|
 |50008|Hiányzik a SAML helyességi feltétel, vagy rosszul van konfigurálva a jogkivonatban. Forduljon az összevonási szolgáltatójához.|
 |50010|A célközönség URI-ellenőrzése sikertelen volt az alkalmazás esetében, mert a jogkivonat célközönsége nincs konfigurálva. Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |50011|A válaszcím hiányzik, rosszul van konfigurálva, vagy nem egyezik az alkalmazáshoz konfigurált válaszcímekkel. Tekintse meg a következő helyen ismertetett megoldást: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Ha továbbra is problémákat tapasztal, lépjen kapcsolatba az alkalmazás tulajdonosával vagy rendszergazdájával|
@@ -114,8 +114,8 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50133|A jelszó lejárta vagy nemrégi módosítása miatt a munkamenet érvénytelen.|
 |50135|A fiókkockázat miatt jelszómódosítás szükséges|
 |50136|Msa-munkamenet átirányítása az alkalmazáshoz – Egy MSA-munkamenet észlelve |
-|50140|Ez a hiba a „Bejelentkezve szeretnék maradni” megszakítás miatt lépett fel, miközben a felhasználó megpróbált bejelentkezni. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez. |
-|50143|Munkamenet-eltérés – A munkamenet érvénytelen, mert a felhasználó bérlője nem egyezik meg a tartománymutatóval eltérő erőforrások miatt. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez.|
+|50140|Ez a hiba a „Bejelentkezve szeretnék maradni” megszakítás miatt lépett fel, miközben a felhasználó megpróbált bejelentkezni. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez. |
+|50143|Munkamenet-eltérés – A munkamenet érvénytelen, mert a felhasználó bérlője nem egyezik meg a tartománymutatóval eltérő erőforrások miatt. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez.|
 |50144|A felhasználó Active Directory jelszava lejárt. Hozzon létre új jelszót a felhasználó számára, vagy kérje meg a végfelhasználót az önkiszolgáló helyreállítási eszköz használatára|
 |50146|Ezt az alkalmazást egy alkalmazásspecifikus bejelentkezési kulccsal kell konfigurálni. Az alkalmazás nem ilyennel van konfigurálva, vagy a kulcs lejárt vagy még nem érvényes. Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |50148|A code_verifier nem egyezik meg a PKCE hitelesítési kérésben megadott code_challenge értékkel. Lépjen kapcsolatba az alkalmazás fejlesztőjével. |
@@ -150,7 +150,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |70007|Az alkalmazás a nem támogatott response_mode értéket adta vissza egy jogkivonat kérésekor. Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |70008|A megadott engedélyezési kód vagy frissítési jogkivonat lejárt vagy vissza lett vonva. Kérje meg a felhasználót, hogy próbáljon meg újra bejelentkezni|
 |70011|Az alkalmazás által kért hatókör érvénytelen. Lépjen kapcsolatba az alkalmazás tulajdonosával|
-|70012|Kiszolgálóhiba történt az MSA-felhasználó (fogyasztó) hitelesítése során. Próbálkozzon újra. Ha a hiba továbbra is fennáll, [küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) |
+|70012|Kiszolgálóhiba történt az MSA-felhasználó (fogyasztó) hitelesítése során. Próbálkozzon újra. Ha a hiba továbbra is fennáll, [küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|Érvénytelen ellenőrzőkód: a felhasználó rossz felhasználói kódot írt be az eszközkód-folyamathoz. Az engedélyezés nincs jóváhagyva|
 |70019|Az ellenőrzőkód lejárt. Kérje meg a felhasználót, hogy próbáljon meg újra bejelentkezni|
 |70037|Helytelen válasz az ellenőrző kérdésre. Távoli hitelesítési munkamenet megtagadva.|
@@ -161,15 +161,15 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |75011|A felhasználó által a szolgáltatásban való hitelesítésre használt hitelesítési mód nem egyezik a kért hitelesítési móddal. Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |75016|A SAML2 hitelesítési kérelem érvénytelen NameIdPolicy értékkel rendelkezik. Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |80001|A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. Győződjön meg arról, hogy a hitelesítési ügynök telepítve van egy olyan tartományhoz csatlakozó gépen, amely rálát a felhasználó bejelentkezési kérelmét kiszolgáló tartományvezérlőre.|
-|80002|Belső hiba történt. A jelszó-ellenőrzési kérelem túllépte az időkorlátot. Nem sikerült elküldeni a hitelesítési kérést a belső hibrid identitásszolgáltatásnak. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
-|80003|A hitelesítési ügynök érvénytelen választ kapott. Ismeretlen hiba történt a helyszíni Active Directoryban történő hitelesítésre tett kísérlet során. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
-|80005|Hitelesítési ügynök: Ismeretlen hiba történt a Hitelesítési ügynöktől érkező válasz feldolgozásakor. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
+|80002|Belső hiba történt. A jelszó-ellenőrzési kérelem túllépte az időkorlátot. Nem sikerült elküldeni a hitelesítési kérést a belső hibrid identitásszolgáltatásnak. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
+|80003|A hitelesítési ügynök érvénytelen választ kapott. Ismeretlen hiba történt a helyszíni Active Directoryban történő hitelesítésre tett kísérlet során. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
+|80005|Hitelesítési ügynök: Ismeretlen hiba történt a Hitelesítési ügynöktől érkező válasz feldolgozásakor. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a hiba részleteinek megismeréséhez|
 |80007|A hitelesítési ügynök nem tudta ellenőrizni a felhasználó jelszavát.|
 |80010|A hitelesítési ügynök nem tudta visszafejteni a jelszót. |
 |80011|A hitelesítési ügynök nem tudta lekérni a titkosítási kulcsot.|
 |80012|A felhasználók az (AD-ben megadott) engedélyezett időszakon kívül próbáltak meg bejelentkezni|
 |80013|A hitelesítési kísérlet a hitelesítési ügynököt és az AD-t futtató számítógép közötti időeltérés miatt nem sikerült. Javítsa ki az időszinkronizálási problémákat|
-|80014|A hitelesítési ügynök túllépte az időkorlátot. [Küldjön támogatási jegyet](active-directory-troubleshooting-support-howto.md) a hibakóddal, a korrelációs azonosítóval és a dátum/idő értékkel a hiba részleteinek megismeréséhez|
+|80014|A hitelesítési ügynök túllépte az időkorlátot. [Küldjön támogatási jegyet](fundamentals/active-directory-troubleshooting-support-howto.md) a hibakóddal, a korrelációs azonosítóval és a dátum/idő értékkel a hiba részleteinek megismeréséhez|
 |81001|A felhasználó Kerberos-jegye túl nagy. Ez akkor fordulhat elő, ha a felhasználó túl sok csoportban szerepel, és így a Kerberos-jegy túl sok csoporttagságot tartalmaz. Csökkentse a felhasználó csoporttagságait, majd próbálkozzon újra.|
 |81005|A hitelesítési csomag nem támogatott|
 |81007|A bérlőn nincs engedélyezve a Seamless SSO|
