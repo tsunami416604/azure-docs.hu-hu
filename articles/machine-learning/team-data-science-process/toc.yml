@@ -54,15 +54,17 @@
     - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
-        - name: Véleménybesorolás
+        - name: Véleménybesorolás a Keras és a Scikit Learn használatával
           href: predict-twitter-sentiment.md
+        - name: Véleménybesorolás AML szövegelemzési csomag használatával
+          href: predict-twitter-sentiment-amltextpackage.md
         - name: Egyesült államokbeli bevételek besorolása
           href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: Orvosbiológiai entitásfelismerés
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
-        - name: Bőrrákról készült képek besorolása
+        - name: Bőrrákról készült képek besorolása AML látástechnológiai csomag használatával
           href: isic-image-classification.md
           maintainContext: true
     - name: Spark PySparkkal és Scalával

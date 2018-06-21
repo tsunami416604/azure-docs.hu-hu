@@ -16,8 +16,8 @@
       href: active-directory-b2c-quickstarts-spa.md
 - name: Oktatóanyagok
   items:
-    - name: 1 – Alkalmazások regisztrálása
-      href: tutorial-register-applications.md
+    - name: 1 – B2C bérlő létrehozása
+      href: tutorial-create-tenant.md
     - name: 2 – Fiókok hitelesítése
       items:
         - name: ASP.NET

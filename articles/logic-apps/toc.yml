@@ -268,14 +268,14 @@
       items:
         - name: Logikai alkalmazások állapotának monitorozása
           href: logic-apps-monitor-your-logic-apps.md
-        - name: Logikai alkalmazások állapotának monitorozása az OMS-ben a Log Analytics használatával
+        - name: Logikai alkalmazások állapotának monitorozása az Azure Log Analyticsszel
           href: logic-apps-monitor-your-logic-apps-oms.md
         - name: B2B-üzenetek monitorozása
           href: logic-apps-monitor-b2b-message.md
           items:
-            - name: B2B-üzenetek nyomon követése az OMS-ben
+            - name: B2B-üzenetek nyomon követése az Azure Log Analyticsben
               href: logic-apps-track-b2b-messages-omsportal.md
-            - name: B2B-üzenetek lekérdezése az OMS-ben
+            - name: B2B-üzenetek lekérdezése az Azure Log Analyticsben
               href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
     - name: 'Példák, forgatókönyvek és útmutatók'
       href: logic-apps-examples-and-scenarios.md

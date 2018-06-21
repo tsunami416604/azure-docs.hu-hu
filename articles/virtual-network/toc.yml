@@ -161,12 +161,8 @@
               href: virtual-networks-dmz-nsg.md
     - name: Konfigurálás
       items:
-        - name: Virtual machines (Virtuális gépek)
-          items:
-            - name: Hálózati adapterek hozzáadása vagy eltávolítása
-              href: virtual-network-network-interface-vm.md
-            - name: A virtuális gépek és felhőszolgáltatások névfeloldása
-              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: A virtuális gépek és felhőszolgáltatások névfeloldása
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: Dinamikus DNS használata a saját DNS-kiszolgálóval
           href: virtual-networks-name-resolution-ddns.md
         - name: Hálózati teljesítmény optimalizálása
@@ -191,17 +187,16 @@
               href: virtual-network-nsg-manage-log.md
         - name: Útvonaltáblák
           href: manage-route-table.md
-        - name: Hálózati illesztők
-          href: virtual-network-network-interface.md
+        - name: Virtuális gépek hálózatkezelése
           items:
-            - name: IP-címek
+            - name: Hálózati adapter létrehozása vagy törlése
+              href: virtual-network-network-interface.md
+            - name: Hálózati adapterek hozzáadása vagy eltávolítása
+              href: virtual-network-network-interface-vm.md
+            - name: IP-címek hozzáadása vagy eltávolítása
               href: virtual-network-network-interface-addresses.md
         - name: Nyilvános IP-címek
           href: virtual-network-public-ip-address.md
-        - name: Virtual machines (Virtuális gépek)
-          items:
-            - name: Virtuális gép áthelyezése másik alhálózatra
-              href: virtual-networks-move-vm-role-to-subnet.md
     - name: Hibaelhárítás
       items:
         - name: Network security groups (Hálózati biztonsági csoportok)
@@ -277,6 +272,8 @@
                       href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                     - name: Azure PowerShell
                       href: virtual-networks-acl-powershell.md
+                - name: Virtuális gép áthelyezése másik alhálózatra
+                  href: virtual-networks-move-vm-role-to-subnet.md
         - name: Felhőszolgáltatás és hálózati biztonság
           href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
           items:

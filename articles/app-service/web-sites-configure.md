@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234521"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293716"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
@@ -46,7 +46,7 @@ A **Alkalmazásbeállítások** panel több kategóriák szerint csoportosítva 
 Technikai okokból Java az alkalmazás engedélyezése letiltja a .NET, PHP és Python beállításokat.
 
 <a name="platform"></a>
-**Platform**. Választja ki, hogy a webalkalmazás fut, 32 bites vagy 64 bites környezetben. A 64 bites környezet Basic vagy Standard módot igényel. Ingyenes, és megosztott mód mindig 32-bit-es környezetben fusson.
+**Platform**. Választja ki, hogy a webalkalmazás fut, 32 bites vagy 64 bites környezetben. A 64 bites környezetben csak az alapszintű vagy Standard használható. Ingyenes, és a közös réteg mindig 32-bit-es környezetben fusson.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -56,6 +56,13 @@ Technikai okokból Java az alkalmazás engedélyezése letiltja a .NET, PHP és 
 **Always On**. Alapértelmezés szerint a webalkalmazások a memóriából, ha bizonyos ideig inaktív. Ez lehetővé teszi, hogy a rendszer, ezért az erőforrások megőrzése. Basic vagy Standard módban, ahol engedélyezheti **mindig a** az alkalmazás mindig betöltve a folyamatosan. Ha az alkalmazás fut a folyamatos webjobs-feladatok webjobs-feladatok futtatása indított CRON-kifejezés használatával, vagy engedélyezze **mindig a**, vagy a webes feladatok nem futtatható megbízhatóan.
 
 **Felügyelt folyamatkezelési verzió**. Beállítja az IIS [folyamatkezelési mód]. Ne módosítsa integrált (alapértelmezett) kivéve, ha egy örökölt alkalmazás, amely az IIS egy régebbi verziója szükséges.
+
+**HTTP-verzió**. Beállítása **2.0** támogatásának engedélyezése [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokoll. 
+
+> [!NOTE]
+> A modern böngészők támogatja a HTTP/2 protokoll TLS feletti csak, amíg nem titkosított forgalom továbbra is használja a HTTP/1.1. Győződjön meg arról, hogy az ügyfél böngészők csatlakozzon az alkalmazás a HTTP/2, vagy [egy App Service-tanúsítvány vásárlása](web-sites-purchase-ssl-web-site.md) az alkalmazás egyéni tartomány vagy [egy harmadik féltől származó tanúsítvány kötése](app-service-web-tutorial-custom-ssl.md).
+
+**Az ARR affinitás**. Alkalmazáson belüli, amely van méretezhető több Virtuálisgép-példányok, ARR affinitási cookie-k garantálja, hogy az ügyfél irányítása ugyanazon a munkamenet során. Állapot nélküli alkalmazások teljesítményének javítása érdekében a választógombot bejelölve **ki**.   
 
 **Az automatikus felcserélés**. Ha engedélyezte az automatikus felcserélés egy üzembe helyezési tárhelyet, App Service lesz automatikusan felcserélni a webalkalmazás éles környezetben ha egy frissítés leküldése a tárolóhely. További információkért lásd: [központi telepítése az átmeneti üzembe helyezési ponti az Azure App Service web Apps](web-sites-staged-publishing.md).
 

@@ -328,6 +328,8 @@ items:
                 href: mongodb-readpreference.md
               - name: Indexelés
                 href: mongodb-indexing.md
+              - name: Élettartam a MongoDB-ben
+                href: mongodb-ttl.md
               - name: Adatok megjelenítése Power BI használatával
                 href: powerbi-visualize.md
               - name: Kezelés a Storage Explorer használatával
