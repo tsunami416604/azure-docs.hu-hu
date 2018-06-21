@@ -48,7 +48,7 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
-    - name: Tevékenységnaplók
+    - name: Tevékenységnaplók megtekintése
       href: change-history-report.md
     - name: Globális rendszergazda hozzáférési szintjének emelése
       href: elevate-access-global-admin.md

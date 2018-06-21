@@ -1,0 +1,72 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: A Translator Text API dokumentációja
+metadata:
+  title: A Translator Text dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
+  description: Ismerje meg, hogyan fordíthat le szövegeket több nyelvre a Translator Text API használatával.
+  services: cognitive-services
+  author: Jann-Skotdal
+  manager: Chris.Wendt
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/30/2017
+  ms.author: v-jansko
+  ms.openlocfilehash: 55ec3147a07c5c76fe1f1b356d633a9afeb783cc
+  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/20/2018
+  ms.locfileid: "36286908"
+abstract:
+  description: A Microsoft Translator Text API egy felhőalapú gépi fordítási szolgáltatás. Az API segítségével közel valós időben fordíthat le szövegeket bármely alkalmazásból vagy szolgáltatásból egy egyszerű REST API-hívással. Az API a legmodernebb idegi gépi fordítási technológiát használja, emellett pedig statisztikai gépi fordító technológiával is rendelkezik. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listáját a <a href="languages.md">Támogatott nyelvek</a> dokumentumban találja.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Ismerkedés a Translator Text API-val:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+      title: C#
+    - image:
+        src: media/index/logo_java.svg
+      title: Java
+    - image:
+        src: media/index/logo_nodejs.svg
+      title: Node.js
+    - image:
+        src: media/index/logo_python.svg
+      title: Python
+    rows:
+    - title: Szövegek fordítása egyik nyelvről a másikra
+      values:
+      - href: quickstart-csharp-translate
+      - href: quickstart-java-translate
+      - href: 
+      - href: 
+    - title: Szövegek konvertálása egyik szkriptből a másikba
+      values:
+      - href: quickstart-csharp-transliterate
+      - href: quickstart-java-transliterate
+      - href: 
+      - href: 
+    - title: Szöveg nyelvének azonosítása
+      values:
+      - href: quickstart-csharp-detect
+      - href: quickstart-java-detect
+      - href: 
+      - href: 
+    - title: Alternatív fordítások és használat lekérése
+      values:
+      - href: quickstart-csharp-dictionary
+      - href: quickstart-java-dictionary
+      - href: 
+      - href: 
+- title: Referencia
+  items:
+  - type: paragraph
+    text: <p><a href="reference/v3-0-reference.md">API-referencia</a></p>

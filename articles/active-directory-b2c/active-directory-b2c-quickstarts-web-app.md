@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4caa4dfcfdc468c69241c5cf61d3c520609a088a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710262"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292786"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Gyors útmutató: ASP.NET-alkalmazásba való bejelentkezés konfigurálása Azure Active Directory B2C-vel
 
@@ -124,4 +124,4 @@ Ebben a gyors útmutatóban az Azure AD B2C-t használó, mintául szolgáló AS
 Folytassa azzal az oktatóanyaggal, amely bemutatja, hogyan konfigurálhatja a mintául szolgáló ASP.NET-es alkalmazást a saját Azure AD B2C-bérlő használatára.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Felhasználók hitelesítése az Azure Active Directory B2C-vel egy ASP.NET-es webalkalmazásban](active-directory-b2c-tutorials-web-app.md)
+> [Azure Active Directory B2C-bérlő létrehozása az Azure Portalon](tutorial-create-tenant.md)

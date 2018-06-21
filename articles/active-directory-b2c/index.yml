@@ -7,16 +7,17 @@ metadata:
   services: active-directory-b2c
   author: davidmu1
   manager: mtillman
-  ms.service: active-directory-b2c
+  ms.service: active-directory
+  ms.component: B2C
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: 000874bd089583cfc75dfa0a4d28769b91808a11
-  ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+  ms.openlocfilehash: a70e3fe60291a0ee50dbaa4bd3caa460ff12ffef
+  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/30/2018
-  ms.locfileid: "32308865"
+  ms.lasthandoff: 06/20/2018
+  ms.locfileid: "36284265"
 abstract:
   description: Az Azure Active Directory (Azure AD) B2C egy identitáskezelő szolgáltatás, amely lehetővé teszi az ügyfelek regisztrációjának és bejelentkezésének testreszabását és felügyeletét, valamint a profiljuk kezelését az alkalmazások használatakor. Ez az iOS, Android, .NET és más rendszerekre fejlesztett alkalmazásokra is vonatkozik. Az Azure AD B2C az ügyfelei identitásainak védelme mellett teszi lehetővé e műveletek végrehajtását. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure AD B2C használatával.
   aside:

@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5771d3319194ff4952f4c93140594db2d93bb7f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 46d4d095ef71870c7f5b3eabaf66e26797b7331e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593554"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286319"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect a Microsoft Cloud németországi adatközpontjában – nyilvános előzetes verzió
 ## <a name="introduction"></a>Bevezetés
@@ -34,9 +34,7 @@ A [Microsoft Cloud németországi adatközpontja](https://www.microsoft.com/de-d
   * *.windows.net
   * * Visszavont tanúsítványok listái (CRL-ek)
 * Az Azure AD címtárba való bejelentkezéskor az onmicrosoft.de tartományba tartozó fiókot kell használnia.
-* A következő funkciók nem érhetők el:
-  * Azure AD Connect Health
-  * Automatikus frissítések
+
  
 ## <a name="download"></a>Letöltés
 Az Azure AD Connect a portál Azure AD Connect paneljéről tölthető le.  Az Azure AD Connect panelt az alábbi útmutatás alapján keresheti meg.
