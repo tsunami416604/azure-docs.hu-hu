@@ -1,6 +1,6 @@
 ---
-title: Klasszikus Azure-szolgáltatások - figyelmeztetések létrehozása Azure-portálon
-description: Eseményindító e-mailek, értesítések, a megadott feltételek teljesülnek webhely URL-címek (webhookok), vagy az automation hívni.
+title: Klasszikus Azure-szolgáltatások figyelmeztetések létrehozása az Azure-portál használatával |} Microsoft Docs
+description: Indítás, e-maileket vagy értesítések, vagy a webhely URL-címek (webhookok) vagy az automation hívni a megadott feltételek teljesülnek.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,88 +8,86 @@ ms.topic: conceptual
 ms.date: 09/23/2016
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: d2ae4d9e1d0ef89fad4098a926fc689b84d1111b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d0e5512eb3f963898ded6d7155f8b75cfb6ef911
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262181"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287429"
 ---
-# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - Azure-portálon
+# <a name="use-the-azure-portal-to-create-classic-metric-alerts-in-azure-monitor-for-azure-services"></a>Az Azure-portálon használja a klasszikus metrika riasztások létrehozása az Azure-figyelő Azure-szolgáltatások 
+
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
 > * [Parancssori felület](insights-alerts-command-line-interface.md)
 >
->
-
-## <a name="overview"></a>Áttekintés
 
 > [!NOTE]
 > Ez a cikk ismerteti, hogyan régebbi klasszikus metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md). 
->
->
 
-Ez a cikk bemutatja, hogyan állíthat be a klasszikus Azure metrika értesítések az Azure portál használatával. 
 
-A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló riasztást kaphat.
+Ez a cikk bemutatja, hogyan klasszikus Azure metrika riasztások beállítása az Azure portál használatával. 
 
-* **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
-* **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információ [napló tevékenységriasztásokat](monitoring-activity-log-alerts.md).
+Az Azure-szolgáltatások metrikáját alapuló riasztást kaphat, vagy az Azure-ban is fogadhatja az eseményekre vonatkozó riasztást.
+
+* **Metrika értékek**: A riasztás elindítja a megadott metrika értékét ebbe a küszöbérték, akkor mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, majd amikor ez a feltétel már nem van teljesül.    
+
+* **Tevékenység naplóeseményeket**: riasztást aktiválhatók *minden* esemény, vagy amikor bizonyos események következnek be. További információ [napló tevékenységriasztásokat](monitoring-activity-log-alerts.md).
 
 A klasszikus metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
 
-* e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és a társadminisztrátorok
-* e-mail küldéséhez megadott további e-maileket.
-* A webhook hívása
-* egy Azure-runbook (csak az Azure portálról) végrehajtásának elindítása
+* A szolgáltatás-rendszergazda és a társadminisztrátorok e-mail értesítések küldéséhez.
+* E-mail küldése további e-mail-címek.
+* A webhook hívja.
+* Egy Azure-runbook (csak az Azure portálról) végrehajtásának elindítása.
 
-Beállíthatja, klasszikus metrika riasztási szabályok használatával adatainak beolvasása
+Beállíthatja, klasszikus metrika riasztási szabályok adatainak beolvasása a következő helyekről: 
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [Parancssori felület (CLI)](insights-alerts-command-line-interface.md)
+* [Azure CLI](insights-alerts-command-line-interface.md)
 * [Az Azure figyelő REST API-n](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Riasztási szabályt létrehozni a metrika az Azure portállal
-1. Az a [portal](https://portal.azure.com/), keresse meg az erőforrás figyelési érdekli, és válassza ki azt.
+1. Az a [portal](https://portal.azure.com/), és keresse meg a figyelni kívánt erőforrás, majd válassza ki azt.
 
-2. Válassza ki **riasztások (klasszikus)** a figyelés szakaszban. A szöveg és ikon eltérő lehet attól függően némileg különböző erőforrások. Ha nem talál **riasztások (klasszikus)**, előfordulhat, hogy megtalálja a **riasztások** vagy **riasztási szabályok**
+2. Az a **figyelés** szakaszban jelölje be **riasztások (klasszikus)**. A szöveg és ikon kis mértékben eltérhetnek a különböző erőforrásokat. Ha nem találja a **riasztások (klasszikus)** itt, bizonyára hasznosnak találja a **riasztások** vagy **riasztási szabályok**.
 
     ![Figyelés](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. Válassza ki a **metrika riasztás hozzáadása (klasszikus)** parancsot, és töltse ki a mezőket.
+3. Válassza ki a **metrika riasztás hozzáadása (klasszikus)** parancsot, majd töltse ki a mezőket.
 
     ![Riasztás beállítása](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 
-4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítési e-mailt is mutatja.
+4. **Név** a riasztási szabályt. Válassza ki a **leírása**, amely is megjelenik az értesítési e-maileket.
 
-5. Válassza ki a **metrika** szeretne figyelni, majd kattintson egy **feltétel** és **küszöbérték** a mérték értékét. Is választhatja, a **időszak** idő a metrika szabály a riasztási eseményindítók előtt kell biztosítani. Így például ha a riasztás 80 % fölötti keresi CPU-t használ a időszak "az elmúlt 5 percben", a riasztás váltja ki, ha a CPU már következetesen fenti 80 % 5 perc. Akkor következik be, az első eseményindító, amennyiben azt újra váltja ki, ha 5 percig 80 % alatt marad a Processzor. A CPU-metrika mérési egy percenként történik.
+5. Válassza ki a **metrika** , amelyet figyelni szeretne. Válassza ki a **feltétel** és **küszöbérték** a mérték értékét. Is választhatja, a **időszak** idő a metrika szabály a riasztási eseményindítók előtt kell biztosítani. Például ha a riasztás keresi a 80 % fölötti CPU-t használ a időszak "az elmúlt 5 percben", a riasztás váltja ki, ha a CPU már következetesen fenti 80 % 5 perc. Miután az első eseményindító történik, akkor váltja ki újra, ha 5 percig 80 % alatt marad a Processzor. A CPU-metrika mérési percenként történik.
 
-6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy a rendszergazdák és a társadminisztrátorok e-mailben a riasztás aktiválódásakor.
+6. Válassza ki **E-mail-tulajdonosok...**  Ha azt szeretné, és közös rendszergazdák e-mail értesítéseket a riasztás aktiválódásakor.
 
-7. Ha azt szeretné, hogy további az e-maileket kap értesítést, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Több e-mailek külön és pontosvesszővel kell elválasztani -  *email@contoso.com;email2@contoso.com*
+7. Ha azt szeretné, az értesítések küldését további e-mail címet, a riasztás aktiválódásakor, adja hozzá a a **további rendszergazda email(s)** mező. Pontosvesszővel több e-maileket, a következő formátumban:  *email@contoso.com; email2@contoso.com*
 
-8. Be egy érvényes URI-azonosító található a **Webhook** mezőben, ha azt szeretné, hogy a riasztás aktiválódásakor meghívta.
+8. Be egy érvényes URI-azonosító található a **Webhook** mezőben, ha azt szeretné, hogy hívható meg abban az esetben, ha a riasztás akkor következik be.
 
-9. Azure Automation használatakor választhatja futtatja, a riasztás akkor következik be, amikor egy Runbookot.
+9. Azure Automation használatakor választhatja futtatja, a riasztás akkor következik be, amikor egy runbookot.
 
-10. Válassza ki **OK** végzett a riasztás létrehozása.   
+10. Válassza ki **OK** a riasztás létrehozása.   
 
 Néhány percen belül a riasztás aktív, és elindítja a leírt módon.
 
-## <a name="managing-your-alerts"></a>A riasztások kezelése
-Miután létrehozott egy riasztást, kijelölheti azt és:
+## <a name="manage-your-alerts"></a>A riasztások kezelése
+Miután létrehozott egy riasztást, válassza ki azt, és hajtsa végre az alábbi műveletek közül:
 
-* A metrika küszöbérték és a tényleges értékek az előző nap egy grafikonon megtekintése.
+* Diagramját, amelyek mérték küszöbértéke, a tényleges értékek az előző nap megtekintése.
 * Szerkesztheti és törölheti azt.
 * **Tiltsa le a** vagy **engedélyezése** , ha azt szeretné, ideiglenesen leállítani, vagy folytassa a riasztás-mailjeire.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Figyelés áttekintése](monitoring-overview.md) többek között a adattípusok összegyűjtheti, és figyelje.
-* További információ a [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md)
+* [Az Azure Figyelés áttekintése](monitoring-overview.md), beleértve a adattípusok összegyűjtheti, és figyelje.
+* További információ a [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md).
 * További információ [konfigurálása webhookokkal a riasztások](insights-webhooks-alerts.md).
 * További információ [riasztások konfigurálása a naplózási eseményeket](monitoring-activity-log-alerts.md).
-* További információ [Azure Automation-forgatókönyveket](../automation/automation-starting-a-runbook.md).
-* Első egy [diagnosztikai naplók áttekintése](monitoring-overview-of-diagnostic-logs.md) és begyűjtése részletes nagyon gyakori a szolgáltatásban.
-* Első egy [metrikák gyűjtemény áttekintése](insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.
+* További információ [Azure Automation-runbook](../automation/automation-starting-a-runbook.md).
+* Első egy [diagnosztikai naplók áttekintése](monitoring-overview-of-diagnostic-logs.md), és nagyon gyakori gyűjtéséhez részletes a a szolgáltatásban.
+* Első egy [metrikák gyűjtemény áttekintése](insights-how-to-customize-monitoring.md) győződjön meg arról, hogy a szolgáltatás elérhető, és a gyors-e.

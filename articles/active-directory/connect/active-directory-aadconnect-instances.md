@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 158a0f6d948172ec7d986703e9fa95dd19bdde6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 351f3e34f5050d922655a633ec89f51d191b946e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592262"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295616"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Az Azure AD Connect: Különleges szempontok példányok
 Az Azure AD Connect leggyakrabban használt világszerte példányát az Azure AD és az Office 365. Emellett vannak más esetekben és ezeket az URL-címek és más szempontot különböző követelményekkel rendelkezik.
@@ -38,8 +38,6 @@ Amikor bejelentkezik az Azure AD-bérlő, a onmicrosoft.de tartományban olyan f
 
 Jelenleg nem szerepel a Microsoft Cloud németországi funkciói:
 
-* **Az Azure AD Connect Health** nem érhető el.
-* **Az automatikus frissítések** nem érhető el.
 * **A jelszóvisszaírás** érhető el az előzetes 1.1.570.0 az Azure AD Connect verziójával és után.
 * Más Azure AD Premium-szolgáltatások nem érhetők el.
 
@@ -61,8 +59,6 @@ A felhő által a DirSync korábbi verziókban támogatott. A build 1.1.180 az A
 
 Jelenleg nem szerepel a Microsoft Azure Government felhőalapú szolgáltatások:
 
-* **Az Azure AD Connect Health** nem érhető el.
-* **Az automatikus frissítések** nem érhető el.
 * **A jelszóvisszaírás** érhető el az előzetes 1.1.570.0 az Azure AD Connect verziójával és után.
 * Más Azure AD Premium-szolgáltatások nem érhetők el.
 

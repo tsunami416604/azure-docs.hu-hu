@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4cf4e0ffc339bb90f013315a53025c83fcaad21f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4aa2a2f41bcdd78991184e026f22f8e04754eccb
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217571"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Oktatóanyag: Azure Active Directoryval integrált felvegye LMS
 
@@ -266,7 +266,7 @@ Felhasználó Britta Simon hozzárendelése LMS felvegye, tegye a következőket
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési Panel segítségével tesztelheti.
 
-A hozzáférési panelen válassza a **felvegye LMS** csempe automatikusan bejelentkezik, az felvegye LMS alkalmazás. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+A hozzáférési panelen válassza a **felvegye LMS** csempe automatikusan bejelentkezik, az felvegye LMS alkalmazás. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
@@ -288,4 +288,3 @@ A hozzáférési panelen válassza a **felvegye LMS** csempe automatikusan bejel
 [201]: ./media/absorblms-tutorial/tutorial_general_201.png
 [202]: ./media/absorblms-tutorial/tutorial_general_202.png
 [203]: ./media/absorblms-tutorial/tutorial_general_203.png
-

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: 31defde289643b2adfd6e15bb8417b5498ba65d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e854ed42b6af8bc090950e8399e3229e202a2ed0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212500"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293412"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Közös kivételeket és hibák, amikor a FabricClient API-k használata
 A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API-k lehetővé teszik a felügyeleti feladatokat hajthat végre a Service Fabric-alkalmazás, szolgáltatás vagy fürt a fürt- és rendszergazdák. Például alkalmazás központi telepítése, frissítése és eltávolítása, a fürt ellenőrzése, vagy egy szolgáltatás tesztelése. Alkalmazásfejlesztők és a fürt rendszergazdák a FabricClient API-k használhatja a Service Fabric-fürt és az alkalmazások kezelésére szolgáló eszközök fejlesztéséhez.
@@ -36,7 +36,7 @@ Nincsenek számos különböző típusú műveleteket, amelyek FabricClient hasz
 
 Néhány gyakori [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) a hibákat, a adhatók vissza a [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
 
-| Hiba | Feltétel |
+| Hiba | Állapot |
 | --- |:--- |
 | CommunicationError |Kommunikációs hiba miatt a művelet sikertelen, próbálja megismételni a műveletet. |
 | InvalidCredentialType |A hitelesítőadat-típus érvénytelen. |

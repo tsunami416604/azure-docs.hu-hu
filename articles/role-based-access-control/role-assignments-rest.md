@@ -1,6 +1,6 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlés REST - az Azure AD |} Microsoft Docs
-description: A REST API szerepköralapú hozzáférés-vezérlés kezelése
+title: Az RBAC és a REST API - Azure-hozzáférés kezelése |} Microsoft Docs
+description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, szerepkörön alapuló hozzáférés-vezérlést (RBAC) és a REST API használatával. Ez magában foglalja a hozzáférési listázása, hozzáférés biztosítása és eltávolítása a hozzáférés.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,21 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267475"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294462"
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>A REST API szerepköralapú hozzáférés-vezérlés kezelése
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-the-rest-api"></a>Az RBAC és a REST API-hozzáférés kezelése
 
-A szerepköralapú hozzáférés-vezérlés (RBAC), definiált felhasználók, csoportok és szolgáltatásnevekről hozzáférést egy adott hatókörhöz szerepkörök hozzárendelése. Ez a cikk ismerteti a REST API-hozzáférés kezelése.
+[Szerepköralapú hozzáférés-vezérlést (RBAC)](overview.md) kezelése az Azure-ban az erőforrásokhoz való hozzáférés módja. Ez a cikk ismerteti, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások RBAC és a REST API használatával.
 
 ## <a name="list-all-role-assignments"></a>Az összes szerepkör-hozzárendelések felsorolása
 Megjeleníti a megadott hatókör és subscopes szerepkör-hozzárendelések.
 
-A szerepkör-hozzárendelések listáját hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleAssignments/read` műveletet a hatókörben. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+A szerepkör-hozzárendelések listáját hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleAssignments/read` műveletet a hatókörben. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **beolvasása** metódus a következő URI-azonosítóhoz:
@@ -83,7 +79,7 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 ## <a name="get-information-about-a-role-assignment"></a>Szerepkör-hozzárendelés adatainak beolvasása
 A szerepkör-hozzárendelés azonosítója által megadott egyetlen szerepkör-hozzárendelés információ lekérése.
 
-Szerepkör-hozzárendelés adatainak beolvasása, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleAssignments/read` műveletet. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Szerepkör-hozzárendelés adatainak beolvasása, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleAssignments/read` műveletet. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **beolvasása** metódus a következő URI-azonosítóhoz:
@@ -124,7 +120,7 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 ## <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 Szerepkör-hozzárendelés létrehozása a megadott rendszerbiztonsági tag a megadott szerepkör megadása a megadott hatókörben.
 
-Szerepkör-hozzárendelés létrehozása, hozzáférést kell biztosítani `Microsoft.Authorization/roleAssignments/write` műveletet. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Szerepkör-hozzárendelés létrehozása, hozzáférést kell biztosítani `Microsoft.Authorization/roleAssignments/write` műveletet. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **PUT** metódus a következő URI-azonosítóhoz:
@@ -182,7 +178,7 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 ## <a name="delete-a-role-assignment"></a>Szerepkör-hozzárendelés törlése
 Szerepkör-hozzárendelés törlése a megadott hatókörből.
 
-Szerepkör-hozzárendelés törlése, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` műveletet. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Szerepkör-hozzárendelés törlése, hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` műveletet. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **törlése** metódus a következő URI-azonosítóhoz:
@@ -223,7 +219,7 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 ## <a name="list-all-roles"></a>Az összes szerepkör felsorolása
 A megadott hatókörben kiosztására használható összes szerepköröket sorolja fel.
 
-A lista szerepkörökhöz hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/read` műveletet a hatókörben. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+A lista szerepkörökhöz hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/read` műveletet a hatókörben. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **beolvasása** metódus a következő URI-azonosítóhoz:
@@ -306,7 +302,7 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 ## <a name="get-information-about-a-role"></a>Egy szerepkör adatainak beolvasása
 A szerepkör-definíció azonosítója által megadott egyetlen szerepkör információ lekérése. Ahhoz, hogy a megjelenített név megadásával egyetlen szerepkör információt, lásd: [listában az összes szerepkör](role-assignments-rest.md#list-all-roles).
 
-Egy szerepkör adatainak beolvasása, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/read` műveletet. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Egy szerepkör adatainak beolvasása, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/read` műveletet. A beépített szerepkörök művelet számára hozzáférést kapnak. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **beolvasása** metódus a következő URI-azonosítóhoz:
@@ -386,7 +382,7 @@ Az URI belül győződjön testre szabhatja a kérelem a következő helyettesí
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 Hozzon létre egy egyéni biztonsági szerepkört.
 
-Hozzon létre egy egyéni biztonsági szerepkört, hozzáférést kell biztosítani `Microsoft.Authorization/roleDefinitions/write` minden műveletet a `AssignableScopes`. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Hozzon létre egy egyéni biztonsági szerepkört, hozzáférést kell biztosítani `Microsoft.Authorization/roleDefinitions/write` minden műveletet a `AssignableScopes`. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **PUT** metódus a következő URI-azonosítóhoz:
@@ -489,7 +485,7 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 ## <a name="update-a-custom-role"></a>Frissítés egy egyéni biztonsági szerepkört
 Módosítani egy egyéni biztonsági szerepkört.
 
-Módosítja egy egyéni biztonsági szerepkört, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/write` minden műveletet a `AssignableScopes`. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Módosítja egy egyéni biztonsági szerepkört, hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/write` minden műveletet a `AssignableScopes`. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **PUT** metódus a következő URI-azonosítóhoz:
@@ -592,7 +588,7 @@ A kérelem törzsében adja meg az értékeket a következő formátumban:
 ## <a name="delete-a-custom-role"></a>Egyéni szerepkör törléséhez
 Egyéni szerepkör törléséhez.
 
-Egyéni szerepkör törléséhez hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/delete` minden műveletet a `AssignableScopes`. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [átruházásához hozzáférés-vezérlés](role-assignments-portal.md).
+Egyéni szerepkör törléséhez hozzáféréssel kell rendelkeznie `Microsoft.Authorization/roleDefinitions/delete` minden műveletet a `AssignableScopes`. A beépített szerepkörök, csak *tulajdonos* és *felhasználói hozzáférés adminisztrátora* férhetnek hozzá ezt a műveletet. További információ a szerepkör-hozzárendelések és az Azure-erőforrások kezelése hozzáférés: [Azure szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md).
 
 ### <a name="request"></a>Kérés
 Használja a **törlése** metódus a következő URI-azonosítóhoz:

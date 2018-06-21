@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: aab2446a21739beb029b103241431fb9998e1861
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735458"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293995"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Biztonságos hozzáférés a Azure Cosmos DB fiókkal az Azure Virtual Network szolgáltatás végpontjának használatával
 
@@ -80,7 +80,7 @@ Miután az Azure Virtual Network Szolgáltatásvégpontok engedélyezve vannak a
 
 Azure Cosmos DB fiókja más Azure-szolgáltatásokhoz hasonlóan az Azure Search által használt, vagy a Stream analytics vagy a Power bi-ban érhető el, ha engedélyezi a hozzáférést ellenőrzésével **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**.
 
-Ellenőrizze, hogy access Azure Cosmos DB csatlakozva a portálról, engedélyeznie kell **engedélyezi a hozzáférést az Azure-portálhoz** beállítások. A beállításokkal kapcsolatos további információkért lásd: [Azure-portálon kapcsolatok](firewall-support.md#connections-from-the-azure-portal) és [Azure PaaS szolgáltatások közötti kapcsolatok](firewall-support.md#connections-from-other-azure-paas-services) szakaszok. Miután kijelölte a hozzáférést, jelölje ki **mentése** menti a beállításokat.
+Ellenőrizze, hogy access Azure Cosmos DB csatlakozva a portálról, engedélyeznie kell **engedélyezi a hozzáférést az Azure-portálhoz** beállítások. A beállításokkal kapcsolatos további információkért lásd: [Azure-portálon kapcsolatok](firewall-support.md#connections-from-the-azure-portal) és [Azure PaaS szolgáltatások közötti kapcsolatok](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services) szakaszok. Miután kijelölte a hozzáférést, jelölje ki **mentése** menti a beállításokat.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Távolítsa el a virtuális hálózat vagy az alhálózat 
 

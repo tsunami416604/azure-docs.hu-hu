@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 06/08/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 7cfd3fba459f409079cb0c621edab3197070285e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7a67d65621da129640d3bb551cb0976ec1912050
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232347"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284804"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Mik azok a rendelkezésre állási zónák az Azure-ban?
 Rendelkezésre állási zónák magas rendelkezésre állású ajánlat, amely megakadályozza az alkalmazások és adatok datacenter hiba. Rendelkezésre állási zónák egyedi fizikai helyen belül egy Azure-régióban. Az egyes zónák felszerelt független power hűtési, és a hálózat egy vagy több adatközpontok épül fel. Rugalmasság biztosítása érdekében legalább három különálló zónákra minden engedélyezett régióban van. A fizikailag szét van választva a rendelkezésre állási zónák régión belül alkalmazások és adatok datacenter hibák védelmet nyújt. Zónaredundáns szolgáltatások rendelkezésre állásának zónák nyújt védelmet a single-pontok-az-szemben az alkalmazások és adatok replikálásához. A rendelkezésre állási zónák Azure iparág ajánlott 99,99 % VM hasznos üzemidő SLA-t kínál. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
@@ -57,6 +57,8 @@ Azure-szolgáltatás, amely támogatja a rendelkezésre állási zónák a köve
 - Nyilvános IP-cím
 - Zónaredundáns tárolás
 - SQL Database
+- Event Hubs
+- Service Bus
 
 
 ## <a name="pricing"></a>Díjszabás

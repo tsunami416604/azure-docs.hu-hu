@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/6/2017
 ms.author: jeedes
-ms.openlocfilehash: fd393107fa8e142f042b0bf1e4283b3cacd4050e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e39bd40a25333f6b2e323439d29e2a85e67d20d5
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218214"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>Oktatóanyag: Azure Active Directoryval integrált Apptio
 
@@ -121,7 +121,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása](./media/apptio-tutorial/tutorial_apptio_attributes.png)     
     
     > [!NOTE]
-    > Kattintson az [Itt](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/) tudnia kell, hogyan konfigurálhatja **szerepkör** Azure AD-ben
+    > Kattintson az [Itt](../../role-based-access-control/role-assignments-portal.md) tudnia kell, hogyan konfigurálhatja **szerepkör** Azure AD-ben
     
 6. A a **felhasználói attribútumok** a szakasz a **egyszeri bejelentkezés** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre a következő lépéseket:
 
@@ -243,4 +243,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/apptio-tutorial/tutorial_general_201.png
 [202]: ./media/apptio-tutorial/tutorial_general_202.png
 [203]: ./media/apptio-tutorial/tutorial_general_203.png
-

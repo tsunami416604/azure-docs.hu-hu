@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 541a8e83029fe1dc0ba386d1906b366e63041882
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268240"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284838"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -107,7 +107,7 @@ while (currentPage.NextPageLink != null)
 További példákért lásd [eszközök – lista](https://docs.microsoft.com/rest/api/media/assets/list)
 
 
-### <a name="storage-side-encryption"></a>Tárolási kiszolgálóoldali titkosítás
+## <a name="storage-side-encryption"></a>Tárolási kiszolgálóoldali titkosítás
 
 Az inaktív eszközök védelme érdekében az eszközöket a storage ügyféloldali titkosítása titkosítani kell. Az alábbi táblázat a storage ügyféloldali titkosítás a Media Services működése:
 

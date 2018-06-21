@@ -22,7 +22,7 @@ Ez a szakasz végigvezeti a fejlesztési környezet létrehozása. Ez magában f
 
 2. Válassza ki a helyi menüből **Hozzáadás** > **kapcsolódó szolgáltatás**.
 
-1. Az a **kapcsolódó szolgáltatások** párbeszédpanelen jelölje ki **felhőalapú tárolás az Azure Storage**, majd válassza ki **konfigurálása**.
+1. Az a **kapcsolódó szolgáltatások** párbeszédpanelen jelölje ki **felhőalapú tárolás az Azure Storage**.
 
     ![Szolgáltatások csatlakoztatott képernyőkép párbeszédpanel](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 918f5d9efa1163558e44c2c67028dbf802f479a5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266787"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286018"
 ---
 # <a name="entities-in-luis"></a>Bejegyzései szerepelnek LUIS
 
@@ -66,7 +66,7 @@ LUIS kínál számos különböző típusú entitásokat; előre elkészített e
 | Name (Név) | A címkézés | Leírás |
 | -- |--|--|
 | **Előre elkészített** <br/>[Egyéni](#prebuilt)| |  **Definíció**<br>Beépített általánosan használt fogalmakat ismertető képviselő típusok. <br><br>**List**<br/>kulcs kifejezés száma, sorszámát, hőmérséklet, dimenzió, pénzt, kor, százalékos, e-mail, URL-cím, telefonszám és kulcs kifejezést. <br><br>Előre elkészített entitásnévnek vannak fenntartva. <br><br>Az alkalmazás által hozzáadott összes előre elkészített entitások vissza a [végpont](luis-glossary.md#endpoint) lekérdezés. További információkért lásd: [előre elkészített entitások](./Pre-builtEntities.md). <br/><br/>[Példa egy válasz entitás](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Reguláris kifejezés**<br/>[RegEx](#regex)||**Definíció**<br>Formázott szöveget egyéni reguláris kifejezést. Figyelmen kívül hagyja az eset, és figyelmen kívül hagyja a kulturális változat.  <br><br>Ehhez az entitáshoz jó szót vagy kifejezést semmilyen változást, amely egyúttal összhangban következetesen formázott.<br><br>Reguláris kifejezések egyeztetésének helyesírását változásokból eredő után alkalmazza. <br><br>Ha a reguláris kifejezés túl összetett, például számos zárójelek használatával, még nem adhat hozzá a kifejezés a modellben. <br><br>**Példa**<br>`kb[0-9]{6,}` kb123456 megegyezik.<br/><br/>[Gyors útmutató](luis-quickstart-intents-regex-entity.md)<br>[Példa egy válasz entitás](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Reguláris kifejezés**<br/>[RegEx](#regex)||**Definíció**<br>Formázott nyers utterance szöveg egyéni reguláris kifejezést. Figyelmen kívül hagyja az eset, és figyelmen kívül hagyja a kulturális változat.  <br><br>Ehhez az entitáshoz jó szót vagy kifejezést semmilyen változást, amely egyúttal összhangban következetesen formázott.<br><br>Reguláris kifejezések egyeztetésének helyesírását változásokból eredő után alkalmazza. <br><br>Ha a reguláris kifejezés túl összetett, például számos zárójelek használatával, még nem adhat hozzá a kifejezés a modellben. <br><br>**Példa**<br>`kb[0-9]{6,}` kb123456 megegyezik.<br/><br/>[Gyors útmutató](luis-quickstart-intents-regex-entity.md)<br>[Példa egy válasz entitás](luis-concept-data-extraction.md)|
 | **Egyszerű** <br/>[Számítógép-nal](#machine-learned) | ✔ | **Definíció**<br>Egy egyszerű entitás egy általános entitás, amely leírja egy egyetlen fogalom, és van megtanulta, a gép megtanulta környezetből. A környezetben például a word választás, word elhelyezési és utterance hossza.<br/><br/>Ez az a jó entitás szót vagy kifejezést, amely nem egységesen formátumú, de ugyanazt jelenti. <br/><br/>[Gyors útmutató](luis-quickstart-primary-and-secondary-data.md)<br/>[Példa egy válasz entitás](luis-concept-data-extraction.md#simple-entity-data)|  
 | **List** <br/>[Pontos egyezés](#exact-match)|| **Definíció**<br>Lista entitások együtt a synoymns kapcsolódó szavak rögzített, lezárt csoportját képviselik, a rendszer. <br><br>Előfordulhat, hogy minden lista entitás egy vagy több. Legjobb használja ugyanazt a fogalmat képviselik módjai változata egy ismert gyűjteményével.<br/><br/>LUIS további értékek lista entitások nem deríti fel. Használja a megjelenítéséhez [szemantikai szótár](luis-glossary.md#semantic-dictionary) ahol tanácsokat új szavak jelenlegi listája alapján.<br/><br>Ha egynél több lista entitás ugyanarra az értékre, akkor a végpont lekérdezés által visszaadott minden entitáshoz. <br/><br/>[Gyors útmutató](luis-quickstart-intent-and-list-entity.md)<br>[Példa egy válasz entitás](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.any** <br/>[Vegyes](#mixed) | ✔|**Definíció**<br>Patterns.any pedig változó hosszúságú használt csak egy minta sablon utterance jelöli, ahol az entitás kezdődik, és ezzel véget ér.  <br><br>**Példa**<br>Egy utterance keressen rá a címe alapján könyvek megadott, a pattern.any kibontja a teljes nevét. A sablon utterance pattern.any használatával van `Who wrote {BookTitle}[?]`.<br/><br/>[Oktatóanyag](luis-tutorial-pattern.md)<br>[Példa egy válasz entitás](luis-concept-data-extraction.md#composite-entity-data)|  

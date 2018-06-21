@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 51912bab0a038e99ecf77b8012c4087b029d4508
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264340"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287837"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure-figyelővel riasztások  
 
@@ -148,7 +148,13 @@ A **napló riasztások** riasztások alapulhat:
 2. A **riasztások irányítópult** megjelenik - az összes Azure-riasztás egyesített és megjelenő egyes board amelynek ![riasztási irányítópult](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Az irányítópult felső balról jobbra, egy pillanat alatt az alábbi - jelenítse meg a részletes rákattintva jeleníti meg:
     - *Riasztások indította*: A riasztások számát jelenleg logika teljesül, és a indította állapota
-    - *A riasztási szabályok teljes*: A szám létre riasztási szabályok és az alatta szöveggel, a szám, amellyel jelenleg engedélyezve vannak
+    - *A riasztási szabályok teljes*: A szám létre riasztási szabályok és az alatta szöveggel, a szám, amellyel jelenleg engedélyezve vannak 
+    
+
+        > [!NOTE]
+        > Annak biztosítása érdekében következetes irányítópult adatokkal az összes következik be, riasztások, beleértve az application insights és naplóelemzési; napló riasztások [Bővített egyesített riasztás (előzetes verzió)](monitoring-overview-unified-alerts.md#enhanced-unified-alerts-public-preview) használandó
+  
+  
 4. Égetett riasztások listája látható, amely a felhasználó a részletek megtekintéséhez kattintson
 5. A megállapítás specifikus segítségnyújtás a riasztások; egy beállításokkal a legördülő lista felül adott szűréshez *előfizetés, erőforráscsoport és/vagy az erőforrás*. További, az összes feloldatlan riasztási, használatát a *szűrő riasztás* beállítás található a megadott kulcsszó - adott megfelelő riasztások *neve, riasztás feltételek, az erőforráscsoportot, és tároló-erőforrás*
 

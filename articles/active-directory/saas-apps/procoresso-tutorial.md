@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: e96a34cf0e9fe4f4b0a35790089bda17ced5d818
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 380b7e8fc48b88449cf43fda92af7f9503771777
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231246"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directoryval integrált Procore egyszeri bejelentkezés
 
@@ -254,7 +254,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított saját hozzáf
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további tudnivalókért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586). Ha a hozzáférési panelen Procore SSO csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Procore SSO alkalmazáshoz.
+Ha azt szeretné, az egyszeri bejelentkezés beállításainak ellenőrzéséhez nyissa meg a hozzáférési Panel. A hozzáférési Panel kapcsolatos további tudnivalókért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). Ha a hozzáférési panelen Procore SSO csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az Procore SSO alkalmazáshoz.
 
 ## <a name="additional-resources"></a>További források
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831635"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294849"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Az Azure Blockchain munkaterület központi telepítése
 
@@ -48,7 +48,10 @@ Azure Blockchain munkaterület szükséges a telepítés előtt több előfelté
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Blockchain munkaterület API app regisztrációs
 
-Blockchain munkaterület telepítéséhez szükséges egy Azure AD-alkalmazás regisztrációja. Meg kell regisztrálnia az alkalmazást az Azure Active Directory (Azure AD) bérlő. Használjon egy meglévő bérlői, vagy hozzon létre egy új bérlőt. Meglévő Azure AD-bérlő használ, ha regisztrálja az alkalmazást az Azure AD-bérlő elegendő jogosultság szükséges. Az alkalmazás regisztrációk kell lennie az előfizetéshez rendszergazdai bérlő az előfizetés munkaterület telepítési helyét. Az Azure AD-bérlő további információkért lásd: [az Active Directory-bérlő beszerzése](../active-directory/develop/active-directory-howto-tenant.md) és [alkalmazások integrálása az Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+Blockchain munkaterület telepítéséhez szükséges egy Azure AD-alkalmazás regisztrációja. Meg kell regisztrálnia az alkalmazást az Azure Active Directory (Azure AD) bérlő. Használjon egy meglévő bérlői, vagy hozzon létre egy új bérlőt. Ha egy meglévő Azure AD-bérlő használ, alkalmazások regisztrálja, és adja meg a Graph API engedélyeket az Azure AD-bérlő belül elegendő jogosultság szükséges. Ha nem rendelkezik megfelelő engedélyekkel a meglévő Azure AD-bérlő hozzon létre egy új bérlőt. 
+
+> [!IMPORTANT]
+> Munkaterület nem ugyanazzal a bérlővel megegyezik a segítségével regisztrálja az Azure AD-alkalmazást telepíteni kell. A bérlői erőforrások telepítéséhez szükséges engedélyekkel esetében munkaterület kell telepíteni. Az Azure AD-bérlő további információkért lásd: [az Active Directory-bérlő beszerzése](../active-directory/develop/active-directory-howto-tenant.md) és [alkalmazások integrálása az Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a fiókot a jobb felső sarokban, és váltson a kívánt Azure ad bérlői. A bérlő az előfizetés rendszergazdai bérlő az előfizetés, ahol munkaterület van telepítve, és rendelkezik-e engedélyekkel alkalmazások regisztrálni kell.

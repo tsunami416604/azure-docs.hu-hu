@@ -1,6 +1,6 @@
 ---
-title: Klasszikus Azure-szolgáltatások - PowerShell figyelmeztetések létrehozása
-description: Eseményindító e-mailek, értesítések, a megadott feltételek teljesülnek webhely URL-címek (webhookok), vagy az automation hívni.
+title: Klasszikus Azure-szolgáltatások figyelmeztetések létrehozása a PowerShell használatával |} Microsoft Docs
+description: Indítás, e-maileket vagy értesítések, vagy a webhely URL-címek (webhookok) vagy az automation hívni a megadott feltételek teljesülnek.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: bf9535c53b006469ef93bf7e3b947edd97e9efc7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b08a8f66add45d64085ac05605fe3c7d7f91b705
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262154"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286199"
 ---
-# <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Hozzon létre klasszikus metrika riasztások Azure figyelése az Azure-szolgáltatások - PowerShell
+# <a name="use-powershell-to-create-alerts-for-azure-services"></a>Azure-szolgáltatások figyelmeztetések létrehozása a PowerShell használatával
 > [!div class="op_single_selector"]
 > * [Portal](insights-alerts-portal.md)
 > * [PowerShell](insights-alerts-powershell.md)
@@ -23,88 +23,88 @@ ms.locfileid: "35262154"
 >
 >
 
-## <a name="overview"></a>Áttekintés
-
 > [!NOTE]
 > Ez a cikk ismerteti, hogyan régebbi klasszikus metrika riasztások létrehozásához. Az Azure figyelő most támogatja [újabb, metrika riasztások jobb](monitoring-near-real-time-metric-alerts.md). Ezek a riasztások több metrikát, és lehetővé teszik a dimenzionális metrikák riasztást küld. Újabb metrika riasztások PowerShell támogatása hamarosan elérhető.
 >
 >
 
-Ez a cikk bemutatja, hogyan állíthatja be az Azure klasszikus metrika riasztások PowerShell használatával.  
+Ez a cikk bemutatja, hogyan Azure klasszikus metrika riasztások beállítása a PowerShell használatával.  
 
-A figyelési metrikákat, vagy események, az Azure-szolgáltatások alapuló riasztást kaphat.
+Az Azure-szolgáltatások metrikáját alapján riasztásokat fogadhat, vagy az Azure-ban is fogadhatja az eseményekre vonatkozó riasztást.
 
-* **Metrika értékek** -a riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, és majd ezt követően, hogy a feltétel mikor van már nem teljesül.    
-* **Tevékenység naplóeseményeket** -riasztást aktiválhatók *minden* esemény, vagy csak akkor, ha bizonyos események megtörténtekor. További információt a naplófájl tevékenységriasztásokat [kattintson ide](monitoring-activity-log-alerts.md)
+* **Metrika értékek**: A riasztás elindítja a megadott metrika értékét ebbe a küszöbérték mindkét irányban rendel. Ez azt jelenti, hogy elindítja a mindkét Ha először a feltétel teljesül, majd amikor ez a feltétel már nem van teljesül.    
+* **Tevékenység naplóeseményeket**: riasztást aktiválhatók *minden* esemény vagy bizonyos események esetén. Napló tevékenységriasztásokat kapcsolatos további információkért lásd: [tevékenység létrehozása (klasszikus) napló riasztások](monitoring-activity-log-alerts.md).
 
-A klasszikus metrika riasztások tegye a következőket, amikor elindítja a konfigurálhatja:
+A következő feladatokat hajthatnak végre, amikor elindítja a klasszikus metrika riasztások konfigurálhatja:
 
-* e-mail értesítések küldéséhez a szolgáltatás-rendszergazda és a társadminisztrátorok
-* e-mail küldéséhez megadott további e-maileket.
-* A webhook hívása
-* egy Azure-runbook (csak az Azure portálról) végrehajtásának elindítása
+* A szolgáltatás-rendszergazda és a társadminisztrátorok e-mail értesítések küldéséhez.
+* E-mail küldése további e-mail-címek.
+* A webhook hívja.
+* Egy Azure-runbook (csak az Azure portálról) végrehajtásának elindítása.
 
-Konfigurálhatja, és a riasztási szabályok használatával adatainak beolvasása
+Konfigurálhatja, és a riasztási szabályok adatainak beolvasása a következő helyekről: 
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
-* [Parancssori felület (CLI)](insights-alerts-command-line-interface.md)
+* [Azure parancssori felület (CLI)](insights-alerts-command-line-interface.md)
 * [Az Azure figyelő REST API-n](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-További információkért mindig beírhatja ```Get-Help``` és majd a keresett PowerShell-parancsot.
+További információkért mindig beírhatja ```Get-Help``` követ, amelyekre szüksége van segítségre a PowerShell-parancsot.
 
 ## <a name="create-alert-rules-in-powershell"></a>A riasztási szabályok létrehozása a PowerShell
-1. Bejelentkezik az Azure-ba.   
+1. Jelentkezzen be az Azure-ba.   
 
     ```PowerShell
     Connect-AzureRmAccount
 
     ```
-2. Listáját, az előfizetéssel elérhető rendelkezik. Győződjön meg arról, hogy a megfelelő előfizetés dolgozik. Ha nem, állítsa be a megfelelőt kimenete használatával `Get-AzureRmSubscription`.
+2. Az előfizetéseket, amelyek elérhetők a listájának lekérése. Győződjön meg arról, hogy a megfelelő előfizetés dolgozunk. Ha nem, segítségével könnyebben nyerhet a megfelelő előfizetéshez kimenete `Get-AzureRmSubscription`.
 
     ```PowerShell
     Get-AzureRmSubscription
     Get-AzureRmContext
     Set-AzureRmContext -SubscriptionId <subscriptionid>
     ```
-3. Egy erőforráscsoportot a meglévő szabályok listájában, használja a következő parancsot:
+3. Meglévő erőforráscsoport szabályok listán a következő paranccsal:
 
    ```PowerShell
    Get-AzureRmAlertRule -ResourceGroup <myresourcegroup> -DetailedOutput
    ```
 4. Olyan szabály létrehozására, először rendelkezik néhány fontos adatot kell.
 
-  * A **erőforrás-azonosító** be szeretné állítani egy riasztást az erőforrás
-  * A **metrikai meghatározásainak** az adott erőforrás érhető el
+    - A **erőforrás-azonosító** az erőforrás be szeretné állítani egy riasztást.
+    - A **metrikai meghatározásainak** , amelyek az adott erőforrás érhető el.
 
-     Egy az erőforrás-azonosító eléréséhez módja az Azure-portálon. Ha az erőforrás létrehozása már be van állítva, válassza ki azt a portálon. A következő paneljén válassza *tulajdonságok* alatt a *beállítások* szakasz. **ERŐFORRÁS-azonosító** mező a következő panelen. Egy másik módja a [Azure erőforrás-kezelő](https://resources.azure.com/).
+     Egy az erőforrás-azonosító eléréséhez módja az Azure-portálon. Feltételezve, hogy az erőforrás már létezik, válassza ki azt a portálon. A következő panelen, majd a a **beállítások** szakaszban jelölje be **tulajdonságok**. **ERŐFORRÁS-azonosító** mező a következő panelen. 
+     
+     Az erőforrás-azonosítója használatával is megkapható [Azure erőforrás-kezelő](https://resources.azure.com/).
 
-     A webes alkalmazás például az erőforrás-azonosító
+     Az alábbiakban olvashat egy példa egy webalkalmazást az erőforrás-azonosító:
 
      ```
      /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename
      ```
 
-     Használhat `Get-AzureRmMetricDefinition` egy adott erőforrás minden metrikadefiníciót listájának megtekintéséhez.
+     Használhat `Get-AzureRmMetricDefinition` egy adott erőforrás minden metrikadefiníciót listájának megtekintéséhez:
 
      ```PowerShell
      Get-AzureRmMetricDefinition -ResourceId <resource_id>
      ```
 
-     A következő példa olyan táblát, amely a mérték neve és az adott metrika egységet hoz létre.
+     Az alábbi példa létrehoz egy táblát a metrika neve és az adott metrika egység:
 
      ```PowerShell
      Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 
      ```
-     A Get-AzureRmMetricDefinition elérhető lehetőségek teljes listáját érhető futtatásával `Get-Help Get-AzureRmMetricDefinition -Detailed`.
+     Futtassa a Get-AzureRmMetricDefinition elérhető lehetőségek teljes listájának, `Get-Help Get-AzureRmMetricDefinition -Detailed`.
 5. Az alábbi példa állít be egy webhely erőforráson riasztást. A riasztási eseményindítók, ha 5 percig, majd újra amikor megkapja sincs forgalom 5 percig következetesen kap minden forgalom.
 
     ```PowerShell
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Description "alert on any website activity"
 
     ```
-6. Webhook létrehozása vagy e-mailt küld, ha elindítja a riasztást, először létre kell hoznia az e-mailek és/vagy a webhook. Majd azonnal a szabály létrehozása után a - műveletek címkével, és az alábbi példában látható. Nem társítható webhook vagy e-mailek már hozott létre a szabályokat PowerShell segítségével.
+6. A webhook létrehozása vagy e-mailt küld, ha elindítja a riasztást, először létre kell hoznia az e-mailben vagy webhook. Ezután hozzon létre azonnal a szabályt ezt követően a címkével - műveleteket az alábbi példában látható módon. Már létrehozott szabályok webhookok vagy e-mailek nem lehet társítani.
 
     ```PowerShell
     $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
@@ -113,14 +113,14 @@ További információkért mindig beírhatja ```Get-Help``` és majd a keresett 
     Add-AzureRmMetricAlertRule -Name myMetricRuleWithWebhookAndEmail -Location "East US" -ResourceGroup myresourcegroup -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename -MetricName "BytesReceived" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TimeAggregationOperator Total -Actions $actionEmail, $actionWebhook -Description "alert on any website activity"
     ```
 
-7. Ellenőrizheti, hogy a riasztások elkészültek megfelelően az egyes szabályok alapján.
+7. Tekintse meg az egyes szabályokat, hogy a riasztás létrehozása megfelelően.
 
     ```PowerShell
     Get-AzureRmAlertRule -Name myMetricRuleWithWebhookAndEmail -ResourceGroup myresourcegroup -DetailedOutput
 
     Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
-8. A riasztások törlése. Ezek a parancsok törölje az ebben a cikkben korábban létrehozott szabályokat.
+8. A riasztások törlése. Ezek a parancsok a cikkben korábban létrehozott szabályok törlése.
 
     ```PowerShell
     Remove-AzureRmAlertRule -ResourceGroup myresourcegroup -Name myrule
@@ -129,9 +129,9 @@ További információkért mindig beírhatja ```Get-Help``` és majd a keresett 
     ```
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Figyelés áttekintése](monitoring-overview.md) többek között a adattípusok összegyűjtheti, és figyelje.
+* [Az Azure Figyelés áttekintése](monitoring-overview.md), beleértve a adattípusok összegyűjtheti, és figyelje.
 * Ismerje meg, hogy [riasztások konfigurálása webhookokkal](insights-webhooks-alerts.md).
 * Ismerje meg, hogy [állítsa be a riasztásokat tevékenység naplóeseményeket](monitoring-activity-log-alerts.md).
-* További információ [Azure Automation-forgatókönyveket](../automation/automation-starting-a-runbook.md).
+* További információ [Azure Automation-runbook](../automation/automation-starting-a-runbook.md).
 * Első egy [diagnosztikai naplók gyűjtésére áttekintése](monitoring-overview-of-diagnostic-logs.md) nagyon gyakori gyűjtéséhez részletes a a szolgáltatásban.
 * Első egy [metrikák gyűjtemény áttekintése](insights-how-to-customize-monitoring.md) ellenőrizze, hogy a szolgáltatás elérhető, és a gyors.

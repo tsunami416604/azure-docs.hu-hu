@@ -1,31 +1,39 @@
 ---
-title: Adatok és a műveletek az Azure Search biztonságos |} Microsoft Docs
-description: Az Azure Search biztonsági SOC 2 megfelelőségi, titkosítás, hitelesítés és identitás hozzáférés a felhasználó és az Azure keresési szűrők csoport biztonsági azonosítói alapul.
+title: Az Azure Search biztonsági és az adatok adatvédelmi |} Microsoft Docs
+description: Az Azure Search megfelel SOC 2, a HIPAA vagy a más minősítései közül. Felhasználó és csoport biztonsági azonosítója az Azure Search-en keresztüli kapcsolat és az adatok titkosítás, hitelesítés és identitás hozzáférés szűrők.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: 7db1b6c6f72f3cea7446b5f96dac7cd6e9b4252d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795799"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285729"
 ---
-# <a name="security-and-controlled-access-in-azure-search"></a>Biztonság és ellenőrzött hozzáférés az Azure Search
+# <a name="security-and-data-privacy-in-azure-search"></a>Az Azure Search biztonsági és az adatok adatvédelmi
 
-Az Azure Search van [SOC 2 szabványnak megfelelő](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports), egy átfogó biztonsági architektúra feszítőfa fizikai biztonsági, titkosított adatátvitel, titkosított tárolási és platform kiterjedő szoftver védelmet. Azure Search működés közben csak hitelesített kéréseket fogad el. Másik lehetőségként adhat hozzá felhasználói hozzáférés-vezérlést a tartalomhoz. Ez a cikk a minden egyes rétegben biztonsági koppint, de elsősorban arra irányul, hogy milyen adatok és a műveletek biztosított az Azure Search.
+Átfogó biztonsági szolgáltatásokat és a hozzáférés-vezérlés az Azure Search bizalmas tartalom marad, így biztosításához beépített. Ez a cikk az Azure Search beépített biztonsági szolgáltatásait és szabványok megfelelőségi enumerálása.
 
-![Biztonsági rétegek blokk ábrája](media/search-security-overview/azsearch-security-diagram.png)
+Azure Search-biztonsági architektúrája a fizikai biztonsági, titkosított adatátvitel, titkosított tárolási és platform kiterjedő szabványoknak való megfelelés is. Azure Search működés közben csak hitelesített kéréseket fogad el. Szükség esetén a biztonsági szűrők felhasználói hozzáférés-vezérlést a tartalom is hozzáadhat. Ez a cikk a minden egyes rétegben biztonsági koppint, de elsősorban arra irányul, hogy milyen adatok és a műveletek biztosított az Azure Search.
 
-## <a name="physical-security"></a>Fizikai biztonság
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Szabványoknak való megfelelés: ISO 27001, SOC 2 HIPAA
 
-A Microsoft azon adatközpontjainak iparágvezető fizikai biztonságot, és egy nagy mennyiségű portfóliót szabványok és a megfelelő. További tudnivalókért keresse fel a [globális adatközpontok](https://www.microsoft.com/cloud-platform/global-datacenters) oldalon, vagy tekintse meg egy rövid videót a center security adatokon.
+Szabványoknak való megfelelés részleges listáját tartalmazza SOC 2 típus 2 és a HIPAA általánosan elérhető szolgáltatások. Előzetes verziójú funkciók általánosan rendelkezésre álló részeként hitelesített, és nem használható a konkrét szabványokkal követelményeknek megfelelő megoldások. Megfelelőségi hitelesítő részletes ismertetését lásd: [áttekintése a Microsoft Azure megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) és a [biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trustcenter). 
 
-> [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
+A következő szabványok hitelesítő lett [. június 2018 meghirdetik](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/).
+
++ [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
++ [SOC 2 típus 2 megfelelőségi](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) nyissa meg a teljes jelentés [Azure - és Azure Government SOC 2 II jelentés](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
++ [Egészségügyi biztosítás hordozhatóságáról és elszámolási kötelezettségéről szóló törvény (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (21 CFR 11. rész)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
++ [1. szintű PCI DSS](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Ausztrália IRAP nem besorolt DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 ## <a name="encrypted-transmission-and-storage"></a>Titkosított átvitel, illetve tárolás
 
@@ -35,15 +43,14 @@ Titkosítási bővíti a teljes indexelése folyamat során: a kapcsolatok, átv
 |----------------|-------------|
 | Az átvitel során titkosítás | Az Azure Search 443-as HTTPS-porton figyel. A platformon Azure-szolgáltatásokhoz való kapcsolatok vannak titkosítva. |
 | Titkosítás inaktív állapotban | Titkosítási teljesen internalized indexelési folyamat, nincs mérhető hatással indexelési idő befejezési vagy index mérete. Az automatikusan megtörténik az indexelő minden, a növekményes frissítések olyan indexet, amely nem teljesen titkosítottak (január 2018 előtt létrehozott) is.<br><br>Belsőleg, titkosítás alapul [Azure Storage szolgáltatás titkosítási](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), 256 bites [AES titkosítási](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
-| [SOC 2 megfelelőségi](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) | Összes keresőszolgáltatást teljesen AICPA SOC 2 szabványnak megfelelő, az Azure Search biztosít minden adatközpontokban. Tekintse át a teljes jelentés, keresse fel [Azure - és Azure Government SOC 2 II jelentés](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). |
 
 Titkosítási tanúsítványok és titkosítási kulcsok Microsoft belsőleg kezeli, és egységesen alkalmazza az Azure Search belső. Nem titkosítás engedélyezése vagy letiltása, kezelése vagy helyettesítse a saját kulcsok és a portálon vagy programozottan titkosítási beállítások megtekintéséhez. 
 
 Titkosítását a 2018 január 24 jelentették, és minden szolgáltatásrétegeiben használt funkciókkal, beleértve a megosztott (ingyenes) szolgáltatásokat, minden régióban vonatkozik. Teljes titkosítás indexek ezen időpont előtt létre kell dobni, és az újonnan létrehozott sorrendben történik a titkosítás. Ellenkező esetben csak az új után január 24 adattitkosítás.
 
-## <a name="azure-wide-logical-security"></a>Logikai Azure kiterjedő olyan biztonságot
+## <a name="azure-wide-user-access-controls"></a>Azure-felhasználói hozzáférés-vezérlést
 
-Több biztonsági mechanizmus áll, az Azure-verem keresztül elérhető, és így automatikusan elérhető, az Azure Search erőforrások hoz létre.
+Több biztonsági mechanizmus áll rendelkezésre Azure kiterjedő, és így automatikusan elérhető, az Azure Search erőforrások létrehozása.
 
 + [Az előfizetés vagy az erőforrás törlésének megakadályozása szintet zárolásainak](../azure-resource-manager/resource-group-lock-resources.md)
 + [Szerepköralapú hozzáférés-vezérlés (RBAC) történő hozzáférés szabályozása érdekében információkat és felügyeleti műveletek](../role-based-access-control/overview.md)
@@ -67,7 +74,7 @@ Hitelesítés kéréseknek, ahol minden kérelmet kötelező kulcs, egy művelet
 
 Az Azure Search egyedi index nincs egy biztonságos objektum. Ehelyett az index a hozzáférést a szolgáltatási rétegben (olvasási vagy írási hozzáférése), egy művelet keretében együtt határozza meg.
 
-Végfelhasználói hozzáférése esetén a lekérdezésekre vonatkozó kérelmek szerkezeti is az alkalmazás egy lekérdezési kulcsot, amely minden kérést, csak olvasható, és tartalmazza a megadott index az alkalmazás által használt protokoll használatával kapcsolódó levelezőprogramokkal. A lekérdezési kérelemben nincs való csatlakozás indexeket, vagy több index egyidejűleg eléréséhez az összes kérelmet a célzott egyetlen index definícióját. A lekérdezés kérelem magát (a kulcs és egy egyetlen céllal index) szerkezete, a biztonsági határ határozza meg.
+A végfelhasználói hozzáférése lekérdezési kérelmek csatlakozni egy lekérdezési kulcsot, amely minden kérést, csak olvasható, és a megadott index az alkalmazás által használt bele segítségével is struktúra. A lekérdezési kérelemben nincs való csatlakozás indexeket, vagy több index egyidejűleg eléréséhez az összes kérelmet a célzott egyetlen index definícióját. A lekérdezés kérelem magát (a kulcs és egy egyetlen céllal index) konstrukció, a biztonsági határ határozza meg.
 
 Indexek rendszergazdai és fejlesztői hozzáférést magánháztartás: mindkét létrehozása, törlése és a szolgáltatás által kezelt objektumokat frissíteni írási hozzáférésre van szüksége. Bárki, aki egy adminisztrációs kulcsot a szolgáltatáshoz való olvasása, módosítása és törlése ugyanazt a szolgáltatást az index. A védelem indexek rosszindulatú vagy véletlen törlése ellen a belső fejlesztésű verziókövetésének kód eszközök felcserélni egy nemkívánatos index törlésére, valamint a módosítás a remedy. Az Azure Search rendelkezésre állásának biztosításához a fürtön belüli feladatátvétel rendelkezik, de nem tárolja, és nem hajtható végre a saját fejlesztésű kódot létrehozni vagy betölteni indexek használt.
 
@@ -106,6 +113,12 @@ A következő táblázat összefoglalja az Azure Search engedélyezett művelete
 | Rendszer információkat, például visszaadó statisztika, számok és objektumok listájának lekérdezése. | Adminisztrációs kulcsot, az erőforrás-(tulajdonos, közreműködő, olvasó) RBAC |
 | Adminisztrációs kulcsok kezelése | Adminisztrációs kulcsot, RBAC tulajdonosa vagy Közreműködője az erőforráson. |
 | Lekérdezési kulcsok kezelése |  Adminisztrációs kulcsot, RBAC tulajdonosa vagy Közreműködője az erőforráson.  |
+
+## <a name="physical-security"></a>Fizikai biztonság
+
+A Microsoft azon adatközpontjainak iparágvezető fizikai biztonságot, és egy nagy mennyiségű portfóliót szabványok és a megfelelő. További tudnivalókért keresse fel a [globális adatközpontok](https://www.microsoft.com/cloud-platform/global-datacenters) oldalon, vagy tekintse meg egy rövid videót a center security adatokon.
+
+> [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
 ## <a name="see-also"></a>Lásd még

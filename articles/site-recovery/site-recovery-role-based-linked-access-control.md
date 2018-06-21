@@ -1,27 +1,19 @@
 ---
 title: Szerepköralapú hozzáférés-vezérlés használatával kezelheti az Azure Site Recovery |} Microsoft Docs
 description: Ez a cikk ismerteti, hogyan alkalmazza, és szerepköralapú hozzáférés-vezérlést (RBAC) használata az Azure Site Recovery központi telepítések felügyeletéhez szükséges
-services: site-recovery
-documentationcenter: ''
-author: mayanknayar
-manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/11/2018
+author: mayanknayar
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: manayar
-ms.openlocfilehash: 072e3bc2e1a13476b43fb72c8631453e2ffa3b27
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 9d1d6aac463e5b9cf9994bfefac1aa1c38bb1e03
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071605"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284741"
 ---
-# <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>Azure Site Recovery központi telepítések felügyeletéhez szükséges szerepköralapú hozzáférés-vezérlés használatával
+# <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>A Site Recovery-hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával
 
 Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használata, feladatkörök elkülönítse a munkacsoporton belül, és csak különleges hozzáférési engedélyeket a felhasználóknak adott feladatok elvégzéséhez szükség szerint.
 
@@ -33,7 +25,7 @@ Az Azure Site Recovery 3 beépített szerepkörök, amelyekkel szabályozhatja a
 
 Ha még nagyobb mértékben vezérelheti a saját szerepköröket definiál, lásd: hogyan [egyéni szerepkörök létrehozása](../role-based-access-control/custom-roles.md) az Azure-ban.
 
-## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>Új virtuális gépek replikáció engedélyezése szükséges engedélyek
+## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>Új virtuális gépek replikációjának engedélyezéséhez szükséges engedélyek
 Ha Azure-bA az Azure Site Recovery segítségével új virtuális gép replikálódik, a kapcsolódó felhasználó a hozzáférési szintek érvényesítése annak érdekében, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a Site Recovery számára a megadott Azure-erőforrások használatára.
 
 Ahhoz, hogy egy új virtuális gép replikálását, a felhasználóknak rendelkezniük kell:

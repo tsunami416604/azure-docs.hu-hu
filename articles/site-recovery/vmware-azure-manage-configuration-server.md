@@ -1,18 +1,17 @@
 ---
 title: A konfigurációs kiszolgáló, az Azure Site Recovery VMware vész-helyreállítási kezelése |} Microsoft Docs
 description: Ez a cikk az Azure-bA az Azure Site RecoveryS VMware vész-helyreállítási meglévő konfigurációs kiszolgáló kezelését ismerteti.
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 06/04/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 64f5f2105a9048d649503b0790231676182a4c4f
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 753e123c660b1aacea1157157f0e580e15c47536
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737503"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287405"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware virtuális gépek esetén a kiszolgáló kezelése
 

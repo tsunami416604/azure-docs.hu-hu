@@ -1,22 +1,19 @@
 ---
 title: Az Azure Site Recovery folyamat kiszolgáló kezelése |} Microsoft Docs
 description: Ez a cikk ismerteti a VMware virtuális és fizikai kiszolgálók replikálása az Azure Site Recovery beállítása folyamat kiszolgáló kezeléséhez.
-services: site-recovery
 author: AnoopVasudavan
-manager: gauravd
-editor: ''
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: anoopkv
-ms.openlocfilehash: 096b2890d41402448809ae87759fcd6b67bee2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d1f880a5ec9f0343891999ef3bad11279cb0cfe6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29812739"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285530"
 ---
-# <a name="manage-process-servers"></a>Folyamat-kiszolgálók kezelése
+# <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 
 A folyamatkiszolgáló használható, ha VMware virtuális gépek vagy fizikai kiszolgálók Azure replikál alapértelmezés szerint telepítve van a helyszíni konfigurációs kiszolgáló gépen. Nincsenek példányok, amelyben állítson be különálló folyamatkiszolgálót kell néhány:
 

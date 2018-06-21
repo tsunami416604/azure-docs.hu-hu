@@ -3,15 +3,15 @@ title: Az Azure Site Recovery architektúrájáról Azure replikációs VMware |
 description: Ez a cikk áttekintést összetevők és használható, ha a helyszíni VMware virtuális gépek replikálása Azure-bA az Azure Site Recovery architektúra
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: c1aa89f14edab7d0e560c20d6bc48480aff1631f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61c283c178936c98a9a18509c1b46035e48f8f24
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30184581"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285270"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware Azure replikációs-architektúra
 
@@ -42,7 +42,7 @@ Az Azure vész-helyreállítási vagy áttelepítési VMware beállításával k
 3. **A replikáció beállítása**. Válassza ki a helyét a replikálni kívánt. Konfigurálja a forrás replikációs környezet egyetlen helyszíni VMware virtuális gép (a konfigurációs kiszolgáló) rendszert futtató összes az helyszíni, amelyekre szüksége van a Site Recovery-összetevők beállítását. A telepítés után a konfigurációs kiszolgáló számítógépén a Recovery Services-tároló rögzítheti. Ezután válassza ki a cél beállításai. [További információk](vmware-azure-tutorial.md).
 4. **Hozzon létre egy replikációs házirendet**. Létrehozhat egy replikációs házirendet, amely meghatározza, hogyan történjen a replikáció. 
     - **Helyreállítási Időkorlát küszöbértéke**: A figyelés beállítás állapotok, ha a replikáció a megadott időn belül nem történik, egy riasztást (és választhatóan egy e-mailt) jelenik meg. Például beállíthatja a helyreállítási Időkorlát küszöbértéke – 30 percet, és egy probléma megakadályozza, hogy a replikációs 30 percig le, ha az jön létre. Ez a beállítás nincs hatással a replikáció. Replikáció folyamatos, és a helyreállítási pontokat hoz létre néhány percenként
-    - **Megőrzési**: helyreállítási pont megőrzési határozza meg, hogy mennyi ideig helyreállítási pontok kell tartani az Azure-ban. Adjon meg egy értéket 0 és 24 óra, a prémium szintű storage, vagy akár 72 óra szabványos tárolására. A legutóbbi helyreállítási pontot, vagy egy tárolt ponthoz való feladatátvételi Igen, ha a nullánál nagyobb értéket. A megőrzési időszak után a helyreállítási pontok kiürítésekor.
+    - **Megőrzési**: helyreállítási pont megőrzési határozza meg, hogy mennyi ideig helyreállítási pontok kell tartani az Azure-ban. Adjon meg egy értéket 0 és 24 óra, a prémium szintű storage, vagy akár 72 óra szabványos tárolására. Átveheti a legutóbbi helyreállítási pontot, vagy egy tárolt pontot, ha a nullánál nagyobb értéket. A megőrzési időszak után a helyreállítási pontok kiürítésekor.
     - **Összeomlás-konzisztens pillanatképek**: alapértelmezés szerint a Site Recovery összeomlás-konzisztens pillanatképek vesz igénybe, és helyreállítási pontok velük hoz létre a néhány percenként. A helyreállítási pont összeomlás-konzisztens, ha a egymáshoz az összetevők mindegyike írási magasrendű konzisztens, azonnali, mint a helyreállítási pont létrehozása. Jobb megértése érdekében, képzelhető el, a számítógép merevlemez-meghajtón lévő adatok állapotának áramkimaradás vagy hasonló esemény után. Összeomlás-konzisztens helyreállítási pontot az általában elegendő, ha az alkalmazást úgy tervezték, hogy egy összeomlási adatok inkonzisztenciákat nélkül helyreállíthatók.
     - **Alkalmazáskonzisztens pillanatképek**: Ha ez az érték nem nulla, a mobilitási szolgáltatást a virtuális gépen kísérletek fájl rendszer alkalmazáskonzisztens pillanatképeket és a helyreállítási pontok létrehozásához. Az első pillanatfelvétel kezdeti replikáció befejezése után. Ezt követően pillanatfelvételeket készít a megadott gyakorisággal. Helyreállítási pont alkalmazáskonzisztens akkor, ha írási-sorrendje nem egységes, futó alkalmazások végrehajtani a műveleteket, és kiüríteni a lemezre (alkalmazás leépítése) puffer. Alkalmazáskonzisztens helyreállítási pontokat például az SQL, Oracle, és az Exchange adatbázis-alkalmazások használata ajánlott. Ha egy összeomlás-konzisztens pillanatkép elegendő, ez az érték 0 állítható be.  
     - **Több virtuális Gépre kiterjedő konzisztencia**: nem kötelezően hozhat létre egy replikációs csoport. Ezután, amikor a replikáció engedélyezése virtuális gépek gyűjthet, hogy a csoportba. A replikációt a virtuális gépek replikálásához csoportosíthatja, és megosztott összeomlás-konzisztens és alkalmazáskonzisztens helyreállítási pontokat, amikor a feladatátvételt. Ezt a beállítást használjon gondosan, mivel több számítógépen összegyűjteni szükséges pillanatképként számítási feladat teljesítményére gyakorolt. Csak erre, ha a virtuális gépek futtatásához ugyanazokat a munkaterhelés és kell lenniük a konzisztens, és a virtuális gépek rendelkezik hasonló biztosítsanak. Legfeljebb 8 virtuális gépeket adhat hozzá egy csoporthoz. 

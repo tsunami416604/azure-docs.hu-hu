@@ -1,6 +1,6 @@
 ---
-title: Szerepköralapú hozzáférés-vezérlést Azure RBAC hibaelhárítása |} Microsoft Docs
-description: Segítség problémák vagy a szerepköralapú hozzáférés-vezérlés erőforrások kapcsolatos kérdésekre.
+title: Hibaelhárítás az Azure RBAC |} Microsoft Docs
+description: Azure szerepköralapú hozzáférés-vezérlés (RBAC) elhárítása.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,22 +15,22 @@ ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5ca43fe3a8ff27ff4a811aeb26abf4a6f26d8b35
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267170"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295397"
 ---
-# <a name="troubleshooting-azure-role-based-access-control"></a>Hibaelhárítási Azure szerepköralapú hozzáférés-vezérlés 
+# <a name="troubleshooting-rbac-in-azure"></a>Az Azure RBAC hibaelhárítása
 
-A cikk a szerepköröket, meghatározott hozzáférési jogosultságai kapcsolatos gyakori kérdésekre ad választ, megállapításához, hogy mi történik, ha használja a szerepkörök az Azure portál és a részleg-hozzáférési problémák megoldása. Ezek a szerepkörök az összes erőforrástípus terjed ki:
+Ebben a cikkben megválaszolunk szerepköralapú hozzáférés-vezérlést (RBAC) kapcsolatos gyakori kérdéseket megállapításához, hogy mi történik, ha használja a szerepkörök az Azure portál és a részleg-hozzáférési problémák megoldása. Ezek a szerepkörök az összes erőforrástípus terjed ki:
 
 * Tulajdonos  
 * Közreműködő  
 * Olvasó  
 
-Tulajdonos és közreműködő szerepkörrel rendelkező személyek mindkét megoldást vezet a teljes hozzáféréssel rendelkeznek, de a közreműködői nem hozzáférést más felhasználóknak vagy csoportoknak. Részek lesznek még ennél is érdekesebb megoldást az olvasó szerepkört, hogy az adott azt fogja szánjon némi időt. Tekintse meg a [szerepköralapú hozzáférés-vezérlés a get-started cikk](role-assignments-portal.md) talál részletes hozzáférést.
+Tulajdonos és közreműködő szerepkörrel rendelkező személyek mindkét megoldást vezet a teljes hozzáféréssel rendelkeznek, de a közreműködői nem tud hozzáférést más felhasználóknak vagy csoportoknak. Részek lesznek még ennél is érdekesebb megoldást az olvasó szerepkört, hogy az adott azt fogja szánjon némi időt. Információ a engedélyezi a hozzáférést, seee [RBAC és az Azure-portálon-hozzáférés kezelése](role-assignments-portal.md).
 
 ## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>Írási képességek
@@ -97,9 +97,7 @@ Szükséges **írási** is a hozzáférést a **virtuális gép**, és a **erőf
 
 Ha sem tudja már használni ezen csempék, kérje meg a rendszergazdát az erőforráscsoport közreműködői elérésére.
 
-## <a name="see-more"></a>Részletek
-* [Szerepköralapú hozzáférés-vezérlés](role-assignments-portal.md): az RBAC első lépései az Azure portálon.
-* [Beépített szerepkörök](built-in-roles.md): részletes információkat szolgáltatva a szerepköröket, az RBAC szabványos tartalmazza.
-* [Egyéni szerepkörök az Azure RBAC](custom-roles.md): megtudhatja, hogyan hozzon létre egyéni szerepkörök az access igényeihez.
-* [Access módosítási előzményeit jelentés létrehozása](change-history-report.md): nyomon követjük, hogy az RBAC más szerepkörök hozzárendeléséről.
+## <a name="next-steps"></a>További lépések
+* [Az RBAC és az Azure-portálon-hozzáférés kezelése](role-assignments-portal.md)
+* [Az RBAC módosítások tevékenység naplók megtekintése](change-history-report.md)
 

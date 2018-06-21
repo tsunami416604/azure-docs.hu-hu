@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299977"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293204"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Naplóelemzés B2B kommunikáció
 
@@ -56,39 +56,31 @@ Ahhoz, hogy nyomon követheti a Logic Apps alkalmazást B2B messages Naplóelemz
 
    ![A Naplóelemzési munkaterület kiválasztása](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. A **felügyeleti**, válassza a **OMS-portálon**.
+3. A **felügyeleti**, válassza a **áttekintése**.
 
-   ![Válassza ki az OMS-portálon](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Válassza ki a Log Analytics-portálról](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Miután a kezdőlap nyílik meg, válassza ki azt **megoldások gyűjtemény**.    
+4. Miután a kezdőlap nyílik meg, válassza ki azt **Hozzáadás** Logic Apps B2B megoldás telepítéséhez.    
+   ![Válassza ki a megoldások gyűjteménye](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   ![Válassza ki a megoldások gyűjteménye](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
-
-5. A **minden megoldás**, keresése és kiválasztása **Logic Apps B2B**.     
-
-   ![Válassza ki a Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
-
-6. A **Logic Apps B2B**, válassza a **Hozzáadás**.
-
-   ![Válasszon hozzáadása](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
+5. A **megoldások**, található, és hozzon létre **Logic Apps B2B** megoldás.     
+   ![Válassza ki a Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
    A kezdőlapon, a csempe **Logic Apps B2B üzenetek** csomópontként jelenik meg. 
    Ez a csempe frissíti az üzenetek száma, amikor a B2B üzenetek feldolgozása.
-
-   ![Logic Apps B2B üzenetek csempe a kezdőlap](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
 ## <a name="track-message-status-and-details-in-log-analytics"></a>Messaging-állapot és a részletek a Naplóelemzési nyomon követése
 
-1. Után a B2B üzenetek feldolgozása, megtekintheti az állapot és az üzenetek adatait. A kezdőlapon, válassza ki a **Logic Apps B2B üzenetek** csempére.
+1. Után a B2B üzenetek feldolgozása, megtekintheti az állapot és az üzenetek adatait. A – Áttekintés lapon válassza ki a **Logic Apps B2B üzenetek** csempére.
 
-   ![Frissített üzenetek száma](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+   ![Frissített üzenetek száma](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
    > Alapértelmezés szerint a **Logic Apps B2B üzenetek** csempe megjeleníti az adatokat egy nap alapján. Az adatok hatókör egy másik időköz módosításához válassza ki a hatókör vezérlő az oldal tetején:
    > 
-   > ![Adatok hatókörének módosítása](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
+   > ![Adatok hatókörének módosítása](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
 2. Az üzenet állapota irányítópult megjelenése után további részleteket az adott üzenettípus, megjelenítheti az adatokat egy nap alapján. Válassza ki a csempéjére a hozzá tartozó **AS2**, **X12**, vagy **EDIFACT**.

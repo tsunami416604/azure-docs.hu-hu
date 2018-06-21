@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: f532ed9ad1254aa8082f212b8190f83bb71767e9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363124"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293118"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Mi az a végpont hozzáférés-vezérlési listaként?
 
 > [!IMPORTANT]
 > Azure két különböző rendelkezik [üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) az erőforrások létrehozására és kezelésére vonatkozó: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a Resource Manager üzembe helyezési modellben. 
 
-Végpont hozzáférés-vezérlési listaként (ACL) egy biztonsági fejlesztés az Azure-telepítés érhető el. Hozzáférés-vezérlési Listában lehetővé teszi a szelektív módon engedélyezheti vagy megtagadhatja a forgalom egy virtuális gép végpont számára. Ez a csomag szűrési lehetőség egy további biztonsági réteget biztosít. Csak hálózati ACL-listát is megadhat. Nem adhat meg egy hozzáférés-vezérlési listája egy virtuális hálózathoz vagy egy bizonyos alhálózat virtuális hálózat található. Javasoljuk, hogy hálózati biztonsági csoportokkal (NSG-k) helyett a hozzáférés-vezérlési listákat, amikor csak lehetséges. Az NSG-k kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md)
+Végpont hozzáférés-vezérlési listaként (ACL) egy biztonsági fejlesztés az Azure-telepítés érhető el. Hozzáférés-vezérlési Listában lehetővé teszi a szelektív módon engedélyezheti vagy megtagadhatja a forgalom egy virtuális gép végpont számára. Ez a csomag szűrési lehetőség egy további biztonsági réteget biztosít. Csak hálózati ACL-listát is megadhat. Nem adhat meg egy hozzáférés-vezérlési listája egy virtuális hálózathoz vagy egy bizonyos alhálózat virtuális hálózat található. Javasoljuk, hogy hálózati biztonsági csoportokkal (NSG-k) helyett a hozzáférés-vezérlési listákat, amikor csak lehetséges. Az NSG-k használatakor végpont hozzáférés-vezérlési lista helyett, és érvényüket vesztik. Az NSG-k kapcsolatos további információkért lásd: [hálózati biztonsági csoport – áttekintés](security-overview.md)
 
 Hozzáférés-vezérlési listákat a PowerShell vagy az Azure portál segítségével konfigurálhatók. A hálózati hozzáférés-vezérlési lista beállítása a PowerShell használatával: [kezelése hozzáférés-vezérlési lista PowerShell-lel végpontok](virtual-networks-acl-powershell.md). A hálózati hozzáférés-vezérlési lista beállítása az Azure portál használatával: [beállítása végpontok egy virtuális géphez](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

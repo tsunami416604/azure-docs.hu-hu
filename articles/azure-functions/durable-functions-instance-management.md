@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d6f7c924491614190952ce620f33572307a22c22
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265435"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287748"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Példányok a tartós függvények (az Azure Functions) kezelése
 
@@ -216,6 +216,41 @@ A válasz lekérése a vezénylési példány időigényétől függően két ol
 
 > [!NOTE]
 > A webhook URL-címének formátuma eltérőek lehetnek attól függően, hogy az Azure Functions állomás verziójának. A fenti példában az Azure Functions 2.0 állomás van.
+
+## <a name="retrieving-http-management-webhook-urls"></a>HTTP felügyeleti Webhook URL-címek lekérése
+
+Külső rendszerek kommunikálhatnak a webhook URL-címeket, amelyek szerepelnek az alapértelmezés szerinti válasz ismertetett keresztül tartós funkciók [HTTP API URL-cím felderítési](durable-functions-http-api.md). Azonban a webhook URL-címeket is elérhető programozott módon a vezénylési ügyfél vagy egy tevékenység függvényben keresztül a [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) metódusában a [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)osztály. 
+
+[CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) egy paraméterrel rendelkezik:
+
+* **InstanceId**: példány egyedi azonosítója.
+
+A metódus egy példányát adja vissza a [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) karakterlánc a következő tulajdonságokkal:
+
+* **Azonosító**: a vezénylési Példányazonosítója (meg kell egyeznie a `InstanceId` bemeneti).
+* **StatusQueryGetUri**: az állapot a vezénylési példány URL-CÍMÉT.
+* **SendEventPostUri**: A "rhető esemény" a vezénylési példány URL-CÍMÉT.
+* **TerminatePostUri**: A "leáll" példány URL-CÍMÉT a vezénylési.
+
+Tevékenység funkciók küldhet példányának [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) a külső rendszerekkel figyelni, vagy az orchestration az események:
+
+```csharp
+#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
+
+public static void SendInstanceInfo(
+    [ActivityTrigger] DurableActivityContext ctx,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [DocumentDB(
+        databaseName: "MonitorDB",
+        collectionName: "HttpManagementPayloads",
+        ConnectionStringSetting = "CosmosDBConnection")]out dynamic document)
+{
+    HttpManagementPayload payload = client.CreateHttpManagementPayload(ctx.InstanceId);
+
+    // send the payload to Cosmos DB
+    document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

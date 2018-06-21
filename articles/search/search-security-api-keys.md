@@ -8,18 +8,24 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 4215795b7cd2a25427a3ce9b3cde16bfc69cb009
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2ec720f26cfbadb9963ff3991ad1795c9b30c136
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185943"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284981"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Hozzon létre és api-kulcsok az Azure Search szolgáltatás kezelése
 
-Összes kérelmet, a keresési szolgáltatás kell egy api-kulcs lett létrehozva, kifejezetten a szolgáltatás számára. Az api-kulcsot, akkor az egyetlen eszköz a keresési szolgáltatás végpontjának való hozzáférés hitelesítéséhez. 
+Összes kérelmet, a keresési szolgáltatás kell egy csak olvasható api-kulcs lett létrehozva, kifejezetten a szolgáltatás számára. Az api-kulcs az egyetlen módszer a keresési szolgáltatás végpontjának való hozzáférés hitelesítéséhez, és tartalmaznia kell minden kérést. A [REST megoldások](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), az api-kulcs általában sor kerül a kérelem fejlécében. A [.NET megoldások](search-howto-dotnet-sdk.md#core-scenarios), egy kulcs gyakran szerepel a konfigurációs beállításokat, és majd átadása pedig [hitelesítő adatok](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (adminisztrációs kulcsot) vagy [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (lekérdezési kulcsot) a [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
+
+Kulcsok szolgáltatás kiépítése során jönnek létre a keresési szolgáltatáshoz. Megtekintheti és kulcsértékek az beszerzése a [Azure-portálon](https://portal.azure.com).
+
+![Portállapon, beállítások, a kulcsok szakasz](media/search-manage/azure-search-view-keys.png)
+
+## <a name="what-is-an-api-key"></a>Mi az az api-kulcsát
 
 Api-kulcsát: véletlenszerűen generált számok és betűk álló karakterlánc. Keresztül [szerepköralapú engedélyeinek](search-security-rbac.md), törölheti vagy a kulcsok beolvasása a, de nem egy kulcs cserélje le a felhasználói jelszó vagy Active Directory keresési műveletek eléréséhez használják elsődleges hitelesítési módszert. 
 

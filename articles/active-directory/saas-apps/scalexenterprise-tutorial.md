@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 502531ef14858316df8fc7d92fab7ce9160efb20
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18ac9fcf5a8b0c66d3c9e3d3b4e3064099e201c4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210421"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287609"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Oktatóanyag: Azure Active Directory-integráció a ScaleX vállalati
 
@@ -255,7 +255,7 @@ Ebben a szakaszban engedélyezze Britta Simon szerint ScaleX vállalati való ho
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Kattintson a hozzáférési panelen ScaleX vállalati csempére, akkor fogja lekérni automatikusan bejelentkezett az ScaleX vállalati alkalmazás. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+Kattintson a hozzáférési panelen ScaleX vállalati csempére, akkor fogja lekérni automatikusan bejelentkezett az ScaleX vállalati alkalmazás. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="additional-resources"></a>További források

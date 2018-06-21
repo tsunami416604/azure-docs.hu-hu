@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1a82718b17c623a59b0ea03297f47d54ff49eced
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0cd42f5863293dfe5b52ab1fd99c2fc04aa9aeee
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225952"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Oktatóanyag: Azure Active Directoryval integrált LCVista
 
@@ -224,7 +224,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
     
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése. Kattintson a hozzáférési panelen LCVista csempére, irányítja a szervezet bejelentkezési lapon. Sikeres bejelentkezés után meg fog kell bejelentkezett az LCVista alkalmazására. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](https://msdn.microsoft.com/library/dn308586).
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése. Kattintson a hozzáférési panelen LCVista csempére, irányítja a szervezet bejelentkezési lapon. Sikeres bejelentkezés után meg fog kell bejelentkezett az LCVista alkalmazására. A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
