@@ -417,6 +417,7 @@
 #### Oktatóanyagok
 ##### [Klasszikus MFA-szabályzat migrálása](active-directory-conditional-access-migration-mfa.md)
 #### Alapelvek
+##### [Alapvető védelem](active-directory-conditional-access-baseline-protection.md)
 ##### [Feltételek](active-directory-conditional-access-conditions.md)
 ##### [Helyfeltételek](active-directory-conditional-access-locations.md)
 ##### [Vezérlők](active-directory-conditional-access-controls.md)

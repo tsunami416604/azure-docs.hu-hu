@@ -36,6 +36,8 @@
       href: cdn-china-delivery.md
     - name: HTTP/2-támogatás
       href: cdn-http2.md
+    - name: Migrálás Standard Verizonról Prémium Verizonra
+      href: cdn-migrate.md
 - name: Útmutatók
   items:
     - name: Tartalom optimalizálása

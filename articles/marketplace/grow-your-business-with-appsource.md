@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: d93f66282e3f735565389904c65436ed2ad79480
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 11a4fe4cd7b4b08b4468e08bba754518d27abb99
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825157"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309538"
 ---
 # <a name="grow-your-business-with-appsource"></a>Cége AppSource  
 AppSource használja, ha található, próbálja meg, és üzleti szoftverek (SaaS) szolgáltatás üzleti felhasználók megszólítása, alkalmazások és szolgáltatások végrehajtása a meghajtó üzleti eredmények számítanak, és csökkentse idő érték.  
@@ -32,8 +32,7 @@ AppSource használja, ha található, próbálja meg, és üzleti szoftverek (Sa
 | ***Alkalmazások termelékenység, hatékonyságát és üzleti elemzések készítése javítása érdekében*** | Alkalmazások biztosít üzletágak, például az ügyfélszolgálat, HR, műveletek |  
 | ***Partnert tapasztalt megvalósítása érdekében az alkalmazások az ügyfél számára egyedi követelmények*** | Dynamics 365, a Power BI, PowerApps és partneralkalmazások előre jelezhető eredményekkel fájlmegosztásba üzleti felhasználók alapuló megoldásokat Consulting Services tanácsadó szolgálat ajánlatok katalógusba |  
 
-<!-- # Grow your business with AppSource  -->
-Azure piactér és AppSource is a Microsoft közös Ugrás piacra jutási tevékenységek indító pontokat és üzleti növekedésének megfelelően lendítõtömeggel. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a Piactéri ajánlat lehet a felhő üzleti motor centerpiece. Nincs részt vevő díja van. Microsoft-ügyfél látogasson el a kirakatokkal a piactéren naponta keresse meg a megfelelő alkalmazások és szolgáltatások ügyfele számára az üzleti növelése érdekében. Microsoft cél szervezetek a megoldásaival való kapcsolódáshoz, és a Microsoft és a Microsoft-partnerek szolgáltatásokhoz.  
+<!-- # Grow your business with AppSource  --> Azure piactér és AppSource is a Microsoft közös Ugrás piacra jutási tevékenységek indító pontokat és üzleti növekedésének megfelelően lendítõtömeggel. Indítsa el az előléptetés, igény szerinti létrehozásának és az értékesítési és közös használ, a Piactéri ajánlat lehet a felhő üzleti motor centerpiece. Nincs részt vevő díja van. Microsoft-ügyfél látogasson el a kirakatokkal a piactéren naponta keresse meg a megfelelő alkalmazások és szolgáltatások ügyfele számára az üzleti növelése érdekében. Microsoft cél szervezetek a megoldásaival való kapcsolódáshoz, és a Microsoft és a Microsoft-partnerek szolgáltatásokhoz.  
 
 ## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Üzleti előnyök csatlakoztatása a cloud piactér  
 Miért csatlakoznia kell a piactéren kirakatokkal sok kényszerítő van. Az alábbiakban az előnyöket kifejezetten listázása a felkínál AppSource cége nyújt segítséget:  
@@ -53,7 +52,7 @@ Miért csatlakoznia kell a piactéren kirakatokkal sok kényszerítő van. Az al
 *   **A tanácsadási szolgáltatásokat ajánlatok felsorolása**  
     Üzleti felhasználók által előre jelezhető eredményekkel továbbít minőségi tanácsadási szolgáltatásokat nyújtó Ismerkedés abban, hogy az ügyfél segítségével tapasztalt partnerek keres. Listázza az üzleti felhasználók keresése az ügyfél segítségével ajánlatok gyors használatbavétel tanácsadási szolgáltatásokat ajánlatok létrehozásában.  
 *   **Ismerkedés az vetett bizalmat**  
-    A Microsoft AppSource csoport a következő helyen a zökkenőmentes bevezetési érdekében. A AppSource team itt célja segíteni minden lépésnél – hogy működik a próba- vagy tesztkörnyezetben meghajtó szerzett, segít a listaelem feltételeket, és több.  
+    A Microsoft AppSource csoport a következő helyen a zökkenőmentes bevezetési érdekében. A AppSource team itt célja segíteni minden lépésnél; hogy működik a próba- vagy tesztkörnyezetben meghajtó szerzett, segít a listaelem feltételeket, és több felel meg.  
 *   **Az alkalmazás listaelem oldal testreszabása**  
     Amikor arról dönt, hogyan szeretné az alkalmazásokat AppSource piaci beleszólása van. Adja meg a videót, adatlapok, dokumentáció és részletes leírását. A Microsoft, hogy az alkalmazás megtalálható AppSource vonzó módon működik.  
 *   **Gyakorlatban használható elemzések lekérése**  
@@ -112,7 +111,7 @@ Az alábbi táblázatok egyes lépéseinek kitöltésével a ajánlat listaelem 
 | Storefront beállítások | Ajánlott eljárások | 
 |:---------------------------------------- |:----------------------------------------------------- |
 | **Az ajánlat neve** | A lapon a AppSource kezdőlap és az alkalmazás gyűjteménye a ajánlat az ajánlat-összefoglaló jelenik meg. Vegye fel az alkalmazást a keresőmotorok találatai között prioritása javítása érdekében a ajánlat-összefoglaló keresési kulcsszavakat. |
-| **Ajánlat leírása** | **Adjon meg egy helyes ajánlat leírást**<br />Az ajánlat az első néhány mondatokat, a leírás a értékajánlatához egyértelműen ismertetik. Ne feledje, hogy az első néhány mondat előfordulhat jelenik meg a keresőmotorok találatai között.<br />Ne használja a szolgáltatásokat és funkciókat értékesítési a terméket. Ehelyett a értéknek, átadná összpontosítanak. A iparág-specifikus szóhasználatának vagy lehető megfogalmazást juttatás-alapú.<br />Alapvető összetevői a értékajánlatához kapcsolatos információt tartalmaznia kell:<br />•What a termék<br />•WHO kap, a legtöbb<br />•What szükség van, vagy a problémás minderre cím.<br />Adja meg az ügyfelek hogyan az üzleti vagy a munkahelyi élettartam eltérő lehet a megoldás használata után.<br />Vegye figyelembe a keresési kulcsszavakat és kulcsszó változásait a ajánlat leírását az ajánlatot a keresőmotorok találatai között prioritása javítása érdekében.<br />Adja meg az ajánlat egyszerű HTML leírását.<br />Íme egy példa egy egyszerű ajánlat felsoroló lap (a példában látható módon a listaelem fent látható), amely az ajánlat összegzését, kiegészítve a főbb funkciók listáját. A karakterek maximális száma: 3000.<br />_HTML-példa_<br /><p>Dynamics 365 (online) a szervezet Insights a Dynamics 365 szervezet, és segítséget nyújt a teljesítmény és a támogatási problémák szolgáltatásokban eszközök fontos elfogadása és használati metrikák biztosít.</p> <ul><li><strong>Irányítópultok testreszabása</strong><br /> Állítsa be az irányítópult gazdag felhasználói élmény és a pillanatképek készítése a fontos adatokról.<ul> <li><strong>Figyelése elfogadása és használata:</strong> a legaktívabb felhasználók azonosítása lapkérések, leggyakrabban használt entitások, munkafolyamatok és több száma.</li> </ul><p>Legkisebb támogatott platform verzió: 8.1.1</p> |
+| **Ajánlat leírása** | **Adjon meg egy helyes ajánlat leírást**<br />Az ajánlat az első néhány mondatokat, a leírás a értékajánlatához egyértelműen ismertetik. Ne feledje, hogy az első néhány mondat előfordulhat jelenik meg a keresőmotorok találatai között.<br />Ne használja a szolgáltatásokat és funkciókat értékesítési a terméket. Ehelyett a értéknek, átadná összpontosítanak. A iparág-specifikus szóhasználatának vagy lehető megfogalmazást juttatás-alapú.<br />Alapvető összetevői a értékajánlatához kapcsolatos információt tartalmaznia kell:<ul> <li>Mi az a termék</li>  <li>Aki kap, a legtöbb</li> <li>Milyen kell, vagy a problémás rendelkezik,.</li> </ul>Adja meg az ügyfelek hogyan az üzleti vagy a munkahelyi élettartam eltérő lehet a megoldás használata után.<br />Vegye figyelembe a keresési kulcsszavakat és kulcsszó változásait a ajánlat leírását az ajánlatot a keresőmotorok találatai között prioritása javítása érdekében.<br />Adja meg az ajánlat egyszerű HTML leírását.<br />Íme egy példa egy egyszerű ajánlat felsoroló lap (a példában látható módon a listaelem fent látható), amely az ajánlat összegzését, kiegészítve a főbb funkciók listáját. A karakterek maximális száma: 3000.<br />*HTML-példa*<br />Dynamics 365 (online) a szervezet Insights a Dynamics 365 szervezet, és segítséget nyújt a teljesítmény és a támogatási problémák szolgáltatásokban eszközök fontos elfogadása és használati metrikák biztosít. <ul> <li>**Irányítópultok testreszabása**<br />Állítsa be az irányítópult gazdag felhasználói élmény és a pillanatképek készítése a fontos adatokról.<ul> <li>**Figyelése elfogadása és használata**<br />A legaktívabb felhasználók azonosítása lapkérések, leggyakrabban használt entitások, munkafolyamatok és több száma.</li> </ul></li> </ul>Minimális támogatott platform verzió: `8.1.1` |
 
 **Storefront részletei - listát részletei**  
 
@@ -134,7 +133,7 @@ Az alábbi táblázatok egyes lépéseinek kitöltésével a ajánlat listaelem 
 | **Képernyőfelvételek** | Legfeljebb öt a képernyőfelvételek hozzáadásához kulcs keresőszavak nevében szereplő tartalmaznia. |
 
 ### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Az ajánlatot a AppSource rendelkezésre állását előléptetése  
-Ha az ajánlatot AppSource szerepel, az "Elérhető a AppSource" jelvény megjelenítése az oldalon jobbra nyert. 
+Az ajánlatot AppSource szerepel, amikor a megjelenítendő jobb nyert a ***hozzáférhető a AppSource*** jelvény a lapon. 
 
  ![AppSource jelvény](./media/marketplace-appsource/appsourcebadge.png)
     
