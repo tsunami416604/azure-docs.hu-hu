@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8452708ef6b3d1944495c3c2c152c1e753a9cebf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f237e2b25089e4f89ddda2d37a7aa4019befe0da
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599898"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302076"
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>HTTPS érkező Azure Kubernetes-szolgáltatáshoz (AKS)
 
@@ -33,13 +33,19 @@ A NGINX érkező tartományvezérlő telepítése Helm használatával. Tekintse
 A diagram tárház frissítése.
 
 ```console
-helm repo update
+$ helm repo update
 ```
 
-A NGINX érkező üzembe. Ebben a példában a tartományvezérlőre telepíti a `kube-system` névtér, ez az Ön által választott egy névteret kell módosítani.
+A NGINX érkező üzembe. Ebben a példában a tartományvezérlőre telepíti a `kube-system` névtér (feltéve, hogy az RBAC van *nem* engedélyezve), ez módosítható az Ön által választott névtér.
 
+```console
+$ helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
-helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
+
+**Megjegyzés:** Ha RBAC *van* engedélyezve van a kubernetes fürtön, a fenti parancs biztosítják a érkező tartományvezérlő nem érhető el. Próbálja a következő helyett:
+
+```console
+$ helm install stable/nginx-ingress --namespace kube-system --set rbac.create=true --set rbac.createRole=true --set rbac.createClusterRole=true
 ```
 
 A telepítés során az Azure nyilvános IP-címet a érkező tartományvezérlő jön létre. A nyilvános IP-cím beszerzéséhez használja a kubectl get szolgáltatás parancsot. Az IP-cím hozzá kell rendelni a szolgáltatás egy ideig is eltarthat.

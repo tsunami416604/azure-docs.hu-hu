@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9610a8b37ead976cfdfa2fed81d4d3932055ddcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d97e380f83cc4e5e5a2d9686a7ac8426967f4b93
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237783"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302199"
 ---
-# <a name="expressroute-manager"></a>ExpressRoute Manager
+# <a name="expressroute-manager"></a>Az ExpressRoute-kezelő
 
 Használhatja az Azure ExpressRoute-kezelő funkció [hálózati Teljesítményfigyelő](log-analytics-network-performance-monitor.md) a végpontok közötti kapcsolat és a fiókirodák és az Azure-ban közötti teljesítményének figyeléséhez Azure ExpressRoute keresztül. Főbb előnyei a következők: 
 
@@ -29,7 +29,7 @@ Használhatja az Azure ExpressRoute-kezelő funkció [hálózati Teljesítményf
 - Sávszélesség-használatot, és a kapcsolatcsoport, társviszony-létesítés, és az Azure Virtual Network szintjén várakozási ideje követésének ExpressRoute.
 - Az ExpressRoute-Kapcsolatcsoportok a hálózati topológia felderítése.
 
-![Az ExpressRoute-figyelő](media/log-analytics-network-performance-monitor/expressroute-intro.png)
+![ExpressRoute-figyelő](media/log-analytics-network-performance-monitor/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfiguráció 
 Hálózati Teljesítményfigyelő konfigurációs megnyitásához a [hálózati Teljesítményfigyelő megoldás](log-analytics-network-performance-monitor.md) válassza **konfigurálása**.
@@ -37,7 +37,7 @@ Hálózati Teljesítményfigyelő konfigurációs megnyitásához a [hálózati 
 ### <a name="configure-network-security-group-rules"></a>Hálózati biztonsági csoport szabályainak konfigurálása 
 Az Azure-ban használt kiszolgálókat keresztül Hálózatfigyelő teljesítmény figyeléséhez a hálózati biztonsági csoport (NSG) szabályokat, az TCP-forgalmat a hálózati teljesítmény figyelése szintetikus tranzakciók az a port megadása Az alapértelmezett port az 8084. Ez a konfiguráció lehetővé teszi, hogy az Operations Management Suite-ügynököt futtató Azure virtuális gépeken való kommunikációhoz egy helyszíni monitoring Agent szolgáltatásnál. 
 
-NSG kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+Az NSG-k kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
 > Mielőtt folytatná ezt a lépést, telepítse a helyszíni kiszolgáló ügynöke és az Azure-kiszolgáló ügynöke, és a EnableRules.ps1 PowerShell-parancsprogrammal. 

@@ -12,35 +12,35 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 1c7fd3ac1a4cf62dd8f909acc26615ea5f96f32c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235807"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309098"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>A megoldás listaelem típusának meghatározása  
 A kirakatokkal sok közzétételi beállítások támogatja: típusok listázása és típusok kínálnak. Válassza ki az ajánlat típusa, amely a legjobban jelképezi a megoldás és a szolgáltatás adatait. Minden közzétételi beállítások segítségével férhet hozzá megosztása vezethet.   
 
 | Storefront | Listaelem típusa | Alkalmazástípus | Műszaki útmutató |  
 |:--- |:--- |:--- |:--- |  
-| AppSource | [List](#list) | [Tanácsadási szolgáltatás](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
-| Azure Piactér | [List](#list) | [Tanácsadási szolgáltatás](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| Azure Piactér | [List](#list) | [Megkereshetnek](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| Azure Piactér | [Próbaverzió](#trial) | [Ingyenes próbaverzió / SaaS próbaverzió](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
+| AppSource | [List](#list) | [Tanácsadási szolgáltatás](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| Azure Piactér | [List](#list) | [Tanácsadási szolgáltatás](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| Azure Piactér | [List](#list) | [Megkereshetnek](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| Azure Piactér | [Próbaverzió](#trial) | [Ingyenes próbaverzió / SaaS próbaverzió](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
 | AppSource |  | Cortana Intelligence | [docs.microsoft.com/Azure/Machine-Learning/Team-Data-Science-Process/cortana-Intelligence-appsource-Publishing-Guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 | AppSource |  |Az ügyfél Engagement Dynamics 365 | [docs.microsoft.com/dynamics365/Customer-engagement/Developer/publish-App-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 | AppSource |  | Dynamics 365 a pénzügyi és műveletek | [docs.microsoft.com/dynamics365/Unified-Operations/dev-itpro/LCS-Solutions/LCS-Solutions-App-Source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
-| Azure Piactér | [Próbaverzió](#trial) | [Interaktív bemutató](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| Azure Piactér | [Próbaverzió](#trial) | [Kipróbálása](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
+| Azure Piactér | [Próbaverzió](#trial) | [Interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| Azure Piactér | [Próbaverzió](#trial) | [Kipróbálása](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
 | AppSource |  | Office 365 | [docs.microsoft.com/Office/dev/Store/submit-to-the-Office-Store](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) |  
-| AppSource |  | Power BI | [docs.microsoft.com/Power-bi/Developer/Office-Store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Piactér | [Transact](#transact) | [Az Azure apps: által kezelt alkalmazás](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| Azure Piactér | [Transact](#transact) | [Az Azure apps: megoldás sablon](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| Azure Piactér | [Transact](#transact) | [Tároló](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| Azure Piactér | [Transact](#transact) | [SaaS-alkalmazás](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| Azure Piactér | [Transact](#transact) | [Virtuális gép](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |   
+| AppSource |  | Power BI | [docs.microsoft.com/Power-bi/Developer/Office-Store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Piactér | [Transact](#transact) | [Az Azure apps: által kezelt alkalmazás](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| Azure Piactér | [Transact](#transact) | [Az Azure apps: megoldás sablon](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| Azure Piactér | [Transact](#transact) | [Tároló](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| Azure Piactér | [Transact](#transact) | [SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| Azure Piactér | [Transact](#transact) | [Virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |   
 
 ## <a name="azure-certified-program"></a>Az Azure Certified program  
 Az Azure piactéren közzétett összes virtuális gép (VM) ellenőrzi az Azure hitelesített program.  
@@ -58,7 +58,7 @@ Az alábbi táblázatban a konkrét követelmények AppSource alkalmazások, ame
 
 | Listaelem típusa | Alkalmazástípus | Műszaki útmutató |  
 |:--- |:--- |:--- |  
-| [List](#list) | [Tanácsadási szolgáltatás](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| [List](#list) | [Tanácsadási szolgáltatás](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
 |  | Cortana Intelligence | [docs.microsoft.com/Azure/Machine-Learning/Team-Data-Science-Process/cortana-Intelligence-appsource-Publishing-Guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 |  |Az ügyfél Engagement Dynamics 365 | [docs.microsoft.com/dynamics365/Customer-engagement/Developer/publish-App-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 |  | Dynamics 365 a pénzügyi és műveletek | [docs.microsoft.com/dynamics365/Unified-Operations/dev-itpro/LCS-Solutions/LCS-Solutions-App-Source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
@@ -68,20 +68,23 @@ Az alábbi táblázatban a konkrét követelmények AppSource alkalmazások, ame
 ---   
 
 ## <a name="azure-marketplace-publishing-by-product"></a>Az Azure piactér közzététel termék  
+
+![](./media/marketplace-publishers-guide/workflow-azure-marketplace.png)  
+
 Az alábbi táblázatban az adott Azure piactér követelményeivel kapcsolatos további információt nyújt.  
 
 | Listaelem típusa | Csomag típusa |  Műszaki útmutató |  
 |:--- |:--- |:--- |  
-| [List](#list) | [Tanácsadási szolgáltatás](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| [List](#list) | [Megkereshetnek](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| [Próbaverzió](#trial) | [Ingyenes próbaverzió / SaaS próbaverzió](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
-| [Próbaverzió](#trial) | [Interaktív bemutató](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| [Próbaverzió](#trial) | [Kipróbálása](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
-| [Transact](#transact) | [Az Azure apps: által kezelt alkalmazás](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| [Transact](#transact) | [Az Azure apps: megoldás sablon](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| [Transact](#transact) | [Tároló](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| [Transact](#transact) | [SaaS-alkalmazás](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| [Transact](#transact) | [Virtuális gép](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |  
+| [List](#list) | [Tanácsadási szolgáltatás](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| [List](#list) | [Megkereshetnek](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| [Próbaverzió](#trial) | [Ingyenes próbaverzió / SaaS próbaverzió](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
+| [Próbaverzió](#trial) | [Interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| [Próbaverzió](#trial) | [Kipróbálása](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
+| [Transact](#transact) | [Az Azure apps: által kezelt alkalmazás](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| [Transact](#transact) | [Az Azure apps: megoldás sablon](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| [Transact](#transact) | [Tároló](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| [Transact](#transact) | [SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| [Transact](#transact) | [Virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |  
 
 ---   
 
@@ -93,10 +96,10 @@ A lista típusú bejegyzés a következő típusú a kirakatokkal a tartalmazza 
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Tanácsadási szolgáltatásokat | AppSource | [Követelmények: AppSource: lista: tanácsadás](#requirements:-appsource:-list:-consulting-service) |  
-| Tanácsadási szolgáltatásokat | Azure Piactér | [Követelmények: Az Azure piactér: lista: tanácsadás](#requirements:-azure-marketplace:-list:-consulting-service) |  
+| Tanácsadási szolgáltatásokat | AppSource | [Követelmények: AppSource: lista: tanácsadás](#requirements-appsource-list-consulting-service) |  
+| Tanácsadási szolgáltatásokat | Azure Piactér | [Követelmények: Az Azure piactér: lista: tanácsadás](#requirements-azure-marketplace-list-consulting-service) |  
 | Kapcsolatfelvétel | AppSource | [](#) |  
-| Kapcsolatfelvétel | Azure Piactér | [Követelmények: AppSource: lista: megkereshet](#requirements:-azure-marketplace:-list:-contact-me) |  
+| Kapcsolatfelvétel | Azure Piactér | [Követelmények: AppSource: lista: megkereshet](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: AppSource: lista: tanácsadás szolgáltatás  
 Az ajánlat elsősorban szakmai-szolgáltatásokból állnak, például felméréseket, megvalósításokhoz, műhelyek, használja a Consulting Services tanácsadó szolgálat ajánlattípus.  
@@ -130,12 +133,12 @@ Listaelem típusa próba a piactér a következő típusú a kirakatokkal a tart
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Szabad / SaaS próbaverzió | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#Listing-Type-Requirements:-trial) |  
-| Szabad / SaaS próbaverzió | Azure Piactér | [Követelmények: Az Azure piactér: próba: ingyenes próbaverzió / SaaS próbaverzió](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| Interaktív bemutató | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#Listing-Type-Requirements:-trial) |  
-| Interaktív bemutató | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: interaktív bemutató](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| Próbaüzem | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#Listing-Type-Requirements:-trial) |  
-| Próbaüzem | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: kipróbálása](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| Szabad / SaaS próbaverzió | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements-trial) |  
+| Szabad / SaaS próbaverzió | Azure Piactér | [Követelmények: Az Azure piactér: próba: ingyenes próbaverzió / SaaS próbaverzió](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktív bemutató | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements-trial) |  
+| Interaktív bemutató | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Próbaüzem | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements-trial) |  
+| Próbaüzem | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: kipróbálása](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Követelmények: Az Azure piactér: próbaverzió  
 
@@ -177,11 +180,11 @@ A Transact-listát típus a következő típusú a a kirakatokkal a piactér tar
 
 | Csomag típusa | Storefront | Részletek |   
 |:---        |:---        | :--- |  
-| Az Azure apps: által kezelt alkalmazás | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: által kezelt alkalmazás](#requirements:-azure-marketplace:-transact:-Azure-apps:-Managed-app) |  
-| Az Azure apps: megoldás sablon | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: megoldás sablon](#requirements:-azure-marketplace:-transact:-Azure-apps:-Solution-template) |  
-| Containers | Azure Piactér | [Követelmények: Az Azure piactér: Transact: tároló](#requirements:-azure-marketplace:-transact:-Container) |  
-| SaaS-alkalmazás  | Azure Piactér | [Követelmények: Az Azure piactér: Transact: SaaS-alkalmazás](#requirements:-azure-marketplace:-transact:-SaaS-app) |  
-| Virtuális gép | Azure Piactér | [Követelmények: Az Azure piactér: Transact: virtuális gép](#requirements:-azure-marketplace:-transact:-Virtual-Machine) |  
+| Az Azure apps: által kezelt alkalmazás | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: által kezelt alkalmazás](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Az Azure apps: megoldás sablon | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: megoldás sablon](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Piactér | [Követelmények: Az Azure piactér: Transact: tároló](#requirements-azure-marketplace-transact-container) |  
+| SaaS-alkalmazás  | Azure Piactér | [Követelmények: Az Azure piactér: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtuális gép | Azure Piactér | [Követelmények: Az Azure piactér: Transact: virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 #### <a name="requirements-azure-marketplace-transact-azure-apps-managed-app"></a>Követelmények: Az Azure piactér: Transact: Azure alkalmazások: által kezelt alkalmazás  
 Az Azure alkalmazás használatát: felügyelt alkalmazás ajánlattípus, amikor az alábbi feltételek szükségesek.  
@@ -209,11 +212,10 @@ A Microsoft jelenleg szabad és bring your-saját-licencet (BYOL) licencelési m
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-|Számlázási és annak mérésére  |  A tároló támogatnia kell a vagy ingyenes vagy saját licenc számlázási modellt.       |  
-|Kép összeállítása a Dockerfile   |   Tároló képek a Docker kép specifikáció alapján kell, és az egy Dockerfile kell kialakítani. További tudnivalók [itt] docker lemezképek összeállításakor. (https://docs.docker.com/engine/reference/builder/#usage)
-|Az ACR üzemeltetéséhez   |   Egy Azure tároló beállításjegyzék (ACR) tárház tároló képek kell futnia. További tudnivalókat az ACR [itt]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     
-|Lemezkép-címkézés   |   Tároló képek tartalmaznia kell legalább 1 címke (maximális címkék: 16). További információ a címkézés [itt] kép. (https://docs.docker.com/engine/reference/commandline/tag/)     | 
-
+| Számlázási és annak mérésére | Támogatja a vagy az ingyenes vagy BYOL számlázási modellt. |  
+| Kép összeállítása a Dockerfile | Tároló képek a Docker kép specifikáció alapján kell, és az egy Dockerfile kell kialakítani.<ul> <li>Docker-lemezképek létrehozásával kapcsolatos további információkért látogasson el a használati szakaszban található [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
+| Az ACR üzemeltetéséhez | Egy Azure tároló beállításjegyzék (ACR) tárház tároló képek kell futnia.<ul> <li>ACR használatával kapcsolatos további információkért látogasson el a gyors üzembe helyezés: hozza létre a tároló beállításkulcs használatával az Azure portálon található [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Lemezkép-címkézés | Tároló képek tartalmaznia kell legalább 1 címke (maximális címkék: 16).<ul> <li>Lemezkép címkézés kapcsolatos további információkért látogasson el a docker címke lap helye: [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Követelmények: Az Azure piactér: Transact: SaaS-alkalmazás  
@@ -225,12 +227,10 @@ A Microsoft a commerce tranzakciót futtat. A Microsoft az Ön nevében ügyfél
 
 | Követelmény | Részletek |  
 |:--- |:--- |  
-|Számlázási és annak mérésére   |   Az ajánlat árképzéséről havi simán sebességgel. Jelenleg nem támogatottak a használatalapú árképzési és a használat alapú "true felfelé" képességeket.      |  
-|Visszavonás  |   Az ajánlat bármikor törölhető az ügyfél.      |  
-|Tranzakció kezdőlapja   |   Egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és kezelése a Szolgáltatottszoftver-szolgáltatásfiók működteti.      |   
-|Előfizetés API    |   Egy szolgáltatás, amely a Szolgáltatottszoftver-előfizetés létrehozása, frissítése és a felhasználói fiók és a service-csomag törlése hatással lehet teszi ki. Kritikus API módosítások 24 órán belül támogatnia kell. A nem kritikus API módosítások kiadjuk rendszeres időközönként.      | 
-
-
+|Számlázási és annak mérésére | Az ajánlat árképzéséről havi simán sebességgel. Jelenleg nem támogatottak a használatalapú árképzési és a használat alapú "true felfelé" képességeket. |  
+|Visszavonás | Az ajánlat bármikor törölhető az ügyfél. |  
+|Tranzakció kezdőlapja | Egy Azure társmárkás tranzakció kezdőlapja, ahol a felhasználók létrehozása és kezelése a Szolgáltatottszoftver-szolgáltatásfiók működteti. |   
+| Előfizetés API | Egy szolgáltatás, amely a Szolgáltatottszoftver-előfizetés létrehozása, frissítése és a felhasználói fiók és a service-csomag törlése hatással lehet teszi ki. Kritikus API módosítások 24 órán belül támogatnia kell. A nem kritikus API módosítások kiadjuk rendszeres időközönként. |  
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Követelmények: Az Azure piactér: Transact: virtuális gép  
 A virtuális készülék az előfizetéshez társított az ügyfél központi telepítéséhez használja a virtuális gép ajánlattípus. Virtuális gépek teljesen commerce használatalapú fizetés vagy kerüljön-a-saját-licenc használata (BYOL) modellek licencelési engedélyezve. A Microsoft commerce-tranzakciót futtat, és az ügyfél az Ön nevében váltók stb. Az ügyfél- és Microsoft, beleértve az olyan vállalati megállapodások előnyben részesített fizetési kapcsolatának használatának előnye kap.  

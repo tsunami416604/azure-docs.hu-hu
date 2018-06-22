@@ -1,6 +1,6 @@
 ---
-title: Virtuálisgép-bővítmény OMS Azure Linux |} Microsoft Docs
-description: A Linux virtuális gépet egy virtuálisgép-bővítmény használatával az OMS-ügynök telepítése.
+title: Az Azure Naplóelemzés virtuálisgép-bővítmény Linux |} Microsoft Docs
+description: A Linux virtuális gépet egy virtuálisgép-bővítmény használatával a Log Analytics-ügynök telepítéséhez.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/21/2018
 ms.author: danis
-ms.openlocfilehash: f0d8224e5578a5ae46245e6c70792e962a44c933
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc8b3f6a4ff6b683fc4ed2777adf6ab0b17f05be
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652855"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301485"
 ---
-# <a name="oms-virtual-machine-extension-for-linux"></a>Linux OMS virtuálisgép-bővítmény
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Virtuálisgép-bővítmény Analytics keresse meg a Linux
 
 ## <a name="overview"></a>Áttekintés
 
-A Naplóelemzési figyelési riasztási és riasztási szervizelési képességeket biztosít a felhő között és a helyszíni eszközök. Az OMS-ügynököt Linux virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény, az OMS-ügynököt telepít Azure virtuális gépeken, és regisztrálja a virtuális gépek be egy meglévő Naplóelemzési munkaterület. Ez a dokumentum részletesen a támogatott platformok, a konfigurációk és a Linux virtuálisgép-bővítmény OMS vonatkozó telepítési lehetőségeket.
+A Naplóelemzési figyelési riasztási és riasztási szervizelési képességeket biztosít a felhő között és a helyszíni eszközök. Linux Log Analytics Agent virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököt telepít Azure virtuális gépeken, és regisztrálja a virtuális gépek be egy meglévő Naplóelemzési munkaterület. Ez a dokumentum részletesen a támogatott platformok, a konfigurációk és a Linux Log Analyticshez virtuálisgép-bővítmény vonatkozó telepítési lehetőségeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az OMS-ügynököt bővítmény futtatható a Linux terjesztéseket ellen.
+A Log Analytics Agent bővítmény futtatható a Linux terjesztéseket ellen.
 
 | Disztribúció | Verzió |
 |---|---|
@@ -44,9 +44,9 @@ Az OMS-ügynököt bővítmény futtatható a Linux terjesztéseket ellen.
 | SUSE Linux Enterprise Server | 11 és 12 (x86/x64) |
 
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és Virtuálisgép-bővítmény verzió
-A következő táblázat az OMS-VM verziójának leképezéseket bővítményt, és az OMS-ügynököt csomagot minden egyes kiadásához. A kibocsátási megjegyzések az OMS-ügynök csomag verziószámát mutató hivatkozás szerepel. Kibocsátási megjegyzések a hibajavításokat és egy adott ügynök kiadásban elérhető új szolgáltatások részleteket tartalmazza.  
+A következő táblázat a napló Analytics Virtuálisgép-bővítmény és Log Analytics Agent köteg az egyes kiadások verziójának leképezéseket. A kibocsátási megjegyzések a Naplóelemzési ügynök csomag verziószámát mutató hivatkozás szerepel. Kibocsátási megjegyzések a hibajavításokat és egy adott ügynök kiadásban elérhető új szolgáltatások részleteket tartalmazza.  
 
-| OMS Linux virtuális gép kiterjesztés verziója | OMS-ügynököt csomag verziója | 
+| Napló Analytics Linux virtuális gép kiterjesztés verziója | Napló Analytics csomag verziója | 
 |--------------------------------|--------------------------|
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -62,15 +62,15 @@ A következő táblázat az OMS-VM verziójának leképezéseket bővítményt, 
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Az Azure Security Center automatikusan látja el az OMS-ügynököt, és csatlakozik a egy alapértelmezett Naplóelemzési munkaterület ASC hozta létre az Azure-előfizetésben. Ha az Azure Security Center használ, ne futtassa végig a lépéseken, ebben a dokumentumban. Ezzel felülírja a konfigurált munkaterületet, és megszakítja a kapcsolatot az Azure Security Center.
+Az Azure Security Center automatikusan látja el a Naplóelemzési ügynök, és csatlakozik a egy alapértelmezett Naplóelemzési munkaterület ASC hozta létre az Azure-előfizetésben. Ha az Azure Security Center használ, ne futtassa végig a lépéseken, ebben a dokumentumban. Ezzel felülírja a konfigurált munkaterületet, és megszakítja a kapcsolatot az Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-Az OMS-ügynököt bővítmény Linux megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
+A Linux Log Analytics Agent kiterjesztése megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A bővítmény szükséges a munkaterület azonosítója és a cél a Naplóelemzési munkaterület; kulcsát Ezek az értékek lehetnek [a Naplóelemzési munkaterület található](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) az Azure portálon. A munkaterület-kulcs bizalmas adatokat kell kezelni, mert azt egy védett beállítás konfigurációban kell tárolni. Az Azure Virtuálisgép-bővítmény védett beállítás adatokat titkosít, és csak visszafejti a cél virtuális gépen. Vegye figyelembe, hogy **workspaceId** és **workspaceKey** -és nagybetűk.
+A következő JSON a Log Analytics Agent bővítmény séma jeleníti meg. A bővítmény szükséges a munkaterület azonosítója és a cél a Naplóelemzési munkaterület; kulcsát Ezek az értékek lehetnek [a Naplóelemzési munkaterület található](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) az Azure portálon. A munkaterület-kulcs bizalmas adatokat kell kezelni, mert azt egy védett beállítás konfigurációban kell tárolni. Az Azure Virtuálisgép-bővítmény védett beállítás adatokat titkosít, és csak visszafejti a cél virtuális gépen. Vegye figyelembe, hogy **workspaceId** és **workspaceKey** -és nagybetűk.
 
 ```json
 {
@@ -109,7 +109,7 @@ A következő JSON jeleníti meg az OMS-ügynököt bővítmény sémáját. A b
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Sablonok is épp ezért tökéletes választás, ha egy vagy több feladás egy vagy több konfigurációs szolgáltatáshoz bevezetési például igénylő virtuális gépek telepítése. Az OMS-ügynök Virtuálisgép-bővítmény tartalmazó minta Resource Manager sablon megtalálható a [Azure Quick Start gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonok is telepíthető. Sablonok is épp ezért tökéletes választás, ha egy vagy több feladás egy vagy több konfigurációs szolgáltatáshoz bevezetési például igénylő virtuális gépek telepítése. A napló Analytics ügynök Virtuálisgép-bővítmény tartalmazó minta Resource Manager sablon megtalálható a [Azure Quick Start gyűjtemény](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 A JSON-konfiguráció a virtuálisgép-bővítmény a virtuálisgép-erőforrás ágyazhatók egymásba, vagy elhelyezve, a gyökér vagy a legfelső szintű erőforrás-kezelő JSON-sablon. A JSON-konfiguráció elhelyezési erőforrás nevét és típusát. értéke befolyásolja. További információkért lásd: [nevét és típusát gyermekerőforrásait beállítása](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
@@ -165,7 +165,7 @@ A bővítmény JSON elhelyezésekor a sablon gyökerében, az erőforrás nevét
 
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
-Az Azure CLI segítségével az OMS-ügynök Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. Cserélje le a *workspaceId* és *workspaceKey* származó Naplóelemzési munkaterületet. 
+Az Azure CLI segítségével a napló Analytics ügynök Virtuálisgép-bővítmény telepítése egy meglévő virtuális gépre. Cserélje le a *workspaceId* és *workspaceKey* származó Naplóelemzési munkaterületet. 
 
 ```azurecli
 az vm extension set \

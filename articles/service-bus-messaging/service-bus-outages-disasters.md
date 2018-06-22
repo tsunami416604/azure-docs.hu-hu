@@ -6,18 +6,18 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1d960349b50e2618365fd085cba7b3e55fa53874
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802306"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301716"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>A Service Bus kimaradások és vészhelyzetek alkalmazások szigetelő ajánlott eljárásai
 
-Kritikus fontosságú alkalmazások folyamatosan, még a nem tervezett leállások vagy vészhelyzetek mellett kell működnie. Ez a témakör ismerteti a Service Bus-alkalmazást egy potenciális szolgáltatáskimaradás vagy katasztrófa elleni védelméhez használható megoldásokat.
+Kritikus fontosságú alkalmazások folyamatosan, még a nem tervezett leállások vagy vészhelyzetek mellett kell működnie. Ez a cikk ismerteti a Service Bus-alkalmazást egy potenciális szolgáltatáskimaradás vagy katasztrófa elleni védelméhez használható megoldásokat.
 
 Nem tervezett kimaradás az Azure Service Bus elérhetetlenség típusúként van definiálva. A leállás hatással lehet egyes összetevői a Service Bus, például egy üzenetküldési tárolóban, vagy akár a teljes adatközpont. A probléma kijavítása után a Service Bus ismét elérhetővé válik. Nem tervezett kimaradás általában nem okoznak üzenetek vagy egyéb adatok elvesztését. Példa egy összetevő meghibásodása esetén: egy adott üzenetküldési tárolóban elérhetetlensége. Példa egy datacenter kiterjedő leállás: az adatközpontban, vagy egy hibás datacenter hálózati kapcsoló áramszünet esetén. Kimaradás a néhány nap múlva néhány percig is tarthat.
 
@@ -78,6 +78,17 @@ A [georeplikálási a Service Bus közvetítőalapú üzenetek] [ Geo-replicatio
 
 A Service Bus földrajzi-vész-helyreállítási és georeplikáció, a névterek szintjén támogatja. További információkért lásd: [Azure Service Bus földrajzi-vész-helyreállítási](service-bus-geo-dr.md). A vész helyreállítási szolgáltatás érhető el a [Premium Termékváltozat](service-bus-premium-messaging.md) csak, metaadatok vész-helyreállítási valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterek támaszkodik.
 
+## <a name="availability-zones-preview"></a>Rendelkezésre állási zónák (előzetes verzió)
+
+A Service Bus Premium Termékváltozat támogatja [rendelkezésre állási zónák](../availability-zones/az-overview.md), egy Azure-régió, elszigetelt tartalék helyeinek biztosítása. 
+
+> [!NOTE]
+> A rendelkezésre állási zónák preview csak a támogatott-e a **USA középső RÉGIÓJA**, **USA keleti régiója 2**, és **Franciaország központi** régiók.
+
+Engedélyezheti rendelkezésre állási zónák csak, új névterekre gyakorolt az Azure portál használatával. A Service Bus nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a névtéren a zóna redundancia nem tiltható le.
+
+![1][]
+
 ## <a name="next-steps"></a>További lépések
 Vész-helyreállítási kapcsolatos további tudnivalókért tekintse meg az alábbi cikkek:
 
@@ -93,3 +104,5 @@ Vész-helyreállítási kapcsolatos további tudnivalókért tekintse meg az al�
 [Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
+
+[1]: ./media/service-bus-outages-disasters/az.png

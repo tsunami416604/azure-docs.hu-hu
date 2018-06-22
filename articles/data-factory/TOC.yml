@@ -356,6 +356,8 @@
           href: monitor-visually.md
         - name: Monitorozás az Azure Monitorral
           href: monitor-using-azure-monitor.md
+        - name: Monitorozás az OMS-szel
+          href: data-factory-monitor-oms.md
         - name: Monitorozás SDK-kkal
           href: monitor-programmatically.md
         - name: Integrációs modul monitorozása

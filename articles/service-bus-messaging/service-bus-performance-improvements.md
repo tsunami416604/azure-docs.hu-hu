@@ -5,27 +5,22 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: e6762d988da7d34893852505d8ce0fd30622eaaf
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802544"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301801"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások használatával a Service Bus üzenetkezelés teljesítménnyel kapcsolatos fejlesztések
 
 A cikkből megtudhatja, hogyan használható az Azure Service Bus a teljesítmény optimalizálása, amikor a közvetítőalapú üzenetek cseréjét. Ez a cikk első része ismerteti a különböző mechanizmusok, felajánlott, a teljesítmény növelése érdekében. A második rész a Service Bus használatával úgy, hogy egy adott szituációban a lehető legjobb teljesítményt tud nyújtani nyújt útmutatást.
 
-Ez a témakör teljes az "ügyfél" kifejezés minden entitás, aki hozzáfér a Service Bus. Egy ügyfél a szerepkör a feladó vagy egy címzett is igénybe vehet. A "feladó" kifejezés egy Service Bus-üzenetsor vagy témakör ügyfél, amely üzeneteket küld egy Service Bus-üzenetsor vagy témakör előfizetést. A "címzett" kifejezés egy Service Bus várólista vagy előfizetés ügyfél fogad üzeneteket egy Service Bus-üzenetsorba, vagy az előfizetés.
+Ez a cikk teljes az "ügyfél" kifejezés minden entitás, aki hozzáfér a Service Bus. Egy ügyfél a szerepkör a feladó vagy egy címzett is igénybe vehet. A "feladó" kifejezés egy Service Bus-üzenetsor vagy témakör ügyfél, amely üzeneteket küld egy Service Bus-üzenetsor vagy témakör előfizetést. A "címzett" kifejezés egy Service Bus várólista vagy előfizetés ügyfél fogad üzeneteket egy Service Bus-üzenetsorba, vagy az előfizetés.
 
 Ezek a szakaszok, akkor a program teljesítmény használja a Service Bus számos fogalmat.
 
@@ -37,7 +32,7 @@ A Service Bus lehetővé teszi, hogy az ügyfelek számára három protokollok s
 2. A Service Bus üzenetkezelés protokoll (SBMP)
 3. HTTP
 
-AMQP és SBMP hatékonyabbak, mert azok a Service Bus kapcsolatot tart, mindaddig, amíg az üzenetkezelési gyárból létezik. Megvalósít továbbá kötegelés és prefetching. Kivéve, ha explicit módon azt korábban említettük, az összes tartalom ebben a témakörben azt feltételezi, hogy az AMQP vagy SBMP használata.
+AMQP és SBMP hatékonyabbak, mert azok a Service Bus kapcsolatot tart, mindaddig, amíg az üzenetkezelési gyárból létezik. Megvalósít továbbá kötegelés és prefetching. Kivéve, ha explicit módon azt korábban említettük, a cikkben minden tartalom azt feltételezi, hogy az AMQP vagy SBMP használata.
 
 ## <a name="reusing-factories-and-clients"></a>Újbóli felhasználása a gyárat, illetve az ügyfelek
 
@@ -45,13 +40,13 @@ Service Bus-ügyfélalkalmazást objektumok, például a [QueueClient] [ QueueCl
 
 ## <a name="concurrent-operations"></a>Párhuzamos műveletek
 
-Egy műveletet (Küldés, kapni, törlés, stb.) némi időt vesz igénybe. Most a Service Bus szolgáltatás mellett a kérelem és a válasz késleltetése a művelet feldolgozása tartalmaz. Az idő alatt műveletek számának növeléséhez, műveletek végre kell hajtani egyidejűleg. A beleegyezését adta többféleképpen érhet el:
+Egy műveletet (Küldés, kapni, törlés, stb.) némi időt vesz igénybe. Most a Service Bus szolgáltatás mellett a kérelem és a válasz késleltetése a művelet feldolgozása tartalmaz. Az idő alatt műveletek számának növeléséhez, műveletek végre kell hajtani egyidejűleg. 
 
-* **Az aszinkron műveletek**: az ügyfél ütemezi műveletek aszinkron műveletek elvégzésével. A következő kérés elindult az előző kérelem befejeződése előtt. A következő kódrészletet az aszinkron küldés művelet egy példája:
+Az ügyfél párhuzamos műveletek aszinkron műveletek elvégzésével ütemezi. A következő kérés elindult az előző kérelem befejeződése előtt. A következő kódrészletet az aszinkron küldés művelet egy példája:
   
  ```csharp
-  BrokeredMessage m1 = new BrokeredMessage(body);
-  BrokeredMessage m2 = new BrokeredMessage(body);
+  Message m1 = new BrokeredMessage(body);
+  Message m2 = new BrokeredMessage(body);
   
   Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
     {
@@ -65,25 +60,14 @@ Egy műveletet (Küldés, kapni, törlés, stb.) némi időt vesz igénybe. Most
   Console.WriteLine("All messages sent");
   ```
   
-  A következő kódot a következő egy példa egy aszinkron művelet kap:
+  Az alábbi kódra, például egy aszinkron fogadási művelethez. Tekintse meg a teljes program [Itt](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
   
   ```csharp
-  Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  
-  Task.WaitAll(receive1, receive2);
-  Console.WriteLine("All messages received");
-  
-  async void ProcessReceivedMessage(Task<BrokeredMessage> t)
-  {
-    BrokeredMessage m = t.Result;
-    Console.WriteLine("{0} received", m.Label);
-    await m.CompleteAsync();
-    Console.WriteLine("{0} complete", m.Label);
-  }
-  ```
+  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+  var doneReceiving = new TaskCompletionSource<bool>();
 
-* **Több előállítók**: minden ügyfél (feladók fogadók mellett), az azonos előállítók által létrehozott megosztás egy TCP-kapcsolatot. A maximális átviteli sebesség Lépkedjen végig a TCP-kapcsolat műveletek száma korlátozza. Az átviteli sebesség egyetlen Factory elérhető jelentősen is különbözhet a TCP körbejárási alkalommal és az üzenet mérete. Nagyobb átviteli sebesség beszerzéséhez használja több üzenetkezelési gyárat.
+  receiver.RegisterMessageHandler(
+  ```
 
 ## <a name="receive-mode"></a>Fogadás módban
 
@@ -95,7 +79,7 @@ A Service Bus fogadni-és-delete művelet esetén nem támogatja a tranzakcióka
 
 ## <a name="client-side-batching"></a>Ügyféloldali kötegelés
 
-Ügyféloldali kötegelés lehetővé teszi egy üzenet küldhető egy bizonyos ideig késleltethető üzenetsor vagy témakör ügyfél. Ha az ügyfél elküldi a további üzeneteket ebben az időszakban, továbbítja a kötegek található üzenetek. Ügyféloldali kötegelés is következtében a várólista vagy előfizetés ügyfél több kötegelt **Complete** kérelmek az egy kérelemhez. Kötegelés érhető el csak aszinkron **küldése** és **Complete** műveletek. Szinkron műveletek a Service Bus szolgáltatás azonnal kerülnek. Kötegelés nem fordulnak elő a betekintés és fogadási műveletek, és nem az ügyfélre kötegelés fordul elő.
+Ügyféloldali kötegelés lehetővé teszi egy üzenet küldhető egy bizonyos ideig késleltethető üzenetsor vagy témakör ügyfél. Ha az ügyfél további üzeneteket küld ezen időszakon belül, a rendszer egyetlen kötegben továbbítja ezen üzeneteket. Ügyféloldali kötegelés is következtében a várólista vagy előfizetés ügyfél több kötegelt **Complete** kérelmek az egy kérelemhez. Kötegelés érhető el csak aszinkron **küldése** és **Complete** műveletek. Szinkron műveletek a Service Bus szolgáltatás azonnal kerülnek. Kötegelés nem fordulnak elő a betekintés és fogadási műveletek, és nem az ügyfélre kötegelés fordul elő.
 
 Alapértelmezés szerint az ügyfél egy kötegelt időköz 20 ms használja. A időköze módosítható úgy, hogy a [BatchFlushInterval] [ BatchFlushInterval] tulajdonság az üzenetkezelési gyárból létrehozása előtt. Ez a beállítás az adat-előállító által létrehozott összes ügyfélre vonatkozik.
 
@@ -108,7 +92,7 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Kötegelés nem befolyásolja a számlázható üzenetkezelési műveletek számát, és csak a Service Bus-ügyfél protokoll érhető el. A HTTP protokoll nem támogatja a kötegelés.
+Kötegelés nem befolyásolja a számlázható üzenetkezelési műveletek számát, és csak érhető el a Service Bus ügyfél protokoll használatával a [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) könyvtárban. A HTTP protokoll nem támogatja a kötegelés.
 
 ## <a name="batching-store-access"></a>Kötegelési áruházhoz való hozzáférés
 
@@ -135,7 +119,7 @@ Kötegelt áruházhoz való hozzáférés nem befolyásolja a számlázható üz
 
 Egy üzenet prefetched van, ha a szolgáltatás zárolja a prefetched üzenet. A zárolás a prefetched üzenet egy másik címzett nem fogadható. Ha a címzett nem tudja végrehajtani az üzenetet, a zárolás lejárata előtt, akkor az üzenet többi fogadó számára elérhetővé válnak. Az üzenet prefetched példányát a gyorsítótárban marad. A fogadó, amely a gyorsítótárban található példányát a lejárt akkor kapnak kivétel, amikor megpróbálja végrehajtani az üzenet. Alapértelmezés szerint az üzenet zár 60 másodperc múlva lejár. Ez az érték 5 perc kiterjeszthető. Lejárt üzenetek használat megelőzése érdekében a gyorsítótár méretét mindig kisebbnek kell lennie a zárolási időtúllépés belül ügyfél által felhasználható üzenetek számánál.
 
-Az alapértelmezett zárolás lejárati ideje 60 másodperc használatakor jó értékének [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] van 20 alkalommal a maximális feldolgozási sebességet az összes fogadó gyár. Például egy gyári három fogadók hoz létre, és minden fogadó másodpercenként legfeljebb 10 üzenetek feldolgozásához. A lehívott száma nem lehet hosszabb 20 X 3 X 10 = 600. Alapértelmezés szerint [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] értéke 0, ami azt jelenti, hogy a szolgáltatás további üzenetek már beolvasott.
+Az alapértelmezett zárolás lejárati ideje 60 másodperc használatakor jó értékének [PrefetchCount] [ SubscriptionClient.PrefetchCount] van 20 alkalommal a maximális feldolgozási sebességet az összes fogadó gyár. Például egy gyári három fogadók hoz létre, és minden fogadó másodpercenként legfeljebb 10 üzenetek feldolgozásához. A lehívott száma nem lehet hosszabb 20 X 3 X 10 = 600. Alapértelmezés szerint [PrefetchCount] [ QueueClient.PrefetchCount] értéke 0, ami azt jelenti, hogy a szolgáltatás további üzenetek már beolvasott.
 
 A teljes teljesítményt, vagy egy előfizetés üzenetek prefetching növeli, mivel csökkenti a teljes számát üzenetművelet, vagy a kiszolgálókkal való adatváltások számát. Az első üzenet beolvasása, azonban hosszabb ideig tart (mert az nagyobb üzenet mérete). Prefetched üzenetek fogadása gyorsabb lesz, mert ezek az üzenetek a az ügyfél már töltve.
 
@@ -158,7 +142,7 @@ Expressz entitás, amely nem lehet nem kritikus fontosságú adatokat tartalmaz�
 > [!NOTE]
 > Expressz entitások nem támogatja a tranzakciókat.
 
-## <a name="use-of-partitioned-queues-or-topics"></a>A particionált várólisták vagy kapcsolatos témakörök
+## <a name="partitioned-queues-or-topics"></a>A particionált várólisták vagy olyan kapcsolatos témakörök
 
 Belső a Service Bus használ ugyanahhoz a csomóponthoz, és üzenetküldési feldolgozást és tárolást egy üzenetküldési entitásra (üzenetsor vagy témakör) üzenetek tárolásához. A [particionált üzenetsor vagy témakör](service-bus-partitioning.md), másrészt, több csomópont is terjeszthető és üzenetküldési tárolók. A particionált üzenetsorok és témakörök csak nem fed fel rendszeres üzenetsorok és témakörök-nál nagyobb átviteli, is mutathat felső szintű elérhetőség. Hozzon létre egy particionált entitás, állítsa be a [EnablePartitioning] [ EnablePartitioning] tulajdonságot **igaz**, a következő példában látható módon. Particionált entitások kapcsolatos további információkért lásd: [particionált üzenetküldési entitások][Partitioned messaging entities].
 
@@ -172,7 +156,7 @@ qd.EnablePartitioning = true;
 namespaceManager.CreateQueue(qd);
 ```
 
-## <a name="use-of-multiple-queues"></a>Több várólisták használata
+## <a name="multiple-queues"></a>Több várólisták
 
 Ha nincs lehetőség a particionált üzenetsor vagy témakör használja, vagy nem várható terhelése egyetlen particionált üzenetsor vagy témakör kezelhetik, több üzenetküldési entitások kell használnia. Minden entitás, ugyanazt az ügyfelet az összes entitás helyett dedikált ügyfelet létrehozni a több egység használatakor.
 

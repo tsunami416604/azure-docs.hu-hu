@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 489e7eb35352e2e8fd3d159381c2177098a90399
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4086ef6ce2a95e0467eda61116ac002cf53610b5
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198123"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300802"
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Az Azure Data Lake Store egy Azure virtuális hálózaton belüli virtuális gépek
 Azure Data Lake Store PaaS szolgáltatás, amely a nyilvános Internet IP-címek. Bármely kiszolgáló csatlakozni tud-e a nyilvános internethez általában csatlakozhat, valamint az Azure Data Lake Store-végpontok. Alapértelmezés szerint az Azure Vnetekhez lévő összes virtuális gép hozzáférhet az interneten, és ezért férhetnek hozzá az Azure Data Lake Store. Azonban úgy is egy VNET és nem rendelkezik Internet-hozzáférés a virtuális gépek konfigurálása. Ilyen virtuális gépek elérése az Azure Data Lake Store történik is. Nyilvános Internet-hozzáférés letiltása a virtuális gépek az Azure Vnetekhez végezhető a következő módszerek bármelyikével:
@@ -42,7 +42,7 @@ A kimenet az alábbihoz hasonló. Az érték alapján **cím** tulajdonság a Da
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Virtuális gépek NSG szolgáltatással kapcsolat engedélyezése
-Az NSG-szabályok használata Internet-hozzáférés letiltása, majd hozhat létre egy másik NSG-t, amely lehetővé teszi a hozzáférést a Data Lake Store IP-címet. NSG-szabályok kapcsolatos további információkért lásd: [hálózati biztonsági csoportok – áttekintés](../virtual-network/security-overview.md). Az NSG-k létrehozása, lásd: [kezelése az Azure portál használatával NSG-k](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
+Az NSG-szabályok használata Internet-hozzáférés letiltása, majd hozhat létre egy másik NSG-t, amely lehetővé teszi a hozzáférést a Data Lake Store IP-címet. NSG-szabályok kapcsolatos további információkért lásd: [hálózati biztonsági csoportok – áttekintés](../virtual-network/security-overview.md). Az NSG-k létrehozása, lásd: [hálózati biztonsági csoport létrehozása](../virtual-network/tutorial-filter-network-traffic.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Virtuális gépek szolgáltatással UDR vagy ExpressRoute kapcsolat engedélyezése
 Útvonalak udr-EK vagy a BGP-kicserélt útvonalakat, Internet-hozzáférés letiltása használata esetén egy különös útvonalat kell konfigurálni, hogy az ilyen alhálózatban lévő virtuális gépek hozzáférhessenek a Data Lake Store-végpontok. További információkért lásd: [felhasználó által definiált útvonalak áttekintése](../virtual-network/virtual-networks-udr-overview.md). Udr-EK létrehozásával kapcsolatos utasításokért lásd: [létrehozása udr a Resource Manager-EK](../virtual-network/tutorial-create-route-table-powershell.md).

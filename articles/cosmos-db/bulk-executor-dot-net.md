@@ -1,6 +1,6 @@
 ---
-title: BulkExecutor .NET könyvtár az Azure Cosmos Adatbázisba tömeges műveletek elvégzéséhez használt |} Microsoft Docs
-description: Azure Cosmos DB BulkExecutor .NET könyvtár használatával tömeges importálás és frissítés a dokumentumok Azure Cosmos DB gyűjtemények.
+title: Tömeges végrehajtó .NET könyvtár használatával tömeges műveleteinek elvégzéséhez Azure Cosmos DB |} Microsoft Docs
+description: Azure Cosmos DB tömeges végrehajtó .NET könyvtár használatával tömeges importálás és frissítés a dokumentumok Azure Cosmos DB gyűjtemények.
 keywords: .NET tömeges végrehajtó
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b09fd415c442c1e605987a6b25fd938ce04ce5c1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611160"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300771"
 ---
-# <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges műveleteinek elvégzéséhez Azure Cosmos DB BulkExecutor .NET kódtár használata
+# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET kódtár tömeges műveleteinek elvégzéséhez Azure Cosmos DB használatával
 
-Ez az oktatóanyag útmutatás az Azure Cosmos DB BulkExecutor .NET könyvtár használatával importálása és frissítése a dokumentumok Azure Cosmos DB gyűjteményekhez. BulkExecutor könyvtárban, és hogyan nyújt segítséget a kihasználja a nagy átviteli sebesség és tárterület kapcsolatos további tudnivalókért lásd: [BulkExecutor könyvtárának](bulk-executor-overview.md) cikk. Ez az oktatóanyag végigvezeti .NET mintaalkalmazás, amely importálja véletlenszerűen generált dokumentumok tömeges egy Azure Cosmos DB gyűjteménybe. Importálás, után megmutatja, hogyan tömegesen frissíti az importált adatok megadásával a javítások, műveletek végrehajtását az adott dokumentum mező.
+Ez az oktatóanyag útmutatás segítségével az Azure Cosmos DB tömeges végrehajtó .NET könyvtár importálása és frissítése a dokumentumok Azure Cosmos DB gyűjteményekhez. Tömeges végrehajtó könyvtárban, és hogyan nyújt segítséget a kihasználja a nagy átviteli sebesség és tárterület kapcsolatos további tudnivalókért lásd: [tömeges végrehajtó kódtárának ismertetése](bulk-executor-overview.md) cikk. Ez az oktatóanyag végigvezeti .NET mintaalkalmazás, amely importálja véletlenszerűen generált dokumentumok tömeges egy Azure Cosmos DB gyűjteménybe. Importálás, után megmutatja, hogyan tömegesen frissíti az importált adatok megadásával a javítások, műveletek végrehajtását az adott dokumentum mező.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag útmutatás az Azure Cosmos DB BulkExecutor .NET könyvtár h
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt. 
 
-* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Másik lehetőségként használhatja a [Azure Cosmos DB emulátor](https://docs.microsoft.com/azure/cosmos-db/local-emulator) rendelkező a `https://localhost:8081` URI. Az elsődleges kulcs megtalálható [intézett hitelesítési kérésekhez](local-emulator.md#authenticating-requests).
+* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Másik lehetőségként használhatja a [Azure Cosmos DB emulátor](https://docs.microsoft.com/azure/cosmos-db/local-emulator) rendelkező a `https://localhost:8081` URI. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.
 
 * Azure Cosmos DB SQL API-fiók létrehozása az ismertetett lépéseket követve [adatbázisfiók létrehozása](create-sql-api-dotnet.md#create-a-database-account) .NET gyors üzembe helyezés cikkének. 
 
@@ -166,7 +166,7 @@ A BulkUpdateAsync API használatával frissítheti a meglévő dokumentumokat. E
     
 ## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek 
 
-Vegye figyelembe a következő szempontokat a jobb teljesítmény, BulkExecutor szalagtár használata esetén:
+Vegye figyelembe a következő szempontokat a jobb teljesítmény, tömeges végrehajtó szalagtár használata esetén:
 
 * A legjobb teljesítmény érdekében futtassa az alkalmazást egy Azure virtuális gépen, amely ugyanabban a régióban, mint a Cosmos DB fiók írási terület.  
 
@@ -196,4 +196,4 @@ Vegye figyelembe a következő szempontokat a jobb teljesítmény, BulkExecutor 
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Tudnivalók a Nuget csomag részleteit és a kibocsátási megjegyzésekben BulkExecutor .net könyvtár:[BulkExecutor SDK részletek](sql-api-sdk-bulk-executor-dot-net.md). 
+* Tudnivalók a Nuget csomag részleteit és a kibocsátási megjegyzésekben tömeges végrehajtó .net könyvtár:[végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-dot-net.md). 

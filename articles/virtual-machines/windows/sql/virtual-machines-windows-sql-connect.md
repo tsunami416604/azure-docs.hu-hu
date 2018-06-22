@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 7285cf47c3a5ec731cd9cfe311053e9d19886f1d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 522ece2528e43c1037dc6bb707201ecda8074dd9
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29400239"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301386"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Csatlakozás az Azure SQL Server virtuális géphez
 
@@ -42,8 +42,8 @@ A hálózati kapcsolatot a lehetőségek a következők:
 | Beállítás | Leírás |
 |---|---|
 | **Public** | Csatlakozás az SQL-kiszolgálón az interneten keresztül |
-| **Private** | Kapcsolódás SQL Server ugyanazon a virtuális hálózaton |
-| **Local** | Csatlakozás SQL Server helyi az azonos virtuális gépen | 
+| **Magánfelhő** | Kapcsolódás SQL Server ugyanazon a virtuális hálózaton |
+| **helyi** | Csatlakozás SQL Server helyi az azonos virtuális gépen | 
 
 Az alábbi szakaszok ismertetik a **nyilvános** és **titkos** beállítások részletesebben.
 
@@ -139,7 +139,7 @@ A következő táblázat a követelmények, egy Azure virtuális Gépen futó SQ
 | [SQL-bejelentkezés létrehozásával](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Ha SQL-hitelesítést használ, meg kell egy SQL-bejelentkezési egy felhasználónevét és jelszavát, amely a céladatbázis engedélyekkel is rendelkezik. |
 | [TCP/IP-protokoll engedélyezéséhez](#manualTCP) | SQL Server TCP-n keresztül kell csatlakozhatnak. |
 | [Az SQL Server port tűzfalszabály engedélyezése](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | A virtuális Gépen a tűzfalnak engedélyeznie kell az SQL Server portja (alapértelmezés szerint 1433) a bejövő forgalom. |
-| [A TCP 1433 egy hálózati biztonsági szabály létrehozása](../../../virtual-network/virtual-networks-create-nsg-arm-pportal.md#create-rules-in-an-existing-nsg) | Engedélyeznie kell a virtuális gép az SQL Server portja (alapértelmezés szerint 1433) a forgalom fogadására, ha az interneten keresztül csatlakozni szeretne. Helyi és virtuális hálózati-csak kapcsolatok nem is szüksége van. Ez az az egyetlen lépés szükséges az Azure portálon. |
+| [A TCP 1433 egy hálózati biztonsági szabály létrehozása](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Engedélyeznie kell a virtuális gép az SQL Server portja (alapértelmezés szerint 1433) a forgalom fogadására, ha az interneten keresztül csatlakozni szeretne. Helyi és virtuális hálózati-csak kapcsolatok nem is szüksége van. Ez az az egyetlen lépés szükséges az Azure portálon. |
 
 > [!TIP]
 > A fenti lépéseket történik meg a kapcsolat konfigurálásakor a portálon. Csak akkor használja ezeket a lépéseket, ellenőrizze a konfigurációját, vagy manuálisan beállítani a kapcsolat az SQL Server.

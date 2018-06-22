@@ -15,12 +15,12 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 3e37edbf8d29441541e77ed0660dc9a71618fdee
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7809e0b9265ec62bded67d0b0ed851ee0ba98315
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894265"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301699"
 ---
 # <a name="visual-studio-images-on-azure"></a>A Visual Studio képek az Azure-on
 Visual Studio egy előre konfigurált Azure virtuális gépen (VM) használata egy gyors és egyszerű módot eljusson semmi sem egy összesítő és futó fejlesztői környezetben. A Visual Studio különböző konfigurációival rendszerkép érhetők el a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -32,8 +32,8 @@ A legutóbbi Főverziók, a Visual Studio 2017 és a Visual Studio 2015-öt, ké
 
 | Verzió                                              | Kiadás                     |     Termék verziószáma     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| A Visual Studio 2017: Legújabb (15.7 verzió)                    |    Vállalati, közösségi     |      15.7.0 verzió     |
-| A Visual Studio 2017: Legújabb előzetes (15.8, 1 előzetes verzió) |    Vállalati, közösségi     |      15.8.1 verzió     |
+| A Visual Studio 2017: Legújabb (15.7 verzió)                    |    Vállalati, közösségi     |      15.7.3 verzió     |
+| A Visual Studio 2017: Legújabb előzetes (15.8, 2. előzetes verzió) |    Vállalati, közösségi     |      15.8.2 verzió     |
 |         Visual Studio 2017: RTW                              |    Vállalati, közösségi     |      15.0.13 verzió    |
 |   Visual Studio 2015-öt: Legújabb (3. frissítés)                      |    Vállalati, közösségi     |  14.0.25431.01 verzió  |
 |         Visual Studio 2015: RTW                              |             None             | (A karbantartáshoz lejárt) |

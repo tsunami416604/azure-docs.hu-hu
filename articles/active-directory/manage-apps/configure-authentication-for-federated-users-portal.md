@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: it-pro
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 86b7d8aa9d1c0d770f7b145377f49c5dc2c694a2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f2ab0a4458c83aa9e5c9cee4875e41c24f615018
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303609"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301199"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Állítsa be a Azure Active Directory bejelentkezési az alkalmazás viselkedését Hitelesítőtartományának feltárási házirend segítségével
 
@@ -185,7 +185,7 @@ New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFe
 A következő házirend automatikus-felgyorsítják felhasználók egy összevont tartományt a bérlő több olyan AD FS bejelentkezési képernyő van. Ha egynél több összevont tartományt, amely hitelesíti a felhasználókat az alkalmazások, meg kell adnia annak érdekében, automatikus tartomány.
 
 ``` powershell
-New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, "PreferredDomain":"federated.example.edu"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, `"PreferredDomain`":`"federated.example.edu`"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Ahhoz, hogy felhasználónév/jelszó hitelesítés szövetséges felhasználóknak közvetlenül az Azure Active Directoryval adott alkalmazásokra vonatkozó házirend létrehozásához a következő parancsot:

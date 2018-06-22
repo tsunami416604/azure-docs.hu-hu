@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 203e12ddc220651653625fc596eafa2e8365e4c1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 5f2bc50a59219a38c2fcf4d501de4d8a11f6fbf1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797743"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300754"
 ---
-# <a name="net-bulkexecutor-library-download-information"></a>.NET BulkExecutor könyvtár: adatok letöltése 
+# <a name="net-bulk-executor-library-download-information"></a>.NET tömeges végrehajtó könyvtár: adatok letöltése 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -31,12 +31,12 @@ ms.locfileid: "34797743"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [tömeges végrehajtó - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
-<tr><td>**Leírás**</td><td>A BulkExecutor könyvtár ügyfélalkalmazások teszi lehetővé az Azure Cosmos DB esetében tömeges műveletek végrehajtásához. BulkExecutor kódtár biztosít BulkImport, és BulkUpdate névtereket. A modul tömegesen BulkImport úgy, hogy egy gyűjtemény kiosztott átviteli sebesség a legnagyobb mértékben felhasznált betöltési optimalizált módon dokumentumokat. A modul tömegesen BulkUpdate frissíti a meglévő adatok Azure Cosmos DB-tárolókban lévő javítások.</td></tr>
+<tr><td>**Leírás**</td><td>A tömeges végrehajtó library lehetővé teszi, hogy az ügyfélalkalmazások Azure Cosmos DB fiókok tömeges műveletek végrehajtásához. tömeges végrehajtó kódtár biztosít BulkImport, és BulkUpdate névtereket. A modul tömegesen BulkImport úgy, hogy egy gyűjtemény kiosztott átviteli sebesség a legnagyobb mértékben felhasznált betöltési optimalizált módon dokumentumokat. A modul tömegesen BulkUpdate frissíti a meglévő adatok Azure Cosmos DB-tárolókban lévő javítások.</td></tr>
 
 <tr><td>**SDK letöltése**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
 
@@ -44,7 +44,7 @@ ms.locfileid: "34797743"
 
 <tr><td>**API-JÁNAK dokumentációja**</td><td>[.NET API referenciadokumentációt](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)</td></tr>
 
-<tr><td>**Első lépések**</td><td>[Ismerkedjen meg a BulkExecutor library .NET SDK-val](bulk-executor-dot-net.md)</td></tr>
+<tr><td>**Első lépések**</td><td>[A tömeges végrehajtó library .NET SDK használatába](bulk-executor-dot-net.md)</td></tr>
 
 <tr><td>**Aktuális támogatott keretrendszer**</td><td><ul><li>[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)(verzió > = 1.21.1)</li><li>
 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)(verzió > = 10.0.2)

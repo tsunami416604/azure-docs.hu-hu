@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212275"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301580"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Azure Service Fabric épített fordított proxy segít a Service Fabric-fürt futó mikroszolgáltatások felderítése és http-végpontokról rendelkező más szolgáltatásokkal kommunikálni.
@@ -57,8 +57,13 @@ Egy szolgáltatás portja konfigurálására a terheléselosztóhoz, konfigurál
 ![Külső kommunikáció][0]
 
 > [!WARNING]
-> A Load Balancer konfigurálásakor a fordított proxy port HTTP-végponttal visszaállítását a fürt összes mikroszolgáltatások a fürtön kívüli megcímezhető.
+> A Load Balancer konfigurálásakor a fordított proxy port HTTP-végponttal visszaállítását a fürt összes mikroszolgáltatások a fürtön kívüli megcímezhető. Ez azt jelenti, hogy egy meghatározott rosszindulatú felhasználó által felderíthető lehet-e a célja, hogy belső mikroszolgáltatások létrehozására. A potenially megadja súlyos biztonsági réseket is kihasználható; Példa:
 >
+> * Egy rosszindulatú felhasználó indíthatnak el egy szolgáltatásmegtagadási támadás ismételten meghívásával egy belső szolgáltatás, amely nem rendelkezik a megfelelő megerősített támadási felületét.
+> * Egy rosszindulatú felhasználó esetleg helytelenül formázott csomagok kézbesíthet nem kívánt viselkedést eredményező belső szolgáltatásnak.
+> * A szolgáltatás célja, hogy belső adhatnak vissza nem szándékozik a fürt, így a rosszindulatú felhasználók a bizalmas adatokat az ilyen kívül szolgáltatások számára elérhetővé tehető személyes vagy bizalmas adatokat. 
+>
+> Ellenőrizze, hogy teljesen ismertetése és a potenciális biztonsági vonatkozásai annak mérsékelni a fürt és az alkalmazások fut rajta, előtt a fordított proxy port nyilvános. 
 >
 
 

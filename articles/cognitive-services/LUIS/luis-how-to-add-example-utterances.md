@@ -10,21 +10,21 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12cbffdbd9ab299d4405aa50c0e49db9c20ab0fa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74a4b77bd9823e5462eecd438cf4c1d863e79892
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349790"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300638"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Példa utterances és entitások címke hozzáadása
 
-Utterances felhasználói kérdés vagy parancsok példák. Mutatja meg a nyelvi ismertetése (LUIS), meg kell adni [példa utterances](luis-concept-utterance.md) való egy [leképezés](luis-concept-intent.md).
+Példa utterances Példák szöveg felhasználói kérdés vagy parancsok. Mutatja meg a nyelvi ismertetése (LUIS), meg kell adni [példa utterances](luis-concept-utterance.md) való egy [leképezés](luis-concept-intent.md).
 
-Általában egy utterance először adja hozzá, és majd entitásokat hozhatnak létre, és a leképezési oldalon utterances címkézését. Ha entitások először ahelyett, hogy eredményezne, lásd: [új entitásokat](luis-how-to-add-entities.md).
+Általában egy példa utterance hozzáadása megjelölésű először, és entitásokat és a felirat utterances hozzon létre a leképezési oldalon. Ha entitások először ahelyett, hogy eredményezne, lásd: [új entitásokat](luis-how-to-add-entities.md).
 
 ## <a name="add-an-utterance"></a>Egy utterance hozzáadása
-Egy leképezési lapon adja meg a megfelelő utterance adatraktáraktól a felhasználók számára, például a `book 2 adult business tickets to Paris tomorrow on Air France` a szövegmezőben alatti leképezési nevét, és nyomja le az ENTER billentyűt. 
+Egy leképezési lapon adja meg a megfelelő példa utterance adatraktáraktól a felhasználók számára, például a `book 2 adult business tickets to Paris tomorrow on Air France` a szövegmezőben alatti leképezési nevét, és nyomja le az ENTER billentyűt. 
  
 >[!NOTE]
 >LUIS összes utterances csupa kisbetűssé alakítja.
@@ -32,6 +32,9 @@ Egy leképezési lapon adja meg a megfelelő utterance adatraktáraktól a felha
 ![Képernyőfelvétel a leképezések részleteit megjelenítő oldalon, a kiemelt utterance](./media/luis-how-to-add-example-utterances/add-new-utterance-to-intent.png) 
 
 Az aktuális szándékot utterances telefonokhoz utterances kerülnek. 
+
+## <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
+Figyelmen kívül hagyja a szavakat vagy a példa utterance írásjelek, használja a [mintát](luis-concept-patterns.md#pattern-syntax) rendelkező a _figyelmen kívül hagyása_ szintaxist. 
 
 ## <a name="add-simple-entity-label"></a>Egyszerű entitás címke hozzáadása
 A következő eljárással hozzon létre, és egyéni entitások belül a leképezési lapon a következő utterance címkézését:

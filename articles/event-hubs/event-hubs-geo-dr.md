@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 237b0639be75e12cff56f40ac76426aba7a8a701
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0192f65f394a3bb6d5cffc90639966b5f913b291
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2017
-ms.locfileid: "26745894"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302113"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Az Azure Event Hubs földrajzi-vész-helyreállítási
 
@@ -101,7 +101,18 @@ Ezzel a kiadással szem előtt tartani a következő érdemes figyelembe venni:
 
 4. Entitások szinkronizálása eltarthat egy ideig, körülbelül 50-100 entitások / perc.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="availability-zones-preview"></a>Rendelkezésre állási zónák (előzetes verzió)
+
+Az Event Hubs Standard Termékváltozat is támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md), egy Azure-régió, elszigetelt tartalék helyeinek biztosítása. 
+
+> [!NOTE]
+> A rendelkezésre állási zónák preview csak a támogatott-e a **USA középső RÉGIÓJA**, **USA keleti régiója 2**, és **Franciaország központi** régiók.
+
+Engedélyezheti rendelkezésre állási zónák csak, új névterekre gyakorolt az Azure portál használatával. Az Event Hubs nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a névtéren a zóna redundancia nem tiltható le.
+
+![3][]
+
+## <a name="next-steps"></a>További lépések
 
 * A [mintát a Githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) végigvezeti egy egyszerű munkafolyamatot, amely létrehoz egy földrajzi párosítás és indít el egy feladatátvételt egy vész-helyreállítási forgatókönyv.
 * A [REST API-referenciában](/rest/api/eventhub/disasterrecoveryconfigs) API-k ismerteti a földrajzi-vészhelyreállítási konfigurációban végrehajtásához.
@@ -114,3 +125,4 @@ Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi 
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
+[3]: ./media/event-hubs-geo-dr/eh-az.png

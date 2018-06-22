@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9804b9d5187637fe509d79134f93280d93daca76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b6b333937e7c88f566fc401967b26cbd31ca158b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266141"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301502"
 ---
 # <a name="language-understanding-faq"></a>Nyelvi ismertetése – gyakori kérdések
 
@@ -49,6 +49,9 @@ Az előző **mintát szolgáltatás** jelenleg elavult, lecserélve  **[minták]
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Miként használható az entitás húzzon ki a megfelelő adatokat? 
 Lásd: [entitások](luis-concept-entity-types.md) és [adatok kinyerése](luis-concept-data-extraction.md).
+
+### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Tartalmaznia kell egy példa utterance változatait írásjelek? 
+Adja hozzá a különböző változatát példa utterances a szándéka az, vagy adja hozzá a példa utterance a minta a [szintaxisát, és figyelmen kívül hagyása](luis-concept-patterns.md#pattern-syntax) a absztrakt. 
 
 ## <a name="luis-endpoint"></a>LUIS végpont
 

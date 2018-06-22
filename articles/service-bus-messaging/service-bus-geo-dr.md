@@ -2,25 +2,20 @@
 title: Az Azure Service Bus földrajzi-vész-helyreállítási |} Microsoft Docs
 description: Feladatátvételi földrajzi régió használatáról, és hajtsa végre a vész-helyreállítási Azure Service Bus
 services: service-bus-messaging
-documentationcenter: ''
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237345"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301519"
 ---
-# <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-disaster recovery
+# <a name="azure-service-bus-geo-disaster-recovery"></a>Az Azure Service Bus földrajzi-vész-helyreállítási
 
 Ha a teljes Azure-régiók vagy adatközpontok (Ha nincs [rendelkezésre állási zónák](../availability-zones/az-overview.md) használt) leállás következik be, nagyon fontos az adatok feldolgozásához továbbra is működik egy másik régióban vagy datacenter. Ilyen *földrajzi-vész-helyreállítási* és *georeplikáció* bármely vállalati fontos funkciókat. Az Azure Service Bus földrajzi-vész-helyreállítási és a georeplikáció, a névterek szintjén is támogatja. 
 
@@ -68,7 +63,7 @@ Feladatátvételi rendszerek figyelése, vagy egyedi figyelési megoldások auto
 
 Kezdeményezze a feladatátvételt, ha két lépésre szükség:
 
-1. Egy másik tervezett kimaradás esetén érdemes átvehet újra. Ezért egy másik passzív névtér beállítását, és frissítse a jelenlegi párosítását. 
+1. Egy másik tervezett kimaradás esetén kell újra átadható szeretné. Ezért egy másik passzív névtér beállítását, és frissítse a jelenlegi párosítását. 
 
 2. A korábbi elsődleges névtérből származó üzenetek lekérésére, amennyiben az rendelkezésre áll újra. Ezt követően használja a névtér rendszeres üzenetküldési kívül a földrajzi-helyreállítási beállításai, vagy törölje a régi elsődleges névteret.
 
@@ -89,7 +84,7 @@ Ha egy olyan forgatókönyvet, amelyben létrehozói és felhasználói kapcsola
 
 A [minták a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) bemutatják, hogyan állíthat be, és kezdeményezze a feladatátvételt. Ezeket a mintákat azt mutatják be a következő fogalmak:
 
-- A .net-minta és az Azure Active Directoryban Azure Resource Manager telepítő a Service busszal használni, és földrajzi-katasztrófa utáni helyreállítás engedélyezéséhez szükséges beállításokat.
+- .NET minta és az Azure Active Directoryban a Service busszal, Azure Resource Manager segítségével beállításához és földrajzi-katasztrófa utáni helyreállítás engedélyezéséhez szükséges beállítások tekintetében.
 - A mintakód végrehajtásához szükséges lépéseket.
 - Hogyan használható egy már létező névteret aliasként.
 - Másik lehetőségként a földrajzi vészhelyreállítás PowerShell vagy a parancssori felületen keresztül engedélyezésének lépései.
@@ -107,6 +102,17 @@ Ezzel a kiadással szem előtt tartani a következő érdemes figyelembe venni:
 
 4. Entitások szinkronizálása eltarthat egy ideig, körülbelül 50-100 entitások / perc. Előfizetések és szabályok is entitásokat is számítanak. 
 
+## <a name="availability-zones-preview"></a>Rendelkezésre állási zónák (előzetes verzió)
+
+A Service Bus Premium Termékváltozat is támogatja a [rendelkezésre állási zónák](../availability-zones/az-overview.md), egy Azure-régió, elszigetelt tartalék helyeinek biztosítása. 
+
+> [!NOTE]
+> A rendelkezésre állási zónák preview csak a támogatott-e a **USA középső RÉGIÓJA**, **USA keleti régiója 2**, és **Franciaország központi** régiók.
+
+Engedélyezheti rendelkezésre állási zónák csak, új névterekre gyakorolt az Azure portál használatával. A Service Bus nem támogatja a meglévő névterek áttelepítésének. Miután engedélyezte a névtéren a zóna redundancia nem tiltható le.
+
+![3][]
+
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a földrajzi-vész-helyreállítási [itt REST API-referenciában](/rest/api/servicebus/disasterrecoveryconfigs).
@@ -123,3 +129,4 @@ Tudhat meg többet a Service Bus üzenetkezelés, tekintse meg a következő cik
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png
+[3]: ./media/service-bus-geo-dr/az.png

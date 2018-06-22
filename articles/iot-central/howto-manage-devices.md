@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: b0772e3186c86239c773222a2b2e8d602a46aa52
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807475"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300594"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT központi alkalmazásban eszközök kezelése
 
@@ -49,7 +49,7 @@ Eszköz hozzáadása az Azure IoT központi alkalmazáshoz:
 1. Válasszon **valós** vagy **szimulált**. Egy valódi eszköz van egy fizikai eszköz számára, hogy az Azure IoT központi alkalmazás kapcsolódni. A szimulált eszköz állítja elő az Ön Azure IoT központi minta adatokat tartalmaz. A példa egy valós eszközt. Válasszon **valós** lehetőségre, és navigáljon a **eszközadatok** lap az új eszközhöz.
 
 
-## <a name="bulk-import-devices"></a>Eszközök tömeges importálással
+## <a name="import-devices"></a>Eszközök importálása
 
 Nagy számú eszköz kapcsolódni az alkalmazáshoz, Azure IoT központi ajánlatok tömeges importálását eszközök keresztüli CSV-fájl. 
 
@@ -65,9 +65,12 @@ A tömeges-regisztráció eszközök az alkalmazásban:
 
 1. A bal oldali panelen válassza ki a tömeges kívánt eszköz sablon létrehozása az eszközök.
 
-1. Válasszon **új** válassza **tömeges importálással**.
+ >   [!NOTE] 
+    Ha egy eszköz sablon nem rendelkezik, még akkor importálhatja az eszközök **nincs társítva eszközök** és regisztrálja őket a sablon nélkül. Eszközök importálása után majd társíthatja azokat egy sablon, egy következő lépésben.
 
-    [![Tömeges importálási művelet](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. Kattintson az **Importálás** gombra.
+
+    [![Importálási művelet](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. Válassza ki a CSV-fájlt, amely rendelkezik a eszközazonosítókat, importálandók listáját.
 
@@ -75,9 +78,25 @@ A tömeges-regisztráció eszközök az alkalmazásban:
 
 1. Az importálás után egy üzenetet az eszköz rács látható.
 
-    [![Tömeges importálása sikeres](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![Importálás sikeres](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
 Ha az eszköz importálja a művelet sikertelen lesz, látni fogja hibaüzenet jelenik meg az eszköz rács. A naplófájl a hibákat a rögzítés jön létre, és a hibaüzenet a következő kattintva tölthető le.
+
+
+**A sablon eszközök társítása**
+
+Eszközök regisztrálása az importálás alatt által **nincs társítva eszközök**, akkor az eszközök bármilyen eszköz sablon társítása nélkül jönnek létre. Eszköz egy sablon felfedezése, mely az adatokat és egyéb adatait az eszköz társítva kell lennie. Kövesse az alábbi lépéseket eszközök társítandó sablont:
+1. Válasszon **Explorer** a bal oldali navigációs menü.
+1. A bal oldali panelen válassza ki a **nincs társítva eszközök**.
+    [![Társítatlan eszközök](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. Jelölje ki a sablon társítani kívánt eszközöket.
+1. Kattintson a **társítása** lehetőséget.
+    [![Eszközök hozzárendelése](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. Válassza ki a sablont a rendelkezésre álló sablonok közül, és kattintson a **társítása** gombra.
+1. A kiválasztott eszközök átkerülnek a megfelelő eszköz sablon alapján.
+
+ >   [!NOTE] 
+    Miután egy eszközt, nem módosítható, vagy egy másik sablonhoz társított sablon társítva.
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
@@ -86,7 +105,7 @@ Eszközök csatlakoztatása az IoT központi telepítéséhez, szüksége lesz a
 Az alkalmazásból exportálási eszközök tömeges:
 1. Válasszon **Explorer** a bal oldali navigációs menü.
 
-1. A bal oldali panelen válassza az eszköz sablon, amelynek az eszközök exportálni szeretné.
+1. A bal oldali panelen válassza ki az eszköz sablon, amelynek az eszközök exportálni szeretné.
 
 1. Jelölje ki az exportálni, és kattintson a kívánt eszközöket a **exportálása** művelet.
 

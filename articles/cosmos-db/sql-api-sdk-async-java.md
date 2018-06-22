@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/18/2018
+ms.date: 06/20/2018
 ms.author: sngun
-ms.openlocfilehash: 4b12652783c94d132a5c1f4d4aa352d4e2318edf
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4a3b3a482f56065c54525a4d9cd7971f50f5b2a
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797668"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300679"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB aszinkron Java SDK API-SQL: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -53,6 +53,16 @@ A SQL API aszinkron Java SDK abban tér el az SQL API Java SDK-támogatása az a
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Org.json függőségi helyébe jackson miatt a teljesítmény szempontjából és licencelési ([github #29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
+* Eltávolított elavult OfferV2 osztály.
+* A hozzáadott elérőmetódust ajánlat osztályhoz átviteli tartalomhoz.
+* Bármely dokumentum és az erőforrások vissza egy jackson objektumtípus megváltozott org.json típusok visszaadó metódus.
+* Írja be a getObject(.) metódus osztályok kibővítése JsonSerializable megváltozott egy jackson ObjectNode vissza.
+* getCollection(.) metódus módosult az gyűjtemény a ObjectNode vissza.
+* A org.json.JSONObject arg. eltávolított JsonSerializable alosztályok konstruktorok
+* JsonSerializable.toJson (SerializationFormattingPolicy.Indented) most behúzás két szóközt használja.
+  
 ### <a name="a-name102102"></a><a name="1.0.2"/>amely az 1.0.2-esnél újabb
 * Egyedi Index házirend támogatása.
 * Támogatja a válasz folytatási jogkivonat mérete adatcsatorna beállítások korlátozza.
@@ -89,6 +99,7 @@ A Cosmos DB kivont SDK használatával fog kell elutasította a szolgáltatás.
 
 | Verzió | Kiadás dátuma | Kivezetési dátum |
 | --- | --- | --- |
+| [2.0.0](#2.0.0) |2018. június 20.|--- |
 | [1.0.2](#1.0.2) |2018. május 18.|--- |
 | [1.0.1](#1.0.1) |2018. április 20.|--- |
 | [1.0.0](#1.0.0) |2018. február 27.|--- |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364454"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301427"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Engedélyezze a hálózati biztonsági csoportok az Azure Security Centerben
 Az Azure Security Center azt javasolja, hogy a hálózati biztonsági csoport (NSG) engedélyezése, ha egy már nincs engedélyezve. NSG tartalmaz, amelyek engedélyezik vagy megtagadják a Virtuálisgép-példány egy virtuális hálózat hálózati forgalmának hozzáférés-vezérlési lista (ACL) szabályok listáját. Az NSG-ket alhálózatokhoz vagy az alhálózaton belüli virtuálisgép-példányokhoz lehet hozzárendelni. Ha az NSG-t hozzárendelik egy alhálózathoz, az ACL-szabályok érvényesek lesznek az alhálózatban lévő összes virtuálisgép-példányra. Emellett az egyes virtuális gép is lehet korlátozni további korlátozásokat NGS társítása közvetlenül a virtuális gép. További részletek további [Mi az a hálózati biztonsági csoport (NSG)?](../virtual-network/security-overview.md)
@@ -43,7 +43,7 @@ Ha nem rendelkezik az NSG-k engedélyezve van, a Security Center ajánlásokat k
 
    ![Hálózati biztonsági csoport választása][4]
 
-Ha létrehoz egy NSG-t, kövesse a [kezelése az Azure portál használatával NSG-k](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) hozzon létre egy NSG-t és a biztonsági szabályokat állíthat be.
+Ha létrehoz egy NSG-t, kövesse a [a hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) hozzon létre egy NSG-t és a biztonsági szabályokat állíthat be.
 
 ## <a name="see-also"></a>Lásd még
 Ez a cikk bemutatta a Security Center ajánlott "A hálózati biztonsági csoportok engedélyezése" alhálózatok és virtuális gépek megvalósításához. Az NSG-k engedélyezésére vonatkozó további tudnivalókért olvassa el a következőket:

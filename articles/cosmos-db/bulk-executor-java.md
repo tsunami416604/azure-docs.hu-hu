@@ -1,6 +1,6 @@
 ---
-title: Tömeges műveleteinek elvégzéséhez Azure Cosmos DB BulkExecutor Java kódtár használatával |} Microsoft Docs
-description: Azure Cosmos DB BulkExecutor Java kódtár segítségével tömeges importálás és frissítés a dokumentumok Azure Cosmos DB gyűjtemények.
+title: Tömeges végrehajtó Java kódtár tömeges műveleteinek elvégzéséhez Azure Cosmos DB használatával |} Microsoft Docs
+description: Azure Cosmos DB tömeges végrehajtó Java kódtár segítségével tömeges importálás és frissítés a dokumentumok Azure Cosmos DB gyűjtemények.
 keywords: Java tömeges végrehajtó
 services: cosmos-db
 author: tknandu
@@ -10,22 +10,22 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 77135ec5f62636d1dd634361da345b00d98ad918
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610242"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300713"
 ---
-# <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB adatok tömeges műveletek végrehajtásához használja a BulkExecutor Java kódtár
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB adatok tömeges műveletek végrehajtásához használja a tömeges végrehajtó Java kódtár
 
-Ez az oktatóanyag útmutatás az Azure Cosmos DB tömeges végrehajtó Java kódtár segítségével importálja, és az Azure Cosmos DB dokumentumok frissítéséhez. BulkExecutor könyvtárban, és hogyan nyújt segítséget a kihasználja a nagy átviteli sebesség és tárterület kapcsolatos további tudnivalókért lásd: [BulkExecutor könyvtárának](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban hoz létre egy Java-alkalmazást, amely véletlenszerű dokumentumok hoz létre, és importálja az Azure Cosmos DB gyűjteményt tömeges. Tömeges lesz, importálása után frissíteni néhány tulajdonságát egy dokumentumot. 
+Ez az oktatóanyag útmutatás az Azure Cosmos DB tömeges végrehajtó Java kódtár segítségével importálja, és az Azure Cosmos DB dokumentumok frissítéséhez. Tömeges végrehajtó könyvtárban, és hogyan nyújt segítséget a kihasználja a nagy átviteli sebesség és tárterület kapcsolatos további tudnivalókért lásd: [végrehajtó kódtárának ismertetése tömeges](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban hoz létre egy Java-alkalmazást, amely véletlenszerű dokumentumok hoz létre, és importálja az Azure Cosmos DB gyűjteményt tömeges. Tömeges lesz, importálása után frissíteni néhány tulajdonságát egy dokumentumot. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.  
 
-* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Másik lehetőségként használhatja a [Azure Cosmos DB emulátor](https://docs.microsoft.com/azure/cosmos-db/local-emulator) rendelkező a `https://localhost:8081` URI. Az elsődleges kulcs megtalálható [intézett hitelesítési kérésekhez](local-emulator.md#authenticating-requests).  
+* Az [Azure Cosmos DB-t kipróbálhatja ingyenesen](https://azure.microsoft.com/try/cosmosdb/), Azure-előfizetés, díjfizetés és elköteleződés nélkül. Másik lehetőségként használhatja a [Azure Cosmos DB emulátor](https://docs.microsoft.com/azure/cosmos-db/local-emulator) rendelkező a `https://localhost:8081` URI. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 
 * [Java fejlesztői készlet (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  
   - Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.  
@@ -197,7 +197,7 @@ A BulkUpdateAsync API használatával frissítheti a meglévő dokumentumokat. E
 
 ## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek 
 
-Vegye figyelembe a következő szempontokat a jobb teljesítmény, BulkExecutor szalagtár használata esetén:
+Vegye figyelembe a következő szempontokat a jobb teljesítmény, tömeges végrehajtó szalagtár használata esetén:
 
 * A legjobb teljesítmény érdekében futtassa az alkalmazást egy Azure virtuális gépről a Cosmos DB írási régióját ugyanabban a régióban.  
 * A nagyobb teljesítmény elérése érdekében:  
@@ -211,6 +211,6 @@ Vegye figyelembe a következő szempontokat a jobb teljesítmény, BulkExecutor 
 
     
 ## <a name="next-steps"></a>További lépések
-* Tudnivalók a maven csomag részletei és a kibocsátási megjegyzésekben BulkExecutor Java-könyvtár:[BulkExecutor SDK részletek](sql-api-sdk-bulk-executor-java.md).
+* Tudnivalók a maven csomag részletei és a kibocsátási megjegyzésekben tömeges végrehajtó Java-könyvtár:[végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-java.md).
 
 

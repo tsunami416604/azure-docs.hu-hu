@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 58cf30163837f6d3c327b7c0c6c2542ea294e8d6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: e9dc784d84c43600f3ba4fda92e023c01afe8995
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228995"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Azure Active Directoryval integrált Shmoop a iskolákat
 
@@ -120,7 +120,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Az iskolai Shmoop két szerepkörök támogatja a felhasználók számára: **tanárának** és **Student**. Állítsa be ezeket a szerepköröket az Azure ad-ben, hogy a felhasználók a megfelelő szerepkörök rendelhetők. Szerepkörök konfigurálása az Azure AD ismertetése: [szerepkör alapú hozzáférés-vezérlés az Azure AD felhőalapú alkalmazások](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/).
+    > Az iskolai Shmoop két szerepkörök támogatja a felhasználók számára: **tanárának** és **Student**. Állítsa be ezeket a szerepköröket az Azure ad-ben, hogy a felhasználók a megfelelő szerepkörök rendelhetők. Szerepkörök konfigurálása az Azure AD ismertetése: [RBAC és az Azure-portálon-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
     
 5. Az a **felhasználói attribútumok** szakasz a **egyszeri bejelentkezés** párbeszédpanel a SAML-jogkivonat attribútum adja meg az előző ábrán látható módon.  Ezután a következő lépéseket:
 
