@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b16c88b5ec45dec7bf0fe40da24e817ae325a3e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c29d6cb0da2e394912a2584b0d3c3cedf13f054c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887915"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304485"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Naplóelemzési hozzáadása a mentett keresések riasztások kezelési megoldással (előzetes verzió)
 
@@ -44,16 +44,13 @@ A munkaterület neve nem minden Naplóelemzési erőforrás nevében.  Ezt a meg
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Napló Analytics API-verzió
-A Resource Manager-sablon definiált összes Naplóelemzési erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy az erőforrást kell használnia az API verzióját.  Ebben a verzióban nem azonos az erőforrások, amelyek használják a [örökölt és a frissített lekérdezési nyelv](../log-analytics/log-analytics-log-search-upgrade.md).  
+A Resource Manager-sablon definiált összes Naplóelemzési erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy az erőforrást kell használnia az API verzióját.   
 
- Az alábbi táblázat felsorolja a mentett keresések napló Analytics API-verziók a hagyományos és a frissített munkaterületek: 
+A következő táblázat az ebben a példában használt erőforrás API-verzió.
 
-| Munkaterület-verzió | API-verzió | Lekérdezés |
+| Erőforrás típusa | API-verzió | Lekérdezés |
 |:---|:---|:---|
-| 1-es verzió (örökölt)   | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.<br> Példa: Írja be az esemény EventLevelName = hiba =  |
-| v2 (frissítése) | 2015 11-01. dátumú előnézeti | A hagyományos formátumú.  Telepítse a frissített formátumra alakítja át.<br> Példa: Írja be az esemény EventLevelName = hiba =<br>Konvertálva: esemény &#124; ahol EventLevelName == "Error"  |
-| v2 (frissítése) | 2017-03-03 – előzetes | Frissítési formátumban. <br>Példa: Az esemény &#124; ahol EventLevelName == "Error"  |
-
+| savedSearches | 2017-03-15 – előzetes | Esemény &#124; ahol EventLevelName == "Error"  |
 
 
 ## <a name="saved-searches"></a>Mentett keresések
@@ -90,7 +87,7 @@ A mentett kereséseket minden egyes tulajdonsága a következő táblázatban is
 > Előfordulhat, hogy szeretné használni a lekérdezésben szereplő escape-karakter, ha JSON-ként értelmezhetők karaktereket tartalmaz.  Például, ha a lekérdezés **típusa: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, azt kell megírni, a fájl **típusa: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Riasztások
-[Naplófájl Analytics riasztások](../log-analytics/log-analytics-alerts.md) mentett keresést futtat rendszeres időközönkénti riasztási szabályok jönnek létre.  Ha a lekérdezés megfelelő eredmények megadott feltételeknek, egy riasztás rekord jön létre, és egy vagy több műveletek futnak.  
+[Az Azure napló riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) által megadott naplózási lekérdezések futtatása rendszeres időközönként Azure riasztási szabályok jönnek létre.  Ha a lekérdezés eredményeit a megadott feltételeknek, egy riasztás rekord jön létre, és egy vagy több műveletek futnak használatával [művelet csoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).  
 
 > [!NOTE]
 > 2018. május 14., kezdve egy munkaterület minden riasztás automatikusan megkezdődik, Azure kiterjeszti. Egy felhasználó önkéntesen kezdeményezhet kibővítése értesítések az Azure-bA 2018 május 14 előtt. További információkért lásd: [kiterjesztése értesítések az Azure az OMS Szolgáltatáshoz](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, amelyek értesítések az Azure-bA műveletek most már Azure művelet csoportokban szabályozza. A munkaterület és a riasztások bővítve lettek az Azure-ba, amikor beolvasni, vagy adja hozzá a műveletek használatával a [művelet csoport - Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
@@ -196,7 +193,7 @@ A riasztási művelet erőforrás tulajdonságait az alábbi táblázatok ismert
 | Típus | Igen | A művelet típusát.  Ez az **riasztás** riasztási műveletekhez. |
 | Name (Név) | Igen | Megjelenítési nevet a riasztáshoz.  Ez az a riasztási szabály a konzolon megjelenített neve. |
 | Leírás | Nem | A riasztás nem kötelező leírása. |
-| Súlyosság | Igen | A riasztási rekord a következő értékek közül súlyossága:<br><br> **Kritikus**<br>**Figyelmeztetés**<br>**Tájékoztató**
+| Severity | Igen | A riasztási rekord a következő értékek közül súlyossága:<br><br> **Kritikus**<br>**Figyelmeztetés**<br>**Tájékoztató**
 
 
 #### <a name="threshold"></a>Küszöbérték
@@ -204,7 +201,7 @@ Ez a szakasz meg kell adni.  Meghatározza a riasztási küszöbérték tulajdon
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| Operátor | Igen | A következő értékek összehasonlítására operátor:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
+| Művelet | Igen | A következő értékek összehasonlítására operátor:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
 | Érték | Igen | Az eredmények összehasonlítandó értéket. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
@@ -216,7 +213,7 @@ Ez a szakasz nem kötelező megadni.  Adja hozzá a metrika mérési riasztás.
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | TriggerCondition | Igen | Megadja, hogy a küszöbérték megszegése vagy a következő értékek közül egymást követő megszegése teljes száma:<br><br>**Teljes<br>egymást követő** |
-| Operátor | Igen | A következő értékek összehasonlítására operátor:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
+| Művelet | Igen | A következő értékek összehasonlítására operátor:<br><br>**gt = nagyobb, mint<br>lt = kisebb, mint** |
 | Érték | Igen | Ennyiszer a aktiválni a riasztást a feltételeknek kell megfelelnie. |
 
 
@@ -338,11 +335,12 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-03-20",
-    
+          "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
+              "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
+
           "MySearch": {
             "displayName": "Error records by hour",
-            "query": "Type=MyRecord_CL | measure avg(Rating_d) by Instance_s interval 60minutes",
+            "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
             "category": "Samples",
             "name": "Samples-Count of data"
           },
@@ -350,7 +348,7 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
             "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
             "DisplayName": "My alert rule",
             "Description": "Sample alert.  Fires when 3 error records found over hour interval.",
-            "Severity": "Critical",
+            "Severity": "critical",
             "ThresholdOperator": "gt",
             "ThresholdValue": 3,
             "Schedule": {
@@ -378,7 +376,7 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
             "location": "[parameters('workspaceRegionId')]",
             "tags": { },
             "type": "Microsoft.OperationsManagement/solutions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
@@ -406,7 +404,7 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [ ],
             "tags": { },
             "properties": {
@@ -419,7 +417,7 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
             ],
@@ -433,7 +431,7 @@ A mintánkban [szokásos megoldást paraméterek]( monitoring-solutions-solution
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
             ],

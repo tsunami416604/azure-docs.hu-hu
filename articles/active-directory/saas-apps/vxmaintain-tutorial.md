@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d43e446d1ee1ed4dafc63481b4c874d994896d3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fc8918ed2901d2f443b94bac8587e24c3f04eeec
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230267"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Oktatóanyag: Azure Active Directoryval integrált vxMaintain
 
@@ -111,7 +111,7 @@ Ebben a szakaszban is engedélyezheti Azure AD egyszeri bejelentkezés az Azure 
     b. Az a **válasz URL-CÍMEN** mezőbe írjon be egy URL-címet, amely rendelkezik a következő szintaxist: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Az előző értékei nem valódi. A tényleges azonosítójú frissítheti, illetve válasz URL-CÍMÉT. Szerezze be az értékeket, lépjen kapcsolatba a [vxMaintain támogatási csoport](http://www.verisae.com/contact-us).
+    > Az előző értékei nem valódi. A tényleges azonosítójú frissítheti, illetve válasz URL-CÍMÉT. Szerezze be az értékeket, lépjen kapcsolatba a [vxMaintain támogatási csoport](https://www.hubspot.com/company/contact).
  
 4. A **SAML-aláíró tanúsítványa**, jelölje be **metaadatainak XML-kódja**, majd mentse a metaadat-fájlt a számítógépre.
 
@@ -121,7 +121,7 @@ Ebben a szakaszban is engedélyezheti Azure AD egyszeri bejelentkezés az Azure 
 
     ![A Mentés gombra](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Konfigurálása **vxMaintain** SSO, küldjön a letöltött **metaadatainak XML-kódja** fájlt a [vxMaintain támogatási csoport](http://www.verisae.com/contact-us).
+6. Konfigurálása **vxMaintain** SSO, küldjön a letöltött **metaadatainak XML-kódja** fájlt a [vxMaintain támogatási csoport](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Állít be az alkalmazást, mert egy előző utasításait tömör verziója elolvashatja a [Azure-portálon](https://portal.azure.com). Miután hozzáadta az alkalmazásból a **Active Directory** > **vállalati alkalmazások** szakaszban jelölje be a **egyszeri bejelentkezés** lapot, és hozzáférhet a beágyazott dokumentáció a **konfigurációs** szakasz. 
@@ -161,7 +161,7 @@ Ez a szakasz az alábbi lépésekkel hoz létre tesztfelhasználó Britta Simon 
  
 ### <a name="create-a-vxmaintain-test-user"></a>VxMaintain tesztfelhasználó létrehozása
 
-Ebben a szakaszban Britta Simon tesztfelhasználó vxMaintain hoz létre. Felhasználók hozzáadása a vxMaintain platform, dolgozni a [vxMaintain támogatási csoport](http://www.verisae.com/contact-us). Mielőtt használná az egyszeri Bejelentkezést, hozzon létre, és a felhasználók aktiválása.
+Ebben a szakaszban Britta Simon tesztfelhasználó vxMaintain hoz létre. Felhasználók hozzáadása a vxMaintain platform, dolgozni a [vxMaintain támogatási csoport](https://www.hubspot.com/company/contact). Mielőtt használná az egyszeri Bejelentkezést, hozzon létre, és a felhasználók aktiválása.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 

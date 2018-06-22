@@ -14,15 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 831383ffa3aa3464f3d62da4e1609cf3f1a4707e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795945"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309596"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapotát ellenőrzi az Azure-erőforrás állapota
 Alább az erőforrás állapota keresztül erőforrástípusok által végrehajtott egyetlen ellenőrzés sem teljes listáját.
+
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A kiszolgáló megfelelően működik, és?</li><li>A kiszolgáló elfogyott a memória?</li><li>A kiszolgáló indítása?</li><li>A kiszolgáló helyreállítása van?</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |Végrehajtott ellenőrzések|
@@ -105,6 +110,11 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li> Nem volt az adatbázis-felhasználónevekhez?</li></ul>|
+
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>Azure Storage platform problémák miatt sikertelen kérelmek adatokat olvasni a tárfiókot?</li><li>Azure Storage platform problémák miatt sikertelen kérelmek adatokat írni a tárfiókot?</li><li>Nem érhető el a tárolófürt, ahol a tárfiók található?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Végrehajtott ellenőrzések|

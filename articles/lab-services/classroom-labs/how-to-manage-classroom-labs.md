@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 705209becff7c8ad20e7d09f056aa1ae1577b7ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655148"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304520"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Számítógéptermi labs Azure labor Services kezelése 
 Ez a cikk ismerteti, hogyan létrehozásához és egy osztályteremben, amikor konfigurálja, minden osztályteremben labs megtekintéséhez, vagy egy osztályteremben, amikor törölni.
+
+## <a name="prerequisites"></a>Előfeltételek
+Egy osztály, amikor a labor fiók beállításához tagjának kell lennie a **labor létrehozó** szerepkör a tesztlabor-fiókban. A tesztkörnyezet tulajdonosa adhat hozzá a felhasználó a labor létrehozó szerepkör a következő cikkben szereplő lépések segítségével: [felhasználó hozzáadása a labor létrehozó szerepkör](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 
@@ -34,9 +37,9 @@ Ez a cikk ismerteti, hogyan létrehozásához és egy osztályteremben, amikor k
     7. Kattintson a **Mentés** gombra.
 
         ![Osztályterem-tesztkörnyezet létrehozása](../media/how-to-manage-classroom-labs/new-lab-window.png)
-1. A rendszer megjeleníti a tesztkörnyezet **kezdőlapját**. 
+1. Megjelenik a **irányítópult** a labor. 
     
-    ![Az osztályterem-tesztkörnyezet kezdőlapja](../media/how-to-manage-classroom-labs/classroom-lab-home-page.png)
+    ![Számítógéptermi labor irányítópult](../media/how-to-manage-classroom-labs/classroom-lab-home-page.png)
 
 ## <a name="configure-usage-policy"></a>Használati szabályzat konfigurálása
 
@@ -47,7 +50,7 @@ Ez a cikk ismerteti, hogyan létrehozásához és egy osztályteremben, amikor k
     ![Használati szabályzat](../media/how-to-manage-classroom-labs/usage-policy-settings.png)
 
 ## <a name="set-up-the-template"></a>Sablon beállítása
-A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Beállíthatja a sablon láthatóságát, hogy a tesztkörnyezet felhasználói számára elérhető példányokat hozzon létre a virtuálisgép-sablonról.  
+A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. A sablont a Virtuálisgép-sablon példányainak a labor felhasználók számára elérhetővé tegye közzé.  
 
 ### <a name="set-template-title-and-description"></a>Set-sablon nevét és leírását
 1. A **Sablon** szakaszban válassza a sablonhoz tartozó **Szerkesztés** (ceruza ikon) elemet. 
@@ -57,24 +60,51 @@ A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelybő
 
     ![Az osztályterem-tesztkörnyezet leírása](../media/how-to-manage-classroom-labs/lab-description.png)
 
-### <a name="make-instances-of-the-template-public"></a>A sablon példányainak nyilvánossá tétele 
-Amint **Nyilvános** értékre állította a sablon láthatóságát, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval.  
+### <a name="set-up-the-template-vm"></a>A Virtuálisgép-sablon beállítása
+ A sablon virtuális Gépet csatlakozhat, és a szükséges szoftver telepítését és az elérhetővé válik a diákoknak előtt. 
 
-1. A **Sablon** szakaszban válassza a **Láthatóság** lehetőséget. 
-2. A **Rendelkezésre állás** oldalon válassza a **Nyilvános** lehetőséget.
+1. Várjon, amíg a sablon virtuális gép készen áll-e. Miután elkészült, a **Start** gomb engedélyezni kell. Indítsa el a virtuális Gépet, jelölje be **Start**.
+
+    ![Indítsa el a Virtuálisgép-sablon](../media/tutorial-setup-classroom-lab/start-template-vm.png)
+1. Csatlakoztassa a virtuális Gépet, jelölje be **Connect**, és kövesse az utasításokat. 
+
+    ![A sablon virtuális gép kapcsolódni](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+1. A diákok (például a Visual Studio Azure Tártallózó, stb.) a labor elvégzéséhez szükséges szoftvereket telepíteniük. 
+2. Kapcsolat bontása (zárja be a távoli asztali munkamenetgazda) Virtuálisgép-sablonból. 
+3. **Állítsa le** a virtuális gép sablon kiválasztásával **leállítása**. 
+
+    ![A sablon virtuális gép leállítása](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
+
+
+### <a name="publish-the-template"></a>A sablon közzététele 
+Ha közzéteszi a sablont, Azure labor szolgáltatások hoz létre virtuális gépek a laborban a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. 
+
+1. Válassza ki **közzététel** a a **sablon** szakasz. 
+
+    ![A sablon virtuális Gépet közzététele](../media/tutorial-setup-classroom-lab/public-access.png)
+1. Az a **közzététel** ablakban válassza ki a **közzétett** lehetőséget. 
+2. Jelölje ki, a **közzététel** gombra. Ez a folyamat eltarthat néhány alkalommal attól függően, hogy hány virtuális gépek létrehozása, amely megegyezik a laborkörnyezetbe felhasználók számát.
     
     > [!IMPORTANT]
     > Amint a sablon nyilvánosan elérhetővé válik, a hozzáférhetősége nem módosítható privátra. 
-3. Kattintson a **Mentés** gombra.
+4. Váltás a **virtuális gépek** lapon, és ellenőrizze, hogy látható-e öt, a virtuális gépek **hozzá nem rendelt** állapotát. Virtuális gépeken nincsenek hozzárendelve a diákok még. 
 
-    ![Rendelkezésre állás](../media/how-to-manage-classroom-labs/public-access.png)
+    ![Virtual machines (Virtuális gépek)](../media/tutorial-setup-classroom-lab/virtual-machines.png)
+5. Várjon, amíg a virtuális gépek jönnek létre. A kell **leállítva** állapotát. Indítsa el a virtuális gép student, csatlakoztassa a virtuális Gépet, a virtuális gép leállítása és törlése a virtuális gép ezen a lapon. Ezen a lapon elindíthatja azokat, vagy lehetővé teszik a diákok indítsa el a virtuális gépeket. 
+
+    ![A leállított állapotban lévő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+
 
 ## <a name="send-registration-link-to-students"></a>Regisztrációs hivatkozás küldése a diákoknak
 
-1. Válassza a **Felhasználói regisztráció** csempét.
-2. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Másolás** gombra. A rendszer a vágólapra másolja a hivatkozást. Illessze be egy e-mail-szerkesztőbe, majd küldje el e-mailben a diákoknak. 
+1. Váltás a **irányítópult** nézet. 
+2. Válassza a **Felhasználói regisztráció** csempét.
 
-    ![A diákok regisztrációs hivatkozása](../media/how-to-manage-classroom-labs/registration-link.png)
+    ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
+1. A **Felhasználói regisztráció** párbeszédablakban kattintson a **Másolás** gombra. A rendszer a vágólapra másolja a hivatkozást. Illessze be egy e-mail-szerkesztőbe, majd küldje el e-mailben a diákoknak. 
+
+    ![A diákok regisztrációs hivatkozása](../media/tutorial-setup-classroom-lab/registration-link.png)
+2. Az a **felhasználói regisztráció** párbeszédpanelen jelölje ki **Bezárás**. 
 
 ## <a name="view-all-classroom-labs"></a>Minden osztály labs megtekintése
 1. Navigáljon a [Azure labor szolgáltatások portálja](https://labs.azure.com).
@@ -94,9 +124,20 @@ Amint **Nyilvános** értékre állította a sablon láthatóságát, az Azure L
 
     ![Törlése párbeszédpanel](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
  
+## <a name="manage-student-vms"></a>Student virtuális gépek kezeléséhez
+A diákok regisztrálása az Azure labor Services használata a regisztrációs összekapcsolása a diákok hozzárendelni a virtuális gépek látja el, feltéve ha az **virtuális gépek** fülre. 
+
+![A diákok rendelt virtuális gépek](../media/how-to-manage-classroom-labs/virtual-machines-students.png)
+
+A következő feladatokat a virtuális gép student teheti meg: 
+
+- Ha a virtuális gép fut, állítsa le a virtuális gépek. 
+- Indítsa el a virtuális Gépet, a virtuális gép leállítása. 
+- Csatlakozzon a virtuális géphez. 
+- Törölje a virtuális Gépet. 
 
 ## <a name="next-steps"></a>További lépések
 Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:
 
 - [Osztályterem-tesztkörnyezet beállítása](how-to-manage-classroom-labs.md)
-- [A tesztkörnyezet beállítása](../tutorial-create-custom-lab.md)
+- [Tesztkörnyezet beállítása](../tutorial-create-custom-lab.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4848132254736aca12be5e31325d98a936754af2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220634"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Oktatóanyag: Azure Active Directory-integráció SAP üzleti objektum a felhő
 
@@ -129,7 +129,7 @@ Beállítása az Azure AD egyszeri bejelentkezést a SAP Business objektumot fel
     ![SAP Business objektumot felhőalapú tartományt és URL-címek lap URL-címek](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > Az URL-címek értékei csak bemutatásához. Módosítsa a tényleges bejelentkezési URL-cím és azonosító URL-t. A bejelentkezési URL-cím beszerzése, lépjen kapcsolatba a [SAP Business objektumot felhőalapú ügyfél-támogatási csoport](https://www.sap.com/product/analytics/cloud-analytics.support.html). Az azonosító URL-t kaphat az SAP Business objektumot felhő metaadatok letöltése a felügyeleti konzolon. Ennek a magyarázatát az oktatóanyag későbbi részében. 
+    > Az URL-címek értékei csak bemutatásához. Módosítsa a tényleges bejelentkezési URL-cím és azonosító URL-t. A bejelentkezési URL-cím beszerzése, lépjen kapcsolatba a [SAP Business objektumot felhőalapú ügyfél-támogatási csoport](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Az azonosító URL-t kaphat az SAP Business objektumot felhő metaadatok letöltése a felügyeleti konzolon. Ennek a magyarázatát az oktatóanyag későbbi részében. 
 
 4. A **SAML-aláíró tanúsítványa**, jelölje be **metaadatainak XML-kódja**. Mentse a metaadat-fájlt a számítógépen.
 

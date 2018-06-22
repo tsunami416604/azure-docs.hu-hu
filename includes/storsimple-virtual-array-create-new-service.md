@@ -1,6 +1,6 @@
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
-1.  Microsoft fiók hitelesítő adataival, jelentkezzen be az Azure portálra az URL-címen: <https://portal.azure.com/>. Ha az eszközt kormányzati portál telepítésével, jelentkezzen be: <https://portal.azure.us/>
+1.  A Microsoft-fiók hitelesítő adatokkal jelentkezzen be az Azure portálra az URL-címen: <https://portal.azure.com/>. Ha az eszközt kormányzati portál telepítésével, jelentkezzen be a(z): <https://portal.azure.us/>
 
 2.  Az Azure portálon kattintson **+ hozzon létre egy erőforrást** &gt; **tárolási** &gt; **StorSimple virtuális adatsorozat**.
 

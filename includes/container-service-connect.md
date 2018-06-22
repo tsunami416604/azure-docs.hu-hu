@@ -19,7 +19,7 @@ Kövesse a következő lépéseket a `kubectl` telepítéséhez és konfigurál�
 > 
 
 ### <a name="install-kubectl"></a>A kubectl telepítése
-Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 parancs használata. A parancs futtatása előtt győződjön meg arról, hogy [telepítve van](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0, és hogy bejelentkezett egy Azure-fiókba (`az login`).
+Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 parancs használata. A parancs futtatásához, győződjön meg arról, hogy [telepítve](/cli/azure/install-az-cli2) 2.0-s és Azure-fiókkal történő bejelentkezés a legújabb Azure parancssori felület (`az login`).
 
 ```azurecli
 # Linux or macOS
@@ -193,7 +193,7 @@ Miután az alagutat DC/OS-re konfigurálta, a kapcsolódó végpont a következ�
 
 Miután az alagutat Swarmra konfigurálta, nyissa meg a Windows beállításait, és konfiguráljon egy `DOCKER_HOST` elnevezésű rendszerkörnyezeti változót a `:2375` értékkel. Ezután a Swarm-fürtöt a Docker parancssori felületén keresztül érheti el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tárolók telepítése és felügyelete a fürtben:
 
 * [Az Azure Container Service és a Kubernetes használata](../articles/container-service/kubernetes/container-service-kubernetes-ui.md)

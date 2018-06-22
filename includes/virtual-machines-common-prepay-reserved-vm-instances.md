@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
-ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.openlocfilehash: 32fdc23aded78ca491fbde2ef5c76247c56d0c4c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2018
-ms.locfileid: "35683049"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313744"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>A virtuális gépek Azure fenntartott virtuális gép osztályt előre fizetés
 
@@ -24,7 +24,7 @@ A azonosításához az alább ismertetett módszerek egyikét kell használnia a
 2. Virtuálisgép-méret pontos adatok Powershell, Azure Resource Manager használatával is megkapható, vagy a virtuális gép részletezi az Azure portálon.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>A fenntartott virtuális gépet példánya megvásárlása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** > **foglalások**.
 3. Válassza ki **Hozzáadás** beszerzési új fenntartott példányt.
 4. Töltse ki a kötelező mezőket. Virtuális gép a kiválasztott attribútumok csak akkor lekérni a fenntartott példány kedvezményeket megfelelő példányok. A Virtuálisgép-példányok, amelyek beszerzése a kedvezményeket tényleges száma attól függ, a hatókör és a kiválasztott mennyiség.

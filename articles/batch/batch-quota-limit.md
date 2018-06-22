@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310536"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304450"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -51,14 +51,10 @@ Ha tárolókészlet foglalási módban létrehozott Batch-fiók **felhasználói
 | [Egyidejű feladatok](batch-parallel-node-tasks.md) egyes számítási csomópontjain |csomópont magok száma 4 x |
 | [Alkalmazások](batch-application-packages.md) / Batch-fiókhoz. |20 |
 | Alkalmazáscsomagok alkalmazásonként |40 |
-| Csomag mérete (minden) |KB. 195GB<sup>1</sup> |
-| Maximális kezdő tevékenység mérete | 32768 karakterek<sup>2</sup> |
-| Maximális feladatütemezés élettartama | 7 nap<sup>3</sup> |
+| Maximális feladatütemezés élettartama | 7 nap<sup>1</sup> |
 | A csomópontok közötti kommunikáció a számítási csomópontok készlet engedélyezve | 100 |
 
-<sup>1</sup> blob maximális blokkméretének azure tárolási kapacitása<br />
-<sup>2</sup> erőforrás fájlok és a környezeti változók<br />
-<sup>3</sup> maximális élettartamát egy feladatot, amikor felveszik a feladat befejezését követően a rendszer 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
+<sup>1</sup> maximális élettartamát egy feladatot, amikor felveszik a feladat befejezését követően a rendszer 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
 
 
 ## <a name="view-batch-quotas"></a>Kötegelt kvóták megtekintése

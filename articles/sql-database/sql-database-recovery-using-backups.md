@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 027a10e687673bdeedf2858b4c23ff459df61b70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad4725ff6871ef489c6a10656af9a76e588edfa1
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649108"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308421"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus adatbázis biztonsági mentését használó Azure SQL-adatbázis helyreállítása
 SQL-adatbázis biztosítja ezeket a beállításokat, az adatbázis helyreállítási használatával [adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) és [hosszú távú megőrzési a biztonsági másolatok](sql-database-long-term-retention.md). Egy adatbázis biztonsági másolatát arra állíthatja vissza:
@@ -32,7 +32,7 @@ A visszaállított adatbázis költséget egy – megnövelt tárhely áll, az a
 - Ha az adatbázis maximális méretét 500 GB-nál nagyobb helyreállítása P11 – P15 S4-S12 vagy P1 – P6.
 - Ha az adatbázis maximális mérete 250 GB-nál nagyobb helyreállítása P1 – P6 S4-S12 számára.
 
-A felesleges költségek az az oka a visszaállított adatbázis maximális mérete nagyobb, mint a tárolókapacitást a teljesítményszintet része, és bármely fent a belefoglalt összeg kiépített – megnövelt tárhely extra fel van töltve.  Megnövelt tárhely díjszabása, tekintse meg a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a tényleges használt lemezterület mérete kisebb, mint a tároló tartalmazza, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb. Adatbázis tárterületet, és az adatbázis maximális méretének módosítása kapcsolatos további információkért lásd: [egyetlen adatbázis DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) és [egyetlen adatbázis vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+A felesleges költségek az az oka a visszaállított adatbázis maximális mérete nagyobb, mint a tárolókapacitást a teljesítményszintet része, és bármely fent a belefoglalt összeg kiépített – megnövelt tárhely extra fel van töltve.  Megnövelt tárhely díjszabása, tekintse meg a [árképzést ismertető oldalra SQL-adatbázis](https://azure.microsoft.com/pricing/details/sql-database/).  Ha a tényleges használt lemezterület mérete kisebb, mint a tároló tartalmazza, majd ez kapcsolódik további költség elkerülhető az adatbázis maximális méretét csökkentve a belefoglalt legkevesebb.  
 
 > [!NOTE]
 > [Adatbázis biztonsági másolatait automatikus](sql-database-automated-backups.md) használják, amikor létrehoz egy [adatbázis másolása](sql-database-copy.md). 

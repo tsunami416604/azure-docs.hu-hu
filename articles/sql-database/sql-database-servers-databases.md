@@ -1,33 +1,22 @@
 ---
-title: '& Kezelése az Azure SQL-kiszolgálók és adatbázisok létrehozása |} Microsoft Docs'
-description: Tudnivalók Azure SQL Database-kiszolgálóhoz és az adatbázis fogalmait, illetve kapcsolatos kiszolgálók és adatbázisok létrehozására és kezelésére.
+title: Azure logikai SQL-kiszolgálók és az önálló adatbázisok |} Microsoft Docs
+description: Tudnivalók Azure SQL Database logikai kiszolgáló és egy adatbázis fogalmait és az erőforrásaik.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 2600e39dec91fc6916fa7bbd02e318d33cfa3c99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649057"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309180"
 ---
-# <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database-kiszolgálók és adatbázisok létrehozása és kezelése
-
-SQL-adatbázis három típusú adatbázisokból kínálja:
-
-- Belül létrehozott egy adatbázist egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) rendelkező egy [együtt a számítási és tárolási erőforrások készletét](sql-database-service-tiers-dtu.md) vagy egy [számítási és tárolási erőforrásokatfüggetlenméretezését](sql-database-service-tiers-vcore.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
-- Részeként létrehozott adatbázis egy [adatbázisok készlete](sql-database-elastic-pool.md) belül egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) rendelkező egy [együtt a számítási és tárolási erőforrások készletét (DTU-alapú)](sql-database-service-tiers-dtu.md) vagy egy [(vCore-alapú) számítási és tárolási erőforrásokat független méretezését](sql-database-service-tiers-vcore.md) a készletben lévő adatbázisok között megosztott. Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
-- Egy [egy SQL server-példányt](sql-database-managed-instance.md) jött létre (a felügyelt példánya) egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a számítási és tárolási erőforrásokat, az összes olyan server-példányon adatbázis egy adott csoportján. A felügyelt példánya rendszer és a felhasználó adatbázist tartalmaz. Felügyelt példány lehetővé teszi, hogy adatbázis növekedési-és-shift egy teljes körűen felügyelt PaaS, hogy az alkalmazás újratervezése nélkül. Felügyelt példány magas kompatibilitási a helyszíni SQL Server programozási modellt biztosít, és támogatja az SQL Server szolgáltatásai és a hozzá tartozó eszközök és szolgáltatások nagy részét.  
-
-Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja, és lehetővé teszi, hogy csak a titkosított TCP/IP-kapcsolatokat.
-
-> [!IMPORTANT]
-> SQL adatbázis-felügyelt példány jelenleg a nyilvános előzetes nyújt egy általános célú szolgáltatási rétegben. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket. Ez a cikk fennmaradó kezelt példány nem vonatkozik.
+# <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Az Azure SQL Database logikai kiszolgáló és önálló adatbázisok és az erőforrások
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Mi az az Azure SQL logikai kiszolgálóra?
 
@@ -59,6 +48,20 @@ Az Azure Database logikai kiszolgáló:
 - Kiszolgálószintű rendszerbiztonsági tagként bejelentkezve a kiszolgáló minden adatbázisa felügyelhető.
 - Képes az olyan helyszíni SQL Server-példányokhoz hasonló bejelentkezések kezelésére, amelyek a kiszolgáló egy vagy több adatbázisához hozzáféréssel rendelkeznek, és korlátozott rendszergazdai jogosultságokkal ruházhatók fel. További információk: [Bejelentkezések](sql-database-manage-logins.md).
 - A létrehozott logikai kiszolgálón tárolt összes felhasználói adatbázis alapértelmezett rendezése `SQL_LATIN1_GENERAL_CP1_CI_AS`, ahol `LATIN1_GENERAL` angol (Egyesült Államok), `CP1` kód lap 1252, `CI` nagybetűk között, és `AS` ékezet-érzékeny.
+
+## <a name="logical-servers-and-databases"></a>Logikai kiszolgálók és adatbázisok
+
+Egy logikai kiszolgáló létrehozásához:
+
+- Belül létrehozott egy adatbázist egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) rendelkező egy [együtt a számítási és tárolási erőforrások készletét](sql-database-service-tiers-dtu.md) vagy egy [számítási és tárolási erőforrásokatfüggetlenméretezését](sql-database-service-tiers-vcore.md). Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
+- Részeként létrehozott adatbázis egy [adatbázisok készlete](sql-database-elastic-pool.md) belül egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) rendelkező egy [együtt a számítási és tárolási erőforrások készletét (DTU-alapú)](sql-database-service-tiers-dtu.md) vagy egy [(vCore-alapú) számítási és tárolási erőforrásokat független méretezését](sql-database-service-tiers-vcore.md) a készletben lévő adatbázisok között megosztott. Azure SQL-adatbázis nem tartozik egy Azure SQL Database logikai kiszolgáló, ami a rendszer létrehoz egy adott Azure-régiót.
+
+> [!IMPORTANT]
+> SQL adatbázis felügyelt, nyilvános előzetes jelenleg a példány egy [egy SQL server-példányt](sql-database-managed-instance.md) jött létre (a felügyelt példánya) egy [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) számítási és tárolási meghatározott számú erőforrások az összes olyan adatbázis, hogy server-példányon. A felügyelt példánya rendszer és a felhasználó adatbázist tartalmaz. Felügyelt példány lehetővé teszi, hogy adatbázis növekedési-és-shift egy teljes körűen felügyelt PaaS, hogy az alkalmazás újratervezése nélkül. Felügyelt példány magas kompatibilitási a helyszíni SQL Server programozási modellt biztosít, és támogatja az SQL Server szolgáltatásai és a hozzá tartozó eszközök és szolgáltatások nagy részét. További információért tekintse meg a [felügyelt SQL Database-példányt](sql-database-managed-instance.md) ismertető cikket. Ez a cikk fennmaradó kezelt példány nem vonatkozik.
+
+## <a name="tds-and-tcpip-connections"></a>TDS és TCP/IP-kapcsolatok
+
+Microsoft Azure SQL Database 7.3 vagy újabb tabulált adatfolyam (TDS) protokoll ügyfél verziója támogatja, és lehetővé teszi, hogy csak a titkosított TCP/IP-kapcsolatokat.
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Az Azure SQL Database-tűzfal által védett SQL-adatbázisok
 
@@ -109,7 +112,7 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az A
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Egy vagy több adatbázis beolvasása|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Az adatbázis tulajdonságainak megadása, vagy a meglévő adatbázis áthelyezése rugalmas készletbe|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Egy adatbázis eltávolítása|
-|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Létrehoz egy erőforráscsoport]
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Létrehoz egy erőforráscsoportot|
 |[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|A kiszolgáló létrehozása|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|Kiszolgálók adatait adja vissza|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|Kiszolgáló tulajdonságainak módosítása|

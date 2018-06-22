@@ -2,7 +2,7 @@
 
 
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
-1. Microsoft fiók hitelesítő adataival, jelentkezzen be a klasszikus Azure portálra az URL-címen: [ https://manage.windowsazure.com/ ](https://manage.windowsazure.com/).
+1. A Microsoft-fiók hitelesítő adatokkal jelentkezzen be az URL-címen a klasszikus Azure portálra: [ https://manage.windowsazure.com/ ](https://manage.windowsazure.com/).
 2. A klasszikus Azure Portalon kattintson az **Új** > **Data Services** > **StorSimple Manager** > **Gyorslétrehozás** elemre.
 3. A megjelenő adatlapon tegye a következőket:
    

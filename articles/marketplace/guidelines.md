@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 135f934cd6b352dad9e4cea5a14406804f31b66b
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825143"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307485"
 ---
-# <a name="guidelines"></a>Útmutatók  
+# <a name="guidelines"></a>Irányelvek  
 
 <!--
 ## Guidelines for AppSource  
@@ -35,7 +35,7 @@ Ha több személy a piactér-fiókja létrehozásához használt ugyanazon Micro
 
 >[!IMPORTANT]
 >Több felhasználó a Microsoft Developer Center (fejlesztői központ) fiók elérésének engedélyezésére, a Microsoft azt javasolja, hogy Azure Active Directory (Azure AD) segítségével szerepkörök hozzárendelése az egyéni felhasználók számára. Minden felhasználóhoz egyedi bejelentkezik hozzáférést kell a fiókot az Azure AD hitelesítő adatait. Hozzon létre a Microsoft ID e-mail cím a tartományban regisztrálni a vállalat a Microsoft azt javasolja, hogy az e-mailt nem rendelhető hozzá egy adott. Például: `windowsapps@fabrikam.com`.  
->*   További tudnivalókért keresse fel a [probléma: az Azure AD-ben a Microsoft ID összevont tartományt](#issue:-microsoft-id-in-an-azure-ad-federated-domain) szakasz.  
+>*   További tudnivalókért keresse fel a [probléma: az Azure AD-ben a Microsoft ID összevont tartományt](#issue-microsoft-id-in-an-azure-ad-federated-domain) szakasz.  
 
 *   A Microsoft ID a lehető legkevesebb fejlesztők való hozzáférés korlátozására. 
 *   Állítsa be a vállalati e-mailek terjesztési lista, amely tartalmazza az összes felhasználója számára hozzáférést kell a fejlesztői központban regisztrált fiókjában. Adja hozzá a DL e-mail címet biztonsági adataihoz. A kibontott terjesztési lista lehetővé teszi, hogy az alkalmazottak a listán szereplő megkapni a biztonsági kódokat, ha a kért, és kezelheti a biztonsági adatokat a Microsoft ID. mindegyikét Ha egy terjesztési listát beállítása esetén nem valósítható meg, majd az egyes e-mail fiók tulajdonosának elérhetőnek kell lennie eléréséhez és megosztása, amikor a rendszer kéri a biztonsági kódot.  

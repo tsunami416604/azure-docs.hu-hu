@@ -3,17 +3,18 @@ title: Adatok kinyerése, az Azure Search feldolgozása természetes nyelvű kog
 description: Adatok kinyerése, természetes nyelvű (NLP) és lemezkép feldolgozást kereshető tartalom létrehozása az Azure Search indexelő kognitív képességek segítségével.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641111"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304632"
 ---
 # <a name="what-is-cognitive-search"></a>Mi az a kognitív keresési?
 
@@ -25,12 +26,12 @@ AI integrációra van keresztül *kognitív képességek* forrás dokumentumok s
 
 Az indexelés során használt ismeretek előre definiált vagy egyéni lehetnek:
 
-+ [Ismeretek prefined](cognitive-search-predefined-skills.md) kognitív szolgáltatások API-k használt ugyanazok AI az algoritmusok alapulnak: [nevű entitás felismerés](cognitive-search-skill-named-entity-recognition.md), [kulcs kifejezés kibontási](cognitive-search-skill-keyphrases.md), és [OCR](cognitive-search-skill-ocr.md) Néhány. 
++ [Előre definiált ismeretek](cognitive-search-predefined-skills.md) kognitív szolgáltatások API-k használt ugyanazok AI az algoritmusok alapulnak: [nevű entitás felismerés](cognitive-search-skill-named-entity-recognition.md), [kulcs kifejezés kibontási](cognitive-search-skill-keyphrases.md), és [OCR](cognitive-search-skill-ocr.md)csak néhány. 
 
 + [Egyéni ismeretek](cognitive-search-create-custom-skill-example.md) semmilyen speciális feldolgozásához szükséges is fejleszthetők. Egyéni képességek példák előfordulhat, hogy egy adott tartományhoz, például a pénzügyi, tudományos kiadványok vagy orvosi célzó egyéni entitás modul vagy a dokumentum besorolás.
 
 > [!NOTE]
-> Nyilvános előzetes verzióban elérhető a Cognitive Search, a képességek alkalmazási lehetőségét pedig jelenleg ingyenesen kínáljuk. Ennek a funkciónak a díjszabását a későbbiekben jelentjük be.
+> Kognitív keresési nyilvános előzetes verziójában, és jelenleg tartományregisztráció ingyenesen skillset végrehajtása. Ennek a funkciónak a díjszabását a későbbiekben jelentjük be.
 
 ## <a name="components-of-cognitive-search"></a>Kognitív keresési összetevői
 

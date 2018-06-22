@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c8b0529b0ae45d7bcee5574991551a424c13ba70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713864"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309861"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszköz felügyeleti kapcsolatos gyakori kérdések
 
@@ -44,7 +44,7 @@ ms.locfileid: "34713864"
 **K: az eszköz nemrég I regisztrálva. Miért nem látom az eszközt az Azure-portálon a saját felhasználói adatok alapján?**
 
 **V:** csatlakozott az Azure AD hibrid Windows 10-es eszközök nem jelennek meg a felhasználói eszközök alapján.
-Minden eszköz tekintse meg a PowerShell használatával kell. 
+Kell használnia minden eszközök megtekintése az Azure portálon. PowerShell is használható [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmag.
 
 A felhasználói eszközök csak a következő eszközök találhatók:
 
@@ -52,25 +52,24 @@ A felhasználói eszközök csak a következő eszközök találhatók:
 - Az összes nem - Windows 10 vagy Windows Server 2016-os eszközök.
 - Minden-Windows eszköz 
 
----
-
-**K: Miért nem látom minden olyan eszközre, az Azure-portálon az Azure Active Directoryban regisztrálva?** 
-
-**V:** most már megtekintheti őket az Azure Active Directory -> minden eszköz menü. Azure PowerShell is használható, ha minden eszköz kereséséhez. További részletekért lásd: a [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmag.
-
 --- 
 
 **K: Hogyan állapítható meg, hogy mi az az ügyfél az eszköz regisztrációs állapotát?**
 
-**V:** a Windows 10 és Windows Server 2016 vagy újabb rendszerű eszközök, futtassa a dsregcmd.exe/status.
+**V:** használhatja az Azure-portálon, nyissa meg az összes eszközre és keresse meg az eszköz-azonosítójával. Ellenőrizze az értéket a illesztési oszlop.
 
-A régebbi verziójú operációs rendszer verziója futtassa a "%programFiles%\Microsoft munkahelyi Join\autoworkplace.exe"
+Ha egy regisztrált eszközről helyi eszköz regisztrációs állapotát ellenőrizni kívánja:
+
+- A Windows 10 és Windows Server 2016 vagy újabb rendszerű eszközök futtassa a dsregcmd.exe/status.
+- A régebbi verziójú operációs rendszer verziója futtassa a "%programFiles%\Microsoft munkahelyi Join\autoworkplace.exe"
 
 ---
 
-**K: Miért van egy eszközt törölt rendelkezik az Azure portálon vagy a Windows PowerShell használatával továbbra is szerepel a regisztrált?**
+**K: rendelkezik törölt az Azure portálon, vagy, hogy továbbra is regisztrálva van az eszközön található használatával a Windows PowerShell, de a helyi állapot szerint?**
 
-**V:** Ez az elvárt működés. Az eszköz nem fog erőforrásokhoz való hozzáférés a felhőben. Ha szeretné újra regisztrálni újra, a manuális műveletet kell venni az eszközön kell lennie. 
+**V:** Ez az elvárt működés. Az eszköz nem fog erőforrásokhoz való hozzáférés a felhőben. 
+
+Ha szeretné újra regisztrálni újra, a manuális műveletet kell venni az eszközön kell lennie. 
 
 Törölje a csatlakoztatási állapotnak a Windows 10 és Windows Server 2016-os, amelyek a helyszíni AD-tartományhoz:
 
@@ -85,6 +84,13 @@ A régebbi verziójú Windows operációsrendszer-verziók, amely a helyszíni A
 1.  Nyissa meg a parancssort rendszergazdaként.
 2.  Gépelje be: `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
 3.  Gépelje be: `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
+
+---
+** K: Hogyan do I elhagyása az Azure AD csatlakoztatott eszközök helyileg az eszközön?
+**V:** 
+- A hibrid a Azure AD csatlakoztatott eszközök, ügyeljen arra, hogy az automatikus regisztráció kikapcsolása, úgy, hogy az ütemezett feladat újra nem regisztrálja az eszközt. Ezután nyissa meg a parancssort rendszergazdaként, típus `dsregcmd.exe /debug /leave`. Azt is megteheti Ez a parancs futtatható parancsfájlként kilépni a egyszerre több eszközön.
+
+- A tiszta az Azure AD csatlakoztatott eszközök, ellenőrizze, hogy a kapcsolat nélküli helyi rendszergazdai fiók, vagy hozzon létre egy, az, akkor nem fog tudni bármely Azure AD-felhasználó hitelesítő adatokkal jelentkezhetnek be. A következő Ugrás **beállítások** > **fiókok** > **hozzáférés munkahelyi vagy iskolai**. Válassza ki azt a fiókot, majd kattintson a **Disconnect**. Kövesse az utasításokat, és adja meg a helyi rendszergazdai hitelesítő adatokat, amikor a rendszer kéri. Indítsa újra az eszközt a elhagyásra befejezéséhez.
 
 ---
 
@@ -119,7 +125,7 @@ A régebbi verziójú Windows operációsrendszer-verziók, amely a helyszíni A
 ---
 
 
-**K: I tekintse meg a rekordokat az Azure-portálon a felhasználói adatok alapján, és az ügyfél regisztrált állapota látható. A feltételes hozzáférés használatának megfelelően beállítani a perceké 'M?**
+**K: I tekintse meg a rekordokat az Azure-portálon a felhasználói adatok alapján, és az állapot látható, az eszköz regisztrálva. A feltételes hozzáférés használatának megfelelően beállítani a perceké 'M?**
 
 **V:** kifejezi deviceID, az eszköz csatlakoztatási állapotnak kell felelnek meg, hogy Azure ad-val, és bármely értékelési feltételeknek a feltételes hozzáférés. További részletekért lásd: [Ismerkedés az Azure Active Directory Eszközregisztrációs](active-directory-device-registration.md).
 
@@ -137,6 +143,8 @@ A régebbi verziójú Windows operációsrendszer-verziók, amely a helyszíni A
 
 - Összevont bejelentkezések az összevonási kiszolgálón, a WS-Trust aktív végpontja támogatásához szükséges. 
 
+- Hitelesítési továbbítása engedélyezve van, és a felhasználó rendelkezik-e egy ideiglenes jelszót, amely a bejelentkezési módosítani kell.
+
 ---
 
 **K: Miért látható a "Oops... hiba történt!" párbeszédpanel jelenik meg, hajtsa végre az Azure AD join a számítógép?**
@@ -147,7 +155,7 @@ A régebbi verziójú Windows operációsrendszer-verziók, amely a helyszíni A
 
 **Kérdés: Miért volt sikertelen a saját kísérlet a számítógép bár kaptam bármely hibainformációk?**
 
-**V:** ennek valószínű oka az, hogy a felhasználó jelentkezett be az eszközre, a beépített Rendszergazda fiók használatával. A telepítés befejezéséhez a Azure Active Directory csatlakozási használata előtt hozzon létre egy másik helyi fiókot. 
+**V:** ennek valószínű oka az, hogy a felhasználó jelentkezett be az eszközre, a beépített helyi rendszergazdai fiók használatával. A telepítés befejezéséhez a Azure Active Directory csatlakozási használata előtt hozzon létre egy másik helyi fiókot. 
 
 ---
 

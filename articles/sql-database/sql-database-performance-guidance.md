@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 613fc4d914635f46d09552858706975006fcbff6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650468"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309214"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Az Azure SQL-adatbázis teljesítményének hangolása
 
@@ -25,7 +25,7 @@ Az Ön nem rendelkezik megfelelő javaslatokkal és teljesítménnyel kapcsolato
 - Az alkalmazás hangolás, és alkalmazni, néhány ajánlott eljárás, amely növelheti a teljesítményt. 
 - Az adatbázis hangolására indexek és lekérdezéseket, amelyekkel hatékonyabban dolgozhasson adatokkal történő módosításával.
 
-Ezek a kézi módszert, mert később szüksége lesz, hogy mit [DTU-alapú modell erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú modell erőforrás korlátok (előzetes verzió)](sql-database-vcore-resource-limits.md) az igényeinek. Ellenkező esetben kellene írja újra az alkalmazást vagy az adatbázis-kódot, és telepítheti a módosításokat.
+Ezek a kézi módszert, mivel el kell döntenie erőforrások megfeleljenek mennyisége az igényeinek. Ellenkező esetben kellene írja újra az alkalmazást vagy az adatbázis-kódot, és telepítheti a módosításokat.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Az adatbázis teljesítményének szintjének növelése
 
@@ -271,8 +271,8 @@ Egyes alkalmazások írási igényű. Néha egy adatbázis teljes IO terhelésé
 Egyes adatbázis-alkalmazások olvasási műveleteket munkaterhelésekkel rendelkeznek. Rétegek gyorsítótárazás csökkentheti az adatbázis terhelését, és előfordulhat, hogy lehetséges csökkentése az Azure SQL Database segítségével adatbázis támogatásához szükséges teljesítményszint szükséges. A [Azure Redis Cache](https://azure.microsoft.com/services/cache/), ha egy olvasási műveleteket végez, érheti el az adatokat többször (vagy lehet, hogy minden alkalmazás szintű machine konfigurációjától függően), majd helyezze el az adatok az SQL-adatbázis kívül. Ez az adatbázis-terhelésnek (Processzor és olvasási I/O) csökkentheti, de nincs hatással lévő tranzakciós konzisztencia, mivel előfordulhat, hogy az adatok olvasása a gyorsítótárból szinkronban az adatbázis adatai. Bár számos alkalmazás bizonyos fokú inkonzisztenciát elfogadható, hogy igaz nem munkaterhelések. Egy alkalmazás szintű gyorsítótárazási stratégia megvalósítása előtt, teljes mértékben ismernie kell bármely alkalmazás követelményeinek.
 
 ## <a name="next-steps"></a>További lépések
-* DTU-alapú szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md) és [DTU-alapú modell erőforrás-korlátozások](sql-database-dtu-resource-limits.md)
-* VCore-alapú szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md) és [vCore alapuló erőforrás-korlátozások (előzetes verzió)](sql-database-vcore-resource-limits.md)
+* DTU-alapú szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [alapjául szolgáló vásárlási modell DTU-alapú](sql-database-service-tiers-dtu.md).
+* VCore-alapú szolgáltatásrétegeiben használt funkciókkal kapcsolatos további információkért lásd: [vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió)](sql-database-service-tiers-vcore.md).
 * További információ a rugalmas készletek: [Mi az Azure rugalmas készletek?](sql-database-elastic-pool.md)
 * Teljesítmény és a rugalmas készletek kapcsolatos információkért lásd: [mikor érdemes figyelembe venni a rugalmas készlethez](sql-database-elastic-pool-guidance.md)
 

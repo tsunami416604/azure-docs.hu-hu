@@ -2,19 +2,19 @@
 title: MySQL az Azure-adatbázis korlátozásai
 description: Ez a cikk ismerteti a MySQL, például a kapcsolat és a tárolási motor lehetőségei az Azure Database korlátozásai.
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264884"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309924"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL az Azure-adatbázis korlátozásai
 A következő szakaszok ismertetik a kapacitás, tárolási motor támogatja, jogosultság, adatok adatkezelési utasítás támogatásának, és az adatbázis szolgáltatásban működik korlátok. Lásd még: [általános korlátozások](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) a MySQL adatbázis-kezelő alkalmazandó.
@@ -60,29 +60,29 @@ Kapcsolatok száma meghaladja a korlátot, ha a következő hibaüzenet jelenhet
 ## <a name="data-manipulation-statement-support"></a>Adatok adatkezelési utasítás támogatása
 
 ### <a name="supported"></a>Támogatott
-- TERHELÉSELOSZTÁSI adatok BEMENETI_FÁJL - támogatott, de adjon meg a [helyi] paraméter, amely egy UNC elérési utat (Azure storage XSMB keresztül csatlakoztatott) van átirányítva.
+- `LOAD DATA INFILE` támogatott, de a `[LOCAL]` paraméter kell megadva, és átirányítja egy UNC elérési utat (Azure storage csatlakoztatott SMB-n keresztül).
 
 ### <a name="unsupported"></a>Nem támogatott
-- VÁLASSZON... AZ EREDMÉNYFÁJL
+- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Működési korlátai
 
 ### <a name="scale-operations"></a>A skálázási műveletek
-- Dinamikus méretezés a kiszolgálók közötti tarifacsomagok jelenleg nem támogatott. Ez azt jelenti, hogy közötti váltásról alapvető, általános célú és Memóriaoptimalizált tarifacsomag szükséges.
+- Dinamikus méretezés és onnan az alapvető tarifacsomagok jelenleg nem támogatott.
 - Kiszolgáló tároló méretének csökkentése nem támogatott.
 
 ### <a name="server-version-upgrades"></a>Kiszolgáló verziófrissítések
 - Fő adatbázis motor verziók közötti automatikus áttelepítési jelenleg nem támogatott.
 
 ### <a name="point-in-time-restore"></a>Időponthoz kötött visszaállítás
-- Különböző szolgáltatási rétegben és/vagy számítási egység és a tárhely mérete visszaállítása nem engedélyezett.
+- A PITR funkció használata esetén az új kiszolgáló ugyanazokat a konfigurációkat, mint a kiszolgáló alapul hozza létre.
 - A Törölt kiszolgáló visszaállítása nem támogatott.
 
 ### <a name="subscription-management"></a>Előfizetés-kezelés
 - Dinamikusan áthelyezése előfizetés és az erőforráscsoport előre létrehozott kiszolgálók jelenleg nem támogatott.
 
 ## <a name="current-known-issues"></a>Jelenlegi ismert problémái
-- Kapcsolat létrejötte után a MySQL server-példány helytelen verzióját jeleníti meg. A megfelelő kiszolgálói példány versioning használatához válassza version(); a MySQL-parancssorba parancsot.
+- Kapcsolat létrejötte után a MySQL server-példány helytelen verzióját jeleníti meg. A megfelelő kiszolgálói példány motor verziója, amelyet a `select version();` parancsot.
 
 ## <a name="next-steps"></a>További lépések
 - [Az egyes szolgáltatásszinteken elérhető](concepts-pricing-tiers.md)

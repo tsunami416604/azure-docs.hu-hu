@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a98f2ed2ce55f74ea3967dbb23a762fce566a2f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 60b6769dd3c15bbe628f60318cc08fcac78357ea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595631"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307962"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Az Azure Analysis Services támogatott adatforrások
 
@@ -63,7 +63,8 @@ Csatlakozás helyszíni erőforrásait és Azure AS-kiszolgáló szükséges egy
 |Dynamics CRM *     |  
 |Az Excel-munkafüzet     |  
 |Exchange*     |  
-|Mappa *     | 
+|Mappa *     |
+|IBM Informix * (béta) |
 |JSON-dokumentum *     |  
 |A bináris * sorok     | 
 |MySQL-adatbázis     | 
@@ -71,6 +72,8 @@ Csatlakozás helyszíni erőforrásait és Azure AS-kiszolgáló szükséges egy
 |Az ODBC-lekérdezés     | 
 |OLE DB RENDSZERHEZ     |   
 |Postgre SQL adatbázis *    | 
+|Salesforce objektumok * |  
+|Salesforce jelentések * |
 |SAP HANA *    |  
 |SAP Business Warehouse *    |  
 |SharePoint*     |   

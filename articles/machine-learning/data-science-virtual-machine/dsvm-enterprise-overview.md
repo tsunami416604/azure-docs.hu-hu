@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az adatok tudományos virtuálisgép-alapú Team környezetek - Azure |} Microsoft Docs
-description: Minták adatok tudományos virtuális Gépet állítsanak vállalati csapatok környezet üzembe helyezéséhez.
+title: Team adatok tudományos virtuálisgép-alapú környezetek - Azure bemutatása |} Microsoft Docs
+description: Az adatok tudományos VM team vállalati környezetben üzembe helyezéséhez kombinációját.
 keywords: a mélyhivatkozással tanulási, AI adatok tudományos eszközök, a adatok tudományos virtuális gép, a földrajzi analytics, a csapat az tudományos folyamata
 services: machine-learning
 documentationcenter: ''
@@ -15,36 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8486b0be1fb5e1385da3c7ad55f6410a1059df93
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830537"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309248"
 ---
-# <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Adatok tudományos virtuálisgép-alapú Team elemzés és AI környezet 
-A [adatok tudományos virtuális gép](overview.md) (DSVM) gazdag környezetet biztosít az Azure-felhő előre elkészített szoftverrel AI és az adatok elemzéséhez. Hagyományosan a DSVM vettük egyedi analytics asztali, és egyes adatszakértőkön szerezhet az előre elkészített analytics környezetükben megosztott fogalmát termelékenységet. Nagy analytics csapatok analytics környezetük tervezése az adatelemzők és AI fejlesztők számára, az ismétlődő témák egyik megjelenik a vállalati informatikai felügyelt megosztott analytics fejlesztési és kísérletezés infrastruktúra házirendek amely is elősegíti együttműködés és konzisztencia között a teljes adattudomány / analytics csapatának. A megosztott infrastruktúra is lehetővé teszi, hogy informatikai jobban tudják használni az analytics-környezetben. A team-alapú adattudomány / analytics infrastruktúra más néven egyes szervezetek "Analytics védőfal", amely lehetővé teszi az adatszakértőkön át a gyorsan adatok megismeréséhez, futtassa a kísérletet, feltevése ellenőrizze, biztonságos módon prediktív modellek létrehozása adatok különböző eszközökhöz való hozzáférés során az éles környezetben befolyásolása nélkül. 
+# <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Tudományos virtuálisgép-alapú team adatelemzés és AI környezet 
+A [adatok tudományos virtuális gép](overview.md) (DSVM) az Azure platform mesterséges intelligencia (AI) és adatelemzés előre elkészített szoftverrel gazdag környezetet biztosít. 
 
-A DSVM az Azure-infrastruktúra szintjén működik, mivel a rendszergazdák könnyen konfigurálható a DSVM összhangban az IT-házirendeknek a vállalati és ajánlatok teljes rugalmasságot biztosít a végrehajtási hozzáférést különböző megosztási architektúrák működik Vállalati adategységek szabályozott módon. 
+Hagyományosan a DSVM használatban van, az egyes analytics asztali. Egyes adatszakértőkön az előre elkészített analytics környezetükben megosztott fogalmát termelékenységet kapnak. Nagy analytics csapatok analytics környezetük tervezése az adatelemzők és AI fejlesztők számára, az ismétlődő témák egyik egy megosztott analytics infrastruktúra fejlesztési és kísérletezhet. Ez az infrastruktúra kezelése összhangban a nagyvállalati informatikai házirendek, amelyek is egyszerűbbé teszik az adatok tudományos/analytics csapatok együttműködés és konzisztenciáját. 
 
-Ez a szakasz ismerteti, amelyek bizonyos minták és útmutatást a DSVM a tudományos adatok team-alapú infrastruktúra központi telepítéséhez használható.  Ezeket a mintákat a építőelemeit közvetlenül használja az Azure IaaS (szolgáltatott infrastruktúra), és mint ilyen alkalmazandó bármely Azure virtuális gépeken. A megadott cikkek sorozata elsősorban ezen Azure-infrastruktúra képességek alkalmazása az adatok tudományos virtuális géphez. 
+A megosztott infrastruktúra is lehetővé teszi, hogy informatikai jobban tudják használni az analytics-környezetben. Egyes szervezetek hívja az adatok team-alapú tudományos/analytics infrastruktúra egy "analytics védőfal." Ez lehetővé teszi a adatszakértőkön gyorsan adatok megismeréséhez, futtassa a kísérletet, feltételezéseket érvényesítése és prediktív modellek létrehozása az éles környezetben anélkül különböző adategységek eléréséhez. 
+
+A DSVM az Azure-infrastruktúra szintjén működik, mert a rendszergazdák könnyen konfigurálható a DSVM meg a vállalati informatikai házirendeknek megfelelően működjön. A DSVM végrehajtási hozzáférést a vállalati adategységek különböző megosztási architektúrák szabályozott módon teljes rugalmasságot biztosít. 
+
+Ez a szakasz ismerteti, amelyek bizonyos minták és útmutatást, amelyek segítségével a DSVM a tudományos adatok team-alapú infrastruktúra telepítése. Ezeket a mintákat a építőelemeit határozza meg az Azure infrastruktúra szolgáltatásként (IaaS), így bármely Azure virtuális gépek vonatkoznak. Az adatsorozat a cikkek a elsősorban ezen Azure-infrastruktúra képességek alkalmazása az adatok tudományos virtuális géphez. 
 
 Vállalati team analytics környezetben kulcsfontosságú építőelemei vannak:
 
-* [Az adatok tudományos virtuális gépek készlet automatikus méretezése](dsvm-pools.md)
-* [Közös identitás- és hozzáférés a munkaterülethez bármelyik a DSVMs a készletben](dsvm-common-identity.md)
+* [Az adatok tudományos virtuális gépek skálázva készlet](dsvm-pools.md)
+* [Közös identitás- és hozzáférés-munkaterülethez bármelyik a DSVMs a készletben](dsvm-common-identity.md)
 * [Biztonságos hozzáférés a adatforrások](dsvm-secure-access-keys.md)
 
 
-A cikkek sorozat útmutatás és mutatók szerepelnek ezen fent szempontokat. Természetesen nincsenek számos további szempontok és a vonatkozó igényeket DSVM nagyvállalati konfigurációk nem még közvetlenül jelez a cikkek a sorozat telepítésekor. Az alábbiakban néhány egyéb szempontok és általános Azure dokumentációja, miközben a vállalati DSVM-példányokon bevezetné, könnyen használható mutató hivatkozások. 
+Cikkek sorozata nyújt útmutatást és mutatók minden az előző elemek. A szempontok és igényeinek DSVM nagyvállalati konfigurációk telepítése nem fedi le. Itt található egyéb Azure dokumentációja, amely során a vállalat DSVM példányok végrehajtási használhatók: 
 
 * [Hálózati biztonság](https://docs.microsoft.com/azure/security/azure-network-security)
 * [Figyelési](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) és [kezelése](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
-* [Naplózás és naplózás](https://docs.microsoft.com/azure/security/azure-log-audit)
-* [A szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Naplózás](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [A házirend-beállítást és érvényesítése](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
 * [Kártevőirtó](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 * [Titkosítás](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Felderítési adatok és irányítási](https://docs.microsoft.com/azure/data-catalog/)
 
-A [Azure architektúra center](https://docs.microsoft.com/en-us/azure/architecture/) is van, amely részletes végpont architektúra és minták biztosít felépítését és kezelését a felhő alapú analytics infrastruktúra kiváló forrást. 
+A [Azure architektúra Center](https://docs.microsoft.com/en-us/azure/architecture/) részletes végpont architektúrát nyújt, és minták kialakításához, és az elemzés felhőalapú infrastruktúra kezelése. 

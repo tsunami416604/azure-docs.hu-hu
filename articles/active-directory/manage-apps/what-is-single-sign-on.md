@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.workload: identity
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 06/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a6f116842ce61585feda8f20e204e0751a360036
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292891"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309903"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?
 Egyszeri bejelentkezés azt jelenti, hogy nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat, végre kell hajtani, üzleti által csak akkor, ha egyetlen felhasználói fiókkal jelentkezik be. Miután bejelentkezett, van-e hozzáférési összes szolgáltatásbeli hitelesítéshez szükséges nélkül kell alkalmazást (például adjon meg egy jelszót) még egyszer.
@@ -40,12 +40,12 @@ Az integráció architektúrájának a következő négy fő építőelemeket á
 * Egységes jelentéskészítés és az Azure ad-ben a felhasználói tevékenység figyelése
 
 ## <a name="how-does-single-sign-on-with-azure-active-directory-work"></a>Hogyan működik az egyszeri bejelentkezés az Azure Active Directoryval?
-A felhasználók bejelentkezésekor"" alkalmazáshoz, akkor nyissa meg egy hitelesítési folyamatot, hol bizonyítja, hogy azok mondja ki, hogy azok ki. Egyszeri bejelentkezést általában ehhez írja be egy jelszót, amely van tárolva, az alkalmazás és a felhasználó a jelszó ismerete szükséges.
+Amikor a felhasználók bejelentkezés egy alkalmazás, azok nyissa meg egy hitelesítési folyamatot, amennyiben azok szükségesek a rendszer, hogy azok mondja ki, hogy azok ki. Nélkül egyszeri bejelentkezést Ez a hitelesítési folyamat általában történik, az alkalmazás tárolt jelszót írna be, és a felhasználók a jelszó ismerete szükséges.
 
 Az Azure AD három különböző módon bejelentkezni alkalmazások támogatja:
 
-* **Összevont egyszeri bejelentkezést** lehetővé teszi az alkalmazások lehessen irányítani az Azure AD-hez a felhasználók hitelesítése nem a saját jelszót kér. A támogatott alkalmazások támogatási SAML 2.0, a WS-Federation, vagy az OpenID Connect, például a protokollokat, és az egyszeri bejelentkezés richest mód.
-* **Jelszó-alapú egyszeri bejelentkezést** lehetővé teszi, hogy biztonságos jelszó alkalmazástárolót és visszajátszásos a webes bővítmény vagy mobilalkalmazást használ. Ez kihasználja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy a rendszergazda számára, hogy a jelszavak kezelése és nem igényel a felhasználót, hogy a jelszó ismerete.
+* **Összevont egyszeri bejelentkezést** lehetővé teszi az alkalmazások lehessen irányítani az Azure AD-hez a felhasználók hitelesítése nem a saját jelszót kér. Összevont egyszeri bejelentkezés alkalmazásokhoz, hogy a támogatási SAML 2.0, a WS-Federation, vagy az OpenID Connect, például a protokollokat, és az richest mód egyszeri bejelentkezést támogatja.
+* **Jelszó-alapú egyszeri bejelentkezést** lehetővé teszi, hogy biztonságos jelszó alkalmazástárolót és visszajátszásos a webes bővítmény vagy mobilalkalmazást használ. Jelszó-alapú egyszeri bejelentkezést a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy a rendszergazda számára, hogy a jelszavak kezelése és esetén nincs szükség a felhasználót, hogy a jelszó ismerete.
 * **Meglévő egyszeri bejelentkezés** lehetővé teszi, hogy az Azure AD kihasználhatják a meglévő egyszeri bejelentkezést, amely még nincs beállítva az alkalmazás, de lehetővé teszi, hogy ezeket az alkalmazásokat az Office 365 vagy Azure AD hozzáférési panel portálok kell társítani, és lehetővé teszi további jelentéskészítés az Azure AD, ha az alkalmazások működését van.
 
 Miután egy felhasználó egy alkalmazást a hitelesítette, ezek is csak egy fiók bejegyzést, az alkalmazás, amely közli az alkalmazás üzembe ahol nincs engedélyekkel és hozzáférési szintje van az alkalmazáson belüli. Ez a fiók rekord kiépítés vagy automatikusan is megtörténhet, vagy akkor fordulhat elő manuálisan egy rendszergazda előtt a felhasználó egyszeri bejelentkezéses hozzáférést biztosítja.
@@ -66,8 +66,7 @@ Jelszó-alapú egyszeri bejelentkezés beállítása lehetővé teszi, hogy a fe
 
 Az Azure AD bármely felhőalapú alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal jelszó-alapú egyszeri bejelentkezést is támogatja. Egy egyéni böngésző beépülő modul használatával AAD automatizálja a felhasználói bejelentkezési folyamat segítségével biztonságosan beolvasása az alkalmazás hitelesítő adatait, például a felhasználónevét és jelszavát a könyvtárból, és megadja ezeket a hitelesítő adatokat az alkalmazás bejelentkezési lapot a következő nevében: a a felhasználó. Nincsenek két használati esetek:
 
-1. ** Rendszergazda 
-2. kezeli a hitelesítő adatok ** – rendszergazdák hozzon létre és kezelheti az alkalmazás hitelesítő adatait, és ezen hitelesítő adatok hozzárendelése felhasználókhoz vagy csoportokhoz hozzáférni az alkalmazáshoz szükséges. Ezekben az esetekben a végfelhasználó nem kell tudni, hogy a hitelesítő adatokat, de továbbra is átveszi az egyszeri bejelentkezés hozzáférni az alkalmazáshoz a hozzáférési panel között, illetve a megadott hivatkozásra kattintva. Ez lehetővé teszi azon végfelhasználók számára, amellyel nincs szükségük megjegyzése vagy alkalmazás-specifikus jelszavak kezelése a hitelesítő adatok a rendszergazdák, valamint a kényelem által életciklus-felügyeletének is. A hitelesítő adatok vannak rejtjelezett a végfelhasználó az automatikus bejelentkezési folyamat során; azonban technikailag felderíthető, a felhasználó webes hibakeresés eszközökkel, és a felhasználók és rendszergazdák kell követnie a ugyanazt biztonsági házirendek, mintha közvetlenül a felhasználó által a hitelesítő adatok infrastruktúrakialakítás. Rendszergazda által megadott hitelesítő adatok hasznosak, ha sok felhasználó, például a közösségi média vagy dokumentumok megosztása az alkalmazások által közösen használt fiók számára hozzáférést biztosít.
+1. **Kezeli a rendszergazdai hitelesítő adatokat** – rendszergazdák hozzon létre és kezelheti az alkalmazás hitelesítő adatait, és ezen hitelesítő adatok hozzárendelése felhasználókhoz vagy csoportokhoz hozzáférni az alkalmazáshoz szükséges. Ezekben az esetekben a végfelhasználó nem kell tudni, hogy a hitelesítő adatokat, de továbbra is átveszi az egyszeri bejelentkezés hozzáférni az alkalmazáshoz a hozzáférési panel között, illetve a megadott hivatkozásra kattintva. Ez a folyamat lehetővé teszi, hogy együtt, a végfelhasználók számára, amellyel nincs szükségük megjegyzése vagy alkalmazás-specifikus jelszavak kezelése a hitelesítő adatok a rendszergazdák, valamint a kényelem által életciklus-felügyeletének. A hitelesítő adatok vannak rejtjelezett a végfelhasználó az automatikus bejelentkezési folyamat során; azonban technikailag felderíthető, a felhasználó webes hibakeresés eszközökkel, és a felhasználók és rendszergazdák kell követnie a ugyanazt biztonsági házirendek, mintha közvetlenül a felhasználó által a hitelesítő adatok infrastruktúrakialakítás. Rendszergazda által megadott hitelesítő adatok hasznosak, ha sok felhasználó, például a közösségi média vagy dokumentumok megosztása az alkalmazások által közösen használt fiók számára hozzáférést biztosít.
 2. **Kezeli a felhasználói hitelesítő adatokat** – rendszergazdák alkalmazásokat a felhasználók vagy csoportok rendelhet, és a végfelhasználók számára, hogy adja meg a saját hitelesítő adatait, közvetlenül a hozzáférési panelen először az alkalmazás elérésének engedélyezése. A végfelhasználók számára, amelyek révén azokat nem kell folyamatosan írja be az alkalmazás-specifikus jelszavakat az alkalmazás minden alkalommal létrejön a könnyebb elérhetőség érdekében. Felhasználók továbbra is kezelem a jelszavaikat frissítése vagy törléssel, igény szerint. A használati eset egy almodell köve rendszergazdai felügyelet a hitelesítő adatok, amelyek a rendszergazda beállíthatja az alkalmazás új hitelesítő adatait egy későbbi időpontban a felhasználói hozzáférés élményt a végfelhasználó módosítása nélkül is használható.
 
 Mindkét esetben a hitelesítő adatok titkosítására a könyvtárban van tárolva, és az automatikus bejelentkezési folyamat során csak átadott HTTPS-KAPCSOLATON keresztül. Jelszó-alapú egyszeri bejelentkezést használ, az Azure AD egy kényelmes identitáskezelési hozzáférési megoldás nem képes a összevonási protokollok alkalmazások kínál.
@@ -86,7 +85,7 @@ Egyszeri bejelentkezés egy alkalmazás konfigurálásakor az Azure-portálon bi
 Például ha egy alkalmazás, amely hitelesíti a felhasználókat az Active Directory összevonási szolgáltatások 2.0 eszköz használatával van konfigurálva, a rendszergazda segítségével a "meglévő egyszeri bejelentkezéshez" beállítás hozható létre hivatkozás azt a hozzáférési panelen. Amikor a felhasználók hozzáférnek a hivatkozás, hitelesített Active Directory összevonási szolgáltatások 2.0 eszköz vagy az alkalmazás által biztosított bármilyen meglévő egyszeri bejelentkezés megoldás használatával.
 
 ### <a name="user-provisioning"></a>A felhasználók átadása
-Alkalmazások esetében, válassza ki az Azure AD lehetővé teszi a felhasználó automatizált üzembe helyezést és megszüntetést, külső SaaS-alkalmazásokhoz az az Azure felügyeleti portálon, a Windows Server Active Directory vagy az Azure AD identitásinformációi segítségével belül fiókok. Amikor a felhasználó engedélyeket kap az Azure AD egy ezeket az alkalmazásokat, egy fiók lehet automatikusan létrehozni (kiosztott) a cél SaaS-alkalmazáshoz.
+Alkalmazások esetében, válassza ki az Azure AD lehetővé teszi a felhasználó automatizált üzembe helyezést és megszüntetést, külső SaaS-alkalmazásokhoz az Azure-portálon belül fiókok használata a Windows Server Active Directory vagy az Azure AD identity adatokat. Amikor a felhasználó engedélyeket kap az Azure AD egy ezeket az alkalmazásokat, egy fiók lehet automatikusan létrehozni (kiosztott) a cél SaaS-alkalmazáshoz.
 
 A felhasználót törlik, vagy adataikat módosítja az Azure ad-ben, ezeket a módosításokat is megjelennek a SaaS-alkalmazáshoz. Ez azt jelenti, automatikus identitás életciklus-felügyeletének beállítása lehetővé teszi a rendszergazdáknak vezérlik, és adja meg az automatizált üzembe helyezést és megszüntetést az SaaS-alkalmazásokhoz. Az Azure AD-e identitás életciklus-felügyeletének automatizálását szerint engedélyezve van a felhasználók átadása.
 
@@ -105,12 +104,12 @@ Az alábbiakban néhány tipp által milyen lehetőségek támogatják-e alkalma
 * Az Azure AD támogatja az automatikus üzembe helyezést és megszüntetést az összes "Kiemelt" alkalmazást a [Azure Active Directory Alkalmazáskatalógusában](https://azure.microsoft.com/marketplace/active-directory/all/).
 * Összevont kifejezetten támogató alkalmazások listájának összevont egyszeri bejelentkezést SAML, WS-Federation, például protokoll használatát, vagy az OpenID Connect található [Itt](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
 
-Ha az alkalmazás már megtalálta, elkezdheti által kövesse a részletes útmutatás a jelenik meg a gyűjtemény és az Azure felügyeleti portálhoz való egyszeri bejelentkezés engedélyezése.
+Ha az alkalmazás már megtalálta, elkezdheti a részletes utasításokat követve a gyűjtemény és az Azure-portálon való egyszeri bejelentkezés engedélyezése.
 
 ### <a name="application-not-in-the-gallery"></a>Alkalmazás nem található a katalógusban?
 Ha az alkalmazás nem található az Azure AD application gallery, majd telepítette ezeket a beállításokat:
 
-* **Használja fel nem sorolt alkalmazás hozzáadása** – a gyűjtemény az Azure felügyeleti portálon az egyéni kategória segítségével a szervezet által használt fel nem sorolt alkalmazást. Bármely alkalmazás, amely támogatja az SAML 2.0, mint egy összevont alkalmazás vagy a bármely alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal jelszó SSO alkalmazásként is hozzáadhat. További részletekért lásd: Ez a cikk a [saját alkalmazás hozzáadása](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
+* **Használja fel nem sorolt alkalmazás hozzáadása** – a gyűjtemény az Azure portálon az egyéni kategória segítségével a szervezet által használt fel nem sorolt alkalmazást. Bármely alkalmazás, amely támogatja az SAML 2.0, mint egy összevont alkalmazás vagy a bármely alkalmazás, amely rendelkezik egy HTML-alapú bejelentkezési oldal jelszó SSO alkalmazásként is hozzáadhat. További részletekért lásd: Ez a cikk a [saját alkalmazás hozzáadása](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
 * **Adja hozzá a saját alkalmazást fejleszt** - szert az alkalmazás saját magának, ha az Azure AD fejlesztői dokumentáció összevont egyszeri bejelentkezés megvalósítása útmutatását vagy kiépítése az Azure ad graph API. További információkért lásd: ezek az erőforrások:
   
   * [Hitelesítési forgatókönyvek az Azure AD-hez](../active-directory-authentication-scenarios.md)
@@ -140,7 +139,7 @@ Egy külső SaaS-alkalmazáshoz a szokásos felügyeleti feladatok a következő
 
 Gyűjteményelem alkalmazások, amelyek támogatják az automatikus felhasználók átadásához ehhez telepítenie kell az Azure AD engedélyt a SaaS-alkalmazás a fiókokat szeretne kezelni. Mindenképpen meg kell adnia a hitelesítő adatokat az Azure AD meg a célalkalmazás keresztül hitelesítéséhez használt. E további konfigurációs beállításokat kell megadni attól függ, hogy az alkalmazás követelményeinek.
 
-## <a name="deploying-azure-ad-integrated-applications-to-users"></a>Üzembe helyezése az Azure AD integrált alkalmazások felhasználók számára
+## <a name="deploying-azure-ad-integrated-applications-to-users"></a>A felhasználók számára az Azure Active Directoryba integrált alkalmazások központi telepítése
 Az Azure AD többféleképpen testreszabható is telepíthet központilag alkalmazásokat a végfelhasználók számára a szervezetében:
 
 * Az Azure AD hozzáférési panel
@@ -167,14 +166,14 @@ A szervezet számára, amely az Office 365 telepített alkalmazások, felhaszná
 Az Office 365 alkalmazásindító kapcsolatos további információkért lásd: [az alkalmazás jelennek meg az Office 365 alkalmazás indító](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher).
 
 ### <a name="direct-sign-on-to-federated-apps"></a>Közvetlen bejelentkezés az összevont alkalmazásokba
-Legtöbb összevont alkalmazásokhoz, amelyek támogatják a SAML 2.0, a WS-Federation vagy az OpenID connect is támogatja: az alkalmazás-kor indulnak, és majd beolvasása bejelentkezett az Azure AD keresztül automatikus átirányítása vagy a hivatkozásra kattintva jelentkezzen be a felhasználók. Ez az úgynevezett szolgáltató-bejelentkezés kezdeményezett, és a legtöbb összevont alkalmazások az Azure AD application gallery támogatja a (lásd a dokumentációt a az alkalmazás egyszeri bejelentkezés konfigurálása varázsló segítségével az Azure felügyeleti portálján, részletekért kapcsolódó).
+Legtöbb összevont alkalmazásokhoz, amelyek támogatják a SAML 2.0, a WS-Federation vagy az OpenID connect is támogatja: az alkalmazás-kor indulnak, és majd beolvasása bejelentkezett az Azure AD keresztül automatikus átirányítása vagy a hivatkozásra kattintva jelentkezzen be a felhasználók. Ez az úgynevezett szolgáltató-bejelentkezés kezdeményezett, és a legtöbb összevont alkalmazásokhoz az Azure AD alkalmazás-katalógus támogatja a (lásd a dokumentáció az Azure-portál a részleteket az alkalmazás egyszeri bejelentkezés konfigurációs varázslójával kapcsolódó).
 
 ![](./media/what-is-single-sign-on/workdaymobile.png)
 
 ### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>Közvetlen bejelentkezés hivatkozások összevont, jelszóalapú vagy meglévő alkalmazásokhoz
 Az Azure AD közvetlen egyszeri bejelentkezés alkalmazásokra mutató hivatkozások egyedi, amely támogatja a jelszó-alapú egyszeri bejelentkezést, a meglévő egyszeri bejelentkezést és a bármely formájára vonatkozó összevont egyszeri bejelentkezést is támogatja.
 
-Ezek a hivatkozások akkor kifejezetten kialakított URL-címek küldött a felhasználót az Azure AD bejelentkezési folyamat során egy adott alkalmazáshoz anélkül, hogy a felhasználó az Azure AD hozzáférési panel vagy az Office 365 elindítani őket. Egyszeri bejelentkezési URL-található az összes előre integrált alkalmazás irányítópult lapon az Active Directory szakaszában az Azure felügyeleti portálján az alábbi képernyőfelvételen látható módon.
+Ezek a hivatkozások akkor kifejezetten kialakított URL-címek küldött a felhasználót az Azure AD bejelentkezési folyamat során egy adott alkalmazáshoz anélkül, hogy a felhasználó az Azure AD hozzáférési panel vagy az Office 365 elindítani őket. Egyszeri bejelentkezési URL-található bármely előre integrált alkalmazás irányítópult lapján az Azure-portálon az Active Directory szakaszában az alábbi képernyőfelvételen látható módon.
 
 ![](./media/what-is-single-sign-on/deeplink.png)
 
@@ -188,11 +187,11 @@ Hasonló szervezet-specifikus URL-címek, a hozzáférési panel, még jobban te
 
 Amikor egy alkalmazás-specifikus csatolást hitelesített felhasználó kattint, akkor először tekintse meg a szervezeti bejelentkezési oldalára (feltéve, hogy nem már bejelentkezés), és bejelentkezés után a rendszer átirányítja az alkalmazás a hozzáférési panelre, először leállítása nélkül. Ha a felhasználó hiányoznak az Előfeltételek hozzáférni az alkalmazáshoz, például a jelszó-alapú egyszeri bejelentkezési bővítmény, majd a hivatkozás fogja kérni a felhasználót a hiányzó bővítmény telepítésére. A hivatkozás URL-CÍMÉT is állandó marad, ha az alkalmazás egyszeri bejelentkezés konfiguráció módosul.
 
-Ezek a hivatkozások a hozzáférési panel és az Office 365 access control ugyanazt a mechanizmust használni, és csak ezeket a felhasználókat vagy csoportokat, amelyekre az alkalmazást az Azure felügyeleti portálon rendelt lesz tudja sikeresen hitelesíteni. Azonban bármely felhasználó, aki nem jogosult üzenet jelenik meg azzal az információval, hogy ezek nem rendelkezik hozzáféréssel, és egy hivatkozást, amelynek érik elérhető alkalmazások megtekintéséhez a hozzáférési panel betöltése vannak megadva.
+Ezek a hivatkozások a hozzáférési panel és az Office 365 access control ugyanazt a mechanizmust használni, és csak ezeket a felhasználókat vagy csoportokat, amelyekre az alkalmazást az Azure portálon rendelt lesz tudja sikeresen hitelesíteni. Azonban bármely felhasználó, aki nem jogosult üzenet jelenik meg azzal az információval, hogy ezek nem rendelkezik hozzáféréssel, és egy hivatkozást, amelynek érik elérhető alkalmazások megtekintéséhez a hozzáférési panel betöltése vannak megadva.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](../active-directory-saas-tutorial-list.md)
+* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](../saas-apps/tutorial-list.md)
 * [A Cloud App Discovery megállapítás nem engedélyezett a felhőalapú alkalmazásokhoz](cloud-app-discovery.md)
 * [Bevezetés az alkalmazásokhoz való hozzáférés kezelése](what-is-access-management.md)
 * [Az Azure AD külső identitások kezelésére szolgáló képességeket összehasonlítása](../active-directory-b2b-compare-b2c.md)

@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6df013506e4541fee7850850776d26e5c69a799d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 65307eab0bf1b5f502f11c14c369826cd12e0966
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309833"
 ---
 # <a name="enterprise-plan-details"></a>Nagyvállalati csomag részletei
 
@@ -26,6 +27,9 @@ Az Azure Application Insights van két árképzési tervek: Basic és Enterprise
 A vállalati tervben szereplő csomópontonként járnak, és minden csomópont kap egy napi adatok támogatás. A vállalat díjszabási csomaggal van szó, a fent a belefoglalt támogatás okozhatnak adatokat. Ha az Operations Management Suite használ, a vállalati terv kell kiválasztani. 
 
 Lásd: az a régió és aktuális árak [Application Insights árképzési](http://azure.microsoft.com/pricing/details/application-insights/).
+
+> [!NOTE]
+> A április 2018 azt [bevezetett](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure figyelési új árképzési modellt. Ez a modell egy egyszerű "használatalapú" modell a teljes kaphat a szolgáltatások figyelése fogad el. További információ a [új árképzési modellt](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), hogy a [ebben a modellben való áthelyezése hatásának értékelése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) a használati minták alapján és [hogyan programba az új modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
 ## <a name="how-the-enterprise-plan-works"></a>A vállalati terv működése
 

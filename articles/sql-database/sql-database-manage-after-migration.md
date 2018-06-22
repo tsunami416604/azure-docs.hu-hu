@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 06/20/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2a0a411d5f2b19eda844cba160429ecfe958c45e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650111"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309613"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>A felhőben – az Azure SQL Database adatbázis új DBA
 
@@ -31,7 +31,6 @@ A cikk ismerteti az egyes Azure SQL Database alapvető jellemzői, amelyek könn
 - Biztonság és megfelelőség
 - Intelligens adatbázis figyelését és karbantartását
 - Adatáthelyezés
-
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Üzleti folytonossági és vészhelyreállítási helyreállítási (BCDR)
 Üzleti folytonossági és vészhelyreállítási helyreállítási képességek lehetővé teszik az üzleti szokásos módon folytatja a katasztrófa esetén. A vészhelyreállítás lehet egy adatbázis szintű esemény (például valaki véletlenül elutasítja azokat a kritikus fontosságú tábla) vagy egy adat-központ szintű esemény (regionális katasztrófa, például egy tsunami). 
@@ -235,7 +234,7 @@ SQL Database különböző szolgáltatásrétegeiben használt funkciókkal Basi
 
 Adja meg a megfelelő arról, hogy a jobb teljesítmény szintjén, a lekérdezés- és adatbázis hálózatierőforrás-fogyasztás "Hogyan követhetem figyelemmel a teljesítmény- és erőforrás-használat az SQL-adatbázis" a fent említett eljárások valamelyikével keresztül figyelheti. Kell látnia, hogy a lekérdezések/adatbázisok következetesen futnak Processzor/memória stb. érdemes lehet egy magasabb teljesítményszintre vertikális felskálázásával a gyakran használt adatok. Hasonlóképpen vegye figyelembe, hogy a csúcsidőben még akkor is, ha nem úgy tűnik, az erőforrások használata a lehető legtöbb; Vegye figyelembe, hogy a jelenlegi teljesítményszintje a méretezés. 
 
-Ha egy SaaS-alkalmazás mintát vagy egy adatbázis összevonási forgatókönyv esetén érdemes egy rugalmas készlet költség optimalizálásra vonatkozóan. A rugalmas készlet kiváló módja a adatbázis konszolidáció és költség-optimalizálás eléréséhez. További rugalmas készlet használatával több adatbázis-kezelés, lásd: [készletek és adatbázisok kezelése](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal). 
+Ha egy SaaS-alkalmazás mintát vagy egy adatbázis összevonási forgatókönyv esetén érdemes egy rugalmas készlet költség optimalizálásra vonatkozóan. A rugalmas készlet kiváló módja a adatbázis konszolidáció és költség-optimalizálás eléréséhez. További rugalmas készlet használatával több adatbázis-kezelés, lásd: [készletek és adatbázisok kezelése](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Milyen gyakran kell az adatbázis adatbázis sértetlenségi ellenőrzések futtatásához?
 SQL-adatbázis bizonyos intelligens módszereket, amelyek lehetővé teszik, hogy kezelni bizonyos osztályokat, az adatok sérülésének, automatikusan és adatvesztés nélkül használja. Ezek a technológiák a szolgáltatás beépített, és használja ki a szolgáltatás mikor kell merül fel. Rendszeres időközönként a szolgáltatásban, az adatbázis biztonsági másolatait kell megvizsgálni, helyreállítását és a DBCC CHECKDB fut rajta. Ha problémák vannak, SQL-adatbázis proaktív módon kezeli őket. [Automatikus javítás](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) olyan lapok, amelyek sérült, vagy adatok épségével kapcsolatos problémák elhárítása. Az adatbázis lapok mindig ellenőrzése igazolja, hogy a lap alapértelmezett ELLENŐRZŐÖSSZEG beállítású. SQL-adatbázis proaktív figyeli, és ellenőrzi, hogy az adatok integritását, az adatbázis és, ha problémák merülnek fel, címeinek őket a legmagasabb prioritású. Ezek mellett választhatja, hogy igény szerint futtathat a saját integritás-ellenőrzést a fog.  További információkért lásd: [adatintegritás az SQL-adatbázis](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)

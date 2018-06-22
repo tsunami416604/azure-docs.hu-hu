@@ -6,8 +6,8 @@ CDN felügyeleti kódot ír, mielőtt bizonyos előkészítés ahhoz, hogy a kó
 * Engedélyek alkalmazása az erőforráscsoportot, hogy az Azure AD-bérlőn csak engedéllyel rendelkező felhasználók használhatják a CDN-profil
 
 ### <a name="creating-the-resource-group"></a>Az erőforráscsoport létrehozása
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com).
-2. Kattintson a **hozzon létre egy erőforrást**.
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+2. Kattintson az **Erőforrás létrehozása** gombra.
 3. Keresse meg **erőforráscsoport** erőforrás csoport ablaktábláján kattintson **létrehozása**.
 
     ![Új erőforráscsoport létrehozása](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)

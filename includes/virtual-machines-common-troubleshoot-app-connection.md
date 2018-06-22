@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371269"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313513"
 ---
 Nincsenek különböző okokból nem kezdődhet vagy egy Azure virtuális gépen (VM) futó alkalmazás csatlakozzon. Okai az alkalmazás nem fut, vagy a várt porton figyel, a figyelő portja, blokkolva vagy a hálózat szabályok nem megfelelő az alkalmazás sikeres forgalmat. Ez a cikk ismerteti a módszeres megközelítés található, és kijavítja a hibát.
 
@@ -32,7 +32,7 @@ Ha egy alkalmazás problémái, próbálja a következő általános hibaelhár�
 
 * A virtuális gép újraindítása
 * Hozza létre újra a végpontot / tűzfal-szabályokat / hálózati biztonsági csoport (NSG) szabályok
-  * [Erőforrás-kezelő modell - hálózati biztonsági csoportok kezelése](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Erőforrás-kezelő modell - hálózati biztonsági csoportok kezelése](../articles/virtual-network/manage-network-security-group.md)
   * [Klasszikus modell - Felhőszolgáltatások kezelése végpontok](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * Csatlakozás másik helyről, például különböző Azure virtuális hálózathoz
 * A virtuális gép újbóli üzembe helyezése
@@ -93,7 +93,7 @@ Ha az alkalmazás nem fér hozzá, ellenőrizze a következő beállításokat:
 * Behatolásérzékelési vagy a cél virtuális gép futó szoftver hálózatfigyelési átengedi a forgalmat.
 * Cloud Services végpontjainak vagy a hálózati biztonsági csoportok a forgalmat engedélyezi:
   * [Klasszikus modell - Felhőszolgáltatások kezelése végpontok](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Erőforrás-kezelő modell - hálózati biztonsági csoportok kezelése](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Erőforrás-kezelő modell - hálózati biztonsági csoportok kezelése](../articles/virtual-network/manage-network-security-group.md)
 * Egy külön összetevő fut a virtuális Gépet, az elérési út között a teszt virtuális gép és a virtuális Gépet, például terheléselosztó vagy tűzfal, engedélyezi, hogy a forgalmat.
 
 A Windows-alapú virtuális gépen biztonságú Windows tűzfal segítségével határozza meg, hogy a tűzfalszabályok kizárása az alkalmazás bejövő és kimenő forgalmat.

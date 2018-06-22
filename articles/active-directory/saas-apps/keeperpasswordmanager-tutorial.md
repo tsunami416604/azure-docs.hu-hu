@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ef20cdb0f6a7b5afd624a7910495ee784140c48
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b61465e9f38a5a461802d4ab46a7221c557b4595
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219982"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Oktatóanyag: Azure Active Directoryval integrált üzemeltetőjének jelszókezelő & digitális tároló
 
@@ -133,7 +133,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/keeperpasswordmanager-tutorial/tutorial_keeper_configure.png) 
 
-7. Egyszeri bejelentkezés konfigurálása **üzemeltetőjének jelszókezelő & digitális tároló konfigurációs** oldalán, kövesse az útmutatást regisztrációkor [üzemeltetőjének támogatási útmutató](https://keepersecurity.com/assets/pdf/SettingupAzurewithKeeperSSOConnect.pdf)
+7. Egyszeri bejelentkezés konfigurálása **üzemeltetőjének jelszókezelő & digitális tároló konfigurációs** oldalán, kövesse az útmutatást regisztrációkor [üzemeltetőjének támogatási útmutató](https://keepersecurity.com/assets/pdf/KeeperSSOConnect_v11.pdf).
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

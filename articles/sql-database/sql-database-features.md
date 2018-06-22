@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: d49cd0096eb173c0f483a7b7ab1f3def745f56a6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: de85a555def31d164f2cda5c6c6bc9fae9fb5a7e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231610"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309282"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database és SQL Server 
 
@@ -32,7 +32,7 @@ A következő táblázat az SQL Server főbb szolgáltatásokat sorolja fel, és
 | **SQL-szolgáltatás** | **Támogatja az Azure SQL Database logikai kiszolgáló** | **Támogatott az Azure SQL adatbázis/felügyelt példány (előzetes verzió)** |
 | --- | --- | --- |
 | [Mindig titkosítja.](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Igen – lásd: [tanúsítványtároló](sql-database-always-encrypted.md) és [kulcstároló](sql-database-always-encrypted-azure-key-vault.md) | Igen – lásd: [tanúsítványtároló](sql-database-always-encrypted.md) és [kulcstároló](sql-database-always-encrypted-azure-key-vault.md) |
-| [AlwaysOn rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) |
+| [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) megtalálható minden adatbázist. Vész-helyreállítási ismertet [az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md) |
 | [Egy adatbázis csatolása](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nem | Nem |
 | [Alkalmazási szerepkörök](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | Igen | Igen |
 |[Naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Igen](sql-database-auditing.md)| [Igen](sql-database-managed-instance-auditing.md) |

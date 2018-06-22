@@ -7,20 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: jodebrui
-ms.openlocfilehash: aff0f82f07e9129c8f7c131f055447ad578ad15b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f74c9bf06cad8b84d08baf7a0a0504b9cb729bf4
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647340"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308679"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>A figyelő a memórián belüli online Tranzakciófeldolgozási tároló
-Használata esetén [memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md), a memóriaoptimalizált táblák és Táblaváltozók adatainak memórián belüli online Tranzakciófeldolgozási tárolóban található. Minden prémium és fontos üzleti szolgáltatási szinthez tartozik memórián belüli online Tranzakciófeldolgozási tároló mérete, ami ismertetett [DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md). Ha túllépi ezt a határt, beszúrási és a frissítési műveletek kezdheti el önálló adatbázisok 41823 hiba és a rugalmas 41840 hiba miatt sikertelenül működő. Ekkor meg kell memória felszabadításához adatok törlése, illetve a teljesítményszintet az adatbázis frissítéséhez.
+Használata esetén [memórián belüli online Tranzakciófeldolgozási](sql-database-in-memory.md), a memóriaoptimalizált táblák és Táblaváltozók adatainak memórián belüli online Tranzakciófeldolgozási tárolóban található. Minden prémium és fontos üzleti szolgáltatás szinthez tartozik egy memórián belüli online Tranzakciófeldolgozási maximális tárolómérete. Lásd: [DTU-alapú erőforrás korlátok - egyetlen adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforrás korlátok - rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[vCore-alapú erőforrás korlátok - önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [vCore-alapú erőforrás korlátok - rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+
+Ha túllépi ezt a határt, beszúrási és a frissítési műveletek kezdheti el önálló adatbázisok 41823 hiba és a rugalmas 41840 hiba miatt sikertelenül működő. Ekkor meg kell memória felszabadításához adatok törlése, illetve a teljesítményszintet az adatbázis frissítéséhez.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Határozza meg, hogy adatok elférje a memórián belüli online Tranzakciófeldolgozási tárolási kap
-Határozza meg, hogy a tároló biztosít, amelyet a különböző szolgáltatásrétegeiben használt funkciókkal. Lásd: [DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md).
+Határozza meg, hogy a tároló biztosít, amelyet a különböző szolgáltatásrétegeiben használt funkciókkal. Lásd: [DTU-alapú erőforrás korlátok - egyetlen adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforrás korlátok - rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[vCore-alapú erőforrás korlátok - önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [vCore-alapú erőforrás korlátok - rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Memóriakövetelményei memóriaoptimalizált táblák működik, mert az SQL Server ugyanúgy nem Azure SQL Database becslése. Tekintse át az előző cikket a néhány percet igénybe vehet [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 

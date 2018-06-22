@@ -14,7 +14,7 @@ Az Azure Portal vagy az Azure CLI 2.0 használatával módosíthatja az ügynök
 
 ## <a name="scale-with-the-azure-cli-20"></a>Méretezés az Azure CLI 2.0 használatával
 
-Győződjön meg arról, hogy [telepítve van](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0, és hogy bejelentkezett egy Azure-fiókba (`az login`).
+Győződjön meg arról, hogy Ön [telepített](/cli/azure/install-az-cli2) 2.0-s és Azure-fiókkal történő bejelentkezés a legújabb Azure parancssori felület (`az login`).
 
 ### <a name="see-the-current-agent-count"></a>Az ügynökök aktuális számának megtekintése
 A jelenleg a fürtben lévő ügynökök számának megtekintéséhez futtassa az `az acs show` parancsot. Ez megjeleníti a fürtkonfigurációt. Az alábbi parancs például a `myResourceGroup` erőforráscsoportban lévő `containerservice-myACSName` nevű tárolószolgáltatás konfigurációját jeleníti meg:
@@ -34,7 +34,7 @@ Például ha az előző fürtben az ügynökök számát 10-re szeretné módos�
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Az Azure CLI 2.0 egy JSON-karakterláncot ad vissza, amely a tárolószolgáltatás új konfigurációját jelöli, beleértve az ügynökök új számát is.
+Az Azure CLI 2.0 egy JSON-sztringet ad vissza, amely a tárolószolgáltatás új konfigurációját jelöli, beleértve az ügynökök új számát is.
 
 További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
@@ -50,7 +50,7 @@ További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
 * Az ügynökcsomópontok automatikus méretezése a Container Service-fürtökben jelenleg nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Tekintse meg az Azure CLI 2.0-parancsok az Azure Container Service szolgáltatásban való használatát bemutató [további példákat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).
 * Ismerkedjen meg a [DC/OS-ügynökkészletekkel](../articles/container-service/dcos-swarm/container-service-dcos-agents.md) az Azure Container Service szolgáltatásban.
 

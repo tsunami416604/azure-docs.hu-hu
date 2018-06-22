@@ -14,12 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 1bdc7a4d50b81c615d9aca651c897796d9f60c00
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7a58fca716389f35db7312948674e86b3104fe62
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292276"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307996"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure ad szolgáltatással
 ## <a name="overview"></a>Áttekintés
@@ -63,10 +63,10 @@ Az Azure AD-funkciókat, amelyek lehetővé teszik a fiók megosztása a követk
 ## <a name="sharing-an-account"></a>Egy fiók megosztása
 Az Azure AD használatával megoszthatja a fiók, meg kell:
 
-* Alkalmazás hozzáadása [alkalmazásgyűjtemény](https://azure.microsoft.com/marketplace/active-directory/) vagy [egyéni alkalmazás](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)
+* Alkalmazás hozzáadása [alkalmazásgyűjtemény](https://azure.microsoft.com/marketplace/active-directory/) vagy [egyéni alkalmazás](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)
 * A jelszó egyszeri bejelentkezés (SSO) az alkalmazás beállítása
 * Használjon [biztonságicsoport-alapú hozzárendelés](active-directory-accessmanagement-group-saasapps.md) , és jelölje be a megosztott hitelesítő adatok megadása
-* Választható lehetőség: az egyes alkalmazások, például a Facebook, a Twitter és a LinkedIn, engedélyezheti a kívánt beállítást [az Azure AD automatikus jelszó során](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)
+* Választható lehetőség: az egyes alkalmazások, például a Facebook, a Twitter és a LinkedIn, engedélyezheti a kívánt beállítást [az Azure AD automatikus jelszó során](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
 Végezhet is megosztott fiókja biztonságát erősítik a multi-factor Authentication (MFA) (További információ [biztonságossá tétele az alkalmazások az Azure ad-val](authentication/concept-mfa-whichversion.md)) és delegálhatja, hogy kik férhetnek hozzá a használóalkalmazásokkezelése[ Az Azure AD-önkiszolgáló](active-directory-accessmanagement-self-service-group-management.md) felügyeleti csoportban.
 

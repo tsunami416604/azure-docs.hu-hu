@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbb14854f00fb133c3604a1dd529d42120371fd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825156"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309316"
 ---
 # <a name="requirements-by-listing-type"></a>Követelményeit listaelem típusa  
 A műszaki és marketing content követelmények kirakat ajánlattípus és listaelem típus lehet. Tekintse át az alábbi előírások a megfelelőség ellenőrzése.  
 1. Storefront követelmények:  
-    *   [AppSource](#storefront-requirements:-appSource)  
-    *   [Az Azure piactéren](#storefront-requirements:-azure-marketplace)  
+    *   [AppSource](#storefront-requirements-appSource)  
+    *   [Az Azure piactéren](#storefront-requirements-azure-marketplace)  
 2. Listaelem típusa és ajánlat szemben támasztott követelményeit:  
     *   Listázása és ajánlat típusainak kapcsolatos további információkért látogasson el a listázása típusát határozza meg a megoldás lap a mappában lévő [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  
 
@@ -62,10 +62,10 @@ A lista típusú bejegyzés a következő típusú a kirakatokkal a tartalmazza 
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Tanácsadási szolgáltatásokat | AppSource | [Követelmények: AppSource: lista: tanácsadás](#requirements:-appsource:-list:-consulting-services) |  
-| Tanácsadási szolgáltatásokat | Azure Piactér | [Követelmények: Az Azure piactér: lista: tanácsadás](#requirements:-azure-marketplace:-list:-consulting-services) |  
+| Tanácsadási szolgáltatásokat | AppSource | [Követelmények: AppSource: lista: tanácsadás](#requirements-appsource-list-consulting-services) |  
+| Tanácsadási szolgáltatásokat | Azure Piactér | [Követelmények: Az Azure piactér: lista: tanácsadás](#requirements-azure-marketplace-list-consulting-services) |  
 | Kapcsolatfelvétel | AppSource | [](#) |  
-| Kapcsolatfelvétel | Azure Piactér | [Követelmények: AppSource: lista: megkereshet](#requirements:-azure-marketplace:-list:-contact-me) |  
+| Kapcsolatfelvétel | Azure Piactér | [Követelmények: AppSource: lista: megkereshet](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Követelmények: AppSource: lista: tanácsadás szolgáltatás  
 
@@ -89,12 +89,12 @@ A lista típusú bejegyzés a következő típusú a kirakatokkal a tartalmazza 
 
 | Csomag típusa | Storefront | Részletek |  
 |:---        |:---        |:---     |  
-| Szabad / SaaS próbaverzió | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements:-trial) |  
-| Szabad / SaaS próbaverzió | Azure Piactér | [Követelmények: Az Azure piactér: próba: ingyenes próbaverzió / SaaS próbaverzió](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| Interaktív bemutató | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements:-trial) |  
-| Interaktív bemutató | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: interaktív bemutató](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| Próbaüzem | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements:-trial) |  
-| Próbaüzem | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: kipróbálása](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| Szabad / SaaS próbaverzió | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements-trial) |  
+| Szabad / SaaS próbaverzió | Azure Piactér | [Követelmények: Az Azure piactér: próba: ingyenes próbaverzió / SaaS próbaverzió](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktív bemutató | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements-trial) |  
+| Interaktív bemutató | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: interaktív bemutató](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Próbaüzem | AppSource | [Szemben támasztott követelményeit listázása: próbaverzió](#listing-type-requirements-trial) |  
+| Próbaüzem | Azure Piactér | [Követelmények: Az Azure piactér: próbaverzió: kipróbálása](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Követelmények: Az Azure piactér: próbaverzió  
 
@@ -131,11 +131,11 @@ A lista típusú bejegyzés a következő típusú a kirakatokkal a tartalmazza 
 
 | Csomag típusa | Storefront | Részletek |   
 |:---        |:---        | :--- |  
-| Az Azure apps: által kezelt alkalmazás | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: által kezelt alkalmazás](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  
-| Az Azure apps: megoldás sablon | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: megoldás sablon](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  
-| Containers | Azure Piactér | [Követelmények: Az Azure piactér: Transact: tároló](#requirements:-azure-marketplace:-transact:-container) |  
-| SaaS-alkalmazás  | Azure Piactér | [Követelmények: Az Azure piactér: Transact: SaaS-alkalmazás](#requirements:-azure-marketplace:-transact:-saas-app) |  
-| Virtuális gép | Azure Piactér | [Követelmények: Az Azure piactér: Transact: virtuális gép](#requirements:-azure-marketplace:-transact:-virtual-machine) |  
+| Az Azure apps: által kezelt alkalmazás | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: által kezelt alkalmazás](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Az Azure apps: megoldás sablon | Azure Piactér | [Követelmények: Az Azure piactér: Transact: Azure alkalmazások: megoldás sablon](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Piactér | [Követelmények: Az Azure piactér: Transact: tároló](#requirements-azure-marketplace-transact-container) |  
+| SaaS-alkalmazás  | Azure Piactér | [Követelmények: Az Azure piactér: Transact: SaaS-alkalmazás](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtuális gép | Azure Piactér | [Követelmények: Az Azure piactér: Transact: virtuális gép](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 

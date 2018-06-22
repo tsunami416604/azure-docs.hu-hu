@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 78cff3ba5bd2f8bc80f302a232e45864159ca88f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5046a5e3771e95d76bb6edc7987a1e3176abeb0
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641883"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309415"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>A Service Fabric fürt kapacitástervezésének szempontjai
 Minden éles telepítésében kapacitásának megtervezése fontos lépés. Az alábbiakban néhány kell figyelembe venni, hogy a folyamat részeként elemek.
@@ -46,6 +46,8 @@ A **csomóponttípus** a felhőalapú szolgáltatások szerepköröknek felelnek
 Az egyes csomóponttípusok, egy különálló méretezési beállítása és akár is méretezhető vagy le egymástól függetlenül, a portok megnyitása más-más részhalmazához, és különböző teljesítmény-mérőszámait rendelkezik. További információ a csomóponttípusok és a virtuálisgép-méretezési csoportok közötti kapcsolatok, hogyan egy példányt, a távoli asztali megnyitása új portok, és így tovább, lásd: [Service Fabric-fürt csomóponttípusok](service-fabric-cluster-nodetypes.md).
 
 A Service Fabric-fürt egynél több csomóponttípus állhat. Ebben az esetben a fürt tartalmaz egy elsődleges csomóponttípusok és egy vagy több nem elsődleges csomóponttípusok.
+
+Egyetlen csomóponttípus egyszerűen legfeljebb 100-csomópontok ma_ximális száma virtuálisgép-méretezési készlet. Adja hozzá a virtuálisgép-méretezési beállítja a célzott skála eléréséhez, és automatikus skálázás nem automagically szeretne hozzáadni a virtuálisgép-méretezési készlet. Virtuálisgép-skálázási készletekben helyben hozzáadása egy élő fürthöz nehezebb feladat, és az új fürtök kiépítése a megfelelő csomópont típusú létrehozáskor kiépített felhasználók gyakran eredmény. 
 
 ### <a name="primary-node-type"></a>Elsődleges csomóponttípusok
 
@@ -188,7 +190,7 @@ Ez az útmutató az állapot nélküli Munkaterheléseket, amelyek a nem elsődl
 
 **Virtuálisgép-példányok száma:** a termelési számítási feladatokhoz, amelyek állapot nélküli alkalmazások, a minimális támogatott nem elsődleges csomópontot típus mérete 2. Ez lehetővé teszi, hogy futtatni, akkor az alkalmazás- és a szolgáltatás engedélyezi a Virtuálisgép-példány megszűnését túlélést két állapotmentes példányait. 
 
-**Virtuális gép Termékváltozat:** Ez a csomópont típusa ahol az alkalmazás szolgáltatások futnak, így a virtuális gép SKU úgy dönt, figyelembe kell vennie a csúcsterhelés azt tervezi, hogy minden csomópont helyezzen el. A nodetype kapacitás igényeinek szeretné futtatni a fürt, ezért jelenleg nem adhatók meg az adott munkaterhelés, azonban ez a széles körű útmutatót segítséget nyújtanak a minőségi útmutatással megkezdésében munkaterhelés határozza meg
+**Virtuális gép Termékváltozat:** Ez a csomópont típusa ahol az alkalmazás szolgáltatások futnak, így a virtuális gép SKU úgy dönt, figyelembe kell vennie a csúcsterhelés azt tervezi, hogy minden csomópont helyezzen el. A kapacitási igényeihez a csomópont típusú szeretné futtatni a fürt, ezért jelenleg nem adhatók meg az adott munkaterhelés, azonban ez a széles körű útmutatót segítséget nyújtanak a minőségi útmutatással megkezdésében munkaterhelés határozza meg
 
 A termelési számítási feladatokhoz 
 

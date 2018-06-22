@@ -7,14 +7,14 @@ manager: carmonm
 keywords: biztonsági mentések; biztonsági mentése;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/1/2018
+ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5aa07d7861413fa0ddc0d5af7aefe828df412b4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606636"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309146"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -34,11 +34,14 @@ Mielőtt védelme (vagy biztonsági mentése) erőforrás-kezelő telepített vi
 Ha ezek a feltételek már szerepel a környezetben, lépjen a [készítsen biztonsági másolatot a virtuális gépek](backup-azure-arm-vms.md) cikk. Ha szeretné beállítani, vagy ellenőrizze az Előfeltételek bármelyike, ez a cikk végigvezeti Önt a lépéseket.
 
 ## <a name="supported-operating-systems-for-backup"></a>A biztonsági mentéshez támogatott operációs rendszerek
- * **Linux**: támogatja az Azure Backup [azokat a terjesztéseket, amelyek Azure hozzá támogatást listája](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux. 
- 
+
+ * **Linux**: támogatja az Azure Backup [azokat a terjesztéseket, amelyek Azure hozzá támogatást listája](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux. Fájlok visszaállítása támogató Linux operációs rendszerek listájáért lásd: [virtuális gép biztonsági mentésből fájlokat helyreállítani](backup-azure-restore-files-from-vm.md#for-linux).
+
     > [!NOTE] 
     > Más állapotba-a-saját-Linux terjesztésekről működnek, mindaddig, amíg a Virtuálisgép-ügynök érhető el a virtuális gépen, és támogatja a Python létezik-e. Azokat a terjesztéseket, azonban nem támogatott.
- * **Windows Server**: A Windows Server 2008 R2-nél régebbi verziók nem támogatottak.
+    >
+ * **Windows Server**, **Windows ügyfél**: Windows Server 2008 R2 vagy Windows 7, régebbi verziói nem támogatottak.
+
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ha a biztonsági mentése és visszaállítása egy virtuális gép korlátozásai
 A környezet előkészítése előtt ügyeljen arra, hogy ezek a korlátozások megértése:

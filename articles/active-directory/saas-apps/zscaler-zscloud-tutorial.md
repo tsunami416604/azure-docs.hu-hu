@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ccd0048eb2f1ab32e9fbf403b65f68b07ada480
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227377"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Oktatóanyag: Azure Active Directoryval integrált Zscaler ZSCloud
 
@@ -116,7 +116,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
      Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-címet használják-e a felhasználók bejelentkezés az ZScaler ZSCloud alkalmazására.
     
     > [!NOTE] 
-    > Ez az érték a tényleges bejelentkezési URL-címet frissíteni kell. Ügyfél [Zscaler ZSCloud ügyfél-támogatási csoport](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint) lekérni ezt az értéket. 
+    > Ez az érték a tényleges bejelentkezési URL-címet frissíteni kell. Ügyfél [Zscaler ZSCloud ügyfél-támogatási csoport](https://help.zscaler.com/zia) lekérni ezt az értéket. 
  
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

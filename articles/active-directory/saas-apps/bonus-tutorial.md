@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: adde08f7981e6e23ba5bf2601d2f019702d1d33c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d06f8e148e382c44b8858cc2f149f5851198d0d5
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231644"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308108"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Azure Active Directoryval integrált Bonusly
 
@@ -112,7 +112,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE] 
-    > Az érték nincs valós. Frissítse az értéket a tényleges válasz URL-címet. Ügyfél [Bonusly támogatási csoport](https://Bonusly/contact) az értéket be kell olvasni.
+    > Az érték nincs valós. Frissítse az értéket a tényleges válasz URL-címet. Ügyfél [Bonusly támogatási csoport](https://bonus.ly/contact) az értéket be kell olvasni.
  
 4. Az a **SAML-aláíró tanúsítványa** szakaszban, másolja a **UJJLENYOMAT** érték a tanúsítványból.
 

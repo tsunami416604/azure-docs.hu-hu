@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: de85e4295a59c54cb68306bf0cbc516bf5e1f8e2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236399"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313296"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Gyakori kérdések a forgalom elemzés
 
@@ -28,17 +28,25 @@ ms.locfileid: "35236399"
 
     - Engedélyezett hálózati figyelőt előfizetés
     - NSG folyamata naplók a figyelni kívánt NSG-k engedélyezve
-    - Egy Azure Storage-fiók tárolására nyers flog naplók
+    - Egy Azure Storage-fiók nyers folyamata naplók tárolására
     - Az olvasási és írási hozzáférés egy Naplóelemzés (OMS) munkaterületen
     - Felhasználói kell rendelni, amelyben a következő szerepkörök előfizetés szintjén egyikét:
     
-            All permissions *
-            All Read permissions */read
-            All network permissions Microsoft.Network/*
-            All network read permissions Microsoft.Network/*/read
+    1.  A következő hagyományos adminisztrátor egyikét sem kell lennie
+    
+        - Fiókadminisztrátor
+        - Szolgáltatás-rendszergazda 
+        - Társadminisztrátor
+        
+    2.  A fióknak rendelkeznie kell a következő RBAC-szerepkörök közül bármelyik előfizetési hatókört
+    
+        - Tulajdonos
+        - Közreműködő
+        - Olvasó
+        - Hálózati közreműködő
 
-    Vagy a felhasználónak kell rendelni, amelyben minden szerepkört az előfizetés szintjén a következő: 
-
+    3. A fióknak rendelkeznie kell a következő említett műveletekről vonatkozó engedéllyel rendelkező egyéni RBAC szerepköröket előfizetés szintjén
+            
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
         - Microsoft.Network/loadBalancers/read 
@@ -50,22 +58,22 @@ ms.locfileid: "35236399"
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
         
-A felhasználó az előfizetéshez rendelt szerepkörök ellenőrzéséhez kövesse a lépéseket alatti:
+    A felhasználó az előfizetéshez rendelt szerepkörök ellenőrzéséhez kövesse a lépéseket alatti:
 
-Jelentkezzen be Azure-ban Login-AzureRmAccount 
+    Jelentkezzen be az Azure használatával **Login-AzureRmAccount** 
 
-Válassza ki a kötelező előfizetést Select-AzureRmSubscription használatával 
+    Jelölje be a szükséges előfizetés segítségével **Select-AzureRmSubscription** 
 
-Most az adott felhasználóhoz rendelt összes szerepkörök listájában, használja a Get-AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators 
+    Most már a megadott felhasználóhoz rendelt szerepkörök listájában, használja **Get-AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators** 
 
-Ha nem Ön kimenetet elismerésben részesíti végrehajtása után majd lépjen kapcsolatba megfelelő előfizetési rendszergazda, a parancsok eléréséhez.  
+    Ha nem Ön kimenetet elismerésben részesíti végrehajtása után majd lépjen kapcsolatba megfelelő előfizetési rendszergazda, a parancsok eléréséhez.  
 
-A részletekért tekintse meg [szerepköralapú hozzáférés-vezérlés az Azure PowerShell kezelése](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+    A részletekért tekintse meg [szerepköralapú hozzáférés-vezérlés az Azure PowerShell kezelése](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
 
 
 2.  Mely Azure-régiók találhatók forgalom analytics?
 
-    Az előzetes kiadásban használhat forgalom elemzés a következő az NSG-k **támogató régiók**: nyugati középső Régiójában, USA keleti régiója, USA keleti régiója 2. régiója, északi középső Régiójában, déli középső Régiójában, USA középső RÉGIÓJA, USA nyugati régiója, USA nyugati régiója-2, Nyugat-Európában, Észak-Európa , Nyugati UK, Dél-UK, Kelet-Ausztrália és Ausztrália délkeleti. A Naplóelemzési munkaterület léteznie kell a nyugati középső Régiójában, USA keleti régiója, Nyugat-Európában, Ausztrália délkeleti, vagy a déli UK régió.
+    Az előzetes kiadásban használhat forgalom elemzés a következő az NSG-k **támogató régiók**: nyugati középső Régiójában, USA keleti régiója, USA keleti régiója 2, északi középső Régiójában, déli középső Régiójában, USA középső RÉGIÓJA, USA nyugati régiója, USA 2. nyugati régiója, Nyugat-Európában, Észak-Európa Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Kelet-Ausztrália, Ausztrália délkeleti és Délkelet-Ázsia. A Naplóelemzési munkaterület léteznie kell a nyugati középső Régiójában, USA keleti régiója, Nyugat-Európa, Egyesült Királyság déli régiója, Ausztrália délkeleti, vagy a Délkelet-Ázsia régióban.
 
 3.  Az NSG-ket engedélyezhető a folyamatot is naplókat lehet, mint az OMS-munkaterület különböző régiókban?
 
@@ -127,11 +135,11 @@ A részletekért tekintse meg [szerepköralapú hozzáférés-vezérlés az Azur
 
 14. Konfigurálhatja a PowerShell vagy az Azure Resource Manager sablon forgalom analytics?
 
-Igen, a windows powershell támogatott verziója 6.2.1 forgalom konfigurációja és újabb verziók esetében, azonban Azure Resource Manager sablon funkció nem érhető el jelent-e. Megtudhatja, hogyan PowerShell segítségével konfigurálhatja a forgalom analytics tekintse meg a következő [dokumentáció](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
+        Yes, traffic analytics configuration using windows powershell is supported from version 6.2.1 onwards, however Azure Resource Manager template support is not available at present. To learn more, how PowerShell can be used to configure traffic analytics please refer following [documentation](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Hogyan áron a forgalom analytics?
 
-Forgalom analytics folyamat naplóadatait a szolgáltatás által feldolgozott, és a resulted továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület a forgalmi díjas. Kérjük, több vonatkozó terv tudni [kattintson ide](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
+        Forgalom analytics folyamat naplóadatait a szolgáltatás által feldolgozott, és a resulted továbbfejlesztett naplók tárolása a Naplóelemzési munkaterület a forgalmi díjas. Kérjük, több vonatkozó terv tudni [kattintson ide](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  Hogyan navigálhatnak meg, hogy a földrajzi nézet a billentyűzet használata-e?
 
@@ -162,3 +170,47 @@ Forgalom analytics folyamat naplóadatait a szolgáltatás által feldolgozott, 
         - `ESC` a kibontott kijelölés bezárása.
         - A `UP Arrow` kulcs hajtja végre a művelet, mintha `ESC`. A `Down arrow` kulcs hajtja végre a művelet, mintha `Enter`.
         - Használjon `Shift+Plus` a nagyításhoz, és `Shift+Minus` kicsinyítéshez.
+
+17. Hogyan tudom navigálhatnak billentyűzet használata a virtuális hálózat topológia nézetben?
+
+    A virtuális hálózatok topológia lapon két fő szakaszból áll:
+    
+    - **Transzparens**: A felső részén a virtuális hálózatok topológia helyezett szalagcím lehetővé teszi a válassza ki a terjesztési forgalomszűrők csatlakoztatott Vnetek vagy Disconnected Vnetekhez vagy aktív/inaktív/a-helyszíni/az Azure régióban vagy nyilvános IP-címek például gombokkal / Gyakori/közepes vagy alacsony/engedélyezett/letiltott és jelmagyarázat információkat. A megadott gombok kiválasztását a megfelelő szűrő a topológia, például ha a felhasználó megadja a fejléc alatt a "Aktív" szűrő gombra, majd a topológia kiemeli a központi telepítésben "Aktív" Vnetek.
+    - **Topológia**: a fejléc alatt a topológia a szakasz bemutatja Vnetek forgalom elosztását.
+    
+    **Billentyűparancsokkal szalagcím**
+    
+    - Alapértelmezés szerint a virtuális hálózatok topológia oldalon a Szalagcím beállítás a szűrő "Csatlakoztatott Vnetek" gombra.
+    - Nyissa meg egy másik szűrők gomb, használhatja a `Tab` kulcsot következő áthelyezése. Keresse meg a visszafelé, használja a `Shift+Tab` kulcs. Navigációs irány sorrendjének balról jobbra, az alsó felső követi.
+    - Nyomja meg a `Enter` nyílbillentyűt kijelölt szűrőt alkalmazza. Szűréses választás és a központi telepítés alapján vannak kiemelve topológia szakaszban egy vagy több csomópontot (VNet).
+        - Váltás **szalagcím** és **topológia**, nyomja le az ENTER `Ctrl+F6`.
+        
+    **Billentyűparancsokkal a topológia**
+    
+    - Miután bármely szűrőt a szalagcím a választott és megnyomva `Ctrl+F6`, fókusz egyik kijelölt csomópont (**VNet**) a topológia nézetben.
+    - Egyéb keresse meg a kijelölt csomópontok a topológia nézetben használható a `Shift+Right arrow` kulcsát, előre. 
+    - A kijelölt csomópont, fókusz a **információk eszköz mezőben** a csomópont. Alapértelmezés szerint fókusz mozgatása "További tulajdonságok" gombra a **információk eszköz mezőben**. További navigálni **mezőben** megtekintéséhez használja `Right` és `Left arrow` -kulcsok előre és hátra, illetve helyezze át. Nyomja le `Enter` rendelkezik a célzott parancsgomb ugyanaz, mintha a **információk eszköz mezőben**.
+    - A kijelölés azokat a csomópontokat, az összes kapcsolat meglátogathatja, egyenként, billentyűkombináció lenyomásával `Shift+Left arrow` kulcs. Fókusz áthelyezése a **információk eszköz mezőben** , hogy a kapcsolat. Bármikor, a fókusz is megjelenítjük csomópont billentyűkombináció lenyomásával `Shift+Right arrow` újra.
+    
+
+18. Hogyan tudom navigálhatnak alhálózati topológia e nézetében a billentyűzet használata?
+
+    A virtuális alhálózatok topológia lapon két fő szakaszból áll:
+    
+    - **Transzparens**: A felső részén a virtuális alhálózatok topológia helyezett szalagcím lehetővé teszi a válassza ki a terjesztési forgalomszűrők Active/Inactive/külső kapcsolatok vagy a-Premise vagy az Azure-régió/nyilvános IP-címek például gombokkal/aktív Forgalomáramlás / Gyakori/közepes vagy alacsony/esetleg kártékony forgalom/engedélyezett/letiltott, átjáró alhálózatok/háttér alhálózatokat és az előtér-alhálózatok. A megadott gombok kiválasztását a megfelelő szűrő a topológia, például ha a felhasználó megadja a fejléc alatt a "Aktív" szűrő gombra, majd a topológia kiemeli a központi telepítésben "Aktív" virtuális alhálózat.
+    - **Topológia**: a fejléc alatt a topológia szakasz bemutatja a forgalom eloszlása virtuális alhálózatok között.
+    
+    **Billentyűparancsokkal szalagcím**
+    
+    - Alapértelmezés szerint az a virtuális alhálózatok topológia lapon a szalagcím érték a szűrő "Alhálózatok" gombra.
+    - Nyissa meg egy másik szűrők gomb, használhatja a `Tab` kulcsot következő áthelyezése. Keresse meg a visszafelé, használja a `Shift+Tab` kulcs. Navigációs irány sorrendjének balról jobbra, az alsó felső követi.
+    - Nyomja meg a `Enter` nyílbillentyűt kijelölt szűrőt alkalmazza. Szűréses választás és a központi telepítés alapján vannak kiemelve topológia szakaszban egy vagy több csomópontot (alhálózat).
+        - Váltás **szalagcím** és **topológia**, nyomja le az ENTER `Ctrl+F6`.
+        
+    **Billentyűparancsokkal a topológia**
+    
+    - Miután bármely szűrőt a szalagcím a választott és megnyomva `Ctrl+F6`, fókusz egyik kijelölt csomópont (**alhálózati**) a topológia nézetben.
+    - Egyéb keresse meg a kijelölt csomópontok a topológia nézetben használható a `Shift+Right arrow` kulcsát, előre. 
+    - A kijelölt csomópont, fókusz a **információk eszköz mezőben** a csomópont. Alapértelmezés szerint fókusz mozgatása "További tulajdonságok" gombra a **információk eszköz mezőben**. További navigálni **mezőben** megtekintéséhez használja `Right` és `Left arrow` -kulcsok előre és hátra, illetve helyezze át. Nyomja le `Enter` rendelkezik a célzott parancsgomb ugyanaz, mintha a **információk eszköz mezőben**.
+    - A kijelölés azokat a csomópontokat, az összes kapcsolat meglátogathatja, egyenként, billentyűkombináció lenyomásával `Shift+Left arrow` kulcs. Fókusz áthelyezése a **információk eszköz mezőben** , hogy a kapcsolat. Bármikor, a fókusz is megjelenítjük csomópont billentyűkombináció lenyomásával `Shift+Right arrow` újra.    
+

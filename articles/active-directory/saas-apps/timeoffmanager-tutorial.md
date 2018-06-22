@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e92d1ba948626c05e7b66d2c0d469ac6c6571a2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4813c492ba25b0d6dd524e2c0b4b5b6e8c2a2bfa
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228186"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Oktatóanyag: Azure Active Directoryval integrált TimeOffManager
 
@@ -112,7 +112,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
 
     > [!NOTE] 
-    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges válasz URL-címet. Ezt az értéket kaphat **egyszeri bejelentkezési beállítások lapon** amely esetén, tekintse meg az oktatóanyag használatával, vagy forduljon a [TimeOffManager támogatási csoport](http://www.timeoffmanager.com/contact-us.aspx).
+    > Ez az érték nincs valós. Frissítse ezt az értéket a tényleges válasz URL-címet. Ezt az értéket kaphat **egyszeri bejelentkezési beállítások lapon** amely esetén, tekintse meg az oktatóanyag használatával, vagy forduljon a [TimeOffManager támogatási csoport](https://www.purelyhr.com/contact-us).
  
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

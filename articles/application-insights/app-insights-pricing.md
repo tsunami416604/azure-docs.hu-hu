@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.reviewer: Dale.Koetke
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a401bc3ed68dc9273ac14cfd357b9c05111dd54c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309854"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insightsban tarifa- és adatok kötet kezelése
 
@@ -88,7 +90,7 @@ Küldött adatok mennyisége három módon van korlátozva:
 
     Körültekintően járjon el a napi kap beállításakor. A cél kell *soha nem elérte a napi kap*. Elérte a napi kap, ha a nap hátralevő adatok elvesznek, és nem figyelheti az alkalmazást. A napi kap módosításához használja a **napi kötet cap** lehetőséget. Érheti el ezt a lehetőséget a **használati és a becsült költség** (Ez leírása a cikk későbbi részében részletesebben) panelen.
     Néhány előfizetés típust, amely nem használható az Application Insights jóváírás rendelkező korlátozását eltávolította azt. Korábban Ha az előfizetésnek a költségkeret maximumát, a napi cap párbeszédpanelnek távolítsa el a költségkeret maximumát, és engedélyezze a napi kap túl 32,3 megabájt MB/nap felmerülő vonatkozó utasításokat.
-* **Sávszélesség-szabályozás**: szabályozás korlátok 32000 események másodpercenkénti, hogy az adatátviteli sebesség átlagosan több mint 1 perc.
+* **Sávszélesség-szabályozás**: szabályozás korlátok 32000 események másodpercenkénti, hogy az adatátviteli sebesség átlagosan / instrumentation kulcs több mint 1 perc.
 
 *Mi történik, ha az alkalmazás meghaladja a szabályozási értéket?*
 
@@ -146,7 +148,7 @@ A tényleges mintavételi ráta, függetlenül attól, ahol azt van érvényben,
 
 Az egyes megőrzi a rekord, `itemCount` azt jelzi, hogy ezt az eredeti rekordok száma. Ez megegyezik 1 + az előző elvetett rekordok száma. 
 
-## <a name="automation"></a>Automatizálás
+## <a name="automation"></a>Automation
 
 A parancsfájl az ár terv beállítása az Azure Resource Manager használatával írhat. [További tudnivalókat itt talál](app-insights-powershell.md#price).
 

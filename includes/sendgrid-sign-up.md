@@ -1,7 +1,7 @@
 Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a havi 25 000 ingyenes e-mail hozzáférést biztosít a fejlett jelentéskészítési és elemzési szolgáltatásokhoz, valamint [az API-k mindegyikéhez][all APIs] (többek között Web, SMTP, Event, Parse). A SendGrid által biztosított további szolgáltatásokról a [SendGrid Solutions][SendGrid Solutions] oldalán talál információkat.
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid-fiók regisztrálása
-1. Jelentkezzen be a [Azure-portálon][Azure portal].
+1. Jelentkezzen be az [Azure Portalra][Azure portal].
 2. A bal oldali menüben kattintson a **hozzon létre egy erőforrást**.
 
     ![command-bar-new][command-bar-new]

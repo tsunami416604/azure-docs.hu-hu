@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c87b90e82b1300e147533256e3286421a73f08d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218894"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Oktatóanyag: Azure Active Directoryval integrált Tangoe parancs prémium Mobile
 
@@ -114,7 +114,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Tangoe parancs prémium mobileszköz ügyfél-támogatási csoport](https://www.tangoe.com/contact-2/) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges válasz URL-CÍMEN és bejelentkezési URL-cím. Ügyfél [Tangoe parancs prémium mobileszköz ügyfél-támogatási csoport](https://www.tangoe.com/contact-us/) beolvasni ezeket az értékeket. 
 
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -128,7 +128,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Tangoe parancs prémium Mobile konfigurációs szakasz](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, lépjen kapcsolatba a [Tangoe parancs prémium mobileszköz ügyfél-támogatási csoport](https://www.tangoe.com/contact-2/) , és adja meg a következőket:
+7. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, lépjen kapcsolatba a [Tangoe parancs prémium mobileszköz ügyfél-támogatási csoport](https://www.tangoe.com/contact-us/) , és adja meg a következőket:
 
    - A letöltött metaadatait tartalmazó fájl
    - A **SAML entitás azonosítója**
@@ -174,7 +174,7 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
 
 Ebben a szakaszban Tangoe parancs prémium Mobile Britta Simon nevű felhasználó létrehozása. 
 
-Tangoe parancs prémium Mobile alkalmazást úgy kell létrehozni, az alkalmazásban, az egyszeri bejelentkezés végrehajtása előtt minden felhasználó kell. Ezért kérjük, munkahelyi és a [Tangoe parancs prémium mobileszköz ügyfél-támogatási csoport](https://www.tangoe.com/contact-2/) ezek a felhasználók az alkalmazás telepítéséhez. 
+Tangoe parancs prémium Mobile alkalmazást úgy kell létrehozni, az alkalmazásban, az egyszeri bejelentkezés végrehajtása előtt minden felhasználó kell. Ezért kérjük, munkahelyi és a [Tangoe parancs prémium mobileszköz ügyfél-támogatási csoport](https://www.tangoe.com/contact-us/) ezek a felhasználók az alkalmazás telepítéséhez. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 

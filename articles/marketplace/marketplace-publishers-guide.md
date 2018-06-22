@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/11/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4b7d861ee0207c6a16c83e23d259411f7e874354
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823384"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309231"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Az Azure piactér és AppSource Publisher útmutatója  
 
@@ -118,7 +118,7 @@ Minden egyes kirakat biztosít a Speciális beállítások segítségével maxim
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>Közzététel a piactér áruházaiban  
-A következő szakaszok segítségével keresse meg a közzétételi beállítások AppSource és az Azure piactéren.  
+A következő oldalakon segítségével keresse meg a közzétételi beállítások AppSource és az Azure piactéren.  
 
 A három egyszerű lépését a piactéren kirakatokkal közzétevő válik.  
 1.  Látogasson el a [felsoroló típusának meghatározása a megoldás](./determine-your-listing-type.md) lap.  
@@ -135,7 +135,6 @@ A három egyszerű lépését a piactéren kirakatokkal közzétevő válik.
 ---  
 
 ## <a name="support"></a>Támogatás  
-
 *   Látogasson el a [AppSource támogatása](./support-appsource.md) lap.  
 *   Látogasson el a [Azure piactér támogatása](./support-azure-marketplace.md) lap.  
 
@@ -147,6 +146,7 @@ A három egyszerű lépését a piactéren kirakatokkal közzétevő válik.
 
 ## <a name="guidelines"></a>Irányelvek  
 *   Látogasson el a [irányelvek](./guidelines.md) lap.  
+    *   Látogasson el a [a piactér fiók kezeléséhez a Microsoft ID létrehozására vonatkozó irányelvek](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) szakasz.  
 *   Látogasson el a [regisztrálja fejlesztői központban](./register-dev-center.md) lap.  
 *   Látogasson el a [Hozzáadás banki és adó információk](./add-bank-tax-info.md) lap.  
 *   Látogasson el a [engedélyezése létrehozása az Azure AD](./enable-trial-using-azure-ad.md) lap.  

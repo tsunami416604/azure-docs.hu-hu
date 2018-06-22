@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a29ef6535d1d4e64df7b97fc7519e55f511df222
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 759052a073103304f89096a43f0cbef88e0a1624
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212172"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Oktatóanyag: Azure Active Directoryval integrált SimpleNexus
 
@@ -117,7 +117,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://simplenexus.com/<companyname>`
 
     > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [SimpleNexus ügyfél-támogatási csoport](https://simplenexus.com/site/contact) beolvasni ezeket az értékeket. 
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [SimpleNexus ügyfél-támogatási csoport](https://simplenexus.com/sn/contact-us/) beolvasni ezeket az értékeket. 
  
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
@@ -127,7 +127,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/simplenexus-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **SimpleNexus** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [SimpleNexus támogatási csoport](https://simplenexus.com/site/contact). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+6. Egyszeri bejelentkezés konfigurálása **SimpleNexus** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [SimpleNexus támogatási csoport](https://simplenexus.com/sn/contact-us/). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)

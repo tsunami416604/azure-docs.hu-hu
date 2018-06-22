@@ -9,7 +9,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információt az [Azure parancssori felületből (CLI) Azure-ba történő bejelentkezést ismertető cikkben](/cli/azure/authenticate-azure-cli) talál.
+Nyisson meg egy konzolablakot, adja meg a saját hitelesítő adatait. További információkért lásd: [jelentkezzen be az Azure-bA az Azure parancssori felületen](/cli/azure/authenticate-azure-cli)
 
 ```azurecli
 azure login

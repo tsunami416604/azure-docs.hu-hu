@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 89e5497c10f3e24dd84333f095a9bd7c0017ea88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647867"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309299"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A memórián belüli technológiái az SQL-adatbázis teljesítményének optimalizálása
 
@@ -72,7 +72,7 @@ Részletes videók technológiákkal kapcsolatos:
 
 A memórián belüli online Tranzakciófeldolgozási memóriaoptimalizált táblákkal, felhasználói adatok tárolásához használt tartalmazza. Ezek a táblázatok memóriában szükségesek. Kezelheti a memória közvetlenül az SQL Database szolgáltatásban, mert a felhasználói adatok egy kvótát fogalmát van. Ezzel az ötlettel nevezzük *memórián belüli online Tranzakciófeldolgozási tárolási*.
 
-Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Lásd: [DTU-alapú erőforrás korlátok](sql-database-dtu-resource-limits.md) és [vCore-alapú erőforrás korlátok](sql-database-vcore-resource-limits.md).
+Minden tarifacsomag és minden rugalmas készlet árképzési szint támogatott önálló adatbázis bizonyos mennyiségű memórián belüli online Tranzakciófeldolgozási tárolási tartalmazza. Lásd: [DTU-alapú erőforrás korlátok - egyetlen adatbázis](sql-database-dtu-resource-limits-single-databases.md), [DTU-alapú erőforrás korlátok - rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md),[vCore-alapú erőforrás korlátok - önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [vCore-alapú erőforrás korlátok - rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 A következő elemek felé a memórián belüli online Tranzakciófeldolgozási tároló maximális száma:
 

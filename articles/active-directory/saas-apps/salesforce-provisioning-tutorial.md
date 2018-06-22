@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: be6e5fb83ea88ce30b64f5e1eb53422f0404410f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbf4e2a35667484fea66a1888cdfc0184a806583
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229653"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308316"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Automatikus felhasználólétesítés Salesforce konfigurálása
 
@@ -95,7 +95,7 @@ Ez a szakasz célja felvázoló engedélyezése a felhasználók átadása Sales
 
 10. Másolja a token nyissa meg az Azure AD ablakba, és illessze be azt a **titkos Token** mező.
 
-11. A **bérlői URL-cím** kell adni, ha az adott Salesforce-példány a Salesforce kormányzati felhő. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-cím a következő formátumban, https://your-instance.my.salesforce.com, a példány cseréje a Salesforce-példány nevét.
+11. A **bérlői URL-cím** kell adni, ha az adott Salesforce-példány a Salesforce kormányzati felhő. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-cím a következő formátumban, a "https://\<a példány\>. my.salesforce.com," cseréje \<a példány\> a Salesforce-példány nevét.
 
 12. Az Azure portálon kattintson **kapcsolat tesztelése** biztosításához az Azure AD csatlakozhat a Salesforce alkalmazást.
 

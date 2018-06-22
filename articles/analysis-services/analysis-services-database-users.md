@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a2338045c43f9eb240ce55fd1ec31a4db40fd4e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8870c4199d5f24d1e8d07bc97d61a09c07052c1e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598351"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307979"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és a felhasználók kezelése
 
-A modell adatbázis szinten minden felhasználó egy szerepkörhöz kell tartoznia. Szerepkörök definiálása a modelladatbázis adott jogosultságokkal rendelkező felhasználók. Bármely felhasználónak vagy biztonsági csoportot hozzáadni a szerepkörhöz ugyanazt az előfizetést, mint a kiszolgáló Azure AD-bérlő fiókkal kell rendelkeznie.
+A modell adatbázis szinten minden felhasználó egy szerepkörhöz kell tartoznia. Szerepkörök definiálása a modelladatbázis adott jogosultságokkal rendelkező felhasználók. Bármely felhasználónak vagy biztonsági csoportot hozzáadni a szerepkörhöz ugyanazt az előfizetést, mint a kiszolgáló Azure AD-bérlő fiókkal kell rendelkeznie. 
 
 Szerepkörök definiálása hogyan eltér attól függően, hogy a használt eszköz, azonban a hatás azonos.
 
@@ -27,6 +27,9 @@ Szerepkör-engedélyek a következők:
 *  **Olvasási** -felhasználók ügyfélalkalmazás segítségével csatlakozhat, és elemezni a modell adatbázis adatai.
 
 Amikor létrehoz egy táblázatos modell projektet, szerepköröket hozhat létre, és SSDT szerepkör-kezelővel ezeket a szerepköröket felhasználók vagy csoportok hozzáadása. Egy kiszolgáló telepítésekor használhatja SSMS, [Analysis Services PowerShell-parancsmagok](https://msdn.microsoft.com/library/hh758425.aspx), vagy [táblázatos modell Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) hozzáadása vagy eltávolítása a szerepkörök és a felhasználói tagjai.
+
+> [!NOTE]
+> Biztonsági csoportok kell rendelkeznie a `MailEnabled` tulajdonsága `True`.
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Adja hozzá vagy szerepkörök és az SSDT felhasználók kezelése  
   

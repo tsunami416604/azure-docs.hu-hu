@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: 08b0cd35294a6cd4086fd5640b09d944ed361c41
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba7a13a94d01de9d284282cbed25c873778e46e0
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367135"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309567"
 ---
 Ez a cikk bevált gyakorlatokat mutat be egy Linux virtuális gép (VM) Azure-on való futtatására, figyelembe véve a méretezési, a rendelkezésre állási, a felügyeleti és a biztonsági szempontokat. Az Azure támogatja különböző népszerű Linux-disztribúciók, például a CentOS, a Debian, a Red Hat Enterprise, az Ubuntu és a FreeBSD futtatását. További információk: [Az Azure és a Linux][azure-linux].
 
@@ -139,7 +139,7 @@ Virtuális gép felszabadításához használja az alábbi parancssori felületi
 azure vm deallocate <resource-group> <vm-name>
 ```
 
-Az Azure Portalon a **Leállítás** gombbal szabadítható fel a virtuális gép. Ha azonban az operációs rendszerből állítja le, amikor be van jelentkezve, azzal virtuális gépet leállítja, de *nem* szabadítja fel, tehát továbbra is fizetnie kell a díját.
+Az Azure Portalon a **Leállítás** gombbal szabadítható fel a virtuális gép. Azonban ha az operációs rendszer bejelentkezve keresztül leállítja a virtuális gép le van állítva, de *nem* felszabadítása. lehetséges, így továbbra is fizetnie kell.
 
 **Virtuális gépek törlése.** Ha töröl egy virtuális gépet, a VHD-k nem törlődnek. Ez azt jelenti, hogy biztonságosan törölheti a virtuális gépet anélkül, hogy adatot vesztene. A tárolásért azonban továbbra is díjat kell fizetnie. A VHD törléséhez törölje a fájlt a [Blob Storage-ból][blob-storage].
 
