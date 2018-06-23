@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a94d97fb90e65fd569047a3d55945437002d97ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9537380daab80529c3ba6307f1b2cd82a8c0ca41
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867391"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334669"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>A legújabb Azure multi-factor Authentication kiszolgáló frissítése
 
@@ -48,21 +48,12 @@ Frissítés 6.x vagy régebbi a v7.x vagy újabb, az összes összetevő váltso
 
 Ha a felhasználói portál több kiszolgálón, ismételje meg az összes szoftver telepítését. 
 
-
 ## <a name="upgrade-the-mobile-app-web-service"></a>A mobilalkalmazás webszolgáltatás frissítése
 
-1. Készítsen biztonsági másolatot a web.config fájl, amely a virtuális könyvtárban, a mobilalkalmazás webszolgáltatás telepítési helyének (például C:\inetpub\wwwroot\app vagy C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
-2. A multi-factor Authentication kiszolgáló telepítési helyére másolja a multifactorauthenticationmobileappwebservicesetup64.msi programot fájlt, és elhelyezi a Mobile Apps regisztrációs webkiszolgálóra.
-3. Futtassa a telepítőt. 
-
-  Ha a hiba akkor fordul elő, arról, hogy a Microsoft Visual C++ 2015 terjeszthető frissítésének 1-es vagy újabb rendszer szükséges, töltse le és telepítse a legújabb frissítési csomagot a [Microsoft Download Center](https://www.microsoft.com/download/). Telepítse a x86 és x64 verziók.
-
-4. A frissített mobilalkalmazás webszolgáltatásának szoftver telepítése után hasonlítsa össze a web.config fájl, amely biztonsági mentésekor az 1. lépésben az új web.config fájllal. Ha nem új attribútum szerepel az új web.config, a mentett web.config másolja a virtuális könyvtárba, és felülírja az újjal. Másolja és illessze be az appSettings értékek és a Web Service SDK URL-CÍMÉT a biztonságimásolat-fájlt az új web.config be egy másik lehetőség egy.
-
-Ha a mobilalkalmazás webszolgáltatás több kiszolgálón, ismételje meg az összes szoftver telepítését. 
+> [!NOTE]
+> Egy Azure MFA kiszolgáló régebbi mint 8.0 a 8.0-s és újabb verzióját, hogy a mobilalkalmazás webszolgáltatás a frissítés után is el kell távolítani a frissítéskor
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>Az AD FS-adapter frissítése
-
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Ha MFA fut, mint az AD FS különböző kiszolgálókon
 

@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 20f6c95deb78c04668c484a20abcf41a58130847
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d8559df366bdd9c1439f2ff8c7b7ebc1a7c66960
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211366"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334190"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Felügyelni a DNS a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure Active Directory tartományi szolgáltatások magában foglalja a DNS-feloldás biztosít a felügyelt tartományra (tartománynév feloldásával) DNS-kiszolgálóval. Alkalmanként esetleg DNS konfigurálása a felügyelt tartományra. Szükség lehet, a tartományhoz nem csatlakozó gépek DNS-rekordok létrehozása, konfigurálása a terheléselosztók virtuális IP-címet, vagy a telepítés külső DNS-továbbítók. Ezért a "AAD DC rendszergazdák" csoportba tartozó felhasználók kapnak a felügyelt tartományra DNS felügyeleti jogosultságokkal.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:
@@ -36,21 +38,21 @@ A cikkben szereplő feladatok elvégzéséhez szüksége:
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>1. feladat – rendszerű távoli felügyelete a felügyelt tartomány DNS-tartományhoz virtuális gép
+## <a name="task-1---create-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>1. feladat – távoli felügyelete a felügyelt tartomány DNS-tartományhoz virtuális gép létrehozása
 Az Azure AD tartományi szolgáltatások felügyelt tartományok kezelheti távolról már ismerős eszközökkel Active Directory felügyeleti például az Active Directory felügyeleti központ (ADAC) vagy AD PowerShell segítségével. Hasonlóképpen a felügyelt tartományra DNS használatával lehet felügyelni távolról a DNS-kiszolgáló felügyeleti eszközei.
 
-Az Azure AD-címtár rendszergazdái nem jogosult csatlakozni a távoli asztalon keresztül a felügyelt tartományra tartományvezérlők. A "AAD DC rendszergazdák" csoportba DNS felügyelheti a felügyelt tartomány tagja egy Windows Server-ügyfél számítógépről távolról DNS-kiszolgáló eszközeivel felügyelt tartományok. DNS-kiszolgáló eszközök a Távoli kiszolgálófelügyelet eszközei (RSAT) választható szolgáltatás Windows Server és a felügyelt tartományhoz csatlakozó ügyfélgépek részeként telepíthető.
+Az Azure AD-címtár rendszergazdái nem jogosult csatlakozni a távoli asztalon keresztül a felügyelt tartományra tartományvezérlők. A "AAD DC rendszergazdák" csoportba DNS felügyelheti a felügyelt tartomány tagja egy Windows Server-ügyfél számítógépről távolról DNS-kiszolgáló eszközeivel felügyelt tartományok. DNS-kiszolgáló eszközök a Távoli kiszolgálófelügyelet eszközei (RSAT) választható szolgáltatás részét képezik.
 
-Az első feladata a Windows Server rendszerű virtuális gép, amely a felügyelt tartományhoz csatlakozik. Útmutatásért tekintse meg a című cikk [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md).
+Az első tevékenységet, ha a Windows Server virtuális gép, amely a felügyelt tartományhoz csatlakozik. Útmutatásért tekintse meg a című cikk [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md).
 
 ## <a name="task-2---install-dns-server-tools-on-the-virtual-machine"></a>2. feladat – telepítés DNS-kiszolgáló eszközök a virtuális gépen
-Telepítéséhez hajtsa végre a következő lépéseket a DNS-felügyeleti eszközök a tartományhoz csatlakoztatott virtuális gépen. További információ a [telepítéséről és használatáról a Távoli kiszolgálófelügyelet eszközei](https://technet.microsoft.com/library/hh831501.aspx), tekintse meg a TechNet webhelyén.
+Kövesse az alábbi lépéseket a DNS-felügyeleti eszközök telepítése a tartományhoz csatlakoztatott virtuális gépen. További információ a [telepítéséről és használatáról a Távoli kiszolgálófelügyelet eszközei](https://technet.microsoft.com/library/hh831501.aspx), tekintse meg a TechNet webhelyén.
 
 1. Keresse meg az Azure-portálon. Kattintson a **összes erőforrás** a bal oldali panelen. Keresse meg, és kattintson az 1. feladatban létrehozott virtuális gépre.
 2. Kattintson a **Connect** – Áttekintés lap gombjára. A távoli asztal protokoll (RDP) fájl létrehozása, és le.
 
     ![Windows virtuális géphez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. Bejelentkezés a parancssorba az "AAD DC rendszergazdák" csoportba tartozó felhasználói hitelesítő adatokat használja. Például használjuk "bob@domainservicespreview.onmicrosoft.com" esetünkben. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Kattintson az Igen gombra, vagy folytassa a kapcsolat.
+3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. Az "AAD DC rendszergazdák" csoportba tartozó felhasználói hitelesítő adatokat használja. Például "bob@domainservicespreview.onmicrosoft.com". A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Kattintson az Igen gombra vagy a Folytatás való csatlakozáshoz.
 
 4. A kezdőképernyőről nyissa meg a **Kiszolgálókezelő**. Kattintson a **szerepkörök és szolgáltatások hozzáadása** a Kiszolgálókezelő ablakban központi panelén.
 
@@ -64,7 +66,7 @@ Telepítéséhez hajtsa végre a következő lépéseket a DNS-felügyeleti eszk
 7. Az a **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgálókészletből, és kattintson a **következő**.
 
     ![Kiszolgáló kiválasztása lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Az a **kiszolgálói szerepkörök** kattintson **következő**. Azt e lap kihagyása, mert jelenleg nem telepít szerepköröket a kiszolgálón.
+8. Az a **kiszolgálói szerepkörök** kattintson **következő**.
 9. Az a **szolgáltatások** lap gombra, bontsa ki a **távoli kiszolgálófelügyelet eszközei** csomópontra majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópont. Válassza ki **DNS-kiszolgálói eszközök** szolgáltatás szerepkör-felügyeleti eszközök a listából.
 
     ![Szolgáltatások lapon](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
@@ -73,7 +75,7 @@ Telepítéséhez hajtsa végre a következő lépéseket a DNS-felügyeleti eszk
     ![Jóváhagyás lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
 ## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>3. feladat – indítsa el a DNS-kezelő konzol DNS felügyeletéhez
-Most, hogy a DNS-kiszolgálói eszközök összetevő telepítve van a tartományhoz csatlakoztatott virtuális gép, azt a DNS-eszközök segítségével felügyelheti a DNS a felügyelt tartományra.
+Most Windows Server DNS-eszközök segítségével felügyelheti a felügyelt tartomány DNS.
 
 > [!NOTE]
 > Ahhoz, hogy adminisztrálja a felügyelt tartomány DNS "AAD DC rendszergazdák" csoport tagjának lennie kell.
@@ -84,7 +86,7 @@ Most, hogy a DNS-kiszolgálói eszközök összetevő telepítve van a tartomán
 
     ![Felügyeleti eszközök – DNS-konzol](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
 2. Kattintson a **DNS** elindíthatja a DNS-kezelőben.
-3. A a **kapcsolódás a DNS-kiszolgáló** párbeszédpanel, kattintson az lehetőségre című **a következő számítógép**, és írja be a DNS-tartománynév, a felügyelt tartomány (például "contoso100.com").
+3. A a **kapcsolódás a DNS-kiszolgáló** párbeszédpanel, kattintson a **a következő számítógép**, és írja be a DNS-tartománynév, a felügyelt tartomány (például "contoso100.com").
 
     ![DNS-konzol - csatlakozás tartományhoz](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 4. A DNS-konzol kapcsolódik a felügyelt tartományra.
@@ -97,7 +99,7 @@ Most, hogy a DNS-kiszolgálói eszközök összetevő telepítve van a tartomán
 >
 >
 
-Tekintse meg a [DNS-eszközök a következő cikket a TechNet webhelyén](https://technet.microsoft.com/library/cc753579.aspx) DNS kezelésével kapcsolatos további információt.
+DNS kezelésével kapcsolatos további információkért tekintse meg a [DNS-eszközök a következő cikket a TechNet webhelyén](https://technet.microsoft.com/library/cc753579.aspx).
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 * [Azure AD tartományi szolgáltatások – első lépések útmutató](active-directory-ds-getting-started.md)

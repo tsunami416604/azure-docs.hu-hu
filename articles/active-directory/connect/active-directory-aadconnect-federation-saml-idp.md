@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6933d9f9951925888c92e35f6b1e2962cc29b0ce
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 74051ae8ad4ca7065561607feb13a2b98094fffc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801779"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333182"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0-Identitásszolgáltatóként (IdP) használata
 
@@ -47,7 +47,7 @@ Ez a dokumentum részletes követelményeket a protokoll és, hogy a SAML 2.0 id
 
 Javasoljuk, hogy ellenőrizze-e a SAML 2.0 identitásszolgáltató kimeneti üzenetek legyen olyan hasonló, a megadott minta nyomkövetések lehető. A megadott egyedi attribútum értékeinek is, használja az Azure AD-metaadatok ahol csak lehetséges. Ha elégedett a kimeneti üzenetek, tesztelheti a Microsoft kapcsolat elemző eszközt az alább ismertetett.
 
-Az Azure AD-metaadatok tölthető le: az URL-cím: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Az Azure AD-metaadatok tölthető le: az URL-cím: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
 A kínai ügyfelek számára az Office 365 Kína-specifikus példányát használja, a következő összevonási végpontot kell használni: [ https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml ](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>SAML protokoll követelmények

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 01a34eed3ea073deaaf449d28d7f8462f12b5a33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294309"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335281"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Az Application Insightsban Analytics bemutatása
 [Elemzés](app-insights-analytics.md) a hatékony keresési funkciója [Application Insights](app-insights-overview.md). Ezeken a lapokon a Log Analytics lekérdezési nyelv ismertetik.
@@ -180,7 +180,7 @@ További példák:
 
 
 ## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): válassza ki, nevezze át és számítási oszlopok
-Használjon [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) kívánt oszlopok kiválasztására:
+Használjon [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) kívánt oszlopok kiválasztására:
 
 ```AIQL
 

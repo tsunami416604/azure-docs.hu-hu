@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 7da3ae1ca0fc59b0d606a22e9c00b8e7b58674ba
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32178236"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335091"
 ---
 # <a name="what-is-appsource"></a>Mi az a AppSource
 AppSource lehetővé teszi, hogy a Microsoft-partnerek legyen a technológia és a szolgáltatásaikat felderíthető egy Microsoft által támogatott online kirakat ügyfelektől. Egy AppSource közzétevőként üzleti felhasználók AppSource található, próbálja meg, és üzleti SaaS-alkalmazásokhoz, valamint a megvalósítás szolgáltatásokat a meghajtó üzleti eredmények számítanak, és csökkentse idő-értéket is végezhetnek: 
@@ -76,7 +76,7 @@ Egyes AppSource kirakat alkalmazások is integrálása az Azure Active Directory
 | SaaS-alkalmazások (korábbi nevén webalkalmazások) | Előnyben részesített | Az Azure AD a zökkenőmentes felhasználói élmény és a legjobb minőségű érdeklődők meghajtók biztosításához célszerű |
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>Tábla: AppSource ajánlatokat, amelyek igénylik az Azure Active Directory-integráció
 
-Első lépésként javasoljuk, hogy **az Azure piactér közzétételi dedikált előfizetés beállítása*** engedélyezése elkülöníthetők a más kezdeményezések a munkáját. Ha még nem telepítette az alábbi eszközöket, majd ajánlott továbbá, hogy a következő eszközöket felvenni a fejlesztési környezetet: 
+Első lépésként javasoljuk, hogy **az Azure piactér közzétételi dedikált előfizetés beállítása** \* engedélyezése elkülöníthetők a más kezdeményezések a munkáját. Ha még nem telepítette az alábbi eszközöket, majd ajánlott továbbá, hogy a következő eszközöket felvenni a fejlesztési környezetet: 
 *   [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest "Azure - parancssori felület")
 *   [Az Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell – Azure")
 *   Tekintse át az elérhető eszközöket a [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/ "Azure - fejlesztői eszközök") lap

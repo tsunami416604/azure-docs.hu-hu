@@ -3,22 +3,24 @@ title: A jelszó-konfigurációjának Azure AD-katalógusában alkalmazáshoz va
 description: Ismerteti a problémás területek, hogy miként kell bejelentkezni a jelszót az egyszeri bejelentkezés beállítása az Azure AD-gyűjtemény alkalmazások kapcsolatos problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: f13f9fa54af13dbbe435a846be35c9e06fe65455
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 020a5ec2a6cea2854e46d9da8aa0a178695deb86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068758"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331905"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Jelszó az egyszeri bejelentkezés beállítása az Azure AD-gyűjtemény alkalmazáshoz való bejelentkezés problémák
 
@@ -81,7 +83,7 @@ Az útmutató bevezeti Önt [a hozzáférési Panel bővítmény telepítése cs
 
 ## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>A hozzáférési Panel az Internet Explorer hibaelhárítása
 
-Kövesse a [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-Troubleshoot) útmutatót a hozzáféréshez olyan diagnosztikai eszköz és részletes útmutatást tartalmaz az a bővítmény konfigurálása az Internet Explorer.
+Kövesse a [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) útmutatót a hozzáféréshez olyan diagnosztikai eszköz és részletes útmutatást tartalmaz az a bővítmény konfigurálása az Internet Explorer.
 
 ## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jelszó egyszeri bejelentkezés nem galéria alkalmazások konfigurálása
 

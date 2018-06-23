@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: cfc79b451eafe7dcdd0b8f4285f92714138260bb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: cf8de9e6061df59782a6edbccf47341222d256f4
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156126"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317907"
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
-Azure Active Directory (Azure AD) tesz közzé egy összevonási metaadat-dokumentum számára, amely konfigurálva van a biztonsági jogkivonatokat, amelyek az Azure AD kibocsát fogadására. Az összevonási metaadatok dokumentum formátuma leírtak a [Web Services összevonási Language (WS-Federation) 1.2-es verziója](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), amely kiterjeszti [a OASIS Security Assertion Markup Language (SAML) 2.0 metaadatok](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+Azure Active Directory (Azure AD) tesz közzé egy összevonási metaadat-dokumentum számára, amely konfigurálva van a biztonsági jogkivonatokat, amelyek az Azure AD kibocsát fogadására. Az összevonási metaadatok dokumentum formátuma leírtak a [Web Services összevonási Language (WS-Federation) 1.2-es verziója](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), amely kiterjeszti [OASIS Security Assertion Markup Language (SAML) 2.0-smetaadatai](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 
 ## <a name="tenant-specific-and-tenant-independent-metadata-endpoints"></a>Bérlői-specifikus és bérlői független metaadat-végpontok
 Az Azure AD bérlő-specifikus és bérlői független végpontok közzéteszi.

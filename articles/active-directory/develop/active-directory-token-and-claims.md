@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a12ac87eba14db4ff13868446cf8d14b10d1f5fb
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801864"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317826"
 ---
 # <a name="azure-ad-token-reference"></a>Az Azure AD-jogkivonatok referenciájából
 Azure Active Directory (Azure AD) bocsát ki biztonsági jogkivonatainak feldolgozása minden hitelesítési folyamat során számos különböző. Ez a dokumentum ismerteti a formátumát, a biztonsági jellemzőkkel és a különböző típusú lexikális elem tartalmát. 
@@ -113,7 +113,8 @@ Az Azure AD által kiállított jogkivonatokat aláírt iparági szabványos asz
 {
   "typ": "JWT",
   "alg": "RS256",
-  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+  "x5t": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
+  "kid": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
 }
 ```
 
@@ -129,12 +130,13 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 > [!TIP]
 > Próbálja meg egy böngészőben az URL-címet!
-> 
-> 
 
 A metaadat-dokumentum egy JSON-objektum tartalmazó számos hasznos információt tartalmaz, például a különböző végpontok OpenID Connect hitelesítési végrehajtásához szükséges hely. 
 
 Ezenkívül tartalmazza a `jwks_uri`, ennek révén a jogkivonatok aláírásához használt nyilvános kulcsok készlete helyét. A JSON-dokumentum található a `jwks_uri` tartalmazza az összes idő az adott pillanatban használja a nyilvános kulcs adatait. Az alkalmazás használhatja a `kid` jogcím válassza ki, melyik nyilvános kulcs ebben a dokumentumban már használta egy adott jogkivonat aláírása a JWT-fejlécben. Végezhet el az aláírás érvényesítése a megfelelő nyilvános kulccsal és a megadott algoritmus használatával.
+
+> [!NOTE]
+> Az 1.0-s verziójú végpont adja vissza, mind a `x5t` és `kid` jogcímeket. A `x5t` jogcím hiányzik a v2.0-jogkivonatokat. A v2.0-végpontra válaszol, a `kid` jogcímek. Következő lépésként javasoljuk a `kid` jogcímek a lexikális elem ellenőrzése.
 
 Aláírás-ellenőrzés végrehajtása a jelen dokumentum nem terjed – nincsenek számos nyílt forráskódú szalagtárak segít, ha szükséges.
 

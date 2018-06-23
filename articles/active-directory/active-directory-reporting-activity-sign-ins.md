@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
-ms.date: 05/17/2018
+ms.date: 06/21/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3c3737d3a98093f752c1248460a8084436e60941
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232358"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333598"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -41,7 +41,7 @@ Ez a témakör áttekintést nyújt a bejelentkezési tevékenységekről.
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
-* A biztonsági rendszergazda, a biztonsági olvasó vagy a jelentésolvasó szerepkörű felhasználók
+* A biztonsági rendszergazda, a biztonsági olvasó, a jelentés olvasó vagy az alkalmazás-rendszergazda a szerepkörben levő felhasználók
 * A globális rendszergazdák
 * Bármely (nem rendszergazda jogosultságú) felhasználó hozzáfér a saját bejelentkezéseihez 
 
@@ -63,16 +63,14 @@ A **Bejelentkezések** menüponton át vezet az út a bejelentkezési tevékenys
 ![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/61.png "Sign-in activity")
 
 
-A bejelentkezési napló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
+Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 
-- A bejelentkezés dátuma
-- A kapcsolódó felhasználó
-- Az alkalmazás, amelybe a felhasználó bejelentkezett
-- A bejelentkezési állapot
-- A kockázatészlelés állapota
-- A többtényezős hitelesítési (MFA-) követelmény állapota 
+- a kapcsolódó felhasználó
+- az alkalmazás, amelybe a felhasználó bejelentkezett
+- a bejelentkezési állapot
+- a bejelentkezési időpont
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/01.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/41.png "Sign-in activity")
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
@@ -80,94 +78,58 @@ A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szab
 
 További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített mezőket.
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/02.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/42.png "Sign-in activity")
 
-A listanézet egyik elemére kattintva megtekintheti az összes elérhető részletét vízszintes nézetben.
+A listanézet egyik elemére kattintva megtekintheti annak elérhető összes részletét.
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/03.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/43.png "Sign-in activity")
 
 
-## <a name="filter-sign-in-activities"></a>A bejelentkezési tevékenységek szűrése
+## <a name="filtering-sign-in-activities"></a>A bejelentkezési tevékenységek szűrése
 
-A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi alapértelmezett mezőkkel szűrheti a bejelentkezési adatokat:
+A jelentésben lévő adatok megfelelő szintű szűkítéséhez az alábbi mezőkkel szűrheti a bejelentkezési adatokat:
 
+- Időintervallum
 - Felhasználó
 - Alkalmazás
+- Ügyfél
 - Bejelentkezési állapot
-- A kockázatészlelés állapota
-- Dátum
+
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/44.png "Sign-in activity")
 
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/04.png "Sign-in activity")
-
-A **Felhasználó** szűrővel egy konkrét felhasználó nevét vagy egyszerű felhasználónevét (UPN) adhatja meg. 
-
-Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.  
-
-A **Bejelentkezési állapot** szűrővel az alábbi lehetőségek közül választhat:
-
-- Összes 
-- Sikeres
-- Hiba
-
-A **Kockázat észlelve** szűrővel az alábbi lehetőségek közül választhat:
-
-- Összes
-- Igen
-- Nem 
-
-
-A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
+Az **Időintervallum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
 Lehetséges értékek:
 
 - 1 hónap
 - 7 nap
 - 24 óra
-- Egyéni időintervallum
+- Egyéni
 
 Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
-Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatikusan hozzáadja a mezőket a szűrőlistához. Például az **Ügyfélalkalmazás** mező listához való hozzáadásával kap egy további szűrőlehetőséget, amellyel a következő szűrőket állíthatja be:
+A **Felhasználó** szűrővel egy konkrét felhasználó nevét vagy egyszerű felhasználónevét adhatja meg.
 
-- Böngésző      
-- Exchange ActiveSync (támogatott)               
-- Exchange ActiveSync (nem támogatott)
-- Más ügyfelek               
-    - IMAP
-    - MAPI
-    - Régebbi Office-ügyfelek
-    - POP
-    - SMTP
+Az **Alkalmazás** szűrővel egy konkrét alkalmazás nevét adhatja meg.
 
+Az **Ügyfél** szűrővel egy konkrét eszközhöz tartozó információt adhat meg.
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/12.png "Sign-in activity")
+A **Bejelentkezési állapot** szűrővel az alábbi szűrők egyikét választhatja ki:
 
-
-> [!TIP] 
-> Az alapértelmezett szűrők mellett a bejelentkezési nézethez adott összes további mező szűrőmező lesz.
-
-
-## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
-
-Letöltheti a bejelentkezési tevékenységek adatait, ha az Azure Portalon kívül szeretné használni őket. A letöltés gomb mellett az Azure Portalon létrehozhat egy szkriptet is az adatok letöltésére.  
-
-![Letöltés](./media/active-directory-reporting-activity-sign-ins/71.png "Letöltés")
-
-A **Letöltés** gombra kattintva létrejön egy CSV-fájl a legutóbbi 5 ezer rekordból. Ha nagyobb rugalmasságra van szüksége, használhat szkriptet. Kattintson a **parancsfájl** létrehoz egy PowerShell-parancsfájlt, amely tartalmazza az összes beállított szűrők. Töltse le és futtassa a parancsfájlt **felügyeleti üzemmód** a CSV-fájl létrehozásához. A technikai megvalósítás mellett a letölthető rekordok számát az [Azure Active Directory jelentésmegőrzési szabályzata](active-directory-reporting-retention.md) is korlátozza.  
-
+- Összes
+- Sikeres
+- Hiba
 
 
 ## <a name="sign-in-activities-shortcuts"></a>Bejelentkezési tevékenységek parancsikonjai
 
 Az Azure Active Directory mellett az Azure Portal két további lehetőséget biztosít a bejelentkezési tevékenységek adatainak elérésére:
 
-- Az identitásbiztonság védelmének áttekintése
-- Felhasználók
-- Csoportok
+- Felhasználók és csoportok
 - Vállalati alkalmazások
 
 
-### <a name="users-sign-ins-activities"></a>Felhasználók bejelentkezési tevékenységei
+### <a name="users-and-groups-sign-ins-activities"></a>Felhasználók és csoportok bejelentkezési tevékenységei
 
 A felhasználók bejelentkezési jelentésében szereplő információkból az alábbi kérdésekre kaphat választ:
 
@@ -177,39 +139,29 @@ A felhasználók bejelentkezési jelentésében szereplő információkból az a
 
 
 
-Az adatok megtekintését a felhasználók bejelentkezési grafikonjával kezdheti, amely **Az identitásbiztonság védelmének áttekintése** oldalon található. A felhasználók bejelentkezési grafikonja az összes felhasználó bejelentkezéseinek összesítését ábrázolja egy adott időszakban. Az alapértelmezett időszak 30 nap.
+Az adatok megtekintését a felhasználók bejelentkezési grafikonjával kezdheti, amely az **Áttekintés** szakaszban, a **Felhasználók és csoportok** területen.
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/06.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/45.png "Sign-in activity")
 
-A bejelentkezési grafikon egyik napjára kattintva áttekintést kap az adott nap bejelentkezési tevékenységeiről.
+A felhasználók bejelentkezési grafikonja az összes felhasználó bejelentkezéseinek összesítését ábrázolja egy adott időszakban. Az alapértelmezett időszak 30 nap.
 
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/46.png "Sign-in activity")
 
-A bejelentkezési tevékenységek listájának minden sora a következőkről ad információkat:
+A bejelentkezési grafikon egyik napjára kattintva részletes listát kap az adott nap bejelentkezési tevékenységeiről.
+
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/41.png "Sign-in activity")
+
+A bejelentkezési tevékenységek listájának minden sora részletes információkat tartalmaz a kijelölt bejelentkezésről:
 
 * Ki jelentkezett be?
+* Mi volt a kapcsolódó egyszerű felhasználónév?
 * Melyik alkalmazás volt a bejelentkezés célja?
-* Mi a bejelentkezés állapota?
-* Mi a bejelentkezés MFA-állapota?
+* Mi a bejelentkezéshez tartozó IP-cím?
+* Mi volt a bejelentkezés állapota?
 
-Az elemekre kattintva részletes információk érhetők el a bejelentkezési műveletről:
+A **Bejelentkezések** lehetőség teljes körű áttekintést biztosít az összes felhasználói bejelentkezésről.
 
-- Felhasználóazonosító
-- Felhasználó
-- Felhasználónév
-- Alkalmazásazonosító
-- Alkalmazás
-- Ügyfél
-- Hely
-- IP-cím
-- Dátum
-- Az MFA megadása kötelező
-- Bejelentkezési állapot
-
- 
-A **Felhasználók** oldalon teljes körű áttekintést kaphat az összes felhasználói bejelentkezésről a **Tevékenységek** szakaszban található **Bejelentkezések** elemre kattintva.
-
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/08.png "Sign-in activity")
-
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/51.png "Sign-in activity")
 
 
 
@@ -221,9 +173,9 @@ A bejelentkezési információk alkalmazás-központú nézetével az alábbi k�
 * Melyik a szervezet 3 legnépszerűbb alkalmazása?
 * Nemrégiben új alkalmazást adtam ki. Mennyire sikeres?
 
-Az adatok megtekintését *a cég az elmúlt 30 nap alatt legnépszerűbb 3 alkalmazásáról* szóló jelentéssel kezdheti az **Áttekintés** szakaszban, a **Vállalati alkalmazások** oldalon.
+Az adatok megtekintését a szervezet az elmúlt 30 nap alatt legnépszerűbb 3 alkalmazásáról szóló jelentéssel kezdheti az **Áttekintés** szakaszban, a **Vállalati alkalmazások** területen.
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/10.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/64.png "Sign-in activity")
 
 A 3 legnépszerűbb alkalmazásba való bejelentkezések heti összesítő grafikonja egy adott időszak során. Az alapértelmezett időszak 30 nap.
 
@@ -237,11 +189,12 @@ Igény esetén egy adott alkalmazást is kiemelhet.
 Az alkalmazáshasználati grafikon egyik napjára kattintva részletes listát kap a bejelentkezési tevékenységekről.
 
 
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/48.png "Sign-in activity")
 
 
 A **Bejelentkezések** lehetőség az alkalmazások összes bejelentkezési eseményének teljes körű áttekintését biztosítja.
 
-![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/11.png "Sign-in activity")
+![Bejelentkezési tevékenység](./media/active-directory-reporting-activity-sign-ins/49.png "Sign-in activity")
 
 
 

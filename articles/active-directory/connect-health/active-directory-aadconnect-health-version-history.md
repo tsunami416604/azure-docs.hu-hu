@@ -3,7 +3,7 @@ title: Azure AD Connect Health Version History (Az Azure AD Connect Health verzi
 description: Ez a dokumentum ismerteti a kiadások, az Azure AD Connect Health és mi ezeket a kiadásokat szerepel.
 services: active-directory
 documentationcenter: ''
-author: karavar
+author: zhiweiw
 manager: mtillman
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7147b282d9bcbf48391d60466c77d28eca396832
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3e3cebd47a259c7c297d6df0eaf76a350111f2e3
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294275"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319265"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja a kiadott szolgáltatások és verziókat.
@@ -30,7 +30,7 @@ Az Azure Active Directory ügyfélszolgálata rendszeresen frissíti az Azure AD
 
 **Ügynök frissítése:** 
 *   Az Azure AD Connect Health-ügynök az AD FS (3.1.2.0 verzió)  
-   1. Hibajavításokat tartalmaz, és a riasztások fokozása 
+   1. Ügynökfelügyeleti memória és a kapcsolódó riasztások nyelvű 3.0.244.0 gyorsjavítás
 
 
 ## <a name="may-2018"></a>2018. május

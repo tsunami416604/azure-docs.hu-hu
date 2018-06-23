@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Database szolgáltatásszintek |} Microsoft Docs
-description: Ismerje meg egyetlen szolgáltatásszintek és teljesítményszintek és tárolási méretek készlet adatbázisok.
+title: Az Azure SQL Database modellek megvásárlásáról |} Microsoft Docs
+description: További információk a modellt az Azure SQL Database megvásárlását.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6ca78596ad6c4ed2e14b127fe55a70bd2f55411a
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 0b38054ec623dc34daa3d18612e3356475655f35
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309889"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331325"
 ---
-# <a name="service-tier-purchasing-models-and-resources"></a>Szolgáltatási réteg beszerzési modellek és erőforrások 
+# <a name="azure-sql-database-purchasing-models-and-resources"></a>Az Azure SQL Database beszerzési modellek és erőforrások 
 
 A logikai kiszolgáló [Azure SQL Database](sql-database-technical-overview.md) két vásárlási modell számítási, tárolási és IO erőforrásokat kínál: a DTU-alapú alapjául szolgáló vásárlási modell és a vCore-alapú alapjául szolgáló vásárlási modell (előzetes verzió). 
 
@@ -31,7 +31,7 @@ A következő diagram és táblázat összehasonlítása és két vásárlási m
 |**Alapjául szolgáló vásárlási modell**|**Leírás**|**A legjobb**|
 |---|---|---|
 |DTU-alapú modell|Ez a modell egy számítási, tárolási és IO erőforrások csomagolt mértéken alapul. A teljesítményszintek különálló adatbázisok esetében DTU-k (adatbázis-tranzakciós egységek), rugalmas készletek esetében pedig rugalmas DTU-k formájában vannak meghatározva. Dtu és edtu-k kapcsolatban bővebben lásd: [Dtu és edtu-k](sql-database-what-is-a-dtu.md)?|Ajánlott az ügyfelek számára, akik egyszerű, előre konfigurált beállításai.| 
-|vCore alapuló modell|Ez a modell lehetővé teszi, hogy egymástól függetlenül válik a számítási és tárolási erőforrások. Lehetővé teszi az SQL Server Azure hibrid juttatás segítségével költséghatékony.|Az ügyfelek, akik a rugalmasságot, a vezérlési és az átláthatóság érték legmegfelelőbb.|
+|vCore-alapú modell|Ez a modell lehetővé teszi, hogy egymástól függetlenül válik a számítási és tárolási erőforrások. Lehetővé teszi az SQL Server Azure hibrid juttatás segítségével költséghatékony.|Az ügyfelek, akik a rugalmasságot, a vezérlési és az átláthatóság érték legmegfelelőbb.|
 ||||  
 
 ![árképzési modellt](./media/sql-database-service-tiers/pricing-model.png)

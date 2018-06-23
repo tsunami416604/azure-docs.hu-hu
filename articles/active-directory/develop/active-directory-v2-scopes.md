@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f001751c9401b88d9bfaf35444882d3d5ccbfef3
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 304f71efa009c3d8035d5707bcee73a9ac280e2a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157328"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318979"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Hatókörök, engedélyek és az Azure Active Directory v2.0-végponttól jóváhagyása
 Alkalmazásokat, amelyekbe beépül az Azure Active Directory (Azure AD) hajtsa végre az olyan engedélyezési modell, amely lehetőséget ad a felhasználók szabályozhatják, hogyan az alkalmazások is hozzáférjenek az adataikhoz. A használt engedélyezési modellt v2.0 végrehajtásának már frissítve van, és módosítja, hogy kapcsolatba kell lépnie egy alkalmazást az Azure AD. Ez a cikk ismerteti a engedélyezési modell, beleértve a hatókörök, engedélyek és beleegyezése főbb fogalmait és kifejezéseit.
@@ -61,7 +61,7 @@ Az OpenID Connect v2.0 végrehajtására van néhány jól meghatározott hatók
 ### <a name="openid"></a>openid
 Ha egy alkalmazás segítségével hajtja végre a bejelentkezési [OpenID Connect](active-directory-v2-protocols.md), azt kell igényelnie a `openid` hatókör. A `openid` hatókör jeleníti meg a munkahelyi fiók hozzájárulási oldalán a "Bejelentkezés" engedélyt, és a személyes Microsoft-fiók hozzájárulási oldalán "Profilját és alkalmazások és a Microsoft-fiókjával szolgáltatásokhoz való csatlakozás" engedélyt. Ezzel az engedéllyel, az alkalmazás a felhasználó egyedi azonosítóját fogadhat formájában a `sub` jogcímek. Az alkalmazásnak a hozzáférést a UserInfo végpontnak is biztosít. A `openid` hatóköre lehet használni a v2.0 jogkivonat végpontjához azonosító-jogkivonatokat, amely biztonságos HTTP-hívásokat az alkalmazások különböző összetevői közötti megszerzésére.
 
-### <a name="email"></a>e-mail
+### <a name="email"></a>e-mailben
 A `email` hatókör használható a `openid` hatókörben és bármely más. Az alkalmazásnak a hozzáférést biztosít a felhasználó elsődleges e-mail címéhez formájában a `email` jogcímek. A `email` jogcím egy jogkivonatba tartalmazza, csak akkor, ha egy e-mail-címmel társítva a felhasználói fiók, amely nem mindig a helyzet. Ha használja a `email` hatókör, kezelni olyan esetben, amikor az alkalmazás kell készíteni a `email` jogcímet a jogkivonat nem létezik.
 
 ### <a name="profile"></a>profil
@@ -148,12 +148,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Állapot | Leírás |
 | --- | --- | --- |
 | bérlő |Szükséges |A directory-bérlőt, amelyet az engedélyt. A megadott GUID vagy rövid név formátumban vagy általános hivatkozott felügyeltszolgáltatás "általános", a példában látható módon. |
 | client_id |Szükséges |Az alkalmazás azonosítója, amely a [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz hozzárendelni. |
 | redirect_uri |Szükséges |Az átirányítási URI, ha azt szeretné, hogy a válasz küldését az alkalmazások kezeléséhez. Ez pontosan egyeznie kell az átirányítási URI-k, az alkalmazás regisztrációs portálon regisztrált. |
-| állapot |Ajánlott |A kérelemhez, amely a token válaszul is visszaadott szerepel érték. Bármilyen tartalmat karakterlánc lehet. Az állapot használata az alkalmazás a felhasználói állapot információt kódolására, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a. |
+| state |Ajánlott |A kérelemhez, amely a token válaszul is visszaadott szerepel érték. Bármilyen tartalmat karakterlánc lehet. Az állapot használata az alkalmazás a felhasználói állapot információt kódolására, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a. |
 
 Az Azure AD ezen a ponton a bérlői rendszergazda bejelentkezhet a kérés teljesítéséhez szükséges. A rendszergazda felkéri, hogy hagyja jóvá az alkalmazás az app-regisztrációs portálon kért összes engedélyt.
 
@@ -167,7 +167,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | Paraméter | Leírás |
 | --- | --- | --- |
 | bérlő |A directory-bérlőhöz, amely engedéllyel rendelkezik az alkalmazás a kért, GUID formátumban. |
-| állapot |A kérelem is visszaad a biztonságijogkivonat-válaszban szereplő érték. Bármilyen tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
+| state |A kérelem is visszaad a biztonságijogkivonat-válaszban szereplő érték. Bármilyen tartalmat karakterlánc lehet. Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérést, például az oldal vagy nézet, amilyenek korábban voltak a használatos. |
 | admin_consent |Úgy lesz beállítva, **igaz**. |
 
 #### <a name="error-response"></a>Hibaválaszba
@@ -179,7 +179,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Paraméter | Leírás |
 | --- | --- | --- |
-| hiba |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
+| error |Egy hiba kód karakterlánc, amely segítségével besorolni a felmerülő hibákat, és reagálni hibákat is használható. |
 | error_description |Egy adott hibaüzenet, amelyek segítségével a fejlesztők hiba okának azonosításához. |
 
 A rendszergazda jóváhagyását végpont már a sikeres válasz érkezett, miután az alkalmazás a kért engedélyeket köszönhetően. Ezután a kívánt erőforráshoz tartozó jogkivonatot kérhet.

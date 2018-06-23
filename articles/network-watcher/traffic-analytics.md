@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: badd2d63ffaf8e88ff672087783f2bce150bc7c3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264990"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333394"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -267,9 +267,9 @@ Ahhoz, hogy a forgalom Analytics teljesen konfigurálása után érdemes feltár
 
 **keresni**
 
-- Forgalomeloszlás száma alhálózat, a Kiszolgálótopológia, a felső források az alhálózat felé irányuló forgalom beszélgetést az alhálózat, és alkalmazás-protokollokra beszélgetést felső felső rouge hálózatok.
+- Forgalom száma alhálózat, a Kiszolgálótopológia, a forgalom a alhálózathoz felső források terjesztési beszélgetést az alhálózat, és alkalmazás-protokollokra beszélgetést felső felső engedélyezetlen hálózatok.
     - Ismerik, mely alhálózat mely alhálózathoz beszélgetést. Ha váratlan beszélgetéseket, javíthatja ki a konfigurációt.
-    - Ha rouge hálózatok alhálózattal vannak beszélgetést, akkor is NSG-szabályok blokkolja a rosszindulatú hálózatok konfigurálásával javítható ki.
+    - Ha engedélyezetlen hálózatok alhálózattal vannak beszélgetést, is blokkolja a rosszindulatú hálózatok NSG-szabályok konfigurálásával javítható ki.
 - Az alhálózatok topológia paraméterek például Active/Inactive alhálózati, külső kapcsolatot, aktív folyamatok és az alhálózat rosszindulatú adatfolyamok kiválasztásának felső menüszalagján látható.
 - Az alhálózati topológia eloszlását mutatja a forgalom egy virtuális hálózathoz jelenítik adatfolyamok (engedélyezett/letiltott/bejövő/kimenő/Benign/esetleg kártékony) protokoll és az NSG-k, például:
 
@@ -277,10 +277,10 @@ Ahhoz, hogy a forgalom Analytics teljesen konfigurálása után érdemes feltár
 
 **keresni**
 
-Alkalmazásátjáró & terheléselosztóhoz, topológia forgalomeloszlás forgalom, felső felső források rouge beszélgetést az Alkalmazásátjáró & terheléselosztó és alkalmazás-protokollokra beszélgetést felső hálózatok. 
+Alkalmazásátjáró & terheléselosztóhoz, topológia forgalomeloszlás forgalom, felső felső források támadó beszélgetést az Alkalmazásátjáró & terheléselosztó és alkalmazás-protokollokra beszélgetést felső hálózatok. 
     
  - Ismerik, mely alhálózat mely Alkalmazásátjáró vagy a terheléselosztó beszélgetést. Ha váratlan beszélgetéseket, javíthatja ki a konfigurációt.
- - Ha rouge hálózatok az Alkalmazásátjáró vagy a terheléselosztó a rendszer beszélgetést, akkor is NSG-szabályok blokkolja a rosszindulatú hálózatok konfigurálásával javítható ki. 
+ - Ha engedélyezetlen hálózatok az Alkalmazásátjáró vagy a terheléselosztó a rendszer beszélgetést, is blokkolja a rosszindulatú hálózatok NSG-szabályok konfigurálásával javítható ki. 
 
     ![subnet-topology-showcasing-traffic-Distribution-to-a-Application-Gateway-subnet-with-regards-to-Flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 

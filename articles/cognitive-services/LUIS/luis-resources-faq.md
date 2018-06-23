@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: b6b333937e7c88f566fc401967b26cbd31ca158b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301502"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333615"
 ---
 # <a name="language-understanding-faq"></a>Nyelvi ismertetése – gyakori kérdések
 
@@ -127,7 +127,9 @@ Egy LUIS alkalmazást át egy másik Azure-előfizetéssel, exportálja a LUIS a
 Alapértelmezés szerint a LUIS app utterances naplózza a felhasználóktól. A naplófájlt, amely a felhasználók küldése az LUIS alkalmazásnak utterances letöltéséhez keresse fel **saját alkalmazások**, és kattintson a három pont a (***...*** ) a az átjáróra a listában az alkalmazást. Kattintson a **exportálása végpont Logs**. A napló egy vesszővel tagolt (CSV) fájl formátuma.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hogyan letilthatja az utterances naplózását?
-A felhasználó utterances naplózását úgy, hogy kikapcsolható `log=false` lekérdezéshez LUIS használ az ügyfélalkalmazás végpont URL-cím. Naplózási kikapcsolása azonban letiltja az LUIS alkalmazás képes utterances javaslat vagy alapuló felhasználói lekérdezések teljesítményének javítása. Ha `log=false` adatok-adatvédelmi megfontolások, mert nem feljegyzés az adott felhasználó utterances letöltését LUIS és ezek utterances segítségével fejleszteni az alkalmazást.
+A felhasználó utterances naplózását úgy, hogy kikapcsolható `log=false` lekérdezéshez LUIS használ az ügyfélalkalmazás végpont URL-cím. Azonban letiltja a naplózási kikapcsolása a javaslat utterances vagy, amely azon alapul, a teljesítmény javítása a LUIS app lehessen [aktív tanulási](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Ha `log=false` adatok-adatvédelmi megfontolások, mert nem feljegyzés az adott felhasználó utterances letöltését LUIS és ezek utterances segítségével fejleszteni az alkalmazást.
+
+Naplózási utterances csak tárolására. 
 
 ### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Miért nem? az összes, a naplózott végpont utterances
 Ha a napló használ előrejelzési elemzésre, nem rögzíthető lemezkép a teszt utterances a naplóban.

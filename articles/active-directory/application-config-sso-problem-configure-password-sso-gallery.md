@@ -3,22 +3,23 @@ title: A probléma jelszó egyszeri bejelentkezés az Azure AD-katalógusában a
 description: A gyakori problémák személyek arcfelismerési áttekinteni jelszó egyszeri bejelentkezés az Azure AD Application Gallery már szereplő alkalmazások konfigurálása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: f19b684a6c7426134844a2657b886280af2f061c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: 37c2a50a3aca281596a06e0d666edff05347f660
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067061"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331155"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>A probléma jelszó egyszeri bejelentkezés az Azure AD-katalógusában alkalmazás konfigurálása
 
@@ -40,13 +41,13 @@ A probléma megoldásához először próbálkozzon a következőkkel:
 
   * Ha bejelentkezési működik, akkor meg kell a felhasználót, kattintson a **hitelesítő adatainak frissítése** gombra a **alkalmazás csempe** a a **alkalmazások** szakasza a [alkalmazás-hozzáférés Panel](https://myapps.microsoft.com/) frissíteni a legutóbbi ismert működő felhasználónevet és jelszót.
 
-   * Ha Ön vagy egy másik rendszergazda hozzárendelve a felhasználó hitelesítő adatainak, található a felhasználó vagy csoport alkalmazás hozzárendelése navigáljon a **felhasználók és csoportok** lapon jelölje ki a hozzárendelés, kattintson az alkalmazás a **frissítéséhez szükséges hitelesítő adatokat** gombra.
+   * Ha Ön vagy egy másik rendszergazda hozzárendelve a felhasználó hitelesítő adatainak, található a felhasználó vagy csoport alkalmazás hozzárendelése navigáljon a **felhasználók és csoportok** az alkalmazás, a hozzárendelés ki, és kattintson a lapon **Frissítse a hitelesítő adatok** gombra.
 
--   Ha a felhasználó a saját hitelesítő adataikat, kérheti a felhasználótól **ellenőrizze, hogy ne feledje, hogy a jelszavát nem járt le az alkalmazás** , és ha igen, **lejárt jelszófrissítési** történő bejelentkezéssel az alkalmazás közvetlenül.
+-   Ha a felhasználó a saját hitelesítő adataikat, kérheti a felhasználótól **ellenőrizze, hogy ne feledje, hogy a jelszavát nem járt le az alkalmazás** , és ha igen, **lejárt jelszófrissítési** az alkalmazásnak a bejelentkezéssel közvetlenül.
 
-   * A jelszó frissítése az alkalmazásban, után kérjen a felhasználótól az a **hitelesítő adatainak frissítése** gombra a **alkalmazás csempe** a a **alkalmazások** szakasza a [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) frissíteni a legutóbbi ismert működő felhasználónevet és jelszót.
+   * A jelszó frissítése az alkalmazásban, után kérjen a felhasználótól az a **hitelesítő adatainak frissítése** gombra a **alkalmazás csempe** a a **alkalmazások** szakasza a [Alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) frissíteni a legutóbbi ismert működő felhasználónevet és jelszót.
 
-   * Ha Ön vagy egy másik rendszergazda hozzárendelve a felhasználó hitelesítő adatainak, található a felhasználó vagy csoport alkalmazás hozzárendelése navigáljon a **felhasználók és csoportok** lapon jelölje ki a hozzárendelés, kattintson az alkalmazás a **frissítéséhez szükséges hitelesítő adatokat** gombra.
+   * Ha Ön vagy egy másik rendszergazda hozzárendelve a felhasználó hitelesítő adatainak, található a felhasználó vagy csoport alkalmazás hozzárendelése navigáljon a **felhasználók és csoportok** az alkalmazás, a hozzárendelés ki, és kattintson a lapon **Frissítse a hitelesítő adatok** gombra.
 
 -   A felhasználó a hozzáférési panel bővítmény frissítése az alábbi lépéseket követve a [a hozzáférési Panel bővítmény telepítése](#how-to-install-the-access-panel-browser-extension) szakasz.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213141"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334326"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Konfigurálja automatikus felhasználói kialakítási munkanap
 
@@ -60,6 +60,8 @@ A Workday felhasználó kiépítési megoldás abban a pillanatban nyilvános el
 * A szervezetek, amely esetében szeretne csatlakozni, helyezze át, és kilépés a felhasználók számára egy vagy több Active Directory-erdők szinkronizálva, tartományok és szervezeti egységek alapján csak a módosítása adatokat talált a Workday HCM modulban (lásd: [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
 * Office 365 e-mailek használó
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="planning-your-solution"></a>A megoldás tervezése
 
@@ -362,8 +364,8 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozásakor |
 | **Felhasználói azonosítóját**    |  CN    |   |   Írt csak létrehozásakor |
 | **Csatlakozás ("@", [felhasználónév], a "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozásakor 
-| **Cserélje le (Left (cseréje (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
-| **Kapcsoló (\[aktív\],, "0", "True", "1")** |  AccountDisabled      |     | Hozzon létre + frissítése |
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozásakor |
+| **Kapcsoló (\[aktív\],, "0", "True", "1")** |  accountDisabled      |     | Hozzon létre + frissítése |
 | **Utónév**   | givenName       |     |    Hozzon létre + frissítése |
 | **Vezetéknév**   |   sorozatszám   |     |  Hozzon létre + frissítése |
 | **PreferredNameData**  |  displayName |     |   Hozzon létre + frissítése |
@@ -371,16 +373,16 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 | **SupervisoryOrganization**  | részleg  |     |  Hozzon létre + frissítése |
 | **ManagerReference**   | kezelő  |     |  Hozzon létre + frissítése |
 | **BusinessTitle**   |  cím     |     |  Hozzon létre + frissítése | 
-| **AddressLineData**    |  StreetAddress  |     |   Hozzon létre + frissítése |
+| **AddressLineData**    |  streetAddress  |     |   Hozzon létre + frissítése |
 | **Település**   |   l   |     | Hozzon létre + frissítése |
 | **CountryReferenceTwoLetter**      |   CO |     |   Hozzon létre + frissítése |
 | **CountryReferenceTwoLetter**    |  c  |     |         Hozzon létre + frissítése |
 | **CountryRegionReference** |  St     |     | Hozzon létre + frissítése |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Hozzon létre + frissítése |
 | **Irányítószám**  |   Irányítószám  |     | Hozzon létre + frissítése |
-| **PrimaryWorkTelephone**  |  TelephoneNumber   |     | Hozzon létre + frissítése |
+| **PrimaryWorkTelephone**  |  telephoneNumber   |     | Hozzon létre + frissítése |
 | **Fax**      | facsimileTelephoneNumber     |     |    Hozzon létre + frissítése |
-| **Mobileszköz**  |    Mobileszköz       |     |       Hozzon létre + frissítése |
+| **mobil**  |    mobil       |     |       Hozzon létre + frissítése |
 | **LocalReference** |  preferredLanguage  |     |  Hozzon létre + frissítése |                                               
 | **Kapcsoló (\[település\], "OU általános jogú felhasználók, OU = felhasználók, OU = alapértelmezett, OU = helyek, DC = = contoso, DC = com", "Dallas", "OU általános jogú felhasználók, OU = felhasználók, OU = Dallas, OU = helyek, DC = = contoso, DC = com", "Austin", "OU általános jogú felhasználók, OU = Felhasználók, OU = Austin, OU = helyek, DC = = contoso, DC = com ","Seattle"," OU általános jogú felhasználók, OU = felhasználók, OU = budapesti, OU = helyek, DC = = contoso, DC = com ","Londoni"," OU általános jogú felhasználók, OU = felhasználók, OU = London, OU = helyek, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Hozzon létre + frissítése |
   
@@ -543,14 +545,13 @@ A következő szakaszok ismertetik a beállítás csak felhőalapú felhasznál�
 
    * Ha a kapcsolat ellenőrzése sikeres, kattintson a **mentése** gombra az oldal tetején. Ha nem sikerül, ellenőrizze, hogy a Workday URL-cím és a hitelesítő adatok érvényesek a Workday.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>2. lépés: Konfigurálja a attribútum-leképezésekhez 
 
 Ebben a szakaszban konfigurál, hogyan felhasználói adatáramlás a WORKDAY-ből az Azure Active Directory csak felhőalapú felhasználók számára.
 
-1.  A kiépítés lapon a **hozzárendelések**, kattintson a **munkavállalók szinkronizálása az Azure AD**.
+1. A kiépítés lapon a **hozzárendelések**, kattintson a **munkavállalók szinkronizálása az Azure AD**.
 
-2.   Az a **forrás objektum hatóköre** mezőjét, kiválaszthatja, mely a Workday felhasználócsoportokhoz üzembe helyezéséhez az Azure AD Attribútumalapú szűrők csoportja meghatározásával hatókörében kell lennie. Az alapértelmezett hatóköre "minden felhasználó a Workday". Példa szűrők:
+2. Az a **forrás objektum hatóköre** mezőjét, kiválaszthatja, mely a Workday felhasználócsoportokhoz üzembe helyezéséhez az Azure AD Attribútumalapú szűrők csoportja meghatározásával hatókörében kell lennie. Az alapértelmezett hatóköre "minden felhasználó a Workday". Példa szűrők:
 
    * Példa: Hatókör felhasználók munkavégző azonosítók 1000000 és 2000000 között
 
@@ -566,9 +567,9 @@ Ebben a szakaszban konfigurál, hogyan felhasználói adatáramlás a WORKDAY-b�
 
       * Operátort: Nem NULL
 
-3.  Az a **cél objektum műveletek** mezőjét, szűrheti az globálisan, milyen műveleteket kell elvégezni az Azure AD használata engedélyezett. **Hozzon létre** és **frissítés** leggyakoribb.
+3. Az a **cél objektum műveletek** mezőjét, szűrheti az globálisan, milyen műveleteket kell elvégezni az Azure AD használata engedélyezett. **Hozzon létre** és **frissítés** leggyakoribb.
 
-4.  Az a **attribútum-hozzárendelések** szakaszban meghatározhatja egyes Workday attribútumok az Active Directory-attribútumok hozzárendelését.
+4. Az a **attribútum-hozzárendelések** szakaszban meghatározhatja egyes Workday attribútumok az Active Directory-attribútumok hozzárendelését.
 
 5. Kattintson az egy meglévő címtárattribútum-leképezésben frissíti a **új leképezés hozzáadása** hozzáadása új leképezéseket a képernyő alján. Az egyes címtárattribútum-leképezésben támogatja ezeket a tulajdonságokat:
 
@@ -602,7 +603,7 @@ Ebben a szakaszban konfigurál, hogyan felhasználói adatáramlás a WORKDAY-b�
 ### <a name="part-3-start-the-service"></a>3. lépés: A szolgáltatás indítása
 1-2 részek elvégzése után, megkezdheti a létesítési szolgáltatás.
 
-1.  Az a **kiépítési** lapján állítsa be a **kiépítési állapot** való **a**.
+1. Az a **kiépítési** lapján állítsa be a **kiépítési állapot** való **a**.
 
 2. Kattintson a **Save** (Mentés) gombra.
 
@@ -612,7 +613,6 @@ Ebben a szakaszban konfigurál, hogyan felhasználói adatáramlás a WORKDAY-b�
 
 5. Fejeződött be, akkor fog kiírni, összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
 
-
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Az e-mail címet a Workday visszaírási konfigurálásával
 Kövesse az alábbi utasításokat a felhasználó e-mail címet az Azure Active Directoryból a Workday visszaírása konfigurálásához.
 
@@ -620,21 +620,21 @@ Kövesse az alábbi utasításokat a felhasználó e-mail címet az Azure Active
 
 **Az Active Directory kiépítésére konfigurálása a Workday:**
 
-1.  Nyissa meg a következőt: <https://portal.azure.com>
+1. Nyissa meg a következőt: <https://portal.azure.com>
 
-2.  Válassza ki a bal oldali navigációs sáv **Azure Active Directoryban**
+2. Válassza ki a bal oldali navigációs sáv **Azure Active Directoryban**
 
-3.  Válassza ki **vállalati alkalmazások**, majd **összes alkalmazás**.
+3. Válassza ki **vállalati alkalmazások**, majd **összes alkalmazás**.
 
-4.  Válassza ki **alkalmazás hozzáadása**, majd jelölje be a **összes** kategóriát.
+4. Válassza ki **alkalmazás hozzáadása**, majd jelölje be a **összes** kategóriát.
 
-5.  Keresse meg **Workday visszaírási**, és adja hozzá az alkalmazás a gyűjteményből.
+5. Keresse meg **Workday visszaírási**, és adja hozzá az alkalmazás a gyűjteményből.
 
-6.  Az alkalmazás hozzáadása és az alkalmazás részletei képernyőn látható, jelölje be az után **kiépítés**
+6. Az alkalmazás hozzáadása és az alkalmazás részletei képernyőn látható, jelölje be az után **kiépítés**
 
-7.  Módosítsa a **kiépítés** **mód** való **automatikus**
+7. Módosítsa a **kiépítés** **mód** való **automatikus**
 
-8.  Fejezze be a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
+8. Fejezze be a **rendszergazdai hitelesítő adataival** szakasz az alábbiak szerint:
 
    * **Rendszergazda felhasználóneve** – adja meg a Workday-integrációs rendszerfiók felhasználóneve fűzött bérlői tartománynévvel. Hasonlóan kell kinéznie: username@contoso4
 
@@ -646,24 +646,22 @@ Kövesse az alábbi utasításokat a felhasználó e-mail címet az Azure Active
 
    * Kattintson a **kapcsolat tesztelése** gombra. Ha a kapcsolat ellenőrzése sikeres, kattintson a **mentése** gombra az oldal tetején. Ha nem sikerül, ellenőrizze, hogy a Workday URL-cím és a hitelesítő adatok érvényesek a Workday.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>2. lépés: Konfigurálja a attribútum-leképezésekhez 
-
 
 Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből az Active Directory.
 
-1.  A kiépítés lapon a **hozzárendelések**, kattintson a **szinkronizálás Azure AD-felhasználók Workday**.
+1. A kiépítés lapon a **hozzárendelések**, kattintson a **szinkronizálás Azure AD-felhasználók Workday**.
 
-2.  Az a **forrás objektum hatóköre** mezőjét, igény szerint szűrheti az Azure Active Directory mely felhasználócsoportokhoz kell rendelkeznie az e-mail címmel visszaírását Workday. Az alapértelmezett hatóköre "az Azure AD-minden felhasználó". 
+2. Az a **forrás objektum hatóköre** mezőjét, igény szerint szűrheti az Azure Active Directory mely felhasználócsoportokhoz kell rendelkeznie az e-mail címmel visszaírását Workday. Az alapértelmezett hatóköre "az Azure AD-minden felhasználó". 
 
-3.  Az a **attribútum-hozzárendelések** szakaszban meghatározhatja egyes Workday attribútumok az Active Directory-attribútumok hozzárendelését. Alapértelmezés szerint az e-mail cím társítás van. Azonban a hozzá tartozó azonosító frissíteni kell, hogy a Workday a megfelelő bejegyzések az Azure AD-ben olyan felhasználókkal vesse össze. Egy népszerű egyező módja, hogy szinkronizálja a Workday munkavégző vagy extensionAttribute1-15 alkalmazott azonosítója az Azure ad-ben, majd ezt az attribútumot az Azure AD vissza a Workday felhasználók kereséséhez.
+3. Az a **attribútum-hozzárendelések** szakaszban meghatározhatja egyes Workday attribútumok az Active Directory-attribútumok hozzárendelését. Alapértelmezés szerint az e-mail cím társítás van. Azonban a hozzá tartozó azonosító frissíteni kell, hogy a Workday a megfelelő bejegyzések az Azure AD-ben olyan felhasználókkal vesse össze. Egy népszerű egyező módja, hogy szinkronizálja a Workday munkavégző vagy extensionAttribute1-15 alkalmazott azonosítója az Azure ad-ben, majd ezt az attribútumot az Azure AD vissza a Workday felhasználók kereséséhez.
 
-4.  A hozzárendelések mentéséhez kattintson **mentése** attribútum-leképezés szakasz elején.
+4. A hozzárendelések mentéséhez kattintson **mentése** attribútum-leképezés szakasz elején.
 
 ### <a name="part-3-start-the-service"></a>3. lépés: A szolgáltatás indítása
 1-2 részek elvégzése után, megkezdheti a létesítési szolgáltatás.
 
-1.  Az a **kiépítési** lapján állítsa be a **kiépítési állapot** való **a**.
+1. Az a **kiépítési** lapján állítsa be a **kiépítési állapot** való **a**.
 
 2. Kattintson a **Save** (Mentés) gombra.
 
@@ -672,7 +670,6 @@ Ebben a szakaszban konfigurál, hogy felhasználói adatáramlás a WORKDAY-ből
 4. Az egyes szinkronizálási események lehet megtekinteni a **naplók** fülre. **[Olvassa el a felügyeleti naplók az üzembe helyezési jelentéskészítés – útmutató részletes utasításokat olvashat](../active-directory-saas-provisioning-reporting.md)**
 
 5. Fejeződött be, akkor fog kiírni, összefoglaló jelentést a **kiépítési** lapon, a lent látható módon.
-
 
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>A Workday felhasználói attribútumok listáját testreszabása
 Alkalmazások telepítése az Active Directory és az Azure AD egyaránt tartalmazza az alapértelmezett Workday felhasználói attribútumok listáját a munkanapok közül választhat. Azonban a fájlok nem átfogó. Munkanapok támogatja a több száz lehetséges felhasználói attribútumok, amelyek lehet standard vagy a Workday-bérlő egyedi. 
@@ -799,15 +796,9 @@ Ehhez az szükséges, használjon [Workday Studio](https://community.workday.com
 
 * Egy vizsgálati naplóit Azure AD-bérlő található, az Európai Unió nem jelenik meg az előző problémát sikerült megoldani. Azonban további ügynök konfigurálni kell a Azure AD-bérlőt az EU-ban. További információkért lásd: [3. rész: a helyszíni-szinkronizálási ügynök konfigurálása](#Part 3: Configure the on-premises synchronization agent)
 
-
 ## <a name="managing-personal-data"></a>Személyes adatok kezelése
 
 A munkanapok kiépítési megoldás az Active Directory szükséges egy szinkronizálási ügynököt egy tartományhoz csatlakozó kiszolgálón kell telepíteni, és az ügynök a Windows Eseménynapló személyazonosításra alkalmas adatokat tartalmazó naplókat hoz létre.
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]  Ha a... hivatkozások a cikk a hierarchia struktúráját megfelelő /
-
-> [!NOTE]
-> Ha érdekli a megtekintése, vagy törölje a személyes adatok, tekintse át a Microsoft útmutatást a [Windows adatok tulajdonos kérelmek esetében a GDPR](https://review.docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) hely. Ha GDPR kapcsolatos általános információkat keres, tekintse meg a [GDPR szakasza a megbízható portálon](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 ## <a name="next-steps"></a>További lépések
 

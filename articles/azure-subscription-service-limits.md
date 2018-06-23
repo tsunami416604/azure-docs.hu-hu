@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700192"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318962"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum mutatja a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem fedi le az összes Azure-szolgáltatásokhoz. Adott idő alatt a lista lesz kibontható vagy frissíteni, amelyek több, a platform.
@@ -40,8 +40,7 @@ Az alábbi korlátok új tábla összes különbséget korlátok megfelelően az
 
 > [!NOTE]
 > Fontos, hogy Azure erőforráscsoport-sablonok az erőforrásokra vonatkozó kvótákat /-régióban elérhető-e az előfizetés, és nem előfizetésenként, mert a szolgáltatás felügyeleti kvóták emelje ki. Most használja vCPU kvóták példaként. Ha a kvóta növelését Vcpu támogatása van szüksége, döntse el, melyik régióban, és végezze el az összegek és régiók, amelyet egy adott kérelem az Azure-erőforráscsoport vCPU kvóták kívánt hány Vcpu szeretné. Ezért ha 30 Vcpu, Nyugat-Európában használatával futtassa az alkalmazást nem kell, kifejezetten igényeljen 30 Vcpu, Nyugat-Európában. Azonban Ön nem rendelkezik a vCPU kvóta növelése más régióban – csak Nyugat-Európában fog rendelkezni a 30-vCPU kvótát.
-> <!-- -->
-> Ennek köszönhetően Ön érdemes figyelembe venni annak eldöntése, az Azure-erőforráscsoport kvóták kell lennie a munkaterheléshez bármely egy régióban, és minden régióban, amelybe a központi telepítés tervezi, hogy mennyi kérelem. Lásd: [telepítési problémák elhárítása](resource-manager-common-deployment-errors.md) további segítséget itt találhat az aktuális kvóták adott régióban felderítéséhez.
+> <!-- --> Ennek köszönhetően Ön érdemes figyelembe venni annak eldöntése, az Azure-erőforráscsoport kvóták kell lennie a munkaterheléshez bármely egy régióban, és minden régióban, amelybe a központi telepítés tervezi, hogy mennyi kérelem. Lásd: [telepítési problémák elhárítása](resource-manager-common-deployment-errors.md) további segítséget itt találhat az aktuális kvóták adott régióban felderítéséhez.
 >
 >
 
@@ -325,7 +324,7 @@ További kapcsolatos részletesebb felügyeletét, például a dokumentum méret
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>SQL-adatbázis korlátok
-SQL adatbázis-korlátok, lásd: [SQL adatbázis erőforrás korlátok](sql-database/sql-database-resource-limits.md).
+SQL adatbázis-korlátok, lásd: [SQL adatbázis erőforrás-korlátozások az önálló adatbázisok](sql-database/sql-database-vcore-resource-limits-single-databases.md) és [SQL adatbázis erőforrás korlátok rugalmas készletek és a készletezett adatbázisok](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Az SQL Data Warehouse korlátok
 Az SQL Data Warehouse-korlátok, lásd: [SQL Data Warehouse erőforrás korlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).

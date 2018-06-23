@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
-ms.openlocfilehash: 19c704d965ff3e2fc9ac8c5b623aeb386cb0b974
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: be5089b825a873006696eb074ed4355f415e680b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2018
-ms.locfileid: "23886182"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319523"
 ---
 ## <a name="setting-up-powershell"></a>PowerShell beállítása
 Azure PowerShell használata előtt kövesse az alábbi lépéseket.
@@ -56,7 +56,7 @@ Megtekintheti az alábbihoz hasonló.
 ### <a name="set-your-azure-account-and-subscription"></a>Az Azure-fiók és -előfizetés beállítása
 Ha még nem rendelkezik Azure-előfizetéssel, aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
-Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezt a parancsot.
+Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezzel a paranccsal.
 
     Add-AzureAccount
 

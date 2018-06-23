@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directoryval integrált Cisco Cloudlock |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a Cisco Cloudlock között.
+title: 'Oktatóanyag: Azure Active Directory integrációja a felhő biztonsági háló |} Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és a felhő biztonsági háló között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,38 +8,37 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 549e8810-1b3b-4351-bf4b-f07de98980d1
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2491c0887cdcb47e6ce8f686835042bc23092df8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5ec729c6f82cec503cae2fa057f5842849004ac7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220464"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318245"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloudlock"></a>Oktatóanyag: Azure Active Directoryval integrált Cisco Cloudlock
+# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Oktatóanyag: Azure Active Directory integrációja a biztonsági szerkezete
 
-Ebben az oktatóanyagban elsajátíthatja Cisco Cloudlock integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja a felhő biztonsági háló integrálása az Azure Active Directory (Azure AD).
 
-Cisco Cloudlock integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+A felhő biztonsági háló integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
 
-- Az Azure AD, aki hozzáfér a Cisco Cloudlock szabályozhatja.
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni aláírt a Cisco Cloudlock (egyszeri bejelentkezés).
+- Az Azure AD, aki hozzáfér a felhő biztonsági háló szabályozhatja.
+- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett a felhő biztonsági hálóhoz (egyszeri bejelentkezés).
 - A fiók egyetlen központi helyen – az Azure-portálon kezelheti.
 
 Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Cisco Cloudlock, a következőkre van szükség:
+Az Azure AD-integrációs konfigurálni a felhő biztonsági háló, a következőkre van szükség:
 
 - Az Azure AD szolgáltatásra
-- A Cisco Cloudlock egyszeri bejelentkezés engedélyezve van az előfizetés
+- A felhő biztonsági háló egyszeri bejelentkezés engedélyezett előfizetés
 
 > [!NOTE]
 > Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
@@ -52,13 +51,13 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
 
-1. Cisco Cloudlock hozzáadása a gyűjteményből
+1. A felhő biztonsági háló hozzáadása a gyűjteményből
 2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
 
-## <a name="adding-cisco-cloudlock-from-the-gallery"></a>Cisco Cloudlock hozzáadása a gyűjteményből
-Az Azure AD integrálása a Cisco Cloudlock konfigurálásához kell hozzáadnia a Cisco Cloudlock a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>A felhő biztonsági háló hozzáadása a gyűjteményből
+A felhő biztonsági háló integrálása az Azure AD konfigurálásához kell hozzáadnia a felhő biztonsági háló a gyűjteményből a felügyelt SaaS-alkalmazások listájára.
 
-**Cisco Cloudlock hozzáadása a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Adja hozzá a felhő biztonsági háló a gyűjteményből, hajtsa végre az alábbi lépéseket:**
 
 1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
 
@@ -72,41 +71,41 @@ Az Azure AD integrálása a Cisco Cloudlock konfigurálásához kell hozzáadnia
 
     ![Az új alkalmazás gomb][3]
 
-4. Írja be a keresőmezőbe, **Cisco Cloudlock**, jelölje be **Cisco Cloudlock** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. Írja be a keresőmezőbe, **a felhő biztonsági háló**, jelölje be **a felhő biztonsági háló** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Cisco Cloudlock az eredménylistában](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_addfromgallery.png)
+    ![A felhő biztonsági hálót az eredménylistában](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD az egyszeri bejelentkezés Cisco Cloudlock "Britta Simon" nevű tesztfelhasználó alapján.
+Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezést a felhő biztonsági háló "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a Cisco Cloudlock tartozó felhasználót a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó a Cisco Cloudlock közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó, a felhő biztonsági háló a felhasználó Azure AD-ben. Ez azt jelenti egy Azure AD-felhasználó és a kapcsolódó felhasználó a felhő biztonsági háló közötti kapcsolat kapcsolatot kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést a Cisco Cloudlock tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezést a felhő biztonsági hálóval tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
 
 1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
 2. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Cisco Cloudlock tesztfelhasználó létrehozása](#create-a-cisco-cloudlock-test-user)**  - való Britta Simon egy megfelelője a Cisco Cloudlock, amely csatolva van a felhasználó az Azure AD-ábrázolását.
+3. **[A felhő biztonsági háló tesztfelhasználó létrehozása](#create-a-the-cloud-security-fabric-test-user)**  – egy megfelelője a Britta Simon rendelkezik, amely csatolva van a felhasználó az Azure AD-ábrázolását, a felhő biztonsági háló.
 4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és a Cisco Cloudlock alkalmazásban egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és az a felhő biztonsági Fabric-alkalmazás az egyszeri bejelentkezés konfigurálása.
 
-**Cisco Cloudlock konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**A felhő biztonsági hálóval konfigurálása az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **Cisco Cloudlock** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az Azure portálon a a **a felhő biztonsági háló** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+1. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+
     ![Egyszeri bejelentkezés párbeszédpanel](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_samlbase.png)
 
-3. Az a **Cisco Cloudlock tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **a felhő biztonsági háló tartomány és az URL-címek** területen tegye a következőket:
 
-    ![Cisco Cloudlock tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
+    ![A felhő biztonsági háló tartomány és az URL-címeket az egyszeri bejelentkezés információk](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. Az a **bejelentkezési URL-cím** szövegmezőhöz URL-címet írja be:
     | |
@@ -114,28 +113,24 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
-    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: 
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe:
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
     | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
 
-    > [!NOTE] 
-    > Az azonosító értéke nincs valós. Frissítse az értéket a tényleges azonosítóval. Ügyfél [Cisco Cloudlock ügyfél-támogatási csoport](mailto:support@cloudlock.com) az értéket be kell olvasni. 
- 
+    > [!NOTE]
+    > Az azonosító értéke nincs valós. Frissítse az értéket a tényleges azonosítóval. Ügyfél [a felhő biztonsági háló ügyfél-támogatási csoport](mailto:support@cloudlock.com) az értéket be kell olvasni. 
+
 4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/ciscocloudlock-tutorial/tutorial_general_400.png)
 
-6. Egyszeri bejelentkezés konfigurálása **Cisco Cloudlock** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Cisco Cloudlock támogatási csoport](mailto:support@cloudlock.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Egyszeri bejelentkezés konfigurálása **a felhő biztonsági háló** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [a Felhőháló biztonsági támogatási csoport](mailto:support@cloudlock.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -168,26 +163,26 @@ Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta
     c. Válassza ki a **megjelenítése jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="create-a-cisco-cloudlock-test-user"></a>Cisco Cloudlock tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Cisco Cloudlock Britta Simon nevű felhasználót hoz létre. Együttműködve [Cisco Cloudlock támogatási csoport](mailto:support@cloudlock.com) a felhasználók hozzáadása a Cisco Cloudlock platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
+### <a name="create-a-the-cloud-security-fabric-test-user"></a>A felhő biztonsági háló tesztfelhasználó létrehozása
+
+Ebben a szakaszban a felhő biztonsági háló Britta Simon nevű felhasználó létrehozása. Együttműködve [a Felhőháló biztonsági támogatási csoport](mailto:support@cloudlock.com) a felhasználók hozzáadása a a felhő biztonsági háló platform. Felhasználók kell létrehoznia és aktiválni az egyszeri bejelentkezés használata előtt. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Rendelje hozzá az Azure AD-teszt felhasználó
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Cisco Cloudlock Azure egyszeri bejelentkezéshez használandó.
+Ebben a szakaszban Britta Simon hozzáférést biztosít a felhő biztonsági háló által használandó Azure egyszeri bejelentkezés engedélyezése.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
-**Cisco Cloudlock Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+**A felhő biztonsági háló Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
 
 1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Felhasználó hozzárendelése][201]
 
-2. Az alkalmazások listában válassza ki a **Cisco Cloudlock**.
+2. Az alkalmazások listában válassza ki a **a felhő biztonsági háló**.
 
-    ![Az alkalmazások listáját a Cisco Cloudlock hivatkozás](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_app.png)  
+    ![Az alkalmazások listáját a felhő biztonsági háló hivatkozásra](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_app.png)  
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
@@ -202,20 +197,18 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
 
-Ha a hozzáférési panelen a Cisco Cloudlock csempére kattint, akkor kell beolvasása automatikusan bejelentkezett a Cisco Cloudlock alkalmazásba.
-A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md). 
+Ha a hozzáférési panelen a felhő biztonsági háló csempére kattint, meg kell beolvasása automatikusan bejelentkezett az a felhő biztonsági Fabric-alkalmazás számára.
+A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáférési Panel bemutatása](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -230,4 +223,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/ciscocloudlock-tutorial/tutorial_general_201.png
 [202]: ./media/ciscocloudlock-tutorial/tutorial_general_202.png
 [203]: ./media/ciscocloudlock-tutorial/tutorial_general_203.png
-

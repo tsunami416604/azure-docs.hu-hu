@@ -3,22 +3,23 @@ title: Hogyan kell megadni az engedélyeket az egyéni által fejlesztett alkalm
 description: Hogyan engedélyezze, hogy az egyéni által fejlesztett alkalmazás használatával, az Azure AD portálon vagy az egy URL-paramétert
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 0f13efd5e629bde592a3ab3a3e2db4a22180b5bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: 3310a08047700a577c5c6cbada90e575fcd12089
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26611662"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333704"
 ---
 # <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Hogyan kell megadni az engedélyeket az egyéni által fejlesztett alkalmazás
 
@@ -38,7 +39,7 @@ Alternatív megoldásként, hogyan hozhat létre a kérelmek *login.microsoftonl
 
 * Hitelesítési kérelmek alakzatot hozzáfűzése *& Rákérdezés hozzájárulási =* igénylő felhasználók számára, hogy hozzájárulás minden alkalommal, amikor a hitelesítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzájárulás és AzureAD alkalmazások integrálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 

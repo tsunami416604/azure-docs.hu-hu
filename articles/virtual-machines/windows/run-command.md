@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284964"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332714"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-parancsfájlok futtathatók a Windows virtuális gép a parancs futtatása
 
@@ -23,7 +23,7 @@ Futtassa a parancsot használja egy Windows Azure VM rendszerhéj PowerShell par
 
 A virtuális gépek eléréséhez használható több lehetőség áll rendelkezésre. A parancs futtatása távolról használata az ügynököt a virtuális gépek parancsfájlok is futtathatók. Futtatási parancs is használható az Azure portálon keresztül [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ez a lehetőség akkor hasznos, ha szeretné, hogy egy parancsfájl witin egy virtuális gép futtatásához, és egyik hibaelhárítása, és javíthatja az RDP nem rendelkező virtuális gép egyetlen módja vagy SSH-port nyissa meg a nem megfelelő hálózati vagy a rendszergazda felhasználó miatt az összes forgatókönyv konfiguráció.
+Ez a lehetőség akkor hasznos, ha szeretné, hogy a virtuális gépekről parancsfájl futtatása, és egyik hibaelhárítása, és javíthatja az RDP nem rendelkező virtuális gép egyetlen módja vagy SSH-port helytelen hálózati vagy a rendszergazda felhasználó miatt nyissa meg az összes forgatókönyv konfiguráció.
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -33,9 +33,10 @@ A következő korlátozások vonatkoznak a parancs futtatása használatakor:
 * Parancsfájl futtatása a minimális ideje pedig körülbelül 20 másodperc
 * A Windows rendszert futtató parancsfájlok
 * Egyszerre csak egy parancsprogram futtathatnak.
-* Parancsfájlok (interaktív módban) információt kérő nem támogatottak.
 * Nem lehet megszakítani a parancsfájl futtatását
 * A maximális egy parancsfájlt ideje 90 perc, azt követően a rendszer túllépi az időkorlátot
+
+**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
 
 ## <a name="run-a-command"></a>Parancs futtatása
 

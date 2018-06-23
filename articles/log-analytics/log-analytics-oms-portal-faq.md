@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: cb48d6f61991fd16112b3507a413946ec01b4871
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1e0fd56b6e420103b4f786985f71a84737db642d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851278"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333632"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Átmenet OMS-portálon az Azure-portál a Log Analyticshez felhasználók gyakori kérdések
 Naplóelemzési kezdetben a saját portál néven az OMS-portálon kezelése a configuration és használt összegyűjtött adatok elemzése.  Ezen a portálon az összes funkciót át lett helyezve az Azure portálon ahol továbbra is ki kell alakítani.
@@ -28,7 +28,7 @@ Ez a cikk a felhasználók számára, hogy ez a változás gyakori kérdésekre 
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Hol található az Azure Log Analytics?
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.  Kattintson a **minden szolgáltatás**, írja be az erőforrások listájához, **Naplóelemzési**. Válassza ki **Naplóelemzési** , és válassza a munkaterületen. A munkaterület az összefoglalás lapon jelenik meg.
 
-![Log Analytics-munkaterület](media/log-analytics-new-portal/log-analytics.png)
+![Azure-beli monitorozási munkaterület](media/log-analytics-new-portal/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Hogyan kezeli az engedélyeket?
 Ha az Azure-portálon a Naplóelemzési munkaterületet nem rendelkezik hozzáféréssel, szeretné-e a engedélyeik konfigurálása [Azure szerepköralapú hozzáférés-](../active-directory/role-based-access-control-configure.md). A munkaterület engedélyek kezelése, lásd: [munkaterületek kezelése](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [Ismerkedés a szerepkörök, engedélyek és biztonsági Azure megfigyelővel](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
@@ -39,7 +39,7 @@ Az Azure portálon munkaterületek listájának megtekintéséhez kattintson **H
 ![– Áttekintés oldalra](media/log-analytics-new-portal/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Hol található a áttekintése lapon?
-Az OMS-portálon a fő képernyőn megjelenik az összes telepíteni a munkaterületet, és az Ön által létrehozott egyéni nézetek a felügyeleti megoldásokra csempék. Az Azure portálon, ezt nevezik a **áttekintése** lap. A munkaterület az Azure portálon, vagy válassza ki **áttekintése** a menüben, vagy kattintson a **áttekintése** gomb fő lapján.
+Az OMS-portálon a fő képernyőn megjelenik az összes telepíteni a munkaterületet, és az Ön által létrehozott egyéni nézetek a felügyeleti megoldásokra csempék. Ez a nézet érhető el az Azure portálon. Válassza ki a munkaterületről **munkaterület összegzés**.
 
 ![– Áttekintés oldalra](media/log-analytics-new-portal/overview.png)
 
@@ -87,7 +87,7 @@ A legtöbb beállítások kezelése a a a **speciális beállítások** a munkat
 
 | A beállítás az OMS-portálon | Egyenértékű az Azure-portálon |
 |:---|:---|
-| Windows-Eseménynapló           | **Speciális beállítások** a munkaterület menüje. |
+| Windows-eseménynaplók           | **Speciális beállítások** a munkaterület menüje. |
 | Windows-teljesítményszámlálók | **Speciális beállítások** a munkaterület menüje. |
 | Linux-teljesítményszámlálók   | **Speciális beállítások** a munkaterület menüje. |
 | IIS-naplók                     | **Speciális beállítások** a munkaterület menüje. |

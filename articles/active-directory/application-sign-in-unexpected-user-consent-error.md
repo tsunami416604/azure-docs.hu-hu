@@ -3,22 +3,24 @@ title: Hozzájárul az alkalmazás végrehajtása során váratlan hiba |} Micro
 description: Ismerteti, amelyek hozzájárul ahhoz, hogy az alkalmazások és a rájuk vonatkozó teendők során előforduló hibák
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 4fc71432707c981c0f3f12e74ad7c499d36a17d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: bad508c59983f463aaa3247fa653064dfa03ab20
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231338"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331077"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Hozzájárul az alkalmazás végrehajtása során váratlan hiba
 
@@ -46,7 +48,7 @@ Ez a hiba azt jelzi, hogy az időszakos szolgáltatás kiszolgálóoldali hiba t
 ## <a name="resource-not-available-error"></a>Erőforrás nem érhető el hiba
 * **AADSTS65005:** az alkalmazás &lt;clientAppDisplayName&gt; kért engedélyeket az erőforrás eléréséhez &lt;resourceAppDisplayName&gt; , amely nem áll rendelkezésre. 
 
-Lépjen kapcsolatba az alkalmazás fejlesztőjének.
+Lépjen kapcsolatba az alkalmazás fejlesztőjével.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Az erőforrás nem érhető el a bérlői hiba
 * **AADSTS65005:** &lt;clientAppDisplayName&gt; kér az erőforráshoz való hozzáférés &lt;resourceAppDisplayName&gt; , amely nem érhető el a szervezet &lt;tenantDisplayName &gt;. 

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 3f4da70d94d28496f5b08035ead0ef7acf1ca3bc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2334aefdfb442054226ef6d7d55a8c097a433565
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969597"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316323"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Hogyan naplózza az eseményeket az Azure Event Hubs az Azure API Management
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs úgy működik, mint a "bejárati ajtón" egy eseményfolyamat számára, és amennyiben az eseményközpontnak összegyűjtött adatok átalakíthatók, és bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével tárolják. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
 
 Ez a cikk egy kiegészítő, hogy a [integrálni Azure API Management az Event Hubs](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/) videó ismerteti, hogyan lehet az Azure Event Hubs API Management naplózása és.
 
-## <a name="create-an-azure-event-hub"></a>Hozzon létre egy Azure Event Hubs
+## <a name="create-an-azure-event-hub"></a>Azure Event Hub létrehozása
 
 Létrehoz egy eseményközpontot, és az Event Hubs érkező vagy oda irányuló események küldéséhez és fogadásához szükséges kapcsolati karakterláncok beolvasása részletes lépéseiért lásd: [hozzon létre egy Event Hubs névtér és egy eseményközpontot, az Azure portál használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
@@ -79,7 +79,7 @@ Miután beállította a naplózó az API Management, beállíthatja a napló-eve
 1. Tallózzon az APIM-példányra.
 2. Válassza ki az API lapon.
 3. Válassza ki a kívánt a házirend hozzáadása API. Ebben a példában egy házirendet, amellyel visszaigazolása azt a **Echo API** a a **korlátlan** termék.
-4. Válassza ki **összes művelet**.
+4. Válassza a **Minden művelet** lehetőséget.
 5. A képernyő tetején válassza ki a tervezés lapról.
 6. A bejövő vagy kijövő feldolgozási ablakban kattintson a háromszög (mellett a Ceruza).
 7. Válassza ki a kód szerkesztése. További információkért lásd: [beállíthatja vagy szerkesztheti a házirendek hogyan](set-edit-policies.md).
@@ -105,7 +105,8 @@ Kattintson a **mentése** a frissített házirend konfigurációjának mentésé
 * További tudnivalók az API Management és az Event Hubs-integráció
   * [Naplózó entitáshivatkozás](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [napló-eventhub szabályzatainak ismertetése](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Az API-kat az Azure API Management, az Event Hubs és Runscope figyelése](api-management-log-to-eventhub-sample.md)    
+  * [Az API-kat az Azure API Management, az Event Hubs és Runscope figyelése](api-management-log-to-eventhub-sample.md)  
+* További információ [Azure Application insights szolgáltatással való integráció](api-management-howto-app-insights.md)
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png
 [create-event-hub]: ./media/api-management-howto-log-event-hubs/create-event-hub.png

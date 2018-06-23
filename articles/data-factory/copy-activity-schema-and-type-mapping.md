@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: dbfbafccc1bc735927535a5ee0f8d232be355dca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e3c4ec0062b6a155d0f4b11da1c699a0906c442
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618623"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318228"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>A másolási tevékenység séma-hozzárendelése
 Ez a cikk ismerteti, hogyan működik az Azure Data Factory másolási tevékenység során a séma-hozzárendelése és a forrásadatok adatok gyűjtésének adattípus-leképezés amikor hajtsa végre az adatok másolását.
@@ -128,11 +128,18 @@ A következő JSON egy folyamaton belül határozza meg a másolási tevékenys�
         "translator":
         {
             "type": "TabularTranslator",
-            "ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
+            "columnMappings": 
+            {
+                "UserId": "MyUserId",
+                "Group": "MyGroup",
+                "Name": "MyName"
+            }
         }
     }
 }
 ```
+
+Ha használta szintaxisa a következő `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` oszlopleképezés megadásához továbbra is támogatott,-van.
 
 **Oszlop-hozzárendelési folyamat:**
 
@@ -154,7 +161,7 @@ Adat-előállítót a következő ideiglenes adattípusokat támogatja: alatt az
 * Byte]
 * Logikai
 * Dátum és idő
-* datetimeoffset
+* Datetimeoffset
 * Decimális
 * Dupla
 * GUID
@@ -162,7 +169,7 @@ Adat-előállítót a következő ideiglenes adattípusokat támogatja: alatt az
 * Int32
 * Int64
 * Önálló
-* Karakterlánc
+* Sztring
 * Időtartomány
 
 ### <a name="explicit-data-type-conversion"></a>Explicit az adattípus átalakítása

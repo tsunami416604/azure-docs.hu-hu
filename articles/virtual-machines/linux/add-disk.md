@@ -1,93 +1,57 @@
 ---
-title: Vegyen fel egy lemezt Linux virtuális gép az Azure parancssori felülettel |} Microsoft Docs
-description: Ismerje meg, egy állandó lemez hozzáadása a Linux virtuális Gépet az Azure CLI 1.0-s és 2.0-s.
-keywords: Linux virtuális gép, erőforrás lemez hozzáadása
+title: Adatlemez hozzáadása a Linux virtuális gép az Azure parancssori felülettel |} Microsoft Docs
+description: Ismerje meg, állandó adatlemezt hozzáadása a Linux virtuális Gépet az Azure-ral
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 02/02/2017
-ms.author: rclaus
+ms.date: 06/13/2018
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c41090943e4053ddf0ea46e9da1b3b5c7dbbf132
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30837006"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331223"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan csatolni egy állandó lemezt a virtuális Gépet, hogy az adatok - megőrizhető akkor is, ha a virtuális gép van újra kiépíteni karbantartás vagy átméretezése miatt. 
 
 
-## <a name="use-managed-disks"></a>Kezelt lemez használata
-Az Azure Managed Disks a virtuális gépekhez kapcsolódó tárfiókok kezelésével teszi egyszerűvé a lemezek kezelését az Azure-beli virtuális gépeknél. Csupán a típust (Prémium vagy Standard) és a kívánt lemezméretet kell megadnia, az Azure pedig létrehozza és kezeli a lemezeket. További információkért lásd: [felügyelt lemezekhez – áttekintés](managed-disks-overview.md).
+## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása a virtuális gépek
 
-
-### <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása a virtuális gépek
-Ha csak szükség egy új lemezt a virtuális gépen, akkor a [az méretű lemez csatolása](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) parancsot a `--new` paraméter. Ha a virtuális Gépet egy rendelkezésre állási zónában, a lemez automatikusan létrejön a virtuális gép ugyanazon a területen. További információkért lásd: [rendelkezésre állási zónák áttekintése](../../availability-zones/az-overview.md). Az alábbi példakód létrehozza nevű lemez *myDataDisk* , amely *50*Gb-nál:
+Ha szeretne egy új, üres adatlemez hozzáadása a virtuális gépen, használja a [az méretű lemez csatolása](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) parancsot a `--new` paraméter. Ha a virtuális Gépet egy rendelkezésre állási zónában, a lemez automatikusan létrejön a virtuális gép ugyanazon a területen. További információkért lásd: [rendelkezésre állási zónák áttekintése](../../availability-zones/az-overview.md). Az alábbi példakód létrehozza nevű lemez *myDataDisk* , amely 50 Gb-nál:
 
 ```azurecli
-az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
-  --new --size-gb 50
+az vm disk attach \
+   -g myResourceGroup \
+   --vm-name myVM \
+   --disk myDataDisk \
+   --new \
+   --size-gb 50
 ```
 
-### <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása 
-Sok esetben. már létrehozott csatolása. Meglévő lemez csatolása a lemez-azonosító található, és adja át az Azonosítót a [az méretű lemez csatolása](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) parancsot. A következő példa lekérdezések nevű lemez *myDataDisk* a *myResourceGroup*, majd csatolja a nevű virtuális gép *myVM*:
+## <a name="attach-an-existing-disk"></a>Meglévő lemez csatlakoztatása 
+
+Meglévő lemez csatolása a lemez-azonosító található, és adja át az Azonosítót a [az méretű lemez csatolása](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) parancsot. A következő példa lekérdezések nevű lemez *myDataDisk* a *myResourceGroup*, majd csatolja a nevű virtuális gép *myVM*:
 
 ```azurecli
-# find the disk id
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
+
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
-```
-
-Kimenet az alábbihoz hasonló a következő (használhatja a `-o table` parancshoz a formázza a kimenetet a beállítás):
-
-```json
-{
-  "accountType": "Standard_LRS",
-  "creationData": {
-    "createOption": "Empty",
-    "imageReference": null,
-    "sourceResourceId": null,
-    "sourceUri": null,
-    "storageAccountId": null
-  },
-  "diskSizeGb": 50,
-  "encryptionSettings": null,
-  "id": "/subscriptions/<guid>/resourceGroups/rasquill-script/providers/Microsoft.Compute/disks/myDataDisk",
-  "location": "westus",
-  "name": "myDataDisk",
-  "osType": null,
-  "ownerId": null,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "timeCreated": "2017-02-02T23:35:47.708082+00:00",
-  "type": "Microsoft.Compute/disks"
-}
-```
-
-
-## <a name="use-unmanaged-disks"></a>Nem felügyelt lemezek használata
-Nem felügyelt lemezekhez többletterhelést létrehozásához és kezeléséhez az alapul szolgáló storage-fiókok szükséges. Nem felügyelt lemezek ugyanazt a tárfiókot az operációs rendszer lemezeként jönnek létre. Hozzon létre, és nem kezelt lemez csatolása, használja a [nem felügyelt az virtuálisgép-lemez csatolása](/cli/azure/vm/unmanaged-disk?view=azure-cli-latest#az_vm_unmanaged_disk_attach) parancsot. Az alábbi példa csatol egy *50*GB-os nevű virtuális gép nem felügyelt lemezt *myVM* az erőforráscsoport neve *myResourceGroup*:
-
-```azurecli
-az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
-  --new --size-gb 50
 ```
 
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Csatlakoztassa a Linux virtuális Gépet az új lemez csatlakoztatása
-A partíció formázása és csatlakoztassa az új lemezt, a Linux virtuális gép használhassa az SSH-ból az Azure virtuális gép. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). Az alábbi példa kapcsolódik a virtuális gép és a nyilvános DNS-bejegyzés a *mypublicdns.westus.cloudapp.azure.com* a felhasználónévvel *azureuser*: 
+A partíció formázása és csatlakoztassa az új lemezt, a Linux virtuális gép használhassa az SSH-ból a virtuális Gépet. További információ: [SSH használata Linuxon az Azure-on](mac-create-ssh-keys.md). Az alábbi példa kapcsolódik a virtuális gép és a nyilvános DNS-bejegyzés a *mypublicdns.westus.cloudapp.azure.com* a felhasználónévvel *azureuser*: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -115,7 +79,7 @@ Itt *sdc* azt szeretnénk, ha a lemez. A lemez particionálása `fdisk`, legyen 
 sudo fdisk /dev/sdc
 ```
 
-A kimenet a következő példához hasonló:
+Használja a `n` parancs használatával adja hozzá az új partíciót. Ebben a példában azt is választhatja, `p` az elsődleges partíció, és fogadja el a többi alapértelmezett értékkel. A kimenet az alábbihoz hasonló lesz:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -137,7 +101,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Hozza létre a partíciót beírásával `p` a parancssorba az alábbiak szerint:
+Írja be a partíciós táblán nyomtatása `p` majd `w` írása a lemezre, és lépjen ki a tábla. A kimenet az alábbihoz hasonlóan kell kinéznie:
 
 ```bash
 Command (m for help): p
@@ -225,7 +189,7 @@ Ezután nyissa meg a */etc/fstab* fájlt egy szövegszerkesztőben az alábbiak 
 sudo vi /etc/fstab
 ```
 
-A jelen példában használjuk UUID értékét a */dev/sdc1* jött létre az előző lépést, és a csatlakoztatási pont az eszközök */datadrive*. Adja hozzá az alábbi végének a */etc/fstab* fájlt:
+Ebben a példában az UUID érték legyen használva a */dev/sdc1* jött létre az előző lépést, és a csatlakoztatási pont az eszközök */datadrive*. Adja hozzá az alábbi végének a */etc/fstab* fájlt:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
@@ -255,7 +219,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     sudo fstrim /datadrive
     ```
   
-    **RHEL/CentOS**
+    **RHEL vagy CentOS**
 
     ```bash
     sudo yum install util-linux
@@ -266,7 +230,6 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Ne feledje, hogy az új lemez nem érhető el a virtuális gép ha újraindítja kivéve, ha ezt az információt írhat a [fstab](http://en.wikipedia.org/wiki/Fstab) fájlt.
 * Annak érdekében, hogy megfelelően van-e konfigurálva a Linux virtuális Gépre, tekintse át a [a Linux-gépek teljesítményének optimalizálásához](optimization.md) javaslatok.
 * Bontsa ki a tárolási kapacitás további lemezek felvételével és [RAID konfigurálása](configure-raid.md) további teljesítmény.
 

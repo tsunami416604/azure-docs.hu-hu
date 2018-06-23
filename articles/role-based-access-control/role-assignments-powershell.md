@@ -1,6 +1,6 @@
 ---
 title: Az RBAC és az Azure PowerShell-hozzáférés kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlést (RBAC) és az Azure PowerShell használatával. Ez magában foglalja a hozzáférési listázása, hozzáférés biztosítása és eltávolítása a hozzáférés.
+description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, a szerepköralapú hozzáférés-vezérlést (RBAC) és az Azure PowerShell használatával. Ez magában foglalja a listázási hozzáférés, engedélyezheti a hozzáférést, és megszünteti a hozzáférést.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 231f7b915c324a5af91564c80d17bbad335d658d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1b75443f442affea2f1010605bb9aa330043336a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294771"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319583"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>Az RBAC és az Azure PowerShell-hozzáférés kezelése
 
@@ -27,7 +27,7 @@ ms.locfileid: "36294771"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-PowerShell kezeléséhez RBAC használata előtt kell a következők egyikét:
+Hozzáférés kezelése kell a következők egyikét:
 
 * [Azure-felhőbe rendszerhéj PowerShell](/azure/cloud-shell/overview)
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
@@ -198,7 +198,7 @@ Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroup
 
 ### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Szerepkör-hozzárendelések listáját klasszikus szolgáltatás-rendszergazda és társrendszergazdák
 
-A szerepkör-hozzárendelések a hagyományos előfizetés rendszergazdai és társrendszergazdák listában használja [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment):
+A szerepkör-hozzárendelések a hagyományos előfizetés rendszergazdai és társrendszergazdák listában használja [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
@@ -220,7 +220,7 @@ Az objektum azonosítója az Azure AD-csoport, amelyet [Get-AzureRmADGroup](/pow
 Get-AzureRmADGroup -SearchString <group name in quotes>
 ```
 
-Az objektum azonosítója az Azure AD szolgáltatás egyszerű vagy az alkalmazás használatához [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal):
+Az objektum azonosítója az Azure AD szolgáltatás egyszerű vagy az alkalmazás használatához [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
 
 ```azurepowershell
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
@@ -228,7 +228,7 @@ Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 
 ### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Az alkalmazás szerepkör-hozzárendelés létrehozása egy előfizetési hatókört
 
-Az előfizetés hatókörből alkalmazáshoz való hozzáférés biztosításához használja [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
+Az előfizetés hatókörből alkalmazáshoz való hozzáférés biztosításához használja [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
@@ -250,7 +250,7 @@ CanDelegate        : False
 
 ### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>A felhasználó szerepkör-hozzárendelés létrehozása erőforrás hatóköre
 
-Hozzáférés biztosítása a felhasználók a erőforrás hatókörét, használjon [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
+Hozzáférés biztosítása a felhasználók a erőforrás hatókörét, használjon [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
@@ -274,7 +274,7 @@ CanDelegate        : False
 
 ### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Egy szerepkör-hozzárendelés létrehozása az erőforrás-tartományban
 
-Hozzáférés biztosítása a erőforrás hatókörben egy csoportot, használjon [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
+Hozzáférés biztosítása a erőforrás hatókörben egy csoportot, használjon [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
@@ -305,7 +305,7 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-Az RBAC, elérését, eltávolított szerepkör-hozzárendelés használatával [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment):
+Az RBAC, elérését, eltávolított szerepkör-hozzárendelés használatával [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment).
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -315,272 +315,8 @@ Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role nam
 PS C:\> Remove-AzureRmRoleAssignment -SignInName alain@example.com -RoleDefinitionName "Virtual Machine Contributor" -ResourceGroupName pharma-sales-projectforecast
 ```
 
-## <a name="list-custom-roles"></a>Egyéni szerepkörök listája
-
-A szerepkörök, amelyek rendelhető hozzá hatókör kilistázhatja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) parancsot.
-
-Az alábbi példa felsorolja az összes szerepkör, amely a kijelölt előfizetés kiosztására használható.
-
-```azurepowershell
-Get-AzureRmRoleDefinition | FT Name, IsCustom
-```
-
-```Example
-Name                                              IsCustom
-----                                              --------
-Virtual Machine Operator                              True
-AcrImageSigner                                       False
-AcrQuarantineReader                                  False
-AcrQuarantineWriter                                  False
-API Management Service Contributor                   False
-...
-```
-
-Az alábbi példában csak a kijelölt előfizetés kiosztására használható egyéni szerepköröket sorolja fel.
-
-```azurepowershell
-Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
-```
-
-```Example
-Name                     IsCustom
-----                     --------
-Virtual Machine Operator     True
-```
-
-Ha a kiválasztott előfizetés nem szerepel a `AssignableScopes` a szerepkör az egyéni szerepkör nem jelenik meg.
-
-## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
-
-Egy egyéni biztonsági szerepkört hozhat létre a [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) parancsot. A szerepkör szerkezetének kialakítása a két módszer használatával `PSRoleDefinition` objektum vagy egy JSON-sablon. 
-
-### <a name="get-operations-for-a-resource-provider"></a>Erőforrás-szolgáltató műveleteinek beolvasása
-
-Egyéni szerepkörök létrehozásakor fontos tudni, hogy az erőforrás-szolgáltató az összes lehetséges műveletet.
-Megtekintheti a listája [erőforrás-szolgáltatói műveletekhez](resource-provider-operations.md) vagy használhatja a [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) parancs használatával beszerezheti az ezeket az információkat.
-Például ha a virtuális gépek számára elérhető műveletek ellenőrizni kívánja, használja ezt a parancsot:
-
-```azurepowershell
-Get-AzureRMProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
-```
-
-```Example
-PS C:\> Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation, Description -AutoSize
-
-OperationName                                  Operation                                                      Description
--------------                                  ---------                                                      -----------
-Get Virtual Machine                            Microsoft.Compute/virtualMachines/read                         Get the propertie...
-Create or Update Virtual Machine               Microsoft.Compute/virtualMachines/write                        Creates a new vir...
-Delete Virtual Machine                         Microsoft.Compute/virtualMachines/delete                       Deletes the virtu...
-Start Virtual Machine                          Microsoft.Compute/virtualMachines/start/action                 Starts the virtua...
-...
-```
-
-### <a name="create-a-role-with-psroledefinition-object"></a>Hozzon létre egy szerepkör PSRoleDefinition objektum
-
-Amikor a PowerShell segítségével hozzon létre egy egyéni biztonsági szerepkört, használhatja a a [beépített szerepkörök](built-in-roles.md) a kiindulási pont, vagy teljesen új kezdési is. Az első példában ebben a szakaszban egy beépített szerepkör kezdődik, és majd testreszabása további engedélyekkel. Szerkessze a attribútumokat kíván hozzáadni a `Actions`, `NotActions`, vagy `AssignableScopes` , és mentse a módosításokat egy új szerepkörként.
-
-Az alábbi példa kezdődik-e a [virtuális gép közreműködő](built-in-roles.md#virtual-machine-contributor) létrehozni egy egyéni biztonsági szerepkört nevű beépített szerepkör *virtuális gépet üzemeltető*. Az új szerepkör hozzáférést biztosít az összes olvasási műveletek a *Microsoft.Compute*, *Microsoft.Storage*, és *Microsoft.Network* erőforrás szolgáltatók és biztosít hozzáférést indítása , indítsa újra, és a virtuális gépek figyelése. Az egyéni biztonsági szerepkört is használható két előfizetésekhez.
-
-```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
-$role.Id = $null
-$role.Name = "Virtual Machine Operator"
-$role.Description = "Can monitor and restart virtual machines."
-$role.Actions.Clear()
-$role.Actions.Add("Microsoft.Storage/*/read")
-$role.Actions.Add("Microsoft.Network/*/read")
-$role.Actions.Add("Microsoft.Compute/*/read")
-$role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
-$role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
-$role.Actions.Add("Microsoft.Authorization/*/read")
-$role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
-$role.Actions.Add("Microsoft.Insights/alertRules/*")
-$role.Actions.Add("Microsoft.Support/*")
-$role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
-$role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111")
-New-AzureRmRoleDefinition -Role $role
-```
-
-A következő példa bemutatja, hozzon létre egy másik módja a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört. Hozzon létre egy új PSRoleDefinition objektum kezdődik. A művelet műveletek vannak megadva a `perms` változó és kell állítani a `Actions` tulajdonság. A `NotActions` tulajdonsága ehhez beolvassa a `NotActions` a a [virtuális gép közreműködő](built-in-roles.md#virtual-machine-contributor) beépített szerepkör. Mivel a [virtuális gép közreműködő](built-in-roles.md#virtual-machine-contributor) nem rendelkezik ilyennel `NotActions`, nincs szükség a sorban, de azt mutatja, hogyan információk lekérhetők egy másik szerepkört.
-
-```azurepowershell
-$role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
-$role.Name = 'Virtual Machine Operator 2'
-$role.Description = 'Can monitor and restart virtual machines.'
-$role.IsCustom = $true
-$perms = 'Microsoft.Storage/*/read','Microsoft.Network/*/read','Microsoft.Compute/*/read'
-$perms += 'Microsoft.Compute/virtualMachines/start/action','Microsoft.Compute/virtualMachines/restart/action'
-$perms += 'Microsoft.Authorization/*/read','Microsoft.Resources/subscriptions/resourceGroups/read'
-$perms += 'Microsoft.Insights/alertRules/*','Microsoft.Support/*'
-$role.Actions = $perms
-$role.NotActions = (Get-AzureRmRoleDefinition -Name 'Virtual Machine Contributor').NotActions
-$subs = '/subscriptions/00000000-0000-0000-0000-000000000000','/subscriptions/11111111-1111-1111-1111-111111111111'
-$role.AssignableScopes = $subs
-New-AzureRmRoleDefinition -Role $role
-```
-
-### <a name="create-role-with-json-template"></a>A JSON-sablon szerepkör létrehozása
-
-A JSON-sablon az egyéni szerepkör használható legyen a forrás-definíció. Az alábbi példa létrehoz egy egyéni biztonsági szerepkört, amely olvasási hozzáférést biztosít a tárolási és számítási erőforrásokat, hozzáférés támogatásához, és adja a szerepkört két előfizetések. Hozzon létre egy új fájlt `C:\CustomRoles\customrole1.json` a következő példa a. A azonosítóját kell beállítani. `null` a kezdeti szerepkör létrehozásakor egy új ID automatikusan létrejön. 
-
-```json
-{
-  "Name": "Custom Role 1",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows for read access to Azure storage and compute resources and access to support",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Storage/*/read",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/00000000-0000-0000-0000-000000000000",
-    "/subscriptions/11111111-1111-1111-1111-111111111111"
-  ]
-}
-```
-
-Adja hozzá a szerepkört az előfizetés, futtassa a következő PowerShell-parancsot:
-
-```azurepowershell
-New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
-```
-
-## <a name="modify-a-custom-role"></a>Egyéni szerepkör módosítása
-
-Hasonló egyéni szerepkör létrehozása, módosíthatja egy meglévő egyéni szerepkör használatával a `PSRoleDefinition` objektum vagy egy JSON-sablon.
-
-### <a name="modify-role-with-psroledefinition-object"></a>PSRoleDefinition objektummal szerepkör módosítása
-
-Szeretné módosítani egy egyéni biztonsági szerepkört, először használja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) parancs beolvasása a szerepkör-definíció. A szerepkör-definíció, végezze el a szükséges módosításokat. Végül a [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) parancs menteni a módosított szerepkör-definíció.
-
-A következő példakóddal felveheti a `Microsoft.Insights/diagnosticSettings/*` művelet a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört.
-
-```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-$role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-Set-AzureRmRoleDefinition -Role $role
-```
-
-```Example
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-PS C:\> $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
-
-Name             : Virtual Machine Operator
-Id               : 88888888-8888-8888-8888-888888888888
-IsCustom         : True
-Description      : Can monitor and restart virtual machines.
-Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
-                   Microsoft.Compute/virtualMachines/start/action...}
-NotActions       : {}
-AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
-                   /subscriptions/11111111-1111-1111-1111-111111111111}
-```
-
-A következő példa egy Azure-előfizetés hozzáadása a hozzárendelhető hatókörök a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört.
-
-```azurepowershell
-Get-AzureRmSubscription -SubscriptionName Production3
-
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-$role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-Set-AzureRmRoleDefinition -Role $role
-```
-
-```Example
-PS C:\> Get-AzureRmSubscription -SubscriptionName Production3
-
-Name     : Production3
-Id       : 22222222-2222-2222-2222-222222222222
-TenantId : 99999999-9999-9999-9999-999999999999
-State    : Enabled
-
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
-PS C:\> $role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
-
-Name             : Virtual Machine Operator
-Id               : 88888888-8888-8888-8888-888888888888
-IsCustom         : True
-Description      : Can monitor and restart virtual machines.
-Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
-                   Microsoft.Compute/virtualMachines/start/action...}
-NotActions       : {}
-AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
-                   /subscriptions/11111111-1111-1111-1111-111111111111,
-                   /subscriptions/22222222-2222-2222-2222-222222222222}
-```
-
-### <a name="modify-role-with-json-template"></a>Szerepkör JSON-sablon módosítása
-
-Az előző JSON-sablon használatával könnyen módosíthatja egy meglévő egyéni szerepkör hozzáadásához vagy eltávolításához műveletek. A JSON-sablont módosítani, és adja hozzá az olvasási művelet a hálózatkezeléshez, a következő példában látható módon. A sablon szerepel a definíciók összesítve nem érvényesek egy meglévő definíciójához, ami azt jelenti, hogy a szerepkör pontosan úgy adja meg, ha a sablon megjelenik-e. Is módosítania az azonosítót tartalmazó mezőt, azonosító: a szerepkör. Ha nem tudja biztosan az értéket nem, akkor használhatja a [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) parancsmagot, hogy megkapja ezt az információt.
-
-```json
-{
-  "Name": "Custom Role 1",
-  "Id": "acce7ded-2559-449d-bcd5-e9604e50bad1",
-  "IsCustom": true,
-  "Description": "Allows for read access to Azure storage and compute resources and access to support",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/00000000-0000-0000-0000-000000000000",
-    "/subscriptions/11111111-1111-1111-1111-111111111111"
-  ]
-}
-```
-
-A meglévő szerepkör frissítéséhez futtassa a következő PowerShell-parancsot:
-
-```azurepowershell
-Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
-```
-
-## <a name="delete-a-custom-role"></a>Egyéni szerepkör törléséhez
-
-Egyéni szerepkör törléséhez használja a [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) parancsot.
-
-A következő példában eltávolítjuk a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört.
-
-```azurepowershell
-Get-AzureRmRoleDefinition "Virtual Machine Operator"
-Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
-```
-
-```Example
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator"
-
-Name             : Virtual Machine Operator
-Id               : 88888888-8888-8888-8888-888888888888
-IsCustom         : True
-Description      : Can monitor and restart virtual machines.
-Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
-                   Microsoft.Compute/virtualMachines/start/action...}
-NotActions       : {}
-AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
-                   /subscriptions/11111111-1111-1111-1111-111111111111}
-
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
-
-Confirm
-Are you sure you want to remove role definition with name 'Virtual Machine Operator'.
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-```
-
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md)
-
-[!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+- [Oktatóanyag: Hozzáférést biztosíthat a csoport RBAC és Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
+- [Oktatóanyag: Hozzon létre egy egyéni biztonsági szerepkört Azure PowerShell használatával](tutorial-custom-role-powershell.md)
+- [Az Azure PowerShell-erőforrások kezelése](../azure-resource-manager/powershell-azure-resource-manager.md)
