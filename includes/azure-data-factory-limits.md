@@ -5,36 +5,37 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 63653795ad8c52e2743fb02fa804dd2edbf0d2ab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d65c75a9b4f308ddd1bb6a6bff28c52c946e4f05
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371320"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320032"
 ---
 Adat-előállító egy több-bérlős szolgáltatást a következő alapértelmezett korlátokat érdekében győződjön meg arról, hogy az ügyfél-előfizetések védettek, a másik fél munkaterhelések érvényben. A korlátok számos könnyen emelhető az előfizetéséhez, a maximális határértéket akár lépjen kapcsolatba az ügyfélszolgálattal.
 
 ### <a name="version-2"></a>2-es verzió
 
-| Erőforrás | Alapértelmezett korlát | Felső korlát | 
-| -------- | ------------- | ------------- | 
-| az Azure-előfizetés adat-előállítók | 50 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| belül egy adat-előállító adatcsatornák | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| egy adat-előállító belül adatkészletek | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Egy adat-előállító belül eseményindítók | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Egy adat-előállító belül összekapcsolt szolgáltatások | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Egy adat-előállító belül integrációs futtatókörnyezetek <sup>4</sup> | 2500 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Erőforrás | Alapértelmezett korlát | Felső korlát |
+| -------- | ------------- | ------------- |
+| Az Azure-előfizetés adat-előállítók | 50 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Entitások (adatcsatorna, adatkészleteket, eseményindítók, társított szolgáltatások, integrációs futtatókörnyezetek) belül egy adat-előállító teljes száma | 5000 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Egy előfizetéshez tartozó teljes CPU-magokat az Azure-SSIS-integráció Runtime(s) | 100 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Folyamat fut egyidejűleg folyamat | 100 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Feldolgozási sor / maximális tevékenységek | 20 | 40 |
-| Feldolgozási sor / maximális paraméterek | 20 | 30 |
+| Adat-előállító egyidejű folyamat fut | 10,000  | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Maximális tevékenységek száma (tartalmazza a tárolók belső tevékenységek) folyamat | 40 | 40 |
+| Feldolgozási sor / maximális paraméterek | 50 | 50 |
+| ForEach-elemek | 100,000 | 100,000 |
+| ForEach párhuzamossági | 20 | 50 |
+| Karakteres kifejezés | 8,192 | 8,192 |
+| Minimális Átfedésmentes ablak eseményindító időköz | 15 perc | 15 perc |
+| Időtúllépés maximális csővezeték tevékenység fut | 7 nap | 7 nap |
 | Adatcsatorna objektumok objektumonként bájt <sup>1</sup> | 200 KB | 200 KB |
 | Bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> | 100 KB | 2000 KB |
 | Adatok adatátviteli egység / tevékenységfuttatási felhőalapú <sup>3</sup> | 256 | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Újbóli próbálkozások száma az adatcsatorna tevékenység fut | 1 day(timeout) | 1 nap (timeout) |
 | Az API-hívásokban írása | 2500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Forduljon a támogatási szolgálathoz](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Olvassa el az API-hívásokban | 12 500/hr<br/><br/> Ez korlátozva által Azure erőforrás-kezelő nem az Azure Data Factory. | [Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
@@ -43,10 +44,10 @@ Adat-előállító egy több-bérlős szolgáltatást a következő alapértelme
 
 | **Erőforrás** | **Alapértelmezett korlát** | **Felső korlát** |
 | --- | --- | --- |
-| az Azure-előfizetés adat-előállítók |50 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| belül egy adat-előállító adatcsatornák |2500 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| egy adat-előállító belül adatkészletek |5000 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| adatkészlet száma párhuzamos szeletek |10 |10 |
+| Az Azure-előfizetés adat-előállítók |50 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Belül egy adat-előállító adatcsatornák |2500 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Egy adat-előállító belül adatkészletek |5000 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Adatkészlet száma párhuzamos szeletek |10 |10 |
 | Adatcsatorna objektumok objektumonként bájt <sup>1</sup> |200 KB |200 KB |
 | Bájt / adatkészlet-objektumot, és a társított szolgáltatás objektumok <sup>1</sup> |100 KB |2000 KB |
 | A HDInsight fürt igény szerinti magok előfizetésen belül <sup>2</sup> |60 |[Kapcsolatfelvétel az ügyfélszolgálattal](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |

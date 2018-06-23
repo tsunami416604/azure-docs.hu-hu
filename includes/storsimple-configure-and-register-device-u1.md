@@ -14,7 +14,7 @@
      Végezze le az 5–12. lépést az eszköz minimálisan szükséges hálózati beállításainak konfigurálásához. **Ezeket a konfigurálási lépéseket az eszköz aktív vezérlőjén kell elvégezni.** A vezérlő állapota a soros konzol menüjének címsorában látható. Ha nincs kapcsolat az aktív vezérlővel, akkor bontsa a kapcsolatot, és csatlakozzon újra az aktív vezérlőhöz.
 5. Írja be a jelszót a parancssorba. Az eszköz alapértelmezett jelszava: **Password1**.
 6. Írja be a következő parancsot: `Invoke-HcsSetupWizard`. 
-7. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg az alábbi adatokat: 
+7. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg a következő információkat: 
    
    * A DATA 0 hálózati adapter IP-címe
    * Alhálózati maszk

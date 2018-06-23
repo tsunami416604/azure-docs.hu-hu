@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f7dfdc4319e50e7a6c1c6032c27de5c76397e8de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603076"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334798"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>A struktúra és az Azure Resource Manager-sablonok szintaxisát ismertetése
 Ez a cikk ismerteti az Azure Resource Manager sablon szerkezete. Azt mutatja be a különböző szakaszokat, egy sablon és az elérhető tulajdonságok köre szakaszt. A sablon JSON és összeállítani az üzemelő példány értékeit használó kifejezéseket tartalmaz. A sablonok létrehozásának részletes oktatóanyaga, lásd: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
@@ -214,6 +214,7 @@ A sablonon belül létrehozhat saját függvényeket. Ezek a függvények haszn�
 Egy felhasználói függvény definiálásakor van bizonyos korlátozások vonatkoznak:
 
 * A függvény nem tud hozzáférni a változókat.
+* A függvény nem hívható meg más felhasználó által definiált függvények.
 * A függvény nem használható a [függvényre](resource-group-template-functions-resource.md#reference).
 * A függvény paraméterei nem alapértelmezett értékek szerint vannak.
 

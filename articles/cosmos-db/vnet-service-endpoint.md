@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 76387733b1511593280f4a9439f5ddbf12d60975
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302002"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333912"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Biztonságos hozzáférés a Azure Cosmos DB fiókkal az Azure Virtual Network szolgáltatás végpontjának használatával
 
@@ -80,7 +80,7 @@ Miután az Azure Virtual Network Szolgáltatásvégpontok engedélyezve vannak a
 
 Azure Cosmos DB fiókja más Azure-szolgáltatásokhoz hasonlóan az Azure Search által használt, vagy a Stream analytics vagy a Power bi-ban érhető el, ha engedélyezi a hozzáférést ellenőrzésével **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**.
 
-Ellenőrizze, hogy access Azure Cosmos DB csatlakozva a portálról, engedélyeznie kell **engedélyezi a hozzáférést az Azure-portálhoz** beállítások. A beállításokkal kapcsolatos további információkért lásd: [Azure-portálon kapcsolatok](firewall-support.md#connections-from-the-azure-portal) és [Azure PaaS szolgáltatások közötti kapcsolatok](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services) szakaszok. Miután kijelölte a hozzáférést, jelölje ki **mentése** menti a beállításokat.
+Ellenőrizze, hogy access Azure Cosmos DB csatlakozva a portálról, engedélyeznie kell **engedélyezi a hozzáférést az Azure-portálhoz** beállítások. A beállításokkal kapcsolatos további információkért lásd: [Azure-portálon kapcsolatok](firewall-support.md#connections-from-the-azure-portal) és [Azure PaaS szolgáltatások közötti kapcsolatok](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services) szakaszok. Miután kijelölte a hozzáférést, jelölje ki **mentése** menti a beállításokat.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Távolítsa el a virtuális hálózat vagy az alhálózat 
 
@@ -145,11 +145,20 @@ A következő lépésekkel konfigurálhatja a szolgáltatási végpont Azure Cos
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True

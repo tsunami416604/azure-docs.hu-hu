@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: ab053e9b132630c19b6966286035d38c71c6b4d9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: elisol
+ms.openlocfilehash: d9379a54258b33277904d88b62dfdd7dfdec59a0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268135"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317748"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Az Azure Active Directory fejlesztői szószedet
 Ez a cikk az Azure Active Directory (AD) fejlesztői alapfogalmakat, amelyek hasznosak, ha az Azure AD alkalmazásfejlesztés megtanulni részénél definíciókat tartalmazza.
@@ -65,7 +66,7 @@ A folyamat, egy hitelesített biztonsági egyszerű engedély kell végrehajtani
 * Során egy [OAuth2 hitelesítésengedélyezési](#authorization-grant) folyamata: Ha a [erőforrás tulajdonosa](#resource-owner) engedélyt biztosít a [ügyfélalkalmazás](#client-application), így az ügyfél az erőforrás eléréséhez a tulajdonos erőforrásokat.
 * Az ügyfél által erőforrások elérése során: által megvalósított módon a [erőforrás-kiszolgáló](#resource-server)használatával a [jogcím](#claim) értékek szerepelnek a [hozzáférési jogkivonat](#access-token) való hozzáférés-vezérlési döntéseket alapján őket.
 
-## <a name="authorization-code"></a>Engedélyezési kód
+## <a name="authorization-code"></a>engedélyezési kód
 Egy rövid élettartamú "token" megadott egy [ügyfélalkalmazás](#client-application) által a [engedélyezési végpont](#authorization-endpoint), a "engedélyezési kód" folyamata, egyet a négy OAuth2 részeként [engedélyezési biztosít](#authorization-grant). A kód válaszul hitelesítését az ügyfélalkalmazás küld vissza a [erőforrás tulajdonosa](#resource-owner), amely jelzi, az erőforrás tulajdonosa a kért erőforrások elérésére engedélyt adta át. A folyamat részeként a később beváltott a kód egy [hozzáférési jogkivonat](#access-token).
 
 ## <a name="authorization-endpoint"></a>engedélyezési végpont
@@ -91,7 +92,7 @@ Meghatározása szerint a [OAuth2 engedélyezési keretrendszer][OAuth2-Role-Def
 
 Egy ügyfélalkalmazás kérelmek [engedélyezési](#authorization) az erőforrás tulajdonosa részt egy [OAuth2 hitelesítésengedélyezési](#authorization-grant) egymást követő, és előfordulhat, hogy adatelérés API-k vagy az erőforrás tulajdonosa nevében. Az OAuth2 hitelesítési keretrendszer [határozza meg az ügyfelek kétféle][OAuth2-Client-Types], "bizalmas" és "nyilvános", az ügyfél képes bizalmasan kezeljék a hitelesítő adatok alapján. Alkalmazások is létrehozható egy [webes ügyfél (bizalmas)](#web-client) egy webkiszolgálón, amely fut egy [natív ügyfél (nyilvános)](#native-client) telepítve az eszközön, vagy egy [felhasználói ügynök-alapú ügyfél (nyilvános)](#user-agent-based-client)amely fut egy eszköz böngészőjében.
 
-## <a name="consent"></a>Hozzájárulás
+## <a name="consent"></a>hozzájárulás
 Folyamatán a [erőforrás tulajdonosa](#resource-owner) engedély egy [ügyfélalkalmazás](#client-application), specifikus alatt lévő védett erőforrások eléréséhez [engedélyek](#permissions), a következő nevében: a erőforrás tulajdonosa. Attól függően, hogy az engedélyeket, az ügyfél által kért rendszergazda vagy a felhasználó fogja kérni a hozzájárulásukat adják, illetve hogy férjen hozzá a szervezet vagy egyéni adatok. Vegye figyelembe a egy [több-bérlős](#multi-tenant-application) forgatókönyvet, az alkalmazás [egyszerű](#service-principal-object) consenting felhasználó bérlői is rögzíti.
 
 ## <a name="id-token"></a>Azonosító token
@@ -134,7 +135,7 @@ Szerepkörök olyan erőforrás-definiált karakterláncok (például "költség
 
 Az Azure AD Graph API által elérhetővé tett alkalmazás-szerepkörök részletes tárgyalását lásd: [Graph API-Engedélyhatókörök][AAD-Graph-Perm-Scopes]. A részletes megvalósítási példa, lásd: [RBAC és az Azure-portálon-hozzáférés kezelése][AAD-RBAC].
 
-## <a name="scopes"></a>Hatókörök
+## <a name="scopes"></a>hatókörök
 Például [szerepkörök](#roles), hatókörök teszik lehetővé az egy [erőforrás-kiszolgáló](#resource-server) a védett erőforrásokhoz való hozzáférés szabályozása érdekében. Hatókörök végrehajtásához használt [hatókör-alapú] [ OAuth2-Access-Token-Scopes] a hozzáférés-vezérlést, egy [ügyfélalkalmazás](#client-application) , amelyek adott delegált hozzáférést az erőforráshoz a tulajdonosa.
 
 Hatókörök olyan erőforrás-definiált karakterláncok (például "Mail.Read", "Directory.ReadWrite.All"), a felügyelt a [Azure-portálon] [ AZURE-portal] keresztül az erőforrás [alkalmazásjegyzék](#application-manifest), és az erőforrás tárolt [oauth2Permissions tulajdonság][AAD-Graph-Sp-Entity]. Az Azure-portálon is használt ügyfélalkalmazás konfigurálása [delegált engedélyekkel](#permissions) hatókör eléréséhez.

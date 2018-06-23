@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4be591a15c7ba2c6deaa17f1847233f409179472
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e80c69657dfb7cbab7d29c94d3dd3c56574de7b7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "35349978"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36321994"
 ---
 # <a name="speech-service-rest-apis"></a>Beszéd szolgáltatás REST API-k
 
@@ -31,11 +31,14 @@ Kelet-Ázsia| `https://eastasia.stt.speech.microsoft.com/speech/recognition/conv
 Észak-Európa| `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
 
 > [!NOTE]
-> Ha testreszabta a akusztikus modell vagy a nyelvi modell, vagy a kiejtés, használja az egyéni végpontot.
+> A szükséges nyelvi az URI azonosító a http 401-es hiba elkerülése érdekében hozzá kell fűzni. Így en-US a megfelelő URI a következő lesz: https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 
 A beszédfelismerés szöveg API hasonlít ellenkező esetben a [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) az előző Diktálásfelismerési API-hoz.
 
 A beszédfelismerés szöveg REST API támogatja a csak rövid utterances. Kérelmek legfeljebb 10 másodpercnyi és tartalmazhat utolsó legfeljebb általános 14 másodpercig. A REST API-t csak végső eredményeket, nem részleges vagy köztes eredményeket ad vissza.
+
+> [!NOTE]
+> Ha testreszabta a akusztikus modell vagy a nyelvi modell, vagy a kiejtés, használja az egyéni végpontot.
 
 ## <a name="text-to-speech"></a>Szöveg-hang transzformáció
 
@@ -143,7 +146,7 @@ A C# osztály alábbi mutatja be a hozzáférési token beszerzése. Át a besz�
     public class Authentication
     {
         public static readonly string FetchTokenUri =
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
+            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string token;
 
@@ -164,7 +167,6 @@ A C# osztály alábbi mutatja be a hozzáférési token beszerzése. Át a besz�
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 UriBuilder uriBuilder = new UriBuilder(fetchUri);
-                uriBuilder.Path += "/issueToken";
 
                 var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
                 Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
@@ -210,7 +212,7 @@ Mint korábban, győződjön meg arról, hogy a `FetchTokenUri` értéke megegye
     public class Authentication
     {
         public static readonly string FetchTokenUri = 
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
+            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string token;
         private Timer accessTokenRenewer;
@@ -270,7 +272,6 @@ Mint korábban, győződjön meg arról, hogy a `FetchTokenUri` értéke megegye
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 UriBuilder uriBuilder = new UriBuilder(fetchUri);
-                uriBuilder.Path += "/issueToken";
 
                 var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
                 Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
@@ -279,3 +280,8 @@ Mint korábban, győződjön meg arról, hogy a `FetchTokenUri` értéke megegye
         }
     }
 ```
+
+## <a name="next-steps"></a>További lépések
+
+* [Beszéd próbaverziós előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [Tekintse meg a beszédfelismerés modell testreszabása](how-to-customize-speech-models.md)

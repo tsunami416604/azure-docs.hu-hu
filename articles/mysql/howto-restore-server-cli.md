@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 23c9056bbfa6ae0be0f7c73a34250a2fff77f4d2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5325f23a13a181d912bbc8b26042de72855dc41e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266006"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319088"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Készítsen biztonsági másolatot, és a kiszolgáló Azure-adatbázis visszaállítása a MySQL az Azure parancssori felület használatával
 
@@ -32,32 +32,6 @@ Ez az útmutató útmutató befejezéséhez lesz szüksége:
 
 > [!IMPORTANT]
 > Ez az útmutató útmutató az Azure parancssori felület 2.0 vagy újabb verzió használatát igényli. Erősítse meg a verzió, az Azure CLI parancssorba írja be a következőt `az --version`. Telepítéséhez vagy frissítéséhez, lásd: [Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
-
-## <a name="add-the-extension"></a>A bővítmény hozzáadása
-A következő paranccsal adhatja hozzá a frissített Azure Database for MySQL felügyeleti bővítményt:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Ellenőrizze, hogy a bővítmény megfelelő verziója van-e telepítve. 
-```azurecli-interactive
-az extension list
-```
-
-A visszaküldött JSON-fájlnak a következőket kell tartalmaznia: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Ha a parancs nem a 0.0.5-ös verziót adja vissza, akkor a bővítményt a következő parancs futtatásával frissítheti: 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
 
 ## <a name="set-backup-configuration"></a>Biztonsági mentési konfigurációjának beállítása
 

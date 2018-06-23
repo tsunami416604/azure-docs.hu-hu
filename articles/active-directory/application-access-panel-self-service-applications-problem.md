@@ -3,23 +3,24 @@ title: Problémát az önkiszolgáló alkalmazás-hozzáférés |} Microsoft Doc
 description: Önkiszolgáló alkalmazás eléréséhez kapcsolódó problémák megoldása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.reviewer: japere
-ms.openlocfilehash: 6d4044414cfae9a79487d02709aab24998fdef0b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: japere,asteen
+ms.openlocfilehash: 35abd97072f2156424bb910d68923be18f917792
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29382355"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331257"
 ---
 # <a name="problem-using-self-service-application-access"></a>Problémát az önkiszolgáló alkalmazás-hozzáférés
 
@@ -76,7 +77,7 @@ Ahhoz, hogy az alkalmazás önkiszolgáló hozzáférést egy alkalmazáshoz, k�
 
 14. Kattintson a **mentése** gombra a befejezéshez panel tetején.
 
-Ha befejezte az önkiszolgáló Alkalmazáskonfiguráció, felhasználók lépjen a [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) , és kattintson a **+ Hozzáadás** gombra kattintva keresse meg az alkalmazások, amelyhez engedélyezte a hozzáférést az önkiszolgáló. Üzleti jóváhagyóknak is megjelenik egy értesítés a saját [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/). Egy e-mailt, amely értesíti őket, amikor a felhasználó által kért a jóváhagyást igénylő alkalmazáshoz való hozzáférés engedélyezéséhez. 
+Ha befejezte az önkiszolgáló Alkalmazáskonfiguráció, felhasználók lépjen a [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) , és kattintson a **+ Hozzáadás** gombra kattintva keresse meg az alkalmazások, amelyhez engedélyezte az önkiszolgáló a hozzáférés. Üzleti jóváhagyóknak is megjelenik egy értesítés a saját [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/). Egy e-mailt, amely értesíti őket, amikor a felhasználó által kért a jóváhagyást igénylő alkalmazáshoz való hozzáférés engedélyezéséhez. 
 
 Ezek a jóváhagyások támogatja egyetlen jóváhagyási munkafolyamatok csak, ami azt jelenti, hogy több jóváhagyó ad meg, ha bármely egyetlen jóváhagyó jóváhagyhatja a hozzáférni az alkalmazáshoz.
 

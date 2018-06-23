@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 688ea090384755b9a6d60a4968d958678edc27ad
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763142"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337855"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Hitelesítési és engedélyezési az Azure App Service testreszabása
 
@@ -89,11 +89,11 @@ Amikor a szolgáltató hozzáférési jogkivonat lejár, a felhasználó hiteles
 
 - **Google**: hozzáfűzése egy `access_type=offline` lekérdezési karakterlánc paramétert a `/.auth/login/google` API-hívás. Ha a Mobile Apps SDK használatával adhat hozzá a paraméter egyikét a `LogicAsync` túlterhelések (lásd: [Google frissítési jogkivonatok](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: nem biztosít a frissítési jogkivonatokat. Hosszú élettartamú jogkivonatok 60 nap múlva lejár (lásd: [Facebook lejárati és a hozzáférési jogkivonatok bővítmény](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: hozzáférési jogkivonatok nem jár le (lásd: [Twitter OAuth – gyakori kérdések](https://developer.twitter.com/docs/basics/authentication/guides/oauth-faq)).
+- **Twitter**: hozzáférési jogkivonatok nem jár le (lásd: [Twitter OAuth – gyakori kérdések](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
 - **Microsoft Account**: Ha [konfigurálása a Microsoft-fiók hitelesítési beállításai](app-service-mobile-how-to-configure-microsoft-authentication.md), jelölje be a `wl.offline_access` hatókör.
 - **Az Azure Active Directory**: A [ https://resources.azure.com ](https://resources.azure.com), hajtsa végre a következő lépéseket:
     1. A lap tetején jelölje ki a **olvasási/írási**.
-    1. A bal oldali böngészőben navigáljon **előfizetések** > **_\<előfizetés\_neve_**   >  **resourceGroups** > _**\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek** > _**\<alkalmazás \_neve >**_ > **config** > **authsettings**. 
+    1. In the left browser, navigate to **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**. 
     1. Kattintson a **Szerkesztés** gombra.
     1. A következő tulajdonság módosítható. Cserélje le  _\<app\_azonosítója >_ az elérni kívánt szolgáltatás az Azure Active Directory alkalmazás azonosítójával.
 
@@ -103,7 +103,7 @@ Amikor a szolgáltató hozzáférési jogkivonat lejár, a felhasználó hiteles
 
     1. Kattintson a **Put**. 
 
-Miután beállította a szolgáltató, láthatja, ha a frissítési jogkivonatokat szerepelnek a jogkivonat-tároló meghívásával `/.auth/me`. 
+Miután a szolgáltató van beállítva, a következőket teheti [található, a frissítési jogkivonat és a hozzáférési jogkivonat lejárati idejének](#retrieve-tokens-in-app-code) lévő a jogkivonat-tároló. 
 
 A hozzáférési token frissítése bármikor, csak hívja `/.auth/refresh` bármilyen nyelven. Az alábbi kódrészletben jQuery használatával frissítse a jogkivonatot a JavaScript-ügyfélről.
 
@@ -140,7 +140,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft Account, mind az Azure Active Directory lehetővé teszi több tartományt a bejelentkezéshez. Például lehetővé teszi a Microsoft Account _Outlook.com-os_, _live.com_, és _hotmail.com_ fiókok. Az Azure Active Directory a bejelentkezési fiókok lehetővé teszi tetszőleges számú egyéni tartományokat. Lehet, hogy ez a viselkedés nemkívánatos belső alkalmazás, amely nem szeretné, hogy bárki, aki egy _Outlook.com-os_ hozzáférési fiókot. A tartománynév, a bejelentkezési fiókok korlátozása érdekében kövesse az alábbi lépéseket.
 
-A [ https://resources.azure.com ](https://resources.azure.com), navigáljon a **előfizetések** > **_\<előfizetés\_neve_**   >  **resourceGroups** > _**\<erőforrás\_csoport\_neve >**_   >  **szolgáltatók** > **Microsoft.Web** > **helyek**  >    _**\<app\_neve >**_ > **config** > **authsettings**. 
+In [https://resources.azure.com](https://resources.azure.com), navigate to **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**. 
 
 Kattintson a **szerkesztése**, módosítsa a következő tulajdonság, majd **Put**. Ügyeljen arra, hogy a csere  _\<tartomány\_neve >_ kívánt tartomány.
 

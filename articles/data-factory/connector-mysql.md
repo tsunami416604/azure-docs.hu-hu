@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 43a27b98d8b53523bee8694ed3071e65a03355a6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808723"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335873"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával MySQL
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,13 +38,9 @@ Pontosabban, a MySQL-összekötő támogatja a MySQL **5.1-es verzió vagy újab
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A MySQL-összekötő használata esetén meg kell:
+Ha a MySQL-adatbázis nincs nyilvánosan elérhető, állítson be egy Self-hosted integrációs futásidejű szeretné. Önálló üzemeltetett integrációs futtatókörnyezetek kapcsolatos további tudnivalókért lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk. A integrációs futásidejű biztosít egy beépített MySQL-illesztőprogram verziója 3.7-től kezdődő, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram kell.
 
-- Állítson be egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben alább.
-- Telepítse a [MySQL összekötő/Net számára a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verzió 6.6.5 és az integrációs futásidejű gépen 6.10.7 között. Ez az 32 bites illesztőprogram nem kompatibilis a 64 bites infravörös
-
-> [!TIP]
-> Kattintson a "Hitelesítés sikertelen, mert a távoli fél bezárta az átviteli adatfolyamot." hibaüzenet, ha fontolja meg a MySQL-összekötő/Net frissítése újabb verzióra.
+Alacsonyabb, mint 3.7 Self-hosted IR verziójához, telepítenie kell a [MySQL összekötő/Net számára a Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verzió 6.6.5 és az integrációs futásidejű gépen 6.10.7 között. Ez az 32 bites illesztőprogram nem kompatibilis a 64 bites infravörös
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -59,14 +55,40 @@ Kapcsolódó MySQL-szolgáltatás támogatott a következő tulajdonságokkal:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **MySql** | Igen |
-| kiszolgáló | A MySQL-kiszolgáló neve. | Igen |
-| adatbázis | A MySQL-adatbázis neve. | Igen |
-| Séma | Az adatbázisban séma neve. | Nem |
-| felhasználónév | Adja meg a felhasználónevet a MySQL-adatbázishoz való kapcsolódáshoz. | Igen |
-| jelszó | Adja meg a megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
+| connectionString | Adja meg a MySQL-példány az Azure-adatbázishoz való kapcsolódáshoz szükséges adatokat. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Self-hosted integrációs futásidejű (ha az adattároló magánhálózaton található) vagy Azure integrációs futásidejű is használhatja. Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+
+Egy tipikus kapcsolati karakterlánc `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. A case / beállítható további tulajdonságokat:
+
+| Tulajdonság | Leírás | Beállítások | Szükséges |
+|:--- |:--- |:--- |:--- |:--- |
+| SSLMode | Ez a beállítás megadja, hogy az illesztőprogram használja SSL-titkosítást és ellenőrzési MySQL történő csatlakozás során. Például `SSLMode=<0/1/2/3/4>`| Letiltva (0) / előnyben részesített (1) **(alapértelmezett)** / szükséges (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nem |
+| useSystemTrustStore | Ez a beállítás megadja, hogy CA-tanúsítvány használatára, a rendszer megbízható áruházból vagy a megadott PEM-fájl. Például `UseSystemTrustStore=<0/1>;`| (1) engedélyezve vagy letiltva (0) **(alapértelmezett)** | Nem |
 
 **Példa**
+
+```json
+{
+    "name": "MySQLLinkedService",
+    "properties": {
+        "type": "MySql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+Ha a kapcsolódó MySQL-szolgáltatás a következő tartalom használta, az továbbra is támogatott-van, amíg az újjal továbbítja használandó javasoltak.
+
+**Előző hasznos:**
 
 ```json
 {

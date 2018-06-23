@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Impala Azure Data Factory (béta) használatával |} Microsoft Docs
+title: Adatok másolása az Impala Azure Data Factory (előzetes verzió) használatával |} Microsoft Docs
 description: 'Útmutató: adatok másolása Impala támogatott fogadó adattárolókhoz a másolási tevékenység használatával a data factory-folyamathoz.'
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 73987d03cb96fa421d193504fe6eaf6c3b5ddb18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49e9c338128cc857347bbf052c19dc34dd08f9c6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618769"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337617"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Adatok másolása az Impala Azure Data Factory (béta) használatával
+# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Adatok másolása az Impala Azure Data Factory (előzetes verzió) használatával
 
 Ez a cikk a másolási tevékenység használható az Azure Data Factory adatokat másolni Impala módját ismerteti. Buildekről nyújtanak a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
@@ -28,7 +28,7 @@ Ez a cikk a másolási tevékenység használható az Azure Data Factory adatoka
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. Ha a Data Factory, amely általában a rendelkezésre álló, 1 verzióját használja [másolási tevékenység az 1-es verziójú](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és visszajelzést. Ne használja éles környezetben.
+> Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -38,7 +38,7 @@ Adatok bármely támogatott fogadó adattárolóhoz Impala másolhatja. A másol
 
 ## <a name="get-started"></a>Bevezetés
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják adat-előállító tartozó entitások megadhatók a Impala összekötőhöz használt tulajdonságokat.
 

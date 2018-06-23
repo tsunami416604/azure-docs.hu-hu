@@ -24,7 +24,7 @@ Ellenőrizze, hogy értékének **PSVersion** 3.0 vagy 4.0-s verzióját. Ha nem
 ### <a name="set-your-azure-account-and-subscription"></a>Az Azure-fiók és -előfizetés beállítása
 Ha még nem rendelkezik Azure-előfizetéssel, aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
-Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezt a parancsot.
+Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezzel a paranccsal.
 
     Connect-AzureRmAccount
 

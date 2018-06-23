@@ -10,21 +10,21 @@ editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: de41120a3a9d399dafecde4225d56767efcd9f38
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 850b13becb2137c9e881b2d6a657bbd06216e96e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624829"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317146"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Futtassa a U-SQL és helyi hibakeresése a Visual Studio Code
 A cikkből megtudhatja, hogyan futtathat U-SQL feladatok egy helyi fejlesztési számítógép korai kódolási fázisok felgyorsítása érdekében, vagy helyileg a Visual Studio Code kód hibakereséséhez. Visual Studio Code Azure Data Lake eszköz vonatkozó utasításokért lásd: [használata Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>A U-SQL helyi futtatási környezet beállítása
 
-1. Válassza ki a Ctrl + Shift + P nyissa meg a parancs palettát, és írja be a **ADL: helyi futtatása függőségi letöltése** letöltése a csomagok.  
+1. Válassza ki a Ctrl + Shift + P nyissa meg a parancs palettát, és írja be a **ADL: helyi futtatása csomag letöltése** letöltése a csomagok.  
 
-   ![Töltse le az ADL LocalRun függőségi csomagok](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
+   ![Töltse le az ADL LocalRun függőségi csomagok](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
 2. Keresse meg a függőségi csomagok látható elérési útjáról a **kimeneti** ablaktáblán, majd telepítse BuildTools és Win10SDK 10240. Íme egy példa elérési útja:  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
@@ -44,7 +44,7 @@ A cikkből megtudhatja, hogyan futtathat U-SQL feladatok egy helyi fejlesztési 
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Indítsa el a helyi Futtatás szolgáltatást, és küldje el a U-SQL helyi fiók feladat 
-Az első felhasználó használja **ADL: helyi futtatása függőségi letöltése** letöltése a helyi futtatási csomagok, ha nem rendelkezik [U-SQL helyi futtatási környezet beállítása](#set-up-the-u-sql-local-run-environment).
+Az első felhasználó használja **ADL: helyi futtatása csomag letöltése** letöltése a helyi futtatási csomagok, ha nem rendelkezik [U-SQL helyi futtatási környezet beállítása](#set-up-the-u-sql-local-run-environment).
 
 1. Válassza ki a Ctrl + Shift + P nyissa meg a parancs palettát, és írja be a **ADL: helyi futtatása szolgáltatás indítása**.   
 2. Válassza ki **elfogadás** először a Microsoft szoftverlicenc-szerződést fogadásához. 
@@ -65,7 +65,7 @@ Az első felhasználó használja **ADL: helyi futtatása függőségi letölté
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Egy helyi hibakeresési a U-SQL-feladat indítása  
 Az első felhasználó:
 
-1. Használjon **ADL: helyi futtatása függőségi letöltése** letöltése a helyi futtatási csomagok, ha nem rendelkezik [U-SQL helyi futtatási környezet beállítása](#set-up-the-u-sql-local-run-environment).
+1. Használjon **ADL: helyi futtatása csomag letöltése** letöltése a helyi futtatási csomagok, ha nem rendelkezik [U-SQL helyi futtatási környezet beállítása](#set-up-the-u-sql-local-run-environment).
 2. Telepíti a .NET Core SDK 2.0 leírtak az üzenet mezőbe, ha nincs telepítve.
  
   ![Emlékeztető Dotnet telepíti](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)

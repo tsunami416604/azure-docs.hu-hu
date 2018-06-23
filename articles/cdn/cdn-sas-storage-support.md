@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/21/2018
 ms.author: v-deasim
-ms.openlocfilehash: ea779f4f809e51b57d36cd44f9c6674340d665a2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15a4e0a8d62b38fa7aa542d95e53d29621965666
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261168"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316568"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Az Azure CDN használatával a SAS használatával
 
@@ -41,7 +41,7 @@ A SAS-jogkivonat létrehozását követően érhető el a blob storage fájl hoz
  
 Példa:
  ```
-https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
+https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
 Beállítás paraméterekkel kapcsolatos további információkért lásd: [SAS paraméter szempontok](#sas-parameter-considerations) és [megosztott hozzáférési aláírást paraméterek](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters).
@@ -62,7 +62,7 @@ Ez a beállítás a legegyszerűbb, és egyetlen SAS tokent, az eredeti kiszolg�
 
    Példa:   
    ```
-   https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-04-17&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    
 3. A gyorsítótárazás időtartama finomhangolásához gyorsítótárazási szabályokkal vagy hozzáadásával `Cache-Control` fejlécek az eredeti kiszolgálón. Azure CDN kezeli a SAS-jogkivonat egyszerű lekérdezési karakterláncként, mert ajánlott eljárásként érdemes beállítania gyorsítótárazás időtartama. vagy az azelőtti a SAS-lejárati idő lejár. Ellenkező esetben a fájlt a hosszabb ideig tart, mint a biztonsági Társítások aktív gyorsítótárazza, ha a fájl esetleg érhető el az Azure CDN eredeti kiszolgálóra a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és engedélyezni szeretné a gyorsítótárazott fájl nem érhető el, végezze el a kiürítési művelet a fájl, törölje a jelölést a gyorsítótárból. A gyorsítótárazás időtartama az Azure CDN beállításával kapcsolatos információkért lásd: [vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának](cdn-caching-rules.md).
@@ -80,14 +80,14 @@ Ez a beállítás csak akkor **verizon Azure CDN Premium** profilok. Ezzel a be�
    Az alábbi minta URL-újraíró szabály egy reguláris kifejezési minta használ rögzítésével csoport és egy végpontot, nevű *storagedemo*:
    
    Forrás:   
-   `(/test/.*)`
+   `(\/container1\/.*)`
    
    Cél:   
    ```
-   $1?sv=2017-04-17&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-
-   ![CDN-URL-újraíró szabály](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![CDN-URL-újraíró szabály - balra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![CDN URL-újraíró szabály – jobb oldali](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
 
 2. Után az új szabály válik aktívvá, bárki hozzáférhet a megadott tároló a CDN-végpont, függetlenül attól, hogy használatát egy SAS-jogkivonatot az URL-címben lévő fájlok. A formátum a következő: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
@@ -118,14 +118,14 @@ Azure CDN biztonsági tokent használó hitelesítés használatához rendelkezn
    Az alábbi minta URL-újraíró szabály egy reguláris kifejezési minta használ rögzítésével csoport és egy végpontot, nevű *storagedemo*:
    
    Forrás:   
-   `(/test/.*)`
+   `(\/container1\/.*)`
    
    Cél:   
    ```
-   $1&sv=2017-04-17&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-
-   ![CDN-URL-újraíró szabály](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![CDN-URL-újraíró szabály - balra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![CDN URL-újraíró szabály – jobb oldali](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
 
 3. A biztonsági Társítások újítsa meg, ha győződjön meg arról, hogy az URL-újraíró szabály frissíti az új SAS-jogkivonat. 
 
@@ -140,7 +140,10 @@ SAS-paraméterek és Azure CDN nem láthatók el, mert a Azure CDN nem módosít
 | Engedélyezett IP-címek | Választható. Ha használ **Azure CDN Verizon**, ennek a paraméternek is beállíthatja a meghatározott tartományok [peremhálózati kiszolgáló IP-címtartományok Verizon Azure CDN](https://msdn.microsoft.com/library/mt757330.aspx). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert az IP-címei nem statikus.|
 | Megengedett protokollok | A SAS-fiókkal kérelme engedélyezett protokollokkal. A HTTPS beállítás ajánlott.|
 
-## <a name="see-also"></a>Lásd még
+## <a name="next-steps"></a>További lépések
+
+További információ a SAS tekintse meg a következő cikkeket:
 - [Közös hozzáférésű jogosultságkód (SAS) használatával](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 - [Közös hozzáférésű Jogosultságkód, 2. rész: Létrehozása és SAS-kód használata a Blob-tároló](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
-- [Tokent használó hitelesítés az Azure Content Delivery Network eszközök védelme](https://docs.microsoft.com/azure/cdn/cdn-token-auth)
+
+Jogkivonat hitelesítési beállításával kapcsolatos további információkért lásd: [védelmét biztosító Azure Content Delivery Network eszközök token hitelesítéssel](https://docs.microsoft.com/azure/cdn/cdn-token-auth).

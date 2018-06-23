@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 57bf8b81d8d7fee6eaee216b9a2e0c52aa625257
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a4a882781562ae71ad6c578577a9f9cd9096ef36
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868330"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331789"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -82,7 +82,7 @@ A hálózati házirend-kiszolgáló csatlakozik az Azure Active Directory, és e
 1. A kiszolgálón nyissa meg a **hozzáadása szerepkörök és szolgáltatások varázsló** a Kiszolgálókezelő gyors üzembe helyezés menüből.
 2. Válasszon **szerepköralapú vagy szolgáltatásalapú telepítés** a telepítés típusát.
 3. Válassza ki a **hálózati házirend- és elérési szolgáltatások** kiszolgálói szerepkört. Előfordulhat, hogy előugró ablak arról, ez a szerepkör futtatásához szükséges szolgáltatásokat.
-4. Kövesse a varázsló utasításait, amíg a Jóváhagyás lap. Válassza ki **telepítése**.
+4. Kövesse a varázsló utasításait, amíg a Jóváhagyás lap. Válassza az **Install** (Telepítés) lehetőséget.
 
 Most, hogy a hálózati házirend-kiszolgálójának kijelölt kiszolgáló van, ezt a kiszolgálót a VPN-megoldás a bejövő RADIUS-kérelmeket kezelnek is konfigurálnia kell.
 
@@ -172,7 +172,7 @@ Ez a szakasz a kialakítási szempontokat és javaslatokat sikeres hálózati h�
 ### <a name="configuration-limitations"></a>Konfiguráció korlátozásai
 
 - Az Azure MFA számára a hálózati házirend-kiszolgáló bővítmény nem tartalmazza az eszközök, felhasználók és a beállítások áttelepítéséhez az MFA kiszolgáló a felhőbe. Ezért javasoljuk, hogy az új központi telepítéséhez, nem pedig meglévő központi telepítési bővítményének használatával. A bővítmény egy meglévő telepítéshez használja, ha a felhasználók rendelkeznek igazolása-fel újra az MFA adatait a felhőben feltöltéséhez végrehajtásához.  
-- Használja az egyszerű felhasználónév a helyszíni Active Directoryból a hálózati házirend-kiszolgáló kiterjesztést a másodlagos Outlookhoz végrehajtásához az Azure MFA azonosításhoz A bővítmény beállítható úgy, hogy a másodlagos bejelentkezési Azonosítóval vagy eltérő UPN egyéni Active Directory mező egy másik azonosítót. Lásd: [speciális konfigurációs beállítások az NPS-bővítmény a multi-factor Authentication](howto-mfaserver-nps-vpn.md) további információt.
+- Használja az egyszerű felhasználónév a helyszíni Active Directoryból a hálózati házirend-kiszolgáló kiterjesztést a másodlagos Outlookhoz végrehajtásához az Azure MFA azonosításhoz A bővítmény beállítható úgy, hogy a másodlagos bejelentkezési Azonosítóval vagy eltérő UPN egyéni Active Directory mező egy másik azonosítót. Lásd: [speciális konfigurációs beállítások az NPS-bővítmény a multi-factor Authentication](howto-mfa-nps-extension-advanced.md) további információt.
 - Nem minden titkosítási protokollokkal támogatja az összes ellenőrzési módszert.
    - **PAP** támogatja a telefonhívás, a egyirányú SMS-üzenet, a mobilalkalmazáson keresztüli értesítések és a mobilalkalmazás ellenőrzőkódjának
    - **CHAPv2** és **EAP** telefonhívás és a mobilalkalmazáson keresztüli értesítések támogatása

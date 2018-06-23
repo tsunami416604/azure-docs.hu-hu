@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: c180dcf5d769245f3fa2485ccee2cbc18ecf5f67
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 9220eb3800cd1b7b46e276bbda5bb88fc06d5e54
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763492"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337827"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -79,11 +79,11 @@ App Service az [összevont identitás](https://en.wikipedia.org/wiki/Federated_i
 
 | Szolgáltató | Bejelentkezési végpont |
 | - | - |
-| [Azure Active Directory](../active-directory/active-directory-whatis.md) | `/.auth/login/aad` |
+| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
 | [Microsoft-fiók](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoft` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
-| [Twitter](https://developer.twitter.com/docs/basics/authentication) | `/.auth/login/twitter` |
+| [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
 Ha engedélyezi a hitelesítési és engedélyezési e szolgáltatók egyikét, a bejelentkezési végpont érhető el a felhasználók hitelesítéséhez és a hitelesítési tokenek az szolgáltató-ellenőrzéshez. Megadhatja a felhasználók tetszőleges számú, bejelentkezési beállítás alkalmazásaiba. Integrálhatja más identitásszolgáltató vagy [saját egyéni identitáskezelési megoldás][custom-auth].
 

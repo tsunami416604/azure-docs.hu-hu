@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/22/2018
 ms.author: raynew
-ms.openlocfilehash: d78980b69e6598dff349c75527fc27d8a04dfa18
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 16a19a862d4fc6b424e8441ec5377ea3c819fadb
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301184"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317442"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware és fizikai kiszolgálók replikálást az Azure-támogatási mátrix
 
@@ -76,15 +76,15 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való
 
 **Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel verziója** |
 --- | --- | --- |
-14.04 LTS | 9.13 | a 3.13.0-137-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-104-generic 4.4.0-21-Generic |
-14.04 LTS | 9.14 | a 3.13.0-142-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-116-generic 4.4.0-21-Generic |
-14.04 LTS | 9.15 | a 3.13.0-144-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-119-generic 4.4.0-21-Generic |
+14.04 LTS | 9.17 | a 3.13.0-149-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-127-generic 4.4.0-21-Generic |
 14.04 LTS | 9.16 | a 3.13.0-144-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-119-generic 4.4.0-21-Generic |
-16.04 LTS | 9.13 | a 4.4.0-104-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic 4.10.0-14-Generic |
-16.04 LTS | 9.14 | a 4.4.0-116-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-36-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1011-azure 4.13.0-1005-Azure |
-16.04 LTS | 9.15 | a 4.4.0-119-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-38-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1012-azure 4.13.0-1005-Azure |
-16.04 LTS | 9.16 | a 4.4.0-119-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-38-generic, 4.13.0-16-Generic<br/>a 4.11.0-1016-azure, 4.11.0-1009-Azure<br/>a 4.13.0-1012-azure 4.13.0-1005-Azure |
-
+14.04 LTS | 9.15 | a 3.13.0-144-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-119-generic 4.4.0-21-Generic |
+14.04 LTS | 9.14 | a 3.13.0-142-generic, 3.13.0-24-Generic<br/>a 3.16.0-77-generic, 3.16.0-25-Generic<br/>a 3.19.0-80-generic, 3.19.0-18-Generic<br/>a 4.2.0-42-generic, 4.2.0-18-Generic<br/>a 4.4.0-116-generic 4.4.0-21-Generic |
+|||
+16.04 LTS | 9.17 | a 4.4.0-127-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-43-generic 4.13.0-16-Generic |
+16.04 LTS | 9.16 | a 4.4.0-119-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-38-generic 4.13.0-16-Generic |
+16.04 LTS | 9.15 | a 4.4.0-119-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-38-generic 4.13.0-16-Generic |
+16.04 LTS | 9.14 | a 4.4.0-116-generic, 4.4.0-21-Generic<br/>a 4.8.0-58-generic, 4.8.0-34-Generic<br/>a 4.10.0-42-generic, 4.10.0-14-Generic<br/>a 4.11.0-14-generic, 4.11.0-13-Generic<br/>a 4.13.0-36-generic 4.13.0-16-Generic |
 
 
 ### <a name="debian-kernel-versions"></a>Debian kernel-verziók
@@ -92,16 +92,19 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 való 5.11, 6.1 való
 
 **Támogatott kiadás** | **Az Azure Site Recovery mobilitási szolgáltatás-verzió** | **Kernel verziója** |
 --- | --- | --- |
+Debian 7 | 9.17 | a 3.2.0-6-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
 Debian 7 | 9.14, 9.15, 9.16 | a 3.2.0-5-amd64, 3.2.0-4-AMD64 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14, 9.15 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+|||
+Debian 8 | 9.17 | a 3.16.0-6-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 Debian 8 | 9.16 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.6-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
+Debian 8 | 9.14, 9.15 | a 3.16.0-5-amd64, hogy 4.9.0-0.bpo.5-amd64 4.9.0-0.bpo.4-amd64 3.16.0-4-AMD64 |
 
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux rendszerek/Vendég fájltároló
 
 **Összetevő** | **Támogatott**
 --- | ---
-fájlrendszer | ext3, ext4, XFS.
+Fájlrendszer | ext3, ext4, XFS.
 Kötetkezelő | LVM2.
 Paravirtualized tárolóeszközök | A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 Több sor blokk IO eszközök | Nem támogatott.
@@ -228,7 +231,7 @@ Tárolási, hálózati, Azure virtuális gépek között erőforráscsoportok á
 
 ## <a name="mobility-service"></a>Mobilitási szolgáltatás
 
-**Name (Név)** | **Leírás** | **legújabb verzió** | **Részletek**
+**Name (Név)** | **Leírás** | **Legújabb verzió** | **Részletek**
 --- | --- | --- | --- | ---
 Azure Site Recovery egyesített telepítő | Koordinálja a helyszíni VMware-kiszolgálók és az Azure közötti kommunikáció <br/><br/> Helyszíni VMware-kiszolgálókon telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)
 Mobilitási szolgáltatás | Koordinálja a helyszíni VMware-kiszolgáló/fizikai kiszolgálók és az Azure és a másodlagos hely közötti replikálás<br/><br/> VMware virtuális gép vagy fizikai kiszolgálók replikálni kívánt telepítve | 9.12.4653.1 (elérhető a portál) | [Legújabb funkcióit és javításokat](https://aka.ms/latest_asr_updates)

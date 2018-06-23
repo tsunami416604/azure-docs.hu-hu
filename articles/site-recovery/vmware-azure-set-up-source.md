@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: b2c564e8d49e39d9cdc09d3fe168388d579de70e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 01b0717660265b28d4ea7d804a761e7e425c997c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29812655"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319600"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás környezet beállítása a VMware Azure replikáció
 
@@ -39,12 +39,12 @@ A cikk feltételezi, hogy már rendelkezik:
 
 ## <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
-Állítsa be a konfigurációs kiszolgáló, egy helyszíni VMware virtuális gép, nyissa meg virtualizációs formátum (OVF) sablonnal. [További](concepts-vmware-to-azure-architecture.md) azokról az az összetevőkről, amelyek a VMware virtuális gép lesz telepítve. 
+Állíthat be a konfigurációs kiszolgáló, egy helyszíni VMware virtuális gép egy megnyitott virtualizálási alkalmazás (petesejtek) sablon segítségével. [További](concepts-vmware-to-azure-architecture.md) azokról az az összetevőkről, amelyek a VMware virtuális gép lesz telepítve.
 
 1. További tudnivalók a [Előfeltételek](vmware-azure-deploy-configuration-server.md#prerequisites) a konfigurációs kiszolgáló környezethez.
 2. [Ellenőrizze a kapacitás számok](vmware-azure-deploy-configuration-server.md#capacity-planning) központi telepítéshez.
-3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVF sablon (how-to-telepíteni-konfiguráció-server.md) állítson be egy helyszíni VMware virtuális gép, amelyen a konfigurációs kiszolgáló.
-4. A VMware virtuális gép bekapcsolása és [bejegyzéséhez](vmware-azure-deploy-configuration-server.md#register-the-configuration-server) a helyreállítási szolgáltatások tároló.
+3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) petesejtek sablon állítson be egy helyszíni VMware virtuális gép, amelyen a konfigurációs kiszolgáló. Az engedélyt a sablonhoz megadott értékelési engedélyhez és érvényes 180 napig tart. POST ezen időszak alatt ügyféligények határidődátumával engedéllyel rendelkező a windows aktiválása.
+4. A VMware virtuális gép bekapcsolása és [bejegyzéséhez](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) a helyreállítási szolgáltatások tároló.
 
 
 ## <a name="add-the-vmware-account-for-automatic-discovery"></a>Adja hozzá a VMware-fiókot a automatikus felderítése

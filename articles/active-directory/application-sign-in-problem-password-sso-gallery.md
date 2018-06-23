@@ -2,22 +2,24 @@
 title: A jelszó-konfigurációjának Azure AD-katalógusában alkalmazáshoz való bejelentkezés problémák egyszeri bejelentkezés |} Microsoft Docs
 description: Azure AD-katalógusában alkalmazással kapcsolatos problémák elhárítása beállított jelszót egyszeri bejelentkezést.
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 9458dc3254b6bfa377adeeff1c1abcb8bfdc0d94
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: dbb25ee959193ebc8d1c15ad76555e8d7dc9fe4b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069197"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331496"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Jelszó az egyszeri bejelentkezés beállítása az Azure AD-gyűjtemény alkalmazáshoz való bejelentkezés problémák
 
@@ -80,7 +82,7 @@ Az útmutató bevezeti Önt [a hozzáférési Panel bővítmény telepítése cs
 
 ## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>A hozzáférési Panel az Internet Explorer hibaelhárítása
 
-Kövesse a [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-Troubleshoot) útmutatót a hozzáféréshez olyan diagnosztikai eszköz és részletes útmutatást tartalmaz az a bővítmény konfigurálása az Internet Explorer.
+Kövesse a [hibaelhárítása a hozzáférési Panel bővítményét az Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) útmutatót a hozzáféréshez olyan diagnosztikai eszköz és részletes útmutatást tartalmaz az a bővítmény konfigurálása az Internet Explorer.
 
 ## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jelszó egyszeri bejelentkezés az Azure AD gyűjtemény alkalmazás konfigurálása
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: b13f726ada6deba67d5ed484eca769fed354e400
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca30818b015e95594d3b2c9861d98f24174c0aea
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836783"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318163"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az alkalmazás szolgáltatási környezet 1-es verzió
 
@@ -62,20 +62,20 @@ Például így kevésbé hatékony számítási erőforrással egy munkavégző-
 
 Az előtér- és a feldolgozói készletek elérhető számítási erőforrások mennyisége további részletekért lásd: [az App Service-környezetek konfigurálása][HowToConfigureanAppServiceEnvironment].  
 
-A rendelkezésre álló számítási erőforrás mérete egy App Service Environment-környezet támogatja a részletekért tekintse meg a [App Service szolgáltatás díjszabása] [ AppServicePricing] lapon, és tekintse át az elérhető lehetőségek a prémium tarifacsomag az App Service-környezetek számára.
+A rendelkezésre álló számítási erőforrás mérete egy App Service Environment-környezet támogatja a részletekért tekintse meg a [App Service szolgáltatás díjszabása] [ AppServicePricing] lapon, és tekintse át az App Service Environment-környezetek az elérhető lehetőségek a Prémium szintű tarifacsomagban használható.
 
 ## <a name="virtual-network-support"></a>Virtuális hálózati támogatása
-Az App Service-környezetek hozhatók létre **vagy** az Azure Resource Manager virtuális hálózati **vagy** klasszikus telepítési modell virtuális hálózat ([további információ a virtuális hálózatok][MoreInfoOnVirtualNetworks]).  Mivel az App Service-környezetek mindig szerepel egy virtuális hálózatot, és pontosan egy virtuális hálózati alhálózat, belül kihasználható a biztonsági mindkét bejövő és kimenő hálózati kommunikáció vezérlésére virtuális hálózatok.  
+Az App Service-környezetek hozhatók létre **vagy** az Azure Resource Manager virtuális hálózati **vagy** klasszikus telepítési modell virtuális hálózat ([további információ a virtuális hálózatok] [MoreInfoOnVirtualNetworks]).  Mivel az App Service-környezetek mindig szerepel egy virtuális hálózatot, és pontosan egy virtuális hálózati alhálózat, belül kihasználható a biztonsági mindkét bejövő és kimenő hálózati kommunikáció vezérlésére virtuális hálózatok.  
 
 Az App Service Environment-környezet vagy nyilvános IP-címmel, vagy a belső csak Azure belső Load Balancer (ILB) címmel rendelkező irányuló internetes lehet.
 
 Használhat [hálózati biztonsági csoportok] [ NetworkSecurityGroups] korlátozni a bejövő hálózati kommunikáció az alhálózathoz, ahol az App Service-környezetek található.  Ez lehetővé teszi a felsőbb rétegbeli eszközöket és szolgáltatásokat, például a webalkalmazási tűzfalak és a hálózati Szolgáltatottszoftver-szolgáltatók mögött alkalmazásainak futtatásához.
 
-Alkalmazások is gyakran kell hozzáférhet a vállalati erőforrásokhoz, például a belső adatbázisok és webszolgáltatásokat.  Egy gyakori megoldás, hogy elérhetővé tegye ezeket a végpontokat csak a belső hálózati forgalom továbbítására egy Azure virtuális hálózaton belül.  A belső szolgáltatásként az azonos virtuális hálózatban egy App Service Environment-környezet része, ha a környezetben futó alkalmazások érhetik el azokat, többek között a végpontok segítségével elérhető [pont-pont] [ SiteToSite] és [Azure ExpressRoute] [ ExpressRoute] kapcsolatok.
+Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz.  Egy gyakori megoldás, hogy elérhetővé tegye ezeket a végpontokat csak a belső hálózati forgalom továbbítására egy Azure virtuális hálózaton belül.  A belső szolgáltatásként az azonos virtuális hálózatban egy App Service Environment-környezet része, ha a környezetben futó alkalmazások érhetik el azokat, többek között a végpontok segítségével elérhető [pont-pont] [ SiteToSite] és [Azure ExpressRoute] [ ExpressRoute] kapcsolatok.
 
-Az App Service Environment-környezetek virtuális hálózatok és a helyszíni hálózatokban működése vonatkozó részletes információért tekintse meg a következő cikkeket a [hálózati architektúra][NetworkArchitectureOverview], [bejövő forgalom szabályozásának][ControllingInboundTraffic], és [háttérkiszolgálókon való biztonságos kapcsolódás][SecurelyConnectingToBackends]. 
+Az App Service Environment-környezetek virtuális hálózatok és a helyszíni hálózatokban működése vonatkozó részletes információért tekintse meg a következő cikkeket a [hálózati architektúra][NetworkArchitectureOverview], [bejövő vezérlése Forgalom][ControllingInboundTraffic], és [háttérkiszolgálókon való biztonságos kapcsolódás során][SecurelyConnectingToBackends]. 
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 App Service Environment-környezetek megkezdéséhez, lásd: [hogyan számára hozzon létre egy App Service-környezet][HowToCreateAnAppServiceEnvironment]
 
 Az App Service Environment-környezet hálózati architektúra áttekintése, tekintse meg a [hálózati architektúra áttekintése] [ NetworkArchitectureOverview] cikk.
@@ -93,7 +93,7 @@ További információ az App Service-környezetek használatáról az ExpressRou
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
+[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

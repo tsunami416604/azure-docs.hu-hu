@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2016
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 02d7cb28411e0baec20d334994b385dcd3b06451
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a84cca4b0944db5cde038fb72917ebac23d0be8c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293381"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317459"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directoryban kulcsváltás aláírása
 A cikk ismerteti, mit kell tudnia a nyilvános kulcsok biztonsági jogkivonatok aláírásához használt Azure Active Directory (Azure AD). Fontos megjegyezni, hogy rendszeres időközönként, és vészhelyzet esetén a kulcsok helyettesítő volt állítva azonnal. Minden alkalmazás, amely használhatja az Azure Active Directory kell tudni programozott módon a kulcsváltás folyamat, vagy a rendszeres manuális helyettesítő-folyamatot. Olvasási megértése, hogyan működnek a kulcsokat, továbbra is az alkalmazás a Váltás hatásának értékelése és az alkalmazás frissítésére, vagy kezelje a kulcsváltás, szükség esetén rendszeres manuális váltása folyamatot.

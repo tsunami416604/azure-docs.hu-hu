@@ -16,12 +16,12 @@ ms.date: 06/18/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 9aa060c6f28adb8361fcb9267ea658fda27b442c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 193be37f4c804d087bf404f14bc60e27349038ad
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223450"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319037"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS alkalmazások integrálása az Azure Active Directoryval
 
@@ -137,7 +137,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco felhő](ciscocloud-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex – a felhasználók átadása](cisco-webex-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen – a felhasználók átadása](clarizen-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Törölje a jelet áttekintése](clearreview-tutorial.md)|
@@ -224,7 +224,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-freshgrade-tutorial.png)| [FreshGrade](freshgrade-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-freshservice-tutorial.png)| [Freshservice](freshservice-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-front-tutorial.png)| [Első](front-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-fuse-tutorial.png)| [biztosító](fuse-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-fuse-tutorial.png)| [Biztosító](fuse-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-fuze-tutorial.png)| [Fuze](fuze-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G csomag](google-apps-tutorial.md)|[G Suite – a felhasználók átadása](google-apps-provisioning-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-gaggleamp-tutorial.png)| [GaggleAMP](gaggleamp-tutorial.md)|
@@ -403,7 +403,7 @@ Törölték az Azure AD-be előre integrált Szolgáltatottszoftver-alkalmazáso
 | ![embléma](./media/tutorial-list/active-directory-saas-pantheon-tutorial.png)| [Pantheon](pantheon-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-patentsquare-tutorial.png)| [PatentSQUARE](patentsquare-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-pegasystems-tutorial.png)| [Pega rendszerek](pegasystems-tutorial.md)|
-| ![embléma](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [Személyek](people-tutorial.md)|
+| ![embléma](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [személyek](people-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-peoplecart-tutorial.png)| [Peoplecart](peoplecart-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-perceptionunitedstates-tutorial.png)| [Egyensúlyozhatom az Amerikai Egyesült Államok (nem UltiPro)](perceptionunitedstates-tutorial.md)|
 | ![embléma](./media/tutorial-list/active-directory-saas-performancecentre-tutorial.png)| [PerformanceCentre](performancecentre-tutorial.md)|

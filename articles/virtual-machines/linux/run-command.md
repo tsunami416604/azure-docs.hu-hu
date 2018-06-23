@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 93972c88676cceef07b39b4a4ed34bab5b74cbd3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285756"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334873"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Futtassa a Linux virtuális gép PowerShell parancsfájloknál ad-parancs futtatása
 
@@ -23,7 +23,7 @@ Futtassa a parancsot használja a Virtuálisgép-ügynök az Azure Linux virtuá
 
 A virtuális gépek eléréséhez használható több lehetőség áll rendelkezésre. A parancs futtatása távolról használata az ügynököt a virtuális gépek parancsfájlok is futtathatók. Futtatási parancs is használható az Azure portálon keresztül [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Ez a lehetőség akkor hasznos, ha szeretné, hogy egy parancsfájl witin egy virtuális gép futtatásához, és egyik hibaelhárítása, és javíthatja az RDP nem rendelkező virtuális gép egyetlen módja vagy SSH-port nyissa meg a nem megfelelő hálózati vagy a rendszergazda felhasználó miatt az összes forgatókönyv konfiguráció.
+Ez a lehetőség akkor hasznos, ha szeretné, hogy a virtuális gépekről parancsfájl futtatása, és egyik hibaelhárítása, és javíthatja az RDP nem rendelkező virtuális gép egyetlen módja vagy SSH-port helytelen hálózati vagy a rendszergazda felhasználó miatt nyissa meg az összes forgatókönyv konfiguráció.
 
 ## <a name="restrictions"></a>Korlátozások
 

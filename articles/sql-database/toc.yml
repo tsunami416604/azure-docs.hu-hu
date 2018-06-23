@@ -98,22 +98,22 @@
           href: sql-database-dtu-resource-limits-single-databases.md
         - name: Önálló adatbázis erőforrásainak méretezése
           href: sql-database-single-database-scale.md
-        - name: Rugalmas készletek és készletezett adatbázisok
-          items:
-            - name: Rugalmas készletek és készletezett adatbázisok
-              href: sql-database-elastic-pool.md
-            - name: Készletek és készletezett adatbázisok kezelése
-              href: sql-database-elastic-pool-manage.md
-            - name: vCore-alapú erőforráskorlátok
-              href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU-alapú erőforráskorlátok
-              href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: Rugalmas készletek erőforrásainak méretezése
-          href: sql-database-elastic-pool-scale.md
         - name: Kapcsolati architektúra
           href: sql-database-connectivity-architecture.md
         - name: A T-SQL eltérései
           href: sql-database-transact-sql-information.md
+    - name: Rugalmas készletek és készletezett adatbázisok
+      items:
+        - name: Rugalmas készletek és készletezett adatbázisok
+          href: sql-database-elastic-pool.md
+        - name: Készletek és készletezett adatbázisok kezelése
+          href: sql-database-elastic-pool-manage.md
+        - name: vCore-alapú erőforráskorlátok
+          href: sql-database-vcore-resource-limits-elastic-pools.md
+        - name: DTU-alapú erőforráskorlátok
+          href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: Rugalmas készletek erőforrásainak méretezése
+          href: sql-database-elastic-pool-scale.md
     - name: Felügyelt példányok
       items:
         - name: Felügyelt példányok

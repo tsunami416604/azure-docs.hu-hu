@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232362"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335057"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory jelentéskészítés – gyakori kérdések
 
@@ -72,7 +72,7 @@ Ez a cikk reporting Azure Active Directory (Azure AD) kapcsolatos gyakran feltet
 
 **K: hogyan sok rekord letölthető Azure-portálon?**
 
-**V:** legfeljebb 5000 rekordok tölthet le az Azure-portálon. A rekordok alapján vannak rendezve *legutóbbi* és alapértelmezés szerint le a legfrissebb 5000 rögzíti. Rekord mérete nagyobb, mint 5000, adja meg a szűrési feltételeket, majd kattintson a *parancsfájl* gomb az Azure portálon. Ez letölti egy PowerShell-parancsfájlt, amely futtathatja a szűrési feltételeknek megfelelő összes rekordot egy CSV-fájl létrehozásához. PowerShell-parancsprogram futtatásához szükséges *felügyeleti üzemmód*. További információkért lásd: [töltse le a bejelentkezési tevékenységek](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
+**V:** legfeljebb 5000 rekordok tölthet le az Azure-portálon. A rekordok alapján vannak rendezve *legutóbbi* és alapértelmezés szerint le a legfrissebb 5000 rögzíti.
 
 ---
 

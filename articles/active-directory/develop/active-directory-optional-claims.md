@@ -16,12 +16,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4670a7e957970acea54ff69d56edcd45092c8fe
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ffd774477881be6b7f46dd38bbc88c8d019223aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157231"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317204"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Nem kötelező jogcímek, az Azure AD (előzetes verzió)
 
@@ -52,7 +52,7 @@ A választható alkalmazások is használhatnak alapértelmezés szerint elérhe
 
 **2. táblázat: Standard választható jogcímek készletéhez**
 
-| Név                     | Leírás                                                                                                                                                                                     | A jogkivonat típusa | Felhasználó típusa | Megjegyzések                                                                                                                                                                                                                                                                                   |
+| Name (Név)                     | Leírás                                                                                                                                                                                     | A jogkivonat típusa | Felhasználó típusa | Megjegyzések                                                                                                                                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `auth_time`                | Amikor a felhasználó utoljára hitelesített idő.  Lásd: OpenID Connect specifikációi.                                                                                                                                | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_region_scope`      | Az erőforrás-bérlő régió                                                                                                                                                                   | JWT        |           |                                                                                                                                                                                                                                                                                         |
@@ -76,7 +76,7 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepelnek, de v2.0 j
 
 **3. táblázat: Csak V2.0 választható jogcímek**
 
-| JWT jogcím     | Név                            | Leírás                                                                                                                    | Megjegyzések |
+| JWT jogcím     | Name (Név)                            | Leírás                                                                                                                    | Megjegyzések |
 |---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
 | `ipaddr`      | IP-cím                      | Az IP-címet az ügyfél a bejelentkezett.                                                                                      |       |
 | `onprem_sid`  | A helyi biztonsági azonosítója |                                                                                                                                |       |
@@ -85,7 +85,7 @@ Ezeket a jogcímeket 1.0-s verziójú jogkivonatok mindig szerepelnek, de v2.0 j
 | `in_corp`     | Vállalati hálózaton belül        | Ha az ügyfél bejelentkezik a vállalati hálózatról jeleket. Ha nem, a jogcím nincs megadva                     |       |
 | `nickname`    | Becenév.                        | A felhasználó, a Vezetéknév vagy utónév megadva külön kiegészítő nevét.                                                             |       |                                                                                                                |       |
 | `family_name` | Vezetéknév                       | Az utolsó nevét, Vezetéknév vagy családnév felhasználó biztosít az Azure AD-felhasználói objektum. <br>"family_name":"Miller" |       |
-| `given_name`  | Keresztnév                      | Az első biztosít vagy az "adott" a felhasználó nevét, az Azure AD-felhasználói objektum vannak megadva.<br>"given_name": "Frank"                   |       |
+| `given_name`  | Utónév                      | Az első biztosít vagy az "adott" a felhasználó nevét, az Azure AD-felhasználói objektum vannak megadva.<br>"given_name": "Frank"                   |       |
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságok
 
@@ -162,7 +162,7 @@ A választható jogcímek, az alkalmazás által kért deklarálja. Az alkalmaz�
 
 **5. táblázat: OptionalClaims típus tulajdonságokat.**
 
-| Név        | Típus                       | Leírás                                           |
+| Name (Név)        | Típus                       | Leírás                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | A gyűjtemény (OptionalClaim) | A JWT-Azonosítót jogkivonatban visszaadott választható jogcímeket.     |
 | `accessToken` | A gyűjtemény (OptionalClaim) | A választható jogcímeket a JWT jogkivonatot adott vissza. |
@@ -176,7 +176,7 @@ Ha egy adott jogcím támogatja, a további tulajdonságok mező OptionalClaim v
 
 **6. táblázat: OptionalClaim típus tulajdonságokat.**
 
-| Név                 | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
+| Name (Név)                 | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím nevét.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | A forrás (könyvtárobjektum) a jogcím. Előre meghatározott jogcím és a felhasználói jogcímek bővítmény tulajdonságai vannak. Ha az érték null, a választható előre meghatározott jogcím nincs. Ha az érték felhasználói, a name tulajdonság értéke a user objektum a bővített tulajdonság. |

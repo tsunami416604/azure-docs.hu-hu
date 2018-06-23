@@ -117,6 +117,22 @@
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kapcsolatfelvétel a támogatási szolgáltatással
       href: ../azure-supportability/how-to-create-azure-support-request.md
+- name: Példák
+  items:
+    - name: REST API
+      items:
+        - name: A vállalati költségek áttekintése
+          href: billing-review-enterprise-billing.md
+        - name: Az előfizetés használatának áttekintése
+          href: billing-review-subscription-billing.md
+    - name: .NET-minták
+      items:
+        - name: Számlázási API kódmintája
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Használati API kódmintája
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API kódmintája
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Referencia
   items:
     - name: Számlázásautomatizálási forgatókönyvek
@@ -142,11 +158,3 @@
       items:
         - name: Vállalati jelentéskészítési REST API
           href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
-    - name: Számlázási kódminták
-      items:
-        - name: Számlázási API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Használati API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: RateCard API kódmintája
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'

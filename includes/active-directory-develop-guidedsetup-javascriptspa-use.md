@@ -1,4 +1,4 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft hitelesítési könyvtár (MSAL) segítségével bejelentkezés a felhasználói
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft hitelesítési könyvtár (MSAL) segítségével a felhasználói bejelentkezés
 
 1.  Hozzon létre egy fájlt `app.js`. Ha a Visual Studio használ, válassza ki a project (projekt gyökérmappájában), kattintson a jobb gombbal, és válassza: `Add`  >  `New Item`  >  `JavaScript File`:
 2.  Adja hozzá a következő kódot a `app.js` fájlt:
@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show Sign-Out button
+        // Show sign-off button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -81,7 +81,7 @@ function callGraphApi() {
 /**
  * Callback method from sign-in: if no errors, call callGraphApi() to show results.
  * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
+ * @param {object} token - The token received from sign-in
  * @param {object} error - The error string
  * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
@@ -119,16 +119,16 @@ Ez az útmutató által generált SPA hajtsa végre közvetlenül a Azonosítót
 
 #### <a name="getting-a-user-token-interactively"></a>A felhasználói token első interaktív módon
 
-Miután a kezdeti bejelentkezés, nem szeretné a kérje meg felhasználók minden alkalommal, amikor kérjen így elért egy erőforrást – tokent kell újból hitelesítésre *acquireTokenSilent* kell használni a legtöbbször ennek tokenek beszerzése. Vannak azonban olyan helyzetekben, amelyekre szüksége van azzal kényszerítheti a felhasználók kommunikálni az Azure Active Directory v2 végpont – például:
--   Felhasználók esetleg adja meg újra a hitelesítő adataikat, mert lejárt a jelszava
--   Az alkalmazás, amelyet a felhasználó járul hozzá az erőforráshoz való hozzáférés
--   Kéttényezős hitelesítés szükség
+Miután a kezdeti bejelentkezés, nem szeretné, hogy kérje meg a felhasználóknak minden alkalommal, amikor kérjen így elért egy erőforrást – tokent kell újból hitelesítésre *acquireTokenSilent* kell használni a legtöbbször ennek tokenek beszerzése. Vannak azonban olyan helyzetekben, hogy szeretné-e kommunikálni az Azure Active Directory v2 végpont – a felhasználókat néhány példa:
+- Felhasználók esetleg adja meg újra a hitelesítő adataikat, mert lejárt a jelszava
+- Az alkalmazás, amelyet a felhasználó járul hozzá az erőforráshoz való hozzáférés
+- Kéttényezős hitelesítés szükség
 
-Hívja a *acquireTokenRedirect(scope)* irányít át felhasználók az Azure Active Directory v2 végpont eredményez (vagy *acquireTokenPopup(scope)* eredménye egy előugró ablak) Ha a felhasználók számára kell a erősítse meg a hitelesítő adataikat, adjon engedélye szükséges erőforrás, vagy befejezése a két kéttényezős hitelesítéssel.
+Hívja a *acquireTokenRedirect(scope)* irányít át felhasználók az Azure Active Directory v2 végpont eredményez (vagy *acquireTokenPopup(scope)* eredménye egy előugró ablak) Ha a felhasználók számára kell Erősítse meg a hitelesítő adataikat, adjon engedélye szükséges erőforrás, vagy befejezése a két kéttényezős hitelesítéssel.
 
 #### <a name="getting-a-user-token-silently"></a>A felhasználói token első beavatkozás nélkül
 A ` acquireTokenSilent` metódus kezeli a token kérése és -megújítás felhasználói beavatkozás nélkül. Miután `loginRedirect` (vagy `loginPopup`) végrehajtása az első alkalommal `acquireTokenSilent` az beszerzése a jogkivonatokat, mivel kérelmezése vagy megújítása jogkivonatok hívásainak beavatkozás nélkül történik a további hívások - védett erőforrások eléréséhez használt általánosan használt módszer.
-`acquireTokenSilent`sikertelen lehet, hogy bizonyos esetekben – például a jelszó lejárt. Az alkalmazás kezeli ezt a kivételt, két módon:
+`acquireTokenSilent` sikertelen lehet, hogy bizonyos esetekben – például a jelszó lejárt. Az alkalmazás kezeli ezt a kivételt, két módon:
 
 1.  Hívás `acquireTokenRedirect` azonnal, ennek eredményeképpen a felhasználótól a bejelentkezéshez. Ezt a mintát gyakran használják az online alkalmazások esetén nincs hitelesítve tartalma az alkalmazásban a felhasználó számára elérhető. Ez az interaktív telepítő által létrehozott mintánkban Ez a minta.
 
@@ -198,13 +198,13 @@ Ez az útmutató által létrehozott minta alkalmazásban a `callWebApiWithToken
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>A felhasználó kijelentkezik egy olyan metódus hozzáadása
+## <a name="add-a-method-to-sign-off-the-user"></a>A felhasználó bejelentkezni egy olyan metódus hozzáadása
 
 Adja hozzá a következő kódot a `app.js` fájlt:
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign off the user
  */
 function signOut() {
     userAgentApplication.logout();

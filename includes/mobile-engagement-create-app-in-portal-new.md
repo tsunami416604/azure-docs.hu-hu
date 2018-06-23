@@ -1,5 +1,5 @@
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. Kattintson az **Erőforrás létrehozása**, a **Web + Mobil**, majd a **Mobile Engagement** elemre.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
@@ -26,7 +26,7 @@
 7. Kattintson az azon platformhoz létrehozott alkalmazásra, amelyhez fejleszt. 
    
     ![](./media/mobile-engagement-create-app-in-portal-new/mobile-engagement-app.png)
-8. Kattintson felül a **Kapcsolati adatok** parancs gombjára a Kapcsolati adatok panel megnyitásához, és másolja ki innen a kapcsolati karakterláncot. 
+8. Kattintson felül a **Kapcsolati adatok** parancs gombjára a Kapcsolati adatok panel megnyitásához, és másolja ki innen a kapcsolati sztringet. 
    
     ![](./media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b47dbf081d857d0c6eb5e1bd4eb9781c4c894698
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27b975df5d0161f0b64e02b62c89989a670731aa
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615937"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330560"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Adatok másolása az Azure-adatbázis az Azure Data Factory használatával PostgreSQL 
 
@@ -49,7 +49,7 @@ A következő tulajdonságok támogatott Azure-adatbázis PostgreSQL kapcsolód�
 | connectionString | Az ODBC kapcsolati karakterlánc PostgreSQL Azure adatbázishoz való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
 
-Egy tipikus kapcsolati karakterlánc `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>`. A case / beállítható további tulajdonságokat:
+Egy tipikus kapcsolati karakterlánc `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. A case / beállítható további tulajdonságokat:
 
 | Tulajdonság | Leírás | Beállítások | Szükséges |
 |:--- |:--- |:--- |:--- |:--- |
@@ -66,7 +66,7 @@ Egy tipikus kapcsolati karakterlánc `Server=<server>.postgres.database.azure.co
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>@admstest;Password=<Password>"
+                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
             }
         }
     }

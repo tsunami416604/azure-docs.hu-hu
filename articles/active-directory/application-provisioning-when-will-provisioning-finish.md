@@ -3,22 +3,24 @@ title: A felhasználók átadása egy Azure AD-katalógusában alkalmazás véve
 description: Annak ellenőrzése, ezért az alkalmazás történő előfordulhat, hogy kell a vártnál tovább tart, mint amennyi várt
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: c9ed12569c0adc5ed8625a8d9fc81c9bee874cd4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: dc582ff3dac8f128972f070309d5c8a4ce21fb70
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614066"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335383"
 ---
 # <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>A felhasználók átadása egy Azure AD-katalógusában alkalmazás véve óra vagy több
 
@@ -32,6 +34,6 @@ A kezdeti szinkronizálás csak néhány óra tart, ha van egy művelet, amelyet
 
 -   **Felhasználói tartalmazó szűrők.** Hatókörként szűrők lehetővé teszik finom hangolási az adatokat, amelyek az Azure AD által meghatározott attribútumértékek alapján felhasználók kiszűrése bontja ki a létesítési szolgáltatás. A helyezése hatókörszűrőkkel további információkért lásd: [alkalmazások Attribútumalapú üzembe helyezése hatókörszűrőkkel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához](active-directory-saas-app-provisioning.md)
 

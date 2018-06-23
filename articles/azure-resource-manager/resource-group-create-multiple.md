@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 06/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce442793a9917320b6b2b0a7014a20f885c3720c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 580ecc98913dc35e2d1e21f1dcfa19936bb59826
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337960"
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egy erőforrás vagy egy tulajdonság az Azure Resource Manager sablonokban több példányának telepítése
 Ez a cikk bemutatja, hogyan feltételesen központi telepítése egy erőforrást, és több példánya erőforrás létrehozása az Azure Resource Manager sablonban felépítésének módját.
@@ -127,9 +128,9 @@ Hozza létre ezeket a neveket:
 * storagefabrikam
 * storagecoho
 
-Alapértelmezés szerint a Resource Manager párhuzamosan létrehoz az erőforrások. A sorrend, amelyben létre, ezért nem garantált. Azonban érdemes lehet adja meg, hogy az erőforrások telepítése feladatütemezési. Például egy éles környezetben frissítésekor érdemes szakaszosan, a frissítések csak egy adott értéket egyszerre frissülnek.
+Alapértelmezés szerint a Resource Manager párhuzamosan létrehoz az erőforrások. A sorrend, amelyben jönnek létre, ezért nem garantált. Azonban érdemes lehet adja meg, hogy az erőforrások telepítése feladatütemezési. Például egy éles környezetben frissítésekor érdemes szakaszosan, a frissítések csak egy adott értéket egyszerre frissülnek.
 
-Egy erőforrás több példánya Feladattervek telepítéséhez állítsa be `mode` való **soros** és `batchSize` egyszerre telepítendő példányok száma. A soros üzemmódban erőforrás-kezelő függőséget hoz létre a korábbi példánya a hurok, nem indul el egy kötegben csak az előző köteg befejeződése után.
+Egy erőforrás több példánya Feladattervek telepítéséhez állítsa be `mode` való **soros** és `batchSize` egyszerre telepítendő példányok száma. A soros üzemmódban erőforrás-kezelő függőséget hoz létre a korábbi példánya a hurok, az nem indul el egy kötegben csak az előző köteg befejeződése után.
 
 Például Feladattervek telepítéséhez két tárfiókok egyszerre használja:
 
@@ -191,7 +192,7 @@ A következő példa bemutatja, hogyan alkalmazandó `copy` dataDisks tulajdons�
       ...
 ```
 
-Figyelje meg, hogy használatakor `copyIndex` egy tulajdonság iterációs belül meg kell adnia a iterációs nevét. Nem kell adnia a nevét, és erőforrás-ismétlés használatakor.
+Figyelje meg, hogy használatakor `copyIndex` egy tulajdonság iterációs belül meg kell adnia a iterációs nevét. Adja meg a nevét, és erőforrás-ismétlés használatakor nincs.
 
 Erőforrás-kezelő bontja ki a `copy` tömb üzembe helyezése során. A tömb neve lesz a tulajdonságnevet kell megadni. A bemeneti értékek lesz az objektum tulajdonságait. A telepített sablon válik:
 
@@ -220,6 +221,34 @@ Erőforrás-kezelő bontja ki a `copy` tömb üzembe helyezése során. A tömb 
           }
       }],
       ...
+```
+
+A másolási elem tömb több mint egy tulajdonság az erőforrás kell adnia. Adjon hozzá egy objektumot, minden egyes tulajdonság létrehozásához.
+
+```json
+{
+    "name": "string",
+    "type": "Microsoft.Network/loadBalancers",
+    "apiVersion": "2017-10-01",
+    "properties": {
+        "copy": [
+          {
+              "name": "loadBalancingRules",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          },
+          {
+              "name": "probes",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          }
+        ]
+    }
+}
 ```
 
 Erőforrás- és tulajdonság iterációs együtt használható. Hivatkozás a tulajdonság iterációs név szerint.
@@ -309,8 +338,29 @@ Egy változó több példány létrehozásához használja a `copy` elemet a vá
 }
 ```
 
+Bármelyik módszert használja a Másolás elem a tömb egynél több változót kell adnia. Adjon hozzá egy objektumot, minden egyes változójánál létrehozásához.
+
+```json
+"copy": [
+  {
+    "name": "first-variable",
+    "count": 5,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('first-variable'))]",
+    }
+  },
+  {
+    "name": "second-variable",
+    "count": 3,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('second-variable'))]",
+    }
+  },
+]
+```
+
 ## <a name="depend-on-resources-in-a-loop"></a>Ismétlődő erőforrásokat függ
-Megadja, hogy egy erőforrás által központilag telepített után egy másik erőforrás használja a `dependsOn` elemet. Egy erőforrást, amelyek elengedhetetlenek az ismétlődő források központi telepítéséhez adja meg a másolási ciklust a dependsOn elem nevét. A következő példa bemutatja, hogyan három storage-fiókok telepítése a virtuális gép üzembe helyezése előtt. A teljes virtuálisgép-definíció nem jelenik meg. Figyelje meg, hogy rendelkezik-e a másolási elem name tulajdonsága `storagecopy` , és a dependsOn elem a virtuális gépek is `storagecopy`.
+Megadja, hogy egy erőforrás által központilag telepített után egy másik erőforrás használja a `dependsOn` elemet. Egy erőforrást, amelyek elengedhetetlenek az ismétlődő források központi telepítéséhez adja meg a másolási ciklust a dependsOn elem nevét. A következő példa bemutatja, hogyan három storage-fiókok telepítése a virtuális gép üzembe helyezése előtt. A teljes virtuálisgép-definíció nem látható. Figyelje meg, hogy rendelkezik-e a másolási elem name tulajdonsága `storagecopy` , és a dependsOn elem a virtuális gépek is `storagecopy`.
 
 ```json
 {
@@ -409,7 +459,7 @@ A következő példák azt szemléltetik, erőforrások és a Tulajdonságok gya
 |[Virtuális gép és egy új vagy meglévő virtuális hálózati, tárolási és nyilvános IP-cím](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |Feltételesen telepíti az új vagy meglévő erőforrásokat egy virtuális géppel. |
 |[Az adatlemezek változó száma a Virtuálisgép-telepítéshez](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |A virtuális gépekkel több adatlemezek telepíti. |
 |[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |A különböző módokat a változók léptetés mutatja be. |
-|[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Hálózati biztonsági csoport több biztonsági szabály telepíti. Akkor hoz létre a biztonsági szabályok paraméter. |
+|[Több biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Hálózati biztonsági csoport több biztonsági szabály telepíti. Akkor hoz létre a biztonsági szabályok paraméter. Tekintse meg a paraméter [több NSG paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>További lépések
 * Ha azt szeretné, további információt a szakaszok egy sablon, lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-templates.md).

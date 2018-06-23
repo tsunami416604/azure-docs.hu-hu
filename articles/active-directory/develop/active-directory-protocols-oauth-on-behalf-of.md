@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: celested
-ms.reviewer: hirsin; nacanuma
+ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2bb0d10fee04c4ee48344695769fa7768b0f3a85
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e8957db002dd6fdeaf6da03b02e518e3e423539d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823866"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317731"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatás hívásokon szolgáltatás meghatalmazott az On-meghatalmazásos folyamat-beli felhasználói identitás
 Az OAuth 2.0 On-Behalf-Of (OBO) folyamat szolgál a használati eset, ahol egy alkalmazás elindítja egy szolgáltatás vagy webes API, amely pedig meg kell hívni egy másik szolgáltatás vagy webes API-t. A lényege való terjesztése, a felhasználó delegált identitása és az engedélyek a kérelem lánc keresztül. A középső rétegbeli szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságos hozzáférési tokent az Azure Active Directory (Azure AD), a felhasználó nevében.

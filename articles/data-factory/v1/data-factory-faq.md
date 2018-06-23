@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 12422a1123673feac1977fa5f52f49b2cdfda777
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fa3ab6df9b471a596cc229edf5fb555009c3101d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621346"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318393"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory - gyakran ismételt kérdések
 > [!NOTE]
@@ -41,7 +41,7 @@ Lásd: [Data Factory díjszabás lap] [ adf-pricing-details] az az Azure Data Fa
 * Az egy útmutatót a **másolására/áthelyezésére adatok** használata a másolási tevékenység, lásd: [adatok másolása az Azure Blob Storage az Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Az egy útmutatót a **adatok** HDInsight Hive tevékenységgel. Lásd: [feldolgozni az adatokat a Hadoop-fürt Hive parancsfájl futtatásával](data-factory-build-your-first-pipeline.md)
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Mi az a Data Factory s régiónkénti elérhetőség?
+### <a name="what-is-the-data-factorys-region-availability"></a>Mi az az adat-Előállítóban régiónkénti elérhetőség?
 Adat-előállító érhető el **Velünk nyugati** és **Észak-Európa**. Az adat-előállítók által használt számítási és tárolási szolgáltatások más régiókban lehet. Lásd: [támogató régiók](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Az adatok előállítók/folyamatok/tevékenységek/adatkészletek számú korlátai

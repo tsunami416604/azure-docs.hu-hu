@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Azure Data Factory (béta) használatával Couchbase |} Microsoft Docs
+title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával Couchbase |} Microsoft Docs
 description: 'Útmutató: adatok másolása Couchbase támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: d47f9f7a6225dc3359c212a3df638805097d1dcc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d86ecc013aa2a08996a4ef076e05156205cd6e44
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616787"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337932"
 ---
-# <a name="copy-data-from-couchbase-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Couchbase
+# <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Couchbase
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Data Factory adatokat másolni Couchbase. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység az Azure Da
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és küldjön visszajelzést. Ne használja éles környezetben.
+> Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és küldjön visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -38,7 +38,7 @@ Az Azure Data Factory kapcsolódásának engedélyezése beépített illesztőpr
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják való Couchbase összekötő adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 

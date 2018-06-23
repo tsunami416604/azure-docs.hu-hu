@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/30/2017
   ms.author: v-jansko
-  ms.openlocfilehash: 55ec3147a07c5c76fe1f1b356d633a9afeb783cc
-  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+  ms.openlocfilehash: 1995f8d58c47b8e098022ca672c7889195dd5328
+  ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/20/2018
-  ms.locfileid: "36286908"
+  ms.lasthandoff: 06/22/2018
+  ms.locfileid: "36319180"
 abstract:
   description: A Microsoft Translator Text API egy felhőalapú gépi fordítási szolgáltatás. Az API segítségével közel valós időben fordíthat le szövegeket bármely alkalmazásból vagy szolgáltatásból egy egyszerű REST API-hívással. Az API a legmodernebb idegi gépi fordítási technológiát használja, emellett pedig statisztikai gépi fordító technológiával is rendelkezik. A neurális és a statisztikai gépi fordítás által támogatott nyelvek listáját a <a href="languages.md">Támogatott nyelvek</a> dokumentumban találja.
 sections:
@@ -46,26 +46,26 @@ sections:
       values:
       - href: quickstart-csharp-translate
       - href: quickstart-java-translate
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-translate
+      - href: quickstart-python-translate
     - title: Szövegek konvertálása egyik szkriptből a másikba
       values:
       - href: quickstart-csharp-transliterate
       - href: quickstart-java-transliterate
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-transliterate
+      - href: quickstart-python-transliterate
     - title: Szöveg nyelvének azonosítása
       values:
       - href: quickstart-csharp-detect
       - href: quickstart-java-detect
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-detect
+      - href: quickstart-python-detect
     - title: Alternatív fordítások és használat lekérése
       values:
       - href: quickstart-csharp-dictionary
       - href: quickstart-java-dictionary
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-dictionary
+      - href: quickstart-python-dictionary
 - title: Referencia
   items:
   - type: paragraph

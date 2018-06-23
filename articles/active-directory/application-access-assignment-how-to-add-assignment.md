@@ -3,22 +3,23 @@ title: Felhasználók és csoportok hozzárendelése egy alkalmazás |} Microsof
 description: Felhasználók hozzárendelése az alkalmazáshoz való hozzáférés engedélyezése
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 19303237e7e2c3c3a7f373102465875c34a571d1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: 46586bd423500f5d7bb34f58a5833d4bb3613bb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068422"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330825"
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>Felhasználók és csoportok hozzárendelése egy alkalmazás
 
@@ -159,7 +160,7 @@ Ahhoz, hogy az alkalmazás önkiszolgáló hozzáférést egy alkalmazáshoz, k�
 
 14. Kattintson a **mentése** gombra a befejezéshez ablaktábla tetején.
 
-Ha befejezte az önkiszolgáló Alkalmazáskonfiguráció, felhasználók lépjen a [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) , és kattintson a **+ Hozzáadás** gombra kattintva keresse meg az alkalmazások, amelyhez engedélyezte a hozzáférést az önkiszolgáló. Üzleti jóváhagyóknak is megjelenik egy értesítés a saját [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/). Egy e-mailt, amely értesíti őket, amikor a felhasználó által kért a jóváhagyást igénylő alkalmazáshoz való hozzáférés engedélyezéséhez. 
+Ha befejezte az önkiszolgáló Alkalmazáskonfiguráció, felhasználók lépjen a [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/) , és kattintson a **+ Hozzáadás** gombra kattintva keresse meg az alkalmazások, amelyhez engedélyezte az önkiszolgáló a hozzáférés. Üzleti jóváhagyóknak is megjelenik egy értesítés a saját [alkalmazás hozzáférési Panel](https://myapps.microsoft.com/). Egy e-mailt, amely értesíti őket, amikor a felhasználó által kért a jóváhagyást igénylő alkalmazáshoz való hozzáférés engedélyezéséhez. 
 
 Ezek a jóváhagyások támogatja egyetlen jóváhagyási munkafolyamatok csak, ami azt jelenti, hogy több jóváhagyó ad meg, ha bármely egyetlen jóváhagyó előfordulhat, hogy jóváhagyó hozzáférni az alkalmazáshoz.
 

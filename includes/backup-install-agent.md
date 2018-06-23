@@ -2,9 +2,9 @@
 Miután létrehozta a Recovery Services-tároló, telepítse a használatával az adatok biztonsági mentése az Azure Backup szolgáltatás ügynökének minden, a Windows gép (Windows Server, a Windows ügyfél, a System Center Data Protection Manager-kiszolgáló vagy Azure biztonsági mentési kiszolgálóként működő számítógép).
 
 1. Nyissa meg az előfizetését a [Azure Portal](https://ms.portal.azure.com/).
-2. A bal oldali menüben válassza **minden szolgáltatás** írja be a szolgáltatások listájában **Recovery Services**. Kattintson a **Recovery Services-tárolók**.
+2. A bal oldali menüben válassza a **Minden szolgáltatás** elemet, és a szolgáltatások listájába írja be a **Recovery Services** kifejezést. Kattintson a **Helyreállítási tárak** elemre.
 
-   ![Nyissa meg a Recovery Services-tároló](../articles/backup/media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
+   ![Helyreállítási tár megnyitása](../articles/backup/media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 3. A gyors kezdés lapon kattintson a **For Windows Server, a System Center Data Protection Manager vagy a Windows ügyfél** lehetőség alatt **ügynök letöltése**. Kattintson a **mentése** másolja azt a helyi számítógépen.
    
     ![Ügynök mentése](./media/backup-install-agent/agent.png)
@@ -18,7 +18,7 @@ Miután létrehozta a Recovery Services-tároló, telepítse a használatával a
    
     ![Tárolói hitelesítő adatokat](./media/backup-install-agent/vc.png)
    
-    A tároló hitelesítési adatait tartalmazó fájlt csak esetén érvényes 48 óra (után a portálról letöltés). Ha az Azure portálra a képernyő (például "tárolói hitelesítő adatok fájlját megadott lejárt"), bejelentkezési hibákat tapasztal, és töltse le újból a tároló hitelesítési adatait tartalmazó fájlt.
+    A tároló hitelesítési adatait tartalmazó fájlt csak esetén érvényes 48 óra (után a portálról letöltés). Ha ez a képernyő (például "megadott tárolói hitelesítő adatok fájl lejárt") hibákat észlel, jelentkezzen be az Azure-portálon, és töltse le újból a tároló hitelesítési adatait tartalmazó fájlt.
    
     Győződjön meg arról, a telepítő alkalmazások hozzáférhetnek a tároló hitelesítési adatait tartalmazó fájlt. Hozzáféréssel kapcsolatos hibákat észlel, ha a tároló hitelesítési adatait tartalmazó fájlt a helyi számítógép egy ideiglenes helyre másolja, majd próbálja megismételni a műveletet.
    

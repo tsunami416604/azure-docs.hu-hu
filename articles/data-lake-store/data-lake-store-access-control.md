@@ -9,16 +9,15 @@ editor: cgronlun
 ms.assetid: d16f8c09-c954-40d3-afab-c86ffa8c353d
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: afe1a784ecc0a8f8846a71d21cc7ca8eb76078ec
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337680"
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Az Azure Data Lake Store szolgáltatásban található hozzáférés-vezérlés
 
@@ -326,7 +325,7 @@ Nem, az alapértelmezett ACL-ek azonban használhatók a szülő mappán belül 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 
-* [POSIX hozzáférés-vezérlési listák Linux rendszeren](http://www.vanemery.com/Linux/ACL/POSIX_ACL_on_Linux.html)
+* [POSIX hozzáférés-vezérlési listák Linux rendszeren](https://www.linux.com/news/posix-acls-linux)
 
 * [HDFS-engedélyek útmutatója](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 

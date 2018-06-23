@@ -11,21 +11,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/19/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 18b6aaf7396c16714370435d2ee6d3a4960ecf21
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763782"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337974"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (nagy példányok) – áttekintés és az Azure-architektúra
 
 ## <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az Azure (nagy példányok) SAP HANA?
 
-SAP HANA Azure (nagy példányok) egy olyan egyedi megoldás az Azure-bA. Biztosít a virtuális gépek üzembe helyezéséhez és futtatásához az SAP HANA, Azure lehetőséget biztosít, futtatása és az SAP HANA Önnek dedikált operációs rendszer nélküli a kiszolgálókra telepített lehetőségét. Az SAP HANA Azure (nagy példányok) megoldás nem megosztott gazdakiszolgáló/operációs rendszer nélküli hardver Önhöz rendelt építkezik. A Kiszolgálóhardver nagyobb számítási és a kiszolgáló, a hálózat és tároló-infrastruktúra tartalmazó bélyegzők van beágyazva. Kombinációját, mint a hitelesített igazított HANA data center integrációs (TDI). Az Azure (nagy példányok) SAP HANA kínál különböző kiszolgálótermékek vagy mérete. Egységek 72 processzorok és 768 GB memóriával rendelkeznek, és lépjen 960 rendelkező egységek processzorok és 20 TB memóriával.
+SAP HANA Azure (nagy példányok) egy olyan egyedi megoldás az Azure-bA. Biztosít a virtuális gépek üzembe helyezéséhez és futtatásához az SAP HANA, Azure lehetőséget biztosít, futtatása és az SAP HANA Önnek dedikált operációs rendszer nélküli a kiszolgálókra telepített lehetőségét. Az SAP HANA Azure (nagy példányok) megoldás nem megosztott gazdakiszolgáló/operációs rendszer nélküli hardver Önhöz rendelt építkezik. A Kiszolgálóhardver nagyobb számítási és a kiszolgáló, a hálózat és tároló-infrastruktúra tartalmazó bélyegzők van beágyazva. Kombinációját, mint a hitelesített igazított HANA data center integrációs (TDI). Az Azure (nagy példányok) SAP HANA kínál különböző kiszolgálótermékek vagy mérete. Egységek 36 Intel Processzormagok és 768 GB memória, és nyissa meg legfeljebb egység, amely legfeljebb 480 Intel processzormag szükséges és legfeljebb 24 rendelkezhet TB memóriával.
 
 Az ügyfél elkülönítési az infrastruktúra stamp belül történik bérlők, amelyek a következőhöz hasonló:
 
@@ -80,9 +80,9 @@ A NetWeaver hitelesítő mellett SAP egy SAP Hana SAP HANA támogatásához egye
 
 A Core SAP Megjegyzés NetWeaver, valamint egy mértékben SAP HANA hitelesítő [SAP Megjegyzés #1928533 – Azure SAP-alkalmazásokból: támogatott termékek és Azure Virtuálisgép-típusokon](https://launchpad.support.sap.com/#/notes/1928533).
 
-A [SAP Megjegyzés #2316233 - SAP HANA a Microsoft Azure (nagy példányok)](https://launchpad.support.sap.com/#/notes/2316233/E) is fontos. A megoldás a jelen útmutatóban ismertetett magában foglalja. Ezenkívül támogatottak az Azure GS5 VM típusú SAP HANA futtatásához. Ebben az esetben információt teszi közzé a [az SAP-webhely](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+A hitelesítésszolgáltató rekordok SAP Hana Azure (nagy példányok) egységeken található a [SAP HANA hitelesített IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) hely. 
 
-Az SAP HANA SAP Megjegyzés #2316233 említett Azure (nagy példányok) megoldás teszi lehetővé Microsoft és az SAP-ügyfelek központi telepítése a nagy SAP Business Suite, SAP BW Programhoz, S/4 HANA, BW/4HANA vagy más SAP HANA-munkaterhelések az Azure-ban. A megoldás az SAP-HANA jóváhagyott dedikált hardver stamp alapul ([SAP HANA igazított center Adatintegráció – TDI](https://scn.sap.com/docs/DOC-63140)). Futtatja egy SAP HANA TDI beállított megoldás, ha a hardver infrastruktúra minden SAP HANA-alapú alkalmazások (például SAP Business Suite az SAP HANA, SAP BW SAP HANA, S4/HANA és BW4/HANA) működik.
+Az SAP HANA Azure (nagy példányok) típusokon, SAP HANA hitelesített IaaS platformok webhely, az említett biztosít a Microsoft, és SAP ügyfelek lehetővé teszi nagy SAP Business Suite, SAP BW Programhoz, S/4 HANA, BW/4HANA vagy más SAP HANA-munkaterhelések az Azure-ban telepítését. A megoldás az SAP-HANA jóváhagyott dedikált hardver stamp alapul ([SAP HANA igazított center Adatintegráció – TDI](https://scn.sap.com/docs/DOC-63140)). Futtatja egy SAP HANA TDI beállított megoldás, ha a hardver infrastruktúra minden SAP HANA-alapú alkalmazások (például SAP Business Suite az SAP HANA, SAP BW SAP HANA, S4/HANA és BW4/HANA) működik.
 
 SAP HANA-beli virtuális gépek képest, ez a megoldás előnye van. Sokkal nagyobb memória kötetek biztosít. Ahhoz, hogy ez a megoldás, kell ismertetése a következő fő szempontjait:
 
@@ -132,7 +132,9 @@ SAP HANA Azure (nagy példányok), mint a virtuális gépek, a több Azure-régi
 
 Ugyanúgy, mint a virtuális gép különböző Azure virtuális gépek közül választhat, választhat másik termékváltozatok a HANA nagy példányt, amely különböző alkalmazások és szolgáltatások típusú SAP HANA is lefednek. SAP memória-processzor-szoftvercsatorna-arányt tesz lehetővé az Intel processzorral generációja alapján különböző munkaterhelések vonatkozik. Az alábbi táblázat a Termékváltozat-típusok érhető el.
 
-Től július 2017 SAP HANA Azure (nagy példányok) érhető el az Azure-régiókban több konfiguráció Velünk nyugati amerikai keleti, Kelet-Ausztrália, Ausztrália délkeleti, Nyugat-Európa és Észak-Európa.
+SAP HANA (nagy példányok) Azure szolgáltatásban az Azure-régiókban több konfigurációk Velünk nyugati amerikai keleti, Kelet-Ausztrália, Ausztrália délkeleti, Nyugat-Európa, Észak-Európa, kelet-japán és Nyugat-japán érhető el.
+
+[SAP HANA hitelesített termékváltozatok a HANA nagy példányok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) például a listában:
 
 | SAP megoldás | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
 | --- | --- | --- | --- | --- |
@@ -148,17 +150,31 @@ Től július 2017 SAP HANA Azure (nagy példányok) érhető el az Azure-régió
 |---| Az Azure S576m SAP HANA<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  12.0 TB |  28 TB | Elérhető |
 |---| Az Azure S768m SAP HANA<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  16,0 TB |  36 TB | Elérhető |
 |---| Az Azure S960m SAP HANA<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 Processzormagok és 960 CPU szálak |  20.0 TB |  46 TB | Elérhető |
-| Az OLTP optimalizált **TDIv5**: SAP Business csomag<br /> SAP HANA vagy az S/4HANA (OLTP)<br /> általános OLTP | Az Azure S192xm SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak |  6.0 TB |  16 TB | Elérhető |
-|---| Az Azure S384xxm SAP HANA<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  12.0 TB |  28 TB | Elérhető |
-|---| Az Azure S576xm SAP HANA<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  18.0 TB |  41 TB | Elérhető |
-|---| Az Azure S768xm SAP HANA<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  24,0 TB |  56 TB | Elérhető |
+
+
+Az SAP HANA TDIv5 SAP specifikus méretezése és a kiszolgálókonfiguráció, amelyek nem szerepelnek a listán szereplő igazolt vezethet specifikus projektek lehetővé teszi:
+
+- [SAP HANA hitelesített készülékek](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
+- [SAP HANA hitelesített IaaS-platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+
+Sok esetben ezek specifikus konfigurációk több memóriát az SAP hitelesített server egységnél kitéve. Végzett munka során SAP, az ügyfelek SAP támogatása, és igazolja azok specifikus méretű kiszolgálókonfigurációknál lehetősége van. Az Azure-ban a következő HANA nagy példány standard termékváltozat érhetők el, és a Microsoft ár a TDIv5 specifikus méretezési projektek listája.
+
+
+| Eredeti SKU használható <br /> a kiterjesztett memória | CPU | Memory (Memória) | Storage | Rendelkezésre állás |
+| --- | --- | --- | --- | --- |
+| S192m kiterjeszthető | Az Azure S192xm SAP HANA<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 96 és 192 CPU szálak |  6.0 TB |  16 TB | Elérhető |
+| S384xm kiterjeszthető | Az Azure S384xxm SAP HANA<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 192 és 384 CPU szálak |  12.0 TB |  28 TB | Elérhető |
+| S576m kiterjeszthető | Az Azure S576xm SAP HANA<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 288 és 576 CPU szálak |  18.0 TB |  41 TB | Elérhető |
+| S768m kiterjeszthető | Az Azure S768xm SAP HANA<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> A Processzormagok 384 és 768 CPU szálak |  24,0 TB |  56 TB | Elérhető |
+
 - A Processzormagok = Processzormagok nem-többszálú a processzorok, a kiszolgáló egység összegére összege.
-- CPU szálak CPU-magokat többszálú a processzorok, a kiszolgáló egység összegére által biztosított számítási szálak számának összege, azaz =. Minden egység alapértelmezés szerint a Hyper-Threading technológia használatára vannak konfigurálva.
+- CPU szálak CPU-magokat többszálú a processzorok, a kiszolgáló egység összegére által biztosított számítási szálak számának összege, azaz =. A legtöbb egységek alapértelmezés szerint a Hyper-Threading technológia használatára vannak konfigurálva.
+- Szállító javaslatok S768m alapján, S768xm, és S960m nincs konfigurálva az SAP HANA fut a Hyper-Threading használata.
 
 
 A kiválasztott konfigurációkkal munkaterhelés, a Processzor-erőforrások és a kívánt memória függenek. A használatára a termékváltozatok optimalizált az OLAP-munkaterhelés OLTP-munkaterhelés lehetőség. 
 
-A rendszer a az ajánlatok alapszintű hardver SAP HANA TDI hitelesített. Hardver két különböző osztályú osztani az SKU:
+A rendszer a ajánlatokhoz, kivéve a projekteket, a specifikus méretezési egységek alap hardver SAP HANA TDI hitelesített. Hardver két különböző osztályú osztani az SKU:
 
 - S72, S72m, S144, S144m, S192, S192m és S192xm, amely a "Type i. osztály" nevezik SKU.
 - S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm és S960m, amely nevezzük az "Típus II osztály" SKU.
@@ -296,7 +312,7 @@ Ez a lista állítja össze a SAP HANA futtatásához Azure (nagyobb példány).
    > Az operációs rendszer, amelyeket a Microsoft SUSE nincs regisztrálva. A előfizetés kezelőeszköz példánya nem kapcsolódik.
 
 - SUSE Linux előfizetés felügyeleti eszköz a virtuális gép Azure szolgáltatásba telepített. Ez az eszköz az SAP Hana Azure regisztrálni és SUSE rendre frissítette (nagy példányok) lehetővé teszi. (Nincs nincs internet-hozzáférés a HANA nagy példány adatközpont belül.) 
-- Red Hat Enterprise Linux 6.7 vagy 7.2 SAP Hana licencet.
+- Red Hat Enterprise Linux 6.7 vagy SAP Hana 7.x licencet.
 
    > [!NOTE]
    > Az operációs rendszer, amelyeket a Microsoft Red Hat nincs regisztrálva. A Red Hat előfizetés Manager példánya nem kapcsolódik.
@@ -347,7 +363,7 @@ Lásd az alábbi táblázatban a Foglalás tekintetében. A táblázat a külön
 | S72m | 3,328 GB | 768 GB |MAXIMUM 1280 GB | 768 GB |
 | S192 | 4,608 GB | 1024 GB | 1 536 GB | 1024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
-| S192xm |  12 000 GB |  2050 GB |  2050 GB |  2.040 GB |
+| S192xm |  11,520 GB |  1 536 GB |  1,792 GB |  1 536 GB |
 | S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2050 GB | 2050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2050 GB | 2050 GB | 2,040 GB |
@@ -480,9 +496,7 @@ Több méretezhető hálózati architektúra:
 
 ![SAP alkalmazásréteg telepítése több virtuális hálózaton keresztül](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Az ábrán az látható, a SAP alkalmazásréteg vagy összetevők telepített több virtuális hálózaton keresztül. Ez a konfiguráció bevezetett elkerülhetetlen késés terhelést, hogy a virtuális hálózatok üzemeltetett alkalmazások közötti kommunikáció során történt. Alapértelmezés szerint ebben a konfigurációban a vállalati peremhálózati útválasztók útvonal különböző virtuális hálózatokon lévő virtuális gépek közötti hálózati forgalmat. 2016 szeptemberétől, mert ez az útválasztási is lehet optimalizálni. 
-
-A optimalizálása és a két virtuális hálózatok közötti kommunikációs késés kevesebb módja a társviszony-létesítési virtuális hálózatok a régión belül. Ez a módszer használható akkor is, ha virtuális hálózatok különböző előfizetésekhez. A virtuális hálózati társviszony-létesítést, két különböző virtuális hálózatokon lévő virtuális gépek közötti kommunikáció használhatja az Azure-hálózat gerincét közvetlenül kommunikálhatnak egymással. Késés jeleníti meg, ha a virtuális gépek ugyanazt a virtuális hálózatot. Az Azure virtuális hálózati átjárón keresztül csatlakozó IP-címtartományok orvosló továbbítódik a virtuális hálózat az egyes virtuális hálózati átjárón keresztül. 
+Az ábrán az látható, a SAP alkalmazásréteg vagy összetevők telepített több virtuális hálózaton keresztül. Ez a konfiguráció bevezetett elkerülhetetlen késés terhelést, hogy a virtuális hálózatok üzemeltetett alkalmazások közötti kommunikáció során történt. Alapértelmezés szerint ebben a konfigurációban a vállalati peremhálózati útválasztók útvonal különböző virtuális hálózatokon lévő virtuális gépek közötti hálózati forgalmat. A optimalizálása és a két virtuális hálózatok közötti kommunikációs késés kevesebb módja a társviszony-létesítési virtuális hálózatok a régión belül. Ez a módszer használható akkor is, ha virtuális hálózatok különböző előfizetésekhez. A virtuális hálózati társviszony-létesítést, két különböző virtuális hálózatokon lévő virtuális gépek közötti kommunikáció használhatja az Azure-hálózat gerincét közvetlenül kommunikálhatnak egymással. Késés jeleníti meg, ha a virtuális gépek ugyanazt a virtuális hálózatot. Az Azure virtuális hálózati átjárón keresztül csatlakozó IP-címtartományok orvosló továbbítódik a virtuális hálózat az egyes virtuális hálózati átjárón keresztül. 
 
 További információ a virtuális hálózati társviszony-létesítés: [virtuális hálózati társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 

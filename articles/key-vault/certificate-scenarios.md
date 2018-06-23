@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 5f3b8a7b9c7bf582ebc2fac2be8ff55134fbc6f2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333513"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault tanúsítványok
 A következő esetekben felvázolják a elsődleges Key Vault-tanúsítvány kezelő szolgáltatás, így a key vaultban lévő az első tanúsítvány létrehozásához szükséges további lépéseket is érvényesek.
@@ -82,8 +83,9 @@ Megjegyzés: Ez a folyamat-lépéseket 3.1, egy olyan alkalommal művelet.
       -   Megújítási információkat - > ex. 90 nappal a lejáratuk előtt  
 
   - A tanúsítvány-létrehozási folyamat általában egy aszinkron folyamat, és magában foglalja a kulcstartót a létrehozási tanúsítvány művelet állapotában lekérdezési.  
-[Tanúsítvány művelet](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation) -állapot: befejeződött, hibainformációk sikertelen vagy megszakítva  
-            -Miatt: a késés létrehozásához a művelet megszakítása kezdeményezhető. A Mégse gombra a mennyiség vagy vagy nem hatékony.  
+[Tanúsítvány művelet](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+      -   Állapot:, sikertelen, hiba adatokkal vagy befejeződött, megszakított  
+      -   A késleltetés létrehozásához, mert a művelet megszakítása kezdeményezhető. A Mégse gombra a mennyiség vagy vagy nem hatékony.  
 
 ## <a name="import-a-certificate"></a>Tanúsítvány importálása  
  A tanúsítvány alternatív – Key Vault – PFX vagy PEM importálhassa.  

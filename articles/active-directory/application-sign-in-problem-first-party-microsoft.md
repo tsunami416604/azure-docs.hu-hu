@@ -3,22 +3,24 @@ title: Bejelentkezés Microsoft-alkalmazáshoz problémák |} Microsoft Docs
 description: A belső Microsoft Applications (például Office 365) az Azure AD használatával történő bejelentkezés során tapasztalt gyakori problémák elhárítása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 1dc727f46785d2896544d8ef9098259f9ab994d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 4053c272fe78647ac646e0feefa884cf014a6b72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29384223"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334224"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Bejelentkezés Microsoft-alkalmazáshoz problémák
 
@@ -32,7 +34,7 @@ Háromféleképpen fő, hogy a felhasználó beszerezheti a Microsoft közzétet
 
 -   Alkalmazások a Microsoft vagy a 3. fél közzétevő szabadon bárki, aki használni, a felhasználók is adható hozzáférés a **rendszergazda jóváhagyását**. Ez azt jelenti, hogy a rendszergazda azt észlelte, az alkalmazás is használhat a szervezet minden tagja számára, hogy jelentkezzen be az alkalmazás a globális rendszergazdai fiókkal, és hozzáférést biztosítson a szervezet minden tagja számára.
 
-A probléma elhárításához indítsa el a a [általános probléma területet, és fontolja meg az alkalmazás-hozzáférés](#general-problem-areas-with-application-access-to-consider) majd elolvashatják a [forgatókönyv: hibaelhárítása a Microsoft Application hozzáférés](#walkthrough-steps-to-troubleshoot-microsoft-application-access) be a részletes adatait.
+A probléma elhárításához indítsa el a [általános probléma területet, és fontolja meg az alkalmazás-hozzáférés](#general-problem-areas-with-application-access-to-consider) majd elolvashatják a [forgatókönyv: hibaelhárítása a Microsoft Application hozzáférés](#walkthrough-steps-to-troubleshoot-microsoft-application-access) be a részletes adatokat.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Általános probléma területet, és fontolja meg az alkalmazás-hozzáférés
 
@@ -76,7 +78,7 @@ Az alábbiakban néhány gyakori probléma, segítsen a futtatását, amikor a f
 
    * Ha a licenc **rendelt egy** **dinamikus csoport**, ügyeljen arra, hogy a **dinamikus csoport szabály megfelelően van-e beállítva**. [A dinamikus csoport tagsági feltételek ellenőrzése](#check-a-dynamic-groups-membership-criteria)
 
-   * Ha a licenc **rendelt egy** **dinamikus csoport**, győződjön meg arról, hogy rendelkezik-e a dinamikus csoport **fejezett** tagságát, és hogy a **felhasználó tagja** (Ez eltarthat egy ideig). [A felhasználói csoporttagság ellenőrzése](#check-a-users-group-memberships)
+   * Ha a licenc **rendelt egy** **dinamikus csoport**, győződjön meg arról, hogy rendelkezik-e a dinamikus csoport **fejezett** tagságát, és hogy a **felhasználó tagja**  (Ez eltarthat egy ideig). [A felhasználói csoporttagság ellenőrzése](#check-a-users-group-memberships)
 
    *  Ha mindenképpen rendel hozzá a licencet, ellenőrizze, hogy a licenc **nem járt le**.
 
@@ -86,7 +88,7 @@ Az alábbiakban néhány gyakori probléma, segítsen a futtatását, amikor a f
 
    * Ha az alkalmazás **felhasználói szintű engedélyek** (például "érhetik el a felhasználó postaládájához"), ellenőrizze, hogy a felhasználó van bejelentkezve az alkalmazás, és végrehajtotta a **felhasználói szintű hozzájárulási művelet** ahhoz, hogy az alkalmazás saját adatok eléréséhez.
 
-   * Ha az alkalmazás **rendszergazdai engedélyek** (például "érhetik el az összes felhasználó postaládák"), győződjön meg arról, hogy elvégezte-e globális rendszergazda egy **rendszergazdai hozzájárulási művelet minden felhasználó nevében** a szervezetében.
+   * Ha az alkalmazás **rendszergazdai engedélyek** (például "érhetik el az összes felhasználó postaládák"), győződjön meg arról, hogy elvégezte-e globális rendszergazda egy **rendszergazdai hozzájárulási művelet az összes olyan felhasználó nevében** a szervezetében.
 
 ## <a name="problems-with-the-users-account"></a>A felhasználói fiókkal kapcsolatos problémák
 
@@ -509,15 +511,15 @@ Alkalmazás-hozzáférés blokkolható, mert a megfelelő engedélyekkel a hozz�
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Bármely alkalmazás rendszergazdai hozzájárulási művelethez
 
--   A **csak a V1 alkalmazásmodell használatával fejlesztett alkalmazások**, beállíthatja, hogy a rendszergazda szintű hozzájárulási hozzáadásával megtörténik "**? rendszergazdai parancssorból =\_hozzájárulás**", az alkalmazás bejelentkezési URL-cím végén.
+-   A **csak a V1 alkalmazásmodell használatával fejlesztett alkalmazások**, beállíthatja, hogy a rendszergazda szintű hozzájárulási hozzáadásával megtörténik "**? rendszergazdai parancssorból =\_hozzájárulás**" végére egy az alkalmazás bejelentkezési URL-címben.
 
--   A **bármely alkalmazás fejlesztett az V2 alkalmazásmodell**, kényszerítheti a rendszergazdai hozzájárul az utasítások alapján történik a **az engedélyeket kérhet a directory-rendszergazda** szakasza [használatával a rendszergazda jóváhagyását végpont](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   A **bármely alkalmazás fejlesztett az V2 alkalmazásmodell**, kényszerítheti az utasítások alapján történik a rendszergazdai hozzájárul a **az engedélyeket kérhet a directory-rendszergazda** szakasza [használatával a rendszergazda jóváhagyását végpont](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Hajtsa végre a rendszergazdai hozzájárulási egyetlen bérlői alkalmazások
 
 -   A **egyetlen bérlői alkalmazások** (mint fejleszt, vagy a szervezet saját), engedélyek kéréséhez, amely hajthat végre egy **rendszergazdai szintű hozzájárulási** nevében összes művelet Jelentkezzen be globális rendszergazdaként, majd kattintson a felhasználók a **engedélyeket** gomb tetején a **alkalmazás beállításjegyzék -&gt; összes alkalmazás -&gt; válasszon ki egy alkalmazást -&gt; Szükséges engedélyek** ablaktáblán.
 
--   A **bármely alkalmazás fejlesztett a V1 vagy V2 alkalmazásmodell**, kényszerítheti a rendszergazdai hozzájárul az utasítások alapján történik a **az engedélyeket kérhet a directory-rendszergazda** szakasza [használatával a rendszergazda jóváhagyását végpont](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   A **bármely alkalmazás fejlesztett a V1 vagy V2 alkalmazásmodell**, kényszerítheti a rendszergazdai hozzájárul az utasítások alapján történik a **az engedélyeket kérhet a directory-rendszergazda**  szakasza [használatával a rendszergazda jóváhagyását végpont](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Hajtsa végre a rendszergazdai hozzájárulási egy több-bérlős alkalmazáshoz
 

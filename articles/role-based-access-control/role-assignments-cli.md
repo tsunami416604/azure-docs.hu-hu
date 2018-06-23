@@ -1,6 +1,6 @@
 ---
 title: Az RBAC és az Azure CLI-hozzáférés kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, szerepkörön alapuló hozzáférés-vezérlést (RBAC) és az Azure parancssori felület használatával. Ez magában foglalja a hozzáférési listázása, hozzáférés biztosítása és eltávolítása a hozzáférés.
+description: Megtudhatja, hogyan kezelheti a hozzáférést a felhasználók, csoportok és alkalmazások, szerepkörön alapuló hozzáférés-vezérlést (RBAC) és az Azure parancssori felület használatával. Ez magában foglalja a listázási hozzáférés, engedélyezheti a hozzáférést, és megszünteti a hozzáférést.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/03/2018
+ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 16577339f1aa33fbd1a8b90f4beaef1ee4ce806c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294404"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316396"
 ---
 # <a name="manage-access-using-rbac-and-azure-cli"></a>Az RBAC és az Azure CLI-hozzáférés kezelése
 
@@ -27,9 +27,10 @@ ms.locfileid: "36294404"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure parancssori felület használatával felügyeli a szerepkör-hozzárendelések, rendelkeznie kell a következő előfeltételek teljesülését:
+Hozzáférés kezelése a következők szükségesek:
 
-* [Azure parancssori felület (CLI)](/cli/azure). Használhatja a böngészőjében az [Azure Cloud Shell-lel](../cloud-shell/overview.md), vagy [telepítheti](/cli/azure/install-azure-cli) macOS, Linux és Windows rendszeren, és futtathatja a parancssorból.
+* [Azure-felhőbe rendszerhéj bash](/azure/cloud-shell/overview)
+* [Azure CLI](/cli/azure)
 
 ## <a name="list-roles"></a>Lista szerepkörök
 
@@ -308,139 +309,7 @@ A következő példában eltávolítjuk a *olvasó* szerepkörnek a *Reino Mack 
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --scope /subscriptions/11111111-1111-1111-1111-111111111111
 ```
 
-## <a name="custom-roles"></a>Egyéni szerepkörök
-
-### <a name="list-custom-roles"></a>Egyéni szerepkörök listája
-
-A szerepkörök, amelyek rendelhető hozzá hatókör kilistázhatja [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list).
-
-Az alábbi példák mindegyikét listában a egyéni szerepkörök az aktuális előfizetésben:
-
-```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
-```
-
-```azurecli
-az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
-```
-
-```Output
-{
-  "roleName": "My Management Contributor",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Operator Role",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Reader Role",
-  "type": "CustomRole"
-}
-
-...
-```
-
-### <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
-
-Egy egyéni biztonsági szerepkört hozhat létre [az szerepkör-definíció létrehozása](/cli/azure/role/definition#az-role-definition-create). A szerepkör-definíció lehet JSON-leírásuk vagy egy JSON-leírásuk tartalmazó fájl elérési útját.
-
-```azurecli
-az role definition create --role-definition <role_definition>
-```
-
-Az alábbi példa létrehoz egy egyéni biztonsági szerepkört nevű *virtuális gépet üzemeltető*. Az egyéni szerepkör hozzáférést rendel hozzá az összes olvasási műveletek *Microsoft.Compute*, *Microsoft.Storage*, és *Microsoft.Network* erőforrás-szolgáltatók és rendel hozzáférés Indítsa el, indítsa újra, és a virtuális gépek figyelése. Az egyéni szerepkör két előfizetések használható. A példa egy JSON-fájl bemenetként.
-
-vmoperator.json
-
-```json
-{
-  "Name": "Virtual Machine Operator",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-
-  ],
-  "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
-  ]
-}
-```
-
-```azurecli
-az role definition create --role-definition ~/roles/vmoperator.json
-```
-
-### <a name="update-a-custom-role"></a>Frissítés egy egyéni biztonsági szerepkört
-
-Ha egy egyéni biztonsági szerepkört frissítéséhez először az [szerepkör-definíció listán az](/cli/azure/role/definition#az-role-definition-list) szerepkör-definíció beolvasása. A szerepkör-definíció, végezze el a szükséges módosításokat. Végül [az szerepkör-definíció frissítése](/cli/azure/role/definition#az-role-definition-update) frissített szerepkör-definíció mentése.
-
-```azurecli
-az role definition update --role-definition <role_definition>
-```
-
-A következő példakóddal felveheti a *Microsoft.Insights/diagnosticSettings/* művelet a *műveletek* , a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört.
-
-vmoperator.json
-
-```json
-{
-  "Name": "Virtual Machine Operator",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Insights/diagnosticSettings/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
-
-  ],
-  "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
-  ]
-}
-```
-
-```azurecli
-az role definition update --role-definition ~/roles/vmoperator.json
-```
-
-### <a name="delete-a-custom-role"></a>Egyéni szerepkör törléséhez
-
-Egyéni szerepkör törléséhez használja [az szerepkör-definíció törlése](/cli/azure/role/definition#az-role-definition-delete). A szerepkör törléséhez megadásához használja a szerepkör nevét vagy a szerepkör-azonosítót. A szerepkör-Azonosítót meghatározásához [az szerepkör-definíció lista](/cli/azure/role/definition#az-role-definition-list).
-
-```azurecli
-az role definition delete --name <role_name or role_id>
-```
-
-A következő példa törli a *virtuális gépet üzemeltető* egyéni biztonsági szerepkört:
-
-```azurecli
-az role definition delete --name "Virtual Machine Operator"
-```
-
 ## <a name="next-steps"></a>További lépések
 
-[!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
-
+- [Oktatóanyag: Hozzon létre egy egyéni biztonsági szerepkört az Azure parancssori felület használatával](tutorial-custom-role-cli.md)
+- [Azure-erőforrások és csoportok kezelése az Azure parancssori felület használatával](../azure-resource-manager/xplat-cli-azure-resource-manager.md)

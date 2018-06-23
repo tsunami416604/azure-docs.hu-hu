@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 6a4e25dd3f819ad4f0fee7846e87df2202f5227f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2ee5250147a82199057a3bf6f043627616e7443d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210618"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333686"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja
 Ez a cikk bemutatja, hogyan felügyelheti az Azure Active Directory (AD) tartományi szolgáltatások által felügyelt tartományokhoz.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:
@@ -37,7 +39,7 @@ A cikkben szereplő feladatok elvégzéséhez szüksége:
 <br>
 
 ## <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>Felügyeleti feladatokat hajthat végre egy felügyelt tartomány
-A "AAD DC rendszergazdák" csoportba kapnak a felügyelt tartományra, amely lehetővé teszi a feladatok elvégzéséhez jogosultságokkal:
+A "AAD DC rendszergazdák" csoportba kapnak a felügyelt tartományra, amely lehetővé teszi feladatokat hajthatnak végre, például a jogosultságokkal:
 
 * Számítógépek csatlakoztatása a felügyelt tartományra.
 * A beépített GPO konfigurálása a felügyelt tartomány „AADDC számítógépek” és „AADDC felhasználók” tárolóinak esetében.
@@ -46,15 +48,15 @@ A "AAD DC rendszergazdák" csoportba kapnak a felügyelt tartományra, amely leh
 * Felügyeleti hozzáférés szerzése a felügyelt tartományhoz csatlakoztatott számítógépekhez.
 
 ## <a name="administrative-privileges-you-do-not-have-on-a-managed-domain"></a>Ön nem rendelkezik egy felügyelt tartományi rendszergazdai jogosultságokkal
-A tartomány a Microsoft, ideértve a tevékenységeket, például a javítás, figyelés és a biztonsági mentés kezeli. Ezért a tartomány zárolva van, és nincs bizonyos felügyeleti feladatok elvégzésére a tartományon. Néhány példa a feladatok nem hajtható végre a rendszer alatt.
+A tartomány a Microsoft, ideértve a tevékenységeket, például a javítás, felügyeleti és biztonsági másolatok fogadására kezeli. A tartomány zárolva van, és nincs jogosultsága a tartományban lévő egyes felügyeleti feladatok elvégzéséhez. Néhány példa a feladatok nem hajtható végre a rendszer alatt.
 
-* Nem kapnak a felügyelt tartomány számára a tartományi rendszergazda vagy a vállalati rendszergazdai jogosultságokkal.
+* Nem kell tartományi rendszergazdának vagy vállalati rendszergazdai jogosultságokkal a felügyelt tartomány számára.
 * A felügyelt tartományra sémája nem bővíthető.
 * Nem lehet csatlakozni a távoli asztal használata felügyelt tartomány számára tartományvezérlők.
 * Tartományvezérlők nem adható hozzá a felügyelt tartományra.
 
-## <a name="task-1---provision-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>1. feladat – egy tartományhoz csatlakoztatott Windows Server rendszerű virtuális gép távoli felügyelete a felügyelt tartományra
-Az Azure AD tartományi szolgáltatások felügyelt tartományok ismeri az Active Directory felügyeleti eszközök például az Active Directory felügyeleti központ (ADAC) vagy AD PowerShell segítségével kezelhetők. A bérlői rendszergazdák nem jogosult csatlakozni a távoli asztalon keresztül a felügyelt tartományra tartományvezérlők. Ezért a "AAD DC rendszergazdák" csoport tagjai felügyelhetik felügyelt tartományok távolról az AD felügyeleti eszközök a Windows Server-ügyfél számítógépről, amely a felügyelt tartomány tagja. AD felügyeleti eszközök a Távoli kiszolgálófelügyelet eszközei (RSAT) választható szolgáltatás Windows Server és a felügyelt tartományhoz csatlakozó ügyfélgépek részeként telepíthető.
+## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>1. feladat – tartományhoz csatlakoztatott Windows Server virtuális gép létrehozása a felügyelt tartományra távoli felügyelete
+Az Azure AD tartományi szolgáltatások felügyelt tartományok ismeri az Active Directory felügyeleti eszközök például az Active Directory felügyeleti központ (ADAC) vagy AD PowerShell segítségével kezelhetők. A bérlői rendszergazdák nem jogosult csatlakozni a távoli asztalon keresztül a felügyelt tartományra tartományvezérlők. A "AAD DC rendszergazdák" csoport tagjai felügyelhetik felügyelt tartományok távolról az AD felügyeleti eszközök a Windows Server-ügyfél számítógépről, amely a felügyelt tartományhoz csatlakozik. AD felügyeleti eszközök a Távoli kiszolgálófelügyelet eszközei (RSAT) választható szolgáltatás Windows Server és a felügyelt tartományhoz csatlakozó ügyfélgépek részeként telepíthető.
 
 Az első lépés, hogy állítson be egy Windows Server virtuális gépet, amely a felügyelt tartományhoz csatlakozik. Útmutatásért tekintse meg a című cikk [Windows Server virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz](active-directory-ds-admin-guide-join-windows-vm.md).
 
@@ -64,13 +66,13 @@ Ez a cikk a Windows Server virtuális gép használata utasításait az AAD-DS f
 Is [telepíti a Távoli kiszolgálófelügyelet eszközei (RSAT)](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) cikk utasításait követve a TechNet Windows ügyfél virtuális gépen.
 
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>2. feladat – telepítés Active Directory felügyeleti eszközök a virtuális gépen
-A következő lépésekkel telepítse az Active Directory-felügyeleti eszközök a tartományhoz csatlakoztatott virtuális gépre. Tekintse meg a Technet további [telepítéséről és a Távoli kiszolgálófelügyelet eszközeivel](https://technet.microsoft.com/library/hh831501.aspx).
+Az alábbi lépésekkel telepítse az Active Directory-felügyeleti eszközök a tartományhoz csatlakoztatott virtuális gépre. Tekintse meg a Technet további [telepítéséről és a Távoli kiszolgálófelügyelet eszközeivel](https://technet.microsoft.com/library/hh831501.aspx).
 
 1. Keresse meg az Azure-portálon. Kattintson a **összes erőforrás** a bal oldali panelen. Keresse meg, és kattintson az 1. feladatban létrehozott virtuális gépre.
 2. Kattintson a **Connect** – Áttekintés lap gombjára. A távoli asztal protokoll (RDP) fájl létrehozása, és le.
 
     ![Windows virtuális géphez](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. Bejelentkezés a parancssorba az "AAD DC rendszergazdák" csoportba tartozó felhasználói hitelesítő adatokat használja. Például használjuk "bob@domainservicespreview.onmicrosoft.com" esetünkben. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Kattintson az Igen gombra, vagy folytassa a kapcsolat.
+3. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Ha a rendszer kéri, akkor kattintson a **Csatlakozás** gombra. Az "AAD DC rendszergazdák" csoportba tartozó felhasználói hitelesítő adatokat használja. Például "bob@domainservicespreview.onmicrosoft.com". A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Kattintson az Igen gombra, vagy folytassa a kapcsolat.
 4. A kezdőképernyőről nyissa meg a **Kiszolgálókezelő**. Kattintson a **szerepkörök és szolgáltatások hozzáadása** a Kiszolgálókezelő ablakban központi panelén.
 
     ![Indítsa el a Kiszolgálókezelőt a virtuális gépen](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -83,7 +85,7 @@ A következő lépésekkel telepítse az Active Directory-felügyeleti eszközö
 7. Az a **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgálókészletből, és kattintson a **következő**.
 
     ![Kiszolgáló kiválasztása lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Az a **kiszolgálói szerepkörök** kattintson **következő**. Azt e lap kihagyása, mert jelenleg nem telepít szerepköröket a kiszolgálón.
+8. Az a **kiszolgálói szerepkörök** kattintson **következő**.
 9. Az a **szolgáltatások** lap gombra, bontsa ki a **távoli kiszolgálófelügyelet eszközei** csomópontra majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópont. Válassza ki **AD DS és AD LDS-eszközök** szolgáltatás szerepkör-felügyeleti eszközök a listából.
 
     ![Szolgáltatások lapon](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
@@ -92,7 +94,7 @@ A következő lépésekkel telepítse az Active Directory-felügyeleti eszközö
     ![Jóváhagyás lap](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>A feladat 3 - csatlakozni, és vizsgálja meg a felügyelt tartományra
-Most, hogy az AD-felügyeleti eszközök telepítve vannak a tartományhoz csatlakoztatott virtuális gép, ezekkel az eszközökkel vizsgálatát, és felügyelheti a felügyelt tartományra is használjuk.
+Most a Windows Server AD felügyeleti eszközök segítségével is vizsgálatát, és felügyelheti a felügyelt tartományra.
 
 > [!NOTE]
 > Felügyelheti a felügyelt tartományra "AAD DC rendszergazdák" csoport tagjának lennie kell.
