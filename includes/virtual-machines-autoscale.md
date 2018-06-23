@@ -2,13 +2,13 @@ Egyszerűen [automatikus méretezése](../articles/monitoring-and-diagnostics/in
 
 ## <a name="horizontal-or-vertical-scaling"></a>Vízszintes vagy függőleges skálázás
 
-Az automatikus skálázási funkciót Azure figyelő csak arányosan vízszintesen, ez ("out") növelését vagy csökkenését ("") a virtuális gépek számát. Horizontális skálázás rugalmasabb felhő helyzetben, lehetővé teszi több ezer virtuális gépek terhelés kezelése érdekében potenciálisan futtatásához. Automatikusan vagy manuálisan módosítja a kapacitás (vagy a példányok száma) horizontálisan méretezhető a a méretezési készlet. 
+Az automatikus skálázási funkciót Azure figyelő csak arányosan vízszintesen, ez ("out") növelését vagy csökkenését ("") a virtuális gépek számát. Horizontális skálázás rugalmasabb felhő helyzetben, lehetővé teszi több ezer virtuális gépek terhelés kezelése érdekében potenciálisan futtatásához. Vízszintes méretezni automatikusan vagy manuálisan módosítja a méretezési kapacitás (vagy a példányok száma). 
 
 Függőleges skálázás tartja a virtuális gépek azonos számú, de lehetővé teszi a virtuális gépek ("Mentés") több vagy kevesebb ("le") hatékony. Az attribútumok például memória, Processzor sebessége vagy lemezterület mérik. Függőleges méretezés akkor elérhetőségétől függ nagyobb hardver, amely gyorsan találatok száma a felső korlátja, és régiónként eltérőek lehetnek. Általában is függőleges skálázáshoz kell a virtuális gépek leállítása és újraindítása. A konfigurációban a méretezési csoportban lévő virtuális gépek új beállításával függőleges méretezni.
 
 A runbookok használata [Azure Automation](../articles/automation/automation-intro.md), egyszerűen [méretezési csoportban lévő virtuális gépek méretezési](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-vertical-scale-reprovision.md) felfelé vagy lefelé.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Hozzon létre egy virtuálisgép-méretezési csoport
+## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
 Méretezési csoportok megkönnyítik telepítéséhez és kezeléséhez az azonos virtuális gépek készletként. Létrehozhat Linux vagy a Windows-skálázási készletekben használatával a [Azure-portálon](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md), [Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md), vagy a [Azure CLI](../articles/virtual-machines/linux/tutorial-create-vmss.md). Is hozhat létre, és kezelhet, mint az SDK-k méretezési csoportok [Python](/develop/python) vagy [Node.js](/nodejs/azure), vagy közvetlenül a [REST API-k](/rest/api/compute/virtualmachinescalesets). Virtuális gépek automatikus skálázás érhető el, a méretezési metrikák és a szabályok alkalmazásával.
 
@@ -50,7 +50,7 @@ Az Azure PowerShell használatával le kell töltenie a méretezési készlet ob
 
 A virtuális gépeket az Azure portálon, a méretezési készlet mérete képernyőn mérete manuálisan módosíthatja. Get-AzureRmVmss, a lemezkép referencia sku tulajdonságban beállítás, és használata az Azure PowerShell használatával [frissítés-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) és [frissítés-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a méretezési készlet [skálázási készletekben kialakítási szempontjai](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview.md).
 

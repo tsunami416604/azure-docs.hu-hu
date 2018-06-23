@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 05dc8ae48a9164e4f7118d378ab0eb7c30a4249e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/23/2018
 ms.locfileid: "30196800"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot.
@@ -44,7 +44,7 @@ SLA-k és szolgáltatáskészletek eltérései miatt a következő termékválto
 | **Számítási feladat**                       | **Termékváltozatok**               |
 | ---                                | ---                    |
 | **Termelés, kritikus fontosságú számítási feladatok** | VpnGw1, VpnGw2, VpnGw3 |
-| **Dev-test vagy a koncepció igazolása**   | Basic (**)                 |
+| **Dev-test vagy a koncepció igazolása**   | Basic (*)                 |
 |                                    |                        |
 
 (**) Az alapszintű Termékváltozat egy örökölt SKU minősülnek, és a szolgáltatás korlátozások vonatkoznak. Győződjön meg arról, hogy a szükséges támogatja az alapszintű Termékváltozat használata előtt.

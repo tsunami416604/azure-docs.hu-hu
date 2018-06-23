@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 93c96e71aea98598492ec32f13fddb0b0732196e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fceeb9655562d7abf6930cc484b4a9eb275ee81e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217053"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330801"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 virtuális gépek csatlakoztatása felügyelt tartományokhoz
 Ez a cikk bemutatja, hogyan Red Hat Enterprise Linux (RHEL) 7 virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:  
@@ -84,17 +86,17 @@ Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve,
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE] 
+     > [!NOTE]
      > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartományok:
      * Győződjön meg arról, hogy a tartomány elérhető-e a virtuális gépről (próbálja ping).
      * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el.
      * Ellenőrizze, hogy ha a DNS-kiszolgáló beállításait, a virtuális hálózat úgy, hogy a tartományvezérlők, a felügyelt tartományra mutasson frissítése befejeződött.
      >
 
-2. Kerberos inicializálni. Az SSH terminálban írja be a következő parancsot: 
+2. Kerberos inicializálni. Az SSH terminálban írja be a következő parancsot:
 
-    > [!TIP] 
-    > * Adjon meg egy felhasználót, aki a "AAD DC rendszergazdák" csoportba tartozik. 
+    > [!TIP]
+    > * Adjon meg egy felhasználót, aki a "AAD DC rendszergazdák" csoportba tartozik.
     > * Adja meg a tartomány nevét nagybetűvel, más kinit sikertelen lesz.
     >
 
@@ -102,9 +104,9 @@ Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve,
     kinit bob@CONTOSO100.COM
     ```
 
-3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálban írja be a következő parancsot: 
+3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálban írja be a következő parancsot:
 
-    > [!TIP] 
+    > [!TIP]
     > Használja az előző lépést ("kinit") megadott ugyanazzal a fiókkal.
     >
 

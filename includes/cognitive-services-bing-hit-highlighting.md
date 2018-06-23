@@ -1,43 +1,43 @@
-Bing supports hit highlighting which marks query terms (or other terms that Bing finds relevant) in the display strings of some of the answers. For example, a webpage's `name`, `displayUrl`, and `snippet` fields may mark the query terms.
+Bing támogatja kiemelve, amely jelöli meg a lekérdezési kifejezések találati aránya (vagy egyéb feltételeket, hogy a Bing talál megfelelő) az egyes a kérdésekre adott válaszokat a megjelenítési karakterláncot. Például egy weboldal `name`, `displayUrl`, és `snippet` mezők előfordulhat, hogy jelölje meg a lekérdezési kifejezések.
 
-By default, Bing doesn't include highlighting markers in display strings. To include the markers, include the `textDecorations` query parameter in your request and set it to **true**. Bing marks the query terms using the E000 and E001 Unicode characters to mark the beginning and end of the term. For example, if the query term is Sailing Dinghy and either term exists in the field, the term is enclosed in hit highlighting characters as shown in the following example:  
+Alapértelmezés szerint a Bing nem tartalmazza a jelölők a megjelenített karakterláncok kiemelve. A jelölők tartalmazza, tartalmazza a `textDecorations` lekérdezésparaméter a kérelmét, és állítsa az értékét **igaz**. Bing a lekérdezési kifejezések E000 és E001 Unicode karakterek használata a elején és végén lévő kifejezés szabadként jelöli meg. Például ha a lekérdezés kifejezés induló utazó Dinghy és a mező szerepel vagy kifejezés, kifejezés szimpla találati kijelölő karakterek az alábbi példában látható módon:  
   
-![Hit Highlighting](./media/cognitive-services-bing-hit-highlighting/bing-hit-highlighting.PNG) 
+![Elérte a kiemelve](./media/cognitive-services-bing-hit-highlighting/bing-hit-highlighting.PNG) 
 
-Before displaying the string in your user interface, you would replace the Unicode characters with characters that are appropriate for your display format. For example, if you're displaying the text as HTML, you might highlight the query term by replacing E000 with <b\> and E001 with </b\>. If you don't want to apply formatting, remove the markers from the string. 
+A karakterlánc megjelenítése a felhasználói felületen, előtt a Unicode-karaktereket volna cserélje karakterek, amelyek a megjelenítési formátuma. Például ha a szöveg HTML formátumban, előfordulhat, hogy kijelöl lekérdezési kifejezés tartományvezérlőkkel történő lecserélésével E000 a < b\> és a E001 < /b\>. Ha nem kívánja alkalmazni a formázás, távolítsa el a jelölők a karakterláncot. 
 
-Bing provides the option of using Unicode characters or HTML tags as markers. To specify which markers to use, include the `textFormat` query parameter. To mark the content with Unicode characters, set `textFormat` to Raw (the default), and to mark the content with HTML tags, set `textFormat` to HTML. 
+Bing Unicode-karaktereket vagy a HTML-címkék használata a jelölők lehetőséget biztosít. Adja meg, melyik jelölők használni, adja meg a `textFormat` lekérdezési paraméter. Jelölje meg a tartalom Unicode-karakteres, állítsa `textFormat` Raw (alapértelmezett), és jelölje meg a tartalmat a HTML-címkéket, állítsa be `textFormat` HTML-re. 
   
-If `textDecorations` is **true**, Bing may include the following markers in display strings of answers. If there is no HTML equivalent, the HTML table cell is empty.
+Ha `textDecorations` van **igaz**, a Bing tartalmazhatják a következő jelölők a megjelenített karakterláncok válaszok. Ha nincs HTML egyenértékű, a HTML-tábla cella mező üres.
 
-|Unicode|HTML|Description
+|Unicode|HTML|Leírás
 |-|-|-
-|U+E000|\<b>|Marks the beginning of the query term (hit highlighting)
-|U+E001|\</b>|Marks the end of the query term
-|U+E002|\<i>|Marks the beginning of italicized content 
-|U+E003|\</i>|Marks the end of italicized content
-|U+E004|\<br/>|Marks a line break
-|U+E005||Marks the beginning of a phone number
-|U+E006||Marks the end of a phone number
-|U+E007||Marks the beginning of an address
-|U+E008||Marks the end of an address
-|U+E009|\&nbsp;|Marks a non-breaking space
-|U+E00C|\<strong>|Marks the beginning of bold content
-|U+E00D|\</strong>|Marks the end of bold content
-|U+E00E||Marks the beginning of content whose background should be lighter than its surrounding background
-|U+E00F||Marks the end of content whose background should be lighter than its surrounding background
-|U+E010||Marks the beginning of content whose background should be darker than its surrounding background
-|U+E011||Marks the end of content whose background should be darker than its surrounding background
-|U+E012|\<del>|Marks the beginning of content that should be struck through
-|U+E013|\</del>|Marks the end of content that should be struck through
-|U+E016|\<sub>|Marks the beginning of subscript content
-|U+E017|\</sub>|Marks the end of subscript content
-|U+E018|\<sup>|Marks the beginning of superscript content
-|U+E019|\</sup>|Marks the end of superscript content
+|U + E000|\<b >|A lekérdezési kifejezésre (találatok kiemelése) kezdetét jelöli
+|U + E001|\</b >|A lekérdezés kifejezés végét jelöli
+|U + E002|\<i >|Dőlt betűvel tartalom kezdetét jelöli 
+|U + E003|\</i >|Dőlt betűvel tartalom végét jelöli
+|U + E004|\<br / >|Sortörés jelöli meg
+|U + E005||A telefonszám kezdetét jelöli
+|U + E006||A telefonszám végét jelöli
+|U + E007||Cím kezdetét jelöli
+|U + E008||Egy címet végét jelöli
+|U + E009|\&nbsp;|Nem törhető szóközzel jelöli meg
+|U + E00C|\<erős >|A félkövér betűvel írott tartalom kezdetét jelöli
+|U + E00D|\</ strong >|A félkövér betűvel írott tartalom végét jelöli
+|U + E00E||Tartalom, amelynek háttér kell lennie a környező háttér világosabb kezdetét jelöli
+|U + E00F||Tartalom, amelynek háttér kell lennie a környező háttér világosabb végét jelöli
+|U + E010||Tartalom, amelynek háttér kell lennie a környező háttér sötétebbek kezdetét jelöli
+|U + E011||Tartalom, amelynek háttér kell lennie a környező háttér sötétebbek végét jelöli
+|U + E012|\<del >|Át kell húzni tartalom kezdetét jelöli
+|U + E013|\</ del >|Át kell húzni tartalom végét jelöli
+|U + E016|\<Sub >|Alsó tartalom kezdetét jelöli
+|U + E017|\</ sub >|Alsó tartalom végét jelöli
+|U + E018|\<sup >|Felső tartalom kezdetét jelöli
+|U + E019|\</ sup >|Felső tartalom végét jelöli
 
-The following example shows a `Computation` answer that contains subscript markers for a log(2) query term. The `expression` field contains the markers only if `textDecoration is **true**.
+Az alábbi példa mutatja egy `Computation` választ, amely tartalmazza az alsó jelölők log(2) lekérdezés időszakra. A `expression` mezőben a jelölők csak akkor, ha `textDecoration` van **igaz**.
 
-![computation markers](./media/cognitive-services-bing-hit-highlighting/bing-markers-computation.PNG) 
+![számítási jelölők](./media/cognitive-services-bing-hit-highlighting/bing-markers-computation.PNG) 
 
-If the request did not request decorations, the expression would be log10(2). 
+A kérelem nem kért díszítés, ha a kifejezés log10(2) lesz. 
   

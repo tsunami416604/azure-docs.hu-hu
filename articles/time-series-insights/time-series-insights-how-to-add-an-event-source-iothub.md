@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: b970d01c586e016d47b0f0480d73f06211969814
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294880"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330594"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Az IoT-központ eseményforrást felvétele idő adatsorozat Insights környezet
 A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az adatokat az IoT-központ idő adatsorozat Insights környezetébe eseményforrást hozzáadása.
@@ -25,6 +25,22 @@ A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az ad
 - Létrehoz egy IoT-központot. Az IoT-központok további információkért lásd: [létrehoz egy IoT-központot, az Azure portál használatával](../iot-hub/iot-hub-create-through-portal.md)
 - Az IoT Hub küldési aktív üzenet események rendelkeznie kell.
 - Hozzon létre egy dedikált fogyasztói csoportot az IoT hubon idő adatsorozat Insight környezetre való felhasználását. Minden alkalommal adatsorozat Insights eseményforrás saját dedikált fogyasztói csoportot, amelyek nincsenek megosztva, más fogyasztóval rendelkeznie kell. Ha több olvasók ugyanazt a felhasználói csoportban lévő események felhasználásához, minden olvasók valószínűleg tekintse meg a hibákat. További információkért lásd: a [IoT Hub fejlesztői útmutató](../iot-hub/iot-hub-devguide.md).
+
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>Az IoT Hub egy felhasználói csoport hozzáadása
+Alkalmazások az fogyasztói csoportok segítségével olvasnak be adatokat Azure IoT-központok. Adjon meg egy dedikált fogyasztói csoportot idő adatsorozat Insights környezet csak, megbízhatóan adatokat olvasni az IoT Hub általi használatra.
+
+Egy új felhasználói csoport hozzáadása az IoT Hub, kövesse az alábbi lépéseket:
+1. Keresse meg az Azure-portálon, és nyissa meg az IoT Hub.
+
+2. Az a **Messaging** elemcsoportban válasszon **végpontok**. 
+
+   ![Egy felhasználói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
+
+3. Válassza ki a **események** végpontot, és a **tulajdonságok** lap megnyitásakor.
+
+4. Az a **fogyasztói csoportok** fejlécre, adjon meg egy új egyedi nevet a fogyasztói csoportot. Az azonos név használata idő adatsorozat Insights környezetben, egy új eseményforrás létrehozása során.
+
+5. Válassza ki **mentése** menteni az új fogyasztói csoportot.
 
 ## <a name="add-a-new-event-source"></a>Új esemény-forrás hozzáadása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -73,27 +89,13 @@ A cikkből megtudhatja, hogyan használható az Azure-portálon olvassa be az ad
    | Eseményszerializációs formátum | JSON-ja jelenleg csak a rendelkezésre álló szerializálást. Az eseményüzeneteket a következő formátumban kell lennie, vagy nincsenek adatok olvashatók. |
    | Időbélyeg-tulajdonság neve | Ez az érték határozza meg, az üzenet adataihoz, az IoT hubhoz küldött üzenet formátuma tisztában kell. Ez az érték a **neve** az üzenet adataihoz, az esemény időbélyegzője használni kívánt az adott esemény tulajdonság. Az érték a kis-és nagybetűket. Ha üresen marad, a **esemény sorba helyezni időtartam** belül az esemény az esemény időbélyegzője forrás használatos. |
 
-10. Válassza ki **létrehozása** hozzáadása az új esemény forrását.
+10. Adja hozzá a dedikált ÁME felhasználói csoport nevét az IoT Hub hozzáadott.
+
+11. Válassza ki **létrehozása** hozzáadása az új esemény forrását.
 
    ![Kattintson a Létrehozás gombra](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    Az eseményforrás létrehozása után a Time Series Insights automatikusan megkezdi az adatok streamelését a környezetbe.
-
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>Az IoT Hub egy felhasználói csoport hozzáadása
-Alkalmazások az fogyasztói csoportok segítségével olvasnak be adatokat Azure IoT-központok. Adjon meg egy dedikált fogyasztói csoportot idő adatsorozat Insights környezet csak, megbízhatóan adatokat olvasni az IoT Hub általi használatra.
-
-Egy új felhasználói csoport hozzáadása az IoT Hub, kövesse az alábbi lépéseket:
-1. Keresse meg az Azure-portálon, és nyissa meg az IoT Hub.
-
-2. Az a **Messaging** elemcsoportban válasszon **végpontok**. 
-
-   ![Egy felhasználói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
-
-3. Válassza ki a **események** végpontot, és a **tulajdonságok** lap megnyitásakor.
-
-4. Az a **fogyasztói csoportok** fejlécre, adjon meg egy új egyedi nevet a fogyasztói csoportot. Az azonos név használata idő adatsorozat Insights környezetben, egy új eseményforrás létrehozása során.
-
-5. Válassza ki **mentése** menteni az új fogyasztói csoportot.
 
 ## <a name="next-steps"></a>További lépések
 - [Adja meg az adat-hozzáférési házirendjeit](time-series-insights-data-access.md) az adatok védelmét.
