@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2209a06921ffd6a8efb6fc38dacfa88fc87fa05
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 840d3737efe4314359ba3a3bf0f5c4f888f92567
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958724"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329569"
 ---
 Tárolási optimalizált Virtuálisgép-méretek nagy átviteli sebesség és IO, és alkalmasak Big Data típusú adatok, az SQL és a NoSQL-adatbázisok. Ez a cikk tájékoztatást ad azokról a Vcpu, adatlemezek és hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség minden méretéhez ennél a csoportosításnál száma. 
 
@@ -31,7 +31,7 @@ ACU: 180–240
 | Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000 / 1,000     | 8 / 20,000 | 
  
 
-Az Ls-sorozatba tartozó virtuális gépek lemezeinek maximális átviteli sebességét a csatolt lemezek mennyisége, mérete és szétosztottsága befolyásolhatja. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket. 
+Lehet, hogy a lehetséges Ls sorozatú virtuális gépek maximális lemez átviteli attól függ, hogy a száma, mérete és bármely csíkozást csatlakoztatott lemezekkel. Részletekért lásd a [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure-alapú virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) című cikket. Magas helyi tárolóhely-használat rendelkező munkaterhelések célzott ls sorozatú virtuális gépeket, és általában csak használata csatlakoztatott lemezek kezdeti be-és a naplózás, mint a gyorsítótár nem helyettesíti ezekben az esetekben a Ls adatsorozat nem támogatja a gyorsítótárazást a gazdagép csatlakoztatott lemezekkel, lemezek kell csatolni nem gyorsítótárazott üzemmódban. 
 
 <sup>1</sup> példány el különítve az egyetlen ügyfél számára dedikált hardver.
 
