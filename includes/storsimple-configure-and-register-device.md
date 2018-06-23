@@ -16,7 +16,7 @@
 6. Írja be a következő parancsot:
    
      `Invoke-HcsSetupWizard` 
-7. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg az alábbi adatokat: 
+7. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg a következő információkat: 
    
    * A DATA 0 hálózati adapter IP-címe
    * Alhálózati maszk

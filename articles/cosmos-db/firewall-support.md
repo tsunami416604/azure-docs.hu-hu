@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 0407d3c58fa63a11c8391f069039f7c35a15ceb7
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c55f90b944038a0e4ca216a357fc30f4cf6a6ddc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294737"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317286"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Az Azure Cosmos DB-tűzfaltámogatás
 Egy Azure Cosmos-adatbázis adatbázis-fiókban tárolt adatok védelme érdekében Azure Cosmos DB nyújtott támogatás a titkos kulcs alapú [engedélyezési modellt](https://msdn.microsoft.com/library/azure/dn783368.aspx) , amely erős kivonat-alapú üzenethitelesítő kódot (HMAC) használja. Most a titkos alapú engedélyezési modell mellett Azure Cosmos DB bejövő tűzfaltámogatás IP-alapú hozzáférés-vezérléssel vezérelt házirend támogatja. Ebben a modellben a hagyományos adatbázis rendszer tűzfalszabályok hasonló, és egy további Azure Cosmos DB adatbázis fiókhoz biztonsági szintet. Ez a modell segítségével mostantól beállíthatja egy Azure Cosmos DB adatbázisfiók csak egy jóváhagyott gépek halmazát jelenti érhetők el, illetve a felhőalapú szolgáltatások. A jóváhagyott halmazok gépek és szolgáltatások Azure Cosmos DB erőforrásokhoz való hozzáférés továbbra is szükség van egy érvényes hitelesítési jogkivonatot a hívó.
@@ -56,10 +56,10 @@ Az Azure-portálon való hozzáférés alapértelmezés szerint engedélyezve va
 
 ![Képernyőfelvétel: az Azure portál hozzáférés engedélyezése](./media/firewall-support/enable-azure-portal.png)
 
-## <a name="connections-from-public-azure-datacenters-or-azure-paas-services"></a>A nyilvános Azure adatközpontjaiban vagy Azure PaaS szolgáltatásokból kapcsolatok
+## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>A globális Azure adatközpontjaiban vagy Azure PaaS szolgáltatásokból kapcsolatok
 Az Azure PaaS-szolgáltatásokat, mint az Azure Stream analytics, az Azure Functions és Azure App Service szolgáltatásban használt Azure Cosmos DB együtt. Azure Cosmos DB való hozzáférésének engedélyezésére ezeket a szolgáltatásokat, amelyek IP-címei nem azonnal elérhetők legyenek az adatbázis-fiók vegye fel a 0.0.0.0 programozott módon a Azure Cosmos DB adatbázis fiókjához társított IP-címek az engedélyezett bővítmények listájához. 
 
-Nyilvános Azure adatközpontjaiban belül közötti kapcsolatok elérésére alapértelmezés szerint engedélyezve van, ha a tűzfal-beállításokat, hogy megváltoztatja **kijelölt hálózatok** az Azure portálon. 
+Globális Azure adatközpontjaiban belül közötti kapcsolatok elérésére alapértelmezés szerint engedélyezve van, ha a tűzfal-beállításokat, hogy megváltoztatja **kijelölt hálózatok** az Azure portálon. 
 
 ![Képernyőfelvétel: a tűzfal lap megnyitása a az Azure-portálon](./media/firewall-support/enable-azure-services.png)
 
@@ -87,6 +87,25 @@ Ha további virtuálisgép-példányok felvétele a csoportba, azok automatikusa
 
 ## <a name="connections-from-the-internet"></a>Az internetről érkező kapcsolatokat
 Amikor egy Azure Cosmos DB adatbázisfiók fér hozzá egy számítógépről az interneten, az ügyfél IP-cím vagy IP-címtartomány a gép hozzá kell adni az Azure Cosmos DB adatbázis fiókjához tartozó IP-cím az engedélyezett bővítmények listájához. 
+
+## <a name="using-azure-resource-manager-template-to-set-up-the-ip-access-control"></a>Azure Resource Manager-sablon használatával állít be a IP hozzáférés-vezérlés
+
+Adja hozzá a következő JSON IP hozzáférés-vezérlés beállítása a sablonhoz. Egy olyan fiók Resource Manager-sablon lesz ipRangeFilter az attribútumok, amelyek IP-címtartománylista, amely szerepel az engedélyezési listán.
+
+```json
+   {
+     "apiVersion": "2015-04-08",
+     "type": "Microsoft.DocumentDB/databaseAccounts",
+     "kind": "GlobalDocumentDB",
+     "name": "[parameters('databaseAccountName')]",
+     "location": "[resourceGroup().location]",
+     "properties": {
+     "databaseAccountOfferType": "Standard",
+     "name": "[parameters('databaseAccountName')]",
+     "ipRangeFilter":"10.0.0.1,10.0.0.2,183.240.196.255"
+   }
+   }
+```
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Hibaelhárítás az IP-hozzáférés-vezérlési házirend
 ### <a name="portal-operations"></a>Portál műveletek

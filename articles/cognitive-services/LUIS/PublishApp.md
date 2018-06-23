@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 056608e7843c8feab28359de5f2762164287f09d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 12a63e65a739be08d436f8f1b53df566255b1fb1
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35349956"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36322057"
 ---
 # <a name="publish-your-trained-app"></a>A betanított alkalmazás közzététele
 Befejezése után összeállításakor és tesztelésekor a LUIS alkalmazás közzététele. Az alkalmazás közzététele után a közzététel a lapon látható-e az összes kapcsolód HTTP [végpontok](luis-glossary.md#endpoint). Ezeket a végpontokat / [régió](luis-reference-regions.md) , valamint minden [kulcs](Manage-Keys.md), majd minden ügyfél, chatbot vagy háttér alkalmazásba integrált. 
 
-Mindig is [tesztelése](train-test.md) közzététel előtt az alkalmazást. 
+Mindig is [tesztelése](interactive-test.md) közzététel előtt az alkalmazást. 
 
 ## <a name="production-and-staging-slots"></a>Üzemi és átmeneti üzembe helyezési ponti
 Az alkalmazás közzététele a **átmeneti tárolóhely** vagy a **éles tárolóhelyre**. Két közzétételi tárhelyek használatával Ez lehetővé teszi, hogy két különböző végpontokhoz kell közzétett végpontokon két különböző verziója, illetve azonos verzióját. 
@@ -138,12 +138,12 @@ A következő lekérdezési karakterlánc paraméter használható a végpont UR
 
 |Lekérdezési sztring|Típus|Példaérték|Cél|
 |--|--|--|--|
-|Részletes|logikai|true|Tartalmaznak [összes leképezési pontszámok](#include-all-predicted-intent-scores) a utterance|
-|timezoneOffset|szám (egység érték perc)|60|Állítsa be [időzóna-eltolás](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) a [datetimeV2 előre elkészített entitások](luis-reference-prebuilt-entities.md#builtindatetimev2)|
+|részletes|logikai|true|Tartalmaznak [összes leképezési pontszámok](#include-all-predicted-intent-scores) a utterance|
+|timezoneOffset|szám (egység érték perc)|60|Állítsa be [időzóna-eltolás](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) a [datetimeV2 előre elkészített entitások](luis-reference-prebuilt-datetimev2.md)|
 |a helyesírás-ellenőrzési|logikai|true|[a helyesírás](#enable-bing-spell-checker) a utterance--bing helyesírás-ellenőrzés-előfizetés-kulcs lekérdezési karakterlánc paramétert együtt használható|
-|Bing helyesírás-ellenőrzés-előfizetés-kulcs|Előfizetés-azonosító||a helyesírás-ellenőrzési lekérdezési karakterlánc paramétert együtt használható|
-|Átmeneti|logikai|false|Válassza ki az átmeneti vagy üzemi végpont|
-|Napló|logikai|true|lekérdezés és eredményeket hozzáadása|
+|Bing helyesírás-ellenőrzés-előfizetés-kulcs|előfizetés-azonosító||a helyesírás-ellenőrzési lekérdezési karakterlánc paramétert együtt használható|
+|átmeneti|logikai|false|Válassza ki az átmeneti vagy üzemi végpont|
+|napló|logikai|true|lekérdezés és eredményeket hozzáadása|
 
 
 ## <a name="test-your-published-endpoint-in-a-browser"></a>A közzétett végpontot egy böngészőben tesztelése
@@ -154,4 +154,4 @@ Tesztelje a közzétett végpont URL-cím kiválasztása a **végpont** oszlop. 
 ## <a name="next-steps"></a>További lépések
 
 * Lásd: [kulcsok kezelése](./Manage-Keys.md) kulcs hozzáadása az LUIS alkalmazást, és hogyan kulcsok régiók hozzárendelését megismerése.
-* Lásd: [tanítási és az alkalmazás tesztelése a](Train-Test.md) útmutatást a közzétett alkalmazás tesztelése a test-konzolon.
+* Lásd: [tanítási és az alkalmazás tesztelése a](interactive-test.md) útmutatást a közzétett alkalmazás tesztelése a test-konzolon.

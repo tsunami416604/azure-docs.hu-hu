@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 5cbed14553462d8aff16304e52b66da7ad2652e3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d9f4dc0883ced599dd13d0c5d52ff865e03b73ed
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217231"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332911"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Az Azure-ban egy Ubuntu virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan egy Ubuntu Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:  
@@ -122,17 +123,17 @@ Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve,
     sudo realm discover CONTOSO100.COM
     ```
 
-   > [!NOTE] 
+   > [!NOTE]
    > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartományok:
      * Győződjön meg arról, hogy a tartomány elérhető-e a virtuális gépről (próbálja ping).
      * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el.
      * Ellenőrizze, hogy ha a DNS-kiszolgáló beállításait, a virtuális hálózat úgy, hogy a tartományvezérlők, a felügyelt tartományra mutasson frissítése befejeződött.
    >
 
-2. Kerberos inicializálni. Az SSH terminálban írja be a következő parancsot: 
+2. Kerberos inicializálni. Az SSH terminálban írja be a következő parancsot:
 
-    > [!TIP] 
-    > * Adjon meg egy felhasználót, aki a "AAD DC rendszergazdák" csoportba tartozik. 
+    > [!TIP]
+    > * Adjon meg egy felhasználót, aki a "AAD DC rendszergazdák" csoportba tartozik.
     > * Adja meg a tartomány nevét nagybetűvel, más kinit sikertelen lesz.
     >
 
@@ -140,9 +141,9 @@ Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve,
     kinit bob@CONTOSO100.COM
     ```
 
-3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálban írja be a következő parancsot: 
+3. A számítógép csatlakoztatása a tartományhoz. Az SSH terminálban írja be a következő parancsot:
 
-    > [!TIP] 
+    > [!TIP]
     > Használja az előző lépést ("kinit") megadott ugyanazzal a fiókkal.
     >
 
@@ -175,7 +176,7 @@ Ahhoz, hogy a felhasználók bejelentkezés után a kezdőkönyvtár automatikus
 ```
 sudo vi /etc/pam.d/common-session
 ```
-    
+
 Adja meg a következő sort a fájl "munkamenet választható pam_sss.so" sora alatt, és mentse azt:
 ```
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077

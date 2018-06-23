@@ -11,13 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2018
+ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: de5712fd7b48a759b366f5b9808bbbefc6e305cd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.reviewer: thoroet
+ms.openlocfilehash: 3c9f114c2844021d515765888aa19f18a0adc10b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320757"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Hozzáférést alkalmazások Azure verem erőforrások szolgáltatásnevekről létrehozásával
 
@@ -93,54 +95,7 @@ Ha telepítette az AD FS segítségével használva identity Azure verem, PowerS
 * Szolgáltatás egyszerű hozzárendelése egy szerepkörhöz.
 * Jelentkezzen be az egyszerű szolgáltatás identitás használatával.
 
-### <a name="before-you-begin"></a>Előkészületek
-
-[Szükséges Azure verem eszköz letöltése a helyi számítógépen.](azure-stack-powershell-download.md)
-
-### <a name="import-the-identity-powershell-module"></a>Az Identity PowerShell modul importálása
-
-Keresse meg a letöltési mappát a Azure verem eszközök és az Identity PowerShell modul importálása a következő paranccsal:
-
-```PowerShell
-Import-Module .\Identity\AzureStack.Identity.psm1
-```
-
-Az identitás modul importálásakor, előfordulhat, hogy a hibaüzenet: "AzureStack.Connect.psm1 kabinetfájl nincs digitálisan aláírva. A parancsfájl nem futtatja a rendszer".
-
-A probléma megoldásához a végrehajtási házirend a parancsprogram futtatása konfigurálása kell. A végrehajtási házirend beállítása, a következő parancsot egy rendszergazda jogú PowerShell-munkamenetben:
-
-```PowerShell
-Set-ExecutionPolicy Unrestricted
-```
-
-### <a name="create-the-service-principal"></a>A szolgáltatásnév létrehozása
-
-Létrehozhat egy egyszerű szolgáltatást a következő parancs futtatásával meggyőződött arról, hogy frissíteni a **DisplayName** paraméter:
-
-```powershell
-$servicePrincipal = New-AzSADGraphServicePrincipal `
- -DisplayName "<YourServicePrincipalName>" `
- -AdminCredential $(Get-Credential) `
- -AdfsMachineName "AZS-ADFS01" `
- -Verbose
-
-```
-
-### <a name="assign-a-role"></a>A szerepkör hozzárendelése
-
-Az egyszerű szolgáltatás létrehozása után kell [hozzárendelése szerepkörhöz](azure-stack-create-service-principals.md#assign-role-to-service-principal).
-
-### <a name="sign-in-using-powershell"></a>Bejelentkezés PowerShell használatával
-
-Regisztrálhat Azure verem a következő parancs futtatásával meggyőződött arról, hogy frissíteni a **EnvironmentName** paramétert a nevével, az alkalmazás:
-
-```powershell
-Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
- -ServicePrincipal `
- -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ApplicationId `
- -TenantId $directoryTenantId
-```
+Az egyszerű szolgáltatás létrehozása a részletekért lásd: [egyszerű szolgáltatásnév létrehozása az AD FS](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>A szolgáltatás egyszerű hozzárendelése egy szerepkörhöz
 

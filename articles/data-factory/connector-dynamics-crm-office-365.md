@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 848b571dd2664d4910d669faa4dce1aad16cd528
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2078fd3d23891a471d34de89b8e068ae896f8eb2
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808427"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332303"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása Dynamics 365 (közös adatszolgáltatás) vagy a Dynamics CRM és Azure Data Factory használatával
 
@@ -50,7 +50,7 @@ Másik alkalmazás típusokat, például a műveletek és a pénzügyi, a tehets
 
 ## <a name="get-started"></a>Bevezetés
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják Dynamics adat-előállító tartozó entitások meghatározásához használt tulajdonságokat.
 
@@ -272,8 +272,8 @@ Adatok másolása Dynamics, állítsa be a fogadó típusa a másolási tevéken
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadó type tulajdonsága értékre kell állítani **DynamicsSink**. | Igen |
-| WriteBehavior | A művelet írási viselkedését.<br/>Az engedélyezett értéket **"Upsert"**. | Igen |
-| WriteBatchSize | A sorok számát az egyes kötegekben Dynamics írt adatok. | Nem (alapértelmezett érték 10) |
+| writeBehavior | A művelet írási viselkedését.<br/>Az engedélyezett értéket **"Upsert"**. | Igen |
+| writeBatchSize | A sorok számát az egyes kötegekben Dynamics írt adatok. | Nem (alapértelmezett érték 10) |
 | ignoreNullValues | Azt jelzi, hogy a bemeneti adatokból (kivéve a kulcsmezők) null értékek kihagyása írási művelet során.<br/>Két érték engedélyezett **igaz** és **hamis**.<br>- **Igaz**: változatlanul a célobjektum adatainak upsert/frissítési művelet végrehajtásakor. Szúrja be egy meghatározott alapértelmezett értéket, ha így tesz, az insert művelet.<br/>- **Hamis**: frissítse az adatokat a célobjektum NULL upsert/frissítési művelet végrehajtásakor. Helyezze be NULL értékre, ha így tesz, az insert művelet. | Nem (alapértelmezett értéke "false") |
 
 >[!NOTE]
@@ -331,16 +331,16 @@ A Data Factory megfelelő adattípus konfigurálása egy adatkészlet-szerkezete
 | AttributeType.DateTime | Dátum és idő | ✓ | ✓ |
 | AttributeType.Decimal | Decimális | ✓ | ✓ |
 | AttributeType.Double | Dupla | ✓ | ✓ |
-| AttributeType.EntityName | Karakterlánc | ✓ | ✓ |
+| AttributeType.EntityName | Sztring | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | GUID | ✓ | ✓ |
 | AttributeType.ManagedProperty | Logikai | ✓ | |
-| AttributeType.Memo | Karakterlánc | ✓ | ✓ |
+| AttributeType.Memo | Sztring | ✓ | ✓ |
 | AttributeType.Money | Decimális | ✓ | ✓ |
 | AttributeType.Owner | GUID | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | GUID | ✓ | ✓ |
-| AttributeType.String | Karakterlánc | ✓ | ✓ |
+| AttributeType.String | Sztring | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

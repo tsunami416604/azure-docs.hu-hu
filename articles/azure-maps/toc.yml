@@ -79,17 +79,17 @@
     - name: REST
       items:
         - name: Megjelenítő szolgáltatás
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/renderservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: Útvonal szolgáltatás
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/routeservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: Keresési szolgáltatás
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/searchservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/search'
         - name: Időzóna szolgáltatás
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/timezoneservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Forgalom szolgáltatás
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/trafficservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Maps-fiókkezelés
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps-management'
+          href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript
       items:
         - name: Térképvezérlő

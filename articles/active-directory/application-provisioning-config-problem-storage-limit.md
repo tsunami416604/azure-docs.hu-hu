@@ -3,22 +3,24 @@ title: Probléma rendszergazdai hitelesítő adatok mentése során a felhaszná
 description: Konfigurálását a felhasználók átadása egy alkalmazás már szerepel az Azure AD Application Gallery tapasztalt kapcsolatos gyakori hibák elhárítása
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
-ms.author: asmalser
-ms.openlocfilehash: 8b23ea72a898dc5725c1c82ee2a5cbc06730b5aa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.author: barbkess
+ms.reviewer: asmalser
+ms.openlocfilehash: 1146df364a08128b5cd191ed1120198ae31b763e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292990"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337792"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>A probléma rendszergazdai hitelesítő adatok mentése során a felhasználók átadása egy Azure Active Directory Képtár alkalmazás konfigurálása 
 
@@ -38,7 +40,7 @@ Bármely titkos jogkivonatokat, URI-k, értesítési e-mail címek, felhasznál�
 
 A probléma megoldása ma két lehetséges módja van:
 
-1. **Két gyűjtemény alkalmazáspéldányok, az egyszeri bejelentkezés és az egyikben felhasználói történő üzembe helyezéséhez használjon** -véve a gyűjtemény alkalmazás [LinkedIn jogosultságszint-emelés](active-directory-saas-linkedinelevate-tutorial.md) például LinkedIn jogosultságszint-emelés hozzáadása a gyűjteményből és konfigurálása az egyszeri bejelentkezéshez. Kialakítási, adja hozzá az Azure AD-alkalmazásgyűjtemény LinkedIn jogosultságszint-emelés egy másik példánya, és nevezze el "LinkedIn jogosultságszint (kiépítés).-emelés" Ez a második példány konfigurálása [kiépítés](active-directory-saas-linkedinelevate-provisioning-tutorial.md), de nem egyszeri bejelentkezés. Ez a megoldás használata esetén az azonos felhasználókat és csoportokat kell lenniük [hozzárendelt](manage-apps/assign-user-or-group-access-portal.md) mindkét alkalmazásokhoz. 
+1. **Két gyűjtemény alkalmazáspéldányok, az egyszeri bejelentkezés és az egyikben felhasználói történő üzembe helyezéséhez használjon** -véve a gyűjtemény alkalmazás [LinkedIn jogosultságszint-emelés](saas-apps/linkedinelevate-tutorial.md) például LinkedIn jogosultságszint-emelés hozzáadása a gyűjteményből és konfigurálása az egyszeri bejelentkezéshez. Kialakítási, adja hozzá az Azure AD-alkalmazásgyűjtemény LinkedIn jogosultságszint-emelés egy másik példánya, és nevezze el "LinkedIn jogosultságszint (kiépítés).-emelés" Ez a második példány konfigurálása [kiépítés](saas-apps/linkedinelevate-provisioning-tutorial.md), de nem egyszeri bejelentkezés. Ez a megoldás használata esetén az azonos felhasználókat és csoportokat kell lenniük [hozzárendelt](manage-apps/assign-user-or-group-access-portal.md) mindkét alkalmazásokhoz. 
 
 2. **Tárolt konfigurációs adatok mennyiségének csökkentésére** -a megadott összes adat a [rendszergazdai hitelesítő adataival](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) szakaszban az üzembe helyezési lapon SAML-tanúsítványt ugyanazon a helyen tárolja. Nem lehet az adatok hosszának csökkentése érdekében, miközben néhány választható konfigurációs mezők, például a **értesítő e-mailt** távolíthatja el.
 

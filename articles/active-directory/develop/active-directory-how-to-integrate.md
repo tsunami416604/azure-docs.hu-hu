@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: be7dec07597b0a82633d330a72274a94dbb9bf67
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b59d86ddb8422108ece66eb1a7bbea808620d063
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156044"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319542"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Az Azure Active Directory integrálása
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -80,7 +80,7 @@ Az Azure Active Directoryval való integrációhoz tartalmaz, amelyek nem igény
 ### <a name="worldwide-presence-and-high-availability"></a>Globális jelenlét és magas rendelkezésre állás
 **Az Azure AD a világ különböző adatközpontokban van telepítve van és kezelhető és figyelhető éjjel is.**  Az Azure AD a Microsoft Azure és az Office 365 identity management rendszert, és telepítve van az világszerte 28 adatközpontokban. Címtáradatok garantáltan legalább három adatközpontokhoz replikálni. Globális terheléselosztók biztosítása a felhasználók hozzáférést a legközelebbi másolatát tartalmazó az adatokat az Azure AD és az automatikusan újból útvonal-kérelmek más adatközpontokhoz Ha probléma merül fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Első lépések programozás](active-directory-developers-guide.md#get-started).
 
 [Az Azure AD használatával a felhasználók](active-directory-authentication-scenarios.md)

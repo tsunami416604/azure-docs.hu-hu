@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b71cac474c915d0ebcc9beed29551fbce8b515ea
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594278"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318996"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory v2.0 és az OAuth 2.0 ügyfél hitelesítő adatok folyamata
 Használhatja a [OAuth 2.0 ügyfél hitelesítő adatai megadják](http://tools.ietf.org/html/rfc6749#section-4.4) RFC 6749, más néven megadott *két Egyszárú OAuth*, az alkalmazáshoz a webkiszolgáló által szolgáltatott erőforrások eléréséhez. Gyakran engedélyezze az ilyen típusú kiszolgálók – olyan műveleteket, amelyek kell a háttérben futnak, a felhasználó azonnali közreműködése nélkül szolgál. Ilyen típusú alkalmazások gyakran nevezik *démonok* vagy *szolgáltatásfiókok*.

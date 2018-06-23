@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296175"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335839"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Egy Azure fájlszinkronizálás (előzetes verzió) telepítésének tervezése
 Sync szolgáltatás használatával Azure fájl (előzetes verzió) központosítása fájlmegosztások a szervezet Azure fájlokban, ugyanakkor változatlanul megőrizze a rugalmasság, a teljesítmény és a kompatibilitási egy helyszíni fájlkiszolgáló. Azure fájlszinkronizálás átalakítja a Windows Server az Azure fájlmegosztás gyors gyorsítótárába. Minden protokoll, amely a Windows Server helyileg, az adatok eléréséhez használhatja, többek között a ftps-t, SMB és NFS. Akkor is annyi gyorsítótárak világszerte szükség szerint.
@@ -144,6 +144,9 @@ Az Azure fájlszinkronizálás és DFS-R egymás melletti működéséhez:
 2. Kiszolgáló végpontok nem csak olvasható replikációs mappák a DFS-R kell beállítani.
 
 További információkért lásd: [Elosztott fájlrendszer replikációs szolgáltatása áttekintése](https://technet.microsoft.com/library/jj127250).
+
+### <a name="sysprep"></a>A Sysprep
+A kiszolgálón, amely az Azure fájl Sync-ügynök van telepítve a sysprep használata nem támogatott, és váratlan eredményekhez vezethet. Az ügynök telepítése és a kiszolgáló regisztrálása a kiszolgálói lemezkép telepítése és a sysprep minitelepítő befejezése után kell végrehajtani.
 
 ### <a name="windows-search"></a>A Windows Search
 Ha felhőalapú rétegezéséhez engedélyezve van a kiszolgáló végponton, a fájlokat, amelyek Unja már kihagyva, és nem indexelik a Windows Search. A fájlok nem rétegű indexelt megfelelően.

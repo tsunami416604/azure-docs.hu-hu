@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/22/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 9fc58d971db18db63e4dc76123ff1311b77e0191
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "34700124"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316433"
 ---
 # <a name="azure-stack-1804-update"></a>Az Azure verem 1804 frissítés
 
@@ -89,7 +89,9 @@ A következő is elérhető, de nincs szükség Azure verem frissítés 1804.
 
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
-*Nincs frissítés utáni lépések frissítés 1804 van.*
+1804 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).  
+ - [KB 4341392 - Azure verem gyorsjavítás 1.0.180523.11](https://support.microsoft.com/en-us/help/4341392).
+
 
 
 

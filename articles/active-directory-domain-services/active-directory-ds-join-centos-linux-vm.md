@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: d570428f3e3ea23302e3cecc6bfa759468419986
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d76371935fddbfe94c6dc45e27971487e7fa4277
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216826"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333581"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>A CentOS Linux virtuális gép csatlakoztatása felügyelt tartományhoz
 Ez a cikk bemutatja, hogyan CentOS Linux virtuális gépek csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz az Azure-ban.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:
@@ -87,7 +89,7 @@ Most, hogy a szükséges csomagokat a Linux virtuális gépek vannak telepítve,
     > [!NOTE]
     > **Hibaelhárítás:** Ha *a kezdőtartomány felderítése* nem találja a felügyelt tartományok:  
       * Győződjön meg arról, hogy a tartomány elérhető-e a virtuális gépről (próbálja ping).  
-      * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el. 
+      * Ellenőrizze, hogy a virtuális gép valóban már alkalmazva van az azonos virtuális hálózatban, amelyben a felügyelt tartományra érhető el.
       * Ellenőrizze, hogy ha a DNS-kiszolgáló beállításait, a virtuális hálózat úgy, hogy a tartományvezérlők, a felügyelt tartományra mutasson frissítése befejeződött.  
       >
 

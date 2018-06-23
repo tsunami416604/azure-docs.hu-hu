@@ -16,20 +16,21 @@ ms.workload: identity
 ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: e8e693355fb9b30e1a69b49f20d5044c531e2fcd
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol
+ms.openlocfilehash: d7194846dbeab2a5da8a8ceaa5a1040f33e8d515
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155619"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317129"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Alkalmazás és szolgáltatás egyszerű objektumok az Azure Active Directory (Azure AD)
 Egyes esetekben "alkalmazás" szerinti is böngésző használata az Azure AD a környezetben. Ez a cikk célja az, hogy értelmezését elméleti és konkrét alkalmazások integrálása az Azure AD, a regisztráció olyan bemutatásáért, és hozzájárulás az egy [több-bérlős alkalmazás](active-directory-dev-glossary.md#multi-tenant-application).
 
-## <a name="overview"></a>Áttekintés (klasszikus)
+## <a name="overview"></a>Áttekintés
 Integrálva van az Azure AD alkalmazás, amely a szoftver aspektus implications van. "Alkalmazás" gyakran használatos általános kifejezés, nem csak az alkalmazásokat, de is az Azure AD-regisztrációval és a hitelesítési/engedélyezési futásidőben a "beszélgetés" szerepkör. Definíció, egy alkalmazás működhet a [ügyfél](active-directory-dev-glossary.md#client-application) szerepkör (fel erőforrás), egy [erőforrás-kiszolgáló](active-directory-dev-glossary.md#resource-server) szerepkör (API az ilyen ügyfelek), vagy akár mindkét. Határozza meg a beszélgetési protokoll egy [OAuth 2.0 Hitelesítésengedélyezési folyamat](active-directory-dev-glossary.md#authorization-grant), amely lehetővé teszi az ügyfél és az erőforrások hozzáférés vagy az erőforrás adatainak védelméhez rendre. Most pedig ugorjunk a mélyebb szintű, és tekintse meg, hogyan az Azure AD alkalmazás-modell jelenti az alkalmazást tervezéskor és futásidejű. 
 
-## <a name="application-registration"></a>Alkalmazás regisztrálása
+## <a name="application-registration"></a>Alkalmazásregisztráció
 Amikor regisztrál az Azure AD alkalmazás a [Azure-portálon][AZURE-Portal], két objektum jön létre az Azure AD-bérlőn: alkalmazásobjektum, és egy szolgáltatás egyszerű objektum.
 
 #### <a name="application-object"></a>alkalmazásobjektum

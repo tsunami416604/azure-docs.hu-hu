@@ -3,7 +3,7 @@ title: SCIM használata az Azure Active Directory-alkalmazások létesítési au
 description: Az Azure Active Directory automatikusan telepíthetik a felhasználókat és csoportokat a webszolgáltatás által a felülettel, a SCIM protokoll specifikációja definiálva van fronted alkalmazás vagy identitás tároló
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: asmalser
+ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 2bbea8f082e482ec5f5a08ce9978940e05c2325b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 40fa7959fc27692489a6317df0eddb9208c57bd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303686"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337967"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikusan a felhasználók és csoportok az Azure Active Directory alkalmazások telepítéséhez
 
 ## <a name="overview"></a>Áttekintés
-Azure Active Directory (Azure AD) automatikusan is konfigurálta a felhasználókat és csoportokat, a felülettel webszolgáltatás által az fronted alkalmazás vagy identitás tároló definiálva a [a tartományok közötti Identity Management (SCIM) 2.0-s protokoll specifikációja rendszer](https://tools.ietf.org/html/draft-ietf-scim-api-19). Az Azure Active Directory küldhet kérelmek létrehozása, módosítása, illetve törlési rendelt felhasználók és csoportok a webszolgáltatás. A webszolgáltatás majd így felszabadulhatnak ezeket a kérelmeket, olyan műveleteket végez a célként megadott identitás tárolására. 
+Azure Active Directory (Azure AD) automatikusan is konfigurálta a felhasználókat és csoportokat, a felülettel webszolgáltatás által az fronted alkalmazás vagy identitás tároló definiálva a [rendszer tartományok közötti Identity Management (SCIM) 2.0-s protokoll specifikáció](https://tools.ietf.org/html/draft-ietf-scim-api-19). Az Azure Active Directory küldhet kérelmek létrehozása, módosítása, illetve törlési rendelt felhasználók és csoportok a webszolgáltatás. A webszolgáltatás majd így felszabadulhatnak ezeket a kérelmeket, olyan műveleteket végez a célként megadott identitás tárolására. 
 
 ![][0]
 *1. ábra: A webszolgáltatáson keresztül identitás tárolóhoz az Azure Active Directory kiépítés.*
@@ -128,7 +128,7 @@ Az egy SCIM végpontot, amelyhez is fogadja el a kiépítési kérelmekre, az Az
   ````   
    FileSvc.exe http://<ip-address>:9000 TargetFile.csv
   ````
-8. A Windows **Windows-beállítások > hálózat és Internet beállítások**, jelölje be a **Windows tűzfal > Speciális beállítások**, és hozzon létre egy **bejövő forgalomra vonatkozó szabály** , amely lehetővé teszi, hogy a befelé irányuló port 9000.
+8. A Windows **Windows-beállítások > hálózat és Internet beállítások**, jelölje be a **Windows tűzfal > Speciális beállítások**, és hozzon létre egy **bejövő szabály** , lehetővé teszi a bejövő portot 9000 hozzáférést.
 9. Ha a Windows-számítógép útválasztó mögött, az útválasztó kell megadni a portot, amely kommunikál az internettel 9000, és a port 9000 a Windows-számítógép közötti hálózati hozzáférési fordítási végrehajtásához. Ebben a konfigurációban kell az Azure AD-be lesz hozzáférése ehhez a végponthoz, a felhőben.
 
 **A minta SCIM végpont regisztrálása az Azure ad-ben:**
@@ -159,7 +159,7 @@ Az utolsó lépés a minta ellenőrzése során, hogy a \AzureAD-BYOA-Provisioni
 ### <a name="development-libraries"></a>Fejlesztő függvénytárak
 A saját webes szolgáltatás, amely megfelel a SCIM specifikációjának elkészítéséhez először ismerkedjen meg az alábbi kódtárak Microsoft egyre gyorsabban jelennek meg a fejlesztési folyamat segítségével biztosítja: 
 
-1. Közös nyelvi infrastruktúra (CLI) szalagtárak alapján, hogy az infrastrukturális, például a C# nyelv felkínált való használatra. A tárak egyik [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/), deklarál illesztőfelület, Microsoft.SystemForCrossDomainIdentityManagement.IProvider, az alábbi ábrán látható: a könyvtárak segítségével a fejlesztők egy osztály, amely lehet hivatkozni a, általános, szolgáltatóként felülettel volna megvalósításához. A könyvtárak engedélyezése a fejlesztői központi telepítése egy webszolgáltatás, amely megfelel a SCIM megadását. A webszolgáltatás Internet Information Services, vagy bármilyen végrehajtható közös nyelvi infrastruktúra szerelvény vagy lehet üzemeltetni. A szolgáltató metódusok, amely a fejlesztők által az egyes identitás-tárolására való működésre volna programozott lefordítását kérelem.
+1. Közös nyelvi infrastruktúra (CLI) szalagtárak alapján, hogy az infrastrukturális, például a C# nyelv felkínált való használatra. A tárak egyik [Microsoft.SystemForCrossDomainIdentityManagement.Service](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/), deklarál illesztőfelület, Microsoft.SystemForCrossDomainIdentityManagement.IProvider, az alábbi ábrán látható: A a könyvtárak segítségével fejlesztői egy osztály, amely lehet hivatkozni, általános szolgáltatóként felülettel volna megvalósításához. A könyvtárak engedélyezése a fejlesztői központi telepítése egy webszolgáltatás, amely megfelel a SCIM megadását. A webszolgáltatás Internet Information Services, vagy bármilyen végrehajtható közös nyelvi infrastruktúra szerelvény vagy lehet üzemeltetni. A szolgáltató metódusok, amely a fejlesztők által az egyes identitás-tárolására való működésre volna programozott lefordítását kérelem.
   
   ![][3]
   
@@ -360,12 +360,12 @@ Erőforrások azonosítják a sémaazonosítót http://schemas.microsoft.com/200
 | levelezés |e-mailek [típus eq "munkahelyi"] .value |
 | mailNickname |externalId |
 | kezelő |kezelő |
-| Mobileszköz |.value phoneNumbers [típus eq "mobileszköz"] |
+| mobil |.value phoneNumbers [típus eq "mobileszköz"] |
 | objectId |ID (Azonosító) |
 | Irányítószám |[típus eq "munkahelyi"] címek .postalCode |
 | proxy-Addresses |[Írja be az "egyéb" eq] e-maileket. Érték |
 | fizikai-kézbesítés-OfficeName |[Írja be az "egyéb" eq] címek. Formázott |
-| StreetAddress |[típus eq "munkahelyi"] címek .streetAddress |
+| streetAddress |[típus eq "munkahelyi"] címek .streetAddress |
 | Vezetéknév |name.familyName |
 | Telefonszám |.value phoneNumbers [típus eq "munkahelyi"] |
 | felhasználó-egyszerű név |Felhasználónév |
@@ -446,7 +446,7 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
   * a paraméterek. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
-2. Ha egy lekérdezést, amely megfelel a felhasználó a mailNickname attribútum externalId attribútumértékkel rendelkező felhasználó számára a webszolgáltatás válasza nem ad vissza azokat a felhasználókat, Azure Active Directory kéri, hogy a szolgáltatás kiépíteni az Azure Active Directoryban egy megfelelő felhasználó.  Íme egy példa a kérelem: 
+2. Ha egy lekérdezést, amely megfelel a felhasználó a mailNickname attribútum externalId attribútumértékkel rendelkező felhasználó számára a webszolgáltatás válasza nem ad vissza azokat a felhasználókat, majd Azure Active Directory kéri, hogy a szolgáltatás telepítéséhez a megfelelő felhasználó az Azure Active Directoryban.  Íme egy példa a kérelem: 
   ````
     POST https://.../scim/Users HTTP/1.1
     Authorization: Bearer ...
@@ -527,7 +527,7 @@ A következő ábra azt mutatja, hogy Azure Active Directory küld SCIM szolgál
   * Azonosító: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-4. Ha a hivatkozási attribútum frissíteni kell, majd az Azure Active Directory-e a hivatkozási attribútum identitás tárolójában aktuális értékének fronted a szolgáltatás már meghatározni a szolgáltatás lekérdezi az Azure Active Directoryban ez az attribútum értéke megegyezik. Felhasználók a, amelyek a jelenlegi érték a ily módon le kell kérdezni attribútum esetén a kezelő attribútum. Íme egy példa egy kérelem annak meghatározásához, hogy a kezelő egy adott felhasználó objektum attribútuma van a megadott érték: 
+4. Ha a hivatkozási attribútum frissíteni kell, majd az Azure Active Directory-e a hivatkozási attribútum identitás tárolójában aktuális értékének fronted a szolgáltatás már meghatározni a szolgáltatás lekérdezi megegyezik-e, hogy az attribútum az Azure Active Könyvtár. Felhasználók a, amelyek a jelenlegi érték a ily módon le kell kérdezni attribútum esetén a kezelő attribútum. Íme egy példa egy kérelem annak meghatározásához, hogy a kezelő egy adott felhasználó objektum attribútuma van a megadott érték: 
   ````
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
@@ -697,7 +697,7 @@ A következő ábra azt mutatja, hogy Azure AcD küld a SCIM szolgáltatásnak c
 * [Attribútum-leképezésekhez kifejezések írása](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](../active-directory-saas-scoping-filters.md)
 * [Alkalmazás-kiépítési értesítések](../active-directory-saas-app-provisioning.md)
-* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](../active-directory-saas-tutorial-list.md)
+* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

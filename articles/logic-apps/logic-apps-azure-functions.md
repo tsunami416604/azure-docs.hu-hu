@@ -15,12 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d8d07e2ba58b7067d59baf5f0a4ea3228d6aabbc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297869"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331172"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Adja hozzá, és egyéni kódot a logic Apps alkalmazásokat futtasson Azure Functions használatával
 
@@ -62,7 +62,7 @@ Indíthat el egy függvényen belül egy logikai alkalmazást. Lásd: [a Logic a
 
 ### <a name="create-a-function-from-logic-app-designer"></a>A Logic App Designer függvény létrehozása
 
-A Tervező is létrehozhat egy node.js webhook függvény. Első lépésként válassza ki **régiómban, az Azure Functions** , és válassza ki a függvény tárolója. Ha még nem rendelkezik a tárolóhoz, szeretné-e létrehozhat egy a [Azure Functions portálon](https://functions.azure.com/signin). Válassza ki **hozzon létre új**.  
+A Tervező is létrehozhat egy node.js webhook függvény. Első lépésként válassza ki **régiómban, az Azure Functions** , és válassza ki a függvény tárolója. Ha még nem rendelkezik a tárolóhoz, szeretné-e létrehozhat egy a [Azure Functions portálon](https://functions.azure.com/). Válassza ki **hozzon létre új**.  
 
 Egy sablon számítási kívánt adatok alapján történő létrehozásához adja meg a környezeti objektumot, amely azt tervezi, hogy egy függvény továbbítja. Ez az objektum JSON objektumnak kell lennie. Például ha egy FTP-művelet a teljesíti a fájl tartalma, a környezet forgalma a következőképpen néz ebben a példában:
 

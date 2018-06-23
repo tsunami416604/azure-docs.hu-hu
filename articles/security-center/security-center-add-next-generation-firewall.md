@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 25601b01489b95de0e86b314b4b934d3cffd38c2
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363689"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330740"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Új generációs tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja új generációs tűzfal (NGFW) hozzáadása egy Microsoft-partner növelje a biztonsági védelmet. Ez a dokumentum útmutatást nyújt a példa bemutatja, hogyan ehhez.
@@ -58,7 +58,7 @@ Lépjen vissza a **javaslatok** panelen. Egy új bejegyzést jött létre, miut�
 Ez a dokumentum bemutatta megvalósításához a Security Center javaslat "Vegyen fel új generációs tűzfal." NGFWs és a Check Point partnermegoldáshoz kapcsolatos további tudnivalókért olvassa el a következőket:
 
 * [Új generációs tűzfal](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
-* [Check Point vSEC](https://azure.microsoft.com/marketplace/partners/checkpoint/check-point-r77-10/)
+* [Check Point vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 

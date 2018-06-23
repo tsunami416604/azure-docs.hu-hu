@@ -13,20 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 4ee07d8b9180c04c714476da845ceffaa4388bee
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 43b43be154756838d8c130b2ec1a0dbc40405422
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229529"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332354"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Központi telepítése az Azure AD-alkalmazásproxyval oldható meg az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Támogatja a távoli dolgozók által az interneten keresztül érhető el a helyszíni alkalmazások közzététele az Azure Active Directory (AD) alkalmazásproxy segítségével. Az Azure AD tartományi szolgáltatásokat helyszíni Azure infrastruktúra-szolgáltatásokat futtató örökölt alkalmazások most növekedési-és-shift lehetővé teszi. Majd közzéteheti ezeket az alkalmazásokat az Azure AD alkalmazásproxy segítségével biztonságos távoli hozzáférés biztosítása a szervezetében lévő felhasználók számára.
 
 Ha most ismerkedik az Azure AD-alkalmazásproxy, kapcsolatos további Ez a szolgáltatás a következő cikkben: [hogyan biztosíthat biztonságos távoli hozzáférést a helyszíni alkalmazások](../active-directory/manage-apps/application-proxy.md).
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 A cikkben szereplő feladatok elvégzéséhez szüksége:

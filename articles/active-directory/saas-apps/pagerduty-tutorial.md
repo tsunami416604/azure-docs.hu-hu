@@ -8,19 +8,18 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215392"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317982"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Oktatóanyag: Azure Active Directoryval integrált PagerDuty
 
@@ -60,14 +59,14 @@ Az Azure AD integrálása a PagerDuty konfigurálásához kell hozzáadnia Pager
 
 **A gyűjteményből PagerDuty hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb][1]
 
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
 
     ![A vállalati alkalmazások panel][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
 
     ![Az új alkalmazás gomb][3]
@@ -102,8 +101,8 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+1. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+
     ![Egyszeri bejelentkezés párbeszédpanel](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
 3. Az a **PagerDuty tartomány és az URL-címek** területen tegye a következőket:
@@ -114,12 +113,12 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
     b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<tenant-name>.pagerduty.com`
 
-    > [!NOTE] 
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [PagerDuty ügyfél-támogatási csoport](https://www.pagerduty.com/support/) beolvasni ezeket az értékeket. 
+    > [!NOTE]
+    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges bejelentkezési URL-cím és azonosítója. Ügyfél [PagerDuty ügyfél-támogatási csoport](https://www.pagerduty.com/support/) beolvasni ezeket az értékeket.
 
 4. Az a **SAML-aláíró tanúsítványa** kattintson **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozását](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozását](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
@@ -127,34 +126,33 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 6. A a **PagerDuty konfigurációs** kattintson **konfigurálása PagerDuty** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **Sign-Out és SAML-alapú egyszeri bejelentkezés szolgáltatás URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![PagerDuty konfiguráció](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png) 
+    ![PagerDuty konfiguráció](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
 7. Egy másik webes böngészőablakban jelentkezzen be a Pagerduty vállalati webhely rendszergazdaként.
 
 8. Kattintson a felső menüben **Fiókbeállítások**.
-   
+
     ![Fiókbeállítások](./media/pagerduty-tutorial/ic778535.png "Fiókbeállítások")
 
 9. Kattintson a **egyszeri bejelentkezés**.
-   
+
     ![Egyszeri bejelentkezés](./media/pagerduty-tutorial/ic778536.png "egyszeri bejelentkezés")
 
 10. Az a **engedélyezése egyszeri bejelentkezés (SSO)** lapon, a következő lépésekkel:
-   
+
     ![Egyszeri bejelentkezés engedélyezése](./media/pagerduty-tutorial/ic778537.png "egyszeri bejelentkezés engedélyezése")
-   
+
     a. Nyissa meg a base-64 kódolású tanúsítvány a Jegyzettömbben az Azure portálról letöltött, annak tartalmának másolása a vágólapra és illessze be azt a **X.509 tanúsítvány** szövegmező
   
     b. Az a **bejelentkezési URL-címe** szövegmezőhöz Beillesztés **SAML-alapú egyszeri bejelentkezési URL-címe** ami Azure-portálon másolta.
   
     c. Az a **kijelentkezési URL-cím** szövegmező, Beillesztés **Sign-Out URL-cím** ami Azure-portálon másolta.
- 
-    d. Válassza ki **kapcsolja be egyszeri bejelentkezés**.
- 
-    e. Kattintson a **módosítások mentése**.
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
+    d. Válassza ki **engedélyezése felhasználónév/jelszó bejelentkezési**.
+
+    e. Válassza ki **PONTOS szükséges hitelesítési környezeti összehasonlító** jelölőnégyzetet.
+
+    f. Kattintson a **módosítások mentése**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -262,8 +260,6 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/pagerduty-tutorial/tutorial_general_01.png
@@ -277,4 +273,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/pagerduty-tutorial/tutorial_general_201.png
 [202]: ./media/pagerduty-tutorial/tutorial_general_202.png
 [203]: ./media/pagerduty-tutorial/tutorial_general_203.png
-

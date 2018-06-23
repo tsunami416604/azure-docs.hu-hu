@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/22/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: f7f459404b5a759bef9eb8f37141bbd4c9eae3e5
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849624"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318809"
 ---
 # <a name="azure-stack-1803-update"></a>Az Azure verem 1803 frissítés
 
@@ -54,45 +54,40 @@ Az Azure verem 1803 frissítés buildszáma **20180329.1**.
   
   Azure verem frissítése, ellentétben a frissítés telepítése nincs hatással Azure verem verzióját. Annak ellenőrzéséhez, hogy a frissítés telepítve van, a lista megtekintése **telepített frissítések**.
 
-### <a name="post-update-steps"></a>Frissítés utáni lépések
-- 1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
 
-  - [KB 4294441 - erőforrások nem bérlői és váratlan megosztások műveleteket jönnek létre a ugyanannak a bérlőnek vagy infrastruktúra-köteten](https://support.microsoft.com/en-us/help/4294441)
-
-- A frissítés telepítése után tekintse át a tűzfal konfigurációját, és győződjön meg arról [szükséges portok](azure-stack-integrate-endpoints.md) nyitva. A frissítés például vezet be az Azure figyelő, köztük a naplók tevékenység naplókban is megváltoztatását. A módosítás port 13012 most szolgál, és meg van nyitva.  
 
 ### <a name="new-features"></a>Új funkciók 
 A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure verem.
 
 - **Azure verem titkos kulcsok frissítése** - (fiókok és tanúsítványok). Titkos kulcsok kezelésével kapcsolatos további információkért lásd: [forgassa el a titkos kulcsok Azure verem](azure-stack-rotate-secrets.md). 
 
-- <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
+- <!-- 1914853 --> **Automatikus átirányítási HTTPS** használatakor HTTP a rendszergazdai és felhasználói portál eléréséhez. Ennek a fejlesztésnek köszönhetően a történt [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) az Azure-verem kapcsolatos visszajelzéseket. 
 
-- <!-- 2202621  --> **Access the Marketplace** – You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+- <!-- 2202621  --> **Hozzáférés a piactér** – használatával most már tudja nyitni a verem Azure piactér a [+ új](https://ms.portal.azure.com/#create/hub) belül a rendszergazda és a felhasználói portálon parancsát, úgy, ahogy az az Azure portálon teheti meg.
  
-- <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
+- <!-- 2202621 --> **Azure figyelő** -Azure verem hozzáadja [Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) számára a rendszergazda és a felhasználói portálon. Ez magában foglalja a metrikák és tevékenység-naplók új szoftverkategóriák. Azure-figyelőhöz a külső hálózatok eléréséhez port **13012** meg kell nyitni a tűzfal-konfigurációk. Azure verem szükséges portokkal kapcsolatos további információkért lásd: [Azure verem datacenter integrációs - végpontok közzététele](azure-stack-integrate-endpoints.md).
 
    Ennek részeként is módosíthatja, a **további szolgáltatások**, *naplók* csomópontként jelenik meg, mint a *tevékenységi naplóit*. A funkció mostantól konzisztensek legyenek az Azure-portálon. 
 
-- <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
+- <!-- 1664791 --> **Ritka fájlok** – Ha vegyen fel egy új lemezképet Azure verem, vagy piactér szindikálási, a lemezkép hozzáadása a kép ritka fájlok alakítja át. Azure verem verziójával 1803 előtt felvett lemezképek nem lehet konvertálni. Ehelyett újra elküldeni ezeket a képeket, ez a funkció előnyeit piactér szindikálási kell használnia. 
  
    Ritka fájlok egy hatékony fájlformátum tárolóhely lemezterület-használat csökkentésére, és az i/o javítására használjuk.  További információkért lásd: [ritka Fsutil](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) a Windows Server. 
 
 ### <a name="fixed-issues"></a>Javított problémák
 
-- <!-- 1739988 --> Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
+- <!-- 1739988 --> Belső Load Balancing (ILB) most már megfelelően kezeli a MAC-címek háttér virtuális gépekhez, emiatt ILB eldobni a csomagok és a háttér-hálózat, a háttér-hálózat használata a Linux-példányok esetén. ILB helyesen működik a Windows-példányok a háttér-hálózaton. 
 
-- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure. The values for SALifetime (Time) and SALiftetime (Bytes) were not compatible with Azure and have changed in 1803 to match the Azure settings. The value for SALifetime (Seconds) prior to 1803 was 14,400 and now changes to 27,000 in 1803. The value for SALifetime (Bytes) prior to 1803 was 819,200 and changes to 33,553,408 in 1803.
+- <!-- 1805496 --> Ha Azure verem közötti VPN-kapcsolatok akkor lecsatlakoznak Azure verem különböző beállítások használata az Azure-nál IKE-házirend miatt kapcsolatos problémát. A SALifetime (idő) és a SALiftetime (bájt) értéke nem volt az Azure-ral kompatibilis, és 1803 a Azure beállításai módosítva lettek. 1803 előtt (másodperc) SALifetime értéke történt 1803 14400 és 27,000 most módosításait. A SALifetime (bájt) értéke 1803 előtt volt 819,200 és a 1803 33,553,408 módosításait.
 
-- <!-- 2209262 --> The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
+- <!-- 2209262 --> Az IP probléma, ahol korábban látható, a portál; volt-e VPN-kapcsolatok azonban engedélyezése, és elvégezte az IP-továbbítás nincs hatása. A szolgáltatás alapértelmezés szerint és megváltoztathatja ezt még nem támogatott be van kapcsolva.  A vezérlő el lett távolítva a portálról. 
 
-- <!-- 1766332 --> Azure Stack does not support Policy Based VPN Gateways, even though the option appears in the Portal.  The option has been removed from the Portal. 
+- <!-- 1766332 --> Azure verem nem támogatja a házirend alapú VPN-átjárók, annak ellenére, hogy a beállítás megjelenik a portálon.  A beállítás el lett távolítva a portálról. 
 
-- <!-- 1868283 --> Azure Stack now prevents resizing of a virtual machine that is created with dynamic disks. 
+- <!-- 1868283 --> Az Azure verem most megakadályozza, hogy a dinamikus lemezekkel létrehozott virtuális gép átméretezésével. 
 
-- <!-- 1756324 --> Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
+- <!-- 1756324 --> Virtuális gépek használati adatainak most elválasztott óránként. Ez az Azure konzisztens. 
 
-- <!--  2253274 --> The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+- <!--  2253274 --> A probléma hol az rendszergazdai és felhasználói portálon, a beállítások panelről vnet alhálózatok betöltése sikertelen. A probléma megoldásához használja a PowerShell és a [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) parancsmag segítségével tekintheti meg és kezelheti ezeket az információkat.
 
 - A virtuális gép, az üzenet létrehozásakor *nem lehet megjeleníteni a díjszabási* többé nem jelenik meg a Virtuálisgép-méretet a mérete kiválasztásakor.
 
@@ -104,20 +99,29 @@ A frissítés tartalmazza a következő fejlesztéseket és javításokat Azure 
 
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat szolgáltatással kapcsolatos ismert problémák    
-<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
+<!-- 2328416 --> A 1803 frissítés telepítése során a blob szolgáltatás és a belső blob szolgáltatást használó szolgáltatások állásidő is lehet. Ez magában foglalja az egyes virtuális gép műveleteit. Ez állásidő hibákat okozhat bérlő műveletek vagy riasztások szolgáltatásokból, nem férhet hozzá az adatokat. A probléma oldja fel saját magát, amikor a frissítés a telepítés befejeződött. 
+
+
+
+### <a name="post-update-steps"></a>Frissítés utáni lépések
+- 1803 a telepítés után bármely alkalmazandó gyorsjavításainak telepítéséhez. További információ a következő tudásbáziscikkeiből, megtekintése, valamint a [karbantartása házirend](azure-stack-servicing-policy.md).
+
+  - [KB 4341390 - Azure verem gyorsjavítás 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390).
+
+- A frissítés telepítése után tekintse át a tűzfal konfigurációját, és győződjön meg arról [szükséges portok](azure-stack-integrate-endpoints.md) nyitva. Például a frissítés bevezeti *Azure figyelő* mely tartalmazza a naplók tevékenység naplókban is megváltoztatását. A módosítás port 13012 most szolgál, és meg van nyitva.  
 
 
 ### <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **20180323.2**.
 
 #### <a name="portal"></a>Portál
-- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+- <!-- 2332636 - IS -->  Az AD FS használata az Azure-verem azonosítási rendszer és az Azure-verem ezen verziójára való frissítés esetén az alapértelmezett szolgáltató előfizetés alapértelmezett tulajdonosa lesz visszaállítva a beépített **CloudAdmin** felhasználó.  
   Megkerülő megoldás: A frissítés telepítése után a probléma megoldásához használja a 3. lépés a [konfigurálása eseményindító automatizálási jogcím-szolgáltatói megbízhatósági Azure verem](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) alaphelyzetbe állítani az alapértelmezett szolgáltató előfizetés tulajdonosának eljárást.   
 
 - Lehetővé teszi [új támogatási kérést nyithat a legördülő menüből](azure-stack-manage-portals.md#quick-access-to-help-and-support) a belül a felügyeleti portál nem érhető el. Ehelyett használja a következő hivatkozásra:     
     - Azure verem integrált, rendszereihez https://aka.ms/newsupportrequest.
 
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
+- <!-- 2050709 --> A felügyeleti portál nincs lehetőség a Blob, Table szolgáltatás, vagy várólista szolgáltatást storage mérőszámainak szerkesztése. Ugrás a tárolási, és válassza ki a blob, table vagy várólista-szolgáltatás csempe, megnyílik egy új panel, amely az adott szolgáltatásra vonatkozó mérőszámok diagramot jelenít meg. A lista elejéről a metrikák diagram csempe a Szerkesztés majd választásakor a diagram szerkesztése lehetőséget panel nyílik meg, de nem jelennek meg a beállítások szerkesztéséhez metrikákat.
 
 - Nem lehet a számítási és tárolási erőforrások megtekintése a felügyeleti portálon lehetséges. A probléma oka hiba jelentendő helytelenül sikeres frissítés a frissítés telepítése során. Ha a probléma akkor fordul elő, forduljon a Microsoft ügyfél-támogatási szolgálathoz segítségért.
 
@@ -136,7 +140,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 
 #### <a name="health-and-monitoring"></a>Állapot- és figyelés
-- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+- <!-- 1264761 - IS ASDK -->  A riasztásokat a *állapotfigyelő vezérlő* komponenst, amely rendelkezik a következő adatokat:  
 
    Riasztási #1:
    - NAME: Infrastruktúra-szerepkör nem kifogástalan
@@ -173,7 +177,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 -  Ha a kiterjesztést a virtuális gép üzembe helyezéséhez a kiépítés túl sokáig tart, felhasználók hagyja, hogy a létesítési időtúllépési helyett a folyamat felszabadítani, vagy törölje a virtuális gép leállítására tett kísérlet.  
 
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+- <!-- 1662991 --> Linux Virtuálisgép-diagnosztika Azure verem nem támogatott. Engedélyezett Virtuálisgép-diagnosztika a Linux virtuális gép telepítésekor a központi telepítés sikertelen lesz. A központi telepítés is sikertelen lesz, ha engedélyezi a Linux virtuális gép alapvető metrikák diagnosztikai beállításait.  
 
 
 #### <a name="networking"></a>Hálózat
@@ -191,7 +195,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 - Az Azure verem nem támogatja a további hálózati adapterek hozzáadása egy Virtuálisgép-példány, a virtuális gép telepítését követően. Ha a virtuális gép több hálózati adapter szükséges, akkor meg kell adni a központi telepítéskor.
 
-- <!-- 2096388 --> You cannot use the admin portal to update rules for a network security group. 
+- <!-- 2096388 --> A felügyeleti portál használatával nem frissíteni a hálózati biztonsági csoport szabályainak. 
 
     Az App Service megkerülő megoldás: a távoli asztal a vezérlő példányokra van szüksége, ha módosítja a biztonsági szabályok belül a hálózati biztonsági csoportok a PowerShell használatával.  Az alábbiakban példákat *engedélyezése*, majd állítsa vissza a konfiguráció *megtagadása*:  
     
@@ -262,7 +266,7 @@ Az alábbiakban telepítés utáni build kapcsolatos ismert problémák **201803
 
 - Az erőforrás-szolgáltató, hogy a gazdagép SQL vagy MySQL elemek létrehozásához kiszolgálókon támogatott. A gazdagép-kiszolgálón létrehozott elemek, nem az erőforrás-szolgáltató által létrehozott okozhatja hibás állapotban.  
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> Nem támogatottak a különleges karaktereket, szóközöket és időszakok, beleértve a **termékcsalád** neve, amikor az SQL és a MySQL-szolgáltatók hoz létre a Termékváltozat.
 
 > [!NOTE]  
 > Miután frissítette az Azure verem 1803, továbbra is használja az SQL és MySQL erőforrás-szolgáltató korábban már telepített.  Azt javasoljuk, hogy frissítse az SQL és MySQL amikor elérhetővé válik az új verziót. Azure-vermét, például frissítések alkalmazása az SQL és a MySQL-szolgáltatók egymás után.  Például 1711 verzióját használja, ha először alkalmazza a 1712, majd 1802 verziója, és frissítse a 1803.      

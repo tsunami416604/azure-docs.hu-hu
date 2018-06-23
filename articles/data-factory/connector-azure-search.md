@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 280c91d6a871984959d587e9895166853e89cc45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 85c854e697e7178bbdb3429c5384d67731770117
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615682"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335512"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index Azure Data Factory használatával
 
@@ -37,7 +37,7 @@ Bármely támogatott forrás adattár adatok átmásolhatja az Azure Search-inde
 
 ## <a name="getting-started"></a>Első lépések
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 A következő szakaszok részletesen bemutatják megadhatók a Data Factory tartozó entitások Azure Search-összekötőhöz használt tulajdonságokat.
 
@@ -117,8 +117,8 @@ Adatok másolása az Azure Search szolgáltatásba történő, állítsa be a fo
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot a másolási tevékenység forrás értékre kell állítani: **AzureSearchIndexSink** | Igen |
-| WriteBehavior | Megadja, hogy egyesíteni vagy cserélje le, ha az index már létezik egy dokumentumot. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Két érték engedélyezett: **egyesítése** (alapértelmezett), és **feltöltése**. | Nem |
-| WriteBatchSize | Amikor a puffer mérete eléri writeBatchSize feltölti az adatok be az Azure Search-index. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek: 1-1 000; egész szám alapértelmezett érték 1000. | Nem |
+| writeBehavior | Megadja, hogy egyesíteni vagy cserélje le, ha az index már létezik egy dokumentumot. Tekintse meg a [WriteBehavior tulajdonság](#writebehavior-property).<br/><br/>Két érték engedélyezett: **egyesítése** (alapértelmezett), és **feltöltése**. | Nem |
+| writeBatchSize | Amikor a puffer mérete eléri writeBatchSize feltölti az adatok be az Azure Search-index. Tekintse meg a [WriteBatchSize tulajdonság](#writebatchsize-property) részleteiről.<br/><br/>Engedélyezett értékek: 1-1 000; egész szám alapértelmezett érték 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 
@@ -173,7 +173,7 @@ Az alábbi táblázat felsorolja, hogy az Azure Search adattípus támogatott-e,
 
 | Az Azure Search-adattípus | Az Azure Search fogadó támogatott |
 | ---------------------- | ------------------------------ |
-| Karakterlánc | I |
+| Sztring | I |
 | Int32 | I |
 | Int64 | I |
 | Dupla | I |

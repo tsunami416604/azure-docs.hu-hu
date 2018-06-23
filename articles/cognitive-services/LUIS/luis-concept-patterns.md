@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: f45a9dfaf2863b81083fbfb647f420d9a4baed5a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 58bfae51fda10d14d9b1c4ea34cc10345d9a90ac
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264663"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318058"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Minták pontosság növeléséhez, ha több utterances nagyon hasonló készültek. A minta biztosítva a utterance, LUIS lehet a magas megbízhatósági előrejelzését. 
@@ -50,7 +50,9 @@ Elegendő példa utterances tekintve LUIS lenne növelheti a előrejelzés abban
 A minta egyezik belül a minta entitások először észlelésére, majd a többi szavak és a word sorrendjét a minta ellenőrzése alapján. A minta egyező mintát entitások kell megadni. 
 
 ## <a name="pattern-syntax"></a>Minta szintaxis
-A minták entitások tette kerek zárójeleket. Minták entitásokat és szerepkörök rendelkező entitások lehetnek. Pattern.any egy entitás csak akkor minták használják. Minden egyes szintaxisa a következő szakaszok az ismertetése.
+Minta szintaxisa egy utterance sablonját. A sablon szavak és entitásokat szavak valamint egyeztetni kívánt és írásjelet figyelmen kívül kell tartalmaznia. Az **nem** reguláris kifejezést. 
+
+A minták entitások tette kapcsos zárójelek között van feltüntetve, `{}`. Minták entitásokat és szerepkörök rendelkező entitások lehetnek. Pattern.any egy entitás csak akkor minták használják. A szintaxis a következő szakaszok az ismertetése.
 
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Egy entitás hozzáadása egy minta sablon szintaxis
 A minta sablonba vehető fel olyan entitás, helyezze az entitás nevével és a kapcsos zárójelek, például a `Who does {Employee} manage?`. 
@@ -90,7 +92,7 @@ Tegyük fel például, van egy mintát tartalmazó mindkét választható szinta
 
 Fontolja meg a minta "[keresése] e-mail vonatkozó {} [személytől {}]". A következő utterances a **tulajdonos** és **személy** entitást ki kell olvasni a helyes és helytelen:
 
-|Utterance|Entitás|Megfelelő kivonása|
+|utterance|Entitás|Megfelelő kivonása|
 |--|--|:--:|
 |a e-mailekhez kapcsolatos kutya Chris|tulajdonos kutya =<br>személy = Chris|✔|
 |e-mailben a La Mancha man kapcsolatos|tulajdonos a man =<br>személy La Mancha =|X|
@@ -109,7 +111,7 @@ Jelölje meg a reguláris kifejezés szögletes zárójelet szintaxis használat
 Például írásjelek `.`, `!`, és `?` figyelmen kívül hagyhatja a kapcsos zárójeleket használatával. Ahhoz, hogy figyelmen kívül hagyja ezeket a jeleket, minden be van jelölve egy külön mintát kell lennie. A választható szintaxis jelenleg nem támogatja a rendszer figyelmen kívül hagyja a több elem a lista egy elemére.
 
 ## <a name="patterns-only"></a>Csak minták
-LUIS leképezés számára lehetővé teszi bármely példa utterances nem rendelkező alkalmazások. Ez csak akkor, ha használatban minták engedélyezett. Minták megkövetelése minden mintában legalább egy entitást. Csak minta alkalmazások esetén a minta nem tartalmazhatja a entitások gép-megtanulta, mert például utterances szükséges. 
+LUIS leképezés számára lehetővé teszi bármely példa utterances nem rendelkező alkalmazások. Csak akkor, ha használatban minták használata engedélyezett. Minták megkövetelése minden mintában legalább egy entitást. Csak minta alkalmazások esetén a minta nem tartalmazhatja a entitások gép-megtanulta, mert például utterances szükséges. 
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg, [ajánlott eljárások](luis-concept-best-practices.md).

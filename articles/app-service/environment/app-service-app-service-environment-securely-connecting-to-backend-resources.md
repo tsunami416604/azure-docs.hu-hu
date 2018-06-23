@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: a43d88d64710b95dd753c19f02582f22accac8b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2fb13a4dac923a19dc12910cb1b78e909b93abe1
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836524"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317571"
 ---
 # <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Biztonságos kapcsolódás háttér erőforrásokhoz az App Service-környezet
 ## <a name="overview"></a>Áttekintés
-Mivel az App Service-környezetek mindig jön létre **vagy** az Azure Resource Manager virtuális hálózati **vagy** klasszikus telepítési modell [virtuális hálózati][virtualnetwork], más háttér erőforrások az App Service-környezetek kimenő kapcsolatok áramolhasson az kizárólag a virtuális hálózaton.  2016. június végzett legutóbbi módosítását ASEs is is telepíthető az nyilvános címtartományt, vagy RFC1918 címterek (azaz Magáncímeket) használó virtuális hálózatok.  
+Mivel az App Service-környezetek mindig jön létre **vagy** az Azure Resource Manager virtuális hálózati **vagy** klasszikus telepítési modell [virtuális hálózati] [ virtualnetwork], más háttér erőforrások az App Service-környezetek kimenő kapcsolatok áramolhasson az kizárólag a virtuális hálózaton.  2016. június végzett legutóbbi módosítását ASEs is is telepíthető az nyilvános címtartományt, vagy RFC1918 címterek (azaz Magáncímeket) használó virtuális hálózatok.  
 
 Előfordulhat például, a virtuális gépek zárolva 1433-as port a fürtön futó SQL Server.  A végpont lehet ACLd, hogy csak más erőforrásokhoz való hozzáférést a virtuális hálózaton.  
 
@@ -84,7 +84,7 @@ A végeredménynek olyan szabályokat, amelyek külső hozzáférés, miközben 
 
 ![Alapértelmezett hálózati biztonsági szabályok][DefaultNetworkSecurityRules]
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 App Service Environment-környezetek megkezdéséhez, lásd: [App Service Environment bemutatása][IntroToAppServiceEnvironment]
 
 További részletek az App Service-környezet a bejövő forgalom vezérlése körül: [az App Service-környezetek bejövő forgalom szabályozása][ControlInboundASE]
@@ -94,7 +94,7 @@ További részletek az App Service-környezet a bejövő forgalom vezérlése k�
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
 [ControlInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
-[SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
+[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [NetworkAccessControlLists]: https://azure.microsoft.com/documentation/articles/virtual-networks-acl/
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/

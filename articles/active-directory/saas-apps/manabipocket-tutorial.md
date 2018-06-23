@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212375"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Oktatóanyag: Azure Active Directoryval integrált Manabi zsebébe tenni
 
@@ -101,35 +100,29 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés kapcsolat konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés párbeszédpanel](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. Az a **Manabi zsebébe tenni tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
+3. Az a **Manabi zsebébe tenni tartomány és az URL-címek** területen tegye a következőket:
 
     ![Az egyszeri bejelentkezés információk Manabi zsebébe tenni tartomány és az URL-címek](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
-    
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/assertion_post`
+    a. Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://ed-cl.com/`
+
+    b. Az a **azonosító** szövegmező, adja meg a következő minta használatával URL-címe: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
-    > Ezek az értékek nincsenek valós. Frissítheti ezeket az értékeket a tényleges azonosítója és a válasz URL-CÍMEN. Ügyfél [Manabi zsebébe tenni ügyfél-támogatási csoport](mailto:info-ed-cl@ntt.com) beolvasni ezeket az értékeket.
+    > Az azonosító értéke nincs valós. Frissítse ezt az értéket a tényleges azonosítója. Ügyfél [Manabi zsebébe tenni ügyfél-támogatási csoport](mailto:info-ed-cl@ntt.com) lekérni ezt az értéket.
 
-4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
-
-    ![Az egyszeri bejelentkezés információk Manabi zsebébe tenni tartomány és az URL-címek](./media/manabipocket-tutorial/tutorial_manabipocket_url1.png)
-
-    Az a **bejelentkezési URL-cím** szövegmező, írja be az URL-cím: `https://ed-cl.com/`
-
-5. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
+4. Az a **SAML-aláíró tanúsítványa** területen kattintson **metaadatainak XML-kódja** és mentse a metaadat-fájlt a számítógépen.
 
     ![A tanúsítvány letöltési hivatkozását](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-6. Kattintson a **mentése** gombra.
+5. Kattintson a **mentése** gombra.
 
     ![Egyszeri bejelentkezés Mentés gombra konfigurálása](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-7. Egyszeri bejelentkezés konfigurálása **Manabi zsebébe tenni** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Manabi zsebébe tenni támogatási csoport](mailto:info-ed-cl@ntt.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
+6. Egyszeri bejelentkezés konfigurálása **Manabi zsebébe tenni** oldalon kell küldeniük a letöltött **metaadatainak XML-kódja** való [Manabi zsebébe tenni támogatási csoport](mailto:info-ed-cl@ntt.com). Akkor állítsa be ezt a beállítást, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure AD-teszt felhasználó
 
@@ -196,7 +189,7 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen tesztelése.
@@ -222,4 +215,3 @@ A hozzáférési Panel kapcsolatos további információkért lásd: [a hozzáf�
 [201]: ./media/manabipocket-tutorial/tutorial_general_201.png
 [202]: ./media/manabipocket-tutorial/tutorial_general_202.png
 [203]: ./media/manabipocket-tutorial/tutorial_general_203.png
-

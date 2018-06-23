@@ -2,11 +2,11 @@
 Ha azt szeretné, hogy a Mobile Apps kezelje az alkalmazása hitelesítési folyamatát, regisztrálnia kell az alkalmazását az identitásszolgáltatójánál. Ezután az Azure App Service-ben be kell állítania a szolgáltatótól kapott alkalmazásazonosítót és titkos kulcsot.
 További információt a [hitelesítés alkalmazásokhoz történő hozzáadását](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md) ismertető oktatóanyagban találhat.
 
-Ha már regisztrálta az identitásszolgáltatót, hívja meg a `.login()` metódust a szolgáltató nevével. A Facebookkal való bejelentkezéshez például használja a következő programkódot:
+Ha már regisztrálta az identitásszolgáltatót, hívja meg a `.login()` metódust a szolgáltató nevével. Ha például bejelentkezni Facebook használja a következő kódot:
 
 ```
 client.login("facebook").done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -17,7 +17,7 @@ A szolgáltatóhoz tartozó érvényes értékek a következők: „aad”, „f
 > [!NOTE]
 > A hitelesítés Google-fiókkal jelenleg nem használható a Server Flow-n keresztül.  A Google-lel való hitelesítéshez [Client Flow metódust](#client-auth) kell használnia.
 
-Ebben az esetben az Azure App Service felügyeli az OAuth 2.0-s hitelesítési folyamatot.  Megjeleníti a kiválasztott szolgáltató bejelentkezési oldalát, és létrehoz egy App Service-hitelesítési tokent az identitásszolgáltatónál történő sikeres bejelentkezés után. Amikor a login függvény lezárult, egy olyan JSON-objektumot ad vissza, amely a felhasználói azonosítót és az App Service-hitelesítési tokent a megfelelő userID és auhenticationToken mezőbe helyezi. Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár.
+Ebben az esetben az Azure App Service felügyeli az OAuth 2.0-s hitelesítési folyamatot.  A kiválasztott szolgáltató bejelentkezési oldalát jeleníti meg, és létrehoz egy App Service hitelesítés jogkivonatot után sikeres bejelentkezés az identitásszolgáltató. Amikor a login függvény lezárult, egy olyan JSON-objektumot ad vissza, amely a felhasználói azonosítót és az App Service-hitelesítési tokent a megfelelő userID és auhenticationToken mezőbe helyezi. Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár.
 
 ###<a name="client-auth"></a>Útmutató: Hitelesítés szolgáltatóval (Client Flow)
 
@@ -32,7 +32,7 @@ client.login(
      "facebook",
      {"access_token": token})
 .done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -50,7 +50,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
             "microsoftaccount",
             {"authenticationToken": result.session.authentication_token})
       .done(function(results){
-            alert("You are now logged in as: " + results.userId);
+            alert("You are now signed in as: " + results.userId);
       },
       function(error){
             alert("Error: " + err);

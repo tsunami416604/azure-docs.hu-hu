@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Azure Data Factory (béta) használatával Oracle Eloqua |} Microsoft Docs
+title: Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Eloqua |} Microsoft Docs
 description: 'Útmutató: adatok másolása az Oracle Eloqua támogatott fogadó adattárolókhoz egy Azure Data Factory-folyamat a másolási tevékenység használatával.'
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7fa26e71651f0b13da97653e998974c6fd39fe3f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8edab4a27966a0bdb278007c0d030fe43a126a35
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617195"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320603"
 ---
-# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-beta"></a>Adatok másolása az Azure Data Factory (béta) használatával Oracle Eloqua
+# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Oracle Eloqua
 
 Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az Azure Data Factory adatok másolása az Oracle Eloqua. Buildekről nyújtanak a [másolása tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
 
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, hogyan használható a másolási tevékenység során az A
 > Ez a cikk a Data Factory 2. verziójára vonatkozik, amely jelenleg előzetes verzióban érhető el. A Data Factory szolgáltatásnak, amely általánosan elérhető (GA), 1 verziójának használatakor lásd [másolási tevékenység során a V1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Ez az összekötő jelenleg bétaverziójú. Próbálja ki, és visszajelzést. Ne használja éles környezetben.
+> Ez az összekötő jelenleg előzetes verzió. Próbálja ki, és visszajelzést. Ha függőséget szeretne felvenni a megoldásában található előzetes verziójú összekötőkre, lépjen kapcsolatba az [Azure-támogatással](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Támogatott képességei
 
@@ -49,8 +49,8 @@ Oracle Eloqua kapcsolódó szolgáltatás támogatott a következő tulajdonság
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **Eloqua** | Igen |
-| endpoint | A végpont a Eloqua kiszolgáló. (Ez azt jelenti, hogy eloqua.example.com)  | Igen |
-| felhasználónév | A hely nevét és a képernyőn a Eloqua fiók felhasználóneve: hely neve vagy felhasználó neve. (Ez azt jelenti, hogy Eloqua/Anna)  | Igen |
+| endpoint | A végpont a Eloqua kiszolgáló. Eloqua támogatja több különböző adatközponthoz, a végponthoz, a bejelentkezés meghatározásához https://login.eloqua.com a hitelesítő adat tartozzon, majd másolja a **alap URL** részen található az átirányított URL-mintával `xxx.xxx.eloqua.com`. | Igen |
+| felhasználónév | A hely nevét és a képernyőn a Eloqua fiók felhasználóneve: `SiteName\Username` pl. `Eloqua\Alice`.  | Igen |
 | jelszó | A jelszó, a felhasználónév megfelelő. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
 | useEncryptedEndpoints | Meghatározza, hogy a data source végpontok titkosítása HTTPS használatával. Az alapértelmezett érték: igaz.  | Nem |
 | useHostVerification | Meghatározza, hogy az a számítógép neve a egyeznie kell a gazdagép nevével a kiszolgáló SSL-en keresztüli kapcsolódás esetén a kiszolgáló tanúsítványát. Az alapértelmezett érték: igaz.  | Nem |
@@ -64,8 +64,8 @@ Oracle Eloqua kapcsolódó szolgáltatás támogatott a következő tulajdonság
     "properties": {
         "type": "Eloqua",
         "typeProperties": {
-            "endpoint" : "eloqua.example.com",
-            "username" : "Eloqua/Alice",
+            "endpoint" : "<base URL e.g. xxx.xxx.eloqua.com>",
+            "username" : "<site name>\\<user name e.g. Eloqua\\Alice>",
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
