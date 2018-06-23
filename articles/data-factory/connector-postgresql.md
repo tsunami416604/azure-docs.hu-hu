@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 7b75bd5987ccf89c77509d0f2b4d8def5583e928
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a4f300666d0ab5345274d69d9ad6ad6871ce85e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617433"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334040"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Adatok másolása az PostgreSQL Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,10 +39,9 @@ Konkrétan ez PostgreSQL az összekötő támogatja-e PostgreSQL **7.4 verzió v
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A PostgreSQL-összekötő használata esetén meg kell:
+Ha a PostgreSQL-adatbázisban nincs nyilvánosan elérhető, állítson be egy Self-hosted integrációs futásidejű szeretné. Önálló üzemeltetett integrációs futtatókörnyezetek kapcsolatos további tudnivalókért lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikk. Az integrációs futásidejű verziót 3.7-től kezdődő beépített PostgreSQL illesztőprogram biztosít, ezért nem, manuálisan kell telepítenie minden olyan illesztőprogram kell.
 
-- Állítson be egy Self-hosted integrációs futásidejű. Lásd: [Self-hosted integrációs futásidejű](create-self-hosted-integration-runtime.md) cikkben alább.
-- Telepítse a [PostgreSQL-Ngpsql adatszolgáltatója](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 és az integrációs futásidejű gépen 3.1.9 közötti verziójával.
+Alacsonyabb, mint 3.7 Self-hosted IR verziójához, telepítenie kell a [PostgreSQL-Ngpsql adatszolgáltatója](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 és az integrációs futásidejű gépen 3.1.9 közötti verziójával.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -57,14 +56,36 @@ A következő tulajdonságok PostgreSQL kapcsolódó szolgáltatás támogatotta
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **PostgreSql** | Igen |
-| kiszolgáló | A PostgreSQL-kiszolgáló neve. |Igen |
-| adatbázis | A PostgreSQL-adatbázis neve. |Igen |
-| Séma | Az adatbázisban séma neve. A séma neve a kis-és nagybetűket. |Nem |
-| felhasználónév | Adja meg a felhasználónevet a PostgreSQL-adatbázishoz való kapcsolódáshoz. |Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). |Igen |
-| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Egy Self-hosted integrációs futásidejű szükség, ahogyan az [Előfeltételek](#prerequisites). |Igen |
+| connectionString | Az ODBC kapcsolati karakterlánc PostgreSQL Azure adatbázishoz való kapcsolódáshoz. Ez a mező megjelölése a SecureString tárolja biztonságos helyen, a Data factoryban vagy [hivatkozik az Azure Key Vault tárolt titkos kulcs](store-credentials-in-key-vault.md). | Igen |
+| connectVia | A [integrációs futásidejű](concepts-integration-runtime.md) csatlakozni az adattárolóhoz használandó. Használhat Azure integrációs futásidejű vagy Self-hosted integrációs futásidejű (amennyiben az adattároló magánhálózaton található). Ha nincs megadva, akkor használja az alapértelmezett Azure integrációs futásidejű. |Nem |
+
+Egy tipikus kapcsolati karakterlánc `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. A case / beállítható további tulajdonságokat:
+
+| Tulajdonság | Leírás | Beállítások | Szükséges |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (rendszer)| A módszer az illesztőprogram az illesztőprogram és az adatbázis-kiszolgáló között küldött adatok titkosítására használja. Például `ValidateServerCertificate=<0/1/6>;`| 0 (nincs titkosítás) **(alapértelmezett)** / 1 (SSL) vagy 6 (RequestSSL) | Nem |
+| ValidateServerCertificate (VSC) | Meghatározza, hogy az illesztőprogram érvényesíti a tanúsítványt, ha engedélyezve van az SSL-titkosítást az adatbázis-kiszolgáló által küldött (titkosítási módszer = 1). Például `ValidateServerCertificate=<0/1>;`| 0 (letiltva) **(alapértelmezett)** / 1 (engedélyezve) | Nem |
 
 **Példa**
+
+```json
+{
+    "name": "PostgreSqlLinkedService",
+    "properties": {
+        "type": "PostgreSql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+            }
+        }
+    }
+}
+```
+
+Ha a kapcsolódó PostgreSQL-szolgáltatás a következő tartalom használta, az továbbra is támogatott-van, amíg az újjal továbbítja használandó javasoltak.
+
+**Előző hasznos:**
 
 ```json
 {

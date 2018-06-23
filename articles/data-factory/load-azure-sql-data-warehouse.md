@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/17/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c7549297f040e251f3c0109debf757c28750d0a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b035141c443c3dad18c3e9bfbc53581a7d180e5a
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619269"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333827"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az Azure SQL Data Warehouse Azure Data Factory használatával
 
@@ -75,47 +75,72 @@ A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása es
 2. Az a **tulajdonságok** adja meg azokat **CopyFromSQLToSQLDW** a a **feladatnév** mezőjét, majd válassza **következő**:
 
     ![Tulajdonságok lap](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
-3. Az a **forrás adattár** lapon jelölje be **Azure SQL Database**, és válassza ki **következő**:
 
-    ![Forrásadattár lap](./media/load-azure-sql-data-warehouse/specify-source.png)
-4. **Az Azure SQL Database megadása** oldalon tegye a következőket: 
-   1. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server-kiszolgálót.
-   2. Az **Adatbázis neve** mezőnél válassza ki az Azure SQL Database-adatbázist.
-   3. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
-   4. Adja meg a felhasználó jelszavát **jelszó**.
-   5. Kattintson a **Tovább** gombra.
+3. Az a **forrás adattár** lapján tegye a következőket:
+
+    a. Kattintson a **+ új kapcsolat létrehozása**:
+
+    ![Forrásadattár lap](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
+
+    b. Válassza ki **Azure SQL Database** gyűjteménye, és válassza ki a **Folytatás**. A keresőmezőbe az összekötők szűrése "SQL" adhatja meg.
+
+    ![Válassza ki az Azure SQL-adatbázis](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+
+    c. Az a **új társított szolgáltatás** lapon válassza ki a kiszolgáló és adatbázis nevét a legördülő listából, és adja meg a felhasználónév és a passworkd. Kattintson a **tesztkapcsolat** ellenőrzése a beállításokat, majd válassza ki **Befejezés**.
    
-   ![Adja meg az Azure SQL-adatbázis](./media/load-azure-sql-data-warehouse/specify-source-connection.png)
-5. Az a **válassza ki azokat a táblákat, amelynek be kell másolnia az adatokat, vagy használjon egy egyéni lekérdezést** lapján adja meg **SalesLT** szűrése a táblázatokat. Válassza ki a **(válassza ki az összes)** használja az összes tábla a példányra a mezőbe, majd válassza ki **következő**: 
+    ![Az Azure SQL-adatbázis konfigurálása](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+
+    d. Válassza ki az újonnan létrehozott társított szolgáltatás forrásként, majd kattintson az **következő**.
+
+    ![Forrás kiválasztása a társított szolgáltatás](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
+
+4. Az a **válassza ki azokat a táblákat, amelynek be kell másolnia az adatokat, vagy használjon egy egyéni lekérdezést** lapján adja meg **SalesLT** szűrése a táblázatokat. Válassza ki a **(válassza ki az összes)** használja az összes tábla a példányra a mezőbe, majd válassza ki **következő**: 
 
     ![Válassza ki a forrástábla](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
-6. Az a **adatok céltár** lapon jelölje be **Azure SQL Data Warehouse**, és válassza ki **következő**:
+6. Az a **adatok céltár** lapján tegye a következőket:
 
-    ![Céladattár lap](./media/load-azure-sql-data-warehouse/specify-sink.png)
-7. Az a **adja meg az Azure SQL Data Warehouse** lapon esetén tegye a következőket: 
+    a. Kattintson a **+ új kapcsolat létrehozása** egy kapcsolat hozzáadása
 
-   1. A **Kiszolgáló neve** mezőnél válassza ki az Azure SQL Server-kiszolgálót.
-   2. Válassza ki az Azure SQL Data Warehouse esetében a **adatbázisnév**.
-   3. A **Felhasználónév** mezőben adja meg a felhasználó nevét.
-   4. Adja meg a felhasználó jelszavát **jelszó**.
-   5. Kattintson a **Tovább** gombra.
+    ![Adatok áruházi lapot gyűjtése](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
+
+    b. Válassza ki **Azure SQL Data Warehouse** gyűjteménye, és válassza ki a **következő**.
+
+    ![Válassza ki az Azure SQL DW](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+
+    c. Az a **új társított szolgáltatás** lapon válassza ki a kiszolgáló és adatbázis nevét a legördülő listából, és adja meg a felhasználónév és a passworkd. Kattintson a **tesztkapcsolat** ellenőrzése a beállításokat, majd válassza ki **Befejezés**.
    
-   ![Adja meg az Azure SQL-adatraktár](./media/load-azure-sql-data-warehouse/specify-sink-connection.png)
-8. Az a **táblaleképezés** lapon tekintse át a tartalmat, és válassza ki **következő**. Egy intelligens táblaleképezés jeleníti meg. A forrástáblákból a céltábla táblázat neve alapján van leképezve. Ha a forrástábla nem létezik a cél, Azure Data Factory táblát alapértelmezés szerint ugyanazzal a névvel létrehoz. Egy meglévő céltábla forrástábla is leképezheti. 
+    ![Az Azure SQL DW konfigurálása](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+
+    d. Jelölje ki az újonnan létrehozott társított szolgáltatás fogadó, majd kattintson az **következő**.
+
+    ![Válassza ki a társított szolgáltatás gyűjtése](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
+
+6. Az a **táblaleképezés** lapon tekintse át a tartalmat, és válassza ki **következő**. Egy intelligens táblaleképezés jeleníti meg. A forrástáblákból a céltábla táblázat neve alapján van leképezve. Ha a forrástábla nem létezik a cél, Azure Data Factory táblát alapértelmezés szerint ugyanazzal a névvel létrehoz. Egy meglévő céltábla forrástábla is leképezheti. 
 
    > [!NOTE]
    > Automatikus tábla létrehozása az SQL Data Warehouse fogadó vonatkozik, ha SQL Server vagy az Azure SQL Database a forrás. Adatok másolása másik forrás-adattár, ha az adatok másolását végrehajtása előtt a sémának a fogadó Azure SQL Data Warehouse előzetes létrehozásához szüksége.
 
-   ![Tábla hozzárendelése oldal](./media/load-azure-sql-data-warehouse/specify-table-mapping.png)
+   ![Tábla hozzárendelése oldal](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
 9. Az a **séma-hozzárendelése** lapon tekintse át a tartalmat, és válassza ki **következő**. Az intelligens táblaleképezés oszlopnév alapul. Ha engedélyezi a Data Factory automatikusan létrehozza a táblákat, adattípus konvertálása akkor fordulhat elő, ha nincsenek inkompatibilitási problémák között a forrás és cél tárolja. Ha a forrás és cél oszlopok közötti típusa nem támogatott adatok átalakításnál, lásd: hibaüzenetet a megfelelő táblanevek mellett látható.
 
-    ![Séma hozzárendelése oldal](./media/load-azure-sql-data-warehouse/specify-schema-mapping.png)
+    ![Séma hozzárendelése oldal](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
-11. Az a **beállítások** lapon, válassza ki az Azure storage-fiókot a **tárfióknév** legördülő listából. A fiók szolgál az adatok átmeneti megelőzően az SQL Data Warehouse PolyBase használatával. A másolás után, a közbenső adatainak Azure Storage a program automatikusan kiüríti. A **speciális beállítások**, törölje a **típus alapértelmezett** lehetőséget:
+11. Az a **beállítások** lapján tegye a következőket:
 
-    ![Beállítások lap](./media/load-azure-sql-data-warehouse/copy-settings.png)
+    a. A **előkészítési beállítások** kattintson **+ új** új átmeneti tárhelyre. A tárolót használja a rendszer, az adatok átmeneti megelőzően az SQL Data Warehouse PolyBase használatával. A másolás után, a közbenső adatainak Azure Storage a program automatikusan kiüríti. 
+
+    ![Átmeneti konfigurálása](./media/load-azure-sql-data-warehouse/configure-staging.png)
+
+    b. Az a **új társított szolgáltatás** lapon válassza ki a tárfiók, és válassza ki **Befejezés**.
+   
+    ![Az Azure tárolás konfigurálása](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+
+    c. Az a **speciális beállítások** területen kapcsolja ki a **típus alapértelmezett** lehetőséget, majd válasszon **következő**.
+
+    ![A PolyBase konfigurálása](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+
 12. Az a **összegzés** lapon tekintse át a beállításokat, és válassza ki **következő**:
 
     ![Összefoglaló lap](./media/load-azure-sql-data-warehouse/summary-page.png)
@@ -124,10 +149,10 @@ A cikkből megtudhatja, hogyan használható a Data Factory adatok másolása es
     ![Üzembe helyezés lap](./media/load-azure-sql-data-warehouse/deployment-page.png)
 14. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. A **műveletek** oszlop ismerteti tevékenységfuttatási részletek megtekintése, és futtassa újra a folyamatot: 
 
-    ![Folyamatfuttatások monitorozása](./media/load-azure-sql-data-warehouse/monitor-pipeline-run.png)
-15. Válassza ki, ha tevékenység fut, amely társul a folyamat, futtassa a **nézet tevékenység fut** hivatkozásra a **műveletek** oszlop. 10 másolási tevékenység az adatcsatorna és az egyes tevékenységek másolja át az adatok egy tábla. Váltson vissza az a folyamat futó nézet, válassza ki a **folyamatok** tetején. A lista frissítéséhez kattintson a **Frissítés** gombra. 
+    ![Folyamatfuttatások monitorozása](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
+15. Válassza ki, ha tevékenység fut, amely társul a folyamat, futtassa a **nézet tevékenység fut** hivatkozásra a **műveletek** oszlop. Váltson vissza az a folyamat futó nézet, válassza ki a **folyamatok** tetején. A lista frissítéséhez kattintson a **Frissítés** gombra. 
 
-    ![Tevékenységfuttatások monitorozása](./media/load-azure-sql-data-warehouse/monitor-activity-run.png)
+    ![Tevékenységfuttatások monitorozása](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
 16. Minden egyes másolási tevékenység végrehajtási adatainak figyelésére, válassza ki a **részletek** hivatkozásra **műveletek** figyelési nézet tevékenységben. Részletes adatai figyelhetők adatokat fogadó, adatátvitelt, megfelelő időtartamú támadáséhoz hasonlók a forráskiszolgálóról másolt, és konfigurációkat használják:
 

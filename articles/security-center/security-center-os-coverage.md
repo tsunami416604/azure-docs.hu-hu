@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 86e8c1c8f0d8654c86b851e3ae7296476f38b94e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 1bb0b61fe8a74edd35bb096fd295aedc67f6efb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756901"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335890"
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Az Azure Security Centerben a támogatott platformok
 Virtuális gépek (VM), a klasszikus és Resource Manager üzembe helyezési modellel, és számítógépek használatával létrehozott biztonsági állapotának megfigyelése és javaslatok használhatók.
@@ -42,12 +42,14 @@ Támogatott Windows operációs rendszerek:
 ## <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux rendszerű számítógépek és a virtuális gépek által támogatott platformok
 Támogatott Linux operációs rendszerek:
 
-* Ubuntu verziók 12.04, 14.04, 16.04, 16.10
-* Debian verziók 7, 8
-* A centOS 6 verziók. \*, 7.*
-* Red Hat Enterprise Linux (RHEL) verziók 6. \*, 7.*
-* SUSE Linux Enterprise Server (SLES) 11 SP4 + verziók, 12.*
-* Oracle Linux 6 verziók. \*, 7.*
+* Ubuntu verziók 12.04 LTS, 14.04 LTS, 16.04 LTS
+* Debian verziók 6, 7, 8, 9
+* CentOS verziók 5, 6, 7
+* Red Hat Enterprise Linux (RHEL) verziók 5, 6, 7
+* SUSE Linux Enterprise Server (SLES) verziók 11, 12
+* Oracle Linux verziók 5, 6, 7
+* Amazon Linux 2012.09 2017 keresztül
+* Openssl 1.1.0-ás csak akkor támogatott a x86_64 platformokon (64 bites)
 
 > [!NOTE]
 > Virtuális gép viselkedéselemzés még nem állnak rendelkezésre a Linux operációs rendszereken.

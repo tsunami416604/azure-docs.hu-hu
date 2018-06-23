@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: 804a418f6ee88974d6e74a2c18bc5d01b6adf838
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788752"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331520"
 ---
 # <a name="media-intelligence"></a>Médiaintelligencia
 
@@ -50,7 +50,7 @@ A kimeneti JSON-fájl (insights.json) tartalmaz, amelynek a videót, illetve a h
 |Name (Név)|Leírás|
 |---|---|
 |id|A sor azonosítója.|
-|Szöveg|A Beszélgetés szövegének magát.|
+|szöveg|A Beszélgetés szövegének magát.|
 |nyelv|A Beszélgetés szövegének nyelv. Szánt Beszélgetés szövegének támogatásához, amely minden sor egy másik nyelvet is rendelkezhet.|
 |példányok|Amikor a sor jelent meg időtartományhoz listáját. Ha a példány egy Beszélgetés szövegének, csak az 1-példány lesz.|
 
@@ -87,9 +87,9 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A OCR azonosítója.|
-|Szöveg|A Felismert szöveg.|
-|megbízhatóság|A felismerési vetett bizalmat.|
+|id|A OCR sor azonosítója.|
+|szöveg|A Felismert szöveg.|
+|Megbízhatóság|A felismerési vetett bizalmat.|
 |nyelv|A OCR nyelv.|
 |példányok|Amikor ez OCR jelent meg időtartományhoz listája (az azonos OCR többször jelenhet meg).|
 
@@ -126,13 +126,13 @@ Példa:
   ],
 ```
 
-### <a name="keywords"></a>Kulcsszavak
+### <a name="keywords"></a>kulcsszavak
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A kulcsszó azonosítója.|
-|Szöveg|A kulcsszó szöveget.|
-|megbízhatóság|A kulcsszó felismerés vetett bizalmat.|
+|id|A kulcsszó azonosítóját.|
+|szöveg|A kulcsszó szöveget.|
+|Megbízhatóság|A kulcsszó felismerés vetett bizalmat.|
 |nyelv|A kulcsszó nyelv (bájttartományára lefordítva).|
 |példányok|Amikor ezt a kulcsszót jelent meg időtartományhoz listáját (kulcsszó többször is szerepelhet).|
 
@@ -174,17 +174,17 @@ Példa:
 
 ```
 
-### <a name="faces"></a>felületei
+### <a name="faces"></a>Felületei
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A tapasztalt azonosítója.|
+|id|A tapasztalt azonosítóját.|
 |név|A betűtípusának neve. Lehet, hogy a "Ismeretlen #0", az azonosított celebrity vagy egy felhasználói képzett személy.|
-|megbízhatóság|A tapasztalt azonosító vetett bizalmat.|
-|leírás|Esetén a celebrity, annak leírását ("Satya Nadella született..."). |
+|Megbízhatóság|A tapasztalt azonosító vetett bizalmat.|
+|leírás|Ha egy celebrity, annak leírását. |
 |thumbnalId|Az azonosítója, amely a miniatűr.|
 |knownPersonId|Ha egy ismert személy, a belső azonosítója.|
-|Hivatkozás azonosítója|Esetén a Bing celebrity, a Bing azonosítójával.|
+|hivatkozás azonosítója|Esetén a Bing celebrity, a Bing-azonosító.|
 |referenceType|Jelenleg csak a Bing.|
 |cím|Ha egy celebrity címét (például "CEO Microsoft").|
 |imageUrl|Ha egy celebrity, a kép URL-címe.|
@@ -219,11 +219,11 @@ Példa:
 }]
 ```
 
-### <a name="labels"></a>Címkék
+### <a name="labels"></a>címkék
 
 |Name (Név)|Leírás|
 |---|---|
-|id|a címkeazonosító.|
+|id|A címkeazonosító.|
 |név|A címke nevét (például "Számítógép", "TV").|
 |nyelv|A címke neve nyelve, (bájttartományára lefordítva). BCP-47|
 |példányok|Amikor ezt a címkét jelent meg időtartományhoz listáját (a címke többször jelenhet meg). Minden példány abban, hogy mezőt tartalmaz. |
@@ -282,8 +282,8 @@ Példa:
 
 |Name (Név)|Leírás|
 |---|---|
-|id|A hibaüzenetet azonosítója.|
-|Kulcsképek|A hibaüzenetet (mindegyik rendelkezik-e egy azonosítót és egy címtartománylista példányok idő) belül hozzon listáját.|
+|id|A hibaüzenetet azonosítóját.|
+|Kulcsképek|A hibaüzenetet (mindegyik rendelkezik-e egy Azonosítót és egy címtartománylista példányok idő) belül hozzon listáját.|
 |példányok|Ezt a hibaüzenetet idő tartományok listáját (a pillanatfelvételek csak 1 példánya van).|
 
 ```json
@@ -331,35 +331,8 @@ Példa:
   ]
 ```
 
-### <a name="audioeffects"></a>audioEffects
 
-|Name (Név)|Leírás|
-|---|---|
-|id|A hang hatás azonosítóját.|
-|type|A hang hatás típusa (például Clapping, beszéd átalakítás, csend).|
-|példányok|Amikor jelent meg a hang lépéséhez idő tartományok listáját.|
-
-```json
-"audioEffects": [
-{
-    "id": 0,
-    "type": "Clapping",
-    "instances": [
-    {
-        "start": "00:00:00",
-        "end": "00:00:03"
-    },
-    {
-        "start": "00:01:13",
-        "end": "00:01:21"
-    }
-    ]
-}
-]
-```
-
-
-### <a name="sentiments"></a>hangulati elemek
+### <a name="sentiments"></a>Hangulati elemek
 
 Hangulati elemek összesítése a sentimentType mező (pozitív/Neutral/negatív) szerint. Ha például 0-0,1, 0,1-0,2.
 

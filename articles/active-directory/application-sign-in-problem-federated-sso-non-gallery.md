@@ -3,22 +3,24 @@ title: Egy nem galéria-alkalmazást konfigurált összevont bejelentkezés prob
 description: Útmutató a konkrét problémák lehetséges, hogy szembesülhetnek, az alkalmazás beállítása az SAML-alapú összevont egyszeri bejelentkezés az Azure ad-vel történő bejelentkezéskor
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: cfd4e478850783983caa3042cbbb2b096a576292
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: d72fe88ef955dbe821a1fab55de8356ac14619a1
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2018
-ms.locfileid: "29383463"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334166"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Bejelentkezés egy összevont egyszeri bejelentkezés beállítása nem galéria alkalmazás problémák
 
@@ -38,7 +40,7 @@ A hiba elhárításához ellenőrizze az alkalmazás konfigurációját az Azure
 
 A kibocsátó attribútum küldése az alkalmazásból az Azure AD-t a SAML-kérelmet nem felel meg az alkalmazás az Azure AD konfigurált azonosító értéket.
 
-**Megoldás**
+**megoldás**
 
 Győződjön meg arról, hogy a kibocsátó attribútumot a SAML-kérelmet azt van megfelelő az azonosító az Azure ad-ben konfigurált értéket:
 
@@ -70,7 +72,7 @@ Miután frissítette az azonosító értéket az Azure ad-ben, és azt az érté
 
 A SAML-kérelmet AssertionConsumerServiceURL értéke nem egyezik, a válasz URL-címével vagy a minta az Azure ad-ben konfigurált. A SAML-kérelmet AssertionConsumerServiceURL érték az URL-címet, a hibaüzenet látható. 
 
-**Megoldás** 
+**megoldás** 
 
 Győződjön meg arról, hogy a SAML-kérelmet, akkor a válasz URL-cím van megfelelő AssertionConsumerServiceURL értékét az Azure ad-ben beállított értéket. 
  
@@ -104,7 +106,7 @@ Miután frissítette az válasz URL-cím az Azure ad-ben, és azt az értéket k
 
 A felhasználó nem rendelkezik az Azure AD-alkalmazás hozzáférését.
 
-**Megoldás**
+**megoldás**
 
 Hozzárendelése egy vagy több felhasználó alkalmazás közvetlenül, kövesse az alábbi lépéseket:
 
@@ -148,13 +150,13 @@ Rövid időn belül a kijelölt felhasználók tudják elindítani ezeket az alk
 
 **Lehetséges ok**
 
-Az Azure AD nem támogatja az egyszeri bejelentkezést az alkalmazás által küldött SAML-kérelem. Néhány gyakori kérdések a következők:
+Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó SAML-kérelmét. Néhány gyakori kérdések a következők:
 
 -   A SAML-kérelmet a kötelező mezők hiányoznak
 
 -   SAML kódolt kérelmek módja
 
-**Megoldás**
+**megoldás**
 
 1.  Rögzítse a SAML-kérelmet. az útmutató bevezeti Önt [hibakeresés SAML-alapú egyszeri bejelentkezés alkalmazásokhoz az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) megtudhatja, hogyan rögzítheti a SAML-kérelmet.
 
@@ -174,7 +176,7 @@ Ellenőrizni kell az egyszeri bejelentkezés az Azure AD SAML-alapú megvalósí
 
 Az application objektum sérült.
 
-**Megoldás**
+**megoldás**
 
 A probléma megoldásához távolítsa el az alkalmazást a könyvtárból. Adja hozzá, és konfigurálja újra az alkalmazást, kövesse az alábbi lépéseket:
 
@@ -206,7 +208,7 @@ Hiba AADSTS50003: Nincs aláírási kulcs konfigurálva.
 
 Az application objektum sérült, és az Azure AD nem ismeri fel az alkalmazáshoz beállított tanúsítvány.
 
-**Megoldás**
+**megoldás**
 
 Törölje, majd hozzon létre egy új tanúsítványt, kövesse az alábbi lépéseket:
 

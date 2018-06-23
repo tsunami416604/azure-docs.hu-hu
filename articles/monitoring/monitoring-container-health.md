@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 06/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c4294947cba72b1638e77c2dd8de1f5ee37b62a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285990"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335754"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Hogy figyelemmel kísérje Azure Kubernetes szolgáltatás (AKS) tároló állapotát (előzetes verzió)
 
@@ -37,7 +37,7 @@ Ha érdekli figyelése és kezelése a Docker és a Windows tároló állomások
 ## <a name="requirements"></a>Követelmények 
 Megkezdése előtt tekintse át a következő adatokat, így megismerheti, hogy a támogatott előfeltételek.
 
-- A fürt AKS következő verziói támogatottak: 1.7.7 való 1.9.6.
+- Egy új vagy meglévő AKS fürt
 - Linux-verziójának indexelése OMS-ügynököt a microsoft / oms:ciprod04202018 és újabb verziók. Ez az ügynök telepítése automatikusan során érdekében, hogy a tároló állapotát.  
 - Egy Log Analytics-munkaterület.  Amikor engedélyezhető a AKS új fürt, vagy létrehozhat egy keresztül is létrehozható [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [Azure-portálon](../log-analytics/log-analytics-quick-create-workspace.md).
 - Ahhoz, hogy a tároló a figyelés bekapcsolható a Log Analyticshez közreműködői szerepkör tagja.  A Naplóelemzési munkaterület való hozzáférés vezérlése érdekében hogyan további információkért lásd: [munkaterületek kezelése](../log-analytics/log-analytics-manage-access.md).
@@ -244,7 +244,7 @@ Ha úgy döntött, hogy az Azure parancssori felület használja, először tele
 Figyelés engedélyezése után körülbelül 15 perc elteltével megtekintheti a fürt működési adatokat is igénybe vehet.  
 
 ## <a name="verify-agent-deployed-successfully"></a>Ellenőrizze a sikeresen telepített ügynök
-A megfelelő telepítés OMS-ügynököt ellenőrzéséhez futtassa a következő parancsot: ` kubectl get ds omsagent --namespace=kube-system`.
+A megfelelő telepítés OMS-ügynököt ellenőrzéséhez futtassa a következő parancsot: `kubectl get ds omsagent --namespace=kube-system`.
 
 A kimenet a következő jelezve volt megfelelően telepíteni kell hasonlítania:
 

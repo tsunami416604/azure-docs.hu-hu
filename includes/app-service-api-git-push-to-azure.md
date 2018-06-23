@@ -10,7 +10,7 @@ A Git helyi üzemelő példányának konfigurálásával végezhet leküldést a
 git remote add azure <URI from previous step>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást. A rendszer rákérdez az előzőleg, az üzembe helyező felhasználó létrehozásakor létrehozott jelszóra. Ügyeljen arra, hogy a gyors útmutató korábbi szakaszában létrehozott jelszót adja meg, ne azt, amelyet az Azure Portalra való bejelentkezéshez használ.
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást. A rendszer rákérdez az előzőleg, az üzembe helyező felhasználó létrehozásakor létrehozott jelszóra. Győződjön meg arról, hogy a jelszó megadását a gyors üzembe helyezés során korábban küldje el a létrehozott, és nem az Azure-portálon való bejelentkezéshez használt jelszó.
 
 ```bash
 git push azure master

@@ -7,19 +7,18 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2017
+ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 6fe7cad2910bed2dc08180d28fdf1af1d6cffd9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7267f8fa1ed900d1bac58b4fa61f076e5949d712
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223416"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Oktatóanyag: Azure Active Directoryval integrált Hightail
 
@@ -105,31 +104,29 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     ![Egyszeri bejelentkezés konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
- 
+
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_samlbase.png)
 
-3. Az a **Hightail tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **Hightail tartomány és az URL-címek** területen tegye a következőket, ha szeretne beállítani az alkalmazás **IDP** kezdeményezett mód:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_url.png)
 
-     Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-címet: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+    Az a **válasz URL-CÍMEN** szövegmező, írja be az URL-címet: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
-    > [!NOTE] 
-    > Az előző érték nincs valós értékének. Az érték a tényleges válasz URL-címet, az oktatóanyag későbbi részében ismertetett frissíti.
- 
-4. Az a **Hightail tartomány és az URL-címek** szakaszban, ha szeretne beállítani az alkalmazás **Szolgáltató kezdeményezett mód**, hajtsa végre a következő lépéseket:
-    
+    > [!NOTE]
+    > A válasz URL-cím értéke nem valódi értékek. A válasz URL-címével a tényleges válasz URL-címet, az oktatóanyag későbbi részében ismertetett frissíti.
+
+4. Ellenőrizze **megjelenítése speciális URL-beállításainak** , és végezze el a következő lépés, ha szeretne beállítani az alkalmazás **SP** kezdeményezett mód:
+
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_url1.png)
 
-    a. Kattintson a **megjelenítése speciális URL-beállításainak**.
-
-    b. Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet: `https://www.hightail.com/loginSSO`
+    Az a **URL-cím bejelentkezési** szövegmező, írja be az URL-címet: `https://www.hightail.com/loginSSO`
 
 4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_certificate.png) 
 
-5. Hightail alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Állítsa be a következő jogcímeket ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a **"Atrribute"** az alkalmazás lapján. Az alábbi képernyőfelvételen látható egy példa a. 
+5. Hightail alkalmazás vár a SAML helyességi feltételek egy meghatározott formátumban. Állítsa be a következő jogcímeket ehhez az alkalmazáshoz. Ezek az attribútumok értékének kezelheti a **"Attribútum"** az alkalmazás lapján. Az alábbi képernyőfelvételen látható egy példa a. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_attribute.png) 
 
@@ -153,7 +150,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
     c. Az a **érték** kilistázásához írja be a sorhoz látható attribútum értéke.
 
     d. Hagyja a **Namespace** üres.
-    
+
     e. Kattintson az **OK** gombra.
 
 7. Kattintson a **mentése** gombra.
@@ -162,41 +159,32 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure 
 
 8. A a **Hightail konfigurációs** kattintson **konfigurálása Hightail** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_configure.png) 
+    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_configure.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >Az egyszeri bejelentkezés konfigurálása a következő Hightail app, előtt kérjük, az e-mail tartomány Hightail vonja össze az, hogy minden a felhasználóknak, akik ebben a tartományban az egyszeri bejelentkezés funkciót használhatja a fehér lista.
 
+9. Egy másik böngészőablakban nyissa meg a **Hightail** felügyeleti portálon.
 
-9. Ahhoz, hogy az alkalmazáshoz konfigurált SSO, meg kell bejelentkezés a Hightail bérlő rendszergazdaként.
-   
-    a. A felső menüben kattintson a **fiók** lapot, és válasszon **SAML konfigurálása**.
- 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_001.png) 
+10. Kattintson a **felhasználói ikon** az oldal jobb felső sarkában a. 
 
-    b. A jelölőnégyzet bejelölésével **SAML-alapú hitelesítés engedélyezéséhez**.
+    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure1.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_002.png) 
+11. Kattintson a **nézet felügyeleti konzol** fülre.
 
-    c. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure portálról letöltött, a tartalmának másolása a vágólapra és illessze be azt a **SAML jogkivonat-aláíró tanúsítványa** szövegmező.
+    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure2.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_003.png) 
+12. A felső menüben kattintson a **SAML** lapra, és hajtsa végre a következő lépéseket:
 
-    d. Az a **SAML hatóság (identitásszolgáltató)** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** átmásolja az Azure-portálon.
+    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure3.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_004.png)
+    a. Az a **bejelentkezési URL-cím** szövegmezőhöz illessze be az értékét **SAML-alapú egyszeri bejelentkezési URL-címe** átmásolja az Azure-portálon.
 
-    e. Ha szeretne beállítani az alkalmazás **IDP kezdeményezett mód** válasszon **"Identitásszolgáltató (IdP) kezdeményezett bejelentkezés"**. Ha **Szolgáltató kezdeményezett mód** válasszon **"Szolgáltatókkal (SP) kezdeményezett bejelentkezés"**.
+    b. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure portálról letöltött, a tartalmának másolása a vágólapra és illessze be azt a **SAML tanúsítvány** szövegmező.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_006.png)
+    c. Kattintson a **MÁSOLÁSI** a SAML-alapú ügyfél URL-címe, a példány másolja és illessze be azt a **válasz URL-CÍMEN** textbox **Hightail tartomány és az URL-címek** Azure-portál szakaszban.
 
-    f. A SAML-alapú ügyfél URL-címe, a példány másolja és illessze be azt a **válasz URL-CÍMEN** textbox **Hightail tartomány és az URL-címek** Azure-portál szakaszban.
-    
-    g. Kattintson a **Save** (Mentés) gombra.
-
-> [!TIP]
-> Ezek az utasítások belül tömör verziója most el tudja olvasni a [Azure-portálon](https://portal.azure.com), míg az alkalmazás beállításakor!  Ez az alkalmazás a hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentációja keresztül a **konfigurációs** szakasz alján. További Itt a embedded dokumentációjából szolgáltatásról: [az Azure AD beágyazott dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. Kattintson a **konfigurációk mentéséhez**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
 Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
@@ -256,7 +244,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202] 
+    ![Felhasználó hozzárendelése][202]
 
 4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
 
@@ -267,7 +255,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-    
+
 ### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
 
 Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
@@ -279,8 +267,6 @@ Ha a hozzáférési panelen Hightail csempére kattint, akkor kell beolvasása a
 
 * [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 

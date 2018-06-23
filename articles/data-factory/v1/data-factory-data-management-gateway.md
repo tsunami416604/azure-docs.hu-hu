@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: abc542f79d722f24ff6a6e9d96d12364ed76894b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d28d25b74ce46c0323b01670bfdb639c02b92d8a
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621183"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335805"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -46,7 +46,7 @@ Az adatkezelési átjáró a következő lehetőségeket biztosítja:
 * Biztonságosan kezelheti a helyszíni adatforrások eléréséhez.
   * Nincs változás vállalati tűzfal szükséges. Átjáró csak hoz kimenő HTTP-alapú kapcsolatok internet megnyitásához.
   * A helyszíni adattárolókhoz a tanúsítványhoz tartozó hitelesítő adatok titkosításához.
-* Adatok áthelyezése hatékonyan adatátvitel párhuzamosan lehetséges legyen időszakos hálózati problémák automatikus újrapróbálkozási logika.
+* Hatékony áthelyezni az adatokat – adatátvitel párhuzamosan lehetséges legyen időszakos hálózati problémák automatikus újrapróbálkozási logika.
 
 ### <a name="command-flow-and-data-flow"></a>Parancs folyamata és adatfolyama
 Ha a másolási tevékenység használatával másolja az adatokat a helyszíni és a felhő között, a tevékenység átjáró használatával adatok átviteléhez a helyszíni adatforrás felhő-és fordítva.
@@ -184,7 +184,7 @@ Három konfigurációs lehetőség áll rendelkezésre:
 
 * **Ne használjon proxyt**: átjáró nincs explicit módon bármelyik proxyt használhatják felhőszolgáltatások való kapcsolódáshoz.
 * **Használja a rendszer proxy**: átjáró használja a beállítást a konfigurált diahost.exe.config és diawp.exe.config proxy.  Ha nincs olyan proxy diahost.exe.config és diawp.exe.config van konfigurálva, átjáró csatlakozik a felhőalapú szolgáltatás közvetlenül a proxy áthaladás nélkül.
-* **Egyéni proxyt használ**: beállítás használata az átjáró diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása.  Cím és Port is szükséges.  Felhasználónév és jelszó megadása nem kötelező, attól függően, hogy a proxy s hitelesítés beállítása.  Minden beállítás az átjáró hitelesítő tanúsítványa titkosítva, és helyben tárolja, az átjáró a gazdagépen.
+* **Egyéni proxyt használ**: beállítás használata az átjáró diahost.exe.config és diawp.exe.config konfigurációk használata helyett a HTTP-proxy konfigurálása.  Cím és Port is szükséges.  Felhasználónév és jelszó megadása nem kötelező, attól függően, hogy a proxy hitelesítési beállítást.  Minden beállítás az átjáró hitelesítő tanúsítványa titkosítva, és helyben tárolja, az átjáró a gazdagépen.
 
 Az adatkezelési átjáró gazdaszolgáltatás a frissített proxybeállítások mentése után automatikusan újraindul.
 
@@ -208,7 +208,7 @@ Megtekintheti és HTTP-proxy frissítse a Configuration Manager eszközzel.
 Ha **system proxy használata** átjáró használja a HTTP-proxy beállítása, a proxybeállítást diahost.exe.config és diawp.exe.config.  Ha nincs olyan proxy diahost.exe.config és diawp.exe.config van beállítva, átjáró csatlakozik a felhőalapú szolgáltatás közvetlenül a proxy áthaladás nélkül. Az alábbi eljárás ismerteti a diahost.exe.config fájl frissítése.  
 
 1. A Fájlkezelőben másolat egy biztonságos C:\Program Files\Microsoft Data felügyeleti Gateway\2.0\Shared\diahost.exe.config biztonsági mentése az eredeti fájlt.
-2. Indítsa el a Notepad.exe rendszergazdaként fut, és nyissa meg a C:\Program Files\Microsoft Data felügyeleti Gateway\2.0\Shared\diahost.exe.config szövegfájl. Az alapértelmezett címke található a System.NET névtérbeli az alábbi kódban látható módon:
+2. Indítsa el a Notepad.exe rendszergazdaként fut, és nyissa meg a szöveges fájl "C:\Program Files\Microsoft Data felügyeleti Gateway\2.0\Shared\diahost.exe.config. Az alapértelmezett címke található a System.NET névtérbeli az alábbi kódban látható módon:
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -231,13 +231,13 @@ Ha **system proxy használata** átjáró használja a HTTP-proxy beállítása,
 > Ne felejtse el frissíteni a **mindkét** diahost.exe.config és diawp.exe.config.  
 
 
-A pontok mellett szükség ügyeljen arra, hogy a Microsoft Azure a vállalat s engedélyezett. Érvényes Microsoft Azure IP-címek listájának tölthető le: a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+A pontok mellett szükség ügyeljen arra, hogy a Microsoft Azure a vállalat engedélyezett. Érvényes Microsoft Azure IP-címek listájának tölthető le: a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>A tűzfal és proxy-kiszolgálóval kapcsolatos problémák lehetséges jelenségek
 Ha hibákba ütközik a következő hasonló, valószínű a tűzfalhoz vagy proxyhoz kiszolgáló, amely blokkolja az átjárót, csatlakozzon a Data Factory hitelesítse magát a helytelen konfiguráció miatt. Tekintse meg a tűzfalat, hogy az előző szakaszban, és a proxykiszolgáló megfelelően vannak konfigurálva.
 
 1. Amikor megpróbálja regisztrálni az átjárót, a következő hibaüzenetet kapja: "nem sikerült regisztrálni az átjáró kulcsa. Regisztrálja újra az átjáró kulcsát előtt győződjön meg arról, hogy az adatkezelési átjáró csatlakoztatott állapotban van, és az adatkezelési átjáró gazdaszolgáltatás elindult."
-2. Configuration Manager megnyitásakor látni állapota Disconnected vagy csatlakozás Windows-eseménynaplók, az Eseménynapló megtekintésekor > alkalmazás- és szolgáltatásnaplók > adatkezelési átjáró, hibaüzenetek jelennek meg például a következő hibával: `Unable to connect to the remote server`
+2. A Configuration Manager megnyitásakor állapota megjelenik "Kapcsolat" vagy "Csatlakozás". Amikor megtekintik a Windows eseménynaplóiban keresse meg, a "Eseménynapló" > "Alkalmazások és szolgáltatások Logs" > "Az adatkezelési átjáró" hibaüzenetek jelennek meg például a következő hibával: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Nyissa meg a portot 8050 a hitelesítő adatok titkosításához
@@ -369,7 +369,7 @@ Elérhető memória | Rendelkezésre álló memória egy átjáró-csomóponton.
 Processzorkihasználtság | Egy átjáró csomópont CPU-felhasználását. Ez az érték közel valós idejű pillanatképet. 
 Hálózatkezelés (In/Out) | Hálózathasználat egy átjáró csomópont. Ez az érték közel valós idejű pillanatképet. 
 Egyidejűleg futó feladatainak (futtató / Limit) | Feladatok vagy minden egyes csomóponton futó feladatok száma. Ez az érték közel valós idejű pillanatképet. Korlát azt jelzi, hogy az egyes csomópontok maximális egyidejűleg futó feladatainak. Ez az érték van megadva a mérete alapján. Egyidejű feladatok végrehajtásának speciális forgatókönyvekhez, ahol Processzor/memória/hálózati alatt szükség, de tevékenységek vannak időtúllépés miatt növelheti a korlát növelhető. Ez a funkció érhető el egy egy csomópontos átjáró (még akkor is, ha a méretezhetőség és a rendelkezésre állási funkció nincs engedélyezve).  
-Szerepkör | A kézbesítő többcsomópontos átjáró szerepkörök két típusa és munkavégző vannak. Az összes csomópontja a dolgozók, ami azt jelenti, hogy az összes felhasználásuk feladatok végrehajtásához. A kézbesítő csak egy csomópont, feladatok és feladatok a felhőalapú szolgáltatások lekéréses és mennyi őket (beleértve magát) különböző munkavégző csomópontokhoz használt van.
+Szerepkör | A kézbesítő és munkavégző az egy több csomópontos átjáró - szerepkörök két típusa van. Az összes csomópontja a dolgozók, ami azt jelenti, hogy az összes felhasználásuk feladatok végrehajtásához. A kézbesítő csak egy csomópont, feladatok és feladatok a felhőalapú szolgáltatások lekéréses és mennyi őket (beleértve magát) különböző munkavégző csomópontokhoz használt van.
 
 Ezen a lapon látható egyes beállítások, amelyek több értelme, ha az átjáró két vagy több csomópont (forgatókönyv kibővítési). Lásd: [az adatkezelési átjáró - magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md) többcsomópontos átjárók beállításával kapcsolatos részleteket.
 
@@ -468,7 +468,7 @@ A Data Factory Editor a hitelesítő adatok titkosításához, tegye a következ
     ```
 Ha egy gép, amely eltér az átjáró számítógépe elérni a portált, meg kell győződnie arról, hogy a hitelesítő adatokat kezelő alkalmazások csatlakozhat az átjárót működtető gépen. Ha az alkalmazás nem érhető el az átjárót működtető gépen, akkor nem teszi lehetővé az adatforráshoz tartozó hitelesítő adatokat, és állítsa be az adatforráshoz való kapcsolat ellenőrzéséhez.  
 
-Használatakor a **hitelesítő adatok beállítása a** alkalmazás, a portál titkosítja a hitelesítő adatokat a megadott tanúsítvány a **tanúsítvány** lapján a **átjáró konfigurációkezelőjének** az átjárót működtető gépen.
+Használatakor a **hitelesítő adatok beállítása a** alkalmazás, a portál titkosítja a hitelesítő adatokat a megadott tanúsítvány a **tanúsítvány** lapján a **átjáró konfigurációkezelője**  az átjárót működtető gépen.
 
 Ha a hitelesítő adatok titkosítására egy API-alapú módszert keres, használhatja a [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell-parancsmag hitelesítő adatok titkosításához. A parancsmag a tanúsítványt használja, hogy az átjáró a hitelesítő adatok titkosításához használatára van konfigurálva. Akkor adja hozzá a titkosított hitelesítő adatokat a **EncryptedCredential** eleme a **connectionString** a JSON-ban. A JSON-t használ a [New-AzureRmDataFactoryLinkedService](https://msdn.microsoft.com/library/mt603647.aspx) parancsmag vagy a Data Factory Editor.
 
@@ -490,12 +490,12 @@ Ez a szakasz ismerteti, hogyan hozhat létre, és regisztrálnia kell egy átjá
 3. Használja a **New-AzureRmDataFactoryGateway** parancsmaggal hozzon létre egy logikai átjáró az alábbiak szerint:
 
     ```PowerShell
-    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF �Description <desc>
+    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
     **Példa parancs és a kimeneti**:
 
     ```
-    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF �Description �gateway for walkthrough�
+    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
 
     Name              : MyGateway
     Description       : gateway for walkthrough

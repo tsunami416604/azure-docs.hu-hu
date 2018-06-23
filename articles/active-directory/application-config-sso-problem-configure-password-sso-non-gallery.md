@@ -3,22 +3,23 @@ title: A probléma jelszó egyszeri bejelentkezés nem galéria alkalmazások ko
 description: A gyakori problémák személyek arcfelismerési áttekinteni jelszó egyszeri bejelentkezéshez, amelyek nem szerepelnek az Azure AD Application Gallery egyéni nem galéria-alkalmazások konfigurálása
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b671089bfac04b359717874928d6a342c44b3d4
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.author: barbkess
+ms.openlocfilehash: 69a2bf6e622cd2338d57e62ed82951cb2385edd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34069674"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334907"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>A probléma jelszó egyszeri bejelentkezés nem galéria alkalmazások konfigurálása
 
@@ -132,7 +133,7 @@ Láthatja, ha manuális észlelése nem működik az viselkedésmódok közé:
 
 Ellenőrizze az alábbiakat, ha ezeket a problémákat tapasztal:
 
--   Győződjön meg arról, hogy rendelkezik-e a hozzáférési panel bővítmény legújabb verziója **telepítve** és **engedélyezett** a lépések a [a hozzáférési Panel bővítmény telepítése](#how-to-install-the-access-panel-browser-extension) szakasz.
+-   Győződjön meg arról, hogy rendelkezik-e a hozzáférési panel bővítmény legújabb verziója **telepítve** és **engedélyezett** a lépések a [a hozzáférési Panel bővítménytelepítése](#how-to-install-the-access-panel-browser-extension) szakasz.
 
 -   Győződjön meg arról, hogy nem kívánt a rögzítési folyamat közben a böngésző a **incognito, inPrivate vagy privát mód**. A hozzáférési panel bővítmény e mód nem támogatott.
 
@@ -142,7 +143,7 @@ Ellenőrizze az alábbiakat, ha ezeket a problémákat tapasztal:
 
 -   Ha a kézi rögzítési folyamat úgy tűnik, hogy leállását, vagy a bejelentkezési oldal nem semmit (a fenti 3. eset), ismételje meg a manuális rögzítési folyamat. De ezúttal a folyamat befejezése után nyomja le az **F12** gombra kattintva nyissa meg a böngésző fejlesztői konzolján. Egyszer, nyissa meg a **konzol** és típus **window.location= "&lt;meg a bejelentkezési URL-címet az alkalmazás konfigurálásakor megadott&gt;"** , és nyomja le az **Enter** . Ez arra kényszeríti, hogy a rögzítési folyamat befejeződik, és tárolja a mezőket, amelyeknek már rögzített lap átirányítást.
 
-Ha ezek egyike sem működik, az Ön, támogatási segítségével. Nyisson meg egy támogatási esetet mi próbált, valamint begyűjtött információ részleteit a [a portál értesítései részleteinek megtekintése](#i-cannot-manually-detect-sign-in-fields-for-my-application) és [segítség kérése értesítési részletek küld egy támogatási szakértőhöz](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) részek (ha van ilyen).
+Ha ezek egyike sem működik, az Ön, támogatási segítségével. Nyisson meg egy támogatási esetet mi próbált, valamint begyűjtött információ részleteit a [a portál értesítései részleteinek megtekintése](#i-cannot-manually-detect-sign-in-fields-for-my-application) és [értesítési részletek küld egy támogatási szakértőhöz segítség kérése ](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) részek (ha van ilyen).
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>A hozzáférési Panel bővítmény telepítése
 

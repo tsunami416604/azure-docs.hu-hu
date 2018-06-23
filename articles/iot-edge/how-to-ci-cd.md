@@ -8,12 +8,12 @@ ms.date: 04/30/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8b58eae9aa08d8f6539370fa6e78a7a4813c18f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5fbac725894d01b2dc622d3542f865a66b240743
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631020"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333776"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Folyamatos integrációt és folyamatos üzembe helyezés Azure IoT szegélyhez – előzetes
 Ez az oktatóanyag bemutatja, hogyan használhatja a folyamatos integrációt és a folyamatos üzembe helyezési funkcióival Visual Studio Team Services (VSTS) és a Microsoft Team Foundation Server (TFS) hozhat létre, tesztelheti, és gyors és hatékony az alkalmazások központi telepítése a Az Azure IoT peremhálózati. 
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez 30 percig tart.
 
 Ebben a szakaszban egy minta IoT peremhálózati megoldás tartalmazó egység teszteket hajthat végre a felépítési folyamat részeként hoz létre. Ebben a szakaszban útmutatása előtt hajtsa végre a [egy IoT peremhálózati megoldást a Visual Studio Code több modulok](tutorial-multiple-modules-in-vscode.md).
 
-1. A Visual STUDIO Code parancs paletta, írja be, és futtassa a parancsot **peremhálózati: új IoT peremhálózati megoldás**. Válassza ki a munkaterület mappában, a megoldás nevét adja meg (az alapértelmezett név az **EdgeSolution**), és hozzon létre egy C# modult (**FilterModule**) ebben a megoldásban az első felhasználó modulként. Meg kell adnia a Docker lemezképtárba az első modul is. Az alapértelmezett lemezképtárba egy helyi Docker beállításjegyzék alapul (`localhost:5000/filtermodule`). Módosítania kell az Azure-tároló beállításjegyzék (`<your container registry address>/filtermodule`) vagy Docker kiválasztásával további folyamatos integrációt.
+1. A Visual STUDIO Code parancs paletta, írja be, és futtassa a parancsot **peremhálózati: új IoT peremhálózati megoldás**. Válassza ki a munkaterület mappában, a megoldás nevét adja meg (az alapértelmezett név az **EdgeSolution**), és hozzon létre egy C# modult (**FilterModule**) ebben a megoldásban az első felhasználó modulként. Az első modulhoz meg kell adnia a Docker rendszerképadattárat is. Az alapértelmezett lemezképtárba egy helyi Docker beállításjegyzék alapul (`localhost:5000/filtermodule`). Módosítania kell az Azure-tároló beállításjegyzék (`<your container registry address>/filtermodule`) vagy Docker kiválasztásával további folyamatos integrációt.
 
     ![A telepítő ACR](./media/how-to-ci-cd/acr.png)
 
@@ -452,7 +452,7 @@ Igen IoT peremeszközök telepítésekor nincsenek három fő környezetekben.
 Ez az oktatóanyag bemutatja, hogyan használhatja a folyamatos integrációt és a folyamatos üzembe helyezési funkcióival VSTS vagy TFS. 
 
 * IoT peremhálózati telepítését megértéséhez [megértéséhez IoT peremhálózati telepítések egyetlen eszközökhöz vagy léptékű](module-deployment-monitoring.md)
-* A létrehozása, frissítése vagy törlése a központi telepítés lépéseit ismerteti [telepítés és az IoT peremhálózati modulok léptékű figyelése] [how-to-telepíteni-monitor.md].
+* A létrehozása, frissítése vagy törlése a központi telepítés lépéseit ismerteti [központi telepítése és figyelése IoT peremhálózati modulok léptékű](how-to-deploy-monitor.md).
 
 
 
