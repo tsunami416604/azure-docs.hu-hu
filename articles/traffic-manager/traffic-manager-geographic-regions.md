@@ -409,7 +409,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - GE(Georgia)
 
-        - HK (Hongkong (KKT)
+        - HK (Hongkong KKT)
 
         - ID(Indonesia)
 

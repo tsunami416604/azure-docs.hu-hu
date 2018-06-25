@@ -3,7 +3,7 @@ A Service Bus-üzenetküldési entitások Azure-ban való használatának megkez
 Névtér létrehozása:
 
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
-2. A portál bal oldali navigációs ablaktábláján kattintson **+ hozzon létre egy erőforrást**, majd kattintson a **vállalati integrációs**, és kattintson a **Service Bus**.
+2. A portál bal oldali navigációs paneljén kattintson a **+ Erőforrás létrehozása**, a **Vállalati integráció**, majd a **Service Bus** elemre.
 3. A **Névtér létrehozása** párbeszédpanelen adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
 4. Miután ellenőrizte, hogy a névtér neve elérhető-e, válassza ki a tarifacsomagot (Basic, Standard vagy Prémium).
 5. Az **Előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben a névteret létre kívánja hozni.
@@ -11,17 +11,17 @@ Névtér létrehozása:
 7. A **Hely** mezőben válassza ki azt az országot vagy régiót, amelyben a névtér üzemeltetve lesz.
    
     ![Névtér létrehozása][create-namespace]
-8. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+8. Kattintson a **Create** (Létrehozás) gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
 
 ### <a name="obtain-the-management-credentials"></a>A felügyeleti hitelesítő adatok beszerzése
-Az elsődleges és másodlagos kulcsok, hogy minden egyes teljes hozzáférés a névtér összes elemeit társított párjának automatikusan hozza létre egy új névtér hoz létre egy kezdeti közös hozzáférésű Jogosultságkód (SAS) szabály. Lásd: [Service Bus hitelesítési és engedélyezési](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) több további szabályok létrehozásával kapcsolatos információkat a korlátozott jogok rendszeres küldő és a. A kezdeti szabály másolásához kövesse az alábbi lépéseket: 
+Egy új névtér létrehozásával automatikusan létrejön egy kezdeti közös hozzáférésű jogosultságkódra (SAS) vonatkozó szabály egy elsődleges és egy másodlagos kulcsból álló kulcspárral, amelyek mindegyike teljes hozzáférést biztosít a névtér minden területéhez. A normál küldők és fogadók számára kialakítható, korlátozottabb jogokat biztosító további szabályok létrehozásával kapcsolatban lásd: [Service Bus-hitelesítés és -engedélyezés](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md). A kezdeti szabály másolásához kövesse az alábbi lépéseket: 
 
-1.  Kattintson a **összes erőforrás**, majd kattintson az újonnan létrehozott névtér nevére.
-2. A névtér ablakában kattintson **megosztott elérési házirendek**.
-3. Az a **megosztott elérési házirendek** kattintson **RootManageSharedAccessKey**.
+1.  Kattintson az **Összes erőforrás** elemre, majd az újonnan létrehozott névtér nevére.
+2. A névtér ablakában kattintson a **Megosztott elérési házirendek** elemre.
+3. A **Megosztott elérési házirendek** képernyőn kattintson a **RootManageSharedAccessKey** elemre.
    
     ![connection-info][connection-info]
-4. Az a **házirend: RootManageSharedAccessKey** ablak, kattintson a Másolás gombra a Tovább gombra **kapcsolati karakterlánc – elsődleges kulcs**, hogy másolja a kapcsolati karakterláncot a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
+4. A **Szabályzat: RootManageSharedAccessKey** ablakban a **Kapcsolati sztring – elsődleges kulcs** melletti Másolás gombra kattintva másolja a kapcsolati sztringet a vágólapra későbbi használatra. Illessze be ezt az értéket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
    
     ![connection-string][connection-string]
 

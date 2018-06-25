@@ -69,7 +69,7 @@ A StorSimple 8100 vagy 8600 fizikai eszköz használatával, ha az eszköz nem �
 
 | #  | Ország        | #  | Ország     | #  | Ország      | #  | Ország              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Ausztrália      | 16 | Hongkong   | 31 | Új-Zéland  | 46 | Dél-Afrika         |
+| 1  | Ausztrália      | 16 | Hongkong KKT   | 31 | Új-Zéland  | 46 | Dél-Afrika         |
 | 2  | Ausztria        | 17 | Magyarország     | 32 | Nigéria      | 47 | Dél-Korea          |
 | 3  | Bahrein        | 18 | Izland     | 33 | Norvégia       | 48 | Spanyolország                |
 | 4  | Belgium        | 19 | India       | 34 | Peru         | 49 | Srí Lanka            |

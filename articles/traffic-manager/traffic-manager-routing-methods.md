@@ -103,7 +103,7 @@ Traffic Manager-profilok beállítható úgy, hogy a földrajzi-útválasztási 
 Ha egy profil földrajzi útválasztásra van konfigurálva, mindegyik végpont társított, hogy a profil kell rendelkeznie egy földrajzi helyhez rendelve. A földrajzi régió következő részletességi szinteken is lehet. 
 - A globális – bármely régió
 - Regionális csoportosítás – például Afrika Közel-Kelet, Ausztrália/csendes-óceáni stb. 
-- Ország vagy régió – például Írországban Perui, Hongkong, KKT stb. 
+- Ország vagy régió – például Írországban Perui, Hongkong KKT stb. 
 - Az állam/megye – például az USA-kaliforniai, Ausztrália-Queensland, Kanada-Alberta stb. (Megjegyzés: a részletesség szintje csak állapotok támogatott / tartományok Ausztrália, Kanada, UK és USA).
 
 Ha egy régiót vagy egy régiók hozzá van rendelve egy végpontot, csak az adott végpontra továbbított azokban a régiókban érkező kérelmeket. A TRAFFIC Manager a forrás IP-címét a DNS-lekérdezés segítségével határozza meg a régió, ahol a felhasználó kérdezi le, a – általában ez az IP-címét a helyi DNS-feloldó, ennek során a felhasználó nevében a lekérdezés.  
