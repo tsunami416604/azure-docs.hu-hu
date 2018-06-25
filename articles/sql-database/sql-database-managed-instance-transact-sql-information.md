@@ -6,15 +6,16 @@ author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95eca05d695e039f59b71caa4d730f4e1f84fc97
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337946"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről az Azure SQL adatbázis felügyelt példány T-SQL különbségek 
 
@@ -54,7 +55,7 @@ További információkért lásd:
 - [AZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql) 
 - [Naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)     
 
-### <a name="backup"></a>Biztonsági mentés 
+### <a name="backup"></a>Backup 
 
 Felügyelt példány automatikus biztonsági mentésekhez van, és lehetővé teszi a felhasználóknak teljes adatbázis létrehozásához `COPY_ONLY` biztonsági mentéseket. Eltérés, a napló és a fájl pillanatképes biztonsági nem támogatottak.  
 - Felügyelt példány is adatbázisának biztonsági mentése csak az Azure Blob Storage-fiókhoz: 
@@ -206,6 +207,10 @@ Engedélyezve van az SQL Server nem dokumentált DBCC utasítások nem támogato
 - `Trace Flags` nem támogatottak. Lásd: [nyomkövetési jelzők](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - `DBCC TRACEOFF` nem támogatott. Lásd: [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
 - `DBCC TRACEON` nem támogatott. Lásd: [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql).
+
+### <a name="distributed-transactions"></a>Elosztott tranzakciók
+
+Sem a MSDTC sem [rugalmas tranzakciók](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) felügyelt példány jelenleg támogatottak.
 
 ### <a name="extended-events"></a>Bővített események 
 
@@ -375,12 +380,10 @@ További információ a létrehozásának és módosításának táblák: [CREAT
  
 A következő változók, funkciók és a nézetek különböző eredményeket:  
 - `SERVERPROPERTY('EngineEdition')` értéket ad vissza értéket 8. Ez a tulajdonság felügyelt példány egyedi azonosítására szolgál. Lásd: [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` a rövid példány nevét, például "myserver" adja vissza. Lásd: [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` NULL, értéket ad vissza, mert a fogalmát, mert a példány létezik az SQL Server nem vonatkozik a felügyelt példány. Lásd: [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME` értéket ad vissza "összekapcsolható" szolgáltatásnév, például saját felügyelt instance.wcus17662feb9ce98.database.windows.net. Lásd: [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` -adja vissza "összekapcsolható" DNS-nevét, például a teljes `myinstance.domain.database.windows.net` Tulajdonságok "name" és "data_source". Lásd: [SYS. KISZOLGÁLÓK](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVERNAME` értéket ad vissza "összekapcsolható" DNS-nevét, például a teljes `my-managed-instance.wcus17662feb9ce98.database.windows.net`. Lásd: [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
-- `SYS.SERVERS` -adja vissza "összekapcsolható" DNS-nevét, például a teljes `myinstance.domain.database.windows.net` Tulajdonságok "name" és "data_source". Lásd: [SYS. KISZOLGÁLÓK](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVICENAME` NULL, értéket ad vissza, mert nincs értelme példány felügyelt környezetben. Lásd: [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
+- `@@SERVICENAME` NULL, értéket ad vissza, mert a fogalmát, mert a szolgáltatás létezik-e az SQL Server nem vonatkozik a felügyelt példány. Lásd: [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
 - `SUSER_ID` támogatott. NULL értéket ad vissza, ha AAD bejelentkezési sys.syslogins kívül esik. Lásd: [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` nem támogatott. Beolvasása helytelen adatokat (ideiglenes ismert probléma). Lásd: [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
 - `GETDATE()` és más beépített dátum/idő funkciók mindig adja vissza időpontja UTC időzóna. Lásd: [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
