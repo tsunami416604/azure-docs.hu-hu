@@ -177,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Eseménynaplózás az Azure Event Hubs segítségével
           href: api-management-howto-log-event-hubs.md
+        - name: Kérések naplózása az Azure Application Insights segítségével
+          href: api-management-howto-app-insights.md
         - name: Vészhelyreállítás biztonsági mentéssel és visszaállítással
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Felhasználói fiókok kezelése

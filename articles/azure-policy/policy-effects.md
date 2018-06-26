@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 23bbbe9cf86268f93ae1f8fcec9303efa8a673de
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1566cf2b61749121c4eaff5a32b0a940f3341f7e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796716"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751778"
 ---
 # <a name="understanding-policy-effects"></a>Házirend által okozott hatások ismertetése
 
@@ -90,7 +90,7 @@ Csak akkor append hatása van a **részletek** tömb, amely pedig szükséges. M
 "then": {
     "effect": "append",
     "details": [{
-        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
         "value": [{
             "action": "Allow",
             "value": "134.5.0.0/21"
@@ -304,7 +304,7 @@ Példa: SQL Server-adatbázisokat határozza meg, ha engedélyezve van-e a trans
 
 ## <a name="layering-policies"></a>A réteges házirendek
 
-Egy erőforrás negatív hatással lehet több hozzárendeléseket. A hozzárendelések lehet ugyanabban a hatókörben (adott erőforrás, erőforráscsoport, előfizetés vagy felügyeleti csoportnak), vagy a különböző hatóköröket. A hozzárendelések egy is egy másik gyakorolna definiálva. Függetlenül attól a feltétellel és az egyes házirendje (közvetlenül vagy egy kezdeményezés részeként) hatását egymástól függetlenül történik. Például ha 1-házirendben engedélyezve van egy feltételt, amely korlátozza a való létrehozása folyamatban "westus" a Megtagadás hatás és a házirend 2, amely korlátozza az erőforrások az erőforrás-előfizetést A hely a B mértékcsoporton (amely A előfizetés) létrehozását az "eastus" és a naplózás hatással mindkettő hozzárendelt, az eredményül kapott eredmény lenne:
+Egy erőforrás negatív hatással lehet több hozzárendeléseket. A hozzárendelések lehet ugyanabban a hatókörben (adott erőforrás, erőforráscsoport, előfizetés vagy felügyeleti csoportnak), vagy a különböző hatóköröket. A hozzárendelések egy is egy másik gyakorolna definiálva. Függetlenül attól a feltétellel és az egyes házirendje (közvetlenül vagy egy kezdeményezés részeként) hatását egymástól függetlenül történik. Például ha az 1-házirendben engedélyezve van, amely korlátozza a erőforrás helye egy előfizetéshez csak létre kell hozni a megtagadási kezdve "westus" feltétel és a 2-házirendben engedélyezve van egy feltételt, amely korlátozza a erőforrás helye az erőforráscsoport B (Ez az előfizetés A) a csak kell a naplózási kezdve "eastus" létrehozott vannak is hozzá van rendelve, az eredményül kapott eredmény lenne::
 
 - Valamilyen erőforrás erőforráscsoportja B "eastus" már megfelelő házirendhez 2, de nem megfelelő házirendhez 1 megjelölt.
 - Valamilyen erőforrás már nem a "eastus" erőforráscsoport B nem megfelelő házirendhez 2 lesz megjelölve, és akkor be kell jelölni nem kompatibilis az 1-házirendet, ha nem "westus".
@@ -324,4 +324,4 @@ Egyes hozzárendelések külön-külön értékeli ki, mert nem áll rendelkezé
 
 Most, hogy a házirend-definíció hatások bemutatják, tekintse meg a házirend-minták:
 
-- Tekintse át a következő további példákat [Azure házirend minták](json-samples.md).
+- További példák [Az Azure Policy sablonjai](json-samples.md) oldalon.

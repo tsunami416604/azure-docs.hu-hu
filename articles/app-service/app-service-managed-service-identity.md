@@ -9,24 +9,22 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e6aa0d477f94cd5ab087beface65e3a28e5094f5
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153659"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936972"
 ---
-# <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás (nyilvános előzetes verzió) App Service és az Azure Functions használatával
+# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Azure által felügyelt Szolgáltatásidentitás App Service és az Azure Functions használatával
 
 > [!NOTE] 
-> Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás jelenleg előzetes verzió. Linux és a tárolók webalkalmazást az App Service jelenleg nem támogatottak.
-
+> Linux és a tárolók webalkalmazást az App Service jelenleg nem támogatják a Szolgáltatásidentitás felügyelt.
 
 > [!Important] 
-> Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitásra, és a meglévő identitás nem lehet megfelelően törölni magát a helyet törlése nélkül. Az alkalmazás kell újból létre kell hozni egy új identitásra, és az alsóbb rétegbeli erőforrásokat kell rendelkeznie a hozzáférési házirendek frissítése az új identitás használatára.
-
+> Az App Service és az Azure Functions felügyelt Szolgáltatásidentitás nem várakozásoknak megfelelően működik, ha az alkalmazás előfizetések/bérlők keresztül telepítik át. Az alkalmazás kell szereznie egy új identitásra, amely letiltásával és újbóli engedélyezésével végezhető. Lásd: [identitásának eltávolítása](#remove) alatt. Alsóbb rétegbeli erőforrásokat is kell rendelkeznie a hozzáférési házirendek frissítése az új identitás használatára.
 
 Ez a témakör bemutatja, hogyan hoz létre egy felügyelt alkalmazást az App Service és az Azure Functions alkalmazásokhoz és egyéb erőforrásainak elérésére használatával. Az Azure Active Directory felügyelt szolgáltatásidentitás lehetővé teszi az alkalmazás egyszerűen hozzáférhessenek más AAD által védett erőforrások, például az Azure Key Vault. Az azonosító az Azure platform kezeli, és nem kell kiosztania vagy a titkos kulcsok elforgatása. Felügyelt Szolgáltatásidentitás kapcsolatban bővebben lásd: a [Szolgáltatásidentitás felügyelete – áttekintés](../active-directory/managed-service-identity/overview.md).
 
@@ -77,6 +75,31 @@ Az alábbi lépéseket végigvezeti hoz létre egy webalkalmazást, és azt a pa
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
+### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+
+Az alábbi lépéseket végigvezeti egy webalkalmazás létrehozása és hozzárendelése az Azure PowerShell használatával identitás:
+
+1. Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Login-AzureRmAccount` futtatásával hozza létre a kapcsolatot az Azure-ral.
+
+2. Az Azure PowerShell-webalkalmazás létrehozása. Az App Service Azure PowerShell használatával további példákért lásd [App Service PowerShell-példák](../app-service/app-service-powershell-samples.md):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    
+    # Create an App Service plan in Free tier.
+    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    
+    # Create a web app.
+    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    ```
+
+3. Futtassa a `identity assign` parancsot az alkalmazás identitását létrehozásához:
+
+    ```azurepowershell-interactive
+    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    ```
+
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager-sablonnal
 
 Az Azure Resource Manager-sablon segítségével automatizálhatja az Azure-erőforrások telepítése. App Service és a funkciók telepítésével kapcsolatos további tudnivalókért lásd: [az App Service erőforrás telepítés automatizálásáról](../app-service/app-service-deploy-complex-application-predictably.md) és [erőforrások telepítése az Azure Functions automatizálása](../azure-functions/functions-infrastructure-as-code.md).
@@ -121,7 +144,7 @@ A hely létrehozásakor a következő további tulajdonságokkal rendelkezik:
 }
 ```
 
-Ha `<TENANTID>` és `<PRINCIPALID>` váltják fel GUID. A tenantId tulajdonság azonosítja milyen AAD-bérlőt, az alkalmazás tartozik. A principalId új Alkalmazásidentitás egyedi azonosítója. Belül aad-ben az alkalmazásnak az App Service vagy az Azure Functions példányához adott megegyező nevet.
+Ha `<TENANTID>` és `<PRINCIPALID>` váltják fel GUID. A tenantId tulajdonság tartozik, az identitás milyen AAD-bérlőt azonosítja. A principalId új Alkalmazásidentitás egyedi azonosítója. Belül aad-ben, az egyszerű szolgáltatásnév az azonos névvel rendelkezik, amelynek az App Service vagy az Azure Functions példányához adott.
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Az Azure-erőforrások tokenek beszerzése
 
@@ -134,7 +157,7 @@ Nincs az App Service és az Azure Functions jogkivonat beszerzése az egyszerű 
 
 ### <a name="asal"></a>A Microsoft.Azure.Services.AppAuthentication könyvtár használata a .NET-hez
 
-A .NET-alkalmazások és a funkciók felügyelt szolgáltatásidentitás együttműködve legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag keresztül van. Ebben a könyvtárban is lehetővé teszi a tesztelheti a kódját helyileg a fejlesztői gépen, a felhasználói fiókkal a Visual Studio eszközből a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory integrált hitelesítést. Ezt a szalagtárat a helyi fejlesztési lehetőségek bővebben lásd: a [Microsoft.Azure.Services.AppAuthentication hivatkozás]. Ez a szakasz bemutatja, hogyan lásson a könyvtárban, a kódban.
+A .NET-alkalmazások és a funkciók felügyelt szolgáltatásidentitás együttműködve legegyszerűbb módja a Microsoft.Azure.Services.AppAuthentication csomag keresztül van. Ebben a könyvtárban is lehetővé teszi a tesztelheti a kódját helyileg a fejlesztői gépen, a felhasználói fiókkal a Visual Studio eszközből a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory integrált hitelesítést. Ezt a szalagtárat a helyi fejlesztési lehetőségek bővebben lásd: a [Microsoft.Azure.Services.AppAuthentication reference]. Ez a szakasz bemutatja, hogyan lásson a könyvtárban, a kódban.
 
 1. Hivatkozásokat adni a [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok, hogy az alkalmazást.
 
@@ -150,7 +173,7 @@ string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https:
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
 
-Microsoft.Azure.Services.AppAuthentication és érheti el a műveletek kapcsolatos további tudnivalókért tekintse meg a [Microsoft.Azure.Services.AppAuthentication hivatkozás] és a [App Service és a MSI .NET KeyVault a minta](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Microsoft.Azure.Services.AppAuthentication és érheti el a műveletek kapcsolatos további tudnivalókért tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference] és a [App Service és a MSI .NET KeyVault a minta](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ### <a name="using-the-rest-protocol"></a>A REST-protokollal
 
@@ -161,7 +184,7 @@ Egy alkalmazást a felügyelt szolgáltatásidentitás van két környezeti vál
 A **MSI_ENDPOINT** , amelyből az alkalmazás jogkivonatokat kérhetnek helyi URL-cím. Szolgáltatáshitelesítést egy token-erőforrásokhoz, hogy HTTP GET kérelemre ehhez a végponthoz, beleértve a következő paraméterekkel:
 
 > [!div class="mx-tdBreakAll"]
-> |Paraméter neve|A|Leírás|
+> |Paraméter neve|Eleme ennek|Leírás|
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az aad-ben erőforrás az erőforrás URI azonosítója a jogkivonat meg kell kapott.|
 > |API-verzió|Lekérdezés|A token API használt verziója. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
@@ -240,9 +263,24 @@ $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SEC
 $accessToken = $tokenResponse.access_token
 ```
 
+## <a name="remove"></a>Identitás eltávolítása
+
+A funkciót, a portálon, a PowerShell vagy a parancssori felület használatával, készült ugyanúgy letiltásával identitás távolíthatja el. A többi/ARM-sablon protokoll ez történik, a típus a "None" értékre állításával:
+
+```json
+"identity": {
+    "type": "None"
+}    
+```
+
+Eltávolítása a identitás ily módon is törli a rendszerbiztonsági tag az aad-ben. Alapértelmezett identitások automatikusan törlődik az AAD, az alkalmazás-erőforrást törlésekor.
+
+> [!NOTE] 
+> Alkalmazás beállítása is be lehet állítani, WEBSITE_DISABLE_MSI, amely csak letiltja a helyi jogkivonat-szolgáltatás is van. Azonban elhagyja az identitás helyen, és tooling továbbra is megjeleníti MSI mint "on" vagy "engedélyezett". Ennek köszönhetően ez a beállítás használata nem recommmended.
+
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Biztonságos hozzáférés SQL-adatbázis felügyelt identitás](app-service-web-tutorial-connect-msi.md)
+> [Biztonságos hozzáférés az SQL Database-hez felügyelt szolgáltatásidentitás használatával](app-service-web-tutorial-connect-msi.md)
 
-[Microsoft.Azure.Services.AppAuthentication hivatkozás]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Microsoft.Azure.Services.AppAuthentication reference]: https://go.microsoft.com/fwlink/p/?linkid=862452

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da876a0e6c1e98683caa864a4a2bcf85195cd10
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866316"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753319"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>A Microsoft figyelési termék összehasonlítása
 Ez a cikk ismerteti a System Center Operations Manager (SCOM) és az Operations Management Suite (OMS) szolgáltatáshoz összehasonlítása architektúráját, logikája hogyan azok megfigyelje az erőforrásokat, és hogyan működnek a gyűjtött adatok elemzése .  Ez az Önnek egy alapvető ismeretekkel rendelkezik a relatív szintjeiről és különbségeket.  
 
 ## <a name="basic-architecture"></a>Alapszintű architektúrája
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-Minden SCOM ezeket az összetevőket az Adatközpont.  [Van telepített ügynök](http://technet.microsoft.com/library/hh551142.aspx) SCOM által kezelt Windows és Linux rendszerű gépekre.  Ügynökök csatlakozni [felügyeleti kiszolgálók](https://technet.microsoft.com/library/hh301922.aspx) amely kommunikálni az SCOM-adatbázis és az adatraktárról.  Ügynökök felügyeleti kiszolgálókhoz való kapcsolódáshoz tartományi hitelesítéshez támaszkodnak.  Azokat a megbízható tartományon kívüli tanúsítványt hitelesítést végezni, vagy csatlakozzon egy [átjárókiszolgáló](https://technet.microsoft.com/library/hh212823.aspx).
+Minden SCOM ezeket az összetevőket az Adatközpont.  [Van telepített ügynök](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-console) SCOM által kezelt Windows és Linux rendszerű gépekre.  Ügynökök csatlakozni [felügyeleti kiszolgálók](https://technet.microsoft.com/library/hh301922.aspx) amely kommunikálni az SCOM-adatbázis és az adatraktárról.  Ügynökök felügyeleti kiszolgálókhoz való kapcsolódáshoz tartományi hitelesítéshez támaszkodnak.  Azokat a megbízható tartományon kívüli tanúsítványt hitelesítést végezni, vagy csatlakozzon egy [átjárókiszolgáló](https://technet.microsoft.com/library/hh212823.aspx).
 
 SCOM két SQL-adatbázis, a működési adatok egyet, majd egy másik az adatraktár jelentéskészítésre és adatelemzésre támogatásához szükséges.  A [jelentéskészítő kiszolgáló](https://technet.microsoft.com/library/hh298611.aspx) fut az SQL Reporting Services jelentés az adatokat az adatraktárból. 
 
@@ -86,7 +86,7 @@ SCOM munkafolyamatai sok részletes általában az adatok és a válaszban végr
 #### <a name="solutions"></a>Megoldások
 Megoldás további logikát biztosítja az adatok gyűjtése és elemzése.  Az OMS-előfizetés hozzáadása a megoldás gyűjteményből megoldások választhatja ki.
 
-![Megoldások gyűjteménye](media/operations-management-suite-monitoring-product-comparison/log-analytics-solutiongallery.png)
+![Megoldástár](media/operations-management-suite-monitoring-product-comparison/log-analytics-solutiongallery.png)
 
 Megoldások elsősorban az események és teljesítményszámlálók gyűjtése az OMS-tárházban adatelemzési lehetőségeket biztosít a felhőben fut.  Akkor is határozhatnak meg további adatokat gyűjteni, amelyek a napló lekérdezésekkel vagy az OMS-irányítópulton a megoldás által biztosított további felhasználói felület elemzése. 
 
@@ -169,7 +169,7 @@ Alkalmi adatelemzési lehetőségeket biztosít, valamint a Naplóelemzési lek�
 
 ![OMS irányítópult](media/operations-management-suite-monitoring-product-comparison/log-analytics-dashboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Telepítése [a System Center Operations Manager (SCOM)](https://technet.microsoft.com/library/hh205987.aspx).
 * Regisztráljon [Naplóelemzési](https://azure.microsoft.com/documentation/services/log-analytics).  
 

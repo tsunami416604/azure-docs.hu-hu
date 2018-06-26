@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 5c6ff5ac909e2dc6918f85d39beb781952ee6dd0
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e0146be345215701cf1afe86345afc286933d51b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593096"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750968"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>A mobil Xamarin.Android-alkalmazás kapcsolat nélküli szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -30,10 +30,10 @@ Az eszköz újra online állapotba kerül, ha ezek a változások szinkronizál�
 
 Ebben az oktatóanyagban az ügyfélprojekt az oktatóanyagot frissítése [Xamarin Android-alkalmazás létrehozása] az Azure Mobile Apps offline funkciók támogatásához. Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, hozzá kell adnia a hozzáférési adatok bővítménycsomagok a projekthez. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET-háttérrendszer server SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-A kapcsolat nélküli szinkronizálás szolgáltatással kapcsolatos további tudnivalókért lásd a témakör [az Azure Mobile Apps Offline adatszinkronizálás].
+A kapcsolat nélküli szinkronizálás szolgáltatással kapcsolatos további tudnivalókért lásd a témakör [Offline adatszinkronizálás az Azure Mobile Appsban].
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Frissítés az ügyfélalkalmazás offline funkciók támogatásához
-Az Azure Mobile Apps offline funkciók lehetővé teszik egy helyi adatbázist kommunikál, amikor egy offline forgatókönyvben. Ezeket a szolgáltatásokat az alkalmazás használatához inicializálni egy [SyncContext] a helyi tárolójába. A tábla a [IMobileServiceSyncTable] [IMobileServiceSyncTable] felületen majd hivatkoznia. SQLite lesz a helyi tárolójába, az eszközön.
+Az Azure Mobile Apps offline funkciók lehetővé teszik egy helyi adatbázist kommunikál, amikor egy offline forgatókönyvben. Ezeket a szolgáltatásokat az alkalmazás használatához inicializálni egy [SyncContext] a helyi tárolójába. A táblához majd hivatkozzon a [IMobileServiceSyncTable](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mobileservices.sync.imobileservicesynctable?view=azure-dotnet) felületet. SQLite lesz a helyi tárolójába, az eszközön.
 
 1. A Visual Studio, nyissa meg a projekt, amelyek a NuGet-Csomagkezelőt a [Xamarin Android-alkalmazás létrehozása] oktatóanyag.  Keresse meg és telepítse a **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet-csomagot.
 2. Nyissa meg a ToDoActivity.cs fájlt, és állítsa vissza a `#define OFFLINE_SYNC_ENABLED` definíciója.
@@ -61,10 +61,10 @@ Ebben a szakaszban az alkalmazásnak, hogy a mobil-háttéralkalmazás újra. Az
 3. (Választható) Az SQL Server Object Explorer vagy egy REST-eszköz, például Fiddler használatával frissített adatok megtekintéséhez. Figyelje meg az adatokat az Azure Mobile Apps-háttéralkalmazás adatbázis és a helyi tárolójába között lett szinkronizálva.
 4. Az alkalmazást, és kattintson a helyi tárolóban levő befejezéséhez néhány elem melletti jelölőnégyzet.
 
-   `CheckItem`hívások `SyncAsync` a Mobile Apps-háttéralkalmazás a szinkronizálás minden befejeződött elemhez. `SyncAsync`meghívja a lekérést és a küldést. **Az ügyfél által végrehajtott módosítások táblákon lekérési hajtható végre, amikor egy leküldéses a rendszer mindig futtatja automatikusan**. Ez biztosítja, hogy kapcsolatokat és a helyi tárolóban levő összes tábla azonban konzisztens marad. Ez a viselkedés egy váratlan leküldéses eredményezhet. Ez a viselkedés további információkért lásd: [az Azure Mobile Apps Offline adatszinkronizálás].
+   `CheckItem` hívások `SyncAsync` a Mobile Apps-háttéralkalmazás a szinkronizálás minden befejeződött elemhez. `SyncAsync` meghívja a lekérést és a küldést. **Az ügyfél által végrehajtott módosítások táblákon lekérési hajtható végre, amikor egy leküldéses a rendszer mindig futtatja automatikusan**. Ez biztosítja, hogy kapcsolatokat és a helyi tárolóban levő összes tábla azonban konzisztens marad. Ez a viselkedés egy váratlan leküldéses eredményezhet. Ez a viselkedés további információkért lásd: [Offline adatszinkronizálás az Azure Mobile Appsban].
 
 ## <a name="review-the-client-sync-code"></a>Tekintse át az Ügyfélkód szinkronizálása
-Az oktatóanyag befejezésekor letöltött Xamarin ügyfélprojekt [Xamarin Android-alkalmazás létrehozása] már tartalmaz egy helyi SQLite-adatbázis használata a kapcsolat nélküli szinkronizálást támogató kódot. Ez az oktatóanyag kódban már tartalmának rövid áttekintést. A szolgáltatás elméleti áttekintését lásd: [az Azure Mobile Apps Offline adatszinkronizálás].
+Az oktatóanyag befejezésekor letöltött Xamarin ügyfélprojekt [Xamarin Android-alkalmazás létrehozása] már tartalmaz egy helyi SQLite-adatbázis használata a kapcsolat nélküli szinkronizálást támogató kódot. Ez az oktatóanyag kódban már tartalmának rövid áttekintést. A szolgáltatás elméleti áttekintését lásd: [Offline adatszinkronizálás az Azure Mobile Appsban].
 
 * Mielőtt bármely tábla művelet végrehajtható, a helyi tárolójába inicializálni kell. A helyi tároló adatbázis inicializálása során `ToDoActivity.OnCreate()` végrehajtja a `ToDoActivity.InitLocalStoreAsync()`. Ezzel a módszerrel hoz létre egy helyi SQLite adatbázis használata a `MobileServiceSQLiteStore` az Azure Mobile Apps-ügyfél SDK által meghatározott osztály.
 
@@ -96,7 +96,7 @@ Az oktatóanyag befejezésekor letöltött Xamarin ügyfélprojekt [Xamarin Andr
 
     A megadott kód hívások `ToDoActivity.SyncAsync()` szinkronizálásra, amikor a todoitem listájának frissítését, vagy a todoitem hozzá, vagy befejeződött. A kód szinkronizálások minden helyi módosítás után.
 
-    A megadott kód összes rögzít a távoli `TodoItem` megkérdezi a táblában, de a rekordok szűrése úgy, hogy a lekérdezés azonosítóját, és a lekérdezési lehetőség arra is `PushAsync`. További információkért tekintse meg a szakasz *növekményes szinkronizálás* a [az Azure Mobile Apps Offline adatszinkronizálás].
+    A megadott kód összes rögzít a távoli `TodoItem` megkérdezi a táblában, de a rekordok szűrése úgy, hogy a lekérdezés azonosítóját, és a lekérdezési lehetőség arra is `PushAsync`. További információkért tekintse meg a szakasz *növekményes szinkronizálás* a [Offline adatszinkronizálás az Azure Mobile Appsban].
 
         // ToDoActivity.cs
         private async Task SyncAsync()
@@ -112,12 +112,12 @@ Az oktatóanyag befejezésekor letöltött Xamarin ügyfélprojekt [Xamarin Andr
         }
 
 ## <a name="additional-resources"></a>További források
-* [az Azure Mobile Apps Offline adatszinkronizálás]
+* [Offline adatszinkronizálás az Azure Mobile Appsban]
 * [Az Azure Mobile Apps .NET SDK útmutató][8]
 
 <!-- URLs. -->
 [Xamarin Android-alkalmazás létrehozása]: ../app-service-mobile-xamarin-android-get-started.md
-[az Azure Mobile Apps Offline adatszinkronizálás]: ../app-service-mobile-offline-data-sync.md
+[Offline adatszinkronizálás az Azure Mobile Appsban]: ../app-service-mobile-offline-data-sync.md
 
 <!-- Images -->
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0f46ed8ce6c059fadb0b9e581863ef75e3f887fb
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: d5d085e24efb7008e8275ec51afe00ba18ca9ba0
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319494"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753557"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -2977,7 +2977,7 @@ Adatok másolása az Cassandra, állítsa be a **adatforrástípust** a másolá
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
 | lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |SQL-92 vagy CQL lekérdezés. Lásd: [CQL hivatkozás](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstérértesítések használatával name.table neve** a lekérdezni kívánt táblázat képviseli. |Nem (ha van megadva a tableName és a dataset kulcstérértesítések használatával). |
-| consistencyLevel |A konzisztencia szint határozza meg, hány replikák adatok visszatér az ügyfélalkalmazás egy olvasási kérést kell válaszolnia. Cassandra ellenőrzi a megadott számú replikákat az adatok a olvasási kérelem teljesítéséhez. |EGY, KETTŐ, HÁROM, KVÓRUM, AZ ÖSSZES, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Lásd: [konfigurálása az adatok konzisztenciájának](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) részleteiről. |Nem. Alapértelmezett érték: egyet. |
+| consistencyLevel |A konzisztencia szint határozza meg, hány replikák adatok visszatér az ügyfélalkalmazás egy olvasási kérést kell válaszolnia. Cassandra ellenőrzi a megadott számú replikákat az adatok a olvasási kérelem teljesítéséhez. |EGY, KETTŐ, HÁROM, KVÓRUM, AZ ÖSSZES, LOCAL_QUORUM EACH_QUORUM, LOCAL_ONE. Lásd: [konfigurálása az adatok konzisztenciájának](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) részleteiről. |Nem. Alapértelmezett érték: egyet. |
 
 #### <a name="example"></a>Példa
   
