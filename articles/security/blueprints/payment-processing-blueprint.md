@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 223829df11bb1c9add811b40b55e47ee1fbb1fe4
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301371"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751838"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Az Azure biztonsági és megfelelőségi tervezetének - környezetek PCI DSS-kompatibilis fizetés feldolgozása
 
@@ -204,8 +204,8 @@ Az Azure SQL Database-példányt használja a következő adatbázis biztonsági
 
 [Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics) is adja meg a Contoso webes tároló az összes rendszer és a felhasználói tevékenység kiterjedt naplózás, kártya tulajdonosát adatok naplózását tartalmazza. Módosítások tekintse át, és pontossága ellenőrizni. 
 
-- **Tevékenységi naplóit:**[tevékenységi naplóit](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.
-- **Diagnosztikai naplók:**[diagnosztikai naplók](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, a Azure Blob storage, a táblák és a várólista naplókat.
+- **Tevékenységi naplóit:**[tevékenységi naplóit](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) Észreveheti az olyan erőforrást az előfizetésében a végrehajtott műveletek.  
+- **Diagnosztikai naplók:**[diagnosztikai naplók](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt.   Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, a Azure Blob storage, a táblák és a várólista naplókat.
 - **Tűzfal naplók:** az Alkalmazásátjáró biztosít teljes diagnosztikai és a naplók eléréséhez. Az Application Gateway-erőforrásokra, amelyekre engedélyezve WAF érhetők el naplók tűzfal.
 - **Napló archiválás:** összes diagnosztikai naplók írni egy központosított és titkosított Azure storage-fiókjához megadott megőrzési időtartam (2 nap) archiválási vannak konfigurálva. Naplók majd kezelését, tárolását és dashboarding Azure Naplóelemzés csatlakozik. [Naplófájl Analytics](https://azure.microsoft.com/services/log-analytics) egy szolgáltatás, amellyel összegyűjti és elemzi az adatok a felhőben lévő erőforrások által létrehozott és a helyszíni környezetben.
 
@@ -298,7 +298,7 @@ Alapértelmezett telepítési célja, hogy a security center javaslatait, egy me
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-A megoldás telepítéséhez összetevők érhetők el a [PCI tervezetének kód tárház] [kódot-tárház]. A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez adott meg a `-customHostName` váltani a 2. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
+A megoldás telepítéséhez összetevők érhetők el a [PCI tervezetének kód tárház](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms). A központi telepítés a legalapvetőbb architektúra keresztül Microsoft PowerShell v5 több lépésre van szükség. A webhelyhez való kapcsolódás, (például contoso.com) egy egyéni tartománynevet kell megadnia. Ez az elsődleges telepítési parancsfájl a 2. lépésben az interaktív felhasználói jelenít meg figyelmeztetést keresztül van megadva. További információkért lásd: [vásároljon egy egyéni tartománynevet, az Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Egy egyéni tartománynevet nem sikeres telepítéséhez és futtatásához szükséges, de nem lehet kapcsolódni a webhelyhez bemutatási célokra.
 
 A parancsfájlok tartományi felhasználók hozzáadása az Azure AD-bérlő megadott. Ajánlott létrehozni egy új Azure AD-bérlő kívánja használni, mint egy tesztet.
 
@@ -323,19 +323,17 @@ Erősen ajánlott, hogy egy tisztán PowerShell üzembe helyezéséhez használh
  
     ```powershell
     .\1-DeployAndConfigureAzureResources.ps1 
-        -resourceGroupName contosowebstore
-        -globalAdminUserName adminXX@contosowebstore.com 
-        -globalAdminPassword **************
-        -azureADDomainName contosowebstore.com 
-        -subscriptionID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
-        -suffix PCIcontosowebstore
-        -customHostName contosowebstore.com
-        -sqlTDAlertEmailAddress edna@contosowebstore.com 
-        -enableSSL
-        -enableADDomainPasswordPolicy 
     ```
     
-    Részletes használati útmutatásért lásd: [parancsfájl-utasításokat - telepítése és konfigurálása Azure-erőforrások](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
+    Részletes használati útmutatásért lásd: [parancsfájl-utasításokat - telepítése és konfigurálása Azure-erőforrások](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Ezt a parancsfájlt a Contoso webes tároló bemutató támogató, vagy a kezdeti lépések történő telepítésének támogatása a PCI-megfelelőséget környezetet ügyfélteszteléssel használható. 
+    
+    ```PowerShell
+    .\1A-ContosoWebStoreDemoAzureResources.ps1
+    ```
+    
+    A Contoso webes tároló bemutató telepítéshez támogató használatának részletes ismertetését lásd: [parancsfájl-utasításokat - Contoso webes tároló bemutató Azure-erőforrások](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1A-ContosoWebStoreDemoAzureResources.md). Ezt a parancsfájlt a Contoso webes tároló bemutató infrastruktúra üzembe helyezéséhez használható. 
+    
+    Ezek a parancsfájlok célja, hogy egymástól független használható. Legjobb megértse a megoldás, javasoljuk, hogy végezze el a bemutató telepítéshez szükséges, de a megoldás támogatásához szükséges Azure-erőforrások azonosítása. 
     
 3. Naplózás és figyelés. Miután a megoldást már telepítették, a Naplóelemzési munkaterület megnyitása, és bemutatják, hogyan konfigurálható a figyelési irányítópult a megoldás tárházban minta sablonjainak használható. A minta sablonok tekintse meg a [omsDashboards mappa](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Vegye figyelembe, hogy az adatokat a megfelelő telepítéséhez a sablonok Naplóelemzési kell gyűjteni. Ez akár is igénybe vehet egy óráig vagy tovább attól függően, hogy a hely tevékenység.
  

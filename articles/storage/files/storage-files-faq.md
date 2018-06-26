@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 9121726cc8500da87cf71cb1ca3035e6cc5a303b
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c78138fa06da4d83774f9a2270263a48d404b17a
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294090"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751855"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure-fájlok kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló a felhőben, amelyek elérhetők a szabványos [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Akkor is csatlakoztathatja az Azure fájlmegosztások egyidejűleg felhőalapú vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. Azure fájlmegosztásokat Windows kiszolgáló gépen a gyors hozzáférés megközelíti az adatok helyének Azure fájlszinkronizálás (előzetes verzió) segítségével képes gyorsítótárazni.
@@ -227,7 +227,7 @@ Ebben a cikkben megválaszolunk Azure fájlok szolgáltatásokat és funkciókat
 
 * <a id="data-compliance-policies"></a>
 **Milyen adatok megfelelőségi házirendek támogatja az Azure-fájlok?**  
-   Az Azure Files egyéb tárolási szolgáltatások az Azure Storage használt azonos tároló-architektúra futtatható. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage szolgáltatások használt vonatkozik. Adatok Azure Storage-ellenőrzésre vonatkozó további információkért töltse le és tekintse meg a [Microsoft Azure Data Protection dokumentum](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409), és navigáljon a [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+   Az Azure Files egyéb tárolási szolgáltatások az Azure Storage használt azonos tároló-architektúra futtatható. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage szolgáltatások használt vonatkozik. Adatok Azure Storage-ellenőrzésre vonatkozó további információkért töltse le és tekintse meg a [Microsoft Azure Data Protection dokumentum](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409), és navigáljon a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 * <a id="expressroute-not-required"></a>

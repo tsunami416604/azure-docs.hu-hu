@@ -1,7 +1,7 @@
 - name: A Data Factory V1 dokumentációja
   href: null
 - name: Váltás az aktuális verzió dokumentációjára
-  href: ../index.yml
+  href: ../introduction.md
 - name: Áttekintés
   items:
     - name: Az Azure Data Factory bemutatása

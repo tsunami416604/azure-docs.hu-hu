@@ -65,6 +65,8 @@
       items:
         - name: Azure AD-hitelesítés kiválasztása
           href: azure-ad-choose-authn.md
+        - name: Biztonsági ellenőrzőlista
+          href: azure-ad-secure-steps.md
         - name: Ajánlott eljárások
           href: azure-security-identity-management-best-practices.md
         - name: MFA kényszerítése az előfizetések rendszergazdái számára

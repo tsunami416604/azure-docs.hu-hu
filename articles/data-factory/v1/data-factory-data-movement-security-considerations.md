@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: cad363309b6086197ced1a5d1c1793995db11228
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ca39490174047d83968561da98409ade2832253
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621616"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752615"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatátvitelt jelölik a kapcsolódó biztonsági szempontok
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti az alapvető biztonsági infrastruktúra, amely adatátvitel
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok találhatók a régióban, ahol az adat-előállító létrehozása történt. 
 
-Annak ellenére, hogy a Data Factory érhető el csak **USA nyugati régiója**, **USA keleti régiója**, és **Észak-Európa** régiókban, az adatátviteli szolgáltatás érhető el [globálisan több régióban](data-factory-data-movement-activities.md#global). Data Factory szolgáltatásnak biztosítja, hogy adatokat nem hagynak egy földrajzi terület vagy régió kivéve, ha explicit módon utasíthatja a szolgáltatás egy másik régióban használandó, ha az adatátviteli szolgáltatás még nincs telepítve a régióba. 
+Annak ellenére, hogy a Data Factory érhető el csak **USA nyugati régiója**, **USA keleti régiója**, és **Észak-Európa** régiókban, az adatátviteli szolgáltatás érhető el [globálisan a több régiók](data-factory-data-movement-activities.md#global). Data Factory szolgáltatásnak biztosítja, hogy adatokat nem hagynak egy földrajzi terület vagy régió kivéve, ha explicit módon utasíthatja a szolgáltatás egy másik régióban használandó, ha az adatátviteli szolgáltatás még nincs telepítve a régióba. 
 
 Az Azure Data Factory maga nem tárol kivéve a társított szolgáltatás hitelesítő adatait felhőalapú adattároló, tanúsítványok használata titkosított adatokat. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) közötti adatmozgás és az adatok [számítási szolgáltatásokkal](data-factory-compute-linked-services.md) történő feldolgozása más régiókban, illetve helyszíni környezetben. Lehetővé teszi továbbá a [munkafolyamatok figyelését és kezelését](data-factory-monitor-manage-pipelines.md) mind szoftveres, mind pedig felhasználói felületi mechanizmusokkal.
 
@@ -40,7 +40,7 @@ Azure Data Factory használatával adatmozgás lett **hitelesített** esetében:
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
-Ha Ön Azure megfelelőségét, és hogyan Azure biztosítja a saját infrastruktúra iránt érdeklődik, keresse fel a [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx). 
+Ha Ön Azure megfelelőségét, és hogyan Azure biztosítja a saját infrastruktúra iránt érdeklődik, keresse fel a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
 Ez a cikk a Microsoft biztonsági szempontok a következő két adatelérési mozgását esetekben tekintse át: 
 
@@ -94,7 +94,7 @@ A hitelesítő adatokat a helyszíni adattárolókhoz helyileg tárolja (nem a f
 - Használatával **egyszerű szöveges** (kevésbé biztonságos) HTTPS Azure-portálon keresztül / másolása varázsló. A rendszer az átadott hitelesítő adatokat egyszerű szöveges a helyszíni átjáró.
 - Használatával **másolása varázsló JavaScript titkosítás kódtárat**.
 - Használatával **kattintson-alapú hitelesítő adatokat kezelő alkalmazások után**. Kattintson a-alkalmazás végrehajtja a helyszíni gépen, amely hozzáfér az átjáró és az adattár hitelesítő adatok beállítása után. Ez a beállítás és a következő a legbiztonságosabb lehetőség áll. A hitelesítő alkalmazással, alapértelmezés szerint a portot használja 8050 a gépen átjáró a biztonságos kommunikáció érdekében.  
-- Használjon [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) PowerShell-parancsmag hitelesítő adatok titkosításához. A parancsmag a tanúsítványt használja, hogy az átjáró a hitelesítő adatok titkosításához használatára van konfigurálva. Ez a parancsmag által visszaadott titkosított hitelesítő adatokat használja, és hozzá kell adnia **EncryptedCredential** eleme a **connectionString** a JSON-fájl, amelyet a [New-AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) parancsmag vagy a JSON-részlet a Data Factory Editor a portálon. Ezt a lehetőséget, majd kattintson az – Ha az alkalmazás a legbiztonságosabb beállításokat. 
+- Használjon [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) PowerShell-parancsmag hitelesítő adatok titkosításához. A parancsmag a tanúsítványt használja, hogy az átjáró a hitelesítő adatok titkosításához használatára van konfigurálva. Ez a parancsmag által visszaadott titkosított hitelesítő adatokat használja, és hozzá kell adnia **EncryptedCredential** eleme a **connectionString** a JSON-fájl, amelyet a [ Új AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) parancsmag vagy a JSON-részlet a Data Factory Editor a portálon. Ezt a lehetőséget, majd kattintson az – Ha az alkalmazás a legbiztonságosabb beállításokat. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript titkosítás library-alapú titkosítás
 Adatok adattárolóhoz használandó hitelesítő adatok használatával titkosíthatja [JavaScript titkosítás könyvtár](https://www.microsoft.com/download/details.aspx?id=52439) a a [másolása varázsló](data-factory-copy-wizard.md). Ha ezt a lehetőséget választja, a varázsló lekéri az átjáró nyilvános kulcsát, és segítségével titkosítja az adatokat adattárolóhoz használandó hitelesítő adatok. A hitelesítő adatokat az átjáró számítógépe visszafejteni, és a Windows által védett [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).

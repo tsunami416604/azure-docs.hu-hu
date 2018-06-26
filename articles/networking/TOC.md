@@ -53,7 +53,7 @@
 ### [Azure PowerShell](powershell-samples.md)
 
 ## Oktatóanyagok
-### [Virtuális gépek terheléselosztása](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Virtuális gépek terheléselosztása](../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Számítógép csatlakoztatása egy virtuális hálózathoz](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Referencia
