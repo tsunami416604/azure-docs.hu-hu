@@ -1,0 +1,65 @@
+- name: A Bing Autosuggest dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Bing Autosuggest?
+      href: get-suggested-search-terms.md
+- name: REST API – rövid útmutatók
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: Oktatóanyagok
+  items:
+    - name: Egyoldalas webalkalmazás
+      href: tutorials/autosuggest.md
+    - name: Egyoldalas webalkalmazás (forráskód)
+      href: tutorials/autosuggest-source.md
+- name: Útmutatók
+  items:
+    - name: Követelmények használata és megjelenítése
+      href: UseAndDisplayRequirements.md
+    - name: Frissítés 5-ös verzióról 7-es verzióra
+      href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+- name: Referencia
+  items:
+    - name: Bing Autosuggest API 7-es verzió
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference'
+    - name: Bing Autosuggest API 5-ös verzió
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference'
+- name: További források
+  items:
+    - name: GYIK
+      href: bing-autosuggest-resource-faq.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+autosuggest'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API-kulcs beszerzése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
+    - name: Próbálja ki!
+      href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
+    - name: Bing Autosuggest-végpont
+      href: autosuggest-endpoint.md
+    - name: Támogatott nyelvek
+      href: bing-autosuggest-supported-languages.md
+    - name: A Bing Autosuggest API elemzése
+      href: bing-autosuggest-stats.md

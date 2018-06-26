@@ -1,0 +1,20 @@
+- name: A Beszélőfelismerés dokumentációja
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a Beszélőfelismerésről
+      href: Home.md
+- name: Referencia
+  items:
+    - name: API-hivatkozás
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797'
+      items:
+        - name: SDK-k
+          items:
+            - name: Android
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
+            - name: Windows
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

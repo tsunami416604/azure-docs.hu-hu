@@ -1,0 +1,35 @@
+- name: A Knowledge Exploration Service dokumentációja
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Tudnivalók a Knowledge Exploration Service-ről
+      href: Overview.md
+- name: Bevezetés
+  items:
+    - name: Háttérmotor létrehozása
+      href: GettingStarted.md
+    - name: Parancssor
+      href: CommandLine.md
+    - name: Sémaformátum
+      href: SchemaFormat.md
+    - name: Adatformátum
+      href: DataFormat.md
+    - name: Szintaxisformátum
+      href: GrammarFormat.md
+    - name: Szemantikai értelmezés
+      href: SemanticInterpretation.md
+    - name: Webes API interfész
+      href: WebAPI.md
+      items:
+        - name: számítási hisztogram
+          href: calchistogramMethod.md
+        - name: értékelés
+          href: evaluateMethod.md
+        - name: értelmezés
+          href: interpretMethod.md
+    - name: Strukturált lekérdezési kifejezések
+      href: Expressions.md
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

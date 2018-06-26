@@ -1,0 +1,49 @@
+- name: Áttekintés
+  href: Home.md
+- name: Első lépések
+  expanded: true
+  href: GetStarted/GetStarted.md
+  items:
+    - name: REST
+      href: GetStarted/GetStartedREST.md
+    - name: Ügyfélkódtárak
+      href: GetStarted/GetStartedClientLibraries.md
+      items:
+        - name: 'C# asztali kódtár'
+          href: GetStarted/GetStartedCSharpDesktop.md
+        - name: 'C# szolgáltatáskönyvtár'
+          href: GetStarted/GetStartedCSharpServiceLibrary.md
+        - name: JavaScript kódtár
+          href: GetStarted/GetStartedJSWebsockets.md
+        - name: Java-kódtár Android rendszerhez
+          href: GetStarted/GetStartedJavaAndroid.md
+        - name: Objective-C-kódtár iOS rendszerhez
+          href: GetStarted/Get-Started-ObjectiveC-iOS.md
+- name: Példák
+  href: samples.md
+- name: Alapelvek
+  href: concepts.md
+- name: Útmutatók
+  items:
+    - name: Hitelesítés a szolgáltatás használatához
+      href: How-to/how-to-authentication.md
+    - name: Felismerési mód kiválasztása
+      href: How-to/how-to-choose-recognition-mode.md
+    - name: Audiostream darabolásos átvitele
+      href: How-to/how-to-chunked-transfer.md
+- name: Referencia
+  items:
+    - name: Microsoft beszéd – WebSocket protokoll
+      href: API-Reference-REST/websocketprotocol.md
+    - name: Text-to-Speech API-referencia
+      href: API-Reference-REST/BingVoiceOutput.md
+    - name: Támogatott nyelvek
+      href: API-Reference-REST/supportedlanguages.md
+- name: Hibaelhárítás
+  href: troubleshooting.md
+- name: További források
+  items:
+    - name: Támogatás
+      href: support.md
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127980-bing-speech'

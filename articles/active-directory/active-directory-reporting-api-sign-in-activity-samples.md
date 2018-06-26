@@ -1,41 +1,41 @@
 ---
-title: Azure Active Directory bejelentkezési tevékenység jelentés API-minták |} Microsoft Docs
-description: Útmutató az Azure Active Directory Reporting API használatába
+title: Bejelentkezési tevékenységek jelentéseihez kötődő Azure Active Directory API-minták | Microsoft Docs
+description: Bevezetés az Azure Active Directory Reporting API használatába
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: dhanyahk;rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 466755d7d1cc7fbf4006826ac849b74ba306bae9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 52d49770014a5fb6a5eec644868e702c8a8d9ef3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698577"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224898"
 ---
-# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory bejelentkezési tevékenység jelentés API-minták
-Ez a cikk az Azure Active Directory reporting API-val kapcsolatos cikkek gyűjteménye részét képezi.  
-Az Azure AD jelentéskészítési lehetőséget biztosít az API-k, amely lehetővé teszi a kód vagy a kapcsolódó eszközök bejelentkezési tevékenység adatok eléréséhez.  
-Ez a cikk a hatóköre használatával látják el a mintakódot az **bejelentkezés tevékenység API**.
+# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Bejelentkezési tevékenységek jelentéseihez kötődő Azure Active Directory API-minták
+Ez a cikk az Azure Active Directory Reporting API-ról szóló cikkgyűjtemény része.  
+Az Azure AD Reporting egy olyan API-t is biztosít, amely lehetővé teszi a bejelentkezési tevékenységre vonatkozó adatokhoz való hozzáférést kóddal vagy valamilyen kapcsolódó eszközzel.  
+A cikk célja, hogy mintakódot biztosítson a **Sign-in Activity API**-hoz.
 
 Lásd:
 
-* [A naplók](active-directory-reporting-azure-portal.md#activity-reports) további információ
-* [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md) a reporting API-val kapcsolatos további információk.
+* Az [auditnaplókkal](active-directory-reporting-azure-portal.md#activity-reports) foglalkozó, további elméleti információkat tartalmazó részt
+* További tudnivalók a Reporting API-ról: [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A mintákat a cikkben használata előtt végre kell hajtania a [Előfeltételek az Azure AD reporting API eléréséhez](active-directory-reporting-api-prerequisites.md).  
+Mielőtt használhatná a cikkben szereplő mintákat, meg kell felelnie az [előfeltételeknek, hogy hozzá tudjon férni az Azure AD Reporting API-hoz](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>PowerShell-szkript
 
@@ -91,13 +91,13 @@ if ($oauth.access_token -ne $null) {
 
 
 
-## <a name="executing-the-script"></a>A parancsfájl végrehajtása
-Miután a parancsfájl szerkesztése, futtassa, és győződjön meg arról, hogy a bejelentkezési a várt adatokat naplózza a jelentés adja vissza.
+## <a name="executing-the-script"></a>A szkript végrehajtása
+Miután befejezte a szkript szerkesztését, futtassa és ellenőrizze, hogy a rendszer a várt adatokat adja vissza a bejelentkezési naplók jelentéséből.
 
-A parancsfájl kimenete a bejelentkezési jelentés JSON formátumban ad vissza. Emellett létrehoz egy `SignIns.json` az azonos kimenethez fájlt. Ha adatokat más jelentések, és a kimeneti formátum, amely nem kell megjegyzésbe a parancsfájl módosításával kísérletezhet.
+A szkript a bejelentkezési jelentésből származó kimenetet JSON formátumban adja vissza. Egy `SignIns.json` fájlt is létrehoz, ugyanazzal a kimenettel. Kísérletezhet a szkriptek módosításával, hogy más jelentésekből származó adatokat adjanak vissza, illetve tegyék megjegyzésbe azokat a kimeneti formátumokat, amelyekre nincs szüksége.
 
 ## <a name="next-steps"></a>További lépések
-* Szeretné testre szabhatja a mintákat a cikkben? Tekintse meg a [Azure Active Directory bejelentkezési tevékenység API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). 
-* Ha azt szeretné, hogy teljes áttekintése, az Azure Active Directory reporting API használatával [Bevezetés az Azure Active Directory reporting API használatába](active-directory-reporting-api-getting-started.md).
-* Ha meg szeretne többet megtudni az Azure Active Directory reporting, tekintse meg a [Azure Active Directory-jelentéskészítés – útmutató](active-directory-reporting-guide.md).  
+* Szeretné testre szabni a cikkben szereplő mintákat? Tekintse meg az [Azure Active Directory Sign-in Activity API referenciáit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). 
+* Ha át szeretné tanulmányozni az Azure Active Directory Reporting API használatáról szóló teljes áttekintést, nézzen bele az [Azure Active Directory Reporting API használatába bevezető](active-directory-reporting-api-getting-started.md) cikkbe.
+* Ha többet szeretne megtudni az Azure Active Directory Reportingról, tekintse át az [Azure Active Directory Reporting útmutatóját](active-directory-reporting-guide.md).  
 

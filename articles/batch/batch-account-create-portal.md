@@ -12,23 +12,17 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83d97d9ed9c51d59500115c4ee3896d471024999
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8e179e2af3ee7a19c39a2f2c688e0eb25a0c02ca
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359757"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287534"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](batch-account-create-portal.md)
-> * [Batch Management .NET](batch-management-dotnet.md)
->
->
 
 Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az [Azure Portalon][azure_portal], és miként választhatja ki a számítási forgatókönyvének legmegfelelőbb fióktulajdonságokat. Megtudhatja, hol találja a fontos fióktulajdonságokat, például a hozzáférési kulcsokat és a fiókok URL-címeit.
 
@@ -40,7 +34,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
 
-2. Kattintson az **Új** > **Számítás** > **Batch-szolgáltatás** elemre.
+2. Válassza az **Erőforrás létrehozása** > **Számítás** > **Batch szolgáltatás** lehetőséget.
 
     ![Batch a Piactéren][marketplace_portal]
 
@@ -67,7 +61,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
 
 ## <a name="view-batch-account-properties"></a>Batch-fiók tulajdonságainak megtekintése
-A fiók létrehozása után kattintson rá a beállításai és tulajdonságai eléréséhez. Az összes fiókbeállítást és tulajdonságot elérheti a bal oldali menüből.
+A fiók létrehozása után jelölje ki azt a beállításai és tulajdonságai eléréséhez. Az összes fiókbeállítást és tulajdonságot elérheti a bal oldali menüből.
 
 ![A Batch-fiók lap az Azure Portalon][account_blade]
 
@@ -91,13 +85,17 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
 
-2. Kattintson a **További szolgáltatások** > **Előfizetések** elemre, majd a Batch-fiókhoz használni kívánt előfizetésre.
+2. Kattintson **Az összes szolgáltatás** > **Előfizetések** elemre, majd a Batch-fiókhoz használni kívánt előfizetésre.
 
-3. Az **Előfizetés** lapon kattintson a **Hozzáférés-vezérlés (IAM)** > **Hozzáadás** elemre.
+3. Az **Előfizetés** lapon válassza az **Erőforrás-szolgáltatók** elemet, majd keressen rá a **Microsoft.Batch** kifejezésre. Ellenőrizze, hogy a **Microsoft.Batch** erőforrás-szolgáltató regisztrálva van-e az előfizetésben. Ha az előfizetés nincs regisztrálva, kattintson a **Regisztrálás** hivatkozásra.
+
+    ![A Microsoft.Batch szolgáltató regisztrálása][register_provider]
+
+3. Az **Előfizetés** lapon válassza a **Hozzáférés-vezérlés (IAM)** > **Hozzáadás** elemet.
 
     ![Az előfizetéshez való hozzáférés vezérlése][subscription_access]
 
-4. Az **Engedélyek hozzáadása** lapon válassza a **Közreműködő** szerepkört, és keressen rá a Batch API kifejezésre. Keressen rá az egyes karakterláncokra, addig amíg meg nem találja az API-t:
+4. Az **Engedélyek hozzáadása** lapon válassza a **Közreműködő** szerepkört, és keressen rá a Batch API kifejezésre. Keressen rá az egyes sztringekre, addig amíg meg nem találja az API-t:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. Újabb Azure AD-bérlők ezt a nevet használhatják.
     3. A **ddbf3205-c6bd-46ae-8127-60eb93363864** a Batch API azonosítója. 
@@ -109,9 +107,9 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 ### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 Felhasználói előfizetés módban olyan Azure Key Vault szükséges, amely ugyanahhoz az erőforráscsoporthoz tartozik, mint a létrehozandó Batch-fiók. Győződjön meg arról, hogy az erőforráscsoport olyan régióban található, amelyben [elérhető](https://azure.microsoft.com/regions/services/) a Batch szolgáltatás, és amelyet támogat az előfizetése.
 
-1. Az [Azure Portalon][azure_portal] kattintson az **Új** > **Biztonság** > **Key Vault** elemre.
+1. Az [Azure Portalon][azure_portal] válassza az **Új** > **Biztonság** > **Key Vault** lehetőséget.
 
-2. A **Kulcstartó létrehozása** lapon adja meg a kulcstartó nevét, és hozzon létre a régióban egy erőforráscsoportot a Batch-fiókhoz. A többi beállításnál hagyja meg az alapértelmezett értéket, majd kattintson a **Létrehozás** elemre.
+2. A **Kulcstartó létrehozása** lapon adja meg a kulcstartó nevét, és hozzon létre a régióban egy erőforráscsoportot a Batch-fiókhoz. A többi beállításnál hagyja meg az alapértelmezett értékeket, majd válassza a **Létrehozás** elemre.
 
 A Batch-fiók felhasználói előfizetés módban való létrehozásakor használja a Key Vault erőforráscsoportját, adja meg a **Felhasználói előfizetés** értéket a készletlefoglalás módjaként, és válassza ki a Key Vaultot.
 
@@ -137,4 +135,5 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
+[register_provider]: ./media/batch-account-create-portal/register_provider.png
 

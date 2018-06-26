@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: a1197277b97c14e95bdab67f7c3d00b75a841f22
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312695"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267574"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 Ez az oktatóanyag egy sorozat első része.  Megtudhatja, hogyan hozhat létre egy Azure Service Fabric-alkalmazást egy ASP.NET Core Web API kezelőfelületi és egy állapotalapú háttérszolgáltatás segítségével az adatok tárolásához. Az útmutató elvégzése után rendelkezni fog egy ASP.NET Core webes kezelőfelületes szavazóalkalmazással, amely egy, a fürtben található állapotalapú háttérszolgáltatásba menti a szavazati adatokat. Ha nem szeretné manuálisan létrehozni a szavazóalkalmazást, akkor [letöltheti a forráskódot](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) a kész alkalmazáshoz, és folytathatja a [mintául szolgáló szavazóalkalmazás bemutatásával](#walkthrough_anchor).  Ha szeretné, megtekintheti az oktatóanyag [útmutató videóját](https://channel9.msdn.com/Events/Connect/2017/E100).
@@ -74,9 +74,21 @@ Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET
    ![A Megoldáskezelő az alkalmazás az ASP.NET Core Web API szolgáltatással történő létrehozása után]( ./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
 
 ### <a name="add-angularjs-to-the-votingweb-service"></a>AngularJS hozzáadása a VotingWeb szolgáltatáshoz
-Adja hozzá az [AngularJS](http://angularjs.org/)-t a szolgáltatáshoz a [Bower-támogatás](/aspnet/core/client-side/bower) használatával. Először adjon hozzá a projekthez egy Bower-konfigurációs fájlt.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** elemre, majd válassza **Hozzáadás -> Új elem** lehetőséget. Válassza ki **Web** lehetőséget, majd a **Bower-konfigurációs fájl** elemet.  Létrejön a *bower.json* fájl.
+Adja hozzá az [AngularJS](http://angularjs.org/)-t a szolgáltatáshoz a [Bower-támogatás](/aspnet/core/client-side/bower) használatával. Először adjon hozzá a projekthez egy *.bowerrc* beállításfájlt.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** elemre, majd válassza **Hozzáadás -> Új elem** lehetőséget. Válassza a **C#** elemet, majd a **JSON-fájlt**.  Írja be a *Név* mezőbe a **.bowerrc** fájlnevet, és kattintson a **Hozzáadás** gombra.
 
-Nyissa meg a *bower.json* fájlt, adja hozzá az angular, valamint az angular-bootstrap bejegyzést, majd mentse a módosításokat.
+Nyissa meg a *.bowerrc* fájlt, és cserélje ki annak tartalmát a következőre, amely azt jelzi, hogy a Bower a csomagobjektumokat a *wwwroot/lib* könyvtárba telepíti.
+
+```json
+{
+ "directory": "wwwroot/lib"
+}
+```
+
+Mentse a *.bowerrc* módosításait.  Ez létrehoz egy *.bowerrc* fájlt a projektben.  
+
+Ezután adjon hozzá a projekthez egy Bower-konfigurációs fájlt.  A Megoldáskezelőben kattintson a jobb gombbal a **VotingWeb** elemre, majd válassza **Hozzáadás -> Új elem** lehetőséget. Válassza a **C#** elemet, majd a **JSON-fájlt**.  Írja be a *Név* mezőbe a **bower.json** fájlnevet, és kattintson a **Hozzáadás** gombra.
+
+Nyissa meg a *bower.json* fájlt, és cserélje ki annak tartalmát az alábbi angular, valamint angular-bootstrap bejegyzésekre, majd mentse a módosításokat.
 
 ```json
 {
@@ -92,7 +104,8 @@ Nyissa meg a *bower.json* fájlt, adja hozzá az angular, valamint az angular-bo
   }
 }
 ```
-A *bower.json* fájl mentésekor telepítve lesz az Angular a projekt *wwwroot/lib* mappájába. Ezenkívül szerepel a *Dependencies/Bower* mappában is.
+
+A *bower.json* fájl mentésekor a Visual Studio Bower-támogatása telepíti az Angulart a projekt *wwwroot/lib* mappájába. Ezenkívül szerepel a *Dependencies/Bower* mappában is.
 
 ### <a name="update-the-sitejs-file"></a>A site.js fájl frissítése
 Nyissa meg a *wwwroot/js/site.js* fájlt.  Cserélje le annak tartalmát a kezdőlapnézetek által használt JavaScripttel:
@@ -278,7 +291,7 @@ internal static Uri GetVotingDataServiceName(ServiceContext context)
 ### <a name="add-the-votescontrollercs-file"></a>A VotesController.cs fájl hozzáadása
 Adjon hozzá egy vezérlőt, amely meghatározza a szavazási műveleteket. Kattintson a jobb gombbal a **Vezérlők** mappára, majd válassza a **Hozzáadás->Új elem->Osztály** lehetőséget.  A fájlnak adja a „VotesController.cs” nevet, majd kattintson a **Hozzáadás** gombra.  
 
-Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.  A későbbiekben, a [VotesController.cs fájl frissítése](#updatevotecontroller_anchor) során ez a fájl úgy módosul, hogy a háttérszolgáltatásból a szavazás adatait olvasni és írni is tudja.  Egyelőre a vezérlő statikus karakterláncadatokat ad vissza a nézetben.
+Cserélje le a fájl tartalmát a következőkkel, majd mentse a módosításokat.  A későbbiekben, a [VotesController.cs fájl frissítése](#updatevotecontroller_anchor) során ez a fájl úgy módosul, hogy a háttérszolgáltatásból a szavazás adatait olvasni és írni is tudja.  Egyelőre a vezérlő statikus sztringadatokat ad vissza a nézetben.
 
 ```csharp
 namespace VotingWeb.Controllers

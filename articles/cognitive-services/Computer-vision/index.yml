@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Számítógépes látástechnológiai dokumentáció
+metadata:
+  title: A Computer Vision dokumentációja – Rövid útmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
+  description: Ismerje meg, hogyan használható a Computer Vision képek feldolgozására és információ visszaadására. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  ms.service: cognitive-services
+  ms.component: computer-vision
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/29/2018
+  ms.author: nolachar
+  ms.openlocfilehash: e19407db53c9964bcdeb5bd0d36814f52eaacad1
+  ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/07/2018
+  ms.locfileid: "35357446"
+abstract:
+  description: A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A rövid útmutatók, oktatóanyagok és példák segítségével megismerkedhet a vizuális tartalomelemzés különböző módjaival.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Képek elemzése, miniatűrök létrehozása és szöveg kinyerése egy képből, az alábbiak használatával:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/logo_Csharp.svg
+      text: C&#35;
+      href: QuickStarts/CSharp-analyze
+    - image:
+        src: media/index/logo_java.svg
+      text: Java
+      href: QuickStarts/java-analyze
+    - image:
+        src: media/index/logo_nodejs.svg
+      text: Node.js
+      href: QuickStarts/node-analyze
+    - image:
+        src: media/index/logo_python.svg
+      text: Python
+      href: QuickStarts/python-analyze
+    - image:
+        src: media/index/logo_ruby.svg
+      text: Ruby
+      href: QuickStarts/ruby-analyze
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: API-k
+      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Computer Vision API 2.0-s verzió</a></p><p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Computer Vision API 1.0-s verzió</a></p>
+    - title: SDK-k
+      html: <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p><p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p><p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p>

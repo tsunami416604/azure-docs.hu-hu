@@ -1,21 +1,21 @@
 ---
-title: 'Az Azure Active Directory B2C: Egyéni házirendek segítségével hozzáadása az OAuth2 identitás-szolgáltatóként LinkedIn'
-description: Egy útmutató cikk LinkedIn-alkalmazás beállítása az OAuth2 protokollt és egyéni házirendek
+title: Adja hozzá a LinkedIn OAuth2 identitás-szolgáltatóként egyéni házirendek az Azure Active Directory B2C használatával |} Microsoft Docs
+description: Útmutató cikk LinkedIn-alkalmazás beállítása az OAuth2 protokollt és egyéni házirendekkel.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 889264dc06d1a6f10713ff5fcd7ff644c113bb45
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752316"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Az Azure Active Directory B2C: Egyéni házirendek segítségével hozzáadni az identitás-szolgáltatóként LinkedIn
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan engedélyezze a bejelentkezés egy LinkedIn-fiók fe
 Hajtsa végre a a [Ismerkedés az egyéni házirendek](active-directory-b2c-get-started-custom.md) cikk.
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>1. lépés: A LinkedIn-fiók alkalmazás létrehozása
-LinkedIn használata az Azure Active Directory B2C identitás-szolgáltatóként (az Azure AD B2C), létre kell hoznia egy LinkedIn-alkalmazást és adja meg azt a megfelelő paraméterekkel. Egy LinkedIn-alkalmazást a regisztrálhatja a [LinkedIn regisztrációs oldalon](https://LinkedIn.com/signup).
+LinkedIn használata az Azure Active Directory B2C identitás-szolgáltatóként (az Azure AD B2C), létre kell hoznia egy LinkedIn-alkalmazást és adja meg azt a megfelelő paraméterekkel. Egy LinkedIn-alkalmazást a regisztrálhatja a [LinkedIn regisztrációs oldalon](https://www.linkedin.com/start/join).
 
 1. Lépjen a [LinkedIn Alkalmazáskezelés](https://www.linkedin.com/secure/developer?newapp=) webhelyét, jelentkezzen be a LinkedIn-fiók hitelesítő adataival, majd válassza ki **alkalmazás létrehozása**.
 

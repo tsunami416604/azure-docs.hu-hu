@@ -1,0 +1,17 @@
+- name: Az Entitáskapcsolás dokumentációja
+- name: Áttekintés
+  href: Home.md
+- name: Bevezetés
+  href: GettingStarted.md
+- name: Referencia
+  items:
+    - name: API-referencia
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f0eabfca730713cc392442/operations/56f0eabfca73070e44d0f39c'
+    - name: Labs API-referencia
+      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/56f0eabfca730713cc392442/operations/56f0eabfca73070e44d0f39c'
+    - name: Windows SDK
+      href: 'https://github.com/Microsoft/Cognitive-EntityLinking-Windows'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

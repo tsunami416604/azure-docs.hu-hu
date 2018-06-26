@@ -9,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 02/01/2018
+ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea70d6053f12c33d9c3ff4c69f22a41130c783e4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285899"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -69,7 +70,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 9. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
    ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
-10. Az **Első lépések** lapon váltson a **Szerkesztés** lapra a bal oldali ablaktáblán. 
+10. Az **Első lépések** lapon váltson a **Szerző** lapra a bal oldali ablaktáblán. 
 
     ![„Első lépések” lap](./media/quickstart-create-data-factory-portal/get-started-page.png)
 
@@ -81,7 +82,7 @@ A feladat részeként létrehoz egy társított szolgáltatást, hogy az adat-el
    ![Új kapcsolat létrehozására szolgáló gombok](./media/quickstart-create-data-factory-portal/new-connection-button.png)    
 2. Az **Új társított szolgáltatás** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. 
 
-   ![Az „Azure Blob Storage” csempe kiválasztása](./media/quickstart-create-data-factory-portal/select-azure-storage.png)
+   ![Az „Azure Blob Storage” csempe kiválasztása](./media/quickstart-create-data-factory-portal/select-azure-blob-linked-service.png)
 3. Hajtsa végre a következő lépéseket: 
 
    a. A **Név** mezőbe írja be az **AzureStorageLinkedService** nevet.
@@ -93,9 +94,6 @@ A feladat részeként létrehoz egy társított szolgáltatást, hogy az adat-el
    d. A társított szolgáltatás mentéséhez kattintson a **Mentés** gombra. 
 
    ![Az Azure Storage társított szolgáltatásának beállításai](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
-4. Győződjön meg róla, hogy az **AzureStorageLinkedService** szerepel-e a társított szolgáltatások listájában. 
-
-   ![Az Azure Storage társított szolgáltatása a listában](./media/quickstart-create-data-factory-portal/azure-storage-linked-service-in-list.png)
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 A feladat részeként két adatkészletet hoz létre, az **InputDataset** és az **OutputDataset** adatkészletet. Ezek az adatkészletek **AzureBlob** típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak. 
@@ -111,19 +109,18 @@ A társított szolgáltatás beállításainál megadta a forrásadatokat tartal
    ![Adatkészlet létrehozására szolgáló menü](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
 2. Az **Új adatkészlet** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Befejezés** gombra. 
 
-   ![Az „Azure Blob Storage” kiválasztása](./media/quickstart-create-data-factory-portal/select-azure-blob-storage.png)
-3. Az adatkészlet **Tulajdonságok** ablakában adja meg az **InputDataset** értéket a **Név** mezőben. 
+   ![Az „Azure Blob Storage” kiválasztása](./media/quickstart-create-data-factory-portal/select-azure-blob-dataset.png)
+3. Az adatkészlet **Általános** lapján adja meg az **InputDataset** értéket a **Név** mezőben. 
 
-   ![Adatkészlet általános beállításai](./media/quickstart-create-data-factory-portal/dataset-general-page.png)
 4. Váltson a **Kapcsolat** lapra, és végezze el az alábbi lépéseket: 
 
-   a. **Társított szolgáltatás**: válassza az **AzureStorageLinkedService** értéket.
+    a. **Társított szolgáltatás**: válassza az **AzureStorageLinkedService** értéket.
 
-   b. **Fájl elérési útja**: kattintson a **Tallózás** gombra.
+    b. **Fájl elérési útja**: kattintson a **Tallózás** gombra.
 
-      ![„Kapcsolat” lap és „Tallózás” gomb](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. A **Fájl vagy mappa kiválasztása** ablakban keresse meg az **input** mappát az **adftutorial** tárolóban, válassza ki az **emp.txt** fájlt, és kattintson a **Befejezés** elemre.
+    ![„Kapcsolat” lap és „Tallózás” gomb](./media/quickstart-create-data-factory-portal/file-path-browse-button.png) c. A **Fájl vagy mappa kiválasztása** ablakban keresse meg az **input** mappát az **adftutorial** tárolóban, válassza ki az **emp.txt** fájlt, és kattintson a **Befejezés** elemre.
 
-      ![A bemeneti fájl megkeresése](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
+    ![A bemeneti fájl megkeresése](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
    d. (nem kötelező) Az emp.txt fájlban lévő adatok előnézetének megtekintéséhez kattintson az **Adatok villámnézete** elemre.     
 5. A kimeneti adatkészlet létrehozásához ismételje meg ezeket a lépéseket:  
@@ -132,15 +129,9 @@ A társított szolgáltatás beállításainál megadta a forrásadatokat tartal
 
    b. Az **Új adatkészlet** lapon válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Befejezés** gombra.
 
-   c. Adja meg az **OutputDataset** nevet.
+   c. Az **Általános** táblán adja meg az **OutputDataset** nevet.
 
-   d. Adja meg az **adftutorial/output** mappát. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység létrehozza futásidőben.
-
-   e. Adja meg a következő fájlnevet: `@CONCAT(pipeline().RunId, '.txt')`. 
-   
-      Minden folyamatfuttatáshoz egyedi azonosító tartozik. Ez a kifejezés összefűzi a folyamat azonosítóját a **.txt** kiterjesztéssel a kimeneti fájl nevének kiértékeléséhez. A támogatott rendszerváltozók és kifejezések listáját lásd a [rendszerváltozókat](control-flow-system-variables.md) és a [kifejezésnyelveket](control-flow-expression-language-functions.md) ismertető cikkekben.
-
-   ![Kimeneti adatkészlet beállításai](./media/quickstart-create-data-factory-portal/output-dataset-settings.png)
+   d. A **Kapcsolat** lapon válassza az **AzureStorageLinkedService** társított szolgáltatást, és a mappához adja meg az **adftutorial/output** mappát. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység létrehozza futásidőben.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása 
 A feladat részeként létrehozza és megerősíti azt a másolási tevékenységgel rendelkező folyamatot, amely a bemeneti és a kimeneti adatkészletet használja. A másolási tevékenység adatokat másol a bemeneti adatkészlet beállításaiban megadott fájlból a kimeneti adatkészlet beállításaiban megadott fájlba. Ha a bemeneti adatkészlet csak egy mappát ad meg (de fájlnevet nem), a másolási tevékenység a forrásmappában található összes fájlt átmásolja a célhelyre. 
@@ -148,45 +139,33 @@ A feladat részeként létrehozza és megerősíti azt a másolási tevékenysé
 1. Válassza a **+** (plusz) gombot, majd a **Folyamat** elemet. 
 
    ![Új folyamat létrehozására szolgáló menü](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
-2. A **Tulajdonságok** ablakban a **CopyPipeline** értéket adja meg a **Név** mezőben. 
+2. Az **Általános** lapon a **CopyPipeline** **Nevet** adja meg. 
 
-   ![Folyamat általános beállításai](./media/quickstart-create-data-factory-portal/pipeline-general-settings.png)
 3. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** elemet. Húzza a **Másolás** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
 
    ![Másolási tevékenység általános beállításai](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 4. Váltson a **Forrás** lapra a másolási tevékenység beállításainál, és válassza az **InputDataset** lehetőséget a **Forrásadatkészlet** mezőben.
 
-   ![Másolási tevékenység – forrásbeállítások](./media/quickstart-create-data-factory-portal/copy-activity-source-settings.png)    
 5. Váltson a **Fogadó** lapra a másolási tevékenység beállításainál, és válassza az **OutputDataset** lehetőséget a **Fogadó adatkészlet** mezőben.
 
-   ![Másolási tevékenység – fogadóbeállítások](./media/quickstart-create-data-factory-portal/copy-activity-sink-settings.png)    
-7. A folyamatbeállítások érvényesítéséhez kattintson az **Érvényesítés** elemre. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítés kimenetének bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
+6. A folyamat beállításainak érvényesítéséhez a vászon fölött kattintson az **Érvényesítés** elemre a folyamat eszköztárán. Győződjön meg róla, hogy a folyamat érvényesítése sikerült. Az érvényesítés kimenetének bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra. 
 
-   ![A folyamat érvényesítése](./media/quickstart-create-data-factory-portal/pipeline-validate-button.png)
+## <a name="debug-the-pipeline"></a>Hibakeresés a folyamaton
+Ebben a lépésben elvégzi a folyamat hibakeresését a Data Factoryban történő üzembe helyezés előtt. 
 
-## <a name="test-run-the-pipeline"></a>A folyamat próbafuttatása
-Ebben a lépésben elvégzi a folyamat tesztfuttatását a Data Factoryban történő üzembe helyezés előtt. 
-
-1. A folyamat eszköztárán kattintson a **Tesztfuttatás** elemre. 
+1. A vászon fölött a folyamat eszköztárán kattintson a **Hibakeresés** lehetőségre egy tesztfuttatás indításához. 
     
-   ![Folyamat tesztfuttatásai](./media/quickstart-create-data-factory-portal/pipeline-test-run.png)
-2. Győződjön meg róla, hogy látja a folyamatfuttatás állapotát a folyamat beállításainak **Kimenet** lapján. 
+2. Győződjön meg arról, hogy látja a folyamatfuttatás állapotát a folyamat beállításainak **Kimenet** lapjának alsó részén. 
 
-   ![A tesztfuttatás kimenete](./media/quickstart-create-data-factory-portal/test-run-output.png)    
 3. Győződjön meg róla, hogy a kimeneti fájl látható az **adftutorial** tároló **output** mappájában. Ha a kimeneti mappa nem létezik, a Data Factory szolgáltatás automatikusan létrehozza. 
-    
-   ![Kimenet ellenőrzése](./media/quickstart-create-data-factory-portal/verify-output.png)
-
 
 ## <a name="trigger-the-pipeline-manually"></a>A folyamat manuális aktiválása
 A feladat részeként entitásokat (társított szolgáltatásokat, adatkészleteket és folyamatokat) helyez üzembe az Azure Data Factoryban. Ezután manuálisan fogja aktiválni a folyamat futtatását. Egy [másik oktatóanyagban](tutorial-copy-data-portal.md?#configure-code-repository) leírt módon közzé is teheti ezeket az entitásokat saját Visual Studio Team Services Git-adattárában.
 
-1. A folyamat aktiválása előtt közzé kell tennie az entitásokat a Data Factory számára. A közzétételhez a bal oldali ablaktáblán kattintson az **Összes közzététele** elemre. 
+1. A folyamat aktiválása előtt közzé kell tennie az entitásokat a Data Factory számára. Közzétételhez válassza fent **Az összes közzététele** lehetőségét. 
 
    ![Közzététel gomb](./media/quickstart-create-data-factory-portal/publish-button.png)
-2. A folyamat manuális aktiválásához kattintson az **Aktiválás** elemre az eszköztáron, majd válassza az **Aktiválás most** lehetőséget. 
-    
-   ![„Aktiválás most” parancs](./media/quickstart-create-data-factory-portal/pipeline-trigger-now.png)
+2. A folyamat manuális aktiválásához kattintson az **Aktiválás** elemre a folyamat eszköztárán, majd válassza az **Aktiválás most** lehetőséget. 
 
 ## <a name="monitor-the-pipeline"></a>A folyamat figyelése
 
@@ -205,15 +184,12 @@ A feladat részeként entitásokat (társított szolgáltatásokat, adatkészlet
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>A folyamat aktiválása ütemezés szerint
 Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időközönként (például óránként, naponta) történő futtatásához létrehozhat egy *ütemező eseményindítót*. A feladat részeként egy olyan eseményindítót fog létrehozni, amely a megadott záró dátumig és időpontig percenként fut. 
 
-1. Váltson a **Szerkesztés** lapra. 
+1. Váltson a **Szerző** lapra. 
 
-   ![Szerkesztés gomb](./media/quickstart-create-data-factory-portal/switch-edit-tab.png)
-1. Kattintson a menü **Aktiválás** elemére, majd az **Új/Szerkesztés** elemre. 
+2. Lépjen a folyamathoz, válassza a folyamat eszköztárán az **Aktiválás**, majd az **Új/Szerkesztés** lehetőségre. 
 
-   ![Új eseményindító menüje](./media/quickstart-create-data-factory-portal/new-trigger-menu.png)
 2. Az **Eseményindítók hozzáadása** lapon kattintson az **Eseményindító kiválasztása**, majd pedig az **Új** elemre. 
 
-   ![Új eseményindító hozzáadásával kapcsolatos választások](./media/quickstart-create-data-factory-portal/add-trigger-new-button.png)
 3. Az **Új eseményindító** lapon a **Befejezés** alatt válassza a **Dátumon** lehetőséget, állítsa be a befejezés időpontját néhány perccel az aktuális időpont utánra, majd kattintson az **Alkalmaz** elemre. 
 
    Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját csak néhány perccel a kezdés időpontja utánra állítsa be. Győződjön meg arról, hogy a két időponthoz tartozó dátum megegyezik. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem. 
@@ -227,7 +203,6 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
    ![Figyelmeztetés és „Befejezés” gomb](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
 6. Kattintson az **Összes közzététele** gombra a Data Factory módosításainak közzétételéhez. 
 
-   ![Közzététel gomb](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. Váltson a bal oldali **Monitorozás** lapra. A lista frissítéséhez kattintson a **Frissítés** gombra. Láthatja, hogy a folyamat percenként fut a közzététel időpontja és a befejezés időpontja között. 
 
    Figyelje meg az **Aktiválva a következő alapján** oszlop értékeit. A manuális eseményindító-futtatás egy korábban elvégzett lépésből (**Aktiválás most**) származik. 

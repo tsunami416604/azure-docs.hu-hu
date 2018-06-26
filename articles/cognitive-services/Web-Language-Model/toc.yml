@@ -1,0 +1,15 @@
+- name: A Web Language Model API dokumentációja
+- name: Áttekintés
+  items:
+    - name: Mi a Web Language Model API?
+      href: Home.md
+- name: Referencia
+  items:
+    - name: Webes nyelvi modell API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51'
+    - name: Windows SDK
+      href: 'https://github.com/Microsoft/Cognitive-WebLM-Windows'
+- name: További források
+  items:
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555943-web-language-model-api'

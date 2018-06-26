@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: A Language Understanding (LUIS) dokumentációja
+metadata:
+  document_id: 
+  title: Language Understanding (LUIS) – oktatóanyagok, rövid útmutatók és API-referencia
+  description: Megismerheti, hogyan használhatja a Language Understanding szolgáltatást arra, hogy egy személy a saját szavaival elmondhassa, hogy mit szeretne, és az alkalmazás megértse azt.
+  author: Kaiqb
+  manager: carolz
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/25/2018
+  ms.author: kamrani
+  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
+  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 06/08/2018
+  ms.locfileid: "35357456"
+abstract:
+  description: A Language Understanding szolgáltatás (LUIS) lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="luis-get-started-create-app.md">Alkalmazás létrehozása előre létrehozott tartományhoz</a>
+    - html: <a href="luis-quickstart-intents-only.md">Alkalmazás létrehozása egyéni tartományhoz</a>
+- title: Részletes útmutatók
+  items:
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="luis-quickstart-primary-and-secondary-data">Üzenetadatok kinyerése hangzó szövegből az egyszerű entitás használatával</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">Tudásbáziscikk számának kinyerése hangzó szövegből a reguláriskifejezés-entitással</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">Italrendelési információk kinyerése hangzó szövegből a lista entitással</a>
+    - html: <a href="luis-tutorial-pattern">Szándék és entitás előrejelzési pontosságának javítása mintákkal</a>
+    - html: <a href="luis-tutorial-interchangeable-phrase-list">Szavak pontosságának javítása kifejezéslistával</a>
+    - html: <a href="luis-get-started-cs-get-intent">Hangzó szöveg küldése a LUIS-nak és végpont-előrejelzési válasz fogadása – C#</a>
+    - html: <a href="luis-get-started-cs-add-utterance">Hangzó szövegpélda hozzáadása szándékhoz és a LUIS alkalmazás tanítása – C#</a>
+- title: Videók
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Az Azure Friday a Build 2018-on – Cognitive Services – Nyelv (LUIS)</a>
+    - html: '<a href="https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player" >Build 2018: Bemutató a mesterséges intelligenciáról – A Language Understanding Service (LUIS) újdonságai</a>'
+    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018-bemutató – Mesterséges intelligencia, beszédképességek és NLU – ajánlott eljárások</a>
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST API-k, 2-es verzió
+      html: <p><a href="https://aka.ms/luis-endpoint-apis"> Végponti API</a></p><p><a href="https://aka.ms/luis-authoring-apis"> Tartalomkészítési API</a></p>
+    - title: SDK-k
+      html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET-végpont SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET-tartalomkészítési SDK</a></p>
+    - title: Kódminták
+      html: <p><a href="https://aka.ms/luis-code-samples"> Kódminták</a></p>

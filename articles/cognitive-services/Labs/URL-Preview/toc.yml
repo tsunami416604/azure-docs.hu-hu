@@ -1,0 +1,28 @@
+- name: Az URL-cím előnézete projekt dokumentációja
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi az URL-cím előnézete projekt?
+      href: overview.md
+    - name: Az URL-cím előnézetének végpontja
+      href: endpoint.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: 'C#'
+      href: csharp.md
+    - name: Java
+      href: java-quickstart.md
+    - name: JavaScript
+      href: javascript.md
+    - name: Csomópont
+      href: node-quickstart.md
+    - name: Python
+      href: python-quickstart.md
+- name: Referencia
+  expanded: true
+  items:
+    - name: Követelmények használata és megjelenítése
+      href: use-display-requirements.md
+    - name: URL-cím előnézete – referencia
+      href: url-preview-reference.md

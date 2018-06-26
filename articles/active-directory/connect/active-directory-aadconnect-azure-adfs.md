@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 34a5e223dfc8ff51ce03a973e88a962643c71202
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595199"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212672"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Az Active Directory összevonási szolgáltatások üzembe helyezése az Azure-ban
 Az AD FS egyszerű, mégis biztonságos identitás-összevonást, valamint webes egyszeri bejelentkezési (SSO) funkciókat biztosít. Az Azure AD vagy O365 segítségével megvalósított összevonás lehetővé teszi a felhasználóknak a helyszíni bejelentkezési adatok segítségével történő hitelesítést, valamint a felhőben futó erőforrások elérését. Ezért fontos, hogy magas rendelkezésre állást biztosító AD FS-infrastruktúrát alkalmazzon, amely garantálja a helyszíni és a felhőben lévő erőforrások elérhetőségét. Az AD FS Azure-ban történő üzembe helyezésével minimális erőfeszítéssel kialakíthatja a magas rendelkezésre állást.
@@ -305,7 +305,7 @@ Az AD FS legegyszerűbben az IdpInitiatedSignon.aspx oldal segítségével teszt
 
 1. Az engedélyezéshez futtassa az alábbi parancsmagot az AD FS-kiszolgálón a PowerShell segítségével.
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2. Egy külső gépről nyissa meg a következő címet: https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
+2. Egy külső gépről keresse fel a következő címet: https:\//adfs-server.contoso.com/adfs/ls/IdpInitiatedSignon.aspx.  
 3. Az AD FS oldalának az alábbi módon kell megjelennie:
 
 ![Bejelentkezési lap tesztelése](./media/active-directory-aadconnect-azure-adfs/test1.png)

@@ -1,46 +1,46 @@
 ---
-title: Az Azure Active Directory reporting API minták naplózása |} Microsoft Docs
-description: Útmutató az Azure Active Directory Reporting API használatába
+title: Az Azure Active Directory jelentésnaplózási API-mintái | Microsoft Docs
+description: Bevezetés az Azure Active Directory Reporting API használatába
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: de8b8ec3-49b3-4aa8-93fb-e38f52c99743
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/30/2018
-ms.author: dhanyahk;rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 77ecb1f0c4b3614c9692715edae21a09f261b277
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 240095b64f4b7b37a71f84ce8d7a3521e0ab7c03
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588164"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223885"
 ---
-# <a name="azure-active-directory-reporting-audit-api-samples"></a>Az Azure Active Directory reporting API naplózási minták
-Ez a cikk az Azure Active Directory reporting API-val kapcsolatos cikkek gyűjteménye részét képezi.  
-Az Azure AD jelentéskészítési lehetőséget biztosít az API-k, amely lehetővé teszi a kód vagy a kapcsolódó eszközök naplózási adatok eléréséhez.
-Ez a cikk a hatóköre használatával látják el a mintakódot az **API naplózási**.
+# <a name="azure-active-directory-reporting-audit-api-samples"></a>Az Azure Active Directory jelentésnaplózási API-mintái
+Ez a cikk az Azure Active Directory Reporting API-ról szóló cikkgyűjtemény része.  
+Az Azure AD Reporting egy olyan API-t biztosít, amely lehetővé teszi a naplózási adatokhoz való hozzáférést kóddal vagy valamilyen kapcsolódó eszközzel.
+A cikk célja, hogy mintakódot biztosítson az **Audit API**-hoz.
 
 Lásd:
 
-* [A naplók](active-directory-reporting-azure-portal.md#activity-reports) további információ
-* [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md) a reporting API-val kapcsolatos további információk.
+* Az [auditnaplókkal](active-directory-reporting-azure-portal.md#activity-reports) foglalkozó, további elméleti információkat tartalmazó részt
+* További tudnivalók a Reporting API-ról: [Bevezetés az Azure Active Directory Reporting API használatába](active-directory-reporting-api-getting-started.md)
 
-Kérdéseit, vagy visszajelzést, lépjen kapcsolatba [AAD jelentéskészítési súgó](mailto:aadreportinghelp@microsoft.com).
+Ha kérdése van, problémát tapasztal vagy visszajelzést szeretne küldeni, lépjen kapcsolatba az [AAD Reporting ügyfélszolgálatával](mailto:aadreportinghelp@microsoft.com).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A mintákat a cikkben használata előtt végre kell hajtania a [Előfeltételek az Azure AD reporting API eléréséhez](active-directory-reporting-api-prerequisites.md).  
+Mielőtt használhatná a cikkben szereplő mintákat, meg kell felelnie az [előfeltételeknek, hogy hozzá tudjon férni az Azure AD Reporting API-hoz](active-directory-reporting-api-prerequisites.md).  
 
-## <a name="known-issue"></a>Ismert hiba
-Alkalmazáshitelesítési nem működik, ha a bérlő az EU-régióban van. Használjon felhasználói hitelesítési megoldás a naplózási API eléréséhez, amíg azt hárítsa el a problémát. 
+## <a name="known-issue"></a>Ismert probléma
+Az alkalmazáshitelesítés nem működik, ha az Ön bérlője az európai régióban van. Áthidaló megoldásként használjon felhasználói hitelesítést az Audit API eléréséhez, amíg fel nem számoljuk a problémát. 
 
 ## <a name="powershell-script"></a>PowerShell-szkript
 
@@ -94,17 +94,17 @@ if ($oauth.access_token -ne $null) {
 
 ```
 
-### <a name="executing-the-powershell-script"></a>A PowerShell-parancsprogram végrehajtása
-Miután a parancsfájl szerkesztése, futtassa, és győződjön meg arról, hogy a naplózás a várt adatokat naplózza a jelentés adja vissza.
+### <a name="executing-the-powershell-script"></a>A PowerShell-szkript végrehajtása
+Miután befejezte a szkript szerkesztését, futtassa és ellenőrizze, hogy a rendszer a várt adatokat adja vissza az auditnapló-jelentésekből.
 
-A parancsfájl kimenete a naplózási jelentés JSON formátumban ad vissza. Emellett létrehoz egy `Audits.json` az azonos kimenethez fájlt. Ha adatokat más jelentések, és a kimeneti formátum, amely nem kell megjegyzésbe a parancsfájl módosításával kísérletezhet.
+A szkript a naplójelentésből származó kimenetet JSON formátumban adja vissza. Egy `Audits.json` fájlt is létrehoz, ugyanazzal a kimenettel. Kísérletezhet a szkriptek módosításával, hogy más jelentésekből származó adatokat adjanak vissza, illetve tegyék megjegyzésbe azokat a kimeneti formátumokat, amelyekre nincs szüksége.
 
 
 
 
 
 ## <a name="next-steps"></a>További lépések
-* Szeretné testre szabhatja a mintákat a cikkben? Tekintse meg a [Azure Active Directory naplózási API-referencia](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit). 
-* Ha azt szeretné, hogy teljes áttekintése, az Azure Active Directory reporting API használatával [Bevezetés az Azure Active Directory reporting API használatába](active-directory-reporting-api-getting-started.md).
-* Ha meg szeretne többet megtudni az Azure Active Directory reporting, tekintse meg a [Azure Active Directory-jelentéskészítés – útmutató](active-directory-reporting-guide.md).  
+* Szeretné testre szabni a cikkben szereplő mintákat? Tekintse át az [Azure Active Directory Audit API referenciáit](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit). 
+* Ha át szeretné tanulmányozni az Azure Active Directory Reporting API használatáról szóló teljes áttekintést, nézzen bele az [Azure Active Directory Reporting API használatába bevezető](active-directory-reporting-api-getting-started.md) cikkbe.
+* Ha többet szeretne megtudni az Azure Active Directory Reportingról, tekintse át az [Azure Active Directory Reporting útmutatóját](active-directory-reporting-guide.md).  
 

@@ -9,20 +9,21 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/20/2017
+ms.date: 06/20/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 0edf5648ddef58db74273635c84d7473e17e1b30
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f1f10e0cb552dfa938b85280f3acb302b4591426
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295949"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Feltöltött képek átméretezésének automatizálása az Event Grid használatával
 
 Az [Azure Event Grid](overview.md) egy felhőalapú eseménykezelési szolgáltatás. Az Event Grid lehetővé teszi, hogy előfizetéseket hozzon létre az Azure-szolgáltatások vagy külső erőforrások által létrehozott eseményekhez.  
 
-Ez az oktatóanyag a Storage oktatóanyag-sorozat második része. Kibővíti az [előző Storage oktatóanyagot][previous-tutorial], és hozzáadja a kiszolgáló nélküli automatikus miniatűr-létrehozást az Azure Event Grid és az Azure Functions használatával. Az Event Grid lehetővé teszi az [Azure Functions](..\azure-functions\functions-overview.md) számára, hogy reagáljon az [Azure Blob Storage](..\storage\blobs\storage-blobs-introduction.md) eseményeire, és létrehozza a feltöltött képek miniatűrjeit. Az esemény-előfizetések a Blob Storage-esemény létrehozásakor jönnek létre. Amikor egy blob bekerül egy adott Blob Storage-tárolóba, a rendszer meghívja egy függvény végpontját. Az Event Gridből a függvénykötésnek továbbadott adatokat a rendszer arra használja, hogy hozzáférjen a blobhoz, és létrehozza a miniatűrt. 
+Ez az oktatóanyag a Storage oktatóanyag-sorozat második része. Kibővíti az [előző Storage oktatóanyagot][previous-tutorial], és hozzáadja a kiszolgáló nélküli automatikus miniatűr-létrehozást az Azure Event Grid és az Azure Functions használatával. Az Event Grid lehetővé teszi az [Azure Functions](..\azure-functions\functions-overview.md) számára, hogy reagáljon az [Azure Blob Storage](..\storage\blobs\storage-blobs-introduction.md) eseményeire, és létrehozza a feltöltött képek miniatűrjeit. Az esemény-előfizetések a Blob Storage-esemény létrehozásakor jönnek létre. Amikor egy blob bekerül egy adott Blob Storage-tárolóba, a rendszer meghívja egy függvény végpontját. Az Event Gridből a függvénykötésnek továbbadott adatokat a rendszer arra használja, hogy hozzáférjen a blobhoz, és létrehozza a miniatűrt.
 
 Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési funkciót egy meglévő képfeltöltő alkalmazáshoz.
 
@@ -39,13 +40,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez:
 
-+ El kell végeznie az előző Blob Storage oktatóanyagot: [Képadatok feltöltése a felhőbe az Azure Storage segítségével][previous-tutorial]. 
+El kell végeznie az előző Blob Storage oktatóanyagot: [Képadatok feltöltése a felhőbe az Azure Storage segítségével][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.14-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.14-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie a(z) `az login` használatával.
 
@@ -78,7 +79,7 @@ Most konfigurálnia kell a függvényalkalmazást, hogy csatlakozzon az [előző
 
 ## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
 
-A függvénynek szüksége van arra, hogy a kapcsolati karakterlánc csatlakozzon a Blob Storage-fiókhoz. A függvénykód, amelyet a következő lépésben helyez üzembe az Azure-ban, megkeresi a myblobstorage_STORAGE alkalmazás-beállításban lévő kapcsolati karakterláncot, és megkeresi a miniatűrtároló nevét a myContainerName alkalmazásbeállításban. Kérje le a kapcsolati karakterláncot az [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) paranccsal. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) paranccsal.
+A függvénynek szüksége van arra, hogy a kapcsolati sztring csatlakozzon a Blob Storage-fiókhoz. A függvénykód, amelyet a következő lépésben helyez üzembe az Azure-ban, megkeresi a myblobstorage_STORAGE alkalmazás-beállításban lévő kapcsolati sztringet, és megkeresi a miniatűrtároló nevét a myContainerName alkalmazásbeállításban. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) paranccsal. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) paranccsal.
 
 Az alábbi parancssori felületi parancsokban a `<blob_storage_account>` az előző oktatóanyagban létrehozott Blob Storage-fiók neve.
 
@@ -97,7 +98,9 @@ Most már üzembe helyezhet egy függvénykód-projektet a függvényalkalmazás
 
 ## <a name="deploy-the-function-code"></a>A függvénykód üzembe helyezése 
 
-A képek átméretezését végző C#-függvény ebben a [GitHub-adattárban](https://github.com/Azure-Samples/function-image-upload-resize) található. Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) paranccsal. 
+# <a name="nettabnet"></a>[\.NET](#tab/net)
+
+A C#-szkript- (.csx) átméretezési minta elérhető a [GitHubon](https://github.com/Azure-Samples/function-image-upload-resize). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) paranccsal. 
 
 Az alábbi parancsban `<function_app>` a korábban létrehozott függvényalkalmazás neve.
 
@@ -106,6 +109,19 @@ az functionapp deployment source config --name <function_app> \
 --resource-group myResourceGroup --branch master --manual-integration \
 --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) paranccsal. 
+
+
+Az alábbi parancsban `<function_app>` a korábban létrehozott függvényalkalmazás neve.
+
+```azurecli-interactive
+az functionapp deployment source config --name <function_app> \
+--resource-group myResourceGroup --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+```
+---
 
 A kép átméretezése függvényt az Event Grid szolgáltatásból küldött HTTP-kérések indítják el. Egy esemény-előfizetés létrehozásával utasítja az Event Gridet, hogy ezeket az értesítéseket a függvénye URL-címére szeretné kapni. Ebben az oktatóanyagban blobok által létrehozott eseményekre iratkozik fel.
 

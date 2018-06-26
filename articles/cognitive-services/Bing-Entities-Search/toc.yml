@@ -1,0 +1,75 @@
+- name: A Bing Entity Search dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Bing Entity Search?
+      href: search-the-web.md
+- name: REST API – rövid útmutatók
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK – rövid útmutatók
+  items:
+    - name: SDK-minták áttekintése
+      href: sdk.md
+    - name: 'Entity Search C# – rövid útmutató'
+      href: entity-search-sdk-quickstart.md
+    - name: Entity Search Node.js – rövid útmutató
+      href: entity-search-sdk-node-quickstart.md
+    - name: Entity Search Python – rövid útmutató
+      href: entity-sdk-python-quickstart.md
+    - name: Entity Search Java – rövid útmutató
+      href: entity-sdk-java-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: Egyoldalas webalkalmazás
+      href: tutorial-bing-entities-search-single-page-app.md
+    - name: Egyoldalas webalkalmazás (forráskód)
+      href: tutorial-bing-entities-search-single-page-app-source.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
+- name: Útmutatók
+  items:
+    - name: Követelmények használata és megjelenítése
+      href: use-display-requirements.md
+    - name: Miniatűrök átméretezése és körülvágása
+      href: resize-and-crop-thumbnails.md
+- name: Referencia
+  items:
+    - name: Bing Entity Search API 7-es verzió
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference'
+- name: További források
+  items:
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+entity+search'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API-kulcs beszerzése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
+    - name: Próbálja ki!
+      href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
+    - name: Bing Entity Search-végpont
+      href: entity-search-endpoint.md
+    - name: Bing Entity Search API – elemzés
+      href: bing-entity-stats.md

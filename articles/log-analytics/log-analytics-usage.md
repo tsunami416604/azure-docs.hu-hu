@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/05/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802051"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209816"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 A Log Analytics információkat biztosít a gyűjtött adatok mennyiségéről, valamint arról, hogy mely források küldték az adatokat és milyen típusú adatokat küldtek.  A **Log Analytics-használat** irányítópult segítségével áttekintheti és elemezheti az adathasználatot. Az irányítópult megjeleníti, hogy az egyes megoldások mennyi adatot gyűjtenek össze, és a számítógépek mennyi adatot küldenek.
@@ -59,7 +59,9 @@ Ez a szakasz ismerteti, hogyan hozhat létre riasztást, ha:
 - Az adatmennyiség meghalad egy megadott mennyiséget.
 - Az adatmennyiség várhatóan meghalad egy megadott mennyiséget.
 
-A Log Analytics[-riasztások](log-analytics-alerts-creating.md) keresési lekérdezéseket használnak. A következő lekérdezés akkor ad vissza eredményt, ha több mint 100 GB adat lett összegyűjtve az elmúlt 24 órában:
+Az Azure-riasztások támogatják a keresési lekérdezéseket támogató [naplóriasztásokat](../monitoring-and-diagnostics/monitor-alerts-unified-log.md). 
+
+A következő lekérdezés akkor ad vissza eredményt, ha több mint 100 GB adat lett összegyűjtve az elmúlt 24 órában:
 
 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
@@ -69,27 +71,35 @@ A következő lekérdezés egy egyszerű képlettel előrejelzi, mikor fog a ren
 
 Ha más adatmennyiségre szeretne riasztást beállítani, módosítsa a lekérdezésekben a 100 értéket arra a GB mennyiségre, amely esetén riasztást szeretne kapni.
 
-A [riasztási szabályok létrehozásával kapcsolatos](log-analytics-alerts-creating.md#create-an-alert-rule) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
+Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
 
 Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat lett összegyűjtve 24 órán belül, állítsa be a következőket:  
-- A **Név** legyen *Több mint 100 GB adatmennyiség 24 órán belül*  
-- A **Súlyosság** legyen *Figyelmeztetés*  
-- A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`   
-- Az **Időtartomány** legyen *24 óra*.
-- A **Riasztási időköz** legyen egy óra, mivel a használati adatok csak óránként egyszer frissülnek.
-- A **Riasztások létrehozása a következő alapján:** értéke legyen az *eredmények száma*
-- Az **Eredmények száma** legyen *Nagyobb, mint 0*
 
-A [műveletek a riasztási szabályokhoz adásával kapcsolatos](log-analytics-alerts-actions.md) részben leírt lépéseket követve konfigurálhat e-mailt, webhookot, vagy runbook-műveletet a riasztási szabályhoz.
+- A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
+- A **Riasztási feltételek** résznél az alábbiakat adja meg:
+   - A **Jel neve** legyen **Egyéni naplókeresés**
+   - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
+   - Az **Időszak** értékét állítsa *1440* percre, a **Riasztási időköz** pedig legyen *60* perc, mivel a használati adatok csak óránként frissülnek.
+- **Határozza meg a riasztás részleteit** az alábbiak megadásával:
+   - A **Név** legyen *Több mint 100 GB adatmennyiség 24 órán belül*
+   - A **Súlyosság** legyen *Figyelmeztetés*
+
+Megadhat egy meglévő [műveletcsoportot](../monitoring-and-diagnostics/monitoring-action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
 
 A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat összegyűjtése várható 24 órán belül, állítsa be a következőket:
-- A **Név** legyen *Több mint 100 GB várható adatmennyiség 24 órán belül*
-- A **Súlyosság** legyen *Figyelmeztetés*
-- A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-- Az **Időtartomány** legyen *3 óra*.
-- A **Riasztási időköz** legyen egy óra, mivel a használati adatok csak óránként egyszer frissülnek.
-- A **Riasztások létrehozása a következő alapján:** értéke legyen az *eredmények száma*
-- Az **Eredmények száma** legyen *Nagyobb, mint 0*
+
+- A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
+- A **Riasztási feltételek** résznél az alábbiakat adja meg:
+   - A **Jel neve** legyen **Egyéni naplókeresés**
+   - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
+   - Az **Időszak** értékét állítsa *180* percre, a **Riasztási időköz** pedig legyen *60* perc, mivel a használati adatok csak óránként frissülnek.
+- **Határozza meg a riasztás részleteit** az alábbiak megadásával:
+   - A **Név** legyen *Több mint 100 GB várható adatmennyiség 24 órán belül*
+   - A **Súlyosság** legyen *Figyelmeztetés*
+
+Megadhat egy meglévő [műveletcsoportot](../monitoring-and-diagnostics/monitoring-action-groups.md), illetve létrehozhat egy újat, hogy értesítést kapjon, amikor egy naplóriasztás megfelel a feltételeknek.
 
 Riasztás fogadásakor kövesse a következő szakaszban leírt lépéseket a vártnál magasabb szintű használatot okozó hibák elhárításához.
 
@@ -155,12 +165,11 @@ Kattintson **Az összes megjelenítése...** lehetőségre a kiválasztott aján
 
 A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 
-
 ## <a name="next-steps"></a>További lépések
 * A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-log-searches.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
-* A [riasztási szabályok létrehozásával kapcsolatos](log-analytics-alerts-creating.md#create-an-alert-rule) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel
-* A [megoldáscélzással](../operations-management-suite/operations-management-suite-solution-targeting.md) megadhatja, hogy a rendszer csak a szükséges számítógépcsoportoktól gyűjtsön adatokat
-* Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzatai](../security-center/security-center-enable-data-collection.md) című cikket
-* A [teljesítményszámlálók konfigurációjának](log-analytics-data-sources-performance-counters.md) módosítása
+* Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
+* A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
+* Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzataival](../security-center/security-center-enable-data-collection.md) foglalkozó cikket.
+* Módosítsa a [teljesítményszámlálók konfigurációját](log-analytics-data-sources-performance-counters.md).
 * Az eseménygyűjtési beállítások módosításához tekintse meg az [eseménynaplók konfigurációját](log-analytics-data-sources-windows-events.md) leíró szakaszt.
 * A rendszernapló-gyűjtési beállítások módosításához tekintse meg a [rendszernaplók konfigurációját](log-analytics-data-sources-syslog.md) leíró szakaszt.

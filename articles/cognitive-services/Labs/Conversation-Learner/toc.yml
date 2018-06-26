@@ -1,0 +1,68 @@
+- name: A Beszélgetéstanuló dokumentációja
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Beszélgetéstanuló?
+      href: overview.md
+    - name: Támogatott nyelvek
+      href: languages-supported.md
+- name: Alapelvek
+  items:
+    - name: Átvitelvezérlés
+      href: control-flow.md
+    - name: Alapértelmezett értékek és határok
+      href: cl-values-and-boundaries.md
+- name: Útmutatók
+  items:
+    - name: Bevezetés a Beszélgetéstanuló használatába
+      href: quickstart.md
+    - name: Hello world
+      href: tutorials/1-hello-world.md
+    - name: „Wait” vagy „non-wait” műveletek
+      href: tutorials/2-wait-vs-nonwait-actions.md
+    - name: Az entitások bemutatása
+      href: tutorials/3-introduction-to-entities.md
+    - name: Várt entitás
+      href: tutorials/4-expected-entity.md
+    - name: Negálható entitások
+      href: tutorials/5-negatable-entities.md
+    - name: Többértékű entitások
+      href: tutorials/6-multi-value-entities.md
+    - name: Beépített entitások
+      href: tutorials/7-built-in-entities.md
+    - name: Alternatív bemenetek
+      href: tutorials/8-alternative-inputs.md
+    - name: Párbeszédpanelek naplózása
+      href: tutorials/9-log-dialogs.md
+    - name: Entitásészlelés visszahívása
+      href: tutorials/10-entity-detection-callback.md
+    - name: Munkamenet-visszahívások
+      href: tutorials/11-session-callbacks.md
+    - name: API-hívások
+      href: tutorials/12-api-calls.md
+    - name: Kártyák – 1. rész
+      href: tutorials/13-cards-1.md
+    - name: Kártyák – 2. rész
+      href: tutorials/14-cards-2.md
+    - name: Elágaztatás és visszavonás
+      href: tutorials/15-branching-and-undo.md
+    - name: Verziókezelés és címkézés
+      href: tutorials/16-versioning-and-tagging.md
+    - name: Bemutató – jelszó-visszaállítás
+      href: tutorials/demo-password-reset.md
+    - name: Bemutató – pizzarendelés
+      href: tutorials/demo-pizza-order.md
+    - name: Bemutató – VR-alkalmazás indítója
+      href: tutorials/demo-vr-app-launcher.md
+    - name: Beszélgetéstanuló robot üzembe helyezése
+      href: deploy-to-bf.md
+    - name: Tanítás a Beszélgetéstanulóval
+      href: how-to-teach-cl.md
+    - name: A felhasználói adatok kezelése
+      href: managing-data.md
+- name: További források
+  items:
+    - name: Beszélgetéstanuló mintarobot
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

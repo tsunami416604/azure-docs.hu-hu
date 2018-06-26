@@ -1,0 +1,84 @@
+- name: A Bing Custom Search dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Bing Custom Search?
+      href: overview.md
+- name: REST API – rövid útmutatók
+  expanded: true
+  items:
+    - name: Első példány létrehozása
+      href: quick-start.md
+    - name: 'C#'
+      href: call-endpoint-csharp.md
+    - name: Java
+      href: call-endpoint-java.md
+    - name: Node.js
+      href: call-endpoint-nodejs.md
+    - name: Python
+      href: call-endpoint-python.md
+- name: SDK – rövid útmutatók
+  items:
+    - name: SDK-minták áttekintése
+      href: sdk.md
+    - name: 'Custom Search SDK C# – rövid útmutató'
+      href: custom-search-sdk-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: Custom Search-webhely létrehozása
+      href: ./tutorials/custom-search-web-page.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
+- name: Útmutatók
+  items:
+    - name: Egyéni keresési élmény konfigurálása
+      href: define-your-custom-view.md
+    - name: Egyéni keresés meghívása
+      href: search-your-custom-view.md
+    - name: Üzemeltetett felhasználói felületi élmény konfigurálása
+      href: hosted-ui.md
+    - name: Egyéni keresés megosztása
+      href: share-your-custom-search.md
+    - name: Egyéni automatikus kiegészítési élmény konfigurálása
+      href: define-custom-suggestions.md
+    - name: Egyéni javaslatok lekérése
+      href: get-custom-suggestions.md
+    - name: Találatok kiemelésének kezelése
+      href: hit-highlighting.md
+    - name: Webhelyek lapozása
+      href: page-webpages.md
+- name: Referencia
+  items:
+    - name: Bing Custom Autosuggest API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
+    - name: Bing Custom Image Search API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
+    - name: Bing Custom Search API-referencia
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
+    - name: Bing Search API – követelmények használata és megjelenítése
+      href: use-and-display-requirements.md
+- name: További források
+  items:
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+custom+search'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API-kulcs beszerzése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+    - name: Próbálja ki!
+      href: 'https://aka.ms/bingcustomsearchtryit'
+    - name: Bing Custom Search-végpont
+      href: endpoint-custom.md
+    - name: Támogatott országok és piacok
+      href: supported-countries-markets.md

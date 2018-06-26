@@ -3,8 +3,8 @@ title: Statikus HTML-webalkalmazás létrehozása az Azure-ban | Microsoft Docs
 description: Egy statikus HTML-webalkalmazás üzembe helyezésével megtudhatja, hogy miként futtathat webalkalmazásokat az Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.service: app-service-web
@@ -12,91 +12,97 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/26/2017
-ms.author: cephalin
+ms.date: 06/15/2018
+ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: bca5757c971f15279ed6ee9b41f415cd347d91b3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9002d0636a5abaf24cc2bcd1e531f38ec5c8d2eb
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28918777"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294012"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
 
-Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató egy alapszintű HTML+CSS hely Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a Git szoftver használatával pedig üzembe helyezheti a HTML mintatartalmat a webalkalmazásban.
+Az [Azure Web Apps](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a gyorsútmutató egy alapszintű HTML+CSS hely Azure Web Apps szolgáltatásban történő üzembe helyezésén vezeti végig. Ezt a rövid útmutatót a [Cloud Shellben](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) végezzük el, a parancsok azonban helyileg is futtathatók az [Azure CLI](/cli/azure/install-azure-cli) használatával.
 
 ![Mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A gyorsútmutató elvégzéséhez:
+## <a name="install-web-app-extension-for-cloud-shell"></a>A Cloud Shell webalkalmazás-bővítményének telepítése
 
-- <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
+A rövid útmutató elvégzéséhez az [az web app extension](https://docs.microsoft.com/en-us/cli/azure/extension?view=azure-cli-latest#az-extension-add) hozzáadása szükséges. Ha a bővítmény már telepítve van, frissítse a legújabb verzióra. A webalkalmazás-bővítmény frissítéséhez írja be az `az extension update -n webapp` parancsot.
+
+A webalkalmazás-bővítmény telepítéséhez futtassa az alábbi parancsot:
+
+```bash
+az extension add -n webapp
+```
+
+A bővítmény telepítése után a Cloud Shell az alábbi példához hasonló információkat jelenít meg:
+
+```bash
+The installed extension 'webapp' is in preview.
+```
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Egy terminálablakban futtassa a következő parancsot a mintaalkalmazás-tárház helyi számítógépre történő klónozásához.
+A Cloud Shellben hozzon létre egy quickstart könyvtárat, és lépjen a könyvtárba.
+
+```bash
+mkdir quickstart
+
+cd quickstart
+```
+
+Ezután futtassa a következő parancsot a mintaalkalmazás-adattár a quickstart könyvtárba való klónozásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-Váltson arra a könyvtárra, amelyben a mintakód megtalálható.
+## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
+
+Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
+
+A következő példában az <app_name> helyett adjon meg egy egyedi alkalmazásnevet.
 
 ```bash
 cd html-docs-hello-world
+
+az webapp up -n <app_name>
 ```
 
-## <a name="view-the-html"></a>HTML megjelenítése
+Az `az webapp up` parancs a következő műveleteket hajtja végre:
 
-Váltson a minta HTML-t tartalmazó könyvtárra. Nyissa meg a *index.html* fájlt a böngészőben.
+- Egy alapértelmezett erőforráscsoport létrehozása.
 
-![Mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-world-in-browser.png)
+- Egy alapértelmezett App Service-csomag létrehozása.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+- Egy alkalmazás létrehozása a megadott néven.
 
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
+- Fájlok [tömörített üzembe helyezése](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-zip) az aktuális munkakönyvtárból a webalkalmazásba.
 
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
+A parancs futtatása eltarthat néhány percig. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
 
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
-
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
-
-![Üres webalkalmazás oldal](media/app-service-web-get-started-html/app-service-web-service-created.png)
-
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
-
-```bash
-Counting objects: 13, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (11/11), done.
-Writing objects: 100% (13/13), 2.07 KiB | 0 bytes/s, done.
-Total 13 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'cc39b1e4cb'.
-remote: Generating deployment script.
-remote: Generating deployment script for Web Site
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling Basic Web Site deployment.
-remote: KuduSync.NET from: 'D:\home\site\repository' to: 'D:\home\site\wwwroot'
-remote: Deleting file: 'hostingstart.html'
-remote: Copying file: '.gitignore'
-remote: Copying file: 'LICENSE'
-remote: Copying file: 'README.md'
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+```json
+{
+  "app_url": "https://<app_name>.azurewebsites.net",
+  "location": "Central US",
+  "name": "<app_name>",
+  "os": "Windows",
+  "resourcegroup": "appsvc_rg_Windows_CentralUS ",
+  "serverfarm": "appsvc_asp_Windows_CentralUS",
+  "sku": "FREE",
+  "src_path": "/home/username/quickstart/html-docs-hello-world ",
+  < JSON data removed for brevity. >
+}
 ```
+
+Jegyezze fel a `resourceGroup` értékét. Szüksége lesz rá [az erőforrások eltávolításával](#clean-up-resources) kapcsolatos szakaszban.
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
@@ -110,16 +116,19 @@ Az oldal Azure App Service webalkalmazásként fut.
 
 ## <a name="update-and-redeploy-the-app"></a>Az alkalmazás frissítése és ismételt üzembe helyezése
 
-Egy szövegszerkesztőben nyissa meg az *index.html* fájlt, és hajtson végre módosítást a jelölőnyelvi kódon. Például, módosítsa az „Azure App Service – statikus HTML-mintahely” nevű H1 fejlécet egyszerűen „Azure App Service”-re.
+A Cloud Shellben írja be a `nano index.html` parancsot a nano szövegszerkesztő megnyitásához. A H1 fejlécben az „Azure App Service - Sample Static HTML Site” szöveget módosítsa „Azure App Service”-re a lent látható módon.
 
-A helyi terminálablakban mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
+![Nano index.html](media/app-service-web-get-started-html/nano-index-html.png)
+
+Mentse a módosításokat, és lépjen ki a nanóból. A mentéshez a `^O`, a kilépéshez a `^X` parancsot használja.
+
+Most újra üzembe helyezzük az alkalmazást ugyanazzal az `az webapp up` paranccsal.
 
 ```bash
-git commit -am "updated HTML"
-git push azure master
+az webapp up -n <app_name>
 ```
 
-A telepítés befejezése után frissítse a lapot a böngészőben, hogy lássa a változásokat.
+Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.
 
 ![Frissített mintaalkalmazás kezdőlapja](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
@@ -131,13 +140,21 @@ A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azur
 
 ![Navigálás a portálon az Azure-webapphoz](./media/app-service-web-get-started-html/portal1.png)
 
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
+Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
 ![Az App Service panel az Azure Portalon](./media/app-service-web-get-started-html/portal2.png)
 
-A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
+A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat.
 
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Ha várhatóan nem lesz szüksége ezekre az erőforrásokra a jövőben, törölje az erőforráscsoportot a következő parancs Cloud Shellben történő futtatásával. Ne feledje, hogy az erőforráscsoport neve automatikusan jött létre a [webalkalmazást létrehozó](#create-a-web-app) lépés során.
+
+```bash
+az group delete --name appsvc_rg_Windows_CentralUS
+```
+
+A parancs futtatása egy percig is eltarthat.
 
 ## <a name="next-steps"></a>További lépések
 

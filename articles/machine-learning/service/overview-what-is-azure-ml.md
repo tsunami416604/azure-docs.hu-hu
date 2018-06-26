@@ -6,14 +6,16 @@ author: mwinkle
 ms.author: mwinkle
 manager: cgronlun
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 09/21/2017
-ms.openlocfilehash: 868647780bafe9117a15891264a38535edff7250
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3e744b0e4a7ccebcdedac5a822ff717bed6b1f72
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268416"
 ---
 # <a name="what-is-machine-learning"></a>Mit jelent a Machine Learning?
 
@@ -94,7 +96,7 @@ További információkért tekintse meg a következő cikkeket:
 - [Adatok előkészítésének használati útmutatója](../desktop-workbench/data-prep-user-guide.md)
 - [Git használata az Azure Machine Learninggel](../desktop-workbench/using-git-ml-project.md)
 - [Jupyter Notebook használata az Azure Machine Learningben](../desktop-workbench/how-to-use-jupyter-notebooks.md)
-- Barangolás és megosztás
+- [Barangolás és megosztás](../desktop-workbench/roaming-and-collaboration.md)
 - [Futtatási előzmények útmutatója](../desktop-workbench/how-to-use-run-history-model-metrics.md)
 - [IDE-integráció](../desktop-workbench/how-to-configure-your-ide.md)
 

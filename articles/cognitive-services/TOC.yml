@@ -1,0 +1,41 @@
+- name: Az Azure Cognitive Services dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Cognitive Services?
+      href: Welcome.md
+- name: Gyors útmutatók
+  items:
+    - name: Fiók létrehozása
+      href: cognitive-services-apis-create-account.md
+    - name: Képosztályozó létrehozása
+      href: ./custom-vision-service/getting-started-build-a-classifier.md
+    - name: Kezdőlap-automatizáló alkalmazás létrehozása
+      href: ./luis/luis-get-started-create-app.md
+    - name: .NET-alapú szövegelemző alkalmazás létrehozása
+      href: ./text-analytics/quickstarts/csharp.md
+- name: Oktatóanyagok
+  items:
+    - name: Egyéni keresési webhely
+      href: ./bing-custom-search/tutorials/custom-search-web-page.md
+    - name: Hangfelismerő alkalmazás
+      href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
+    - name: A szándék pontosságának javítása a parancsok esetében
+      href: ./luis/luis-tutorial-batch-testing.md
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videók
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Etikai kódex
+      href: 'http://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase'

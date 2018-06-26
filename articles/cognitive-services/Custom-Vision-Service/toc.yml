@@ -1,0 +1,67 @@
+- name: A Custom Vision Service dokumentációja
+- name: Áttekintés
+  items:
+    - name: Mi a Custom Vision Service?
+      href: home.md
+- name: Útmutatók
+  items:
+    - name: A Custom Vision Service használatának megkezdése
+      items:
+        - name: Tartalombesoroló létrehozása
+          href: getting-started-build-a-classifier.md
+        - name: Modell tesztelése
+          href: test-your-model.md
+        - name: Tartalombesoroló teljesítményének fokozása
+          href: getting-started-improving-your-classifier.md
+        - name: Előrejelzési API használata
+          href: use-prediction-api.md
+        - name: Modell exportálása mobileszközre
+          href: export-your-model.md
+        - name: A TensorFlow modell futtatása a Pythonban
+          href: export-model-python.md
+    - name: Alkalmazások készítése
+      items:
+        - name: Képbesorolás
+          items:
+            - name: 'C#-oktatóanyag'
+              href: csharp-tutorial.md
+            - name: Python-útmutató
+              href: python-tutorial.md
+        - name: Objektumészlelés
+          items:
+            - name: 'C#-oktatóanyag'
+              href: csharp-tutorial-od.md
+            - name: Python-útmutató
+              href: python-tutorial-od.md
+- name: Referencia
+  items:
+    - name: Egyéni vizuális képzési API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
+    - name: Egyéni vizuális előrejelzési API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: Korlátok és kvóták
+      href: limits-and-quotas.md
+    - name: Szószedet
+      href: glossary-of-terms.md
+    - name: SDK-k
+      items:
+        - name: Indítás
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
+        - name: Windows
+          href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
+- name: További források
+  items:
+    - name: Példák
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/'
+    - name: Fiókadatok exportálása vagy törlése
+      href: ./export-delete-data.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'

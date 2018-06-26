@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 3fe783f8b5a7955ebe117df02edcdc6aafeff4f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbb4ce971e6504f33de82e31cf289a42a1640952
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636851"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293169"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra, és a telemetria olvasása a háttéralkalmazással (C#)
 
@@ -60,7 +60,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ha úgy dönt, hogy eszközének egy másik nevet választ, a mintaalkalmazások futtatása előtt frissítse az eszköznevet bennük.
 
-1. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
+2. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -68,7 +68,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket használni fogja a rövid útmutató későbbi részében.
 
-1. Emellett szükség lesz az _Event Hubs-kompatibilis végpontra_, az _Event Hubs-kompatibilis elérési útra_ és az _iothubowner elsődleges_ kulcsra az IoT Hubról, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
+3. Emellett szükség lesz az _Event Hubs-kompatibilis végpontra_, az _Event Hubs-kompatibilis elérési útra_ és az _iothubowner elsődleges_ kulcsra az IoT Hubról, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -86,17 +86,17 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 1. Egy terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\simulated-device** mappába.
 
-1. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
+2. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
     Cserélje le a `connectionString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
 
-1. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
+3. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Futtassa az alábbi parancsot a terminálablakban a szimulálteszköz-alkalmazás létrehozásához és futtatásához:
+4. Futtassa az alábbi parancsot a terminálablakban a szimulálteszköz-alkalmazás létrehozásához és futtatásához:
 
     ```cmd/sh
     dotnet run
@@ -112,21 +112,21 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 1. Egy másik terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\read-d2c-messages** mappába.
 
-1. Nyissa meg a **ReadDeviceToCloudMessages.cs** fájlt egy Ön által választott szövegszerkesztőben.
+2. Nyissa meg a **ReadDeviceToCloudMessages.cs** fájlt egy Ön által választott szövegszerkesztőben. Frissítse a következő változókat, és mentse a fájlon végrehajtott módosításait.
 
-    Cserélje le a `eventHubsCompatibleEndpoint` változó értéket a korábban lejegyzett Event Hubs-kompatibilis végpontra.
+    | Változó | Érték |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis végpontra. |
+    | `eventHubsCompatiblePath`     | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis elérési útra. |
+    | `iotHubSasKey`                | Cserélje le a változó értékét a korábban feljegyzett iothubowner elsődleges kulcsra. |
 
-    Cserélje le a `eventHubsCompatiblePath` változó értéket a korábban lejegyzett Event Hubs-kompatibilis elérési útra.
-
-    Cserélje le az `iotHubSasKey` változó értéket a korábban lejegyzett iothubowner elsődleges kulcsra. Mentse a **ReadDeviceToCloudMessages.cs** fájl módosításait.
-
-1. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
+3. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazás létrehozásához és futtatásához:
+4. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazás létrehozásához és futtatásához:
 
     ```cmd/sh
     dotnet run
@@ -138,9 +138,7 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a következő rövid útmutatót is el kívánja végezni, ne távolítsa el az erőforráscsoportot és az IoT Hubot, hanem használhatja őket újra később.
-
-Ha már nincs szüksége az IoT Hubra, az erőforráscsoporttal együtt törölje a Portalon. Ehhez válassza ki az IoT Hubot tartalmazó **qs-iot-hub-rg** erőforráscsoportot, majd kattintson a **Törlés** elemre.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

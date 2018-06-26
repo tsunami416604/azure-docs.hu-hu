@@ -13,14 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2018
+ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c5c719d484684c0efff87671ba7e012d9bd7699e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264094"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -49,7 +50,9 @@ A Media Services lehetővé teszi különböző média-munkafolyamatok létrehoz
 
 ## <a name="v3-capabilities"></a>A v3 képességei
 
-A v3 egy egységes API-n alapul, amely az **Azure Resource Manager** szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. Ez a verzió az alábbi képességeket biztosítja:  
+A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolgáltatásra épülő felügyeleti és műveleti funkciókat is biztosít. 
+
+Ez a verzió az alábbi képességeket biztosítja:  
 
 * **Átalakítás**, amellyel a médiafeldolgozási vagy az -elemzési feladatok egyszerű munkafolyamatait határozhatja meg. Az átalakítás a video- és hangfájlok feldolgozásának rögzített folyamata. A későbbiekben ismételten alkalmazhatja a tartalomtárban levő összes fájl feldolgozásához a feladatoknak az átalakítási szolgáltatás számára történő elküldésével.
 * **Feladatok** a videók feldolgozásához (kódolás vagy elemzés). A bemenő tartalmak HTTP- URL-, SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg a feladatokban. 
@@ -58,34 +61,29 @@ A v3 egy egységes API-n alapul, amely az **Azure Resource Manager** szolgáltat
 * **Szerepköralapú hozzáférés-vezérlés** állítható be az erőforrásszinten, amely lehetővé teszi az adott erőforrásokhoz, például az átalakításokhoz, csatornákhoz és egyebekhez való hozzáférés zárolását.
 * **Ügyfél SDK-k** több nyelven: .NET, .NET core, Python, Go, Java és Node.js.
 
+## <a name="naming-conventions"></a>Elnevezési konvenciók
+
+Az Azure Media Services v3 erőforrásneveire is (pl. Adategység, Feladatok, Átalakítások) az Azure Resource Manager elnevezési korlátozásai vonatkoznak. Az Azure Resource Manager szolgáltatásnak megfelelően az erőforrásnevek mindig egyediek. Így bármilyen egyedi azonosító sztringet (pl. GUID-ok) használhat erőforrásnévként. 
+
+A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">", "%", "&", ': ','&#92;','?', '/', "*", "+",".", szimpla idézőjel vagy bármely egyéb vezérlőkarakter. Minden egyéb karakter engedélyezett. Az erőforrásnév maximális hossza 260 karakter. 
+
+Az Azure Resource Manager elnevezéseire vonatkozó további információért tekintse meg az [Elnevezési követelmények](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és az [Elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) című részeket.
+
 ## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát?
 
-Fejlesztőként a Media Services [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=873030), illetve a REST API-val való kommunikációt lehetővé tévő ügyfélkódtárakkal könnyedén hozhat létre, felügyelhet és kezelhet egyéni média-munkafolyamatokat. A Microsoft az alábbi ügyfélkódtárakat hozza létre és támogatja: 
+Fejlesztőként a Media Services [REST API-jával](https://go.microsoft.com/fwlink/p/?linkid=873030), illetve a REST API-val való kommunikációt lehetővé tévő ügyfélkódtárakkal könnyedén hozhat létre, felügyelhet és kezelhet egyéni média-munkafolyamatokat. A REST Postman-példát [itt](https://github.com/Azure-Samples/media-services-v3-rest-postman) találja. [Azure Resource Manager-alapú REST API-t](https://github.com/Azure-Samples/media-services-v3-arm-templates) is használhat.
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [.NET-nyelvek](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)
-* [.NET Core](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (válassza a **.NET CLI** fület)
-* Java
+A Microsoft az alábbi ügyfélkódtárakat hozza létre és támogatja: 
 
-  Adja hozzá a következő függőséget a projekthez:
-  
-  ```
-  <dependency>
-    <groupId>com.microsoft.azure.media-2018-03-30-preview</groupId>
-    <artifactId>azure-mgmt- media</artifactId>
-    <version>0.0.1-beta</version>
-  </dependency> 
-  ```
-* Node.js 
-
-  Használja az alábbi parancsot:
-  
-  ```
-  npm install azure-arm-mediaservices
-  ```
-  
-* [Python](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)
-* [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)
+|Ügyfélkódtár|Példák|
+|---|---|
+|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Azure CLI-minták](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[.NET-minták](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
+|[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (válassza a **.NET CLI** fület)|[.NET Core-minta](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Node.js-minták](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
+|[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
+|[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||
 
 A Media Services [Swagger-fájlokat](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media) biztosít, amelyekkel SDK-kat hozhat létre az előnyben részesített nyelvhez/technológiához.  
 

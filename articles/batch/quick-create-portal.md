@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: de8b53756c64867c9b24bcd609e5b994e870da9f
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514543"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285583"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
@@ -32,7 +32,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal történő létrehozásához. Készletek és feladatok létrehozásához Batch-fiók szükséges. Ahogyan az az alábbi ábrán is látható, a Batch-fiók összekapcsolható egy Azure Storage-fiókkal. Bár a rövid útmutatóhoz nem kötelező, a Storage-fiók hasznos az alkalmazások üzembe helyezéséhez, valamint a legtöbb valós számítási feladat be- és kimeneti adatainak tárolásához.
 
 
-1. Kattintson az **Új** > **Számítás** > **Batch-szolgáltatás** elemre. 
+1. Válassza az **Erőforrás létrehozása** > **Számítás** > **Batch szolgáltatás** lehetőséget. 
 
   ![Batch a Piactéren][marketplace_portal]
 
@@ -40,7 +40,7 @@ Kövesse az alábbi lépéseket egy minta Batch-fiók tesztelési céllal tört�
 
 3. A **Tárfiókok** területen válasszon egy meglévő tárfiókot, vagy hozzon létre egy újat.
 
-4. Hagyja meg az alapértelmezett értékeket a többi beállításnál, és kattintson a **Létrehozás** gombra a fiók létrehozásához.
+4. Hagyja meg az alapértelmezett értékeket a többi beállításnál, és válassza a **Létrehozás** gombot a fiók létrehozásához.
 
   ![Batch-fiók létrehozása][account_portal]  
 
@@ -51,7 +51,7 @@ Amikor megjelenik az **Üzembe helyezés sikeres** üzenet, lépjen a Batch-fió
 Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számítási csomópontokból álló mintakészletet tesztelési célra. A jelen rövid példában a készlet 2 csomópontból áll, amelyek Windows Server 2012 R2-rendszerképet futtatnak az Azure Marketplace-ről.
 
 
-1. A Batch-fiókban kattintson a **Készletek** > **Hozzáadás** lehetőségre.
+1. A Batch-fiókban válassza a **Készletek** > **Hozzáadás** lehetőséget.
 
 2. Adja meg a következő **készletazonosítót**: *mypool*. 
 
@@ -75,13 +75,13 @@ Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számít
 
   ![Készletméret kiválasztása][pool_size] 
 
-5. Hagyja meg az alapértelmezett értéket a többi beállításnál, és kattintson az **OK** gombra a készlet létrehozásához.
+5. Hagyja meg az alapértelmezett értéket a többi beállításnál, és válassza az **OK** lehetőséget a készlet létrehozásához.
 
 A Batch azonnal létrehozza a készletet, de a számítási csomópontok lefoglalása és elindítása igénybe vesz néhány percet. Eközben a készlet **Lefoglalási állapota** **Átméretezés**. A készlet átméretezése közben létrehozhat egy feladatot és tevékenységeket. 
 
 ![A készlet átméretezés állapotban van][pool_resizing]
 
-Néhány perc elteltével a készlet állapota **Stabil** értékre változik, és elindulnak a csomópontok. Kattintson a **Csomópontok** lehetőségre a csomópontok állapotának megtekintéséhez. Ha egy csomópont állapota **Tétlen**, készen áll a tevékenységek futtatására. 
+Néhány perc elteltével a készlet állapota **Stabil** értékre változik, és elindulnak a csomópontok. Válassza a **Csomópontok** lehetőséget a csomópontok állapotának megtekintéséhez. Ha egy csomópont állapota **Tétlen**, készen áll a tevékenységek futtatására. 
 
 ## <a name="create-a-job"></a>Feladat létrehozása
 
@@ -89,7 +89,7 @@ Most, hogy már rendelkezik készlettel, hozzon létre egy feladatot, amelyet az
 
 1. A Batch-fiók nézetben kattintson a **Feladatok** > **Hozzáadás** lehetőségre. 
 
-2. Adja meg a következő **feladatazonosítót**: *myjob*. A **Készlet** mezőben válassza a *mypool* lehetőséget. Hagyja meg az alapértelmezett értékeket a többi beállításnál, és kattintson az **OK** gombra.
+2. Adja meg a következő **feladatazonosítót**: *myjob*. A **Készlet** mezőben válassza a *mypool* lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, és válassza az **OK** lehetőséget.
 
   ![Feladat létrehozása][job_create]
 
@@ -103,11 +103,11 @@ Batch használata esetén a parancssorban adhatja meg az alkalmazást vagy szkri
 
 Az első tevékenység létrehozása:
 
-1. Kattintson a **Hozzáadás** parancsra.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 2. Adja meg a következő **tevékenységazonosítót**: *mytask*. 
 
-3. A **parancssorban** adja meg a következő parancsot: `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Hagyja meg az alapértelmezett értékeket a többi beállításnál, és kattintson az **OK** gombra.
+3. A **parancssorban** adja meg a következő parancsot: `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Tartsa meg az alapértelmezett értékeket a többi beállításnál, és válassza az **OK** lehetőséget.
 
   ![Tevékenység létrehozása][task_create]
 
@@ -117,7 +117,7 @@ Egy második tevékenység létrehozásához menjen vissza az 1. lépésre. Adjo
 
 ## <a name="view-task-output"></a>A tevékenység kimenetének megtekintése
 
-A fenti példatevékenységek néhány percen belül befejeződnek. A befejezett tevékenységek kimenetének megtekintéséhez kattintson a **Fájlok a csomóponton** lehetőségre, és válassza az `stdout.txt` fájlt. A fájl a tevékenység szabványos kimenetét jeleníti meg. A tartalma a következőhöz hasonló lesz:
+A fenti példatevékenységek néhány percen belül befejeződnek. A befejezett tevékenységek kimenetének megtekintéséhez válassza a **Fájlok a csomóponton** lehetőséget, és válassza az `stdout.txt` fájlt. A fájl a tevékenység szabványos kimenetét jeleníti meg. A tartalma a következőhöz hasonló lesz:
 
 ![A tevékenység kimenetének megtekintése][task_output]
 
@@ -127,9 +127,9 @@ A tartalom a csomóponton beállított Azure Batch környezeti változókat jele
 
 Ha folytatni szeretné a Batch-oktatóanyagok és -minták használatát, használja az ebben a rövid útmutatóban létrehozott Batch-fiókot és az ahhoz kapcsolt Storage-fiókot. A Batch-fiók használata díjmentes.
 
-A készletért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt. A fióknézetben kattintson a **Készletek** lehetőségre, majd a készlet nevére. Ezután kattintson a **Törlés** gombra.  A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. 
+A készletért díjat számítunk fel, amíg a csomópontok futnak, még akkor is, ha nincsenek feladatok ütemezve. Ha már nincs szüksége a készletre, törölje azt. A fióknézetben válassza a **Készletek** lehetőséget, majd a készlet nevét. Ezután válassza a **Törlés** elemet.  A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. 
 
-Törölje az erőforráscsoportot, a Batch-fiókot és az összes kapcsolódó erőforrást, ha már nincs rá szüksége. Ehhez válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** lehetőségre.
+Törölje az erőforráscsoportot, a Batch-fiókot és az összes kapcsolódó erőforrást, ha már nincs rá szüksége. Ehhez válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és válassza az **Erőforráscsoport törlése** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

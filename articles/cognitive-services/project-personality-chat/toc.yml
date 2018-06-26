@@ -1,0 +1,11 @@
+- name: A Személyes hatású csevegés projekt dokumentációja
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Személyes hatású csevegés projekt?
+      href: overview.md
+- name: További források
+  expanded: true
+  items:
+    - name: GYIK
+      href: faq.md

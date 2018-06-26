@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9542eedecaf8dc6d689bf6192f74eee15287ae99
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178755"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295426"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -67,6 +67,7 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>Microsoftos társviszony-létesítéshez használt IP-címek
 A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-címeket kell használnia. A Microsoftnak képesnek kell lennie ellenőrizni az IP-címek tulajdonjogát egy regionális útválasztási internetes jegyzékben vagy egy internetes útválasztási jegyzékben.
 
+* A portálon a Microsoft társviszony-létesítéshez meghirdetett nyilvános előtagok IP-címei az IP-címekről érkező bejövő adatforgalom engedélyezéséhez ACL-eket hoznak létre a Microsoft Core-útválasztókhoz. 
 * ExpressRoute-kapcsolatcsoportonként minden társviszonyhoz egy egyedi /29 (IPv4) vagy /125 (IPv6) alhálózatot vagy két /30 (IPv4) vagy /126 (IPv6) alhálózatot kell használnia a BGP társviszony-létesítés beállításához (ha többel rendelkezik).
 * Ha egy /29 alhálózatot használ, az két /30 alhálózatra van felosztva.
 * Az első /30 alhálózatot az elsődleges kapcsolathoz, a második /30 alhálózatot pedig a másodlagos kapcsolathoz használja a rendszer.
@@ -186,7 +187,7 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | **Ausztrália** | |
 | Kelet-Ausztrália | 12076:51015 |
 | Délkelet-Ausztrália | 12076:51016 |
-| **Ausztrália kormányzati** | |
+| **Ausztrália kormánya** | |
 | Ausztrália középső régiója | 12076:51032 |
 | Ausztrália 2. középső régiója | 12076:51033 |
 | **India** | |

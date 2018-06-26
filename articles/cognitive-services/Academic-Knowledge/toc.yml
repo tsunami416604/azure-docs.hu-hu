@@ -1,0 +1,54 @@
+- name: Az Academic Knowledge dokumentációja
+- name: Áttekintés
+  items:
+    - name: Tudnivalók az Academic Knowledge API-ról
+      href: Home.md
+- name: Útmutatók
+  items:
+    - name: Entitásattribútumok
+      href: EntityAttributes.md
+      items:
+        - name: Tanulmány
+          href: PaperEntityAttributes.md
+        - name: Szerző
+          href: AuthorEntityAttributes.md
+        - name: Tagság
+          href: AffiliationEntityAttributes.md
+        - name: Szakterület
+          href: FieldsOfStudyEntityAttributes.md
+        - name: Konferenciasorozat
+          href: ConferenceSeriesEntityAttributes.md
+        - name: Konferenciaesemény
+          href: ConferenceInstanceEntityAttributes.md
+        - name: Napló
+          href: JournalEntityAttributes.md
+    - name: Metódusok
+      items:
+        - name: Számítási hisztogram
+          href: CalcHistogramMethod.md
+        - name: Értékelés
+          href: EvaluateMethod.md
+        - name: Értelmezés
+          href: InterpretMethod.md
+        - name: Hasonlóság
+          href: SimilarityMethod.md
+    - name: Lekérdezési kifejezés szintaxisa
+      href: QueryExpressionSyntax.md
+    - name: Graph-bejárás
+      items:
+        - name: Lambda keresési szintaxis
+          href: LambdaSearchSyntax.md
+        - name: Graph keresési módszer
+          href: GraphSearchMethod.md
+        - name: JSON keresési szintaxis
+          href: JSONSearchSyntax.md
+- name: Referencia
+  items:
+    - name: API-hivatkozás
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97'
+    - name: Labs API-referencia
+      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/56332331778daf02acc0a50b/operations/565d9001ca73072048922d97'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'

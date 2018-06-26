@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 40c57a00363d3952f85a053724ab7dbec257670d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9697bd5a55a5cfcdcd6958f8baff85e55c880c87
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606460"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287660"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure-fájlmegosztások biztonsági mentése
 Ez a cikk azt ismerteti, hogyan használhatja az Azure Portalt az [Azure-fájlmegosztások](../storage/files/storage-files-introduction.md) biztonsági mentésére és visszaállítására.
@@ -28,17 +28,21 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 > * A biztonsági mentési adatok törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
-Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződjön meg arról, hogy az a [támogatott tárfióktípusok](troubleshoot-azure-files.md#preview-boundaries) közé tartozik. Ennek ellenőrzését követően biztosíthatja a fájlmegosztások védelmét.
+Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződjön meg arról, hogy az a [támogatott tárfióktípusok](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) közé tartozik. Ennek ellenőrzését követően biztosíthatja a fájlmegosztások védelmét.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
-Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Vegye figyelembe a következő korlátozásokat az előzetes verzió használatakor:
-- A tárfiókokban lévő Azure-fájlmegosztásokat nem lehet [zónaredundáns tárolási (ZRS)](../storage/common/storage-redundancy-zrs.md) vagy [írásvédett georedundáns tárolási (RA-GRS)](../storage/common/storage-redundancy-grs.md) replikációval védeni.
-- Az Azure-fájlmegosztásokat nem lehet védeni olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok.
-- Az Azure Files védelméhez nem áll rendelkezésre PowerShell vagy parancssori felület.
+Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
+- A tárfiókokban lévő Azure-fájlmegosztások védelme nem biztosítható [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval*.
+- Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
+- Az Azure Files szolgáltatás Azure Backup használatával történő védelméhez nem áll rendelkezésre PowerShell vagy parancssori felület.
 - Az ütemezett biztonsági mentések maximális száma naponta egy.
 - Az igény szerinti biztonsági mentések maximális száma naponta négy.
 - Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
-- Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet. 
+- Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
+
+\*A tárfiókokban lévő Azure-fájlmegosztások [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikáció esetén GRS-ként működnek és GRS-díjszabás szerint lesznek számlázva
+
+A [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációjú tárfiókokban lévő Azure-fájlmegosztások jelenleg csak az USA középső régiójában (CUS) és USA 2. keleti régiójában (EUS2) elérhetők
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure-fájlmegosztások biztonsági mentésének konfigurálása
 A helyreállítási tárak tartalmazzák az összes biztonsági mentési adatot. Ez az oktatóanyag feltételezi, hogy már létrehozott egy Azure-fájlmegosztást. Az Azure-fájlmegosztás biztonsági mentése:

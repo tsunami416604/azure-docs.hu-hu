@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f6dcaee1ac328a9bafce0561f421b772b7e1d119
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605168"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286400"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -23,7 +23,7 @@ A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terü
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Biztonsági mentési feladat konfigurálása Azure Fileshoz
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Miért nem látok néhány, általam védeni kívánt tárfiókot, amelyek érvényes Azure-fájlmegosztásokat tartalmaznak? <br/>
-Az előzetes verzióban az Azure-fájlmegosztások biztonsági mentése nem támogatja a tárfiókok minden típusát. Tekintse át [itt](troubleshoot-azure-files.md#preview-boundaries) a támogatott tárfiókok listáját. Elképzelhető emellett, hogy a keresett tárfiók már védett, vagy másik tárolóban van regisztrálva. [Törölje a regisztrációt](troubleshoot-azure-files.md#configuring-backup) a tárolóban, ha a tárfiókot el szeretné érni egy másik tárolóban a védelem beállításához.
+Az előzetes verzióban az Azure-fájlmegosztások biztonsági mentése nem támogatja a tárfiókok minden típusát. Tekintse át [itt](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview) a támogatott tárfiókok listáját. Elképzelhető emellett, hogy a keresett tárfiók már védett, vagy másik tárolóban van regisztrálva. [Törölje a regisztrációt](troubleshoot-azure-files.md#configuring-backup) a tárolóban, ha a tárfiókot el szeretné érni egy másik tárolóban a védelem beállításához.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Miért nem látom néhány Azure-fájlmegosztásomat a tárfiókban, miközben a biztonsági mentést próbálom konfigurálni? <br/>
 Ellenőrizze, hogy az Azure-fájlmegosztás már védve van-e ugyanabban a helyreállítási tárban, vagy nemrégiben lett-e törölve.
@@ -39,13 +39,13 @@ Igen. Azonban [le kell állítania a védelmet](backup-azure-files.md#stop-prote
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Milyen földrajzi helyeken készíthetek biztonsági mentést Azure-fájlmegosztásaimról <br/>
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban és csak a következő helyeken érhető el: 
--   Délkelet-Ausztrália (ASE) 
+-   Kelet-Ausztrália (AE) 
+- Délkelet-Ausztrália (ASE) 
 - Dél-Brazília (BRS)
 - Közép-Kanada (CNC)
 -   Kelet-Kanada (CE)
 -   USA középső régiója (CUS)
 -   Kelet-Ázsia (EA)
--   Kelet-Ausztrália (AE) 
 -   USA keleti régiója (EUS)
 -   USA 2. keleti régiója (EUS2)
 - Kelet-Japán (JPE)

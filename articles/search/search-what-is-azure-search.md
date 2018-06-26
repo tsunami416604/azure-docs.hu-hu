@@ -6,14 +6,14 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/10/2017
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: 0957ca2b6ce58249531ca0b8e3f26bc16cabb5d5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: ad5831309ff9e4cc420e777dc06815a5e6b79f91
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802425"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217653"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz.
@@ -26,7 +26,8 @@ A funkciókat egy egyszerű [REST API-n](/rest/api/searchservice/) vagy [.NET SD
 
 | Kategória | Szolgáltatások |
 |----------|----------|
-|Teljes szöveges keresés és szövegelemzés | A [teljes szöveges keresés](search-lucene-query-architecture.md) a keresésalapú alkalmazások leggyakrabban igénybe vett funkciója. A lekérdezéseket a támogatott szintaxisok segítségével állíthatja össze. <br/><br/>Az [**egyszerű lekérdezési szintaxis**](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) logikai operátorokat, kifejezéskeresési operátorokat, utótag-operátorokat és prioritási operátorokat tartalmaz.<br/><br/>A [**Lucene lekérdezési szintaxis**](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) tartalmazza az egyszerű szintaxis összes operátorát, illetve támogatja emellett az intelligens keresést, a közelségi keresést, a kifejezés-kiemelést és a reguláris kifejezéseket.| 
+|Teljes szöveges keresés és szövegelemzés | A [teljes szöveges keresés](search-lucene-query-architecture.md) a keresésalapú alkalmazások leggyakrabban igénybe vett funkciója. A lekérdezéseket a támogatott szintaxisok segítségével állíthatja össze. <br/><br/>Az [**egyszerű lekérdezési szintaxis**](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) logikai operátorokat, kifejezéskeresési operátorokat, utótag-operátorokat és prioritási operátorokat tartalmaz.<br/><br/>A [**Lucene lekérdezési szintaxis**](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) tartalmazza az egyszerű szintaxis összes operátorát, illetve támogatja emellett az intelligens keresést, a közelségi keresést, a kifejezés-kiemelést és a reguláris kifejezéseket.|
+|Kognitív keresés (előzetes verzió) | A képek és szövegek elemzéséhez használt, [mesterséges intelligencia által vezérelt algoritmusok](cognitive-search-concept-intro.md) indexelési folyamatokra is alkalmazhatók a szöveges információ nyers tartalomból való kinyerése céljából. A [beépített képességek](cognitive-search-predefined-skills.md) között szerepel például az optikai karakterfelismerés (beolvasott JPEG-fájlok kereshetővé tétele), az entitásfelismerés (cég vagy intézmény, név vagy hely azonosítása), valamint a kulcskifejezések felismerése. [Egyéni képességeket is kódolhat](cognitive-search-create-custom-skill-example.md), amelyeket a folyamathoz lehet kapcsolni. |
 | Adatintegráció | Az Azure Search indexei bármilyen forrásból fogadnak el adatokat, feltéve hogy azok JSON adatstruktúraként vannak formázva. <br/><br/> Opcionálisan az Azure-ban támogatott adatforrásokhoz használhat [**indexelőket**](search-indexer-overview.md) az [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md) vagy [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) automatikus bejárásához, mely szinkronizálja a keresési index tartalmát az elsődleges adattárral. Az Azure Blob-indexelők képesek *dokumentumfeltörést* végezni a [leggyakoribb fájlformátumok indexeléséhez](search-howto-indexing-azure-blob-storage.md), ideértve a Microsoft Office-, a PDF- és a HTML-dokumentumokat. |
 | Nyelvi elemzés | Az elemzők olyan összetevők, amelyekkel a rendszer szövegfeldolgozást végez az indexelési és keresési műveletek során. Két típusukat különböztetjük meg. <br/><br/>Az [**egyéni lexikai elemzőket**](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) a rendszer a fonetikus egyeztetést és reguláris kifejezéseket használó összetett keresési lekérdezésekhez alkalmazza. <br/><br/>A Lucene-tól vagy a Microsofttól származó [**nyelvi elemzők**](https://docs.microsoft.com/rest/api/searchservice/language-support) a nyelvspecifikus funkcionalitást kezelik, ideértve például az igeidőt, a nemet, a szabálytalan többesszámú főneveket, a szóösszetételek lebontását és a szavakra bontást (a szóközt nem alkalmazó nyelveknél). |
 | Földrajzi keresés | Az Azure Search feldolgozza, szűri és megjeleníti a földrajzi helyeket. Ez lehetővé teszi a felhasználóknak, hogy az adatokat a keresési eredménynek egy fizikai helyhez való közelsége alapján tárják fel. További információért [nézze meg ezt a videót](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data) vagy [tekintse át ezt a mintát](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). |

@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751496"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -53,25 +54,6 @@ Az Azure portál élményt nyújt továbbfejlesztettük módon, hogy megtekinthe
 6. Ez a nézet csak a jelszó alaphelyzetbe állítása kapcsolatos események szűréséhez válassza a **szűrő** gombra, ha a panel tetején.
 7. Az a **szűrő** menüben válassza a **kategória** legördülő listában, és módosítsa úgy, hogy a **önkiszolgáló jelszókezelés** kategória típusa.
 8. Szükség esetén további szűréséhez válassza ki az adott **tevékenység** kíváncsiak vagyunk.
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Hogyan lehet lekérni a jelszó felügyeleti események az Azure AD-jelentések és események API
-
-Az Azure AD-jelentések és események API támogatja a jelszó alaphelyzetbe állítása szereplő összes információ lekérése, és a jelszó alaphelyzetbe állítása a szóregisztrációs jelentéseket. Ez az API használatával egyéni jelszó alaphelyzetbe állítása és a jelszó alaphelyzetbe állítása regisztrációs események letöltheti és integrálja ezeket a kiválasztott jelentési technológia.
-
-> [!IMPORTANT]
-> Jelenleg az Azure AD-jelentések és események API lekérdezi legfeljebb *75,000 események* , a [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) és [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) típusok. Az API-t is az elmúlt 30 napban.
-> 
-> Ha szeretné beolvasni, vagy ez az ablak adatok tárolására, javasoljuk, hogy a eltéréseit – eredményező lekérdezni az API használatával külső adatbázis megőrzése. Azt javasoljuk, hogy kezdje lekérdezhetik ezeket az adatokat, önkiszolgáló jelszó-Változtatási segítségével a szervezet indításakor. Továbbra is fennáll, akkor kívülről, és folytassa a ettől kezdve az eltérések nyomon követésére.
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>Első lépések a reporting API-hoz
-
-Ezek az adatok eléréséhez meg kell írnia egy kis alkalmazás vagy a parancsfájl azt lekérése a kiszolgálóról. További információkért lásd: [az Azure AD reporting API használatába](../active-directory-reporting-api-getting-started-azure-portal.md).
-
-Miután egy működő parancsfájl, érdemes vizsgálja meg az esetek teljesítéséhez kérheti le a jelszó alaphelyzetbe állítása és nyilvántartási események:
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): az elérhető oszlopok listája, a jelszó-átállítási események.
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): az elérhető oszlopok listája, a jelszó-átállítási regisztráció események.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Az Azure-portálon a jelentés oszlopok leírása
 

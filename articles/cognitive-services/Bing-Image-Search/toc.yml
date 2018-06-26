@@ -1,0 +1,95 @@
+- name: A Bing Image Search dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Bing Image Search?
+      href: overview.md
+- name: REST API – rövid útmutatók
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: SDK – rövid útmutatók
+  items:
+    - name: SDK-minták áttekintése
+      href: sdk.md
+    - name: 'Image Search SDK C# – rövid útmutató'
+      href: image-search-sdk-quickstart.md
+    - name: Image Search SDK Node.js – rövid útmutató
+      href: image-search-sdk-node-quickstart.md
+    - name: Image Search SDK Python – rövid útmutató
+      href: image-sdk-python-quickstart.md
+    - name: Image Search SDK Java – rövid útmutató
+      href: image-sdk-java-quickstart.md
+- name: Oktatóanyagok
+  items:
+    - name: Egyoldalas webalkalmazás
+      href: tutorial-bing-image-search-single-page-app.md
+    - name: Egyoldalas webalkalmazás (forráskód)
+      href: tutorial-bing-image-search-single-page-app-source.md
+    - name: Bing képfeltöltés elemzéshez
+      href: tutorial-image-post.md
+    - name: Bing képfeltöltés elemzéshez (forráskód)
+      href: tutorial-image-post-source.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
+- name: Útmutatók
+  items:
+    - name: Eredmények használata és megjelenítése
+      href: UseAndDisplayRequirements.md
+    - name: Képelemzések lekérése
+      href: image-insights.md
+    - name: .gif formátumú képek lekérése
+      href: gif-images.md
+    - name: Népszerű képek lekérése
+      href: trending-images.md
+    - name: Lapozás a képek között
+      href: paging-images.md
+    - name: Miniatűrök átméretezése és körülvágása
+      href: resize-and-crop-thumbnails.md
+    - name: Frissítés 5-ös verzióról 7-es verzióra
+      href: bing-image-upgrade-guide-v5-to-v7.md
+- name: Referencia
+  items:
+    - name: Bing Image Search API 7-es verzió
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference'
+    - name: Bing Image Search API 5-ös verzió
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference'
+- name: További források
+  items:
+    - name: GYIK
+      href: bing-image-search-resource-faq.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: Régiónkénti rendelkezésre állás
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API-kulcs beszerzése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
+    - name: Próbálja ki!
+      href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
+    - name: Bing Image Search-végpontok
+      href: image-search-endpoint.md
+    - name: Támogatott országok és piacok
+      href: supported-countries-markets.md
+    - name: Bing Image Search API – elemzés
+      href: bing-image-stats.md

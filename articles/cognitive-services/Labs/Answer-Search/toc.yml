@@ -1,0 +1,29 @@
+- name: A Válaszkeresés projekt dokumentációja
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi a Válaszkeresés projekt?
+      href: overview.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: 'C#'
+      href: c-sharp-quickstart.md
+    - name: Java
+      href: java-quickstart.md
+    - name: Csomópont
+      href: node-quickstart.md
+    - name: Python
+      href: python-quickstart.md
+- name: Alapelvek
+  items:
+    - name: Ténylekérdezések
+      href: fact-queries.md
+    - name: Entitáslekérdezések
+      href: entity-queries.md
+- name: Referencia
+  items:
+    - name: Követelmények használata és megjelenítése
+      href: use-display-requirements.md
+    - name: A Válaszkeresés projekt referenciája
+      href: reference.md

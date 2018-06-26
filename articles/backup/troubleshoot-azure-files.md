@@ -8,31 +8,29 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: bdb35cf47b339ff2089b3849283a71aa9d8fbc3d
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 797637fbaaeb0577d0437f32d4ce244a738be84b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807414"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287328"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztások biztonsági mentésével kapcsolatos problémák elhárítása
 Az alábbi táblázatokban szereplő információk segítségével elháríthatja az Azure-fájlmegosztások biztonsági mentése közben fellépő problémákat és hibákat.
 
-## <a name="preview-boundaries"></a>Előzetes verzió határai
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Az Azure-fájlmegosztás biztonsági mentésének korlátozásai az előzetes verzióban
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
-- Tárfiókokban lévő Azure-fájlmegosztások védelme [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval*.
-- Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
-- Azure-fájlmegosztások biztonsági mentése PowerShell vagy parancssori felület használatával.
+- A tárfiókokban lévő Azure-fájlmegosztások védelme nem biztosítható [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikációval*.
+- Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
+- Az Azure Files szolgáltatás Azure Backup használatával történő védelméhez nem áll rendelkezésre PowerShell vagy parancssori felület.
+- Az ütemezett biztonsági mentések maximális száma naponta egy.
+- Az igény szerinti biztonsági mentések maximális száma naponta négy.
+- Használjon [erőforrászárat](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
+- Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
 
 \*A tárfiókokban lévő Azure-fájlmegosztások [írásvédett georedundáns tárolás](../storage/common/storage-redundancy-grs.md) (RA-GRS) replikáció esetén GRS-ként működnek és GRS-díjszabás szerint lesznek számlázva
 
 A [zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md) (ZRS) replikációjú tárfiókokban lévő Azure-fájlmegosztások jelenleg csak az USA középső régiójában (CUS) és USA 2. keleti régiójában (EUS2) elérhetők
-
-### <a name="limitations"></a>Korlátozások
-- Maximális #ütemezett biztonsági mentés naponta: 1.
-- Maximális #igény szerinti biztonsági mentés naponta: 4.
-- Használjon erőforrászárat a tárfiókon, hogy megelőzze a helyreállítási tárban lévő biztonsági másolatok véletlen törlését.
-- Ne törölje az Azure Backuppal létrehozott pillanatképeket. A pillanatképek törlése helyreállítási pontok elvesztését és/vagy visszaállítási hibákat eredményezhet.
 
 ## <a name="configuring-backup"></a>Biztonsági mentés konfigurálása
 Az alábbi táblázat a biztonsági mentés minél pontosabb konfigurálásához használható:

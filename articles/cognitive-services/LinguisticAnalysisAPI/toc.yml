@@ -1,0 +1,29 @@
+- name: A Linguistic Analysis API dokumentációja
+- name: Áttekintés
+  items:
+    - name: Mi a Linguistic Analysis API?
+      href: Home.md
+- name: Útmutató
+  items:
+    - name: Elemző nevek
+      href: Analyzer-Names.md
+    - name: Vevőkör-elemzés
+      href: Constituency-Parsing.md
+    - name: Beszédrészlet-címkézés
+      href: POS-tagging.md
+    - name: Mondatok és lexikális jelek
+      href: Sentences-and-Tokens.md
+    - name: Elemzési módszer
+      href: AnalyzeMethod.md
+    - name: Elemző módszer
+      href: AnalyzersMethod.md
+- name: Referencia
+  items:
+    - name: Linguistic Analysis API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56ea598f778daf01942505ff/operations/56ea5a1cca73071fd4b102bb'
+    - name: Windows SDK
+      href: 'https://github.com/Microsoft/Cognitive-linguisticanalysis-windows'
+- name: További források
+  items:
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555928-linguistic-analysis-api'

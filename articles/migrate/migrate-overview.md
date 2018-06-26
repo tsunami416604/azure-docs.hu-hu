@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 06/08/2018
+ms.date: 06/20/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6c78554b78468329819726bfd95671a34f51b231
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236365"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285797"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -31,7 +31,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 
 - Jelenleg csak a helyszíni VMware virtuális gépek Azure-beli virtuális gépekre való migrálásának lehetőségeit értékelheti ki. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
 - A Hyper-V támogatása tervbe van véve. Addig is az [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) használatát javasoljuk a Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez.
-- Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
+- Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet. Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet, [további információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni. Ez azonban nem befolyásolja a migrálás megtervezését egy másik Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 
@@ -50,7 +50,10 @@ Az értékelés segítségével azonosíthatja a helyszíni virtuális gépek Az
 **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg 30 régiót támogat, beleértve a következőket: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Közép-Németország, Északkelet-Németország, USA 2. keleti régiója, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Korea déli régiója, USA északi középső régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA-beli államigazgatás – Arizona, USA-beli államigazgatás – Texas, USA-beli államigazgatás – Virginia, USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és USA 2. nyugati régiója. Az alapértelmezetten beállított hely az USA 2. nyugati régiója.
 **Tárolás típusa** | Megadhatja az Azure-ban lefoglalni kívánt lemezek típusát. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel a helyszíni méretezés. A céllemez típusa prémium vagy standard szintű felügyelt lemez lehet. Az alapértelmezett érték a prémium szintű felügyelt lemez. Teljesítményalapú méretezés esetén a lemezre vonatkozó javaslatot a rendszer automatikusan adja meg a virtuális gépek teljesítményadatinak figyelembe vételével. Vegye figyelembe, hogy az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 **Méretezési feltétel** | Az Azure Migrate által használt feltétel a virtuális gépek Azure-nak megfelelő méretezéséhez. A méretezést a helyszíni virtuális gépek *teljesítményelőzményei* alapján végezheti el, vagy méretezheti a virtuális gépeket az Azure-hoz *helyszíniként* is, a teljesítményelőzmények figyelembe vétele nélkül. Az alapértelmezett érték a helyszíni méretezés.
-**Díjszabások** | A költségszámításokhoz az értékelés figyelembe veszi, hogy rendelkezik-e szoftvergaranciával, és jogosult-e az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) juttatásra. Emellett azokat az [Azure-ajánlatokat](https://azure.microsoft.com/support/legal/offer-details/) is figyelembe veszi, amelyekre esetleg regisztrált, és lehetővé teszi, hogy előfizetés-specifikus kedvezményeket (%) adjon meg az ajánlaton felül.
+**Azure-ajánlat** | Megadhatja az [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/), amelyre regisztrált, és az Azure Migrate az alapján megbecsüli a költségeket.
+**Azure Hybrid Benefit** | Megadhatja, hogy rendelkezik-e Frissítési Garanciával, és jogosult-e az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) kedvezményes díjainak igénybevételére.
+**Fenntartott példányok** |  Megadhatja azt is, hogy vannak-e [fenntartott példányai](https://azure.microsoft.com/pricing/reserved-vm-instances/) az Azure-ban, és az Azure Migrate az alapján megbecsüli a költségeket.
+**Virtuális gép üzemideje** | Ha a virtuális gépei nem futnak a hét minden napján egész nap az Azure-ban, megadhatja, milyen hosszan fognak futni az Azure-ban, és a rendszer az alapján végzi el a költségbecsléseket.
 **Tarifacsomag** | Megadhatja a cél Azure-beli virtuális gépek [tarifacsomagját (alapszintű/standard)](../virtual-machines/windows/sizes-general.md). Például ha azt tervezi, hogy éles környezetet migrál, érdemes a Standard csomagot választani, amely kis késleltetésű virtuális gépeket biztosít, de többe kerülhet. Másrészről ha egy fejlesztői/tesztkörnyezetet használ, érdemes lehet az Alapszintű csomag mellett dönteni, amely nagyobb késleltetésű virtuális gépeket biztosít, alacsonyabb költségek mellett. Alapértelmezés szerint a rendszer a [Standard](../virtual-machines/windows/sizes-general.md) csomagot használja.
 **Teljesítményelőzmények** | Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét az utolsó nap teljesítményelőzményei alapján, 95%-os százalékértékkel értékeli ki. Ezeket az értékeket az értékelés tulajdonságaiban módosíthatja.
 **Virtuálisgép-sorozatok** | Megadhatja, hogy melyik virtuálisgép-sorozatot szeretné figyelembe venni a megfelelő méretezéshez. Például egy olyan éles környezetben, amelyet nem szeretne A-sorozatú virtuális gépekre migrálni az Azure-ban, kizárhatja a listából vagy sorozatból az A-sorozatot, így a megfelelő méretezés csak a kiválasztott sorozatban megy végbe.  

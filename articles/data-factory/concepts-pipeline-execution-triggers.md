@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/29/2018
+ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715037"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293479"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -142,6 +142,8 @@ A folyamatok futtatása triggerek használatával is elvégezhető. Az eseményi
 
 - Átfedésmentes ablakos eseményindító: az állapot megőrzése mellett, rendszeres időközönként működő eseményindító. Az Azure Data Factory jelenleg nem támogatja az eseményalapú eseményindítókat. A fájlérkezési eseményre válaszoló folyamatfuttatások eseményindítói például nem támogatottak.
 
+- Eseményalapú trigger: olyan trigger, amely egy eseményre válaszol.
+
 A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll fenn. Egy folyamatot több eseményindító is indíthat, és egyetlen eseményindító indíthat több folyamatot is. Az eseményindító alábbi definíciójában a **folyamatok** tulajdonság az adott eseményindító által aktivált folyamatok listájára vonatkozik. A tulajdonság meghatározása a folyamatparaméterek értékeit is tartalmazza.
 
 ### <a name="basic-trigger-definition"></a>Alap eseményindító meghatározása
@@ -175,11 +177,6 @@ A folyamatok és az eseményindítók között több-a-többhöz kapcsolat áll 
 Az ütemezési eseményindító egy időpontalapú ütemezés szerint futtatja a folyamatokat. Ez az eseményindító támogatja az időszakos és speciális naptárbeállításokat. Az eseményindító például az ezekhez hasonló időközöket támogatja: „hetente” vagy „hétfőnként délután 5:00-kor és csütörtökönként este 9:00-kor”. Az ütemezési eseményindító rugalmas, mert az adatkészlet-mintázat független, és az eseményindító nem tesz különbséget az idősorozat-adatok és a nem idősorozat-adatok között.
 
 Példák és további információ az ütemezési triggerekről: [Ütemezési trigger létrehozása](how-to-create-schedule-trigger.md).
-
-## <a name="tumbling-window-trigger"></a>Átfedésmentes ablakos eseményindító
-Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek rendszeres időközönként aktiválódnak a megadott kezdési időponttól kezdve, az állapot megőrzése mellett. Az átfedésmentes ablakok rögzített méretű, egymást nem fedő és összefüggő időintervallumok.
-
-Példák és további információ az átfedésmentes ablakos triggerekről: [Átfedésmentes ablakos trigger létrehozása](how-to-create-tumbling-window-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Ütemezési eseményindító meghatározása
 Amikor létrehoz egy ütemezési eseményindítót, a JSON-definíció segítségével megadhatja az ütemezést és az ismétlődést. 
@@ -322,6 +319,17 @@ A következő táblázat részletesen ismerteti a **schedule** elemeit:
 | **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg.|<br />– Hétfő<br />– Kedd<br />– Szerda<br />– Csütörtök<br />– Péntek<br />– Szombat<br />– Vasárnap<br />– Nap értékek tömbje (a tömb maximális mérete 7)<br /><br />A nap értékek nem tesznek különbséget a kis- és nagybetű között|
 | **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. |– **monthlyOccurence** objektumok tömbje: `{ "day": day,  "occurrence": occurence }`<br />– A **day** attribútum a hét azon napja, amelyen a trigger fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.<br />– Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.|
 | **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. |– Bármilyen érték -1 és -31 között<br />– Bármilyen érték 1 és 31 között<br />– Értékek tömbje|
+
+## <a name="tumbling-window-trigger"></a>Átfedésmentes ablakos eseményindító
+Az átfedésmentes ablakos eseményindítók olyan eseményindítók, amelyek rendszeres időközönként aktiválódnak a megadott kezdési időponttól kezdve, az állapot megőrzése mellett. Az átfedésmentes ablakok rögzített méretű, egymást nem fedő és összefüggő időintervallumok.
+
+Példák és további információ az átfedésmentes ablakos triggerekről: [Átfedésmentes ablakos trigger létrehozása](how-to-create-tumbling-window-trigger.md).
+
+## <a name="event-based-trigger"></a>Eseményalapú trigger
+
+Az eseményalapú trigger folyamatokat futtat válaszként egy eseményre, ilyen például egy fájl érkezése vagy törlése az Azure Blob Storage-ban.
+
+További információkat az eseményalapú triggerekkel kapcsolatban az [eseményre válaszul folyamatot futtató trigger létrehozásával](how-to-create-event-trigger.md) kapcsolatos témakörben olvashat.
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Eseményindító-ismétlődési ütemezések példái
 Ez a szakasz az ismétlődésütemezésekre mutat be példákat. A **schedule** objektumra és annak elemeire koncentrál.

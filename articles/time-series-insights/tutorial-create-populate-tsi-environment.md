@@ -2,17 +2,17 @@
 title: Azure Time Series Insights-környezet létrehozása
 description: Ismerje meg, hogyan hozhat létre szimulált eszközök adataival feltöltött Time Series Insights-környezeteket.
 services: time-series-insights
-author: BryanLa
+author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/04/2018
 ms.author: bryanla
-ms.openlocfilehash: 434f9f7890b909746fd1a0f72a2dea5d7bb27e92
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b57e688b5f830c8c7d34315a68be94e4e4c99466
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301354"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295847"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -230,9 +230,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Eszközszimuláció futtatása adatok streamelésére a TSI-környezetbe
 > * A szimulált telemetriaadatok ellenőrzése
 
-Most, hogy elsajátította, hogyan hozhat létre saját TSI-környezetet, a következő cikkre továbblépve további részleteket tudhat meg a tervezési feladatról:
+Most, hogy elsajátította, hogyan hozhat létre saját TSI-környezetet, megtudhatja, hogyan készíthet olyan webalkalmazást, amely a TSI-környezet adatait használja:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights-környezet tervezése](time-series-insights-environment-planning.md)
+> [Azure Time Series Insights egyoldalas webalkalmazás létrehozása](tutorial-create-tsi-sample-spa.md)
 
 

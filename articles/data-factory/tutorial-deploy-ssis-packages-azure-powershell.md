@@ -1,26 +1,27 @@
 ---
-title: SSIS-csomagok üzembe helyezése az Azure-ban a PowerShell-lel | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan lehet a PowerShell-lel SSIS-csomagokat üzembe helyezni az Azure-ban és létrehozni egy Azure-SSIS integrációs modult.
+title: Azure SSIS integrációs modul üzembe helyezése PowerShell segítségével | Microsoft Docs
+description: Ismerje meg, hogyan helyezheti üzembe az Azure SSIS integrációs modult az Azure Data Factoryben a PowerShell használatával, hogy SSIS-csomagokat telepíthessen és futtathasson az Azure-ban.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 04/13/2018
-ms.author: douglasl
-ms.openlocfilehash: 3b127eded5e9f9bc921e5830975513c9e7233a2c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 06/11/2018
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 65df472665e5f7e50ee495674889c8048824d5d3
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267591"
 ---
-# <a name="deploy-sql-server-integration-services-packages-to-azure-with-powershell"></a>SQL Server Integration Services-csomagok üzembe helyezése az Azure-ban a PowerShell-lel
-Ez az oktatóanyag egy Azure-SSIS integrációs modul (IR) az Azure Data Factoryben való üzembe helyezésének lépéseit ismerteti. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával üzembe helyezhet SQL Server Integration Services- (SSIS-) csomagokat ebben az Azure-beli modulban. Az oktatóanyag során a következő lépéseket hajtja végre:
+# <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Azure SSIS integrációs modul üzembe helyezése az Azure Data Factoryben PowerShell segítségével
+Ez az oktatóanyag egy Azure-SSIS integrációs modul (IR) az Azure Data Factoryben való üzembe helyezésének lépéseit ismerteti. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services- (SSIS-) csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!NOTE]
 > Ebben a cikkben az Azure PowerShellt használjuk egy Azure SSIS IR üzembe helyezéséhez. A Data Factory felhasználói felületének (UI) az Azure SSIS IR üzembe helyezéséhez való használatával kapcsolatban lásd az [Azure SSIS integrációs modul létrehozásának oktatóanyagát](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -38,9 +39,11 @@ Ez az oktatóanyag egy Azure-SSIS integrációs modul (IR) az Azure Data Factory
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot. Elméleti információk az Azure-SSIS integrációs modulra vonatkozóan: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 - **Azure SQL Database-kiszolgáló**. Ha még nem rendelkezik adatbázis-kiszolgálóval, először hozzon létre egyet az Azure Portalon. Ez a kiszolgáló üzemelteti az SSIS-katalógusadatbázist (SSISDB-t). Javasoljuk, hogy az adatbáziskiszolgálót az integrációs modullal megegyező Azure-régióban hozza létre. Ez a konfiguráció lehetővé teszi, hogy az integrációs modul Azure-régiók határainak átlépése nélkül írjon végrehajtási naplókat a katalógusadatbázisba. 
-    - Győződjön meg arról, hogy az **Allow access to Azure services** (Azure-szolgáltatások hozzáférésének engedélyezése) beállítás **BE** van kapcsolva az adatbázis-kiszolgálón. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal). A beállítás engedélyezése PowerShell használatával: [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1).
+    - A kiválasztott adatbázis-kiszolgáló alapján, az SSISDB létrehozható az Ön nevében önálló adatbázisként, egy rugalmas készlet részeként vagy egy előzetes verziójú felügyelt példányban, és elérhető nyilvános hálózatban vagy egy virtuális hálózathoz csatlakozva. Ha az Azure SQL Database-t virtuális hálózati szolgáltatásvégpontokkal/előzetes verziójú felügyelt példánnyal használja az SSISDB üzemeltetésére, vagy a helyszíni adatokhoz való hozzáférésre van szüksége, az Azure SSIS integrációs modulját csatlakoztatnia kell egy virtuális hálózathoz, lásd: [Azure SSIS integrációs modul létrehozása virtuális hálózatban](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Győződjön meg arról, hogy az **Allow access to Azure services** (Azure-szolgáltatások hozzáférésének engedélyezése) beállítás **BE** van kapcsolva az adatbázis-kiszolgálón. Ez a beállítás nem alkalmazható, amikor az Azure SQL Database-t virtuális hálózati szolgáltatásvégpontokkal/előzetes verziójú felügyelt példánnyal használja az SSISDB üzemeltetésére. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal). A beállítás engedélyezése PowerShell használatával: [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1).
     - Vegye fel az ügyfélszámítógép IP-címét vagy az ügyfélszámítógép IP-címét tartalmazó IP-címtartományt az ügyfél IP-címeinek listájára az adatbázis-kiszolgáló tűzfalbeállításainál. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md). 
-    - Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóján nincs SSIS-katalógus (SSIDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
+    - Az adatbázis-kiszolgálóhoz SQL-hitelesítéssel, a kiszolgálói rendszergazdai hitelesítő adataival vagy Azure Active Directory (AAD) hitelesítéssel, az Azure Data Factory felügyeltszolgáltatás-identitásával (MSI) csatlakozhat.  Az utóbbi esetében hozzá kell adnia a Data Factory MSI-t egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+    - Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóján nincs SSIS-katalógus (SSISDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Egy PowerShell-lel futtatott szkripttel üzembe helyez egy Azure SSIS integrációs modult, amely a felhőben futtat SSIS-csomagokat. 
 
 > [!NOTE]
@@ -56,45 +59,44 @@ Másolja ki, majd illessze be az alábbi kódot. Adja meg a változók értékei
 ```powershell
 # Azure Data Factory version 2 information 
 # If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
-$SubscriptionName = "<Azure subscription name>"
-$ResourceGroupName = "<Azure resource group name>"
+$SubscriptionName = "[Azure subscription name]"
+$ResourceGroupName = "[Azure resource group name]"
 # Data factory name. Must be globally unique
-$DataFactoryName = "<Data factory name>"
+$DataFactoryName = "[Data factory name]"
 # You can create a data factory of version 2 in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
-$DataFactoryLocation = "EastUS" 
+$DataFactoryLocation = "EastUS"
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
-$AzureSSISName = "<Specify a name for your Azure-SSIS IR>"
-$AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-# Azure-SSIS IR edition/license info: Standard or Enterprise 
-$AzureSSISEdition = "Standard" # Enterprise Edition supports advanced/premium features
-
+$AzureSSISName = "[Specify a name for your Azure-SSIS IR]"
+$AzureSSISDescription = "[Specify a description for your Azure-SSIS IR]"
 # You can create Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, Australia East. 
 $AzureSSISLocation = "EastUS"
 # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
-$AzureSSISNodeSize = "Standard_D3_v2"
+$AzureSSISNodeSize = "Standard_D4_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
+# Azure-SSIS IR edition/license info: Standard or Enterprise 
+$AzureSSISEdition = "" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
+# Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
+$AzureSSISLicenseType = "" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
-$AzureSSISMaxParallelExecutionsPerNode = 2 
-
+$AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
-$SetupScriptContainerSasUri = "" # OPTIONAL: SAS URI of blob container where your custom setup script and its associated files are stored
+$SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 
 # SSISDB info
-$SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
-$SSISDBServerAdminUserName = "<Azure SQL server - user name>"
-$SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
-# This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
-$SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
+$SSISDBServerEndpoint = “[your Azure SQL Database server name].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
+$SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
+# For the basic pricing tier, specify "Basic", not "B". For standard/premium/Elastic Pool tiers, specify "S0", "S1", "S2", "S3", etc.
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>)]"
 ```
 
 ## <a name="validate-the-connection-to-database"></a>Az adatbázissal való kapcsolat ellenőrzése
-Adja meg a következő szkriptet az Azure SQL Database-kiszolgáló (`<server>.database.windows.net`) ellenőrzéséhez. 
+Adja meg a következő szkriptet az Azure SQL Database-kiszolgáló (`<servername>.database.windows.net`) ellenőrzéséhez. 
 
 ```powershell
-$SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID="+ $SSISDBServerAdminUserName +";Password="+ $SSISDBServerAdminPassword
+$SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID=" + $SSISDBServerAdminUserName + ";Password=“ + $SSISDBServerAdminPassword
 $sqlConnection = New-Object System.Data.SqlClient.SqlConnection $SSISDBConnectionString;
 Try
 {
@@ -102,7 +104,7 @@ Try
 }
 Catch [System.Data.SqlClient.SqlException]
 {
-    Write-Warning "Cannot connect to your Azure SQL DB logical server/Azure SQL MI server, exception: $_"  ;
+    Write-Warning "Cannot connect to your Azure SQL Database server, exception: $_"  ;
     Write-Warning "Please make sure the server you specified has already been created. Do you want to proceed? [Y/N]"
     $yn = Read-Host
     if(!($yn -ieq "Y"))
@@ -114,21 +116,20 @@ Catch [System.Data.SqlClient.SqlException]
 
 Tekintse meg a következő példát egy Azure SQL-adatbázisnak a szkript részeként történő létrehozásáról: 
 
-Állítson be értékeket az eddig még meg nem határozott változók esetében. Például: FirewallIPAddress. 
+Állítson be értékeket az eddig még meg nem határozott változók esetében. Például: SSISDBServerName, FirewallIPAddress. 
 
 ```powershell
 New-AzureRmSqlServer -ResourceGroupName $ResourceGroupName `
-  -ServerName $SQLServerName `
+    -ServerName $SSISDBServerName `
     -Location $DataFactoryLocation `
-    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $SQLServerAdmin, $(ConvertTo-SecureString -String $SQLServerPass -AsPlainText -Force))
+    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $SSISDBServerAdminUserName, $(ConvertTo-SecureString -String $SSISDBServerAdminPassword -AsPlainText -Force))
 
 New-AzureRmSqlServerFirewallRule -ResourceGroupName $ResourceGroupName `
-    -ServerName $SQLServerName `
+    -ServerName $SSISDBServerName `
     -FirewallRuleName "ClientIPAddress_$today" -StartIpAddress $FirewallIPAddress -EndIpAddress $FirewallIPAddress
 
-New-AzureRmSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $SQLServerName -AllowAllAzureIPs
+New-AzureRmSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $SSISDBServerName -AllowAllAzureIPs
 ```
-
 
 ## <a name="log-in-and-select-subscription"></a>Bejelentkezés és az előfizetés kiválasztása
 Adja a következő kódot a szkripthez a bejelentkezéshez és az Azure-előfizetés kiválasztásához: 
@@ -152,8 +153,8 @@ Futtassa a következő parancsot egy adat-előállító létrehozásához:
 
 ```powershell
 Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
-                        -Location $DataFactoryLocation `
-                        -Name $DataFactoryName
+                         -Location $DataFactoryLocation `
+                         -Name $DataFactoryName
 ```
 
 ## <a name="create-an-integration-runtime"></a>Integrációs modul létrehozása
@@ -162,20 +163,22 @@ Futtassa a következő parancsot egy Azure SSIS integrációs modul létrehozás
 ```powershell
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
 $serverCreds = New-Object System.Management.Automation.PSCredential($SSISDBServerAdminUserName, $secpasswd)
-Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupName `
-                                            -DataFactoryName $DataFactoryName `
-                                            -Name $AzureSSISName `
-                                            -Type Managed `
-                                            -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                            -CatalogAdminCredential $serverCreds `
-                                            -CatalogPricingTier $SSISDBPricingTier `
-                                            -Description $AzureSSISDescription `
-                                            -Edition $AzureSSISEdition ` 
-                                            -Location $AzureSSISLocation `
-                                            -NodeSize $AzureSSISNodeSize `
-                                            -NodeCount $AzureSSISNodeNumber `
-                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri 
+  
+Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+                                           -DataFactoryName $DataFactoryName `
+                                           -Name $AzureSSISName `
+                                           -Description $AzureSSISDescription `
+                                           -Type Managed `
+                                           -Location $AzureSSISLocation `
+                                           -NodeSize $AzureSSISNodeSize `
+                                           -NodeCount $AzureSSISNodeNumber `
+                                           -Edition $AzureSSISEdition `
+                                           -LicenseType $AzureSSISLicenseType `
+                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                           -SetupScriptContainerSasUri $SetupScriptContainerSasUri `
+                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
+                                           -CatalogAdminCredential $serverCreds `
+                                           -CatalogPricingTier $SSISDBPricingTier
 ```
 
 ## <a name="start-integration-runtime"></a>Integrációs modul indítása
@@ -194,7 +197,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 A parancs végrehajtása **20–30 percig** is eltarthat. 
 
 ## <a name="deploy-ssis-packages"></a>SSIS-csomagok üzembe helyezése
-Most az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) segítségével helyezze üzembe az SSIS-csomagokat az Azure-ban. Csatlakozzon ahhoz az Azure SQL Serverhez, amelyen az SSIS-katalógus (SSISDB) található. Az Azure SQL Server nevének formátuma a következő: `<servername>.database.windows.net` (az Azure SQL Database esetében). 
+Most az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) segítségével helyezze üzembe az SSIS-csomagokat az Azure-ban. Csatlakozzon ahhoz az Azure SQL Serverhez, amelyen az SSIS-katalógus (SSISDB) található. Az Azure SQL Database-kiszolgáló nevének formátuma a következő: `<servername>.database.windows.net`. 
 
 Lásd az SSIS dokumentációjának alábbi cikkeit: 
 
@@ -204,8 +207,6 @@ Lásd az SSIS dokumentációjának alábbi cikkeit:
 - [Csatlakozás helyszíni adatforrásokhoz Windows-hitelesítéssel](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
 
 ## <a name="full-script"></a>Teljes szkript
-Ebben a kiadásban a PowerShell-lel kell üzembe helyeznie egy Azure SSIS integrációs modult, amely SSIS-csomagokat futtat a felhőben. A modult jelenleg nem lehet az Azure Portalról üzembe helyezni. 
-
 Az ebben a szakaszban szereplő PowerShell-szkript konfigurál a felhőben egy Azure SSIS integrációs modul példányt, amely SSIS-csomagokat futtat. A szkript sikeres futtatása után SSIS-csomagokat helyezhet üzembe és futtathat a Microsoft Azure-felhőben az Azure SQL Database-ben futó SSISDB mellett.
 
 1. Indítsa el a Windows PowerShell integrált parancsfájlkezelési környezetet (ISE).
@@ -214,13 +215,13 @@ Az ebben a szakaszban szereplő PowerShell-szkript konfigurál a felhőben egy A
     Set-ExecutionPolicy Unrestricted -Scope CurrentUser
     ```
 3. Másolja az ebben a szakaszban lévő PowerShell-szkriptet, majd illessze be az ISE környezetbe.
-4. Adja meg a szkript elején, az Azure-beli SSIS specifikációira vonatkozó szakaszban lévő szkriptparaméterek megfelelő értékeit. Ezeket a paramétereket a következő szakasz ismerteti.
+4. Adja meg a szkript elején a paramétereknek megfelelő értékeket.
 5. Futtassa a szkriptet. A szkript végén lévő `Start-AzureRmDataFactoryV2IntegrationRuntime` parancs futtatása **20–30 percet** vesz igénybe.
 
 > [!NOTE]
-> - A szkript csatlakozik az Azure SQL Database-hez, és előkészíti az SSIS-katalógusadatbázist (SSISDB). A szkript konfigurálja a virtuális hálózat engedélyeit és beállításait is, ha ez lett megadva, és csatlakoztatja az Azure SSIS integrációs modul új példányát a virtuális hálózathoz.
-> - Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Ezenkívül további összetevőket is telepíthet. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
+> - A szkript csatlakozik az Azure SQL Database-kiszolgálóhoz, és előkészíti az SSIS-katalógusadatbázist (SSISDB).
 
+> - Amikor üzembe helyezi az Azure-SSIS IR egy példányát, az Azure Feature Pack for SSIS és az Access Redistributable is telepítve lesz. Ezek az összetevők biztosítják a csatlakozást az Excel- és Access-fájlokhoz és különböző Azure-adatforrásokhoz a beépített összetevők által támogatott adatforrások mellett. Ezenkívül további összetevőket is telepíthet. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 Az Azure SQL Database támogatott **tarifacsomagjainak** listájáért lásd az [SQL Database erőforrás-korlátozásaival](../sql-database/sql-database-resource-limits.md) foglalkozó témakört. 
 
@@ -229,38 +230,39 @@ Az Azure Data Factory 2-es verziója és az Azure-SSIS integrációs modulja ál
 ```powershell
 # Azure Data Factory version 2 information 
 # If your input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
-$SubscriptionName = "<Azure subscription name>"
-$ResourceGroupName = "<Azure resource group name>"
+$SubscriptionName = "[Azure subscription name]"
+$ResourceGroupName = "[Azure resource group name]"
 # Data factory name. Must be globally unique
-$DataFactoryName = "<Data factory name>" 
-$DataFactoryLocation = "EastUS" 
+$DataFactoryName = "[Data factory name]"
+# You can create a data factory of version 2 in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
+$DataFactoryLocation = "EastUS"
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
-$AzureSSISName = "<Specify a name for your Azure-SSIS (IR)>"
-$AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-# Azure-SSIS IR edition/license info: Standard or Enterprise 
-$AzureSSISEdition = "Standard" # Enterprise Edition supports advanced/premium features
-
-$AzureSSISLocation = "EastUS" 
- # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
-$AzureSSISNodeSize = "Standard_D3_v2"
+$AzureSSISName = "[Specify a name for your Azure-SSIS IR]"
+$AzureSSISDescription = "[Specify a description for your Azure-SSIS IR]"
+# You can create Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, Australia East. 
+$AzureSSISLocation = "EastUS"
+# In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
+$AzureSSISNodeSize = "Standard_D4_v2"
 # In public preview, only 1-10 nodes are supported.
 $AzureSSISNodeNumber = 2 
+# Azure-SSIS IR edition/license info: Standard or Enterprise 
+$AzureSSISEdition = "" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
+# Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
+$AzureSSISLicenseType = "" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, 1-4 parallel executions per node are supported. For other nodes, it's 1-8.
-$AzureSSISMaxParallelExecutionsPerNode = 2 
-
+$AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
-$SetupScriptContainerSasUri = "" # OPTIONAL: SAS URI of blob container where your custom setup script and its associated files are stored
+$SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 
 # SSISDB info
-$SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
-$SSISDBServerAdminUserName = "<Azure SQL server - user name>"
-$SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
-# This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
-$SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>" 
+$SSISDBServerEndpoint = “[your Azure SQL Database server name].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerAdminUserName = "[your server admin username for SQL authentication]"
+$SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
+# For the basic pricing tier, specify "Basic", not "B". For standard/premium/Elastic Pool tiers, specify "S0", "S1", "S2", "S3", etc.
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>)]"
 
-$SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID="+ $SSISDBServerAdminUserName +";Password="+ $SSISDBServerAdminPassword
+$SSISDBConnectionString = "Data Source=" + $SSISDBServerEndpoint + ";User ID=" + $SSISDBServerAdminUserName + ";Password=“ + $SSISDBServerAdminPassword
 $sqlConnection = New-Object System.Data.SqlClient.SqlConnection $SSISDBConnectionString;
 Try
 {
@@ -268,7 +270,7 @@ Try
 }
 Catch [System.Data.SqlClient.SqlException]
 {
-    Write-Warning "Cannot connect to your Azure SQL DB logical server/Azure SQL MI server, exception: $_"  ;
+    Write-Warning "Cannot connect to your Azure SQL Database server, exception: $_"  ;
     Write-Warning "Please make sure the server you specified has already been created. Do you want to proceed? [Y/N]"
     $yn = Read-Host
     if(!($yn -ieq "Y"))
@@ -281,25 +283,27 @@ Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName $SubscriptionName
 
 Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
-                        -Location $DataFactoryLocation `
-                        -Name $DataFactoryName
-
+                         -Location $DataFactoryLocation `
+                         -Name $DataFactoryName
+    
 $secpasswd = ConvertTo-SecureString $SSISDBServerAdminPassword -AsPlainText -Force
 $serverCreds = New-Object System.Management.Automation.PSCredential($SSISDBServerAdminUserName, $secpasswd)
-Set-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $ResourceGroupName `
-                                            -DataFactoryName $DataFactoryName `
-                                            -Name $AzureSSISName `
-                                            -Type Managed `
-                                            -CatalogServerEndpoint $SSISDBServerEndpoint `
-                                            -CatalogAdminCredential $serverCreds `
-                                            -CatalogPricingTier $SSISDBPricingTier `
-                                            -Description $AzureSSISDescription `
-                                            -Edition $AzureSSISEdition ` 
-                                            -Location $AzureSSISLocation `
-                                            -NodeSize $AzureSSISNodeSize `
-                                            -NodeCount $AzureSSISNodeNumber `
-                                            -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
-                                            -SetupScriptContainerSasUri $SetupScriptContainerSasUri
+    
+Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+                                           -DataFactoryName $DataFactoryName `
+                                           -Name $AzureSSISName `
+                                           -Description $AzureSSISDescription `
+                                           -Type Managed `
+                                           -Location $AzureSSISLocation `
+                                           -NodeSize $AzureSSISNodeSize `
+                                           -NodeCount $AzureSSISNodeNumber `
+                                           -Edition $AzureSSISEdition `
+                                           -LicenseType $AzureSSISLicenseType `
+                                           -MaxParallelExecutionsPerNode $AzureSSISMaxParallelExecutionsPerNode `
+                                           -SetupScriptContainerSasUri $SetupScriptContainerSasUri `
+                                           -CatalogServerEndpoint $SSISDBServerEndpoint `
+                                           -CatalogAdminCredential $serverCreds `
+                                           -CatalogPricingTier $SSISDBPricingTier
 
 write-host("##### Starting your Azure-SSIS integration runtime. This command takes 20 to 30 minutes to complete. #####")
 Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -311,8 +315,8 @@ write-host("##### Completed #####")
 write-host("If any cmdlet is unsuccessful, please consider using -Debug option for diagnostics.")
 ```
 
-## <a name="join-azure-ssis-ir-to-a-vnet"></a>Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
-Ha felügyelt Azure SQL-példány (előzetes verzió) segítségével futtatja az SQL Server Integration Services- (SSIS-) katalógust egy virtuális hálózaton (VNeten), az Azure-SSIS integrációs modulját is ugyanahhoz a virtuális hálózathoz kell csatlakoztatnia. Az Azure Data Factory 2. (előzetes) verzió használatával csatlakoztathatja az Azure-SSIS integrációs modult egy virtuális hálózathoz. További információkért lásd [az Azure-SSIS integrációs modul virtuális hálózathoz történő csatlakoztatásával](join-azure-ssis-integration-runtime-virtual-network.md) foglalkozó cikket.
+## <a name="join-azure-ssis-ir-to-a-virtual-network"></a>Az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
+Ha az Azure SQL Database-t virtuális hálózathoz csatlakozó virtuális hálózati szolgáltatásvégpontokkal/előzetes verziójú felügyelt példánnyal használja az SSISDB üzemeltetésére, az Azure-SSIS integrációs modulját is ugyanahhoz a virtuális hálózathoz kell csatlakoztatnia. Az Azure Data Factory 2. (előzetes) verzió használatával csatlakoztathatja az Azure-SSIS integrációs modult egy virtuális hálózathoz. További információkért tekintse meg [az Azure-SSIS integrációs modul virtuális hálózathoz történő csatlakoztatásával](join-azure-ssis-integration-runtime-virtual-network.md) foglalkozó cikket.
 
 Virtuális hálózathoz csatlakozó Azure-SSIS integrációs modul létrehozására alkalmas teljes szkript: [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md).
 

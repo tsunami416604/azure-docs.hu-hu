@@ -1,0 +1,48 @@
+- name: Az Anomáliaészlelő dokumentációja
+- name: Áttekintés
+  expanded: true
+  items:
+    - name: Mi az Anomáliaészlelő?
+      href: overview.md
+- name: Útmutatók
+  items:
+    - name: Az Anomáliaészlelő API használata
+      items:
+        - name: cURL
+          href: quickstarts/curl.md
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+        - name: Javascript
+          href: quickstarts/javascript.md
+- name: Példák
+  items:
+    - name: 'C#-alkalmazás'
+      href: tutorials/csharp-tutorial.md
+    - name: Java-alkalmazás
+      href: tutorials/java-tutorial.md
+    - name: Python-alkalmazás
+      href: tutorials/python-tutorial.md
+    - name: JavaScript-webalkalmazás
+      href: tutorials/javascript-tutorial.md
+- name: Referencia
+  items:
+    - name: Anomáliaészlelő API-referencia
+      href: apiref.md
+    - name: REST 1-es verzió
+      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection'
+- name: További források
+  items:
+    - name: Előfizetői azonosító
+      href: 'https://labs.cognitive.microsoft.com/en-us/subscriptions?productId=/products/AnomalyDetection.Preview&source=labs'
+    - name: Próbálja ki!
+      href: 'https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=anomaly+finder'

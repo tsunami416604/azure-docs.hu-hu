@@ -16,12 +16,12 @@ ms.topic: hero-article
 ms.date: 03/23/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 26d336c9d896859d8012b1eaad1a16d0cbd9b628
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ed0103b8ad8f23cd45a3a9ee94e01ce69e1e45b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596209"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287264"
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure AD-bérlő beszerzése
 
@@ -36,7 +36,7 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek az 
 Sok fejlesztő az Azure AD-bérlőkhöz kapcsolódó szolgáltatások vagy előfizetések (például Office 365 vagy Azure-előfizetések) révén már rendelkezik bérlőkkel. Ha ellenőrizni szeretné, hogy már rendelkezik-e bérlővel, jelentkezzen be az [Azure Portalra](https://portal.azure.com) az alkalmazásfelügyelethez használni kívánt fiókkal, és tekintse meg a jobb felső sarokban látható fiókinformációkat. Ha van bérlője, automatikusan bejelentkezik rá, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtára és bérlőazonosítója (egy GUID), valamint tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik.
 
 > [!TIP]
-> Ha szüksége van a bérlőazonosítóra, ez több módon is megtalálható. A bérlőazonosító lekérhető, ha a fiókneve fölé helyezi a kurzort, vagy ha az **Azure Active Directory > Tulajdonságok > Címtár-azonosító** lehetőséget választja az Azure Portalon.
+> Ha szüksége van a bérlőazonosítóra, ez több módon is megtalálható. A bérlőazonosító lekérhető, ha a fiókneve fölé helyezi a mutatót, vagy ha az **Azure Active Directory > Tulajdonságok > Címtár-azonosító** lehetőséget választja az Azure Portalon.
 
 Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve alatt, és nem tud műveleteket végezni, például alkalmazásokat regisztrálni, amíg [létre nem hoz egy új bérlőt](#create-a-new-azure-ad-tenant).
 

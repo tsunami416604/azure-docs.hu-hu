@@ -1,0 +1,99 @@
+- name: Beszédszolgáltatási API dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Beszédszolgáltatás?
+      href: overview.md
+      expanded: true
+- name: Gyors útmutatók
+  items:
+    - name: Próbálja ki ingyenesen a Beszédszolgáltatást
+      href: get-started.md
+    - name: 'Beszéd felismerése C# nyelven'
+      href: quickstart-csharp-windows.md
+    - name: Beszéd felismerése Windows C++ nyelven
+      href: cpp-windows.md
+    - name: Beszéd felismerése Linux C++ nyelven
+      href: cpp-linux.md
+    - name: A Beszédeszközök SDK használatának első lépései
+      href: speech-devices-sdk-qsg.md
+- name: Útmutatók
+  items:
+    - name: Beszéd felismerése
+      href: how-to-speech-to-text.md
+    - name: Beszédmodellek testreszabása
+      href: how-to-customize-speech-models.md
+    - name: Beszédszintézis
+      href: how-to-text-to-speech.md
+    - name: Hangtípusok testreszabása
+      href: how-to-customize-voice-font.md
+    - name: Beszéd fordítása
+      href: how-to-translate-speech.md
+    - name: Átiratok előkészítése
+      href: prepare-transcription.md
+    - name: Egyéni audiostreamek használata
+      href: how-to-use-audio-input-streams.md
+    - name: Beszédeszközök SDK letöltése
+      href: get-speech-devices-sdk.md
+    - name: Eszközébresztő kifejezés testreszabása
+      href: speech-devices-sdk-create-kws.md
+    - name: Kötegelt átírás (telefonos ügyfélszolgálatok)
+      href: batch-transcription.md
+- name: Példák
+  items:
+    - name: Minták letöltése
+      href: samples.md
+    - name: Beszédfelismerés
+      href: speech-to-text-sample.md
+    - name: Szándékfelismerés
+      href: intent.md
+    - name: Fordítás
+      href: translation.md
+- name: Alapelvek
+  items:
+    - name: Diktálás
+      href: speech-to-text.md
+    - name: Szövegfelolvasás
+      href: text-to-speech.md
+    - name: Beszédfordítás
+      href: speech-translation.md
+    - name: Beszéd SDK
+      href: speech-sdk.md
+    - name: Beszédeszközök SDK
+      href: speech-devices-sdk.md
+- name: Referencia
+  items:
+    - name: Támogatott nyelvek
+      href: supported-languages.md
+    - name: REST API-k
+      href: rest-apis.md
+    - name: Beszéd SDK API
+      href: speech-sdk-reference.md
+    - name: Beszédszintézis jelölőnyelvi kódja
+      href: speech-synthesis-markup.md
+- name: További források
+  items:
+    - name: Diktálás – gyakori kérdések
+      href: faq-stt.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/912208-speech-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-ütemterv
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Adatvédelem és cookie-k
+      href: 'https://privacy.microsoft.com/privacystatement'
+    - name: Hibaelhárítás
+      href: troubleshooting.md
+    - name: Az alkalmazás küldése
+      href: ship-application.md
+    - name: Kibocsátási megjegyzések
+      href: releasenotes.md
+    - name: Beszéd SDK-licenc
+      href: license.md
+    - name: Beszédeszközök SDK-licenc
+      href: speech-devices-sdk-license.md
+    - name: Harmadik felekkel kapcsolatos közlemények
+      href: third-party-notices.md

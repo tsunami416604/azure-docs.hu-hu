@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 11/30/2017
+ms.date: 06/19/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9ba8eae0fe9e68e4931bcdda989e59c59fd65edd
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714578"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293329"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure Web Appshez
 
@@ -32,9 +32,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az alkalmazás tarifacsomagjának bővítése.
-> * Az egyéni SSL-tanúsítvány App Service-hez kötése.
-> * HTTPS kényszerítése az alkalmazásra vonatkozóan.
-> * SSL-tanúsítványok kötésének automatizálása szkriptekkel.
+> * Az egyéni tanúsítvány App Service-hez kötése
+> * Tanúsítványok megújítása
+> * HTTPS kényszerítése
+> * A TLS 1.1/1.2 kényszerítése
+> * A TLS kezelésének automatizálása szkriptekkel
 
 > [!NOTE]
 > Ha egyéni SSL-tanúsítványt kell beszereznie, azt megteheti közvetlenül az Azure Portalon, és a webalkalmazáshoz kötheti azt. Kövesse az [App Service-tanúsítványok szóló oktatóanyag](web-sites-purchase-ssl-web-site.md) utasításait.
@@ -213,6 +215,14 @@ Már csak annak ellenőrzése van hátra, hogy a HTTPS működik-e az egyéni ta
 
 <a name="bkmk_enforce"></a>
 
+## <a name="renew-certificates"></a>Tanúsítványok megújítása
+
+A bejövő IP-cím kötések törlésekor változhat, akkor is, ha a kötés IP-alapú. Ez akkor kifejezetten fontos, ha egy olyan tanúsítványt újít meg, amely már egy IP-alapú kötésben található. Annak érdekében, hogy az alkalmazás IP-címe ne változzon, kövesse sorrendben az alábbi lépéseket:
+
+1. Töltse fel az új tanúsítványt.
+2. Kösse az új tanúsítványt a kívánt egyéni tartományhoz anélkül, hogy törölné a régit. Ez a művelet lecserélni a kötést ahelyett, hogy eltávolítaná a régit.
+3. Törölje a régi tanúsítványt. 
+
 ## <a name="enforce-https"></a>HTTPS kényszerítése
 
 Alapértelmezés szerint bárki elérheti a webalkalmazást HTTP-vel. A HTTP-kéréseket átirányíthatja a HTTPS-portra.
@@ -236,14 +246,6 @@ A webalkalmazás lapjának bal oldali navigációs sávján válassza az **SSL s
 ![A TLS 1.1 vagy 1.2 kényszerítése](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziójú kapcsolatokat.
-
-## <a name="renew-certificates"></a>Tanúsítványok megújítása
-
-A bejövő IP-cím kötések törlésekor változhat, akkor is, ha a kötés IP-alapú. Ez akkor kifejezetten fontos, ha egy olyan tanúsítványt újít meg, amely már egy IP-alapú kötésben található. Annak érdekében, hogy az alkalmazás IP-címe ne változzon, kövesse sorrendben az alábbi lépéseket:
-
-1. Töltse fel az új tanúsítványt.
-2. Kösse az új tanúsítványt a kívánt egyéni tartományhoz anélkül, hogy törölné a régit. Ez a művelet lecserélni a kötést ahelyett, hogy eltávolítaná a régit.
-3. Törölje a régi tanúsítványt. 
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
@@ -273,6 +275,15 @@ az webapp config ssl bind \
     --ssl-type SNI \
 ```
 
+A következő parancs a TLS legalább 1.2-es verzióját kényszeríti ki.
+
+```bash
+az webapp config set \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --min-tls-version 1.2
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Az alábbi parancs feltölt egy exportált PFX-fájlt, és SNI-alapú SSL-kötést ad hozzá.
@@ -297,9 +308,11 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az alkalmazás tarifacsomagjának bővítése.
-> * Az egyéni SSL-tanúsítvány App Service-hez kötése.
-> * HTTPS kényszerítése az alkalmazásra vonatkozóan.
-> * SSL-tanúsítványok kötésének automatizálása szkriptekkel.
+> * Az egyéni tanúsítvány App Service-hez kötése
+> * Tanúsítványok megújítása
+> * HTTPS kényszerítése
+> * A TLS 1.1/1.2 kényszerítése
+> * A TLS kezelésének automatizálása szkriptekkel
 
 A következő oktatóanyag azt mutatja be, hogy hogyan használhatja az Azure Content Delivery Networköt.
 

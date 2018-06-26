@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 7987ee8c9a127c7a41ec2cd1f726450c771d527f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ddecf2f75e80f95291b12d9c139a8da85f45ac94
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34666966"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36288051"
 ---
 Első lépésként az Azure Portal használatával hozzon létre IoT Hubot az előfizetésében. Az IoT Hub lehetővé teszi nagy mennyiségű telemetria betöltését számos eszközről a felhőbe. A Hub ezután engedélyt ad egy vagy több, a felhőben futó háttérszolgáltatásnak a telemetria olvasására és feldolgozására.
 
@@ -27,7 +27,7 @@ Első lépésként az Azure Portal használatával hozzon létre IoT Hubot az el
 
    * **Előfizetés**: Válassza ki az IoT Hub létrehozásához használni kívánt előfizetést.
 
-   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub üzemeltetéséhez, vagy használjon egy meglévőt. További információt az [Azure-erőforrások erőforráscsoportokkal való kezeléséről][lnk-resource-groups] szóló cikkben olvashat.
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot az IoT Hub üzemeltetéséhez, vagy használjon egy meglévőt. Ha az összes kapcsolódó erőforrást egy csoportban helyezi el, akkor mindet együtt kezelheti. Az erőforráscsoport törlése például az adott csoportban található összes erőforrást is törli. További információt az [Azure-erőforrások erőforráscsoportokkal való kezeléséről][lnk-resource-groups] szóló cikkben olvashat.
 
    * **Régió**: Válassza ki az Önhöz legközelebbi helyet.
 

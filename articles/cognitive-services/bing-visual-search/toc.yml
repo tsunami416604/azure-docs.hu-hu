@@ -1,0 +1,60 @@
+- name: A Bing Visual Search dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi a Bing Visual Search API?
+      href: overview.md
+- name: REST API – rövid útmutatók
+  expanded: true
+  items:
+    - name: 'Első lekérdezés C# nyelven'
+      href: quickstarts/csharp.md
+    - name: Első lekérdezés Java nyelven
+      href: quickstarts/java.md
+    - name: Első lekérdezés a Node.js-hez
+      href: quickstarts/nodejs.md
+    - name: Első lekérdezés Python nyelven
+      href: quickstarts/python.md
+- name: Oktatóanyagok
+  items:
+    - name: Egyoldalas webalkalmazás
+      href: tutorial-bing-visual-search-single-page-app.md
+    - name: Egyoldalas webalkalmazás (forráskód)
+      href: tutorial-bing-visual-search-single-page-app-source.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search'
+- name: Alapelvek
+  items:
+    - name: Alapértelmezett rendszerképelemzések
+      href: default-insights-tag.md
+    - name: Bing-elemzések használata
+      href: bing-insights-usage.md
+    - name: Támogatott országok és piacok
+      href: supported-countries-markets.md
+    - name: Bing Visual Search API elemzése
+      href: bing-visual-search-stats.md
+- name: Útmutatók
+  items:
+    - name: Elemzések lekérése tokennel
+      href: use-insights-token.md
+    - name: Eredmények használata és megjelenítése
+      href: use-and-display-requirements.md
+    - name: Miniatűrök átméretezése és körülvágása
+      href: resize-and-crop-thumbnails.md
+- name: Referencia
+  expanded: true
+  items:
+    - name: REST API 7-es verzió
+      href: 'https://aka.ms/bingvisualsearchreferencedoc'
+- name: További források
+  items:
+    - name: Ingyenes hozzáférési kulcs lekérése
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
+    - name: Próbálja ki!
+      href: 'https://aka.ms/bingvisualsearchtryforfree'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: User Voice
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'

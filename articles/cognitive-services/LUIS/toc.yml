@@ -1,0 +1,303 @@
+- name: A LUIS dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Tudnivalók a hangfelismerésről
+      href: Home.md
+    - name: Támogatott nyelvek
+      href: luis-supported-languages.md
+- name: Gyors útmutatók
+  expanded: true
+  items:
+    - name: Alkalmazásmodell létrehozása
+      items:
+        - name: Előre összeállított tartomány használata
+          href: luis-get-started-create-app.md
+        - name: Egyéni tartomány használata
+          href: luis-quickstart-intents-only.md
+- name: Oktatóanyagok
+  items:
+    - name: Előre összeállított szándékok és entitások hozzáadása
+      href: luis-tutorial-prebuilt-intents-entities.md
+    - name: Entitás adatainak lekérése
+      items:
+        - name: Egyszerű entitás
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: Hierarchikus entitás
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: Listaentitás
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: Reguláriskifejezés-entitás
+          href: luis-quickstart-intents-regex-entity.md
+        - name: KeyPhrase entitás
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: Hangulatelemzés
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: Előrejelzés javítása
+      items:
+        - name: Mintákkal
+          href: luis-tutorial-pattern.md
+        - name: Kifejezéslistával
+          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: API-k használata
+      items:
+        - name: Beszédmód-előrejelzés kérése végpontlekérdezéssel
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-get-intent.md
+            - name: Java
+              href: luis-get-started-java-get-intent.md
+            - name: JavaScript
+              href: luis-get-started-js-get-intent.md
+            - name: Node.js
+              href: luis-get-started-node-get-intent.md
+            - name: Python
+              href: luis-get-started-python-get-intent.md
+            - name: PHP
+              href: luis-get-started-php-get-intent.md
+            - name: Ruby
+              href: luis-get-started-ruby-get-intent.md
+        - name: Beszédmód hozzáadása szándékhoz és az alkalmazás tanítása
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-add-utterance.md
+            - name: Java
+              href: luis-get-started-java-add-utterance.md
+            - name: JavaScript
+              href: luis-get-started-javascript-add-utterance.md
+            - name: Node.js
+              href: luis-get-started-node-add-utterance.md
+            - name: Python
+              href: luis-get-started-python-add-utterance.md
+            - name: PHP
+              href: luis-get-started-php-add-utterance.md
+            - name: Ruby
+              href: luis-get-started-ruby-add-utterance.md
+- name: Példák
+  items:
+    - name: Kódminták
+      href: 'https://github.com/Microsoft/LUIS-Samples'
+- name: Alapelvek
+  items:
+    - name: Ajánlott eljárások
+      href: luis-concept-best-practices.md
+    - name: Alkalmazás készítése
+      items:
+        - name: Tartalomkészítési ciklus
+          href: luis-concept-app-iteration.md
+        - name: Együttműködés
+          href: luis-concept-collaborator.md
+        - name: Verziókezelés
+          href: luis-concept-version.md
+    - name: Tervezési modell
+      items:
+        - name: Leképezések
+          href: luis-concept-intent.md
+        - name: Entitások
+          href: luis-concept-entity-types.md
+        - name: Beszédmódok
+          href: luis-concept-utterance.md
+        - name: Szerepkörök
+          href: luis-concept-roles.md
+    - name: Az alkalmazás teljesítményének növelése
+      items:
+        - name: Előrejelzési pontszám
+          href: luis-concept-prediction-score.md
+        - name: A végpont beszédmódjainak áttekintése
+          href: luis-concept-review-endpoint-utterances.md
+        - name: Kifejezéslisták
+          href: luis-concept-feature.md
+        - name: Minták
+          href: luis-concept-patterns.md
+    - name: Adatkezelés
+      items:
+        - name: Adatok módosítása
+          href: luis-concept-data-alteration.md
+        - name: Adatok átalakítása
+          href: luis-concept-data-conversion.md
+        - name: Adatok kinyerése
+          href: luis-concept-data-extraction.md
+        - name: Adattárolás
+          href: luis-concept-data-storage.md
+    - name: Tesztelés
+      items:
+        - name: Interaktív tesztelés
+          href: luis-concept-test.md
+        - name: Kötegelt tesztelés
+          href: luis-concept-batch-test.md
+    - name: Enterprise
+      items:
+        - name: Tervezési stratégiák
+          href: luis-concept-enterprise.md
+    - name: Biztonság
+      items:
+        - name: Alkalmazás-hozzáférés
+          href: luis-concept-security.md
+        - name: Tartalomkészítés és végpontkulcsok
+          href: luis-concept-keys.md
+- name: Útmutatók
+  items:
+    - name: Az alkalmazás megtervezése
+      href: Plan-your-app.md
+    - name: Új alkalmazás indítása
+      href: Create-new-app.md
+    - name: Modellépítés
+      items:
+        - name: Leképezések hozzáadása
+          href: luis-how-to-add-intents.md
+        - name: Beszédmódok hozzáadása
+          href: luis-how-to-add-example-utterances.md
+        - name: Entitások hozzáadása
+          href: luis-how-to-add-entities.md
+        - name: Csoportosított adatok kinyerése összetett entitás segítségével
+          href: luis-tutorial-composite-entity.md
+        - name: Pontos szöveg egyeztetése listaentitással a Node.js használatával
+          href: luis-tutorial-list-entity.md
+        - name: Alkalmazás létrehozása programozott módon a Node.js használatával
+          href: luis-tutorial-node-import-utterances-csv.md
+    - name: Integrálás
+      items:
+        - name: Gépelési hibák javítása a Bing Spell Check API 7-es verziójával
+          href: luis-tutorial-bing-spellcheck.md
+        - name: Beszédszolgáltatással
+          href: luis-tutorial-speech-to-intent.md
+        - name: Robottal
+          items:
+            - name: Webalkalmazás-robot
+              items:
+                - name: Node.js
+                  href: luis-nodejs-tutorial-build-bot-framework-sample.md
+                - name: 'C#'
+                  href: luis-csharp-tutorial-build-bot-framework-sample.md
+            - name: Application Insights
+              items:
+                - name: Node.js
+                  href: luis-tutorial-function-appinsights.md
+                - name: 'C#'
+                  href: luis-tutorial-bot-csharp-appinsights.md
+    - name: Előrejelzés pontosságának javítása
+      items:
+        - name: A végpont beszédmódjainak áttekintése
+          href: Label-Suggested-Utterances.md
+        - name: Kifejezéslista hozzáadása
+          href: luis-how-to-add-features.md
+        - name: Minták hozzáadása
+          href: luis-how-to-model-intent-pattern.md
+    - name: Betanítás
+      href: luis-how-to-train.md
+    - name: Tesztelés
+      items:
+        - name: Interaktív tesztelés
+          href: interactive-test.md
+        - name: Kötegelt tesztelés
+          href: luis-how-to-batch-test.md
+        - name: Pontosság javítása kötegelt teszteléssel
+          href: luis-tutorial-batch-testing.md
+    - name: Az alkalmazás közzététele
+      href: PublishApp.md
+    - name: Előre összeállított modellek használata
+      items:
+        - name: Előre összeállított entitások használata
+          href: Pre-builtEntities.md
+        - name: Előre összeállított tartományok használata
+          href: luis-how-to-use-prebuilt-domains.md
+        - name: Az előre összeállított Cortana-alkalmazás használata
+          href: Cortana-Prebuilt-App.md
+    - name: A LUIS-alkalmazás felügyelete
+      items:
+        - name: Az irányítópult használata
+          href: luis-how-to-use-dashboard.md
+        - name: Kulcsok létrehozása
+          href: luis-how-to-azure-subscription.md
+        - name: Kulcsok hozzáadása a LUIS szolgáltatásban
+          href: Manage-Keys.md
+        - name: Végponthasználat megtekintése a PowerShell-lel
+          href: luis-how-to-manage-from-cloud-shell.md
+        - name: Verziók kezelése
+          href: luis-how-to-manage-versions.md
+        - name: Együttműködés más szerzőkkel
+          href: luis-how-to-collaborate.md
+        - name: Végpontkvóta elosztása a kulcsok között a Traffic Managerrel
+          href: traffic-manager.md
+    - name: A LUIS-fiók kezelése
+      href: luis-how-to-account-settings.md
+    - name: Áttérés az API 2-es verziójára
+      href: migration-v1-to-v2.md
+    - name: Régió megkeresése programozott módon
+      items:
+        - name: 'A C# használata'
+          href: find-region-csharp.md
+        - name: A Node.js használata
+          href: find-region-nodejs.md
+- name: Referencia
+  items:
+    - name: Felhasználói adatvédelem
+      href: luis-reference-gdpr.md
+    - name: Régiók
+      href: luis-reference-regions.md
+    - name: Határok
+      href: luis-boundaries.md
+    - name: Előre összeállított entitáshivatkozás
+      href: luis-reference-prebuilt-entities.md
+    - name: Előre összeállított tartományhivatkozás
+      href: luis-reference-prebuilt-domains.md
+    - name: Előre összeállított Cortana-alkalmazáshivatkozás
+      href: luis-reference-cortana-prebuilt.md
+    - name: 2-es verziójú API-k létrehozása
+      href: 'https://aka.ms/luis-authoring-apis'
+    - name: 2-es verziójú végponti API
+      href: 'https://aka.ms/luis-endpoint-apis'
+    - name: HTTP-kódok
+      href: luis-reference-response-codes.md
+    - name: Azure CLI 2.0
+      href: 'https://aka.ms/az-cli-cognitiveservices'
+    - name: Azure RM PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: SDK-k
+      items:
+        - name: Android
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
+        - name: Node.js
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Python
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
+        - name: .NET-végpont
+          href: 'https://aka.ms/luis-endpoint-sdk'
+        - name: .NET létrehozása
+          href: 'https://aka.ms/luis-authoring-sdk'
+- name: Kapcsolódó témakörök
+  items:
+    - name: Robot keretrendszer
+      href: 'https://dev.botframework.com/'
+    - name: 'Robotépítő 3.x SDK C#'
+      href: 'https://github.com/Microsoft/BotBuilder'
+    - name: 'Robotépítő 4.x SDK C#'
+      href: 'https://github.com/Microsoft/botbuilder-dotnet'
+    - name: QnA Maker
+      href: 'https://qnamaker.ai/'
+    - name: Bing Speech API
+      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+    - name: Bing Spell Check API
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: Szövegelemzés
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+- name: További források
+  items:
+    - name: Azure-ütemterv
+      href: 'https://aka.ms/luis-roadmap'
+    - name: Szószedet
+      href: luis-glossary.md
+    - name: GYIK
+      href: luis-resources-faq.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/LUIS'
+    - name: UserVoice
+      href: 'https://aka.ms/luis-uservoice-forum'
+    - name: Keresés
+      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+    - name: Blog
+      href: 'https://blog.botframework.com/category/luis/'
+    - name: Tudásbázis
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
