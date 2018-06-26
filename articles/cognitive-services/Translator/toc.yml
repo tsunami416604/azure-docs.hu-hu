@@ -35,6 +35,62 @@
           href: quickstart-java-languages.md
         - name: Mondathosszok lekérése a szövegből
           href: quickstart-java-sentences.md
+    - name: Node.js
+      items:
+        - name: Szöveg lefordítása
+          href: quickstart-nodejs-translate.md
+        - name: Szövegátalakítási szkript
+          href: quickstart-nodejs-transliterate.md
+        - name: Szöveg nyelvének azonosítása
+          href: quickstart-nodejs-detect.md
+        - name: Alternatív fordítások lekérése
+          href: quickstart-nodejs-dictionary.md
+        - name: Támogatott nyelvek lekérése
+          href: quickstart-nodejs-languages.md
+        - name: Mondathosszok lekérése a szövegből
+          href: quickstart-nodejs-sentences.md
+    - name: PHP
+      items:
+        - name: Szöveg lefordítása
+          href: quickstart-php-translate.md
+        - name: Szövegátalakítási szkript
+          href: quickstart-php-transliterate.md
+        - name: Szöveg nyelvének azonosítása
+          href: quickstart-php-detect.md
+        - name: Alternatív fordítások lekérése
+          href: quickstart-php-dictionary.md
+        - name: Támogatott nyelvek lekérése
+          href: quickstart-php-languages.md
+        - name: Mondathosszok lekérése a szövegből
+          href: quickstart-php-sentences.md
+    - name: Python
+      items:
+        - name: Szöveg lefordítása
+          href: quickstart-python-translate.md
+        - name: Szövegátalakítási szkript
+          href: quickstart-python-transliterate.md
+        - name: Szöveg nyelvének azonosítása
+          href: quickstart-python-detect.md
+        - name: Alternatív fordítások lekérése
+          href: quickstart-python-dictionary.md
+        - name: Támogatott nyelvek lekérése
+          href: quickstart-python-languages.md
+        - name: Mondathosszok lekérése a szövegből
+          href: quickstart-python-sentences.md
+    - name: Ruby
+      items:
+        - name: Szöveg lefordítása
+          href: quickstart-ruby-translate.md
+        - name: Szövegátalakítási szkript
+          href: quickstart-ruby-transliterate.md
+        - name: Szöveg nyelvének azonosítása
+          href: quickstart-ruby-detect.md
+        - name: Alternatív fordítások lekérése
+          href: quickstart-ruby-dictionary.md
+        - name: Támogatott nyelvek lekérése
+          href: quickstart-ruby-languages.md
+        - name: Mondathosszok lekérése a szövegből
+          href: quickstart-ruby-sentences.md
 - name: Alapelvek
   items:
     - name: Támogatott nyelvek
@@ -55,18 +111,8 @@
       href: word-alignment.md
     - name: A dinamikus szótár funkció használata
       href: dynamic-dictionary.md
-    - name: A Translator Text API használata
-      items:
-        - name: Node.js
-          href: quickstarts/nodejs.md
-        - name: PHP
-          href: quickstarts/php.md
-        - name: Python
-          href: quickstarts/python.md
-        - name: Ruby
-          href: quickstarts/ruby.md
-        - name: Translator Text alkalmazás létrehozása a WPF segítségével
-          href: tutorial-wpf-translation-csharp.md
+    - name: Translator Text alkalmazás létrehozása a WPF segítségével
+      href: tutorial-wpf-translation-csharp.md
 - name: Referencia
   items:
     - name: 3-as verziójú Translator Text API-referencia
