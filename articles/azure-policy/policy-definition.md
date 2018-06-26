@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260481"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937332"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -25,9 +25,9 @@ JSON házirend-definíció létrehozására használhatja. A házirend-definíci
 
 - mód
 - paraméterek
-- Megjelenített név
+- megjelenített név
 - leírás
-- Házirend szabályai
+- házirend szabályai
   - logikai kiértékelése
   - hatása
 
@@ -192,7 +192,8 @@ A feltétel e egy **mező** meghatározott feltételeknek eleget. A támogatott 
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Használatakor a **például** és **notLike** feltételek, megadhatja a helyettesítő karakter (*) értéke. Az értékben nem szerepelhetnek a 1-nél több helyettesítő karakter (*).
+Használatakor a **például** és **notLike** feltételek, megadhatja a helyettesítő karakteres `*` értéke.
+Az érték nem tartalmazhat egynél több helyettesítő `*`.
 
 Használata esetén a **megfelelő** és **notMatch** feltételek, `#` képviselő számjegy, `?` betűvel, és bármely más karaktert adott tényleges karakter helyettesítéséhez. Tekintse meg a [lehetővé teszi több mintában](scripts/allow-multiple-name-patterns.md).
 
@@ -316,7 +317,7 @@ Aliasok listája mindig nő. Annak megállapításához, hogy milyen aliasok Azu
 
 ## <a name="initiatives"></a>Kezdeményezések
 
-Csoportosítása több kezdeményezések engedélyezése vonatkozó házirend-definíciók egyszerűsítése érdekében hozzárendelések és a felügyeleti, mert a csoport az egyetlen elemet használata. Például egy egyetlen kezdeményezésére minden kapcsolódó címkézési házirend definíciói csoportosíthatja. Ahelyett, hogy minden egyes házirend hozzárendelése egyenként, a kezdeményező alkalmaz.
+Kezdeményezések lehetővé teszik a csoport több kapcsolódó házirend-definíciók egyszerűsítése érdekében hozzárendelések és a felügyeleti, mert a csoport az egyetlen elemet használata. Például egy egyetlen kezdeményezésére minden kapcsolódó címkézési házirend definíciói csoportosíthatja. Ahelyett, hogy minden egyes házirend hozzárendelése egyenként, a kezdeményező alkalmaz.
 
 A következő példa bemutatja, hogyan létrehozása kezelési két címkék kezdeményezés: `costCenter` és `productName`. Azt a két beépített házirendek segítségével az alapértelmezett címke.
 
@@ -394,4 +395,4 @@ A következő példa bemutatja, hogyan létrehozása kezelési két címkék kez
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a következő további példákat [Azure házirend minták](json-samples.md).
+- További példák [Az Azure Policy sablonjai](json-samples.md) oldalon.

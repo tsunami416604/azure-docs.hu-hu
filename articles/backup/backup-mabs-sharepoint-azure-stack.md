@@ -1,5 +1,5 @@
 ---
-title: Biztonsági mentés egy SharePoint-farm Azure veremben Azure
+title: Biztonsági másolatot egy SharePoint-farm Azure verem
 description: Azure Backup Server használatával biztonsági mentése és visszaállítása a SharePoint-adatok Azure veremben. A cikkben az adatokat a SharePoint-farm konfigurálásához, hogy a kívánt adatokat tárolhatja az Azure-ban. Védett SharePoint-adatok visszaállíthatja a lemezről, vagy az Azure-ból.
 services: backup
 author: pvrk
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: da8421441863c8d7f840630614f4f35c16f184d5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249345"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751897"
 ---
-# <a name="back-up-a-sharepoint-farm-on-azure-stack-to-azure"></a>Biztonsági mentés egy SharePoint-farm Azure veremben Azure
+# <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Biztonsági másolatot egy SharePoint-farm Azure verem
 Ön biztonsági másolatot egy SharePoint-farm Azure veremben Microsoft Azure hasonlóan, amely a biztonsági mentést más adatforrások a Microsoft Azure Backup Server (MABS) használatával. Azure biztonsági mentés naponta létrehozásához a biztonsági mentés ütemezése rugalmasságot biztosít, heti, havi vagy éves biztonsági mentést mutat, és lehetővé teszi az adatmegőrzési házirend-beállítások a különféle biztonsági mentési pontok. Helyi lemez másolat gyors helyreállítási idő célkitűzés (RTO) tárolására és gazdaságos, hosszú távú megőrzési Azure másolat tárolására is tartalmazza.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint támogatott verziója, és a kapcsolódó védelmi forgatókönyvek
-Azure biztonsági mentés a DPM a következő szituációkat ismerteti:
+Azure Backup segítségével MABS a következő szituációkat ismerteti:
 
 | Számítási feladat | Verzió | A SharePoint központi telepítés | Védelem és helyreállítás |
 | --- | --- | --- | --- | --- | --- |
@@ -41,9 +41,6 @@ A farm minden 10 millió eleme, a legalább 2 GB lemezterületet a köteten, aho
 Az Azure Backup Server fut, a LocalSystem fiókra. SQL Server-adatbázisok biztonsági mentéséhez MABS kell, hogy a fiók rendszergazdai jogosultságokkal az SQL Servert futtató kiszolgáló. NT AUTHORITY\SYSTEM beállítása *sysadmin* a kiszolgálón, amelyen SQL Server előtt készítsen biztonsági másolatot.
 
 Ha a SharePoint-farm SQL Server-aliasokkal használt konfigurált SQL Server-adatbázisok, telepítse az SQL Server ügyfél összetevőit MABS által védendő előtér-webkiszolgáló.
-
-### <a name="sharepoint-server"></a>SharePoint Server
-Amíg teljesítmény például a SharePoint-farm méret számos tényezőtől függ, általános útmutatásként egy MABS is 25 TB SharePoint-farm védelméhez.
 
 ### <a name="whats-not-supported"></a>Nem támogatott műveletek
 * Egy SharePoint-farm védelme MABS nem nyújt védelmet a keresési indexek vagy szolgáltatás adatbázisai. Ezeknek az adatbázisoknak a védelmét külön-külön konfigurálni kell.

@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 22a3c5b2c7c4676c9c05c7cc67f30108a5dfbe5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 75431715b5948525e92c99b778842d26a684da82
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644681"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753445"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés szilánkos több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítménye
 
 Ebben az oktatóanyagban használt SaaS-alkalmazásokhoz több alapvető teljesítményt felügyeleti lehetőségeket írja. A betöltési generátor használatával tevékenység szimulálása szilánkos több-bérlős az adatbázisok közötti, beépített figyelési és riasztási szolgáltatásokat az SQL-adatbázis egy.
 
-A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás több-bérlős horizontálisan skálázott adatok modellt használ, ahol helyszínére (bérlői) adatok között van elosztva Bérlőazonosító által esetlegesen több adatbázis. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Az adatbázisok tipikus használati szokásokkal előnyeit, adatbázisok is méretezhető felfelé és lefelé optimalizálhatja a költség, a megoldás. Az ilyen típusú mintát fontos annak érdekében, hogy a terhelés ésszerűen kiegyensúlyozott potenciálisan több adatbázis közötti adatbázis-erőforrás felhasználásának figyelésére. Is biztosítania kell, hogy az egyes adatbázisok rendelkezik megfelelő erőforrásokkal, és nem elérte-e a [DTU](sql-database-what-is-a-dtu.md) korlátok. Ez az oktatóanyag ismerteti, felügyelhetik és kezelhetik az adatbázisok és a változások a terhelési válaszul intézkedéseket módon.
+A Wingtip jegyek SaaS több-bérlős adatbázis alkalmazás több-bérlős horizontálisan skálázott adatok modellt használ, ahol helyszínére (bérlői) adatok között van elosztva Bérlőazonosító által esetlegesen több adatbázis. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Az adatbázisok tipikus használati szokásokkal előnyeit, adatbázisok is méretezhető felfelé és lefelé optimalizálhatja a költség, a megoldás. Az ilyen típusú mintát fontos annak érdekében, hogy a terhelés ésszerűen kiegyensúlyozott potenciálisan több adatbázis közötti adatbázis-erőforrás felhasználásának figyelésére. Is biztosítania kell, hogy az egyes adatbázisok rendelkezik megfelelő erőforrásokkal, és nem elérte-e a [DTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) korlátok. Ez az oktatóanyag ismerteti, felügyelhetik és kezelhetik az adatbázisok és a változások a terhelési válaszul intézkedéseket módon.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 

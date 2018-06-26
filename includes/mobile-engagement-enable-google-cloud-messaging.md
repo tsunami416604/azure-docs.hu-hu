@@ -5,7 +5,7 @@
 > 
 > 
 
-1. Nyissa meg a [Firebase Console](https://console.firebase.google.com/) webhelyét, és jelentkezzen be Google-fiókja hitelesítő adataival.
+1. Keresse meg a [Firebase konzol](https://console.firebase.google.com/) , és jelentkezzen be Google-fiók hitelesítő adataival.
 2. Kattintson az **Create new Project** (Új projekt létrehozása) gombra,  vagy kattintson az **Import Google Project** (Google-projekt importálása) hivatkozásra egy meglévő projekt importálásához. 
 3. Ha új projektet hoz létre, adja meg a **projekt nevét** és válassza ki az **országát/régióját**.
 4. A projektlapon kattintson balra fent a **Settings** (Beállítások) fogaskerékre. Kattintson a menü **Project settings** (Projektbeállítások) pontjára.  

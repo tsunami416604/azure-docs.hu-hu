@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 32e797003b7358c1f853d4c3dabf9d810ece43ab
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 5a7abb7d67de59ea326b5180cf94e3594cd06576
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313331"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753387"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Erőforrás-korlátozások az önálló adatbázisok a DTU-alapú alapjául szolgáló vásárlási modell használatával 
 
@@ -122,5 +122,5 @@ Egy 1 TB-nál nagyobb, a P11 és P15 adatbázis a következő régiókban támog
 
 - Lásd: [SQL-adatbázis – gyakori kérdések](sql-database-faq.md) gyakran feltett kérdésekre adott válaszokat.
 - Általános Azure korlátozását kapcsolatos információkért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
-- További információ a Dtu és edtu-k: [Dtu és edtu-k](sql-database-what-is-a-dtu.md).
+- További információ a Dtu és edtu-k: [Dtu és edtu-k](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
 - A tempdb méretkorlátait kapcsolatos információkért lásd: https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

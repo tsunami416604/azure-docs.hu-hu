@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737469"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936989"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Az Azure parancssori felület 1.0 használata az Azure Storage szolgáltatással
 
@@ -41,9 +41,9 @@ Ez az útmutató feltételezi, hogy tudomásul veszi az Azure Storage alapvető 
 ## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Ismerkedés az Azure Storage és az Azure parancssori felület 5 perc
 Ez az útmutató Ubuntu használja példák, de más operációs Rendszeri platformokon hasonló módon végre kell hajtania.
 
-**Új Azure-bA:** a Microsoft Azure-előfizetés és az adott előfizetéshez tartozó Microsoft-fiókkal. Az Azure megvásárlási lehetőségeinek információkért lásd: [ingyenes](https://azure.microsoft.com/pricing/free-trial/), [beszerzési lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és [ajánlatok](https://azure.microsoft.com/pricing/member-offers/) (az MSDN, a Microsoft Partner Network, és a BizSpark és egyéb Microsoft programok tagjai).
+**Új Azure-bA:** a Microsoft Azure-előfizetés és az adott előfizetéshez tartozó Microsoft-fiókkal. Az Azure megvásárlási lehetőségeinek információkért lásd: [ingyenes](https://azure.microsoft.com/pricing/free-trial/), [beszerzési lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és [ajánlatok](https://azure.microsoft.com/pricing/member-offers/) (MSDN, a Microsoft Partner Network, és a BizSpark, tagok és más Microsoft-programokat).
 
-Lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/hh531793.aspx) Azure-előfizetések további információt.
+Lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) Azure-előfizetések további információt.
 
 **Miután létrehozta a Microsoft Azure-előfizetésre és -fiókra:**
 
@@ -138,7 +138,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> A névtelen olvasási hozzáférés három szintje van: **ki**, **Blob**, és **tároló**. Blobok névtelen hozzáférés érdekében a engedély paraméter értéke **ki**. Alapértelmezés szerint az új tároló privát, és csak a fiók tulajdonosa férhet. A névtelen felhasználók engedélyezése nyilvános olvasási hozzáférés a blob-erőforrásokhoz, de nem csomagtároló metaadatai vagy a tárolóban lévő blobok listájának értékre az engedély paraméter **Blob**. A blob-erőforrások, tároló metaadatait és a tárolóban lévő blobok listájának teljes nyilvános olvasási hozzáférés engedélyezéséhez a engedély paraméter értéke **tároló**. További információkért lásd: [tárolók és blobok névtelen olvasási hozzáférés kezelése](../blobs/storage-manage-access-to-resources.md).
+> A névtelen olvasási hozzáférés három szintje van: **ki**, **Blob**, és **tároló**. Blobok névtelen hozzáférés érdekében a engedély paraméter értéke **ki**. Alapértelmezés szerint az új tároló privát, és csak a fiók tulajdonosa férhet. A névtelen felhasználók engedélyezése nyilvános olvasási hozzáférés a blob-erőforrásokhoz, de nem csomagtároló metaadatai vagy a tárolóban lévő blobok listájának értékre az engedély paraméter **Blob**. A blob-erőforrások, tároló metaadatait és a tárolóban lévő blobok listájának teljes nyilvános olvasási hozzáférés engedélyezéséhez a engedély paraméter értéke **tároló**. További információkért lás a [tárolók és blobok névtelen olvasási hozzáférésének kezelésével](../blobs/storage-manage-access-to-resources.md) foglalkozó témakört.
 >
 >
 

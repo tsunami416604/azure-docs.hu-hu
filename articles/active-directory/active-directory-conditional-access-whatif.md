@@ -1,5 +1,5 @@
 ---
-title: Az Azure Active Directory feltételes hozzáférés újdonságai a mi Ha eszköze? – előzetes verzió |} Microsoft Docs
+title: Az Azure Active Directory feltételes hozzáférés újdonságai a mi Ha eszköze?
 description: Ismerje meg, hogyan tudja értelmezni a feltételes hozzáférési házirendek hatását a saját környezete.
 services: active-directory
 keywords: alkalmazások, a feltételes hozzáférés az Azure ad-vel, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési házirendekkel a feltételes hozzáférés
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232341"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750082"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Az Azure Active Directory feltételes hozzáférés újdonságai a mi Ha eszköze? – előzetes
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Az Azure Active Directory feltételes hozzáférés újdonságai a mi Ha eszköze?
 
 [Feltételes hozzáférés](active-directory-conditional-access-azure-portal.md) egy Azure Active Directory (Azure AD), amelyek segítségével szabályozhatja, hogy hogyan funkció engedélyezett a felhasználók hozzáférést a felhőalapú alkalmazásokat. Honnan tudhatja mi történik az űrlap a feltételes hozzáférési szabályzatokat a környezetében? Ez a kérdés megválaszolásához használhatja a **feltételes hozzáférés mi történik, ha eszköz**.
 

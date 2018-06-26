@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e0a04d44edf39c90533c59d67ea2dfce69f092cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 3d4b93a604170cb3b8396562a15483923330f467
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771092"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754562"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -205,7 +205,7 @@ Az Azure használatának előnyei egyike, hogy az alkalmazások különböző ad
 
 Bár nem valószínű, továbbra is nem kizárt, hogy az egész adatközpont például természeti katasztrófa vagy Internet-hiba esemény miatt offline állapotba. Fontos üzleti alkalmazások üzemeltetését egynél több adatközpontban maximális rendelkezésre állás biztosításához célszerű. Használatával több régióba is globális felhasználók késés csökkentésére, és adja meg a további lehetőségek rugalmasságot biztosít alkalmazások frissítésekor.
 
-Egyes szolgáltatások, például a virtuális gépek és alkalmazásszolgáltatások, használjon [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) a magas rendelkezésre állású vállalati alkalmazások támogatásához régiók közötti feladatátvétel több területi támogatásának engedélyezése. Egy vonatkozó példáért lásd: [referenciaarchitektúra Azure: webes alkalmazás magas rendelkezésre állású](../../guidance/guidance-web-apps-multi-region.md).
+Egyes szolgáltatások, például a virtuális gépek és alkalmazásszolgáltatások, használjon [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) a magas rendelkezésre állású vállalati alkalmazások támogatásához régiók közötti feladatátvétel több területi támogatásának engedélyezése. Egy vonatkozó példáért lásd: [Azure referencia-architektúrában: webalkalmazásokat több régióba](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 >**Mikor érdemes használni**: Ha a vállalati és a magas rendelkezésre állású, feladatátvevő és replikációs előnyeit kihasználó alkalmazások rendelkezik.
 
@@ -263,9 +263,9 @@ A fejlesztők számára, mint hangvételünk jobb alaposabban tanulmányozhatja 
 
 Kell létrehozni, és együttműködik az Azure-előfizetéssel, Azure-fiókkal kell rendelkeznie. Az Azure-fiók identitás egyszerűen az Azure ad-ben, vagy egy könyvtárban, például a munkahelyi vagy iskolai szervezet, amely megbízható Azure ad. Ha a szervezet nem tartozik, a Microsoft Account, amely az Azure AD megbízik bármikor létrehozhat egy előfizetést. A helyi Windows Server Active Directory integrálása az Azure ad-vel kapcsolatos további információkért lásd: [a helyszíni identitások integrálása az Azure Active Directoryval](../../active-directory/active-directory-aadconnect.md).
 
-Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További tudnivalókért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directory](../../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További tudnivalókért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Egyes Azure meghatározása mellett fiók az identitások, más néven *felhasználók*, azt is megadhatja, *csoportok* Azure AD-ben. Felhasználói csoportok létrehozásához megfelelő módja egy előfizetésben található erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlést (RBAC) használatával. Csoportok létrehozásával kapcsolatban lásd: [létrehoz egy csoportot az Azure Active Directory előzetes](../../active-directory/active-directory-groups-create-azure-portal.md). Is hozhat létre, és kezelhet a csoportok által [PowerShell-lel](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
+Egyes Azure meghatározása mellett fiók az identitások, más néven *felhasználók*, azt is megadhatja, *csoportok* Azure AD-ben. Felhasználói csoportok létrehozásához megfelelő módja egy előfizetésben található erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlést (RBAC) használatával. Csoportok létrehozásával kapcsolatban lásd: [létrehoz egy csoportot az Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Is hozhat létre, és kezelhet a csoportok által [PowerShell-lel](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Saját előfizetések kezelése
 

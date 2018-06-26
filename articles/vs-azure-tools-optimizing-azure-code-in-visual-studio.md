@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: a606c8e7d8b730b67bd8481656e099900eb39fbc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23890837"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937557"
 ---
 # <a name="optimizing-your-azure-code"></a>Az Azure kód optimalizálása
 Ha a Microsoft Azure használó alkalmazások által programozási, van néhány alkalmazás méretezhetőséget, viselkedését, egy felhőalapú környezetben a teljesítményt és a problémák elkerülése érdekében ajánlott eljárásit. A Microsoft biztosít egy Azure kód elemző eszköz, amely ismeri fel és azonosítja a leggyakrabban észlelt problémák számos, és segítséget nyújt a megoldásukkal együtt. Az eszköz a Visual Studio NuGet útján lehet letölteni.
@@ -99,7 +99,7 @@ Hitelesítéshez használandó közös hozzáférésű Jogosultságkód (SAS). A
 Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-A fokozott biztonság érdekében Azure Active Directory SAS hitelesítési ACS hitelesítési lecseréli. Lásd: [Azure Active Directory az ACS a jövőben](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) az átmenet terv olvashat.
+A fokozott biztonság érdekében Azure Active Directory SAS hitelesítési ACS hitelesítési lecseréli. Lásd: [Azure Active Directory az ACS a jövőben](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) az átmenet terv olvashat.
 
 ### <a name="solution"></a>Megoldás
 SAS-hitelesítés használata az alkalmazások. A következő példa bemutatja, hogyan egy meglévő SAS-jogkivonat egy service bus-névtér vagy entitás elérésére használhat.
@@ -364,7 +364,7 @@ A következő kódrészletet mutatja be a kódját a hiba javítása. Csere
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
-a
+a következővel:
 
 `var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
@@ -411,7 +411,7 @@ Diagnosztikai beállítások konfigurálására a kódban, többek között a Mi
 Ossza meg az ötletek és visszajelzés: [Azure kód elemzés visszajelzés](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Ok
-Mielőtt az Azure SDK 2.5-ös (amely az Azure diagnostics 1.3), Azure Diagnostics (ÜVEGVATTA) sikerült konfigurálni a számos különböző módszer használatával: hozzáadná a konfiguráció blob Storage, feltétlenül szükséges kódot, deklaratív konfigurációs vagy az alapértelmezett konfiguráció használatával. Azonban az előnyben részesített diagnosztika konfigurálása módja az XML konfigurációs fájl (diagnostics.wadcfg vagy diagnositcs.wadcfgx SDK 2.5 és újabb) az alkalmazás projektben. Ezt a módszert használja, a diagnostics.wadcfg fájl teljesen konfigurációját és frissíthető és újra telepíteni fogja a. A diagnostics.wadcfg konfigurációs fájl használatának keverése kell beállítania a konfigurációk használatával programozott módon a [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)vagy [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)osztályok zavart okozhat. Lásd: [inicializálása vagy Azure Diagnostics konfigurációjának módosítása](https://msdn.microsoft.com/library/azure/hh411537.aspx) további információt.
+Mielőtt az Azure SDK 2.5-ös (amely az Azure diagnostics 1.3), Azure Diagnostics (ÜVEGVATTA) sikerült konfigurálni a számos különböző módszer használatával: hozzáadná a konfiguráció blob Storage, feltétlenül szükséges kódot, deklaratív konfigurációs vagy az alapértelmezett használatával konfiguráció. Azonban az előnyben részesített diagnosztika konfigurálása módja az XML konfigurációs fájl (diagnostics.wadcfg vagy diagnositcs.wadcfgx SDK 2.5 és újabb) az alkalmazás projektben. Ezt a módszert használja, a diagnostics.wadcfg fájl teljesen konfigurációját és frissíthető és újra telepíteni fogja a. A diagnostics.wadcfg konfigurációs fájl használatának keverése kell beállítania a konfigurációk használatával programozott módon a [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)vagy [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)osztályokat is zavart okozhat. Lásd: [inicializálása vagy Azure Diagnostics konfigurációjának módosítása](https://msdn.microsoft.com/library/azure/hh411537.aspx) további információt.
 
 (Az Azure SDK 2.5 része) ÜVEGVATTA 1.3 kezdve már nem használható kód diagnosztika konfigurálása. Ennek eredményeképpen csak biztosíthat a konfigurációban, ha az alkalmazása vagy a diagnosztika-bővítmény frissítése.
 
@@ -465,5 +465,5 @@ public class BlogsController : Controller
     }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Optimalizálás, és tájékozódhat hibaelhárítása az Azure-alkalmazások súgójának [hibaelhárítása a webes alkalmazás az Azure App Service szolgáltatásban a Visual Studio használatával](app-service/web-sites-dotnet-troubleshoot-visual-studio.md).

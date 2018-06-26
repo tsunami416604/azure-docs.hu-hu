@@ -7,13 +7,13 @@ ms.author: jtoland
 manager: craigg
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 17a99a0bb166bee28238a182633aa480fbd0d8e2
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.date: 06/25/2018
+ms.openlocfilehash: 9181de4c7fd0ce1cb09abd7b4d9f79c1447eb1ac
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304562"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752887"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>Azure-adatbázis MySQL áttelepítési partnerek számára
 Az Azure-adatbázis széles körű támogatása MySQL megoldás, választhat iparágvezető partnerek és eszközök széles választékát. Ez a cikk Microsoft partnervállalatokban MySQL az Azure-adatbázis támogató áttelepítési megoldásokkal mutatja be.
@@ -21,7 +21,7 @@ Az Azure-adatbázis széles körű támogatása MySQL megoldás, választhat ipa
 ## <a name="migration-partners"></a>Áttelepítési partnerek
 | Partner | Leírás | Hivatkozások | Videók |
 | --- | --- | --- | --- |
-| ![SNP technológiák][1] |**SNP technológiák**<br>SNP technológiák egy kizárólag felhőalapú a szolgáltató vállalatok számára a jövőbeli biztonságos és megbízható megoldások kialakításának. A vállalat úgy találja, hogy a vállalati valódi értékek generálásához. Gondolat a végrehajtás során, a SNP technológiák az ügyfelekkel, kapcsolja be a befektetés előnyös az általános célú közösen használja.|[Az OCP katalógus][snp_ocp_catalog]<br>[Webhely][snp_website]<br>[Twitter][snp_twitter]<br>[Ügyfél][snp_contact] | |
+| ![SNP technológiák][1] |**SNP technológiák**<br>SNP technológiák egy kizárólag felhőalapú a szolgáltató vállalatok számára a jövőbeli biztonságos és megbízható megoldások kialakításának. A vállalat úgy találja, hogy a vállalati valódi értékek generálásához. Gondolat a végrehajtás során, a SNP technológiák az ügyfelekkel, kapcsolja be a befektetés előnyös az általános célú közösen használja.|[Webhely][snp_website]<br>[Twitter][snp_twitter]<br>[Ügyfél][snp_contact] | |
 | ![DB legjobb technológiákat, LLC –][2] |**DB legjobb technológiákat, LLC –**<br>DB legjobb segítségével az ügyfelek a legtöbbet hozhatja ki egy felügyelt Azure-adatbázis szolgáltatást. Ahhoz, hogy az első lépései, beleértve a számos lehetőséget kínál, a vállalat [jövőbeli-állapot architekturális tervezési](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [adatok felügyeleti optimalizálási Microsoft Data Platform](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Fdata-management-optimization-for-microsoft-data-platform%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261204561&sdata=DYF9EeMaMdKZP%2FJ9d3mw%2F67hUAxWmINcI1rMbEQZ1DM%3D&reserved=0), [Microsoft Azure Telepítéstervezési szolgáltatások](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Fmicrosoft-azure-deployment-planning-services%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261214574&sdata=Q%2FNJaHWXrrln6eXaVmU1iVb4tJCoKVgSA8cEBQiZaDk%3D&reserved=0), és [az Azure Data Platform készültségi képzési](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Fazure-data-platform-readiness-training%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261214574&sdata=dX%2BBGSCyq4x9ZPkTN74Y%2FUgHJ%2FqtsNgwEFDJft%2FTkc0%3D&reserved=0).|[Webhely][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[A YouTube használatának][dbbest_youtube]<br>[Ügyfél][dbbest_contact] | |
 | ![Gyakorlati működik][3] |**Gyakorlati működik**<br>Gyakorlati Works, a képzési és a vállalati adatok kezelésére és teljesítmény, üzleti intelligencia, Big Data, Power BI, és Azure, az adatok optimalizálása összpontosít, és az SQL Server és cloud felügyeleti hatékonyságának mély szakértői tanácsadás.|[Webhely][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[A YouTube használatának][pragmatic-works_youtube]<br>[Ügyfél][pragmatic-works_contact] | |
 | ![Infosys][4] |**Infosys**<br>Infosys a legújabb digitális szolgáltatásokat vezető és tanácsadás. A felhasználói felület globális vállalkozások rendszerek kezelése több mint három évtizedben Infosys expertly steers ügyfelek a digitális útjuk azáltal, hogy a szervezetek egy AI táplált alapvető rangsorolhatja módosítás végrehajtása érdekében. Infosys gyors digitális léptékű egyedülálló szintű teljesítményt és a felhasználói is képes biztosítani a vállalatok számára is biztosít.|[Webhely][infosys_website]<br>[Twitter][infosys_twitter]<br>[A YouTube használatának][infosys_youtube]<br>[Ügyfél][infosys_contact] | |
@@ -44,7 +44,6 @@ Néhány Microsoft más partnereinek kapcsolatos további tudnivalókért tekint
 <!--Get Started Links-->
 <!--Datasheet Links-->
 <!--Marketplace Links -->
-[snp_ocp_catalog]:https://msgtm.azurewebsites.net/en-US/Solutions/Solution/8272182d-e372-e711-80f1-3863bb3c06a0/c5ea0afd-84af-e711-80fb-3863bb3ce590
 
 <!--Press links-->
 

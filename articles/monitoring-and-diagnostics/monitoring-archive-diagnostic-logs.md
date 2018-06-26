@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: d1282fa005d609394dacc818c2cb729f580bc3fc
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d48828c8d2ec439f389fe4eddabb59599cc1680b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263490"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752826"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplók archiválása
 
@@ -74,7 +74,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Kategóriák |Nem |Ahhoz, hogy a napló kategóriák vesszővel tagolt listája. |
 | Engedélyezve |Igen |Logikai érték, amely jelzi, hogy diagnosztika engedélyezett vagy letiltott ezen az erőforráson. |
 | RetentionEnabled |Nem |Logikai érték, amely azt jelzi, hogy engedélyezve vannak-e adatmegőrzési ezen az erőforráson. |
-| retentionInDays |Nem |Amely események kell megtartani 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplókat. |
+| RetentionInDays |Nem |Amely események kell megtartani 1 és 2147483647 közötti napok számát. A nulla érték határozatlan ideig tárolja a naplókat. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archív diagnosztikai naplók az Azure CLI 2.0 keresztül
 
@@ -100,7 +100,7 @@ A `--resource-group` argumentum csak akkor kötelező, ha `--storage-account` ni
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Diagnosztikai naplók archiválása a REST API-n keresztül
 
-[Lásd a jelen dokumentum](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) olvashat, hogyan állíthat be egy diagnosztikai beállítás a Azure REST API használatával.
+[Lásd a jelen dokumentum](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) olvashat, hogyan állíthat be egy diagnosztikai beállítás a Azure REST API használatával.
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>A tárfiók a diagnosztikai naplók sémája
 

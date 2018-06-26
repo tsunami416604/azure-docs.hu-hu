@@ -12,25 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b54f60286e25c410b9d51de8be122c450080d3
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "23945883"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752775"
 ---
 # <a name="filters-in-log-analytics-views"></a>A Naplóelemzési nézetekben szűrők
 A **szűrő** a egy [Naplóelemzési megtekintése](log-analytics-view-designer.md) lehetővé teszi a felhasználóknak a nézetben szereplő adatok szűrését által egy adott tulajdonság értéke maga a nézet módosítása nélkül.  Így például csak egy adott számítógépről származó adatok a nézet szűréséhez a nézet felhasználók vagy számítógépek csoportja.  Létrehozhat több szűrő a felhasználók több tulajdonságra szűrés egyetlen nézetben.  Ez a cikk ismerteti, hogyan szűrőt, és vegyen fel egyet a egyéni nézetekben.
 
 ## <a name="using-a-filter"></a>Szűrő használata
-Kattintson a **szűrő** a keresőablak nézet megnyitásához.  Ez lehetővé teszi, hogy egy időtartományt és szűrőket a nézet számára elérhető értékeinek kiválasztása.  Amikor kiválaszt egy szűrő, az elérhető értékek listáját jeleníti meg.  Válasszon egy vagy több érték, vagy írja be azokat. A nézet a megadott szűrési automatikusan frissül. 
+Kattintson egy nézetre annak megnyitásához, ahol módosíthatja a nézet adatok időintervallumát legördülő tetején adatok időtartománya.
 
-Ha nem ad meg értéket a szűrő van kijelölve, ez a szűrő a nézet nem alkalmazza.  Ha eltávolítja az összes szűrő értékét, majd a szűrő már nem érvényesek.
+![Szűrő – példa](media/log-analytics-view-designer/filters-example-time.png)
+
+Kattintson a **+** definiált egyéni szűrőket a nézet használatával szűrő hozzáadásához. Jelölje ki azt a szűrő értékét a legördülő lista vagy beírhat egy értéket. Szűrők kattintva vegye fel a **+**. 
 
 
-![Szűrő – példa](media/log-analytics-view-designer/filters-example.png)
+![Szűrő – példa](media/log-analytics-view-designer/filters-example-custom.png)
+
+Ha eltávolítja az összes szűrő értékét, majd a szűrő már nem érvényesek.
 
 
 ## <a name="creating-a-filter"></a>A szűrő létrehozása
@@ -43,7 +47,7 @@ Az alábbi táblázat bemutatja a szűrő beállításait.
 
 | Beállítás | Leírás |
 |:---|:---|
-| Mező neve | A szűréshez használt mező neve.  Ennek egyeznie kell a summarize mezője **értékek lekérdezés**. |
+| Mezőnév | A szűréshez használt mező neve.  Ennek egyeznie kell a summarize mezője **értékek lekérdezés**. |
 | Lekérdezés értékek | Lekérdezés, amely a felhasználó szűrő legördülő feltöltéséhez futtassa.  Ez kell használnia, vagy [összefoglalója](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) vagy [különböző](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) egyedi értékeket jelentenek egy adott mező, és meg kell egyeznie a **mezőnév**.  Használhat [rendezési](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) rendezheti az értékeket, a felhasználó számára megjelenített. |
 | Címke | A támogatása a szűrési lekérdezések használatban van, és a felhasználók számára is látható mező nevét. |
 
@@ -51,11 +55,11 @@ Az alábbi táblázat bemutatja a szűrő beállításait.
 
 Az alábbi táblázatban néhány példa a közös szűrőket tartalmaz.  
 
-| Mező neve | Lekérdezés értékek | Címke |
+| Mezőnév | Lekérdezés értékek | Címke |
 |:--|:--|:--|
 | Computer   | Szívverés &#124; különálló számítógép &#124; számítógép asc rendezés | Számítógépek |
-| EventLevelName | Esemény &#124; különböző EventLevelName | Súlyosság |
-| SeverityLevel | Syslog &#124; különböző súlyossági szint | Súlyosság |
+| EventLevelName | Esemény &#124; különböző EventLevelName | Severity |
+| SeverityLevel | Syslog &#124; különböző súlyossági szint | Severity |
 | SvcChangeType | Konfigurációváltozás &#124; különböző svcChangeType | ChangeType |
 
 

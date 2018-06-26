@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 7cb6927b8de07566428050e06a981c8f3afabb05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d6117b5b071e780841f4450a205287d005e11801
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227523"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752180"
 ---
 # <a name="azure-security-overview"></a>Az Azure biztonsági szolgáltatásainak áttekintése
 
-A Microsoft Azure biztonsági adatokat hely az Azure.com-on műszaki a kérdésekre adott válaszok az Azure biztonsági az a hely. Ha Ön Azure megfelelőségét, és hogyan Azure biztosítja a saját infrastruktúra iránt érdeklődik, keresse fel a [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/).
+A Microsoft Azure biztonsági adatokat hely az Azure.com-on műszaki a kérdésekre adott válaszok az Azure biztonsági az a hely. Ha Ön Azure megfelelőségét, és hogyan Azure biztosítja a saját infrastruktúra iránt érdeklődik, keresse fel a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 Tudjuk, hogy biztonsági-e a feladat a felhőben, és hogy mennyire fontos, hogy található-e az Azure biztonsági pontos és időben információt. A legjobb okai az alkalmazások és szolgáltatások Azure használandó, a széles köréről biztonsági eszközöket és lehetőségeinek kihasználásához. Ezekkel az eszközökkel és képességek segítségével történő biztonságos megoldásokat keres a biztonságos Azure platformon.
 

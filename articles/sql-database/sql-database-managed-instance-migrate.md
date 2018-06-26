@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 8f666bc352dc1706da4812590f85adc7695e2f13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5a81279726e5c221d9ae4734466a04ae5912af6
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647662"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936802"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL adatbázis felügyelt példány SQL Server példány áttelepítés
 
@@ -78,7 +78,6 @@ Felügyelt példányát támogatja a következő adatbázis áttelepítési lehe
 
 - Az Azure adatbázis áttelepítési szolgáltatás - áttelepítési szinte nullára csökkenti állásidő
 - Az URL - natív VISSZAÁLLÍTÁSA az SQL Server natív biztonsági mentést használ, és bizonyos időre leállítást igényel
-- Áttelepítés BACPAC-fájl – SQL Server vagy SQL-adatbázis BACPAC-fájlt használ, és bizonyos időre leállítást igényel
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -107,10 +106,6 @@ A következő táblázat futtatja a forrás SQL Server verziójától függően 
 > Rendszer-adatbázisokat a visszaállítási nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb adatbázis tárolt) áttelepítéséhez ajánlott parancsfájl ki őket, és T-SQL-parancsfájlok a cél-példányon futnak.
 
 A teljes oktatóanyag, amely tartalmazza az adatbázis biztonsági másolatának visszaállítása egy felügyelt példányhoz SAS hitelesítő adatok használatával, lásd: [felügyelt példányra állítsa vissza biztonsági másolatból](sql-database-managed-instance-restore-from-backup-tutorial.md).
-
-### <a name="migrate-using-bacpac-file"></a>Telepítse át a BACPAC fájl használata
-
-Importálhatja az Azure SQL Database és a felügyelt példány egy hozza létre az eredeti adatbázist, az adatokat egy BACPAC fájl másolatát. Lásd: [egy új Azure SQL-adatbázis BACPAC fájl importálása](sql-database-import.md).
 
 ## <a name="monitor-applications"></a>Alkalmazások figyelése
 

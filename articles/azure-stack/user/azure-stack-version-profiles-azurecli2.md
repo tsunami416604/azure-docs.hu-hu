@@ -10,22 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 3c80ce6e221acb8905c00e6178dd2fec1f8816af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eb01d31d00177560aca3aa71750cd2d1ec096f8f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938409"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Azure CLI 2.0 Azure verem API-verzió profilok használata
 
-Ez a cikk azt ismerteti a folyamatot, amely az Azure parancssori felület (CLI) Azure verem szoftverfejlesztői készlet-erőforrások kezeléséhez a Linux és a Mac ügyfél platform használatával. 
+A lépések a cikk beállítása az Azure parancssori felület (CLI) a ügyfélplatformokon Linux, Mac és a Windows Azure verem szoftverfejlesztői készlet-erőforrások kezeléséhez.
 
 ## <a name="install-cli"></a>A CLI telepítése
 
-Ezután jelentkezzen be a fejlesztő munkaállomás és parancssori felület telepítése. Az Azure verem Azure CLI 2.0-s verziója szükséges. Ismertetett eljárások segítségével telepítheti, amely a [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) cikk. Győződjön meg arról, hogy a telepítés sikeres volt-e, nyisson meg egy terminál vagy egy parancssori ablakot, és futtassa a következő parancsot:
+Jelentkezzen be a fejlesztő munkaállomás és parancssori felület telepítése. Az Azure verem Azure CLI 2.0-s verziója szükséges. Ismertetett eljárások segítségével telepítheti, amely a [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) cikk. Győződjön meg arról, hogy a telepítés sikeres volt-e, nyisson meg egy terminál vagy egy parancssori ablakot, és futtassa a következő parancsot:
 
 ```azurecli
 az --version
@@ -35,27 +36,47 @@ Meg kell jelennie az Azure CLI és más függő tárak, a számítógépre telep
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Az Azure-verem hitelesítésszolgáltató főtanúsítványát megbízhatóság
 
-Az Azure-verem hitelesítésszolgáltató legfelső szintű tanúsítvány beszerzése az Azure-verem operátor és megbízhatónak tekinti. Azure verem hitelesítésszolgáltató legfelső szintű tanúsítvány megbízható fűzi azokat hozzá a meglévő Python-tanúsítványt. Ha a CLI Azure verem környezetben létrehozott Linux-gépek futtatja, a következő paranccsal bash:
+1. Az Azure-verem hitelesítésszolgáltató főtanúsítványát az beszerzése [az Azure-verem operátor](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) és megbízhatónak tekinti. Azure verem hitelesítésszolgáltató legfelső szintű tanúsítvány megbízható fűzi azokat hozzá a meglévő Python-tanúsítványt.
+
+2. A tanúsítvány helye a számítógépen található. A hely eltérhetnek attól függően, hogy hol telepítette a Python. Rendelkeznie kell [pip](https://pip.pypa.io) és a [certifi](https://pypi.org/project/certifi/) telepített modulokban. A következő Python parancsot a bash parancssorból használhatja:
+
+  ```bash  
+    python -c "import certifi; print(certifi.where())"
+  ```
+
+  Jegyezze fel a tanúsítvány helye. Például: `~/lib/python3.5/site-packages/certifi/cacert.pem`. Az elérési utat leíró függ az operációs rendszer és a Python telepített verzióját.
+
+### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>A felhő állítható be a fejlesztési számítógépén elérési útja
+
+Ha a CLI Azure verem környezetben létrehozott Linux-gépek futtatja, futtassa a következő bash parancsot a következő elérési a tanúsítványt.
 
 ```bash
-sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 ```
 
-Ha az Azure zsák környezeten kívüli számítógépről futtatja a CLI, először be kell állítania [Azure verem VPN-kapcsolat](azure-stack-connect-azure-stack.md). Most másolja a PEM-tanúsítványt, amelyet korábban exportált a fejlesztési munkaállomásra, és futtassa a következő parancsokat, attól függően, hogy a fejlesztő munkaállomás operációs rendszer.
+### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>A fejlesztői számítógépén elérési útját a felhő kívüli beállítása
 
-### <a name="linux"></a>Linux
+Ha egy gép CLI futtat **kívül** az Azure-verem környezetben:  
+
+1. Be kell állítania [Azure verem VPN-kapcsolat](azure-stack-connect-azure-stack.md).
+
+2. Másolja a portáltól kapott Azure verem operátor PEM-tanúsítványt, és jegyezze fel annak a helynek a fájl (PATH_TO_PEM_FILE).
+
+3. A következő parancsokat, attól függően befejezési a fejlesztő munkaállomás operációs rendszeren.
+
+#### <a name="linux"></a>Linux
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="macos"></a>macOS
+#### <a name="macos"></a>macOS
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="windows"></a>Windows
+#### <a name="windows"></a>Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -181,14 +202,14 @@ Az erőforráscsoport létrehozása sikeres, ha az előző parancs kimenete az �
 ## <a name="known-issues"></a>Ismert problémák
 Nincsenek ismert problémák a kell ügyelnie, ha a CLI Azure-készletben:
 
-* A parancssori felület interaktív módban Egytényezős a `az interactive` parancs még nem támogatott Azure-készletben.
-* Azure verem használható virtuálisgép-rendszerképek listájának lekéréséhez használja a `az vm images list --all` parancs helyett a `az vm image list` parancsot. Adja meg a `--all` beállítás gondoskodik arról, hogy a válasz csak az Azure-verem környezetben elérhető képek adja vissza. 
-* Az Azure-ban rendelkezésre álló virtuális gép lemezképének aliasok nem lehet Azure verem használható. Virtuálisgép-rendszerképek használata esetén a teljes URN paramétert kell használnia (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) helyett a kép alias. Ez URN meg kell egyeznie a kép specifikációk származtatva a `az vm images list` parancsot.
-* Alapértelmezés szerint CLI 2.0 "Standard_DS1_v2" használja az alapértelmezett virtuálisgép-lemezkép mérete. Azonban ez a méret még nem érhető el az Azure-készletben, így, meg kell adnia a `--size` paraméter explicit módon, ha egy virtuális gépet hoz létre. Kaphat használatával Azure verem rendelkezésre álló virtuálisgép-méretek listáját a `az vm list-sizes --location <locationName>` parancsot.
-
+ - A parancssori felület interaktív módban Egytényezős a `az interactive` parancs még nem támogatott Azure-készletben.
+ - Azure verem használható virtuálisgép-rendszerképek listájának lekéréséhez használja a `az vm images list --all` parancs helyett a `az vm image list` parancsot. Adja meg a `--all` beállítás gondoskodik arról, hogy a válasz csak az Azure-verem környezetben elérhető képek adja vissza.
+ - Az Azure-ban rendelkezésre álló virtuális gép lemezképének aliasok nem lehet Azure verem használható. Virtuálisgép-rendszerképek használata esetén a teljes URN paramétert kell használnia (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) helyett a kép alias. Ez URN meg kell egyeznie a kép specifikációk származtatva a `az vm images list` parancsot.
 
 ## <a name="next-steps"></a>További lépések
 
 [Sablonok az Azure parancssori felület telepítése](azure-stack-deploy-template-command-line.md)
+
+[Azure CLI Azure verem felhasználók (operátor) engedélyezése](..\azure-stack-cli-admin.md)
 
 [Felhasználói engedélyek kezelése](azure-stack-manage-permissions.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fcadac344e2e05c3f6cdd9003b87b819d7933fba
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599322"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937434"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure Redis gyorsítótár Azure PowerShell kezelése
 > [!div class="op_single_selector"]
@@ -783,7 +783,7 @@ Windows PowerShell használatával az Azure-ral kapcsolatos további tudnivalók
 * [Az Azure Redis Cache parancsmag dokumentációja az MSDN webhelyen](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 * [Az Azure Resource Manager parancsmagjainak](http://go.microsoft.com/fwlink/?LinkID=394765): bemutatják, hogyan használhatja a parancsmagok az Azure erőforrás-kezelő modulban.
 * [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-template-deploy-portal.md): megtudhatja, hogyan hozhatja létre és kezelheti az erőforráscsoportok az Azure portálon.
-* [Az Azure blog](http://blogs.msdn.com/windowsazure): az Azure-ban új szolgáltatásainak megismerése.
+* [Az Azure blog](https://azure.microsoft.com/en-us/blog/): az Azure-ban új szolgáltatásainak megismerése.
 * [A Windows PowerShell blog](http://blogs.msdn.com/powershell): a Windows PowerShell új szolgáltatásainak megismerése.
 * ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): a Windows PowerShell-Közösség valós tippek és trükkök az beszerzése.
 

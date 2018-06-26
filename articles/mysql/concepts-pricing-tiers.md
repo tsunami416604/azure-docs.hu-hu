@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: c1597f16dda8544908bbefaf39e75e667d38b22c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 93665ab075de539f98eebe34c2229870bd5a1a6e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316468"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750238"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -41,7 +41,7 @@ Miután létrehozott egy kiszolgálót, vCores hardver generációs és árképz
 
 ## <a name="compute-generations-and-vcores"></a>Számítási generációt és vCores
 
-A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az alapul szolgáló hardverben, a logikai Processzor. Jelenleg két számítási generációja, generációs 4. és 5. generációból közül választhat. 4 logikai processzorok Intel E5-2673 v3 alapulnak. generációból (Haswell) 2.4-GHz-es processzor. 5 logikai processzorok Intel E5-2673 v4 alapulnak. generációból (Broadwell) 2.3-GHz-es processzor. 4. generációból és generációs 5 (az "X" jelöli elérhető), a következő régiókban érhetők el. 
+A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az alapul szolgáló hardverben, a logikai Processzor. Jelenleg két számítási generációja, generációs 4. és 5. generációból közül választhat. 4 logikai processzorok Intel E5-2673 v3 alapulnak. generációból (Haswell) 2.4-GHz-es processzor. 5 logikai processzorok Intel E5-2673 v4 alapulnak. generációból (Broadwell) 2.3-GHz-es processzor. 4. generációból és generációs 5 (az "X" jelöli elérhető), a következő régiókban érhetők el.
 
 | **Az Azure-régió** | **4. generációból** | **5. generációból** |
 |:---|:----------:|:--------------------:|
@@ -80,7 +80,7 @@ A tároló, kiépítése nem MySQL-kiszolgáló az Azure-adatbázishoz rendelkez
 | Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
 | Tároló mérete | 5 GB és 1 TB | 5 GB és 4 TB | 5 GB és 4 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IO | Változó |3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális 7500 iops-érték | 3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális 7500 iops-érték |
+| IO | Változó |3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális iops-érték 6000 | 3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális iops-érték 6000 |
 
 Hozzáadhat további tárolási kapacitás alatt és után a kiszolgáló létrehozása. Az alapszintű rétegben nem biztosít egy IOPS garantált. Az általános célú és Memóriaoptimalizált tarifacsomagok az IOPS méretezést 3:1 arányt a kiépített méretét.
 

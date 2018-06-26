@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885268"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752921"
 ---
 # <a name="management-solutions-in-azure"></a>Az Azure-ban megoldások
 Megoldások kihasználhatja az Azure arra, hogy egy adott alkalmazás vagy szolgáltatás működésének nyújt további betekintést. Ez a cikk megoldások Azure-ban és részletek rövid áttekintést nyújt a használatával, és telepíteni kell őket.
@@ -52,21 +52,17 @@ Kattintson az összefoglalás lapon nyissa meg az adott megoldás neve. Ezen a l
 ![Megoldás tulajdonságai](media/monitoring-solutions/solution-properties.png)
 
 
-## <a name="find-management-solutions"></a>Keresse meg a felügyeleti megoldást
-Keresse meg és a rendelkezésre álló megoldások telepítse a Microsoft és a partnerek a [Azure piactér](https://azuremarketplace.microsoft.com/marketplace). Hajtsa végre a [keressen *megoldások* ](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) megoldások szűrését, és kattintson a további információkhoz juthat bármelyik elemre.
-
-![Piactér](media/monitoring-solutions/marketplace.png)
 
 ## <a name="install-a-management-solution"></a>A kezelési megoldás telepítése
+A Microsoft és a partnerek megoldások érhetők el a [Azure piactér](https://azuremarketplace.microsoft.com). Rendelkezésre álló megoldások keresése, és telepítse a következő eljárás segítségével.
 
-### <a name="install-a-management-solution-from-the-azure-marketplace"></a>Az Azure piactérről felügyeleti megoldás telepítése
-Az alábbi módszerek bármelyikét használhatja keresse meg és a kezelési megoldás a telepítés elindításához.
+1. Az a [az előfizetéshez tartozó megoldások listáját](#list-installed-management-solutions), kattintson a **Hozzáadás**. 
+1. Jobb oldalán **megoldások**, kattintson a **további**. 
+1. Keresse meg a felügyeleti megoldás szeretne, és olvassa végig a leírását.
+1. Kattintson a **létrehozása** a telepítési folyamat elindításához.
+1. A telepítési folyamat indításakor kéri, adja meg a szükséges konfiguráció változik az egyes megoldások. Az összes szükséges a Naplóelemzési munkaterület kiválasztása a megoldást futtató és az adatok hova legyenek összegyűjtve. 
 
-- Kattintson a **most töltse le innen** a felügyeleti megoldást a [Azure piactér](#find-management-solutions).
-- Az a [az előfizetéshez tartozó megoldások listáját](#list-installed-management-solutions), kattintson a **Hozzáadás**. Jobb oldalán **megoldások**, kattintson a **további**. Keresse meg, majd kattintson a felügyeleti megoldás **létrehozása**.
-- Válassza ki az Azure-portálon **hozzon létre egy erőforrást** > **figyelés + felügyeleti** > **láthatja az összes**. Jobb oldalán **megoldások**, kattintson a **további**. Keresse meg, majd kattintson a felügyeleti megoldás **létrehozása**.
-
-A telepítési folyamat indításakor kéri, adja meg a szükséges konfiguráció változik az egyes megoldások. Az összes szükséges a Naplóelemzési munkaterület kiválasztása a megoldást futtató és az adatok hova legyenek összegyűjtve. Előfordulhat, hogy szükség [adja meg az Automation-fiók](#log-analytics-workspace-and-automation-account) Ha a megoldás a szükséges.
+![Megoldás telepítése](media/monitoring-solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>A Közösség megoldás telepítése
 A Közösség tagjai elküldheti a megoldások Azure gyors üzembe helyezési sablonokat. Ezek a megoldások közvetlenül telepítse, vagy letöltheti a fájlokat a későbbi telepítési sablonok.

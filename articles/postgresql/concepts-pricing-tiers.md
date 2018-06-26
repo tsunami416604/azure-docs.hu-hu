@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: f4fe04b972cdd3d4f78a139ce5554ee7b6774d8a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fc7a2316b5b006cbbf8a237c6a95a71b6489932b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319316"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753404"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure tarifacsomagok PostgreSQL-adatbázishoz
 
@@ -81,13 +81,13 @@ A tároló, kiépítése nem PostgreSQL-kiszolgáló az Azure-adatbázishoz rend
 | Tárolási típus | Az Azure standard szintű tárolót | Azure Premium Storage | Azure Premium Storage |
 | Tároló mérete | 5 GB és 1 TB | 5 GB és 4 TB | 5 GB és 4 TB |
 | Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IO | Változó |3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális 7500 iops-érték | 3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális 7500 iops-érték |
+| IO | Változó |3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális iops-érték 6000 | 3 IOPS/GB<br/>100 minimális IOPS<br/>Maximális iops-érték 6000 |
 
 Hozzáadhat további tárolási kapacitás alatt és után a kiszolgáló létrehozása. Az alapszintű rétegben nem biztosít egy IOPS garantált. Az általános célú és Memóriaoptimalizált tarifacsomagok az IOPS méretezést 3:1 arányt a kiépített méretét.
 
 Az i/o-felhasználás az Azure portálon vagy az Azure CLI-parancsok segítségével figyelheti. Figyelésére vonatkozó adatok gyűjtése le van [tárolási kapacitása, tárolási százalékos, használt tárolási és IO százalék](concepts-monitoring.md).
 
-### <a name="reaching-the-store-limit"></a>Tároló korlát elérése
+### <a name="reaching-the-storage-limit"></a>A megadott tárolási kapacitás elérése
 
 A kiszolgáló van megjelölve csak olvasható, amikor eléri a szabad tárhelymemóriájának mennyiségét, kisebb, mint 5 GB vagy 5 %-a kiépített, amelyik kisebb. Ha például 100 GB tárhely ellátta, és a tényleges kihasználtság 95 GB, a kiszolgáló van megjelölve, csak olvasható. Másik lehetőségként ellátta 5 GB tárhelyet, ha a kiszolgáló van megjelölve csak olvasható 250 MB-nál kevesebb a szabad tárhely elérésekor.  
 

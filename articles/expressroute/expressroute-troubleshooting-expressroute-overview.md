@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185984"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753446"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 ExpressRoute, egy a helyszíni hálózat kibővítve a Microsoft felhőbe, amely a kapcsolat szolgáltatójánál megkönnyíthető titkos kapcsolaton keresztül, a következő három különböző hálózati zónák foglal magában:
@@ -84,7 +84,7 @@ Az Azure portálon, ExpressRoute-kapcsolatcsoportot állapotának ellenőrizhet�
 
 Az ExpressRoute Essentials *állapot áramkör* Microsoft oldalán a kapcsolatcsoport állapotát jelzi. *Szolgáltató állapota* azt jelzi, hogy a kapcsolatcsoport nem *kiépítve/nem létesített* szolgáltatói oldalán. 
 
-Az ExpressRoute-kapcsolatcsoportot működik, hogy a *áramkör állapot* kell lennie *engedélyezve* és a *szolgáltató állapota* kell *kiépítve*.
+Az ExpressRoute-kapcsolatcsoportot működik, hogy a *állapot áramkör* kell lennie *engedélyezve* és a *szolgáltató állapota* kell lennie *kiépítve*.
 
 >[!NOTE]
 >Ha a *állapot áramkör* van nincs engedélyezve, forduljon a [Microsoft Support][Support]. Ha a *szolgáltató állapota* van nincs telepítve, forduljon a szolgáltatójához.
@@ -169,12 +169,12 @@ Annak ellenőrzéséhez, hogy ha ExpressRoute-kapcsolatcsoportot működőképes
 >
 
 ## <a name="validate-peering-configuration"></a>Társviszony-létesítési konfiguráció ellenőrzése
-A szolgáltató a kiépítés az ExpressRoute-kapcsolatcsoport befejezése után egy útválasztási konfigurációja az ExpressRoute-kapcsolatcsoport között MSEE-PRs (4) és MSEEs (5) keresztül hozhatók létre. Minden egyes ExpressRoute-kapcsolatcsoportot rendelkezhet engedélyezve van egy, kettő vagy három útválasztási környezetek: Azure magánhálózati társviszony-létesítési (forgalom titkos virtuális hálózatok az Azure-ban), az Azure nyilvános társviszony-létesítés (forgalom nyilvános IP-címek az Azure-ban) és a Microsoft társviszony-létesítési (forgalom Dynamics 365 és az Office 365 való). Létrehozásához és módosításához útválasztási konfigurációs módjáról további információkért lásd: a cikk [létrehozása és módosítása az ExpressRoute-kapcsolatcsoportot útválasztási][CreatePeering].
+A szolgáltató a kiépítés az ExpressRoute-kapcsolatcsoport befejezése után egy útválasztási konfigurációja az ExpressRoute-kapcsolatcsoport között MSEE-PRs (4) és MSEEs (5) keresztül hozhatók létre. Minden egyes ExpressRoute-kapcsolatcsoportot rendelkezhet egy, kettő vagy három útválasztási környezetek engedélyezve: Azure magánhálózati társviszony-létesítés (virtuális magánhálózatok Azure forgalmat), az Azure nyilvános társviszony-létesítés (forgalom nyilvános IP-címek az Azure-ban) és a Microsoft társviszony-létesítés (Office 365-forgalom és Dynamics 365). Létrehozásához és módosításához útválasztási konfigurációs módjáról további információkért lásd: a cikk [létrehozása és módosítása az ExpressRoute-kapcsolatcsoportot útválasztási][CreatePeering].
 
 ### <a name="verification-via-the-azure-portal"></a>Az Azure-portálon ellenőrzése
 
 >[!NOTE]
->Ha a 3 rétegbeli a szolgáltató által biztosított, és a társviszony üresek a portálon, a frissítés gombra kattintva a protal a kapcsolatcsoport beállításainak frissítése. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
+>Ha a 3 rétegbeli a szolgáltató által biztosított, és a társviszony üresek a portálon, a frissítés gombra kattintva a portál kapcsolat beállításainak frissítése. Ez a művelet a kapcsolatcsoport alkalmazzák a megfelelő útválasztási konfigurációja. 
 >
 >
 
@@ -301,7 +301,7 @@ Egy példa egy válasz ahhoz, hogy a parancs sikeres forgatókönyvben:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Ehhez hasonlóan a MSEE az ARP-táblázat ellenőrizheti a *elsődleges*/*másodlagos* elérési útja, a *titkos*/*nyilvános*/*Microsoft* esetében.
+Hasonlóképpen, a MSEE az ARP-táblázat ellenőrizheti a *elsődleges*/*másodlagos* elérési útja, a *titkos*/*nyilvános*  / *Microsoft* esetében.
 
 A következő példa bemutatja, hogy a parancs a társviszony-létesítés a válasz nem létezik.
 
@@ -359,7 +359,7 @@ Egy példa a parancs sikeres eredménye a következő:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Ehhez hasonlóan az útválasztási táblát a MSEE ellenőrizheti a *elsődleges*/*másodlagos* elérési útja, a *titkos*/*nyilvános*/*Microsoft* társviszony-létesítési környezetben.
+Ehhez hasonlóan az útválasztási táblát a MSEE ellenőrizheti a *elsődleges*/*másodlagos* elérési útja, a *titkos* /  *Nyilvános*/*Microsoft* társviszony-létesítési környezetben.
 
 A következő példa bemutatja, hogy a parancs a társviszony-létesítés a válasz nem létezik:
 

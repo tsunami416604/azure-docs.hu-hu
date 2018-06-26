@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6cc5ff1c532d67c48beac1a2a10d034f5d9d7501
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349719"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750795"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Ismerkedés a beszédfelismerés eszközök SDK-val
 
@@ -41,7 +41,7 @@ A beszédfelismerés eszközök SDK-val fejlesztési megkezdése előtt gyűjtse
 
 * Ha szeretné használni a beszédfelismerés szolgáltatás leképezési felismerés, előfizetni a [nyelvi ismertetése szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [előfizetés-kulcs beszerzése](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Ön [hozzon létre egy egyszerű LUIS modell](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) vagy a minta LUIS modell `LUIS-example.json`, érhető el a beszédfelismerés eszközök SDK [töltse le a hely](https://shares.datatransfer.microsoft.com/). Töltse fel a modell JSON-fájl számára a [LUIS portal](https://www.lui.ai/applications) kattintva **importálási új alkalmazás** és a JSON-fájl kiválasztása.
+    Ön [hozzon létre egy egyszerű LUIS modell](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) vagy a minta LUIS modell `LUIS-example.json`, érhető el a beszédfelismerés eszközök SDK [töltse le a hely](https://shares.datatransfer.microsoft.com/). Töltse fel a modell JSON-fájl számára a [LUIS portal](https://www.luis.ai/home) kattintva **importálási új alkalmazás** és a JSON-fájl kiválasztása.
 
 ## <a name="set-up-the-development-kit"></a>A csomag beállítása
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248894"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753353"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -42,18 +42,9 @@ Az Azure Backup Server a következő Azure verem virtuálisgép-munkaterhelésé
 | SQL Server 2016 | Adatbázis |
 | SQL Server 2014 | Adatbázis |
 | SQL Server 2012 SP1 | Adatbázis |
+| A SharePoint 2016 | Farm, adatbázis, előtér, webalkalmazás-kiszolgáló |
 | SharePoint 2013 | Farm, adatbázis, előtér, webalkalmazás-kiszolgáló |
 | A SharePoint 2010 | Farm, adatbázis, előtér, webalkalmazás-kiszolgáló |
-
-
-### <a name="host-vs-guest-backup"></a>Gazdagép vagy vendég biztonsági mentés
-
-Az Azure Backup Server hajtja végre a gazdagép vagy Vendég szint virtuális gépek biztonsági mentése. A gazdagép szintjén Azure Backup szolgáltatás ügynöke telepítve van a virtuális gép vagy a fürt, és a teljes virtuális gépre, a gazdagépen futó az adatfájlok védi. A Vendég szinten Azure Backup szolgáltatás ügynökének mindegyik virtuális gépre van telepítve, és védelmet nyújt a munkaterhelés megtalálható, hogy a gép.
-
-Mindkét módszer van, és azok hátrányokkal jár:
-
-   * Gazdagépszintű biztonsági mentések működik, függetlenül a vendég gépen futó operációs, és nem szükséges telepíteni a virtuális gépek az Azure Backup szolgáltatás ügynöke. Ha gazdaszintű biztonsági mentések telepít egy teljes virtuális gépet, vagy a fájlok és mappák (elemszintű helyreállítás) állít helyre.
-   * Vendégszintű biztonsági mentés előnyökkel jár a virtuális gépen futó adott munkaterheléseknek védelme érdekében. Gazdagép-szintjén akkor helyreállíthatja az egész virtuális gép vagy adott fájlokról, de azt nem helyreállíthassa az adatokat egy adott alkalmazás környezetében. Adott SharePoint-fájlok helyreállítása a védett virtuális gép, például a virtuális gép vendég szinten védeni kell. Ha azt szeretné, közvetlenül csatlakoztatott lemezeken tárolt adatok védelmére, vendégszintű biztonsági mentéssel kell használnia. PASSTHROUGH lehetővé teszi, hogy a virtuális gép közvetlenül elérje a tárolóeszközt, és nem virtuális kötetadatokat tárolnia egy VHD-fájlban.
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Az Azure Backup Server környezetet előfeltételei
 
@@ -84,13 +75,10 @@ Biztonsági mentési adatok tárolására az Azure-ban csökkenti a biztonsági 
 
 Az Azure biztonsági mentési adatok tárolására, hozzon létre, vagy használja a Recovery Services-tároló. Amikor készül, hogy készítsen biztonsági másolatot az Azure Backup Server munkaterhelés –, akkor [a Recovery Services-tároló konfigurálása](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Konfigurálása után minden alkalommal, amikor egy biztonságimásolat-készítő feladat fut, a helyreállítási pont létrehozása a tárolóban lévő állapottal. Minden Recovery Services-tároló legfeljebb 9999 helyreállítási pontokat tárolja. Attól függően, hogy mennyi ideig maradnak, és létrehozott helyreállítási pontok száma a biztonsági mentési adatok továbbra is sok éve. Például akkor képes havi helyreállítási pontot, és öt évig megőrzi azokat.
  
-### <a name="using-sql-server"></a>SQL Server használata
-Ha az Azure Backup Server-adatbázis egy távoli SQL Server használatához, jelölje be a csak egy Azure verem virtuális Gépen futó SQL Server.
-
 ### <a name="scaling-deployment"></a>Központi telepítés skálázás
 Ha azt szeretné, a telepítés méretezésére, lehetősége van a következő:
   - Vertikális felskálázás – Azure Backup Server virtuális gépen a több D sorozat méretének növelése és a helyi tároló növelése [verem Azure virtuális gép utasítások](../azure-stack/user/azure-stack-manage-vm-disks.md).
-  - Adatok továbbítása - régebbi adatokat küldeni az Azure Backup Server így csak a legújabb adatokat az Azure biztonsági mentés-kiszolgálóhoz csatolt tárhelyen tárolnia.
+  - Adatok továbbítása - régebbi adatok küldése az Azure-ba, és az Azure biztonsági mentés-kiszolgálóhoz csatolt tárhelyen tárolnia csak a legújabb adatok megőrzése mellett.
   - Horizontális felskálázás -, adjon hozzá további Azure biztonsági mentés kiszolgálókat a munkaterhelések védelme érdekében.
 
 ### <a name="net-framework"></a>.NET-keretrendszer
@@ -216,7 +204,7 @@ Az előző lépésben kattintott **Befejezés** kattintva lépjen ki a kibontás
 
 ![A Microsoft Azure biztonsági mentési beállítása varázsló](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Az Azure Backup Server Data Protection Manager osztja meg a kódot. Látni fogja az Azure Backup Server telepítő a Data Protection Manager és a DPM mutató hivatkozásokat. Bár az Azure Backup Server és a Data Protection Manager külön termékek, ezeket a termékeket szorosan kapcsolódnak egymáshoz. Az Azure Backup Server dokumentációjában a Data Protection Manager és a DPM mutató összes hivatkozást Azure Backup Server vonatkozik.
+Az Azure Backup Server Data Protection Manager osztja meg a kódot. Látni fogja az Azure Backup Server telepítő a Data Protection Manager és a DPM mutató hivatkozásokat. Bár az Azure Backup Server és a Data Protection Manager külön termékek, ezeket a termékeket szorosan kapcsolódnak egymáshoz.
 
 1. Indítsa el a telepítővarázslót, kattintson a **Microsoft Azure Backup Server**.
 
@@ -322,7 +310,7 @@ Az Azure Backup Server Data Protection Manager osztja meg a kódot. Látni fogja
 
 ## <a name="add-backup-storage"></a>Biztonsági mentési tároló hozzáadása
 
-Az első biztonsági másolat tárhely az Azure Backup Server géphez csatolt tárhelyen tárolnia. Lemezek hozzáadásával kapcsolatos további információkért lásd: [tárolókészletek konfigurálása és a lemezes tárolás](https://technet.microsoft.com/library/hh758075.aspx).
+Az első biztonsági másolat tárhely az Azure Backup Server géphez csatolt tárhelyen tárolnia. Lemezek hozzáadásával kapcsolatos további információkért lásd: [hozzáadása Modern Backup-tárhelyre](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Kell hozzáadnia a biztonságimásolat-tároláshoz, akkor is, ha azt tervezi, hogy az adatok küldése az Azure-bA. Az Azure Backup Server architektúra a Recovery Services tároló tartalmazza a *második* a helyi tároló közben az adatok másolatát tartalmazza az első (és kötelező) biztonsági másolatot.
@@ -372,10 +360,10 @@ Azt is jelentheti [Azure biztonsági mentés kapcsolatos gyakori kérdések](bac
 
 ## <a name="next-steps"></a>További lépések
 
-A cikk [a környezet előkészítése a DPM](https://technet.microsoft.com/library/hh758176.aspx), támogatott Azure Backup Server beállításokkal kapcsolatos információkat tartalmazza.
+A cikk [a környezet előkészítése a DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), támogatott Azure Backup Server beállításokkal kapcsolatos információkat tartalmazza.
 
 A következő cikkek segítségével egy mélyrehatóbb ismereteket szerezhet a munkaterhelések védelme a Microsoft Azure Backup Server.
 
-- [SQL Server biztonsági másolat](backup-azure-backup-sql.md)
-- [A SharePoint server biztonsági másolat](backup-azure-backup-sharepoint.md)
+- [SQL Server biztonsági másolat](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [A SharePoint server biztonsági másolat](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Alternatív kiszolgáló biztonsági mentése](backup-azure-alternate-dpm-server.md)

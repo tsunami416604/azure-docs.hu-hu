@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 80cec0bc8136142f30ea7b957de819379b1bb139
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9061e12ac9fe0b9d858690897e582acab5169e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619133"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754513"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Biztonsági szempontok az Azure Data Factory adatok áttelepítéséről –
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Ez a cikk ismerteti, amelynek segítségével az Azure Data Factory adatátvitel
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](concepts-pipelines-activities.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok találhatók a régióban, ahol az adat-előállító létrehozása történt. 
 
-Annak ellenére, hogy a Data Factory érhető el csak az USA keleti régiója, USA keleti régiója 2 és Nyugat-Európában régiók (előzetes verzió 2), az adatátviteli szolgáltatás érhető [globálisan több régióban](concepts-integration-runtime.md#azure-ir). Az adatátviteli szolgáltatás még nincs telepítve a régióba, ha a a Data Factory szolgáltatásnak biztosítja, hogy adatokat nem hagynak egy földrajzi terület vagy régió kivéve, ha explicit módon utasíthatja a szolgáltatás egy másik régióban. 
+Annak ellenére, hogy a Data Factory néhány régiókban csak érhető el, van-e az adatátviteli szolgáltatás [elérhető globálisan](concepts-integration-runtime.md#integration-runtime-location) adatok megfelelőség biztosítása érdekében a hatékonyságot, és csökkentheti a hálózati kilépési költségeket. 
 
 Az Azure Data Factory nem tárolja az adatokról, kivéve a társított szolgáltatás felhőalapú adattároló, tanúsítványok használata titkosított hitelesítő adatait. Data Factory létrehozása az adatvezérelt munkafolyamatok közötti adatok mozgása vezénylését [adattárolókhoz támogatott](copy-activity-overview.md#supported-data-stores-and-formats), és segítségével az adatok feldolgozása [szolgáltatások számítási](compute-linked-services.md) más régiókban vagy a egy a helyszíni környezetben. Figyelése és munkafolyamatok kezelése SDK és Azure figyelő használatával is.
 
@@ -42,7 +42,7 @@ A hitelesített adatátvitelt jelölik a Data Factory használatával:
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
 -   [CSA CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
-Ha érdekli az Azure megfelelő, és hogyan Azure biztosítja a saját infrastruktúra, látogasson el a [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
+Ha érdekli az Azure megfelelő, és hogyan Azure biztosítja a saját infrastruktúra, látogasson el a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 Ez a cikk a Microsoft biztonsági szempontok a következő két adatelérési mozgását esetekben tekintse át: 
 

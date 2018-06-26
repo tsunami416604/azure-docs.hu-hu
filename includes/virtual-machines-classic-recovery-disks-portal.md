@@ -18,7 +18,7 @@ A virtuális gép helyreállításának első lépése magának a virtuális gé
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 2. A bal oldali menüben kattintson a **Virtuális gépek (klasszikus)** elemre.
 3. Válassza ki a hibás virtuális gépet, kattintson a **Lemezek** elemre, majd azonosítsa a virtuális merevlemez nevét. 
-4. Válassza ki az operációs rendszer merevlemezét, és a **Hely** mezőben azonosítsa a virtuális merevlemezt tároló tárfiók nevét. Az alábbi példában a közvetlenül a „.blob.core.windows.net” előtt álló karakterlánc a tárfiók neve.
+4. Válassza ki az operációs rendszer merevlemezét, és a **Hely** mezőben azonosítsa a virtuális merevlemezt tároló tárfiók nevét. Az alábbi példában a közvetlenül a „.blob.core.windows.net” előtt álló sztring a tárfiók neve.
 
     ```
     https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
@@ -56,7 +56,7 @@ Miután a hibákat kijavította, válassza le a meglévő virtuális merevlemezt
 
 Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [Azure-portálon](https://portal.azure.com).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. A portálon, válassza a bal felső at **hozzon létre egy erőforrást** > **számítási** > **virtuális gép** > **a Gyűjteményelem**.
 3. A **Kép kiválasztása** szakaszban válassza a **Saját lemezek** lehetőséget, majd válassza ki az eredeti virtuális merevlemezt. Ellenőrizze a helyadatokat. Ez az a régió, ahol a virtuális gépet üzembe kell helyezni. Válassza a Tovább gombot.
 4. A **Virtuális gép konfigurációja** szakaszban írja be a virtuális gép nevét, majd válasszon méretet a virtuális gép számára.

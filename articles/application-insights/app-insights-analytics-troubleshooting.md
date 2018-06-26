@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: eeda0fa6ad8faa05baf0a9344e958d298fb80d8e
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294159"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936683"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Elemzés hibaelhárítása az Application Insights szolgáltatásban
 Problémák [Application Insights Analytics](app-insights-analytics.md)? Itt érdemes kezdenie. Elemzés a hatékony keresési eszköz az Azure Application Insights.
@@ -57,7 +57,7 @@ Hitelesítési hiba történt (a hitelesítési eljárás, illetve a hozzáfér�
 4. Nyisson meg egy másik (normál) böngészőablakot, és navigáljon a [Azure](https://portal.azure.com). Jelentkezzen ki. Ezután nyissa meg a hivatkozást, és jelentkezzen be a helyes hitelesítő adatokkal.
 5. Az Microsoft Edge és az Internet Explorer felhasználói akkor is láthatják ezt a hibát, ha a rendszer nem támogatja a megbízható zóna beállításait.
    
-    Győződjön meg arról is [Analytics portál](https://analytics.applicationinsights.io) és [Azure Active Directory portálon](https://portal.azure.com) a ugyanazt biztonsági szintű zónában lévő:
+    Győződjön meg arról is [Analytics portál](https://portal.azure.com) és [Azure Active Directory portálon](https://portal.azure.com) a ugyanazt biztonsági szintű zónában lévő:
    
    * Az Internet Explorerben nyissa meg a **Internetbeállítások**, **biztonsági**, **megbízható helyek**, **helyek**:
      

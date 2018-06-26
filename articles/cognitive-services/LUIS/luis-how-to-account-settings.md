@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 76300b307c8e87a3dd108fc53d3b30a53d3276dd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 1f22112a38bf32af03ffaf0493db16839b3fe794
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263924"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749963"
 ---
 # <a name="manage-your-luis-account"></a>A LUIS fiók kezelése
 A két kulcsfontosságú adatokat LUIS fiók olyan felhasználói fiók és a szerzői műveletekhez kulcs. A bejelentkezési adatok felügyelt [account.microsoft.com](https://account.microsoft.com). A szerzői műveletekhez kulcs felügyelete a [LUIS][LUIS] webhely **beállítások** lap. 
@@ -46,7 +46,9 @@ A felhasználó először jelentkezik be LUIS, és látja a rendszergazdai jóv�
 
 A bérlői rendszergazda ezután LUIS bejelentkezik, és egy hozzájárulási folyamat felugró párbeszédpanel látja. Ez az a párbeszédpanelen, a rendszergazdának hozzá kell engedélyt a felhasználó számára. A rendszergazda elfogadja az engedélyt, ha a felhasználó nem tudja LUIS folytatásához.
 
-A bérlői rendszergazda nem fog bejelentkezni LUIS, ha a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=65920ba3-ab61-4a9b-9b10-505e5ce61b58) LUIS számára. 
+A bérlői rendszergazda nem fog bejelentkezni LUIS, ha a rendszergazda hozzáférhet [hozzájárulás](https://account.activedirectory.windowsazure.com/r#/applications) LUIS számára. 
+
+![Alkalmazás webhely által az Azure active directory-engedély](./media/luis-how-to-account-settings/tenant-permissions.png)
 
 Ha a bérlői rendszergazda csak bizonyos felhasználók LUIS használni fájlvédelemre, tekintse meg a [identitás blogja](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 

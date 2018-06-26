@@ -2,7 +2,7 @@
 Egy OpenAPI definíciója a függvény a rendelkezik [létrehozása a következő függvényt egy OpenAPI definíciója](../articles/azure-functions/functions-openapi-definition.md). Ez a folyamat következő lépése a rendszer az API-definíció, hogy a PowerApps és Microsoft Flow használható egy egyéni API-t.
 
 > [!IMPORTANT]
-> Ne feledje, hogy be kell jelentkeznie az Azure azokkal a hitelesítő adatokkal, használja a PowerApps és Microsoft Flow bérlők. Ez lehetővé teszi az egyéni API-t létrehozni, és tegye elérhetővé a PowerApps és a Microsoft Flow Azure.
+> Ne feledje, hogy be kell jelentkeznie Azure-ba, használja a PowerApps és Microsoft Flow bérlők azonos hitelesítő adatokkal. Ez lehetővé teszi az egyéni API-t létrehozni, és tegye elérhetővé a PowerApps és a Microsoft Flow Azure.
 
 1. Az a [Azure-portálon](https://portal.azure.com), kattintson a függvény alkalmazás neve (például **függvény-bemutató-energia**) > **Platform funkciói** > **API-definíció** .
 
@@ -10,7 +10,7 @@ Egy OpenAPI definíciója a függvény a rendelkezik [létrehozása a következ�
 
 1. Kattintson a **exportálja a PowerApps és Flow**.
 
-    ![API definition forrás](media/functions-export-api-definition/export-api-1.png)
+    ![API-definíció forrása](media/functions-export-api-definition/export-api-1.png)
 
 1. A jobb oldali ablaktáblában a táblázatban megadott beállítást használja.
 

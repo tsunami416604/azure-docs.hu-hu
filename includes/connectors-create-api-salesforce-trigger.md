@@ -1,7 +1,7 @@
 Ez az útmutató megtanulhatja, hogyan használható a **Salesforce - amikor létrejön egy objektum** munkafolyamat logic app kezdeményezésének, amikor egy új vezető létrehozza a Salesforce eseményindító.
 
 > [!NOTE]
-> Első kérni, hogy jelentkezzen be a Salesforce-fiókhoz, ha még nem hozott egy *kapcsolat* a Salesforce.  
+> Kérni első bejelentkezés Salesforce-fiókba, ha nem hozott létre már egy *kapcsolat* a Salesforce.  
 > 
 > 
 

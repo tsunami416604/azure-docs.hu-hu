@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b0772e3186c86239c773222a2b2e8d602a46aa52
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300594"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937618"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT központi alkalmazásban eszközök kezelése
 
@@ -96,7 +96,7 @@ Eszközök regisztrálása az importálás alatt által **nincs társítva eszk�
 1. A kiválasztott eszközök átkerülnek a megfelelő eszköz sablon alapján.
 
  >   [!NOTE] 
-    Miután egy eszközt, nem módosítható, vagy egy másik sablonhoz társított sablon társítva.
+    Ha egy eszköz társítva egy sablont nem lehet nincs társítva vagy amelyekkel társítva van egy másik sablonba.
 
 ## <a name="export-devices"></a>Eszközök exportálása
 

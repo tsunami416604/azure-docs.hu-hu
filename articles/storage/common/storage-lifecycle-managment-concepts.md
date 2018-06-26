@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248469"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752792"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob Storage-életciklus (előzetes verzió) kezelése
 
@@ -190,7 +190,7 @@ A képen életciklus-felügyeletének támogatja, és adatdeduplikációval blob
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Támogatja a blob jelenleg a gyakran használt adatok réteg         | Nem támogatott |
 | tierToArchive | Támogatja a blob jelenleg a gyakran használt adatok vagy a ritkán használt adatok réteg | Nem támogatott |
-| törlés        | Támogatott                                   | Támogatott     |
+| delete        | Támogatott                                   | Támogatott     |
 
 >[!NOTE] 
 Ha egynél több művelet van definiálva azonos blobot, életciklus-felügyeletének vonatkozik a legkisebb költségű művelet a blob. (pl. művelet `delete` művelet olcsóbbak `tierToArchive`. A művelet `tierToArchive` művelet olcsóbbak `tierToCool`.)
@@ -265,7 +265,7 @@ Egyes adatok pedig inaktívan a felhőben maradnak, és a tárolást követően 
 
 ### <a name="expire-data-based-on-age"></a>Adatok korát alapuló lejár
 
-Egyes adatokat várt napok vagy hónapok csökkentheti a költségeket vagy kormányzati szabályoknak létrehozása után lejár. A életciklus-kezelési házirendek beállítható lejárati dátum szerint törlés adatok korát alapján. A következő példa bemutatja, hogy törli az összes blokkoló blobokon (előtaggal nincs megadva) házirend 365 napnál régebbi.
+Egyes adatokat várt napok vagy hónapok csökkentheti a költségeket vagy kormányzati szabályoknak létrehozása után lejár. A életciklus-kezelési házirendek beállítható adatok lejár által adatok korát alapján törlését. A következő példa bemutatja, hogy törli az összes blokkoló blobokon (előtaggal nincs megadva) házirend 365 napnál régebbi.
 
 ```json
 {

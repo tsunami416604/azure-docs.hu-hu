@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/15/2018
+ms.date: 06/22/2018
 ms.author: rithorn
-ms.openlocfilehash: 822a2df113b848f07e616f155881f345028cee1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0a13627232904f4b14cdb5cbf5c3ca927d9ea167
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754551"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kezelheti az erőforrásokat a felügyeleti csoportok 
 Felügyeleti csoportok elősegítő tárolók hozzáférési házirend és megfelelőség kezeléséhez több előfizetéssel. Módosítsa, törölje, és kezelje az ezekben a tárolókban, amelyek együtt hierarchiákkal rendelkeznek a következő [Azure házirend](../azure-policy/azure-policy-introduction.md) és [Azure szerepköralapú hozzáférés vezérlők (RBAC)](../role-based-access-control/overview.md). Felügyeleti csoportok kapcsolatos további információkért lásd: [rendezheti az erőforrásokat az Azure felügyeleti csoportok ](management-groups-overview.md).
 
-A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Indíthatja a felügyeleti csoportok, jelentkezzen be a [Azure-portálon](https://portal.azure.com) vagy használhat [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [Azure CLI](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), vagy a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) számára a felügyeleti csoportok kezelése.
+A felügyeleti csoport funkciót egy nyilvános előzetes verziójában érhető el. Felügyeleti csoportok használatának megkezdéséhez jelentkezzen be a [Azure-portálon](https://portal.azure.com) vagy [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [Azure CLI](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), vagy a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) számára a felügyeleti csoportok kezelése.
 
 Változtatásokat egy felügyeleti csoporthoz, a felügyeleti csoport egy tulajdonos vagy közreműködő szerepkörrel kell rendelkeznie. Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, és válassza ki **IAM**. Az RBAC-szerepkörök kapcsolatos további információkért lásd: [kezelheti a hozzáférést és engedélyeket az RBAC](../role-based-access-control/overview.md).
 
@@ -55,8 +56,8 @@ C:\> Update-AzureRmManagementGroup -GroupName ContosoIt -DisplayName "Contoso Gr
 
 Azure CLI használata esetén használja a frissítés parancsot. 
 
-```azure-cli
-C:\> az account management-group update --group-name Contoso --display-name "Contoso Group" 
+```azurecli-interactive
+az account management-group update --name Contoso --display-name "Contoso Group" 
 ```
 
 ---
@@ -94,8 +95,8 @@ Remove-AzureRmManagementGroup -GroupName Contoso
 ### <a name="delete-in-azure-cli"></a>Törlés az Azure CLI felületen
 Azure parancssori felülettel a parancs az fiók felügyeleticsoport törlésének használja. 
 
-```azure-cli
-C:\> az account management-group delete --group-name Contoso
+```azurecli-interactive
+az account management-group delete --name Contoso
 ```
 ---
 
@@ -124,13 +125,13 @@ Get-AzureRmManagementGroup -GroupName Contoso
 ### <a name="view-in-azure-cli"></a>Az Azure CLI megtekintése
 A lista paranccsal minden csoportjainak lekérdezésére.  
 
-```azure-cli
+```azurecli-interactive
 az account management-group list
 ```
 Egyetlen felügyeleti csoport információ megjelenítése paranccsal
 
-```azurepowershell-interactive
-az account management-group show --group-name Contoso
+```azurecli-interactive
+az account management-group show --name Contoso
 ```
 ---
 
@@ -148,9 +149,9 @@ Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, é
 **Egy meglévő előfizetés hozzáadása a felügyeleti csoport**
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com)
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok** 
-3. Válassza ki a felügyeleti csoport szülőjeként tervezi.      
+3. Válassza ki a felügyeleti csoportot szeretne szülőjeként.      
 5. A lap tetején jelölje ki a **hozzáadása a meglévő**. 
-6. Megnyitott menüben válasszon ki a **erőforrástípus** az elem, amely áthelyezni kívánt **előfizetés**.
+6. Megnyitott menüben válasszon ki a **erőforrástípus** próbál áthelyezni, amely a cikk **előfizetés**.
 7. A megfelelő azonosítójú listájában válassza ki az előfizetést 
 
     ![Gyermekek](media/management-groups/add_context_2.png)
@@ -159,7 +160,7 @@ Milyen engedélyekkel Ön rendelkezik, válassza ki a felügyeleti csoportot, é
 **Előfizetés eltávolítása a felügyeleti csoport**
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com)
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok** 
-3. Válassza ki a felügyeleti csoport, amely az aktuális szülő tervezi.  
+3. Válassza ki a felügyeleti csoportot arra készül, amely az aktuális szülő.  
 4. Jelölje ki az előfizetés sor végén a három pont áthelyezni kívánt listájában.
 
     ![Áthelyezés](media/management-groups/move_small.png)
@@ -185,14 +186,14 @@ Remove-AzureRmManagementGroupSubscription -GroupName Contoso -SubscriptionId 123
 ### <a name="move-subscriptions-in-azure-cli"></a>Helyezze át az előfizetések az Azure parancssori felület
 Parancssori felület előfizetés áthelyezéséhez használja az add parancs. 
 
-```azure-cli
-C:\> az account management-group add --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription add --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 A felügyeleti csoportból az előfizetés eltávolításához használja az előfizetés remove parancsot.  
 
-```azure-cli
-C:\> az account management-group remove --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription remove --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 ---
@@ -204,9 +205,9 @@ Ha a fölérendelt felügyeleti csoport, a gyermek erőforrások közé tartozna
 
 1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com)
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok** 
-3. Válassza ki a felügyeleti csoport szülőjeként tervezi.      
+3. Válassza ki a felügyeleti csoportot szeretne szülőjeként.      
 5. A lap tetején jelölje ki a **hozzáadása a meglévő**.
-6. Megnyitott menüben válasszon ki a **erőforrástípus** az elem, amely áthelyezni kívánt **felügyeleti csoport**.
+6. Megnyitott menüben válasszon ki a **erőforrástípus** próbál áthelyezni, amely a cikk **felügyeleti csoport**.
 7. Válassza ki a felügyeleti csoport helyes Azonosítóját és nevét.
 
     ![Helyezze át](media/management-groups/add_context.png)
@@ -216,13 +217,13 @@ Ha a fölérendelt felügyeleti csoport, a gyermek erőforrások közé tartozna
 PowerShell frissítés-AzureRmManagementGroup paranccsal helyezze át a felügyeleti csoportot egy másik csoporthoz.  
 
 ```powershell
-C:\> Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
+Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
 ```  
 ### <a name="move-management-groups-in-azure-cli"></a>Helyezze át a felügyeleti csoportok az Azure parancssori felület
 A frissítési paranccsal helyezze át a felügyeleti csoport az Azure parancssori felület. 
 
-```azure-cli
-C:/> az account management-group udpate --group-name Contoso --parent-id "Contoso Tenant" 
+```azurecli-interactive
+az account management-group update --name Contoso --parent "Contoso Tenant" 
 ``` 
 
 ---

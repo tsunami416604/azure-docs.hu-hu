@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7c78cb13f9028b2be527794751d5f8ced9bff171
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: f1c417624b2950790dba54c4278e6109fa70610b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711341"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752978"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Az Azure Active Directory B2C: Felhasználói áttelepítése
 Ha végez Identitásszolgáltatóként az Azure Active Directory B2C (az Azure AD B2C), szükség lehet áttelepíteni a felhasználói fiók. Ez a cikk azt ismerteti, hogyan telepíthetők át a meglévő felhasználói fiókokat bármely identitásszolgáltató az Azure AD B2C. A cikk nem célja, hogy lehet előírásoknak megfelelő, de ehelyett néhány olyan forgatókönyvet ismerteti. A fejlesztői felelős az egyes frissítési megfelelőségét.
@@ -31,7 +31,7 @@ Azure AD B2C, felhasználókon telepíthet át [Azure AD Graph API][B2C-GraphQui
 
 Mindkét adatfolyamok, a először futtatja az áttelepítést megelőző folyamatba, olvassa el a felhasználók a régi identitásszolgáltatótól származó, és új fiók létrehozása az Azure AD B2C-címtárat a. Ha még nem rendelkezik a jelszót, akkor hozzon létre a fiók véletlenszerűen létrehozott jelszót. Majd kérje meg a felhasználó módosíthatja a jelszót, vagy a felhasználó először jelentkezik be, az Azure AD B2C megkérdezi a felhasználót, hogy állítsa alaphelyzetbe.
 
-## <a name="password-policy"></a>Jelszóházirend
+## <a name="password-policy"></a>Jelszószabályzat
 Az Azure AD B2C jelszóházirend (helyi fiókok esetében) az Azure AD-házirend alapul. Az Azure AD B2C regisztráció vagy bejelentkezés és a jelszó alaphelyzetbe állítása házirendek használata a "erős" jelszó erőssége, és nem jár le a jelszavakat. További információkért lásd: [az Azure AD-jelszóházirendet][AD-PasswordPolicies].
 
 Ha a fiókok, amelyet át szeretne használni egy gyengébb jelszó erőssége, mint a [kényszeríti ki az Azure AD B2C erős jelszó erőssége][AD-PasswordPolicies], letilthatja a erős jelszóval kapcsolatos követelmények. Az alapértelmezett jelszó-házirend módosításához állítsa a `passwordPolicies` tulajdonságot `DisableStrongPassword`. Például az alábbiak szerint módosíthatja a felhasználó kérés:
@@ -365,7 +365,7 @@ További információkért lásd: [folyamatos átviteli naplók és a konzol][Ap
 Miután elvégezte a [Ismerkedés az egyéni házirendek] [ B2C-GetStartedCustom] forgatókönyv, azt javasoljuk, hogy a saját egyéni házirend-fájlok használatával történő létrehozása adott esetben. Referenciaként a adtunk [házirendfájljait minta][UserMigrationSample].
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
-[AD-Powershell]: https://docs.microsoft.com/azure/active-directory/install-adv2
+[AD-Powershell]: https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2
 [AppService-Deploy]: https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs
 [AppService-Log]: https://docs.microsoft.com/azure/active-directory-b2c/app-service-web/web-sites-streaming-logs-and-console
 [B2C-AppRegister]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration

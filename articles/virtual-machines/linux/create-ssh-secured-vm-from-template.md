@@ -1,6 +1,6 @@
 ---
 title: Linux virtuális gép létrehozása az Azure-ban sablonból |} Microsoft Docs
-description: Linux virtuális gép létrehozása egy Resource Manager sablon használata az Azure CLI 2.0
+description: Linux virtuális gép létrehozása egy Resource Manager sablon az Azure parancssori felület használatával
 services: virtual-machines-linux
 documentationcenter: ''
 author: iainfoulds
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e241d56eba8c8cb23b1a78227b4ca7ff725162d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fc2b4dde9796336112d6c8a68d16d0b3006b3fee
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716407"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936414"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>A Linux virtuális gép létrehozása Azure Resource Manager-sablonok
-Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépek (VM) az Azure Resource Manager-sablonok és az Azure CLI 2.0. Az [Azure CLI 1.0-s](create-ssh-secured-vm-from-template-nodejs.md) verziójával is elvégezheti ezeket a lépéseket.
+Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépek (VM) az Azure Resource Manager-sablonok és az Azure parancssori felület. 
 
 
 ## <a name="templates-overview"></a>Sablonok – áttekintés

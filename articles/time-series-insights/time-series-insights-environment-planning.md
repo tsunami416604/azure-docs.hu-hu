@@ -1,6 +1,6 @@
 ---
 title: A skála Azure idő adatsorozat Insights környezet tervezése |} Microsoft Docs
-description: Ez a cikk egy Azure idő adatsorozat Insights környezetben, például a tárolási kapacitás, az adatmegőrzés, érkező kapacitás, és a figyelést tervezése során kövesse a bevált gyakorlatokat ismerteti.
+description: Ez a cikk egy Azure idő adatsorozat Insights környezetben, beleértve a tárolási kapacitás, az adatmegőrzés, érkező kapacitás, figyelés és üzleti vészhelyreállítási (BCDR) tervezése során kövesse a bevált gyakorlatokat ismerteti.
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293264"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751169"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Az Azure idő adatsorozat Insights környezet megtervezése
 
@@ -94,8 +94,18 @@ A referencia-adatkészlet kiegészítheti az esemény forrásból származó ese
 
 Megjegyzés: a referenciaadatok visszamenőleges nincs tartományhoz csatlakoztatva. Ez azt jelenti, hogy csak a jelenlegi és jövőbeli érkező adatok egyező és referencia meghatározott időpontban csatlakozik, konfigurálása és feltöltése után.  Ha azt tervezi, hogy a nagy mennyiségű előzményadatokat küldeni ÁME és nem feltölteni, vagy hozzon létre referenciaadatok ÁME először, akkor lehet, hogy újra munkavégzésre (mutatót, nem szórakoztató).  
 
-Hozzon létre, a referenciaadatok ÁME kezelését és feltöltését kapcsolatos további tudnivalókért keressen fel a *referenciaadatok* dokumentáció [dokumentáció] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Hozzon létre, a referenciaadatok ÁME kezelését és feltöltését kapcsolatos további tudnivalókért keressen fel a *referenciaadatok* dokumentáció [dokumentáció](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
+## <a name="business-disaster-recovery"></a>Üzleti katasztrófa utáni helyreállítás
+Az Azure-szolgáltatások, mint a idő adatsorozat Insights biztosít magas rendelkezésre ÁLLÁS létszámcsökkentések használata az Azure-régiót szinten bármit tennie kellene a megoldás által igényelt nélkül. A Microsoft Azure platform olyan vész-helyreállítási képességek vagy kereszt-régiónkénti elérhetőség megoldások létrehozásához szolgáltatásokat is tartalmaz. Ha lehetővé szeretné tenni globális, kereszt-régió eszközöket vagy felhasználókat, a magas rendelkezésre állású Azure vész-Helyreállítási felhasználásokhoz előnyeit. A cikk [Azure üzleti folytonossági műszaki útmutatót](../resiliency/resiliency-technical-guidance.md) az Azure-ban az üzletmenet folytonosságát és vész-Helyreállítási beépített funkcióit mutatja be. A [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások] [vész-helyreállítási és magas rendelkezésre állás a Azure-alkalmazások] papír architektúra-útmutatót biztosít az Azure-alkalmazások elérése a magas rendelkezésre ÁLLÁSÚ és vész-Helyreállítási stratégiát.
+
+Idő adatsorozat Insights nem rendelkezik beépített üzleti vészhelyreállítási (BCDR).  A felhasználóknak, akik BCDR azonban továbbra is valósíthat meg a helyreállítási stratégia. Hozzon létre egy második idő adatsorozat Insights környezet egy biztonsági mentési Azure-régiót, és a másodlagos környezet az elsődleges eseményforrás, a második dedikált fogyasztói csoportot és, hogy eseményforrás BCDR irányelveket az események küldése.  
+
+1.  Környezet létrehozása második régióban.  Több idő adatsorozat Insights-környezetek létrehozása a [Itt](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
+2.  Hozzon létre az eseményforrás második dedikált fogyasztói csoportot, és csatlakozzon a forrás az új környezet.  Győződjön meg arról, hogy kijelölje a második, dedikált fogyasztói csoportot.  További a következő vagy [IoT-központ dokumentáció](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) vagy [Event hub dokumentáció](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+3.  Ha az elsődleges régió egy katasztrófa utáni esemény során leáll, kapcsoljon át a biztonsági mentési idő adatsorozat Insights környezet műveletek.  
+
+Az IoT-központ BCDR-házirendekkel kapcsolatos további tudnivalókért látogasson [Itt](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Az Event hubs BCDR-házirendekkel kapcsolatos további tudnivalókért látogasson [Itt](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>További lépések
 - [Az Event Hubs forrás hozzáadása](time-series-insights-how-to-add-an-event-source-eventhub.md)

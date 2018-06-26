@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c01f986bfe3e6a3162988056a268423e07f429bf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301150"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750272"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Terjessze ki a Naplóelemzési riasztások Azure riasztások
-Nemrég, amíg Azure Log Analytics tartalmazza a saját riasztási működését, ami proaktív értesítheti a feltételek Naplóelemzési adatok alapján. A riasztási szabályok felügyelt, a [a Microsoft Operations Management Suite portálját](../operations-management-suite/operations-management-suite-overview.md). Az új riasztások felületet most integrálva van a Microsoft Azure-ban a különböző szolgáltatásokhoz különböző riasztások. Ez **riasztások** alatt Azure figyelése az Azure portálon, és támogatja a tevékenység naplókat, metrikákat, a riasztás és Naplóelemzési és Azure Application Insights naplózza. 
+Nemrég, amíg Azure Log Analytics tartalmazza a saját riasztási működését, ami proaktív értesítheti a feltételek Naplóelemzési adatok alapján. Riasztási szabályok a Microsoft Operations Management Suite-portálon kezelt meg. Az új riasztások felületet most integrálva van a Microsoft Azure-ban a különböző szolgáltatásokhoz különböző riasztások. Ez **riasztások** alatt Azure figyelése az Azure portálon, és támogatja a tevékenység naplókat, metrikákat, a riasztás és Naplóelemzési és Azure Application Insights naplózza. 
 
 ## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztése előnyei
 Létrehozásának és kezelésének, mint az Azure-portálon riasztások több előnye van:

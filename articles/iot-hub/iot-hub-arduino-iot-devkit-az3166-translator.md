@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: b65888ced67ba3c236c31678cf452d40489bf028
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ba2325272552a13d6e464797b1fb523415393100
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631778"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945938"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>Az Azure-függvény és kognitív szolgáltatásokkal IoT DevKit AZ3166 használata nyelvi a fordító
 
@@ -38,13 +38,16 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, ezek két módszer 
 
 ### <a name="a-start-vs-code"></a>A. Indítsa el a Visual STUDIO Code
 
-- Győződjön meg arról, hogy a DevKit nincs csatlakoztatva a Számítógéphez.
+- Győződjön meg arról, hogy a DevKit csatlakozik-e a számítógépen.
 - Indítsa el a Visual STUDIO Code
 - A DevKit kapcsolódni a számítógéphez.
 
 ### <a name="b-open-the-arduino-examples-folder"></a>B. Nyissa meg a Arduino példák
 
-Bontsa ki a bal oldali **ARDUINO példák > MXCHIP AZ3166 példák > AzureIoT**, és válassza ki **DevKitTranslator**. Egy új Visual STUDIO Code ablak nyílik meg benne DEVKITTRANSLATOR projektmappában.
+Bontsa ki a bal oldali **ARDUINO példák > MXCHIP AZ3166 példák > AzureIoT**, és válassza ki **DevKitTranslator**. Egy új Visual STUDIO Code ablak nyílik meg benne DEVKITTRANSLATOR projektmappában.  
+
+> [!NOTE]
+> Ha nem látja a példák MXCHIP AZ3166 szakasz, győződjön meg arról, hogy az eszköz megfelelően van-e csatlakoztatva, és indítsa újra a Visual Studio Code.  
 
 ![Az IoT-DevKit minták](media/iot-hub-arduino-iot-devkit-az3166-translator/vscode_examples.png)
 

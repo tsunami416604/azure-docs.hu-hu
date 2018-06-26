@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bc24465fa0efc9c473a78503d18200ea5b361920
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644606"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752271"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Megfigyelés és kezelés Azure SQL-adatbázisok és tárolókészletekben: a több-bérlős SaaS-alkalmazás teljesítménye
 
 Ebben az oktatóanyagban használt SaaS-alkalmazásokhoz több alapvető teljesítményt felügyeleti lehetőségeket írja. A betöltési generátor segítségével szimulálása tevékenység közötti összes bérlői, beépített figyelési és riasztási szolgáltatásokat az SQL Database és a rugalmas készletek egy.
 
-A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás egyetlen-bérlő adatok modellt használ, ahol az egyes helyszínekkel (bérlői) rendelkezik a saját adatbázis. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta előnyei úgy használhatók ki, hogy a bérlői adatbázisokat rugalmas adatbáziskészletekben helyezik üzembe. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-what-is-a-dtu.md)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
+A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás egyetlen-bérlő adatok modellt használ, ahol az egyes helyszínekkel (bérlői) rendelkezik a saját adatbázis. Sok más SaaS-alkalmazáshoz hasonlóan a bérlői számítási feladatok várt mintája kiszámíthatatlan és szórványos. Ez a gyakorlatban azt jelenti, hogy a jegyeladásokra bármikor sor kerülhet. Ezen tipikus adatbázis-felhasználási minta előnyei úgy használhatók ki, hogy a bérlői adatbázisokat rugalmas adatbáziskészletekben helyezik üzembe. A rugalmas készletek optimalizálják a megoldások költségeit azáltal, hogy számos adatbázis között osztják meg az erőforrásokat. Ennél a típusú mintánál fontos az adatbázis és a készleterőforrások felhasználásának figyelése annak biztosítása érdekében, hogy a terhelések egyenletesen oszoljanak meg a készletek közt. Emellett azt is biztosítani kell, hogy az egyes adatbázisok elengedő mennyiségű erőforrással rendelkezzenek, és hogy a készletek ne érjék el a maximális [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)-korlátot. Ez az oktatóanyag különböző módszereket ismertet az adatbázisok és készletek figyelésére és kezelésére, valamint a számítási feladatok változásaira adott korrekciós műveletek elvégzésére.
 
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
@@ -42,7 +42,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és elemzéséből, majd az adatokra való reagálásból áll. Ez tulajdonképpen a paraméterek módosítását jelenti, miáltal az alkalmazás válaszideje elfogadható szinten marad. Több bérlő üzemeltetésekor a rugalmas adatbáziskészletekkel költséghatékonyan oldható meg a kiszámíthatatlan számítási feladatokkal szembesülő adatbáziscsoportok erőforrásainak biztosítása és kezelése. Bizonyos számításifeladat-mintáknál már akár két S3-adatbázist is előnyös lehet készletben kezelni.
 
-![Alkalmazásdiagram](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
+![alkalmazásdiagram](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
 Annak érdekében, hogy a teljesítmény elfogadható tartományait belül maradnak címkészletekkel és IP-készletek, az adatbázisokat kell figyelni. A tárolókészlet konfigurációját, és annak biztosítására, hogy a készlet edtu-k a teljes munkaterhelés megfelelő összes adatbázis összesített munkaterhelés igényeihez hangolását. Állítsa be az adatbázisonkénti minimális és maximális eDTU-értékeket az alkalmazás specifikus igényei szerint.
 
@@ -73,7 +73,7 @@ Ha már megtörtént egy kötegelt bérlő előzetes oktatóanyag, ugorjon a [sz
 
 A szkript kevesebb mint öt perc alatt 17 bérlőt helyez üzembe.
 
-A *New-TenantBatch* parancsfájl használ egy beágyazott vagy csatolt [erőforrás-kezelő](../azure-resource-manager/index.md) sablonokat, hozzon létre egy kötegelt bérlő, amely alapértelmezés szerint másolja az adatbázist **basetenantdb** adatbázisok létrehozására az új tenanthoz katalóguskiszolgálóhoz, majd regisztrálja ezeket a katalógusban, és végül a bérlő neve és helyszínére típusú inicializálja. Ez a módszer az alkalmazás látja el egy új bérlőt összhangban. Milyen módosítások történtek *basetenantdb* bármely új bérlők számára kiosztott azt követően is vonatkozik. Tekintse meg a [séma felügyeleti oktatóanyag](saas-tenancy-schema-management.md) , hogyan lehet módosítani séma *meglévő* adatbázisok bérlői (beleértve a *basetenantdb* adatbázis).
+A *New-TenantBatch* parancsfájl használ egy beágyazott vagy csatolt [erőforrás-kezelő](../azure-resource-manager/index.md) sablonokat, hozzon létre egy kötegelt bérlő, amely alapértelmezés szerint másolja az adatbázist **basetenantdb**adatbázisok létrehozására az új tenanthoz katalóguskiszolgálóhoz, majd regisztrálja ezeket a katalógusban, és végül a bérlő neve és helyszínére típusú inicializálja. Ez a módszer az alkalmazás látja el egy új bérlőt összhangban. Milyen módosítások történtek *basetenantdb* bármely új bérlők számára kiosztott azt követően is vonatkozik. Tekintse meg a [séma felügyeleti oktatóanyag](saas-tenancy-schema-management.md) , hogyan lehet módosítani séma *meglévő* adatbázisok bérlői (beleértve a *basetenantdb* adatbázis).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Az összes bérlői adatbázis használatának szimulálása
 

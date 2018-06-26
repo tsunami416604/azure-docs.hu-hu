@@ -15,20 +15,20 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: aeb67a73a69684b89609c6b04160357b244f62b7
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293194"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754511"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Egyszeri bejelentkezés alkalmazásokhoz, amelyek nincsenek rajta az Azure Active Directory alkalmazáskatalógusában konfigurálása
 
-Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nem szerepel az Azure Active Directory-alkalmazásgyűjtemény konfigurálása tárgya *kód írása nélkül*. Ez a funkció a 2015. November 18 technical Preview-ban jelent meg, és szerepel a [Azure Active Directory Premium](active-directory-whatis.md). Ha ehelyett fejlesztői útmutató az egyéni alkalmazások integrálása az Azure AD kód keres, tekintse meg [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
+Ez a cikk egy szolgáltatás, amely lehetővé teszi a rendszergazdák egyszeri bejelentkezés alkalmazásokhoz nem szerepel az Azure Active Directory-alkalmazásgyűjtemény konfigurálása tárgya *kód írása nélkül*. Ez a funkció a 2015. November 18 technical Preview-ban jelent meg, és szerepel a [Azure Active Directory Premium](fundamentals/active-directory-whatis.md). Ha ehelyett fejlesztői útmutató az egyéni alkalmazások integrálása az Azure AD kód keres, tekintse meg [hitelesítési forgatókönyvek az Azure AD](active-directory-authentication-scenarios.md).
 
 Az Azure Active Directory alkalmazáskatalógusában felsorolja alkalmazásokat, amelyek kat közismerten támogató egy formája, amelyet az egyszeri bejelentkezés az Azure Active Directoryval, a [Ez a cikk](manage-apps/what-is-single-sign-on.md). (A egy informatikai szakember vagy a rendszer integráló a szervezet) megkeresése az alkalmazáshoz, amelyhez csatlakozni, elkezdheti az egyszeri bejelentkezés engedélyezése az Azure-portálon jelenik meg a részletes utasításokat követve.
 
-Az ügyfelek [Azure Active Directory Premium](active-directory-whatis.md) licenc is ezekhez a kiegészítő lehetőségekhez beolvasása:
+Az ügyfelek [Azure Active Directory Premium](fundamentals/active-directory-whatis.md) licenc is ezekhez a kiegészítő lehetőségekhez beolvasása:
 
 * Önkiszolgáló integrációs bármely alkalmazás, amely támogatja az SAML 2.0 identitás-szolgáltatóktól (a Szolgáltató által kezdeményezett vagy a kiállító terjesztési hely által kezdeményezett)
 * A webes alkalmazás, amelynek használatával egy bejelentkezési lap HTML-alapú önkiszolgáló integrációs [jelszó-alapú egyszeri bejelentkezés](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
@@ -148,18 +148,7 @@ A felhasználó hozzárendelése lehetővé teszi a felhasználó jogkivonatok k
 
 ### <a name="test-the-saml-application"></a>Az SAML-alkalmazás tesztelése
 
-A SAML-alapú alkalmazás tesztelése előtt meg kell állította be az alkalmazás az Azure ad-val, és felhasználókhoz vagy csoportokhoz rendelt az alkalmazás.
-
-  ![Tesztelés](./media/active-directory-saas-custom-apps/testing.png)
-
-Az egyszeri bejelentkezés lapon kattintson a **teszt SAML beállítások** a tartomány és az URL-címek szakaszban. Ekkor megnyílik a tartalom ablaktáblában a utasításokkal kell tesztelni az alkalmazást.
-
-1. Jelentkezzen be az alkalmazást. Ha az alkalmazás, szolgáltatás szolgáltató által kezdeményezett egyszeri bejelentkezést van konfigurálva, a rendszer visszairányítja az egyetlen bejelentkezési URL-címhez kezdeményezheti, ahol a bejelentkezés. Ha az alkalmazás van konfigurálva identitás szolgáltató által kezdeményezett egyszeri bejelentkezést, majd Ön van bejelentkezve az alkalmazáshoz.
-2.  Ha valamilyen hiba a vállalati bejelentkezési oldal jelenik meg, másolja át a hiba, és térjen vissza az Azure AD-egyszeri bejelentkezés a tartalom ablaktáblában tesztelése. Illessze be a hibát, majd kattintson a **megoldási lépések beolvasása**. Ha a hiba: az alkalmazás lapján, az alkalmazás gyártójától, és az Azure AD-be az érték érvényesítése a konfiguráció megosztása szüksége. 
-3.  A hibaüzenet alapján, az Azure AD lépéseit adott meg a probléma megoldásához.
-
-További információkért lásd: [SAML-alapú egyszeri bejelentkezés az Azure Active Directoryban alkalmazások hibakeresése](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-debugging/?WT.mc_id=DMC_AAD_?WT.mc_id=UI_AAD_Configure_NonGalleryApps)
-
+A SAML-alapú alkalmazás tesztelése előtt meg kell állította be az alkalmazás az Azure ad-val, és felhasználókhoz vagy csoportokhoz rendelt az alkalmazás. A SAML-alapú alkalmazás teszteléséhez, lásd: [SAML-alapú egyszeri bejelentkezés az Azure Active Directoryban alkalmazások hibakeresése](develop/active-directory-saml-debugging.md).
 
 ## <a name="password-single-sign-on"></a>Jelszó egyszeri bejelentkezést.
 

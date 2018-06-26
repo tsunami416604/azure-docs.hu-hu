@@ -3,8 +3,8 @@ title: Szolgáltatástérkép megoldást használni az Azure-ban |} Microsoft Do
 description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk a Service Map telepítése a környezetben, és használja azt a különféle forgatókönyvekhez, amik részletesen.
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
@@ -12,20 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887908"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751428"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Szolgáltatástérkép megoldást használni az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Szolgáltatástérkép, használatával megtekintheti a kiszolgálók, amelyek Ön szerint egyik módja: összekapcsolt rendszerekhez, hogy a kritikus szolgáltatásokhoz. Szolgáltatástérkép jeleníti meg a kiszolgálók, a folyamatok közötti kapcsolatokat, és portok között bármely TCP-csatlakoztatott architektúra, a konfiguráció nem szükséges másik ügynököt telepíteni.
 
-Ez a cikk ismerteti a Szolgáltatástérkép használatával részleteit. Szolgáltatástérkép és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban]( monitoring-service-map-configure.md).
+Ez a cikk ismerteti a bevezetési és a Szolgáltatástérkép használatával részleteit. Szolgáltatástérkép és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban]( monitoring-service-map-configure.md).
 
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+
+## <a name="enable-service-map"></a>Szolgáltatástérkép engedélyezése
+1. Az Azure portálon kattintson **+ hozzon létre egy erőforrást**.
+2. Írja be a keresési sávon **Szolgáltatástérkép** nyomja le az ENTER **Enter**.
+3. Válassza ki a piactér keresési eredmények oldalának **Szolgáltatástérkép** a listából.<br><br> ![Jelölje ki a Service Map megoldást Azure piactér a keresési eredmények](./media/monitoring-service-map/marketplace-search-results.png)<br>
+4. Az a **Szolgáltatástérkép** áttekintés ablaktábláján, a megoldás részletes leírását, és kattintson a **létrehozása** a Naplóelemzési munkaterület a bevezetési folyamat megkezdéséhez.<br><br> ![A bevezetni a Szolgáltatástérkép megoldás](./media/monitoring-service-map/service-map-onboard.png).
+5. Az a **megoldás konfigurálása** ablaktáblában válasszon egy meglévő, vagy hozzon létre egy új munkaterületet.  Új munkaterület létrehozásával kapcsolatos további információkért lásd: [Naplóelemzési munkaterület létrehozása az Azure portálon](../log-analytics/log-analytics-quick-create-workspace.md). Miután megadta a szükséges adatokat, kattintson a **létrehozása**.  
+
+Az adatokat a rendszer ellenőrzi, és a megoldást már telepítették, nyomon követheti a folyamat állapotát **értesítések** a menüből. 
+
+Szolgáltatástérkép elérni az Azure portálon a Naplóelemzési munkaterületet, és válassza ki a beállítást **megoldások** a bal oldali ablaktáblán.<br><br> ![Megoldások a beállításnak a munkaterületen](./media/monitoring-service-map/select-solution-from-workspace.png).<br> Válassza ki a listáról a megoldás **ServiceMap(workspaceName)** és a Szolgáltatástérkép megoldás áttekintése lapon kattintson a Szolgáltatástérkép összefoglalás csempére.<br><br> ![Szolgáltatástérkép összefoglalás csempére](./media/monitoring-service-map/service-map-summary-tile.png).
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Eseteinek: Ellenőrizze az informatikai feldolgozza a fürttámogató függőség
 
@@ -44,9 +57,10 @@ Ha a használja az Azure Site Recovery, és kell meghatározása a helyreállít
 ### <a name="patch-management"></a>A javítások
 Szolgáltatástérkép Ön miként használja a rendszer frissítés felmérése fokozza a jelenít meg, amelyek egyéb csoportok és a kiszolgálók a szolgáltatástól függenek, így akkor is értesítést küldhet nekik előre le a rendszer a javítás végrehajtása előtt. Szolgáltatástérkép is javítja a javítások azáltal, hogy bemutatja, hogy a szolgáltatások elérhető és megfelelően csatlakoztatott után lett, és újraindul.
 
-
 ## <a name="mapping-overview"></a>Leképezési áttekintése
-Szolgáltatástérkép ügynökök gyűjtse össze a TCP-kapcsolódó folyamatok információi a kiszolgálón, amelyen telepítve van és a bejövő és kimenő kapcsolatok az összes folyamat részleteit. A listában, a bal oldali ablaktáblán kiválaszthatja a gépeket vagy csoportokat, amelyeknek Szolgáltatástérkép keresztül a megadott időtartomány függősége megjelenítéséhez. Gép függőségi képezi le egy adott gép helyezi a hangsúlyt, és azok megjelenítése, amelyek közvetlen TCP-ügyfelek vagy kiszolgálók, hogy a gép összes gép.  Gép maps kiszolgálók és a Függőségek megjelenítése.
+Szolgáltatástérkép ügynökök gyűjtse össze a TCP-kapcsolódó folyamatok információi a kiszolgálón, amelyen telepítve van és a bejövő és kimenő kapcsolatok az összes folyamat részleteit.
+
+A bal oldali panelen a listából választhatja ki gépeket vagy csoportokat, amelyeknek Szolgáltatástérkép függősége megjelenítéséhez a megadott időtartomány keresztül. Gép függőségi képezi le egy adott gép helyezi a hangsúlyt, és azok megjelenítése, amelyek közvetlen TCP-ügyfelek vagy kiszolgálók, hogy a gép összes gép.  Gép maps kiszolgálók és a Függőségek megjelenítése.
 
 ![Szolgáltatástérkép áttekintése](media/monitoring-service-map/service-map-overview.png)
 
@@ -143,10 +157,10 @@ Nem sikerült kapcsolatok együtt jelennek meg a Service Map maps folyamatok és
 
 Hibás kapcsolatok elősegítheti a hibaelhárítást, áttelepítési érvényesítési, biztonsági elemzés és a teljes architectural understanding ismertetése. Nem sikerült kapcsolatok néha ártalmatlan, de gyakran pontok közvetlenül a problémát, például egy feladatátvételi környezetet hirtelen kiderül, hogy nem érhető el, vagy két alkalmazásrétegek nem képes kommunikálni a felhőben az áttelepítés után.
 
-## <a name="client-groups"></a>Az ügyfélcsoportok
+## <a name="client-groups"></a>Ügyfélcsoportok
 Az ügyfélcsoportok a térképen jelölőnégyzetéből, amelyek megfelelnek az ügyfél gépek, amelyeken nincs függőségi ügynökök. Egyetlen ügyfél csoport jelöli az ügyfelek egy adott folyamat vagy a számítógép.
 
-![Az ügyfélcsoportok](media/monitoring-service-map/client-groups.png)
+![Ügyfélcsoportok](media/monitoring-service-map/client-groups.png)
 
 Egy ügyfél csoportban lévő kiszolgálók IP-címeit, jelölje ki a csoport. A csoport tartalmát jelennek meg a **ügyfél tulajdonságai** ablaktáblán.
 
@@ -187,16 +201,13 @@ A **folyamat összegzése** ablaktábla a folyamat kapcsolatban, beleértve anna
 ![Folyamat összefoglalás ablaktábla](media/monitoring-service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>Riasztások integráció
-Szolgáltatástérkép integrálható a Log Analyticshez a kijelölt időtartományban égetett riasztások a kiválasztott kiszolgálóhoz tartozó megjeleníthető riasztás. A kiszolgáló megjelenít egy ikont, ha nincsenek az aktuális riasztásokat, és a **gép riasztások** ablaktábla listázza a riasztásokat.
+Szolgáltatástérkép integrálódik az Azure-riasztások a kiválasztott időtartomány égetett riasztások a kiválasztott kiszolgálóhoz tartozó megjeleníthető. A kiszolgáló megjelenít egy ikont, ha nincsenek az aktuális riasztásokat, és a **gép riasztások** ablaktábla listázza a riasztásokat.
 
 ![Gép riasztások panelen](media/monitoring-service-map/machine-alerts.png)
 
 Ahhoz, hogy a Service Map vonatkozó értesítések megjelenítése, hozzon létre egy szabályt, amely egy adott számítógép következik be. Megfelelő riasztások létrehozásához:
 - Számítógép csoporthoz záradékot tartalmazni (például **számítógép időköze 1 perces**).
 - Válassza ki riasztást küld, metrika mérési alapján.
-
-![Riasztások konfigurálása](media/monitoring-service-map/alert-configuration.png)
-
 
 ## <a name="log-events-integration"></a>Naplózási események integráció
 Szolgáltatástérkép integrálható a naplófájl-keresési megjelenítése a kiválasztott kiszolgálóhoz tartozó összes elérhető napló események száma a kijelölt időtartományban. Esemény száma naplófájl-keresési ugorhat, és az egyéni naplózási eseményeket a listában bármely sorára kattintson.
@@ -224,7 +235,7 @@ A **gép változások követése** ablaktábla listázza az összes módosítás
 
 Az alábbi képen, amelyeket konfigurációváltozás esemény részletes nézet kijelölése után **megjelenítése a Naplóelemzési**.
 
-![Konfigurációváltozás esemény](media/monitoring-service-map/configuration-change-event.png)
+![Konfigurációváltozás esemény](media/monitoring-service-map/configuration-change-event-01.png)
 
 
 ## <a name="performance-integration"></a>Teljesítmény-integráció
@@ -254,7 +265,6 @@ Biztonsági és a naplózási szolgáltatás térkép integrációját akkor aut
 A **gép biztonsági** ablaktábla megjeleníti azokat a biztonsági és hitelesítési megoldás a kiválasztott kiszolgálóhoz tartozó adatokat. A panelen a kiszolgáló függőben lévő biztonsági problémák összegzését a kijelölt időtartományban sorolja fel. Kattintson bármelyik a biztonsági problémák csukja le a velük kapcsolatos részletek napló keresése.
 
 ![Számítógép biztonsági ablaktábla](media/monitoring-service-map/machine-security.png)
-
 
 ## <a name="updates-integration"></a>Frissítések integráció
 Szolgáltatástérkép integráció a frissítéskezelés akkor automatikus, ha a két megoldás engedélyezve és konfigurálva a napló Anlaytics munkaterületen.
@@ -368,7 +378,7 @@ ServiceMapComputer_CL |} ahol "CentOS" OperatingSystemFullName_s contains_cs |} 
 A kiszolgáló, a folyamat és a függőségi adatokat a Service Map keresztül érhető el az összes a [szolgáltatás térkép REST API](https://docs.microsoft.com/rest/api/servicemap/).
 
 
-## <a name="diagnostic-and-usage-data"></a>diagnosztikai és használati adatok
+## <a name="diagnostic-and-usage-data"></a>Diagnosztika és használati adatok
 A Microsoft automatikusan használati és teljesítményadatokat gyűjt a Szolgáltatástérkép szolgáltatás használata. A Microsoft ezeket az adatokat ellátására és fejlesztésére minőségének, biztonsági és integritását, a Service Map szolgáltatást használja. Ahhoz, hogy pontos és hatékony hibaelhárítási képességei, szerepel a szoftver, például az operációs rendszer és a verziója, a IP-cím, a DNS-nevét és a munkaállomás neve konfigurációs adatait. A Microsoft nem gyűjti, neveket, címeket és egyéb kapcsolattartási adatait.
 
 Adatok gyűjtésével és használatával kapcsolatos további információkért lásd: a [Microsoft Online Services adatvédelmi nyilatkozatát](https://go.microsoft.com/fwlink/?LinkId=512132).

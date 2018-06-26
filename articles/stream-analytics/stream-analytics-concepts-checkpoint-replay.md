@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 1a7cb6c5d9c3383b127ce38ae21bb2dc811e1f2e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 32970ff37d202cc73e7ab7aa1bf3d737dae895c1
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31529484"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936717"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics-feladatok ellenőrzőpont- és a visszajátszás jellemzői
 Ez a cikk ismerteti a belső ellenőrzőpont- és a visszajátszás fogalmakat Azure Stream Analytics és a hatás azokat a helyreállítási feladat rendelkezik. Minden alkalommal, amikor egy Stream Analytics-feladat fut, állapot tárolt adatok belső. Állapot adatokat rendszeres időközönként menti a egy ellenőrzőpontot. Bizonyos esetekben az ellenőrzőpont adatok feladat helyreállítás a feladat hibáját vagy a frissítés esetén. Más esetekben az ellenőrzőpont nem használható a helyreállításhoz, és a visszajátszás szükség.
@@ -48,7 +48,7 @@ A Microsoft alkalmanként frissíti a bináris fájlokat a Stream Analytics-fela
 
 A helyreállítási ellenőrzőpont formátum jelenleg nem őrződik meg frissítések között. Ennek eredményeképpen a folyamatos átviteli lekérdezés állapotát kell visszaállítani, teljes egészében a visszajátszás technikával. Annak érdekében, hogy a Stream Analytics-feladatok játszhat a pontos ugyanazt a bemeneti előtt fontos, hogy az adatforrás az adatmegőrzési beállításban legalább az ablak méretének a lekérdezésben. Ha ezt elmulasztja, azt eredményezheti, hibás vagy hiányos eredményeket szolgáltatás a frissítés során, mert az adatok nem tarthatók feldolgozásáig vissza a teljes méretének tartalmazza.
 
-Általában a visszajátszás szükséges mérete megszorozza a események átlagos száma az ablak méretének arányos. Tegyük fel, 1000 esemény, bemeneti sebesség feladat egy nagy ismétlési mérete tekinthető egy ablak mérete nagyobb, mint egy óra. A visszajátszás nagy méretű lekérdezésekhez néhány hosszú időn keresztül a késleltetett output (kimenet nincs) jelenhet meg. 
+Általában a visszajátszás szükséges mérete megszorozza a események átlagos száma az ablak méretének arányos. Tegyük fel, 1000 esemény, bemeneti sebesség feladat egy nagy ismétlési mérete tekinthető egy ablak mérete nagyobb, mint egy óra. Akár egy órán keresztül az adatok dolgozza fel újra, a teljes is létrehozhat, és megfelelő eredményeket, ami miatt késik a kimeneti (nincs kimenet) inicializálása az állapot néhány hosszú időn keresztül is kell. Nem windows vagy más ideiglenes operátorok, a lekérdezések, például `JOIN` vagy `LAG`, nulla ismétlési kellene lennie.
 
 ## <a name="estimate-replay-catch-up-time"></a>Ismétlési utólagos idő becslése
 A szolgáltatás frissítése miatt a késés hossza becsléséhez, kövesse az ezzel a módszerrel:

@@ -8,21 +8,21 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 5541a2fff6bb54f5d62518e7edf54fb9150e3109
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249337"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751797"
 ---
-# <a name="back-up-sql-server-on-azure-stack"></a>Biztonsági másolatot az SQL Server Azure verem
+# <a name="back-up-sql-server-on-stack"></a>Biztonsági másolatot az SQL Server verem
 Ez a cikk segítségével konfigurálhatja a Microsoft Azure Backup Server (MABS) Azure veremben SQL Server-adatbázisok védelméhez.
 
 Az SQL Server-adatbázis biztonsági másolatának Azure és az Azure-ból helyreállítási felügyeleti három lépést foglal magában:
 
-1. Hozzon létre egy biztonsági mentési házirend, az Azure SQL Server-adatbázisok védelméhez.
-2. Hozzon létre igény szerinti biztonsági másolatot az Azure-bA.
-3. Az adatbázis helyreállítása az Azure-ból.
+1. SQL Server-adatbázisok védelmét a biztonsági mentési házirend létrehozása
+2. Igény szerinti biztonsági másolatot készíteni
+3. Az adatbázis helyreállítása lemezről, és az Azure-ból
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -63,12 +63,6 @@ Az SQL Server-adatbázis biztonsági másolatának Azure és az Azure-ból helyr
    >
 
 7. Az a **tekintse át a lemezkiosztást** képernyőn, ellenőrizze a teljes tárhely, valamint a lemezterület. Kattintson a **Tovább** gombra.
-
-    ![A lemezfoglalás](./media/backup-azure-backup-sql/pg-storage.png)
-
-    Alapértelmezés szerint az Azure Backup Server egy kötet található adatforrás (SQL Server-adatbázis), amely a kezdeti biztonsági másolatot hoz létre. Ezzel a megközelítéssel korlátozza a logikai lemezkezelő (LDM) Azure biztonsági mentés védelmi 300 adatforrásokhoz (SQL Server-adatbázisok). A probléma megoldásához, válassza ki a **adatok közös elhelyezése a DPM-Tárolókészletben**. A közös helyen való az Azure Backup Server csak egy kötet használ több adatforrást, és az SQL Server legfeljebb 2000 adatbázist védhet.
-
-    Ha **a kötetek méretének automatikus növelése**, a nagyobb biztonsági mentési kötet az Azure Backup Server fiókok termelési adatok növekedésével. A jelölőnégyzet bejelölésével nem Azure Backup Server korlátozza a biztonsági másolatok tárolásának az adatforrásokat a védelmi csoport használatával.
 
 8. Az a **replika-létrehozási módszer kiválasztása**, válassza ki az első helyreállítási pont létrehozása. A kezdeti biztonsági másolatot, manuálisan (hálózati) ki átvitele elkerülheti a sávszélesség torlódás vagy a hálózaton keresztül. Várjon, amíg az első biztonsági mentés átvitele mellett dönt, ha a kezdeti átvitel is megadhatja a időt. Kattintson a **Tovább** gombra.
 
@@ -111,12 +105,7 @@ Az SQL Server-adatbázis biztonsági másolatának Azure és az Azure-ból helyr
     * A biztonsági mentés szombaton déli 12:00 órakor 104 hétig őrződnek meg
     * A biztonsági mentés utolsó szombaton déli 12:00 órakor 60 hónapig őrzi meg
     * A biztonsági mentés utolsó szombaton déli 12:00 órakor március 10 évig őrzi meg
-13. Kattintson a **következő** , és válassza ki a megfelelő beállítást átvitelére a kezdeti biztonsági másolatot az Azure-bA. Választhat **automatikusan a hálózaton keresztül** vagy **Offline biztonsági másolat**.
-
-    * **Automatikusan a hálózaton keresztül** a biztonsági mentési adatok átvitele Azure biztonsági mentésre kiválasztott ütemezés szerint.
-    * **Offline biztonsági másolat** van arra a [Offline biztonsági másolat munkafolyamat Azure backup](backup-azure-backup-import-export.md).
-
-    Válassza ki a kezdeti biztonsági másolatot küldeni az Azure, majd kattintson a megfelelő adatátviteli mechanizmusát **következő**.
+13. Kattintson a **következő** , és válassza ki a megfelelő beállítást átvitelére a kezdeti biztonsági másolatot az Azure-bA. Választhat **automatikusan a hálózaton keresztül**
 
 14. Után áttekintheti a házirend adatait az **összegzés** kattintson **csoport létrehozása** a munkafolyamat befejezéséhez. Kattinthat **Bezárás** és a figyelés munkaterület feladatok előrehaladásának figyeléséhez.
 
@@ -147,11 +136,11 @@ A következő lépések szükségesek az Azure-ból (SQL Server-adatbázis) véd
 2. Kattintson a jobb gombbal az adatbázis nevét, és kattintson a **helyreállítása**.
 
     ![Az Azure-ból helyreállítása](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. A DPM a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. A helyreállítási típus kiválasztása az adatbázis felülírásához **visszaállítás az eredeti SQL Server-példányra**. Kattintson a **Tovább** gombra.
+3. MABS a helyreállítási pont részleteit jeleníti meg. Kattintson a **Tovább** gombra. A helyreállítási típus kiválasztása az adatbázis felülírásához **visszaállítás az eredeti SQL Server-példányra**. Kattintson a **Tovább** gombra.
 
     ![Helyreállítás az eredeti helyre](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
-    Ebben a példában a DPM helyreállíthatja az adatbázist, egy másik SQL Server-példányt, vagy egy különálló hálózati mappába.
+    Ebben a példában a MABS helyreállíthatja az adatbázist, egy másik SQL Server-példányt, vagy egy különálló hálózati mappába.
 
 4. Az a **adja meg a helyreállítási beállítások** képernyő, kiválaszthatja a helyreállítási beállítások, például a hálózati sávszélesség használatának szabályozása helyreállítási által használt sávszélesség szabályozása. Kattintson a **Tovább** gombra.
 

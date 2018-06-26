@@ -1,7 +1,7 @@
 ---
 title: 'Az Azure Cosmos DB kialakítási mintában: közösségi alkalmazások |} Microsoft Docs'
 description: További tudnivalók a kialakítási mintában a közösségi hálózatokkal, ami a tárolás rugalmasságát Azure Cosmos adatbázis és az egyéb Azure-szolgáltatásokhoz.
-keywords: Közösségi alkalmazások
+keywords: közösségi alkalmazások
 services: cosmos-db
 author: ealsur
 manager: kfile
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2017
 ms.author: maquaran
-ms.openlocfilehash: f03b2f3d295ed7d3986c45ecb80078190a2cd935
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 977ca57fdb2bcc0c9eaaa33eee06c1d8ae8e39ab
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613883"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754518"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Az Azure Cosmos DB közösségi címen
 A nagymértékben összekapcsolt társadalom élő azt jelenti, hogy a életben bármikor lesz része egy **közösségi hálózati**. Közösségi hálózatokkal való kapcsolattartásra ismerősök, munkatársakat, termékcsalád vagy néha nekünk kihívás megosztása élők közös érdekében használjuk.
@@ -150,7 +150,7 @@ Vegyük példaként a felhasználói adatokat:
         "address":"742 Evergreen Terrace",
         "birthday":"1983-05-07",
         "email":"john@doe.com",
-        "twitterHandle":"@john",
+        "twitterHandle":"\@john",
         "username":"johndoe",
         "password":"some_encrypted_phrase",
         "totalPoints":100,
@@ -175,7 +175,7 @@ Miért kellene azt ossza fel a felhasználói és akkor is tárolni ezt az infor
         "surname":"Doe",
         "username":"johndoe"
         "email":"john@doe.com",
-        "twitterHandle":"@john"
+        "twitterHandle":"\@john"
     }
 
 És a Post alábbihoz hasonlóan fog kinézni:
@@ -212,7 +212,7 @@ De mi azt megtudhatja? Néhány egyszerű példák [véleményeket elemzés](htt
 
 Most, hogy Ön akadályoznia jelent, úgy fogja valószínűleg gondolja, hogy néhány doktori matematikai tudományos ezeket a mintákat és információk egyszerű adatbázisok és a fájlok kibontásához van szüksége, de lenne megfelelő.
 
-[Az Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), része a [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), van a egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi, hogy a munkafolyamatokat algoritmusok használatát egy egyszerű felületen fogd és vidd kód a saját algoritmusok [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) , vagy használja a már létrehozott és használatra kész API-k, mint egy részénél: [Szövegelemzések](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [tartalom moderátor](https://www.microsoft.com/moderator) vagy [javaslatok](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
+[Az Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), része a [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi, hogy a munkafolyamatokat algoritmusok használatát egy egyszerű fogd és vidd felületen, a saját algoritmusok akód[ R](https://en.wikipedia.org/wiki/R_\(programming_language\)) , vagy használja a már létrehozott és használatra kész API-k, mint egy részénél: [Szövegelemzések](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [tartalom moderátor](https://www.microsoft.com/moderator) vagy [javaslatok](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
 
 Gépi tanulás forgatókönyvekben megvalósítására használhatjuk [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) különböző forrásokból származó adatok betöltési, és használata [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) feldolgozni az információkat, és egy kimenete, amely képes Azure Machine Learning feldolgozni.
 

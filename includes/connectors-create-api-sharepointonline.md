@@ -2,7 +2,7 @@
 
 Használata esetén csatlakozhassanak az **SharePoint Online**, meg kell adnia az identitás (felhasználónév és jelszó, intelligens kártyához tartozó hitelesítő adatok, stb.) a SharePoint online. Amennyiben Ön már hitelesítve, a SharePoint Online-összekötő használatához a logic App lépne. 
 
-A Logic Apps alkalmazást designer, a lépések végrehajtásával jelentkezzen be a SharePoint létrehozásához a **kapcsolat** használható a Logic Apps alkalmazást:
+A Logic Apps alkalmazást designer, a következő lépések segítségével létrehozásához jelentkezzen be a SharePoint a **kapcsolat** használható a Logic Apps alkalmazást:
 
 1. A keresőmezőbe írja be a SharePoint, és várja meg, a keresés vissza eseményindítók és a SharePoint online-hoz kapcsolódó műveletek:   
    ![A SharePoint konfigurálása][1]  

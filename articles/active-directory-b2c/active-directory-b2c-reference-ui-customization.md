@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84734b89aeb95745d237c062e5654afc4d49f966
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711144"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754516"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Az Azure Active Directory B2C: Testreszabása az Azure AD B2C felhasználói felület (UI)
 
 Felhasználói élmény az alkalmazás elérhető az ügyfél kiemelkedő.  Az ügyfél alap nő a márka megjelenésének és arculatának felhasználói élmény létrehozásával. Az Azure Active Directory B2C (az Azure AD B2C) lehetővé teszi, hogy testre szabhatja a regisztráció, bejelentkezés, profil szerkesztése, és a jelszó-átállítási tartalmazó képpontos tökéletes vezérlő.
 
 > [!NOTE]
-> A jelen cikkben ismertetett lap felhasználói felületi testreszabási szolgáltatás nem vonatkozik a bejelentkezési egyetlen házirend, a hozzá tartozó jelszó alaphelyzetbe állítása lap és ellenőrzési e-maileket.  Ezek a funkciók használata a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/customize-branding.md) helyette.
+> A jelen cikkben ismertetett lap felhasználói felületi testreszabási szolgáltatás nem vonatkozik a bejelentkezési egyetlen házirend, a hozzá tartozó jelszó alaphelyzetbe állítása lap és ellenőrzési e-maileket.  Ezek a funkciók használata a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/fundamentals/customize-branding.md) helyette.
 >
-> Hasonlóképpen ha egy felhasználó intiates egy profil házirend módosítása *előtt* jelentkezik be, a felhasználó irányítja át egy oldal, amely segítségével testre szabható a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/customize-branding.md).
+> Hasonlóképpen ha egy felhasználó intiates egy profil házirend módosítása *előtt* jelentkezik be, a felhasználó irányítja át egy oldal, amely segítségével testre szabható a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/fundamentals/customize-branding.md).
 
 Ez a cikk ismerteti a következő témaköröket:
 
@@ -214,7 +214,7 @@ Ez a lap tartalmaz egy e-mail címet vagy egy felhasználónevet alapuló helyi 
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>A "" közösségi fiók bejelentkezési oldalán"beszúrt töredék
+### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>A "közösségi fiók bejelentkezési oldalán" beszúrt töredék
 
 Ezen a lapon jelenhet meg, ha regisztrál a Facebook-on vagy a Google + például közösségi identitásszolgáltató egy meglévő fiókkal.  Ha további információkat kell gyűjteni a regisztrációs űrlap használatával a végfelhasználó használható. Ezen a lapon hasonlít a helyi fiók regisztrációs oldalon (az előző szakaszban látható) a jelszó számbeviteli mezők kivételével.
 
@@ -315,7 +315,7 @@ Ezen a lapon felhasználók regisztráció vagy bejelentkezés során ellenőriz
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>A "" hibalap"beszúrt töredék
+### <a name="fragment-inserted-into-the-error-page"></a>A "hibalap" beszúrt töredék
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">

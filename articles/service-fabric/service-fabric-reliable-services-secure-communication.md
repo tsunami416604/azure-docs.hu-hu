@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric szolgáltatás távoli eljáráshívási kommunikáció |} Microsoft Docs
-description: Megtudhatja, hogyan megbízható szolgáltatások az Azure Service Fabric-fürt a futó szolgáltatás távoli eljáráshívás-alapú kommunikáció biztonságossá tételére.
+title: A C# az Azure Service Fabric szolgáltatás távoli eljáráshívási kommunikáció |} Microsoft Docs
+description: Ismerje meg a C# megbízható futó szolgáltatások az Azure Service Fabric-fürt szolgáltatások alapú távelérés közötti kommunikáció biztonságossá tétele.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: cd7211ecda61ab2cca0f97e292d9ce2c47ed6933
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d185be26633178d8b3f147453b4c48eb77d7e425
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210273"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753523"
 ---
-# <a name="secure-service-remoting-communications-for-a-service"></a>Biztonságos távoli eljáráshívási kommunikáció service szolgáltatáshoz
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Biztonságos szolgáltatás távoli eljáráshívási kommunikáció egy C# szolgáltatásban
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-secure-communication.md)
 > * [Java Linuxon](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-A biztonság az egyik legfontosabb szempontja a kommunikáció. A Reliable Services alkalmazás-keretrendszer tartalmaz néhány előre elkészített kommunikációs verem és eszközöket, amelyek a biztonság növelése érdekében használhatja. Ez a cikk beszél hogyan lehet fokozni biztonságát, a távelérés szolgáltatás használatakor.
+A biztonság az egyik legfontosabb szempontja a kommunikáció. A Reliable Services alkalmazás-keretrendszer tartalmaz néhány előre elkészített kommunikációs verem és eszközöket, amelyek a biztonság növelése érdekében használhatja. A cikkből megtudhatja, hogyan lehet fokozni biztonságát, a C# szolgáltatás használatakor a távelérési szolgáltatás. Egy olyan buildekről nyújtanak [példa](service-fabric-reliable-services-communication-remoting.md) , amely ismerteti a C# nyelven írt megbízható szolgáltatások távoli eljáráshívást beállítani. 
 
-Egy meglévő használjuk [példa](service-fabric-reliable-services-communication-remoting.md) , amely ismerteti, hogyan megbízható szolgáltatások távoli eljáráshívást beállítani. Számítógépek biztonságossá tétele a szolgáltatás használatakor a távelérési szolgáltatás, kövesse az alábbi lépéseket:
+Amikor C#-szolgáltatásokkal, használja a szolgáltatás távoli eljáráshívási szolgáltatás biztonságossá kövesse az alábbi lépéseket:
 
 1. Illesztőfelület, hozzon létre `IHelloWorldStateful`, amely meghatározza, hogy a módszereket, amelyek számára a szolgáltatás a távoli eljáráshívás használható. A szolgáltatás által használt `FabricTransportServiceRemotingListener`, amely deklarálva van a `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` névtér. Ez egy `ICommunicationListener` megvalósítása, amely távoli eljáráshívási képességeket biztosít.
 
@@ -57,7 +57,7 @@ Egy meglévő használjuk [példa](service-fabric-reliable-services-communicatio
     ```
 2. Adja hozzá a figyelő beállításai és a hitelesítő adatokat.
 
-    Győződjön meg arról, hogy a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítvány telepítve van-e a fürt összes csomópontján. Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
+    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
 
    1. Adja meg azokat közvetlenül a szolgáltatás-kódban:
 
@@ -94,7 +94,7 @@ Egy meglévő használjuk [példa](service-fabric-reliable-services-communicatio
        ```
    2. Adja meg azokat a egy [a konfigurációs csomag](service-fabric-application-and-service-manifests.md):
 
-       Adja hozzá a `TransportSettings` szakasz a settings.xml fájlban.
+       Hozzáadása egy elnevezett `TransportSettings` szakasz a settings.xml fájlban.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">

@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b59d86ddb8422108ece66eb1a7bbea808620d063
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: b6de3094e903c3584aa4a57e7792e4b07711f74a
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319542"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937138"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Az Azure Active Directory integrálása
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -44,7 +44,7 @@ Az alkalmazás az Azure AD integrálása számos módja van. Számos, vagy kevé
 
 **Használja az Azure AD, hogy ki jogosult az alkalmazás elérésére.**  A rendszergazdák és alkalmazástulajdonosok az Azure AD hozzáférési jogosultságot rendelhet alkalmazások meghatározott felhasználókhoz és csoportokhoz. A Graph API használatával, olvassa el ezen a listán, és segítségével szabályozhatja az üzembe helyezést és megszüntetést erőforrások és az alkalmazáson belül hozzáférni.
 
-**Az Azure AD-szerepkörök alapuló hozzáférés-vezérlést.**  A rendszergazdák és alkalmazástulajdonosok rendelhet felhasználók és csoportok szerepkörök regisztrálnia az alkalmazást az Azure AD meg. Szerepköri információkat az alkalmazás a jogkivonatok bejelentkezés küldött, és is olvashatók a Graph API segítségével. További információ [Azure AD használata a hitelesítéshez](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx).
+**Az Azure AD-szerepkörök alapuló hozzáférés-vezérlést.**  A rendszergazdák és alkalmazástulajdonosok rendelhet felhasználók és csoportok szerepkörök regisztrálnia az alkalmazást az Azure AD meg. Szerepköri információkat az alkalmazás a jogkivonatok bejelentkezés küldött, és is olvashatók a Graph API segítségével. További információ [Azure AD használata a hitelesítéshez](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Szerezze be a profil, naptár, e-mailek, névjegyek, fájlok, és több hozzáférési
 **Az Azure AD a hitelesítési kiszolgáló Office 365 és az egyéb Microsoft üzleti szolgáltatások.**  Jelentkezzen be az alkalmazás vagy a támogatási az aktuális felhasználói fiókok összekapcsolása az OAuth 2.0 verziót használja Azure AD-felhasználói fiókok Azure AD támogatása, ha olvasási és írási hozzáférést a felhasználói profil, naptár, e-mailekhez, névjegyek, fájlok és más információkat kérhet. Akkor is zökkenőmentesen felhasználó naptár beírni az eseményeket és olvasására vagy írására fájlokat a onedrive vállalati verzió. További információ [való hozzáférés az Office 365 API-k](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).

@@ -12,20 +12,20 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602720"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938487"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
 Ez a cikk bemutatja, hogyan kell helyeznie az erőforrásokat az új előfizetés vagy egy új erőforráscsoportot ugyanahhoz az előfizetéshez. A portál, PowerShell, az Azure parancssori felület vagy a REST API használatával erőforrás áthelyezése. Ez a cikk az áthelyezési műveletek rendelkezésére álljanak a segítség nélkül az Azure-támogatás.
 
-Ha az erőforrások áthelyezése, mind a forrás-csoport és a célcsoport zárolva van a művelet során. Írási és törlési műveletek blokkolják az erőforráscsoportok az áthelyezés befejezéséig. A lakat azt jelenti, nem adja hozzá, frissítenie vagy törölnie az erőforráscsoportok erőforrásokat, de nem jelent az erőforrások sincs rögzítve. Például ha egy SQL Server és a kapcsolódó adatbázis áthelyezése egy új erőforráscsoportot, az adatbázist használó alkalmazások teljesen állásidő nélkül. Továbbra is olvasni és írni az adatbázisba.
+Ha az erőforrások áthelyezése, mind a forrás-csoport és a célcsoport zárolva van a művelet során. Írási és törlési műveletek blokkolják az erőforráscsoportok az áthelyezés befejezéséig. A lakat azt jelenti, nem adja hozzá, frissítenie vagy törölnie az erőforráscsoportok erőforrásokat, de ez nem jelenti azt az erőforrások sincs rögzítve. Például ha egy SQL Server és a kapcsolódó adatbázis áthelyezése egy új erőforráscsoportot, az adatbázist használó alkalmazások teljesen állásidő nélkül. Továbbra is olvasni és írni az adatbázisba.
 
 Az erőforrás helye nem módosítható. Egy erőforrás áthelyezése csak áthelyezi egy új erőforráscsoportot. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
 
@@ -54,10 +54,10 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Ha a bérlő azonosítók a forrás és cél előfizetésekhez nem egyeznek, az alábbi módszerekkel egyeztetni a bérlő azonosítók:
+  Ha a bérlő azonosítók a forrás és cél előfizetésekhez nem ugyanaz, az alábbi módszerekkel egyeztetni a bérlő azonosítók:
 
   * [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)
-  * [Azure-előfizetés társítása vagy az Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
+  * [Azure-előfizetés társítása vagy az Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. A szolgáltatásnak lehetővé kell tennie az erőforrások áthelyezését. Ez a cikk felsorolja a szolgáltatások lehetővé teszik az erőforrások áthelyezése, és a szolgáltatások nem engedélyezi az erőforrások áthelyezése.
 3. A cél előfizetést regisztrálni kell az áthelyezett erőforrás erőforrás-szolgáltatóján. Ha nem, hibaüzenet arról, hogy a **az előfizetés nincs regisztrálva az erőforrástípus**. Ez a probléma erőforrások új előfizetésre történő áthelyezésekor fordulhat elő, ha az előfizetést még nem használták az adott erőforrástípushoz.
@@ -93,6 +93,8 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** a forrás-erőforráscsoporton.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** meg a célként megadott erőforráscsoport.
 
+5. Erőforrások áthelyezése előtt ellenőrizze az előfizetés kvóták az előfizetés telepít át az erőforrásokat. Ha az erőforrások áthelyezése azt jelenti, hogy az előfizetés meg fogja haladni a teljes kapacitásukkal működjenek, akkor ellenőrizze, hogy kérheti a kvótájának növelését. A korlátozások és a korlátozás megnövelésére listájáért lásd: [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../azure-subscription-service-limits.md).
+
 5. Ha lehetséges, a nagy számú alkalommal felkerült külön áthelyezési műveletek. Erőforrás-kezelő azonnal megpróbálja egy művelettel több mint 800 erőforrások áthelyezése sikertelen lesz. Azonban kevesebb mint 800 erőforrások áthelyezése is sikertelen lehet által közbeni időtúllépés miatt meghiúsult.
 
 ## <a name="when-to-call-support"></a>Mikor érdemes az ügyfélszolgálat
@@ -115,6 +117,7 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * App Service apps (webalkalmazások) – lásd: [App Service korlátozásai](#app-service-limitations)
 * App Service-tanúsítvány
 * Application Insights
+* Analysis Services
 * Automation
 * Azure Cosmos DB
 * Azure Relay
@@ -153,7 +156,8 @@ A szolgáltatások, amelyek lehetővé teszik egy új erőforráscsoportot és a
 * Storage
 * Tekintse meg a tároló (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 * A Stream Analytics - feladatok nem helyezhető át, ha a Stream Analytics állapotban.
-* SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez a jelenség Azure SQL Database és az Azure SQL Data Warehouse-adatbázishoz. 
+* SQL-adatbáziskiszolgáló - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha egy SQL server helyezi át, az adatbázisokat is kerülnek. Ez a jelenség Azure SQL Database és az Azure SQL Data Warehouse-adatbázishoz.
+* Time Series Insights
 * Traffic Manager
 * Virtuális gépek - felügyelt lemezzel rendelkező virtuális gép nem helyezhető át. Lásd: [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Virtuális gépek (klasszikus) - lásd [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
@@ -174,6 +178,7 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Azure Migrate
 * BizTalk Services
 * Tanúsítványok – jelzi, hogy áthelyezhetők-e a App Service-tanúsítványokkal, de feltöltött tanúsítványok [korlátozások](#app-service-limitations).
+* Container Service
 * DevTest Labs - helyezze át az új erőforráscsoport ugyanahhoz az előfizetéshez engedélyezve van, de több előfizetés áthelyezése nem engedélyezett.
 * Dynamics LCS
 * Express Route
@@ -182,14 +187,14 @@ A szolgáltatások, amelyek jelenleg nem engedélyezi az erőforrás áthelyezé
 * Felügyelt alkalmazások
 * Tekintse meg a felügyelt lemezek - [virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Nyilvános IP - lásd [nyilvános IP-korlátozások](#pip-limitations)
-* Recovery Services-tároló - is do helyezi át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított lásd [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
+* Recovery Services-tároló - is nem helyezhető át a számítási, hálózati és tárolási erőforrásokat, a Recovery Services-tároló társított című [helyreállítási szolgáltatások korlátozásai](#recovery-services-limitations).
 * Biztonság
 * StorSimple Device Manager
 * Tekintse meg a virtuális hálózatok (klasszikus) - [klasszikus telepítési korlátozásai](#classic-deployment-limitations)
 
 ## <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozásai
 
-Felügyelt lemezek nem támogatják az áthelyezés. Ez a korlátozás, az azt jelenti, hogy néhány kapcsolódó erőforrások túl nem helyezhető át. Nem helyezhető át:
+Felügyelt lemezek nem támogatják a move. Ez a korlátozás, az azt jelenti, hogy néhány kapcsolódó erőforrások túl nem helyezhető át. Nem helyezhető át:
 
 * Felügyelt lemezek
 * A felügyelt lemezzel rendelkező virtuális gépek
@@ -218,7 +223,7 @@ Virtuális hálózat nem helyezhető át másik előfizetést, ha a virtuális h
 
 ## <a name="app-service-limitations"></a>App Service korlátozásai
 
-A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
+A korlátozások vonatkoznak az App Service-erőforrások áthelyezésére attól függően változnak, hogy az erőforrások belüli előfizetés vagy egy új előfizetés telepít át.
 
 Az ezekben a szakaszokban ismertetett korlátozások érvényesek, a feltöltött tanúsítványok, nem App Service-tanúsítványokkal. App Service-tanúsítványokkal áthelyezése egy új erőforráscsoportot, vagy a korlátozások nélkül. Ha még több webes használó alkalmazások ugyanazt a alkalmazás Service tanúsítványt, először helyezze át a webes alkalmazások majd helyezze át a tanúsítványt.
 
@@ -246,7 +251,7 @@ Ha áthelyezi a webes alkalmazás _előfizetésekhez_, a következő korlátozá
 
 ## <a name="classic-deployment-limitations"></a>Klasszikus üzembe helyezési korlátozásai
 
-A klasszikus modellben telepített erőforrások áthelyezésére szolgáló beállítások attól függően változnak, hogy helyez át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
+A klasszikus modellben telepített erőforrások áthelyezésére szolgáló beállítások attól függően változnak, hogy telepít át az erőforrásokat egy előfizetésen belül vagy egy új előfizetést.
 
 ### <a name="same-subscription"></a>Ugyanahhoz az előfizetéshez
 
@@ -267,7 +272,7 @@ Ha az erőforrások áthelyezése új előfizetés, a következő korlátozások
 
 * Az előfizetés az összes hagyományos erőforrások át szeretné helyezni a ugyanazt a műveletet.
 * A célként megadott előfizetés nem tartalmazhat más hagyományos erőforrások.
-* Az Áthelyezés egy külön REST API-n keresztül klasszikus helyezi át a csak meg kell adniuk. A szabványos erőforrás-kezelő áthelyezés parancsok nem működnek a hagyományos erőforrás áthelyezése egy új előfizetést.
+* Az Áthelyezés egy külön REST API-n keresztül klasszikus helyezi át a csak meg kell adniuk. A szabványos erőforrás-kezelő áthelyezés parancsok nem működik, amikor a hagyományos erőforrás áthelyezése egy új előfizetést.
 
 Hagyományos erőforrás áthelyezése egy új előfizetés, a jellemző hagyományos erőforrások REST műveleteinek használja. A többi használatához hajtsa végre az alábbi lépéseket:
 
@@ -330,7 +335,7 @@ A művelet több percig is futhat.
 
 ## <a name="recovery-services-limitations"></a>Helyreállítási szolgáltatások korlátozásai
 
-Helyezze át a tárolási, hálózati, nincs engedélyezve, vagy számítási erőforrásokat az Azure Site Recovery vész-helyreállítási telepítéséhez használt.
+Áthelyezési nincs engedélyezve az Azure Site Recovery vész-helyreállítási használt tárolási, hálózati vagy számítási erőforrásokhoz.
 
 Tegyük fel például, hogy állította be a tárfiók (Storage1) helyszíni gépek replikációja, és szeretné, hogy a védett gép elérni a feladatátvételt követően az Azure-ba (Network1) virtuális hálózathoz csatlakozó virtuális gépként (VM1). Nem helyezhető át - Storage1 VM1 és Network1 - e az Azure erőforrások bármelyike erőforráscsoportok egyazon előfizetésen belül vagy az előfizetések.
 
@@ -365,9 +370,9 @@ Standard Termékváltozat nyilvános IP-cím nem helyezhető át.
 
 Erőforrások áthelyezéséhez jelölje ki ezeket az erőforrásokat tartalmazó erőforráscsoportot, majd a **áthelyezése** gombra.
 
-![Erőforrások áthelyezése](./media/resource-group-move-resources/select-move.png)
+![erőforrások áthelyezése](./media/resource-group-move-resources/select-move.png)
 
-Adja meg, hogy egy új erőforráscsoportot, vagy egy új előfizetés áthelyezni az erőforrásokat.
+Adja meg, hogy egy új erőforráscsoportot, vagy egy új előfizetés telepít át az erőforrásokat.
 
 Válassza ki az áthelyezni kívánt erőforrásokat és a célként megadott erőforráscsoport. Megerősíti, hogy szeretné-e frissíteni a parancsfájl-ezeket az erőforrásokat, és válassza ki **OK**. Ha az előző lépésben kiválasztott előfizetés Szerkesztés ikonra, a célelőfizetés is kell választania.
 
@@ -377,7 +382,7 @@ A **értesítések**, láthatja, hogy fut-e a műveletet.
 
 ![Áthelyezési állapotának megjelenítése](./media/resource-group-move-resources/show-status.png)
 
-Amikor befejeződött, az eredmény értesítést kap.
+Amikor befejeződött, az eredmény észlelt a.
 
 ![Áthelyezési eredmény megjelenítése](./media/resource-group-move-resources/show-result.png)
 

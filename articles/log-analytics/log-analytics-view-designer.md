@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91d4efcd7fabc2f284078d752ea68778a9bd8d86
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29939869"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752039"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Naplóelemzési adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre
 Az adatforrásnézet-tervezőből használatával [Azure Naplóelemzés](log-analytics-overview.md), az Azure portálon, amelyik segíthet a Naplóelemzési munkaterület az adatok megjelenítése egyéni nézetek számos hozhat létre. Ez a cikk áttekintést nyújt adatforrásnézet-tervezőből és eljárások létrehozásának és szerkesztésének egyéni nézetek.
@@ -55,13 +55,14 @@ A beállítások a következő táblázat ismerteti:
 |:--|:--|
 | Frissítés   | Frissíti a nézetet a legújabb adatokkal. | 
 | Elemzés | Megnyitja a [Advanced Analytics portál](log-analytics-log-search-portals.md#advanced-analytics-portal) napló keresések adatok elemzésére. |
-| Szűrés    | Beállítja az adatokat, a nézetben szereplő idő szűrőt. |
-| Szerkesztés      | A nézet megnyitása az adatforrásnézet-tervezőből annak tartalmát és a konfiguráció szerkesztése.  |
-| Klónozás     | Létrehoz egy új nézetet, és megnyitja azt a adatforrásnézet-tervezőből. Az új nézet neve megegyezik az eredeti neve megegyezik, azonban *másolási* utótaggal. |
+| Szerkesztés       | A nézet megnyitása az adatforrásnézet-tervezőből annak tartalmát és a konfiguráció szerkesztése.  |
+| Klónozás      | Létrehoz egy új nézetet, és megnyitja azt a adatforrásnézet-tervezőből. Az új nézet neve megegyezik az eredeti neve megegyezik, azonban *másolási* utótaggal. |
+| Dátumtartomány | A dátum és idő tartomány szűrő szerepel a nézetben adatok beállításával. |
+| +          | Adja meg egy egyéni szűrő van definiálva a nézet. |
 
 
 ## <a name="create-a-new-view"></a>Új nézet létrehozása
-Létrehozhat egy új nézetet az adatforrásnézet-tervezőből kiválasztásával a **adatforrásnézet-tervezőből** csempét a **áttekintése** a Naplóelemzési munkaterület oldalán.
+Létrehozhat egy új nézetet az adatforrásnézet-tervezőből kiválasztásával **adatforrásnézet-tervezőből** a Naplóelemzési munkaterület menüjében.
 
 ![Tervező csempéje](media/log-analytics-view-designer/view-designer-tile.png)
 
@@ -104,7 +105,6 @@ A beállítások használatához a nézetek szerkesztési módban részelemcímk
 | Exportálás      | Exportálja a nézetet, hogy egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) , amelyet importálhat egy másik munkaterületre. A fájl nevét a nézet nevét, és egy *omsview* bővítmény. |
 | Importálás      | Importálja a *omsview* fájlt, amely egy másik munkaterület-ból exportált. Ez a művelet felülírja a meglévő nézetek konfigurációs. |
 | Klónozás       | Létrehoz egy új nézetet, és megnyitja azt a adatforrásnézet-tervezőből. Az új nézet neve megegyezik az eredeti neve megegyezik, azonban *másolási* utótaggal. |
-| Közzététel     | A nézet beilleszthet JSON-fájlba exportálja a [felügyeleti megoldás](../operations-management-suite/operations-management-suite-solutions-resources-views.md). A fájl neve megegyezik a nézet neve megegyezik, azonban a *json* bővítmény. Egy második fájlt, és hozza létre a *resjson* bővítmény, az erőforrásokat, amelyek a JSON-fájlban definiált értékeket tartalmaz.
 
 ## <a name="next-steps"></a>További lépések
 * Adja hozzá [Csempék](log-analytics-view-designer-tiles.md) a egyéni nézetben.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: c3e9b27784a1c0671ca3c87f9a7c55a288362299
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248384"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938410"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>A Cortana Intelligence megoldás sablont űrtechnikai és más vállalatok számára a prediktív karbantartási műszaki útmutatója
 
@@ -54,14 +54,14 @@ A következő szakaszok ismertetik a megoldás részeit.
 ### <a name="synthetic-data-source"></a>Szintetikus adatforrás
 Ehhez a sablonhoz használt adatforrás egy asztali alkalmazás letöltése és futtatása helyben a sikeres telepítést jönnek létre.
 
-Található útmutatást követve töltse le és telepítse az alkalmazást, jelölje ki az első csomópontot, a prediktív karbantartási Adatgenerátor megoldás sablon diagram. A Tulajdonságok sávon található utasításokat. Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események. Ez az adatforrás eredete nyilvánosan elérhető adatait a [NASA adattárház](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) használatával a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Található útmutatást követve töltse le és telepítse az alkalmazást, jelölje ki az első csomópontot, a prediktív karbantartási Adatgenerátor megoldás sablon diagram. A Tulajdonságok sávon található utasításokat. Ez az alkalmazás-hírcsatornák a [Azure Event Hubs](#azure-event-hub) szolgáltatás mellett vagy ugyanazt a megoldás folyamatot a többi használt események. Ez az adatforrás eredete nyilvánosan elérhető adatait a [NASA adattárház](https://c3.nasa.gov/dashlink/resources/139/) használatával a [turbóventillátoros motor teljesítménycsökkenést szimuláció adatkészlet](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
 
-Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.
+Az esemény generációs alkalmazás tölti fel az Azure Event Hubs csak, amíg a számítógép végrehajtása történik.  
 
-### <a name="azure-event-hub"></a>Azure-eseményközpont
+### <a name="azure-event-hub"></a>Azure-eseményközpont  
 A [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatása címzettje a szintetikus adatforrás által megadott bemenetet.
 
-## <a name="data-preparation-and-analysis"></a>Adatok előkészítése és elemzése
+## <a name="data-preparation-and-analysis"></a>Adatok előkészítése és elemzése  
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Használjon [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) közel valós idejű elemzés a bemeneti adatfolyam biztosításához a [Azure Event Hubs](#azure-event-hub) szolgáltatás. Tegye közzé eredményei közül a [Power BI](https://powerbi.microsoft.com) , valamint az összes nyers bejövő események archiválására irányítópult a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)szolgáltatás.
 
@@ -113,11 +113,11 @@ Ebben a megoldásban a lekérdezések kimeneti három adatkészletek a közel va
 A lekérdezés második Stream Analytics-feladat **maintenancesa02asablob** egyszerűen kiírja az összes [Eseményközpont](https://azure.microsoft.com/services/event-hubs/) események [Azure Storage](https://azure.microsoft.com/services/storage/) és ezért nem módosítása a teljes esemény adatformátum függetlenül információk Storage továbbítja adatfolyamként.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás koordinálja a mozgás és az adatok feldolgozása. A prediktív karbantartási megoldás repüléstechnikai sablon, a data factory áll három [folyamatok](../../data-factory/v1/data-factory-create-pipelines.md) , helyezze át, és feldolgozza a különféle technológiái.  A data factory érhető el a Data Factory-csomópont a megoldás sablon diagram a megoldás üzembe helyezése a létrehozott alján megnyitásával. Az adatkészletek a hibák miatt adat-előállító folyamatban már telepítve vannak a a adatgenerátor lett elindítva. Ezek a hibák figyelmen kívül lesz hagyva, és akadályozza meg, hogy a data factory működik
+A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás koordinálja a mozgás és az adatok feldolgozása. A prediktív karbantartási megoldás repüléstechnikai sablon, a data factory áll három [folyamatok](../../data-factory/concepts-pipelines-activities.md) , helyezze át, és feldolgozza a különféle technológiái.  A data factory érhető el a Data Factory-csomópont a megoldás sablon diagram a megoldás üzembe helyezése a létrehozott alján megnyitásával. Az adatkészletek a hibák miatt adat-előállító folyamatban már telepítve vannak a a adatgenerátor lett elindítva. Ezek a hibák figyelmen kívül lesz hagyva, és akadályozza meg, hogy a data factory működik
 
 ![Data Factory dataset hibák](./media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-Ez a szakasz ismerteti a szükséges [folyamatok](../../data-factory/v1/data-factory-create-pipelines.md) és [tevékenységek](../../data-factory/v1/data-factory-create-pipelines.md) szerepel a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Ez a megoldás diagram nézetet.
+Ez a szakasz ismerteti a szükséges [folyamatok és a tevékenységek](../../data-factory/concepts-pipelines-activities.md) szerepel a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Ez a megoldás diagram nézetet.
 
 ![Azure Data Factory](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
@@ -126,22 +126,22 @@ Két, az adat-előállító adatcsatornák tartalmazhat [Hive](http://blogs.msdn
 Hasonló [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok bejövő adatformátum implicit ismerete rendelkezik, és módosítani kell az adatok formátum alapján.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Ez [csővezeték](../../data-factory/v1/data-factory-create-pipelines.md) tartalmazza egy adott tevékenység - egy [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) az adatok particionálása-parancsprogramot be [Azure Storage](https://azure.microsoft.com/services/storage/) során a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) feladat.
+Ez [csővezeték](../../data-factory/concepts-pipelines-activities.md) tartalmazza egy adott tevékenység - egy [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) az adatok particionálása-parancsprogramot be [Azure Storage](https://azure.microsoft.com/services/storage/) során a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) feladat.
 
 A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálási feladat érték parancsfájl ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
-Ez [csővezeték](../../data-factory/v1/data-factory-create-pipelines.md) több tevékenységet, amelynek végeredménynek a pontozott előrejelzéseket tartalmazza a a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) megoldás sablonhoz társított kísérlet.
+Ez [csővezeték](../../data-factory/concepts-pipelines-activities.md) több tevékenységet, amelynek végeredménynek a pontozott előrejelzéseket tartalmazza a a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) megoldás sablonhoz társított kísérlet.
 
 Tevékenységek tartalmazza a következők:
 
-* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesítések elvégzéséhez és a szükséges jellemzőkiemelés parancsfájl a [Azure Machine Tanulási](https://azure.microsoft.com/services/machine-learning/) kipróbálásához.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenység segítségével egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , amelyen fut a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesítések elvégzéséhez és a szükséges jellemzőkiemelés parancsfájl a [Azure Machine Tanulási](https://azure.microsoft.com/services/machine-learning/) kipróbálásához.
   A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálási feladat érték parancsfájl ***PrepareMLInput.hql***.
-* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át az eredményeket a [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) egyetlen tevékenységet [Azure Storage](https://azure.microsoft.com/services/storage/) által elért blob a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
+* [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át az eredményeket a [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) egyetlen tevékenységet [Azure Storage](https://azure.microsoft.com/services/storage/) által elért blob a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység hívások a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) kísérletet, egyetlen be eredményekkel [Azure Storage](https://azure.microsoft.com/services/storage/) blob.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-Ez [csővezeték](../../data-factory/v1/data-factory-create-pipelines.md) tartalmazza egy adott tevékenység - egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át az eredményeket a [Azure Machine Learning](#azure-machine-learning) a kísérletezhet a  ***MLScoringPipeline*** számára a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) kiépítve a megoldás sablon telepítésének részeként.
+Ez [csővezeték](../../data-factory/concepts-pipelines-activities.md) tartalmazza egy adott tevékenység - egy [másolási](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenység, amely helyezi át az eredményeket a [Azure Machine Learning](#azure-machine-learning) a kísérletezhet a  ***MLScoringPipeline*** számára a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) kiépítve a megoldás sablon telepítésének részeként.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) használt kísérletezhet, ez a megoldás sablon biztosít a fennmaradó hasznos élettartama (Szabályainak) repülőgép motor számára. A kísérlet felhasznált adathalmaz és módosítást igényel, vagy az adatok adott helyettesítő állapotba hozni.

@@ -6,34 +6,32 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 6/08/2018
+ms.date: 6/25/2018
 ms.author: nepeters
-ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5155d0c85e5b3698b0a13d2d5256a235858f0e82
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260795"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938419"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések kapcsolatos Azure Kubernetes szolgáltatás (AKS)
 
 Ez a cikk címek gyakran használják az Azure Kubernetes szolgáltatás (AKS) kapcsolatos kérdésekre.
 
-> [!IMPORTANT]
-> Az Azure Kubernetes Service (AKS) jelenleg **előzetes verzióban** érhető el. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
->
-
 ## <a name="which-azure-regions-provide-the-azure-kubernetes-service-aks-today"></a>Mely Azure-régiók ma biztosít az Azure Kubernetes szolgáltatás (AKS)?
 
+- Kelet-Ausztrália
 - Közép-Kanada
 - Kelet-Kanada
 - USA középső régiója
 - USA keleti régiója
+- Kelet-US2
+- Észak-Európa
+- Az Egyesült Királyság déli régiója
 - Nyugat-Európa
-
-## <a name="when-will-additional-regions-be-added"></a>Ha további régiókban megkapja?
-
-További régiókban támasztott igény növekedésével hozzá szeretné adni.
+- USA nyugati régiója
+- USA nyugati régiója, 2.
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>Biztonsági frissítések AKS ügynök csomópontok vonatkoznak?
 
@@ -41,39 +39,48 @@ Azure automatikusan alkalmazza a biztonsági javítások egy éjszakánként üt
 
 - Manuálisan keresztül az Azure-portálon vagy az Azure parancssori felület.
 - A AKS fürt frissítésével. A fürt frissítések automatikusan [fekvő terület és üríti ki a csomópontok](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), majd hálózatra kell kapcsolni azokat készítsen biztonsági másolatot a legújabb Ubuntu lemezképpel. Operációsrendszer-lemezképet a csomóponton frissítse a fürt verziószámának megadásával Kubernetes verziók módosítása nélkül `az aks upgrade`.
-- Használatával [Kured](https://github.com/weaveworks/kured), egy nyílt forráskódú újraindítás démont Kubernetes. Kured fut, mint egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) és a fájl, amely jelzi, hogy újraindításra szükség minden egyes csomópont figyeli. A fürtön, az azonos fekvő terület és a korábban leírt kiürítési folyamat ezen vesznek majd koordinálja.
-
-## <a name="do-you-recommend-customers-use-acs-or-aks"></a>Tegye javasoljuk az ügyfelek használata ACS vagy AKS?
-
-AKS preview marad, de javasolt az ACS-Kubernetes üzemi-fürtök létrehozása vagy [acs-motor](https://github.com/azure/acs-engine). A koncepció igazolása központi telepítések és a fejlesztési és tesztelési célú környezetek AKS használhat.
-
-## <a name="when-will-acs-be-deprecated"></a>Ha ACS elavulttá válik?
-
-ACS GA váló AKS környékén elavulttá válik Fürtök áttelepítéséhez AKS 12 hónapon lesz. 12 hónap során az összes ACS-műveleteket is futtathatja.
+- Használatával [Kured](https://github.com/weaveworks/kured), egy nyílt forráskódú újraindítás démont Kubernetes. Kured fut, mint egy [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) és a fájl, amely jelzi, hogy újraindításra szükség minden egyes csomópont figyeli. A fürtön, az azonos fekvő terület és a korábban leírt kiürítési folyamat a következő vesznek majd koordinálja.
 
 ## <a name="does-aks-support-node-autoscaling"></a>Támogatja a AKS csomópont automatikus skálázás?
 
-Csomópont automatikus skálázás nem támogatott, de a programba. Vessen egy pillantást a nyitott forrása kívánt [automatikus skálázás megvalósítási][auto-scaler].
+Igen, automatikus skálázás megtalálható a [Kubernetes autoscaler] [ auto-scaler] Kubernetes 1.10-től.
 
 ## <a name="does-aks-support-kubernetes-role-based-access-control-rbac"></a>Támogatja a AKS Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC)?
 
-Nem, RBAC AKS jelenleg nem támogatott, de hamarosan elérhető lesz.
+Igen, az RBAC is engedélyezhető, ha az Azure CLI vagy Azure Resource Manager sablon AKS fürt telepítése. Ez a funkció hamarosan határozza meg az Azure portálon.
+
+## <a name="what-kubernetes-admission-controllers-does-aks-support-can-this-be-configured"></a>Milyen Kubernetes beléptetésre vezérlők nem támogatják a AKS? Ez konfigurálható?
+
+AKS támogatja a következő [beléptetésre tartományvezérlők][admission-controllers]:
+
+* NamespaceLifecycle
+* LimitRanger
+* Szolgáltatásfiók
+* DefaultStorageClass
+* DefaultTolerationSeconds
+* MutatingAdmissionWebhook 
+* ValidatingAdmissionWebhook
+* ResourceQuota
+* DenyEscalatingExec
+* AlwaysPullImages
+
+Nincs jelenleg lehetőség módosíthatja AKS beléptetésre tartományvezérlőinek listáját.
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Is AKS is üzembe helyezés a már meglévő virtuális hálózatot?
 
-Igen, ez támogatott keresztül a [speciális hálózati szolgáltatás](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
+Igen, egy AKS fürtök egy meglévő virtuális hálózat használatával történő telepítése a [speciális hálózati szolgáltatás](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>AKS szolgáltatással integrált Azure Key Vault?
 
-Nem, nem, de ez az integráció tervezett. Addig is, próbálja ki a következő megoldást [Hexadite][hexadite].
+AKS nem natív módon integrálva van az Azure Key Vault jelenleg. Van azonban közösségi megoldások, például [az acs-keyvault-ügynököt a Hexadite][hexadite].
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Futtatható Windows Server-tárolók AKS?
 
-Futtassa a Windows Server-tárolók, Windows Server-alapú csomópontok futtatnia kell. A jelenleg a rendszer Windows Server-alapú csomópontok [private Preview verziójára](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/). Ha a Windows Server-tárolók futtatnak az Azure-ban Kubernetes kívül az előzetes van szüksége, tekintse át a [acs-motor dokumentációja](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
+Futtassa a Windows Server-tárolók, Windows Server-alapú csomópontok futtatnia kell. Windows Server-alapú csomópontok nem érhetők el a AKS most. Ha a Windows Server-tárolók futtatnak az Azure-ban Kubernetes van szüksége, tekintse át a [acs-motor dokumentációja](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Két erőforráscsoport miért jönnek létre az AKS?
 
-Minden egyes AKS központi telepítés két erőforráscsoport is. Az első hozta létre, és csak a AKS erőforrást tartalmaz. A AKS erőforrás-szolgáltató automatikusan hoz létre központi telepítése során a második érték egy nevet, például a *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport az összes az infrastruktúrához kapcsolódó erőforrások a fürt, például a virtuális gépekhez társított tartalmazza a hálózati és adattárolási. Erőforrás-karbantartása leegyszerűsítése érdekében a rendszer létrehozza.
+Minden egyes AKS központi telepítés két erőforráscsoport is. Az első hozta létre, és csak a Kubernetes szolgáltatás-erőforrást tartalmaz. A AKS erőforrás-szolgáltató automatikusan hoz létre központi telepítése során a második érték egy nevet, például a *MC_myResourceGroup_myAKSCluster_eastus*. A második erőforráscsoport az összes az infrastruktúrához kapcsolódó erőforrások a fürt, például a virtuális gépekhez társított tartalmazza a hálózati és adattárolási. Erőforrás-karbantartása leegyszerűsítése érdekében a rendszer létrehozza.
 
 A AKS-fürthöz, például a storage-fiókok vagy fenntartott nyilvános IP-cím használható erőforrások létrehozásakor meg kell helyezze el őket az automatikusan létrehozott erőforráscsoportot.
 
@@ -84,3 +91,4 @@ A szolgáltatásiszint-szerződések (SLA) a szolgáltató vállalja, hogy úgy 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
+[admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/

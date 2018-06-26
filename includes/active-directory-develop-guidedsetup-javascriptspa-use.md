@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show sign-off button
+        // Show sign-out button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -198,13 +198,13 @@ Ez az útmutató által létrehozott minta alkalmazásban a `callWebApiWithToken
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-off-the-user"></a>A felhasználó bejelentkezni egy olyan metódus hozzáadása
+## <a name="add-a-method-to-sign-out-the-user"></a>A felhasználó kijelentkezik egy olyan metódus hozzáadása
 
 Adja hozzá a következő kódot a `app.js` fájlt:
 
 ```javascript
 /**
- * Sign off the user
+ * Sign out the user
  */
 function signOut() {
     userAgentApplication.logout();

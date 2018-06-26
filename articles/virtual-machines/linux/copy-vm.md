@@ -1,6 +1,6 @@
 ---
-title: Linux virtuális gépet az Azure CLI 2.0 másolása |} Microsoft Docs
-description: Útmutató egy példányát az Azure Linux virtuális gép Azure CLI 2.0 és a felügyelt lemezek létrehozásához.
+title: Azure parancssori felület használatával Linux virtuális gép másolása |} Microsoft Docs
+description: Útmutató egy példányát az Azure Linux virtuális gép Azure CLI és felügyelt lemezek létrehozásához.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 66f2789d717816f5be3fd8b298819825f8cd87f7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8d250f1289c3757d5ea862a1c195dde6f8efb0eb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905010"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938264"
 ---
-# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>Hozzon létre egy Linux virtuális gép egy másolatát Azure CLI 2.0 és felügyelt lemezek
+# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Hozzon létre egy Linux virtuális gép egy másolatát Azure CLI és felügyelt lemezek
 
 
-Ez a cikk bemutatja, hogyan hozzon létre egy másolatot az Azure CLI 2.0 és az Azure Resource Manager telepítési modell segítségével Linux operációs rendszert futtató Azure virtuális gép (VM). Az [Azure CLI 1.0-s](copy-vm-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) verziójával is elvégezheti ezeket a lépéseket.
+Ez a cikk bemutatja, hogyan hozzon létre egy másolatot az Azure CLI 2.0 és az Azure Resource Manager telepítési modell segítségével Linux operációs rendszert futtató Azure virtuális gép (VM). 
 
 Emellett [töltse fel, és hozzon létre egy virtuális gép olyan virtuális merevlemezről](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

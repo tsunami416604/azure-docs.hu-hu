@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: d0c006b21e00693fe6c8b35237d4ce55f67c0f75
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8bb0df567fbac6e8f8a2e2f64f868b4f219e05ac
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320596"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751394"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Hibakeresési SAML-alapú egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban
 
@@ -45,6 +45,9 @@ Tesztelési SAML-alapú egyszeri bejelentkezést, aad-ben és a cél alkalmazás
 3.  Vállalati alkalmazások listájának megtekintéséhez kattintson az alkalmazás, amely egyszeri bejelentkezést vizsgálni kívánt, majd kattintson a bal oldali lehetőségei közül **egyszeri bejelentkezés**.
 4.  Nyissa meg a SAML-alapú egyszeri bejelentkezés tesztelési élmény, a a **tartomány és az URL-címek** szakaszban kattintson **teszt SAML beállítás**. Ha a teszt SAML beállítás gomb szürkén jelenik meg, akkor először írja ki és mentse el a szükséges attribútumokat.
 5.  Az a **egyszeri bejelentkezés tesztelése** panelen, a munkahelyi hitelesítő adatait használja a célalkalmazásnak történő bejelentkezéshez. Az aktuális felhasználó vagy egy másik felhasználó bejelentkezhet. Jelentkezzen be másik felhasználóként, egy értesítés rákérdez hitelesítéséhez.
+
+    ![Teszt SAML lap](media/active-directory-saml-debugging/testing.png)
+
 
 Ha Ön sikeresen bejelentkezett, a rendszer megfelelt a vizsgálat. Ebben az esetben az Azure AD egy SAML válasz jogkivonatot ki az alkalmazáshoz. Az alkalmazás sikeresen szolgáltatásba a SAML-jogkivonat használ.
 

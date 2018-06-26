@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1de2482b7795bbed82874b6eea29f89f1ff52560
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260413"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938412"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
 
@@ -29,12 +29,18 @@ Azure Active Directory (Azure AD) segítségével meghatározhat külön rendsze
 A globális rendszergazda az összes felügyeleti funkcióhoz hozzáférése van. Alapértelmezés szerint a személy, aki az Azure-előfizetésre regisztrál a címtár globális rendszergazdai szerepkörrel rendelkeznek. Csak a globális rendszergazdák egyéb rendszergazdai szerepköröket rendelhet.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Rendelje hozzá, vagy távolítsa el a rendszergazdai szerepkörökről
-Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban a felhasználó további tudnivalókért lásd: [felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](active-directory-users-assign-role-azure-portal.md).
+Rendszergazdai szerepkörök hozzárendelése az Azure Active Directoryban a felhasználó további tudnivalókért lásd: [felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Elérhető szerepkörök
 A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
+* **Alkalmazás-rendszergazda**: Ebben a szerepkörben levő felhasználók létrehozhatnak és vállalati alkalmazások, az alkalmazás regisztrációk és az alkalmazások proxy beállításait minden szempontjának kezeléséhez. Ez a szerepkör is számára lehetőséget ad a delegált jogosultságokkal sikeresen telepítették, és a Microsoft Graph és az Azure AD Graph Alkalmazásengedélyek hozzájárulás. A szerepkör tagjai nem hozzá szeretné adni tulajdonosok új alkalmazás-regisztráció és a vállalati alkalmazások létrehozásakor.
+
+* **Alkalmazásfejlesztő**: a szerepet betöltő felhasználók alkalmazás regisztrációk hozhat létre. Ha a "A felhasználók regisztrálhatják alkalmazások" beállítása nem. Ezt a szerepkört is lehetővé teszi, hogy saját maguk beleegyezését tagok Ha a "Felhasználók is hozzájárul a nevében a vállalati adatokhoz hozzáférő alkalmazásokat" beállítás értéke nem. A szerepkör tagjai hozzá szeretné adni tulajdonosok új alkalmazás-regisztráció és a vállalati alkalmazások létrehozásakor.
+
 * **Számlázási rendszergazda**: lebonyolítja a vásárlásokat, kezeli az előfizetéseket, támogatási jegyeket, és figyeli a szolgáltatás állapotát.
+
+* **Alkalmazás-rendszergazda felhő**: a szerepet betöltő felhasználók ugyanazokkal az engedélyekkel rendelkezzenek, az alkalmazás-rendszergazda szerepkört kivéve képes kezelni az alkalmazásproxy. A szerepkörök a létrehozása és kezelése a vállalati alkalmazások és az alkalmazás regisztrációk minden elemét. Ez a szerepkör is számára lehetőséget ad a delegált jogosultságokkal sikeresen telepítették, és a Microsoft Graph és az Azure AD Graph Alkalmazásengedélyek hozzájárulás. A szerepkör tagjai nem hozzá szeretné adni tulajdonosok új alkalmazás-regisztráció és a vállalati alkalmazások létrehozásakor.
 
 * **Megfelelőségi rendszergazda**: Ezzel a szerepkörrel rendelkező felhasználók jogosult felügyeleti belül a Office 365 biztonsági és megfelelőségi központ és az Exchange felügyeleti központban. További információ a "[Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)."
 
@@ -107,11 +113,29 @@ A következő rendszergazdai szerepkörök állnak rendelkezésre:
 
 ## <a name="administrator-permissions"></a>Rendszergazdai engedélyek
 
+### <a name="application-administrator"></a>Alkalmazás-rendszergazda
+
+| Teheti meg | Nem hajtható végre |
+| --- | --- |
+| Olvassa el az összes címtár-információ<br>Alkalmazás-regisztrációk létrehozása<br>Alkalmazás regisztrálása tulajdonságainak frissítése<br>Szerezzen be a vállalati alkalmazások<br>Alkalmazás regisztrálása engedélyeinek kezelése<br>Alkalmazás regisztráció törlése<br>Alkalmazásbeállítások kezelése a vállalati egyszeri bejelentkezés<br>Kezelheti a vállalati alkalmazás kialakítási beállításai<br>Vállalati alkalmazások önkiszolgáló beállításainak kezelése<br>Vállalati alkalmazás engedélybeállítások kezelése<br>Alkalmazás-hozzáférés kezelése<br>Üzembe helyezési beállításainak kezelése<br>Vállalati alkalmazások törlése<br>Hozzájárulás nevében Mindenki engedélyt minden olyan kérelem esetében<br>Hozzájárul az Azure AD Graph vagy a Microsoft Graph kivételével az összes alkalmazás engedélykéréseket mindenki nevében<br>Application proxy beállításainak kezelése<br>Az Access services beállításai<br>A figyelő szolgáltatásának állapota<br>Támogatási jegyek kezelése<br>Rejtett olvasási csoporttagság | Létrehozása, szerkesztése és csoportok törlése<br>Felhasználói licencek kezelése<br>Címtár-szinkronizálás<br>Bejelentkezési jelentések megtekintése és a naplók | 
+
+### <a name="application-developer"></a>Alkalmazásfejlesztő
+
+| Teheti meg | Nem hajtható végre |
+| --- | --- |
+| Olvassa el az összes címtár-információ<br>Alkalmazás-regisztrációk létrehozása<br>Önkiszolgáló nevében hozzájárulás | Bejelentkezési megtekintése és a naplók<br>Rejtett olvasási csoporttagság |
+
 ### <a name="billing-administrator"></a>Számlázási adminisztrátor
 
 | Teheti meg | Nem hajtható végre |
 | --- | --- |
-|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p>|
+|<p>Vállalati és felhasználói adatok megtekintése</p><p>Office támogatási jegyek kezelése</p><p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p> |<p>Felhasználói jelszavak átállítása</p><p>Hozzon létre és kezelheti a felhasználói nézetek</p><p>Létrehozása, szerkesztése, törlése a felhasználók és csoportok és felhasználói licencek kezelése</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Auditnaplók megtekintése</p> |
+
+### <a name="cloud-application-administrator"></a>Felhőalkalmazás-rendszergazda
+
+| Teheti meg | Nem hajtható végre |
+| --- | --- |
+| Olvassa el az összes címtár-információ<br>Alkalmazás-regisztrációk létrehozása<br>Alkalmazás regisztrálása tulajdonságainak frissítése<br>Szerezzen be a vállalati alkalmazások<br>Alkalmazás regisztrálása engedélyeinek kezelése<br>Alkalmazás regisztráció törlése<br>Alkalmazásbeállítások kezelése a vállalati egyszeri bejelentkezés<br>Kezelheti a vállalati alkalmazás kialakítási beállításai<br>Vállalati alkalmazások önkiszolgáló beállításainak kezelése<br>Vállalati alkalmazás engedélybeállítások kezelése<br>Alkalmazás-hozzáférés kezelése<br>Üzembe helyezési beállításainak kezelése<br>Vállalati alkalmazások törlése<br>Hozzájárulás nevében Mindenki engedélyt minden olyan kérelem esetében<br>Hozzájárul az Azure AD Graph vagy a Microsoft Graph kivételével az összes alkalmazás engedélykéréseket mindenki nevében<br>Az Access services beállításai<br>A figyelő szolgáltatásának állapota<br>Támogatási jegyek kezelése<br>Rejtett olvasási csoporttagság | Application proxy beállításainak kezelése<br>Létrehozása, szerkesztése és csoportok törlése<br>Felhasználói licencek kezelése<br>Címtár-szinkronizálás<br>Bejelentkezési jelentések megtekintése és a naplók |
 
 ### <a name="conditional-access-administrator"></a>Feltételes hozzáférésű rendszergazda
 
@@ -169,17 +193,19 @@ Az Azure AD bejelentkezési jelentések és a naplók megtekintése<br>Vállalat
 
    ![Az azure AD felügyeleti központ megnyitása](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
-2. Válassza ki **felhasználók és csoportok &gt; minden felhasználó**
+2. Válassza ki **felhasználók** > **minden felhasználó**.
 
-3. Keresse meg azt a felhasználót kijelöl egy globális rendszergazda, és nyissa meg az adott felhasználó a panelt.
+3. Nyissa meg a globális rendszergazdának kijelölni kívánt felhasználót lapját.
 
-4. A felhasználó panelen válassza ki a **Directory szerepkör**.
- 
-5. A könyvtár szerepkör panelen válassza ki a **globális rendszergazda** szerepkör, és mentse.
+4. A parancssávon válassza **Directory szerepkör**.
+
+5. Válassza ki **szerepkör hozzáadása**.
+
+6. A directory szerepkör lapon válassza ki a **globális rendszergazda** szerepkör, és kattintson **kiválasztása** mentéséhez.
 
 ## <a name="deprecated-roles"></a>Elavult szerepkörök
 
-A következő szerepkörök nem használható. Ezek már elavult, és az Azure AD a jövőben törlődni fog.
+A következő szerepkörök nem használható. Ezek elavultak, ezért törlődni fognak az Azure AD a jövőben.
 
 * Speciális licencek adminisztrátora
 * Ellenőrzött e-mail című felhasználó-létrehozó
@@ -190,9 +216,9 @@ A következő szerepkörök nem használható. Ezek már elavult, és az Azure A
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure-előfizetések rendszergazdáinak módosításáról további információ: [Azure-rendszergazdai szerepkörök felvétele vagy módosítása](../billing-add-change-azure-subscription-administrator.md)
+* Azure-előfizetések rendszergazdáinak módosításáról kapcsolatos további információkért lásd: [hozzáadása vagy módosítása az Azure-előfizetés rendszergazdái](../billing-add-change-azure-subscription-administrator.md)
 * Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Hogyan Azure Active Directory vonatkozik-e az Azure-előfizetéshez további információkért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directoryval](active-directory-how-subscriptions-associated-directory.md)
+* Hogyan Azure Active Directory vonatkozik-e az Azure-előfizetéshez további információkért lásd: [kapcsolódnak hogyan Azure-előfizetések az Azure Active Directoryval](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Felhasználók kezelése](active-directory-create-users.md)
 * [Jelszavak kezelése](active-directory-manage-passwords.md)
-* [Csoportok kezelése](active-directory-manage-groups.md)
+* [Csoportok kezelése](fundamentals/active-directory-manage-groups.md)

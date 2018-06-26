@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 50338e05241be9ce573ff3dd3bb99711cbf15b28
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248537"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938009"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat Azure AI útmutatója
 
@@ -255,7 +255,7 @@ Ez a szakasz ismerteti a fő modellezési módszereket, a PdM problémákat, az 
 > Címkék hiba esetekben és a szalagcímkézési stratégia kiválasztása  
 > a tartomány szakértői egyeztetve kell meghatározni.
 
-### <a name="binary-classification"></a>bináris osztályozás
+### <a name="binary-classification"></a>Bináris osztályozás
 Bináris osztályozási szolgál _annak, hogy berendezés jövőbeli időn belül nem sikerül előrejelzése_ - hívott a _jövőbeli horizon időszak X_. X határozza meg az üzleti problémát és az adatok kezelésére, a tartomány szakértői egyeztetve. Például a következők:
 - _Minimális átfutási idő_ szükséges összetevők használ, karbantartási erőforrásokat, a karbantartás egy, valószínűleg az adott időköz során előforduló problémák elkerülése érdekében.
 - _események minimális száma_ , amely akkor fordulhat elő, mielőtt a probléma akkor fordul elő.
@@ -434,7 +434,7 @@ Microsoft Azure ingyenes tartalom és a képzési általános AI fogalmak és el
 |:-------------------|--------------|
 | [AI Developer az Azure-on](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Nyilvános |
 | [Microsoft AI iskolai](http://aischool.microsoft.com/learning-paths) | Nyilvános |
-| [Az Azure AI tanulási a Githubról](http://azure.github.io/learnanalytics/public) | Nyilvános |
+| [Az Azure AI tanulási a Githubról](https://github.com/Azure/connectthedots/blob/master/readme.md) | Nyilvános |
 | [LinkedIn tanulás](http://www.linkedin.com/learning) | Nyilvános |
 | [Microsoft AI Youtube előadások](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Nyilvános |
 | [Microsoft AI megjelenítése](http://channel9.msdn.com/Shows/AI-Show) | Nyilvános |

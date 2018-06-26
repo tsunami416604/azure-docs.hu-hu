@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 0c3df0642d36aa1c4471c433fe9c1d3fa3b0880d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a4605a1668d25d5a90dc7d7873efa83ddc767ff
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631761"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752683"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy Tweetet a Shake – letölteni egy Twitter-üzenetet az Azure Functions!
 
@@ -36,7 +36,7 @@ Aktív Azure-előfizetés. Ha még nincs fiókja, regisztrálni keresztül ezen 
 
 ### <a name="start-vs-code"></a>Indítsa el a Visual STUDIO Code
 
-- Győződjön meg arról, hogy a DevKit **nem** csatlakoztatva a számítógéphez.
+- Győződjön meg arról, hogy a számítógép kapcsolódik a DevKit.
 - Indítsa el a Visual STUDIO Code.
 - A DevKit kapcsolódni a számítógéphez.
 
@@ -45,7 +45,10 @@ Aktív Azure-előfizetés. Ha még nincs fiókja, regisztrálni keresztül ezen 
 
 ### <a name="open-arduino-examples-folder"></a>Arduino példák mappa megnyitása
 
-Bontsa ki a bal oldali **ARDUINO példák** szakaszban, keresse meg a **MXCHIP AZ3166 példák > AzureIoT**, és válassza ki **ShakeShake**. Ez a projekt mappát egy új Visual STUDIO Code ablak nyílik meg.
+Bontsa ki a bal oldali **ARDUINO példák** szakaszban, keresse meg a **MXCHIP AZ3166 példák > AzureIoT**, és válassza ki **ShakeShake**. Ez a projekt mappát egy új Visual STUDIO Code ablak nyílik meg.  
+
+> [!NOTE]
+> Ha nem látja a MXCHIP AZ3166 szakaszt, győződjön meg arról, hogy az eszköz megfelelően van-e csatlakoztatva, és indítsa újra a Visual Studio Code.  
 
 ![Mini solution példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
@@ -137,7 +140,7 @@ Alkalmazás inicializálása után kattintson a gombra A kiadási, majd a DevKit
 
 ## <a name="how-it-works"></a>Működés
 
-![diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
+![Diagram](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/diagram.png)
 
 A Arduino vázlatot a Azure IoT hub küld egy eseményt. Ezt az eseményt akkor váltja ki az Azure Functions alkalmazás. Az Azure Functions app a Twitter tartozó API csatlakozni, és egy tweetet beolvasása a logikáját tartalmazza. Majd kezd a tweetet be egy C2D (felhő eszközre) üzenet, és küld vissza azt az eszközt.
 

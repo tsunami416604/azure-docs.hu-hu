@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 01e18103f9e94615357ff3b9c4be7f2473763a57
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2255c8fd7cd873ae9b6511e1a7b9e2ac13f9fb66
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31423238"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936768"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>A Linux virtuális gépeken, az SMB-csatlakoztatási Azure fájltároló
 
-Ez a cikk bemutatja, hogyan használják a Azure storage szolgáltatás a Linux virtuális gép az SMB-csatlakoztatási használata az Azure CLI 2.0. Az Azure File storage kínál a felhőben, szabványos SMB protokollt használó fájlmegosztások. Az [Azure CLI 1.0-s](mount-azure-file-storage-on-linux-using-smb-nodejs.md) verziójával is elvégezheti ezeket a lépéseket. Követelmények:
+Ez a cikk bemutatja, hogyan használják a Azure storage szolgáltatás a Linux virtuális gép az SMB-csatlakoztatási használata az Azure CLI 2.0. Az Azure File storage kínál a felhőben, szabványos SMB protokollt használó fájlmegosztások. Követelmények:
 
 - [egy Azure-fiók](https://azure.microsoft.com/pricing/free-trial/)
 - [SSH nyilvános- és titkoskulcs-fájlok](mac-create-ssh-keys.md)

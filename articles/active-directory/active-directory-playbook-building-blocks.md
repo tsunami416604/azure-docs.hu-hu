@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293109"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754558"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory alkalmazástervezési a koncepció igazolása: építőelemek
 
@@ -100,10 +100,10 @@ Hozzávetőleges időt Complete: 15 perc
 | Lépés | További források |
 | --- | --- |
 | Ugrás az Azure AD felügyeleti portál | [Azure AD felügyeleti portál - vállalati arculat megjelenítése](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Töltse fel az eszközök a bejelentkezési oldal (kiemelt embléma kis embléma, címkék, stb.). Nem kötelező, ha az AD FS igazítása az AD FS bejelentkezési oldalak ugyanazokat az eszközöket | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon: testreszabható elemek](customize-branding.md) |
+| Töltse fel az eszközök a bejelentkezési oldal (kiemelt embléma kis embléma, címkék, stb.). Nem kötelező, ha az AD FS igazítása az AD FS bejelentkezési oldalak ugyanazokat az eszközöket | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon: testreszabható elemek](fundamentals/customize-branding.md) |
 | Várjon néhány percig, amíg a módosítás teljesen érvénybe |  |
 | Jelentkezzen be a Koncepció felhasználói hitelesítő adatok https://myapps.microsoft.com |  |
-| Erősítse meg a böngészőben megjelenését és működését | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon](customize-branding.md) |
+| Erősítse meg a böngészőben megjelenését és működését | [Vállalati arculat megjelenítése a bejelentkezési és a hozzáférési Panel oldalon](fundamentals/customize-branding.md) |
 | Szükség esetén ellenőrizze az egyéb eszközök megjelenését és működését |  |
 
 ### <a name="considerations"></a>Megfontolandó szempontok
@@ -118,7 +118,7 @@ Hozzávetőleges időt Complete: 10 perc
 
 | Előfeltétel | További források |
 | --- | --- |
-| Senki Koncepció részei egy biztonsági csoportot (helyszíni vagy felhőalapú) | [Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
+| Senki Koncepció részei egy biztonsági csoportot (helyszíni vagy felhőalapú) | [Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Lépések
 
@@ -140,16 +140,16 @@ Hozzávetőleges időt Complete: 60 perc
 | Előfeltétel | További források |
 | --- | --- |
 | A rendelkezésre álló SaaS-alkalmazás tesztkörnyezetben. Ez az útmutató a ServiceNow használjuk példaként.<br/>Erősen ajánlott a test-példányt használ a Navigálás a meglévő adatok minőségét és hozzárendelések súrlódás minimalizálása érdekében. | Ugrás a https://developer.servicenow.com/app.do#! / otthoni egy teszt példány folyamatának elindításához. |
-| A ServiceNow felügyeleti konzol rendszergazdai hozzáféréssel | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](active-directory-saas-servicenow-tutorial.md) |
+| A ServiceNow felügyeleti konzol rendszergazdai hozzáféréssel | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Célja állítja be a felhasználók az alkalmazást. A koncepció felhasználókat tartalmazó biztonsági csoport használata ajánlott. <br/>Ha a csoport létrehozása esetén nem valósítható meg, majd kiosztása a felhasználók közvetlenül az alkalmazás a koncepció | [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Lépések
 
 | Lépés | További források |
 | --- | --- |
-| Az oktatóanyag összes szereplő Microsoft Documentation megosztása  | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Egy működő értekezlet beállítása, és minden résztvevővel Útmutató lépéseit kövesse. | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Az alkalmazás rendelhet hozzá a csoporthoz, az Előfeltételek azonosított. Van-e a Koncepció feltételes hozzáférése a hatókörben, le újra, hogy később, és adja hozzá a többtényezős Hitelesítést, és hasonló. <br/>Megjegyzés: Ez a telepítési folyamatot a rendszer indítsa (Ha be van állítva) |  [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](manage-apps/assign-user-or-group-access-portal.md) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
+| Az oktatóanyag összes szereplő Microsoft Documentation megosztása  | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Egy működő értekezlet beállítása, és minden résztvevővel Útmutató lépéseit kövesse. | [Oktatóanyag: Azure Active Directoryval integrált ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Az alkalmazás rendelhet hozzá a csoporthoz, az Előfeltételek azonosított. Van-e a Koncepció feltételes hozzáférése a hatókörben, le újra, hogy később, és adja hozzá a többtényezős Hitelesítést, és hasonló. <br/>Megjegyzés: Ez a telepítési folyamatot a rendszer indítsa (Ha be van állítva) |  [Egy felhasználó vagy csoport hozzárendelése egy vállalati alkalmazás Azure Active Directoryban](manage-apps/assign-user-or-group-access-portal.md) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Az Azure AD felügyeleti portál használatával adja hozzá az alkalmazás a ServiceNow gyűjteményből| [Azure AD felügyeleti portál: vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Vállalati alkalmazások kezelése az Azure Active Directory újdonságai](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | "Egyszeri bejelentkezés" panelen ServiceNow alkalmazás SAML-alapú bejelentkezés"engedélyezése" |  |
 | Töltse ki a "Bejelentkezési URL-cím" és "Azonosítója" mezőket a ServiceNow URL-címmel<br/>A jelölőnégyzet bejelölésével "Aktívvá új tanúsítvány"<br/>és a beállítások mentése |  |
@@ -163,7 +163,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-1. Fent [oktatóanyag](active-directory-saas-servicenow-tutorial.md) hivatkozik a régi Azure AD felügyeleti élmény. A koncepció alapul, de [gyors üzembe helyezés](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) tapasztalhat.
+1. Fent [oktatóanyag](saas-apps/servicenow-tutorial.md) hivatkozik a régi Azure AD felügyeleti élmény. A koncepció alapul, de [gyors üzembe helyezés](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) tapasztalhat.
 2. Ha a cél alkalmazás nem található a katalógusban, majd használhatja "Állapotba hozása a saját alkalmazás". További: [What's new in Azure Active Directory vállalati Alkalmazáskezelés: egyetlen helyről egyéni alkalmazás hozzáadása](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>SaaS-jelszó egyszeri bejelentkezés konfigurálása
@@ -242,7 +242,7 @@ Hozzávetőleges időt Complete: 20 perc
 
 | Előfeltétel | További források |
 | --- | --- |
-| A Microsoft Azure AD alapszintű vagy premium előfizetéssel és, amelynek egy globális rendszergazda Azure AD-címtár | [Az Azure Active Directory-kiadások](active-directory-whatis.md) |
+| A Microsoft Azure AD alapszintű vagy premium előfizetéssel és, amelynek egy globális rendszergazda Azure AD-címtár | [Az Azure Active Directory-kiadások](fundamentals/active-directory-whatis.md) |
 | A webes alkalmazás üzemeltetett a helyszínen, amelyet a távelérés konfigurálása |  |
 | A Windows Server 2012 R2 vagy Windows 8.1 vagy újabb rendszert futtató kiszolgáló, amelyre telepítheti az alkalmazásproxy-összekötő | [Az Azure AD-alkalmazásproxy összekötők ismertetése](manage-apps/application-proxy-connectors.md) |
 | Ha az elérési út egy tűzfal található, győződjön meg arról, hogy meg nyitva, hogy az összekötő el tudja küldeni az alkalmazásproxynak HTTPS (TCP) kérések | [Alkalmazásproxy engedélyezése az Azure-portálon: alkalmazásproxy Előfeltételek](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
@@ -306,8 +306,8 @@ Hozzávetőleges időt Complete: 10 perc
 | Előfeltétel | További források |
 | --- | --- |
 | SaaS-alkalmazáshoz (összevont egyszeri Bejelentkezéses vagy Egyszeri jelszó) már konfigurálva | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
-| Felhő csoporthoz rendelt hozzáférési # az 1. az alkalmazás, amelynél | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
-| A csoport tulajdonosa a hitelesítő adatok | [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](active-directory-manage-groups.md) |
+| Felhő csoporthoz rendelt hozzáférési # az 1. az alkalmazás, amelynél | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
+| A csoport tulajdonosa a hitelesítő adatok | [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](fundamentals/active-directory-manage-groups.md) |
 | Az Infomunkás a alkalmazásokhoz fér hozzá a hitelesítő adatok azonosítása | [Mi az a hozzáférési Panel?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -315,8 +315,8 @@ Hozzávetőleges időt Complete: 10 perc
 
 | Lépés | További források |
 | --- | --- |
-| A csoportnak, amely rendelkezik hozzáférni az alkalmazáshoz, és konfigurálja a megadott tulajdonos csoport| [Az Azure Active Directory csoport beállításainak kezelése ](active-directory-groups-settings-azure-portal.md) |
-| Jelentkezzen be a csoport tulajdonosa, lásd: a hozzáférési panel csoportok lapján a csoporttagságot | [Az Azure Active Directory-csoportok kezelése lap](https://account.activedirectory.windowsazure.com/r/#/groups) |
+| A csoportnak, amely rendelkezik hozzáférni az alkalmazáshoz, és konfigurálja a megadott tulajdonos csoport| [Az Azure Active Directory csoport beállításainak kezelése ](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| Jelentkezzen be a csoport tulajdonosa, lásd: a hozzáférési panel csoportok lapján a csoporttagságot | [Az Azure Active Directory-csoportok kezelése lap](https://account.activedirectory.windowsazure.com/r#/groups) |
 | A vizsgálni kívánt Infomunkás hozzáadása |  |
 | Jelentkezzen be az információkkal dolgozó szakember, győződjön meg arról, a csempe érhető el | [Mi az a hozzáférési Panel?](active-directory-saas-access-panel-introduction.md) |
 
@@ -331,7 +331,7 @@ Ha az alkalmazás kiépítés engedélyezve van, szükség lehet Várjon néhán
 | Előfeltétel | További források |
 | --- | --- |
 | SaaS-alkalmazáshoz (összevont egyszeri Bejelentkezéses vagy Egyszeri jelszó) már konfigurálva | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) |
-| Felhő csoporthoz rendelt hozzáférési # az 1. az alkalmazás, amelynél | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](active-directory-groups-create-azure-portal.md) |
+| Felhő csoporthoz rendelt hozzáférési # az 1. az alkalmazás, amelynél | Építőelem: [SaaS összevont egyszeri bejelentkezés konfigurálása](#saas-federated-sso-configuration) <br/>[Hozzon létre egy csoportot, és tagokat vehet az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Az Infomunkás a alkalmazásokhoz fér hozzá a hitelesítő adatok azonosítása | [Mi az a hozzáférési Panel?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -339,7 +339,7 @@ Ha az alkalmazás kiépítés engedélyezve van, szükség lehet Várjon néhán
 
 | Lépés | További források |
 | --- | --- |
-| Távolítsa el a felhasználót a csoporthoz, az alkalmazás hozzá van rendelve. | [Az Azure Active Directory-bérlő felhasználók csoport tagságának kezelésére](active-directory-groups-members-azure-portal.md) |
+| Távolítsa el a felhasználót a csoporthoz, az alkalmazás hozzá van rendelve. | [Az Azure Active Directory-bérlő felhasználók csoport tagságának kezelésére](fundamentals/active-directory-groups-members-azure-portal.md) |
 | Várjon néhány percig, megszüntetést | [Az Azure AD SaaS-alkalmazás a felhasználók átadása az automatikus: hogyan működik az automatikus létesítési munkahelyi?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | A külön böngésző-munkamenet jelentkezzen be az információkkal dolgozó szakemberek számára az alkalmazások portálon, és győződjön meg arról, hogy a csempe nem található | http://myapps.microsoft.com |
 

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 552e93e9bd1b17c73fb1638fbae2ac30b051c261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29957549"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943470"
 ---
 1. A böngészőben nyissa meg a [Jenkins Azure piactér kép](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
@@ -33,7 +33,7 @@ ms.locfileid: "29957549"
 1. Az a **alapjai** lapra, adja meg a következő értékeket:
 
     - **Név** -meg `Jenkins`.
-    - **Felhasználónév** -adja meg a felhasználói nevét használja, ha a virtuális gép, amelyen Jenkins fut. bejelentkezni. A felhasználónévnek [egyedi követelményeknek](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) kell megfelelnie.
+    - **Felhasználónév** -adja meg a felhasználónevet, a virtuális gép, amelyen Jenkins fut. történő bejelentkezéskor használni. A felhasználónévnek [egyedi követelményeknek](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm) kell megfelelnie.
     - **Hitelesítés típusa** – Itt adhatja meg **nyilvános SSH-kulcs**.
     - **Nyilvános SSH-kulcs** -másolási és beillesztési műveleteket egy RSA nyilvános kulcsot egysoros formátumban (kezdve `ssh-rsa`) vagy többsoros PEM-formátumba. Ssh-keygen használata a Linux és a macOS vagy a windowsos puttygen eszközzel készíthet SSH-kulcsokat hozhat létre. SSH-kulcsok és Azure kapcsolatos további információkért lásd: a cikk [az SSH-kulcsok a Windows Azure hogyan](/azure/virtual-machines/linux/ssh-from-windows).
     - **Előfizetés** -válassza ki az Azure-előfizetés amelybe Jenkins telepíteni szeretné.

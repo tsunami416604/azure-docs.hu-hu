@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric-szolgáltatások biztonságos kommunikáció érdekében |} Microsoft Docs
-description: Azure Service Fabric-fürtben lévő futó megbízható szolgáltatások biztonságos kommunikáció érdekében áttekintése.
+title: Szolgáltatás távoli eljáráshívási Java az Azure Service Fabric folytatott kommunikáció biztosítása |} Microsoft Docs
+description: Útmutató a Java megbízható szolgáltatások az Azure Service Fabric-fürt a futó szolgáltatás távoli eljáráshívás-alapú kommunikáció biztonságossá tételére.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 624d9d358145fb8b41013d686821cb157693d3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1843720b9700e66af8ee84766cf7d63ac62e6283
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207995"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749912"
 ---
-# <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Azure Service Fabric-szolgáltatások biztonságos kommunikáció érdekében
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Biztonságos szolgáltatás távoli eljáráshívási kommunikáció egy Java szolgáltatásban
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-secure-communication.md)
 > * [Java Linuxon](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Számítógépek biztonságossá tétele a szolgáltatás használatakor a távelérési szolgáltatás
-Fogjuk használni egy meglévő [példa](service-fabric-reliable-services-communication-remoting-java.md) , amely ismerteti, hogyan megbízható szolgáltatások távoli eljáráshívást beállítani. Számítógépek biztonságossá tétele a szolgáltatás használatakor a távelérési szolgáltatás, kövesse az alábbi lépéseket:
+A biztonság az egyik legfontosabb szempontja a kommunikáció. A Reliable Services alkalmazás-keretrendszer tartalmaz néhány előre elkészített kommunikációs verem és eszközöket, amelyek a biztonság növelése érdekében használhatja. Ez a cikk ismerteti a Java-szolgáltatás használatakor a távelérési szolgáltatás, a biztonság növelése érdekében. Egy olyan buildekről nyújtanak [példa](service-fabric-reliable-services-communication-remoting-java.md) , amely ismerteti a Java nyelven írt megbízható szolgáltatások távoli eljáráshívást beállítani. 
+
+Számítógépek biztonságossá tétele a service szolgáltatás távoli eljáráshívási Java szolgáltatások használatakor, kövesse az alábbi lépéseket:
 
 1. Illesztőfelület, hozzon létre `HelloWorldStateless`, amely meghatározza, hogy a módszereket, amelyek számára a szolgáltatás a távoli eljáráshívás használható. A szolgáltatás által használt `FabricTransportServiceRemotingListener`, amely deklarálva van a `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` csomag. Ez egy `CommunicationListener` megvalósítása, amely távoli eljáráshívási képességeket biztosít.
 
@@ -54,11 +55,11 @@ Fogjuk használni egy meglévő [példa](service-fabric-reliable-services-commun
     ```
 2. Adja hozzá a figyelő beállításai és a hitelesítő adatokat.
 
-    Győződjön meg arról, hogy a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítvány telepítve van-e a fürt összes csomópontján. Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
+    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
 
    1. Adja meg azokat a egy [a konfigurációs csomag](service-fabric-application-and-service-manifests.md):
 
-       Adja hozzá a `TransportSettings` szakasz a settings.xml fájlban.
+       Hozzáadása egy elnevezett `TransportSettings` szakasz a settings.xml fájlban.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->

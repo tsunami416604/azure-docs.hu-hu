@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 52c3914cc1b51bf7c2a6d0fbf28dc0bf7756e749
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517223"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751445"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Kereszt-erőforrás napló keresést a Naplóelemzési  
 
 Korábban az Azure Naplóelemzés, hogy sikerült csak adatok elemzését az aktuális munkaterület, és azt a lekérdezés képessége csak korlátozott az előfizetés definiált több munkaterületek között.  Emellett a web-alapú alkalmazásokhoz az Application insights szolgáltatással közvetlenül az Application Insights vagy a Visual Studio gyűjtött telemetriai elemek csak keressen.  Ez is tette a natív módon elemezheti a működési probléma és alkalmazásadatok együtt.   
 
-Lekérheti most nem csak több Naplóelemzési munkaterület, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportban vagy egy másik előfizetést az adott Application Insights alkalmazásból adatok között. Ez lehetővé teszi az adatok rendszerszintű nézetet.  Csak ezek a lekérdezéstípusok a hajthatja végre a [speciális portal](log-analytics-log-search-portals.md#advanced-analytics-portal), és nem az Azure-portálon.  
+Lekérheti most nem csak több Naplóelemzési munkaterület, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportban vagy egy másik előfizetést az adott Application Insights alkalmazásból adatok között. Ez lehetővé teszi az adatok rendszerszintű nézetet.  Csak ezek a lekérdezéstípusok a hajthatja végre a [speciális portal](log-analytics-log-search-portals.md#advanced-analytics-portal), és nem az Azure-portálon. Az erőforrások száma (a Naplóelemzési munkaterület és az Application Insights-alkalmazás) is felvehet egyetlen lekérdezést 100 korlátozódik. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Naplóelemzési munkaterület és az Application Insights lekérdezése
 A lekérdezés egy másik munkaterület hivatkozik, használja a [ *munkaterület* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) azonosítóját, és az Application Insights egy alkalmazás esetén a [ *app* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())azonosítója.  
@@ -50,7 +50,7 @@ Munkaterület azonosító is lehet befejezett egy számos módon:
     >Mivel az Azure-előfizetés neve nem egyedi, lehet, hogy ez az azonosító nem egyértelmű. 
     >
 
-* munkaterület-azonosító: A munkaterület-Azonosítót az egyes munkaterületeken jelenik meg a globálisan egyedi azonosítóját (GUID) rendelt egyedi, nem módosítható, azonosító.
+* Munkaterület-azonosító: A munkaterület-Azonosítót az egyes munkaterületeken jelenik meg a globálisan egyedi azonosítóját (GUID) rendelt egyedi, nem módosítható, azonosító.
 
     `workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update | count`
 

@@ -10,15 +10,15 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: e9f97f804985f948e5442c64a31d95e7931b03cd
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d44f33b0e9f71c1d8d6e2c9878b08f9fa0e1f8a1
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198826"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938172"
 ---
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Kód Docker és Kubernetes fejlesztés előkészítése
-Eddig hogy egy egyszerű webalkalmazást helyileg futtathat. Akkor lesz most containerize az eszközök, amelyek meghatározzák az alkalmazás tárolót, és hogyan telepíti a Kubernetes létrehozásával. Ez az Azure fejlesztői szóközöket csupán: 
+Eddig hogy egy egyszerű webalkalmazást helyileg futtathat. Akkor lesz most containerize az eszközök, amelyek meghatározzák az alkalmazás tárolót, és hogyan telepíti a Kubernetes létrehozásával. Ez a feladat áll Azure fejlesztői szóközök: 
 
 1. Indítsa el a Visual STUDIO Code, és nyissa meg a `webfrontend` mappát. (Figyelmen kívül hagyhatja hibakeresési eszközök hozzáadása vagy a projekt visszaállítása alapértelmezett figyelmeztetéseket.)
 1. Nyissa meg a integrált terminál Visual STUDIO Code (használja a **Nézet > integrált Terminálszolgáltatások** menü).
@@ -34,4 +34,4 @@ Az Azure parancssori felület `azds prep` parancs létrehozza az alapértelmezet
 
 Egyelőre nem szükséges tudni, hogy ezek a fájlok teljes tartalmát. Érdemes mutat, azonban, hogy **az azonos Kubernetes és Docker konfigurációs, kód eszközök segítségével keresztül fejlesztési éles, lehetővé téve jobb konzisztencia különböző környezetek között.**
  
-Nevű fájl `./azds.yaml` is állítja elő a `prep` parancsot, és az Azure fejlesztői tárolóhelyek konfigurációs fájlját. Kiegészíti a Docker és Kubernetes összetevők további konfiguráció egy iteratív fejlesztési felület, amellyel az Azure-ban. Például az alapértelmezett Helm diagram nem fed fel nyilvános végpontok. Egyes esetekben azonban célszerű ideiglenesen megnyitása egy nyilvános végpontot, amellyel tesztelheti a kódját, mondja ki a fejlesztés során, a mobil eszköz vagy a webhook URL-CÍMÉT. Használatával létrehozott azds.yaml fájl `azds prep --public` felülbírálja a Helm alapértelmezett paraméterek teszi közzé egy nyilvános végpontot csak a fejlesztési idő.
+Nevű fájl `./azds.yaml` is állítja elő a `prep` parancsot, és az Azure fejlesztői tárolóhelyek konfigurációs fájlját. Kiegészíti a Docker és Kubernetes összetevők további konfiguráció egy iteratív fejlesztési felület, amellyel az Azure-ban.

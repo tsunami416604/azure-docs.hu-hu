@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: b2d702ecdd5e1fca342e7c84c6e75339097f0bcd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 037c1c7dd73f668bd8ad95568743b223b1e11c79
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23884131"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750197"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>A VPN-átjáró kapcsolat ellenőrzése
 
@@ -49,10 +49,10 @@ Ellenőrizze a Resource Manager üzembe helyezési modellel, az Azure parancssor
 
 ## <a name="powershell-classic"></a>PowerShell (klasszikus)
 
-Ellenőrizze a klasszikus üzembe helyezési modell PowerShell segítségével a VPN gateway-kapcsolatot, telepítse az Azure PowerShell-parancsmagok legújabb verzióját. Ügyeljen arra, hogy töltse le és telepítse a [szolgáltatásfelügyelet](https://docs.microsoft.com/powershell/azure/install-azure-ps?view=azuresmps-3.7.0) modul. Jelentkezzen be a klasszikus üzembe helyezési modellel a "Hozzáadás-AzureAccount" segítségével.
+Ellenőrizze a klasszikus üzembe helyezési modell PowerShell segítségével a VPN gateway-kapcsolatot, telepítse az Azure PowerShell-parancsmagok legújabb verzióját. Ügyeljen arra, hogy töltse le és telepítse a [szolgáltatásfelügyelet](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modul. Jelentkezzen be a klasszikus üzembe helyezési modellel a "Hozzáadás-AzureAccount" segítségével.
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális hálózatokhoz hozzáadhat virtuális gépeket. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 831383ffa3aa3464f3d62da4e1609cf3f1a4707e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: e37266f2438f9c6bc9de2d01624bda77f9d6ee8a
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309596"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945873"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapotát ellenőrzi az Azure-erőforrás állapota
 Alább az erőforrás állapota keresztül erőforrástípusok által végrehajtott egyetlen ellenőrzés sem teljes listáját.
@@ -62,13 +62,13 @@ Alább az erőforrás állapota keresztül erőforrástípusok által végrehajt
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Felhasználók elküldés feladatok Data Lake Analytics régióban is?</li><li>Hajtsa végre az alapvető feladatok futtatása, és sikeresen régióban?</li><li>Felhasználók készíthetünk a szolgáltatáskatalógusban található elemek a régióban?</li>|
+|<ul><li>Felhasználó problémákat tapasztal küldés vagy a Data Lake Analytics-feladatok listázása van?</li><li>Sem a Data Lake Analytics-feladatok hibáinak végrehajtani?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |Végrehajtott ellenőrzések|
 |---|
-|<ul><li>Felhasználók adatait feltöltheti Data Lake Store régióban?</li><li>Felhasználók is a Data Lake Store régióban le adatokat?</li></ul>|
+|<ul><li>Felhasználók tapasztaltak problémák adatok feltöltése a Data Lake Store-bA?</li><li>Felhasználók tapasztaltak problémák adatok letöltése a Data Lake Store-ból?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 

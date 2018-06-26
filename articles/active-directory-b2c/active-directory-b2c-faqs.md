@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710732"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938408"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ezen a lapon az Azure Active Directory (Azure AD) B2C kapcsolatos gyakori kérdésekre ad választ. Tartsa biztonsági frissítések keresése.
@@ -56,7 +56,7 @@ Nem, az alkalmazás bárhol (a felhőbeli vagy helyszíni) tárolhatja. Minden A
 "Az Azure AD B2C" megnyitása az Azure-portálon a bal oldali menüjében, előtt át kell váltania a kezelni kívánt könyvtárba.  Váltson a könyvtárak kattintson a jobb felső sarkában az Azure-portálon identitásra, majd válasszon egy könyvtárat, a legördülő lista, amely akkor jelenik meg.  A részletes lemezképekkel, lásd: [és az Azure AD B2C beállítások lép](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Hogyan ellenőrző e-mailek testre (a tartalom és a "származó:" mező) az Azure AD B2C által küldött?
-Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/customize-branding.md) a tartalom az ellenőrző e-mailek testreszabásához. Pontosabban a két elem az e-mailek testre szabható:
+Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-directory/fundamentals/customize-branding.md) a tartalom az ellenőrző e-mailek testreszabásához. Pontosabban a két elem az e-mailek testre szabható:
 
 * **A szalagcím emblémája**: az alsó sarokban látható.
 * **Háttérszín**: felső részén látható.
@@ -89,7 +89,7 @@ Nem, biztonsági okokból az Azure AD B2C-lap nem nyitható iFrame belül.  A sz
 Integráció a Microsoft Dynamics 365 Portal érhető el.  Lásd: [Dynamics 365 portál konfigurálása az Azure AD B2C hitelesítéshez használandó](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Az Azure AD B2C does munkahelyi SharePoint helyszíni 2016 vagy korábbi?
-Az Azure AD B2C nem célja a SharePoint külső partner-megosztási forgatókönyvhöz; Lásd: [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) helyette.
+Az Azure AD B2C nem célja a SharePoint külső partner-megosztási forgatókönyvhöz; Lásd: [Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) helyette.
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Érdemes használni az Azure AD B2C vagy B2B külső identitások kezeléséhez?
 Olvassa el ebben a cikkben [külső identitások](../active-directory/active-directory-b2b-compare-external-identities.md) tudhat meg többet a megfelelő szolgáltatásokat alkalmaz a külső identitások forgatókönyvek.

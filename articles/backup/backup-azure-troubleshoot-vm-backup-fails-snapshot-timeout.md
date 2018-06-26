@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Az Azure backup; Virtuálisgép-ügynök; Hálózati kapcsolat;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 01/09/2018
+ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606358"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754517"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure biztonsági mentési hiba elhárítása: az ügynök vagy a bővítmény problémái
 
@@ -84,15 +84,15 @@ Miután regisztrálja, és egy virtuális Gépet az Azure Backup szolgáltatás 
 ### <a name="the-vm-has-no-internet-access"></a>A virtuális gép nem rendelkezik internet-hozzáférés
 / A üzembe helyezése: követelményeknek a virtuális gép nem rendelkezik internet-hozzáféréssel. Vagy előfordulhat, hogy korlátozásokat, amelyeket tagadni a hozzáférést az Azure-infrastruktúra rendelkezik.
 
-Megfelelő működéséhez a biztonsági mentés bővítmény használatához az Azure nyilvános IP-címek hozzáférés szükséges. A bővítmény parancsokat küld a pillanatképek a virtuális gép kezelése az Azure storage végpont (HTTP URL-cím). Ha a kiterjesztés nem fér hozzá a nyilvános interneten, biztonsági mentés végül sikertelen.
+Megfelelő működéséhez a biztonsági mentés bővítmény használatához az Azure nyilvános IP-címek hozzáférés szükséges. A bővítmény parancsokat küld a pillanatképek a virtuális gép kezelése az Azure storage végpont (HTTPs URL-cím). Ha a kiterjesztés nem fér hozzá a nyilvános interneten, biztonsági mentés végül sikertelen.
 
-Ez azt a VM forgalmat proxykiszolgáló telepíthető.
-##### <a name="create-a-path-for-http-traffic"></a>A HTTP-forgalom elérési utat hoz létre
+Úgy is telepítheti a proxykiszolgálót, hogy a VM forgalmat.
+##### <a name="create-a-path-for-https-traffic"></a>A HTTPs-forgalmat elérési utat hoz létre
 
-1. Ha korlátozásait a hálózati hely (például a hálózati biztonsági csoport) található, a forgalmat a HTTP-proxy kiszolgáló telepítése
-2. Engedélyezi az internet elérését a HTTP-proxy kiszolgáló, a szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
+1. Ha korlátozásait a hálózati hely (például a hálózati biztonsági csoport) található, a forgalmat a HTTPs-proxy kiszolgáló telepítése
+2. Engedélyezi az internet elérését a HTTPs-proxy kiszolgáló, a szabályok hozzáadása a hálózati biztonsági csoporthoz, ha rendelkezik ilyennel.
 
-Megtudhatja, hogyan állíthat be egy HTTP-proxy a virtuális gép biztonsági mentésekhez, lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+Megtudhatja, hogyan állíthat be egy HTTPs-proxy a virtuális gép biztonsági mentésekhez, lásd: [készítse elő a környezetet a biztonsági mentése Azure virtuális gépek](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 A biztonsági mentésben szereplő virtuális gép vagy a proxykiszolgáló, amelyen keresztül a továbbítódik Azure nyilvános IP-címek hozzáférést igényel.
 
@@ -121,7 +121,7 @@ A Virtuálisgép-ügynök előfordulhat, hogy sérült, vagy a szolgáltatás es
 2. Ha a Vendégügynök Windows szolgáltatás nem látható a szolgáltatások Vezérlőpulton, folytassa a **programok és szolgáltatások** annak meghatározásához, hogy telepítve van-e a Windows vendég Agent szolgáltatást.
 4. Ha megjelenik a Windows-Vendégügynök **programok és szolgáltatások**, a Windows-Vendégügynök eltávolításához.
 5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultsággal kell rendelkeznie.
-6. Győződjön meg arról, hogy megjelenik-e a Windows Vendégügynök services szolgáltatásokban.
+6. Győződjön meg arról, hogy a Windows Vendégügynök services szolgáltatások megjelennek-e.
 7. Egy igény szerinti biztonsági mentés futtatására: 
     * Válassza a portál **biztonsági mentés most**.
 

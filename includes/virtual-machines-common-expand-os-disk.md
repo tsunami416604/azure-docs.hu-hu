@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/18/2018
 ms.author: kirpas;iainfou;sewhee
 ms.custom: include file
-ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ab4d5326fc06cc8676ea93ed529315cc47651e26
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323799"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943453"
 ---
 ## <a name="overview"></a>Áttekintés
 Amikor hoz létre egy új virtuális gép (VM) erőforráscsoportban lemezképek [Azure piactér](https://azure.microsoft.com/marketplace/), az alapértelmezett operációsrendszer-meghajtón gyakran 127 GB (néhány képet, operációsrendszer-lemez kisebb méretű alapértelmezés szerint rendelkezik). Bár hozzáadhat adatlemezeket a virtuális géphez (ezeknek száma a választott termékváltozattól függ), és ajánlott ezekre a kiegészítő lemezekre telepíteni az alkalmazásokat és a processzorigényes számítási feladatokat, az ügyfeleknek gyakran bővíteniük kell az operációs rendszer meghajtóját bizonyos forgatókönyvek támogatásához, mint például a következők:
@@ -36,7 +36,7 @@ Ez a cikk az operációs rendszer meghajtójának az [Azure Powershell](/powersh
 
 Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
+1. Jelentkezzen be a Microsoft Azure-fiókjához erőforrás módban, és jelölje ki az előfizetését a következőképpen:
    
    ```Powershell
    Connect-AzureRmAccount
@@ -79,7 +79,7 @@ Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, é
 
 Nyissa meg a Powershell ISE-t vagy PowerShell-ablakot rendszergazdai módban, és kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a Microsoft Azure-fiókjába erőforrás-kezelő módban, és válassza ki az előfizetését a következő módon:
+1. Jelentkezzen be a Microsoft Azure-fiókjához erőforrás módban, és jelölje ki az előfizetését a következőképpen:
    
    ```Powershell
    Connect-AzureRmAccount

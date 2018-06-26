@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b2686b4bb2b98d3f79d8087f6857c149cfdeb553
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a439a2bb485829b863d6aa666938ab58c90c61f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711263"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750777"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Az Azure Active Directory B2C: A fenyegetés kezelése
 
@@ -29,4 +29,4 @@ Az Azure AD B2C által használt észlelés és javaslat módszerek, például S
 
 Az Azure AD B2C is rendelkezik megoldás technikák jelszó támadásokat. Megoldás jelszó találgatásos támadások és a jelszó szótáras tartalmaz. Ésszerűen összetettnek lennie, hogy a felhasználók által beállított van szükség. Az Azure AD B2C különböző jelek segítségével elemzi a kérelmek integritását. Az Azure AD B2C intelligens módon megkülönböztetni azokat a támadók, és a botnetek kívánt felhasználók számára készült. Az Azure AD B2C biztosít a támadások valószínűségét a beírt jelszavak alapján fiókok zárolására kifinomult stratégiát.
 
-További tudnivalókért keresse fel a [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/threatmanagement).
+További tudnivalókért keresse fel a [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/default.aspx).

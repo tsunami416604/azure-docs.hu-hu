@@ -1,4 +1,4 @@
-A prémium szintű gyorsítótár létrehozásához jelentkezzen be a [Azure-portálon](https://portal.azure.com) kattintson **hozzon létre egy erőforrást** > **adatbázisok** > **Redis gyorsítótár** .
+Prémium szintű gyorsítótár létrehozásához jelentkezzen be a [Azure-portálon](https://portal.azure.com) kattintson **hozzon létre egy erőforrást** > **adatbázisok** > **Redis Cache** .
 
 ![Gyorsítótár létrehozása](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 

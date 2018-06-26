@@ -3,7 +3,7 @@ title: PerfInsights használata a Microsoft Azure |} Microsoft Docs
 description: Tanulja meg PerfInsights használata Windows virtuális gép teljesítményét problémák megoldásához.
 services: virtual-machines-windows'
 documentationcenter: ''
-author: genlin
+author: anandhms
 manager: cshepard
 editor: na
 tags: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cac17b5f3ee730bf1f56dbfd05b6c6d3b02c891f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2f496f906eef416b35e2e59b2db93481ce65acb1
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160658"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946486"
 ---
-# <a name="how-to-use-perfinsights"></a>PerfInsights használata 
+# <a name="how-to-use-perfinsights"></a>PerfInsights használata
 
 [PerfInsights](http://aka.ms/perfinsightsdownload) önsegítő diagnosztikai eszköz, amely gyűjti és elemzi a diagnosztikai adatok és készít egy jelentést, a Windows Azure virtuális gép teljesítményproblémákat hibaelhárítás elősegítése érdekében. PerfInsights futtatható virtuális gépek önálló eszközként, illetve közvetlenül a portál telepítésével [Azure teljesítmény Diagnostics Virtuálisgép-bővítmény](performance-diagnostics-vm-extension.md).
 
@@ -31,7 +31,7 @@ Ha a virtuális gépek teljesítményproblémákat tapasztal előtt lépjen kapc
 
 PerfInsights is összegyűjti és elemzi az adatokat több különböző. Az alábbiakban gyakori helyzetek foglalkozik.
 
-### <a name="collect-basic-configuration"></a>Alapszintű konfigurációs gyűjtése 
+### <a name="quick-performance-analysis"></a>Gyors teljesítményelemzése
 
 Ebben a forgatókönyvben gyűjti a lemezkonfigurációt és más fontos információkat, beleértve:
 
@@ -64,11 +64,11 @@ Ez a forgatókönyv futtatása a [Diskspd](https://github.com/Microsoft/diskspd)
 > Ez a forgatókönyv befolyásolhatja a rendszer, és egy éles rendszeren nem futtatható. Ha szükséges, futtassa a ebben a forgatókönyvben egy dedikált karbantartási időszakban esetleges problémák elkerülése érdekében. A nyomkövetési vagy teljesítményteszt teszt által okozott nagyobb munkaterhelést kedvezőtlen hatással lehet a virtuális gép teljesítményére.
 >
 
-### <a name="slow-vm-analysis"></a>Lassú VM elemzés 
+### <a name="slow-vm-analysis"></a>Lassú VM elemzés
 
 Ez a forgatókönyv futtatása egy [teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) nyomkövetési a számlálók a RuleEngineConfig.json fájlban megadott használatával. Ha a virtuális gép ki van jelölve egy SQL Servert futtató kiszolgáló, a teljesítmény-számláló nyomkövetési fut. Igen, a számlálókat, amelyek szerepelnek a RuleEngineConfig.json fájl használatával. Ez az eset tartalmazza a teljesítmény diagnosztikai adatokat is.
 
-### <a name="azure-files-analysis"></a>Az Azure fájlok elemzés 
+### <a name="azure-files-analysis"></a>Az Azure Files elemzés
 
 Ebben a forgatókönyvben egy különleges teljesítmény számláló rögzítési együtt a hálózati nyomkövetés fut. A rögzítés minden a Server Message Block (SMB) ügyfél megosztások számlálókat tartalmaz. Az alábbiakban néhány kulcsfontosságú SMB ügyfél megosztás teljesítményszámlálók a rögzítés részét képező:
 
@@ -83,16 +83,16 @@ Ebben a forgatókönyvben egy különleges teljesítmény számláló rögzíté
 | IO-méret      | Átlagos Bájtok/kérelem       |
 |              | Átlagos Bájtos, Olvasás               |
 |              | Átlagos Bájt írása              |
-| Sebesség   | Adatok bájtok/s                |
+| Teljesítmény   | Adatok bájtok/s                |
 |              | Olvasott bájt/mp                |
 |              | Írási bájtok/s               |
 | Várólista hossza | Átlagos Olvasási várólistájának hossza        |
 |              | Átlagos Írni a várólista hossza       |
 |              | Átlagos Várólista hossza        |
 
-### <a name="custom-slow-vm-analysis"></a>Egyéni lassú VM elemzés 
+### <a name="advanced-slow-vm-analysis"></a>Speciális lassú VM elemzés
 
-Egy egyéni lassú VM elemzés futtatásakor párhuzamos nyomkövetések választja. Ha azt szeretné, hogy futtathassa őket az összes (teljesítményszámláló, következő helyen, hálózati és StorPort).  
+Speciális lassú VM elemzése futtatásakor párhuzamos nyomkövetések választja. Ha azt szeretné, hogy futtathassa őket az összes (teljesítményszámláló, következő helyen, hálózati és StorPort).  
 
 > [!Note]
 > Ez a forgatókönyv befolyásolhatja a rendszer, és egy éles rendszeren nem futtatható. Ha szükséges, futtassa a ebben a forgatókönyvben egy dedikált karbantartási időszakban esetleges problémák elkerülése érdekében. A nyomkövetési vagy teljesítményteszt teszt által okozott nagyobb munkaterhelést kedvezőtlen hatással lehet a virtuális gép teljesítményére.
@@ -104,7 +104,7 @@ Windows virtuális gép, lemezt vagy tárolási készletek konfigurációt, telj
 
 |Összegyűjtött adatok                              |  |  | Teljesítmény-forgatókönyvek |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Alapszintű konfigurációs gyűjtése | Teljesítménymérésre | Lassú VM elemzés | Az Azure fájlok elemzés | Egyéni lassú VM elemzés |
+|                               | Gyors teljesítményelemzése | Teljesítménymérésre | Lassú VM elemzés | Az Azure Files elemzés | Speciális lassú VM elemzés |
 | Eseménynapló információk       | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Rendszerinformáció                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Kötet térkép                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
@@ -171,9 +171,9 @@ Diskspd i/o-munkaterhelés tesztek ([írási] operációsrendszer-lemez és tár
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>A virtuális gépek éles az eszköz futtatásakor lehetséges problémák
 
--  Az összehasonlítási forgatókönyv vagy a "Egyéni lassú VM analysis" forgatókönyvekben, amelyek a következő helyen vagy a Diskspd használatára van konfigurálva az eszköz kedvezőtlen hatással lehet a virtuális gép teljesítményére. Ezek a forgatókönyvek nem éles környezetben kell futtatni.
+-  Az összehasonlítási forgatókönyv vagy a "Speciális lassú VM Analysis" forgatókönyvet, amely a következő helyen vagy a Diskspd használatára van konfigurálva az eszköz kedvezőtlen hatással lehet a virtuális gép teljesítményére. Ezek a forgatókönyvek nem éles környezetben kell futtatni.
 
--  Az összehasonlítási forgatókönyv vagy a "Custom lassú VM analysis" forgatókönyvekben, amelyek a Diskspd használatára van konfigurálva győződjön meg arról, hogy nincs más háttértevékenység gátolja az i/o-munkaterhelések.
+-  Az összehasonlítási forgatókönyv vagy a "Speciális lassú VM Analysis" forgatókönyvekben, amelyek a Diskspd használatára van konfigurálva győződjön meg arról, hogy nincs más háttértevékenység gátolja az i/o-munkaterhelések.
 
 -  Alapértelmezés szerint az eszköz használja az ideiglenes tárolási meghajtó adatainak gyűjtéséről. Ha nyomkövetése engedélyezve van a hosszabb ideig marad, előfordulhat, hogy a gyűjtött adatok mennyisége megfelelő. Ez csökkentheti a ideiglenes lemezterület rendelkezésre állását, és így hatással lehet minden olyan alkalmazás, amely a meghajtó támaszkodik.
 
@@ -218,10 +218,16 @@ Ha a PerfInsights eszközt, kövesse az alábbi lépéseket:
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    Az alábbi példa használatával futtassa a következő helyen és a teljesítmény számláló megjelenik az 5 perc az egyéni forgatókönyv:
+    Az alábbi példa használatával futtassa a következő helyen és a teljesítmény számláló megjelenik az 5 perc a speciális forgatókönyvhöz:
     
     ```
-    PerfInsights /run custom xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
+
+    Használhatja az alábbi példában lassú VM-forgatókönyvet az 5 perc futtatásához, és az eredmény zip-fájl feltöltése a tárolási fiók:
+    
+    ```
+    PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
     Megtekintheti a rendelkezésre álló forgatókönyvek és a beállítások segítségével a **/list** parancs:
@@ -237,7 +243,7 @@ Ha a PerfInsights eszközt, kövesse az alábbi lépéseket:
     >
     >Alapértelmezés szerint a PerfInsights próbálkozik, a legújabb verzióra történő frissítése magát, ha elérhető. Használjon **/SkipAutoUpdate** vagy **/sau** automatikus frissítés kihagyását paraméter.  
     >
-    >Ha a duration kapcsoló **/d** nincs megadva, PerfInsights figyelmezteti, hogy Reprodukálja a hibát vmslow, azurefiles és egyéni esetek futtatása során. 
+    >Ha a duration kapcsoló **/d** nincs megadva, PerfInsights figyelmezteti, hogy Reprodukálja a hibát vmslow, azurefiles és speciális forgatókönyvek futtatása során. 
 
 A nyomkövetési adatokat vagy a műveletek befejezése után egy új fájlt a mappában, amelyben PerfInsights jelenik meg. A fájl neve **CollectedData\_éééé-hh-nn\_hh-hh-ss-fff.zip.** Ezt a fájlt küldeni a támogatási ügynök elemzés, vagy nyissa meg a jelentés megállapítások és javaslatok tekintse át a zip-fájlt.
 
@@ -251,9 +257,9 @@ Válassza ki a **megállapítások** fülre.
 ![PerfInsights jelentés képernyőképe](media/how-to-use-perfInsights/findings.PNG)
 
 > [!NOTE] 
-> Kategóriába sorolt, kritikus megállapítások előforduló ismert problémákat, amelyek teljesítményproblémákat okozhatnak. Eredmények kategóriába sorolt, fontos jelentik nem optimális konfigurációkra nem feltétlenül teljesítményproblémákat okozhatnak. Kategóriába sorolt, tájékoztató megállapítások informatív utasítás csak olyan.
+> Kategóriába sorolt, magas megállapítások előforduló ismert problémákat, amelyek teljesítményproblémákat okozhatnak. Közepes képviselő nem feltétlenül teljesítményproblémákat okozhatnak nem optimális konfigurációkra megállapítások tartozik. Kategóriába sorolt, alacsony megállapítások informatív utasítás csak olyan.
 
-Tekintse át a javaslatok és az összes kritikus fontosságú és fontos megállapítások mutató hivatkozásokat. Tudnivalók arról, hogy azok hatással teljesítmény és gyakorlati tanácsokat teljesítményre optimalizált konfigurációk.
+Tekintse át a javaslatok és az összes magas és közepes méretű megállapítások mutató hivatkozásokat. Tudnivalók arról, hogy azok hatással teljesítmény és gyakorlati tanácsokat teljesítményre optimalizált konfigurációk.
 
 ### <a name="storage-tab"></a>Tárolás lap
 

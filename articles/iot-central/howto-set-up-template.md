@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0bef8722ee51c916652e6964305f324341052341
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261984"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754550"
 ---
 # <a name="set-up-a-device-template"></a>Eszköz sablon beállítása
 
@@ -38,19 +38,19 @@ Például egy jelentéskészítő, amelynek csatlakoztatott IoT-ventilátor eszk
 A eszköz sablonból operátor hozhat létre és valós ventilátor eszközök csatlakoztatása a névvel, mint **ventilátor.-1** és **ventilátor-2**. A ventilátorok rendelkezik mérések, a beállításokat és a tulajdonságok, szabályok, és egy irányítópultot, amely a felhasználók az alkalmazás figyelése és kezelése.
 
 > [!NOTE]
-Csak a létrehozói és a rendszergazdák létrehozása, szerkesztése és törlése eszköz sablonok. Bármely felhasználó létrehozhat az eszközök a **eszköz Explorer** meglévő eszköz felügyeleticsomag-sablonok lap.
+> Csak a létrehozói és a rendszergazdák létrehozása, szerkesztése és törlése eszköz sablonok. Bármely felhasználó létrehozhat az eszközök a **eszköz Explorer** meglévő eszköz felügyeleticsomag-sablonok lap.
 
 ## <a name="create-a-new-device-template"></a>Új eszközsablon létrehozása
 
 1. Keresse meg a **alkalmazás jelentéskészítő** lap.
 
-1. Hozzon létre egy üres sablont, válassza a **eszköz sablon létrehozása**, és válassza a **egyéni**.
+2. Hozzon létre egy üres sablont, válassza a **eszköz sablon létrehozása**, és válassza a **egyéni**.
 
-1. Adja meg az új eszköz-sablon nevét, és válassza a **létrehozása**.
+3. Adja meg az új eszköz-sablon nevét, és válassza a **létrehozása**.
 
     ![Eszköz részleteit megjelenítő oldalra](./media/howto-set-up-template/devicedetailspage.png)
 
-1. Épp most a **eszközadatok** új szimulált eszköz oldalán. A szimulált eszköz automatikusan létrejön egy új eszköz sablon létrehozásakor. Adatok jelentéseket, és szabályozhatja csakúgy, mint egy valós eszközt.
+4. Épp most a **eszközadatok** új szimulált eszköz oldalán. A szimulált eszköz automatikusan létrejön egy új eszköz sablon létrehozásakor. Adatok jelentéseket, és szabályozhatja csakúgy, mint egy valós eszközt.
 
 Egyes lapokon nézze most a **eszközadatok** lap.
 
@@ -133,8 +133,7 @@ Például egy új ventilátor sebesség beállítást is hozzáadhat:
 
 Kiválasztása után **mentése**, a **sebesség ventilátor** beállítás csempe jelenik meg, és készen áll az módosítani szeretné a ventilátor sebességét az eszköz használható.
 
-> [!NOTE]
-> Miután létrehozott egy új csempe, kipróbálhatja az új beállítással. Először, kapcsolja ki a tervezési módba, a bal felső sarkában a képernyőn:
+Miután létrehozott egy új csempe, kipróbálhatja az új beállítással. Először, kapcsolja ki a tervezési módba, a bal felső sarkában a képernyőn.
 
 ![Beállításai lapon](./media/howto-set-up-template/settingstile.png)
 
@@ -168,51 +167,70 @@ A hely tulajdonságai adhat hozzá két típusa van:
 - **A helyen, ahol az alkalmazás tulajdonság** pusztán az alkalmazásban kerülnek. Az eszköz regisztrációját nincsenek saját ismeretei az alkalmazás tulajdonságait.
 - **Hely eszköz tulajdonságként** az eszköz megjelenik.
 
-####<a name="adding-location-as-an-application-property"></a>Egy alkalmazás tulajdonság hely hozzáadása 
+#### <a name="adding-location-as-an-application-property"></a>Egy alkalmazás tulajdonság hely hozzáadása 
+
 Létrehozhat egy helyet tulajdonság használatával az Azure alkalmazás tulajdonságként hozzárendeli az Azure IoT központi alkalmazásban. Például az eszköz telepítési címe is hozzáadhat. 
 
 1. Keresse meg az eszköz tulajdonságlap; Győződjön meg arról, tervezési üzemmód engedélyezve van.
 
-![Location tulajdonság](./media/howto-set-up-template/locationcloudproperty1.png)
+   ![Location tulajdonság](./media/howto-set-up-template/locationcloudproperty1.png)
 
 2. A tulajdonság lapon kattintson a helyen.
 3. Megjelenített név, mező nevét és a kezdeti érték, a hely konfigurálása a opcionálisan. 
 
-![Hely tulajdonság képernyő](./media/howto-set-up-template/locationcloudproperty2.png)
+   ![Hely tulajdonság képernyő](./media/howto-set-up-template/locationcloudproperty2.png)
 
-Nincsenek két támogatott formátumok hely hozzáadásához:
-- **Hely-címként**
-- **Hely-koordináták** 
+   Nincsenek két támogatott formátumok hely hozzáadásához:
+   - **Hely-címként**
+   - **Hely-koordináták** 
 
-4. Kattintson a Mentés gombra. 
+4.  Kattintson a **Save** (Mentés) gombra. 
 
-![A Location tulajdonság mező](./media/howto-set-up-template/locationcloudproperty3.png)
+    ![A Location tulajdonság mező](./media/howto-set-up-template/locationcloudproperty3.png)
 
 Most egy olyan operátort frissítheti a hely mező űrlap a hely értéke. 
 
-####<a name="adding-location-as-a-device-property"></a>Eszköz tulajdonságként hely hozzáadása 
+#### <a name="adding-location-as-a-device-property"></a>Eszköz tulajdonságként hely hozzáadása 
 
 Az eszköz által jelentett eszköz tulajdonságként hozhat létre a helyet jelölő tulajdonsághoz.
 Például szeretné nyomon követni az eszköz helyét.
 
 1.  Keresse meg az eszköz tulajdonságlap; Győződjön meg arról, tervezési üzemmód engedélyezve van.
+
 2.  Kattintson a könyvtárból eszköz tulajdonság.
 
-![A Location tulajdonság mező](./media/howto-set-up-template/locationdeviceproperty1.png)
+    ![A Location tulajdonság mező](./media/howto-set-up-template/locationdeviceproperty1.png)
 
 3.  Konfigurálja a megjelenített név, a mező nevét, és válassza ki a "hely" adattípusú értékként. 
 
-> [!NOTE]
-A mezőnév pontosan egyeznie kell a tulajdonság az eszköz nevére jelentéseket. 
+    > [!NOTE]
+    > A mezőnév pontosan egyeznie kell a tulajdonság az eszköz nevére jelentéseket. 
 
-![A Location tulajdonság mező](./media/howto-set-up-template/locationdeviceproperty2.png)
+    ![A Location tulajdonság mező](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-![Hely tulajdonság operátor nézet](./media/howto-set-up-template/locationdeviceproperty2.png)
+    ![Hely tulajdonság operátor nézet](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Most, hogy a location tulajdonság van beállítva, akkor fog tudni vegyen fel egy társítást a helyet, az eszköz irányítópult megjelenítéséhez. Lásd: hogyan [hely hozzáadása Azure térkép irányítópulton](howto-set-up-template.md).
+Most, hogy a location tulajdonság van beállítva, akkor fog tudni vegyen fel egy társítást a helyet, az eszköz irányítópult megjelenítéséhez. Lásd: hogyan [hely hozzáadása Azure térkép irányítópulton](howto-set-up-template.md#add-location-azure-map-in-dashboard).
 
+## <a name="commands"></a>Parancsok
 
+Parancsok segítségével a eszköz távoli felügyelete. Lehetővé teszik az operátorok az alkalmazás azonnal futtassa a parancsokat az eszközön. Az eszköz sablon megjelenő mozaikként több parancs is hozzáadhat a **parancsok** fülre az operátorok használatára. A szerkesztő az eszköz, így rugalmasan megadhatók a parancs a követelményeknek.
 
+Hogyan van egy **parancs** eltér a **beállítás**? 
+
+* : A beállítás egy eszközre alkalmazni kívánt konfigurációs, és azt szeretné, hogy a konfigurálás továbbra is fennáll, addig az eszköz. Például be szeretné állítani a feldolgozó hőmérséklete, és azt szeretné, a beállítás akkor is, ha a feldolgozó újra. 
+
+* Parancs: Használatával parancsok azonnal futtassa a parancsot az eszköz távoli IoTCentral, ha egy eszköz nincs csatlakoztatva, majd a parancs időkorlátja, és a sikertelen. Például szeretné indítsa újra a számítógép újraindításához eszköz.  
+
+Parancsok végrehajtásakor lehet az alábbi három állapotban, attól függően, hogy az eszköz a parancsot kapott. 
+
+Például egy új echo paranccsal adhatja hozzá:
+
+![Parancsok képernyő](./media/howto-set-up-template/commandsecho.png)
+
+Miután kiválasztotta **mentése**, a **Echo** parancs csempe jelenik meg, és készen áll az Echo az eszköz használatával.
+
+Miután létrehozott egy új csempe, kipróbálhatja az új parancsot.
 
 ## <a name="rules"></a>Szabályok
 
@@ -234,28 +252,27 @@ Most operátor megtekinti az irányítópulton, amikor ez a csempe megjeleníti 
 
 ### <a name="add-location-azure-map-in-dashboard"></a>Hely hozzáadása Azure térkép-irányítópulton
 
-Ha konfigurálta a helyet jelölő tulajdonsághoz hasonlóan a lépések [hozzon létre egy Azure Maps]((howto-set-up-template.md) technológiával helyet jelölő tulajdonsághoz, megjelenítheti a helyét, a térkép lesz az eszköz irányítópulton jobbra.
+Ha konfigurálta a helyet jelölő tulajdonsághoz hasonlóan a lépéseket [hozzon létre egy Azure Maps technológiával helyet jelölő tulajdonsághoz](howto-set-up-template.md), jelenítheti meg a helyét, a térkép lesz az eszköz irányítópulton jobbra.
 
 1.  Keresse meg az eszköz irányítópult fület; Győződjön meg arról, tervezési üzemmód engedélyezve van.
+
 2.  Az eszköz irányítópultot válassza ki a térkép a könyvtárból. 
 
-![Irányítópult helyének Azure hozzárendelése kiválasztása](./media/howto-set-up-template/locationcloudproperty4map.png)
+    ![Irányítópult helyének Azure hozzárendelése kiválasztása](./media/howto-set-up-template/locationcloudproperty4map.png)
 
 3.  Olyan címet adjon, és válassza ki a helyet jelölő tulajdonsághoz vannak konfigurálva a Eszköztulajdonságon részeként.
 
-![Irányítópult helyét Azure leképezés konfigurálása](./media/howto-set-up-template/locationcloudproperty5map.png)
+    ![Irányítópult helyét Azure leképezés konfigurálása](./media/howto-set-up-template/locationcloudproperty5map.png)
 
 4.  Mentés és a térkép csempe megjelenítése a választott helyen jelenik meg. 
 
-![Irányítópult helyét Azure térkép megjelenítése](./media/howto-set-up-template/locationcloudproperty6map.png) 
+    ![Irányítópult helyét Azure térkép megjelenítése](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-A kívánt méretet a térképen átméretezése lehet.
+    A kívánt méretet a térképen átméretezése lehet.
 
-Most operátor megtekinti az irányítópulton, amikor az összes az irányítópulton található csempe konfigurálta, beleértve a térkép láthatják!
+    Most operátor megtekinti az irányítópulton, amikor az összes az irányítópulton található csempe konfigurálta, beleértve a térkép láthatják!
 
-![Irányítópult hely Azure térkép irányítópult](./media/howto-set-up-template/locationcloudproperty7map.png) 
-
-
+    ![Irányítópult hely Azure térkép irányítópult](./media/howto-set-up-template/locationcloudproperty7map.png) 
 
 ## <a name="next-steps"></a>További lépések
 

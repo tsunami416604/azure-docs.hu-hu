@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric szolgáltatás távelérése |} Microsoft Docs
-description: A Service Fabric távoli eljáráshívás lehetővé teszi, hogy az ügyfelek és a szolgáltatások a távoli eljáráshívás segítségével szolgáltatásokkal kommunikálni.
+title: A Java használatát Azure Service Fabric szolgáltatás távoli eljáráshívási |} Microsoft Docs
+description: Service Fabric távoli eljáráshívási lehetővé teszi, hogy az ügyfelek és a szolgáltatások távoli eljáráshívás segítségével Java szolgáltatásokkal kommunikálni.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 074c428662abb5c3acf86835f6fedbf3f8791acf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3215ee4adf907524626b4919b637ce23b9e0e782
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212976"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750180"
 ---
-# <a name="service-remoting-with-reliable-services"></a>A Reliable Services szolgáltatás távelérése
+# <a name="service-remoting-in-java-with-reliable-services"></a>A Java a Reliable Services szolgáltatás távelérése
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-services-communication-remoting.md)
 > * [Java Linuxon](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
 
-A Reliable Services keretrendszer lehetővé teszi a távoli eljáráshívás szolgáltatásokhoz a távoli eljáráshívás beállítása gyorsan és egyszerűen.
+Szolgáltatások, amelyek egy adott kommunikációs protokollt vagy a veremben, mint például a WebAPI, a Windows Communication Foundation (WCF) vagy más, nem kapcsolódik a Reliable Services keretrendszer lehetővé teszi a távoli eljáráshívás gyorsan és egyszerűen állíthat be a távoli eljáráshívások szolgáltatások.  A cikkből megtudhatja, hogyan állíthat be a Java-szolgáltatásokat a távoli eljáráshívásokat.
 
 ## <a name="set-up-remoting-on-a-service"></a>A szolgáltatás távoli eljáráshívást beállítani
 A szolgáltatás távoli eljáráshívás beállítása két egyszerű lépésben történik:
@@ -88,7 +88,7 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 A távoli eljáráshívás keretrendszer kivételek, a szolgáltatás, az ügyfél propagálása zajlik. Ezért kivételkezelést logika használatával az ügyfél `ServiceProxyBase` közvetlenül kezelheti a kivételeket, amelyek a szolgáltatás jelez.
 
 ## <a name="service-proxy-lifetime"></a>Szolgáltatási Proxy élettartamát
-Egy egyszerűsített művelet ServiceProxy létrehozása, a felhasználó létrehozhat annyi, szükség szerint. Szolgáltatási Proxy újra felhasználhatók, amíg a felhasználó szükség lenne rá. Felhasználó újra használhatja a azonos proxy kivétel esetén. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. API meghívása, során tudunk belső ellenőrizze, hogy ha a használt kommunikációs ügyfél esetében érvényes. Az adott eredménye alapján, most újra létrehozzuk a kommunikációs ügyfél. Így a felhasználónak nem kell serviceproxy kivétel esetén hozza létre.
+Egy egyszerűsített művelet ServiceProxy létrehozása, hogy létrehozhasson annyi, szükség szerint. Szolgáltatási Proxy példányok felhasználhatók, mindaddig, amíg azok szükségesek. A távoli eljáráshívás kivételt jelez, ha továbbra is felhasználhatja a proxy-példányt. Minden egyes ServiceProxy a hálózaton keresztül üzenetek küldéséhez használt kommunikációs ügyfél tartalmazza. Hogy a távoli hívásokat, miközben belső a rendszer ellenőrzi annak megállapításához, hogy a kommunikáció ügyfél érvényes. Ezen ellenőrzés eredménye alapján, a kommunikáció ügyfél újból létrejön szükség esetén. Ezért, ha kivétel történik, nem kell hozza létre újra `ServiceProxy`.
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory Lifetime
 [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) van olyan adat-előállítóval, amely különböző távelérési kapcsolatok proxy hoz. Ha API-t használja `ServiceProxyBase.create` proxy létrehozására, majd keretrendszer létrehoz egy `FabricServiceProxyFactory`.
@@ -102,7 +102,7 @@ A távoli kivétel lépett fel az service API rendszer küldi vissza az ügyfél
 ServiceProxy a szolgáltatás partíció létrejön az összes feladatátvételi kivétel kezelése. Újra feloldja a végpontok feladatátvételi Exceptions(Non-Transient Exceptions) esetén és a megfelelő végponttal hívás újrapróbálja a telepítést. Feladatátvétel kivétel újrapróbálkozások száma: nincs meghatározva.
 TransientExceptions, esetén csak újrapróbálkozik a hívást.
 
-Alapértelmezett újrapróbálkozási paraméterei [OperationRetrySettings] által biztosított. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Felhasználó konfigurálhatja ezeket az értékeket úgy, hogy OperationRetrySettings objektum ServiceProxyFactory konstruktor.
+Alapértelmezett újrapróbálkozási paraméterei [OperationRetrySettings] által biztosított. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Ezeket az értékeket konfigurálhatja úgy, hogy OperationRetrySettings objektum ServiceProxyFactory konstruktor.
 
 ## <a name="next-steps"></a>További lépések
-* [A Reliable Services kommunikáció biztonságához](service-fabric-reliable-services-secure-communication.md)
+* [A Reliable Services kommunikáció biztonságához](service-fabric-reliable-services-secure-communication-java.md)

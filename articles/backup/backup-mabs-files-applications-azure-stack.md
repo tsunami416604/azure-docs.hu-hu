@@ -1,5 +1,5 @@
 ---
-title: Azure verem fájlok és alkalmazások biztonsági mentése
+title: Az Azure verem VMs fájlok biztonsági mentése
 description: Azure Backup használatával biztonsági mentése és helyreállítása Azure verem fájlokat és alkalmazásokat az Azure-verem környezethez.
 services: backup
 author: adiganmsft
@@ -8,26 +8,26 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 7baaa29d205c09daaeeebf44a4bad338913dcad9
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248860"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751704"
 ---
-# <a name="back-up-files-and-applications-on-azure-stack"></a>Biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem
-Azure Backup segítségével védeni (vagy készítsen biztonsági másolatot) fájlok és alkalmazások Azure veremben. Biztonsági másolatot készíteni a fájlokhoz és alkalmazásokhoz, telepítse a Microsoft Azure Backup Server Azure verem futó virtuális gépként. Az azonos virtuális hálózatban lévő bármely Azure verem kiszolgálón futó alkalmazások, védelmet biztosíthat. Egyszer telepítette az Azure Backup Server, adja hozzá az Azure-lemezeket a helyi tárterület érhető el, a rövid távú biztonsági másolatok növelése érdekében. Az Azure Backup Server hosszú távú megőrzési Azure tárolást használ.
+# <a name="back-up-files-on-azure-stack"></a>Azure-veremben fájlok biztonsági mentése
+Azure Backup segítségével védeni (vagy készítsen biztonsági másolatot) fájlok és alkalmazások Azure veremben. Biztonsági másolatot készíteni a fájlokhoz és alkalmazásokhoz, telepítse a Microsoft Azure Backup Server Azure verem futó virtuális gépként. Az azonos virtuális hálózatban lévő bármely Azure verem kiszolgálón lévő fájlok védelme biztosítható. Egyszer telepítette az Azure Backup Server, adja hozzá az Azure-lemezeket a helyi tárterület érhető el, a rövid távú biztonsági másolatok növelése érdekében. Az Azure Backup Server hosszú távú megőrzési Azure tárolást használ.
 
 > [!NOTE]
 > Bár az Azure Backup Server és System Center Data Protection Manager (DPM) hasonló a DPM nem támogatott Azure verem való használatra.
 >
 
-Ez a cikk nem foglalkozik az Azure Backup Server telepítése a verem Azure környezetben. Azure Backup Server telepítése Azure veremben, tekintse meg a cikket, [készül, hogy az Azure Backup Server használatával-munkaterhelések biztonsági mentése](backup-mabs-install-azure-stack.md).
+Ez a cikk nem foglalkozik az Azure Backup Server telepítése a verem Azure környezetben. Azure Backup Server telepítése Azure veremben, tekintse meg a cikket, [Azure Backup Server telepítése](backup-mabs-install-azure-stack.md).
 
 
-## <a name="back-up-azure-stack-vm-file-data-to-azure"></a>Adatok biztonsági mentése Azure verem VM fájl az Azure-bA
+## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Fájlok és mappák biztonsági mentése az Azure verem virtuális gépeken az Azure-bA
 
-Az Azure Backup Server IaaS virtuális gépek védelmére szolgáló megadásához nyissa meg az Azure Backup Server konzolt. A konzol fogja használni, a védelmi csoportok konfigurálásához és a virtuális gépek az adatok védelme érdekében.
+Az Azure Backup Server számára a fájlok védelméhez az Azure-verem virtuális gépeken futó virtuális gépek megadásához nyissa meg az Azure Backup Server konzol. A konzol fogja használni, a védelmi csoportok konfigurálásához és a virtuális gépek az adatok védelme érdekében.
 
 1. Kattintson az Azure Backup Server konzolon **védelmi** az eszköztáron kattintson **új** megnyitásához a **új védelmi csoport létrehozása** varázsló.
 
@@ -49,7 +49,7 @@ Az Azure Backup Server IaaS virtuális gépek védelmére szolgáló megadásáh
 
     ![Új védelmi csoport varázsló megnyitása](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    A Microsoft azt javasolja, és minden olyan virtuális gépek, amelyek a védelmi házirend fogja osztani egy védelmi csoportba. Hamarosan tervezésével és telepítésével a védelmi csoportok, tekintse meg a System Center DPM cikk tájékoztatást [telepíteni a védelmi csoportok](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    A Microsoft azt javasolja, és minden adat, amely a védelmi házirend fogja osztani egy védelmi csoportba. Hamarosan tervezésével és telepítésével a védelmi csoportok, tekintse meg a System Center DPM cikk tájékoztatást [telepíteni a védelmi csoportok](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
 4. Az a **adatvédelmi módszer kiválasztása** írja be a védelmi csoport nevét. Jelölje be a **szeretném, hogy rövid távú védelem használata:** és **online védelmet szeretnék**. Kattintson a **Tovább** gombra.
 
@@ -73,7 +73,7 @@ Az Azure Backup Server IaaS virtuális gépek védelmére szolgáló megadásáh
 
     **Teljes adatok mérete** van készítsen biztonsági másolatot kívánt adatok méretétől és **létesítendő lemezterület** Azure biztonsági mentési kiszolgálón van az ajánlott hely a védelmi csoportot. Az Azure Backup Server úgy dönt, hogy az épp ezért tökéletes választás a biztonsági mentési köteten, a beállítások alapján. Azonban módosíthatja a biztonsági mentési kötet lehetőségei a lemez foglalás részletei. A munkaterhelések esetén válassza ki a kívánt tárolási legördülő menüből. A módosítások módosítsa a teljes tárterület és a szabad tárhely a rendelkezésre álló lemezterület ablaktáblán. Underprovisioned-e hely tárolókapacitást Azure Backup Server javasol ad hozzá a kötetet a biztonsági mentések zökkenőmentesen jövőbeni folytatásához.
 
-7. A **replika-létrehozási módszer kiválasztása**, válassza ki, hogyan szeretné kezelni a teljes kezdeti adatreplikálás. Ha úgy dönt, hogy a hálózaton keresztül replikálja, Azure azt javasolja, hogy úgy dönt, hogy a csúcsidőn kívüli időpontot. Nagy mennyiségű adatok vagy kevésbé optimális hálózati állapotok esetén érdemes megfontolni az adatok cserélhető adathordozóval offline replikálása.
+7. A **replika-létrehozási módszer kiválasztása**, válassza ki, hogyan szeretné kezelni a teljes kezdeti adatreplikálás. Ha úgy dönt, hogy a hálózaton keresztül replikálja, Azure azt javasolja, hogy úgy dönt, hogy a csúcsidőn kívüli időpontot. Nagy mennyiségű adatok vagy kevésbé optimális hálózati állapotok esetén érdemes megfontolni az adatok cserélhető adathordozó segítségével replikálni.
 
 8. A **konzisztencia-ellenőrzési beállítások kiválasztása**, válassza ki, hogyan szeretné automatizálni a konzisztencia-ellenőrzést. Engedélyezze a konzisztencia-ellenőrzések csak akkor, ha a adatok replikáció inkonzisztenssé válik, vagy ütemezés szerint futtatni. Ha nem szeretné konfigurálni az automatikus konzisztencia-ellenőrzését, az bármikor lefuttathat egy manuális ellenőrzést:
     * Az a **védelmi** területén az Azure biztonsági mentés konzolját, kattintson a jobb gombbal a védelmi csoport, és válasszon **konzisztencia-ellenőrzés**.
@@ -87,8 +87,6 @@ Az Azure Backup Server IaaS virtuális gépek védelmére szolgáló megadásáh
 11. A **online megőrzési szabály megadása**, adja meg, hogyan megőrzi a helyreállítási pontok a napi vagy heti vagy havi vagy éves biztonsági mentést készített az Azure-ban.
 
 12. A **válassza ki az online replikációs**, adja meg az adatok teljes kezdeti replikációjához módját. 
-
-    A hálózaton keresztül replikálja, vagy tegye az offline biztonsági másolat (kapcsolat nélküli összehangolása). Offline biztonsági másolat használja a [Azure Import szolgáltatással](./backup-azure-backup-import-export.md).
 
 13. A **összegzés**, tekintse át a beállításokat. Amikor rákattint **csoport létrehozása**, a kezdeti adatreplikálás következik be. Ha az adatok replikáció befejezése után a a **állapot** lapon, a védelmi csoport állapota látható **OK**. A kezdeti biztonsági mentési feladat védelmicsoport a csoport beállításait.
 
@@ -116,7 +114,6 @@ Azure Backup Server konzollal helyreállítani az adatokat a virtuális géphez.
     * A **létező verzió helyreállítása esetén**, jelölje be **készítsen másolatot**, **kihagyása**, vagy **felülírása**. Felülírása csak akkor használható helyreállítása az eredeti helyre.
     * A **biztonság visszaállítása**, válassza a **beállításainak a célszámítógépen alkalmazása** vagy **a helyreállítási ponthoz tartozó verzió biztonsági beállításainak alkalmazása**.
     * A **sávszélesség-szabályozás**, kattintson a **módosítás** sávszélesség-szabályozás engedélyezése.
-    * Válassza ki **SAN-alapú helyreállítás engedélyezése hardveresen készített pillanatfelvételek segítségével** SAN-alapú hardveresen készített pillanatfelvételek használatához a gyorsabb helyreállítás érdekében. Ez a beállítás akkor érvényes, csak akkor, ha rendelkezik egy TÁROLÓHÁLÓZATTAL amelyekben a hardver-pillanatfelvétel-készítési funkció engedélyezve van. Ahhoz, hogy a helyreállítási pontok írható, a TÁROLÓHÁLÓZAT képes egy klón létrehozására és a klón felosztására, kell lennie. A védett virtuális gép, és az Azure Backup Server kapcsolódnia kell a ugyanahhoz a TÁROLÓHÁLÓZATHOZ.
     * **Értesítési** kattintson **e-mail küldése a helyreállítás befejezéséről**, és adja meg a címzetteket, akiknek a értesítést fog kapni. Az e-mail címeket vesszővel való elválasztása.
     * Kattintson a kiválasztás után **tovább**
 
@@ -132,16 +129,13 @@ Modern biztonsági mentési tároló (MB) használata, a fájlkiszolgáló a vé
 
 2. Az a **tulajdonságok** menüben kattintson a **korábbi verziók** , és válassza ki a helyreállítani kívánt verziót.
 
-
-
-## <a name="register-azure-backup-server-with-a-vault"></a>Azure biztonsági mentés kiszolgáló regisztrálása a tárolóban
-Adja meg a lépéseket bemutató Útmutató:
-
+## <a name="view-azure-backup-server-with-a-vault"></a>Nézet Azure biztonsági mentés kiszolgálót a tárolóban
+Azure portál Azure Backup Server entitások megtekintéséhez kövesse az alábbi lépéseket:
 1. Nyissa meg a Recovery Services-tároló.
 2. Kattintson a biztonsági mentési infrastruktúra.
 3. Biztonságimásolat-felügyeleti kiszolgálók megtekintése.
 
 ## <a name="see-also"></a>Lásd még
 Információ az Azure Backup Server használatával egyéb munkaterhelések védelme érdekében tekintse meg a következő cikkeket:
-- [Készítsen biztonsági másolatot a SharePoint-farm.](backup-azure-backup-sharepoint-mabs.md)
-- [Készítsen biztonsági másolatot az SQL server](backup-azure-sql-mabs.md)
+- [Készítsen biztonsági másolatot a SharePoint-farm.](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Készítsen biztonsági másolatot az SQL server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)

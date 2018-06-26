@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c10a6367f07bf66f7a0a8968022881b3c616fb74
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bfdc89d9bc5d5a07c04e857c1a46e4b988c125ab
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205603"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943555"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -44,7 +44,7 @@ Után keresse meg a vezérlő nézetet, a felhasználók alapszintű tulajdonsá
 |Tulajdonság |Érték |Leírás |
 |---|---|---|
 |**Name (Név)** |Felhasználó teljes neve | A felhasználó nagyapja vezeték- és keresztneve.
-|**Felhasználónév** |Felhasználó<span>@domain.com</span> | A felhasználónév, amely a felhasználó azonosítására szolgál.
+|**Felhasználónév** |felhasználó<span>@domain.com</span> | A felhasználónév, amely a felhasználó azonosítására szolgál.
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználó a weben.|
 |**Bérlő azonosítója** |GUID | A **guid** , amely egyedi módon a felhasználó az Azure AD szervezete jelöli.|
 
@@ -71,7 +71,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 <!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Korlátozza, aki jelentkezhetnek be az alkalmazás
-Alapértelmezés szerint ez az útmutató által létrehozott alkalmazás építésekor az alkalmazás elfogadja bejelentkezési modulok a személyes fiókok (például outlook.com, live.com és mások), valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van Az Azure Active Directory. Ez a beállítás ajánlott az SaaS-alkalmazásokhoz.
+Alapértelmezés szerint ez az útmutató által létrehozott alkalmazás építésekor az alkalmazás elfogadja bejelentkezések a személyes fiókok (például outlook.com, live.com és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van Az Azure Active Directory. Ez a beállítás ajánlott az SaaS-alkalmazásokhoz.
 
 Az alkalmazás felhasználói bejelentkezési hozzáférés korlátozásához, több lehetőség is elérhető:
 

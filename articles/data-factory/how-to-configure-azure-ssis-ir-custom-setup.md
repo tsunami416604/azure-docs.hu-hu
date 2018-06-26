@@ -8,21 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 06/21/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268128"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750485"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS-integráció futási időben testreszabása
 
-Az Azure-SSIS-integrációs futásidejű egyéni telepítés felülete egy felülete, adja hozzá a saját telepítési lépéseinek kiépítés vagy az Azure-SSIS infravörös újrakonfigurálása során Egyéni telepítés lehetővé teszi az alapértelmezett konfiguráció vagy a környezetben (például további Windows szolgáltatások indítása) működő alter vagy további összetevőket (például szerelvényeket, illesztőprogramok vagy bővítmények) telepítse az Azure-SSIS infravörös minden csomópontján
+Az Azure-SSIS-integrációs futásidejű egyéni telepítés felülete egy felülete, adja hozzá a saját telepítési lépéseinek kiépítés vagy az Azure-SSIS infravörös újrakonfigurálása során Egyéni telepítés lehetővé teszi az alapértelmezett konfiguráció vagy a környezetben (például további Windows-szolgáltatások és a fájlmegosztások hozzáférési hitelesítő adatok megőrzése) működő alter, vagy további összetevők (például szerelvényeket, illesztőprogramok vagy bővítmények) az Azure-SSIS infravörös minden egyes csomópontjára
 
 Az egyéni telepítés előkészítése a parancsfájl és az ahhoz tartozó fájlokat, és feltöltheti az Azure Storage-fiók egy blob tárolóba konfigurálásához. Egy közös hozzáférésű Jogosultságkód (SAS) egységes erőforrás-azonosító (URI) a tároló megadnia, amikor kiépítése, vagy konfigurálja újra az Azure-SSIS infravörös Az Azure-SSIS-IR minden egyes csomópontjára majd tölti le a parancsfájlt és a hozzá kapcsolódó fájlok a tárolóból, és futtatja az egyéni telepítés emelt szintű jogosultságokkal. Ha egyéni telepítés befejeződött, minden csomópont feltölti a normál a kimenetbe végrehajtása és a többi naplófájlt a tárolóba.
 
@@ -87,7 +87,10 @@ Az Azure-SSIS-IR testreszabásához kell a következőket:
 
        ![A közös hozzáférésű Jogosultságkód beolvasni a tároló](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  Hozzon létre a tároló SAS URI-JÁNAK elég hosszú-lejárati idővel rendelkező és az írást + írási + engedélyek listában. Töltse le és futtassa a egyéni telepítési parancsfájlt és a hozzá tartozó fájlokat, ha bármelyik csomópontját az Azure-SSIS-IR rendszerképének SAS URI van szüksége. Telepítő végrehajtási naplók feltöltése engedélyt kell írni.
+    7.  Hozzon létre a tároló SAS URI-JÁNAK elég hosszú-lejárati idővel rendelkező és az írást + írási + engedélyek listában. A SAS URI-letöltése és futtatása a egyéni telepítési parancsfájlt és a hozzá kapcsolódó fájlok mindig, amikor az Azure-SSIS-IR bármelyik csomópontját lemezképet/újraindítása szükséges. Telepítő végrehajtási naplók feltöltése engedélyt kell írni.
+
+        > [!IMPORTANT]
+        > Győződjön meg arról, hogy a SAS URI nem jár le, és az egyéni telepítés erőforrások mindig elérhetők az Azure-SSIS IR való létrehozása, törlés, hogy a teljes életciklus során különösen akkor, ha rendszeresen állítsa le és indítsa el az Azure-SSIS-IR ebben az időszakban.
 
        ![A közös hozzáférésű Jogosultságkód a tároló létrehozása](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
@@ -124,7 +127,7 @@ Az Azure-SSIS-IR testreszabásához kell a következőket:
 
     c. Válassza ki a csatlakoztatott Public Preview tárolót, és kattintson duplán a `CustomSetupScript` mappát. Ez a mappa a következő elemek a következők:
 
-       1. A `Sample` mappa, amely tartalmaz egy egyéni telepítendő alapvető feladat minden egyes csomópontjára az Azure-SSIS infravörös A tevékenység nincs hatása, de néhány másodpercre alvó. A mappa is tartalmaz egy `gacutil` mappát, amelybe `gacutil.exe`.
+       1. A `Sample` mappa, amely tartalmaz egy egyéni telepítendő alapvető feladat minden egyes csomópontjára az Azure-SSIS infravörös A tevékenység nincs hatása, de néhány másodpercre alvó. A mappa is tartalmaz egy `gacutil` mappát, amelybe `gacutil.exe`. Emellett `main.cmd` megőrizni a hozzáférési hitelesítő adatok fájlmegosztások megjegyzéseket tartalmaz.
 
        2. A `UserScenarios` mappát, amelybe a valós forgatókönyvekben több egyéni beállításokat.
 
@@ -138,7 +141,7 @@ Az Azure-SSIS-IR testreszabásához kell a következőket:
 
        3. Egy `EXCEL` mappába, amely tartalmaz egy egyéni telepítendő nyílt forráskódú szerelvények (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) az Azure-SSIS infravörös minden egyes csomópontjára
 
-       4. Egy `MSDTC` mappa, amely tartalmazza a hálózati és biztonsági beállításait a Microsoft elosztott tranzakciók koordinátora (MSDTC) példány minden egyes csomóponton az Azure-SSIS infravörös módosítani egy egyéni telepítés
+       4. Egy `MSDTC` mappa, amely tartalmazza a hálózati és biztonsági beállításait a Microsoft elosztott tranzakciók koordinátora (MSDTC) szolgáltatás minden egyes csomóponton az Azure-SSIS infravörös módosítani egy egyéni telepítés Győződjön meg arról, hogy elindult-e az MSDTC, adja hozzá folyamat feladat végrehajtása a csomagok hajtsa végre a következő parancsot a folyamatábrán elején: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        5. Egy `ORACLE ENTERPRISE` mappa, amely tartalmaz egy egyéni beállítási parancsfájlt (`main.cmd`) és a csendes telepítést a konfigurációs fájl (`client.rsp`) az Oracle OCI illesztőprogram telepítéséhez az Azure-SSIS-IR Enterprise Edition minden egyes csomóponton. Ez a beállítás lehetővé teszi a Csatlakozáskezelő Oracle, a forrás és a cél. Első lépésként töltse le a legfrissebb Oracle ügyfél - például `winx64_12102_client.zip` – a [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , majd töltse fel együtt `main.cmd` és `client.rsp` a tárolóba. TNS csatlakozni az Oracle használatakor is kell letölteni `tnsnames.ora`, szerkesztheti, majd töltse fel a tárolóba, akkor lehet másolni az Oracle telepítési mappájába a telepítés során.
 
