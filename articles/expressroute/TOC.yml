@@ -89,6 +89,8 @@
       href: expressroute-howto-move-arm.md
     - name: Kapcsolódó virtuális hálózatok áttelepítése klasszikus üzemi modellből Resource Manager-alapú modellbe
       href: expressroute-migration-classic-resource-manager.md
+    - name: Zónaredundáns virtuális hálózati átjáró létrehozása Azure rendelkezésre állási zónákban
+      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Útválasztó konfigurálása ExpressRoute-hoz
       items:
         - name: Útválasztó konfigurálása

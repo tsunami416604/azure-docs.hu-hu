@@ -15,12 +15,23 @@
       href: quickstarts/nodejs.md
     - name: Első lekérdezés Python nyelven
       href: quickstarts/python.md
+- name: SDK
+  expanded: true
+  items:
+    - name: SDK-minták áttekintése
+      href: sdk.md
+    - name: SDK a Pythonban
+      href: visual-search-sdk-python.md
 - name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás
       href: tutorial-bing-visual-search-single-page-app.md
     - name: Egyoldalas webalkalmazás (forráskód)
       href: tutorial-bing-visual-search-single-page-app-source.md
+    - name: Bing vizuális keresési SDK – képkörülvágási terület és eredmények
+      href: tutorial-visual-search-crop-area-results.md
+    - name: Bing vizuális keresési SDK – ImageInsightsToken és eredmények
+      href: tutorial-visual-search-insights-token.md
 - name: Példák
   items:
     - name: Kódminták

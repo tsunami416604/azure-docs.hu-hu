@@ -48,6 +48,8 @@
           href: security-center-customize-os-security-config.md
         - name: Biztonsági szabályzat az Azure Policyval
           href: security-center-azure-policy.md
+        - name: Bérlőszintű láthatóság
+          href: security-center-management-groups.md
     - name: Biztonsági javaslatok megvalósítása
       href: security-center-recommendations.md
     - name: A biztonsági állapot figyelése

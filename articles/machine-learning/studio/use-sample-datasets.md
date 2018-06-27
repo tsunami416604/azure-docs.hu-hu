@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836300"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959102"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -403,7 +403,7 @@ A témakör a hozzárendeléseinek RCV1-V2 Reuters hírek adatkészlet írt hír
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Ezeket az adatokat a KDD Cup 2010 Student teljesítmény értékelési kihívás származik (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">student teljesítmény értékelési</a>). A használt adatok a Algebra_2008_2009 gyakorlókészlethez (Stamper, J., Niculescu-Mizil, A., Ritter, S. Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. KDD Cup 2010 oktatási Data Mining ellenőrző kérdés adatkészlet. A Keresés <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> vagy <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.
+Ezeket az adatokat a KDD Cup 2010 Student teljesítmény értékelési kihívás származik (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">student teljesítmény értékelési</a>). A használt adatok a Algebra_2008_2009 gyakorlókészlethez (Stamper, J., Niculescu-Mizil, A., Ritter, S. Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. KDD Cup 2010 oktatási Data Mining ellenőrző kérdés adatkészlet. A Keresés <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 A dataset letöltötte és az Azure Blob storage szolgáltatásban tárolt (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) és a rendszer-oktatás student naplófájlokat tartalmazza. A megadott szolgáltatások közé tartozik a probléma azonosítója és a rövid leírását, student azonosítója, Timestamp típusú és hány kísérletet a student előtt a probléma megoldásához a megfelelő módon. Az eredeti dataset adatkészletben 8.9M rekordok; Ez az adatkészlet lett az első 100K sorokra lefelé-mintát. A dataset adatkészletben különböző típusú 23 tabulátorral tagolt oszlopok: numerikus, kategorikus, és a Timestamp típusú.
   </td>

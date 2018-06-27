@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31417036"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019956"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Központi telepítése és kezelése a HDInsight alatt futó Apache Storm-topológiák
 
@@ -40,9 +40,9 @@ Ebben a dokumentumban alapismeretei kezelése és figyelése a Storm a HDInsight
 
     A Visual Studio következő verzióinak valamelyike:
 
-  * A Visual Studio 2012 [4. frissítés](http://www.microsoft.com/download/details.aspx?id=39305)
+  * A Visual Studio 2012 Update 4
 
-  * A Visual Studio 2013-as verziójának [4. frissítés](http://www.microsoft.com/download/details.aspx?id=44921) vagy [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * A Visual Studio 2013 4. frissítéssel vagy [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * A Visual Studio 2015 (minden kiadás)
@@ -64,7 +64,7 @@ A HDInsight Tools elküldeni a C# vagy hibrid topológiák a Storm fürthöz has
 
 3. Az a **új projekt** párbeszédpanelen bontsa ki **telepített** > **sablonok**, majd válassza ki **HDInsight**. Válassza ki a listáról a sablonok **Storm minta**. A párbeszédpanel alján írja be az alkalmazás nevét.
 
-    ![Kép](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **Submit a HDInsight alatt futó Storm**.
 
@@ -103,7 +103,7 @@ Amikor egy topológia a Visual Studio használatával a **Storm-topológiák** n
 ![a Visual studio-figyelő](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
 > [!NOTE]
-> Megtekintheti továbbá **Storm-topológiák** a **Server Explorer** kibontásával **Azure** > **HDInsight**, és, majd kattintson a jobb gombbal a Storm on HDInsight-fürt, majd válassza **nézet Storm-topológiák**.
+> Megtekintheti továbbá **Storm-topológiák** a **Server Explorer** kibontásával **Azure** > **HDInsight**, majd Kattintson a jobb gombbal a Storm on HDInsight-fürt, majd válassza **nézet Storm-topológiák**.
 
 Válassza ki az alakzat a spoutokkal kapcsolatban, vagy a boltokhoz ezeket az összetevőket vonatkozó információk megtekintése. Minden elem kijelölve egy új ablakban nyílik meg.
 

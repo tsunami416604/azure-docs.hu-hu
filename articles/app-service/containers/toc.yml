@@ -23,6 +23,8 @@
       href: quickstart-ruby.md
     - name: Docker-/Go-alkalmazás létrehozása
       href: quickstart-docker-go.md
+    - name: Többtárolós alkalmazás létrehozása
+      href: quickstart-multi-container.md
 - name: Oktatóanyagok
   items:
     - name: Adatbázist használó alkalmazás

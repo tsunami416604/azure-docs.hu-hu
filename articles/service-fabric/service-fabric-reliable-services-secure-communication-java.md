@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1843720b9700e66af8ee84766cf7d63ac62e6283
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749912"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020813"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>Biztonságos szolgáltatás távoli eljáráshívási kommunikáció egy Java szolgáltatásban
 > [!div class="op_single_selector"]
@@ -55,7 +55,9 @@ Számítógépek biztonságossá tétele a service szolgáltatás távoli eljár
     ```
 2. Adja hozzá a figyelő beállításai és a hitelesítő adatokat.
 
-    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
+    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. Linux rendszeren futó szolgáltatásokhoz a tanúsítványt a PEM-formmatted fájlként; elérhetőnek kell lennie vagy egy `.pem` a tanúsítvány és titkos kulcsot tartalmazó fájlt, vagy egy `.crt` fájl, a tanúsítványt és egy `.key` a titkos kulcsot tartalmazó fájlt. További tudnivalókért lásd: [helyét és a Linux csomópontján X.509-tanúsítvány formátuma](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes).
+    
+    Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
 
    1. Adja meg azokat a egy [a konfigurációs csomag](service-fabric-application-and-service-manifests.md):
 

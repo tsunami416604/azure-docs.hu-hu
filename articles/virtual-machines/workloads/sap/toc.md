@@ -3,6 +3,7 @@
 ## [Tanúsítványok](sap-certifications.md)
 # SAP HANA az Azure-ban (nagyméretű példányok)
 ## [Áttekintés és architektúra](hana-overview-architecture.md)
+### [HLI – támogatott esetek](hana-supported-scenario.md)
 ## [Infrastruktúra és kapcsolódás](hana-overview-infrastructure-connectivity.md)
 ## [Az SAP HANA telepítése](hana-installation.md)
 ## [Magas rendelkezésre állás és vészhelyreállítás](hana-overview-high-availability-disaster-recovery.md)

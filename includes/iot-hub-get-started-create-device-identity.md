@@ -6,7 +6,7 @@ Ebben a szakaszban egy Node.js nevű eszközt használhat [IOT hubbal-explorer] 
 
     `npm install -g iothub-explorer@latest`
 
-1. Ezután futtassa a következő parancsot a központnak a bejelentkezéshez. Helyettesítő `{iot hub connection string}` és az IoT-központ korábban kimásolt kapcsolati karakterláncot:
+1. Ezután futtassa a következő parancs futtatásával jelentkezzen be a központ. Helyettesítő `{iot hub connection string}` és az IoT-központ korábban kimásolt kapcsolati karakterláncot:
 
     `iothub-explorer login "{iot hub connection string}"`
 

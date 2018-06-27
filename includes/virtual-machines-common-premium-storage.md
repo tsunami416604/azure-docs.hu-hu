@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: ramankumarlive
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: ramankum
+ms.custom: include file
+ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806383"
+---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Prémium szintű Storage nagy teljesítményű és a virtuális gépek felügyelt lemezek
 Prémium szintű Storage nagy teljesítményű, alacsony késésű támogatása a virtuális gépek (VM) továbbítja a bemeneti/kimeneti (I/O)-igényes munkaterhelések. Prémium szintű Storage használó Virtuálisgép-lemezek SSD-meghajtót (SSD) adatait tárolják. Hogy kihasználják a sebesség és a prémium szintű storage lemezek teljesítményét, prémium szintű Storage áttelepítheti a meglévő virtuális gépek lemezei.
 
@@ -61,7 +78,7 @@ Az alábbiakban néhány, a prémium szintű Storage szolgáltatásait:
 
 ## <a name="supported-vms"></a>Támogatott virtuális gépek
 
-Prémium szintű Storage támogatja a B sorozatnak, DS-méretek, DSv2-méretek, DSv3-sorozat, GS sorozatnak, Ls-sorozat, M-sorozat és Fs sorozatú virtuális gépeket. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
+Prémium szintű Storage támogatja a B sorozatnak, DS-méretek, DSv2-méretek, DSv3-sorozat, Esv3-sorozat, GS-méretek, Ls-sorozat, M-sorozat és Fs sorozatú virtuális gépeket. Az ilyen méretű standard és prémium szintű storage lemezek is használhatók. Nem használhat a prémium szintű storage lemezekhez Virtuálisgép-sorozat, amelyek nem prémium szintű Storage-kompatibilis.
 
 
 További információt az Azure windowsos virtuálisgép-típusairól és -méreteiről a [windowsos virtuális gépek méretét](../articles/virtual-machines/windows/sizes.md) ismertető szakaszban talál. További információt az Azure linuxos virtuálisgép-típusairól és -méreteiről a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md) ismertető szakaszban talál.
@@ -218,7 +235,7 @@ A prémium szintű storage-fiók ellen lapblobokat REST műveleteinek kapcsolato
 
 ### <a name="managed-disks"></a>Felügyelt lemezek
 
-A felügyelt lemezes pillanatképet a felügyelt lemezes csak olvasható másolatát. A pillanatkép egy standard szintű felügyelt lemezes tárolja. Jelenleg [növekményes pillanatképek](../articles/virtual-machines/windows/incremental-snapshots.md) felügyelt lemezek használata nem támogatott. A felügyelt lemezként pillanatképének elkészítéséhez, lásd: [egy Azure kezelt állapotúként tárolt virtuális merevlemez másolatának létrehozása lemez által felügyelt pillanatképek használata a Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) vagy [egy Azure kezelt állapotúként tárolt virtuális merevlemez másolatának létrehozása lemez használatával felügyelt pillanatfelvételek Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
+A felügyelt lemezes pillanatképet a felügyelt lemezes csak olvasható másolatát. A pillanatkép egy standard szintű felügyelt lemezes tárolja. Jelenleg [növekményes pillanatképek](../articles/virtual-machines/windows/incremental-snapshots.md) felügyelt lemezek használata nem támogatott. A felügyelt lemezként pillanatképének elkészítéséhez, lásd: [egy Azure kezelt állapotúként tárolt virtuális merevlemez másolatának létrehozása lemez által felügyelt pillanatképek használata a Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) vagy [egy Azure kezelt állapotúként tárolt virtuális merevlemez másolatának létrehozása lemez felügyelt használatával a Linux pillanatképek](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md).
 
 Ha egy felügyelt lemezt egy virtuális Géphez van csatolva, a lemezen lévő egyes API műveletek nem engedélyezettek. Például egy közös hozzáférésű jogosultságkód (SAS), a másolási műveletek végrehajtásához, amíg a lemez csatolva van egy virtuális gép nem hozható létre. Ehelyett először hozzon létre egy pillanatképet a lemezen, és végezze el a pillanatkép példányát. Alternatív megoldásként válassza le a lemezt, és előállít egy SAS-t, a másolási művelet végrehajtására.
 

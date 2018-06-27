@@ -39,7 +39,7 @@ Ez a lépés StorSimple felületet a jogosult StorSimple eszközön a Windows Po
 Ha az eszköz soros konzoljához való csatlakozáshoz a Windows PowerShell-felületet használnak, a következő lépésekkel.
 
 #### <a name="to-initiate-the-service-data-encryption-key-change"></a>A szolgáltatás titkosítási kulcs változását kezdeményezése
-1. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
+1. Válassza ki az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**.
 2. A parancssorba írja be:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
@@ -60,7 +60,7 @@ A Windows PowerShell-felületet a StorSimple eszköz ezeket a lépéseket kell v
 Frissítéséhez hajtsa végre a következő lépéseket a szolgáltatásadat-titkosítási az eszközön.
 
 #### <a name="to-update-the-service-data-encryption-key"></a>A szolgáltatásadat-titkosítási kulcs frissítése
-1. Használja a Windows PowerShell-lel a konzolhoz való csatlakozáshoz. A beállításnak 1 teljes hozzáféréssel rendelkező bejelentkezni.
+1. Használja a Windows PowerShell-lel a konzolhoz való csatlakozáshoz. Válassza ki az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**.
 2. A parancssorba írja be:
    
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`

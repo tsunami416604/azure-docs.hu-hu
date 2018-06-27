@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e9e98a0c9f1db805d62cdee038fb4754ff047e2
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194403"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960440"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gép soros konzolon (előzetes verzió) 
 
@@ -33,6 +33,7 @@ A virtuális gép soros konzol az Azure-on Linux és a Windows virtuális gépek
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
+* Az erőforrás-kezelés üzembehelyezési modellt kell használnia. Klasszikus üzembe helyezés nem támogatottak. 
 * A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve 
 * A soros konzol használata a fióknak rendelkeznie kell [közreműködői szerepkör](../../role-based-access-control/built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók. 
 

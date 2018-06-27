@@ -428,6 +428,8 @@
               href: service-fabric-securing-containers.md
             - name: Csoportosan felügyelt szolgáltatásfiók beállítása Windows-tárolókhoz
               href: service-fabric-setup-gmsa-for-windows-containers.md
+            - name: Tanúsítványok konfigurálása Linuxon
+              href: service-fabric-configure-certificates-linux.md
         - name: Rendszeres biztonsági mentések konfigurálása (Fürtök az Azure-on)
           href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
         - name: Rendszeres biztonsági mentések konfigurálása (Önálló fürtök)

@@ -239,7 +239,7 @@ Fontos, a lemezek megfelelő halmazát gyorsítótárának engedélyezése. E ke
 | **Lemeztípus** | **Alapértelmezett gyorsítótár beállítás** |
 | --- | --- |
 | Operációsrendszer-lemez |ReadWrite |
-| Adatlemez |None |
+| Adatlemez |ReadOnly |
 
 Az alábbiakban az adatlemezek, ajánlott lemez-gyorsítótárának beállításait
 
@@ -249,7 +249,7 @@ Az alábbiakban az adatlemezek, ajánlott lemez-gyorsítótárának beállítás
 | ReadOnly |Gazdagép-gyorsítótár beállítása csak olvasható a csak olvasható és írható-olvasható. |
 | ReadWrite |Gazdagép-gyorsítótár beállítása ReadWrite csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írása állandó lemezekre, amikor szükséges. |
 
-*csak olvasható*  
+*Csak olvasható*  
 Csak olvasható, a prémium szintű Storage-adatok gyorsítótárazása lemezek konfigurálásával olvasási kis késleltetésű eléréséhez, és nagyon magas IOPS olvasási és az átvitel lekérése az alkalmazáshoz. Ez a két okok miatt
 
 1. Olvasási gyorsítótár, amely a Virtuálisgép-memória és a helyi SSD végre, és sokkal gyorsabb, mint az olvasások az adatlemezt, amely az Azure blob storage-ból.  

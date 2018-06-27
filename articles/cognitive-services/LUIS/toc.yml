@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Tudnivalók a hangfelismerésről
+    - name: Mi az a hangfelismerés?
       href: Home.md
     - name: Támogatott nyelvek
       href: luis-supported-languages.md
@@ -25,10 +25,10 @@
           href: luis-quickstart-primary-and-secondary-data.md
         - name: Hierarchikus entitás
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: Listaentitás
-          href: luis-quickstart-intent-and-list-entity.md
         - name: Reguláriskifejezés-entitás
           href: luis-quickstart-intents-regex-entity.md
+        - name: Listaentitás
+          href: luis-quickstart-intent-and-list-entity.md
         - name: KeyPhrase entitás
           href: luis-quickstart-intent-and-key-phrase.md
         - name: Hangulatelemzés
@@ -238,7 +238,33 @@
     - name: Határok
       href: luis-boundaries.md
     - name: Előre összeállított entitáshivatkozás
-      href: luis-reference-prebuilt-entities.md
+      items:
+        - name: Entitások kultúránként
+          href: luis-reference-prebuilt-entities.md
+        - name: Kor entitás
+          href: luis-reference-prebuilt-age.md
+        - name: Pénznem entitás
+          href: luis-reference-prebuilt-currency.md
+        - name: DatetimeV2 entitás
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: Dimenzió entitás
+          href: luis-reference-prebuilt-dimension.md
+        - name: Elavult entitások
+          href: luis-reference-prebuilt-deprecated.md
+        - name: E-mail entitás
+          href: luis-reference-prebuilt-email.md
+        - name: Szám entitás
+          href: luis-reference-prebuilt-number.md
+        - name: Sorszám entitás
+          href: luis-reference-prebuilt-ordinal.md
+        - name: Százalék entitás
+          href: luis-reference-prebuilt-percentage.md
+        - name: Telefonszám entitás
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: Hőmérséklet entitás
+          href: luis-reference-prebuilt-temperature.md
+        - name: URL-cím entitás
+          href: luis-reference-prebuilt-url.md
     - name: Előre összeállított tartományhivatkozás
       href: luis-reference-prebuilt-domains.md
     - name: Előre összeállított Cortana-alkalmazáshivatkozás

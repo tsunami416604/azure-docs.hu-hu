@@ -2,7 +2,7 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a Beszédszolgáltatás?
+    - name: Mi az a beszédszolgáltatás?
       href: overview.md
       expanded: true
 - name: Gyors útmutatók
@@ -12,31 +12,33 @@
     - name: 'Beszéd felismerése C# nyelven'
       href: quickstart-csharp-windows.md
     - name: Beszéd felismerése Windows C++ nyelven
-      href: cpp-windows.md
+      href: quickstart-cpp-windows.md
     - name: Beszéd felismerése Linux C++ nyelven
-      href: cpp-linux.md
+      href: quickstart-cpp-linux.md
     - name: A Beszédeszközök SDK használatának első lépései
       href: speech-devices-sdk-qsg.md
-- name: Útmutatók
+- name: Testreszabás
   items:
-    - name: Beszéd felismerése
-      href: how-to-speech-to-text.md
     - name: Beszédmodellek testreszabása
       href: how-to-customize-speech-models.md
-    - name: Beszédszintézis
-      href: how-to-text-to-speech.md
     - name: Hangtípusok testreszabása
       href: how-to-customize-voice-font.md
-    - name: Beszéd fordítása
-      href: how-to-translate-speech.md
     - name: Átiratok előkészítése
       href: prepare-transcription.md
     - name: Egyéni audiostreamek használata
       href: how-to-use-audio-input-streams.md
+    - name: Eszközébresztő kifejezés testreszabása (eszközoldali SDK)
+      href: speech-devices-sdk-create-kws.md
+- name: Útmutatók
+  items:
+    - name: Beszéd felismerése
+      href: how-to-speech-to-text.md
+    - name: Beszédszintézis
+      href: how-to-text-to-speech.md
+    - name: Beszéd fordítása
+      href: how-to-translate-speech.md
     - name: Beszédeszközök SDK letöltése
       href: get-speech-devices-sdk.md
-    - name: Eszközébresztő kifejezés testreszabása
-      href: speech-devices-sdk-create-kws.md
     - name: Kötegelt átírás (telefonos ügyfélszolgálatok)
       href: batch-transcription.md
 - name: Példák
@@ -73,8 +75,14 @@
       href: speech-synthesis-markup.md
 - name: További források
   items:
-    - name: Diktálás – gyakori kérdések
-      href: faq-stt.md
+    - name: GYIK
+      items:
+        - name: Diktálás – gyakori kérdések
+          href: faq-stt.md
+        - name: Szövegfelolvasás – GYIK
+          href: faq-text-to-speech.md
+        - name: Fordító – GYIK
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

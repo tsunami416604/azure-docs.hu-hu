@@ -3,7 +3,7 @@ documentType: LandingData
 title: Beszédszolgáltatás dokumentációja (előzetes verzió)
 metadata:
   title: A Beszédszolgáltatás dokumentációja – Oktatóanyagok, rövid útmutatók, API-referencia – Cognitive Services | Microsoft Docs
-  meta.description: Speech SDK provides developers an easy way to create powerful speech-enabled features in their applications, such as voice command control and dialog, using natural speech conversation, speech transcription and dictation, and speech translation.
+  meta.description: The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications, such as voice command control and dialog, natural speech conversation, speech transcription and dictation, and speech translation.
   services: cognitive-services
   author: noellelacharite
   manager: nolachar
@@ -15,19 +15,19 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/01/2018
   ms.author: nolachar
-  ms.openlocfilehash: ae9c5a62dd4f1b83f4d1317b54e5766b80d14245
-  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+  ms.openlocfilehash: 98e254d3a993c5d02091be9535eb685ecd987a09
+  ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/11/2018
-  ms.locfileid: "35357496"
+  ms.lasthandoff: 06/25/2018
+  ms.locfileid: "36937856"
 abstract:
-  description: A Microsoft Beszédszolgáltatással és SDK-val a fejlesztők egyszerűen hozhatnak létre hatékony beszédalapú szolgáltatásokat az alkalmazásokban, például hangparancsalapú vezérlést, átírást és diktálást. A Cortana, a Microsoft Office és más szolgáltatások ugyanazt a technológiát használják. A Microsoft Beszédszolgáltatás fő ismérve, hogy a <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">diktálás</a> hangtani és nyelvi modelljei testreszabhatók a specializált szókészlet, a zajos környezet és a különböző beszédmódok kezelésének elősegítése érdekében. Testreszabott <a href="http://aka.ms/customvoice">diktálás</a> és <a href="http://aka.ms/customtranslator">tolmácsolás</a> is elérhető.<br/><br/>A Beszéd SDK több platformon és számos programozási nyelven is elérhető, így az alkalmazás igényeitől függően gondoskodhat az élő mikrofonkezelésről, a valós idejű streamelésről vagy a kötegelt fájlkommunikációról.
+  description: 'A Microsoft Beszédszolgáltatással a fejlesztők egyszerűen hozhatnak létre hatékony beszédalapú szolgáltatásokat az alkalmazásokban, például hangparancsalapú vezérlést, átírást, diktálást és fordítást egy <a href="rest-apis">REST API</a> vagy <a href="speech-sdk">C#, C++ vagy Java SDK</a> segítségével.<p>A Microsoft Beszédszolgáltatás lehetővé teszi a <a href="how-to-customize-speech-models">diktálási</a> modellek testreszabását a specializált szókészlet, a zajos környezet és a különböző beszédmódok kezelésének elősegítése érdekében. Emellett egyéni <a href="https://cris.ai/Home/customvoice">szövegfelolvasás</a> és <a href="https://www.microsoft.com/translator/customization.aspx">beszédfordítás</a> érhető el.<p>További részletekért lásd: <a href="overview">Mi az a beszédszolgáltatás?</a>'
 sections:
-- title: 10 perces rövid útmutatók – Új SDK-k
+- title: 10 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'A rövid útmutatókból megismerheti a Beszéd SDK telepítésének és használatának módját:'
+    text: 'A rövid útmutatókból megismerheti a Beszéd SDK telepítésének és használata megkezdésének módját:'
   - type: table
     style: dataMatrix
     columns:
@@ -41,12 +41,12 @@ sections:
     - title: Windows
       values:
       - href: quickstart-csharp-windows
-      - href: cpp-windows
+      - href: quickstart-cpp-windows
       - href: 
     - title: Linux
       values:
       - href: 
-      - href: cpp-linux
+      - href: quickstart-cpp-linux
       - href: 
     - title: Eszközök SDK (Android)
       values:
@@ -62,128 +62,10 @@ sections:
     - title: Példák
       html: <ul><li><a href="speech-to-text-sample.md">Beszédfelismerés</a></li><li><a href="intent.md">Szándékfelismerés</a></li><li><a href="translation.md">Fordítás</a></li></ul>
     - title: API-hivatkozás
-      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API</a></li><li><a href="https://aka.ms/csspeech/cppref">C++ API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API (Eszközök SDK)</a></li></ul>
-- title: Diktálás
-  items:
-  - type: paragraph
-    text: A Beszéd SDK támogatja a <b>diktálást</b> (SST) és a beszédfelismerést.  A Beszéd SDK az audiostreameket szöveggé alakítja, amelyet az alkalmazás elfogad bemenetként. Az alkalmazás ezután például beírhatja a szöveget egy dokumentumba vagy parancsként alkalmazhatja.
-  - type: paragraph
-    text: 'Az alábbiak a beszéd Beszéd SDK-val történő <b>diktálásának</b> gyakori használati helyzetei:'
-  - type: list
-    style: unordered
-    items:
-    - text: Rövid hangzó szöveg, például parancs felismerése, köztes eredmények nélkül.
-    - text: Hosszú, előre rögzített hangzó szöveg, például hangpostaüzenet átírása.
-    - text: Streamelt beszéd valós idejű átírása, részleges eredményekkel, a diktáláshoz.
-    - text: Felhasználók szándékának megállapítása természetes, beszélt nyelvi kérés alapján.
-  - type: paragraph
-    text: A Beszéd SDK támogatja az interaktív beszédátírást valós idejű, folyamatos <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">diktálással</a> és köztes eredményekkel. Szintén támogatja a beszéd végének észlelését, választható lehetőségként a kis- és nagybetűk közötti automatikus váltást és központozást, a profanitás kitakarását és a szövegnormalizálást.
-  - type: paragraph
-    text: A Microsoft Beszédszolgáltatás fő ismérve, hogy a <a href="http://aka.ms/customspeech">diktálás</a> hangtani és nyelvi modelljei testreszabhatók a specializált szókészlet, a zajos környezet és a különböző beszédmódok kezelésének elősegítése érdekében.
-- title: Tolmácsolás
-  items:
-  - type: paragraph
-    text: A Beszéd SDK <a href="https://azure.microsoft.com/services/cognitive-services/speech-translation">Tolmácsolásra</a> is használható.  A <b>Tolmácsolás</b> Beszéd SDK-val történő streamelésével a szolgáltatás köztes eredményeket ad vissza, amelyek megjeleníthetők a felhasználó számára, a fordítási folyamatot jelezve. Az eredmények szövegként vagy hangként is visszaadhatók.
-  - type: paragraph
-    text: 'A <b>Tolmácsolás</b> Beszéd SDK-val történő gyakori használati helyzetei például a következők:'
-  - type: list
-    style: unordered
-    items:
-    - text: Párbeszédet fordító mobilalkalmazás vagy eszköz megvalósítása utazók számára.
-    - text: Automatikus fordítás feliratozáshoz hang- és videofelvételekhez.
-  - type: paragraph
-    text: A <b>tolmácsolási</b> modellek <a href="http://aka.ms/customtranslator">testre is szabhatók</a>.
-- title: Szövegfelolvasás
-  items:
-  - type: paragraph
-    text: A <a href="https://azure.microsoft.com/services/cognitive-services/text-to-speech">Szövegfelolvasás</a> (TTS), vagy más néven a beszédszintézis támogatása jelenleg egy REST API-n keresztül történik, amely az egyszerű szöveget természetesnek hangzó beszéddé alakítja, és egy hangfájlban továbbítja az alkalmazásnak. Több, különböző nemű vagy akcentussal rendelkező hang érhető el számos nyelvhez.
-  - type: paragraph
-    text: A Beszéd SDK hozzáférést biztosít a Diktálás és a Tolmácsolás funkciókhoz is. A Szövegfelolvasás REST POST-hívásokat alkalmaz HTTP-n keresztül.
-  - type: paragraph
-    text: A <b>Text-to-Speech</b> REST API támogatja a <b>Beszédszintézis-jelölőnyelv</b> (SSML-) címkéket, így a problémás szavaknál megadhatja a pontos fonetikus kiejtést. Az SSML emellett a beszéd jellemzőit (beleértve a hangsúlyt, a sebességet, a hangerőt, a beszélő nemét és a hangmagasságot) közvetlenül a szövegben is képes jelölni.
-  - type: paragraph
-    text: Ha egy nem támogatott dialektust vagy egy egyedi hangot szeretne használni az alkalmazásában, létrehozhat egy <a href="http://aka.ms/customvoice">egyéni hangtípust</a> a saját beszédmintáiból.
-  - type: paragraph
-    text: 'A <b>Text-to-Speech</b> REST API gyakori alkalmazási helyzetei a következők:'
-  - type: list
-    style: unordered
-    items:
-    - text: Beszédkimenet a képernyőkimenet alternatívájaként a látássérült felhasználók számára.
-    - text: Hangutasítások az autós alkalmazásokhoz, például a navigáció esetében.
-    - text: Beszélgetésre szánt felhasználói felületek, a <b>Speech-to-Text</b> API-val együtt használva.
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C# API</a></li><li><a href="https://aka.ms/csspeech/cppref">C++ API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java API (Beszédeszközök SDK)</a></li></ul>
 - title: Beszédeszközök SDK
   items:
   - type: paragraph
     text: 'Az egyesített beszédszolgáltatás bevezetésével a Microsoft és a partnerei most egy integrált hardver- és szoftverplatformot kínálnak, amely a beszéd-kompatibilis eszközök fejlesztésére van optimalizálva: ez a <b>Beszédeszközök SDK</b>. Ez az SDK alkalmas intelligens beszédeszközök fejlesztésére az összes alkalmazástípushoz.'
   - type: paragraph
     text: A <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">Beszédeszközök SDK</a> lehetővé teszi, hogy saját környezeti eszközöket hozzon létre egyéni, csak a saját márkájára jellemző ébresztő szóval, amely aktiválja a hangrögzítést. Az SDK továbbá kiváló audiofeldolgozást is biztosít többcsatornás forrásokból a pontosabb beszédfelismerés érdekében, amely magában foglalja például a zajszűrést, a távoli hangot és a nyalábformálást.
-- title: Régebbi SDK-k
-  items:
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/uwp.jpg
-    - image:
-        src: media/index/logo_java.jpg
-    - image:
-        src: media/index/logo_objc.jpg
-    - image:
-        src: media/index/logo_js.svg
-    - image:
-        src: media/index/logo_rest_sr.svg
-    - image:
-        src: media/index/logo_rest_tts.svg
-    rows:
-    - title: Windows
-      values:
-      - href: https://docs.microsoft.com/windows/uwp/design/input/speech-recognition
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: Android
-      values:
-      - href: 
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjavaandroid
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: iOS
-      values:
-      - href: 
-      - href: 
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/get-started-objectivec-ios
-      - href: 
-      - href: 
-      - href: 
-    - title: Web
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjswebsockets
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest?tabs=Powershell
-      - href: https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput
-- title: Megfontolás alatt álló SDK-k
-  items:
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_swift.jpg
-    - image:
-        src: media/index/logo_gopher.svg
-    - image:
-        src: media/index/c.jpg
-    rows:
-    - title: SDK
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 

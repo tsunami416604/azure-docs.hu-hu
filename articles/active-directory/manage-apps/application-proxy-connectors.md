@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 74e6428cf0536a7c8016be6cdf29071128bf4a3b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293007"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025831"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy összekötők ismertetése
 
@@ -92,7 +92,6 @@ A bérlők számára a több összekötők az automatikus frissítések célkén
 
 Kimenő tűzfalszabályok konfigurálásával kapcsolatos további információkért lásd: [együttműködnek a meglévő helyszíni proxykiszolgálókat](application-proxy-configure-connectors-with-proxy-servers.md).
 
-Használja a [az Azure AD Application Proxy Connector portok teszt eszközét](https://aadap-portcheck.connectorporttest.msappproxy.net/) ellenőrzése, hogy az összekötő el lehet-e érni az alkalmazásproxy-szolgáltatás. Minimális győződjön meg arról, hogy a központi US régió és az Önhöz legközelebbi régiót összes zöld jelölők. Túl további zöld jelölők azt jelenti, hogy nagyobb rugalmasság. 
 
 ## <a name="performance-and-scalability"></a>Teljesítmény és méretezhetőség
 
@@ -104,7 +103,7 @@ Az összekötők teljesítménye CPU és a hálózat van kötve. Processzortelje
 
 Ezzel szemben memória beállítás értéke kisebb a csatlakozók kapcsolatos problémát. Az online szolgáltatás gondoskodik a feldolgozás jelentős részét, és az összes nem hitelesített forgalom. Minden, a felhőben végezheti el a felhőben történik. 
 
-A terheléselosztás egy adott összekötő csoport összekötők közötti történik. A ciklikus multiplexelés meghatározni, mely a csoport összekötő szolgál egy adott kérés változata végezzük. Kiválasztása után a az összekötőt, azt, hogy felhasználói és a munkamenet időtartama alatt az alkalmazás között egy munkamenet affinitás karbantartása. Ha bármilyen okból, hogy az összekötő vagy a gép elérhetetlenné válik, a forgalom elindul a csoport egy másik összekötő címen. Ez rugalmasságot miért javasoljuk, hogy több összekötő is.
+A terheléselosztás egy adott összekötő csoport összekötők közötti történik. A ciklikus multiplexelés meghatározni, mely a csoport összekötő szolgál egy adott kérés változata végezzük. Ha bármilyen okból, hogy az összekötő vagy a számítógép nem érhető el, a forgalom elindul a csoport egy másik összekötő címen. Ez rugalmasságot miért javasoljuk, hogy több összekötő is.
 
 Teljesítményét befolyásoló másik tényező az összekötők, beleértve a közötti hálózati minőségének: 
 

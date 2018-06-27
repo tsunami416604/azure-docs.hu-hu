@@ -250,7 +250,7 @@
 #### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](manage-apps/certificate-signing-options.md)
 #### [Alkalmazás elrejtése a felhasználói felületen](manage-apps/hide-application-from-user-portal.md)
 ### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](manage-apps/configure-authentication-for-federated-users-portal.md)
-### [AD FS-alkalmazások migrálása az Azure AD-be](migrate-adfs-apps-to-azure.md) 
+### [AD FS-alkalmazások migrálása az Azure AD-be](manage-apps/migrate-adfs-apps-to-azure.md) 
 ### [Alkalmazások hozzáférésének kezelése](manage-apps/what-is-access-management.md)
 #### [Egyszeri bejelentkezéses hozzáférés](manage-apps/what-is-single-sign-on.md)
 #### [Egyszeri bejelentkezés tanúsítványai](manage-apps/manage-certificates-for-federated-single-sign-on.md)
@@ -386,13 +386,10 @@
 
 ## Erőforrások hozzáférésének delegálása
 ### [Rendszergazdai szerepkörök](active-directory-assign-admin-roles-azure-portal.md)
-#### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](fundamentals/active-directory-users-assign-role-azure-portal.md) 
-#### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](fundamentals/users-default-permissions.md) 
-### [Emelt szintű hozzáférés biztonsága](admin-roles-best-practices.md)  
-### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](active-directory-admin-manage-emergency-access-accounts.md) 
-
-
-#### [Alapértelmezett felhasználói engedélyek](fundamentals/users-default-permissions.md)
+#### [Rendszergazdai szerepkör hozzárendelése felhasználóhoz](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [A tagok és vendégfelhasználók engedélyeinek összehasonlítása](fundamentals/users-default-permissions.md)
+### [Rendszergazdai szerepkörök védelme](admin-roles-best-practices.md)  
+#### [Vészhelyzeti hozzáférésére szolgáló rendszergazdai fiókok létrehozása](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Felügyeleti egységek](active-directory-administrative-units-management.md)
 ### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
 ### [Kiemelt szerepkörök védelme](admin-roles-best-practices.md)

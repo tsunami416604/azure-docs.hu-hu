@@ -49,8 +49,8 @@
       href: functions-openapi-definition.md
     - name: Rendszerképek átméretezése az Event Grid használatával
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Kiszolgáló nélküli webalkalmazás létrehozása a Functions API-ként való használatával
-      href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
+    - name: Kiszolgáló nélküli webalkalmazás létrehozása
+      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
     - name: A Functions Linux rendszeren
       items:
         - name: Egyéni rendszerkép

@@ -1,23 +1,20 @@
 ---
 title: Ismerkedés az Azure IoT Hub eszköz twins (Java) |} Microsoft Docs
 description: Hogyan használható az Azure IoT Hub eszköz twins címkéket, majd az IoT Hub-lekérdezést. Az Azure IoT-eszközök SDK Java segítségével valósítja meg az eszköz alkalmazás és az Azure IoT szolgáltatás Java SDK egy szolgáltatás-alkalmazást, amely hozzáadja a címkéket és az IoT Hub-lekérdezés futtatása végrehajtásához.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 8611b55f6e4f33f8946d8c7c481163166d24049c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 96cad0fc7f387c5f0cb14996ae6ac015c104b81d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016699"
 ---
 # <a name="get-started-with-device-twins-java"></a>Ismerkedés az eszköz twins (Java)
 
@@ -26,7 +23,7 @@ ms.lasthandoff: 05/07/2018
 Ebben az oktatóanyagban létrehoz két Java-konzol alkalmazásokhoz:
 
 * **Adja hozzá címkék-lekérdezés**, a Java háttér-alkalmazást, amely címkét ad hozzá, és lekérdezi az eszköz twins.
-* **Szimulált eszköz**, egy Java eszköz-alkalmazást, amely kapcsolódik az IoT hub jelentést készít a kapcsolatát feltétel jelentett tulajdonság használatával.
+* **Szimulált eszköz**, a Java eszköz alkalmazást, amely csatlakozik az IoT hub és jelentések jelentett tulajdonsággal kapcsolat állapotát.
 
 > [!NOTE]
 > A cikk [Azure IoT SDK-k](iot-hub-devguide-sdks.md) használható eszközt és a háttér-alkalmazások az Azure IoT SDK-k információt nyújt.

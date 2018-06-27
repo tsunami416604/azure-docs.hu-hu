@@ -106,6 +106,8 @@
       items:
         - name: Azure PowerShell
           href: vpn-gateway-activeactive-rm-powershell.md
+    - name: Zónaredundáns virtuális hálózati átjáró létrehozása Azure rendelkezésre állási zónákban
+      href: create-zone-redundant-vnet-gateway.md
     - name: 'Útválasztás, BGP és virtuális hálózatok közötti társviszony'
       items:
         - name: BGP konfigurálása egy VPN-átjáró számára

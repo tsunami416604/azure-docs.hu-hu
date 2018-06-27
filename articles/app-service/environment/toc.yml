@@ -64,8 +64,6 @@
           href: app-service-app-service-environment-network-architecture-overview.md
         - name: Webalkalmazás létrehozása az ASEv1-ben
           href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: Nagy sűrűségű üzemeltetés
-          href: app-service-high-density-hosting.md
         - name: Csatlakozás háttéralkalmazáshoz
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: ExpressRoute konfigurálása

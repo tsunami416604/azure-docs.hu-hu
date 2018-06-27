@@ -74,9 +74,9 @@
       href: sql-database-powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Szolgáltatásszintek és erőforrások
+    - name: Vásárlási modellek és erőforrások
       items:
-        - name: Szolgáltatásszintek
+        - name: Vásárlási modellek
           href: sql-database-service-tiers.md
         - name: vCore-alapú modell
           href: sql-database-service-tiers-vcore.md
