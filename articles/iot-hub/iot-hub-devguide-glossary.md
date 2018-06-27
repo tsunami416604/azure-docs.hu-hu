@@ -1,24 +1,19 @@
 ---
 title: Az Azure IoT Hub szószedet |} Microsoft Docs
 description: Fejlesztői útmutató - Azure IoT Hub kapcsolatos gyakori kifejezések.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 69bc7d71e804ca33b984699ee30a44774542803f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960491"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT-központ szószedet
 Ez a cikk az általános kifejezés, amely az IoT-központ cikkeket mutatja be.
@@ -75,7 +70,7 @@ Az IoT-központ a csatlakoztatott eszközre küldött üzenetek hivatkozik. Gyak
 ## <a name="configuration"></a>Konfiguráció
 A környezetében [automatikus eszközkonfiguráció](iot-hub-auto-device-config.md), IoT-központ belül a konfigurációs meghatározza a kívánt konfigurációs az eszközök twins, és a jelentés állapotának és előrehaladtának metrikákat biztosít.
 
-## <a name="connection-string"></a>Kapcsolati karakterlánc
+## <a name="connection-string"></a>Kapcsolati sztring
 Segítségével kapcsolati karakterláncokat az alkalmazás kódjában foglalják magukban a végpont való kapcsolódáshoz szükséges adatokat. A kapcsolati karakterlánc többek között a végpont és a biztonsági adatokat, de a kapcsolati karakterlánc formátumok eltérő szolgáltatásban címét. A kapcsolati karakterlánc az IoT-központ szolgáltatáshoz tartozó két típusa van:
 - *Eszköz kapcsolati karakterláncok* eszközök csatlakoztatása az IoT-központ az eszköz felé néző végpontok engedélyezése.
 - *Az IoT-központ kapcsolati karakterláncok* háttér-alkalmazások csatlakozni a az IoT-központ szolgáltatás felé néző végpontok engedélyezése.
@@ -110,11 +105,8 @@ Eszközök állapotának adatai, a kapcsolat jelenleg használt módszer, péld�
 ## <a name="device-data"></a>Eszközadatok
 Az IoT Hub tárolt eszközönkénti adatokra hivatkozik eszközadatok [identitásjegyzékhez](#identity-registry). Akkor lehet importálni és exportálni ezeket az adatokat.
 
-## <a name="device-explorer"></a>Eszköz explorer
+## <a name="device-explorer"></a>Eszközkereső
 A [eszköz explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) olyan eszköz, amely a Windows rendszeren fut, és lehetővé teszi az eszközök kezelését a [identitásjegyzékhez](#identity-registry). Az eszköz is küldhet és fogadhat üzeneteket az eszközökön.
-
-## <a name="device-identities-rest-api"></a>Eszközidentitások REST API-ja
-A [eszköz identitások REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) lehetővé teszi a regisztrált eszközök kezelését a [identitásjegyzékhez](#identity-registry) egy REST API használatával. Általában kell használnia a magasabb szintű egyik [SDK szolgáltatás](#azure-iot-service-sdks) látható módon az IoT-központ oktatóanyagok.
 
 ## <a name="device-identity"></a>Eszközidentitás
 Az eszközidentitást minden regisztrált eszközhöz hozzárendelt egyedi azonosítója a [identitásjegyzékhez](#identity-registry).
@@ -128,8 +120,8 @@ Eszköz felügyelete magába foglalja a teljes életciklusát társított az IoT
 ## <a name="device-management-patterns"></a>Eszközfelügyeleti minták
 [Az IoT-központ](#iot-hub) lehetővé teszi, hogy a közös eszköz felügyeleti minták újraindul, hajt végre a gyári alaphelyzetbe állítást és az eszközök belső vezérlőprogram frissítések végrehajtásához.
 
-## <a name="device-messaging-rest-api"></a>Eszközök üzenetküldési REST API-ja
-Használhatja a [Device Messaging REST API-val](https://docs.microsoft.com/rest/api/iothub/httpruntime) az eszköz a felhőbe küldött üzeneteket küldhet egy IoT-központot, és az eszköz [felhő eszközre](#cloud-to-device) az IoT-központ üzeneteit. Általában kell használnia a magasabb szintű egyik [eszköz SDK-k](#azure-iot-device-sdks) látható módon az IoT-központ oktatóanyagok.
+## <a name="device-rest-api"></a>Eszköz REST API-n
+Használhatja a [eszköz REST API](https://docs.microsoft.com/rest/api/iothub/device/device) az eszköz a felhőbe küldött üzeneteket küldhet egy IoT-központot, és az eszköz [felhő eszközre](#cloud-to-device) az IoT-központ üzeneteit. Általában kell használnia a magasabb szintű egyik [eszköz SDK-k](#azure-iot-device-sdks) látható módon az IoT-központ oktatóanyagok.
 
 ## <a name="device-provisioning"></a>Eszköz kiépítése
 A kezdeti hozzáadása során a rendszer eszköz kiépítése [eszközadatok](#device-data) a megoldásban áruházak. Ahhoz, hogy egy új eszközt szeretne az elosztóhoz csatakoztatni, hozzá kell adnia egy Eszközazonosító és a kulcsok az IoT Hub [identitásjegyzékhez](#identity-registry). A telepítési folyamat részeként szükség lehet inicializálni az eszközre vonatkozó adatokat más megoldás tárolja.
@@ -141,10 +133,7 @@ A [eszköz iker](iot-hub-devguide-device-twins.md) JSON-dokumentum, amely péld�
 Eszköz iker hasonló, a modul a két, amely tárolja az állapotadatokat modul például metaadat, a konfiguráció és a feltételek JSON-dokumentum. Az IoT-központ továbbra is fennáll, a modul iker minden modul identitás, amely az IoT hub a kiépítése szerint egy eszközidentitás. A modul twins lehetővé teszik a modul feltételek és a konfigurációk a modul és a megoldás háttérrendszeréhez közötti szinkronizálása. Keresse meg a modulokról, és a hosszú ideig futó műveletek állapotának lekérdezése modul twins kérdezheti le.
 
 ## <a name="twin-queries"></a>A két lekérdezések
-[Eszköz- és modul iker lekérdezések](iot-hub-devguide-query-language.md) adatok lekérését az eszköz twins vagy modul twins az SQL-szerű IoT Hub lekérdezési nyelv segítségével. Az IoT-központ azonos lekérdezési nyelv használatával kapcsolatos információkat lekérni [feladatok](#job) az IoT hub futtatja.
-
-## <a name="device-twin-rest-api"></a>Eszköz iker REST API-n
-Használhatja a [eszköz iker REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) a megoldásban való háttér az eszköz twins kezeléséhez. Az API lehetővé teszi a lekérésére és frissítésére [eszköz iker](#device-twin) tulajdonságait, és meghívja [módszerek közvetlen](#direct-method). Általában kell használnia a magasabb szintű egyik [SDK szolgáltatás](#azure-iot-service-sdks) látható módon az IoT-központ oktatóanyagok.
+[Eszköz- és modul iker lekérdezések](iot-hub-devguide-query-language.md) adatok lekérését az eszköz twins vagy modul twins az SQL-szerű IoT Hub lekérdezési nyelv segítségével. Az IoT-központ azonos lekérdezési nyelv használatával kapcsolatos információkat lekérni [ ](#job) az IoT hub futtatja.
 
 ## <a name="twin-synchronization"></a>A két szinkronizálás
 A két szinkronizálás használja a [szükségeskonfiguráció-tulajdonságok](#desired-properties) eszköz twins vagy a modul twins, az eszközök vagy a modulok konfigurálása és lekérése [tulajdonságok jelentett](#reported-properties) ezekből a kettős tárolja.
@@ -185,22 +174,19 @@ IoT-központot egy teljes körűen felügyelt Azure szolgáltatás, amely lehet�
 [Az IoT-központ metrikák](iot-hub-metrics.md) biztosítanak az IoT-központok állapotára vonatkozó adatokat a [Azure-előfizetés](#subscription). Az IoT-központ metrikák lehetővé teszik a felmérheti a szolgáltatás és a hozzá csatlakozó eszközök általános állapotát. Az IoT-központ mérőszámok segítségével tekintse meg az IoT hubbal jelenít meg, és vizsgálja meg a problémák kiváltó okának anélkül, hogy az Azure ügyfélszolgálatához.
 
 ## <a name="iot-hub-query-language"></a>Az IoT-központ lekérdezési nyelv
-A [IoT-központ lekérdezési nyelv](iot-hub-devguide-query-language.md) olyan SQL-szerű nyelv, amely lehetővé teszi, hogy a lekérdezés a [feladatok](#job) és eszköz twins.
+A [IoT-központ lekérdezési nyelv](iot-hub-devguide-query-language.md) olyan SQL-szerű nyelv, amely lehetővé teszi, hogy a lekérdezés a [ ](#job) és eszköz twins.
 
-## <a name="iot-hub-resource-provider-rest-api"></a>Az IoT-központ erőforrás-szolgáltató REST API-n
-Használhatja a [IoT Hub erőforrás szolgáltató REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) az IoT-központok kezelheti a [Azure-előfizetés](#subscription) például létrehozása, frissítése és törlése hubok műveletet hajt végre.
+## <a name="iot-hub-resource-rest-api"></a>Az IoT-központ erőforrás REST API-n
+Használhatja a [IoT Hub erőforrás REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) az IoT-központok kezelheti a [Azure-előfizetés](#subscription) például létrehozása, frissítése és törlése hubok műveletet hajt végre.
 
-## <a name="iot-solution-accelerators"></a>Az IoT-megoldás gyorsítók
-Az Azure IoT-megoldás gyorsítók csomagolni egyszerre több Azure-szolgáltatások megoldások. Ezek a megoldások lehetővé teszik a használatának gyors megkezdése szabhatják IoT-végpontok közötti implementációja. További információkért lásd: [Azure IoT-megoldás gyorsítók Mik?](../iot-suite/iot-suite-overview.md)
+## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
+Az Azure IoT-megoldás gyorsítók csomagolni egyszerre több Azure-szolgáltatások megoldások. Ezek a megoldások lehetővé teszik a használatának gyors megkezdése szabhatják IoT-végpontok közötti implementációja. További információkért lásd: [Azure IoT-megoldás gyorsítók Mik?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Az IoT-bővítmény az Azure CLI 2.0
 [Az IoT-bővítmény az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) platformfüggetlen, a parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését a [identitásjegyzékhez](#identity-registry), küldése és üzenetek és fájlok fogadása az eszközök és az IoT hub operatív figyeléséhez.
 
 ## <a name="job"></a>Feladat
-A megoldás háttérrendszeréhez használható [feladatok](iot-hub-devguide-jobs.md) ütemezéséhez és az eszközök regisztrálva az IoT hub tevékenységek követését. Tevékenységei közé tartoznak a két eszköz frissítése [szükséges tulajdonságok](#desired-properties), frissítési eszköz iker [címkék](#tags), és hívja [módszerek közvetlen](#direct-method). [Az IoT-központ](#iot-hub) is használja a feladatok [történő importálására és exportálására](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) a a [identitásjegyzékhez](#identity-registry).
-
-## <a name="jobs-rest-api"></a>Feladatok REST API-n
-A [feladatok REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) kezelését teszi [feladatok](#job) az IoT hub futtatja.
+A megoldás háttérrendszeréhez használható [feladatok](iot-hub-devguide-jobs.md) ütemezéséhez és az eszközök regisztrálva az IoT hub tevékenységek követését. Tevékenységei közé tartoznak a két eszköz frissítése [szükséges tulajdonságok](#desired-properties), frissítési eszköz iker [címkék](#tags), és hívja [módszerek közvetlen](#direct-method). [Az IoT-központ](#iot-hub) is használ az [történő importálására és exportálására](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) a a [identitásjegyzékhez](#identity-registry).
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) az egyik az üzenetkezelési protokollok, amelyek [IoT-központ](#iot-hub) eszközökkel való kommunikáció támogatja. Amely támogatja az IoT-központ az üzenetküldési protokollokkal kapcsolatos további információkért lásd: [üzeneteket küldjön és fogadjon IoT hubbal](iot-hub-devguide-messaging.md).
@@ -238,10 +224,13 @@ Konfigurálja [útválasztási szabályok](iot-hub-devguide-messages-read-custom
 ## <a name="sasl-plain"></a>SASL EGYSZERŰ
 SASL egyszerű egy olyan protokoll, amely a [AMQP](#advanced-message-queue-protocol) protokollt használ a biztonsági jogkivonatokat átviteléhez.
 
-## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkódot
+## <a name="service-rest-api"></a>Szolgáltatás REST API-ja
+Használhatja a [szolgáltatás REST API](https://docs.microsoft.com/rest/api/iothub/service/service) a megoldásban való háttér eszközei kezeléséhez. Az API lehetővé teszi a lekérésére és frissítésére [eszköz iker](#device-twin) tulajdonságok meghívása [módszerek közvetlen](#direct-method), és az ütemezések [feladatok](#job). Általában kell használnia a magasabb szintű egyik [SDK szolgáltatás](#azure-iot-service-sdks) látható módon az IoT-központ oktatóanyagok.
+
+## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 Megosztott hozzáférési aláírásokkal (SAS) olyan hitelesítési mechanizmus biztonságos SHA-256 kivonatokkal vagy URI-k alapján. SAS hitelesítési két részből áll: egy _megosztott elérési házirendet_ és egy _közös hozzáférésű Jogosultságkód_ (gyakran nevezik jogkivonat). Egy eszköz SAS használatával hitelesítik magukat az IoT-központ. [Háttér-alkalmazások](#back-end-app) SAS segítségével a szolgáltatás felé néző végpontok az IoT-központ a hitelesítést. Általában a SAS-jogkivonat közé tartozik a [kapcsolati karakterlánc](#connection-string) , hogy egy alkalmazás használ egy IoT-központot egy kapcsolatot létesíteni.
 
-## <a name="shared-access-policy"></a>Megosztott elérési házirendet
+## <a name="shared-access-policy"></a>Megosztott elérési házirend
 A megosztott elérési házirend meghatározása az engedélyeket, bárki, aki rendelkezik érvényes [elsődleges vagy másodlagos kulcsot](#primary-and-secondary-keys) házirendhez társított. A központ a kezelheti a megosztott elérési házirendek és kulcsok a [portal](#azure-portal).
 
 ## <a name="simulated-device"></a>Szimulált eszköz

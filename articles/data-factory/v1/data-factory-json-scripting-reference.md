@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d5d085e24efb7008e8275ec51afe00ba18ca9ba0
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 32d1504571c16f4aa5ea07bab32820ba10b79d60
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753557"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019464"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -1945,7 +1945,7 @@ Az Oracle meghatározásához társított szolgáltatás, állítsa be a **típu
 | --- | --- | --- |
 | driverType | Adja meg, melyik illesztőprogram használatával másolja az adatokat, vagy Oracle-adatbázishoz. Két érték engedélyezett **Microsoft** vagy **ODP** (alapértelmezett). Lásd: [verziójától és a telepítés támogatott](#supported-versions-and-installation) illesztőprogram adatai szakaszban. | Nem |
 | connectionString | Adja meg az Oracle adatbázispéldányt a connectionString tulajdonság való kapcsolódáshoz szükséges adatokat. | Igen |
-| gatewayName | Azon átjáró neve, amely a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt |Igen |
+| gatewayName | A helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt átjáró neve |Igen |
 
 #### <a name="example"></a>Példa
 ```json

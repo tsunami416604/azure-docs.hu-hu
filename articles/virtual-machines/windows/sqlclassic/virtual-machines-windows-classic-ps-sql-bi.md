@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c8204e204978a9fd7cda2e9c02be0c70722b01bb
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425612"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021360"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Az SQL Server Business Intelligence használata Azure-beli virtuális gépeken
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ SQL Server a Microsoft Azure virtuális gépek licencre két módja van:
 1. Licenc mobilitási előnyeit, amelyek részei Software Assurance. További információkért lásd: [Azure frissítési garancián keresztüli Licenchordozhatósági](https://azure.microsoft.com/pricing/license-mobility/).
 2. Az Azure virtuális gépek, a telepített SQL Server feldolgozási sebessége nagy. A "SQL Server" című [Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
 
-A licencelési és a jelenlegi díjszabás további információkért lásd: [virtuális gépek Licensing FAQ](https://azure.microsoft.com/pricing/licensing-faq/%20/).
+A licencelési és a jelenlegi díjszabás további információkért lásd: [virtuális gépek Licensing FAQ](https://azure.microsoft.com/pricing/licensing-faq/).
 
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>SQL Server-rendszerképeit elérhető Azure virtuálisgép-katalógusban
 A Microsoft Azure virtuális gép számos olyan rendszerkép található, amely tartalmazza a Microsoft SQL Server rendelkezik. A virtuálisgép-rendszerképek telepített szoftvereket a az operációs rendszer és az SQL Server verziójától függ. Az Azure virtuális gépek oldalon elérhető képek listájának gyakran változik.
@@ -255,7 +255,7 @@ A következő táblázat összefoglalja az egyes lehetőségekről a helyi szám
 További SQL Server-szolgáltatásokat, például az Analysis Services táblázatos módban telepítéséhez futtassa az SQL-kiszolgáló telepítése varázsló. A telepítési fájlokat a virtuális gép helyi lemezen vannak.
 
 1. Kattintson a **Start** majd **minden program**.
-2. Kattintson a **Microsoft SQL Server 2016**, **Microsoft SQL Server 2014** vagy **Microsoft SQL Server 2012** majd **konfigurációs eszközök**.
+2. Kattintson a **Microsoft SQL Server 2016**, **Microsoft SQL Server 2014** vagy **Microsoft SQL Server 2012** majd **konfigurációs eszközök** .
 3. Kattintson a **SQL Server telepítési központjának**.
 
 Vagy C:\SQLServer_13.0_full\setup.exe, C:\SQLServer_12.0_full\setup.exe vagy C:\SQLServer_11.0_full\setup.exe futtatása
@@ -282,7 +282,7 @@ A jelen szakaszban szereplő lépéseket **összefoglalója** Analysis Services 
 3. Az a **telepítési típus** lapon jelölje be **az SQL Server új telepítés** kattintson **következő**.
 4. Az a **telepítési szerepkör** kattintson **SQL Server-szolgáltatások telepítése**.
 5. Az a **szolgáltatásválasztást** kattintson **Analysis Services**.
-6. Az a **példány konfigurációja** írja be egy nevet, például a **táblázatos** be **nevű példány** és **példányazonosító** szövegmezőket.
+6. Az a **példány konfigurációja** írja be egy nevet, például a **táblázatos** történő **nevű példány** és **példányazonosító** szövegmezőkben .
 7. Az a **Analysis Services konfigurációs** lapon jelölje be **táblázatos módban**. Adja hozzá az aktuális felhasználó rendszergazdai engedélyek listájához.
 8. Végezze el, és zárja be az SQL Server telepítővarázsló.
 
