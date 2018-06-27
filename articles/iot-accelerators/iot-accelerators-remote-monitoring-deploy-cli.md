@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628123"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017509"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Telepítheti a távoli megfigyelési megoldásgyorsító a parancssori felület használatával
 
@@ -68,7 +68,7 @@ Alapvető létrehozása az Azure-szolgáltatásokat az Azure-előfizetéshez kö
 | Darabszám | Erőforrás                       | Típus         | A használt |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Üzemeltetési mikroszolgáltatások |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – az alapszintű csomag | Eszközkezelés és kommunikáció |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard csomag | Eszközkezelés és kommunikáció |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Konfigurációs adatok és a telemetriát például szabályok, a riasztások és az üzenetek tárolásához |  
 | 1     | [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | A virtuális gép és ellenőrzőpontokat streaming tárolási |
 | 1     | [Webalkalmazás](https://azure.microsoft.com/services/app-service/web/)        |                 | Üzemeltetési előtér-webalkalmazás |
@@ -82,7 +82,7 @@ A szokásos megoldás létrehozása az Azure-szolgáltatásokat az Azure-előfiz
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux rendszerű virtuális gépek](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | 1 főkiszolgáló és mikroszolgáltatások üzemeltetéséhez redundanciával 3 ügynökök |
 | 1     | [Az Azure Tárolószolgáltatásban](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) orchestrator |
-| 1     | [Az azure IoT Hub] [https://azure.microsoft.com/services/iot-hub/]                     | S1 – az alapszintű csomag | Eszközök felügyelete, a parancs és a vezérlő |
+| 1     | [Az azure IoT Hub] [https://azure.microsoft.com/services/iot-hub/]                     | S2 – Standard csomag | Eszközök felügyelete, a parancs és a vezérlő |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Konfigurációs adatok és a telemetriát például szabályok, a riasztások és az üzenetek tárolásához |
 | 5     | [Az Azure Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | a Virtuálisgép-tároló és az adatfolyam-továbbítási ellenőrzőpontok 1 4 |
 | 1     | [APP SERVICE](https://azure.microsoft.com/services/app-service/web/)             | S1 – Standard     | Alkalmazásátjáró SSL-en keresztül |

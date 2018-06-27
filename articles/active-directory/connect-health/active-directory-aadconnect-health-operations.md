@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4377e9902696a4ee3b5bbb5fcb44d972ec14f822
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31389712"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958725"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Az Azure Active Directory Connect Health üzemeltetése
 Ez a témakör ismerteti a különböző műveletek Azure Active Directory (Azure AD) Connect Health használatával végezheti el.
@@ -101,7 +101,7 @@ Az Azure AD Connect Health támogatja a következő beépített szerepkörök:
 
 | Szerepkör | Engedélyek |
 | --- | --- |
-| Tulajdonos |Tulajdonosai *hozzáférésének kezelése olyan* (például szerepkör hozzárendelése egy felhasználóhoz vagy csoporthoz), *összes információját megjeleníthetik* (például a riasztás megtekintése) a portálról, és *beállításainak módosítása* (például e-mail értesítések) az Azure AD Connect Health belül. <br>Alapértelmezés szerint az Azure AD globális rendszergazdák vannak hozzárendelve ehhez a szerepkörhöz, és ez nem módosítható. |
+| Tulajdonos |Tulajdonosai *hozzáférésének kezelése olyan* (például szerepkör hozzárendelése egy felhasználóhoz vagy csoporthoz), *összes információját megjeleníthetik* (például a riasztás megtekintése) a portálról, és *beállításainak módosítása* (a például értesítő e-mailek) az Azure AD Connect Health belül. <br>Alapértelmezés szerint az Azure AD globális rendszergazdák vannak hozzárendelve ehhez a szerepkörhöz, és ez nem módosítható. |
 | Közreműködő |A közreműködők is *összes információját megjeleníthetik* (például a riasztás megtekintése) a portálról, és *beállításainak módosítása* (például e-mail értesítések) az Azure AD Connect Health belül. |
 | Olvasó |Olvasók is *összes információját megjeleníthetik* (például a riasztás megtekintése) az Azure AD Connect Health belül a portálról. |
 
@@ -122,7 +122,7 @@ A felhasználói hozzáférést, a *minden szolgáltatáspéldány* belül az Az
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>2. lépés: Felhasználók és csoportok hozzáadása, és szerepkörök hozzárendelése
 1. Az a **konfigurálása** kattintson **felhasználók**.<br>
-   ![Képernyőfelvétel az Azure AD Connect Health RBAC fő panelen a kijelölt felhasználókkal](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+   ![Képernyőfelvétel az Azure AD Connect Health erőforrás oldalsó sáv](./media/active-directory-aadconnect-health/startRBAC.png)
 2. Válassza a **Hozzáadás** lehetőséget.
 3. Az a **Szerepkörválasztás** ablaktáblán válassza ki a megfelelő szerepkör (például **tulajdonos**).<br>
    ![Képernyőfelvétel az Azure AD Connect Health RBAC felhasználók ablak](./media/active-directory-aadconnect-health/RBAC_add.png)

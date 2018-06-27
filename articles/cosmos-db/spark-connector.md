@@ -1,21 +1,21 @@
 ---
 title: Csatlakozás az Apache Spark on Azure Cosmos DB |} Microsoft Docs
-description: Ez az oktatóanyag segítségével további információkhoz az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi a kapcsolódást az Apache Spark on Azure Cosmos DB elosztott összesítésekkel és adatokkal sciences végre a több-bérlős globálisan elosztott készült, a felhő Microsoft adatbázisrendszer.
+description: Ez az oktatóanyag segítségével további tudnivalók az Azure Cosmos DB Spark-összekötő, amely lehetővé teszi a kapcsolódást az Apache Spark on Azure Cosmos DB elosztott összesítésekkel és adatokkal sciences végre a több-bérlős globálisan elosztott adatbázis rendszer Microsoft meg a felhő tervezték.
 keywords: az Apache Spark on
 services: cosmos-db
-author: dennyglee
+author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
-ms.author: denlee
-ms.openlocfilehash: 3502a5af5de546de0b66521e29c37f5edfdbc6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: ramkris
+ms.openlocfilehash: 47abd2f3534a0f3418bc09e19a61e222093e7099
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612622"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960474"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>A Spark a valós idejű big data elemzések érdekében, és Azure Cosmos DB-összekötő
 
@@ -111,7 +111,7 @@ client = document_client.DocumentClient(host, {'masterKey': masterKey}, connecti
 A kódrészletet leírtaknak megfelelően:
 
 * Az Azure Cosmos DB Python SDK (`pyDocumentDB`) tartalmazza az összes szükséges kapcsolati paraméter. Például az elsődleges helyek paraméter úgy dönt, a olvasható replika és a prioritási sorrendben.
-*  A szükséges kódtárak importálja és konfigurálja a **főkulcsos** és **állomás** létrehozása az Azure Cosmos DB *ügyfél* (**pydocumentdb.document_client**).
+*  A szükséges kódtárak importálja és konfigurálja a **főkulcsos** és **állomás** létrehozása az Azure Cosmos DB *ügyfél* (**pydocumentdb.document_client** ).
 
 
 ### <a name="execute-spark-queries-via-pydocumentdb"></a>A Spark-lekérdezéseket hajt végre a pyDocumentDB keresztül

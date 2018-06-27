@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e9ed70de6d72026b8e3469417c53d6923a8a85e
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021474"
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával a helyszíni Oracle és a
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +59,9 @@ Az Oracle-összekötő illesztőprogramok két verziója támogatja:
     - Oracle 9i R1 vagy R2 (9.0.1, 9.2)
     - Oracle 8i R3 (8.1.7-es)
 
+> [!NOTE]
+> Oracle-proxy kiszolgáló nem támogatott.
+
 > [!IMPORTANT]
 > Jelenleg Microsoft Oracle-illesztőprogram csak az adatok másolását a Oracle, de nincs írás Oracle támogatja. És jegyezze meg a teszt kapcsolat funkció adatok felügyeleti átjáró Diagnosztika lap nem támogatja az illesztőprogramot. A varázsló segítségével azt is megteheti, ellenőrizze a kapcsolatot.
 >
@@ -75,7 +79,7 @@ A másolási tevékenység, amely helyezi át az adatokat a helyszíni Oracle-ad
 
 Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
 
-Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sablon**, **.NET API**, és **REST API**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
+Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját.
 
 Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
 
@@ -96,7 +100,7 @@ A következő táblázat a JSON-elemek szerepelnek Oracle kapcsolódó szolgált
 | type |A type tulajdonságot kell beállítani: **OnPremisesOracle** |Igen |
 | driverType | Adja meg, melyik illesztőprogram használatával másolja az adatokat, vagy Oracle-adatbázishoz. Két érték engedélyezett **Microsoft** vagy **ODP** (alapértelmezett). Lásd: [verziójától és a telepítés támogatott](#supported-versions-and-installation) illesztőprogram adatai szakaszban. | Nem |
 | connectionString | Adja meg az Oracle adatbázispéldányt a connectionString tulajdonság való kapcsolódáshoz szükséges adatokat. | Igen |
-| gatewayName | Azon átjáró neve, amely a helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt |Igen |
+| gatewayName | A helyszíni Oracle-kiszolgálóhoz való csatlakozáshoz használt átjáró neve |Igen |
 
 **Példa: Microsoft-illesztőprogramot használ:**
 ```json
@@ -572,28 +576,28 @@ Ha az adatok áthelyezése az Oracle, a következő megfeleltetéseket használt
 | Oracle-adattípusra | .NET-keretrendszer adattípus |
 | --- | --- |
 | BFILE |Byte] |
-| BLOB |Byte]<br/>(csak Oracle 10g és magasabb when támogatott használatával a Microsoft-illesztő) |
-| KARAKTER |Karakterlánc |
-| CLOB |Karakterlánc |
+| A BLOB |Byte]<br/>(csak Oracle 10g és magasabb when támogatott használatával a Microsoft-illesztő) |
+| KARAKTER |Sztring |
+| CLOB |Sztring |
 | DATE |DateTime |
 | LEBEGŐPONTOS |Decimális, karakterlánc (Ha pontosság > 28) |
 | EGÉSZ SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
 | IDŐKÖZ HÓNAP ÉV |Int32 |
-| MÁSODIK INTERVALLUM NAPONTA |TimeSpan |
-| HOSSZÚ |Karakterlánc |
+| MÁSODIK INTERVALLUM NAPONTA |A TimeSpan |
+| HOSSZÚ |Sztring |
 | HOSSZÚ NYERS |Byte] |
-| NCHAR |Karakterlánc |
-| NCLOB |Karakterlánc |
+| NCHAR |Sztring |
+| NCLOB |Sztring |
 | SZÁM |Decimális, karakterlánc (Ha pontosság > 28) |
-| NVARCHAR2 |Karakterlánc |
+| NVARCHAR2 |Sztring |
 | RAW |Byte] |
-| ROWID |Karakterlánc |
+| ROWID |Sztring |
 | IDŐBÉLYEG |DateTime |
 | A HELYI IDŐZÓNÁRA IDŐBÉLYEG |DateTime |
 | AZ IDŐZÓNA IDŐBÉLYEG |DateTime |
 | ELŐJEL NÉLKÜLI EGÉSZKÉNT. |Szám |
-| VARCHAR2 |Karakterlánc |
-| XML |Karakterlánc |
+| VARCHAR2 |Sztring |
+| XML |Sztring |
 
 > [!NOTE]
 > Adattípus **IDŐKÖZ év TO hónap** és **IDŐKÖZ nap TO második** Microsoft illesztőprogram használata esetén nem támogatottak.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e35d795fb65c837f7a4152920f701da5bf8f506
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7eae8aa25546fb94bbf7d006063f44f3b6e51a15
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421430"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018795"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése az Apache Storm által a Data Lake tools for Visual Studio használatával
 
@@ -47,9 +47,9 @@ Egy Linux-alapú fürttel C#-topológiák használatához frissítenie kell a Mi
 
 C#-topológiák SCP.NET a Visual Studio következő verzióinak egyikét használva fejleszthet:
 
-* A Visual Studio 2012 [4. frissítés](http://www.microsoft.com/download/details.aspx?id=39305)
+* A Visual Studio 2012 Update 4
 
-* A Visual Studio 2013-as verziójának [4. frissítés](http://www.microsoft.com/download/details.aspx?id=44921) vagy [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+* A Visual Studio 2013 4. frissítéssel vagy [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
 
 * Visual Studio 2015-öt vagy [Visual Studio 2015-Közösség](https://go.microsoft.com/fwlink/?LinkId=532606)
 
@@ -534,14 +534,14 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 SCP.NET újabb kiadásaiban a Nugeten keresztül Csomagfrissítés támogatja. Ha egy új frissítés érhető el, egy frissítési értesítést kap. Frissítés manuálisan ellenőrzéséhez kövesse az alábbi lépéseket:
 
-1. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 
 2. Válassza ki a package manager **frissítések**. Frissítés érhető el, ha szerepel. Kattintson a **frissítés** a csomag telepítéséhez.
 
 > [!IMPORTANT]
 > Ha a projekt, amely nem NuGet SCP.NET korábbi verziójával lett létrehozva, újabb verzióra való frissítése a következő lépéseket kell elvégeznie:
 >
-> 1. A **Megoldáskezelőben**, kattintson jobb gombbal a projektre, és válassza ki **NuGet-csomagok kezelése**.
+> 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 > 2. Használja a **keresési** mezőben, keresse meg, és adja hozzá, **Microsoft.SCP.Net.SDK** a projekthez.
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>Topológiák termékkel kapcsolatos gyakori hibák elhárítása

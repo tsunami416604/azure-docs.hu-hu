@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84facb99b2264b48ede7306ae87a79605e6e8bed
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f5a8c33f2bd3c89b1049435f15d7bf2020248afa
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597088"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019320"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>A HBase és a Windows-alapú HDInsight (Hadoop) együttes használata Java-alkalmazások készítéséhez használja Maven
 Ismerje meg, hogyan hozhat létre és build egy [Apache HBase](http://hbase.apache.org/) alkalmazás Apache Maven használatával Java nyelven. Ezután használja az alkalmazást az Azure HDInsight (Hadoop).
 
-[Maven](http://maven.apache.org/) szoftver project management és a szövegértést eszköz használatával olyan szoftver, a dokumentáció és a Java-projektek a jelentésekre. Ebből a cikkből megismerheti, hogyan használhatja egy alapszintű Java-alkalmazás létrehozása, amely hoz létre, a lekérdezések, és törli az Azure HDInsight-fürtök egy HBase tábla.
+[Maven](http://maven.apache.org/) szoftver project management és a szövegértést eszköz használatával olyan szoftver, a dokumentáció és a Java-projektek a jelentésekre. Ebből a cikkből megismerheti, hogy miképpen lehet vele egy alapszintű Java-alkalmazást hoz létre, a lekérdezések, és törli az Azure HDInsight-fürtök egy HBase tábla létrehozásához.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések egy HDInsight-fürt által használt Windows igényelnek. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).

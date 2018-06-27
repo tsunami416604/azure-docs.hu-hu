@@ -8,14 +8,14 @@ manager: kamran.iqbal
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 6f2bf2ae454d5af1bba0c176940db1820268a129
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b8a2c0dbadb0124b9250849a0260f5b34d38a5c3
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266277"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021663"
 ---
 # <a name="integrate-speech-service"></a>Beszéd szolgáltatás integrálása
 A [beszéd szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi hang kapnak, és térjen vissza a LUIS előrejelzés JSON-objektumok egy kérelemhez használatát.
@@ -23,6 +23,9 @@ A [beszéd szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/S
 Ebben a cikkben töltse le, és C#-projektet a Visual Studio egy utterance mikrofon és LUIS előrejelzési adatokat fogadni. A projekt használja a beszédfelismerés [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) csomag már szerepel egy hivatkozásként. 
 
 Ez a cikk van szüksége egy szabad [LUIS] [ LUIS] weboldal-elérési fiókot importálni az alkalmazást.
+
+## <a name="create-luis-endpoint-key"></a>LUIS végpont-kulcs létrehozása
+Az Azure-portálon [létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **nyelvi ismertetése** (LUIS) kulcs. 
 
 ## <a name="import-human-resources-luis-app"></a>Importálja az emberi erőforrások LUIS alkalmazás
 A leképezések, és ez a cikk utterances vannak az emberi erőforrások LUIS érhetők el az alkalmazásból a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples) Github-tárházban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) fájlt menteni a *.json kiterjesztésű és [importálása](create-new-app.md#import-new-app) LUIS be azt. 
@@ -40,11 +43,22 @@ Do I have any paid time off?
 Az alkalmazás importálása, után válassza ki a **entitások**, majd **előre elkészített entitások kezelése**. Adja hozzá a **KeyPhrase** entitás. A KeyPhrase entitás kulcs témában kiolvassa a utterance a.
 
 ## <a name="train-and-publish-the-app"></a>A vonat és az alkalmazás közzététele
-Betanítása, és tegye közzé az alkalmazást. Az a **közzététel** lapon gyűjteni az alkalmazás Azonosítóját, közzététele, valamint régió és előfizetés-azonosító. Módosítania kell a kódot, és ezeket az értékeket használja a cikk későbbi részében. 
+1. A felső, jobb oldali navigációs sávon, válassza ki a **betanítása** kell még betanítani a LUIS alkalmazás gomb.
 
-Ezek az értékek összes szerepelnek a végponti URL-cím alján a **közzététel** lap. 
+2. Válassza ki **közzététel** a közzététel lap megnyitásához. 
 
-https://**régió**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? előfizetés-kulcs =**LUISKEY**& q =
+3. Alján a **közzététel** lapon, adja hozzá a LUIS kulcsnak a [létrehozása LUIS végpontkulcs](#create-luis-endpoint-key) szakasz.
+
+4. A LUIS alkalmazás közzététele kiválasztásával a **közzététel** a közzététel bővítőhely jobbra látható gombra. 
+
+  Az a **közzététel** lapon gyűjteni az alkalmazás Azonosítóját, valamint régió és előfizetés-azonosítója a LUIS kulcsnak közzététele a [létrehozása LUIS végpontkulcs](#create-luis-endpoint-key) szakasz. Módosítania kell a kódot, és ezeket az értékeket használja a cikk későbbi részében. 
+
+  Ezek az értékek összes szerepelnek a végponti URL-cím alján a **közzététel** létrehozott kulcs lapján. Tegye **nem** szabad alapszintű kulcs használata ehhez a gyakorlathoz. 
+
+  https://**régió**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? előfizetés-kulcs =**LUISKEY**& q =
+
+## <a name="audio-device"></a>Audioeszköz
+Ez a cikk a Hang-eszközt használ. a számítógépen. Lehet, amely a mikrofon vagy egy beépített hangeszköz mikrofonos. Ellenőrizze a hang bemeneti szintek megjelenítéséhez, ha hangosabb mint normális esetben tenné a eszköz által észlelt beszéd rendelkeznie kell elemre. 
 
 ## <a name="download-the-luis-sample-project"></a>Töltse le a LUIS mintaprojektet
  Klónozza, vagy töltse le a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples) tárházba. Nyissa meg a [leképezési projekthez beszéd](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) a Visual Studio és a NuGet-csomagok helyreállításához. A Visual STUDIO megoldás fájl.\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
@@ -108,7 +122,7 @@ Recognition done. Your Choice:
 
 ```
 
-A megfelelő cél **GetEmployeeOrgChart**, egy 61 %-os található. A keyphrase entitást adott vissza. 
+A megfelelő cél **GetEmployeeOrgChart**, egy 61 %-os található. A keyPhrase entitást adott vissza. 
 
 A beszédfelismerés SDK a teljes LUIS választ ad vissza. 
 

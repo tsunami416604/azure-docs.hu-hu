@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/16/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: dbb139081e1eb84ea64a187b7fec0d9cb159653c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 8eb7e4bc79ee50982dae5751968eb732ef39e00d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235005"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017780"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Az Azure ad-val vendég-hozzáférés kezelése értékelést eléréséhez
 
@@ -42,7 +42,7 @@ Ha azt tervezi, kérje meg a vendégfelhasználók számára saját hozzáféré
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzon létre, és hajtsa végre a vendégek egy áttekintése
 
-Először engedélyezése egy felülvizsgáló hozzáférés panelek megjelenő hozzáférés értékelést. Globális rendszergazdaként nyissa meg a [hozzáférési felülvizsgálatok lapot](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
+Először engedélyezése egy felülvizsgáló hozzáférés panelek megjelenő hozzáférés értékelést. Globális rendszergazdaként vagy felhasználói fiók rendszergazdájához, navigáljon a [hozzáférés ellenőrzi, hogy lap](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/). 
 
 Az Azure AD lehetővé teszi több vendégfelhasználók áttekintése.
 

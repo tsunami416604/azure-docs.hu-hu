@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 1372dab2685d62a12d0d1fb186c803f8906156b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 41c568191ab47faba8f67e855f0a52d5d97ffc6b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200673"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020647"
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>A HDInsight .NET SDK használatával Hive-lekérdezések futtatása
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -145,7 +145,7 @@ Ebben a cikkben megtanulta rendelkezik többféle módon hozhat létre HDInsight
 * [Ismerkedés az Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Hdinsight Hadoop-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Hdinsight Hadoop-fürtök kezelése az Azure-portál használatával](../hdinsight-administer-use-management-portal.md)
-* [A HDInsight .NET SDK-referencia](https://msdn.microsoft.com/library/mt271028.aspx)
+* [A HDInsight .NET SDK-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [A Pig használata a HDInsightban](hdinsight-use-pig.md)
 * [Use Sqoop with HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
 * [Nem interaktív hitelesítéssel ellátott .Net HDInsight-alkalmazások létrehozása](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

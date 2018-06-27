@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 99d09455ed73b366fb3acfb414b9bd095df6319b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425333"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961940"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuális gép soros konzolon (előzetes verzió) 
 
@@ -32,6 +32,7 @@ A virtuális gép soros konzol az Azure-on Linux és a Windows virtuális gépek
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
+* Az erőforrás-kezelés üzembehelyezési modellt kell használnia. Klasszikus üzembe helyezés nem támogatottak. 
 * A virtuális gépnek rendelkeznie kell [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve 
 * A soros konzol használata a fióknak rendelkeznie kell [közreműködői szerepkör](../../role-based-access-control/built-in-roles.md) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók. 
 * Linux distro jellemző beállításait, lásd: [Linux a soros konzol használata](#accessing-serial-console-for-linux)
@@ -90,8 +91,8 @@ A rendszertöltő való interakció | Hozzáférés LÁRVAJÁRAT/BCD soros konzo
 ## <a name="accessing-serial-console-for-linux"></a>Soros konzol használata Linux rendszeren
 Ahhoz, hogy a soros konzol működését a vendég operációs rendszer és a soros portjára konzol üzenetek olvasási kell állítani. A legtöbb [Azure Linux támogatott Disztribúciókkal](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) a soros konzol alapértelmezés szerint konfigurálva van. Csak kattintva a portálon a soros konzol szakasz hozzáférést biztosít a konzolon. 
 
-### <a name="access-for-redhat"></a>RedHat hozzáférés 
-RedHat képek elérhető Azure hozzáférhetnek konzol alapértelmezés szerint engedélyezett. Red Hat egyfelhasználós módban van szükség a gyökér szintű felhasználó engedélyezni kell, amely alapértelmezés szerint le van tiltva. Ha engedélyezi az egyfelhasználós módot kell, kövesse az alábbi utasításokat:
+### <a name="access-for-red-hat"></a>Red Hat hozzáférés 
+Red Hat képek, amely az Azure konzolhozzáférés alapértelmezés szerint engedélyezve van. Red Hat egyfelhasználós módban van szükség a gyökér szintű felhasználó engedélyezni kell, amely alapértelmezés szerint le van tiltva. Ha engedélyezi az egyfelhasználós módot kell, kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be a Red Hat rendszer SSH-kapcsolaton keresztül
 2. Gyökér szintű felhasználó számára jelszó engedélyezése 

@@ -2,19 +2,19 @@
 title: Egységek igényelhet, és megbecsülheti a teljesítmény - Azure Cosmos DB |} Microsoft Docs
 description: További tudnivalók ismertetése, adja meg, és az Azure Cosmos Adatbázisba kérelem egység követelményeinek becslése.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 16ccda120aef0aa892bf365403f3f0bdc1209ca3
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 9021d0c3f650d64480f2881508d456ce98beab2a
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823723"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961945"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB egység kérése
 
@@ -111,7 +111,7 @@ Az eszköz használatához:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Használja az Azure Cosmos DB kérelem kell fizetni válaszfejléc
-Minden válasz az Azure Cosmos DB szolgáltatástól tartalmaz egy egyéni fejlécet (`x-ms-request-charge`), amely tartalmazza egy adott kérelem felhasznált kérelemegység. Ezt a fejlécet az Azure Cosmos DB SDK-k használatával is elérhető. A .NET SDK **RequestCharge** tulajdonsága a **ResourceResponse** objektum. A lekérdezések az Azure Cosmos DB adatkezelő az Azure portálon információival kérelem kell fizetni végrehajtott lekérdezések számára.
+Minden válasz az Azure Cosmos DB szolgáltatástól tartalmaz egy egyéni fejlécet (`x-ms-request-charge`), amely tartalmazza egy adott kérelem felhasznált kérelemegység. Ezt a fejlécet az Azure Cosmos DB SDK-k használatával is elérhető. A .NET SDK **RequestCharge** tulajdonsága a **ResourceResponse** objektum. A lekérdezések az Azure Cosmos DB adatkezelő az Azure portálon információival kérelem kell fizetni végrehajtott lekérdezések számára. Című szakaszból megtudhatja, hogyan kérhet és a set-átviteli használatával különböző több modell API-k [beállítása és átviteli beolvasása az Azure Cosmos Adatbázisba](set-throughput.md) cikk.
 
 Egy fenntartott átviteli sebességet, az alkalmazás által igényelt mennyisége becslése módja rögzítése a szokásos tevékenységek futtatott egy reprezentatív elemet, az alkalmazás által használt társított kérelem egység kell fizetni. Ezt követően hajtsa végre a másodpercenként várhatóan műveletek számának becslése. Győződjön meg arról, is mérése és tipikus lekérdezések és Azure Cosmos DB parancsfájl használata.
 

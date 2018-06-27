@@ -35,7 +35,7 @@ A virtuális gép létrehozásakor is a [Azure felügyeleti portálon](http://go
      Ha a Visual Studio-szintű előfizetést az MSDN-előfizető, létrehozhat egy előre létrehozott Azure virtuális gép, amely a Visual Studio, valamint több lemezképet tartalmaz. További információkért lásd: [virtuális gép létrehozása a Visual Studio használatával képek Visual Studio 2013 gyűjtemény kép az MSDN-előfizetők](http://visualstudio2013msdngalleryimage.azurewebsites.net) és [MSDN előfizetések](https://www.visualstudio.com/products/msdn-subscriptions-vs). |}
 5. Az a **virtuális gép alapbeállítások** lapon adja meg a számítógép nevét, és adja meg az előírásoknak, a virtuális gép, beleértve a méretet, és egy felhasználónevet és jelszót. Amikor elkészült, kattintson a **következő**.
    
-    Jelentkezzen be a számítógépre, távoli asztali kapcsolattal, így érdemes írja le abban az esetben, ha elfelejti a új nevet és jelszót fogja használni. Azure virtuális gép létrehozása a Visual Studio, után módosíthatja annak méretét és az egyéb beállításai a [Azure felügyeleti portálon](http://go.microsoft.com/fwlink/?LinkID=253103).
+    Jelentkezzen be a géphez távoli asztali kapcsolattal, így érdemes írja le abban az esetben, ha elfelejti a új nevet és jelszót fogja használni. Azure virtuális gép létrehozása a Visual Studio, után módosíthatja annak méretét és az egyéb beállításai a [Azure felügyeleti portálon](http://go.microsoft.com/fwlink/?LinkID=253103).
    
    > [!NOTE]
    > Ha úgy dönt, hogy nagyobb méretek a virtuális géphez, külön költségek merülhetnek fel. Lásd: [virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/) további információt.
@@ -68,7 +68,7 @@ A virtuális gép létrehozásakor is a [Azure felügyeleti portálon](http://go
     
      ![Virtuális gép tevékenységnapló - befejeződött.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
     
-     Ha a művelet sikeresen befejeződött, az új virtuális gép megjelenik a **virtuális gépek** a Server Explorer csomópont. Jelentkezhet be kattintva a **csatlakozzon a távoli asztali kapcsolattal** helyi.
+     Ha a művelet sikeresen befejeződött, az új virtuális gép megjelenik a **virtuális gépek** a Server Explorer csomópont. Regisztrálhat rá kattintva a **csatlakozzon a távoli asztali kapcsolattal** helyi.
     
      ![A virtuális gép a Server Explorer megjelenne.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
 

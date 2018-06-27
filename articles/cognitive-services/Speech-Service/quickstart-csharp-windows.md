@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f37547b4b183594410b4e16b872645407ff4a6f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 64281215d139731b61365936bc1b837798ad8fbf
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35349991"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016834"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Gyors üzembe helyezés: Ismeri fel a beszédfelismerés kognitív szolgáltatások beszéd C# SDK használatával
 
@@ -33,7 +33,7 @@ Ebben a cikkben megismerheti a C# Konzolalkalmazás létrehozása a Windows szö
 
     ![Visual C# Konzolalkalmazás (.NET-keretrendszer) létrehozása](media/sdk/speechsdk-05-vs-cs-new-console-app.png "Visual C# Konzolalkalmazás létrehozása")
 
-2. Telepítse, és hivatkozzon a beszédfelismerés SDK NuGet-csomagot. A Megoldáskezelőben kattintson a jobb gombbal a megoldás, és válassza **NuGet-csomagok kezelése megoldáshoz**.
+2. Telepítse, és hivatkozzon a [beszéd SDK NuGet-csomag](https://aka.ms/csspeech/nuget). A Megoldáskezelőben kattintson a jobb gombbal a megoldás, és válassza **NuGet-csomagok kezelése megoldáshoz**.
 
     ![Kattintson a jobb gombbal a NuGet-csomagok kezelése megoldáshoz](media/sdk/speechsdk-06-vs-cs-manage-nuget-packages.png "NuGet-csomagok kezelése megoldáshoz")
 

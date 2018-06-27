@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: 93665ab075de539f98eebe34c2229870bd5a1a6e
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d42fa432f57def5e4f80480e41c2299098e20d7d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750238"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020691"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure tarifacsomagok MySQL-adatbázis
 
@@ -57,6 +57,7 @@ A számítási erőforrások vannak megadva, a vCores, amelyek tartalmazzák az 
 | Dél-Brazília | X | X |
 | Észak-Európa | X | X |
 | Nyugat-Európa |  | X |
+| Közép-Franciaország |  | X |
 | Az Egyesült Királyság nyugati régiója |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
 | Kelet-Ázsia | X | X |

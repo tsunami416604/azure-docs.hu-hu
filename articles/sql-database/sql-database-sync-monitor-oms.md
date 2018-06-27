@@ -1,26 +1,26 @@
 ---
-title: Az Azure SQL Data szinkronban (előzetes verzió) Naplóelemzési figyelése |} Microsoft Docs
-description: Log Analytics segítségével megtudhatja, hogyan figyelése Azure SQL adatszinkronizálás (előzetes verzió)
+title: Az Azure SQL Data szinkronban Naplóelemzési figyelése |} Microsoft Docs
+description: Tudnivalók Azure SQL adatszinkronizálás figyeléséről Log Analytics használatával
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650247"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025855"
 ---
-# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>A figyelő SQL adatok szinkronban (előzetes verzió) Naplóelemzési 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>A figyelő SQL adatok szinkronban Naplóelemzési 
 
 Ellenőrizze az SQL adatszinkronizálás tevékenységnapló, és a hibák és figyelmeztetések észleléséhez, korábban kellett SQL adatszinkronizálás manuálisan ellenőrizze az Azure portálon, vagy PowerShell vagy a REST API-t használja. Kövesse a cikkben egy egyéni megoldás, amely javítja az adatok szinkronizálása figyelésének lehetőségével konfigurálásához. Ez a megoldás a forgatókönyvnek megfelelően testre.
 
-Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync előzetes verziójával végzett adatszinkronizálást](sql-database-sync-data.md) ismertető cikket.
+SQL adatszinkronizálás áttekintését lásd: [adatok szinkronizálásának több felhőalapú és helyszíni adatbázisokat az Azure SQL adatszinkronizálás](sql-database-sync-data.md).
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>A szinkronizálási csoportok a figyelési irányítópult 
 

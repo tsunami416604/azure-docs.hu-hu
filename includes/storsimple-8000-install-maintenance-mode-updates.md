@@ -6,7 +6,7 @@ Karbantartási mód frissítések StorSimple eszköz alkalmazásakor az összes 
 > * Mielőtt karbantartási módba, ellenőrizze, hogy mindkét eszközvezérlők kifogástalan az Azure portálon. Ha a tartományvezérlő nem működik megfelelően, [forduljon a Microsoft ügyfélszolgálatához](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) a következő lépéseket.
 > * Ha karbantartási módban, módosítania először egy tartományvezérlő és a többi tartományvezérlő.
 
-1. A PuTTY használata az soros konzoljához való csatlakozáshoz. Kövesse [a PuTTY a soros konzolhoz való csatlakozáshoz történő használatát](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console) ismertető részletes útmutatásokat. A parancssorban nyomja le az **Enter** billentyűt. Válassza ki az 1. lehetőség bejelentkezni az eszköz teljes hozzáféréssel rendelkező.
+1. A PuTTY használata az soros konzoljához való csatlakozáshoz. Kövesse [a PuTTY a soros konzolhoz való csatlakozáshoz történő használatát](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console) ismertető részletes útmutatásokat. A parancssorban nyomja le az **Enter** billentyűt. Válassza az 1. lehetőség, **jelentkezzen be a teljes körű hozzáférési**.
 
 2. Állítsa a tartományvezérlő karbantartási módba, írja be:
     
@@ -30,7 +30,7 @@ Karbantartási mód frissítések StorSimple eszköz alkalmazásakor az összes 
 
     `Get-HcsFirmwareVersion`
    
-    A várt lemez belsővezérlőprogram-verziók a következők:`XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
+    A várt lemez belsővezérlőprogram-verziók a következők:  `XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
 
 6. Lépjen ki a karbantartási mód. Írja be a minden eszköz vezérlő a következő parancsot:
 

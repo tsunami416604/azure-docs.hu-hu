@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 08a300d0e2d1565428f282a2073d91b5dd08c060
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757467"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016999"
 ---
 # <a name="azure-stack-registration"></a>Az Azure verem regisztrációs
 Az Azure-ral Piactéri elemek letölteni az Azure-ból, és megkezdheti a Microsoft commerce adatok beállítása az Azure verem Development Kit (ASDK) telepítése is regisztrálhat. Regisztrációs teljes Azure verem funkciókat, beleértve a Piactéri szindikálási támogatásához szükséges. Regisztrációs használata ajánlott, mivel lehetővé teszi a fontos Azure verem funkciók, például a piactér szindikálási és használatai jelentések tesztelése. Miután regisztrálta Azure verem, használati Azure kereskedelmi bejelentések. Megtekintheti az előfizetésben a regisztrációhoz használt. ASDK felhasználók azonban nem felszámított bármely használati jelentést.
@@ -83,4 +83,4 @@ A lépések végrehajtásával ellenőrizze, hogy sikeres volt-e a ASDK regisztr
     ![](media/asdk-register/3.PNG)
 
 ## <a name="next-steps"></a>További lépések
-[Vegyen fel egy Azure verem Piactéri elemet](asdk-marketplace-item.md)
+[Vegyen fel egy Azure verem Piactéri elemet](.\.\azure-stack-marketplace.md)

@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: anroth
-ms.openlocfilehash: acf30e7aded92c6d07331089fabd02836a8f3e9a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 89735ae54395447e3cb421f45db3d6b99001ecd6
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347566"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016565"
 ---
 # <a name="emotion-api-c-quick-start"></a>Érzelemfelismerési API C# – első lépések
 
 > [!IMPORTANT]
 > A Video API előzetese 2017. október 30-án véget ért. Elemzések könnyen kibontani videók, kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Is használhatja szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével javítása érdekében a tartalom felderítési lép, például a keresési eredmények között. További tudnivalókért tekintse meg a [videó indexelő előnézete](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview) áttekintése.
 
-Ez a cikk ismerteti, hogy információkat és a segítségével gyorsan kódminta használatával Ismerkedés a [Érzelemfelismerési API-t ismeri fel a metódust](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a C#. Használhatja a kép egy vagy több személy által kifejezett érzelmek ismeri fel. 
+Ez a cikk ismerteti, hogy információkat és a segítségével gyorsan kódminta használatával Ismerkedés a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a C#. Használhatja a kép egy vagy több személy által kifejezett érzelmek ismeri fel. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * A kognitív szolgáltatások [Érzelemfelismerési API-ablakok SDK](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/).

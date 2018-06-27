@@ -4,7 +4,7 @@ Miután engedélyezte az Azure Key Vault-integráció, az SQL virtuális gép az
 
 Kihasználhatja a titkosítási több űrlap van:
 
-* [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Az átlátható adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Titkosított biztonsági mentések](https://msdn.microsoft.com/library/dn449489.aspx)
 * [Oszlop a blokkszintű titkosítás (törlése)](https://msdn.microsoft.com/library/ms173744.aspx)
 
@@ -26,7 +26,7 @@ CREATE CREDENTIAL sysadmin_ekm_cred
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
 
---Map the credential to a SQL login that have sysadmin permissions, this will allows the SQL login to access the key vault when creating the asymmetric key in the next step.
+--Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
 ADD CREDENTIAL sysadmin_ekm_cred;
 
@@ -37,7 +37,7 @@ WITH PROVIDER_KEY_NAME = 'KeyName_in_KeyVault',  --The key name here requires th
 CREATION_DISPOSITION = OPEN_EXISTING;
 ```
 
-### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
+### <a name="transparent-data-encryption-tde"></a>Az átlátható adattitkosítás (TDE)
 
 1. TDE az adatbázismotor által használandó SQL Server-bejelentkezés létrehozásával, majd a hitelesítő adatok hozzáadása.
 

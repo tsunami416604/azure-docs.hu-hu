@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
 ms.author: dugill
-ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba2466f58b3af0ef208474adb3e4c7ff184ceccc
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359862"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018646"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API access előfizetésekhez
 ## <a name="introduction"></a>Bevezetés
@@ -204,7 +204,7 @@ A válasz felhasználói jogosultságok megszerzéséhez előfizetésben példa,
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-Az engedélyek API több engedélyeket ad vissza. Minden engedély tartalmazza az engedélyezett műveletek (**műveletek**) és a nem engedélyezett műveletek (**notactions**). Ha egy művelet megtalálható-e bármilyen engedéllyel az engedélyezett műveleteket, és nem szerepel az engedélyt, nem engedélyezett műveletek, a felhasználó számára engedélyezett az adott művelet végrehajtására. **Microsoft.Authorization/RoleAssignments/Write** hozzáférés jogosultságait, amely engedélyezi a műveletet. Az alkalmazás olvassa a engedélyek eredmény, ez a művelet a karakterlánc a reguláris kifejezéssel egyező keresse meg a **műveletek** és **notactions** minden engedély.
+Az engedélyek API több engedélyeket ad vissza. Minden engedély tartalmazza az engedélyezett műveletek (**műveletek**) és a nem engedélyezett műveletek (**notactions**). Ha egy művelet megtalálható-e bármilyen engedéllyel az engedélyezett műveleteket, és nem szerepel az engedélyt, nem engedélyezett műveletek, a felhasználó számára engedélyezett az adott művelet végrehajtására. **Microsoft.Authorization/RoleAssignments/Write** , hogy a hozzáférési felügyeleti jogok művelet. Az alkalmazás olvassa a engedélyek eredmény, ez a művelet a karakterlánc a reguláris kifejezéssel egyező keresse meg a **műveletek** és **notactions** minden engedély.
 
 ## <a name="get-app-only-access-token"></a>Csak alkalmazás-token beszerzése
 Most már tudja, ha a felhasználó hozzáférési jogosultságot rendelhet az Azure-előfizetés. A következő lépések a következők:

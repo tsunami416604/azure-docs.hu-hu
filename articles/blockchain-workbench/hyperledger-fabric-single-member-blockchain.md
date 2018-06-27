@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 7b60c086896506e5883607db48a64d2a2efbd967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28561f5f94044d19cfd07e99d7f7a736ec470cf1
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655115"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960355"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Egy tag hálózati Hyperledger háló
 
@@ -89,7 +89,7 @@ A következő **hálózati mérete és a teljesítmény,** adja meg a bemeneti a
 Paraméter neve| Leírás| Megengedett értékek|Alapértelmezett érték
 ---|---|---|---
 **Tagság csomópontok száma**|A tagsági szolgáltatást futtató csomópontok száma. A tagság szolgáltatás további részletekért tekintse meg biztonsági & Tagságszolgáltatás alatt a Hyperledger [dokumentáció](https://media.readthedocs.org/pdf/hyperledger-fabric/latest/hyperledger-fabric.pdf).<br /><br />Ez az érték 1 csomópontra jelenleg korlátozott, de a következő verzióban fürtszolgáltatásokkal kibővítési támogatása.|1| 1
-**Megrendelő csomópontok száma** |A rendezés csomópontok száma (rendszerezése) tranzakciók blokk. Ez--> Terjengős és zavaró utasítás. A rendezési szolgáltatás további részletekért látogasson el a Hyperledger [dokumentáció](http://hyperledger-fabric.readthedocs.io/en/latest/orderingservice.html).<br /><br />Az értéke 1 csomópontra jelenleg korlátozott. |1 |1
+**Megrendelő csomópontok száma** |A rendezés csomópontok száma (rendszerezése) tranzakciók blokk. Ez--> Terjengős és zavaró utasítás. A rendezési szolgáltatás további részletekért látogasson el a Hyperledger [dokumentáció](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html).<br /><br />Az értéke 1 csomópontra jelenleg korlátozott. |1 |1
 **Társ csomópontok száma**| Tranzakciók végrehajtása, és az állapot és a főkönyvi másolatát karbantartása konzorcium tagokat tulajdonában lévő csomópontok.<br /><br />A rendezési szolgáltatás további részletekért látogasson el a Hyperledger [dokumentáció](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|3| 3 – 9
 **Tárolási teljesítmény**|A telepített csomópontok biztonsági tárolási típusát. Tárolási kapcsolatos további információkért látogasson el a [Microsoft Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction) és [prémium szintű Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Standard vagy prémium|Standard
 **Virtuális gép mérete** |A virtuális gép méretét, a hálózaton levő összes csomóponthoz használt|Standard A<br />Standard D<br />Standard D-2-es<br />Standard F sorozat<br />Standard DS-ben<br />és a szabványos FS|Standard D1_v2

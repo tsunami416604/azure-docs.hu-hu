@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ee866248ae7f0c1f1c49c449b777c2b68d884c5b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 88baa1385bfd64cab08299bc31a6f003f6b87e48
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257679"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019311"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation szolgáltatásbeli kapcsolódási eszközök
 
@@ -80,7 +80,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
 ```
 
-A kapcsolódási eszköz létrehozása, mert az Automation-fiók létrehozásakor automatikusan tartalmaz több globális modulok együtt a kapcsolat típusa alapértelmezés szerint a parancsfájl segítségével lehet **AzurServicePrincipal** létrehozásához a **AzureRunAsConnection** kapcsolódási eszköz.  Ez fontos tartsa szem előtt, mert ha próbál kapcsolódni egy szolgáltatás vagy alkalmazás egy másik hitelesítési módszer új kapcsolódási eszköz létrehozása, mert a kapcsolat típusa nem már definiálva van az Automation-fiók meghiúsul.  További információt az egyéni vagy a modulnak a saját kapcsolattípus létrehozásával a [PowerShell-galériában](https://www.powershellgallery.com), lásd: [integrációs modulok](automation-integration-modules.md)
+A kapcsolódási eszköz létrehozása, mert az Automation-fiók létrehozásakor automatikusan tartalmaz több globális modulok együtt a kapcsolat típusa alapértelmezés szerint a parancsfájl segítségével lehet **AzureServicePrincipal** számára Hozzon létre a **AzureRunAsConnection** kapcsolódási eszköz.  Ez fontos tartsa szem előtt, mert ha próbál kapcsolódni egy szolgáltatás vagy alkalmazás egy másik hitelesítési módszer új kapcsolódási eszköz létrehozása, mert a kapcsolat típusa nem már definiálva van az Automation-fiók meghiúsul.  További információt az egyéni vagy a modulnak a saját kapcsolattípus létrehozásával a [PowerShell-galériában](https://www.powershellgallery.com), lásd: [integrációs modulok](automation-integration-modules.md)
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>A runbookot vagy a DSC-konfiguráció kapcsolat használatával
 

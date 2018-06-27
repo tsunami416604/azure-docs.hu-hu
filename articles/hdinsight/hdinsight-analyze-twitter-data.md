@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593712"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960127"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Hdinsight Hive eszközzel Twitter-adatok elemzése
 Közösségi webhelyek egyik fő növeli a big data alkalmazására vonatkozóan. Nyilvános API-k, például a Twitter helyek által biztosított az hasznos adatforrást ismertetése népszerű trendeket és elemzésére.
@@ -68,7 +68,7 @@ Ebben az oktatóanyagban fogja használni a [streamelési API-k Twitter][twitter
 > [!NOTE]
 > 10 000 Twitter-üzeneteket tartalmazó fájlt, és a Hive parancsfájl (a következő szakaszban ismertetett) fel lett töltve, egy nyilvános Blob tárolóban. Ez a szakasz kihagyhatja, ha szeretné használni a feltöltött fájlok.
 
-[Twitter-üzeneteket adatok](https://dev.twitter.com/docs/platform-objects/tweets) összetett beágyazott szerkezetet tartalmaz JavaScript Object Notation (JSON) formátumban tárolja. Ahelyett, hogy hány sornyi kód írása a hagyományos programozási nyelv használatával, alakíthatja át a beágyazott struktúra egy Hive táblába úgy, hogy azt egy Structured Query Language (SQL) lekérdezhetők – például a HiveQL nevű nyelv.
+Twitter-üzeneteket adatok van tárolja a JavaScript Object Notation (JSON), amely összetett beágyazott szerkezetet tartalmaz. Ahelyett, hogy hány sornyi kód írása a hagyományos programozási nyelv használatával, alakíthatja át a beágyazott struktúra egy Hive táblába úgy, hogy azt egy Structured Query Language (SQL) lekérdezhetők – például a HiveQL nevű nyelv.
 
 Twitter OAuth használ meghatalmazott hozzáférést biztosítson az API-hoz. OAuth olyan hitelesítési protokoll, amely lehetővé teszi a felhasználók jóváhagyása nélkül megosztása a jelszavát a nevében eljárni alkalmazások. További információ található [oauth.net](http://oauth.net/) vagy a kiváló [Alapszintű útmutató az OAuth](http://hueniverse.com/oauth/) a Hueniverse.
 
@@ -536,7 +536,7 @@ Write-Host "==================================" -ForegroundColor Green
 > [!NOTE]
 > A Hive tábla \001 használja, mint a mezőhatárolóval. Az elválasztó karaktere nem látható, a kimenetben.
 
-Miután az elemzés eredményeinek az Azure Blob storage lettek helyezve, exportálja az adatokat az Azure SQL adatbázis vagy SQL server, az adatok exportálása az Excel Power Query használatával vagy a Hive ODBC-illesztő segítségével csatlakozzon az alkalmazás számára az adatok. További információkért lásd: [és a HDInsight együttes használata Sqoop][hdinsight-use-sqoop], [adatelemzés repülési késleltetés HDInsight eszközzel][hdinsight-analyze-flight-delay-data], [HDInsight a Power Query az Excel csatlakozás][hdinsight-power-query], és [csatlakozzon az Excel a Microsoft Hive ODBC-illesztőprogram HDInsight][hdinsight-hive-odbc].
+Miután az elemzés eredményeinek az Azure Blob storage lettek helyezve, exportálja az adatokat az Azure SQL adatbázis vagy SQL server, az adatok exportálása az Excel Power Query használatával vagy a Hive ODBC-illesztő segítségével csatlakozzon az alkalmazás számára az adatok. További információkért lásd: [és a HDInsight együttes használata Sqoop][hdinsight-use-sqoop], [adatelemzés repülési késleltetés HDInsight eszközzel][hdinsight-analyze-flight-delay-data], [ Excel csatlakoztatása a Power Query HDInsight][hdinsight-power-query], és [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight][hdinsight-hive-odbc].
 
 ## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban úgy találtuk, hogyan kell egy strukturálatlan JSON adatkészlet átalakítása strukturált Hive tábla lekérdezésére, vizsgálatát, és a Twitter adatok elemzése az Azure-on HDInsight használatával. További tudnivalókért lásd:
@@ -545,7 +545,7 @@ Ebben az oktatóanyagban úgy találtuk, hogyan kell egy strukturálatlan JSON a
 * [HDInsight eszközzel repülési késleltetés adatok elemzése][hdinsight-analyze-flight-delay-data]
 * [Csatlakoztathatja az Excelt a HDInsight a Power Query][hdinsight-power-query]
 * [Excel csatlakoztatása a Microsoft Hive ODBC-illesztőprogram HDInsight][hdinsight-hive-odbc]
-* [Use Sqoop with HDInsight][hdinsight-use-sqoop]
+* [A Sqoop használata a HDInsightban][hdinsight-use-sqoop]
 
 [curl]: http://curl.haxx.se
 [curl-download]: http://curl.haxx.se/download.html

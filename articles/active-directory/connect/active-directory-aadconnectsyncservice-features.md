@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2dbe14f6c7f8f9f1dcfaf733dc884df5adf919aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f721c371687addfe48d753e7289df78c2be1f3c7
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593171"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958000"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatások
 Az Azure AD Connect szinkronizálási szolgáltatás két részből áll:
@@ -58,7 +58,8 @@ A következő beállításokat az Azure AD Connect vannak konfigurálva, és nem
 | DeviceWriteback |[Az Azure AD Connect: Eszközvisszaírás engedélyezése](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect szinkronizálása: címtárbővítmények](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Lehetővé teszi, hogy a karanténba kerül, ha egy másik objektum helyett az exportálás során a teljes objektumot sikertelen duplikált attribútum. |
-| PasswordSync |[Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| Jelszókivonat szinkronizálása |[Jelszókivonat-szinkronizálást és az Azure AD Connect-szinkronizálás megvalósítása](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+|Átmenő hitelesítés|[Felhasználó bejelentkezhet az Azure Active Directory áteresztő hitelesítés](active-directory-aadconnect-pass-through-authentication.md)|
 | UnifiedGroupWriteback |[Előzetes verzió: A csoportvisszaírás](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Jelenleg nem támogatott. |
 

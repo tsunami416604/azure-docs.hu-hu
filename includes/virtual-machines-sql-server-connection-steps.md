@@ -1,6 +1,6 @@
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>A Windows-tűzfal TCP-portjainak megnyitása az Adatbázismotor alapértelmezett példányában
 1. Csatlakozzon a virtuális géphez a távoli asztalról. Részletes útmutatás a virtuális géphez való csatlakozásról: [SQL virtuális gép megnyitása a távoli asztalról](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
-2. Miután bejelentkezett, a kezdőképernyőn írja be a **WF.msc** szöveget, majd nyomja le az ENTER billentyűt.
+2. Miután bejelentkezett, a kezdőképernyőn írja be a **WF.msc**, majd nyomja le az ENTER BILLENTYŰT.
    
     ![A tűzfalprogram elindítása](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
 3. A **fokozott biztonságú Windows tűzfal** bal oldali ablaktábláján kattintson jobb gombbal a **Bejövő szabályok** elemre, majd a műveletpanelen az **Új szabály** lehetőségre.

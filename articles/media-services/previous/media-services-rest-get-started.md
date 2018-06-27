@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: juliako
-ms.openlocfilehash: f0241278343ba4383caef5bb52bc4f1ece2bec7e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 53ccd4dc40136ada30a0e230d526414b567919c7
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790530"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960457"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Ismerkedés a többi segítségével igény szerinti tartalomtovábbítás
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -267,11 +267,9 @@ A SAS URL-cím formátuma a következő:
 
 Vegye figyelembe a következőket:
 
-* Egy adott eszközhöz társított egyszerre legfeljebb öt egyedi keresők tartalmazhat. További információkért tekintse meg a lokátor.
+* Egy adott eszközhöz társított egyszerre legfeljebb öt egyedi keresők tartalmazhat. 
 * Ha szeretné azonnal töltse fel a fájlokat, akkor a StartTime érték az aktuális időpont előtt öt percet kell beállítania. Ennek az az oka lehet óra eltérésére az ügyfélszámítógép és a Media Services között. Ezenkívül a StartTime érték a következő dátum és idő formátumban kell lennie: éééé-hh-SSz (például "2014-05-23T17:53:50Z").    
-* Előfordulhat, hogy a 30-40 második késleltetése, ha használható a lokátor létrehozása után. A probléma a SAS URL-cím és a forrás keresők egyaránt vonatkoznak.
-
-További információ a SAS keresők: [ez](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blog.
+* Előfordulhat, hogy a 30-40 második késleltetése, ha használható a lokátor létrehozása után. A probléma egyaránt vonatkozik [SAS URL-cím](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) és a forrás Lokátorokat.
 
 A következő példa bemutatja, hogyan egy SAS URL-cím lokátor létrehozása a kérés törzsében ("1" egy SAS-kereső) és egy az Igényalapú származási kereső "2" típusú tulajdonság által meghatározott módon. A **elérési** visszaadott tulajdonsága tartalmazza az URL-címet, fel kell töltenie a fájlt kell használnia.
 
@@ -694,7 +692,7 @@ A következő kód bemutatja, hogyan kérjen a kimeneti adategységen azonosít�
 
 ## <a id="publish_get_urls"></a>Tegye közzé az adategységet, és a streamelési és a progresszív letöltési URL-címet a REST API-n
 
-Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési jogosultságkód (SAS)-keresők pedig médiafájlok letöltéséhez. További információ a SAS keresők: [ez](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blog.
+Egy adategység továbbításához vagy letöltéséhez először a „közzététele” szükséges, egy kereső létrehozásával. A keresők biztosítják az adategységben található fájlokhoz való hozzáférést. A Media Services kétféle keresőtípust támogat: az OnDemandOrigin keresők médiatartalmak továbbításához használatosak (például MPEG DASH, HLS vagy Smooth Streaming), a hozzáférési jogosultságkód (SAS)-keresők pedig médiafájlok letöltéséhez. 
 
 A keresők létrehozása után az URL-továbbításához vagy letöltéséhez a fájlok hozhat létre.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0f6c0e9206d9e056ee0496b6cc515625b08b1e4a
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177801"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959916"
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Egy Azure tároló szolgáltatás DC/OS-fürtön a Vamp Kanári kiadás mikroszolgáltatások
 
@@ -293,5 +293,5 @@ Azt is az egyes hatékony szolgáltatásainak Vamp érint: egyesítése egy új 
 
 * A node.js Vamp automatizálási parancsfájlokat létrehozása és futtatása azokat [munkafolyamatok Vamp](http://vamp.io/documentation/tutorials/create-a-workflow/).
 
-* További részletek [VAMP oktatóanyagok](http://vamp.io/documentation/tutorials/overview/).
+* További részletek [VAMP oktatóanyagok](http://vamp.io/documentation/tutorials/).
 

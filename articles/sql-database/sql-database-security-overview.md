@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: a40ca715c15540bf7048fae8b5dde152890eb1c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 929c05901c54ef0e7fe0d4af28c5ba45c92091f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648326"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021140"
 ---
 # <a name="securing-your-sql-database"></a>Az SQL Database-adatbázis védelme
 
@@ -79,7 +79,7 @@ Az SQL Database naplózási szolgáltatása nyomon követi az adatbázisok esem�
 A Fenyegetésészlelés kiegészíti a naplózás esetén az Azure SQL Database szolgáltatás által észlelt szokatlan és potenciálisan káros kísérletek eléréséhez, vagy az adatbázis a biztonsági rések elleni beépített biztonsági eszközintelligencia további réteget megadásával. Figyelmeztetést gyanús tevékenységek, a potenciális biztonsági réseket és a SQL injektálási támadások, valamint rendellenes adatbázis memóriahozzáférési mintáitól. Figyelmeztetések-ból is megtekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/) és a gyanús tevékenység részleteinek megadása, és vizsgálja meg, és a fenyegetések mérséklésére művelet javasolja. A Fenyegetésészlelés $15/kiszolgáló/hó költségek. Szabad az első 60 nap. További információk: [Ismerkedés az SQL Database fenyegetések észlelése szolgáltatásával](sql-database-threat-detection.md).
  
 ## <a name="compliance"></a>Megfelelőség
-Rendszeres ellenőrzéseket részt vesz a fenti szolgáltatásait és funkcióit, amelyekkel az alkalmazás különböző biztonsági követelmények, az Azure SQL Database is teljesítéséhez mellett, és megfelelőségi követelményeket számos elleni hitelesített. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://www.microsoft.com/trustcenter/compliance/complianceofferings/) aktuális listájával együtt.
+Rendszeres ellenőrzéseket részt vesz a fenti szolgáltatásait és funkcióit, amelyekkel az alkalmazás különböző biztonsági követelmények, az Azure SQL Database is teljesítéséhez mellett, és megfelelőségi követelményeket számos elleni hitelesített. További információkat az [Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/) talál, az [SQL Database megfelelőségi tanúsítványainak](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) aktuális listájával együtt.
 
 
 ## <a name="security-management"></a>Biztonság kezelése

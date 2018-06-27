@@ -10,24 +10,21 @@ ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
+ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 6c5e32f0ed39ce2e8c1e412dcfc6c04fb0f8bd7a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715258"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019488"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakozó HDInsight-fürtökkel a Hadoop biztonsági bemutatása
 
 Az Azure HDInsight eddig csak egyetlen felhasználói helyi rendszergazdát támogatott. Ez remekül működött a kisebb alkalmazásfejlesztő csapatoknál vagy részlegeknél. Hadoop-alapú munkaterhelések szerzett további időben népszerűvé vált a vállalati ágazatban enterprise osztályú szolgáltatásokat, például active directory-alapú hitelesítés, szükség szerint több felhasználó támogatása, és a szerepköralapú hozzáférés-vezérlés egyre fontosabb vált. A tartományhoz csatlakoztatott HDInsight-fürtök használatával létrehozhat egy Active Directory-tartományhoz csatlakoztatott HDInsight-fürtöt, és konfigurálhatja azon vállalati alkalmazottak listáját, akik hitelesíthetnek az Active Directoryn át a bejelentkezéshez a HDInsight-fürtbe. A vállalaton kívülről senki sem tud bejelentkezni a HDInsight-fürtbe, illetve senki sem érheti el azt onnan. A vállalati rendszergazda konfigurálhat szerepköralapú hozzáférés-vezérlés Hive biztonsági használatával [Apache Pletyka](http://hortonworks.com/apache/ranger/), így való hozzáférés korlátozása csak adatokat, mint amennyit szükséges. Végül, a rendszergazda naplózhatja az alkalmazottak adathozzáférését, és bármely változtatást a hozzáférés-vezérlés házirendjeiben, és így a vállalati erőforrások magas szintű irányítását éri el.
 
 > [!NOTE]
-> A jelen cikkben ismertetett új funkciók érhetők el az előzetes verzió csak a következő fürt típusa: Hadoop, Spark és interaktív lekérdezése.
-
-> [!IMPORTANT]
-> Oozie nincs engedélyezve a HDInsight-tartományhoz.
+> A jelen cikkben ismertetett új funkciók érhetők el az előzetes verzió csak a következő fürt típusa: Hadoop, Spark és interaktív lekérdezése. Oozie engedélyezve van a tartományhoz csatlakoztatott fürtökön. Ahhoz, hogy hozzáférhessen a webes felhasználói felület felhasználók engedélyezze Oozie [bújtatás](../hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="benefits"></a>Előnyök
 A vállalati biztonsági négy fő oszlopok – szegélyhálózati biztonsági hitelesítési, engedélyezési és titkosítási tartalmazza.

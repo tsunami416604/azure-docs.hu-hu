@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 06/26/2018
 ms.author: sashan
-ms.openlocfilehash: 8de70c01f4c04d6df85c2f5acfe9efe18ff59c0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb6e8f4420b739b5ac84f1d5c185fddc740c551a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649686"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018513"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a csak olvasható elosztásában (előzetes verzió) betöltése
 
@@ -65,6 +65,7 @@ Ellenőrizheti, hogy csatlakozik egy csak olvasható replika a következő leké
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
+
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja a olvasási kibővített Azure PowerShell használatával
 
 Olvassa el a kibővített az Azure PowerShell kezelése igényel a December 2016 az Azure PowerShell kiadás vagy újabb. A legújabb PowerShell-verzió, lásd: [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
@@ -106,6 +107,14 @@ Body:
 ```
 
 További információkért lásd: [- adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate).
+
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Georeplikált adatbázisok olvasási kibővítési lehetőséget használ
+
+Ha a következők olvasási kibővített egyenleg írásvédett munkaterhelését (pl. egy feladatátvételi csoport tagjai), a georeplikált adatbázist használ, győződjön meg arról, hogy olvasási kibővített engedélyezve van az elsődleges, mind a georeplikált másodlagos adatbázisok. Ez biztosítja, hogy a program a terheléselosztás hatást, amikor a feladatátvételt követően az új elsődleges kapcsolódik az alkalmazás. Ha olvasható méretezési engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a egyik replikán azt útvonal-kapcsolatok az elsődleges adatbázisban azonos módon.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` továbbítja az elsődleges másodpéldány, a georeplikált másodlagos, amely írásvédett is. 
+
+> [!NOTE]
+> Előzetes nem végezzük el ciklikus multiplexelés, vagy bármely más elosztott terhelésű helyi replikáit a másodlagos adatbázis között. 
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -48,7 +48,7 @@ A klasszikus üzemi modellben létrehozott virtuális gépek esetében használh
 A virtuális gép létrehozásakor meg kell adnia azt a hálózatot, amelyhez a virtuális gép tartozni fog. Meglévő virtuális gépet nem csatlakoztathat egy virtuális hálózathoz. Ezt azonban megkerülheti úgy, hogy leválasztja a virtuális merevlemezt (VHD) a meglévő virtuális gépről, majd egy új, a kívánt hálózati konfigurációval rendelkező virtuális gép létrehozásához használja.
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>Hogyan érhetem el a virtuális gépem?
-Távoli kapcsolatot kell létesítenie a virtuális gépre való bejelentkezéshez. Windows rendszerű virtuális gép esetén a Távoli asztali kapcsolat, Linux rendszerű virtuális gép esetén a Secure Shell (SSH) használatával. További útmutatásért lásd:
+Szeretne távoli kapcsolatot létesíteni a távoli asztali kapcsolattal egy Windows virtuális gép vagy egy Secure Shell (SSH) a Linux virtuális gépek jelentkezzen be a virtuális gép. További útmutatásért lásd:
 
 * [Bejelentkezés egy Windows Servert futtató virtuális gépre](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Legfeljebb 2 párhuzamos kapcsolat támogatott, kivéve, ha a kiszolgáló Távoli asztali szolgáltatások-munkamenetgazdaként van konfigurálva.  
 * [Bejelentkezés egy Linuxot futtató virtuális gépre](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Alapértelmezés szerint az SSH legfeljebb 10 párhuzamos kapcsolatot tesz lehetővé. Ezt a számot a konfigurációs fájl szerkesztésével növelheti.
@@ -78,7 +78,7 @@ A frissítés kifejezés általában azt jelenti, hogy az operációs rendszeré
 Általános adatok a Windows Server migrálásának eszközeiről és folyamatairól: [Szerepkörök és szolgáltatások áttelepítése Windows Serverre](http://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Mi az alapértelmezett felhasználónév és jelszó a virtuális gépen?
-Az Azure által biztosított rendszerképek nem rendelkeznek előre konfigurált felhasználónévvel és jelszóval. Amikor létrehoz egy virtuális gépet egy ilyen rendszerképpel, meg kell adnia egy felhasználónevet és jelszót, amellyel bejelentkezhet a virtuális gépre.
+Az Azure által biztosított rendszerképek nem rendelkeznek előre konfigurált felhasználónévvel és jelszóval. Ha ezeket a képeket egyikével virtuális gépet hoz létre, szüksége lesz a adjon meg egy felhasználónevet és jelszót, és jelentkezzen be a virtuális gép fogja használni.
 
 Ha elfelejtette a felhasználónevet vagy jelszót, és telepítette a VM Agent szolgáltatást, a [VMAcess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bővítmény telepítésével és használatával megoldhatja a problémát.
 

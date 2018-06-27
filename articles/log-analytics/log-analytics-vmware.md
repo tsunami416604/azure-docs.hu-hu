@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c07cc3e434a178a5f6a1ea10f7dc630c3d0d548d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775111"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019289"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>A Naplóelemzési megoldás VMware figyelése (előzetes verzió)
 
@@ -33,7 +33,7 @@ A VMware figyelésére szolgáló megoldás a Naplóelemzési olyan megoldás, a
 A megoldás az ESXi-állomáson, elküldik az adatokat egy olyan cél virtuális gép, amelyen OMS-ügynök natív syslog funkcióit használja. Azonban a megoldás nem fájlok írására syslog a cél virtuális gép be. Az OMS-ügynököt 1514 portot nyit meg, és ez figyeli. Az adatok kap, miután az OMS-ügynököt a Naplóelemzési leküldéses értesítések az adatokat.
 
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
-Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
+A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
 * A VMware figyelésére szolgáló megoldás hozzáadása az előfizetéshez ismertetett eljárással [felügyeleti megoldás hozzáadása](log-analytics-add-solutions.md#add-a-management-solution).
 
@@ -46,7 +46,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gép összes syslog-adat
    ![Syslog folyamat](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Syslog gyűjtemény konfigurálása
-1. A VSphere syslog-továbbító beállítása. Syslog-továbbító beállítása segítségével részletes információkért lásd: [syslog ESXi 5.0-s és újabb rendszer (2003322) konfigurálása](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás a **ESXi-állomáson konfigurációs** > **szoftver** > **speciális beállítások** > **Syslog**.
+1. A VSphere syslog-továbbító beállítása. Syslog-továbbító beállítása segítségével részletes információkért lásd: [syslog ESXi 5.0-s és újabb rendszer (2003322) konfigurálása](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Ugrás a **ESXi-állomáson, konfigurációs** > **szoftver** > **speciális beállítások** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. Az a *Syslog.global.logHost* mezőben, adja hozzá a Linux-kiszolgálóra és a portszám *1514*. Például `tcp://hostname:1514` vagy `tcp://123.456.789.101:1514`
 3. A syslog ESXi állomás tűzfal megnyitásához. **A gazdagép-konfigurálás ESXi** > **szoftver** > **biztonsági profil** > **tűzfal** , és nyissa meg a **Tulajdonságok**.  
@@ -56,7 +56,7 @@ Hozzon létre egy Linux operációs rendszer virtuális gép összes syslog-adat
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
 4. Ellenőrizze a vSphere konzolt annak ellenőrzéséhez, hogy a syslog helyesen van beállítva. Erősítse meg a az ESXI-állomáson, hogy a port **1514** van konfigurálva.
 5. Töltse le, és az OMS-ügynök telepítése Linux a Linux-kiszolgálón. További információkért lásd: a [Linux az OMS-ügynököt dokumentációjában](https://github.com/Microsoft/OMS-Agent-for-Linux).
-6. Linux az OMS-ügynök telepítése után nyissa meg a /etc/opt/microsoft/omsagent/sysconf/omsagent.d könyvtárba, és másolja a vmware_esxi.conf fájlt a /etc/opt/microsoft/omsagent/conf/omsagent.d directory és a módosítás a tulajdonost/csoport és a fájl engedélyeit. Példa:
+6. A Linux OMS-ügynök telepítése után nyissa meg a /etc/opt/microsoft/omsagent/sysconf/omsagent.d könyvtárba, és átmásolja a vmware_esxi.conf fájlt a /etc/opt/microsoft/omsagent/conf/omsagent.d directory és a módosítás a tulajdonost/csoport és az engedélyek a fájl. Példa:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
@@ -87,7 +87,7 @@ A következő táblázat adatgyűjtési módszerek és egyéb adatok gyűjtése 
 
 Az alábbi táblázatban példák a VMware figyelésére szolgáló megoldás által gyűjtött adatok mezők megjelenítése:
 
-| Mező neve | leírás |
+| mezőnév | leírás |
 | --- | --- |
 | Device_s |VMware-tárolóeszközök |
 | ESXIFailure_s |Hiba típusa |

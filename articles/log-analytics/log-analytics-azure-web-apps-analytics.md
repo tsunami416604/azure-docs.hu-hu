@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5426c9c5727d76d401c00b6e7338688b8f064ad0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261368"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021237"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Az Azure-webalkalmazás-erőforrások között metrikáihoz analitikai adatok megtekintése
 
@@ -57,8 +57,7 @@ Legtöbb egyéb Naplóelemzési megoldásoktól eltérően adatokat nem gyűjtö
 
 Hajtsa végre a következő lépésekkel állíthatja be az Azure Web Apps Analytics megoldás a munkaterületek.
 
-1. Engedélyezze az Azure Web Apps Analytics megoldást [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) vagy ismertetett folyamatot követve [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).
-2. [Azure-erőforrás metrikák naplózását a PowerShell használatával Naplóelemzési](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+1. [Azure-erőforrás metrikák naplózását a PowerShell használatával Naplóelemzési](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Az Azure Web Apps elemzési megoldások metrikák két készletét gyűjti az Azure-ból:
 
@@ -89,7 +88,7 @@ Az Azure Web Apps elemzési megoldások a munkaterülethez való hozzáadásakor
 
 ### <a name="view-azure-web-apps-analytics-information"></a>Azure Web Apps Analytics adatainak megtekintése
 
-Kattintson a **Azure Web Apps Analytics** csempére kattintva nyissa meg a **Azure Web Apps Analytics** irányítópult. Az irányítópult a paneleket az alábbi táblázat tartalmazza. Minden panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb tíz elemeket sorolja fel. A napló keresési, amely visszaadja az összes rekord kattintva futtathatja **láthatja az összes** alján a panelről, vagy kattintson a panel fejléc.
+Kattintson a **Azure Web Apps Analytics** csempére kattintva nyissa meg a **Azure Web Apps Analytics** irányítópult. Az irányítópulton az alábbi táblázatban felsorolt panelek találhatók. Minden panel adott panelhez feltételeknek, a megadott hatókör és időtartomány legfeljebb tíz elemeket sorolja fel. A panel alján található **Az összes megtekintése** elemre vagy a panel fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
 
 | Oszlop | Leírás |
@@ -120,7 +119,7 @@ Egy elsődleges adatok jelennek meg, hogy adott oka, hogy magas válaszidő seg�
 
 Az alábbi ábrán napló keresési példa, láthatja, hogy a *anugup3* webalkalmazás kellett egy sokkal nagyobb válaszideje, mint a más webes alkalmazásokat.
 
-![naplófájl-keresési példa](./media/log-analytics-azure-web-apps-analytics/web-app-search-example.png)
+![naplóbeli keresés példája](./media/log-analytics-azure-web-apps-analytics/web-app-search-example.png)
 
 ### <a name="app-service-plans"></a>App Service-csomagok
 

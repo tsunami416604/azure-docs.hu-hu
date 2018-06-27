@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 0ac14f792c63ea06a484eb5b522c4d33958538ed
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158421"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025904"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Az alkalmazásproxy első lépései, és az összekötő telepítése
 Ez a cikk útmutatást nyújt a felhőcímtárhoz tartozó Microsoft Azure AD alkalmazásproxy engedélyezéséhez szükséges lépésekről az Azure AD-ben.
@@ -30,7 +30,7 @@ Ha Ön még nem ismeri a biztonsági és a termelékenység előnyök alkalmazá
 ## <a name="application-proxy-prerequisites"></a>Az alkalmazásproxy használatának előfeltételei
 Az alkalmazásproxy szolgáltatásainak engedélyezése és használata előtt a következőkkel kell rendelkeznie:
 
-* [Microsoft Azure AD Prémium vagy Alapszintű előfizetés](../active-directory-whatis.md) és egy globális rendszergazdaként használt Azure AD-címtár.
+* [Microsoft Azure AD Prémium vagy Alapszintű előfizetés](../fundamentals/active-directory-whatis.md) és egy globális rendszergazdaként használt Azure AD-címtár.
 * Egy Windows Server 2012 R2 vagy 2016, amelyre telepítheti az alkalmazásproxy-összekötő futtató kiszolgáló. A kiszolgálónak kell lennie csatlakozni tudjanak a felhőben, és a helyszíni alkalmazások közzétételekor az alkalmazásproxy-szolgáltatásokat.
   * Az egyszeri bejelentkezéshez a Kerberos által korlátozott delegálást használó közzétett alkalmazások a gép kell a tartományhoz ugyanabban a tartományban AD mint az alkalmazások, amelyek tesznek közzé. További információ: [Kerberos által korlátozott Delegálás az egyszeri bejelentkezés az alkalmazásproxy](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -64,7 +64,6 @@ A környezet előkészítése az Azure AD-alkalmazásproxy, először az Azure-a
 
 4. Az összekötő számára a regisztrációs folyamat során hozzá kell férnie login.windows.net és login.microsoftonline.com.
 
-5. Használja a [az Azure AD Application Proxy Connector portok teszt eszközét](https://aadap-portcheck.connectorporttest.msappproxy.net/) ellenőrzése, hogy az összekötő el lehet-e érni az alkalmazásproxy-szolgáltatás. Minimális győződjön meg arról, hogy a központi US régió és az Önhöz legközelebbi régiót összes zöld jelölők. Túl további zöld jelölők azt jelenti, hogy nagyobb rugalmasság.
 
 ## <a name="install-and-register-a-connector"></a>Telepítse és regisztrálja az összekötőhöz
 1. Jelentkezzen be rendszergazdaként a a [Azure-portálon](https://portal.azure.com/).

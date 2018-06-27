@@ -6,19 +6,19 @@ documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 06/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3e1dd8ad49ceb126a14070ed641146d91419640a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025816"
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Azure Resource Manager-sablonok exportálása létező erőforrásokból
 Ebből a cikkből megtudja, hogyan exportálhatja az előfizetéshez tartozó meglévő erőforrások Resource Manager-sablonjait. A létrejött sablonnal jobban megértheti a sablon szintaxisát.
@@ -26,7 +26,7 @@ Ebből a cikkből megtudja, hogyan exportálhatja az előfizetéshez tartozó me
 Kétféleképpen exportálhat sablont:
 
 * Exportálhatja az **üzembe helyezéshez is használt tényleges sablont**. Ebben az esetben az exportált sablon pontosan úgy tartalmazza a különböző paramétereket és változókat, ahogy azok az eredeti sablonban szerepeltek. Ez a megközelítés akkor lehet hasznos, ha a portálon keresztül helyezte üzembe az erőforrásokat, és látni szeretné a sablont ezen erőforrások létrehozásához. Ez a sablon azonnal használható. 
-* A másik megoldás, hogy úgy exportálja a **létrejött sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze**. Ebben az esetben az exportált sablon nem az üzembe helyezéshez használt sablonon alapul. Ehelyett az alkalmazás létrehozza a sablont, amely a "snapshot" vagy "Mentés" az erőforráscsoport. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás segítségével telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. Egy másik erőforráscsoport a sablon használatához, előfordulhat, hogy jelentősen módosítható.
+* A másik megoldás, hogy úgy exportálja a **létrejött sablont, hogy az az erőforráscsoport aktuális állapotát tükrözze**. Az exportált sablon nem alapul, amely a központi telepítéshez használt sablonokat. Ehelyett az alkalmazás létrehozza a sablont, amely a "snapshot" vagy "Mentés" az erőforráscsoport. Az exportált sablon számos nem módosítható értéket tartalmaz, és valószínűleg kevesebb paraméter található benne, mint amennyit általában használni szokott. Ez a beállítás segítségével telepítse újra az erőforrásokat ugyanabban az erőforráscsoportban. Egy másik erőforráscsoport a sablon használatához, előfordulhat, hogy jelentősen módosítható.
 
 Ez a cikk bemutatja mindkét megközelítés a portálon keresztül.
 
@@ -35,14 +35,14 @@ Először helyezzünk üzembe erőforrásokat az Azure-ra, amelyeket aztán sabl
 
 1. Az a [Azure-portálon](https://portal.azure.com), jelölje be **hozzon létre egy erőforrást**.
    
-      ![új kiválasztása](./media/resource-manager-export-template/new.png)
+      ![Új kiválasztása](./media/resource-manager-export-template/new.png)
 2. Keressen a **webalkalmazás + SQL** kifejezésre, és válassza ki azt az elérhető lehetőségek közül.
    
-      ![keresési web app és az SQL](./media/resource-manager-export-template/webapp-sql.png)
+      ![Keresési web app és az SQL](./media/resource-manager-export-template/webapp-sql.png)
 
 3. Kattintson a **Létrehozás** gombra.
 
-      ![Válassza ki létrehozása](./media/resource-manager-export-template/create.png)
+      ![Kattintás a Létrehozás gombra](./media/resource-manager-export-template/create.png)
 
 4. Adja meg a webalkalmazás és az SQL-adatbázis szükséges értékeit. Kattintson a **Létrehozás** gombra.
 
@@ -56,16 +56,15 @@ Az üzembe helyezés egy percig is eltarthat. Az üzembe helyezés befejezése u
       ![Erőforráscsoport](./media/resource-manager-export-template/select-deployment.png)
 2. Megjelennek a csoport üzembe helyezési előzményei. Abban az esetben a portál valószínűleg csak egy központi telepítési sorolja fel. Válassza ki ezt a telepítést.
    
-     ![legutóbbi telepítés](./media/resource-manager-export-template/select-history.png)
+     ![Legutóbbi telepítés](./media/resource-manager-export-template/select-history.png)
 3. A portál a központi telepítés összegzését jeleníti meg. Az összegzés tartalmazza a telepítés, valamint annak műveleteinek állapotát, és a paraméterek számára megadott értékeket. Az üzembe helyezéshez használt sablon megtekintéséhez válassza a **Sablon megtekintése** lehetőséget.
    
-     ![telepítés összegzésének megtekintése](./media/resource-manager-export-template/view-template.png)
+     ![Telepítés összegzésének megtekintése](./media/resource-manager-export-template/view-template.png)
 4. A Resource Manager az alábbi hét fájlt kéri le:
    
    1. **Sablon** – A megoldás infrastruktúráját meghatározó sablon. A tárfiók a portálon keresztül történő létrehozásakor a Resource Manager egy sablon használatával telepítette azt, és elmentette ezt a sablont későbbi felhasználás céljából.
    2. **Paraméterek** – Az értékek az üzembe helyezés során történő megadásához szükséges paraméterfájl. Ez tartalmazza az első üzembe helyezés során megadott értékeket. Ezek bármelyike módosítható a sablon újbóli telepítése során.
-   3. **CLI** – A sablon üzembe helyezéséhez használható Azure CLI-parancsfájl.
-   3. **CLI 2.0** – A sablon üzembe helyezéséhez használható Azure CLI-szkriptfájl.
+   3. **Parancssori felület** -a sablon telepítéséhez használható az Azure CLI-parancsfájlt.
    4. **PowerShell** – A sablon üzembe helyezéséhez használható Azure PowerShell-parancsfájl.
    5. **.NET** – A sablon üzembe helyezéséhez használható .NET-osztály.
    6. **Ruby** – A sablon üzembe helyezéséhez használható Ruby-osztály.
@@ -93,7 +92,7 @@ Ha Ön már manuálisan az erőforrások új és módosított erőforrások töb
    
 3. Van néhány további lehetőség is arra, hogy továbbra is ezzel a sablonnal dolgozzon. Letöltheti a sablont, és dolgozhat rajta helyben egy JSON-szerkesztővel. Mentheti a sablont a saját tárába, és a portálon keresztül dolgozhat rajta.
    
-     Ha járatos egy JSON-szerkesztő, például a [VS Code](https://code.visualstudio.com/) vagy a [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) használatában, érdemes a sablont helyileg letölteni, és az adott szerkesztőt használni. Ha helyben kíván dolgozni, válassza a **Letöltés** lehetőséget.
+     Ha például egy JSON-szerkesztő segítségével szívesebben [Visual STUDIO Code](https://code.visualstudio.com/) vagy [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), helyileg a sablon letöltése és a szerkesztő segítségével inkább. Ha helyben kíván dolgozni, válassza a **Letöltés** lehetőséget.
    
       ![Sablon letöltése](./media/resource-manager-export-template/download-template.png)
    
@@ -103,10 +102,10 @@ Ha Ön már manuálisan az erőforrások új és módosított erőforrások töb
    
      A könyvtárhoz történő hozzáadásával egy sablon, amikor kell adnia a sablon nevét és leírását. Ezt követően válassza a **Mentés** lehetőséget.
    
-     ![sablon értékeket](./media/resource-manager-export-template/save-library-template.png)
+     ![Sablon értékeket](./media/resource-manager-export-template/save-library-template.png)
 4. Egy, a saját tárába mentett sablon megtekintéséhez válassza a **További szolgáltatások** lehetőséget, írja be a **Sablonok** szöveget az eredmények szűréséhez, majd válassza a **Sablonok** elemet.
    
-      ![sablonok](./media/resource-manager-export-template/find-templates.png)
+      ![Sablonok](./media/resource-manager-export-template/find-templates.png)
 5. Válassza mentett nevű sablont.
    
       ![Sablon kiválasztása](./media/resource-manager-export-template/select-saved-template.png)
@@ -120,7 +119,7 @@ Az exportált sablon jól működik, ha ugyanazt a webalkalmazást és SQL-adatb
 2. Válassza ki a sablont.
    
      ![Sablon szerkesztése](./media/resource-manager-export-template/select-added-template.png)
-3. A telepítés során meghatározni kívánt értékek megadásához adja a következő két paramétert a sablon **paraméterek** szakaszához:
+3. Adja át a telepítés során meghatározni kívánt értékek, vegye fel a következő két paramétereket a **paraméterek** a sablon szakaszában:
 
    ```json
    "administratorLogin": {
@@ -151,7 +150,7 @@ Az exportált sablon jól működik, ha ugyanazt a webalkalmazást és SQL-adatb
    },
    ```
 
-6. Amikor befejezte a sablon szerkesztését, kattintson az **OK** gombra.
+6. Válassza ki **OK** Ha elkészült a sablon szerkesztése.
 7. Kattintson a **Mentés** gombra a sablon módosításainak mentéséhez.
    
      ![Sablon mentése](./media/resource-manager-export-template/save-template.png)
@@ -162,12 +161,11 @@ Az exportált sablon jól működik, ha ugyanazt a webalkalmazást és SQL-adatb
 
 
 ## <a name="fix-export-issues"></a>Az exportálással kapcsolatos problémák megoldása
-A sablonexportálási funkciót nem támogatja az összes erőforrástípus. A probléma megoldásához adja hozzá ismét manuálisan a hiányzó erőforrásokat a sablonhoz. A hibaüzenetben szerepelnek a nem exportálható erőforrástípusok. Ezt az erőforrástípust a [Sablonreferenciában](/azure/templates/) találja. Ha például manuálisan szeretne hozzáadni egy virtuális hálózati átjárót, lásd a [Microsoft.Network/virtualNetworkGateways sablonreferenciát](/azure/templates/microsoft.network/virtualnetworkgateways).
+A sablonexportálási funkciót nem támogatja az összes erőforrástípus. Csak akkor jelenik meg problémák exportálása egy erőforráscsoportból, nem pedig a központi telepítés előzményei a exportálásakor. Ha a legutóbbi üzembe helyezés pontosan tükrözi az erőforráscsoport aktuális állapotát, érdemes az erőforráscsoport helyett az üzembe helyezési előzmények közül elvégezni a sablon exportálását. Ha módosította az erőforráscsoport nem definiált ugyanazt a sablont csak exportálása a egy erőforráscsoportot.
 
-> [!NOTE]
-> Az exportálási hibák csak akkor lépnek fel, ha az erőforráscsoportból, és nem az üzembe helyezési előzmények közül végez exportálást. Ha a legutóbbi üzembe helyezés pontosan tükrözi az erőforráscsoport aktuális állapotát, érdemes az erőforráscsoport helyett az üzembe helyezési előzmények közül elvégezni a sablon exportálását. Csak akkor exportáljon az erőforráscsoportból, ha olyan módosításokat végzett rajta, amelyeket nem lehet egyetlen sablonnal definiálni.
-> 
-> 
+Exportálás problémák megoldása érdekében adja hozzá manuálisan a hiányzó erőforrást újra üzembe a sablont. A hibaüzenet a következő tartalmazza az adott erőforrástípusok esetében, amelyek nem exportálhatók. Ezt az erőforrástípust a [Sablonreferenciában](/azure/templates/) találja. Ha például manuálisan szeretne hozzáadni egy virtuális hálózati átjárót, lásd a [Microsoft.Network/virtualNetworkGateways sablonreferenciát](/azure/templates/microsoft.network/virtualnetworkgateways). A sablon hivatkozás lehetővé teszi az erőforrás hozzáadása a sablon JSON.
+
+Követően az erőforrás beolvasása JSON formátumban, akkor csatlakoztatni kell az erőforrás-értékeket. Használatával a GET műveletet a REST API-ban az erőforrástípus láthatja az erőforráshoz tartozó értékeket. Például az értékek a virtuális hálózati átjáró megtekinteni [első virtuális hálózati átjárók -](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="next-steps"></a>További lépések
 

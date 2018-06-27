@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a4a882781562ae71ad6c578577a9f9cd9096ef36
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b08c3adb0c638cdfa0ccd9ae4c5beacac822eb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331789"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018304"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure multi-factor Authentication
 
@@ -222,7 +222,7 @@ Ezek a parancsok a hálózati házirend-kiszolgáló bővítmény példányát a
 Ez a hiba lehetséges oka, több oka. Hibaelhárítás elősegítése érdekében tegye a következőket:
 
 1. Indítsa újra a hálózati házirend-kiszolgáló.
-2. Győződjön meg arról, hogy adott ügyféltanúsítványt várt módon van-e telepítve.
+2. Győződjön meg arról, hogy az ügyféltanúsítványt a várt módon telepítve van.
 3. Győződjön meg arról, hogy a tanúsítvány társítva a bérlője Azure ad-val.
 4. Ellenőrizze, hogy https://login.microsoftonline.com/ a bővítményt futtató kiszolgáló elérhető-e.
 

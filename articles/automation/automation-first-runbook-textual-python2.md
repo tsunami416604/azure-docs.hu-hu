@@ -6,25 +6,23 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cfeef05df63cd08db48d555d7ca6f12969b533cb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 386c2ecfdac44158f5d87034657491fa9598e3ad
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194835"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018233"
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-forgatókönyv
 
 > [!div class="op_single_selector"]
-> * [Grafikus](automation-first-runbook-graphical.md)
-> * [PowerShell](automation-first-runbook-textual-powershell.md)
-> * [PowerShell-munkafolyamat](automation-first-runbook-textual.md)
-> * [Python](automation-first-runbook-textual-python2.md)
-> 
-> 
+> - [Grafikus](automation-first-runbook-graphical.md)
+> - [PowerShell](automation-first-runbook-textual-powershell.md)
+> - [PowerShell-munkafolyamat](automation-first-runbook-textual.md)
+> - [Python](automation-first-runbook-textual-python2.md)
 
 Ez az oktatóanyag bemutatja, hogyan kell létrehozni egy [Python runbook](automation-runbook-types.md#python-runbooks) az Azure Automationben. Először egy egyszerű runbookot, tesztelése és tehetők közzé. Ezután módosítja a runbookot, hogy ténylegesen kezeljen Azure-erőforrásokat, ebben az esetben elindítson egy Azure-beli virtuális gépet. Végül akkor a runbook robusztusabb runbook paraméterek hozzáadásával.
 
@@ -32,9 +30,9 @@ Ez az oktatóanyag bemutatja, hogyan kell létrehozni egy [Python runbook](autom
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
-* Egy Azure virtuális gép. Ezt a gépet leállítja és elindítja, tehát ne olyan virtuális gépet használjon, amely élesben működik.
+- Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- [Automation-fiók](automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
+- Egy Azure virtuális gép. Ezt a gépet leállítja és elindítja, tehát ne olyan virtuális gépet használjon, amely élesben működik.
 
 ## <a name="create-a-new-runbook"></a>Hozzon létre egy új runbookot
 
@@ -45,10 +43,10 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
     Az Automation-fiók oldala gyors áttekintést nyújt a fiókban levő erőforrásokról. Valószínűleg már rendelkezik adategységekkel. Ezek nagy része az új Automation-fiókhoz automatikusan hozzáadott modul. Rendelkeznie kell az [előfeltételek](#prerequisites) között említett hitelesítő adategységgel is.<br>
 
 1. Kattintson a **Runbookok** elemre a **FOLYAMATKEZELÉS** területen a runbookok listájának megnyitásához.
-2. Válassza ki **+ Hozzáadás runbook** számára hozzon létre egy új runbookot.
-3. Nevezze el a runbook a *MyFirstRunbook-Python*.
-4. Ebben az esetben fog létrehozni egy [Python runbook](automation-runbook-types.md#python-runbooks) ezért **Python 2** a **runbooktípusba**.
-5. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
+1. Válassza ki **+ Hozzáadás runbook** számára hozzon létre egy új runbookot.
+1. Nevezze el a runbook a *MyFirstRunbook-Python*.
+1. Ebben az esetben fog létrehozni egy [Python runbook](automation-runbook-types.md#python-runbooks) ezért **Python 2** a **runbooktípusba**.
+1. A forgatókönyv létrehozásához és a szöveges szerkesztő megnyitásához kattintson a **Létrehozás** gombra.
 
 ## <a name="add-code-to-the-runbook"></a>Kód hozzáadása a runbookhoz
 
@@ -65,11 +63,11 @@ Kattintson a **mentése** menteni a runbookot.
 Mielőtt közzéteszi a runbookot, hogy éles üzemben is elérhető legyen, tesztelnie kell, hogy biztosan jól működik-e. Egy forgatókönyv tesztelésekor a **Piszkozat** verziót futtatja, és interaktív módon megtekinti a kimenetét.
 
 1. Kattintson a **Teszt panelre** a Teszt panel megnyitásához.
-2. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
-3. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), és megjelenik annak állapota.
+1. Kattintson az **Indítás** gombra a teszt elindításához. Elvileg ez az egyetlen engedélyezett lehetőség.
+1. Létrejön egy [forgatókönyv-feladat](automation-runbook-execution.md), és megjelenik annak állapota.
    A feladat állapota kezdetben *Várólistán*. Ez azt jelöli, hogy egy felhőben lévő runbook-feldolgozó elérhetővé válására vár. Kerül át *indítása* dolgozó jogcímeket a feladatot, amikor, majd *futtató* amikor a runbook ténylegesen elindul.
-4. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben kell megjelennie *Hello World*.
-5. A vászonra való visszatéréshez zárja be a Teszt panelt.
+1. Amikor a forgatókönyv feladat befejeződik, megjelenik a kimenete. Ebben az esetben kell megjelennie *Hello World*.
+1. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
 ## <a name="publish-and-start-the-runbook"></a>Közzététele, és elindítja a runbookot
 
@@ -78,18 +76,18 @@ Egy runbook közzétételekor a vázlatként megjelölt verziót a felülírja a
 Ebben az esetben még nem rendelkezik közzétett verzióval, mert a runbook újonnan létrehozott.
 
 1. A forgatókönyv közzétételéhez kattintson a **Közzététel** lehetőségre, és ha a rendszer kéri, kattintson az **Igen** gombra.
-2. Ha a runbook megtekintése balra a **Runbookok** ablaktáblán, akkor megjelenik egy **szerzői állapot** a **közzétett**.
+1. Ha a runbook megtekintése balra a **Runbookok** ablaktáblán, akkor megjelenik egy **szerzői állapot** a **közzétett**.
 1. Vissza a ablaktábla megtekintéséhez görgessen **MyFirstRunbook-Python**.
    A felül látható lehetőségekkel elindíthatjuk és megtekinthetjük a runbookot, ütemezhetjük egy későbbi időpontban való indításra, vagy létrehozhatunk egy [webhookot](automation-webhooks.md), amely segítségével elindítható a runbook egy HTTP-hívással.
-2. A runbook indításához, kattintson a kívánt **Start** , majd **Ok** a runbook meghívása panel megnyitásakor.
-3. A feladatok ablaktábla a runbook-feladat létrehozott van megnyitva. Zárja be az ezen az ablaktáblán, de ebben az esetben hagyja nyitva, figyelheti a feladat előrehaladását.
-4. A feladat állapota látható **feladat összegzése** és az állapot, amikor Ön tesztelése a runbook látott egyezik.
-5. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A kimeneti ablaktábla már meg van nyitva, és megtekintheti a *Hello World*.
-6. Zárja be a Kimenet panelt.
-7. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
-8. Zárja be a adatfolyamok és a feladatok ablaktábla a MyFirstRunbook-Python tartalmazó ablaktáblájához való visszatéréshez.
-9. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
-10. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
+1. A runbook indításához, kattintson a kívánt **Start** , majd **Ok** a runbook meghívása panel megnyitásakor.
+1. A feladatok ablaktábla a runbook-feladat létrehozott van megnyitva. Zárja be az ezen az ablaktáblán, de ebben az esetben hagyja nyitva, figyelheti a feladat előrehaladását.
+1. A feladat állapota látható **feladat összegzése** és az állapot, amikor Ön tesztelése a runbook látott egyezik.
+1. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. A kimeneti ablaktábla már meg van nyitva, és megtekintheti a *Hello World*.
+1. Zárja be a Kimenet panelt.
+1. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. A kimeneti streamben csak a *Hello World* eredményt látja, de itt megjelenhetnek egyéb streamek is egy runbook-feladatból, mint például a Részletes vagy a Hiba, ha a forgatókönyv ezekbe ír.
+1. Zárja be a adatfolyamok és a feladatok ablaktábla a MyFirstRunbook-Python tartalmazó ablaktáblájához való visszatéréshez.
+1. A forgatókönyv Feladatok paneljének megnyitásához kattintson a **Feladatok** lehetőségre. Ez felsorolja az összes, a forgatókönyv által létrehozott feladatot. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
+1. Erre a feladatra kattintva megnyithatja ugyanazt a Feladat panelt, amelyet már látott a runbook elindításakor. Ez lehetővé teszi, hogy az időben visszamenve megtekintse egy adott forgatókönyvhöz létrehozott összes feladat részleteit.
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Hitelesítés az Azure-erőforrások kezeléséhez hozzáadása
 
@@ -101,7 +99,9 @@ Az Azure-erőforrások kezeléséhez a parancsfájlnak a hitelesítést a hitele
 > Ha az automation-fiók létrehozása nem a szolgáltatás egyszerű, képes hitelesíteni című részben ismertetett módon [hitelesítés az Azure felügyeleti könyvtárakkal Python](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate).
 
 1. A szöveges-szerkesztő megnyitásához **szerkesztése** a MyFirstRunbook-Python panelen.
+
 1. Adja hozzá a következő kódot a hitelesítéshez az Azure-bA:
+
    ```python
    import os
    from azure.mgmt.compute import ComputeManagementClient
@@ -203,9 +203,9 @@ Kattintson a **OK** a runbook elindításához. A runbook fut, és a megadott vi
 
 ## <a name="next-steps"></a>További lépések
 
-* A PowerShell-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
-* A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).
-* A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
-* További információk a forgatókönyvek típusairól, az előnyeikről és a korlátaikról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
-* Az Azure Python fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Python-fejlesztőknek](https://docs.microsoft.com/python/azure/?view=azure-python).
-* Példa Python 2 runbookok megtekintése: a [Azure Automation GitHub](https://docs.microsoft.com/python/azure/?view=azure-python).
+- A PowerShell-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
+- A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).
+- A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md)
+- További információk a forgatókönyvek típusairól, az előnyeikről és a korlátaikról: [Az Azure Automation forgatókönyveinek típusai](automation-runbook-types.md)
+- Az Azure Python fejlesztésével kapcsolatos további tudnivalókért lásd: [Azure Python-fejlesztőknek](https://docs.microsoft.com/python/azure/?view=azure-python)
+- Példa Python 2 runbookok megtekintése: a [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)

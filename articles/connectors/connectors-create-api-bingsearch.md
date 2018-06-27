@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 87045d5dbbc1221a770e44bd9e9cf2451a9ac522
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8ac67f9df0e5baccc668c2aeb70f65d96e574df5
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295536"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021285"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing keresési és az Azure Logic Apps hírek keresése 
 
@@ -84,7 +84,7 @@ Az Azure Logic Apps egy [művelet](../logic-apps/logic-apps-overview.md#logic-ap
 
    Ez a példa az eseményindító: **Bing keresési - új hírek cikk**
 
-   ![művelet hozzáadása](./media/connectors-create-api-bing-search/add-action.png)
+   ![Művelet hozzáadása](./media/connectors-create-api-bing-search/add-action.png)
 
    Meglévő lépései közötti művelet hozzáadása az egérmutatót a kapcsolódó nyílra. 
    Válassza ki a plusz jelre (**+**), amely akkor jelenik meg, és válassza a **művelet hozzáadása**.
@@ -102,7 +102,7 @@ Válassza ki az elvégzendő műveletek listában.
 
    | Tulajdonság | Szükséges | Érték | Leírás | 
    |----------|----------|-------|-------------| 
-   | Keresési lekérdezés | Igen | <*keresési kifejezés*> | Adja meg az eseményindító eredmények lekérdezése kifejezés. A dinamikus tartalom listáról válassza ki a mezőket az om, vagy hozzon létre egy kifejezés Kifejezésszerkesztő. |
+   | Keresési lekérdezés | Igen | <*keresési kifejezés*> | Adja meg az eseményindító eredmények lekérdezése kifejezés. Válassza ki a mezőket a dinamikus tartalom listába, vagy hozzon létre egy kifejezés Kifejezésszerkesztő. |
    | Piac | Igen | <*Területi beállítás*> | A keresési nyelvterületi beállításokat. Az alapértelmezett érték az "en-US", de választhat egy másik értéket. | 
    | Biztonságos keresés | Igen | <*keresési szintű*> | A szűrő szintje felnőtt tartalom kivételével. Az alapértelmezett érték "Közepes", de egy további szintű választja. | 
    | Darabszám | Nem | <*eredmények száma*> | A megadott számú eredményt adja vissza. Az alapértelmezett érték 20, de egy másik értéket is megadhat. A visszaadott eredményeken tényleges száma kisebb, mint a megadott szám lehet. | 

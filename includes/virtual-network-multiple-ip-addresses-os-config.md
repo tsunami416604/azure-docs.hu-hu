@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 70762b720dcd55679d02de8e5064dc99353e06cb
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ec1727926f6dbfeead9932004715a8bb1dfbb0cd
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36206098"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36964535"
 ---
 ## <a name="os-config"></a>IP-címek hozzáadása a virtuális gép operációs rendszeréhez
 
-Csatlakozzon, és jelentkezzen be egy több magánhálózati IP-címmel létrehozott virtuális gépbe. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Hajtsa végre a lépéseket, hogy a virtuális gép operációs rendszer következő.
+Csatlakozás, és jelentkezzen be egy virtuális géphez létrehozott több privát IP-címmel. A virtuális géphez hozzáadott összes magánhálózati IP-címet (az elsődlegest is beleértve) manuálisan kell hozzáadnia. Hajtsa végre a lépéseket, hogy a virtuális gép operációs rendszer következő.
 
 ### <a name="windows"></a>Windows
 

@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: d5df67021e997df3a6344701f50be4871a11386d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ca8be3066254ade37c858bd62f9ce6a2e2be902
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406030"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018382"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl művelet fejlesztése a Hdinsighttal
 
 Ismerje meg, hogyan szabhatja testre a Bash parancsfájlok használata a HDInsight-fürthöz. A Parancsfájlműveletek olyan testreszabhatja a HDInsight alatt vagy a fürt létrehozása után.
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy HDInsight-fürt által használt Linux igényelnek. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Mik azok a Parancsfájlműveletek
 
@@ -41,7 +41,7 @@ A Parancsfájlműveletek az alábbi eljárások alkalmazhatók:
 | Azure PowerShell |✓ |✓ |
 | Azure CLI 1.0 |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
-| Az Azure Resource Manager-sablon |✓ |&nbsp; |
+| Azure Resource Manager-sablon |✓ |&nbsp; |
 
 Ezekkel a módszerekkel Parancsfájlműveletek alkalmazandó további információkért lásd: [testreszabása HDInsight-fürtök Parancsfájlműveletek segítségével](hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -377,5 +377,5 @@ Cserélje le `INFILE` az Anyagjegyzék tartalmazó fájl. `OUTFILE` egy új fáj
 ## <a name="seeAlso"></a>Következő lépések
 
 * Megtudhatja, hogyan [testreszabása HDInsight-fürtök parancsfájlművelet használatával](hdinsight-hadoop-customize-cluster-linux.md)
-* Használja a [HDInsight .NET SDK referenciáit](https://msdn.microsoft.com/library/mt271028.aspx) tudhat meg többet kezelése a HDInsight .NET-alkalmazások létrehozása
+* Használja a [HDInsight .NET SDK referenciáit](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) tudhat meg többet kezelése a HDInsight .NET-alkalmazások létrehozása
 * Használja a [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) a többi használata a HDInsight-fürtökön felügyeleti műveletek elvégzéséhez.

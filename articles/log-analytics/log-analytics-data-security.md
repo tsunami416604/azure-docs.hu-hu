@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8558b3b1f5a9036f1134ddce3302211b41f57c05
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025912"
 ---
 # <a name="log-analytics-data-security"></a>Naplófájl Analytics adatok biztonsága
 Ez a dokumentum olyan kiegészítésére az adatokat az Azure Naplóelemzés információt [Azure biztonsági és adatkezelési központ](../security/security-microsoft-trust-center.md).  
@@ -32,7 +33,7 @@ A Naplóelemzési szolgáltatás felhőalapú adatait biztonságosan kezeli az a
 * Fizikai biztonság
 * Incidenskezelés
 * Megfelelőség
-* biztonsági szabványok tanúsítványok
+* Biztonsági szabványok tanúsítványok
 
 Lépjen velünk kapcsolatba, javaslatok, kérdéseivel kapcsolatban a következő adatokat, a biztonsági házirendek, beleértve a problémák [az Azure támogatási lehetőségek](http://azure.microsoft.com/support/options/).
 
@@ -67,7 +68,7 @@ Az alábbi táblázat példákat adattípusok:
 | Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, a környezetben, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, monitorid attribútumként, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fizikai biztonság
-A Naplóelemzési szolgáltatás Microsoft személyzete kezeli, és az összes tevékenység naplózza, és naplózhatók. A Naplóelemzési Azure szolgáltatásként működik, és megfelel-e az összes Azure megfelelőségi és biztonsági követelményeknek. 18 lapján megtekintheti az Azure eszközök fizikai biztonsági adatait a [Microsoft Azure biztonsági áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik az OMS-szolgáltatás, így az átvitel és a megszakítási felelősséget módosítja egy munkanapon belül. A jelenleg használt globális fizikai infrastruktúra olvashat [Microsoft Datacenters](https://www.microsoft.com/server-cloud/cloud-os/global-datacenters.aspx).
+A Naplóelemzési szolgáltatás Microsoft személyzete kezeli, és az összes tevékenység naplózza, és naplózhatók. A Naplóelemzési Azure szolgáltatásként működik, és megfelel-e az összes Azure megfelelőségi és biztonsági követelményeknek. 18 lapján megtekintheti az Azure eszközök fizikai biztonsági adatait a [Microsoft Azure biztonsági áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik az OMS-szolgáltatás, így az átvitel és a megszakítási felelősséget módosítja egy munkanapon belül. A jelenleg használt globális fizikai infrastruktúra olvashat [Microsoft Datacenters](https://azure.microsoft.com/en-us/global-infrastructure/).
 
 ## <a name="incident-management"></a>Incidenskezelés
 OMS rendelkezik egy incidenskezelési folyamat, amely az összes Microsoft-szolgáltatás igazodik. Összefoglalva, azt:
@@ -91,10 +92,10 @@ OMS rendelkezik egy incidenskezelési folyamat, amely az összes Microsoft-szolg
 
 A felhasználói adatok elvesztése esetén értesítést mindegyik ügyfél egy napon belül. Azonban ügyfél soha nem történt adatvesztés a szolgáltatással. 
 
-Hogyan reagál a Microsoft biztonsági eseményekre vonatkozó további információkért lásd: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/1/Microsoft Azure Security Response in the cloud.pdf).
+Hogyan reagál a Microsoft biztonsági eseményekre vonatkozó további információkért lásd: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Megfelelőség
-A Naplóelemzési szoftverek fejlesztési és szolgáltatás csapat információk biztonsági és irányítási program támogatja az üzleti követelmények és részben ismertetett módon törvény és szabályozás megfelelő [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) és [ A Microsoft biztonsági és adatkezelési központ megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Hogyan Naplóelemzési biztonsági követelményeket állapítja, biztonsági vezérlők azonosítja, kezeli, és figyeli a kockázatok is létezik ismerteti. Évente, azt felülvizsgálati házirendeket, szabványokat, eljárásokra és útmutatást.
+A Naplóelemzési szoftverek fejlesztési és szolgáltatás csapat információk biztonsági és irányítási program támogatja az üzleti követelmények és részben ismertetett módon törvény és szabályozás megfelelő [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) és [ A Microsoft biztonsági és adatkezelési központ megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Hogyan Naplóelemzési biztonsági követelményeket állapítja, biztonsági vezérlők azonosítja, kezeli, és figyeli a kockázatok is létezik ismerteti. Évente, azt felülvizsgálati házirendeket, szabványokat, eljárásokra és útmutatást.
 
 Minden fejlesztési csoport egy tagja megkapja a formális alkalmazás biztonsági képzés. A verziókezelő rendszer belsőleg, szoftverek fejlesztésére használjuk. Minden szoftver projekt védik a rendszerhez.
 
@@ -112,10 +113,10 @@ Az Azure Naplóelemzés megfelel az alábbi követelményeknek:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Fizetési Card Industry (PCI szabványoknak) adatok biztonsági szabvány (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) a PCI biztonsági szabványok Tanács.
 * [Szolgáltatás szervezet vezérlők (SOC) 1 1 és SOC 2 1-es típusú](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) megfelelő
-* [HIPAA és HITECH](https://www.microsoft.com/TrustCenter/Compliance/HIPAA) vállalatok számára megállapodással rendelkező HIPAA üzleti társítása
+* [HIPAA és HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) vállalatok számára megállapodással rendelkező HIPAA üzleti társítása
 * A Windows gyakori mérnöki feltételek
 * Microsoft Trustworthy Computing
-* Az Azure-szolgáltatások, mint az összetevők Naplóelemzési használó Azure megfelelőségi követelmények igazodik. A további [Microsoft Megbízhatósági központ megfelelőségi](https://www.microsoft.com/TrustCenter/Compliance/default.aspx).
+* Az Azure-szolgáltatások, mint az összetevők Naplóelemzési használó Azure megfelelőségi követelmények igazodik. A további [Microsoft Megbízhatósági központ megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
 > Az egyes tanúsítványok/tanúsítványokat, Log Analyticshez megtalálható-e a korábbi nevét *Operational Insights*.
@@ -130,8 +131,8 @@ Az alábbi ábrán egy biztonsági architektúra irányuló információáramlá
 ## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. A Naplóelemzési és adatokat gyűjthet a Regisztrálás
 A szervezet adatokat küldeni a Naplóelemzési a Windows vagy Linux-ügynököt futtató Azure virtuális gépeken, vagy a környezet vagy más felhőszolgáltatóként virtuális vagy fizikai számítógépeken kell konfigurálni.  Az Operations Manager használata, ha a felügyeleti csoport konfigurálhat az Operations Manager ügynököt. Felhasználók (ami lehet, hogy Ön, más felhasználókat vagy egy csoport tagjainak) hozzon létre egy vagy több Naplóelemzési munkaterület, és regisztrálja az ügynökök a következő fiókok egyikével:
 
-* [Szervezeti Azonosítóval](../active-directory/sign-up-organization.md)
-* [Microsoft-fiók – Outlook-Office Live, az MSN](http://www.microsoft.com/account/default.aspx)
+* [Szervezeti Azonosítóval](../active-directory/fundamentals/sign-up-organization.md)
+* [Microsoft-fiók – Outlook-Office Live, az MSN](https://account.microsoft.com/account)
 
 A Naplóelemzési munkaterület, ahol adatokat gyűjti, összesítve, elemzése, és jelenik meg. A munkaterület elsősorban partíció adatok segítségével, és egyes munkaterületeken egyedi. Például előfordulhat, hogy szeretné a termelési adatok használatával egy munkaterület felügyelt és a másik munkaterületen kezelt vizsgálati adatok. Munkaterületek is állítsunk egy rendszergazda felhasználó az adatokat. Minden felhasználói fiók hozzáférhessen a több Naplóelemzési munkaterület, és egyes munkaterületeken rendelkezhet több felhasználói fiókhoz társítva. A munkaterületek datacenter régió alapján hoz létre. Egyes munkaterületeken más régióban, elsősorban a Log Analytics szolgáltatás rendelkezésre állása adatközpontok replikálódik.
 

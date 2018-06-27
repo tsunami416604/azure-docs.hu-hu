@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010880"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018412"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Az Azure nyilvános Felhőjében elszigeteléséről
 ##  <a name="introduction"></a>Bevezetés
@@ -121,7 +121,7 @@ Microsoft erős intézkedések megóvhatja adatait egy nem megfelelő hozzáfér
 
 Ha törli az adatokat, a Microsoft Azure törli az adatokat, beleértve a gyorsítótárazott vagy biztonsági másolatok. A hatókör szolgáltatások esetén törlése a megőrzési időszak lejárta után 90 napon belül esedékes. (Az adatok feldolgozása feltételek részében meghatározott hatókör szolgáltatások a [Online szolgáltatási feltételek](http://aka.ms/Online-Services-Terms).)
 
-Ha a meghajtó tárolására használt hardver meghibásodása esetén a rendszer biztonságosan [törlik vagy megsemmisítik](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) előtt Microsoft visszaadja a gyártó cseréje vagy a javítás. Győződjön meg arról, hogy az adatok nem állítható helyre bármilyen módon történő felülírja a meghajtón található adatokat.
+Ha a meghajtó tárolására használt hardver meghibásodása esetén a rendszer biztonságosan [törlik vagy megsemmisítik](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) előtt Microsoft visszaadja a gyártó cseréje vagy a javítás. Győződjön meg arról, hogy az adatok nem állítható helyre bármilyen módon történő felülírja a meghajtón található adatokat.
 
 ## <a name="compute-isolation"></a>Számítási elkülönítési
 Microsoft Azure biztosít a különböző felhőalapú számítási szolgáltatás, amely tartalmazza az számítási példányokért széles köre és a szolgáltatások, amely is fel-le automatikusan az alkalmazás vagy a vállalat igényeinek. A számítási példány és a szolgáltatás kínál az elkülönítési biztosítani az adatokat a konfigurációs rugalmasságot feláldozása nélkül, hogy az ügyfelek igény szerint több szinten.

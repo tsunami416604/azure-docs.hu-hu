@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 86b6d05538171fcf0e259e2761316529deb4fb37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc48bf011d95b3e60a78d2102d88dc188155ddc1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625321"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017368"
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Azure Data Lake Store használatát a big Data típusú adatok követelmények
 Nagy adatfeldolgozási négy fő szakaszból áll:
@@ -43,7 +43,7 @@ Ez jelöli, amelyek kisebb adatkészletek prototípusának a big Data típusú a
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight-fürtön futó ból a DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Adatfolyamként továbbított adatok
-Adatok, például alkalmazások, eszközök, érzékelőket és stb különböző forrásokból létrehozható jelképez. Ezek az adatok különböző eszközök által történő egy Data Lake Store meghatározták. Ezek az eszközök általában fog rögzítése és feldolgozni az adatokat az esemény által alapon valós idejű, majd írja be az események kötegekben a Data Lake Store, hogy azok további dolgozhatók fel.
+Adatok, például alkalmazások, eszközök, érzékelőket és stb különböző forrásokból létrehozható jelképez. Ezek az adatok által számos különféle eszközre történő egy Data Lake Store meghatározták. Ezek az eszközök általában fog rögzítése és feldolgozni az adatokat az esemény által alapon valós idejű, majd írja be az események kötegekben a Data Lake Store, hogy azok további dolgozhatók fel.
 
 Az alábbiakban eszközök közül választhat:
 
@@ -65,7 +65,7 @@ Ez a fajta adatkészlet kifejezetten feltüntettük mert web server napló adato
 * [Az Azure Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
 
-Web server napló adatfeltöltési, valamint a más típusú adatok (például közösségi hangulati elemek adatok) feltöltése akkor a saját egyéni parancsfájlok alkalmazások írni, mert azt a rugalmasságot biztosít az adatok feltöltése az összetevő a nagyobb big Data típusú adatok alkalmazás részeként jó módszer. Egyes esetekben ez a kód is igénybe vehet az űrlap egy parancsfájl vagy egy egyszerű parancssori segédprogrammal. Más esetekben a kód egy üzleti alkalmazás vagy megoldás nagy adatfeldolgozási integrálja használható.
+Web server napló adatfeltöltési, valamint a más típusú adatok (például közösségi hangulati elemek adatok) feltöltése-e a saját egyéni parancsfájlok alkalmazások írására, mert azt a rugalmasságot biztosít az adatok feltöltése összetevő részeként jó megközelítése a nagyobb big Data típusú adatok alkalmazás. Egyes esetekben ez a kód is igénybe vehet az űrlap egy parancsfájl vagy egy egyszerű parancssori segédprogrammal. Más esetekben a kód egy üzleti alkalmazás vagy megoldás nagy adatfeldolgozási integrálja használható.
 
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>Társított alkalmazások Azure HDInsight-fürtök
 A legtöbb HDInsight-fürttípusok (Hadoop, HBase, Storm) Data Lake Store támogatják az adatok tárolási tára. A HDInsight-fürtök elérni az adatokat az Azure Storage Blobs (WASB). A jobb teljesítmény érdekében átmásolhatja az adatokat WASB be a fürthöz tartozó Data Lake Store-fiókba. A következő eszközök segítségével másolja az adatokat.

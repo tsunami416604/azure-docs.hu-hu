@@ -7,7 +7,7 @@
 3. Ekkor a rendszer arra kéri, hogy válassza ki az eszközhöz beállítani kívánt nyelvet. Válassza ki a nyelvet, majd nyomja le az Enter billentyűt. 
    
     ![StorSimple-eszköz konfigurálása és regisztrálása, 1](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
-4. A soros konzol megjelenő menüjében válassza az 1. lehetőséget a teljes körű hozzáféréssel való bejelentkezéshez. 
+4. A soros konzol megjelenő menüjében válassza az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**. 
    
     ![StorSimple-eszköz regisztrálása, 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
    

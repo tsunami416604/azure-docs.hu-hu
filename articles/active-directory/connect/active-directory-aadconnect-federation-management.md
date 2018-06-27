@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 719506e35e6abe5ac573c7ceedc1668fd2704bd4
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590854"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961689"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelése és testreszabása az Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk ismerteti a kezelése és testreszabása az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Egyéb gyakori AD FS feladatok, amelyek hasznosak lehetnek az AD FS-farm teljes konfigurációját is tartalmaz.
@@ -209,7 +209,7 @@ A következő szakaszok ismertetik, hogyan írhat egyéni szabályok bizonyos fo
 ### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Nem módosítható egy értéket, hogy az attribútum a jelen feltételes azonosítója
 Az Azure AD Connect lehetővé teszi egy adatforrás kapcsolatainak használt objektumok szinkronizált az Azure AD-attribútum megadását. Ha az egyéni attribútum értéke nem üres, érdemes egy nem módosítható Azonosítót jogcímet.
 
-Például kiválaszthatja **ms-ds-consistencyguid** forráshorgony és probléma attribútumaként **ImmutableID** , **ms-ds-consistencyguid** abban az esetben, ha az attribútum értéke rajta. Ha nincs érték az attribútum ellen, **objectGuid** , az nem módosítható azonosítót. Egyéni jogcímszabályok a következő szakaszban leírt módon készletét, hogyan hozhat létre.
+Például kiválaszthatja **ms-ds-consistencyguid** forráshorgony és probléma attribútumaként **ImmutableID** , **ms-ds-consistencyguid** Ha az attribútum értéke rajta. Ha nincs érték az attribútum ellen, **objectGuid** , az nem módosítható azonosítót. Egyéni jogcímszabályok a következő szakaszban leírt módon készletét, hogyan hozhat létre.
 
 **1. szabály: Lekérdezés attribútumok**
 
@@ -246,31 +246,8 @@ Ebben a szabályban, akkor még egyszerűen ellenőrzése az ideiglenes jelző *
 > Ezek a szabályok sorrendjének fontos.
 
 ### <a name="sso-with-a-subdomain-upn"></a>Egyszerű felhasználónév altartomány egyszeri bejelentkezés
-Összevont Azure AD Connect használatával, a több tartomány is hozzáadhat [hozzá egy új összevont tartományt](active-directory-aadconnect-federation-management.md#addfeddomain). Módosítania kell a felhasználó egyszerű felhasználónév (UPN) jogcím, hogy a kibocsátó azonosító felel meg a legfelső szintű tartomány és nem a altartomány, mert az összevont gyökértartomány is magában foglalja a gyermek.
 
-Alapértelmezés szerint a jogcímszabály kibocsátó azonosító értéke:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-![Alapértelmezett kibocsátó azonosító jogcím](media/active-directory-aadconnect-federation-management/issuer_id_default.png)
-
-Az alapértelmezett szabály egyszerűen vesz igénybe az UPN-utótagot, és használja a kibocsátó azonosító jogcímek. Például John sub.contoso.com felhasználóként, és contoso.com össze van vonva az Azure ad-val. John megadja john@sub.contoso.com során az Azure AD bejelentkezés felhasználóneveként. Az alapértelmezett kibocsátó azonosító jogcímszabály, ha az AD FS kezelő a következő módon:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-**A jogcím értéke:**  http://sub.contoso.com/adfs/services/trust/
-
-A kibocsátó jogcím értéke csak a legfelső szintű tartomány van, módosítsa megfelelően a következő jogcímszabály:
-
-    c:[Type == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
+Összevont Azure AD Connect használatával, a több tartomány is hozzáadhat [hozzá egy új összevont tartományt](active-directory-aadconnect-federation-management.md#addfeddomain). Az Azure AD Connect-verzió 1.1.553.0 és a legújabb automatikusan létrehozza a megfelelő jogcím-szabálya issuerID. Ha nem használható az Azure AD Connect 1.1.553.0 verziója vagy a legújabb, javasoljuk, hogy [Azure AD RPT Jogcímszabályokba](https://aka.ms/aadrptclaimrules) eszköz segítségével hozza létre, és állítsa be a megfelelő jogcímszabályok az Azure AD közvetítőpartneri megbízhatósághoz.
 
 ## <a name="next-steps"></a>További lépések
 További információ [felhasználói bejelentkezés lehetőségei](active-directory-aadconnect-user-signin.md).

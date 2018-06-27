@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: 4f20e79ea6cb2d9d403f4451f595516d5c2e9373
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: ad313c11fb88ec7992220d43c25ca75bf65acc56
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650740"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025908"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkód (SAS) használatával
 
@@ -48,11 +48,11 @@ Egy gyakori forgatókönyv, ahol a biztonsági Társítások akkor hasznos, egy 
 
 Számos valós szolgáltatás használhat egy hibrid két megoldás. Például bizonyos adatok feldolgozása lehet, és az előtér-proxyn keresztül történő érvényesítése közben egyéb adatok mentése és/vagy olvasása közvetlenül a SAS használatával.
 
-Ezen felül kell hitelesítenie a forrásobjektumot, a másolási műveletek bizonyos esetekben a SAS használatával:
+Továbbá szüksége lesz egy SAS segítségével engedélyezheti a hozzáférést a másolási műveletek bizonyos esetekben az adatforrás-objektum:
 
-* Egy blobot egy másik, amely egy másik tárfiókban található blobba másolásakor SAS kell használnia a forrás blob hitelesítéséhez. A SAS segítségével opcionálisan hitelesítéséhez, valamint a cél blob.
-* Egy fájl másik fájlba, amely egy másik tárfiókban található másolásakor a SAS-kód hitelesítéséhez a forrásfájl kell használnia. SAS segítségével hitelesítéséhez, valamint a célfájl nem kötelező.
-* Egy blobot egy fájlba, vagy egy fájlt egy blobba másolásakor kell használnia egy SAS hitelesítenie a forrásobjektumot, még akkor is, ha a forrás és cél-objektumai találhatók a tárfiókon belül.
+* Egy blobot egy másik, amely egy másik tárfiókban található blobba másolásakor SAS kell használnia a forrás blob hozzáférés hitelesítése. SAS segítségével engedélyezi a hozzáférést a forrásblobot, valamint opcionálisan.
+* Egy fájl másik fájlba, amely egy másik tárfiókban található másolásakor a SAS-kód a forrásfájl hozzáférés hitelesítése kell használnia. A SAS segítségével opcionálisan a célfájl hozzáférés hitelesítése.
+* Egy blobot egy fájlba, vagy egy fájlt egy blobba másolásakor kell használnia egy SAS engedélyezi a hozzáférést a forrásobjektumhoz, még akkor is, ha a forrás és cél-objektumai találhatók a tárfiókon belül.
 
 ## <a name="types-of-shared-access-signatures"></a>Közös hozzáférésű jogosultságkód típusai
 Közös hozzáférésű jogosultságkód két típusa hozható létre:
@@ -61,7 +61,7 @@ Közös hozzáférésű jogosultságkód két típusa hozható létre:
 * **SAS-fiók.** A fiók SAS delegáltak erőforrások elérését egy vagy több, a tárolási szolgáltatások. A biztonsági Társítások szolgáltatáson keresztül elérhető műveleteket is elérhetők SAS fiók használatával. Emellett SAS fiókkal is adhat hozzáférést egy adott szolgáltatáshoz, például a vonatkozó műveletek **Get vagy Set szolgáltatástulajdonságok** és **első szolgáltatás-statisztikák**. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. Lásd: [hozhat létre egy fiókot SAS](https://msdn.microsoft.com/library/mt584140.aspx) hozhat létre, a fiók SAS-jogkivonat részletesebb információt.
 
 ## <a name="how-a-shared-access-signature-works"></a>A közös hozzáférésű jogosultságkód működése
-A közös hozzáférésű jogosultságkód egy vagy több tároló-erőforrások mutat, és a lekérdezési paraméterek különleges készletét tartalmazó jogkivonatok tartalmazó aláírt URI. A jogkivonat azt jelzi, hogyan az erőforrásokat érhetik el az ügyfelet. Az aláírás lekérdezés-paraméterek egyike a SAS-paraméterek értékekből összeállított és a fiók kulccsal aláírva. Az aláírás hitelesítéséhez a biztonsági Társítások Azure Storage használják.
+A közös hozzáférésű jogosultságkód egy vagy több tároló-erőforrások mutat, és a lekérdezési paraméterek különleges készletét tartalmazó jogkivonatok tartalmazó aláírt URI. A jogkivonat azt jelzi, hogyan az erőforrásokat érhetik el az ügyfelet. Az aláírás lekérdezés-paraméterek egyike a SAS-paraméterek értékekből összeállított és a fiók kulccsal aláírva. Az aláírás-k segítségével Azure Storage a tárolási erőforrások elérésének hitelesítéséhez.
 
 Példa SAS URI, megjeleníti az erőforrás URI azonosítója és a SAS-jogkivonat:
 
@@ -69,20 +69,20 @@ Példa SAS URI, megjeleníti az erőforrás URI azonosítója és a SAS-jogkivon
 
 A SAS-jogkivonat: hoz létre a karakterlánc a *ügyfél* ügyféloldali (lásd a [SAS példák](#sas-examples) kódpéldák szakaszát). Egy SAS-jogkivonatot hoz létre, és a storage ügyféloldali kódtár, például a nyomkövetés nem Azure Storage bármilyen módon. SAS-tokenje korlátlan számú az ügyféloldalon is létrehozhat.
 
-Ha az ügyfél egy SAS URI-t Azure Storage megad egy kérelem részeként, a szolgáltatás ellenőrzi a SAS-paraméterek és győződjön meg arról, hogy a kérés hitelesítéséhez érvényes aláírást. Ha a szolgáltatás ellenőrzi, hogy az aláírás érvényes, akkor a kérelem hitelesítése. Ellenkező esetben elutasította a kérést az hibakód 403 (tiltott).
+Ha az ügyfél egy SAS URI-t Azure Storage megad egy kérelem részeként, a szolgáltatás ellenőrzi a SAS-paraméterek és győződjön meg arról, hogy a kérés hitelesítéséhez érvényes aláírást. Ha a szolgáltatás ellenőrzi, hogy az aláírás érvényes, akkor a kérelem engedélyezett. Ellenkező esetben elutasította a kérést az hibakód 403 (tiltott).
 
 ## <a name="shared-access-signature-parameters"></a>Megosztott hozzáférési aláírást paraméterek
 A fiók SAS és a SAS-tokenje néhány általános paramétereket tartalmaz, és is igénybe vehet néhány különböző paraméterek.
 
 ### <a name="parameters-common-to-account-sas-and-service-sas-tokens"></a>A paraméterek közös SAS-fiókhoz és a SAS-tokenje
 * **API-verzió** egy nem kötelező paraméter, amely meghatározza a tárolás szolgáltatás verziót kell használni a kérelem végrehajtása.
-* **Verziójú** egyik kötelező paraméter, amely meghatározza a tároló verziója használandó hitelesíteni a kérelmet.
+* **Verziójú** egyik kötelező paraméter, amely meghatározza a tárolás szolgáltatás verziót kell használni a kérelem hitelesítése.
 * **Kezdési időpontja.** Ez az az idő, ahol a biztonsági Társítások hatályba lép. A közös hozzáférésű jogosultságkód kezdési időpontja nem kötelező megadni. Ha a kezdő időpont nincs megadva, a biztonsági Társítások azonnal hatékony. A kezdési időpontot kell megadni az UTC (egyezményes világidő), egy különös UTC jelzéssel ("Z"), például `1994-11-05T13:15:30Z`.
 * **Lejárati idő.** Ez az az idő, amely után a biztonsági Társítások már nem érvényes. A bevált gyakorlat része, hogy adja meg a lejárat időpontjának tartozó SAS korlátozására, vagy rendelje hozzá azt a tárolt házirend. A lejárati időpont kell megadni az UTC (egyezményes világidő), egy különös UTC jelzéssel ("Z"), például `1994-11-05T13:15:30Z` (további információk alatt).
 * **Engedélyek.** Az engedélyeket a biztonsági Társítások megadott azt jelzi, hogy az ügyfél a tárolási erőforrások a SAS használatával szemben hajthat végre műveleteket. Elérhető engedélyek a SAS fiók és a szolgáltatásalapú SAS térnek el egymástól.
 * **IP.** Egy nem kötelező paraméter, amely megadja egy IP-címet vagy egy Azure-on kívüli az IP-címek (című szakaszában talál [útválasztás munkamenet-konfiguráció állapota](../../expressroute/expressroute-workflows.md#routing-session-configuration-state) az Express Route), amelyből kérelmek fogadására.
 * **Protokoll.** Egy nem kötelező paraméter, amely meghatározza a protokoll érkező kérelmek végrehajtására megengedett. Lehetséges értékei a HTTPS és a HTTP (`https,http`), amely a az alapértelmezett érték, vagy HTTPS csak (`https`). Vegye figyelembe, hogy HTTP csak nem megengedett értéket.
-* **Aláírás.** Az aláírás a többi paraméter megadott rész jogkivonatot, és titkosítja, majd értékekből összeállított. A biztonsági Társítások hitelesítésére szolgál.
+* **Aláírás.** Az aláírás a többi paraméter megadott rész jogkivonatot, és titkosítja, majd értékekből összeállított. Az aláírás a megadott tárolási erőforrásokhoz való hozzáférés engedélyezésére szolgál.
 
 ### <a name="parameters-for-a-service-sas-token"></a>A szolgáltatás SAS-jogkivonat paraméterek
 * **Tároló-erőforrás.** Tároló-erőforrások, amelynek is adhat hozzáférést egy olyan biztonsági Társítások tartalmazzák:
@@ -95,7 +95,7 @@ A fiók SAS és a SAS-tokenje néhány általános paramétereket tartalmaz, és
 * **Szolgáltatás vagy a szolgáltatások.** Egy fiók SAS is adhat hozzáférést a tárolási szolgáltatások közül. Például, hogy a delegáltak hozzáférést a Blob és a fájl szolgáltatás fiók SAS is létrehozhat. Vagy, hogy mind a négy delegáltak hozzáférést szolgálja (Blob, várólista, a táblának és fájl) Készletével hozhat létre.
 * **Erőforrás-típusú tárolókat.** Egy fiók SAS egy vagy több osztályt a tárolási erőforrások ahelyett, hogy egy adott erőforrás vonatkozik. Egy fiók való hozzáférés delegálásához SAS hozhat létre:
   * Szolgáltatás szintű API-k, a tárolási fiók erőforrások elleni néven. Példák **Get vagy Set szolgáltatástulajdonságok**, **első szolgáltatás-statisztikák**, és **tárolók/várólisták/táblák, megosztások listája**.
-  * Tároló szintű API-k, a tároló objektumokon az egyes szolgáltatásokhoz néven: blob-tároló, a várólisták, a táblák és fájlmegosztások. Példák **létrehozása vagy törlése tároló**, **létrehozása vagy törlése-várólista**, **tábla létrehozása vagy törlése**, **létrehozása vagy törlése megosztás**, és **lista Blobok/fájlok és könyvtárak**.
+  * Tároló szintű API-k, a tároló objektumokon az egyes szolgáltatásokhoz néven: blob-tároló, a várólisták, a táblák és fájlmegosztások. Példák **létrehozása vagy törlése tároló**, **létrehozása vagy törlése-várólista**, **tábla létrehozása vagy törlése**, **létrehozása vagy törlése megosztás**, és  **Blobok/fájlok és könyvtárak felsorolása**.
   * Objektum szintű API-k, blobok, az üzenetsor-üzeneteket, a táblaentitásokat és a fájlok elleni néven. Például **Put Blob**, **lekérdezés entitás**, **üzeneteket beolvasni**, és **fájl létrehozása**.
 
 ## <a name="examples-of-sas-uris"></a>Példák SAS URI-azonosítók
@@ -118,7 +118,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Engedélyek |`sp=rw` |A biztonsági Társítások engedélyekre Read (r) és írjunk (w). |
 | IP-címtartomány |`sip=168.1.5.60-168.1.5.70` |Az az IP-címek tartománya, amelyből a kérelem fogja elfogadni. |
 | Protokoll |`spr=https` |Csak a HTTPS-kapcsolaton keresztül kérelmek engedélyezettek. |
-| Aláírás |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |A blob való hozzáférés hitelesítéséhez használt. Az aláírás egy HMAC egy karakterlánc-bejelentkezési és az SHA-256 algoritmussal kulcs felett, és ezután a Base64 kódolás használatával kódolt. |
+| Aláírás |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |A blob való hozzáférés engedélyezésére használja. Az aláírás egy HMAC egy karakterlánc-bejelentkezési és az SHA-256 algoritmussal kulcs felett, és ezután a Base64 kódolás használatával kódolt. |
 
 ### <a name="account-sas-uri-example"></a>Fiók SAS URI-példa
 
@@ -151,19 +151,19 @@ A különbség a két űrlap fontos egyik-forgatókönyvben: visszavont tanúsí
 1. A lejárat időpontjának a SAS megadott elérésekor.
 2. A lejárat időpontjának a tárolt hozzáférési házirendet a biztonsági Társítások által hivatkozott meg (Ha a tárolt házirend hivatkozik, és adja meg a lejárat időpontjának) elérésekor. Ez akkor fordulhat elő, az időtartam, vagy mert módosította a tárolt hozzáférési házirendet egy lejárati dátuma a múltban, amely az egyik módja a biztonsági Társítások visszavonni.
 3. A tárolt házirend SAS által hivatkozott törölve van, amely másik módja is visszavonja a biztonsági Társítások. Vegye figyelembe, hogy a tárolt házirend pontosan ugyanazzal a névvel hozza létre, ha minden meglévő SAS-tokenje újra lesz érvényes (feltéve, hogy, hogy a lejárati idő a biztonsági Társítások nem ment) tárolt hozzáférési házirendhez társított engedélyeinek megfelelően. Ha visszavonja a biztonsági Társítások szándékos volt, ügyeljen arra, hogy más nevet használjon, ha a hozzáférési házirendben a jövőben egy lejárati idővel hozza létre újra.
-4. A biztonsági Társítások létrehozásához használt fiók kulcs újragenerálják. Egy fiók kulcs újragenerálása hatására az összes alkalmazás-összetevő kulccsal történő hitelesítéshez, amíg a többi érvényes fiókkulcs vagy az újonnan újragenerált fiókkulcs használhatja a mezők frissítése sikertelen.
+4. A biztonsági Társítások létrehozásához használt fiók kulcs újragenerálják. Egy fiók kulcs újragenerálása hatására az összes alkalmazás-összetevő kulccsal engedélyezése, amíg a többi érvényes fiókkulcs vagy az újonnan újragenerált fiókkulcs használhatja a mezők frissítése sikertelen.
 
 > [!IMPORTANT]
 > A közös hozzáférésű jogosultságkód URI társított aláírásának létrehozására használt fiók a kulccsal, és a társított tárolja hozzáférési házirend (ha van ilyen). Ha nincs tárolt házirend van megadva, csak visszavonni egy közös hozzáférésű jogosultságkódot, módosíthatja a fiókkulcsot.
 
 ## <a name="authenticating-from-a-client-application-with-a-sas"></a>A SAS-kód az ügyfélalkalmazás hitelesítése
-Ügyfél, aki rendelkezik egy SAS a SAS használatával hitelesíteni a kérelmet egy tárfiókot, amelynek nem rendelkeznek a kulcsait. SAS-kód szerepel a kapcsolati karakterláncot, vagy közvetlenül a megfelelő konstruktort vagy metódust használt.
+Ügyfél, aki rendelkezik egy SAS a SAS segítségével engedélyezheti a storage-fiók, amelynek nem rendelkeznek a kulcsait a kérelmet. SAS-kód szerepel a kapcsolati karakterláncot, vagy közvetlenül a megfelelő konstruktort vagy metódust használt.
 
 ### <a name="using-a-sas-in-a-connection-string"></a>A kapcsolati karakterláncban a SAS használatával
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
 ### <a name="using-a-sas-in-a-constructor-or-method"></a>Egy konstruktort vagy metódust a SAS használatával
-Több Azure Storage ügyfél könyvtár konstruktorok és metódus túlterhelések kínál a SAS-paramétert, az, hogy a SAS-kód a szolgáltatásnak küldött kérelemben hitelesítheti.
+Több Azure Storage ügyfél könyvtár konstruktorok és a metódus túlterhelések kínál a SAS-paramétert, így engedélyezheti az Aláírást a szolgáltatásnak küldött kérelemben.
 
 Például itt SAS URI létrehozásához használt blokkblobba hivatkozást. Az SA-kat biztosít a csak a kérelemhez szükséges hitelesítő adatokat. A blokk blobhivatkozást írási művelet használja:
 

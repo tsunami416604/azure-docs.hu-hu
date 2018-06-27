@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 5aa07d7861413fa0ddc0d5af7aefe828df412b4d
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 06898877a4f13182230c6d5fb12544f90525d84d
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309146"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960168"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -35,7 +35,7 @@ Ha ezek a feltételek már szerepel a környezetben, lépjen a [készítsen bizt
 
 ## <a name="supported-operating-systems-for-backup"></a>A biztonsági mentéshez támogatott operációs rendszerek
 
- * **Linux**: támogatja az Azure Backup [azokat a terjesztéseket, amelyek Azure hozzá támogatást listája](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux. Fájlok visszaállítása támogató Linux operációs rendszerek listájáért lásd: [virtuális gép biztonsági mentésből fájlokat helyreállítani](backup-azure-restore-files-from-vm.md#for-linux).
+ * **Linux**: támogatja az Azure Backup [azokat a terjesztéseket, amelyek Azure hozzá támogatást listája](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), kivéve a CoreOS Linux. Fájlok visszaállítása támogató Linux operációs rendszerek listájáért lásd: [virtuális gép biztonsági mentésből fájlokat helyreállítani](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE] 
     > Más állapotba-a-saját-Linux terjesztésekről működnek, mindaddig, amíg a Virtuálisgép-ügynök érhető el a virtuális gépen, és támogatja a Python létezik-e. Azokat a terjesztéseket, azonban nem támogatott.

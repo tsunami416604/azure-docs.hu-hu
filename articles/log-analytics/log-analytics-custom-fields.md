@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 59dbc4134ee11999e54d2eba51804939e7e14229
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030701"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020733"
 ---
 # <a name="custom-fields-in-log-analytics"></a>A Naplóelemzési egyéni mezők
 A **egyéni mezők** Naplóelemzési funkciója lehetővé teszi, hogy a saját kereshető mezők hozzáadásával meglévő rekordjainak Naplóelemzési bővítése.  Egyéni mezők automatikusan tölti be más tulajdonságok ugyanabban a rekordban a kivonatolt adatokon.
@@ -79,7 +79,7 @@ Miután elvégezte a kezdeti kinyerési, Naplóelemzési megjeleníti az eredmé
 ## <a name="removing-a-custom-field"></a>Egyéni mező eltávolítása
 Két módon lehet egyéni mező eltávolítása.  Az első a **eltávolítása** lehetőséget az egyes mezők, ha a teljes listáját jeleníti meg fent leírt módon.  A más módon, hogy a rekord beolvasása és a gombra kattintva a mező a bal oldali.  A menü egy lehetőség, hogy távolítsa el az egyéni mező fog rendelkezni.
 
-## <a name="sample-walkthrough"></a>A minta forgatókönyv
+## <a name="sample-walkthrough"></a>Mintaútmutató
 A következő szakasz végigvezeti az egyéni mezők létrehozása átfogó példát.  Ez a példa kibontja a szolgáltatás nevét az állapotváltás szolgáltatás jelző Windows-eseményeket.  Ez az a Windows rendszerű számítógépeken lévő szolgáltatásvezérlő által létrehozott események támaszkodik.  Ha azt szeretné, hogy kövesse az ebben a példában, kell lennie [rendszernapló információk események gyűjtése](log-analytics-data-sources-windows-events.md).
 
 Azt adja meg a következő lekérdezés futtatásával térjen vissza az összes esemény szolgáltatásvezérlőtől 7036 egy Eseményazonosítót az esemény, amely jelzi a szolgáltatás indítása és leállítása, amely rendelkező.
@@ -88,7 +88,7 @@ Azt adja meg a következő lekérdezés futtatásával térjen vissza az összes
 
 Azt bármely rekord event ID 7036, majd válassza ki.
 
-![Source record](media/log-analytics-custom-fields/source-record.png)
+![Forrás-rekord](media/log-analytics-custom-fields/source-record.png)
 
 Azt szeretnénk, ha a szolgáltatás neve, amely megjelenik a **RenderedDescription** tulajdonság, és válassza a gomb melletti ezt a tulajdonságot.
 
@@ -96,13 +96,13 @@ Azt szeretnénk, ha a szolgáltatás neve, amely megjelenik a **RenderedDescript
 
 A **mező a varázsló** már meg van nyitva, és a **EventLog** és **EventID** mezők vannak kijelölve a a **fő példa** oszlop.  Ez azt jelzi, hogy az egyéni mező határozza meg a rendszer naplóból 7036 Eseménynapló azonosítójú események.  Ez is használhatók, így nem szükséges bármely más mezők kiválasztása.
 
-![Fő – példa](media/log-analytics-custom-fields/main-example.png)
+![Fő példa](media/log-analytics-custom-fields/main-example.png)
 
 Azt a szolgáltatás nevét, a jelölje ki a **RenderedDescription** tulajdonság és -felhasználási **szolgáltatás** szolgáltatás nevét.  Az egyéni mező neve **Service_CF**.
 
 ![Mezőnév](media/log-analytics-custom-fields/field-title.png)
 
-Látható, hogy a szolgáltatás neve, amelynél megfelelően az egyes rekordok, de nem mások számára.   A **keresési eredmények** jelenjen meg a nevet része a **WMI Teljesítmény Adapter** nincs kiválasztva.  A **összegzés** mutat be, amely négy rögzíti a **DPRMA** szolgáltatás helytelenül része egy extra word és az azonosított, két bejegyzés **modulok telepítője** helyett **Windows Installer-modulok**.  
+Látható, hogy a szolgáltatás neve, amelynél megfelelően az egyes rekordok, de nem mások számára.   A **keresési eredmények** jelenjen meg a nevet része a **WMI Teljesítmény Adapter** nincs kiválasztva.  A **összegzés** mutat be, amely négy rögzíti a **DPRMA** szolgáltatás helytelenül része egy extra word és az azonosított két rekordok **modulok telepítője** helyett **Windows Installer-modulok**.  
 
 ![Keresési eredmények](media/log-analytics-custom-fields/search-results-01.png)
 
@@ -130,7 +130,7 @@ Láthatja, hogy **Service_CF** létrejött, de még nincs hozzáadva rekordokat.
 
 ![Kezdeti száma](media/log-analytics-custom-fields/initial-count.png)
 
-Után egy ideig, az új eseményeket a rendszer gyűjti, láthatja, hogy, hogy a **Service_CF** mező most ad hozzá a feltételeknek megfelelő rekordok.
+Után egy ideig, az új eseményeket a rendszer gyűjti, láthatja, hogy a **Service_CF** mező most ad hozzá a feltételeknek megfelelő rekordok.
 
 ![Végső eredmények](media/log-analytics-custom-fields/final-results.png)
 

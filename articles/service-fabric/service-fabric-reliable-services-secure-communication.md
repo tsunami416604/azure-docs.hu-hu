@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: d185be26633178d8b3f147453b4c48eb77d7e425
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: be5dab7b9714f13a4bd30e6ab33a5a0e2016212d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753523"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020019"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Biztonságos szolgáltatás távoli eljáráshívási kommunikáció egy C# szolgáltatásban
 > [!div class="op_single_selector"]
@@ -57,7 +57,12 @@ Amikor C#-szolgáltatásokkal, használja a szolgáltatás távoli eljáráshív
     ```
 2. Adja hozzá a figyelő beállításai és a hitelesítő adatokat.
 
-    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
+    Győződjön meg arról, hogy a fürt összes csomópontján telepítve van a szolgáltatások közötti kommunikáció biztonságossá tételéhez használni kívánt tanúsítványt. 
+    
+    > [!NOTE]
+    > Linux-csomópont, a tanúsítványt a PEM-formátumú fájlként jelen kell lennie a */var/lib/sfcerts* könyvtár. További tudnivalókért lásd: [helyét és a Linux csomópontján X.509-tanúsítvány formátuma](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+
+    Két módon is megadható figyelő beállításai és a hitelesítő adatokat:
 
    1. Adja meg azokat közvetlenül a szolgáltatás-kódban:
 
@@ -202,5 +207,6 @@ Amikor C#-szolgáltatásokkal, használja a szolgáltatás távoli eljáráshív
     string message = await client.GetHelloWorld();
 
     ```
+
 
 A következő lépésben, olvassa el a [Web API-t a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md).

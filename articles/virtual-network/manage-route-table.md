@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 93ecd0264413e0eb719c9d33f0a0b756bcee6552
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726448"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960008"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy törlése egy útválasztási táblázatot
 
@@ -95,7 +95,7 @@ Egy alhálózat állhat nulla vagy egy útválasztási táblázatot társítva. 
 4. Jelölje ki az alhálózatot, hozzárendeli az útvonaltábla.
 5. Válassza ki **útvonaltábla**, jelölje be az útvonaltábla társítása alhálózathoz, majd válassza a kívánt **mentése**.
 
-Ha a virtuális hálózat az Azure VPN-átjáró csatlakozik, ne társítson egy útválasztási táblázatot, hogy a [átjáróalhálózatot](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza egy útvonalat a 0.0.0.0/0 célját. Így előfordulhat, hogy az átjáró helyes működését. Egy útvonalat a 0.0.0.0/0 használatával kapcsolatos további információkért lásd: [virtuális hálózati forgalmának irányítását a](virtual-networks-udr-overview.md#default-route).
+Ha a virtuális hálózat egy Azure VPN-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot olyan [átjáróalhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub), amely 0.0.0.0/0 célú útvonalat tartalmaz. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. Egy útvonalat a 0.0.0.0/0 használatával kapcsolatos további információkért lásd: [virtuális hálózati forgalmának irányítását a](virtual-networks-udr-overview.md#default-route).
 
 **Parancsok**
 
@@ -213,7 +213,7 @@ A hatékony útvonalak mindegyik hálózati interfész egy virtuális géphez cs
 **Parancsok**
 
 - Az Azure CLI: [az hálózati nic megjelenítése-hatályos-útvonal-tábla](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
-- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/remove-azurermrouteconfig) 
+- PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) 
 
 ## <a name="validate-routing-between-two-endpoints"></a>Két végpontok közötti útválasztást ellenőrzése
 

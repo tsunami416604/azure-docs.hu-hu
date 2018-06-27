@@ -7,14 +7,14 @@ manager: shreeshd
 keywords: biztonsági mentés és vészhelyreállítás; biztonsági mentési szolgáltatás
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 6/25/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605531"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016488"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Kérdések az Azure Backup-ügynökkel kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure Backup-ügynök összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -58,7 +58,7 @@ Abszolút. Az Azure Backup virtuálisgép-szintű biztonsági mentést nyújt az
 Igen. Telepítse az Azure Backup ügynököt a vendég Windows operációs rendszeren, és készítsen biztonsági mentést a fájlokról és mappákról egy ideiglenes tárolóra. A biztonsági mentési feladatok sikertelenek lesznek, ha törli az ideiglenes tároló adatait. Emellett ha az ideiglenes tároló adatait törölték, csak állandó tárolóba tud visszaállítani.
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Mi a gyorsítótármappa minimális méretkövetelménye? <br/>
-A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít. A gyorsítótár mappájának az adatok tárolásához szükséges terület 5%-ának kell lennie.
+A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít. A kötet a gyorsítótár mappájához legyen legalább 5-10 % szabadítson fel lemezterületet, mint a biztonsági mentési adatok teljes mérete. Ha a kötet 5 %-nál kisebb szabadítson fel lemezterületet, vagy növelje a kötet méretét, vagy [olyan kötetet, amelyen elegendő szabad lemezterület a gyorsítótár mappa áthelyezése](backup-azure-file-folder-backup-faq.md#backup).
 
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Hogyan regisztrálhatom a kiszolgálómat egy másik adatközpontra?<br/>
 A biztonsági mentési adatokat a rendszer annak a tárolónak az adatközpontjába küldi, amelyikre regisztrálva van. Az adatközpont módosításának legegyszerűbb módja az ügynök eltávolítása, újratelepítése, majd a kívánt adatközponthoz tartozó új tárolóra regisztrálása.

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: f3c767da249d10896ef1792ce4a5ed72ba3fa418
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8740557471d1cc528e8b7440984c7a3c624ee693
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303605"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017664"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Alkalmazásproxy problémák és hibaüzenetek hibaelhárítása
 Ha hiba történik, a közzétett alkalmazás eléréséhez, vagy az alkalmazás-közzététel, ellenőrizze a megjelenítéséhez, ha a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -40,8 +40,6 @@ Például, ha az elérési út közzététele https://yourapp/app , de az alkalm
 Ha módosítja a elérési útját hivatkozott tartalmat foglaljon magába, de továbbra is a felhasználók számára, hogy az elérési út mélyebb hivatkozás meg kell, lásd a következő blogbejegyzésben [beállítása a megfelelő hivatkozásra, az alkalmazásproxy-alkalmazások az Azure AD hozzáférési panel és az Office 365 alkalmazás indító](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 
 ## <a name="connector-errors"></a>Összekötő hibák
-
-Használja a [az Azure AD Application Proxy Connector portok teszt eszközét](https://aadap-portcheck.connectorporttest.msappproxy.net/) ellenőrzése, hogy az összekötő el lehet-e érni az alkalmazásproxy-szolgáltatás. Minimális győződjön meg arról, hogy a központi US régió és az Önhöz legközelebbi régiót összes zöld jelölők. Túl további zöld jelölők azt jelenti, hogy nagyobb rugalmasság. 
 
 Regisztrációs varázsló Connector telepítése közben meghiúsul, ha két módon lehet megtekinteni a hiba okát. Vagy tekintse meg az eseménynaplóban **alkalmazások és szolgáltatások Logs\Microsoft\AadApplicationProxy\Connector\Admin**, vagy futtassa a következő Windows PowerShell-parancsot:
 

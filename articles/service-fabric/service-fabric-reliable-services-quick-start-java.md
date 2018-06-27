@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208301"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019695"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 > [!div class="op_single_selector"]
@@ -116,10 +116,10 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-Az oktatóanyag azt összpontosítani a `runAsync()` belépési pont metódusa. Ez azért, ahol azonnal elindíthatja a kódja.
+Ez az oktatóanyag összpontosít a `runAsync()` belépési pont metódusa. Ez azért, ahol azonnal elindíthatja a kódja.
 
 ### <a name="runasync"></a>RunAsync
-A platform ezt a módszert hívja, ha a szolgáltatás egy példánya elhelyezett és a végrehajtásra kész. Az állapotmentes szolgáltatások, amely egyszerűen jelenti, hogy a service-példány már meg van nyitva. A megszakítási jogkivonat koordinálására, amikor a szolgáltatáspéldány kell lezárni van megadva. A Service Fabric a megnyitása/bezárása ciklus egy szolgáltatáspéldány akkor fordulhat elő, a szolgáltatás életciklusa alatt számos alkalommal egész. Ez akkor fordulhat elő, beleértve a különböző okokból:
+A platform ezt a módszert hívja, ha a szolgáltatás egy példánya elhelyezett és a végrehajtásra kész. Az állapotmentes szolgáltatások, ez azt jelenti, amikor a szolgáltatáspéldány meg van nyitva. A megszakítási jogkivonat koordinálására, amikor a szolgáltatáspéldány kell lezárni van megadva. A Service Fabric a megnyitása/bezárása ciklus egy szolgáltatáspéldány akkor fordulhat elő, a szolgáltatás életciklusa alatt számos alkalommal egész. Ez akkor fordulhat elő, beleértve a különböző okokból:
 
 * A rendszer áthelyezi a szolgáltatáspéldány terheléselosztás erőforrás.
 * Hibák merülnek fel, a kódban.
@@ -201,16 +201,16 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) a szótár megvalósítása, amely megbízható adattárolóban állapotokat a szolgáltatás segítségével. A Service Fabric és a megbízható Hashmaps tárolható adatok közvetlenül a szolgáltatás egy külső állandó tároló szükségessége nélkül. Megbízható Hashmaps magas rendelkezésre állásúvá adatait. A Service Fabric ezt a feladatot el létrehozásával és kezelésével több *replikák* meg a szolgáltatás. Az API-k, amelyek számítógépnél kivonatolja a bonyolultságára ezeket a replikák és a Állapotváltások kezelése is tartalmazza.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) a szótár megvalósítása, amely megbízható adattárolóban állapotokat a szolgáltatás segítségével. A Service Fabric és a megbízható HashMaps tárolható adatok közvetlenül a szolgáltatás egy külső állandó tároló szükségessége nélkül. Megbízható HashMaps magas rendelkezésre állásúvá adatait. A Service Fabric ezt a feladatot el létrehozásával és kezelésével több *replikák* meg a szolgáltatás. Az API-k, amelyek számítógépnél kivonatolja a bonyolultságára ezeket a replikák és a Állapotváltások kezelése is tartalmazza.
 
 Megbízható gyűjtemények Java bármilyen, beleértve a felhasználói típusok, a figyelmeztetések néhány tudja tárolni:
 
-* A Service Fabric lehetővé teszi a állapot magas rendelkezésre állású által *replikálása* csomópontokat, és megbízható Hashmap állapot tárolja az adatokat, hogy a helyi lemez minden replikán. Ez azt jelenti, hogy minden, a megbízható Hashmaps tárolt kell *szerializálható*. 
-* Objektumok replikálása a magas rendelkezésre állású ha véglegesíti a megbízható Hashmaps tranzakciók. A megbízható Hashmaps tárolt objektumok kell tartani a szolgáltatás a helyi memóriához. Ez azt jelenti, hogy rendelkezik-e helyi hivatkozik az objektumra.
+* A Service Fabric lehetővé teszi a állapot magas rendelkezésre állású által *replikálása* csomópontokat, és megbízható HashMap állapot tárolja az adatokat, hogy a helyi lemez minden replikán. Ez azt jelenti, hogy minden, a megbízható HashMaps tárolt kell *szerializálható*. 
+* Objektumok replikálása a magas rendelkezésre állású ha véglegesíti a megbízható HashMaps tranzakciók. A megbízható HashMaps tárolt objektumok kell tartani a szolgáltatás a helyi memóriához. Ez azt jelenti, hogy rendelkezik-e helyi hivatkozik az objektumra.
   
-   Fontos, hogy Ön nem mutálódni azokat az objektumokat helyi példányát a megbízható gyűjtemény a frissítési művelet végrehajtása egy tranzakcióban nélkül. Ez az objektum helyi példányát módosításai nem lesz automatikusan replikálja. Szúrja be az objektumot újra üzembe a szótár kell vagy valamelyikével a *frissítése* metódusai a szótárban.
+   Fontos, hogy Ön nem mutálódni azokat az objektumokat helyi példányát a megbízható gyűjtemény a frissítési művelet végrehajtása egy tranzakcióban nélkül. Ez az objektum helyi példányát módosításai nem lesz automatikusan replikálja. Az objektum helyezze vissza a szótár vagy valamelyikével kell a *frissítése* metódusai a szótárban.
 
-A megbízható állapotkezelője megbízható Hashmaps az Ön kezeli. Egyszerűen kérje meg a megbízható állapotkezelője megbízható gyűjtemény neve és bárhol, bármikor a szolgáltatásban. A megbízható állapotkezelője biztosítja, hogy vissza a hivatkozás. Nem ajánlott az, hogy menti megbízható gyűjtemény példányok hivatkozik a tag változók vagy tulajdonságok. Győződjön meg arról, hogy a hivatkozás értéke egy példányát a szolgáltatás életciklusának mindig különös gondot kell fordítani. A megbízható állapotkezelője kezeli a megfelelőek Önnek, és ismétlési látogatások van optimalizálva.
+A megbízható állapotkezelője megbízható HashMaps az Ön kezeli. Kérje meg a megbízható állapotkezelője megbízható gyűjtemény neve és bárhol, bármikor a szolgáltatásban. A megbízható állapotkezelője biztosítja, hogy vissza a hivatkozás. Nem ajánlott, az osztály tagváltozók vagy tulajdonságai menti a megbízható gyűjtemény példányok hivatkozik. Győződjön meg arról, hogy a hivatkozás értéke egy példányát a szolgáltatás életciklusának mindig különös gondot kell fordítani. A megbízható állapotkezelője kezeli a megfelelőek Önnek, és ismétlési látogatások van optimalizálva.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Tranzakciós és aszinkron műveletek
@@ -231,12 +231,12 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-A megbízható Hashmaps műveletek aszinkron jellegűek. Ennek az az oka megbízható gyűjteményekkel írási műveletek végrehajtása i/o-műveletek történő replikálásához és megőrizni az adatokat a lemezre.
+A megbízható HashMaps műveletek aszinkron jellegűek. Ennek az az oka megbízható gyűjteményekkel írási műveletek végrehajtása i/o-műveletek történő replikálásához és megőrizni az adatokat a lemezre.
 
-Megbízható Hashmap műveletek *tranzakciós*, így biztosítható állapot konzisztens több megbízható Hashmaps és műveletek. Például Ön lekérni a munkaelem egy megbízható szótárból, rajta egy adott művelet elvégzéséhez, és mentse az eredmény anoter megbízható Hashmap, egy tranzakción belül. Ez a rendszer egy atomi művelet, és Ez garantálja, hogy vagy a teljes műveletet sikeres lesz, vagy a teljes műveletet állítja vissza. Ha hiba lép fel, akkor created elem után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és a marad, a feldolgozási várakozási sorban.
+Megbízható HashMap műveletek *tranzakciós*, így biztosítható állapot konzisztens több megbízható HashMaps és műveletek. Például Ön lekérni a munkaelem egy megbízható szótárból, rajta egy adott művelet elvégzéséhez, és mentse az eredmény egy másik, megbízható HashMap, egy tranzakción belül. Ez a rendszer egy atomi művelet, és Ez garantálja, hogy vagy a teljes műveletet sikeres lesz, vagy a teljes műveletet állítja vissza. Ha hiba lép fel, akkor created elem után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és a marad, a feldolgozási várakozási sorban.
 
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="build-the-application"></a>Az alkalmazás létrehozása
 
 A Yeoman állványok tartozik gradle parancsfájl építenie az alkalmazást, és a bash parancsfájlok telepítéséhez, és távolítsa el az alkalmazást. Az alkalmazás futtatásához előbb építenie az alkalmazást a gradle-lel:
 
@@ -246,13 +246,31 @@ $ gradle
 
 Ezzel létrehozza a Service Fabric alkalmazáscsomagok, amelyek a Service Fabric parancssori felület használatával is telepíthető.
 
-### <a name="deploy-with-service-fabric-cli"></a>A Service Fabric parancssori felület telepítése
+## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
-A install.sh parancsfájl tartalmazza a szükséges Service Fabric parancssori felület parancsai az alkalmazáscsomag telepítéséhez. Futtassa a install.sh Telepítse központilag az alkalmazást.
+Az alkalmazást a létrehozása után telepítheti a helyi fürtben.
 
-```bash
-$ ./install.sh
-```
+1. Csatlakozzon a helyi Service Fabric-fürthöz.
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. Futtassa a sablonban megadott telepítési szkriptet az alkalmazáscsomagnak a fürt lemezképtárolójába való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.
+
+    ```bash
+    ./install.sh
+    ```
+
+A kész alkalmazás a többi Service Fabric-alkalmazással azonos módon telepíthető. Részletesebb útmutatást talál a [Service Fabric-alkalmazás kezelése a Service Fabric parancssori felülettel](service-fabric-application-lifecycle-sfctl.md) című dokumentációban.
+
+Ezen parancsok paraméterezése megtalálható az alkalmazáscsomagon belül, a generált jegyzékfájlokban.
+
+Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
+
+> [!IMPORTANT]
+> Biztonságos Linux fürthöz az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazásba érvényesítendő tanúsítvánnyal kell. Így lehetővé teszi, hogy a Reliable Services szolgáltatások kommunikálni az alapul szolgáló Service Fabric-futtatókörnyezet API-k. További tudnivalókért lásd: [konfigurálása a Reliable Services alkalmazás futtatásának Linux fürtökön](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
 
 ## <a name="next-steps"></a>További lépések
 

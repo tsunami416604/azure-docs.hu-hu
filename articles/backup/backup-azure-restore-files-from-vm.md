@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: pullabhk
-ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 4be1ffcabed6667ab76ec790326a687d75c8b125
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737018"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958620"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gép biztonsági mentése
 
@@ -173,7 +173,7 @@ Az alábbi táblázat a kiszolgálóhoz és számítógépes operációs rendsze
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
 
-### <a name="for-linux"></a>A Linux rendszerhez
+### <a name="for-linux-os"></a>A Linux operációs rendszer
 
 A Linux az operációs rendszer, a fájlok visszaállítására használt számítógép támogatnia kell a fájlrendszer a védett virtuális gépek. Lehetőséget választva a parancsfájl futtatásához a számítógépen, győződjön meg arról, a számítógép egy kompatibilis operációs rendszer, és használja az alábbi táblázatban azonosított verziók egyikét:
 
@@ -191,7 +191,7 @@ A parancsfájl a Python és bash összetevők hajtható végre, és a helyreáll
 
 |Összetevő | Verzió  |
 | --------------- | ---- |
-| Bash | 4 vagy újabb verzió |
+| bash | 4 vagy újabb verzió |
 | python | 2.6.6 vagy újabb verzió  |
 | TLS | 1.2 támogatnia kell  |
 

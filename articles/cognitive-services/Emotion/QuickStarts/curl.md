@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: d36a191d3589702d676e694715f34ea1c924e2d3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347542"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021098"
 ---
 # <a name="emotion-api-curl-quick-start"></a>Gyors üzembe helyezés érzelemfelismerési API-cURL
 
 > [!IMPORTANT]
 > Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
 
-Ez a cikk és a segítségével gyorsan kódmintákat az első lépéseiben a [Érzelemfelismerési API-t ismeri fel a metódust](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a cURL ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
+Ez a cikk és a segítségével gyorsan kódmintákat az első lépéseiben a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a cURL ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
 
 ## <a name="prerequisite"></a>Előfeltétel
 * Az ingyenes előfizetés kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/)

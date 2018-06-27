@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d88fcea4a41d8402cc25a1623727284afb0e9088
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240224"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959382"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Azure Redis Cache méretezése
 Azure Redis Cache rendelkezik másik gyorsítótármappa ajánlatokat, amelyek gyorsítótár mérete és a szolgáltatások rugalmasságot biztosítanak. A gyorsítótár létrehozása után méretezheti méretét és a gyorsítótár az árképzési szint Ha megváltoztatja az alkalmazás követelményeinek. Ez a cikk bemutatja, hogyan méretezése a gyorsítótár az Azure portál, és az Azure PowerShell vagy az Azure parancssori felület használatával.
@@ -154,7 +154,7 @@ Míg a Standard és Premium gyorsítótárak egy 99,9 %-os SLA-t a rendelkezésr
 * **Alapszintű** során skálázás műveletek különböző méretű gyorsítótárak offline módban. Alapszintű gyorsítótárak továbbra is elérhető, ha a skálázás **alapvető** való **szabványos** , de egy kis kapcsolat blip problémákat tapasztalhat. Egy kapcsolat blip akkor fordul elő, ha a redis-ügyfelek azonnal helyreállítani a kapcsolatot kell lennie.
 
 
-### <a name="scaling-limitations-with-geo-relication"></a>A földrajzi-relication skálázási korlátozások
+### <a name="scaling-limitations-with-geo-replication"></a>A georeplikáció a skálázási korlátozások
 
 Miután hozzáadta a két-gyorsítótárak közötti georeplikációs hivatkozást, már nem lesz képes indítsa el a méretezési műveletet, vagy a fürt szilánkok számának módosítása. Ezek a parancsok kibocsátására gyorsítótár kell választható. További információkért lásd: [konfigurálása georeplikáció](cache-how-to-geo-replication.md).
 

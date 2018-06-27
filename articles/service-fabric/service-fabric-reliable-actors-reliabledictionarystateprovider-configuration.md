@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c7e31f9da2b2f9fe7a3a7c64cd6927224cb9fa1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213112"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017895"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors--ReliableDictionaryActorStateProvider konfigurálása
 Módosíthatja a ReliableDictionaryActorStateProvider használható alapértelmezett konfigurációt a settings.xml fájlban megadott szereplő a Visual Studio csomag legfelső szintű a Config mappában létrehozott módosításával.
@@ -69,14 +69,18 @@ SharedLogSizeInMB meghatározza a szabad lemezterület az alapértelmezett megos
 A replikáció során használt kommunikációs csatornát replikátor biztonsági beállításokkal szolgálnak. Ez azt jelenti, hogy a szolgáltatások nem látható egymás replikációs forgalmat, amely biztosítja a magas rendelkezésre állási adatok is biztonságos.
 Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadályozza, hogy a replikációs biztonságot.
 
-### <a name="section-name"></a>Section name
+> [!IMPORTANT]
+> Linux-csomópont a tanúsítványok kell PEM-formátumú. További információ keresése és tanúsítványok konfigurálása Linux további tudnivalókért lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
+> 
+
+### <a name="section-name"></a>Szakasz neve
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Replikációs konfiguráció
 Replikációs beállítások segítségével konfigurálhatja a replikátor, amely feladata, hogy az Aktor Állapotszolgáltató állapot nagymértékben megbízható replikálódik, és az állapot helyi megőrzése.
 Az alapértelmezett konfiguráció a Visual Studio-sablon által generált és elegendőnek kell lennie. Ez a szakasz beszél finomhangolhatják a replikátor rendelkezésre álló további beállításokat.
 
-### <a name="section-name"></a>Section name
+### <a name="section-name"></a>Szakasz neve
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek

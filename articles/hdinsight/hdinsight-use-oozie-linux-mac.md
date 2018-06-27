@@ -2,24 +2,22 @@
 title: Linux-alapú Azure hdinsight Hadoop Oozie munkafolyamatok használata |} Microsoft Docs
 description: Linux-alapú HDInsight Hadoop Oozie használja. Megtudhatja, hogyan határozza meg az Oozie-munkafolyamat és az Oozie feladat elküldéséhez.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 8a25507ab076c4eecccea4e8a503d68ff1441ae5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/26/2018
+ms.author: omidm
+ms.openlocfilehash: a1fd33ec83208dfd5d90a0fb11557c72a5f02e88
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179078"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019279"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>A Hadoop Oozie segítségével határozza meg, és a munkafolyamat futtatása a Linux-alapú Azure HDInsight
 
@@ -37,15 +35,13 @@ Oozie feladatok, amelyek rendszerspecifikus, például Java programok vagy héjp
 > [!NOTE]
 > A munkafolyamatok és a HDInsight együttes megadása egy másik lehetőség, hogy Azure Data Factory használja. Adat-előállító kapcsolatos további információkért lásd: [használja a Pig és a Data Factory Hive][azure-data-factory-pig-hive].
 
-> [!IMPORTANT]
-> Oozie nincs engedélyezve a HDInsight-tartományhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **HDInsight-fürtök**: lásd: [HDInsight Linux első lépések](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
-> A jelen dokumentumban leírt lépések egy HDInsight-fürt által használt Linux igényelnek. Linux az egyetlen operációs rendszer használt a HDInsight 3.4 vagy újabb verziója. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. Linux az egyetlen operációs rendszer használt a HDInsight 3.4 vagy újabb verziója. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="example-workflow"></a>Példa-munkafolyamat
 
@@ -78,7 +74,7 @@ Oozie vár, hogy a szükséges összes erőforrást, egy feladat ugyanabban a k�
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-    Cserélje le `sshuser` rendelkező a fürthöz az SSH-felhasználónév. Cserélje le `clustername` a fürt nevét. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+    Cserélje le az `sshuser` elemet a fürt SSH-felhasználónevére. Cserélje le `clustername` a fürt nevét. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. A következő könyvtár létrehozásakor, a következő paranccsal:
 
@@ -240,7 +236,7 @@ SQL-adatbázis létrehozásához kövesse a [SQL-adatbázis létrehozása](../sq
 ### <a name="create-the-table"></a>A tábla létrehozása
 
 > [!NOTE]
-> Számos módon hozzon létre egy táblát az SQL-adatbázishoz való kapcsolódáshoz. Az alábbi lépéseket használata [FreeTDS](http://www.freetds.org/) a a HDInsight-fürthöz.
+> Számos módon hozzon létre egy táblát az SQL-adatbázishoz való kapcsolódáshoz. A következő lépések során a [FreeTDS](http://www.freetds.org/) eszközt használjuk a HDInsight-fürtről.
 
 
 1. A következő paranccsal FreeTDS a HDInsight-fürt telepítése:
@@ -263,7 +259,7 @@ SQL-adatbázis létrehozásához kövesse a [SQL-adatbázis létrehozása](../sq
         Default database being set to oozietest
         1>
 
-3. : A `1>` kéri, adja meg a következő sorokat:
+3. Az `1>` parancssorban írja be a következő sorokat:
 
     ```sql
     CREATE TABLE [dbo].[mobiledata](
@@ -274,7 +270,7 @@ SQL-adatbázis létrehozásához kövesse a [SQL-adatbázis létrehozása](../sq
     GO
     ```
 
-    Ha a `GO` utasításban is meg kell adni, az előző utasítások kiértékelése. Ezekre az utasításokra, hozzon létre egy táblát, nevű **mobiledata**, a munkafolyamat által használt.
+    A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat. Ezekre az utasításokra, hozzon létre egy táblát, nevű **mobiledata**, a munkafolyamat által használt.
 
     Győződjön meg arról, hogy a táblázat létrejött, a következő parancsokat használhatja:
 
@@ -535,7 +531,7 @@ Szeretne használni az Oozie webes felhasználói felület, kövesse az alábbi 
 
 3. Válassza ki a lap bal oldalán, **Oozie** > **Gyorshivatkozások** > **Oozie webes felhasználói felületén**.
 
-    ![a menük képe](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![A menük képe](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
 4. Az Oozie webes felhasználói felület alapértelmezés szerint a futó munkafolyamat-feladat megjelenítése. A munkafolyamat-feladatok megtekintéséhez válasszon **összes feladat**.
 

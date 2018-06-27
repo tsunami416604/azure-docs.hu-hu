@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2017
+ms.date: 06/25/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 493fb0295c1d760bb7de13ae1b703b3636750612
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29180036"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018714"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezetben a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás optimalizálása
 
@@ -44,7 +44,7 @@ Után, a megoldás felvett értékelését elvégezni, összefoglaló adatait f�
 
 A megoldás a Microsoft System Operations Manager 2012 Service Pack (SP) 1 és 2012 R2 működik.
 
-Az alábbi információk segítségével telepítse és konfigurálja a megoldást.
+A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
  - A állapotának ellenőrzése megoldás a Naplóelemzési használata előtt rendelkeznie kell a telepített megoldás. A megoldás telepítése [Azure piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
@@ -212,14 +212,14 @@ Minden javaslat arról, hogy miért fontos útmutatást tartalmazza. Ez az útmu
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Használjon állapotának ellenőrzése a fókusz terület javaslatok
 
-Ügyfélállapot-ellenőrzés megoldást a Naplóelemzési használata előtt rendelkeznie kell a telepített megoldás. További megoldások telepítéséről lásd: [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md). Azt követően, a System Center Operations Manager állapotának ellenőrzése csempe az OMS-portálon Áttekintés lap segítségével tekintheti javaslatok összegzését.
+Ügyfélállapot-ellenőrzés megoldást a Naplóelemzési használata előtt rendelkeznie kell a telepített megoldás. További megoldások telepítéséről lásd: [felügyeleti megoldás telepítése](log-analytics-add-solutions.md). Azt követően, megtekintheti a System Center Operations Manager állapotának ellenőrzése csempe használatával javaslatok összegzése a **áttekintése** lap munkaterület az Azure portálon.
 
 Az összesített megfelelőségi értékelése az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Az egy fókuszban terület javaslatok megtekintése és a szükséges javítási műveletek
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.
 2. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
-3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **OMS-portálon** csempére.  
+3. A Naplóelemzési előfizetések ablaktáblán jelölje ki a munkaterület, és kattintson a **munkaterület összegzés** menüpont.  
 4. Az a **áttekintése** lapján kattintson a **System Center Operations Manager állapotának ellenőrzése** csempére.
 5. Az a **System Center Operations Manager állapotának ellenőrzése** lapon. Ellenőrizze az összefoglaló információkat a fókusz terület paneleken egyikében, majd kattintson egy adott fókusz területre javaslatok megtekintéséhez.
 6. A fókusz terület lapok egyikén tekintheti meg a környezetnek a rangsorolt ajánlásokat. Kattintson az ajánlás **érintett objektumok** miért a javaslatokkal kapcsolatos részletek megtekintéséhez.<br><br> ![fókusz terület](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
@@ -232,7 +232,7 @@ Ha figyelmen kívül hagyása kívánt ajánlásokat, létrehozhat egy szövegf�
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>Javaslatok figyelmen kívül hagyása kívánt azonosításához
-1. Az Azure-portálon a kijelölt munkaterülethez tartozó Naplóelemzési munkaterület lapon kattintson a **naplófájl-keresési** csempére.
+1. Az Azure-portálon a kijelölt munkaterülethez tartozó Naplóelemzési munkaterület lapon kattintson a **naplófájl-keresési** menüpont.
 2. A következő lekérdezés futtatásával lista ajánlásokat, amelyek nem tudták használni a környezetében.
 
     ```

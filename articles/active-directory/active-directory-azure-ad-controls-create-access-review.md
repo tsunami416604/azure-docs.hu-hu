@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2c4e26bb6f2cd144d00d9e4ada92d756fe68418b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234073"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020406"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Hozzon létre egy áttekintése csoporttagok vagy alkalmazás-hozzáférés az Azure ad-vel
 
@@ -26,7 +26,7 @@ Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem
 
 ## <a name="create-an-access-review"></a>Hozzáférési felülvizsgálat létrehozása
 
-1. Globális rendszergazdaként, navigáljon a [hozzáférés ellenőrzi, hogy lap](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), és válassza ki **programok**.
+1. Globális rendszergazdaként vagy felhasználói fiók rendszergazdájához, navigáljon a [hozzáférés ellenőrzi, hogy lap](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), és válassza ki **programok**.
 
 2. Válassza ki a program, amely tárolja a felülvizsgálati hozzáférés szeretne létrehozni. **Alapértelmezett Program** mindig jelen, vagy létrehozhat egy másik programot. Választhat, például, hogy minden megfelelőségi Initiative egy program vagy üzleti cél.
 
@@ -38,7 +38,7 @@ Hozzáférés hozzárendelések vált "elavult", ha a felhasználók többé nem
 
 6. A hozzáférés felülvizsgálati ismétlődő, gyakoriságának módosítása egy alkalommal a heti, havi, negyedéves vagy évente, és használja, a csúszka vagy szöveges mezőben adja meg, hány napig minden át kell tekinteni a sorozat ismétlődő adatokat a véleményezők lesz. Például a maximális időtartamot tartozó állíthatja be a havi áttekintése: 27 nap értékelést átfedés elkerülése érdekében. 
 
-7.  Az ismétlődő hozzáférés felülvizsgálati adatsorozat 3 módon fejezheti: folyamatosan elindításához értékelést határozatlan ideig, amíg egy adott dátumot, vagy egy megadott előfordulások száma befejezése után futtatja. Ön vagy egy másik globális rendszergazda leállításához az adatsorozat létrehozása után a dátum a beállítások módosítása, hogy az adott dátumon végződik.
+7.  Az ismétlődő hozzáférés felülvizsgálati adatsorozat 3 módon fejezheti: folyamatosan elindításához értékelést határozatlan ideig, amíg egy adott dátumot, vagy egy megadott előfordulások száma befejezése után futtatja. Azt, egy másik felhasználói fiókot rendszergazda vagy egy másik globális rendszergazda leállításához az adatsorozat létrehozása után a dátum a beállítások módosítása, hogy az adott dátumon végződik.
 
 8. Hozzáférés értékelést lehet egy csoport tagjai számára, vagy a felhasználók számára egy alkalmazás lettek társítva. További hatókörét megadhatja a hozzáférés csak tekintse át a tekintse át a Vendég számára tagok (vagy az alkalmazáshoz hozzárendelt), ahelyett, hogy minden olyan felhasználó, akik tagjai áttekintése vagy rendelkező felhasználók hozzáférni az alkalmazáshoz.
 

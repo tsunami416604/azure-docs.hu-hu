@@ -2,7 +2,7 @@
 title: Particionálás és Azure Cosmos DB horizontális skálázás |} Microsoft Docs
 description: Ismerje meg, hogyan particionálási működését Azure Cosmos DB, hogyan lehet konfigurálni a particionálás és kulcsok partícióazonosító és hogyan válassza ki a megfelelő partíciókulcs az alkalmazáshoz.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 046e45978d401e05d0ab8154aff994052f5d7717
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261083"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960372"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partíció és a skála Azure Cosmos DB
 
@@ -55,9 +55,9 @@ A partíciós kulcsok szemantikája némileg eltérő minden API szemantikáját
 
 | API | Partíciókulcs | Sorkulcs |
 | --- | --- | --- |
-| SQL | egyéni partíciós kulcs elérési útja | `id` kijavítva | 
-| MongoDB | egyéni shard kulcs  | `_id` kijavítva | 
-| Gremlin | egyéni partíció kulcstulajdonság | `id` kijavítva | 
+| SQL | Egyéni partíciós kulcs elérési útja | `id` kijavítva | 
+| MongoDB | Egyéni shard kulcs  | `_id` kijavítva | 
+| Gremlin | Egyéni partíció kulcstulajdonság | `id` kijavítva | 
 | Tábla | `PartitionKey` kijavítva | `RowKey` kijavítva | 
 
 Azure Cosmos-adatbázis használja a particionálás kivonat-alapú. Egy cikk írásakor Azure Cosmos DB csak a partíciós kulcs értékét, és a kivonatolt eredménye alapján határozza meg a mely partíció-elem tárolására. Azure Cosmos-adatbázis ugyanazon fizikai partícióján azonos partíciókulcsú minden elem tárolja. 
@@ -146,7 +146,7 @@ A Mongo rendszerhéj:
 db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
 ```
     
-Eredmény:
+Eredmények:
 
 ```JSON
 {

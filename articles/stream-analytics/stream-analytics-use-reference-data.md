@@ -5,72 +5,46 @@ services: stream-analytics
 author: jseb225
 ms.author: jeanb
 manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 6dd96ee96201b05e4b272214983e955fcc5b9125
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25c25a58b4c6eab5419f645e8e916e034e7803dd
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192043"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016890"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referenciaadatok használja a Stream Analytics keresések
-Referenciaadatok (más néven keresési tábla), amely statikus véges adatkészlet vagy lelassulnak, ami módosítása ideiglenesek, keresés végrehajtásához, vagy az adatfolyam függ. Annak hivatkozás adatok az Azure Stream Analytics-feladat, általában fogja használni a [hivatkozás adatok csatlakozás](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. A Stream Analytics használ a tárolási réteg a Referenciaadatoknál Azure Blob Storage tárolót, és az Azure Data Factory hivatkozás adatokat át legyenek-e vagy átmásolva az Azure Blob storage referenciaadatok, használni [tetszőleges számú felhőalapú és a helyszíni adattárolókhoz](../data-factory/copy-activity-overview.md). Referenciaadatok növekvő sorrendben az a dátum/idő, a blob neve (a bemeneti konfigurációs meghatározott) blobok sorozataként van modellezve. Az **csak** támogatja a sorozat végére hozzáadása egy dátum/idő használatával **nagyobb** a sorban utolsó blob a megadottól.
+Referenciaadatok (más néven keresési tábla) olyan véges adatok statikus vagy lassan módosítása ideiglenesek, keresés végrehajtásához, vagy az adatfolyam függ. Az Azure Stream Analytics betölti a referenciaadatok a memóriában kis késleltetésű adatfolyam feldolgozása eléréséhez. Annak hivatkozás adatok az Azure Stream Analytics-feladat, általában fogja használni a [hivatkozás adatok csatlakozás](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. A Stream Analytics használ a tárolási réteg a Referenciaadatoknál Azure Blob Storage tárolót, és az Azure Data Factory hivatkozás adatokat át legyenek-e vagy átmásolva az Azure Blob storage referenciaadatok, használni [tetszőleges számú felhőalapú és a helyszíni adattárolókhoz](../data-factory/copy-activity-overview.md). Referenciaadatok növekvő sorrendben az a dátum/idő, a blob neve (a bemeneti konfigurációs meghatározott) blobok sorozataként van modellezve. Az **csak** támogatja a sorozat végére hozzáadása egy dátum/idő használatával **nagyobb** a sorban utolsó blob a megadottól.
 
-A Stream Analytics rendelkezik egy **100 MB-os felső határ az egyes blob** feladatok használatával tud feldolgozni több hivatkozás blobokat, de a **elérési út mintája** tulajdonság.
+A Stream Analytics támogatja a referenciaadatok **maximális mérete 300 MB**. A referenciaadatok maximális mérete 300 MB határértéke elérhető csak az egyszerű lekérdezések. Ha a lekérdezés összetettsége növekszik ablakos összesítéseket, az időalapú illesztéseket és historikus analitikai funkciók, például állapot-nyilvántartó feldolgozási felvenni várható, hogy a legnagyobb támogatott-e a hivatkozási adatokat csökkenő méretét. Azure Stream Analytics nem tölthető be a referenciaadatok és összetett műveleteket hajtson végre, ha a feladat elfogy a memória, és sikertelen lesz. Ilyen esetekben SU % kihasználtsági metrika eléri a 100 %.    
+
+|**Streamelési egységek számát**  |**KB. maximális méretét (megabájtban) támogatott**  |
+|---------|---------|
+|1   |50   |
+|3   |150   |
+|6 megalapozása   |300   |
+
+Egy feladat túl 6 Streaming Units számát növelése nem növeli referenciaadatok támogatott maximális méretét.
 
 Tömörítés támogatása nem érhető el a referenciaadatoknál. 
 
 ## <a name="configuring-reference-data"></a>Referenciaadatok konfigurálása
 A referenciaadatok konfigurálásához először szeretne létrehozni, amely típusú bemeneti **referenciaadatok**. Az alábbi táblázat azt ismerteti, hogy minden egyes tulajdonsága, amely meg kell adnia a leírás a referenciaadatok bemeneti létrehozása során:
 
-
-<table>
-<tbody>
-<tr>
-<td>Tulajdonság neve</td>
-<td>Leírás</td>
-</tr>
-<tr>
-<td>A bemeneti Alias</td>
-<td>Egy rövid nevet használt a feladat lekérdezésben a bemeneti hivatkozást.</td>
-</tr>
-<tr>
-<td>Tárfiók</td>
-<td>Hol találhatók a BLOB storage-fiók neve. Ha ugyanazt az előfizetést, a Stream Analytics-feladat, válassza ki azt a a legördülő listán.</td>
-</tr>
-<tr>
-<td>Tárfiók kulcsa</td>
-<td>A storage-fiókjához tartozó titkos kulcsot. Ez automatikusan lekérdezi megadni, ha a tárfiók ugyanahhoz az előfizetéshez, mint a Stream Analytics-feladat van.</td>
-</tr>
-<tr>
-<td>A tároló</td>
-<td>Tárolók adja meg a Microsoft Azure Blob szolgáltatásban tárolt blobok logikai csoportosítását. Amikor egy blob feltöltése a Blob szolgáltatás, meg kell adnia, hogy a blob tárolója.</td>
-</tr>
-<tr>
-<td>Elérési út mintája</td>
-<td>A megadott tárolóban található blobok helyének azonosításához használt elérési utat. Az elérési útban kiválaszthatja a következő 2 változó egy vagy több példányát adhatja meg:<BR>a {date}, {time}<BR>1. példa: products/{date}/{time}/product-list.csv<BR>2. példa: products/{date}/product-list.csv
-</tr>
-<tr>
-<td>[Választható] dátumformátum</td>
-<td>Ha a megadott elérési út mintája belül használt {date}, majd választhat, amelyben a blobok vannak rendszerezve dátumformátum a támogatott formátumok legördülő.<BR>Példa: Éééé/hh/nn-éééé/hh/nn, stb.</td>
-</tr>
-<tr>
-<td>[Választható] idő formátuma</td>
-<td>Ha a megadott elérési út mintája belül használt {time}, majd választhat az időformátum, amelyben a blobok vannak rendszerezve a támogatott formátumok legördülő.<BR>Példa: HH, ÓÓ/pp vagy HH: mm-es</td>
-</tr>
-<tr>
-<td>Esemény szerializálási formátum</td>
-<td>Annak érdekében, hogy a lekérdezések a várt módon működjenek, a Stream Analyticsnek tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-NÁ.</td>
-</tr>
-<tr>
-<td>Encoding</td>
-<td>Az UTF-8 jelenleg az egyetlen támogatott kódolási formátum</td>
-</tr>
-</tbody>
-</table>
+|**Tulajdonság neve**  |**Leírás**  |
+|---------|---------|
+|A bemeneti Alias   | Egy rövid nevet használt a feladat lekérdezésben a bemeneti hivatkozást.   |
+|Tárfiók   | Hol találhatók a BLOB storage-fiók neve. Ha ugyanazt az előfizetést, a Stream Analytics-feladat, válassza ki azt a a legördülő listán.   |
+|Tárfiók kulcsa   | A storage-fiókjához tartozó titkos kulcsot. Ez automatikusan lekérdezi megadni, ha a tárfiók ugyanahhoz az előfizetéshez, mint a Stream Analytics-feladat van.   |
+|A tároló   | Tárolók adja meg a Microsoft Azure Blob szolgáltatásban tárolt blobok logikai csoportosítását. Amikor egy blob feltöltése a Blob szolgáltatás, meg kell adnia, hogy a blob tárolója.   |
+|Elérési út mintája   | A megadott tárolóban található blobok helyének azonosításához használt elérési utat. Az elérési útban kiválaszthatja a következő 2 változó egy vagy több példányát adhatja meg:<BR>a {date}, {time}<BR>1. példa: products/{date}/{time}/product-list.csv<BR>2. példa: products/{date}/product-list.csv   |
+|[Választható] dátumformátum   | Ha a megadott elérési út mintája belül használt {date}, majd választhat, amelyben a blobok vannak rendszerezve dátumformátum a támogatott formátumok legördülő.<BR>Példa: Éééé/hh/nn-éééé/hh/nn, stb.   |
+|[Választható] idő formátuma   | Ha a megadott elérési út mintája belül használt {time}, majd választhat az időformátum, amelyben a blobok vannak rendszerezve a támogatott formátumok legördülő.<BR>Például: HH ÓÓ/pp, vagy HH: mm-es.  |
+|Esemény szerializálási formátum   | Annak érdekében, hogy a lekérdezések a várt módon működjenek, a Stream Analyticsnek tudnia kell, melyik szerializálási formátumot használja a bejövő adatfolyamokhoz. A Referenciaadatoknál, a támogatott formátumok a következők CSV és JSON-NÁ.  |
+|Encoding   | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.  |
 
 ## <a name="generating-reference-data-on-a-schedule"></a>Referenciaadatok ütemezés létrehozása
 A lassan változó adatkészletet a referenciaadatok esetén majd adatok engedélyezve van a bemeneti konfigurációját a {date} segítségével egy elérési út mintája megadásával hivatkozás frissítése és támogatása {time} helyettesítés jogkivonatokat. A Stream Analytics szerzi be a frissített adatokat definíciókat az elérési út mintája alapján. Például egy mintát `sample/{date}/{time}/products.csv` a dátumformátummal **"Éééé-hh-nn"** és idő formátuma **"HH-mm"** arra utasítja a Stream Analytics a frissített blob átvételéhez `sample/2015-04-16/17-30/products.csv` 5:30-kor. április 16: , 2015 UTC időzóna.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 1c131c2c9ca12556c1d2cd52e7976d2f4272a0c8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 802be1ad5b1029add249430ee7760002407c4641
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767951"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021625"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Folyamatok konfigurálható küszöbérték-alapú szabályok az Azure Stream Analytics
 Ez a cikk ismerteti a referenciaadatok használata egy riasztási megoldást az Azure Stream Analytics konfigurálható küszöbérték-alapú szabályok használó eléréséhez.
@@ -45,7 +45,7 @@ A példa referenciaadatok jeleníti meg, hogyan küszöbérték-alapú szabály 
 - A példában a szabály segítségével azonosítja a állítható riasztást, amikor a CPU-meghaladja (átlagolni nagyobb vagy egyenlő) értéke `90` százalék. A `value` mezője szükség szerint konfigurálható.
 - Figyelje meg, a szabály egy **operátor** mező, amely dinamikusan értelmezi a lekérdezés szintaxisa a későbbi `AVGGREATEROREQUAL`. 
 - A szabály egy adott dimenzió kulcs lévő adatok szűrése `2` értékű `C1`. A többi mező kitöltése jelzi a bemeneti adatfolyam esemény mezők szerint szűrheti a nem üres karakterlánc. További CPU-szabályok beállíthat más mezők szűréséhez, igény szerint.
-- Nem minden oszlopa van a kimeneti figyelmeztetési esemény szerepeltetni. Ebben az esetben `includedDim` szám kulcs `2` be van kapcsolva `TRUE` képviseli, hogy, hogy az adatfolyam eseményadatok számot 2 fog szerepelni a megfelelő kimeneti események. A más mezők nem szerepelnek a riasztási kimeneti, de a mezőlista módosítható.
+- Nem minden oszlopa van a kimeneti figyelmeztetési esemény szerepeltetni. Ebben az esetben `includedDim` szám kulcs `2` be van kapcsolva `TRUE` képviseli, hogy az adatfolyam eseményadatok 2 számot a megfelelő kimeneti események fognak szerepelni. A más mezők nem szerepelnek a riasztási kimeneti, de a mezőlista módosítható.
 
 
 ```json

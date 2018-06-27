@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234519"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018455"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Ismerkedés az Azure WebJobs SDK eseményvezérelt háttérben történő feldolgozás
 
@@ -66,6 +66,9 @@ Ez a cikk feltételezi, hogy rendelkezik [az Azure-fiók](https://azure.microsof
 2. Válassza ki **klasszikus Windows asztal > Konzolalkalmazásból (.NET-keretrendszer)**.
 
    Egy 3.x-projekt létrehozásához válassza **.NET Core > Konzolalkalmazás (.NET Core)**.
+   
+   > [!NOTE]
+   > 3.x még előzetes és fejlesztés alatt áll. Ez a cikk utasításait 3.x nem teljesek; a legfrissebb információkért tekintse meg a GitHub-problémák a lap alján.
 
 3. Nevet a projektnek *WebJobsSDKSample*, majd válassza ki **OK**.
 
@@ -320,7 +323,7 @@ Ebben a szakaszban hajtsa végre az Application Insights-naplózás előtt telep
 
 4. Az a **kapcsolati karakterláncok** mezőben adja meg a következő bejegyzés.
 
-   |Name (Név)  |Kapcsolati karakterlánc  |Adatbázis típusa|
+   |Name (Név)  |kapcsolati karakterlánc  |Adatbázis típusa|
    |---------|---------|------|
    |AzureWebJobsStorage | {a tárolási kapcsolati karakterlánc, amely korábban kimásolt}|Egyéni|
    

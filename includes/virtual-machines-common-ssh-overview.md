@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/16/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 919582745d166cf8b3f3937f9bac4fc0dc1fe64f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5e199771c39ba2fbdeabbd04ed4081a9cd3ea117
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "31613406"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36964518"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH és a kulcsok – áttekintés
 
-Az SSH egy olyan titkosított kapcsolati protokoll, amely lehetővé teszi, hogy a biztonságos bejelentkezés titkosítatlan kapcsolaton keresztül. Az Azure szolgáltatásban üzemeltetett Linux virtuális gépek alapértelmezett csatlakozási protokoll. Habár maga SSH titkosított kapcsolatot biztosít, jelszavak használata SSH-kapcsolatok továbbra is védtelen a virtuális Gépet a találgatásos támadásokkal vagy a jelszavak találgatás. A biztonságosabb és előnyben részesített csatlakoztatása egy virtuális gép SSH módszer egy nyilvános-titkos kulcsból álló kulcspárt, más néven az SSH-kulcsok használatával. 
+Az SSH egy olyan titkosított kapcsolati protokoll, amely lehetővé teszi, hogy a biztonságos bejelentkezések nem biztonságos kapcsolaton keresztül. Az Azure szolgáltatásban üzemeltetett Linux virtuális gépek alapértelmezett csatlakozási protokoll. Habár maga SSH titkosított kapcsolatot biztosít, jelszavak használata SSH-kapcsolatok továbbra is védtelen a virtuális Gépet a találgatásos támadásokkal vagy a jelszavak találgatás. A biztonságosabb és előnyben részesített csatlakoztatása egy virtuális gép SSH módszer egy nyilvános-titkos kulcsból álló kulcspárt, más néven az SSH-kulcsok használatával. 
 
 * A *nyilvános kulcs* helyezkedik el a Linux virtuális Gépet, vagy bármely olyan szolgáltatás, amely a nyilvános kulcsú titkosítás használna.
 

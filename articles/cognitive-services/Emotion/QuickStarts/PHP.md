@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: bb3f3bc1421e7c65a1fa6095f22f499415c50890
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 987d5a3eedaa17f1127be34e5f90ec2456fab99b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347546"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019397"
 ---
 # <a name="emotion-api-php-quick-start"></a>Érzelemfelismerési API PHP – első lépések
 
 > [!IMPORTANT]
 > Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
 
-Ez a cikk és a segítségével gyorsan mintakódok használatának megkezdésében a PHP és a [Érzelemfelismerési API-t ismeri fel a metódust](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
+Ez a cikk és a segítségével gyorsan mintakódok használatának megkezdésében a PHP és a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
 
 ## <a name="prerequisite"></a>Előfeltétel
 * Az ingyenes előfizetés kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/)

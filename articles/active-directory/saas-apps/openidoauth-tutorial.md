@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 176af41197810059a17daf5ab09d29e0169e9640
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 69e9d66458409bbc744416a58ceb508349418a76
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225007"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019553"
 ---
 # <a name="steps-to-configure-an-openidoauth-application-from-azure-ad-app-gallery"></a>Alkalmazás eltávolítása a Azure AD-alkalmazásgyűjtemény OpenID/OAuth konfigurálásáról
 
@@ -42,7 +42,7 @@ ms.locfileid: "36225007"
     ![Alkalmazás felvétele](./media/openidoauth-tutorial/addfromgallery.png)
 
     > [!NOTE]
-    > Open ID Connect és az OAuth-alkalmazások hozzáadása gomb alapértelmezés szerint le van tiltva. A bérlői rendszergazda kattintson ide az a **előfizetési** gombra, és adja meg az alkalmazásba hozzájárulás. Vele, hogy az alkalmazás fel az ügyfél az beszerzése bérlői, nem szükséges felvennie explicit módon, és hajtsa végre a konfigurációkat.
+    > Open ID Connect és az OAuth-alkalmazások hozzáadása gomb alapértelmezés szerint le van tiltva. A bérlői rendszergazda kattintson ide az a **előfizetési** gombra, és adja meg az alkalmazásba hozzájárulás. Amely az alkalmazás fogja lekérni fel az ügyfél bérlői, nem szükséges felvennie explicit módon, és hajtsa végre a konfigurációkat.
 
     ![Hozzáadás gomb](./media/openidoauth-tutorial/addbutton.png)
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2018
+ms.date: 06/26/2018
 ms.author: asmalser
-ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293296"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025867"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Felhasználói kiépítésének és megszüntetésének biztosítása SaaS-alkalmazásokhoz az Azure Active Directoryval történő automatizálásához
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazásokhoz?
@@ -50,7 +50,6 @@ Néhány gyakori összefüggések Ez a funkció használatához a következők:
 * Könnyen rendszerbe való importálás érdekében számos felhasználók egy adott SaaS-alkalmazáshoz vagy a rendszer.
 * Lehetővé teszik, hogy házirendek annak eldöntéséhez, akik ki van építve, és akik való bejelentkezés egy alkalmazás egyetlen csoportja.
 
-
 ## <a name="how-does-automatic-provisioning-work"></a>Automatikus kiépítés működése
     
 A **Azure AD-kiépítés szolgáltatás** SaaS-alkalmazásokhoz és más rendszerek, felhasználók minden egyes alkalmazás gyártója által biztosított felhasználói felügyeleti API-végpontok csatlakozva kiépítését. A felhasználó felügyeleti API végpontokkal programozott módon létrehozása, frissítése és eltávolítása a felhasználók számára az Azure AD. A kijelölt alkalmazások a létesítési szolgáltatás is létrehozhat frissítése, és további identitás kapcsolatos objektumok, például a csoportok és szerepkörök eltávolítása. 
@@ -69,15 +68,17 @@ A **Azure AD-kiépítés szolgáltatás** SaaS-alkalmazásokhoz és más rendsze
 
 Az Azure AD-funkciókat előre integrált számos népszerű SaaS-alkalmazásokhoz és az emberi erőforrások rendszerek támogatása, valamint általános támogatja az alkalmazások, amelyek megvalósítják az SCIM 2.0 szabvány meghatározott részeit.
 
-Az összes olyan Azure AD támogatja az előzetesen beépített létesítési összekötő listájáért lásd: a [felhasználói kialakítási alkalmazás bemutatók felsorolása](active-directory-saas-tutorial-list.md).
+### <a name="pre-integrated-applications"></a>Előre integrált alkalmazások
+Az összes olyan Azure AD támogatja az előzetesen beépített létesítési összekötő listájáért lásd: a [felhasználói kialakítási alkalmazás bemutatók felsorolása](saas-apps/tutorial-list.md).
 
-Támogatás az Azure AD a felhasználók átadása alkalmazáshoz való hozzáadásáról további információkért lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](manage-apps/use-scim-to-provision-users-and-groups.md).
-
-Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kéréséhez forduljon az Azure AD egy üzenet keresztül nyújt a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
+Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kéréséhez forduljon az Azure AD egy üzenet keresztül nyújt a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
 
 > [!NOTE]
 > Ahhoz, hogy az alkalmazás támogassa a automatizált felhasználókiépítése azt kell adnia a szükséges felhasználói felügyeleti API-k, amelyek lehetővé teszik külső programok automatikus létrehozását, karbantartási és a felhasználók törlése. Ezért nem minden SaaS-alkalmazások kompatibilisek-e ezt a szolgáltatást. Felhasználói felügyeleti API-kat támogató alkalmazások esetében az Azure AD mérnöki csapathoz majd tudnak az alkalmazások üzembe helyezési összekötő létrehozásához, és mindezt a jelenlegi és jövőbeli ügyfél igényeitől van előrébb. 
-    
+
+### <a name="connecting-applications-that-support-scim-20"></a>SCIM 2.0-t támogató alkalmazások összekapcsolása
+SCIM megvalósító alkalmazások általános összekapcsolása információk 2.0-s - alapú felhasználói felügyeleti API-k, lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](manage-apps/use-scim-to-provision-users-and-groups.md).
+
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hogyan állíthatom be az alkalmazás automatikus kiépítés?
 
@@ -85,7 +86,7 @@ Mérnöki csapat további alkalmazásokat az üzembe helyezési támogatás kér
 
 Az Azure AD szolgáltatás kiépítését, az indítja el a kiválasztott alkalmazás konfigurációja a  **[Azure-portálon](https://portal.azure.com)**. Az a **Azure Active Directory > Vállalati alkalmazások** szakaszban jelölje be **Hozzáadás**, majd **összes**, majd adja hozzá a forgatókönyvtől függően az alábbiak valamelyikét:
 
-* Az összes alkalmazás a **kiemelt alkalmazások** szakasz támogatási automatikus kiépítés. Tekintse meg a [felhasználói kialakítási alkalmazás bemutatók felsorolása](active-directory-saas-tutorial-list.md) újak a.
+* Az összes alkalmazás a **kiemelt alkalmazások** szakasz támogatási automatikus kiépítés. Tekintse meg a [felhasználói kialakítási alkalmazás bemutatók felsorolása](saas-apps/tutorial-list.md) újak a.
 
 * A "nem galéria alkalmazás" beállítást használja egyéni fejlett SCIM integrációja
 
@@ -152,7 +153,7 @@ A kezdeti szinkronizálás után minden ezt követő szinkronizálások lesz:
 >[!NOTE]
 > Igény szerint letilthatja a létrehozási, frissítési vagy törlési műveletek használatával a **céloz objektum műveletek** jelölőnégyzetek a [attribútum-leképezésekhez](active-directory-saas-customizing-attribute-mappings.md) szakasz. Frissítés közben a felhasználó letiltása logika keresztül egy attribútum-leképezés például "accountEnabled" mező is vezérlik.
 
-A létesítési szolgáltatás továbbra is futtassa végpont növekményes szinkronizálás határozatlan ideig meghatározott időközönként a [minden alkalmazásra vonatkoznak, az oktatóanyag](active-directory-saas-tutorial-list.md), amíg meg nem történik az alábbiak egyike:
+A létesítési szolgáltatás továbbra is futtassa végpont növekményes szinkronizálás határozatlan ideig meghatározott időközönként a [minden alkalmazásra vonatkoznak, az oktatóanyag](saas-apps/tutorial-list.md), amíg meg nem történik az alábbiak egyike:
 
 * A manuálisan leállították a szolgáltatást az Azure portál használatával, vagy a megfelelő Graph API-parancs segítségével 
 * Egy új kezdeti szinkronizálás aktiválódik, használja a **állapot törölje, majd indítsa újra** lehetőséget az Azure portálon, vagy a megfelelő Graph API-parancs használatával. Ez törli az összes tárolt vízjel, és hatására az összes adatforrás-objektumok újra kell kiértékelni.
@@ -216,33 +217,31 @@ Befejezéséhez szükséges idő befolyásoló tényezők összefoglalását egy
 * A kérelem sebességhatárok és sávszélesség-szabályozás valósítják meg a célrendszeren. Néhány célrendszereket valósítja meg a kérelem sebességhatárok és a szabályozás, amely befolyásolhatja a teljesítményt nagy szinkronizálási műveletek során. Ilyen körülmények egy alkalmazást, amely megkapja a túl sok kérelem túl gyors lehet, hogy a válasz sebességét lassú vagy zárja le a kapcsolatot. A teljesítmény javítása érdekében az összekötő úgy, hogy nem küldött gyorsabb, mint az alkalmazás segítségével dolgozza fel őket a az alkalmazás kérésekkel kell. Microsoft beépített létesítési összekötők ellenőrizze ezt a módosítást. 
 
 * A szám és a csoportjaikon belül méretét. Szinkronizálása a csoportok hozzárendelve felhasználók szinkronizálása hosszabb időbe telik. Mind a szám és a hozzárendelt csoportok hatással a teljesítményre. Ha egy alkalmazás [csoport objektum szinkronizálási szolgáltatás engedélyezve hozzárendelések](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), a csoport tulajdonságai, például a csoportneveket és a csoporttagságokat szinkronizált felhasználók mellett. A további szinkronizálások mint csak felhasználói objektumok hosszabb ideig tart.
- 
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Hogyan követheti nyomon az aktuális üzembe helyezési feladat előrehaladásának?**
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Hogyan állapítható meg, ha a felhasználók megfelelően van folyamatban?
 
-Tekintse meg a [létesítési jelentéskészítés – útmutató](active-directory-saas-provisioning-reporting.md).
+A szolgáltatás kiépítését felhasználó által végrehajtott összes műveletek tárolja, amely az Azure AD a naplók. Ez tartalmazza az összes olvasási és írási a forrás és cél rendszerek, valamint milyen felhasználói adatok lett írható és olvasható az egyes műveletek során végrehajtott műveletet.
 
-**Milyen operációs rendszer, hogy ha a felhasználók nem tudnak megfelelően beolvasása kiépített?**
+Hogyan az olvasás a naplók az Azure-portálon a további információkért lásd: a [létesítési jelentéskészítés – útmutató](active-directory-saas-provisioning-reporting.md).
 
-Összes sikertelen tárolja, amely az Azure AD a naplók. További információkért lásd: a [létesítési jelentéskészítés – útmutató](active-directory-saas-provisioning-reporting.md).
 
-**Hogyan hozhat létre olyan alkalmazás, amely az üzembe helyezési szolgáltatással működik?**
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Hogyan hibáinak elhárítása problémákat felhasználókiépítése?
 
-Lásd: [SCIM használata felhasználók és csoportok az Azure Active Directory alkalmazások automatikusan kiépítéséhez](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+Forgatókönyv-alapú bemutató elhárításáról automatikus a felhasználók átadása, lásd: [problémák konfigurálása, és üzembe helyezését a felhasználók számára az alkalmazás](active-directory-application-provisioning-content-map.md).
 
-**Hogyan elküldheti a visszajelzését a mérnöki csapathoz?**
 
-Kapcsolatfelvétel keresztül a [Azure Active Directory-visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/).
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Mik a működés közbeni automatikus a felhasználók átadása, ajánlott eljárásai?
+
+> [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
+
+Példa részletes telepítési tervének kimenő a felhasználók átadása egy alkalmazáshoz, tekintse meg a [identitás üzembe helyezési útmutató az, hogy a felhasználók átadása](https://aka.ms/userprovisioningdeploymentplan)/
 
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](active-directory-saas-tutorial-list.md)
+* [SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](saas-apps/tutorial-list.md)
 * [A felhasználók átadása attribútum-leképezésekhez testreszabása](active-directory-saas-customizing-attribute-mappings.md)
 * [Attribútum-leképezésekhez kifejezések írása](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Helyezése Hatókörszűrőkkel felhasználói történő üzembe helyezéséhez](active-directory-saas-scoping-filters.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Az Azure AD szinkronizálási API – áttekintés](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-* [Részletes üzembe helyezés kimenő a felhasználók átadása, az alkalmazások tervezése](https://aka.ms/userprovisioningdeploymentplan)
-

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 5ba13aeb63a72b738aac435b63ebbcfd4eeb7fa9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213214"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021412"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
 
@@ -51,6 +51,10 @@ A következő példa bemutatja, hogyan módosíthatja az alapértelmezett érté
 ## <a name="config-package"></a>A konfigurációs csomag
 
 Használhatja a [a konfigurációs csomag](service-fabric-application-and-service-manifests.md) az alapértelmezett konfiguráció módosításához.
+
+> [!IMPORTANT]
+> Linux-csomópont a tanúsítványok kell PEM-formátumú. További információ keresése és tanúsítványok konfigurálása Linux további tudnivalókért lásd: [tanúsítványok konfigurálása Linux](./service-fabric-configure-certificates-linux.md). 
+> 
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Az aktor szolgáltatás FabricTransport beállításainak konfigurálása
 
