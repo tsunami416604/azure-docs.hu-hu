@@ -16,20 +16,22 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34656441"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Az Azure virtuálisgép-skálázási készletekben – gyakori kérdések
 
 Válaszok virtuálisgép-méretezési csoportok kapcsolatos gyakori kérdések az Azure-ban.
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Gyakori kérdések a méretezési készlet felső
+
 **K.** Hány virtuális gépet tartalmazhat egy méretezési csoport?
 
-**V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–300, egyéni rendszerképen alapuló virtuális gépet tartalmazhat. 
+**V.** A méretezési csoport 0–1000, platformrendszerképen alapuló virtuális gépet, vagy 0–300, egyéni rendszerképen alapuló virtuális gépet tartalmazhat.
 
 **K.** Támogatott az adatlemezek használata a méretezési csoportokon belül?
 
@@ -47,7 +49,7 @@ Válaszok virtuálisgép-méretezési csoportok kapcsolatos gyakori kérdések a
 
 **K.** Hogyan lehet egyéni rendszerképekből méretezési csoportot létrehozni?
 
-**V.** Hozzon létre egy felügyelt lemezt az egyéni rendszerkép VHD-fájlja alapján, és hivatkozzon arra a méretezési csoport sablonjában. [Például:](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os)
+**V.** Hozzon létre és a virtuális gép lemezképének, majd azt használja forrásként a méretezési készlet. Hozzon létre, és egy egyéni Virtuálisgép-lemezkép használata oktatóanyag, használhatja a [Azure CLI 2.0](tutorial-use-custom-image-cli.md) vagy [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **K.** Ha a méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
 
@@ -119,16 +121,20 @@ A minta a gazdaszintű CPU metrika és üzenet mérőszámot használja.
 
 A PowerShell vagy az Azure parancssori felület használatával virtuálisgép-méretezési csoportok metrikáját riasztásokat hozhat létre. További információkért lásd: [figyelő PowerShell Azure gyors üzembe helyezés minták](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) és [Azure figyelő platformfüggetlen parancssori felület gyors üzembe helyezés minták](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
-A virtuálisgép-méretezési csoport targetresourceid azonosítója így néz ki: 
+A virtuálisgép-méretezési csoport targetresourceid azonosítója így néz ki:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-A metrika a riasztások, dönthet úgy a virtuális gép teljesítményszámláló. További információkért lásd: [Resource Manager-alapú Windows virtuális gépek vendég operációs rendszer metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) és [Linux virtuális gépek vendég operációs rendszer metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) a a [Azure figyelő automatikus skálázás közös metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) cikk.
+A metrika a riasztások, dönthet úgy a virtuális gép teljesítményszámláló. További információkért lásd: [Resource Manager-alapú Windows virtuális gépek vendég operációs rendszer metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) és [Linux virtuális gépek vendég operációs rendszer metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) a a [Azure figyelő automatikus skálázás közös metrikák](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)cikk.
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Hogyan állíthatom be automatikus skálázás a PowerShell segítségével állítsa be a virtuálisgép-méretezési?
 
-A virtuálisgép-méretezési PowerShell segítségével állítsa be automatikus skálázás beállításához tekintse meg a következő blogbejegyzésben található [automatikus skálázás felvétele az Azure virtuálisgép-méretezési csoport](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/).
+A virtuálisgép-méretezési PowerShell segítségével állítsa be automatikus skálázás beállításához tekintse meg a [automatikus méretezése a virtuálisgép-méretezési csoport](tutorial-autoscale-powershell.md). Beállíthatja úgy is automatikusan skálázva a [Azure CLI 2.0](tutorial-autoscale-cli.md) és [Azure-sablonok](tutorial-autoscale-template.md)
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Ha I (felszabadított) leállt a virtuális gép az automatikus skálázási művelet részeként lépések virtuális?
+
+Nem. Ha az automatikus skálázási szabályok további Virtuálisgép-példányok egy méretezési csoport részeként van szükség, egy új Virtuálisgép-példány jön létre. Virtuálisgép-példányok leállított (felszabadított) nem indulnak el az automatikus skálázás esemény részeként. Leállított (felszabadított) virtuális gépek azonban törlődhet részeként automatikus skálázás esemény méretezik a példányok, a megszokott módon, hogy a Virtuálisgép-példány törölhető-e Virtuálisgép-példány terabájtok rendelése alapján azonosítóját.
 
 
 
@@ -263,8 +269,8 @@ Megadhat egyszerű szöveges nyilvános SSH-kulcsok Linux virtuális gép létre
 linuxConfiguration elem neve | Szükséges | Típus | Leírás
 --- | --- | --- | --- |  ---
 ssh | Nem | Gyűjtemény | Adja meg a Linux operációs rendszert futtató SSH-kulcs konfigurációja
-elérési út | Igen | Karakterlánc | Ha az SSH-kulcsok vagy tanúsítványt kell elhelyezkedniük Linux elérési
-keyData | Igen | Karakterlánc | Megadja a base64-kódolású nyilvános SSH-kulcs
+elérési út | Igen | Sztring | Ha az SSH-kulcsok vagy tanúsítványt kell elhelyezkedniük Linux elérési
+keyData | Igen | Sztring | Megadja a base64-kódolású nyilvános SSH-kulcs
 
 Egy vonatkozó példáért lásd: [a 101-vm-ssh-kulcsfájl GitHub következő gyorsindítási sablonon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
@@ -615,7 +621,7 @@ Egy virtuálisgép-méretezési csoport, amely egy nyilvános IP-címet rendel a
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>Konfigurálhatja a méretezési több alkalmazás átjáró használható készletben?
 
-Igen. Az erőforrás-azonosítója a számára a több Alkalmazásátjáró háttércímkészletek is hozzáadhat a _applicationGatewayBackendAddressPools_ listájában a _IP-konfigurációk_ hálózati profil állítja a skála.
+Igen. Az erőforrás-azonosítója a számára a több Alkalmazásátjáró háttércímkészletek is hozzáadhat a _applicationGatewayBackendAddressPools_ listájában a _IP-konfigurációk_ hálózati állítja a skála profil.
 
 ## <a name="scale"></a>Méretezés
 

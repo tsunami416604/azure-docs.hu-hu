@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/02/2016
+ms.date: 05/22/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09c85a9badaad45816a9160d09cb3c4a726426e8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ca4e9e77d0e0ca62c04fbbfe132a41fb3e01df46
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34658774"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell-lel több hálózati adapterrel rendelkező virtuális gép (klasszikus) létrehozása
 
@@ -198,4 +199,10 @@ Most, hogy a letöltött és módosított a parancsfájl igényei szerint, a par
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>5. lépés - a virtuális gép operációs rendszerében útválasztás konfigurálása
 
-Az Azure DHCP rendeli hozzá az első (elsődleges) hálózati illesztő a virtuális géphez csatolt alapértelmezett átjárót. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. Másodlagos hálózati adapterrel, azonban kommunikálhat a alhálózati kívüli erőforrásokhoz. A másodlagos hálózati adapterrel-útválasztás konfigurálásához lásd: [egy virtuális gép operációs rendszerben több hálózati adapter az útválasztási](virtual-network-network-interface-vm.md).
+Az Azure DHCP rendeli hozzá az első (elsődleges) hálózati illesztő a virtuális géphez csatolt alapértelmezett átjárót. Az Azure nem rendel hozzá alapértelmezett átjárót a virtuális géphez csatolt további (másodlagos) hálózati adapterekhez. Alapértelmezés szerint ezért nem lehetséges a kommunikáció olyan erőforrásokkal, amelyek a másodlagos hálózati adaptert tartalmazó alhálózaton kívül vannak. Másodlagos hálózati adapterrel, azonban kommunikálhat a alhálózati kívüli erőforrásokhoz. Konfigurálja az útválasztást a másodlagos hálózati adapterrel, olvassa el a következő cikkeket:
+
+- [A Windows virtuális gépek több hálózati adapter konfigurálása](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
+)
+
+- [Linux virtuális gép több hálózati adapter konfigurálása](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
+)

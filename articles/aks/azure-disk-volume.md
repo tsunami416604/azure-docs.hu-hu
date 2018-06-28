@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b790213e19b9f2aaef74a3f670c89246f54fd6d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597067"
 ---
 # <a name="volumes-with-azure-disks"></a>Az Azure-lemezeket kötetek
 
@@ -23,34 +24,27 @@ Kubernetes köteteken további információkért lásd: [Kubernetes kötetek][ku
 
 ## <a name="create-an-azure-disk"></a>Az Azure lemez létrehozása
 
-Az Azure csatlakoztatása előtt kezelt lemez Kubernetes kötetként, a lemez már léteznie kell a AKS fürterőforrások ugyanabban az erőforráscsoportban. Ez az erőforráscsoport megkereséséhez használja a [az listájának] [ az-group-list] parancsot.
+Egy Azure által kezelt lemezre Kubernetes kötet csatlakoztatása, mielőtt a lemez már léteznie kell a AKS **csomópont** erőforráscsoportot. Az erőforráscsoport neve az beszerzése a [az erőforrás megjelenítése] [ az-resource-show] parancsot.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Egy hasonló nevű erőforráscsoport keres `MC_clustername_clustername_locaton`, ahol clustername a AKS fürt nevét, és helye az Azure-régió, ahol a fürt telepítve lett.
-
-```console
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Használja a [az lemez létrehozása] [ az-disk-create] parancsot lemezt az Azure létrehozásához.
 
-Ez a példa használ, frissítse `--resource-group` az erőforráscsoport nevét és `--name` az Ön által választott névre.
+Frissítés `--resource-group` az előző lépésben összegyűjtött az erőforráscsoport nevét és `--name` az Ön által választott névre.
 
 ```azurecli-interactive
 az disk create \
-  --resource-group MC_myAKSCluster_myAKSCluster_eastus \
+  --resource-group MC_myResourceGroup_myAKSCluster_eastus \
   --name myAKSDisk  \
   --size-gb 20 \
   --query id --output tsv
 ```
 
-A lemez létrehozása, a következőhöz hasonló kimenetnek kell megjelennie. Ez az érték szolgál, amikor a lemezt egy Kubernetes pod Lemezazonosító.
+A lemez létrehozása, a következőhöz hasonló kimenetnek kell megjelennie. Ez az érték használatos, ha a lemez csatlakoztatása Lemezazonosító.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -60,7 +54,7 @@ A lemez létrehozása, a következőhöz hasonló kimenetnek kell megjelennie. E
 
 A kötet konfigurálása a tároló spec csatlakoztassa azokat a pod lemezt az Azure.
 
-Hozzon létre egy új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítés `diskName` nevű az újonnan létrehozott lemezt, és `diskURI` lemez azonosítóval. Továbbá jegyezze fel az a `mountPath`, amelynél a lemezt az Azure csatlakoztatva van a fogyasztanak elérési útja.
+Hozzon létre egy új fájlt `azure-disk-pod.yaml` a következő tartalommal. Frissítés `diskName` nevű az újonnan létrehozott lemezt, és `diskURI` lemez azonosítóval. Emellett tekintse meg a `mountPath`, ez az az elérési utat, amelyen a lemezt az Azure a fogyasztanak csatlakoztatva van.
 
 ```yaml
 apiVersion: v1
@@ -105,3 +99,4 @@ További tudnivalók az Azure-lemezeket Kubernetes kötetek.
 [az-disk-list]: /cli/azure/disk#az_disk_list
 [az-disk-create]: /cli/azure/disk#az_disk_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

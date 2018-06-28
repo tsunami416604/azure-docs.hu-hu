@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34592408"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Felhasználói adatok és az Azure AD zökkenőmentes egyszeri bejelentkezést.
 
@@ -27,11 +29,11 @@ ms.lasthandoff: 04/28/2018
 ## <a name="overview"></a>Áttekintés
 
 
-Az Azure AD zökkenőmentes SSO hoz létre a következő napló típus, amely tartalmazhat EUII:
+Az Azure AD zökkenőmentes SSO hozza létre a következő napló típust, amelyek tartalmazhatnak személyes adatokat: 
 
 - Az Azure AD Connect nyomkövetésének naplófájljait.
 
-A zökkenőmentes egyszeri Bejelentkezéses felhasználói adatvédelmi megfelelőségét kétféleképpen érhető el:
+Felhasználói adatok javítása zökkenőmentes egyszeri bejelentkezéshez két módon:
 
 1.  Kérésre adatok kinyerése a személy, és adatok eltávolítása a telepítések az adott személyt.
 2.  Győződjön meg arról, 48 órával adatot nem őrződnek meg.

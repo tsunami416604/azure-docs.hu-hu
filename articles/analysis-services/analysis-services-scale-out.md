@@ -3,16 +3,17 @@ title: Az Azure Analysis Services kibővített |} Microsoft Docs
 description: A kibővített Azure Analysis Services-kiszolgálók replikálása
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 05/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee9210953306fbe317e9ed63c02fb90452ffbd15
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5d1d55a1cf29d6dc3574099cd468c42ccfc72f5b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597127"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services kibővített
 
@@ -33,6 +34,22 @@ Feldolgozási műveletek befejezése után a feldolgozási kiszolgáló és a le
 
 > [!NOTE]
 > Kibővített nem növeli a kiszolgáló rendelkezésre álló memória mennyisége. Memória növelése érdekében frissítenie kell a tervet.
+
+## <a name="region-limits"></a>A régióban korlátok
+
+Az a régió, a kiszolgáló konfigurálható lekérdezés replikák száma korlátozott. A következő korlátozások vonatkoznak:
+
+|Régió  |Replikák maximális száma  |
+|---------|---------|
+|USA 2. keleti régiója    |    7     |
+|USA nyugati középső régiója     |    7     |
+|Nyugat-Európa     |    7     |
+|USA nyugati régiója     |     7    |
+|USA középső régiója     |     3    |
+|Délkelet-Ázsia    |     3    |
+|Minden más területen  |   1    |
+
+
 
 ## <a name="monitor-qpu-usage"></a>A figyelő QPU kihasználtsága
 

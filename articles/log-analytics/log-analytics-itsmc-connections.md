@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 18398094dfff03739a3d3d44d2c9c58149271123
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34638636"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Csatlakozás ITSM termékek vagy szolgáltatások IT Service Management-összekötő
 Ez a cikk tájékoztatást ad azokról a ITSM termékszolgáltatásból és az informatikai szolgáltatás Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analyticshez központilag a a munkaelemek kezeléséhez. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -85,7 +86,7 @@ A következő eljárással csatlakozzon a System Center Service Manager-példán
 - Események Log Analyticshez riasztások vagy naplóbejegyzést, vagy Azure riasztásokat a Service Manager-példány a hozhat létre.
 
 
-További: [Naplóelemzési riasztások munkaelemek létrehozása ITSM](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [munkaelemek létrehozása ITSM Naplóelemzési naplókból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) és [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További: [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Létrehozhat és telepíthet a Service Manager web app service
 
@@ -238,7 +239,7 @@ A következő eljárással ServiceNow VPN-kapcsolat létrehozásához:
 
 - Incidensek Naplóelemzési riasztások vagy naplórekordokat, vagy a ServiceNow példány Azure riasztásokat hozhat létre.
 
-További: [Naplóelemzési riasztások munkaelemek létrehozása ITSM](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [munkaelemek létrehozása ITSM Naplóelemzési naplókból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) és [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További: [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>A ServiceNow app integrációs felhasználói szerepkör létrehozása
 
@@ -329,7 +330,7 @@ A következő eljárással Provance VPN-kapcsolat létrehozásához:
 
 - Események Log Analyticshez riasztások vagy naplóbejegyzést, vagy Azure riasztások az adott Provance példány hozhat létre.
 
-További: [Naplóelemzési riasztások munkaelemek létrehozása ITSM](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [munkaelemek létrehozása ITSM Naplóelemzési naplókból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) és [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További: [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>IT-szolgáltatás Cherwell csatlakozni az Azure-ban Management-összekötő
 
@@ -381,7 +382,7 @@ A következő eljárással Provance VPN-kapcsolat létrehozásához:
 
 - Események Log Analyticshez riasztások vagy naplóbejegyzést, vagy Azure riasztások az adott Cherwell példány hozhat létre.
 
-További: [Naplóelemzési riasztások munkaelemek létrehozása ITSM](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [munkaelemek létrehozása ITSM Naplóelemzési naplókból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) és [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+További: [munkaelemek ITSM létrehozása az Azure riasztásokból](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Ügyfél-azonosító Cherwell létrehozása
 
@@ -395,6 +396,4 @@ Az ügyfél-azonosító/kulcs Cherwell előállításához, a következő eljár
 
 
 ## <a name="next-steps"></a>További lépések
- - [Log Analytics-riasztások ITSM munkaelemek létrehozása](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)
- - [ITSM munkaelemek létrehozása Naplóelemzési naplóból rekordok naplók](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)
  - [Az Azure riasztásokból ITSM munkaelemek létrehozása](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
