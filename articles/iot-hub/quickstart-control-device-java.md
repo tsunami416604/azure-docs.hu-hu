@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 5025eeda46f36982266a0bc3357b3d1e9249884a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 5da4248f0b0a72c3614b4c3e5ea042c4341f4e03
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808206"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330543"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Java)
 
@@ -75,7 +75,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ha úgy dönt, hogy eszközének egy másik nevet választ, a mintaalkalmazások futtatása előtt frissítse az eszköznevet bennük.
 
-1. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
+2. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -99,17 +99,17 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
 1. Egy terminálablakban keresse meg a Maven-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\simulated-device-2** mappába.
 
-1. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** fájlt egy tetszőleges szövegszerkesztőben.
+2. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** fájlt egy tetszőleges szövegszerkesztőben.
 
     Cserélje le a `connString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.java** fájl módosításait.
 
-1. Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás létrehozásához:
+3. Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás létrehozásához:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazás futtatásához:
+4. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazás futtatásához:
 
     ```cmd/sh
     java -jar target/simulated-device-2-1.0.0-with-deps.jar
@@ -125,17 +125,17 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 1. Egy másik terminálablakban keresse meg a Java-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\back-end-application** mappába.
 
-1. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** fájlt egy Ön által választott szövegszerkesztőben.
+2. Nyissa meg az **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** fájlt egy Ön által választott szövegszerkesztőben.
 
     Cserélje le az `iotHubConnectionString` változó értéket a szolgáltatás korábban lejegyzett kapcsolati sztringjére. Mentse a **BackEndApplication.java** fájl módosításait.
 
-1. Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás létrehozásához:
+3. Futtassa az alábbi parancsokat a terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás létrehozásához:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazás futtatásához:
+4. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazás futtatásához:
 
     ```cmd/sh
     java -jar target/back-end-application-1.0.0-with-deps.jar
@@ -151,9 +151,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha tovább kíván lépni az oktatóanyagokra, ne távolítsa el az erőforráscsoportot és az IoT Hubot, mert ezeket később újból használhatja.
-
-Ha már nincs szüksége az IoT Hubra, az erőforráscsoporttal együtt törölje a Portalon. Ehhez válassza ki az IoT Hubot tartalmazó erőforráscsoportot, majd kattintson a **Törlés** gombra.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

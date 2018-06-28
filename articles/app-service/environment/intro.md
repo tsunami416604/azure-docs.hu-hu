@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 688f8da809a40f333aeb7b4ef959deb69ff94121
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 02ce774f30cd03b7520f482196629bf4b7ec9ae5
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808379"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318568"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Az App Service Environment bemutatása #
  
@@ -73,7 +73,7 @@ Az ASE lehet internetre irányuló, nyilvános IP-címmel, vagy befelé irányul
 
 A [hálózati biztonsági csoportok][NSGs] korlátozzák az ASE alhálózatára beérkező hálózati kommunikációt. A hálózati biztonsági csoportok használatával futtathatja az alkalmazásait alsóbb rétegbeli eszközök és szolgáltatások, valamint WAF-ok és hálózati SaaS-szolgáltatók mögött.
 
-Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz. Ha olyan virtuális hálózatban telepíti az ASE környezetet, amely VPN-kapcsolatban van a helyszíni hálózattal, akkor az ASE környezeten belüli alkalmazások hozzáférhetnek a helyszíni erőforrásokhoz. Ez mind a [helyek közötti](https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/), mind az [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN-kapcsolatok esetében igaz.
+Az alkalmazásoknak gyakran kell hozzáférniük vállalati erőforrásokhoz, például belső adatbázisokhoz vagy webes szolgáltatásokhoz. Ha olyan virtuális hálózatban telepíti az ASE környezetet, amely VPN-kapcsolatban van a helyszíni hálózattal, akkor az ASE környezeten belüli alkalmazások hozzáférhetnek a helyszíni erőforrásokhoz. Ez mind a [helyek közötti](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site), mind az [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/) VPN-kapcsolatok esetében igaz.
 
 Az ASE-k virtuális és helyszíni hálózatokkal történő használatáról az [App Service Environment hálózati szempontjai][ASENetwork] részben találhat további információkat.
 

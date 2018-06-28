@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 927a734b288f5bb0082e77be15ae540702fe4e8b
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: d0c587b3d43f7511775a4a114bead96348372bc5
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808281"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959967"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API a .NET-tel való használatába
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -80,8 +80,7 @@ Három javasolt csomagra kell hivatkoznia a projektben a minta teljesítéséhez
 
 * [Az Azure Storage .NET-hez készült közös kódtára (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). 
 * [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Ez a csomag programozott hozzáférést biztosít az Azure Table Storage-fiókjában vagy az Azure Cosmos DB Table API-fiókjában található adaterőforrásokhoz.
-* 
-  [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati sztring elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
+* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban található kapcsolati sztring elemzéséhez, függetlenül attól, hogy az alkalmazás hol fut.
 
 A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 
@@ -96,7 +95,7 @@ A NuGettel mindkét csomagot beszerezheti. Kövesse az alábbi lépéseket:
 > 
 
 > [!TIP]
-> Ha ismeri az Azure Table Storage szolgáltatást, lehetséges, hogy korábban már használta a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) csomagot. Javasoljuk, hogy minden új táblaalkalmazás az [Azure Storage közös kódtárát](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) és az [Azure Cosmos DB táblakódtárát](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) használja, azonban a WindowsAzure.Storage csomag továbbra is támogatott. Ha a WindowsAzure.Storage kódtárat használja, a felhasználási utasításaiba foglalja bele a „Microsoft.WindowsAzure.Storage.Table” részt.
+> Ha ismeri az Azure Table Storage szolgáltatást, lehetséges, hogy korábban már használta a [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) csomagot. Javasoljuk, hogy minden új táblaalkalmazás az [Azure Storage közös kódtárát](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common) és az [Azure Cosmos DB táblakódtárát](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) használja, azonban a WindowsAzure.Storage csomag továbbra is támogatott. Ha a WindowsAzure.Storage kódtárat használja, a felhasználási utasításaiba foglalja bele a „Microsoft.WindowsAzure.Storage.Table” részt.
 >
 >
 

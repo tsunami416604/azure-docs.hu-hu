@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: dbb4ce971e6504f33de82e31cf289a42a1640952
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 501a8f2dad0537f0288dfd6a6d7bedcac054ab86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293169"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332286"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra, és a telemetria olvasása a háttéralkalmazással (C#)
 
@@ -88,7 +88,7 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 2. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `connectionString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
+    Cserélje le a `s_connectionString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
 
 3. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
@@ -116,9 +116,9 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
     | Változó | Érték |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis végpontra. |
-    | `eventHubsCompatiblePath`     | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis elérési útra. |
-    | `iotHubSasKey`                | Cserélje le a változó értékét a korábban feljegyzett iothubowner elsődleges kulcsra. |
+    | `s_eventHubsCompatibleEndpoint` | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis végpontra. |
+    | `s_eventHubsCompatiblePath`     | Cserélje le a változó értékét a korábban feljegyzett Event Hubs-kompatibilis elérési útra. |
+    | `s_iotHubSasKey`                | Cserélje le a változó értékét a korábban feljegyzett iothubowner elsődleges kulcsra. |
 
 3. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
 

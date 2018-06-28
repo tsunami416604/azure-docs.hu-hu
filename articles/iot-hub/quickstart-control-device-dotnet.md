@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292840"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335475"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (.NET)
 
@@ -67,7 +67,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
     Ha úgy dönt, hogy eszközének egy másik nevet választ, a mintaalkalmazások futtatása előtt frissítse az eszköznevet bennük.
 
-1. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
+2. Futtassa az alábbi parancsot az imént regisztrált eszköz _kapcsolati sztringjének_ lekéréséhez:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -91,17 +91,17 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
 1. Egy terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\simulated-device-2** mappába.
 
-1. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
+2. Nyissa meg a **SimulatedDevice.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `connectionString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
+    Cserélje le a `s_connectionString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.cs** fájl módosításait.
 
-1. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
+3. Futtassa az alábbi parancsokat a terminálablakban a szimulálteszköz-alkalmazáshoz szükséges csomagok telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Futtassa az alábbi parancsot a terminálablakban a szimulálteszköz-alkalmazás létrehozásához és futtatásához:
+4. Futtassa az alábbi parancsot a terminálablakban a szimulálteszköz-alkalmazás létrehozásához és futtatásához:
 
     ```cmd/sh
     dotnet run
@@ -117,17 +117,17 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 1. Egy másik terminálablakban keresse meg a C#-mintaprojekt gyökérmappáját. Ezután lépjen az **iot-hub\Quickstarts\back-end-application** mappába.
 
-1. Nyissa meg a **BackEndApplication.cs** fájlt egy Ön által választott szövegszerkesztőben.
+2. Nyissa meg a **BackEndApplication.cs** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le az `connectionString` változó értéket a szolgáltatás korábban lejegyzett kapcsolati sztringjére. Mentse a **BackEndApplication.cs** fájl módosításait.
+    Cserélje le az `s_connectionString` változó értéket a szolgáltatás korábban lejegyzett kapcsolati sztringjére. Mentse a **BackEndApplication.cs** fájl módosításait.
 
-1. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
+3. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazáshoz szükséges kódtárak telepítéséhez:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazás létrehozásához és futtatásához:
+4. Futtassa az alábbi parancsokat a terminálablakban a háttéralkalmazás létrehozásához és futtatásához:
 
     ```cmd/sh
     dotnet run

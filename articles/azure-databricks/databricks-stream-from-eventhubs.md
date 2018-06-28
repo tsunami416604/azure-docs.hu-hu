@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/27/2018
+ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 0d168c0a127c037c1bca2a6b875e9b3d5707ba70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a06ee5b03521fa2e0a711f5194cf01b32e7cea37
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789384"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308696"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 - Egy Azure Event Hubs névtér.
 - Egy eseményközpont a névtéren belül.
-- Az Event Hubs-névtér elérésére szolgáló kapcsolati karakterlánc. A kapcsolati karakterlánc formátumának a következőhöz hasonlónak kell lennie: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
+- Az Event Hubs-névtér elérésére szolgáló kapcsolati sztring. A kapcsolati sztring formátumának a következőhöz hasonlónak kell lennie: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
 - Megosztott hozzáférési szabályzat neve és szabályzatkulcs az Event Hubshoz.
 
 Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont létrehozását](../event-hubs/event-hubs-create.md) ismertető cikk lépéseit követve teljesítheti.
@@ -315,7 +315,7 @@ A következő kimenetet kapja:
     ...
     ...
 
-A bináris módú kimenetet a következő kódrészlettel konvertálhatja karakterlánccá.
+A bináris módú kimenetet a következő kódrészlettel konvertálhatja sztringgé.
 
 ```scala
     import org.apache.spark.sql.types._

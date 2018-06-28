@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 66373d5a1ddd210d73fa964322862698f208a2f6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 00fd984a6bed8691712df0d4c335d2b9d4fd3ffa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737948"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029390"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Azure-fájlmegosztások kezelése az Azure CLI használatával
 Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez a cikk az Azure-fájlmegosztások az Azure CLI segítségével való használatának alapvető lépéseit mutatja be. Az alábbiak végrehajtásának módját ismerheti meg: 
@@ -185,7 +185,7 @@ Bár az `az storage file copy start` parancs kényelmes megoldás a fájlok Azur
 Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A megosztási pillanatképek hasonlók néhány, esetleg már ismert operációsrendszer-technológiához:
 - [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
 - [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez
-- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee923636) Windows-fájlrendszerekhez (például NTFS és ReFS)
+- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/en-us/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS)
 
 A megosztási pillanatképek az [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) paranccsal hozhatók létre:
 

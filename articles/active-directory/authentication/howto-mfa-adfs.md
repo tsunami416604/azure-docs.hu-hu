@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 3f1d6b00652270d143f7df48b0f690c5f33433e9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ce70641d9ccb3c86d1360a0aaf21a4817e2b3c5d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866063"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317861"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>A felhőerőforrások védelme Azure Multi-Factor Authentication hitelesítéssel és AD FS-sel
 Ha a szervezete Azure Active Directory-összevonást használ, és az Azure AD által elért erőforrásokkal rendelkezik, az Azure Multi-Factor Authentication segítségével vagy az Active Directory összevonási szolgáltatásokkal (AD FS) védheti meg ezeket az erőforrásokat. Az alábbi eljárásokkal védheti meg az Azure Active Directory-erőforrásokat az Azure Multi-Factor Authentication segítségével vagy az Active Directory összevonási szolgáltatásokkal.
@@ -80,7 +80,7 @@ Az első lépés az AD FS-jogcímek konfigurálása. Két jogcímszabályt hozzo
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Azure Multi-Factor Authentication megbízható IP-címeinek konfigurálása összevont felhasználókkal
 Most, hogy megvannak a jogcímek, konfigurálhatjuk a megbízható IP-címeket.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza az **Azure Active Directory** > **Feltételes hozzáférés** > **Nevesített helyek** lehetőséget.
 3. A **Feltételes hozzáférés – Nevesített helyek** panelen válassza az  **MFA megbízható IP-címeinek konfigurálása** lehetőséget
 

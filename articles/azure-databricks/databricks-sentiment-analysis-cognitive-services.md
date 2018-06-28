@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/27/2018
+ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 87984859d1f0562149e6700642f7f0a1361d624e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1d6087477a7d99314ced19f5fe29fe81b5acaef4
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315398"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308091"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
@@ -53,7 +53,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 - Egy Azure Event Hubs névtér.
 - Egy eseményközpont a névtéren belül.
-- Az Event Hubs-névtér elérésére szolgáló kapcsolati karakterlánc. A kapcsolati karakterlánc formátumának a következőhöz hasonlónak kell lennie: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
+- Az Event Hubs-névtér elérésére szolgáló kapcsolati sztring. A kapcsolati sztring formátumának a következőhöz hasonlónak kell lennie: `Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`.
 - Megosztott hozzáférési szabályzat neve és szabályzatkulcs az Event Hubshoz.
 
 Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont létrehozását](../event-hubs/event-hubs-create.md) ismertető cikk lépéseit követve teljesítheti.
@@ -351,7 +351,7 @@ A következő kimenetet kapja:
     ...
     ...
 
-A bináris módú kimenetet a következő kódrészlettel konvertálhatja karakterlánccá.
+A bináris módú kimenetet a következő kódrészlettel konvertálhatja sztringgé.
 
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._

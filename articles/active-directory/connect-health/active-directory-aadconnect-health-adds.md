@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dcfb43003e81bb51574b401c21202925b16305f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 458d01d61872d13cee735c7098cce5dcc905c31c
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614413"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960406"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Az Azure AD Connect Health használata az AD DS szolgáltatással
 Az alábbi dokumentáció az Active Directory tartományi szolgáltatások Azure AD Connect Health használatával történő figyelésére vonatkozik. Az AD DS támogatott verziói: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 és Windows Server 2016.
 
 Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó további információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](active-directory-aadconnect-health-adfs.md). Az Azure AD Connect (szinkronizálási szolgáltatás) az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](active-directory-aadconnect-health-sync.md) című témakörben tekintheti meg.
 
-![Azure AD Connect Health for AD DS](./media/active-directory-aadconnect-health/aadconnect-health-adds-entry.png)
+![Azure AD Connect Health for AD DS](./media/active-directory-aadconnect-health-adds/domainservicesnapshot.PNG)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-ad-ds"></a>Az Azure AD Connect Health for AD DS riasztásai
 A Riasztások szakasz az Azure AD Connect Health for AD DS-en belül a tartományvezérlőkhöz kapcsolódó aktív és megoldott riasztásokról nyújt listát. Egy aktív vagy egy megoldott riasztás kiválasztása egy új, további információkat tartalmazó panelt nyit meg, amely a megoldás lépései mellett támogatási dokumentumokra mutató hivatkozásokat jelenít meg. Minden riasztástípusnak egy vagy több példánya lehet, amelyek megfelelnek a meghatározott riasztás által érintett tartományvezérlőknek. A riasztási panel alsó részéhez közel az érintett tartományvezérlőre duplán kattintva megnyílik egy újabb panel, további részletekkel a meghatározott riasztási eseményről.

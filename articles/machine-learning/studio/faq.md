@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 4ea48300e83e1faa1250d2fba7c37a82825c820f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024734"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
@@ -73,7 +75,7 @@ Az Önnek létrehozott Microsoft Excel-munkafüzetmintát is használhatja, amel
 
 **Mik az Azure Machine Learning főbb újdonságai?**
 
-A legújabb frissítésekkel kapcsolatban lásd [az Azure Machine Learning újdonságait](whats-new.md) ismertető cikket.
+A legújabb frissítésekkel kapcsolatban lásd [az Azure Machine Learning újdonságait](../../active-directory/fundamentals/whats-new.md) ismertető cikket.
 
 ## <a name="machine-learning-studio-questions"></a>A Machine Learning Studióra vonatkozó kérdések
 ### <a name="import-and-export-data-for-machine-learning"></a>Adatok importálása és exportálása a Machine Learninghez
@@ -94,7 +96,7 @@ A szolgáltatásnormalizálás során a következő, 10 GB alá korlátozott ada
 
 * Ritka
 * Kategorikus
-* Karakterláncok
+* Sztringek
 * Bináris adatok
 
 A következő modulok 10 GB-nál kisebb adatkészletekre vannak korlátozva:
@@ -261,7 +263,7 @@ A szolgáltatásnormalizálás során a következő, 10 GB alá korlátozott ada
 
 * Ritka
 * Kategorikus
-* Karakterláncok
+* Sztringek
 * Bináris adatok
 
 A következő modulok 10 GB-nál kisebb adatkészletekre vannak korlátozva:
@@ -472,7 +474,7 @@ Igen, az Azure Machine Learning továbbra is használható a klasszikus webszolg
 ### <a name="azure-machine-learning-free-and-standard-tier"></a>Az Azure Machine Learning Ingyenes és Standard szintje
 **Mit tartalmaz az Azure Machine Learning Ingyenes szintje?**
 
-Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://www.microsoft.com/account/default.aspx) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. Ez a szint 10 GB méretű tárhely használatát, valamint a modellek átmeneti API-ként történő üzembe helyezését teszi lehetővé. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. 
+Az Azure Machine Learning Ingyenes szintje arra szolgál, hogy részletesen bemutassa az Azure Machine Learning Studio szolgáltatást. A bejelentkezéshez mindössze egy Microsoft-fiókra van szükség. Az Ingyenes szint [Microsoft-fiókonként](https://account.microsoft.com/account) egy Azure Machine Learning Studio-munkaterülethez nyújt ingyenes hozzáférést. Ez a szint 10 GB méretű tárhely használatát, valamint a modellek átmeneti API-ként történő üzembe helyezését teszi lehetővé. Az Ingyenes szinthez tartozó számítási feladatokra nem vonatkozik SLA, ezek csak fejlesztési és személyes célokra használhatók. 
 
 Az ingyenes szinthez tartozó munkaterületekre az alábbi korlátozások érvényesek:
 

@@ -10,18 +10,18 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 5aee9a96270b4bcafb4ee696c0cbf6a424515cb1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: abb7b3bbdbf16760db8595261ea8e543b6ed05f2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825540"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939192"
 ---
 ## <a name="well-done"></a>Remek!
 Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Fejlesztésre optimalizált Kubernetes-alapú környezet, vagyis egy _Dev Spaces-tér_ létrehozása az Azure-ban.
+> * Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
 > * Iteratív kódfejlesztés tárolókban a VS Code és a parancssor használatával.
 > * Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
 > * A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.

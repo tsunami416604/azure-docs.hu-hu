@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
-ms.openlocfilehash: f628f393f1ff5922d9d2c82b30d4fdbf4b5caf23
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: ea401099ce90248be0ecb99109b845ff9a91f70d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738173"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029325"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Azure-fájlmegosztások felügyelete az Azure Storage Explorerrel 
 Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Ez a cikk az Azure-fájlmegosztások az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) való használatának alapvető lépéseit mutatja be. A Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
@@ -47,8 +47,7 @@ A Storage Explorer nem használható új erőforrások létrehozására. A bemut
 A Storage Explorer első indításakor megjelenik a **Microsoft Azure Storage Explorer – Csatlakozás** ablak. A Storage Explorer számos különféle módot kínál a tárfiókokhoz való csatlakozáshoz: 
 
 - **Bejelentkezés az Azure-fiókon keresztül**: Bejelentkezhet a vállalata vagy Microsoft-fiókja felhasználói hitelesítő adataival. 
-- 
-  **Csatlakozás adott tárfiókhoz kapcsolati sztring vagy SAS-jogkivonat használatával**: A kapcsolati sztring egy speciális sztring, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Csatlakozás adott tárfiókhoz kapcsolati sztring vagy SAS-jogkivonat használatával**: A kapcsolati sztring egy speciális sztring, amely tartalmazza a tárfiók nevét és a tárfiók kulcsát/SAS-jogkivonatát. A jogkivonattal a Storage Explorer közvetlenül a tárfiókhoz fér hozzá (ahelyett, hogy egyszerűen az Azure-fiókban lévő összes tárfiókot látná). További információ a kapcsolati sztringekról: [Az Azure Storage kapcsolati sztringek konfigurálása](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 - **Csatlakozás adott tárfiókhoz a tárfiók nevének és kulcsának használatával**: A tárfiók nevével és kulcsával csatlakozhat az Azure Storage-hoz.
 
 Ebben a rövid útmutatóban az Azure-fiókjával jelentkezzen be. Válassza az **Azure-fiók hozzáadása**, majd a **Bejelentkezés** elemet. Az utasításokat követve jelentkezzen be Azure-fiókjába.
@@ -98,7 +97,7 @@ A letöltés állapota az ablak alján található **Tevékenységek** panelen l
 
 ## <a name="create-and-modify-share-snapshots"></a>Megosztási pillanatképek létrehozása és módosítása
 A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A fájlmegosztások pillanatképei hasonlók az esetleg már ismert egyéb technológiákhoz:
-- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee923636) Windows-fájlrendszerekhez (például NTFS és ReFS)
+- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/en-us/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS)
 - [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
 - [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez
 

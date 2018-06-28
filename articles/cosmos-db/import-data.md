@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 07c41bb02863cc32372722cbcbac4be2c5071860
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7f8e8d920884c611965ff760bb0369e08163356e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611466"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029604"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Adatáttelepítési eszköz
 
@@ -41,7 +41,7 @@ A jelen cikkben lévő utasítások követése előtt győződjön meg róla, ho
 
 * [Microsoft .NET-keretrendszer 4.51](https://www.microsoft.com/download/developer-tools.aspx) vagy újabb
 
-* Átviteli sebesség növelése: Az adatáttelepítés időtartamát az egyéni gyűjteményhez vagy a gyűjteménycsoporthoz beállított átviteli sebesség határozza meg. Nagyobb adatmennyiségek áttelepítéséhez mindenképp célszerű megnövelnie az átviteli sebességet. Az áttelepítés végeztével csökkentse ismét az átviteli sebességet a költségek csökkentéséhez. Az átviteli sebesség Azure Portalon való növeléséről bővebben Az Azure Cosmos DB teljesítményszintjei és tarifacsomagjai című cikkben olvashat.
+* Átviteli sebesség növelése: Az adatáttelepítés időtartamát az egyéni gyűjteményhez vagy a gyűjteménycsoporthoz beállított átviteli sebesség határozza meg. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. Az átviteli sebesség Azure Portalon való növeléséről bővebben Az Azure Cosmos DB teljesítményszintjei és tarifacsomagjai című cikkben olvashat.
 
 ## <a id="Overviewl"></a>Áttekintés
 Az adatáttelepítési eszköz egy nyílt forráskódú megoldás, mellyel adatokat importálhat az Azure Cosmos DB-be különféle forrásokból, ideértve az alábbiakat:
@@ -222,7 +222,7 @@ Az Azure Table Storage kapcsolati sztringjének formátuma a következő:
 > 
 > 
 
-Adja meg annak az Azure-táblának a nevét, amelyből importálni kíván. Igény esetén adhat meg egy [szűrőt](https://msdn.microsoft.com/library/azure/ff683669.aspx) is.
+Adja meg annak az Azure-táblának a nevét, amelyből importálni kíván. Igény esetén adhat meg egy [szűrőt](../vs-azure-tools-table-designer-construct-filter-strings.md) is.
 
 Az Azure Table Storage importálási forráshoz a következő további beállításokat adhatja meg:
 

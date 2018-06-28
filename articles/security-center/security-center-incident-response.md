@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 2f3a9344b9bd383ea59ff3cb400faa90942c5b9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8564dd8a86cab1229f31e77e072ddd4e776947e7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894486"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029696"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Az Azure Security Center használata incidensmegoldásra
 Sok szervezet csak akkor tanulja meg, hogyan reagáljon a biztonsági incidensekre, miután támadás érte. A költségek és a károk csökkentése érdekében fontos, hogy már a támadások bekövetkezte előtt létezzen egy incidensmegoldási terv. Az Azure Security Center az incidensmegoldás több szakaszában is alkalmazható.
@@ -97,7 +97,7 @@ Sándor megkapja Judittól az esetet, és elkezdi átnézni a Security Center á
 ![Az incidensmegoldás életciklusa](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>További források
-Azok a vállalatok, amelyek a vizsgálat folyamata során saját biztonságadat- és eseménykezelő (SIEM) megoldást használnak, [integrálhatják a Security Centert a saját megoldásukba](security-center-integrating-alerts-with-log-integration.md). Az [Azure naplóintegráló eszközével](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/) az Azure auditnaplói és a virtuális gép biztonság eseményei is integrálhatók. Egy támadás kivizsgálásához ezt az információt a Security Center által nyújtott információval együtt használhatja. Egy incidens gyökérokának meghatározásához használhatja a Security Center [vizsgálati](https://docs.microsoft.com/azure/security-center/security-center-investigation) funkcióját is.
+Azok a vállalatok, amelyek a vizsgálat folyamata során saját biztonságadat- és eseménykezelő (SIEM) megoldást használnak, [integrálhatják a Security Centert a saját megoldásukba](security-center-integrating-alerts-with-log-integration.md). Az [Azure naplóintegráló eszközével](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/) az Azure auditnaplói és a virtuális gép biztonság eseményei is integrálhatók. Egy támadás kivizsgálásához ezt az információt a Security Center által nyújtott információval együtt használhatja. Egy incidens gyökérokának meghatározásához használhatja a Security Center [vizsgálati](https://docs.microsoft.com/azure/security-center/security-center-investigation) funkcióját is.
 
 ## <a name="conclusion"></a>Összegzés
 A csapat összeállítása még az incidens előtt fontos lépés a szervezet számára, és pozitívan tudja befolyásolni az incidensek kezelését. Ha a szervezet rendelkezik a megfelelő eszközökkel az erőforrások figyeléséhez, ez segítheti a csapatot abban, hogy megfelelő lépéseket tegyen a biztonsági incidensek elhárítása érdekében. A Security Center [észlelési funkciói](security-center-detection-capabilities.md) segíthetnek az informatikai részlegnek a biztonsági incidensekre való gyors válaszadásban és a biztonsági problémák elhárításában.

@@ -20,6 +20,10 @@
   items:
     - name: SDK-minták áttekintése
       href: sdk.md
+    - name: 'SDK a C#-ban'
+      href: visual-search-sdk-c-sharp.md
+    - name: SDK a Node-ban
+      href: visual-search-sdk-node.md
     - name: SDK a Pythonban
       href: visual-search-sdk-python.md
 - name: Oktatóanyagok
