@@ -195,10 +195,16 @@
           href: automation-migrate-account-subscription.md
     - name: Hibaelhárítás
       items:
-        - name: Gyakori hibák elhárítása
-          href: automation-troubleshooting-automation-errors.md
-        - name: A hibrid runbook-feldolgozó hibaelhárítása
-          href: automation-troubleshooting-hybrid-runbook-worker.md
+        - name: Előkészítés
+          href: troubleshoot/onboarding.md
+        - name: Runbookok
+          href: troubleshoot/runbooks.md
+        - name: Célállapot-konfiguráló (DSC)
+          href: troubleshoot/desired-state-configuration.md
+        - name: hibrid runbook-feldolgozó
+          href: troubleshoot/hybrid-runbook-worker.md
+        - name: Frissítéskezelés
+          href: troubleshoot/update-management.md
 - name: Referencia
   items:
     - name: Azure PowerShell

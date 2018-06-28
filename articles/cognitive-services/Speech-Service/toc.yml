@@ -67,6 +67,8 @@
   items:
     - name: Támogatott nyelvek
       href: supported-languages.md
+    - name: Régiók
+      href: regions.md
     - name: REST API-k
       href: rest-apis.md
     - name: Beszéd SDK API

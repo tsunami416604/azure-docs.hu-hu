@@ -160,9 +160,6 @@
         - name: A Hue használata
           href: ../hdinsight-hadoop-hue-linux.md
           maintainContext: true
-        - name: Az R használata
-          href: ../hdinsight-hadoop-r-scripts-linux.md
-          maintainContext: true
         - name: A Solr használata
           href: ../hdinsight-hadoop-solr-install-linux.md
           maintainContext: true
