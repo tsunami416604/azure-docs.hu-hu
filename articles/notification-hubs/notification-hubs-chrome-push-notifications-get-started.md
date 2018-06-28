@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777474"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028999"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése Chrome-alkalmazásokba az Azure Notification Hubs használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -83,10 +83,10 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
       ![Azure Notification Hubs – Google (GCM)](media/notification-hubs-chrome-get-started/configure-gcm-api-key.png)
 
 ## <a id="connect-app"></a>A Chrome-alkalmazás csatlakoztatása az értesítési központhoz
-Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati karakterláncokkal az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
+Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
 ### <a name="create-a-new-chrome-app"></a>Új Chrome-alkalmazás létrehozása
-Az alábbi minta a [Chrome-alkalmazások GCM-mintáján] alapul, és a Chrome-alkalmazás javasolt létrehozási módját alkalmazza. Ez a szakasz kiemeli azon lépéseket, amelyek kifejezetten az Azure Notification Hubsra vonatkoznak. 
+Az alábbi minta a [Chrome-alkalmazások GCM mintája] alapul, és a Chrome-alkalmazás javasolt létrehozási módját alkalmazza. Ez a szakasz kiemeli azon lépéseket, amelyek kifejezetten az Azure Notification Hubsra vonatkoznak. 
 
 > [!NOTE]
 > Javasoljuk, hogy töltse le a jelen Chrome-alkalmazás forrását a következő helyről: [Chrome-alkalmazás – Notification Hub-minta]. 
@@ -400,7 +400,7 @@ Tesztelési célból küldjön leküldéses Chrome-értesítéseket egy .NET-kon
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-   A rendszer automatikusan hozzáad a projekthez egy, az Azure Service Bus SDK-ra mutató hivatkozást a <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet-csomaggal</a>.
+   A rendszer automatikusan hozzáad a projekthez egy, az Azure Service Bus SDK-ra mutató hivatkozást a <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet-csomaggal</a>.
 4. Nyissa meg a `Program.cs` elemet, majd adja hozzá a következő `using` utasítást:
    
         using Microsoft.Azure.NotificationHubs;
@@ -413,10 +413,10 @@ Tesztelési célból küldjön leküldéses Chrome-értesítéseket egy .NET-kon
             await hub.SendGcmNativeNotificationAsync(message);
         }
    
-    A `<hub name>` helyőrzőt cserélje le az értesítési központnak a [portál](https://portal.azure.com) Notification Hub lapján megjelenő nevére. Továbbá cserélje le a kapcsolati karakterlánc helyőrzőjét „Az értesítési központ konfigurálása” szakaszban beszerzett `DefaultFullSharedAccessSignature` nevű kapcsolati karakterláncra.
+    A `<hub name>` helyőrzőt cserélje le az értesítési központnak a [portál](https://portal.azure.com) Notification Hub lapján megjelenő nevére. Továbbá cserélje le a kapcsolati sztring helyőrzőjét „Az értesítési központ konfigurálása” szakaszban beszerzett `DefaultFullSharedAccessSignature` nevű kapcsolati sztringre.
    
     > [!NOTE]
-    > A kapcsolati karakterláncot **Teljes**, és ne **Figyelési** hozzáféréssel használja. A **Figyelési** hozzáféréssel rendelkező kapcsolati karakterláncok nem biztosítanak engedélyeket a leküldéses értesítések küldéséhez.
+    > A kapcsolati sztringet **Teljes**, és ne **Figyelési** hozzáféréssel használja. A **Figyelési** hozzáféréssel rendelkező kapcsolati sztringek nem biztosítanak engedélyeket a leküldéses értesítések küldéséhez.
 6. Adja hozzá a következő hívásokat a `Main` metódushoz:
    
          SendNotificationAsync();
@@ -465,7 +465,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Chrome-alkalmazás – Notification Hub-minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [Notification Hubs Overview]: notification-hubs-push-notification-overview.md
 [Chrome-alkalmazások – áttekintés]: https://developer.chrome.com/apps/about_apps
-[Chrome-alkalmazások GCM-mintáján]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
+[Chrome-alkalmazások GCM mintája]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [Chrome-alkalmazások mobileszközökön]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [Regisztrációs NH REST API létrehozása]: http://msdn.microsoft.com/library/azure/dn223265.aspx

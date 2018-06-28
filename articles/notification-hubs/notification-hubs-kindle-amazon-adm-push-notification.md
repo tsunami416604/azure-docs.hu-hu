@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: af2619a403046bd4f064b958df225e4d42a205f4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 41319ba446994da1669e58e33008a943e74ab417
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776831"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331390"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Ismerkedés a Notification Hubs szolgáltatással Kindle-alkalmazásokhoz
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -42,10 +42,10 @@ Ebben az oktatóanyagban kódot fog létrehozni/frissíteni az alábbi feladatok
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Töltse le az Android SDK-t (amennyiben Eclipse-t használ) az <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android webhelyéről</a>.
-* Kövesse a <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Setting Up Your Development Environment</a> (A fejlesztési környezet beállítása) című cikk lépéseit a Kindle fejlesztési környezetének beállításához.
+* Kövesse a <a href="https://developer.amazon.com/docs/fire-tablets/ft-set-up-your-development-environment.html">Setting Up Your Development Environment</a> (A fejlesztési környezet beállítása) című cikk lépéseit a Kindle fejlesztési környezetének beállításához.
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>Új fájl hozzáadása a fejlesztői portálhoz
-1. Először hozzon létre egy alkalmazást az [Amazon fejlesztői portálján].
+1. Először hozzon létre egy alkalmazást az [Amazon fejlesztői portál].
    
     ![][0]
 2. Jegyezze fel az alkalmazáskulcsot (**Application Key**).
@@ -82,7 +82,7 @@ A portálon adja hozzá a titkos ügyfélkulcsot és az ügyfél-azonosítót az
 
 Az ADM-kódtárak hozzáadása az Eclipse-projekthez:
 
-1. Az ADM-kódtár beszerzéséhez [töltse le az SDK-t]. Csomagolja ki az SDK zip-fájlját.
+1. Az ADM-kódtár beszerzéséhez [SDK letöltése]. Csomagolja ki az SDK zip-fájlját.
 2. Az Eclipse-ben kattintson a jobb gombbal a projektjére, majd kattintson a **Properties** (Tulajdonságok) elemre. A bal oldalon válassza a **Java Build Path** (Java-verzió elérési útja) lehetőséget, majd a fent található **Libraries **(Kódtárak) lapot. Kattintson az **Add External Jar** (Külső jar-fájl hozzáadása) lehetőségre, és válassza az `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` fájlt abból a könyvtárból, ahová kicsomagolta az Amazon SDK-t.
 3. Töltse le a NotificationHubs Android SDK-t (hivatkozás).
 4. Tömörítse ki a csomagot, aztán húzza a `notification-hubs-sdk.jar` fájlt az Eclipse `libs` mappájába.
@@ -155,7 +155,7 @@ Az alkalmazás jegyzékének módosítása az ADM támogatásához:
         import com.amazon.device.messaging.ADMMessageReceiver;
         import com.microsoft.windowsazure.messaging.NotificationHub
     ```
-3. Adja hozzá a következő kódot a létrehozott osztályhoz. Ne felejtse el behelyettesíteni a központ nevét és a kapcsolati karakterláncot (figyelés):
+3. Adja hozzá a következő kódot a létrehozott osztályhoz. Ne felejtse el behelyettesíteni a központ nevét és a kapcsolati sztringet (figyelés):
    
     ```java
         public static final int NOTIFICATION_ID = 1;
@@ -293,8 +293,8 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 >[Leküldéses értesítések küldése adott eszközökre](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- URLs. -->
-[Amazon fejlesztői portálján]: https://developer.amazon.com/home.html
-[töltse le az SDK-t]: https://developer.amazon.com/public/resources/development-tools/sdk
+[Amazon fejlesztői portál]: https://developer.amazon.com/home.html
+[SDK letöltése]: https://developer.amazon.com/public/resources/development-tools/sdk
 
 [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
 [1]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
