@@ -47,7 +47,6 @@
 ##### [Aktuális korlátozások](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [Hogyan működik?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
 ##### [Előzetes verziójú ügynökök frissítése](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
-##### [Intelligens zárolás](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Gyakori kérdések](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Hibaelhárítás](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [A biztonság részletes bemutatása](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
