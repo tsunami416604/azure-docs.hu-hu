@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 958b495b2328a981c573447c44585bc7430c1095
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d19cf6ecc9f2bedb6ceaf6312b247670d965b84
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621166"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048549"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése a helyszíni adatforrások és az adatkezelési átjáró a felhő között
 > [!NOTE]
-> Ez a cikk a Data Factory általánosan elérhető 1. verziójára vonatkozik. Lásd a 2-es verziójának a Data Factory szolgáltatásnak, amely jelenleg előzetes verzióban érhető, használatakor [között a helyszíni adatok másolása, és a Data Factory 2-es verzióját használó felhőalapú](../tutorial-hybrid-copy-powershell.md).
+> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [másolja az adatokat a helyszíni között, és a Data Factory használatával felhőalapú](../tutorial-hybrid-copy-powershell.md).
 
 Ez a cikk áttekintést adatok integrálása a helyszíni adattárolókhoz és a Data Factory használatával felhő adattárolók között. Az épít, a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk és az egyéb adatok gyári alapvető fogalmait: [adatkészletek](data-factory-create-datasets.md) és [folyamatok](data-factory-create-pipelines.md).
 
@@ -100,7 +100,7 @@ Ebben a lépésben az Azure Data Factory nevű példány létrehozásához haszn
    >
    > Amennyiben Chrome böngészőt használ, keresse fel a [Chrome webáruházát](https://chrome.google.com/webstore/), keressen rá a „ClickOnce” kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, majd telepítse azt.
    >
-   > Tegye meg ugyanezt a Firefox (install-bővítmény). Kattintson a **menü megnyitása** gomb az eszköztáron (**három vízszintes vonal** jobb felső sarkában), kattintson a **bővítmények**, keressen a "ClickOnce" kulcsszóval, válasszon egyet a ClickOnce-bővítmények, és telepítse.    
+   > Tegye meg ugyanezt a Firefox (install-bővítmény). Kattintson a **menü megnyitása** gomb az eszköztáron (**három vízszintes vonal** jobb felső sarkában), kattintson a **bővítmények**, keressen a "ClickOnce" kulcsszóval, válasszon egyet a a ClickOnce-bővítményeket, és telepítse azt.    
    >
    >
 
@@ -149,7 +149,7 @@ Ebben a lépésben az Azure Data Factory nevű példány létrehozásához haszn
    * Használjon **kapcsolat tesztelése** szakasz az átjáró helyszíni adatforráshoz.
    * Kattintson a **naplók megtekintése** egy Eseménynapló-ablakban az adatkezelési átjáró napló megjelenítéséhez.
    * Kattintson a **naplók küldése** egy zip-fájlt az elmúlt hét napban rögzít feltöltése a Microsoftnak a problémák hibaelhárításához megkönnyítése érdekében.
-10. Az a **diagnosztika** lap a **kapcsolat tesztelése** szakaszban jelölje be **SqlServer** az adatok tárolására, adja meg a nevét, az adatbázis-kiszolgáló, az adatbázis nevét, adja meg a hitelesítés típusát, adja meg a felhasználónevet és jelszót és kattintson a **tesztelése** annak megállapítására, hogy az átjáró képes kapcsolódni az adatbázishoz.
+10. Az a **diagnosztika** lap a **kapcsolat tesztelése** szakaszban jelölje be **SqlServer** az adattároló típusú, adja meg a nevét, az adatbázis-kiszolgáló, az adatbázis neve Adja meg a hitelesítés típusát, írja be a felhasználónevet és jelszót, majd kattintson **tesztelése** annak megállapítására, hogy az átjáró képes kapcsolódni az adatbázishoz.
 11. A webböngészőt, és a kapcsoló a **Azure-portálon**, kattintson a **OK** a a **konfigurálása** lap majd a a **az új adatátjáró** lap.
 12. Megtekintheti az **adftutorialgateway** alatt **Data Gateways** a bal oldali fanézetben.  Kattintson rá, ha a kapcsolódó JSON kell megjelennie.
 
@@ -302,7 +302,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
 3. Kattintson a **telepítés** a parancssávon az adatkészlet telepítéséhez. Győződjön meg arról, hogy megjelenik-e a fanézetben mindkét adathalmazokat.  
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
-Ebben a lépésben létrehoz egy **csővezeték** egy **másolási tevékenység** használó **EmpOnPremSQLTable** bemenetként és **OutputBlobTable** output típusúként.
+Ebben a lépésben létrehoz egy **csővezeték** egy **másolási tevékenység** használó **EmpOnPremSQLTable** bemenetként és **OutputBlobTable** , kimeneti.
 
 1. Kattintson a Data Factory Editor **... Továbbiak**, majd az **Új adatcsatorna** elemre.
 2. A jobb oldali JSON cserélje le a következő szöveget:    

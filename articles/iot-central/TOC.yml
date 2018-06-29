@@ -17,20 +17,16 @@
       href: quick-deploy-iot-central.md
 - name: Oktatóanyagok
   items:
-    - name: Szerkesztő
-      items:
-        - name: 1 – Új eszköztípus megadása
-          href: tutorial-define-device-type.md
-        - name: 2 – Szabályok konfigurálása
-          href: tutorial-configure-rules.md
-        - name: 3 – Operátori nézet testreszabása
-          href: tutorial-customize-operator.md
-    - name: Művelet
-      items:
-        - name: 4 – Eszközök monitorozása
-          href: tutorial-monitor-devices.md
-        - name: 5 – Eszköz hozzáadása
-          href: tutorial-add-device.md
+    - name: 1 – Új eszköztípus megadása
+      href: tutorial-define-device-type.md
+    - name: 2 – Szabályok konfigurálása
+      href: tutorial-configure-rules.md
+    - name: 3 – Operátori nézet testreszabása
+      href: tutorial-customize-operator.md
+    - name: 4 – Eszközök monitorozása
+      href: tutorial-monitor-devices.md
+    - name: 5 – Eszköz hozzáadása
+      href: tutorial-add-device.md
 - name: Alapelvek
   items:
     - name: Architektúra
